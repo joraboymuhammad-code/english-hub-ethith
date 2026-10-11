@@ -1,0 +1,2645 @@
+{
+  "placement": [
+    {
+      "q": "Where ___ you from?",
+      "o": [
+        "is",
+        "are",
+        "am",
+        "be"
+      ],
+      "a": 1,
+      "l": "A1"
+    },
+    {
+      "q": "I ___ breakfast at 7:30 every morning.",
+      "o": [
+        "have",
+        "has",
+        "having",
+        "am have"
+      ],
+      "a": 0,
+      "l": "A1"
+    },
+    {
+      "q": "There are two ___ in the kitchen.",
+      "o": [
+        "knife",
+        "knifes",
+        "knives",
+        "knive"
+      ],
+      "a": 2,
+      "l": "A1"
+    },
+    {
+      "q": "She ___ like watching horror movies.",
+      "o": [
+        "don't",
+        "isn't",
+        "doesn't",
+        "not"
+      ],
+      "a": 2,
+      "l": "A1"
+    },
+    {
+      "q": "What time ___ your sister wake up?",
+      "o": [
+        "do",
+        "does",
+        "is",
+        "are"
+      ],
+      "a": 1,
+      "l": "A1"
+    },
+    {
+      "q": "Look! The baby ___ right now.",
+      "o": [
+        "sleeps",
+        "is sleeping",
+        "sleep",
+        "slept"
+      ],
+      "a": 1,
+      "l": "A1"
+    },
+    {
+      "q": "This is my brother. ___ name is Alex.",
+      "o": [
+        "His",
+        "Her",
+        "Its",
+        "Their"
+      ],
+      "a": 0,
+      "l": "A1"
+    },
+    {
+      "q": "Can you give me ___ glass of water, please?",
+      "o": [
+        "a",
+        "an",
+        "the",
+        "some"
+      ],
+      "a": 0,
+      "l": "A1"
+    },
+    {
+      "q": "We ___ to the cinema yesterday evening.",
+      "o": [
+        "go",
+        "went",
+        "gone",
+        "were going"
+      ],
+      "a": 1,
+      "l": "A2"
+    },
+    {
+      "q": "English is ___ than history for me.",
+      "o": [
+        "easier",
+        "more easy",
+        "easiest",
+        "easy"
+      ],
+      "a": 0,
+      "l": "A2"
+    },
+    {
+      "q": "I haven't seen my cousins ___ two years.",
+      "o": [
+        "since",
+        "during",
+        "for",
+        "from"
+      ],
+      "a": 2,
+      "l": "A2"
+    },
+    {
+      "q": "If you don't hurry, we ___ the flight.",
+      "o": [
+        "miss",
+        "will miss",
+        "missed",
+        "are missing"
+      ],
+      "a": 1,
+      "l": "A2"
+    },
+    {
+      "q": "You ___ park here. It is strictly forbidden.",
+      "o": [
+        "mustn't",
+        "don't have to",
+        "needn't",
+        "couldn't"
+      ],
+      "a": 0,
+      "l": "A2"
+    },
+    {
+      "q": "While I ___ dinner, the electricity went off.",
+      "o": [
+        "cooked",
+        "was cooking",
+        "am cooking",
+        "cook"
+      ],
+      "a": 1,
+      "l": "A2"
+    },
+    {
+      "q": "She asked me where I ___ my holiday.",
+      "o": [
+        "spent",
+        "had spent",
+        "spend",
+        "have spent"
+      ],
+      "a": 1,
+      "l": "B1"
+    },
+    {
+      "q": "I've lived in this town ___ 2018.",
+      "o": [
+        "for",
+        "since",
+        "at",
+        "in"
+      ],
+      "a": 1,
+      "l": "B1"
+    },
+    {
+      "q": "The new airport ___ by the president next week.",
+      "o": [
+        "is opened",
+        "will be opened",
+        "opens",
+        "was opened"
+      ],
+      "a": 1,
+      "l": "B1"
+    },
+    {
+      "q": "If I ___ a million dollars, I would travel around the globe.",
+      "o": [
+        "win",
+        "won",
+        "have won",
+        "would win"
+      ],
+      "a": 1,
+      "l": "B1"
+    },
+    {
+      "q": "He enjoys ___ acoustic guitar in the evenings.",
+      "o": [
+        "play",
+        "to play",
+        "playing",
+        "played"
+      ],
+      "a": 2,
+      "l": "B1"
+    },
+    {
+      "q": "You don't look well. You ___ see a doctor.",
+      "o": [
+        "should",
+        "would",
+        "might",
+        "shall"
+      ],
+      "a": 0,
+      "l": "B1"
+    },
+    {
+      "q": "I look forward ___ from you soon.",
+      "o": [
+        "to hear",
+        "hearing",
+        "to hearing",
+        "hear"
+      ],
+      "a": 2,
+      "l": "B1"
+    },
+    {
+      "q": "He left the room without ___ goodbye.",
+      "o": [
+        "say",
+        "saying",
+        "to say",
+        "said"
+      ],
+      "a": 1,
+      "l": "B1"
+    },
+    {
+      "q": "By the time the guests arrived, Sarah ___ cooking.",
+      "o": [
+        "finished",
+        "had finished",
+        "has finished",
+        "was finishing"
+      ],
+      "a": 1,
+      "l": "B1"
+    },
+    {
+      "q": "That is the museum ___ we saw the famous sculpture.",
+      "o": [
+        "which",
+        "where",
+        "that",
+        "whose"
+      ],
+      "a": 1,
+      "l": "B1"
+    },
+    {
+      "q": "She isn't old enough ___ driving lessons yet.",
+      "o": [
+        "start",
+        "starting",
+        "to start",
+        "started"
+      ],
+      "a": 2,
+      "l": "B1"
+    },
+    {
+      "q": "I am not used ___ on the left side of the road.",
+      "o": [
+        "to drive",
+        "drive",
+        "to driving",
+        "driving"
+      ],
+      "a": 2,
+      "l": "B1"
+    },
+    {
+      "q": "Neither Peter ___ his friends were present.",
+      "o": [
+        "or",
+        "nor",
+        "and",
+        "also"
+      ],
+      "a": 1,
+      "l": "B1"
+    },
+    {
+      "q": "He apologised ___ being late to the interview.",
+      "o": [
+        "for",
+        "about",
+        "on",
+        "with"
+      ],
+      "a": 0,
+      "l": "B1"
+    },
+    {
+      "q": "If you ___ the tickets earlier, we wouldn't have missed the show.",
+      "o": [
+        "bought",
+        "had bought",
+        "would buy",
+        "have bought"
+      ],
+      "a": 1,
+      "l": "B2"
+    },
+    {
+      "q": "She suggested ___ the meeting until Thursday.",
+      "o": [
+        "to postpone",
+        "postponing",
+        "postpone",
+        "postponed"
+      ],
+      "a": 1,
+      "l": "B2"
+    },
+    {
+      "q": "Hardly ___ through the door when the phone rang.",
+      "o": [
+        "I had walked",
+        "did I walk",
+        "had I walked",
+        "I walked"
+      ],
+      "a": 2,
+      "l": "B2"
+    },
+    {
+      "q": "The suspect denied ___ near the building that night.",
+      "o": [
+        "to be",
+        "being",
+        "been",
+        "having to be"
+      ],
+      "a": 1,
+      "l": "B2"
+    },
+    {
+      "q": "It was ___ cold weather that our pipes froze.",
+      "o": [
+        "so",
+        "such",
+        "such a",
+        "very"
+      ],
+      "a": 1,
+      "l": "B2"
+    },
+    {
+      "q": "Despite ___ hard, he could not pass the qualification exam.",
+      "o": [
+        "he worked",
+        "working",
+        "to work",
+        "of working"
+      ],
+      "a": 1,
+      "l": "B2"
+    },
+    {
+      "q": "I wish I ___ more attention during the physics lecture.",
+      "o": [
+        "paid",
+        "had paid",
+        "would pay",
+        "have paid"
+      ],
+      "a": 1,
+      "l": "B2"
+    },
+    {
+      "q": "You ___ have seen Jack yesterday; he is in Tokyo all week!",
+      "o": [
+        "couldn't",
+        "mustn't",
+        "shouldn't",
+        "needn't"
+      ],
+      "a": 0,
+      "l": "B2"
+    },
+    {
+      "q": "The manager made all the employees ___ overtime.",
+      "o": [
+        "work",
+        "to work",
+        "working",
+        "worked"
+      ],
+      "a": 0,
+      "l": "B2"
+    },
+    {
+      "q": "I'd rather you ___ smoke inside the house.",
+      "o": [
+        "don't",
+        "didn't",
+        "not",
+        "won't"
+      ],
+      "a": 1,
+      "l": "B2"
+    },
+    {
+      "q": "The building is believed ___ in the fourteenth century.",
+      "o": [
+        "to build",
+        "to have been built",
+        "having been built",
+        "building"
+      ],
+      "a": 1,
+      "l": "B2"
+    },
+    {
+      "q": "He didn't come to the dinner, ___ disappointed all of us.",
+      "o": [
+        "that",
+        "which",
+        "what",
+        "why"
+      ],
+      "a": 1,
+      "l": "B2"
+    },
+    {
+      "q": "Not only ___ late, but he also forgot the key documents.",
+      "o": [
+        "he arrived",
+        "did he arrive",
+        "was he arrived",
+        "he did arrive"
+      ],
+      "a": 1,
+      "l": "B2"
+    },
+    {
+      "q": "By this time next month, we ___ our diploma project.",
+      "o": [
+        "will finish",
+        "will have finished",
+        "finish",
+        "are finishing"
+      ],
+      "a": 1,
+      "l": "B2"
+    },
+    {
+      "q": "Had I known about the schedule change, I ___ you immediately.",
+      "o": [
+        "would inform",
+        "would have informed",
+        "informed",
+        "had informed"
+      ],
+      "a": 1,
+      "l": "C1"
+    },
+    {
+      "q": "Little ___ how much effort had gone into the surprise party.",
+      "o": [
+        "did she realize",
+        "she realized",
+        "she did realize",
+        "was she realized"
+      ],
+      "a": 0,
+      "l": "C1"
+    },
+    {
+      "q": "The government is taking measures to curb ___ inflation.",
+      "o": [
+        "rising",
+        "arising",
+        "raising",
+        "raising up"
+      ],
+      "a": 0,
+      "l": "C1"
+    },
+    {
+      "q": "It is imperative that every candidate ___ on time.",
+      "o": [
+        "is",
+        "be",
+        "will be",
+        "to be"
+      ],
+      "a": 1,
+      "l": "C1"
+    },
+    {
+      "q": "The results of the laboratory test are entirely ___ with our theory.",
+      "o": [
+        "consistent",
+        "insistent",
+        "persistent",
+        "resistant"
+      ],
+      "a": 0,
+      "l": "C1"
+    },
+    {
+      "q": "No sooner had the curtain fallen ___ the applause erupted.",
+      "o": [
+        "when",
+        "than",
+        "then",
+        "that"
+      ],
+      "a": 1,
+      "l": "C1"
+    },
+    {
+      "q": "She is said ___ working on a groundbreaking new novel.",
+      "o": [
+        "to be",
+        "being",
+        "be",
+        "that she is"
+      ],
+      "a": 0,
+      "l": "C1"
+    },
+    {
+      "q": "Under no circumstances ___ the safety equipment be removed.",
+      "o": [
+        "should",
+        "ought",
+        "must to",
+        "can to"
+      ],
+      "a": 0,
+      "l": "C1"
+    },
+    {
+      "q": "The manager commended the team on their ___ dedication.",
+      "o": [
+        "unwavering",
+        "unshakable",
+        "relentless",
+        "unceasing"
+      ],
+      "a": 0,
+      "l": "C1"
+    },
+    {
+      "q": "We need to weigh up the pros and ___ before deciding.",
+      "o": [
+        "cons",
+        "pluses",
+        "minuses",
+        "contras"
+      ],
+      "a": 0,
+      "l": "C1"
+    },
+    {
+      "q": "He took exception ___ the way he was addressed by the interviewer.",
+      "o": [
+        "to",
+        "with",
+        "for",
+        "at"
+      ],
+      "a": 0,
+      "l": "C1"
+    },
+    {
+      "q": "Only after the audit was concluded ___ the true figures revealed.",
+      "o": [
+        "were",
+        "did",
+        "have",
+        "are"
+      ],
+      "a": 0,
+      "l": "C1"
+    },
+    {
+      "q": "His remarkable stamina stood him in good ___ during the marathon.",
+      "o": [
+        "stead",
+        "standing",
+        "state",
+        "step"
+      ],
+      "a": 0,
+      "l": "C1"
+    },
+    {
+      "q": "The politician's argument was fundamentally ___ and lacked logic.",
+      "o": [
+        "flawed",
+        "stained",
+        "bruised",
+        "tarnished"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "Seldom ___ such an exhilarating performance on Broadway.",
+      "o": [
+        "have I witnessed",
+        "I have witnessed",
+        "did I witness",
+        "was I witnessing"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "The CEO made a ___ apology for the company's environmental failure.",
+      "o": [
+        "contrite",
+        "candid",
+        "concise",
+        "cursory"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "The new legislation will come into ___ at the start of the fiscal year.",
+      "o": [
+        "force",
+        "impact",
+        "action",
+        "power"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "Her sarcastic remarks added fuel to the ___.",
+      "o": [
+        "fire",
+        "flames",
+        "furnace",
+        "heat"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "The research paper aims to ___ light on medieval trade routes.",
+      "o": [
+        "shed",
+        "cast",
+        "throw",
+        "shine"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "It remains to be ___ whether the economic reform will succeed.",
+      "o": [
+        "seen",
+        "proved",
+        "known",
+        "tested"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "He was utterly ___ by the intricate paradox.",
+      "o": [
+        "baffled",
+        "frustrated",
+        "disturbed",
+        "disconcerted"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "The artist managed to ___ the subtle melancholy of the autumn landscape.",
+      "o": [
+        "convey",
+        "channel",
+        "conduct",
+        "transmit"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "The evidence presented in court was wholly ___.",
+      "o": [
+        "inconclusive",
+        "incompetent",
+        "inadequate",
+        "inaccurate"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "She had a nagging suspicion that something was ___.",
+      "o": [
+        "amiss",
+        "awry",
+        "afoul",
+        "apart"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "The company's sudden collapse sent ___ through the stock market.",
+      "o": [
+        "shockwaves",
+        "earthquakes",
+        "tremors",
+        "ripples"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "His eloquent discourse held the audience ___.",
+      "o": [
+        "spellbound",
+        "captivated",
+        "mesmerized",
+        "entranced"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "The scientific consensus is that climate change is an ___ reality.",
+      "o": [
+        "incontrovertible",
+        "undoubtful",
+        "unanswerable",
+        "irreversible"
+      ],
+      "a": 0,
+      "l": "C2"
+    },
+    {
+      "q": "Were it not for your generous assistance, we ___ our deadline.",
+      "o": [
+        "would have missed",
+        "missed",
+        "had missed",
+        "would miss"
+      ],
+      "a": 0,
+      "l": "C2"
+    }
+  ],
+  "levelTests": {
+    "A1": [
+      [
+        "Hello, my name ___ John.",
+        [
+          "is",
+          "am",
+          "are",
+          "be"
+        ],
+        0
+      ],
+      [
+        "I ___ from Uzbekistan.",
+        [
+          "am",
+          "is",
+          "are",
+          "live"
+        ],
+        0
+      ],
+      [
+        "___ you speak English?",
+        [
+          "Do",
+          "Are",
+          "Is",
+          "Does"
+        ],
+        0
+      ],
+      [
+        "She ___ two brothers and one sister.",
+        [
+          "has",
+          "have",
+          "is having",
+          "haves"
+        ],
+        0
+      ],
+      [
+        "We ___ dinner at 8 pm every day.",
+        [
+          "eat",
+          "eats",
+          "eating",
+          "are eat"
+        ],
+        0
+      ],
+      [
+        "There ___ a big apple on the plate.",
+        [
+          "is",
+          "are",
+          "am",
+          "be"
+        ],
+        0
+      ],
+      [
+        "What color ___ your car?",
+        [
+          "is",
+          "are",
+          "do",
+          "does"
+        ],
+        0
+      ],
+      [
+        "These are my ___ pens.",
+        [
+          "friends",
+          "friend's",
+          "friends's",
+          "friend"
+        ],
+        1
+      ],
+      [
+        "He ___ not drink coffee in the evening.",
+        [
+          "does",
+          "do",
+          "is",
+          "are"
+        ],
+        0
+      ],
+      [
+        "Where ___ the keys?",
+        [
+          "are",
+          "is",
+          "am",
+          "be"
+        ],
+        0
+      ],
+      [
+        "I have ___ orange in my bag.",
+        [
+          "an",
+          "a",
+          "the",
+          "some"
+        ],
+        0
+      ],
+      [
+        "They ___ playing tennis in the park.",
+        [
+          "are",
+          "is",
+          "am",
+          "do"
+        ],
+        0
+      ],
+      [
+        "This watch is very ___. It costs 500 dollars.",
+        [
+          "expensive",
+          "cheap",
+          "fast",
+          "small"
+        ],
+        0
+      ],
+      [
+        "Can you ___ slowly, please?",
+        [
+          "speak",
+          "speaking",
+          "speaks",
+          "to speak"
+        ],
+        0
+      ],
+      [
+        "The school is ___ the bank and the hospital.",
+        [
+          "between",
+          "under",
+          "at",
+          "on"
+        ],
+        0
+      ],
+      [
+        "My mother is a doctor. ___ works in a hospital.",
+        [
+          "She",
+          "He",
+          "They",
+          "It"
+        ],
+        0
+      ],
+      [
+        "What time do you usually ___ up?",
+        [
+          "wake",
+          "stand",
+          "sleep",
+          "go"
+        ],
+        0
+      ],
+      [
+        "We go to school ___ foot.",
+        [
+          "on",
+          "by",
+          "with",
+          "at"
+        ],
+        0
+      ],
+      [
+        "The opposite of cold is...",
+        [
+          "hot",
+          "warm",
+          "wet",
+          "dry"
+        ],
+        0
+      ],
+      [
+        "Today is Monday, tomorrow is ___.",
+        [
+          "Tuesday",
+          "Wednesday",
+          "Sunday",
+          "Thursday"
+        ],
+        0
+      ]
+    ],
+    "A2": [
+      [
+        "Where ___ you go on holiday last summer?",
+        [
+          "did",
+          "do",
+          "were",
+          "have"
+        ],
+        0
+      ],
+      [
+        "She ___ an email to her boss yesterday.",
+        [
+          "sent",
+          "send",
+          "sended",
+          "is sending"
+        ],
+        0
+      ],
+      [
+        "This phone is ___ than that one.",
+        [
+          "cheaper",
+          "cheap",
+          "more cheap",
+          "cheapest"
+        ],
+        0
+      ],
+      [
+        "I have known him ___ five months.",
+        [
+          "for",
+          "since",
+          "during",
+          "from"
+        ],
+        0
+      ],
+      [
+        "We are ___ to visit our grandparents this weekend.",
+        [
+          "going",
+          "go",
+          "went",
+          "goes"
+        ],
+        0
+      ],
+      [
+        "You ___ stop when the traffic light is red.",
+        [
+          "must",
+          "can",
+          "may",
+          "might"
+        ],
+        0
+      ],
+      [
+        "While I was reading, my brother ___ computer games.",
+        [
+          "was playing",
+          "played",
+          "plays",
+          "is playing"
+        ],
+        0
+      ],
+      [
+        "Have you ever ___ to London?",
+        [
+          "been",
+          "gone",
+          "went",
+          "be"
+        ],
+        0
+      ],
+      [
+        "If it rains, we ___ inside.",
+        [
+          "will stay",
+          "stayed",
+          "stay",
+          "staying"
+        ],
+        0
+      ],
+      [
+        "I don't have ___ money left in my wallet.",
+        [
+          "any",
+          "some",
+          "many",
+          "no"
+        ],
+        0
+      ],
+      [
+        "He runs very ___.",
+        [
+          "quickly",
+          "quick",
+          "more quick",
+          "quicker"
+        ],
+        0
+      ],
+      [
+        "Who is the ___ student in your class?",
+        [
+          "tallest",
+          "taller",
+          "most tall",
+          "tall"
+        ],
+        0
+      ],
+      [
+        "I'd like to ___ a hotel room for two nights.",
+        [
+          "book",
+          "buy",
+          "make",
+          "order"
+        ],
+        0
+      ],
+      [
+        "Excuse me, could you ___ me the way to the station?",
+        [
+          "tell",
+          "say",
+          "speak",
+          "talk"
+        ],
+        0
+      ],
+      [
+        "I was tired, ___ I went to bed early.",
+        [
+          "so",
+          "because",
+          "although",
+          "but"
+        ],
+        0
+      ],
+      [
+        "She ___ to like vegetables when she was small.",
+        [
+          "didn't use",
+          "used not",
+          "not used",
+          "was not"
+        ],
+        0
+      ],
+      [
+        "The flight was delayed ___ of thick fog.",
+        [
+          "because",
+          "due",
+          "as",
+          "since"
+        ],
+        0
+      ],
+      [
+        "Don't forget to ___ off your phone in class.",
+        [
+          "turn",
+          "close",
+          "shut",
+          "put"
+        ],
+        0
+      ],
+      [
+        "I promise I ___ tell anyone your secret.",
+        [
+          "won't",
+          "don't",
+          "am not",
+          "wouldn't"
+        ],
+        0
+      ],
+      [
+        "He has a bad headache, so he took some ___.",
+        [
+          "painkillers",
+          "bandages",
+          "vitamins",
+          "creams"
+        ],
+        0
+      ]
+    ],
+    "B1": [
+      [
+        "I have ___ finished my project; here it is!",
+        [
+          "just",
+          "yet",
+          "ever",
+          "still"
+        ],
+        0
+      ],
+      [
+        "If I ___ you, I would consult an expert.",
+        [
+          "were",
+          "am",
+          "was being",
+          "will be"
+        ],
+        0
+      ],
+      [
+        "The historical bridge ___ in 1892.",
+        [
+          "was constructed",
+          "constructed",
+          "is constructed",
+          "has constructed"
+        ],
+        0
+      ],
+      [
+        "She asked me where I ___ my childhood.",
+        [
+          "had spent",
+          "spent",
+          "have spent",
+          "spend"
+        ],
+        0
+      ],
+      [
+        "He denied ___ any classified files.",
+        [
+          "stealing",
+          "to steal",
+          "steal",
+          "stolen"
+        ],
+        0
+      ],
+      [
+        "I am looking forward to ___ you at the conference.",
+        [
+          "meeting",
+          "meet",
+          "met",
+          "have met"
+        ],
+        0
+      ],
+      [
+        "By the time we got to the cinema, the movie ___.",
+        [
+          "had already started",
+          "started",
+          "has started",
+          "was starting"
+        ],
+        0
+      ],
+      [
+        "You ___ bring an umbrella; the forecast says sunshine all day.",
+        [
+          "don't need to",
+          "mustn't",
+          "can't",
+          "should"
+        ],
+        0
+      ],
+      [
+        "She is the architect ___ designed our university building.",
+        [
+          "who",
+          "which",
+          "whose",
+          "where"
+        ],
+        0
+      ],
+      [
+        "I'm not used to ___ in such cold weather.",
+        [
+          "living",
+          "live",
+          "lived",
+          "life"
+        ],
+        0
+      ],
+      [
+        "Neither the teacher nor the students ___ present yesterday.",
+        [
+          "were",
+          "was",
+          "are",
+          "is"
+        ],
+        0
+      ],
+      [
+        "He apologised ___ breaking my favorite mug.",
+        [
+          "for",
+          "about",
+          "of",
+          "to"
+        ],
+        0
+      ],
+      [
+        "The company will ___ 50 new software engineers this year.",
+        [
+          "hire",
+          "fire",
+          "resign",
+          "quit"
+        ],
+        0
+      ],
+      [
+        "The concert was ___ because of torrential rain.",
+        [
+          "called off",
+          "put on",
+          "taken off",
+          "set up"
+        ],
+        0
+      ],
+      [
+        "If we set off early, we can ___ the heavy morning traffic.",
+        [
+          "avoid",
+          "escape",
+          "miss",
+          "prevent"
+        ],
+        0
+      ],
+      [
+        "The doctor advised him to cut ___ on fatty food.",
+        [
+          "down",
+          "off",
+          "up",
+          "in"
+        ],
+        0
+      ],
+      [
+        "I couldn't help ___ when the clown slipped.",
+        [
+          "laughing",
+          "to laugh",
+          "laugh",
+          "laughed"
+        ],
+        0
+      ],
+      [
+        "His speech was so ___ that half the audience fell asleep.",
+        [
+          "boring",
+          "bored",
+          "bore",
+          "boredom"
+        ],
+        0
+      ],
+      [
+        "She managed to pass the driving test on her second ___.",
+        [
+          "attempt",
+          "trial",
+          "shot",
+          "practice"
+        ],
+        0
+      ],
+      [
+        "Do you mind if I ___ the window?",
+        [
+          "open",
+          "opened",
+          "to open",
+          "opening"
+        ],
+        0
+      ]
+    ],
+    "B2": [
+      [
+        "Had you told me earlier, I ___ the reservation.",
+        [
+          "would have changed",
+          "will change",
+          "changed",
+          "had changed"
+        ],
+        0
+      ],
+      [
+        "Hardly ___ home when the thunderstorm struck.",
+        [
+          "had I arrived",
+          "did I arrive",
+          "I arrived",
+          "I had arrived"
+        ],
+        0
+      ],
+      [
+        "The novel is rumored ___ into three languages.",
+        [
+          "to have been translated",
+          "having been translated",
+          "translated",
+          "translating"
+        ],
+        0
+      ],
+      [
+        "She suggested that he ___ the job offer immediately.",
+        [
+          "accept",
+          "accepted",
+          "accepts",
+          "will accept"
+        ],
+        0
+      ],
+      [
+        "It was ___ fascinating lecture that no one looked at the clock.",
+        [
+          "such a",
+          "so",
+          "too",
+          "very"
+        ],
+        0
+      ],
+      [
+        "Despite ___ all the instructions, the device malfunctioned.",
+        [
+          "following",
+          "he followed",
+          "to follow",
+          "of following"
+        ],
+        0
+      ],
+      [
+        "I'd rather you ___ your shoes at the entrance.",
+        [
+          "left",
+          "leave",
+          "have left",
+          "leaving"
+        ],
+        0
+      ],
+      [
+        "You ___ have seen him in Paris; he was in Madrid all weekend.",
+        [
+          "couldn't",
+          "shouldn't",
+          "mustn't",
+          "needn't"
+        ],
+        0
+      ],
+      [
+        "Not only ___ the tournament, but she also set a world record.",
+        [
+          "did she win",
+          "she won",
+          "she did win",
+          "was she won"
+        ],
+        0
+      ],
+      [
+        "He was accused of ___ official documents.",
+        [
+          "forging",
+          "fabricate",
+          "inventing",
+          "duplicating"
+        ],
+        0
+      ],
+      [
+        "The new tax policy provoked ___ criticism from business leaders.",
+        [
+          "fierce",
+          "dense",
+          "thick",
+          "rough"
+        ],
+        0
+      ],
+      [
+        "We must take these environmental factors into ___.",
+        [
+          "account",
+          "mind",
+          "thought",
+          "reason"
+        ],
+        0
+      ],
+      [
+        "Her explanation was rather ___, causing confusion.",
+        [
+          "ambiguous",
+          "explicit",
+          "lucid",
+          "transparent"
+        ],
+        0
+      ],
+      [
+        "The team made a ___ breakthrough in quantum computing.",
+        [
+          "significant",
+          "trivial",
+          "negligible",
+          "marginal"
+        ],
+        0
+      ],
+      [
+        "You should ___ the habit of checking your work before submission.",
+        [
+          "cultivate",
+          "fabricate",
+          "generate",
+          "breed"
+        ],
+        0
+      ],
+      [
+        "By this time next year, Sarah ___ her doctoral thesis.",
+        [
+          "will have submitted",
+          "submits",
+          "will submit",
+          "is submitting"
+        ],
+        0
+      ],
+      [
+        "He didn't turn up for the interview, ___ surprised everyone.",
+        [
+          "which",
+          "that",
+          "what",
+          "who"
+        ],
+        0
+      ],
+      [
+        "I wish I ___ harder for the entrance examination.",
+        [
+          "had studied",
+          "studied",
+          "would study",
+          "have studied"
+        ],
+        0
+      ],
+      [
+        "The project was delayed ___ to unforeseen technical hurdles.",
+        [
+          "due",
+          "owing",
+          "because",
+          "thanks"
+        ],
+        0
+      ],
+      [
+        "She is capable of ___ complex problems under severe pressure.",
+        [
+          "resolving",
+          "solve",
+          "solution",
+          "resolutions"
+        ],
+        0
+      ]
+    ],
+    "C1": [
+      [
+        "Under no circumstances ___ confidential client data be shared.",
+        [
+          "should",
+          "must to",
+          "can to",
+          "ought"
+        ],
+        0
+      ],
+      [
+        "Seldom ___ such an inspiring speech delivered with such humility.",
+        [
+          "have I heard",
+          "I have heard",
+          "did I hear",
+          "was I hearing"
+        ],
+        0
+      ],
+      [
+        "It is imperative that every participant ___ the guidelines.",
+        [
+          "observe",
+          "observes",
+          "will observe",
+          "observed"
+        ],
+        0
+      ],
+      [
+        "The findings of the investigation were entirely ___ with our theory.",
+        [
+          "consistent",
+          "insistent",
+          "persistent",
+          "resistant"
+        ],
+        0
+      ],
+      [
+        "No sooner had the keynote begun ___ the power went out.",
+        [
+          "than",
+          "when",
+          "then",
+          "that"
+        ],
+        0
+      ],
+      [
+        "He took strong exception ___ the cynical tone of the review.",
+        [
+          "to",
+          "with",
+          "at",
+          "against"
+        ],
+        0
+      ],
+      [
+        "The novel offers an ___ glimpse into colonial aristocratic life.",
+        [
+          "insightful",
+          "sightful",
+          "oversight",
+          "foresight"
+        ],
+        0
+      ],
+      [
+        "The new legislation is scheduled to come into ___ on January 1st.",
+        [
+          "force",
+          "action",
+          "practice",
+          "influence"
+        ],
+        0
+      ],
+      [
+        "His extensive experience in diplomacy stood him in good ___.",
+        [
+          "stead",
+          "standing",
+          "state",
+          "place"
+        ],
+        0
+      ],
+      [
+        "The board members were unanimous in their decision to ___ the proposal.",
+        [
+          "endorse",
+          "disparage",
+          "condone",
+          "dissent"
+        ],
+        0
+      ],
+      [
+        "She had a ___ feeling that something was about to go wrong.",
+        [
+          "nagging",
+          "baking",
+          "poking",
+          "scratching"
+        ],
+        0
+      ],
+      [
+        "The witness gave a ___ account of the bank robbery.",
+        [
+          "vivid",
+          "flamboyant",
+          "blurred",
+          "dull"
+        ],
+        0
+      ],
+      [
+        "Her persuasive argument managed to ___ the skeptics.",
+        [
+          "sway",
+          "tilt",
+          "swerve",
+          "pivot"
+        ],
+        0
+      ],
+      [
+        "He was completely ___ by the contradictory clues.",
+        [
+          "perplexed",
+          "assured",
+          "certain",
+          "determined"
+        ],
+        0
+      ],
+      [
+        "The committee agreed to ___ the matter until further notice.",
+        [
+          "shelve",
+          "store",
+          "pack",
+          "deposit"
+        ],
+        0
+      ],
+      [
+        "The scientific community was ___ by the revolutionary discovery.",
+        [
+          "astounded",
+          "flattened",
+          "collapsed",
+          "crushed"
+        ],
+        0
+      ],
+      [
+        "She worked tirelessly to ___ the gap between science and public policy.",
+        [
+          "bridge",
+          "cross",
+          "span",
+          "link"
+        ],
+        0
+      ],
+      [
+        "Only after meticulous inspection ___ the structural defect detected.",
+        [
+          "was",
+          "did",
+          "has",
+          "is"
+        ],
+        0
+      ],
+      [
+        "The economic forecast remains ___, according to leading analysts.",
+        [
+          "bleak",
+          "drab",
+          "bare",
+          "hollow"
+        ],
+        0
+      ],
+      [
+        "His charismatic personality gave him a distinct ___ over his rivals.",
+        [
+          "edge",
+          "blade",
+          "rim",
+          "fringe"
+        ],
+        0
+      ]
+    ],
+    "C2": [
+      [
+        "The diplomat's statement was so ___ that reporters couldn't discern his stance.",
+        [
+          "equivocal",
+          "explicit",
+          "unequivocal",
+          "lucid"
+        ],
+        0
+      ],
+      [
+        "The critic's review was filled with scathing ___ and caustic wit.",
+        [
+          "invective",
+          "accolade",
+          "approbation",
+          "eulogy"
+        ],
+        0
+      ],
+      [
+        "Her scholarly analysis was praised for its ___ and intellectual rigor.",
+        [
+          "erudition",
+          "ignorance",
+          "naivety",
+          "pedantry"
+        ],
+        0
+      ],
+      [
+        "The CEO was forced to resign following accusations of financial ___.",
+        [
+          "impropriety",
+          "probity",
+          "rectitude",
+          "decorum"
+        ],
+        0
+      ],
+      [
+        "The philosophical treatise sought to reconcile two seemingly ___ doctrines.",
+        [
+          "irreconcilable",
+          "analogous",
+          "congruent",
+          "harmonic"
+        ],
+        0
+      ],
+      [
+        "The author managed to depict the ___ fleeting moments of childhood with grace.",
+        [
+          "ephemeral",
+          "perennial",
+          "everlasting",
+          "immutable"
+        ],
+        0
+      ],
+      [
+        "His eloquence was such that he could make the most banal platitudes sound ___.",
+        [
+          "profound",
+          "shallow",
+          "vacuous",
+          "puerile"
+        ],
+        0
+      ],
+      [
+        "The government's response was characterized by inertia and bureaucratic ___.",
+        [
+          "torpor",
+          "zeal",
+          "alacrity",
+          "celerity"
+        ],
+        0
+      ],
+      [
+        "The researcher demonstrated a ___ disregard for established ethical standards.",
+        [
+          "flagrant",
+          "subtle",
+          "covert",
+          "modest"
+        ],
+        0
+      ],
+      [
+        "In hindsight, his optimistic predictions proved entirely ___.",
+        [
+          "chimerical",
+          "empirical",
+          "substantiated",
+          "verifiable"
+        ],
+        0
+      ],
+      [
+        "The artist was renowned for his ability to ___ light and shadow.",
+        [
+          "juxtapose",
+          "coalesce",
+          "merge",
+          "diffuse"
+        ],
+        0
+      ],
+      [
+        "She handled the diplomatic crisis with consummate ___ and poise.",
+        [
+          "aplomb",
+          "clumsiness",
+          "hesitance",
+          "ineptitude"
+        ],
+        0
+      ],
+      [
+        "The evidence submitted in defense was dismissed as wholly ___.",
+        [
+          "specious",
+          "valid",
+          "irrefutable",
+          "watertight"
+        ],
+        0
+      ],
+      [
+        "The pervasive sense of nostalgia lent the novel an ___ beauty.",
+        [
+          "haunting",
+          "repellent",
+          "garish",
+          "insipid"
+        ],
+        0
+      ],
+      [
+        "His sudden reversal of policy was condemned as an act of blatant ___.",
+        [
+          "opportunism",
+          "altruism",
+          "philanthropy",
+          "fidelity"
+        ],
+        0
+      ],
+      [
+        "The scholar warned against the perils of intellectual ___.",
+        [
+          "complacency",
+          "diligence",
+          "rigor",
+          "scrutiny"
+        ],
+        0
+      ],
+      [
+        "The historical account shed light on the ___ nature of feudal politics.",
+        [
+          "machiavellian",
+          "benevolent",
+          "candid",
+          "innocuous"
+        ],
+        0
+      ],
+      [
+        "The composer achieved international renown through his ___ orchestrations.",
+        [
+          "masterly",
+          "pedestrian",
+          "mediocre",
+          "crude"
+        ],
+        0
+      ],
+      [
+        "Were it not for his ___ memory, the details would have been lost to posterity.",
+        [
+          "prodigious",
+          "fleeting",
+          "sparse",
+          "fickle"
+        ],
+        0
+      ],
+      [
+        "The speaker's rhetoric was replete with ornate flourishes and classical ___.",
+        [
+          "allusions",
+          "illusions",
+          "delusions",
+          "collusions"
+        ],
+        0
+      ]
+    ]
+  },
+  "vocab": [
+    [
+      "A1",
+      "apple",
+      "olma",
+      "I eat a fresh apple every day."
+    ],
+    [
+      "A1",
+      "house",
+      "uy, xonadon",
+      "My house is near the park."
+    ],
+    [
+      "A1",
+      "friend",
+      "do'st",
+      "She is my best friend."
+    ],
+    [
+      "A1",
+      "water",
+      "suv",
+      "Drink plenty of water every day."
+    ],
+    [
+      "A1",
+      "book",
+      "kitob",
+      "This grammar book is very useful."
+    ],
+    [
+      "A1",
+      "happy",
+      "xursand, baxtiyor",
+      "We are happy to meet you."
+    ],
+    [
+      "A1",
+      "family",
+      "oila",
+      "My family lives in Tashkent."
+    ],
+    [
+      "A1",
+      "morning",
+      "ertalab, tong",
+      "I wake up early in the morning."
+    ],
+    [
+      "A1",
+      "school",
+      "maktab",
+      "The children go to school by bus."
+    ],
+    [
+      "A1",
+      "city",
+      "shahar",
+      "Samarkand is an ancient city."
+    ],
+    [
+      "A1",
+      "breakfast",
+      "nonushta",
+      "We have breakfast at eight."
+    ],
+    [
+      "A1",
+      "brother",
+      "aka, uka",
+      "My brother plays football."
+    ],
+    [
+      "A1",
+      "sister",
+      "opa, singil",
+      "My sister is a student."
+    ],
+    [
+      "A1",
+      "car",
+      "mashina, avtomobil",
+      "His car is white and clean."
+    ],
+    [
+      "A1",
+      "teacher",
+      "o'qituvchi",
+      "Our teacher explains lessons clearly."
+    ],
+    [
+      "A2",
+      "weather",
+      "ob-havo",
+      "The weather is lovely and warm today."
+    ],
+    [
+      "A2",
+      "holiday",
+      "ta'til, bayram",
+      "We go to the mountains during the holiday."
+    ],
+    [
+      "A2",
+      "borrow",
+      "qarzga olmoq, vaqtincha olmoq",
+      "Can I borrow your pen for a minute?"
+    ],
+    [
+      "A2",
+      "crowded",
+      "gavjum, odam ko'p",
+      "The market is very crowded on Sundays."
+    ],
+    [
+      "A2",
+      "invite",
+      "taklif qilmoq",
+      "I want to invite you to my birthday party."
+    ],
+    [
+      "A2",
+      "cheap",
+      "arzon",
+      "This shirt is very cheap and good quality."
+    ],
+    [
+      "A2",
+      "journey",
+      "sayohat, yo'l",
+      "Our train journey was safe and comfortable."
+    ],
+    [
+      "A2",
+      "healthy",
+      "sog'lom",
+      "Vegetables keep your body healthy."
+    ],
+    [
+      "A2",
+      "accident",
+      "tasodif, falokat",
+      "Drive carefully to avoid an accident."
+    ],
+    [
+      "A2",
+      "direction",
+      "yo'nalish, yo'l-yo'riq",
+      "Could you show me the direction to the museum?"
+    ],
+    [
+      "A2",
+      "expensive",
+      "qimmat",
+      "This luxury watch is too expensive."
+    ],
+    [
+      "A2",
+      "medicine",
+      "dori-darmon",
+      "Take this medicine after meals."
+    ],
+    [
+      "A2",
+      "prepare",
+      "tayyorlamoq",
+      "She is preparing for her final exams."
+    ],
+    [
+      "A2",
+      "decision",
+      "qaror",
+      "It was a wise and timely decision."
+    ],
+    [
+      "A2",
+      "neighbor",
+      "qo'shni",
+      "Our neighbor is very kind and helpful."
+    ],
+    [
+      "B1",
+      "achieve",
+      "erishmoq, zabt etmoq",
+      "She worked hard to achieve high results."
+    ],
+    [
+      "B1",
+      "environment",
+      "atrof-muhit, tabiat",
+      "We must protect our environment from pollution."
+    ],
+    [
+      "B1",
+      "experience",
+      "tajriba, malaka",
+      "He has ten years of work experience."
+    ],
+    [
+      "B1",
+      "improve",
+      "yaxshilamoq, rivojlantirmoq",
+      "I want to improve my English speaking."
+    ],
+    [
+      "B1",
+      "opportunity",
+      "imkoniyat, qulay vaziyat",
+      "This internship is a great opportunity."
+    ],
+    [
+      "B1",
+      "reliable",
+      "ishonchli, suyansa bo'ladigan",
+      "He is a very reliable business partner."
+    ],
+    [
+      "B1",
+      "advantage",
+      "afzallik, ustunlik",
+      "Knowing two languages gives a huge advantage."
+    ],
+    [
+      "B1",
+      "challenge",
+      "qiyinchilik, sinov",
+      "Every new project is an exciting challenge."
+    ],
+    [
+      "B1",
+      "confident",
+      "o'ziga ishongan",
+      "Regular practice makes you speak confident."
+    ],
+    [
+      "B1",
+      "solution",
+      "yechim, chorasi",
+      "We found a simple solution to the problem."
+    ],
+    [
+      "B1",
+      "successful",
+      "muvaffaqiyatli",
+      "He is a successful young entrepreneur."
+    ],
+    [
+      "B1",
+      "influence",
+      "ta'sir ko'rsatmoq",
+      "Books influence our worldview deeply."
+    ],
+    [
+      "B1",
+      "encourage",
+      "ilhomlantirmoq, dalda bermoq",
+      "Teachers encourage students to ask questions."
+    ],
+    [
+      "B1",
+      "prevent",
+      "oldini olmoq",
+      "Safety rules help prevent accidents."
+    ],
+    [
+      "B1",
+      "participate",
+      "qatnashmoq, ishtirok etmoq",
+      "Many students participate in the contest."
+    ],
+    [
+      "B2",
+      "approach",
+      "yondashuv, uslub",
+      "We need a fresh approach to language learning."
+    ],
+    [
+      "B2",
+      "consequence",
+      "oqibat, natija",
+      "Every careless action has a serious consequence."
+    ],
+    [
+      "B2",
+      "efficient",
+      "samarali, tezkor",
+      "This new method is extremely efficient."
+    ],
+    [
+      "B2",
+      "significant",
+      "sezilarli, juda muhim",
+      "There was a significant improvement in his scores."
+    ],
+    [
+      "B2",
+      "struggle",
+      "kurashmoq, qiyinchilikka duch kelmoq",
+      "Students often struggle with English prepositions."
+    ],
+    [
+      "B2",
+      "ambiguous",
+      "ikki xil ma'noli, noaniq",
+      "His explanation was rather ambiguous."
+    ],
+    [
+      "B2",
+      "cultivate",
+      "shakllantirmoq, rivojlantirmoq",
+      "You should cultivate good reading habits."
+    ],
+    [
+      "B2",
+      "prosperous",
+      "farovon, gullab-yashnagan",
+      "Tourism made the local economy prosperous."
+    ],
+    [
+      "B2",
+      "compromise",
+      "murosaga kelmoq",
+      "Both sides had to compromise to make peace."
+    ],
+    [
+      "B2",
+      "fundamental",
+      "asosiy, poydevor",
+      "Grammar is fundamental to accurate speech."
+    ],
+    [
+      "B2",
+      "distinguish",
+      "farqlamoq, ajratmoq",
+      "It is hard to distinguish between the two shades."
+    ],
+    [
+      "B2",
+      "inevitable",
+      "muqarrar, qochib bo'lmas",
+      "Technological change is inevitable."
+    ],
+    [
+      "B2",
+      "neglect",
+      "e'tiborsiz qoldirmoq",
+      "Never neglect your physical health."
+    ],
+    [
+      "B2",
+      "remarkable",
+      "ajoyib, diqqatga sazovor",
+      "She made remarkable progress in three months."
+    ],
+    [
+      "B2",
+      "subtle",
+      "nozik, arang seziladigan",
+      "There is a subtle difference in their meanings."
+    ],
+    [
+      "C1",
+      "comprehensive",
+      "har tomonlama, to'liq",
+      "He wrote a comprehensive academic report."
+    ],
+    [
+      "C1",
+      "undermine",
+      "putur yetkazmoq, zaiflashtirmoq",
+      "False rumors can undermine mutual trust."
+    ],
+    [
+      "C1",
+      "reluctant",
+      "istamaydigan, ikkilanuvchi",
+      "He was reluctant to share his secret notes."
+    ],
+    [
+      "C1",
+      "scrutinize",
+      "sinchiklab o'rganmoq",
+      "Auditors scrutinize every single receipt."
+    ],
+    [
+      "C1",
+      "plausible",
+      "ishonarli, aqlga sig'adigan",
+      "That sounds like a plausible explanation."
+    ],
+    [
+      "C1",
+      "advocate",
+      "tarafdor bo'lmoq, yoqlamoq",
+      "She advocates for equal educational rights."
+    ],
+    [
+      "C1",
+      "deteriorate",
+      "yomonlashmoq, aynimoq",
+      "His eyesight began to deteriorate rapidly."
+    ],
+    [
+      "C1",
+      "intricate",
+      "murakkab, chigal",
+      "The ancient carpet had an intricate pattern."
+    ],
+    [
+      "C1",
+      "paramount",
+      "birlamchi, eng oliy darajadagi",
+      "Quality is of paramount importance in our work."
+    ],
+    [
+      "C1",
+      "endorse",
+      "tasdiqlamoq, qo'llab-quvvatlamoq",
+      "The committee refused to endorse the proposal."
+    ],
+    [
+      "C1",
+      "perplexed",
+      "gangigan, hayron qolgan",
+      "The detective was perplexed by the clues."
+    ],
+    [
+      "C1",
+      "bleak",
+      "qorong'u, umidsiz",
+      "The economic outlook looks somewhat bleak."
+    ],
+    [
+      "C1",
+      "sway",
+      "fikrini o'zgartirmoq, og'dirmoq",
+      "Her passionate speech managed to sway the crowd."
+    ],
+    [
+      "C1",
+      "astounded",
+      "lol qolgan, hayratda",
+      "We were astounded by his miraculous recovery."
+    ],
+    [
+      "C1",
+      "tenacious",
+      "qat'iyatli, bo'sh kelmaydigan",
+      "A tenacious learner will always reach mastery."
+    ],
+    [
+      "C2",
+      "ubiquitous",
+      "hamma joyda hoziru nozir",
+      "Smartphones have become ubiquitous in daily life."
+    ],
+    [
+      "C2",
+      "ephemeral",
+      "o'tkinchi, lahzalik",
+      "Internet fame is usually ephemeral and brief."
+    ],
+    [
+      "C2",
+      "meticulous",
+      "o'ta sinchkov, mayda-chuydasigacha puxta",
+      "He is meticulous about keeping laboratory notes."
+    ],
+    [
+      "C2",
+      "juxtapose",
+      "yonma-yon qo'yib taqqoslamoq",
+      "The artist juxtaposes traditional and modern art."
+    ],
+    [
+      "C2",
+      "equivocal",
+      "ikki xil talqin qilinadigan",
+      "His statement was deliberately equivocal."
+    ],
+    [
+      "C2",
+      "magnanimous",
+      "olijanob, saxiy, bag'rikeng",
+      "She was magnanimous in victory and praised her rival."
+    ],
+    [
+      "C2",
+      "erudition",
+      "chuqur bilimdonlik, ilmdorlik",
+      "His writing displays astonishing erudition."
+    ],
+    [
+      "C2",
+      "machiavellian",
+      "ayyor, hiylakor, maqsad uchun hamma narsaga tayyor",
+      "He used machiavellian tactics to seize power."
+    ],
+    [
+      "C2",
+      "torpor",
+      "harakatsizlik, uyqusirash, loqaydlik",
+      "The summer heat induced a deep mental torpor."
+    ],
+    [
+      "C2",
+      "aplomb",
+      "o'zini dadil tutish, bosiqlik",
+      "She answered all tough questions with aplomb."
+    ],
+    [
+      "C2",
+      "specious",
+      "zohiran to'g'ri, botinan soxta",
+      "His argument sounded convincing but was specious."
+    ],
+    [
+      "C2",
+      "prodigious",
+      "ulkan, hayratlanarli darajada katta",
+      "The boy possessed a prodigious musical memory."
+    ],
+    [
+      "C2",
+      "invective",
+      "qattiq haqorat, tanqidiy so'kish",
+      "The speech was filled with bitter personal invective."
+    ],
+    [
+      "C2",
+      "impropriety",
+      "nojo'ya xatti-harakat, nomaqbullik",
+      "He was cleared of any financial impropriety."
+    ],
+    [
+      "C2",
+      "allusion",
+      "sha'ma, ishora",
+      "The poem contains subtle allusions to history."
+    ]
+  ],
+  "listening": [
+    {
+      "id": "lis-1",
+      "title": "Part 1: University Accommodation Registration",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "notes": "Talaba va yotoqxona xodimi o'rtasidagi suhbatni diqqat bilan eshiting.",
+      "questions": [
+        {
+          "type": "test",
+          "q": "What room type did the student choose?",
+          "options": [
+            "Single with bathroom",
+            "Shared twin room",
+            "Studio flat",
+            "Homestay"
+          ],
+          "correct": 0,
+          "points": 2
+        },
+        {
+          "type": "written",
+          "q": "The total rent per month is ___ pounds.",
+          "answer": "450",
+          "points": 3
+        },
+        {
+          "type": "multi",
+          "q": "Select the included facilities (Belgilang):",
+          "options": [
+            "Free Wi-Fi",
+            "Gym membership",
+            "Laundry room",
+            "Parking spot"
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "points": 4
+        }
+      ]
+    }
+  ],
+  "reading": [
+    {
+      "id": "read-1",
+      "title": "The Future of Renewable Energy in Central Asia",
+      "text": "Central Asia possesses immense potential for solar and wind power. Uzbekistan, in particular, enjoys over 300 days of sunshine annually. Rapid industrialization and urban population growth have prompted ambitious infrastructure initiatives...",
+      "questions": [
+        {
+          "type": "test",
+          "q": "How many sunny days does Uzbekistan have each year?",
+          "options": [
+            "Over 200",
+            "Over 300",
+            "Exactly 365",
+            "Less than 150"
+          ],
+          "correct": 1,
+          "points": 2
+        },
+        {
+          "type": "written",
+          "q": "The main natural energy source highlighted is ___ energy.",
+          "answer": "solar",
+          "points": 2
+        },
+        {
+          "type": "multi",
+          "q": "Which two sectors are driving energy demand?",
+          "options": [
+            "Industrialization",
+            "Agriculture",
+            "Urban population growth",
+            "Export shipping"
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "points": 4
+        }
+      ]
+    }
+  ],
+  "writing": [
+    {
+      "id": "wri-1",
+      "topic": "Some people argue that university education should be completely free for everyone. To what extent do you agree or disagree? Give reasons and examples."
+    },
+    {
+      "id": "wri-2",
+      "topic": "Technology has revolutionized the way young people communicate. Discuss the positive and negative effects on social skills."
+    }
+  ],
+  "speaking": [
+    {
+      "id": "spk-1",
+      "part": "Part 1",
+      "questions": [
+        "What do you do in your free time?",
+        "Do you prefer living in a city or the countryside?",
+        "How often do you read books?"
+      ]
+    },
+    {
+      "id": "spk-2",
+      "part": "Part 2",
+      "questions": [
+        "Describe an unforgettable journey you made with your friends.",
+        "Where did you go and why?",
+        "What made this journey so special?"
+      ]
+    }
+  ]
+}
