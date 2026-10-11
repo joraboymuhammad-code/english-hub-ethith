@@ -111,7 +111,7 @@
 @media(max-width:991px){.hq{margin:10px auto 0}.ew-chip{width:44px;height:44px;font-size:15px;border-radius:14px}.ew-chips .ew-chip:nth-child(n+5){display:none}}
 </style><script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
-<body><div id="landing">
+<body><div id="landing" style="display:none !important;">
  <nav class="navbar scrolled" id=mainNavbar>
  <div class=container>
  <div class=navbar-container>
@@ -1061,7 +1061,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 @media(max-width:620px){.g2,.g3,.g4{grid-template-columns:1fr}.ap-hero{padding:24px}.ap-hero h1{font-size:30px}.ap-qbox{padding:20px}.ap-qbox h2{font-size:20px}.ap-lhero .pr{margin-left:0;width:100%}.ap-top .ttl{font-size:16px}.ap-user b{display:none}.ap-user{padding:5px}}
 </style>
 
-<div id="app" data-theme="light">
+<div id="app" data-theme="light" style="display:block !important;">
  <div class="ap-shell">
   <aside class="ap-side" id="apSide"></aside>
   <div class="ap-ov" id="apOv"></div>
@@ -1813,4 +1813,33 @@ document.addEventListener('click', function(e){
     openAuthModal();
   }
 }, true);
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (document.getElementById('landing')) {
+    document.getElementById('landing').style.display = 'none';
+  }
+  var ap = document.getElementById('app');
+  if (ap) {
+    ap.style.display = 'block';
+  }
+  if (window.ethithOpenApp) {
+    window.ethithOpenApp('dash');
+  }
+});
+// Start for free yoki Login bosilganda ham to'g'ridan-to'g'ri ochish
+window.goToDashboard = function() {
+  if (document.getElementById('landing')) {
+    document.getElementById('landing').style.display = 'none';
+  }
+  var ap = document.getElementById('app');
+  if (ap) {
+    ap.style.display = 'block';
+  }
+  if (window.ethithOpenApp) {
+    window.ethithOpenApp('dash');
+  }
+};
 </script>
