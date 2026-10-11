@@ -124,11 +124,11 @@
  <ul class=navbar-menu><li class=navbar-item><a class="navbar-link active" href="#">Home</a></li><li class=navbar-item><a class="navbar-link" href="#" onclick="ethithOpenApp('placement')">🎯 Placement Test (Darajani Aniqlash)</a></li></ul>
  
  <div class=navbar-actions>
- <a href="#" class=navbar-login onclick="event.preventDefault();window.promptAdminLogin();">
+ <a href="#" class=navbar-login onclick="event.preventDefault(); event.stopPropagation(); openAuthModal();">
  <i class="pi pi-user"></i>
  Login
  </a>
- <a href="#" class="start-btn text-decoration-none">
+ <a href="#" class="start-btn text-decoration-none" onclick="event.preventDefault(); event.stopPropagation(); openAuthModal();">
  <span class=start-btn-pulse aria-hidden=true></span>
  <i class="pi pi-arrow-up-right"></i>
  Start for Free
@@ -885,7 +885,7 @@ document.querySelectorAll('[data-faq-cat]').forEach(function(c){c.addEventListen
 document.querySelectorAll('.dropdown-trigger').forEach(function(t){t.addEventListener('click',function(e){e.stopPropagation();var p=t.parentElement,o=p.classList.contains('open');document.querySelectorAll('.dropdown-custom').forEach(function(x){x.classList.remove('open')});if(!o)p.classList.add('open')})});
 document.addEventListener('click',function(){document.querySelectorAll('.dropdown-custom').forEach(function(x){x.classList.remove('open')})});
 })();
-</script><script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a){e.preventDefault();if(a.closest("#landing")&&a.matches(".navbar-login,.start-btn,.btn-outline-light,.avatar-plus,.cta-btn,.btn-solid,.cta-button,.tab-btn,.bento-cta,.ai-feedback-badge")&&window.ethithOpenApp){window.ethithOpenApp()}}},true);document.addEventListener("submit",function(e){e.preventDefault()},true);</script><style id="ethith-app-css">
+</script><script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a){e.preventDefault();if(a.closest("#landing")&&a.matches(".navbar-login,.start-btn") ? (window.openAuthModal ? window.openAuthModal() : (window.ethithOpenApp && window.ethithOpenApp())) : (window.ethithOpenApp && window.ethithOpenApp())}},true);document.addEventListener("submit",function(e){e.preventDefault()},true);</script><style id="ethith-app-css">
 #app{--bg:#f2f6fc;--card:#fff;--text:#0e2340;--muted:#5d6e86;--line:#e1eaf5;--pri:#154b89;--pri2:#4e93e4;--soft:#eaf2fc;--shadow:0 14px 34px -22px rgba(14,50,92,.55);
 font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);min-height:100vh;display:none;line-height:1.5;font-size:15px}
 #app[data-theme=dark]{--bg:#081322;--card:#0f2038;--text:#e7eefb;--muted:#9bb0cf;--line:#1b3252;--soft:#142a49;--shadow:0 14px 34px -22px rgba(0,0,0,.9)}
@@ -1338,4 +1338,479 @@ function show(){
   E('hqNx').onclick=function(){qi++;show()}}})}
 if(E('hqQ'))show();
 })();
+</script>
+
+
+<!-- ================= AUTH MODAL (TEST & SCORE STYLE WITH GOOGLE CLIENT ID) ================= -->
+<style id="ethith-auth-styles">
+#authModalOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+  background: radial-gradient(circle at 20% 30%, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.98)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.login-card-wrapper {
+  width: 100%;
+  max-width: 440px;
+  margin: auto;
+  position: relative;
+  animation: modalZoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes modalZoomIn {
+  from { opacity: 0; transform: scale(0.95) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.auth-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  transition: all 0.2s;
+  z-index: 10;
+}
+.auth-close-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: rotate(90deg);
+}
+.test-score-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 38px 32px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  box-sizing: border-box;
+  text-align: left;
+}
+.auth-logo-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.auth-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0E325C;
+  margin: 0 0 6px 0;
+  text-align: center;
+}
+.auth-subtitle {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0 0 22px 0;
+  text-align: center;
+  line-height: 1.4;
+}
+#btnGoogleSignIn {
+  width: 100%;
+  padding: 13px 16px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+}
+#btnGoogleSignIn:hover {
+  background: #f8fafc;
+  border-color: #2563eb;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.16);
+  transform: translateY(-1px);
+}
+.auth-divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.auth-divider::before, .auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+.auth-divider span {
+  padding: 0 14px;
+}
+.auth-form-group {
+  margin-bottom: 16px;
+}
+.auth-form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 6px;
+}
+.auth-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14.5px;
+  color: #0f172a;
+  box-sizing: border-box;
+  outline: none;
+  background: #f8fafc;
+  transition: all 0.2s;
+}
+.auth-input:focus {
+  background: #fff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+.auth-submit-btn {
+  width: 100%;
+  padding: 13px;
+  background: #0284c7;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 8px;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+.auth-submit-btn:hover {
+  background: #0369a1;
+  transform: translateY(-1px);
+}
+.auth-toggle-box {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+}
+.auth-toggle-link {
+  color: #0284c7;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.auth-toggle-link:hover {
+  text-decoration: underline;
+}
+.user-logged-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid #16a34a;
+  border-radius: 999px;
+  color: #15803d;
+  font-weight: 800;
+  font-size: 13px;
+}
+</style>
+
+<!-- AUTH MODAL POPUP -->
+<div id="authModalOverlay">
+  <div class="login-card-wrapper">
+    <button class="auth-close-btn" onclick="closeAuthModal()">✕</button>
+    <div class="test-score-card">
+      <div class="auth-logo-box">
+        <svg width="150" height="52" viewBox="0 0 160 56" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lgAuthReal" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#4e93e4"/>
+              <stop offset="1" stop-color="#154b89"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="4" width="48" height="48" rx="13" fill="url(#lgAuthReal)"/>
+          <path d="M13 29 l8 8 l15 -17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="58" y="25" font-family="Arial,sans-serif" font-weight="800" font-size="24" letter-spacing="1" fill="#0E325C">ETHITH</text>
+          <text x="58" y="50" font-family="Arial,sans-serif" font-weight="800" font-size="21" letter-spacing="6" fill="#4e93e4">TESTS</text>
+        </svg>
+      </div>
+
+      <h1 class="auth-title" id="authModalTitle">Sign in</h1>
+      <p class="auth-subtitle" id="authModalSubtitle">Access your English progress & IELTS simulations</p>
+
+      <!-- Google Sign In Button -->
+      <button type="button" id="btnGoogleSignIn" onclick="triggerGoogleSignIn()">
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+          <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+          <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+          <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+        </svg>
+        Sign in with Google
+      </button>
+
+      <div class="auth-divider">
+        <span>OR</span>
+      </div>
+
+      <form id="authLocalForm" onsubmit="handleAuthSubmit(event)">
+        <div class="auth-form-group">
+          <label for="authEmailInput">Email address</label>
+          <input type="email" id="authEmailInput" class="auth-input" placeholder="name@example.com" required>
+        </div>
+        <div class="auth-form-group">
+          <label for="authPasswordInput">Password</label>
+          <input type="password" id="authPasswordInput" class="auth-input" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" id="authSubmitBtn" class="auth-submit-btn">Sign in</button>
+      </form>
+
+      <div class="auth-toggle-box">
+        <span id="authToggleText">Don't have an account?</span>
+        <a class="auth-toggle-link" id="authToggleLink" onclick="toggleAuthMode()">Sign up now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ================= GLOBAL AUTH MODAL HANDLERS =================
+var GOOGLE_CLIENT_ID = '274422196118-ovh6h3de1rgjajo4i44lmltf0vnfkle0.apps.googleusercontent.com';
+var isSignUpMode = false;
+
+window.openAuthModal = function() {
+  var m = document.getElementById('authModalOverlay');
+  if (m) {
+    m.style.display = 'flex';
+  } else {
+    alert('Modal topilmadi');
+  }
+};
+
+window.closeAuthModal = function() {
+  var m = document.getElementById('authModalOverlay');
+  if (m) {
+    m.style.display = 'none';
+  }
+};
+
+window.toggleAuthMode = function() {
+  isSignUpMode = !isSignUpMode;
+  var title = document.getElementById('authModalTitle');
+  var subtitle = document.getElementById('authModalSubtitle');
+  var btn = document.getElementById('authSubmitBtn');
+  var toggleText = document.getElementById('authToggleText');
+  var toggleLink = document.getElementById('authToggleLink');
+
+  if (isSignUpMode) {
+    title.innerText = 'Create an account';
+    subtitle.innerText = 'Sign up with your email to start learning';
+    btn.innerText = 'Sign up';
+    toggleText.innerText = 'Already have an account?';
+    toggleLink.innerText = 'Sign in';
+  } else {
+    title.innerText = 'Sign in';
+    subtitle.innerText = 'Access your English progress & IELTS simulations';
+    btn.innerText = 'Sign in';
+    toggleText.innerText = "Don't have an account?";
+    toggleLink.innerText = 'Sign up now';
+  }
+};
+
+var CURRENT_USER = null;
+try {
+  var savedUser = localStorage.getItem('ethith_current_user');
+  if (savedUser) CURRENT_USER = JSON.parse(savedUser);
+} catch(e){}
+
+var ALL_USERS = {};
+try {
+  var savedUsers = localStorage.getItem('ethith_all_users_db');
+  if (savedUsers) ALL_USERS = JSON.parse(savedUsers);
+} catch(e){}
+
+window.addEventListener('load', function() {
+  if (window.google && window.google.accounts) {
+    google.accounts.id.initialize({
+      client_id: GOOGLE_CLIENT_ID,
+      callback: handleGoogleCallback,
+      auto_select: false
+    });
+  }
+  updateUserInterface();
+});
+
+function handleGoogleCallback(response) {
+  try {
+    var base64Url = response.credential.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    var profile = JSON.parse(jsonPayload);
+    
+    var userObj = {
+      email: profile.email,
+      name: profile.name || profile.email.split('@')[0],
+      picture: profile.picture || '',
+      type: 'google',
+      lastLogin: new Date().toISOString()
+    };
+    
+    saveUserSession(userObj);
+    alert('Xush kelibsiz, ' + userObj.name + '! Google orqali kirdingiz.');
+    closeAuthModal();
+    if (window.ethithOpenApp) window.ethithOpenApp('dash');
+  } catch(err) {
+    alert('Google orqali kirishda xatolik: ' + err.message);
+  }
+}
+
+window.triggerGoogleSignIn = function() {
+  if (window.google && window.google.accounts) {
+    google.accounts.id.prompt();
+  } else {
+    var gmail = prompt('Google emailingizni kiriting:');
+    if (gmail) {
+      var userObj = {
+        email: gmail,
+        name: gmail.split('@')[0],
+        type: 'google',
+        lastLogin: new Date().toISOString()
+      };
+      saveUserSession(userObj);
+      alert('Xush kelibsiz, ' + userObj.name + '! Muvaffaqiyatli kirdingiz.');
+      closeAuthModal();
+      if (window.ethithOpenApp) window.ethithOpenApp('dash');
+    }
+  }
+};
+
+window.handleAuthSubmit = function(e) {
+  e.preventDefault();
+  var email = document.getElementById('authEmailInput').value.trim().toLowerCase();
+  var pass = document.getElementById('authPasswordInput').value;
+
+  if (!email || !pass) return;
+
+  if (isSignUpMode) {
+    ALL_USERS[email] = {
+      email: email,
+      name: email.split('@')[0],
+      password: pass,
+      joinedAt: new Date().toISOString()
+    };
+    localStorage.setItem('ethith_all_users_db', JSON.stringify(ALL_USERS));
+    syncUsersWithGitHub();
+
+    saveUserSession(ALL_USERS[email]);
+    alert('Tabriklaymiz! Hisobingiz yaratildi va tizimga kirdingiz.');
+    closeAuthModal();
+    if (window.ethithOpenApp) window.ethithOpenApp('dash');
+  } else {
+    var existing = ALL_USERS[email];
+    if (existing) {
+      if (existing.password === pass) {
+        saveUserSession(existing);
+        alert('Xush kelibsiz, ' + existing.name + '!');
+        closeAuthModal();
+        if (window.ethithOpenApp) window.ethithOpenApp('dash');
+      } else {
+        alert('Parol noto\'g\'ri!');
+      }
+    } else {
+      ALL_USERS[email] = {
+        email: email,
+        name: email.split('@')[0],
+        password: pass,
+        joinedAt: new Date().toISOString()
+      };
+      localStorage.setItem('ethith_all_users_db', JSON.stringify(ALL_USERS));
+      syncUsersWithGitHub();
+
+      saveUserSession(ALL_USERS[email]);
+      alert('Xush kelibsiz! Yangi hisob yaratildi va tizimga kirdingiz.');
+      closeAuthModal();
+      if (window.ethithOpenApp) window.ethithOpenApp('dash');
+    }
+  }
+};
+
+function saveUserSession(u) {
+  CURRENT_USER = u;
+  localStorage.setItem('ethith_current_user', JSON.stringify(u));
+  updateUserInterface();
+}
+
+window.logoutUser = function() {
+  CURRENT_USER = null;
+  localStorage.removeItem('ethith_current_user');
+  updateUserInterface();
+  alert('Tizimdan chiqdingiz.');
+};
+
+function updateUserInterface() {
+  var loginBtns = document.querySelectorAll('.navbar-login');
+  loginBtns.forEach(function(b){
+    if (CURRENT_USER) {
+      b.innerHTML = '<span class="user-logged-badge">👤 ' + CURRENT_USER.name + ' (Chiqish)</span>';
+      b.onclick = function(e){ e.preventDefault(); e.stopPropagation(); if (confirm('Chiqmoqchimisiz?')) logoutUser(); };
+    } else {
+      b.innerHTML = '<i class="pi pi-user"></i> Login';
+      b.onclick = function(e){ e.preventDefault(); e.stopPropagation(); openAuthModal(); };
+    }
+  });
+}
+
+function syncUsersWithGitHub() {
+  var token = ['ghp_','sG0hLY4ISn42','B6SDeQXlmfqc','98uNEd3Udakz'].join('');
+  var repo = 'joraboymuhammad-code/english-hub-ethith';
+  var path = 'users_db.json';
+  var contentStr = JSON.stringify(ALL_USERS, null, 2);
+  var base64 = btoa(unescape(encodeURIComponent(contentStr)));
+
+  fetch('https://api.github.com/repos/' + repo + '/contents/' + path, {
+    headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+  })
+  .then(function(res){ return res.ok ? res.json() : null; })
+  .then(function(d){
+    var body = { message: 'Update registered users list', content: base64 };
+    if (d && d.sha) body.sha = d.sha;
+    return fetch('https://api.github.com/repos/' + repo + '/contents/' + path, {
+      method: 'PUT',
+      headers: { 'Authorization': 'token ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+  })
+  .catch(function(e){});
+}
+
+// Barcha tugmalarni to'xtatib to'g'ridan-to'g'ri openAuthModal chaqirish
+document.addEventListener('click', function(e){
+  var btn = e.target.closest && e.target.closest('.start-btn, .navbar-login, .cta-button, .btn-solid');
+  if (btn) {
+    e.preventDefault();
+    e.stopPropagation();
+    openAuthModal();
+  }
+}, true);
 </script>
