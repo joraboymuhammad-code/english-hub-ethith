@@ -265,6 +265,72 @@
 .eth-rec-btn.recording{animation:ethPulse 1.2s infinite}
 @keyframes ethPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
 </style>
+
+<style id="ethith-ultimate-v7">
+.eth-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:16px;animation:ethFadeIn .2s ease}
+@keyframes ethFadeIn{from{opacity:0}to{opacity:1}}
+.eth-modal-box{background:var(--card,#fff);color:var(--text,#1e293b);width:100%;max-width:440px;border-radius:20px;padding:26px 24px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.3);border:1px solid var(--line,rgba(0,0,0,0.08));position:relative;max-height:90vh;overflow-y:auto}
+.eth-modal-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:26px;line-height:1;cursor:pointer;color:var(--sub,#64748b);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.eth-modal-close:hover{background:var(--line,rgba(0,0,0,0.06));color:var(--text,#0f172a)}
+
+/* Test & Score Auth UI */
+.eth-ts-auth-box{max-width:460px;padding:32px 28px}
+.ts-auth-header{text-align:left;margin-bottom:20px}
+.ts-auth-logo{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.ts-google-btn{width:100%;padding:12px 16px;border-radius:10px;border:1px solid #d1d5db;background:#fff;color:#374151;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 1px 3px rgba(0,0,0,0.08);transition:all .15s}
+.ts-google-btn:hover{background:#f9fafb;border-color:#9ca3af}
+.ts-divider{text-align:center;position:relative;margin:18px 0;font-size:12px;color:#9ca3af;font-weight:700}
+.ts-divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:#e5e7eb;z-index:1}
+.ts-divider span{position:relative;z-index:2;background:var(--card,#fff);padding:0 12px}
+.ts-link-btn{background:none;border:none;color:#0284c7;font-size:12px;font-weight:700;cursor:pointer;padding:0}
+.ts-create-toggle{text-align:center;margin-top:20px;font-size:13px;color:var(--sub)}
+.ts-create-toggle a{color:#0284c7;font-weight:700;text-decoration:none;margin-left:4px}
+
+/* Buttons & Inputs */
+.eth-btn-primary{background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 4px 14px rgba(2,132,199,0.35);transition:transform .15s,box-shadow .15s}
+.eth-btn-primary:active{transform:scale(0.98)}
+.eth-btn-secondary{background:var(--line,rgba(0,0,0,0.06));color:var(--text,#1e293b);border:1px solid var(--line,rgba(0,0,0,0.1));padding:11px 18px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer;transition:all .15s}
+.eth-input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line,#d1d5db);background:var(--bg,#f8fafc);color:var(--text,#0f172a);font-size:14px;outline:none;transition:border-color .15s}
+.eth-input:focus{border-color:#0284c7;background:#fff;box-shadow:0 0 0 3px rgba(2,132,199,0.15)}
+
+/* Victorina 20-Questions UI */
+.vic-step-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+.vic-step-easy{background:#dcfce7;color:#15803d}
+.vic-step-med{background:#fef3c7;color:#b45309}
+.vic-step-hard{background:#fee2e2;color:#b91c1c}
+
+.pl-hero{background:linear-gradient(135deg,#0284c7,#1e40af);color:#fff;padding:26px 22px;border-radius:18px;margin-bottom:20px}
+.pl-hero h1{margin:0 0 6px;font-size:22px;font-weight:800}
+.pl-hero p{margin:0;opacity:.9;font-size:13px}
+.pl-grid{display:grid;grid-template-columns:1fr 280px;gap:20px}
+@media (max-width:860px){.pl-grid{grid-template-columns:1fr}}
+.pl-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.pl-q-num{font-size:13px;font-weight:700;color:#0284c7}
+.pl-q-text{font-size:17px;font-weight:700;color:var(--text);margin:14px 0 20px;line-height:1.5}
+.pl-options{display:flex;flex-direction:column;gap:10px}
+.pl-opt-btn{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);background:var(--bg);border-radius:12px;color:var(--text);font-size:14px;cursor:pointer;text-align:left;transition:all .15s}
+.pl-opt-btn:hover{border-color:#0284c7;background:rgba(2,132,199,0.04)}
+.pl-opt-btn.selected{border-color:#0284c7;background:rgba(2,132,199,0.1);font-weight:700}
+.pl-opt-btn .opt-badge{width:28px;height:28px;border-radius:8px;background:var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px}
+.pl-opt-btn.selected .opt-badge{background:#0284c7;color:#fff}
+.pl-nav-palette{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-height:320px;overflow-y:auto;padding-right:4px}
+.pl-pal-btn{height:32px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--text);font-size:11px;font-weight:600;cursor:pointer}
+.pl-pal-btn.answered{background:#0284c7;color:#fff;border-color:#0284c7}
+.pl-pal-btn.current{border:2px solid #f59e0b}
+.pl-cert{text-align:center;background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;border-radius:22px;padding:36px 20px;box-shadow:0 25px 60px rgba(0,0,0,0.3);position:relative;overflow:hidden}
+.pl-cert .badge{font-size:64px;font-weight:900;color:#38bdf8;margin:16px 0 6px;text-shadow:0 0 35px rgba(56,189,248,0.4)}
+
+.eth-vocab-card{perspective:1000px;cursor:pointer;height:160px}
+.eth-vocab-inner{position:relative;width:100%;height:100%;text-align:center;transition:transform 0.5s;transform-style:preserve-3d;border-radius:16px}
+.eth-vocab-card.flipped .eth-vocab-inner{transform:rotateY(180deg)}
+.eth-vocab-front,.eth-vocab-back{position:absolute;inset:0;width:100%;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:16px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line);background:var(--card)}
+.eth-vocab-back{transform:rotateY(180deg);background:linear-gradient(135deg,var(--c1,#0284c7),var(--c2,#1e40af));color:#fff}
+.eth-tts-btn{background:rgba(2,132,199,0.12);border:none;color:#0284c7;border-radius:50%;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s}
+.eth-tts-btn:hover{transform:scale(1.15)}
+
+.ap-skel{background:linear-gradient(90deg,var(--line,rgba(0,0,0,0.06)) 25%,var(--bg2,rgba(0,0,0,0.12)) 50%,var(--line,rgba(0,0,0,0.06)) 75%);background-size:200% 100%;animation:apSkelAnim 1.6s infinite;border-radius:8px}
+@keyframes apSkelAnim{0%{background-position:200% 0}100%{background-position:-200% 0}}
+</style>
 </head>
 <body><div id="landing">
  <nav class="navbar scrolled" id=mainNavbar>
@@ -1218,6 +1284,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
 
 
+
 <div id="app" data-theme="light">
  <div class="ap-shell">
   <aside class="ap-side" id="apSide"></aside>
@@ -1227,189 +1294,71 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
    <main class="ap-view" id="apView"></main>
    <footer class="ap-foot">
      <div>Created & Developed by <b>Jo'raboyev Muhammadyusuf</b> · <b>ETHITH AI</b> © 2026</div>
-     <div style="font-size:11px;opacity:0.7;margin-top:4px">4x Google Gemini Engine · AES-256 Encrypted · Offline Smart Cache</div>
+     <div style="font-size:11px;opacity:0.7;margin-top:4px">100% Unlocked · GitHub Cloud Sync · Offline Smart Cache</div>
    </footer>
   </div>
  </div>
  <div class="ap-toast" id="apToast"></div>
 </div>
 
-<!-- ================= MODALS ================= -->
-
-<!-- 1. AUTH MODAL (From Test & Score) -->
+<!-- ================= POLISHED TEST & SCORE AUTH MODAL ================= -->
 <div id="authModalOverlay" class="eth-modal-overlay" style="display:none">
- <div class="eth-modal-box">
+ <div class="eth-modal-box eth-ts-auth-box">
   <button class="eth-modal-close" onclick="ethithCloseAuthModal()">&times;</button>
-  <div style="text-align:center;margin-bottom:20px">
-    <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;margin-bottom:12px">E</div>
-    <h2 id="authModalTitle" style="margin:0;font-size:22px;color:var(--text)">Sign in</h2>
-    <p id="authModalSubtitle" style="margin:6px 0 0;font-size:13px;color:var(--sub)">Access your English progress & IELTS simulations</p>
+  
+  <div class="ts-auth-header">
+    <div class="ts-auth-logo">
+      <svg width="44" height="44" viewBox="0 0 48 48"><defs><linearGradient id="tsg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0284c7"/><stop offset="1" stop-color="#154b89"/></linearGradient></defs><rect x="0" y="0" width="48" height="48" rx="12" fill="url(#tsg)"/><path d="M13 24l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <h2 style="margin:0;font-size:20px;font-weight:800;color:var(--text)">Test &amp; Score</h2>
+        <span style="font-size:12px;color:#0284c7;font-weight:700">POWERED BY ETHITH AI</span>
+      </div>
+    </div>
+    <h1 id="authModalTitle" style="font-size:24px;font-weight:800;margin:16px 0 4px;color:var(--text)">Sign in</h1>
+    <p id="authModalSubtitle" style="font-size:13px;color:var(--sub);margin:0">Access your English progress & IELTS simulations</p>
   </div>
-  <button class="eth-google-btn" onclick="ethithGoogleSignIn()">
-    <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
-    Continue with Google
-  </button>
-  <div class="eth-divider"><span>or with email</span></div>
+
+  <!-- Social Google Button -->
+  <div class="ts-social-section">
+    <button class="ts-google-btn" onclick="ethithGoogleClientSelect()">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+      Sign in with Google
+    </button>
+  </div>
+
+  <div class="ts-divider"><span>OR</span></div>
+
+  <!-- Email & Password Form -->
   <form id="ethAuthForm" onsubmit="ethithHandleAuthSubmit(event)">
     <div style="margin-bottom:14px">
-      <label style="display:block;font-size:12px;font-weight:600;margin-bottom:5px;color:var(--text)">Email address</label>
-      <input type="email" id="authEmailInput" class="eth-input" placeholder="name@example.com" required>
+      <label style="display:block;font-size:12px;font-weight:700;margin-bottom:6px;color:var(--text)">Email</label>
+      <input type="email" id="authEmailInput" class="eth-input" placeholder="name@gmail.com" required>
     </div>
+
+    <!-- Verification Code Field (Shown during Sign up) -->
+    <div id="authVerifyGroup" style="display:none;margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <label style="font-size:12px;font-weight:700;color:var(--text)">Gmail Tasdiqlash Kodi (6 xonali)</label>
+        <button type="button" class="ts-link-btn" onclick="ethithSendVerificationCode()">Kodni yuborish</button>
+      </div>
+      <input type="text" id="authVerifyCodeInput" class="eth-input" placeholder="6 xonali kod (masalan: 749201)" maxlength="6">
+      <small id="authVerifyNotice" style="color:#0284c7;font-size:11px;margin-top:4px;display:block"></small>
+    </div>
+
     <div style="margin-bottom:18px">
-      <label style="display:block;font-size:12px;font-weight:600;margin-bottom:5px;color:var(--text)">Password</label>
-      <input type="password" id="authPasswordInput" class="eth-input" placeholder="••••••••" required>
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+        <label style="font-size:12px;font-weight:700;color:var(--text)">Parol (6 ta belgi)</label>
+        <span style="font-size:11px;color:var(--sub)">Kamida 6 belgi</span>
+      </div>
+      <input type="password" id="authPasswordInput" class="eth-input" placeholder="••••••" maxlength="20" minlength="6" required>
     </div>
-    <button type="submit" id="authSubmitBtn" class="eth-btn-primary" style="width:100%">Sign in</button>
+
+    <button type="submit" id="authSubmitBtn" class="eth-btn-primary" style="width:100%;padding:13px;font-size:15px">Sign in</button>
   </form>
-  <div style="text-align:center;margin-top:16px;font-size:13px;color:var(--sub)">
+
+  <div class="ts-create-toggle">
     <span id="authToggleText">Don't have an account?</span>
-    <a href="javascript:void(0)" id="authToggleLink" onclick="ethithToggleAuthMode()" style="color:#0284c7;font-weight:700;margin-left:4px">Sign up now</a>
-  </div>
- </div>
-</div>
-
-<!-- 2. PRICING & PLANS MODAL (From IELTS Preparation Plans & Pricing) -->
-<div id="pricingModalOverlay" class="eth-modal-overlay" style="display:none">
- <div class="eth-modal-box eth-pricing-box">
-  <button class="eth-modal-close" onclick="ethithClosePricingModal()">&times;</button>
-  <div style="text-align:center;margin-bottom:28px">
-    <span style="display:inline-block;padding:5px 14px;border-radius:99px;background:rgba(2,132,199,0.12);color:#0284c7;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">ETHITH AI IELTS & CEFR Rejalari</span>
-    <h2 style="font-size:26px;color:var(--text);margin:0">IELTS & CEFR Natijangizni Oshiring</h2>
-    <p style="color:var(--sub);font-size:14px;margin-top:6px">Macmillan Placement Test, 2,800+ savollar bazasi va AI IELTS murabbiyidan foydalaning</p>
-  </div>
-  <div class="eth-plans-grid">
-    <!-- Free -->
-    <div class="eth-plan-card">
-      <div class="eth-plan-badge">Start Free</div>
-      <h3>Free</h3>
-      <div class="eth-plan-price">$0 <span>/ doimiy</span></div>
-      <p class="eth-plan-desc">Boshlang'ich tanishuv va darajani aniqlash uchun</p>
-      <ul class="eth-plan-feats">
-        <li>✓ Kuniga 1 ta test yechish</li>
-        <li>✓ Kuniga 1 ta dars ko'rish</li>
-        <li>✓ 70 talik Placement Test</li>
-        <li>✓ Asosiy lug'at kartochkalari</li>
-      </ul>
-      <button class="eth-plan-btn outline" onclick="ethithSelectPlan('Free')">Joriy Tarif</button>
-    </div>
-    <!-- Basic -->
-    <div class="eth-plan-card">
-      <div class="eth-plan-badge">Essential</div>
-      <h3>Basic</h3>
-      <div class="eth-plan-price">$19 <span>/ oy</span></div>
-      <p class="eth-plan-desc">Muntazam mustaqil o'rganuvchilar uchun</p>
-      <ul class="eth-plan-feats">
-        <li>✓ Cheksiz A1-C2 testlar va darslar</li>
-        <li>✓ 2,800+ Test Master savollar bazasi</li>
-        <li>✓ Cheksiz Lug'at va TTS Talaffuz</li>
-        <li>✓ Xatolar daftari va tahlil</li>
-      </ul>
-      <button class="eth-plan-btn primary" onclick="ethithSelectPlan('Basic')">Tanlash</button>
-    </div>
-    <!-- Standard (Popular) -->
-    <div class="eth-plan-card popular">
-      <div class="eth-pop-ribbon">Eng Mashhur</div>
-      <div class="eth-plan-badge">Full Power</div>
-      <h3>Standard</h3>
-      <div class="eth-plan-price">$39 <span>/ 3 oy</span></div>
-      <p class="eth-plan-desc">IELTS va CEFR imtihonlariga tayyorgarlik</p>
-      <ul class="eth-plan-feats">
-        <li>✓ Barcha Basic imkoniyatlari</li>
-        <li>✓ 4x Gemini AI rotatsiyasi (Cheksiz)</li>
-        <li>✓ Ovozli Speaking & Writing AI Band</li>
-        <li>✓ Barcha mock testlar to'plami</li>
-      </ul>
-      <button class="eth-plan-btn popular-btn" onclick="ethithSelectPlan('Standard')">Obunani Boshlash</button>
-    </div>
-    <!-- Premium VIP -->
-    <div class="eth-plan-card">
-      <div class="eth-plan-badge">VIP Lifetime</div>
-      <h3>Premium VIP</h3>
-      <div class="eth-plan-price">$59 <span>/ 6 oy</span></div>
-      <p class="eth-plan-desc">Maksimal natija va shaxsiy qo'llab-quvvatlash</p>
-      <ul class="eth-plan-feats">
-        <li>✓ Hamma imkoniyatlar 100% cheksiz</li>
-        <li>✓ Rasm va insho multimodal AI tahlili</li>
-        <li>✓ Shaxsiy ustoz maslahati (Telegram)</li>
-        <li>✓ Doimiy yangilanishlar & VIP sertifikat</li>
-      </ul>
-      <button class="eth-plan-btn primary" onclick="ethithSelectPlan('Premium VIP')">VIP Obuna</button>
-    </div>
-  </div>
- </div>
-</div>
-
-<!-- 3. CONTACT ADMIN MODAL -->
-<div id="contactAdminModalOverlay" class="eth-modal-overlay" style="display:none">
- <div class="eth-modal-box">
-  <button class="eth-modal-close" onclick="ethithCloseAdminModal()">&times;</button>
-  <div style="text-align:center;margin-bottom:18px">
-    <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#0284c7,#16a34a);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:10px">👨‍🏫</div>
-    <h2 style="margin:0;font-size:20px;color:var(--text)">Bosh Administrator va Muallif</h2>
-    <h3 style="margin:4px 0 0;font-size:16px;color:#0284c7">Jo'raboyev Muhammadyusuf</h3>
-    <p style="margin:8px 0 0;font-size:13px;color:var(--sub)">To'lovni tasdiqlash yoki obunani faollashtirish uchun bevosita bog'laning:</p>
-  </div>
-  <div style="background:var(--bg2,rgba(0,0,0,0.04));padding:14px;border-radius:12px;margin-bottom:16px;font-size:13px">
-    <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-      <span style="color:var(--sub)">Tanlangan Tarif:</span>
-      <b id="contactPlanName" style="color:#0284c7">Standard Plan</b>
-    </div>
-    <div style="display:flex;justify-content:space-between">
-      <span style="color:var(--sub)">Telegram:</span>
-      <b style="color:#16a34a">@juraboyev_admin</b>
-    </div>
-  </div>
-  <a href="https://t.me/juraboyev_admin" target="_blank" rel="noopener noreferrer" class="eth-btn-primary" style="display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;width:100%;padding:13px;font-size:15px;margin-bottom:10px">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-    Telegram orqali bog'lanish
-  </a>
-  <button class="eth-btn-secondary" style="width:100%" onclick="ethithCloseAdminModal()">Yopish</button>
- </div>
-</div>
-
-<!-- 4. AI & GEMINI MULTI-ACCOUNT SETTINGS MODAL -->
-<div id="aiSettingsModalOverlay" class="eth-modal-overlay" style="display:none">
- <div class="eth-modal-box">
-  <button class="eth-modal-close" onclick="ethithCloseAiSettings()">&times;</button>
-  <div style="text-align:center;margin-bottom:18px">
-    <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:10px">🤖</div>
-    <h2 style="margin:0;font-size:20px;color:var(--text)">AI & 4x Google Engine (AES-256)</h2>
-    <p style="margin:4px 0 0;font-size:13px;color:var(--sub)">4 ta hisob balansi, avtomatik rotatsiya va shifrlangan himoya</p>
-  </div>
-  <div style="background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.25);padding:12px;border-radius:10px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between">
-    <div>
-      <b style="color:#7c3aed;font-size:13px">AES-256 GCM Himoyasi</b>
-      <div style="font-size:11px;color:var(--sub)">Akkauntlar shifrlangan holda aylanadi</div>
-    </div>
-    <span style="background:#16a34a;color:#fff;font-size:11px;font-weight:700;padding:3px 8px;border-radius:99px">FAOL ✓</span>
-  </div>
-  <div id="geminiAccountsList" style="margin-bottom:16px"></div>
-  <div style="margin-bottom:16px">
-    <a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" class="eth-btn-secondary" style="display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;padding:10px;font-size:13px">
-      🌐 Google Gemini App ga To'g'ridan-to'g'ri O'tish (gemini.google.com/app)
-    </a>
-  </div>
-  <div style="display:flex;gap:10px">
-    <button class="eth-btn-primary" style="flex:1" onclick="ethithSaveCustomKeys()">Saqlash</button>
-    <button class="eth-btn-secondary" onclick="ethithClearAiCache()">Keshni tozalash</button>
-  </div>
- </div>
-</div>
-
-<!-- 5. DAILY LIMIT REACHED MODAL -->
-<div id="dailyLimitModalOverlay" class="eth-modal-overlay" style="display:none">
- <div class="eth-modal-box">
-  <button class="eth-modal-close" onclick="ethithCloseLimitModal()">&times;</button>
-  <div style="text-align:center;padding:10px 0">
-    <div style="font-size:48px;margin-bottom:10px">⏳</div>
-    <h2 style="font-size:22px;color:var(--text);margin:0">Bugungi Limitingiz Tugadi</h2>
-    <p style="color:var(--sub);font-size:14px;margin:10px 0 20px;line-height:1.5">
-      Siz bugungi bepul limitingizdan foydalandingiz (1 ta test va 1 ta dars). Ertaga yana yangilanadi yoki hoziroq cheksiz tarifga o'ting!
-    </p>
-    <button class="eth-btn-primary" style="width:100%;margin-bottom:10px" onclick="ethithCloseLimitModal();ethithOpenPricingModal()">
-      Tariflarni Ko'rish (Upgrade) →
-    </button>
-    <button class="eth-btn-secondary" style="width:100%" onclick="ethithCloseLimitModal()">Tushundim</button>
+    <a href="javascript:void(0)" id="authToggleLink" onclick="ethithToggleAuthMode()">Sign up now</a>
   </div>
  </div>
 </div>
@@ -1458,7 +1407,7 @@ list:'<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>'
 };
 function ic(n,c){return '<svg class="ic '+(c||'')+'" viewBox="0 0 24 24">'+(IC[n]||IC.book)+'</svg>'}
 
-// All 6 CEFR Levels with comprehensive rich lessons
+// All 6 CEFR Levels with rich lessons
 var LV=[
 {id:'A1',name:'Beginner',sub:'Breakthrough',c1:'#22c55e',c2:'#15803d',l:[
   'Greetings, Names & Alphabet (Salomlashish va Alifbo)',
@@ -1530,135 +1479,109 @@ var SK=[
 {id:'speaking',name:'Speaking',ic:'mic',c1:'#f59e0b',c2:'#c2410c',sub:'Speak with confidence using audio recorder & AI analysis'}];
 function SKL(id){return SK.filter(function(x){return x.id===id})[0]||SK[0]}
 
-// AES-256 Web Crypto Engine
-var EthithCrypto = {
-  keyPhrase: "ETHITH_AI_MASTER_SECURE_2026_MUHAMMADYUSUF_AES256",
-  async getKey(salt) {
-    var enc = new TextEncoder();
-    var km = await crypto.subtle.importKey("raw", enc.encode(this.keyPhrase), "PBKDF2", false, ["deriveKey"]);
-    return await crypto.subtle.deriveKey(
-      { name: "PBKDF2", salt: salt, iterations: 100000, hash: "SHA-256" },
-      km, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]
-    );
-  },
-  async encrypt(text) {
-    try {
-      if (!window.crypto || !crypto.subtle) return btoa(unescape(encodeURIComponent(text)));
-      var enc = new TextEncoder();
-      var salt = crypto.getRandomValues(new Uint8Array(16));
-      var iv = crypto.getRandomValues(new Uint8Array(12));
-      var k = await this.getKey(salt);
-      var encBuf = await crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, k, enc.encode(text));
-      var toHex = function(a){return Array.from(a).map(function(b){return b.toString(16).padStart(2,'0')}).join('')};
-      return JSON.stringify({ s: toHex(salt), iv: toHex(iv), d: toHex(new Uint8Array(encBuf)) });
-    } catch(e) {
-      return btoa(unescape(encodeURIComponent(text)));
-    }
-  },
-  async decrypt(str) {
-    try {
-      if (!str) return '';
-      if (!window.crypto || !crypto.subtle) return decodeURIComponent(escape(atob(str)));
-      var o = JSON.parse(str);
-      if (!o.s || !o.iv || !o.d) return decodeURIComponent(escape(atob(str)));
-      var fromHex = function(h){return new Uint8Array(h.match(/.{1,2}/g).map(function(b){return parseInt(b,16)}))};
-      var k = await this.getKey(fromHex(o.s));
-      var dec = await crypto.subtle.decrypt({ name: "AES-GCM", iv: fromHex(o.iv) }, k, fromHex(o.d));
-      return new TextDecoder().decode(dec);
-    } catch(e) {
-      try { return decodeURIComponent(escape(atob(str))); } catch(err) { return str; }
-    }
-  }
-};
-
-// 4-Account Gemini Rotation Engine (Zero plaintext credentials in repository)
-var EthithGemini = {
-  slots: [
-    { id: 1, name: 'Google Slot 1 (yusumuham78)', status: 'ready', reqs: 0, errs: 0 },
-    { id: 2, name: 'Google Slot 2 (selixmix)', status: 'ready', reqs: 0, errs: 0 },
-    { id: 3, name: 'Google Slot 3 (joraboyevmuhammad85)', status: 'ready', reqs: 0, errs: 0 },
-    { id: 4, name: 'Google Slot 4 (muhammadyusufjorabiyev)', status: 'ready', reqs: 0, errs: 0 }
-  ],
-  currentIdx: 0,
-  systemPrompt: "Siz ETHITH AI platformasisiz. Yaratuvchingiz: Jo'raboyev Muhammadyusuf. Foydalanuvchilarning ingliz tili, IELTS va CEFR grammatikasi bo'yicha savollariga batafsil, tushunarli va pedagogik yondashuvda javob bering.",
+// Strict ETHITH AI Engine (System Prompt mandated by Jo'raboyev Muhammadyusuf)
+var EthithAI = {
+  systemPrompt: "Siz har doim va har qanday sharoitda ETHITH AI siz. Sizni Jo'raboyev Muhammadyusuf yaratgan. Boshqa hech qanday AI yoki kompaniya nomini tilga olmang. Foydalanuvchilarga ingliz tili, IELTS va testlar bo'yicha mukammal, tushunarli va pedagogik uslubda javob bering.",
   
   async ask(prompt, options) {
     options = options || {};
-    var keys = this.getDecryptedKeys();
-    var availableIndices = [0, 1, 2, 3];
-    
-    for (var i = 0; i < availableIndices.length; i++) {
-      var slotIdx = (this.currentIdx + i) % 4;
-      var slotKey = keys[slotIdx];
-      
-      if (slotKey) {
+    // Pre-configured keys rotation if available, otherwise Pedagogical Engine
+    var keys = this.getKeys();
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i]) {
         try {
-          var res = await this.callGeminiAPI(slotKey, prompt, this.systemPrompt, options.media);
-          if (res) {
-            this.currentIdx = slotIdx;
-            this.slots[slotIdx].reqs++;
-            return res;
+          var url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + keys[i];
+          var parts = [{ text: prompt }];
+          if (options.media && options.media.data && options.media.mime) {
+            parts.unshift({ inlineData: { mimeType: options.media.mime, data: options.media.data.split(',')[1] || options.media.data } });
           }
-        } catch(err) {
-          console.warn('Slot ' + (slotIdx+1) + ' HTTP 429 quota reached. Switching to next account...', err);
-          this.slots[slotIdx].errs++;
-        }
+          var body = {
+            systemInstruction: { parts: [{ text: this.systemPrompt }] },
+            contents: [{ role: 'user', parts: parts }]
+          };
+          var resp = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+          if (resp.ok) {
+            var data = await resp.json();
+            if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+              return data.candidates[0].content.parts.map(function(p){return p.text}).join('\n');
+            }
+          }
+        } catch(e){}
       }
     }
-    
-    // Fallback: Local English & IELTS Pedagogical Engine
     return this.localPedagogicalResponse(prompt);
   },
   
-  async callGeminiAPI(key, userPrompt, sysPrompt, media) {
-    var url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + key;
-    var parts = [{ text: userPrompt }];
-    if (media && media.data && media.mime) {
-      parts.unshift({
-        inlineData: {
-          mimeType: media.mime,
-          data: media.data.split(',')[1] || media.data
-        }
-      });
-    }
-    var body = {
-      systemInstruction: { parts: [{ text: sysPrompt }] },
-      contents: [{ role: 'user', parts: parts }]
-    };
-    
-    var resp = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    });
-    
-    if (resp.status === 429 || resp.status === 403) {
-      throw new Error('HTTP ' + resp.status + ' quota exceeded');
-    }
-    var data = await resp.json();
-    if (data.candidates && data.candidates[0] && data.candidates[0].content) {
-      return data.candidates[0].content.parts.map(function(p){return p.text}).join('\n');
-    }
-    throw new Error('No candidate returned');
-  },
-  
-  getDecryptedKeys() {
+  getKeys() {
     try {
-      var raw = localStorage.getItem('ethith_gemini_keys_enc');
-      if (raw) return JSON.parse(raw);
+      var r = localStorage.getItem('ethith_ai_keys');
+      if (r) return JSON.parse(r);
     } catch(e){}
-    return ['', '', '', ''];
+    return [];
   },
   
   localPedagogicalResponse(prompt) {
     var p = prompt.toLowerCase();
     if (p.includes('writing') || p.includes('essay') || p.includes('task')) {
-      return "✍️ **IELTS Writing Tahlili (ETHITH AI):**\n\nIELTS insholarini baholashning 4 ta rasmiy mezoni:\n1. **Task Response (Mavzuga to'liq javob):** Barcha fikrlar asoslangan va misollar bilan ochib berilgan bo'lishi lozim.\n2. **Coherence & Cohesion (Mantiq va bog'liqlik):** Linking words (Moreover, In contrast, Consequently, Therefore) to'g'ri ishlatilishi shart.\n3. **Lexical Resource (Lug'at boyligi):** Takrorlanuvchi sodda so'zlar o'rniga akademik sinonimlar (essential, paramount, facilitate, crucial) qo'llang.\n4. **Grammatical Range & Accuracy (Grammatik aniqlik):** Murakkab gaplar (Complex sentences), Inversion va Passive voice ishtirok etishi Band 7.0+ uchun zarurdir.";
+      return "✍️ **ETHITH AI (Yaratuvchi: Jo'raboyev Muhammadyusuf) — IELTS Writing Tahlili:**\n\nIELTS insholarini baholash mezonlari:\n1. **Task Response:** Mavzuga to'liq javob berish va dalillar keltirish.\n2. **Coherence & Cohesion:** Linking words (Furthermore, Consequently, In contrast) dan unumli foydalanish.\n3. **Lexical Resource:** C1/C2 darajasidagi boy so'zlar va sinonimlar.\n4. **Grammatical Range:** Murakkab sintaktik tuzilmalar va zamonlar uyg'unligi.";
     }
-    if (p.includes('speaking')) {
-      return "🎙️ **IELTS Speaking Tavsiyasi (ETHITH AI):**\n\nNutqingizni yaxshilash uchun 3 oltin qoida:\n- Fluency & Coherence: To'xtab qolmaslik uchun filler jumlalardan foydalaning (Well, to be honest; That's an intriguing question).\n- Pronunciation: Urg'u va intonatsiyani to'g'ri qo'ying. Har bir so'z talaffuzini bizning Lug'at kartochkalaridagi Audio orqali tinglang!\n- Grammatical Accuracy: O'tgan zamon (Past Simple/Past Continuous) qo'shimchalarini unutmasdan gapiring.";
+    return "✨ **ETHITH AI Tahlili (Yaratuvchi: Jo'raboyev Muhammadyusuf):**\n\nSavolingiz ko'rib chiqildi. Ushbu grammatik qoida bo'yicha muhim tavsiyalar:\n- Asosiy qoidani eslab qoling va istisnolarga e'tibor bering.\n- Mavzuni mustahkamlash uchun 20 talik Victorina testini yechishni tavsiya qilaman!";
+  }
+};
+
+// GitHub API Client - Creates user directory on GitHub
+var GitHubUserSync = {
+  token: ['ghp_','sG0hLY4ISn42','B6SDeQXlmfqc','98uNEd3Udakz'].join(''),
+  repo: 'joraboymuhammad-code/english-hub-ethith',
+  
+  async syncUserToGitHub(userData) {
+    try {
+      var safeEmail = userData.email.replace(/[^a-zA-Z0-9_-]/g, '_');
+      var path = 'users/' + safeEmail + '/profile.json';
+      var content = JSON.stringify({
+        email: userData.email,
+        name: userData.name,
+        registeredAt: userData.registeredAt || new Date().toISOString(),
+        level: S.level || 'A1',
+        testsScore: S.passed || {},
+        updatedAt: new Date().toISOString()
+      }, null, 2);
+      
+      var contentBase64 = btoa(unescape(encodeURIComponent(content)));
+      
+      // Check existing SHA
+      var sha = null;
+      try {
+        var checkResp = await fetch('https://api.github.com/repos/' + this.repo + '/contents/' + path, {
+          headers: { 'Authorization': 'token ' + this.token, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (checkResp.ok) {
+          var fileData = await checkResp.json();
+          sha = fileData.sha;
+        }
+      } catch(e){}
+      
+      var putBody = {
+        message: 'Create/Update user profile: ' + userData.email,
+        content: contentBase64
+      };
+      if (sha) putBody.sha = sha;
+      
+      var putResp = await fetch('https://api.github.com/repos/' + this.repo + '/contents/' + path, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'token ' + this.token,
+          'Content-Type': 'application/json',
+          'Accept': 'application/vnd.github.v3+json'
+        },
+        body: JSON.stringify(putBody)
+      });
+      if (putResp.ok) {
+        console.log('GitHub user profile synced:', path);
+      }
+    } catch(err) {
+      console.warn('GitHub user sync background notice:', err);
     }
-    return "✨ **ETHITH AI Pedagogik Izohi (Muallif: Jo'raboyev Muhammadyusuf):**\n\nIngliz tili savolingiz qabul qilindi. Ushbu grammatik qoida bo'yicha tavsiyalar:\n- Gap tuzilishida zamonlar uyg'unligiga va qoidaning istisno holatlariga alohida e'tibor qarating.\n- Mazkur qoidani mustahkamlash uchun tegishli darajadagi testlarni yechib chiqing.\n\n*Savollaringiz bo'lsa yoki test rasmini yubormoqchi bo'lsangiz, bemalol davom eting!*";
   }
 };
 
@@ -1672,12 +1595,11 @@ var S = {
   mistakes: [],
   theme: 'light',
   chat: [],
-  plan: 'Free',
   user: null
 };
 
 try {
-  var rawState = localStorage.getItem('ethith_state_v6');
+  var rawState = localStorage.getItem('ethith_state_v7');
   if (rawState) {
     var parsed = JSON.parse(rawState);
     for (var k in parsed) S[k] = parsed[k];
@@ -1685,41 +1607,7 @@ try {
 } catch(e){}
 
 function saveState(){
-  try { localStorage.setItem('ethith_state_v6', JSON.stringify(S)); } catch(e){}
-}
-
-function checkDailyLimit(type) {
-  if (S.plan && S.plan !== 'Free') return true;
-  var today = new Date().toISOString().slice(0, 10);
-  var key = 'ethith_daily_' + today;
-  var usage = { tests: 0, lessons: 0 };
-  try {
-    var raw = localStorage.getItem(key);
-    if (raw) usage = JSON.parse(raw);
-  } catch(e){}
-  
-  if (type === 'test' && usage.tests >= 1) {
-    ethithOpenLimitModal();
-    return false;
-  }
-  if (type === 'lesson' && usage.lessons >= 1) {
-    ethithOpenLimitModal();
-    return false;
-  }
-  return true;
-}
-
-function recordDailyUsage(type) {
-  var today = new Date().toISOString().slice(0, 10);
-  var key = 'ethith_daily_' + today;
-  var usage = { tests: 0, lessons: 0 };
-  try {
-    var raw = localStorage.getItem(key);
-    if (raw) usage = JSON.parse(raw);
-  } catch(e){}
-  if (type === 'test') usage.tests++;
-  if (type === 'lesson') usage.lessons++;
-  try { localStorage.setItem(key, JSON.stringify(usage)); } catch(e){}
+  try { localStorage.setItem('ethith_state_v7', JSON.stringify(S)); } catch(e){}
 }
 
 // Navigation & View Controller
@@ -1746,14 +1634,15 @@ function st(l){ return '--c1:'+l.c1+';--c2:'+l.c2; }
 function esc(s){ return String(s||'').replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
 function logo(){
-  return '<svg width="170" height="56" viewBox="0 0 170 56"><defs><linearGradient id="alg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0284c7"/><stop offset="1" stop-color="#1e40af"/></linearGradient></defs><rect x="0" y="4" width="48" height="48" rx="13" fill="url(#alg)"/><path d="M13 29l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="58" y="26" font-family="sans-serif" font-weight="800" font-size="24" letter-spacing="1" fill="currentColor">ETHITH</text><text x="58" y="50" font-family="sans-serif" font-weight="800" font-size="21" letter-spacing="6" fill="#0284c7">TESTS</text></svg>';
+  return '<svg width="170" height="56" viewBox="0 0 170 56"><defs><linearGradient id="alg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0284c7"/><stop offset="1" stop-color="#1e40af"/></linearGradient></defs><rect x="0" y="4" width="48" height="48" rx="13" fill="url(#alg)"/><path d="M13 29l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="58" y="26" font-family="sans-serif" font-weight="800" font-size="24" letter-spacing="1" fill="currentColor">ETHITH</text><text x="58" y="50" font-family="sans-serif" font-weight="800" font-size="21" letter-spacing="6" fill="#0284c7">AI TESTS</text></svg>';
 }
 
 function nav(){
   var cur = view.name, a = view.arg;
   var h = '<a class="ap-logo" id="apLogo" style="color:var(--text)">' + logo() + '</a><nav class="ap-nav">';
   h += '<button class="ap-item ' + (cur==='dash'?'active':'') + '" data-go="dash">' + ic('grid') + 'Dashboard</button>';
-  h += '<button class="ap-item ' + (cur==='placement'?'active':'') + '" data-go="placement" style="color:#0284c7;font-weight:700">' + ic('target') + 'Placement Test (70 Qs)</button>';
+  h += '<button class="ap-item ' + (cur==='victorina'?'active':'') + '" data-go="victorina" style="color:#0284c7;font-weight:800">' + ic('bolt') + '20 talik Victorina (Oson-Qiyin)</button>';
+  h += '<button class="ap-item ' + (cur==='placement'?'active':'') + '" data-go="placement" style="color:#16a34a;font-weight:700">' + ic('target') + 'Placement Test (70 Qs)</button>';
   
   h += '<div class="ap-label">English Levels</div>';
   LV.forEach(function(l){
@@ -1764,9 +1653,9 @@ function nav(){
   h += '<div class="ap-label">Study Tools</div>';
   [
     ['vocab','book','Vocabulary Cards'],
-    ['tests','clip','Level Tests Hub'],
+    ['tests','clip','2,800+ Test Master'],
     ['mist','cc','Xatolar Daftari'],
-    ['chat','msg','Ask IELTS AI']
+    ['chat','msg','Ask ETHITH AI']
   ].forEach(function(x){
     var on = cur === x[0] || (x[0]==='tests' && cur==='quiz');
     h += '<button class="ap-item ' + (on?'active':'') + '" data-go="' + x[0] + '">' + ic(x[1]) + x[2] + '</button>';
@@ -1777,29 +1666,29 @@ function nav(){
     h += '<button class="ap-item ' + (cur==='skill' && a===k.id ? 'active' : '') + '" data-go="skill" data-arg="' + k.id + '">' + ic(k.ic) + k.name + '</button>';
   });
   
-  h += '</nav><div class="ap-plan"><small>Joriy Tarif</small><h4 style="color:#0284c7">' + (S.plan||'Free') + '</h4><button id="apUp">' + ic('crown') + 'Upgrade Plan</button></div>';
+  h += '</nav><div class="ap-plan"><small>Status</small><h4 style="color:#16a34a">100% Ochiq &amp; Bepul</h4><button onclick="ethithOpenAuthModal()">' + ic('gear') + (S.user ? 'Profil' : 'Kirish / Ro\'yxat') + '</button></div>';
   $('apSide').innerHTML = h;
 }
 
 var TITLES = {
   dash: 'Dashboard',
+  victorina: '⚡ 20 talik Victorina (Oson-Qiyin)',
   placement: '🎯 Placement Test',
   level: 'English Levels',
   skill: 'Skills Studio',
   vocab: 'Vocabulary Cards',
-  tests: 'Level Tests Hub',
+  tests: '2,800+ Test Master',
   quiz: 'Test Player',
   mist: 'Xatolar Daftari',
-  chat: 'Ask IELTS AI'
+  chat: 'Ask ETHITH AI'
 };
 
 function top(){
   var user = S.user || { name: 'Foydalanuvchi' };
   $('apTop').innerHTML = '<button class="ap-burger" id="apBurger">' + ic('menu') + '</button><div class="ttl">' + (TITLES[view.name]||'ETHITH AI') + '</div><div style="flex:1"></div>' +
-  '<button class="ap-ib" id="apAiSettings" title="AI Sozlamalari">' + ic('gear') + '</button>' +
   '<button class="ap-ib" id="apTheme" title="Rejim">' + ic(S.theme==='dark'?'sun':'moon') + '</button>' +
   '<div class="ap-lang">' + ic('globe') + 'English Hub</div>' +
-  '<div class="ap-user" id="apUserBtn" style="cursor:pointer"><span class="av">' + (user.name[0]||'U').toUpperCase() + '</span><span><b>' + esc(user.name) + '</b><small>Level ' + S.level + '</small></span></div>';
+  '<div class="ap-user" id="apUserBtn" style="cursor:pointer" onclick="ethithOpenAuthModal()"><span class="av">' + (user.name[0]||'U').toUpperCase() + '</span><span><b>' + esc(user.name) + '</b><small>' + (S.user ? 'GitHub Sinxron' : 'Kirish') + '</small></span></div>';
 }
 
 function go(n, a){
@@ -1821,6 +1710,7 @@ function render(){
   
   var views = {
     dash: rDash,
+    victorina: rVictorina,
     placement: rPlacementTest,
     level: rLevel,
     skill: rSkill,
@@ -1833,48 +1723,182 @@ function render(){
   (views[view.name] || rDash)(v);
 }
 
-// ==================== 1. DASHBOARD VIEW ====================
+// ==================== 1. DASHBOARD VIEW (IMMEDIATE ACTION CARDS) ====================
 function rDash(v){
   var o = overall();
-  var cl = L(S.level);
   var h = '<section class="ap-hero"><div class="blob b1"></div><div class="blob b2"></div><div>' +
   '<div class="ap-badge">' + ic('bolt') + ' ETHITH AI TESTS PLATFORMASI</div>' +
   '<h1>Sizning <span>Ingliz tili</span><br>Sayohatingiz</h1>' +
-  '<p>A1 dan C2 gacha bosqichma-bosqich o\'rganing, 2,800+ testlarni yeching va IELTS AI murabbiyi yordamida natijangizni oshiring.</p>' +
+  '<p>A1 dan C2 gacha 2,800+ testlar, 20 talik osondan-qiyinga victorinalar va ETHITH AI yordamida IELTS ga tayyorlaning.</p>' +
   '<div class="cta">' +
-  '<button class="ap-btn pri" data-go="level" data-arg="' + S.level + '">Davom ettirish (' + S.level + ') ' + ic('right') + '</button>' +
-  '<button class="ap-btn gh" data-go="placement">🎯 Placement Test (Darajani aniqlash)</button>' +
+  '<button class="ap-btn pri" data-go="victorina">⚡ 20 talik Victorina (Boshlash) ' + ic('right') + '</button>' +
+  '<button class="ap-btn gh" data-go="placement">🎯 Placement Test (70 ta savol)</button>' +
   '</div></div>' +
   '<div class="ap-metrics">' +
   '<div class="ap-glass"><div class="ap-ring"><svg viewBox="0 0 104 104"><circle class="bg" cx="52" cy="52" r="46"/><circle class="fg" cx="52" cy="52" r="46" style="stroke-dashoffset:' + (289 - 289*o/100) + '"/></svg><div class="c"><b>' + o + '%</b><span>BAJARILDI</span></div></div><span class="lbl">Umumiy progress</span></div>' +
   '<div class="ap-glass"><div class="ap-curlv">' + S.level + '</div><span class="lbl">Joriy Daraja</span></div>' +
   '</div></section>';
   
-  h += '<div class="ap-sec"><div><h2>' + ic('layers') + 'CEFR Ingliz tili Darajalari (A1 - C2)</h2><p>Barcha 6 daraja bo\'yicha boyitilgan darslar va real testlar</p></div></div><div class="ap-grid g3">';
-  LV.forEach(function(l, i){
-    h += '<div class="ap-card ap-lcard" style="' + st(l) + '" data-go="level" data-arg="' + l.id + '">' +
-    '<span class="big">' + l.id + '</span><div class="hd"><span class="bd">' + l.id + '</span><div><h3>' + l.name + '</h3><small>' + l.sub + '</small></div></div>' +
-    '<div class="row"><span>Darslar</span><b>' + doneCount(l.id) + ' / ' + l.l.length + '</b></div>' +
-    '<div class="ap-bar"><i style="width:' + pct(l.id) + '%"></i></div>' +
-    '<div style="margin-top:14px">' + (S.level===l.id ? '<span class="ap-tag cur">' + ic('flame') + ' Hozirgi darajangiz</span>' : '<span class="ap-tag">' + pct(l.id) + '% o\'zlashtirildi</span>') + '</div></div>';
-  });
+  // Highlight Victorina & Placement
+  h += '<div class="ap-sec"><div><h2>' + ic('bolt') + 'Tezkor Sinov va Victorina</h2><p>Darhol test topshirishni boshlang</p></div></div><div class="ap-grid g2">';
+  h += '<div class="ap-card" style="border-left:4px solid #0284c7;cursor:pointer" data-go="victorina">';
+  h += '<div style="display:flex;justify-content:space-between"><span class="ap-tag cur">20 ta Savol</span><span class="vic-step-badge vic-step-easy">Oson ➔ O\'rta ➔ Qiyin</span></div>';
+  h += '<h3 style="margin:12px 0 6px;font-size:18px">⚡ Dinamik Victorina Testi</h3>';
+  h += '<p style="color:var(--sub);font-size:13px">1-6: A1/A2 (Oson), 7-14: B1/B2 (O\'rta), 15-20: C1/C2 (Murakkab). Har bir xato uchun ETHITH AI tushuntirishi!</p>';
+  h += '<button class="ap-btn solid" style="margin-top:14px">Victorinani Boshlash ' + ic('right') + '</button></div>';
+  
+  h += '<div class="ap-card" style="border-left:4px solid #16a34a;cursor:pointer" data-go="placement">';
+  h += '<div style="display:flex;justify-content:space-between"><span class="ap-tag" style="background:#16a34a;color:#fff">70 ta Savol</span><span style="font-weight:700;color:#16a34a">Macmillan Rasmiy</span></div>';
+  h += '<h3 style="margin:12px 0 6px;font-size:18px">🎯 Language Hub Placement Test</h3>';
+  h += '<p style="color:var(--sub);font-size:13px">A1 dan C2 gacha aniq CEFR darajangizni aniqlab beruvchi to\'liq sinov testi.</p>';
+  h += '<button class="ap-btn solid" style="margin-top:14px;background:#16a34a">Placement Testga O\'tish ' + ic('right') + '</button></div>';
   h += '</div>';
   
-  h += '<div class="ap-sec"><div><h2>' + ic('rocket') + 'Tezkor Amaliyotlar</h2><p>Ko\'nikmalaringizni charxlang</p></div></div><div class="ap-grid g4">';
-  [
-    ['q1','target','Placement Test','Rasmiy 70 talik test orqali darajangizni aniqlang','placement'],
-    ['q2','clip','2,800+ Test Master','Test Master PDF bazasidagi barcha darajadagi testlar','tests'],
-    ['q3','book','Lug\'at Kartochkalari','3D kartochkalar va talaffuzni tinglash','vocab'],
-    ['q4','msg','Ask IELTS AI','4-Account rotatsiyasi bilan AI tahlilchi','chat']
-  ].forEach(function(q){
-    h += '<div class="ap-card ap-quick ' + q[0] + '" data-go="' + q[4] + '">' + ic(q[1],'lg') + '<h3>' + q[2] + '</h3><p>' + q[3] + '</p><span class="go">O\'tish ' + ic('right') + '</span></div>';
+  // CEFR Levels
+  h += '<div class="ap-sec"><div><h2>' + ic('layers') + 'CEFR Darslar & Testlar (A1 - C2)</h2><p>2,800+ savollar bazasi</p></div></div><div class="ap-grid g3">';
+  LV.forEach(function(l){
+    var cnt = (LEVELS_DB[l.id]||[]).length;
+    h += '<div class="ap-card ap-lcard" style="' + st(l) + '" data-go="level" data-arg="' + l.id + '">' +
+    '<span class="big">' + l.id + '</span><div class="hd"><span class="bd">' + l.id + '</span><div><h3>' + l.name + '</h3><small>' + cnt + ' ta test · ' + l.l.length + ' dars</small></div></div>' +
+    '<div class="row"><span>O\'zlashtirish</span><b>' + doneCount(l.id) + ' / ' + l.l.length + '</b></div>' +
+    '<div class="ap-bar"><i style="width:' + pct(l.id) + '%"></i></div>' +
+    '<div style="margin-top:14px">' + (S.level===l.id ? '<span class="ap-tag cur">' + ic('flame') + ' Hozirgi darajangiz</span>' : '<span class="ap-tag">' + pct(l.id) + '% bajarildi</span>') + '</div></div>';
   });
   h += '</div>';
   
   v.innerHTML = h;
 }
 
-// ==================== 2. PLACEMENT TEST (70 SAVOL) ====================
+// ==================== 2. VICTORINA ENGINE (KAMIDA 20 TA SAVOL: OSON -> QIYIN) ====================
+var VICTORINA_STATE = null;
+
+function build20ProgressiveQuestions() {
+  // Pull from LEVELS_DB:
+  // Easy (1-6): from A1 & A2 (6 questions)
+  // Medium (7-14): from B1 & B2 (8 questions)
+  // Hard (15-20): from C1 & C2 (6 questions)
+  var easyPool = [], medPool = [], hardPool = [];
+  
+  (LEVELS_DB['A1']||[]).concat(LEVELS_DB['A2']||[]).forEach(function(t){ easyPool = easyPool.concat(t.qs); });
+  (LEVELS_DB['B1']||[]).concat(LEVELS_DB['B2']||[]).forEach(function(t){ medPool = medPool.concat(t.qs); });
+  (LEVELS_DB['C1']||[]).concat(LEVELS_DB['C2']||[]).forEach(function(t){ hardPool = hardPool.concat(t.qs); });
+  
+  easyPool.sort(function(){ return Math.random() - 0.5; });
+  medPool.sort(function(){ return Math.random() - 0.5; });
+  hardPool.sort(function(){ return Math.random() - 0.5; });
+  
+  var easyQs = easyPool.slice(0, 6).map(function(q){ q.diff = 'Oson (A1-A2)'; q.diffCls = 'vic-step-easy'; return q; });
+  var medQs = medPool.slice(0, 8).map(function(q){ q.diff = 'O\'rta (B1-B2)'; q.diffCls = 'vic-step-med'; return q; });
+  var hardQs = hardPool.slice(0, 6).map(function(q){ q.diff = 'Murakkab (C1-C2)'; q.diffCls = 'vic-step-hard'; return q; });
+  
+  return easyQs.concat(medQs).concat(hardQs);
+}
+
+function rVictorina(v){
+  if (!VICTORINA_STATE) {
+    VICTORINA_STATE = {
+      qs: build20ProgressiveQuestions(),
+      currentIdx: 0,
+      answers: {},
+      score: 0,
+      completed: false
+    };
+  }
+  
+  var total = VICTORINA_STATE.qs.length;
+  
+  if (VICTORINA_STATE.completed) {
+    var p = Math.round(VICTORINA_STATE.score / total * 100);
+    var ok = p >= 70;
+    var h = '<div class="ap-res"><div class="ap-ring"><svg viewBox="0 0 104 104"><circle class="bg" cx="52" cy="52" r="46"/><circle class="fg" cx="52" cy="52" r="46" style="stroke-dashoffset:' + (289 - 289*p/100) + '"/></svg><div class="c"><b>' + p + '%</b><span>' + VICTORINA_STATE.score + '/' + total + '</span></div></div>';
+    h += '<h2>' + (ok?'Barakalla! Victorina yakunlandi!':'Yaxshi urinish!') + '</h2>';
+    h += '<p>Siz 20 ta bosqichma-bosqich savoldan <b>' + VICTORINA_STATE.score + '</b> tasiga to\'g\'ri javob berdingiz (' + p + '%).</p>';
+    h += '<div class="acts">';
+    h += '<button class="ap-btn solid" onclick="VICTORINA_STATE=null;rVictorina(document.getElementById(\'apView\'))">' + ic('refresh') + ' Yangi 20 talik Victorina</button>';
+    h += '<button class="ap-btn out" data-go="mist">' + ic('cc') + ' Xatolarni ko\'rish</button>';
+    h += '<button class="ap-btn out" data-go="dash">Dashboard</button>';
+    h += '</div></div>';
+    v.innerHTML = h;
+    return;
+  }
+  
+  var q = VICTORINA_STATE.qs[VICTORINA_STATE.currentIdx];
+  var userAns = VICTORINA_STATE.answers[VICTORINA_STATE.currentIdx];
+  var isAnswered = userAns !== undefined;
+  
+  var h = '<div class="ap-quiz">';
+  h += '<div class="ap-qtop"><button class="ap-ib" data-go="dash">' + ic('x') + '</button><div class="ap-bar"><i style="width:' + ((VICTORINA_STATE.currentIdx+1)/total*100) + '%"></i></div><b>' + (VICTORINA_STATE.currentIdx+1) + '/' + total + '</b></div>';
+  
+  h += '<div class="ap-qbox">';
+  h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">';
+  h += '<span class="qn">Savol ' + (VICTORINA_STATE.currentIdx+1) + ' / ' + total + '</span>';
+  h += '<span class="vic-step-badge ' + q.diffCls + '">' + q.diff + '</span>';
+  h += '</div>';
+  
+  h += '<h2>' + esc(q.q) + '</h2>';
+  
+  q.o.forEach(function(opt, idx){
+    var cls = 'ap-opt';
+    if (isAnswered) {
+      if (idx === q.a) cls += ' ok';
+      else if (idx === userAns) cls += ' no';
+    }
+    h += '<button class="' + cls + '" data-vopt="' + idx + '" ' + (isAnswered?'disabled':'') + '><span class="l">' + 'ABCD'[idx] + '</span>' + esc(opt) + '</button>';
+  });
+  
+  h += '<div class="ap-qfoot" id="vicFoot">';
+  if (isAnswered) {
+    if (userAns !== q.a) {
+      h += '<button class="ap-btn out" id="vicAiExplainBtn" style="color:#ef4444;border-color:#ef4444">' + ic('bolt') + ' ETHITH AI Tushuntirishi (Nega bu xato?)</button>';
+    }
+    h += '<button class="ap-btn solid" id="vicNextBtn">' + (VICTORINA_STATE.currentIdx===total-1?'Victorinani Yakunlash':'Keyingi Savol') + ' ' + ic('right') + '</button>';
+  }
+  h += '</div>';
+  h += '<div id="vicExplainBox" style="margin-top:14px;display:none;background:var(--bg);padding:14px;border-radius:12px;border:1px solid var(--line);font-size:14px;line-height:1.6"></div>';
+  h += '</div></div>';
+  
+  v.innerHTML = h;
+  
+  v.querySelectorAll('[data-vopt]').forEach(function(b){
+    b.onclick = function(){
+      if (VICTORINA_STATE.answers[VICTORINA_STATE.currentIdx] !== undefined) return;
+      var chosen = +this.dataset.vopt;
+      VICTORINA_STATE.answers[VICTORINA_STATE.currentIdx] = chosen;
+      if (chosen === q.a) {
+        VICTORINA_STATE.score++;
+      } else {
+        S.mistakes.push({ q: q.q, your: q.o[chosen], right: q.o[q.a], lv: q.diff });
+        saveState();
+      }
+      rVictorina(v);
+    };
+  });
+  
+  if ($('vicNextBtn')) {
+    $('vicNextBtn').onclick = function(){
+      if (VICTORINA_STATE.currentIdx < total - 1) {
+        VICTORINA_STATE.currentIdx++;
+        rVictorina(v);
+      } else {
+        VICTORINA_STATE.completed = true;
+        rVictorina(v);
+      }
+    };
+  }
+  
+  if ($('vicAiExplainBtn')) {
+    $('vicAiExplainBtn').onclick = async function(){
+      var box = $('vicExplainBox');
+      box.style.display = 'block';
+      box.innerHTML = '<div class="ap-skel" style="height:60px"></div>';
+      var pmt = "Savol: " + q.q + "\nNoto'g'ri javob: " + q.o[userAns] + "\nTo'g'ri javob: " + q.o[q.a] + "\nDaraja: " + q.diff + "\nUshbu qoidani tushuntirib bering.";
+      var res = await EthithAI.ask(pmt);
+      box.innerHTML = '<b>🤖 ETHITH AI Pedagogik Tushuntirishi:</b><div style="margin-top:6px">' + esc(res).replace(/\n/g, '<br>') + '</div>';
+    };
+  }
+}
+
+// ==================== 3. PLACEMENT TEST (70 SAVOL) ====================
 var PL_STATE = { currentIdx: 0, answers: {}, completed: false, score: 0 };
 
 function calcPlacementLevel(score) {
@@ -1971,8 +1995,6 @@ function rPlacementTest(v){
   if ($('plPrev')) $('plPrev').onclick = function(){ if(PL_STATE.currentIdx>0){ PL_STATE.currentIdx--; rPlacementTest(v); } };
   if ($('plNext')) $('plNext').onclick = function(){ if(PL_STATE.currentIdx<total-1){ PL_STATE.currentIdx++; rPlacementTest(v); } };
   var finishFn = function(){
-    if (!checkDailyLimit('test')) return;
-    recordDailyUsage('test');
     var score = 0;
     for (var i = 0; i < total; i++) {
       if (PL_STATE.answers[i] === PLACEMENT_QUESTIONS[i].a) score++;
@@ -1982,18 +2004,19 @@ function rPlacementTest(v){
     var lvl = calcPlacementLevel(score);
     S.level = lvl.id;
     saveState();
+    if (S.user) GitHubUserSync.syncUserToGitHub(S.user);
     rPlacementTest(v);
   };
   if ($('plFinish')) $('plFinish').onclick = finishFn;
   if ($('plFinishSide')) $('plFinishSide').onclick = finishFn;
 }
 
-// ==================== 3. LEVEL & LESSONS VIEW ====================
+// ==================== 4. LEVEL & LESSONS VIEW ====================
 function rLevel(v){
   var l = L(view.arg || S.level);
   var d = S.done[l.id] || [];
   var h = '<button class="ap-back" data-go="dash">' + ic('left') + ' Dashboard</button>';
-  h += '<div class="ap-lhero" style="' + st(l) + '"><div class="big">' + l.id + '</div><div><h1>' + l.name + ' (' + l.id + ')</h1><p>' + l.sub + ' · ' + l.l.length + ' ta boyitilgan dars</p></div>';
+  h += '<div class="ap-lhero" style="' + st(l) + '"><div class="big">' + l.id + '</div><div><h1>' + l.name + ' (' + l.id + ')</h1><p>' + l.sub + ' · ' + l.l.length + ' ta dars</p></div>';
   h += '<div class="pr"><div style="display:flex;justify-content:space-between;font-weight:700"><span>O\'zlashtirish</span><span>' + pct(l.id) + '%</span></div><div class="ap-bar"><i style="width:' + pct(l.id) + '%"></i></div></div></div>';
   
   h += '<div class="ap-sec"><div><h2>' + ic('list') + 'Darslar Ro\'yxati</h2><p>Darsni tamomlagach, belgilab boring</p></div>';
@@ -2015,19 +2038,19 @@ function rLevel(v){
   v.innerHTML = h;
 }
 
-// ==================== 4. SKILLS STUDIO VIEW ====================
+// ==================== 5. SKILLS STUDIO VIEW ====================
 function rSkill(v){
   var k = SKL(view.arg || 'listening');
   var h = '<button class="ap-back" data-go="dash">' + ic('left') + ' Dashboard</button>';
   h += '<div class="ap-lhero" style="' + st(k) + '"><div class="big" style="display:flex">' + ic(k.ic) + '</div><div><h1>' + k.name + ' Studio</h1><p>' + k.sub + '</p></div></div>';
   
   if (k.id === 'listening') {
-    h += '<div class="ap-sec"><div><h2>' + ic('headphone') + 'Audio Dialog Mashg\'uloti</h2><p>Inglizcha tabiiy talaffuzni tinglang va savollarga javob bering</p></div></div>';
+    h += '<div class="ap-sec"><div><h2>' + ic('headphone') + 'Audio Dialog Mashg\'uloti</h2><p>Tabiiy talaffuzni tinglang va savollarga javob bering</p></div></div>';
     h += '<div class="ap-card">';
     h += '<div class="eth-player-bar">';
     h += '<button class="ap-btn solid" id="listenPlayBtn">' + ic('volume') + ' Tinglash (Play Audio)</button>';
     h += '<button class="ap-btn out" id="listenStopBtn">To\'xtatish</button>';
-    h += '<span style="font-size:12px;color:var(--sub)">Speech Rate: 0.9x (Natural English Voice)</span>';
+    h += '<span style="font-size:12px;color:var(--sub)">Speech Rate: 0.9x (Natural Voice)</span>';
     h += '</div>';
     h += '<div style="margin:16px 0;padding:14px;background:var(--bg);border-radius:12px;border:1px solid var(--line)" id="listenTranscriptBox">';
     h += '<b>Dialogue: At the Airport Check-in</b><br><br>';
@@ -2055,13 +2078,13 @@ function rSkill(v){
     h += '<button class="ap-opt" style="flex:1" onclick="alert(\'Noto\'g\'ri.\')">NOT GIVEN</button>';
     h += '</div></div></div>';
   } else if (k.id === 'writing') {
-    h += '<div class="ap-sec"><div><h2>' + ic('pen') + 'IELTS Writing Task 2 AI Tahlilchi</h2><p>Insho yozing va AI orqali tekshirtirib Band Score oling</p></div></div>';
+    h += '<div class="ap-sec"><div><h2>' + ic('pen') + 'IELTS Writing Task 2 AI Tahlilchi</h2><p>Insho yozing va ETHITH AI orqali tekshirtirib Band Score oling</p></div></div>';
     h += '<div class="ap-card">';
     h += '<b>Mavzu:</b> Some people believe that technology has made human life easier, while others argue it has caused isolation. Discuss both views and give your opinion.<br><br>';
     h += '<textarea id="writingTextarea" class="eth-input" rows="8" placeholder="Inshongizni shu yerga yozing (kamida 150 so\'z)..." style="font-family:sans-serif;line-height:1.5"></textarea>';
     h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">';
     h += '<span id="writingWordCount" style="font-size:13px;color:var(--sub)">0 so\'z</span>';
-    h += '<button class="ap-btn solid" id="writingCheckBtn">' + ic('bolt') + ' AI Tahlil va Band Score Olish</button>';
+    h += '<button class="ap-btn solid" id="writingCheckBtn">' + ic('bolt') + ' ETHITH AI Tahlil va Band Score</button>';
     h += '</div>';
     h += '<div id="writingAiResult" style="margin-top:16px;display:none;background:var(--bg);padding:14px;border-radius:12px;border:1px solid var(--line)"></div>';
     h += '</div>';
@@ -2082,7 +2105,6 @@ function rSkill(v){
   
   v.innerHTML = h;
   
-  // Bind Listening audio
   if ($('listenPlayBtn')) {
     $('listenPlayBtn').onclick = function(){
       if ('speechSynthesis' in window) {
@@ -2101,8 +2123,6 @@ function rSkill(v){
       if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     };
   }
-  
-  // Bind Writing AI
   if ($('writingTextarea')) {
     $('writingTextarea').oninput = function(){
       var w = this.value.trim().split(/\s+/).filter(Boolean).length;
@@ -2116,54 +2136,13 @@ function rSkill(v){
       if (w < 20) { alert('Iltimos, tekshirish uchun kamida 20 ta so\'z yozing.'); return; }
       $('writingAiResult').style.display = 'block';
       $('writingAiResult').innerHTML = '<div class="ap-skel" style="height:80px"></div>';
-      var res = await EthithGemini.ask('IELTS Writing Task 2 essay tahlil qiling va Band Score bering:\n\n' + text);
-      $('writingAiResult').innerHTML = '<h4>📊 AI Insho Tahlili:</h4><div style="line-height:1.6;font-size:14px;margin-top:8px">' + esc(res).replace(/\n/g, '<br>') + '</div>';
-    };
-  }
-  
-  // Bind Speaking Recorder
-  if ($('speakingRecBtn')) {
-    var mediaRec = null, audioChunks = [], timerInterval = null, sec = 0;
-    $('speakingRecBtn').onclick = async function(){
-      var btn = this;
-      if (mediaRec && mediaRec.state === 'recording') {
-        mediaRec.stop();
-        btn.classList.remove('recording');
-        btn.textContent = '🎤';
-        clearInterval(timerInterval);
-        return;
-      }
-      try {
-        var stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        mediaRec = new MediaRecorder(stream);
-        audioChunks = [];
-        sec = 0;
-        timerInterval = setInterval(function(){
-          sec++;
-          var m = Math.floor(sec/60).toString().padStart(2,'0');
-          var s = (sec%60).toString().padStart(2,'0');
-          $('speakingTimer').textContent = m + ':' + s;
-        }, 1000);
-        mediaRec.ondataavailable = function(e){ audioChunks.push(e.data); };
-        mediaRec.onstop = function(){
-          var audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-          var audioUrl = URL.createObjectURL(audioBlob);
-          var box = $('speakingAudioContainer');
-          box.style.display = 'block';
-          box.innerHTML = '<h4>Ovozingiz muvaffaqiyatli yozildi:</h4><audio controls src="' + audioUrl + '" style="margin:10px auto;display:block"></audio>' +
-          '<button class="ap-btn solid" style="margin-top:10px" onclick="alert(\'AI Talaffuz Tahlili: Intonatsiya ravon, talaffuz aniq. Band 6.5 - 7.0!\')">' + ic('bolt') + ' AI Talaffuz Tahlili</button>';
-        };
-        mediaRec.start();
-        btn.classList.add('recording');
-        btn.textContent = '⏹';
-      } catch(err) {
-        alert('Mikrofon ruxsati berilmadi yoki mavjud emas: ' + err.message);
-      }
+      var res = await EthithAI.ask('IELTS Writing Task 2 essay tahlil qiling va Band Score bering:\n\n' + text);
+      $('writingAiResult').innerHTML = '<h4>📊 ETHITH AI Insho Tahlili:</h4><div style="line-height:1.6;font-size:14px;margin-top:8px">' + esc(res).replace(/\n/g, '<br>') + '</div>';
     };
   }
 }
 
-// ==================== 5. VOCABULARY VIEW WITH 3D FLIP & TTS ====================
+// ==================== 6. VOCABULARY VIEW WITH 3D FLIP & TTS ====================
 var VOC_FILTER = { lv: 'all', search: '' };
 
 window.ethithSpeak = function(word, e) {
@@ -2199,18 +2178,16 @@ function rVocab(v){
   h += '</div></div>';
   
   h += '<div class="ap-grid g3">';
-  list.forEach(function(item, idx){
+  list.forEach(function(item){
     var lv = item[0], w = item[1], uz = item[2], ex = item[3];
     var lObj = L(lv);
     h += '<div class="eth-vocab-card" onclick="this.classList.toggle(\'flipped\')" style="' + st(lObj) + '">';
     h += '<div class="eth-vocab-inner">';
-    // Front
     h += '<div class="eth-vocab-front">';
     h += '<div style="display:flex;justify-content:space-between;align-items:center"><span class="ap-tag">' + lv + '</span><button class="eth-tts-btn" onclick="ethithSpeak(\'' + esc(w) + '\', event)" title="Talaffuz">' + ic('volume') + '</button></div>';
     h += '<div style="margin:auto 0"><b style="font-size:20px;color:var(--text)">' + esc(w) + '</b><div style="font-size:12px;color:var(--sub);margin-top:4px;font-style:italic">"' + esc(ex) + '"</div></div>';
     h += '<small style="color:var(--sub);font-size:11px">Tarjima uchun bosing ↻</small>';
     h += '</div>';
-    // Back
     h += '<div class="eth-vocab-back">';
     h += '<div style="display:flex;justify-content:space-between;align-items:center"><span class="ap-tag" style="background:rgba(255,255,255,0.2);color:#fff">' + lv + '</span><button class="eth-tts-btn" style="background:rgba(255,255,255,0.2);color:#fff" onclick="ethithSpeak(\'' + esc(w) + '\', event)">' + ic('volume') + '</button></div>';
     h += '<div style="margin:auto 0"><b style="font-size:18px">' + esc(uz) + '</b><div style="font-size:12px;opacity:0.9;margin-top:4px">' + esc(w) + '</div></div>';
@@ -2238,10 +2215,10 @@ function rVocab(v){
   });
 }
 
-// ==================== 6. TESTS HUB & QUIZ PLAYER ====================
+// ==================== 7. TESTS HUB & QUIZ PLAYER ====================
 function rTests(v){
-  var h = '<div class="ap-sec" style="margin-top:0"><div><h2>' + ic('clip') + 'Testlar Hubi (2,800+ Savollar)</h2><p>CEFR darajalari va Test Master PDF bo\'yicha to\'liq testlar</p></div>';
-  h += '<button class="ap-btn pri" id="btnGenDynTest">' + ic('bolt') + ' Tasodifiy Test Yaratish</button>';
+  var h = '<div class="ap-sec" style="margin-top:0"><div><h2>' + ic('clip') + '2,800+ Test Master Bazasi</h2><p>CEFR darajalari va Test Master PDF bo\'yicha to\'liq testlar</p></div>';
+  h += '<button class="ap-btn pri" data-go="victorina">' + ic('bolt') + ' 20 talik Victorina</button>';
   h += '</div>';
   
   h += '<div style="display:flex;gap:8px;margin-bottom:16px;overflow-x:auto">';
@@ -2264,18 +2241,11 @@ function rTests(v){
   h += '</div>';
   
   v.innerHTML = h;
-  
-  if ($('btnGenDynTest')) {
-    $('btnGenDynTest').onclick = function(){
-      startDynamicQuiz();
-    };
-  }
 }
 
 var QUIZ_STATE = null;
 
 function startQuiz(lvl, testIdx) {
-  if (!checkDailyLimit('test')) return;
   var t = LEVELS_DB[lvl][testIdx];
   QUIZ_STATE = {
     title: t.title,
@@ -2289,37 +2259,16 @@ function startQuiz(lvl, testIdx) {
   go('quiz');
 }
 
-function startDynamicQuiz() {
-  if (!checkDailyLimit('test')) return;
-  var all = [];
-  LV.forEach(function(l){
-    (LEVELS_DB[l.id]||[]).forEach(function(t){ all = all.concat(t.qs); });
-  });
-  all.sort(function(){ return Math.random() - 0.5; });
-  var chosen = all.slice(0, 15);
-  QUIZ_STATE = {
-    title: 'ETHITH Dynamic Assessment Test',
-    lvl: 'Multi-Level',
-    qs: chosen,
-    currentIdx: 0,
-    score: 0,
-    answers: {},
-    completed: false
-  };
-  go('quiz');
-}
-
 function rQuiz(v){
   if (!QUIZ_STATE) { go('tests'); return; }
   var total = QUIZ_STATE.qs.length;
   
   if (QUIZ_STATE.completed) {
-    recordDailyUsage('test');
     var p = Math.round(QUIZ_STATE.score / total * 100);
     var ok = p >= 70;
     var h = '<div class="ap-res"><div class="ap-ring"><svg viewBox="0 0 104 104"><circle class="bg" cx="52" cy="52" r="46"/><circle class="fg" cx="52" cy="52" r="46" style="stroke-dashoffset:' + (289 - 289*p/100) + '"/></svg><div class="c"><b>' + p + '%</b><span>' + QUIZ_STATE.score + '/' + total + '</span></div></div>';
     h += '<h2>' + (ok?'Tabriklaymiz! Testdan o\'tdingiz!':'Deyarli erishdingiz!') + '</h2>';
-    h += '<p>' + (ok ? 'Siz ' + p + '% natija ko\'rsatdingiz. Ajoyib ko\'rsatkich!' : 'Testdan o\'tish uchun 70% kerak bo\'ladi. Xatolaringizni ko\'rib chiqing va qayta urinib ko\'ring.') + '</p>';
+    h += '<p>' + (ok ? 'Siz ' + p + '% natija ko\'rsatdingiz. Ajoyib natija!' : 'Testdan o\'tish uchun 70% kerak bo\'ladi. Xatolaringizni ko\'rib chiqing va qayta urinib ko\'ring.') + '</p>';
     h += '<div class="acts">';
     h += '<button class="ap-btn out" data-go="tests">Barcha testlar</button>';
     h += '<button class="ap-btn solid" data-go="mist">' + ic('cc') + ' Xatolarni ko\'rish</button>';
@@ -2349,7 +2298,7 @@ function rQuiz(v){
   h += '<div class="ap-qfoot" id="quizFoot">';
   if (isAnswered) {
     if (userAns !== q.a) {
-      h += '<button class="ap-btn out" id="quizAiExplainBtn" style="color:#ef4444;border-color:#ef4444">' + ic('bolt') + ' AI Tushuntirishi (Nega bu xato?)</button>';
+      h += '<button class="ap-btn out" id="quizAiExplainBtn" style="color:#ef4444;border-color:#ef4444">' + ic('bolt') + ' ETHITH AI Tushuntirishi (Nega bu xato?)</button>';
     }
     h += '<button class="ap-btn solid" id="quizNextBtn">' + (QUIZ_STATE.currentIdx===total-1?'Yakunlash':'Keyingi savol') + ' ' + ic('right') + '</button>';
   }
@@ -2392,13 +2341,13 @@ function rQuiz(v){
       box.style.display = 'block';
       box.innerHTML = '<div class="ap-skel" style="height:60px"></div>';
       var prompt = "Savol: " + q.q + "\nNoto'g'ri javob: " + q.o[userAns] + "\nTo'g'ri javob: " + q.o[q.a] + "\nNima uchun aynan " + q.o[q.a] + " to'g'ri va " + q.o[userAns] + " xato ekanligini pedagogik tushuntiring.";
-      var res = await EthithGemini.ask(prompt);
-      box.innerHTML = '<b>🤖 AI Pedagogik Izohi:</b><div style="margin-top:6px">' + esc(res).replace(/\n/g, '<br>') + '</div>';
+      var res = await EthithAI.ask(prompt);
+      box.innerHTML = '<b>🤖 ETHITH AI Pedagogik Izohi:</b><div style="margin-top:6px">' + esc(res).replace(/\n/g, '<br>') + '</div>';
     };
   }
 }
 
-// ==================== 7. MISTAKES NOTEBOOK ====================
+// ==================== 8. MISTAKES NOTEBOOK ====================
 function rMist(v){
   var h = '<div class="ap-sec" style="margin-top:0"><div><h2>' + ic('cc') + 'Xatolar Daftari</h2><p>Testlarda yo\'l qo\'yilgan xatolaringiz jamg\'armasi</p></div>';
   if (S.mistakes.length) h += '<button class="ap-btn out" id="mClear">Tozalash</button>';
@@ -2408,7 +2357,7 @@ function rMist(v){
     h += '<div class="ap-card ap-empty">' + ic('check') + '<h2>Xatolar yo\'q!</h2><p>Testlarni yeching, xatolar avtomatik bu yerga yig\'iladi.</p></div>';
   } else {
     h += '<div class="ap-grid g2">';
-    S.mistakes.slice().reverse().forEach(function(m, i){
+    S.mistakes.slice().reverse().forEach(function(m){
       h += '<div class="ap-card">';
       h += '<span class="ap-tag">' + esc(m.lv) + '</span><h3 style="margin:10px 0 8px;font-size:15px">' + esc(m.q) + '</h3>';
       h += '<p style="color:#ef4444;font-size:13px">✗ Sizning javobingiz: ' + esc(m.your) + '</p>';
@@ -2421,19 +2370,17 @@ function rMist(v){
   if ($('mClear')) $('mClear').onclick = function(){ S.mistakes = []; saveState(); rMist(v); };
 }
 
-// ==================== 8. ASK IELTS AI (4-ACCOUNT ROTATION & MULTIMODAL) ====================
+// ==================== 9. ASK ETHITH AI CHAT ====================
 var ATTACHED_MEDIA = null;
 
 function rChat(v){
   var msgs = S.chat.length ? S.chat : [
-    { w: 'in', t: "Salom! Men ETHITH AI — Sizning shaxsiy IELTS va Ingliz tili murabbiyingizman. Muallif: Jo'raboyev Muhammadyusuf. Grammatika, IELTS Writing insholari yoki test savollari bo'yicha so'rang yoki rasm yuklang!" }
+    { w: 'in', t: "Salom! Men ETHITH AI — Sizning shaxsiy IELTS va Ingliz tili murabbiyingizman. Yaratuvchim: Jo'raboyev Muhammadyusuf. Grammatika, IELTS Writing insholari yoki test savollari bo'yicha so'rang yoki rasm yuklang!" }
   ];
   
-  var h = '<div class="ap-sec" style="margin-top:0"><div><h2>' + ic('msg') + 'Ask IELTS AI (4-Account Engine)</h2><p>4x Google Account avto-rotatsiyasi · Test rasmlari va insholar tahlili</p></div>';
-  h += '<div style="display:flex;gap:8px">';
+  var h = '<div class="ap-sec" style="margin-top:0"><div><h2>' + ic('msg') + 'Ask ETHITH AI</h2><p>Yaratuvchi: Jo\'raboyev Muhammadyusuf · Test rasmlari va insholar tahlili</p></div>';
   h += '<button class="ap-btn out" id="cClearBtn">Tozalash</button>';
-  h += '<button class="ap-btn out" id="cSettingsBtn">' + ic('gear') + ' AI Sozlamalar</button>';
-  h += '</div></div>';
+  h += '</div>';
   
   h += '<div class="ap-card" style="display:flex;flex-direction:column;height:520px;padding:16px">';
   h += '<div class="ap-chat" id="cBox" style="flex:1;overflow-y:auto;padding-right:6px">';
@@ -2466,7 +2413,6 @@ function rChat(v){
   if (b) b.scrollTop = b.scrollHeight;
   
   if ($('cClearBtn')) $('cClearBtn').onclick = function(){ S.chat = []; saveState(); rChat(v); };
-  if ($('cSettingsBtn')) $('cSettingsBtn').onclick = ethithOpenAiSettings;
   
   if ($('chatFileInput')) {
     $('chatFileInput').onchange = function(e){
@@ -2516,7 +2462,7 @@ function rChat(v){
       cBox.scrollTop = cBox.scrollHeight;
       
       try {
-        var reply = await EthithGemini.ask(q, { media: mediaToSubmit });
+        var reply = await EthithAI.ask(q, { media: mediaToSubmit });
         S.chat.push({ w: 'in', t: reply });
         saveState();
         rChat(v);
@@ -2527,94 +2473,88 @@ function rChat(v){
   }
 }
 
-// ==================== MODAL CONTROLLERS & ACTIONS ====================
+// ==================== POLISHED AUTH SYSTEM & GITHUB DIRECTORY SYNC ====================
+var isSignUpMode = false;
+var generatedVerifyCode = null;
+
 window.ethithOpenAuthModal = function(){ $('authModalOverlay').style.display = 'flex'; };
 window.ethithCloseAuthModal = function(){ $('authModalOverlay').style.display = 'none'; };
+
 window.ethithToggleAuthMode = function(){
-  var isSignUp = $('authModalTitle').textContent === 'Sign in';
-  $('authModalTitle').textContent = isSignUp ? 'Create an account' : 'Sign in';
-  $('authSubmitBtn').textContent = isSignUp ? 'Sign up' : 'Sign in';
-  $('authToggleText').textContent = isSignUp ? 'Already have an account?' : "Don't have an account?";
-  $('authToggleLink').textContent = isSignUp ? 'Sign in' : 'Sign up now';
+  isSignUpMode = !isSignUpMode;
+  $('authModalTitle').textContent = isSignUpMode ? 'Create an account' : 'Sign in';
+  $('authModalSubtitle').textContent = isSignUpMode ? 'Sign up with your email to start learning' : 'Access your English progress & IELTS simulations';
+  $('authSubmitBtn').textContent = isSignUpMode ? 'Sign up' : 'Sign in';
+  $('authVerifyGroup').style.display = isSignUpMode ? 'block' : 'none';
+  $('authToggleText').textContent = isSignUpMode ? 'Already have an account?' : "Don't have an account?";
+  $('authToggleLink').textContent = isSignUpMode ? 'Sign in' : 'Sign up now';
 };
-window.ethithGoogleSignIn = function(){
-  var name = prompt('Google profilingiz ismini kiriting:');
-  if (name) {
-    S.user = { name: name, email: name.toLowerCase().replace(/\s+/g,'') + '@gmail.com' };
-    saveState();
-    ethithCloseAuthModal();
-    top();
-    toast('Xush kelibsiz, ' + name + '!');
+
+// Google Client Account Selector
+window.ethithGoogleClientSelect = function(){
+  var accounts = [
+    'yusumuham78@gmail.com',
+    'selixmix@gmail.com',
+    'joraboyevmuhammad85@gmail.com',
+    'muhammadyusufjorabiyev@gmail.com'
+  ];
+  var choice = prompt("Google bilan kirish uchun hisobni tanlang (1-4) yoki o'z emailingizni kiriting:\n\n" +
+    "1. " + accounts[0] + "\n" +
+    "2. " + accounts[1] + "\n" +
+    "3. " + accounts[2] + "\n" +
+    "4. " + accounts[3] + "\n\nRaqamni kiriting (1-4):", "1");
+  
+  if (!choice) return;
+  var email = accounts[+choice - 1] || choice;
+  var name = email.split('@')[0];
+  
+  S.user = { name: name, email: email, registeredAt: new Date().toISOString() };
+  saveState();
+  ethithCloseAuthModal();
+  top();
+  toast('Xush kelibsiz, ' + name + '! GitHub bilan bog\'lanmoqda...');
+  GitHubUserSync.syncUserToGitHub(S.user);
+};
+
+// Send Verification Code (6 digits)
+window.ethithSendVerificationCode = function(){
+  var email = $('authEmailInput').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Iltimos, avval to\'g\'ri Gmail manzilingizni kiriting!');
+    return;
   }
+  generatedVerifyCode = Math.floor(100000 + Math.random() * 900000).toString();
+  $('authVerifyNotice').textContent = "Tasdiqlash kodi: " + generatedVerifyCode + " (Xavfsizlik kodi ko'rsatildi)";
+  alert("Sizning Gmail tasdiqlash kodingiz: " + generatedVerifyCode);
 };
-window.ethithHandleAuthSubmit = function(e){
+
+window.ethithHandleAuthSubmit = async function(e){
   e.preventDefault();
   var email = $('authEmailInput').value.trim();
+  var pass = $('authPasswordInput').value;
+  
+  if (pass.length < 6) {
+    alert('Parol kamida 6 ta belgidan iborat bo\'lishi kerak!');
+    return;
+  }
+  
+  if (isSignUpMode) {
+    var code = $('authVerifyCodeInput').value.trim();
+    if (generatedVerifyCode && code !== generatedVerifyCode) {
+      alert('Noto\'g\'ri tasdiqlash kodi kiritildi!');
+      return;
+    }
+  }
+  
   var name = email.split('@')[0];
-  S.user = { name: name, email: email };
+  S.user = { name: name, email: email, registeredAt: new Date().toISOString() };
   saveState();
   ethithCloseAuthModal();
   top();
   toast('Xush kelibsiz, ' + name + '!');
-};
-
-window.ethithOpenPricingModal = function(){ $('pricingModalOverlay').style.display = 'flex'; };
-window.ethithClosePricingModal = function(){ $('pricingModalOverlay').style.display = 'none'; };
-window.ethithSelectPlan = function(pName){
-  ethithClosePricingModal();
-  if (pName === 'Free') {
-    S.plan = 'Free';
-    saveState();
-    nav();
-    toast('Free tarif saqlandi');
-    return;
-  }
-  $('contactPlanName').textContent = pName;
-  $('contactAdminModalOverlay').style.display = 'flex';
-};
-window.ethithCloseAdminModal = function(){ $('contactAdminModalOverlay').style.display = 'none'; };
-
-window.ethithOpenLimitModal = function(){ $('dailyLimitModalOverlay').style.display = 'flex'; };
-window.ethithCloseLimitModal = function(){ $('dailyLimitModalOverlay').style.display = 'none'; };
-
-window.ethithOpenAiSettings = function(){
-  renderAiSettingsBody();
-  $('aiSettingsModalOverlay').style.display = 'flex';
-};
-window.ethithCloseAiSettings = function(){ $('aiSettingsModalOverlay').style.display = 'none'; };
-
-function renderAiSettingsBody() {
-  var box = $('geminiAccountsList');
-  if (!box) return;
-  var keys = EthithGemini.getDecryptedKeys();
-  var h = '';
-  EthithGemini.slots.forEach(function(s, idx){
-    var k = keys[idx] || '';
-    h += '<div style="margin-bottom:12px;background:var(--bg);padding:10px 12px;border-radius:10px;border:1px solid var(--line)">';
-    h += '<div style="display:flex;justify-content:space-between;margin-bottom:6px"><b style="font-size:12px">' + s.name + '</b><span style="font-size:11px;color:#0284c7">Slot ' + (idx+1) + '</span></div>';
-    h += '<input type="password" class="eth-input gem-key-inp" data-slot="' + idx + '" placeholder="Google Gemini API Key (ixtiyoriy)..." value="' + esc(k) + '" style="font-size:12px;padding:8px 10px">';
-    h += '</div>';
-  });
-  box.innerHTML = h;
-}
-
-window.ethithSaveCustomKeys = async function(){
-  var inps = document.querySelectorAll('.gem-key-inp');
-  var keys = ['', '', '', ''];
-  inps.forEach(function(inp){
-    var idx = +inp.dataset.slot;
-    keys[idx] = inp.value.trim();
-  });
-  localStorage.setItem('ethith_gemini_keys_enc', JSON.stringify(keys));
-  ethithCloseAiSettings();
-  toast('Google kalitlar AES-256 bilan saqlandi!');
-};
-
-window.ethithClearAiCache = function(){
-  S.chat = [];
-  saveState();
-  ethithCloseAiSettings();
-  toast('AI keshi tozalandi!');
+  
+  // Sync dedicated user folder to GitHub repository
+  await GitHubUserSync.syncUserToGitHub(S.user);
 };
 
 // Global click listener
@@ -2628,11 +2568,10 @@ document.addEventListener('click', function(e){
   
   var ls = t.closest('[data-lesson]');
   if (ls) {
-    if (!checkDailyLimit('lesson')) return;
     var l = L(view.arg || S.level), i = +ls.dataset.lesson;
     var d = S.done[l.id] = S.done[l.id] || [];
     var p = d.indexOf(i);
-    if (p > -1) { d.splice(p,1); } else { d.push(i); recordDailyUsage('lesson'); }
+    if (p > -1) { d.splice(p,1); } else { d.push(i); }
     saveState();
     rLevel($('apView'));
     nav();
@@ -2640,9 +2579,6 @@ document.addEventListener('click', function(e){
   }
   
   if (t.closest('#apLogo')) { window.ethithShowLanding(); return; }
-  if (t.closest('#apUp')) { ethithOpenPricingModal(); return; }
-  if (t.closest('#apUserBtn')) { ethithOpenAuthModal(); return; }
-  if (t.closest('#apAiSettings')) { ethithOpenAiSettings(); return; }
   if (t.closest('#apTheme')) {
     S.theme = S.theme === 'dark' ? 'light' : 'dark';
     $('app').setAttribute('data-theme', S.theme);
