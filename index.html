@@ -823,6 +823,244 @@
 .eth-tts-btn{background:rgba(2,132,199,0.12);border:none;color:#0284c7;border-radius:50%;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s}
 .eth-tts-btn:hover{transform:scale(1.15)}
 </style>
+
+<style id="ethith-v8-styles">
+/* Spinner and Loader */
+.eth-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(2, 132, 199, 0.15);
+  border-left-color: #0284c7;
+  border-radius: 50%;
+  animation: ethSpin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+.eth-spinner-sm {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(2, 132, 199, 0.2);
+  border-left-color: #0284c7;
+  border-radius: 50%;
+  animation: ethSpin 0.8s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+@keyframes ethSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Test Preparation Overlay */
+.eth-prep-card {
+  text-align: center;
+  padding: 50px 24px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  max-width: 600px;
+  margin: 40px auto;
+}
+.eth-prep-card h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text, #0f172a);
+  margin-bottom: 8px;
+}
+.eth-prep-card p {
+  color: var(--sub, #64748b);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.eth-prep-progress {
+  width: 100%;
+  height: 6px;
+  background: var(--line, #e2e8f0);
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 16px 0;
+}
+.eth-prep-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #0284c7, #2563eb);
+  transition: width 0.3s ease;
+}
+
+/* Topics Grid & Lock States */
+.eth-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.eth-topic-card {
+  background: var(--card, #fff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.eth-topic-card.unlocked:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.1);
+  border-color: #0284c7;
+}
+.eth-topic-card.locked {
+  opacity: 0.65;
+  background: var(--bg, #f8fafc);
+  cursor: not-allowed;
+}
+.eth-topic-num {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0284c7;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.eth-topic-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text, #0f172a);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.eth-topic-btn {
+  width: 100%;
+  padding: 9px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.eth-topic-btn.primary {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #fff;
+}
+.eth-topic-btn.primary:hover {
+  background: linear-gradient(135deg, #0369a1, #1d4ed8);
+}
+.eth-topic-btn.passed {
+  background: #dcfce7;
+  color: #15803d;
+}
+.eth-topic-btn.locked {
+  background: var(--line, #e2e8f0);
+  color: var(--sub, #94a3b8);
+  cursor: not-allowed;
+}
+
+/* Coming Soon Banner */
+.eth-cs-box {
+  text-align: center;
+  padding: 60px 24px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 20px;
+  max-width: 580px;
+  margin: 40px auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+.eth-cs-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(2,132,199,0.1), rgba(37,99,235,0.15));
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+.eth-cs-badge {
+  display: inline-block;
+  background: #fef3c7;
+  color: #b45309;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+/* Mistakes Notebook */
+.eth-mistake-card {
+  background: var(--card, #fff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+.eth-mistake-q {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text, #0f172a);
+  margin-bottom: 12px;
+}
+.eth-ans-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 8px;
+  margin-bottom: 6px;
+}
+.eth-ans-wrong { background: #fee2e2; color: #b91c1c; }
+.eth-ans-correct { background: #dcfce7; color: #15803d; }
+.eth-mistake-exp {
+  background: var(--bg, #f8fafc);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text, #334155);
+  margin-top: 10px;
+  border-left: 3px solid #0284c7;
+}
+
+/* Auth Modal Styles */
+.eth-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:16px;animation:ethFadeIn .2s ease}
+@keyframes ethFadeIn{from{opacity:0}to{opacity:1}}
+.eth-modal-box{background:var(--card,#fff);color:var(--text,#1e293b);width:100%;max-width:440px;border-radius:20px;padding:28px 24px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.3);border:1px solid var(--line,rgba(0,0,0,0.08));position:relative;max-height:90vh;overflow-y:auto}
+.eth-modal-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:26px;line-height:1;cursor:pointer;color:var(--sub,#64748b);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.eth-modal-close:hover{background:var(--line,rgba(0,0,0,0.06));color:var(--text,#0f172a)}
+.ts-google-btn{width:100%;padding:12px 16px;border-radius:10px;border:1px solid #d1d5db;background:#fff;color:#374151;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 1px 3px rgba(0,0,0,0.08);transition:all .15s}
+.ts-google-btn:hover{background:#f9fafb;border-color:#9ca3af}
+.ts-divider{text-align:center;position:relative;margin:18px 0;font-size:12px;color:#9ca3af;font-weight:700}
+.ts-divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:#e5e7eb;z-index:1}
+.ts-divider span{position:relative;z-index:2;background:var(--card,#fff);padding:0 12px}
+.ts-link-btn{background:none;border:none;color:#0284c7;font-size:12px;font-weight:700;cursor:pointer;padding:0}
+.ts-create-toggle{text-align:center;margin-top:20px;font-size:13px;color:var(--sub)}
+.ts-create-toggle a{color:#0284c7;font-weight:700;text-decoration:none;margin-left:4px}
+.eth-btn-primary{background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 4px 14px rgba(2,132,199,0.35);transition:transform .15s,box-shadow .15s}
+.eth-btn-primary:active{transform:scale(0.98)}
+.eth-btn-secondary{background:var(--line,rgba(0,0,0,0.06));color:var(--text,#1e293b);border:1px solid var(--line,rgba(0,0,0,0.1));padding:11px 18px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer;transition:all .15s}
+.eth-input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line,#d1d5db);background:var(--bg,#f8fafc);color:var(--text,#0f172a);font-size:14px;outline:none;transition:border-color .15s}
+.eth-input:focus{border-color:#0284c7;background:#fff;box-shadow:0 0 0 3px rgba(2,132,199,0.15)}
+
+/* Vocabulary Flip Card */
+.eth-vocab-card{perspective:1000px;cursor:pointer;height:180px}
+.eth-vocab-inner{position:relative;width:100%;height:100%;text-align:center;transition:transform 0.5s;transform-style:preserve-3d;border-radius:16px}
+.eth-vocab-card.flipped .eth-vocab-inner{transform:rotateY(180deg)}
+.eth-vocab-front,.eth-vocab-back{position:absolute;inset:0;width:100%;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line);background:var(--card)}
+.eth-vocab-back{transform:rotateY(180deg);background:linear-gradient(135deg,var(--c1,#0284c7),var(--c2,#1e40af));color:#fff}
+.eth-tts-btn{background:rgba(2,132,199,0.12);border:none;color:#0284c7;border-radius:50%;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s}
+.eth-tts-btn:hover{transform:scale(1.15)}
+</style>
 </head>
 <body><div id="landing">
  <nav class="navbar scrolled" id=mainNavbar>
@@ -1777,6 +2015,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
 
 
+
 <div id="app" data-theme="light">
  <div class="ap-shell">
   <aside class="ap-side" id="apSide"></aside>
@@ -1913,10 +2152,10 @@ function SKL(id){ return SK.find(function(x){ return x.id === id; }) || SK[0]; }
 // Strict ETHITH AI Engine - Connected to 4-Account Groq Rotation
 var EthithAI = {
   keys: (function(){
-    var k1 = ["gsk_","4JfTNz2e2atHMnzxYo6UWGdy","b3FYzsyw34WBuIrhGfPH5feQK1FU"].join("");
-    var k2 = ["gsk_","YfuhuOwJAzxMhAey92COWGdy","b3FYYjcP3fRoGfhmoEAI2QP5gNWu"].join("");
-    var k3 = ["gsk_","OxXidiBTYXm5eWMu2qIyWGdy","b3FYv7w1ZhXklsK8zDouUfp7ifJz"].join("");
-    var k4 = ["gsk_","IkOtgGxN6qd2b9C8CkBSWGdy","b3FYv3YH4Lry8w7ABu5ZxpAp8I8D"].join("");
+    var k1 = ["gsk_","QaGsmXwbm0A661OcHH9DWGdy","b3FY3qhgGv0PogF9y0hbWCygsC67"].join("");
+    var k2 = ["gsk_","sJlUcVaCaLUDj7mpcMKbWGdy","b3FYdKpdlceAHTi1xJGAfX4MOq61"].join("");
+    var k3 = ["gsk_","YY76bPuyW6x1To0X3x0AWGdy","b3FYx1Es42yirblj6h2uTyiqCQTR"].join("");
+    var k4 = ["gsk_","DwaAXj9wt34qgPvlkszGWGdy","b3FYG34Re16w5ea5siWXzT0ywUzS"].join("");
     return [k1, k2, k3, k4];
   })(),
   models: ['openai/gpt-oss-120b', 'qwen/qwen3.8-27b', 'openai/gpt-oss-20b'],
@@ -2220,7 +2459,6 @@ function nav(){
   
   h += '<div class="ap-label">Study Tools</div>';
   [
-    ['vocab','book','Vocabulary Cards'],
     ['mist','cc','Mistakes Notebook (' + (S.mistakes.length) + ')'],
     ['chat','msg','Ask AI Teacher'],
     ['testmaster','clip','2,800+ Test Master (Coming Soon)']
@@ -2240,14 +2478,36 @@ function nav(){
   if (side) side.innerHTML = h;
 }
 
-// Top Bar
-function top(){
-  var userHtml = S.user ? 
-    '<div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px;font-weight:700;color:var(--text)">' + esc(S.user.name) + '</span><button class="ap-btn out" style="padding:4px 8px;font-size:11px" onclick="ethithSignOut()">Sign Out</button></div>' :
-    '<button class="ap-btn solid" style="padding:7px 14px;font-size:12px" onclick="ethithOpenAuthModal()">' + ic('crown') + ' Sign In</button>';
+var TITLES = {
+  dash: 'Dashboard',
+  placement: 'Placement Test',
+  level: 'English Levels',
+  topic_test: 'Topic Examination',
+  mist: 'Mistakes Notebook',
+  chat: 'Ask AI Teacher',
+  skill: 'Skills Studio',
+  testmaster: '2,800+ Test Master'
+};
 
-  var h = '<div class="ap-topl"><button class="ap-bur" id="apBurger">' + ic('grid') + '</button><span class="ap-tbadge">' + ic('target') + ' Level: <b>' + (S.level||'A1') + '</b></span></div>';
-  h += '<div class="ap-topr">' + userHtml + '<button class="ap-icon" id="apTheme" title="Toggle Theme">' + (S.theme==='dark'?'☀️':'🌙') + '</button></div>';
+// Top Bar (Exact Match with IELTS_Simulator_ETHITH (7).html Screenshot)
+function top(){
+  var userName = S.user ? S.user.name : "Muhammad";
+  var userInitial = userName.charAt(0).toUpperCase();
+  var userLevel = S.level || 'A1';
+
+  var h = '<button class="ap-burger" id="apBurger">' + ic('menu') + '</button>';
+  h += '<div class="ttl">' + (TITLES[view.name] || 'Dashboard') + '</div>';
+  h += '<div style="flex:1"></div>';
+  h += '<button class="ap-ib" id="apBell" title="Notifications">' + ic('bell') + '<span class="dot"></span></button>';
+  h += '<button class="ap-ib" id="apTheme" title="Toggle Theme">' + ic(S.theme === 'dark' ? 'sun' : 'moon') + '</button>';
+  h += '<div class="ap-lang">' + ic('globe') + 'English</div>';
+  
+  if (S.user) {
+    h += '<div class="ap-user" onclick="ethithSignOut()" title="Click to Sign Out"><span class="av">' + userInitial + '</span><span><b>' + esc(userName) + '</b><small>Level ' + userLevel + '</small></span></div>';
+  } else {
+    h += '<div class="ap-user" onclick="ethithOpenAuthModal()" style="cursor:pointer" title="Click to Sign In"><span class="av">' + userInitial + '</span><span><b>' + esc(userName) + '</b><small>Level ' + userLevel + '</small></span></div>';
+  }
+
   var tb = $('apTop');
   if (tb) tb.innerHTML = h;
 }
@@ -2321,7 +2581,7 @@ function rDash(v){
   // Quick Study Tools
   h += '<div class="ap-sec" style="margin-top:30px"><div><h2>' + ic('clip') + ' Integrated Study Tools</h2><p>Targeted diagnostics and automated error tracking</p></div></div>';
   h += '<div class="ap-grid g2">';
-  h += '<div class="ap-card" style="cursor:pointer" data-go="vocab"><div style="display:flex;gap:14px;align-items:center"><div class="ico" style="font-size:24px">' + ic('book') + '</div><div><h3 style="margin:0 0 4px">Vocabulary Flashcards</h3><p style="margin:0;font-size:13px;color:var(--sub)">Interactive 3D cards with audio pronunciation, translations, and examples.</p></div></div></div>';
+  h += '<div class="ap-card" style="cursor:pointer" data-go="placement"><div style="display:flex;gap:14px;align-items:center"><div class="ico" style="font-size:24px;color:#154b89">' + ic('target') + '</div><div><h3 style="margin:0 0 4px">Macmillan Placement Test</h3><p style="margin:0;font-size:13px;color:var(--sub)">Official 70-question diagnostic test to benchmark your CEFR level.</p></div></div></div>';
   h += '<div class="ap-card" style="cursor:pointer" data-go="mist"><div style="display:flex;gap:14px;align-items:center"><div class="ico" style="font-size:24px;color:#ef4444">' + ic('cc') + '</div><div><h3 style="margin:0 0 4px">Mistakes Notebook (' + totalMistakes + ')</h3><p style="margin:0;font-size:13px;color:var(--sub)">Automatically logs any missed questions from tests with detailed pedagogical explanations.</p></div></div></div>';
   h += '</div>';
 
