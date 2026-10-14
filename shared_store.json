@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792012893084,
+      "created": 1792013403234,
       "students": [
         {
           "id": "std_live_test_1",
@@ -47,5 +47,5 @@
     }
   ],
   "exams": [],
-  "updatedAt": 1792012899622
+  "updatedAt": 1792013418847
 }
