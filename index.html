@@ -109,7 +109,9 @@
 #rotWord{display:inline-block;transition:opacity .35s,transform .35s}#rotWord.out{opacity:0;transform:translateY(12px)}
 .navbar-menu{margin-left:auto}
 @media(max-width:991px){.hq{margin:10px auto 0}.ew-chip{width:44px;height:44px;font-size:15px;border-radius:14px}.ew-chips .ew-chip:nth-child(n+5){display:none}}
-</style></head>
+</style>
+<link rel="stylesheet" href="ethith_styles.css">
+</head>
 <body><div id="landing">
  <nav class="navbar scrolled" id=mainNavbar>
  <div class=container>
@@ -120,14 +122,14 @@
  </a>
  <div class=navbar-menu-actions>
  
- <ul class=navbar-menu><li class=navbar-item><a class="navbar-link active" href="#">Home</a></li></ul>
+ <ul class=navbar-menu><li class=navbar-item><a class="navbar-link active" href="#">Home</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('ask_ai')">Ask AI Teacher</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('placement')">Placement Test</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('levels')">Levels (A1-C2)</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('classes')">Sinflar & Chat</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('exams')">Imtihonlar</a></li></ul>
  
  <div class=navbar-actions>
- <a href="#" class=navbar-login>
+ <a href="#" class="navbar-login" onclick="window.EthithApp.showAuthModal();return false;">
  <i class="pi pi-user"></i>
  Login
  </a>
- <a href="#" class="start-btn text-decoration-none">
+ <a href="#" class="start-btn text-decoration-none" onclick="window.ethithOpenApp('dash');return false;">
  <span class=start-btn-pulse aria-hidden=true></span>
  <i class="pi pi-arrow-up-right"></i>
  Start for Free
@@ -218,10 +220,10 @@
 </div></div></div><section class="modules-section" id="modules"><div class="container">
 <div class="m-head"><span class="m-eye">Complete Coverage</span><h2>All four IELTS modules. One platform.</h2><p>Practice every section of the IELTS exam with realistic tests and get detailed feedback to improve your performance.</p></div>
 <div class="m-grid">
-<div class="m-card"><div class="m-ic"><i class="ri-book-open-line"></i></div><h3>Reading</h3><p>Academic passages with multiple question types including matching, True/False/Not Given, and more.</p><ul><li>3 passages</li><li>40 questions</li><li>60 minutes</li></ul></div>
-<div class="m-card"><div class="m-ic"><i class="ri-quill-pen-line"></i></div><h3>Writing</h3><p>Task 1 graphs and Task 2 essays with AI scoring and detailed feedback on all criteria.</p><ul><li>2 tasks</li><li>Band breakdown</li><li>60 minutes</li></ul></div>
-<div class="m-card"><div class="m-ic"><i class="ri-headphone-line"></i></div><h3>Listening</h3><p>Four audio sections with varied accents, conversations, and academic discussions.</p><ul><li>4 sections</li><li>40 questions</li><li>30 + 10 min</li></ul></div>
-<div class="m-card"><div class="m-ic"><i class="ri-mic-2-line"></i></div><h3>Speaking</h3><p>Three-part interview with AI conversation partner and real-time assessment.</p><ul><li>3 parts</li><li>AI examiner</li><li>11-14 minutes</li></ul></div>
+<div class="m-card" onclick="window.EthithApp.showComingSoon('Reading Module')" style="cursor:pointer"><div class="m-ic"><i class="ri-book-open-line"></i></div><div style="display:flex;justify-content:space-between;align-items:center"><h3>Reading</h3><span class="eth-coming-soon-badge">Coming Soon</span></div><p>Academic passages with multiple question types including matching, True/False/Not Given, and more.</p><ul><li>3 passages</li><li>40 questions</li><li>60 minutes</li></ul></div>
+<div class="m-card" onclick="window.EthithApp.showComingSoon('Writing Module')" style="cursor:pointer"><div class="m-ic"><i class="ri-quill-pen-line"></i></div><div style="display:flex;justify-content:space-between;align-items:center"><h3>Writing</h3><span class="eth-coming-soon-badge">Coming Soon</span></div><p>Task 1 graphs and Task 2 essays with AI scoring and detailed feedback on all criteria.</p><ul><li>2 tasks</li><li>Band breakdown</li><li>60 minutes</li></ul></div>
+<div class="m-card" onclick="window.EthithApp.showComingSoon('Listening Module')" style="cursor:pointer"><div class="m-ic"><i class="ri-headphone-line"></i></div><div style="display:flex;justify-content:space-between;align-items:center"><h3>Listening</h3><span class="eth-coming-soon-badge">Coming Soon</span></div><p>Four audio sections with varied accents, conversations, and academic discussions.</p><ul><li>4 sections</li><li>40 questions</li><li>30 + 10 min</li></ul></div>
+<div class="m-card" onclick="window.EthithApp.showComingSoon('Speaking Module')" style="cursor:pointer"><div class="m-ic"><i class="ri-mic-2-line"></i></div><div style="display:flex;justify-content:space-between;align-items:center"><h3>Speaking</h3><span class="eth-coming-soon-badge">Coming Soon</span></div><p>Three-part interview with AI conversation partner and real-time assessment.</p><ul><li>3 parts</li><li>AI examiner</li><li>11-14 minutes</li></ul></div>
 </div></div></section><section class=features-section id=features>
  <div class="bg-blob blob-a"></div>
  <div class="bg-blob blob-b"></div>
@@ -398,14 +400,7 @@
  <h3>Spelling Mistake Bank</h3>
  <p>Every spelling slip is logged automatically so you can drill it later.</p>
  </div>
- <div class="bento-card cat-coaching" data-category="Adaptive Learning">
- <div class=card-top>
- <span class=card-icon><i class=ri-book-3-line></i></span>
- <span class=card-category>Adaptive Learning</span>
- </div>
- <h3>Vocab Bank</h3>
- <p>Topic-based IELTS vocabulary with meanings and real usage examples.</p>
- </div>
+ 
  <div class="bento-card cat-coaching" data-category="Adaptive Learning">
  <div class=card-top>
  <span class=card-icon><i class=ri-donut-chart-line></i></span>
@@ -1073,692 +1068,229 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
  <div class="ap-toast" id="apToast"></div>
 </div>
 
-
-<style id="test-and-score-modal-css">
-#tsAuthModalOverlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: rgba(14, 35, 64, 0.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-}
-.ts-modal-card {
-  background: #ffffff;
-  border-radius: 24px;
-  width: 100%;
-  max-width: 440px;
-  padding: 36px 32px;
-  position: relative;
-  box-shadow: 0 24px 60px rgba(14, 50, 92, 0.35);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: #212529;
-}
-#app[data-theme="dark"] .ts-modal-card {
-  background: #0f2038;
-  color: #e7eefb;
-  border: 1px solid #1b3252;
-}
-.ts-modal-close {
-  position: absolute;
-  top: 18px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #6c757d;
-  line-height: 1;
-}
-.ts-auth-header {
-  text-align: center;
-  margin-bottom: 24px;
-}
-.ts-auth-logo-svg {
-  display: block;
-  margin: 0 auto 12px;
-}
-.ts-google-btn {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1.5px solid #dee2e6;
-  background: #fff;
-  color: #212529;
-  font-size: 14.5px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  transition: all 0.2s;
-  margin-bottom: 18px;
-}
-.ts-google-btn:hover {
-  background: #f8f9fa;
-  border-color: #ced4da;
-}
-.ts-divider {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-.ts-divider span {
-  flex: 1;
-  height: 1px;
-  background: #dee2e6;
-}
-.ts-divider small {
-  font-size: 11px;
-  font-weight: 700;
-  color: #6c757d;
-  letter-spacing: 0.1em;
-}
-.ts-input-field {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1.5px solid #dee2e6;
-  background: #f8f9fa;
-  color: #212529;
-  font-size: 14px;
-  outline: none;
-  box-sizing: border-box;
-  margin-bottom: 14px;
-  transition: border-color 0.2s;
-}
-.ts-input-field:focus {
-  border-color: #0d6efd;
-  background: #fff;
-}
-.ts-submit-btn {
-  width: 100%;
-  padding: 13px;
-  border-radius: 12px;
-  border: none;
-  background: #0d6efd;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 8px 20px -6px #0d6efd;
-  transition: all 0.2s;
-}
-.ts-submit-btn:hover {
-  background: #0b5ed7;
-  transform: translateY(-1px);
-}
-.ts-toggle-wrap {
-  text-align: center;
-  margin-top: 18px;
-  font-size: 13.5px;
-  color: #6c757d;
-}
-.ts-toggle-wrap a {
-  color: #0d6efd;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  margin-left: 4px;
-}
-</style>
-
-<div id="tsAuthModalOverlay">
-  <div class="ts-modal-card">
-    <button class="ts-modal-close" onclick="window.ethithCloseTsModal()">&times;</button>
-    <div class="ts-auth-header">
-      <svg class="ts-auth-logo-svg" width="160" height="56" viewBox="0 0 160 56" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="tsg160" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4e93e4"/><stop offset="1" stop-color="#154b89"/></linearGradient></defs>
-        <rect x="0" y="4" width="48" height="48" rx="13" fill="url(#tsg160)"/>
-        <path d="M13 29 l8 8 l15 -17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-        <text x="58" y="25" font-family="sans-serif" font-weight="800" font-size="24" letter-spacing="1" fill="#0E325C">ETHITH</text>
-        <text x="58" y="50" font-family="sans-serif" font-weight="800" font-size="21" letter-spacing="6" fill="#4e93e4">TESTS</text>
-      </svg>
-      <h2 id="tsModalTitle" style="margin:8px 0 4px;font-size:22px;font-weight:800">Sign in</h2>
-      <p id="tsModalSubtitle" style="margin:0;font-size:13.5px;color:#6c757d">Sign in with your email or social account</p>
-    </div>
-    <button type="button" class="ts-google-btn" onclick="window.ethithGoogleSelect()">
-      <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
-      Sign in with Google
-    </button>
-    <div class="ts-divider"><span></span><small>OR</small><span></span></div>
-    <form id="tsAuthForm" onsubmit="window.ethithHandleTsSubmit(event)">
-      <input type="email" id="tsEmailInput" class="ts-input-field" placeholder="Email" required autofocus>
-      <input type="password" id="tsPassInput" class="ts-input-field" placeholder="Password" minlength="6" required>
-      <button type="submit" id="tsSubmitBtn" class="ts-submit-btn">Sign in</button>
-    </form>
-    <div class="ts-toggle-wrap">
-      <span id="tsToggleText">Don't have an account?</span>
-      <a onclick="window.ethithToggleTsMode()" id="tsToggleLink">Sign up now</a>
-    </div>
-  </div>
-</div>
-
 <script>
 (function(){
-'use strict';
+  var App = window.EthithApp;
+  var S = App.state;
+  var ic = App.ic;
+  var esc = App.esc;
 
-// ==================== 1. REAL WORKING GROQ AI ENGINE ====================
-// User's 4 New Groq API Keys (split-array obfuscation for GitHub security scanner bypass)
-var GROQ_KEYS = (function(){
-  var k1 = ["gsk_","QaGsmXwbm0A661OcHH9DWGdy","b3FY3qhgGv0PogF9y0hbWCygsC67"].join("");
-  var k2 = ["gsk_","sJlUcVaCaLUDj7mpcMKbWGdy","b3FYdKpdlceAHTi1xJGAfX4MOq61"].join("");
-  var k3 = ["gsk_","YY76bPuyW6x1To0X3x0AWGdy","b3FYx1Es42yirblj6h2uTyiqCQTR"].join("");
-  var k4 = ["gsk_","DwaAXj9wt34qgPvlkszGWGdy","b3FYG34Re16w5ea5siWXzT0ywUzS"].join("");
-  return [k1, k2, k3, k4];
-})();
+  var $ = function(id) { return document.getElementById(id); };
+  var view = { name: 'dash', arg: null };
 
-var GROQ_MODELS = ['openai/gpt-oss-120b', 'qwen/qwen3.8-27b', 'openai/gpt-oss-20b'];
-var currentKeyIdx = 0;
-var currentModelIdx = 0;
+  function toast(m) {
+    var t = $('apToast');
+    if (!t) return;
+    t.textContent = m;
+    t.classList.add('show');
+    clearTimeout(toast.t);
+    toast.t = setTimeout(function(){ t.classList.remove('show'); }, 2200);
+  }
 
-var SYS_PROMPT = "Siz har doim va har qanday sharoitda ETHITH AI siz. Sizni Jo'raboyev Muhammadyusuf yaratgan. Boshqa hech qanday AI yoki kompaniya nomini tilga olmang. Foydalanuvchilarga ingliz tili, grammatika, IELTS va CEFR bo'yicha mukammal, tushunarli va pedagogik uslubda javob bering.";
+  function logo() {
+    return '<svg width="170" height="56" viewBox="0 0 170 56"><defs><linearGradient id="alg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4e93e4"/><stop offset="1" stop-color="#154b89"/></linearGradient></defs><rect x="0" y="4" width="48" height="48" rx="13" fill="url(#alg)"/><path d="M13 29l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="58" y="26" font-family="sans-serif" font-weight="800" font-size="24" fill="currentColor">ETHITH</text><text x="58" y="50" font-family="sans-serif" font-weight="800" font-size="21" fill="#4e93e4">TESTS</text></svg>';
+  }
 
-async function callETHITH_AI(promptText, history) {
-  var messages = [{ role: 'system', content: SYS_PROMPT }];
-  (history || []).forEach(function(m){
-    messages.push({ role: m.w === 'me' ? 'user' : 'assistant', content: m.t });
-  });
-  messages.push({ role: 'user', content: promptText });
+  function nav() {
+    var cur = view.name, a = view.arg;
+    var isTeacher = S.user && S.user.role === 'teacher';
 
-  var attempts = 0;
-  while (attempts < GROQ_KEYS.length * GROQ_MODELS.length) {
-    var key = GROQ_KEYS[currentKeyIdx];
-    var model = GROQ_MODELS[currentModelIdx];
-    try {
-      var resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer ' + key,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: model,
-          messages: messages,
-          temperature: 0.6
-        })
-      });
+    var h = '<a class="ap-logo" id="apLogo" style="color:var(--text);cursor:pointer">' + logo() + '</a><nav class="ap-nav">';
+    h += '<button class="ap-item ' + (cur === 'dash' ? 'active' : '') + '" data-go="dash">' + ic('grid') + 'Dashboard</button>';
+    h += '<button class="ap-item ' + (cur === 'ask_ai' ? 'active' : '') + '" data-go="ask_ai" style="color:#2563eb;font-weight:700">' + ic('sparkles') + 'Ask AI Teacher</button>';
+    
+    h += '<div class="ap-label">English Levels</div>';
+    ['A1','A2','B1','B2','C1','C2'].forEach(function(lv) {
+      var unl = isTeacher || (S.unlocked[lv] || 1);
+      h += '<button class="ap-item ' + ((cur === 'levels' || cur === 'level') && a === lv ? 'active' : '') + '" data-go="levels" data-arg="' + lv + '">' + ic('layers') + lv + ' Daraja <small style="margin-left:auto;color:var(--muted)">' + (isTeacher ? '40/40' : unl + '/40') + '</small></button>';
+    });
 
-      if (resp.status === 429 || resp.status === 503) {
-        currentKeyIdx = (currentKeyIdx + 1) % GROQ_KEYS.length;
-        attempts++;
-        continue;
-      }
+    h += '<div class="ap-label">Ta'lim & Imtihonlar</div>';
+    h += '<button class="ap-item ' + (cur === 'placement' ? 'active' : '') + '" data-go="placement">' + ic('clip') + 'Placement Test (70)</button>';
+    h += '<button class="ap-item ' + (cur === 'classes' ? 'active' : '') + '" data-go="classes">' + ic('users') + 'Sinflar & Chat</button>';
+    h += '<button class="ap-item ' + (cur === 'exams' ? 'active' : '') + '" data-go="exams">' + ic('trophy') + 'Imtihonlar (Exams)</button>';
+    h += '<button class="ap-item ' + (cur === 'mistakes' ? 'active' : '') + '" data-go="mistakes">' + ic('check') + 'Xatolar Daftari (' + (S.mistakes ? S.mistakes.length : 0) + ')</button>';
 
-      if (!resp.ok) {
-        currentModelIdx = (currentModelIdx + 1) % GROQ_MODELS.length;
-        currentKeyIdx = (currentKeyIdx + 1) % GROQ_KEYS.length;
-        attempts++;
-        continue;
-      }
+    h += '<div class="ap-label">Skills (Tez Kunda)</div>';
+    [['reading','book','Reading'],['writing','clip','Writing'],['listening','home','Listening'],['speaking','user','Speaking']].forEach(function(sk) {
+      h += '<button class="ap-item" data-coming-soon="' + sk[2] + '" style="opacity:0.75">' + ic(sk[1]) + sk[2] + ' <span class="eth-coming-soon-badge" style="margin-left:auto;font-size:9px">Soon</span></button>';
+    });
 
-      var data = await resp.json();
-      if (data.choices && data.choices[0] && data.choices[0].message) {
-        var reply = data.choices[0].message.content || '';
-        return reply.replace(new RegExp('<think>[\\s\\S]*?<\\/think>', 'g'), '').trim();
-      }
-    } catch(err) {
-      currentKeyIdx = (currentKeyIdx + 1) % GROQ_KEYS.length;
-      attempts++;
+    h += '</nav><div class="ap-plan"><small>Foydalanuvchi Holati</small><h4>' + (isTeacher ? 'O'qituvchi (Master)' : 'O'quvchi (Student)') + '</h4><button id="apLogoutBtn" style="background:#fee2e2;color:#dc2626;border:none;padding:6px 12px;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;width:100%;margin-top:8px">Chiqish (Logout)</button></div>';
+
+    $('apSide').innerHTML = h;
+  }
+
+  var TITLES = {
+    dash: 'Boshqaruv Paneli',
+    ask_ai: 'ETHITH AI Ustoz',
+    levels: 'CEFR Ingliz Tili Darajalari (40 ta Mavzu)',
+    level: 'CEFR Ingliz Tili Darajalari (40 ta Mavzu)',
+    placement: 'Placement Test (Darajani Aniqlash)',
+    classes: 'Sinflar & Telegram Chat',
+    exams: 'Imtihonlar & Reyting',
+    mistakes: 'Xatolar Daftari'
+  };
+
+  function top() {
+    var user = S.user || { name: 'Mehmon', role: 'student', dailyMinutes: 0 };
+    $('apTop').innerHTML = '' +
+      '<button class="ap-burger" id="apBurger">' + ic('menu') + '</button>' +
+      '<div class="ttl">' + (TITLES[view.name] || 'ETHITH TESTS') + '</div>' +
+      '<div style="flex:1"></div>' +
+      '<div style="margin-right:12px;font-size:13px;background:var(--bg2);padding:6px 12px;border-radius:12px;display:flex;align-items:center;gap:6px">' +
+      ic('clock') + ' Bugun: <b>' + (user.dailyMinutes || 0) + ' daqiqa</b>' +
+      '</div>' +
+      '<button class="ap-ib" id="apTheme">' + ic(S.theme === 'dark' ? 'sun' : 'moon') + '</button>' +
+      '<div class="ap-user">' +
+      '  <span class="av">' + (user.name ? user.name.charAt(0).toUpperCase() : 'U') + '</span>' +
+      '  <span><b>' + esc(user.name) + '</b><small>' + (user.role === 'teacher' ? 'O'qituvchi' : 'O'quvchi (' + S.level + ')') + '</small></span>' +
+      '</div>';
+  }
+
+  function go(n, a) {
+    if (!S.user) {
+      App.showAuthModal();
+      return;
+    }
+    view = { name: n, arg: a || null };
+    window._ethithCurrentView = n;
+    render();
+    window.scrollTo(0, 0);
+    $('apSide').classList.remove('open');
+    $('apOv').classList.remove('show');
+  }
+
+  function render() {
+    nav();
+    top();
+    var v = $('apView');
+    v.style.animation = 'none';
+    void v.offsetWidth;
+    v.style.animation = '';
+
+    if (view.name === 'dash') {
+      rDash(v);
+    } else if (view.name === 'ask_ai') {
+      window.EthithViews.renderAskAITeacher(v);
+    } else if (view.name === 'levels' || view.name === 'level') {
+      window.EthithViews.renderLevelsView(v, view.arg || S.level);
+    } else if (view.name === 'placement') {
+      window.EthithViews.renderPlacementView(v);
+    } else if (view.name === 'classes') {
+      window.EthithViews.renderClassesView(v);
+    } else if (view.name === 'exams') {
+      window.EthithViews.renderExamsView(v);
+    } else if (view.name === 'mistakes') {
+      window.EthithViews.renderMistakesNotebook(v);
     }
   }
-  return "Assalomu alaykum! Men ETHITH AI (Jo'raboyev Muhammadyusuf yaratgan) ta'lim yordamchisiman. Qanday savolingiz bor?";
-}
 
-// ==================== 2. ICONS & DATA (FROM FILE 7) ====================
-var IC={
-home:'<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
-grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
-layers:'<path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/>',
-book:'<path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>',
-clip:'<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>',
-file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/>',
-cc:'<path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/>',
-msg:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
-bell:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
-moon:'<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/>',
-sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
-menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',
-right:'<path d="M5 12h14M12 5l7 7-7 7"/>',left:'<path d="M19 12H5M12 19l-7-7 7-7"/>',
-check:'<path d="M20 6 9 17l-5-5"/>',x:'<path d="M18 6 6 18M6 6l12 12"/>',
-trophy:'<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0z"/>',
-clock:'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
-flame:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
-search:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',plus:'<path d="M12 5v14M5 12h14"/>',
-crown:'<path d="m2 4 3 12h14l3-12-6 7-4-7-4 7z"/><path d="M5 20h14"/>',
-target:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
-rocket:'<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>',
-star:'<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
-refresh:'<path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/>',
-globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/>',
-cap:'<path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>',
-bolt:'<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>',
-headphone:'<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>',
-pen:'<path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/>',
-mic:'<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/>',
-list:'<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>'};
-function ic(n,c){return '<svg class="ic '+(c||'')+'" viewBox="0 0 24 24">'+IC[n]+'</svg>'}
+  function rDash(v) {
+    var user = S.user || {};
+    var isTeacher = user.role === 'teacher';
 
-var LV=[
-{id:'A1',name:'Beginner',sub:'Breakthrough',c1:'#22c55e',c2:'#15803d',l:['Greetings & Introductions','Numbers & Dates','Family & Friends','Food & Drinks','Daily Routine','Present Simple']},
-{id:'A2',name:'Elementary',sub:'Waystage',c1:'#14b8a6',c2:'#0e7490',l:['Past Simple','Shopping & Money','Travel & Directions','Comparatives','Future Plans (going to)','Health & Body']},
-{id:'B1',name:'Intermediate',sub:'Threshold',c1:'#3b82f6',c2:'#1d4ed8',l:['Present Perfect','Conditionals 0 & 1','Modal Verbs','Passive Voice','Reported Speech','Work & Careers']},
-{id:'B2',name:'Upper-Intermediate',sub:'Vantage',c1:'#6366f1',c2:'#4338ca',l:['Conditionals 2 & 3','Relative Clauses','Phrasal Verbs','Narrative Tenses','Linking Words','Debating Skills']},
-{id:'C1',name:'Advanced',sub:'Effective Operational',c1:'#a855f7',c2:'#7e22ce',l:['Inversion','Advanced Collocations','Nuance & Register','Cleft Sentences','Academic Writing','Idioms in Context']},
-{id:'C2',name:'Proficiency',sub:'Mastery',c1:'#f59e0b',c2:'#b45309',l:['Subtle Distinctions','Stylistic Devices','Advanced Discourse','Literary Texts','Idioms & Nuance','Mastery Review']}];
-function L(id){return LV.filter(function(x){return x.id===id})[0]}
+    var h = '<section class="ap-hero"><div class="blob b1"></div><div class="blob b2"></div><div>' +
+      '<div class="ap-badge">' + ic('flame') + ' ETHITH TESTS PLATFORMASI</div>' +
+      '<h1>Xush kelibsiz, <span>' + esc(user.name) + '</span>!</h1>' +
+      '<p>' + (isTeacher ? 'O'qituvchi boshqaruv markazi: A1-C2 mavzular, sinflar, Telegram chat va PDF orqali imtihonlar.' : 'A1 dan C2 gacha 40 ta mavzu, Ask AI Teacher, Telegram sinf chati va rasmiy testlar.') + '</p>' +
+      '<div class="cta">' +
+      '  <button class="ap-btn pri" data-go="levels" data-arg="' + S.level + '">Darslarni Davom Ettirish (' + S.level + ') ' + ic('right') + '</button>' +
+      '  <button class="ap-btn gh" data-go="ask_ai">' + ic('sparkles') + ' Ask AI Teacher</button>' +
+      '</div></div>' +
+      '<div class="ap-metrics">' +
+      '  <div class="ap-glass"><div class="ap-curlv">' + S.level + '</div><span class="lbl">Hozirgi Daraja</span></div>' +
+      '  <div class="ap-glass"><div class="ap-curlv">' + (S.mistakes ? S.mistakes.length : 0) + '</div><span class="lbl">Xatolar Daftari</span></div>' +
+      '</div></section>';
 
-var SK=[
-{id:'listening',name:'Listening',ic:'headphone',c1:'#06b6d4',c2:'#0e7490',sub:'Train your ear for real English',items:['Everyday Conversations','Short Talks & Announcements','Lectures & Presentations','Note & Form Completion']},
-{id:'reading',name:'Reading',ic:'book',c1:'#10b981',c2:'#047857',sub:'Read faster and understand more',items:['Skimming & Scanning','Main Idea Questions','True / False / Not Given','Vocabulary in Context']},
-{id:'writing',name:'Writing',ic:'pen',c1:'#f43f5e',c2:'#be123c',sub:'Build clear and accurate writing',items:['Sentences & Paragraphs','Emails & Letters','Describing Charts','Essay Writing']},
-{id:'speaking',name:'Speaking',ic:'mic',c1:'#f59e0b',c2:'#c2410c',sub:'Speak with confidence',items:['Introducing Yourself','Daily Topics','Describing Experiences','Discussion & Opinions']}];
-function SKL(id){return SK.filter(function(x){return x.id===id})[0]}
+    h += '<div class="ap-sec"><div><h2>' + ic('sparkles') + ' Tezkor Amallar</h2><p>Asosiy o'quv bo'limlariga bir bosishda kiring</p></div></div>';
+    h += '<div class="ap-grid g4">';
 
-var TESTS={
-'A1-A2':{from:'A1',to:'A2',desc:'Check your basics and move up to Elementary.',q:[
-['She ___ a student.',['am','is','are','be'],1],['I ___ breakfast at 7 every day.',['have','has','having','am have'],0],['___ you like coffee?',['Do','Does','Are','Is'],0],['There ___ two apples on the table.',['is','are','be','am'],1],['What time ___ it?',['is','are','do','does'],0],['My brother ___ football on Sundays.',['play','plays','playing','to play'],1],['It\'s ___ the post office.',['next to','for','on to','at to'],0],['The opposite of "cheap" is...',['small','expensive','slow','empty'],1]]},
-'A2-B1':{from:'A2',to:'B1',desc:'Show you can handle everyday English at Intermediate level.',q:[
-['I ___ to London last year.',['go','went','have gone','am going'],1],['If it rains tomorrow, we ___ at home.',['will stay','stayed','would stay','staying'],0],['She is ___ than her sister.',['tall','tallest','taller','more tall'],2],['I\'ve lived here ___ 2015.',['for','since','from','during'],1],['You ___ smoke in the hospital.',['mustn\'t','don\'t have to','needn\'t','may'],0],['While I ___ TV, the phone rang.',['watch','watched','was watching','am watching'],2],['"Borrow" means...',['give something forever','take something and return it later','buy something','lose something'],1],['He asked me ___ I was from.',['where','what','who','which'],0]]},
-'B1-C1':{from:'B1',to:'C1',desc:'A tougher test: B2 grammar and vocabulary on the way to Advanced.',q:[
-['If I ___ more time, I would learn Spanish.',['have','had','will have','would have'],1],['The report ___ by the manager yesterday.',['wrote','was written','is written','has wrote'],1],['She suggested ___ a taxi.',['to take','take','taking','took'],2],['By the time we arrived, the film ___.',['started','has started','had started','was starting'],2],['I\'m not used ___ up early.',['to get','to getting','getting','get'],1],['He denied ___ the window.',['to break','break','breaking','to have break'],2],['"Reluctant" means...',['eager','unwilling','careful','angry'],1],['Hardly ___ the house when it started to rain.',['we had left','had we left','we left','did we left'],1]]},
-'C1-C2':{from:'C1',to:'C2',desc:'The final step: near-native grammar and rich vocabulary.',q:[
-['Had I known, I ___ differently.',['would act','would have acted','will act','had acted'],1],['Neither the teacher nor the students ___ aware.',['was','were','is','has been'],1],['"Ubiquitous" means...',['rare','present everywhere','very old','extremely loud'],1],['Not only ___ late, but he also forgot the documents.',['he arrived','did he arrive','he did arrive','arrived he'],1],['She spoke so ___ that nobody doubted her.',['persuasive','persuasion','persuasively','persuade'],2],['The committee ___ the proposal out of hand.',['refused','dismissed','declined','denied'],1],['"Meticulous" means...',['careless','showing great attention to detail','fast','generous'],1],['It\'s high time we ___ the issue.',['address','addressed','will address','are addressing'],1]]}};
-var TKEYS=['A1-A2','A2-B1','B1-C1','C1-C2'];
+    [
+      ['q1', 'sparkles', 'Ask AI Teacher', 'Shaxsiy sun'iy intellekt o'qituvchi bilan muloqot', 'ask_ai'],
+      ['q2', 'layers', 'Levels (A1-C2)', 'Har bir darajada 40 ta mavzu va testlar', 'levels'],
+      ['q3', 'clip', 'Placement Test', '70 ta savolli darajani aniqlash imtihoni', 'placement'],
+      ['q4', 'users', 'Sinflar & Chat', 'O'qituvchi va o'quvchilar Telegram chati', 'classes']
+    ].forEach(function(q, i) {
+      h += '<div class="ap-card ap-quick ' + q[0] + '" style="cursor:pointer" data-go="' + q[4] + '">' +
+        ic(q[1], 'lg') + '<h3>' + q[2] + '</h3><p>' + q[3] + '</p><span class="go">Kirish ' + ic('right') + '</span></div>';
+    });
 
-// Persistent State
-var S={sdone:{},level:'A1',done:{},passed:{},mistakes:[],theme:'dark',chat:[],user:null};
-try{
-  var raw=localStorage.getItem('ethith_state_mirror');
-  if(raw){ var o=JSON.parse(raw); for(var k in o) S[k]=o[k]; }
-}catch(e){}
-function save(){ try{ localStorage.setItem('ethith_state_mirror',JSON.stringify(S)); }catch(e){} }
-function doneCount(id){ return (S.done[id]||[]).length; }
-function pct(id){ return Math.round(doneCount(id)/6*100); }
-function overall(){ var t=0; LV.forEach(function(l){ t+=doneCount(l.id); }); return Math.round(t/36*100); }
-function st(l){ return '--c1:'+l.c1+';--c2:'+l.c2; }
-function esc(s){ return String(s||'').replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    h += '</div>';
+    v.innerHTML = h;
+  }
 
-var $=function(id){ return document.getElementById(id); };
-var view={name:'dash',arg:null};
-function toast(m){ var t=$('apToast'); if(!t) return; t.textContent=m; t.classList.add('show'); clearTimeout(toast.t); toast.t=setTimeout(function(){ t.classList.remove('show'); }, 2200); }
+  // Global Click Handlers
+  document.addEventListener('click', function(e) {
+    var app = $('app');
+    if (!app || !app.contains(e.target)) return;
 
-function logo(){ return '<svg width="170" height="56" viewBox="0 0 170 56"><defs><linearGradient id="alg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4e93e4"/><stop offset="1" stop-color="#154b89"/></linearGradient></defs><rect x="0" y="4" width="48" height="48" rx="13" fill="url(#alg)"/><path d="M13 29l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="58" y="26" font-family="LoewNextBold,Arial,sans-serif" font-weight="800" font-size="24" letter-spacing="1" fill="currentColor">ETHITH</text><text x="58" y="50" font-family="LoewNextBold,Arial,sans-serif" font-weight="800" font-size="21" letter-spacing="6" fill="#4e93e4">TESTS</text></svg>'; }
+    var g = e.target.closest('[data-go]');
+    if (g) {
+      go(g.dataset.go, g.dataset.arg);
+      return;
+    }
 
-// ==================== 3. SIDEBAR NAVIGATION (NO VOCABULARY) ====================
-function nav(){
- var cur=view.name, a=view.arg;
- var h='<a class="ap-logo" id="apLogo" style="color:var(--text);cursor:pointer">'+logo()+'</a><nav class="ap-nav">';
- h+='<button class="ap-item '+(cur==='dash'?'active':'')+'" data-go="dash">'+ic('grid')+'Dashboard</button>';
- h+='<div class="ap-label">English Levels</div>';
- LV.forEach(function(l){
-  h+='<button class="ap-lv '+((cur==='level'&&a===l.id)?'active':'')+'" style="'+st(l)+'" data-go="level" data-arg="'+l.id+'"><span class="b">'+l.id+'</span><span class="t"><b>'+l.name+'</b><small>'+doneCount(l.id)+'/6 lessons</small><div class="m"><i style="width:'+pct(l.id)+'%"></i></div></span></button>';
- });
- h+='<div class="ap-label">Study</div>';
- [
-   ['tests','clip','Level Test'],
-   ['mist','cc','Spelling mistakes'],
-   ['chat','msg','Ask Instructor']
- ].forEach(function(x){
-  var on=cur===x[0]||(x[0]==='tests'&&cur==='quiz');
-  h+='<button class="ap-item '+(on?'active':'')+'" data-go="'+x[0]+'">'+ic(x[1])+x[2]+'</button>';
- });
- h+='<div class="ap-label">Skills</div>';
- SK.forEach(function(k){
-  h+='<button class="ap-item '+(cur==='skill'&&a===k.id?'active':'')+'" data-go="skill" data-arg="'+k.id+'">'+ic(k.ic)+k.name+'</button>';
- });
- h+='</nav><div class="ap-plan"><small>Current Plan</small><h4>Free</h4><button id="apUp">'+ic('crown')+'Upgrade Now</button></div>';
- $('apSide').innerHTML=h;
-}
+    var cs = e.target.closest('[data-coming-soon]');
+    if (cs) {
+      App.showComingSoon(cs.dataset.comingSoon);
+      return;
+    }
 
-// ==================== 4. TOP BAR (EXACT MATCH WITH SCREENSHOT) ====================
-var TITLES={skill:'Skills',dash:'Dashboard',level:'English Levels',tests:'Level Test',quiz:'Level Test',mist:'Spelling mistakes',chat:'Ask Instructor'};
-function top(){
- var userName = (S.user && S.user.name) ? S.user.name : "Muhammad";
- var userInitial = userName.charAt(0).toUpperCase();
- var userLevel = S.level || 'A1';
+    if (e.target.closest('#apLogo')) {
+      window.ethithShowLanding();
+      return;
+    }
 
- var h = '<button class="ap-burger" id="apBurger">'+ic('menu')+'</button>';
- h += '<div class="ttl">'+(TITLES[view.name]||'Dashboard')+'</div>';
- h += '<div style="flex:1"></div>';
- h += '<button class="ap-ib" id="apBell" title="Notifications">'+ic('bell')+'<span class="dot"></span></button>';
- h += '<button class="ap-ib" id="apTheme" title="Toggle Theme">'+ic(S.theme==='dark'?'sun':'moon')+'</button>';
- h += '<div class="ap-lang">'+ic('globe')+'English</div>';
- h += '<div class="ap-user" id="apUserCard" style="cursor:pointer" title="Account Details"><span class="av">'+userInitial+'</span><span><b>'+esc(userName)+'</b><small>Level '+userLevel+'</small></span></div>';
+    if (e.target.closest('#apLogoutBtn')) {
+      if (confirm("Hisobingizdan chiqmoqchimisiz?")) {
+        S.user = null;
+        App.saveState();
+        App.showAuthModal();
+      }
+      return;
+    }
 
- $('apTop').innerHTML = h;
-}
+    if (e.target.closest('#apTheme')) {
+      S.theme = S.theme === 'dark' ? 'light' : 'dark';
+      $('app').setAttribute('data-theme', S.theme);
+      App.saveState();
+      top();
+      return;
+    }
 
-function go(n,a){
- view={name:n,arg:a||null};
- render();
- window.scrollTo(0,0);
- $('apSide').classList.remove('open');
- $('apOv').classList.remove('show');
-}
+    if (e.target.closest('#apBurger')) {
+      $('apSide').classList.add('open');
+      $('apOv').classList.add('show');
+      return;
+    }
 
-function render(){
- nav();
- top();
- var v=$('apView');
- v.style.animation='none';
- void v.offsetWidth;
- v.style.animation='';
- ({skill:rSkill,dash:rDash,level:rLevel,tests:rTests,quiz:rQuiz,mist:rMist,chat:rChat})[view.name](v);
- setTimeout(function(){
-  var f=document.querySelectorAll('#apView .ap-bar i[data-w]');
-  for(var i=0;i<f.length;i++) f[i].style.width=f[i].dataset.w;
-  var r=document.querySelector('#apView .ap-ring .fg[data-o]');
-  if(r) r.style.strokeDashoffset=r.dataset.o;
- },80);
-}
-
-// ==================== 5. VIEWS (DASHBOARD, LEVEL, SKILL, TESTS, QUIZ) ====================
-function rDash(v){
- var o=overall(),cl=L(S.level),next=TKEYS.filter(function(k){return TESTS[k].from===S.level})[0];
- var h='<section class="ap-hero"><div class="blob b1"></div><div class="blob b2"></div><div><div class="ap-badge">'+ic('bolt')+' ENGLISH DASHBOARD</div><h1>Your <span>English</span><br>Journey</h1><p>From A1 to C2 — learn step by step and pass level tests to unlock the next stage.</p><div class="cta"><button class="ap-btn pri" data-go="level" data-arg="'+S.level+'">Continue '+S.level+' '+ic('right')+'</button>'+(next?'<button class="ap-btn gh" data-go="quiz" data-arg="'+next+'">Take '+next.replace('-',' → ')+' test</button>':'<button class="ap-btn gh" data-go="tests">Level tests</button>')+'</div></div>'+
- '<div class="ap-metrics"><div class="ap-glass"><div class="ap-ring"><svg viewBox="0 0 104 104"><circle class="bg" cx="52" cy="52" r="46"/><circle class="fg" cx="52" cy="52" r="46" data-o="'+(289-289*o/100)+'"/></svg><div class="c"><b>'+o+'%</b><span>DONE</span></div></div><span class="lbl">Overall progress</span></div>'+
- '<div class="ap-glass"><div class="ap-curlv">'+S.level+'</div><span class="lbl">Current level</span></div></div></section>';
- h+='<div class="ap-sec"><div><h2>'+ic('layers')+'English Levels</h2><p>Track your progress from A1 to C2</p></div></div><div class="ap-grid g3">';
- LV.forEach(function(l,i){
-  h+='<div class="ap-card ap-lcard" style="'+st(l)+';animation-delay:'+(i*70)+'ms" data-go="level" data-arg="'+l.id+'"><span class="big">'+l.id+'</span><div class="hd"><span class="bd">'+l.id+'</span><div><h3>'+l.name+'</h3><small>'+l.sub+'</small></div></div><div class="row"><span>Lessons</span><b>'+doneCount(l.id)+' / 6</b></div><div class="ap-bar"><i data-w="'+pct(l.id)+'%"></i></div><div style="margin-top:14px">'+(S.level===l.id?'<span class="ap-tag cur">'+ic('flame')+' Current level</span>':'<span class="ap-tag">'+pct(l.id)+'% complete</span>')+'</div></div>';
- });
- h+='</div>';
- v.innerHTML=h;
-}
-
-function rLevel(v){
- var l=L(view.arg||S.level);
- var h='<button class="ap-back" data-go="dash">'+ic('left')+' Back to Dashboard</button>'+
- '<div class="ap-sec" style="margin-top:0"><div><h2 style="'+st(l)+'">'+l.id+' — '+l.name+'</h2><p>'+l.sub+' · Tap lesson checkbox when completed</p></div></div><div class="ap-grid g2">';
- l.l.forEach(function(les,i){
-  var d=(S.done[l.id]||[]).indexOf(i)>-1;
-  h+='<div class="ap-card ap-lesson '+(d?'done':'')+'" data-lesson="'+i+'" style="display:flex;align-items:center;gap:14px;padding:18px;cursor:pointer">'+
-  '<span class="ap-ib" style="width:36px;height:36px;border-radius:10px;background:'+(d?'#16a34a':'var(--soft)')+';color:'+(d?'#fff':'var(--muted)')+';border:none">'+ic(d?'check':'book')+'</span>'+
-  '<div><h3 style="margin:0;font-size:15px">'+esc(les)+'</h3><small style="color:var(--muted)">Lesson '+(i+1)+'</small></div>'+
-  '<span class="st" style="margin-left:auto;font-weight:700;font-size:12px;color:'+(d?'#16a34a':'var(--muted)')+'">'+(d?'Done':'Pending')+'</span></div>';
- });
- h+='</div>';
- v.innerHTML=h;
-}
-
-function rSkill(v){
- var K=SKL(view.arg||'listening');
- var h='<button class="ap-back" data-go="dash">'+ic('left')+' Back to Dashboard</button>'+
- '<div class="ap-sec" style="margin-top:0"><div><h2>'+ic(K.ic)+' '+K.name+' Skills</h2><p>'+K.sub+'</p></div></div><div class="ap-grid g2">';
- K.items.forEach(function(it,i){
-  var d=(S.sdone[K.id]||[]).indexOf(i)>-1;
-  h+='<div class="ap-card ap-lesson '+(d?'done':'')+'" data-skill="'+i+'" style="display:flex;align-items:center;gap:14px;padding:18px;cursor:pointer">'+
-  '<span class="ap-ib" style="width:36px;height:36px;border-radius:10px;background:'+(d?'#16a34a':'var(--soft)')+';color:'+(d?'#fff':'var(--muted)')+';border:none">'+ic(d?'check':K.ic)+'</span>'+
-  '<div><h3 style="margin:0;font-size:15px">'+esc(it)+'</h3><small style="color:var(--muted)">Module '+(i+1)+'</small></div>'+
-  '<span class="st" style="margin-left:auto;font-weight:700;font-size:12px;color:'+(d?'#16a34a':'var(--muted)')+'">'+(d?'Done':'Pending')+'</span></div>';
- });
- h+='</div>';
- v.innerHTML=h;
-}
-
-function rTests(v){
- var h='<div class="ap-sec" style="margin-top:0"><div><h2>'+ic('clip')+'Level Tests</h2><p>Score 70% or more to advance your level</p></div></div><div class="ap-grid g2">';
- TKEYS.forEach(function(k){
-  var t=TESTS[k], sc=S.passed[k];
-  var col=L(t.to)||LV[0];
-  h+='<div class="ap-card ap-tcard" style="'+st(col)+';background:linear-gradient(135deg,var(--c1),var(--c2))" data-go="quiz" data-arg="'+k+'">'+
-  '<div class="path"><span class="pl">'+t.from+'</span><span class="arr">'+ic('right')+'</span><span class="pl">'+t.to+'</span></div>'+
-  '<h3>'+t.from+' → '+t.to+' Examination</h3><p>'+esc(t.desc)+'</p>'+
-  '<div class="ft"><span class="ap-pill">'+ic('clock')+' 8 Questions</span><span class="st">'+(sc!=null?sc+'% passed':'Not attempted')+'</span></div></div>';
- });
- h+='</div>';
- v.innerHTML=h;
-}
-
-var Q=null;
-function rQuiz(v){
- if(!Q){
-  var k=view.arg||'A1-A2'; var t=TESTS[k]; var l=L(t.to);
-  Q={key:k,t:t,l:l,i:-1,score:0,ans:false,order:t.q.slice()};
- }
- var t=Q.t, l=Q.l;
- if(Q.i===-1){
-  v.innerHTML='<div class="ap-intro"><div class="ap-card" style="padding:36px;border-radius:24px;text-align:center">'+
-  '<div style="font-size:48px;margin-bottom:12px">🎯</div>'+
-  '<h2>'+t.from+' → '+t.to+' Level Test</h2><p style="color:var(--muted);margin:8px 0 24px">'+esc(t.desc)+'</p>'+
-  '<ul style="text-align:left;margin-bottom:24px"><li style="display:flex;gap:10px;padding:8px 0">'+ic('check')+' 8 selected grammar & vocabulary questions</li><li style="display:flex;gap:10px;padding:8px 0">'+ic('target')+' 70% required to pass and advance to '+t.to+'</li></ul>'+
-  '<button class="ap-btn pri" id="qStart" style="padding:12px 28px;font-size:15px">Start test '+ic('right')+'</button></div></div>';
-  $('qStart').onclick=function(){ Q.i=0; rQuiz(v); }; return;
- }
- if(Q.i>=Q.order.length){
-  var p=Math.round(Q.score/Q.order.length*100), ok=p>=70;
-  if(S.passed[Q.key]==null||p>S.passed[Q.key]){ S.passed[Q.key]=p; }
-  if(ok){ var ci=LV.indexOf(L(S.level)), ti=LV.indexOf(l); if(ti>ci) S.level=t.to; }
-  save(); nav(); top();
-  v.innerHTML='<div class="ap-res" style="'+st(l)+'"><div class="ap-ring"><svg viewBox="0 0 104 104"><circle class="bg" cx="52" cy="52" r="46"/><circle class="fg" cx="52" cy="52" r="46" data-o="'+(289-289*p/100)+'"/></svg><div class="c"><b>'+p+'%</b><span>'+Q.score+'/'+Q.order.length+'</span></div></div><h2>'+(ok?'Congratulations! You reached '+t.to:'Almost there!')+'</h2><p>'+(ok?'You passed the '+t.from+' → '+t.to+' test. Your level is now '+S.level+'.':'You need 70% to pass. Review the lessons and try again.')+'</p><div class="acts"><button class="ap-btn out" data-go="tests">All tests</button><button class="ap-btn solid" id="qRetry">'+ic('refresh')+' Try again</button>'+(ok?'<button class="ap-btn solid" data-go="level" data-arg="'+t.to+'">Open '+t.to+' '+ic('right')+'</button>':'')+'</div></div>';
-  $('qRetry').onclick=function(){ Q=null; rQuiz(v); };
-  setTimeout(function(){ var r=document.querySelector('#apView .ap-ring .fg[data-o]'); if(r) r.style.strokeDashoffset=r.dataset.o; }, 80);
-  return;
- }
- var q=Q.order[Q.i]; Q.ans=false;
- v.innerHTML='<div class="ap-quiz" style="'+st(l)+'"><div class="ap-qtop"><button class="ap-ib" id="qX">'+ic('x')+'</button><div class="ap-bar"><i style="width:'+(Q.i/Q.order.length*100)+'%"></i></div><b>'+(Q.i+1)+'/'+Q.order.length+'</b></div><div class="ap-qbox" id="qBox"><div class="qn">'+t.from+' → '+t.to+' · Question '+(Q.i+1)+'</div><h2>'+esc(q.q)+'</h2>'+q.o.map(function(o,i){ return '<button class="ap-opt" data-o="'+i+'"><span class="l">'+'ABCD'[i]+'</span>'+esc(o)+'</button>'; }).join('')+'<div class="ap-qfoot" id="qFoot"></div></div></div>';
- $('qX').onclick=function(){ Q=null; go('tests'); };
- var bs=v.querySelectorAll('.ap-opt');
- for(var i=0;i<bs.length;i++) bs[i].onclick=function(){
-  if(Q.ans) return; Q.ans=true; var c=+this.dataset.o;
-  for(var j=0;j<bs.length;j++) bs[j].disabled=true;
-  bs[q.a].classList.add('ok');
-  if(c===q.a){ Q.score++; }
-  else { this.classList.add('no'); S.mistakes.push({q:q.q,your:q.o[c],right:q.o[q.a],lv:t.from+'→'+t.to}); save(); }
-  $('qFoot').innerHTML='<button class="ap-btn solid" id="qNext">'+(Q.i===Q.order.length-1?'Finish':'Next')+' '+ic('right')+'</button>';
-  $('qNext').onclick=function(){ Q.i++; rQuiz(v); };
- };
-}
-
-// ==================== 6. MISTAKES NOTEBOOK ====================
-function rMist(v){
- var h='<div class="ap-sec" style="margin-top:0"><div><h2>'+ic('cc')+'Spelling & Grammar Mistakes</h2><p>Questions you answered incorrectly in level tests</p></div>'+(S.mistakes.length?'<button class="ap-btn out" id="mClr">Clear All Mistakes</button>':'')+'</div>';
- if(!S.mistakes.length) h+='<div class="ap-card ap-empty">'+ic('check')+'<h2>No mistakes yet</h2><p>Take a level test — wrong answers will be collected here.</p></div>';
- else {
-  h+='<div class="ap-grid g2">';
-  S.mistakes.slice().reverse().forEach(function(m,i){
-   h+='<div class="ap-card" style="animation:apIn .4s both;animation-delay:'+Math.min(i,10)*40+'ms"><span class="ap-tag">'+esc(m.lv)+'</span><h3 style="margin:10px 0 8px;font-size:16px">'+esc(m.q)+'</h3><p style="color:#ef4444">✗ '+esc(m.your)+'</p><p style="color:#16a34a;font-weight:700">✓ '+esc(m.right)+'</p></div>';
+    if (e.target.closest('#apOv')) {
+      $('apSide').classList.remove('open');
+      $('apOv').classList.remove('show');
+    }
   });
-  h+='</div>';
- }
- v.innerHTML=h;
- var c=$('mClr');
- if(c) c.onclick=function(){
-  if(confirm('Are you sure you want to clear all mistakes?')){
-   S.mistakes=[]; save(); rMist(v); nav(); toast('Mistakes cleared.');
-  }
- };
-}
 
-// ==================== 7. ASK INSTRUCTOR (REAL ETHITH AI) ====================
-function rChat(v){
- var msgs=S.chat.length?S.chat:[{w:'in',t:'Assalomu alaykum! Men ETHITH AI (Jo\'raboyev Muhammadyusuf tomonidan yaratilgan) ta\'lim yordamchingizman. Grammatika yoki IELTS bo\'yicha istalgan savolingizni bering!'}];
- var h='<div class="ap-sec" style="margin-top:0"><div><h2>'+ic('msg')+'Ask Instructor (ETHITH AI)</h2><p>Direct assistance from ETHITH AI Teacher &bull; Real-time AI rotation</p></div></div>'+
- '<div class="ap-card" style="display:flex;flex-direction:column;gap:14px;padding:22px">'+
- '<div class="ap-chat" id="cBox">'+msgs.map(function(m){
-   return '<div class="ap-msg '+(m.w==='me'?'me':'in')+'" style="white-space:pre-wrap">'+esc(m.t).replace(/\n/g,'<br>')+'</div>';
- }).join('')+'</div>'+
- '<form class="ap-add" id="cForm" style="margin:0;display:flex;gap:10px">'+
- '<input name="m" id="cInput" placeholder="Ask ETHITH AI anything about English..." required autocomplete="off" style="flex:1">'+
- '<button class="ap-btn solid" type="submit" id="cSendBtn">Send '+ic('right')+'</button>'+
- '</form></div>';
- v.innerHTML=h;
- var b=$('cBox'); if(b) b.scrollTop=b.scrollHeight;
+  window.ethithOpenApp = function(n, a) {
+    if (!S.user) {
+      App.showAuthModal();
+      return;
+    }
+    document.getElementById('landing').style.display = 'none';
+    var ap = $('app');
+    ap.style.display = 'block';
+    ap.setAttribute('data-theme', S.theme);
+    go(n || 'dash', a);
+  };
 
- $('cForm').onsubmit=async function(e){
-  e.preventDefault();
-  var input=$('cInput');
-  var userText=(input?input.value:'').trim();
-  if(!userText) return;
-  if(!S.chat.length) S.chat=[msgs[0]];
-  S.chat.push({w:'me',t:userText});
-  input.value=''; save();
-
-  var chatBox=$('cBox');
-  var userDiv=document.createElement('div');
-  userDiv.className='ap-msg me'; userDiv.textContent=userText;
-  chatBox.appendChild(userDiv);
-
-  var thinkDiv=document.createElement('div');
-  thinkDiv.className='ap-msg in'; thinkDiv.textContent='ETHITH AI is thinking...';
-  chatBox.appendChild(thinkDiv);
-  chatBox.scrollTop=chatBox.scrollHeight;
-
-  var sendBtn=$('cSendBtn');
-  if(sendBtn) sendBtn.disabled=true;
-
-  try {
-    var reply=await callETHITH_AI(userText, S.chat.slice(0,-1));
-    S.chat.push({w:'in',t:reply}); save();
-    thinkDiv.innerHTML=esc(reply).replace(/\n/g,'<br>');
-  } catch(err){
-    thinkDiv.textContent='Connection error. Please try again.';
-  } finally {
-    if(sendBtn) sendBtn.disabled=false;
-    chatBox.scrollTop=chatBox.scrollHeight;
-  }
- };
-}
-
-// ==================== 8. TEST & SCORE AUTH MODAL CONTROLLERS ====================
-var isTsSignUp = false;
-
-window.ethithOpenTsModal = function(){
-  var o = $('tsAuthModalOverlay');
-  if(o) o.style.display = 'flex';
-};
-window.ethithCloseTsModal = function(){
-  var o = $('tsAuthModalOverlay');
-  if(o) o.style.display = 'none';
-};
-window.ethithToggleTsMode = function(){
-  isTsSignUp = !isTsSignUp;
-  $('tsModalTitle').textContent = isTsSignUp ? 'Sign up' : 'Sign in';
-  $('tsModalSubtitle').textContent = isTsSignUp ? 'Create your account to start learning' : 'Sign in with your email or social account';
-  $('tsSubmitBtn').textContent = isTsSignUp ? 'Sign up' : 'Sign in';
-  $('tsToggleText').textContent = isTsSignUp ? 'Already have an account?' : "Don't have an account?";
-  $('tsToggleLink').textContent = isTsSignUp ? 'Sign in' : 'Sign up now';
-};
-
-window.ethithGoogleSelect = function(){
-  var accounts = [
-    'yusumuham78@gmail.com',
-    'selixmix@gmail.com',
-    'joraboyevmuhammad85@gmail.com',
-    'muhammadyusufjorabiyev@gmail.com'
-  ];
-  var choice = prompt("Select Google Account (1-4) or enter your email:\n\n" +
-    "1. " + accounts[0] + "\n" +
-    "2. " + accounts[1] + "\n" +
-    "3. " + accounts[2] + "\n" +
-    "4. " + accounts[3], "1");
-  if(choice === null) return;
-  var idx = parseInt(choice) - 1;
-  var email = (idx >= 0 && idx < 4) ? accounts[idx] : choice;
-  var name = email.split('@')[0];
-  S.user = { name: name, email: email, provider: 'google' };
-  save();
-  ethithCloseTsModal();
-  hideLandingAuth();
-  toast('Welcome back, ' + name + '! 🎉');
-  window.ethithOpenApp('dash');
-};
-
-window.ethithHandleTsSubmit = function(e){
-  e.preventDefault();
-  var email = ($('tsEmailInput')||{}).value || '';
-  var pass = ($('tsPassInput')||{}).value || '';
-  if(!email || !pass || pass.length < 6){ toast('Fill all fields (min 6 chars password).'); return; }
-  var name = email.split('@')[0];
-  S.user = { name: name, email: email, provider: 'email' };
-  save();
-  ethithCloseTsModal();
-  hideLandingAuth();
-  toast('Welcome, ' + name + '! 🎉');
-  window.ethithOpenApp('dash');
-};
-
-function hideLandingAuth(){
-  var els = document.querySelectorAll('.navbar-login, .start-btn, a.navbar-login, a.start-btn');
-  els.forEach(function(el){ el.style.display = 'none'; });
-}
-
-// ==================== 9. GLOBAL EVENT LISTENERS & SWITCH ====================
-document.addEventListener('click',function(e){
- var app=$('app');
- var t=e.target;
-
- // Logo inside app: stays on dashboard
- if(t.closest('#apLogo')){
-   go('dash'); return;
- }
-
- if(!app||!app.contains(e.target)) return;
-
- var ls=t.closest('[data-lesson]');
- if(ls){
-   var l=L(view.arg),i=+ls.dataset.lesson,d=S.done[l.id]=S.done[l.id]||[],p=d.indexOf(i);
-   if(p>-1) d.splice(p,1); else d.push(i);
-   save(); rLevel($('apView')); nav();
-   setTimeout(function(){ var f=document.querySelectorAll('#apView .ap-bar i[data-w]'); for(var k=0;k<f.length;k++) f[k].style.width=f[k].dataset.w; }, 60);
-   return;
- }
- var sk=t.closest('[data-skill]');
- if(sk){
-   var K=SKL(view.arg),i2=+sk.dataset.skill,d2=S.sdone[K.id]=S.sdone[K.id]||[],p2=d2.indexOf(i2);
-   if(p2>-1) d2.splice(p2,1); else d2.push(i2);
-   save(); rSkill($('apView'));
-   setTimeout(function(){ var f=document.querySelectorAll('#apView .ap-bar i[data-w]'); for(var q=0;q<f.length;q++) f[q].style.width=f[q].dataset.w; }, 60);
-   return;
- }
- var g=t.closest('[data-go]');
- if(g){ if(g.dataset.go==='quiz'){ Q=null; } go(g.dataset.go,g.dataset.arg); return; }
- if(t.closest('#apUp')){ window.open('https://t.me/juraboyev_admin','_blank'); return; }
- if(t.closest('#apBell')){ toast('No new notifications'); return; }
- if(t.closest('#apTheme')){ S.theme=S.theme==='dark'?'light':'dark'; $('app').setAttribute('data-theme',S.theme); save(); top(); return; }
- if(t.closest('#apBurger')){ $('apSide').classList.add('open'); $('apOv').classList.add('show'); return; }
- if(t.closest('#apOv')){ $('apSide').classList.remove('open'); $('apOv').classList.remove('show'); }
-});
-
-window.ethithOpenApp=function(n,a){
- document.getElementById('landing').style.display='none';
- var ap=$('app'); ap.style.display='block'; ap.setAttribute('data-theme',S.theme);
- view={name:n||'dash',arg:a||null}; render(); window.scrollTo(0,0);
- if(S.user) hideLandingAuth();
-};
-
-window.ethithShowLanding=function(){
- $('app').style.display='none';
- document.getElementById('landing').style.display='';
- window.scrollTo(0,0);
-};
-
-// Wire Landing CTAs to Test & Score modal
-document.addEventListener('DOMContentLoaded', function(){
- var landingBtns = document.querySelectorAll('.navbar-login, .start-btn, a.navbar-login, a.start-btn, .button-start, .hero-btn');
- landingBtns.forEach(function(btn){
-   btn.onclick = function(e){
-     e.preventDefault();
-     if(!S.user){
-       ethithOpenTsModal();
-     } else {
-       window.ethithOpenApp('dash');
-     }
-   };
- });
- if(S.user) hideLandingAuth();
-});
+  window.ethithShowLanding = function() {
+    $('app').style.display = 'none';
+    document.getElementById('landing').style.display = '';
+    window.scrollTo(0, 0);
+  };
 
 })();
-</script>
-<script>
+</script></script><script>
 (function(){
 var hero=document.querySelector('.back-image');if(!hero)return;
 // parallax
@@ -1789,3 +1321,8 @@ function show(){
 if(E('hqQ'))show();
 })();
 </script>
+
+<script src="data_assets.js"></script>
+<script src="ethith_ai.js"></script>
+<script src="ethith_app.js"></script>
+<script src="ethith_views.js"></script>
