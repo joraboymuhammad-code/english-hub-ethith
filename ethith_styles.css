@@ -476,12 +476,35 @@ svg.ic, .ic, button svg, .eth-btn-primary svg, .ap-btn svg, .tg-context-item svg
   background: var(--card, #ffffff);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 2px 7px;
+  padding: 2.5px 8px;
   font-size: 12px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 3px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  gap: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.tg-reaction-pill:hover {
+  transform: scale(1.06);
+  border-color: #2563eb;
+  background: var(--bg2, #f8fafc);
+}
+.tg-reaction-pill.active {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: #2563eb;
+  color: #2563eb;
+  font-weight: 700;
+}
+.tg-reaction-names {
+  font-size: 10.5px;
+  color: var(--muted);
+  margin-left: 2px;
+}
+.tg-reaction-pill.active .tg-reaction-names {
+  color: #2563eb;
+  font-weight: 600;
 }
 
 .tg-context-menu {
