@@ -1,22 +1,13 @@
 {
   "classes": [
     {
-      "id": "cls_ethith_main",
-      "name": "IELTS & General English Intensive",
+      "id": "cls_1791996374490",
+      "name": "IELTS GURuh",
       "code": "ETH-L6S8CM",
-      "teacherId": "joraboyevmuhammad85@gmail.com",
-      "teacherName": "Ustoz Muhammadyusuf",
-      "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1791999637426,
+      "teacherId": "tc_l78sgm19w",
+      "teacherName": "Muhammadyusuf",
+      "teacherEmail": "joraboymuhammad@gmail.com",
       "students": [
-        {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "lastActive": 1791999647009,
-          "dailyMinutes": 262,
-          "mistakes": 0
-        },
         {
           "id": "std_sync_test",
           "name": "John Doe",
@@ -26,6 +17,14 @@
           "mistakesCount": 0
         },
         {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 262,
+          "mistakes": 0
+        },
+        {
           "id": "std_live_test_1",
           "name": "Alisher Oquvchi",
           "email": "alisher@gmail.com",
@@ -33,18 +32,6 @@
         }
       ],
       "messages": [
-        {
-          "id": "msg_welcome",
-          "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Ustoz Muhammadyusuf",
-          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
-          "time": "12:00",
-          "reactions": {
-            "👍": [
-              "joraboyevmuhammad85@gmail.com"
-            ]
-          }
-        },
         {
           "id": "msg_init",
           "senderId": "tc_l78sgm19w",
@@ -58,10 +45,22 @@
           }
         },
         {
-          "id": "msg_welcome_1",
+          "id": "msg_welcome",
           "senderId": "joraboyevmuhammad85@gmail.com",
           "senderName": "Ustoz Muhammadyusuf",
-          "text": "Assalomu alaykum! ETHITH rasmiy sinfiga xush kelibsiz. Bu yerda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_welcome_1",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Instructor Muhammadyusuf",
+          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
           "time": "12:00",
           "reactions": {
             "👍": [
@@ -302,6 +301,42 @@
   ],
   "exams": [
     {
+      "id": "exam_1792011898176",
+      "code": "890700",
+      "title": "English Examination 2026",
+      "duration": 30,
+      "pointsPerQ": 1,
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "question": "basdhjbashjdb___wahdjkashdjkha",
+          "options": [
+            "shadjkhasjk",
+            "jsahdkha",
+            "ijsdhjk",
+            "None"
+          ],
+          "answer": "shadjkhasjk"
+        }
+      ],
+      "submissions": [
+        {
+          "studentId": "muhammedjoraboyev1@gmail.com",
+          "studentName": "Muhammadyusuf",
+          "studentEmail": "muhammedjoraboyev1@gmail.com",
+          "score": 1,
+          "totalPossible": 1,
+          "percent": 100,
+          "attempts": 1,
+          "timeSpent": "0 min",
+          "date": "03:29"
+        }
+      ],
+      "isPublic": false,
+      "maxAttempts": 1
+    },
+    {
       "id": "exam_1792011716430",
       "code": "407221",
       "title": "English Examination 2026",
@@ -365,40 +400,6 @@
       ]
     },
     {
-      "id": "exam_1792011898176",
-      "code": "890700",
-      "title": "English Examination 2026",
-      "duration": 30,
-      "pointsPerQ": 1,
-      "questions": [
-        {
-          "id": 1,
-          "type": "choice",
-          "question": "basdhjbashjdb___wahdjkashdjkha",
-          "options": [
-            "shadjkhasjk",
-            "jsahdkha",
-            "ijsdhjk",
-            "None"
-          ],
-          "answer": "shadjkhasjk"
-        }
-      ],
-      "submissions": [
-        {
-          "studentId": "muhammedjoraboyev1@gmail.com",
-          "studentName": "Muhammadyusuf",
-          "studentEmail": "muhammedjoraboyev1@gmail.com",
-          "score": 1,
-          "totalPossible": 1,
-          "percent": 100,
-          "attempts": 1,
-          "timeSpent": "0 min",
-          "date": "03:29"
-        }
-      ]
-    },
-    {
       "id": "exam_1792016898890",
       "code": "780580",
       "title": "English Examination 2026",
@@ -435,5 +436,5 @@
       "submissions": []
     }
   ],
-  "updatedAt": 1792016965799
+  "updatedAt": 1792016979755
 }
