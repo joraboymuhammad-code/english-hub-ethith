@@ -1,13 +1,31 @@
 {
   "classes": [
     {
-      "id": "cls_default_1",
+      "id": "cls_ethith_main",
+      "name": "IELTS & General English Intensive",
       "code": "ETH-L6S8CM",
-      "name": "IELTS Band 7.0+ Intensive Class",
+      "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Ustoz Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1791997894796,
-      "students": [],
+      "created": 1791999637426,
+      "students": [
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 148,
+          "mistakes": 0
+        },
+        {
+          "id": "std_sync_test",
+          "name": "John Doe",
+          "email": "john.doe@example.com",
+          "joinedAt": "23:25:42",
+          "activeMinutes": 25,
+          "mistakesCount": 0
+        }
+      ],
       "messages": [
         {
           "id": "msg_welcome",
@@ -20,9 +38,117 @@
               "joraboyevmuhammad85@gmail.com"
             ]
           }
+        },
+        {
+          "id": "msg_init",
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "text": "Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.",
+          "time": "21:46",
+          "reactions": {
+            "💡": [
+              "joraboymuhammad@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_welcome_1",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Ustoz Muhammadyusuf",
+          "text": "Assalomu alaykum! ETHITH rasmiy sinfiga xush kelibsiz. Bu yerda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_1791999662082",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "salom",
+          "time": "22:41",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004029227",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "salom ustoz",
+          "time": "23:53",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004041390",
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "joraboymuhammad@gmail.com",
+          "text": "ha nima",
+          "time": "23:54",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004086410",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "ehh",
+          "time": "23:54",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004119054",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "tushunmadim",
+          "time": "23:55",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004197942",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "salom bollar",
+          "time": "23:56",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004266356",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "ha nima",
+          "time": "23:57",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792010013836_uue80",
+          "timestamp": 1792010013836,
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "alyo",
+          "time": "01:33",
+          "replyTo": null,
+          "reactions": {}
         }
-      ]
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": []
     }
   ],
-  "exams": []
+  "exams": [],
+  "updatedAt": 1792010017661
 }
