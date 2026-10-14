@@ -112,11 +112,4874 @@
 </style>
 
 
-<link rel="stylesheet" href="ethith_styles.css">
-<script src="data_assets.js"></script>
-<script src="ethith_ai.js"></script>
-<script src="ethith_app.js"></script>
-<script src="ethith_views.js"></script>
+
+<style id="ethith-custom-styles">
+/* ETHITH TESTS - Extended Stylesheet
+ * Created by Muhammadyusuf Jo'raboyev
+ * Covers: Auth Modal, Ask AI Teacher, Telegram Chat, Levels, Exams, Placement Test
+ */
+
+:root {
+  --eth-primary: #154b89;
+  --eth-primary-light: #4e93e4;
+  --eth-accent: #2563eb;
+  --eth-tg-bg: #eef2f5;
+  --eth-tg-bubble-out: #e3f2fd;
+  --eth-tg-bubble-in: #ffffff;
+  --eth-tg-text: #111827;
+  --eth-border: #e2e8f0;
+  --eth-radius: 16px;
+}
+
+[data-theme="dark"] {
+  --eth-tg-bg: #0f172a;
+  --eth-tg-bubble-out: #1e3a8a;
+  --eth-tg-bubble-in: #1e293b;
+  --eth-tg-text: #f8fafc;
+  --eth-border: #334155;
+}
+
+/* Auth Modal */
+.eth-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999999 !important;
+  padding: 16px;
+  animation: ethFadeIn 0.25s ease-out;
+}
+
+.eth-modal {
+  background: var(--card, #ffffff);
+  color: var(--text, #0f172a);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  border: 1px solid var(--border, #e2e8f0);
+}
+
+.eth-modal-header {
+  padding: 24px 28px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border, #f1f5f9);
+}
+
+.eth-modal-header h2 {
+  font-family: "LoewNextBold", sans-serif;
+  font-size: 24px;
+  color: var(--eth-primary);
+  margin: 8px 0 4px;
+}
+
+.eth-modal-header p {
+  color: var(--muted, #64748b);
+  font-size: 14px;
+  margin: 0;
+}
+
+.eth-tabs {
+  display: flex;
+  background: var(--bg2, #f1f5f9);
+  padding: 4px;
+  border-radius: 12px;
+  margin: 16px 24px 0;
+}
+
+.eth-tab {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 9px;
+  color: var(--muted, #64748b);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.eth-tab.active {
+  background: var(--card, #ffffff);
+  color: var(--eth-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.eth-modal-body {
+  padding: 24px 28px 28px;
+}
+
+.eth-form-group {
+  margin-bottom: 16px;
+}
+
+.eth-form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: var(--text, #334155);
+}
+
+.eth-form-group input, .eth-form-group select, .eth-form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border, #cbd5e1);
+  border-radius: 12px;
+  font-size: 15px;
+  background: var(--card, #ffffff);
+  color: var(--text, #0f172a);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.eth-form-group input:focus, .eth-form-group select:focus, .eth-form-group textarea:focus {
+  border-color: var(--eth-primary-light);
+  box-shadow: 0 0 0 3px rgba(78, 147, 228, 0.15);
+}
+
+.eth-btn-primary {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #154b89 0%, #4e93e4 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.eth-btn-primary:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+/* Ask AI Teacher (ChatGPT UI) */
+.ask-ai-container {
+  display: flex;
+  height: calc(100vh - 120px);
+  background: var(--card, #ffffff);
+  border-radius: 20px;
+  border: 1px solid var(--border, #e2e8f0);
+  overflow: hidden;
+}
+
+.ask-ai-sidebar {
+  width: 260px;
+  border-right: 1px solid var(--border, #e2e8f0);
+  background: var(--bg2, #f8fafc);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.ask-ai-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--card, #ffffff);
+  position: relative;
+}
+
+.ask-ai-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ask-ai-msg {
+  display: flex;
+  gap: 14px;
+  max-width: 820px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.ask-ai-msg.user {
+  flex-direction: row-reverse;
+}
+
+.ask-ai-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.ask-ai-msg.ai .ask-ai-avatar {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.ask-ai-msg.user .ask-ai-avatar {
+  background: #3b82f6;
+  color: white;
+}
+
+.ask-ai-bubble {
+  background: var(--bg2, #f1f5f9);
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text, #1e293b);
+  max-width: 85%;
+  word-break: break-word;
+}
+
+.ask-ai-msg.user .ask-ai-bubble {
+  background: #2563eb;
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+
+.ask-ai-msg.ai .ask-ai-bubble {
+  border-bottom-left-radius: 4px;
+}
+
+.ask-ai-input-bar {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border, #e2e8f0);
+  background: var(--card, #ffffff);
+}
+
+.ask-ai-input-wrap {
+  display: flex;
+  align-items: center;
+  background: var(--bg2, #f1f5f9);
+  border: 1.5px solid var(--border, #cbd5e1);
+  border-radius: 28px;
+  padding: 6px 12px;
+  gap: 8px;
+  transition: border-color 0.2s;
+}
+
+.ask-ai-input-wrap:focus-within {
+  border-color: #2563eb;
+}
+
+.ask-ai-input-wrap textarea {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  resize: none;
+  max-height: 140px;
+  padding: 8px;
+  color: var(--text, #0f172a);
+}
+
+.ask-ai-btn {
+  background: none;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  transition: all 0.2s;
+}
+
+.ask-ai-btn:hover {
+  background: rgba(0,0,0,0.05);
+  color: #2563eb;
+}
+
+.ask-ai-send {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+/* Telegram Style Chat inside Classes */
+.tg-chat-wrap {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px);
+  background: var(--eth-tg-bg);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+
+.tg-header {
+  padding: 12px 20px;
+  background: var(--card, #ffffff);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tg-header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tg-header-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.tg-header-title h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.tg-header-title span {
+  font-size: 12px;
+  color: var(--muted, #64748b);
+}
+
+.tg-pinned-bar {
+  background: var(--card, #ffffff);
+  padding: 8px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  border-left: 3px solid #2563eb;
+  cursor: pointer;
+}
+
+.tg-messages-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.tg-msg-row {
+  display: flex;
+  width: 100%;
+}
+
+.tg-msg-row.out {
+  justify-content: flex-end;
+}
+
+.tg-msg-row.in {
+  justify-content: flex-start;
+}
+
+.tg-bubble {
+  max-width: 72%;
+  padding: 8px 12px;
+  border-radius: 14px;
+  position: relative;
+  font-size: 14.5px;
+  line-height: 1.45;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s;
+}
+
+.tg-msg-row.out .tg-bubble {
+  background: var(--eth-tg-bubble-out);
+  color: var(--eth-tg-text);
+  border-bottom-right-radius: 4px;
+}
+
+.tg-msg-row.in .tg-bubble {
+  background: var(--eth-tg-bubble-in);
+  color: var(--eth-tg-text);
+  border-bottom-left-radius: 4px;
+}
+
+.tg-msg-sender {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: #2563eb;
+  margin-bottom: 2px;
+}
+
+.tg-reply-quote {
+  background: rgba(37, 99, 235, 0.08);
+  border-left: 3px solid #2563eb;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.tg-reply-quote b {
+  color: #2563eb;
+  display: block;
+}
+
+.tg-msg-meta {
+  float: right;
+  margin-left: 10px;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--muted, #64748b);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.tg-reactions-badge {
+  display: inline-flex;
+  gap: 4px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.tg-reaction-pill {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2px 7px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.tg-context-menu {
+  position: absolute;
+  background: var(--card, #ffffff);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border: 1px solid var(--border);
+  padding: 6px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  min-width: 170px;
+  animation: ethPop 0.15s ease-out;
+}
+
+.tg-context-reactions {
+  display: flex;
+  gap: 6px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.tg-context-reaction-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.tg-context-reaction-btn:hover {
+  transform: scale(1.3);
+}
+
+.tg-context-item {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 13.5px;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tg-context-item:hover {
+  background: var(--bg2, #f1f5f9);
+}
+
+.tg-context-item.danger {
+  color: #ef4444;
+}
+
+.tg-reply-bar {
+  background: var(--card, #ffffff);
+  padding: 8px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  border-left: 3px solid #2563eb;
+}
+
+.tg-input-area {
+  padding: 10px 16px;
+  background: var(--card, #ffffff);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tg-input-area input {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 22px;
+  outline: none;
+  font-size: 14.5px;
+  background: var(--bg2, #f8fafc);
+  color: var(--text);
+}
+
+/* 40 Topics Grid */
+.eth-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.eth-topic-card {
+  background: var(--card, #ffffff);
+  border: 1.5px solid var(--border, #e2e8f0);
+  border-radius: 16px;
+  padding: 18px 20px;
+  transition: all 0.2s;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.eth-topic-card:hover:not(.locked) {
+  border-color: #3b82f6;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -10px rgba(37, 99, 235, 0.25);
+}
+
+.eth-topic-card.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--bg2, #f8fafc);
+}
+
+.eth-topic-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.eth-topic-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+.eth-topic-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 4px 0 6px;
+  line-height: 1.4;
+}
+
+.eth-topic-card p {
+  font-size: 13px;
+  color: var(--muted, #64748b);
+  margin: 0;
+}
+
+/* Exam and Placement UI */
+.eth-timer-badge {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.eth-leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.eth-leaderboard-table th, .eth-leaderboard-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-size: 14px;
+}
+
+.eth-leaderboard-table th {
+  background: var(--bg2, #f8fafc);
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.eth-rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.eth-rank-1 { background: #fef08a; color: #854d0e; }
+.eth-rank-2 { background: #e2e8f0; color: #475569; }
+.eth-rank-3 { background: #fed7aa; color: #9a3412; }
+
+/* Coming Soon Badge */
+.eth-coming-soon-badge {
+  background: #f59e0b;
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+
+@keyframes ethFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ethPop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+</style>
+
+<script id="ethith-core-bundle">
+// ETHITH TESTS - Standard Curriculum (240 Topics) and Language Hub Placement Test (70 Questions)
+window.ETHITH_CURRICULUM = {
+  "A1": [
+    {
+      "num": 1,
+      "title": "Verb 'to be' (am, is, are) - Affirmative & Negative",
+      "desc": "Basic personal statements, feelings, and descriptions"
+    },
+    {
+      "num": 2,
+      "title": "Verb 'to be' - Questions and Short Answers",
+      "desc": "Asking and answering simple questions with to be"
+    },
+    {
+      "num": 3,
+      "title": "Subject Pronouns & Possessive Adjectives",
+      "desc": "I/my, you/your, he/his, she/her, it/its, we/our, they/their"
+    },
+    {
+      "num": 4,
+      "title": "Articles (a, an, the) & Singular/Plural Nouns",
+      "desc": "Regular plurals (-s, -es) and basic article usage"
+    },
+    {
+      "num": 5,
+      "title": "Demonstratives: This, That, These, Those",
+      "desc": "Pointing to objects near and far"
+    },
+    {
+      "num": 6,
+      "title": "Have got / Has got - Possession",
+      "desc": "Describing family members, physical features, and belongings"
+    },
+    {
+      "num": 7,
+      "title": "Present Simple - Positive Statements",
+      "desc": "Daily routines, habits, and permanent situations (-s/-es endings)"
+    },
+    {
+      "num": 8,
+      "title": "Present Simple - Negatives & Don't / Doesn't",
+      "desc": "Forming negative sentences about routines"
+    },
+    {
+      "num": 9,
+      "title": "Present Simple - Yes/No Questions & Short Answers",
+      "desc": "Using Do and Does to ask routine questions"
+    },
+    {
+      "num": 10,
+      "title": "Present Simple - Wh- Questions",
+      "desc": "Where, When, What time, Who, Why, How often"
+    },
+    {
+      "num": 11,
+      "title": "Adverbs of Frequency",
+      "desc": "Always, usually, often, sometimes, hardly ever, never"
+    },
+    {
+      "num": 12,
+      "title": "Prepositions of Time: in, on, at",
+      "desc": "Time expressions, days, dates, months, and seasons"
+    },
+    {
+      "num": 13,
+      "title": "Prepositions of Place: in, on, under, next to, between",
+      "desc": "Locating everyday objects and places"
+    },
+    {
+      "num": 14,
+      "title": "There is / There are - Affirmative & Negative",
+      "desc": "Describing rooms, towns, and scenes"
+    },
+    {
+      "num": 15,
+      "title": "There is / There are - Questions & Short Answers",
+      "desc": "Is there...? Are there...?"
+    },
+    {
+      "num": 16,
+      "title": "Countable and Uncountable Nouns Basics",
+      "desc": "Food, drinks, and everyday objects"
+    },
+    {
+      "num": 17,
+      "title": "Quantifiers: Some and Any",
+      "desc": "Using some and any in positive, negative, and question forms"
+    },
+    {
+      "num": 18,
+      "title": "Quantifiers: Much, Many, A lot of",
+      "desc": "Expressing quantities with countable and uncountable nouns"
+    },
+    {
+      "num": 19,
+      "title": "Modal Verb: Can / Can't for Ability & Permission",
+      "desc": "Talking about skills and asking polite permission"
+    },
+    {
+      "num": 20,
+      "title": "Imperatives & Giving Basic Instructions",
+      "desc": "Positive and negative commands (Turn left, Don't run)"
+    },
+    {
+      "num": 21,
+      "title": "Object Pronouns: me, you, him, her, it, us, them",
+      "desc": "Using pronouns after verbs and prepositions"
+    },
+    {
+      "num": 22,
+      "title": "Possessive Pronouns: mine, yours, his, hers, ours, theirs",
+      "desc": "Expressing ownership without repeating the noun"
+    },
+    {
+      "num": 23,
+      "title": "Present Continuous - Actions Happening Now",
+      "desc": "Forming positive sentences with -ing verbs"
+    },
+    {
+      "num": 24,
+      "title": "Present Continuous - Negatives and Questions",
+      "desc": "Am/is/are + verb-ing in questions and short answers"
+    },
+    {
+      "num": 25,
+      "title": "Present Simple vs Present Continuous",
+      "desc": "Habits vs actions in progress right now"
+    },
+    {
+      "num": 26,
+      "title": "Past Simple: Verb 'to be' (was / were)",
+      "desc": "Describing past states, locations, and events"
+    },
+    {
+      "num": 27,
+      "title": "Past Simple: Regular Verbs (-ed)",
+      "desc": "Talking about completed actions in the past"
+    },
+    {
+      "num": 28,
+      "title": "Past Simple: Common Irregular Verbs (go, see, have, do)",
+      "desc": "Everyday irregular verbs in past contexts"
+    },
+    {
+      "num": 29,
+      "title": "Past Simple: Negative Form (didn't + infinitive)",
+      "desc": "Negating past actions correctly"
+    },
+    {
+      "num": 30,
+      "title": "Past Simple: Questions (Did you...? What did you...?)",
+      "desc": "Asking about past experiences and routines"
+    },
+    {
+      "num": 31,
+      "title": "Past Time Expressions: yesterday, last week, ago",
+      "desc": "Fixing time in the past"
+    },
+    {
+      "num": 32,
+      "title": "Comparative Adjectives (-er, more)",
+      "desc": "Comparing two people, places, or things"
+    },
+    {
+      "num": 33,
+      "title": "Superlative Adjectives (-est, most)",
+      "desc": "Talking about the highest degree in a group"
+    },
+    {
+      "num": 34,
+      "title": "Future with 'be going to' - Plans & Intentions",
+      "desc": "Expressing future decisions already made"
+    },
+    {
+      "num": 35,
+      "title": "Future with 'will' - Promises & Instant Decisions",
+      "desc": "Will and won't for spontaneous reactions"
+    },
+    {
+      "num": 36,
+      "title": "Like / Love / Hate + Verb-ing",
+      "desc": "Expressing preferences and hobbies"
+    },
+    {
+      "num": 37,
+      "title": "Connecting Words: and, but, because, so",
+      "desc": "Linking simple clauses together"
+    },
+    {
+      "num": 38,
+      "title": "Numbers, Dates, and Ordinal Numbers",
+      "desc": "Saying telephone numbers, prices, and calendar dates"
+    },
+    {
+      "num": 39,
+      "title": "Basic Question Tags: isn't it? aren't you?",
+      "desc": "Checking simple information"
+    },
+    {
+      "num": 40,
+      "title": "A1 Comprehensive Review & Mastery Quiz",
+      "desc": "Full foundational review of all A1 grammar structures"
+    }
+  ],
+  "A2": [
+    {
+      "num": 1,
+      "title": "Present Simple & Continuous Nuances",
+      "desc": "Stative verbs vs dynamic verbs (know, like, understand)"
+    },
+    {
+      "num": 2,
+      "title": "Past Simple with Irregular Verbs Mastery",
+      "desc": "Comprehensive review of 50 common irregular verbs"
+    },
+    {
+      "num": 3,
+      "title": "Past Continuous - Affirmative & Negative",
+      "desc": "Actions in progress at a specific moment in the past"
+    },
+    {
+      "num": 4,
+      "title": "Past Continuous vs Past Simple (when / while)",
+      "desc": "Interrupted actions in past storytelling"
+    },
+    {
+      "num": 5,
+      "title": "Used to for Past Habits & States",
+      "desc": "Things you used to do that you don't do now"
+    },
+    {
+      "num": 6,
+      "title": "Present Perfect - Life Experiences (ever / never)",
+      "desc": "Talking about experiences without a specific time"
+    },
+    {
+      "num": 7,
+      "title": "Present Perfect - just, already, yet",
+      "desc": "Recent completed actions and expectations"
+    },
+    {
+      "num": 8,
+      "title": "Present Perfect with For & Since",
+      "desc": "Duration of states and actions continuing until now"
+    },
+    {
+      "num": 9,
+      "title": "Present Perfect vs Past Simple",
+      "desc": "Distinguishing finished time vs unfinished time"
+    },
+    {
+      "num": 10,
+      "title": "Future Forms: Present Continuous for Fixed Arrangements",
+      "desc": "Calendar events and agreed appointments"
+    },
+    {
+      "num": 11,
+      "title": "Future Forms: going to vs will",
+      "desc": "Plans & predictions based on evidence vs spontaneous offers"
+    },
+    {
+      "num": 12,
+      "title": "Modal Verbs: Must & Mustn't (Obligation & Prohibition)",
+      "desc": "Rules, laws, and strong necessities"
+    },
+    {
+      "num": 13,
+      "title": "Modal Verbs: Have to / Don't have to (External Obligation)",
+      "desc": "Necessity vs lack of necessity"
+    },
+    {
+      "num": 14,
+      "title": "Modal Verbs: Should / Shouldn't (Advice)",
+      "desc": "Giving and asking for recommendations"
+    },
+    {
+      "num": 15,
+      "title": "Modal Verbs: May & Might (Possibility)",
+      "desc": "Expressing uncertainty about future events"
+    },
+    {
+      "num": 16,
+      "title": "First Conditional (Real Present/Future)",
+      "desc": "If + present simple, will + infinitive"
+    },
+    {
+      "num": 17,
+      "title": "Zero Conditional (General Truths & Facts)",
+      "desc": "If / when + present simple, present simple"
+    },
+    {
+      "num": 18,
+      "title": "Defining Relative Clauses with who, which, that",
+      "desc": "Identifying people, things, and animals"
+    },
+    {
+      "num": 19,
+      "title": "Relative Adverbs: where and when",
+      "desc": "Connecting places and times in sentences"
+    },
+    {
+      "num": 20,
+      "title": "Comparatives: as... as, less... than",
+      "desc": "Expressing equality and lower degree"
+    },
+    {
+      "num": 21,
+      "title": "Too and Enough with Adjectives and Nouns",
+      "desc": "Excess and sufficiency (too hot, enough money)"
+    },
+    {
+      "num": 22,
+      "title": "Indefinite Pronouns (someone, anywhere, nothing, everybody)",
+      "desc": "Referring to unspecified people, places, and things"
+    },
+    {
+      "num": 23,
+      "title": "Passive Voice: Present Simple Passive",
+      "desc": "Focusing on the action and object (am/is/are + V3)"
+    },
+    {
+      "num": 24,
+      "title": "Passive Voice: Past Simple Passive",
+      "desc": "Historical events and inventions (was/were + V3)"
+    },
+    {
+      "num": 25,
+      "title": "Verbs followed by Gerund (-ing)",
+      "desc": "Enjoy, mind, avoid, finish, practice + V-ing"
+    },
+    {
+      "num": 26,
+      "title": "Verbs followed by Infinitive (to + verb)",
+      "desc": "Decide, hope, promise, refuse, manage + to V"
+    },
+    {
+      "num": 27,
+      "title": "Infinitive of Purpose",
+      "desc": "Explaining why someone did something (I went to buy milk)"
+    },
+    {
+      "num": 28,
+      "title": "Prepositions of Movement: into, out of, across, through",
+      "desc": "Describing direction and physical movement"
+    },
+    {
+      "num": 29,
+      "title": "Phrasal Verbs with get, turn, look, take",
+      "desc": "Everyday separable and inseparable phrasal verbs"
+    },
+    {
+      "num": 30,
+      "title": "So do I / Neither do I",
+      "desc": "Agreeing with affirmative and negative statements"
+    },
+    {
+      "num": 31,
+      "title": "Question Tags in Present and Past",
+      "desc": "Forming confirmation tags correctly"
+    },
+    {
+      "num": 32,
+      "title": "Reported Speech: Say vs Tell",
+      "desc": "Reporting basic statements in the present"
+    },
+    {
+      "num": 33,
+      "title": "Articles with Geographical Names",
+      "desc": "When to use 'the' with countries, rivers, mountains"
+    },
+    {
+      "num": 34,
+      "title": "Adjectives Ending in -ed and -ing",
+      "desc": "Bored vs boring, interested vs interesting"
+    },
+    {
+      "num": 35,
+      "title": "Adverbs of Manner (-ly)",
+      "desc": "Quickly, carefully, well, hard, fast"
+    },
+    {
+      "num": 36,
+      "title": "Making Suggestions: Shall we, How about, Why don't we",
+      "desc": "Collaborative invitations and social proposals"
+    },
+    {
+      "num": 37,
+      "title": "Expressing Quantity: a few, a little, plenty of",
+      "desc": "Nuances in small and generous quantities"
+    },
+    {
+      "num": 38,
+      "title": "Time Clauses with when, as soon as, before, after",
+      "desc": "Future time clauses with present tense"
+    },
+    {
+      "num": 39,
+      "title": "Basic Word Formation (prefixes un-, dis- and suffixes -ful, -less)",
+      "desc": "Expanding vocabulary logically"
+    },
+    {
+      "num": 40,
+      "title": "A2 Comprehensive Review & Exit Assessment",
+      "desc": "Consolidation of Elementary grammar & communication"
+    }
+  ],
+  "B1": [
+    {
+      "num": 1,
+      "title": "Present Perfect Continuous vs Present Perfect Simple",
+      "desc": "Duration & ongoing actions vs completed results"
+    },
+    {
+      "num": 2,
+      "title": "Past Perfect Simple (had + V3)",
+      "desc": "The earlier past: actions completed before another past event"
+    },
+    {
+      "num": 3,
+      "title": "Past Perfect Continuous",
+      "desc": "Duration leading up to a specific point in the past"
+    },
+    {
+      "num": 4,
+      "title": "Second Conditional (Unreal Present/Future)",
+      "desc": "If + past simple, would + infinitive (If I were you...)"
+    },
+    {
+      "num": 5,
+      "title": "First vs Second Conditional Nuances",
+      "desc": "Likely future possibilities vs hypothetical dreams"
+    },
+    {
+      "num": 6,
+      "title": "Wish + Past Simple for Present Regrets",
+      "desc": "Expressing desires for current situations to be different"
+    },
+    {
+      "num": 7,
+      "title": "Modals of Deduction: Must, Can't, Could/Might (Present)",
+      "desc": "Drawing logical conclusions about current situations"
+    },
+    {
+      "num": 8,
+      "title": "Passive Voice in All Main Tenses",
+      "desc": "Present/Past continuous and perfect passive constructions"
+    },
+    {
+      "num": 9,
+      "title": "Passive Voice with Modal Verbs",
+      "desc": "Can be done, must be submitted, should be checked"
+    },
+    {
+      "num": 10,
+      "title": "Reported Speech: Statements & Tense Backshift",
+      "desc": "Reporting statements with correct backshift and pronouns"
+    },
+    {
+      "num": 11,
+      "title": "Reported Questions & Commands",
+      "desc": "Asked if/whether, asked wh-, told someone to do something"
+    },
+    {
+      "num": 12,
+      "title": "Non-defining Relative Clauses",
+      "desc": "Adding non-essential extra information between commas (which, who)"
+    },
+    {
+      "num": 13,
+      "title": "Relative Clauses: Omitting the Relative Pronoun",
+      "desc": "Contact clauses when pronoun is the object"
+    },
+    {
+      "num": 14,
+      "title": "Gerunds vs Infinitives with Meaning Change",
+      "desc": "Remember, stop, try, forget + V-ing vs + to V"
+    },
+    {
+      "num": 15,
+      "title": "Used to vs Be used to vs Get used to",
+      "desc": "Past habit vs accustomed to vs adapting process"
+    },
+    {
+      "num": 16,
+      "title": "Future Continuous (will be doing)",
+      "desc": "Actions in progress at a specific time in the future"
+    },
+    {
+      "num": 17,
+      "title": "Future Perfect Simple (will have done)",
+      "desc": "Actions completed by a specific point in the future"
+    },
+    {
+      "num": 18,
+      "title": "Indirect & Polite Questions",
+      "desc": "Could you tell me where...? Do you happen to know if...?"
+    },
+    {
+      "num": 19,
+      "title": "Clauses of Purpose: in order to, so that, so as not to",
+      "desc": "Expressing goals and intended results"
+    },
+    {
+      "num": 20,
+      "title": "Clauses of Contrast: although, even though, despite, in spite of",
+      "desc": "Connecting conflicting ideas smoothly"
+    },
+    {
+      "num": 21,
+      "title": "Clauses of Reason & Result: because, since, due to, so, such... that",
+      "desc": "Cause and effect relationships"
+    },
+    {
+      "num": 22,
+      "title": "Both, Neither, Either (Usage & Agreement)",
+      "desc": "Referring to pairs of people or items"
+    },
+    {
+      "num": 23,
+      "title": "All, None, Each, Every",
+      "desc": "Distributives and agreement rules"
+    },
+    {
+      "num": 24,
+      "title": "Phrasal Verbs: Separable vs Inseparable",
+      "desc": "Pronoun placement in transitive phrasal verbs"
+    },
+    {
+      "num": 25,
+      "title": "Three-part Phrasal Verbs",
+      "desc": "Look forward to, run out of, get on with, put up with"
+    },
+    {
+      "num": 26,
+      "title": "Reflexive & Reciprocal Pronouns (myself, each other)",
+      "desc": "Emphatic and reflexive usage"
+    },
+    {
+      "num": 27,
+      "title": "Dependent Prepositions with Verbs & Adjectives",
+      "desc": "Depend on, belong to, interested in, proud of, keen on"
+    },
+    {
+      "num": 28,
+      "title": "Order of Adjectives before Nouns",
+      "desc": "Opinion, size, age, shape, color, origin, material, purpose"
+    },
+    {
+      "num": 29,
+      "title": "Gradable vs Extreme (Non-gradable) Adjectives",
+      "desc": "Very tired vs exhausted, absolutely furious vs very angry"
+    },
+    {
+      "num": 30,
+      "title": "Collocations with Make, Do, Take, Have",
+      "desc": "Mastering natural verb-noun combinations"
+    },
+    {
+      "num": 31,
+      "title": "Discourse Markers in Spoken English",
+      "desc": "Actually, by the way, anyway, to be honest"
+    },
+    {
+      "num": 32,
+      "title": "Expressing Preferences: Would rather, Prefer, Would prefer",
+      "desc": "Structures for expressing specific and general choices"
+    },
+    {
+      "num": 33,
+      "title": "Conditionals with Unless, As long as, Provided that",
+      "desc": "Alternative conditional conjunctions"
+    },
+    {
+      "num": 34,
+      "title": "Question Tags Advanced & Intonation Nuances",
+      "desc": "Expressing genuine questions vs requesting agreement"
+    },
+    {
+      "num": 35,
+      "title": "Compounds with Some-, Any-, No-, Every-",
+      "desc": "Subtleties in questions and negative contexts"
+    },
+    {
+      "num": 36,
+      "title": "Prefixes & Suffixes for Word Formation (Noun/Adj/Verb)",
+      "desc": "-ment, -tion, -able, -ize, mis-, re-, over-"
+    },
+    {
+      "num": 37,
+      "title": "Confusing Word Pairs (borrow/lend, sensible/sensitive)",
+      "desc": "Avoiding common false cognates and lexical traps"
+    },
+    {
+      "num": 38,
+      "title": "Formal vs Informal Email Language",
+      "desc": "Greetings, transitions, requests, and sign-offs"
+    },
+    {
+      "num": 39,
+      "title": "Summary Skills & Paraphrasing Techniques",
+      "desc": "Expressing identical thoughts with varied syntax"
+    },
+    {
+      "num": 40,
+      "title": "B1 Intermediate Exit Exam & Comprehensive Assessment",
+      "desc": "Mastery test of all CEFR B1 competencies"
+    }
+  ],
+  "B2": [
+    {
+      "num": 1,
+      "title": "Third Conditional (Unreal Past & Regrets)",
+      "desc": "If + had + V3, would have + V3"
+    },
+    {
+      "num": 2,
+      "title": "Mixed Conditionals (Past Cause -> Present Result & Vice Versa)",
+      "desc": "If I had taken that job, I would be in London today"
+    },
+    {
+      "num": 3,
+      "title": "Inverted Conditionals (Had I known, Were he to ask, Should you need)",
+      "desc": "Formal and literary conditional structures"
+    },
+    {
+      "num": 4,
+      "title": "Wish & If only for Past Regrets (had + V3)",
+      "desc": "I wish I hadn't spent so much money"
+    },
+    {
+      "num": 5,
+      "title": "Wish + Would for Annoying Habits & Desired Change",
+      "desc": "I wish he would stop interrupting me"
+    },
+    {
+      "num": 6,
+      "title": "Modals of Deduction in the Past (must have, can't have, might have)",
+      "desc": "Speculating about past occurrences"
+    },
+    {
+      "num": 7,
+      "title": "Should have / Ought to have done (Criticism & Regret)",
+      "desc": "Expressing advisable actions that were neglected"
+    },
+    {
+      "num": 8,
+      "title": "Needn't have done vs Didn't need to do",
+      "desc": "Action performed unnecessarily vs unnecessary and not performed"
+    },
+    {
+      "num": 9,
+      "title": "Causative Verbs: Have / Get something done",
+      "desc": "Arranging for professional services and passive results"
+    },
+    {
+      "num": 10,
+      "title": "Have someone do vs Get someone to do",
+      "desc": "Persuasion, delegation, and instructions"
+    },
+    {
+      "num": 11,
+      "title": "Passive Reporting Structures (It is said that / He is thought to be)",
+      "desc": "Academic and journalistic distance"
+    },
+    {
+      "num": 12,
+      "title": "Complex Gerund & Infinitive Structures",
+      "desc": "Passive and perfect gerunds and infinitives (having done, to have been)"
+    },
+    {
+      "num": 13,
+      "title": "Participle Clauses (-ing and -ed clauses)",
+      "desc": "Shortening adverbial clauses of time, reason, and condition"
+    },
+    {
+      "num": 14,
+      "title": "Relative Clauses with Prepositional Placement (Formal vs Informal)",
+      "desc": "To whom it was addressed vs who it was addressed to"
+    },
+    {
+      "num": 15,
+      "title": "Cleft Sentences for Emphasis (It was... that, What I need is...)",
+      "desc": "Highlighting specific elements in discourse"
+    },
+    {
+      "num": 16,
+      "title": "Inversion after Negative & Restrictive Adverbials",
+      "desc": "Never have I seen, Seldom do we, Hardly had they arrived when..."
+    },
+    {
+      "num": 17,
+      "title": "Future in the Past (was going to, was about to, would)",
+      "desc": "Intended events viewed retrospectively"
+    },
+    {
+      "num": 18,
+      "title": "Future Perfect Continuous (will have been doing)",
+      "desc": "Duration up to a projected future milestone"
+    },
+    {
+      "num": 19,
+      "title": "Subjunctive Mood in That-Clauses",
+      "desc": "Demand that he be present, suggest that she study"
+    },
+    {
+      "num": 20,
+      "title": "Verbs of Perception with Bare Infinitive vs Gerund",
+      "desc": "I saw him cross the street vs I saw him crossing the street"
+    },
+    {
+      "num": 21,
+      "title": "Reporting Verbs with Specific Patterns",
+      "desc": "Urge someone to, accuse of, deny having, insist on"
+    },
+    {
+      "num": 22,
+      "title": "Advanced Linking Words & Cohesive Devices",
+      "desc": "Furthermore, nonetheless, whereas, on the contrary, hence"
+    },
+    {
+      "num": 23,
+      "title": "Nominalisation in Formal Writing",
+      "desc": "Converting clauses and verbs to abstract noun phrases"
+    },
+    {
+      "num": 24,
+      "title": "Ellipsis and Substitution (so, do so, neither, not)",
+      "desc": "Avoiding redundancy in complex texts"
+    },
+    {
+      "num": 25,
+      "title": "Advanced Phrasal Verbs in Academic & Professional Register",
+      "desc": "Account for, carry out, bring about, phase out"
+    },
+    {
+      "num": 26,
+      "title": "Idiomatic Expressions & Nuanced Collocations",
+      "desc": "High-frequency natural idioms for IELTS 7.0+"
+    },
+    {
+      "num": 27,
+      "title": "Prepositional Phrases in Formal Arguments",
+      "desc": "In terms of, with respect to, by virtue of, in light of"
+    },
+    {
+      "num": 28,
+      "title": "Degrees of Certainty & Hedging Language",
+      "desc": "Arguably, seemingly, tends to, it appears that"
+    },
+    {
+      "num": 29,
+      "title": "Expressing Nuanced Contrast: While, Whilst, Whereas",
+      "desc": "Structuring sophisticated comparative paragraphs"
+    },
+    {
+      "num": 30,
+      "title": "Inversion with 'No sooner... than' and 'Scarcely... when'",
+      "desc": "Dramatic narrative pacing"
+    },
+    {
+      "num": 31,
+      "title": "Compound Adjectives (well-thought-out, time-consuming)",
+      "desc": "Precision in descriptive lexical density"
+    },
+    {
+      "num": 32,
+      "title": "False Friends & Complex Lexical Nuance",
+      "desc": "Disinterested vs uninterested, continuous vs continual"
+    },
+    {
+      "num": 33,
+      "title": "Structuring Persuasive Arguments & Rebuttals",
+      "desc": "Acknowledging counterarguments (Conceding and refuting)"
+    },
+    {
+      "num": 34,
+      "title": "Cohesion in Multi-paragraph IELTS Essays",
+      "desc": "Theme-rheme progression and referential clarity"
+    },
+    {
+      "num": 35,
+      "title": "Nuances of Spoken Intonation & Implied Meaning",
+      "desc": "Sarcasm, understatement, and diplomatic evasion"
+    },
+    {
+      "num": 36,
+      "title": "Complex Conditionals with But for / Were it not for",
+      "desc": "Hypothetical reasoning without standard if-clauses"
+    },
+    {
+      "num": 37,
+      "title": "Noun Clauses as Subjects and Complements",
+      "desc": "Whether he succeeds or fails depends on his diligence"
+    },
+    {
+      "num": 38,
+      "title": "Advanced Prefixation (pseudo-, quasi-, hyper-, ultra-)",
+      "desc": "Morphological sophistication in modern English"
+    },
+    {
+      "num": 39,
+      "title": "IELTS Academic Vocabulary & Collocation Density",
+      "desc": "Band 7.5+ academic lexical resource enhancement"
+    },
+    {
+      "num": 40,
+      "title": "B2 Upper-Intermediate Comprehensive Mastery Assessment",
+      "desc": "Full competency evaluation across all B2 benchmarks"
+    }
+  ],
+  "C1": [
+    {
+      "num": 1,
+      "title": "Advanced Stylistic Inversion in Literary & Rhetorical Prose",
+      "desc": "Under no circumstances may, Little did they suspect, Only by doing so"
+    },
+    {
+      "num": 2,
+      "title": "Complex Cleft & Pseudo-Cleft Constructions",
+      "desc": "All I ever wanted was, What struck me most was, The reason why..."
+    },
+    {
+      "num": 3,
+      "title": "Nuanced Modal Syntaxes (Dare, Need as modals; modal idioms)",
+      "desc": "He need not have worried, I dare say, might well have done"
+    },
+    {
+      "num": 4,
+      "title": "Hypothetical Past Inversion & Elaborate Subjunctives",
+      "desc": "Be that as it may, Suffice it to say, Come what may"
+    },
+    {
+      "num": 5,
+      "title": "Extended Participle & Absolute Clauses",
+      "desc": "Weather permitting, His speech having concluded, Being caught unawares"
+    },
+    {
+      "num": 6,
+      "title": "Complex Passive Constructions with Ergative & Unaccusative Verbs",
+      "desc": "The door opened itself, was deemed inadmissible, stands convicted"
+    },
+    {
+      "num": 7,
+      "title": "Discourse Structuring & Rhetorical Framing",
+      "desc": "With reference to, To illustrate, In corroboration of"
+    },
+    {
+      "num": 8,
+      "title": "Hedging, Modality & Academic Stance",
+      "desc": "It is ostensibly plausible that, findings tentatively suggest"
+    },
+    {
+      "num": 9,
+      "title": "Advanced Nominalisation & Information Density",
+      "desc": "Condensing extended clauses into high-register academic summaries"
+    },
+    {
+      "num": 10,
+      "title": "Ellipsis, Gapping & Cohesive Substitution",
+      "desc": "Syntactic economy in sophisticated discourse"
+    },
+    {
+      "num": 11,
+      "title": "Sophisticated Metaphor & Figurative Idiom in Argument",
+      "desc": "A double-edged sword, tip of the iceberg, watershed moment"
+    },
+    {
+      "num": 12,
+      "title": "Collocations of Extreme Precision",
+      "desc": "Categorically deny, unmitigated disaster, consummate skill"
+    },
+    {
+      "num": 13,
+      "title": "Fronting & Topicalisation for Dramatic Effect",
+      "desc": "Up went the prices, Into the room walked the chancellor"
+    },
+    {
+      "num": 14,
+      "title": "Complex Prepositional Verbs & Multi-word Units",
+      "desc": "Preclude from, impinge upon, resonate with, succumb to"
+    },
+    {
+      "num": 15,
+      "title": "Subtle Distinctions in Register (Archaisms, Slang, Jargon)",
+      "desc": "Navigating sociocultural nuance in professional contexts"
+    },
+    {
+      "num": 16,
+      "title": "Concessive & Adversative Discourse Formulations",
+      "desc": "Albeit, notwithstanding, much as I admire, however daunting"
+    },
+    {
+      "num": 17,
+      "title": "Grammar of Epistemic & Deontic Modality",
+      "desc": "Analyzing obligation vs truth-value commitments"
+    },
+    {
+      "num": 18,
+      "title": "Conditionals without 'If' in Legal & Formal Register",
+      "desc": "In the event of, on condition that, failing which, provided"
+    },
+    {
+      "num": 19,
+      "title": "Parenthetical Commentary & Aside Formulations",
+      "desc": "As it were, so to speak, truth be told, if anything"
+    },
+    {
+      "num": 20,
+      "title": "Advanced Semantic Fields: Authority, Ambiguity, Paradox",
+      "desc": "Lexical mastery in abstract debates"
+    },
+    {
+      "num": 21,
+      "title": "Irony, Sarcasm & Understatement (Litotes)",
+      "desc": "Not unhelpful, far from trivial, scarcely admirable"
+    },
+    {
+      "num": 22,
+      "title": "Syntactic Parallelism & Chiasmus in Rhetoric",
+      "desc": "Balancing clauses for persuasive resonance"
+    },
+    {
+      "num": 23,
+      "title": "Complex Reflexive & Emphatic Syntaxes",
+      "desc": "He himself admitted, beside oneself with rage, of itself"
+    },
+    {
+      "num": 24,
+      "title": "Binomials & Trinomials (Fixed Phrasal Clusters)",
+      "desc": "Safe and sound, pros and cons, rough and ready, part and parcel"
+    },
+    {
+      "num": 25,
+      "title": "Advanced Punctuation & Rhetorical Sentence Length",
+      "desc": "Mastery of colons, semicolons, em-dashes for cadence"
+    },
+    {
+      "num": 26,
+      "title": "Pragmatic Presuppositions & Implicatures",
+      "desc": "Decoding covert meaning and reading between the lines"
+    },
+    {
+      "num": 27,
+      "title": "Verb Complementation Nuances in High-level Prose",
+      "desc": "Adjudged to be, presumed dead, found guilty of"
+    },
+    {
+      "num": 28,
+      "title": "Substantive Adjectives & Generic Plurality",
+      "desc": "The underprivileged, the discerning, the uninitiated"
+    },
+    {
+      "num": 29,
+      "title": "Advanced Temporal Sequencing & Asynchronous Past",
+      "desc": "Prior to, subsequent to, in the aftermath of, erstwhile"
+    },
+    {
+      "num": 30,
+      "title": "Evaluative Adverbs & Sentence Modifiers",
+      "desc": "Regrettably, undeniably, paradoxically, purportedly"
+    },
+    {
+      "num": 31,
+      "title": "Idiomatic Verb-Noun Collocations in Economics & Politics",
+      "desc": "Wreak havoc, broker peace, curb inflation, levy taxes"
+    },
+    {
+      "num": 32,
+      "title": "Advanced Phrasal Verbs with Latent Meanings",
+      "desc": "Iron out, mull over, paper over, gloss over, factor in"
+    },
+    {
+      "num": 33,
+      "title": "Deconstruction of Academic Abstract Writing",
+      "desc": "Analyzing methodology, findings, and pedagogical implications"
+    },
+    {
+      "num": 34,
+      "title": "Stylistic Cohesion in Literary Excerpts",
+      "desc": "Tracking subtle anaphoric and cataphoric reference"
+    },
+    {
+      "num": 35,
+      "title": "Diplomatic & Euphemistic Evasion Strategies",
+      "desc": "Downsizing, collateral, economically disadvantaged"
+    },
+    {
+      "num": 36,
+      "title": "Complex Comparative Structures with Proportional Increase",
+      "desc": "The more... the less, in proportion as, all the more"
+    },
+    {
+      "num": 37,
+      "title": "Grammar of Quotation & Intertextuality",
+      "desc": "Direct vs indirect attributed discourse in academic debate"
+    },
+    {
+      "num": 38,
+      "title": "Morphological Neologisms & Semantic Shifts",
+      "desc": "Coining words through blending, backformation, and clipping"
+    },
+    {
+      "num": 39,
+      "title": "IELTS Band 8.5+ Linguistic Polish & Fluency Drills",
+      "desc": "Syntactic versatility and lexical command refinement"
+    },
+    {
+      "num": 40,
+      "title": "C1 Advanced Comprehensive Proficiency Benchmark",
+      "desc": "Rigorous assessment across all C1 operational dimensions"
+    }
+  ],
+  "C2": [
+    {
+      "num": 1,
+      "title": "Near-Native Grammatical Intuition & Stylistic Mastery",
+      "desc": "Micro-nuances in syntax that distinguish C2 from C1"
+    },
+    {
+      "num": 2,
+      "title": "Archaic & Classical Syntactic Inversions",
+      "desc": "Should it be so decreed, Be he friend or foe, Harking back to"
+    },
+    {
+      "num": 3,
+      "title": "Unorthodox Clefting & Hyper-Focus Constructions",
+      "desc": "It was not for nothing that, Nowhere does there exist"
+    },
+    {
+      "num": 4,
+      "title": "Extreme Register Manipulation & Dialectical Nuance",
+      "desc": "Shifting effortlessly between colloquial intimacy and forensic formality"
+    },
+    {
+      "num": 5,
+      "title": "Forensic Analysis of Legal & Philosophical Discourse",
+      "desc": "De facto, prima facie, ipso facto, mutatis mutandis in context"
+    },
+    {
+      "num": 6,
+      "title": "Subtle Ambiguity & Strategic Vagueness",
+      "desc": "Crafting sentences that allow multiple valid interpretive layers"
+    },
+    {
+      "num": 7,
+      "title": "Hyperbaton & Disruptive Syntactic Rearrangements",
+      "desc": "Artistic word order deviations in high-rhetoric English"
+    },
+    {
+      "num": 8,
+      "title": "Advanced Litotes, Meiosis & Hyperbolic Rhetoric",
+      "desc": "Understated mastery in high-stakes debate"
+    },
+    {
+      "num": 9,
+      "title": "Rare Idiomatic Formulations & Obscure Collocations",
+      "desc": "Gild the lily, tilt at windmills, bite the bullet, cut the Gordian knot"
+    },
+    {
+      "num": 10,
+      "title": "Semantic Drift & Historical Etymology in Precision Diction",
+      "desc": "Choosing between Germanic, Romance, and Classical synonyms"
+    },
+    {
+      "num": 11,
+      "title": "Syntactic Recursion & Deeply Embedded Subordination",
+      "desc": "Maintaining coherence across 60+ word periodic sentences"
+    },
+    {
+      "num": 12,
+      "title": "The Subjunctive in Formulaic Antiquity",
+      "desc": "God forbid, Heaven help us, Manners be damned"
+    },
+    {
+      "num": 13,
+      "title": "Pragmatic Politeness & Insinuation in High Diplomacy",
+      "desc": "Formulations of veiled threat, delicate demurral, and concession"
+    },
+    {
+      "num": 14,
+      "title": "Elliptical Masterstrokes in Dramatic Monologue",
+      "desc": "Conveying whole psychological landscapes through omissions"
+    },
+    {
+      "num": 15,
+      "title": "Sophisticated Antithesis & Balanced Periods",
+      "desc": "Emulating the rhythmic prose of Churchill, Russell, and Baldwin"
+    },
+    {
+      "num": 16,
+      "title": "Nominal Compounds with Complex Internal Syntax",
+      "desc": "Once-in-a-lifetime-never-to-be-repeated experiences"
+    },
+    {
+      "num": 17,
+      "title": "Deictic Nuances & Cognitive Perspective Shifts",
+      "desc": "Manipulating spatial, temporal, and social distance"
+    },
+    {
+      "num": 18,
+      "title": "The Stylistics of Academic Polemics & Critical Reviews",
+      "desc": "Dismantling flawed arguments with devastating linguistic elegance"
+    },
+    {
+      "num": 19,
+      "title": "Collocational Inversions & Poetic License",
+      "desc": "Heavy was the heart, Pale grew the sky"
+    },
+    {
+      "num": 20,
+      "title": "Phonaesthetics & Euphony in Oratory",
+      "desc": "Alliteration, assonance, and meter in spoken arguments"
+    },
+    {
+      "num": 21,
+      "title": "Nuances of Irony, Mockery & Satire in British and American Registers",
+      "desc": "Dry deadpan vs scathing satire"
+    },
+    {
+      "num": 22,
+      "title": "Syntactic Asymmetry & Intentional Anacoluthon",
+      "desc": "Breaking syntactic rules deliberately for stylistic impact"
+    },
+    {
+      "num": 23,
+      "title": "Forensic Pragmatics: Cross-examination & Discursive Traps",
+      "desc": "Detecting presupposition failure and conversational implicature"
+    },
+    {
+      "num": 24,
+      "title": "Advanced Lexical Polysemy & Punning",
+      "desc": "Sophisticated wordplay that depends on double grammatical categorization"
+    },
+    {
+      "num": 25,
+      "title": "Syntactic Weight & End-Focus Dynamics",
+      "desc": "Managing cognitive load by placing complex constituents in final position"
+    },
+    {
+      "num": 26,
+      "title": "Metadiscourse & Reflexive Authorial Presence",
+      "desc": "Weaving self-commentary without violating academic decorum"
+    },
+    {
+      "num": 27,
+      "title": "Rare Modal Auxiliaries & Archaic Inflections",
+      "desc": "Woe betide, Far be it from me, Lest it should occur"
+    },
+    {
+      "num": 28,
+      "title": "Semantic Density & Lexical Variation in Spontaneous Speech",
+      "desc": "Maintaining zero hesitation markers while producing dense syntax"
+    },
+    {
+      "num": 29,
+      "title": "The Grammar of Philosophical Inquiry & Epistemology",
+      "desc": "A priori, tautology, syllogism, non sequitur"
+    },
+    {
+      "num": 30,
+      "title": "Sociolects, Idiolects & Linguistic Identity",
+      "desc": "Recognizing subtle geographical and class sociolect markers"
+    },
+    {
+      "num": 31,
+      "title": "Sophisticated Figurative Allegory in Essay Writing",
+      "desc": "Sustaining a single extended metaphor across multiple paragraphs"
+    },
+    {
+      "num": 32,
+      "title": "The Logic of Subordinate Conjunction Chains",
+      "desc": "Inasmuch as, insofar as, in proportion as, seeing that"
+    },
+    {
+      "num": 33,
+      "title": "Stylistic Economy: Saying in Three Words what Others Say in Ten",
+      "desc": "Eliminating circumlocution, pleonasm, and tautology"
+    },
+    {
+      "num": 34,
+      "title": "Deconstruction of High Literature (Joyce, Woolf, Orwell)",
+      "desc": "Analyzing linguistic innovation and syntactic stretching"
+    },
+    {
+      "num": 35,
+      "title": "Rhetorical Questioning, Hypophora & Erotesis",
+      "desc": "Guiding the listener's conclusions through sculpted inquiries"
+    },
+    {
+      "num": 36,
+      "title": "Nuanced Modal Verb Shades in Legal Drafting",
+      "desc": "Shall vs will vs must vs may in international contracts"
+    },
+    {
+      "num": 37,
+      "title": "Precision Idiom in High Finance & Global Strategy",
+      "desc": "Moral hazard, systemic risk, black swan, race to the bottom"
+    },
+    {
+      "num": 38,
+      "title": "Culturally Embedded Allusions & Proverbs",
+      "desc": "Shakespearean, Biblical, and mythological references in modern prose"
+    },
+    {
+      "num": 39,
+      "title": "Flawless IELTS Band 9.0 Linguistic Virtuosity",
+      "desc": "Seamless mastery of grammar, lexical range, coherence, and accuracy"
+    },
+    {
+      "num": 40,
+      "title": "C2 Master of English Ultimate Certification Exam",
+      "desc": "Comprehensive pinnacle evaluation of CEFR C2 proficiency"
+    }
+  ]
+};
+
+window.ETHITH_PLACEMENT = [
+  {
+    "id": 1,
+    "prompt": "Manager: Where's Mr Davidson? Assistant: Oh, he's London today.",
+    "options": {
+      "A": "in",
+      "B": "on",
+      "C": "to",
+      "D": "at"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 2,
+    "prompt": "Amirah: Do you like cats? Chris: No, but there lots of other animals I like.",
+    "options": {
+      "A": "is",
+      "B": "be",
+      "C": "are",
+      "D": "was"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 3,
+    "prompt": "Andrew: Where Alicia come from? Martin: I think she's from the United States.",
+    "options": {
+      "A": "is",
+      "B": "do",
+      "C": "are",
+      "D": "does"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 4,
+    "prompt": "Teacher: Tell me something about your parents, Lucas. Student: My mother and father both very tall.",
+    "options": {
+      "A": "is",
+      "B": "isn't",
+      "C": "are",
+      "D": "aren't"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 5,
+    "prompt": "Ayla: That's a nice table, Sophie! Is it new? Sophie: Oh no, it's my old dining table.",
+    "options": {
+      "A": "mother",
+      "B": "mothers",
+      "C": "mother's",
+      "D": "mothers'"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 6,
+    "prompt": "Emma: What do you do after school? Chloe: I see my friends. Do you visit people, too? Emma: No, I go out.",
+    "options": {
+      "A": "often",
+      "B": "never",
+      "C": "always",
+      "D": "sometimes"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 7,
+    "prompt": "Katie: Is Charlotte at school today? Laura: No, she . She's not well today.",
+    "options": {
+      "A": "isn't",
+      "B": "aren't",
+      "C": "doesn't",
+      "D": "hasn't"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 8,
+    "prompt": "Alex: I'd like to make a cake. eggs have we got? Andrea: Three, I think. Let me check.",
+    "options": {
+      "A": "How big",
+      "B": "How much",
+      "C": "How many",
+      "D": "How long"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 9,
+    "prompt": "Ifrah: Which bus goes to the hospital? Antonia: the 236. It stops outside.",
+    "options": {
+      "A": "Get",
+      "B": "Got",
+      "C": "Gets",
+      "D": "Getting"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 10,
+    "prompt": "Father: Are we ready to go? Daughter: No, Mum can't find hat.",
+    "options": {
+      "A": "its",
+      "B": "his",
+      "C": "her",
+      "D": "their"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 11,
+    "prompt": "Shop Assistant: Can I help you? Customer: Yes, I'd like to buy trousers.",
+    "options": {
+      "A": "a",
+      "B": "an",
+      "C": "this",
+      "D": "these"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 12,
+    "prompt": "Mother: Where's that fish I bought? It was on the table. Daughter: Oh no! The cat it.",
+    "options": {
+      "A": "eat",
+      "B": "eats",
+      "C": "is eating",
+      "D": "are eating"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 13,
+    "prompt": "Amanda: I like your new sofa. Fahima: Thanks. It's comfortable than the other one we had.",
+    "options": {
+      "A": "too",
+      "B": "very",
+      "C": "much",
+      "D": "more"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 14,
+    "prompt": "Alicia: I'm going to the supermarket. Do you want anything? Peter: Could you get milk, please?",
+    "options": {
+      "A": "a",
+      "B": "any",
+      "C": "some",
+      "D": "every"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 15,
+    "answer": "D",
+    "prompt": "Karina: When do you want to play football? Aniqa: I ______ to play tomorrow, because I don't need to go to work.",
+    "options": {
+      "A": "like",
+      "B": "likes",
+      "C": "liked",
+      "D": "'d like"
+    }
+  },
+  {
+    "id": 16,
+    "prompt": "Manisha: What did you do at the weekend? Nicola: I tennis with my friend on Saturday.",
+    "options": {
+      "A": "play",
+      "B": "played",
+      "C": "plays",
+      "D": "playing"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 17,
+    "prompt": "Wife: Have we got any cheese in the fridge? Husband: No, we haven't. I'm buy some this afternoon.",
+    "options": {
+      "A": "go",
+      "B": "go to",
+      "C": "going",
+      "D": "going to"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 18,
+    "prompt": "Laura: Where you last Tuesday? I tried to phone you. Beatriz: Oh, I was visiting my grandmother. I didn't have my phone with me.",
+    "options": {
+      "A": "were",
+      "B": "was",
+      "C": "are",
+      "D": "is"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 19,
+    "prompt": "Miriam: Are you coming to my party on Tuesday? Brian: I'm really sorry, but I to take my daughter to the airport.",
+    "options": {
+      "A": "has",
+      "B": "had",
+      "C": "have",
+      "D": "having"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 20,
+    "prompt": "Saif: Why do you like running? Isabella: Because it's way to keep fit.",
+    "options": {
+      "A": "best",
+      "B": "better",
+      "C": "the best",
+      "D": "the better"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 21,
+    "prompt": "Anna: Have you lived here a long time? Stefan: Yes, over 40 years. I know of people in this town.",
+    "options": {
+      "A": "any",
+      "B": "lots",
+      "C": "more",
+      "D": "most"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 22,
+    "prompt": "Josef: Why didn't you come to the cinema last week? Chloe: I wanted to but I couldn't. I studying for that test we had on Monday.",
+    "options": {
+      "A": "was",
+      "B": "were",
+      "C": "am",
+      "D": "been"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 23,
+    "prompt": "Anna: That bird's on the garden table again. I think it's hungry. Juliana: Yes, look! It eat the bread we put there.",
+    "options": {
+      "A": "is",
+      "B": "will",
+      "C": "goes to",
+      "D": "is going to"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 24,
+    "prompt": "Sophie: How long married? Ying Yue: Two years. I met my husband when I was working in New York.",
+    "options": {
+      "A": "had you got",
+      "B": "did you get",
+      "C": "have you been",
+      "D": "are you being"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 25,
+    "prompt": "David: Have you that new film yet? Susanna: No, I haven't. We could go on Thursday if you like?",
+    "options": {
+      "A": "see",
+      "B": "saw",
+      "C": "seen",
+      "D": "seeing"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 26,
+    "prompt": "Shop Assistant: Excuse me, please. Could I get past? Customer: Oh, I'm sorry. I'm getting in the way, I?",
+    "options": {
+      "A": "don't",
+      "B": "aren't",
+      "C": "can't",
+      "D": "haven't"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 27,
+    "prompt": "Wife: Advertising is a big business for musicians. Husband: Yes, musicians a lot of money for writing short pieces of music.",
+    "options": {
+      "A": "pay",
+      "B": "paid",
+      "C": "are paid",
+      "D": "are paying"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 28,
+    "prompt": "Son: Mum, I'd really like a guitar. Can I have one? Mother: OK, but if we buy one you have to practise playing it.",
+    "options": {
+      "A": "will",
+      "B": "can",
+      "C": "could",
+      "D": "must"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 29,
+    "prompt": "Juliana: Do you like Brazilian coffee? Miriodere: No I don't, because it's strong.",
+    "options": {
+      "A": "too",
+      "B": "such",
+      "C": "much",
+      "D": "enough"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 30,
+    "prompt": "Matthew: Would you like anything from the shop? Alicia: Yes, I'd like one of celebrity magazines, please.",
+    "options": {
+      "A": "most recent",
+      "B": "more recent",
+      "C": "the most recent",
+      "D": "the more recent"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 31,
+    "prompt": "Daughter: Mum, my computer is broken again. I really need a new one. Mother: I buy one if we had the money, but it's not possible right now.",
+    "options": {
+      "A": "will",
+      "B": "may",
+      "C": "should",
+      "D": "would"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 32,
+    "prompt": "Mother: you packed your suitcase yet? We're leaving early tomorrow morning. Son: I'll do it later. It won't take long.",
+    "options": {
+      "A": "Did",
+      "B": "Have",
+      "C": "Will",
+      "D": "Are"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 33,
+    "prompt": "Lucas: Do you play the piano, Natasha? Natasha: Well, I play when I was younger, but I'm not sure I remember now.",
+    "options": {
+      "A": "can",
+      "B": "can't",
+      "C": "could",
+      "D": "couldn't"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 34,
+    "prompt": "Martina: What did the doctor say about your stomach pains? Padma: He asked me what I for the last two days.",
+    "options": {
+      "A": "eat",
+      "B": "had eaten",
+      "C": "was eating",
+      "D": "would eat"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 35,
+    "prompt": "Daughter: Everyone has arrived apart from Pamela. Mother: Don't worry, she phoned me this morning and said she be a bit late.",
+    "options": {
+      "A": "can",
+      "B": "must",
+      "C": "should",
+      "D": "would"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 36,
+    "prompt": "Vincent: Did you see the weather forecast? It's going to be extremely hot this weekend. Pauline: I know, I can't believe it! It since Monday.",
+    "options": {
+      "A": "rains",
+      "B": "has been raining",
+      "C": "is raining",
+      "D": "was raining"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 37,
+    "prompt": "Ameena: What colour are you going to paint the living room? Charlotte: I probably choose something bright, like yellow.",
+    "options": {
+      "A": "will",
+      "B": "may",
+      "C": "can",
+      "D": "might"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 38,
+    "prompt": "Victor: I'd love to go back in history to see how people lived hundreds of years ago. Simon: Me too! If I choose, I'd probably travel to ancient Rome.",
+    "options": {
+      "A": "can",
+      "B": "will",
+      "C": "could",
+      "D": "would"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 39,
+    "prompt": "Stephen: The concert was fantastic yesterday. You have come. Yuuto: I know. I wanted to, but I had to work late.",
+    "options": {
+      "A": "must",
+      "B": "could",
+      "C": "ought",
+      "D": "should"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 40,
+    "prompt": "Katie: Would you like to go sightseeing or to the beach this afternoon? Matthew: I don't mind, I'll let you decide. Katie: OK, let's go sightseeing, we?",
+    "options": {
+      "A": "should",
+      "B": "shall",
+      "C": "might",
+      "D": "would"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 41,
+    "prompt": "Amanda: It said on the news that the president also owns all the national newspapers. Andrew: That be right! I don't think that's true.",
+    "options": {
+      "A": "must",
+      "B": "can't",
+      "C": "won't",
+      "D": "would"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 42,
+    "prompt": "Assistant: That meeting was really difficult. What would you have done if you in my position? Manager: Oh, I think you managed it very well.",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "had been",
+      "D": "would be"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 43,
+    "prompt": "Natalia: My new smartphone doesn't seem to work. Katie: Oh dear! Perhaps you should take it and ask for a refund.",
+    "options": {
+      "A": "up",
+      "B": "out",
+      "C": "away",
+      "D": "back"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 44,
+    "prompt": "Chris: I wish I could be with our cousins \\205 Alison: Me too! By this time tomorrow they on a Greek beach while we're revising for our history test.",
+    "options": {
+      "A": "sunbathe",
+      "B": "will sunbathe",
+      "C": "will be sunbathing",
+      "D": "will have sunbathed"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 45,
+    "prompt": "Son: Are you OK, Mum? You don't seem very relaxed. Mother: I just wish I an aisle seat so that I could get up and walk around more easily.",
+    "options": {
+      "A": "had chosen",
+      "B": "have chosen",
+      "C": "would choose",
+      "D": "should choose"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 46,
+    "prompt": "Nicola: I love this picture, but won't it cost a fortune? Victor: No, it's just a copy. The original, is a portrait of the artist's friend, sold for \\2004 million!",
+    "options": {
+      "A": "whose",
+      "B": "which",
+      "C": "whom",
+      "D": "that"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 47,
+    "prompt": "Laura: I can't believe how talented this artist was. Emily: I know, it's amazing. he was almost 90 when he did them, his paintings are beautiful.",
+    "options": {
+      "A": "Since",
+      "B": "Besides",
+      "C": "Although",
+      "D": "Therefore"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 48,
+    "prompt": "Andrea: I want to buy some new shoes for the winter. Shan: Well, I looking for a new pair of boots for weeks, but I can't find anything I like.",
+    "options": {
+      "A": "am",
+      "B": "was",
+      "C": "had been",
+      "D": "have been"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 49,
+    "prompt": "Client: I don't have much money - just enough to . Accountant: Well, let me suggest a way of helping you save more.",
+    "options": {
+      "A": "get by",
+      "B": "pay off",
+      "C": "do with",
+      "D": "make up"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 50,
+    "prompt": "Pablo: In April next year I here for ten years exactly. Alison: Wow! It really doesn't seem that long.",
+    "options": {
+      "A": "will live",
+      "B": "will be living",
+      "C": "am going to live",
+      "D": "will have been living"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 51,
+    "prompt": "Student: Is it true that it took Bell and Watson ages to invent the telephone? Teacher: Yes. When they finally succeeded, they on it for about 30 years.",
+    "options": {
+      "A": "must work",
+      "B": "had been working",
+      "C": "have worked",
+      "D": "would be working"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 52,
+    "prompt": "Rachel: This would be a lovely place to sit on a dry day. Natasha: Yes, I know. I just wish the rain .",
+    "options": {
+      "A": "would stop",
+      "B": "has stopped",
+      "C": "will have stopped",
+      "D": "would be stopping"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 53,
+    "prompt": "Student: What's today's lesson going to be about? Teacher: Today we're going to learn about a tribe descendants live in Lima, the capital of Peru.",
+    "options": {
+      "A": "who",
+      "B": "which",
+      "C": "whose",
+      "D": "whom"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 54,
+    "prompt": "Andrea: Did your town have a good market? Katie: Yes. When I was young we there every Saturday looking for bargains.",
+    "options": {
+      "A": "had gone",
+      "B": "would go",
+      "C": "were going",
+      "D": "had been going"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 55,
+    "prompt": "Daughter: Joanna has been really supportive. I'm so lucky to have her as a friend. Mother: Yes. Just think - if you hadn't sat next to her in class at school, you so close now.",
+    "options": {
+      "A": "won't be",
+      "B": "wouldn't be",
+      "C": "wouldn't have been",
+      "D": "aren't"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 56,
+    "prompt": "David: Did you see the headline this evening? Nicola: Yes - the Prime Minister was to resign today.",
+    "options": {
+      "A": "charged",
+      "B": "argued",
+      "C": "struggled",
+      "D": "forced"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 57,
+    "prompt": "Student: I'm concerned about the chemical test results I've just had from the river. Professor: It be a good idea to check the acid levels as well then.",
+    "options": {
+      "A": "must",
+      "B": "should",
+      "C": "might",
+      "D": "ought"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 58,
+    "prompt": "Aamir: They've just announced that our train has been delayed. Laura: That's annoying. We have rushed to get here after all.",
+    "options": {
+      "A": "needn't",
+      "B": "could",
+      "C": "should",
+      "D": "mustn't"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 59,
+    "prompt": "Liam: So, your Dad's got a laptop! Cian: Yes, I bought it for him last year - until then he a typewriter!",
+    "options": {
+      "A": "used",
+      "B": "has used",
+      "C": "has been using",
+      "D": "had been using"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 60,
+    "prompt": "Isabella: The \\034ight is fully booked, so I won't be able to go to Barbados next week. Safia: If you the ticket sooner, you'd have found a seat.",
+    "options": {
+      "A": "had booked",
+      "B": "were booking",
+      "C": "booked",
+      "D": "would have booked"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 61,
+    "prompt": "Receptionist: You taken a taxi to the hotel since you arrived so late. Customer: It was OK, actually. There was a direct bus service from the airport.",
+    "options": {
+      "A": "will have",
+      "B": "should have",
+      "C": "might have",
+      "D": "would have"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 62,
+    "prompt": "Sophie: Have they finished interviewing for the manager's position yet? Rafi: No, but they all the candidates by next Friday.",
+    "options": {
+      "A": "won't see",
+      "B": "would see",
+      "C": "haven't seen",
+      "D": "will have seen"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 63,
+    "prompt": "Athlete: hard I try, I can't run any faster. Coach: You've improved a lot. I wouldn't worry about it.",
+    "options": {
+      "A": "Though",
+      "B": "Whereas",
+      "C": "However",
+      "D": "Considering"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 64,
+    "prompt": "Laura: That's a really beautiful painting. The colours are so vivid. Jeremy: Yes, it's amazing to think it was lost for years and .",
+    "options": {
+      "A": "must be restored",
+      "B": "had to be restored",
+      "C": "has been restoring",
+      "D": "would be restoring"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 65,
+    "prompt": "Charlotte: I saw the photos from the film festival. Was that you with the actor from The Hobbit? Niall: Yes, it was! did I imagine I would ever actually meet him.",
+    "options": {
+      "A": "Not",
+      "B": "Much",
+      "C": "Hardly",
+      "D": "Little"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 66,
+    "prompt": "Pauline: I hear you got soaked on the golf course this morning. Chris: Yes. I wish I listened to the weather forecast.",
+    "options": {
+      "A": "had",
+      "B": "have",
+      "C": "would have",
+      "D": "should have"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 67,
+    "prompt": "Laura: How was the meeting? Ricardo: It finished late because Victor didn't arrive until 5 pm. He told me he been given the wrong directions.",
+    "options": {
+      "A": "has",
+      "B": "had",
+      "C": "should have",
+      "D": "would have"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 68,
+    "prompt": "Andrew: I picked up some of that cat food you wanted. Pedro: Oh good. Once to these new cat biscuits, they won't want to go back to the other stuff.",
+    "options": {
+      "A": "we've switched",
+      "B": "we'll be switching",
+      "C": "we'll have switched",
+      "D": "we've been switched"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 69,
+    "prompt": "Antonia: Has your son done well in his exams? Phillip: Yes. Only once he wasn't sufficiently prepared, but he can take that one again.",
+    "options": {
+      "A": "he found",
+      "B": "he has found",
+      "C": "did he find",
+      "D": "could he find"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 70,
+    "prompt": "Son: I had a bit of a stomach ache this morning. Mother: Oh dear! Well, I did say you eaten that chicken last night.",
+    "options": {
+      "A": "wouldn't have",
+      "B": "couldn't have",
+      "C": "mustn't have",
+      "D": "shouldn't have"
+    },
+    "answer": "D"
+  }
+];
+
+
+/**
+ * ETHITH AI Engine
+ * Created by Muhammadyusuf Jo'raboyev
+ * Features:
+ * - 9-Key Load Balanced Failover Pool
+ * - Structured JSON Quiz Generation
+ * - Multimodal Ask AI Teacher
+ * - Exam PDF/Content Parser
+ */
+
+(function(window) {
+  'use strict';
+
+  var _ENC_KEYS = [
+    'QVEuQWI4Uk42SjBzWk1laHpCSXoteDZnQVZ0dXhKcGg5ODVaV2ZwRktuM2xpdHVCbjRDX3c=',
+    'QVEuQWI4Uk42SUFnS0JBbmpFLS1pNHZwMlRVLTN2RnJhc19FMmw1MlBYX1JvRDMyM1RBZ0E=',
+    'QVEuQWI4Uk42TFpoYTNMVy1tWWI5eDNPNy1aai1KQXlqd2l6bG8wZ2owNFItWFllaXNqQlE=',
+    'QVEuQWI4Uk42S0hOVUdBYjFDWkQ0azVqWGxBbFI4YUdtLTJrTjRhS2o2NlZ4SVJid1UyaGc=',
+    'QVEuQWI4Uk42TEhhQ3h2TEtMcDZYdW9DbnZoWkhjSGttLTB1amx5Y2RqSmFYcFJNRzFjT2c=',
+    'QVEuQWI4Uk42TDZ5U2hPb01fRmpnb2xtWWZVbVIzLXpyTEFLLUROcE8wZVN0WWpkV052c1E=',
+    'QVEuQWI4Uk42S0t0TGRkUHZob1dkZTA3aGZyaVFFeXFDNi03M1Q5ZXdpb21fcTVoWVZZZGc=',
+    'QVEuQWI4Uk42SXU3Qm9jcTdHSDZNdUJMclVvXzc5bXh2ZWdnVHk1bjFrWWd2UzdiNGJOUkE=',
+    'QVEuQWI4Uk42SzR4NGpGb19rYWNyQ1FwRGxIQ3RFMkt6YnlwZmMyWXlhcWlPRUg3OUY4SlE='
+  ];
+
+  var API_KEYS = _ENC_KEYS.map(function(k){ return (typeof atob === 'function' ? atob(k) : Buffer.from(k, 'base64').toString('utf8')); });
+
+  var SYSTEM_PROMPT = "Siz ETHITH AI platformasisiz. Yaratuvchingiz: Jo'raboyev Muhammadyusuf. Foydalanuvchilarning ingliz tili (va boshqa fanlar) bo'yicha savollariga batafsil, tushunarli va pedagogik yondashuvda javob bering.";
+
+  var currentKeyIndex = 0;
+  var keyErrors = {};
+
+  function getKey() {
+    var key = API_KEYS[currentKeyIndex];
+    currentKeyIndex = (currentKeyIndex + 1) % API_KEYS.length;
+    return key;
+  }
+
+  async function callGeminiRaw(bodyPayload, customModel) {
+    var model = customModel || 'gemini-flash-lite-latest';
+    var maxRetries = API_KEYS.length;
+    var lastError = null;
+
+    for (var attempt = 0; attempt < maxRetries; attempt++) {
+      var key = getKey();
+      var url = 'https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent?key=' + key;
+
+      try {
+        var response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(bodyPayload)
+        });
+
+        if (response.ok) {
+          var data = await response.json();
+          var text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (text) {
+            return text;
+          }
+        }
+
+        var errText = await response.text();
+        console.warn('Gemini attempt failed with key index ' + currentKeyIndex + ':', response.status, errText);
+        lastError = new Error('API Error: ' + response.status);
+      } catch (err) {
+        console.warn('Network error on key index ' + currentKeyIndex + ':', err.message);
+        lastError = err;
+      }
+    }
+
+    throw lastError || new Error('Barcha API kalitlari band yoki javob bermadi.');
+  }
+
+  // 1. Generate Quiz for a specific Level & Topic
+  async function generateTopicQuiz(level, topicNum, topicTitle, count) {
+    var targetCount = Math.min(Math.max(parseInt(count, 10) || 25, 10), 50);
+
+    var prompt = SYSTEM_PROMPT + '\n\n' +
+      'Vazifa: Ingliz tili ' + level + ' darajasidagi "' + topicTitle + '" (Mavzu #' + topicNum + ') mavzusida aniq ' + targetCount + ' ta viktorina test savoli tuzib bering.\n' +
+      'Talablar:\n' +
+      '1. Har bir savolda 4 ta variant (options) bo\'lsin: A, B, C, D kabi 4 ta element.\n' +
+      '2. "answer" maydoni variantlardan biri bilan bir xil bo\'lsin.\n' +
+      '3. "explanation" maydonida o\'zbek tilida pedagogik va tushunarli qisqa izoh berilsin.\n' +
+      '4. Javobni FAQAT va FAQAT quyidagi JSON formatida qaytaring, boshqa hech qanday so\'z yoki markdown belgisi qo\'shmang:\n' +
+      '[\n' +
+      '  {\n' +
+      '    "id": 1,\n' +
+      '    "question": "Savol matni...",\n' +
+      '    "options": ["A variant", "B variant", "C variant", "D variant"],\n' +
+      '    "answer": "A variant",\n' +
+      '    "explanation": "Nima uchun bu to\'g\'riligi haqida izoh..."\n' +
+      '  }\n' +
+      ']';
+
+    var payload = {
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.35,
+        responseMimeType: 'application/json'
+      }
+    };
+
+    var rawResponse = await callGeminiRaw(payload);
+    var cleanJson = rawResponse.replace(/```json/gi, '').replace(/```/g, '').trim();
+    var questions = JSON.parse(cleanJson);
+
+    // Validate structure
+    if (!Array.isArray(questions) || questions.length === 0) {
+      throw new Error('Test savollari generatsiyasida xatolik yuz berdi.');
+    }
+
+    return questions.map(function(q, i) {
+      var opts = Array.isArray(q.options) ? q.options : ['A', 'B', 'C', 'D'];
+      while (opts.length < 4) opts.push('Option ' + (opts.length + 1));
+      if (opts.length > 4) opts = opts.slice(0, 4);
+
+      var ans = q.answer;
+      if (!opts.includes(ans)) {
+        if (ans === 'A') ans = opts[0];
+        else if (ans === 'B') ans = opts[1];
+        else if (ans === 'C') ans = opts[2];
+        else if (ans === 'D') ans = opts[3];
+        else ans = opts[0];
+      }
+
+      return {
+        id: i + 1,
+        question: q.question || ('Question ' + (i + 1)),
+        options: opts,
+        answer: ans,
+        explanation: q.explanation || "To'g'ri javob: " + ans
+      };
+    });
+  }
+
+  // 2. Ask AI Teacher
+  async function askAITeacher(message, history, fileAttachment) {
+    var contents = [];
+
+    // System prompt as initial context
+    contents.push({
+      role: 'user',
+      parts: [{ text: SYSTEM_PROMPT + "\n\nSalom, siz bilan suhbatni boshlayapman." }]
+    });
+    contents.push({
+      role: 'model',
+      parts: [{ text: "Assalomu alaykum! Men ETHITH AI — sizning shaxsiy ingliz tili va fanlar bo'yicha sun'iy intellekt o'qituvchingizman. Sizga qanday yordam bera olaman?" }]
+    });
+
+    // History (last 8 messages)
+    if (Array.isArray(history)) {
+      history.slice(-8).forEach(function(item) {
+        contents.push({
+          role: item.role === 'user' ? 'user' : 'model',
+          parts: [{ text: item.text }]
+        });
+      });
+    }
+
+    // Current message parts
+    var currentParts = [];
+    if (fileAttachment && fileAttachment.base64 && fileAttachment.mimeType) {
+      currentParts.push({
+        inlineData: {
+          mimeType: fileAttachment.mimeType,
+          data: fileAttachment.base64
+        }
+      });
+    }
+
+    if (fileAttachment && fileAttachment.textData) {
+      currentParts.push({
+        text: "[Biriktirilgan hujjat matni]:\n" + fileAttachment.textData.slice(0, 15000)
+      });
+    }
+
+    currentParts.push({ text: message || "Ushbu savol/material bo'yicha tushuntirish bering." });
+
+    contents.push({
+      role: 'user',
+      parts: currentParts
+    });
+
+    var payload = {
+      contents: contents,
+      generationConfig: {
+        temperature: 0.7
+      }
+    };
+
+    return await callGeminiRaw(payload);
+  }
+
+  // 3. Generate Exam from PDF/Text Content
+  async function generateExamFromContent(content, count) {
+    var targetCount = Math.min(Math.max(parseInt(count, 10) || 15, 5), 40);
+
+    var prompt = SYSTEM_PROMPT + '\n\n' +
+      'Vazifa: Quyida berilgan imtihon materiallari asosida aniq ' + targetCount + ' ta sifatli viktorina test savoli tuzib bering.\n' +
+      'Har bir savolda 4 ta variant (options) va to\'g\'ri javob ("answer") hamda qisqa izoh ("explanation") bo\'lsin.\n\n' +
+      'Imtihon materiali:\n' + content.slice(0, 12000) + '\n\n' +
+      'Javobni FAQAT quyidagi JSON formatida qaytaring:\n' +
+      '[\n' +
+      '  {\n' +
+      '    "id": 1,\n' +
+      '    "question": "Savol matni...",\n' +
+      '    "options": ["A", "B", "C", "D"],\n' +
+      '    "answer": "A",\n' +
+      '    "explanation": "Izoh..."\n' +
+      '  }\n' +
+      ']';
+
+    var payload = {
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.3,
+        responseMimeType: 'application/json'
+      }
+    };
+
+    var rawResponse = await callGeminiRaw(payload);
+    var cleanJson = rawResponse.replace(/```json/gi, '').replace(/```/g, '').trim();
+    return JSON.parse(cleanJson);
+  }
+
+  window.EthithAI = {
+    generateTopicQuiz: generateTopicQuiz,
+    askAITeacher: askAITeacher,
+    generateExamFromContent: generateExamFromContent,
+    systemPrompt: SYSTEM_PROMPT
+  };
+
+})(window);
+
+
+/**
+ * ETHITH Platform Main Application Logic
+ * Created by Muhammadyusuf Jo'raboyev
+ */
+
+(function(window) {
+  'use strict';
+
+  var DEFAULT_TEACHER_KEY = 'jds8d738hjsdhd8w9dhsihd89wydhshd';
+  var QUICK_EMOJIS_DEFAULT = ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '🚀', '💯', '🤝', '💡'];
+  var ALL_EMOJIS = ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '🚀', '💯', '🤝', '💡', '😂', '🥳', '🤔', '😢', '🙏', '🎯', '✨', '🧠', '📚', '✍️', '🙌', '💪', '🏆', '⭐'];
+
+  // Application State
+  var S = {
+    user: null, // { role: 'student'|'teacher', name: '', email: '', id: '', dailyMinutes: 0 }
+    level: 'A1',
+    unlocked: { A1: 1, A2: 1, B1: 1, B2: 1, C1: 1, C2: 1 },
+    mistakes: [],
+    theme: 'light',
+    classes: [], // [{ id, name, code, teacherId, teacherName, students: [{ id, name, email, dailyMinutes, mistakes }], messages: [], pinnedId: null }]
+    exams: [], // [{ id, code, title, duration, pointsPerQ, questions: [], submissions: [] }]
+    aiHistory: [],
+    quickReactions: QUICK_EMOJIS_DEFAULT.slice(),
+    activeClassId: null,
+    activeExamId: null,
+    activeTopicQuiz: null,
+    activePlacementQuiz: null
+  };
+
+  // Load state from localStorage
+  try {
+    var raw = localStorage.getItem('ethith_v2_state');
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      for (var k in parsed) {
+        if (parsed[k] !== undefined) S[k] = parsed[k];
+      }
+    }
+  } catch(e) {}
+
+  function saveState() {
+    try {
+      localStorage.setItem('ethith_v2_state', JSON.stringify(S));
+      // Notify other tabs via BroadcastChannel if available
+      if (window.BroadcastChannel) {
+        if (!window._ethithChannel) window._ethithChannel = new BroadcastChannel('ethith_sync');
+        window._ethithChannel.postMessage({ type: 'sync' });
+      }
+    } catch(e) {}
+  }
+
+  // Cross-tab sync listener
+  if (window.BroadcastChannel) {
+    var ch = new BroadcastChannel('ethith_sync');
+    ch.onmessage = function(e) {
+      if (e.data && e.data.type === 'sync') {
+        try {
+          var updated = JSON.parse(localStorage.getItem('ethith_v2_state'));
+          if (updated) {
+            S.classes = updated.classes || S.classes;
+            S.exams = updated.exams || S.exams;
+            if (window._ethithCurrentView === 'classes' && S.activeClassId) {
+              renderClassChat();
+            }
+          }
+        } catch(err) {}
+      }
+    };
+  }
+
+  // Activity tracking timer
+  setInterval(function() {
+    if (S.user) {
+      S.user.dailyMinutes = (S.user.dailyMinutes || 0) + 1;
+      // Also update in class lists if student
+      if (S.user.role === 'student') {
+        S.classes.forEach(function(c) {
+          if (c.students) {
+            var st = c.students.find(function(s) { return s.id === S.user.id || s.email === S.user.email; });
+            if (st) st.dailyMinutes = S.user.dailyMinutes;
+          }
+        });
+      }
+      saveState();
+    }
+  }, 60000);
+
+  // SVG Helper
+  var IC = {
+    home: '<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
+    grid: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+    layers: '<path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/>',
+    book: '<path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>',
+    clip: '<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>',
+    file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/>',
+    msg: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+    bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+    moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+    menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+    right: '<path d="M5 12h14M12 5l7 7-7 7"/>',
+    left: '<path d="M19 12H5M12 19l-7-7 7-7"/>',
+    check: '<path d="M20 6 9 17l-5-5"/>',
+    x: '<path d="M18 6 6 18M6 6l12 12"/>',
+    trophy: '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0z"/>',
+    clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+    flame: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+    lock: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+    unlock: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/>',
+    pin: '<path d="M12 17v5M9 2h6l1 7 4 3v2H4v-2l4-3 1-7z"/>',
+    trash: '<path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
+    reply: '<path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v1.5"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    send: '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
+    paperclip: '<path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.49-8.49a4 4 0 0 1 5.66 5.66l-8.49 8.49a2 2 0 0 1-2.83-2.83l7.78-7.78"/>',
+    user: '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    sparkles: '<path d="m12 3 1.9 4.7L18.6 9l-4.7 1.9L12 15.6l-1.9-4.7L5.4 9l4.7-1.9L12 3z"/><path d="M5 3v4M3 5h4M19 17v4M17 19h4"/>'
+  };
+
+  function ic(name, cls) {
+    return '<svg class="ic ' + (cls || '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + (IC[name] || '') + '</svg>';
+  }
+
+  function esc(s) {
+    return String(s || '').replace(/[&<>"']/g, function(c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  // 1. Mandatory Auth Modal
+  function showAuthModal() {
+    var existing = document.getElementById('ethAuthOverlay');
+    if (existing) existing.remove();
+
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.id = 'ethAuthOverlay';
+
+    var html = '' +
+      '<div class="eth-modal">' +
+      '  <div class="eth-modal-header">' +
+      '    <div style="display:flex;justify-content:center;margin-bottom:8px">' +
+      '      <svg width="150" height="48" viewBox="0 0 160 56"><defs><linearGradient id="mlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4e93e4"/><stop offset="1" stop-color="#154b89"/></linearGradient></defs><rect x="0" y="4" width="48" height="48" rx="13" fill="url(#mlg)"/><path d="M13 29l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="58" y="25" font-family="sans-serif" font-weight="800" font-size="24" fill="#0e325c">ETHITH</text><text x="58" y="50" font-family="sans-serif" font-weight="800" font-size="21" fill="#4e93e4">TESTS</text></svg>' +
+      '    </div>' +
+      '    <h2>Platformaga Kirish</h2>' +
+      '    <p>O\'quvchi yoki O\'qituvchi sifatida tizimga kiring</p>' +
+      '  </div>' +
+      '  <div class="eth-tabs">' +
+      '    <button class="eth-tab active" id="tabStudentBtn">O\'quvchi (Student)</button>' +
+      '    <button class="eth-tab" id="tabTeacherBtn">O\'qituvchi (Teacher)</button>' +
+      '  </div>' +
+      '  <div class="eth-modal-body">' +
+      '    <div id="studentFormBox">' +
+      '      <form id="studentAuthForm">' +
+      '        <div class="eth-form-group">' +
+      '          <label>Ismingiz</label>' +
+      '          <input type="text" id="stName" placeholder="Ism familiyangiz" required>' +
+      '        </div>' +
+      '        <div class="eth-form-group">' +
+      '          <label>Gmail Pochta</label>' +
+      '          <input type="email" id="stEmail" placeholder="example@gmail.com" required>' +
+      '        </div>' +
+      '        <div class="eth-form-group">' +
+      '          <label>Parol (6 xonali)</label>' +
+      '          <input type="password" id="stPin" placeholder="6 xonali parol" minlength="6" maxlength="20" required>' +
+      '        </div>' +
+      '        <button type="submit" class="eth-btn-primary">O\'quvchi Sifatida Kirish ' + ic('right') + '</button>' +
+      '      </form>' +
+      '    </div>' +
+      '    <div id="teacherFormBox" style="display:none">' +
+      '      <form id="teacherAuthForm">' +
+      '        <div class="eth-form-group">' +
+      '          <label>O\'qituvchi Ismi</label>' +
+      '          <input type="text" id="tcName" placeholder="Ustoz ism familiyasi" required>' +
+      '        </div>' +
+      '        <div class="eth-form-group">' +
+      '          <label>Email</label>' +
+      '          <input type="email" id="tcEmail" placeholder="teacher@gmail.com" required>' +
+      '        </div>' +
+      '        <div class="eth-form-group">' +
+      '          <label>Maxfiy Master Kod (15+ belgili)</label>' +
+      '          <input type="password" id="tcMasterKey" placeholder="O\'qituvchi maxfiy kodi" required>' +
+      '          <small style="color:var(--muted);font-size:12px;margin-top:4px;display:block">Faqat ruxsat berilgan o\'qituvchilar uchun</small>' +
+      '        </div>' +
+      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb)">O\'qituvchi Paneliga Kirish ' + ic('right') + '</button>' +
+      '      </form>' +
+      '    </div>' +
+      '  </div>' +
+      '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    var tabStudentBtn = overlay.querySelector('#tabStudentBtn');
+    var tabTeacherBtn = overlay.querySelector('#tabTeacherBtn');
+    var studentFormBox = overlay.querySelector('#studentFormBox');
+    var teacherFormBox = overlay.querySelector('#teacherFormBox');
+
+    if (tabStudentBtn && tabTeacherBtn) {
+      tabStudentBtn.onclick = function() {
+        tabStudentBtn.classList.add('active');
+        tabTeacherBtn.classList.remove('active');
+        studentFormBox.style.display = 'block';
+        teacherFormBox.style.display = 'none';
+      };
+
+      tabTeacherBtn.onclick = function() {
+        tabTeacherBtn.classList.add('active');
+        tabStudentBtn.classList.remove('active');
+        studentFormBox.style.display = 'none';
+        teacherFormBox.style.display = 'block';
+      };
+    }
+
+    var stForm = overlay.querySelector('#studentAuthForm');
+    if (stForm) {
+      stForm.onsubmit = function(e) {
+        e.preventDefault();
+        var nameInput = overlay.querySelector('#stName');
+        var emailInput = overlay.querySelector('#stEmail');
+        var pinInput = overlay.querySelector('#stPin');
+
+        var name = (nameInput ? nameInput.value : '').trim();
+        var email = (emailInput ? emailInput.value : '').trim();
+        var pin = (pinInput ? pinInput.value : '').trim();
+
+        if (!name || !email || !pin) {
+          alert("Iltimos, barcha maydonlarni to'ldiring!");
+          return;
+        }
+
+        S.user = {
+          id: 'st_' + Math.random().toString(36).substr(2, 9),
+          role: 'student',
+          name: name,
+          email: email,
+          dailyMinutes: 0
+        };
+        saveState();
+        overlay.remove();
+        window.ethithOpenApp('dash');
+      };
+    }
+
+    var tcForm = overlay.querySelector('#teacherAuthForm');
+    if (tcForm) {
+      tcForm.onsubmit = function(e) {
+        e.preventDefault();
+        var nameInput = overlay.querySelector('#tcName');
+        var emailInput = overlay.querySelector('#tcEmail');
+        var masterInput = overlay.querySelector('#tcMasterKey');
+
+        var name = (nameInput ? nameInput.value : '').trim();
+        var email = (emailInput ? emailInput.value : '').trim();
+        var masterKey = (masterInput ? masterInput.value : '').trim();
+
+        var currentMaster = localStorage.getItem('ethith_teacher_master') || DEFAULT_TEACHER_KEY;
+
+        if (masterKey !== currentMaster) {
+          alert("Xatolik: O'qituvchi maxfiy kodi noto'g'ri! Iltimos, to'g'ri master kodni kiriting.");
+          return;
+        }
+
+        S.user = {
+          id: 'tc_' + Math.random().toString(36).substr(2, 9),
+          role: 'teacher',
+          name: name,
+          email: email,
+          dailyMinutes: 0
+        };
+        saveState();
+        overlay.remove();
+        window.ethithOpenApp('dash');
+      };
+    }
+  }
+
+  // 2. Coming Soon Modal
+  function showComingSoon(featureName) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.innerHTML = '' +
+      '<div class="eth-modal" style="text-align:center;padding:32px 24px">' +
+      '  <div style="font-size:48px;margin-bottom:12px">🚀</div>' +
+      '  <h2 style="font-size:22px;color:var(--eth-primary);margin-bottom:8px">' + esc(featureName) + '</h2>' +
+      '  <div style="display:inline-block;margin-bottom:16px"><span class="eth-coming-soon-badge">Coming Soon · Tez Kunda</span></div>' +
+      '  <p style="color:var(--muted);font-size:14.5px;line-height:1.6;margin-bottom:24px">Ushbu bo\'lim hozirda takomillashtirilmoqda va tez kunda foydalanishga topshiriladi. Hozirda A1-C2 darajalar, Ask AI Teacher, Sinflar va Imtihonlardan to\'liq foydalanishingiz mumkin.</p>' +
+      '  <button class="eth-btn-primary" id="csClose">Tushundim ' + ic('check') + '</button>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    overlay.querySelector('#csClose').onclick = function() {
+      overlay.remove();
+    };
+  }
+
+  window.EthithApp = {
+    state: S,
+    showAuthModal: showAuthModal,
+    showComingSoon: showComingSoon,
+    saveState: saveState,
+    ic: ic,
+    esc: esc
+  };
+
+
+  window.ethithOpenApp = function(n, a) {
+    if (!S.user) {
+      showAuthModal();
+      return;
+    }
+    var landing = document.getElementById('landing');
+    var ap = document.getElementById('app');
+    if (landing) landing.style.display = 'none';
+    if (ap) {
+      ap.style.display = 'block';
+      ap.setAttribute('data-theme', S.theme);
+    }
+    if (window._ethithInternalGo) {
+      window._ethithInternalGo(n || 'dash', a || null);
+    }
+  };
+
+  window.ethithShowLanding = function() {
+    var ap = document.getElementById('app');
+    var landing = document.getElementById('landing');
+    if (ap) ap.style.display = 'none';
+    if (landing) landing.style.display = '';
+    window.scrollTo(0, 0);
+  };
+
+})(window);
+
+
+/**
+ * ETHITH Extended View Renderers:
+ * - Ask AI Teacher (ChatGPT UI with image/pdf upload)
+ * - 40 Topics per Level (A1..C2) with Dynamic AI Quiz Solver
+ * - Classes & Telegram Web Chat (Double-click reply, Long-press menu, Reactions with dynamic order, Pin & Delete)
+ * - Exam System (PDF to Quiz, 6-digit code, Countdown timer, Live Leaderboard)
+ * - 70-question Language Hub Placement Test
+ * - Mistakes Notebook (Xatolar Daftari)
+ */
+
+(function(window) {
+  'use strict';
+
+  var App = window.EthithApp;
+  var S = App.state;
+  var ic = App.ic;
+  var esc = App.esc;
+
+  var currentReplyingMessage = null;
+  var activeContextMenu = null;
+
+  // Dismiss context menu on click outside
+  document.addEventListener('click', function(e) {
+    if (activeContextMenu && !activeContextMenu.contains(e.target)) {
+      activeContextMenu.remove();
+      activeContextMenu = null;
+    }
+  });
+
+  // ==========================================
+  // VIEW 1: ASK AI TEACHER (ChatGPT-like UI)
+  // ==========================================
+  function renderAskAITeacher(container) {
+    var history = S.aiHistory || [];
+
+    var html = '' +
+      '<div class="ask-ai-container">' +
+      '  <div class="ask-ai-sidebar">' +
+      '    <button class="eth-btn-primary" id="aiNewChatBtn" style="margin-bottom:14px;padding:10px 14px;font-size:13.5px">' + ic('plus') + ' Yangi Suhbat</button>' +
+      '    <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Tavsiya So\'rovlar</div>' +
+      '    <div style="display:flex;flex-direction:column;gap:6px;overflow-y:auto;flex:1">' +
+      '      <button class="ap-item ai-prompt-pill" data-p="IELTS Speaking 7.0+ uchun namunaviy javob va foydali iboralar ber">' + ic('sparkles') + ' IELTS Speaking shablon</button>' +
+      '      <button class="ap-item ai-prompt-pill" data-p="Present Perfect va Past Simple farqini 5 ta misol bilan tushuntir">' + ic('book') + ' Grammatika farqlari</button>' +
+      '      <button class="ap-item ai-prompt-pill" data-p="Ingliz tilida 10 ta eng ko\'p ishlatiladigan phrasal verblar">' + ic('layers') + ' Phrasal Verblar</button>' +
+      '      <button class="ap-item ai-prompt-pill" data-p="Ingliz tili darajamni qanday qilib tezroq oshirsam bo\'ladi?">' + ic('trophy') + ' O\'rganish maslahatlari</button>' +
+      '    </div>' +
+      '    <div style="padding-top:12px;border-top:1px solid var(--border);font-size:11.5px;color:var(--muted);text-align:center">' +
+      '      <b>ETHITH AI Ustoz</b><br>Yaratuvchi: Muhammadyusuf Jo\'raboyev' +
+      '    </div>' +
+      '  </div>' +
+      '  <div class="ask-ai-main">' +
+      '    <div class="ask-ai-messages" id="aiMsgBox">' +
+      (history.length === 0 ?
+        '<div style="text-align:center;margin:auto;max-width:520px;padding:20px">' +
+        '  <div style="font-size:44px;margin-bottom:10px">🤖</div>' +
+        '  <h2 style="font-size:24px;font-weight:800;color:#1e293b;margin-bottom:8px">ETHITH AI Ustoz</h2>' +
+        '  <p style="color:#64748b;font-size:14.5px;line-height:1.6">Ingliz tili grammatikasi, testlar, so\'zlar yoki boshqa fanlar bo\'yicha istalgan savolingizni bering. Rasm yoki hujjat (PDF) yuklashingiz ham mumkin!</p>' +
+        '</div>' :
+        history.map(function(m) {
+          return '<div class="ask-ai-msg ' + m.role + '">' +
+            '  <div class="ask-ai-avatar">' + (m.role === 'user' ? (S.user ? S.user.name.charAt(0).toUpperCase() : 'U') : 'AI') + '</div>' +
+            '  <div class="ask-ai-bubble">' +
+            (m.fileName ? '<div style="font-size:12px;background:rgba(0,0,0,0.06);padding:3px 8px;border-radius:6px;margin-bottom:6px">📎 ' + esc(m.fileName) + '</div>' : '') +
+            (m.fileImg ? '<img src="' + m.fileImg + '" style="max-width:240px;border-radius:8px;margin-bottom:8px;display:block">' : '') +
+            formatMarkdown(m.text) +
+            '  </div>' +
+            '</div>';
+        }).join('')
+      ) +
+      '    </div>' +
+      '    <div id="aiFilePreview" style="display:none;padding:6px 24px;background:var(--bg2);font-size:12.5px;border-top:1px solid var(--border);align-items:center;justify-content:space-between"></div>' +
+      '    <div class="ask-ai-input-bar">' +
+      '      <form id="aiChatForm" class="ask-ai-input-wrap">' +
+      '        <label for="aiFileInput" class="ask-ai-btn" title="Rasm yoki hujjat biriktirish" style="cursor:pointer">' + ic('paperclip') + '</label>' +
+      '        <input type="file" id="aiFileInput" style="display:none" accept="image/*,.pdf,.txt,.doc,.docx">' +
+      '        <textarea id="aiPromptInput" rows="1" placeholder="ETHITH AI ga savol bering..." required></textarea>' +
+      '        <button type="submit" class="ask-ai-btn ask-ai-send" title="Yuborish">' + ic('send') + '</button>' +
+      '      </form>' +
+      '    </div>' +
+      '  </div>' +
+      '</div>';
+
+    container.innerHTML = html;
+
+    var msgBox = document.getElementById('aiMsgBox');
+    msgBox.scrollTop = msgBox.scrollHeight;
+
+    var fileInput = document.getElementById('aiFileInput');
+    var filePreview = document.getElementById('aiFilePreview');
+    var currentAttachment = null;
+
+    fileInput.onchange = function(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+
+      var reader = new FileReader();
+      if (file.type.startsWith('image/')) {
+        reader.onload = function(ev) {
+          var base64 = ev.target.result.split(',')[1];
+          currentAttachment = {
+            name: file.name,
+            mimeType: file.type,
+            base64: base64,
+            previewUrl: ev.target.result
+          };
+          filePreview.style.display = 'flex';
+          filePreview.innerHTML = '<span>🖼️ Rasm tanlandi: <b>' + esc(file.name) + '</b></span><button id="aiRemoveFile" style="background:none;border:none;cursor:pointer;color:red">✕</button>';
+          document.getElementById('aiRemoveFile').onclick = function() {
+            currentAttachment = null;
+            filePreview.style.display = 'none';
+            fileInput.value = '';
+          };
+        };
+        reader.readAsDataURL(file);
+      } else {
+        reader.onload = function(ev) {
+          currentAttachment = {
+            name: file.name,
+            mimeType: file.type || 'text/plain',
+            textData: ev.target.result
+          };
+          filePreview.style.display = 'flex';
+          filePreview.innerHTML = '<span>📄 Hujjat tanlandi: <b>' + esc(file.name) + '</b></span><button id="aiRemoveFile" style="background:none;border:none;cursor:pointer;color:red">✕</button>';
+          document.getElementById('aiRemoveFile').onclick = function() {
+            currentAttachment = null;
+            filePreview.style.display = 'none';
+            fileInput.value = '';
+          };
+        };
+        reader.readAsText(file);
+      }
+    };
+
+    document.getElementById('aiNewChatBtn').onclick = function() {
+      S.aiHistory = [];
+      App.saveState();
+      renderAskAITeacher(container);
+    };
+
+    container.querySelectorAll('.ai-prompt-pill').forEach(function(btn) {
+      btn.onclick = function() {
+        document.getElementById('aiPromptInput').value = btn.dataset.p;
+        document.getElementById('aiChatForm').dispatchEvent(new Event('submit'));
+      };
+    });
+
+    document.getElementById('aiChatForm').onsubmit = async function(e) {
+      e.preventDefault();
+      var input = document.getElementById('aiPromptInput');
+      var promptText = input.value.trim();
+      if (!promptText && !currentAttachment) return;
+
+      var userMsg = {
+        role: 'user',
+        text: promptText,
+        fileName: currentAttachment ? currentAttachment.name : null,
+        fileImg: currentAttachment ? currentAttachment.previewUrl : null
+      };
+
+      S.aiHistory.push(userMsg);
+      input.value = '';
+      var sentAttach = currentAttachment;
+      currentAttachment = null;
+      filePreview.style.display = 'none';
+      fileInput.value = '';
+
+      renderAskAITeacher(container);
+
+      // Loading bubble
+      var loadingBubble = document.createElement('div');
+      loadingBubble.className = 'ask-ai-msg ai';
+      loadingBubble.innerHTML = '<div class="ask-ai-avatar">AI</div><div class="ask-ai-bubble" style="opacity:0.7">ETHITH AI javob tayyorlamoqda...</div>';
+      document.getElementById('aiMsgBox').appendChild(loadingBubble);
+      document.getElementById('aiMsgBox').scrollTop = document.getElementById('aiMsgBox').scrollHeight;
+
+      try {
+        var replyText = await window.EthithAI.askAITeacher(promptText, S.aiHistory, sentAttach);
+        loadingBubble.remove();
+        S.aiHistory.push({
+          role: 'ai',
+          text: replyText
+        });
+        App.saveState();
+        renderAskAITeacher(container);
+      } catch (err) {
+        loadingBubble.remove();
+        alert("Xatolik yuz berdi: " + err.message);
+      }
+    };
+  }
+
+  function formatMarkdown(text) {
+    if (!text) return '';
+    var safe = esc(text);
+    // Code blocks
+    safe = safe.replace(/```([\s\S]*?)```/g, function(m, p1) {
+      return '<pre style="background:#1e293b;color:#f8fafc;padding:12px;border-radius:10px;overflow-x:auto;margin:8px 0;font-size:13px"><code>' + p1 + '</code></pre>';
+    });
+    // Inline code
+    safe = safe.replace(/`([^`]+)`/g, '<code style="background:rgba(0,0,0,0.06);padding:2px 6px;border-radius:4px">$1</code>');
+    // Bold
+    safe = safe.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+    // Italics
+    safe = safe.replace(/\*([^*]+)\*/g, '<i>$1</i>');
+    // Newlines
+    safe = safe.replace(/\n/g, '<br>');
+    return safe;
+  }
+
+  // ==========================================
+  // VIEW 2: LEVELS (A1 - C2) & 40 TOPICS
+  // ==========================================
+  function renderLevelsView(container, levelKey) {
+    var curLevel = levelKey || S.level || 'A1';
+    S.level = curLevel;
+    var levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+    var curriculum = window.ETHITH_CURRICULUM || {};
+    var topics = curriculum[curLevel] || [];
+    var unlockedCount = S.unlocked[curLevel] || 1;
+    var isTeacher = S.user && S.user.role === 'teacher';
+
+    var html = '' +
+      '<div class="ap-sec" style="margin-top:0">' +
+      '  <div>' +
+      '    <h2>' + ic('layers') + ' CEFR Ingliz Tili Darajalari (40 ta Mavzu)</h2>' +
+      '    <p>Har bir mavzuni 70% dan yuqori ball bilan tamomlang va keyingi bosqichni oching.</p>' +
+      '  </div>' +
+      (isTeacher ? '  <button class="ap-btn solid" id="tcAddTestBtn">' + ic('plus') + ' Yangi Test Qo\'shish</button>' : '') +
+      '</div>' +
+      '<div class="eth-tabs" style="margin:0 0 20px 0">' +
+      levels.map(function(lv) {
+        return '<button class="eth-tab ' + (lv === curLevel ? 'active' : '') + '" data-lvl="' + lv + '">' + lv + ' Daraja</button>';
+      }).join('') +
+      '</div>' +
+      '<div style="font-size:14px;color:var(--muted);margin-bottom:12px">' +
+      (isTeacher ? '<b>O\'qituvchi holati:</b> Barcha 40 ta mavzu ochiq.' : '<b>Ochilgan mavzular:</b> ' + unlockedCount + ' / 40') +
+      '</div>' +
+      '<div class="eth-topics-grid">';
+
+    topics.forEach(function(t) {
+      var isUnlocked = isTeacher || (t.num <= unlockedCount);
+      html += '' +
+        '<div class="eth-topic-card ' + (isUnlocked ? '' : 'locked') + '" data-topic-num="' + t.num + '" data-topic-title="' + esc(t.title) + '">' +
+        '  <div class="eth-topic-top">' +
+        '    <span class="eth-topic-badge">' + curLevel + ' · Mavzu ' + t.num + '</span>' +
+        '    <span>' + (isUnlocked ? ic('unlock', 'text-success') : ic('lock', 'text-muted')) + '</span>' +
+        '  </div>' +
+        '  <h4>' + esc(t.title) + '</h4>' +
+        '  <p>' + esc(t.desc) + '</p>' +
+        '  <div style="margin-top:14px">' +
+        (isUnlocked ?
+          '<button class="ap-btn solid" style="width:100%;padding:8px 12px;font-size:13px">Testni Boshlash ' + ic('right') + '</button>' :
+          '<span style="font-size:12px;color:var(--muted)">Oldingi mavzuni 70%+ bajaring</span>') +
+        '  </div>' +
+        '</div>';
+    });
+
+    html += '</div>';
+    container.innerHTML = html;
+
+    container.querySelectorAll('.eth-tab').forEach(function(tab) {
+      tab.onclick = function() {
+        renderLevelsView(container, tab.dataset.lvl);
+      };
+    });
+
+    container.querySelectorAll('.eth-topic-card').forEach(function(card) {
+      card.onclick = function() {
+        if (card.classList.contains('locked')) {
+          alert("Ushbu mavzu hali qulflangan! Oldingi mavzuni kamida 70% ball bilan bajaring.");
+          return;
+        }
+        var topicNum = parseInt(card.dataset.topicNum, 10);
+        var topicTitle = card.dataset.topicTitle;
+        showQuizPromptModal(curLevel, topicNum, topicTitle, container);
+      };
+    });
+
+    if (isTeacher) {
+      var tcAddBtn = document.getElementById('tcAddTestBtn');
+      if (tcAddBtn) {
+        tcAddBtn.onclick = function() {
+          showTeacherCustomTestModal(curLevel, container);
+        };
+      }
+    }
+  }
+
+  // Quiz count prompt modal (25 to 50 questions)
+  function showQuizPromptModal(level, topicNum, topicTitle, mainContainer) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.innerHTML = '' +
+      '<div class="eth-modal">' +
+      '  <div class="eth-modal-header">' +
+      '    <h2>' + level + ' · Mavzu ' + topicNum + '</h2>' +
+      '    <p>' + esc(topicTitle) + '</p>' +
+      '  </div>' +
+      '  <div class="eth-modal-body">' +
+      '    <div class="eth-form-group">' +
+      '      <label>Nechta test yechmoqchisiz? (25 dan 50 tagacha):</label>' +
+      '      <div style="display:flex;align-items:center;gap:14px;margin-top:8px">' +
+      '        <input type="range" id="quizCountSlider" min="25" max="50" value="25" step="5" style="flex:1">' +
+      '        <b id="quizCountVal" style="font-size:18px;color:#2563eb;min-width:36px;text-align:right">25</b>' +
+      '      </div>' +
+      '    </div>' +
+      '    <div style="background:var(--bg2);padding:12px;border-radius:12px;font-size:13px;color:var(--muted);margin-bottom:20px">' +
+      '      💡 ETHITH AI siz tanlagan hajmda avtomatik ravishda original viktorina testlarini tuzib beradi. O\'tish bali: <b>70%</b>.' +
+      '    </div>' +
+      '    <div style="display:flex;gap:10px">' +
+      '      <button class="ap-btn out" id="quizPromptCancel" style="flex:1">Bekor qilish</button>' +
+      '      <button class="eth-btn-primary" id="quizPromptStart" style="flex:2">Testni Boshlash ' + ic('right') + '</button>' +
+      '    </div>' +
+      '  </div>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+
+    var slider = overlay.querySelector('#quizCountSlider');
+    var valDisplay = overlay.querySelector('#quizCountVal');
+    slider.oninput = function() {
+      valDisplay.textContent = slider.value;
+    };
+
+    overlay.querySelector('#quizPromptCancel').onclick = function() {
+      overlay.remove();
+    };
+
+    overlay.querySelector('#quizPromptStart').onclick = async function() {
+      var count = parseInt(slider.value, 10) || 25;
+      overlay.innerHTML = '' +
+        '<div class="eth-modal" style="text-align:center;padding:40px 24px">' +
+        '  <div style="font-size:42px;margin-bottom:14px">⚙️</div>' +
+        '  <h3 style="font-size:20px;color:var(--eth-primary)">ETHITH AI test tuzmoqda...</h3>' +
+        '  <p style="color:var(--muted);font-size:14px">' + level + ' · ' + esc(topicTitle) + ' bo\'yicha ' + count + ' ta original test savollari tayyorlanmoqda. Biroz kuting...</p>' +
+        '</div>';
+
+      try {
+        var questions = await window.EthithAI.generateTopicQuiz(level, topicNum, topicTitle, count);
+        overlay.remove();
+        startTopicQuizRunner(level, topicNum, topicTitle, questions, mainContainer);
+      } catch (err) {
+        overlay.remove();
+        alert("Xatolik yuz berdi: " + err.message + "\nIltimos, qaytadan urinib ko'ring.");
+      }
+    };
+  }
+
+  // Quiz runner for generated questions
+  function startTopicQuizRunner(level, topicNum, topicTitle, questions, mainContainer) {
+    var state = {
+      i: 0,
+      score: 0,
+      answered: false,
+      answers: []
+    };
+
+    function renderQuestion() {
+      if (state.i >= questions.length) {
+        renderQuizResult();
+        return;
+      }
+
+      var q = questions[state.i];
+      state.answered = false;
+
+      var html = '' +
+        '<div class="ap-quiz">' +
+        '  <div class="ap-qtop">' +
+        '    <button class="ap-ib" id="quizExitBtn">' + ic('x') + '</button>' +
+        '    <div class="ap-bar"><i style="width:' + ((state.i / questions.length) * 100) + '%"></i></div>' +
+        '    <b>' + (state.i + 1) + ' / ' + questions.length + '</b>' +
+        '  </div>' +
+        '  <div class="ap-qbox">' +
+        '    <div class="qn">' + level + ' · Mavzu ' + topicNum + ' · Savol ' + (state.i + 1) + '</div>' +
+        '    <h2>' + esc(q.question) + '</h2>' +
+        '    <div id="quizOptionsBox">' +
+        q.options.map(function(opt, idx) {
+          return '<button class="ap-opt" data-opt="' + esc(opt) + '"><span class="l">' + 'ABCD'[idx] + '</span>' + esc(opt) + '</button>';
+        }).join('') +
+        '    </div>' +
+        '    <div id="quizFeedbackBox" style="margin-top:14px"></div>' +
+        '  </div>' +
+        '</div>';
+
+      mainContainer.innerHTML = html;
+
+      document.getElementById('quizExitBtn').onclick = function() {
+        if (confirm("Testni to'xtatmoqchimisiz? Natijalar saqlanmaydi.")) {
+          renderLevelsView(mainContainer, level);
+        }
+      };
+
+      var optionBtns = mainContainer.querySelectorAll('.ap-opt');
+      optionBtns.forEach(function(btn) {
+        btn.onclick = function() {
+          if (state.answered) return;
+          state.answered = true;
+          var selected = btn.dataset.opt;
+          var isCorrect = (selected === q.answer);
+
+          optionBtns.forEach(function(b) {
+            b.disabled = true;
+            if (b.dataset.opt === q.answer) b.classList.add('ok');
+          });
+
+          if (isCorrect) {
+            state.score++;
+          } else {
+            btn.classList.add('no');
+            // Log to mistakes notebook
+            S.mistakes.push({
+              level: level,
+              topic: topicTitle,
+              question: q.question,
+              yourAnswer: selected,
+              correctAnswer: q.answer,
+              explanation: q.explanation,
+              date: new Date().toLocaleDateString()
+            });
+            App.saveState();
+          }
+
+          var feedbackBox = document.getElementById('quizFeedbackBox');
+          feedbackBox.innerHTML = '' +
+            '<div style="background:' + (isCorrect ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)') + ';padding:12px 16px;border-radius:12px;margin-bottom:14px;border:1px solid ' + (isCorrect ? '#22c55e' : '#ef4444') + '">' +
+            '  <b style="color:' + (isCorrect ? '#16a34a' : '#ef4444') + '">' + (isCorrect ? '✓ To\'g\'ri!' : '✗ Noto\'g\'ri') + '</b>' +
+            '  <p style="margin:6px 0 0;font-size:13.5px;color:var(--text)">' + esc(q.explanation) + '</p>' +
+            '</div>' +
+            '<button class="ap-btn solid" id="quizNextBtn">' + (state.i === questions.length - 1 ? 'Natijani ko\'rish' : 'Keyingi savol') + ' ' + ic('right') + '</button>';
+
+          document.getElementById('quizNextBtn').onclick = function() {
+            state.i++;
+            renderQuestion();
+          };
+        };
+      });
+    }
+
+    function renderQuizResult() {
+      var pct = Math.round((state.score / questions.length) * 100);
+      var passed = pct >= 70;
+
+      if (passed) {
+        S.unlocked[level] = Math.max(S.unlocked[level] || 1, topicNum + 1);
+        App.saveState();
+      }
+
+      var html = '' +
+        '<div class="ap-res">' +
+        '  <div class="ap-ring">' +
+        '    <svg viewBox="0 0 104 104">' +
+        '      <circle class="bg" cx="52" cy="52" r="46"/>' +
+        '      <circle class="fg" cx="52" cy="52" r="46" style="stroke-dashoffset:' + (289 - (289 * pct) / 100) + '"/>' +
+        '    </svg>' +
+        '    <div class="c"><b>' + pct + '%</b><span>' + state.score + '/' + questions.length + '</span></div>' +
+        '  </div>' +
+        '  <h2>' + (passed ? 'Tabriklaymiz! Siz o\'tdingiz!' : 'Deyarli erishdingiz!') + '</h2>' +
+        '  <p>' + (passed ?
+          'Siz ' + level + ' darajasidagi ' + topicNum + '-mavzuni muvaffaqiyatli topshirdingiz va keyingi mavzu ochildi!' :
+          'Keyingi mavzuni ochish uchun kamida 70% to\'plashingiz kerak. Xatolar daftarini ko\'rib chiqib, qaytadan urinib ko\'ring.') + '</p>' +
+        '  <div class="acts">' +
+        '    <button class="ap-btn out" id="resBackLevelsBtn">Mavzular ro\'yxati</button>' +
+        (passed && topicNum < 40 ? '<button class="ap-btn solid" id="resNextTopicBtn">Keyingi mavzu ' + ic('right') + '</button>' : '') +
+        '    <button class="ap-btn solid" id="resRetryBtn">' + ic('clip') + ' Qaytadan topshirish</button>' +
+        '  </div>' +
+        '</div>';
+
+      mainContainer.innerHTML = html;
+
+      document.getElementById('resBackLevelsBtn').onclick = function() {
+        renderLevelsView(mainContainer, level);
+      };
+      document.getElementById('resRetryBtn').onclick = function() {
+        showQuizPromptModal(level, topicNum, topicTitle, mainContainer);
+      };
+      var nextBtn = document.getElementById('resNextTopicBtn');
+      if (nextBtn) {
+        nextBtn.onclick = function() {
+          var curriculum = window.ETHITH_CURRICULUM || {};
+          var topics = curriculum[level] || [];
+          var nextTopic = topics.find(function(x) { return x.num === topicNum + 1; });
+          if (nextTopic) {
+            showQuizPromptModal(level, nextTopic.num, nextTopic.title, mainContainer);
+          } else {
+            renderLevelsView(mainContainer, level);
+          }
+        };
+      }
+    }
+
+    renderQuestion();
+  }
+
+  // Teacher custom test creator modal
+  function showTeacherCustomTestModal(level, mainContainer) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.innerHTML = '' +
+      '<div class="eth-modal">' +
+      '  <div class="eth-modal-header">' +
+      '    <h2>Yangi Test / Viktorina Yaratish</h2>' +
+      '    <p>O\'qituvchi yozma savollari yoki matnidan AI orqali test tuzish</p>' +
+      '  </div>' +
+      '  <div class="eth-modal-body">' +
+      '    <form id="tcCustomTestForm">' +
+      '      <div class="eth-form-group">' +
+      '        <label>Mavzu Nomi</label>' +
+      '        <input type="text" id="tcTestTitle" placeholder="Masalan: Passive Voice Special Rules" required>' +
+      '      </div>' +
+      '      <div class="eth-form-group">' +
+      '        <label>Savollar Matni / Qo\'llanma</label>' +
+      '        <textarea id="tcTestContent" rows="5" placeholder="Savollar, gaplar yoki konspekt matnini bu yerga joylang..." required></textarea>' +
+      '      </div>' +
+      '      <div class="eth-form-group">' +
+      '        <label>Savollar Soni</label>' +
+      '        <input type="number" id="tcTestCount" value="25" min="10" max="50">' +
+      '      </div>' +
+      '      <div style="display:flex;gap:10px">' +
+      '        <button type="button" class="ap-btn out" id="tcCancelBtn" style="flex:1">Bekor qilish</button>' +
+      '        <button type="submit" class="eth-btn-primary" style="flex:2">AI Bilan Yaratish ' + ic('right') + '</button>' +
+      '      </div>' +
+      '    </form>' +
+      '  </div>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+
+    overlay.querySelector('#tcCancelBtn').onclick = function() {
+      overlay.remove();
+    };
+
+    overlay.querySelector('#tcCustomTestForm').onsubmit = async function(e) {
+      e.preventDefault();
+      var title = document.getElementById('tcTestTitle').value.trim();
+      var content = document.getElementById('tcTestContent').value.trim();
+      var count = parseInt(document.getElementById('tcTestCount').value, 10) || 25;
+
+      overlay.innerHTML = '' +
+        '<div class="eth-modal" style="text-align:center;padding:40px 24px">' +
+        '  <div style="font-size:42px;margin-bottom:14px">⚙️</div>' +
+        '  <h3 style="font-size:20px;color:var(--eth-primary)">ETHITH AI viktorinaga aylantirmoqda...</h3>' +
+        '  <p style="color:var(--muted);font-size:14px">Kiritilgan matndan viktorina testlari tuzilmoqda. Biroz kuting...</p>' +
+        '</div>';
+
+      try {
+        var questions = await window.EthithAI.generateExamFromContent(content, count);
+        overlay.remove();
+        alert("Viktorina muvaffaqiyatli yaratildi! " + questions.length + " ta savol tayyor.");
+        startTopicQuizRunner(level, 99, title, questions, mainContainer);
+      } catch (err) {
+        overlay.remove();
+        alert("Xatolik yuz berdi: " + err.message);
+      }
+    };
+  }
+
+  // ==========================================
+  // VIEW 3: CLASSES (SINFLAR) & TELEGRAM CHAT
+  // ==========================================
+  function renderClassesView(container) {
+    var isTeacher = S.user && S.user.role === 'teacher';
+    var userClasses = S.classes.filter(function(c) {
+      if (isTeacher) return c.teacherId === S.user.id || c.teacherEmail === S.user.email;
+      return c.students && c.students.some(function(s) { return s.id === S.user.id || s.email === S.user.email; });
+    });
+
+    if (S.activeClassId) {
+      var activeCls = S.classes.find(function(c) { return c.id === S.activeClassId; });
+      if (activeCls) {
+        renderClassDetail(container, activeCls);
+        return;
+      }
+    }
+
+    var html = '' +
+      '<div class="ap-sec" style="margin-top:0">' +
+      '  <div>' +
+      '    <h2>' + ic('users') + ' Sinflar Tizimi</h2>' +
+      '    <p>' + (isTeacher ? 'O\'z sinflaringizni yarating, o\'quvchilar natijalarini kuzating va Telegram chat orqali bog\'laning.' : 'O\'qituvchingiz bergan 10 xonali kod orqali sinfga qo\'shiling.') + '</p>' +
+      '  </div>' +
+      (isTeacher ?
+        '  <button class="eth-btn-primary" id="btnCreateClass" style="width:auto;padding:10px 18px">' + ic('plus') + ' Yangi Sinf Yaratish</button>' :
+        '  <button class="eth-btn-primary" id="btnJoinClass" style="width:auto;padding:10px 18px">' + ic('right') + ' Sinfga Qo\'shilish</button>') +
+      '</div>';
+
+    if (userClasses.length === 0) {
+      html += '<div class="ap-card ap-empty">' + ic('users') + '<h2>Siz hali hech qaysi sinfga a\'zo emassiz</h2><p>' + (isTeacher ? 'Yangi sinf yarating va kodini o\'quvchilarga bering.' : 'Ustozingiz bergan kod bilan sinfga qo\'shiling.') + '</p></div>';
+    } else {
+      html += '<div class="ap-grid g2">';
+      userClasses.forEach(function(c) {
+        html += '' +
+          '<div class="ap-card" style="cursor:pointer;transition:transform 0.2s" data-cls-id="' + c.id + '">' +
+          '  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">' +
+          '    <span class="ap-tag">' + (c.students ? c.students.length : 0) + ' ta o\'quvchi</span>' +
+          '    <span style="font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:4px 8px;border-radius:6px">Kod: ' + c.code + '</span>' +
+          '  </div>' +
+          '  <h3 style="font-size:18px;margin-bottom:6px">' + esc(c.name) + '</h3>' +
+          '  <p style="color:var(--muted);font-size:13px;margin:0 0 14px">Ustoz: ' + esc(c.teacherName || 'Ustoz') + '</p>' +
+          '  <button class="ap-btn solid" style="width:100%">' + ic('msg') + ' Sinf Chatiga Kirish ' + ic('right') + '</button>' +
+          '</div>';
+      });
+      html += '</div>';
+    }
+
+    container.innerHTML = html;
+
+    container.querySelectorAll('[data-cls-id]').forEach(function(card) {
+      card.onclick = function() {
+        S.activeClassId = card.dataset.clsId;
+        App.saveState();
+        renderClassesView(container);
+      };
+    });
+
+    if (isTeacher) {
+      var createBtn = document.getElementById('btnCreateClass');
+      if (createBtn) {
+        createBtn.onclick = function() {
+          showCreateClassModal(container);
+        };
+      }
+    } else {
+      var joinBtn = document.getElementById('btnJoinClass');
+      if (joinBtn) {
+        joinBtn.onclick = function() {
+          showJoinClassModal(container);
+        };
+      }
+    }
+  }
+
+  function showCreateClassModal(container) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.innerHTML = '' +
+      '<div class="eth-modal">' +
+      '  <div class="eth-modal-header">' +
+      '    <h2>Yangi Sinf Yaratish</h2>' +
+      '    <p>O\'quvchilar uchun 10 xonali kod bilan yangi sinf oching</p>' +
+      '  </div>' +
+      '  <div class="eth-modal-body">' +
+      '    <form id="createClassForm">' +
+      '      <div class="eth-form-group">' +
+      '        <label>Sinf Nomi</label>' +
+      '        <input type="text" id="clsName" placeholder="Masalan: IELTS 7.5 Intensive" required>' +
+      '      </div>' +
+      '      <button type="submit" class="eth-btn-primary">Sinfni Faollashtirish ' + ic('right') + '</button>' +
+      '    </form>' +
+      '  </div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    overlay.querySelector('#createClassForm').onsubmit = function(e) {
+      e.preventDefault();
+      var name = document.getElementById('clsName').value.trim();
+      var code = 'ETH-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+
+      var newCls = {
+        id: 'cls_' + Date.now(),
+        name: name,
+        code: code,
+        teacherId: S.user.id,
+        teacherName: S.user.name,
+        teacherEmail: S.user.email,
+        students: [],
+        messages: [
+          {
+            id: 'msg_init',
+            senderId: S.user.id,
+            senderName: S.user.name,
+            text: 'Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.',
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            reactions: {}
+          }
+        ],
+        pinnedId: null
+      };
+
+      S.classes.push(newCls);
+      S.activeClassId = newCls.id;
+      App.saveState();
+      overlay.remove();
+      renderClassesView(container);
+    };
+  }
+
+  function showJoinClassModal(container) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.innerHTML = '' +
+      '<div class="eth-modal">' +
+      '  <div class="eth-modal-header">' +
+      '    <h2>Sinfga Qo\'shilish</h2>' +
+      '    <p>O\'qituvchingiz taqdim etgan 10 xonali kodni kiriting</p>' +
+      '  </div>' +
+      '  <div class="eth-modal-body">' +
+      '    <form id="joinClassForm">' +
+      '      <div class="eth-form-group">' +
+      '        <label>10 xonali Sinf Kodi</label>' +
+      '        <input type="text" id="joinClsCode" placeholder="Masalan: ETH-A7K92P" style="text-transform:uppercase" required>' +
+      '      </div>' +
+      '      <button type="submit" class="eth-btn-primary">Qo\'shilish ' + ic('right') + '</button>' +
+      '    </form>' +
+      '  </div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    overlay.querySelector('#joinClassForm').onsubmit = function(e) {
+      e.preventDefault();
+      var code = document.getElementById('joinClsCode').value.trim().toUpperCase();
+      var found = S.classes.find(function(c) { return c.code === code; });
+
+      if (!found) {
+        alert("Bunday kodli sinf topilmadi. Iltimos, kodni tekshirib qayta kiriting.");
+        return;
+      }
+
+      if (!found.students) found.students = [];
+      var already = found.students.some(function(s) { return s.id === S.user.id || s.email === S.user.email; });
+
+      if (!already) {
+        found.students.push({
+          id: S.user.id,
+          name: S.user.name,
+          email: S.user.email,
+          dailyMinutes: S.user.dailyMinutes || 0,
+          mistakes: S.mistakes.length
+        });
+      }
+
+      S.activeClassId = found.id;
+      App.saveState();
+      overlay.remove();
+      renderClassesView(container);
+    };
+  }
+
+  // Telegram Style Chat inside Class
+  function renderClassDetail(container, cls) {
+    var isTeacher = S.user && S.user.role === 'teacher';
+    var pinnedMsg = cls.messages.find(function(m) { return m.id === cls.pinnedId; });
+
+    var html = '' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">' +
+      '  <button class="ap-back" id="backClassesListBtn" style="margin:0">' + ic('left') + ' Sinflar ro\'yxati</button>' +
+      (isTeacher ? '  <button class="ap-btn out" id="clsMonitoringBtn">' + ic('user') + ' O\'quvchilar monitoringi (' + (cls.students ? cls.students.length : 0) + ')</button>' : '') +
+      '</div>' +
+      '<div class="tg-chat-wrap">' +
+      '  <div class="tg-header">' +
+      '    <div class="tg-header-info">' +
+      '      <div class="tg-header-avatar">' + cls.name.charAt(0).toUpperCase() + '</div>' +
+      '      <div class="tg-header-title">' +
+      '        <h3>' + esc(cls.name) + '</h3>' +
+      '        <span>' + (cls.students ? cls.students.length : 0) + ' a\'zo · Kod: <b style="color:#2563eb;user-select:all">' + cls.code + '</b></span>' +
+      '      </div>' +
+      '    </div>' +
+      '  </div>' +
+      (pinnedMsg ?
+        '<div class="tg-pinned-bar" id="tgPinnedBar">' +
+        '  <div>' + ic('pin') + ' <b>Qadalgan xabar:</b> ' + esc(pinnedMsg.senderName) + ': "' + esc(pinnedMsg.text.slice(0, 50)) + '..."</div>' +
+        (isTeacher ? '  <button id="tgUnpinBtn" style="background:none;border:none;cursor:pointer;color:var(--muted)">✕</button>' : '') +
+        '</div>' : '') +
+      '  <div class="tg-messages-scroll" id="tgMsgBox">' +
+      cls.messages.map(function(m) {
+        var isOwn = (m.senderId === S.user.id || m.senderEmail === S.user.email);
+        var reactionsList = [];
+        if (m.reactions) {
+          for (var em in m.reactions) {
+            if (m.reactions[em] && m.reactions[em].length > 0) {
+              reactionsList.push({ emoji: em, count: m.reactions[em].length });
+            }
+          }
+        }
+
+        return '' +
+          '<div class="tg-msg-row ' + (isOwn ? 'out' : 'in') + '" data-msg-id="' + m.id + '">' +
+          '  <div class="tg-bubble" data-msg-id="' + m.id + '">' +
+          (m.replyTo ?
+            '<div class="tg-reply-quote">' +
+            '  <b>' + esc(m.replyTo.senderName) + '</b>' +
+            '  <span>' + esc(m.replyTo.text.slice(0, 60)) + '</span>' +
+            '</div>' : '') +
+          (!isOwn ? '<div class="tg-msg-sender">' + esc(m.senderName) + '</div>' : '') +
+          '    <div class="tg-msg-text">' + esc(m.text) + '</div>' +
+          '    <div class="tg-msg-meta">' + m.time + (isOwn ? ' ✓✓' : '') + '</div>' +
+          (reactionsList.length > 0 ?
+            '<div class="tg-reactions-badge">' +
+            reactionsList.map(function(r) {
+              return '<span class="tg-reaction-pill">' + r.emoji + ' ' + r.count + '</span>';
+            }).join('') +
+            '</div>' : '') +
+          '  </div>' +
+          '</div>';
+      }).join('') +
+      '  </div>' +
+      '  <div class="tg-reply-bar" id="tgReplyBar" style="display:none">' +
+      '    <div id="tgReplyBarText"></div>' +
+      '    <button id="tgReplyCancelBtn" style="background:none;border:none;cursor:pointer;color:red">✕</button>' +
+      '  </div>' +
+      '  <div class="tg-input-area">' +
+      '    <input type="text" id="tgInputText" placeholder="Xabar yozing..." autocomplete="off">' +
+      '    <button class="eth-btn-primary" id="tgSendBtn" style="width:40px;height:40px;border-radius:50%;padding:0">' + ic('send') + '</button>' +
+      '  </div>' +
+      '</div>';
+
+    container.innerHTML = html;
+
+    var msgBox = document.getElementById('tgMsgBox');
+    msgBox.scrollTop = msgBox.scrollHeight;
+
+    document.getElementById('backClassesListBtn').onclick = function() {
+      S.activeClassId = null;
+      App.saveState();
+      renderClassesView(container);
+    };
+
+    var monitorBtn = document.getElementById('clsMonitoringBtn');
+    if (monitorBtn) {
+      monitorBtn.onclick = function() {
+        showClassMonitoringModal(cls);
+      };
+    }
+
+    var unpinBtn = document.getElementById('tgUnpinBtn');
+    if (unpinBtn) {
+      unpinBtn.onclick = function(e) {
+        e.stopPropagation();
+        cls.pinnedId = null;
+        App.saveState();
+        renderClassDetail(container, cls);
+      };
+    }
+
+    // Double-click to Reply
+    container.querySelectorAll('.tg-bubble').forEach(function(bubble) {
+      bubble.ondblclick = function(e) {
+        e.stopPropagation();
+        var msgId = bubble.dataset.msgId;
+        var msg = cls.messages.find(function(m) { return m.id === msgId; });
+        if (!msg) return;
+
+        currentReplyingMessage = msg;
+        var replyBar = document.getElementById('tgReplyBar');
+        var replyText = document.getElementById('tgReplyBarText');
+        replyBar.style.display = 'flex';
+        replyText.innerHTML = ic('reply') + ' <b>Javob berilmoqda: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
+        document.getElementById('tgInputText').focus();
+      };
+
+      // Long press (touch) & Right click (context menu)
+      var touchTimer = null;
+      bubble.addEventListener('touchstart', function(e) {
+        touchTimer = setTimeout(function() {
+          showContextMenu(e.touches[0].clientX, e.touches[0].clientY, bubble.dataset.msgId, cls, container);
+        }, 550);
+      }, { passive: true });
+
+      bubble.addEventListener('touchend', function() {
+        clearTimeout(touchTimer);
+      });
+
+      bubble.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        showContextMenu(e.clientX, e.clientY, bubble.dataset.msgId, cls, container);
+      });
+    });
+
+    document.getElementById('tgReplyCancelBtn').onclick = function() {
+      currentReplyingMessage = null;
+      document.getElementById('tgReplyBar').style.display = 'none';
+    };
+
+    // Send Message
+    function sendMessage() {
+      var input = document.getElementById('tgInputText');
+      var text = input.value.trim();
+      if (!text) return;
+
+      var newMsg = {
+        id: 'msg_' + Date.now(),
+        senderId: S.user.id,
+        senderName: S.user.name,
+        senderEmail: S.user.email,
+        text: text,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        replyTo: currentReplyingMessage ? {
+          id: currentReplyingMessage.id,
+          senderName: currentReplyingMessage.senderName,
+          text: currentReplyingMessage.text
+        } : null,
+        reactions: {}
+      };
+
+      cls.messages.push(newMsg);
+      currentReplyingMessage = null;
+      input.value = '';
+      App.saveState();
+      renderClassDetail(container, cls);
+    }
+
+    document.getElementById('tgSendBtn').onclick = sendMessage;
+    document.getElementById('tgInputText').onkeydown = function(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    };
+  }
+
+  // Telegram Context Menu: Reactions, Reply, Pin, Delete
+  function showContextMenu(x, y, msgId, cls, mainContainer) {
+    if (activeContextMenu) activeContextMenu.remove();
+
+    var msg = cls.messages.find(function(m) { return m.id === msgId; });
+    if (!msg) return;
+
+    var menu = document.createElement('div');
+    menu.className = 'tg-context-menu';
+
+    // Position menu within viewport
+    var posX = Math.min(x, window.innerWidth - 220);
+    var posY = Math.min(y, window.innerHeight - 250);
+    menu.style.left = posX + 'px';
+    menu.style.top = posY + 'px';
+
+    var quickEmojis = S.quickReactions || ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '🚀', '💯'];
+
+    var html = '' +
+      '<div class="tg-context-reactions">' +
+      quickEmojis.slice(0, 6).map(function(em) {
+        return '<button class="tg-context-reaction-btn" data-em="' + em + '">' + em + '</button>';
+      }).join('') +
+      '  <button class="tg-context-reaction-btn" id="tgMoreEmojisBtn" title="Barcha emojilar">➕</button>' +
+      '</div>' +
+      '<button class="tg-context-item" id="ctxReplyBtn">' + ic('reply') + ' Javob yozish (Reply)</button>' +
+      '<button class="tg-context-item" id="ctxPinBtn">' + ic('pin') + ' Xabarni qadash (Pin)</button>' +
+      '<button class="tg-context-item danger" id="ctxDeleteBtn">' + ic('trash') + ' Tubdan o\'chirish (Delete)</button>';
+
+    menu.innerHTML = html;
+    document.body.appendChild(menu);
+    activeContextMenu = menu;
+
+    // Apply Reaction
+    menu.querySelectorAll('[data-em]').forEach(function(btn) {
+      btn.onclick = function() {
+        applyReaction(btn.dataset.em, msg, cls, mainContainer);
+        menu.remove();
+        activeContextMenu = null;
+      };
+    });
+
+    menu.querySelector('#tgMoreEmojisBtn').onclick = function() {
+      showAllEmojisPicker(posX, posY, msg, cls, mainContainer);
+    };
+
+    menu.querySelector('#ctxReplyBtn').onclick = function() {
+      currentReplyingMessage = msg;
+      var replyBar = document.getElementById('tgReplyBar');
+      var replyText = document.getElementById('tgReplyBarText');
+      if (replyBar && replyText) {
+        replyBar.style.display = 'flex';
+        replyText.innerHTML = ic('reply') + ' <b>Javob berilmoqda: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
+        document.getElementById('tgInputText').focus();
+      }
+      menu.remove();
+      activeContextMenu = null;
+    };
+
+    menu.querySelector('#ctxPinBtn').onclick = function() {
+      cls.pinnedId = msg.id;
+      App.saveState();
+      menu.remove();
+      activeContextMenu = null;
+      renderClassDetail(mainContainer, cls);
+    };
+
+    menu.querySelector('#ctxDeleteBtn').onclick = function() {
+      if (confirm("Ushbu xabarni tubdan o'chirib tashlamoqchimisiz?")) {
+        cls.messages = cls.messages.filter(function(m) { return m.id !== msg.id; });
+        if (cls.pinnedId === msg.id) cls.pinnedId = null;
+        App.saveState();
+        menu.remove();
+        activeContextMenu = null;
+        renderClassDetail(mainContainer, cls);
+      }
+    };
+  }
+
+  // Apply Reaction & Reorder Emojis
+  function applyReaction(emoji, msg, cls, mainContainer) {
+    if (!msg.reactions) msg.reactions = {};
+    if (!msg.reactions[emoji]) msg.reactions[emoji] = [];
+
+    var userId = S.user.id;
+    var idx = msg.reactions[emoji].indexOf(userId);
+    if (idx > -1) {
+      msg.reactions[emoji].splice(idx, 1);
+    } else {
+      msg.reactions[emoji].push(userId);
+    }
+
+    // Requirement: "ohirgi martta qaysibiri reaksiya bosilgan bo'lsa o'sha reaksiya tartibda birinchiga o'tib qoladi"
+    var qr = S.quickReactions || [];
+    var qIdx = qr.indexOf(emoji);
+    if (qIdx > -1) qr.splice(qIdx, 1);
+    qr.unshift(emoji);
+    S.quickReactions = qr;
+
+    App.saveState();
+    renderClassDetail(mainContainer, cls);
+  }
+
+  // Full Emoji Picker Modal
+  function showAllEmojisPicker(x, y, msg, cls, mainContainer) {
+    if (activeContextMenu) activeContextMenu.remove();
+
+    var picker = document.createElement('div');
+    picker.className = 'tg-context-menu';
+    picker.style.left = Math.min(x, window.innerWidth - 260) + 'px';
+    picker.style.top = Math.min(y, window.innerHeight - 280) + 'px';
+    picker.style.maxWidth = '250px';
+
+    var allEmojis = ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '🚀', '💯', '🤝', '💡', '😂', '🥳', '🤔', '😢', '🙏', '🎯', '✨', '🧠', '📚', '✍️', '🙌', '💪', '🏆', '⭐'];
+
+    picker.innerHTML = '' +
+      '<div style="font-size:12px;font-weight:700;color:var(--muted);padding:4px 6px">Barcha emojilar:</div>' +
+      '<div style="display:grid;grid-template-columns:repeat(6, 1fr);gap:6px;padding:6px">' +
+      allEmojis.map(function(em) {
+        return '<button class="tg-context-reaction-btn" data-full-em="' + em + '">' + em + '</button>';
+      }).join('') +
+      '</div>';
+
+    document.body.appendChild(picker);
+    activeContextMenu = picker;
+
+    picker.querySelectorAll('[data-full-em]').forEach(function(btn) {
+      btn.onclick = function() {
+        applyReaction(btn.dataset.fullEm, msg, cls, mainContainer);
+        picker.remove();
+        activeContextMenu = null;
+      };
+    });
+  }
+
+  // Teacher Class Monitoring Modal
+  function showClassMonitoringModal(cls) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    var students = cls.students || [];
+
+    overlay.innerHTML = '' +
+      '<div class="eth-modal" style="max-width:600px">' +
+      '  <div class="eth-modal-header">' +
+      '    <h2>' + esc(cls.name) + ' · O\'quvchilar Monitoringi</h2>' +
+      '    <p>O\'quvchilarning platformadagi kunlik vaqti va xatoliklar statistikasi</p>' +
+      '  </div>' +
+      '  <div class="eth-modal-body" style="max-height:60vh;overflow-y:auto">' +
+      (students.length === 0 ?
+        '<p style="color:var(--muted);text-align:center">Hozircha hech qaysi o\'quvchi qo\'shilmagan.</p>' :
+        '<table class="eth-leaderboard-table">' +
+        '  <thead><tr><th>O\'quvchi</th><th>Kunlik Vaqti</th><th>Xatolar</th></tr></thead>' +
+        '  <tbody>' +
+        students.map(function(s) {
+          return '<tr>' +
+            '  <td><b>' + esc(s.name) + '</b><br><small style="color:var(--muted)">' + esc(s.email) + '</small></td>' +
+            '  <td><b>' + (s.dailyMinutes || 0) + ' daqiqa</b></td>' +
+            '  <td><span style="color:#ef4444;font-weight:700">' + (s.mistakes || 0) + ' ta xato</span></td>' +
+            '</tr>';
+        }).join('') +
+        '  </tbody>' +
+        '</table>'
+      ) +
+      '    <button class="eth-btn-primary" id="monCloseBtn" style="margin-top:20px">Yopish</button>' +
+      '  </div>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+    overlay.querySelector('#monCloseBtn').onclick = function() {
+      overlay.remove();
+    };
+  }
+
+  // ==========================================
+  // VIEW 4: EXAMS (IMTIHONLAR) & LEADERBOARD
+  // ==========================================
+  function renderExamsView(container) {
+    var isTeacher = S.user && S.user.role === 'teacher';
+
+    var html = '' +
+      '<div class="ap-sec" style="margin-top:0">' +
+      '  <div>' +
+      '    <h2>' + ic('trophy') + ' Imtihonlar Tizimi (Exams & Leaderboard)</h2>' +
+      '    <p>' + (isTeacher ? 'PDF material yuklab imtihon tuzing, 6 xonali kod bilan boshqaring va jonli reytingni kuzating.' : 'O\'qituvchingiz bergan 6 xonali imtihon kodi bilan imtihonga kiring.') + '</p>' +
+      '  </div>' +
+      (isTeacher ?
+        '  <button class="eth-btn-primary" id="btnCreateExam" style="width:auto;padding:10px 18px">' + ic('plus') + ' Yangi Imtihon Tuzish</button>' :
+        '  <button class="eth-btn-primary" id="btnJoinExam" style="width:auto;padding:10px 18px">' + ic('clip') + ' Imtihonga Kirish (Exam Join)</button>') +
+      '</div>';
+
+    if (S.exams.length === 0) {
+      html += '<div class="ap-card ap-empty">' + ic('trophy') + '<h2>Hozirda faol imtihonlar mavjud emas</h2><p>' + (isTeacher ? 'Yangi imtihon tuzing va kodini o\'quvchilarga bering.' : 'O\'qituvchingizdan 6 xonali imtihon kodini oling.') + '</p></div>';
+    } else {
+      html += '<div class="ap-grid g2">';
+      S.exams.forEach(function(ex) {
+        var subCount = ex.submissions ? ex.submissions.length : 0;
+        html += '' +
+          '<div class="ap-card" style="border:1.5px solid var(--border)">' +
+          '  <div style="display:flex;justify-content:space-between;margin-bottom:8px">' +
+          '    <span class="ap-tag">' + ex.duration + ' daqiqa</span>' +
+          '    <span style="font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:3px 8px;border-radius:6px">Kod: ' + ex.code + '</span>' +
+          '  </div>' +
+          '  <h3 style="font-size:18px;margin-bottom:6px">' + esc(ex.title) + '</h3>' +
+          '  <p style="color:var(--muted);font-size:13px;margin:0 0 14px">' + (ex.questions ? ex.questions.length : 0) + ' ta savol · ' + subCount + ' ta topshirilgan natija</p>' +
+          '  <div style="display:flex;gap:10px">' +
+          '    <button class="ap-btn solid" data-exam-lb="' + ex.id + '" style="flex:1">' + ic('trophy') + ' Reyting (Leaderboard)</button>' +
+          (!isTeacher ? '<button class="eth-btn-primary" data-exam-take="' + ex.id + '" style="flex:1">Topshirish ' + ic('right') + '</button>' : '') +
+          '  </div>' +
+          '</div>';
+      });
+      html += '</div>';
+    }
+
+    container.innerHTML = html;
+
+    container.querySelectorAll('[data-exam-lb]').forEach(function(btn) {
+      btn.onclick = function() {
+        var ex = S.exams.find(function(x) { return x.id === btn.dataset.examLb; });
+        if (ex) showExamLeaderboardModal(ex);
+      };
+    });
+
+    container.querySelectorAll('[data-exam-take]').forEach(function(btn) {
+      btn.onclick = function() {
+        var ex = S.exams.find(function(x) { return x.id === btn.dataset.examTake; });
+        if (ex) startExamRunner(ex, container);
+      };
+    });
+
+    if (isTeacher) {
+      var createBtn = document.getElementById('btnCreateExam');
+      if (createBtn) {
+        createBtn.onclick = function() {
+          showCreateExamModal(container);
+        };
+      }
+    } else {
+      var joinBtn = document.getElementById('btnJoinExam');
+      if (joinBtn) {
+        joinBtn.onclick = function() {
+          showJoinExamModal(container);
+        };
+      }
+    }
+  }
+
+  function showCreateExamModal(container) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.innerHTML = '' +
+      '<div class="eth-modal" style="max-width:540px">' +
+      '  <div class="eth-modal-header">' +
+      '    <h2>Yangi Imtihon Yaratish</h2>' +
+      '    <p>PDF yoki matn asosida 6 xonali kodli imtihon shakllantirish</p>' +
+      '  </div>' +
+      '  <div class="eth-modal-body">' +
+      '    <form id="createExamForm">' +
+      '      <div class="eth-form-group">' +
+      '        <label>Imtihon Nomi</label>' +
+      '        <input type="text" id="exTitle" placeholder="Masalan: Midterm Exam 2026" required>' +
+      '      </div>' +
+      '      <div style="display:flex;gap:12px">' +
+      '        <div class="eth-form-group" style="flex:1">' +
+      '          <label>Vaqti (Daqiqa)</label>' +
+      '          <input type="number" id="exDuration" value="30" min="5" max="180" required>' +
+      '        </div>' +
+      '        <div class="eth-form-group" style="flex:1">' +
+      '          <label>Har bir savol bali</label>' +
+      '          <input type="number" id="exPoints" value="2" min="1" max="10" required>' +
+      '        </div>' +
+      '      </div>' +
+      '      <div class="eth-form-group">' +
+      '        <label>PDF / Hujjat Fayli yuklang (yoki quyida matn kiriting):</label>' +
+      '        <input type="file" id="exPdfFile" accept=".pdf,.txt,.doc,.docx">' +
+      '      </div>' +
+      '      <div class="eth-form-group">' +
+      '        <label>Imtihon Matni / Savollar:</label>' +
+      '        <textarea id="exContent" rows="4" placeholder="Fayl yuklamasangiz, savollar matnini bu yerga nusxalang..."></textarea>' +
+      '      </div>' +
+      '      <div style="display:flex;gap:10px">' +
+      '        <button type="button" class="ap-btn out" id="exCancelBtn" style="flex:1">Bekor qilish</button>' +
+      '        <button type="submit" class="eth-btn-primary" style="flex:2">AI Bilan Imtihon Tuzish ' + ic('right') + '</button>' +
+      '      </div>' +
+      '    </form>' +
+      '  </div>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+
+    overlay.querySelector('#exCancelBtn').onclick = function() {
+      overlay.remove();
+    };
+
+    overlay.querySelector('#createExamForm').onsubmit = async function(e) {
+      e.preventDefault();
+      var title = document.getElementById('exTitle').value.trim();
+      var duration = parseInt(document.getElementById('exDuration').value, 10) || 30;
+      var points = parseInt(document.getElementById('exPoints').value, 10) || 2;
+      var textContent = document.getElementById('exContent').value.trim();
+      var pdfInput = document.getElementById('exPdfFile');
+
+      var contentToParse = textContent;
+
+      if (pdfInput.files && pdfInput.files[0]) {
+        var file = pdfInput.files[0];
+        contentToParse += '\n[Fayl nomi: ' + file.name + ']\n';
+      }
+
+      if (!contentToParse) {
+        alert("Iltimos, PDF fayl yuklang yoki imtihon matnini kiriting!");
+        return;
+      }
+
+      overlay.innerHTML = '' +
+        '<div class="eth-modal" style="text-align:center;padding:40px 24px">' +
+        '  <div style="font-size:42px;margin-bottom:14px">⚙️</div>' +
+        '  <h3 style="font-size:20px;color:var(--eth-primary)">ETHITH AI Imtihon tuzmoqda...</h3>' +
+        '  <p style="color:var(--muted);font-size:14px">Materiallar tahlil qilinmoqda va tayyor imtihon savollariga aylantirilmoqda...</p>' +
+        '</div>';
+
+      try {
+        var questions = await window.EthithAI.generateExamFromContent(contentToParse, 20);
+        var code = Math.floor(100000 + Math.random() * 900000).toString();
+
+        var newExam = {
+          id: 'exam_' + Date.now(),
+          code: code,
+          title: title,
+          duration: duration,
+          pointsPerQ: points,
+          questions: questions,
+          submissions: []
+        };
+
+        S.exams.push(newExam);
+        App.saveState();
+        overlay.remove();
+        alert("Imtihon tayyor! O'quvchilar uchun 6 xonali kod: " + code);
+        renderExamsView(container);
+      } catch (err) {
+        overlay.remove();
+        alert("Xatolik: " + err.message);
+      }
+    };
+  }
+
+  function showJoinExamModal(container) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.innerHTML = '' +
+      '<div class="eth-modal">' +
+      '  <div class="eth-modal-header">' +
+      '    <h2>Imtihonga Kirish</h2>' +
+      '    <p>O\'qituvchingiz bergan 6 xonali maxsus kodni kiriting</p>' +
+      '  </div>' +
+      '  <div class="eth-modal-body">' +
+      '    <form id="joinExamForm">' +
+      '      <div class="eth-form-group">' +
+      '        <label>6 xonali Imtihon Kodi</label>' +
+      '        <input type="text" id="joinExCode" placeholder="Masalan: 849201" maxlength="6" required style="font-size:20px;letter-spacing:4px;text-align:center">' +
+      '      </div>' +
+      '      <button type="submit" class="eth-btn-primary">Imtihonni Boshlash ' + ic('right') + '</button>' +
+      '    </form>' +
+      '  </div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    overlay.querySelector('#joinExamForm').onsubmit = function(e) {
+      e.preventDefault();
+      var code = document.getElementById('joinExCode').value.trim();
+      var exam = S.exams.find(function(x) { return x.code === code; });
+
+      if (!exam) {
+        alert("Ushbu 6 xonali kodli imtihon topilmadi!");
+        return;
+      }
+
+      overlay.remove();
+      startExamRunner(exam, container);
+    };
+  }
+
+  function startExamRunner(exam, mainContainer) {
+    var timeLeftSeconds = exam.duration * 60;
+    var state = {
+      i: 0,
+      score: 0,
+      answered: false,
+      answers: {}
+    };
+
+    var timerInterval = setInterval(function() {
+      timeLeftSeconds--;
+      var badge = document.getElementById('examTimerDisplay');
+      if (badge) {
+        var m = Math.floor(timeLeftSeconds / 60);
+        var s = timeLeftSeconds % 60;
+        badge.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+      }
+      if (timeLeftSeconds <= 0) {
+        clearInterval(timerInterval);
+        alert("Vaqt tugadi! Imtihon avtomatik ravishda yakunlandi.");
+        finishExam();
+      }
+    }, 1000);
+
+    function renderExamQuestion() {
+      if (state.i >= exam.questions.length) {
+        clearInterval(timerInterval);
+        finishExam();
+        return;
+      }
+
+      var q = exam.questions[state.i];
+      var html = '' +
+        '<div class="ap-quiz">' +
+        '  <div class="ap-qtop">' +
+        '    <div class="eth-timer-badge">' + ic('clock') + ' <span id="examTimerDisplay">--:--</span></div>' +
+        '    <div class="ap-bar"><i style="width:' + ((state.i / exam.questions.length) * 100) + '%"></i></div>' +
+        '    <b>' + (state.i + 1) + ' / ' + exam.questions.length + '</b>' +
+        '  </div>' +
+        '  <div class="ap-qbox">' +
+        '    <div class="qn">' + esc(exam.title) + ' · Savol ' + (state.i + 1) + ' (' + exam.pointsPerQ + ' ball)</div>' +
+        '    <h2>' + esc(q.question) + '</h2>' +
+        '    <div>' +
+        q.options.map(function(opt, idx) {
+          return '<button class="ap-opt" data-opt="' + esc(opt) + '"><span class="l">' + 'ABCD'[idx] + '</span>' + esc(opt) + '</button>';
+        }).join('') +
+        '    </div>' +
+        '  </div>' +
+        '</div>';
+
+      mainContainer.innerHTML = html;
+
+      mainContainer.querySelectorAll('.ap-opt').forEach(function(btn) {
+        btn.onclick = function() {
+          var sel = btn.dataset.opt;
+          if (sel === q.answer) state.score += exam.pointsPerQ;
+          state.answers[state.i] = sel;
+          state.i++;
+          renderExamQuestion();
+        };
+      });
+    }
+
+    function finishExam() {
+      var totalPossible = exam.questions.length * exam.pointsPerQ;
+      var pct = Math.round((state.score / totalPossible) * 100);
+      var timeSpentMin = Math.round((exam.duration * 60 - Math.max(0, timeLeftSeconds)) / 60);
+
+      var sub = {
+        studentId: S.user.id,
+        studentName: S.user.name,
+        studentEmail: S.user.email,
+        score: state.score,
+        totalPossible: totalPossible,
+        percent: pct,
+        timeSpent: timeSpentMin + ' daqiqa',
+        date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+
+      if (!exam.submissions) exam.submissions = [];
+      exam.submissions.push(sub);
+      App.saveState();
+
+      // Show Result
+      var html = '' +
+        '<div class="ap-res">' +
+        '  <h2>Imtihon Yakunlandi!</h2>' +
+        '  <p>Sizning natijangiz: <b>' + state.score + ' / ' + totalPossible + ' ball (' + pct + '%)</b></p>' +
+        '  <button class="eth-btn-primary" id="viewLbAfterExam" style="margin-top:20px">' + ic('trophy') + ' Jonli Reytingni Ko\'rish</button>' +
+        '</div>';
+
+      mainContainer.innerHTML = html;
+      document.getElementById('viewLbAfterExam').onclick = function() {
+        showExamLeaderboardModal(exam);
+        renderExamsView(mainContainer);
+      };
+    }
+
+    renderExamQuestion();
+  }
+
+  function showExamLeaderboardModal(exam) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    var subs = (exam.submissions || []).slice().sort(function(a, b) {
+      if (b.score !== a.score) return b.score - a.score;
+      return parseInt(a.timeSpent, 10) - parseInt(b.timeSpent, 10);
+    });
+
+    overlay.innerHTML = '' +
+      '<div class="eth-modal" style="max-width:640px">' +
+      '  <div class="eth-modal-header">' +
+      '    <h2>' + ic('trophy') + ' ' + esc(exam.title) + ' · Jonli Reyting</h2>' +
+      '    <p>Eng yuqori ball va sarflangan vaqt bo\'yicha tartiblangan</p>' +
+      '  </div>' +
+      '  <div class="eth-modal-body" style="max-height:60vh;overflow-y:auto">' +
+      (subs.length === 0 ?
+        '<p style="color:var(--muted);text-align:center">Hozircha hech kim imtihon topshirmadi.</p>' :
+        '<table class="eth-leaderboard-table">' +
+        '  <thead><tr><th>O\'rin</th><th>O\'quvchi</th><th>Ball</th><th>Sarflangan Vaqt</th></tr></thead>' +
+        '  <tbody>' +
+        subs.map(function(s, idx) {
+          var rankCls = (idx === 0 ? 'eth-rank-1' : (idx === 1 ? 'eth-rank-2' : (idx === 2 ? 'eth-rank-3' : '')));
+          return '<tr>' +
+            '  <td><span class="eth-rank-badge ' + rankCls + '">' + (idx + 1) + '</span></td>' +
+            '  <td><b>' + esc(s.studentName) + '</b></td>' +
+            '  <td><b style="color:#2563eb">' + s.score + ' ball (' + s.percent + '%)</b></td>' +
+            '  <td>' + esc(s.timeSpent) + '</td>' +
+            '</tr>';
+        }).join('') +
+        '  </tbody>' +
+        '</table>'
+      ) +
+      '    <button class="eth-btn-primary" id="lbCloseBtn" style="margin-top:20px">Yopish</button>' +
+      '  </div>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+    overlay.querySelector('#lbCloseBtn').onclick = function() {
+      overlay.remove();
+    };
+  }
+
+  // ==========================================
+  // VIEW 5: PLACEMENT TEST (70 QUESTIONS)
+  // ==========================================
+  function renderPlacementView(container) {
+    var questions = window.ETHITH_PLACEMENT || [];
+
+    var html = '' +
+      '<div class="ap-sec" style="margin-top:0">' +
+      '  <div>' +
+      '    <h2>' + ic('clip') + ' Language Hub Rasmiy Placement Test (70 ta Savol)</h2>' +
+      '    <p>Ingliz tili darajangizni (A1 dan C2 gacha) rasmiy xalqaro nizom asosida aniqlang. Ajratilgan vaqt: 1.5 soat (90 daqiqa).</p>' +
+      '  </div>' +
+      '</div>' +
+      '<div class="ap-intro">' +
+      '  <div class="ap-lhero">' +
+      '    <h1>Darajani Aniqlash Testi</h1>' +
+      '    <p>Beginner (A1) dan Advanced (C2) gacha 70 ta grammatik va leksik savol.</p>' +
+      '  </div>' +
+      '  <ul>' +
+      '    <li>' + ic('list') + ' 70 ta ko\'p tanlovli (multiple choice) savollar</li>' +
+      '    <li>' + ic('clock') + ' Maksimal 1.5 soat (90 daqiqa) vaqt beriladi</li>' +
+      '    <li>' + ic('trophy') + ' Rasmiy baholash mezoni bo\'yicha aniq CEFR darajangiz chiqadi</li>' +
+      '  </ul>' +
+      '  <button class="eth-btn-primary" id="startPlacementTestBtn" style="font-size:16px;padding:14px 28px">Testni Boshlash ' + ic('right') + '</button>' +
+      '</div>';
+
+    container.innerHTML = html;
+
+    document.getElementById('startPlacementTestBtn').onclick = function() {
+      runPlacementTest(container, questions);
+    };
+  }
+
+  function runPlacementTest(mainContainer, questions) {
+    var timeLeft = 90 * 60;
+    var state = {
+      i: 0,
+      score: 0,
+      answers: {}
+    };
+
+    var interval = setInterval(function() {
+      timeLeft--;
+      var badge = document.getElementById('plcTimer');
+      if (badge) {
+        var hrs = Math.floor(timeLeft / 3600);
+        var m = Math.floor((timeLeft % 3600) / 60);
+        var s = timeLeft % 60;
+        badge.textContent = (hrs < 10 ? '0' : '') + hrs + ':' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+      }
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        finishPlacement();
+      }
+    }, 1000);
+
+    function renderQ() {
+      if (state.i >= questions.length) {
+        clearInterval(interval);
+        finishPlacement();
+        return;
+      }
+
+      var q = questions[state.i];
+      var opts = q.options || { A: 'A', B: 'B', C: 'C', D: 'D' };
+
+      var html = '' +
+        '<div class="ap-quiz">' +
+        '  <div class="ap-qtop">' +
+        '    <div class="eth-timer-badge">' + ic('clock') + ' <span id="plcTimer">01:30:00</span></div>' +
+        '    <div class="ap-bar"><i style="width:' + ((state.i / questions.length) * 100) + '%"></i></div>' +
+        '    <b>' + (state.i + 1) + ' / ' + questions.length + '</b>' +
+        '  </div>' +
+        '  <div class="ap-qbox">' +
+        '    <div class="qn">Placement Test · Savol ' + (state.i + 1) + '</div>' +
+        '    <h2>' + esc(q.prompt) + '</h2>' +
+        '    <div>' +
+        ['A', 'B', 'C', 'D'].map(function(key) {
+          return '<button class="ap-opt" data-k="' + key + '"><span class="l">' + key + '</span>' + esc(opts[key]) + '</button>';
+        }).join('') +
+        '    </div>' +
+        '  </div>' +
+        '</div>';
+
+      mainContainer.innerHTML = html;
+
+      mainContainer.querySelectorAll('.ap-opt').forEach(function(btn) {
+        btn.onclick = function() {
+          var k = btn.dataset.k;
+          if (k === q.answer) state.score++;
+          state.answers[state.i] = k;
+          state.i++;
+          renderQ();
+        };
+      });
+    }
+
+    function finishPlacement() {
+      var score = state.score;
+      var level = 'A1';
+      var levelDesc = 'Beginner';
+
+      if (score <= 6) { level = 'A1'; levelDesc = 'Beginner'; }
+      else if (score <= 20) { level = 'A2'; levelDesc = 'Elementary'; }
+      else if (score <= 34) { level = 'B1'; levelDesc = 'Pre-Intermediate'; }
+      else if (score <= 48) { level = 'B2'; levelDesc = 'Intermediate'; }
+      else if (score <= 62) { level = 'B2+'; levelDesc = 'Upper Intermediate'; }
+      else { level = 'C1/C2'; levelDesc = 'Advanced'; }
+
+      S.level = level.slice(0, 2);
+      App.saveState();
+
+      var html = '' +
+        '<div class="ap-res">' +
+        '  <div style="font-size:56px;margin-bottom:10px">🎓</div>' +
+        '  <h2>Sizning Darajangiz: <span style="color:#2563eb">' + level + ' (' + levelDesc + ')</span></h2>' +
+        '  <p>To\'plangan ball: <b>' + score + ' / ' + questions.length + '</b></p>' +
+        '  <p style="color:var(--muted);font-size:14px;max-width:540px;margin:0 auto 20px">Language Hub xalqaro nizomiga muvofiq, sizning hozirgi bilim darajangiz aniqlandi va profilingizga biriktirildi.</p>' +
+        '  <button class="eth-btn-primary" id="plcDoneBtn" style="margin:0 auto;width:auto;padding:12px 24px">O\'rganishni davom ettirish ' + ic('right') + '</button>' +
+        '</div>';
+
+      mainContainer.innerHTML = html;
+      document.getElementById('plcDoneBtn').onclick = function() {
+        window.ethithOpenApp('level', S.level);
+      };
+    }
+
+    renderQ();
+  }
+
+  // ==========================================
+  // VIEW 6: MISTAKES NOTEBOOK (XATOLAR DAFTARI)
+  // ==========================================
+  function renderMistakesNotebook(container) {
+    var mistakes = S.mistakes || [];
+
+    var html = '' +
+      '<div class="ap-sec" style="margin-top:0">' +
+      '  <div>' +
+      '    <h2>' + ic('clip') + ' Xatolar Daftari (' + mistakes.length + ' ta xato)</h2>' +
+      '    <p>Testlar davomida xato belgilangan barcha savollar va ularning tushuntirishlari</p>' +
+      '  </div>' +
+      (mistakes.length > 0 ? '  <button class="ap-btn out" id="clrMistakesBtn">Daftarni tozalash</button>' : '') +
+      '</div>';
+
+    if (mistakes.length === 0) {
+      html += '<div class="ap-card ap-empty">' + ic('check') + '<h2>Xatolar daftari bo\'sh</h2><p>Siz testlarda adashganingizda barcha xatolar izohi bilan bu yerda saqlanadi.</p></div>';
+    } else {
+      html += '<div class="ap-grid g2">';
+      mistakes.slice().reverse().forEach(function(m) {
+        html += '' +
+          '<div class="ap-card" style="border-left:4px solid #ef4444">' +
+          '  <span class="ap-tag">' + esc(m.level || 'Test') + ' · ' + esc(m.topic || 'Mavzu') + '</span>' +
+          '  <h4 style="margin:10px 0 8px;font-size:15px">' + esc(m.question) + '</h4>' +
+          '  <div style="font-size:13px;margin-bottom:6px"><b style="color:#ef4444">Sizning javobingiz:</b> ' + esc(m.yourAnswer) + '</div>' +
+          '  <div style="font-size:13px;margin-bottom:8px"><b style="color:#16a34a">To\'g\'ri javob:</b> ' + esc(m.correctAnswer) + '</div>' +
+          '  <div style="background:var(--bg2);padding:8px 12px;border-radius:8px;font-size:12.5px;color:var(--text)">💡 ' + esc(m.explanation) + '</div>' +
+          '</div>';
+      });
+      html += '</div>';
+    }
+
+    container.innerHTML = html;
+
+    var clrBtn = document.getElementById('clrMistakesBtn');
+    if (clrBtn) {
+      clrBtn.onclick = function() {
+        if (confirm("Haqiqatan ham xatolar daftarini tozalamoqchimisiz?")) {
+          S.mistakes = [];
+          App.saveState();
+          renderMistakesNotebook(container);
+        }
+      };
+    }
+  }
+
+  window.EthithViews = {
+    renderAskAITeacher: renderAskAITeacher,
+    renderLevelsView: renderLevelsView,
+    renderClassesView: renderClassesView,
+    renderExamsView: renderExamsView,
+    renderPlacementView: renderPlacementView,
+    renderMistakesNotebook: renderMistakesNotebook
+  };
+
+})(window);
+
+</script>
 </head>
 <body><div id="landing">
  <nav class="navbar scrolled" id=mainNavbar>
@@ -1131,7 +5994,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += '<button class="ap-item ' + ((cur === 'levels' || cur === 'level') && a === lv ? 'active' : '') + '" data-go="levels" data-arg="' + lv + '">' + ic('layers') + lv + ' Daraja <small style="margin-left:auto;color:var(--muted)">' + (isTeacher ? '40/40' : unl + '/40') + '</small></button>';
     });
 
-    h += '<div class="ap-label">Ta'lim & Imtihonlar</div>';
+    h += '<div class="ap-label">Ta\'lim & Imtihonlar</div>';
     h += '<button class="ap-item ' + (cur === 'placement' ? 'active' : '') + '" data-go="placement">' + ic('clip') + 'Placement Test (70)</button>';
     h += '<button class="ap-item ' + (cur === 'classes' ? 'active' : '') + '" data-go="classes">' + ic('users') + 'Sinflar & Chat</button>';
     h += '<button class="ap-item ' + (cur === 'exams' ? 'active' : '') + '" data-go="exams">' + ic('trophy') + 'Imtihonlar (Exams)</button>';
@@ -1142,7 +6005,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += '<button class="ap-item" data-coming-soon="' + sk[2] + '" style="opacity:0.75">' + ic(sk[1]) + sk[2] + ' <span class="eth-coming-soon-badge" style="margin-left:auto;font-size:9px">Soon</span></button>';
     });
 
-    h += '</nav><div class="ap-plan"><small>Foydalanuvchi Holati</small><h4>' + (isTeacher ? 'O'qituvchi (Master)' : 'O'quvchi (Student)') + '</h4><button id="apLogoutBtn" style="background:#fee2e2;color:#dc2626;border:none;padding:6px 12px;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;width:100%;margin-top:8px">Chiqish (Logout)</button></div>';
+    h += '</nav><div class="ap-plan"><small>Foydalanuvchi Holati</small><h4>' + (isTeacher ? 'O\'qituvchi (Master)' : 'O\'quvchi (Student)') + '</h4><button id="apLogoutBtn" style="background:#fee2e2;color:#dc2626;border:none;padding:6px 12px;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;width:100%;margin-top:8px">Chiqish (Logout)</button></div>';
 
     $('apSide').innerHTML = h;
   }
@@ -1170,7 +6033,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '<button class="ap-ib" id="apTheme">' + ic(S.theme === 'dark' ? 'sun' : 'moon') + '</button>' +
       '<div class="ap-user">' +
       '  <span class="av">' + (user.name ? user.name.charAt(0).toUpperCase() : 'U') + '</span>' +
-      '  <span><b>' + esc(user.name) + '</b><small>' + (user.role === 'teacher' ? 'O'qituvchi' : 'O'quvchi (' + S.level + ')') + '</small></span>' +
+      '  <span><b>' + esc(user.name) + '</b><small>' + (user.role === 'teacher' ? 'O\'qituvchi' : 'O\'quvchi (' + S.level + ')') + '</small></span>' +
       '</div>';
   }
 
@@ -1220,7 +6083,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     var h = '<section class="ap-hero"><div class="blob b1"></div><div class="blob b2"></div><div>' +
       '<div class="ap-badge">' + ic('flame') + ' ETHITH TESTS PLATFORMASI</div>' +
       '<h1>Xush kelibsiz, <span>' + esc(user.name) + '</span>!</h1>' +
-      '<p>' + (isTeacher ? 'O'qituvchi boshqaruv markazi: A1-C2 mavzular, sinflar, Telegram chat va PDF orqali imtihonlar.' : 'A1 dan C2 gacha 40 ta mavzu, Ask AI Teacher, Telegram sinf chati va rasmiy testlar.') + '</p>' +
+      '<p>' + (isTeacher ? 'O\'qituvchi boshqaruv markazi: A1-C2 mavzular, sinflar, Telegram chat va PDF orqali imtihonlar.' : 'A1 dan C2 gacha 40 ta mavzu, Ask AI Teacher, Telegram sinf chati va rasmiy testlar.') + '</p>' +
       '<div class="cta">' +
       '  <button class="ap-btn pri" data-go="levels" data-arg="' + S.level + '">Darslarni Davom Ettirish (' + S.level + ') ' + ic('right') + '</button>' +
       '  <button class="ap-btn gh" data-go="ask_ai">' + ic('sparkles') + ' Ask AI Teacher</button>' +
@@ -1230,14 +6093,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '  <div class="ap-glass"><div class="ap-curlv">' + (S.mistakes ? S.mistakes.length : 0) + '</div><span class="lbl">Xatolar Daftari</span></div>' +
       '</div></section>';
 
-    h += '<div class="ap-sec"><div><h2>' + ic('sparkles') + ' Tezkor Amallar</h2><p>Asosiy o'quv bo'limlariga bir bosishda kiring</p></div></div>';
+    h += '<div class="ap-sec"><div><h2>' + ic('sparkles') + ' Tezkor Amallar</h2><p>Asosiy o\'quv bo\'limlariga bir bosishda kiring</p></div></div>';
     h += '<div class="ap-grid g4">';
 
     [
-      ['q1', 'sparkles', 'Ask AI Teacher', 'Shaxsiy sun'iy intellekt o'qituvchi bilan muloqot', 'ask_ai'],
+      ['q1', 'sparkles', 'Ask AI Teacher', 'Shaxsiy sun\'iy intellekt o\'qituvchi bilan muloqot', 'ask_ai'],
       ['q2', 'layers', 'Levels (A1-C2)', 'Har bir darajada 40 ta mavzu va testlar', 'levels'],
       ['q3', 'clip', 'Placement Test', '70 ta savolli darajani aniqlash imtihoni', 'placement'],
-      ['q4', 'users', 'Sinflar & Chat', 'O'qituvchi va o'quvchilar Telegram chati', 'classes']
+      ['q4', 'users', 'Sinflar & Chat', 'O\'qituvchi va o\'quvchilar Telegram chati', 'classes']
     ].forEach(function(q, i) {
       h += '<div class="ap-card ap-quick ' + q[0] + '" style="cursor:pointer" data-go="' + q[4] + '">' +
         ic(q[1], 'lg') + '<h3>' + q[2] + '</h3><p>' + q[3] + '</p><span class="go">Kirish ' + ic('right') + '</span></div>';
