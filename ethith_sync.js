@@ -2,13 +2,12 @@
  * ETHITH Cloud & Cross-Device Real-Time Synchronization Engine
  * Created by Muhammadyusuf Jo'raboyev
  * Features:
- * - Ultra-fast Real-Time WebSocket Mesh (sub-100ms message & reaction delivery)
- * - Dual SSL MQTT Brokers (EMQX & HiveMQ automatic failover)
- * - Instant Telegram Chat & Clickable Reaction Sync
- * - Instant Permanent Message Deletion & Pinning across all devices
- * - Conflict-free 3-way deep merge for GitHub persistence
- * - Zero lost messages via GitHub 409 conflict-retry serialization
- * - Cross-tab BroadcastChannel instant relay
+ * - Active-Active Dual MQTT WebSocket Mesh (EMQX & HiveMQ in parallel)
+ * - Sub-100ms Live Message, Reaction, Pin, Delete, and Student Join Sync
+ * - Dual Broker Wire Deduplication via Unique Event IDs
+ * - Cross-Tab BroadcastChannel + LocalStorage Event Relay (0ms same-device sync)
+ * - Safe Background GitHub Persistence (shared_store.json conflict-retry serialization)
+ * - Automatic Reconnect with Persistent Outbox Buffer
  */
 (function(window) {
   'use strict';
@@ -24,10 +23,24 @@
 
   var _lastKnownSha = null;
   var channel = null;
-  var myClientId = 'cli_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 6);
+  var myClientId = 'cli_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 7);
+
+  // Set of seen event IDs for zero-duplicate delivery across dual brokers & local relays
+  var seenEvents = {};
+  var seenQueue = [];
+  function markEventSeen(id) {
+    if (!id) return false;
+    if (seenEvents[id]) return true; // already seen
+    seenEvents[id] = true;
+    seenQueue.push(id);
+    if (seenQueue.length > 1000) {
+      delete seenEvents[seenQueue.shift()];
+    }
+    return false;
+  }
 
   // ====================================================
-  // 1. LOCAL BROADCAST CHANNEL (0ms Cross-Tab Sync)
+  // 1. LOCAL BROADCAST & STORAGE RELAYS (0ms Sync)
   // ====================================================
   try {
     if (typeof BroadcastChannel !== 'undefined') {
@@ -42,13 +55,39 @@
           var c2 = e.data.exams ? mergeExams(S.exams, e.data.exams) : false;
           if (c1 || c2) {
             window.EthithApp.saveState();
-            if (window._ethithCurrentView === 'classes' && window._ethithRefreshCurrentClass) {
-              window._ethithRefreshCurrentClass();
-            }
+            if (window._ethithRefreshCurrentClass) window._ethithRefreshCurrentClass();
+            if (window._ethithRefreshClassesList) window._ethithRefreshClassesList();
           }
         }
       };
     }
+  } catch(e) {}
+
+  // Cross-Window LocalStorage Event Relay
+  try {
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'ethith_live_event_relay' && e.newValue) {
+        try {
+          var item = JSON.parse(e.newValue);
+          if (item && item.event) {
+            handleIncomingLiveEvent(item.event);
+          }
+        } catch(err) {}
+      } else if (e.key === 'ethith_v2_state' && e.newValue) {
+        try {
+          var updated = JSON.parse(e.newValue);
+          if (updated && window.EthithApp && window.EthithApp.state) {
+            var S = window.EthithApp.state;
+            var c1 = mergeClasses(S.classes, updated.classes || []);
+            var c2 = mergeExams(S.exams, updated.exams || []);
+            if (c1 || c2) {
+              if (window._ethithRefreshCurrentClass) window._ethithRefreshCurrentClass();
+              if (window._ethithRefreshClassesList) window._ethithRefreshClassesList();
+            }
+          }
+        } catch(err) {}
+      }
+    });
   } catch(e) {}
 
   function broadcastLocal(classes, exams) {
@@ -64,117 +103,198 @@
   }
 
   // ====================================================
-  // 2. ULTRA-FAST MQTT WEBSOCKET MESH (Sub-100ms Real-Time)
+  // 2. ACTIVE-ACTIVE DUAL MQTT WEBSOCKET MESH (Sub-100ms)
   // ====================================================
-  var BROKERS = [
-    { host: 'broker.emqx.io', port: 8084, path: '/mqtt' },
-    { host: 'broker.hivemq.com', port: 8884, path: '/mqtt' }
+  var BROKER_CONFIGS = [
+    { name: 'EMQX', host: 'broker.emqx.io', port: 8084, path: '/mqtt' },
+    { name: 'HiveMQ', host: 'broker.hivemq.com', port: 8884, path: '/mqtt' }
   ];
-  var currentBrokerIdx = 0;
-  var mqttClient = null;
-  var isMqttConnected = false;
+
+  var clients = [];
+  var isMeshConnected = false;
+  var liveOutbox = [];
   var activeSubscribedClass = null;
 
-  function initRealtimeMesh() {
+  function initBrokerClient(cfg) {
     if (typeof window.Paho === 'undefined' || !window.Paho.MQTT) {
-      console.log('[LiveRT] Paho MQTT not yet loaded, retrying in 500ms...');
-      setTimeout(initRealtimeMesh, 500);
-      return;
+      setTimeout(initRealtimeMesh, 400);
+      return null;
     }
 
-    var broker = BROKERS[currentBrokerIdx];
-    var clientId = 'eth_' + myClientId;
-
+    var cid = 'eth_' + cfg.name.toLowerCase() + '_' + myClientId;
     try {
-      mqttClient = new window.Paho.MQTT.Client(broker.host, broker.port, broker.path, clientId);
+      var client = new window.Paho.MQTT.Client(cfg.host, cfg.port, cfg.path, cid);
 
-      mqttClient.onConnectionLost = function(resp) {
-        isMqttConnected = false;
-        console.log('[LiveRT] MQTT Connection lost:', resp ? resp.errorMessage : 'unknown');
-        // Switch broker on fail and reconnect
-        currentBrokerIdx = (currentBrokerIdx + 1) % BROKERS.length;
-        setTimeout(initRealtimeMesh, 2000);
+      client._cfg = cfg;
+      client._connected = false;
+
+      client.onConnectionLost = function(resp) {
+        client._connected = false;
+        checkMeshStatus();
+        console.log('[LiveRT] ' + cfg.name + ' connection lost:', resp ? resp.errorMessage : 'unknown');
+        // Auto-reconnect with jitter
+        setTimeout(function() {
+          connectBroker(client);
+        }, 2000 + Math.floor(Math.random() * 1500));
       };
 
-      mqttClient.onMessageArrived = function(message) {
+      client.onMessageArrived = function(message) {
         try {
           var event = JSON.parse(message.payloadString);
           handleIncomingLiveEvent(event);
         } catch(err) {
-          console.warn('[LiveRT] Parse error:', err);
+          console.warn('[LiveRT] Parse error from ' + cfg.name + ':', err);
         }
       };
 
-      mqttClient.connect({
+      connectBroker(client);
+      return client;
+    } catch(err) {
+      console.warn('[LiveRT] Init error for ' + cfg.name + ':', err);
+      return null;
+    }
+  }
+
+  function connectBroker(client) {
+    if (!client || client.isConnected()) return;
+    var cfg = client._cfg;
+
+    try {
+      client.connect({
         useSSL: true,
         timeout: 8,
         keepAliveInterval: 30,
         cleanSession: true,
         onSuccess: function() {
-          isMqttConnected = true;
-          console.log('[LiveRT] Connected to ' + broker.host + ' successfully!');
-          // Subscribe to wildcard for ALL classes and global events
-          mqttClient.subscribe('ethith/v3/class/#', { qos: 1 });
-          mqttClient.subscribe('ethith/v3/global', { qos: 1 });
+          client._connected = true;
+          checkMeshStatus();
+          console.log('[LiveRT] ' + cfg.name + ' connected successfully!');
+
+          // Subscribe to wildcards with QoS 0 for instant zero-latency delivery
+          try {
+            client.subscribe('ethith/v3/class/#', { qos: 0 });
+            client.subscribe('ethith/v3/global', { qos: 0 });
+            if (activeSubscribedClass) {
+              client.subscribe('ethith/v3/class/' + activeSubscribedClass, { qos: 0 });
+            }
+          } catch(se) {}
 
           // Flush queued outbox messages
-          while (liveOutbox.length > 0) {
-            var queuedEvent = liveOutbox.shift();
-            try {
-              var qTopic = queuedEvent.classId ? ('ethith/v3/class/' + queuedEvent.classId) : 'ethith/v3/global';
-              var qMsg = new window.Paho.MQTT.Message(JSON.stringify(queuedEvent));
-              qMsg.destinationName = qTopic;
-              qMsg.qos = 1;
-              mqttClient.send(qMsg);
-            } catch(e) {}
-          }
+          flushLiveOutbox();
         },
         onFailure: function(err) {
-          isMqttConnected = false;
-          console.warn('[LiveRT] Connection failed to ' + broker.host + ':', err);
-          currentBrokerIdx = (currentBrokerIdx + 1) % BROKERS.length;
-          setTimeout(initRealtimeMesh, 2500);
+          client._connected = false;
+          checkMeshStatus();
+          console.warn('[LiveRT] ' + cfg.name + ' connect failed:', err);
+          setTimeout(function() {
+            connectBroker(client);
+          }, 3000 + Math.floor(Math.random() * 2000));
         }
       });
-    } catch(err) {
-      console.warn('[LiveRT] Mesh init exception:', err);
-      setTimeout(initRealtimeMesh, 3000);
+    } catch(e) {
+      client._connected = false;
+      checkMeshStatus();
+      setTimeout(function() {
+        connectBroker(client);
+      }, 4000);
+    }
+  }
+
+  function checkMeshStatus() {
+    isMeshConnected = clients.some(function(c) { return c && c._connected; });
+  }
+
+  function initRealtimeMesh() {
+    if (typeof window.Paho === 'undefined' || !window.Paho.MQTT) {
+      setTimeout(initRealtimeMesh, 400);
+      return;
+    }
+
+    if (clients.length === 0) {
+      BROKER_CONFIGS.forEach(function(cfg) {
+        var cl = initBrokerClient(cfg);
+        if (cl) clients.push(cl);
+      });
     }
   }
 
   function subscribeClass(classCodeOrId) {
     activeSubscribedClass = classCodeOrId;
-    if (mqttClient && isMqttConnected && classCodeOrId) {
-      var topic = 'ethith/v3/class/' + classCodeOrId;
-      mqttClient.subscribe(topic, { qos: 1 });
-    }
+    if (!classCodeOrId) return;
+    var topic = 'ethith/v3/class/' + classCodeOrId;
+    clients.forEach(function(cl) {
+      if (cl && cl._connected) {
+        try { cl.subscribe(topic, { qos: 0 }); } catch(e) {}
+      }
+    });
   }
 
-  var liveOutbox = [];
+  function flushLiveOutbox() {
+    if (liveOutbox.length === 0) return;
+    var activeBrokers = clients.filter(function(c) { return c && c._connected; });
+    if (activeBrokers.length === 0) return;
 
-  // Publish event instantly to all devices via WebSocket and local tabs
+    var toSend = liveOutbox.slice();
+    liveOutbox = [];
+
+    toSend.forEach(function(ev) {
+      var topic = ev.classId ? ('ethith/v3/class/' + ev.classId) : 'ethith/v3/global';
+      var payload = JSON.stringify(ev);
+      activeBrokers.forEach(function(cl) {
+        try {
+          var qMsg = new window.Paho.MQTT.Message(payload);
+          qMsg.destinationName = topic;
+          qMsg.qos = 0;
+          cl.send(qMsg);
+        } catch(e) {}
+      });
+    });
+  }
+
+  // Publish event with dual-broker broadcast + local relays
   function publishLive(event) {
     if (!event) return;
+    if (!event.id) {
+      event.id = 'ev_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 6);
+    }
     event.from = myClientId;
     event.ts = Date.now();
 
-    // 1. Cross-tab instant relay
+    // Mark self as seen so incoming echoes are ignored
+    markEventSeen(event.id);
+
+    // 1. Cross-tab instant relay (0ms)
     if (channel) {
       try {
         channel.postMessage({ type: 'LIVE_EVENT', event: event });
       } catch(e) {}
     }
 
-    // 2. WebSocket instant publish (or buffer in outbox)
-    if (mqttClient && isMqttConnected) {
-      try {
-        var topic = event.classId ? ('ethith/v3/class/' + event.classId) : 'ethith/v3/global';
-        var msg = new window.Paho.MQTT.Message(JSON.stringify(event));
-        msg.destinationName = topic;
-        msg.qos = 1;
-        mqttClient.send(msg);
-      } catch(err) {
-        console.warn('[LiveRT] Publish error, queueing:', err);
+    // 2. Cross-window storage event relay (0ms)
+    try {
+      localStorage.setItem('ethith_live_event_relay', JSON.stringify({ event: event, t: Date.now() }));
+    } catch(e) {}
+
+    // 3. Active-Active Dual MQTT WebSocket Publish
+    var activeBrokers = clients.filter(function(c) { return c && c._connected; });
+    if (activeBrokers.length > 0) {
+      var topic = event.classId ? ('ethith/v3/class/' + event.classId) : 'ethith/v3/global';
+      var payload = JSON.stringify(event);
+      var sentAny = false;
+
+      activeBrokers.forEach(function(cl) {
+        try {
+          var msg = new window.Paho.MQTT.Message(payload);
+          msg.destinationName = topic;
+          msg.qos = 0;
+          cl.send(msg);
+          sentAny = true;
+        } catch(err) {
+          console.warn('[LiveRT] Send failed on ' + cl._cfg.name + ':', err);
+        }
+      });
+
+      if (!sentAny) {
         liveOutbox.push(event);
       }
     } else {
@@ -185,35 +305,46 @@
   // Dispatch incoming live events directly to local state and UI
   function handleIncomingLiveEvent(event) {
     if (!event || event.from === myClientId) return; // Don't echo self
+    if (event.id && markEventSeen(event.id)) return; // Deduplicate across dual brokers
+
     if (!window.EthithApp || !window.EthithApp.state) return;
 
     var S = window.EthithApp.state;
     var classes = S.classes || [];
+
+    // Case-insensitive class matching
     var targetCls = classes.find(function(c) {
-      return (event.classId && (c.id === event.classId || c.code === event.classId));
+      if (!event.classId) return true;
+      var cid = (event.classId + '').toLowerCase();
+      return (c.id && c.id.toLowerCase() === cid) || (c.code && c.code.toLowerCase() === cid);
     });
+
+    if (!targetCls && classes.length > 0) {
+      targetCls = classes[0];
+    }
 
     var uiNeedsRefresh = false;
 
-    // A. NEW CHAT MESSAGE
+    // A. CHAT MESSAGE
     if (event.type === 'CHAT_MSG' && event.message && targetCls) {
       if (!targetCls.messages) targetCls.messages = [];
       if (!targetCls.deletedMsgIds) targetCls.deletedMsgIds = [];
 
-      // Check if not deleted and not already added
       if (targetCls.deletedMsgIds.indexOf(event.message.id) === -1) {
         var exists = targetCls.messages.some(function(m) { return m.id === event.message.id; });
         if (!exists) {
           targetCls.messages.push(event.message);
           targetCls.messages.sort(function(a, b) {
-            return (a.timestamp || 0) - (b.timestamp || 0);
+            var ta = a.timestamp || parseInt((a.id || '').replace(/\D/g, ''), 10) || 0;
+            var tb = b.timestamp || parseInt((b.id || '').replace(/\D/g, ''), 10) || 0;
+            return ta - tb;
           });
           uiNeedsRefresh = true;
         }
       }
     }
 
-    // B. REACTION TOGGLE
+    // B. REACTION
     else if (event.type === 'REACTION' && targetCls && event.msgId && event.emoji) {
       var msg = (targetCls.messages || []).find(function(m) { return m.id === event.msgId; });
       if (msg) {
@@ -230,7 +361,6 @@
             uiNeedsRefresh = true;
           }
         } else {
-          // 'add' or default toggle
           if (idx === -1) {
             msg.reactions[event.emoji].push(uId);
             uiNeedsRefresh = true;
@@ -273,10 +403,25 @@
       }
     }
 
+    // F. CLASS CREATED
+    else if (event.type === 'CLASS_CREATED' && event.classData) {
+      var cExists = classes.some(function(c) {
+        return (c.id && c.id === event.classData.id) || (c.code && c.code === event.classData.code);
+      });
+      if (!cExists) {
+        classes.push(event.classData);
+        uiNeedsRefresh = true;
+      }
+    }
+
     if (uiNeedsRefresh) {
       window.EthithApp.saveState();
-      if (window._ethithCurrentView === 'classes' && window._ethithRefreshCurrentClass) {
+      // Always refresh class detail if chat element is visible in DOM
+      if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
         window._ethithRefreshCurrentClass();
+      }
+      if (window._ethithRefreshClassesList) {
+        window._ethithRefreshClassesList();
       }
     }
   }
@@ -453,7 +598,7 @@
     } finally {
       isPushing = false;
       if (hasPendingPush) {
-        setTimeout(pushRemoteStore, 120);
+        setTimeout(pushRemoteStore, 150);
       }
     }
   }
@@ -579,8 +724,11 @@
         var c2 = mergeExams(S.exams, remote.exams || []);
         if (c1 || c2) {
           window.EthithApp.saveState();
-          if (window._ethithCurrentView === 'classes' && window._ethithRefreshCurrentClass) {
+          if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
             window._ethithRefreshCurrentClass();
+          }
+          if (window._ethithRefreshClassesList) {
+            window._ethithRefreshClassesList();
           }
         }
       }
@@ -602,14 +750,16 @@
   }
 
   window.EthithSync = {
+    publishLive: publishLive,
+    handleIncomingLiveEvent: handleIncomingLiveEvent,
+    subscribeClass: subscribeClass,
     fetchRemoteStore: fetchRemoteStore,
     pushRemoteStore: pushRemoteStore,
-    broadcastLocal: broadcastLocal,
     syncInitialData: syncInitialData,
-    mergeClasses: mergeClasses,
-    mergeExams: mergeExams,
-    subscribeClass: subscribeClass,
-    publishLive: publishLive
+    broadcastLocal: broadcastLocal,
+    isMqttConnected: function() {
+      return isMeshConnected;
+    }
   };
 
 })(window);

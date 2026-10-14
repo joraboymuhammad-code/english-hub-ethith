@@ -122,6 +122,7 @@
 
 
 
+
 <style id="ethith-custom-styles">
 /* ETHITH TESTS - Extended Stylesheet
  * Created by Muhammadyusuf Jo'raboyev
@@ -522,14 +523,18 @@ svg.ic, .ic, button svg, .eth-btn-primary svg, .ap-btn svg, .tg-context-item svg
 .tg-msg-row {
   display: flex;
   width: 100%;
+  position: relative;
+  align-items: flex-end;
 }
 
 .tg-msg-row.out {
   justify-content: flex-end;
+  flex-direction: row-reverse;
 }
 
 .tg-msg-row.in {
   justify-content: flex-start;
+  flex-direction: row;
 }
 
 .tg-bubble {
@@ -555,6 +560,36 @@ svg.ic, .ic, button svg, .eth-btn-primary svg, .ap-btn svg, .tg-context-item svg
   background: var(--eth-tg-bubble-in);
   color: var(--eth-tg-text);
   border-bottom-left-radius: 4px;
+}
+
+.tg-hover-react-btn {
+  opacity: 0;
+  visibility: hidden;
+  background: var(--card, #ffffff);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  transition: all 0.15s ease;
+  margin: 0 6px 4px 6px;
+  user-select: none;
+  flex-shrink: 0;
+}
+.tg-msg-row:hover .tg-hover-react-btn,
+.tg-msg-row:focus-within .tg-hover-react-btn {
+  opacity: 0.85;
+  visibility: visible;
+}
+.tg-hover-react-btn:hover {
+  opacity: 1 !important;
+  transform: scale(1.18);
+  background: var(--bg2, #f1f5f9);
 }
 
 .tg-msg-sender {
@@ -632,68 +667,111 @@ svg.ic, .ic, button svg, .eth-btn-primary svg, .ap-btn svg, .tg-context-item svg
   font-weight: 600;
 }
 
-.tg-context-menu {
-  position: absolute;
+/* Telegram Quick Reaction Bar Capsule */
+.tg-quick-reaction-bar {
+  position: fixed;
+  z-index: 10000;
   background: var(--card, #ffffff);
-  border-radius: 14px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
   border: 1px solid var(--border);
-  padding: 6px;
-  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.08);
+  border-radius: 30px;
+  padding: 3px 8px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  animation: ethPop 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tg-quick-bar-em {
+  background: none;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  padding: 4px 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.12s;
+}
+.tg-quick-bar-em:hover {
+  transform: scale(1.35) translateY(-3px);
+  background: rgba(0,0,0,0.06);
+}
+.tg-quick-bar-em.active {
+  background: rgba(37,99,235,0.14);
+}
+.tg-quick-bar-more {
+  font-size: 14px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg2, #f1f5f9);
+  margin-left: 2px;
+}
+
+.tg-context-menu {
+  position: fixed;
+  background: var(--card, #ffffff);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  padding: 4px;
+  z-index: 10000;
   display: flex;
   flex-direction: column;
-  width: 230px;
-  max-width: 250px;
-  animation: ethPop 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 200px;
+  max-width: 220px;
+  animation: ethPop 0.14s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tg-context-reactions {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  padding: 6px 8px;
+  gap: 2px;
+  padding: 4px 6px;
   border-bottom: 1px solid var(--border);
-  max-height: 110px;
+  max-height: 75px;
   overflow-y: auto;
 }
 
 .tg-context-reaction-btn {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.2;
-  padding: 3px 5px;
+  padding: 2px 4px;
   cursor: pointer;
   border-radius: 6px;
-  transition: transform 0.12s, background 0.12s;
+  transition: transform 0.1s, background 0.1s;
 }
 
 .tg-context-reaction-btn:hover {
-  transform: scale(1.3);
+  transform: scale(1.25);
   background: var(--bg2, #f1f5f9);
 }
 
 .tg-context-item {
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
   border: none;
   background: transparent;
   text-align: left;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   transition: background 0.12s;
 }
 
 .tg-context-item svg {
-  width: 16px !important;
-  height: 16px !important;
-  min-width: 16px !important;
-  min-height: 16px !important;
+  width: 15px !important;
+  height: 15px !important;
+  min-width: 15px !important;
+  min-height: 15px !important;
 }
 
 .tg-context-item:hover {
@@ -4540,13 +4618,12 @@ window.ETHITH_PLACEMENT = [
  * ETHITH Cloud & Cross-Device Real-Time Synchronization Engine
  * Created by Muhammadyusuf Jo'raboyev
  * Features:
- * - Ultra-fast Real-Time WebSocket Mesh (sub-100ms message & reaction delivery)
- * - Dual SSL MQTT Brokers (EMQX & HiveMQ automatic failover)
- * - Instant Telegram Chat & Clickable Reaction Sync
- * - Instant Permanent Message Deletion & Pinning across all devices
- * - Conflict-free 3-way deep merge for GitHub persistence
- * - Zero lost messages via GitHub 409 conflict-retry serialization
- * - Cross-tab BroadcastChannel instant relay
+ * - Active-Active Dual MQTT WebSocket Mesh (EMQX & HiveMQ in parallel)
+ * - Sub-100ms Live Message, Reaction, Pin, Delete, and Student Join Sync
+ * - Dual Broker Wire Deduplication via Unique Event IDs
+ * - Cross-Tab BroadcastChannel + LocalStorage Event Relay (0ms same-device sync)
+ * - Safe Background GitHub Persistence (shared_store.json conflict-retry serialization)
+ * - Automatic Reconnect with Persistent Outbox Buffer
  */
 (function(window) {
   'use strict';
@@ -4562,10 +4639,24 @@ window.ETHITH_PLACEMENT = [
 
   var _lastKnownSha = null;
   var channel = null;
-  var myClientId = 'cli_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 6);
+  var myClientId = 'cli_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 7);
+
+  // Set of seen event IDs for zero-duplicate delivery across dual brokers & local relays
+  var seenEvents = {};
+  var seenQueue = [];
+  function markEventSeen(id) {
+    if (!id) return false;
+    if (seenEvents[id]) return true; // already seen
+    seenEvents[id] = true;
+    seenQueue.push(id);
+    if (seenQueue.length > 1000) {
+      delete seenEvents[seenQueue.shift()];
+    }
+    return false;
+  }
 
   // ====================================================
-  // 1. LOCAL BROADCAST CHANNEL (0ms Cross-Tab Sync)
+  // 1. LOCAL BROADCAST & STORAGE RELAYS (0ms Sync)
   // ====================================================
   try {
     if (typeof BroadcastChannel !== 'undefined') {
@@ -4580,13 +4671,39 @@ window.ETHITH_PLACEMENT = [
           var c2 = e.data.exams ? mergeExams(S.exams, e.data.exams) : false;
           if (c1 || c2) {
             window.EthithApp.saveState();
-            if (window._ethithCurrentView === 'classes' && window._ethithRefreshCurrentClass) {
-              window._ethithRefreshCurrentClass();
-            }
+            if (window._ethithRefreshCurrentClass) window._ethithRefreshCurrentClass();
+            if (window._ethithRefreshClassesList) window._ethithRefreshClassesList();
           }
         }
       };
     }
+  } catch(e) {}
+
+  // Cross-Window LocalStorage Event Relay
+  try {
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'ethith_live_event_relay' && e.newValue) {
+        try {
+          var item = JSON.parse(e.newValue);
+          if (item && item.event) {
+            handleIncomingLiveEvent(item.event);
+          }
+        } catch(err) {}
+      } else if (e.key === 'ethith_v2_state' && e.newValue) {
+        try {
+          var updated = JSON.parse(e.newValue);
+          if (updated && window.EthithApp && window.EthithApp.state) {
+            var S = window.EthithApp.state;
+            var c1 = mergeClasses(S.classes, updated.classes || []);
+            var c2 = mergeExams(S.exams, updated.exams || []);
+            if (c1 || c2) {
+              if (window._ethithRefreshCurrentClass) window._ethithRefreshCurrentClass();
+              if (window._ethithRefreshClassesList) window._ethithRefreshClassesList();
+            }
+          }
+        } catch(err) {}
+      }
+    });
   } catch(e) {}
 
   function broadcastLocal(classes, exams) {
@@ -4602,117 +4719,198 @@ window.ETHITH_PLACEMENT = [
   }
 
   // ====================================================
-  // 2. ULTRA-FAST MQTT WEBSOCKET MESH (Sub-100ms Real-Time)
+  // 2. ACTIVE-ACTIVE DUAL MQTT WEBSOCKET MESH (Sub-100ms)
   // ====================================================
-  var BROKERS = [
-    { host: 'broker.emqx.io', port: 8084, path: '/mqtt' },
-    { host: 'broker.hivemq.com', port: 8884, path: '/mqtt' }
+  var BROKER_CONFIGS = [
+    { name: 'EMQX', host: 'broker.emqx.io', port: 8084, path: '/mqtt' },
+    { name: 'HiveMQ', host: 'broker.hivemq.com', port: 8884, path: '/mqtt' }
   ];
-  var currentBrokerIdx = 0;
-  var mqttClient = null;
-  var isMqttConnected = false;
+
+  var clients = [];
+  var isMeshConnected = false;
+  var liveOutbox = [];
   var activeSubscribedClass = null;
 
-  function initRealtimeMesh() {
+  function initBrokerClient(cfg) {
     if (typeof window.Paho === 'undefined' || !window.Paho.MQTT) {
-      console.log('[LiveRT] Paho MQTT not yet loaded, retrying in 500ms...');
-      setTimeout(initRealtimeMesh, 500);
-      return;
+      setTimeout(initRealtimeMesh, 400);
+      return null;
     }
 
-    var broker = BROKERS[currentBrokerIdx];
-    var clientId = 'eth_' + myClientId;
-
+    var cid = 'eth_' + cfg.name.toLowerCase() + '_' + myClientId;
     try {
-      mqttClient = new window.Paho.MQTT.Client(broker.host, broker.port, broker.path, clientId);
+      var client = new window.Paho.MQTT.Client(cfg.host, cfg.port, cfg.path, cid);
 
-      mqttClient.onConnectionLost = function(resp) {
-        isMqttConnected = false;
-        console.log('[LiveRT] MQTT Connection lost:', resp ? resp.errorMessage : 'unknown');
-        // Switch broker on fail and reconnect
-        currentBrokerIdx = (currentBrokerIdx + 1) % BROKERS.length;
-        setTimeout(initRealtimeMesh, 2000);
+      client._cfg = cfg;
+      client._connected = false;
+
+      client.onConnectionLost = function(resp) {
+        client._connected = false;
+        checkMeshStatus();
+        console.log('[LiveRT] ' + cfg.name + ' connection lost:', resp ? resp.errorMessage : 'unknown');
+        // Auto-reconnect with jitter
+        setTimeout(function() {
+          connectBroker(client);
+        }, 2000 + Math.floor(Math.random() * 1500));
       };
 
-      mqttClient.onMessageArrived = function(message) {
+      client.onMessageArrived = function(message) {
         try {
           var event = JSON.parse(message.payloadString);
           handleIncomingLiveEvent(event);
         } catch(err) {
-          console.warn('[LiveRT] Parse error:', err);
+          console.warn('[LiveRT] Parse error from ' + cfg.name + ':', err);
         }
       };
 
-      mqttClient.connect({
+      connectBroker(client);
+      return client;
+    } catch(err) {
+      console.warn('[LiveRT] Init error for ' + cfg.name + ':', err);
+      return null;
+    }
+  }
+
+  function connectBroker(client) {
+    if (!client || client.isConnected()) return;
+    var cfg = client._cfg;
+
+    try {
+      client.connect({
         useSSL: true,
         timeout: 8,
         keepAliveInterval: 30,
         cleanSession: true,
         onSuccess: function() {
-          isMqttConnected = true;
-          console.log('[LiveRT] Connected to ' + broker.host + ' successfully!');
-          // Subscribe to wildcard for ALL classes and global events
-          mqttClient.subscribe('ethith/v3/class/#', { qos: 1 });
-          mqttClient.subscribe('ethith/v3/global', { qos: 1 });
+          client._connected = true;
+          checkMeshStatus();
+          console.log('[LiveRT] ' + cfg.name + ' connected successfully!');
+
+          // Subscribe to wildcards with QoS 0 for instant zero-latency delivery
+          try {
+            client.subscribe('ethith/v3/class/#', { qos: 0 });
+            client.subscribe('ethith/v3/global', { qos: 0 });
+            if (activeSubscribedClass) {
+              client.subscribe('ethith/v3/class/' + activeSubscribedClass, { qos: 0 });
+            }
+          } catch(se) {}
 
           // Flush queued outbox messages
-          while (liveOutbox.length > 0) {
-            var queuedEvent = liveOutbox.shift();
-            try {
-              var qTopic = queuedEvent.classId ? ('ethith/v3/class/' + queuedEvent.classId) : 'ethith/v3/global';
-              var qMsg = new window.Paho.MQTT.Message(JSON.stringify(queuedEvent));
-              qMsg.destinationName = qTopic;
-              qMsg.qos = 1;
-              mqttClient.send(qMsg);
-            } catch(e) {}
-          }
+          flushLiveOutbox();
         },
         onFailure: function(err) {
-          isMqttConnected = false;
-          console.warn('[LiveRT] Connection failed to ' + broker.host + ':', err);
-          currentBrokerIdx = (currentBrokerIdx + 1) % BROKERS.length;
-          setTimeout(initRealtimeMesh, 2500);
+          client._connected = false;
+          checkMeshStatus();
+          console.warn('[LiveRT] ' + cfg.name + ' connect failed:', err);
+          setTimeout(function() {
+            connectBroker(client);
+          }, 3000 + Math.floor(Math.random() * 2000));
         }
       });
-    } catch(err) {
-      console.warn('[LiveRT] Mesh init exception:', err);
-      setTimeout(initRealtimeMesh, 3000);
+    } catch(e) {
+      client._connected = false;
+      checkMeshStatus();
+      setTimeout(function() {
+        connectBroker(client);
+      }, 4000);
+    }
+  }
+
+  function checkMeshStatus() {
+    isMeshConnected = clients.some(function(c) { return c && c._connected; });
+  }
+
+  function initRealtimeMesh() {
+    if (typeof window.Paho === 'undefined' || !window.Paho.MQTT) {
+      setTimeout(initRealtimeMesh, 400);
+      return;
+    }
+
+    if (clients.length === 0) {
+      BROKER_CONFIGS.forEach(function(cfg) {
+        var cl = initBrokerClient(cfg);
+        if (cl) clients.push(cl);
+      });
     }
   }
 
   function subscribeClass(classCodeOrId) {
     activeSubscribedClass = classCodeOrId;
-    if (mqttClient && isMqttConnected && classCodeOrId) {
-      var topic = 'ethith/v3/class/' + classCodeOrId;
-      mqttClient.subscribe(topic, { qos: 1 });
-    }
+    if (!classCodeOrId) return;
+    var topic = 'ethith/v3/class/' + classCodeOrId;
+    clients.forEach(function(cl) {
+      if (cl && cl._connected) {
+        try { cl.subscribe(topic, { qos: 0 }); } catch(e) {}
+      }
+    });
   }
 
-  var liveOutbox = [];
+  function flushLiveOutbox() {
+    if (liveOutbox.length === 0) return;
+    var activeBrokers = clients.filter(function(c) { return c && c._connected; });
+    if (activeBrokers.length === 0) return;
 
-  // Publish event instantly to all devices via WebSocket and local tabs
+    var toSend = liveOutbox.slice();
+    liveOutbox = [];
+
+    toSend.forEach(function(ev) {
+      var topic = ev.classId ? ('ethith/v3/class/' + ev.classId) : 'ethith/v3/global';
+      var payload = JSON.stringify(ev);
+      activeBrokers.forEach(function(cl) {
+        try {
+          var qMsg = new window.Paho.MQTT.Message(payload);
+          qMsg.destinationName = topic;
+          qMsg.qos = 0;
+          cl.send(qMsg);
+        } catch(e) {}
+      });
+    });
+  }
+
+  // Publish event with dual-broker broadcast + local relays
   function publishLive(event) {
     if (!event) return;
+    if (!event.id) {
+      event.id = 'ev_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 6);
+    }
     event.from = myClientId;
     event.ts = Date.now();
 
-    // 1. Cross-tab instant relay
+    // Mark self as seen so incoming echoes are ignored
+    markEventSeen(event.id);
+
+    // 1. Cross-tab instant relay (0ms)
     if (channel) {
       try {
         channel.postMessage({ type: 'LIVE_EVENT', event: event });
       } catch(e) {}
     }
 
-    // 2. WebSocket instant publish (or buffer in outbox)
-    if (mqttClient && isMqttConnected) {
-      try {
-        var topic = event.classId ? ('ethith/v3/class/' + event.classId) : 'ethith/v3/global';
-        var msg = new window.Paho.MQTT.Message(JSON.stringify(event));
-        msg.destinationName = topic;
-        msg.qos = 1;
-        mqttClient.send(msg);
-      } catch(err) {
-        console.warn('[LiveRT] Publish error, queueing:', err);
+    // 2. Cross-window storage event relay (0ms)
+    try {
+      localStorage.setItem('ethith_live_event_relay', JSON.stringify({ event: event, t: Date.now() }));
+    } catch(e) {}
+
+    // 3. Active-Active Dual MQTT WebSocket Publish
+    var activeBrokers = clients.filter(function(c) { return c && c._connected; });
+    if (activeBrokers.length > 0) {
+      var topic = event.classId ? ('ethith/v3/class/' + event.classId) : 'ethith/v3/global';
+      var payload = JSON.stringify(event);
+      var sentAny = false;
+
+      activeBrokers.forEach(function(cl) {
+        try {
+          var msg = new window.Paho.MQTT.Message(payload);
+          msg.destinationName = topic;
+          msg.qos = 0;
+          cl.send(msg);
+          sentAny = true;
+        } catch(err) {
+          console.warn('[LiveRT] Send failed on ' + cl._cfg.name + ':', err);
+        }
+      });
+
+      if (!sentAny) {
         liveOutbox.push(event);
       }
     } else {
@@ -4723,35 +4921,46 @@ window.ETHITH_PLACEMENT = [
   // Dispatch incoming live events directly to local state and UI
   function handleIncomingLiveEvent(event) {
     if (!event || event.from === myClientId) return; // Don't echo self
+    if (event.id && markEventSeen(event.id)) return; // Deduplicate across dual brokers
+
     if (!window.EthithApp || !window.EthithApp.state) return;
 
     var S = window.EthithApp.state;
     var classes = S.classes || [];
+
+    // Case-insensitive class matching
     var targetCls = classes.find(function(c) {
-      return (event.classId && (c.id === event.classId || c.code === event.classId));
+      if (!event.classId) return true;
+      var cid = (event.classId + '').toLowerCase();
+      return (c.id && c.id.toLowerCase() === cid) || (c.code && c.code.toLowerCase() === cid);
     });
+
+    if (!targetCls && classes.length > 0) {
+      targetCls = classes[0];
+    }
 
     var uiNeedsRefresh = false;
 
-    // A. NEW CHAT MESSAGE
+    // A. CHAT MESSAGE
     if (event.type === 'CHAT_MSG' && event.message && targetCls) {
       if (!targetCls.messages) targetCls.messages = [];
       if (!targetCls.deletedMsgIds) targetCls.deletedMsgIds = [];
 
-      // Check if not deleted and not already added
       if (targetCls.deletedMsgIds.indexOf(event.message.id) === -1) {
         var exists = targetCls.messages.some(function(m) { return m.id === event.message.id; });
         if (!exists) {
           targetCls.messages.push(event.message);
           targetCls.messages.sort(function(a, b) {
-            return (a.timestamp || 0) - (b.timestamp || 0);
+            var ta = a.timestamp || parseInt((a.id || '').replace(/\D/g, ''), 10) || 0;
+            var tb = b.timestamp || parseInt((b.id || '').replace(/\D/g, ''), 10) || 0;
+            return ta - tb;
           });
           uiNeedsRefresh = true;
         }
       }
     }
 
-    // B. REACTION TOGGLE
+    // B. REACTION
     else if (event.type === 'REACTION' && targetCls && event.msgId && event.emoji) {
       var msg = (targetCls.messages || []).find(function(m) { return m.id === event.msgId; });
       if (msg) {
@@ -4768,7 +4977,6 @@ window.ETHITH_PLACEMENT = [
             uiNeedsRefresh = true;
           }
         } else {
-          // 'add' or default toggle
           if (idx === -1) {
             msg.reactions[event.emoji].push(uId);
             uiNeedsRefresh = true;
@@ -4811,10 +5019,25 @@ window.ETHITH_PLACEMENT = [
       }
     }
 
+    // F. CLASS CREATED
+    else if (event.type === 'CLASS_CREATED' && event.classData) {
+      var cExists = classes.some(function(c) {
+        return (c.id && c.id === event.classData.id) || (c.code && c.code === event.classData.code);
+      });
+      if (!cExists) {
+        classes.push(event.classData);
+        uiNeedsRefresh = true;
+      }
+    }
+
     if (uiNeedsRefresh) {
       window.EthithApp.saveState();
-      if (window._ethithCurrentView === 'classes' && window._ethithRefreshCurrentClass) {
+      // Always refresh class detail if chat element is visible in DOM
+      if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
         window._ethithRefreshCurrentClass();
+      }
+      if (window._ethithRefreshClassesList) {
+        window._ethithRefreshClassesList();
       }
     }
   }
@@ -4991,7 +5214,7 @@ window.ETHITH_PLACEMENT = [
     } finally {
       isPushing = false;
       if (hasPendingPush) {
-        setTimeout(pushRemoteStore, 120);
+        setTimeout(pushRemoteStore, 150);
       }
     }
   }
@@ -5117,8 +5340,11 @@ window.ETHITH_PLACEMENT = [
         var c2 = mergeExams(S.exams, remote.exams || []);
         if (c1 || c2) {
           window.EthithApp.saveState();
-          if (window._ethithCurrentView === 'classes' && window._ethithRefreshCurrentClass) {
+          if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
             window._ethithRefreshCurrentClass();
+          }
+          if (window._ethithRefreshClassesList) {
+            window._ethithRefreshClassesList();
           }
         }
       }
@@ -5140,14 +5366,16 @@ window.ETHITH_PLACEMENT = [
   }
 
   window.EthithSync = {
+    publishLive: publishLive,
+    handleIncomingLiveEvent: handleIncomingLiveEvent,
+    subscribeClass: subscribeClass,
     fetchRemoteStore: fetchRemoteStore,
     pushRemoteStore: pushRemoteStore,
-    broadcastLocal: broadcastLocal,
     syncInitialData: syncInitialData,
-    mergeClasses: mergeClasses,
-    mergeExams: mergeExams,
-    subscribeClass: subscribeClass,
-    publishLive: publishLive
+    broadcastLocal: broadcastLocal,
+    isMqttConnected: function() {
+      return isMeshConnected;
+    }
   };
 
 })(window);
@@ -6321,6 +6549,13 @@ window.ETHITH_PLACEMENT = [
       return c.students && c.students.some(function(s) { return s.id === S.user.id || s.email === S.user.email; });
     });
 
+    window._ethithRefreshClassesList = function() {
+      if (!S.activeClassId && window._ethithCurrentView === 'classes') {
+        var c = (container && container.parentElement) ? container : document.getElementById('viewContainer');
+        if (c) renderClassesView(c);
+      }
+    };
+
     if (S.activeClassId) {
       var activeCls = S.classes.find(function(c) { return c.id === S.activeClassId; });
       if (activeCls) {
@@ -6437,6 +6672,10 @@ window.ETHITH_PLACEMENT = [
       S.activeClassId = newCls.id;
       App.saveState();
       if (window.EthithSync) {
+        window.EthithSync.publishLive({
+          type: 'CLASS_CREATED',
+          classData: newCls
+        });
         window.EthithSync.broadcastLocal(S.classes, S.exams);
         window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
@@ -6602,6 +6841,7 @@ window.ETHITH_PLACEMENT = [
             }).join('') +
             '</div>' : '') +
           '  </div>' +
+          '  <button class="tg-hover-react-btn" data-msg-id="' + m.id + '" title="Add reaction">😄</button>' +
           '</div>';
       }).join('') +
       '  </div>' +
@@ -6653,6 +6893,16 @@ window.ETHITH_PLACEMENT = [
         if (targetMsg && emoji) {
           applyReaction(emoji, targetMsg, cls, container);
         }
+      };
+    });
+
+    // Hover Reaction Button click -> Show quick Telegram emoji capsule
+    container.querySelectorAll('.tg-hover-react-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        var msgId = btn.dataset.msgId;
+        var rect = btn.getBoundingClientRect();
+        showQuickReactionPopup(rect.left, rect.top - 46, msgId, cls, container);
       };
     });
 
@@ -6734,8 +6984,10 @@ window.ETHITH_PLACEMENT = [
     }
 
     window._ethithRefreshCurrentClass = function() {
-      var latestCls = S.classes.find(function(c) { return c.id === cls.id; });
-      if (latestCls && document.getElementById('tgMsgBox')) {
+      var targetContainer = (container && container.parentElement) ? container : document.getElementById('viewContainer');
+      var currentId = S.activeClassId || (cls && cls.id);
+      var latestCls = S.classes.find(function(c) { return c.id === currentId; });
+      if (latestCls && targetContainer && document.getElementById('tgMsgBox')) {
         var inputEl = document.getElementById('tgInputText');
         var draftText = inputEl ? inputEl.value : '';
         var wasFocused = (document.activeElement === inputEl);
@@ -6745,7 +6997,7 @@ window.ETHITH_PLACEMENT = [
         var msgBox = document.getElementById('tgMsgBox');
         var wasAtBottom = (msgBox.scrollHeight - msgBox.scrollTop <= msgBox.clientHeight + 60);
 
-        renderClassDetail(container, latestCls);
+        renderClassDetail(targetContainer, latestCls);
 
         var newInput = document.getElementById('tgInputText');
         if (newInput) {
@@ -6775,10 +7027,66 @@ window.ETHITH_PLACEMENT = [
     '👍', '❤️', '🔥', '👏', '🎉', '🤩', '😂', '😢', '😡', '🙏',
     '💯', '🚀', '🤔', '👀', '🥳', '⚡', '👎', '❤️‍🔥', '🤝', '🏆',
     '💡', '😍', '✨', '💪', '🎯', '👌', '😎', '😇', '🤫', '🫡',
-    '🤯', '😭', '🤮', '😴', '👋', '🎓', '📚', '☕', '🌟', '🥇'
+    '🤯', '😭', '🤮', '😴', '👋', '🎓', '📚', '☕', '🌟', '🥇',
+    '🥰', '😘', '😜', '🤓', '🥺', '😤', '😱', '🤗', '🤭', '🤤',
+    '💀', '🤡', '👻', '👽', '🤖', '👾', '🙈', '🙉', '🙊', '✌️',
+    '💎', '🔑', '⭐', '🎈', '🎁', '🎂', '🍕', '🍻', '🍀', '🌈',
+    '☀️', '🌙'
   ];
 
-  // Telegram Context Menu: Reactions, Reply, Pin, Delete
+  // Telegram Quick Reaction Bar Capsule (Floating bubble on hover)
+  function showQuickReactionPopup(x, y, msgId, cls, mainContainer) {
+    if (activeContextMenu) {
+      activeContextMenu.remove();
+      activeContextMenu = null;
+    }
+
+    var msg = cls.messages.find(function(m) { return m.id === msgId; });
+    if (!msg) return;
+
+    var bar = document.createElement('div');
+    bar.className = 'tg-quick-reaction-bar';
+
+    // Position capsule
+    var posX = Math.max(10, Math.min(x - 90, window.innerWidth - 280));
+    var posY = Math.max(10, Math.min(y, window.innerHeight - 60));
+    bar.style.left = posX + 'px';
+    bar.style.top = posY + 'px';
+
+    var quickEmojis = (S.quickReactions && S.quickReactions.length >= 6) ? S.quickReactions : EMOJIS_MASTER_LIST;
+    var top6 = quickEmojis.slice(0, 6);
+
+    var currentUserId = (S.user && (S.user.email || S.user.id)) || 'guest';
+
+    var html = top6.map(function(em) {
+      var isActive = msg.reactions && msg.reactions[em] && msg.reactions[em].indexOf(currentUserId) > -1;
+      return '<button class="tg-quick-bar-em ' + (isActive ? 'active' : '') + '" data-quick-em="' + em + '">' + em + '</button>';
+    }).join('') +
+    '<button class="tg-quick-bar-em tg-quick-bar-more" id="tgQuickMoreBtn" title="More emojis">➕</button>';
+
+    bar.innerHTML = html;
+    document.body.appendChild(bar);
+    activeContextMenu = bar;
+
+    bar.querySelectorAll('[data-quick-em]').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        applyReaction(btn.dataset.quickEm, msg, cls, mainContainer);
+        bar.remove();
+        activeContextMenu = null;
+      };
+    });
+
+    var moreBtn = bar.querySelector('#tgQuickMoreBtn');
+    if (moreBtn) {
+      moreBtn.onclick = function(e) {
+        e.stopPropagation();
+        showAllEmojisPicker(posX, posY - 180, msg, cls, mainContainer);
+      };
+    }
+  }
+
+  // Telegram Context Menu: Compact Reactions Row, Reply, Pin, Delete
   function showContextMenu(x, y, msgId, cls, mainContainer) {
     if (activeContextMenu) activeContextMenu.remove();
 
@@ -6789,16 +7097,16 @@ window.ETHITH_PLACEMENT = [
     menu.className = 'tg-context-menu';
 
     // Position menu within viewport
-    var posX = Math.max(10, Math.min(x, window.innerWidth - 245));
-    var posY = Math.max(10, Math.min(y, window.innerHeight - 280));
+    var posX = Math.max(10, Math.min(x, window.innerWidth - 225));
+    var posY = Math.max(10, Math.min(y, window.innerHeight - 240));
     menu.style.left = posX + 'px';
     menu.style.top = posY + 'px';
 
-    var quickEmojis = S.quickReactions && S.quickReactions.length >= 10 ? S.quickReactions : EMOJIS_MASTER_LIST;
+    var quickEmojis = (S.quickReactions && S.quickReactions.length >= 7) ? S.quickReactions : EMOJIS_MASTER_LIST;
 
     var html = '' +
       '<div class="tg-context-reactions">' +
-      quickEmojis.slice(0, 18).map(function(em) {
+      quickEmojis.slice(0, 7).map(function(em) {
         return '<button class="tg-context-reaction-btn" data-em="' + em + '">' + em + '</button>';
       }).join('') +
       '  <button class="tg-context-reaction-btn" id="tgMoreEmojisBtn" title="All Emojis">➕</button>' +
@@ -6813,14 +7121,16 @@ window.ETHITH_PLACEMENT = [
 
     // Apply Reaction
     menu.querySelectorAll('[data-em]').forEach(function(btn) {
-      btn.onclick = function() {
+      btn.onclick = function(e) {
+        e.stopPropagation();
         applyReaction(btn.dataset.em, msg, cls, mainContainer);
         menu.remove();
         activeContextMenu = null;
       };
     });
 
-    menu.querySelector('#tgMoreEmojisBtn').onclick = function() {
+    menu.querySelector('#tgMoreEmojisBtn').onclick = function(e) {
+      e.stopPropagation();
       showAllEmojisPicker(posX, posY, msg, cls, mainContainer);
     };
 
@@ -6917,22 +7227,25 @@ window.ETHITH_PLACEMENT = [
     renderClassDetail(mainContainer, cls);
   }
 
-  // Full Emoji Picker Modal
+  // Full Emoji Picker Modal (72 emojis in an 8-column grid)
   function showAllEmojisPicker(x, y, msg, cls, mainContainer) {
     if (activeContextMenu) activeContextMenu.remove();
 
     var picker = document.createElement('div');
     picker.className = 'tg-context-menu';
-    picker.style.left = Math.max(10, Math.min(x, window.innerWidth - 270)) + 'px';
-    picker.style.top = Math.max(10, Math.min(y, window.innerHeight - 320)) + 'px';
-    picker.style.width = '260px';
-    picker.style.maxWidth = '280px';
+    picker.style.left = Math.max(10, Math.min(x, window.innerWidth - 305)) + 'px';
+    picker.style.top = Math.max(10, Math.min(y, window.innerHeight - 300)) + 'px';
+    picker.style.width = '295px';
+    picker.style.maxWidth = '315px';
 
     picker.innerHTML = '' +
-      '<div style="font-size:12px;font-weight:700;color:var(--muted);padding:4px 6px">All Emojis:</div>' +
-      '<div style="display:grid;grid-template-columns:repeat(6, 1fr);gap:4px;padding:6px;max-height:220px;overflow-y:auto">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 8px 6px;border-bottom:1px solid var(--border)">' +
+      '  <span style="font-size:12px;font-weight:700;color:var(--muted)">All Reactions (72)</span>' +
+      '  <span style="font-size:11px;color:var(--muted)">Tap emoji to react</span>' +
+      '</div>' +
+      '<div style="display:grid;grid-template-columns:repeat(8, 1fr);gap:2px;padding:8px 4px;max-height:220px;overflow-y:auto">' +
       EMOJIS_MASTER_LIST.map(function(em) {
-        return '<button class="tg-context-reaction-btn" data-full-em="' + em + '">' + em + '</button>';
+        return '<button class="tg-context-reaction-btn" data-full-em="' + em + '" style="font-size:18px;padding:4px 0">' + em + '</button>';
       }).join('') +
       '</div>';
 
@@ -6940,7 +7253,8 @@ window.ETHITH_PLACEMENT = [
     activeContextMenu = picker;
 
     picker.querySelectorAll('[data-full-em]').forEach(function(btn) {
-      btn.onclick = function() {
+      btn.onclick = function(e) {
+        e.stopPropagation();
         applyReaction(btn.dataset.fullEm, msg, cls, mainContainer);
         picker.remove();
         activeContextMenu = null;
@@ -6957,7 +7271,7 @@ window.ETHITH_PLACEMENT = [
     overlay.innerHTML = '' +
       '<div class="eth-modal" style="max-width:600px">' +
       '  <div class="eth-modal-header">' +
-      '    <h2>' + esc(cls.name) + ' · O\'quvchilar Monitoringi</h2>' +
+      '    <h2>' + esc(cls.name) + ' · Student Performance Monitoring</h2>' +
       '    <p>Real-time analytics: daily study time and mistake frequency per student</p>' +
       '  </div>' +
       '  <div class="eth-modal-body" style="max-height:60vh;overflow-y:auto">' +
@@ -8825,7 +9139,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += '<button class="ap-item" data-coming-soon="' + sk[2] + '" style="opacity:0.75">' + ic(sk[1]) + sk[2] + ' <span class="eth-coming-soon-badge" style="margin-left:auto;font-size:9px">Soon</span></button>';
     });
 
-    h += '</nav><div class="ap-plan"><small>Account Status</small><h4>' + (isTeacher ? 'O\'qituvchi (Master)' : 'O\'quvchi (Student)') + '</h4><button id="apLogoutBtn" style="background:#fee2e2;color:#dc2626;border:none;padding:6px 12px;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;width:100%;margin-top:8px">Log Out</button></div>';
+    h += '</nav><div class="ap-plan"><small>Account Status</small><h4>' + (isTeacher ? 'Teacher (Master)' : 'Student (' + S.level + ')') + '</h4><button id="apLogoutBtn" style="background:#fee2e2;color:#dc2626;border:none;padding:6px 12px;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;width:100%;margin-top:8px">Log Out</button></div>';
 
     $('apSide').innerHTML = h;
   }
@@ -8853,7 +9167,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '<button class="ap-ib" id="apTheme">' + ic(S.theme === 'dark' ? 'sun' : 'moon') + '</button>' +
       '<div class="ap-user">' +
       '  <span class="av">' + (user.name ? user.name.charAt(0).toUpperCase() : 'U') + '</span>' +
-      '  <span><b>' + esc(user.name) + '</b><small>' + (user.role === 'teacher' ? 'O\'qituvchi' : 'O\'quvchi (' + S.level + ')') + '</small></span>' +
+      '  <span><b>' + esc(user.name) + '</b><small>' + (user.role === 'teacher' ? 'Teacher' : 'Student (' + S.level + ')') + '</small></span>' +
       '</div>';
   }
 

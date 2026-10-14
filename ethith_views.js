@@ -577,6 +577,13 @@
       return c.students && c.students.some(function(s) { return s.id === S.user.id || s.email === S.user.email; });
     });
 
+    window._ethithRefreshClassesList = function() {
+      if (!S.activeClassId && window._ethithCurrentView === 'classes') {
+        var c = (container && container.parentElement) ? container : document.getElementById('viewContainer');
+        if (c) renderClassesView(c);
+      }
+    };
+
     if (S.activeClassId) {
       var activeCls = S.classes.find(function(c) { return c.id === S.activeClassId; });
       if (activeCls) {
@@ -693,6 +700,10 @@
       S.activeClassId = newCls.id;
       App.saveState();
       if (window.EthithSync) {
+        window.EthithSync.publishLive({
+          type: 'CLASS_CREATED',
+          classData: newCls
+        });
         window.EthithSync.broadcastLocal(S.classes, S.exams);
         window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
@@ -858,6 +869,7 @@
             }).join('') +
             '</div>' : '') +
           '  </div>' +
+          '  <button class="tg-hover-react-btn" data-msg-id="' + m.id + '" title="Add reaction">😄</button>' +
           '</div>';
       }).join('') +
       '  </div>' +
@@ -909,6 +921,16 @@
         if (targetMsg && emoji) {
           applyReaction(emoji, targetMsg, cls, container);
         }
+      };
+    });
+
+    // Hover Reaction Button click -> Show quick Telegram emoji capsule
+    container.querySelectorAll('.tg-hover-react-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        var msgId = btn.dataset.msgId;
+        var rect = btn.getBoundingClientRect();
+        showQuickReactionPopup(rect.left, rect.top - 46, msgId, cls, container);
       };
     });
 
@@ -990,8 +1012,10 @@
     }
 
     window._ethithRefreshCurrentClass = function() {
-      var latestCls = S.classes.find(function(c) { return c.id === cls.id; });
-      if (latestCls && document.getElementById('tgMsgBox')) {
+      var targetContainer = (container && container.parentElement) ? container : document.getElementById('viewContainer');
+      var currentId = S.activeClassId || (cls && cls.id);
+      var latestCls = S.classes.find(function(c) { return c.id === currentId; });
+      if (latestCls && targetContainer && document.getElementById('tgMsgBox')) {
         var inputEl = document.getElementById('tgInputText');
         var draftText = inputEl ? inputEl.value : '';
         var wasFocused = (document.activeElement === inputEl);
@@ -1001,7 +1025,7 @@
         var msgBox = document.getElementById('tgMsgBox');
         var wasAtBottom = (msgBox.scrollHeight - msgBox.scrollTop <= msgBox.clientHeight + 60);
 
-        renderClassDetail(container, latestCls);
+        renderClassDetail(targetContainer, latestCls);
 
         var newInput = document.getElementById('tgInputText');
         if (newInput) {
@@ -1031,10 +1055,66 @@
     '👍', '❤️', '🔥', '👏', '🎉', '🤩', '😂', '😢', '😡', '🙏',
     '💯', '🚀', '🤔', '👀', '🥳', '⚡', '👎', '❤️‍🔥', '🤝', '🏆',
     '💡', '😍', '✨', '💪', '🎯', '👌', '😎', '😇', '🤫', '🫡',
-    '🤯', '😭', '🤮', '😴', '👋', '🎓', '📚', '☕', '🌟', '🥇'
+    '🤯', '😭', '🤮', '😴', '👋', '🎓', '📚', '☕', '🌟', '🥇',
+    '🥰', '😘', '😜', '🤓', '🥺', '😤', '😱', '🤗', '🤭', '🤤',
+    '💀', '🤡', '👻', '👽', '🤖', '👾', '🙈', '🙉', '🙊', '✌️',
+    '💎', '🔑', '⭐', '🎈', '🎁', '🎂', '🍕', '🍻', '🍀', '🌈',
+    '☀️', '🌙'
   ];
 
-  // Telegram Context Menu: Reactions, Reply, Pin, Delete
+  // Telegram Quick Reaction Bar Capsule (Floating bubble on hover)
+  function showQuickReactionPopup(x, y, msgId, cls, mainContainer) {
+    if (activeContextMenu) {
+      activeContextMenu.remove();
+      activeContextMenu = null;
+    }
+
+    var msg = cls.messages.find(function(m) { return m.id === msgId; });
+    if (!msg) return;
+
+    var bar = document.createElement('div');
+    bar.className = 'tg-quick-reaction-bar';
+
+    // Position capsule
+    var posX = Math.max(10, Math.min(x - 90, window.innerWidth - 280));
+    var posY = Math.max(10, Math.min(y, window.innerHeight - 60));
+    bar.style.left = posX + 'px';
+    bar.style.top = posY + 'px';
+
+    var quickEmojis = (S.quickReactions && S.quickReactions.length >= 6) ? S.quickReactions : EMOJIS_MASTER_LIST;
+    var top6 = quickEmojis.slice(0, 6);
+
+    var currentUserId = (S.user && (S.user.email || S.user.id)) || 'guest';
+
+    var html = top6.map(function(em) {
+      var isActive = msg.reactions && msg.reactions[em] && msg.reactions[em].indexOf(currentUserId) > -1;
+      return '<button class="tg-quick-bar-em ' + (isActive ? 'active' : '') + '" data-quick-em="' + em + '">' + em + '</button>';
+    }).join('') +
+    '<button class="tg-quick-bar-em tg-quick-bar-more" id="tgQuickMoreBtn" title="More emojis">➕</button>';
+
+    bar.innerHTML = html;
+    document.body.appendChild(bar);
+    activeContextMenu = bar;
+
+    bar.querySelectorAll('[data-quick-em]').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        applyReaction(btn.dataset.quickEm, msg, cls, mainContainer);
+        bar.remove();
+        activeContextMenu = null;
+      };
+    });
+
+    var moreBtn = bar.querySelector('#tgQuickMoreBtn');
+    if (moreBtn) {
+      moreBtn.onclick = function(e) {
+        e.stopPropagation();
+        showAllEmojisPicker(posX, posY - 180, msg, cls, mainContainer);
+      };
+    }
+  }
+
+  // Telegram Context Menu: Compact Reactions Row, Reply, Pin, Delete
   function showContextMenu(x, y, msgId, cls, mainContainer) {
     if (activeContextMenu) activeContextMenu.remove();
 
@@ -1045,16 +1125,16 @@
     menu.className = 'tg-context-menu';
 
     // Position menu within viewport
-    var posX = Math.max(10, Math.min(x, window.innerWidth - 245));
-    var posY = Math.max(10, Math.min(y, window.innerHeight - 280));
+    var posX = Math.max(10, Math.min(x, window.innerWidth - 225));
+    var posY = Math.max(10, Math.min(y, window.innerHeight - 240));
     menu.style.left = posX + 'px';
     menu.style.top = posY + 'px';
 
-    var quickEmojis = S.quickReactions && S.quickReactions.length >= 10 ? S.quickReactions : EMOJIS_MASTER_LIST;
+    var quickEmojis = (S.quickReactions && S.quickReactions.length >= 7) ? S.quickReactions : EMOJIS_MASTER_LIST;
 
     var html = '' +
       '<div class="tg-context-reactions">' +
-      quickEmojis.slice(0, 18).map(function(em) {
+      quickEmojis.slice(0, 7).map(function(em) {
         return '<button class="tg-context-reaction-btn" data-em="' + em + '">' + em + '</button>';
       }).join('') +
       '  <button class="tg-context-reaction-btn" id="tgMoreEmojisBtn" title="All Emojis">➕</button>' +
@@ -1069,14 +1149,16 @@
 
     // Apply Reaction
     menu.querySelectorAll('[data-em]').forEach(function(btn) {
-      btn.onclick = function() {
+      btn.onclick = function(e) {
+        e.stopPropagation();
         applyReaction(btn.dataset.em, msg, cls, mainContainer);
         menu.remove();
         activeContextMenu = null;
       };
     });
 
-    menu.querySelector('#tgMoreEmojisBtn').onclick = function() {
+    menu.querySelector('#tgMoreEmojisBtn').onclick = function(e) {
+      e.stopPropagation();
       showAllEmojisPicker(posX, posY, msg, cls, mainContainer);
     };
 
@@ -1173,22 +1255,25 @@
     renderClassDetail(mainContainer, cls);
   }
 
-  // Full Emoji Picker Modal
+  // Full Emoji Picker Modal (72 emojis in an 8-column grid)
   function showAllEmojisPicker(x, y, msg, cls, mainContainer) {
     if (activeContextMenu) activeContextMenu.remove();
 
     var picker = document.createElement('div');
     picker.className = 'tg-context-menu';
-    picker.style.left = Math.max(10, Math.min(x, window.innerWidth - 270)) + 'px';
-    picker.style.top = Math.max(10, Math.min(y, window.innerHeight - 320)) + 'px';
-    picker.style.width = '260px';
-    picker.style.maxWidth = '280px';
+    picker.style.left = Math.max(10, Math.min(x, window.innerWidth - 305)) + 'px';
+    picker.style.top = Math.max(10, Math.min(y, window.innerHeight - 300)) + 'px';
+    picker.style.width = '295px';
+    picker.style.maxWidth = '315px';
 
     picker.innerHTML = '' +
-      '<div style="font-size:12px;font-weight:700;color:var(--muted);padding:4px 6px">All Emojis:</div>' +
-      '<div style="display:grid;grid-template-columns:repeat(6, 1fr);gap:4px;padding:6px;max-height:220px;overflow-y:auto">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 8px 6px;border-bottom:1px solid var(--border)">' +
+      '  <span style="font-size:12px;font-weight:700;color:var(--muted)">All Reactions (72)</span>' +
+      '  <span style="font-size:11px;color:var(--muted)">Tap emoji to react</span>' +
+      '</div>' +
+      '<div style="display:grid;grid-template-columns:repeat(8, 1fr);gap:2px;padding:8px 4px;max-height:220px;overflow-y:auto">' +
       EMOJIS_MASTER_LIST.map(function(em) {
-        return '<button class="tg-context-reaction-btn" data-full-em="' + em + '">' + em + '</button>';
+        return '<button class="tg-context-reaction-btn" data-full-em="' + em + '" style="font-size:18px;padding:4px 0">' + em + '</button>';
       }).join('') +
       '</div>';
 
@@ -1196,7 +1281,8 @@
     activeContextMenu = picker;
 
     picker.querySelectorAll('[data-full-em]').forEach(function(btn) {
-      btn.onclick = function() {
+      btn.onclick = function(e) {
+        e.stopPropagation();
         applyReaction(btn.dataset.fullEm, msg, cls, mainContainer);
         picker.remove();
         activeContextMenu = null;
@@ -1213,7 +1299,7 @@
     overlay.innerHTML = '' +
       '<div class="eth-modal" style="max-width:600px">' +
       '  <div class="eth-modal-header">' +
-      '    <h2>' + esc(cls.name) + ' · O\'quvchilar Monitoringi</h2>' +
+      '    <h2>' + esc(cls.name) + ' · Student Performance Monitoring</h2>' +
       '    <p>Real-time analytics: daily study time and mistake frequency per student</p>' +
       '  </div>' +
       '  <div class="eth-modal-body" style="max-height:60vh;overflow-y:auto">' +
