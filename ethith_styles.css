@@ -27,12 +27,13 @@
 .eth-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(10, 25, 47, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99999;
+  z-index: 9999999 !important;
   padding: 16px;
   animation: ethFadeIn 0.25s ease-out;
 }
