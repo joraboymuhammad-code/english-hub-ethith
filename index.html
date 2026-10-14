@@ -110,7 +110,13 @@
 .navbar-menu{margin-left:auto}
 @media(max-width:991px){.hq{margin:10px auto 0}.ew-chip{width:44px;height:44px;font-size:15px;border-radius:14px}.ew-chips .ew-chip:nth-child(n+5){display:none}}
 </style>
+
+
 <link rel="stylesheet" href="ethith_styles.css">
+<script src="data_assets.js"></script>
+<script src="ethith_ai.js"></script>
+<script src="ethith_app.js"></script>
+<script src="ethith_views.js"></script>
 </head>
 <body><div id="landing">
  <nav class="navbar scrolled" id=mainNavbar>
@@ -125,11 +131,11 @@
  <ul class=navbar-menu><li class=navbar-item><a class="navbar-link active" href="#">Home</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('ask_ai')">Ask AI Teacher</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('placement')">Placement Test</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('levels')">Levels (A1-C2)</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('classes')">Sinflar & Chat</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('exams')">Imtihonlar</a></li></ul>
  
  <div class=navbar-actions>
- <a href="#" class="navbar-login" onclick="window.EthithApp.showAuthModal();return false;">
+ <a href="#" class="navbar-login" onclick="window.ethithOpenApp('dash');return false;" onclick="window.ethithOpenApp('dash');return false;">
  <i class="pi pi-user"></i>
  Login
  </a>
- <a href="#" class="start-btn text-decoration-none" onclick="window.ethithOpenApp('dash');return false;">
+ <a href="#" class="start-btn text-decoration-none" onclick="window.ethithOpenApp('dash');return false;" onclick="window.ethithOpenApp('dash');return false;">
  <span class=start-btn-pulse aria-hidden=true></span>
  <i class="pi pi-arrow-up-right"></i>
  Start for Free
@@ -195,7 +201,7 @@
  <span class=sub-text>students practicing today</span>
  </div>
  </div>
- <a href="#" class="btn btn-outline-light btn-lg mt-5 fade-in-down" style=--fade-offset:10px;--fade-duration:600ms;--fade-delay:450ms>
+ <a href="#" class="btn btn-outline-light btn-lg mt-5 fade-in-down" onclick="window.ethithOpenApp('dash');return false;" style=--fade-offset:10px;--fade-duration:600ms;--fade-delay:450ms>
  Start Practicing for free
  <i class=ri-arrow-right-line></i>
  </a>
@@ -879,7 +885,27 @@ document.querySelectorAll('[data-faq-cat]').forEach(function(c){c.addEventListen
 document.querySelectorAll('.dropdown-trigger').forEach(function(t){t.addEventListener('click',function(e){e.stopPropagation();var p=t.parentElement,o=p.classList.contains('open');document.querySelectorAll('.dropdown-custom').forEach(function(x){x.classList.remove('open')});if(!o)p.classList.add('open')})});
 document.addEventListener('click',function(){document.querySelectorAll('.dropdown-custom').forEach(function(x){x.classList.remove('open')})});
 })();
-</script><script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a){e.preventDefault();if(a.closest("#landing")&&a.matches(".navbar-login,.start-btn,.btn-outline-light,.avatar-plus,.cta-btn,.btn-solid,.cta-button,.tab-btn,.bento-cta,.ai-feedback-badge")&&window.ethithOpenApp){window.ethithOpenApp()}}},true);document.addEventListener("submit",function(e){e.preventDefault()},true);</script><style id="ethith-app-css">
+</script><script>document.addEventListener("click", function(e) {
+  var el = e.target.closest && e.target.closest("a, button, .ew-chip");
+  if (!el) return;
+
+  if (el.closest("#landing")) {
+    if (el.matches(".navbar-login, .start-btn, .btn-outline-light, .avatar-plus, .cta-btn, .btn-solid, .cta-button, .tab-btn, .bento-cta, .ai-feedback-badge, .ew-chip, .navbar-link")) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      var isLogged = window.EthithApp && window.EthithApp.state && window.EthithApp.state.user;
+      if (!isLogged) {
+        window.EthithApp.showAuthModal();
+        return;
+      }
+
+      var targetGo = el.dataset.go || 'dash';
+      var targetArg = el.dataset.arg || el.dataset.lv || null;
+      window.ethithOpenApp(targetGo, targetArg);
+    }
+  }
+}, true);</script><style id="ethith-app-css">
 #app{--bg:#f2f6fc;--card:#fff;--text:#0e2340;--muted:#5d6e86;--line:#e1eaf5;--pri:#154b89;--pri2:#4e93e4;--soft:#eaf2fc;--shadow:0 14px 34px -22px rgba(14,50,92,.55);
 font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);min-height:100vh;display:none;line-height:1.5;font-size:15px}
 #app[data-theme=dark]{--bg:#081322;--card:#0f2038;--text:#e7eefb;--muted:#9bb0cf;--line:#1b3252;--soft:#142a49;--shadow:0 14px 34px -22px rgba(0,0,0,.9)}
@@ -1148,6 +1174,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '</div>';
   }
 
+  window._ethithInternalGo = go;
   function go(n, a) {
     if (!S.user) {
       App.showAuthModal();
@@ -1322,7 +1349,3 @@ if(E('hqQ'))show();
 })();
 </script>
 
-<script src="data_assets.js"></script>
-<script src="ethith_ai.js"></script>
-<script src="ethith_app.js"></script>
-<script src="ethith_views.js"></script>
