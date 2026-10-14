@@ -43,6 +43,8 @@
     theme: 'light',
     classes: DEFAULT_CLASSES.slice(),
     exams: [],
+    deletedExamIds: [],
+    notifications: [],
     aiHistory: [],
     aiConversations: [],
     currentAiChatId: null,
@@ -63,6 +65,9 @@
       }
     }
   } catch(e) {}
+
+  if (!S.deletedExamIds) S.deletedExamIds = [];
+  if (!S.notifications) S.notifications = [];
 
   if (!S.classes || S.classes.length === 0) {
     S.classes = DEFAULT_CLASSES.slice();

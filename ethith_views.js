@@ -1514,23 +1514,53 @@
   // ==========================================
   function renderExamsView(container) {
     var isTeacher = S.user && S.user.role === 'teacher';
+    window._ethithRefreshExamsList = function() {
+      if (document.getElementById('topExamCodeInput') || (container && container.querySelector('.ap-sec'))) {
+        renderExamsView(container);
+      }
+    };
 
     var html = '' +
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
       '    <h2>' + ic('trophy') + ' Exams & Leaderboards</h2>' +
-      '    <p>' + (isTeacher ? 'Create custom exams, manage 6-digit access codes, configure public/private access, and monitor live leaderboards.' : 'Take practice exams or join with the 6-digit access code provided by your teacher.') + '</p>' +
+      '    <p>' + (isTeacher ? 'Create custom exams, manage 6-digit access codes, configure public/private visibility, and monitor live leaderboards.' : 'Take practice exams or join proctored examinations with the 6-digit access code provided by your instructor.') + '</p>' +
       '  </div>' +
       (isTeacher ?
         '  <button class="eth-btn-primary" id="btnCreateExam" style="width:auto;padding:10px 18px">' + ic('plus') + ' Create New Exam</button>' :
-        '  <button class="eth-btn-primary" id="btnJoinExam" style="width:auto;padding:10px 18px">' + ic('clip') + ' Join with Code</button>') +
+        '') +
       '</div>';
 
-    if (S.exams.length === 0) {
-      html += '<div class="ap-card ap-empty">' + ic('trophy') + '<h2>No active exams available</h2><p>' + (isTeacher ? 'Create a new exam and share the 6-digit code with your students.' : 'Request the 6-digit exam code from your instructor.') + '</p></div>';
+    // Prominent Top Access / Search Panel
+    html += '' +
+      '<div class="eth-exam-access-hero">' +
+      '  <div class="eth-exam-access-info">' +
+      '    <h3><span style="font-size:18px">🔒</span> Enter Proctored Exam with Access Code</h3>' +
+      '    <p>Private and scheduled exams require your 6-digit access code. Strict WebCam proctoring with 35° head turn detection and fullscreen lockdown will be enforced.</p>' +
+      '  </div>' +
+      '  <div class="eth-exam-access-form">' +
+      '    <div class="eth-access-input-wrap">' +
+      '      <label>6-Digit Exam Code</label>' +
+      '      <input type="text" id="topExamCodeInput" placeholder="e.g. 780580" maxlength="8" autocomplete="off" />' +
+      '    </div>' +
+      '    <div class="eth-access-input-wrap">' +
+      '      <label>Your Full Name</label>' +
+      '      <input type="text" id="topStudentNameInput" value="' + esc((S.user && S.user.name) || '') + '" placeholder="Full Name" />' +
+      '    </div>' +
+      '    <button class="eth-btn-primary eth-access-start-btn" id="btnTopStartExam">' +
+      '      Verify & Start Exam ' + ic('right') +
+      '    </button>' +
+      '  </div>' +
+      '</div>';
+
+    // Strictly filter out private exams for students:
+    var visibleExams = isTeacher ? (S.exams || []) : (S.exams || []).filter(function(x) { return x.isPublic === true; });
+
+    if (visibleExams.length === 0) {
+      html += '<div class="ap-card ap-empty">' + ic('trophy') + '<h2>' + (isTeacher ? 'No active exams created' : 'No public exams currently available') + '</h2><p>' + (isTeacher ? 'Click "Create New Exam" above to author exams and generate 6-digit codes.' : 'Please enter your 6-digit access code in the access panel above to start your test.') + '</p></div>';
     } else {
       html += '<div class="ap-grid g2">';
-      S.exams.forEach(function(ex) {
+      visibleExams.forEach(function(ex) {
         var subCount = ex.submissions ? ex.submissions.length : 0;
         var maxAtt = ex.maxAttempts || 1;
         var isPub = ex.isPublic || false;
@@ -1562,6 +1592,44 @@
 
     container.innerHTML = html;
 
+    // Top Access Button Handler
+    var btnTopStart = container.querySelector('#btnTopStartExam');
+    if (btnTopStart) {
+      btnTopStart.onclick = function() {
+        var codeIn = (container.querySelector('#topExamCodeInput').value || '').trim();
+        var nameIn = (container.querySelector('#topStudentNameInput').value || '').trim();
+
+        if (!codeIn) {
+          alert("Please enter the 6-digit access code for your exam.");
+          container.querySelector('#topExamCodeInput').focus();
+          return;
+        }
+        if (!nameIn) {
+          alert("Please enter your full name before entering the proctored exam.");
+          container.querySelector('#topStudentNameInput').focus();
+          return;
+        }
+
+        if (S.user) {
+          S.user.name = nameIn;
+          App.saveState();
+        }
+
+        var matchedExam = (S.exams || []).find(function(x) {
+          return (x.code + '').trim().toLowerCase() === codeIn.toLowerCase();
+        });
+
+        if (!matchedExam) {
+          alert("No exam found with code: " + codeIn + ".\nPlease double check with your teacher.");
+          return;
+        }
+
+        if (!checkStudentAttemptLimit(matchedExam)) return;
+
+        startExamRunner(matchedExam, container);
+      };
+    }
+
     container.querySelectorAll('[data-exam-lb]').forEach(function(btn) {
       btn.onclick = function() {
         var ex = S.exams.find(function(x) { return x.id === btn.dataset.examLb; });
@@ -1581,15 +1649,6 @@
         var ex = S.exams.find(function(x) { return x.id === btn.dataset.examTake; });
         if (!ex) return;
 
-        if (!ex.isPublic) {
-          var enteredCode = prompt("This exam is private. Please enter the 6-digit access code:");
-          if (!enteredCode) return;
-          if (enteredCode.trim() !== ex.code) {
-            alert("Incorrect access code! Please check the code with your teacher.");
-            return;
-          }
-        }
-
         if (!checkStudentAttemptLimit(ex)) return;
         startExamRunner(ex, container);
       };
@@ -1600,13 +1659,6 @@
       if (createBtn) {
         createBtn.onclick = function() {
           showCreateExamModal(container);
-        };
-      }
-    } else {
-      var joinBtn = document.getElementById('btnJoinExam');
-      if (joinBtn) {
-        joinBtn.onclick = function() {
-          showJoinExamModal(container);
         };
       }
     }
@@ -1746,17 +1798,28 @@
         showExamLeaderboardModal(exam);
       };
 
-      // Delete Exam
+      // Delete Exam Permanently
       overlay.querySelector('#btnDeleteExam').onclick = function() {
-        if (confirm("Are you sure you want to permanently delete this exam?\nTitle: " + exam.title + "\nAll student submissions and leaderboard data will be erased.")) {
-          S.exams = S.exams.filter(function(x) { return x.id !== exam.id; });
+        if (confirm("Are you sure you want to permanently delete this exam?\nTitle: " + exam.title + " (Code: " + exam.code + ")\nAll student submissions and leaderboard data will be erased.")) {
+          if (!S.deletedExamIds) S.deletedExamIds = [];
+          if (S.deletedExamIds.indexOf(exam.id) === -1) S.deletedExamIds.push(exam.id);
+          if (exam.code && S.deletedExamIds.indexOf(exam.code) === -1) S.deletedExamIds.push(exam.code);
+
+          S.exams = (S.exams || []).filter(function(x) {
+            return x.id !== exam.id && (!exam.code || x.code !== exam.code);
+          });
           App.saveState();
           if (window.EthithSync) {
+            window.EthithSync.publishLive({
+              type: 'DELETE_EXAM',
+              examId: exam.id,
+              examCode: exam.code
+            });
             window.EthithSync.broadcastLocal(S.classes, S.exams);
-            window.EthithSync.pushRemoteStore(S.classes, S.exams);
+            window.EthithSync.pushRemoteStore();
           }
           overlay.remove();
-          alert("Exam deleted successfully.");
+          alert("Exam deleted permanently from the platform.");
           renderExamsView(container);
         }
       };
@@ -2159,6 +2222,12 @@
 
   function startExamRunner(exam, mainContainer) {
     var timeLeftSeconds = exam.duration * 60;
+    var isExamFinished = false;
+    var isExamLocked = false;
+    var proctorStream = null;
+    var proctorInterval = null;
+    var turnInfractionFrames = 0;
+
     var state = {
       i: 0,
       score: 0,
@@ -2166,7 +2235,244 @@
       answers: {}
     };
 
+    // 1. Enter Strict Fullscreen Lockdown Mode
+    try {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(function(e){});
+      } else if (document.documentElement.webkitRequestFullscreen) {
+        document.documentElement.webkitRequestFullscreen();
+      }
+    } catch(e) {}
+    document.body.classList.add('proctored-fullscreen-mode');
+
+    // 2. Anti-Cheat: Tab Switch & Window Blur Detection
+    function onWindowBlur() {
+      if (isExamFinished || isExamLocked) return;
+      triggerInfraction("Switched application or left exam window!");
+    }
+    function onVisChange() {
+      if (isExamFinished || isExamLocked) return;
+      if (document.hidden) {
+        triggerInfraction("Switched browser tab or minimized window!");
+      }
+    }
+    window.addEventListener('blur', onWindowBlur);
+    document.addEventListener('visibilitychange', onVisChange);
+
+    // 3. WebCam Setup & Picture-in-Picture Floating Preview
+    var existingPip = document.getElementById('proctorPip');
+    if (existingPip) existingPip.remove();
+
+    var pipContainer = document.createElement('div');
+    pipContainer.className = 'proctor-pip-container';
+    pipContainer.id = 'proctorPip';
+    pipContainer.innerHTML = '' +
+      '<div class="proctor-pip-header">' +
+      '  <div style="display:flex;align-items:center"><span class="proctor-status-dot" id="proctorStatusDot"></span> <span id="proctorStatusText" style="color:#10b981">Proctor Active</span></div>' +
+      '  <span style="font-size:10.5px;color:var(--muted)">35° AI Tracker</span>' +
+      '</div>' +
+      '<div class="proctor-video-wrap">' +
+      '  <video id="proctorVideo" autoplay playsinline muted></video>' +
+      '  <div class="proctor-face-guide"></div>' +
+      '</div>' +
+      '<div class="proctor-student-tag" id="proctorStudentTag">👤 ' + esc((S.user && S.user.name) || 'Student') + '</div>';
+    document.body.appendChild(pipContainer);
+
+    var proctorVideo = document.getElementById('proctorVideo');
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({
+        video: { width: { ideal: 320 }, height: { ideal: 240 }, facingMode: 'user' }
+      }).then(function(stream) {
+        proctorStream = stream;
+        if (proctorVideo) {
+          proctorVideo.srcObject = stream;
+          proctorVideo.play().catch(function(){});
+        }
+      }).catch(function(err) {
+        console.warn("Webcam proctoring warning:", err);
+      });
+    }
+
+    // 4. Algorithmic Pure JS/Canvas 35° Head Turn & Look-Away Detector
+    var offCanvas = document.createElement('canvas');
+    offCanvas.width = 160;
+    offCanvas.height = 120;
+    var offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
+
+    var calibrationCount = 0;
+    var baseTotalSum = 0;
+    var baseCenterSum = 0;
+
+    proctorInterval = setInterval(function() {
+      if (!proctorVideo || !proctorVideo.videoWidth || isExamLocked || isExamFinished) return;
+      try {
+        offCtx.drawImage(proctorVideo, 0, 0, 160, 120);
+        var imgData = offCtx.getImageData(0, 0, 160, 120);
+        var pixels = imgData.data;
+
+        var leftSkin = 0;
+        var rightSkin = 0;
+        var totalSkin = 0;
+        var sumX = 0;
+
+        // Scan face bounding zone: y:15-105, x:15-145
+        for (var y = 15; y < 105; y += 2) {
+          for (var x = 15; x < 145; x += 2) {
+            var idx = (y * 160 + x) * 4;
+            var r = pixels[idx];
+            var g = pixels[idx + 1];
+            var b = pixels[idx + 2];
+
+            // Skin Chromaticity Filter
+            if (r > 60 && g > 35 && b > 20 && r > g && r > b && (r - g) >= 8 && (r - b) >= 12) {
+              totalSkin++;
+              sumX += x;
+              if (x < 80) leftSkin++;
+              else rightSkin++;
+            }
+          }
+        }
+
+        // Calibrate baseline for first 2.5s (10 valid frames)
+        if (calibrationCount < 10) {
+          if (totalSkin > 100) {
+            calibrationCount++;
+            baseTotalSum += totalSkin;
+            baseCenterSum += (sumX / totalSkin);
+          }
+          return;
+        }
+
+        var avgBaseTotal = baseTotalSum / calibrationCount;
+        var avgBaseCenter = baseCenterSum / calibrationCount;
+        var currentCenter = totalSkin > 0 ? (sumX / totalSkin) : avgBaseCenter;
+        var centerOffset = Math.abs(currentCenter - avgBaseCenter);
+
+        // Horizontal asymmetry ratio
+        var ratio = (leftSkin + 5) / (rightSkin + 5);
+
+        // Turn criteria (~35° deviation or looking away):
+        // 1. Extreme asymmetry (ratio > 2.25 or < 0.44)
+        // 2. Centroid displacement > 17px
+        // 3. Complete look away or absence (skin mass < 25% of baseline)
+        var isTurned = (ratio > 2.25 || ratio < 0.44 || centerOffset > 17 || totalSkin < (avgBaseTotal * 0.25));
+
+        var statusDot = document.getElementById('proctorStatusDot');
+        var statusText = document.getElementById('proctorStatusText');
+
+        if (isTurned) {
+          turnInfractionFrames++;
+          if (statusDot) statusDot.style.background = '#f59e0b';
+          if (statusText) {
+            statusText.textContent = 'Turn Warning!';
+            statusText.style.color = '#f59e0b';
+          }
+
+          // 4 consecutive frames (1.0 second of sustained turn/look-away) triggers lock
+          if (turnInfractionFrames >= 4) {
+            triggerInfraction("Turned head away (~35°) or looked away from the exam screen");
+          }
+        } else {
+          turnInfractionFrames = 0;
+          if (statusDot) statusDot.style.background = '#10b981';
+          if (statusText) {
+            statusText.textContent = 'Proctor Active';
+            statusText.style.color = '#10b981';
+          }
+        }
+      } catch(err) {}
+    }, 250);
+
+    // 5. Trigger Infraction & Lock Exam
+    function triggerInfraction(reason) {
+      if (isExamLocked || isExamFinished) return;
+      isExamLocked = true;
+
+      var statusDot = document.getElementById('proctorStatusDot');
+      var statusText = document.getElementById('proctorStatusText');
+      if (statusDot) statusDot.style.background = '#ef4444';
+      if (statusText) {
+        statusText.textContent = 'BLOCKED';
+        statusText.style.color = '#ef4444';
+      }
+
+      // Audio warning beep
+      try {
+        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        var osc = audioCtx.createOscillator();
+        var gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(220, audioCtx.currentTime + 0.4);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.4);
+      } catch(ae) {}
+
+      // Render Red Screen Exam Locked Overlay
+      var existingLock = document.getElementById('examLockedScreen');
+      if (existingLock) existingLock.remove();
+
+      var lockedOverlay = document.createElement('div');
+      lockedOverlay.className = 'eth-exam-locked-screen';
+      lockedOverlay.id = 'examLockedScreen';
+      lockedOverlay.innerHTML = '' +
+        '<div class="eth-locked-box">' +
+        '  <div class="eth-locked-icon">🚫</div>' +
+        '  <h2>EXAM LOCKED: SUSPICIOUS ACTIVITY DETECTED</h2>' +
+        '  <div class="eth-locked-reason"><b>Infraction:</b> ' + esc(reason) + '</div>' +
+        '  <div class="eth-locked-msg">' +
+        '    Turning your head (~35°), looking away from the camera, or switching tabs during the exam is strictly prohibited.<br>' +
+        '    A real-time security alert has been dispatched to your instructor.<br><br>' +
+        '    <b>Your exam is locked. Please notify your teacher to unlock your test.</b>' +
+        '  </div>' +
+        '  <div class="eth-locked-pulse">' +
+        '    <span class="proctor-status-dot" style="background:#ef4444"></span> Waiting for teacher authorization to unblock in real-time...' +
+        '  </div>' +
+        '</div>';
+      document.body.appendChild(lockedOverlay);
+
+      // Publish STUDENT_BLOCKED live event across MQTT & cross-tab
+      if (window.EthithSync) {
+        window.EthithSync.publishLive({
+          type: 'STUDENT_BLOCKED',
+          studentId: (S.user && (S.user.email || S.user.id)) || 'guest',
+          studentName: (S.user && S.user.name) || 'Anonymous Student',
+          studentEmail: (S.user && S.user.email) || '',
+          examId: exam.id,
+          examCode: exam.code,
+          examTitle: exam.title,
+          reason: reason,
+          timestamp: Date.now()
+        });
+      }
+    }
+
+    // 6. Real-Time Unblock Listener (Sub-100ms wakeup)
+    window._ethithOnStudentUnblocked = function(ev) {
+      var myKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase();
+      if ((ev.studentEmail && ev.studentEmail.toLowerCase() === myKey) ||
+          (ev.studentId && ev.studentId.toLowerCase() === myKey)) {
+        isExamLocked = false;
+        turnInfractionFrames = 0;
+        var lockEl = document.getElementById('examLockedScreen');
+        if (lockEl) lockEl.remove();
+        var statusDot = document.getElementById('proctorStatusDot');
+        var statusText = document.getElementById('proctorStatusText');
+        if (statusDot) statusDot.style.background = '#10b981';
+        if (statusText) {
+          statusText.textContent = 'Proctor Active';
+          statusText.style.color = '#10b981';
+        }
+      }
+    };
+
+    // 7. Exam Timer
     var timerInterval = setInterval(function() {
+      if (isExamLocked || isExamFinished) return;
       timeLeftSeconds--;
       var badge = document.getElementById('examTimerDisplay');
       if (badge) {
@@ -2193,10 +2499,16 @@
 
       var html = '' +
         '<div class="ap-quiz">' +
-        '  <div class="ap-qtop">' +
-        '    <div class="eth-timer-badge">' + ic('clock') + ' <span id="examTimerDisplay">--:--</span></div>' +
-        '    <div class="ap-bar"><i style="width:' + ((state.i / exam.questions.length) * 100) + '%"></i></div>' +
-        '    <b>' + (state.i + 1) + ' / ' + exam.questions.length + '</b>' +
+        '  <div class="ap-qtop" style="justify-content:space-between">' +
+        '    <div style="display:flex;align-items:center;gap:12px">' +
+        '      <div class="eth-timer-badge">' + ic('clock') + ' <span id="examTimerDisplay">--:--</span></div>' +
+        '      <span style="font-size:12.5px;color:var(--muted)">Code: <b>' + exam.code + '</b></span>' +
+        '    </div>' +
+        '    <div class="ap-bar" style="max-width:280px;margin:0 14px"><i style="width:' + ((state.i / exam.questions.length) * 100) + '%"></i></div>' +
+        '    <div style="display:flex;align-items:center;gap:12px">' +
+        '      <b>' + (state.i + 1) + ' / ' + exam.questions.length + '</b>' +
+        '      <button class="ap-btn out danger" id="btnFinishExamManual" style="padding:6px 14px;font-size:12.5px;font-weight:700;border-color:#ef4444;color:#ef4444">Finish & Submit Exam</button>' +
+        '    </div>' +
         '  </div>' +
         '  <div class="ap-qbox">' +
         '    <div class="qn">' + esc(exam.title) + ' · Question ' + (state.i + 1) + ' (' + exam.pointsPerQ + ' pts)</div>' +
@@ -2226,11 +2538,22 @@
       html += '  </div></div>';
       mainContainer.innerHTML = html;
 
+      // Finish & Submit Exam manual button handler
+      var finishBtn = document.getElementById('btnFinishExamManual');
+      if (finishBtn) {
+        finishBtn.onclick = function() {
+          if (confirm("Are you sure you want to finish and submit your exam now?\nYou will exit fullscreen proctored mode.")) {
+            finishExam();
+          }
+        };
+      }
+
       if (qType === 'written') {
         var subBtn = document.getElementById('submitWrittenAnsBtn');
         var inputW = document.getElementById('writtenInput');
         inputW.focus();
         function commitW() {
+          if (isExamLocked) return;
           var val = inputW.value.trim();
           var isMatch = (val.toLowerCase() === (q.answer || '').trim().toLowerCase());
           if (isMatch) state.score += exam.pointsPerQ;
@@ -2243,6 +2566,7 @@
       } else {
         mainContainer.querySelectorAll('.ap-opt').forEach(function(btn) {
           btn.onclick = function() {
+            if (isExamLocked) return;
             var sel = btn.dataset.opt;
             if (sel.toLowerCase() === (q.answer || '').toLowerCase()) state.score += exam.pointsPerQ;
             state.answers[state.i] = sel;
@@ -2254,6 +2578,36 @@
     }
 
     function finishExam() {
+      if (isExamFinished) return;
+      isExamFinished = true;
+
+      // Clean up timers & proctoring listeners
+      clearInterval(timerInterval);
+      if (proctorInterval) clearInterval(proctorInterval);
+      window.removeEventListener('blur', onWindowBlur);
+      document.removeEventListener('visibilitychange', onVisChange);
+      window._ethithOnStudentUnblocked = null;
+
+      // Stop camera tracks
+      if (proctorStream) {
+        try {
+          proctorStream.getTracks().forEach(function(track) { track.stop(); });
+        } catch(e) {}
+      }
+
+      // Remove PIP & Lock overlay
+      var pip = document.getElementById('proctorPip');
+      if (pip) pip.remove();
+      var lockEl = document.getElementById('examLockedScreen');
+      if (lockEl) lockEl.remove();
+
+      // Exit fullscreen lockdown mode and restore normal PC view
+      try {
+        if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      } catch(e) {}
+      document.body.classList.remove('proctored-fullscreen-mode');
+
       var totalPossible = exam.questions.length * exam.pointsPerQ;
       var pct = Math.round((state.score / totalPossible) * 100);
       var timeSpentMin = Math.round((exam.duration * 60 - Math.max(0, timeLeftSeconds)) / 60);
@@ -2266,7 +2620,6 @@
       });
 
       if (existing) {
-        // Update score of existing submission without creating duplicate rows
         existing.attempts = (existing.attempts || 1) + 1;
         existing.score = state.score;
         existing.totalPossible = totalPossible;
@@ -2356,6 +2709,115 @@
     overlay.querySelector('#lbCloseBtn').onclick = function() {
       overlay.remove();
     };
+  }
+
+  function showTeacherNotificationsModal() {
+    var existing = document.getElementById('teacherNotifsOverlay');
+    if (existing) existing.remove();
+
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.id = 'teacherNotifsOverlay';
+
+    window._ethithRefreshNotifsModal = function() {
+      if (document.getElementById('teacherNotifsOverlay')) {
+        renderNotifsContent();
+      }
+    };
+
+    function renderNotifsContent() {
+      var notifs = S.notifications || [];
+
+      var html = '' +
+        '<div class="eth-modal" style="max-width:620px">' +
+        '  <div class="eth-modal-header">' +
+        '    <h2>' + ic('bell') + ' Security & Proctoring Alerts</h2>' +
+        '    <p>Real-time camera and anti-cheat infractions reported during exams.</p>' +
+        '  </div>' +
+        '  <div class="eth-modal-body" style="max-height:480px;overflow-y:auto">' +
+        (notifs.length === 0 ?
+          '  <div class="ap-card ap-empty" style="padding:28px 16px">' +
+          '    ' + ic('check') +
+          '    <h3>All Clear!</h3>' +
+          '    <p>No proctoring violations or blocked students at this time.</p>' +
+          '  </div>' :
+          '  <div style="display:flex;flex-direction:column;gap:12px">' +
+          notifs.map(function(n) {
+            var timeStr = new Date(n.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            return '' +
+              '<div class="ap-card" style="border:1.5px solid ' + (n.resolved ? 'var(--border)' : '#ef4444') + ';padding:14px;background:' + (n.resolved ? 'var(--bg2)' : 'rgba(239, 68, 68, 0.04)') + '">' +
+              '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">' +
+              '    <b style="font-size:15px;color:' + (n.resolved ? 'var(--text)' : '#dc2626') + '">' + (n.resolved ? '✓ ' : '🚨 ') + esc(n.studentName) + '</b>' +
+              '    <span style="font-size:12px;color:var(--muted)">' + timeStr + '</span>' +
+              '  </div>' +
+              '  <div style="font-size:13px;color:var(--text);margin-bottom:6px">' +
+              '    <b>Exam:</b> ' + esc(n.examTitle) + ' (Code: ' + esc(n.examCode) + ')' +
+              '  </div>' +
+              '  <div style="font-size:12.5px;color:#b91c1c;background:rgba(239, 68, 68, 0.08);padding:6px 10px;border-radius:6px;margin-bottom:10px">' +
+              '    <b>Infraction:</b> ' + esc(n.reason) +
+              '  </div>' +
+              '  <div style="display:flex;justify-content:flex-end;gap:8px">' +
+              (n.resolved ?
+                '    <span style="font-size:12px;font-weight:700;color:#10b981;padding:4px 10px">✓ Unblocked</span>' :
+                '    <button class="eth-btn-primary" data-unblock-id="' + n.id + '" style="padding:7px 16px;font-size:13px;background:#10b981;border-color:#10b981">' +
+                ic('unlock') + ' Unblock Student' +
+                '    </button>') +
+              '  </div>' +
+              '</div>';
+          }).join('') +
+          '  </div>') +
+        '  </div>' +
+        '  <div style="padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">' +
+        (notifs.length > 0 ?
+          '  <button class="ap-btn out" id="btnClearResolvedNotifs" style="font-size:12.5px;padding:6px 12px">Clear Resolved</button>' :
+          '  <div></div>') +
+        '    <button class="ap-btn solid" id="btnCloseNotifsModal" style="padding:8px 20px">Close</button>' +
+        '  </div>' +
+        '</div>';
+
+      overlay.innerHTML = html;
+
+      var closeBtn = overlay.querySelector('#btnCloseNotifsModal');
+      if (closeBtn) closeBtn.onclick = function() { overlay.remove(); };
+
+      var clearBtn = overlay.querySelector('#btnClearResolvedNotifs');
+      if (clearBtn) {
+        clearBtn.onclick = function() {
+          S.notifications = (S.notifications || []).filter(function(n) { return !n.resolved; });
+          App.saveState();
+          renderNotifsContent();
+          if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
+        };
+      }
+
+      overlay.querySelectorAll('[data-unblock-id]').forEach(function(btn) {
+        btn.onclick = function() {
+          var nId = btn.dataset.unblockId;
+          var targetN = (S.notifications || []).find(function(n) { return n.id === nId; });
+          if (!targetN) return;
+
+          targetN.resolved = true;
+          App.saveState();
+
+          if (window.EthithSync) {
+            window.EthithSync.publishLive({
+              type: 'STUDENT_UNBLOCKED',
+              studentId: targetN.studentId,
+              studentEmail: targetN.studentEmail,
+              examId: targetN.examId,
+              examCode: targetN.examCode,
+              timestamp: Date.now()
+            });
+          }
+
+          if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
+          renderNotifsContent();
+        };
+      });
+    }
+
+    renderNotifsContent();
+    document.body.appendChild(overlay);
   }
 
   // ==========================================
@@ -2546,6 +3008,7 @@
     renderExamsView: renderExamsView,
     renderPlacementView: renderPlacementView,
     renderMistakesNotebook: renderMistakesNotebook,
+    showTeacherNotificationsModal: showTeacherNotificationsModal,
     formatAIMarkdown: formatAIMarkdown,
     formatMarkdown: formatAIMarkdown
   };

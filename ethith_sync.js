@@ -430,6 +430,62 @@
       }
     }
 
+    // G. DELETE EXAM
+    else if (event.type === 'DELETE_EXAM' && event.examId) {
+      if (!S.deletedExamIds) S.deletedExamIds = [];
+      if (S.deletedExamIds.indexOf(event.examId) === -1) S.deletedExamIds.push(event.examId);
+      if (event.examCode && S.deletedExamIds.indexOf(event.examCode) === -1) S.deletedExamIds.push(event.examCode);
+      var prevExamLen = (S.exams || []).length;
+      S.exams = (S.exams || []).filter(function(x) {
+        return x.id !== event.examId && (!event.examCode || x.code !== event.examCode);
+      });
+      if (S.exams.length !== prevExamLen) {
+        uiNeedsRefresh = true;
+      }
+    }
+
+    // H. STUDENT BLOCKED (PROCTORING ALERT)
+    else if (event.type === 'STUDENT_BLOCKED') {
+      if (!S.notifications) S.notifications = [];
+      var blockedNotif = {
+        id: 'notif_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+        studentId: event.studentId,
+        studentName: event.studentName,
+        studentEmail: event.studentEmail,
+        examId: event.examId,
+        examCode: event.examCode,
+        examTitle: event.examTitle,
+        reason: event.reason,
+        timestamp: event.timestamp || Date.now(),
+        read: false,
+        resolved: false
+      };
+      var dup = S.notifications.find(function(n) {
+        return (n.studentEmail === blockedNotif.studentEmail || n.studentId === blockedNotif.studentId) &&
+               n.examCode === blockedNotif.examCode && !n.resolved;
+      });
+      if (!dup) {
+        S.notifications.unshift(blockedNotif);
+        uiNeedsRefresh = true;
+      }
+    }
+
+    // I. STUDENT UNBLOCKED (BY TEACHER)
+    else if (event.type === 'STUDENT_UNBLOCKED') {
+      if (window._ethithOnStudentUnblocked) {
+        window._ethithOnStudentUnblocked(event);
+      }
+      if (S.notifications) {
+        S.notifications.forEach(function(n) {
+          if ((n.studentEmail === event.studentEmail || n.studentId === event.studentId) &&
+              (!event.examCode || n.examCode === event.examCode)) {
+            n.resolved = true;
+            uiNeedsRefresh = true;
+          }
+        });
+      }
+    }
+
     if (uiNeedsRefresh) {
       window.EthithApp.saveState();
       // Always refresh class detail if chat element is visible in DOM
@@ -438,6 +494,15 @@
       }
       if (window._ethithRefreshClassesList) {
         window._ethithRefreshClassesList();
+      }
+      if (window._ethithRefreshExamsList) {
+        window._ethithRefreshExamsList();
+      }
+      if (window._ethithRefreshTopNav) {
+        window._ethithRefreshTopNav();
+      }
+      if (window._ethithRefreshNotifsModal) {
+        window._ethithRefreshNotifsModal();
       }
     }
   }
@@ -575,11 +640,24 @@
     return changed;
   }
 
-  function mergeExams(localExams, remoteExams) {
+  function mergeExams(localExams, remoteExams, deletedExamIds) {
     var changed = false;
     if (!Array.isArray(remoteExams)) return changed;
+    var dIds = deletedExamIds || (window.EthithApp && window.EthithApp.state && window.EthithApp.state.deletedExamIds) || [];
+
+    // Filter out locally existing deleted exams
+    if (dIds.length > 0) {
+      for (var i = localExams.length - 1; i >= 0; i--) {
+        var lx = localExams[i];
+        if (dIds.indexOf(lx.id) !== -1 || (lx.code && dIds.indexOf(lx.code) !== -1)) {
+          localExams.splice(i, 1);
+          changed = true;
+        }
+      }
+    }
 
     remoteExams.forEach(function(rx) {
+      if (dIds.indexOf(rx.id) !== -1 || (rx.code && dIds.indexOf(rx.code) !== -1)) return;
       var exists = localExams.find(function(x) { return x.id === rx.id || x.code === rx.code; });
       if (!exists) {
         localExams.push(rx);
@@ -587,6 +665,14 @@
       } else {
         if (rx.submissions && rx.submissions.length > (exists.submissions ? exists.submissions.length : 0)) {
           exists.submissions = rx.submissions;
+          changed = true;
+        }
+        if (rx.isPublic !== undefined && exists.isPublic !== rx.isPublic) {
+          exists.isPublic = rx.isPublic;
+          changed = true;
+        }
+        if (rx.maxAttempts !== undefined && exists.maxAttempts !== rx.maxAttempts) {
+          exists.maxAttempts = rx.maxAttempts;
           changed = true;
         }
       }
@@ -638,7 +724,7 @@
         });
 
         var sha = null;
-        var remoteData = { classes: [], exams: [] };
+        var remoteData = { classes: [], exams: [], deletedExamIds: [] };
         if (getRes.ok) {
           var fileData = await getRes.json();
           sha = fileData.sha;
@@ -648,8 +734,15 @@
           } catch(e) {}
         }
 
+        if (remoteData.deletedExamIds && Array.isArray(remoteData.deletedExamIds)) {
+          if (!S.deletedExamIds) S.deletedExamIds = [];
+          remoteData.deletedExamIds.forEach(function(id) {
+            if (S.deletedExamIds.indexOf(id) === -1) S.deletedExamIds.push(id);
+          });
+        }
+
         mergeClasses(S.classes, remoteData.classes || []);
-        mergeExams(S.exams, remoteData.exams || []);
+        mergeExams(S.exams, remoteData.exams || [], S.deletedExamIds || []);
 
         var cleanClasses = JSON.parse(JSON.stringify(S.classes));
         cleanClasses.forEach(function(c) {
@@ -660,9 +753,16 @@
           }
         });
 
+        var dIds = S.deletedExamIds || [];
+        var cleanExams = (S.exams || []).filter(function(x) {
+          return dIds.indexOf(x.id) === -1 && (!x.code || dIds.indexOf(x.code) === -1);
+        });
+        S.exams = cleanExams;
+
         var contentObj = {
           classes: cleanClasses,
-          exams: S.exams,
+          exams: cleanExams,
+          deletedExamIds: dIds,
           updatedAt: Date.now()
         };
 
@@ -670,7 +770,7 @@
         var b64Content = btoa(unescape(encodeURIComponent(jsonStr)));
 
         var body = {
-          message: 'Sync classes, messages, reactions and students [skip ci]',
+          message: 'Sync classes, messages, reactions and exams [skip ci]',
           content: b64Content
         };
         if (sha) body.sha = sha;
@@ -712,8 +812,14 @@
   async function syncInitialData(S) {
     var remote = await fetchRemoteStore();
     if (remote) {
+      if (remote.deletedExamIds && Array.isArray(remote.deletedExamIds)) {
+        if (!S.deletedExamIds) S.deletedExamIds = [];
+        remote.deletedExamIds.forEach(function(id) {
+          if (S.deletedExamIds.indexOf(id) === -1) S.deletedExamIds.push(id);
+        });
+      }
       var c1 = mergeClasses(S.classes, remote.classes || []);
-      var c2 = mergeExams(S.exams, remote.exams || []);
+      var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
       if ((c1 || c2) && window.EthithApp) {
         window.EthithApp.saveState();
       }
@@ -736,8 +842,14 @@
     try {
       var remote = await fetchRemoteStore();
       if (remote) {
+        if (remote.deletedExamIds && Array.isArray(remote.deletedExamIds)) {
+          if (!S.deletedExamIds) S.deletedExamIds = [];
+          remote.deletedExamIds.forEach(function(id) {
+            if (S.deletedExamIds.indexOf(id) === -1) S.deletedExamIds.push(id);
+          });
+        }
         var c1 = mergeClasses(S.classes, remote.classes || []);
-        var c2 = mergeExams(S.exams, remote.exams || []);
+        var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
         if (c1 || c2) {
           window.EthithApp.saveState();
           if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
@@ -745,6 +857,12 @@
           }
           if (window._ethithRefreshClassesList) {
             window._ethithRefreshClassesList();
+          }
+          if (window._ethithRefreshExamsList) {
+            window._ethithRefreshExamsList();
+          }
+          if (window._ethithRefreshTopNav) {
+            window._ethithRefreshTopNav();
           }
         }
       }
