@@ -1,10 +1,11 @@
 /**
- * ETHITH Cloud & Cross-Tab Synchronization
+ * ETHITH Cloud & Cross-Device Real-Time Synchronization
  * Created by Muhammadyusuf Jo'raboyev
  * Features:
- * - Real-time BroadcastChannel sync across browser tabs
- * - GitHub Repository shared_store.json fetch & sync across devices/browsers
- * - Online presence tracking via user's Gmail ID
+ * - Real-time Telegram Chat & Student Sync across devices (2.5s live polling)
+ * - Deep merge for messages, emoji reactions, and joined students
+ * - Instant BroadcastChannel for cross-tab sync
+ * - Authenticated GitHub Store API with zero CDN latency
  */
 (function(window) {
   'use strict';
@@ -25,10 +26,14 @@
       channel.onmessage = function(e) {
         if (e.data && e.data.type === 'SYNC_STATE' && window.EthithApp) {
           var S = window.EthithApp.state;
-          if (e.data.classes) S.classes = e.data.classes;
-          if (e.data.exams) S.exams = e.data.exams;
-          if (window._ethithCurrentView === 'classes' && window._ethithInternalGo) {
-            window._ethithInternalGo('classes');
+          if (e.data.classes) {
+            mergeClasses(S.classes, e.data.classes);
+          }
+          if (e.data.exams) {
+            mergeExams(S.exams, e.data.exams);
+          }
+          if (window._ethithCurrentView === 'classes' && window._ethithRefreshCurrentClass) {
+            window._ethithRefreshCurrentClass();
           }
         }
       };
@@ -36,14 +41,26 @@
   } catch(e) {}
 
   async function fetchRemoteStore() {
+    var token = getGHToken();
     try {
-      var res = await fetch(RAW_STORE_URL + '?_t=' + Date.now(), { cache: 'no-store' });
+      var res = await fetch(API_STORE_URL + '?_t=' + Date.now(), {
+        headers: {
+          'Authorization': 'token ' + token,
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'ETHITH-Sync'
+        },
+        cache: 'no-store'
+      });
       if (res.ok) {
         var data = await res.json();
-        return data;
+        var rawJson = atob(data.content.replace(/\s/g, ''));
+        return JSON.parse(decodeURIComponent(escape(rawJson)));
       }
     } catch(err) {
-      console.warn('Could not fetch remote shared store:', err);
+      try {
+        var rawRes = await fetch(RAW_STORE_URL + '?_t=' + Date.now(), { cache: 'no-store' });
+        if (rawRes.ok) return await rawRes.json();
+      } catch(e) {}
     }
     return null;
   }
@@ -53,12 +70,13 @@
     if (!token) return;
 
     try {
-      // Get current file SHA first
-      var getRes = await fetch(API_STORE_URL, {
+      var getRes = await fetch(API_STORE_URL + '?_t=' + Date.now(), {
         headers: {
           'Authorization': 'token ' + token,
-          'Accept': 'application/vnd.github.v3+json'
-        }
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'ETHITH-Sync'
+        },
+        cache: 'no-store'
       });
 
       var sha = null;
@@ -77,7 +95,7 @@
       var b64Content = btoa(unescape(encodeURIComponent(jsonStr)));
 
       var body = {
-        message: 'Sync classes and exams [skip ci]',
+        message: 'Sync classes, messages, reactions and students [skip ci]',
         content: b64Content
       };
       if (sha) body.sha = sha;
@@ -87,7 +105,8 @@
         headers: {
           'Authorization': 'token ' + token,
           'Content-Type': 'application/json',
-          'Accept': 'application/vnd.github.v3+json'
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'ETHITH-Sync'
         },
         body: JSON.stringify(body)
       });
@@ -106,46 +125,146 @@
     }
   }
 
-  // Auto-sync on startup
-  async function syncInitialData(S) {
-    var remote = await fetchRemoteStore();
-    if (remote) {
-      var changed = false;
-      if (remote.classes && Array.isArray(remote.classes)) {
-        remote.classes.forEach(function(rc) {
-          var exists = S.classes.find(function(c) { return c.id === rc.id || c.code === rc.code; });
+  function mergeClasses(localClasses, remoteClasses) {
+    var changed = false;
+    if (!Array.isArray(remoteClasses)) return changed;
+
+    remoteClasses.forEach(function(rc) {
+      var localCls = localClasses.find(function(c) { return c.id === rc.id || c.code === rc.code; });
+      if (!localCls) {
+        localClasses.push(rc);
+        changed = true;
+        return;
+      }
+
+      // 1. Merge Students
+      if (!localCls.students) localCls.students = [];
+      if (rc.students && Array.isArray(rc.students)) {
+        rc.students.forEach(function(rStudent) {
+          var exists = localCls.students.find(function(s) {
+            return (s.email && s.email === rStudent.email) || (s.id && s.id === rStudent.id);
+          });
           if (!exists) {
-            S.classes.push(rc);
+            localCls.students.push(rStudent);
             changed = true;
           } else {
-            // merge messages
-            if (rc.messages && rc.messages.length > exists.messages.length) {
-              exists.messages = rc.messages;
+            if ((rStudent.lastActive || 0) > (exists.lastActive || 0) || (rStudent.dailyMinutes || 0) > (exists.dailyMinutes || 0)) {
+              exists.lastActive = rStudent.lastActive || exists.lastActive;
+              exists.dailyMinutes = Math.max(exists.dailyMinutes || 0, rStudent.dailyMinutes || 0);
+              exists.mistakes = rStudent.mistakes !== undefined ? rStudent.mistakes : exists.mistakes;
               changed = true;
             }
           }
         });
       }
-      if (remote.exams && Array.isArray(remote.exams)) {
-        remote.exams.forEach(function(rx) {
-          var exists = S.exams.find(function(x) { return x.id === rx.id || x.code === rx.code; });
-          if (!exists) {
-            S.exams.push(rx);
+
+      // 2. Merge Messages
+      if (!localCls.messages) localCls.messages = [];
+      if (rc.messages && Array.isArray(rc.messages)) {
+        rc.messages.forEach(function(rMsg) {
+          var localMsg = localCls.messages.find(function(m) { return m.id === rMsg.id; });
+          if (!localMsg) {
+            localCls.messages.push(rMsg);
             changed = true;
+          } else {
+            // Merge reactions
+            if (rMsg.reactions) {
+              if (!localMsg.reactions) localMsg.reactions = {};
+              for (var em in rMsg.reactions) {
+                var rList = rMsg.reactions[em] || [];
+                var lList = localMsg.reactions[em] || [];
+                var merged = lList.slice();
+                rList.forEach(function(u) {
+                  if (merged.indexOf(u) === -1) merged.push(u);
+                });
+                if (merged.length !== lList.length) {
+                  localMsg.reactions[em] = merged;
+                  changed = true;
+                }
+              }
+            }
           }
         });
       }
-      if (changed && window.EthithApp) {
+
+      // 3. Pinned Message
+      if (rc.pinnedId !== undefined && rc.pinnedId !== localCls.pinnedId) {
+        localCls.pinnedId = rc.pinnedId;
+        changed = true;
+      }
+    });
+
+    return changed;
+  }
+
+  function mergeExams(localExams, remoteExams) {
+    var changed = false;
+    if (!Array.isArray(remoteExams)) return changed;
+
+    remoteExams.forEach(function(rx) {
+      var exists = localExams.find(function(x) { return x.id === rx.id || x.code === rx.code; });
+      if (!exists) {
+        localExams.push(rx);
+        changed = true;
+      } else {
+        if (rx.submissions && rx.submissions.length > (exists.submissions ? exists.submissions.length : 0)) {
+          exists.submissions = rx.submissions;
+          changed = true;
+        }
+      }
+    });
+
+    return changed;
+  }
+
+  // Auto-sync on startup
+  async function syncInitialData(S) {
+    var remote = await fetchRemoteStore();
+    if (remote) {
+      var c1 = mergeClasses(S.classes, remote.classes);
+      var c2 = mergeExams(S.exams, remote.exams);
+      if ((c1 || c2) && window.EthithApp) {
         window.EthithApp.saveState();
       }
     }
   }
 
+  // Active Real-Time Poller: Polls every 2.5 seconds
+  var isPolling = false;
+  setInterval(async function() {
+    if (isPolling) return;
+    if (!window.EthithApp || !window.EthithApp.state) return;
+    var S = window.EthithApp.state;
+
+    // Only active if tab is visible and has user
+    if (document.hidden || !S.user) return;
+
+    isPolling = true;
+    try {
+      var remote = await fetchRemoteStore();
+      if (remote) {
+        var c1 = mergeClasses(S.classes, remote.classes);
+        var c2 = mergeExams(S.exams, remote.exams);
+        if (c1 || c2) {
+          window.EthithApp.saveState();
+          if (window._ethithCurrentView === 'classes' && window._ethithRefreshCurrentClass) {
+            window._ethithRefreshCurrentClass();
+          }
+        }
+      }
+    } catch(err) {
+      console.warn('Sync poll error:', err);
+    }
+    isPolling = false;
+  }, 2500);
+
   window.EthithSync = {
     fetchRemoteStore: fetchRemoteStore,
     pushRemoteStore: pushRemoteStore,
     broadcastLocal: broadcastLocal,
-    syncInitialData: syncInitialData
+    syncInitialData: syncInitialData,
+    mergeClasses: mergeClasses,
+    mergeExams: mergeExams
   };
 
 })(window);

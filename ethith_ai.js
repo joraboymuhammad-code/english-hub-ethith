@@ -36,11 +36,11 @@
     return key;
   }
 
-  var MODELS = ['gemini-3.5-flash-lite', 'gemini-3.8-flash', 'gemini-3.5-flash', 'gemini-flash-latest'];
+  var MODELS = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite', 'gemini-flash-lite-latest'];
 
   async function callGeminiRaw(bodyPayload, customModel) {
     var modelsToTry = customModel ? [customModel].concat(MODELS) : MODELS;
-    var maxRetries = Math.min(API_KEYS.length, 6);
+    var maxRetries = API_KEYS.length;
     var lastError = null;
 
     for (var mIdx = 0; mIdx < modelsToTry.length; mIdx++) {
@@ -50,35 +50,39 @@
         var url = 'https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent?key=' + key;
 
         try {
+          var controller = new AbortController();
+          var timeoutId = setTimeout(function() { controller.abort(); }, 12000);
+
           var response = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(bodyPayload)
+            body: JSON.stringify(bodyPayload),
+            signal: controller.signal
           });
+          clearTimeout(timeoutId);
 
           if (response.ok) {
             var data = await response.json();
-            var text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            var text = data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text;
             if (text) {
               return text;
             }
           }
 
           var errText = await response.text();
-          console.warn('Gemini attempt failed with model ' + model + ':', response.status);
+          console.warn('Gemini attempt failed with model ' + model + ' key ' + (attempt + 1) + ':', response.status);
           lastError = new Error('API Error: ' + response.status);
-          if (response.status === 404 || response.status === 400) {
-            break; // Try next model
+          if (response.status === 404) {
+            break; // Model not found, skip to next model
           }
         } catch (err) {
-          console.warn('Network error on model ' + model + ':', err.message);
+          console.warn('Network or timeout error on model ' + model + ':', err.message);
           lastError = err;
         }
       }
     }
 
-    // Graceful offline fallback answer for Ask AI Teacher
-    return "Assalomu alaykum! Sizning so'rovingiz qabul qilindi. Ayni paytda xalqaro tarmoq ulanishida cheklov kuzatilmoqda, biroq ETHITH platformasi barcha A1-C2 darajadagi 240 ta mavzu, testlar va placement testni to'liq oflayn algoritm asosida uzluksiz taqdim etadi. Savolingizni birozdan so'ng qayta yo'llashingiz mumkin.";
+    return "Assalomu alaykum! Kechirasiz, ayni paytda serverdan javob olishda uzilish kuzatildi (" + (lastError ? lastError.message : 'Timeout') + "). Iltimos, savolingizni qayta yuboring.";
   }
 
   // 1. Generate Quiz for a specific Level & Topic - 100% OFFLINE ALGORITHMIC GENERATOR

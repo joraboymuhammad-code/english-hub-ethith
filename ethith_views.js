@@ -219,6 +219,9 @@
     var unlockedCount = S.unlocked[curLevel] || 1;
     var isTeacher = S.user && S.user.role === 'teacher';
 
+    var NEXT_LEVEL = { A1: 'A2', A2: 'B1', B1: 'B2', B2: 'C1', C1: 'C2', C2: 'Master' };
+    var nextLv = NEXT_LEVEL[curLevel] || 'Keyingi';
+
     var html = '' +
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
@@ -227,10 +230,21 @@
       '  </div>' +
       (isTeacher ? '  <button class="ap-btn solid" id="tcAddTestBtn">' + ic('plus') + ' Yangi Test Qo\'shish</button>' : '') +
       '</div>' +
-      '<div class="eth-tabs" style="margin:0 0 20px 0">' +
+      '<div class="eth-tabs" style="margin:0 0 16px 0">' +
       levels.map(function(lv) {
         return '<button class="eth-tab ' + (lv === curLevel ? 'active' : '') + '" data-lvl="' + lv + '">' + lv + ' Daraja</button>';
       }).join('') +
+      '</div>' +
+      '<div class="ap-card" id="levelTransitionCard" style="cursor:pointer;background:linear-gradient(135deg, #0f172a, #1e3a8a);color:#ffffff;border-radius:16px;padding:16px 20px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 6px 20px rgba(15,23,42,0.15)">' +
+      '  <div>' +
+      '    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">' +
+      '      <span style="background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:12px;font-size:11.5px;font-weight:700">🏆 CEFR Bosqich Imtihoni</span>' +
+      '      <span class="eth-coming-soon-badge" style="background:#fef08a;color:#854d0e;font-size:10px">Coming Soon · Tez Kunda</span>' +
+      '    </div>' +
+      '    <h3 style="font-size:17px;margin:0 0 4px;color:#ffffff">' + curLevel + ' &rarr; ' + nextLv + ' Daraja Testi (' + curLevel + ' dan ' + nextLv + ' ga o\'tish imtihoni)</h3>' +
+      '    <p style="margin:0;opacity:0.85;font-size:12.5px">Barcha 40 ta mavzuni tamomlagach, keyingi darajaga rasmiy o\'tish imtihonini topshiring.</p>' +
+      '  </div>' +
+      '  <button class="ap-btn" style="background:#ffffff;color:#1e3a8a;font-weight:700;border:none;padding:10px 18px;border-radius:10px;cursor:pointer;font-size:13px">Testni Boshlash &rarr;</button>' +
       '</div>' +
       '<div style="font-size:14px;color:var(--muted);margin-bottom:12px">' +
       (isTeacher ? '<b>O\'qituvchi holati:</b> Barcha 40 ta mavzu ochiq.' : '<b>Ochilgan mavzular:</b> ' + unlockedCount + ' / 40') +
@@ -257,6 +271,13 @@
 
     html += '</div>';
     container.innerHTML = html;
+
+    var transCard = container.querySelector('#levelTransitionCard');
+    if (transCard) {
+      transCard.onclick = function() {
+        App.showComingSoon(curLevel + " dan " + nextLv + " ga o'tish daraja testi (CEFR Transition Test)");
+      };
+    }
 
     container.querySelectorAll('.eth-tab').forEach(function(tab) {
       tab.onclick = function() {
@@ -908,8 +929,25 @@
       currentReplyingMessage = null;
       input.value = '';
       App.saveState();
+      if (window.EthithSync) {
+        window.EthithSync.broadcastLocal(S.classes, S.exams);
+        window.EthithSync.pushRemoteStore(S.classes, S.exams);
+      }
       renderClassDetail(container, cls);
     }
+
+    window._ethithRefreshCurrentClass = function() {
+      var latestCls = S.classes.find(function(c) { return c.id === cls.id; });
+      if (latestCls && document.getElementById('tgMsgBox')) {
+        var msgBox = document.getElementById('tgMsgBox');
+        var wasAtBottom = (msgBox.scrollHeight - msgBox.scrollTop <= msgBox.clientHeight + 60);
+        renderClassDetail(container, latestCls);
+        var newBox = document.getElementById('tgMsgBox');
+        if (newBox && wasAtBottom) {
+          newBox.scrollTop = newBox.scrollHeight;
+        }
+      }
+    };
 
     document.getElementById('tgSendBtn').onclick = sendMessage;
     document.getElementById('tgInputText').onkeydown = function(e) {
@@ -1764,21 +1802,26 @@
   }
 
   function runPlacementTest(mainContainer, questions) {
-    var timeLeft = 90 * 60;
+    var timeLeft = 90 * 60; // Exactly 1.5 hours (90 minutes) total for all 70 questions
     var state = {
       i: 0,
       score: 0,
       answers: {}
     };
 
+    function formatTime(sec) {
+      if (sec < 0) sec = 0;
+      var hrs = Math.floor(sec / 3600);
+      var m = Math.floor((sec % 3600) / 60);
+      var s = sec % 60;
+      return (hrs < 10 ? '0' : '') + hrs + ':' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
     var interval = setInterval(function() {
       timeLeft--;
       var badge = document.getElementById('plcTimer');
       if (badge) {
-        var hrs = Math.floor(timeLeft / 3600);
-        var m = Math.floor((timeLeft % 3600) / 60);
-        var s = timeLeft % 60;
-        badge.textContent = (hrs < 10 ? '0' : '') + hrs + ':' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+        badge.textContent = formatTime(timeLeft);
       }
       if (timeLeft <= 0) {
         clearInterval(interval);
@@ -1799,12 +1842,12 @@
       var html = '' +
         '<div class="ap-quiz">' +
         '  <div class="ap-qtop">' +
-        '    <div class="eth-timer-badge">' + ic('clock') + ' <span id="plcTimer">01:30:00</span></div>' +
+        '    <div class="eth-timer-badge" title="Butun 70 ta savol uchun umumiy 1.5 soat vaqt">' + ic('clock') + ' <span id="plcTimer">' + formatTime(timeLeft) + '</span></div>' +
         '    <div class="ap-bar"><i style="width:' + ((state.i / questions.length) * 100) + '%"></i></div>' +
         '    <b>' + (state.i + 1) + ' / ' + questions.length + '</b>' +
         '  </div>' +
         '  <div class="ap-qbox">' +
-        '    <div class="qn">Placement Test · Savol ' + (state.i + 1) + '</div>' +
+        '    <div class="qn">Placement Test (1.5 soatlik umumiy imtihon) · Savol ' + (state.i + 1) + ' / 70</div>' +
         '    <h2>' + esc(q.prompt) + '</h2>' +
         '    <div>' +
         ['A', 'B', 'C', 'D'].map(function(key) {
