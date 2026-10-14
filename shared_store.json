@@ -112,11 +112,21 @@
           "time": "23:55",
           "replyTo": null,
           "reactions": {}
+        },
+        {
+          "id": "msg_1792004197942",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "salom bollar",
+          "time": "23:56",
+          "replyTo": null,
+          "reactions": {}
         }
       ],
       "pinnedId": null
     }
   ],
   "exams": [],
-  "updatedAt": 1792004149808
+  "updatedAt": 1792004198483
 }
