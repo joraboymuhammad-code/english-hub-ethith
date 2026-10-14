@@ -1,14 +1,43 @@
 {
   "classes": [
     {
-      "id": "cls_default_1",
+      "id": "cls_1791996374490",
+      "name": "IELTS GURuh",
       "code": "ETH-L6S8CM",
-      "name": "IELTS Band 7.0+ Intensive Class",
-      "teacherName": "Ustoz Muhammadyusuf",
-      "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1791997894796,
-      "students": [],
+      "teacherId": "tc_l78sgm19w",
+      "teacherName": "Muhammadyusuf",
+      "teacherEmail": "joraboymuhammad@gmail.com",
+      "students": [
+        {
+          "id": "std_sync_test",
+          "name": "John Doe",
+          "email": "john.doe@example.com",
+          "joinedAt": "23:25:42",
+          "activeMinutes": 25,
+          "mistakesCount": 0
+        },
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 180,
+          "mistakes": 0
+        }
+      ],
       "messages": [
+        {
+          "id": "msg_init",
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "text": "Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.",
+          "time": "21:46",
+          "reactions": {
+            "💡": [
+              "joraboymuhammad@gmail.com"
+            ]
+          }
+        },
         {
           "id": "msg_welcome",
           "senderId": "joraboyevmuhammad85@gmail.com",
@@ -20,9 +49,217 @@
               "joraboyevmuhammad85@gmail.com"
             ]
           }
+        },
+        {
+          "id": "msg_welcome_1",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Instructor Muhammadyusuf",
+          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_1791999662082",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "salom",
+          "time": "22:41",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004029227",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "salom ustoz",
+          "time": "23:53",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004041390",
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "joraboymuhammad@gmail.com",
+          "text": "ha nima",
+          "time": "23:54",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004086410",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "ehh",
+          "time": "23:54",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004119054",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "tushunmadim",
+          "time": "23:55",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004197942",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "salom bollar",
+          "time": "23:56",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792004266356",
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "ha nima",
+          "time": "23:57",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792010013836_uue80",
+          "timestamp": 1792010013836,
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "alyo",
+          "time": "01:33",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792010089283_gyw3y",
+          "timestamp": 1792010089283,
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "joraboymuhammad@gmail.com",
+          "text": "salom",
+          "time": "01:34",
+          "replyTo": null,
+          "reactions": {
+            "🎉": [
+              "joraboymuhammad@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_1792010194998_vg8w3",
+          "timestamp": 1792010194998,
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "joraboymuhammad@gmail.com",
+          "text": "alyo",
+          "time": "01:36",
+          "replyTo": null,
+          "reactions": {}
         }
-      ]
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": []
     }
   ],
-  "exams": []
+  "exams": [
+    {
+      "id": "exam_1792011716430",
+      "code": "407221",
+      "title": "English Examination 2026",
+      "duration": 30,
+      "pointsPerQ": 2,
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "question": "Go___open game",
+          "options": [
+            "asd",
+            "asdasdas",
+            "asdasdc",
+            "asdasdasd"
+          ],
+          "answer": "asdasdc"
+        }
+      ],
+      "submissions": [
+        {
+          "studentId": "muhammedjoraboyev1@gmail.com",
+          "studentName": "Muhammadyusuf",
+          "studentEmail": "muhammedjoraboyev1@gmail.com",
+          "score": 0,
+          "totalPossible": 2,
+          "percent": 0,
+          "timeSpent": "0 min",
+          "date": "02:02"
+        },
+        {
+          "studentId": "muhammedjoraboyev1@gmail.com",
+          "studentName": "Muhammadyusuf",
+          "studentEmail": "muhammedjoraboyev1@gmail.com",
+          "score": 0,
+          "totalPossible": 2,
+          "percent": 0,
+          "timeSpent": "0 min",
+          "date": "02:02"
+        },
+        {
+          "studentId": "muhammedjoraboyev1@gmail.com",
+          "studentName": "Muhammadyusuf",
+          "studentEmail": "muhammedjoraboyev1@gmail.com",
+          "score": 0,
+          "totalPossible": 2,
+          "percent": 0,
+          "timeSpent": "0 min",
+          "date": "02:02"
+        },
+        {
+          "studentId": "muhammedjoraboyev1@gmail.com",
+          "studentName": "Muhammadyusuf",
+          "studentEmail": "muhammedjoraboyev1@gmail.com",
+          "score": 2,
+          "totalPossible": 2,
+          "percent": 100,
+          "timeSpent": "0 min",
+          "date": "02:02"
+        }
+      ]
+    },
+    {
+      "id": "exam_1792011898176",
+      "code": "890700",
+      "title": "English Examination 2026",
+      "duration": 30,
+      "pointsPerQ": 1,
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "question": "basdhjbashjdb___wahdjkashdjkha",
+          "options": [
+            "shadjkhasjk",
+            "jsahdkha",
+            "ijsdhjk",
+            "None"
+          ],
+          "answer": "shadjkhasjk"
+        }
+      ],
+      "submissions": []
+    }
+  ],
+  "updatedAt": 1792015720951
 }
