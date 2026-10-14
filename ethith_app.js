@@ -192,67 +192,88 @@
     overlay.innerHTML = html;
     document.body.appendChild(overlay);
 
-    var tabStudentBtn = document.getElementById('tabStudentBtn');
-    var tabTeacherBtn = document.getElementById('tabTeacherBtn');
-    var studentFormBox = document.getElementById('studentFormBox');
-    var teacherFormBox = document.getElementById('teacherFormBox');
+    var tabStudentBtn = overlay.querySelector('#tabStudentBtn');
+    var tabTeacherBtn = overlay.querySelector('#tabTeacherBtn');
+    var studentFormBox = overlay.querySelector('#studentFormBox');
+    var teacherFormBox = overlay.querySelector('#teacherFormBox');
 
-    tabStudentBtn.onclick = function() {
-      tabStudentBtn.classList.add('active');
-      tabTeacherBtn.classList.remove('active');
-      studentFormBox.style.display = 'block';
-      teacherFormBox.style.display = 'none';
-    };
-
-    tabTeacherBtn.onclick = function() {
-      tabTeacherBtn.classList.add('active');
-      tabStudentBtn.classList.remove('active');
-      studentFormBox.style.display = 'none';
-      teacherFormBox.style.display = 'block';
-    };
-
-    document.getElementById('studentAuthForm').onsubmit = function(e) {
-      e.preventDefault();
-      var name = document.getElementById('stName').value.trim();
-      var email = document.getElementById('stEmail').value.trim();
-      var pin = document.getElementById('stPin').value.trim();
-
-      S.user = {
-        id: 'st_' + Math.random().toString(36).substr(2, 9),
-        role: 'student',
-        name: name,
-        email: email,
-        dailyMinutes: 0
+    if (tabStudentBtn && tabTeacherBtn) {
+      tabStudentBtn.onclick = function() {
+        tabStudentBtn.classList.add('active');
+        tabTeacherBtn.classList.remove('active');
+        studentFormBox.style.display = 'block';
+        teacherFormBox.style.display = 'none';
       };
-      saveState();
-      overlay.remove();
-      window.ethithOpenApp('dash');
-    };
 
-    document.getElementById('teacherAuthForm').onsubmit = function(e) {
-      e.preventDefault();
-      var name = document.getElementById('tcName').value.trim();
-      var email = document.getElementById('tcEmail').value.trim();
-      var masterKey = document.getElementById('tcMasterKey').value.trim();
-
-      var currentMaster = localStorage.getItem('ethith_teacher_master') || DEFAULT_TEACHER_KEY;
-
-      if (masterKey !== currentMaster) {
-        alert("Xatolik: O'qituvchi maxfiy kodi noto'g'ri! Iltimos, to'g'ri master kodni kiriting.");
-        return;
-      }
-
-      S.user = {
-        id: 'tc_' + Math.random().toString(36).substr(2, 9),
-        role: 'teacher',
-        name: name,
-        email: email,
-        dailyMinutes: 0
+      tabTeacherBtn.onclick = function() {
+        tabTeacherBtn.classList.add('active');
+        tabStudentBtn.classList.remove('active');
+        studentFormBox.style.display = 'none';
+        teacherFormBox.style.display = 'block';
       };
-      saveState();
-      overlay.remove();
-      window.ethithOpenApp('dash');
-    };
+    }
+
+    var stForm = overlay.querySelector('#studentAuthForm');
+    if (stForm) {
+      stForm.onsubmit = function(e) {
+        e.preventDefault();
+        var nameInput = overlay.querySelector('#stName');
+        var emailInput = overlay.querySelector('#stEmail');
+        var pinInput = overlay.querySelector('#stPin');
+
+        var name = (nameInput ? nameInput.value : '').trim();
+        var email = (emailInput ? emailInput.value : '').trim();
+        var pin = (pinInput ? pinInput.value : '').trim();
+
+        if (!name || !email || !pin) {
+          alert("Iltimos, barcha maydonlarni to'ldiring!");
+          return;
+        }
+
+        S.user = {
+          id: 'st_' + Math.random().toString(36).substr(2, 9),
+          role: 'student',
+          name: name,
+          email: email,
+          dailyMinutes: 0
+        };
+        saveState();
+        overlay.remove();
+        window.ethithOpenApp('dash');
+      };
+    }
+
+    var tcForm = overlay.querySelector('#teacherAuthForm');
+    if (tcForm) {
+      tcForm.onsubmit = function(e) {
+        e.preventDefault();
+        var nameInput = overlay.querySelector('#tcName');
+        var emailInput = overlay.querySelector('#tcEmail');
+        var masterInput = overlay.querySelector('#tcMasterKey');
+
+        var name = (nameInput ? nameInput.value : '').trim();
+        var email = (emailInput ? emailInput.value : '').trim();
+        var masterKey = (masterInput ? masterInput.value : '').trim();
+
+        var currentMaster = localStorage.getItem('ethith_teacher_master') || DEFAULT_TEACHER_KEY;
+
+        if (masterKey !== currentMaster) {
+          alert("Xatolik: O'qituvchi maxfiy kodi noto'g'ri! Iltimos, to'g'ri master kodni kiriting.");
+          return;
+        }
+
+        S.user = {
+          id: 'tc_' + Math.random().toString(36).substr(2, 9),
+          role: 'teacher',
+          name: name,
+          email: email,
+          dailyMinutes: 0
+        };
+        saveState();
+        overlay.remove();
+        window.ethithOpenApp('dash');
+      };
+    }
   }
 
   // 2. Coming Soon Modal
@@ -280,6 +301,32 @@
     saveState: saveState,
     ic: ic,
     esc: esc
+  };
+
+
+  window.ethithOpenApp = function(n, a) {
+    if (!S.user) {
+      showAuthModal();
+      return;
+    }
+    var landing = document.getElementById('landing');
+    var ap = document.getElementById('app');
+    if (landing) landing.style.display = 'none';
+    if (ap) {
+      ap.style.display = 'block';
+      ap.setAttribute('data-theme', S.theme);
+    }
+    if (window._ethithInternalGo) {
+      window._ethithInternalGo(n || 'dash', a || null);
+    }
+  };
+
+  window.ethithShowLanding = function() {
+    var ap = document.getElementById('app');
+    var landing = document.getElementById('landing');
+    if (ap) ap.style.display = 'none';
+    if (landing) landing.style.display = '';
+    window.scrollTo(0, 0);
   };
 
 })(window);
