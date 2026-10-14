@@ -16,7 +16,7 @@
       name: 'IELTS & General English Intensive',
       code: 'ETH-L6S8CM',
       teacherId: 'joraboyevmuhammad85@gmail.com',
-      teacherName: 'Ustoz Muhammadyusuf',
+      teacherName: 'Instructor Muhammadyusuf',
       teacherEmail: 'joraboyevmuhammad85@gmail.com',
       created: Date.now(),
       students: [],
@@ -24,8 +24,8 @@
         {
           id: 'msg_welcome_1',
           senderId: 'joraboyevmuhammad85@gmail.com',
-          senderName: 'Ustoz Muhammadyusuf',
-          text: 'Assalomu alaykum! ETHITH rasmiy sinfiga xush kelibsiz. Bu yerda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.',
+          senderName: 'Instructor Muhammadyusuf',
+          text: 'Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.',
           time: '12:00',
           reactions: { '👍': ['joraboyevmuhammad85@gmail.com'] }
         }
@@ -178,47 +178,47 @@
       '    <div style="display:flex;justify-content:center;margin-bottom:8px">' +
       '      <svg width="150" height="48" viewBox="0 0 160 56"><defs><linearGradient id="mlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4e93e4"/><stop offset="1" stop-color="#154b89"/></linearGradient></defs><rect x="0" y="4" width="48" height="48" rx="13" fill="url(#mlg)"/><path d="M13 29l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="58" y="25" font-family="sans-serif" font-weight="800" font-size="24" fill="#0e325c">ETHITH</text><text x="58" y="50" font-family="sans-serif" font-weight="800" font-size="21" fill="#4e93e4">TESTS</text></svg>' +
       '    </div>' +
-      '    <h2>Platformaga Kirish</h2>' +
-      '    <p>O\'quvchi yoki O\'qituvchi sifatida tizimga kiring</p>' +
+      '    <h2>Sign In to Platform</h2>' +
+      '    <p>Sign in as a Student or Teacher to access your portal</p>' +
       '  </div>' +
       '  <div class="eth-tabs">' +
-      '    <button class="eth-tab active" id="tabStudentBtn">O\'quvchi (Student)</button>' +
-      '    <button class="eth-tab" id="tabTeacherBtn">O\'qituvchi (Teacher)</button>' +
+      '    <button class="eth-tab active" id="tabStudentBtn">Student</button>' +
+      '    <button class="eth-tab" id="tabTeacherBtn">Teacher</button>' +
       '  </div>' +
       '  <div class="eth-modal-body">' +
       '    <div id="studentFormBox">' +
       '      <form id="studentAuthForm">' +
       '        <div class="eth-form-group">' +
-      '          <label>Ismingiz</label>' +
-      '          <input type="text" id="stName" placeholder="Ism familiyangiz" required>' +
+      '          <label>Full Name</label>' +
+      '          <input type="text" id="stName" placeholder="Your full name" required>' +
       '        </div>' +
       '        <div class="eth-form-group">' +
-      '          <label>Gmail Pochta</label>' +
-      '          <input type="email" id="stEmail" placeholder="example@gmail.com" required>' +
+      '          <label>Gmail Address</label>' +
+      '          <input type="email" id="stEmail" placeholder="yourname@gmail.com" required>' +
       '        </div>' +
       '        <div class="eth-form-group">' +
-      '          <label>Parol (6 xonali)</label>' +
-      '          <input type="password" id="stPin" placeholder="6 xonali parol" minlength="6" maxlength="20" required>' +
+      '          <label>Security PIN / Password (6+ chars)</label>' +
+      '          <input type="password" id="stPin" placeholder="6-digit security code" minlength="6" maxlength="20" required>' +
       '        </div>' +
-      '        <button type="submit" class="eth-btn-primary">O\'quvchi Sifatida Kirish ' + ic('right') + '</button>' +
+      '        <button type="submit" class="eth-btn-primary">Sign in as Student ' + ic('right') + '</button>' +
       '      </form>' +
       '    </div>' +
       '    <div id="teacherFormBox" style="display:none">' +
       '      <form id="teacherAuthForm">' +
       '        <div class="eth-form-group">' +
-      '          <label>O\'qituvchi Ismi</label>' +
-      '          <input type="text" id="tcName" placeholder="Ustoz ism familiyasi" required>' +
+      '          <label>Teacher Name</label>' +
+      '          <input type="text" id="tcName" placeholder="Instructor name" required>' +
       '        </div>' +
       '        <div class="eth-form-group">' +
-      '          <label>Email</label>' +
+      '          <label>Email Address</label>' +
       '          <input type="email" id="tcEmail" placeholder="teacher@gmail.com" required>' +
       '        </div>' +
       '        <div class="eth-form-group">' +
-      '          <label>Maxfiy Master Kod (15+ belgili)</label>' +
-      '          <input type="password" id="tcMasterKey" placeholder="O\'qituvchi maxfiy kodi" required>' +
-      '          <small style="color:var(--muted);font-size:12px;margin-top:4px;display:block">Faqat ruxsat berilgan o\'qituvchilar uchun</small>' +
+      '          <label>Secret Master Key (15+ chars)</label>' +
+      '          <input type="password" id="tcMasterKey" placeholder="Enter teacher secret key" required>' +
+      '          <small style="color:var(--muted);font-size:12px;margin-top:4px;display:block">Authorized instructors only</small>' +
       '        </div>' +
-      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb)">O\'qituvchi Paneliga Kirish ' + ic('right') + '</button>' +
+      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb)">Sign in as Teacher ' + ic('right') + '</button>' +
       '      </form>' +
       '    </div>' +
       '  </div>' +
@@ -261,7 +261,7 @@
         var pin = (pinInput ? pinInput.value : '').trim();
 
         if (!name || !email || !pin) {
-          alert("Iltimos, barcha maydonlarni to'ldiring!");
+          alert("Please fill in all required fields!");
           return;
         }
 
@@ -293,7 +293,7 @@
         var currentMaster = localStorage.getItem('ethith_teacher_master') || DEFAULT_TEACHER_KEY;
 
         if (masterKey !== currentMaster) {
-          alert("Xatolik: O'qituvchi maxfiy kodi noto'g'ri! Iltimos, to'g'ri master kodni kiriting.");
+          alert("Authentication Error: Incorrect instructor master key! Please enter the valid code.");
           return;
         }
 
@@ -319,9 +319,9 @@
       '<div class="eth-modal" style="text-align:center;padding:32px 24px">' +
       '  <div style="font-size:48px;margin-bottom:12px">🚀</div>' +
       '  <h2 style="font-size:22px;color:var(--eth-primary);margin-bottom:8px">' + esc(featureName) + '</h2>' +
-      '  <div style="display:inline-block;margin-bottom:16px"><span class="eth-coming-soon-badge">Coming Soon · Tez Kunda</span></div>' +
-      '  <p style="color:var(--muted);font-size:14.5px;line-height:1.6;margin-bottom:24px">Ushbu bo\'lim hozirda takomillashtirilmoqda va tez kunda foydalanishga topshiriladi. Hozirda A1-C2 darajalar, Ask AI Teacher, Sinflar va Imtihonlardan to\'liq foydalanishingiz mumkin.</p>' +
-      '  <button class="eth-btn-primary" id="csClose">Tushundim ' + ic('check') + '</button>' +
+      '  <div style="display:inline-block;margin-bottom:16px"><span class="eth-coming-soon-badge">Coming Soon</span></div>' +
+      '  <p style="color:var(--muted);font-size:14.5px;line-height:1.6;margin-bottom:24px">This section is currently under active development and will be available soon. You can currently practice all A1-C2 topics, Ask AI Teacher, Classrooms, and Exams.</p>' +
+      '  <button class="eth-btn-primary" id="csClose">Got It ' + ic('check') + '</button>' +
       '</div>';
     document.body.appendChild(overlay);
     overlay.querySelector('#csClose').onclick = function() {

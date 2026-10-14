@@ -5,7 +5,7 @@
  * - Classes & Telegram Web Chat (Double-click reply, Long-press menu, Reactions with dynamic order, Pin & Delete)
  * - Exam System (PDF to Quiz, 6-digit code, Countdown timer, Live Leaderboard)
  * - 70-question Language Hub Placement Test
- * - Mistakes Notebook (Xatolar Daftari)
+ * - Mistakes Notebook
  */
 
 (function(window) {
@@ -36,16 +36,16 @@
     var html = '' +
       '<div class="ask-ai-container">' +
       '  <div class="ask-ai-sidebar">' +
-      '    <button class="eth-btn-primary" id="aiNewChatBtn" style="margin-bottom:14px;padding:10px 14px;font-size:13.5px">' + ic('plus') + ' Yangi Suhbat</button>' +
+      '    <button class="eth-btn-primary" id="aiNewChatBtn" style="margin-bottom:14px;padding:10px 14px;font-size:13.5px">' + ic('plus') + ' New Chat</button>' +
       '    <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Tavsiya So\'rovlar</div>' +
       '    <div style="display:flex;flex-direction:column;gap:6px;overflow-y:auto;flex:1">' +
-      '      <button class="ap-item ai-prompt-pill" data-p="IELTS Speaking 7.0+ uchun namunaviy javob va foydali iboralar ber">' + ic('sparkles') + ' IELTS Speaking shablon</button>' +
-      '      <button class="ap-item ai-prompt-pill" data-p="Present Perfect va Past Simple farqini 5 ta misol bilan tushuntir">' + ic('book') + ' Grammatika farqlari</button>' +
-      '      <button class="ap-item ai-prompt-pill" data-p="Ingliz tilida 10 ta eng ko\'p ishlatiladigan phrasal verblar">' + ic('layers') + ' Phrasal Verblar</button>' +
-      '      <button class="ap-item ai-prompt-pill" data-p="Ingliz tili darajamni qanday qilib tezroq oshirsam bo\'ladi?">' + ic('trophy') + ' O\'rganish maslahatlari</button>' +
+      '      <button class="ap-item ai-prompt-pill" data-p="Provide a sample Band 7.0+ response and idioms for IELTS Speaking">' + ic('sparkles') + ' IELTS Speaking Template</button>' +
+      '      <button class="ap-item ai-prompt-pill" data-p="Explain the difference between Present Perfect and Past Simple with examples">' + ic('book') + ' Grammar Differences</button>' +
+      '      <button class="ap-item ai-prompt-pill" data-p="Ingliz tilida 10 ta eng ko\'p ishlatiladigan phrasal verblar">' + ic('layers') + ' Phrasal Verbs</button>' +
+      '      <button class="ap-item ai-prompt-pill" data-p="How can I quickly improve my English proficiency?">' + ic('trophy') + ' Learning Strategies</button>' +
       '    </div>' +
       '    <div style="padding-top:12px;border-top:1px solid var(--border);font-size:11.5px;color:var(--muted);text-align:center">' +
-      '      <b>ETHITH AI Ustoz</b><br>Yaratuvchi: Muhammadyusuf Jo\'raboyev' +
+      '      <b>ETHITH AI Teacher</b><br>Created by: Muhammadyusuf Jo\'raboyev' +
       '    </div>' +
       '  </div>' +
       '  <div class="ask-ai-main">' +
@@ -53,8 +53,8 @@
       (history.length === 0 ?
         '<div style="text-align:center;margin:auto;max-width:520px;padding:20px">' +
         '  <div style="font-size:44px;margin-bottom:10px">🤖</div>' +
-        '  <h2 style="font-size:24px;font-weight:800;color:#1e293b;margin-bottom:8px">ETHITH AI Ustoz</h2>' +
-        '  <p style="color:#64748b;font-size:14.5px;line-height:1.6">Ingliz tili grammatikasi, testlar, so\'zlar yoki boshqa fanlar bo\'yicha istalgan savolingizni bering. Rasm yoki hujjat (PDF) yuklashingiz ham mumkin!</p>' +
+        '  <h2 style="font-size:24px;font-weight:800;color:#1e293b;margin-bottom:8px">ETHITH AI Teacher</h2>' +
+        '  <p style="color:#64748b;font-size:14.5px;line-height:1.6">Ask any questions regarding English grammar, quizzes, vocabulary, or learning roadmaps. You can also upload images or PDF documents!</p>' +
         '</div>' :
         history.map(function(m) {
           return '<div class="ask-ai-msg ' + m.role + '">' +
@@ -71,10 +71,10 @@
       '    <div id="aiFilePreview" style="display:none;padding:6px 24px;background:var(--bg2);font-size:12.5px;border-top:1px solid var(--border);align-items:center;justify-content:space-between"></div>' +
       '    <div class="ask-ai-input-bar">' +
       '      <form id="aiChatForm" class="ask-ai-input-wrap">' +
-      '        <label for="aiFileInput" class="ask-ai-btn" title="Rasm yoki hujjat biriktirish" style="cursor:pointer">' + ic('paperclip') + '</label>' +
+      '        <label for="aiFileInput" class="ask-ai-btn" title="Attach image or document" style="cursor:pointer">' + ic('paperclip') + '</label>' +
       '        <input type="file" id="aiFileInput" style="display:none" accept="image/*,.pdf,.txt,.doc,.docx">' +
-      '        <textarea id="aiPromptInput" rows="1" placeholder="ETHITH AI ga savol bering..." required></textarea>' +
-      '        <button type="submit" class="ask-ai-btn ask-ai-send" title="Yuborish">' + ic('send') + '</button>' +
+      '        <textarea id="aiPromptInput" rows="1" placeholder="Ask ETHITH AI any question..." required></textarea>' +
+      '        <button type="submit" class="ask-ai-btn ask-ai-send" title="Send message">' + ic('send') + '</button>' +
       '      </form>' +
       '    </div>' +
       '  </div>' +
@@ -104,7 +104,7 @@
             previewUrl: ev.target.result
           };
           filePreview.style.display = 'flex';
-          filePreview.innerHTML = '<span>🖼️ Rasm tanlandi: <b>' + esc(file.name) + '</b></span><button id="aiRemoveFile" style="background:none;border:none;cursor:pointer;color:red">✕</button>';
+          filePreview.innerHTML = '<span>🖼️ Image attached: <b>' + esc(file.name) + '</b></span><button id="aiRemoveFile" style="background:none;border:none;cursor:pointer;color:red">✕</button>';
           document.getElementById('aiRemoveFile').onclick = function() {
             currentAttachment = null;
             filePreview.style.display = 'none';
@@ -120,7 +120,7 @@
             textData: ev.target.result
           };
           filePreview.style.display = 'flex';
-          filePreview.innerHTML = '<span>📄 Hujjat tanlandi: <b>' + esc(file.name) + '</b></span><button id="aiRemoveFile" style="background:none;border:none;cursor:pointer;color:red">✕</button>';
+          filePreview.innerHTML = '<span>📄 Document attached: <b>' + esc(file.name) + '</b></span><button id="aiRemoveFile" style="background:none;border:none;cursor:pointer;color:red">✕</button>';
           document.getElementById('aiRemoveFile').onclick = function() {
             currentAttachment = null;
             filePreview.style.display = 'none';
@@ -169,7 +169,7 @@
       // Loading bubble
       var loadingBubble = document.createElement('div');
       loadingBubble.className = 'ask-ai-msg ai';
-      loadingBubble.innerHTML = '<div class="ask-ai-avatar">AI</div><div class="ask-ai-bubble" style="opacity:0.7">ETHITH AI javob tayyorlamoqda...</div>';
+      loadingBubble.innerHTML = '<div class="ask-ai-avatar">AI</div><div class="ask-ai-bubble" style="opacity:0.7">ETHITH AI is thinking...</div>';
       document.getElementById('aiMsgBox').appendChild(loadingBubble);
       document.getElementById('aiMsgBox').scrollTop = document.getElementById('aiMsgBox').scrollHeight;
 
@@ -184,7 +184,7 @@
         renderAskAITeacher(container);
       } catch (err) {
         loadingBubble.remove();
-        alert("Xatolik yuz berdi: " + err.message);
+        alert("Error occurred: " + err.message);
       }
     };
   }
@@ -225,29 +225,29 @@
     var html = '' +
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
-      '    <h2>' + ic('layers') + ' CEFR Ingliz Tili Darajalari (40 ta Mavzu)</h2>' +
-      '    <p>Har bir mavzuni 70% dan yuqori ball bilan tamomlang va keyingi bosqichni oching.</p>' +
+      '    <h2>' + ic('layers') + ' CEFR English Levels (40 Topics)</h2>' +
+      '    <p>Score 70% or higher on each topic quiz to unlock the next lesson.</p>' +
       '  </div>' +
       (isTeacher ? '  <button class="ap-btn solid" id="tcAddTestBtn">' + ic('plus') + ' Yangi Test Qo\'shish</button>' : '') +
       '</div>' +
       '<div class="eth-tabs" style="margin:0 0 16px 0">' +
       levels.map(function(lv) {
-        return '<button class="eth-tab ' + (lv === curLevel ? 'active' : '') + '" data-lvl="' + lv + '">' + lv + ' Daraja</button>';
+        return '<button class="eth-tab ' + (lv === curLevel ? 'active' : '') + '" data-lvl="' + lv + '">' + lv + ' Level</button>';
       }).join('') +
       '</div>' +
       '<div class="ap-card" id="levelTransitionCard" style="cursor:pointer;background:linear-gradient(135deg, #0f172a, #1e3a8a);color:#ffffff;border-radius:16px;padding:16px 20px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 6px 20px rgba(15,23,42,0.15)">' +
       '  <div>' +
       '    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">' +
-      '      <span style="background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:12px;font-size:11.5px;font-weight:700">🏆 CEFR Bosqich Imtihoni</span>' +
+      '      <span style="background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:12px;font-size:11.5px;font-weight:700">🏆 CEFR Level Exam</span>' +
       '      <span class="eth-coming-soon-badge" style="background:#fef08a;color:#854d0e;font-size:10px">Coming Soon · Tez Kunda</span>' +
       '    </div>' +
-      '    <h3 style="font-size:17px;margin:0 0 4px;color:#ffffff">' + curLevel + ' &rarr; ' + nextLv + ' Daraja Testi (' + curLevel + ' dan ' + nextLv + ' ga o\'tish imtihoni)</h3>' +
-      '    <p style="margin:0;opacity:0.85;font-size:12.5px">Barcha 40 ta mavzuni tamomlagach, keyingi darajaga rasmiy o\'tish imtihonini topshiring.</p>' +
+      '    <h3 style="font-size:17px;margin:0 0 4px;color:#ffffff">' + curLevel + ' &rarr; ' + nextLv + ' Level Test (' + curLevel + ' to ' + nextLv + ' Transition Exam)</h3>' +
+      '    <p style="margin:0;opacity:0.85;font-size:12.5px">Complete all 40 topics to unlock and take the official transition exam to the next level.</p>' +
       '  </div>' +
-      '  <button class="ap-btn" style="background:#ffffff;color:#1e3a8a;font-weight:700;border:none;padding:10px 18px;border-radius:10px;cursor:pointer;font-size:13px">Testni Boshlash &rarr;</button>' +
+      '  <button class="ap-btn" style="background:#ffffff;color:#1e3a8a;font-weight:700;border:none;padding:10px 18px;border-radius:10px;cursor:pointer;font-size:13px">Start Test &rarr;</button>' +
       '</div>' +
       '<div style="font-size:14px;color:var(--muted);margin-bottom:12px">' +
-      (isTeacher ? '<b>O\'qituvchi holati:</b> Barcha 40 ta mavzu ochiq.' : '<b>Ochilgan mavzular:</b> ' + unlockedCount + ' / 40') +
+      (isTeacher ? '<b>Teacher Mode:</b> All 40 topics unlocked.' : '<b>Unlocked Topics:</b> ' + unlockedCount + ' / 40') +
       '</div>' +
       '<div class="eth-topics-grid">';
 
@@ -256,15 +256,15 @@
       html += '' +
         '<div class="eth-topic-card ' + (isUnlocked ? '' : 'locked') + '" data-topic-num="' + t.num + '" data-topic-title="' + esc(t.title) + '">' +
         '  <div class="eth-topic-top">' +
-        '    <span class="eth-topic-badge">' + curLevel + ' · Mavzu ' + t.num + '</span>' +
+        '    <span class="eth-topic-badge">' + curLevel + ' · Topic ' + t.num + '</span>' +
         '    <span>' + (isUnlocked ? ic('unlock', 'text-success') : ic('lock', 'text-muted')) + '</span>' +
         '  </div>' +
         '  <h4>' + esc(t.title) + '</h4>' +
         '  <p>' + esc(t.desc) + '</p>' +
         '  <div style="margin-top:14px">' +
         (isUnlocked ?
-          '<button class="ap-btn solid" style="width:100%;padding:8px 12px;font-size:13px">Testni Boshlash ' + ic('right') + '</button>' :
-          '<span style="font-size:12px;color:var(--muted)">Oldingi mavzuni 70%+ bajaring</span>') +
+          '<button class="ap-btn solid" style="width:100%;padding:8px 12px;font-size:13px">Start Test ' + ic('right') + '</button>' :
+          '<span style="font-size:12px;color:var(--muted)">Score 70%+ on previous topic to unlock</span>') +
         '  </div>' +
         '</div>';
     });
@@ -275,7 +275,7 @@
     var transCard = container.querySelector('#levelTransitionCard');
     if (transCard) {
       transCard.onclick = function() {
-        App.showComingSoon(curLevel + " dan " + nextLv + " ga o'tish daraja testi (CEFR Transition Test)");
+        App.showComingSoon(curLevel + " dan " + nextLv + " Level Transition Exam (CEFR Transition Test)");
       };
     }
 
@@ -288,7 +288,7 @@
     container.querySelectorAll('.eth-topic-card').forEach(function(card) {
       card.onclick = function() {
         if (card.classList.contains('locked')) {
-          alert("Ushbu mavzu hali qulflangan! Oldingi mavzuni kamida 70% ball bilan bajaring.");
+          alert("This topic is locked! Complete the previous topic with at least 70% score.");
           return;
         }
         var topicNum = parseInt(card.dataset.topicNum, 10);
@@ -314,12 +314,12 @@
     overlay.innerHTML = '' +
       '<div class="eth-modal">' +
       '  <div class="eth-modal-header">' +
-      '    <h2>' + level + ' · Mavzu ' + topicNum + '</h2>' +
+      '    <h2>' + level + ' · Topic ' + topicNum + '</h2>' +
       '    <p>' + esc(topicTitle) + '</p>' +
       '  </div>' +
       '  <div class="eth-modal-body">' +
       '    <div class="eth-form-group">' +
-      '      <label>Nechta test yechmoqchisiz? (25 dan 50 tagacha):</label>' +
+      '      <label>Select number of questions (25 to 50):</label>' +
       '      <div style="display:flex;align-items:center;gap:14px;margin-top:8px">' +
       '        <input type="range" id="quizCountSlider" min="25" max="50" value="25" step="5" style="flex:1">' +
       '        <b id="quizCountVal" style="font-size:18px;color:#2563eb;min-width:36px;text-align:right">25</b>' +
@@ -329,8 +329,8 @@
       '      💡 ETHITH AI siz tanlagan hajmda avtomatik ravishda original viktorina testlarini tuzib beradi. O\'tish bali: <b>70%</b>.' +
       '    </div>' +
       '    <div style="display:flex;gap:10px">' +
-      '      <button class="ap-btn out" id="quizPromptCancel" style="flex:1">Bekor qilish</button>' +
-      '      <button class="eth-btn-primary" id="quizPromptStart" style="flex:2">Testni Boshlash ' + ic('right') + '</button>' +
+      '      <button class="ap-btn out" id="quizPromptCancel" style="flex:1">Cancel</button>' +
+      '      <button class="eth-btn-primary" id="quizPromptStart" style="flex:2">Start Test ' + ic('right') + '</button>' +
       '    </div>' +
       '  </div>' +
       '</div>';
@@ -383,7 +383,7 @@
         '    <b>' + (state.i + 1) + ' / ' + questions.length + '</b>' +
         '  </div>' +
         '  <div class="ap-qbox">' +
-        '    <div class="qn">' + level + ' · Mavzu ' + topicNum + ' · Savol ' + (state.i + 1) + '</div>' +
+        '    <div class="qn">' + level + ' · Topic ' + topicNum + ' · Question ' + (state.i + 1) + '</div>' +
         '    <h2>' + esc(q.question) + '</h2>' +
         '    <div id="quizOptionsBox">' +
         q.options.map(function(opt, idx) {
@@ -397,7 +397,7 @@
       mainContainer.innerHTML = html;
 
       document.getElementById('quizExitBtn').onclick = function() {
-        if (confirm("Testni to'xtatmoqchimisiz? Natijalar saqlanmaydi.")) {
+        if (confirm("Are you sure you want to exit? Quiz progress will not be saved.")) {
           renderLevelsView(mainContainer, level);
         }
       };
@@ -438,7 +438,7 @@
             '  <b style="color:' + (isCorrect ? '#16a34a' : '#ef4444') + '">' + (isCorrect ? '✓ To\'g\'ri!' : '✗ Noto\'g\'ri') + '</b>' +
             '  <p style="margin:6px 0 0;font-size:13.5px;color:var(--text)">' + esc(q.explanation) + '</p>' +
             '</div>' +
-            '<button class="ap-btn solid" id="quizNextBtn">' + (state.i === questions.length - 1 ? 'Natijani ko\'rish' : 'Keyingi savol') + ' ' + ic('right') + '</button>';
+            '<button class="ap-btn solid" id="quizNextBtn">' + (state.i === questions.length - 1 ? 'View Results' : 'Next Question') + ' ' + ic('right') + '</button>';
 
           document.getElementById('quizNextBtn').onclick = function() {
             state.i++;
@@ -466,14 +466,14 @@
         '    </svg>' +
         '    <div class="c"><b>' + pct + '%</b><span>' + state.score + '/' + questions.length + '</span></div>' +
         '  </div>' +
-        '  <h2>' + (passed ? 'Tabriklaymiz! Siz o\'tdingiz!' : 'Deyarli erishdingiz!') + '</h2>' +
+        '  <h2>' + (passed ? 'Tabriklaymiz! Siz o\'tdingiz!' : 'Almost There!') + '</h2>' +
         '  <p>' + (passed ?
-          'Siz ' + level + ' darajasidagi ' + topicNum + '-mavzuni muvaffaqiyatli topshirdingiz va keyingi mavzu ochildi!' :
-          'Keyingi mavzuni ochish uchun kamida 70% to\'plashingiz kerak. Xatolar daftarini ko\'rib chiqib, qaytadan urinib ko\'ring.') + '</p>' +
+          'You successfully completed Topic ' + topicNum + ' (' + level + ') and unlocked the next topic!' :
+          'You must achieve at least 70% to unlock the next topic. Review your Mistakes Notebook and try again.') + '</p>' +
         '  <div class="acts">' +
-        '    <button class="ap-btn out" id="resBackLevelsBtn">Mavzular ro\'yxati</button>' +
-        (passed && topicNum < 40 ? '<button class="ap-btn solid" id="resNextTopicBtn">Keyingi mavzu ' + ic('right') + '</button>' : '') +
-        '    <button class="ap-btn solid" id="resRetryBtn">' + ic('clip') + ' Qaytadan topshirish</button>' +
+        '    <button class="ap-btn out" id="resBackLevelsBtn">Topics List</button>' +
+        (passed && topicNum < 40 ? '<button class="ap-btn solid" id="resNextTopicBtn">Next Topic ' + ic('right') + '</button>' : '') +
+        '    <button class="ap-btn solid" id="resRetryBtn">' + ic('clip') + ' Retake Quiz</button>' +
         '  </div>' +
         '</div>';
 
@@ -510,26 +510,26 @@
     overlay.innerHTML = '' +
       '<div class="eth-modal">' +
       '  <div class="eth-modal-header">' +
-      '    <h2>Yangi Test / Viktorina Yaratish</h2>' +
-      '    <p>O\'qituvchi yozma savollari yoki matnidan AI orqali test tuzish</p>' +
+      '    <h2>Create New Custom Quiz</h2>' +
+      '    <p>Generate AI quizzes from teacher notes, written prompts, or syllabus text</p>' +
       '  </div>' +
       '  <div class="eth-modal-body">' +
       '    <form id="tcCustomTestForm">' +
       '      <div class="eth-form-group">' +
-      '        <label>Mavzu Nomi</label>' +
+      '        <label>Topic Title</label>' +
       '        <input type="text" id="tcTestTitle" placeholder="Masalan: Passive Voice Special Rules" required>' +
       '      </div>' +
       '      <div class="eth-form-group">' +
-      '        <label>Savollar Matni / Qo\'llanma</label>' +
-      '        <textarea id="tcTestContent" rows="5" placeholder="Savollar, gaplar yoki konspekt matnini bu yerga joylang..." required></textarea>' +
+      '        <label>Questions Content / Syllabus Text</label>' +
+      '        <textarea id="tcTestContent" rows="5" placeholder="Paste your study notes, questions, or text content here..." required></textarea>' +
       '      </div>' +
       '      <div class="eth-form-group">' +
-      '        <label>Savollar Soni</label>' +
+      '        <label>Number of Questions</label>' +
       '        <input type="number" id="tcTestCount" value="25" min="10" max="50">' +
       '      </div>' +
       '      <div style="display:flex;gap:10px">' +
-      '        <button type="button" class="ap-btn out" id="tcCancelBtn" style="flex:1">Bekor qilish</button>' +
-      '        <button type="submit" class="eth-btn-primary" style="flex:2">AI Bilan Yaratish ' + ic('right') + '</button>' +
+      '        <button type="button" class="ap-btn out" id="tcCancelBtn" style="flex:1">Cancel</button>' +
+      '        <button type="submit" class="eth-btn-primary" style="flex:2">Generate with AI ' + ic('right') + '</button>' +
       '      </div>' +
       '    </form>' +
       '  </div>' +
@@ -550,24 +550,24 @@
       overlay.innerHTML = '' +
         '<div class="eth-modal" style="text-align:center;padding:40px 24px">' +
         '  <div style="font-size:42px;margin-bottom:14px">⚙️</div>' +
-        '  <h3 style="font-size:20px;color:var(--eth-primary)">ETHITH AI viktorinaga aylantirmoqda...</h3>' +
-        '  <p style="color:var(--muted);font-size:14px">Kiritilgan matndan viktorina testlari tuzilmoqda. Biroz kuting...</p>' +
+        '  <h3 style="font-size:20px;color:var(--eth-primary)">ETHITH AI is generating your quiz...</h3>' +
+        '  <p style="color:var(--muted);font-size:14px">Analyzing lesson content and building questions. Please wait...</p>' +
         '</div>';
 
       try {
         var questions = await window.EthithAI.generateExamFromContent(content, count);
         overlay.remove();
-        alert("Viktorina muvaffaqiyatli yaratildi! " + questions.length + " ta savol tayyor.");
+        alert("Quiz successfully created! " + questions.length + " questions ready.");
         startTopicQuizRunner(level, 99, title, questions, mainContainer);
       } catch (err) {
         overlay.remove();
-        alert("Xatolik yuz berdi: " + err.message);
+        alert("Error occurred: " + err.message);
       }
     };
   }
 
   // ==========================================
-  // VIEW 3: CLASSES (SINFLAR) & TELEGRAM CHAT
+  // VIEW 3: CLASSES & TELEGRAM CHAT
   // ==========================================
   function renderClassesView(container) {
     var isTeacher = S.user && S.user.role === 'teacher';
@@ -587,16 +587,16 @@
     var html = '' +
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
-      '    <h2>' + ic('users') + ' Sinflar Tizimi</h2>' +
-      '    <p>' + (isTeacher ? 'O\'z sinflaringizni yarating, o\'quvchilar natijalarini kuzating va Telegram chat orqali bog\'laning.' : 'O\'qituvchingiz bergan 10 xonali kod orqali sinfga qo\'shiling.') + '</p>' +
+      '    <h2>' + ic('users') + ' Virtual Classrooms</h2>' +
+      '    <p>' + (isTeacher ? 'Create custom classes, monitor student performance in real-time, and collaborate via Telegram-style chat.' : 'Join a class using the 10-character code provided by your teacher.') + '</p>' +
       '  </div>' +
       (isTeacher ?
-        '  <button class="eth-btn-primary" id="btnCreateClass" style="width:auto;padding:10px 18px">' + ic('plus') + ' Yangi Sinf Yaratish</button>' :
-        '  <button class="eth-btn-primary" id="btnJoinClass" style="width:auto;padding:10px 18px">' + ic('right') + ' Sinfga Qo\'shilish</button>') +
+        '  <button class="eth-btn-primary" id="btnCreateClass" style="width:auto;padding:10px 18px">' + ic('plus') + ' Create New Class</button>' :
+        '  <button class="eth-btn-primary" id="btnJoinClass" style="width:auto;padding:10px 18px">' + ic('right') + ' Join Class</button>') +
       '</div>';
 
     if (userClasses.length === 0) {
-      html += '<div class="ap-card ap-empty">' + ic('users') + '<h2>Siz hali hech qaysi sinfga a\'zo emassiz</h2><p>' + (isTeacher ? 'Yangi sinf yarating va kodini o\'quvchilarga bering.' : 'Ustozingiz bergan kod bilan sinfga qo\'shiling.') + '</p></div>';
+      html += '<div class="ap-card ap-empty">' + ic('users') + '<h2>You are not enrolled in any class yet</h2><p>' + (isTeacher ? 'Create a new class and share its 10-character code with your students.' : 'Join a class using the code from your instructor.') + '</p></div>';
     } else {
       html += '<div class="ap-grid g2">';
       userClasses.forEach(function(c) {
@@ -607,8 +607,8 @@
           '    <span style="font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:4px 8px;border-radius:6px">Kod: ' + c.code + '</span>' +
           '  </div>' +
           '  <h3 style="font-size:18px;margin-bottom:6px">' + esc(c.name) + '</h3>' +
-          '  <p style="color:var(--muted);font-size:13px;margin:0 0 14px">Ustoz: ' + esc(c.teacherName || 'Ustoz') + '</p>' +
-          '  <button class="ap-btn solid" style="width:100%">' + ic('msg') + ' Sinf Chatiga Kirish ' + ic('right') + '</button>' +
+          '  <p style="color:var(--muted);font-size:13px;margin:0 0 14px">Teacher: ' + esc(c.teacherName || 'Teacher') + '</p>' +
+          '  <button class="ap-btn solid" style="width:100%">' + ic('msg') + ' Enter Class Chat ' + ic('right') + '</button>' +
           '</div>';
       });
       html += '</div>';
@@ -647,16 +647,16 @@
     overlay.innerHTML = '' +
       '<div class="eth-modal">' +
       '  <div class="eth-modal-header">' +
-      '    <h2>Yangi Sinf Yaratish</h2>' +
-      '    <p>O\'quvchilar uchun 10 xonali kod bilan yangi sinf oching</p>' +
+      '    <h2>Create New Class</h2>' +
+      '    <p>Create a new classroom with a 10-character invitation code for your students</p>' +
       '  </div>' +
       '  <div class="eth-modal-body">' +
       '    <form id="createClassForm">' +
       '      <div class="eth-form-group">' +
-      '        <label>Sinf Nomi</label>' +
+      '        <label>Class Name</label>' +
       '        <input type="text" id="clsName" placeholder="Masalan: IELTS 7.5 Intensive" required>' +
       '      </div>' +
-      '      <button type="submit" class="eth-btn-primary">Sinfni Faollashtirish ' + ic('right') + '</button>' +
+      '      <button type="submit" class="eth-btn-primary">Activate Class ' + ic('right') + '</button>' +
       '    </form>' +
       '  </div>' +
       '</div>';
@@ -680,7 +680,7 @@
             id: 'msg_init',
             senderId: S.user.id,
             senderName: S.user.name,
-            text: 'Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.',
+            text: 'Welcome to our class! Here we can discuss grammar topics, collaborate on quizzes, and share answers in real-time.',
             time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
             reactions: {}
           }
@@ -706,13 +706,13 @@
     overlay.innerHTML = '' +
       '<div class="eth-modal">' +
       '  <div class="eth-modal-header">' +
-      '    <h2>Sinfga Qo\'shilish</h2>' +
+      '    <h2>Join a Class</h2>' +
       '    <p>O\'qituvchingiz taqdim etgan 10 xonali kodni kiriting</p>' +
       '  </div>' +
       '  <div class="eth-modal-body">' +
       '    <form id="joinClassForm">' +
       '      <div class="eth-form-group">' +
-      '        <label>10 xonali Sinf Kodi</label>' +
+      '        <label>10-character Class Code</label>' +
       '        <input type="text" id="joinClsCode" placeholder="Masalan: ETH-L6S8CM" style="text-transform:uppercase" required>' +
       '      </div>' +
       '      <button type="submit" class="eth-btn-primary">Qo\'shilish ' + ic('right') + '</button>' +
@@ -739,7 +739,7 @@
       }
 
       if (!found) {
-        alert("Bunday kodli sinf topilmadi. Iltimos, kodni tekshirib qayta kiriting.");
+        alert("No class found with this code. Please check and try again.");
         return;
       }
 
@@ -776,7 +776,7 @@
 
     var html = '' +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">' +
-      '  <button class="ap-back" id="backClassesListBtn" style="margin:0">' + ic('left') + ' Sinflar ro\'yxati</button>' +
+      '  <button class="ap-back" id="backClassesListBtn" style="margin:0">' + ic('left') + ' Back to Classes</button>' +
       (isTeacher ? '  <button class="ap-btn out" id="clsMonitoringBtn">' + ic('user') + ' O\'quvchilar monitoringi (' + (cls.students ? cls.students.length : 0) + ')</button>' : '') +
       '</div>' +
       '<div class="tg-chat-wrap">' +
@@ -791,7 +791,7 @@
       '  </div>' +
       (pinnedMsg ?
         '<div class="tg-pinned-bar" id="tgPinnedBar">' +
-        '  <div>' + ic('pin') + ' <b>Qadalgan xabar:</b> ' + esc(pinnedMsg.senderName) + ': "' + esc(pinnedMsg.text.slice(0, 50)) + '..."</div>' +
+        '  <div>' + ic('pin') + ' <b>Pinned Message:</b> ' + esc(pinnedMsg.senderName) + ': "' + esc(pinnedMsg.text.slice(0, 50)) + '..."</div>' +
         (isTeacher ? '  <button id="tgUnpinBtn" style="background:none;border:none;cursor:pointer;color:var(--muted)">✕</button>' : '') +
         '</div>' : '') +
       '  <div class="tg-messages-scroll" id="tgMsgBox">' +
@@ -832,7 +832,7 @@
       '    <button id="tgReplyCancelBtn" style="background:none;border:none;cursor:pointer;color:red">✕</button>' +
       '  </div>' +
       '  <div class="tg-input-area">' +
-      '    <input type="text" id="tgInputText" placeholder="Xabar yozing..." autocomplete="off">' +
+      '    <input type="text" id="tgInputText" placeholder="Write a message..." autocomplete="off">' +
       '    <button class="eth-btn-primary" id="tgSendBtn" style="width:40px;height:40px;border-radius:50%;padding:0">' + ic('send') + '</button>' +
       '  </div>' +
       '</div>';
@@ -877,7 +877,7 @@
         var replyBar = document.getElementById('tgReplyBar');
         var replyText = document.getElementById('tgReplyBarText');
         replyBar.style.display = 'flex';
-        replyText.innerHTML = ic('reply') + ' <b>Javob berilmoqda: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
+        replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
         document.getElementById('tgInputText').focus();
       };
 
@@ -987,10 +987,10 @@
       quickEmojis.slice(0, 18).map(function(em) {
         return '<button class="tg-context-reaction-btn" data-em="' + em + '">' + em + '</button>';
       }).join('') +
-      '  <button class="tg-context-reaction-btn" id="tgMoreEmojisBtn" title="Barcha emojilar">➕</button>' +
+      '  <button class="tg-context-reaction-btn" id="tgMoreEmojisBtn" title="All Emojis">➕</button>' +
       '</div>' +
-      '<button class="tg-context-item" id="ctxReplyBtn">' + ic('reply') + ' Javob yozish (Reply)</button>' +
-      '<button class="tg-context-item" id="ctxPinBtn">' + ic('pin') + ' Xabarni qadash (Pin)</button>' +
+      '<button class="tg-context-item" id="ctxReplyBtn">' + ic('reply') + ' Reply</button>' +
+      '<button class="tg-context-item" id="ctxPinBtn">' + ic('pin') + ' Pin Message</button>' +
       '<button class="tg-context-item danger" id="ctxDeleteBtn">' + ic('trash') + ' Tubdan o\'chirish (Delete)</button>';
 
     menu.innerHTML = html;
@@ -1016,7 +1016,7 @@
       var replyText = document.getElementById('tgReplyBarText');
       if (replyBar && replyText) {
         replyBar.style.display = 'flex';
-        replyText.innerHTML = ic('reply') + ' <b>Javob berilmoqda: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
+        replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
         document.getElementById('tgInputText').focus();
       }
       menu.remove();
@@ -1036,7 +1036,7 @@
     };
 
     menu.querySelector('#ctxDeleteBtn').onclick = function() {
-      if (confirm("Ushbu xabarni tubdan o'chirib tashlamoqchimisiz?")) {
+      if (confirm("Are you sure you want to permanently delete this message?")) {
         cls.messages = cls.messages.filter(function(m) { return m.id !== msg.id; });
         if (cls.pinnedId === msg.id) cls.pinnedId = null;
         App.saveState();
@@ -1091,7 +1091,7 @@
     picker.style.maxWidth = '280px';
 
     picker.innerHTML = '' +
-      '<div style="font-size:12px;font-weight:700;color:var(--muted);padding:4px 6px">Barcha emojilar:</div>' +
+      '<div style="font-size:12px;font-weight:700;color:var(--muted);padding:4px 6px">All Emojis:</div>' +
       '<div style="display:grid;grid-template-columns:repeat(6, 1fr);gap:4px;padding:6px;max-height:220px;overflow-y:auto">' +
       EMOJIS_MASTER_LIST.map(function(em) {
         return '<button class="tg-context-reaction-btn" data-full-em="' + em + '">' + em + '</button>';
@@ -1120,25 +1120,25 @@
       '<div class="eth-modal" style="max-width:600px">' +
       '  <div class="eth-modal-header">' +
       '    <h2>' + esc(cls.name) + ' · O\'quvchilar Monitoringi</h2>' +
-      '    <p>O\'quvchilarning platformadagi kunlik vaqti va xatoliklar statistikasi</p>' +
+      '    <p>Real-time analytics: daily study time and mistake frequency per student</p>' +
       '  </div>' +
       '  <div class="eth-modal-body" style="max-height:60vh;overflow-y:auto">' +
       (students.length === 0 ?
         '<p style="color:var(--muted);text-align:center">Hozircha hech qaysi o\'quvchi qo\'shilmagan.</p>' :
         '<table class="eth-leaderboard-table">' +
-        '  <thead><tr><th>O\'quvchi</th><th>Kunlik Vaqti</th><th>Xatolar</th></tr></thead>' +
+        '  <thead><tr><th>Student</th><th>Daily Time</th><th>Mistakes</th></tr></thead>' +
         '  <tbody>' +
         students.map(function(s) {
           return '<tr>' +
             '  <td><b>' + esc(s.name) + '</b><br><small style="color:var(--muted)">' + esc(s.email) + '</small></td>' +
-            '  <td><b>' + (s.dailyMinutes || 0) + ' daqiqa</b></td>' +
-            '  <td><span style="color:#ef4444;font-weight:700">' + (s.mistakes || 0) + ' ta xato</span></td>' +
+            '  <td><b>' + (s.dailyMinutes || 0) + ' mins</b></td>' +
+            '  <td><span style="color:#ef4444;font-weight:700">' + (s.mistakes || 0) + ' mistakes</span></td>' +
             '</tr>';
         }).join('') +
         '  </tbody>' +
         '</table>'
       ) +
-      '    <button class="eth-btn-primary" id="monCloseBtn" style="margin-top:20px">Yopish</button>' +
+      '    <button class="eth-btn-primary" id="monCloseBtn" style="margin-top:20px">Close</button>' +
       '  </div>' +
       '</div>';
 
@@ -1149,7 +1149,7 @@
   }
 
   // ==========================================
-  // VIEW 4: EXAMS (IMTIHONLAR) & LEADERBOARD
+  // VIEW 4: EXAMS & LEADERBOARD
   // ==========================================
   function renderExamsView(container) {
     var isTeacher = S.user && S.user.role === 'teacher';
@@ -1157,16 +1157,16 @@
     var html = '' +
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
-      '    <h2>' + ic('trophy') + ' Imtihonlar Tizimi (Exams & Leaderboard)</h2>' +
-      '    <p>' + (isTeacher ? 'PDF material yuklab imtihon tuzing, 6 xonali kod bilan boshqaring va jonli reytingni kuzating.' : 'O\'qituvchingiz bergan 6 xonali imtihon kodi bilan imtihonga kiring.') + '</p>' +
+      '    <h2>' + ic('trophy') + ' Exams & Leaderboards</h2>' +
+      '    <p>' + (isTeacher ? 'Create custom exams, manage with 6-digit access codes, and monitor live leaderboards.' : 'Enter an exam using the 6-digit access code provided by your teacher.') + '</p>' +
       '  </div>' +
       (isTeacher ?
-        '  <button class="eth-btn-primary" id="btnCreateExam" style="width:auto;padding:10px 18px">' + ic('plus') + ' Yangi Imtihon Tuzish</button>' :
-        '  <button class="eth-btn-primary" id="btnJoinExam" style="width:auto;padding:10px 18px">' + ic('clip') + ' Imtihonga Kirish (Exam Join)</button>') +
+        '  <button class="eth-btn-primary" id="btnCreateExam" style="width:auto;padding:10px 18px">' + ic('plus') + ' Create New Exam</button>' :
+        '  <button class="eth-btn-primary" id="btnJoinExam" style="width:auto;padding:10px 18px">' + ic('clip') + ' Join Exam</button>') +
       '</div>';
 
     if (S.exams.length === 0) {
-      html += '<div class="ap-card ap-empty">' + ic('trophy') + '<h2>Hozirda faol imtihonlar mavjud emas</h2><p>' + (isTeacher ? 'Yangi imtihon tuzing va kodini o\'quvchilarga bering.' : 'O\'qituvchingizdan 6 xonali imtihon kodini oling.') + '</p></div>';
+      html += '<div class="ap-card ap-empty">' + ic('trophy') + '<h2>No active exams available</h2><p>' + (isTeacher ? 'Create a new exam and share the 6-digit code with your students.' : 'Request the 6-digit exam code from your instructor.') + '</p></div>';
     } else {
       html += '<div class="ap-grid g2">';
       S.exams.forEach(function(ex) {
@@ -1174,14 +1174,14 @@
         html += '' +
           '<div class="ap-card" style="border:1.5px solid var(--border)">' +
           '  <div style="display:flex;justify-content:space-between;margin-bottom:8px">' +
-          '    <span class="ap-tag">' + ex.duration + ' daqiqa</span>' +
+          '    <span class="ap-tag">' + ex.duration + ' mins</span>' +
           '    <span style="font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:3px 8px;border-radius:6px">Kod: ' + ex.code + '</span>' +
           '  </div>' +
           '  <h3 style="font-size:18px;margin-bottom:6px">' + esc(ex.title) + '</h3>' +
-          '  <p style="color:var(--muted);font-size:13px;margin:0 0 14px">' + (ex.questions ? ex.questions.length : 0) + ' ta savol · ' + subCount + ' ta topshirilgan natija</p>' +
+          '  <p style="color:var(--muted);font-size:13px;margin:0 0 14px">' + (ex.questions ? ex.questions.length : 0) + ' questions · ' + subCount + ' submissions</p>' +
           '  <div style="display:flex;gap:10px">' +
-          '    <button class="ap-btn solid" data-exam-lb="' + ex.id + '" style="flex:1">' + ic('trophy') + ' Reyting (Leaderboard)</button>' +
-          (!isTeacher ? '<button class="eth-btn-primary" data-exam-take="' + ex.id + '" style="flex:1">Topshirish ' + ic('right') + '</button>' : '') +
+          '    <button class="ap-btn solid" data-exam-lb="' + ex.id + '" style="flex:1">' + ic('trophy') + ' Leaderboard</button>' +
+          (!isTeacher ? '<button class="eth-btn-primary" data-exam-take="' + ex.id + '" style="flex:1">Take Exam ' + ic('right') + '</button>' : '') +
           '  </div>' +
           '</div>';
       });
@@ -1235,31 +1235,31 @@
       var html = '' +
         '<div class="eth-modal" style="max-width:640px;max-height:90vh;display:flex;flex-direction:column">' +
         '  <div class="eth-modal-header">' +
-        '    <h2>Yangi Imtihon Yaratish</h2>' +
-        '    <p>Variantli test, Yozma test yoki Umumiy belgilash orqali imtihon tuzing</p>' +
+        '    <h2>Create New Exam</h2>' +
+        '    <p>Configure Multiple Choice, Written/Open, or True/False questions</p>' +
         '  </div>' +
         '  <div class="eth-modal-body" style="overflow-y:auto;flex:1">' +
         '    <div class="eth-form-group">' +
-        '      <label>Imtihon Nomi</label>' +
+        '      <label>Exam Title</label>' +
         '      <input type="text" id="exTitle" placeholder="Masalan: Midterm Exam 2026" value="' + esc(currentTitle) + '" required>' +
         '    </div>' +
         '    <div style="display:flex;gap:12px">' +
         '      <div class="eth-form-group" style="flex:1">' +
-        '        <label>Vaqti (Daqiqa)</label>' +
+        '        <label>Time Limit (Minutes)</label>' +
         '        <input type="number" id="exDuration" value="' + currentDuration + '" min="5" max="180">' +
         '      </div>' +
         '      <div class="eth-form-group" style="flex:1">' +
-        '        <label>Har bir savol bali</label>' +
+        '        <label>Points Per Question</label>' +
         '        <input type="number" id="exPoints" value="' + currentPoints + '" min="1" max="100">' +
         '      </div>' +
         '    </div>' +
         '    <div style="margin:14px 0 10px">' +
-        '      <label style="font-weight:700;font-size:13.5px">Savol qo\'shish turi:</label>' +
+        '      <label style="font-weight:700;font-size:13.5px">Question Format:</label>' +
         '      <div class="eth-tabs" style="margin-top:6px">' +
-        '        <button class="eth-tab ' + (currentTab === 'mc' ? 'active' : '') + '" id="tabMcBtn">🔘 Variantli (A,B,C,D)</button>' +
-        '        <button class="eth-tab ' + (currentTab === 'written' ? 'active' : '') + '" id="tabWrittenBtn">✍️ Yozma (Open)</button>' +
-        '        <button class="eth-tab ' + (currentTab === 'bool' ? 'active' : '') + '" id="tabBoolBtn">☑️ True/False</button>' +
-        '        <button class="eth-tab ' + (currentTab === 'bulk' ? 'active' : '') + '" id="tabBulkBtn">📋 Tezkor matn</button>' +
+        '        <button class="eth-tab ' + (currentTab === 'mc' ? 'active' : '') + '" id="tabMcBtn">🔘 Multiple Choice (A,B,C,D)</button>' +
+        '        <button class="eth-tab ' + (currentTab === 'written' ? 'active' : '') + '" id="tabWrittenBtn">✍️ Written Answer</button>' +
+        '        <button class="eth-tab ' + (currentTab === 'bool' ? 'active' : '') + '" id="tabBoolBtn">☑️ True / False</button>' +
+        '        <button class="eth-tab ' + (currentTab === 'bulk' ? 'active' : '') + '" id="tabBulkBtn">📋 Bulk Text Import</button>' +
         '      </div>' +
         '    </div>' +
         '    <div id="qBuilderArea" style="background:var(--bg2);padding:14px;border-radius:12px;margin-bottom:16px">';
@@ -1267,74 +1267,74 @@
       if (currentTab === 'mc') {
         html += '' +
           '<div class="eth-form-group">' +
-          '  <label>Savol matni:</label>' +
+          '  <label>Question Prompt:</label>' +
           '  <input type="text" id="mcQText" placeholder="Masalan: She ___ to school every day.">' +
           '</div>' +
           '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">' +
-          '  <div><label style="font-size:12px">A varianti:</label><input type="text" id="mcOptA" placeholder="Variant A"></div>' +
-          '  <div><label style="font-size:12px">B varianti:</label><input type="text" id="mcOptB" placeholder="Variant B"></div>' +
-          '  <div><label style="font-size:12px">C varianti:</label><input type="text" id="mcOptC" placeholder="Variant C"></div>' +
-          '  <div><label style="font-size:12px">D varianti:</label><input type="text" id="mcOptD" placeholder="Variant D"></div>' +
+          '  <div><label style="font-size:12px">Option A:</label><input type="text" id="mcOptA" placeholder="Variant A"></div>' +
+          '  <div><label style="font-size:12px">Option B:</label><input type="text" id="mcOptB" placeholder="Variant B"></div>' +
+          '  <div><label style="font-size:12px">Option C:</label><input type="text" id="mcOptC" placeholder="Variant C"></div>' +
+          '  <div><label style="font-size:12px">Option D:</label><input type="text" id="mcOptD" placeholder="Variant D"></div>' +
           '</div>' +
           '<div class="eth-form-group" style="margin-top:10px">' +
-          '  <label>To\'g\'ri javob qaysi:</label>' +
+          '  <label>Correct Answer:</label>' +
           '  <select id="mcAnsSelect">' +
-          '    <option value="A">A varianti</option>' +
-          '    <option value="B">B varianti</option>' +
-          '    <option value="C">C varianti</option>' +
-          '    <option value="D">D varianti</option>' +
+          '    <option value="A">Option A</option>' +
+          '    <option value="B">Option B</option>' +
+          '    <option value="C">Option C</option>' +
+          '    <option value="D">Option D</option>' +
           '  </select>' +
           '</div>' +
-          '<button type="button" class="eth-btn-primary" id="addMcQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Variantli Savolni Qo\'shish</button>';
+          '<button type="button" class="eth-btn-primary" id="addMcQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Add Multiple Choice Question</button>';
       } else if (currentTab === 'written') {
         html += '' +
           '<div class="eth-form-group">' +
-          '  <label>Yozma savol / topshiriq matni:</label>' +
+          '  <label>Written Prompt / Task:</label>' +
           '  <textarea id="wQText" rows="2" placeholder="Masalan: What is the past participle form of the verb \'write\'?"></textarea>' +
           '</div>' +
           '<div class="eth-form-group">' +
-          '  <label>Kutilgan to\'g\'ri javob (kalit so\'z):</label>' +
+          '  <label>Expected Answer (Exact/Keyword match):</label>' +
           '  <input type="text" id="wAnsText" placeholder="Masalan: written">' +
           '</div>' +
-          '<button type="button" class="eth-btn-primary" id="addWQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Yozma Savolni Qo\'shish</button>';
+          '<button type="button" class="eth-btn-primary" id="addWQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Add Written Question</button>';
       } else if (currentTab === 'bool') {
         html += '' +
           '<div class="eth-form-group">' +
-          '  <label>Belgilash savoli (True / False):</label>' +
+          '  <label>True / False Statement:</label>' +
           '  <input type="text" id="boolQText" placeholder="Masalan: The Earth revolves around the Sun.">' +
           '</div>' +
           '<div class="eth-form-group">' +
-          '  <label>To\'g\'ri javob:</label>' +
+          '  <label>Correct Answer:</label>' +
           '  <select id="boolAnsSelect">' +
           '    <option value="True">True (To\'g\'ri)</option>' +
           '    <option value="False">False (Noto\'g\'ri)</option>' +
           '  </select>' +
           '</div>' +
-          '<button type="button" class="eth-btn-primary" id="addBoolQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Belgilash Savolini Qo\'shish</button>';
+          '<button type="button" class="eth-btn-primary" id="addBoolQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Add True / False Question</button>';
       } else if (currentTab === 'bulk') {
         html += '' +
           '<div class="eth-form-group">' +
-          '  <label>Savollarni quyidagi formatda nusxalab qo\'ying:</label>' +
+          '  <label>Paste questions using the template below:</label>' +
           '  <textarea id="bulkTextInput" rows="6" placeholder="1. The capital of Uzbekistan is ___.\nA) Samarkand\nB) Tashkent\nC) Bukhara\nD) Khiva\nJavob: B\n\n2. Water boils at 100 degrees Celsius.\nA) True\nB) False\nJavob: A"></textarea>' +
           '</div>' +
-          '<button type="button" class="eth-btn-primary" id="parseBulkBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Matndan Savollarni Ajratib Qo\'shish</button>';
+          '<button type="button" class="eth-btn-primary" id="parseBulkBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Extract & Add Questions from Text</button>';
       }
 
       html += '' +
         '    </div>' +
         '    <div>' +
         '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
-        '        <b style="font-size:14px">Qo\'shilgan savollar: <span style="color:#2563eb">' + questionsList.length + ' ta</span></b>' +
-        (questionsList.length > 0 ? '<button id="clearAllQBtn" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:12.5px">Barchasini tozalash</button>' : '') +
+        '        <b style="font-size:14px">Added Questions: <span style="color:#2563eb">' + questionsList.length + ' questions</span></b>' +
+        (questionsList.length > 0 ? '<button id="clearAllQBtn" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:12.5px">Clear All</button>' : '') +
         '      </div>' +
         (questionsList.length === 0 ?
-          '<div style="text-align:center;padding:16px;background:var(--card);border:1px dashed var(--border);border-radius:10px;font-size:13px;color:var(--muted)">Hozircha savollar qo\'shilmadi. Yuqoridagi turlardan foydalanib savol qo\'shing.</div>' :
+          '<div style="text-align:center;padding:16px;background:var(--card);border:1px dashed var(--border);border-radius:10px;font-size:13px;color:var(--muted)">No questions added yet. Use the question type tools above to add questions.</div>' :
           '<div style="display:flex;flex-direction:column;gap:8px;max-height:160px;overflow-y:auto">' +
           questionsList.map(function(q, i) {
             return '' +
               '<div style="display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--border);padding:8px 12px;border-radius:8px;font-size:13px">' +
               '  <div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px">' +
-              '    <b>#' + (i + 1) + ' [' + (q.type === 'written' ? 'Yozma' : (q.type === 'bool' ? 'T/F' : 'Variantli')) + ']</b> ' + esc(q.question) + ' · <span style="color:#16a34a">Javob: ' + esc(q.answer) + '</span>' +
+              '    <b>#' + (i + 1) + ' [' + (q.type === 'written' ? 'Written' : (q.type === 'bool' ? 'T/F' : 'Multiple Choice')) + ']</b> ' + esc(q.question) + ' · <span style="color:#16a34a">Answer: ' + esc(q.answer) + '</span>' +
               '  </div>' +
               '  <button data-del-q="' + i + '" style="background:none;border:none;color:#ef4444;cursor:pointer;font-weight:700">✕</button>' +
               '</div>';
@@ -1343,8 +1343,8 @@
         '    </div>' +
         '  </div>' +
         '  <div style="display:flex;gap:10px;padding:16px 24px;border-top:1px solid var(--border)">' +
-        '    <button type="button" class="ap-btn out" id="exCancelBtn" style="flex:1">Bekor qilish</button>' +
-        '    <button type="button" class="eth-btn-primary" id="saveExamFinalBtn" style="flex:2">Imtihonni Saqlash va Kod Olish ' + ic('right') + '</button>' +
+        '    <button type="button" class="ap-btn out" id="exCancelBtn" style="flex:1">Cancel</button>' +
+        '    <button type="button" class="eth-btn-primary" id="saveExamFinalBtn" style="flex:2">Save Exam & Generate Code ' + ic('right') + '</button>' +
         '  </div>' +
         '</div>';
 
@@ -1373,7 +1373,7 @@
           var d = document.getElementById('mcOptD').value.trim();
           var ansKey = document.getElementById('mcAnsSelect').value;
           if (!qText || !a || !b) {
-            alert("Iltimos, savol matni va kamida A va B variantlarini to'ldiring!");
+            alert("Please fill in the question prompt and at least options A and B!");
             return;
           }
           var opts = [a, b, c || "None", d || "None"];
@@ -1396,7 +1396,7 @@
           var qText = document.getElementById('wQText').value.trim();
           var ans = document.getElementById('wAnsText').value.trim();
           if (!qText || !ans) {
-            alert("Iltimos, yozma savol matni va kutilgan javobni kiriting!");
+            alert("Please enter the written question prompt and the expected answer!");
             return;
           }
           questionsList.push({
@@ -1417,7 +1417,7 @@
           var qText = document.getElementById('boolQText').value.trim();
           var ans = document.getElementById('boolAnsSelect').value;
           if (!qText) {
-            alert("Iltimos, savol matnini kiriting!");
+            alert("Please enter the question prompt!");
             return;
           }
           questionsList.push({
@@ -1437,7 +1437,7 @@
         parseBulkBtn.onclick = function() {
           var text = document.getElementById('bulkTextInput').value.trim();
           if (!text) {
-            alert("Iltimos, matn kiriting!");
+            alert("Please enter or paste the text content!");
             return;
           }
           // Parse lines
@@ -1477,7 +1477,7 @@
               }
             }
           });
-          alert(countParsed + " ta savol muvaffaqiyatli ajratib olindi!");
+          alert(countParsed + " questions successfully extracted and added!");
           renderModal();
         };
       }
@@ -1494,7 +1494,7 @@
       var clearAllBtn = overlay.querySelector('#clearAllQBtn');
       if (clearAllBtn) {
         clearAllBtn.onclick = function() {
-          if (confirm("Barcha savollarni o'chirmoqchimisiz?")) {
+          if (confirm("Are you sure you want to delete all questions?")) {
             questionsList = [];
             renderModal();
           }
@@ -1504,11 +1504,11 @@
       // Save Exam
       overlay.querySelector('#saveExamFinalBtn').onclick = function() {
         if (!currentTitle) {
-          alert("Iltimos, imtihon nomini kiriting!");
+          alert("Please enter an exam title!");
           return;
         }
         if (questionsList.length === 0) {
-          alert("Iltimos, kamida bitta savol qo'shing!");
+          alert("Please add at least one question!");
           return;
         }
 
@@ -1531,7 +1531,7 @@
         }
 
         overlay.remove();
-        alert("Imtihon muvaffaqiyatli yaratildi!\nO'quvchilar uchun 6 xonali maxsus kod: " + code);
+        alert("Exam successfully created!\n6-digit access code for students: " + code);
         renderExamsView(container);
       };
     }
@@ -1546,16 +1546,16 @@
     overlay.innerHTML = '' +
       '<div class="eth-modal">' +
       '  <div class="eth-modal-header">' +
-      '    <h2>Imtihonga Kirish</h2>' +
+      '    <h2>Join Exam</h2>' +
       '    <p>O\'qituvchingiz bergan 6 xonali maxsus kodni kiriting</p>' +
       '  </div>' +
       '  <div class="eth-modal-body">' +
       '    <form id="joinExamForm">' +
       '      <div class="eth-form-group">' +
-      '        <label>6 xonali Imtihon Kodi</label>' +
+      '        <label>6-digit Exam Access Code</label>' +
       '        <input type="text" id="joinExCode" placeholder="Masalan: 849201" maxlength="6" required style="font-size:20px;letter-spacing:4px;text-align:center">' +
       '      </div>' +
-      '      <button type="submit" class="eth-btn-primary">Imtihonni Boshlash ' + ic('right') + '</button>' +
+      '      <button type="submit" class="eth-btn-primary">Start Exam ' + ic('right') + '</button>' +
       '    </form>' +
       '  </div>' +
       '</div>';
@@ -1579,7 +1579,7 @@
       }
 
       if (!exam) {
-        alert("Ushbu 6 xonali kodli imtihon topilmadi! Kodni tekshirib qayta kiriting.");
+        alert("No exam found with this 6-digit access code! Please verify the code and try again.");
         return;
       }
 
@@ -1607,7 +1607,7 @@
       }
       if (timeLeftSeconds <= 0) {
         clearInterval(timerInterval);
-        alert("Vaqt tugadi! Imtihon avtomatik ravishda yakunlandi.");
+        alert("Time expired! The exam has concluded automatically.");
         finishExam();
       }
     }, 1000);
@@ -1630,13 +1630,13 @@
         '    <b>' + (state.i + 1) + ' / ' + exam.questions.length + '</b>' +
         '  </div>' +
         '  <div class="ap-qbox">' +
-        '    <div class="qn">' + esc(exam.title) + ' · Savol ' + (state.i + 1) + ' (' + exam.pointsPerQ + ' ball)</div>' +
+        '    <div class="qn">' + esc(exam.title) + ' · Question ' + (state.i + 1) + ' (' + exam.pointsPerQ + ' pts)</div>' +
         '    <h2>' + esc(q.question) + '</h2>';
 
       if (qType === 'written') {
         html += '' +
           '<div style="margin:20px 0">' +
-          '  <input type="text" id="writtenInput" placeholder="Javobingizni bu yerga yozing..." style="width:100%;padding:14px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;outline:none">' +
+          '  <input type="text" id="writtenInput" placeholder="Type your answer here..." style="width:100%;padding:14px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;outline:none">' +
           '  <button class="eth-btn-primary" id="submitWrittenAnsBtn" style="margin-top:14px">Keyingisi ' + ic('right') + '</button>' +
           '</div>';
       } else if (qType === 'bool') {
@@ -1696,7 +1696,7 @@
         score: state.score,
         totalPossible: totalPossible,
         percent: pct,
-        timeSpent: timeSpentMin + ' daqiqa',
+        timeSpent: timeSpentMin + ' min',
         date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
 
@@ -1711,8 +1711,8 @@
       // Show Result
       var html = '' +
         '<div class="ap-res">' +
-        '  <h2>Imtihon Yakunlandi!</h2>' +
-        '  <p>Sizning natijangiz: <b>' + state.score + ' / ' + totalPossible + ' ball (' + pct + '%)</b></p>' +
+        '  <h2>Exam Completed!</h2>' +
+        '  <p>Your Final Score: <b>' + state.score + ' / ' + totalPossible + ' points (' + pct + '%)</b></p>' +
         '  <button class="eth-btn-primary" id="viewLbAfterExam" style="margin-top:20px">' + ic('trophy') + ' Jonli Reytingni Ko\'rish</button>' +
         '</div>';
 
@@ -1742,7 +1742,7 @@
       '  </div>' +
       '  <div class="eth-modal-body" style="max-height:60vh;overflow-y:auto">' +
       (subs.length === 0 ?
-        '<p style="color:var(--muted);text-align:center">Hozircha hech kim imtihon topshirmadi.</p>' :
+        '<p style="color:var(--muted);text-align:center">No students have taken this exam yet.</p>' :
         '<table class="eth-leaderboard-table">' +
         '  <thead><tr><th>O\'rin</th><th>O\'quvchi</th><th>Ball</th><th>Sarflangan Vaqt</th></tr></thead>' +
         '  <tbody>' +
@@ -1777,21 +1777,21 @@
     var html = '' +
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
-      '    <h2>' + ic('clip') + ' Language Hub Rasmiy Placement Test (70 ta Savol)</h2>' +
-      '    <p>Ingliz tili darajangizni (A1 dan C2 gacha) rasmiy xalqaro nizom asosida aniqlang. Ajratilgan vaqt: 1.5 soat (90 daqiqa).</p>' +
+      '    <h2>' + ic('clip') + ' Language Hub Official Placement Test (70 Questions)</h2>' +
+      '    <p>Assess your accurate English proficiency level according to the official CEFR scale. Total time: 1.5 hours (90 minutes).</p>' +
       '  </div>' +
       '</div>' +
       '<div class="ap-intro">' +
       '  <div class="ap-lhero">' +
-      '    <h1>Darajani Aniqlash Testi</h1>' +
-      '    <p>Beginner (A1) dan Advanced (C2) gacha 70 ta grammatik va leksik savol.</p>' +
+      '    <h1>CEFR Placement Test</h1>' +
+      '    <p>70 diagnostic grammar and vocabulary questions from Beginner (A1) to Advanced (C2).</p>' +
       '  </div>' +
       '  <ul>' +
-      '    <li>' + ic('list') + ' 70 ta ko\'p tanlovli (multiple choice) savollar</li>' +
-      '    <li>' + ic('clock') + ' Maksimal 1.5 soat (90 daqiqa) vaqt beriladi</li>' +
-      '    <li>' + ic('trophy') + ' Rasmiy baholash mezoni bo\'yicha aniq CEFR darajangiz chiqadi</li>' +
+      '    <li>' + ic('list') + ' 70 comprehensive multiple-choice grammar and vocabulary questions</li>' +
+      '    <li>' + ic('clock') + ' 1.5 hours (90 minutes) total continuous time</li>' +
+      '    <li>' + ic('trophy') + ' Instant, accurate CEFR level assessment (A1 through C2) based on official standards</li>' +
       '  </ul>' +
-      '  <button class="eth-btn-primary" id="startPlacementTestBtn" style="font-size:16px;padding:14px 28px">Testni Boshlash ' + ic('right') + '</button>' +
+      '  <button class="eth-btn-primary" id="startPlacementTestBtn" style="font-size:16px;padding:14px 28px">Start Test ' + ic('right') + '</button>' +
       '</div>';
 
     container.innerHTML = html;
@@ -1842,12 +1842,12 @@
       var html = '' +
         '<div class="ap-quiz">' +
         '  <div class="ap-qtop">' +
-        '    <div class="eth-timer-badge" title="Butun 70 ta savol uchun umumiy 1.5 soat vaqt">' + ic('clock') + ' <span id="plcTimer">' + formatTime(timeLeft) + '</span></div>' +
+        '    <div class="eth-timer-badge" title="Total 1.5 hours allocated for all 70 questions">' + ic('clock') + ' <span id="plcTimer">' + formatTime(timeLeft) + '</span></div>' +
         '    <div class="ap-bar"><i style="width:' + ((state.i / questions.length) * 100) + '%"></i></div>' +
         '    <b>' + (state.i + 1) + ' / ' + questions.length + '</b>' +
         '  </div>' +
         '  <div class="ap-qbox">' +
-        '    <div class="qn">Placement Test (1.5 soatlik umumiy imtihon) · Savol ' + (state.i + 1) + ' / 70</div>' +
+        '    <div class="qn">Placement Test (1.5-hour total exam) · Question ' + (state.i + 1) + ' / 70</div>' +
         '    <h2>' + esc(q.prompt) + '</h2>' +
         '    <div>' +
         ['A', 'B', 'C', 'D'].map(function(key) {
@@ -1888,9 +1888,9 @@
       var html = '' +
         '<div class="ap-res">' +
         '  <div style="font-size:56px;margin-bottom:10px">🎓</div>' +
-        '  <h2>Sizning Darajangiz: <span style="color:#2563eb">' + level + ' (' + levelDesc + ')</span></h2>' +
+        '  <h2>Your Assessed Level: <span style="color:#2563eb">' + level + ' (' + levelDesc + ')</span></h2>' +
         '  <p>To\'plangan ball: <b>' + score + ' / ' + questions.length + '</b></p>' +
-        '  <p style="color:var(--muted);font-size:14px;max-width:540px;margin:0 auto 20px">Language Hub xalqaro nizomiga muvofiq, sizning hozirgi bilim darajangiz aniqlandi va profilingizga biriktirildi.</p>' +
+        '  <p style="color:var(--muted);font-size:14px;max-width:540px;margin:0 auto 20px">In accordance with Language Hub official guidelines, your proficiency level has been determined and assigned to your profile.</p>' +
         '  <button class="eth-btn-primary" id="plcDoneBtn" style="margin:0 auto;width:auto;padding:12px 24px">O\'rganishni davom ettirish ' + ic('right') + '</button>' +
         '</div>';
 
@@ -1904,7 +1904,7 @@
   }
 
   // ==========================================
-  // VIEW 6: MISTAKES NOTEBOOK (XATOLAR DAFTARI)
+  // VIEW 6: MISTAKES NOTEBOOK
   // ==========================================
   function renderMistakesNotebook(container) {
     var mistakes = S.mistakes || [];
@@ -1912,23 +1912,23 @@
     var html = '' +
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
-      '    <h2>' + ic('clip') + ' Xatolar Daftari (' + mistakes.length + ' ta xato)</h2>' +
-      '    <p>Testlar davomida xato belgilangan barcha savollar va ularning tushuntirishlari</p>' +
+      '    <h2>' + ic('clip') + ' Mistakes Notebook (' + mistakes.length + ' mistakes)</h2>' +
+      '    <p>Review all questions you answered incorrectly along with detailed pedagogical explanations.</p>' +
       '  </div>' +
-      (mistakes.length > 0 ? '  <button class="ap-btn out" id="clrMistakesBtn">Daftarni tozalash</button>' : '') +
+      (mistakes.length > 0 ? '  <button class="ap-btn out" id="clrMistakesBtn">Clear Notebook</button>' : '') +
       '</div>';
 
     if (mistakes.length === 0) {
-      html += '<div class="ap-card ap-empty">' + ic('check') + '<h2>Xatolar daftari bo\'sh</h2><p>Siz testlarda adashganingizda barcha xatolar izohi bilan bu yerda saqlanadi.</p></div>';
+      html += '<div class="ap-card ap-empty">' + ic('check') + '<h2>Mistakes Notebook is empty</h2><p>When you make mistakes in quizzes, they will be saved here automatically for targeted revision.</p></div>';
     } else {
       html += '<div class="ap-grid g2">';
       mistakes.slice().reverse().forEach(function(m) {
         html += '' +
           '<div class="ap-card" style="border-left:4px solid #ef4444">' +
-          '  <span class="ap-tag">' + esc(m.level || 'Test') + ' · ' + esc(m.topic || 'Mavzu') + '</span>' +
+          '  <span class="ap-tag">' + esc(m.level || 'Test') + ' · ' + esc(m.topic || 'Topic') + '</span>' +
           '  <h4 style="margin:10px 0 8px;font-size:15px">' + esc(m.question) + '</h4>' +
-          '  <div style="font-size:13px;margin-bottom:6px"><b style="color:#ef4444">Sizning javobingiz:</b> ' + esc(m.yourAnswer) + '</div>' +
-          '  <div style="font-size:13px;margin-bottom:8px"><b style="color:#16a34a">To\'g\'ri javob:</b> ' + esc(m.correctAnswer) + '</div>' +
+          '  <div style="font-size:13px;margin-bottom:6px"><b style="color:#ef4444">Your answer:</b> ' + esc(m.yourAnswer) + '</div>' +
+          '  <div style="font-size:13px;margin-bottom:8px"><b style="color:#16a34a">Correct Answer:</b> ' + esc(m.correctAnswer) + '</div>' +
           '  <div style="background:var(--bg2);padding:8px 12px;border-radius:8px;font-size:12.5px;color:var(--text)">💡 ' + esc(m.explanation) + '</div>' +
           '</div>';
       });
@@ -1940,7 +1940,7 @@
     var clrBtn = document.getElementById('clrMistakesBtn');
     if (clrBtn) {
       clrBtn.onclick = function() {
-        if (confirm("Haqiqatan ham xatolar daftarini tozalamoqchimisiz?")) {
+        if (confirm("Are you sure you want to clear your Mistakes Notebook?")) {
           S.mistakes = [];
           App.saveState();
           renderMistakesNotebook(container);

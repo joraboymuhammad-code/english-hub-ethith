@@ -25,7 +25,7 @@
 
   var API_KEYS = _ENC_KEYS.map(function(k){ return (typeof atob === 'function' ? atob(k) : Buffer.from(k, 'base64').toString('utf8')); });
 
-  var SYSTEM_PROMPT = "Siz ETHITH AI platformasisiz. Yaratuvchingiz: Jo'raboyev Muhammadyusuf. Foydalanuvchilarning ingliz tili (va boshqa fanlar) bo'yicha savollariga batafsil, tushunarli va pedagogik yondashuvda javob bering.";
+  var SYSTEM_PROMPT = "You are ETHITH AI, an advanced AI English teacher created by Muhammadyusuf Jo'raboyev. Provide clear, comprehensive, and pedagogical explanations for English learners. Answer questions thoroughly, explain grammar rules, vocabulary, pronunciation, and IELTS strategies in an encouraging and engaging tone.";
 
   var currentKeyIndex = 0;
   var keyErrors = {};
@@ -82,7 +82,7 @@
       }
     }
 
-    return "Assalomu alaykum! Kechirasiz, ayni paytda serverdan javob olishda uzilish kuzatildi (" + (lastError ? lastError.message : 'Timeout') + "). Iltimos, savolingizni qayta yuboring.";
+    return "Hello! I am experiencing a temporary connection delay reaching the AI service (" + (lastError ? lastError.message : 'Timeout') + "). Please try sending your question again.";
   }
 
   // 1. Generate Quiz for a specific Level & Topic - 100% OFFLINE ALGORITHMIC GENERATOR
@@ -100,11 +100,11 @@
     // System prompt as initial context
     contents.push({
       role: 'user',
-      parts: [{ text: SYSTEM_PROMPT + "\n\nSalom, siz bilan suhbatni boshlayapman." }]
+      parts: [{ text: SYSTEM_PROMPT + "\n\nHello, I am starting a learning session with you." }]
     });
     contents.push({
       role: 'model',
-      parts: [{ text: "Assalomu alaykum! Men ETHITH AI — sizning shaxsiy ingliz tili va fanlar bo'yicha sun'iy intellekt o'qituvchingizman. Sizga qanday yordam bera olaman?" }]
+      parts: [{ text: "Hello! I am ETHITH AI — your personal AI English instructor. How can I assist you with your English learning today?" }]
     });
 
     // History (last 8 messages)
@@ -130,11 +130,11 @@
 
     if (fileAttachment && fileAttachment.textData) {
       currentParts.push({
-        text: "[Biriktirilgan hujjat matni]:\n" + fileAttachment.textData.slice(0, 15000)
+        text: "[Attached Document Content]:\n" + fileAttachment.textData.slice(0, 15000)
       });
     }
 
-    currentParts.push({ text: message || "Ushbu savol/material bo'yicha tushuntirish bering." });
+    currentParts.push({ text: message || "Please provide an explanation for this question or study material." });
 
     contents.push({
       role: 'user',
@@ -156,17 +156,17 @@
     var targetCount = Math.min(Math.max(parseInt(count, 10) || 15, 5), 40);
 
     var prompt = SYSTEM_PROMPT + '\n\n' +
-      'Vazifa: Quyida berilgan imtihon materiallari asosida aniq ' + targetCount + ' ta sifatli viktorina test savoli tuzib bering.\n' +
-      'Har bir savolda 4 ta variant (options) va to\'g\'ri javob ("answer") hamda qisqa izoh ("explanation") bo\'lsin.\n\n' +
-      'Imtihon materiali:\n' + content.slice(0, 12000) + '\n\n' +
-      'Javobni FAQAT quyidagi JSON formatida qaytaring:\n' +
+      'Task: Based on the provided exam materials, generate exactly ' + targetCount + ' high-quality multiple choice quiz questions.\n' +
+      'Each question must have 4 options, a correct "answer" (exact match to one of the options), and a concise "explanation".\n\n' +
+      'Exam Material:\n' + content.slice(0, 12000) + '\n\n' +
+      'Return response ONLY in the following valid JSON array format:\n' +
       '[\n' +
       '  {\n' +
       '    "id": 1,\n' +
-      '    "question": "Savol matni...",\n' +
-      '    "options": ["A", "B", "C", "D"],\n' +
-      '    "answer": "A",\n' +
-      '    "explanation": "Izoh..."\n' +
+      '    "question": "Question text...",\n' +
+      '    "options": ["Option A", "Option B", "Option C", "Option D"],\n' +
+      '    "answer": "Option A",\n' +
+      '    "explanation": "Brief explanation..."\n' +
       '  }\n' +
       ']';
 

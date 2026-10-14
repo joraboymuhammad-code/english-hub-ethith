@@ -13,32 +13,32 @@
     {
       "num": 1,
       "title": "Alphabet & Phonetics",
-      "desc": "Alifbo va toʻgʻri talaffuz"
+      "desc": "Alphabet, phonetic sounds, and accurate pronunciation"
     },
     {
       "num": 2,
       "title": "Greetings & Introductions",
-      "desc": "Salomlashish va tanishish"
+      "desc": "Greetings, introductions, and polite conversation"
     },
     {
       "num": 3,
       "title": "Numbers 1–100 & Dates",
-      "desc": "Sonlar va sanalar"
+      "desc": "Numbers 1-100, ordinal numbers, and calendar dates"
     },
     {
       "num": 4,
       "title": "Personal Pronouns & Verb \"To Be\"",
-      "desc": "Kishilik olmoshlari va \"To Be\""
+      "desc": "Subject pronouns and affirmative, negative forms of To Be"
     },
     {
       "num": 5,
       "title": "Countries, Nationalities & Languages",
-      "desc": "Mamlakatlar va tillar"
+      "desc": "Countries, nationalities, and world languages"
     },
     {
       "num": 6,
       "title": "Family & Relationships",
-      "desc": "Oila va qarindoshlar"
+      "desc": "Immediate and extended family relationships"
     },
     {
       "num": 7,
@@ -48,7 +48,7 @@
     {
       "num": 8,
       "title": "Plural Nouns & Demonstratives",
-      "desc": "Koʻplik shakli, This/That/These/Those"
+      "desc": "Regular/irregular plural nouns and demonstratives"
     },
     {
       "num": 9,
@@ -63,17 +63,17 @@
     {
       "num": 11,
       "title": "Present Simple: Negative & Questions",
-      "desc": "Inkor va savol shakli"
+      "desc": "Negative and question forms"
     },
     {
       "num": 12,
       "title": "Adjectives: Describing People & Things",
-      "desc": "Sifatlar: Inson va buyumlarni tasvirlash"
+      "desc": "Descriptive adjectives for people and objects"
     },
     {
       "num": 13,
       "title": "Daily Routines & Time",
-      "desc": "Kunlik tartib va vaqtni aytish"
+      "desc": "Daily routines, daily schedules, and time expressions"
     },
     {
       "num": 14,
@@ -83,17 +83,17 @@
     {
       "num": 15,
       "title": "Telling Time & Days of the Week",
-      "desc": "Hafta kunlari va soat"
+      "desc": "Days of the week, months, and accurate time telling"
     },
     {
       "num": 16,
       "title": "Food & Drinks: Vocabulary",
-      "desc": "Oziq-ovqat va ichimliklar"
+      "desc": "Food, beverages, and dining vocabulary"
     },
     {
       "num": 17,
       "title": "Countables & Uncountables",
-      "desc": "Sanaladigan va sanalmaydigan otlar"
+      "desc": "Countable and uncountable nouns with some/any"
     },
     {
       "num": 18,
@@ -103,7 +103,7 @@
     {
       "num": 19,
       "title": "Rooms & Furniture",
-      "desc": "Xonalar va mebellar"
+      "desc": "House rooms, furniture, and household appliances"
     },
     {
       "num": 20,
@@ -113,27 +113,27 @@
     {
       "num": 21,
       "title": "Prepositions of Place",
-      "desc": "Oʻrin-joy predloglari: In, On, Under, Next to"
+      "desc": "Spatial prepositions: in, on, under, between, next to"
     },
     {
       "num": 22,
       "title": "Clothes & Appearance",
-      "desc": "Kiyim-kechak va tashqi koʻrinish"
+      "desc": "Clothing styles, accessories, and physical appearance"
     },
     {
       "num": 23,
       "title": "Free Time Activities & Hobbies",
-      "desc": "Qiziqishlar va boʻsh vaqt"
+      "desc": "Hobbies, leisure activities, and personal interests"
     },
     {
       "num": 24,
       "title": "Can / Can't for Ability & Requests",
-      "desc": "Qobiliyat va iltimoslar"
+      "desc": "Expressing ability, possibility, and polite requests"
     },
     {
       "num": 25,
       "title": "Present Continuous: Actions Right Now",
-      "desc": "Hozir sodir boʻlayotgan harakatlar"
+      "desc": "Actions happening now and temporary present situations"
     },
     {
       "num": 26,
@@ -143,7 +143,7 @@
     {
       "num": 27,
       "title": "Weather & Seasons",
-      "desc": "Ob-havo va fasllar"
+      "desc": "Weather conditions, temperatures, and four seasons"
     },
     {
       "num": 28,
@@ -153,7 +153,7 @@
     {
       "num": 29,
       "title": "Places in the City & Directions",
-      "desc": "Shahardagi joylar va yoʻnalishlar"
+      "desc": "City landmarks, urban places, and asking for directions"
     },
     {
       "num": 30,
@@ -168,32 +168,32 @@
     {
       "num": 32,
       "title": "Past Simple of \"To Be\": Was / Were",
-      "desc": "Oʻtgan zamonda \"To Be\""
+      "desc": "Past simple forms of To Be: was and were"
     },
     {
       "num": 33,
       "title": "Past Simple: Regular Verbs",
-      "desc": "Oʻtgan oddiy vaqt: Toʻgʻri fe'llar"
+      "desc": "Affirmative regular past actions with -ed endings"
     },
     {
       "num": 34,
       "title": "Past Simple: Irregular Verbs",
-      "desc": "Notoʻgʻri fe'llar"
+      "desc": "Common irregular verbs in Past Simple"
     },
     {
       "num": 35,
       "title": "Past Simple: Questions & Negatives",
-      "desc": "Oʻtgan zamonda inkor va savol"
+      "desc": "Past Simple negatives and questions"
     },
     {
       "num": 36,
       "title": "Transport & Travel Vocabulary",
-      "desc": "Transport va sayohat"
+      "desc": "Modes of public transport and travel essentials"
     },
     {
       "num": 37,
       "title": "Question Words: Who, What, Where, When, Why, How",
-      "desc": "Soʻroq soʻzlari"
+      "desc": "Open questions using Who, What, Where, When, Why, and How"
     },
     {
       "num": 38,
@@ -203,12 +203,12 @@
     {
       "num": 39,
       "title": "Health & Body Parts",
-      "desc": "Inson tana a'zolari va salomatlik"
+      "desc": "Human anatomy, minor illnesses, and health advice"
     },
     {
       "num": 40,
       "title": "Basic Shopping & Prices",
-      "desc": "Xarid qilish va narxlar"
+      "desc": "Store conversations, prices, sizes, and checkout phrases"
     }
   ],
   "A2": [
@@ -225,22 +225,22 @@
     {
       "num": 3,
       "title": "Past Continuous: Actions in Progress in Past",
-      "desc": "Oʻtgan davomli zamon"
+      "desc": "Past activities in progress at a specific past moment"
     },
     {
       "num": 4,
       "title": "Past Simple vs Past Continuous",
-      "desc": "Oʻtgan zamonlar toʻqnashuvi"
+      "desc": "Past Continuous background actions interrupted by Past Simple"
     },
     {
       "num": 5,
       "title": "Comparative Adjectives",
-      "desc": "Sifatlarning qiyosiy darajasi"
+      "desc": "Comparative adjectives"
     },
     {
       "num": 6,
       "title": "Superlative Adjectives",
-      "desc": "Sifatlarning orttirma darajasi"
+      "desc": "Superlative adjectives"
     },
     {
       "num": 7,
@@ -250,7 +250,7 @@
     {
       "num": 8,
       "title": "Must / Mustn't",
-      "desc": "Qat'iy qoida va taqiqlar"
+      "desc": "Obligation, rules, strong necessity, and prohibition"
     },
     {
       "num": 9,
@@ -260,7 +260,7 @@
     {
       "num": 10,
       "title": "Present Perfect: Ever & Never",
-      "desc": "Hayotiy tajriba haqida gapirish"
+      "desc": "Talking about life experiences with ever and never"
     },
     {
       "num": 11,
@@ -270,7 +270,7 @@
     {
       "num": 12,
       "title": "Present Perfect with Just, Already, Yet",
-      "desc": "Yangi sodir boʻlgan harakatlar"
+      "desc": "Recent events with just, already, and yet"
     },
     {
       "num": 13,
@@ -280,7 +280,7 @@
     {
       "num": 14,
       "title": "Will / Won't for Predictions & Offers",
-      "desc": "Kelajak zamon va va'dalar"
+      "desc": "Spontaneous decisions, predictions, and offers with will"
     },
     {
       "num": 15,
@@ -295,12 +295,12 @@
     {
       "num": 17,
       "title": "Subject / Object Questions",
-      "desc": "Ega va toʻldiruvchiga beriladigan savollar"
+      "desc": "Subject and object questions"
     },
     {
       "num": 18,
       "title": "Too & Enough",
-      "desc": "Haddan tashqari va yetarli"
+      "desc": "Expressing excess and sufficiency with too and enough"
     },
     {
       "num": 19,
@@ -315,7 +315,7 @@
     {
       "num": 21,
       "title": "Verbs Followed by Infinitive / Gerund",
-      "desc": "Fe'llardan keyingi Inﬁnitive/Gerund"
+      "desc": "Verb complementation with gerunds and to-infinitives"
     },
     {
       "num": 22,
@@ -325,7 +325,7 @@
     {
       "num": 23,
       "title": "Giving Directions & Map Reading",
-      "desc": "Xarita va yoʻl koʻrsatish"
+      "desc": "Navigating town maps, landmarks, and street directions"
     },
     {
       "num": 24,
@@ -340,32 +340,32 @@
     {
       "num": 26,
       "title": "Holidays & Hotel Reservation",
-      "desc": "Tadbirlar va mehmonxona band qilish"
+      "desc": "Hotel check-in, bookings, holidays, and accommodations"
     },
     {
       "num": 27,
       "title": "House & Chores",
-      "desc": "Uy ishlari va majburiyatlar"
+      "desc": "Domestic chores, home duties, and household management"
     },
     {
       "num": 28,
       "title": "Shopping & Returning Items",
-      "desc": "Doʻkondan narsa qaytarish"
+      "desc": "Returning faulty items, asking for refunds and exchanges"
     },
     {
       "num": 29,
       "title": "Asking for / Giving Permission",
-      "desc": "Ijozat soʻrash va berish"
+      "desc": "Requesting, granting, and refusing permission politely"
     },
     {
       "num": 30,
       "title": "Make vs Do",
-      "desc": "Make va Do oʻrtasidagi farqlar"
+      "desc": "Common collocations and distinctions between make and do"
     },
     {
       "num": 31,
       "title": "Used to: Past Habits",
-      "desc": "Oʻtmishdagi odatlar"
+      "desc": "Past habits and states that no longer occur in present"
     },
     {
       "num": 32,
@@ -380,7 +380,7 @@
     {
       "num": 34,
       "title": "Passive Voice: Past Simple",
-      "desc": "Oʻtgan zamon majhul nisbati"
+      "desc": "Passive constructions describing past historical events"
     },
     {
       "num": 35,
@@ -390,17 +390,17 @@
     {
       "num": 36,
       "title": "Money, Banking & Payments",
-      "desc": "Pul va bank terminologiyasi"
+      "desc": "Financial transactions, currencies, ATM, and payments"
     },
     {
       "num": 37,
       "title": "Music, Movies & Entertainment",
-      "desc": "Kino va san'at"
+      "desc": "Film genres, musical styles, and arts entertainment"
     },
     {
       "num": 38,
       "title": "Technology & Gadgets",
-      "desc": "Texnologiya va qurilmalar"
+      "desc": "Modern gadgets, computers, smartphones, and the internet"
     },
     {
       "num": 39,
@@ -427,12 +427,12 @@
     {
       "num": 3,
       "title": "Past Perfect Simple",
-      "desc": "Oʻtgan tugallangan zamon"
+      "desc": "Actions completed before another point in the past"
     },
     {
       "num": 4,
       "title": "Narrative Tenses: Storytelling",
-      "desc": "Voqealar va hikoyalar soʻzlash"
+      "desc": "Combining past tenses for engaging narrative storytelling"
     },
     {
       "num": 5,
@@ -442,12 +442,12 @@
     {
       "num": 6,
       "title": "Third Conditional: Past Regrets",
-      "desc": "Oʻtgan zamondagi afsuslar"
+      "desc": "Unreal past conditions, hypothetical outcomes, and regrets"
     },
     {
       "num": 7,
       "title": "Wish / If Only",
-      "desc": "Orzu-havas va afsuslar"
+      "desc": "Hypothetical wishes about present and past situations"
     },
     {
       "num": 8,
@@ -462,17 +462,17 @@
     {
       "num": 10,
       "title": "Reported Speech: Statements",
-      "desc": "Oʻzlashtirma gaplar: Tasdiq"
+      "desc": "Reporting statements with backshifted verb tenses"
     },
     {
       "num": 11,
       "title": "Reported Speech: Questions & Commands",
-      "desc": "Soʻroq va buyruq gaplar"
+      "desc": "Reported questions, commands, instructions, and requests"
     },
     {
       "num": 12,
       "title": "Passive Voice: All Tenses",
-      "desc": "Barcha zamonlarda majhul nisbat"
+      "desc": "Passive voice across all tenses"
     },
     {
       "num": 13,
@@ -482,7 +482,7 @@
     {
       "num": 14,
       "title": "Non-defining Relative Clauses",
-      "desc": "Qoʻshimcha axborotli nisbiy gaplar"
+      "desc": "Relative clauses providing non-essential parenthetical detail"
     },
     {
       "num": 15,
@@ -492,12 +492,12 @@
     {
       "num": 16,
       "title": "Question Tags",
-      "desc": "Tasdiq savollar: Isn't it' Don't you'"
+      "desc": "Question tags: Isn't it? Don't you?"
     },
     {
       "num": 17,
       "title": "Indirect Questions",
-      "desc": "Xushmuomala soʻroq gaplar"
+      "desc": "Polite embedded questions starting with 'Could you tell me...'"
     },
     {
       "num": 18,
@@ -507,7 +507,7 @@
     {
       "num": 19,
       "title": "Connecting Words: Although, However, In spite of",
-      "desc": "Bogʻlovchilar"
+      "desc": "Concession and contrast linkers: although, even though, in spite of"
     },
     {
       "num": 20,
@@ -522,7 +522,7 @@
     {
       "num": 22,
       "title": "Education & School Systems",
-      "desc": "Ta'lim tizimi va lugʻat"
+      "desc": "Academic subjects, qualifications, exams, and schooling"
     },
     {
       "num": 23,
@@ -532,27 +532,27 @@
     {
       "num": 24,
       "title": "Environment & Natural Disasters",
-      "desc": "Atrof-muhit va tabiat"
+      "desc": "Ecology, environmental protection, and natural disasters"
     },
     {
       "num": 25,
       "title": "Health, Fitness & Illnesses",
-      "desc": "Tibbiyot va salomatlik"
+      "desc": "Medical treatments, physical fitness, symptoms, and remedies"
     },
     {
       "num": 26,
       "title": "Crime & Law Vocabulary",
-      "desc": "Jinoyat va huquqshunoslik"
+      "desc": "Legal terminology, courtroom procedures, and criminal law"
     },
     {
       "num": 27,
       "title": "Media, News & Social Media",
-      "desc": "OAV va ijtimoiy tarmoqlar"
+      "desc": "Journalism, broadcasting, social platforms, and media bias"
     },
     {
       "num": 28,
       "title": "Travel & Tourism",
-      "desc": "Sayohat va turizm"
+      "desc": "Ecotourism, cultural sightseeing, itineraries, and hospitality"
     },
     {
       "num": 29,
@@ -582,27 +582,27 @@
     {
       "num": 34,
       "title": "IELTS Reading: Skimming & Scanning",
-      "desc": "Tezkor oʻqish va kalit soʻzlar"
+      "desc": "Reading techniques: locating information and understanding gist"
     },
     {
       "num": 35,
       "title": "Describing Graphs & Trends",
-      "desc": "Oʻsish va pasayish dinamikasi"
+      "desc": "Describing upward/downward trends, fluctuations, and stability"
     },
     {
       "num": 36,
       "title": "Prefixes & Suffixes: Word Formation",
-      "desc": "Soʻz yasalishi"
+      "desc": "Morphological word building with prefixes and suffixes"
     },
     {
       "num": 37,
       "title": "Collocations 1: Verb + Noun Combinations",
-      "desc": "Turgʻun birikmalar"
+      "desc": "Common verb-noun combinations and lexical chunks"
     },
     {
       "num": 38,
       "title": "Formal vs Informal Register",
-      "desc": "Rasmiy va norasmiy stil"
+      "desc": "Stylistic register differences in academic and informal English"
     },
     {
       "num": 39,
@@ -612,7 +612,7 @@
     {
       "num": 40,
       "title": "B1 Level Progress Examination",
-      "desc": "B1 daraja imtihoni"
+      "desc": "B1 Level milestone assessment"
     }
   ],
   "B2": [
@@ -624,7 +624,7 @@
     {
       "num": 2,
       "title": "Future in the Past",
-      "desc": "Oʻtmishdagi kelajak"
+      "desc": "Future in the past: actions intended or predicted in the past"
     },
     {
       "num": 3,
@@ -639,7 +639,7 @@
     {
       "num": 5,
       "title": "Inversion after Negative Adverbs",
-      "desc": "Hardly, Never, Seldom bilan inversiya"
+      "desc": "Negative adverb fronting with subject-auxiliary inversion"
     },
     {
       "num": 6,
@@ -649,7 +649,7 @@
     {
       "num": 7,
       "title": "Participle Clauses",
-      "desc": "-ing / -ed iboralar bilan gaplarni qisqartirish"
+      "desc": "Participle clauses reducing relative and adverbial clauses"
     },
     {
       "num": 8,
@@ -674,7 +674,7 @@
     {
       "num": 12,
       "title": "Subjunctive Mood in Modern English",
-      "desc": "Faraz va shart ma'nolari"
+      "desc": "Mandative subjunctive in formal and legislative statements"
     },
     {
       "num": 13,
@@ -684,7 +684,7 @@
     {
       "num": 14,
       "title": "Discourse Markers & Text Cohesion",
-      "desc": "Matnni bogʻlovchi konstruksiyalar"
+      "desc": "Cohesive discourse markers"
     },
     {
       "num": 15,
@@ -699,27 +699,27 @@
     {
       "num": 17,
       "title": "Idioms: Work, Life & Relationships",
-      "desc": "Ibora va idiomalar"
+      "desc": "Idiomatic expressions for workplace, lifestyle, and relationships"
     },
     {
       "num": 18,
       "title": "Academic Vocabulary for IELTS Writing",
-      "desc": "Akademik lugʻat"
+      "desc": "Formal vocabulary, academic collocations, and register precision"
     },
     {
       "num": 19,
       "title": "IELTS Writing Task 1: Line Graphs & Bar Charts",
-      "desc": "Grafiklar va gistogrammalar"
+      "desc": "Reporting dynamic trends and comparisons in line/bar graphs"
     },
     {
       "num": 20,
       "title": "IELTS Writing Task 1: Pie Charts & Tables",
-      "desc": "Diagrammalar va jadvallar"
+      "desc": "Analyzing static proportion and statistical categorical tables"
     },
     {
       "num": 21,
       "title": "IELTS Writing Task 1: Process Diagrams & Maps",
-      "desc": "Jarayon va xaritalar"
+      "desc": "Describing cyclic manufacturing stages and geographic changes"
     },
     {
       "num": 22,
@@ -734,12 +734,12 @@
     {
       "num": 24,
       "title": "IELTS Writing Task 2: Problem & Solution Essays",
-      "desc": "Muammo va yechim"
+      "desc": "Analyzing societal issues, consequences, and proposing remedies"
     },
     {
       "num": 25,
       "title": "IELTS Speaking Part 3: Abstract Discussion",
-      "desc": "Murakkab tahliliy savollar"
+      "desc": "Complex analytical reading comprehension"
     },
     {
       "num": 26,
@@ -759,17 +759,17 @@
     {
       "num": 29,
       "title": "Business & Global Economy Vocabulary",
-      "desc": "Iqtisodiyot va biznes"
+      "desc": "Macroeconomics, global commerce, startups, and entrepreneurship"
     },
     {
       "num": 30,
       "title": "Globalization & Culture",
-      "desc": "Globallashuv va madaniyat"
+      "desc": "Cultural integration, international exchange, and migration"
     },
     {
       "num": 31,
       "title": "Science, Innovation & Artificial Intelligence",
-      "desc": "AI va ilm-fan"
+      "desc": "Emerging scientific breakthroughs, AI ethics, and robotics"
     },
     {
       "num": 32,
@@ -779,7 +779,7 @@
     {
       "num": 33,
       "title": "Environment: Climate Change & Sustainability",
-      "desc": "Iqlim oʻzgarishi"
+      "desc": "Global warming, renewable energy, and ecological footprint"
     },
     {
       "num": 34,
@@ -789,7 +789,7 @@
     {
       "num": 35,
       "title": "Consumerism & Advertising",
-      "desc": "Raqamli marketing va reklama"
+      "desc": "Targeted marketing, brand consumerism, and persuasion tactics"
     },
     {
       "num": 36,
@@ -799,7 +799,7 @@
     {
       "num": 37,
       "title": "Writing Formal Reports & Proposals",
-      "desc": "Hujjat va taklifnomalar"
+      "desc": "Structuring formal business proposals, executive summaries, and reports"
     },
     {
       "num": 38,
@@ -809,7 +809,7 @@
     {
       "num": 39,
       "title": "Pronunciation: Intonation & Sentence Stress",
-      "desc": "Urgʻu va intonatsiya"
+      "desc": "Sentence stress, contrastive tonicity, and communicative intent"
     },
     {
       "num": 40,
@@ -826,7 +826,7 @@
     {
       "num": 2,
       "title": "Advanced Ellipsis & Substitution",
-      "desc": "Matnda takrorlanishlarni qisqartirish"
+      "desc": "Ellipsis and substitution techniques"
     },
     {
       "num": 3,
@@ -856,7 +856,7 @@
     {
       "num": 8,
       "title": "Idiomatic Expressions & Metaphors",
-      "desc": "Metaforalar va idioma"
+      "desc": "Metaphorical language, nuance, and figurative idioms"
     },
     {
       "num": 9,
@@ -866,7 +866,7 @@
     {
       "num": 10,
       "title": "Precision in Vocabulary: Fine Distinctions",
-      "desc": "Nozik lugʻaviy farqlar"
+      "desc": "Subtle semantic distinctions among near-synonyms"
     },
     {
       "num": 11,
@@ -896,7 +896,7 @@
     {
       "num": 16,
       "title": "Advanced Paraphrasing & Academic Synthesis",
-      "desc": "Manbalarni sintez qilish"
+      "desc": "Synthesizing contradictory viewpoints and academic paraphrasing"
     },
     {
       "num": 17,
@@ -921,7 +921,7 @@
     {
       "num": 21,
       "title": "Philosophy, Ethics & Moral Dilemmas",
-      "desc": "Falsafa va etika"
+      "desc": "Ethical frameworks, utilitarianism, and moral dilemmas"
     },
     {
       "num": 22,
@@ -931,7 +931,7 @@
     {
       "num": 23,
       "title": "Genetics, Biotechnology & Ethics",
-      "desc": "Genetika va biotexnologiya"
+      "desc": "Genetic modification, crispr ethics, and biomedical engineering"
     },
     {
       "num": 24,
@@ -946,7 +946,7 @@
     {
       "num": 26,
       "title": "History, Archaeology & Civilizations",
-      "desc": "Tarix va arxeologiya"
+      "desc": "Archaeological excavation, historical interpretation, and heritage"
     },
     {
       "num": 27,
@@ -966,7 +966,7 @@
     {
       "num": 30,
       "title": "Financial Markets & Cryptocurrency",
-      "desc": "Moliya va kriptovalyuta"
+      "desc": "Decentralized finance, investment portfolios, and financial markets"
     },
     {
       "num": 31,
@@ -996,7 +996,7 @@
     {
       "num": 36,
       "title": "Error Analysis: Common Band 7 to 8 Pitfalls",
-      "desc": "Xatolar tahlili"
+      "desc": "Comprehensive error analysis"
     },
     {
       "num": 37,
@@ -1058,7 +1058,7 @@
     {
       "num": 8,
       "title": "Idiomatic Precision & Cultural Allusions",
-      "desc": "Madaniy va adabiy iboralar"
+      "desc": "Literary devices, archaic nuances, and cultural allusions"
     },
     {
       "num": 9,
@@ -1078,7 +1078,7 @@
     {
       "num": 12,
       "title": "Advanced Critical Discourse Analysis",
-      "desc": "Matn ichidagi yashirin gʻoyalarni tahlil qilish"
+      "desc": "Inferential textual analysis and nuances"
     },
     {
       "num": 13,
@@ -1088,7 +1088,7 @@
     {
       "num": 14,
       "title": "Epistemology: What is Knowledge'",
-      "desc": "Taniqlik va ilm falsafasi"
+      "desc": "Epistemology, rationalism, ontology, and epistemic truth"
     },
     {
       "num": 15,
@@ -1133,7 +1133,7 @@
     {
       "num": 23,
       "title": "Criminal Justice Systems & Penology",
-      "desc": "Jazo va huquq nazariyasi"
+      "desc": "Jurisprudence, penal reform, restorative justice, and legal theory"
     },
     {
       "num": 24,
@@ -1203,7 +1203,7 @@
     {
       "num": 37,
       "title": "Mastery over Lexical Register Transitions",
-      "desc": "Uslublar oʻrtasida silliq oʻtish"
+      "desc": "Effortless calibration between hyper-formal and colloquial registers"
     },
     {
       "num": 38,
@@ -1342,23 +1342,23 @@
           qText = p.sub + " ___ a hardworking " + job + ".";
           correct = p.be;
           distractors = ["are", "am", "is", "be"];
-          exp = "'" + p.sub + "' olmoshi bilan 'to be' fe'lining '" + p.be + "' shakli to'g'ri keladi.";
+          exp = "The pronoun '" + p.sub + "' correctly pairs with the form '" + p.be + "' of the verb 'to be'.";
         } else if (mode === 1) {
           qText = name + " and " + p.sub.toLowerCase() + " ___ in the classroom right now.";
           correct = "are";
           distractors = ["is", "am", "be", "was"];
-          exp = "Ikki kishi (ko'plik) bo'lgani uchun 'are' ishlatiladi.";
+          exp = "Because there are two people (plural subject), the plural verb form 'are' is used.";
         } else {
           qText = name + " ___ not feeling well today.";
           correct = "is";
           distractors = ["are", "am", "be", "were"];
-          exp = "Uchinchi shaxs birlik (he/she) bilan 'is not' ishlatiladi.";
+          exp = "With third-person singular subjects (he/she/it), 'is not' (isn't) is required.";
         }
       } else if (topicNum === 2) { // Questions with to be
         qText = "___ " + p.sub.toLowerCase() + " ready to start the lesson?";
         correct = p.be.charAt(0).toUpperCase() + p.be.slice(1);
         distractors = ["Do", "Does", "Are", "Is", "Am"];
-        exp = "Sifat yoki tayyorgarlik holati bo'yicha so'roq berilganda 'To Be' (" + correct + ") egadan oldinga chiqadi.";
+        exp = "When forming a question with 'to be', the verb form (" + correct + ") inverts to precede the subject.";
       } else if (topicNum === 3) { // Numbers & Dates
         var numMap = { "12": "twelve", "20": "twenty", "15": "fifteen", "30": "thirty", "40": "forty", "50": "fifty", "100": "one hundred" };
         var nKeys = Object.keys(numMap);
@@ -1366,29 +1366,29 @@
         qText = "Choose the correct spelling of the number " + k + ":";
         correct = numMap[k];
         distractors = [k + "teen", k + "ty", "twelv", "fiveteen", "fourty"];
-        exp = k + " sonining to'g'ri yozilishi: '" + correct + "'.";
+        exp = "The correct English spelling for " + k + " is '" + correct + "'.";
       } else if (topicNum === 5) { // Countries & Nationalities
         qText = name + " is from " + c.country + ". He is ___.";
         correct = c.nat;
         distractors = [c.country, c.lang + "ish", "from " + c.nat, c.lang];
-        exp = "Davlatdan keyin fuqarolik yoki millat aytilganda '" + c.nat + "' ishlatiladi.";
+        exp = "To describe nationality or origin, use the nationality adjective '" + c.nat + "'.";
       } else if (topicNum === 6 || topicNum === 9) { // Possessives
         qText = "This is " + name + "'s book. It is ___ book.";
         correct = (name === "Ali" || name === "Vali" || name === "John") ? "his" : "her";
         distractors = ["him", "she", "he", "hers"];
-        exp = "Egalik sifatdoshi: ot oldida 'his' yoki 'her' ishlatiladi.";
+        exp = "Possessive adjectives ('his' or 'her') modify nouns to show ownership.";
       } else if (topicNum === 7 || topicNum === 8) { // Plurals & Demonstratives
         var mode = index % 2;
         if (mode === 0) {
           qText = "___ books over there on that far table are mine.";
           correct = "Those";
           distractors = ["These", "This", "That", "Them"];
-          exp = "Uzoqdagi ko'plik buyumlar uchun 'Those' ishlatiladi.";
+          exp = "Use 'Those' for plural objects that are far away in distance or time.";
         } else {
           qText = "Look at ___ watch on my wrist right here.";
           correct = "this";
           distractors = ["these", "those", "that", "them"];
-          exp = "Yaqindagi birlik buyum uchun 'this' ishlatiladi.";
+          exp = "Use 'this' for a singular object that is near the speaker.";
         }
       } else if (topicNum === 10 || topicNum === 11) { // Present Simple
         var isSingular = (p.sub === "He" || p.sub === "She");
@@ -1396,91 +1396,91 @@
           qText = p.sub + " usually ___ English every morning.";
           correct = isSingular ? verb.s : verb.v;
           distractors = [verb.ing, verb.past, isSingular ? verb.v : verb.s, "to " + verb.v];
-          exp = "Present Simple da He/She/It bilan fe'lga -s/-es qo'shiladi, qolganlarida esa fe'lning asosi ishlatiladi.";
+          exp = "In Present Simple, third-person singular (he/she/it) verbs take the -s/-es suffix; other subjects use the base verb.";
         } else {
           qText = (isSingular ? "Does " : "Do ") + p.sub.toLowerCase() + " ___ coffee in the afternoon?";
           correct = "drink";
           distractors = ["drinks", "drinking", "drank", "dranked"];
-          exp = "Do/Does bilan so'roq berilganda asosiy fe'l o'zining boshlang'ich (infinitive) shaklida bo'ladi.";
+          exp = "In questions using Do/Does, the auxiliary carries the tense, so the main verb stays in its bare infinitive form.";
         }
       } else if (topicNum === 24) { // Can / Can't
         qText = name + " can ___ three languages fluently.";
         correct = "speak";
         distractors = ["speaks", "speaking", "to speak", "spoke"];
-        exp = "Modal fe'llardan (can/can't) keyin asosiy fe'l qo'shimchasiz, yalang'och (bare infinitive) holatda keladi.";
+        exp = "Modal verbs (can, could, must, should) are always followed directly by a bare infinitive without 'to'.";
       } else if (topicNum === 25 || topicNum === 26) { // Present Continuous
         qText = "Look! " + name + " ___ a letter at the moment.";
         correct = "is writing";
         distractors = ["writes", "write", "are writing", "was writing"];
-        exp = "'Look!' va 'at the moment' ayni vaqtda sodir bo'layotgan harakat (Present Continuous: is + V-ing) ni bildiradi.";
+        exp = "Time markers like 'Look!' and 'at the moment' indicate ongoing actions in the Present Continuous (be + -ing).";
       } else if (topicNum >= 32 && topicNum <= 35) { // Past Simple
         if (index % 2 === 0) {
           qText = "Yesterday, " + name + " ___ to the market and bought fresh fruit.";
           correct = "went";
           distractors = ["goes", "go", "gone", "going"];
-          exp = "'Yesterday' o'tgan zamon (Past Simple) ko'rsatkichi, 'go' fe'lining o'tgan zamon shakli 'went' bo'ladi.";
+          exp = "'Yesterday' is a definitive past time marker requiring Past Simple; the irregular past of 'go' is 'went'.";
         } else {
           qText = name + " didn't ___ TV last night.";
           correct = "watch";
           distractors = ["watched", "watching", "watches", "to watch"];
-          exp = "Inkor 'didn't' dan keyin fe'l har doim 1-shaklda (infinitive) bo'ladi.";
+          exp = "After the negative auxiliary 'didn't', the main verb always reverts to its base infinitive form.";
         }
       } else { // General A1 Topics
         qText = "Choose the correct option for: " + title + " (" + (index) + "):\n" + name + " wants to ___ English well.";
         correct = "learn";
         distractors = ["learning", "learns", "learned", "to learn"];
-        exp = "'wants to' iborasidan keyin fe'lning asosi (learn) qo'yiladi.";
+        exp = "After 'wants to', use the base infinitive verb (learn) to express desires.";
       }
     } else if (level === "A2") {
       if (topicNum === 3 || topicNum === 4) { // Past Continuous vs Past Simple
         qText = "While " + name + " ___ a shower, the telephone suddenly rang.";
         correct = "was taking";
         distractors = ["took", "is taking", "were taking", "takes"];
-        exp = "'While' bilan davomli harakat (Past Continuous: was/were + V-ing), unga xalaqit bergan qisqa harakat esa Past Simple da bo'ladi.";
+        exp = "A background continuous action introduced by 'while' uses Past Continuous (was/were + -ing), interrupted by Past Simple.";
       } else if (topicNum === 5 || topicNum === 6) { // Comparatives & Superlatives
         if (index % 2 === 0) {
           qText = "A plane is ___ than a train.";
           correct = "faster";
           distractors = ["more fast", "fastest", "fast", "as fast"];
-          exp = "Bir bo'g'inli sifatlarning qiyosiy darajasiga '-er' qo'shiladi va 'than' bilan ishlatiladi.";
+          exp = "Single-syllable adjectives form their comparative degree by adding '-er' followed by 'than'.";
         } else {
           qText = "Mount Everest is ___ mountain in the world.";
           correct = "the highest";
           distractors = ["highest", "more high", "higher", "the most high"];
-          exp = "Sifatlarning orttirma darajasida har doim 'the' artikli va '-est' qo'shimchasi qo'llaniladi.";
+          exp = "Superlative adjectives always take the definite article 'the' and the '-est' suffix.";
         }
       } else if (topicNum >= 10 && topicNum <= 13) { // Present Perfect
         if (index % 2 === 0) {
           qText = "Have you ever ___ to London?";
           correct = "been";
           distractors = ["went", "gone", "being", "be"];
-          exp = "Hayotiy tajriba haqida so'ralganda 'have you ever been to...' konstruksiyasi ishlatiladi.";
+          exp = "Inquiries about life experiences use the Present Perfect construction 'Have you ever been to...'.";
         } else {
           qText = name + " has lived in this city ___ five years.";
           correct = "for";
           distractors = ["since", "during", "ago", "from"];
-          exp = "Vaqt davomiyligi (duration) ko'rsatilganda 'for' (5 yil davomida) ishlatiladi.";
+          exp = "'For' indicates duration over a period of time (e.g. for five years), whereas 'since' denotes a starting point.";
         }
       } else if (topicNum === 16) { // First Conditional
         qText = "If it ___ tomorrow, we will stay at home.";
         correct = "rains";
         distractors = ["will rain", "rained", "raining", "rain"];
-        exp = "First Conditional: 'If' qismida Present Simple (rains), asosiy qismda 'will + V' bo'ladi.";
+        exp = "First Conditional structure: the 'if'-clause uses Present Simple (rains), while the result clause uses 'will + base verb'.";
       } else if (topicNum === 31) { // Used to
         qText = "When I was a child, I used to ___ in the village.";
         correct = "live";
         distractors = ["living", "lived", "lives", "to live"];
-        exp = "'used to' dan keyin o'tmishdagi odatni ifodalash uchun fe'lning asosi qo'yiladi.";
+        exp = "'Used to' expresses past habits or states and is followed by the bare base form of the verb.";
       } else if (topicNum === 33 || topicNum === 34) { // Passive Voice
         qText = "English ___ by millions of people worldwide.";
         correct = "is spoken";
         distractors = ["speaks", "is speaking", "spoke", "has spoke"];
-        exp = "Majhul nisbat (Passive Voice: be + V3): 'is spoken' to'g'ri.";
+        exp = "Passive Voice formula is 'be + past participle (V3)': 'is spoken' correctly describes the general truth.";
       } else {
         qText = "Select the correct grammatically accurate sentence related to: " + title + ":\n" + name + " ___ to complete the project on time.";
         correct = "has to work hard";
         distractors = ["have to work hard", "must to work hard", "should working", "has work hard"];
-        exp = "Uchinchi shaxs birlik bilan majburiyat fe'li 'has to work' shaklida to'g'ri bo'ladi.";
+        exp = "Third-person singular obligations require 'has to' followed by the base verb: 'has to work'.";
       }
     } else if (level === "B1") {
       if (topicNum === 1 || topicNum === 2) { // Present Perfect Continuous vs Simple
@@ -1488,99 +1488,99 @@
           qText = name + " is exhausted because he ___ in the garden for four hours.";
           correct = "has been working";
           distractors = ["has worked", "is working", "works", "had worked"];
-          exp = "Harakatning davomiyligi va natijasi hozir ko'rinib turgani uchun Present Perfect Continuous (has been working) qo'llaniladi.";
+          exp = "Present Perfect Continuous (has been working) highlights an action continuing over time with present evidence or fatigue.";
         } else {
           qText = "How many pages of the book ___ so far?";
           correct = "have you read";
           distractors = ["have you been reading", "did you read", "do you read", "are you reading"];
-          exp = "'How many...' miqdor va yakunlangan natijani so'raganda Present Perfect Simple (have you read) ishlatiladi.";
+          exp = "When asking about completed quantities or finished items, use Present Perfect Simple (have you read).";
         }
       } else if (topicNum === 3) { // Past Perfect
         qText = "When the police arrived, the thieves ___ already fled.";
         correct = "had";
         distractors = ["have", "has", "did", "were"];
-        exp = "O'tgan zamondagi boshqa bir harakatdan oldin sodir bo'lgan ish-harakat uchun Past Perfect (had + V3) ishlatiladi.";
+        exp = "Past Perfect (had + past participle) designates an action completed prior to another past event.";
       } else if (topicNum === 5) { // Second Conditional
         qText = "If I ___ a million dollars, I would travel around the world.";
         correct = "won";
         distractors = ["win", "would win", "have won", "will win"];
-        exp = "Second Conditional (norasmiy/faraziy hozirgi zamon): If + Past Simple, would + V.";
+        exp = "Second Conditional (hypothetical present/future): 'if' + Past Simple, result clause with 'would' + base verb.";
       } else if (topicNum === 6) { // Third Conditional
         qText = "If she had studied harder, she ___ the examination.";
         correct = "would have passed";
         distractors = ["would pass", "passed", "will pass", "had passed"];
-        exp = "Third Conditional (o'tmishdagi afsus): If + had + V3, would have + V3.";
+        exp = "Third Conditional (past regrets/unreal past): 'if' + Past Perfect (had + V3), result clause with 'would have + V3'.";
       } else if (topicNum === 8) { // Modals of deduction
         qText = "Look at his luxury car and mansion! He ___ be very wealthy.";
         correct = "must";
         distractors = ["can't", "should", "might not", "needn't"];
-        exp = "Aniq dalillarga asoslangan 95%+ ishonchli xulosa uchun 'must' ishlatiladi.";
+        exp = "Use 'must' for strong logical deduction and high certainty based on clear observed evidence.";
       } else if (topicNum === 13) { // Causative
         qText = "I don't know how to repair my car, so I will have it ___ by a mechanic.";
         correct = "repaired";
         distractors = ["repair", "repairing", "to repair", "repairs"];
-        exp = "Causative: 'have + object + V3' (o'ziga boshqa birov orqali qildirmoq).";
+        exp = "Causative structure: 'have + object + past participle (V3)' expresses arranging for someone else to perform a service.";
       } else {
         qText = "Regarding " + title + ": " + name + " wanted to know whether ___ on the weekend.";
         correct = "they would attend the conference";
         distractors = ["would they attend the conference", "they will attend the conference", "did they attend", "they attend"];
-        exp = "O'zlashtirma so'roq gaplarda (Indirect speech) to'g'ri so'z tartibi (ega + kesim) va zamon moslashuvi qo'llaniladi.";
+        exp = "Reported embedded questions maintain affirmative statement word order (subject + auxiliary/verb) with backshifted tense.";
       }
     } else if (level === "B2") {
       if (topicNum === 1) { // Advanced Future Forms
         qText = "By this time tomorrow, we ___ over the Atlantic ocean.";
         correct = "will be flying";
         distractors = ["will fly", "fly", "are flying", "will have been flown"];
-        exp = "Kelajakda ma'lum bir aniq vaqt oralig'ida davom etayotgan harakat uchun Future Continuous (will be + V-ing) ishlatiladi.";
+        exp = "Future Continuous (will be + -ing) specifies an ongoing action in progress at a defined future point in time.";
       } else if (topicNum === 3) { // Mixed Conditionals
         qText = "If I had taken your advice yesterday, I ___ in this trouble right now.";
         correct = "wouldn't be";
         distractors = ["wouldn't have been", "won't be", "am not", "hadn't been"];
-        exp = "Mixed conditional: O'tmishdagi shart (had taken) ning hozirgi zamonga ta'siri (wouldn't be right now).";
+        exp = "Mixed Conditional: an unreal past condition (had taken) producing a direct consequence in the present (wouldn't be right now).";
       } else if (topicNum === 5) { // Inversion after negative adverbs
         qText = "Rarely ___ such an extraordinary performance in modern theatre.";
         correct = "have I witnessed";
         distractors = ["I have witnessed", "did I witnessed", "I witnessed", "was I witnessed"];
-        exp = "Inkor yoki cheklovchi ravishlar (Rarely, Never, Seldom) gap boshiga chiqqanda qat'iy inversiya (yordamchi fe'l + ega + asosiy fe'l) yuz beradi.";
+        exp = "Fronted negative or restrictive adverbs (Rarely, Seldom, Never) demand negative inversion: auxiliary + subject + main verb.";
       } else if (topicNum === 8) { // Past modals
         qText = "You ___ that sensitive email to everyone; it was completely confidential!";
         correct = "shouldn't have sent";
         distractors = ["mustn't send", "couldn't send", "needn't send", "wouldn't send"];
-        exp = "O'tmishda qilingan noto'g'ri ishdan afsuslanish yoki tanbeh berish uchun 'shouldn't have + V3' ishlatiladi.";
+        exp = "'Shouldn't have + past participle' expresses criticism or regret regarding an inappropriate past action.";
       } else {
         qText = "Advanced context for " + title + ": The CEO insisted that the audit report ___ submitted without delay.";
         correct = "be";
         distractors = ["is", "was", "will be", "to be"];
-        exp = "Subjunctive mood: 'insisted that + subject + be/bare infinitive' qoidasi qo'llaniladi.";
+        exp = "The mandative subjunctive requires the base form of the verb ('be') following demand/insistence clauses.";
       }
     } else if (level === "C1") {
       if (topicNum === 1) { // Inversion with conditionals
         qText = "___ you require any further assistance, please do not hesitate to contact our office.";
         correct = "Should";
         distractors = ["If", "Were", "Had", "Unless"];
-        exp = "Birinchi tur shart gapda 'If' tushib qolganda inversiya 'Should you require...' shaklida yoziladi.";
+        exp = "In formal conditional inversion omitting 'if', 'Should you require...' replaces 'If you should require...'.";
       } else if (topicNum === 3) { // Nominal clauses
         qText = "___ amazed everyone was how smoothly the entire transition was executed.";
         correct = "What";
         distractors = ["That", "Which", "It", "Whatever"];
-        exp = "Nominal relative clause: 'What amazed everyone...' gapning egasi vazifasida kelgan.";
+        exp = "Nominal relative clauses ('What amazed everyone...') function as a whole noun phrase acting as sentence subject.";
       } else {
         qText = "Formal academic analysis of " + title + ": Under no circumstances ___ proprietary data be disclosed to unauthorized third parties.";
         correct = "may";
         distractors = ["can't", "is to", "will it", "it shall"];
-        exp = "'Under no circumstances' cheklovchi iborasi inversiyani talab qiladi: 'may proprietary data be disclosed'.";
+        exp = "Negative phrase fronting ('Under no circumstances') mandates subject-auxiliary inversion: modal + subject + verb.";
       }
     } else { // C2 Level
       if (topicNum === 6) { // Stylistic fronting / extreme inversion
         qText = "Down into the dark abyss ___ the courageous explorers.";
         correct = "plunged";
         distractors = ["did plunge", "they plunged", "was plunging", "plunging"];
-        exp = "Directional/locative fronting da to'g'ridan-to'g'ri to'liq inversiya: Predlogli ibora + asosiy fe'l (plunged) + ega bo'ladi.";
+        exp = "Locative/directional prepositional fronting triggers full inversion: prepositional phrase + main verb (plunged) + subject.";
       } else {
         qText = "Mastery level syntax for " + title + ": Scarcely had the resolution been ratified ___ fresh geopolitical disputes emerged.";
         correct = "when";
         distractors = ["than", "then", "that", "while"];
-        exp = "'Scarcely had ... when ...' korrelyativ bog'lovchisi ingliz tili C2 darajasidagi qat'iy leksik-sintaktik normadir.";
+        exp = "'Scarcely had... when...' is a correlative inversion structure denoting that one event occurred immediately after another.";
       }
     }
 
