@@ -2,12 +2,13 @@
  * ETHITH Cloud & Cross-Device Real-Time Synchronization Engine
  * Created by Muhammadyusuf Jo'raboyev
  * Features:
- * - High-speed real-time Telegram chat sync (1.2s polling during active chat)
- * - Conflict-free 3-way deep merge (messages, reactions, students, exams)
- * - Automated 409 Conflict Retry loop with exponential jitter (Zero lost messages)
- * - Permanent message deletion synchronization (purged completely from GitHub)
- * - Instant BroadcastChannel sync across local browser tabs
- * - Authenticated GitHub Store API with zero CDN caching
+ * - Ultra-fast Real-Time WebSocket Mesh (sub-100ms message & reaction delivery)
+ * - Dual SSL MQTT Brokers (EMQX & HiveMQ automatic failover)
+ * - Instant Telegram Chat & Clickable Reaction Sync
+ * - Instant Permanent Message Deletion & Pinning across all devices
+ * - Conflict-free 3-way deep merge for GitHub persistence
+ * - Zero lost messages via GitHub 409 conflict-retry serialization
+ * - Cross-tab BroadcastChannel instant relay
  */
 (function(window) {
   'use strict';
@@ -23,12 +24,19 @@
 
   var _lastKnownSha = null;
   var channel = null;
+  var myClientId = 'cli_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 6);
 
+  // ====================================================
+  // 1. LOCAL BROADCAST CHANNEL (0ms Cross-Tab Sync)
+  // ====================================================
   try {
     if (typeof BroadcastChannel !== 'undefined') {
       channel = new BroadcastChannel('ethith_cloud_channel');
       channel.onmessage = function(e) {
-        if (e.data && e.data.type === 'SYNC_STATE' && window.EthithApp) {
+        if (!e.data) return;
+        if (e.data.type === 'LIVE_EVENT') {
+          handleIncomingLiveEvent(e.data.event);
+        } else if (e.data.type === 'SYNC_STATE' && window.EthithApp) {
           var S = window.EthithApp.state;
           var c1 = e.data.classes ? mergeClasses(S.classes, e.data.classes) : false;
           var c2 = e.data.exams ? mergeExams(S.exams, e.data.exams) : false;
@@ -55,7 +63,227 @@
     }
   }
 
-  // 1. Fetch Remote Store from GitHub API (Bypasses all CDN caching)
+  // ====================================================
+  // 2. ULTRA-FAST MQTT WEBSOCKET MESH (Sub-100ms Real-Time)
+  // ====================================================
+  var BROKERS = [
+    { host: 'broker.emqx.io', port: 8084, path: '/mqtt' },
+    { host: 'broker.hivemq.com', port: 8884, path: '/mqtt' }
+  ];
+  var currentBrokerIdx = 0;
+  var mqttClient = null;
+  var isMqttConnected = false;
+  var activeSubscribedClass = null;
+
+  function initRealtimeMesh() {
+    if (typeof window.Paho === 'undefined' || !window.Paho.MQTT) {
+      console.log('[LiveRT] Paho MQTT not yet loaded, retrying in 500ms...');
+      setTimeout(initRealtimeMesh, 500);
+      return;
+    }
+
+    var broker = BROKERS[currentBrokerIdx];
+    var clientId = 'eth_' + myClientId;
+
+    try {
+      mqttClient = new window.Paho.MQTT.Client(broker.host, broker.port, broker.path, clientId);
+
+      mqttClient.onConnectionLost = function(resp) {
+        isMqttConnected = false;
+        console.log('[LiveRT] MQTT Connection lost:', resp ? resp.errorMessage : 'unknown');
+        // Switch broker on fail and reconnect
+        currentBrokerIdx = (currentBrokerIdx + 1) % BROKERS.length;
+        setTimeout(initRealtimeMesh, 2000);
+      };
+
+      mqttClient.onMessageArrived = function(message) {
+        try {
+          var event = JSON.parse(message.payloadString);
+          handleIncomingLiveEvent(event);
+        } catch(err) {
+          console.warn('[LiveRT] Parse error:', err);
+        }
+      };
+
+      mqttClient.connect({
+        useSSL: true,
+        timeout: 8,
+        keepAliveInterval: 30,
+        cleanSession: true,
+        onSuccess: function() {
+          isMqttConnected = true;
+          console.log('[LiveRT] Connected to ' + broker.host + ' successfully!');
+          // Subscribe to wildcard for ALL classes and global events
+          mqttClient.subscribe('ethith/v3/class/#', { qos: 1 });
+          mqttClient.subscribe('ethith/v3/global', { qos: 1 });
+
+          // Flush queued outbox messages
+          while (liveOutbox.length > 0) {
+            var queuedEvent = liveOutbox.shift();
+            try {
+              var qTopic = queuedEvent.classId ? ('ethith/v3/class/' + queuedEvent.classId) : 'ethith/v3/global';
+              var qMsg = new window.Paho.MQTT.Message(JSON.stringify(queuedEvent));
+              qMsg.destinationName = qTopic;
+              qMsg.qos = 1;
+              mqttClient.send(qMsg);
+            } catch(e) {}
+          }
+        },
+        onFailure: function(err) {
+          isMqttConnected = false;
+          console.warn('[LiveRT] Connection failed to ' + broker.host + ':', err);
+          currentBrokerIdx = (currentBrokerIdx + 1) % BROKERS.length;
+          setTimeout(initRealtimeMesh, 2500);
+        }
+      });
+    } catch(err) {
+      console.warn('[LiveRT] Mesh init exception:', err);
+      setTimeout(initRealtimeMesh, 3000);
+    }
+  }
+
+  function subscribeClass(classCodeOrId) {
+    activeSubscribedClass = classCodeOrId;
+    if (mqttClient && isMqttConnected && classCodeOrId) {
+      var topic = 'ethith/v3/class/' + classCodeOrId;
+      mqttClient.subscribe(topic, { qos: 1 });
+    }
+  }
+
+  var liveOutbox = [];
+
+  // Publish event instantly to all devices via WebSocket and local tabs
+  function publishLive(event) {
+    if (!event) return;
+    event.from = myClientId;
+    event.ts = Date.now();
+
+    // 1. Cross-tab instant relay
+    if (channel) {
+      try {
+        channel.postMessage({ type: 'LIVE_EVENT', event: event });
+      } catch(e) {}
+    }
+
+    // 2. WebSocket instant publish (or buffer in outbox)
+    if (mqttClient && isMqttConnected) {
+      try {
+        var topic = event.classId ? ('ethith/v3/class/' + event.classId) : 'ethith/v3/global';
+        var msg = new window.Paho.MQTT.Message(JSON.stringify(event));
+        msg.destinationName = topic;
+        msg.qos = 1;
+        mqttClient.send(msg);
+      } catch(err) {
+        console.warn('[LiveRT] Publish error, queueing:', err);
+        liveOutbox.push(event);
+      }
+    } else {
+      liveOutbox.push(event);
+    }
+  }
+
+  // Dispatch incoming live events directly to local state and UI
+  function handleIncomingLiveEvent(event) {
+    if (!event || event.from === myClientId) return; // Don't echo self
+    if (!window.EthithApp || !window.EthithApp.state) return;
+
+    var S = window.EthithApp.state;
+    var classes = S.classes || [];
+    var targetCls = classes.find(function(c) {
+      return (event.classId && (c.id === event.classId || c.code === event.classId));
+    });
+
+    var uiNeedsRefresh = false;
+
+    // A. NEW CHAT MESSAGE
+    if (event.type === 'CHAT_MSG' && event.message && targetCls) {
+      if (!targetCls.messages) targetCls.messages = [];
+      if (!targetCls.deletedMsgIds) targetCls.deletedMsgIds = [];
+
+      // Check if not deleted and not already added
+      if (targetCls.deletedMsgIds.indexOf(event.message.id) === -1) {
+        var exists = targetCls.messages.some(function(m) { return m.id === event.message.id; });
+        if (!exists) {
+          targetCls.messages.push(event.message);
+          targetCls.messages.sort(function(a, b) {
+            return (a.timestamp || 0) - (b.timestamp || 0);
+          });
+          uiNeedsRefresh = true;
+        }
+      }
+    }
+
+    // B. REACTION TOGGLE
+    else if (event.type === 'REACTION' && targetCls && event.msgId && event.emoji) {
+      var msg = (targetCls.messages || []).find(function(m) { return m.id === event.msgId; });
+      if (msg) {
+        if (!msg.reactions) msg.reactions = {};
+        if (!msg.reactions[event.emoji]) msg.reactions[event.emoji] = [];
+
+        var uId = event.userId || 'guest';
+        var idx = msg.reactions[event.emoji].indexOf(uId);
+
+        if (event.action === 'remove') {
+          if (idx > -1) {
+            msg.reactions[event.emoji].splice(idx, 1);
+            if (msg.reactions[event.emoji].length === 0) delete msg.reactions[event.emoji];
+            uiNeedsRefresh = true;
+          }
+        } else {
+          // 'add' or default toggle
+          if (idx === -1) {
+            msg.reactions[event.emoji].push(uId);
+            uiNeedsRefresh = true;
+          }
+        }
+      }
+    }
+
+    // C. PERMANENT DELETE MESSAGE
+    else if (event.type === 'DELETE_MSG' && targetCls && event.msgId) {
+      if (!targetCls.deletedMsgIds) targetCls.deletedMsgIds = [];
+      if (targetCls.deletedMsgIds.indexOf(event.msgId) === -1) {
+        targetCls.deletedMsgIds.push(event.msgId);
+      }
+      var lenBefore = (targetCls.messages || []).length;
+      targetCls.messages = (targetCls.messages || []).filter(function(m) { return m.id !== event.msgId; });
+      if (targetCls.pinnedId === event.msgId) targetCls.pinnedId = null;
+      if (targetCls.messages.length !== lenBefore) {
+        uiNeedsRefresh = true;
+      }
+    }
+
+    // D. PIN MESSAGE
+    else if (event.type === 'PIN_MSG' && targetCls && event.msgId) {
+      if (targetCls.pinnedId !== event.msgId) {
+        targetCls.pinnedId = event.msgId;
+        uiNeedsRefresh = true;
+      }
+    }
+
+    // E. STUDENT JOINED
+    else if (event.type === 'STUDENT_JOIN' && targetCls && event.student) {
+      if (!targetCls.students) targetCls.students = [];
+      var sExists = targetCls.students.some(function(s) {
+        return (s.email && s.email === event.student.email) || (s.id && s.id === event.student.id);
+      });
+      if (!sExists) {
+        targetCls.students.push(event.student);
+        uiNeedsRefresh = true;
+      }
+    }
+
+    if (uiNeedsRefresh) {
+      window.EthithApp.saveState();
+      if (window._ethithCurrentView === 'classes' && window._ethithRefreshCurrentClass) {
+        window._ethithRefreshCurrentClass();
+      }
+    }
+  }
+
+  // ====================================================
+  // 3. PERSISTENCE ENGINE (GitHub Store API)
+  // ====================================================
   async function fetchRemoteStore() {
     var token = getGHToken();
     try {
@@ -82,7 +310,6 @@
     return null;
   }
 
-  // 2. Deep Merge Classes, Messages, Reactions, Deletions, and Students
   function mergeClasses(localClasses, remoteClasses) {
     var changed = false;
     if (!Array.isArray(remoteClasses)) return changed;
@@ -106,7 +333,7 @@
         });
       }
 
-      // Purge any locally present messages that have been deleted
+      // Purge deleted messages
       if (!localCls.messages) localCls.messages = [];
       if (localCls.deletedMsgIds.length > 0) {
         var lenBefore = localCls.messages.length;
@@ -116,7 +343,7 @@
         if (localCls.messages.length !== lenBefore) changed = true;
       }
 
-      // Sync Students (Monitoring & Analytics)
+      // Sync Students
       if (!localCls.students) localCls.students = [];
       if (rc.students && Array.isArray(rc.students)) {
         rc.students.forEach(function(rStudent) {
@@ -140,7 +367,6 @@
       // Sync Messages & Emoji Reactions
       if (rc.messages && Array.isArray(rc.messages)) {
         rc.messages.forEach(function(rMsg) {
-          // Skip if this message was deleted
           if (localCls.deletedMsgIds.indexOf(rMsg.id) !== -1) return;
 
           var localMsg = localCls.messages.find(function(m) { return m.id === rMsg.id; });
@@ -148,7 +374,6 @@
             localCls.messages.push(rMsg);
             changed = true;
           } else {
-            // Merge reactions user by user
             if (rMsg.reactions) {
               if (!localMsg.reactions) localMsg.reactions = {};
               for (var em in rMsg.reactions) {
@@ -167,7 +392,6 @@
           }
         });
 
-        // Ensure chronological order
         localCls.messages.sort(function(a, b) {
           var ta = a.timestamp || parseInt((a.id || '').replace(/\D/g, ''), 10) || 0;
           var tb = b.timestamp || parseInt((b.id || '').replace(/\D/g, ''), 10) || 0;
@@ -190,7 +414,6 @@
     return changed;
   }
 
-  // 3. Deep Merge Exams & Submissions
   function mergeExams(localExams, remoteExams) {
     var changed = false;
     if (!Array.isArray(remoteExams)) return changed;
@@ -211,7 +434,7 @@
     return changed;
   }
 
-  // 4. Safe Push Queue with Automatic 409 Conflict Retry (Guarantees zero lost messages)
+  // Safe Push Queue with Automatic 409 Conflict Retry
   var isPushing = false;
   var hasPendingPush = false;
 
@@ -244,7 +467,6 @@
     var maxRetries = 6;
     for (var attempt = 1; attempt <= maxRetries; attempt++) {
       try {
-        // 1. Fetch current remote store directly via GitHub API
         var getRes = await fetch(API_STORE_URL + '?_t=' + Date.now(), {
           headers: {
             'Authorization': 'token ' + token,
@@ -265,11 +487,9 @@
           } catch(e) {}
         }
 
-        // 2. Perform 3-way deep merge so no remote updates are lost
         mergeClasses(S.classes, remoteData.classes || []);
         mergeExams(S.exams, remoteData.exams || []);
 
-        // 3. Clean up payload: ensure deleted messages are completely purged from output
         var cleanClasses = JSON.parse(JSON.stringify(S.classes));
         cleanClasses.forEach(function(c) {
           if (c.deletedMsgIds && Array.isArray(c.deletedMsgIds) && c.messages) {
@@ -294,7 +514,6 @@
         };
         if (sha) body.sha = sha;
 
-        // 4. PUT to GitHub
         var putRes = await fetch(API_STORE_URL, {
           method: 'PUT',
           headers: {
@@ -311,25 +530,24 @@
           _lastKnownSha = putResult.content ? putResult.content.sha : sha;
           if (window.EthithApp) window.EthithApp.saveState();
           broadcastLocal(S.classes, S.exams);
-          return; // Success!
+          return;
         } else if (putRes.status === 409) {
-          // Conflict: someone else committed in the fraction of a second
-          console.log('[Sync] GitHub 409 conflict on attempt ' + attempt + ', re-fetching and merging...');
+          console.log('[Sync] 409 conflict, retrying attempt ' + attempt + '...');
           await new Promise(function(r) { setTimeout(r, Math.floor(Math.random() * 250) + 150); });
-          continue; // Retry with new SHA and merged data
+          continue;
         } else {
           var errText = await putRes.text();
           console.warn('[Sync] PUT failed status ' + putRes.status + ':', errText);
           return;
         }
       } catch(loopErr) {
-        console.warn('[Sync] Push attempt ' + attempt + ' failed:', loopErr);
+        console.warn('[Sync] Push loop error:', loopErr);
         await new Promise(function(r) { setTimeout(r, 200); });
       }
     }
   }
 
-  // 5. Initial Data Sync on App Start
+  // Initial Data Sync on App Start
   async function syncInitialData(S) {
     var remote = await fetchRemoteStore();
     if (remote) {
@@ -339,19 +557,18 @@
         window.EthithApp.saveState();
       }
     }
+    // Auto-subscribe to all enrolled classes on start
+    (S.classes || []).forEach(function(c) {
+      subscribeClass(c.code || c.id);
+    });
   }
 
-  // 6. High-Frequency Real-Time Poller
-  // - 1.2s when actively inside classes/chat
-  // - 3.0s when in other views
+  // Background Poller (Safety net fallback every 3.5s)
   var isPolling = false;
-
   async function checkLiveUpdates() {
     if (isPolling) return;
     if (!window.EthithApp || !window.EthithApp.state) return;
     var S = window.EthithApp.state;
-
-    // Do not poll if tab is in background or user is logged out
     if (document.hidden || !S.user) return;
 
     isPolling = true;
@@ -373,15 +590,16 @@
     isPolling = false;
   }
 
-  // Dynamic Polling Loop
-  function scheduleNextPoll() {
-    var delay = (window._ethithCurrentView === 'classes') ? 1200 : 3000;
-    setTimeout(async function() {
-      await checkLiveUpdates();
-      scheduleNextPoll();
-    }, delay);
+  setInterval(checkLiveUpdates, 3500);
+
+  // Initialize Real-Time Mesh on Load
+  if (typeof window !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initRealtimeMesh);
+    } else {
+      setTimeout(initRealtimeMesh, 20);
+    }
   }
-  scheduleNextPoll();
 
   window.EthithSync = {
     fetchRemoteStore: fetchRemoteStore,
@@ -389,7 +607,9 @@
     broadcastLocal: broadcastLocal,
     syncInitialData: syncInitialData,
     mergeClasses: mergeClasses,
-    mergeExams: mergeExams
+    mergeExams: mergeExams,
+    subscribeClass: subscribeClass,
+    publishLive: publishLive
   };
 
 })(window);

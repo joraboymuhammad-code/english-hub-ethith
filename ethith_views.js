@@ -604,8 +604,8 @@
         html += '' +
           '<div class="ap-card" style="cursor:pointer;transition:transform 0.2s" data-cls-id="' + c.id + '">' +
           '  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">' +
-          '    <span class="ap-tag">' + (c.students ? c.students.length : 0) + ' ta o\'quvchi</span>' +
-          '    <span style="font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:4px 8px;border-radius:6px">Kod: ' + c.code + '</span>' +
+          '    <span class="ap-tag">' + (c.students ? c.students.length : 0) + ' students</span>' +
+          '    <span style="font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:4px 8px;border-radius:6px">Code: ' + c.code + '</span>' +
           '  </div>' +
           '  <h3 style="font-size:18px;margin-bottom:6px">' + esc(c.name) + '</h3>' +
           '  <p style="color:var(--muted);font-size:13px;margin:0 0 14px">Teacher: ' + esc(c.teacherName || 'Teacher') + '</p>' +
@@ -762,6 +762,18 @@
       S.activeClassId = found.id;
       App.saveState();
       if (window.EthithSync) {
+        window.EthithSync.publishLive({
+          type: 'STUDENT_JOIN',
+          classId: found.code || found.id,
+          student: {
+            id: studentId,
+            name: S.user.name,
+            email: S.user.email,
+            lastActive: Date.now(),
+            dailyMinutes: S.user.dailyMinutes || 0,
+            mistakes: (S.mistakes || []).length
+          }
+        });
         window.EthithSync.broadcastLocal(S.classes, S.exams);
         window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
@@ -772,13 +784,16 @@
 
   // Telegram Style Chat inside Class
   function renderClassDetail(container, cls) {
+    if (window.EthithSync) {
+      window.EthithSync.subscribeClass(cls.code || cls.id);
+    }
     var isTeacher = S.user && S.user.role === 'teacher';
     var pinnedMsg = cls.messages.find(function(m) { return m.id === cls.pinnedId; });
 
     var html = '' +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">' +
       '  <button class="ap-back" id="backClassesListBtn" style="margin:0">' + ic('left') + ' Back to Classes</button>' +
-      (isTeacher ? '  <button class="ap-btn out" id="clsMonitoringBtn">' + ic('user') + ' O\'quvchilar monitoringi (' + (cls.students ? cls.students.length : 0) + ')</button>' : '') +
+      (isTeacher ? '  <button class="ap-btn out" id="clsMonitoringBtn">' + ic('user') + ' Student Roster (' + (cls.students ? cls.students.length : 0) + ')</button>' : '') +
       '</div>' +
       '<div class="tg-chat-wrap">' +
       '  <div class="tg-header">' +
@@ -786,7 +801,7 @@
       '      <div class="tg-header-avatar">' + cls.name.charAt(0).toUpperCase() + '</div>' +
       '      <div class="tg-header-title">' +
       '        <h3>' + esc(cls.name) + '</h3>' +
-      '        <span>' + (cls.students ? cls.students.length : 0) + ' a\'zo · Kod: <b style="color:#2563eb;user-select:all">' + cls.code + '</b></span>' +
+      '        <span>' + (cls.students ? cls.students.length : 0) + ' members · Code: <b style="color:#2563eb;user-select:all">' + cls.code + '</b></span>' +
       '      </div>' +
       '    </div>' +
       '  </div>' +
@@ -963,6 +978,11 @@
       input.value = '';
       App.saveState();
       if (window.EthithSync) {
+        window.EthithSync.publishLive({
+          type: 'CHAT_MSG',
+          classId: cls.code || cls.id,
+          message: newMsg
+        });
         window.EthithSync.broadcastLocal(S.classes, S.exams);
         window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
@@ -1077,6 +1097,11 @@
       cls.pinnedId = msg.id;
       App.saveState();
       if (window.EthithSync) {
+        window.EthithSync.publishLive({
+          type: 'PIN_MSG',
+          classId: cls.code || cls.id,
+          msgId: msg.id
+        });
         window.EthithSync.broadcastLocal(S.classes, S.exams);
         window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
@@ -1093,6 +1118,11 @@
         if (cls.deletedMsgIds.indexOf(msg.id) === -1) cls.deletedMsgIds.push(msg.id);
         App.saveState();
         if (window.EthithSync) {
+          window.EthithSync.publishLive({
+            type: 'DELETE_MSG',
+            classId: cls.code || cls.id,
+            msgId: msg.id
+          });
           window.EthithSync.broadcastLocal(S.classes, S.exams);
           window.EthithSync.pushRemoteStore(S.classes, S.exams);
         }
@@ -1109,11 +1139,15 @@
     if (!msg.reactions[emoji]) msg.reactions[emoji] = [];
 
     var userId = (S.user && (S.user.email || S.user.id)) || 'guest';
+    var isAdded = true;
     var idx = msg.reactions[emoji].indexOf(userId);
     if (idx > -1) {
       msg.reactions[emoji].splice(idx, 1);
+      if (msg.reactions[emoji].length === 0) delete msg.reactions[emoji];
+      isAdded = false;
     } else {
       msg.reactions[emoji].push(userId);
+      isAdded = true;
     }
 
     // Dynamic ordering: the most recently clicked emoji moves to the very first position (position 0)!
@@ -1125,6 +1159,14 @@
 
     App.saveState();
     if (window.EthithSync) {
+      window.EthithSync.publishLive({
+        type: 'REACTION',
+        classId: cls.code || cls.id,
+        msgId: msg.id,
+        emoji: emoji,
+        userId: userId,
+        action: isAdded ? 'add' : 'remove'
+      });
       window.EthithSync.broadcastLocal(S.classes, S.exams);
       window.EthithSync.pushRemoteStore(S.classes, S.exams);
     }
