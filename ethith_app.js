@@ -10,6 +10,30 @@
   var QUICK_EMOJIS_DEFAULT = ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '🚀', '💯', '🤝', '💡'];
   var ALL_EMOJIS = ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '🚀', '💯', '🤝', '💡', '😂', '🥳', '🤔', '😢', '🙏', '🎯', '✨', '🧠', '📚', '✍️', '🙌', '💪', '🏆', '⭐'];
 
+  var DEFAULT_CLASSES = [
+    {
+      id: 'cls_ethith_main',
+      name: 'IELTS & General English Intensive',
+      code: 'ETH-L6S8CM',
+      teacherId: 'joraboyevmuhammad85@gmail.com',
+      teacherName: 'Ustoz Muhammadyusuf',
+      teacherEmail: 'joraboyevmuhammad85@gmail.com',
+      created: Date.now(),
+      students: [],
+      messages: [
+        {
+          id: 'msg_welcome_1',
+          senderId: 'joraboyevmuhammad85@gmail.com',
+          senderName: 'Ustoz Muhammadyusuf',
+          text: 'Assalomu alaykum! ETHITH rasmiy sinfiga xush kelibsiz. Bu yerda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.',
+          time: '12:00',
+          reactions: { '👍': ['joraboyevmuhammad85@gmail.com'] }
+        }
+      ],
+      pinnedId: null
+    }
+  ];
+
   // Application State
   var S = {
     user: null, // { role: 'student'|'teacher', name: '', email: '', id: '', dailyMinutes: 0 }
@@ -17,8 +41,8 @@
     unlocked: { A1: 1, A2: 1, B1: 1, B2: 1, C1: 1, C2: 1 },
     mistakes: [],
     theme: 'light',
-    classes: [], // [{ id, name, code, teacherId, teacherName, students: [{ id, name, email, dailyMinutes, mistakes }], messages: [], pinnedId: null }]
-    exams: [], // [{ id, code, title, duration, pointsPerQ, questions: [], submissions: [] }]
+    classes: DEFAULT_CLASSES.slice(),
+    exams: [],
     aiHistory: [],
     quickReactions: QUICK_EMOJIS_DEFAULT.slice(),
     activeClassId: null,
@@ -37,6 +61,17 @@
       }
     }
   } catch(e) {}
+
+  if (!S.classes || S.classes.length === 0) {
+    S.classes = DEFAULT_CLASSES.slice();
+  } else if (!S.classes.some(function(c) { return c.code === 'ETH-L6S8CM'; })) {
+    S.classes.unshift(DEFAULT_CLASSES[0]);
+  }
+
+  // Trigger remote sync if available
+  if (window.EthithSync && window.EthithSync.syncInitialData) {
+    window.EthithSync.syncInitialData(S);
+  }
 
   function saveState() {
     try {
@@ -322,11 +357,36 @@
   };
 
   window.ethithShowLanding = function() {
+    if (S.user) {
+      window.ethithOpenApp('dash');
+      return;
+    }
     var ap = document.getElementById('app');
     var landing = document.getElementById('landing');
     if (ap) ap.style.display = 'none';
     if (landing) landing.style.display = '';
     window.scrollTo(0, 0);
   };
+
+  function autoEnterIfLoggedIn() {
+    if (S.user) {
+      var landing = document.getElementById('landing');
+      var ap = document.getElementById('app');
+      if (landing) landing.style.display = 'none';
+      if (ap) {
+        ap.style.display = 'block';
+        ap.setAttribute('data-theme', S.theme);
+      }
+      if (window._ethithInternalGo) {
+        window._ethithInternalGo('dash');
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', autoEnterIfLoggedIn);
+  } else {
+    setTimeout(autoEnterIfLoggedIn, 10);
+  }
 
 })(window);

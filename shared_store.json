@@ -1,0 +1,28 @@
+{
+  "classes": [
+    {
+      "id": "cls_default_1",
+      "code": "ETH-L6S8CM",
+      "name": "IELTS Band 7.0+ Intensive Class",
+      "teacherName": "Ustoz Muhammadyusuf",
+      "teacherEmail": "joraboyevmuhammad85@gmail.com",
+      "created": 1791997894796,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Ustoz Muhammadyusuf",
+          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "exams": []
+}

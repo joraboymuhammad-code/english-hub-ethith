@@ -326,23 +326,13 @@
       overlay.remove();
     };
 
-    overlay.querySelector('#quizPromptStart').onclick = async function() {
+    overlay.querySelector('#quizPromptStart').onclick = function() {
       var count = parseInt(slider.value, 10) || 25;
-      overlay.innerHTML = '' +
-        '<div class="eth-modal" style="text-align:center;padding:40px 24px">' +
-        '  <div style="font-size:42px;margin-bottom:14px">⚙️</div>' +
-        '  <h3 style="font-size:20px;color:var(--eth-primary)">ETHITH AI test tuzmoqda...</h3>' +
-        '  <p style="color:var(--muted);font-size:14px">' + level + ' · ' + esc(topicTitle) + ' bo\'yicha ' + count + ' ta original test savollari tayyorlanmoqda. Biroz kuting...</p>' +
-        '</div>';
-
-      try {
-        var questions = await window.EthithAI.generateTopicQuiz(level, topicNum, topicTitle, count);
-        overlay.remove();
-        startTopicQuizRunner(level, topicNum, topicTitle, questions, mainContainer);
-      } catch (err) {
-        overlay.remove();
-        alert("Xatolik yuz berdi: " + err.message + "\nIltimos, qaytadan urinib ko'ring.");
-      }
+      var questions = (window.EthithQuizEngine && window.EthithQuizEngine.generateQuiz)
+        ? window.EthithQuizEngine.generateQuiz(level, topicNum, count)
+        : [];
+      overlay.remove();
+      startTopicQuizRunner(level, topicNum, topicTitle, questions, mainContainer);
     };
   }
 
@@ -680,6 +670,10 @@
       S.classes.push(newCls);
       S.activeClassId = newCls.id;
       App.saveState();
+      if (window.EthithSync) {
+        window.EthithSync.broadcastLocal(S.classes, S.exams);
+        window.EthithSync.pushRemoteStore(S.classes, S.exams);
+      }
       overlay.remove();
       renderClassesView(container);
     };
@@ -698,7 +692,7 @@
       '    <form id="joinClassForm">' +
       '      <div class="eth-form-group">' +
       '        <label>10 xonali Sinf Kodi</label>' +
-      '        <input type="text" id="joinClsCode" placeholder="Masalan: ETH-A7K92P" style="text-transform:uppercase" required>' +
+      '        <input type="text" id="joinClsCode" placeholder="Masalan: ETH-L6S8CM" style="text-transform:uppercase" required>' +
       '      </div>' +
       '      <button type="submit" class="eth-btn-primary">Qo\'shilish ' + ic('right') + '</button>' +
       '    </form>' +
@@ -706,10 +700,22 @@
       '</div>';
     document.body.appendChild(overlay);
 
-    overlay.querySelector('#joinClassForm').onsubmit = function(e) {
+    overlay.querySelector('#joinClassForm').onsubmit = async function(e) {
       e.preventDefault();
       var code = document.getElementById('joinClsCode').value.trim().toUpperCase();
       var found = S.classes.find(function(c) { return c.code === code; });
+
+      if (!found && window.EthithSync) {
+        var remote = await window.EthithSync.fetchRemoteStore();
+        if (remote && remote.classes) {
+          remote.classes.forEach(function(rc) {
+            if (!S.classes.some(function(c) { return c.id === rc.id || c.code === rc.code; })) {
+              S.classes.push(rc);
+            }
+          });
+          found = S.classes.find(function(c) { return c.code === code; });
+        }
+      }
 
       if (!found) {
         alert("Bunday kodli sinf topilmadi. Iltimos, kodni tekshirib qayta kiriting.");
@@ -717,20 +723,26 @@
       }
 
       if (!found.students) found.students = [];
-      var already = found.students.some(function(s) { return s.id === S.user.id || s.email === S.user.email; });
+      var studentId = S.user.email || S.user.id;
+      var already = found.students.some(function(s) { return s.id === studentId || s.email === S.user.email; });
 
       if (!already) {
         found.students.push({
-          id: S.user.id,
+          id: studentId,
           name: S.user.name,
           email: S.user.email,
+          lastActive: Date.now(),
           dailyMinutes: S.user.dailyMinutes || 0,
-          mistakes: S.mistakes.length
+          mistakes: (S.mistakes || []).length
         });
       }
 
       S.activeClassId = found.id;
       App.saveState();
+      if (window.EthithSync) {
+        window.EthithSync.broadcastLocal(S.classes, S.exams);
+        window.EthithSync.pushRemoteStore(S.classes, S.exams);
+      }
       overlay.remove();
       renderClassesView(container);
     };
@@ -907,6 +919,13 @@
     };
   }
 
+  var EMOJIS_MASTER_LIST = [
+    '👍', '❤️', '🔥', '👏', '🎉', '🤩', '😂', '😢', '😡', '🙏',
+    '💯', '🚀', '🤔', '👀', '🥳', '⚡', '👎', '❤️‍🔥', '🤝', '🏆',
+    '💡', '😍', '✨', '💪', '🎯', '👌', '😎', '😇', '🤫', '🫡',
+    '🤯', '😭', '🤮', '😴', '👋', '🎓', '📚', '☕', '🌟', '🥇'
+  ];
+
   // Telegram Context Menu: Reactions, Reply, Pin, Delete
   function showContextMenu(x, y, msgId, cls, mainContainer) {
     if (activeContextMenu) activeContextMenu.remove();
@@ -918,16 +937,16 @@
     menu.className = 'tg-context-menu';
 
     // Position menu within viewport
-    var posX = Math.min(x, window.innerWidth - 220);
-    var posY = Math.min(y, window.innerHeight - 250);
+    var posX = Math.max(10, Math.min(x, window.innerWidth - 245));
+    var posY = Math.max(10, Math.min(y, window.innerHeight - 280));
     menu.style.left = posX + 'px';
     menu.style.top = posY + 'px';
 
-    var quickEmojis = S.quickReactions || ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '🚀', '💯'];
+    var quickEmojis = S.quickReactions && S.quickReactions.length >= 10 ? S.quickReactions : EMOJIS_MASTER_LIST;
 
     var html = '' +
       '<div class="tg-context-reactions">' +
-      quickEmojis.slice(0, 6).map(function(em) {
+      quickEmojis.slice(0, 18).map(function(em) {
         return '<button class="tg-context-reaction-btn" data-em="' + em + '">' + em + '</button>';
       }).join('') +
       '  <button class="tg-context-reaction-btn" id="tgMoreEmojisBtn" title="Barcha emojilar">➕</button>' +
@@ -969,6 +988,10 @@
     menu.querySelector('#ctxPinBtn').onclick = function() {
       cls.pinnedId = msg.id;
       App.saveState();
+      if (window.EthithSync) {
+        window.EthithSync.broadcastLocal(S.classes, S.exams);
+        window.EthithSync.pushRemoteStore(S.classes, S.exams);
+      }
       menu.remove();
       activeContextMenu = null;
       renderClassDetail(mainContainer, cls);
@@ -979,6 +1002,10 @@
         cls.messages = cls.messages.filter(function(m) { return m.id !== msg.id; });
         if (cls.pinnedId === msg.id) cls.pinnedId = null;
         App.saveState();
+        if (window.EthithSync) {
+          window.EthithSync.broadcastLocal(S.classes, S.exams);
+          window.EthithSync.pushRemoteStore(S.classes, S.exams);
+        }
         menu.remove();
         activeContextMenu = null;
         renderClassDetail(mainContainer, cls);
@@ -991,7 +1018,7 @@
     if (!msg.reactions) msg.reactions = {};
     if (!msg.reactions[emoji]) msg.reactions[emoji] = [];
 
-    var userId = S.user.id;
+    var userId = (S.user && (S.user.email || S.user.id)) || 'guest';
     var idx = msg.reactions[emoji].indexOf(userId);
     if (idx > -1) {
       msg.reactions[emoji].splice(idx, 1);
@@ -999,14 +1026,18 @@
       msg.reactions[emoji].push(userId);
     }
 
-    // Requirement: "ohirgi martta qaysibiri reaksiya bosilgan bo'lsa o'sha reaksiya tartibda birinchiga o'tib qoladi"
-    var qr = S.quickReactions || [];
+    // Dynamic ordering: the most recently clicked emoji moves to the very first position (position 0)!
+    var qr = (S.quickReactions && S.quickReactions.length > 0) ? S.quickReactions.slice() : EMOJIS_MASTER_LIST.slice();
     var qIdx = qr.indexOf(emoji);
     if (qIdx > -1) qr.splice(qIdx, 1);
     qr.unshift(emoji);
     S.quickReactions = qr;
 
     App.saveState();
+    if (window.EthithSync) {
+      window.EthithSync.broadcastLocal(S.classes, S.exams);
+      window.EthithSync.pushRemoteStore(S.classes, S.exams);
+    }
     renderClassDetail(mainContainer, cls);
   }
 
@@ -1016,16 +1047,15 @@
 
     var picker = document.createElement('div');
     picker.className = 'tg-context-menu';
-    picker.style.left = Math.min(x, window.innerWidth - 260) + 'px';
-    picker.style.top = Math.min(y, window.innerHeight - 280) + 'px';
-    picker.style.maxWidth = '250px';
-
-    var allEmojis = ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '🚀', '💯', '🤝', '💡', '😂', '🥳', '🤔', '😢', '🙏', '🎯', '✨', '🧠', '📚', '✍️', '🙌', '💪', '🏆', '⭐'];
+    picker.style.left = Math.max(10, Math.min(x, window.innerWidth - 270)) + 'px';
+    picker.style.top = Math.max(10, Math.min(y, window.innerHeight - 320)) + 'px';
+    picker.style.width = '260px';
+    picker.style.maxWidth = '280px';
 
     picker.innerHTML = '' +
       '<div style="font-size:12px;font-weight:700;color:var(--muted);padding:4px 6px">Barcha emojilar:</div>' +
-      '<div style="display:grid;grid-template-columns:repeat(6, 1fr);gap:6px;padding:6px">' +
-      allEmojis.map(function(em) {
+      '<div style="display:grid;grid-template-columns:repeat(6, 1fr);gap:4px;padding:6px;max-height:220px;overflow-y:auto">' +
+      EMOJIS_MASTER_LIST.map(function(em) {
         return '<button class="tg-context-reaction-btn" data-full-em="' + em + '">' + em + '</button>';
       }).join('') +
       '</div>';
@@ -1156,101 +1186,320 @@
   function showCreateExamModal(container) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
-    overlay.innerHTML = '' +
-      '<div class="eth-modal" style="max-width:540px">' +
-      '  <div class="eth-modal-header">' +
-      '    <h2>Yangi Imtihon Yaratish</h2>' +
-      '    <p>PDF yoki matn asosida 6 xonali kodli imtihon shakllantirish</p>' +
-      '  </div>' +
-      '  <div class="eth-modal-body">' +
-      '    <form id="createExamForm">' +
-      '      <div class="eth-form-group">' +
-      '        <label>Imtihon Nomi</label>' +
-      '        <input type="text" id="exTitle" placeholder="Masalan: Midterm Exam 2026" required>' +
-      '      </div>' +
-      '      <div style="display:flex;gap:12px">' +
-      '        <div class="eth-form-group" style="flex:1">' +
-      '          <label>Vaqti (Daqiqa)</label>' +
-      '          <input type="number" id="exDuration" value="30" min="5" max="180" required>' +
-      '        </div>' +
-      '        <div class="eth-form-group" style="flex:1">' +
-      '          <label>Har bir savol bali</label>' +
-      '          <input type="number" id="exPoints" value="2" min="1" max="10" required>' +
-      '        </div>' +
-      '      </div>' +
-      '      <div class="eth-form-group">' +
-      '        <label>PDF / Hujjat Fayli yuklang (yoki quyida matn kiriting):</label>' +
-      '        <input type="file" id="exPdfFile" accept=".pdf,.txt,.doc,.docx">' +
-      '      </div>' +
-      '      <div class="eth-form-group">' +
-      '        <label>Imtihon Matni / Savollar:</label>' +
-      '        <textarea id="exContent" rows="4" placeholder="Fayl yuklamasangiz, savollar matnini bu yerga nusxalang..."></textarea>' +
-      '      </div>' +
-      '      <div style="display:flex;gap:10px">' +
-      '        <button type="button" class="ap-btn out" id="exCancelBtn" style="flex:1">Bekor qilish</button>' +
-      '        <button type="submit" class="eth-btn-primary" style="flex:2">AI Bilan Imtihon Tuzish ' + ic('right') + '</button>' +
-      '      </div>' +
-      '    </form>' +
-      '  </div>' +
-      '</div>';
 
-    document.body.appendChild(overlay);
+    var currentTitle = 'English Examination 2026';
+    var currentDuration = 30;
+    var currentPoints = 2;
+    var currentTab = 'mc';
+    var questionsList = [];
 
-    overlay.querySelector('#exCancelBtn').onclick = function() {
-      overlay.remove();
-    };
+    function renderModal() {
+      var html = '' +
+        '<div class="eth-modal" style="max-width:640px;max-height:90vh;display:flex;flex-direction:column">' +
+        '  <div class="eth-modal-header">' +
+        '    <h2>Yangi Imtihon Yaratish</h2>' +
+        '    <p>Variantli test, Yozma test yoki Umumiy belgilash orqali imtihon tuzing</p>' +
+        '  </div>' +
+        '  <div class="eth-modal-body" style="overflow-y:auto;flex:1">' +
+        '    <div class="eth-form-group">' +
+        '      <label>Imtihon Nomi</label>' +
+        '      <input type="text" id="exTitle" placeholder="Masalan: Midterm Exam 2026" value="' + esc(currentTitle) + '" required>' +
+        '    </div>' +
+        '    <div style="display:flex;gap:12px">' +
+        '      <div class="eth-form-group" style="flex:1">' +
+        '        <label>Vaqti (Daqiqa)</label>' +
+        '        <input type="number" id="exDuration" value="' + currentDuration + '" min="5" max="180">' +
+        '      </div>' +
+        '      <div class="eth-form-group" style="flex:1">' +
+        '        <label>Har bir savol bali</label>' +
+        '        <input type="number" id="exPoints" value="' + currentPoints + '" min="1" max="100">' +
+        '      </div>' +
+        '    </div>' +
+        '    <div style="margin:14px 0 10px">' +
+        '      <label style="font-weight:700;font-size:13.5px">Savol qo\'shish turi:</label>' +
+        '      <div class="eth-tabs" style="margin-top:6px">' +
+        '        <button class="eth-tab ' + (currentTab === 'mc' ? 'active' : '') + '" id="tabMcBtn">🔘 Variantli (A,B,C,D)</button>' +
+        '        <button class="eth-tab ' + (currentTab === 'written' ? 'active' : '') + '" id="tabWrittenBtn">✍️ Yozma (Open)</button>' +
+        '        <button class="eth-tab ' + (currentTab === 'bool' ? 'active' : '') + '" id="tabBoolBtn">☑️ True/False</button>' +
+        '        <button class="eth-tab ' + (currentTab === 'bulk' ? 'active' : '') + '" id="tabBulkBtn">📋 Tezkor matn</button>' +
+        '      </div>' +
+        '    </div>' +
+        '    <div id="qBuilderArea" style="background:var(--bg2);padding:14px;border-radius:12px;margin-bottom:16px">';
 
-    overlay.querySelector('#createExamForm').onsubmit = async function(e) {
-      e.preventDefault();
-      var title = document.getElementById('exTitle').value.trim();
-      var duration = parseInt(document.getElementById('exDuration').value, 10) || 30;
-      var points = parseInt(document.getElementById('exPoints').value, 10) || 2;
-      var textContent = document.getElementById('exContent').value.trim();
-      var pdfInput = document.getElementById('exPdfFile');
-
-      var contentToParse = textContent;
-
-      if (pdfInput.files && pdfInput.files[0]) {
-        var file = pdfInput.files[0];
-        contentToParse += '\n[Fayl nomi: ' + file.name + ']\n';
+      if (currentTab === 'mc') {
+        html += '' +
+          '<div class="eth-form-group">' +
+          '  <label>Savol matni:</label>' +
+          '  <input type="text" id="mcQText" placeholder="Masalan: She ___ to school every day.">' +
+          '</div>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">' +
+          '  <div><label style="font-size:12px">A varianti:</label><input type="text" id="mcOptA" placeholder="Variant A"></div>' +
+          '  <div><label style="font-size:12px">B varianti:</label><input type="text" id="mcOptB" placeholder="Variant B"></div>' +
+          '  <div><label style="font-size:12px">C varianti:</label><input type="text" id="mcOptC" placeholder="Variant C"></div>' +
+          '  <div><label style="font-size:12px">D varianti:</label><input type="text" id="mcOptD" placeholder="Variant D"></div>' +
+          '</div>' +
+          '<div class="eth-form-group" style="margin-top:10px">' +
+          '  <label>To\'g\'ri javob qaysi:</label>' +
+          '  <select id="mcAnsSelect">' +
+          '    <option value="A">A varianti</option>' +
+          '    <option value="B">B varianti</option>' +
+          '    <option value="C">C varianti</option>' +
+          '    <option value="D">D varianti</option>' +
+          '  </select>' +
+          '</div>' +
+          '<button type="button" class="eth-btn-primary" id="addMcQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Variantli Savolni Qo\'shish</button>';
+      } else if (currentTab === 'written') {
+        html += '' +
+          '<div class="eth-form-group">' +
+          '  <label>Yozma savol / topshiriq matni:</label>' +
+          '  <textarea id="wQText" rows="2" placeholder="Masalan: What is the past participle form of the verb \'write\'?"></textarea>' +
+          '</div>' +
+          '<div class="eth-form-group">' +
+          '  <label>Kutilgan to\'g\'ri javob (kalit so\'z):</label>' +
+          '  <input type="text" id="wAnsText" placeholder="Masalan: written">' +
+          '</div>' +
+          '<button type="button" class="eth-btn-primary" id="addWQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Yozma Savolni Qo\'shish</button>';
+      } else if (currentTab === 'bool') {
+        html += '' +
+          '<div class="eth-form-group">' +
+          '  <label>Belgilash savoli (True / False):</label>' +
+          '  <input type="text" id="boolQText" placeholder="Masalan: The Earth revolves around the Sun.">' +
+          '</div>' +
+          '<div class="eth-form-group">' +
+          '  <label>To\'g\'ri javob:</label>' +
+          '  <select id="boolAnsSelect">' +
+          '    <option value="True">True (To\'g\'ri)</option>' +
+          '    <option value="False">False (Noto\'g\'ri)</option>' +
+          '  </select>' +
+          '</div>' +
+          '<button type="button" class="eth-btn-primary" id="addBoolQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Belgilash Savolini Qo\'shish</button>';
+      } else if (currentTab === 'bulk') {
+        html += '' +
+          '<div class="eth-form-group">' +
+          '  <label>Savollarni quyidagi formatda nusxalab qo\'ying:</label>' +
+          '  <textarea id="bulkTextInput" rows="6" placeholder="1. The capital of Uzbekistan is ___.\nA) Samarkand\nB) Tashkent\nC) Bukhara\nD) Khiva\nJavob: B\n\n2. Water boils at 100 degrees Celsius.\nA) True\nB) False\nJavob: A"></textarea>' +
+          '</div>' +
+          '<button type="button" class="eth-btn-primary" id="parseBulkBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Matndan Savollarni Ajratib Qo\'shish</button>';
       }
 
-      if (!contentToParse) {
-        alert("Iltimos, PDF fayl yuklang yoki imtihon matnini kiriting!");
-        return;
-      }
-
-      overlay.innerHTML = '' +
-        '<div class="eth-modal" style="text-align:center;padding:40px 24px">' +
-        '  <div style="font-size:42px;margin-bottom:14px">⚙️</div>' +
-        '  <h3 style="font-size:20px;color:var(--eth-primary)">ETHITH AI Imtihon tuzmoqda...</h3>' +
-        '  <p style="color:var(--muted);font-size:14px">Materiallar tahlil qilinmoqda va tayyor imtihon savollariga aylantirilmoqda...</p>' +
+      html += '' +
+        '    </div>' +
+        '    <div>' +
+        '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+        '        <b style="font-size:14px">Qo\'shilgan savollar: <span style="color:#2563eb">' + questionsList.length + ' ta</span></b>' +
+        (questionsList.length > 0 ? '<button id="clearAllQBtn" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:12.5px">Barchasini tozalash</button>' : '') +
+        '      </div>' +
+        (questionsList.length === 0 ?
+          '<div style="text-align:center;padding:16px;background:var(--card);border:1px dashed var(--border);border-radius:10px;font-size:13px;color:var(--muted)">Hozircha savollar qo\'shilmadi. Yuqoridagi turlardan foydalanib savol qo\'shing.</div>' :
+          '<div style="display:flex;flex-direction:column;gap:8px;max-height:160px;overflow-y:auto">' +
+          questionsList.map(function(q, i) {
+            return '' +
+              '<div style="display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--border);padding:8px 12px;border-radius:8px;font-size:13px">' +
+              '  <div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px">' +
+              '    <b>#' + (i + 1) + ' [' + (q.type === 'written' ? 'Yozma' : (q.type === 'bool' ? 'T/F' : 'Variantli')) + ']</b> ' + esc(q.question) + ' · <span style="color:#16a34a">Javob: ' + esc(q.answer) + '</span>' +
+              '  </div>' +
+              '  <button data-del-q="' + i + '" style="background:none;border:none;color:#ef4444;cursor:pointer;font-weight:700">✕</button>' +
+              '</div>';
+          }).join('') +
+          '</div>') +
+        '    </div>' +
+        '  </div>' +
+        '  <div style="display:flex;gap:10px;padding:16px 24px;border-top:1px solid var(--border)">' +
+        '    <button type="button" class="ap-btn out" id="exCancelBtn" style="flex:1">Bekor qilish</button>' +
+        '    <button type="button" class="eth-btn-primary" id="saveExamFinalBtn" style="flex:2">Imtihonni Saqlash va Kod Olish ' + ic('right') + '</button>' +
+        '  </div>' +
         '</div>';
 
-      try {
-        var questions = await window.EthithAI.generateExamFromContent(contentToParse, 20);
-        var code = Math.floor(100000 + Math.random() * 900000).toString();
+      overlay.innerHTML = html;
 
+      // Event listeners
+      overlay.querySelector('#exCancelBtn').onclick = function() { overlay.remove(); };
+      
+      overlay.querySelector('#exTitle').oninput = function(e) { currentTitle = e.target.value; };
+      overlay.querySelector('#exDuration').oninput = function(e) { currentDuration = parseInt(e.target.value, 10) || 30; };
+      overlay.querySelector('#exPoints').oninput = function(e) { currentPoints = parseInt(e.target.value, 10) || 2; };
+
+      overlay.querySelector('#tabMcBtn').onclick = function() { currentTab = 'mc'; renderModal(); };
+      overlay.querySelector('#tabWrittenBtn').onclick = function() { currentTab = 'written'; renderModal(); };
+      overlay.querySelector('#tabBoolBtn').onclick = function() { currentTab = 'bool'; renderModal(); };
+      overlay.querySelector('#tabBulkBtn').onclick = function() { currentTab = 'bulk'; renderModal(); };
+
+      // Add MC
+      var addMcBtn = overlay.querySelector('#addMcQBtn');
+      if (addMcBtn) {
+        addMcBtn.onclick = function() {
+          var qText = document.getElementById('mcQText').value.trim();
+          var a = document.getElementById('mcOptA').value.trim();
+          var b = document.getElementById('mcOptB').value.trim();
+          var c = document.getElementById('mcOptC').value.trim();
+          var d = document.getElementById('mcOptD').value.trim();
+          var ansKey = document.getElementById('mcAnsSelect').value;
+          if (!qText || !a || !b) {
+            alert("Iltimos, savol matni va kamida A va B variantlarini to'ldiring!");
+            return;
+          }
+          var opts = [a, b, c || "None", d || "None"];
+          var ansMap = { 'A': a, 'B': b, 'C': c || "None", 'D': d || "None" };
+          questionsList.push({
+            id: questionsList.length + 1,
+            type: 'choice',
+            question: qText,
+            options: opts,
+            answer: ansMap[ansKey] || a
+          });
+          renderModal();
+        };
+      }
+
+      // Add Written
+      var addWBtn = overlay.querySelector('#addWQBtn');
+      if (addWBtn) {
+        addWBtn.onclick = function() {
+          var qText = document.getElementById('wQText').value.trim();
+          var ans = document.getElementById('wAnsText').value.trim();
+          if (!qText || !ans) {
+            alert("Iltimos, yozma savol matni va kutilgan javobni kiriting!");
+            return;
+          }
+          questionsList.push({
+            id: questionsList.length + 1,
+            type: 'written',
+            question: qText,
+            options: [],
+            answer: ans
+          });
+          renderModal();
+        };
+      }
+
+      // Add Bool
+      var addBoolBtn = overlay.querySelector('#addBoolQBtn');
+      if (addBoolBtn) {
+        addBoolBtn.onclick = function() {
+          var qText = document.getElementById('boolQText').value.trim();
+          var ans = document.getElementById('boolAnsSelect').value;
+          if (!qText) {
+            alert("Iltimos, savol matnini kiriting!");
+            return;
+          }
+          questionsList.push({
+            id: questionsList.length + 1,
+            type: 'bool',
+            question: qText,
+            options: ['True', 'False'],
+            answer: ans
+          });
+          renderModal();
+        };
+      }
+
+      // Bulk Parse
+      var parseBulkBtn = overlay.querySelector('#parseBulkBtn');
+      if (parseBulkBtn) {
+        parseBulkBtn.onclick = function() {
+          var text = document.getElementById('bulkTextInput').value.trim();
+          if (!text) {
+            alert("Iltimos, matn kiriting!");
+            return;
+          }
+          // Parse lines
+          var blocks = text.split(/\n\s*\n/);
+          var countParsed = 0;
+          blocks.forEach(function(blk) {
+            var lines = blk.split('\n').map(function(l) { return l.trim(); }).filter(Boolean);
+            if (lines.length >= 2) {
+              var qLine = lines[0].replace(/^\d+[.)]\s*/, '');
+              var optA = '', optB = '', optC = '', optD = '';
+              var ans = '';
+              lines.slice(1).forEach(function(l) {
+                if (/^A[.)]\s*/i.test(l)) optA = l.replace(/^A[.)]\s*/i, '');
+                else if (/^B[.)]\s*/i.test(l)) optB = l.replace(/^B[.)]\s*/i, '');
+                else if (/^C[.)]\s*/i.test(l)) optC = l.replace(/^C[.)]\s*/i, '');
+                else if (/^D[.)]\s*/i.test(l)) optD = l.replace(/^D[.)]\s*/i, '');
+                else if (/^(Javob|Answer):?\s*/i.test(l)) {
+                  var m = l.replace(/^(Javob|Answer):?\s*/i, '').trim();
+                  ans = m;
+                }
+              });
+              if (optA && optB) {
+                var opts = [optA, optB, optC || "None", optD || "None"];
+                var ansVal = optA;
+                if (ans === 'B') ansVal = optB;
+                else if (ans === 'C') ansVal = optC || "None";
+                else if (ans === 'D') ansVal = optD || "None";
+                else if (ans) ansVal = ans;
+                questionsList.push({
+                  id: questionsList.length + 1,
+                  type: 'choice',
+                  question: qLine,
+                  options: opts,
+                  answer: ansVal
+                });
+                countParsed++;
+              }
+            }
+          });
+          alert(countParsed + " ta savol muvaffaqiyatli ajratib olindi!");
+          renderModal();
+        };
+      }
+
+      // Delete question
+      overlay.querySelectorAll('[data-del-q]').forEach(function(btn) {
+        btn.onclick = function() {
+          var idx = parseInt(btn.dataset.delQ, 10);
+          questionsList.splice(idx, 1);
+          renderModal();
+        };
+      });
+
+      var clearAllBtn = overlay.querySelector('#clearAllQBtn');
+      if (clearAllBtn) {
+        clearAllBtn.onclick = function() {
+          if (confirm("Barcha savollarni o'chirmoqchimisiz?")) {
+            questionsList = [];
+            renderModal();
+          }
+        };
+      }
+
+      // Save Exam
+      overlay.querySelector('#saveExamFinalBtn').onclick = function() {
+        if (!currentTitle) {
+          alert("Iltimos, imtihon nomini kiriting!");
+          return;
+        }
+        if (questionsList.length === 0) {
+          alert("Iltimos, kamida bitta savol qo'shing!");
+          return;
+        }
+
+        var code = Math.floor(100000 + Math.random() * 900000).toString();
         var newExam = {
           id: 'exam_' + Date.now(),
           code: code,
-          title: title,
-          duration: duration,
-          pointsPerQ: points,
-          questions: questions,
+          title: currentTitle,
+          duration: currentDuration,
+          pointsPerQ: currentPoints,
+          questions: questionsList,
           submissions: []
         };
 
         S.exams.push(newExam);
         App.saveState();
+        if (window.EthithSync) {
+          window.EthithSync.broadcastLocal(S.classes, S.exams);
+          window.EthithSync.pushRemoteStore(S.classes, S.exams);
+        }
+
         overlay.remove();
-        alert("Imtihon tayyor! O'quvchilar uchun 6 xonali kod: " + code);
+        alert("Imtihon muvaffaqiyatli yaratildi!\nO'quvchilar uchun 6 xonali maxsus kod: " + code);
         renderExamsView(container);
-      } catch (err) {
-        overlay.remove();
-        alert("Xatolik: " + err.message);
-      }
-    };
+      };
+    }
+
+    renderModal();
+    document.body.appendChild(overlay);
   }
 
   function showJoinExamModal(container) {
@@ -1274,13 +1523,25 @@
       '</div>';
     document.body.appendChild(overlay);
 
-    overlay.querySelector('#joinExamForm').onsubmit = function(e) {
+    overlay.querySelector('#joinExamForm').onsubmit = async function(e) {
       e.preventDefault();
       var code = document.getElementById('joinExCode').value.trim();
       var exam = S.exams.find(function(x) { return x.code === code; });
 
+      if (!exam && window.EthithSync) {
+        var remote = await window.EthithSync.fetchRemoteStore();
+        if (remote && remote.exams) {
+          remote.exams.forEach(function(rx) {
+            if (!S.exams.some(function(x) { return x.id === rx.id || x.code === rx.code; })) {
+              S.exams.push(rx);
+            }
+          });
+          exam = S.exams.find(function(x) { return x.code === code; });
+        }
+      }
+
       if (!exam) {
-        alert("Ushbu 6 xonali kodli imtihon topilmadi!");
+        alert("Ushbu 6 xonali kodli imtihon topilmadi! Kodni tekshirib qayta kiriting.");
         return;
       }
 
@@ -1321,6 +1582,8 @@
       }
 
       var q = exam.questions[state.i];
+      var qType = q.type || 'choice';
+
       var html = '' +
         '<div class="ap-quiz">' +
         '  <div class="ap-qtop">' +
@@ -1330,26 +1593,57 @@
         '  </div>' +
         '  <div class="ap-qbox">' +
         '    <div class="qn">' + esc(exam.title) + ' · Savol ' + (state.i + 1) + ' (' + exam.pointsPerQ + ' ball)</div>' +
-        '    <h2>' + esc(q.question) + '</h2>' +
-        '    <div>' +
-        q.options.map(function(opt, idx) {
-          return '<button class="ap-opt" data-opt="' + esc(opt) + '"><span class="l">' + 'ABCD'[idx] + '</span>' + esc(opt) + '</button>';
-        }).join('') +
-        '    </div>' +
-        '  </div>' +
-        '</div>';
+        '    <h2>' + esc(q.question) + '</h2>';
 
+      if (qType === 'written') {
+        html += '' +
+          '<div style="margin:20px 0">' +
+          '  <input type="text" id="writtenInput" placeholder="Javobingizni bu yerga yozing..." style="width:100%;padding:14px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;outline:none">' +
+          '  <button class="eth-btn-primary" id="submitWrittenAnsBtn" style="margin-top:14px">Keyingisi ' + ic('right') + '</button>' +
+          '</div>';
+      } else if (qType === 'bool') {
+        html += '' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0">' +
+          '  <button class="ap-opt" data-opt="True" style="justify-content:center;font-size:16px;font-weight:700">✓ True (To\'g\'ri)</button>' +
+          '  <button class="ap-opt" data-opt="False" style="justify-content:center;font-size:16px;font-weight:700">✗ False (Noto\'g\'ri)</button>' +
+          '</div>';
+      } else {
+        html += '' +
+          '<div>' +
+          q.options.map(function(opt, idx) {
+            return '<button class="ap-opt" data-opt="' + esc(opt) + '"><span class="l">' + 'ABCD'[idx] + '</span>' + esc(opt) + '</button>';
+          }).join('') +
+          '</div>';
+      }
+
+      html += '  </div></div>';
       mainContainer.innerHTML = html;
 
-      mainContainer.querySelectorAll('.ap-opt').forEach(function(btn) {
-        btn.onclick = function() {
-          var sel = btn.dataset.opt;
-          if (sel === q.answer) state.score += exam.pointsPerQ;
-          state.answers[state.i] = sel;
+      if (qType === 'written') {
+        var subBtn = document.getElementById('submitWrittenAnsBtn');
+        var inputW = document.getElementById('writtenInput');
+        inputW.focus();
+        function commitW() {
+          var val = inputW.value.trim();
+          var isMatch = (val.toLowerCase() === (q.answer || '').trim().toLowerCase());
+          if (isMatch) state.score += exam.pointsPerQ;
+          state.answers[state.i] = val;
           state.i++;
           renderExamQuestion();
-        };
-      });
+        }
+        subBtn.onclick = commitW;
+        inputW.onkeydown = function(e) { if (e.key === 'Enter') commitW(); };
+      } else {
+        mainContainer.querySelectorAll('.ap-opt').forEach(function(btn) {
+          btn.onclick = function() {
+            var sel = btn.dataset.opt;
+            if (sel.toLowerCase() === (q.answer || '').toLowerCase()) state.score += exam.pointsPerQ;
+            state.answers[state.i] = sel;
+            state.i++;
+            renderExamQuestion();
+          };
+        });
+      }
     }
 
     function finishExam() {
@@ -1358,7 +1652,7 @@
       var timeSpentMin = Math.round((exam.duration * 60 - Math.max(0, timeLeftSeconds)) / 60);
 
       var sub = {
-        studentId: S.user.id,
+        studentId: (S.user && S.user.email) || S.user.id,
         studentName: S.user.name,
         studentEmail: S.user.email,
         score: state.score,
@@ -1371,6 +1665,10 @@
       if (!exam.submissions) exam.submissions = [];
       exam.submissions.push(sub);
       App.saveState();
+      if (window.EthithSync) {
+        window.EthithSync.broadcastLocal(S.classes, S.exams);
+        window.EthithSync.pushRemoteStore(S.classes, S.exams);
+      }
 
       // Show Result
       var html = '' +
