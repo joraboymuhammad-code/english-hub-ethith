@@ -32,13 +32,30 @@
   // VIEW 1: ASK AI TEACHER (ChatGPT-like UI)
   // ==========================================
   function renderAskAITeacher(container) {
-    var history = S.aiHistory || [];
+    if (!S.aiConversations || S.aiConversations.length === 0) {
+      var initConv = {
+        id: 'conv_' + Date.now(),
+        title: 'New Conversation',
+        messages: S.aiHistory ? S.aiHistory.slice() : [],
+        updatedAt: Date.now()
+      };
+      S.aiConversations = [initConv];
+      S.currentAiChatId = initConv.id;
+    }
+
+    var activeConv = S.aiConversations.find(function(c) { return c.id === S.currentAiChatId; });
+    if (!activeConv) {
+      activeConv = S.aiConversations[0];
+      S.currentAiChatId = activeConv.id;
+    }
+
+    var history = activeConv.messages || [];
 
     var html = '' +
       '<div class="ask-ai-container">' +
+      // LEFT SIDEBAR: Recommended Prompts & Info
       '  <div class="ask-ai-sidebar">' +
-      '    <button class="eth-btn-primary" id="aiNewChatBtn" style="margin-bottom:14px;padding:10px 14px;font-size:13.5px">' + ic('plus') + ' New Chat</button>' +
-      '    <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Recommended Prompts</div>' +
+      '    <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em">Recommended Prompts</div>' +
       '    <div style="display:flex;flex-direction:column;gap:6px;overflow-y:auto;flex:1">' +
       '      <button class="ap-item ai-prompt-pill" data-p="Provide a sample Band 7.0+ response and idioms for IELTS Speaking">' + ic('sparkles') + ' IELTS Speaking Template</button>' +
       '      <button class="ap-item ai-prompt-pill" data-p="Explain the difference between Present Perfect and Past Simple with examples">' + ic('book') + ' Grammar Differences</button>' +
@@ -49,13 +66,14 @@
       '      <b>ETHITH AI Teacher</b><br>Created by: Muhammadyusuf Jo\'raboyev' +
       '    </div>' +
       '  </div>' +
+      // CENTER: Main Chat
       '  <div class="ask-ai-main">' +
       '    <div class="ask-ai-messages" id="aiMsgBox">' +
       (history.length === 0 ?
         '<div style="text-align:center;margin:auto;max-width:520px;padding:20px">' +
         '  <div style="margin-bottom:16px"><img src="' + ETHITH_EMBLEM_IMG + '" alt="ETHITH AI Emblem" style="width:115px;height:115px;border-radius:24px;box-shadow:0 12px 28px rgba(0,0,0,0.22), 0 0 20px rgba(59,130,246,0.3);border:2px solid rgba(255,255,255,0.2);display:inline-block"></div>' +
-        '  <h2 style="font-size:24px;font-weight:800;color:#1e293b;margin-bottom:8px">ETHITH AI Teacher</h2>' +
-        '  <p style="color:#64748b;font-size:14.5px;line-height:1.6">Ask any questions regarding English grammar, quizzes, vocabulary, or learning roadmaps. You can also upload images or PDF documents!</p>' +
+        '  <h2 style="font-size:24px;font-weight:800;color:var(--text, #1e293b);margin-bottom:8px">ETHITH AI Teacher</h2>' +
+        '  <p style="color:var(--muted, #64748b);font-size:14.5px;line-height:1.6">Ask any questions regarding English grammar, quizzes, vocabulary, or learning roadmaps. You can also upload images or PDF documents!</p>' +
         '</div>' :
         history.map(function(m) {
           return '<div class="ask-ai-msg ' + m.role + '">' +
@@ -63,7 +81,7 @@
             '  <div class="ask-ai-bubble">' +
             (m.fileName ? '<div style="font-size:12px;background:rgba(0,0,0,0.06);padding:3px 8px;border-radius:6px;margin-bottom:6px">📎 ' + esc(m.fileName) + '</div>' : '') +
             (m.fileImg ? '<img src="' + m.fileImg + '" style="max-width:240px;border-radius:8px;margin-bottom:8px;display:block">' : '') +
-            formatMarkdown(m.text) +
+            formatAIMarkdown(m.text) +
             '  </div>' +
             '</div>';
         }).join('')
@@ -79,64 +97,123 @@
       '      </form>' +
       '    </div>' +
       '  </div>' +
+      // RIGHT SIDEBAR: "Suhbatlar" / Conversations History Panel
+      '  <div class="ask-ai-history-panel">' +
+      '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">' +
+      '      <b style="font-size:13.5px;color:var(--text);display:flex;align-items:center;gap:6px">' + ic('layers') + ' Conversations</b>' +
+      '      <button class="eth-btn-primary" id="aiNewChatBtn" style="padding:6px 12px;font-size:12px;width:auto;border-radius:8px">' + ic('plus') + ' New</button>' +
+      '    </div>' +
+      '    <div class="ask-ai-history-list">' +
+      S.aiConversations.map(function(conv) {
+        var isActive = conv.id === S.currentAiChatId;
+        var msgCount = conv.messages ? conv.messages.length : 0;
+        return '' +
+          '<div class="ask-ai-history-item ' + (isActive ? 'active' : '') + '" data-chat-id="' + conv.id + '">' +
+          '  <div class="ask-ai-history-title" title="' + esc(conv.title) + '">' + esc(conv.title) + '</div>' +
+          '  <span style="font-size:11px;opacity:0.7">' + msgCount + '</span>' +
+          '  <button class="ask-ai-history-del" data-del-chat="' + conv.id + '" title="Delete conversation">✕</button>' +
+          '</div>';
+      }).join('') +
+      '    </div>' +
+      '  </div>' +
       '</div>';
 
     container.innerHTML = html;
 
     var msgBox = document.getElementById('aiMsgBox');
-    msgBox.scrollTop = msgBox.scrollHeight;
+    if (msgBox) msgBox.scrollTop = msgBox.scrollHeight;
 
     var fileInput = document.getElementById('aiFileInput');
     var filePreview = document.getElementById('aiFilePreview');
     var currentAttachment = null;
 
-    fileInput.onchange = function(e) {
-      var file = e.target.files[0];
-      if (!file) return;
+    if (fileInput) {
+      fileInput.onchange = function(e) {
+        var file = e.target.files[0];
+        if (!file) return;
 
-      var reader = new FileReader();
-      if (file.type.startsWith('image/')) {
-        reader.onload = function(ev) {
-          var base64 = ev.target.result.split(',')[1];
-          currentAttachment = {
-            name: file.name,
-            mimeType: file.type,
-            base64: base64,
-            previewUrl: ev.target.result
+        var reader = new FileReader();
+        if (file.type.startsWith('image/')) {
+          reader.onload = function(ev) {
+            var base64 = ev.target.result.split(',')[1];
+            currentAttachment = {
+              name: file.name,
+              mimeType: file.type,
+              base64: base64,
+              previewUrl: ev.target.result
+            };
+            filePreview.style.display = 'flex';
+            filePreview.innerHTML = '<span>🖼️ Image attached: <b>' + esc(file.name) + '</b></span><button id="aiRemoveFile" style="background:none;border:none;cursor:pointer;color:red">✕</button>';
+            document.getElementById('aiRemoveFile').onclick = function() {
+              currentAttachment = null;
+              filePreview.style.display = 'none';
+              fileInput.value = '';
+            };
           };
-          filePreview.style.display = 'flex';
-          filePreview.innerHTML = '<span>🖼️ Image attached: <b>' + esc(file.name) + '</b></span><button id="aiRemoveFile" style="background:none;border:none;cursor:pointer;color:red">✕</button>';
-          document.getElementById('aiRemoveFile').onclick = function() {
-            currentAttachment = null;
-            filePreview.style.display = 'none';
-            fileInput.value = '';
+          reader.readAsDataURL(file);
+        } else {
+          reader.onload = function(ev) {
+            currentAttachment = {
+              name: file.name,
+              mimeType: file.type || 'text/plain',
+              textData: ev.target.result
+            };
+            filePreview.style.display = 'flex';
+            filePreview.innerHTML = '<span>📄 Document attached: <b>' + esc(file.name) + '</b></span><button id="aiRemoveFile" style="background:none;border:none;cursor:pointer;color:red">✕</button>';
+            document.getElementById('aiRemoveFile').onclick = function() {
+              currentAttachment = null;
+              filePreview.style.display = 'none';
+              fileInput.value = '';
+            };
           };
-        };
-        reader.readAsDataURL(file);
-      } else {
-        reader.onload = function(ev) {
-          currentAttachment = {
-            name: file.name,
-            mimeType: file.type || 'text/plain',
-            textData: ev.target.result
-          };
-          filePreview.style.display = 'flex';
-          filePreview.innerHTML = '<span>📄 Document attached: <b>' + esc(file.name) + '</b></span><button id="aiRemoveFile" style="background:none;border:none;cursor:pointer;color:red">✕</button>';
-          document.getElementById('aiRemoveFile').onclick = function() {
-            currentAttachment = null;
-            filePreview.style.display = 'none';
-            fileInput.value = '';
-          };
-        };
-        reader.readAsText(file);
-      }
-    };
+          reader.readAsText(file);
+        }
+      };
+    }
 
-    document.getElementById('aiNewChatBtn').onclick = function() {
-      S.aiHistory = [];
-      App.saveState();
-      renderAskAITeacher(container);
-    };
+    var newChatBtn = document.getElementById('aiNewChatBtn');
+    if (newChatBtn) {
+      newChatBtn.onclick = function() {
+        var newC = {
+          id: 'conv_' + Date.now(),
+          title: 'New Conversation',
+          messages: [],
+          updatedAt: Date.now()
+        };
+        S.aiConversations.unshift(newC);
+        S.currentAiChatId = newC.id;
+        App.saveState();
+        renderAskAITeacher(container);
+      };
+    }
+
+    container.querySelectorAll('[data-chat-id]').forEach(function(item) {
+      item.onclick = function(e) {
+        if (e.target.closest('[data-del-chat]')) return;
+        S.currentAiChatId = item.dataset.chatId;
+        App.saveState();
+        renderAskAITeacher(container);
+      };
+    });
+
+    container.querySelectorAll('[data-del-chat]').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        var idToDel = btn.dataset.delChat;
+        if (confirm("Delete this conversation?")) {
+          S.aiConversations = S.aiConversations.filter(function(c) { return c.id !== idToDel; });
+          if (S.aiConversations.length === 0) {
+            var newC = { id: 'conv_' + Date.now(), title: 'New Conversation', messages: [], updatedAt: Date.now() };
+            S.aiConversations = [newC];
+            S.currentAiChatId = newC.id;
+          } else if (S.currentAiChatId === idToDel) {
+            S.currentAiChatId = S.aiConversations[0].id;
+          }
+          App.saveState();
+          renderAskAITeacher(container);
+        }
+      };
+    });
 
     container.querySelectorAll('.ai-prompt-pill').forEach(function(btn) {
       btn.onclick = function() {
@@ -145,68 +222,157 @@
       };
     });
 
-    document.getElementById('aiChatForm').onsubmit = async function(e) {
-      e.preventDefault();
-      var input = document.getElementById('aiPromptInput');
-      var promptText = input.value.trim();
-      if (!promptText && !currentAttachment) return;
+    var chatForm = document.getElementById('aiChatForm');
+    if (chatForm) {
+      chatForm.onsubmit = async function(e) {
+        e.preventDefault();
+        var input = document.getElementById('aiPromptInput');
+        var promptText = input.value.trim();
+        if (!promptText && !currentAttachment) return;
 
-      var userMsg = {
-        role: 'user',
-        text: promptText,
-        fileName: currentAttachment ? currentAttachment.name : null,
-        fileImg: currentAttachment ? currentAttachment.previewUrl : null
-      };
+        var userMsg = {
+          role: 'user',
+          text: promptText,
+          fileName: currentAttachment ? currentAttachment.name : null,
+          fileImg: currentAttachment ? currentAttachment.previewUrl : null
+        };
 
-      S.aiHistory.push(userMsg);
-      input.value = '';
-      var sentAttach = currentAttachment;
-      currentAttachment = null;
-      filePreview.style.display = 'none';
-      fileInput.value = '';
-
-      renderAskAITeacher(container);
-
-      // Loading bubble
-      var loadingBubble = document.createElement('div');
-      loadingBubble.className = 'ask-ai-msg ai';
-      loadingBubble.innerHTML = '<div class="ask-ai-avatar">AI</div><div class="ask-ai-bubble" style="opacity:0.7">ETHITH AI is thinking...</div>';
-      document.getElementById('aiMsgBox').appendChild(loadingBubble);
-      document.getElementById('aiMsgBox').scrollTop = document.getElementById('aiMsgBox').scrollHeight;
-
-      try {
-        var replyText = await window.EthithAI.askAITeacher(promptText, S.aiHistory, sentAttach);
-        loadingBubble.remove();
-        S.aiHistory.push({
-          role: 'ai',
-          text: replyText
-        });
+        activeConv.messages.push(userMsg);
+        if (activeConv.title === 'New Conversation' && promptText) {
+          activeConv.title = promptText.slice(0, 32).trim() + (promptText.length > 32 ? '...' : '');
+        }
+        activeConv.updatedAt = Date.now();
         App.saveState();
-        renderAskAITeacher(container);
-      } catch (err) {
-        loadingBubble.remove();
-        alert("Error occurred: " + err.message);
-      }
-    };
+
+        input.value = '';
+        var sentAttach = currentAttachment;
+        currentAttachment = null;
+        if (filePreview) filePreview.style.display = 'none';
+        if (fileInput) fileInput.value = '';
+
+        // Append user bubble to DOM immediately
+        var userBubble = document.createElement('div');
+        userBubble.className = 'ask-ai-msg user';
+        userBubble.innerHTML = '<div class="ask-ai-avatar">' + (S.user ? S.user.name.charAt(0).toUpperCase() : 'U') + '</div>' +
+          '<div class="ask-ai-bubble">' +
+          (userMsg.fileName ? '<div style="font-size:12px;background:rgba(0,0,0,0.06);padding:3px 8px;border-radius:6px;margin-bottom:6px">📎 ' + esc(userMsg.fileName) + '</div>' : '') +
+          (userMsg.fileImg ? '<img src="' + userMsg.fileImg + '" style="max-width:240px;border-radius:8px;margin-bottom:8px;display:block">' : '') +
+          formatAIMarkdown(userMsg.text) +
+          '</div>';
+        var currentMsgBox = document.getElementById('aiMsgBox');
+        if (currentMsgBox) {
+          currentMsgBox.appendChild(userBubble);
+        }
+
+        // Live typing AI bubble
+        var aiBubble = document.createElement('div');
+        aiBubble.className = 'ask-ai-msg ai';
+        aiBubble.innerHTML = '<div class="ask-ai-avatar" style="background:transparent;padding:0;overflow:hidden"><img src="' + ETHITH_EMBLEM_IMG + '" style="width:100%;height:100%;border-radius:50%;object-fit:cover"></div>' +
+          '<div class="ask-ai-bubble">' +
+          '<span id="liveAiStream">ETHITH AI is thinking...</span><span class="ai-cursor" id="liveAiCursor"></span>' +
+          '</div>';
+        if (currentMsgBox) {
+          currentMsgBox.appendChild(aiBubble);
+          currentMsgBox.scrollTop = currentMsgBox.scrollHeight;
+        }
+
+        try {
+          var replyText = await window.EthithAI.askAITeacher(promptText, activeConv.messages, sentAttach);
+          var streamSpan = document.getElementById('liveAiStream');
+          var cursorSpan = document.getElementById('liveAiCursor');
+          if (streamSpan) streamSpan.textContent = '';
+
+          // Smooth Sequential Typewriter Streaming Effect (2-3 words every 18ms)
+          var words = replyText.split(/(\s+)/);
+          var currentText = '';
+          var wordIdx = 0;
+
+          var streamTimer = setInterval(function() {
+            if (wordIdx < words.length) {
+              var chunk = words.slice(wordIdx, wordIdx + 3).join('');
+              currentText += chunk;
+              wordIdx += 3;
+              if (streamSpan) {
+                streamSpan.innerHTML = formatAIMarkdown(currentText);
+              }
+              if (currentMsgBox) {
+                currentMsgBox.scrollTop = currentMsgBox.scrollHeight;
+              }
+            } else {
+              clearInterval(streamTimer);
+              if (cursorSpan) cursorSpan.remove();
+              activeConv.messages.push({
+                role: 'ai',
+                text: replyText
+              });
+              activeConv.updatedAt = Date.now();
+              App.saveState();
+              renderAskAITeacher(container);
+            }
+          }, 18);
+        } catch (err) {
+          if (aiBubble) aiBubble.remove();
+          alert("Error occurred: " + err.message);
+        }
+      };
+    }
   }
 
-  function formatMarkdown(text) {
+  function formatAIMarkdown(text) {
     if (!text) return '';
     var safe = esc(text);
-    // Code blocks
-    safe = safe.replace(/```([\s\S]*?)```/g, function(m, p1) {
-      return '<pre style="background:#1e293b;color:#f8fafc;padding:12px;border-radius:10px;overflow-x:auto;margin:8px 0;font-size:13px"><code>' + p1 + '</code></pre>';
+
+    // Code blocks ```lang\ncode\n```
+    safe = safe.replace(/```(?:[a-zA-Z0-9_-]+)?\s*([\s\S]*?)```/g, function(m, p1) {
+      return '<pre style="background:#0b172a;color:#f8fafc;padding:12px 16px;border-radius:12px;overflow-x:auto;margin:10px 0;font-size:13px;border:1px solid #1b3252"><code>' + p1 + '</code></pre>';
     });
-    // Inline code
-    safe = safe.replace(/`([^`]+)`/g, '<code style="background:rgba(0,0,0,0.06);padding:2px 6px;border-radius:4px">$1</code>');
-    // Bold
+
+    // Inline code `code`
+    safe = safe.replace(/`([^`]+)`/g, '<code style="background:rgba(37,99,235,0.08);color:#2563eb;padding:2px 6px;border-radius:5px;font-family:monospace;font-size:0.92em">$1</code>');
+
+    // Headers: ### Header, ## Header, # Header
+    safe = safe.replace(/^###\s+(.+)$/gm, '<h3 class="ai-h3">$1</h3>');
+    safe = safe.replace(/^##\s+(.+)$/gm, '<h2 class="ai-h2">$1</h2>');
+    safe = safe.replace(/^#\s+(.+)$/gm, '<h1 class="ai-h1">$1</h1>');
+
+    // Horizontal Rule: --- or ***
+    safe = safe.replace(/^(\*{3,}|-{3,})$/gm, '<hr class="ai-divider">');
+
+    // Pedagogical Badges & Labels:
+    safe = safe.replace(/\*\*(?:Meaning|Ma'nosi):\*\*/gi, '<span class="ai-badge ai-badge-meaning">Meaning</span>');
+    safe = safe.replace(/\*\*(?:Example|Misol):\*\*/gi, '<span class="ai-badge ai-badge-example">Example</span>');
+    safe = safe.replace(/\*\*(?:IELTS Tip|Tip|Maslahat):\*\*/gi, '<span class="ai-badge ai-badge-tip">IELTS Tip</span>');
+    safe = safe.replace(/\*\*(?:Grammar Alert|Grammar Rule|Note):\*\*/gi, '<span class="ai-badge ai-badge-alert">Grammar Alert</span>');
+    safe = safe.replace(/\*\*(?:Collocations|Collocation):\*\*/gi, '<span class="ai-badge ai-badge-colloc">Collocations</span>');
+    safe = safe.replace(/\*\*(?:Synonyms|Synonym):\*\*/gi, '<span class="ai-badge ai-badge-syn">Synonyms</span>');
+
+    safe = safe.replace(/^(Meaning|Ma'nosi):\s*/gmi, '<span class="ai-badge ai-badge-meaning">Meaning</span> ');
+    safe = safe.replace(/^(Example|Misol):\s*/gmi, '<span class="ai-badge ai-badge-example">Example</span> ');
+    safe = safe.replace(/^(IELTS Tip|Tip|Maslahat):\s*/gmi, '<span class="ai-badge ai-badge-tip">IELTS Tip</span> ');
+    safe = safe.replace(/^(Grammar Alert|Grammar Rule|Note):\s*/gmi, '<span class="ai-badge ai-badge-alert">Grammar Alert</span> ');
+    safe = safe.replace(/^(Collocations|Collocation):\s*/gmi, '<span class="ai-badge ai-badge-colloc">Collocations</span> ');
+    safe = safe.replace(/^(Synonyms|Synonym):\s*/gmi, '<span class="ai-badge ai-badge-syn">Synonyms</span> ');
+
+    // Standard Bold: **text**
     safe = safe.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
-    // Italics
-    safe = safe.replace(/\*([^*]+)\*/g, '<i>$1</i>');
-    // Newlines
+
+    // Italics: *text*
+    safe = safe.replace(/(^|[^*])\*([^*]+)\*([^*]|$)/g, '$1<i>$2</i>$3');
+
+    // Numbered List: 1. item
+    safe = safe.replace(/^(\d+)\.\s+(.+)$/gm, '<div class="ai-list-item"><span class="ai-list-num">$1.</span><span>$2</span></div>');
+
+    // Bulleted List: - item or * item
+    safe = safe.replace(/^[-*]\s+(.+)$/gm, '<div class="ai-list-item"><span class="ai-list-bullet">•</span><span>$1</span></div>');
+
+    // Paragraph breaks & newlines
+    safe = safe.replace(/\n\n+/g, '<div style="height:8px"></div>');
     safe = safe.replace(/\n/g, '<br>');
+
     return safe;
   }
+
+  var formatMarkdown = formatAIMarkdown;
 
   // ==========================================
   // VIEW 2: LEVELS (A1 - C2) & 40 TOPICS
@@ -1353,11 +1519,11 @@
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
       '    <h2>' + ic('trophy') + ' Exams & Leaderboards</h2>' +
-      '    <p>' + (isTeacher ? 'Create custom exams, manage with 6-digit access codes, and monitor live leaderboards.' : 'Enter an exam using the 6-digit access code provided by your teacher.') + '</p>' +
+      '    <p>' + (isTeacher ? 'Create custom exams, manage 6-digit access codes, configure public/private access, and monitor live leaderboards.' : 'Take practice exams or join with the 6-digit access code provided by your teacher.') + '</p>' +
       '  </div>' +
       (isTeacher ?
         '  <button class="eth-btn-primary" id="btnCreateExam" style="width:auto;padding:10px 18px">' + ic('plus') + ' Create New Exam</button>' :
-        '  <button class="eth-btn-primary" id="btnJoinExam" style="width:auto;padding:10px 18px">' + ic('clip') + ' Join Exam</button>') +
+        '  <button class="eth-btn-primary" id="btnJoinExam" style="width:auto;padding:10px 18px">' + ic('clip') + ' Join with Code</button>') +
       '</div>';
 
     if (S.exams.length === 0) {
@@ -1366,17 +1532,28 @@
       html += '<div class="ap-grid g2">';
       S.exams.forEach(function(ex) {
         var subCount = ex.submissions ? ex.submissions.length : 0;
+        var maxAtt = ex.maxAttempts || 1;
+        var isPub = ex.isPublic || false;
+
         html += '' +
-          '<div class="ap-card" style="border:1.5px solid var(--border)">' +
-          '  <div style="display:flex;justify-content:space-between;margin-bottom:8px">' +
-          '    <span class="ap-tag">' + ex.duration + ' mins</span>' +
-          '    <span style="font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:3px 8px;border-radius:6px">Kod: ' + ex.code + '</span>' +
+          '<div class="ap-card" style="border:1.5px solid var(--border);position:relative">' +
+          '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+          '    <div style="display:flex;gap:6px;align-items:center">' +
+          '      <span class="ap-tag">' + ex.duration + ' mins</span>' +
+          (isPub ?
+            '      <span class="eth-badge-open">🌐 Public</span>' :
+            '      <span class="eth-badge-closed">🔒 Private</span>') +
+          '      <span style="font-size:11.5px;color:var(--muted)">Attempts: ' + maxAtt + 'x</span>' +
+          '    </div>' +
+          '    <span style="font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:3px 8px;border-radius:6px">Code: ' + ex.code + '</span>' +
           '  </div>' +
           '  <h3 style="font-size:18px;margin-bottom:6px">' + esc(ex.title) + '</h3>' +
           '  <p style="color:var(--muted);font-size:13px;margin:0 0 14px">' + (ex.questions ? ex.questions.length : 0) + ' questions · ' + subCount + ' submissions</p>' +
-          '  <div style="display:flex;gap:10px">' +
+          '  <div style="display:flex;gap:8px">' +
           '    <button class="ap-btn solid" data-exam-lb="' + ex.id + '" style="flex:1">' + ic('trophy') + ' Leaderboard</button>' +
-          (!isTeacher ? '<button class="eth-btn-primary" data-exam-take="' + ex.id + '" style="flex:1">Take Exam ' + ic('right') + '</button>' : '') +
+          (isTeacher ?
+            '    <button class="ap-btn out" data-exam-manage="' + ex.id + '" style="flex:1">⚙️ Manage & Share</button>' :
+            '    <button class="eth-btn-primary" data-exam-take="' + ex.id + '" style="flex:1">Take Exam ' + ic('right') + '</button>') +
           '  </div>' +
           '</div>';
       });
@@ -1392,10 +1569,29 @@
       };
     });
 
+    container.querySelectorAll('[data-exam-manage]').forEach(function(btn) {
+      btn.onclick = function() {
+        var ex = S.exams.find(function(x) { return x.id === btn.dataset.examManage; });
+        if (ex) showTeacherExamActionsModal(ex, container);
+      };
+    });
+
     container.querySelectorAll('[data-exam-take]').forEach(function(btn) {
       btn.onclick = function() {
         var ex = S.exams.find(function(x) { return x.id === btn.dataset.examTake; });
-        if (ex) startExamRunner(ex, container);
+        if (!ex) return;
+
+        if (!ex.isPublic) {
+          var enteredCode = prompt("This exam is private. Please enter the 6-digit access code:");
+          if (!enteredCode) return;
+          if (enteredCode.trim() !== ex.code) {
+            alert("Incorrect access code! Please check the code with your teacher.");
+            return;
+          }
+        }
+
+        if (!checkStudentAttemptLimit(ex)) return;
+        startExamRunner(ex, container);
       };
     });
 
@@ -1416,6 +1612,160 @@
     }
   }
 
+  function checkStudentAttemptLimit(exam) {
+    if (!S.user) return true;
+    var userKey = (S.user.email || S.user.id || '').toLowerCase();
+    var sub = (exam.submissions || []).find(function(s) {
+      return (s.studentEmail && s.studentEmail.toLowerCase() === userKey) ||
+             (s.studentId && s.studentId.toLowerCase() === userKey);
+    });
+    var maxAtt = exam.maxAttempts || 1;
+    if (sub && (sub.attempts || 1) >= maxAtt) {
+      alert("Attempt limit reached (" + (sub.attempts || 1) + "/" + maxAtt + ")!\nYou have already taken this exam.\nYour current score is: " + sub.score + " / " + sub.totalPossible + " (" + sub.percent + "%).");
+      showExamLeaderboardModal(exam);
+      return false;
+    }
+    return true;
+  }
+
+  function showTeacherExamActionsModal(exam, container) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+
+    function renderActions() {
+      var html = '' +
+        '<div class="eth-modal" style="max-width:540px">' +
+        '  <div class="eth-modal-header">' +
+        '    <h2>' + ic('trophy') + ' Manage Exam</h2>' +
+        '    <p>' + esc(exam.title) + '</p>' +
+        '  </div>' +
+        '  <div class="eth-modal-body">' +
+        '    <div style="font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em">Exam Access Code</div>' +
+        '    <div class="eth-code-box">' +
+        '      <div class="eth-code-digits" id="modalCodeDisplay">' + exam.code + '</div>' +
+        '      <button class="eth-copy-btn" id="btnCopyExamCode">' + ic('clip') + ' Copy Access Code</button>' +
+        '    </div>' +
+        '    <div style="margin:16px 0;padding:14px;background:var(--bg2);border-radius:12px;border:1px solid var(--border)">' +
+        '      <b style="font-size:13.5px;display:block;margin-bottom:10px">Exam Settings:</b>' +
+        '      <div class="eth-form-group">' +
+        '        <label>Exam Visibility:</label>' +
+        '        <select id="examVisSelect">' +
+        '          <option value="public" ' + (exam.isPublic ? 'selected' : '') + '>🌐 Public (Open to all students without code)</option>' +
+        '          <option value="private" ' + (!exam.isPublic ? 'selected' : '') + '>🔒 Private (Requires 6-digit access code)</option>' +
+        '        </select>' +
+        '      </div>' +
+        '      <div class="eth-form-group" style="margin-bottom:0">' +
+        '        <label>Max Allowed Attempts per Student:</label>' +
+        '        <select id="examMaxAttSelect">' +
+        [1, 2, 3, 4, 5, 10].map(function(num) {
+          return '<option value="' + num + '" ' + ((exam.maxAttempts || 1) === num ? 'selected' : '') + '>' + num + ' attempt' + (num > 1 ? 's' : '') + '</option>';
+        }).join('') +
+        '        </select>' +
+        '      </div>' +
+        '      <button class="eth-btn-primary" id="btnSaveExamSettings" style="margin-top:12px;padding:9px 14px;font-size:13.5px">Save Settings</button>' +
+        '    </div>' +
+        '    <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">' +
+        '      <button class="ap-btn solid" id="btnDuplicateExam" style="justify-content:center;padding:12px">' + ic('plus') + ' Duplicate as New Mock Exam</button>' +
+        '      <button class="ap-btn out" id="btnViewLbFromManage" style="justify-content:center;padding:12px">' + ic('trophy') + ' View Live Leaderboard (' + (exam.submissions ? exam.submissions.length : 0) + ' students)</button>' +
+        '      <button class="ap-btn danger" id="btnDeleteExam" style="justify-content:center;padding:12px;color:#ef4444;border-color:rgba(239,68,68,0.3)">' + ic('trash') + ' Delete Exam Permanently</button>' +
+        '    </div>' +
+        '  </div>' +
+        '  <div style="padding:12px 24px 18px;border-top:1px solid var(--border);text-align:right">' +
+        '    <button class="ap-btn out" id="btnCloseManageModal" style="padding:8px 18px">Close</button>' +
+        '  </div>' +
+        '</div>';
+
+      overlay.innerHTML = html;
+
+      overlay.querySelector('#btnCloseManageModal').onclick = function() { overlay.remove(); };
+
+      // Copy Code button
+      overlay.querySelector('#btnCopyExamCode').onclick = function() {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(exam.code).then(function() {
+            var btn = overlay.querySelector('#btnCopyExamCode');
+            if (btn) btn.textContent = '✓ Code Copied!';
+            setTimeout(function() {
+              if (btn) btn.innerHTML = ic('clip') + ' Copy Access Code';
+            }, 2000);
+          }).catch(function() {
+            prompt("Copy this 6-digit access code:", exam.code);
+          });
+        } else {
+          prompt("Copy this 6-digit access code:", exam.code);
+        }
+      };
+
+      // Save Settings button
+      overlay.querySelector('#btnSaveExamSettings').onclick = function() {
+        var vis = overlay.querySelector('#examVisSelect').value;
+        var maxAtt = parseInt(overlay.querySelector('#examMaxAttSelect').value, 10) || 1;
+        exam.isPublic = (vis === 'public');
+        exam.maxAttempts = maxAtt;
+        App.saveState();
+        if (window.EthithSync) {
+          window.EthithSync.broadcastLocal(S.classes, S.exams);
+          window.EthithSync.pushRemoteStore(S.classes, S.exams);
+        }
+        alert("Exam settings saved successfully!");
+        renderExamsView(container);
+        renderActions();
+      };
+
+      // Duplicate Exam
+      overlay.querySelector('#btnDuplicateExam').onclick = function() {
+        var newTitle = prompt("Enter title for the duplicated mock exam:", exam.title + " (Copy)");
+        if (!newTitle) return;
+        var newCode = Math.floor(100000 + Math.random() * 900000).toString();
+        var clonedQuestions = JSON.parse(JSON.stringify(exam.questions || []));
+        var duplicatedExam = {
+          id: 'exam_' + Date.now(),
+          code: newCode,
+          title: newTitle.trim(),
+          duration: exam.duration,
+          pointsPerQ: exam.pointsPerQ,
+          questions: clonedQuestions,
+          isPublic: exam.isPublic || false,
+          maxAttempts: exam.maxAttempts || 1,
+          submissions: []
+        };
+        S.exams.push(duplicatedExam);
+        App.saveState();
+        if (window.EthithSync) {
+          window.EthithSync.broadcastLocal(S.classes, S.exams);
+          window.EthithSync.pushRemoteStore(S.classes, S.exams);
+        }
+        overlay.remove();
+        alert("Exam duplicated successfully!\nNew 6-digit access code: " + newCode);
+        renderExamsView(container);
+      };
+
+      // View Leaderboard
+      overlay.querySelector('#btnViewLbFromManage').onclick = function() {
+        overlay.remove();
+        showExamLeaderboardModal(exam);
+      };
+
+      // Delete Exam
+      overlay.querySelector('#btnDeleteExam').onclick = function() {
+        if (confirm("Are you sure you want to permanently delete this exam?\nTitle: " + exam.title + "\nAll student submissions and leaderboard data will be erased.")) {
+          S.exams = S.exams.filter(function(x) { return x.id !== exam.id; });
+          App.saveState();
+          if (window.EthithSync) {
+            window.EthithSync.broadcastLocal(S.classes, S.exams);
+            window.EthithSync.pushRemoteStore(S.classes, S.exams);
+          }
+          overlay.remove();
+          alert("Exam deleted successfully.");
+          renderExamsView(container);
+        }
+      };
+    }
+
+    renderActions();
+    document.body.appendChild(overlay);
+  }
+
   function showCreateExamModal(container) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
@@ -1423,6 +1773,8 @@
     var currentTitle = 'English Examination 2026';
     var currentDuration = 30;
     var currentPoints = 2;
+    var currentVisibility = 'private';
+    var currentMaxAttempts = 1;
     var currentTab = 'mc';
     var questionsList = [];
 
@@ -1448,10 +1800,27 @@
         '        <input type="number" id="exPoints" value="' + currentPoints + '" min="1" max="100">' +
         '      </div>' +
         '    </div>' +
+        '    <div style="display:flex;gap:12px">' +
+        '      <div class="eth-form-group" style="flex:1">' +
+        '        <label>Visibility</label>' +
+        '        <select id="exVisibility">' +
+        '          <option value="private" ' + (currentVisibility === 'private' ? 'selected' : '') + '>🔒 Private (Access code required)</option>' +
+        '          <option value="public" ' + (currentVisibility === 'public' ? 'selected' : '') + '>🌐 Public (Open to all students)</option>' +
+        '        </select>' +
+        '      </div>' +
+        '      <div class="eth-form-group" style="flex:1">' +
+        '        <label>Max Allowed Attempts</label>' +
+        '        <select id="exMaxAttempts">' +
+        [1, 2, 3, 4, 5, 10].map(function(num) {
+          return '<option value="' + num + '" ' + (currentMaxAttempts === num ? 'selected' : '') + '>' + num + ' attempt' + (num > 1 ? 's' : '') + '</option>';
+        }).join('') +
+        '        </select>' +
+        '      </div>' +
+        '    </div>' +
         '    <div style="margin:14px 0 10px">' +
         '      <label style="font-weight:700;font-size:13.5px">Question Format:</label>' +
         '      <div class="eth-tabs" style="margin-top:6px">' +
-        '        <button class="eth-tab ' + (currentTab === 'mc' ? 'active' : '') + '" id="tabMcBtn">🔘 Multiple Choice (A,B,C,D)</button>' +
+        '        <button class="eth-tab ' + (currentTab === 'mc' ? 'active' : '') + '" id="tabMcBtn">🔘 Multiple Choice</button>' +
         '        <button class="eth-tab ' + (currentTab === 'written' ? 'active' : '') + '" id="tabWrittenBtn">✍️ Written Answer</button>' +
         '        <button class="eth-tab ' + (currentTab === 'bool' ? 'active' : '') + '" id="tabBoolBtn">☑️ True / False</button>' +
         '        <button class="eth-tab ' + (currentTab === 'bulk' ? 'active' : '') + '" id="tabBulkBtn">📋 Bulk Text Import</button>' +
@@ -1551,6 +1920,8 @@
       overlay.querySelector('#exTitle').oninput = function(e) { currentTitle = e.target.value; };
       overlay.querySelector('#exDuration').oninput = function(e) { currentDuration = parseInt(e.target.value, 10) || 30; };
       overlay.querySelector('#exPoints').oninput = function(e) { currentPoints = parseInt(e.target.value, 10) || 2; };
+      overlay.querySelector('#exVisibility').onchange = function(e) { currentVisibility = e.target.value; };
+      overlay.querySelector('#exMaxAttempts').onchange = function(e) { currentMaxAttempts = parseInt(e.target.value, 10) || 1; };
 
       overlay.querySelector('#tabMcBtn').onclick = function() { currentTab = 'mc'; renderModal(); };
       overlay.querySelector('#tabWrittenBtn').onclick = function() { currentTab = 'written'; renderModal(); };
@@ -1714,6 +2085,8 @@
           title: currentTitle,
           duration: currentDuration,
           pointsPerQ: currentPoints,
+          isPublic: (currentVisibility === 'public'),
+          maxAttempts: currentMaxAttempts || 1,
           questions: questionsList,
           submissions: []
         };
@@ -1778,6 +2151,7 @@
         return;
       }
 
+      if (!checkStudentAttemptLimit(exam)) return;
       overlay.remove();
       startExamRunner(exam, container);
     };
@@ -1832,13 +2206,13 @@
         html += '' +
           '<div style="margin:20px 0">' +
           '  <input type="text" id="writtenInput" placeholder="Type your answer here..." style="width:100%;padding:14px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;outline:none">' +
-          '  <button class="eth-btn-primary" id="submitWrittenAnsBtn" style="margin-top:14px">Keyingisi ' + ic('right') + '</button>' +
+          '  <button class="eth-btn-primary" id="submitWrittenAnsBtn" style="margin-top:14px">Next ' + ic('right') + '</button>' +
           '</div>';
       } else if (qType === 'bool') {
         html += '' +
           '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0">' +
-          '  <button class="ap-opt" data-opt="True" style="justify-content:center;font-size:16px;font-weight:700">✓ True (To\'g\'ri)</button>' +
-          '  <button class="ap-opt" data-opt="False" style="justify-content:center;font-size:16px;font-weight:700">✗ False (Noto\'g\'ri)</button>' +
+          '  <button class="ap-opt" data-opt="True" style="justify-content:center;font-size:16px;font-weight:700">✓ True</button>' +
+          '  <button class="ap-opt" data-opt="False" style="justify-content:center;font-size:16px;font-weight:700">✗ False</button>' +
           '</div>';
       } else {
         html += '' +
@@ -1884,19 +2258,36 @@
       var pct = Math.round((state.score / totalPossible) * 100);
       var timeSpentMin = Math.round((exam.duration * 60 - Math.max(0, timeLeftSeconds)) / 60);
 
-      var sub = {
-        studentId: (S.user && S.user.email) || S.user.id,
-        studentName: S.user.name,
-        studentEmail: S.user.email,
-        score: state.score,
-        totalPossible: totalPossible,
-        percent: pct,
-        timeSpent: timeSpentMin + ' min',
-        date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      };
-
       if (!exam.submissions) exam.submissions = [];
-      exam.submissions.push(sub);
+      var userKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase();
+      var existing = exam.submissions.find(function(s) {
+        return (s.studentEmail && s.studentEmail.toLowerCase() === userKey) ||
+               (s.studentId && s.studentId.toLowerCase() === userKey);
+      });
+
+      if (existing) {
+        // Update score of existing submission without creating duplicate rows
+        existing.attempts = (existing.attempts || 1) + 1;
+        existing.score = state.score;
+        existing.totalPossible = totalPossible;
+        existing.percent = pct;
+        existing.timeSpent = timeSpentMin + ' min';
+        existing.date = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      } else {
+        var sub = {
+          studentId: (S.user && S.user.email) || (S.user && S.user.id) || 'guest',
+          studentName: (S.user && S.user.name) || 'Anonymous Student',
+          studentEmail: (S.user && S.user.email) || '',
+          score: state.score,
+          totalPossible: totalPossible,
+          percent: pct,
+          attempts: 1,
+          timeSpent: timeSpentMin + ' min',
+          date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        };
+        exam.submissions.push(sub);
+      }
+
       App.saveState();
       if (window.EthithSync) {
         window.EthithSync.broadcastLocal(S.classes, S.exams);
@@ -1908,7 +2299,7 @@
         '<div class="ap-res">' +
         '  <h2>Exam Completed!</h2>' +
         '  <p>Your Final Score: <b>' + state.score + ' / ' + totalPossible + ' points (' + pct + '%)</b></p>' +
-        '  <button class="eth-btn-primary" id="viewLbAfterExam" style="margin-top:20px">' + ic('trophy') + ' Jonli Reytingni Ko\'rish</button>' +
+        '  <button class="eth-btn-primary" id="viewLbAfterExam" style="margin-top:20px">' + ic('trophy') + ' View Live Leaderboard</button>' +
         '</div>';
 
       mainContainer.innerHTML = html;
@@ -1924,36 +2315,40 @@
   function showExamLeaderboardModal(exam) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
+    var maxAtt = exam.maxAttempts || 1;
+
+    // Deduplicated list sorted by highest score and speed
     var subs = (exam.submissions || []).slice().sort(function(a, b) {
       if (b.score !== a.score) return b.score - a.score;
       return parseInt(a.timeSpent, 10) - parseInt(b.timeSpent, 10);
     });
 
     overlay.innerHTML = '' +
-      '<div class="eth-modal" style="max-width:640px">' +
+      '<div class="eth-modal" style="max-width:680px">' +
       '  <div class="eth-modal-header">' +
-      '    <h2>' + ic('trophy') + ' ' + esc(exam.title) + ' · Jonli Reyting</h2>' +
-      '    <p>Ranked by highest score and completion speed</p>' +
+      '    <h2>' + ic('trophy') + ' ' + esc(exam.title) + ' · Live Leaderboard</h2>' +
+      '    <p>Ranked by highest score and completion speed · One entry per student</p>' +
       '  </div>' +
       '  <div class="eth-modal-body" style="max-height:60vh;overflow-y:auto">' +
       (subs.length === 0 ?
         '<p style="color:var(--muted);text-align:center">No students have taken this exam yet.</p>' :
         '<table class="eth-leaderboard-table">' +
-        '  <thead><tr><th>Rank</th><th>Student</th><th>Score</th><th>Time Spent</th></tr></thead>' +
+        '  <thead><tr><th>Rank</th><th>Student</th><th>Score</th><th>Attempts</th><th>Time Spent</th></tr></thead>' +
         '  <tbody>' +
         subs.map(function(s, idx) {
           var rankCls = (idx === 0 ? 'eth-rank-1' : (idx === 1 ? 'eth-rank-2' : (idx === 2 ? 'eth-rank-3' : '')));
           return '<tr>' +
             '  <td><span class="eth-rank-badge ' + rankCls + '">' + (idx + 1) + '</span></td>' +
             '  <td><b>' + esc(s.studentName) + '</b></td>' +
-            '  <td><b style="color:#2563eb">' + s.score + ' pts (' + s.percent + '%)</b></td>' +
+            '  <td><b style="color:#2563eb">' + s.score + ' / ' + s.totalPossible + ' (' + s.percent + '%)</b></td>' +
+            '  <td><span style="font-size:12px;background:rgba(37,99,235,0.08);color:#2563eb;padding:2px 7px;border-radius:6px;font-weight:700">' + (s.attempts || 1) + ' / ' + maxAtt + '</span></td>' +
             '  <td>' + esc(s.timeSpent) + '</td>' +
             '</tr>';
         }).join('') +
         '  </tbody>' +
         '</table>'
       ) +
-      '    <button class="eth-btn-primary" id="lbCloseBtn" style="margin-top:20px">Yopish</button>' +
+      '    <button class="eth-btn-primary" id="lbCloseBtn" style="margin-top:20px">Close</button>' +
       '  </div>' +
       '</div>';
 
@@ -2150,7 +2545,9 @@
     renderClassesView: renderClassesView,
     renderExamsView: renderExamsView,
     renderPlacementView: renderPlacementView,
-    renderMistakesNotebook: renderMistakesNotebook
+    renderMistakesNotebook: renderMistakesNotebook,
+    formatAIMarkdown: formatAIMarkdown,
+    formatMarkdown: formatAIMarkdown
   };
 
 })(window);

@@ -44,6 +44,8 @@
     classes: DEFAULT_CLASSES.slice(),
     exams: [],
     aiHistory: [],
+    aiConversations: [],
+    currentAiChatId: null,
     quickReactions: QUICK_EMOJIS_DEFAULT.slice(),
     activeClassId: null,
     activeExamId: null,
@@ -66,6 +68,36 @@
     S.classes = DEFAULT_CLASSES.slice();
   } else if (!S.classes.some(function(c) { return c.code === 'ETH-L6S8CM'; })) {
     S.classes.unshift(DEFAULT_CLASSES[0]);
+  }
+
+  // Ensure aiConversations exists & migrate legacy aiHistory if needed
+  if (!S.aiConversations) {
+    S.aiConversations = [];
+  }
+  if (S.aiConversations.length === 0) {
+    if (S.aiHistory && S.aiHistory.length > 0) {
+      var firstMsg = S.aiHistory[0].text || 'Conversation 1';
+      var title = firstMsg.slice(0, 36).trim() + (firstMsg.length > 36 ? '...' : '');
+      var initConv = {
+        id: 'conv_' + Date.now(),
+        title: title,
+        messages: S.aiHistory.slice(),
+        updatedAt: Date.now()
+      };
+      S.aiConversations.push(initConv);
+      S.currentAiChatId = initConv.id;
+    } else {
+      var initConv = {
+        id: 'conv_' + Date.now(),
+        title: 'New Conversation',
+        messages: [],
+        updatedAt: Date.now()
+      };
+      S.aiConversations.push(initConv);
+      S.currentAiChatId = initConv.id;
+    }
+  } else if (!S.currentAiChatId || !S.aiConversations.some(function(c) { return c.id === S.currentAiChatId; })) {
+    S.currentAiChatId = S.aiConversations[0].id;
   }
 
   // Trigger remote sync if available
