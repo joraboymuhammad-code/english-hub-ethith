@@ -1442,7 +1442,7 @@
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
       '    <h2>' + ic('clip') + ' Language Hub Rasmiy Placement Test (70 ta Savol)</h2>' +
-      '    <p>Ingliz tili darajangizni (A1 dan C2 gacha) rasmiy xalqaro nizom asosida aniqlang. Ajratilgan vaqt: 30 daqiqa.</p>' +
+      '    <p>Ingliz tili darajangizni (A1 dan C2 gacha) rasmiy xalqaro nizom asosida aniqlang. Ajratilgan vaqt: 1.5 soat (90 daqiqa).</p>' +
       '  </div>' +
       '</div>' +
       '<div class="ap-intro">' +
@@ -1452,7 +1452,7 @@
       '  </div>' +
       '  <ul>' +
       '    <li>' + ic('list') + ' 70 ta ko\'p tanlovli (multiple choice) savollar</li>' +
-      '    <li>' + ic('clock') + ' Maksimal 30 daqiqa vaqt beriladi</li>' +
+      '    <li>' + ic('clock') + ' Maksimal 1.5 soat (90 daqiqa) vaqt beriladi</li>' +
       '    <li>' + ic('trophy') + ' Rasmiy baholash mezoni bo\'yicha aniq CEFR darajangiz chiqadi</li>' +
       '  </ul>' +
       '  <button class="eth-btn-primary" id="startPlacementTestBtn" style="font-size:16px;padding:14px 28px">Testni Boshlash ' + ic('right') + '</button>' +
@@ -1466,7 +1466,7 @@
   }
 
   function runPlacementTest(mainContainer, questions) {
-    var timeLeft = 30 * 60;
+    var timeLeft = 90 * 60;
     var state = {
       i: 0,
       score: 0,
@@ -1477,9 +1477,10 @@
       timeLeft--;
       var badge = document.getElementById('plcTimer');
       if (badge) {
-        var m = Math.floor(timeLeft / 60);
+        var hrs = Math.floor(timeLeft / 3600);
+        var m = Math.floor((timeLeft % 3600) / 60);
         var s = timeLeft % 60;
-        badge.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+        badge.textContent = (hrs < 10 ? '0' : '') + hrs + ':' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
       }
       if (timeLeft <= 0) {
         clearInterval(interval);
@@ -1500,7 +1501,7 @@
       var html = '' +
         '<div class="ap-quiz">' +
         '  <div class="ap-qtop">' +
-        '    <div class="eth-timer-badge">' + ic('clock') + ' <span id="plcTimer">30:00</span></div>' +
+        '    <div class="eth-timer-badge">' + ic('clock') + ' <span id="plcTimer">01:30:00</span></div>' +
         '    <div class="ap-bar"><i style="width:' + ((state.i / questions.length) * 100) + '%"></i></div>' +
         '    <b>' + (state.i + 1) + ' / ' + questions.length + '</b>' +
         '  </div>' +
