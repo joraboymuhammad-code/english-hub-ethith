@@ -1,13 +1,22 @@
 {
   "classes": [
     {
-      "id": "cls_1791996374490",
-      "name": "IELTS GURuh",
+      "id": "cls_ethith_main",
+      "name": "IELTS & General English Intensive",
       "code": "ETH-L6S8CM",
-      "teacherId": "tc_l78sgm19w",
-      "teacherName": "Muhammadyusuf",
-      "teacherEmail": "joraboymuhammad@gmail.com",
+      "teacherId": "joraboyevmuhammad85@gmail.com",
+      "teacherName": "Ustoz Muhammadyusuf",
+      "teacherEmail": "joraboyevmuhammad85@gmail.com",
+      "created": 1791999637426,
       "students": [
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 353,
+          "mistakes": 0
+        },
         {
           "id": "std_sync_test",
           "name": "John Doe",
@@ -17,14 +26,6 @@
           "mistakesCount": 0
         },
         {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "lastActive": 1791999647009,
-          "dailyMinutes": 262,
-          "mistakes": 0
-        },
-        {
           "id": "std_live_test_1",
           "name": "Alisher Oquvchi",
           "email": "alisher@gmail.com",
@@ -32,18 +33,6 @@
         }
       ],
       "messages": [
-        {
-          "id": "msg_init",
-          "senderId": "tc_l78sgm19w",
-          "senderName": "Muhammadyusuf",
-          "text": "Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.",
-          "time": "21:46",
-          "reactions": {
-            "💡": [
-              "joraboymuhammad@gmail.com"
-            ]
-          }
-        },
         {
           "id": "msg_welcome",
           "senderId": "joraboyevmuhammad85@gmail.com",
@@ -57,10 +46,22 @@
           }
         },
         {
+          "id": "msg_init",
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "text": "Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.",
+          "time": "21:46",
+          "reactions": {
+            "💡": [
+              "joraboymuhammad@gmail.com"
+            ]
+          }
+        },
+        {
           "id": "msg_welcome_1",
           "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Instructor Muhammadyusuf",
-          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
+          "senderName": "Ustoz Muhammadyusuf",
+          "text": "Assalomu alaykum! ETHITH rasmiy sinfiga xush kelibsiz. Bu yerda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
           "time": "12:00",
           "reactions": {
             "👍": [
@@ -333,5 +334,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792022353494
+  "updatedAt": 1792022395288
 }
