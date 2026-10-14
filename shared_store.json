@@ -222,9 +222,19 @@
           "percent": 0,
           "timeSpent": "0 min",
           "date": "02:02"
+        },
+        {
+          "studentId": "muhammedjoraboyev1@gmail.com",
+          "studentName": "Muhammadyusuf",
+          "studentEmail": "muhammedjoraboyev1@gmail.com",
+          "score": 2,
+          "totalPossible": 2,
+          "percent": 100,
+          "timeSpent": "0 min",
+          "date": "02:02"
         }
       ]
     }
   ],
-  "updatedAt": 1792011759029
+  "updatedAt": 1792011764706
 }
