@@ -347,6 +347,12 @@
     // B. REACTION
     else if (event.type === 'REACTION' && targetCls && event.msgId && event.emoji) {
       var msg = (targetCls.messages || []).find(function(m) { return m.id === event.msgId; });
+      if (!msg && classes) {
+        for (var ci = 0; ci < classes.length; ci++) {
+          msg = (classes[ci].messages || []).find(function(m) { return m.id === event.msgId; });
+          if (msg) { targetCls = classes[ci]; break; }
+        }
+      }
       if (msg) {
         if (!msg.reactions) msg.reactions = {};
         if (!msg.reactions[event.emoji]) msg.reactions[event.emoji] = [];
@@ -371,14 +377,24 @@
 
     // C. PERMANENT DELETE MESSAGE
     else if (event.type === 'DELETE_MSG' && targetCls && event.msgId) {
-      if (!targetCls.deletedMsgIds) targetCls.deletedMsgIds = [];
-      if (targetCls.deletedMsgIds.indexOf(event.msgId) === -1) {
-        targetCls.deletedMsgIds.push(event.msgId);
+      var foundInCls = targetCls;
+      var hasMsg = (targetCls.messages || []).some(function(m) { return m.id === event.msgId; });
+      if (!hasMsg && classes) {
+        for (var ci = 0; ci < classes.length; ci++) {
+          if ((classes[ci].messages || []).some(function(m) { return m.id === event.msgId; })) {
+            foundInCls = classes[ci];
+            break;
+          }
+        }
       }
-      var lenBefore = (targetCls.messages || []).length;
-      targetCls.messages = (targetCls.messages || []).filter(function(m) { return m.id !== event.msgId; });
-      if (targetCls.pinnedId === event.msgId) targetCls.pinnedId = null;
-      if (targetCls.messages.length !== lenBefore) {
+      if (!foundInCls.deletedMsgIds) foundInCls.deletedMsgIds = [];
+      if (foundInCls.deletedMsgIds.indexOf(event.msgId) === -1) {
+        foundInCls.deletedMsgIds.push(event.msgId);
+      }
+      var lenBefore = (foundInCls.messages || []).length;
+      foundInCls.messages = (foundInCls.messages || []).filter(function(m) { return m.id !== event.msgId; });
+      if (foundInCls.pinnedId === event.msgId) foundInCls.pinnedId = null;
+      if (foundInCls.messages.length !== lenBefore) {
         uiNeedsRefresh = true;
       }
     }

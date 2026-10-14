@@ -123,6 +123,12 @@
 
 
 
+
+
+
+
+
+
 <style id="ethith-custom-styles">
 /* ETHITH TESTS - Extended Stylesheet
  * Created by Muhammadyusuf Jo'raboyev
@@ -4963,6 +4969,12 @@ window.ETHITH_PLACEMENT = [
     // B. REACTION
     else if (event.type === 'REACTION' && targetCls && event.msgId && event.emoji) {
       var msg = (targetCls.messages || []).find(function(m) { return m.id === event.msgId; });
+      if (!msg && classes) {
+        for (var ci = 0; ci < classes.length; ci++) {
+          msg = (classes[ci].messages || []).find(function(m) { return m.id === event.msgId; });
+          if (msg) { targetCls = classes[ci]; break; }
+        }
+      }
       if (msg) {
         if (!msg.reactions) msg.reactions = {};
         if (!msg.reactions[event.emoji]) msg.reactions[event.emoji] = [];
@@ -4987,14 +4999,24 @@ window.ETHITH_PLACEMENT = [
 
     // C. PERMANENT DELETE MESSAGE
     else if (event.type === 'DELETE_MSG' && targetCls && event.msgId) {
-      if (!targetCls.deletedMsgIds) targetCls.deletedMsgIds = [];
-      if (targetCls.deletedMsgIds.indexOf(event.msgId) === -1) {
-        targetCls.deletedMsgIds.push(event.msgId);
+      var foundInCls = targetCls;
+      var hasMsg = (targetCls.messages || []).some(function(m) { return m.id === event.msgId; });
+      if (!hasMsg && classes) {
+        for (var ci = 0; ci < classes.length; ci++) {
+          if ((classes[ci].messages || []).some(function(m) { return m.id === event.msgId; })) {
+            foundInCls = classes[ci];
+            break;
+          }
+        }
       }
-      var lenBefore = (targetCls.messages || []).length;
-      targetCls.messages = (targetCls.messages || []).filter(function(m) { return m.id !== event.msgId; });
-      if (targetCls.pinnedId === event.msgId) targetCls.pinnedId = null;
-      if (targetCls.messages.length !== lenBefore) {
+      if (!foundInCls.deletedMsgIds) foundInCls.deletedMsgIds = [];
+      if (foundInCls.deletedMsgIds.indexOf(event.msgId) === -1) {
+        foundInCls.deletedMsgIds.push(event.msgId);
+      }
+      var lenBefore = (foundInCls.messages || []).length;
+      foundInCls.messages = (foundInCls.messages || []).filter(function(m) { return m.id !== event.msgId; });
+      if (foundInCls.pinnedId === event.msgId) foundInCls.pinnedId = null;
+      if (foundInCls.messages.length !== lenBefore) {
         uiNeedsRefresh = true;
       }
     }
@@ -6551,7 +6573,7 @@ window.ETHITH_PLACEMENT = [
 
     window._ethithRefreshClassesList = function() {
       if (!S.activeClassId && window._ethithCurrentView === 'classes') {
-        var c = (container && container.parentElement) ? container : document.getElementById('viewContainer');
+        var c = (container && container.parentElement) ? container : (document.getElementById('apView') || document.getElementById('viewContainer'));
         if (c) renderClassesView(c);
       }
     };
@@ -6766,7 +6788,10 @@ window.ETHITH_PLACEMENT = [
   }
 
   // Telegram Style Chat inside Class
-  function renderClassDetail(container, cls) {
+  function renderClassDetail(container, clsParam) {
+    var cls = (S.classes && S.classes.find(function(c) {
+      return (clsParam && c.id === clsParam.id) || (clsParam && c.code === clsParam.code) || (c.id === S.activeClassId);
+    })) || clsParam;
     if (window.EthithSync) {
       window.EthithSync.subscribeClass(cls.code || cls.id);
     }
@@ -6967,26 +6992,38 @@ window.ETHITH_PLACEMENT = [
         reactions: {}
       };
 
-      cls.messages.push(newMsg);
+      var liveCls = (S.classes && S.classes.find(function(c) {
+        return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+      })) || cls;
+
+      if (!liveCls.messages) liveCls.messages = [];
+      liveCls.messages.push(newMsg);
+      if (cls !== liveCls) {
+        if (!cls.messages) cls.messages = [];
+        cls.messages.push(newMsg);
+      }
+
       currentReplyingMessage = null;
       input.value = '';
       App.saveState();
       if (window.EthithSync) {
         window.EthithSync.publishLive({
           type: 'CHAT_MSG',
-          classId: cls.code || cls.id,
+          classId: liveCls.code || liveCls.id || cls.code || cls.id,
           message: newMsg
         });
         window.EthithSync.broadcastLocal(S.classes, S.exams);
         window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
-      renderClassDetail(container, cls);
+      renderClassDetail(container, liveCls);
     }
 
     window._ethithRefreshCurrentClass = function() {
-      var targetContainer = (container && container.parentElement) ? container : document.getElementById('viewContainer');
+      var targetContainer = (container && container.parentElement) ? container : (document.getElementById('apView') || document.getElementById('viewContainer'));
       var currentId = S.activeClassId || (cls && cls.id);
-      var latestCls = S.classes.find(function(c) { return c.id === currentId; });
+      var latestCls = S.classes.find(function(c) {
+        return (c.id && c.id === currentId) || (cls && c.code === cls.code) || (cls && c.id === cls.id);
+      });
       if (latestCls && targetContainer && document.getElementById('tgMsgBox')) {
         var inputEl = document.getElementById('tgInputText');
         var draftText = inputEl ? inputEl.value : '';

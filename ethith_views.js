@@ -579,7 +579,7 @@
 
     window._ethithRefreshClassesList = function() {
       if (!S.activeClassId && window._ethithCurrentView === 'classes') {
-        var c = (container && container.parentElement) ? container : document.getElementById('viewContainer');
+        var c = (container && container.parentElement) ? container : (document.getElementById('apView') || document.getElementById('viewContainer'));
         if (c) renderClassesView(c);
       }
     };
@@ -794,7 +794,10 @@
   }
 
   // Telegram Style Chat inside Class
-  function renderClassDetail(container, cls) {
+  function renderClassDetail(container, clsParam) {
+    var cls = (S.classes && S.classes.find(function(c) {
+      return (clsParam && c.id === clsParam.id) || (clsParam && c.code === clsParam.code) || (c.id === S.activeClassId);
+    })) || clsParam;
     if (window.EthithSync) {
       window.EthithSync.subscribeClass(cls.code || cls.id);
     }
@@ -995,26 +998,38 @@
         reactions: {}
       };
 
-      cls.messages.push(newMsg);
+      var liveCls = (S.classes && S.classes.find(function(c) {
+        return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+      })) || cls;
+
+      if (!liveCls.messages) liveCls.messages = [];
+      liveCls.messages.push(newMsg);
+      if (cls !== liveCls) {
+        if (!cls.messages) cls.messages = [];
+        cls.messages.push(newMsg);
+      }
+
       currentReplyingMessage = null;
       input.value = '';
       App.saveState();
       if (window.EthithSync) {
         window.EthithSync.publishLive({
           type: 'CHAT_MSG',
-          classId: cls.code || cls.id,
+          classId: liveCls.code || liveCls.id || cls.code || cls.id,
           message: newMsg
         });
         window.EthithSync.broadcastLocal(S.classes, S.exams);
         window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
-      renderClassDetail(container, cls);
+      renderClassDetail(container, liveCls);
     }
 
     window._ethithRefreshCurrentClass = function() {
-      var targetContainer = (container && container.parentElement) ? container : document.getElementById('viewContainer');
+      var targetContainer = (container && container.parentElement) ? container : (document.getElementById('apView') || document.getElementById('viewContainer'));
       var currentId = S.activeClassId || (cls && cls.id);
-      var latestCls = S.classes.find(function(c) { return c.id === currentId; });
+      var latestCls = S.classes.find(function(c) {
+        return (c.id && c.id === currentId) || (cls && c.code === cls.code) || (cls && c.id === cls.id);
+      });
       if (latestCls && targetContainer && document.getElementById('tgMsgBox')) {
         var inputEl = document.getElementById('tgInputText');
         var draftText = inputEl ? inputEl.value : '';

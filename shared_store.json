@@ -1,13 +1,12 @@
 {
   "classes": [
     {
-      "id": "cls_ethith_main",
-      "name": "IELTS & General English Intensive",
+      "id": "cls_default_1",
       "code": "ETH-L6S8CM",
-      "teacherId": "joraboyevmuhammad85@gmail.com",
-      "teacherName": "Instructor Muhammadyusuf",
+      "name": "IELTS Band 7.0+ Intensive Class",
+      "teacherName": "Ustoz Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792015110342,
+      "created": 1791997894796,
       "students": [],
       "messages": [
         {
@@ -21,24 +20,9 @@
               "joraboyevmuhammad85@gmail.com"
             ]
           }
-        },
-        {
-          "id": "msg_welcome_1",
-          "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Instructor Muhammadyusuf",
-          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
-          "time": "12:00",
-          "reactions": {
-            "👍": [
-              "joraboyevmuhammad85@gmail.com"
-            ]
-          }
         }
-      ],
-      "pinnedId": null,
-      "deletedMsgIds": []
+      ]
     }
   ],
-  "exams": [],
-  "updatedAt": 1792015116015
+  "exams": []
 }
