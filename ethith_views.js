@@ -454,9 +454,10 @@
           '</div>';
       }).join('') +
       '  </div>' +
-      '  <div style="display:flex;gap:10px">' +
+      '  <div style="display:flex;gap:10px;flex-wrap:wrap">' +
       '    <button type="button" class="ap-btn out" id="btnCancelLevelTransPrompt" style="flex:1">Bekor qilish</button>' +
-      '    <button type="button" class="eth-btn-primary" id="btnProceedLevelTransPrompt" style="flex:2">Davom etish (Test Tuzish) &rarr;</button>' +
+      '    <button type="button" class="eth-btn-primary" id="btnAiLevelTransPrompt" style="flex:2;background:linear-gradient(135deg,#7c3aed 0%,#2563eb 100%);border:none;box-shadow:0 4px 14px rgba(124,58,237,0.35);font-weight:800;display:flex;align-items:center;justify-content:center;gap:6px"><span>🤖</span> 5 Soniyada AI Bilan Tuzish &rarr;</button>' +
+      '    <button type="button" class="ap-btn out" id="btnProceedLevelTransPrompt" style="flex:1.5">Qo\'lda Tuzish &rarr;</button>' +
       '  </div>' +
       '</div>';
 
@@ -491,7 +492,7 @@
       };
     });
 
-    overlay.querySelector('#btnProceedLevelTransPrompt').onclick = function() {
+    var openTransModal = function() {
       overlay.remove();
       showCreateExamModal(container, {
         isLevelTransition: true,
@@ -502,6 +503,10 @@
         audioMaxPlays: 2
       });
     };
+
+    var aiBtn = overlay.querySelector('#btnAiLevelTransPrompt');
+    if (aiBtn) aiBtn.onclick = openTransModal;
+    overlay.querySelector('#btnProceedLevelTransPrompt').onclick = openTransModal;
   }
 
   function renderLevelsView(container, levelKey) {
@@ -1793,7 +1798,12 @@
       '    <p>' + (isTeacher ? 'Create custom exams, manage 6-digit access codes, configure public/private visibility, and monitor live leaderboards.' : 'Take practice exams or join proctored examinations with the 6-digit access code provided by your instructor.') + '</p>' +
       '  </div>' +
       (isTeacher ?
-        '  <button class="eth-btn-primary" id="btnCreateExam" style="width:auto;padding:10px 18px">' + ic('plus') + ' Create New Exam</button>' :
+        '  <div style="display:flex;gap:10px;flex-wrap:wrap">' +
+        '    <button class="eth-btn-primary" id="btnAiQuickExam" style="width:auto;padding:10px 18px;background:linear-gradient(135deg,#7c3aed 0%,#2563eb 100%);border:none;box-shadow:0 4px 15px rgba(124,58,237,0.35);font-weight:800;display:flex;align-items:center;gap:8px;color:#fff;cursor:pointer">' +
+        '      <span style="font-size:17px">🤖</span> 5 Soniyada AI Test Yaratish (PDF/Audio)' +
+        '    </button>' +
+        '    <button class="ap-btn out" id="btnCreateExam" style="width:auto;padding:10px 18px;font-weight:700">' + ic('plus') + ' Yangi Imtihon Tuzish</button>' +
+        '  </div>' :
         '') +
       '</div>';
 
@@ -1801,20 +1811,20 @@
     html += '' +
       '<div class="eth-exam-access-hero">' +
       '  <div class="eth-exam-access-info">' +
-      '    <h3><span style="font-size:18px">🔒</span> Enter Proctored Exam with Access Code</h3>' +
-      '    <p>Private and scheduled exams require your 6-digit access code. Strict WebCam proctoring with 35° head turn detection and fullscreen lockdown will be enforced.</p>' +
+      '    <h3><span style="font-size:18px">🔒</span> 6 Xonali Kod Bilan Imtihonga Kirish</h3>' +
+      '    <p>O\'qituvchingiz bergan 6 xonali maxsus kodni kiriting. Yashirin va rasmiy imtihonlar qat\'iy kamera nazorati va to\'liq ekran himoyasida o\'tkaziladi.</p>' +
       '  </div>' +
       '  <div class="eth-exam-access-form">' +
       '    <div class="eth-access-input-wrap">' +
-      '      <label>6-Digit Exam Code</label>' +
-      '      <input type="text" id="topExamCodeInput" placeholder="e.g. 780580" maxlength="8" autocomplete="off" />' +
+      '      <label>6 Xonali Imtihon Kodi</label>' +
+      '      <input type="text" id="topExamCodeInput" placeholder="Masalan: 780580" maxlength="8" autocomplete="off" />' +
       '    </div>' +
       '    <div class="eth-access-input-wrap">' +
-      '      <label>Your Full Name</label>' +
-      '      <input type="text" id="topStudentNameInput" value="' + esc((S.user && S.user.name) || '') + '" placeholder="Full Name" />' +
+      '      <label>Ism va Familiyangiz</label>' +
+      '      <input type="text" id="topStudentNameInput" value="' + esc((S.user && S.user.name) || '') + '" placeholder="Ism Familiya" />' +
       '    </div>' +
       '    <button class="eth-btn-primary eth-access-start-btn" id="btnTopStartExam">' +
-      '      Verify & Start Exam ' + ic('right') +
+      '      Imtihonni Boshlash ' + ic('right') +
       '    </button>' +
       '  </div>' +
       '</div>';
@@ -1848,8 +1858,8 @@
           '  <div style="display:flex;gap:8px">' +
           '    <button class="ap-btn solid" data-exam-lb="' + ex.id + '" style="flex:1">' + ic('trophy') + ' Leaderboard</button>' +
           (isTeacher ?
-            '    <button class="ap-btn out" data-exam-manage="' + ex.id + '" style="flex:1">⚙️ Manage & Share</button>' :
-            '    <button class="eth-btn-primary" data-exam-take="' + ex.id + '" style="flex:1">Take Exam ' + ic('right') + '</button>') +
+            '    <button class="ap-btn out" data-exam-manage="' + ex.id + '" style="flex:1">⚙️ Boshqarish & Ulashish</button>' :
+            '    <button class="eth-btn-primary" data-exam-take="' + ex.id + '" style="flex:1">Testni Boshlash ' + ic('right') + '</button>') +
           '  </div>' +
           '</div>';
       });
@@ -1921,6 +1931,12 @@
     });
 
     if (isTeacher) {
+      var aiQuickBtn = document.getElementById('btnAiQuickExam');
+      if (aiQuickBtn) {
+        aiQuickBtn.onclick = function() {
+          showCreateExamModal(container);
+        };
+      }
       var createBtn = document.getElementById('btnCreateExam');
       if (createBtn) {
         createBtn.onclick = function() {
