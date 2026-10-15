@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792041969539,
+      "created": 1792041702248,
       "students": [],
       "messages": [
         {
@@ -65,17 +65,6 @@
           "reactions": {}
         },
         {
-          "id": "msg_1792041984917_cd4i9",
-          "timestamp": 1792041984917,
-          "senderId": "tc_oprlehyw5",
-          "senderName": "Name",
-          "senderEmail": "strikeruzb52@gmail.com",
-          "text": "Qande oʻzi",
-          "time": "10:26",
-          "replyTo": null,
-          "reactions": {}
-        },
-        {
           "id": "msg_1792042022803_twjuy",
           "timestamp": 1792042022804,
           "senderId": "tc_oprlehyw5",
@@ -124,22 +113,6 @@
           "reactions": {}
         },
         {
-          "id": "msg_1792042036562_fkm5k",
-          "timestamp": 1792042036562,
-          "senderId": "tc_oprlehyw5",
-          "senderName": "Name",
-          "senderEmail": "strikeruzb52@gmail.com",
-          "text": "Rkekkfkwkfkwkgkekgkekgidiwiqos",
-          "time": "10:27",
-          "replyTo": null,
-          "reactions": {
-            "❤️": [
-              "strikeruzb52@gmail.com",
-              "nasibaorazaliyev@gmail.com"
-            ]
-          }
-        },
-        {
           "id": "msg_1792042038023_qfj3h",
           "timestamp": 1792042038023,
           "senderId": "st_fk1yek0xm",
@@ -162,17 +135,6 @@
           "reactions": {}
         },
         {
-          "id": "msg_1792042358929_8iaq2",
-          "timestamp": 1792042358929,
-          "senderId": "st_fk1yek0xm",
-          "senderName": "nursulton",
-          "senderEmail": "nasibaorazaliyev@gmail.com",
-          "text": "boʻt",
-          "time": "10:32",
-          "replyTo": null,
-          "reactions": {}
-        },
-        {
           "id": "msg_1792042363861_jh8v5",
           "timestamp": 1792042363862,
           "senderId": "st_fk1yek0xm",
@@ -182,23 +144,16 @@
           "time": "10:32",
           "replyTo": null,
           "reactions": {}
-        },
-        {
-          "id": "msg_1792042367569_7htzs",
-          "timestamp": 1792042367569,
-          "senderId": "st_fk1yek0xm",
-          "senderName": "nursulton",
-          "senderEmail": "nasibaorazaliyev@gmail.com",
-          "text": "boʻt",
-          "time": "10:32",
-          "replyTo": null,
-          "reactions": {}
         }
       ],
       "pinnedId": null,
       "deletedMsgIds": [
+        "msg_1792042367569_7htzs",
+        "msg_1792042036562_fkm5k",
         "msg_1792042347995_z52xw",
-        "msg_1792042342788_9894b"
+        "msg_1792042342788_9894b",
+        "msg_1792042358929_8iaq2",
+        "msg_1792041984917_cd4i9"
       ]
     }
   ],
@@ -274,5 +229,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042412071
+  "updatedAt": 1792042415528
 }
