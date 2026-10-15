@@ -52,6 +52,7 @@
     var history = activeConv.messages || [];
 
     var html = '' +
+      '<div class="eth-ai-drawer-backdrop" id="aiDrawerBackdrop"></div>' +
       '<div class="ask-ai-container">' +
       // LEFT SIDEBAR: Recommended Prompts & Info
       '  <div class="ask-ai-sidebar">' +
@@ -68,6 +69,15 @@
       '  </div>' +
       // CENTER: Main Chat
       '  <div class="ask-ai-main">' +
+      '    <div class="eth-ai-topbar">' +
+      '      <div style="display:flex;align-items:center;gap:8px">' +
+      '        <span style="font-size:16px">🤖</span>' +
+      '        <b style="font-size:14px;color:var(--text)">ETHITH AI Teacher</b>' +
+      '      </div>' +
+      '      <button type="button" class="eth-ai-mobile-history-toggle" id="btnToggleAiMobileHistory">' +
+      '        💬 Suhbatlar Tarixi (<span id="aiChatCountPill">' + S.aiConversations.length + '</span>)' +
+      '      </button>' +
+      '    </div>' +
       '    <div class="ask-ai-messages" id="aiMsgBox">' +
       (history.length === 0 ?
         '<div style="text-align:center;margin:auto;max-width:520px;padding:20px">' +
@@ -98,10 +108,13 @@
       '    </div>' +
       '  </div>' +
       // RIGHT SIDEBAR: "Suhbatlar" / Conversations History Panel
-      '  <div class="ask-ai-history-panel">' +
+      '  <div class="ask-ai-history-panel" id="askAiHistoryPanel">' +
       '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">' +
       '      <b style="font-size:13.5px;color:var(--text);display:flex;align-items:center;gap:6px">' + ic('layers') + ' Conversations</b>' +
-      '      <button class="eth-btn-primary" id="aiNewChatBtn" style="padding:6px 12px;font-size:12px;width:auto;border-radius:8px">' + ic('plus') + ' New</button>' +
+      '      <div style="display:flex;align-items:center;gap:6px">' +
+      '        <button class="eth-btn-primary" id="aiNewChatBtn" style="padding:6px 12px;font-size:12px;width:auto;border-radius:8px">' + ic('plus') + ' New</button>' +
+      '        <button class="eth-modal-close-btn" id="btnCloseAiDrawer" style="position:static !important;width:30px !important;height:30px !important;font-size:13px !important" title="Yopish">✕</button>' +
+      '      </div>' +
       '    </div>' +
       '    <div class="ask-ai-history-list">' +
       S.aiConversations.map(function(conv) {
@@ -119,6 +132,30 @@
       '</div>';
 
     container.innerHTML = html;
+
+    // Mobile drawer toggle handlers
+    var historyPanel = document.getElementById('askAiHistoryPanel');
+    var drawerBackdrop = document.getElementById('aiDrawerBackdrop');
+    var btnToggleMobile = document.getElementById('btnToggleAiMobileHistory');
+    var btnCloseDrawer = document.getElementById('btnCloseAiDrawer');
+
+    function closeMobileDrawer() {
+      if (historyPanel) historyPanel.classList.remove('mobile-open');
+      if (drawerBackdrop) drawerBackdrop.classList.remove('active');
+    }
+
+    if (btnToggleMobile) {
+      btnToggleMobile.onclick = function() {
+        if (historyPanel) historyPanel.classList.toggle('mobile-open');
+        if (drawerBackdrop) drawerBackdrop.classList.toggle('active');
+      };
+    }
+    if (btnCloseDrawer) {
+      btnCloseDrawer.onclick = closeMobileDrawer;
+    }
+    if (drawerBackdrop) {
+      drawerBackdrop.onclick = closeMobileDrawer;
+    }
 
     var msgBox = document.getElementById('aiMsgBox');
     if (msgBox) msgBox.scrollTop = msgBox.scrollHeight;
@@ -192,6 +229,7 @@
         if (e.target.closest('[data-del-chat]')) return;
         S.currentAiChatId = item.dataset.chatId;
         App.saveState();
+        closeMobileDrawer();
         renderAskAITeacher(container);
       };
     });
@@ -406,7 +444,7 @@
       '  <div>' +
       '    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">' +
       '      <span style="background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:12px;font-size:11.5px;font-weight:700">🏆 CEFR Level Exam</span>' +
-      '      <span class="eth-coming-soon-badge" style="background:#fef08a;color:#854d0e;font-size:10px">Coming Soon · Tez Kunda</span>' +
+      '      <span class="eth-badge-open" style="font-size:11px;font-weight:700">✅ Faol · 30 Savol (90 daqiqa)</span>' +
       '    </div>' +
       '    <h3 style="font-size:17px;margin:0 0 4px;color:#ffffff">' + curLevel + ' &rarr; ' + nextLv + ' Level Test (' + curLevel + ' to ' + nextLv + ' Transition Exam)</h3>' +
       '    <p style="margin:0;opacity:0.85;font-size:12.5px">Complete all 40 topics to unlock and take the official transition exam to the next level.</p>' +
@@ -442,7 +480,27 @@
     var transCard = container.querySelector('#levelTransitionCard');
     if (transCard) {
       transCard.onclick = function() {
-        App.showComingSoon(curLevel + " dan " + nextLv + " Level Transition Exam (CEFR Transition Test)");
+        var examQuestions = (window.EthithQuizEngine && window.EthithQuizEngine.generateQuiz)
+          ? window.EthithQuizEngine.generateQuiz(curLevel, 1, 30)
+          : [];
+        if (!examQuestions || examQuestions.length === 0) {
+          examQuestions = [
+            { question: "Choose the correct " + curLevel + " sentence structure.", options: ["She works every day", "She work every day", "She working every day", "She be working"], answer: "She works every day", points: 2 },
+            { question: "Which connector best completes the passage?", options: ["however", "although", "despite", "furthermore"], answer: "however", points: 2 }
+          ];
+        }
+        var transExam = {
+          id: 'trans_exam_' + curLevel + '_' + nextLv,
+          code: curLevel + '-' + nextLv,
+          title: curLevel + ' → ' + nextLv + ' Level Transition Exam',
+          duration: 90,
+          pointsPerQ: 2,
+          questions: examQuestions,
+          isPublic: true,
+          maxAttempts: 5,
+          submissions: []
+        };
+        startExamRunner(transExam, container);
       };
     }
 
@@ -480,6 +538,7 @@
     overlay.className = 'eth-modal-overlay';
     overlay.innerHTML = '' +
       '<div class="eth-modal">' +
+      '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseQuizPrompt" title="Yopish">✕</button>' +
       '  <div class="eth-modal-header">' +
       '    <h2>' + level + ' · Topic ' + topicNum + '</h2>' +
       '    <p>' + esc(topicTitle) + '</p>' +
@@ -503,6 +562,18 @@
       '</div>';
 
     document.body.appendChild(overlay);
+
+    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+    var topClose = overlay.querySelector('#btnTopCloseQuizPrompt');
+    if (topClose) topClose.onclick = function() { overlay.remove(); };
+
+    var onEsc = function(e) {
+      if (e.key === 'Escape') {
+        overlay.remove();
+        window.removeEventListener('keydown', onEsc);
+      }
+    };
+    window.addEventListener('keydown', onEsc);
 
     var slider = overlay.querySelector('#quizCountSlider');
     var valDisplay = overlay.querySelector('#quizCountVal');
@@ -676,6 +747,7 @@
     overlay.className = 'eth-modal-overlay';
     overlay.innerHTML = '' +
       '<div class="eth-modal">' +
+      '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseCustomTest" title="Yopish">✕</button>' +
       '  <div class="eth-modal-header">' +
       '    <h2>Create New Custom Quiz</h2>' +
       '    <p>Generate AI quizzes from teacher notes, written prompts, or syllabus text</p>' +
@@ -704,9 +776,20 @@
 
     document.body.appendChild(overlay);
 
+    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+    var topClose = overlay.querySelector('#btnTopCloseCustomTest');
+    if (topClose) topClose.onclick = function() { overlay.remove(); };
     overlay.querySelector('#tcCancelBtn').onclick = function() {
       overlay.remove();
     };
+
+    var onEsc = function(e) {
+      if (e.key === 'Escape') {
+        overlay.remove();
+        window.removeEventListener('keydown', onEsc);
+      }
+    };
+    window.addEventListener('keydown', onEsc);
 
     overlay.querySelector('#tcCustomTestForm').onsubmit = async function(e) {
       e.preventDefault();
@@ -820,6 +903,7 @@
     overlay.className = 'eth-modal-overlay';
     overlay.innerHTML = '' +
       '<div class="eth-modal">' +
+      '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseCreateCls" title="Yopish">✕</button>' +
       '  <div class="eth-modal-header">' +
       '    <h2>Create New Class</h2>' +
       '    <p>Create a new classroom with a 10-character invitation code for your students</p>' +
@@ -830,11 +914,28 @@
       '        <label>Class Name</label>' +
       '        <input type="text" id="clsName" placeholder="e.g. IELTS 7.5 Intensive" required>' +
       '      </div>' +
-      '      <button type="submit" class="eth-btn-primary">Activate Class ' + ic('right') + '</button>' +
+      '      <div style="display:flex;gap:10px;margin-top:14px">' +
+      '        <button type="button" class="ap-btn out" id="btnCancelCreateCls" style="flex:1">Bekor qilish</button>' +
+      '        <button type="submit" class="eth-btn-primary" style="flex:2">Activate Class ' + ic('right') + '</button>' +
+      '      </div>' +
       '    </form>' +
       '  </div>' +
       '</div>';
     document.body.appendChild(overlay);
+
+    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+    var closeBtn = overlay.querySelector('#btnTopCloseCreateCls');
+    if (closeBtn) closeBtn.onclick = function() { overlay.remove(); };
+    var cancelBtn = overlay.querySelector('#btnCancelCreateCls');
+    if (cancelBtn) cancelBtn.onclick = function() { overlay.remove(); };
+
+    var onEsc = function(e) {
+      if (e.key === 'Escape') {
+        overlay.remove();
+        window.removeEventListener('keydown', onEsc);
+      }
+    };
+    window.addEventListener('keydown', onEsc);
 
     overlay.querySelector('#createClassForm').onsubmit = function(e) {
       e.preventDefault();
@@ -883,6 +984,7 @@
     overlay.className = 'eth-modal-overlay';
     overlay.innerHTML = '' +
       '<div class="eth-modal">' +
+      '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseJoinCls" title="Yopish">✕</button>' +
       '  <div class="eth-modal-header">' +
       '    <h2>Join a Class</h2>' +
       '    <p>Enter the 10-character code provided by your teacher</p>' +
@@ -893,11 +995,28 @@
       '        <label>10-character Class Code</label>' +
       '        <input type="text" id="joinClsCode" placeholder="e.g. ETH-L6S8CM" style="text-transform:uppercase" required>' +
       '      </div>' +
-      '      <button type="submit" class="eth-btn-primary">Join Class ' + ic('right') + '</button>' +
+      '      <div style="display:flex;gap:10px;margin-top:14px">' +
+      '        <button type="button" class="ap-btn out" id="btnCancelJoinCls" style="flex:1">Bekor qilish</button>' +
+      '        <button type="submit" class="eth-btn-primary" style="flex:2">Join Class ' + ic('right') + '</button>' +
+      '      </div>' +
       '    </form>' +
       '  </div>' +
       '</div>';
     document.body.appendChild(overlay);
+
+    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+    var closeBtn = overlay.querySelector('#btnTopCloseJoinCls');
+    if (closeBtn) closeBtn.onclick = function() { overlay.remove(); };
+    var cancelBtn = overlay.querySelector('#btnCancelJoinCls');
+    if (cancelBtn) cancelBtn.onclick = function() { overlay.remove(); };
+
+    var onEsc = function(e) {
+      if (e.key === 'Escape') {
+        overlay.remove();
+        window.removeEventListener('keydown', onEsc);
+      }
+    };
+    window.addEventListener('keydown', onEsc);
 
     overlay.querySelector('#joinClassForm').onsubmit = async function(e) {
       e.preventDefault();
@@ -1687,6 +1806,7 @@
     function renderActions() {
       var html = '' +
         '<div class="eth-modal" style="max-width:540px">' +
+        '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseExamActions" title="Yopish">✕</button>' +
         '  <div class="eth-modal-header">' +
         '    <h2>' + ic('trophy') + ' Manage Exam</h2>' +
         '    <p>' + esc(exam.title) + '</p>' +
@@ -1723,13 +1843,24 @@
         '    </div>' +
         '  </div>' +
         '  <div style="padding:12px 24px 18px;border-top:1px solid var(--border);text-align:right">' +
-        '    <button class="ap-btn out" id="btnCloseManageModal" style="padding:8px 18px">Close</button>' +
+        '    <button class="ap-btn out" id="btnCloseManageModal" style="padding:8px 18px">Yopish (Close)</button>' +
         '  </div>' +
         '</div>';
 
       overlay.innerHTML = html;
 
+      overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+      var topClose = overlay.querySelector('#btnTopCloseExamActions');
+      if (topClose) topClose.onclick = function() { overlay.remove(); };
       overlay.querySelector('#btnCloseManageModal').onclick = function() { overlay.remove(); };
+
+      var onEsc = function(e) {
+        if (e.key === 'Escape') {
+          overlay.remove();
+          window.removeEventListener('keydown', onEsc);
+        }
+      };
+      window.addEventListener('keydown', onEsc);
 
       // Copy Code button
       overlay.querySelector('#btnCopyExamCode').onclick = function() {
@@ -1838,130 +1969,342 @@
     var currentPoints = 2;
     var currentVisibility = 'private';
     var currentMaxAttempts = 1;
-    var currentTab = 'mc';
+    var currentTab = 'bulk';
     var questionsList = [];
+    var currentAudioData = null;
+    var currentAudioName = null;
+    var bulkTextCache = '';
+    var bulkAnsCache = '';
+
+    function loadPdfJs(cb) {
+      if (window.pdfjsLib) {
+        cb(window.pdfjsLib);
+        return;
+      }
+      var s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+      s.onload = function() {
+        if (window.pdfjsLib) {
+          window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+          cb(window.pdfjsLib);
+        } else {
+          cb(null);
+        }
+      };
+      s.onerror = function() { cb(null); };
+      document.head.appendChild(s);
+    }
+
+    function extractFileText(file, cb) {
+      if (file.name.toLowerCase().endsWith('.pdf') || file.type === 'application/pdf') {
+        loadPdfJs(function(pdfLib) {
+          if (!pdfLib) {
+            alert("PDF kutubxonasi yuklanmadi. Iltimos, fayl matnini to'g'ridan-to'g'ri nusxalab joylashtiring yoki .txt fayl yuklang.");
+            return;
+          }
+          var reader = new FileReader();
+          reader.onload = function() {
+            var typedarray = new Uint8Array(this.result);
+            pdfLib.getDocument(typedarray).promise.then(async function(pdf) {
+              var fullText = "";
+              for (var i = 1; i <= pdf.numPages; i++) {
+                var page = await pdf.getPage(i);
+                var textContent = await page.getTextContent();
+                var pageText = textContent.items.map(function(item) { return item.str; }).join(" ");
+                fullText += pageText + "\n\n";
+              }
+              cb(fullText);
+            }).catch(function(err) {
+              alert("PDF o'qishda xatolik yuz berdi: " + (err.message || err));
+            });
+          };
+          reader.readAsArrayBuffer(file);
+        });
+      } else {
+        var reader = new FileReader();
+        reader.onload = function(e) { cb(e.target.result || ''); };
+        reader.readAsText(file);
+      }
+    }
+
+    function parseSmartAnswers(raw) {
+      var map = {};
+      if (!raw) return map;
+      var lines = raw.split(/\r?\n/).map(function(l) { return l.trim(); }).filter(Boolean);
+      for (var li = 0; li < lines.length; li++) {
+        var line = lines[li];
+        var compactRegex = /(\d+)[\.\)\-\:\,]?\s*([a-zA-Z]+)(?=(?:\s+\d+[\.\)\-\:\,]?|\s*,|\s*$))/g;
+        var m;
+        var compactCount = 0;
+        while ((m = compactRegex.exec(line)) !== null) {
+          var qNum = parseInt(m[1], 10);
+          var ans = m[2].trim();
+          if (ans && !map[qNum]) {
+            map[qNum] = ans;
+            compactCount++;
+          }
+        }
+        if (compactCount === 0) {
+          var tokenRegex = /(\d+)[\.\)\-\:\,]?\s+([^0-9\n\r]+?)(?=(?:\s+\d+[\.\)\-\:\,]?\s+)|$)/g;
+          while ((m = tokenRegex.exec(line)) !== null) {
+            var qNum2 = parseInt(m[1], 10);
+            var ans2 = m[2].trim();
+            if (ans2 && !map[qNum2]) {
+              map[qNum2] = ans2;
+            }
+          }
+        }
+      }
+      return map;
+    }
+
+    function parseQuestionsText(text, answersMap) {
+      var questions = [];
+      if (!text) return questions;
+      var rawBlocks = text.split(/(?:^|\n)\s*(?=\d+[\.\)\-\:\s])/);
+      var currentPts = currentPoints || 2;
+
+      for (var bi = 0; bi < rawBlocks.length; bi++) {
+        var raw = rawBlocks[bi].trim();
+        if (!raw) continue;
+
+        var ptsMatch = raw.match(/(\d+)\s*points?\s*for\s*each/i) || raw.match(/\[\s*(\d+)\s*\]/) || raw.match(/\/(\d+)/);
+        if (ptsMatch) {
+          currentPts = parseInt(ptsMatch[1], 10) || currentPts;
+        }
+
+        var qMatch = raw.match(/^(\d+)[\.\)\-\:\s]\s*([\s\S]+)/);
+        if (!qMatch) continue;
+
+        var qNum = parseInt(qMatch[1], 10);
+        var body = qMatch[2].trim();
+
+        var inlineAnsMatch = body.match(/(?:^|\n)\s*(?:Answer|Javob)\s*[:\-\)]\s*([^\n]+)/i);
+        var inlineAns = inlineAnsMatch ? inlineAnsMatch[1].trim() : '';
+        if (inlineAns) {
+          body = body.replace(/(?:^|\n)\s*(?:Answer|Javob)\s*[:\-\)]\s*[^\n]+/i, '').trim();
+        }
+
+        var isBool = /TRUE\s*[\/\\]\s*FALSE/i.test(body) || /\bTrue\b[\s\S]*\bFalse\b/i.test(body);
+        var optRegex = /(?:^|\n)\s*([a-dA-D])[\.\)\-\:\s]\s*([^\n]+)/g;
+        var optMatches = [];
+        var om;
+        while ((om = optRegex.exec(body)) !== null) {
+          optMatches.push(om);
+        }
+
+        var qType = 'choice';
+        var prompt = body;
+        var options = [];
+        var answer = (answersMap && (answersMap[qNum] || answersMap[qNum + ''])) || inlineAns || '';
+
+        if (isBool) {
+          qType = 'bool';
+          options = ['True', 'False'];
+          prompt = body.replace(/TRUE\s*[\/\\]\s*FALSE/ig, '').trim();
+          if (answer) {
+            if (/^t/i.test(answer)) answer = 'True';
+            else if (/^f/i.test(answer)) answer = 'False';
+            else if (/^ng/i.test(answer)) answer = 'Not Given';
+          }
+        } else if (optMatches.length >= 2) {
+          qType = 'choice';
+          var firstOptIndex = body.search(/(?:^|\n)\s*[a-dA-D][\.\)\-\:\s]/);
+          prompt = body.slice(0, firstOptIndex).trim();
+          options = optMatches.map(function(m) { return m[2].trim(); });
+          if (answer) {
+            var letter = answer.trim().toUpperCase();
+            var letterIdx = letter.charCodeAt(0) - 65;
+            if (letterIdx >= 0 && letterIdx < options.length) {
+              answer = options[letterIdx];
+            }
+          }
+        } else {
+          qType = 'written';
+          prompt = body;
+        }
+
+        prompt = prompt.replace(/\d+\s*points?\s*for\s*each[^\n]*/ig, '').replace(/\[\s*\d+\s*\]/g, '').trim();
+
+        questions.push({
+          id: questionsList.length + questions.length + 1,
+          num: qNum,
+          type: qType,
+          question: prompt,
+          options: options,
+          answer: answer || (qType === 'bool' ? 'True' : (options[0] || 'Jawob kiritilmagan')),
+          points: currentPts
+        });
+      }
+      return questions;
+    }
 
     function renderModal() {
       var html = '' +
-        '<div class="eth-modal" style="max-width:640px;max-height:90vh;display:flex;flex-direction:column">' +
+        '<div class="eth-modal" style="max-width:720px;max-height:92vh;display:flex;flex-direction:column">' +
+        '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseCreateExam" title="Yopish">✕</button>' +
         '  <div class="eth-modal-header">' +
-        '    <h2>Create New Exam</h2>' +
-        '    <p>Configure Multiple Choice, Written/Open, or True/False questions</p>' +
+        '    <h2>' + ic('plus') + ' Yangi Imtihon / Mock Test Yaratish</h2>' +
+        '    <p>50-100+ talab savollarni bir zumda aqlli tahlil qiling, audio va javoblar kalitini biriktiring</p>' +
         '  </div>' +
         '  <div class="eth-modal-body" style="overflow-y:auto;flex:1">' +
         '    <div class="eth-form-group">' +
-        '      <label>Exam Title</label>' +
-        '      <input type="text" id="exTitle" placeholder="e.g. Midterm Exam 2026" value="' + esc(currentTitle) + '" required>' +
+        '      <label>Imtihon Nomi (Title)</label>' +
+        '      <input type="text" id="exTitle" placeholder="Masalan: Progress Test 1B (Units 1-3) 2026" value="' + esc(currentTitle) + '" required>' +
         '    </div>' +
-        '    <div style="display:flex;gap:12px">' +
-        '      <div class="eth-form-group" style="flex:1">' +
-        '        <label>Time Limit (Minutes)</label>' +
-        '        <input type="number" id="exDuration" value="' + currentDuration + '" min="5" max="180">' +
+        '    <div style="display:flex;gap:12px;flex-wrap:wrap">' +
+        '      <div class="eth-form-group" style="flex:1;min-width:140px">' +
+        '        <label>Vaqt chegarasi (Daqiqa)</label>' +
+        '        <input type="number" id="exDuration" value="' + currentDuration + '" min="5" max="240">' +
         '      </div>' +
-        '      <div class="eth-form-group" style="flex:1">' +
-        '        <label>Points Per Question</label>' +
+        '      <div class="eth-form-group" style="flex:1;min-width:140px">' +
+        '        <label>Har bir savol uchun ball</label>' +
         '        <input type="number" id="exPoints" value="' + currentPoints + '" min="1" max="100">' +
         '      </div>' +
         '    </div>' +
-        '    <div style="display:flex;gap:12px">' +
-        '      <div class="eth-form-group" style="flex:1">' +
-        '        <label>Visibility</label>' +
+        '    <div style="display:flex;gap:12px;flex-wrap:wrap">' +
+        '      <div class="eth-form-group" style="flex:1;min-width:180px">' +
+        '        <label>Kirish Huquqi (Visibility)</label>' +
         '        <select id="exVisibility">' +
-        '          <option value="private" ' + (currentVisibility === 'private' ? 'selected' : '') + '>🔒 Private (Access code required)</option>' +
-        '          <option value="public" ' + (currentVisibility === 'public' ? 'selected' : '') + '>🌐 Public (Open to all students)</option>' +
+        '          <option value="private" ' + (currentVisibility === 'private' ? 'selected' : '') + '>🔒 Yashirin (Faqat 6 xonali kod orqali)</option>' +
+        '          <option value="public" ' + (currentVisibility === 'public' ? 'selected' : '') + '>🌐 Ochiq (Barcha o\'quvchilar uchun ochiq)</option>' +
         '        </select>' +
         '      </div>' +
-        '      <div class="eth-form-group" style="flex:1">' +
-        '        <label>Max Allowed Attempts</label>' +
+        '      <div class="eth-form-group" style="flex:1;min-width:180px">' +
+        '        <label>Ruxsat etilgan urinishlar soni</label>' +
         '        <select id="exMaxAttempts">' +
         [1, 2, 3, 4, 5, 10].map(function(num) {
-          return '<option value="' + num + '" ' + (currentMaxAttempts === num ? 'selected' : '') + '>' + num + ' attempt' + (num > 1 ? 's' : '') + '</option>';
+          return '<option value="' + num + '" ' + (currentMaxAttempts === num ? 'selected' : '') + '>' + num + ' ta urinish' + (num > 1 ? ' (takrorlash)' : '') + '</option>';
         }).join('') +
         '        </select>' +
         '      </div>' +
         '    </div>' +
+        '    <!-- Audio / Listening Upload Section -->' +
+        '    <div style="margin:12px 0 16px;padding:14px;background:var(--bg2);border-radius:12px;border:1.5px dashed var(--border)">' +
+        '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+        '        <b style="font-size:13.5px;display:flex;align-items:center;gap:6px">🎧 Listening Audio Track (Max: 25 MB):</b>' +
+        (currentAudioData ? '<button type="button" id="btnRemoveAudio" style="background:none;border:none;color:#ef4444;font-size:12px;cursor:pointer;font-weight:700">✕ O\'chirish</button>' : '') +
+        '      </div>' +
+        (currentAudioData ?
+          '<div style="display:flex;align-items:center;gap:12px;background:var(--card);padding:10px 14px;border-radius:8px;border:1px solid var(--border)">' +
+          '  <span style="font-size:22px">🎵</span>' +
+          '  <div style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px">' +
+          '    <b>' + esc(currentAudioName || 'audio.mp3') + '</b>' +
+          '  </div>' +
+          '  <audio controls src="' + currentAudioData + '" style="height:32px;max-width:240px"></audio>' +
+          '</div>' :
+          '<div id="audioDropZone" style="text-align:center;padding:16px;cursor:pointer;border-radius:8px;transition:background 0.2s">' +
+          '  <div style="font-size:26px;margin-bottom:4px">🎙️</div>' +
+          '  <div style="font-size:13px;font-weight:600">Listening audio faylini sudrab tashlang (Drag & Drop) yoki bosing</div>' +
+          '  <div style="font-size:11.5px;color:var(--muted);margin-top:2px">Qo\'llab-quvvatlanadi: .mp3, .wav, .m4a, .ogg (Maksimal hajm: 25 MB)</div>' +
+          '  <input type="file" id="examAudioInput" accept="audio/*" style="display:none">' +
+          '</div>'
+        ) +
+        '    </div>' +
+        '    <!-- Question Format Tabs -->' +
         '    <div style="margin:14px 0 10px">' +
-        '      <label style="font-weight:700;font-size:13.5px">Question Format:</label>' +
+        '      <label style="font-weight:700;font-size:13.5px">Savol Qo\'shish Usuli:</label>' +
         '      <div class="eth-tabs" style="margin-top:6px">' +
-        '        <button class="eth-tab ' + (currentTab === 'mc' ? 'active' : '') + '" id="tabMcBtn">🔘 Multiple Choice</button>' +
-        '        <button class="eth-tab ' + (currentTab === 'written' ? 'active' : '') + '" id="tabWrittenBtn">✍️ Written Answer</button>' +
+        '        <button class="eth-tab ' + (currentTab === 'bulk' ? 'active' : '') + '" id="tabBulkBtn">📋 Aqlli Universal Import (50-100+ Qs / PDF)</button>' +
+        '        <button class="eth-tab ' + (currentTab === 'mc' ? 'active' : '') + '" id="tabMcBtn">🔘 Variantli (MC)</button>' +
+        '        <button class="eth-tab ' + (currentTab === 'written' ? 'active' : '') + '" id="tabWrittenBtn">✍️ Yozma / Bo\'sh joy</button>' +
         '        <button class="eth-tab ' + (currentTab === 'bool' ? 'active' : '') + '" id="tabBoolBtn">☑️ True / False</button>' +
-        '        <button class="eth-tab ' + (currentTab === 'bulk' ? 'active' : '') + '" id="tabBulkBtn">📋 Bulk Text Import</button>' +
         '      </div>' +
         '    </div>' +
         '    <div id="qBuilderArea" style="background:var(--bg2);padding:14px;border-radius:12px;margin-bottom:16px">';
 
-      if (currentTab === 'mc') {
+      if (currentTab === 'bulk') {
+        html += '' +
+          '<div style="display:flex;flex-direction:column;gap:12px">' +
+          '  <div>' +
+          '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">' +
+          '      <label style="font-weight:700;font-size:13px">1. Savollar Matni (Questions Paper) — 50 dan 100+ gacha savollar:</label>' +
+          '      <div>' +
+          '        <button type="button" class="ap-btn out" id="btnUploadQFile" style="padding:4px 10px;font-size:12px">📁 PDF / TXT Fayl Yuklash</button>' +
+          '        <input type="file" id="bulkQFileInput" accept=".pdf,.txt,.doc,.docx" style="display:none">' +
+          '      </div>' +
+          '    </div>' +
+          '    <textarea id="bulkTextInput" rows="6" placeholder="Bu yerga test savollarini tashlang yoki PDF yuklang. Masalan:\n1. The capital of Uzbekistan is ___.\nA) Samarkand\nB) Tashkent\nC) Bukhara\nD) Khiva\n\n2. Water boils at 100 degrees Celsius.\nA) True\nB) False\n\nProgress test 1B yoki Unit tests kabi 50-100+ ta savollarni shundoq tashlang...">' + esc(bulkTextCache) + '</textarea>' +
+          '  </div>' +
+          '  <div>' +
+          '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">' +
+          '      <label style="font-weight:700;font-size:13px">2. To\'g\'ri Javoblar Kaliti (Answer Key — pastda yoki alohida):</label>' +
+          '      <div>' +
+          '        <button type="button" class="ap-btn out" id="btnUploadAnsFile" style="padding:4px 10px;font-size:12px">📁 Javoblar PDF/TXT Yuklash</button>' +
+          '        <input type="file" id="bulkAnsFileInput" accept=".pdf,.txt,.doc,.docx" style="display:none">' +
+          '      </div>' +
+          '    </div>' +
+          '    <textarea id="bulkAnswerInput" rows="2" placeholder="Masalan: 1b 2.a 3) c 4-d 5, a yoki 1 T 2 F 3 NG yoki 1 really; clothes 2 all; online...">' + esc(bulkAnsCache) + '</textarea>' +
+          '    <div style="font-size:11.5px;color:var(--muted);margin-top:4px">Qo\'llab-quvvatlanadi: 1b, 1.b, 1)b, 1-b, 1,b, True/False, va Unit Tests yozma so\'zlari. Ballar (/10 yoki 2 points for each) avtomatik aniqlanadi!</div>' +
+          '  </div>' +
+          '  <button type="button" class="eth-btn-primary" id="parseBulkBtn" style="padding:12px 16px;font-size:14px;font-weight:700;margin-top:4px">' +
+          '    ⚡ Aqlli Tahlil Qilish va Savollarni Qo\'shish (Smart Extract 50-100+ Qs)' +
+          '  </button>' +
+          '</div>';
+      } else if (currentTab === 'mc') {
         html += '' +
           '<div class="eth-form-group">' +
-          '  <label>Question Prompt:</label>' +
+          '  <label>Savol matni:</label>' +
           '  <input type="text" id="mcQText" placeholder="e.g. She ___ to school every day.">' +
           '</div>' +
           '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">' +
-          '  <div><label style="font-size:12px">Option A:</label><input type="text" id="mcOptA" placeholder="Variant A"></div>' +
-          '  <div><label style="font-size:12px">Option B:</label><input type="text" id="mcOptB" placeholder="Variant B"></div>' +
-          '  <div><label style="font-size:12px">Option C:</label><input type="text" id="mcOptC" placeholder="Variant C"></div>' +
-          '  <div><label style="font-size:12px">Option D:</label><input type="text" id="mcOptD" placeholder="Variant D"></div>' +
+          '  <div><label style="font-size:12px">Variant A:</label><input type="text" id="mcOptA" placeholder="Variant A"></div>' +
+          '  <div><label style="font-size:12px">Variant B:</label><input type="text" id="mcOptB" placeholder="Variant B"></div>' +
+          '  <div><label style="font-size:12px">Variant C:</label><input type="text" id="mcOptC" placeholder="Variant C"></div>' +
+          '  <div><label style="font-size:12px">Variant D:</label><input type="text" id="mcOptD" placeholder="Variant D"></div>' +
           '</div>' +
           '<div class="eth-form-group" style="margin-top:10px">' +
-          '  <label>Correct Answer:</label>' +
+          '  <label>To\'g\'ri javob:</label>' +
           '  <select id="mcAnsSelect">' +
-          '    <option value="A">Option A</option>' +
-          '    <option value="B">Option B</option>' +
-          '    <option value="C">Option C</option>' +
-          '    <option value="D">Option D</option>' +
+          '    <option value="A">Variant A</option>' +
+          '    <option value="B">Variant B</option>' +
+          '    <option value="C">Variant C</option>' +
+          '    <option value="D">Variant D</option>' +
           '  </select>' +
           '</div>' +
-          '<button type="button" class="eth-btn-primary" id="addMcQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Add Multiple Choice Question</button>';
+          '<button type="button" class="eth-btn-primary" id="addMcQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Savolni Qo\'shish</button>';
       } else if (currentTab === 'written') {
         html += '' +
           '<div class="eth-form-group">' +
-          '  <label>Written Prompt / Task:</label>' +
+          '  <label>Yozma savol / Bo\'sh joy qoldirilgan matn:</label>' +
           '  <textarea id="wQText" rows="2" placeholder="e.g. What is the past participle form of the verb \'write\'?"></textarea>' +
           '</div>' +
           '<div class="eth-form-group">' +
-          '  <label>Expected Answer (Exact/Keyword match):</label>' +
-          '  <input type="text" id="wAnsText" placeholder="e.g. written">' +
+          '  <label>Kutilgan to\'g\'ri javob (yoki bir nechta variantlar \';\' bilan):</label>' +
+          '  <input type="text" id="wAnsText" placeholder="e.g. written yoki really; clothes">' +
           '</div>' +
-          '<button type="button" class="eth-btn-primary" id="addWQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Add Written Question</button>';
+          '<button type="button" class="eth-btn-primary" id="addWQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Yozma Savolni Qo\'shish</button>';
       } else if (currentTab === 'bool') {
         html += '' +
           '<div class="eth-form-group">' +
-          '  <label>True / False Statement:</label>' +
+          '  <label>True / False Fikri:</label>' +
           '  <input type="text" id="boolQText" placeholder="e.g. The Earth revolves around the Sun.">' +
           '</div>' +
           '<div class="eth-form-group">' +
-          '  <label>Correct Answer:</label>' +
+          '  <label>To\'g\'ri javob:</label>' +
           '  <select id="boolAnsSelect">' +
-          '    <option value="True">True (To\'g\'ri)</option>' +
-          '    <option value="False">False (Noto\'g\'ri)</option>' +
+          '    <option value="True">True (Rost / To\'g\'ri)</option>' +
+          '    <option value="False">False (Yolg\'on / Noto\'g\'ri)</option>' +
           '  </select>' +
           '</div>' +
-          '<button type="button" class="eth-btn-primary" id="addBoolQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Add True / False Question</button>';
-      } else if (currentTab === 'bulk') {
-        html += '' +
-          '<div class="eth-form-group">' +
-          '  <label>Paste questions using the template below:</label>' +
-          '  <textarea id="bulkTextInput" rows="6" placeholder="1. The capital of Uzbekistan is ___.\nA) Samarkand\nB) Tashkent\nC) Bukhara\nD) Khiva\nAnswer: B\n\n2. Water boils at 100 degrees Celsius.\nA) True\nB) False\nAnswer: A"></textarea>' +
-          '</div>' +
-          '<button type="button" class="eth-btn-primary" id="parseBulkBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' Extract & Add Questions from Text</button>';
+          '<button type="button" class="eth-btn-primary" id="addBoolQBtn" style="padding:10px 14px;margin-top:6px">' + ic('plus') + ' True / False Savolni Qo\'shish</button>';
       }
 
       html += '' +
         '    </div>' +
         '    <div>' +
         '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
-        '        <b style="font-size:14px">Added Questions: <span style="color:#2563eb">' + questionsList.length + ' questions</span></b>' +
-        (questionsList.length > 0 ? '<button id="clearAllQBtn" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:12.5px">Clear All</button>' : '') +
+        '        <b style="font-size:14px">Kiritilgan Savollar: <span style="color:#2563eb">' + questionsList.length + ' ta savol</span></b>' +
+        (questionsList.length > 0 ? '<button id="clearAllQBtn" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:12.5px;font-weight:700">Hammasini o\'chirish</button>' : '') +
         '      </div>' +
         (questionsList.length === 0 ?
-          '<div style="text-align:center;padding:16px;background:var(--card);border:1px dashed var(--border);border-radius:10px;font-size:13px;color:var(--muted)">No questions added yet. Use the question type tools above to add questions.</div>' :
-          '<div style="display:flex;flex-direction:column;gap:8px;max-height:160px;overflow-y:auto">' +
+          '<div style="text-align:center;padding:16px;background:var(--card);border:1px dashed var(--border);border-radius:10px;font-size:13px;color:var(--muted)">Hozircha savollar kiritilmagan. Yuqoridagi Aqlli Universal Import yoki boshqa turlar orqali qo\'shing.</div>' :
+          '<div style="display:flex;flex-direction:column;gap:8px;max-height:180px;overflow-y:auto">' +
           questionsList.map(function(q, i) {
             return '' +
               '<div style="display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--border);padding:8px 12px;border-radius:8px;font-size:13px">' +
               '  <div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px">' +
-              '    <b>#' + (i + 1) + ' [' + (q.type === 'written' ? 'Written' : (q.type === 'bool' ? 'T/F' : 'Multiple Choice')) + ']</b> ' + esc(q.question) + ' · <span style="color:#16a34a">Answer: ' + esc(q.answer) + '</span>' +
+              '    <b>#' + (i + 1) + ' [' + (q.type === 'written' ? 'Yozma' : (q.type === 'bool' ? 'T/F' : 'Variantli')) + ']</b> ' + esc(q.question) + ' · <span style="color:#16a34a">Javob: ' + esc(q.answer) + '</span>' + (q.points ? ' <span style="color:#3b82f6">(' + q.points + ' ball)</span>' : '') +
               '  </div>' +
               '  <button data-del-q="' + i + '" style="background:none;border:none;color:#ef4444;cursor:pointer;font-weight:700">✕</button>' +
               '</div>';
@@ -1970,26 +2313,146 @@
         '    </div>' +
         '  </div>' +
         '  <div style="display:flex;gap:10px;padding:16px 24px;border-top:1px solid var(--border)">' +
-        '    <button type="button" class="ap-btn out" id="exCancelBtn" style="flex:1">Cancel</button>' +
-        '    <button type="button" class="eth-btn-primary" id="saveExamFinalBtn" style="flex:2">Save Exam & Generate Code ' + ic('right') + '</button>' +
+        '    <button type="button" class="ap-btn out" id="exCancelBtn" style="flex:1">Bekor qilish</button>' +
+        '    <button type="button" class="eth-btn-primary" id="saveExamFinalBtn" style="flex:2">Imtihonni Saqlash & Kod Yaratish ' + ic('right') + '</button>' +
         '  </div>' +
         '</div>';
 
       overlay.innerHTML = html;
 
-      // Event listeners
+      // Close handlers
+      overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+      var topClose = overlay.querySelector('#btnTopCloseCreateExam');
+      if (topClose) topClose.onclick = function() { overlay.remove(); };
       overlay.querySelector('#exCancelBtn').onclick = function() { overlay.remove(); };
-      
+
+      var onEsc = function(e) {
+        if (e.key === 'Escape') {
+          overlay.remove();
+          window.removeEventListener('keydown', onEsc);
+        }
+      };
+      window.addEventListener('keydown', onEsc);
+
+      // Form updates
       overlay.querySelector('#exTitle').oninput = function(e) { currentTitle = e.target.value; };
       overlay.querySelector('#exDuration').oninput = function(e) { currentDuration = parseInt(e.target.value, 10) || 30; };
       overlay.querySelector('#exPoints').oninput = function(e) { currentPoints = parseInt(e.target.value, 10) || 2; };
       overlay.querySelector('#exVisibility').onchange = function(e) { currentVisibility = e.target.value; };
       overlay.querySelector('#exMaxAttempts').onchange = function(e) { currentMaxAttempts = parseInt(e.target.value, 10) || 1; };
 
-      overlay.querySelector('#tabMcBtn').onclick = function() { currentTab = 'mc'; renderModal(); };
-      overlay.querySelector('#tabWrittenBtn').onclick = function() { currentTab = 'written'; renderModal(); };
-      overlay.querySelector('#tabBoolBtn').onclick = function() { currentTab = 'bool'; renderModal(); };
-      overlay.querySelector('#tabBulkBtn').onclick = function() { currentTab = 'bulk'; renderModal(); };
+      // Audio handling (max 25MB)
+      var audioZone = overlay.querySelector('#audioDropZone');
+      var audioInput = overlay.querySelector('#examAudioInput');
+      if (audioZone && audioInput) {
+        audioZone.onclick = function() { audioInput.click(); };
+        audioZone.ondragover = function(e) { e.preventDefault(); audioZone.style.background = 'var(--accent-dim, rgba(37,99,235,0.08))'; };
+        audioZone.ondragleave = function() { audioZone.style.background = 'transparent'; };
+        audioZone.ondrop = function(e) {
+          e.preventDefault();
+          audioZone.style.background = 'transparent';
+          if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+            handleAudioFile(e.dataTransfer.files[0]);
+          }
+        };
+        audioInput.onchange = function(e) {
+          if (e.target.files && e.target.files[0]) {
+            handleAudioFile(e.target.files[0]);
+          }
+        };
+      }
+
+      function handleAudioFile(file) {
+        if (file.size > 25 * 1024 * 1024) {
+          alert("Audio hajmi 25 MB dan oshmasligi kerak! (Sizning faylingiz: " + (file.size / (1024 * 1024)).toFixed(1) + " MB)");
+          return;
+        }
+        var reader = new FileReader();
+        reader.onload = function(ev) {
+          currentAudioData = ev.target.result;
+          currentAudioName = file.name;
+          renderModal();
+        };
+        reader.readAsDataURL(file);
+      }
+
+      var removeAudioBtn = overlay.querySelector('#btnRemoveAudio');
+      if (removeAudioBtn) {
+        removeAudioBtn.onclick = function() {
+          currentAudioData = null;
+          currentAudioName = null;
+          renderModal();
+        };
+      }
+
+      // Tab switching
+      overlay.querySelector('#tabBulkBtn').onclick = function() { saveCache(); currentTab = 'bulk'; renderModal(); };
+      overlay.querySelector('#tabMcBtn').onclick = function() { saveCache(); currentTab = 'mc'; renderModal(); };
+      overlay.querySelector('#tabWrittenBtn').onclick = function() { saveCache(); currentTab = 'written'; renderModal(); };
+      overlay.querySelector('#tabBoolBtn').onclick = function() { saveCache(); currentTab = 'bool'; renderModal(); };
+
+      function saveCache() {
+        var tEl = overlay.querySelector('#bulkTextInput');
+        if (tEl) bulkTextCache = tEl.value;
+        var aEl = overlay.querySelector('#bulkAnswerInput');
+        if (aEl) bulkAnsCache = aEl.value;
+      }
+
+      // Bulk PDF / TXT upload
+      var btnUploadQ = overlay.querySelector('#btnUploadQFile');
+      var qFileInput = overlay.querySelector('#bulkQFileInput');
+      if (btnUploadQ && qFileInput) {
+        btnUploadQ.onclick = function() { qFileInput.click(); };
+        qFileInput.onchange = function(e) {
+          if (e.target.files && e.target.files[0]) {
+            extractFileText(e.target.files[0], function(text) {
+              bulkTextCache = text;
+              var tEl = overlay.querySelector('#bulkTextInput');
+              if (tEl) tEl.value = text;
+              alert("Savollar fayli muvaffaqiyatli o'qildi!");
+            });
+          }
+        };
+      }
+
+      var btnUploadAns = overlay.querySelector('#btnUploadAnsFile');
+      var ansFileInput = overlay.querySelector('#bulkAnsFileInput');
+      if (btnUploadAns && ansFileInput) {
+        btnUploadAns.onclick = function() { ansFileInput.click(); };
+        ansFileInput.onchange = function(e) {
+          if (e.target.files && e.target.files[0]) {
+            extractFileText(e.target.files[0], function(text) {
+              bulkAnsCache = text;
+              var aEl = overlay.querySelector('#bulkAnswerInput');
+              if (aEl) aEl.value = text;
+              alert("Javoblar kaliti fayli muvaffaqiyatli o'qildi!");
+            });
+          }
+        };
+      }
+
+      // Bulk Parse execution
+      var parseBulkBtn = overlay.querySelector('#parseBulkBtn');
+      if (parseBulkBtn) {
+        parseBulkBtn.onclick = function() {
+          saveCache();
+          var qText = bulkTextCache.trim();
+          var aText = bulkAnsCache.trim();
+          if (!qText) {
+            alert("Iltimos, avval savollar matnini kiriting yoki fayl yuklang!");
+            return;
+          }
+          var ansMap = parseSmartAnswers(aText);
+          var extracted = parseQuestionsText(qText, ansMap);
+          if (extracted.length === 0) {
+            alert("Savollarni ajratib bo'lmadi. Savollar raqamlar bilan boshlanganiga ishonch hosil qiling (masalan: 1. yoki 1) )");
+            return;
+          }
+          questionsList = questionsList.concat(extracted);
+          alert(extracted.length + " ta savol muvaffaqiyatli aniqlandi va imtihonga qo'shildi!");
+          renderModal();
+        };
+      }
 
       // Add MC
       var addMcBtn = overlay.querySelector('#addMcQBtn');
@@ -2002,7 +2465,7 @@
           var d = document.getElementById('mcOptD').value.trim();
           var ansKey = document.getElementById('mcAnsSelect').value;
           if (!qText || !a || !b) {
-            alert("Please fill in the question prompt and at least options A and B!");
+            alert("Iltimos, savol matni va kamida A hamda B variantlarini to'ldiring!");
             return;
           }
           var opts = [a, b, c || "None", d || "None"];
@@ -2012,7 +2475,8 @@
             type: 'choice',
             question: qText,
             options: opts,
-            answer: ansMap[ansKey] || a
+            answer: ansMap[ansKey] || a,
+            points: currentPoints
           });
           renderModal();
         };
@@ -2025,7 +2489,7 @@
           var qText = document.getElementById('wQText').value.trim();
           var ans = document.getElementById('wAnsText').value.trim();
           if (!qText || !ans) {
-            alert("Please enter the written question prompt and the expected answer!");
+            alert("Iltimos, yozma savol matni va kutilgan to'g'ri javobni kiriting!");
             return;
           }
           questionsList.push({
@@ -2033,7 +2497,8 @@
             type: 'written',
             question: qText,
             options: [],
-            answer: ans
+            answer: ans,
+            points: currentPoints
           });
           renderModal();
         };
@@ -2046,7 +2511,7 @@
           var qText = document.getElementById('boolQText').value.trim();
           var ans = document.getElementById('boolAnsSelect').value;
           if (!qText) {
-            alert("Please enter the question prompt!");
+            alert("Iltimos, True / False fikr matnini kiriting!");
             return;
           }
           questionsList.push({
@@ -2054,64 +2519,14 @@
             type: 'bool',
             question: qText,
             options: ['True', 'False'],
-            answer: ans
+            answer: ans,
+            points: currentPoints
           });
           renderModal();
         };
       }
 
-      // Bulk Parse
-      var parseBulkBtn = overlay.querySelector('#parseBulkBtn');
-      if (parseBulkBtn) {
-        parseBulkBtn.onclick = function() {
-          var text = document.getElementById('bulkTextInput').value.trim();
-          if (!text) {
-            alert("Please enter or paste the text content!");
-            return;
-          }
-          // Parse lines
-          var blocks = text.split(/\n\s*\n/);
-          var countParsed = 0;
-          blocks.forEach(function(blk) {
-            var lines = blk.split('\n').map(function(l) { return l.trim(); }).filter(Boolean);
-            if (lines.length >= 2) {
-              var qLine = lines[0].replace(/^\d+[.)]\s*/, '');
-              var optA = '', optB = '', optC = '', optD = '';
-              var ans = '';
-              lines.slice(1).forEach(function(l) {
-                if (/^A[.)]\s*/i.test(l)) optA = l.replace(/^A[.)]\s*/i, '');
-                else if (/^B[.)]\s*/i.test(l)) optB = l.replace(/^B[.)]\s*/i, '');
-                else if (/^C[.)]\s*/i.test(l)) optC = l.replace(/^C[.)]\s*/i, '');
-                else if (/^D[.)]\s*/i.test(l)) optD = l.replace(/^D[.)]\s*/i, '');
-                else if (/^(Javob|Answer):?\s*/i.test(l)) {
-                  var m = l.replace(/^(Javob|Answer):?\s*/i, '').trim();
-                  ans = m;
-                }
-              });
-              if (optA && optB) {
-                var opts = [optA, optB, optC || "None", optD || "None"];
-                var ansVal = optA;
-                if (ans === 'B') ansVal = optB;
-                else if (ans === 'C') ansVal = optC || "None";
-                else if (ans === 'D') ansVal = optD || "None";
-                else if (ans) ansVal = ans;
-                questionsList.push({
-                  id: questionsList.length + 1,
-                  type: 'choice',
-                  question: qLine,
-                  options: opts,
-                  answer: ansVal
-                });
-                countParsed++;
-              }
-            }
-          });
-          alert(countParsed + " questions successfully extracted and added!");
-          renderModal();
-        };
-      }
-
-      // Delete question
+      // Delete single question
       overlay.querySelectorAll('[data-del-q]').forEach(function(btn) {
         btn.onclick = function() {
           var idx = parseInt(btn.dataset.delQ, 10);
@@ -2120,10 +2535,11 @@
         };
       });
 
+      // Clear all questions
       var clearAllBtn = overlay.querySelector('#clearAllQBtn');
       if (clearAllBtn) {
         clearAllBtn.onclick = function() {
-          if (confirm("Are you sure you want to delete all questions?")) {
+          if (confirm("Barcha kiritilgan savollarni o'chirmoqchimisiz?")) {
             questionsList = [];
             renderModal();
           }
@@ -2133,11 +2549,11 @@
       // Save Exam
       overlay.querySelector('#saveExamFinalBtn').onclick = function() {
         if (!currentTitle) {
-          alert("Please enter an exam title!");
+          alert("Iltimos, imtihon nomini kiriting!");
           return;
         }
         if (questionsList.length === 0) {
-          alert("Please add at least one question!");
+          alert("Iltimos, kamida bitta savol qo'shing!");
           return;
         }
 
@@ -2150,6 +2566,8 @@
           pointsPerQ: currentPoints,
           isPublic: (currentVisibility === 'public'),
           maxAttempts: currentMaxAttempts || 1,
+          audioData: currentAudioData || null,
+          audioName: currentAudioName || null,
           questions: questionsList,
           submissions: []
         };
@@ -2162,7 +2580,7 @@
         }
 
         overlay.remove();
-        alert("Exam successfully created!\n6-digit access code for students: " + code);
+        alert("Imtihon muvaffaqiyatli yaratildi!\nO'quvchilar uchun 6 xonali maxsus kod: " + code);
         renderExamsView(container);
       };
     }
@@ -2175,22 +2593,38 @@
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
     overlay.innerHTML = '' +
-      '<div class="eth-modal">' +
+      '<div class="eth-modal" style="max-width:440px">' +
+      '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseJoinExam" title="Yopish">✕</button>' +
       '  <div class="eth-modal-header">' +
-      '    <h2>Join Exam</h2>' +
-      '    <p>Enter the 6-digit special exam code provided by your teacher</p>' +
+      '    <h2>' + ic('plus') + ' Imtihonga Kirish</h2>' +
+      '    <p>O\'qituvchingiz bergan 6 xonali maxsus imtihon kodini kiriting</p>' +
       '  </div>' +
       '  <div class="eth-modal-body">' +
       '    <form id="joinExamForm">' +
       '      <div class="eth-form-group">' +
-      '        <label>6-digit Exam Access Code</label>' +
-      '        <input type="text" id="joinExCode" placeholder="e.g. 849201" maxlength="6" required style="font-size:20px;letter-spacing:4px;text-align:center">' +
+      '        <label>6 xonali Maxsus Imtihon Kodi</label>' +
+      '        <input type="text" id="joinExCode" placeholder="Masalan: 849201" maxlength="6" required style="font-size:22px;letter-spacing:6px;text-align:center;font-weight:800;padding:12px">' +
       '      </div>' +
-      '      <button type="submit" class="eth-btn-primary">Start Exam ' + ic('right') + '</button>' +
+      '      <button type="submit" class="eth-btn-primary" style="width:100%;padding:12px 16px;font-size:15px">Imtihonni Boshlash ' + ic('right') + '</button>' +
+      '      <button type="button" class="ap-btn out" id="btnCancelJoinExam" style="width:100%;margin-top:10px;padding:10px">Bekor qilish</button>' +
       '    </form>' +
       '  </div>' +
       '</div>';
     document.body.appendChild(overlay);
+
+    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+    var topClose = overlay.querySelector('#btnTopCloseJoinExam');
+    if (topClose) topClose.onclick = function() { overlay.remove(); };
+    var cancelBtn = overlay.querySelector('#btnCancelJoinExam');
+    if (cancelBtn) cancelBtn.onclick = function() { overlay.remove(); };
+
+    var onEsc = function(e) {
+      if (e.key === 'Escape') {
+        overlay.remove();
+        window.removeEventListener('keydown', onEsc);
+      }
+    };
+    window.addEventListener('keydown', onEsc);
 
     overlay.querySelector('#joinExamForm').onsubmit = async function(e) {
       e.preventDefault();
@@ -2210,7 +2644,7 @@
       }
 
       if (!exam) {
-        alert("No exam found with this 6-digit access code! Please verify the code and try again.");
+        alert("Bunday 6 xonali kodga ega imtihon topilmadi! Kodni to'g'ri kiritganingizni tekshiring.");
         return;
       }
 
@@ -2521,6 +2955,82 @@
     }, 1000);
 
     // 9. Render Question & Palette
+    // 8.5 Persistent Audio Player for Listening Exams (Continuous playback across question navigation)
+    var audioBarEl = null;
+    var examAudioObj = null;
+    if (exam.audioData) {
+      audioBarEl = document.createElement('div');
+      audioBarEl.className = 'eth-test-audio-bar';
+      audioBarEl.id = 'examPersistentAudioBar';
+      audioBarEl.innerHTML = '' +
+        '<div style="display:flex;align-items:center;gap:12px;width:100%;max-width:850px;margin:0 auto;flex-wrap:wrap">' +
+        '  <button type="button" class="eth-test-audio-btn" id="btnExamAudioPlay">▶ Tinglash</button>' +
+        '  <div style="flex:1;min-width:180px;display:flex;flex-direction:column;gap:3px">' +
+        '    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700">' +
+        '      <span>🎧 Listening Audio: <b style="color:var(--test-accent)">' + esc(exam.audioName || 'Track') + '</b></span>' +
+        '      <span id="examAudioTimeDisplay">00:00 / 00:00</span>' +
+        '    </div>' +
+        '    <input type="range" class="eth-test-audio-progress" id="examAudioProgress" value="0" min="0" max="100" step="0.1">' +
+        '  </div>' +
+        '  <button type="button" class="eth-test-audio-speed" id="btnExamAudioSpeed">1.0x</button>' +
+        '  <audio id="examAudioEl" src="' + exam.audioData + '" preload="auto" style="display:none"></audio>' +
+        '</div>';
+      lockdownModal.appendChild(audioBarEl);
+
+      examAudioObj = audioBarEl.querySelector('#examAudioEl');
+      var playBtn = audioBarEl.querySelector('#btnExamAudioPlay');
+      var timeDisp = audioBarEl.querySelector('#examAudioTimeDisplay');
+      var progBar = audioBarEl.querySelector('#examAudioProgress');
+      var speedBtn = audioBarEl.querySelector('#btnExamAudioSpeed');
+
+      function fmtTime(sec) {
+        var m = Math.floor(sec / 60);
+        var s = Math.floor(sec % 60);
+        return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+      }
+
+      if (playBtn && examAudioObj) {
+        playBtn.onclick = function() {
+          if (examAudioObj.paused) {
+            examAudioObj.play().then(function() {
+              playBtn.textContent = '⏸ To\'xtatish';
+            }).catch(function(){});
+          } else {
+            examAudioObj.pause();
+            playBtn.textContent = '▶ Tinglash';
+          }
+        };
+
+        examAudioObj.ontimeupdate = function() {
+          if (!isNaN(examAudioObj.duration) && examAudioObj.duration > 0) {
+            var cur = examAudioObj.currentTime;
+            var dur = examAudioObj.duration;
+            timeDisp.textContent = fmtTime(cur) + ' / ' + fmtTime(dur);
+            progBar.value = (cur / dur) * 100;
+          }
+        };
+
+        examAudioObj.onended = function() {
+          playBtn.textContent = '▶ Tinglash';
+        };
+
+        progBar.oninput = function() {
+          if (!isNaN(examAudioObj.duration) && examAudioObj.duration > 0) {
+            examAudioObj.currentTime = (progBar.value / 100) * examAudioObj.duration;
+          }
+        };
+
+        var speeds = [1.0, 1.2, 1.5, 0.8];
+        var sIdx = 0;
+        speedBtn.onclick = function() {
+          sIdx = (sIdx + 1) % speeds.length;
+          examAudioObj.playbackRate = speeds[sIdx];
+          speedBtn.textContent = speeds[sIdx] + 'x';
+        };
+      }
+    }
+
+    // 9. Render Question & Palette
     function renderExamQuestion() {
       if (isExamFinished) return;
       var q = exam.questions[state.i];
@@ -2582,7 +3092,7 @@
         '  <!-- Main Question Card -->' +
         '  <div class="eth-test-card">' +
         '    <div class="eth-test-card-top">' +
-        '      <div class="eth-test-pill-category">SAVOL ' + (state.i + 1) + ' / ' + totalQ + '</div>' +
+        '      <div class="eth-test-pill-category">' + (qType === 'written' ? '✍️ Bo\'sh joy / Yozma' : (qType === 'bool' ? '☑️ True / False' : '🔘 Variantli')) + ' · SAVOL ' + (state.i + 1) + ' / ' + totalQ + '</div>' +
         '      <div class="eth-test-pill-points">⭐ ' + (q.points || exam.pointsPerQ || 1) + ' BALL</div>' +
         '    </div>' +
         '    <h2 class="eth-test-qtitle">' + esc(q.question) + '</h2>' +
@@ -2592,8 +3102,8 @@
         var currentW = state.answers[state.i] || '';
         html += '' +
           '<div style="margin:16px 0">' +
-          '  <input type="text" id="examWrittenInput" value="' + esc(currentW) + '" placeholder="Javobingizni bu yerga yozing..." style="width:100%;padding:18px 20px;border:2px solid var(--test-item-border);border-radius:16px;font-size:17px;font-weight:600;background:var(--test-item-bg);color:var(--test-text);outline:none;box-sizing:border-box;transition:border-color 0.2s">' +
-          '  <p style="font-size:13px;color:var(--test-text-muted);margin-top:8px">Javobni kiritganingizdan so\'ng pastdagi "Keyingi savol" tugmasini bosing.</p>' +
+          '  <input type="text" id="examWrittenInput" class="eth-test-blank-input" value="' + esc(currentW) + '" placeholder="Javobingizni bu yerga yozing..." style="width:100%;padding:18px 20px;border:2px solid var(--test-item-border);border-radius:16px;font-size:17px;font-weight:600;background:var(--test-item-bg);color:var(--test-text);outline:none;box-sizing:border-box;transition:border-color 0.2s">' +
+          '  <p style="font-size:13px;color:var(--test-text-muted);margin-top:8px">Javobni kiritganingizdan so\'ng pastdagi "Keyingi savol" tugmasini bosing yoki boshqa savolga o\'ting.</p>' +
           '</div>';
       } else if (qType === 'bool') {
         var selB = state.answers[state.i];
@@ -2640,7 +3150,11 @@
         '</main>';
 
       var camBoxEl = document.getElementById('proctorCamBox');
+      var audioBoxEl = document.getElementById('examPersistentAudioBar');
+
+      // Preserve audio bar and webcam box while updating question view
       lockdownModal.innerHTML = html;
+      if (audioBoxEl) lockdownModal.insertBefore(audioBoxEl, lockdownModal.querySelector('.eth-test-main'));
       if (camBoxEl) lockdownModal.appendChild(camBoxEl);
 
       // Toggle Palette
@@ -2709,12 +3223,13 @@
         };
       }
 
-      // Option click handler (Does NOT advance question! Updates .selected state)
+      // Real-time answer input
       if (qType === 'written') {
         var inp = document.getElementById('examWrittenInput');
         if (inp) {
           inp.oninput = function() {
             state.answers[state.i] = inp.value.trim();
+            updatePaletteStatus(state.i, inp.value.trim().length > 0);
           };
         }
       } else {
@@ -2726,6 +3241,14 @@
             renderExamQuestion();
           };
         });
+      }
+    }
+
+    function updatePaletteStatus(idx, isAnswered) {
+      var pBtn = lockdownModal.querySelector('.eth-test-pbtn[data-goto="' + idx + '"]');
+      if (pBtn) {
+        if (isAnswered) pBtn.classList.add('answered');
+        else pBtn.classList.remove('answered');
       }
     }
 
@@ -2759,6 +3282,10 @@
       document.removeEventListener('visibilitychange', onVisChange);
       window._ethithOnStudentUnblocked = null;
 
+      if (examAudioObj) {
+        try { examAudioObj.pause(); } catch(e) {}
+      }
+
       if (proctorStream) {
         try {
           proctorStream.getTracks().forEach(function(track) { track.stop(); });
@@ -2773,18 +3300,44 @@
 
       var correctCount = 0;
       var incorrectCount = 0;
-      var totalPossible = exam.questions.length * exam.pointsPerQ;
+      var totalPossible = 0;
       var earnedScore = 0;
 
       var breakdown = exam.questions.map(function(q, idx) {
         var userAns = state.answers[idx];
         var isCorrect = false;
+        var qPts = q.points || exam.pointsPerQ || 1;
+        totalPossible += qPts;
 
         if (userAns !== undefined && userAns !== '') {
-          if (String(userAns).trim().toLowerCase() === String(q.answer || '').trim().toLowerCase()) {
+          var uStr = String(userAns).trim().toLowerCase();
+          var cStr = String(q.answer || '').trim().toLowerCase();
+
+          if (uStr === cStr) {
             isCorrect = true;
+          } else if (q.type === 'bool') {
+            var uBool = (uStr === 'true' || uStr === 't');
+            var cBool = (cStr === 'true' || cStr === 't');
+            if (uBool === cBool && (uStr === 'true' || uStr === 't' || uStr === 'false' || uStr === 'f')) {
+              isCorrect = true;
+            }
+          } else if (q.type === 'choice') {
+            if (cStr.length === 1 && cStr >= 'a' && cStr <= 'd') {
+              var optIdx = cStr.charCodeAt(0) - 97;
+              if (q.options && q.options[optIdx] && q.options[optIdx].trim().toLowerCase() === uStr) {
+                isCorrect = true;
+              }
+            }
+          } else if (q.type === 'written') {
+            var alts = cStr.split(/[\;\/]/).map(function(s){ return s.trim(); }).filter(Boolean);
+            if (alts.indexOf(uStr) !== -1 || uStr === cStr) {
+              isCorrect = true;
+            }
+          }
+
+          if (isCorrect) {
             correctCount++;
-            earnedScore += exam.pointsPerQ;
+            earnedScore += qPts;
           } else {
             incorrectCount++;
           }
@@ -2798,11 +3351,12 @@
           question: q.question,
           userAns: userAns,
           correctAns: q.answer,
-          isCorrect: isCorrect
+          isCorrect: isCorrect,
+          points: qPts
         };
       });
 
-      var pct = Math.round((correctCount / exam.questions.length) * 100);
+      var pct = totalPossible > 0 ? Math.round((earnedScore / totalPossible) * 100) : 0;
       var timeSpentMin = Math.max(1, Math.round((exam.duration * 60 - Math.max(0, timeLeftSeconds)) / 60));
 
       if (!exam.submissions) exam.submissions = [];
@@ -2812,15 +3366,31 @@
                (s.studentId && s.studentId.toLowerCase() === userKey);
       });
 
+      var currentAttemptNum = existing ? ((existing.attempts || 1) + 1) : 1;
+      var attemptRecord = {
+        attemptNum: currentAttemptNum,
+        score: earnedScore,
+        totalPossible: totalPossible,
+        percent: pct,
+        correctCount: correctCount,
+        incorrectCount: incorrectCount,
+        timeSpent: timeSpentMin + ' daqiqa',
+        date: new Date().toLocaleString(),
+        breakdown: breakdown
+      };
+
       if (existing) {
-        existing.attempts = (existing.attempts || 1) + 1;
+        existing.attempts = currentAttemptNum;
         existing.score = earnedScore;
         existing.totalPossible = totalPossible;
         existing.percent = pct;
         existing.correctCount = correctCount;
         existing.incorrectCount = incorrectCount;
+        existing.breakdown = breakdown;
         existing.timeSpent = timeSpentMin + ' daqiqa';
-        existing.date = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        existing.date = new Date().toLocaleString();
+        if (!existing.attemptsHistory) existing.attemptsHistory = [];
+        existing.attemptsHistory.push(attemptRecord);
       } else {
         var sub = {
           studentId: (S.user && S.user.email) || (S.user && S.user.id) || 'guest',
@@ -2832,8 +3402,10 @@
           correctCount: correctCount,
           incorrectCount: incorrectCount,
           attempts: 1,
+          breakdown: breakdown,
           timeSpent: timeSpentMin + ' daqiqa',
-          date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          date: new Date().toLocaleString(),
+          attemptsHistory: [attemptRecord]
         };
         exam.submissions.push(sub);
       }
@@ -2898,7 +3470,7 @@
             '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
             '  <b style="font-size:15px;color:var(--test-text)">Savol ' + item.qNum + '</b>' +
             '  <span style="font-size:13.5px;font-weight:800;color:' + (item.isCorrect ? '#10b981' : '#ef4444') + '">' +
-            (item.isCorrect ? '✅ To\'g\'ri (+ ' + exam.pointsPerQ + ' ball)' : '❌ Xato (0 ball)') +
+            (item.isCorrect ? '✅ To\'g\'ri (+ ' + item.points + ' ball)' : '❌ Xato (0 ball)') +
             '  </span>' +
             '</div>' +
             '<p style="margin:0 0 12px;font-size:15.5px;color:var(--test-text);line-height:1.48">' + esc(item.question) + '</p>' +
@@ -2947,38 +3519,236 @@
     });
 
     overlay.innerHTML = '' +
-      '<div class="eth-modal" style="max-width:680px">' +
+      '<div class="eth-modal" style="max-width:760px">' +
+      '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseLeaderboard" title="Yopish">✕</button>' +
       '  <div class="eth-modal-header">' +
-      '    <h2>' + ic('trophy') + ' ' + esc(exam.title) + ' · Live Leaderboard</h2>' +
-      '    <p>Ranked by highest score and completion speed · One entry per student</p>' +
+      '    <h2>' + ic('trophy') + ' ' + esc(exam.title) + ' · Natijalar Jadvali (Leaderboard)</h2>' +
+      '    <p>Jami topshirganlar: <b>' + subs.length + ' ta o\'quvchi</b> · Qayta yechishlar va chuqur tahlil</p>' +
       '  </div>' +
-      '  <div class="eth-modal-body" style="max-height:60vh;overflow-y:auto">' +
+      '  <div class="eth-modal-body" style="max-height:65vh;overflow-y:auto">' +
       (subs.length === 0 ?
-        '<p style="color:var(--muted);text-align:center">No students have taken this exam yet.</p>' :
+        '<p style="color:var(--muted);text-align:center;padding:24px 0">Bu imtihonni hali hech bir o\'quvchi topshirmagan.</p>' :
         '<table class="eth-leaderboard-table">' +
-        '  <thead><tr><th>Rank</th><th>Student</th><th>Score</th><th>Attempts</th><th>Time Spent</th></tr></thead>' +
+        '  <thead><tr><th>O\'rin</th><th>O\'quvchi</th><th>Natija</th><th>Urinishlar</th><th>Vaqt</th><th>Harakat</th></tr></thead>' +
         '  <tbody>' +
         subs.map(function(s, idx) {
           var rankCls = (idx === 0 ? 'eth-rank-1' : (idx === 1 ? 'eth-rank-2' : (idx === 2 ? 'eth-rank-3' : '')));
           return '<tr>' +
             '  <td><span class="eth-rank-badge ' + rankCls + '">' + (idx + 1) + '</span></td>' +
-            '  <td><b>' + esc(s.studentName) + '</b></td>' +
+            '  <td><b>' + esc(s.studentName) + '</b><div style="font-size:11px;color:var(--muted)">' + esc(s.studentEmail || '') + '</div></td>' +
             '  <td><b style="color:#2563eb">' + s.score + ' / ' + s.totalPossible + ' (' + s.percent + '%)</b></td>' +
-            '  <td><span style="font-size:12px;background:rgba(37,99,235,0.08);color:#2563eb;padding:2px 7px;border-radius:6px;font-weight:700">' + (s.attempts || 1) + ' / ' + maxAtt + '</span></td>' +
+            '  <td><span style="font-size:12px;background:rgba(37,99,235,0.08);color:#2563eb;padding:3px 8px;border-radius:6px;font-weight:700">' + (s.attempts || 1) + ' / ' + maxAtt + '</span></td>' +
             '  <td>' + esc(s.timeSpent) + '</td>' +
+            '  <td><button type="button" class="ap-btn solid" data-view-analysis="' + idx + '" style="padding:6px 12px;font-size:12px;font-weight:700">🔍 Tahlil (Xatolar)</button></td>' +
             '</tr>';
         }).join('') +
         '  </tbody>' +
         '</table>'
       ) +
-      '    <button class="eth-btn-primary" id="lbCloseBtn" style="margin-top:20px">Close</button>' +
+      '    <div style="display:flex;justify-content:flex-end;margin-top:20px">' +
+      '      <button class="eth-btn-primary" id="lbCloseBtn" style="padding:8px 24px">Yopish</button>' +
+      '    </div>' +
       '  </div>' +
       '</div>';
 
     document.body.appendChild(overlay);
-    overlay.querySelector('#lbCloseBtn').onclick = function() {
-      overlay.remove();
+
+    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+    var topClose = overlay.querySelector('#btnTopCloseLeaderboard');
+    if (topClose) topClose.onclick = function() { overlay.remove(); };
+    overlay.querySelector('#lbCloseBtn').onclick = function() { overlay.remove(); };
+
+    var onEsc = function(e) {
+      if (e.key === 'Escape') {
+        overlay.remove();
+        window.removeEventListener('keydown', onEsc);
+      }
     };
+    window.addEventListener('keydown', onEsc);
+
+    overlay.querySelectorAll('[data-view-analysis]').forEach(function(btn) {
+      btn.onclick = function() {
+        var subIdx = parseInt(btn.dataset.viewAnalysis, 10);
+        var targetSub = subs[subIdx];
+        if (targetSub) {
+          showStudentExamAnalysisModal(exam, targetSub);
+        }
+      };
+    });
+  }
+
+  function showStudentExamAnalysisModal(exam, submission) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.style.zIndex = '2147483647';
+
+    var maxAtt = exam.maxAttempts || 1;
+    var history = submission.attemptsHistory || [];
+    if (history.length === 0 && submission.breakdown) {
+      history = [{
+        attemptNum: submission.attempts || 1,
+        score: submission.score,
+        totalPossible: submission.totalPossible,
+        percent: submission.percent,
+        correctCount: submission.correctCount,
+        incorrectCount: submission.incorrectCount,
+        timeSpent: submission.timeSpent,
+        date: submission.date,
+        breakdown: submission.breakdown
+      }];
+    }
+
+    // Repeated Mistake Hotspot Analysis across attempts
+    var mistakeCounts = {};
+    history.forEach(function(att) {
+      (att.breakdown || []).forEach(function(item) {
+        if (!item.isCorrect) {
+          var key = item.qNum;
+          if (!mistakeCounts[key]) {
+            mistakeCounts[key] = {
+              qNum: item.qNum,
+              question: item.question,
+              failCount: 0,
+              userAnswers: [],
+              correctAns: item.correctAns,
+              points: item.points || exam.pointsPerQ || 1
+            };
+          }
+          mistakeCounts[key].failCount++;
+          if (mistakeCounts[key].userAnswers.indexOf(item.userAns) === -1 && item.userAns) {
+            mistakeCounts[key].userAnswers.push(item.userAns);
+          }
+        }
+      });
+    });
+
+    var hotspots = Object.values(mistakeCounts).sort(function(a, b) {
+      return b.failCount - a.failCount;
+    });
+
+    var latestBreakdown = submission.breakdown || (history.length > 0 ? history[history.length - 1].breakdown : []) || [];
+
+    var html = '' +
+      '<div class="eth-modal eth-analysis-modal" style="max-width:820px;max-height:92vh;display:flex;flex-direction:column">' +
+      '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseStudentAnalysis" title="Yopish">✕</button>' +
+      '  <div class="eth-modal-header">' +
+      '    <h2>📊 O\'quvchi Natijalari va Xatolar Tahlili</h2>' +
+      '    <p><b>' + esc(submission.studentName) + '</b> (' + esc(submission.studentEmail || 'Email kiritilmagan') + ') · ' + esc(exam.title) + '</p>' +
+      '  </div>' +
+      '  <div class="eth-modal-body" style="overflow-y:auto;flex:1;padding:20px 24px">' +
+      '    <!-- Student Performance Cards -->' +
+      '    <div class="eth-analysis-header-card">' +
+      '      <div class="eth-analysis-stat">' +
+      '        <span>Umumiy Natija</span>' +
+      '        <b style="color:#2563eb">' + submission.score + ' / ' + submission.totalPossible + ' (' + submission.percent + '%)</b>' +
+      '      </div>' +
+      '      <div class="eth-analysis-stat">' +
+      '        <span>To\'g\'ri / Xato</span>' +
+      '        <b><span style="color:#10b981">✅ ' + (submission.correctCount || 0) + '</span> / <span style="color:#ef4444">❌ ' + (submission.incorrectCount || 0) + '</span></b>' +
+      '      </div>' +
+      '      <div class="eth-analysis-stat">' +
+      '        <span>Qayta Yechishlar Soni</span>' +
+      '        <b style="color:#8b5cf6">🔄 ' + (submission.attempts || 1) + ' marta (Maks: ' + maxAtt + ')</b>' +
+      '      </div>' +
+      '      <div class="eth-analysis-stat">' +
+      '        <span>Sarflangan Vaqt</span>' +
+      '        <b>⏱ ' + esc(submission.timeSpent || '—') + '</b>' +
+      '      </div>' +
+      '    </div>' +
+      '    <!-- Repeated Mistake Hotspots -->' +
+      '    <div style="margin:22px 0 16px">' +
+      '      <h3 style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:8px">' +
+      '        🚨 Qayta-qayta xato qilingan savollar (' + hotspots.length + ' ta zaif nuqta):' +
+      '      </h3>' +
+      (hotspots.length === 0 ?
+        '<div style="padding:14px 18px;background:rgba(16,185,129,0.08);border:1px solid #10b981;border-radius:12px;font-size:13.5px;color:#10b981;font-weight:600">' +
+        '  🎉 Tabriklaymiz! O\'quvchi bu imtihonda qayta-qayta xato qilmagan. Mavzularni a\'lo darajada o\'zlashtirgan.' +
+        '</div>' :
+        '<div style="display:flex;flex-direction:column;gap:10px">' +
+        hotspots.map(function(m) {
+          return '<div class="eth-analysis-mistake-card">' +
+            '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">' +
+            '    <b style="font-size:14px;color:#dc2626">⚠️ Savol #' + m.qNum + ' · ' + m.failCount + ' marta xato qilingan</b>' +
+            '    <span style="font-size:12px;background:rgba(239,68,68,0.12);color:#ef4444;padding:2px 8px;border-radius:6px;font-weight:700">-' + m.points + ' ball</span>' +
+            '  </div>' +
+            '  <p style="font-size:13.5px;margin:0 0 8px;color:var(--text);line-height:1.4">' + esc(m.question) + '</p>' +
+            '  <div style="font-size:12.5px;display:flex;gap:16px;flex-wrap:wrap">' +
+            '    <div>O\'quvchi javoblari: <b style="color:#ef4444">' + esc(m.userAnswers.join(', ') || 'Belgilanmagan') + '</b></div>' +
+            '    <div>To\'g\'ri javob: <b style="color:#10b981">' + esc(m.correctAns) + '</b></div>' +
+            '  </div>' +
+            '</div>';
+        }).join('') +
+        '</div>'
+      ) +
+      '    </div>' +
+      '    <!-- Question-by-Question Breakdown of Latest Attempt -->' +
+      '    <div style="margin:24px 0 16px">' +
+      '      <h3 style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:10px">' +
+      '        📋 Savollar Tahlili va O\'quvchi Javoblari (Oxirgi Urinish):' +
+      '      </h3>' +
+      (latestBreakdown.length === 0 ?
+        '<p style="color:var(--muted);font-size:13px">Savollar tahlili mavjud emas.</p>' :
+        '<div style="display:flex;flex-direction:column;gap:8px">' +
+        latestBreakdown.map(function(b) {
+          return '<div class="eth-analysis-qitem ' + (b.isCorrect ? 'correct' : 'incorrect') + '">' +
+            '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">' +
+            '    <b>Savol #' + b.qNum + '</b>' +
+            '    <span style="font-weight:800;font-size:12.5px;color:' + (b.isCorrect ? '#10b981' : '#ef4444') + '">' +
+            (b.isCorrect ? '✅ To\'g\'ri (+' + (b.points || exam.pointsPerQ || 1) + ' ball)' : '❌ Xato (0 ball)') +
+            '    </span>' +
+            '  </div>' +
+            '  <div style="font-size:13.5px;margin-bottom:6px;color:var(--text)">' + esc(b.question) + '</div>' +
+            '  <div style="font-size:12.5px;display:flex;gap:14px;flex-wrap:wrap">' +
+            '    <span>O\'quvchi javobi: <b style="color:' + (b.isCorrect ? '#10b981' : '#ef4444') + '">' + esc(b.userAns) + '</b></span>' +
+            (!b.isCorrect ? '<span>To\'g\'ri javob: <b style="color:#10b981">' + esc(b.correctAns) + '</b></span>' : '') +
+            '  </div>' +
+            '</div>';
+        }).join('') +
+        '</div>'
+      ) +
+      '    </div>' +
+      (history.length > 1 ?
+        '    <!-- Attempts History Log -->' +
+        '    <div style="margin:24px 0 10px">' +
+        '      <h3 style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:10px">📜 Urinishlar Tarixi Logi:</h3>' +
+        '      <table class="eth-leaderboard-table" style="font-size:12.5px">' +
+        '        <thead><tr><th>Urinish #</th><th>Sana & Vaqt</th><th>To\'plangan Ball</th><th>Foiz</th><th>Sarflangan Vaqt</th></tr></thead>' +
+        '        <tbody>' +
+        history.map(function(att) {
+          return '<tr>' +
+            '  <td><b>#' + att.attemptNum + '</b></td>' +
+            '  <td>' + esc(att.date || '—') + '</td>' +
+            '  <td><b style="color:#2563eb">' + att.score + ' / ' + att.totalPossible + '</b></td>' +
+            '  <td>' + att.percent + '%</td>' +
+            '  <td>' + esc(att.timeSpent || '—') + '</td>' +
+            '</tr>';
+        }).join('') +
+        '        </tbody>' +
+        '      </table>' +
+        '    </div>' : ''
+      ) +
+      '  </div>' +
+      '  <div style="padding:14px 24px;border-top:1px solid var(--border);text-align:right">' +
+      '    <button type="button" class="eth-btn-primary" id="btnCloseStudentAnalysis" style="padding:9px 24px;font-size:14px">Yopish</button>' +
+      '  </div>' +
+      '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+    var topClose = overlay.querySelector('#btnTopCloseStudentAnalysis');
+    if (topClose) topClose.onclick = function() { overlay.remove(); };
+    var bottomClose = overlay.querySelector('#btnCloseStudentAnalysis');
+    if (bottomClose) bottomClose.onclick = function() { overlay.remove(); };
+
+    var onEsc = function(e) {
+      if (e.key === 'Escape') {
+        overlay.remove();
+        window.removeEventListener('keydown', onEsc);
+      }
+    };
+    window.addEventListener('keydown', onEsc);
   }
 
   function showTeacherNotificationsModal() {
@@ -3000,6 +3770,7 @@
 
       var html = '' +
         '<div class="eth-modal" style="max-width:620px">' +
+        '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseNotifs" title="Yopish">✕</button>' +
         '  <div class="eth-modal-header">' +
         '    <h2>' + ic('bell') + ' Security & Proctoring Alerts</h2>' +
         '    <p>Real-time camera and anti-cheat infractions reported during exams.</p>' +
@@ -3041,14 +3812,25 @@
         (notifs.length > 0 ?
           '  <button class="ap-btn out" id="btnClearResolvedNotifs" style="font-size:12.5px;padding:6px 12px">Clear Resolved</button>' :
           '  <div></div>') +
-        '    <button class="ap-btn solid" id="btnCloseNotifsModal" style="padding:8px 20px">Close</button>' +
+        '    <button class="ap-btn solid" id="btnCloseNotifsModal" style="padding:8px 20px">Yopish (Close)</button>' +
         '  </div>' +
         '</div>';
 
       overlay.innerHTML = html;
 
+      overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+      var topClose = overlay.querySelector('#btnTopCloseNotifs');
+      if (topClose) topClose.onclick = function() { overlay.remove(); };
       var closeBtn = overlay.querySelector('#btnCloseNotifsModal');
       if (closeBtn) closeBtn.onclick = function() { overlay.remove(); };
+
+      var onEsc = function(e) {
+        if (e.key === 'Escape') {
+          overlay.remove();
+          window.removeEventListener('keydown', onEsc);
+        }
+      };
+      window.addEventListener('keydown', onEsc);
 
       var clearBtn = overlay.querySelector('#btnClearResolvedNotifs');
       if (clearBtn) {
