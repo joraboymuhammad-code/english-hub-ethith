@@ -128,7 +128,11 @@
           "text": "Rkekkfkwkfkwkgkekgkekgidiwiqos",
           "time": "10:27",
           "replyTo": null,
-          "reactions": {}
+          "reactions": {
+            "❤️": [
+              "nasibaorazaliyev@gmail.com"
+            ]
+          }
         },
         {
           "id": "msg_1792042038023_qfj3h",
@@ -166,5 +170,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042056976
+  "updatedAt": 1792042066788
 }
