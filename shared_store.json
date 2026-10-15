@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792041969539,
+      "created": 1792041702248,
       "students": [],
       "messages": [
         {
@@ -134,8 +134,8 @@
           "replyTo": null,
           "reactions": {
             "❤️": [
-              "strikeruzb52@gmail.com",
-              "nasibaorazaliyev@gmail.com"
+              "nasibaorazaliyev@gmail.com",
+              "strikeruzb52@gmail.com"
             ]
           }
         },
@@ -159,6 +159,21 @@
           "text": "Kfkeidi",
           "time": "10:27",
           "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792042342788_9894b",
+          "timestamp": 1792042342788,
+          "senderId": "tc_oprlehyw5",
+          "senderName": "Name",
+          "senderEmail": "strikeruzb52@gmail.com",
+          "text": "Qale oʻzi",
+          "time": "10:32",
+          "replyTo": {
+            "id": "msg_1792042039176_52cip",
+            "senderName": "Name",
+            "text": "Kfkeidi"
+          },
           "reactions": {}
         }
       ],
@@ -238,5 +253,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042264022
+  "updatedAt": 1792042343897
 }
