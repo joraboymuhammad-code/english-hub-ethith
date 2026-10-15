@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792041702248,
+      "created": 1792041969539,
       "students": [],
       "messages": [
         {
@@ -51,7 +51,7 @@
           "name": "nursulton",
           "email": "nasibaorazaliyev@gmail.com",
           "lastActive": 1792042015141,
-          "dailyMinutes": 0,
+          "dailyMinutes": 1,
           "mistakes": 0
         }
       ],
@@ -166,5 +166,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042040227
+  "updatedAt": 1792042042991
 }
