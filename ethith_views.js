@@ -2230,14 +2230,28 @@
 
     var state = {
       i: 0,
-      score: 0,
-      answered: false,
       answers: {}
     };
 
-    // 1. Enter Strict Fullscreen Lockdown Mode
+    // 1. Remove previous modal/overlay if any
+    var oldModal = document.getElementById('ethExamLockdownModal');
+    if (oldModal) oldModal.remove();
+    var oldPip = document.getElementById('proctorPip');
+    if (oldPip) oldPip.remove();
+    var oldLock = document.getElementById('examLockedScreen');
+    if (oldLock) oldLock.remove();
+
+    // 2. Mount Dedicated Fullscreen Lockdown Container directly to body
+    var lockdownModal = document.createElement('div');
+    lockdownModal.id = 'ethExamLockdownModal';
+    lockdownModal.className = 'eth-lockdown-fullscreen';
+    document.body.appendChild(lockdownModal);
+
+    // Enter Fullscreen Mode
     try {
-      if (document.documentElement.requestFullscreen) {
+      if (lockdownModal.requestFullscreen) {
+        lockdownModal.requestFullscreen().catch(function(e){});
+      } else if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen().catch(function(e){});
       } else if (document.documentElement.webkitRequestFullscreen) {
         document.documentElement.webkitRequestFullscreen();
@@ -2245,38 +2259,40 @@
     } catch(e) {}
     document.body.classList.add('proctored-fullscreen-mode');
 
-    // 2. Anti-Cheat: Tab Switch & Window Blur Detection
+    // 3. Anti-Cheat: Tab Switch & Window Blur Detection
     function onWindowBlur() {
       if (isExamFinished || isExamLocked) return;
-      triggerInfraction("Switched application or left exam window!");
+      triggerInfraction("Brauzer oynasi tark etildi yoki boshqa dasturga o'tildi!");
     }
     function onVisChange() {
       if (isExamFinished || isExamLocked) return;
       if (document.hidden) {
-        triggerInfraction("Switched browser tab or minimized window!");
+        triggerInfraction("Boshqa tabga o'tildi yoki oyna kichraytirildi!");
       }
     }
     window.addEventListener('blur', onWindowBlur);
     document.addEventListener('visibilitychange', onVisChange);
 
-    // 3. WebCam Setup & Picture-in-Picture Floating Preview
-    var existingPip = document.getElementById('proctorPip');
-    if (existingPip) existingPip.remove();
-
-    var pipContainer = document.createElement('div');
-    pipContainer.className = 'proctor-pip-container';
-    pipContainer.id = 'proctorPip';
-    pipContainer.innerHTML = '' +
-      '<div class="proctor-pip-header">' +
-      '  <div style="display:flex;align-items:center"><span class="proctor-status-dot" id="proctorStatusDot"></span> <span id="proctorStatusText" style="color:#10b981">Proctor Active</span></div>' +
-      '  <span style="font-size:10.5px;color:var(--muted)">35° AI Tracker</span>' +
+    // 4. Prominent Mirrored WebCam Picture-in-Picture Box (Floating top-right)
+    var camBox = document.createElement('div');
+    camBox.className = 'eth-proctor-cam-box';
+    camBox.id = 'proctorCamBox';
+    camBox.innerHTML = '' +
+      '<div class="eth-cam-header">' +
+      '  <div style="display:flex;align-items:center">' +
+      '    <span class="eth-cam-dot" id="proctorCamDot"></span>' +
+      '    <span id="proctorCamTitle">Kamera Nazorati</span>' +
+      '  </div>' +
+      '  <span class="eth-cam-badge" id="proctorCamAngle">To\'g\'ri: 0°</span>' +
       '</div>' +
-      '<div class="proctor-video-wrap">' +
+      '<div class="eth-cam-video-wrap">' +
       '  <video id="proctorVideo" autoplay playsinline muted></video>' +
-      '  <div class="proctor-face-guide"></div>' +
+      '  <div class="eth-cam-target-oval" id="proctorOval"></div>' +
       '</div>' +
-      '<div class="proctor-student-tag" id="proctorStudentTag">👤 ' + esc((S.user && S.user.name) || 'Student') + '</div>';
-    document.body.appendChild(pipContainer);
+      '<div class="eth-cam-footer" id="proctorStudentName">' +
+      '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 35° AI Tracker' +
+      '</div>';
+    lockdownModal.appendChild(camBox);
 
     var proctorVideo = document.getElementById('proctorVideo');
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -2284,24 +2300,28 @@
         video: { width: { ideal: 320 }, height: { ideal: 240 }, facingMode: 'user' }
       }).then(function(stream) {
         proctorStream = stream;
-        if (proctorVideo) {
-          proctorVideo.srcObject = stream;
-          proctorVideo.play().catch(function(){});
+        var vid = document.getElementById('proctorVideo');
+        if (vid) {
+          vid.srcObject = stream;
+          vid.onloadedmetadata = function() {
+            vid.play().catch(function(){});
+          };
         }
       }).catch(function(err) {
-        console.warn("Webcam proctoring warning:", err);
+        console.warn("Kamera xatosi:", err);
       });
     }
 
-    // 4. Algorithmic Pure JS/Canvas 35° Head Turn & Look-Away Detector
+    // 5. Algorithmic Pure JS/Canvas 35° Head Turn & Look-Away Detector
     var offCanvas = document.createElement('canvas');
     offCanvas.width = 160;
     offCanvas.height = 120;
     var offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
 
     var calibrationCount = 0;
-    var baseTotalSum = 0;
     var baseCenterSum = 0;
+    var avgBaseCenter = 80;
+    var ticksTotal = 0;
 
     proctorInterval = setInterval(function() {
       if (!proctorVideo || !proctorVideo.videoWidth || isExamLocked || isExamFinished) return;
@@ -2310,90 +2330,107 @@
         var imgData = offCtx.getImageData(0, 0, 160, 120);
         var pixels = imgData.data;
 
-        var leftSkin = 0;
-        var rightSkin = 0;
-        var totalSkin = 0;
+        var leftMass = 0;
+        var rightMass = 0;
+        var totalMass = 0;
         var sumX = 0;
 
-        // Scan face bounding zone: y:15-105, x:15-145
+        // Scan face center bounding box: y:15-105, x:20-140 (step 2)
         for (var y = 15; y < 105; y += 2) {
-          for (var x = 15; x < 145; x += 2) {
+          for (var x = 20; x < 140; x += 2) {
             var idx = (y * 160 + x) * 4;
             var r = pixels[idx];
             var g = pixels[idx + 1];
             var b = pixels[idx + 2];
 
-            // Skin Chromaticity Filter
-            if (r > 60 && g > 35 && b > 20 && r > g && r > b && (r - g) >= 8 && (r - b) >= 12) {
-              totalSkin++;
+            // Robust multi-tone skin & luminance foreground filter
+            var isSkin = (r > 45 && g > 30 && b > 20 && r > b && (r - g) >= 5);
+            var lum = 0.299 * r + 0.587 * g + 0.114 * b;
+            var isFg = isSkin || (lum > 35 && lum < 225 && Math.abs(r - g) > 6);
+
+            if (isFg) {
+              totalMass++;
               sumX += x;
-              if (x < 80) leftSkin++;
-              else rightSkin++;
+              if (x < 80) leftMass++;
+              else rightMass++;
             }
           }
         }
 
-        // Calibrate baseline for first 2.5s (10 valid frames)
-        if (calibrationCount < 10) {
-          if (totalSkin > 100) {
+        ticksTotal++;
+
+        // Baseline Calibration (first 4 valid frames or fallback after 1.5s)
+        if (calibrationCount < 4) {
+          if (totalMass > 40) {
             calibrationCount++;
-            baseTotalSum += totalSkin;
-            baseCenterSum += (sumX / totalSkin);
+            baseCenterSum += (sumX / totalMass);
+            if (calibrationCount >= 4) {
+              avgBaseCenter = baseCenterSum / 4;
+            }
+          } else if (ticksTotal > 6) {
+            avgBaseCenter = 80;
+            calibrationCount = 4;
           }
           return;
         }
 
-        var avgBaseTotal = baseTotalSum / calibrationCount;
-        var avgBaseCenter = baseCenterSum / calibrationCount;
-        var currentCenter = totalSkin > 0 ? (sumX / totalSkin) : avgBaseCenter;
-        var centerOffset = Math.abs(currentCenter - avgBaseCenter);
+        var currentCenter = totalMass > 20 ? (sumX / totalMass) : avgBaseCenter;
+        var dx = Math.abs(currentCenter - avgBaseCenter);
+        var asymmetry = Math.abs(leftMass - rightMass) / (leftMass + rightMass + 1);
 
-        // Horizontal asymmetry ratio
-        var ratio = (leftSkin + 5) / (rightSkin + 5);
+        // Turn criteria calculation (~35° deviation)
+        var estimatedAngle = Math.min(90, Math.round((dx / 14) * 35 * 0.6 + (asymmetry / 0.38) * 35 * 0.7));
+        if (totalMass < 25) {
+          // Face completely absent or turned completely away
+          estimatedAngle = 45;
+        }
 
-        // Turn criteria (~35° deviation or looking away):
-        // 1. Extreme asymmetry (ratio > 2.25 or < 0.44)
-        // 2. Centroid displacement > 17px
-        // 3. Complete look away or absence (skin mass < 25% of baseline)
-        var isTurned = (ratio > 2.25 || ratio < 0.44 || centerOffset > 17 || totalSkin < (avgBaseTotal * 0.25));
+        var angleBadge = document.getElementById('proctorCamAngle');
+        var dot = document.getElementById('proctorCamDot');
+        var oval = document.getElementById('proctorOval');
 
-        var statusDot = document.getElementById('proctorStatusDot');
-        var statusText = document.getElementById('proctorStatusText');
-
-        if (isTurned) {
-          turnInfractionFrames++;
-          if (statusDot) statusDot.style.background = '#f59e0b';
-          if (statusText) {
-            statusText.textContent = 'Turn Warning!';
-            statusText.style.color = '#f59e0b';
+        if (angleBadge) {
+          if (estimatedAngle < 25) {
+            angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
+            angleBadge.className = 'eth-cam-badge';
+            if (dot) dot.className = 'eth-cam-dot';
+            if (oval) oval.className = 'eth-cam-target-oval';
+          } else if (estimatedAngle < 35) {
+            angleBadge.textContent = "Burilish: " + estimatedAngle + "°";
+            angleBadge.className = 'eth-cam-badge warn';
+            if (dot) dot.className = 'eth-cam-dot warn';
+            if (oval) oval.className = 'eth-cam-target-oval warn';
+          } else {
+            angleBadge.textContent = "XAVF: " + estimatedAngle + "°!";
+            angleBadge.className = 'eth-cam-badge danger';
+            if (dot) dot.className = 'eth-cam-dot danger';
+            if (oval) oval.className = 'eth-cam-target-oval danger';
           }
+        }
 
-          // 4 consecutive frames (1.0 second of sustained turn/look-away) triggers lock
-          if (turnInfractionFrames >= 4) {
-            triggerInfraction("Turned head away (~35°) or looked away from the exam screen");
+        // Trigger lock if head turned 35° or more for 3 consecutive frames (~0.75s)
+        if (estimatedAngle >= 35) {
+          turnInfractionFrames++;
+          if (turnInfractionFrames >= 3) {
+            triggerInfraction("Bosh 35° dan ortiq burildi (" + estimatedAngle + "°) yoki kameradan chetga qaraldi");
           }
         } else {
           turnInfractionFrames = 0;
-          if (statusDot) statusDot.style.background = '#10b981';
-          if (statusText) {
-            statusText.textContent = 'Proctor Active';
-            statusText.style.color = '#10b981';
-          }
         }
       } catch(err) {}
     }, 250);
 
-    // 5. Trigger Infraction & Lock Exam
+    // 6. Trigger Infraction & Lock Exam
     function triggerInfraction(reason) {
       if (isExamLocked || isExamFinished) return;
       isExamLocked = true;
 
-      var statusDot = document.getElementById('proctorStatusDot');
-      var statusText = document.getElementById('proctorStatusText');
-      if (statusDot) statusDot.style.background = '#ef4444';
-      if (statusText) {
-        statusText.textContent = 'BLOCKED';
-        statusText.style.color = '#ef4444';
+      var angleBadge = document.getElementById('proctorCamAngle');
+      var dot = document.getElementById('proctorCamDot');
+      if (dot) dot.className = 'eth-cam-dot danger';
+      if (angleBadge) {
+        angleBadge.textContent = 'BLOKLANDI';
+        angleBadge.className = 'eth-cam-badge danger';
       }
 
       // Audio warning beep
@@ -2412,35 +2449,36 @@
         osc.stop(audioCtx.currentTime + 0.4);
       } catch(ae) {}
 
-      // Render Red Screen Exam Locked Overlay
+      // Red Screen Exam Locked Overlay
       var existingLock = document.getElementById('examLockedScreen');
       if (existingLock) existingLock.remove();
 
       var lockedOverlay = document.createElement('div');
       lockedOverlay.className = 'eth-exam-locked-screen';
       lockedOverlay.id = 'examLockedScreen';
+      lockedOverlay.style.zIndex = '2147483648';
       lockedOverlay.innerHTML = '' +
         '<div class="eth-locked-box">' +
         '  <div class="eth-locked-icon">🚫</div>' +
-        '  <h2>EXAM LOCKED: SUSPICIOUS ACTIVITY DETECTED</h2>' +
-        '  <div class="eth-locked-reason"><b>Infraction:</b> ' + esc(reason) + '</div>' +
+        '  <h2>TEST BLOKLANDI: QOIDABUZARLIK ANIQLANDI</h2>' +
+        '  <div class="eth-locked-reason"><b>Sabab:</b> ' + esc(reason) + '</div>' +
         '  <div class="eth-locked-msg">' +
-        '    Turning your head (~35°), looking away from the camera, or switching tabs during the exam is strictly prohibited.<br>' +
-        '    A real-time security alert has been dispatched to your instructor.<br><br>' +
-        '    <b>Your exam is locked. Please notify your teacher to unlock your test.</b>' +
+        '    Test paytida boshni 35° dan ortiq burish, chetga qarash yoki boshqa oynalarga o\'tish qat\'iyan taqiqlanadi.<br>' +
+        '    O\'qituvchingizga ushbu qoidabuzarlik haqida darhol xabar yuborildi.<br><br>' +
+        '    <b>Test bloklandi. O\'qituvchi blokdan chiqarguniga qadar kuting.</b>' +
         '  </div>' +
         '  <div class="eth-locked-pulse">' +
-        '    <span class="proctor-status-dot" style="background:#ef4444"></span> Waiting for teacher authorization to unblock in real-time...' +
+        '    <span class="eth-cam-dot danger"></span> O\'qituvchi tomonidan blokdan chiqarilishi kutilmoqda...' +
         '  </div>' +
         '</div>';
-      document.body.appendChild(lockedOverlay);
+      lockdownModal.appendChild(lockedOverlay);
 
-      // Publish STUDENT_BLOCKED live event across MQTT & cross-tab
+      // Publish STUDENT_BLOCKED live event across MQTT & sync
       if (window.EthithSync) {
         window.EthithSync.publishLive({
           type: 'STUDENT_BLOCKED',
           studentId: (S.user && (S.user.email || S.user.id)) || 'guest',
-          studentName: (S.user && S.user.name) || 'Anonymous Student',
+          studentName: (S.user && S.user.name) || 'O\'quvchi',
           studentEmail: (S.user && S.user.email) || '',
           examId: exam.id,
           examCode: exam.code,
@@ -2451,7 +2489,7 @@
       }
     }
 
-    // 6. Real-Time Unblock Listener (Sub-100ms wakeup)
+    // 7. Real-Time Unblock Listener (Sub-100ms wakeup)
     window._ethithOnStudentUnblocked = function(ev) {
       var myKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase();
       if ((ev.studentEmail && ev.studentEmail.toLowerCase() === myKey) ||
@@ -2460,17 +2498,17 @@
         turnInfractionFrames = 0;
         var lockEl = document.getElementById('examLockedScreen');
         if (lockEl) lockEl.remove();
-        var statusDot = document.getElementById('proctorStatusDot');
-        var statusText = document.getElementById('proctorStatusText');
-        if (statusDot) statusDot.style.background = '#10b981';
-        if (statusText) {
-          statusText.textContent = 'Proctor Active';
-          statusText.style.color = '#10b981';
+        var angleBadge = document.getElementById('proctorCamAngle');
+        var dot = document.getElementById('proctorCamDot');
+        if (dot) dot.className = 'eth-cam-dot';
+        if (angleBadge) {
+          angleBadge.textContent = 'To\'g\'ri: 0°';
+          angleBadge.className = 'eth-cam-badge';
         }
       }
     };
 
-    // 7. Exam Timer
+    // 8. Exam Timer
     var timerInterval = setInterval(function() {
       if (isExamLocked || isExamFinished) return;
       timeLeftSeconds--;
@@ -2482,136 +2520,279 @@
       }
       if (timeLeftSeconds <= 0) {
         clearInterval(timerInterval);
-        alert("Time expired! The exam has concluded automatically.");
+        alert("Vaqt tugadi! Test avtomatik ravishda yakunlanadi.");
         finishExam();
       }
     }, 1000);
 
+    // 9. Render Question & Palette
     function renderExamQuestion() {
-      if (state.i >= exam.questions.length) {
-        clearInterval(timerInterval);
-        finishExam();
-        return;
-      }
-
+      if (isExamFinished) return;
       var q = exam.questions[state.i];
       var qType = q.type || 'choice';
+      var answeredCount = Object.keys(state.answers).filter(function(k){ return state.answers[k] !== undefined && state.answers[k] !== ''; }).length;
+      var totalQ = exam.questions.length;
+
+      var m = Math.floor(timeLeftSeconds / 60);
+      var s = timeLeftSeconds % 60;
+      var timerStr = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
 
       var html = '' +
-        '<div class="ap-quiz">' +
-        '  <div class="ap-qtop" style="justify-content:space-between">' +
-        '    <div style="display:flex;align-items:center;gap:12px">' +
-        '      <div class="eth-timer-badge">' + ic('clock') + ' <span id="examTimerDisplay">--:--</span></div>' +
-        '      <span style="font-size:12.5px;color:var(--muted)">Code: <b>' + exam.code + '</b></span>' +
-        '    </div>' +
-        '    <div class="ap-bar" style="max-width:280px;margin:0 14px"><i style="width:' + ((state.i / exam.questions.length) * 100) + '%"></i></div>' +
-        '    <div style="display:flex;align-items:center;gap:12px">' +
-        '      <b>' + (state.i + 1) + ' / ' + exam.questions.length + '</b>' +
-        '      <button class="ap-btn out danger" id="btnFinishExamManual" style="padding:6px 14px;font-size:12.5px;font-weight:700;border-color:#ef4444;color:#ef4444">Finish & Submit Exam</button>' +
+        '<div class="eth-lockdown-header">' +
+        '  <div style="display:flex;align-items:center;gap:14px">' +
+        '    <div class="eth-timer-badge">⏱ <span id="examTimerDisplay">' + timerStr + '</span></div>' +
+        '    <div>' +
+        '      <b style="font-size:15px">' + esc(exam.title) + '</b>' +
+        '      <span style="font-size:12px;color:var(--muted);margin-left:8px">Kod: <b>' + exam.code + '</b></span>' +
         '    </div>' +
         '  </div>' +
-        '  <div class="ap-qbox">' +
-        '    <div class="qn">' + esc(exam.title) + ' · Question ' + (state.i + 1) + ' (' + exam.pointsPerQ + ' pts)</div>' +
-        '    <h2>' + esc(q.question) + '</h2>';
+        '  <div style="display:flex;align-items:center;gap:12px">' +
+        '    <span style="font-size:13px;font-weight:700;color:var(--muted)">Belgilangan: ' + answeredCount + ' / ' + totalQ + '</span>' +
+        '    <button type="button" class="eth-nav-btn eth-nav-finish" id="btnHeaderFinish" style="padding:7px 16px;font-size:13px">🏁 Testni yakunlash</button>' +
+        '  </div>' +
+        '</div>' +
+        '<div class="eth-lockdown-body">' +
+        '  <!-- Question Palette -->' +
+        '  <div class="eth-q-palette-wrap">' +
+        '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+        '      <span style="font-size:12.5px;font-weight:700;color:var(--muted)">Savollar ro\'yxati (istalgan savolga o\'tib javobni o\'zgartirish mumkin):</span>' +
+        '      <span style="font-size:12px;color:var(--muted)">Progress: <b>' + Math.round((answeredCount / totalQ) * 100) + '%</b></span>' +
+        '    </div>' +
+        '    <div class="eth-q-palette" id="examQPalette">' +
+        exam.questions.map(function(_, idx) {
+          var isAns = state.answers[idx] !== undefined && state.answers[idx] !== '';
+          var isCur = idx === state.i;
+          var cls = 'eth-q-palette-btn' + (isCur ? ' current' : '') + (isAns ? ' answered' : '');
+          return '<button type="button" class="' + cls + '" data-goto="' + idx + '">' + (idx + 1) + '</button>';
+        }).join('') +
+        '    </div>' +
+        '  </div>' +
+        '  <!-- Question Box -->' +
+        '  <div class="ap-quiz" style="margin:0">' +
+        '    <div class="ap-qbox" style="padding:28px 24px">' +
+        '      <div class="qn" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">' +
+        '        <span>Savol ' + (state.i + 1) + ' / ' + totalQ + '</span>' +
+        '        <span style="color:#2563eb;font-weight:700">' + exam.pointsPerQ + ' ball</span>' +
+        '      </div>' +
+        '      <h2 style="font-size:19px;margin:0 0 20px;line-height:1.45">' + esc(q.question) + '</h2>' +
+        '      <div id="examOptsContainer">';
 
       if (qType === 'written') {
+        var currentW = state.answers[state.i] || '';
         html += '' +
-          '<div style="margin:20px 0">' +
-          '  <input type="text" id="writtenInput" placeholder="Type your answer here..." style="width:100%;padding:14px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;outline:none">' +
-          '  <button class="eth-btn-primary" id="submitWrittenAnsBtn" style="margin-top:14px">Next ' + ic('right') + '</button>' +
+          '<div style="margin:16px 0">' +
+          '  <input type="text" id="examWrittenInput" value="' + esc(currentW) + '" placeholder="Javobingizni bu yerga yozing..." style="width:100%;padding:14px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;background:var(--card);color:var(--text);outline:none;box-sizing:border-box">' +
+          '  <p style="font-size:12px;color:var(--muted);margin-top:6px">Javobni yozganingizdan so\'ng pastdagi "Keyingi savol" tugmasini bosing.</p>' +
           '</div>';
       } else if (qType === 'bool') {
+        var selB = state.answers[state.i];
         html += '' +
-          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0">' +
-          '  <button class="ap-opt" data-opt="True" style="justify-content:center;font-size:16px;font-weight:700">✓ True</button>' +
-          '  <button class="ap-opt" data-opt="False" style="justify-content:center;font-size:16px;font-weight:700">✗ False</button>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0">' +
+          '  <button type="button" class="ap-opt' + (selB === 'True' ? ' selected' : '') + '" data-opt="True" style="justify-content:center;font-size:16px;font-weight:700">' +
+          '    ✓ True ' + (selB === 'True' ? '<span style="margin-left:8px;color:#2563eb">●</span>' : '') +
+          '  </button>' +
+          '  <button type="button" class="ap-opt' + (selB === 'False' ? ' selected' : '') + '" data-opt="False" style="justify-content:center;font-size:16px;font-weight:700">' +
+          '    ✗ False ' + (selB === 'False' ? '<span style="margin-left:8px;color:#2563eb">●</span>' : '') +
+          '  </button>' +
           '</div>';
       } else {
+        var currentOpt = state.answers[state.i];
         html += '' +
-          '<div>' +
+          '<div style="display:flex;flex-direction:column;gap:10px">' +
           q.options.map(function(opt, idx) {
-            return '<button class="ap-opt" data-opt="' + esc(opt) + '"><span class="l">' + 'ABCD'[idx] + '</span>' + esc(opt) + '</button>';
+            var isSel = (currentOpt === opt);
+            var cls = 'ap-opt' + (isSel ? ' selected' : '');
+            return '<button type="button" class="' + cls + '" data-opt="' + esc(opt) + '">' +
+              '<span class="l">' + 'ABCD'[idx] + '</span>' +
+              '<span style="flex:1;text-align:left">' + esc(opt) + '</span>' +
+              (isSel ? '<span style="font-weight:800;color:#2563eb;margin-left:10px">✓ Belgilandi</span>' : '') +
+              '</button>';
           }).join('') +
           '</div>';
       }
 
-      html += '  </div></div>';
-      mainContainer.innerHTML = html;
+      html += '' +
+        '      </div>' +
+        '    </div>' +
+        '  </div>' +
+        '  <!-- Navigation Bar -->' +
+        '  <div class="eth-runner-nav">' +
+        '    <button type="button" class="eth-nav-btn eth-nav-prev" id="btnNavPrev"' + (state.i === 0 ? ' disabled style="opacity:0.4;cursor:not-allowed"' : '') + '>' +
+        '      ⬅ Oldingi savol' +
+        '    </button>' +
+        '    <span style="font-size:13.5px;font-weight:700;color:var(--muted)">Savol ' + (state.i + 1) + ' / ' + totalQ + '</span>' +
+        (state.i === totalQ - 1 ?
+          '    <button type="button" class="eth-nav-btn eth-nav-finish" id="btnNavNext">🏁 Testni yakunlash</button>' :
+          '    <button type="button" class="eth-nav-btn eth-nav-next" id="btnNavNext">Keyingi savol ➡</button>'
+        ) +
+        '  </div>' +
+        '</div>';
 
-      // Finish & Submit Exam manual button handler
-      var finishBtn = document.getElementById('btnFinishExamManual');
-      if (finishBtn) {
-        finishBtn.onclick = function() {
-          if (confirm("Are you sure you want to finish and submit your exam now?\nYou will exit fullscreen proctored mode.")) {
-            finishExam();
+      // Keep proctorCamBox alive
+      var camBoxEl = document.getElementById('proctorCamBox');
+      lockdownModal.innerHTML = html;
+      if (camBoxEl) lockdownModal.appendChild(camBoxEl);
+
+      // Event handlers: Palette buttons
+      lockdownModal.querySelectorAll('.eth-q-palette-btn').forEach(function(btn) {
+        btn.onclick = function() {
+          saveCurrentWritten();
+          var target = parseInt(btn.dataset.goto, 10);
+          if (!isNaN(target) && target >= 0 && target < totalQ) {
+            state.i = target;
+            renderExamQuestion();
+          }
+        };
+      });
+
+      // Previous button
+      var prevBtn = document.getElementById('btnNavPrev');
+      if (prevBtn) {
+        prevBtn.onclick = function() {
+          if (state.i > 0) {
+            saveCurrentWritten();
+            state.i--;
+            renderExamQuestion();
           }
         };
       }
 
-      if (qType === 'written') {
-        var subBtn = document.getElementById('submitWrittenAnsBtn');
-        var inputW = document.getElementById('writtenInput');
-        inputW.focus();
-        function commitW() {
-          if (isExamLocked) return;
-          var val = inputW.value.trim();
-          var isMatch = (val.toLowerCase() === (q.answer || '').trim().toLowerCase());
-          if (isMatch) state.score += exam.pointsPerQ;
-          state.answers[state.i] = val;
-          state.i++;
-          renderExamQuestion();
-        }
-        subBtn.onclick = commitW;
-        inputW.onkeydown = function(e) { if (e.key === 'Enter') commitW(); };
-      } else {
-        mainContainer.querySelectorAll('.ap-opt').forEach(function(btn) {
-          btn.onclick = function() {
-            if (isExamLocked) return;
-            var sel = btn.dataset.opt;
-            if (sel.toLowerCase() === (q.answer || '').toLowerCase()) state.score += exam.pointsPerQ;
-            state.answers[state.i] = sel;
+      // Next / Finish button
+      var nextBtn = document.getElementById('btnNavNext');
+      if (nextBtn) {
+        nextBtn.onclick = function() {
+          saveCurrentWritten();
+          if (state.i === totalQ - 1) {
+            confirmFinish();
+          } else {
             state.i++;
             renderExamQuestion();
+          }
+        };
+      }
+
+      // Header finish button
+      var hFinishBtn = document.getElementById('btnHeaderFinish');
+      if (hFinishBtn) {
+        hFinishBtn.onclick = function() {
+          saveCurrentWritten();
+          confirmFinish();
+        };
+      }
+
+      // Option click handler (Does NOT advance question! Updates .selected state)
+      if (qType === 'written') {
+        var inp = document.getElementById('examWrittenInput');
+        if (inp) {
+          inp.oninput = function() {
+            state.answers[state.i] = inp.value.trim();
+            updatePaletteCurrent();
+          };
+        }
+      } else {
+        lockdownModal.querySelectorAll('.ap-opt').forEach(function(optBtn) {
+          optBtn.onclick = function() {
+            if (isExamLocked) return;
+            var chosen = optBtn.dataset.opt;
+            state.answers[state.i] = chosen;
+            renderExamQuestion(); // re-render to update selected highlights and palette
           };
         });
       }
     }
 
+    function saveCurrentWritten() {
+      var inp = document.getElementById('examWrittenInput');
+      if (inp) {
+        state.answers[state.i] = inp.value.trim();
+      }
+    }
+
+    function updatePaletteCurrent() {
+      var paletteBtn = lockdownModal.querySelector('.eth-q-palette-btn[data-goto="' + state.i + '"]');
+      if (paletteBtn) {
+        if (state.answers[state.i] && state.answers[state.i] !== '') {
+          paletteBtn.classList.add('answered');
+        } else {
+          paletteBtn.classList.remove('answered');
+        }
+      }
+    }
+
+    function confirmFinish() {
+      var ansCount = Object.keys(state.answers).filter(function(k){ return state.answers[k] !== undefined && state.answers[k] !== ''; }).length;
+      var totalQ = exam.questions.length;
+      var msg = "Testni yakunlashga ishonchingiz komilmi?\n\nBelgilangan savollar: " + ansCount + " / " + totalQ + " ta.";
+      if (ansCount < totalQ) {
+        msg += "\nDiqqat: " + (totalQ - ansCount) + " ta savol javobsiz qoldi!";
+      }
+      if (confirm(msg)) {
+        finishExam();
+      }
+    }
+
+    // 10. Finish Exam & Detailed Results Breakdown
     function finishExam() {
       if (isExamFinished) return;
       isExamFinished = true;
 
-      // Clean up timers & proctoring listeners
+      // Clean up intervals & listeners
       clearInterval(timerInterval);
       if (proctorInterval) clearInterval(proctorInterval);
       window.removeEventListener('blur', onWindowBlur);
       document.removeEventListener('visibilitychange', onVisChange);
       window._ethithOnStudentUnblocked = null;
 
-      // Stop camera tracks
+      // Stop camera
       if (proctorStream) {
         try {
           proctorStream.getTracks().forEach(function(track) { track.stop(); });
         } catch(e) {}
       }
 
-      // Remove PIP & Lock overlay
-      var pip = document.getElementById('proctorPip');
-      if (pip) pip.remove();
-      var lockEl = document.getElementById('examLockedScreen');
-      if (lockEl) lockEl.remove();
-
-      // Exit fullscreen lockdown mode and restore normal PC view
+      // Exit fullscreen mode
       try {
         if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
         else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
       } catch(e) {}
       document.body.classList.remove('proctored-fullscreen-mode');
 
+      // Compute statistics
+      var correctCount = 0;
+      var incorrectCount = 0;
       var totalPossible = exam.questions.length * exam.pointsPerQ;
-      var pct = Math.round((state.score / totalPossible) * 100);
-      var timeSpentMin = Math.round((exam.duration * 60 - Math.max(0, timeLeftSeconds)) / 60);
+      var earnedScore = 0;
 
+      var breakdown = exam.questions.map(function(q, idx) {
+        var userAns = state.answers[idx];
+        var isCorrect = false;
+
+        if (userAns !== undefined && userAns !== '') {
+          if (String(userAns).trim().toLowerCase() === String(q.answer || '').trim().toLowerCase()) {
+            isCorrect = true;
+            correctCount++;
+            earnedScore += exam.pointsPerQ;
+          } else {
+            incorrectCount++;
+          }
+        } else {
+          incorrectCount++;
+          userAns = 'Belgilanmagan';
+        }
+
+        return {
+          qNum: idx + 1,
+          question: q.question,
+          userAns: userAns,
+          correctAns: q.answer,
+          isCorrect: isCorrect
+        };
+      });
+
+      var pct = Math.round((correctCount / exam.questions.length) * 100);
+      var timeSpentMin = Math.max(1, Math.round((exam.duration * 60 - Math.max(0, timeLeftSeconds)) / 60));
+
+      // Save submission
       if (!exam.submissions) exam.submissions = [];
       var userKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase();
       var existing = exam.submissions.find(function(s) {
@@ -2621,21 +2802,25 @@
 
       if (existing) {
         existing.attempts = (existing.attempts || 1) + 1;
-        existing.score = state.score;
+        existing.score = earnedScore;
         existing.totalPossible = totalPossible;
         existing.percent = pct;
-        existing.timeSpent = timeSpentMin + ' min';
+        existing.correctCount = correctCount;
+        existing.incorrectCount = incorrectCount;
+        existing.timeSpent = timeSpentMin + ' daqiqa';
         existing.date = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       } else {
         var sub = {
           studentId: (S.user && S.user.email) || (S.user && S.user.id) || 'guest',
-          studentName: (S.user && S.user.name) || 'Anonymous Student',
+          studentName: (S.user && S.user.name) || 'O\'quvchi',
           studentEmail: (S.user && S.user.email) || '',
-          score: state.score,
+          score: earnedScore,
           totalPossible: totalPossible,
           percent: pct,
+          correctCount: correctCount,
+          incorrectCount: incorrectCount,
           attempts: 1,
-          timeSpent: timeSpentMin + ' min',
+          timeSpent: timeSpentMin + ' daqiqa',
           date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         };
         exam.submissions.push(sub);
@@ -2647,19 +2832,88 @@
         window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
 
-      // Show Result
-      var html = '' +
-        '<div class="ap-res">' +
-        '  <h2>Exam Completed!</h2>' +
-        '  <p>Your Final Score: <b>' + state.score + ' / ' + totalPossible + ' points (' + pct + '%)</b></p>' +
-        '  <button class="eth-btn-primary" id="viewLbAfterExam" style="margin-top:20px">' + ic('trophy') + ' View Live Leaderboard</button>' +
+      // Render Comprehensive Results Breakdown Screen inside lockdownModal
+      var resHtml = '' +
+        '<div class="eth-lockdown-header">' +
+        '  <div style="font-weight:800;font-size:16px;display:flex;align-items:center;gap:8px">' +
+        '    🎓 <span>Test Natijalari: ' + esc(exam.title) + '</span>' +
+        '  </div>' +
+        '  <button type="button" class="eth-nav-btn eth-nav-next" id="btnCloseExamModal" style="padding:7px 18px">Yopish va Chiqish ✕</button>' +
+        '</div>' +
+        '<div class="eth-lockdown-body" style="max-width:850px">' +
+        '  <div style="background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.06);margin-bottom:28px">' +
+        '    <div style="font-size:54px;margin-bottom:12px">' + (pct >= 60 ? '🎉' : '📊') + '</div>' +
+        '    <h1 style="margin:0 0 8px;font-size:26px">Imtihon Muvaffaqiyatli Yakunlandi!</h1>' +
+        '    <p style="color:var(--muted);font-size:15px;margin:0 0 24px">' + esc(exam.title) + ' · Kod: ' + exam.code + '</p>' +
+        '    <div style="display:inline-block;padding:18px 44px;border-radius:20px;background:rgba(37,99,235,0.08);border:2.5px solid #2563eb;margin-bottom:24px">' +
+        '      <span style="font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:800;color:#2563eb;display:block">Umumiy Natija</span>' +
+        '      <span style="font-size:52px;font-weight:900;color:#2563eb">' + pct + '%</span>' +
+        '    </div>' +
+        '    <div class="eth-res-metrics">' +
+        '      <div class="eth-res-card" style="border-top:4px solid #10b981">' +
+        '        <span style="font-size:12px;color:var(--muted);font-weight:700">TO\'G\'RI JAVOBLAR</span>' +
+        '        <b style="color:#10b981">✅ ' + correctCount + ' ta</b>' +
+        '      </div>' +
+        '      <div class="eth-res-card" style="border-top:4px solid #ef4444">' +
+        '        <span style="font-size:12px;color:var(--muted);font-weight:700">XATO / BELGILANMAGAN</span>' +
+        '        <b style="color:#ef4444">❌ ' + incorrectCount + ' ta</b>' +
+        '      </div>' +
+        '      <div class="eth-res-card" style="border-top:4px solid #2563eb">' +
+        '        <span style="font-size:12px;color:var(--muted);font-weight:700">TO\'PLANGAN BALL</span>' +
+        '        <b style="color:#2563eb">⭐ ' + earnedScore + ' / ' + totalPossible + '</b>' +
+        '      </div>' +
+        '      <div class="eth-res-card" style="border-top:4px solid #8b5cf6">' +
+        '        <span style="font-size:12px;color:var(--muted);font-weight:700">SARFLANGAN VAQT</span>' +
+        '        <b style="color:#8b5cf6">⏱ ' + timeSpentMin + ' daqiqa</b>' +
+        '      </div>' +
+        '    </div>' +
+        '    <div style="display:flex;justify-content:center;gap:12px;margin-top:24px;flex-wrap:wrap">' +
+        '      <button type="button" class="eth-btn-primary" id="btnResLeaderboard" style="padding:12px 24px;font-weight:700">' + ic('trophy') + ' Natijalar Jadvali (Leaderboard)</button>' +
+        '      <button type="button" class="eth-nav-btn eth-nav-prev" id="btnResExit" style="padding:12px 24px;font-weight:700">Bosh Sahifaga Qaytish</button>' +
+        '    </div>' +
+        '  </div>' +
+        '  <!-- Detailed Question Breakdown -->' +
+        '  <h3 style="font-size:18px;margin:28px 0 16px;display:flex;align-items:center;gap:8px">' +
+        '    📋 Savollar Tahlili va To\'liq Ko\'rib Chiqish (' + exam.questions.length + ' ta savol):' +
+        '  </h3>' +
+        '  <div class="eth-review-list">' +
+        breakdown.map(function(item) {
+          return '<div class="eth-review-item ' + (item.isCorrect ? 'correct' : 'incorrect') + '">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+            '  <b>Savol ' + item.qNum + '</b>' +
+            '  <span style="font-size:13px;font-weight:700;color:' + (item.isCorrect ? '#10b981' : '#ef4444') + '">' +
+            (item.isCorrect ? '✅ To\'g\'ri (+ ' + exam.pointsPerQ + ' ball)' : '❌ Xato (0 ball)') +
+            '  </span>' +
+            '</div>' +
+            '<p style="margin:0 0 10px;font-size:14.5px;color:var(--text);line-height:1.45">' + esc(item.question) + '</p>' +
+            '<div style="font-size:13.5px;background:var(--bg);padding:10px 14px;border-radius:8px">' +
+            '  <div>Sizning javobingiz: <b style="color:' + (item.isCorrect ? '#10b981' : '#ef4444') + '">' + esc(item.userAns) + '</b></div>' +
+            (!item.isCorrect ? '<div style="margin-top:4px">To\'g\'ri javob: <b style="color:#10b981">' + esc(item.correctAns) + '</b></div>' : '') +
+            '</div>' +
+            '</div>';
+        }).join('') +
+        '  </div>' +
         '</div>';
 
-      mainContainer.innerHTML = html;
-      document.getElementById('viewLbAfterExam').onclick = function() {
-        showExamLeaderboardModal(exam);
+      lockdownModal.innerHTML = resHtml;
+
+      function exitLockdown() {
+        if (lockdownModal) lockdownModal.remove();
         renderExamsView(mainContainer);
-      };
+      }
+
+      var closeBtn = document.getElementById('btnCloseExamModal');
+      if (closeBtn) closeBtn.onclick = exitLockdown;
+      var exitBtn = document.getElementById('btnResExit');
+      if (exitBtn) exitBtn.onclick = exitLockdown;
+      var lbBtn = document.getElementById('btnResLeaderboard');
+      if (lbBtn) {
+        lbBtn.onclick = function() {
+          if (lockdownModal) lockdownModal.remove();
+          showExamLeaderboardModal(exam);
+          renderExamsView(mainContainer);
+        };
+      }
     }
 
     renderExamQuestion();
@@ -2855,11 +3109,47 @@
 
   function runPlacementTest(mainContainer, questions) {
     var timeLeft = 90 * 60; // Exactly 1.5 hours (90 minutes) total for all 70 questions
+    var isTestFinished = false;
     var state = {
       i: 0,
-      score: 0,
       answers: {}
     };
+
+    // 1. Remove previous modal if any
+    var oldModal = document.getElementById('ethExamLockdownModal');
+    if (oldModal) oldModal.remove();
+
+    // 2. Mount Dedicated Fullscreen Lockdown Container directly to body
+    var lockdownModal = document.createElement('div');
+    lockdownModal.id = 'ethExamLockdownModal';
+    lockdownModal.className = 'eth-lockdown-fullscreen';
+    document.body.appendChild(lockdownModal);
+
+    // Enter Fullscreen Mode
+    try {
+      if (lockdownModal.requestFullscreen) {
+        lockdownModal.requestFullscreen().catch(function(e){});
+      } else if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(function(e){});
+      } else if (document.documentElement.webkitRequestFullscreen) {
+        document.documentElement.webkitRequestFullscreen();
+      }
+    } catch(e) {}
+    document.body.classList.add('proctored-fullscreen-mode');
+
+    // 3. Anti-Cheat: Tab Switch & Window Blur Warning
+    function onWindowBlur() {
+      if (isTestFinished) return;
+      alert("DIQQAT: Test paytida brauzer oynasidan chiqish yoki boshqa oynalarga o'tish taqiqlanadi!");
+    }
+    function onVisChange() {
+      if (isTestFinished) return;
+      if (document.hidden) {
+        alert("DIQQAT: Test davom etmoqda, boshqa sahifaga o'tmang!");
+      }
+    }
+    window.addEventListener('blur', onWindowBlur);
+    document.addEventListener('visibilitychange', onVisChange);
 
     function formatTime(sec) {
       if (sec < 0) sec = 0;
@@ -2870,6 +3160,7 @@
     }
 
     var interval = setInterval(function() {
+      if (isTestFinished) return;
       timeLeft--;
       var badge = document.getElementById('plcTimer');
       if (badge) {
@@ -2877,56 +3168,209 @@
       }
       if (timeLeft <= 0) {
         clearInterval(interval);
+        alert("Vaqt tugadi! Darajani aniqlash testi yakunlanadi.");
         finishPlacement();
       }
     }, 1000);
 
     function renderQ() {
-      if (state.i >= questions.length) {
-        clearInterval(interval);
-        finishPlacement();
-        return;
-      }
-
+      if (isTestFinished) return;
       var q = questions[state.i];
       var opts = q.options || { A: 'A', B: 'B', C: 'C', D: 'D' };
+      var answeredCount = Object.keys(state.answers).filter(function(k){ return state.answers[k] !== undefined && state.answers[k] !== ''; }).length;
+      var totalQ = questions.length;
+
+      var currentChoice = state.answers[state.i];
 
       var html = '' +
-        '<div class="ap-quiz">' +
-        '  <div class="ap-qtop">' +
-        '    <div class="eth-timer-badge" title="Total 1.5 hours allocated for all 70 questions">' + ic('clock') + ' <span id="plcTimer">' + formatTime(timeLeft) + '</span></div>' +
-        '    <div class="ap-bar"><i style="width:' + ((state.i / questions.length) * 100) + '%"></i></div>' +
-        '    <b>' + (state.i + 1) + ' / ' + questions.length + '</b>' +
-        '  </div>' +
-        '  <div class="ap-qbox">' +
-        '    <div class="qn">Placement Test (1.5-hour total exam) · Question ' + (state.i + 1) + ' / 70</div>' +
-        '    <h2>' + esc(q.prompt) + '</h2>' +
+        '<div class="eth-lockdown-header">' +
+        '  <div style="display:flex;align-items:center;gap:14px">' +
+        '    <div class="eth-timer-badge" title="Jami 1.5 soat ajratilgan">⏱ <span id="plcTimer">' + formatTime(timeLeft) + '</span></div>' +
         '    <div>' +
-        ['A', 'B', 'C', 'D'].map(function(key) {
-          return '<button class="ap-opt" data-k="' + key + '"><span class="l">' + key + '</span>' + esc(opts[key]) + '</button>';
+        '      <b style="font-size:15px">CEFR Darajani Aniqlash Testi</b>' +
+        '      <span style="font-size:12px;color:var(--muted);margin-left:8px">(Kamerasiz qat\'iy nazorat)</span>' +
+        '    </div>' +
+        '  </div>' +
+        '  <div style="display:flex;align-items:center;gap:12px">' +
+        '    <span style="font-size:13px;font-weight:700;color:var(--muted)">Belgilangan: ' + answeredCount + ' / ' + totalQ + '</span>' +
+        '    <button type="button" class="eth-nav-btn eth-nav-finish" id="btnPlcHeaderFinish" style="padding:7px 16px;font-size:13px">🏁 Testni yakunlash</button>' +
+        '  </div>' +
+        '</div>' +
+        '<div class="eth-lockdown-body">' +
+        '  <!-- 70-Question Palette -->' +
+        '  <div class="eth-q-palette-wrap">' +
+        '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+        '      <span style="font-size:12.5px;font-weight:700;color:var(--muted)">Savollar ro\'yxati (istalgan savolga o\'tib javobni o\'zgartirish mumkin):</span>' +
+        '      <span style="font-size:12px;color:var(--muted)">Progress: <b>' + Math.round((answeredCount / totalQ) * 100) + '%</b></span>' +
+        '    </div>' +
+        '    <div class="eth-q-palette" id="plcPalette">' +
+        questions.map(function(_, idx) {
+          var isAns = state.answers[idx] !== undefined && state.answers[idx] !== '';
+          var isCur = idx === state.i;
+          var cls = 'eth-q-palette-btn' + (isCur ? ' current' : '') + (isAns ? ' answered' : '');
+          return '<button type="button" class="' + cls + '" data-goto="' + idx + '">' + (idx + 1) + '</button>';
         }).join('') +
         '    </div>' +
         '  </div>' +
+        '  <!-- Question Card -->' +
+        '  <div class="ap-quiz" style="margin:0">' +
+        '    <div class="ap-qbox" style="padding:28px 24px">' +
+        '      <div class="qn" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">' +
+        '        <span>Savol ' + (state.i + 1) + ' / ' + totalQ + '</span>' +
+        '        <span style="color:#2563eb;font-weight:700">1 ball</span>' +
+        '      </div>' +
+        '      <h2 style="font-size:19px;margin:0 0 20px;line-height:1.45">' + esc(q.prompt) + '</h2>' +
+        '      <div style="display:flex;flex-direction:column;gap:10px">';
+
+      ['A', 'B', 'C', 'D'].forEach(function(key) {
+        var isSel = (currentChoice === key);
+        var cls = 'ap-opt' + (isSel ? ' selected' : '');
+        html += '' +
+          '<button type="button" class="' + cls + '" data-k="' + key + '">' +
+          '  <span class="l">' + key + '</span>' +
+          '  <span style="flex:1;text-align:left">' + esc(opts[key]) + '</span>' +
+          (isSel ? '  <span style="font-weight:800;color:#2563eb;margin-left:10px">✓ Belgilandi</span>' : '') +
+          '</button>';
+      });
+
+      html += '' +
+        '      </div>' +
+        '    </div>' +
+        '  </div>' +
+        '  <!-- Navigation Bar -->' +
+        '  <div class="eth-runner-nav">' +
+        '    <button type="button" class="eth-nav-btn eth-nav-prev" id="btnPlcPrev"' + (state.i === 0 ? ' disabled style="opacity:0.4;cursor:not-allowed"' : '') + '>' +
+        '      ⬅ Oldingi savol' +
+        '    </button>' +
+        '    <span style="font-size:13.5px;font-weight:700;color:var(--muted)">Savol ' + (state.i + 1) + ' / ' + totalQ + '</span>' +
+        (state.i === totalQ - 1 ?
+          '    <button type="button" class="eth-nav-btn eth-nav-finish" id="btnPlcNext">🏁 Testni yakunlash</button>' :
+          '    <button type="button" class="eth-nav-btn eth-nav-next" id="btnPlcNext">Keyingi savol ➡</button>'
+        ) +
+        '  </div>' +
         '</div>';
 
-      mainContainer.innerHTML = html;
+      lockdownModal.innerHTML = html;
 
-      mainContainer.querySelectorAll('.ap-opt').forEach(function(btn) {
+      // Event handlers: Palette buttons
+      lockdownModal.querySelectorAll('.eth-q-palette-btn').forEach(function(btn) {
         btn.onclick = function() {
-          var k = btn.dataset.k;
-          if (k === q.answer) state.score++;
-          state.answers[state.i] = k;
-          state.i++;
-          renderQ();
+          var target = parseInt(btn.dataset.goto, 10);
+          if (!isNaN(target) && target >= 0 && target < totalQ) {
+            state.i = target;
+            renderQ();
+          }
+        };
+      });
+
+      // Previous button
+      var prevBtn = document.getElementById('btnPlcPrev');
+      if (prevBtn) {
+        prevBtn.onclick = function() {
+          if (state.i > 0) {
+            state.i--;
+            renderQ();
+          }
+        };
+      }
+
+      // Next / Finish button
+      var nextBtn = document.getElementById('btnPlcNext');
+      if (nextBtn) {
+        nextBtn.onclick = function() {
+          if (state.i === totalQ - 1) {
+            confirmPlcFinish();
+          } else {
+            state.i++;
+            renderQ();
+          }
+        };
+      }
+
+      // Header finish button
+      var hFinishBtn = document.getElementById('btnPlcHeaderFinish');
+      if (hFinishBtn) {
+        hFinishBtn.onclick = function() {
+          confirmPlcFinish();
+        };
+      }
+
+      // Option click handler (Does NOT advance question! Updates .selected state)
+      lockdownModal.querySelectorAll('.ap-opt').forEach(function(optBtn) {
+        optBtn.onclick = function() {
+          var chosen = optBtn.dataset.k;
+          state.answers[state.i] = chosen;
+          renderQ(); // re-render to update selected highlight and palette
         };
       });
     }
 
+    function confirmPlcFinish() {
+      var ansCount = Object.keys(state.answers).filter(function(k){ return state.answers[k] !== undefined && state.answers[k] !== ''; }).length;
+      var totalQ = questions.length;
+      var msg = "Darajani aniqlash testini yakunlashga ishonchingiz komilmi?\n\nBelgilangan savollar: " + ansCount + " / " + totalQ + " ta.";
+      if (ansCount < totalQ) {
+        msg += "\nDiqqat: " + (totalQ - ansCount) + " ta savol javobsiz qoldi!";
+      }
+      if (confirm(msg)) {
+        finishPlacement();
+      }
+    }
+
     function finishPlacement() {
-      var score = state.score;
+      if (isTestFinished) return;
+      isTestFinished = true;
+
+      clearInterval(interval);
+      window.removeEventListener('blur', onWindowBlur);
+      document.removeEventListener('visibilitychange', onVisChange);
+
+      // Exit fullscreen mode
+      try {
+        if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      } catch(e) {}
+      document.body.classList.remove('proctored-fullscreen-mode');
+
+      // Compute statistics & breakdown
+      var correctCount = 0;
+      var incorrectCount = 0;
+
+      var breakdown = questions.map(function(q, idx) {
+        var userAns = state.answers[idx];
+        var isCorrect = false;
+
+        if (userAns !== undefined && userAns !== '') {
+          if (userAns === q.answer) {
+            isCorrect = true;
+            correctCount++;
+          } else {
+            incorrectCount++;
+          }
+        } else {
+          incorrectCount++;
+          userAns = 'Belgilanmagan';
+        }
+
+        var opts = q.options || {};
+        var userAnsText = userAns !== 'Belgilanmagan' && opts[userAns] ? (userAns + ') ' + opts[userAns]) : userAns;
+        var correctAnsText = q.answer && opts[q.answer] ? (q.answer + ') ' + opts[q.answer]) : (q.answer || '');
+
+        return {
+          qNum: idx + 1,
+          prompt: q.prompt,
+          userAnsText: userAnsText,
+          correctAnsText: correctAnsText,
+          isCorrect: isCorrect
+        };
+      });
+
+      var score = correctCount;
+      var pct = Math.round((correctCount / questions.length) * 100);
+      var timeSpentMin = Math.max(1, Math.round((90 * 60 - Math.max(0, timeLeft)) / 60));
+
       var level = 'A1';
       var levelDesc = 'Beginner';
-
       if (score <= 6) { level = 'A1'; levelDesc = 'Beginner'; }
       else if (score <= 20) { level = 'A2'; levelDesc = 'Elementary'; }
       else if (score <= 34) { level = 'B1'; levelDesc = 'Pre-Intermediate'; }
@@ -2937,19 +3381,79 @@
       S.level = level.slice(0, 2);
       App.saveState();
 
-      var html = '' +
-        '<div class="ap-res">' +
-        '  <div style="font-size:56px;margin-bottom:10px">🎓</div>' +
-        '  <h2>Your Assessed Level: <span style="color:#2563eb">' + level + ' (' + levelDesc + ')</span></h2>' +
-        '  <p>Earned Score: <b>' + score + ' / ' + questions.length + '</b></p>' +
-        '  <p style="color:var(--muted);font-size:14px;max-width:540px;margin:0 auto 20px">In accordance with Language Hub official guidelines, your proficiency level has been determined and assigned to your profile.</p>' +
-        '  <button class="eth-btn-primary" id="plcDoneBtn" style="margin:0 auto;width:auto;padding:12px 24px">Continue Learning ' + ic('right') + '</button>' +
+      // Render Comprehensive Results Breakdown Screen inside lockdownModal
+      var resHtml = '' +
+        '<div class="eth-lockdown-header">' +
+        '  <div style="font-weight:800;font-size:16px;display:flex;align-items:center;gap:8px">' +
+        '    🎓 <span>CEFR Darajani Aniqlash Testi Natijasi</span>' +
+        '  </div>' +
+        '  <button type="button" class="eth-nav-btn eth-nav-next" id="btnPlcContinue" style="padding:7px 18px">Ta\'limni Boshlash ➡</button>' +
+        '</div>' +
+        '<div class="eth-lockdown-body" style="max-width:850px">' +
+        '  <div style="background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.06);margin-bottom:28px">' +
+        '    <div style="font-size:56px;margin-bottom:12px">🎓</div>' +
+        '    <h1 style="margin:0 0 8px;font-size:26px">Sizning Darajangiz: <span style="color:#2563eb">' + level + ' (' + levelDesc + ')</span></h1>' +
+        '    <p style="color:var(--muted);font-size:15px;margin:0 0 24px">Language Hub xalqaro standarti asosida CEFR darajangiz belgilandi va profilingizga biriktirildi.</p>' +
+        '    <div style="display:inline-block;padding:18px 44px;border-radius:20px;background:rgba(37,99,235,0.08);border:2.5px solid #2563eb;margin-bottom:24px">' +
+        '      <span style="font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:800;color:#2563eb;display:block">To\'plangan Natija</span>' +
+        '      <span style="font-size:52px;font-weight:900;color:#2563eb">' + pct + '%</span>' +
+        '    </div>' +
+        '    <div class="eth-res-metrics">' +
+        '      <div class="eth-res-card" style="border-top:4px solid #10b981">' +
+        '        <span style="font-size:12px;color:var(--muted);font-weight:700">TO\'G\'RI JAVOBLAR</span>' +
+        '        <b style="color:#10b981">✅ ' + correctCount + ' ta</b>' +
+        '      </div>' +
+        '      <div class="eth-res-card" style="border-top:4px solid #ef4444">' +
+        '        <span style="font-size:12px;color:var(--muted);font-weight:700">XATO / BELGILANMAGAN</span>' +
+        '        <b style="color:#ef4444">❌ ' + incorrectCount + ' ta</b>' +
+        '      </div>' +
+        '      <div class="eth-res-card" style="border-top:4px solid #2563eb">' +
+        '        <span style="font-size:12px;color:var(--muted);font-weight:700">TO\'PLANGAN BALL</span>' +
+        '        <b style="color:#2563eb">⭐ ' + score + ' / ' + questions.length + '</b>' +
+        '      </div>' +
+        '      <div class="eth-res-card" style="border-top:4px solid #8b5cf6">' +
+        '        <span style="font-size:12px;color:var(--muted);font-weight:700">SARFLANGAN VAQT</span>' +
+        '        <b style="color:#8b5cf6">⏱ ' + timeSpentMin + ' daqiqa</b>' +
+        '      </div>' +
+        '    </div>' +
+        '    <div style="margin-top:24px">' +
+        '      <button type="button" class="eth-btn-primary" id="btnPlcGoLearn" style="padding:14px 32px;font-weight:700;font-size:15px">O\'quv Dasturiga O\'tish ' + ic('right') + '</button>' +
+        '    </div>' +
+        '  </div>' +
+        '  <!-- Detailed 70-Question Breakdown -->' +
+        '  <h3 style="font-size:18px;margin:28px 0 16px;display:flex;align-items:center;gap:8px">' +
+        '    📋 Savollar Tahlili va To\'liq Ko\'rib Chiqish (70 ta savol):' +
+        '  </h3>' +
+        '  <div class="eth-review-list">' +
+        breakdown.map(function(item) {
+          return '<div class="eth-review-item ' + (item.isCorrect ? 'correct' : 'incorrect') + '">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+            '  <b>Savol ' + item.qNum + '</b>' +
+            '  <span style="font-size:13px;font-weight:700;color:' + (item.isCorrect ? '#10b981' : '#ef4444') + '">' +
+            (item.isCorrect ? '✅ To\'g\'ri (+1 ball)' : '❌ Xato (0 ball)') +
+            '  </span>' +
+            '</div>' +
+            '<p style="margin:0 0 10px;font-size:14.5px;color:var(--text);line-height:1.45">' + esc(item.prompt) + '</p>' +
+            '<div style="font-size:13.5px;background:var(--bg);padding:10px 14px;border-radius:8px">' +
+            '  <div>Sizning javobingiz: <b style="color:' + (item.isCorrect ? '#10b981' : '#ef4444') + '">' + esc(item.userAnsText) + '</b></div>' +
+            (!item.isCorrect ? '<div style="margin-top:4px">To\'g\'ri javob: <b style="color:#10b981">' + esc(item.correctAnsText) + '</b></div>' : '') +
+            '</div>' +
+            '</div>';
+        }).join('') +
+        '  </div>' +
         '</div>';
 
-      mainContainer.innerHTML = html;
-      document.getElementById('plcDoneBtn').onclick = function() {
+      lockdownModal.innerHTML = resHtml;
+
+      function exitPlc() {
+        if (lockdownModal) lockdownModal.remove();
         window.ethithOpenApp('level', S.level);
-      };
+      }
+
+      var contBtn = document.getElementById('btnPlcContinue');
+      if (contBtn) contBtn.onclick = exitPlc;
+      var goBtn = document.getElementById('btnPlcGoLearn');
+      if (goBtn) goBtn.onclick = exitPlc;
     }
 
     renderQ();
@@ -3010,7 +3514,9 @@
     renderMistakesNotebook: renderMistakesNotebook,
     showTeacherNotificationsModal: showTeacherNotificationsModal,
     formatAIMarkdown: formatAIMarkdown,
-    formatMarkdown: formatAIMarkdown
+    formatMarkdown: formatAIMarkdown,
+    startExamRunner: startExamRunner,
+    runPlacementTest: runPlacementTest
   };
 
 })(window);
