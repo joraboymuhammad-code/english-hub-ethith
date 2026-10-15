@@ -2227,6 +2227,7 @@
     var proctorStream = null;
     var proctorInterval = null;
     var turnInfractionFrames = 0;
+    var isPaletteCollapsed = false;
 
     var state = {
       i: 0,
@@ -2245,6 +2246,9 @@
     var lockdownModal = document.createElement('div');
     lockdownModal.id = 'ethExamLockdownModal';
     lockdownModal.className = 'eth-lockdown-fullscreen';
+    var activeTheme = (window.EthithApp && EthithApp.state && EthithApp.state.theme) || (window.S && S.theme) || (document.getElementById('app') && document.getElementById('app').getAttribute('data-theme')) || (document.body && document.body.getAttribute('data-theme')) || 'dark';
+    lockdownModal.setAttribute('data-theme', activeTheme);
+    document.body.setAttribute('data-theme', activeTheme);
     document.body.appendChild(lockdownModal);
 
     // Enter Fullscreen Mode
@@ -2335,7 +2339,6 @@
         var totalMass = 0;
         var sumX = 0;
 
-        // Scan face center bounding box: y:15-105, x:20-140 (step 2)
         for (var y = 15; y < 105; y += 2) {
           for (var x = 20; x < 140; x += 2) {
             var idx = (y * 160 + x) * 4;
@@ -2343,7 +2346,6 @@
             var g = pixels[idx + 1];
             var b = pixels[idx + 2];
 
-            // Robust multi-tone skin & luminance foreground filter
             var isSkin = (r > 45 && g > 30 && b > 20 && r > b && (r - g) >= 5);
             var lum = 0.299 * r + 0.587 * g + 0.114 * b;
             var isFg = isSkin || (lum > 35 && lum < 225 && Math.abs(r - g) > 6);
@@ -2359,7 +2361,6 @@
 
         ticksTotal++;
 
-        // Baseline Calibration (first 4 valid frames or fallback after 1.5s)
         if (calibrationCount < 4) {
           if (totalMass > 40) {
             calibrationCount++;
@@ -2378,10 +2379,8 @@
         var dx = Math.abs(currentCenter - avgBaseCenter);
         var asymmetry = Math.abs(leftMass - rightMass) / (leftMass + rightMass + 1);
 
-        // Turn criteria calculation (~35° deviation)
         var estimatedAngle = Math.min(90, Math.round((dx / 14) * 35 * 0.6 + (asymmetry / 0.38) * 35 * 0.7));
         if (totalMass < 25) {
-          // Face completely absent or turned completely away
           estimatedAngle = 45;
         }
 
@@ -2408,7 +2407,6 @@
           }
         }
 
-        // Trigger lock if head turned 35° or more for 3 consecutive frames (~0.75s)
         if (estimatedAngle >= 35) {
           turnInfractionFrames++;
           if (turnInfractionFrames >= 3) {
@@ -2433,7 +2431,6 @@
         angleBadge.className = 'eth-cam-badge danger';
       }
 
-      // Audio warning beep
       try {
         var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         var osc = audioCtx.createOscillator();
@@ -2449,7 +2446,6 @@
         osc.stop(audioCtx.currentTime + 0.4);
       } catch(ae) {}
 
-      // Red Screen Exam Locked Overlay
       var existingLock = document.getElementById('examLockedScreen');
       if (existingLock) existingLock.remove();
 
@@ -2473,7 +2469,6 @@
         '</div>';
       lockdownModal.appendChild(lockedOverlay);
 
-      // Publish STUDENT_BLOCKED live event across MQTT & sync
       if (window.EthithSync) {
         window.EthithSync.publishLive({
           type: 'STUDENT_BLOCKED',
@@ -2532,109 +2527,143 @@
       var qType = q.type || 'choice';
       var answeredCount = Object.keys(state.answers).filter(function(k){ return state.answers[k] !== undefined && state.answers[k] !== ''; }).length;
       var totalQ = exam.questions.length;
+      var progressPct = Math.round((answeredCount / totalQ) * 100);
 
       var m = Math.floor(timeLeftSeconds / 60);
       var s = timeLeftSeconds % 60;
       var timerStr = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
 
       var html = '' +
-        '<div class="eth-lockdown-header">' +
-        '  <div style="display:flex;align-items:center;gap:14px">' +
-        '    <div class="eth-timer-badge">⏱ <span id="examTimerDisplay">' + timerStr + '</span></div>' +
-        '    <div>' +
-        '      <b style="font-size:15px">' + esc(exam.title) + '</b>' +
-        '      <span style="font-size:12px;color:var(--muted);margin-left:8px">Kod: <b>' + exam.code + '</b></span>' +
+        '<header class="eth-test-topbar">' +
+        '  <div class="eth-test-topbar-left">' +
+        '    <div class="eth-test-badge">' +
+        '      <span class="eth-test-badge-dot"></span>' +
+        '      <span>' + esc(exam.title) + '</span>' +
+        '    </div>' +
+        '    <span class="eth-test-qcount">' + (exam.code ? 'Kod: <b>' + exam.code + '</b>' : '(Nazoratli Test)') + '</span>' +
+        '  </div>' +
+        '  <div class="eth-test-topbar-center">' +
+        '    <div class="eth-test-timer-pill" title="Qolgan vaqt">' +
+        '      <span>⏱</span>' +
+        '      <span id="examTimerDisplay">' + timerStr + '</span>' +
         '    </div>' +
         '  </div>' +
-        '  <div style="display:flex;align-items:center;gap:12px">' +
-        '    <span style="font-size:13px;font-weight:700;color:var(--muted)">Belgilangan: ' + answeredCount + ' / ' + totalQ + '</span>' +
-        '    <button type="button" class="eth-nav-btn eth-nav-finish" id="btnHeaderFinish" style="padding:7px 16px;font-size:13px">🏁 Testni yakunlash</button>' +
-        '  </div>' +
-        '</div>' +
-        '<div class="eth-lockdown-body">' +
-        '  <!-- Question Palette -->' +
-        '  <div class="eth-q-palette-wrap">' +
-        '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
-        '      <span style="font-size:12.5px;font-weight:700;color:var(--muted)">Savollar ro\'yxati (istalgan savolga o\'tib javobni o\'zgartirish mumkin):</span>' +
-        '      <span style="font-size:12px;color:var(--muted)">Progress: <b>' + Math.round((answeredCount / totalQ) * 100) + '%</b></span>' +
+        '  <div class="eth-test-topbar-right">' +
+        '    <div class="eth-test-progress-info">' +
+        '      <div class="eth-test-progress-text">Belgilangan: <b>' + answeredCount + ' / ' + totalQ + '</b> (' + progressPct + '%)</div>' +
+        '      <div class="eth-test-progress-bar"><i style="width:' + progressPct + '%"></i></div>' +
         '    </div>' +
-        '    <div class="eth-q-palette" id="examQPalette">' +
+        '    <button type="button" class="eth-test-btn-finish" id="btnHeaderFinish">🏁 <span>Yakunlash</span></button>' +
+        '  </div>' +
+        '</header>' +
+        '<main class="eth-test-main">' +
+        '  <!-- Collapsible Question Palette Card -->' +
+        '  <div class="eth-test-palette-card">' +
+        '    <div class="eth-test-palette-header" id="btnTogglePalette">' +
+        '      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">' +
+        '        <span style="font-size:16px">📋</span>' +
+        '        <b style="font-size:14px;letter-spacing:-0.01em">Savollar navigatsiyasi</b>' +
+        '        <span class="eth-test-chip success">✅ ' + answeredCount + ' ta belgilandi</span>' +
+        '        <span class="eth-test-chip muted">⚪ ' + (totalQ - answeredCount) + ' ta kutilmoqda</span>' +
+        '      </div>' +
+        '      <span class="eth-test-palette-toggle-icon" id="paletteToggleArrow">' +
+        (isPaletteCollapsed ? '🔽 Ro\'yxatni ochish' : '🔼 Yashirish') +
+        '      </span>' +
+        '    </div>' +
+        '    <div class="eth-test-palette-grid' + (isPaletteCollapsed ? ' collapsed' : '') + '" id="testPaletteGrid">' +
         exam.questions.map(function(_, idx) {
           var isAns = state.answers[idx] !== undefined && state.answers[idx] !== '';
           var isCur = idx === state.i;
-          var cls = 'eth-q-palette-btn' + (isCur ? ' current' : '') + (isAns ? ' answered' : '');
+          var cls = 'eth-test-pbtn' + (isCur ? ' current' : '') + (isAns ? ' answered' : '');
           return '<button type="button" class="' + cls + '" data-goto="' + idx + '">' + (idx + 1) + '</button>';
         }).join('') +
         '    </div>' +
         '  </div>' +
-        '  <!-- Question Box -->' +
-        '  <div class="ap-quiz" style="margin:0">' +
-        '    <div class="ap-qbox" style="padding:28px 24px">' +
-        '      <div class="qn" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">' +
-        '        <span>Savol ' + (state.i + 1) + ' / ' + totalQ + '</span>' +
-        '        <span style="color:#2563eb;font-weight:700">' + exam.pointsPerQ + ' ball</span>' +
-        '      </div>' +
-        '      <h2 style="font-size:19px;margin:0 0 20px;line-height:1.45">' + esc(q.question) + '</h2>' +
-        '      <div id="examOptsContainer">';
+        '  <!-- Main Question Card -->' +
+        '  <div class="eth-test-card">' +
+        '    <div class="eth-test-card-top">' +
+        '      <div class="eth-test-pill-category">SAVOL ' + (state.i + 1) + ' / ' + totalQ + '</div>' +
+        '      <div class="eth-test-pill-points">⭐ ' + (q.points || exam.pointsPerQ || 1) + ' BALL</div>' +
+        '    </div>' +
+        '    <h2 class="eth-test-qtitle">' + esc(q.question) + '</h2>' +
+        '    <div class="eth-test-options-list">';
 
       if (qType === 'written') {
         var currentW = state.answers[state.i] || '';
         html += '' +
           '<div style="margin:16px 0">' +
-          '  <input type="text" id="examWrittenInput" value="' + esc(currentW) + '" placeholder="Javobingizni bu yerga yozing..." style="width:100%;padding:14px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;background:var(--card);color:var(--text);outline:none;box-sizing:border-box">' +
-          '  <p style="font-size:12px;color:var(--muted);margin-top:6px">Javobni yozganingizdan so\'ng pastdagi "Keyingi savol" tugmasini bosing.</p>' +
+          '  <input type="text" id="examWrittenInput" value="' + esc(currentW) + '" placeholder="Javobingizni bu yerga yozing..." style="width:100%;padding:18px 20px;border:2px solid var(--test-item-border);border-radius:16px;font-size:17px;font-weight:600;background:var(--test-item-bg);color:var(--test-text);outline:none;box-sizing:border-box;transition:border-color 0.2s">' +
+          '  <p style="font-size:13px;color:var(--test-text-muted);margin-top:8px">Javobni kiritganingizdan so\'ng pastdagi "Keyingi savol" tugmasini bosing.</p>' +
           '</div>';
       } else if (qType === 'bool') {
         var selB = state.answers[state.i];
         html += '' +
-          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0">' +
-          '  <button type="button" class="ap-opt' + (selB === 'True' ? ' selected' : '') + '" data-opt="True" style="justify-content:center;font-size:16px;font-weight:700">' +
-          '    ✓ True ' + (selB === 'True' ? '<span style="margin-left:8px;color:#2563eb">●</span>' : '') +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0">' +
+          '  <button type="button" class="eth-test-opt' + (selB === 'True' ? ' selected' : '') + '" data-opt="True" style="justify-content:center;font-size:18px;font-weight:700">' +
+          '    <span class="eth-test-opt-badge" style="background:#10b981;color:#fff">✓</span>' +
+          '    <span>True</span>' +
+          '    <span class="eth-test-opt-indicator"></span>' +
           '  </button>' +
-          '  <button type="button" class="ap-opt' + (selB === 'False' ? ' selected' : '') + '" data-opt="False" style="justify-content:center;font-size:16px;font-weight:700">' +
-          '    ✗ False ' + (selB === 'False' ? '<span style="margin-left:8px;color:#2563eb">●</span>' : '') +
+          '  <button type="button" class="eth-test-opt' + (selB === 'False' ? ' selected' : '') + '" data-opt="False" style="justify-content:center;font-size:18px;font-weight:700">' +
+          '    <span class="eth-test-opt-badge" style="background:#ef4444;color:#fff">✗</span>' +
+          '    <span>False</span>' +
+          '    <span class="eth-test-opt-indicator"></span>' +
           '  </button>' +
           '</div>';
       } else {
         var currentOpt = state.answers[state.i];
-        html += '' +
-          '<div style="display:flex;flex-direction:column;gap:10px">' +
-          q.options.map(function(opt, idx) {
-            var isSel = (currentOpt === opt);
-            var cls = 'ap-opt' + (isSel ? ' selected' : '');
-            return '<button type="button" class="' + cls + '" data-opt="' + esc(opt) + '">' +
-              '<span class="l">' + 'ABCD'[idx] + '</span>' +
-              '<span style="flex:1;text-align:left">' + esc(opt) + '</span>' +
-              (isSel ? '<span style="font-weight:800;color:#2563eb;margin-left:10px">✓ Belgilandi</span>' : '') +
-              '</button>';
-          }).join('') +
-          '</div>';
+        q.options.forEach(function(opt, idx) {
+          var isSel = (currentOpt === opt);
+          html += '' +
+            '<button type="button" class="eth-test-opt' + (isSel ? ' selected' : '') + '" data-opt="' + esc(opt) + '">' +
+            '  <span class="eth-test-opt-badge">' + 'ABCD'[idx] + '</span>' +
+            '  <span class="eth-test-opt-text">' + esc(opt) + '</span>' +
+            '  <span class="eth-test-opt-indicator"></span>' +
+            '</button>';
+        });
       }
 
       html += '' +
-        '      </div>' +
         '    </div>' +
         '  </div>' +
-        '  <!-- Navigation Bar -->' +
-        '  <div class="eth-runner-nav">' +
-        '    <button type="button" class="eth-nav-btn eth-nav-prev" id="btnNavPrev"' + (state.i === 0 ? ' disabled style="opacity:0.4;cursor:not-allowed"' : '') + '>' +
-        '      ⬅ Oldingi savol' +
+        '  <!-- Bottom Navigation Bar -->' +
+        '  <footer class="eth-test-footer">' +
+        '    <button type="button" class="eth-test-nav-btn prev" id="btnNavPrev"' + (state.i === 0 ? ' disabled style="opacity:0.35;cursor:not-allowed"' : '') + '>' +
+        '      ⬅ <span>Oldingi savol</span>' +
         '    </button>' +
-        '    <span style="font-size:13.5px;font-weight:700;color:var(--muted)">Savol ' + (state.i + 1) + ' / ' + totalQ + '</span>' +
+        '    <div class="eth-test-nav-center">Savol <b>' + (state.i + 1) + '</b> dan <b>' + totalQ + '</b></div>' +
         (state.i === totalQ - 1 ?
-          '    <button type="button" class="eth-nav-btn eth-nav-finish" id="btnNavNext">🏁 Testni yakunlash</button>' :
-          '    <button type="button" class="eth-nav-btn eth-nav-next" id="btnNavNext">Keyingi savol ➡</button>'
+          '    <button type="button" class="eth-test-nav-btn finish" id="btnNavNext">🏁 <span>Testni yakunlash</span></button>' :
+          '    <button type="button" class="eth-test-nav-btn next" id="btnNavNext"><span>Keyingi savol</span> ➡</button>'
         ) +
-        '  </div>' +
-        '</div>';
+        '  </footer>' +
+        '</main>';
 
-      // Keep proctorCamBox alive
       var camBoxEl = document.getElementById('proctorCamBox');
       lockdownModal.innerHTML = html;
       if (camBoxEl) lockdownModal.appendChild(camBoxEl);
 
+      // Toggle Palette
+      var toggleBtn = document.getElementById('btnTogglePalette');
+      if (toggleBtn) {
+        toggleBtn.onclick = function() {
+          isPaletteCollapsed = !isPaletteCollapsed;
+          var grid = document.getElementById('testPaletteGrid');
+          var arrow = document.getElementById('paletteToggleArrow');
+          if (grid) {
+            if (isPaletteCollapsed) {
+              grid.classList.add('collapsed');
+              if (arrow) arrow.textContent = '🔽 Ro\'yxatni ochish';
+            } else {
+              grid.classList.remove('collapsed');
+              if (arrow) arrow.textContent = '🔼 Yashirish';
+            }
+          }
+        };
+      }
+
       // Event handlers: Palette buttons
-      lockdownModal.querySelectorAll('.eth-q-palette-btn').forEach(function(btn) {
+      lockdownModal.querySelectorAll('.eth-test-pbtn').forEach(function(btn) {
         btn.onclick = function() {
           saveCurrentWritten();
           var target = parseInt(btn.dataset.goto, 10);
@@ -2686,16 +2715,15 @@
         if (inp) {
           inp.oninput = function() {
             state.answers[state.i] = inp.value.trim();
-            updatePaletteCurrent();
           };
         }
       } else {
-        lockdownModal.querySelectorAll('.ap-opt').forEach(function(optBtn) {
+        lockdownModal.querySelectorAll('.eth-test-opt').forEach(function(optBtn) {
           optBtn.onclick = function() {
             if (isExamLocked) return;
             var chosen = optBtn.dataset.opt;
             state.answers[state.i] = chosen;
-            renderExamQuestion(); // re-render to update selected highlights and palette
+            renderExamQuestion();
           };
         });
       }
@@ -2705,17 +2733,6 @@
       var inp = document.getElementById('examWrittenInput');
       if (inp) {
         state.answers[state.i] = inp.value.trim();
-      }
-    }
-
-    function updatePaletteCurrent() {
-      var paletteBtn = lockdownModal.querySelector('.eth-q-palette-btn[data-goto="' + state.i + '"]');
-      if (paletteBtn) {
-        if (state.answers[state.i] && state.answers[state.i] !== '') {
-          paletteBtn.classList.add('answered');
-        } else {
-          paletteBtn.classList.remove('answered');
-        }
       }
     }
 
@@ -2736,28 +2753,24 @@
       if (isExamFinished) return;
       isExamFinished = true;
 
-      // Clean up intervals & listeners
       clearInterval(timerInterval);
       if (proctorInterval) clearInterval(proctorInterval);
       window.removeEventListener('blur', onWindowBlur);
       document.removeEventListener('visibilitychange', onVisChange);
       window._ethithOnStudentUnblocked = null;
 
-      // Stop camera
       if (proctorStream) {
         try {
           proctorStream.getTracks().forEach(function(track) { track.stop(); });
         } catch(e) {}
       }
 
-      // Exit fullscreen mode
       try {
         if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
         else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
       } catch(e) {}
       document.body.classList.remove('proctored-fullscreen-mode');
 
-      // Compute statistics
       var correctCount = 0;
       var incorrectCount = 0;
       var totalPossible = exam.questions.length * exam.pointsPerQ;
@@ -2792,7 +2805,6 @@
       var pct = Math.round((correctCount / exam.questions.length) * 100);
       var timeSpentMin = Math.max(1, Math.round((exam.duration * 60 - Math.max(0, timeLeftSeconds)) / 60));
 
-      // Save submission
       if (!exam.submissions) exam.submissions = [];
       var userKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase();
       var existing = exam.submissions.find(function(s) {
@@ -2832,68 +2844,72 @@
         window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
 
-      // Render Comprehensive Results Breakdown Screen inside lockdownModal
+      // Render Comprehensive Luxury Results Screen
       var resHtml = '' +
-        '<div class="eth-lockdown-header">' +
-        '  <div style="font-weight:800;font-size:16px;display:flex;align-items:center;gap:8px">' +
-        '    🎓 <span>Test Natijalari: ' + esc(exam.title) + '</span>' +
+        '<header class="eth-test-topbar">' +
+        '  <div class="eth-test-topbar-left">' +
+        '    <div class="eth-test-badge">' +
+        '      <span class="eth-test-badge-dot"></span>' +
+        '      <span>Imtihon Natijalari</span>' +
+        '    </div>' +
+        '    <span class="eth-test-qcount">' + esc(exam.title) + '</span>' +
         '  </div>' +
-        '  <button type="button" class="eth-nav-btn eth-nav-next" id="btnCloseExamModal" style="padding:7px 18px">Yopish va Chiqish ✕</button>' +
-        '</div>' +
-        '<div class="eth-lockdown-body" style="max-width:850px">' +
-        '  <div style="background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.06);margin-bottom:28px">' +
-        '    <div style="font-size:54px;margin-bottom:12px">' + (pct >= 60 ? '🎉' : '📊') + '</div>' +
-        '    <h1 style="margin:0 0 8px;font-size:26px">Imtihon Muvaffaqiyatli Yakunlandi!</h1>' +
-        '    <p style="color:var(--muted);font-size:15px;margin:0 0 24px">' + esc(exam.title) + ' · Kod: ' + exam.code + '</p>' +
-        '    <div style="display:inline-block;padding:18px 44px;border-radius:20px;background:rgba(37,99,235,0.08);border:2.5px solid #2563eb;margin-bottom:24px">' +
-        '      <span style="font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:800;color:#2563eb;display:block">Umumiy Natija</span>' +
-        '      <span style="font-size:52px;font-weight:900;color:#2563eb">' + pct + '%</span>' +
+        '  <button type="button" class="eth-test-nav-btn next" id="btnCloseExamModal" style="padding:8px 20px;font-size:13.5px">Yopish va Chiqish ✕</button>' +
+        '</header>' +
+        '<main class="eth-test-main" style="max-width:850px">' +
+        '  <div class="eth-test-card" style="text-align:center;padding:40px 32px">' +
+        '    <div style="font-size:60px;margin-bottom:12px">' + (pct >= 60 ? '🎉' : '📊') + '</div>' +
+        '    <h1 style="margin:0 0 8px;font-size:28px;font-weight:800;color:var(--test-text)">Imtihon Muvaffaqiyatli Yakunlandi!</h1>' +
+        '    <p style="color:var(--test-text-muted);font-size:15px;margin:0 0 28px">' + esc(exam.title) + (exam.code ? ' · Maxsus Kod: ' + exam.code : '') + '</p>' +
+        '    <div style="display:inline-block;padding:20px 48px;border-radius:22px;background:rgba(37,99,235,0.12);border:2.5px solid #3b82f6;margin-bottom:28px;box-shadow:0 10px 30px var(--test-accent-glow)">' +
+        '      <span style="font-size:12.5px;text-transform:uppercase;letter-spacing:1px;font-weight:800;color:#60a5fa;display:block">Umumiy Natija</span>' +
+        '      <span style="font-size:56px;font-weight:900;color:#3b82f6">' + pct + '%</span>' +
         '    </div>' +
         '    <div class="eth-res-metrics">' +
         '      <div class="eth-res-card" style="border-top:4px solid #10b981">' +
-        '        <span style="font-size:12px;color:var(--muted);font-weight:700">TO\'G\'RI JAVOBLAR</span>' +
+        '        <span style="font-size:12px;color:var(--test-text-muted);font-weight:700">TO\'G\'RI JAVOBLAR</span>' +
         '        <b style="color:#10b981">✅ ' + correctCount + ' ta</b>' +
         '      </div>' +
         '      <div class="eth-res-card" style="border-top:4px solid #ef4444">' +
-        '        <span style="font-size:12px;color:var(--muted);font-weight:700">XATO / BELGILANMAGAN</span>' +
+        '        <span style="font-size:12px;color:var(--test-text-muted);font-weight:700">XATO / BELGILANMAGAN</span>' +
         '        <b style="color:#ef4444">❌ ' + incorrectCount + ' ta</b>' +
         '      </div>' +
-        '      <div class="eth-res-card" style="border-top:4px solid #2563eb">' +
-        '        <span style="font-size:12px;color:var(--muted);font-weight:700">TO\'PLANGAN BALL</span>' +
-        '        <b style="color:#2563eb">⭐ ' + earnedScore + ' / ' + totalPossible + '</b>' +
+        '      <div class="eth-res-card" style="border-top:4px solid #3b82f6">' +
+        '        <span style="font-size:12px;color:var(--test-text-muted);font-weight:700">TO\'PLANGAN BALL</span>' +
+        '        <b style="color:#3b82f6">⭐ ' + earnedScore + ' / ' + totalPossible + '</b>' +
         '      </div>' +
         '      <div class="eth-res-card" style="border-top:4px solid #8b5cf6">' +
-        '        <span style="font-size:12px;color:var(--muted);font-weight:700">SARFLANGAN VAQT</span>' +
+        '        <span style="font-size:12px;color:var(--test-text-muted);font-weight:700">SARFLANGAN VAQT</span>' +
         '        <b style="color:#8b5cf6">⏱ ' + timeSpentMin + ' daqiqa</b>' +
         '      </div>' +
         '    </div>' +
-        '    <div style="display:flex;justify-content:center;gap:12px;margin-top:24px;flex-wrap:wrap">' +
-        '      <button type="button" class="eth-btn-primary" id="btnResLeaderboard" style="padding:12px 24px;font-weight:700">' + ic('trophy') + ' Natijalar Jadvali (Leaderboard)</button>' +
-        '      <button type="button" class="eth-nav-btn eth-nav-prev" id="btnResExit" style="padding:12px 24px;font-weight:700">Bosh Sahifaga Qaytish</button>' +
+        '    <div style="display:flex;justify-content:center;gap:14px;margin-top:28px;flex-wrap:wrap">' +
+        '      <button type="button" class="eth-test-nav-btn next" id="btnResLeaderboard" style="padding:14px 28px;font-size:15px">' + ic('trophy') + ' Natijalar Jadvali (Leaderboard)</button>' +
+        '      <button type="button" class="eth-test-nav-btn prev" id="btnResExit" style="padding:14px 28px;font-size:15px">Bosh Sahifaga Qaytish</button>' +
         '    </div>' +
         '  </div>' +
         '  <!-- Detailed Question Breakdown -->' +
-        '  <h3 style="font-size:18px;margin:28px 0 16px;display:flex;align-items:center;gap:8px">' +
+        '  <h3 style="font-size:20px;font-weight:800;color:var(--test-text);margin:32px 0 16px;display:flex;align-items:center;gap:10px">' +
         '    📋 Savollar Tahlili va To\'liq Ko\'rib Chiqish (' + exam.questions.length + ' ta savol):' +
         '  </h3>' +
         '  <div class="eth-review-list">' +
         breakdown.map(function(item) {
           return '<div class="eth-review-item ' + (item.isCorrect ? 'correct' : 'incorrect') + '">' +
-            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
-            '  <b>Savol ' + item.qNum + '</b>' +
-            '  <span style="font-size:13px;font-weight:700;color:' + (item.isCorrect ? '#10b981' : '#ef4444') + '">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
+            '  <b style="font-size:15px;color:var(--test-text)">Savol ' + item.qNum + '</b>' +
+            '  <span style="font-size:13.5px;font-weight:800;color:' + (item.isCorrect ? '#10b981' : '#ef4444') + '">' +
             (item.isCorrect ? '✅ To\'g\'ri (+ ' + exam.pointsPerQ + ' ball)' : '❌ Xato (0 ball)') +
             '  </span>' +
             '</div>' +
-            '<p style="margin:0 0 10px;font-size:14.5px;color:var(--text);line-height:1.45">' + esc(item.question) + '</p>' +
-            '<div style="font-size:13.5px;background:var(--bg);padding:10px 14px;border-radius:8px">' +
+            '<p style="margin:0 0 12px;font-size:15.5px;color:var(--test-text);line-height:1.48">' + esc(item.question) + '</p>' +
+            '<div style="font-size:14px;background:var(--test-palette-bg);padding:12px 16px;border-radius:12px;border:1px solid var(--test-item-border)">' +
             '  <div>Sizning javobingiz: <b style="color:' + (item.isCorrect ? '#10b981' : '#ef4444') + '">' + esc(item.userAns) + '</b></div>' +
-            (!item.isCorrect ? '<div style="margin-top:4px">To\'g\'ri javob: <b style="color:#10b981">' + esc(item.correctAns) + '</b></div>' : '') +
+            (!item.isCorrect ? '<div style="margin-top:6px">To\'g\'ri javob: <b style="color:#10b981">' + esc(item.correctAns) + '</b></div>' : '') +
             '</div>' +
             '</div>';
         }).join('') +
         '  </div>' +
-        '</div>';
+        '</main>';
 
       lockdownModal.innerHTML = resHtml;
 
@@ -3110,6 +3126,7 @@
   function runPlacementTest(mainContainer, questions) {
     var timeLeft = 90 * 60; // Exactly 1.5 hours (90 minutes) total for all 70 questions
     var isTestFinished = false;
+    var isPaletteCollapsed = false;
     var state = {
       i: 0,
       answers: {}
@@ -3123,6 +3140,9 @@
     var lockdownModal = document.createElement('div');
     lockdownModal.id = 'ethExamLockdownModal';
     lockdownModal.className = 'eth-lockdown-fullscreen';
+    var activeTheme = (window.EthithApp && EthithApp.state && EthithApp.state.theme) || (window.S && S.theme) || (document.getElementById('app') && document.getElementById('app').getAttribute('data-theme')) || (document.body && document.body.getAttribute('data-theme')) || 'dark';
+    lockdownModal.setAttribute('data-theme', activeTheme);
+    document.body.setAttribute('data-theme', activeTheme);
     document.body.appendChild(lockdownModal);
 
     // Enter Fullscreen Mode
@@ -3179,81 +3199,114 @@
       var opts = q.options || { A: 'A', B: 'B', C: 'C', D: 'D' };
       var answeredCount = Object.keys(state.answers).filter(function(k){ return state.answers[k] !== undefined && state.answers[k] !== ''; }).length;
       var totalQ = questions.length;
+      var progressPct = Math.round((answeredCount / totalQ) * 100);
 
       var currentChoice = state.answers[state.i];
 
       var html = '' +
-        '<div class="eth-lockdown-header">' +
-        '  <div style="display:flex;align-items:center;gap:14px">' +
-        '    <div class="eth-timer-badge" title="Jami 1.5 soat ajratilgan">⏱ <span id="plcTimer">' + formatTime(timeLeft) + '</span></div>' +
-        '    <div>' +
-        '      <b style="font-size:15px">CEFR Darajani Aniqlash Testi</b>' +
-        '      <span style="font-size:12px;color:var(--muted);margin-left:8px">(Kamerasiz qat\'iy nazorat)</span>' +
+        '<header class="eth-test-topbar">' +
+        '  <div class="eth-test-topbar-left">' +
+        '    <div class="eth-test-badge">' +
+        '      <span class="eth-test-badge-dot"></span>' +
+        '      <span>CEFR Darajani Aniqlash Testi</span>' +
+        '    </div>' +
+        '    <span class="eth-test-qcount">(Kamerasiz qat\'iy nazorat)</span>' +
+        '  </div>' +
+        '  <div class="eth-test-topbar-center">' +
+        '    <div class="eth-test-timer-pill" title="Jami 1.5 soat ajratilgan">' +
+        '      <span>⏱</span>' +
+        '      <span id="plcTimer">' + formatTime(timeLeft) + '</span>' +
         '    </div>' +
         '  </div>' +
-        '  <div style="display:flex;align-items:center;gap:12px">' +
-        '    <span style="font-size:13px;font-weight:700;color:var(--muted)">Belgilangan: ' + answeredCount + ' / ' + totalQ + '</span>' +
-        '    <button type="button" class="eth-nav-btn eth-nav-finish" id="btnPlcHeaderFinish" style="padding:7px 16px;font-size:13px">🏁 Testni yakunlash</button>' +
-        '  </div>' +
-        '</div>' +
-        '<div class="eth-lockdown-body">' +
-        '  <!-- 70-Question Palette -->' +
-        '  <div class="eth-q-palette-wrap">' +
-        '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
-        '      <span style="font-size:12.5px;font-weight:700;color:var(--muted)">Savollar ro\'yxati (istalgan savolga o\'tib javobni o\'zgartirish mumkin):</span>' +
-        '      <span style="font-size:12px;color:var(--muted)">Progress: <b>' + Math.round((answeredCount / totalQ) * 100) + '%</b></span>' +
+        '  <div class="eth-test-topbar-right">' +
+        '    <div class="eth-test-progress-info">' +
+        '      <div class="eth-test-progress-text">Belgilangan: <b>' + answeredCount + ' / ' + totalQ + '</b> (' + progressPct + '%)</div>' +
+        '      <div class="eth-test-progress-bar"><i style="width:' + progressPct + '%"></i></div>' +
         '    </div>' +
-        '    <div class="eth-q-palette" id="plcPalette">' +
+        '    <button type="button" class="eth-test-btn-finish" id="btnPlcHeaderFinish">🏁 <span>Yakunlash</span></button>' +
+        '  </div>' +
+        '</header>' +
+        '<main class="eth-test-main">' +
+        '  <!-- Collapsible 70-Question Palette Card -->' +
+        '  <div class="eth-test-palette-card">' +
+        '    <div class="eth-test-palette-header" id="btnTogglePlcPalette">' +
+        '      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">' +
+        '        <span style="font-size:16px">📋</span>' +
+        '        <b style="font-size:14px;letter-spacing:-0.01em">Savollar xaritasi (70 ta savol)</b>' +
+        '        <span class="eth-test-chip success">✅ ' + answeredCount + ' ta belgilandi</span>' +
+        '        <span class="eth-test-chip muted">⚪ ' + (totalQ - answeredCount) + ' ta kutilmoqda</span>' +
+        '      </div>' +
+        '      <span class="eth-test-palette-toggle-icon" id="plcPaletteToggleArrow">' +
+        (isPaletteCollapsed ? '🔽 Ro\'yxatni ochish' : '🔼 Yashirish') +
+        '      </span>' +
+        '    </div>' +
+        '    <div class="eth-test-palette-grid' + (isPaletteCollapsed ? ' collapsed' : '') + '" id="plcPaletteGrid">' +
         questions.map(function(_, idx) {
           var isAns = state.answers[idx] !== undefined && state.answers[idx] !== '';
           var isCur = idx === state.i;
-          var cls = 'eth-q-palette-btn' + (isCur ? ' current' : '') + (isAns ? ' answered' : '');
+          var cls = 'eth-test-pbtn' + (isCur ? ' current' : '') + (isAns ? ' answered' : '');
           return '<button type="button" class="' + cls + '" data-goto="' + idx + '">' + (idx + 1) + '</button>';
         }).join('') +
         '    </div>' +
         '  </div>' +
-        '  <!-- Question Card -->' +
-        '  <div class="ap-quiz" style="margin:0">' +
-        '    <div class="ap-qbox" style="padding:28px 24px">' +
-        '      <div class="qn" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">' +
-        '        <span>Savol ' + (state.i + 1) + ' / ' + totalQ + '</span>' +
-        '        <span style="color:#2563eb;font-weight:700">1 ball</span>' +
-        '      </div>' +
-        '      <h2 style="font-size:19px;margin:0 0 20px;line-height:1.45">' + esc(q.prompt) + '</h2>' +
-        '      <div style="display:flex;flex-direction:column;gap:10px">';
+        '  <!-- Main Question Box -->' +
+        '  <div class="eth-test-card">' +
+        '    <div class="eth-test-card-top">' +
+        '      <div class="eth-test-pill-category">SAVOL ' + (state.i + 1) + ' / ' + totalQ + '</div>' +
+        '      <div class="eth-test-pill-points">⭐ 1 BALL</div>' +
+        '    </div>' +
+        '    <h2 class="eth-test-qtitle">' + esc(q.prompt) + '</h2>' +
+        '    <div class="eth-test-options-list">';
 
       ['A', 'B', 'C', 'D'].forEach(function(key) {
         var isSel = (currentChoice === key);
-        var cls = 'ap-opt' + (isSel ? ' selected' : '');
         html += '' +
-          '<button type="button" class="' + cls + '" data-k="' + key + '">' +
-          '  <span class="l">' + key + '</span>' +
-          '  <span style="flex:1;text-align:left">' + esc(opts[key]) + '</span>' +
-          (isSel ? '  <span style="font-weight:800;color:#2563eb;margin-left:10px">✓ Belgilandi</span>' : '') +
+          '<button type="button" class="eth-test-opt' + (isSel ? ' selected' : '') + '" data-k="' + key + '">' +
+          '  <span class="eth-test-opt-badge">' + key + '</span>' +
+          '  <span class="eth-test-opt-text">' + esc(opts[key]) + '</span>' +
+          '  <span class="eth-test-opt-indicator"></span>' +
           '</button>';
       });
 
       html += '' +
-        '      </div>' +
         '    </div>' +
         '  </div>' +
-        '  <!-- Navigation Bar -->' +
-        '  <div class="eth-runner-nav">' +
-        '    <button type="button" class="eth-nav-btn eth-nav-prev" id="btnPlcPrev"' + (state.i === 0 ? ' disabled style="opacity:0.4;cursor:not-allowed"' : '') + '>' +
-        '      ⬅ Oldingi savol' +
+        '  <!-- Bottom Navigation Bar -->' +
+        '  <footer class="eth-test-footer">' +
+        '    <button type="button" class="eth-test-nav-btn prev" id="btnPlcPrev"' + (state.i === 0 ? ' disabled style="opacity:0.35;cursor:not-allowed"' : '') + '>' +
+        '      ⬅ <span>Oldingi savol</span>' +
         '    </button>' +
-        '    <span style="font-size:13.5px;font-weight:700;color:var(--muted)">Savol ' + (state.i + 1) + ' / ' + totalQ + '</span>' +
+        '    <div class="eth-test-nav-center">Savol <b>' + (state.i + 1) + '</b> dan <b>' + totalQ + '</b></div>' +
         (state.i === totalQ - 1 ?
-          '    <button type="button" class="eth-nav-btn eth-nav-finish" id="btnPlcNext">🏁 Testni yakunlash</button>' :
-          '    <button type="button" class="eth-nav-btn eth-nav-next" id="btnPlcNext">Keyingi savol ➡</button>'
+          '    <button type="button" class="eth-test-nav-btn finish" id="btnPlcNext">🏁 <span>Testni yakunlash</span></button>' :
+          '    <button type="button" class="eth-test-nav-btn next" id="btnPlcNext"><span>Keyingi savol</span> ➡</button>'
         ) +
-        '  </div>' +
-        '</div>';
+        '  </footer>' +
+        '</main>';
 
       lockdownModal.innerHTML = html;
 
+      // Toggle Palette
+      var toggleBtn = document.getElementById('btnTogglePlcPalette');
+      if (toggleBtn) {
+        toggleBtn.onclick = function() {
+          isPaletteCollapsed = !isPaletteCollapsed;
+          var grid = document.getElementById('plcPaletteGrid');
+          var arrow = document.getElementById('plcPaletteToggleArrow');
+          if (grid) {
+            if (isPaletteCollapsed) {
+              grid.classList.add('collapsed');
+              if (arrow) arrow.textContent = '🔽 Ro\'yxatni ochish';
+            } else {
+              grid.classList.remove('collapsed');
+              if (arrow) arrow.textContent = '🔼 Yashirish';
+            }
+          }
+        };
+      }
+
       // Event handlers: Palette buttons
-      lockdownModal.querySelectorAll('.eth-q-palette-btn').forEach(function(btn) {
+      lockdownModal.querySelectorAll('.eth-test-pbtn').forEach(function(btn) {
         btn.onclick = function() {
           var target = parseInt(btn.dataset.goto, 10);
           if (!isNaN(target) && target >= 0 && target < totalQ) {
@@ -3296,11 +3349,11 @@
       }
 
       // Option click handler (Does NOT advance question! Updates .selected state)
-      lockdownModal.querySelectorAll('.ap-opt').forEach(function(optBtn) {
+      lockdownModal.querySelectorAll('.eth-test-opt').forEach(function(optBtn) {
         optBtn.onclick = function() {
           var chosen = optBtn.dataset.k;
           state.answers[state.i] = chosen;
-          renderQ(); // re-render to update selected highlight and palette
+          renderQ();
         };
       });
     }
@@ -3325,14 +3378,12 @@
       window.removeEventListener('blur', onWindowBlur);
       document.removeEventListener('visibilitychange', onVisChange);
 
-      // Exit fullscreen mode
       try {
         if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
         else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
       } catch(e) {}
       document.body.classList.remove('proctored-fullscreen-mode');
 
-      // Compute statistics & breakdown
       var correctCount = 0;
       var incorrectCount = 0;
 
@@ -3381,67 +3432,71 @@
       S.level = level.slice(0, 2);
       App.saveState();
 
-      // Render Comprehensive Results Breakdown Screen inside lockdownModal
+      // Render Comprehensive Luxury Results Screen
       var resHtml = '' +
-        '<div class="eth-lockdown-header">' +
-        '  <div style="font-weight:800;font-size:16px;display:flex;align-items:center;gap:8px">' +
-        '    🎓 <span>CEFR Darajani Aniqlash Testi Natijasi</span>' +
+        '<header class="eth-test-topbar">' +
+        '  <div class="eth-test-topbar-left">' +
+        '    <div class="eth-test-badge">' +
+        '      <span class="eth-test-badge-dot"></span>' +
+        '      <span>CEFR Natijasi</span>' +
+        '    </div>' +
+        '    <span class="eth-test-qcount">Language Hub Standarti</span>' +
         '  </div>' +
-        '  <button type="button" class="eth-nav-btn eth-nav-next" id="btnPlcContinue" style="padding:7px 18px">Ta\'limni Boshlash ➡</button>' +
-        '</div>' +
-        '<div class="eth-lockdown-body" style="max-width:850px">' +
-        '  <div style="background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.06);margin-bottom:28px">' +
-        '    <div style="font-size:56px;margin-bottom:12px">🎓</div>' +
-        '    <h1 style="margin:0 0 8px;font-size:26px">Sizning Darajangiz: <span style="color:#2563eb">' + level + ' (' + levelDesc + ')</span></h1>' +
-        '    <p style="color:var(--muted);font-size:15px;margin:0 0 24px">Language Hub xalqaro standarti asosida CEFR darajangiz belgilandi va profilingizga biriktirildi.</p>' +
-        '    <div style="display:inline-block;padding:18px 44px;border-radius:20px;background:rgba(37,99,235,0.08);border:2.5px solid #2563eb;margin-bottom:24px">' +
-        '      <span style="font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:800;color:#2563eb;display:block">To\'plangan Natija</span>' +
-        '      <span style="font-size:52px;font-weight:900;color:#2563eb">' + pct + '%</span>' +
+        '  <button type="button" class="eth-test-nav-btn next" id="btnPlcContinue" style="padding:8px 20px;font-size:13.5px">Ta\'limni Boshlash ➡</button>' +
+        '</header>' +
+        '<main class="eth-test-main" style="max-width:850px">' +
+        '  <div class="eth-test-card" style="text-align:center;padding:40px 32px">' +
+        '    <div style="font-size:60px;margin-bottom:12px">🎓</div>' +
+        '    <h1 style="margin:0 0 8px;font-size:28px;font-weight:800;color:var(--test-text)">Sizning Darajangiz: <span style="color:#3b82f6">' + level + ' (' + levelDesc + ')</span></h1>' +
+        '    <p style="color:var(--test-text-muted);font-size:15px;margin:0 0 28px">Language Hub xalqaro standarti asosida CEFR darajangiz belgilandi va profilingizga biriktirildi.</p>' +
+        '    <div style="display:inline-block;padding:20px 48px;border-radius:22px;background:rgba(37,99,235,0.12);border:2.5px solid #3b82f6;margin-bottom:28px;box-shadow:0 10px 30px var(--test-accent-glow)">' +
+        '      <span style="font-size:12.5px;text-transform:uppercase;letter-spacing:1px;font-weight:800;color:#60a5fa;display:block">To\'plangan Natija</span>' +
+        '      <span style="font-size:56px;font-weight:900;color:#3b82f6">' + pct + '%</span>' +
         '    </div>' +
         '    <div class="eth-res-metrics">' +
         '      <div class="eth-res-card" style="border-top:4px solid #10b981">' +
-        '        <span style="font-size:12px;color:var(--muted);font-weight:700">TO\'G\'RI JAVOBLAR</span>' +
+        '        <span style="font-size:12px;color:var(--test-text-muted);font-weight:700">TO\'G\'RI JAVOBLAR</span>' +
         '        <b style="color:#10b981">✅ ' + correctCount + ' ta</b>' +
         '      </div>' +
         '      <div class="eth-res-card" style="border-top:4px solid #ef4444">' +
-        '        <span style="font-size:12px;color:var(--muted);font-weight:700">XATO / BELGILANMAGAN</span>' +
+        '        <span style="font-size:12px;color:var(--test-text-muted);font-weight:700">XATO / BELGILANMAGAN</span>' +
         '        <b style="color:#ef4444">❌ ' + incorrectCount + ' ta</b>' +
         '      </div>' +
-        '      <div class="eth-res-card" style="border-top:4px solid #2563eb">' +
-        '        <span style="font-size:12px;color:var(--muted);font-weight:700">TO\'PLANGAN BALL</span>' +
-        '        <b style="color:#2563eb">⭐ ' + score + ' / ' + questions.length + '</b>' +
+        '      <div class="eth-res-card" style="border-top:4px solid #3b82f6">' +
+        '        <span style="font-size:12px;color:var(--test-text-muted);font-weight:700">TO\'PLANGAN BALL</span>' +
+        '        <b style="color:#3b82f6">⭐ ' + score + ' / ' + questions.length + '</b>' +
         '      </div>' +
         '      <div class="eth-res-card" style="border-top:4px solid #8b5cf6">' +
-        '        <span style="font-size:12px;color:var(--muted);font-weight:700">SARFLANGAN VAQT</span>' +
+        '        <span style="font-size:12px;color:var(--test-text-muted);font-weight:700">SARFLANGAN VAQT</span>' +
         '        <b style="color:#8b5cf6">⏱ ' + timeSpentMin + ' daqiqa</b>' +
         '      </div>' +
         '    </div>' +
-        '    <div style="margin-top:24px">' +
-        '      <button type="button" class="eth-btn-primary" id="btnPlcGoLearn" style="padding:14px 32px;font-weight:700;font-size:15px">O\'quv Dasturiga O\'tish ' + ic('right') + '</button>' +
+        '    <div style="margin-top:28px">' +
+        '      <button type="button" class="eth-test-nav-btn next" id="btnPlcGoLearn" style="padding:15px 36px;font-size:16px">O\'quv Dasturiga O\'tish ' + ic('right') + '</button>' +
         '    </div>' +
         '  </div>' +
         '  <!-- Detailed 70-Question Breakdown -->' +
-        '  <h3 style="font-size:18px;margin:28px 0 16px;display:flex;align-items:center;gap:8px">' +
+        '  <h3 style="font-size:20px;font-weight:800;color:var(--test-text);margin:32px 0 16px;display:flex;align-items:center;gap:10px">' +
         '    📋 Savollar Tahlili va To\'liq Ko\'rib Chiqish (70 ta savol):' +
         '  </h3>' +
         '  <div class="eth-review-list">' +
         breakdown.map(function(item) {
           return '<div class="eth-review-item ' + (item.isCorrect ? 'correct' : 'incorrect') + '">' +
-            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
-            '  <b>Savol ' + item.qNum + '</b>' +
-            '  <span style="font-size:13px;font-weight:700;color:' + (item.isCorrect ? '#10b981' : '#ef4444') + '">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
+            '  <b style="font-size:15px;color:var(--test-text)">Savol ' + item.qNum + '</b>' +
+            '  <span style="font-size:13.5px;font-weight:800;color:' + (item.isCorrect ? '#10b981' : '#ef4444') + '">' +
             (item.isCorrect ? '✅ To\'g\'ri (+1 ball)' : '❌ Xato (0 ball)') +
             '  </span>' +
             '</div>' +
-            '<p style="margin:0 0 10px;font-size:14.5px;color:var(--text);line-height:1.45">' + esc(item.prompt) + '</p>' +
-            '<div style="font-size:13.5px;background:var(--bg);padding:10px 14px;border-radius:8px">' +
+            '<p style="margin:0 0 12px;font-size:15.5px;color:var(--test-text);line-height:1.48">' + esc(item.prompt) + '</p>' +
+            '<div style="font-size:14px;background:var(--test-palette-bg);padding:12px 16px;border-radius:12px;border:1px solid var(--test-item-border)">' +
             '  <div>Sizning javobingiz: <b style="color:' + (item.isCorrect ? '#10b981' : '#ef4444') + '">' + esc(item.userAnsText) + '</b></div>' +
-            (!item.isCorrect ? '<div style="margin-top:4px">To\'g\'ri javob: <b style="color:#10b981">' + esc(item.correctAnsText) + '</b></div>' : '') +
+            (!item.isCorrect ? '<div style="margin-top:6px">To\'g\'ri javob: <b style="color:#10b981">' + esc(item.correctAnsText) + '</b></div>' : '') +
             '</div>' +
             '</div>';
         }).join('') +
         '  </div>' +
-        '</div>';
+        '</main>';
 
       lockdownModal.innerHTML = resHtml;
 
