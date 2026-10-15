@@ -3016,38 +3016,62 @@
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
     overlay.style.zIndex = '2147483649';
+
+    var activeTheme = (window.EthithApp && EthithApp.state && EthithApp.state.theme) || (window.S && S.theme) || (document.getElementById('app') && document.getElementById('app').getAttribute('data-theme')) || (document.body && document.body.getAttribute('data-theme')) || 'dark';
+    overlay.setAttribute('data-theme', activeTheme);
+
+    var isDark = (activeTheme === 'dark');
+    var modalBg = isDark ? '#0d1829' : '#ffffff';
+    var textPrimary = isDark ? '#f8fafc' : '#0f172a';
+    var textMuted = isDark ? '#94a3b8' : '#475569';
+    var textBold = isDark ? '#ffffff' : '#0f172a';
+
+    var card1Bg = isDark ? 'rgba(239, 68, 68, 0.15)' : '#fef2f2';
+    var card1Border = isDark ? 'rgba(239, 68, 68, 0.45)' : '#fecaca';
+    var card1Title = isDark ? '#f87171' : '#b91c1c';
+    var card1AlertBg = isDark ? 'rgba(239, 68, 68, 0.25)' : '#fee2e2';
+    var card1AlertText = isDark ? '#fca5a5' : '#991b1b';
+
+    var card2Bg = isDark ? 'rgba(16, 185, 129, 0.15)' : '#f0fdf4';
+    var card2Border = isDark ? 'rgba(16, 185, 129, 0.45)' : '#bbf7d0';
+    var card2Title = isDark ? '#34d399' : '#15803d';
+
+    var card3Bg = isDark ? 'rgba(245, 158, 11, 0.15)' : '#fffbeb';
+    var card3Border = isDark ? 'rgba(245, 158, 11, 0.45)' : '#fde68a';
+    var card3Title = isDark ? '#fbbf24' : '#b45309';
+
     overlay.innerHTML = '' +
-      '<div class="eth-modal" style="max-width:620px;padding:28px 30px;border:2.5px solid #ef4444;border-radius:20px;background:var(--card);box-shadow:0 20px 50px rgba(0,0,0,0.4)">' +
-      '  <div class="eth-modal-header" style="text-align:center;margin-bottom:20px">' +
-      '    <div style="font-size:42px;margin-bottom:8px">🛡️</div>' +
-      '    <h2 style="font-size:22px;font-weight:900;color:var(--text);margin:0 0 6px">Qat\'iy Imtihon Xavfsizlik Qoidalari</h2>' +
-      '    <p style="margin:0;font-size:14px;color:var(--muted)">Test boshlanishidan oldin quyidagi talablar bilan diqqat bilan tanishib chiqing:</p>' +
+      '<div class="eth-modal eth-security-briefing-modal" style="max-width:620px;padding:28px 30px;border:2.5px solid #ef4444;border-radius:20px;background:' + modalBg + ';color:' + textPrimary + ';box-shadow:0 25px 60px rgba(0,0,0,0.65), 0 0 30px rgba(239,68,68,0.2)">' +
+      '  <div class="eth-modal-header" style="text-align:center;margin-bottom:20px;border-bottom:none;padding:0">' +
+      '    <div style="font-size:44px;margin-bottom:10px">🛡️</div>' +
+      '    <h2 style="font-size:23px;font-weight:900;color:' + textPrimary + ';margin:0 0 8px;letter-spacing:-0.01em">Qat\'iy Imtihon Xavfsizlik Qoidalari</h2>' +
+      '    <p style="margin:0;font-size:14px;color:' + textMuted + ';line-height:1.5">Test boshlanishidan oldin quyidagi talablar bilan diqqat bilan tanishib chiqing:</p>' +
       '  </div>' +
-      '  <div class="eth-modal-body" style="display:flex;flex-direction:column;gap:14px;font-size:13.5px;line-height:1.55">' +
-      '    <div style="background:rgba(239,68,68,0.08);border:1.5px solid rgba(239,68,68,0.3);padding:14px 16px;border-radius:12px">' +
-      '      <b style="color:#dc2626;display:flex;align-items:center;gap:6px;font-size:14px;margin-bottom:6px">🚫 1. TAQIQLANGAN TUGMALAR (Klaviaturadan qat\'iy nazorat):</b>' +
-      '      <div style="color:var(--text);margin-bottom:6px">' +
-      '        Klaviaturadagi <b>Tab, Esc, Alt, Windows (Win), Ctrl, Fn, F1–F12, Strelkalar (▲ ▼ ◄ ►), Delete (Del), Home (HM), PageUp (PU), PageDown (PD), Insert (INS), PrintScreen (PS), ScrollLock (SL), Pause/Break (PB)</b> tugmalariga tegish QAT\'IYAN TAQIQLANADI!' +
+      '  <div class="eth-modal-body" style="display:flex;flex-direction:column;gap:14px;font-size:13.5px;line-height:1.6;padding:0">' +
+      '    <div style="background:' + card1Bg + ';border:1.5px solid ' + card1Border + ';padding:14px 16px;border-radius:12px">' +
+      '      <b style="color:' + card1Title + ';display:flex;align-items:center;gap:6px;font-size:14.5px;margin-bottom:6px">🚫 1. TAQIQLANGAN TUGMALAR (Klaviaturadan qat\'iy nazorat):</b>' +
+      '      <div style="color:' + textPrimary + ';margin-bottom:8px">' +
+      '        Klaviaturadagi <b style="color:' + textBold + '">Tab, Esc, Alt, Windows (Win), Ctrl, Fn, F1–F12, Strelkalar (▲ ▼ ◄ ►), Delete (Del), Home (HM), PageUp (PU), PageDown (PD), Insert (INS), PrintScreen (PS), ScrollLock (SL), Pause/Break (PB)</b> tugmalariga tegish QAT\'IYAN TAQIQLANADI!' +
       '      </div>' +
-      '      <div style="font-size:12.5px;color:#dc2626;font-weight:800;background:rgba(239,68,68,0.12);padding:6px 10px;border-radius:8px">' +
+      '      <div style="font-size:12.5px;color:' + card1AlertText + ';font-weight:800;background:' + card1AlertBg + ';padding:8px 12px;border-radius:8px;border:1px solid ' + card1Border + '">' +
       '        ⚠️ Test to\'liq ekranda o\'tkaziladi. Esc tugmasi bosilsa yoki to\'liq ekrandan chiqishga urunilsa, ekrandan chiqilmaydi va test DARHOL BLOKLANADI! O\'qituvchiga firibgarlik xabari yuboriladi!' +
       '      </div>' +
       '    </div>' +
-      '    <div style="background:rgba(16,185,129,0.08);border:1.5px solid rgba(16,185,129,0.3);padding:14px 16px;border-radius:12px">' +
-      '      <b style="color:#059669;display:flex;align-items:center;gap:6px;font-size:14px;margin-bottom:6px">✅ 2. RUXSAT ETILGAN TUGMALAR:</b>' +
-      '      <div style="color:var(--text)">' +
-      '        Faqat javoblarni yozish uchun <b>Harflar (A-Z, a-z), Sonlar (0-9), Probel (Space), Shift, Backspace (o\'chirish)</b> va tinish belgilaridan bemalol foydalanishingiz mumkin.' +
+      '    <div style="background:' + card2Bg + ';border:1.5px solid ' + card2Border + ';padding:14px 16px;border-radius:12px">' +
+      '      <b style="color:' + card2Title + ';display:flex;align-items:center;gap:6px;font-size:14.5px;margin-bottom:6px">✅ 2. RUXSAT ETILGAN TUGMALAR:</b>' +
+      '      <div style="color:' + textPrimary + '">' +
+      '        Faqat javoblarni yozish uchun <b style="color:' + textBold + '">Harflar (A-Z, a-z), Sonlar (0-9), Probel (Space), Shift, Backspace (o\'chirish)</b> va tinish belgilaridan bemalol foydalanishingiz mumkin.' +
       '      </div>' +
       '    </div>' +
-      '    <div style="background:rgba(245,158,11,0.08);border:1.5px solid rgba(245,158,11,0.3);padding:14px 16px;border-radius:12px">' +
-      '      <b style="color:#d97706;display:flex;align-items:center;gap:6px;font-size:14px;margin-bottom:6px">📷 3. 50° KAMERA VA TAB NAZORATI:</b>' +
-      '      <div style="color:var(--text)">' +
-      '        Boshni <b>50° dan ortiq burish</b>, kameradan uzoqlashish yoki brauzer oynasidan chiqish taqiqlanadi. Qoidabuzarlik yuz bersa, test bloklanadi va faqat o\'qituvchi blokdan ochmaguncha hech narsa ishlamaydi.' +
+      '    <div style="background:' + card3Bg + ';border:1.5px solid ' + card3Border + ';padding:14px 16px;border-radius:12px">' +
+      '      <b style="color:' + card3Title + ';display:flex;align-items:center;gap:6px;font-size:14.5px;margin-bottom:6px">📷 3. 50° KAMERA VA TAB NAZORATI:</b>' +
+      '      <div style="color:' + textPrimary + '">' +
+      '        Boshni <b style="color:' + textBold + '">50° dan ortiq burish</b>, kameradan uzoqlashish yoki brauzer oynasidan chiqish taqiqlanadi. Qoidabuzarlik yuz bersa, test bloklanadi va faqat o\'qituvchi blokdan ochmaguncha hech narsa ishlamaydi.' +
       '      </div>' +
       '    </div>' +
       '  </div>' +
-      '  <div style="margin-top:20px">' +
-      '    <button type="button" class="eth-btn-primary" id="btnConfirmStartRules" style="width:100%;padding:14px 20px;font-size:15px;font-weight:800;background:linear-gradient(135deg,#2563eb,#1d4ed8);border-radius:12px;box-shadow:0 4px 14px rgba(37,99,235,0.4)">' +
+      '  <div style="margin-top:22px">' +
+      '    <button type="button" class="eth-btn-primary" id="btnConfirmStartRules" style="width:100%;padding:15px 20px;font-size:15.5px;font-weight:800;background:linear-gradient(135deg,#2563eb,#1d4ed8);border-radius:12px;color:#ffffff;border:none;box-shadow:0 4px 16px rgba(37,99,235,0.45);cursor:pointer">' +
       '      ✅ Qoidalarni tushundim, testni boshlash &rarr;' +
       '    </button>' +
       '  </div>' +
