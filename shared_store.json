@@ -421,58 +421,7 @@
       ]
     }
   ],
-  "exams": [
-    {
-      "id": "exam_1792063487617",
-      "code": "778570",
-      "title": "English Examination 2026",
-      "duration": 30,
-      "pointsPerQ": 2,
-      "isPublic": true,
-      "maxAttempts": 1,
-      "questions": [
-        {
-          "id": 1,
-          "type": "choice",
-          "question": "Yesterday, I ________ a very interesting book at the library.",
-          "options": [
-            "readed",
-            "read",
-            "reads",
-            "reading"
-          ],
-          "answer": "readed"
-        },
-        {
-          "id": 2,
-          "type": "choice",
-          "question": "Where ________ you go for your last summer holiday?",
-          "options": [
-            "do",
-            "did",
-            "was",
-            "were"
-          ],
-          "answer": "do"
-        }
-      ],
-      "submissions": [
-        {
-          "studentId": "muhammedjoraboyev1@gmail.com",
-          "studentName": "Muhammadyusuf",
-          "studentEmail": "muhammedjoraboyev1@gmail.com",
-          "score": 4,
-          "totalPossible": 4,
-          "percent": 100,
-          "correctCount": 2,
-          "incorrectCount": 0,
-          "attempts": 1,
-          "timeSpent": "1 daqiqa",
-          "date": "16:27"
-        }
-      ]
-    }
-  ],
+  "exams": [],
   "deletedExamIds": [
     "exam_1792011716430",
     "407221",
@@ -487,7 +436,9 @@
     "exam_1792089475319",
     "468438",
     "exam_1792086687814",
-    "753022"
+    "753022",
+    "exam_1792063487617",
+    "778570"
   ],
-  "updatedAt": 1792089844652
+  "updatedAt": 1792089850198
 }
