@@ -1,13 +1,22 @@
 {
   "classes": [
     {
-      "id": "cls_1791996374490",
-      "name": "IELTS GURuh",
+      "id": "cls_ethith_main",
+      "name": "IELTS & General English Intensive",
       "code": "ETH-L6S8CM",
-      "teacherId": "tc_l78sgm19w",
-      "teacherName": "Muhammadyusuf",
-      "teacherEmail": "joraboymuhammad@gmail.com",
+      "teacherId": "joraboyevmuhammad85@gmail.com",
+      "teacherName": "Ustoz Muhammadyusuf",
+      "teacherEmail": "joraboyevmuhammad85@gmail.com",
+      "created": 1791999637426,
       "students": [
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 771,
+          "mistakes": 0
+        },
         {
           "id": "std_sync_test",
           "name": "John Doe",
@@ -17,14 +26,6 @@
           "mistakesCount": 0
         },
         {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "lastActive": 1791999647009,
-          "dailyMinutes": 732,
-          "mistakes": 0
-        },
-        {
           "id": "std_live_test_1",
           "name": "Alisher Oquvchi",
           "email": "alisher@gmail.com",
@@ -32,18 +33,6 @@
         }
       ],
       "messages": [
-        {
-          "id": "msg_init",
-          "senderId": "tc_l78sgm19w",
-          "senderName": "Muhammadyusuf",
-          "text": "Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.",
-          "time": "21:46",
-          "reactions": {
-            "💡": [
-              "joraboymuhammad@gmail.com"
-            ]
-          }
-        },
         {
           "id": "msg_welcome",
           "senderId": "joraboyevmuhammad85@gmail.com",
@@ -57,10 +46,22 @@
           }
         },
         {
+          "id": "msg_init",
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "text": "Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.",
+          "time": "21:46",
+          "reactions": {
+            "💡": [
+              "joraboymuhammad@gmail.com"
+            ]
+          }
+        },
+        {
           "id": "msg_welcome_1",
           "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Instructor Muhammadyusuf",
-          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
+          "senderName": "Ustoz Muhammadyusuf",
+          "text": "Assalomu alaykum! ETHITH rasmiy sinfiga xush kelibsiz. Bu yerda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
           "time": "12:00",
           "reactions": {
             "👍": [
@@ -1338,7 +1339,629 @@
           "points": 20
         }
       ],
-      "submissions": []
+      "submissions": [
+        {
+          "studentId": "muhammedjoraboyev1@gmail.com",
+          "studentName": "Muhammadyusuf",
+          "studentEmail": "muhammedjoraboyev1@gmail.com",
+          "score": 0,
+          "totalPossible": 100,
+          "percent": 0,
+          "correctCount": 0,
+          "incorrectCount": 37,
+          "attempts": 1,
+          "breakdown": [
+            {
+              "qNum": 1,
+              "question": "Katia says that the key life skills aren’t the same for all of us.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "True",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 2,
+              "question": "For Katia, communication skills are the most important of the life skills.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 3,
+              "question": "Katia says that good communication skills come naturally to most people.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 4,
+              "question": "One example of a personal skill which Katia gives is staying healthy.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "True",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 5,
+              "question": "According to Katia, personal skills have always been essential.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 6,
+              "question": "Katia says that the life skills we need are influenced by …",
+              "userAns": "Belgilanmagan",
+              "correctAns": "b",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 7,
+              "question": "One reason why Katia believes communication skills are important is that …",
+              "userAns": "Belgilanmagan",
+              "correctAns": "a",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 8,
+              "question": "Katia says that communication …",
+              "userAns": "Belgilanmagan",
+              "correctAns": "c",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 9,
+              "question": "According to Katia, ‘personal skills’ include …",
+              "userAns": "Belgilanmagan",
+              "correctAns": "c",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 10,
+              "question": "Katia explains that managing your time well …",
+              "userAns": "Belgilanmagan",
+              "correctAns": "a",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 11,
+              "question": "mentions an animal that probably doesn’t exist?",
+              "userAns": "Belgilanmagan",
+              "correctAns": "C",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 12,
+              "question": "explains why the truth behind a story often gets lost?",
+              "userAns": "Belgilanmagan",
+              "correctAns": "E",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 13,
+              "question": "gives a general explanation for storytelling?",
+              "userAns": "Belgilanmagan",
+              "correctAns": "A",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 14,
+              "question": "explains why some stories have been told for a very long time?",
+              "userAns": "Belgilanmagan",
+              "correctAns": "D",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 15,
+              "question": "says that people from all times and places tell and listen to stories?",
+              "userAns": "Belgilanmagan",
+              "correctAns": "B",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 16,
+              "question": "In some stories, the characters’ 1 __________ causes bad things to happen to them.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "behaviour",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 17,
+              "question": "Storytelling can be found in every 2 __________.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "culture",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 18,
+              "question": "Atlantis and El Dorado are examples of imaginary 3 __________ from legends.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "places",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 19,
+              "question": "Myths often explain why things happen and aren’t about a real 4 __________.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "event",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 20,
+              "question": "In myths and legends, the facts are less important than the story’s 5 __________.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "meaning",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 21,
+              "question": "Time now 2 relax 1 __________",
+              "userAns": "Belgilanmagan",
+              "correctAns": "w/",
+              "isCorrect": false,
+              "points": 1
+            },
+            {
+              "qNum": 22,
+              "question": "the 2 __________ that matter most to me",
+              "userAns": "Belgilanmagan",
+              "correctAns": "ppl",
+              "isCorrect": false,
+              "points": 1
+            },
+            {
+              "qNum": 23,
+              "question": "and 3 __________ looking forward 2 2morrow",
+              "userAns": "Belgilanmagan",
+              "correctAns": "r",
+              "isCorrect": false,
+              "points": 1
+            },
+            {
+              "qNum": 24,
+              "question": "Going 2 4 __________ friends in town.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "c",
+              "isCorrect": false,
+              "points": 1
+            },
+            {
+              "qNum": 25,
+              "question": "I’m never 2old 5 __________ cake!",
+              "userAns": "Belgilanmagan",
+              "correctAns": "esp",
+              "isCorrect": false,
+              "points": 1
+            },
+            {
+              "qNum": 26,
+              "question": "In a world driven by technology that seems to have no limits, what 1was happening / is happening / had happened to true friendship?",
+              "userAns": "Belgilanmagan",
+              "correctAns": "is happening",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 27,
+              "question": "And if so, what 2does this mean / did that mean / has this meant for us?",
+              "userAns": "Belgilanmagan",
+              "correctAns": "does this mean",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 28,
+              "question": "As I 3am writing / have written / had written in this blog many times...",
+              "userAns": "Belgilanmagan",
+              "correctAns": "have written",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 29,
+              "question": "Yet, we 4feel / want / seem to be losing other more important relationships.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "seem",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 30,
+              "question": "...the average American has only two close friends with whom they feel they 5make friends / trust someone / have a lot in common...",
+              "userAns": "Belgilanmagan",
+              "correctAns": "have a lot in common",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 31,
+              "question": "...and around 25% 6admit / tell / inform that they don’t have any friends at all.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "admit",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 32,
+              "question": "At the same time, we 7had become / were becoming / have become a society...",
+              "userAns": "Belgilanmagan",
+              "correctAns": "have become",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 33,
+              "question": "Aristotle... once asked the people of Athens, ‘Who 8had to / could / must live without friends...?’",
+              "userAns": "Belgilanmagan",
+              "correctAns": "could",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 34,
+              "question": "Importantly, he 9believed / had believed / has believed that good friends were far better...",
+              "userAns": "Belgilanmagan",
+              "correctAns": "believed",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 35,
+              "question": "Which of these types of friends do you have a deeper 10achievement / connection / happiness with?",
+              "userAns": "Belgilanmagan",
+              "correctAns": "connection",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 36,
+              "question": "You recently had an unusual or exciting experience. Write a diary entry or online blog about it. Write 120–150 words.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "Free response",
+              "isCorrect": false,
+              "points": 15
+            },
+            {
+              "qNum": 37,
+              "question": "Have a discussion with a partner about life skills.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "Free response",
+              "isCorrect": false,
+              "points": 20
+            }
+          ],
+          "timeSpent": "1 daqiqa",
+          "date": "15/10/2026, 23:39:39",
+          "attemptsHistory": [
+            {
+              "attemptNum": 1,
+              "score": 0,
+              "totalPossible": 100,
+              "percent": 0,
+              "correctCount": 0,
+              "incorrectCount": 37,
+              "timeSpent": "1 daqiqa",
+              "date": "15/10/2026, 23:39:39",
+              "breakdown": [
+                {
+                  "qNum": 1,
+                  "question": "Katia says that the key life skills aren’t the same for all of us.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "True",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 2,
+                  "question": "For Katia, communication skills are the most important of the life skills.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 3,
+                  "question": "Katia says that good communication skills come naturally to most people.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 4,
+                  "question": "One example of a personal skill which Katia gives is staying healthy.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "True",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 5,
+                  "question": "According to Katia, personal skills have always been essential.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 6,
+                  "question": "Katia says that the life skills we need are influenced by …",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "b",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 7,
+                  "question": "One reason why Katia believes communication skills are important is that …",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "a",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 8,
+                  "question": "Katia says that communication …",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "c",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 9,
+                  "question": "According to Katia, ‘personal skills’ include …",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "c",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 10,
+                  "question": "Katia explains that managing your time well …",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "a",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 11,
+                  "question": "mentions an animal that probably doesn’t exist?",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "C",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 12,
+                  "question": "explains why the truth behind a story often gets lost?",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "E",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 13,
+                  "question": "gives a general explanation for storytelling?",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "A",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 14,
+                  "question": "explains why some stories have been told for a very long time?",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "D",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 15,
+                  "question": "says that people from all times and places tell and listen to stories?",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "B",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 16,
+                  "question": "In some stories, the characters’ 1 __________ causes bad things to happen to them.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "behaviour",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 17,
+                  "question": "Storytelling can be found in every 2 __________.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "culture",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 18,
+                  "question": "Atlantis and El Dorado are examples of imaginary 3 __________ from legends.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "places",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 19,
+                  "question": "Myths often explain why things happen and aren’t about a real 4 __________.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "event",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 20,
+                  "question": "In myths and legends, the facts are less important than the story’s 5 __________.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "meaning",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 21,
+                  "question": "Time now 2 relax 1 __________",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "w/",
+                  "isCorrect": false,
+                  "points": 1
+                },
+                {
+                  "qNum": 22,
+                  "question": "the 2 __________ that matter most to me",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "ppl",
+                  "isCorrect": false,
+                  "points": 1
+                },
+                {
+                  "qNum": 23,
+                  "question": "and 3 __________ looking forward 2 2morrow",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "r",
+                  "isCorrect": false,
+                  "points": 1
+                },
+                {
+                  "qNum": 24,
+                  "question": "Going 2 4 __________ friends in town.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "c",
+                  "isCorrect": false,
+                  "points": 1
+                },
+                {
+                  "qNum": 25,
+                  "question": "I’m never 2old 5 __________ cake!",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "esp",
+                  "isCorrect": false,
+                  "points": 1
+                },
+                {
+                  "qNum": 26,
+                  "question": "In a world driven by technology that seems to have no limits, what 1was happening / is happening / had happened to true friendship?",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "is happening",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 27,
+                  "question": "And if so, what 2does this mean / did that mean / has this meant for us?",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "does this mean",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 28,
+                  "question": "As I 3am writing / have written / had written in this blog many times...",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "have written",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 29,
+                  "question": "Yet, we 4feel / want / seem to be losing other more important relationships.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "seem",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 30,
+                  "question": "...the average American has only two close friends with whom they feel they 5make friends / trust someone / have a lot in common...",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "have a lot in common",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 31,
+                  "question": "...and around 25% 6admit / tell / inform that they don’t have any friends at all.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "admit",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 32,
+                  "question": "At the same time, we 7had become / were becoming / have become a society...",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "have become",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 33,
+                  "question": "Aristotle... once asked the people of Athens, ‘Who 8had to / could / must live without friends...?’",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "could",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 34,
+                  "question": "Importantly, he 9believed / had believed / has believed that good friends were far better...",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "believed",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 35,
+                  "question": "Which of these types of friends do you have a deeper 10achievement / connection / happiness with?",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "connection",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 36,
+                  "question": "You recently had an unusual or exciting experience. Write a diary entry or online blog about it. Write 120–150 words.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "Free response",
+                  "isCorrect": false,
+                  "points": 15
+                },
+                {
+                  "qNum": 37,
+                  "question": "Have a discussion with a partner about life skills.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "Free response",
+                  "isCorrect": false,
+                  "points": 20
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "deletedExamIds": [
@@ -1353,5 +1976,5 @@
     "exam_1792042206065",
     "792046"
   ],
-  "updatedAt": 1792089477241
+  "updatedAt": 1792089580912
 }
