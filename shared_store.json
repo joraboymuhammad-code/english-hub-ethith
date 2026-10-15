@@ -175,6 +175,17 @@
             "text": "Kfkeidi"
           },
           "reactions": {}
+        },
+        {
+          "id": "msg_1792042347995_z52xw",
+          "timestamp": 1792042347995,
+          "senderId": "st_fk1yek0xm",
+          "senderName": "nursulton",
+          "senderEmail": "nasibaorazaliyev@gmail.com",
+          "text": "dinnaxxuy",
+          "time": "10:32",
+          "replyTo": null,
+          "reactions": {}
         }
       ],
       "pinnedId": null,
@@ -253,5 +264,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042343897
+  "updatedAt": 1792042354402
 }
