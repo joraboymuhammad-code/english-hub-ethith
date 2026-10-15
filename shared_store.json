@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792041702248,
+      "created": 1792041969539,
       "students": [],
       "messages": [
         {
@@ -106,7 +106,11 @@
           "text": "sham",
           "time": "10:27",
           "replyTo": null,
-          "reactions": {}
+          "reactions": {
+            "🚀": [
+              "strikeruzb52@gmail.com"
+            ]
+          }
         },
         {
           "id": "msg_1792042030351_m44yn",
@@ -130,6 +134,7 @@
           "replyTo": null,
           "reactions": {
             "❤️": [
+              "strikeruzb52@gmail.com",
               "nasibaorazaliyev@gmail.com"
             ]
           }
@@ -170,5 +175,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042069883
+  "updatedAt": 1792042075365
 }
