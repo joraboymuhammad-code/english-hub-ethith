@@ -143,6 +143,7 @@
 
 
 
+
 <style id="ethith-custom-styles">
 /* ETHITH TESTS - Extended Stylesheet
  * Created by Muhammadyusuf Jo'raboyev
@@ -1422,19 +1423,23 @@ body.proctored-fullscreen-mode .ap-main {
 
 /* Red Screen Exam Locked Overlay */
 .eth-exam-locked-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(15, 23, 42, 0.94);
-  backdrop-filter: blur(8px);
-  z-index: 1000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  animation: ethFadeIn 0.2s ease;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(15, 23, 42, 0.96) !important;
+  backdrop-filter: blur(12px) !important;
+  z-index: 2147483648 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px !important;
+  animation: ethFadeIn 0.2s ease !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
 }
 
 .eth-locked-box {
@@ -11073,7 +11078,7 @@ window.ETHITH_PLACEMENT = [
       '        Klaviaturadagi <b>Tab, Esc, Alt, Windows (Win), Ctrl, Fn, F1–F12, Strelkalar (▲ ▼ ◄ ►), Delete (Del), Home (HM), PageUp (PU), PageDown (PD), Insert (INS), PrintScreen (PS), ScrollLock (SL), Pause/Break (PB)</b> tugmalariga tegish QAT\'IYAN TAQIQLANADI!' +
       '      </div>' +
       '      <div style="font-size:12.5px;color:#dc2626;font-weight:800;background:rgba(239,68,68,0.12);padding:6px 10px;border-radius:8px">' +
-      '        ⚠️ Agar ushbu tugmalardan biri bosilsa, test DARHOL BLOKLANADI va o\'qituvchiga firibgarlik xabari yuboriladi!' +
+      '        ⚠️ Test to\'liq ekranda o\'tkaziladi. Esc tugmasi bosilsa yoki to\'liq ekrandan chiqishga urunilsa, ekrandan chiqilmaydi va test DARHOL BLOKLANADI! O\'qituvchiga firibgarlik xabari yuboriladi!' +
       '      </div>' +
       '    </div>' +
       '    <div style="background:rgba(16,185,129,0.08);border:1.5px solid rgba(16,185,129,0.3);padding:14px 16px;border-radius:12px">' +
@@ -11141,18 +11146,81 @@ window.ETHITH_PLACEMENT = [
       document.body.setAttribute('data-theme', activeTheme);
       document.body.appendChild(lockdownModal);
 
-      // Enter Fullscreen Mode (students only)
+      // 2.5 Fullscreen & Keyboard Lock Enforcement (Students only)
+      function requestKeyboardLock() {
+        if (isTeacher || isExamFinished) return;
+        if (navigator.keyboard && navigator.keyboard.lock) {
+          try {
+            var lockPromise = navigator.keyboard.lock([
+              'Escape',
+              'Tab',
+              'AltLeft',
+              'AltRight',
+              'ControlLeft',
+              'ControlRight',
+              'MetaLeft',
+              'MetaRight',
+              'ContextMenu'
+            ]);
+            if (lockPromise && lockPromise.catch) {
+              lockPromise.catch(function() {
+                try {
+                  navigator.keyboard.lock().catch(function(){});
+                } catch(e) {}
+              });
+            }
+          } catch(e) {}
+        }
+      }
+
+      function ensureFullscreen() {
+        if (isTeacher || isExamFinished) return;
+        var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+        if (!isFs) {
+          try {
+            var target = lockdownModal || document.documentElement;
+            var req = target.requestFullscreen || target.webkitRequestFullscreen || target.mozRequestFullScreen || target.msRequestFullscreen;
+            if (req) {
+              var p = req.call(target, { navigationUI: 'hide' });
+              if (p && p.then) {
+                p.then(function() {
+                  requestKeyboardLock();
+                }).catch(function(){});
+              } else {
+                requestKeyboardLock();
+              }
+            }
+          } catch(e) {}
+        } else {
+          requestKeyboardLock();
+        }
+      }
+
       if (!isTeacher) {
-        try {
-          if (lockdownModal.requestFullscreen) {
-            lockdownModal.requestFullscreen().catch(function(e){});
-          } else if (document.documentElement.requestFullscreen) {
-            document.documentElement.requestFullscreen().catch(function(e){});
-          } else if (document.documentElement.webkitRequestFullscreen) {
-            document.documentElement.webkitRequestFullscreen();
-          }
-        } catch(e) {}
         document.body.classList.add('proctored-fullscreen-mode');
+        ensureFullscreen();
+      }
+
+      function onFullscreenChange() {
+        if (isTeacher || isExamFinished) return;
+        var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+        if (!isFs) {
+          ensureFullscreen();
+          if (!isExamLocked) {
+            triggerInfraction("O'quvchi Escape (Esc) tugmasini bosib ekrandan chiqishga urindi!");
+          }
+        } else {
+          requestKeyboardLock();
+        }
+      }
+
+      function onWindowResize() {
+        if (isTeacher || isExamFinished) return;
+        var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+        if (!isFs && !isExamLocked) {
+          ensureFullscreen();
+          triggerInfraction("O'quvchi brauzer o'lchamini o'zgartirib chiqishga urindi!");
+        }
       }
 
       // 3. Anti-Cheat: Tab Switch & Window Blur Detection (students only)
@@ -11166,18 +11234,16 @@ window.ETHITH_PLACEMENT = [
           triggerInfraction("Boshqa tabga o'tildi yoki oyna kichraytirildi!");
         }
       }
-      if (!isTeacher) {
-        window.addEventListener('blur', onWindowBlur);
-        document.addEventListener('visibilitychange', onVisChange);
-      }
 
       // 3.5. Anti-Cheat: Strict Keyboard Lockdown (students only)
       var PROHIBITED_KEYS_MAP = {
         'tab': 'Tab',
         'escape': 'Escape (Esc)',
+        'esc': 'Escape (Esc)',
         'alt': 'Alt',
         'altgraph': 'Alt',
         'control': 'Ctrl',
+        'ctrl': 'Ctrl',
         'meta': 'Windows (Win)',
         'os': 'Windows (Win)',
         'fn': 'Fn',
@@ -11201,10 +11267,21 @@ window.ETHITH_PLACEMENT = [
       function getBlockedKeyLabel(e) {
         var k = (e.key || '').toLowerCase();
         var code = (e.code || '').toLowerCase();
+        var which = e.which || e.keyCode;
+
+        // Escape checks
+        if (k === 'escape' || k === 'esc' || code === 'escape' || which === 27) {
+          return 'Escape (Esc)';
+        }
+
+        // Tab check
+        if (k === 'tab' || code === 'tab' || which === 9) {
+          return 'Tab';
+        }
 
         // Function keys F1 - F12
-        if (/^f(1[0-2]|[1-9])$/.test(k) || /^f(1[0-2]|[1-9])$/.test(code)) {
-          return (e.key || e.code).toUpperCase();
+        if (/^f(1[0-2]|[1-9])$/.test(k) || /^f(1[0-2]|[1-9])$/.test(code) || (which >= 112 && which <= 123)) {
+          return (e.key || e.code || ('F' + (which - 111))).toUpperCase();
         }
 
         // Direct map
@@ -11212,24 +11289,75 @@ window.ETHITH_PLACEMENT = [
         if (PROHIBITED_KEYS_MAP[code]) return PROHIBITED_KEYS_MAP[code];
 
         // Modifier combos
-        if (e.altKey) return 'Alt';
-        if (e.metaKey) return 'Windows (Win)';
-        if (e.ctrlKey && k !== 'control') return 'Ctrl';
+        if (e.altKey || k === 'alt' || code === 'altleft' || code === 'altright') return 'Alt';
+        if (e.metaKey || k === 'meta' || code === 'metaleft' || code === 'metaright' || code === 'osleft' || code === 'osright') return 'Windows (Win)';
+        if (e.ctrlKey || k === 'control' || code === 'controlleft' || code === 'controlright') return 'Ctrl';
+
+        // Arrows
+        if (which === 37) return 'Chapga strelka (◄)';
+        if (which === 38) return 'Yuqoriga strelka (▲)';
+        if (which === 39) return 'O\'ngga strelka (►)';
+        if (which === 40) return 'Pastga strelka (▼)';
+
+        // Delete, Home, End, PageUp, PageDown, Insert, PrintScreen, etc.
+        if (which === 46) return 'Delete (Del)';
+        if (which === 36) return 'Home (HM)';
+        if (which === 35) return 'End';
+        if (which === 33) return 'PageUp (PU)';
+        if (which === 34) return 'PageDown (PD)';
+        if (which === 45) return 'Insert (INS)';
+        if (which === 44) return 'PrintScreen (PS)';
+        if (which === 145) return 'ScrollLock (SL)';
+        if (which === 19) return 'Pause/Break (PB)';
+        if (which === 93) return 'Kontekst Menyusi';
 
         return null;
       }
 
       function onKeyDownProctor(e) {
-        if (isTeacher || isExamLocked || isExamFinished) return;
+        if (isTeacher || isExamFinished) return;
         var blockedKeyName = getBlockedKeyLabel(e);
         if (blockedKeyName) {
-          e.preventDefault();
-          e.stopPropagation();
-          triggerInfraction("O'quvchi " + blockedKeyName + " tugmasini bosib ekranni o'zgartirib firibgarlik qilmoqchi bo'ldi!");
+          try {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+          } catch(err) {}
+          ensureFullscreen();
+          if (!isExamLocked) {
+            triggerInfraction("O'quvchi " + blockedKeyName + " tugmasini bosib ekranni o'zgartirib firibgarlik qilmoqchi bo'ldi!");
+          }
+          return false;
         }
       }
+
+      function onKeyUpProctor(e) {
+        if (isTeacher || isExamFinished) return;
+        var blockedKeyName = getBlockedKeyLabel(e);
+        if (blockedKeyName) {
+          try {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+          } catch(err) {}
+          ensureFullscreen();
+          return false;
+        }
+      }
+
       if (!isTeacher) {
+        window.addEventListener('blur', onWindowBlur);
+        document.addEventListener('visibilitychange', onVisChange);
         window.addEventListener('keydown', onKeyDownProctor, true);
+        window.addEventListener('keyup', onKeyUpProctor, true);
+        document.addEventListener('keydown', onKeyDownProctor, true);
+        document.addEventListener('keyup', onKeyUpProctor, true);
+        document.addEventListener('fullscreenchange', onFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+        document.addEventListener('mozfullscreenchange', onFullscreenChange);
+        document.addEventListener('MSFullscreenChange', onFullscreenChange);
+        window.addEventListener('resize', onWindowResize);
+        window.addEventListener('click', ensureFullscreen, true);
       }
 
       // 4. Prominent Mirrored WebCam Picture-in-Picture Box (Floating top-right)
@@ -11467,6 +11595,7 @@ window.ETHITH_PLACEMENT = [
             angleBadge.textContent = 'To\'g\'ri: 0°';
             angleBadge.className = 'eth-cam-badge';
           }
+          ensureFullscreen();
         }
       };
 
@@ -11969,7 +12098,19 @@ window.ETHITH_PLACEMENT = [
       window.removeEventListener('blur', onWindowBlur);
       document.removeEventListener('visibilitychange', onVisChange);
       window.removeEventListener('keydown', onKeyDownProctor, true);
+      window.removeEventListener('keyup', onKeyUpProctor, true);
+      document.removeEventListener('keydown', onKeyDownProctor, true);
+      document.removeEventListener('keyup', onKeyUpProctor, true);
+      document.removeEventListener('fullscreenchange', onFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', onFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', onFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', onFullscreenChange);
+      window.removeEventListener('resize', onWindowResize);
+      window.removeEventListener('click', ensureFullscreen, true);
       window._ethithOnStudentUnblocked = null;
+      if (navigator.keyboard && navigator.keyboard.unlock) {
+        try { navigator.keyboard.unlock(); } catch(e) {}
+      }
 
       if (examAudioObj) {
         try { examAudioObj.pause(); } catch(e) {}
