@@ -186,6 +186,17 @@
           "time": "10:32",
           "replyTo": null,
           "reactions": {}
+        },
+        {
+          "id": "msg_1792042358929_8iaq2",
+          "timestamp": 1792042358929,
+          "senderId": "st_fk1yek0xm",
+          "senderName": "nursulton",
+          "senderEmail": "nasibaorazaliyev@gmail.com",
+          "text": "boʻt",
+          "time": "10:32",
+          "replyTo": null,
+          "reactions": {}
         }
       ],
       "pinnedId": null,
@@ -264,5 +275,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042354402
+  "updatedAt": 1792042362077
 }
