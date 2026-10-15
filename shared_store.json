@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792041702248,
+      "created": 1792041969539,
       "students": [],
       "messages": [
         {
@@ -51,7 +51,7 @@
           "name": "nursulton",
           "email": "nasibaorazaliyev@gmail.com",
           "lastActive": 1792042015141,
-          "dailyMinutes": 1,
+          "dailyMinutes": 4,
           "mistakes": 0
         }
       ],
@@ -134,8 +134,8 @@
           "replyTo": null,
           "reactions": {
             "❤️": [
-              "nasibaorazaliyev@gmail.com",
-              "strikeruzb52@gmail.com"
+              "strikeruzb52@gmail.com",
+              "nasibaorazaliyev@gmail.com"
             ]
           }
         },
@@ -213,7 +213,21 @@
           "answer": "Yp"
         }
       ],
-      "submissions": []
+      "submissions": [
+        {
+          "studentId": "nasibaorazaliyev@gmail.com",
+          "studentName": "nursulton",
+          "studentEmail": "nasibaorazaliyev@gmail.com",
+          "score": 10,
+          "totalPossible": 15,
+          "percent": 67,
+          "correctCount": 2,
+          "incorrectCount": 1,
+          "attempts": 1,
+          "timeSpent": "1 daqiqa",
+          "date": "10:31"
+        }
+      ]
     }
   ],
   "deletedExamIds": [
@@ -224,5 +238,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042211744
+  "updatedAt": 1792042264022
 }
