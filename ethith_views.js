@@ -2445,7 +2445,7 @@
           '  <div style="display:flex;gap:10px;margin-top:6px;flex-wrap:wrap">' +
           '    <button type="button" class="eth-btn-primary" id="btnAiExtract5Sec" style="flex:1;min-width:260px;padding:13px 18px;font-size:14px;font-weight:800;background:linear-gradient(135deg,#7c3aed 0%,#2563eb 100%);border:none;border-radius:12px;box-shadow:0 6px 20px rgba(124,58,237,0.4);display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;cursor:pointer">' +
           '      <span style="font-size:18px">🤖</span>' +
-          '      <span id="btnAiExtractText">5 Soniyada AI Bilan Test Yaratish (Gemini Vision & Parser)</span>' +
+          '      <span id="btnAiExtractText">5 Soniyada AI Bilan Test Yaratish (ETHITH Vision & Parser)</span>' +
           '    </button>' +
           '    <button type="button" class="ap-btn out" id="parseBulkBtn" style="padding:13px 16px;font-size:13px;font-weight:700">' +
           '      ⚡ Mahalliy Tahlil (Offline Parser)' +
@@ -2692,7 +2692,7 @@
         };
       }
 
-      // 5-Second AI Exam Generator (Gemini Multimodal Vision & Parsing)
+      // 5-Second AI Exam Generator (ETHITH Multimodal Vision & Parsing)
       var btnAi = overlay.querySelector('#btnAiExtract5Sec');
       if (btnAi) {
         btnAi.onclick = async function() {
@@ -2707,7 +2707,7 @@
 
           var btnTextSpan = overlay.querySelector('#btnAiExtractText');
           if (btnTextSpan) {
-            btnTextSpan.textContent = '🧠 Gemini AI tahlil qilmoqda (3–5 soniya)...';
+            btnTextSpan.textContent = '🧠 ETHITH AI tahlil qilmoqda (3–5 soniya)...';
           }
           btnAi.disabled = true;
           btnAi.style.opacity = '0.7';
@@ -2744,7 +2744,7 @@
                 });
               });
               renderModal();
-              alert("✅ Muvaffaqiyatli! Gemini AI " + aiRes.questions.length + " ta savolni tahlil qildi va imtihonga kiritdi!");
+              alert("✅ Muvaffaqiyatli! ETHITH AI " + aiRes.questions.length + " ta savolni tahlil qildi va imtihonga kiritdi!");
             } else {
               var ansMap = parseSmartAnswers(aText);
               var fallbackExtracted = parseQuestionsText(qText, ansMap);
@@ -2772,7 +2772,7 @@
               btnAi.disabled = false;
               btnAi.style.opacity = '1';
               if (btnTextSpan) {
-                btnTextSpan.textContent = '5 Soniyada AI Bilan Test Yaratish (Gemini Vision & Parser)';
+                btnTextSpan.textContent = '5 Soniyada AI Bilan Test Yaratish (ETHITH Vision & Parser)';
               }
             }
           }
