@@ -2884,7 +2884,55 @@
     };
   }
 
+  function showPreTestSecurityBriefing(onConfirm) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.style.zIndex = '2147483649';
+    overlay.innerHTML = '' +
+      '<div class="eth-modal" style="max-width:620px;padding:28px 30px;border:2.5px solid #ef4444;border-radius:20px;background:var(--card);box-shadow:0 20px 50px rgba(0,0,0,0.4)">' +
+      '  <div class="eth-modal-header" style="text-align:center;margin-bottom:20px">' +
+      '    <div style="font-size:42px;margin-bottom:8px">🛡️</div>' +
+      '    <h2 style="font-size:22px;font-weight:900;color:var(--text);margin:0 0 6px">Qat\'iy Imtihon Xavfsizlik Qoidalari</h2>' +
+      '    <p style="margin:0;font-size:14px;color:var(--muted)">Test boshlanishidan oldin quyidagi talablar bilan diqqat bilan tanishib chiqing:</p>' +
+      '  </div>' +
+      '  <div class="eth-modal-body" style="display:flex;flex-direction:column;gap:14px;font-size:13.5px;line-height:1.55">' +
+      '    <div style="background:rgba(239,68,68,0.08);border:1.5px solid rgba(239,68,68,0.3);padding:14px 16px;border-radius:12px">' +
+      '      <b style="color:#dc2626;display:flex;align-items:center;gap:6px;font-size:14px;margin-bottom:6px">🚫 1. TAQIQLANGAN TUGMALAR (Klaviaturadan qat\'iy nazorat):</b>' +
+      '      <div style="color:var(--text);margin-bottom:6px">' +
+      '        Klaviaturadagi <b>Tab, Esc, Alt, Windows (Win), Ctrl, Fn, F1–F12, Strelkalar (▲ ▼ ◄ ►), Delete (Del), Home (HM), PageUp (PU), PageDown (PD), Insert (INS), PrintScreen (PS), ScrollLock (SL), Pause/Break (PB)</b> tugmalariga tegish QAT\'IYAN TAQIQLANADI!' +
+      '      </div>' +
+      '      <div style="font-size:12.5px;color:#dc2626;font-weight:800;background:rgba(239,68,68,0.12);padding:6px 10px;border-radius:8px">' +
+      '        ⚠️ Agar ushbu tugmalardan biri bosilsa, test DARHOL BLOKLANADI va o\'qituvchiga firibgarlik xabari yuboriladi!' +
+      '      </div>' +
+      '    </div>' +
+      '    <div style="background:rgba(16,185,129,0.08);border:1.5px solid rgba(16,185,129,0.3);padding:14px 16px;border-radius:12px">' +
+      '      <b style="color:#059669;display:flex;align-items:center;gap:6px;font-size:14px;margin-bottom:6px">✅ 2. RUXSAT ETILGAN TUGMALAR:</b>' +
+      '      <div style="color:var(--text)">' +
+      '        Faqat javoblarni yozish uchun <b>Harflar (A-Z, a-z), Sonlar (0-9), Probel (Space), Shift, Backspace (o\'chirish)</b> va tinish belgilaridan bemalol foydalanishingiz mumkin.' +
+      '      </div>' +
+      '    </div>' +
+      '    <div style="background:rgba(245,158,11,0.08);border:1.5px solid rgba(245,158,11,0.3);padding:14px 16px;border-radius:12px">' +
+      '      <b style="color:#d97706;display:flex;align-items:center;gap:6px;font-size:14px;margin-bottom:6px">📷 3. 50° KAMERA VA TAB NAZORATI:</b>' +
+      '      <div style="color:var(--text)">' +
+      '        Boshni <b>50° dan ortiq burish</b>, kameradan uzoqlashish yoki brauzer oynasidan chiqish taqiqlanadi. Qoidabuzarlik yuz bersa, test bloklanadi va faqat o\'qituvchi blokdan ochmaguncha hech narsa ishlamaydi.' +
+      '      </div>' +
+      '    </div>' +
+      '  </div>' +
+      '  <div style="margin-top:20px">' +
+      '    <button type="button" class="eth-btn-primary" id="btnConfirmStartRules" style="width:100%;padding:14px 20px;font-size:15px;font-weight:800;background:linear-gradient(135deg,#2563eb,#1d4ed8);border-radius:12px;box-shadow:0 4px 14px rgba(37,99,235,0.4)">' +
+      '      ✅ Qoidalarni tushundim, testni boshlash &rarr;' +
+      '    </button>' +
+      '  </div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    overlay.querySelector('#btnConfirmStartRules').onclick = function() {
+      overlay.remove();
+      onConfirm();
+    };
+  }
+
   function startExamRunner(exam, mainContainer) {
+    var isTeacher = S.user && S.user.role === 'teacher';
     var timeLeftSeconds = exam.duration * 60;
     var isExamFinished = false;
     var isExamLocked = false;
@@ -2898,274 +2946,358 @@
       answers: {}
     };
 
-    // 1. Remove previous modal/overlay if any
-    var oldModal = document.getElementById('ethExamLockdownModal');
-    if (oldModal) oldModal.remove();
-    var oldPip = document.getElementById('proctorPip');
-    if (oldPip) oldPip.remove();
-    var oldLock = document.getElementById('examLockedScreen');
-    if (oldLock) oldLock.remove();
-
-    // 2. Mount Dedicated Fullscreen Lockdown Container directly to body
-    var lockdownModal = document.createElement('div');
-    lockdownModal.id = 'ethExamLockdownModal';
-    lockdownModal.className = 'eth-lockdown-fullscreen';
-    var activeTheme = (window.EthithApp && EthithApp.state && EthithApp.state.theme) || (window.S && S.theme) || (document.getElementById('app') && document.getElementById('app').getAttribute('data-theme')) || (document.body && document.body.getAttribute('data-theme')) || 'dark';
-    lockdownModal.setAttribute('data-theme', activeTheme);
-    document.body.setAttribute('data-theme', activeTheme);
-    document.body.appendChild(lockdownModal);
-
-    // Enter Fullscreen Mode
-    try {
-      if (lockdownModal.requestFullscreen) {
-        lockdownModal.requestFullscreen().catch(function(e){});
-      } else if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen().catch(function(e){});
-      } else if (document.documentElement.webkitRequestFullscreen) {
-        document.documentElement.webkitRequestFullscreen();
-      }
-    } catch(e) {}
-    document.body.classList.add('proctored-fullscreen-mode');
-
-    // 3. Anti-Cheat: Tab Switch & Window Blur Detection
-    function onWindowBlur() {
-      if (isExamFinished || isExamLocked) return;
-      triggerInfraction("Brauzer oynasi tark etildi yoki boshqa dasturga o'tildi!");
-    }
-    function onVisChange() {
-      if (isExamFinished || isExamLocked) return;
-      if (document.hidden) {
-        triggerInfraction("Boshqa tabga o'tildi yoki oyna kichraytirildi!");
-      }
-    }
-    window.addEventListener('blur', onWindowBlur);
-    document.addEventListener('visibilitychange', onVisChange);
-
-    // 4. Prominent Mirrored WebCam Picture-in-Picture Box (Floating top-right)
-    var camBox = document.createElement('div');
-    camBox.className = 'eth-proctor-cam-box';
-    camBox.id = 'proctorCamBox';
-    camBox.innerHTML = '' +
-      '<div class="eth-cam-header">' +
-      '  <div style="display:flex;align-items:center">' +
-      '    <span class="eth-cam-dot" id="proctorCamDot"></span>' +
-      '    <span id="proctorCamTitle">Kamera Nazorati</span>' +
-      '  </div>' +
-      '  <span class="eth-cam-badge" id="proctorCamAngle">To\'g\'ri: 0°</span>' +
-      '</div>' +
-      '<div class="eth-cam-video-wrap">' +
-      '  <video id="proctorVideo" autoplay playsinline muted></video>' +
-      '  <div class="eth-cam-target-oval" id="proctorOval"></div>' +
-      '</div>' +
-      '<div class="eth-cam-footer" id="proctorStudentName">' +
-      '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 35° AI Tracker' +
-      '</div>';
-    lockdownModal.appendChild(camBox);
-
-    var proctorVideo = document.getElementById('proctorVideo');
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({
-        video: { width: { ideal: 320 }, height: { ideal: 240 }, facingMode: 'user' }
-      }).then(function(stream) {
-        proctorStream = stream;
-        var vid = document.getElementById('proctorVideo');
-        if (vid) {
-          vid.srcObject = stream;
-          vid.onloadedmetadata = function() {
-            vid.play().catch(function(){});
-          };
-        }
-      }).catch(function(err) {
-        console.warn("Kamera xatosi:", err);
-      });
+    if (!isTeacher) {
+      showPreTestSecurityBriefing(initRunner);
+    } else {
+      initRunner();
     }
 
-    // 5. Algorithmic Pure JS/Canvas 35° Head Turn & Look-Away Detector
-    var offCanvas = document.createElement('canvas');
-    offCanvas.width = 160;
-    offCanvas.height = 120;
-    var offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
+    function initRunner() {
+      // 1. Remove previous modal/overlay if any
+      var oldModal = document.getElementById('ethExamLockdownModal');
+      if (oldModal) oldModal.remove();
+      var oldPip = document.getElementById('proctorPip');
+      if (oldPip) oldPip.remove();
+      var oldLock = document.getElementById('examLockedScreen');
+      if (oldLock) oldLock.remove();
 
-    var calibrationCount = 0;
-    var baseCenterSum = 0;
-    var avgBaseCenter = 80;
-    var ticksTotal = 0;
+      // 2. Mount Dedicated Fullscreen Lockdown Container directly to body
+      var lockdownModal = document.createElement('div');
+      lockdownModal.id = 'ethExamLockdownModal';
+      lockdownModal.className = 'eth-lockdown-fullscreen';
+      var activeTheme = (window.EthithApp && EthithApp.state && EthithApp.state.theme) || (window.S && S.theme) || (document.getElementById('app') && document.getElementById('app').getAttribute('data-theme')) || (document.body && document.body.getAttribute('data-theme')) || 'dark';
+      lockdownModal.setAttribute('data-theme', activeTheme);
+      document.body.setAttribute('data-theme', activeTheme);
+      document.body.appendChild(lockdownModal);
 
-    proctorInterval = setInterval(function() {
-      if (!proctorVideo || !proctorVideo.videoWidth || isExamLocked || isExamFinished) return;
-      try {
-        offCtx.drawImage(proctorVideo, 0, 0, 160, 120);
-        var imgData = offCtx.getImageData(0, 0, 160, 120);
-        var pixels = imgData.data;
-
-        var leftMass = 0;
-        var rightMass = 0;
-        var totalMass = 0;
-        var sumX = 0;
-
-        for (var y = 15; y < 105; y += 2) {
-          for (var x = 20; x < 140; x += 2) {
-            var idx = (y * 160 + x) * 4;
-            var r = pixels[idx];
-            var g = pixels[idx + 1];
-            var b = pixels[idx + 2];
-
-            var isSkin = (r > 45 && g > 30 && b > 20 && r > b && (r - g) >= 5);
-            var lum = 0.299 * r + 0.587 * g + 0.114 * b;
-            var isFg = isSkin || (lum > 35 && lum < 225 && Math.abs(r - g) > 6);
-
-            if (isFg) {
-              totalMass++;
-              sumX += x;
-              if (x < 80) leftMass++;
-              else rightMass++;
-            }
+      // Enter Fullscreen Mode (students only)
+      if (!isTeacher) {
+        try {
+          if (lockdownModal.requestFullscreen) {
+            lockdownModal.requestFullscreen().catch(function(e){});
+          } else if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen().catch(function(e){});
+          } else if (document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen();
           }
-        }
-
-        ticksTotal++;
-
-        if (calibrationCount < 4) {
-          if (totalMass > 40) {
-            calibrationCount++;
-            baseCenterSum += (sumX / totalMass);
-            if (calibrationCount >= 4) {
-              avgBaseCenter = baseCenterSum / 4;
-            }
-          } else if (ticksTotal > 6) {
-            avgBaseCenter = 80;
-            calibrationCount = 4;
-          }
-          return;
-        }
-
-        var currentCenter = totalMass > 20 ? (sumX / totalMass) : avgBaseCenter;
-        var dx = Math.abs(currentCenter - avgBaseCenter);
-        var asymmetry = Math.abs(leftMass - rightMass) / (leftMass + rightMass + 1);
-
-        var estimatedAngle = Math.min(90, Math.round((dx / 14) * 35 * 0.6 + (asymmetry / 0.38) * 35 * 0.7));
-        if (totalMass < 25) {
-          estimatedAngle = 45;
-        }
-
-        var angleBadge = document.getElementById('proctorCamAngle');
-        var dot = document.getElementById('proctorCamDot');
-        var oval = document.getElementById('proctorOval');
-
-        if (angleBadge) {
-          if (estimatedAngle < 25) {
-            angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
-            angleBadge.className = 'eth-cam-badge';
-            if (dot) dot.className = 'eth-cam-dot';
-            if (oval) oval.className = 'eth-cam-target-oval';
-          } else if (estimatedAngle < 35) {
-            angleBadge.textContent = "Burilish: " + estimatedAngle + "°";
-            angleBadge.className = 'eth-cam-badge warn';
-            if (dot) dot.className = 'eth-cam-dot warn';
-            if (oval) oval.className = 'eth-cam-target-oval warn';
-          } else {
-            angleBadge.textContent = "XAVF: " + estimatedAngle + "°!";
-            angleBadge.className = 'eth-cam-badge danger';
-            if (dot) dot.className = 'eth-cam-dot danger';
-            if (oval) oval.className = 'eth-cam-target-oval danger';
-          }
-        }
-
-        if (estimatedAngle >= 35) {
-          turnInfractionFrames++;
-          if (turnInfractionFrames >= 3) {
-            triggerInfraction("Bosh 35° dan ortiq burildi (" + estimatedAngle + "°) yoki kameradan chetga qaraldi");
-          }
-        } else {
-          turnInfractionFrames = 0;
-        }
-      } catch(err) {}
-    }, 250);
-
-    // 6. Trigger Infraction & Lock Exam
-    function triggerInfraction(reason) {
-      if (isExamLocked || isExamFinished) return;
-      isExamLocked = true;
-
-      var angleBadge = document.getElementById('proctorCamAngle');
-      var dot = document.getElementById('proctorCamDot');
-      if (dot) dot.className = 'eth-cam-dot danger';
-      if (angleBadge) {
-        angleBadge.textContent = 'BLOKLANDI';
-        angleBadge.className = 'eth-cam-badge danger';
+        } catch(e) {}
+        document.body.classList.add('proctored-fullscreen-mode');
       }
 
-      try {
-        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        var osc = audioCtx.createOscillator();
-        var gain = audioCtx.createGain();
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(440, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(220, audioCtx.currentTime + 0.4);
-        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.4);
-      } catch(ae) {}
+      // 3. Anti-Cheat: Tab Switch & Window Blur Detection (students only)
+      function onWindowBlur() {
+        if (isTeacher || isExamFinished || isExamLocked) return;
+        triggerInfraction("Brauzer oynasi tark etildi yoki boshqa dasturga o'tildi!");
+      }
+      function onVisChange() {
+        if (isTeacher || isExamFinished || isExamLocked) return;
+        if (document.hidden) {
+          triggerInfraction("Boshqa tabga o'tildi yoki oyna kichraytirildi!");
+        }
+      }
+      if (!isTeacher) {
+        window.addEventListener('blur', onWindowBlur);
+        document.addEventListener('visibilitychange', onVisChange);
+      }
 
-      var existingLock = document.getElementById('examLockedScreen');
-      if (existingLock) existingLock.remove();
+      // 3.5. Anti-Cheat: Strict Keyboard Lockdown (students only)
+      var PROHIBITED_KEYS_MAP = {
+        'tab': 'Tab',
+        'escape': 'Escape (Esc)',
+        'alt': 'Alt',
+        'altgraph': 'Alt',
+        'control': 'Ctrl',
+        'meta': 'Windows (Win)',
+        'os': 'Windows (Win)',
+        'fn': 'Fn',
+        'fnlock': 'Fn',
+        'arrowup': 'Yuqoriga strelka (▲)',
+        'arrowdown': 'Pastga strelka (▼)',
+        'arrowleft': 'Chapga strelka (◄)',
+        'arrowright': 'O\'ngga strelka (►)',
+        'delete': 'Delete (Del)',
+        'home': 'Home (HM)',
+        'end': 'End',
+        'pageup': 'PageUp (PU)',
+        'pagedown': 'PageDown (PD)',
+        'insert': 'Insert (INS)',
+        'printscreen': 'PrintScreen (PS)',
+        'scrolllock': 'ScrollLock (SL)',
+        'pause': 'Pause/Break (PB)',
+        'contextmenu': 'Kontekst Menyusi'
+      };
 
-      var lockedOverlay = document.createElement('div');
-      lockedOverlay.className = 'eth-exam-locked-screen';
-      lockedOverlay.id = 'examLockedScreen';
-      lockedOverlay.style.zIndex = '2147483648';
-      lockedOverlay.innerHTML = '' +
-        '<div class="eth-locked-box">' +
-        '  <div class="eth-locked-icon">🚫</div>' +
-        '  <h2>TEST BLOKLANDI: QOIDABUZARLIK ANIQLANDI</h2>' +
-        '  <div class="eth-locked-reason"><b>Sabab:</b> ' + esc(reason) + '</div>' +
-        '  <div class="eth-locked-msg">' +
-        '    Test paytida boshni 35° dan ortiq burish, chetga qarash yoki boshqa oynalarga o\'tish qat\'iyan taqiqlanadi.<br>' +
-        '    O\'qituvchingizga ushbu qoidabuzarlik haqida darhol xabar yuborildi.<br><br>' +
-        '    <b>Test bloklandi. O\'qituvchi blokdan chiqarguniga qadar kuting.</b>' +
+      function getBlockedKeyLabel(e) {
+        var k = (e.key || '').toLowerCase();
+        var code = (e.code || '').toLowerCase();
+
+        // Function keys F1 - F12
+        if (/^f(1[0-2]|[1-9])$/.test(k) || /^f(1[0-2]|[1-9])$/.test(code)) {
+          return (e.key || e.code).toUpperCase();
+        }
+
+        // Direct map
+        if (PROHIBITED_KEYS_MAP[k]) return PROHIBITED_KEYS_MAP[k];
+        if (PROHIBITED_KEYS_MAP[code]) return PROHIBITED_KEYS_MAP[code];
+
+        // Modifier combos
+        if (e.altKey) return 'Alt';
+        if (e.metaKey) return 'Windows (Win)';
+        if (e.ctrlKey && k !== 'control') return 'Ctrl';
+
+        return null;
+      }
+
+      function onKeyDownProctor(e) {
+        if (isTeacher || isExamLocked || isExamFinished) return;
+        var blockedKeyName = getBlockedKeyLabel(e);
+        if (blockedKeyName) {
+          e.preventDefault();
+          e.stopPropagation();
+          triggerInfraction("O'quvchi " + blockedKeyName + " tugmasini bosib ekranni o'zgartirib firibgarlik qilmoqchi bo'ldi!");
+        }
+      }
+      if (!isTeacher) {
+        window.addEventListener('keydown', onKeyDownProctor, true);
+      }
+
+      // 4. Prominent Mirrored WebCam Picture-in-Picture Box (Floating top-right)
+      var camBox = document.createElement('div');
+      camBox.className = 'eth-proctor-cam-box';
+      camBox.id = 'proctorCamBox';
+      camBox.innerHTML = '' +
+        '<div class="eth-cam-header">' +
+        '  <div style="display:flex;align-items:center">' +
+        '    <span class="eth-cam-dot" id="proctorCamDot"></span>' +
+        '    <span id="proctorCamTitle">' + (isTeacher ? '👨‍🏫 Ustoz Sinovi' : 'Kamera Nazorati') + '</span>' +
         '  </div>' +
-        '  <div class="eth-locked-pulse">' +
-        '    <span class="eth-cam-dot danger"></span> O\'qituvchi tomonidan blokdan chiqarilishi kutilmoqda...' +
-        '  </div>' +
+        '  <span class="eth-cam-badge" id="proctorCamAngle">' + (isTeacher ? 'Nazoratsiz' : 'To\'g\'ri: 0°') + '</span>' +
+        '</div>' +
+        '<div class="eth-cam-video-wrap">' +
+        '  <video id="proctorVideo" autoplay playsinline muted></video>' +
+        '  <div class="eth-cam-target-oval" id="proctorOval"></div>' +
+        '</div>' +
+        '<div class="eth-cam-footer" id="proctorStudentName">' +
+        (isTeacher ?
+          '  👤 ' + esc((S.user && S.user.name) || 'Ustoz') + ' · Cheklovlar O\'chirilgan' :
+          '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 50° AI Tracker'
+        ) +
         '</div>';
-      lockdownModal.appendChild(lockedOverlay);
+      lockdownModal.appendChild(camBox);
 
-      if (window.EthithSync) {
-        window.EthithSync.publishLive({
-          type: 'STUDENT_BLOCKED',
-          studentId: (S.user && (S.user.email || S.user.id)) || 'guest',
-          studentName: (S.user && S.user.name) || 'O\'quvchi',
-          studentEmail: (S.user && S.user.email) || '',
-          examId: exam.id,
-          examCode: exam.code,
-          examTitle: exam.title,
-          reason: reason,
-          timestamp: Date.now()
+      var proctorVideo = document.getElementById('proctorVideo');
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({
+          video: { width: { ideal: 320 }, height: { ideal: 240 }, facingMode: 'user' }
+        }).then(function(stream) {
+          proctorStream = stream;
+          var vid = document.getElementById('proctorVideo');
+          if (vid) {
+            vid.srcObject = stream;
+            vid.onloadedmetadata = function() {
+              vid.play().catch(function(){});
+            };
+          }
+        }).catch(function(err) {
+          console.warn("Kamera xatosi:", err);
         });
       }
-    }
 
-    // 7. Real-Time Unblock Listener (Sub-100ms wakeup)
-    window._ethithOnStudentUnblocked = function(ev) {
-      var myKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase();
-      if ((ev.studentEmail && ev.studentEmail.toLowerCase() === myKey) ||
-          (ev.studentId && ev.studentId.toLowerCase() === myKey)) {
-        isExamLocked = false;
-        turnInfractionFrames = 0;
-        var lockEl = document.getElementById('examLockedScreen');
-        if (lockEl) lockEl.remove();
+      // 5. Algorithmic Pure JS/Canvas 50° Head Turn & Look-Away Detector (students only)
+      if (!isTeacher) {
+        var offCanvas = document.createElement('canvas');
+        offCanvas.width = 160;
+        offCanvas.height = 120;
+        var offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
+
+        var calibrationCount = 0;
+        var baseCenterSum = 0;
+        var avgBaseCenter = 80;
+        var ticksTotal = 0;
+
+        proctorInterval = setInterval(function() {
+          if (!proctorVideo || !proctorVideo.videoWidth || isExamLocked || isExamFinished) return;
+          try {
+            offCtx.drawImage(proctorVideo, 0, 0, 160, 120);
+            var imgData = offCtx.getImageData(0, 0, 160, 120);
+            var pixels = imgData.data;
+
+            var leftMass = 0;
+            var rightMass = 0;
+            var totalMass = 0;
+            var sumX = 0;
+
+            for (var y = 15; y < 105; y += 2) {
+              for (var x = 20; x < 140; x += 2) {
+                var idx = (y * 160 + x) * 4;
+                var r = pixels[idx];
+                var g = pixels[idx + 1];
+                var b = pixels[idx + 2];
+
+                var isSkin = (r > 45 && g > 30 && b > 20 && r > b && (r - g) >= 5);
+                var lum = 0.299 * r + 0.587 * g + 0.114 * b;
+                var isFg = isSkin || (lum > 35 && lum < 225 && Math.abs(r - g) > 6);
+
+                if (isFg) {
+                  totalMass++;
+                  sumX += x;
+                  if (x < 80) leftMass++;
+                  else rightMass++;
+                }
+              }
+            }
+
+            ticksTotal++;
+
+            if (calibrationCount < 4) {
+              if (totalMass > 40) {
+                calibrationCount++;
+                baseCenterSum += (sumX / totalMass);
+                if (calibrationCount >= 4) {
+                  avgBaseCenter = baseCenterSum / 4;
+                }
+              } else if (ticksTotal > 6) {
+                avgBaseCenter = 80;
+                calibrationCount = 4;
+              }
+              return;
+            }
+
+            var currentCenter = totalMass > 20 ? (sumX / totalMass) : avgBaseCenter;
+            var dx = Math.abs(currentCenter - avgBaseCenter);
+            var asymmetry = Math.abs(leftMass - rightMass) / (leftMass + rightMass + 1);
+
+            // Calibrated 50 degree tracking with softened sensitivity
+            var estimatedAngle = Math.min(90, Math.round((dx / 18) * 50 * 0.5 + (asymmetry / 0.45) * 50 * 0.6));
+            var isFarAway = (totalMass < 15);
+            if (isFarAway) {
+              estimatedAngle = 60;
+            }
+
+            var angleBadge = document.getElementById('proctorCamAngle');
+            var dot = document.getElementById('proctorCamDot');
+            var oval = document.getElementById('proctorOval');
+
+            if (angleBadge) {
+              if (estimatedAngle < 35) {
+                angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
+                angleBadge.className = 'eth-cam-badge';
+                if (dot) dot.className = 'eth-cam-dot';
+                if (oval) oval.className = 'eth-cam-target-oval';
+              } else if (estimatedAngle < 50) {
+                angleBadge.textContent = "Burilish: " + estimatedAngle + "°";
+                angleBadge.className = 'eth-cam-badge warn';
+                if (dot) dot.className = 'eth-cam-dot warn';
+                if (oval) oval.className = 'eth-cam-target-oval warn';
+              } else {
+                angleBadge.textContent = "XAVF: " + estimatedAngle + "°!";
+                angleBadge.className = 'eth-cam-badge danger';
+                if (dot) dot.className = 'eth-cam-dot danger';
+                if (oval) oval.className = 'eth-cam-target-oval danger';
+              }
+            }
+
+            // Softened: require 5 consecutive ticks (~1.25s) before triggering lock
+            if (estimatedAngle >= 50 || isFarAway) {
+              turnInfractionFrames++;
+              if (turnInfractionFrames >= 5) {
+                if (isFarAway) {
+                  triggerInfraction("O'quvchi kameradan uzoqlashib ko'chirishga harakat qilmoqda");
+                } else {
+                  triggerInfraction("O'quvchi boshini burib ko'chirishga harakat qilmoqda (" + estimatedAngle + "°)");
+                }
+              }
+            } else {
+              turnInfractionFrames = 0;
+            }
+          } catch(err) {}
+        }, 250);
+      }
+
+      // 6. Trigger Infraction & Lock Exam
+      function triggerInfraction(reason) {
+        if (isTeacher || isExamLocked || isExamFinished) return;
+        isExamLocked = true;
+
         var angleBadge = document.getElementById('proctorCamAngle');
         var dot = document.getElementById('proctorCamDot');
-        if (dot) dot.className = 'eth-cam-dot';
+        if (dot) dot.className = 'eth-cam-dot danger';
         if (angleBadge) {
-          angleBadge.textContent = 'To\'g\'ri: 0°';
-          angleBadge.className = 'eth-cam-badge';
+          angleBadge.textContent = 'BLOKLANDI';
+          angleBadge.className = 'eth-cam-badge danger';
+        }
+
+        try {
+          var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          var osc = audioCtx.createOscillator();
+          var gain = audioCtx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(220, audioCtx.currentTime + 0.4);
+          gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.4);
+        } catch(ae) {}
+
+        var existingLock = document.getElementById('examLockedScreen');
+        if (existingLock) existingLock.remove();
+
+        var lockedOverlay = document.createElement('div');
+        lockedOverlay.className = 'eth-exam-locked-screen';
+        lockedOverlay.id = 'examLockedScreen';
+        lockedOverlay.style.zIndex = '2147483648';
+        lockedOverlay.innerHTML = '' +
+          '<div class="eth-locked-box">' +
+          '  <div class="eth-locked-icon">🚫</div>' +
+          '  <h2>TEST BLOKLANDI: QOIDABUZARLIK ANIQLANDI</h2>' +
+          '  <div class="eth-locked-reason"><b>Qoidabuzarlik:</b> ' + esc(reason) + '</div>' +
+          '  <div class="eth-locked-msg">' +
+          '    Test paytida taqiqlangan tugmalarni bosish, boshni 50° dan ortiq burish yoki boshqa oynalarga o\'tish qat\'iyan taqiqlanadi.<br>' +
+          '    O\'qituvchingizga ushbu qoidabuzarlik haqida darhol xabar yuborildi.<br><br>' +
+          '    <b>Test to\'liq bloklandi. O\'qituvchi o\'z panelidan blokdan chiqarguniga qadar kuting.</b>' +
+          '  </div>' +
+          '  <div class="eth-locked-pulse">' +
+          '    <span class="eth-cam-dot danger"></span> O\'qituvchi tomonidan blokdan chiqarilishi kutilmoqda...' +
+          '  </div>' +
+          '</div>';
+        lockdownModal.appendChild(lockedOverlay);
+
+        if (window.EthithSync) {
+          window.EthithSync.publishLive({
+            type: 'STUDENT_BLOCKED',
+            studentId: (S.user && (S.user.email || S.user.id)) || 'guest',
+            studentName: (S.user && S.user.name) || 'O\'quvchi',
+            studentEmail: (S.user && S.user.email) || '',
+            examId: exam.id,
+            examCode: exam.code,
+            examTitle: exam.title,
+            reason: reason,
+            timestamp: Date.now()
+          });
         }
       }
-    };
+
+      // 7. Real-Time Unblock Listener (Sub-100ms wakeup)
+      window._ethithOnStudentUnblocked = function(ev) {
+        var myKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase();
+        if ((ev.studentEmail && ev.studentEmail.toLowerCase() === myKey) ||
+            (ev.studentId && ev.studentId.toLowerCase() === myKey)) {
+          isExamLocked = false;
+          turnInfractionFrames = 0;
+          var lockEl = document.getElementById('examLockedScreen');
+          if (lockEl) lockEl.remove();
+          var angleBadge = document.getElementById('proctorCamAngle');
+          var dot = document.getElementById('proctorCamDot');
+          if (dot) dot.className = 'eth-cam-dot';
+          if (angleBadge) {
+            angleBadge.textContent = 'To\'g\'ri: 0°';
+            angleBadge.className = 'eth-cam-badge';
+          }
+        }
+      };
 
     // 8. Exam Timer
     var timerInterval = setInterval(function() {
@@ -3665,6 +3797,7 @@
       if (proctorInterval) clearInterval(proctorInterval);
       window.removeEventListener('blur', onWindowBlur);
       document.removeEventListener('visibilitychange', onVisChange);
+      window.removeEventListener('keydown', onKeyDownProctor, true);
       window._ethithOnStudentUnblocked = null;
 
       if (examAudioObj) {
@@ -3899,6 +4032,7 @@
 
     renderExamQuestion();
   }
+}
 
   function showExamLeaderboardModal(exam) {
     var overlay = document.createElement('div');
@@ -4187,14 +4321,14 @@
               '  <div style="font-size:13px;color:var(--text);margin-bottom:6px">' +
               '    <b>Exam:</b> ' + esc(n.examTitle) + ' (Code: ' + esc(n.examCode) + ')' +
               '  </div>' +
-              '  <div style="font-size:12.5px;color:#b91c1c;background:rgba(239, 68, 68, 0.08);padding:6px 10px;border-radius:6px;margin-bottom:10px">' +
-              '    <b>Infraction:</b> ' + esc(n.reason) +
+              '  <div style="font-size:13px;color:#b91c1c;background:rgba(239, 68, 68, 0.08);padding:8px 12px;border-radius:8px;margin-bottom:12px;border:1px solid rgba(239,68,68,0.2)">' +
+              '    <b>🚨 Qoidabuzarlik:</b> ' + esc(n.reason) +
               '  </div>' +
               '  <div style="display:flex;justify-content:flex-end;gap:8px">' +
               (n.resolved ?
-                '    <span style="font-size:12px;font-weight:700;color:#10b981;padding:4px 10px">✓ Unblocked</span>' :
-                '    <button class="eth-btn-primary" data-unblock-id="' + n.id + '" style="padding:7px 16px;font-size:13px;background:#10b981;border-color:#10b981">' +
-                ic('unlock') + ' Unblock Student' +
+                '    <span style="font-size:12px;font-weight:700;color:#10b981;padding:6px 12px;background:rgba(16,185,129,0.1);border-radius:8px">✓ Blokdan chiqarilgan</span>' :
+                '    <button class="eth-btn-primary" data-unblock-id="' + n.id + '" style="padding:8px 18px;font-size:13px;background:#10b981;border-color:#10b981;box-shadow:0 4px 12px rgba(16,185,129,0.3)">' +
+                ic('unlock') + ' 🔓 Blokdan Chiqarish (Unblock)' +
                 '    </button>') +
               '  </div>' +
               '</div>';
@@ -4264,6 +4398,53 @@
     renderNotifsContent();
     document.body.appendChild(overlay);
   }
+
+  window._ethithShowTeacherAlert = function(notif) {
+    if (!S.user || S.user.role !== 'teacher') return;
+    var existing = document.getElementById('floatingTeacherAlert_' + notif.id);
+    if (existing) return;
+
+    var alertEl = document.createElement('div');
+    alertEl.id = 'floatingTeacherAlert_' + notif.id;
+    alertEl.className = 'eth-teacher-floating-alert';
+    alertEl.style.cssText = 'position:fixed;top:24px;right:24px;z-index:2147483647;background:#dc2626;color:#fff;padding:16px 20px;border-radius:14px;box-shadow:0 14px 35px rgba(220,38,38,0.5);max-width:440px;animation:ethNotifSlideIn 0.3s ease;display:flex;flex-direction:column;gap:10px;';
+    alertEl.innerHTML = '' +
+      '<div style="display:flex;justify-content:space-between;align-items:center">' +
+      '  <b style="font-size:15px;display:flex;align-items:center;gap:6px">🚨 O\'QUVCHI TESTDA BLOKLANDI!</b>' +
+      '  <button type="button" style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer;opacity:0.8;line-height:1" onclick="this.closest(\'.eth-teacher-floating-alert\').remove()">✕</button>' +
+      '</div>' +
+      '<div style="font-size:13px;line-height:1.45">' +
+      '  <b>O\'quvchi:</b> ' + esc(notif.studentName) + '<br>' +
+      '  <b>Imtihon:</b> ' + esc(notif.examTitle) + ' (' + esc(notif.examCode) + ')<br>' +
+      '  <b>Qoidabuzarlik:</b> <span style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px">' + esc(notif.reason) + '</span>' +
+      '</div>' +
+      '<button type="button" class="eth-btn-primary" style="background:#fff;color:#dc2626;font-weight:800;border:none;padding:9px 14px;border-radius:8px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.25)">' +
+      '  🔓 O\'quvchini Blokdan Chiqarish' +
+      '</button>';
+
+    var unblockBtn = alertEl.querySelector('button.eth-btn-primary');
+    if (unblockBtn) {
+      unblockBtn.onclick = function() {
+        notif.resolved = true;
+        App.saveState();
+        if (window.EthithSync) {
+          window.EthithSync.publishLive({
+            type: 'STUDENT_UNBLOCKED',
+            studentId: notif.studentId,
+            studentEmail: notif.studentEmail,
+            examId: notif.examId,
+            examCode: notif.examCode,
+            timestamp: Date.now()
+          });
+        }
+        alertEl.remove();
+        if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
+        if (window._ethithRefreshNotifsModal) window._ethithRefreshNotifsModal();
+      };
+    }
+
+    document.body.appendChild(alertEl);
+  };
 
   // ==========================================
   // VIEW 5: PLACEMENT TEST (70 QUESTIONS)

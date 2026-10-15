@@ -467,6 +467,9 @@
       if (!dup) {
         S.notifications.unshift(blockedNotif);
         uiNeedsRefresh = true;
+        if (S.user && S.user.role === 'teacher' && window._ethithShowTeacherAlert) {
+          window._ethithShowTeacherAlert(blockedNotif);
+        }
       }
     }
 
