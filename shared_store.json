@@ -421,7 +421,44 @@
       ]
     }
   ],
-  "exams": [],
+  "exams": [
+    {
+      "id": "exam_1792063487617",
+      "code": "778570",
+      "title": "English Examination 2026",
+      "duration": 30,
+      "pointsPerQ": 2,
+      "isPublic": true,
+      "maxAttempts": 1,
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "question": "Yesterday, I ________ a very interesting book at the library.",
+          "options": [
+            "readed",
+            "read",
+            "reads",
+            "reading"
+          ],
+          "answer": "readed"
+        },
+        {
+          "id": 2,
+          "type": "choice",
+          "question": "Where ________ you go for your last summer holiday?",
+          "options": [
+            "do",
+            "did",
+            "was",
+            "were"
+          ],
+          "answer": "do"
+        }
+      ],
+      "submissions": []
+    }
+  ],
   "deletedExamIds": [
     "exam_1792011716430",
     "407221",
@@ -434,5 +471,5 @@
     "exam_1792042206065",
     "792046"
   ],
-  "updatedAt": 1792063088472
+  "updatedAt": 1792063490766
 }
