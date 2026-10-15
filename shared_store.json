@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792041969539,
+      "created": 1792041702248,
       "students": [],
       "messages": [
         {
@@ -50,7 +50,7 @@
           "id": "nasibaorazaliyev@gmail.com",
           "name": "nursulton",
           "email": "nasibaorazaliyev@gmail.com",
-          "lastActive": 1792042015140,
+          "lastActive": 1792042015141,
           "dailyMinutes": 0,
           "mistakes": 0
         }
@@ -74,6 +74,17 @@
           "time": "10:26",
           "replyTo": null,
           "reactions": {}
+        },
+        {
+          "id": "msg_1792042022803_twjuy",
+          "timestamp": 1792042022804,
+          "senderId": "tc_oprlehyw5",
+          "senderName": "Name",
+          "senderEmail": "strikeruzb52@gmail.com",
+          "text": "Yusuf bot",
+          "time": "10:27",
+          "replyTo": null,
+          "reactions": {}
         }
       ],
       "pinnedId": null,
@@ -89,5 +100,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042016864
+  "updatedAt": 1792042023973
 }
