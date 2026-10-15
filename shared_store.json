@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792041702248,
+      "created": 1792041969539,
       "students": [],
       "messages": [
         {
@@ -143,15 +143,19 @@
           "text": "khuj",
           "time": "10:32",
           "replyTo": null,
-          "reactions": {}
+          "reactions": {
+            "🔥": [
+              "strikeruzb52@gmail.com"
+            ]
+          }
         }
       ],
       "pinnedId": null,
       "deletedMsgIds": [
-        "msg_1792042367569_7htzs",
-        "msg_1792042036562_fkm5k",
         "msg_1792042347995_z52xw",
         "msg_1792042342788_9894b",
+        "msg_1792042367569_7htzs",
+        "msg_1792042036562_fkm5k",
         "msg_1792042358929_8iaq2",
         "msg_1792041984917_cd4i9"
       ]
@@ -229,5 +233,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042415528
+  "updatedAt": 1792042428771
 }
