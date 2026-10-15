@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792041969539,
+      "created": 1792041702248,
       "students": [],
       "messages": [
         {
@@ -134,8 +134,8 @@
           "replyTo": null,
           "reactions": {
             "❤️": [
-              "strikeruzb52@gmail.com",
-              "nasibaorazaliyev@gmail.com"
+              "nasibaorazaliyev@gmail.com",
+              "strikeruzb52@gmail.com"
             ]
           }
         },
@@ -166,7 +166,56 @@
       "deletedMsgIds": []
     }
   ],
-  "exams": [],
+  "exams": [
+    {
+      "id": "exam_1792042206065",
+      "code": "792046",
+      "title": "English Examination 2026",
+      "duration": 45,
+      "pointsPerQ": 5,
+      "isPublic": true,
+      "maxAttempts": 10,
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "question": "1jsievdkdldnb",
+          "options": [
+            "Sham",
+            "Nurik",
+            "Blat",
+            "Yus"
+          ],
+          "answer": "Blat"
+        },
+        {
+          "id": 2,
+          "type": "choice",
+          "question": "Tododo5d",
+          "options": [
+            "Fop6of",
+            "F9uuf",
+            "P96",
+            "Oyfxo6"
+          ],
+          "answer": "P96"
+        },
+        {
+          "id": 3,
+          "type": "choice",
+          "question": "Opdp",
+          "options": [
+            "Oydo6",
+            "O",
+            "Yp",
+            "TOSHKENT"
+          ],
+          "answer": "Yp"
+        }
+      ],
+      "submissions": []
+    }
+  ],
   "deletedExamIds": [
     "exam_1792011716430",
     "407221",
@@ -175,5 +224,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042075365
+  "updatedAt": 1792042211744
 }
