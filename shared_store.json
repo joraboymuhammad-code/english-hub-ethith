@@ -457,7 +457,21 @@
           "answer": "do"
         }
       ],
-      "submissions": []
+      "submissions": [
+        {
+          "studentId": "muhammedjoraboyev1@gmail.com",
+          "studentName": "Muhammadyusuf",
+          "studentEmail": "muhammedjoraboyev1@gmail.com",
+          "score": 4,
+          "totalPossible": 4,
+          "percent": 100,
+          "correctCount": 2,
+          "incorrectCount": 0,
+          "attempts": 1,
+          "timeSpent": "1 daqiqa",
+          "date": "16:27"
+        }
+      ]
     }
   ],
   "deletedExamIds": [
@@ -472,5 +486,5 @@
     "exam_1792042206065",
     "792046"
   ],
-  "updatedAt": 1792063632343
+  "updatedAt": 1792063667861
 }
