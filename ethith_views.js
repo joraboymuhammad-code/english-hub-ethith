@@ -415,6 +415,95 @@
   // ==========================================
   // VIEW 2: LEVELS (A1 - C2) & 40 TOPICS
   // ==========================================
+  function showCreateLevelTransitionExamModal(currentLevel, container) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+
+    var transitions = [
+      { from: 'A1', to: 'A2', title: 'A1 ➔ A2 (Elementary → Pre-Intermediate)', desc: 'A1 darajasini yakunlab, A2 darajaga o\'tish uchun rasmiy imtihon' },
+      { from: 'A2', to: 'B1', title: 'A2 ➔ B1 (Pre-Intermediate → Intermediate)', desc: 'A2 darajasini yakunlab, B1 mustaqil darajaga o\'tish testi' },
+      { from: 'B1', to: 'B2', title: 'B1 ➔ B2 (Intermediate → Upper-Intermediate)', desc: 'B1 dan B2 professional darajaga o\'tish imtihoni' },
+      { from: 'B2', to: 'C1', title: 'B2 ➔ C1 (Upper-Intermediate → Advanced)', desc: 'B2 dan C1 oliy akademik darajaga o\'tish imtihoni' },
+      { from: 'C1', to: 'C2', title: 'C1 ➔ C2 (Advanced → Master / Native-level)', desc: 'C1 dan C2 mukammal darajaga o\'tish imtihoni' }
+    ];
+
+    var defaultIdx = 0;
+    if (currentLevel === 'A2') defaultIdx = 1;
+    else if (currentLevel === 'B1') defaultIdx = 2;
+    else if (currentLevel === 'B2') defaultIdx = 3;
+    else if (currentLevel === 'C1') defaultIdx = 4;
+
+    overlay.innerHTML = '' +
+      '<div class="eth-modal" style="max-width:620px;padding:26px 28px">' +
+      '  <button type="button" class="eth-modal-close-btn" id="btnCloseLevelTransPrompt" title="Yopish">✕</button>' +
+      '  <div class="eth-modal-header" style="margin-bottom:18px">' +
+      '    <div style="font-size:32px;margin-bottom:6px">🎓</div>' +
+      '    <h2 style="font-size:20px;font-weight:800;color:var(--text);margin:0 0 6px">Daraja O\'tish Testi Yaratish</h2>' +
+      '    <p style="margin:0;font-size:13.5px;color:var(--muted)">Qaysi darajadan qaysi darajaga o\'tadigan test ekanini tanlang, so\'ngra test tuzish paneliga o\'tasiz:</p>' +
+      '  </div>' +
+      '  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">' +
+      transitions.map(function(t, idx) {
+        var isSel = (idx === defaultIdx);
+        return '' +
+          '<div class="eth-level-trans-opt ' + (isSel ? 'selected' : '') + '" data-from="' + t.from + '" data-to="' + t.to + '" style="padding:14px 18px;border-radius:12px;border:1.5px solid ' + (isSel ? '#2563eb' : 'var(--border)') + ';background:' + (isSel ? 'rgba(37,99,235,0.06)' : 'var(--card)') + ';cursor:pointer;transition:all 0.15s ease">' +
+          '  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px">' +
+          '    <b class="trans-opt-title" style="font-size:15px;color:' + (isSel ? '#2563eb' : 'var(--text)') + '">🏆 ' + t.title + '</b>' +
+          '    <span class="trans-opt-badge" style="font-size:12px;font-weight:700;color:' + (isSel ? '#2563eb' : 'var(--muted)') + '">' + (isSel ? 'Tanlangan ✓' : 'Tanlash') + '</span>' +
+          '  </div>' +
+          '  <div style="font-size:12.5px;color:var(--muted)">' + t.desc + '</div>' +
+          '</div>';
+      }).join('') +
+      '  </div>' +
+      '  <div style="display:flex;gap:10px">' +
+      '    <button type="button" class="ap-btn out" id="btnCancelLevelTransPrompt" style="flex:1">Bekor qilish</button>' +
+      '    <button type="button" class="eth-btn-primary" id="btnProceedLevelTransPrompt" style="flex:2">Davom etish (Test Tuzish) &rarr;</button>' +
+      '  </div>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+
+    var selFrom = transitions[defaultIdx].from;
+    var selTo = transitions[defaultIdx].to;
+
+    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+    var closeBtn = overlay.querySelector('#btnCloseLevelTransPrompt');
+    if (closeBtn) closeBtn.onclick = function() { overlay.remove(); };
+    overlay.querySelector('#btnCancelLevelTransPrompt').onclick = function() { overlay.remove(); };
+
+    overlay.querySelectorAll('.eth-level-trans-opt').forEach(function(opt) {
+      opt.onclick = function() {
+        overlay.querySelectorAll('.eth-level-trans-opt').forEach(function(o) {
+          o.style.borderColor = 'var(--border)';
+          o.style.background = 'var(--card)';
+          var badge = o.querySelector('.trans-opt-badge');
+          if (badge) { badge.textContent = 'Tanlash'; badge.style.color = 'var(--muted)'; }
+          var title = o.querySelector('.trans-opt-title');
+          if (title) { title.style.color = 'var(--text)'; }
+        });
+        opt.style.borderColor = '#2563eb';
+        opt.style.background = 'rgba(37,99,235,0.06)';
+        var b = opt.querySelector('.trans-opt-badge');
+        if (b) { b.textContent = 'Tanlangan ✓'; b.style.color = '#2563eb'; }
+        var t = opt.querySelector('.trans-opt-title');
+        if (t) { t.style.color = '#2563eb'; }
+        selFrom = opt.dataset.from;
+        selTo = opt.dataset.to;
+      };
+    });
+
+    overlay.querySelector('#btnProceedLevelTransPrompt').onclick = function() {
+      overlay.remove();
+      showCreateExamModal(container, {
+        isLevelTransition: true,
+        levelFrom: selFrom,
+        levelTo: selTo,
+        title: selFrom + ' ➔ ' + selTo + ' Rasmiy Daraja O\'tish Imtihoni',
+        duration: 90,
+        audioMaxPlays: 2
+      });
+    };
+  }
+
   function renderLevelsView(container, levelKey) {
     var curLevel = levelKey || S.level || 'A1';
     S.level = curLevel;
@@ -427,13 +516,21 @@
     var NEXT_LEVEL = { A1: 'A2', A2: 'B1', B1: 'B2', B2: 'C1', C1: 'C2', C2: 'Master' };
     var nextLv = NEXT_LEVEL[curLevel] || 'Keyingi';
 
+    var customTrans = (S.exams || []).filter(function(e) {
+      return e.isLevelTransition && (e.levelFrom === curLevel || (!e.levelFrom && curLevel === 'A1'));
+    });
+
     var html = '' +
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
       '    <h2>' + ic('layers') + ' CEFR English Levels (40 Topics)</h2>' +
       '    <p>Score 70% or higher on each topic quiz to unlock the next lesson.</p>' +
       '  </div>' +
-      (isTeacher ? '  <button class="ap-btn solid" id="tcAddTestBtn">' + ic('plus') + ' Yangi Test Qo\'shish</button>' : '') +
+      (isTeacher ?
+        '  <div style="display:flex;gap:8px;flex-wrap:wrap">' +
+        '    <button class="ap-btn solid" id="btnCreateLevelExam" style="background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;font-weight:700">🎓 Daraja O\'tish Testi Yaratish</button>' +
+        '    <button class="ap-btn out" id="tcAddTestBtn">' + ic('plus') + ' AI Mavzu Testi</button>' +
+        '  </div>' : '') +
       '</div>' +
       '<div class="eth-tabs" style="margin:0 0 16px 0">' +
       levels.map(function(lv) {
@@ -443,14 +540,48 @@
       '<div class="ap-card" id="levelTransitionCard" style="cursor:pointer;background:linear-gradient(135deg, #0f172a, #1e3a8a);color:#ffffff;border-radius:16px;padding:16px 20px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 6px 20px rgba(15,23,42,0.15)">' +
       '  <div>' +
       '    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">' +
-      '      <span style="background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:12px;font-size:11.5px;font-weight:700">🏆 CEFR Level Exam</span>' +
+      '      <span style="background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:12px;font-size:11.5px;font-weight:700">🏆 Standart CEFR Imtihoni</span>' +
       '      <span class="eth-badge-open" style="font-size:11px;font-weight:700">✅ Faol · 30 Savol (90 daqiqa)</span>' +
       '    </div>' +
       '    <h3 style="font-size:17px;margin:0 0 4px;color:#ffffff">' + curLevel + ' &rarr; ' + nextLv + ' Level Test (' + curLevel + ' to ' + nextLv + ' Transition Exam)</h3>' +
       '    <p style="margin:0;opacity:0.85;font-size:12.5px">Complete all 40 topics to unlock and take the official transition exam to the next level.</p>' +
       '  </div>' +
       '  <button class="ap-btn" style="background:#ffffff;color:#1e3a8a;font-weight:700;border:none;padding:10px 18px;border-radius:10px;cursor:pointer;font-size:13px">Start Test &rarr;</button>' +
-      '</div>' +
+      '</div>';
+
+    if (customTrans.length > 0) {
+      html += '' +
+        '<div style="margin:0 0 20px">' +
+        '  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">' +
+        '    <h3 style="font-size:15px;margin:0;display:flex;align-items:center;gap:6px">' +
+        '      <span>🎓</span> <b>O\'qituvchilar yaratgan ' + curLevel + ' Daraja O\'tish Testlari (' + customTrans.length + ' ta):</b>' +
+        '    </h3>' +
+        '  </div>' +
+        '  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px">' +
+        customTrans.map(function(ex) {
+          return '' +
+            '<div class="ap-card" style="padding:16px;border-radius:14px;background:var(--card);border:1.5px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;gap:12px">' +
+            '  <div>' +
+            '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">' +
+            '      <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(37,99,235,0.1);color:#2563eb">🏆 ' + esc(ex.levelFrom || curLevel) + ' ➔ ' + esc(ex.levelTo || nextLv) + '</span>' +
+            '      <span style="font-size:12px;color:var(--muted)">Kod: <b style="color:var(--text)">' + esc(ex.code) + '</b></span>' +
+            '    </div>' +
+            '    <h4 style="margin:0 0 4px;font-size:15px">' + esc(ex.title) + '</h4>' +
+            '    <div style="font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap">' +
+            '      <span>⏱ ' + ex.duration + ' daqiqa</span>' +
+            '      <span>❓ ' + ex.questions.length + ' ta savol</span>' +
+            (ex.audioData ? '<span style="color:#16a34a;font-weight:700">🎧 Audio bor</span>' : '') +
+            (ex.pdfData ? '<span style="color:#2563eb;font-weight:700">📄 PDF Worksheet</span>' : '') +
+            '    </div>' +
+            '  </div>' +
+            '  <button class="eth-btn-primary" data-run-trans-exam="' + ex.id + '" style="width:100%;padding:9px;font-size:13px;font-weight:700">Testni Boshlash ' + ic('right') + '</button>' +
+            '</div>';
+        }).join('') +
+        '  </div>' +
+        '</div>';
+    }
+
+    html += '' +
       '<div style="font-size:14px;color:var(--muted);margin-bottom:12px">' +
       (isTeacher ? '<b>Teacher Mode:</b> All 40 topics unlocked.' : '<b>Unlocked Topics:</b> ' + unlockedCount + ' / 40') +
       '</div>' +
@@ -504,6 +635,16 @@
       };
     }
 
+    container.querySelectorAll('[data-run-trans-exam]').forEach(function(btn) {
+      btn.onclick = function() {
+        var exId = btn.dataset.runTransExam;
+        var exObj = (S.exams || []).find(function(e) { return e.id === exId; });
+        if (exObj) {
+          startExamRunner(exObj, container);
+        }
+      };
+    });
+
     container.querySelectorAll('.eth-tab').forEach(function(tab) {
       tab.onclick = function() {
         renderLevelsView(container, tab.dataset.lvl);
@@ -523,6 +664,12 @@
     });
 
     if (isTeacher) {
+      var createLvlBtn = document.getElementById('btnCreateLevelExam');
+      if (createLvlBtn) {
+        createLvlBtn.onclick = function() {
+          showCreateLevelTransitionExamModal(curLevel, container);
+        };
+      }
       var tcAddBtn = document.getElementById('tcAddTestBtn');
       if (tcAddBtn) {
         tcAddBtn.onclick = function() {
@@ -1960,21 +2107,32 @@
     document.body.appendChild(overlay);
   }
 
-  function showCreateExamModal(container) {
+  function showCreateExamModal(container, prefill) {
+    if (container && !container.tagName && !container.nodeType) {
+      prefill = container;
+      container = document.getElementById('apView') || document.body;
+    }
+    prefill = prefill || {};
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
 
-    var currentTitle = 'English Examination 2026';
-    var currentDuration = 30;
-    var currentPoints = 2;
-    var currentVisibility = 'private';
-    var currentMaxAttempts = 1;
+    var currentTitle = prefill.title || 'English Examination 2026';
+    var currentDuration = prefill.duration || 30;
+    var currentPoints = prefill.points || 2;
+    var currentVisibility = prefill.visibility || 'private';
+    var currentMaxAttempts = prefill.maxAttempts || 1;
+    var currentAudioMaxPlays = prefill.audioMaxPlays || 1;
+    var isLevelTransition = !!prefill.isLevelTransition;
+    var levelFrom = prefill.levelFrom || null;
+    var levelTo = prefill.levelTo || null;
+    var currentPdfData = prefill.pdfData || null;
+    var currentPdfName = prefill.pdfName || null;
     var currentTab = 'bulk';
-    var questionsList = [];
-    var currentAudioData = null;
-    var currentAudioName = null;
-    var bulkTextCache = '';
-    var bulkAnsCache = '';
+    var questionsList = prefill.questions ? [].concat(prefill.questions) : [];
+    var currentAudioData = prefill.audioData || null;
+    var currentAudioName = prefill.audioName || null;
+    var bulkTextCache = prefill.bulkText || '';
+    var bulkAnsCache = prefill.bulkAnswers || '';
 
     function loadPdfJs(cb) {
       if (window.pdfjsLib) {
@@ -2140,12 +2298,19 @@
     }
 
     function renderModal() {
+      var linesCount = bulkTextCache ? bulkTextCache.split('\n').length : 0;
+      var charsCount = bulkTextCache ? bulkTextCache.length : 0;
+
       var html = '' +
-        '<div class="eth-modal" style="max-width:720px;max-height:92vh;display:flex;flex-direction:column">' +
+        '<div class="eth-modal" style="max-width:920px;width:95vw;max-height:92vh;display:flex;flex-direction:column">' +
         '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseCreateExam" title="Yopish">✕</button>' +
         '  <div class="eth-modal-header">' +
-        '    <h2>' + ic('plus') + ' Yangi Imtihon / Mock Test Yaratish</h2>' +
-        '    <p>50-100+ talab savollarni bir zumda aqlli tahlil qiling, audio va javoblar kalitini biriktiring</p>' +
+        (isLevelTransition ?
+          '    <h2>' + ic('trophy') + ' CEFR Daraja O\'tish Imtihoni: ' + esc(levelFrom) + ' ➔ ' + esc(levelTo) + '</h2>' +
+          '    <p>' + esc(levelFrom) + ' dan ' + esc(levelTo) + ' ga o\'tuvchi o\'quvchilar uchun qat\'iy nazoratli rasmiy imtihon yaratish</p>' :
+          '    <h2>' + ic('plus') + ' Yangi Imtihon / Mock Test Yaratish</h2>' +
+          '    <p>50-100+ talab savollarni bir zumda aqlli tahlil qiling, audio va javoblar kalitini biriktiring</p>'
+        ) +
         '  </div>' +
         '  <div class="eth-modal-body" style="overflow-y:auto;flex:1">' +
         '    <div class="eth-form-group">' +
@@ -2160,6 +2325,14 @@
         '      <div class="eth-form-group" style="flex:1;min-width:140px">' +
         '        <label>Har bir savol uchun ball</label>' +
         '        <input type="number" id="exPoints" value="' + currentPoints + '" min="1" max="100">' +
+        '      </div>' +
+        '      <div class="eth-form-group" style="flex:1;min-width:180px">' +
+        '        <label>🎧 Audio tinglash limiti</label>' +
+        '        <select id="exAudioMaxPlays">' +
+        [1, 2, 3, 5, 10].map(function(num) {
+          return '<option value="' + num + '" ' + (currentAudioMaxPlays === num ? 'selected' : '') + '>' + num + ' marta ' + (num === 1 ? '(IELTS standart)' : (num === 2 ? '(CEFR/Maktab)' : '')) + '</option>';
+        }).join('') +
+        '        </select>' +
         '      </div>' +
         '    </div>' +
         '    <div style="display:flex;gap:12px;flex-wrap:wrap">' +
@@ -2179,6 +2352,16 @@
         '        </select>' +
         '      </div>' +
         '    </div>' +
+        (currentPdfData ?
+          '    <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(37,99,235,0.08);border:1.5px solid rgba(37,99,235,0.3);padding:10px 14px;border-radius:10px;margin-bottom:12px">' +
+          '      <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:#2563eb;overflow:hidden;text-overflow:ellipsis">' +
+          '        <span>📄 Biriktirilgan PDF Fayl:</span>' +
+          '        <b style="color:var(--text)">' + esc(currentPdfName || 'document.pdf') + '</b>' +
+          '        <span style="font-size:11px;background:#2563eb;color:#fff;padding:2px 8px;border-radius:10px">List Rejimi Tayyor</span>' +
+          '      </div>' +
+          '      <button type="button" id="btnRemovePdf" style="background:none;border:none;color:#ef4444;font-size:12px;font-weight:700;cursor:pointer">✕ O\'chirish</button>' +
+          '    </div>' : ''
+        ) +
         '    <!-- Audio / Listening Upload Section -->' +
         '    <div style="margin:12px 0 16px;padding:14px;background:var(--bg2);border-radius:12px;border:1.5px dashed var(--border)">' +
         '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
@@ -2224,7 +2407,11 @@
           '        <input type="file" id="bulkQFileInput" accept=".pdf,.txt,.doc,.docx" style="display:none">' +
           '      </div>' +
           '    </div>' +
-          '    <textarea id="bulkTextInput" rows="6" placeholder="Bu yerga test savollarini tashlang yoki PDF yuklang. Masalan:\n1. The capital of Uzbekistan is ___.\nA) Samarkand\nB) Tashkent\nC) Bukhara\nD) Khiva\n\n2. Water boils at 100 degrees Celsius.\nA) True\nB) False\n\nProgress test 1B yoki Unit tests kabi 50-100+ ta savollarni shundoq tashlang...">' + esc(bulkTextCache) + '</textarea>' +
+          '    <textarea id="bulkTextInput" style="width:100%;min-height:280px;font-family:\'Consolas\',\'Monaco\',\'Courier New\',monospace;font-size:13.5px;line-height:1.55;padding:12px;border:1.5px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);resize:vertical" placeholder="Bu yerga test savollarini tashlang yoki PDF yuklang. Masalan:\n1. The capital of Uzbekistan is ___.\nA) Samarkand\nB) Tashkent\nC) Bukhara\nD) Khiva\n\n2. Water boils at 100 degrees Celsius.\nA) True\nB) False\n\nProgress test 1B yoki Unit tests kabi 50-100+ ta savollarni shundoq tashlang...">' + esc(bulkTextCache) + '</textarea>' +
+          '    <div id="bulkTextStats" style="font-size:12px;color:var(--muted);margin-top:6px;display:flex;justify-content:space-between;align-items:center">' +
+          '      <span id="bulkStatsCount">Satrlar: ' + linesCount + ' | Belgilar: ' + charsCount + '</span>' +
+          '      <span style="color:#2563eb;font-weight:600">⚡ 50 dan 100+ gacha savollarni to\'g\'ridan-to\'g\'ri tahlil qiling yoki listda yeching</span>' +
+          '    </div>' +
           '  </div>' +
           '  <div>' +
           '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">' +
@@ -2234,7 +2421,7 @@
           '        <input type="file" id="bulkAnsFileInput" accept=".pdf,.txt,.doc,.docx" style="display:none">' +
           '      </div>' +
           '    </div>' +
-          '    <textarea id="bulkAnswerInput" rows="2" placeholder="Masalan: 1b 2.a 3) c 4-d 5, a yoki 1 T 2 F 3 NG yoki 1 really; clothes 2 all; online...">' + esc(bulkAnsCache) + '</textarea>' +
+          '    <textarea id="bulkAnswerInput" style="width:100%;min-height:90px;font-family:\'Consolas\',\'Monaco\',\'Courier New\',monospace;font-size:13px;line-height:1.45;padding:10px;border:1.5px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);resize:vertical" placeholder="Masalan: 1b 2.a 3) c 4-d 5, a yoki 1 T 2 F 3 NG yoki 1 really; clothes 2 all; online...">' + esc(bulkAnsCache) + '</textarea>' +
           '    <div style="font-size:11.5px;color:var(--muted);margin-top:4px">Qo\'llab-quvvatlanadi: 1b, 1.b, 1)b, 1-b, 1,b, True/False, va Unit Tests yozma so\'zlari. Ballar (/10 yoki 2 points for each) avtomatik aniqlanadi!</div>' +
           '  </div>' +
           '  <button type="button" class="eth-btn-primary" id="parseBulkBtn" style="padding:12px 16px;font-size:14px;font-weight:700;margin-top:4px">' +
@@ -2338,8 +2525,19 @@
       overlay.querySelector('#exTitle').oninput = function(e) { currentTitle = e.target.value; };
       overlay.querySelector('#exDuration').oninput = function(e) { currentDuration = parseInt(e.target.value, 10) || 30; };
       overlay.querySelector('#exPoints').oninput = function(e) { currentPoints = parseInt(e.target.value, 10) || 2; };
+      var audPlaysEl = overlay.querySelector('#exAudioMaxPlays');
+      if (audPlaysEl) audPlaysEl.onchange = function(e) { currentAudioMaxPlays = parseInt(e.target.value, 10) || 1; };
       overlay.querySelector('#exVisibility').onchange = function(e) { currentVisibility = e.target.value; };
       overlay.querySelector('#exMaxAttempts').onchange = function(e) { currentMaxAttempts = parseInt(e.target.value, 10) || 1; };
+
+      var rmPdfBtn = overlay.querySelector('#btnRemovePdf');
+      if (rmPdfBtn) {
+        rmPdfBtn.onclick = function() {
+          currentPdfData = null;
+          currentPdfName = null;
+          renderModal();
+        };
+      }
 
       // Audio handling (max 25MB)
       var audioZone = overlay.querySelector('#audioDropZone');
@@ -2385,6 +2583,20 @@
         };
       }
 
+      // Live character and line count on bulk input
+      var bulkTextEl = overlay.querySelector('#bulkTextInput');
+      if (bulkTextEl) {
+        bulkTextEl.oninput = function(e) {
+          bulkTextCache = e.target.value;
+          var statsEl = overlay.querySelector('#bulkStatsCount');
+          if (statsEl) {
+            var l = bulkTextCache ? bulkTextCache.split('\n').length : 0;
+            var c = bulkTextCache ? bulkTextCache.length : 0;
+            statsEl.textContent = 'Satrlar: ' + l + ' | Belgilar: ' + c;
+          }
+        };
+      }
+
       // Tab switching
       overlay.querySelector('#tabBulkBtn').onclick = function() { saveCache(); currentTab = 'bulk'; renderModal(); };
       overlay.querySelector('#tabMcBtn').onclick = function() { saveCache(); currentTab = 'mc'; renderModal(); };
@@ -2405,11 +2617,19 @@
         btnUploadQ.onclick = function() { qFileInput.click(); };
         qFileInput.onchange = function(e) {
           if (e.target.files && e.target.files[0]) {
-            extractFileText(e.target.files[0], function(text) {
+            var file = e.target.files[0];
+            if (file.name.toLowerCase().endsWith('.pdf') || file.type === 'application/pdf') {
+              var r = new FileReader();
+              r.onload = function(ev) {
+                currentPdfData = ev.target.result;
+                currentPdfName = file.name;
+              };
+              r.readAsDataURL(file);
+            }
+            extractFileText(file, function(text) {
               bulkTextCache = text;
-              var tEl = overlay.querySelector('#bulkTextInput');
-              if (tEl) tEl.value = text;
-              alert("Savollar fayli muvaffaqiyatli o'qildi!");
+              renderModal();
+              alert("Savollar fayli muvaffaqiyatli o'qildi! (" + file.name + ")");
             });
           }
         };
@@ -2568,6 +2788,12 @@
           maxAttempts: currentMaxAttempts || 1,
           audioData: currentAudioData || null,
           audioName: currentAudioName || null,
+          audioMaxPlays: currentAudioMaxPlays || 1,
+          pdfData: currentPdfData || null,
+          pdfName: currentPdfName || null,
+          isLevelTransition: isLevelTransition,
+          levelFrom: levelFrom,
+          levelTo: levelTo,
           questions: questionsList,
           submissions: []
         };
@@ -2581,7 +2807,11 @@
 
         overlay.remove();
         alert("Imtihon muvaffaqiyatli yaratildi!\nO'quvchilar uchun 6 xonali maxsus kod: " + code);
-        renderExamsView(container);
+        if (isLevelTransition && levelFrom) {
+          renderLevelsView(container, levelFrom);
+        } else {
+          renderExamsView(container);
+        }
       };
     }
 
@@ -2958,6 +3188,8 @@
     // 8.5 Persistent Audio Player for Listening Exams (Continuous playback across question navigation)
     var audioBarEl = null;
     var examAudioObj = null;
+    var maxAudioPlays = exam.audioMaxPlays || 1;
+    var audioPlaysDone = 0;
     if (exam.audioData) {
       audioBarEl = document.createElement('div');
       audioBarEl.className = 'eth-test-audio-bar';
@@ -2965,6 +3197,7 @@
       audioBarEl.innerHTML = '' +
         '<div style="display:flex;align-items:center;gap:12px;width:100%;max-width:850px;margin:0 auto;flex-wrap:wrap">' +
         '  <button type="button" class="eth-test-audio-btn" id="btnExamAudioPlay">▶ Tinglash</button>' +
+        '  <span class="eth-audio-replay-badge" id="examAudioPlaysBadge">Tinglash imkoni: ' + (maxAudioPlays - audioPlaysDone) + ' / ' + maxAudioPlays + '</span>' +
         '  <div style="flex:1;min-width:180px;display:flex;flex-direction:column;gap:3px">' +
         '    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700">' +
         '      <span>🎧 Listening Audio: <b style="color:var(--test-accent)">' + esc(exam.audioName || 'Track') + '</b></span>' +
@@ -2982,6 +3215,7 @@
       var timeDisp = audioBarEl.querySelector('#examAudioTimeDisplay');
       var progBar = audioBarEl.querySelector('#examAudioProgress');
       var speedBtn = audioBarEl.querySelector('#btnExamAudioSpeed');
+      var playsBadge = audioBarEl.querySelector('#examAudioPlaysBadge');
 
       function fmtTime(sec) {
         var m = Math.floor(sec / 60);
@@ -2991,6 +3225,10 @@
 
       if (playBtn && examAudioObj) {
         playBtn.onclick = function() {
+          if (audioPlaysDone >= maxAudioPlays) {
+            alert("Audio tinglash limitiga yetdingiz (" + maxAudioPlays + " marta). Qayta tinglash mumkin emas!");
+            return;
+          }
           if (examAudioObj.paused) {
             examAudioObj.play().then(function() {
               playBtn.textContent = '⏸ To\'xtatish';
@@ -3011,7 +3249,23 @@
         };
 
         examAudioObj.onended = function() {
-          playBtn.textContent = '▶ Tinglash';
+          audioPlaysDone++;
+          if (audioPlaysDone >= maxAudioPlays) {
+            playBtn.disabled = true;
+            playBtn.classList.add('exhausted');
+            playBtn.textContent = '⛔ Tinglash limiti tugadi (' + maxAudioPlays + '/' + maxAudioPlays + ')';
+            if (playsBadge) {
+              playsBadge.textContent = '⛔ 0/' + maxAudioPlays + ' qoldi';
+              playsBadge.style.color = '#ef4444';
+              playsBadge.style.borderColor = 'rgba(239,68,68,0.3)';
+              playsBadge.style.background = 'rgba(239,68,68,0.1)';
+            }
+          } else {
+            playBtn.textContent = '▶ Tinglash';
+            if (playsBadge) {
+              playsBadge.textContent = 'Tinglash imkoni: ' + (maxAudioPlays - audioPlaysDone) + ' / ' + maxAudioPlays;
+            }
+          }
         };
 
         progBar.oninput = function() {
@@ -3029,6 +3283,9 @@
         };
       }
     }
+
+    // 8.6 Paper Worksheet Mode State
+    var isPaperMode = !!exam.pdfData;
 
     // 9. Render Question & Palette
     function renderExamQuestion() {
@@ -3059,95 +3316,175 @@
         '    </div>' +
         '  </div>' +
         '  <div class="eth-test-topbar-right">' +
+        '    <button type="button" class="eth-test-mode-toggle" id="btnTogglePaperMode" style="background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.25);color:#fff;padding:6px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;margin-right:8px;transition:all 0.15s">' +
+        (isPaperMode ? '🔘 Bittalab Ko\'rish Rejimi' : '📄 Listda Yechish (Paper Mode)') +
+        '    </button>' +
         '    <div class="eth-test-progress-info">' +
         '      <div class="eth-test-progress-text">Belgilangan: <b>' + answeredCount + ' / ' + totalQ + '</b> (' + progressPct + '%)</div>' +
         '      <div class="eth-test-progress-bar"><i style="width:' + progressPct + '%"></i></div>' +
         '    </div>' +
         '    <button type="button" class="eth-test-btn-finish" id="btnHeaderFinish">🏁 <span>Yakunlash</span></button>' +
         '  </div>' +
-        '</header>' +
-        '<main class="eth-test-main">' +
-        '  <!-- Collapsible Question Palette Card -->' +
-        '  <div class="eth-test-palette-card">' +
-        '    <div class="eth-test-palette-header" id="btnTogglePalette">' +
-        '      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">' +
-        '        <span style="font-size:16px">📋</span>' +
-        '        <b style="font-size:14px;letter-spacing:-0.01em">Savollar navigatsiyasi</b>' +
-        '        <span class="eth-test-chip success">✅ ' + answeredCount + ' ta belgilandi</span>' +
-        '        <span class="eth-test-chip muted">⚪ ' + (totalQ - answeredCount) + ' ta kutilmoqda</span>' +
-        '      </div>' +
-        '      <span class="eth-test-palette-toggle-icon" id="paletteToggleArrow">' +
-        (isPaletteCollapsed ? '🔽 Ro\'yxatni ochish' : '🔼 Yashirish') +
-        '      </span>' +
-        '    </div>' +
-        '    <div class="eth-test-palette-grid' + (isPaletteCollapsed ? ' collapsed' : '') + '" id="testPaletteGrid">' +
-        exam.questions.map(function(_, idx) {
-          var isAns = state.answers[idx] !== undefined && state.answers[idx] !== '';
-          var isCur = idx === state.i;
-          var cls = 'eth-test-pbtn' + (isCur ? ' current' : '') + (isAns ? ' answered' : '');
-          return '<button type="button" class="' + cls + '" data-goto="' + idx + '">' + (idx + 1) + '</button>';
-        }).join('') +
-        '    </div>' +
-        '  </div>' +
-        '  <!-- Main Question Card -->' +
-        '  <div class="eth-test-card">' +
-        '    <div class="eth-test-card-top">' +
-        '      <div class="eth-test-pill-category">' + (qType === 'written' ? '✍️ Bo\'sh joy / Yozma' : (qType === 'bool' ? '☑️ True / False' : '🔘 Variantli')) + ' · SAVOL ' + (state.i + 1) + ' / ' + totalQ + '</div>' +
-        '      <div class="eth-test-pill-points">⭐ ' + (q.points || exam.pointsPerQ || 1) + ' BALL</div>' +
-        '    </div>' +
-        '    <h2 class="eth-test-qtitle">' + esc(q.question) + '</h2>' +
-        '    <div class="eth-test-options-list">';
+        '</header>';
 
-      if (qType === 'written') {
-        var currentW = state.answers[state.i] || '';
+      if (isPaperMode) {
+        // Dual-Pane Interactive Paper Worksheet Mode
         html += '' +
-          '<div style="margin:16px 0">' +
-          '  <input type="text" id="examWrittenInput" class="eth-test-blank-input" value="' + esc(currentW) + '" placeholder="Javobingizni bu yerga yozing..." style="width:100%;padding:18px 20px;border:2px solid var(--test-item-border);border-radius:16px;font-size:17px;font-weight:600;background:var(--test-item-bg);color:var(--test-text);outline:none;box-sizing:border-box;transition:border-color 0.2s">' +
-          '  <p style="font-size:13px;color:var(--test-text-muted);margin-top:8px">Javobni kiritganingizdan so\'ng pastdagi "Keyingi savol" tugmasini bosing yoki boshqa savolga o\'ting.</p>' +
-          '</div>';
-      } else if (qType === 'bool') {
-        var selB = state.answers[state.i];
-        html += '' +
-          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0">' +
-          '  <button type="button" class="eth-test-opt' + (selB === 'True' ? ' selected' : '') + '" data-opt="True" style="justify-content:center;font-size:18px;font-weight:700">' +
-          '    <span class="eth-test-opt-badge" style="background:#10b981;color:#fff">✓</span>' +
-          '    <span>True</span>' +
-          '    <span class="eth-test-opt-indicator"></span>' +
-          '  </button>' +
-          '  <button type="button" class="eth-test-opt' + (selB === 'False' ? ' selected' : '') + '" data-opt="False" style="justify-content:center;font-size:18px;font-weight:700">' +
-          '    <span class="eth-test-opt-badge" style="background:#ef4444;color:#fff">✗</span>' +
-          '    <span>False</span>' +
-          '    <span class="eth-test-opt-indicator"></span>' +
-          '  </button>' +
-          '</div>';
+          '<main class="eth-test-main" style="padding:10px 16px;max-width:100%;height:calc(100vh - 120px);box-sizing:border-box">' +
+          '  <div class="eth-paper-test-layout" style="display:flex;gap:14px;height:100%;width:100%">' +
+          '    <!-- Left Pane: PDF or Printable Question Paper -->' +
+          '    <div class="eth-paper-left-pane" style="flex:1.2;height:100%;background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;display:flex;flex-direction:column">' +
+          (exam.pdfData ?
+            '      <iframe src="' + exam.pdfData + '#toolbar=0" style="width:100%;height:100%;border:none;background:#525659"></iframe>' :
+            '      <div style="flex:1;overflow-y:auto;padding:24px 28px;line-height:1.6">' +
+            '        <h2 style="font-size:19px;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:18px">' + esc(exam.title) + '</h2>' +
+            exam.questions.map(function(qObj, qIdx) {
+              var t = qObj.type || 'choice';
+              return '' +
+                '        <div style="margin-bottom:20px;padding-bottom:14px;border-bottom:1px dashed var(--border)">' +
+                '          <div style="font-weight:700;font-size:14.5px;margin-bottom:8px">#' + (qIdx + 1) + '. ' + esc(qObj.question) + '</div>' +
+                (t === 'choice' ?
+                  '          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-left:12px">' +
+                  qObj.options.map(function(o, oI) {
+                    return '<div style="font-size:13.5px"><b>' + 'ABCD'[oI] + ')</b> ' + esc(o) + '</div>';
+                  }).join('') +
+                  '          </div>' :
+                  (t === 'bool' ?
+                    '          <div style="margin-left:12px;font-style:italic;color:var(--muted);font-size:13px">[ Variantlar: True / False ]</div>' :
+                    '          <div style="margin-left:12px;font-style:italic;color:var(--muted);font-size:13px">[ Bo\'sh joy javobini o\'ng tarafdagi Answer Sheetga yozing ]</div>'
+                  )
+                ) +
+                '        </div>';
+            }).join('') +
+            '      </div>'
+          ) +
+          '    </div>' +
+          '    <!-- Right Pane: Interactive Answer Sheet -->' +
+          '    <div class="eth-paper-right-pane" style="flex:0.8;max-width:440px;height:100%;background:var(--card);border-radius:14px;border:1.5px solid var(--border);display:flex;flex-direction:column;overflow:hidden">' +
+          '      <div class="eth-answer-sheet-header" style="padding:14px 18px;border-bottom:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;justify-content:space-between">' +
+          '        <div>' +
+          '          <b style="font-size:14.5px">📝 Javoblar Listi (Answer Sheet)</b>' +
+          '          <div style="font-size:12px;color:var(--muted)"><span id="paperAnsweredCount">' + answeredCount + '</span> / ' + totalQ + ' ta belgilandi</div>' +
+          '        </div>' +
+          '        <button type="button" class="eth-test-btn-finish" id="btnPaperFinish" style="padding:6px 12px;font-size:12.5px">🏁 Yakunlash</button>' +
+          '      </div>' +
+          '      <div class="eth-answer-sheet-body" style="flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px">' +
+          exam.questions.map(function(qObj, qIdx) {
+            var t = qObj.type || 'choice';
+            var curAns = state.answers[qIdx] || '';
+            return '' +
+              '        <div class="eth-sheet-row" style="display:flex;align-items:center;gap:10px;padding:6px 10px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">' +
+              '          <span class="eth-sheet-qnum" style="font-weight:800;font-size:13px;min-width:32px">#' + (qIdx + 1) + '</span>' +
+              (t === 'choice' ?
+                '          <div class="eth-sheet-options" style="display:flex;gap:6px">' +
+                qObj.options.map(function(opt, oIdx) {
+                  var letter = 'ABCD'[oIdx];
+                  var isSel = (curAns === opt || curAns === letter);
+                  return '<button type="button" class="eth-sheet-opt-btn ' + (isSel ? 'selected' : '') + '" data-sheet-q="' + qIdx + '" data-sheet-ans="' + esc(opt) + '">' + letter + '</button>';
+                }).join('') +
+                '          </div>' :
+                (t === 'bool' ?
+                  '          <div class="eth-sheet-options" style="display:flex;gap:6px">' +
+                  ['True', 'False'].map(function(bOpt) {
+                    var isSel = (curAns === bOpt);
+                    return '<button type="button" class="eth-sheet-opt-btn ' + (isSel ? 'selected' : '') + '" data-sheet-q="' + qIdx + '" data-sheet-ans="' + bOpt + '" style="width:40px">' + (bOpt === 'True' ? 'T' : 'F') + '</button>';
+                  }).join('') +
+                  '          </div>' :
+                  '          <input type="text" class="eth-sheet-input" data-sheet-input-q="' + qIdx + '" value="' + esc(curAns) + '" placeholder="Javobni yozing..." style="flex:1;padding:6px 10px;border-radius:6px;border:1px solid var(--border);font-size:13px">'
+                )
+              ) +
+              '        </div>';
+          }).join('') +
+          '      </div>' +
+          '    </div>' +
+          '  </div>' +
+          '</main>';
       } else {
-        var currentOpt = state.answers[state.i];
-        q.options.forEach(function(opt, idx) {
-          var isSel = (currentOpt === opt);
-          html += '' +
-            '<button type="button" class="eth-test-opt' + (isSel ? ' selected' : '') + '" data-opt="' + esc(opt) + '">' +
-            '  <span class="eth-test-opt-badge">' + 'ABCD'[idx] + '</span>' +
-            '  <span class="eth-test-opt-text">' + esc(opt) + '</span>' +
-            '  <span class="eth-test-opt-indicator"></span>' +
-            '</button>';
-        });
-      }
+        // Standard Single-Question Card Mode
+        html += '' +
+          '<main class="eth-test-main">' +
+          '  <!-- Collapsible Question Palette Card -->' +
+          '  <div class="eth-test-palette-card">' +
+          '    <div class="eth-test-palette-header" id="btnTogglePalette">' +
+          '      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">' +
+          '        <span style="font-size:16px">📋</span>' +
+          '        <b style="font-size:14px;letter-spacing:-0.01em">Savollar navigatsiyasi</b>' +
+          '        <span class="eth-test-chip success">✅ ' + answeredCount + ' ta belgilandi</span>' +
+          '        <span class="eth-test-chip muted">⚪ ' + (totalQ - answeredCount) + ' ta kutilmoqda</span>' +
+          '      </div>' +
+          '      <span class="eth-test-palette-toggle-icon" id="paletteToggleArrow">' +
+          (isPaletteCollapsed ? '🔽 Ro\'yxatni ochish' : '🔼 Yashirish') +
+          '      </span>' +
+          '    </div>' +
+          '    <div class="eth-test-palette-grid' + (isPaletteCollapsed ? ' collapsed' : '') + '" id="testPaletteGrid">' +
+          exam.questions.map(function(_, idx) {
+            var isAns = state.answers[idx] !== undefined && state.answers[idx] !== '';
+            var isCur = idx === state.i;
+            var cls = 'eth-test-pbtn' + (isCur ? ' current' : '') + (isAns ? ' answered' : '');
+            return '<button type="button" class="' + cls + '" data-goto="' + idx + '">' + (idx + 1) + '</button>';
+          }).join('') +
+          '    </div>' +
+          '  </div>' +
+          '  <!-- Main Question Card -->' +
+          '  <div class="eth-test-card">' +
+          '    <div class="eth-test-card-top">' +
+          '      <div class="eth-test-pill-category">' + (qType === 'written' ? '✍️ Bo\'sh joy / Yozma' : (qType === 'bool' ? '☑️ True / False' : '🔘 Variantli')) + ' · SAVOL ' + (state.i + 1) + ' / ' + totalQ + '</div>' +
+          '      <div class="eth-test-pill-points">⭐ ' + (q.points || exam.pointsPerQ || 1) + ' BALL</div>' +
+          '    </div>' +
+          '    <h2 class="eth-test-qtitle">' + esc(q.question) + '</h2>' +
+          '    <div class="eth-test-options-list">';
 
-      html += '' +
-        '    </div>' +
-        '  </div>' +
-        '  <!-- Bottom Navigation Bar -->' +
-        '  <footer class="eth-test-footer">' +
-        '    <button type="button" class="eth-test-nav-btn prev" id="btnNavPrev"' + (state.i === 0 ? ' disabled style="opacity:0.35;cursor:not-allowed"' : '') + '>' +
-        '      ⬅ <span>Oldingi savol</span>' +
-        '    </button>' +
-        '    <div class="eth-test-nav-center">Savol <b>' + (state.i + 1) + '</b> dan <b>' + totalQ + '</b></div>' +
-        (state.i === totalQ - 1 ?
-          '    <button type="button" class="eth-test-nav-btn finish" id="btnNavNext">🏁 <span>Testni yakunlash</span></button>' :
-          '    <button type="button" class="eth-test-nav-btn next" id="btnNavNext"><span>Keyingi savol</span> ➡</button>'
-        ) +
-        '  </footer>' +
-        '</main>';
+        if (qType === 'written') {
+          var currentW = state.answers[state.i] || '';
+          html += '' +
+            '<div style="margin:16px 0">' +
+            '  <input type="text" id="examWrittenInput" class="eth-test-blank-input" value="' + esc(currentW) + '" placeholder="Javobingizni bu yerga yozing..." style="width:100%;padding:18px 20px;border:2px solid var(--test-item-border);border-radius:16px;font-size:17px;font-weight:600;background:var(--test-item-bg);color:var(--test-text);outline:none;box-sizing:border-box;transition:border-color 0.2s">' +
+            '  <p style="font-size:13px;color:var(--test-text-muted);margin-top:8px">Javobni kiritganingizdan so\'ng pastdagi "Keyingi savol" tugmasini bosing yoki boshqa savolga o\'ting.</p>' +
+            '</div>';
+        } else if (qType === 'bool') {
+          var selB = state.answers[state.i];
+          html += '' +
+            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0">' +
+            '  <button type="button" class="eth-test-opt' + (selB === 'True' ? ' selected' : '') + '" data-opt="True" style="justify-content:center;font-size:18px;font-weight:700">' +
+            '    <span class="eth-test-opt-badge" style="background:#10b981;color:#fff">✓</span>' +
+            '    <span>True</span>' +
+            '    <span class="eth-test-opt-indicator"></span>' +
+            '  </button>' +
+            '  <button type="button" class="eth-test-opt' + (selB === 'False' ? ' selected' : '') + '" data-opt="False" style="justify-content:center;font-size:18px;font-weight:700">' +
+            '    <span class="eth-test-opt-badge" style="background:#ef4444;color:#fff">✗</span>' +
+            '    <span>False</span>' +
+            '    <span class="eth-test-opt-indicator"></span>' +
+            '  </button>' +
+            '</div>';
+        } else {
+          var currentOpt = state.answers[state.i];
+          q.options.forEach(function(opt, idx) {
+            var isSel = (currentOpt === opt);
+            html += '' +
+              '<button type="button" class="eth-test-opt' + (isSel ? ' selected' : '') + '" data-opt="' + esc(opt) + '">' +
+              '  <span class="eth-test-opt-badge">' + 'ABCD'[idx] + '</span>' +
+              '  <span class="eth-test-opt-text">' + esc(opt) + '</span>' +
+              '  <span class="eth-test-opt-indicator"></span>' +
+              '</button>';
+          });
+        }
+
+        html += '' +
+          '    </div>' +
+          '  </div>' +
+          '  <!-- Bottom Navigation Bar -->' +
+          '  <footer class="eth-test-footer">' +
+          '    <button type="button" class="eth-test-nav-btn prev" id="btnNavPrev"' + (state.i === 0 ? ' disabled style="opacity:0.35;cursor:not-allowed"' : '') + '>' +
+          '      ⬅ <span>Oldingi savol</span>' +
+          '    </button>' +
+          '    <div class="eth-test-nav-center">Savol <b>' + (state.i + 1) + '</b> dan <b>' + totalQ + '</b></div>' +
+          (state.i === totalQ - 1 ?
+            '    <button type="button" class="eth-test-nav-btn finish" id="btnNavNext">🏁 <span>Testni yakunlash</span></button>' :
+            '    <button type="button" class="eth-test-nav-btn next" id="btnNavNext"><span>Keyingi savol</span> ➡</button>'
+          ) +
+          '  </footer>' +
+          '</main>';
+      }
 
       var camBoxEl = document.getElementById('proctorCamBox');
       var audioBoxEl = document.getElementById('examPersistentAudioBar');
@@ -3156,6 +3493,54 @@
       lockdownModal.innerHTML = html;
       if (audioBoxEl) lockdownModal.insertBefore(audioBoxEl, lockdownModal.querySelector('.eth-test-main'));
       if (camBoxEl) lockdownModal.appendChild(camBoxEl);
+
+      // Toggle Paper Mode
+      var togglePaperBtn = document.getElementById('btnTogglePaperMode');
+      if (togglePaperBtn) {
+        togglePaperBtn.onclick = function() {
+          saveCurrentWritten();
+          isPaperMode = !isPaperMode;
+          renderExamQuestion();
+        };
+      }
+
+      // Paper Worksheet Mode handlers
+      if (isPaperMode) {
+        var paperFinishBtn = document.getElementById('btnPaperFinish');
+        if (paperFinishBtn) {
+          paperFinishBtn.onclick = function() {
+            saveCurrentWritten();
+            confirmFinish();
+          };
+        }
+
+        lockdownModal.querySelectorAll('.eth-sheet-opt-btn').forEach(function(btn) {
+          btn.onclick = function() {
+            if (isExamLocked) return;
+            var qIdx = parseInt(btn.dataset.sheetQ, 10);
+            var ans = btn.dataset.sheetAns;
+            state.answers[qIdx] = ans;
+            var parent = btn.parentElement;
+            if (parent) {
+              parent.querySelectorAll('.eth-sheet-opt-btn').forEach(function(b) { b.classList.remove('selected'); });
+              btn.classList.add('selected');
+            }
+            var ansCt = Object.keys(state.answers).filter(function(k){ return state.answers[k] !== undefined && state.answers[k] !== ''; }).length;
+            var countEl = document.getElementById('paperAnsweredCount');
+            if (countEl) countEl.textContent = ansCt;
+          };
+        });
+
+        lockdownModal.querySelectorAll('.eth-sheet-input').forEach(function(inp) {
+          inp.oninput = function() {
+            var qIdx = parseInt(inp.dataset.sheetInputQ, 10);
+            state.answers[qIdx] = inp.value.trim();
+            var ansCt = Object.keys(state.answers).filter(function(k){ return state.answers[k] !== undefined && state.answers[k] !== ''; }).length;
+            var countEl = document.getElementById('paperAnsweredCount');
+            if (countEl) countEl.textContent = ansCt;
+          };
+        });
+      }
 
       // Toggle Palette
       var toggleBtn = document.getElementById('btnTogglePalette');
@@ -3456,6 +3841,7 @@
         '      </div>' +
         '    </div>' +
         '    <div style="display:flex;justify-content:center;gap:14px;margin-top:28px;flex-wrap:wrap">' +
+        '      <button type="button" class="eth-test-nav-btn next" id="btnIeltsFullReview" style="background:linear-gradient(135deg, #f59e0b, #ea580c);color:#fff;font-weight:800;padding:14px 28px;font-size:15px;box-shadow:0 4px 15px rgba(245,158,11,0.4)">🔍 Testni Tahlil Qilish (Full Review & Script Analysis)</button>' +
         '      <button type="button" class="eth-test-nav-btn next" id="btnResLeaderboard" style="padding:14px 28px;font-size:15px">' + ic('trophy') + ' Natijalar Jadvali (Leaderboard)</button>' +
         '      <button type="button" class="eth-test-nav-btn prev" id="btnResExit" style="padding:14px 28px;font-size:15px">Bosh Sahifaga Qaytish</button>' +
         '    </div>' +
@@ -3488,6 +3874,13 @@
       function exitLockdown() {
         if (lockdownModal) lockdownModal.remove();
         renderExamsView(mainContainer);
+      }
+
+      var reviewBtn = document.getElementById('btnIeltsFullReview');
+      if (reviewBtn) {
+        reviewBtn.onclick = function() {
+          showIeltsFullReviewModal(exam, breakdown, earnedScore, totalPossible);
+        };
       }
 
       var closeBtn = document.getElementById('btnCloseExamModal');
@@ -4341,6 +4734,403 @@
       };
     }
   }
+  // VIEW 7: IELTS PRACTICE HUB & FULL MOCK SIMULATOR
+  // ==========================================
+  function showIeltsFullReviewModal(exam, breakdown, earnedScore, totalPossible) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+
+    var pct = totalPossible > 0 ? (earnedScore / totalPossible) * 100 : 0;
+    var bandScore = 6.0;
+    if (pct >= 89) bandScore = 9.0;
+    else if (pct >= 80) bandScore = 8.5;
+    else if (pct >= 73) bandScore = 8.0;
+    else if (pct >= 66) bandScore = 7.5;
+    else if (pct >= 58) bandScore = 7.0;
+    else if (pct >= 50) bandScore = 6.5;
+    else if (pct >= 42) bandScore = 6.0;
+    else if (pct >= 35) bandScore = 5.5;
+    else bandScore = 5.0;
+
+    var ieltsData = exam.ieltsData || {};
+    var activeReviewTab = 'transcripts';
+    if (!ieltsData.transcripts && ieltsData.readingPassages) activeReviewTab = 'reading';
+    else if (!ieltsData.transcripts && ieltsData.writingSamples) activeReviewTab = 'writing';
+
+    function renderContent() {
+      var html = '' +
+        '<div class="eth-modal" style="max-width:880px;width:95vw;max-height:92vh;display:flex;flex-direction:column">' +
+        '  <button type="button" class="eth-modal-close-btn" id="btnCloseIeltsReview" title="Yopish">✕</button>' +
+        '  <div class="eth-modal-header" style="padding-bottom:14px;border-bottom:1px solid var(--border)">' +
+        '    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">' +
+        '      <div>' +
+        '        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">' +
+        '          <span style="background:linear-gradient(135deg,#f59e0b,#ea580c);color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:800">IELTS SCRIPT & CLUE ANALYSIS</span>' +
+        '          <span style="font-size:12px;color:var(--muted)">' + esc(exam.title) + '</span>' +
+        '        </div>' +
+        '        <h2 style="margin:0;font-size:20px;font-weight:800">🔍 Rasmiy Skriptlar va To\'liq Tahlil</h2>' +
+        '      </div>' +
+        '      <div style="display:flex;align-items:center;gap:12px">' +
+        '        <div style="text-align:right">' +
+        '          <div style="font-size:11px;color:var(--muted);font-weight:700">TAXMINIY IELTS BAND</div>' +
+        '          <div style="font-size:24px;font-weight:900;color:#ea580c">Band ' + bandScore + '</div>' +
+        '        </div>' +
+        '      </div>' +
+        '    </div>' +
+        '    <div class="eth-tabs" style="margin:14px 0 0">' +
+        '      <button class="eth-tab ' + (activeReviewTab === 'transcripts' ? 'active' : '') + '" id="tabReviewTranscripts">🎧 Listening Transcripts (Vaqtlar & Clues)</button>' +
+        '      <button class="eth-tab ' + (activeReviewTab === 'reading' ? 'active' : '') + '" id="tabReviewReading">📖 Reading Passages & Clues</button>' +
+        '      <button class="eth-tab ' + (activeReviewTab === 'writing' ? 'active' : '') + '" id="tabReviewWriting">✍️ Writing Band 9 Samples</button>' +
+        '      <button class="eth-tab ' + (activeReviewTab === 'questions' ? 'active' : '') + '" id="tabReviewQuestions">📋 Savollar Kaliti (' + breakdown.length + ')</button>' +
+        '    </div>' +
+        '  </div>' +
+        '  <div class="eth-modal-body" style="overflow-y:auto;flex:1;padding:20px 24px">';
+
+      if (activeReviewTab === 'transcripts') {
+        html += '' +
+          '<div style="line-height:1.7;font-size:14px">' +
+          '  <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);padding:12px 16px;border-radius:10px;margin-bottom:16px;font-size:13px;color:var(--text)">' +
+          '    💡 <b>Eslatma:</b> Listening audio matnlari vaqt belgilari (timestamps) bilan keltirilgan. Savollarning to\'g\'ri javoblari tushgan jumlalar <mark style="background:#fef08a;color:#854d0e;padding:2px 6px;border-radius:4px;font-weight:700">sariq rang</mark> bilan ajratib ko\'rsatilgan.' +
+          '  </div>' +
+          (ieltsData.transcripts ||
+            '<div style="margin-bottom:20px">' +
+            '  <h4 style="font-size:15px;color:#2563eb;margin:0 0 8px">🎧 Section 1: Customer Accommodation Inquiry</h4>' +
+            '  <p><b>[00:15] Agent:</b> Good morning, Westside Property Rentals. How may I help you?<br>' +
+            '  <b>[00:22] Caller:</b> Hello, I\'m calling regarding the studio apartment advertised on Green Street.<br>' +
+            '  <b>[00:35] Agent:</b> Certainly! The apartment is available starting next Monday. <mark style="background:#fef08a;color:#854d0e;padding:2px 6px;border-radius:4px;font-weight:700">The monthly rent is £450 (Q1 clue: 450)</mark>, which covers all utility costs including water and high-speed internet.<br>' +
+            '  <b>[01:12] Caller:</b> That sounds ideal. Is there parking available for residents?<br>' +
+            '  <b>[01:18] Agent:</b> Yes, there is <mark style="background:#fef08a;color:#854d0e;padding:2px 6px;border-radius:4px;font-weight:700">underground parking (Q2 clue: underground)</mark> accessible with a secure electronic key fob.<br>' +
+            '  <b>[02:04] Caller:</b> Wonderful. My surname is <mark style="background:#fef08a;color:#854d0e;padding:2px 6px;border-radius:4px;font-weight:700">HARLINGTON (Q3 clue: Harlington)</mark>, that\'s H-A-R-L-I-N-G-T-O-N.</p>' +
+            '</div>' +
+            '<div style="margin-bottom:20px">' +
+            '  <h4 style="font-size:15px;color:#2563eb;margin:0 0 8px">🎧 Section 2: Botanical Gardens Visitor Information</h4>' +
+            '  <p><b>[03:10] Guide:</b> Welcome everyone to the Royal Botanical Conservatory. As you can see from your maps, <mark style="background:#fef08a;color:#854d0e;padding:2px 6px;border-radius:4px;font-weight:700">the Orchid House is situated immediately north of the central lake (Q4 clue: North of lake)</mark>. We kindly request all guests to avoid flash photography inside the butterfly pavilion.</p>' +
+            '</div>' +
+            '<div style="margin-bottom:20px">' +
+            '  <h4 style="font-size:15px;color:#2563eb;margin:0 0 8px">🎧 Section 3: Student Research Seminar</h4>' +
+            '  <p><b>[05:40] Professor:</b> Before we finalize your methodology, let\'s review the sample size. <mark style="background:#fef08a;color:#854d0e;padding:2px 6px;border-radius:4px;font-weight:700">Having 120 respondents across three distinct age demographics (Q5 clue: 120)</mark> will ensure statistical validity.</p>' +
+            '</div>'
+          ) +
+          '</div>';
+      } else if (activeReviewTab === 'reading') {
+        html += '' +
+          '<div style="line-height:1.7;font-size:14px">' +
+          '  <div style="background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.25);padding:12px 16px;border-radius:10px;margin-bottom:16px;font-size:13px;color:var(--text)">' +
+          '    💡 <b>Reading Tahlili:</b> Matn ichidagi to\'g\'ri javob kalitlari va ularning parafraza (paraphrase) qilingan shakllari to\'liq ko\'rsatilgan.' +
+          '  </div>' +
+          (ieltsData.readingPassages ||
+            '<div style="margin-bottom:24px">' +
+            '  <h4 style="font-size:16px;color:#2563eb;margin:0 0 10px">📖 Passage 1: The Evolution of Modern Architecture</h4>' +
+            '  <p>In the early twentieth century, architectural philosophy underwent a radical shift from ornate historicism toward functional minimalism. <mark style="background:#dcfce7;color:#166534;padding:2px 6px;border-radius:4px;font-weight:700">The primary catalyst was the industrial manufacturing of reinforced concrete and structural steel (Clue: Industrial materials)</mark>, which allowed engineers to construct spans previously considered impossible without load-bearing masonry walls.</p>' +
+            '  <p>Contrary to popular belief, <mark style="background:#fef08a;color:#854d0e;padding:2px 6px;border-radius:4px;font-weight:700">early modernist designs were initially met with intense skepticism by urban planning councils (Clue: Initial public resistance - True)</mark>, who feared geometric facades would destroy the cultural fabric of historic European metropolises.</p>' +
+            '</div>' +
+            '<div style="margin-bottom:24px">' +
+            '  <h4 style="font-size:16px;color:#2563eb;margin:0 0 10px">📖 Passage 2: Marine Bio-Acoustics</h4>' +
+            '  <p>Cetacean communication relies extensively on low-frequency acoustic vibrations capable of traveling thousands of kilometers across oceanic thermoclines. Recent sonar surveys indicate that <mark style="background:#fef08a;color:#854d0e;padding:2px 6px;border-radius:4px;font-weight:700">anthropogenic noise from commercial shipping lanes has attenuated blue whale vocalization distances by over 60 percent (Clue: Shipping impact - 60%)</mark>.</p>' +
+            '</div>'
+          ) +
+          '</div>';
+      } else if (activeReviewTab === 'writing') {
+        html += '' +
+          '<div style="display:flex;flex-direction:column;gap:18px">' +
+          '  <div style="background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:18px">' +
+          '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+          '      <b style="font-size:15px;color:#2563eb">Task 1: Academic Report (Band 9 Model)</b>' +
+          '      <span style="font-size:11.5px;background:#10b981;color:#fff;padding:2px 8px;border-radius:10px;font-weight:700">Band 9.0</span>' +
+          '    </div>' +
+          '    <p style="font-size:13.5px;color:var(--muted);margin-bottom:10px"><b>Prompt:</b> The chart illustrates global renewable energy adoption between 2010 and 2025.</p>' +
+          '    <div style="background:var(--bg2);padding:14px;border-radius:8px;font-size:13.5px;line-height:1.6">' +
+          '      The provided line graph delineates the trajectory of renewable energy generation across solar, wind, and hydroelectric sectors over a fifteen-year timeframe spanning from 2010 to 2025.<br><br>' +
+          '      <b>Overall</b>, it is unequivocally manifest that while hydroelectric power maintained the preeminent volume throughout the initial phase, solar energy exhibited the most conspicuous and exponential surge, ultimately eclipsing all rival counterparts by the terminus of the period.<br><br>' +
+          '      In 2010, hydroelectric output stood decisively at 800 gigawatt-hours, substantially overshadowing solar (50 GWh) and wind (120 GWh). However, commencing in 2018, solar installations accelerated sharply, soaring to an unprecedented 1,400 GWh by 2025.' +
+          '    </div>' +
+          '  </div>' +
+          '  <div style="background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:18px">' +
+          '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+          '      <b style="font-size:15px;color:#ea580c">Task 2: Academic Essay (Band 9 Model)</b>' +
+          '      <span style="font-size:11.5px;background:#10b981;color:#fff;padding:2px 8px;border-radius:10px;font-weight:700">Band 9.0</span>' +
+          '    </div>' +
+          '    <p style="font-size:13.5px;color:var(--muted);margin-bottom:10px"><b>Topic:</b> Should governments provide free tertiary education for all citizens?</p>' +
+          '    <div style="background:var(--bg2);padding:14px;border-radius:8px;font-size:13.5px;line-height:1.6">' +
+          '      The question of whether higher education should be universally subsidized by the state remains a subject of vigorous socio-economic debate. While detractors cite the exorbitant fiscal burden upon public coffers, I firmly contend that free tertiary education yields transformative dividend yields for national innovation, meritocratic social mobility, and systemic economic prosperity.<br><br>' +
+          '      Primarily, removing pecuniary barriers democratizes access to knowledge. When universities assess candidates strictly upon intellectual aptitude rather than socioeconomic background, nations cultivate their most capable minds regardless of demographic origin...' +
+          '    </div>' +
+          '  </div>' +
+          '</div>';
+      } else {
+        html += '' +
+          '<div style="display:flex;flex-direction:column;gap:10px">' +
+          breakdown.map(function(item) {
+            return '' +
+              '<div style="padding:12px 16px;border-radius:10px;background:var(--bg2);border:1px solid ' + (item.isCorrect ? '#22c55e' : '#ef4444') + ';display:flex;justify-content:space-between;align-items:center">' +
+              '  <div>' +
+              '    <b style="font-size:13.5px">#' + item.qNum + '. ' + esc(item.question) + '</b>' +
+              '    <div style="font-size:12.5px;margin-top:4px">' +
+              '      <span style="color:' + (item.isCorrect ? '#16a34a' : '#ef4444') + '">Sizning javobingiz: <b>' + esc(item.userAns) + '</b></span> · ' +
+              '      <span style="color:#16a34a">To\'g\'ri javob: <b>' + esc(item.correctAns) + '</b></span>' +
+              '    </div>' +
+              '  </div>' +
+              '  <span style="font-weight:800;font-size:13px;color:' + (item.isCorrect ? '#16a34a' : '#ef4444') + '">' +
+              (item.isCorrect ? '✓ To\'g\'ri' : '✗ Xato') +
+              '  </span>' +
+              '</div>';
+          }).join('') +
+          '</div>';
+      }
+
+      html += '' +
+        '  </div>' +
+        '  <div style="padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end">' +
+        '    <button type="button" class="eth-btn-primary" id="btnExitReviewModal" style="padding:8px 20px">Yopish</button>' +
+        '  </div>' +
+        '</div>';
+
+      overlay.innerHTML = html;
+
+      overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+      var closeBtn = overlay.querySelector('#btnCloseIeltsReview');
+      if (closeBtn) closeBtn.onclick = function() { overlay.remove(); };
+      var exitBtn = overlay.querySelector('#btnExitReviewModal');
+      if (exitBtn) exitBtn.onclick = function() { overlay.remove(); };
+
+      var tTrans = overlay.querySelector('#tabReviewTranscripts');
+      if (tTrans) tTrans.onclick = function() { activeReviewTab = 'transcripts'; renderContent(); };
+      var tRead = overlay.querySelector('#tabReviewReading');
+      if (tRead) tRead.onclick = function() { activeReviewTab = 'reading'; renderContent(); };
+      var tWrite = overlay.querySelector('#tabReviewWriting');
+      if (tWrite) tWrite.onclick = function() { activeReviewTab = 'writing'; renderContent(); };
+      var tQuest = overlay.querySelector('#tabReviewQuestions');
+      if (tQuest) tQuest.onclick = function() { activeReviewTab = 'questions'; renderContent(); };
+    }
+
+    renderContent();
+    document.body.appendChild(overlay);
+  }
+
+  function renderIeltsHub(container, activeTab) {
+    var curTab = activeTab || 'full_mock';
+    if (curTab === 'ielts_hub' || curTab === 'ielts') curTab = 'full_mock';
+    if (curTab.indexOf('ielts_') === 0) curTab = curTab.replace('ielts_', '');
+
+    var tabs = [
+      { id: 'full_mock', label: '🔥 IELTS Full Mock', badge: 'Simulyator' },
+      { id: 'reading', label: '📖 Reading', badge: 'Passages · 40 Qs' },
+      { id: 'writing', label: '✍️ Writing', badge: 'Task 1 & 2' },
+      { id: 'listening', label: '🎧 Listening', badge: '4 Sections · 40 Qs' },
+      { id: 'speaking', label: '🎙️ Speaking', badge: 'Parts 1-3' }
+    ];
+
+    var html = '' +
+      '<div class="ap-sec" style="margin-top:0">' +
+      '  <div>' +
+      '    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">' +
+      '      <span style="background:linear-gradient(135deg,#f59e0b,#ea580c);color:#fff;font-weight:800;font-size:11.5px;padding:3px 10px;border-radius:10px">OFFICIAL IELTS HUB</span>' +
+      '      <span style="font-size:12px;color:var(--muted)">Cambridge 18 & 19 Standards</span>' +
+      '    </div>' +
+      '    <h2>' + ic('flame') + ' IELTS Practice & Full Mock Simulator</h2>' +
+      '    <p>Practice all 4 skills. Full anti-cheat proctoring & shroud during test; in-depth script and clue analysis upon completion.</p>' +
+      '  </div>' +
+      '</div>' +
+      '<div class="eth-tabs" style="margin:0 0 20px 0">' +
+      tabs.map(function(t) {
+        return '<button class="eth-tab ' + (t.id === curTab ? 'active' : '') + '" data-ielts-tab="' + t.id + '">' + t.label + ' <span style="font-size:10px;opacity:0.75;margin-left:4px">(' + t.badge + ')</span></button>';
+      }).join('') +
+      '</div>';
+
+    if (curTab === 'full_mock') {
+      html += '' +
+        '<div class="eth-full-mock-fire-card" id="btnLaunchFullMock1">' +
+        '  <div class="eth-fire-badge">🔥 OFFICIAL IELTS FULL MOCK SIMULATOR 2026</div>' +
+        '  <h2>IELTS Academic Full Mock Exam (Test 1)</h2>' +
+        '  <p>To\'liq 4 ta ko\'nikmani o\'z ichiga olgan haqiqiy Cambridge imtihoni simulyatsiyasi. 165 daqiqa davomida listening, reading, writing va speaking topshiriqlari qat\'iy 35° proctor nazoratida o\'tkaziladi.</p>' +
+        '  <div class="eth-full-mock-specs">' +
+        '    <div class="eth-mock-spec-item"><b>🎧 Listening</b><span>4 Sections · 40 Qs · 30 min</span></div>' +
+        '    <div class="eth-mock-spec-item"><b>📖 Reading</b><span>3 Passages · 40 Qs · 60 min</span></div>' +
+        '    <div class="eth-mock-spec-item"><b>✍️ Writing</b><span>Task 1 & Task 2 · 60 min</span></div>' +
+        '    <div class="eth-mock-spec-item"><b>🎙️ Speaking</b><span>Parts 1, 2, 3 · 15 min</span></div>' +
+        '  </div>' +
+        '  <div style="margin-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">' +
+        '    <div style="font-size:12.5px;color:rgba(255,255,255,0.75)">💡 Sinov paytida javoblar va audio matnlari yashiriladi. Test tugagach to\'liq skript tahlili ochiladi.</div>' +
+        '    <button type="button" class="eth-full-mock-btn">Full Mock Testini Boshlash ' + ic('right') + '</button>' +
+        '  </div>' +
+        '</div>' +
+        '<div class="eth-full-mock-fire-card" id="btnLaunchFullMock2" style="background:linear-gradient(135deg, #1e1b4b 0%, #311042 50%, #451a03 100%);border-color:rgba(217,119,6,0.6)">' +
+        '  <div class="eth-fire-badge" style="background:linear-gradient(135deg, #d97706, #b45309)">⚡ CAMBRIDGE 19 RECENT SIMULATOR</div>' +
+        '  <h2>IELTS Academic Full Mock Exam (Test 2)</h2>' +
+        '  <p>Eng so\'nggi 2026-yilgi aktual topshiriqlar to\'plami. Ilmiy matnlar, xaritalar va murakkab grafiklar bilan to\'liq formatdagi simulyator.</p>' +
+        '  <div class="eth-full-mock-specs">' +
+        '    <div class="eth-mock-spec-item"><b>🎧 Listening</b><span>Academic Dialogues · 40 Qs</span></div>' +
+        '    <div class="eth-mock-spec-item"><b>📖 Reading</b><span>High Density Passages · 40 Qs</span></div>' +
+        '    <div class="eth-mock-spec-item"><b>✍️ Writing</b><span>Process Diagram & Opinion Essay</span></div>' +
+        '    <div class="eth-mock-spec-item"><b>🎙️ Speaking</b><span>AI Interactive Examiner</span></div>' +
+        '  </div>' +
+        '  <div style="margin-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">' +
+        '    <div style="font-size:12.5px;color:rgba(255,255,255,0.75)">⏱ Umumiy vaqt: 165 daqiqa · Kamera va ekran qat\'iy bloklanadi</div>' +
+        '    <button type="button" class="eth-full-mock-btn">Full Mock Test 2 Boshlash ' + ic('right') + '</button>' +
+        '  </div>' +
+        '</div>';
+    } else if (curTab === 'reading') {
+      html += '' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px">' +
+        '  <div class="ap-card" style="padding:20px;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between">' +
+        '    <div>' +
+        '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+        '        <span class="eth-badge-open" style="background:rgba(37,99,235,0.1);color:#2563eb;font-size:11px;font-weight:700">Academic Reading</span>' +
+        '        <span style="font-size:12px;color:var(--muted)">⏱ 60 daqiqa</span>' +
+        '      </div>' +
+        '      <h3 style="font-size:17px;margin:0 0 6px">Academic Reading Practice Test 1</h3>' +
+        '      <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 12px">Passage 1: Architecture · Passage 2: Marine Biology · Passage 3: Human Memory.</p>' +
+        '      <div style="font-size:12px;background:var(--bg2);padding:8px 12px;border-radius:8px;margin-bottom:14px">' +
+        '        📚 <b>40 ta savol:</b> True/False/Not Given, Matching, Summary completion' +
+        '      </div>' +
+        '    </div>' +
+        '    <button class="eth-btn-primary" id="btnStartReading1" style="width:100%;padding:10px;font-weight:700">Testni Boshlash (60 min) ' + ic('right') + '</button>' +
+        '  </div>' +
+        '  <div class="ap-card" style="padding:20px;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between">' +
+        '    <div>' +
+        '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+        '        <span class="eth-badge-open" style="background:rgba(37,99,235,0.1);color:#2563eb;font-size:11px;font-weight:700">Academic Reading</span>' +
+        '        <span style="font-size:12px;color:var(--muted)">⏱ 60 daqiqa</span>' +
+        '      </div>' +
+        '      <h3 style="font-size:17px;margin:0 0 6px">Academic Reading Practice Test 2</h3>' +
+        '      <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 12px">Passage 1: Ancient Agriculture · Passage 2: Sports Psychology · Passage 3: AI & Linguistics.</p>' +
+        '      <div style="font-size:12px;background:var(--bg2);padding:8px 12px;border-radius:8px;margin-bottom:14px">' +
+        '        📚 <b>40 ta savol:</b> Diagram Labelling, Multiple Choice, Sentence Completion' +
+        '      </div>' +
+        '    </div>' +
+        '    <button class="eth-btn-primary" id="btnStartReading2" style="width:100%;padding:10px;font-weight:700">Testni Boshlash (60 min) ' + ic('right') + '</button>' +
+        '  </div>' +
+        '</div>';
+    } else if (curTab === 'writing') {
+      html += '' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px">' +
+        '  <div class="ap-card" style="padding:20px;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between">' +
+        '    <div>' +
+        '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+        '        <span class="eth-badge-open" style="background:rgba(234,88,12,0.1);color:#ea580c;font-size:11px;font-weight:700">Academic Writing</span>' +
+        '        <span style="font-size:12px;color:var(--muted)">⏱ 60 daqiqa</span>' +
+        '      </div>' +
+        '      <h3 style="font-size:17px;margin:0 0 6px">IELTS Writing Practice Test 1</h3>' +
+        '      <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 12px"><b>Task 1:</b> Renewable energy graph (150 words). <b>Task 2:</b> Free tertiary education essay (250 words).</p>' +
+        '      <div style="font-size:12px;background:var(--bg2);padding:8px 12px;border-radius:8px;margin-bottom:14px">' +
+        '        ✍️ Jonli so\'z hisoblagich, mezonlar bo\'yicha avtomatik AI tahlil va Band 9 namuna' +
+        '      </div>' +
+        '    </div>' +
+        '    <button class="eth-btn-primary" id="btnStartWriting1" style="width:100%;padding:10px;font-weight:700">Writing Testini Boshlash ' + ic('right') + '</button>' +
+        '  </div>' +
+        '</div>';
+    } else if (curTab === 'listening') {
+      html += '' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px">' +
+        '  <div class="ap-card" style="padding:20px;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between">' +
+        '    <div>' +
+        '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+        '        <span class="eth-badge-open" style="background:rgba(16,185,129,0.1);color:#10b981;font-size:11px;font-weight:700">IELTS Listening</span>' +
+        '        <span style="font-size:12px;color:var(--muted)">⏱ 35 daqiqa</span>' +
+        '      </div>' +
+        '      <h3 style="font-size:17px;margin:0 0 6px">IELTS Listening Practice Test 1</h3>' +
+        '      <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 12px">Section 1: Rental Booking · Section 2: Botanical Tour · Section 3: Student Research · Section 4: Academic Lecture.</p>' +
+        '      <div style="font-size:12px;background:var(--bg2);padding:8px 12px;border-radius:8px;margin-bottom:14px">' +
+        '        🎧 <b>40 ta savol:</b> Audio faqat belgilangan marta eshittiriladi. Tugagach to\'liq skript ochiladi.' +
+        '      </div>' +
+        '    </div>' +
+        '    <button class="eth-btn-primary" id="btnStartListening1" style="width:100%;padding:10px;font-weight:700">Listening Testini Boshlash ' + ic('right') + '</button>' +
+        '  </div>' +
+        '</div>';
+    } else if (curTab === 'speaking') {
+      html += '' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px">' +
+        '  <div class="ap-card" style="padding:20px;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between">' +
+        '    <div>' +
+        '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+        '        <span class="eth-badge-open" style="background:rgba(139,92,246,0.1);color:#8b5cf6;font-size:11px;font-weight:700">Speaking Simulator</span>' +
+        '        <span style="font-size:12px;color:var(--muted)">⏱ 14 daqiqa</span>' +
+        '      </div>' +
+        '      <h3 style="font-size:17px;margin:0 0 6px">IELTS Speaking Full Simulator Test 1</h3>' +
+        '      <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 12px">Part 1: Hometown & Routines · Part 2: Impressive Architecture · Part 3: Urban Design & Heritage.</p>' +
+        '      <div style="font-size:12px;background:var(--bg2);padding:8px 12px;border-radius:8px;margin-bottom:14px">' +
+        '        🎙️ Interaktiv audio/matnli AI imtihon oluvchi va Band 9 mezonlari tahlili' +
+        '      </div>' +
+        '    </div>' +
+        '    <button class="eth-btn-primary" id="btnStartSpeaking1" style="width:100%;padding:10px;font-weight:700">Speaking Testini Boshlash ' + ic('right') + '</button>' +
+        '  </div>' +
+        '</div>';
+    }
+
+    container.innerHTML = html;
+
+    // Tab switching
+    container.querySelectorAll('[data-ielts-tab]').forEach(function(btn) {
+      btn.onclick = function() {
+        renderIeltsHub(container, btn.dataset.ieltsTab);
+      };
+    });
+
+    function launchTest(type, num) {
+      var isFullMock = (type === 'full_mock');
+      var sampleQuestions = [];
+      if (type === 'reading' || isFullMock) {
+        sampleQuestions = [
+          { question: "Modernist architecture was initially welcomed enthusiastically by urban councils.", options: ["True", "False", "Not Given"], answer: "False", type: "choice", points: 1 },
+          { question: "What industrial material primarily accelerated early modernist structural design?", options: ["reinforced concrete", "timber frames", "quarried sandstone", "bronze panels"], answer: "reinforced concrete", type: "choice", points: 1 },
+          { question: "Shipping noise has reduced whale acoustic transmission distances by ____ percent.", options: ["40", "50", "60", "70"], answer: "60", type: "choice", points: 1 },
+          { question: "Architects turned towards minimalism because of a rejection of historic ornate decorations.", options: ["True", "False", "Not Given"], answer: "True", type: "choice", points: 1 }
+        ];
+      }
+      if (type === 'listening' || isFullMock) {
+        sampleQuestions = sampleQuestions.concat([
+          { question: "The studio apartment on Green Street costs £___ per month.", options: [], answer: "450", type: "written", points: 1 },
+          { question: "What type of parking facility is available for residents?", options: ["underground", "street-level", "valet", "none"], answer: "underground", type: "choice", points: 1 },
+          { question: "The caller's surname is spelt: H-A-R-L-I-N-G-T-O-N.", options: ["True", "False"], answer: "True", type: "bool", points: 1 },
+          { question: "The Orchid House is located immediately ___ of the central lake.", options: ["north", "south", "east", "west"], answer: "north", type: "choice", points: 1 }
+        ]);
+      }
+      if (type === 'writing' || isFullMock) {
+        sampleQuestions = sampleQuestions.concat([
+          { question: "Writing Task 1: Summarize the main features and trends of the renewable energy adoption chart (150 words minimum):", options: [], answer: "Overall, solar energy demonstrated exponential growth...", type: "written", points: 5 },
+          { question: "Writing Task 2: To what extent do you agree that higher education should be free for all citizens? Write your essay (250 words minimum):", options: [], answer: "In conclusion, free higher education democratizes intellectual development...", type: "written", points: 10 }
+        ]);
+      }
+      if (type === 'speaking' || isFullMock) {
+        sampleQuestions = sampleQuestions.concat([
+          { question: "Speaking Part 1: How has your hometown transformed over the past decade?", options: [], answer: "My hometown has modernized with advanced infrastructure...", type: "written", points: 3 },
+          { question: "Speaking Part 2 (Cue Card): Describe an impressive architectural landmark you have visited:", options: [], answer: "I would like to describe the Registan Square in Samarkand...", type: "written", points: 5 }
+        ]);
+      }
+
+      var testExam = {
+        id: 'ielts_exam_' + type + '_' + num + '_' + Date.now(),
+        code: 'IELTS-' + num,
+        title: (isFullMock ? 'IELTS Academic Full Mock Exam ' + num : 'IELTS ' + type.charAt(0).toUpperCase() + type.slice(1) + ' Test ' + num),
+        duration: isFullMock ? 165 : (type === 'reading' ? 60 : (type === 'writing' ? 60 : (type === 'listening' ? 35 : 15))),
+        pointsPerQ: 1,
+        questions: sampleQuestions,
+        isIelts: true,
+        hasScriptAnalysis: true,
+        audioMaxPlays: 1,
+        isPublic: true,
+        maxAttempts: 3,
+        submissions: []
+      };
+
+      startExamRunner(testExam, container);
+    }
+
+    var fm1 = document.getElementById('btnLaunchFullMock1');
+    if (fm1) fm1.onclick = function() { launchTest('full_mock', 1); };
+    var fm2 = document.getElementById('btnLaunchFullMock2');
+    if (fm2) fm2.onclick = function() { launchTest('full_mock', 2); };
+    var r1 = document.getElementById('btnStartReading1');
+    if (r1) r1.onclick = function() { launchTest('reading', 1); };
+    var r2 = document.getElementById('btnStartReading2');
+    if (r2) r2.onclick = function() { launchTest('reading', 2); };
+    var w1 = document.getElementById('btnStartWriting1');
+    if (w1) w1.onclick = function() { launchTest('writing', 1); };
+    var l1 = document.getElementById('btnStartListening1');
+    if (l1) l1.onclick = function() { launchTest('listening', 1); };
+    var s1 = document.getElementById('btnStartSpeaking1');
+    if (s1) s1.onclick = function() { launchTest('speaking', 1); };
+  }
 
   window.EthithViews = {
     renderAskAITeacher: renderAskAITeacher,
@@ -4349,6 +5139,10 @@
     renderExamsView: renderExamsView,
     renderPlacementView: renderPlacementView,
     renderMistakesNotebook: renderMistakesNotebook,
+    renderIeltsHub: renderIeltsHub,
+    showIeltsFullReviewModal: showIeltsFullReviewModal,
+    showCreateLevelTransitionExamModal: showCreateLevelTransitionExamModal,
+    showCreateExamModal: showCreateExamModal,
     showTeacherNotificationsModal: showTeacherNotificationsModal,
     formatAIMarkdown: formatAIMarkdown,
     formatMarkdown: formatAIMarkdown,

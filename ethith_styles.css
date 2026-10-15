@@ -2596,6 +2596,228 @@ body[data-theme="light"] .eth-test-timer-pill {
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25) !important;
 }
 
+/* ====================================================
+   FIERY GLOWING FLAME EFFECT - IELTS FULL MOCK CARD
+   ==================================================== */
+.eth-full-mock-fire-card {
+  position: relative !important;
+  border-radius: 20px !important;
+  background: linear-gradient(135deg, #180c04 0%, #291205 50%, #150802 100%) !important;
+  border: 2px solid #f97316 !important;
+  color: #ffffff !important;
+  padding: 24px 28px !important;
+  cursor: pointer !important;
+  overflow: hidden !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease !important;
+  animation: ethFlameGlow 3s infinite ease-in-out !important;
+  box-shadow: 0 0 25px rgba(249, 115, 22, 0.45), 0 0 50px rgba(239, 68, 68, 0.25) !important;
+}
+
+.eth-full-mock-fire-card:hover {
+  transform: translateY(-4px) scale(1.015) !important;
+  box-shadow: 0 0 45px rgba(249, 115, 22, 0.75), 0 0 85px rgba(239, 68, 68, 0.5) !important;
+}
+
+@keyframes ethFlameGlow {
+  0% {
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.45), 0 0 50px rgba(239, 68, 68, 0.25), inset 0 0 20px rgba(245, 158, 11, 0.2);
+    border-color: #f97316;
+  }
+  50% {
+    box-shadow: 0 0 42px rgba(239, 68, 68, 0.7), 0 0 80px rgba(245, 158, 11, 0.45), inset 0 0 32px rgba(249, 115, 22, 0.35);
+    border-color: #ef4444;
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.45), 0 0 50px rgba(239, 68, 68, 0.25), inset 0 0 20px rgba(245, 158, 11, 0.2);
+    border-color: #f97316;
+  }
+}
+
+.eth-fire-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: linear-gradient(90deg, #ea580c, #dc2626) !important;
+  color: #ffffff !important;
+  font-size: 11.5px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  padding: 4px 12px !important;
+  border-radius: 999px !important;
+  box-shadow: 0 0 12px rgba(234, 88, 12, 0.6) !important;
+  margin-bottom: 12px !important;
+}
+
+.eth-fire-badge::before {
+  content: '🔥';
+  font-size: 13px;
+  animation: ethFlameFlicker 1.2s infinite alternate;
+}
+
+@keyframes ethFlameFlicker {
+  0% { transform: scale(1) rotate(-3deg); filter: brightness(1); }
+  100% { transform: scale(1.25) rotate(4deg); filter: brightness(1.3); }
+}
+
+/* ====================================================
+   INTERACTIVE PAPER WORKSHEET / PDF SPLIT MODE
+   ==================================================== */
+.eth-paper-test-layout {
+  display: flex !important;
+  gap: 20px !important;
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  height: calc(100vh - 120px) !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 991px) {
+  .eth-paper-test-layout {
+    flex-direction: column !important;
+    height: auto !important;
+  }
+}
+
+.eth-paper-left-pane {
+  flex: 3 !important;
+  min-width: 320px !important;
+  background: var(--card, #ffffff) !important;
+  border: 1px solid var(--border, #cbd5e1) !important;
+  border-radius: 16px !important;
+  overflow-y: auto !important;
+  padding: 24px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+  position: relative !important;
+}
+
+.eth-paper-right-pane {
+  flex: 2 !important;
+  min-width: 280px !important;
+  max-width: 440px !important;
+  background: var(--bg2, #f8fafc) !important;
+  border: 1px solid var(--border, #cbd5e1) !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+.eth-answer-sheet-header {
+  padding: 16px 20px !important;
+  background: var(--card, #ffffff) !important;
+  border-bottom: 1px solid var(--border, #cbd5e1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.eth-answer-sheet-body {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.eth-sheet-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: var(--card, #ffffff) !important;
+  border: 1px solid var(--border, #cbd5e1) !important;
+  padding: 8px 12px !important;
+  border-radius: 10px !important;
+  transition: all 0.15s ease !important;
+}
+
+.eth-sheet-row.answered {
+  border-color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.04) !important;
+}
+
+.eth-sheet-qnum {
+  font-weight: 800 !important;
+  font-size: 13.5px !important;
+  color: #2563eb !important;
+  min-width: 30px !important;
+}
+
+.eth-sheet-opts {
+  display: flex !important;
+  gap: 6px !important;
+}
+
+.eth-sheet-opt-btn {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  border: 1.5px solid var(--border, #cbd5e1) !important;
+  background: transparent !important;
+  color: var(--text, #0f172a) !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.eth-sheet-opt-btn:hover {
+  border-color: #2563eb !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+}
+
+.eth-sheet-opt-btn.selected {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border-color: #2563eb !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35) !important;
+}
+
+.eth-sheet-input {
+  flex: 1 !important;
+  padding: 7px 12px !important;
+  border: 1.5px solid var(--border, #cbd5e1) !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  background: var(--bg2, #f8fafc) !important;
+  color: var(--text, #0f172a) !important;
+  outline: none !important;
+  transition: border-color 0.15s ease !important;
+}
+
+.eth-sheet-input:focus {
+  border-color: #2563eb !important;
+  background: var(--card, #ffffff) !important;
+}
+
+/* Audio Replay Badge */
+.eth-audio-replay-badge {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  padding: 4px 10px !important;
+  border-radius: 999px !important;
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #2563eb !important;
+  border: 1px solid rgba(37, 99, 235, 0.3) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.eth-test-audio-btn.exhausted {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  background: #64748b !important;
+}
+
+
 
 
 
