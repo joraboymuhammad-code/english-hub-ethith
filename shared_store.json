@@ -54,9 +54,21 @@
           "text": "Welcome to our class! Here we can discuss grammar topics, collaborate on quizzes, and share answers in real-time.",
           "time": "10:24",
           "reactions": {}
+        },
+        {
+          "id": "msg_1792041984917_cd4i9",
+          "timestamp": 1792041984917,
+          "senderId": "tc_oprlehyw5",
+          "senderName": "Name",
+          "senderEmail": "strikeruzb52@gmail.com",
+          "text": "Qande oʻzi",
+          "time": "10:26",
+          "replyTo": null,
+          "reactions": {}
         }
       ],
-      "pinnedId": null
+      "pinnedId": null,
+      "deletedMsgIds": []
     }
   ],
   "exams": [],
@@ -68,5 +80,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792041880701
+  "updatedAt": 1792041985628
 }
