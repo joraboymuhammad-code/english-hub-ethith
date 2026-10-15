@@ -2133,6 +2133,7 @@
     var currentAudioName = prefill.audioName || null;
     var bulkTextCache = prefill.bulkText || '';
     var bulkAnsCache = prefill.bulkAnswers || '';
+    var currentAttachedFile = prefill.attachedFile || null;
 
     function loadPdfJs(cb) {
       if (window.pdfjsLib) {
@@ -2401,13 +2402,14 @@
           '<div style="display:flex;flex-direction:column;gap:12px">' +
           '  <div>' +
           '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">' +
-          '      <label style="font-weight:700;font-size:13px">1. Savollar Matni (Questions Paper) — 50 dan 100+ gacha savollar:</label>' +
-          '      <div>' +
-          '        <button type="button" class="ap-btn out" id="btnUploadQFile" style="padding:4px 10px;font-size:12px">📁 PDF / TXT Fayl Yuklash</button>' +
-          '        <input type="file" id="bulkQFileInput" accept=".pdf,.txt,.doc,.docx" style="display:none">' +
+          '      <label style="font-weight:700;font-size:13px">1. Savollar Matni (Questions Paper) — 50 dan 100+ gacha savollar / PDF / Rasm:</label>' +
+          '      <div style="display:flex;align-items:center;gap:8px">' +
+          (currentAttachedFile ? '<span style="font-size:12px;color:#2563eb;font-weight:700;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">📎 ' + esc(currentAttachedFile.name) + '</span>' : '') +
+          '        <button type="button" class="ap-btn out" id="btnUploadQFile" style="padding:4px 10px;font-size:12px">📁 PDF / Rasm / TXT Yuklash</button>' +
+          '        <input type="file" id="bulkQFileInput" accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.doc,.docx" style="display:none">' +
           '      </div>' +
           '    </div>' +
-          '    <textarea id="bulkTextInput" style="width:100%;min-height:280px;font-family:\'Consolas\',\'Monaco\',\'Courier New\',monospace;font-size:13.5px;line-height:1.55;padding:12px;border:1.5px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);resize:vertical" placeholder="Bu yerga test savollarini tashlang yoki PDF yuklang. Masalan:\n1. The capital of Uzbekistan is ___.\nA) Samarkand\nB) Tashkent\nC) Bukhara\nD) Khiva\n\n2. Water boils at 100 degrees Celsius.\nA) True\nB) False\n\nProgress test 1B yoki Unit tests kabi 50-100+ ta savollarni shundoq tashlang...">' + esc(bulkTextCache) + '</textarea>' +
+          '    <textarea id="bulkTextInput" style="width:100%;min-height:280px;font-family:\'Consolas\',\'Monaco\',\'Courier New\',monospace;font-size:13.5px;line-height:1.55;padding:12px;border:1.5px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);resize:vertical" placeholder="Bu yerga test savollarini tashlang yoki PDF/Rasm yuklang. Masalan:\n1. The capital of Uzbekistan is ___.\nA) Samarkand\nB) Tashkent\nC) Bukhara\nD) Khiva\n\n2. Water boils at 100 degrees Celsius.\nA) True\nB) False\n\nProgress test 1B yoki Unit tests kabi 50-100+ ta savollarni shundoq tashlang...">' + esc(bulkTextCache) + '</textarea>' +
           '    <div id="bulkTextStats" style="font-size:12px;color:var(--muted);margin-top:6px;display:flex;justify-content:space-between;align-items:center">' +
           '      <span id="bulkStatsCount">Satrlar: ' + linesCount + ' | Belgilar: ' + charsCount + '</span>' +
           '      <span style="color:#2563eb;font-weight:600">⚡ 50 dan 100+ gacha savollarni to\'g\'ridan-to\'g\'ri tahlil qiling yoki listda yeching</span>' +
@@ -2424,9 +2426,15 @@
           '    <textarea id="bulkAnswerInput" style="width:100%;min-height:90px;font-family:\'Consolas\',\'Monaco\',\'Courier New\',monospace;font-size:13px;line-height:1.45;padding:10px;border:1.5px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);resize:vertical" placeholder="Masalan: 1b 2.a 3) c 4-d 5, a yoki 1 T 2 F 3 NG yoki 1 really; clothes 2 all; online...">' + esc(bulkAnsCache) + '</textarea>' +
           '    <div style="font-size:11.5px;color:var(--muted);margin-top:4px">Qo\'llab-quvvatlanadi: 1b, 1.b, 1)b, 1-b, 1,b, True/False, va Unit Tests yozma so\'zlari. Ballar (/10 yoki 2 points for each) avtomatik aniqlanadi!</div>' +
           '  </div>' +
-          '  <button type="button" class="eth-btn-primary" id="parseBulkBtn" style="padding:12px 16px;font-size:14px;font-weight:700;margin-top:4px">' +
-          '    ⚡ Aqlli Tahlil Qilish va Savollarni Qo\'shish (Smart Extract 50-100+ Qs)' +
-          '  </button>' +
+          '  <div style="display:flex;gap:10px;margin-top:6px;flex-wrap:wrap">' +
+          '    <button type="button" class="eth-btn-primary" id="btnAiExtract5Sec" style="flex:1;min-width:260px;padding:13px 18px;font-size:14px;font-weight:800;background:linear-gradient(135deg,#7c3aed 0%,#2563eb 100%);border:none;border-radius:12px;box-shadow:0 6px 20px rgba(124,58,237,0.4);display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;cursor:pointer">' +
+          '      <span style="font-size:18px">🤖</span>' +
+          '      <span id="btnAiExtractText">5 Soniyada AI Bilan Test Yaratish (Gemini Vision & Parser)</span>' +
+          '    </button>' +
+          '    <button type="button" class="ap-btn out" id="parseBulkBtn" style="padding:13px 16px;font-size:13px;font-weight:700">' +
+          '      ⚡ Mahalliy Tahlil (Offline Parser)' +
+          '    </button>' +
+          '  </div>' +
           '</div>';
       } else if (currentTab === 'mc') {
         html += '' +
@@ -2610,7 +2618,7 @@
         if (aEl) bulkAnsCache = aEl.value;
       }
 
-      // Bulk PDF / TXT upload
+      // Bulk PDF / Image / TXT upload
       var btnUploadQ = overlay.querySelector('#btnUploadQFile');
       var qFileInput = overlay.querySelector('#bulkQFileInput');
       if (btnUploadQ && qFileInput) {
@@ -2618,19 +2626,36 @@
         qFileInput.onchange = function(e) {
           if (e.target.files && e.target.files[0]) {
             var file = e.target.files[0];
-            if (file.name.toLowerCase().endsWith('.pdf') || file.type === 'application/pdf') {
-              var r = new FileReader();
-              r.onload = function(ev) {
-                currentPdfData = ev.target.result;
-                currentPdfName = file.name;
+            var isPdf = file.name.toLowerCase().endsWith('.pdf') || file.type === 'application/pdf';
+            var isImg = /^image\//i.test(file.type) || /\.(png|jpe?g|webp)$/i.test(file.name);
+
+            var r = new FileReader();
+            r.onload = function(ev) {
+              var dataUri = ev.target.result;
+              var b64 = dataUri.split(',')[1] || '';
+              currentAttachedFile = {
+                name: file.name,
+                mimeType: file.type || (isPdf ? 'application/pdf' : 'image/png'),
+                base64: b64
               };
-              r.readAsDataURL(file);
-            }
-            extractFileText(file, function(text) {
-              bulkTextCache = text;
+              if (isPdf) {
+                currentPdfData = dataUri;
+                currentPdfName = file.name;
+              }
+            };
+            r.readAsDataURL(file);
+
+            if (isImg) {
+              bulkTextCache = "[Rasm yuklandi: " + file.name + "]\nPastdagi '5 Soniyada AI Bilan Test Yaratish' tugmasini bosing.";
               renderModal();
-              alert("Savollar fayli muvaffaqiyatli o'qildi! (" + file.name + ")");
-            });
+              alert("Rasm muvaffaqiyatli biriktirildi! Endi '5 Soniyada AI Bilan Test Yaratish' tugmasini bosing.");
+            } else {
+              extractFileText(file, function(text) {
+                bulkTextCache = text;
+                renderModal();
+                alert("Savollar fayli muvaffaqiyatli o'qildi! (" + file.name + ")");
+              });
+            }
           }
         };
       }
@@ -2651,7 +2676,94 @@
         };
       }
 
-      // Bulk Parse execution
+      // 5-Second AI Exam Generator (Gemini Multimodal Vision & Parsing)
+      var btnAi = overlay.querySelector('#btnAiExtract5Sec');
+      if (btnAi) {
+        btnAi.onclick = async function() {
+          saveCache();
+          var qText = (bulkTextCache || '').trim();
+          var aText = (bulkAnsCache || '').trim();
+
+          if (!qText && !currentAttachedFile) {
+            alert("Iltimos, avval test matnini kiriting yoki PDF / Rasm faylini yuklang!");
+            return;
+          }
+
+          var btnTextSpan = overlay.querySelector('#btnAiExtractText');
+          if (btnTextSpan) {
+            btnTextSpan.textContent = '🧠 Gemini AI tahlil qilmoqda (3–5 soniya)...';
+          }
+          btnAi.disabled = true;
+          btnAi.style.opacity = '0.7';
+
+          try {
+            var aiRes = await window.EthithAI.parseAndExtractExam({
+              text: qText,
+              fileAttachment: currentAttachedFile,
+              answersText: aText,
+              defaultPoints: currentPoints
+            });
+
+            if (aiRes && aiRes.title && (!currentTitle || currentTitle === 'English Examination 2026')) {
+              currentTitle = aiRes.title;
+              var titEl = overlay.querySelector('#exTitle');
+              if (titEl) titEl.value = currentTitle;
+            }
+            if (aiRes && aiRes.duration && (!currentDuration || currentDuration === 30)) {
+              currentDuration = aiRes.duration;
+              var durEl = overlay.querySelector('#exDuration');
+              if (durEl) durEl.value = currentDuration;
+            }
+
+            if (aiRes && Array.isArray(aiRes.questions) && aiRes.questions.length > 0) {
+              aiRes.questions.forEach(function(q, idx) {
+                questionsList.push({
+                  id: questionsList.length + 1,
+                  num: q.num || (idx + 1),
+                  type: q.type || 'choice',
+                  question: q.question,
+                  options: q.options || (q.type === 'bool' ? ['True', 'False'] : []),
+                  answer: q.answer || (q.type === 'bool' ? 'True' : ((q.options && q.options[0]) || 'Jawob kiritilmagan')),
+                  points: q.points || currentPoints || 2
+                });
+              });
+              renderModal();
+              alert("✅ Muvaffaqiyatli! Gemini AI " + aiRes.questions.length + " ta savolni tahlil qildi va imtihonga kiritdi!");
+            } else {
+              var ansMap = parseSmartAnswers(aText);
+              var fallbackExtracted = parseQuestionsText(qText, ansMap);
+              if (fallbackExtracted.length > 0) {
+                questionsList = questionsList.concat(fallbackExtracted);
+                renderModal();
+                alert("Mahalliy tahlil orqali " + fallbackExtracted.length + " ta savol kiritildi.");
+              } else {
+                alert("AI savollarni ajrata olmadi. Iltimos, fayl yoki matnni tekshirib qaytadan urinib ko'ring.");
+              }
+            }
+          } catch(err) {
+            console.warn("AI parse error, trying local fallback:", err);
+            var ansMap2 = parseSmartAnswers(aText);
+            var fallback2 = parseQuestionsText(qText, ansMap2);
+            if (fallback2.length > 0) {
+              questionsList = questionsList.concat(fallback2);
+              renderModal();
+              alert("AI bandligi sabab mahalliy tahlil ishlatildi: " + fallback2.length + " ta savol qo'shildi!");
+            } else {
+              alert("Xatolik yuz berdi: " + (err.message || err));
+            }
+          } finally {
+            if (btnAi) {
+              btnAi.disabled = false;
+              btnAi.style.opacity = '1';
+              if (btnTextSpan) {
+                btnTextSpan.textContent = '5 Soniyada AI Bilan Test Yaratish (Gemini Vision & Parser)';
+              }
+            }
+          }
+        };
+      }
+
+      // Bulk Parse execution (Offline Local fallback)
       var parseBulkBtn = overlay.querySelector('#parseBulkBtn');
       if (parseBulkBtn) {
         parseBulkBtn.onclick = function() {
