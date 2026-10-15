@@ -21,6 +21,38 @@
     return _P1 + _P2;
   }
 
+  function decodeUtf8Base64(b64) {
+    if (!b64) return '';
+    var cleanB64 = (b64 + '').replace(/\s/g, '');
+    try {
+      var binString = atob(cleanB64);
+      var bytes = new Uint8Array(binString.length);
+      for (var i = 0; i < binString.length; i++) {
+        bytes[i] = binString.charCodeAt(i);
+      }
+      return new TextDecoder('utf-8').decode(bytes);
+    } catch(e) {
+      try {
+        return decodeURIComponent(escape(atob(cleanB64)));
+      } catch(e2) {
+        return atob(cleanB64);
+      }
+    }
+  }
+
+  function encodeUtf8Base64(str) {
+    try {
+      var bytes = new TextEncoder().encode(str);
+      var binString = '';
+      for (var i = 0; i < bytes.length; i++) {
+        binString += String.fromCharCode(bytes[i]);
+      }
+      return btoa(binString);
+    } catch(e) {
+      return btoa(unescape(encodeURIComponent(str)));
+    }
+  }
+
   var _lastKnownSha = null;
   var channel = null;
   var myClientId = 'cli_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 7);
@@ -489,6 +521,31 @@
       }
     }
 
+    // J. EXAM SUBMISSION (STUDENT COMPLETED EXAM)
+    else if (event.type === 'EXAM_SUBMISSION' && (event.examId || event.examCode) && event.submission) {
+      var targetExam = (S.exams || []).find(function(x) {
+        return (event.examId && x.id === event.examId) || (event.examCode && x.code === event.examCode);
+      });
+      if (targetExam) {
+        if (!targetExam.submissions) targetExam.submissions = [];
+        var uKey = (event.submission.studentEmail || event.submission.studentId || '').toLowerCase();
+        var existingIdx = targetExam.submissions.findIndex(function(s) {
+          return (s.studentEmail && s.studentEmail.toLowerCase() === uKey) ||
+                 (s.studentId && s.studentId.toLowerCase() === uKey);
+        });
+        if (existingIdx > -1) {
+          targetExam.submissions[existingIdx] = event.submission;
+        } else {
+          targetExam.submissions.push(event.submission);
+        }
+        uiNeedsRefresh = true;
+        if (window._ethithRefreshExamsList) window._ethithRefreshExamsList();
+        if (window._ethithOnExamSubmission) {
+          try { window._ethithOnExamSubmission(event); } catch(e) {}
+        }
+      }
+    }
+
     if (uiNeedsRefresh) {
       window.EthithApp.saveState();
       // Always refresh class detail if chat element is visible in DOM
@@ -527,8 +584,8 @@
       if (res.ok) {
         var data = await res.json();
         _lastKnownSha = data.sha;
-        var rawJson = atob(data.content.replace(/\s/g, ''));
-        return JSON.parse(decodeURIComponent(escape(rawJson)));
+        var rawJson = decodeUtf8Base64(data.content);
+        return JSON.parse(rawJson);
       }
     } catch(err) {
       try {
@@ -666,9 +723,24 @@
         localExams.push(rx);
         changed = true;
       } else {
-        if (rx.submissions && rx.submissions.length > (exists.submissions ? exists.submissions.length : 0)) {
-          exists.submissions = rx.submissions;
-          changed = true;
+        if (Array.isArray(rx.submissions) && rx.submissions.length > 0) {
+          if (!exists.submissions) exists.submissions = [];
+          rx.submissions.forEach(function(rSub) {
+            var rKey = (rSub.studentEmail || rSub.studentId || '').toLowerCase();
+            var locIdx = exists.submissions.findIndex(function(lSub) {
+              return (lSub.studentEmail && lSub.studentEmail.toLowerCase() === rKey) ||
+                     (lSub.studentId && lSub.studentId.toLowerCase() === rKey);
+            });
+            if (locIdx === -1) {
+              exists.submissions.push(rSub);
+              changed = true;
+            } else {
+              if ((rSub.attempts || 1) >= (exists.submissions[locIdx].attempts || 1)) {
+                exists.submissions[locIdx] = rSub;
+                changed = true;
+              }
+            }
+          });
         }
         if (rx.isPublic !== undefined && exists.isPublic !== rx.isPublic) {
           exists.isPublic = rx.isPublic;
@@ -732,8 +804,8 @@
           var fileData = await getRes.json();
           sha = fileData.sha;
           try {
-            var rawJson = atob(fileData.content.replace(/\s/g, ''));
-            remoteData = JSON.parse(decodeURIComponent(escape(rawJson)));
+            var rawJson = decodeUtf8Base64(fileData.content);
+            remoteData = JSON.parse(rawJson);
           } catch(e) {}
         }
 
@@ -770,7 +842,7 @@
         };
 
         var jsonStr = JSON.stringify(contentObj, null, 2);
-        var b64Content = btoa(unescape(encodeURIComponent(jsonStr)));
+        var b64Content = encodeUtf8Base64(jsonStr);
 
         var body = {
           message: 'Sync classes, messages, reactions and exams [skip ci]',

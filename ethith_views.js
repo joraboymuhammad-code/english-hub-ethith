@@ -3012,6 +3012,27 @@
     };
   }
 
+  function showOriginalPdfModal(exam) {
+    if (!exam.pdfData) return;
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.style.zIndex = '2147483649';
+    overlay.innerHTML = '' +
+      '<div class="eth-modal" style="max-width:960px;width:95vw;height:88vh;display:flex;flex-direction:column;padding:16px 20px">' +
+      '  <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--border)">' +
+      '    <b style="font-size:16px">📑 Asl PDF Hujjati: ' + esc(exam.title) + '</b>' +
+      '    <button type="button" class="eth-modal-close-btn" id="btnCloseOriginalPdf" style="position:static">✕</button>' +
+      '  </div>' +
+      '  <div style="flex:1;margin-top:12px;border-radius:10px;overflow:hidden;border:1px solid var(--border)">' +
+      '    <iframe src="' + exam.pdfData + '#toolbar=0" style="width:100%;height:100%;border:none;background:#525659"></iframe>' +
+      '  </div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    overlay.querySelector('#btnCloseOriginalPdf').onclick = function() {
+      overlay.remove();
+    };
+  }
+
   function showPreTestSecurityBriefing(onConfirm) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
@@ -3692,8 +3713,8 @@
       }
     }
 
-    // 8.6 Paper Worksheet Mode State
-    var isPaperMode = !!exam.pdfData;
+    // 8.6 Authentic Interactive Worksheet Engine (Default: solve directly on paper)
+    var isPaperMode = true;
 
     // 9. Render Question & Palette
     function renderExamQuestion() {
@@ -3724,8 +3745,12 @@
         '    </div>' +
         '  </div>' +
         '  <div class="eth-test-topbar-right">' +
+        (exam.pdfData ?
+          '    <button type="button" class="eth-test-mode-toggle" id="btnViewOriginalPdf" style="background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.25);color:#fff;padding:6px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;margin-right:8px;transition:all 0.15s">' +
+          '      📑 Asl PDF Nusxasi' +
+          '    </button>' : '') +
         '    <button type="button" class="eth-test-mode-toggle" id="btnTogglePaperMode" style="background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.25);color:#fff;padding:6px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;margin-right:8px;transition:all 0.15s">' +
-        (isPaperMode ? '🔘 Bittalab Ko\'rish Rejimi' : '📄 Listda Yechish (Paper Mode)') +
+        (isPaperMode ? '🔘 Bittalab Ko\'rish' : '📄 To\'liq Varoq (Worksheet)') +
         '    </button>' +
         '    <div class="eth-test-progress-info">' +
         '      <div class="eth-test-progress-text">Belgilangan: <b>' + answeredCount + ' / ' + totalQ + '</b> (' + progressPct + '%)</div>' +
@@ -3736,74 +3761,112 @@
         '</header>';
 
       if (isPaperMode) {
-        // Dual-Pane Interactive Paper Worksheet Mode
+        // Authentic Pure White Interactive Test Worksheet Paper (Marked Directly on the Test Paper)
+        var studentName = (S.user && S.user.name) || 'O\'quvchi';
+        var totalPossible = exam.questions.reduce(function(acc, item) { return acc + (item.points || exam.pointsPerQ || 2); }, 0);
+
         html += '' +
-          '<main class="eth-test-main" style="padding:10px 16px;max-width:100%;height:calc(100vh - 120px);box-sizing:border-box">' +
-          '  <div class="eth-paper-test-layout" style="display:flex;gap:14px;height:100%;width:100%">' +
-          '    <!-- Left Pane: PDF or Printable Question Paper -->' +
-          '    <div class="eth-paper-left-pane" style="flex:1.2;height:100%;background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;display:flex;flex-direction:column">' +
-          (exam.pdfData ?
-            '      <iframe src="' + exam.pdfData + '#toolbar=0" style="width:100%;height:100%;border:none;background:#525659"></iframe>' :
-            '      <div style="flex:1;overflow-y:auto;padding:24px 28px;line-height:1.6">' +
-            '        <h2 style="font-size:19px;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:18px">' + esc(exam.title) + '</h2>' +
-            exam.questions.map(function(qObj, qIdx) {
-              var t = qObj.type || 'choice';
-              return '' +
-                '        <div style="margin-bottom:20px;padding-bottom:14px;border-bottom:1px dashed var(--border)">' +
-                '          <div style="font-weight:700;font-size:14.5px;margin-bottom:8px">#' + (qIdx + 1) + '. ' + esc(qObj.question) + '</div>' +
-                (t === 'choice' ?
-                  '          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-left:12px">' +
-                  qObj.options.map(function(o, oI) {
-                    return '<div style="font-size:13.5px"><b>' + 'ABCD'[oI] + ')</b> ' + esc(o) + '</div>';
-                  }).join('') +
-                  '          </div>' :
-                  (t === 'bool' ?
-                    '          <div style="margin-left:12px;font-style:italic;color:var(--muted);font-size:13px">[ Variantlar: True / False ]</div>' :
-                    '          <div style="margin-left:12px;font-style:italic;color:var(--muted);font-size:13px">[ Bo\'sh joy javobini o\'ng tarafdagi Answer Sheetga yozing ]</div>'
-                  )
-                ) +
-                '        </div>';
-            }).join('') +
-            '      </div>'
-          ) +
-          '    </div>' +
-          '    <!-- Right Pane: Interactive Answer Sheet -->' +
-          '    <div class="eth-paper-right-pane" style="flex:0.8;max-width:440px;height:100%;background:var(--card);border-radius:14px;border:1.5px solid var(--border);display:flex;flex-direction:column;overflow:hidden">' +
-          '      <div class="eth-answer-sheet-header" style="padding:14px 18px;border-bottom:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;justify-content:space-between">' +
+          '<main class="eth-worksheet-wrapper" id="worksheetMainWrapper">' +
+          '  <div class="eth-worksheet-paper">' +
+          '    <!-- Paper Header -->' +
+          '    <div class="eth-paper-header">' +
+          '      <div class="eth-paper-title-row">' +
           '        <div>' +
-          '          <b style="font-size:14.5px">📝 Javoblar Listi (Answer Sheet)</b>' +
-          '          <div style="font-size:12px;color:var(--muted)"><span id="paperAnsweredCount">' + answeredCount + '</span> / ' + totalQ + ' ta belgilandi</div>' +
+          '          <div class="eth-paper-institution">ETHITH International Examination Center</div>' +
+          '          <h1 class="eth-paper-title">' + esc(exam.title) + '</h1>' +
           '        </div>' +
-          '        <button type="button" class="eth-test-btn-finish" id="btnPaperFinish" style="padding:6px 12px;font-size:12.5px">🏁 Yakunlash</button>' +
+          '        <div class="eth-paper-marks-pill">⭐ Total Marks: ' + totalPossible + '</div>' +
           '      </div>' +
-          '      <div class="eth-answer-sheet-body" style="flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px">' +
-          exam.questions.map(function(qObj, qIdx) {
-            var t = qObj.type || 'choice';
-            var curAns = state.answers[qIdx] || '';
-            return '' +
-              '        <div class="eth-sheet-row" style="display:flex;align-items:center;gap:10px;padding:6px 10px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">' +
-              '          <span class="eth-sheet-qnum" style="font-weight:800;font-size:13px;min-width:32px">#' + (qIdx + 1) + '</span>' +
-              (t === 'choice' ?
-                '          <div class="eth-sheet-options" style="display:flex;gap:6px">' +
-                qObj.options.map(function(opt, oIdx) {
-                  var letter = 'ABCD'[oIdx];
-                  var isSel = (curAns === opt || curAns === letter);
-                  return '<button type="button" class="eth-sheet-opt-btn ' + (isSel ? 'selected' : '') + '" data-sheet-q="' + qIdx + '" data-sheet-ans="' + esc(opt) + '">' + letter + '</button>';
-                }).join('') +
-                '          </div>' :
-                (t === 'bool' ?
-                  '          <div class="eth-sheet-options" style="display:flex;gap:6px">' +
-                  ['True', 'False'].map(function(bOpt) {
-                    var isSel = (curAns === bOpt);
-                    return '<button type="button" class="eth-sheet-opt-btn ' + (isSel ? 'selected' : '') + '" data-sheet-q="' + qIdx + '" data-sheet-ans="' + bOpt + '" style="width:40px">' + (bOpt === 'True' ? 'T' : 'F') + '</button>';
-                  }).join('') +
-                  '          </div>' :
-                  '          <input type="text" class="eth-sheet-input" data-sheet-input-q="' + qIdx + '" value="' + esc(curAns) + '" placeholder="Javobni yozing..." style="flex:1;padding:6px 10px;border-radius:6px;border:1px solid var(--border);font-size:13px">'
-                )
-              ) +
-              '        </div>';
-          }).join('') +
+          '      <div class="eth-paper-meta-grid">' +
+          '        <div class="eth-paper-meta-item"><b>Candidate:</b> <span>' + esc(studentName) + '</span></div>' +
+          '        <div class="eth-paper-meta-item"><b>Date:</b> <span>' + new Date().toLocaleDateString() + '</span></div>' +
+          '        <div class="eth-paper-meta-item"><b>Duration:</b> <span>' + exam.duration + ' mins</span></div>' +
+          '        <div class="eth-paper-meta-item"><b>Questions:</b> <span>' + totalQ + ' items</span></div>' +
           '      </div>' +
+          '      <div class="eth-paper-instructions">' +
+          '        <b>📝 TOPSHIRIQLAR VA BELGILASH YO\'RIQNOMASI:</b><br>' +
+          '        Savollarni diqqat bilan o\'qing va javoblaringizni to\'g\'ridan-to\'g\'ri ushbu varoqdagi variantlarni bosish yoki bo\'sh joylarga yozish orqali belgilang. Alohida yon panel yo\'q — barcha test bevosita varoq ustida ishlanadi.' +
+          '      </div>' +
+          '    </div>' +
+          '    <!-- Paper Questions List -->' +
+          '    <div class="eth-paper-questions-list">';
+
+        exam.questions.forEach(function(qObj, qIdx) {
+          var t = qObj.type || 'choice';
+          var curAns = state.answers[qIdx];
+          var isAns = (curAns !== undefined && curAns !== '');
+          var pts = qObj.points || exam.pointsPerQ || 2;
+
+          html += '' +
+            '    <div class="eth-paper-q-card' + (isAns ? ' answered' : '') + '" id="paperQ_' + qIdx + '" data-paper-q-card="' + qIdx + '">' +
+            '      <div class="eth-paper-q-top">' +
+            '        <span class="eth-paper-q-num-badge">#' + (qIdx + 1) + '-Savol</span>' +
+            '        <span class="eth-paper-q-pts">' + pts + ' ball</span>' +
+            '      </div>' +
+            '      <div class="eth-paper-q-text">' + (qIdx + 1) + '. ' + esc(qObj.question) + '</div>';
+
+          if (t === 'bool') {
+            html += '' +
+              '      <div class="eth-paper-bool-group">' +
+              '        <button type="button" class="eth-paper-bool-btn' + (curAns === 'True' ? ' selected' : '') + '" data-paper-q="' + qIdx + '" data-paper-ans="True">' +
+              '          <span class="check-mark">✓</span> TRUE' +
+              '        </button>' +
+              '        <button type="button" class="eth-paper-bool-btn' + (curAns === 'False' ? ' selected' : '') + '" data-paper-q="' + qIdx + '" data-paper-ans="False">' +
+              '          <span class="check-mark">✓</span> FALSE' +
+              '        </button>' +
+              '      </div>';
+          } else if (t === 'choice') {
+            html += '      <div class="eth-paper-choice-group">';
+            qObj.options.forEach(function(opt, oIdx) {
+              var letter = String.fromCharCode(65 + oIdx);
+              var isSel = (curAns === opt || curAns === letter || (typeof curAns === 'string' && curAns.toLowerCase() === opt.toLowerCase()));
+              html += '' +
+                '        <div class="eth-paper-choice-item' + (isSel ? ' selected' : '') + '" data-paper-q="' + qIdx + '" data-paper-ans="' + esc(opt) + '" data-paper-letter="' + letter + '">' +
+                '          <div class="eth-paper-choice-radio">' +
+                '            <div class="eth-paper-radio-inner"></div>' +
+                '          </div>' +
+                '          <div class="eth-paper-choice-letter"><b>' + letter + ')</b></div>' +
+                '          <div class="eth-paper-choice-label">' + esc(opt) + '</div>' +
+                '        </div>';
+            });
+            html += '      </div>';
+          } else {
+            html += '' +
+              '      <div class="eth-paper-gap-wrap">' +
+              '        <span class="eth-paper-gap-label">✍️ Sizning javobingiz:</span>' +
+              '        <input type="text" class="eth-paper-gap-input" data-paper-input-q="' + qIdx + '" value="' + esc(curAns || '') + '" placeholder="Javobni shu yerga yozing..." />' +
+              '      </div>';
+          }
+
+          html += '    </div>';
+        });
+
+        html += '' +
+          '    </div>' +
+          '    <!-- Bottom Finish -->' +
+          '    <div class="eth-paper-bottom-finish">' +
+          '      <div style="font-size:14.5px;color:#64748b;font-weight:700">' +
+          '        Jami: <b style="color:#2563eb"><span id="paperFooterAnswered">' + answeredCount + '</span> / ' + totalQ + '</b> ta savol belgilandi' +
+          '      </div>' +
+          '      <button type="button" class="eth-paper-finish-btn" id="btnPaperFinishBottom">' +
+          '        🏁 Imtihonni Yakunlash va Natijalarni Saqlash (Finish Exam) &rarr;' +
+          '      </button>' +
+          '    </div>' +
+          '  </div>' +
+          '  <!-- Floating Quick Jump Navigator -->' +
+          '  <div class="eth-paper-quick-nav" id="paperQuickNav">' +
+          '    <div class="eth-paper-nav-title">' +
+          '      <span>Savollar Ro\'yxati</span>' +
+          '      <b style="color:#60a5fa"><span id="paperNavAnsweredCount">' + answeredCount + '</span> / ' + totalQ + '</b>' +
+          '    </div>' +
+          '    <div class="eth-paper-nav-grid">';
+
+        exam.questions.forEach(function(_, idx) {
+          var isAns = (state.answers[idx] !== undefined && state.answers[idx] !== '');
+          html += '<button type="button" class="eth-paper-nav-btn' + (isAns ? ' answered' : '') + '" data-jump-to="' + idx + '" title="Savol ' + (idx + 1) + '">' + (idx + 1) + '</button>';
+        });
+
+        html += '' +
           '    </div>' +
           '  </div>' +
           '</main>';
@@ -3867,10 +3930,11 @@
         } else {
           var currentOpt = state.answers[state.i];
           q.options.forEach(function(opt, idx) {
-            var isSel = (currentOpt === opt);
+            var letter = String.fromCharCode(65 + idx);
+            var isSel = (currentOpt === opt || currentOpt === letter);
             html += '' +
               '<button type="button" class="eth-test-opt' + (isSel ? ' selected' : '') + '" data-opt="' + esc(opt) + '">' +
-              '  <span class="eth-test-opt-badge">' + 'ABCD'[idx] + '</span>' +
+              '  <span class="eth-test-opt-badge">' + letter + '</span>' +
               '  <span class="eth-test-opt-text">' + esc(opt) + '</span>' +
               '  <span class="eth-test-opt-indicator"></span>' +
               '</button>';
@@ -3899,8 +3963,16 @@
 
       // Preserve audio bar and webcam box while updating question view
       lockdownModal.innerHTML = html;
-      if (audioBoxEl) lockdownModal.insertBefore(audioBoxEl, lockdownModal.querySelector('.eth-test-main'));
+      if (audioBoxEl) lockdownModal.insertBefore(audioBoxEl, lockdownModal.querySelector('.eth-worksheet-wrapper') || lockdownModal.querySelector('.eth-test-main'));
       if (camBoxEl) lockdownModal.appendChild(camBoxEl);
+
+      // View Original PDF Modal
+      var btnViewPdf = document.getElementById('btnViewOriginalPdf');
+      if (btnViewPdf && exam.pdfData) {
+        btnViewPdf.onclick = function() {
+          showOriginalPdfModal(exam);
+        };
+      }
 
       // Toggle Paper Mode
       var togglePaperBtn = document.getElementById('btnTogglePaperMode');
@@ -3912,9 +3984,9 @@
         };
       }
 
-      // Paper Worksheet Mode handlers
+      // Authentic Paper Worksheet Mode Handlers
       if (isPaperMode) {
-        var paperFinishBtn = document.getElementById('btnPaperFinish');
+        var paperFinishBtn = document.getElementById('btnPaperFinishBottom');
         if (paperFinishBtn) {
           paperFinishBtn.onclick = function() {
             saveCurrentWritten();
@@ -3922,32 +3994,83 @@
           };
         }
 
-        lockdownModal.querySelectorAll('.eth-sheet-opt-btn').forEach(function(btn) {
+        // True / False Buttons directly on paper
+        lockdownModal.querySelectorAll('.eth-paper-bool-btn').forEach(function(btn) {
           btn.onclick = function() {
             if (isExamLocked) return;
-            var qIdx = parseInt(btn.dataset.sheetQ, 10);
-            var ans = btn.dataset.sheetAns;
+            var qIdx = parseInt(btn.dataset.paperQ, 10);
+            var ans = btn.dataset.paperAns;
             state.answers[qIdx] = ans;
             var parent = btn.parentElement;
             if (parent) {
-              parent.querySelectorAll('.eth-sheet-opt-btn').forEach(function(b) { b.classList.remove('selected'); });
+              parent.querySelectorAll('.eth-paper-bool-btn').forEach(function(b) { b.classList.remove('selected'); });
               btn.classList.add('selected');
             }
-            var ansCt = Object.keys(state.answers).filter(function(k){ return state.answers[k] !== undefined && state.answers[k] !== ''; }).length;
-            var countEl = document.getElementById('paperAnsweredCount');
-            if (countEl) countEl.textContent = ansCt;
+            updatePaperVisuals(qIdx);
           };
         });
 
-        lockdownModal.querySelectorAll('.eth-sheet-input').forEach(function(inp) {
-          inp.oninput = function() {
-            var qIdx = parseInt(inp.dataset.sheetInputQ, 10);
-            state.answers[qIdx] = inp.value.trim();
-            var ansCt = Object.keys(state.answers).filter(function(k){ return state.answers[k] !== undefined && state.answers[k] !== ''; }).length;
-            var countEl = document.getElementById('paperAnsweredCount');
-            if (countEl) countEl.textContent = ansCt;
+        // Multiple Choice Items directly on paper
+        lockdownModal.querySelectorAll('.eth-paper-choice-item').forEach(function(item) {
+          item.onclick = function() {
+            if (isExamLocked) return;
+            var qIdx = parseInt(item.dataset.paperQ, 10);
+            var ans = item.dataset.paperAns;
+            state.answers[qIdx] = ans;
+            var parent = item.parentElement;
+            if (parent) {
+              parent.querySelectorAll('.eth-paper-choice-item').forEach(function(b) { b.classList.remove('selected'); });
+              item.classList.add('selected');
+            }
+            updatePaperVisuals(qIdx);
           };
         });
+
+        // Gap Fill Inputs directly on paper
+        lockdownModal.querySelectorAll('.eth-paper-gap-input').forEach(function(inp) {
+          inp.oninput = function() {
+            var qIdx = parseInt(inp.dataset.paperInputQ, 10);
+            state.answers[qIdx] = inp.value.trim();
+            updatePaperVisuals(qIdx);
+          };
+        });
+
+        // Quick Jump To Question
+        lockdownModal.querySelectorAll('[data-jump-to]').forEach(function(btn) {
+          btn.onclick = function() {
+            var targetIdx = parseInt(btn.dataset.jumpTo, 10);
+            var targetCard = document.getElementById('paperQ_' + targetIdx);
+            if (targetCard) {
+              targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              targetCard.style.outline = '3px solid #2563eb';
+              setTimeout(function() { targetCard.style.outline = 'none'; }, 1200);
+            }
+          };
+        });
+
+        function updatePaperVisuals(qIdx) {
+          var card = document.getElementById('paperQ_' + qIdx);
+          var isAnswered = (state.answers[qIdx] !== undefined && state.answers[qIdx] !== '');
+          if (card) {
+            if (isAnswered) card.classList.add('answered');
+            else card.classList.remove('answered');
+          }
+          var navBtn = lockdownModal.querySelector('[data-jump-to="' + qIdx + '"]');
+          if (navBtn) {
+            if (isAnswered) navBtn.classList.add('answered');
+            else navBtn.classList.remove('answered');
+          }
+          var ansCt = Object.keys(state.answers).filter(function(k){ return state.answers[k] !== undefined && state.answers[k] !== ''; }).length;
+          var countNav = document.getElementById('paperNavAnsweredCount');
+          if (countNav) countNav.textContent = ansCt;
+          var countFoot = document.getElementById('paperFooterAnswered');
+          if (countFoot) countFoot.textContent = ansCt;
+          var pct = Math.round((ansCt / totalQ) * 100);
+          var progText = lockdownModal.querySelector('.eth-test-progress-text b');
+          if (progText) progText.textContent = ansCt + ' / ' + totalQ;
+          var progBar = lockdownModal.querySelector('.eth-test-progress-bar i');
+          if (progBar) progBar.style.width = pct + '%';
+        }
       }
 
       // Toggle Palette
@@ -4216,10 +4339,22 @@
         exam.submissions.push(sub);
       }
 
+      var storeExam = (S.exams || []).find(function(x) { return x.id === exam.id || (exam.code && x.code === exam.code); });
+      if (storeExam) {
+        storeExam.submissions = exam.submissions;
+      }
+
       App.saveState();
       if (window.EthithSync) {
+        var finalSubmission = existing || sub;
+        window.EthithSync.publishLive({
+          type: 'EXAM_SUBMISSION',
+          examId: exam.id,
+          examCode: exam.code,
+          submission: finalSubmission
+        });
         window.EthithSync.broadcastLocal(S.classes, S.exams);
-        window.EthithSync.pushRemoteStore(S.classes, S.exams);
+        window.EthithSync.pushRemoteStore();
       }
 
       // Render Comprehensive Luxury Results Screen
@@ -4325,71 +4460,130 @@
   function showExamLeaderboardModal(exam) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
+
+    var freshExam = (S.exams || []).find(function(x) {
+      return (exam.id && x.id === exam.id) || (exam.code && x.code === exam.code);
+    }) || exam;
+    exam = freshExam;
+
     var maxAtt = exam.maxAttempts || 1;
 
-    // Deduplicated list sorted by highest score and speed
-    var subs = (exam.submissions || []).slice().sort(function(a, b) {
-      if (b.score !== a.score) return b.score - a.score;
-      return parseInt(a.timeSpent, 10) - parseInt(b.timeSpent, 10);
-    });
+    function renderModalBody() {
+      // Deduplicated list sorted by highest score and speed
+      var subs = (exam.submissions || []).slice().sort(function(a, b) {
+        if (b.score !== a.score) return b.score - a.score;
+        return parseInt(a.timeSpent, 10) - parseInt(b.timeSpent, 10);
+      });
 
-    overlay.innerHTML = '' +
-      '<div class="eth-modal" style="max-width:760px">' +
-      '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseLeaderboard" title="Yopish">✕</button>' +
-      '  <div class="eth-modal-header">' +
-      '    <h2>' + ic('trophy') + ' ' + esc(exam.title) + ' · Natijalar Jadvali (Leaderboard)</h2>' +
-      '    <p>Jami topshirganlar: <b>' + subs.length + ' ta o\'quvchi</b> · Qayta yechishlar va chuqur tahlil</p>' +
-      '  </div>' +
-      '  <div class="eth-modal-body" style="max-height:65vh;overflow-y:auto">' +
-      (subs.length === 0 ?
-        '<p style="color:var(--muted);text-align:center;padding:24px 0">Bu imtihonni hali hech bir o\'quvchi topshirmagan.</p>' :
-        '<table class="eth-leaderboard-table">' +
-        '  <thead><tr><th>O\'rin</th><th>O\'quvchi</th><th>Natija</th><th>Urinishlar</th><th>Vaqt</th><th>Harakat</th></tr></thead>' +
-        '  <tbody>' +
-        subs.map(function(s, idx) {
-          var rankCls = (idx === 0 ? 'eth-rank-1' : (idx === 1 ? 'eth-rank-2' : (idx === 2 ? 'eth-rank-3' : '')));
-          return '<tr>' +
-            '  <td><span class="eth-rank-badge ' + rankCls + '">' + (idx + 1) + '</span></td>' +
-            '  <td><b>' + esc(s.studentName) + '</b><div style="font-size:11px;color:var(--muted)">' + esc(s.studentEmail || '') + '</div></td>' +
-            '  <td><b style="color:#2563eb">' + s.score + ' / ' + s.totalPossible + ' (' + s.percent + '%)</b></td>' +
-            '  <td><span style="font-size:12px;background:rgba(37,99,235,0.08);color:#2563eb;padding:3px 8px;border-radius:6px;font-weight:700">' + (s.attempts || 1) + ' / ' + maxAtt + '</span></td>' +
-            '  <td>' + esc(s.timeSpent) + '</td>' +
-            '  <td><button type="button" class="ap-btn solid" data-view-analysis="' + idx + '" style="padding:6px 12px;font-size:12px;font-weight:700">🔍 Tahlil (Xatolar)</button></td>' +
-            '</tr>';
-        }).join('') +
-        '  </tbody>' +
-        '</table>'
-      ) +
-      '    <div style="display:flex;justify-content:flex-end;margin-top:20px">' +
-      '      <button class="eth-btn-primary" id="lbCloseBtn" style="padding:8px 24px">Yopish</button>' +
-      '    </div>' +
-      '  </div>' +
-      '</div>';
+      overlay.innerHTML = '' +
+        '<div class="eth-modal" style="max-width:760px">' +
+        '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseLeaderboard" title="Yopish">✕</button>' +
+        '  <div class="eth-modal-header">' +
+        '    <h2>' + ic('trophy') + ' ' + esc(exam.title) + ' · Natijalar Jadvali (Leaderboard)</h2>' +
+        '    <p>Jami topshirganlar: <b>' + subs.length + ' ta o\'quvchi</b> · Qayta yechishlar va chuqur tahlil</p>' +
+        '  </div>' +
+        '  <div class="eth-modal-body" style="max-height:65vh;overflow-y:auto">' +
+        (subs.length === 0 ?
+          '<div style="text-align:center;padding:36px 0">' +
+          '  <div style="font-size:44px;margin-bottom:10px">📊</div>' +
+          '  <p style="color:var(--muted);font-size:15px;margin:0 0 14px">Bu imtihonni hali hech bir o\'quvchi topshirmagan.</p>' +
+          '  <span style="font-size:12px;background:rgba(37,99,235,0.08);color:#2563eb;padding:5px 12px;border-radius:999px;font-weight:700">Imtihon kodi: ' + (exam.code || exam.id) + '</span>' +
+          '</div>' :
+          '<table class="eth-leaderboard-table">' +
+          '  <thead><tr><th>O\'rin</th><th>O\'quvchi</th><th>Natija</th><th>Urinishlar</th><th>Vaqt</th><th>Harakat</th></tr></thead>' +
+          '  <tbody>' +
+          subs.map(function(s, idx) {
+            var rankCls = (idx === 0 ? 'eth-rank-1' : (idx === 1 ? 'eth-rank-2' : (idx === 2 ? 'eth-rank-3' : '')));
+            return '<tr>' +
+              '  <td><span class="eth-rank-badge ' + rankCls + '">' + (idx + 1) + '</span></td>' +
+              '  <td><b>' + esc(s.studentName) + '</b><div style="font-size:11px;color:var(--muted)">' + esc(s.studentEmail || '') + '</div></td>' +
+              '  <td><b style="color:#2563eb">' + s.score + ' / ' + s.totalPossible + ' (' + s.percent + '%)</b></td>' +
+              '  <td><span style="font-size:12px;background:rgba(37,99,235,0.08);color:#2563eb;padding:3px 8px;border-radius:6px;font-weight:700">' + (s.attempts || 1) + ' / ' + maxAtt + '</span></td>' +
+              '  <td>' + esc(s.timeSpent) + '</td>' +
+              '  <td><button type="button" class="ap-btn solid" data-view-analysis="' + idx + '" style="padding:6px 12px;font-size:12px;font-weight:700">🔍 Tahlil (Xatolar)</button></td>' +
+              '</tr>';
+          }).join('') +
+          '  </tbody>' +
+          '</table>'
+        ) +
+        '    <div style="display:flex;justify-content:flex-end;margin-top:20px">' +
+        '      <button class="eth-btn-primary" id="lbCloseBtn" style="padding:8px 24px">Yopish</button>' +
+        '    </div>' +
+        '  </div>' +
+        '</div>';
 
+      var topClose = overlay.querySelector('#btnTopCloseLeaderboard');
+      if (topClose) topClose.onclick = function() { cleanup(); overlay.remove(); };
+      var botClose = overlay.querySelector('#lbCloseBtn');
+      if (botClose) botClose.onclick = function() { cleanup(); overlay.remove(); };
+
+      overlay.querySelectorAll('[data-view-analysis]').forEach(function(btn) {
+        btn.onclick = function() {
+          var subIdx = parseInt(btn.dataset.viewAnalysis, 10);
+          var targetSub = subs[subIdx];
+          if (targetSub) {
+            showStudentExamAnalysisModal(exam, targetSub);
+          }
+        };
+      });
+    }
+
+    renderModalBody();
     document.body.appendChild(overlay);
 
-    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
-    var topClose = overlay.querySelector('#btnTopCloseLeaderboard');
-    if (topClose) topClose.onclick = function() { overlay.remove(); };
-    overlay.querySelector('#lbCloseBtn').onclick = function() { overlay.remove(); };
+    function cleanup() {
+      window.removeEventListener('keydown', onEsc);
+      window._ethithOnExamSubmission = null;
+    }
+
+    overlay.onclick = function(e) { if (e.target === overlay) { cleanup(); overlay.remove(); } };
 
     var onEsc = function(e) {
       if (e.key === 'Escape') {
+        cleanup();
         overlay.remove();
-        window.removeEventListener('keydown', onEsc);
       }
     };
     window.addEventListener('keydown', onEsc);
 
-    overlay.querySelectorAll('[data-view-analysis]').forEach(function(btn) {
-      btn.onclick = function() {
-        var subIdx = parseInt(btn.dataset.viewAnalysis, 10);
-        var targetSub = subs[subIdx];
-        if (targetSub) {
-          showStudentExamAnalysisModal(exam, targetSub);
+    // Live sync hook: updates leaderboard modal in real-time if a student submits
+    window._ethithOnExamSubmission = function(ev) {
+      if ((ev.examId && ev.examId === exam.id) || (ev.examCode && ev.examCode === exam.code)) {
+        var updatedEx = (S.exams || []).find(function(x) { return x.id === exam.id || x.code === exam.code; });
+        if (updatedEx) {
+          exam = updatedEx;
+          renderModalBody();
         }
-      };
-    });
+      }
+    };
+
+    // Background fetch fallback
+    if (window.EthithSync && window.EthithSync.fetchRemoteStore) {
+      window.EthithSync.fetchRemoteStore().then(function(remote) {
+        if (remote && remote.exams) {
+          var rx = remote.exams.find(function(x) { return x.id === exam.id || x.code === exam.code; });
+          if (rx && Array.isArray(rx.submissions) && rx.submissions.length > 0) {
+            if (!exam.submissions) exam.submissions = [];
+            var changed = false;
+            rx.submissions.forEach(function(rSub) {
+              var rKey = (rSub.studentEmail || rSub.studentId || '').toLowerCase();
+              var exists = exam.submissions.find(function(lSub) {
+                return (lSub.studentEmail && lSub.studentEmail.toLowerCase() === rKey) ||
+                       (lSub.studentId && lSub.studentId.toLowerCase() === rKey);
+              });
+              if (!exists) {
+                exam.submissions.push(rSub);
+                changed = true;
+              }
+            });
+            if (changed) {
+              App.saveState();
+              renderModalBody();
+            }
+          }
+        }
+      }).catch(function(){});
+    }
   }
 
   function showStudentExamAnalysisModal(exam, submission) {
