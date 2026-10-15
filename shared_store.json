@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792041702248,
+      "created": 1792041969539,
       "students": [],
       "messages": [
         {
@@ -51,7 +51,7 @@
           "name": "nursulton",
           "email": "nasibaorazaliyev@gmail.com",
           "lastActive": 1792042015141,
-          "dailyMinutes": 4,
+          "dailyMinutes": 6,
           "mistakes": 0
         }
       ],
@@ -134,8 +134,8 @@
           "replyTo": null,
           "reactions": {
             "❤️": [
-              "nasibaorazaliyev@gmail.com",
-              "strikeruzb52@gmail.com"
+              "strikeruzb52@gmail.com",
+              "nasibaorazaliyev@gmail.com"
             ]
           }
         },
@@ -162,34 +162,30 @@
           "reactions": {}
         },
         {
-          "id": "msg_1792042342788_9894b",
-          "timestamp": 1792042342788,
-          "senderId": "tc_oprlehyw5",
-          "senderName": "Name",
-          "senderEmail": "strikeruzb52@gmail.com",
-          "text": "Qale oʻzi",
-          "time": "10:32",
-          "replyTo": {
-            "id": "msg_1792042039176_52cip",
-            "senderName": "Name",
-            "text": "Kfkeidi"
-          },
-          "reactions": {}
-        },
-        {
-          "id": "msg_1792042347995_z52xw",
-          "timestamp": 1792042347995,
+          "id": "msg_1792042358929_8iaq2",
+          "timestamp": 1792042358929,
           "senderId": "st_fk1yek0xm",
           "senderName": "nursulton",
           "senderEmail": "nasibaorazaliyev@gmail.com",
-          "text": "dinnaxxuy",
+          "text": "boʻt",
           "time": "10:32",
           "replyTo": null,
           "reactions": {}
         },
         {
-          "id": "msg_1792042358929_8iaq2",
-          "timestamp": 1792042358929,
+          "id": "msg_1792042363861_jh8v5",
+          "timestamp": 1792042363862,
+          "senderId": "st_fk1yek0xm",
+          "senderName": "nursulton",
+          "senderEmail": "nasibaorazaliyev@gmail.com",
+          "text": "khuj",
+          "time": "10:32",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792042367569_7htzs",
+          "timestamp": 1792042367569,
           "senderId": "st_fk1yek0xm",
           "senderName": "nursulton",
           "senderEmail": "nasibaorazaliyev@gmail.com",
@@ -200,7 +196,10 @@
         }
       ],
       "pinnedId": null,
-      "deletedMsgIds": []
+      "deletedMsgIds": [
+        "msg_1792042347995_z52xw",
+        "msg_1792042342788_9894b"
+      ]
     }
   ],
   "exams": [
@@ -275,5 +274,5 @@
     "exam_1792011898176",
     "890700"
   ],
-  "updatedAt": 1792042362077
+  "updatedAt": 1792042390781
 }
