@@ -539,8 +539,16 @@
       } else {
         S.exams.push(event.exam);
       }
+      if (window._ethithActiveRunningExam &&
+          ((window._ethithActiveRunningExam.id && String(window._ethithActiveRunningExam.id) === String(exId)) ||
+           (window._ethithActiveRunningExam.code && String(window._ethithActiveRunningExam.code).trim() === String(exCode).trim()))) {
+        if (window._ethithOnActiveExamUpdated) {
+          try { window._ethithOnActiveExamUpdated(event.exam); } catch(e) {}
+        }
+      }
       uiNeedsRefresh = true;
       if (window._ethithRefreshExamsList) window._ethithRefreshExamsList();
+      if (window._ethithRefreshProgressionTests) window._ethithRefreshProgressionTests();
     }
 
     // J. EXAM SUBMISSION (STUDENT COMPLETED EXAM)
@@ -579,6 +587,9 @@
       }
       if (window._ethithRefreshExamsList) {
         window._ethithRefreshExamsList();
+      }
+      if (window._ethithRefreshProgressionTests) {
+        window._ethithRefreshProgressionTests();
       }
       if (window._ethithRefreshTopNav) {
         window._ethithRefreshTopNav();
@@ -782,6 +793,18 @@
           exists.maxAttempts = rx.maxAttempts;
           changed = true;
         }
+        if (rx.isLevelTransition !== undefined && exists.isLevelTransition !== rx.isLevelTransition) {
+          exists.isLevelTransition = rx.isLevelTransition;
+          changed = true;
+        }
+        if (rx.levelFrom && exists.levelFrom !== rx.levelFrom) {
+          exists.levelFrom = rx.levelFrom;
+          changed = true;
+        }
+        if (rx.levelTo && exists.levelTo !== rx.levelTo) {
+          exists.levelTo = rx.levelTo;
+          changed = true;
+        }
       }
     });
 
@@ -979,6 +1002,9 @@
           }
           if (window._ethithRefreshExamsList) {
             window._ethithRefreshExamsList();
+          }
+          if (window._ethithRefreshProgressionTests) {
+            window._ethithRefreshProgressionTests();
           }
           if (window._ethithRefreshTopNav) {
             window._ethithRefreshTopNav();

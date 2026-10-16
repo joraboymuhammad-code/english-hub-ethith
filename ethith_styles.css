@@ -74,10 +74,20 @@ svg.ic, .ic, button svg, .eth-btn-primary svg, .ap-btn svg, .tg-context-item svg
   color: var(--text, #0f172a);
   width: 100%;
   max-width: 480px;
-  border-radius: 24px;
+  max-height: 90vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border-radius: 20px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
   overflow: hidden;
   border: 1px solid var(--border, #e2e8f0);
+}
+
+.eth-modal-body {
+  padding: 20px 24px 24px;
+  overflow-y: auto !important;
+  max-height: calc(90vh - 110px) !important;
+  -webkit-overflow-scrolling: touch;
 }
 
 .eth-modal-header {
@@ -126,9 +136,7 @@ svg.ic, .ic, button svg, .eth-btn-primary svg, .ap-btn svg, .tg-context-item svg
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
-.eth-modal-body {
-  padding: 24px 28px 28px;
-}
+/* Modal body styled above with scrollbar */
 
 .eth-form-group {
   margin-bottom: 16px;

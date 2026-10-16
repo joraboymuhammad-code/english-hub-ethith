@@ -174,6 +174,7 @@
   // VIEW 1: ASK AI TEACHER (ChatGPT-like UI)
   // ==========================================
   function renderAskAITeacher(container) {
+    window._ethithCurrentView = 'ask_ai';
     if (!S.aiConversations || S.aiConversations.length === 0) {
       var initConv = {
         id: 'conv_' + Date.now(),
@@ -652,6 +653,7 @@
   }
 
   function renderLevelsView(container, levelKey) {
+    window._ethithCurrentView = 'levels';
     var curLevel = levelKey || S.level || 'A1';
     S.level = curLevel;
     var levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -1118,6 +1120,7 @@
   // VIEW 3: CLASSES & TELEGRAM CHAT
   // ==========================================
   function renderClassesView(container) {
+    window._ethithCurrentView = 'classes';
     var isTeacher = S.user && S.user.role === 'teacher';
     var userClasses = S.classes.filter(function(c) {
       if (isTeacher) return c.teacherId === S.user.id || c.teacherEmail === S.user.email;
@@ -1996,10 +1999,12 @@
   // VIEW 4: EXAMS & LEADERBOARD
   // ==========================================
   function renderExamsView(container) {
+    window._ethithCurrentView = 'exams';
     var isTeacher = S.user && S.user.role === 'teacher';
     window._ethithRefreshExamsList = function() {
-      if (window._ethithCurrentView === 'exams' && container && document.getElementById('apView') === container) {
-        renderExamsView(container);
+      var apView = document.getElementById('apView');
+      if (window._ethithCurrentView === 'exams' && apView) {
+        renderExamsView(apView);
       }
     };
 
@@ -2183,46 +2188,46 @@
 
     function renderActions() {
       var html = '' +
-        '<div class="eth-modal" style="max-width:540px">' +
+        '<div class="eth-modal" style="max-width:460px;max-height:88vh;display:flex;flex-direction:column">' +
         '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseExamActions" title="Yopish">✕</button>' +
-        '  <div class="eth-modal-header">' +
-        '    <h2>' + ic('trophy') + ' Manage Exam</h2>' +
-        '    <p>' + esc(exam.title) + '</p>' +
+        '  <div class="eth-modal-header" style="padding:18px 20px 14px">' +
+        '    <h2 style="font-size:20px">' + ic('trophy') + ' Manage Exam</h2>' +
+        '    <p style="font-size:13px">' + esc(exam.title) + '</p>' +
         '  </div>' +
-        '  <div class="eth-modal-body">' +
-        '    <div style="font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em">Exam Access Code</div>' +
-        '    <div class="eth-code-box">' +
-        '      <div class="eth-code-digits" id="modalCodeDisplay">' + exam.code + '</div>' +
-        '      <button class="eth-copy-btn" id="btnCopyExamCode">' + ic('clip') + ' Copy Access Code</button>' +
+        '  <div class="eth-modal-body" style="overflow-y:auto;max-height:calc(88vh - 120px);padding:14px 20px 18px;-webkit-overflow-scrolling:touch">' +
+        '    <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em">Exam Access Code</div>' +
+        '    <div class="eth-code-box" style="padding:10px 14px;margin:8px 0 14px">' +
+        '      <div class="eth-code-digits" id="modalCodeDisplay" style="font-size:24px;letter-spacing:4px">' + exam.code + '</div>' +
+        '      <button class="eth-copy-btn" id="btnCopyExamCode" style="padding:7px 12px;font-size:12.5px">' + ic('clip') + ' Copy Access Code</button>' +
         '    </div>' +
-        '    <div style="margin:16px 0;padding:14px;background:var(--bg2);border-radius:12px;border:1px solid var(--border)">' +
-        '      <b style="font-size:13.5px;display:block;margin-bottom:10px">Exam Settings:</b>' +
-        '      <div class="eth-form-group">' +
-        '        <label>Exam Visibility:</label>' +
-        '        <select id="examVisSelect">' +
+        '    <div style="margin:12px 0;padding:12px 14px;background:var(--bg2);border-radius:12px;border:1px solid var(--border)">' +
+        '      <b style="font-size:13px;display:block;margin-bottom:8px">Exam Settings:</b>' +
+        '      <div class="eth-form-group" style="margin-bottom:10px">' +
+        '        <label style="font-size:12px;margin-bottom:4px">Exam Visibility:</label>' +
+        '        <select id="examVisSelect" style="padding:8px 10px;font-size:13px">' +
         '          <option value="public" ' + (exam.isPublic ? 'selected' : '') + '>🌐 Public (Open to all students without code)</option>' +
         '          <option value="private" ' + (!exam.isPublic ? 'selected' : '') + '>🔒 Private (Requires 6-digit access code)</option>' +
         '        </select>' +
         '      </div>' +
         '      <div class="eth-form-group" style="margin-bottom:0">' +
-        '        <label>Max Allowed Attempts per Student:</label>' +
-        '        <select id="examMaxAttSelect">' +
+        '        <label style="font-size:12px;margin-bottom:4px">Max Allowed Attempts per Student:</label>' +
+        '        <select id="examMaxAttSelect" style="padding:8px 10px;font-size:13px">' +
         [1, 2, 3, 4, 5, 10].map(function(num) {
           return '<option value="' + num + '" ' + ((exam.maxAttempts || 1) === num ? 'selected' : '') + '>' + num + ' attempt' + (num > 1 ? 's' : '') + '</option>';
         }).join('') +
         '        </select>' +
         '      </div>' +
-        '      <button class="eth-btn-primary" id="btnSaveExamSettings" style="margin-top:12px;padding:9px 14px;font-size:13.5px">Save Settings</button>' +
+        '      <button class="eth-btn-primary" id="btnSaveExamSettings" style="margin-top:10px;padding:8px 14px;font-size:13px">Save Settings</button>' +
         '    </div>' +
-        '    <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">' +
-        '      <button class="ap-btn solid" id="btnEditExamFull" style="justify-content:center;padding:12px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:700">✏️ Imtihonni Tahrirlash (Edit Exam Content)</button>' +
-        '      <button class="ap-btn solid" id="btnDuplicateExam" style="justify-content:center;padding:12px">' + ic('plus') + ' Duplicate as New Mock Exam</button>' +
-        '      <button class="ap-btn out" id="btnViewLbFromManage" style="justify-content:center;padding:12px">' + ic('trophy') + ' View Live Leaderboard (' + (exam.submissions ? exam.submissions.length : 0) + ' students)</button>' +
-        '      <button class="ap-btn danger" id="btnDeleteExam" style="justify-content:center;padding:12px;color:#ef4444;border-color:rgba(239,68,68,0.3)">' + ic('trash') + ' Delete Exam Permanently</button>' +
+        '    <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px">' +
+        '      <button class="ap-btn solid" id="btnEditExamFull" style="justify-content:center;padding:10px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:700;font-size:13px">✏️ Imtihonni Tahrirlash (Edit Exam Content)</button>' +
+        '      <button class="ap-btn solid" id="btnDuplicateExam" style="justify-content:center;padding:10px;font-size:13px">' + ic('plus') + ' Duplicate as New Mock Exam</button>' +
+        '      <button class="ap-btn out" id="btnViewLbFromManage" style="justify-content:center;padding:10px;font-size:13px">' + ic('trophy') + ' View Live Leaderboard (' + (exam.submissions ? exam.submissions.length : 0) + ' students)</button>' +
+        '      <button class="ap-btn danger" id="btnDeleteExam" style="justify-content:center;padding:10px;color:#ef4444;border-color:rgba(239,68,68,0.3);font-size:13px">' + ic('trash') + ' Delete Exam Permanently</button>' +
         '    </div>' +
         '  </div>' +
-        '  <div style="padding:12px 24px 18px;border-top:1px solid var(--border);text-align:right">' +
-        '    <button class="ap-btn out" id="btnCloseManageModal" style="padding:8px 18px">Yopish (Close)</button>' +
+        '  <div style="padding:10px 20px 14px;border-top:1px solid var(--border);text-align:right">' +
+        '    <button class="ap-btn out" id="btnCloseManageModal" style="padding:7px 16px;font-size:13px">Yopish (Close)</button>' +
         '  </div>' +
         '</div>';
 
@@ -3375,6 +3380,25 @@
       answers: {}
     };
 
+    window._ethithActiveRunningExam = exam;
+    window._ethithOnActiveExamUpdated = function(updatedExam) {
+      if (isExamFinished) return;
+      exam.title = updatedExam.title || exam.title;
+      exam.duration = updatedExam.duration || exam.duration;
+      exam.isPublic = updatedExam.isPublic !== undefined ? updatedExam.isPublic : exam.isPublic;
+      exam.maxAttempts = updatedExam.maxAttempts || exam.maxAttempts;
+      if (updatedExam.questions && updatedExam.questions.length > 0) {
+        exam.questions = updatedExam.questions;
+      }
+      var toast = document.createElement('div');
+      toast.className = 'eth-live-toast-alert';
+      toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#1e3a8a;color:#fff;padding:12px 24px;border-radius:12px;font-weight:700;z-index:99999999;box-shadow:0 8px 24px rgba(0,0,0,0.3);border:1.5px solid #60a5fa';
+      toast.innerHTML = '🔔 <b>O\'qituvchi imtihon parametrlarini real vaqtda yangiladi!</b>';
+      document.body.appendChild(toast);
+      setTimeout(function() { if (toast && toast.parentNode) toast.remove(); }, 4000);
+      try { renderExamQuestion(); } catch(e) {}
+    };
+
     if (!isTeacher) {
       showPreTestSecurityBriefing(initRunner);
     } else {
@@ -3635,7 +3659,7 @@
         '<div class="eth-cam-footer" id="proctorStudentName">' +
         (isTeacher ?
           '  👤 ' + esc((S.user && S.user.name) || 'Ustoz') + ' · Cheklovlar O\'chirilgan' :
-          '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 30° AI Tracker'
+          '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 30° AI Tracker (Qat\'iy)'
         ) +
         '</div>';
       lockdownModal.appendChild(camBox);
@@ -3678,12 +3702,11 @@
             var imgData = offCtx.getImageData(0, 0, 160, 120);
             var pixels = imgData.data;
 
-            var skinCount = 0;
-            var ovalSkin = 0;
-            var leftSkin = 0;
-            var rightSkin = 0;
-            var skinSumX = 0;
-            var darkHeadCount = 0;
+            var headCount = 0;
+            var ovalHead = 0;
+            var leftHead = 0;
+            var rightHead = 0;
+            var headSumX = 0;
 
             for (var y = 14; y < 106; y += 2) {
               for (var x = 16; x < 144; x += 2) {
@@ -3692,53 +3715,36 @@
                 var g = pixels[idx + 1];
                 var b = pixels[idx + 2];
 
-                var isSkin = (r > 48 && g > 25 && b > 15 && r > g && g >= (b - 8) && (r - g) >= 8 && (r - b) >= 15);
-                var isHeadDark = (r < 40 && g < 40 && b < 45);
+                var isSkin = (r > 42 && g > 20 && b > 12 && r > g && (r - g) >= 5 && (r - b) >= 8);
+                var isHeadDark = (r < 52 && g < 52 && b < 58 && (r + g + b) < 145);
+                var isHead = isSkin || isHeadDark;
 
                 var inOval = (((x - 80) / 32) * ((x - 80) / 32) + ((y - 58) / 42) * ((y - 58) / 42)) <= 1.0;
 
-                if (isSkin) {
-                  skinCount++;
-                  skinSumX += x;
-                  if (inOval) ovalSkin++;
-                  if (x < 80) leftSkin++;
-                  else rightSkin++;
-                } else if (isHeadDark) {
-                  darkHeadCount++;
+                if (isHead) {
+                  headCount++;
+                  headSumX += x;
+                  if (inOval) ovalHead++;
+                  if (x < 80) leftHead++;
+                  else rightHead++;
                 }
               }
             }
 
-            ticksTotal++;
+            var avgHeadX = headCount > 25 ? (headSumX / headCount) : 80;
+            var shift = Math.abs(avgHeadX - 80);
+            var asymmetry = headCount > 25 ? (Math.abs(leftHead - rightHead) / (leftHead + rightHead + 1)) : 0;
+            var ovalContainment = headCount > 25 ? (ovalHead / headCount) : 0;
 
-            if (calibrationCount < 4) {
-              if (skinCount > 35) {
-                calibrationCount++;
-                baseCenterSum += (skinSumX / skinCount);
-                if (calibrationCount >= 4) {
-                  avgBaseCenter = baseCenterSum / 4;
-                }
-              } else if (ticksTotal > 6) {
-                avgBaseCenter = 80;
-                calibrationCount = 4;
-              }
-              return;
-            }
-
-            var avgSkinX = skinCount > 20 ? (skinSumX / skinCount) : 80;
-            var shift = Math.abs(avgSkinX - avgBaseCenter);
-            var asymmetry = (skinCount > 20) ? (Math.abs(leftSkin - rightSkin) / (leftSkin + rightSkin + 1)) : 0;
-            var ovalContainment = skinCount > 20 ? (ovalSkin / skinCount) : 0;
-
-            var isFarAway = (skinCount < 30);
+            var isFarAway = (headCount < 30 || ovalHead < 25);
             var estimatedAngle = 0;
 
             if (isFarAway) {
-              estimatedAngle = 60;
+              estimatedAngle = 65;
             } else {
               var angleFromShift = Math.round((shift / 14) * 30);
-              var angleFromAsym = Math.round((asymmetry / 0.35) * 30);
-              var angleFromContainment = ovalContainment < 0.50 ? Math.round((1 - ovalContainment) * 60) : 0;
+              var angleFromAsym = Math.round((asymmetry / 0.28) * 30);
+              var angleFromContainment = ovalContainment < 0.58 ? Math.round((1 - ovalContainment) * 65) : 0;
               estimatedAngle = Math.min(90, Math.max(angleFromShift, angleFromAsym, angleFromContainment));
             }
 
@@ -3747,7 +3753,7 @@
             var oval = document.getElementById('proctorOval');
 
             if (angleBadge) {
-              if (estimatedAngle < 20) {
+              if (estimatedAngle < 22) {
                 angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
                 angleBadge.className = 'eth-cam-badge';
                 if (dot) dot.className = 'eth-cam-dot';
@@ -3765,14 +3771,14 @@
               }
             }
 
-            // Trigger alarm and lock if head turns 30 degrees or more for 3 ticks (~0.75s)
+            // Trigger alarm and lock if head turns 30 degrees or more for 2 ticks (~500ms)
             if (estimatedAngle >= 30 || isFarAway) {
               turnInfractionFrames++;
-              if (turnInfractionFrames >= 3) {
+              if (turnInfractionFrames >= 2) {
                 playTitTitAlarm(6);
                 if (isFarAway) {
                   triggerInfraction("O'quvchi kameradan uzoqlashib ko'chirishga harakat qilmoqda");
-                } else if (ovalContainment < 0.40) {
+                } else if (ovalContainment < 0.50) {
                   triggerInfraction("O'quvchi boshini ramkadan (ovaldan) chetga burdi yoki chiqib ketdi (" + estimatedAngle + "°)");
                 } else {
                   triggerInfraction("O'quvchi boshini 30° dan ortiq burib ko'chirishga harakat qilmoqda (" + estimatedAngle + "°)");
@@ -4819,6 +4825,8 @@
       lockdownModal.innerHTML = resHtml;
 
       function exitLockdown() {
+        window._ethithActiveRunningExam = null;
+        window._ethithOnActiveExamUpdated = null;
         if (lockdownModal) lockdownModal.remove();
         renderExamsView(mainContainer);
       }
@@ -5323,6 +5331,7 @@
   // VIEW 5: PLACEMENT TEST (70 QUESTIONS)
   // ==========================================
   function renderPlacementView(container) {
+    window._ethithCurrentView = 'placement';
     var questions = window.ETHITH_PLACEMENT || [];
 
     var html = '' +
@@ -5547,7 +5556,7 @@
         '  <div class="eth-cam-target-oval" id="proctorOval"></div>' +
         '</div>' +
         '<div class="eth-cam-footer" id="proctorStudentName">' +
-        '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 30° AI Tracker' +
+        '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 30° AI Tracker (Qat\'iy)' +
         '</div>';
       lockdownModal.appendChild(camBox);
       makeElementDraggableAndCollapsible(camBox, camBox.querySelector('.eth-cam-header'), camBox.querySelector('#btnMinCam'));
@@ -5583,12 +5592,11 @@
           var imgData = offCtx.getImageData(0, 0, 160, 120);
           var pixels = imgData.data;
 
-          var skinCount = 0;
-          var ovalSkin = 0;
-          var leftSkin = 0;
-          var rightSkin = 0;
-          var skinSumX = 0;
-          var darkHeadCount = 0;
+          var headCount = 0;
+          var ovalHead = 0;
+          var leftHead = 0;
+          var rightHead = 0;
+          var headSumX = 0;
 
           for (var y = 14; y < 106; y += 2) {
             for (var x = 16; x < 144; x += 2) {
@@ -5597,53 +5605,36 @@
               var g = pixels[idx + 1];
               var b = pixels[idx + 2];
 
-              var isSkin = (r > 48 && g > 25 && b > 15 && r > g && g >= (b - 8) && (r - g) >= 8 && (r - b) >= 15);
-              var isHeadDark = (r < 40 && g < 40 && b < 45);
+              var isSkin = (r > 42 && g > 20 && b > 12 && r > g && (r - g) >= 5 && (r - b) >= 8);
+              var isHeadDark = (r < 52 && g < 52 && b < 58 && (r + g + b) < 145);
+              var isHead = isSkin || isHeadDark;
 
               var inOval = (((x - 80) / 32) * ((x - 80) / 32) + ((y - 58) / 42) * ((y - 58) / 42)) <= 1.0;
 
-              if (isSkin) {
-                skinCount++;
-                skinSumX += x;
-                if (inOval) ovalSkin++;
-                if (x < 80) leftSkin++;
-                else rightSkin++;
-              } else if (isHeadDark) {
-                darkHeadCount++;
+              if (isHead) {
+                headCount++;
+                headSumX += x;
+                if (inOval) ovalHead++;
+                if (x < 80) leftHead++;
+                else rightHead++;
               }
             }
           }
 
-          ticksTotal++;
+          var avgHeadX = headCount > 25 ? (headSumX / headCount) : 80;
+          var shift = Math.abs(avgHeadX - 80);
+          var asymmetry = headCount > 25 ? (Math.abs(leftHead - rightHead) / (leftHead + rightHead + 1)) : 0;
+          var ovalContainment = headCount > 25 ? (ovalHead / headCount) : 0;
 
-          if (calibrationCount < 4) {
-            if (skinCount > 35) {
-              calibrationCount++;
-              baseCenterSum += (skinSumX / skinCount);
-              if (calibrationCount >= 4) {
-                avgBaseCenter = baseCenterSum / 4;
-              }
-            } else if (ticksTotal > 6) {
-              avgBaseCenter = 80;
-              calibrationCount = 4;
-            }
-            return;
-          }
-
-          var avgSkinX = skinCount > 20 ? (skinSumX / skinCount) : 80;
-          var shift = Math.abs(avgSkinX - avgBaseCenter);
-          var asymmetry = (skinCount > 20) ? (Math.abs(leftSkin - rightSkin) / (leftSkin + rightSkin + 1)) : 0;
-          var ovalContainment = skinCount > 20 ? (ovalSkin / skinCount) : 0;
-
-          var isFarAway = (skinCount < 30);
+          var isFarAway = (headCount < 30 || ovalHead < 25);
           var estimatedAngle = 0;
 
           if (isFarAway) {
-            estimatedAngle = 60;
+            estimatedAngle = 65;
           } else {
             var angleFromShift = Math.round((shift / 14) * 30);
-            var angleFromAsym = Math.round((asymmetry / 0.35) * 30);
-            var angleFromContainment = ovalContainment < 0.50 ? Math.round((1 - ovalContainment) * 60) : 0;
+            var angleFromAsym = Math.round((asymmetry / 0.28) * 30);
+            var angleFromContainment = ovalContainment < 0.58 ? Math.round((1 - ovalContainment) * 65) : 0;
             estimatedAngle = Math.min(90, Math.max(angleFromShift, angleFromAsym, angleFromContainment));
           }
 
@@ -5651,7 +5642,7 @@
           var dot = document.getElementById('proctorCamDot');
           var oval = document.getElementById('proctorOval');
           if (angleBadge) {
-            if (estimatedAngle < 20) {
+            if (estimatedAngle < 22) {
               angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
               angleBadge.className = 'eth-cam-badge';
               if (dot) dot.className = 'eth-cam-dot';
@@ -5671,11 +5662,11 @@
 
           if (estimatedAngle >= 30 || isFarAway) {
             turnInfractionFrames++;
-            if (turnInfractionFrames >= 3) {
+            if (turnInfractionFrames >= 2) {
               playTitTitAlarm(6);
               if (isFarAway) {
                 triggerInfraction("O'quvchi kameradan uzoqlashdi");
-              } else if (ovalContainment < 0.40) {
+              } else if (ovalContainment < 0.50) {
                 triggerInfraction("O'quvchi boshini ramkadan (ovaldan) chetga burdi yoki chiqib ketdi (" + estimatedAngle + "°)");
               } else {
                 triggerInfraction("O'quvchi boshini 30° dan ortiq burdi (" + estimatedAngle + "°)");
@@ -6054,6 +6045,7 @@
   // VIEW 6: MISTAKES NOTEBOOK
   // ==========================================
   function renderMistakesNotebook(container) {
+    window._ethithCurrentView = 'mistakes';
     var mistakes = S.mistakes || [];
 
     var html = '' +
@@ -6732,10 +6724,18 @@
 
   // Level Progression Tests View (Dedicated Hub for CEFR Transitions)
   function renderProgressionTestsView(container) {
+    window._ethithCurrentView = 'progression';
     var isTeacher = S.user && S.user.role === 'teacher';
     var levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
     var NEXT_LEVEL = { A1: 'A2', A2: 'B1', B1: 'B2', B2: 'C1', C1: 'C2' };
     var activeTrans = S._activeProgTab || 'A1';
+
+    window._ethithRefreshProgressionTests = function() {
+      var apView = document.getElementById('apView');
+      if (window._ethithCurrentView === 'progression' && apView) {
+        renderProgressionTestsView(apView);
+      }
+    };
 
     function renderView() {
       var nextLv = NEXT_LEVEL[activeTrans] || 'Keyingi';
