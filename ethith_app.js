@@ -75,35 +75,21 @@
     S.classes.unshift(DEFAULT_CLASSES[0]);
   }
 
-  // Ensure aiConversations exists & migrate legacy aiHistory if needed
-  if (!S.aiConversations) {
+  // Ensure aiConversations exists
+  if (!Array.isArray(S.aiConversations)) {
     S.aiConversations = [];
   }
-  if (S.aiConversations.length === 0) {
-    if (S.aiHistory && S.aiHistory.length > 0) {
-      var firstMsg = S.aiHistory[0].text || 'Conversation 1';
-      var title = firstMsg.slice(0, 36).trim() + (firstMsg.length > 36 ? '...' : '');
-      var initConv = {
-        id: 'conv_' + Date.now(),
-        title: title,
-        messages: S.aiHistory.slice(),
-        updatedAt: Date.now()
-      };
-      S.aiConversations.push(initConv);
-      S.currentAiChatId = initConv.id;
-    } else {
-      var initConv = {
-        id: 'conv_' + Date.now(),
-        title: 'New Conversation',
-        messages: [],
-        updatedAt: Date.now()
-      };
-      S.aiConversations.push(initConv);
-      S.currentAiChatId = initConv.id;
-    }
-  } else if (!S.currentAiChatId || !S.aiConversations.some(function(c) { return c.id === S.currentAiChatId; })) {
-    S.currentAiChatId = S.aiConversations[0].id;
-  }
+  // User Requirement: When the site is reloaded/refreshed, always start with a fresh new chat session
+  var freshChatId = 'conv_' + Date.now();
+  var freshChat = {
+    id: freshChatId,
+    title: 'Yangi Suhbat',
+    messages: [],
+    updatedAt: Date.now()
+  };
+  S.aiConversations.unshift(freshChat);
+  S.currentAiChatId = freshChatId;
+  S.aiHistory = [];
 
   // Trigger remote sync if available
   if (window.EthithSync && window.EthithSync.syncInitialData) {
@@ -302,16 +288,71 @@
           return;
         }
 
-        S.user = {
-          id: 'st_' + Math.random().toString(36).substr(2, 9),
-          role: 'student',
-          name: name,
-          email: email,
-          dailyMinutes: 0
-        };
-        saveState();
-        overlay.remove();
-        window.ethithOpenApp('dash');
+        var cleanEmail = email.toLowerCase().trim();
+        if (!Array.isArray(S.accounts)) S.accounts = [];
+
+        var existingAcc = S.accounts.find(function(acc) {
+          return acc.email && acc.email.toLowerCase() === cleanEmail;
+        });
+
+        if (existingAcc) {
+          // Existing account: verify security PIN
+          if (existingAcc.pin && existingAcc.pin !== pin) {
+            alert("Xatolik: Ushbu Gmail manzili (" + cleanEmail + ") bilan oldin ro'yxatdan o'tilgan, biroq kiritilgan parol noto'g'ri! Iltimos, to'g'ri parolni kiriting.");
+            return;
+          }
+          // Restore student progress
+          S.user = {
+            id: existingAcc.id,
+            role: 'student',
+            name: existingAcc.name || name,
+            email: cleanEmail,
+            dailyMinutes: existingAcc.dailyMinutes || 0
+          };
+          if (existingAcc.level) S.level = existingAcc.level;
+          if (existingAcc.unlocked) S.unlocked = existingAcc.unlocked;
+          if (existingAcc.quizScores) S.quizScores = existingAcc.quizScores;
+          if (existingAcc.mistakes) S.mistakes = existingAcc.mistakes;
+          existingAcc.updatedAt = Date.now();
+          saveState();
+          if (window.EthithSync) {
+            window.EthithSync.pushRemoteStore();
+          }
+          overlay.remove();
+          alert("Xush kelibsiz, " + S.user.name + "! Akkauntingiz muvaffaqiyatli tiklandi.");
+          window.ethithOpenApp('dash');
+        } else {
+          // New student registration
+          var newAcc = {
+            id: 'st_' + Math.random().toString(36).substr(2, 9),
+            role: 'student',
+            name: name,
+            email: cleanEmail,
+            pin: pin,
+            level: 'A1',
+            unlocked: { A1: 1, A2: 1, B1: 1, B2: 1, C1: 1, C2: 1 },
+            quizScores: {},
+            mistakes: [],
+            dailyMinutes: 0,
+            createdAt: Date.now(),
+            updatedAt: Date.now()
+          };
+          S.accounts.push(newAcc);
+          S.user = {
+            id: newAcc.id,
+            role: 'student',
+            name: newAcc.name,
+            email: newAcc.email,
+            dailyMinutes: 0
+          };
+          saveState();
+          if (window.EthithSync) {
+            window.EthithSync.pushRemoteStore();
+          }
+          overlay.remove();
+          alert("Akkaunt yaratildi! Gmail va parolingiz eslab qolindi. Boshqa qurilmalarda ham shu Gmail va parol orqali kirsangiz, barcha natijalaringiz saqlanadi.");
+          window.ethithOpenApp('dash');
+        }
       };
     }
 
@@ -366,11 +407,33 @@
     };
   }
 
+
+  function syncCurrentStudentAccount() {
+    if (S.user && S.user.role === 'student' && S.user.email && Array.isArray(S.accounts)) {
+      var myEmail = S.user.email.toLowerCase();
+      var acc = S.accounts.find(function(a) { return a.email && a.email.toLowerCase() === myEmail; });
+      if (acc) {
+        acc.level = S.level;
+        acc.unlocked = S.unlocked;
+        acc.quizScores = S.quizScores;
+        acc.mistakes = S.mistakes;
+        acc.dailyMinutes = S.user.dailyMinutes || 0;
+        acc.name = S.user.name;
+        acc.updatedAt = Date.now();
+        saveState();
+        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+          window.EthithSync.pushRemoteStore();
+        }
+      }
+    }
+  }
+
   window.EthithApp = {
     state: S,
     showAuthModal: showAuthModal,
     showComingSoon: showComingSoon,
     saveState: saveState,
+    syncCurrentStudentAccount: syncCurrentStudentAccount,
     ic: ic,
     esc: esc
   };

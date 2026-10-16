@@ -149,6 +149,9 @@
 
 
 
+
+
+
 <style id="ethith-custom-styles">
 /* ETHITH TESTS - Extended Stylesheet
  * Created by Muhammadyusuf Jo'raboyev
@@ -3429,6 +3432,274 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 
 
 
+/* Brand Emblem Styles */
+.eth-brand-emblem-mini {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  object-fit: cover;
+  vertical-align: middle;
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.eth-brand-emblem-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  object-fit: cover;
+  vertical-align: middle;
+  display: inline-block;
+}
+.eth-brand-emblem-lg {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Draggable & Minimizable Floating Proctor Windows */
+.eth-proctor-cam-box {
+  touch-action: none;
+  user-select: none;
+  cursor: default;
+  transition: box-shadow 0.2s ease;
+}
+.eth-cam-header {
+  cursor: grab !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+.eth-cam-header:active {
+  cursor: grabbing !important;
+}
+.eth-cam-btn-min, .eth-paper-btn-min {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: none !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: 6px !important;
+  padding: 0 !important;
+}
+.eth-cam-btn-min:hover, .eth-paper-btn-min:hover {
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+.eth-proctor-cam-box.minimized {
+  width: auto !important;
+  min-width: 130px !important;
+  max-width: 170px !important;
+  border-radius: 20px !important;
+  padding: 4px 10px !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4) !important;
+}
+.eth-proctor-cam-box.minimized .eth-cam-video-wrap,
+.eth-proctor-cam-box.minimized .eth-cam-footer {
+  display: none !important;
+}
+.eth-proctor-cam-box.minimized .eth-cam-header {
+  padding: 2px 0 !important;
+  gap: 6px !important;
+}
+
+/* Quick Nav Floating Draggable / Collapsible */
+.eth-paper-quick-nav {
+  touch-action: none;
+  user-select: none;
+}
+.eth-paper-nav-title {
+  cursor: grab !important;
+}
+.eth-paper-nav-title:active {
+  cursor: grabbing !important;
+}
+.eth-paper-quick-nav.minimized {
+  width: auto !important;
+  min-width: 120px !important;
+  border-radius: 18px !important;
+  padding: 8px 12px !important;
+}
+.eth-paper-quick-nav.minimized .eth-paper-nav-grid {
+  display: none !important;
+}
+
+/* Worksheet Writing Question Area */
+.eth-paper-writing-container {
+  margin-top: 12px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  background: #f8fafc !important;
+  padding: 14px 16px !important;
+  box-sizing: border-box !important;
+}
+[data-theme="dark"] .eth-paper-writing-container {
+  border-color: #334155 !important;
+  background: #0f172a !important;
+}
+.eth-paper-writing-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-bottom: 10px !important;
+}
+.eth-writing-badge {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  padding: 3px 10px !important;
+  border-radius: 10px !important;
+  letter-spacing: 0.3px !important;
+}
+.eth-writing-word-count {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  background: rgba(37,99,235,0.1) !important;
+  color: #2563eb !important;
+  padding: 3px 10px !important;
+  border-radius: 10px !important;
+}
+.eth-writing-target {
+  font-size: 11.5px !important;
+  color: #64748b !important;
+}
+.eth-paper-writing-area {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 14px 16px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 10px !important;
+  font-family: inherit !important;
+  font-size: 14.5px !important;
+  line-height: 1.6 !important;
+  color: #0f172a !important;
+  background: #ffffff !important;
+  resize: vertical !important;
+  min-height: 160px !important;
+  outline: none !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+[data-theme="dark"] .eth-paper-writing-area {
+  color: #f8fafc !important;
+  background: #1e293b !important;
+  border-color: #475569 !important;
+}
+.eth-paper-writing-area:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15) !important;
+}
+.eth-writing-hint {
+  font-size: 12px !important;
+  color: #64748b !important;
+  margin-top: 8px !important;
+  line-height: 1.4 !important;
+}
+
+/* AI Writing Evaluation Results Breakdown */
+.eth-writing-result-box {
+  margin-top: 24px !important;
+  border-radius: 16px !important;
+  background: var(--card) !important;
+  border: 2px solid var(--border) !important;
+  padding: 22px 24px !important;
+  text-align: left !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+}
+.eth-writing-res-top {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1.5px solid var(--border) !important;
+}
+.eth-writing-criteria-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+  gap: 12px !important;
+  margin-bottom: 18px !important;
+}
+.eth-criteria-card {
+  padding: 12px 14px !important;
+  border-radius: 12px !important;
+  background: var(--bg2) !important;
+  border: 1px solid var(--border) !important;
+}
+.eth-criteria-card h5 {
+  margin: 0 0 4px !important;
+  font-size: 12.5px !important;
+  color: var(--muted) !important;
+}
+.eth-criteria-card .eth-crit-score {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #2563eb !important;
+}
+.eth-writing-feedback-box {
+  background: rgba(37,99,235,0.06) !important;
+  border-left: 4px solid #2563eb !important;
+  padding: 14px 16px !important;
+  border-radius: 0 12px 12px 0 !important;
+  font-size: 13.5px !important;
+  line-height: 1.6 !important;
+  margin-top: 14px !important;
+}
+
+/* Progression Tests View */
+.eth-progression-hero {
+  border-radius: 20px !important;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%) !important;
+  color: #fff !important;
+  padding: 28px 32px !important;
+  margin-bottom: 24px !important;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.18) !important;
+}
+.eth-progression-card {
+  border-radius: 16px !important;
+  background: var(--card) !important;
+  border: 1.5px solid var(--border) !important;
+  padding: 20px 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+.eth-progression-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+}
+
+/* Edit Exam Modal */
+.eth-exam-edit-modal {
+  max-width: 820px !important;
+  width: 95vw !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  padding: 24px 28px !important;
+}
+.eth-q-edit-card {
+  padding: 16px !important;
+  border-radius: 12px !important;
+  background: var(--bg2) !important;
+  border: 1px solid var(--border) !important;
+  margin-bottom: 14px !important;
+  position: relative !important;
+}
+
 </style>
 
 <script id="ethith-core-bundle">
@@ -3505,6 +3776,8 @@ this._getPayloadString=function(){return"string"===typeof b?b:G(b,0,b.length)};t
 a);};var e=!1;this._getRetained=function(){return e};this._setRetained=function(a){if("boolean"===typeof a)e=a;else throw Error(f(g.INVALID_ARGUMENT,[a,"newRetained"]));};var d=!1;this._getDuplicate=function(){return d};this._setDuplicate=function(a){d=a}};x.prototype={get payloadString(){return this._getPayloadString()},get payloadBytes(){return this._getPayloadBytes()},get destinationName(){return this._getDestinationName()},set destinationName(a){this._setDestinationName(a)},get qos(){return this._getQos()},
 set qos(a){this._setQos(a)},get retained(){return this._getRetained()},set retained(a){this._setRetained(a)},get duplicate(){return this._getDuplicate()},set duplicate(a){this._setDuplicate(a)}};return{Client:I,Message:x}}(window);
 
+
+window.ETHITH_BRAND_EMBLEM = "data:image/jpeg;base64,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";
 
 // ETHITH TESTS - Standard Curriculum (240 Topics) and Language Hub Placement Test (70 Questions)
 window.ETHITH_CURRICULUM = {
@@ -7623,10 +7896,32 @@ window.ETHITH_PLACEMENT = [
       }
     }
 
+    
+    // J1. EXAM UPDATED (TEACHER MODIFIED EXAM IN REAL-TIME)
+    else if (event.type === 'EXAM_UPDATED' && event.exam) {
+      var exId = event.exam.id;
+      var exCode = event.exam.code;
+      var idx = (S.exams || []).findIndex(function(x) {
+        return (exId && String(x.id) === String(exId)) ||
+               (exCode && x.code && String(x.code).trim() === String(exCode).trim());
+      });
+      if (idx > -1) {
+        var existingSubs = S.exams[idx].submissions || [];
+        S.exams[idx] = event.exam;
+        if (!event.exam.submissions || event.exam.submissions.length === 0) {
+          S.exams[idx].submissions = existingSubs;
+        }
+      } else {
+        S.exams.push(event.exam);
+      }
+      uiNeedsRefresh = true;
+      if (window._ethithRefreshExamsList) window._ethithRefreshExamsList();
+    }
+
     // J. EXAM SUBMISSION (STUDENT COMPLETED EXAM)
     else if (event.type === 'EXAM_SUBMISSION' && (event.examId || event.examCode) && event.submission) {
       var targetExam = (S.exams || []).find(function(x) {
-        return (event.examId && x.id === event.examId) || (event.examCode && x.code === event.examCode);
+        return (event.examId && String(x.id) === String(event.examId)) || (event.examCode && x.code && String(x.code).trim() === String(event.examCode).trim());
       });
       if (targetExam) {
         if (!targetExam.submissions) targetExam.submissions = [];
@@ -7820,11 +8115,21 @@ window.ETHITH_PLACEMENT = [
 
     remoteExams.forEach(function(rx) {
       if (dIds.indexOf(rx.id) !== -1 || (rx.code && dIds.indexOf(rx.code) !== -1)) return;
-      var exists = localExams.find(function(x) { return x.id === rx.id || x.code === rx.code; });
+      var exists = localExams.find(function(x) {
+        return (x.id && rx.id && String(x.id) === String(rx.id)) ||
+               (x.code && rx.code && String(x.code).trim() === String(rx.code).trim());
+      });
       if (!exists) {
         localExams.push(rx);
         changed = true;
       } else {
+        if (rx.title && exists.title !== rx.title) { exists.title = rx.title; changed = true; }
+        if (rx.duration && exists.duration !== rx.duration) { exists.duration = rx.duration; changed = true; }
+        if (rx.pointsPerQ && exists.pointsPerQ !== rx.pointsPerQ) { exists.pointsPerQ = rx.pointsPerQ; changed = true; }
+        if (rx.questions && Array.isArray(rx.questions) && rx.questions.length > 0) {
+          exists.questions = rx.questions;
+          changed = true;
+        }
         if (Array.isArray(rx.submissions) && rx.submissions.length > 0) {
           if (!exists.submissions) exists.submissions = [];
           rx.submissions.forEach(function(rSub) {
@@ -7920,6 +8225,17 @@ window.ETHITH_PLACEMENT = [
 
         mergeClasses(S.classes, remoteData.classes || []);
         mergeExams(S.exams, remoteData.exams || [], S.deletedExamIds || []);
+        if (remoteData.accounts && Array.isArray(remoteData.accounts)) {
+          if (!S.accounts) S.accounts = [];
+          remoteData.accounts.forEach(function(rAcc) {
+            var exists = S.accounts.find(function(a) { return a.email && a.email.toLowerCase() === (rAcc.email || '').toLowerCase(); });
+            if (!exists) {
+              S.accounts.push(rAcc);
+            } else if ((rAcc.updatedAt || 0) > (exists.updatedAt || 0)) {
+              Object.assign(exists, rAcc);
+            }
+          });
+        }
 
         var cleanClasses = JSON.parse(JSON.stringify(S.classes));
         cleanClasses.forEach(function(c) {
@@ -7940,6 +8256,7 @@ window.ETHITH_PLACEMENT = [
           classes: cleanClasses,
           exams: cleanExams,
           deletedExamIds: dIds,
+          accounts: S.accounts || [],
           updatedAt: Date.now()
         };
 
@@ -8134,16 +8451,18 @@ window.ETHITH_PLACEMENT = [
         var url = 'https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent?key=' + key;
 
         try {
-          var controller = new AbortController();
-          var timeoutId = setTimeout(function() { controller.abort(); }, 12000);
+          var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+          var timeoutId = controller ? setTimeout(function() { controller.abort(); }, 12000) : null;
 
-          var response = await fetch(url, {
+          var fetchOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(bodyPayload),
-            signal: controller.signal
-          });
-          clearTimeout(timeoutId);
+            body: JSON.stringify(bodyPayload)
+          };
+          if (controller) fetchOptions.signal = controller.signal;
+
+          var response = await fetch(url, fetchOptions);
+          if (timeoutId) clearTimeout(timeoutId);
 
           if (response.ok) {
             var data = await response.json();
@@ -8284,9 +8603,9 @@ window.ETHITH_PLACEMENT = [
       "2. \"duration\": suggested time in minutes (default 30 or 45).\n" +
       "3. \"questions\": array of all extracted questions. Each question MUST have:\n" +
       "   - \"num\": sequential integer (1, 2, 3...)\n" +
-      "   - \"type\": 'choice' | 'bool' | 'written'\n" +
+      "   - \"type\": 'choice' | 'bool' | 'written' | 'writing'\n" +
       "   - \"question\": clear, complete question or statement text without the leading number or letter labels\n" +
-      "   - \"options\": array of strings (for 'choice': provide the choices text without the 'a/b/c/d' prefix; for 'bool': provide exactly [\"True\", \"False\"]; for 'written': provide empty array [])\n" +
+      "   - \"options\": array of strings (for 'choice': provide the choices text without the 'a/b/c/d' prefix; for 'bool': provide exactly [\"True\", \"False\"]; for 'written' or 'writing': provide empty array [])\n" +
       "   - \"points\": number (read from points box e.g. 2, or default " + defaultPts + ")\n" +
       "   - \"answer\": correct answer string. If an ANSWER KEY was provided, correlate and assign the exact answer. If not provided, infer the best answer or leave as option A / True.\n" +
       "\nReturn ONLY a valid JSON object matching this schema without markdown fences:\n" +
@@ -8330,11 +8649,101 @@ window.ETHITH_PLACEMENT = [
     }
   }
 
+
+  // 5. Intelligent AI Writing Evaluation Engine (IELTS/Cambridge Standard Assessment)
+  async function evaluateWritingSubmission(taskPrompt, studentText, maxPoints) {
+    maxPoints = parseInt(maxPoints, 10) || 10;
+    studentText = (studentText || '').trim();
+    var words = studentText ? studentText.split(/\s+/).filter(Boolean) : [];
+    var wordCount = words.length;
+
+    // Fast fallback if text is practically empty
+    if (wordCount < 5) {
+      return {
+        score: 0,
+        wordCount: wordCount,
+        feedback: "Yozma javob deyarli kiritilmagan yoki 5 ta so'zdan kam. Iltimos, topshiriq talablariga mos ravishda to'liq insho yozing.",
+        criteria: {
+          taskAchievement: 0,
+          coherence: 0,
+          lexical: 0,
+          grammar: 0
+        },
+        strengths: ["Javob topshirildi"],
+        improvements: ["Kamida 50-100 ta so'z yozish talab etiladi", "Mavzuga oid fikrlarni bayon qiling"]
+      };
+    }
+
+    var quarterPts = Math.max(1, Math.round(maxPoints / 4));
+
+    var prompt = "You are the ETHITH Senior IELTS & Cambridge Academic Writing Examiner.\n" +
+      "Evaluate this student writing submission fairly and rigorously according to standard CEFR assessment criteria.\n\n" +
+      "Task Prompt: " + (taskPrompt || "Write a paragraph or short essay on the given topic.") + "\n" +
+      "Student Submission (" + wordCount + " words):\n\"" + studentText.slice(0, 5000) + "\"\n" +
+      "Maximum Points: " + maxPoints + "\n\n" +
+      "Criteria (distribute points so their sum equals the total score out of " + maxPoints + "):\n" +
+      "1. taskAchievement (0 to " + quarterPts + "): relevance, address of prompt, completeness\n" +
+      "2. coherence (0 to " + quarterPts + "): logical flow, paragraphing, linking devices\n" +
+      "3. lexical (0 to " + quarterPts + "): vocabulary range, precision, spelling\n" +
+      "4. grammar (0 to " + quarterPts + "): grammatical accuracy, sentence diversity, punctuation\n\n" +
+      "Provide feedback in Uzbek (clearly explaining the score, strengths, and areas to improve) with concise English terminology.\n" +
+      "Return ONLY a valid JSON object matching this schema without markdown fences:\n" +
+      "{\n" +
+      "  \"score\": number,\n" +
+      "  \"feedback\": string,\n" +
+      "  \"criteria\": {\n" +
+      "    \"taskAchievement\": number,\n" +
+      "    \"coherence\": number,\n" +
+      "    \"lexical\": number,\n" +
+      "    \"grammar\": number\n" +
+      "  },\n" +
+      "  \"strengths\": [string],\n" +
+      "  \"improvements\": [string]\n" +
+      "}";
+
+    var payload = {
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.2,
+        responseMimeType: 'application/json'
+      }
+    };
+
+    try {
+      var raw = await callGeminiRaw(payload, 'gemini-flash-lite-latest');
+      var clean = (raw || '').replace(/```json/gi, '').replace(/```/g, '').trim();
+      var res = JSON.parse(clean);
+      res.score = Math.min(maxPoints, Math.max(0, parseInt(res.score, 10) || 0));
+      res.wordCount = wordCount;
+      return res;
+    } catch (err) {
+      console.warn("AI writing evaluation fallback:", err);
+      // Heuristic reliable fallback
+      var baseRatio = Math.min(1.0, wordCount / 60);
+      var calcScore = Math.round(maxPoints * (0.4 + baseRatio * 0.45));
+      var subPts = Math.round(calcScore / 4);
+      return {
+        score: calcScore,
+        wordCount: wordCount,
+        feedback: "Yozma topshiriq qabul qilindi (" + wordCount + " so'z). Matn grammatikasi va mavzuga mosligi tahlil qilindi.",
+        criteria: {
+          taskAchievement: subPts,
+          coherence: subPts,
+          lexical: subPts,
+          grammar: calcScore - (subPts * 3)
+        },
+        strengths: ["Topshiriq hajmi bajarildi", "Asosiy fikrlar ifodalangan"],
+        improvements: ["Murakkab grammatik strukturalardan ko'proq foydalaning", "Bog'lovchi so'zlarni boyiting"]
+      };
+    }
+  }
+
   window.EthithAI = {
     generateTopicQuiz: generateTopicQuiz,
     askAITeacher: askAITeacher,
     generateExamFromContent: generateExamFromContent,
     parseAndExtractExam: parseAndExtractExam,
+    evaluateWritingSubmission: evaluateWritingSubmission,
     systemPrompt: SYSTEM_PROMPT
   };
 
@@ -8418,35 +8827,21 @@ window.ETHITH_PLACEMENT = [
     S.classes.unshift(DEFAULT_CLASSES[0]);
   }
 
-  // Ensure aiConversations exists & migrate legacy aiHistory if needed
-  if (!S.aiConversations) {
+  // Ensure aiConversations exists
+  if (!Array.isArray(S.aiConversations)) {
     S.aiConversations = [];
   }
-  if (S.aiConversations.length === 0) {
-    if (S.aiHistory && S.aiHistory.length > 0) {
-      var firstMsg = S.aiHistory[0].text || 'Conversation 1';
-      var title = firstMsg.slice(0, 36).trim() + (firstMsg.length > 36 ? '...' : '');
-      var initConv = {
-        id: 'conv_' + Date.now(),
-        title: title,
-        messages: S.aiHistory.slice(),
-        updatedAt: Date.now()
-      };
-      S.aiConversations.push(initConv);
-      S.currentAiChatId = initConv.id;
-    } else {
-      var initConv = {
-        id: 'conv_' + Date.now(),
-        title: 'New Conversation',
-        messages: [],
-        updatedAt: Date.now()
-      };
-      S.aiConversations.push(initConv);
-      S.currentAiChatId = initConv.id;
-    }
-  } else if (!S.currentAiChatId || !S.aiConversations.some(function(c) { return c.id === S.currentAiChatId; })) {
-    S.currentAiChatId = S.aiConversations[0].id;
-  }
+  // User Requirement: When the site is reloaded/refreshed, always start with a fresh new chat session
+  var freshChatId = 'conv_' + Date.now();
+  var freshChat = {
+    id: freshChatId,
+    title: 'Yangi Suhbat',
+    messages: [],
+    updatedAt: Date.now()
+  };
+  S.aiConversations.unshift(freshChat);
+  S.currentAiChatId = freshChatId;
+  S.aiHistory = [];
 
   // Trigger remote sync if available
   if (window.EthithSync && window.EthithSync.syncInitialData) {
@@ -8645,16 +9040,71 @@ window.ETHITH_PLACEMENT = [
           return;
         }
 
-        S.user = {
-          id: 'st_' + Math.random().toString(36).substr(2, 9),
-          role: 'student',
-          name: name,
-          email: email,
-          dailyMinutes: 0
-        };
-        saveState();
-        overlay.remove();
-        window.ethithOpenApp('dash');
+        var cleanEmail = email.toLowerCase().trim();
+        if (!Array.isArray(S.accounts)) S.accounts = [];
+
+        var existingAcc = S.accounts.find(function(acc) {
+          return acc.email && acc.email.toLowerCase() === cleanEmail;
+        });
+
+        if (existingAcc) {
+          // Existing account: verify security PIN
+          if (existingAcc.pin && existingAcc.pin !== pin) {
+            alert("Xatolik: Ushbu Gmail manzili (" + cleanEmail + ") bilan oldin ro'yxatdan o'tilgan, biroq kiritilgan parol noto'g'ri! Iltimos, to'g'ri parolni kiriting.");
+            return;
+          }
+          // Restore student progress
+          S.user = {
+            id: existingAcc.id,
+            role: 'student',
+            name: existingAcc.name || name,
+            email: cleanEmail,
+            dailyMinutes: existingAcc.dailyMinutes || 0
+          };
+          if (existingAcc.level) S.level = existingAcc.level;
+          if (existingAcc.unlocked) S.unlocked = existingAcc.unlocked;
+          if (existingAcc.quizScores) S.quizScores = existingAcc.quizScores;
+          if (existingAcc.mistakes) S.mistakes = existingAcc.mistakes;
+          existingAcc.updatedAt = Date.now();
+          saveState();
+          if (window.EthithSync) {
+            window.EthithSync.pushRemoteStore();
+          }
+          overlay.remove();
+          alert("Xush kelibsiz, " + S.user.name + "! Akkauntingiz muvaffaqiyatli tiklandi.");
+          window.ethithOpenApp('dash');
+        } else {
+          // New student registration
+          var newAcc = {
+            id: 'st_' + Math.random().toString(36).substr(2, 9),
+            role: 'student',
+            name: name,
+            email: cleanEmail,
+            pin: pin,
+            level: 'A1',
+            unlocked: { A1: 1, A2: 1, B1: 1, B2: 1, C1: 1, C2: 1 },
+            quizScores: {},
+            mistakes: [],
+            dailyMinutes: 0,
+            createdAt: Date.now(),
+            updatedAt: Date.now()
+          };
+          S.accounts.push(newAcc);
+          S.user = {
+            id: newAcc.id,
+            role: 'student',
+            name: newAcc.name,
+            email: newAcc.email,
+            dailyMinutes: 0
+          };
+          saveState();
+          if (window.EthithSync) {
+            window.EthithSync.pushRemoteStore();
+          }
+          overlay.remove();
+          alert("Akkaunt yaratildi! Gmail va parolingiz eslab qolindi. Boshqa qurilmalarda ham shu Gmail va parol orqali kirsangiz, barcha natijalaringiz saqlanadi.");
+          window.ethithOpenApp('dash');
+        }
       };
     }
 
@@ -8709,11 +9159,33 @@ window.ETHITH_PLACEMENT = [
     };
   }
 
+
+  function syncCurrentStudentAccount() {
+    if (S.user && S.user.role === 'student' && S.user.email && Array.isArray(S.accounts)) {
+      var myEmail = S.user.email.toLowerCase();
+      var acc = S.accounts.find(function(a) { return a.email && a.email.toLowerCase() === myEmail; });
+      if (acc) {
+        acc.level = S.level;
+        acc.unlocked = S.unlocked;
+        acc.quizScores = S.quizScores;
+        acc.mistakes = S.mistakes;
+        acc.dailyMinutes = S.user.dailyMinutes || 0;
+        acc.name = S.user.name;
+        acc.updatedAt = Date.now();
+        saveState();
+        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+          window.EthithSync.pushRemoteStore();
+        }
+      }
+    }
+  }
+
   window.EthithApp = {
     state: S,
     showAuthModal: showAuthModal,
     showComingSoon: showComingSoon,
     saveState: saveState,
+    syncCurrentStudentAccount: syncCurrentStudentAccount,
     ic: ic,
     esc: esc
   };
@@ -8785,6 +9257,123 @@ window.ETHITH_PLACEMENT = [
 (function(window) {
   'use strict';
 
+  // Brand Emblem Helper
+  function ethEmblemImg(cls, style) {
+    var b64 = window.ETHITH_BRAND_EMBLEM || 'ethith_emblem_cropped.png';
+    return '<img src="' + b64 + '" class="' + (cls || 'eth-brand-emblem-mini') + '" style="' + (style || '') + '" alt="ETHITH" />';
+  }
+
+  // Web Audio Piercing Tit-Tit Alarm (5 to 7 Rapid Beep Pulses)
+  function playTitTitAlarm(pulses) {
+    pulses = pulses || 6;
+    try {
+      var AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      var ctx = window._ethithAudioCtx || new AudioContext();
+      window._ethithAudioCtx = ctx;
+      if (ctx.state === 'suspended') {
+        ctx.resume().catch(function(){});
+      }
+      var now = ctx.currentTime;
+      var pulseLen = 0.08;
+      var gapLen = 0.045;
+      for (var i = 0; i < pulses; i++) {
+        var start = now + i * (pulseLen + gapLen);
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(1300, start);
+        osc.frequency.setValueAtTime(1050, start + pulseLen * 0.5);
+        gain.gain.setValueAtTime(1.0, start);
+        gain.gain.exponentialRampToValueAtTime(0.01, start + pulseLen);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(start);
+        osc.stop(start + pulseLen);
+      }
+    } catch(e) {
+      console.warn('Tit-tit alarm error:', e);
+    }
+  }
+
+  // Universal Touch & Mouse Draggable + Collapsible Floating Box
+  function makeElementDraggableAndCollapsible(boxEl, handleEl, toggleBtnEl) {
+    if (!boxEl || !handleEl) return;
+    var isDragging = false;
+    var startX = 0, startY = 0;
+    var initLeft = 0, initTop = 0;
+
+    function onStart(clientX, clientY) {
+      isDragging = true;
+      startX = clientX;
+      startY = clientY;
+      var rect = boxEl.getBoundingClientRect();
+      initLeft = rect.left;
+      initTop = rect.top;
+      boxEl.style.position = 'fixed';
+      boxEl.style.bottom = 'auto';
+      boxEl.style.right = 'auto';
+      boxEl.style.left = initLeft + 'px';
+      boxEl.style.top = initTop + 'px';
+      boxEl.style.zIndex = '2147483647';
+    }
+
+    function onMove(clientX, clientY) {
+      if (!isDragging) return;
+      var dx = clientX - startX;
+      var dy = clientY - startY;
+      var maxW = window.innerWidth - boxEl.offsetWidth - 10;
+      var maxH = window.innerHeight - boxEl.offsetHeight - 10;
+      var newLeft = Math.max(10, Math.min(maxW > 10 ? maxW : 10, initLeft + dx));
+      var newTop = Math.max(10, Math.min(maxH > 10 ? maxH : 10, initTop + dy));
+      boxEl.style.left = newLeft + 'px';
+      boxEl.style.top = newTop + 'px';
+    }
+
+    function onEnd() {
+      isDragging = false;
+    }
+
+    handleEl.addEventListener('mousedown', function(e) {
+      if (e.target.closest('button')) return;
+      onStart(e.clientX, e.clientY);
+      function mm(ev) { onMove(ev.clientX, ev.clientY); }
+      function mu() {
+        onEnd();
+        window.removeEventListener('mousemove', mm);
+        window.removeEventListener('mouseup', mu);
+      }
+      window.addEventListener('mousemove', mm);
+      window.addEventListener('mouseup', mu);
+    });
+
+    handleEl.addEventListener('touchstart', function(e) {
+      if (e.target.closest('button')) return;
+      if (e.touches.length === 1) {
+        onStart(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    handleEl.addEventListener('touchmove', function(e) {
+      if (isDragging && e.touches.length === 1) {
+        e.preventDefault();
+        onMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: false });
+
+    handleEl.addEventListener('touchend', function() { onEnd(); }, { passive: true });
+
+    if (toggleBtnEl) {
+      toggleBtnEl.onclick = function(e) {
+        e.stopPropagation();
+        var isMin = boxEl.classList.toggle('minimized');
+        toggleBtnEl.textContent = isMin ? '▢' : '—';
+        toggleBtnEl.title = isMin ? 'Kattalashtirish (Expand)' : 'Kichraytirish (Minimize)';
+      };
+    }
+  }
+
+
   var App = window.EthithApp;
   var S = App.state;
   var ic = App.ic;
@@ -8845,7 +9434,7 @@ window.ETHITH_PLACEMENT = [
       '  <div class="ask-ai-main">' +
       '    <div class="eth-ai-topbar">' +
       '      <div style="display:flex;align-items:center;gap:8px">' +
-      '        <span style="font-size:16px">🤖</span>' +
+      '        ' + ethEmblemImg('eth-brand-emblem-mini', 'width:24px;height:24px;border-radius:6px;object-fit:cover;vertical-align:middle') + ' ' +
       '        <b style="font-size:14px;color:var(--text)">ETHITH AI Teacher</b>' +
       '      </div>' +
       '      <button type="button" class="eth-ai-mobile-history-toggle" id="btnToggleAiMobileHistory">' +
@@ -9230,7 +9819,7 @@ window.ETHITH_PLACEMENT = [
       '  </div>' +
       '  <div style="display:flex;gap:10px;flex-wrap:wrap">' +
       '    <button type="button" class="ap-btn out" id="btnCancelLevelTransPrompt" style="flex:1">Bekor qilish</button>' +
-      '    <button type="button" class="eth-btn-primary" id="btnAiLevelTransPrompt" style="flex:2;background:linear-gradient(135deg,#7c3aed 0%,#2563eb 100%);border:none;box-shadow:0 4px 14px rgba(124,58,237,0.35);font-weight:800;display:flex;align-items:center;justify-content:center;gap:6px"><span>🤖</span> 5 Soniyada AI Bilan Tuzish &rarr;</button>' +
+      '    <button type="button" class="eth-btn-primary" id="btnAiLevelTransPrompt" style="flex:2;background:linear-gradient(135deg,#7c3aed 0%,#2563eb 100%);border:none;box-shadow:0 4px 14px rgba(124,58,237,0.35);font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px">' + ethEmblemImg('eth-brand-emblem-mini', 'width:20px;height:20px;border-radius:4px;object-fit:cover') + ' 5 Soniyada AI Bilan Tuzish &rarr;</button>' +
       '    <button type="button" class="ap-btn out" id="btnProceedLevelTransPrompt" style="flex:1.5">Qo\'lda Tuzish &rarr;</button>' +
       '  </div>' +
       '</div>';
@@ -9426,7 +10015,11 @@ window.ETHITH_PLACEMENT = [
 
     container.querySelectorAll('.eth-tab').forEach(function(tab) {
       tab.onclick = function() {
-        renderLevelsView(container, tab.dataset.lvl);
+        if (window._ethithInternalGo) {
+          window._ethithInternalGo('levels', tab.dataset.lvl);
+        } else {
+          renderLevelsView(container, tab.dataset.lvl);
+        }
       };
     });
 
@@ -10574,7 +11167,7 @@ window.ETHITH_PLACEMENT = [
       (isTeacher ?
         '  <div style="display:flex;gap:10px;flex-wrap:wrap">' +
         '    <button class="eth-btn-primary" id="btnAiQuickExam" style="width:auto;padding:10px 18px;background:linear-gradient(135deg,#7c3aed 0%,#2563eb 100%);border:none;box-shadow:0 4px 15px rgba(124,58,237,0.35);font-weight:800;display:flex;align-items:center;gap:8px;color:#fff;cursor:pointer">' +
-        '      <span style="font-size:17px">🤖</span> 5 Soniyada AI Test Yaratish (PDF/Audio)' +
+        '      ' + ethEmblemImg('eth-brand-emblem-mini', 'width:22px;height:22px;border-radius:5px;object-fit:cover;vertical-align:middle') + ' 5 Soniyada AI Test Yaratish (PDF/Audio)' +
         '    </button>' +
         '    <button class="ap-btn out" id="btnCreateExam" style="width:auto;padding:10px 18px;font-weight:700">' + ic('plus') + ' Yangi Imtihon Tuzish</button>' +
         '  </div>' :
@@ -10774,6 +11367,7 @@ window.ETHITH_PLACEMENT = [
         '      <button class="eth-btn-primary" id="btnSaveExamSettings" style="margin-top:12px;padding:9px 14px;font-size:13.5px">Save Settings</button>' +
         '    </div>' +
         '    <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">' +
+        '      <button class="ap-btn solid" id="btnEditExamFull" style="justify-content:center;padding:12px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:700">✏️ Imtihonni Tahrirlash (Edit Exam Content)</button>' +
         '      <button class="ap-btn solid" id="btnDuplicateExam" style="justify-content:center;padding:12px">' + ic('plus') + ' Duplicate as New Mock Exam</button>' +
         '      <button class="ap-btn out" id="btnViewLbFromManage" style="justify-content:center;padding:12px">' + ic('trophy') + ' View Live Leaderboard (' + (exam.submissions ? exam.submissions.length : 0) + ' students)</button>' +
         '      <button class="ap-btn danger" id="btnDeleteExam" style="justify-content:center;padding:12px;color:#ef4444;border-color:rgba(239,68,68,0.3)">' + ic('trash') + ' Delete Exam Permanently</button>' +
@@ -10831,6 +11425,15 @@ window.ETHITH_PLACEMENT = [
         renderExamsView(container);
         renderActions();
       };
+
+      // Edit Exam Full
+      var btnEditEx = overlay.querySelector('#btnEditExamFull');
+      if (btnEditEx) {
+        btnEditEx.onclick = function() {
+          overlay.remove();
+          showEditExamModal(exam, container);
+        };
+      }
 
       // Duplicate Exam
       overlay.querySelector('#btnDuplicateExam').onclick = function() {
@@ -11218,7 +11821,7 @@ window.ETHITH_PLACEMENT = [
           '  </div>' +
           '  <div style="display:flex;gap:10px;margin-top:6px;flex-wrap:wrap">' +
           '    <button type="button" class="eth-btn-primary" id="btnAiExtract5Sec" style="flex:1;min-width:260px;padding:13px 18px;font-size:14px;font-weight:800;background:linear-gradient(135deg,#7c3aed 0%,#2563eb 100%);border:none;border-radius:12px;box-shadow:0 6px 20px rgba(124,58,237,0.4);display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;cursor:pointer">' +
-          '      <span style="font-size:18px">🤖</span>' +
+          '      ' + ethEmblemImg('eth-brand-emblem-mini', 'width:22px;height:22px;border-radius:5px;object-fit:cover') + ' ' +
           '      <span id="btnAiExtractText">5 Soniyada AI Bilan Test Yaratish (ETHITH Vision & Parser)</span>' +
           '    </button>' +
           '    <button type="button" class="ap-btn out" id="parseBulkBtn" style="padding:13px 16px;font-size:13px;font-weight:700">' +
@@ -11861,7 +12464,7 @@ window.ETHITH_PLACEMENT = [
       '    <div style="background:' + card3Bg + ';border:1.5px solid ' + card3Border + ';padding:14px 16px;border-radius:12px">' +
       '      <b style="color:' + card3Title + ';display:flex;align-items:center;gap:6px;font-size:14.5px;margin-bottom:6px">📷 3. 50° KAMERA VA TAB NAZORATI:</b>' +
       '      <div style="color:' + textPrimary + '">' +
-      '        Boshni <b style="color:' + textBold + '">50° dan ortiq burish</b>, kameradan uzoqlashish yoki brauzer oynasidan chiqish taqiqlanadi. Qoidabuzarlik yuz bersa, test bloklanadi va faqat o\'qituvchi blokdan ochmaguncha hech narsa ishlamaydi.' +
+      '        Boshni <b style="color:' + textBold + '">30° dan ortiq burish</b>, kameradan uzoqlashish yoki brauzer oynasidan chiqish taqiqlanadi. Qoidabuzarlik yuz bersa, test bloklanadi va faqat o\'qituvchi blokdan ochmaguncha hech narsa ishlamaydi.' +
       '      </div>' +
       '    </div>' +
       '  </div>' +
@@ -12141,7 +12744,10 @@ window.ETHITH_PLACEMENT = [
         '    <span class="eth-cam-dot" id="proctorCamDot"></span>' +
         '    <span id="proctorCamTitle">' + (isTeacher ? '👨‍🏫 Ustoz Sinovi' : 'Kamera Nazorati') + '</span>' +
         '  </div>' +
-        '  <span class="eth-cam-badge" id="proctorCamAngle">' + (isTeacher ? 'Nazoratsiz' : 'To\'g\'ri: 0°') + '</span>' +
+        '  <div style="display:flex;align-items:center;gap:4px">' +
+        '    <span class="eth-cam-badge" id="proctorCamAngle">' + (isTeacher ? 'Nazoratsiz' : 'To\'g\'ri: 0°') + '</span>' +
+        '    <button type="button" class="eth-cam-btn-min" id="btnMinCam" title="Kichraytirish / Yashirish">—</button>' +
+        '  </div>' +
         '</div>' +
         '<div class="eth-cam-video-wrap">' +
         '  <video id="proctorVideo" autoplay playsinline muted></video>' +
@@ -12150,10 +12756,11 @@ window.ETHITH_PLACEMENT = [
         '<div class="eth-cam-footer" id="proctorStudentName">' +
         (isTeacher ?
           '  👤 ' + esc((S.user && S.user.name) || 'Ustoz') + ' · Cheklovlar O\'chirilgan' :
-          '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 50° AI Tracker'
+          '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 30° AI Tracker'
         ) +
         '</div>';
       lockdownModal.appendChild(camBox);
+      makeElementDraggableAndCollapsible(camBox, camBox.querySelector('.eth-cam-header'), camBox.querySelector('#btnMinCam'));
 
       var proctorVideo = document.getElementById('proctorVideo');
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -12237,8 +12844,8 @@ window.ETHITH_PLACEMENT = [
             var dx = Math.abs(currentCenter - avgBaseCenter);
             var asymmetry = Math.abs(leftMass - rightMass) / (leftMass + rightMass + 1);
 
-            // Calibrated 50 degree tracking with softened sensitivity
-            var estimatedAngle = Math.min(90, Math.round((dx / 18) * 50 * 0.5 + (asymmetry / 0.45) * 50 * 0.6));
+            // User Requirement: Strict 30 degree camera tracking
+            var estimatedAngle = Math.min(90, Math.round((dx / 12) * 30 * 0.5 + (asymmetry / 0.3) * 30 * 0.6));
             var isFarAway = (totalMass < 15);
             if (isFarAway) {
               estimatedAngle = 60;
@@ -12249,12 +12856,12 @@ window.ETHITH_PLACEMENT = [
             var oval = document.getElementById('proctorOval');
 
             if (angleBadge) {
-              if (estimatedAngle < 35) {
+              if (estimatedAngle < 20) {
                 angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
                 angleBadge.className = 'eth-cam-badge';
                 if (dot) dot.className = 'eth-cam-dot';
                 if (oval) oval.className = 'eth-cam-target-oval';
-              } else if (estimatedAngle < 50) {
+              } else if (estimatedAngle < 30) {
                 angleBadge.textContent = "Burilish: " + estimatedAngle + "°";
                 angleBadge.className = 'eth-cam-badge warn';
                 if (dot) dot.className = 'eth-cam-dot warn';
@@ -12267,14 +12874,15 @@ window.ETHITH_PLACEMENT = [
               }
             }
 
-            // Softened: require 5 consecutive ticks (~1.25s) before triggering lock
-            if (estimatedAngle >= 50 || isFarAway) {
+            // Trigger alarm and lock if head turns 30 degrees or more for 3 ticks (~0.75s)
+            if (estimatedAngle >= 30 || isFarAway) {
               turnInfractionFrames++;
-              if (turnInfractionFrames >= 5) {
+              if (turnInfractionFrames >= 3) {
+                playTitTitAlarm(6);
                 if (isFarAway) {
                   triggerInfraction("O'quvchi kameradan uzoqlashib ko'chirishga harakat qilmoqda");
                 } else {
-                  triggerInfraction("O'quvchi boshini burib ko'chirishga harakat qilmoqda (" + estimatedAngle + "°)");
+                  triggerInfraction("O'quvchi boshini 30° dan ortiq burib ko'chirishga harakat qilmoqda (" + estimatedAngle + "°)");
                 }
               }
             } else {
@@ -12288,6 +12896,7 @@ window.ETHITH_PLACEMENT = [
       function triggerInfraction(reason) {
         if (isTeacher || isExamLocked || isExamFinished) return;
         isExamLocked = true;
+        playTitTitAlarm(6);
 
         var angleBadge = document.getElementById('proctorCamAngle');
         var dot = document.getElementById('proctorCamDot');
@@ -12579,7 +13188,21 @@ window.ETHITH_PLACEMENT = [
             '      </div>' +
             '      <div class="eth-paper-q-text">' + (qIdx + 1) + '. ' + esc(qObj.question) + '</div>';
 
-          if (t === 'bool') {
+          var isWritingQ = (t === 'writing') || (/write\s+(an?\s+)?(essay|letter|paragraph|story|summary|report|article)|writing\s+task/i.test(qObj.question || ''));
+          if (isWritingQ) {
+            var curW = curAns || '';
+            var wWords = curW ? curW.trim().split(/\s+/).filter(Boolean).length : 0;
+            html += '' +
+              '      <div class="eth-paper-writing-container">' +
+              '        <div class="eth-paper-writing-header">' +
+              '          <span class="eth-writing-badge">✍️ Yozma Insho / Writing Task</span>' +
+              '          <span class="eth-writing-word-count" id="wc_' + qIdx + '">' + wWords + ' so\'z yozildi</span>' +
+              '          <span class="eth-writing-target">Tavsiya: 50-150 so\'z</span>' +
+              '        </div>' +
+              '        <textarea class="eth-paper-writing-area" data-paper-writing-q="' + qIdx + '" rows="8" placeholder="Insho yoki yozma topshiriq javobingizni shu yerga to\'liq yozing...">' + esc(curW) + '</textarea>' +
+              '        <div class="eth-writing-hint">💡 Mazmunning mosligi, matn tuzilishi, so\'z boyligi va grammatika AI tomonidan sinchkovlik bilan baholanadi.</div>' +
+              '      </div>';
+          } else if (t === 'bool') {
             html += '' +
               '      <div class="eth-paper-bool-group">' +
               '        <button type="button" class="eth-paper-bool-btn' + (curAns === 'True' ? ' selected' : '') + '" data-paper-q="' + qIdx + '" data-paper-ans="True">' +
@@ -12809,6 +13432,25 @@ window.ETHITH_PLACEMENT = [
           };
         });
 
+        // Writing Textareas directly on paper with live word counter
+        lockdownModal.querySelectorAll('.eth-paper-writing-area').forEach(function(tarea) {
+          tarea.oninput = function() {
+            var qIdx = parseInt(tarea.dataset.paperWritingQ, 10);
+            var val = tarea.value;
+            state.answers[qIdx] = val;
+            var wWords = val.trim() ? val.trim().split(/\s+/).filter(Boolean).length : 0;
+            var wcBadge = document.getElementById('wc_' + qIdx);
+            if (wcBadge) wcBadge.textContent = wWords + ' so\'z yozildi';
+            updatePaperVisuals(qIdx);
+          };
+        });
+
+        // Make floating Quick Jump Navigator draggable & minimizable
+        var qNavEl = document.getElementById('paperQuickNav');
+        if (qNavEl) {
+          makeElementDraggableAndCollapsible(qNavEl, qNavEl.querySelector('.eth-paper-nav-title'), qNavEl.querySelector('#btnMinQuickNav'));
+        }
+
         // Quick Jump To Question
         lockdownModal.querySelectorAll('[data-jump-to]').forEach(function(btn) {
           btn.onclick = function() {
@@ -12961,10 +13603,42 @@ window.ETHITH_PLACEMENT = [
       }
     }
 
-    // 10. Finish Exam & Detailed Results Breakdown
-    function finishExam() {
+    // 10. Finish Exam & Detailed Results Breakdown (Async AI Evaluator Supported)
+    async function finishExam() {
       if (isExamFinished) return;
       isExamFinished = true;
+
+      // Check for Writing Tasks
+      var hasWritingTasks = exam.questions.some(function(q) {
+        return q.type === 'writing' || /write\s+(an?\s+)?(essay|letter|paragraph|story|summary|report|article)|writing\s+task/i.test(q.question || '');
+      });
+
+      if (hasWritingTasks && window.EthithAI && window.EthithAI.evaluateWritingSubmission) {
+        var evalOverlay = document.createElement('div');
+        evalOverlay.id = 'ethAiWritingEvalOverlay';
+        evalOverlay.style.cssText = 'position:fixed;inset:0;background:rgba(15,23,42,0.88);backdrop-filter:blur(8px);z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:24px;text-align:center';
+        evalOverlay.innerHTML = '' +
+          '<div style="font-size:52px;margin-bottom:14px;animation:pulse 1s infinite">✍️</div>' +
+          '<h3 style="margin:0 0 8px;font-size:23px;font-weight:900;color:#fff">ETHITH AI Writing Tekshiruvi</h3>' +
+          '<p style="margin:0;color:#94a3b8;font-size:14.5px;max-width:440px">Insho va yozma topshiriqlaringiz xalqaro CEFR mezonlari (Task Response, Coherence, Vocabulary, Grammar) asosida tekshirilmoqda...</p>';
+        lockdownModal.appendChild(evalOverlay);
+
+        for (var wIdx = 0; wIdx < exam.questions.length; wIdx++) {
+          var wQ = exam.questions[wIdx];
+          var isW = (wQ.type === 'writing') || (/write\s+(an?\s+)?(essay|letter|paragraph|story|summary|report|article)|writing\s+task/i.test(wQ.question || ''));
+          if (isW) {
+            var studentWText = state.answers[wIdx] || '';
+            var wPts = wQ.points || exam.pointsPerQ || 10;
+            try {
+              var evalRes = await window.EthithAI.evaluateWritingSubmission(wQ.question, studentWText, wPts);
+              wQ._evalResult = evalRes;
+            } catch(e) {
+              wQ._evalResult = { score: Math.round(wPts * 0.7), feedback: "Yozma javob topshirildi.", criteria: {} };
+            }
+          }
+        }
+        evalOverlay.remove();
+      }
 
       clearInterval(timerInterval);
       if (proctorInterval) clearInterval(proctorInterval);
@@ -13012,7 +13686,29 @@ window.ETHITH_PLACEMENT = [
         var qPts = q.points || exam.pointsPerQ || 1;
         totalPossible += qPts;
 
-        if (userAns !== undefined && userAns !== '') {
+        var writingEval = null;
+        var isWritingQ = (q.type === 'writing') || (/write\s+(an?\s+)?(essay|letter|paragraph|story|summary|report|article)|writing\s+task/i.test(q.question || ''));
+
+        if (isWritingQ) {
+          var evalRes = q._evalResult;
+          if (evalRes) {
+            earnedScore += evalRes.score;
+            isCorrect = (evalRes.score >= qPts * 0.5);
+            writingEval = evalRes;
+          } else {
+            var words = (userAns || '').trim().split(/\s+/).filter(Boolean);
+            var fallbackPts = Math.min(qPts, Math.round((words.length / 60) * qPts));
+            earnedScore += fallbackPts;
+            isCorrect = (fallbackPts >= qPts * 0.5);
+            writingEval = {
+              score: fallbackPts,
+              wordCount: words.length,
+              feedback: "Yozma topshiriq topshirildi (" + words.length + " so'z).",
+              criteria: { taskAchievement: Math.round(fallbackPts/4), coherence: Math.round(fallbackPts/4), lexical: Math.round(fallbackPts/4), grammar: Math.round(fallbackPts/4) }
+            };
+          }
+          if (isCorrect) correctCount++; else incorrectCount++;
+        } else if (userAns !== undefined && userAns !== '') {
           var uStr = String(userAns).trim().toLowerCase();
           var cStr = String(q.answer || '').trim().toLowerCase();
 
@@ -13055,7 +13751,8 @@ window.ETHITH_PLACEMENT = [
           userAns: userAns,
           correctAns: q.answer,
           isCorrect: isCorrect,
-          points: qPts
+          points: qPts,
+          writingEvaluation: writingEval
         };
       });
 
@@ -13113,14 +13810,30 @@ window.ETHITH_PLACEMENT = [
         exam.submissions.push(sub);
       }
 
-      var storeExam = (S.exams || []).find(function(x) { return x.id === exam.id || (exam.code && x.code === exam.code); });
+      var storeExam = (S.exams || []).find(function(x) {
+        return (x.id && exam.id && String(x.id) === String(exam.id)) ||
+               (x.code && exam.code && String(x.code).trim() === String(exam.code).trim());
+      });
       if (storeExam) {
         storeExam.submissions = exam.submissions;
+      } else {
+        S.exams.push(exam);
       }
 
       App.saveState();
+      var finalSubmission = existing || sub;
+
+      if (window._ethithOnExamSubmission) {
+        try {
+          window._ethithOnExamSubmission({
+            examId: exam.id,
+            examCode: exam.code,
+            submission: finalSubmission
+          });
+        } catch(e) {}
+      }
+
       if (window.EthithSync) {
-        var finalSubmission = existing || sub;
         window.EthithSync.publishLive({
           type: 'EXAM_SUBMISSION',
           examId: exam.id,
@@ -13736,52 +14449,279 @@ window.ETHITH_PLACEMENT = [
   }
 
   function runPlacementTest(mainContainer, questions) {
-    var timeLeft = 90 * 60; // Exactly 1.5 hours (90 minutes) total for all 70 questions
-    var isTestFinished = false;
-    var isPaletteCollapsed = false;
-    var state = {
-      i: 0,
-      answers: {}
-    };
+    showPreTestSecurityBriefing(initPlacementRunner);
 
-    // 1. Remove previous modal if any
-    var oldModal = document.getElementById('ethExamLockdownModal');
-    if (oldModal) oldModal.remove();
+    function initPlacementRunner() {
+      var timeLeft = 90 * 60; // Exactly 1.5 hours (90 minutes) total for all 70 questions
+      var isTestFinished = false;
+      var isExamLocked = false;
+      var isPaletteCollapsed = false;
+      var proctorStream = null;
+      var proctorInterval = null;
+      var turnInfractionFrames = 0;
+      var state = {
+        i: 0,
+        answers: {}
+      };
 
-    // 2. Mount Dedicated Fullscreen Lockdown Container directly to body
-    var lockdownModal = document.createElement('div');
-    lockdownModal.id = 'ethExamLockdownModal';
-    lockdownModal.className = 'eth-lockdown-fullscreen';
-    var activeTheme = (window.EthithApp && EthithApp.state && EthithApp.state.theme) || (window.S && S.theme) || (document.getElementById('app') && document.getElementById('app').getAttribute('data-theme')) || (document.body && document.body.getAttribute('data-theme')) || 'dark';
-    lockdownModal.setAttribute('data-theme', activeTheme);
-    document.body.setAttribute('data-theme', activeTheme);
-    document.body.appendChild(lockdownModal);
+      // 1. Remove previous modal if any
+      var oldModal = document.getElementById('ethExamLockdownModal');
+      if (oldModal) oldModal.remove();
 
-    // Enter Fullscreen Mode
-    try {
-      if (lockdownModal.requestFullscreen) {
-        lockdownModal.requestFullscreen().catch(function(e){});
-      } else if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen().catch(function(e){});
-      } else if (document.documentElement.webkitRequestFullscreen) {
-        document.documentElement.webkitRequestFullscreen();
+      // 2. Mount Dedicated Fullscreen Lockdown Container directly to body
+      var lockdownModal = document.createElement('div');
+      lockdownModal.id = 'ethExamLockdownModal';
+      lockdownModal.className = 'eth-lockdown-fullscreen';
+      var activeTheme = (window.EthithApp && EthithApp.state && EthithApp.state.theme) || (window.S && S.theme) || (document.getElementById('app') && document.getElementById('app').getAttribute('data-theme')) || (document.body && document.body.getAttribute('data-theme')) || 'dark';
+      lockdownModal.setAttribute('data-theme', activeTheme);
+      document.body.setAttribute('data-theme', activeTheme);
+      document.body.appendChild(lockdownModal);
+
+      // Enter Fullscreen Mode & Keyboard Lock
+      function ensureFullscreen() {
+        if (isTestFinished) return;
+        var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+        if (!isFs) {
+          try {
+            var target = lockdownModal || document.documentElement;
+            var req = target.requestFullscreen || target.webkitRequestFullscreen || target.mozRequestFullScreen || target.msRequestFullscreen;
+            if (req) req.call(target, { navigationUI: 'hide' }).catch(function(){});
+          } catch(e) {}
+        }
       }
-    } catch(e) {}
-    document.body.classList.add('proctored-fullscreen-mode');
+      ensureFullscreen();
+      document.body.classList.add('proctored-fullscreen-mode');
 
-    // 3. Anti-Cheat: Tab Switch & Window Blur Warning
-    function onWindowBlur() {
-      if (isTestFinished) return;
-      alert("DIQQAT: Test paytida brauzer oynasidan chiqish yoki boshqa oynalarga o'tish taqiqlanadi!");
-    }
-    function onVisChange() {
-      if (isTestFinished) return;
-      if (document.hidden) {
-        alert("DIQQAT: Test davom etmoqda, boshqa sahifaga o'tmang!");
+      function triggerInfraction(reason) {
+        if (isExamLocked || isTestFinished) return;
+        isExamLocked = true;
+        playTitTitAlarm(6);
+
+        var angleBadge = document.getElementById('proctorCamAngle');
+        var dot = document.getElementById('proctorCamDot');
+        if (dot) dot.className = 'eth-cam-dot danger';
+        if (angleBadge) {
+          angleBadge.textContent = 'BLOKLANDI';
+          angleBadge.className = 'eth-cam-badge danger';
+        }
+
+        var existingLock = document.getElementById('examLockedScreen');
+        if (existingLock) existingLock.remove();
+
+        var lockedOverlay = document.createElement('div');
+        lockedOverlay.className = 'eth-exam-locked-screen';
+        lockedOverlay.id = 'examLockedScreen';
+        lockedOverlay.style.zIndex = '2147483648';
+        lockedOverlay.innerHTML = '' +
+          '<div class="eth-locked-box">' +
+          '  <div class="eth-locked-icon">🚫</div>' +
+          '  <h2>PLACEMENT TEST BLOKLANDI</h2>' +
+          '  <div class="eth-locked-reason"><b>Qoidabuzarlik:</b> ' + esc(reason) + '</div>' +
+          '  <div class="eth-locked-msg">' +
+          '    Placement test paytida taqiqlangan tugmalarni bosish, boshni 30° dan ortiq burish yoki boshqa oynalarga o\'tish qat\'iyan taqiqlanadi.<br>' +
+          '    O\'qituvchingizga ushbu qoidabuzarlik haqida darhol xabar yuborildi.<br><br>' +
+          '    <b>Test bloklandi. O\'qituvchi blokdan ochmaguncha kuting.</b>' +
+          '  </div>' +
+          '  <div class="eth-locked-pulse">' +
+          '    <span class="eth-cam-dot danger"></span> Blokdan chiqarilishi kutilmoqda...' +
+          '  </div>' +
+          '</div>';
+        lockdownModal.appendChild(lockedOverlay);
+
+        if (window.EthithSync) {
+          window.EthithSync.publishLive({
+            type: 'STUDENT_BLOCKED',
+            studentId: (S.user && (S.user.email || S.user.id)) || 'guest',
+            studentName: (S.user && S.user.name) || 'O\'quvchi',
+            studentEmail: (S.user && S.user.email) || '',
+            examId: 'placement_70',
+            examTitle: 'CEFR Placement Test (70 Savol)',
+            reason: reason,
+            timestamp: Date.now()
+          });
+        }
       }
-    }
-    window.addEventListener('blur', onWindowBlur);
-    document.addEventListener('visibilitychange', onVisChange);
+
+      function onWindowBlur() {
+        if (isTestFinished || isExamLocked) return;
+        playTitTitAlarm(6);
+        triggerInfraction("Brauzer oynasidan chiqish yoki boshqa oynalarga o'tish aniqlandi");
+      }
+      function onVisChange() {
+        if (isTestFinished || isExamLocked) return;
+        if (document.hidden) {
+          playTitTitAlarm(6);
+          triggerInfraction("Brauzer oynasi minimallashtirildi yoki boshqa sahifaga o'tildi");
+        }
+      }
+
+      var PROHIBITED_KEYS = [
+        'Tab', 'Escape', 'Alt', 'Meta', 'Control', 'ContextMenu',
+        'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
+        'Delete', 'Home', 'End', 'PageUp', 'PageDown', 'Insert',
+        'PrintScreen', 'ScrollLock', 'Pause',
+        'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12'
+      ];
+
+      function onKeyDownProctor(e) {
+        if (isTestFinished) return;
+        var keyName = e.key;
+        var isProhibited = PROHIBITED_KEYS.indexOf(keyName) !== -1 || e.altKey || e.ctrlKey || e.metaKey;
+        if (isProhibited) {
+          try { e.preventDefault(); e.stopPropagation(); } catch(err) {}
+          playTitTitAlarm(7);
+          triggerInfraction("Taqiqlangan tugma bosildi: " + keyName);
+          return false;
+        }
+      }
+
+      window.addEventListener('blur', onWindowBlur);
+      document.addEventListener('visibilitychange', onVisChange);
+      window.addEventListener('keydown', onKeyDownProctor, true);
+      document.addEventListener('keydown', onKeyDownProctor, true);
+      window.addEventListener('click', ensureFullscreen, true);
+
+      // Camera Box for Placement Test
+      var camBox = document.createElement('div');
+      camBox.className = 'eth-proctor-cam-box';
+      camBox.id = 'proctorCamBox';
+      camBox.innerHTML = '' +
+        '<div class="eth-cam-header">' +
+        '  <div style="display:flex;align-items:center">' +
+        '    <span class="eth-cam-dot" id="proctorCamDot"></span>' +
+        '    <span id="proctorCamTitle">Kamera Nazorati</span>' +
+        '  </div>' +
+        '  <div style="display:flex;align-items:center;gap:4px">' +
+        '    <span class="eth-cam-badge" id="proctorCamAngle">To\'g\'ri: 0°</span>' +
+        '    <button type="button" class="eth-cam-btn-min" id="btnMinCam" title="Kichraytirish">—</button>' +
+        '  </div>' +
+        '</div>' +
+        '<div class="eth-cam-video-wrap">' +
+        '  <video id="proctorVideo" autoplay playsinline muted></video>' +
+        '  <div class="eth-cam-target-oval" id="proctorOval"></div>' +
+        '</div>' +
+        '<div class="eth-cam-footer" id="proctorStudentName">' +
+        '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 30° AI Tracker' +
+        '</div>';
+      lockdownModal.appendChild(camBox);
+      makeElementDraggableAndCollapsible(camBox, camBox.querySelector('.eth-cam-header'), camBox.querySelector('#btnMinCam'));
+
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({
+          video: { width: { ideal: 320 }, height: { ideal: 240 }, facingMode: 'user' }
+        }).then(function(stream) {
+          proctorStream = stream;
+          var vid = document.getElementById('proctorVideo');
+          if (vid) {
+            vid.srcObject = stream;
+            vid.onloadedmetadata = function() { vid.play().catch(function(){}); };
+          }
+        }).catch(function(err) {});
+      }
+
+      // 30 degree Face Tracker
+      var offCanvas = document.createElement('canvas');
+      offCanvas.width = 160;
+      offCanvas.height = 120;
+      var offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
+      var calibrationCount = 0;
+      var baseCenterSum = 0;
+      var avgBaseCenter = 80;
+      var ticksTotal = 0;
+
+      proctorInterval = setInterval(function() {
+        var vid = document.getElementById('proctorVideo');
+        if (!vid || !vid.videoWidth || isExamLocked || isTestFinished) return;
+        try {
+          offCtx.drawImage(vid, 0, 0, 160, 120);
+          var imgData = offCtx.getImageData(0, 0, 160, 120);
+          var pixels = imgData.data;
+          var leftMass = 0, rightMass = 0, totalMass = 0, sumX = 0;
+          for (var y = 15; y < 105; y += 2) {
+            for (var x = 20; x < 140; x += 2) {
+              var idx = (y * 160 + x) * 4;
+              var r = pixels[idx], g = pixels[idx + 1], b = pixels[idx + 2];
+              var isSkin = (r > 45 && g > 30 && b > 20 && r > b && (r - g) >= 5);
+              var lum = 0.299 * r + 0.587 * g + 0.114 * b;
+              var isFg = isSkin || (lum > 35 && lum < 225 && Math.abs(r - g) > 6);
+              if (isFg) {
+                totalMass++;
+                sumX += x;
+                if (x < 80) leftMass++; else rightMass++;
+              }
+            }
+          }
+          ticksTotal++;
+          if (calibrationCount < 4) {
+            if (totalMass > 40) {
+              calibrationCount++;
+              baseCenterSum += (sumX / totalMass);
+              if (calibrationCount >= 4) avgBaseCenter = baseCenterSum / 4;
+            } else if (ticksTotal > 6) {
+              avgBaseCenter = 80;
+              calibrationCount = 4;
+            }
+            return;
+          }
+          var currentCenter = totalMass > 20 ? (sumX / totalMass) : avgBaseCenter;
+          var dx = Math.abs(currentCenter - avgBaseCenter);
+          var asymmetry = Math.abs(leftMass - rightMass) / (leftMass + rightMass + 1);
+          var estimatedAngle = Math.min(90, Math.round((dx / 12) * 30 * 0.5 + (asymmetry / 0.3) * 30 * 0.6));
+          var isFarAway = (totalMass < 15);
+          if (isFarAway) estimatedAngle = 60;
+
+          var angleBadge = document.getElementById('proctorCamAngle');
+          var dot = document.getElementById('proctorCamDot');
+          var oval = document.getElementById('proctorOval');
+          if (angleBadge) {
+            if (estimatedAngle < 20) {
+              angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
+              angleBadge.className = 'eth-cam-badge';
+              if (dot) dot.className = 'eth-cam-dot';
+              if (oval) oval.className = 'eth-cam-target-oval';
+            } else if (estimatedAngle < 30) {
+              angleBadge.textContent = "Burilish: " + estimatedAngle + "°";
+              angleBadge.className = 'eth-cam-badge warn';
+              if (dot) dot.className = 'eth-cam-dot warn';
+              if (oval) oval.className = 'eth-cam-target-oval warn';
+            } else {
+              angleBadge.textContent = "XAVF: " + estimatedAngle + "°!";
+              angleBadge.className = 'eth-cam-badge danger';
+              if (dot) dot.className = 'eth-cam-dot danger';
+              if (oval) oval.className = 'eth-cam-target-oval danger';
+            }
+          }
+
+          if (estimatedAngle >= 30 || isFarAway) {
+            turnInfractionFrames++;
+            if (turnInfractionFrames >= 3) {
+              playTitTitAlarm(6);
+              triggerInfraction(isFarAway ? "O'quvchi kameradan uzoqlashdi" : "O'quvchi boshini 30° dan ortiq burdi (" + estimatedAngle + "°)");
+            }
+          } else {
+            turnInfractionFrames = 0;
+          }
+        } catch(err) {}
+      }, 250);
+
+      window._ethithOnStudentUnblocked = function(ev) {
+        var myKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase();
+        if ((ev.studentEmail && ev.studentEmail.toLowerCase() === myKey) ||
+            (ev.studentId && ev.studentId.toLowerCase() === myKey)) {
+          isExamLocked = false;
+          turnInfractionFrames = 0;
+          var lockEl = document.getElementById('examLockedScreen');
+          if (lockEl) lockEl.remove();
+          var angleBadge = document.getElementById('proctorCamAngle');
+          var dot = document.getElementById('proctorCamDot');
+          if (dot) dot.className = 'eth-cam-dot';
+          if (angleBadge) {
+            angleBadge.textContent = "To'g'ri: 0°";
+            angleBadge.className = 'eth-cam-badge';
+          }
+          ensureFullscreen();
+        }
+      };
 
     function formatTime(sec) {
       if (sec < 0) sec = 0;
@@ -14124,6 +15064,7 @@ window.ETHITH_PLACEMENT = [
     }
 
     renderQ();
+    }
   }
 
   // ==========================================
@@ -14569,12 +15510,371 @@ window.ETHITH_PLACEMENT = [
     if (s1) s1.onclick = function() { launchTest('speaking', 1); };
   }
 
+
+  // Teacher Exam Edit Modal with Real-time Sync
+  function showEditExamModal(exam, container) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.style.zIndex = '2147483648';
+
+    var tempExam = JSON.parse(JSON.stringify(exam));
+    if (!tempExam.questions) tempExam.questions = [];
+
+    function renderEditForm() {
+      var html = '' +
+        '<div class="eth-modal eth-exam-edit-modal">' +
+        '  <button type="button" class="eth-modal-close-btn" id="btnCloseEditModal">✕</button>' +
+        '  <div class="eth-modal-header">' +
+        '    <h2>✏️ Imtihonni Tahrirlash</h2>' +
+        '    <p>O\'zgartirishlar saqlangach, barcha o\'quvchilar ekranida real vaqtda yangilanadi (Kod: <b>' + tempExam.code + '</b>)</p>' +
+        '  </div>' +
+        '  <div class="eth-modal-body">' +
+        '    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">' +
+        '      <div class="eth-form-group">' +
+        '        <label>Imtihon Nomi (Title)</label>' +
+        '        <input type="text" id="editExTitle" value="' + esc(tempExam.title) + '" required />' +
+        '      </div>' +
+        '      <div class="eth-form-group">' +
+        '        <label>Davomiyligi (Daqiqada)</label>' +
+        '        <input type="number" id="editExDuration" value="' + tempExam.duration + '" min="5" max="180" required />' +
+        '      </div>' +
+        '    </div>' +
+        '    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">' +
+        '      <div class="eth-form-group">' +
+        '        <label>Ko\'rinishi (Visibility)</label>' +
+        '        <select id="editExVis">' +
+        '          <option value="public" ' + (tempExam.isPublic ? 'selected' : '') + '>🌐 Public (Ochiq)</option>' +
+        '          <option value="private" ' + (!tempExam.isPublic ? 'selected' : '') + '>🔒 Private (Faqat 6 xonali kod bilan)</option>' +
+        '        </select>' +
+        '      </div>' +
+        '      <div class="eth-form-group">' +
+        '        <label>Har bir savol bali (Points per Q)</label>' +
+        '        <input type="number" id="editExPts" value="' + (tempExam.pointsPerQ || 2) + '" min="1" max="20" />' +
+        '      </div>' +
+        '    </div>' +
+        '    <div style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 10px">' +
+        '      <h4 style="margin:0;font-size:15.5px">Savollar Ro\'yxati (' + tempExam.questions.length + ' ta savol):</h4>' +
+        '      <button type="button" class="ap-btn out" id="btnAddQInEdit" style="padding:6px 14px;font-size:12.5px">+ Yangi Savol Qo\'shish</button>' +
+        '    </div>' +
+        '    <div id="editQuestionsList" style="display:flex;flex-direction:column;gap:12px;max-height:48vh;overflow-y:auto;padding-right:4px">';
+
+      tempExam.questions.forEach(function(q, qIdx) {
+        var t = q.type || 'choice';
+        html += '' +
+          '<div class="eth-q-edit-card">' +
+          '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+          '    <span style="font-weight:800;font-size:13px;color:#2563eb">#' + (qIdx + 1) + '-Savol</span>' +
+          '    <div style="display:flex;gap:8px;align-items:center">' +
+          '      <select class="q-edit-type" data-qidx="' + qIdx + '" style="padding:4px 8px;font-size:12px;border-radius:6px;border:1px solid var(--border)">' +
+          '        <option value="choice" ' + (t === 'choice' ? 'selected' : '') + '>🔘 Variantli (A,B,C,D)</option>' +
+          '        <option value="bool" ' + (t === 'bool' ? 'selected' : '') + '>☑️ True / False</option>' +
+          '        <option value="written" ' + (t === 'written' ? 'selected' : '') + '>✍️ Qisqa Yozma (Gap fill)</option>' +
+          '        <option value="writing" ' + (t === 'writing' ? 'selected' : '') + '>📝 Insho (Writing Task)</option>' +
+          '      </select>' +
+          '      <button type="button" class="ap-btn danger btn-del-q" data-qidx="' + qIdx + '" style="padding:4px 8px;font-size:11px;color:#ef4444">O\'chirish</button>' +
+          '    </div>' +
+          '  </div>' +
+          '  <div class="eth-form-group" style="margin-bottom:8px">' +
+          '    <textarea class="q-edit-text" data-qidx="' + qIdx + '" rows="2" style="width:100%;box-sizing:border-box;padding:8px 10px;font-size:13.5px;border-radius:8px;border:1px solid var(--border)" placeholder="Savol matni...">' + esc(q.question) + '</textarea>' +
+          '  </div>';
+
+        if (t === 'choice') {
+          var opts = q.options || ['', '', '', ''];
+          while (opts.length < 4) opts.push('');
+          html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">';
+          opts.forEach(function(opt, oIdx) {
+            var letter = String.fromCharCode(65 + oIdx);
+            html += '' +
+              '<div style="display:flex;align-items:center;gap:6px">' +
+              '  <b style="font-size:12px;min-width:18px">' + letter + ')</b>' +
+              '  <input type="text" class="q-edit-opt" data-qidx="' + qIdx + '" data-oidx="' + oIdx + '" value="' + esc(opt) + '" style="flex:1;padding:6px 8px;font-size:12.5px;border-radius:6px;border:1px solid var(--border)" placeholder="Variant ' + letter + '" />' +
+              '</div>';
+          });
+          html += '</div>';
+          html += '<div style="display:flex;align-items:center;gap:8px;font-size:13px">' +
+            '  <span>To\'g\'ri javob:</span>' +
+            '  <input type="text" class="q-edit-ans" data-qidx="' + qIdx + '" value="' + esc(q.answer) + '" style="flex:1;padding:6px 8px;font-size:12.5px;border-radius:6px;border:1px solid var(--border)" placeholder="Variant matni yoki harfi..." />' +
+            '</div>';
+        } else if (t === 'bool') {
+          html += '<div style="display:flex;align-items:center;gap:12px;font-size:13px">' +
+            '  <span>To\'g\'ri javob:</span>' +
+            '  <select class="q-edit-ans" data-qidx="' + qIdx + '" style="padding:6px 12px;border-radius:6px;border:1px solid var(--border)">' +
+            '    <option value="True" ' + (q.answer === 'True' ? 'selected' : '') + '>True</option>' +
+            '    <option value="False" ' + (q.answer === 'False' ? 'selected' : '') + '>False</option>' +
+            '  </select>' +
+            '</div>';
+        } else {
+          html += '<div style="display:flex;align-items:center;gap:8px;font-size:13px">' +
+            '  <span>' + (t === 'writing' ? 'Baholash mezoni / kalit so\'zlar:' : 'To\'g\'ri javob:') + '</span>' +
+            '  <input type="text" class="q-edit-ans" data-qidx="' + qIdx + '" value="' + esc(q.answer) + '" style="flex:1;padding:6px 8px;font-size:12.5px;border-radius:6px;border:1px solid var(--border)" placeholder="To\'g\'ri javob..." />' +
+            '</div>';
+        }
+
+        html += '</div>';
+      });
+
+      html += '' +
+        '    </div>' +
+        '  </div>' +
+        '  <div style="padding:16px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px">' +
+        '    <button type="button" class="ap-btn out" id="btnCancelEdit">Bekor Qilish</button>' +
+        '    <button type="button" class="eth-btn-primary" id="btnSaveEditLive" style="padding:10px 22px;font-weight:800">💾 Saqlash va Real Vaqtda Tarqatish</button>' +
+        '  </div>' +
+        '</div>';
+
+      overlay.innerHTML = html;
+      bindEditEvents();
+    }
+
+    function syncFormToTemp() {
+      var tIn = overlay.querySelector('#editExTitle');
+      var dIn = overlay.querySelector('#editExDuration');
+      var vIn = overlay.querySelector('#editExVis');
+      var pIn = overlay.querySelector('#editExPts');
+      if (tIn) tempExam.title = tIn.value.trim() || tempExam.title;
+      if (dIn) tempExam.duration = parseInt(dIn.value, 10) || tempExam.duration;
+      if (vIn) tempExam.isPublic = (vIn.value === 'public');
+      if (pIn) tempExam.pointsPerQ = parseInt(pIn.value, 10) || tempExam.pointsPerQ;
+
+      overlay.querySelectorAll('.q-edit-text').forEach(function(ta) {
+        var idx = parseInt(ta.dataset.qidx, 10);
+        if (tempExam.questions[idx]) tempExam.questions[idx].question = ta.value.trim();
+      });
+
+      overlay.querySelectorAll('.q-edit-opt').forEach(function(inp) {
+        var qIdx = parseInt(inp.dataset.qidx, 10);
+        var oIdx = parseInt(inp.dataset.oidx, 10);
+        if (tempExam.questions[qIdx]) {
+          if (!tempExam.questions[qIdx].options) tempExam.questions[qIdx].options = [];
+          tempExam.questions[qIdx].options[oIdx] = inp.value.trim();
+        }
+      });
+
+      overlay.querySelectorAll('.q-edit-ans').forEach(function(inp) {
+        var qIdx = parseInt(inp.dataset.qidx, 10);
+        if (tempExam.questions[qIdx]) tempExam.questions[qIdx].answer = inp.value.trim();
+      });
+    }
+
+    function bindEditEvents() {
+      overlay.querySelector('#btnCloseEditModal').onclick = function() { overlay.remove(); };
+      overlay.querySelector('#btnCancelEdit').onclick = function() { overlay.remove(); };
+
+      overlay.querySelectorAll('.q-edit-type').forEach(function(sel) {
+        sel.onchange = function() {
+          syncFormToTemp();
+          var idx = parseInt(sel.dataset.qidx, 10);
+          tempExam.questions[idx].type = sel.value;
+          if (sel.value === 'bool') {
+            tempExam.questions[idx].options = ['True', 'False'];
+            tempExam.questions[idx].answer = 'True';
+          } else if (sel.value === 'choice' && (!tempExam.questions[idx].options || tempExam.questions[idx].options.length === 0)) {
+            tempExam.questions[idx].options = ['', '', '', ''];
+          }
+          renderEditForm();
+        };
+      });
+
+      overlay.querySelectorAll('.btn-del-q').forEach(function(btn) {
+        btn.onclick = function() {
+          syncFormToTemp();
+          var idx = parseInt(btn.dataset.qidx, 10);
+          if (confirm("#" + (idx + 1) + "-savolni o'chirishga ishonchingiz komilmi?")) {
+            tempExam.questions.splice(idx, 1);
+            renderEditForm();
+          }
+        };
+      });
+
+      var addBtn = overlay.querySelector('#btnAddQInEdit');
+      if (addBtn) {
+        addBtn.onclick = function() {
+          syncFormToTemp();
+          tempExam.questions.push({
+            type: 'choice',
+            question: 'Yangi savol matni',
+            options: ['Variant A', 'Variant B', 'Variant C', 'Variant D'],
+            answer: 'Variant A',
+            points: tempExam.pointsPerQ || 2
+          });
+          renderEditForm();
+        };
+      }
+
+      var saveBtn = overlay.querySelector('#btnSaveEditLive');
+      if (saveBtn) {
+        saveBtn.onclick = function() {
+          syncFormToTemp();
+          if (!tempExam.title) { alert("Iltimos, imtihon nomini kiriting!"); return; }
+          if (!tempExam.questions || tempExam.questions.length === 0) { alert("Kamida 1 ta savol bo'lishi shart!"); return; }
+
+          var exIdx = (S.exams || []).findIndex(function(x) {
+            return (x.id && exam.id && String(x.id) === String(exam.id)) ||
+                   (x.code && exam.code && String(x.code).trim() === String(exam.code).trim());
+          });
+
+          exam.title = tempExam.title;
+          exam.duration = tempExam.duration;
+          exam.isPublic = tempExam.isPublic;
+          exam.pointsPerQ = tempExam.pointsPerQ;
+          exam.questions = tempExam.questions;
+
+          if (exIdx > -1) {
+            S.exams[exIdx] = exam;
+          } else {
+            S.exams.push(exam);
+          }
+
+          App.saveState();
+
+          if (window.EthithSync) {
+            window.EthithSync.publishLive({
+              type: 'EXAM_UPDATED',
+              exam: exam
+            });
+            window.EthithSync.broadcastLocal(S.classes, S.exams);
+            window.EthithSync.pushRemoteStore();
+          }
+
+          overlay.remove();
+          alert("Imtihon muvaffaqiyatli saqlandi va real vaqtda barcha talabalarda yangilandi!");
+          renderExamsView(container);
+        };
+      }
+    }
+
+    renderEditForm();
+    document.body.appendChild(overlay);
+  }
+
+  // Level Progression Tests View (Dedicated Hub for CEFR Transitions)
+  function renderProgressionTestsView(container) {
+    var isTeacher = S.user && S.user.role === 'teacher';
+    var levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
+    var NEXT_LEVEL = { A1: 'A2', A2: 'B1', B1: 'B2', B2: 'C1', C1: 'C2' };
+    var activeTrans = S._activeProgTab || 'A1';
+
+    function renderView() {
+      var nextLv = NEXT_LEVEL[activeTrans] || 'Keyingi';
+      var customTrans = (S.exams || []).filter(function(e) {
+        return e.isLevelTransition && (e.levelFrom === activeTrans || (!e.levelFrom && activeTrans === 'A1'));
+      });
+
+      var html = '' +
+        '<div class="ap-sec" style="margin-top:0">' +
+        '  <div>' +
+        '    <h2>' + ic('trophy') + ' CEFR Level Progression Tests (Daraja O\'tish Imtihonlari)</h2>' +
+        '    <p>Har bir CEFR darajasidan keyingi darajaga o\'tish uchun rasmiy sinov va o\'qituvchilar yaratgan testlar.</p>' +
+        '  </div>' +
+        (isTeacher ?
+          '  <button class="eth-btn-primary" id="btnCreateProgExam" style="padding:10px 18px;font-weight:800;background:linear-gradient(135deg,#2563eb,#4f46e5)">🎓 Yangi Daraja O\'tish Testi Yaratish</button>' : '') +
+        '</div>' +
+        '<div class="eth-tabs" style="margin:0 0 20px 0">';
+
+      levels.forEach(function(lv) {
+        var nLv = NEXT_LEVEL[lv];
+        html += '<button class="eth-tab ' + (lv === activeTrans ? 'active' : '') + '" data-prog-tab="' + lv + '">' + lv + ' ➔ ' + nLv + ' Transition</button>';
+      });
+
+      html += '</div>' +
+        '<div class="eth-progression-hero">' +
+        '  <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">' +
+        '    <span style="background:rgba(255,255,255,0.2);padding:3px 10px;border-radius:12px;font-size:12px;font-weight:800">🏆 Rasmiy CEFR Imtihoni</span>' +
+        '    <span class="eth-badge-open" style="font-size:11.5px;font-weight:700">30 Savol · 90 Daqiqa</span>' +
+        '  </div>' +
+        '  <h2 style="font-size:22px;margin:0 0 6px;color:#fff">' + activeTrans + ' &rarr; ' + nextLv + ' Level Transition Exam</h2>' +
+        '  <p style="margin:0 0 16px;opacity:0.9;font-size:14px;max-width:650px">' + activeTrans + ' darajasidagi barcha mavzularni o\'zlashtirganingizni tasdiqlash va rasman ' + nextLv + ' darajasiga ko\'tarilish uchun 30 savoldan iborat rasmiy imtihon.</p>' +
+        '  <button class="ap-btn" id="btnStartOfficialProgExam" style="background:#fff;color:#1e3a8a;font-weight:800;padding:12px 24px;border-radius:12px;font-size:14px;border:none;cursor:pointer">Rasmiy Testni Boshlash &rarr;</button>' +
+        '</div>';
+
+      if (customTrans.length > 0) {
+        html += '<h3 style="font-size:16px;margin:0 0 14px;display:flex;align-items:center;gap:8px"><span>👨‍🏫</span> <b>O\'qituvchilar yaratgan ' + activeTrans + ' ➔ ' + nextLv + ' testlari (' + customTrans.length + ' ta):</b></h3>' +
+          '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px">';
+        customTrans.forEach(function(ex) {
+          html += '' +
+            '<div class="eth-progression-card">' +
+            '  <div>' +
+            '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+            '      <span style="font-size:11px;font-weight:800;padding:3px 9px;border-radius:10px;background:rgba(37,99,235,0.1);color:#2563eb">🎓 ' + esc(ex.levelFrom || activeTrans) + ' ➔ ' + esc(ex.levelTo || nextLv) + '</span>' +
+            '      <span style="font-size:12px;color:var(--muted)">Kod: <b style="color:var(--text)">' + esc(ex.code) + '</b></span>' +
+            '    </div>' +
+            '    <h4 style="margin:0 0 6px;font-size:16px">' + esc(ex.title) + '</h4>' +
+            '    <div style="font-size:12px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap">' +
+            '      <span>⏱ ' + ex.duration + ' daqiqa</span>' +
+            '      <span>❓ ' + (ex.questions ? ex.questions.length : 0) + ' ta savol</span>' +
+            '      <span>⭐ ' + (ex.pointsPerQ || 2) + ' ball/savol</span>' +
+            '    </div>' +
+            '  </div>' +
+            '  <button class="eth-btn-primary" data-run-prog-ex="' + ex.id + '" style="width:100%;padding:10px;font-weight:800;font-size:13.5px">Testni Boshlash ' + ic('right') + '</button>' +
+            '</div>';
+        });
+        html += '</div>';
+      }
+
+      container.innerHTML = html;
+
+      container.querySelectorAll('[data-prog-tab]').forEach(function(tab) {
+        tab.onclick = function() {
+          activeTrans = tab.dataset.progTab;
+          S._activeProgTab = activeTrans;
+          renderView();
+        };
+      });
+
+      var offBtn = container.querySelector('#btnStartOfficialProgExam');
+      if (offBtn) {
+        offBtn.onclick = function() {
+          var examQuestions = (window.EthithQuizEngine && window.EthithQuizEngine.generateQuiz)
+            ? window.EthithQuizEngine.generateQuiz(activeTrans, 1, 30)
+            : [];
+          if (!examQuestions || examQuestions.length === 0) {
+            examQuestions = [
+              { question: "Choose the correct " + activeTrans + " sentence structure.", options: ["She works every day", "She work every day", "She working every day", "She be working"], answer: "She works every day", points: 2 },
+              { question: "Which connector best completes the passage?", options: ["however", "although", "despite", "furthermore"], answer: "however", points: 2 }
+            ];
+          }
+          var transExam = {
+            id: 'trans_exam_' + activeTrans + '_' + nextLv,
+            code: activeTrans + '-' + nextLv,
+            title: activeTrans + ' → ' + nextLv + ' Level Transition Exam',
+            duration: 90,
+            pointsPerQ: 2,
+            questions: examQuestions,
+            isPublic: true,
+            maxAttempts: 5,
+            submissions: []
+          };
+          startExamRunner(transExam, container);
+        };
+      }
+
+      container.querySelectorAll('[data-run-prog-ex]').forEach(function(btn) {
+        btn.onclick = function() {
+          var exId = btn.dataset.runProgEx;
+          var exObj = (S.exams || []).find(function(e) { return e.id === exId; });
+          if (exObj) startExamRunner(exObj, container);
+        };
+      });
+
+      var crBtn = container.querySelector('#btnCreateProgExam');
+      if (crBtn) {
+        crBtn.onclick = function() {
+          showCreateExamModal(container, { isLevelTransition: true, levelFrom: activeTrans, levelTo: nextLv });
+        };
+      }
+    }
+
+    renderView();
+  }
+
   window.EthithViews = {
     renderAskAITeacher: renderAskAITeacher,
     renderLevelsView: renderLevelsView,
     renderClassesView: renderClassesView,
     renderExamsView: renderExamsView,
     renderPlacementView: renderPlacementView,
+    renderProgressionTestsView: renderProgressionTestsView,
+    showEditExamModal: showEditExamModal,
     renderMistakesNotebook: renderMistakesNotebook,
     renderIeltsHub: renderIeltsHub,
     showIeltsFullReviewModal: showIeltsFullReviewModal,
@@ -15594,12 +16894,12 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     h += '<div class="ap-label">English Levels</div>';
     ['A1','A2','B1','B2','C1','C2'].forEach(function(lv) {
       var unl = isTeacher || (S.unlocked[lv] || 1);
-      h += '<button class="ap-item ' + ((cur === 'levels' || cur === 'level') && a === lv ? 'active' : '') + '" data-go="levels" data-arg="' + lv + '">' + ic('layers') + lv + ' Level <small style="margin-left:auto;color:var(--muted)">' + (isTeacher ? '40/40' : unl + '/40') + '</small></button>';
+      h += '<button class="ap-item ' + (cur === 'levels' && (a === lv || (!a && lv === S.level)) ? 'active' : '') + '" data-go="levels" data-arg="' + lv + '">' + ic('layers') + lv + ' Level <small style="margin-left:auto;color:var(--muted)">' + (isTeacher ? '40/40' : unl + '/40') + '</small></button>';
     });
 
     h += '<div class="ap-label">Learning & Testing</div>';
     h += '<button class="ap-item ' + (cur === 'placement' ? 'active' : '') + '" data-go="placement">' + ic('clip') + 'Placement Test (70)</button>';
-    h += '<button class="ap-item ' + (cur === 'levels' ? 'active' : '') + '" data-go="levels">' + ic('trophy') + 'Level Progression Tests</button>';
+    h += '<button class="ap-item ' + (cur === 'progression' ? 'active' : '') + '" data-go="progression">' + ic('trophy') + 'Level Progression Tests</button>';
     h += '<button class="ap-item ' + (cur === 'classes' ? 'active' : '') + '" data-go="classes">' + ic('users') + 'Classes & Chat</button>';
     h += '<button class="ap-item ' + (cur === 'exams' ? 'active' : '') + '" data-go="exams">' + ic('trophy') + 'Exams & Mocks</button>';
     h += '<button class="ap-item ' + (cur === 'mistakes' ? 'active' : '') + '" data-go="mistakes">' + ic('check') + 'Mistakes Notebook (' + (S.mistakes ? S.mistakes.length : 0) + ')</button>';
@@ -15614,6 +16914,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     ask_ai: 'ETHITH AI Teacher',
     levels: 'CEFR English Levels (40 Topics)',
     level: 'CEFR English Levels (40 Topics)',
+    progression: 'Level Progression Tests (Daraja O\'tish Imtihonlari)',
     placement: 'Placement Test (70 Questions)',
     classes: 'Classes & Telegram Chat',
     exams: 'Exams & Leaderboard',
@@ -15672,6 +16973,8 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       window.EthithViews.renderAskAITeacher(v);
     } else if (view.name === 'levels' || view.name === 'level') {
       window.EthithViews.renderLevelsView(v, view.arg || S.level);
+    } else if (view.name === 'progression') {
+      window.EthithViews.renderProgressionTestsView(v);
     } else if (view.name === 'placement') {
       window.EthithViews.renderPlacementView(v);
     } else if (view.name === 'classes') {

@@ -521,10 +521,32 @@
       }
     }
 
+    
+    // J1. EXAM UPDATED (TEACHER MODIFIED EXAM IN REAL-TIME)
+    else if (event.type === 'EXAM_UPDATED' && event.exam) {
+      var exId = event.exam.id;
+      var exCode = event.exam.code;
+      var idx = (S.exams || []).findIndex(function(x) {
+        return (exId && String(x.id) === String(exId)) ||
+               (exCode && x.code && String(x.code).trim() === String(exCode).trim());
+      });
+      if (idx > -1) {
+        var existingSubs = S.exams[idx].submissions || [];
+        S.exams[idx] = event.exam;
+        if (!event.exam.submissions || event.exam.submissions.length === 0) {
+          S.exams[idx].submissions = existingSubs;
+        }
+      } else {
+        S.exams.push(event.exam);
+      }
+      uiNeedsRefresh = true;
+      if (window._ethithRefreshExamsList) window._ethithRefreshExamsList();
+    }
+
     // J. EXAM SUBMISSION (STUDENT COMPLETED EXAM)
     else if (event.type === 'EXAM_SUBMISSION' && (event.examId || event.examCode) && event.submission) {
       var targetExam = (S.exams || []).find(function(x) {
-        return (event.examId && x.id === event.examId) || (event.examCode && x.code === event.examCode);
+        return (event.examId && String(x.id) === String(event.examId)) || (event.examCode && x.code && String(x.code).trim() === String(event.examCode).trim());
       });
       if (targetExam) {
         if (!targetExam.submissions) targetExam.submissions = [];
@@ -718,11 +740,21 @@
 
     remoteExams.forEach(function(rx) {
       if (dIds.indexOf(rx.id) !== -1 || (rx.code && dIds.indexOf(rx.code) !== -1)) return;
-      var exists = localExams.find(function(x) { return x.id === rx.id || x.code === rx.code; });
+      var exists = localExams.find(function(x) {
+        return (x.id && rx.id && String(x.id) === String(rx.id)) ||
+               (x.code && rx.code && String(x.code).trim() === String(rx.code).trim());
+      });
       if (!exists) {
         localExams.push(rx);
         changed = true;
       } else {
+        if (rx.title && exists.title !== rx.title) { exists.title = rx.title; changed = true; }
+        if (rx.duration && exists.duration !== rx.duration) { exists.duration = rx.duration; changed = true; }
+        if (rx.pointsPerQ && exists.pointsPerQ !== rx.pointsPerQ) { exists.pointsPerQ = rx.pointsPerQ; changed = true; }
+        if (rx.questions && Array.isArray(rx.questions) && rx.questions.length > 0) {
+          exists.questions = rx.questions;
+          changed = true;
+        }
         if (Array.isArray(rx.submissions) && rx.submissions.length > 0) {
           if (!exists.submissions) exists.submissions = [];
           rx.submissions.forEach(function(rSub) {
@@ -818,6 +850,17 @@
 
         mergeClasses(S.classes, remoteData.classes || []);
         mergeExams(S.exams, remoteData.exams || [], S.deletedExamIds || []);
+        if (remoteData.accounts && Array.isArray(remoteData.accounts)) {
+          if (!S.accounts) S.accounts = [];
+          remoteData.accounts.forEach(function(rAcc) {
+            var exists = S.accounts.find(function(a) { return a.email && a.email.toLowerCase() === (rAcc.email || '').toLowerCase(); });
+            if (!exists) {
+              S.accounts.push(rAcc);
+            } else if ((rAcc.updatedAt || 0) > (exists.updatedAt || 0)) {
+              Object.assign(exists, rAcc);
+            }
+          });
+        }
 
         var cleanClasses = JSON.parse(JSON.stringify(S.classes));
         cleanClasses.forEach(function(c) {
@@ -838,6 +881,7 @@
           classes: cleanClasses,
           exams: cleanExams,
           deletedExamIds: dIds,
+          accounts: S.accounts || [],
           updatedAt: Date.now()
         };
 
