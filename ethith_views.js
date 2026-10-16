@@ -3654,12 +3654,16 @@
         '</div>' +
         '<div class="eth-cam-video-wrap">' +
         '  <video id="proctorVideo" autoplay playsinline muted></video>' +
-        '  <div class="eth-cam-target-oval" id="proctorOval"></div>' +
+        '  <div class="eth-cam-target-oval" id="proctorOval">' +
+        '    <div class="eth-cam-cross-h"></div>' +
+        '    <div class="eth-cam-cross-v"></div>' +
+        '    <div class="eth-cam-cross-dot"></div>' +
+        '  </div>' +
         '</div>' +
         '<div class="eth-cam-footer" id="proctorStudentName">' +
         (isTeacher ?
           '  👤 ' + esc((S.user && S.user.name) || 'Ustoz') + ' · Cheklovlar O\'chirilgan' :
-          '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 30° AI Yuz & Ko\'z Trekeri'
+          '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 40° AI Yuz & Ko\'z Trekeri'
         ) +
         '</div>';
       lockdownModal.appendChild(camBox);
@@ -3683,12 +3687,13 @@
         });
       }
 
-      // 5. Algorithmic Pure JS/Canvas 30° Face Yaw & Eye Gaze Tracker (students only)
+      // 5. Algorithmic Pure JS/Canvas 40° Dynamic Face Yaw & Eye Gaze Tracker (students only)
       if (!isTeacher) {
         var offCanvas = document.createElement('canvas');
         offCanvas.width = 160;
         offCanvas.height = 120;
         var offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
+        var noFaceTicks = 0;
 
         proctorInterval = setInterval(function() {
           if (!proctorVideo || !proctorVideo.videoWidth || isExamLocked || isExamFinished) return;
@@ -3698,138 +3703,188 @@
             var pixels = imgData.data;
 
             var skinCount = 0;
-            var ovalSkin = 0;
-            var leftSkin = 0;
-            var rightSkin = 0;
             var skinSumX = 0;
-            var darkCount = 0;
-            var leftDark = 0;
-            var rightDark = 0;
+            var skinSumY = 0;
             var minSkinX = 160, maxSkinX = 0, minSkinY = 120, maxSkinY = 0;
 
-            for (var y = 14; y < 106; y += 2) {
-              for (var x = 16; x < 144; x += 2) {
+            // Pass 1: Find face bounding box & centroid across full webcam frame
+            for (var y = 8; y < 114; y += 2) {
+              for (var x = 10; x < 150; x += 2) {
                 var idx = (y * 160 + x) * 4;
                 var r = pixels[idx];
                 var g = pixels[idx + 1];
                 var b = pixels[idx + 2];
 
                 var isSkin = (r > 42 && g > 20 && b > 12 && r > g && (r - g) >= 5 && (r - b) >= 8);
-                var isHeadDark = (r < 52 && g < 52 && b < 58 && (r + g + b) < 145);
-
-                var inOval = (((x - 80) / 32) * ((x - 80) / 32) + ((y - 58) / 42) * ((y - 58) / 42)) <= 1.0;
 
                 if (isSkin) {
                   skinCount++;
                   skinSumX += x;
-                  if (inOval) ovalSkin++;
-                  if (x < 80) leftSkin++;
-                  else rightSkin++;
+                  skinSumY += y;
                   if (x < minSkinX) minSkinX = x;
                   if (x > maxSkinX) maxSkinX = x;
                   if (y < minSkinY) minSkinY = y;
                   if (y > maxSkinY) maxSkinY = y;
                 }
-                if (isHeadDark) {
-                  darkCount++;
-                  if (x < 80) leftDark++;
-                  else rightDark++;
+              }
+            }
+
+            var oval = document.getElementById('proctorOval');
+            var angleBadge = document.getElementById('proctorCamAngle');
+            var dot = document.getElementById('proctorCamDot');
+
+            // Distance & scale tolerance (students can sit close or further away):
+            // Only flag if NO face is detected at all for 4 consecutive intervals (1 second)
+            if (skinCount < 10) {
+              noFaceTicks++;
+              if (oval) {
+                oval.style.left = '50%';
+                oval.style.top = '50%';
+                oval.style.width = '85px';
+                oval.style.height = '115px';
+              }
+              if (noFaceTicks >= 4) {
+                if (angleBadge) {
+                  angleBadge.textContent = "Yuz yo'q";
+                  angleBadge.className = 'eth-cam-badge danger';
+                }
+                if (dot) dot.className = 'eth-cam-dot danger';
+                if (oval) oval.className = 'eth-cam-target-oval danger';
+                playTitTitAlarm(6);
+                triggerInfraction("Kamerada o'quvchi yuzi aniqlanmadi (Iltimos, kamera ro'parasida o'tiring)");
+              }
+              return;
+            }
+            noFaceTicks = 0;
+
+            // Calculate dynamic face center and bounding dimensions
+            var avgSkinX = skinSumX / skinCount;
+            var avgSkinY = skinSumY / skinCount;
+            var faceMidX = (minSkinX + maxSkinX) / 2;
+            var faceMidY = (minSkinY + maxSkinY) / 2;
+            var faceW = Math.max(32, maxSkinX - minSkinX);
+            var faceH = Math.max(40, maxSkinY - minSkinY);
+
+            // Dynamic Oval & Crosshair tracking:
+            // Since webcam video is mirrored via CSS scaleX(-1), mirrored screen X is (160 - faceMidX)
+            if (oval) {
+              var screenXPercent = ((160 - faceMidX) / 160) * 100;
+              var screenYPercent = (faceMidY / 120) * 100;
+              var ovalPxW = Math.max(68, Math.min(136, Math.round(faceW * 1.35)));
+              var ovalPxH = Math.max(90, Math.min(145, Math.round(faceH * 1.38)));
+
+              oval.style.left = screenXPercent.toFixed(1) + '%';
+              oval.style.top = screenYPercent.toFixed(1) + '%';
+              oval.style.width = ovalPxW + 'px';
+              oval.style.height = ovalPxH + 'px';
+            }
+
+            // Pass 2: Calculate symmetry relative to user's face midline (faceMidX)
+            var relLeftSkin = 0, relRightSkin = 0;
+            var relLeftDark = 0, relRightDark = 0;
+
+            for (var py = Math.max(8, minSkinY - 6); py <= Math.min(114, maxSkinY + 6); py += 2) {
+              for (var px = Math.max(8, minSkinX - 16); px <= Math.min(152, maxSkinX + 16); px += 2) {
+                var pidx2 = (py * 160 + px) * 4;
+                var pr = pixels[pidx2], pg = pixels[pidx2 + 1], pb = pixels[pidx2 + 2];
+                var pIsSkin = (pr > 42 && pg > 20 && pb > 12 && pr > pg && (pr - pg) >= 5 && (pr - pb) >= 8);
+                var pIsDark = (pr < 52 && pg < 52 && pb < 58 && (pr + pg + pb) < 145);
+
+                if (pIsSkin) {
+                  if (px < faceMidX) relLeftSkin++;
+                  else relRightSkin++;
+                }
+                if (pIsDark) {
+                  if (px < faceMidX) relLeftDark++;
+                  else relRightDark++;
                 }
               }
             }
 
-            // 1. Skin Centroid & Asymmetry (Yaw Tracker)
-            var avgSkinX = skinCount > 20 ? (skinSumX / skinCount) : 80;
-            var skinShift = Math.abs(avgSkinX - 80);
-            var skinAsym = (leftSkin + rightSkin) > 0 ? (Math.abs(leftSkin - rightSkin) / (leftSkin + rightSkin + 1)) : 0;
-            var ovalContainment = skinCount > 20 ? (ovalSkin / skinCount) : 0;
-
-            // 2. Headphone/Ear Profile Contrast
-            var leftRatio = leftDark / (leftSkin + 1);
-            var rightRatio = rightDark / (rightSkin + 1);
+            var skinAsym = (relLeftSkin + relRightSkin) > 0 ? (Math.abs(relLeftSkin - relRightSkin) / (relLeftSkin + relRightSkin + 1)) : 0;
+            var centroidMidDiff = Math.abs(avgSkinX - faceMidX);
+            var leftRatio = relLeftDark / (relLeftSkin + 1);
+            var rightRatio = relRightDark / (relRightSkin + 1);
             var profileContrast = Math.abs(leftRatio - rightRatio);
 
-            // 3. Eye Gaze Analysis in Eye Zone
-            var eyeTop = Math.max(38, Math.round(minSkinY + (maxSkinY - minSkinY) * 0.22));
-            var eyeBottom = Math.min(65, Math.round(minSkinY + (maxSkinY - minSkinY) * 0.44));
+            // Pass 3: Eye Gaze Analysis across Eye Band (Pupil centroid & Sclera distribution)
+            var eyeTop = Math.max(26, Math.round(minSkinY + faceH * 0.18));
+            var eyeBottom = Math.min(76, Math.round(minSkinY + faceH * 0.44));
             var eyeLeftDark = 0, eyeRightDark = 0;
             var eyeLeftWhite = 0, eyeRightWhite = 0;
 
             for (var ey = eyeTop; ey <= eyeBottom; ey += 2) {
-              for (var ex = Math.max(36, minSkinX + 4); ex <= Math.min(124, maxSkinX - 4); ex += 2) {
+              for (var ex = Math.max(18, minSkinX + 2); ex <= Math.min(142, maxSkinX - 2); ex += 2) {
                 var eidx = (ey * 160 + ex) * 4;
                 var er = pixels[eidx], eg = pixels[eidx + 1], eb = pixels[eidx + 2];
                 var elum = 0.299 * er + 0.587 * eg + 0.114 * eb;
 
                 if (elum < 46) {
-                  if (ex < 80) eyeLeftDark++;
+                  if (ex < faceMidX) eyeLeftDark++;
                   else eyeRightDark++;
                 } else if (elum > 95 && Math.abs(er - eb) < 25 && Math.abs(eg - eb) < 25) {
-                  if (ex < 80) eyeLeftWhite++;
+                  if (ex < faceMidX) eyeLeftWhite++;
                   else eyeRightWhite++;
                 }
               }
             }
 
-            var eyePupilAsym = (eyeLeftDark + eyeRightDark) > 8 ? (Math.abs(eyeLeftDark - eyeRightDark) / (eyeLeftDark + eyeRightDark + 1)) : 0;
+            var eyePupilAsym = (eyeLeftDark + eyeRightDark) > 6 ? (Math.abs(eyeLeftDark - eyeRightDark) / (eyeLeftDark + eyeRightDark + 1)) : 0;
             var eyeWhiteAsym = (eyeLeftWhite + eyeRightWhite) > 6 ? (Math.abs(eyeLeftWhite - eyeRightWhite) / (eyeLeftWhite + eyeRightWhite + 1)) : 0;
 
-            // Angle Calculations:
-            var isFarAway = (skinCount < 30 || ovalSkin < 25);
-            var estimatedAngle = 0;
-            var isEyeViolation = false;
+            // 4. Angle calculations:
+            // Head Yaw: Normal tilts (< 25°) are green, 30°-40° warning, > 40° triggers DANGER/INFRACTION
+            var angleSkin = Math.round((skinAsym / 0.22) * 35);
+            var angleCentroid = Math.round((centroidMidDiff / 3.2) * 35);
+            var angleContrast = Math.round((profileContrast / 1.6) * 35);
+            var angleHeadYaw = Math.min(90, Math.max(angleSkin, angleCentroid, angleContrast));
 
-            if (isFarAway) {
-              estimatedAngle = 65;
-            } else {
-              var angleSkinAsym = Math.round((skinAsym / 0.20) * 30);
-              var angleSkinShift = Math.round((skinShift / 8) * 30);
-              var angleContrast = Math.round((profileContrast / 1.5) * 30);
-              var angleEyeGaze = Math.max(Math.round((eyePupilAsym / 0.32) * 30), Math.round((eyeWhiteAsym / 0.35) * 30));
-              var angleContainment = ovalContainment < 0.58 ? Math.round((1 - ovalContainment) * 65) : 0;
+            // Eye Gaze: Reading questions allows eye glance up to 45°-50°, > 48° triggers DANGER/INFRACTION
+            var angleEyeGaze = Math.min(90, Math.max(
+              Math.round((eyePupilAsym / 0.45) * 50),
+              Math.round((eyeWhiteAsym / 0.48) * 50)
+            ));
 
-              if (angleEyeGaze >= 30) isEyeViolation = true;
-              estimatedAngle = Math.min(90, Math.max(angleSkinAsym, angleSkinShift, angleContrast, angleEyeGaze, angleContainment));
-            }
+            var isHeadDanger = (angleHeadYaw > 40);
+            var isEyeDanger = (angleEyeGaze > 48);
+            var isDanger = isHeadDanger || isEyeDanger;
 
-            var angleBadge = document.getElementById('proctorCamAngle');
-            var dot = document.getElementById('proctorCamDot');
-            var oval = document.getElementById('proctorOval');
+            var isHeadWarn = (angleHeadYaw >= 30 && !isHeadDanger);
+            var isEyeWarn = (angleEyeGaze >= 35 && !isEyeDanger);
+            var isWarn = (isHeadWarn || isEyeWarn) && !isDanger;
+
+            var estimatedAngle = Math.max(angleHeadYaw, angleEyeGaze);
 
             if (angleBadge) {
-              if (estimatedAngle < 22) {
+              if (!isWarn && !isDanger) {
                 angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
                 angleBadge.className = 'eth-cam-badge';
                 if (dot) dot.className = 'eth-cam-dot';
                 if (oval) oval.className = 'eth-cam-target-oval';
-              } else if (estimatedAngle < 30) {
-                angleBadge.textContent = (isEyeViolation ? "Ko'z: " : "Burilish: ") + estimatedAngle + "°";
+              } else if (isWarn) {
+                var warnLabel = isEyeWarn ? "Ko'z: " : "Burilish: ";
+                angleBadge.textContent = warnLabel + estimatedAngle + "°";
                 angleBadge.className = 'eth-cam-badge warn';
                 if (dot) dot.className = 'eth-cam-dot warn';
                 if (oval) oval.className = 'eth-cam-target-oval warn';
               } else {
-                angleBadge.textContent = (isEyeViolation ? "Ko'z XAVF: " : "XAVF: ") + estimatedAngle + "°!";
+                var dangerLabel = isEyeDanger ? "Ko'z XAVF: " : "XAVF: ";
+                angleBadge.textContent = dangerLabel + estimatedAngle + "°!";
                 angleBadge.className = 'eth-cam-badge danger';
                 if (dot) dot.className = 'eth-cam-dot danger';
                 if (oval) oval.className = 'eth-cam-target-oval danger';
               }
             }
 
-            // Trigger alarm and lock if head or eye turns 30 degrees or more for 2 ticks (~500ms)
-            if (estimatedAngle >= 30 || isFarAway) {
+            // Trigger alarm and lock if head > 40° or eye > 48° for 2 consecutive ticks (~500ms)
+            if (isDanger) {
               turnInfractionFrames++;
               if (turnInfractionFrames >= 2) {
                 playTitTitAlarm(6);
-                if (isFarAway) {
-                  triggerInfraction("O'quvchi kameradan uzoqlashib ko'chirishga harakat qilmoqda");
-                } else if (isEyeViolation) {
-                  triggerInfraction("O'quvchi ko'zlarini o'ngga/chapga qaratib ko'chirishga harakat qilmoqda (" + estimatedAngle + "°)");
-                } else if (skinAsym >= 0.20 || profileContrast >= 1.5) {
-                  triggerInfraction("O'quvchi yuzini/boshini o'ngga yoki chapga burdi (" + estimatedAngle + "°)");
-                } else if (ovalContainment < 0.50) {
-                  triggerInfraction("O'quvchi boshini ramkadan (ovaldan) chetga chiqardi (" + estimatedAngle + "°)");
+                if (isEyeDanger) {
+                  triggerInfraction("O'quvchi ko'zini chetga burib ko'chirishga harakat qilmoqda (" + angleEyeGaze + "°)");
                 } else {
-                  triggerInfraction("O'quvchi boshini 30° dan ortiq burib ko'chirishga harakat qilmoqda (" + estimatedAngle + "°)");
+                  triggerInfraction("O'quvchi boshini 40° dan ortiq burib ko'chirishga harakat qilmoqda (" + angleHeadYaw + "°)");
                 }
               }
             } else {
@@ -5601,10 +5656,14 @@
         '</div>' +
         '<div class="eth-cam-video-wrap">' +
         '  <video id="proctorVideo" autoplay playsinline muted></video>' +
-        '  <div class="eth-cam-target-oval" id="proctorOval"></div>' +
+        '  <div class="eth-cam-target-oval" id="proctorOval">' +
+        '    <div class="eth-cam-cross-h"></div>' +
+        '    <div class="eth-cam-cross-v"></div>' +
+        '    <div class="eth-cam-cross-dot"></div>' +
+        '  </div>' +
         '</div>' +
         '<div class="eth-cam-footer" id="proctorStudentName">' +
-        '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 30° AI Yuz & Ko\'z Trekeri' +
+        '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 40° AI Yuz & Ko\'z Trekeri' +
         '</div>';
       lockdownModal.appendChild(camBox);
       makeElementDraggableAndCollapsible(camBox, camBox.querySelector('.eth-cam-header'), camBox.querySelector('#btnMinCam'));
@@ -5622,11 +5681,12 @@
         }).catch(function(err) {});
       }
 
-      // 30 degree Face Yaw & Eye Gaze Tracker
+      // 40° Dynamic Face Yaw & Eye Gaze Tracker
       var offCanvas = document.createElement('canvas');
       offCanvas.width = 160;
       offCanvas.height = 120;
       var offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
+      var noFaceTicks = 0;
 
       proctorInterval = setInterval(function() {
         var vid = document.getElementById('proctorVideo');
@@ -5637,136 +5697,184 @@
           var pixels = imgData.data;
 
           var skinCount = 0;
-          var ovalSkin = 0;
-          var leftSkin = 0;
-          var rightSkin = 0;
           var skinSumX = 0;
-          var darkCount = 0;
-          var leftDark = 0;
-          var rightDark = 0;
+          var skinSumY = 0;
           var minSkinX = 160, maxSkinX = 0, minSkinY = 120, maxSkinY = 0;
 
-          for (var y = 14; y < 106; y += 2) {
-            for (var x = 16; x < 144; x += 2) {
+          // Pass 1: Find face bounding box & centroid
+          for (var y = 8; y < 114; y += 2) {
+            for (var x = 10; x < 150; x += 2) {
               var idx = (y * 160 + x) * 4;
               var r = pixels[idx];
               var g = pixels[idx + 1];
               var b = pixels[idx + 2];
 
               var isSkin = (r > 42 && g > 20 && b > 12 && r > g && (r - g) >= 5 && (r - b) >= 8);
-              var isHeadDark = (r < 52 && g < 52 && b < 58 && (r + g + b) < 145);
-
-              var inOval = (((x - 80) / 32) * ((x - 80) / 32) + ((y - 58) / 42) * ((y - 58) / 42)) <= 1.0;
 
               if (isSkin) {
                 skinCount++;
                 skinSumX += x;
-                if (inOval) ovalSkin++;
-                if (x < 80) leftSkin++;
-                else rightSkin++;
+                skinSumY += y;
                 if (x < minSkinX) minSkinX = x;
                 if (x > maxSkinX) maxSkinX = x;
                 if (y < minSkinY) minSkinY = y;
                 if (y > maxSkinY) maxSkinY = y;
               }
-              if (isHeadDark) {
-                darkCount++;
-                if (x < 80) leftDark++;
-                else rightDark++;
+            }
+          }
+
+          var oval = document.getElementById('proctorOval');
+          var angleBadge = document.getElementById('proctorCamAngle');
+          var dot = document.getElementById('proctorCamDot');
+
+          // Distance & scale tolerance (sitting close or far):
+          if (skinCount < 10) {
+            noFaceTicks++;
+            if (oval) {
+              oval.style.left = '50%';
+              oval.style.top = '50%';
+              oval.style.width = '85px';
+              oval.style.height = '115px';
+            }
+            if (noFaceTicks >= 4) {
+              if (angleBadge) {
+                angleBadge.textContent = "Yuz yo'q";
+                angleBadge.className = 'eth-cam-badge danger';
+              }
+              if (dot) dot.className = 'eth-cam-dot danger';
+              if (oval) oval.className = 'eth-cam-target-oval danger';
+              playTitTitAlarm(6);
+              triggerInfraction("Kamerada o'quvchi yuzi aniqlanmadi (Iltimos, kamera ro'parasida o'tiring)");
+            }
+            return;
+          }
+          noFaceTicks = 0;
+
+          var avgSkinX = skinSumX / skinCount;
+          var avgSkinY = skinSumY / skinCount;
+          var faceMidX = (minSkinX + maxSkinX) / 2;
+          var faceMidY = (minSkinY + maxSkinY) / 2;
+          var faceW = Math.max(32, maxSkinX - minSkinX);
+          var faceH = Math.max(40, maxSkinY - minSkinY);
+
+          // Dynamic tracking of oval & crosshair
+          if (oval) {
+            var screenXPercent = ((160 - faceMidX) / 160) * 100;
+            var screenYPercent = (faceMidY / 120) * 100;
+            var ovalPxW = Math.max(68, Math.min(136, Math.round(faceW * 1.35)));
+            var ovalPxH = Math.max(90, Math.min(145, Math.round(faceH * 1.38)));
+
+            oval.style.left = screenXPercent.toFixed(1) + '%';
+            oval.style.top = screenYPercent.toFixed(1) + '%';
+            oval.style.width = ovalPxW + 'px';
+            oval.style.height = ovalPxH + 'px';
+          }
+
+          // Pass 2: Calculate symmetry relative to user's face midline (faceMidX)
+          var relLeftSkin = 0, relRightSkin = 0;
+          var relLeftDark = 0, relRightDark = 0;
+
+          for (var py = Math.max(8, minSkinY - 6); py <= Math.min(114, maxSkinY + 6); py += 2) {
+            for (var px = Math.max(8, minSkinX - 16); px <= Math.min(152, maxSkinX + 16); px += 2) {
+              var pidx2 = (py * 160 + px) * 4;
+              var pr = pixels[pidx2], pg = pixels[pidx2 + 1], pb = pixels[pidx2 + 2];
+              var pIsSkin = (pr > 42 && pg > 20 && pb > 12 && pr > pg && (pr - pg) >= 5 && (pr - pb) >= 8);
+              var pIsDark = (pr < 52 && pg < 52 && pb < 58 && (pr + pg + pb) < 145);
+
+              if (pIsSkin) {
+                if (px < faceMidX) relLeftSkin++;
+                else relRightSkin++;
+              }
+              if (pIsDark) {
+                if (px < faceMidX) relLeftDark++;
+                else relRightDark++;
               }
             }
           }
 
-          // 1. Skin Centroid & Asymmetry (Yaw Tracker)
-          var avgSkinX = skinCount > 20 ? (skinSumX / skinCount) : 80;
-          var skinShift = Math.abs(avgSkinX - 80);
-          var skinAsym = (leftSkin + rightSkin) > 0 ? (Math.abs(leftSkin - rightSkin) / (leftSkin + rightSkin + 1)) : 0;
-          var ovalContainment = skinCount > 20 ? (ovalSkin / skinCount) : 0;
-
-          // 2. Headphone/Ear Profile Contrast
-          var leftRatio = leftDark / (leftSkin + 1);
-          var rightRatio = rightDark / (rightSkin + 1);
+          var skinAsym = (relLeftSkin + relRightSkin) > 0 ? (Math.abs(relLeftSkin - relRightSkin) / (relLeftSkin + relRightSkin + 1)) : 0;
+          var centroidMidDiff = Math.abs(avgSkinX - faceMidX);
+          var leftRatio = relLeftDark / (relLeftSkin + 1);
+          var rightRatio = relRightDark / (relRightSkin + 1);
           var profileContrast = Math.abs(leftRatio - rightRatio);
 
-          // 3. Eye Gaze Analysis in Eye Zone
-          var eyeTop = Math.max(38, Math.round(minSkinY + (maxSkinY - minSkinY) * 0.22));
-          var eyeBottom = Math.min(65, Math.round(minSkinY + (maxSkinY - minSkinY) * 0.44));
+          // Pass 3: Eye Gaze Analysis across Eye Band (Pupil centroid & Sclera distribution)
+          var eyeTop = Math.max(26, Math.round(minSkinY + faceH * 0.18));
+          var eyeBottom = Math.min(76, Math.round(minSkinY + faceH * 0.44));
           var eyeLeftDark = 0, eyeRightDark = 0;
           var eyeLeftWhite = 0, eyeRightWhite = 0;
 
           for (var ey = eyeTop; ey <= eyeBottom; ey += 2) {
-            for (var ex = Math.max(36, minSkinX + 4); ex <= Math.min(124, maxSkinX - 4); ex += 2) {
+            for (var ex = Math.max(18, minSkinX + 2); ex <= Math.min(142, maxSkinX - 2); ex += 2) {
               var eidx = (ey * 160 + ex) * 4;
               var er = pixels[eidx], eg = pixels[eidx + 1], eb = pixels[eidx + 2];
               var elum = 0.299 * er + 0.587 * eg + 0.114 * eb;
 
               if (elum < 46) {
-                if (ex < 80) eyeLeftDark++;
+                if (ex < faceMidX) eyeLeftDark++;
                 else eyeRightDark++;
               } else if (elum > 95 && Math.abs(er - eb) < 25 && Math.abs(eg - eb) < 25) {
-                if (ex < 80) eyeLeftWhite++;
+                if (ex < faceMidX) eyeLeftWhite++;
                 else eyeRightWhite++;
               }
             }
           }
 
-          var eyePupilAsym = (eyeLeftDark + eyeRightDark) > 8 ? (Math.abs(eyeLeftDark - eyeRightDark) / (eyeLeftDark + eyeRightDark + 1)) : 0;
+          var eyePupilAsym = (eyeLeftDark + eyeRightDark) > 6 ? (Math.abs(eyeLeftDark - eyeRightDark) / (eyeLeftDark + eyeRightDark + 1)) : 0;
           var eyeWhiteAsym = (eyeLeftWhite + eyeRightWhite) > 6 ? (Math.abs(eyeLeftWhite - eyeRightWhite) / (eyeLeftWhite + eyeRightWhite + 1)) : 0;
 
-          // Angle Calculations:
-          var isFarAway = (skinCount < 30 || ovalSkin < 25);
-          var estimatedAngle = 0;
-          var isEyeViolation = false;
+          // 4. Angle calculations:
+          // Head Yaw: Normal tilts (< 25°) are green, 30°-40° warning, > 40° triggers DANGER/INFRACTION
+          var angleSkin = Math.round((skinAsym / 0.22) * 35);
+          var angleCentroid = Math.round((centroidMidDiff / 3.2) * 35);
+          var angleContrast = Math.round((profileContrast / 1.6) * 35);
+          var angleHeadYaw = Math.min(90, Math.max(angleSkin, angleCentroid, angleContrast));
 
-          if (isFarAway) {
-            estimatedAngle = 65;
-          } else {
-            var angleSkinAsym = Math.round((skinAsym / 0.20) * 30);
-            var angleSkinShift = Math.round((skinShift / 8) * 30);
-            var angleContrast = Math.round((profileContrast / 1.5) * 30);
-            var angleEyeGaze = Math.max(Math.round((eyePupilAsym / 0.32) * 30), Math.round((eyeWhiteAsym / 0.35) * 30));
-            var angleContainment = ovalContainment < 0.58 ? Math.round((1 - ovalContainment) * 65) : 0;
+          // Eye Gaze: Reading questions allows eye glance up to 45°-50°, > 48° triggers DANGER/INFRACTION
+          var angleEyeGaze = Math.min(90, Math.max(
+            Math.round((eyePupilAsym / 0.45) * 50),
+            Math.round((eyeWhiteAsym / 0.48) * 50)
+          ));
 
-            if (angleEyeGaze >= 30) isEyeViolation = true;
-            estimatedAngle = Math.min(90, Math.max(angleSkinAsym, angleSkinShift, angleContrast, angleEyeGaze, angleContainment));
-          }
+          var isHeadDanger = (angleHeadYaw > 40);
+          var isEyeDanger = (angleEyeGaze > 48);
+          var isDanger = isHeadDanger || isEyeDanger;
 
-          var angleBadge = document.getElementById('proctorCamAngle');
-          var dot = document.getElementById('proctorCamDot');
-          var oval = document.getElementById('proctorOval');
+          var isHeadWarn = (angleHeadYaw >= 30 && !isHeadDanger);
+          var isEyeWarn = (angleEyeGaze >= 35 && !isEyeDanger);
+          var isWarn = (isHeadWarn || isEyeWarn) && !isDanger;
+
+          var estimatedAngle = Math.max(angleHeadYaw, angleEyeGaze);
+
           if (angleBadge) {
-            if (estimatedAngle < 22) {
+            if (!isWarn && !isDanger) {
               angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
               angleBadge.className = 'eth-cam-badge';
               if (dot) dot.className = 'eth-cam-dot';
               if (oval) oval.className = 'eth-cam-target-oval';
-            } else if (estimatedAngle < 30) {
-              angleBadge.textContent = (isEyeViolation ? "Ko'z: " : "Burilish: ") + estimatedAngle + "°";
+            } else if (isWarn) {
+              var warnLabel = isEyeWarn ? "Ko'z: " : "Burilish: ";
+              angleBadge.textContent = warnLabel + estimatedAngle + "°";
               angleBadge.className = 'eth-cam-badge warn';
               if (dot) dot.className = 'eth-cam-dot warn';
               if (oval) oval.className = 'eth-cam-target-oval warn';
             } else {
-              angleBadge.textContent = (isEyeViolation ? "Ko'z XAVF: " : "XAVF: ") + estimatedAngle + "°!";
+              var dangerLabel = isEyeDanger ? "Ko'z XAVF: " : "XAVF: ";
+              angleBadge.textContent = dangerLabel + estimatedAngle + "°!";
               angleBadge.className = 'eth-cam-badge danger';
               if (dot) dot.className = 'eth-cam-dot danger';
               if (oval) oval.className = 'eth-cam-target-oval danger';
             }
           }
 
-          if (estimatedAngle >= 30 || isFarAway) {
+          if (isDanger) {
             turnInfractionFrames++;
             if (turnInfractionFrames >= 2) {
               playTitTitAlarm(6);
-              if (isFarAway) {
-                triggerInfraction("O'quvchi kameradan uzoqlashdi");
-              } else if (isEyeViolation) {
-                triggerInfraction("O'quvchi ko'zlarini o'ngga/chapga qaratib ko'chirishga harakat qilmoqda (" + estimatedAngle + "°)");
-              } else if (skinAsym >= 0.20 || profileContrast >= 1.5) {
-                triggerInfraction("O'quvchi yuzini/boshini o'ngga yoki chapga burdi (" + estimatedAngle + "°)");
-              } else if (ovalContainment < 0.50) {
-                triggerInfraction("O'quvchi boshini ramkadan (ovaldan) chetga chiqardi (" + estimatedAngle + "°)");
+              if (isEyeDanger) {
+                triggerInfraction("O'quvchi ko'zlarini o'ngga/chapga qaratib ko'chirishga harakat qilmoqda (" + angleEyeGaze + "°)");
               } else {
-                triggerInfraction("O'quvchi boshini 30° dan ortiq burdi (" + estimatedAngle + "°)");
+                triggerInfraction("O'quvchi boshini 40° dan ortiq burib ko'chirishga harakat qilmoqda (" + angleHeadYaw + "°)");
               }
             }
           } else {
