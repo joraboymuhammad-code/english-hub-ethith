@@ -499,7 +499,41 @@
       ]
     }
   ],
-  "exams": [],
+  "exams": [
+    {
+      "id": "exam_1792158559532",
+      "code": "371888",
+      "title": "English Examination 2026",
+      "duration": 30,
+      "pointsPerQ": 2,
+      "isPublic": false,
+      "maxAttempts": 1,
+      "audioData": null,
+      "audioName": null,
+      "audioMaxPlays": 1,
+      "pdfData": null,
+      "pdfName": null,
+      "isLevelTransition": false,
+      "levelFrom": null,
+      "levelTo": null,
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "question": "sdf",
+          "options": [
+            "sdf",
+            "sdf",
+            "sdf",
+            "sdf"
+          ],
+          "answer": "sdf",
+          "points": 2
+        }
+      ],
+      "submissions": []
+    }
+  ],
   "deletedExamIds": [
     "exam_1792011716430",
     "407221",
@@ -522,5 +556,5 @@
     "exam_1792157256775",
     "862993"
   ],
-  "updatedAt": 1792158541207
+  "updatedAt": 1792158562240
 }
