@@ -499,87 +499,7 @@
       ]
     }
   ],
-  "exams": [
-    {
-      "id": "exam_1792157256775",
-      "code": "862993",
-      "title": "English Examination 2026dfgadg bwert",
-      "duration": 31,
-      "pointsPerQ": 32,
-      "isPublic": false,
-      "maxAttempts": 1,
-      "audioData": null,
-      "audioName": null,
-      "audioMaxPlays": 1,
-      "pdfData": null,
-      "pdfName": null,
-      "isLevelTransition": false,
-      "levelFrom": null,
-      "levelTo": null,
-      "questions": [
-        {
-          "id": 1,
-          "type": "choice",
-          "question": "dgdfg",
-          "options": [
-            "dfgfd",
-            "dfg",
-            "dfg",
-            "dfg"
-          ],
-          "answer": "dfgfd",
-          "points": 32
-        }
-      ],
-      "submissions": [
-        {
-          "studentId": "muhammedjoraboyev1@gmail.com",
-          "studentName": "Muhammadyusuf",
-          "studentEmail": "muhammedjoraboyev1@gmail.com",
-          "score": 0,
-          "totalPossible": 32,
-          "percent": 0,
-          "correctCount": 0,
-          "incorrectCount": 1,
-          "attempts": 1,
-          "breakdown": [
-            {
-              "qNum": 1,
-              "question": "dgdfg",
-              "userAns": "Belgilanmagan",
-              "correctAns": "dfgfd",
-              "isCorrect": false,
-              "points": 32
-            }
-          ],
-          "timeSpent": "1 daqiqa",
-          "date": "16/10/2026, 18:47:38",
-          "attemptsHistory": [
-            {
-              "attemptNum": 1,
-              "score": 0,
-              "totalPossible": 32,
-              "percent": 0,
-              "correctCount": 0,
-              "incorrectCount": 1,
-              "timeSpent": "1 daqiqa",
-              "date": "16/10/2026, 18:47:38",
-              "breakdown": [
-                {
-                  "qNum": 1,
-                  "question": "dgdfg",
-                  "userAns": "Belgilanmagan",
-                  "correctAns": "dfgfd",
-                  "isCorrect": false,
-                  "points": 32
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
+  "exams": [],
   "deletedExamIds": [
     "exam_1792011716430",
     "407221",
@@ -598,7 +518,9 @@
     "exam_1792063487617",
     "778570",
     "exam_1792155387908",
-    "953424"
+    "953424",
+    "exam_1792157256775",
+    "862993"
   ],
-  "updatedAt": 1792158531055
+  "updatedAt": 1792158541207
 }
