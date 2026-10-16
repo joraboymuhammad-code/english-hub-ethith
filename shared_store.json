@@ -1,13 +1,12 @@
 {
   "classes": [
     {
-      "id": "cls_ethith_main",
-      "name": "IELTS & General English Intensive",
+      "id": "cls_1791996374490",
+      "name": "IELTS GURuh",
       "code": "ETH-L6S8CM",
-      "teacherId": "joraboyevmuhammad85@gmail.com",
-      "teacherName": "Instructor Muhammadyusuf",
-      "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792041702248,
+      "teacherId": "tc_l78sgm19w",
+      "teacherName": "Muhammadyusuf",
+      "teacherEmail": "joraboymuhammad@gmail.com",
       "students": [
         {
           "id": "std_sync_test",
@@ -34,18 +33,6 @@
       ],
       "messages": [
         {
-          "id": "msg_welcome",
-          "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Ustoz Muhammadyusuf",
-          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
-          "time": "12:00",
-          "reactions": {
-            "👍": [
-              "joraboyevmuhammad85@gmail.com"
-            ]
-          }
-        },
-        {
           "id": "msg_init",
           "senderId": "tc_l78sgm19w",
           "senderName": "Muhammadyusuf",
@@ -54,6 +41,18 @@
           "reactions": {
             "💡": [
               "joraboymuhammad@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_welcome",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Ustoz Muhammadyusuf",
+          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
             ]
           }
         },
@@ -391,10 +390,10 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [
-        "msg_1792042367569_7htzs",
-        "msg_1792042036562_fkm5k",
         "msg_1792042347995_z52xw",
         "msg_1792042342788_9894b",
+        "msg_1792042367569_7htzs",
+        "msg_1792042036562_fkm5k",
         "msg_1792042358929_8iaq2",
         "msg_1792041984917_cd4i9",
         "msg_1792042022803_twjuy",
@@ -402,7 +401,67 @@
       ]
     }
   ],
-  "exams": [],
+  "exams": [
+    {
+      "id": "exam_1792155387908",
+      "code": "953424",
+      "title": "test askhdfkajsbjkxc",
+      "duration": 40,
+      "pointsPerQ": 4,
+      "isPublic": true,
+      "maxAttempts": 10,
+      "audioData": null,
+      "audioName": null,
+      "audioMaxPlays": 1,
+      "pdfData": null,
+      "pdfName": null,
+      "isLevelTransition": false,
+      "levelFrom": null,
+      "levelTo": null,
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "question": "sfsdfa",
+          "options": [
+            "sdasd",
+            "asdas",
+            "asdasd",
+            "asdas"
+          ],
+          "answer": "sdasd",
+          "points": 2
+        },
+        {
+          "id": 2,
+          "type": "choice",
+          "question": "asdas",
+          "options": [
+            "asda",
+            "asd",
+            "asd",
+            "asd"
+          ],
+          "answer": "asda",
+          "points": 2
+        },
+        {
+          "id": 3,
+          "type": "choice",
+          "question": "asdasd",
+          "options": [
+            "asdasd",
+            "ASDsadAS",
+            "asdasdas",
+            "SDADASDAS"
+          ],
+          "answer": "asdasd",
+          "points": 2
+        }
+      ],
+      "submissions": []
+    }
+  ],
   "deletedExamIds": [
     "exam_1792011716430",
     "407221",
@@ -421,5 +480,5 @@
     "exam_1792063487617",
     "778570"
   ],
-  "updatedAt": 1792122620375
+  "updatedAt": 1792155389692
 }
