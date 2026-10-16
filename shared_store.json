@@ -499,7 +499,41 @@
       ]
     }
   ],
-  "exams": [],
+  "exams": [
+    {
+      "id": "exam_1792158596312",
+      "code": "624941",
+      "title": "English Examination 2026",
+      "duration": 30,
+      "pointsPerQ": 2,
+      "isPublic": true,
+      "maxAttempts": 2,
+      "audioData": null,
+      "audioName": null,
+      "audioMaxPlays": 2,
+      "pdfData": null,
+      "pdfName": null,
+      "isLevelTransition": false,
+      "levelFrom": null,
+      "levelTo": null,
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "question": "adsd",
+          "options": [
+            "asdas",
+            "sadas",
+            "dasdasd",
+            "dasdasd"
+          ],
+          "answer": "asdas",
+          "points": 2
+        }
+      ],
+      "submissions": []
+    }
+  ],
   "deletedExamIds": [
     "exam_1792011716430",
     "407221",
@@ -524,5 +558,5 @@
     "exam_1792158559532",
     "371888"
   ],
-  "updatedAt": 1792158566867
+  "updatedAt": 1792158597440
 }
