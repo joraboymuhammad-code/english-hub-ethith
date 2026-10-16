@@ -501,105 +501,6 @@
   ],
   "exams": [
     {
-      "id": "exam_1792158596312",
-      "code": "624941",
-      "title": "English Examination 2026",
-      "duration": 30,
-      "pointsPerQ": 2,
-      "isPublic": true,
-      "maxAttempts": 2,
-      "audioData": null,
-      "audioName": null,
-      "audioMaxPlays": 2,
-      "pdfData": null,
-      "pdfName": null,
-      "isLevelTransition": false,
-      "levelFrom": null,
-      "levelTo": null,
-      "questions": [
-        {
-          "id": 1,
-          "type": "choice",
-          "question": "adsd",
-          "options": [
-            "asdas",
-            "sadas",
-            "dasdasd",
-            "dasdasd"
-          ],
-          "answer": "asdas",
-          "points": 2
-        }
-      ],
-      "submissions": [
-        {
-          "studentId": "muhammedjoraboyev1@gmail.com",
-          "studentName": "Muhammadyusuf",
-          "studentEmail": "muhammedjoraboyev1@gmail.com",
-          "score": 0,
-          "totalPossible": 2,
-          "percent": 0,
-          "correctCount": 0,
-          "incorrectCount": 1,
-          "attempts": 2,
-          "breakdown": [
-            {
-              "qNum": 1,
-              "question": "adsd",
-              "userAns": "Belgilanmagan",
-              "correctAns": "asdas",
-              "isCorrect": false,
-              "points": 2
-            }
-          ],
-          "timeSpent": "1 daqiqa",
-          "date": "16/10/2026, 20:04:58",
-          "attemptsHistory": [
-            {
-              "attemptNum": 1,
-              "score": 2,
-              "totalPossible": 2,
-              "percent": 100,
-              "correctCount": 1,
-              "incorrectCount": 0,
-              "timeSpent": "1 daqiqa",
-              "date": "16/10/2026, 18:51:22",
-              "breakdown": [
-                {
-                  "qNum": 1,
-                  "question": "adsd",
-                  "userAns": "asdas",
-                  "correctAns": "asdas",
-                  "isCorrect": true,
-                  "points": 2
-                }
-              ]
-            },
-            {
-              "attemptNum": 2,
-              "score": 0,
-              "totalPossible": 2,
-              "percent": 0,
-              "correctCount": 0,
-              "incorrectCount": 1,
-              "timeSpent": "1 daqiqa",
-              "date": "16/10/2026, 20:04:58",
-              "breakdown": [
-                {
-                  "qNum": 1,
-                  "question": "adsd",
-                  "userAns": "Belgilanmagan",
-                  "correctAns": "asdas",
-                  "isCorrect": false,
-                  "points": 2
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "exam_1792163386283",
       "code": "886265",
       "title": "B1+ Progress test 1B Units 1–3",
@@ -1706,8 +1607,10 @@
     "exam_1792167543682",
     "302751",
     "exam_1792168343911",
-    "838126"
+    "838126",
+    "exam_1792158596312",
+    "624941"
   ],
   "accounts": [],
-  "updatedAt": 1792168455098
+  "updatedAt": 1792168458838
 }
