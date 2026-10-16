@@ -1,12 +1,13 @@
 {
   "classes": [
     {
-      "id": "cls_1791996374490",
-      "name": "IELTS GURuh",
+      "id": "cls_ethith_main",
+      "name": "IELTS & General English Intensive",
       "code": "ETH-L6S8CM",
-      "teacherId": "tc_l78sgm19w",
-      "teacherName": "Muhammadyusuf",
-      "teacherEmail": "joraboymuhammad@gmail.com",
+      "teacherId": "joraboyevmuhammad85@gmail.com",
+      "teacherName": "Instructor Muhammadyusuf",
+      "teacherEmail": "joraboyevmuhammad85@gmail.com",
+      "created": 1792041702248,
       "students": [
         {
           "id": "std_sync_test",
@@ -33,18 +34,6 @@
       ],
       "messages": [
         {
-          "id": "msg_init",
-          "senderId": "tc_l78sgm19w",
-          "senderName": "Muhammadyusuf",
-          "text": "Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.",
-          "time": "21:46",
-          "reactions": {
-            "💡": [
-              "joraboymuhammad@gmail.com"
-            ]
-          }
-        },
-        {
           "id": "msg_welcome",
           "senderId": "joraboyevmuhammad85@gmail.com",
           "senderName": "Ustoz Muhammadyusuf",
@@ -53,6 +42,18 @@
           "reactions": {
             "👍": [
               "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_init",
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "text": "Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.",
+          "time": "21:46",
+          "reactions": {
+            "💡": [
+              "joraboymuhammad@gmail.com"
             ]
           }
         },
@@ -325,28 +326,6 @@
           "reactions": {}
         },
         {
-          "id": "msg_1792042022803_twjuy",
-          "timestamp": 1792042022804,
-          "senderId": "tc_oprlehyw5",
-          "senderName": "Name",
-          "senderEmail": "strikeruzb52@gmail.com",
-          "text": "Yusuf bot",
-          "time": "10:27",
-          "replyTo": null,
-          "reactions": {}
-        },
-        {
-          "id": "msg_1792042028763_65lk8",
-          "timestamp": 1792042028763,
-          "senderId": "tc_oprlehyw5",
-          "senderName": "Name",
-          "senderEmail": "strikeruzb52@gmail.com",
-          "text": "Kekdid",
-          "time": "10:27",
-          "replyTo": null,
-          "reactions": {}
-        },
-        {
           "id": "msg_1792042030006_y891j",
           "timestamp": 1792042030006,
           "senderId": "st_fk1yek0xm",
@@ -412,12 +391,14 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [
-        "msg_1792042347995_z52xw",
-        "msg_1792042342788_9894b",
         "msg_1792042367569_7htzs",
         "msg_1792042036562_fkm5k",
+        "msg_1792042347995_z52xw",
+        "msg_1792042342788_9894b",
         "msg_1792042358929_8iaq2",
-        "msg_1792041984917_cd4i9"
+        "msg_1792041984917_cd4i9",
+        "msg_1792042022803_twjuy",
+        "msg_1792042028763_65lk8"
       ]
     }
   ],
@@ -440,5 +421,5 @@
     "exam_1792063487617",
     "778570"
   ],
-  "updatedAt": 1792089850198
+  "updatedAt": 1792122620375
 }
