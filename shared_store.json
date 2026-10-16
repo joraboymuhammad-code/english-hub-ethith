@@ -1,22 +1,13 @@
 {
   "classes": [
     {
-      "id": "cls_ethith_main",
-      "name": "IELTS & General English Intensive",
+      "id": "cls_1791996374490",
+      "name": "IELTS GURuh",
       "code": "ETH-L6S8CM",
-      "teacherId": "joraboyevmuhammad85@gmail.com",
-      "teacherName": "Ustoz Muhammadyusuf",
-      "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1791999637426,
+      "teacherId": "tc_l78sgm19w",
+      "teacherName": "Muhammadyusuf",
+      "teacherEmail": "joraboymuhammad@gmail.com",
       "students": [
-        {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "lastActive": 1791999647009,
-          "dailyMinutes": 732,
-          "mistakes": 0
-        },
         {
           "id": "std_sync_test",
           "name": "John Doe",
@@ -26,6 +17,14 @@
           "mistakesCount": 0
         },
         {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 847,
+          "mistakes": 0
+        },
+        {
           "id": "std_live_test_1",
           "name": "Alisher Oquvchi",
           "email": "alisher@gmail.com",
@@ -33,18 +32,6 @@
         }
       ],
       "messages": [
-        {
-          "id": "msg_welcome",
-          "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Ustoz Muhammadyusuf",
-          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
-          "time": "12:00",
-          "reactions": {
-            "👍": [
-              "joraboyevmuhammad85@gmail.com"
-            ]
-          }
-        },
         {
           "id": "msg_init",
           "senderId": "tc_l78sgm19w",
@@ -58,10 +45,22 @@
           }
         },
         {
-          "id": "msg_welcome_1",
+          "id": "msg_welcome",
           "senderId": "joraboyevmuhammad85@gmail.com",
           "senderName": "Ustoz Muhammadyusuf",
-          "text": "Assalomu alaykum! ETHITH rasmiy sinfiga xush kelibsiz. Bu yerda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_welcome_1",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Instructor Muhammadyusuf",
+          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
           "time": "12:00",
           "reactions": {
             "👍": [
@@ -294,6 +293,104 @@
               "muhammedjoraboyev1@gmail.com"
             ]
           }
+        },
+        {
+          "id": "msg_1792157318187_zv2p5",
+          "timestamp": 1792157318187,
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "alyoo",
+          "time": "18:28",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792157329491_lv9wf",
+          "timestamp": 1792157329491,
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "alyooo",
+          "time": "18:28",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792157336247_zc8zl",
+          "timestamp": 1792157336247,
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "joraboymuhammad@gmail.com",
+          "text": "salom",
+          "time": "18:28",
+          "replyTo": null,
+          "reactions": {
+            "👀": [
+              "joraboymuhammad@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_1792157345682_6gs2e",
+          "timestamp": 1792157345682,
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "joraboymuhammad@gmail.com",
+          "text": "ha",
+          "time": "18:29",
+          "replyTo": null,
+          "reactions": {
+            "👍": [
+              "joraboymuhammad@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_1792157351820_22er8",
+          "timestamp": 1792157351820,
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "ohh",
+          "time": "18:29",
+          "replyTo": null,
+          "reactions": {
+            "🌙": [
+              "muhammedjoraboyev1@gmail.com",
+              "joraboymuhammad@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_1792157392068_ewn7g",
+          "timestamp": 1792157392068,
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "joraboymuhammad@gmail.com",
+          "text": "hasgdjhbas",
+          "time": "18:29",
+          "replyTo": {
+            "id": "msg_1792157351820_22er8",
+            "senderName": "Muhammadyusuf",
+            "text": "ohh"
+          },
+          "reactions": {}
+        },
+        {
+          "id": "msg_1792157410174_9zn40",
+          "timestamp": 1792157410174,
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "joraboymuhammad@gmail.com",
+          "text": "jkzdfhcjkshdkhc",
+          "time": "18:30",
+          "replyTo": {
+            "id": "msg_1792157336247_zc8zl",
+            "senderName": "Muhammadyusuf",
+            "text": "salom"
+          },
+          "reactions": {}
         }
       ],
       "pinnedId": null,
@@ -323,28 +420,6 @@
           "senderName": "Name",
           "text": "Welcome to our class! Here we can discuss grammar topics, collaborate on quizzes, and share answers in real-time.",
           "time": "10:24",
-          "reactions": {}
-        },
-        {
-          "id": "msg_1792042022803_twjuy",
-          "timestamp": 1792042022804,
-          "senderId": "tc_oprlehyw5",
-          "senderName": "Name",
-          "senderEmail": "strikeruzb52@gmail.com",
-          "text": "Yusuf bot",
-          "time": "10:27",
-          "replyTo": null,
-          "reactions": {}
-        },
-        {
-          "id": "msg_1792042028763_65lk8",
-          "timestamp": 1792042028763,
-          "senderId": "tc_oprlehyw5",
-          "senderName": "Name",
-          "senderEmail": "strikeruzb52@gmail.com",
-          "text": "Kekdid",
-          "time": "10:27",
-          "replyTo": null,
           "reactions": {}
         },
         {
@@ -418,43 +493,42 @@
         "msg_1792042367569_7htzs",
         "msg_1792042036562_fkm5k",
         "msg_1792042358929_8iaq2",
-        "msg_1792041984917_cd4i9"
+        "msg_1792041984917_cd4i9",
+        "msg_1792042022803_twjuy",
+        "msg_1792042028763_65lk8"
       ]
     }
   ],
   "exams": [
     {
-      "id": "exam_1792063487617",
-      "code": "778570",
+      "id": "exam_1792158596312",
+      "code": "624941",
       "title": "English Examination 2026",
       "duration": 30,
       "pointsPerQ": 2,
       "isPublic": true,
-      "maxAttempts": 1,
+      "maxAttempts": 2,
+      "audioData": null,
+      "audioName": null,
+      "audioMaxPlays": 2,
+      "pdfData": null,
+      "pdfName": null,
+      "isLevelTransition": false,
+      "levelFrom": null,
+      "levelTo": null,
       "questions": [
         {
           "id": 1,
           "type": "choice",
-          "question": "Yesterday, I ________ a very interesting book at the library.",
+          "question": "adsd",
           "options": [
-            "readed",
-            "read",
-            "reads",
-            "reading"
+            "asdas",
+            "sadas",
+            "dasdasd",
+            "dasdasd"
           ],
-          "answer": "readed"
-        },
-        {
-          "id": 2,
-          "type": "choice",
-          "question": "Where ________ you go for your last summer holiday?",
-          "options": [
-            "do",
-            "did",
-            "was",
-            "were"
-          ],
-          "answer": "do"
+          "answer": "asdas",
+          "points": 2
         }
       ],
       "submissions": [
@@ -462,20 +536,72 @@
           "studentId": "muhammedjoraboyev1@gmail.com",
           "studentName": "Muhammadyusuf",
           "studentEmail": "muhammedjoraboyev1@gmail.com",
-          "score": 4,
-          "totalPossible": 4,
-          "percent": 100,
-          "correctCount": 2,
-          "incorrectCount": 0,
-          "attempts": 1,
+          "score": 0,
+          "totalPossible": 2,
+          "percent": 0,
+          "correctCount": 0,
+          "incorrectCount": 1,
+          "attempts": 2,
+          "breakdown": [
+            {
+              "qNum": 1,
+              "question": "adsd",
+              "userAns": "Belgilanmagan",
+              "correctAns": "asdas",
+              "isCorrect": false,
+              "points": 2
+            }
+          ],
           "timeSpent": "1 daqiqa",
-          "date": "16:27"
+          "date": "16/10/2026, 20:04:58",
+          "attemptsHistory": [
+            {
+              "attemptNum": 1,
+              "score": 2,
+              "totalPossible": 2,
+              "percent": 100,
+              "correctCount": 1,
+              "incorrectCount": 0,
+              "timeSpent": "1 daqiqa",
+              "date": "16/10/2026, 18:51:22",
+              "breakdown": [
+                {
+                  "qNum": 1,
+                  "question": "adsd",
+                  "userAns": "asdas",
+                  "correctAns": "asdas",
+                  "isCorrect": true,
+                  "points": 2
+                }
+              ]
+            },
+            {
+              "attemptNum": 2,
+              "score": 0,
+              "totalPossible": 2,
+              "percent": 0,
+              "correctCount": 0,
+              "incorrectCount": 1,
+              "timeSpent": "1 daqiqa",
+              "date": "16/10/2026, 20:04:58",
+              "breakdown": [
+                {
+                  "qNum": 1,
+                  "question": "adsd",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "asdas",
+                  "isCorrect": false,
+                  "points": 2
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
-      "id": "exam_1792086687814",
-      "code": "753022",
+      "id": "exam_1792163386283",
+      "code": "886265",
       "title": "B1+ Progress test 1B Units 1–3",
       "duration": 45,
       "pointsPerQ": 2,
@@ -560,7 +686,7 @@
             "who we spend time with.",
             "where we live."
           ],
-          "answer": "where we live.",
+          "answer": "c",
           "points": 2
         },
         {
@@ -573,7 +699,7 @@
             "they have a positive effect on other skills.",
             "they’re useful for explaining things clearly."
           ],
-          "answer": "they’re useful for explaining things clearly.",
+          "answer": "b",
           "points": 2
         },
         {
@@ -586,7 +712,7 @@
             "is all about listening carefully.",
             "involves more than just the words you use."
           ],
-          "answer": "involves more than just the words you use.",
+          "answer": "c",
           "points": 2
         },
         {
@@ -599,7 +725,7 @@
             "staying well physically and emotionally.",
             "being able to talk about how you feel."
           ],
-          "answer": "staying well physically and emotionally.",
+          "answer": "b",
           "points": 2
         },
         {
@@ -612,7 +738,7 @@
             "isn’t as important as it used to be.",
             "may not be possible for very busy people."
           ],
-          "answer": "helps you to organize your life.",
+          "answer": "a",
           "points": 2
         },
         {
@@ -694,9 +820,9 @@
           "id": 16,
           "num": 16,
           "type": "written",
-          "question": "In some stories, the characters’ _____ causes bad things to happen to them.",
+          "question": "In some stories, the characters' _____ causes bad things to happen to them.",
           "options": [],
-          "answer": "behaviour",
+          "answer": "bad behaviour",
           "points": 2
         },
         {
@@ -721,7 +847,7 @@
           "id": 19,
           "num": 19,
           "type": "written",
-          "question": "Myths often explain why things happen and aren’t about a real _____.",
+          "question": "Myths often explain why things happen and aren't about a real _____.",
           "options": [],
           "answer": "event",
           "points": 2
@@ -730,7 +856,7 @@
           "id": 20,
           "num": 20,
           "type": "written",
-          "question": "In myths and legends, the facts are less important than the story’s _____.",
+          "question": "In myths and legends, the facts are less important than the story's _____.",
           "options": [],
           "answer": "meaning",
           "points": 2
@@ -739,7 +865,7 @@
           "id": 21,
           "num": 21,
           "type": "written",
-          "question": "Time now 2 relax 1 [w/]",
+          "question": "Time now 2 relax [1] _____ the [2] _____ that matter most to me and [3] _____ looking forward 2 2morrow – my birthday!",
           "options": [],
           "answer": "w/",
           "points": 1
@@ -748,7 +874,7 @@
           "id": 22,
           "num": 22,
           "type": "written",
-          "question": "the 2 [ppl] that matter most to me",
+          "question": "Time now 2 relax w/ the [2] _____ that matter most to me",
           "options": [],
           "answer": "ppl",
           "points": 1
@@ -757,7 +883,7 @@
           "id": 23,
           "num": 23,
           "type": "written",
-          "question": "3 [esp] looking forward 2 2morrow",
+          "question": "and [3] _____ looking forward 2 2morrow",
           "options": [],
           "answer": "esp",
           "points": 1
@@ -766,7 +892,7 @@
           "id": 24,
           "num": 24,
           "type": "written",
-          "question": "Going 2 4 [c] friends in town.",
+          "question": "Going 2 [4] _____ friends in town.",
           "options": [],
           "answer": "c",
           "points": 1
@@ -775,9 +901,9 @@
           "id": 25,
           "num": 25,
           "type": "written",
-          "question": "I’m never 2old 5 [4] cake!",
+          "question": "I'm never 2old [5] _____ cake!",
           "options": [],
-          "answer": "4",
+          "answer": "r",
           "points": 1
         },
         {
@@ -810,7 +936,7 @@
           "id": 28,
           "num": 28,
           "type": "choice",
-          "question": "As I 3am writing / have written / had written in this blog many times...",
+          "question": "As I 3am writing / have written / had written in this blog many times, the influence of social media allows us to become more technologically connected.",
           "options": [
             "am writing",
             "have written",
@@ -836,7 +962,7 @@
           "id": 30,
           "num": 30,
           "type": "choice",
-          "question": "...the average American has only two close friends with whom they feel they 5make friends / trust someone / have a lot in common...",
+          "question": "According to recent research, the average American has only two close friends with whom they feel they 5make friends / trust someone / have a lot in common,",
           "options": [
             "make friends",
             "trust someone",
@@ -849,7 +975,7 @@
           "id": 31,
           "num": 31,
           "type": "choice",
-          "question": "...and around 25% 6admit / tell / inform that they don’t have any friends at all.",
+          "question": "and around 25% 6admit / tell / inform that they don’t have any friends at all.",
           "options": [
             "admit",
             "tell",
@@ -862,7 +988,7 @@
           "id": 32,
           "num": 32,
           "type": "choice",
-          "question": "At the same time, we 7had become / were becoming / have become a society...",
+          "question": "At the same time, we 7had become / were becoming / have become a society with a huge number of so-called ‘friends’...",
           "options": [
             "had become",
             "were becoming",
@@ -875,7 +1001,7 @@
           "id": 33,
           "num": 33,
           "type": "choice",
-          "question": "Aristotle... once asked the people of Athens, ‘Who 8had to / could / must live without friends...?’",
+          "question": "Aristotle, the famous Greek philosopher, once asked the people of Athens, ‘Who 8had to / could / must live without friends...’?",
           "options": [
             "had to",
             "could",
@@ -909,9 +1035,649 @@
           ],
           "answer": "connection",
           "points": 2
+        },
+        {
+          "id": 36,
+          "num": 36,
+          "type": "writing",
+          "question": "You recently had an unusual or exciting experience. Write a diary entry or online blog about it. Write 120–150 words.",
+          "options": [],
+          "answer": "Open response",
+          "points": 15
+        },
+        {
+          "id": 37,
+          "num": 37,
+          "type": "writing",
+          "question": "Have a discussion with a partner about life skills.",
+          "options": [],
+          "answer": "Open response",
+          "points": 20
         }
       ],
-      "submissions": []
+      "submissions": [
+        {
+          "studentId": "muhammedjoraboyev1@gmail.com",
+          "studentName": "Muhammadyusuf",
+          "studentEmail": "muhammedjoraboyev1@gmail.com",
+          "score": 16,
+          "totalPossible": 100,
+          "percent": 16,
+          "correctCount": 8,
+          "incorrectCount": 29,
+          "attempts": 1,
+          "breakdown": [
+            {
+              "qNum": 1,
+              "question": "Katia says that the key life skills aren’t the same for all of us.",
+              "userAns": "True",
+              "correctAns": "True",
+              "isCorrect": true,
+              "points": 2
+            },
+            {
+              "qNum": 2,
+              "question": "For Katia, communication skills are the most important of the life skills.",
+              "userAns": "False",
+              "correctAns": "False",
+              "isCorrect": true,
+              "points": 2
+            },
+            {
+              "qNum": 3,
+              "question": "Katia says that good communication skills come naturally to most people.",
+              "userAns": "True",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 4,
+              "question": "One example of a personal skill which Katia gives is staying healthy.",
+              "userAns": "False",
+              "correctAns": "True",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 5,
+              "question": "According to Katia, personal skills have always been essential.",
+              "userAns": "True",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 6,
+              "question": "Katia says that the life skills we need are influenced by …",
+              "userAns": "who we spend time with.",
+              "correctAns": "c",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 7,
+              "question": "One reason why Katia believes communication skills are important is that …",
+              "userAns": "they have a positive effect on other skills.",
+              "correctAns": "b",
+              "isCorrect": true,
+              "points": 2
+            },
+            {
+              "qNum": 8,
+              "question": "Katia says that communication …",
+              "userAns": "is all about listening carefully.",
+              "correctAns": "c",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 9,
+              "question": "According to Katia, ‘personal skills’ include …",
+              "userAns": "staying well physically and emotionally.",
+              "correctAns": "b",
+              "isCorrect": true,
+              "points": 2
+            },
+            {
+              "qNum": 10,
+              "question": "Katia explains that managing your time well …",
+              "userAns": "isn’t as important as it used to be.",
+              "correctAns": "a",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 11,
+              "question": "Which paragraph mentions an animal that probably doesn’t exist?",
+              "userAns": "C",
+              "correctAns": "C",
+              "isCorrect": true,
+              "points": 2
+            },
+            {
+              "qNum": 12,
+              "question": "Which paragraph explains why the truth behind a story often gets lost?",
+              "userAns": "D",
+              "correctAns": "E",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 13,
+              "question": "Which paragraph gives a general explanation for storytelling?",
+              "userAns": "A",
+              "correctAns": "A",
+              "isCorrect": true,
+              "points": 2
+            },
+            {
+              "qNum": 14,
+              "question": "Which paragraph explains why some stories have been told for a very long time?",
+              "userAns": "B",
+              "correctAns": "D",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 15,
+              "question": "Which paragraph says that people from all times and places tell and listen to stories?",
+              "userAns": "A",
+              "correctAns": "B",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 16,
+              "question": "In some stories, the characters' _____ causes bad things to happen to them.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "bad behaviour",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 17,
+              "question": "Storytelling can be found in every _____.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "culture",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 18,
+              "question": "Atlantis and El Dorado are examples of imaginary _____ from legends.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "places",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 19,
+              "question": "Myths often explain why things happen and aren't about a real _____.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "event",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 20,
+              "question": "In myths and legends, the facts are less important than the story's _____.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "meaning",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 21,
+              "question": "Time now 2 relax [1] _____ the [2] _____ that matter most to me and [3] _____ looking forward 2 2morrow – my birthday!",
+              "userAns": "Belgilanmagan",
+              "correctAns": "w/",
+              "isCorrect": false,
+              "points": 1
+            },
+            {
+              "qNum": 22,
+              "question": "Time now 2 relax w/ the [2] _____ that matter most to me",
+              "userAns": "Belgilanmagan",
+              "correctAns": "ppl",
+              "isCorrect": false,
+              "points": 1
+            },
+            {
+              "qNum": 23,
+              "question": "and [3] _____ looking forward 2 2morrow",
+              "userAns": "Belgilanmagan",
+              "correctAns": "esp",
+              "isCorrect": false,
+              "points": 1
+            },
+            {
+              "qNum": 24,
+              "question": "Going 2 [4] _____ friends in town.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "c",
+              "isCorrect": false,
+              "points": 1
+            },
+            {
+              "qNum": 25,
+              "question": "I'm never 2old [5] _____ cake!",
+              "userAns": "Belgilanmagan",
+              "correctAns": "r",
+              "isCorrect": false,
+              "points": 1
+            },
+            {
+              "qNum": 26,
+              "question": "In a world driven by technology that seems to have no limits, what 1was happening / is happening / had happened to true friendship?",
+              "userAns": "was happening",
+              "correctAns": "is happening",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 27,
+              "question": "And if so, what 2does this mean / did that mean / has this meant for us?",
+              "userAns": "does this mean",
+              "correctAns": "does this mean",
+              "isCorrect": true,
+              "points": 2
+            },
+            {
+              "qNum": 28,
+              "question": "As I 3am writing / have written / had written in this blog many times, the influence of social media allows us to become more technologically connected.",
+              "userAns": "am writing",
+              "correctAns": "have written",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 29,
+              "question": "Yet, we 4feel / want / seem to be losing other more important relationships.",
+              "userAns": "want",
+              "correctAns": "seem",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 30,
+              "question": "According to recent research, the average American has only two close friends with whom they feel they 5make friends / trust someone / have a lot in common,",
+              "userAns": "trust someone",
+              "correctAns": "have a lot in common",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 31,
+              "question": "and around 25% 6admit / tell / inform that they don’t have any friends at all.",
+              "userAns": "admit",
+              "correctAns": "admit",
+              "isCorrect": true,
+              "points": 2
+            },
+            {
+              "qNum": 32,
+              "question": "At the same time, we 7had become / were becoming / have become a society with a huge number of so-called ‘friends’...",
+              "userAns": "were becoming",
+              "correctAns": "have become",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 33,
+              "question": "Aristotle, the famous Greek philosopher, once asked the people of Athens, ‘Who 8had to / could / must live without friends...’?",
+              "userAns": "had to",
+              "correctAns": "could",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 34,
+              "question": "Importantly, he 9believed / had believed / has believed that good friends were far better...",
+              "userAns": "had believed",
+              "correctAns": "believed",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 35,
+              "question": "Which of these types of friends do you have a deeper 10achievement / connection / happiness with?",
+              "userAns": "achievement",
+              "correctAns": "connection",
+              "isCorrect": false,
+              "points": 2
+            },
+            {
+              "qNum": 36,
+              "question": "You recently had an unusual or exciting experience. Write a diary entry or online blog about it. Write 120–150 words.",
+              "userAns": "asdc",
+              "correctAns": "Open response",
+              "isCorrect": false,
+              "points": 15
+            },
+            {
+              "qNum": 37,
+              "question": "Have a discussion with a partner about life skills.",
+              "userAns": "sda",
+              "correctAns": "Open response",
+              "isCorrect": false,
+              "points": 20
+            }
+          ],
+          "timeSpent": "2 daqiqa",
+          "date": "16/10/2026, 20:14:34",
+          "attemptsHistory": [
+            {
+              "attemptNum": 1,
+              "score": 16,
+              "totalPossible": 100,
+              "percent": 16,
+              "correctCount": 8,
+              "incorrectCount": 29,
+              "timeSpent": "2 daqiqa",
+              "date": "16/10/2026, 20:14:34",
+              "breakdown": [
+                {
+                  "qNum": 1,
+                  "question": "Katia says that the key life skills aren’t the same for all of us.",
+                  "userAns": "True",
+                  "correctAns": "True",
+                  "isCorrect": true,
+                  "points": 2
+                },
+                {
+                  "qNum": 2,
+                  "question": "For Katia, communication skills are the most important of the life skills.",
+                  "userAns": "False",
+                  "correctAns": "False",
+                  "isCorrect": true,
+                  "points": 2
+                },
+                {
+                  "qNum": 3,
+                  "question": "Katia says that good communication skills come naturally to most people.",
+                  "userAns": "True",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 4,
+                  "question": "One example of a personal skill which Katia gives is staying healthy.",
+                  "userAns": "False",
+                  "correctAns": "True",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 5,
+                  "question": "According to Katia, personal skills have always been essential.",
+                  "userAns": "True",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 6,
+                  "question": "Katia says that the life skills we need are influenced by …",
+                  "userAns": "who we spend time with.",
+                  "correctAns": "c",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 7,
+                  "question": "One reason why Katia believes communication skills are important is that …",
+                  "userAns": "they have a positive effect on other skills.",
+                  "correctAns": "b",
+                  "isCorrect": true,
+                  "points": 2
+                },
+                {
+                  "qNum": 8,
+                  "question": "Katia says that communication …",
+                  "userAns": "is all about listening carefully.",
+                  "correctAns": "c",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 9,
+                  "question": "According to Katia, ‘personal skills’ include …",
+                  "userAns": "staying well physically and emotionally.",
+                  "correctAns": "b",
+                  "isCorrect": true,
+                  "points": 2
+                },
+                {
+                  "qNum": 10,
+                  "question": "Katia explains that managing your time well …",
+                  "userAns": "isn’t as important as it used to be.",
+                  "correctAns": "a",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 11,
+                  "question": "Which paragraph mentions an animal that probably doesn’t exist?",
+                  "userAns": "C",
+                  "correctAns": "C",
+                  "isCorrect": true,
+                  "points": 2
+                },
+                {
+                  "qNum": 12,
+                  "question": "Which paragraph explains why the truth behind a story often gets lost?",
+                  "userAns": "D",
+                  "correctAns": "E",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 13,
+                  "question": "Which paragraph gives a general explanation for storytelling?",
+                  "userAns": "A",
+                  "correctAns": "A",
+                  "isCorrect": true,
+                  "points": 2
+                },
+                {
+                  "qNum": 14,
+                  "question": "Which paragraph explains why some stories have been told for a very long time?",
+                  "userAns": "B",
+                  "correctAns": "D",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 15,
+                  "question": "Which paragraph says that people from all times and places tell and listen to stories?",
+                  "userAns": "A",
+                  "correctAns": "B",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 16,
+                  "question": "In some stories, the characters' _____ causes bad things to happen to them.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "bad behaviour",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 17,
+                  "question": "Storytelling can be found in every _____.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "culture",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 18,
+                  "question": "Atlantis and El Dorado are examples of imaginary _____ from legends.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "places",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 19,
+                  "question": "Myths often explain why things happen and aren't about a real _____.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "event",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 20,
+                  "question": "In myths and legends, the facts are less important than the story's _____.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "meaning",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 21,
+                  "question": "Time now 2 relax [1] _____ the [2] _____ that matter most to me and [3] _____ looking forward 2 2morrow – my birthday!",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "w/",
+                  "isCorrect": false,
+                  "points": 1
+                },
+                {
+                  "qNum": 22,
+                  "question": "Time now 2 relax w/ the [2] _____ that matter most to me",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "ppl",
+                  "isCorrect": false,
+                  "points": 1
+                },
+                {
+                  "qNum": 23,
+                  "question": "and [3] _____ looking forward 2 2morrow",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "esp",
+                  "isCorrect": false,
+                  "points": 1
+                },
+                {
+                  "qNum": 24,
+                  "question": "Going 2 [4] _____ friends in town.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "c",
+                  "isCorrect": false,
+                  "points": 1
+                },
+                {
+                  "qNum": 25,
+                  "question": "I'm never 2old [5] _____ cake!",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "r",
+                  "isCorrect": false,
+                  "points": 1
+                },
+                {
+                  "qNum": 26,
+                  "question": "In a world driven by technology that seems to have no limits, what 1was happening / is happening / had happened to true friendship?",
+                  "userAns": "was happening",
+                  "correctAns": "is happening",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 27,
+                  "question": "And if so, what 2does this mean / did that mean / has this meant for us?",
+                  "userAns": "does this mean",
+                  "correctAns": "does this mean",
+                  "isCorrect": true,
+                  "points": 2
+                },
+                {
+                  "qNum": 28,
+                  "question": "As I 3am writing / have written / had written in this blog many times, the influence of social media allows us to become more technologically connected.",
+                  "userAns": "am writing",
+                  "correctAns": "have written",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 29,
+                  "question": "Yet, we 4feel / want / seem to be losing other more important relationships.",
+                  "userAns": "want",
+                  "correctAns": "seem",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 30,
+                  "question": "According to recent research, the average American has only two close friends with whom they feel they 5make friends / trust someone / have a lot in common,",
+                  "userAns": "trust someone",
+                  "correctAns": "have a lot in common",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 31,
+                  "question": "and around 25% 6admit / tell / inform that they don’t have any friends at all.",
+                  "userAns": "admit",
+                  "correctAns": "admit",
+                  "isCorrect": true,
+                  "points": 2
+                },
+                {
+                  "qNum": 32,
+                  "question": "At the same time, we 7had become / were becoming / have become a society with a huge number of so-called ‘friends’...",
+                  "userAns": "were becoming",
+                  "correctAns": "have become",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 33,
+                  "question": "Aristotle, the famous Greek philosopher, once asked the people of Athens, ‘Who 8had to / could / must live without friends...’?",
+                  "userAns": "had to",
+                  "correctAns": "could",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 34,
+                  "question": "Importantly, he 9believed / had believed / has believed that good friends were far better...",
+                  "userAns": "had believed",
+                  "correctAns": "believed",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 35,
+                  "question": "Which of these types of friends do you have a deeper 10achievement / connection / happiness with?",
+                  "userAns": "achievement",
+                  "correctAns": "connection",
+                  "isCorrect": false,
+                  "points": 2
+                },
+                {
+                  "qNum": 36,
+                  "question": "You recently had an unusual or exciting experience. Write a diary entry or online blog about it. Write 120–150 words.",
+                  "userAns": "asdc",
+                  "correctAns": "Open response",
+                  "isCorrect": false,
+                  "points": 15
+                },
+                {
+                  "qNum": 37,
+                  "question": "Have a discussion with a partner about life skills.",
+                  "userAns": "sda",
+                  "correctAns": "Open response",
+                  "isCorrect": false,
+                  "points": 20
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "deletedExamIds": [
@@ -924,7 +1690,20 @@
     "exam_1792022347033",
     "595867",
     "exam_1792042206065",
-    "792046"
+    "792046",
+    "exam_1792089475319",
+    "468438",
+    "exam_1792086687814",
+    "753022",
+    "exam_1792063487617",
+    "778570",
+    "exam_1792155387908",
+    "953424",
+    "exam_1792157256775",
+    "862993",
+    "exam_1792158559532",
+    "371888"
   ],
-  "updatedAt": 1792087202042
+  "accounts": [],
+  "updatedAt": 1792167392600
 }
