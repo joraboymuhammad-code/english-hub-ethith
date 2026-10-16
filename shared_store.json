@@ -401,145 +401,7 @@
       ]
     }
   ],
-  "exams": [
-    {
-      "id": "exam_1792155387908",
-      "code": "953424",
-      "title": "test askhdfkajsbjkxc",
-      "duration": 40,
-      "pointsPerQ": 4,
-      "isPublic": true,
-      "maxAttempts": 10,
-      "audioData": null,
-      "audioName": null,
-      "audioMaxPlays": 1,
-      "pdfData": null,
-      "pdfName": null,
-      "isLevelTransition": false,
-      "levelFrom": null,
-      "levelTo": null,
-      "questions": [
-        {
-          "id": 1,
-          "type": "choice",
-          "question": "sfsdfa",
-          "options": [
-            "sdasd",
-            "asdas",
-            "asdasd",
-            "asdas"
-          ],
-          "answer": "sdasd",
-          "points": 2
-        },
-        {
-          "id": 2,
-          "type": "choice",
-          "question": "asdas",
-          "options": [
-            "asda",
-            "asd",
-            "asd",
-            "asd"
-          ],
-          "answer": "asda",
-          "points": 2
-        },
-        {
-          "id": 3,
-          "type": "choice",
-          "question": "asdasd",
-          "options": [
-            "asdasd",
-            "ASDsadAS",
-            "asdasdas",
-            "SDADASDAS"
-          ],
-          "answer": "asdasd",
-          "points": 2
-        }
-      ],
-      "submissions": [
-        {
-          "studentId": "muhammedjoraboyev1@gmail.com",
-          "studentName": "Muhammadyusuf",
-          "studentEmail": "muhammedjoraboyev1@gmail.com",
-          "score": 4,
-          "totalPossible": 6,
-          "percent": 67,
-          "correctCount": 2,
-          "incorrectCount": 1,
-          "attempts": 1,
-          "breakdown": [
-            {
-              "qNum": 1,
-              "question": "sfsdfa",
-              "userAns": "sdasd",
-              "correctAns": "sdasd",
-              "isCorrect": true,
-              "points": 2
-            },
-            {
-              "qNum": 2,
-              "question": "asdas",
-              "userAns": "asd",
-              "correctAns": "asda",
-              "isCorrect": false,
-              "points": 2
-            },
-            {
-              "qNum": 3,
-              "question": "asdasd",
-              "userAns": "asdasd",
-              "correctAns": "asdasd",
-              "isCorrect": true,
-              "points": 2
-            }
-          ],
-          "timeSpent": "2 daqiqa",
-          "date": "16/10/2026, 18:02:26",
-          "attemptsHistory": [
-            {
-              "attemptNum": 1,
-              "score": 4,
-              "totalPossible": 6,
-              "percent": 67,
-              "correctCount": 2,
-              "incorrectCount": 1,
-              "timeSpent": "2 daqiqa",
-              "date": "16/10/2026, 18:02:26",
-              "breakdown": [
-                {
-                  "qNum": 1,
-                  "question": "sfsdfa",
-                  "userAns": "sdasd",
-                  "correctAns": "sdasd",
-                  "isCorrect": true,
-                  "points": 2
-                },
-                {
-                  "qNum": 2,
-                  "question": "asdas",
-                  "userAns": "asd",
-                  "correctAns": "asda",
-                  "isCorrect": false,
-                  "points": 2
-                },
-                {
-                  "qNum": 3,
-                  "question": "asdasd",
-                  "userAns": "asdasd",
-                  "correctAns": "asdasd",
-                  "isCorrect": true,
-                  "points": 2
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
+  "exams": [],
   "deletedExamIds": [
     "exam_1792011716430",
     "407221",
@@ -556,7 +418,9 @@
     "exam_1792086687814",
     "753022",
     "exam_1792063487617",
-    "778570"
+    "778570",
+    "exam_1792155387908",
+    "953424"
   ],
-  "updatedAt": 1792157143487
+  "updatedAt": 1792157205030
 }
