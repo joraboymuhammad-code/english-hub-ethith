@@ -1678,87 +1678,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "exam_1792168343911",
-      "code": "838126",
-      "title": "English Examination 2026",
-      "duration": 30,
-      "pointsPerQ": 2,
-      "isPublic": false,
-      "maxAttempts": 1,
-      "audioData": null,
-      "audioName": null,
-      "audioMaxPlays": 1,
-      "pdfData": null,
-      "pdfName": null,
-      "isLevelTransition": false,
-      "levelFrom": null,
-      "levelTo": null,
-      "questions": [
-        {
-          "id": 1,
-          "type": "choice",
-          "question": "awdas",
-          "options": [
-            "dwads",
-            "dasd",
-            "asdas",
-            "asdasd"
-          ],
-          "answer": "dwads",
-          "points": 2
-        }
-      ],
-      "submissions": [
-        {
-          "studentId": "muhammedjoraboyev1@gmail.com",
-          "studentName": "Muhammadyusuf",
-          "studentEmail": "muhammedjoraboyev1@gmail.com",
-          "score": 2,
-          "totalPossible": 2,
-          "percent": 100,
-          "correctCount": 1,
-          "incorrectCount": 0,
-          "attempts": 1,
-          "breakdown": [
-            {
-              "qNum": 1,
-              "question": "awdas",
-              "userAns": "dwads",
-              "correctAns": "dwads",
-              "isCorrect": true,
-              "points": 2,
-              "writingEvaluation": null
-            }
-          ],
-          "timeSpent": "1 daqiqa",
-          "date": "16/10/2026, 21:34:00",
-          "attemptsHistory": [
-            {
-              "attemptNum": 1,
-              "score": 2,
-              "totalPossible": 2,
-              "percent": 100,
-              "correctCount": 1,
-              "incorrectCount": 0,
-              "timeSpent": "1 daqiqa",
-              "date": "16/10/2026, 21:34:00",
-              "breakdown": [
-                {
-                  "qNum": 1,
-                  "question": "awdas",
-                  "userAns": "dwads",
-                  "correctAns": "dwads",
-                  "isCorrect": true,
-                  "points": 2,
-                  "writingEvaluation": null
-                }
-              ]
-            }
-          ]
-        }
-      ]
     }
   ],
   "deletedExamIds": [
@@ -1785,8 +1704,10 @@
     "exam_1792158559532",
     "371888",
     "exam_1792167543682",
-    "302751"
+    "302751",
+    "exam_1792168343911",
+    "838126"
   ],
   "accounts": [],
-  "updatedAt": 1792168451069
+  "updatedAt": 1792168455098
 }
