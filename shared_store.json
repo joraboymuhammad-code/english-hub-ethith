@@ -305,6 +305,17 @@
           "time": "18:28",
           "replyTo": null,
           "reactions": {}
+        },
+        {
+          "id": "msg_1792157329491_lv9wf",
+          "timestamp": 1792157329491,
+          "senderId": "st_2liav71yk",
+          "senderName": "Muhammadyusuf",
+          "senderEmail": "muhammedjoraboyev1@gmail.com",
+          "text": "alyooo",
+          "time": "18:28",
+          "replyTo": null,
+          "reactions": {}
         }
       ],
       "pinnedId": null,
@@ -468,5 +479,5 @@
     "exam_1792155387908",
     "953424"
   ],
-  "updatedAt": 1792157318745
+  "updatedAt": 1792157330007
 }
