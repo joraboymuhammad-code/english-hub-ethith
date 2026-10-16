@@ -401,7 +401,41 @@
       ]
     }
   ],
-  "exams": [],
+  "exams": [
+    {
+      "id": "exam_1792157256775",
+      "code": "862993",
+      "title": "English Examination 2026dfgadg bwert",
+      "duration": 31,
+      "pointsPerQ": 32,
+      "isPublic": false,
+      "maxAttempts": 1,
+      "audioData": null,
+      "audioName": null,
+      "audioMaxPlays": 1,
+      "pdfData": null,
+      "pdfName": null,
+      "isLevelTransition": false,
+      "levelFrom": null,
+      "levelTo": null,
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "question": "dgdfg",
+          "options": [
+            "dfgfd",
+            "dfg",
+            "dfg",
+            "dfg"
+          ],
+          "answer": "dfgfd",
+          "points": 32
+        }
+      ],
+      "submissions": []
+    }
+  ],
   "deletedExamIds": [
     "exam_1792011716430",
     "407221",
@@ -422,5 +456,5 @@
     "exam_1792155387908",
     "953424"
   ],
-  "updatedAt": 1792157205030
+  "updatedAt": 1792157261055
 }
