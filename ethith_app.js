@@ -43,6 +43,7 @@
     theme: 'light',
     classes: DEFAULT_CLASSES.slice(),
     exams: [],
+    quizzes: [],
     deletedExamIds: [],
     notifications: [],
     aiHistory: [],
@@ -68,6 +69,84 @@
 
   if (!S.deletedExamIds) S.deletedExamIds = [];
   if (!S.notifications) S.notifications = [];
+  if (!Array.isArray(S.quizzes)) S.quizzes = [];
+  if (S.user && !Array.isArray(S.user.gifts)) S.user.gifts = [];
+
+  if (S.quizzes.length === 0) {
+    S.quizzes.push({
+      id: 'quiz_main_blitz',
+      code: 'QZ-7K#9X',
+      title: 'English Vocabulary & Grammar Blitz Battle',
+      created: Date.now(),
+      teacherEmail: 'joraboyevmuhammad85@gmail.com',
+      teacherName: 'Instructor Muhammadyusuf',
+      status: 'lobby',
+      questions: [
+        {
+          id: 'q1',
+          question: 'Which word is the opposite of "Abundant"?',
+          options: ['Scarce', 'Plentiful', 'Generous', 'Sufficient'],
+          correctAnswer: 0
+        },
+        {
+          id: 'q2',
+          question: 'If I ___ harder, I would have passed the IELTS exam.',
+          options: ['studied', 'had studied', 'study', 'have studied'],
+          correctAnswer: 1
+        },
+        {
+          id: 'q3',
+          question: 'Choose the correct synonym for "Meticulous":',
+          options: ['Careless', 'Careful & Precise', 'Fast', 'Lazy'],
+          correctAnswer: 1
+        },
+        {
+          id: 'q4',
+          question: 'Neither the teacher nor the students ___ present yesterday.',
+          options: ['was', 'were', 'is', 'are'],
+          correctAnswer: 1
+        },
+        {
+          id: 'q5',
+          question: 'What is the noun form of the adjective "Curious"?',
+          options: ['Curiosity', 'Curiously', 'Curiousity', 'Curiousment'],
+          correctAnswer: 0
+        },
+        {
+          id: 'q6',
+          question: 'She ___ English for 5 years before moving to London.',
+          options: ['has learned', 'had been learning', 'learned', 'is learning'],
+          correctAnswer: 1
+        },
+        {
+          id: 'q7',
+          question: 'Which idiom means "to face a difficult situation with courage"?',
+          options: ['Bite the bullet', 'Break a leg', 'Spill the beans', 'Under the weather'],
+          correctAnswer: 0
+        },
+        {
+          id: 'q8',
+          question: 'The book was so ___ that I couldn\'t put it down.',
+          options: ['gripping', 'bored', 'exhausted', 'grip'],
+          correctAnswer: 0
+        },
+        {
+          id: 'q9',
+          question: 'By the time we arrive, the concert ___ already.',
+          options: ['will start', 'will have started', 'starts', 'started'],
+          correctAnswer: 1
+        },
+        {
+          id: 'q10',
+          question: 'Select the correctly spelled word:',
+          options: ['Accomodate', 'Acommodate', 'Accommodate', 'Acomodate'],
+          correctAnswer: 2
+        }
+      ],
+      lobbyParticipants: [],
+      lastSessionAnalysis: null
+    });
+  }
 
   if (!S.classes || S.classes.length === 0) {
     S.classes = DEFAULT_CLASSES.slice();
@@ -117,6 +196,7 @@
           if (updated) {
             S.classes = updated.classes || S.classes;
             S.exams = updated.exams || S.exams;
+            S.quizzes = updated.quizzes || S.quizzes;
             if (window._ethithCurrentView === 'classes' && S.activeClassId) {
               renderClassChat();
             }
@@ -486,7 +566,7 @@
   // ====================================================
   // ETHITH AUTO-UPDATE & CACHE-BUSTING ENGINE
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.1440";
+  window.ETHITH_BUILD_VERSION = "2026.10.17.1530";
 
   function checkAppVersion() {
     if (typeof fetch === 'undefined') return;

@@ -1988,3 +1988,749 @@ window.ETHITH_PLACEMENT = [
     "answer": "D"
   }
 ];
+
+
+// 100+ Hilarious Uzbek 3D Prizes for Live Quiz Battles
+window.ETHITH_FUNNY_PRIZES = [
+  {
+    "id": 1,
+    "name": "Eski Rezina Tapichka (43-razmer)",
+    "desc": "Har qanday ko'chirgichga qarshi eng kuchli himoya vositasi!",
+    "icon": "🩴",
+    "rarity": "Legendary"
+  },
+  {
+    "id": 2,
+    "name": "Bolalar Tagligi (Pampers XXL)",
+    "desc": "Testda hayajonlanib qo'yganlar uchun maxsus super-quruq vosita!",
+    "icon": "👶",
+    "rarity": "Legendary"
+  },
+  {
+    "id": 3,
+    "name": "Baland Poshnali Qizil Tufli (12 sm)",
+    "desc": "To'ylarda eng zo'r raqsga tushish uchun maxsus baland poshna!",
+    "icon": "👠",
+    "rarity": "Legendary"
+  },
+  {
+    "id": 4,
+    "name": "Buvim To'qigan Jun Paypoq",
+    "desc": "Katta barmog'ida ventilyatsiya teshigi bor qishki model!",
+    "icon": "🧦",
+    "rarity": "Epic"
+  },
+  {
+    "id": 5,
+    "name": "Sehrli Yopishqoq Mo'ylov",
+    "desc": "Test paytida birov tanib qolmasligi uchun Josus 007 aksessuari!",
+    "icon": "🥸",
+    "rarity": "Epic"
+  },
+  {
+    "id": 6,
+    "name": "Teshik Qoshiq (Sho'rva uchun)",
+    "desc": "Qat'iy parhez tutayotganlar uchun eng samarali oshxona quroli!",
+    "icon": "🥄",
+    "rarity": "Epic"
+  },
+  {
+    "id": 7,
+    "name": "Qaynatilgan Tuxum Po'chog'i",
+    "desc": "Kalsiyga boy, lekin yeb bo'lmaydigan qadimiy oq artefakt!",
+    "icon": "🥚",
+    "rarity": "Rare"
+  },
+  {
+    "id": 8,
+    "name": "Bir Hovuch Chaqilgan Pista Po'chog'i",
+    "desc": "Televizor ko'rganda to'kilgan qimmatbaho xazina!",
+    "icon": "🌻",
+    "rarity": "Rare"
+  },
+  {
+    "id": 9,
+    "name": "Supermen Plashchi (Oshxona Sochiq)",
+    "desc": "Uchishga kafolat berilmaydi, lekin idish artishga zo'r yaraydi!",
+    "icon": "🦸",
+    "rarity": "Epic"
+  },
+  {
+    "id": 10,
+    "name": "Sehrli Supurgi (Garri Potter)",
+    "desc": "Tezligi soatiga 2 km, asosan xonadagi changlarni uchiradi!",
+    "icon": "🧹",
+    "rarity": "Epic"
+  },
+  {
+    "id": 11,
+    "name": "Tugab Qolgan Yupqa Sovun",
+    "desc": "Qo'ldan sirpanib ketish bo'yicha mutlaq jahon chempioni!",
+    "icon": "🧼",
+    "rarity": "Rare"
+  },
+  {
+    "id": 12,
+    "name": "Qotgan Buxanka Noni Ushog'i",
+    "desc": "Tish bilan sindirib bo'lmaydigan toshdek mustahkam yodgorlik!",
+    "icon": "🥖",
+    "rarity": "Rare"
+  },
+  {
+    "id": 13,
+    "name": "Zanglagan 100-talik Mix",
+    "desc": "Devorga qoqsa egilib ketadigan qadimiy metallurgiya mo''jizasi!",
+    "icon": "🔩",
+    "rarity": "Rare"
+  },
+  {
+    "id": 14,
+    "name": "Bo'sh Shampun Shishasi (Suvli)",
+    "desc": "Oxirgi tomchisigacha tejalgan haqiqiy talabalar boyligi!",
+    "icon": "🧴",
+    "rarity": "Rare"
+  },
+  {
+    "id": 15,
+    "name": "Choynakning Qopqog'i (Choynaksiz)",
+    "desc": "Choynagi qayerdaligini hech kim bilmaydi, lekin qopqog'i bor!",
+    "icon": "🍵",
+    "rarity": "Rare"
+  },
+  {
+    "id": 16,
+    "name": "Yoriq Plastik Paqir",
+    "desc": "Suvni 3 soniyada o'tkazib yuboradigan zamonaviy oqava filtr!",
+    "icon": "🪣",
+    "rarity": "Rare"
+  },
+  {
+    "id": 17,
+    "name": "Achchiq Ko'zyosh Piyozi",
+    "desc": "Har qanday ko'zdan bexato yosh chiqara oladigan super-sabzavot!",
+    "icon": "🧅",
+    "rarity": "Rare"
+  },
+  {
+    "id": 18,
+    "name": "Teshik Havo Shari",
+    "desc": "Qancha puflasangiz ham shishmaydigan asab toblash vositasi!",
+    "icon": "🎈",
+    "rarity": "Rare"
+  },
+  {
+    "id": 19,
+    "name": "Bitta Oynagi Yo'q Ko'zoynak",
+    "desc": "Dunyoni faqat 50% ko'rishni xohlovchilar uchun zamonaviy linza!",
+    "icon": "🕶️",
+    "rarity": "Epic"
+  },
+  {
+    "id": 20,
+    "name": "Yog'och Bolta (O'yinchoq)",
+    "desc": "O'tin yorishga mutlaqo yaramaydi, lekin qaltiratadi!",
+    "icon": "🪓",
+    "rarity": "Rare"
+  },
+  {
+    "id": 21,
+    "name": "Bitta Bokser Qo'lqopi (Chap qo'l)",
+    "desc": "Faqat chap qo'lda jang qiladigan bir qo'lli boks ustasi sovg'asi!",
+    "icon": "🥊",
+    "rarity": "Epic"
+  },
+  {
+    "id": 22,
+    "name": "Yarimta Banan Po'chog'i",
+    "desc": "Yo'lingizdagi raqiblarni chalib yiqitish uchun klassik tuzoq!",
+    "icon": "🍌",
+    "rarity": "Rare"
+  },
+  {
+    "id": 23,
+    "name": "Tuklari To'kilgan Tish Cho'tkasi",
+    "desc": "Tishni tozalash o'rniga milkni qitiqlaydigan yodgorlik!",
+    "icon": "🪥",
+    "rarity": "Rare"
+  },
+  {
+    "id": 24,
+    "name": "Yarimta Qizil G'isht",
+    "desc": "Cho'ntakda olib yurish uchun juda og'ir, lekin ishonchli boylik!",
+    "icon": "🧱",
+    "rarity": "Rare"
+  },
+  {
+    "id": 25,
+    "name": "Bo'sh Qog'oz Naychasi (Karton)",
+    "desc": "Durbin qilib qarasa uzoqdagi kelajakni tumanli ko'rsatadi!",
+    "icon": "🧻",
+    "rarity": "Rare"
+  },
+  {
+    "id": 26,
+    "name": "Singan Plastik Qalam",
+    "desc": "Yozayotganda doim sinadigan eng asabiy o'quv quroli!",
+    "icon": "✏️",
+    "rarity": "Rare"
+  },
+  {
+    "id": 27,
+    "name": "Muddati O'tgan Chipta (2015)",
+    "desc": "2015-yildagi avtobus uchun to'langan tarixiy hujjat!",
+    "icon": "🎟️",
+    "rarity": "Rare"
+  },
+  {
+    "id": 28,
+    "name": "Bir Dona Gugurt Cho'pi (Yongan)",
+    "desc": "U bilan hech narsani yoqib bo'lmaydi, lekin qora iz qoldiradi!",
+    "icon": "🪵",
+    "rarity": "Rare"
+  },
+  {
+    "id": 29,
+    "name": "O'chib Qolgan Batareyka",
+    "desc": "Pultga urib-urib ishlatiladigan afsonaviy energiya manbai!",
+    "icon": "🔋",
+    "rarity": "Rare"
+  },
+  {
+    "id": 30,
+    "name": "Simi Uzilgan Quloqchin (Bir quloq)",
+    "desc": "Faqat chap quloqda musiqa eshitadigan g'alati aksessuar!",
+    "icon": "🎧",
+    "rarity": "Rare"
+  },
+  {
+    "id": 31,
+    "name": "Teshik Soyabon",
+    "desc": "Yomg'irda boshingizni emas, yelkangizni ho'l qiladigan maxsus model!",
+    "icon": "☂️",
+    "rarity": "Rare"
+  },
+  {
+    "id": 32,
+    "name": "Yopishqoq Saqich (Parta tagidan)",
+    "desc": "Maktab partasining tagidan topilgan 10 yillik yodgorlik!",
+    "icon": "🍬",
+    "rarity": "Rare"
+  },
+  {
+    "id": 33,
+    "name": "Plastik Qalpog'i Yo'q Ruchka",
+    "desc": "Cho'ntakni ko'kartirib siyoh oqizish bo'yicha chempion!",
+    "icon": "🖊️",
+    "rarity": "Rare"
+  },
+  {
+    "id": 34,
+    "name": "Echki Shoxi (Bir dona)",
+    "desc": "Devorga osib qo'ysa uyga hech kim kirmaydigan himoya vositasi!",
+    "icon": "🐐",
+    "rarity": "Epic"
+  },
+  {
+    "id": 35,
+    "name": "Qaynona Ko'zoynagi",
+    "desc": "Hamma narsadan kamchilik topib ko'rsatadigan super-mikroskop!",
+    "icon": "👵",
+    "rarity": "Legendary"
+  },
+  {
+    "id": 36,
+    "name": "Zanglagan Qulf (Kalitsiz)",
+    "desc": "Uni ochishning iloji yo'q, yopishning ham iloji yo'q!",
+    "icon": "🔒",
+    "rarity": "Rare"
+  },
+  {
+    "id": 37,
+    "name": "Tugmasi Yo'q Ko'ylak",
+    "desc": "Shamolda hilpirab turadigan erkin uslubdagi kiyim!",
+    "icon": "👔",
+    "rarity": "Rare"
+  },
+  {
+    "id": 38,
+    "name": "Sovuq Choy Qoldig'i",
+    "desc": "Kecha ertalab damlangan va unutilgan muzdek choy!",
+    "icon": "🫖",
+    "rarity": "Rare"
+  },
+  {
+    "id": 39,
+    "name": "Dumi Yo'q Qovoq",
+    "desc": "Oshga solishga juda katta, pichoq kesmaydigan toshdek poliz ekani!",
+    "icon": "🎃",
+    "rarity": "Rare"
+  },
+  {
+    "id": 40,
+    "name": "Sho'r Suvli Muzqaymoq",
+    "desc": "Yozda chanqaganda ichish mutlaqo tavsiya etilmaydi!",
+    "icon": "🍦",
+    "rarity": "Rare"
+  },
+  {
+    "id": 41,
+    "name": "Singan Tishli Taroq",
+    "desc": "Soch taraganda sochlarni gajak qilib chigallashtiradi!",
+    "icon": "🪮",
+    "rarity": "Rare"
+  },
+  {
+    "id": 42,
+    "name": "Boshsiz Qo'g'irchoq",
+    "desc": "Kechasi xonada qoldirish qo'rqinchli bo'lgan g'alati o'yinchoq!",
+    "icon": "🎎",
+    "rarity": "Epic"
+  },
+  {
+    "id": 43,
+    "name": "Zanglagan Dazmol",
+    "desc": "Kiyimni tekislash o'rniga qora dog' bosadigan antikvariat!",
+    "icon": "🪨",
+    "rarity": "Rare"
+  },
+  {
+    "id": 44,
+    "name": "Pechkadan Chiqqan Kuygan Kultepa",
+    "desc": "Hidi 3 kunga yetadigan o'ta qarsildoq non!",
+    "icon": "🫓",
+    "rarity": "Rare"
+  },
+  {
+    "id": 45,
+    "name": "Qo'li Yo'q Qorbobo",
+    "desc": "Bahor kelganda erib bitadigan sovuq sovg'a!",
+    "icon": "⛄",
+    "rarity": "Rare"
+  },
+  {
+    "id": 46,
+    "name": "Singan Chaqmoqtosh (Zajigalka)",
+    "desc": "Gazi to'la, lekin uchqun chiqarmaydigan asabiy narsa!",
+    "icon": "🔥",
+    "rarity": "Rare"
+  },
+  {
+    "id": 47,
+    "name": "Kiyilmagan 50-razmer Botinka",
+    "desc": "Ichiga ikkita oyoq bemalol sig'adigan bahaybat poyabzal!",
+    "icon": "🥾",
+    "rarity": "Epic"
+  },
+  {
+    "id": 48,
+    "name": "Dastasi Yo'q Bolg'a",
+    "desc": "Faqat temir boshidan iborat og'ir vaznli mo''jiza!",
+    "icon": "🔨",
+    "rarity": "Rare"
+  },
+  {
+    "id": 49,
+    "name": "G'ildiragi Yo'q Samokat",
+    "desc": "Ustiga chiqib turish mumkin, lekin harakatlanmaydi!",
+    "icon": "🛴",
+    "rarity": "Rare"
+  },
+  {
+    "id": 50,
+    "name": "Pufagi Chiqib Ketgan Durbin",
+    "desc": "Qaragan odam faqat qorong'ulikni ko'radigan optika!",
+    "icon": "🔭",
+    "rarity": "Rare"
+  },
+  {
+    "id": 51,
+    "name": "Tugab Qolgan Tasmali Kassetasi",
+    "desc": "Qalam bilan aylantirib tasmolash kerak bo'lgan retro boylik!",
+    "icon": "📼",
+    "rarity": "Rare"
+  },
+  {
+    "id": 52,
+    "name": "Bo'sh Paket (Salofan)",
+    "desc": "Ichida faqat toza Toshkent havosi qolgan yengil sovg'a!",
+    "icon": "🛍️",
+    "rarity": "Rare"
+  },
+  {
+    "id": 53,
+    "name": "Qulog'i Kesilgan Krujka",
+    "desc": "Ushlasangiz qo'lingiz kuyadigan qulay bo'lmagan idish!",
+    "icon": "☕",
+    "rarity": "Rare"
+  },
+  {
+    "id": 54,
+    "name": "Simto'rli Chivin Urgich",
+    "desc": "Chivinlar uning teshigidan bemalol o'tib ketadi!",
+    "icon": "🏸",
+    "rarity": "Rare"
+  },
+  {
+    "id": 55,
+    "name": "Zanglagan Velosiped Zanjiri",
+    "desc": "Qo'lni qoraytirib kerosin hidi taratadigan ehtiyot qism!",
+    "icon": "⛓️",
+    "rarity": "Rare"
+  },
+  {
+    "id": 56,
+    "name": "Muzlagan Suvli Butilka",
+    "desc": "Ichish uchun 5 soat kutish kerak bo'lgan aysberg!",
+    "icon": "🧊",
+    "rarity": "Rare"
+  },
+  {
+    "id": 57,
+    "name": "Toshdek Qattiq Qurt",
+    "desc": "Faqat bolg'a bilan urib maydalash mumkin bo'lgan ozuqa!",
+    "icon": "⚪",
+    "rarity": "Epic"
+  },
+  {
+    "id": 58,
+    "name": "Ichida Ignasi Bor Qopqoq",
+    "desc": "Tikuvchilik qutisini ochganda barmoqqa kiradigan narsa!",
+    "icon": "🪡",
+    "rarity": "Rare"
+  },
+  {
+    "id": 59,
+    "name": "Qurib Qolgan Kley (Yelim)",
+    "desc": "Qog'ozni emas, faqat o'zining qopqog'ini yopishtirgan!",
+    "icon": "🧴",
+    "rarity": "Rare"
+  },
+  {
+    "id": 60,
+    "name": "Bitta Chap Qo'lqoq (Qishki)",
+    "desc": "O'ng qo'li yo'qolib qolgan yolg'iz qolgan jun buyum!",
+    "icon": "🧤",
+    "rarity": "Rare"
+  },
+  {
+    "id": 61,
+    "name": "Ipga Boylangan Qog'oz Samolyot",
+    "desc": "Uchsa ham nariga ketolmaydigan qisqa masofali samolyot!",
+    "icon": "✈️",
+    "rarity": "Rare"
+  },
+  {
+    "id": 62,
+    "name": "Qotgan Konfet (Karamel)",
+    "desc": "Plombani sug'urib olish uchun maxsus tish shifokori quroli!",
+    "icon": "🍬",
+    "rarity": "Rare"
+  },
+  {
+    "id": 63,
+    "name": "Tugmasi Yo'q Pult",
+    "desc": "Kanalni almashtirish uchun gugurt cho'pi bilan bosiladigan pult!",
+    "icon": "📱",
+    "rarity": "Rare"
+  },
+  {
+    "id": 64,
+    "name": "Suvi Qochgan Limon",
+    "desc": "Siqsa ham bir tomchi sharbat chiqmaydigan sarg'aygan meva!",
+    "icon": "🍋",
+    "rarity": "Rare"
+  },
+  {
+    "id": 65,
+    "name": "Og'zi Keng Ko'za",
+    "desc": "Ichiga tanga tashlasa chiqmaydigan g'alati idish!",
+    "icon": "🏺",
+    "rarity": "Rare"
+  },
+  {
+    "id": 66,
+    "name": "Singan Futbol To'pi (Yassi)",
+    "desc": "Tepsa uchmaydigan, faqat yerda dumalaydigan charm qoplama!",
+    "icon": "⚽",
+    "rarity": "Rare"
+  },
+  {
+    "id": 67,
+    "name": "Bo'yoqli Shvabra",
+    "desc": "Pol artganda oppoq laminatni yashil qilib ketadigan vosita!",
+    "icon": "🪠",
+    "rarity": "Rare"
+  },
+  {
+    "id": 68,
+    "name": "Plastik Qirqilgan Bakalashka",
+    "desc": "Tomchilab turgan kran ostiga qo'yish uchun xalqona vosita!",
+    "icon": "🍾",
+    "rarity": "Rare"
+  },
+  {
+    "id": 69,
+    "name": "Momiq Paxmoli Qolmagan Yostiq",
+    "desc": "Taxtadek qattiq, ertalab bo'yinni qotiradigan yostiqcha!",
+    "icon": "🛏️",
+    "rarity": "Rare"
+  },
+  {
+    "id": 70,
+    "name": "Eski Telefon Zaryadchik (Simi ochiq)",
+    "desc": "Sal qimirlasa zaryad olmaydigan, burchakka qisib qo'yiladigan sim!",
+    "icon": "🔌",
+    "rarity": "Rare"
+  },
+  {
+    "id": 71,
+    "name": "Yamoqli Qora Kolgotki",
+    "desc": "Tizzasida yashil 'zelenka' izi qolgan maktab davri libosi!",
+    "icon": "👖",
+    "rarity": "Epic"
+  },
+  {
+    "id": 72,
+    "name": "Qo'shnining Adashib Chiqqan Tovuq Tuxumi",
+    "desc": "Sizning hovlingizga tushib qolgan shubhali o'lja!",
+    "icon": "🥚",
+    "rarity": "Rare"
+  },
+  {
+    "id": 73,
+    "name": "Baland Ovozli Budilnik (Qo'ng'irog'i sinib qolgan)",
+    "desc": "O'z vaqtida jiringlamay, 2 soat kech chalinadigan soat!",
+    "icon": "⏰",
+    "rarity": "Rare"
+  },
+  {
+    "id": 74,
+    "name": "Cho'ntagi Teshik Shim",
+    "desc": "Tanga solsangiz to'g'ri paypog'ingizga tushadigan qulay kiyim!",
+    "icon": "👖",
+    "rarity": "Rare"
+  },
+  {
+    "id": 75,
+    "name": "To'kilgan Mayonez Qalpog'i",
+    "desc": "Muzlatgich eshigiga yopishib qolgan sirli narsa!",
+    "icon": "🥫",
+    "rarity": "Rare"
+  },
+  {
+    "id": 76,
+    "name": "Chala Yeyilgan Xurmo",
+    "desc": "Og'izni g'ijim qilib bog'laydigan mevali syurpriz!",
+    "icon": "🫐",
+    "rarity": "Rare"
+  },
+  {
+    "id": 77,
+    "name": "Rangli Lenta (Sovg'asiz)",
+    "desc": "Chiroyli tugilgan, lekin ichida hech narsa yo'q quti!",
+    "icon": "🎀",
+    "rarity": "Rare"
+  },
+  {
+    "id": 78,
+    "name": "Zanglagan Qaychi (Qog'ozni g'ajaydigan)",
+    "desc": "Kesish o'rniga qog'ozni g'ijimlab yirtadigan asbob!",
+    "icon": "✂️",
+    "rarity": "Rare"
+  },
+  {
+    "id": 79,
+    "name": "Ichida Bo'shliq Bor Tarvuz",
+    "desc": "Chertsa jaranglaydi, ochsa ichi g'ovak bo'shliq!",
+    "icon": "🍉",
+    "rarity": "Rare"
+  },
+  {
+    "id": 80,
+    "name": "To'xtab Qolgan Qumsoat",
+    "desc": "Qumi tiqilib qolgan abadiy vaqt o'lchagich!",
+    "icon": "⏳",
+    "rarity": "Rare"
+  },
+  {
+    "id": 81,
+    "name": "Plastik Qoraygan Qoshiqcha",
+    "desc": "Issiq choyga solganda egilib qolgan bir martalik qoshiq!",
+    "icon": "🥄",
+    "rarity": "Rare"
+  },
+  {
+    "id": 82,
+    "name": "Yirtiq Quloqli Qoyoncha (O'yinchoq)",
+    "desc": "Ko'zi tushib qolgan, lekin samimiy kulib turadigan quyon!",
+    "icon": "🐰",
+    "rarity": "Rare"
+  },
+  {
+    "id": 83,
+    "name": "Simyog'ochdagi E'lon Qog'ozi (Yirtilgan)",
+    "desc": "'Sotiladi... kimga murojaat qilish' qismi yo'q qog'ozcha!",
+    "icon": "📄",
+    "rarity": "Rare"
+  },
+  {
+    "id": 84,
+    "name": "Bir Dona Spichka Qutisi (Ichida 1 ta dona)",
+    "desc": "Shamolda yoqishga urinib bo'lmaydigan yagona umid!",
+    "icon": "📦",
+    "rarity": "Rare"
+  },
+  {
+    "id": 85,
+    "name": "Chiqindisiz Qolgan Qalam Yo'ngich",
+    "desc": "Ichida faqat yog'och qirindilari tiqilib qolgan ustaracha!",
+    "icon": "🗜️",
+    "rarity": "Rare"
+  },
+  {
+    "id": 86,
+    "name": "Kamera Ko'zi Yopilgan Skotch",
+    "desc": "Xavfsizlik uchun noutbuk kamerasiga yopishtirilgan qora lenta!",
+    "icon": "📹",
+    "rarity": "Rare"
+  },
+  {
+    "id": 87,
+    "name": "Yuvilgan Paypoqning Jufti (Qidirilmoqda)",
+    "desc": "Kir yuvish mashinasi yutib yuborgan juftining akasi!",
+    "icon": "🧦",
+    "rarity": "Legendary"
+  },
+  {
+    "id": 88,
+    "name": "Qotgan Shirinlik (Xolva)",
+    "desc": "1998-yildan beri xolodilnikda saqlanayotgan shirin tosh!",
+    "icon": "🥮",
+    "rarity": "Rare"
+  },
+  {
+    "id": 89,
+    "name": "Ipiga Tugun Tushgan Naushnik",
+    "desc": "Ochish uchun yarim soat vaqt va oliy ma'lumot talab qilinadigan sim!",
+    "icon": "🎧",
+    "rarity": "Epic"
+  },
+  {
+    "id": 90,
+    "name": "Qulog'i Qaytgan Daftar Varonkasi",
+    "desc": "Barcha varoqlari g'ijimlangan chiziqsiz daftar!",
+    "icon": "📓",
+    "rarity": "Rare"
+  },
+  {
+    "id": 91,
+    "name": "Sovun Ko'pigi Uchirish Quvurchasi",
+    "desc": "Puflasangiz ko'zga sovun sepiladigan sho'x asbob!",
+    "icon": "🫧",
+    "rarity": "Rare"
+  },
+  {
+    "id": 92,
+    "name": "Suvi Qolmagan Marker",
+    "desc": "Doskaga chizsa faqat qirilgan ovoz chiqaradigan quruq qalam!",
+    "icon": "🖊️",
+    "rarity": "Rare"
+  },
+  {
+    "id": 93,
+    "name": "Eski CD Disk (Ustida tirnalgan izlar)",
+    "desc": "Faqat 3-qo'shiqni chala o'qiydigan lazer disk!",
+    "icon": "💿",
+    "rarity": "Rare"
+  },
+  {
+    "id": 94,
+    "name": "Plastik Quti (Ichida ip-igna bor)",
+    "desc": "Pechenye kutgan bolalarning eng katta umidsizlik qutisi!",
+    "icon": "🧵",
+    "rarity": "Legendary"
+  },
+  {
+    "id": 95,
+    "name": "Qovun Tilimi Po'chog'i",
+    "desc": "Shirasini pashshalar aylanib yurgan yozgi qoldiq!",
+    "icon": "🍈",
+    "rarity": "Rare"
+  },
+  {
+    "id": 96,
+    "name": "Toshli Guruch Donasi",
+    "desc": "Osh yeyayotganda tishga qirsillab tegadigan yagona donacha!",
+    "icon": "🍚",
+    "rarity": "Rare"
+  },
+  {
+    "id": 97,
+    "name": "Kiyilmagan Galstuk (Eski maktab davri)",
+    "desc": "Bo'yinga taqsa bo'g'ib qo'yadigan yaltiroq qizil lenta!",
+    "icon": "👔",
+    "rarity": "Rare"
+  },
+  {
+    "id": 98,
+    "name": "Bo'sh Qolgan Parfyum Flakoni",
+    "desc": "Hidi qolgan, lekin ichidan havodan boshqa hech narsa chiqmaydi!",
+    "icon": "🧴",
+    "rarity": "Rare"
+  },
+  {
+    "id": 99,
+    "name": "Tugab Qolgan Tish Pastasi Tubiki",
+    "desc": "Qoshiq bilan siqib ham chiqarib bo'lmaydigan quruq truba!",
+    "icon": "🪥",
+    "rarity": "Rare"
+  },
+  {
+    "id": 100,
+    "name": "Oltin Qoshiqli Eski Choynak",
+    "desc": "100-o'ringa beriladigan 'Super Kulgili Oltin Kubok'!",
+    "icon": "🏆",
+    "rarity": "Legendary"
+  },
+  {
+    "id": 101,
+    "name": "Sehrli Chorsu Shapkalari",
+    "desc": "Boshga kiysa inglizcha so'zlarni unutdiradigan milliy do'ppi!",
+    "icon": "🧢",
+    "rarity": "Epic"
+  },
+  {
+    "id": 102,
+    "name": "Singan Cho'p Muzqaymoq Cho'pi",
+    "desc": "Ustida 'Yana bitta yuting' degan yozuvi o'chib ketgan cho'p!",
+    "icon": "🪵",
+    "rarity": "Rare"
+  },
+  {
+    "id": 103,
+    "name": "Teshik Rezina Etik (Yashil)",
+    "desc": "Loy ko'lmakka tushganda ichiga loy to'ldiradigan poyabzal!",
+    "icon": "👢",
+    "rarity": "Epic"
+  },
+  {
+    "id": 104,
+    "name": "Qurigan Atirgul Bargi",
+    "desc": "Kitob orasida unutilib ketgan romantik sarg'ish yaproq!",
+    "icon": "🥀",
+    "rarity": "Rare"
+  },
+  {
+    "id": 105,
+    "name": "Sirli Oshxona Qozonchasi Qopqog'i",
+    "desc": "Pildirab qaynab turganda ovoz chiqarib o'zini ko'rsatadigan qopqoq!",
+    "icon": "🍲",
+    "rarity": "Legendary"
+  }
+];
+
+window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
+  var p = window.ETHITH_FUNNY_PRIZES || [];
+  if (!p.length) return { name: "Oltin Tapichka", icon: "🩴", desc: "Afsonaviy sovg'a!", rarity: "Legendary" };
+  return p[Math.floor(Math.random() * p.length)];
+};

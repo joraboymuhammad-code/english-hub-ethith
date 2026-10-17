@@ -577,6 +577,74 @@
       }
     }
 
+    // K. QUIZ BATTLE REAL-TIME SYNC & EVENTS
+    else if (event.type === 'QUIZ_CREATED' && event.quiz) {
+      if (!S.quizzes) S.quizzes = [];
+      var qExists = S.quizzes.some(function(q) {
+        return (q.id && q.id === event.quiz.id) || (q.code && q.code === event.quiz.code);
+      });
+      if (!qExists) {
+        S.quizzes.push(event.quiz);
+        uiNeedsRefresh = true;
+      }
+      if (window._ethithRefreshQuizList) window._ethithRefreshQuizList();
+    }
+    else if (event.type === 'QUIZ_UPDATED' && event.quiz) {
+      if (!S.quizzes) S.quizzes = [];
+      var qIdx = S.quizzes.findIndex(function(q) {
+        return (q.id && q.id === event.quiz.id) || (q.code && q.code === event.quiz.code);
+      });
+      if (qIdx > -1) {
+        S.quizzes[qIdx] = event.quiz;
+      } else {
+        S.quizzes.push(event.quiz);
+      }
+      uiNeedsRefresh = true;
+      if (window._ethithRefreshQuizList) window._ethithRefreshQuizList();
+      if (window._ethithOnQuizEvent) {
+        try { window._ethithOnQuizEvent(event); } catch(qe) {}
+      }
+    }
+    else if (event.type === 'QUIZ_DELETED' && (event.quizId || event.quizCode)) {
+      if (!S.quizzes) S.quizzes = [];
+      S.quizzes = S.quizzes.filter(function(q) {
+        return q.id !== event.quizId && q.code !== event.quizCode;
+      });
+      uiNeedsRefresh = true;
+      if (window._ethithRefreshQuizList) window._ethithRefreshQuizList();
+      if (window._ethithOnQuizEvent) {
+        try { window._ethithOnQuizEvent(event); } catch(qe) {}
+      }
+    }
+    else if ((event.type && event.type.indexOf('QUIZ_') === 0) || event.type === 'GIFT_SENT') {
+      if (event.type === 'GIFT_SENT') {
+        var myUserKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase().trim();
+        var targetKey = (event.recipientEmail || event.recipientId || '').toLowerCase().trim();
+        if (myUserKey && targetKey && myUserKey === targetKey) {
+          if (!S.user.gifts) S.user.gifts = [];
+          S.user.gifts.unshift({
+            id: 'gift_' + Date.now(),
+            name: event.giftName,
+            icon: event.giftIcon,
+            desc: event.giftDesc,
+            senderName: event.senderName,
+            timestamp: Date.now()
+          });
+          window.EthithApp.saveState();
+          var toast = document.createElement('div');
+          toast.className = 'eth-live-toast-alert';
+          toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:14px 28px;border-radius:12px;font-weight:800;z-index:2147483647;box-shadow:0 10px 30px rgba(0,0,0,0.35);border:2px solid #34d399;font-size:15px;text-align:center;';
+          toast.innerHTML = '🎁 <b>' + (event.senderName || 'Do\'stingiz') + '</b> sizga kulgili sovg\'a yubordi:<br><span style="font-size:20px;display:inline-block;margin-top:4px;">' + (event.giftIcon || '🎁') + ' ' + (event.giftName || 'Sovg\'a') + '</span>';
+          document.body.appendChild(toast);
+          setTimeout(function() { if (toast && toast.parentNode) toast.remove(); }, 6000);
+          if (window._ethithRefreshGifts) window._ethithRefreshGifts();
+        }
+      }
+      if (window._ethithOnQuizEvent) {
+        try { window._ethithOnQuizEvent(event); } catch(qe) {}
+      }
+    }
+
     if (uiNeedsRefresh) {
       window.EthithApp.saveState();
       // Always refresh class detail if chat element is visible in DOM

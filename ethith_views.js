@@ -127,6 +127,23 @@
     }
   }
 
+  // Universal Alphanumeric + Symbols Exam & Quiz Code Generator
+  // Generates rich codes like: QZ-8K#7X, MCK-5NJ!7WD, QZ-9P$3RT
+  function generateRichExamCode(prefix) {
+    prefix = prefix || 'MCK';
+    var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    var symbols = ['#', '!', '@', '$', '%', '*', '&'];
+    var p1 = '';
+    for (var i = 0; i < 3; i++) {
+      p1 += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    var sym = symbols[Math.floor(Math.random() * symbols.length)];
+    var p2 = '';
+    for (var j = 0; j < 3; j++) {
+      p2 += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return prefix + '-' + p1 + sym + p2;
+  }
 
   var App = window.EthithApp;
   var S = App.state;
@@ -2296,7 +2313,7 @@
       overlay.querySelector('#btnDuplicateExam').onclick = function() {
         var newTitle = prompt("Enter title for the duplicated mock exam:", exam.title + " (Copy)");
         if (!newTitle) return;
-        var newCode = Math.floor(100000 + Math.random() * 900000).toString();
+        var newCode = generateRichExamCode('MCK');
         var clonedQuestions = JSON.parse(JSON.stringify(exam.questions || []));
         var duplicatedExam = {
           id: 'exam_' + Date.now(),
@@ -3159,7 +3176,7 @@
           return;
         }
 
-        var code = Math.floor(100000 + Math.random() * 900000).toString();
+        var code = generateRichExamCode('MCK');
         var newExam = {
           id: 'exam_' + Date.now(),
           code: code,
@@ -7400,7 +7417,1733 @@
     renderView();
   }
 
+  
+  // =========================================================================
+  // ETHITH QUIZ TEST & LIVE BATTLE ARENA (GAMIFIED MULTIPLAYER SYSTEM)
+  // =========================================================================
+
+  function shuffleArray(arr) {
+    if (!arr || !arr.length) return [];
+    var copy = arr.slice();
+    for (var i = copy.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = copy[i];
+      copy[i] = copy[j];
+      copy[j] = temp;
+    }
+    return copy;
+  }
+
+  // Render the Main Quiz Battle View
+  function renderQuizBattleView(container) {
+    if (!container) return;
+    if (!S.user) {
+      if (window.EthithApp && window.EthithApp.showAuthModal) window.EthithApp.showAuthModal();
+      return;
+    }
+
+    if (!Array.isArray(S.quizzes)) S.quizzes = [];
+    if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
+
+    var isTeacher = (S.user.role === 'teacher' || S.user.email === 'joraboyevmuhammad85@gmail.com');
+    var activeSubtab = window._ethithQuizSubtab || 'quizzes';
+
+    function renderContent() {
+      var quizzesCount = S.quizzes.length;
+      var giftsCount = S.user.gifts.length;
+
+      var html = '<div class="max-w-6xl mx-auto space-y-6 pb-20">';
+
+      // Top Hero Banner
+      html += '<div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-amber-500 via-orange-600 to-rose-600 text-white p-6 md:p-8 shadow-xl">';
+      html += '  <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">';
+      html += '    <div>';
+      html += '      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold tracking-wider uppercase mb-2">';
+      html += '        <span>⚡ ETHITH LIVE QUIZ BATTLE</span>';
+      html += '        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>';
+      html += '      </div>';
+      html += '      <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight">Quiz Test Bellashuvi</h1>';
+      html += '      <p class="text-sm md:text-base text-white/90 mt-1 max-w-2xl">';
+      html += '        Haqiqiy vaqt rejimida jonli test musobaqasi! 10 soniyalik tezlik bonusi (+100 ball), har bir to\'g\'ri javobga +600 ball, xatoga -500 ball va 1-2-3 o\'rinlarga 100 dan ortiq kulgili 3D o\'zbekcha sovg\'alar!';
+      html += '      </p>';
+      html += '    </div>';
+      html += '    <div class="flex items-center gap-3">';
+      if (isTeacher) {
+        html += '      <button id="btnCreateQuizModal" class="px-5 py-3 rounded-xl bg-white text-orange-600 font-extrabold text-sm shadow-lg hover:bg-orange-50 active:scale-95 transition-all flex items-center gap-2">';
+        html += '        <span>➕ Yangi Quiz Tuzish</span>';
+        html += '      </button>';
+      }
+      html += '    </div>';
+      html += '  </div>';
+      html += '</div>';
+
+      // Navigation Subtabs
+      html += '<div class="flex items-center gap-3 border-b border-gray-200 dark:border-gray-700 pb-2">';
+      html += '  <button id="tabQuizzesBtn" class="px-5 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ' + (activeSubtab === 'quizzes' ? 'bg-amber-500 text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200') + '">';
+      html += '    <span>⚔️ Quiz Bellashuvlari (' + quizzesCount + ')</span>';
+      html += '  </button>';
+      html += '  <button id="tabGiftsBtn" class="px-5 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ' + (activeSubtab === 'gifts' ? 'bg-amber-500 text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200') + '">';
+      html += '    <span>🎁 Mening Kulgili Sovg\'alarim (' + giftsCount + ')</span>';
+      html += '  </button>';
+      html += '</div>';
+
+      // TAB 1: QUIZZES
+      if (activeSubtab === 'quizzes') {
+        // Search & Join Bar
+        html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col sm:flex-row items-center gap-4">';
+        html += '  <div class="relative flex-1 w-full">';
+        html += '    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg">🔍</span>';
+        html += '    <input id="quizCodeSearchInput" type="text" placeholder="Quiz kodini kiriting (masalan: QZ-7K#9X)..." class="w-full pl-11 pr-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl font-mono text-sm tracking-wide focus:outline-none focus:ring-2 focus:ring-amber-500" />';
+        html += '  </div>';
+        html += '  <button id="btnJoinByCode" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-extrabold text-sm shadow hover:opacity-95 active:scale-95 transition-all whitespace-nowrap">';
+        html += '    🚀 Bellashuvga Kirish';
+        html += '  </button>';
+        html += '</div>';
+
+        // Quiz Cards Grid
+        if (S.quizzes.length === 0) {
+          html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-12 text-center border border-gray-100 dark:border-gray-700">';
+          html += '  <div class="text-5xl mb-3">🎯</div>';
+          html += '  <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">Hozircha hech qanday Quiz mavjud emas</h3>';
+          html += '  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-md mx-auto">O\'qituvchi yangi quiz test tuzishi yoki quiz kodi orqali bellashuvga qo\'shilishingiz mumkin.</p>';
+          if (isTeacher) {
+            html += '  <button id="btnCreateQuizEmpty" class="mt-4 px-6 py-2.5 rounded-xl bg-amber-500 text-white font-bold text-sm shadow hover:bg-amber-600">';
+            html += '    ➕ Yangi Quiz Yaratish';
+            html += '  </button>';
+          }
+          html += '</div>';
+        } else {
+          html += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">';
+          S.quizzes.forEach(function(quiz) {
+            var qCount = (quiz.questions || []).length;
+            var isHost = (S.user && (S.user.email === quiz.teacherEmail || isTeacher));
+            var hasAnalysis = Boolean(quiz.lastSessionAnalysis);
+
+            html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700 flex flex-col justify-between transition-all relative overflow-hidden group">';
+            html += '  <div class="space-y-3">';
+            html += '    <div class="flex items-center justify-between gap-2">';
+            html += '      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 font-mono text-xs font-black tracking-wider">';
+            html += '        <span>' + quiz.code + '</span>';
+            html += '        <button class="btnCopyQuizCode opacity-70 hover:opacity-100" data-code="' + quiz.code + '" title="Nusxa olish">📋</button>';
+            html += '      </span>';
+
+            if (quiz.status === 'active') {
+              html += '      <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 animate-pulse">🟢 Jarayonda</span>';
+            } else if (quiz.status === 'finished') {
+              html += '      <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300">🟣 Yakunlangan</span>';
+            } else {
+              html += '      <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300">🟡 Lobby (Kutish)</span>';
+            }
+            html += '    </div>';
+
+            html += '    <h3 class="text-base font-extrabold text-gray-900 dark:text-white line-clamp-2 leading-snug">' + (quiz.title || 'Quiz Test') + '</h3>';
+
+            html += '    <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500 dark:text-gray-400">';
+            html += '      <span class="bg-gray-100 dark:bg-gray-700/60 px-2 py-0.5 rounded-md font-medium">📝 ' + qCount + ' ta savol</span>';
+            html += '      <span class="bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded-md font-bold">⚡ +600 / +100 / -500</span>';
+            html += '    </div>';
+
+            html += '    <div class="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1.5">';
+            html += '      <span>👤 Ustoz: ' + (quiz.teacherName || 'Instructor') + '</span>';
+            html += '    </div>';
+            html += '  </div>';
+
+            // Buttons
+            html += '  <div class="pt-4 mt-4 border-t border-gray-100 dark:border-gray-700/60 flex flex-col gap-2">';
+            html += '    <div class="flex items-center gap-2">';
+            html += '      <button class="btnStartQuizRunner flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-extrabold text-xs shadow hover:opacity-95 active:scale-95 transition-all flex items-center justify-center gap-1.5" data-quiz-id="' + quiz.id + '">';
+            html += '        <span>' + (isHost ? '▶️ Lobbyni ochish' : '🚀 Bellashuvga kirish') + '</span>';
+            html += '      </button>';
+
+            if (hasAnalysis) {
+              html += '      <button class="btnViewQuizAnalysis py-2.5 px-3 rounded-xl bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 font-bold text-xs hover:bg-purple-200 transition-all flex items-center justify-center gap-1" data-quiz-id="' + quiz.id + '" title="Test Tahlili">';
+              html += '        <span>📊 Tahlil</span>';
+              html += '      </button>';
+            }
+
+            if (isHost) {
+              html += '      <button class="btnDeleteQuiz py-2.5 px-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 font-bold text-xs hover:bg-rose-100 transition-all" data-quiz-id="' + quiz.id + '" title="O\'chirish">';
+              html += '        <span>🗑️</span>';
+              html += '      </button>';
+            }
+            html += '    </div>';
+            html += '  </div>';
+
+            html += '</div>';
+          });
+          html += '</div>';
+        }
+      }
+
+      // TAB 2: GIFTS
+      else if (activeSubtab === 'gifts') {
+        html += '<div class="space-y-4">';
+        html += '  <div class="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-2xl p-4 text-xs md:text-sm text-amber-900 dark:text-amber-200 flex items-center gap-3">';
+        html += '    <span class="text-2xl">🎁</span>';
+        html += '    <div>';
+        html += '      <b>Kulgili Sovg\'alar Kolleksiyasi:</b> Quiz test bellashuvlarida 1, 2 va 3-o\'rinlarni egallagan o\'quvchilarga 100 dan ortiq kulgili o\'zbekcha sovg\'alar beriladi. Ushbu sovg\'alarni do\'stlaringizga yuborishingiz mumkin!';
+        html += '    </div>';
+        html += '  </div>';
+
+        if (S.user.gifts.length === 0) {
+          html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-12 text-center border border-gray-100 dark:border-gray-700">';
+          html += '  <div class="text-6xl mb-3">🩴</div>';
+          html += '  <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">Sizda hali kulgili sovg\'alar yo\'q</h3>';
+          html += '  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-md mx-auto">Quiz Bellashuvlarida qatnashib kuchli uchlikka kiring va birinchi kulgili sovg\'angizni (masalan: Eski rezina tapichka yoki Bolalar tagligi) yutib oling!</p>';
+          html += '</div>';
+        } else {
+          html += '<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">';
+          S.user.gifts.forEach(function(gift, idx) {
+            html += '<div class="eth-gift-card-3d bg-white dark:bg-gray-800 rounded-2xl p-5 border border-amber-200/60 dark:border-amber-700/60 shadow-md hover:shadow-xl transition-all flex flex-col justify-between text-center relative overflow-hidden">';
+            html += '  <div>';
+            html += '    <div class="text-6xl my-2 transform hover:scale-110 transition-transform">' + (gift.icon || '🎁') + '</div>';
+            html += '    <h4 class="font-extrabold text-sm md:text-base text-gray-900 dark:text-white mt-2 leading-snug">' + (gift.name || 'Kulgili Sovg\'a') + '</h4>';
+            html += '    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 line-clamp-3 leading-relaxed">' + (gift.desc || '') + '</p>';
+            if (gift.senderName) {
+              html += '    <div class="mt-2 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">Yuboruvchi: ' + gift.senderName + '</div>';
+            }
+            html += '  </div>';
+            html += '  <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700/60">';
+            html += '    <button class="btnSendGiftModal w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-extrabold text-xs shadow hover:opacity-95 active:scale-95 transition-all flex items-center justify-center gap-1.5" data-gift-idx="' + idx + '">';
+            html += '      <span>🎁 Do\'stga sovg\'a qilish</span>';
+            html += '    </button>';
+            html += '  </div>';
+            html += '</div>';
+          });
+          html += '</div>';
+        }
+        html += '</div>';
+      }
+
+      html += '</div>';
+
+      container.innerHTML = html;
+
+      // Event Listeners
+      var tabQuizzesBtn = container.querySelector('#tabQuizzesBtn');
+      var tabGiftsBtn = container.querySelector('#tabGiftsBtn');
+      if (tabQuizzesBtn) {
+        tabQuizzesBtn.onclick = function() {
+          window._ethithQuizSubtab = 'quizzes';
+          activeSubtab = 'quizzes';
+          renderContent();
+        };
+      }
+      if (tabGiftsBtn) {
+        tabGiftsBtn.onclick = function() {
+          window._ethithQuizSubtab = 'gifts';
+          activeSubtab = 'gifts';
+          renderContent();
+        };
+      }
+
+      // Create Quiz Modal
+      var btnCreateQuizModal = container.querySelector('#btnCreateQuizModal');
+      var btnCreateQuizEmpty = container.querySelector('#btnCreateQuizEmpty');
+      if (btnCreateQuizModal) btnCreateQuizModal.onclick = function() { showCreateQuizModal(container); };
+      if (btnCreateQuizEmpty) btnCreateQuizEmpty.onclick = function() { showCreateQuizModal(container); };
+
+      // Search & Join by Code
+      var btnJoinByCode = container.querySelector('#btnJoinByCode');
+      var searchInput = container.querySelector('#quizCodeSearchInput');
+      if (btnJoinByCode && searchInput) {
+        function doJoin() {
+          var val = searchInput.value.trim().toUpperCase();
+          if (!val) {
+            alert("Iltimos, quiz kodini kiriting! Masalan: QZ-7K#9X");
+            return;
+          }
+          var matched = S.quizzes.find(function(q) {
+            return q.code && (q.code.trim().toUpperCase() === val || q.code.trim().toUpperCase().indexOf(val) !== -1);
+          });
+          if (!matched) {
+            alert("Kiritilgan '" + val + "' kodi bo\'yicha hech qanday Quiz topilmadi! Kodni to\'g\'ri yozganingizni tekshiring.");
+            return;
+          }
+          startQuizBattleRunner(matched, false);
+        }
+        btnJoinByCode.onclick = doJoin;
+        searchInput.onkeydown = function(e) {
+          if (e.key === 'Enter') doJoin();
+        };
+      }
+
+      // Copy Code buttons
+      container.querySelectorAll('.btnCopyQuizCode').forEach(function(btn) {
+        btn.onclick = function(e) {
+          e.stopPropagation();
+          var cd = btn.getAttribute('data-code');
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(cd).then(function() {
+              alert("Quiz kodi (" + cd + ") nusxalandi!");
+            });
+          } else {
+            prompt("Quiz kodi:", cd);
+          }
+        };
+      });
+
+      // Start Runner buttons
+      container.querySelectorAll('.btnStartQuizRunner').forEach(function(btn) {
+        btn.onclick = function() {
+          var qId = btn.getAttribute('data-quiz-id');
+          var quizObj = S.quizzes.find(function(q) { return q.id === qId; });
+          if (quizObj) {
+            var isHost = (S.user && (S.user.email === quizObj.teacherEmail || isTeacher));
+            startQuizBattleRunner(quizObj, isHost);
+          }
+        };
+      });
+
+      // View Analysis buttons
+      container.querySelectorAll('.btnViewQuizAnalysis').forEach(function(btn) {
+        btn.onclick = function() {
+          var qId = btn.getAttribute('data-quiz-id');
+          var quizObj = S.quizzes.find(function(q) { return q.id === qId; });
+          if (quizObj) {
+            showQuizAnalysisModal(quizObj);
+          }
+        };
+      });
+
+      // Delete Quiz buttons
+      container.querySelectorAll('.btnDeleteQuiz').forEach(function(btn) {
+        btn.onclick = function() {
+          var qId = btn.getAttribute('data-quiz-id');
+          if (!confirm("Ushbu quiz testni butunlay o\'chirmoqchimisiz?")) return;
+          S.quizzes = S.quizzes.filter(function(q) { return q.id !== qId; });
+          App.saveState();
+          if (window.EthithSync && window.EthithSync.publishLive) {
+            window.EthithSync.publishLive({ type: 'QUIZ_DELETED', quizId: qId });
+          }
+          renderContent();
+        };
+      });
+
+      // Send Gift buttons
+      container.querySelectorAll('.btnSendGiftModal').forEach(function(btn) {
+        btn.onclick = function() {
+          var idx = parseInt(btn.getAttribute('data-gift-idx'), 10);
+          var giftObj = S.user.gifts[idx];
+          if (giftObj) {
+            showSendGiftModal(giftObj, function() {
+              renderContent();
+            });
+          }
+        };
+      });
+    }
+
+    renderContent();
+    window._ethithRefreshQuizList = renderContent;
+    window._ethithRefreshGifts = renderContent;
+  }
+
+
+  // =========================================================================
+  // CREATE QUIZ MODAL (STANDARD MULTIPLE CHOICE WITH BULK QUICK PASTE)
+  // =========================================================================
+
+  function showCreateQuizModal(container) {
+    var overlay = document.createElement('div');
+    overlay.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto';
+
+    var generatedCode = generateRichExamCode('QZ');
+    var parsedQuestionsList = [];
+
+    var html = '<div class="bg-white dark:bg-gray-800 rounded-3xl max-w-3xl w-full p-6 md:p-8 shadow-2xl border border-gray-100 dark:border-gray-700 my-8 space-y-6 max-h-[90vh] flex flex-col justify-between">';
+    html += '  <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-700 pb-4">';
+    html += '    <div class="flex items-center gap-3">';
+    html += '      <span class="text-3xl">⚔️</span>';
+    html += '      <div>';
+    html += '        <h3 class="text-xl font-black text-gray-900 dark:text-white">Yangi Quiz Test Bellashuvi Tuzish</h3>';
+    html += '        <p class="text-xs text-gray-500 dark:text-gray-400">Faqat standart variantli testlar (A, B, C, D). Yozma va audio savollarsiz.</p>';
+    html += '      </div>';
+    html += '    </div>';
+    html += '    <button id="btnCloseCreateQuiz" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-bold p-1">✕</button>';
+    html += '  </div>';
+
+    // Scrollable Form Body
+    html += '  <div class="flex-1 overflow-y-auto space-y-5 pr-1">';
+    html += '    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">';
+    html += '      <div class="md:col-span-2 space-y-1.5">';
+    html += '        <label class="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300">Quiz Nomi</label>';
+    html += '        <input id="inputQuizTitle" type="text" placeholder="Masalan: English Grammar & Vocabulary Blitz" class="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-amber-500" value="English Blitz Battle #' + (S.quizzes.length + 1) + '" />';
+    html += '      </div>';
+    html += '      <div class="space-y-1.5">';
+    html += '        <label class="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300">Quiz Maxsus Kodi</label>';
+    html += '        <div class="flex items-center gap-2">';
+    html += '          <input id="inputQuizCode" type="text" class="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl font-mono text-sm font-black text-amber-600 dark:text-amber-400" value="' + generatedCode + '" />';
+    html += '          <button id="btnRegenCode" class="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-700 text-sm hover:bg-gray-200" title="Kodni yangilash">🔄</button>';
+    html += '        </div>';
+    html += '      </div>';
+    html += '    </div>';
+
+    // Tabs for adding questions: Bulk Paste vs Manual
+    html += '    <div class="border border-amber-200 dark:border-amber-800/80 rounded-2xl p-4 bg-amber-50/40 dark:bg-amber-950/20 space-y-4">';
+    html += '      <div class="flex items-center justify-between">';
+    html += '        <div class="text-xs font-extrabold uppercase tracking-wider text-amber-900 dark:text-amber-300 flex items-center gap-2">';
+    html += '          <span>⚡ 1-USUL: TEZKOR MATNDAN AJRATIB OLISH (BULK QUICK PASTE)</span>';
+    html += '        </div>';
+    html += '      </div>';
+    html += '      <p class="text-xs text-gray-500 dark:text-gray-400">';
+    html += '        Savollarni quyidagi formatda to\'g\'ridan-to\'g\'ri tashlang (50 tagacha bittada):<br>';
+    html += '        <span class="font-mono text-[11px] text-gray-600 dark:text-gray-300">1. Savol matni... A) variant B) variant C) variant D) variant Javob: B</span>';
+    html += '      </p>';
+    html += '      <textarea id="bulkPasteTextarea" rows="6" placeholder="1. What is the opposite of generous?\nA) Stingy\nB) Kind\nC) Polite\nD) Helpful\nJavob: A\n\n2. She ___ English since 2018.\nA) learns\nB) has been learning\nC) is learning\nD) had learned\nJavob: B" class="w-full p-3 font-mono text-xs bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-amber-500"></textarea>';
+    html += '      <button id="btnParseBulkQuestions" class="px-5 py-2.5 rounded-xl bg-amber-500 text-white font-extrabold text-xs shadow hover:bg-amber-600 transition-all flex items-center gap-2">';
+    html += '        <span>⚡ Savollarni tahlil qilish va qo\'shish</span>';
+    html += '      </button>';
+    html += '    </div>';
+
+    // Questions Counter and Preview
+    html += '    <div class="space-y-3">';
+    html += '      <div class="flex items-center justify-between">';
+    html += '        <h4 class="text-sm font-black text-gray-800 dark:text-gray-100 flex items-center gap-2">';
+    html += '          <span>📋 Kiritilgan Savollar Ro\'yxati</span>';
+    html += '          <span id="quizQuestionsCountBadge" class="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 text-xs font-bold">0 ta</span>';
+    html += '        </h4>';
+    html += '        <button id="btnClearAllQuestions" class="text-xs text-rose-500 hover:text-rose-700 font-bold">Barchasini tozalash</button>';
+    html += '      </div>';
+    html += '      <div id="quizQuestionsPreviewList" class="space-y-2 max-h-60 overflow-y-auto pr-1">';
+    html += '        <div class="text-xs text-gray-400 text-center py-6 border border-dashed border-gray-200 dark:border-gray-700 rounded-xl">Hali hech qanday savol qo\'shilmadi. Yuqoridagi maydondan foydalaning.</div>';
+    html += '      </div>';
+    html += '    </div>';
+    html += '  </div>';
+
+    // Footer actions
+    html += '  <div class="border-t border-gray-100 dark:border-gray-700 pt-4 flex items-center justify-end gap-3">';
+    html += '    <button id="btnCancelCreateQuiz" class="px-5 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs hover:bg-gray-200">';
+    html += '      Bekor qilish';
+    html += '    </button>';
+    html += '    <button id="btnSaveQuizFinal" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-extrabold text-sm shadow-lg hover:opacity-95 active:scale-95 transition-all flex items-center gap-2">';
+    html += '      <span>💾 Saqlash va Lobbyni Boshlash</span>';
+    html += '    </button>';
+    html += '  </div>';
+
+    html += '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    function updatePreview() {
+      var badge = overlay.querySelector('#quizQuestionsCountBadge');
+      var list = overlay.querySelector('#quizQuestionsPreviewList');
+      if (badge) badge.textContent = parsedQuestionsList.length + ' ta';
+
+      if (!list) return;
+      if (parsedQuestionsList.length === 0) {
+        list.innerHTML = '<div class="text-xs text-gray-400 text-center py-6 border border-dashed border-gray-200 dark:border-gray-700 rounded-xl">Hali hech qanday savol qo\'shilmadi. Yuqoridagi maydondan foydalaning.</div>';
+        return;
+      }
+
+      var pHtml = '';
+      parsedQuestionsList.forEach(function(q, qIdx) {
+        pHtml += '<div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 text-xs flex items-start justify-between gap-3">';
+        pHtml += '  <div class="space-y-1.5 flex-1">';
+        pHtml += '    <div class="font-extrabold text-gray-900 dark:text-white leading-snug">' + (qIdx + 1) + '. ' + q.question + '</div>';
+        pHtml += '    <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-600 dark:text-gray-400">';
+        q.options.forEach(function(opt, optIdx) {
+          var isCorr = (optIdx === q.correctAnswer);
+          pHtml += '      <div class="' + (isCorr ? 'font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 p-1 rounded' : 'p-1') + '">';
+          pHtml += '        ' + String.fromCharCode(65 + optIdx) + ') ' + opt + (isCorr ? ' ✅' : '');
+          pHtml += '      </div>';
+        });
+        pHtml += '    </div>';
+        pHtml += '  </div>';
+        pHtml += '  <button class="btnDeleteParsedQ text-gray-400 hover:text-rose-500 font-bold p-1" data-q-idx="' + qIdx + '">✕</button>';
+        pHtml += '</div>';
+      });
+      list.innerHTML = pHtml;
+
+      list.querySelectorAll('.btnDeleteParsedQ').forEach(function(btn) {
+        btn.onclick = function() {
+          var idx = parseInt(btn.getAttribute('data-q-idx'), 10);
+          parsedQuestionsList.splice(idx, 1);
+          updatePreview();
+        };
+      });
+    }
+
+    // Regen Code
+    var btnRegenCode = overlay.querySelector('#btnRegenCode');
+    var inputQuizCode = overlay.querySelector('#inputQuizCode');
+    if (btnRegenCode && inputQuizCode) {
+      btnRegenCode.onclick = function() {
+        generatedCode = generateRichExamCode('QZ');
+        inputQuizCode.value = generatedCode;
+      };
+    }
+
+    // Parse Bulk Text
+    var btnParseBulk = overlay.querySelector('#btnParseBulkQuestions');
+    var bulkTextarea = overlay.querySelector('#bulkPasteTextarea');
+    if (btnParseBulk && bulkTextarea) {
+      btnParseBulk.onclick = function() {
+        var rawText = bulkTextarea.value.trim();
+        if (!rawText) {
+          alert("Iltimos, matn maydoniga savollarni kiriting!");
+          return;
+        }
+
+        // Split by numbered question pattern e.g. "1.", "2)", "\n1."
+        var rawBlocks = rawText.split(/(?:^|\n+)(?:\d+[\.\)]\s*)/);
+        var addedCount = 0;
+
+        rawBlocks.forEach(function(block) {
+          block = block.trim();
+          if (!block || block.length < 5) return;
+
+          // Find options A), B), C), D)
+          var optA = '', optB = '', optC = '', optD = '';
+          var corrLetter = 'A';
+
+          // Extract Answer if present
+          var ansMatch = block.match(/(?:Javob|Answer|To'g'ri\s*javob|To‘g‘ri\s*javob):\s*([ABCDabcd])/i);
+          if (ansMatch) {
+            corrLetter = ansMatch[1].toUpperCase();
+            block = block.replace(/(?:Javob|Answer|To'g'ri\s*javob|To‘g‘ri\s*javob):\s*([ABCDabcd])/i, '').trim();
+          }
+
+          // Match options: A) ... B) ... C) ... D) ...
+          var optMatch = block.match(/A[\.\)]\s*([\s\S]+?)(?=B[\.\)]|$)/i);
+          var bMatch = block.match(/B[\.\)]\s*([\s\S]+?)(?=C[\.\)]|$)/i);
+          var cMatch = block.match(/C[\.\)]\s*([\s\S]+?)(?=D[\.\)]|$)/i);
+          var dMatch = block.match(/D[\.\)]\s*([\s\S]+?)$/i);
+
+          if (optMatch && bMatch) {
+            var qText = block.substring(0, block.search(/A[\.\)]/i)).trim();
+            optA = optMatch[1].trim();
+            optB = bMatch[1].trim();
+            optC = cMatch ? cMatch[1].trim() : 'Variant C';
+            optD = dMatch ? dMatch[1].trim() : 'Variant D';
+
+            var corrIdx = 0;
+            if (corrLetter === 'B') corrIdx = 1;
+            else if (corrLetter === 'C') corrIdx = 2;
+            else if (corrLetter === 'D') corrIdx = 3;
+
+            parsedQuestionsList.push({
+              id: 'q_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+              question: qText || 'Savol',
+              options: [optA, optB, optC, optD],
+              correctAnswer: corrIdx
+            });
+            addedCount++;
+          }
+        });
+
+        if (addedCount > 0) {
+          bulkTextarea.value = '';
+          updatePreview();
+          alert(addedCount + " ta savol muvaffaqiyatli ajratib olindi va qo\'shildi!");
+        } else {
+          alert("Savollarni ajratib bo\'lmadi. Format A) B) C) D) va Javob: B ko\'rinishida ekanligiga ishonch hosil qiling.");
+        }
+      };
+    }
+
+    // Clear all
+    var btnClearAll = overlay.querySelector('#btnClearAllQuestions');
+    if (btnClearAll) {
+      btnClearAll.onclick = function() {
+        if (confirm("Barcha savollarni tozalashni xohlaysizmi?")) {
+          parsedQuestionsList = [];
+          updatePreview();
+        }
+      };
+    }
+
+    // Close / Cancel
+    function close() { overlay.remove(); }
+    overlay.querySelector('#btnCloseCreateQuiz').onclick = close;
+    overlay.querySelector('#btnCancelCreateQuiz').onclick = close;
+
+    // Save & Launch
+    overlay.querySelector('#btnSaveQuizFinal').onclick = function() {
+      var finalTitle = overlay.querySelector('#inputQuizTitle').value.trim();
+      var finalCode = overlay.querySelector('#inputQuizCode').value.trim().toUpperCase();
+
+      if (!finalTitle) {
+        alert("Iltimos, quiz nomini kiriting!");
+        return;
+      }
+      if (!finalCode) {
+        alert("Iltimos, quiz kodini kiriting!");
+        return;
+      }
+      if (parsedQuestionsList.length === 0) {
+        alert("Iltimos, kamida bitta savol qo\'shing!");
+        return;
+      }
+
+      var newQuiz = {
+        id: 'quiz_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+        code: finalCode,
+        title: finalTitle,
+        created: Date.now(),
+        teacherEmail: S.user.email,
+        teacherName: S.user.name,
+        status: 'lobby',
+        questions: parsedQuestionsList,
+        lobbyParticipants: [],
+        lastSessionAnalysis: null
+      };
+
+      S.quizzes.unshift(newQuiz);
+      App.saveState();
+
+      if (window.EthithSync && window.EthithSync.publishLive) {
+        window.EthithSync.publishLive({ type: 'QUIZ_CREATED', quiz: newQuiz });
+      }
+
+      close();
+      if (window._ethithRefreshQuizList) window._ethithRefreshQuizList();
+      startQuizBattleRunner(newQuiz, true);
+    };
+  }
+
+
+  // =========================================================================
+  // LIVE QUIZ BATTLE RUNNER (LOBBY, 10S SPEED BONUS, REALTIME LEADERBOARD, PODIUM)
+  // =========================================================================
+
+  function startQuizBattleRunner(quiz, isHost) {
+    if (!quiz || !quiz.questions || quiz.questions.length === 0) {
+      alert("Ushbu quizda savollar mavjud emas!");
+      return;
+    }
+
+    // Clean up any existing runner
+    var old = document.querySelector('.eth-quiz-fullscreen');
+    if (old) old.remove();
+
+    var isTeacher = Boolean(isHost || (S.user && (S.user.role === 'teacher' || S.user.email === quiz.teacherEmail)));
+    var myStudentId = (S.user && (S.user.email || S.user.id)) || ('st_' + Date.now());
+    var myStudentName = (S.user && S.user.name) || 'O\'quvchi';
+
+    // State for this battle session
+    var currentPhase = 'lobby'; // 'lobby' | 'countdown' | 'playing' | 'waiting_others' | 'finished'
+    var myScore = 0;
+    var correctCount = 0;
+    var wrongCount = 0;
+    var silentInfractions = 0;
+    var currentQIndex = 0;
+    var questionTimerInterval = null;
+    var questionRemainingMs = 10000;
+    var questionStartTime = 0;
+
+    // Shuffle questions so order is randomized for this participant
+    var shuffledQuestions = shuffleArray(quiz.questions);
+
+    // Map: question.id -> { chosen: optIdx, correct: optIdx, isCorrect: bool, timeTaken: sec }
+    var studentAnswersMap = {};
+
+    // Live participants map: studentId -> { id, name, score, currentQ, totalQ, correctCount, wrongCount, infractions, finished }
+    var participantsMap = {};
+    participantsMap[myStudentId] = {
+      id: myStudentId,
+      name: myStudentName,
+      score: 0,
+      currentQ: 0,
+      totalQ: shuffledQuestions.length,
+      correctCount: 0,
+      wrongCount: 0,
+      infractions: 0,
+      finished: false,
+      answers: {}
+    };
+
+    // Fullscreen Overlay
+    var root = document.createElement('div');
+    root.className = 'eth-quiz-fullscreen';
+
+    document.body.appendChild(root);
+
+    // Announce to MQTT: Joined Lobby
+    if (window.EthithSync && window.EthithSync.publishLive) {
+      window.EthithSync.publishLive({
+        type: 'QUIZ_LOBBY_STATE',
+        quizId: quiz.id,
+        studentId: myStudentId,
+        studentName: myStudentName,
+        action: 'join'
+      });
+    }
+
+    // Silent Proctoring Handler
+    function handleSilentInfraction(reason) {
+      if (currentPhase !== 'playing') return;
+      silentInfractions++;
+      if (window.EthithSync && window.EthithSync.publishLive) {
+        window.EthithSync.publishLive({
+          type: 'QUIZ_SILENT_INFRACTION',
+          quizId: quiz.id,
+          studentId: myStudentId,
+          studentName: myStudentName,
+          infractions: silentInfractions,
+          reason: reason || 'Tabdan chiqdi / Boshqa ilovaga o\'tdi'
+        });
+      }
+    }
+
+    var onVisibilityChange = function() {
+      if (document.visibilityState === 'hidden') {
+        handleSilentInfraction('Brauzer tabidan chiqdi');
+      }
+    };
+    var onWindowBlur = function() {
+      handleSilentInfraction('Oyna fokusini yo\'qotdi');
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('blur', onWindowBlur);
+
+    function cleanupListeners() {
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.removeEventListener('blur', onWindowBlur);
+      if (questionTimerInterval) clearInterval(questionTimerInterval);
+      window._ethithOnQuizEvent = null;
+    }
+
+    // Calculate current rank
+    function getMyRank() {
+      var arr = Object.values(participantsMap);
+      arr.sort(function(a, b) { return b.score - a.score; });
+      var idx = arr.findIndex(function(p) { return p.id === myStudentId; });
+      return idx >= 0 ? (idx + 1) : 1;
+    }
+
+    // MQTT Event listener for live quiz events
+    window._ethithOnQuizEvent = function(event) {
+      if (!event || event.quizId !== quiz.id) return;
+
+      if (event.type === 'QUIZ_LOBBY_STATE') {
+        if (!participantsMap[event.studentId]) {
+          participantsMap[event.studentId] = {
+            id: event.studentId,
+            name: event.studentName || 'O\'quvchi',
+            score: 0,
+            currentQ: 0,
+            totalQ: shuffledQuestions.length,
+            correctCount: 0,
+            wrongCount: 0,
+            infractions: 0,
+            finished: false,
+            answers: {}
+          };
+        }
+        if (currentPhase === 'lobby') renderLobby();
+      }
+      else if (event.type === 'QUIZ_STARTED') {
+        if (currentPhase === 'lobby') {
+          startCountdown();
+        }
+      }
+      else if (event.type === 'QUIZ_SCORE_UPDATE') {
+        if (!participantsMap[event.studentId]) {
+          participantsMap[event.studentId] = { id: event.studentId, name: event.studentName };
+        }
+        var p = participantsMap[event.studentId];
+        p.score = event.score || 0;
+        p.currentQ = event.currentQ || 0;
+        p.totalQ = event.totalQ || shuffledQuestions.length;
+        p.correctCount = event.correctCount || 0;
+        p.wrongCount = event.wrongCount || 0;
+        p.infractions = event.infractions || 0;
+        if (event.answers) p.answers = event.answers;
+
+        if (currentPhase === 'playing') {
+          updateLiveRankPill();
+          if (isTeacher) renderTeacherCockpit();
+        } else if (currentPhase === 'waiting_others') {
+          renderWaitingOthers();
+        }
+      }
+      else if (event.type === 'QUIZ_SILENT_INFRACTION') {
+        if (participantsMap[event.studentId]) {
+          participantsMap[event.studentId].infractions = event.infractions || 1;
+          if (isTeacher && currentPhase === 'playing') renderTeacherCockpit();
+        }
+      }
+      else if (event.type === 'QUIZ_FINISHED') {
+        if (participantsMap[event.studentId]) {
+          participantsMap[event.studentId].finished = true;
+          participantsMap[event.studentId].score = event.score || participantsMap[event.studentId].score;
+          if (event.answers) participantsMap[event.studentId].answers = event.answers;
+        }
+        if (currentPhase === 'waiting_others') {
+          renderWaitingOthers();
+        }
+      }
+      else if (event.type === 'QUIZ_FORCE_FINISH') {
+        renderFinalePodium();
+      }
+    };
+
+    // -----------------------------------------------------------------------
+    // PHASE 1: LOBBY
+    // -----------------------------------------------------------------------
+    function renderLobby() {
+      currentPhase = 'lobby';
+      var participantList = Object.values(participantsMap);
+
+      var html = '<div class="max-w-2xl w-full mx-auto p-6 md:p-8 bg-gray-900/90 border border-gray-700/80 rounded-3xl backdrop-blur-xl text-center space-y-6 shadow-2xl animate-fade-in">';
+      html += '  <div class="flex items-center justify-between">';
+      html += '    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold">';
+      html += '      <span>⚡ ETHITH QUIZ BATTLE LOBBY</span>';
+      html += '    </div>';
+      html += '    <button id="btnExitQuizLobby" class="text-gray-400 hover:text-white text-xl font-bold p-1">✕</button>';
+      html += '  </div>';
+
+      html += '  <div class="space-y-2">';
+      html += '    <h2 class="text-2xl md:text-3xl font-black text-white leading-tight">' + (quiz.title || 'Quiz Test') + '</h2>';
+      html += '    <p class="text-xs md:text-sm text-gray-400">Barcha o\'quvchilar qo\'shilishini kuting. O\'qituvchi start berishi bilan hamma bir vaqtda boshlaydi!</p>';
+      html += '  </div>';
+
+      // Big Code Box
+      html += '  <div class="p-6 bg-gradient-to-br from-gray-800 to-gray-950 rounded-2xl border-2 border-amber-500/50 shadow-inner space-y-2">';
+      html += '    <div class="text-xs uppercase font-extrabold tracking-wider text-amber-400">Bellashuv Maxsus Kodi:</div>';
+      html += '    <div class="text-4xl md:text-5xl font-mono font-black text-amber-400 tracking-wider flex items-center justify-center gap-3">';
+      html += '      <span>' + quiz.code + '</span>';
+      html += '      <button id="btnCopyLobbyCode" class="text-xl p-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/40 text-amber-300 transition-all" title="Nusxa olish">📋</button>';
+      html += '    </div>';
+      html += '    <div class="text-[11px] text-gray-400">O\'quvchilar ushbu kod orqali tizimga kirishadi</div>';
+      html += '  </div>';
+
+      // Participants list
+      html += '  <div class="space-y-3 text-left">';
+      html += '    <div class="flex items-center justify-between text-xs font-bold text-gray-300 px-1">';
+      html += '      <span>Qo\'shilgan O\'quvchilar (' + participantList.length + ' ta)</span>';
+      html += '      <span class="text-amber-400 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Jonli kutmoqda</span>';
+      html += '    </div>';
+      html += '    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-48 overflow-y-auto p-1">';
+      participantList.forEach(function(p) {
+        var isMe = (p.id === myStudentId);
+        html += '<div class="px-3 py-2 rounded-xl bg-gray-800/80 border ' + (isMe ? 'border-amber-500/80 text-amber-300 font-bold' : 'border-gray-700 text-gray-300') + ' text-xs flex items-center gap-2 truncate">';
+        html += '  <span class="text-base">👤</span>';
+        html += '  <span class="truncate">' + p.name + (isMe ? ' (Siz)' : '') + '</span>';
+        html += '</div>';
+      });
+      html += '    </div>';
+      html += '  </div>';
+
+      // Action Button
+      html += '  <div class="pt-2">';
+      if (isTeacher) {
+        html += '    <button id="btnTeacherStartBattle" class="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-black text-base shadow-xl hover:opacity-95 active:scale-95 transition-all flex items-center justify-center gap-2">';
+        html += '      <span>🚀 BATTLE NI BOSHLASH (START)</span>';
+        html += '    </button>';
+      } else {
+        html += '    <div class="py-4 px-6 rounded-2xl bg-gray-800/60 border border-gray-700/60 text-sm font-bold text-amber-400 flex items-center justify-center gap-3 animate-pulse">';
+        html += '      <span class="text-xl">⏳</span>';
+        html += '      <span>Ustoz start berishini kutmoqdamiz...</span>';
+        html += '    </div>';
+      }
+      html += '  </div>';
+
+      html += '</div>';
+
+      root.innerHTML = html;
+
+      // Exit
+      var btnExit = root.querySelector('#btnExitQuizLobby');
+      if (btnExit) {
+        btnExit.onclick = function() {
+          cleanupListeners();
+          root.remove();
+        };
+      }
+
+      // Copy
+      var btnCopy = root.querySelector('#btnCopyLobbyCode');
+      if (btnCopy) {
+        btnCopy.onclick = function() {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(quiz.code).then(function() {
+              alert("Quiz kodi nusxalandi: " + quiz.code);
+            });
+          } else {
+            prompt("Quiz kodi:", quiz.code);
+          }
+        };
+      }
+
+      // Teacher Start
+      var btnStart = root.querySelector('#btnTeacherStartBattle');
+      if (btnStart) {
+        btnStart.onclick = function() {
+          quiz.status = 'active';
+          App.saveState();
+          if (window.EthithSync && window.EthithSync.publishLive) {
+            window.EthithSync.publishLive({
+              type: 'QUIZ_STARTED',
+              quizId: quiz.id
+            });
+          }
+          startCountdown();
+        };
+      }
+    }
+
+    // -----------------------------------------------------------------------
+    // PHASE 2: 3-2-1 COUNTDOWN
+    // -----------------------------------------------------------------------
+    function startCountdown() {
+      currentPhase = 'countdown';
+      var count = 3;
+
+      function renderCount() {
+        var html = '<div class="max-w-md w-full mx-auto p-12 text-center space-y-4">';
+        html += '  <div class="text-xs uppercase font-extrabold tracking-widest text-amber-400">Battle boshlanmoqda!</div>';
+        html += '  <div class="text-8xl md:text-9xl font-black text-white animate-bounce tracking-tight font-mono">' + count + '</div>';
+        html += '  <div class="text-sm font-bold text-gray-300">Tez va to\'g\'ri javob bering, bonus ballarni qo\'lga kiriting!</div>';
+        html += '</div>';
+        root.innerHTML = html;
+        playTitTitAlarm(2);
+      }
+
+      renderCount();
+
+      var timer = setInterval(function() {
+        count--;
+        if (count > 0) {
+          renderCount();
+        } else {
+          clearInterval(timer);
+          renderPlayingQuestion();
+        }
+      }, 1000);
+    }
+
+    // -----------------------------------------------------------------------
+    // PHASE 3: PLAYING QUESTIONS (10S SPEED BONUS + REALTIME FEEDBACK)
+    // -----------------------------------------------------------------------
+    function updateLiveRankPill() {
+      var rankEl = root.querySelector('#liveRankPill');
+      var scoreEl = root.querySelector('#liveScorePill');
+      if (rankEl) {
+        var r = getMyRank();
+        rankEl.textContent = (r === 1 ? '🥇 1-o\'rin' : (r === 2 ? '🥈 2-o\'rin' : (r === 3 ? '🥉 3-o\'rin' : ('#' + r + '-o\'rin'))));
+      }
+      if (scoreEl) {
+        scoreEl.textContent = myScore.toLocaleString() + ' Ball';
+      }
+    }
+
+    function renderPlayingQuestion() {
+      currentPhase = 'playing';
+      if (currentQIndex >= shuffledQuestions.length) {
+        finishMyQuiz();
+        return;
+      }
+
+      var q = shuffledQuestions[currentQIndex];
+      questionRemainingMs = 10000;
+      questionStartTime = Date.now();
+      var isAnswered = false;
+
+      var html = '<div class="max-w-3xl w-full mx-auto space-y-4 pb-12">';
+
+      // Top Status Bar
+      html += '<div class="eth-quiz-topbar flex items-center justify-between px-5 py-3 rounded-2xl bg-gray-900/90 border border-gray-700/80 backdrop-blur-md">';
+      html += '  <div class="flex items-center gap-2">';
+      html += '    <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Savol:</span>';
+      html += '    <span class="text-sm font-extrabold text-white">' + (currentQIndex + 1) + ' / ' + shuffledQuestions.length + '</span>';
+      html += '  </div>';
+      html += '  <div class="flex items-center gap-3">';
+      html += '    <div id="liveRankPill" class="eth-quiz-rank-pill">#' + getMyRank() + '-o\'rin</div>';
+      html += '    <div id="liveScorePill" class="eth-quiz-score-pill">' + myScore.toLocaleString() + ' Ball</div>';
+      html += '  </div>';
+      html += '</div>';
+
+      // 10s Timer Bar
+      html += '<div class="space-y-1">';
+      html += '  <div class="flex items-center justify-between text-[11px] font-bold text-gray-400 px-1">';
+      html += '    <span id="timerTextLabel" class="text-amber-400">⚡ Tezlik bonusi: 10.0s (+100 ball)</span>';
+      html += '    <span class="text-gray-500">To\'g\'ri: +600 | Xato: -500</span>';
+      html += '  </div>';
+      html += '  <div class="eth-quiz-timer-track">';
+      html += '    <div id="quizTimerBar" class="eth-quiz-timer-fill" style="width: 100%;"></div>';
+      html += '  </div>';
+      html += '</div>';
+
+      // Question Card
+      html += '<div class="eth-quiz-card space-y-6">';
+      html += '  <div class="text-lg md:text-2xl font-black text-white leading-relaxed">' + q.question + '</div>';
+
+      // Options
+      html += '  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">';
+      q.options.forEach(function(opt, optIdx) {
+        var letter = String.fromCharCode(65 + optIdx);
+        html += '<button class="eth-quiz-opt-btn" data-opt-idx="' + optIdx + '">';
+        html += '  <span class="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center font-black text-amber-400 text-sm">' + letter + '</span>';
+        html += '  <span class="text-sm font-bold flex-1 text-left">' + opt + '</span>';
+        html += '</button>';
+      });
+      html += '  </div>';
+      html += '</div>';
+
+      // Feedback Floating Container
+      html += '<div id="feedbackContainer" class="h-10 flex items-center justify-center"></div>';
+
+      // Teacher Cockpit (Live dashboard under test if teacher)
+      if (isTeacher) {
+        html += '<div id="teacherCockpitContainer" class="mt-6 p-4 rounded-2xl bg-gray-900/95 border border-gray-700/80 space-y-3"></div>';
+      }
+
+      html += '</div>';
+
+      root.innerHTML = html;
+
+      updateLiveRankPill();
+      if (isTeacher) renderTeacherCockpit();
+
+      // Start 10s Timer
+      var timerBar = root.querySelector('#quizTimerBar');
+      var timerLabel = root.querySelector('#timerTextLabel');
+
+      if (questionTimerInterval) clearInterval(questionTimerInterval);
+      questionTimerInterval = setInterval(function() {
+        if (isAnswered) {
+          clearInterval(questionTimerInterval);
+          return;
+        }
+        var elapsed = Date.now() - questionStartTime;
+        questionRemainingMs = Math.max(0, 10000 - elapsed);
+        var pct = (questionRemainingMs / 10000) * 100;
+
+        if (timerBar) timerBar.style.width = pct + '%';
+
+        if (questionRemainingMs > 0) {
+          if (timerLabel) timerLabel.innerHTML = '⚡ Tezlik bonusi: ' + (questionRemainingMs / 1000).toFixed(1) + 's (+100 ball)';
+        } else {
+          if (timerLabel) {
+            timerLabel.innerHTML = '<span class="text-gray-400">⚡ Bonus muddati tugadi (Asosiy ball: +600)</span>';
+          }
+          if (timerBar) timerBar.style.background = '#6b7280';
+        }
+      }, 50);
+
+      // Handle Option Selection
+      root.querySelectorAll('.eth-quiz-opt-btn').forEach(function(btn) {
+        btn.onclick = function() {
+          if (isAnswered) return;
+          isAnswered = true;
+          if (questionTimerInterval) clearInterval(questionTimerInterval);
+
+          var chosenIdx = parseInt(btn.getAttribute('data-opt-idx'), 10);
+          var elapsedSec = (Date.now() - questionStartTime) / 1000;
+          var hasBonus = (elapsedSec <= 10.2);
+          var isCorrect = (chosenIdx === q.correctAnswer);
+
+          // Scoring logic
+          var earnedPoints = 0;
+          var feedbackHtml = '';
+
+          if (isCorrect) {
+            correctCount++;
+            earnedPoints = 600 + (hasBonus ? 100 : 0);
+            myScore += earnedPoints;
+            btn.classList.add('correct');
+            feedbackHtml = '<div class="eth-quiz-bonus-tag">' + (hasBonus ? '⚡ +700 (Tezlik Bonusi!)' : '✅ +600 Ball') + '</div>';
+          } else {
+            wrongCount++;
+            earnedPoints = -500;
+            myScore = Math.max(0, myScore - 500);
+            btn.classList.add('incorrect');
+            // Highlight the correct one
+            root.querySelectorAll('.eth-quiz-opt-btn').forEach(function(otherBtn) {
+              if (parseInt(otherBtn.getAttribute('data-opt-idx'), 10) === q.correctAnswer) {
+                otherBtn.classList.add('correct');
+              }
+            });
+            feedbackHtml = '<div class="eth-quiz-bonus-tag incorrect">❌ -500 Ball</div>';
+          }
+
+          // Record answer
+          studentAnswersMap[q.id || ('q_' + currentQIndex)] = {
+            questionText: q.question,
+            chosen: chosenIdx,
+            correct: q.correctAnswer,
+            isCorrect: isCorrect,
+            timeTaken: elapsedSec
+          };
+
+          // Update self in participantsMap
+          participantsMap[myStudentId].score = myScore;
+          participantsMap[myStudentId].currentQ = currentQIndex + 1;
+          participantsMap[myStudentId].correctCount = correctCount;
+          participantsMap[myStudentId].wrongCount = wrongCount;
+          participantsMap[myStudentId].answers = studentAnswersMap;
+
+          // Broadcast score update via MQTT
+          if (window.EthithSync && window.EthithSync.publishLive) {
+            window.EthithSync.publishLive({
+              type: 'QUIZ_SCORE_UPDATE',
+              quizId: quiz.id,
+              studentId: myStudentId,
+              studentName: myStudentName,
+              score: myScore,
+              currentQ: currentQIndex + 1,
+              totalQ: shuffledQuestions.length,
+              correctCount: correctCount,
+              wrongCount: wrongCount,
+              infractions: silentInfractions,
+              answers: studentAnswersMap
+            });
+          }
+
+          updateLiveRankPill();
+          if (isTeacher) renderTeacherCockpit();
+
+          var fBox = root.querySelector('#feedbackContainer');
+          if (fBox) fBox.innerHTML = feedbackHtml;
+
+          // Auto-advance after 1.2 seconds
+          setTimeout(function() {
+            currentQIndex++;
+            renderPlayingQuestion();
+          }, 1200);
+        };
+      });
+    }
+
+    // Teacher Cockpit Panel Rendering
+    function renderTeacherCockpit() {
+      var cBox = root.querySelector('#teacherCockpitContainer');
+      if (!cBox) return;
+
+      var list = Object.values(participantsMap);
+      list.sort(function(a, b) { return b.score - a.score; });
+
+      var html = '<div class="flex items-center justify-between border-b border-gray-700/80 pb-2">';
+      html += '  <div class="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-2">';
+      html += '    <span>📡 Jonli Ustoz Monitori (Real-Time Leaderboard)</span>';
+      html += '  </div>';
+      html += '  <button id="btnTeacherForceFinish" class="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-xs shadow">';
+      html += '    🏁 Barchaga Yakunlash';
+      html += '  </button>';
+      html += '</div>';
+
+      html += '<div class="max-h-48 overflow-y-auto space-y-1.5 pt-2">';
+      list.forEach(function(p, idx) {
+        var isMe = (p.id === myStudentId);
+        html += '<div class="px-3 py-2 rounded-xl bg-gray-800/80 border ' + (isMe ? 'border-amber-500/60' : 'border-gray-700/60') + ' text-xs flex items-center justify-between gap-2">';
+        html += '  <div class="flex items-center gap-2.5 truncate">';
+        html += '    <span class="font-bold text-gray-400 font-mono w-4">#' + (idx + 1) + '</span>';
+        html += '    <span class="font-extrabold text-white truncate">' + p.name + '</span>';
+        if (p.infractions > 0) {
+          html += '    <span class="px-1.5 py-0.5 rounded bg-rose-950 text-rose-400 border border-rose-800 text-[10px] font-bold" title="Tabdan chiqishlar soni">⚠️ ' + p.infractions + ' marta</span>';
+        }
+        html += '  </div>';
+        html += '  <div class="flex items-center gap-4 text-right flex-shrink-0">';
+        html += '    <span class="text-gray-400 text-[11px]">' + (p.currentQ || 0) + '/' + shuffledQuestions.length + '</span>';
+        html += '    <span class="text-emerald-400 font-bold text-[11px]">+' + (p.correctCount || 0) + '</span>';
+        html += '    <span class="text-rose-400 font-bold text-[11px]">-' + (p.wrongCount || 0) + '</span>';
+        html += '    <span class="font-mono font-black text-amber-400 w-16">' + (p.score || 0).toLocaleString() + '</span>';
+        html += '  </div>';
+        html += '</div>';
+      });
+      html += '</div>';
+
+      cBox.innerHTML = html;
+
+      var btnFinish = cBox.querySelector('#btnTeacherForceFinish');
+      if (btnFinish) {
+        btnFinish.onclick = function() {
+          if (!confirm("Barcha o\'quvchilar uchun testni yakunlab, sovg\'alar va tahlilga o\'tmoqchimisiz?")) return;
+          if (window.EthithSync && window.EthithSync.publishLive) {
+            window.EthithSync.publishLive({ type: 'QUIZ_FORCE_FINISH', quizId: quiz.id });
+          }
+          renderFinalePodium();
+        };
+      }
+    }
+
+    // -----------------------------------------------------------------------
+    // PHASE 4: FINISH MY QUIZ & WAITING OTHERS
+    // -----------------------------------------------------------------------
+    function finishMyQuiz() {
+      currentPhase = 'waiting_others';
+      participantsMap[myStudentId].finished = true;
+
+      // Broadcast finished
+      if (window.EthithSync && window.EthithSync.publishLive) {
+        window.EthithSync.publishLive({
+          type: 'QUIZ_FINISHED',
+          quizId: quiz.id,
+          studentId: myStudentId,
+          studentName: myStudentName,
+          score: myScore,
+          answers: studentAnswersMap
+        });
+      }
+
+      // Check if all finished
+      var allDone = Object.values(participantsMap).every(function(p) { return p.finished; });
+      if (allDone && Object.values(participantsMap).length > 0) {
+        renderFinalePodium();
+      } else {
+        renderWaitingOthers();
+      }
+    }
+
+    function renderWaitingOthers() {
+      var allDone = Object.values(participantsMap).every(function(p) { return p.finished; });
+      if (allDone && Object.values(participantsMap).length > 0) {
+        renderFinalePodium();
+        return;
+      }
+
+      var list = Object.values(participantsMap);
+      list.sort(function(a, b) { return b.score - a.score; });
+
+      var html = '<div class="max-w-2xl w-full mx-auto p-6 md:p-8 bg-gray-900/90 border border-gray-700/80 rounded-3xl backdrop-blur-xl text-center space-y-6 shadow-2xl">';
+      html += '  <div class="text-5xl">🎉</div>';
+      html += '  <div class="space-y-1">';
+      html += '    <h3 class="text-2xl font-black text-white">Siz barcha testlarni yakunladingiz!</h3>';
+      html += '    <p class="text-xs text-gray-400">Testni birinchi tugatgan 1-o\'rinni olmaydi! Natijalar to\'plangan ballar bo\'yicha hisoblanadi. Boshqa o\'quvchilar testni tugatishini kuting...</p>';
+      html += '  </div>';
+
+      html += '  <div class="p-4 bg-gray-800/80 rounded-2xl border border-gray-700 space-y-1">';
+      html += '    <div class="text-xs text-gray-400 font-bold">Sizning yakuniy to\'plagan balingiz:</div>';
+      html += '    <div class="text-4xl font-mono font-black text-amber-400">' + myScore.toLocaleString() + ' Ball</div>';
+      html += '    <div class="text-xs text-emerald-400">To\'g\'ri: ' + correctCount + ' ta · Xato: ' + wrongCount + ' ta</div>';
+      html += '  </div>';
+
+      // Live ranking preview while waiting
+      html += '  <div class="space-y-2 text-left">';
+      html += '    <div class="text-xs font-bold text-gray-300">Jonli Reyting:</div>';
+      html += '    <div class="space-y-1.5 max-h-48 overflow-y-auto">';
+      list.forEach(function(p, idx) {
+        var isMe = (p.id === myStudentId);
+        html += '<div class="px-3 py-2 rounded-xl bg-gray-800/60 border ' + (isMe ? 'border-amber-500/60 text-amber-300 font-bold' : 'border-gray-700 text-gray-300') + ' text-xs flex items-center justify-between">';
+        html += '  <div class="flex items-center gap-2">';
+        html += '    <span>#' + (idx + 1) + '</span>';
+        html += '    <span>' + p.name + (p.finished ? ' (Yakunladi ✅)' : ' (Yechmoqda ⏳)') + '</span>';
+        html += '  </div>';
+        html += '  <span class="font-mono font-black text-amber-400">' + (p.score || 0).toLocaleString() + '</span>';
+        html += '</div>';
+      });
+      html += '    </div>';
+      html += '  </div>';
+
+      if (isTeacher) {
+        html += '  <button id="btnTeacherFinishFromWaiting" class="w-full py-3 rounded-xl bg-rose-600 text-white font-extrabold text-sm shadow hover:bg-rose-700">';
+        html += '    🏁 Testni Barchaga To\'xtatish va Sovg\'alarni Berish';
+        html += '  </button>';
+      }
+
+      html += '</div>';
+
+      root.innerHTML = html;
+
+      var btnFinish = root.querySelector('#btnTeacherFinishFromWaiting');
+      if (btnFinish) {
+        btnFinish.onclick = function() {
+          if (window.EthithSync && window.EthithSync.publishLive) {
+            window.EthithSync.publishLive({ type: 'QUIZ_FORCE_FINISH', quizId: quiz.id });
+          }
+          renderFinalePodium();
+        };
+      }
+    }
+
+    // -----------------------------------------------------------------------
+    // PHASE 5: FINALE PODIUM WITH 3D HILARIOUS UZBEK PRIZES & PERSISTENT ANALYTICS
+    // -----------------------------------------------------------------------
+    function renderFinalePodium() {
+      currentPhase = 'finished';
+      cleanupListeners();
+
+      var list = Object.values(participantsMap);
+      list.sort(function(a, b) { return b.score - a.score; });
+
+      var winner1 = list[0] || null;
+      var winner2 = list[1] || null;
+      var winner3 = list[2] || null;
+
+      // Assign hilarious Uzbek gifts
+      var prize1 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(1) : { name: "Eski rezina tapichka (43-razmer)", icon: "🩴", desc: "Sifatli va qalin tapichka" };
+      var prize2 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg'a" };
+      var prize3 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko'rkam tufli" };
+
+      if (winner1) winner1.prize = prize1;
+      if (winner2) winner2.prize = prize2;
+      if (winner3) winner3.prize = prize3;
+
+      // If current user is in top 3, award the prize into S.user.gifts!
+      var myRank = getMyRank();
+      if (myRank <= 3 && S.user) {
+        if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
+        var awardedPrize = (myRank === 1 ? prize1 : (myRank === 2 ? prize2 : prize3));
+        var alreadyAwarded = S.user.gifts.some(function(g) { return g.quizId === quiz.id; });
+        if (!alreadyAwarded) {
+          S.user.gifts.unshift({
+            id: 'gift_' + Date.now(),
+            quizId: quiz.id,
+            name: awardedPrize.name,
+            icon: awardedPrize.icon,
+            desc: awardedPrize.desc,
+            rank: myRank,
+            quizTitle: quiz.title,
+            wonAt: Date.now()
+          });
+          App.saveState();
+        }
+      }
+
+      // Compile and Save Persistent Teacher Analytics
+      // Question-by-question statistics in original teacher order
+      var questionStats = (quiz.questions || []).map(function(origQ, qIdx) {
+        var optCounts = { 0: 0, 1: 0, 2: 0, 3: 0 };
+        var optStudents = { 0: [], 1: [], 2: [], 3: [] };
+        var correctCountTotal = 0;
+        var totalAnswered = 0;
+
+        list.forEach(function(student) {
+          if (!student.answers) return;
+          // Look for student answer by question id or index
+          var ans = student.answers[origQ.id] || student.answers['q_' + qIdx];
+          if (!ans) {
+            // Check by matching questionText
+            for (var k in student.answers) {
+              if (student.answers[k] && student.answers[k].questionText === origQ.question) {
+                ans = student.answers[k];
+                break;
+              }
+            }
+          }
+
+          if (ans !== undefined && ans.chosen !== undefined) {
+            totalAnswered++;
+            var cIdx = ans.chosen;
+            if (optCounts[cIdx] !== undefined) {
+              optCounts[cIdx]++;
+              optStudents[cIdx].push(student.name);
+            }
+            if (cIdx === origQ.correctAnswer) correctCountTotal++;
+          }
+        });
+
+        var accPct = totalAnswered > 0 ? Math.round((correctCountTotal / totalAnswered) * 100) : 0;
+
+        return {
+          questionIndex: qIdx,
+          questionText: origQ.question,
+          options: origQ.options,
+          correctAnswer: origQ.correctAnswer,
+          optCounts: optCounts,
+          optStudents: optStudents,
+          totalAnswered: totalAnswered,
+          accuracyPct: accPct
+        };
+      });
+
+      // Find student with most mistakes and student with least mistakes
+      var sortedByMistakes = list.slice().sort(function(a, b) { return (b.wrongCount || 0) - (a.wrongCount || 0); });
+      var mostMistakesStudent = sortedByMistakes[0] || null;
+      var leastMistakesStudent = sortedByMistakes[sortedByMistakes.length - 1] || null;
+
+      quiz.lastSessionAnalysis = {
+        finishedAt: Date.now(),
+        totalParticipants: list.length,
+        questionStats: questionStats,
+        rankings: list.map(function(p, idx) {
+          return {
+            rank: idx + 1,
+            id: p.id,
+            name: p.name,
+            score: p.score,
+            correctCount: p.correctCount,
+            wrongCount: p.wrongCount,
+            infractions: p.infractions,
+            prize: p.prize || null
+          };
+        }),
+        mostMistakesStudent: mostMistakesStudent ? { name: mostMistakesStudent.name, wrongCount: mostMistakesStudent.wrongCount } : null,
+        leastMistakesStudent: leastMistakesStudent ? { name: leastMistakesStudent.name, correctCount: leastMistakesStudent.correctCount } : null
+      };
+      quiz.status = 'finished';
+      App.saveState();
+
+      // Render 3D Podium HTML
+      var html = '<div class="max-w-4xl w-full mx-auto p-6 md:p-8 space-y-8 animate-fade-in pb-16 text-center">';
+      html += '  <div class="space-y-2">';
+      html += '    <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-amber-500/20 text-amber-400 font-extrabold text-xs uppercase tracking-widest">';
+      html += '      <span>🏆 QUIZ BATTLE G\'OLIBLARI VA KULGILI SOVRINLAR</span>';
+      html += '    </div>';
+      html += '    <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight">' + (quiz.title || 'Quiz Test') + '</h2>';
+      html += '    <p class="text-xs md:text-sm text-gray-400">Bellashuv yakunlandi! 1, 2 va 3-o\'rin sohiblariga 100 dan ortiq kulgili 3D sovg\'alar taqdim etildi.</p>';
+      html += '  </div>';
+
+      // 3-Step Podium
+      html += '  <div class="eth-quiz-podium-wrap flex flex-col md:flex-row items-end justify-center gap-4 pt-8">';
+
+      // 2nd Place (Silver)
+      if (winner2) {
+        html += '<div class="w-full md:w-1/3 order-2 md:order-1 space-y-3">';
+        html += '  <div class="eth-gift-card-3d bg-gray-800/90 border border-gray-600 rounded-2xl p-4 shadow-xl text-center">';
+        html += '    <div class="text-5xl mb-2">' + prize2.icon + '</div>';
+        html += '    <div class="text-xs font-bold text-gray-400 uppercase">🥈 2-O\'rin Sovrini:</div>';
+        html += '    <div class="font-extrabold text-sm text-white mt-1">' + prize2.name + '</div>';
+        html += '    <div class="text-[11px] text-gray-400 mt-1">' + prize2.desc + '</div>';
+        html += '  </div>';
+        html += '  <div class="p-4 rounded-t-2xl bg-gradient-to-t from-gray-700 to-gray-600 text-white shadow-lg h-36 flex flex-col justify-end">';
+        html += '    <div class="font-black text-base truncate">' + winner2.name + '</div>';
+        html += '    <div class="font-mono text-sm text-amber-300 font-bold">' + winner2.score.toLocaleString() + ' Ball</div>';
+        html += '    <div class="text-2xl font-black mt-1">2</div>';
+        html += '  </div>';
+        html += '</div>';
+      }
+
+      // 1st Place (Gold)
+      if (winner1) {
+        html += '<div class="w-full md:w-1/3 order-1 md:order-2 space-y-3 -mt-6">';
+        html += '  <div class="eth-gift-card-3d bg-gradient-to-b from-amber-950/80 to-gray-800 border-2 border-amber-500 rounded-2xl p-5 shadow-2xl text-center transform scale-105">';
+        html += '    <div class="text-6xl mb-2">' + prize1.icon + '</div>';
+        html += '    <div class="text-xs font-black text-amber-400 uppercase">👑 1-O\'RIN BOSHQAHRAMONI:</div>';
+        html += '    <div class="font-extrabold text-base text-amber-300 mt-1">' + prize1.name + '</div>';
+        html += '    <div class="text-[11px] text-amber-100/80 mt-1">' + prize1.desc + '</div>';
+        html += '  </div>';
+        html += '  <div class="p-5 rounded-t-2xl bg-gradient-to-t from-amber-600 to-yellow-500 text-gray-950 shadow-2xl h-48 flex flex-col justify-end">';
+        html += '    <div class="font-black text-lg truncate">' + winner1.name + '</div>';
+        html += '    <div class="font-mono text-base font-extrabold">' + winner1.score.toLocaleString() + ' Ball</div>';
+        html += '    <div class="text-3xl font-black mt-1">🥇 1</div>';
+        html += '  </div>';
+        html += '</div>';
+      }
+
+      // 3rd Place (Bronze)
+      if (winner3) {
+        html += '<div class="w-full md:w-1/3 order-3 md:order-3 space-y-3">';
+        html += '  <div class="eth-gift-card-3d bg-gray-800/90 border border-amber-800 rounded-2xl p-4 shadow-xl text-center">';
+        html += '    <div class="text-5xl mb-2">' + prize3.icon + '</div>';
+        html += '    <div class="text-xs font-bold text-amber-600 uppercase">🥉 3-O\'rin Sovrini:</div>';
+        html += '    <div class="font-extrabold text-sm text-white mt-1">' + prize3.name + '</div>';
+        html += '    <div class="text-[11px] text-gray-400 mt-1">' + prize3.desc + '</div>';
+        html += '  </div>';
+        html += '  <div class="p-4 rounded-t-2xl bg-gradient-to-t from-amber-900 to-amber-800 text-white shadow-lg h-28 flex flex-col justify-end">';
+        html += '    <div class="font-black text-base truncate">' + winner3.name + '</div>';
+        html += '    <div class="font-mono text-sm text-amber-300 font-bold">' + winner3.score.toLocaleString() + ' Ball</div>';
+        html += '    <div class="text-2xl font-black mt-1">3</div>';
+        html += '  </div>';
+        html += '</div>';
+      }
+
+      html += '  </div>';
+
+      // Buttons
+      html += '  <div class="flex flex-wrap items-center justify-center gap-4 pt-6">';
+      html += '    <button id="btnViewAnalysisFromPodium" class="px-6 py-3.5 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-sm shadow-xl flex items-center gap-2">';
+      html += '      <span>📊 Batafsil Test Tahlilini Ko\'rish</span>';
+      html += '    </button>';
+      html += '    <button id="btnExitPodium" class="px-6 py-3.5 rounded-2xl bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold text-sm shadow-lg">';
+      html += '      🚪 Testni Tark Etish (Dashboard)';
+      html += '    </button>';
+      html += '  </div>';
+
+      html += '</div>';
+
+      root.innerHTML = html;
+
+      var btnExit = root.querySelector('#btnExitPodium');
+      if (btnExit) {
+        btnExit.onclick = function() {
+          root.remove();
+          if (window._ethithRefreshQuizList) window._ethithRefreshQuizList();
+        };
+      }
+
+      var btnAnalysis = root.querySelector('#btnViewAnalysisFromPodium');
+      if (btnAnalysis) {
+        btnAnalysis.onclick = function() {
+          root.remove();
+          if (window._ethithRefreshQuizList) window._ethithRefreshQuizList();
+          showQuizAnalysisModal(quiz);
+        };
+      }
+    }
+
+    // Launch Phase 1 Lobby
+    renderLobby();
+  }
+
+
+  // =========================================================================
+  // PERSISTENT TEACHER & STUDENT QUIZ ANALYTICS MODAL
+  // =========================================================================
+
+  function showQuizAnalysisModal(quiz) {
+    if (!quiz) return;
+    var analysis = quiz.lastSessionAnalysis;
+    if (!analysis) {
+      alert("Ushbu quiz bo\'yicha hali tahlil ma\'lumotlari mavjud emas. Test o\'tkazilgandan so\'ng tahlil paydo bo\'ladi!");
+      return;
+    }
+
+    var overlay = document.createElement('div');
+    overlay.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto';
+
+    var html = '<div class="bg-white dark:bg-gray-800 rounded-3xl max-w-4xl w-full p-6 md:p-8 shadow-2xl border border-gray-100 dark:border-gray-700 my-8 space-y-6 max-h-[90vh] flex flex-col justify-between">';
+
+    // Header
+    html += '  <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-700 pb-4">';
+    html += '    <div class="flex items-center gap-3">';
+    html += '      <span class="text-3xl">📊</span>';
+    html += '      <div>';
+    html += '        <h3 class="text-xl font-black text-gray-900 dark:text-white">Quiz Test Tahlili: ' + (quiz.title || 'Quiz') + '</h3>';
+    html += '        <p class="text-xs text-gray-500 dark:text-gray-400">Har bir savol ketma-ketligi, variantlar taqsimoti va o\'quvchilar xatolari.</p>';
+    html += '      </div>';
+    html += '    </div>';
+    html += '    <button id="btnCloseAnalysisModal" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-bold p-1">✕</button>';
+    html += '  </div>';
+
+    // Body
+    html += '  <div class="flex-1 overflow-y-auto space-y-6 pr-1">';
+
+    // Summary Cards
+    html += '    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">';
+    html += '      <div class="p-3.5 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-700 text-center">';
+    html += '        <div class="text-[11px] font-bold text-gray-400 uppercase">Qatnashchilar</div>';
+    html += '        <div class="text-xl font-black text-gray-900 dark:text-white mt-1">' + (analysis.totalParticipants || 0) + ' ta</div>';
+    html += '      </div>';
+
+    var mostMistakes = analysis.mostMistakesStudent;
+    html += '      <div class="p-3.5 bg-rose-50 dark:bg-rose-950/40 rounded-2xl border border-rose-100 dark:border-rose-900/40 text-center">';
+    html += '        <div class="text-[11px] font-bold text-rose-500 uppercase">Eng ko\'p xato qilgan</div>';
+    html += '        <div class="text-xs font-black text-rose-700 dark:text-rose-300 mt-1 truncate">' + (mostMistakes ? mostMistakes.name + ' (' + mostMistakes.wrongCount + ' ta)' : '—') + '</div>';
+    html += '      </div>';
+
+    var leastMistakes = analysis.leastMistakesStudent;
+    html += '      <div class="p-3.5 bg-emerald-50 dark:bg-emerald-950/40 rounded-2xl border border-emerald-100 dark:border-emerald-900/40 text-center">';
+    html += '        <div class="text-[11px] font-bold text-emerald-500 uppercase">Eng kam xato qilgan</div>';
+    html += '        <div class="text-xs font-black text-emerald-700 dark:text-emerald-300 mt-1 truncate">' + (leastMistakes ? leastMistakes.name + ' (' + leastMistakes.correctCount + ' to\'g\'ri)' : '—') + '</div>';
+    html += '      </div>';
+
+    html += '      <div class="p-3.5 bg-amber-50 dark:bg-amber-950/40 rounded-2xl border border-amber-100 dark:border-amber-900/40 text-center">';
+    html += '        <div class="text-[11px] font-bold text-amber-600 uppercase">O\'tkazilgan sana</div>';
+    html += '        <div class="text-xs font-extrabold text-amber-700 dark:text-amber-300 mt-1">' + (analysis.finishedAt ? new Date(analysis.finishedAt).toLocaleDateString() : '—') + '</div>';
+    html += '      </div>';
+    html += '    </div>';
+
+    // Question-by-question Breakdown
+    html += '    <div class="space-y-4">';
+    html += '      <h4 class="text-sm font-black text-gray-800 dark:text-gray-100 flex items-center gap-2">';
+    html += '        <span>📋 Savollar Ketma-ketligi va O\'quvchilar Tanlagan Variantlari</span>';
+    html += '      </h4>';
+
+    (analysis.questionStats || []).forEach(function(stat, sIdx) {
+      var isHighAcc = stat.accuracyPct >= 70;
+      var isLowAcc = stat.accuracyPct < 40;
+
+      html += '<div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 space-y-3">';
+      html += '  <div class="flex items-start justify-between gap-3">';
+      html += '    <div class="space-y-1">';
+      html += '      <div class="font-extrabold text-sm text-gray-900 dark:text-white">' + (sIdx + 1) + '. ' + stat.questionText + '</div>';
+      html += '      <div class="text-xs text-emerald-600 dark:text-emerald-400 font-bold">To\'g\'ri javob: ' + String.fromCharCode(65 + stat.correctAnswer) + ') ' + (stat.options[stat.correctAnswer] || '') + '</div>';
+      html += '    </div>';
+      html += '    <div class="text-right flex-shrink-0">';
+      html += '      <span class="px-2.5 py-1 rounded-full text-xs font-black ' + (isHighAcc ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' : (isLowAcc ? 'bg-rose-100 text-rose-800 dark:bg-rose-900/50 dark:text-rose-300' : 'bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300')) + '">';
+      html += '        ' + stat.accuracyPct + '% aniqlik';
+      html += '      </span>';
+      html += '    </div>';
+      html += '  </div>';
+
+      // Options & which students selected each
+      html += '  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">';
+      stat.options.forEach(function(opt, optIdx) {
+        var letter = String.fromCharCode(65 + optIdx);
+        var isCorr = (optIdx === stat.correctAnswer);
+        var chosenStudents = (stat.optStudents && stat.optStudents[optIdx]) || [];
+
+        html += '<div class="p-2.5 rounded-xl border ' + (isCorr ? 'border-emerald-300 dark:border-emerald-700 bg-emerald-50/50 dark:bg-emerald-950/20' : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800/80') + ' text-xs space-y-1">';
+        html += '  <div class="flex items-center justify-between font-bold">';
+        html += '    <span class="' + (isCorr ? 'text-emerald-600 dark:text-emerald-400' : 'text-gray-700 dark:text-gray-300') + '">' + letter + ') ' + opt + (isCorr ? ' ✅' : '') + '</span>';
+        html += '    <span class="text-[11px] font-mono text-gray-400">' + chosenStudents.length + ' ta</span>';
+        html += '  </div>';
+
+        if (chosenStudents.length > 0) {
+          html += '  <div class="text-[11px] text-gray-500 dark:text-gray-400 truncate">';
+          html += '    Tanlaganlar: <span class="font-medium text-gray-700 dark:text-gray-300">' + chosenStudents.join(', ') + '</span>';
+          html += '  </div>';
+        } else {
+          html += '  <div class="text-[10px] text-gray-400 italic">Hech kim tanlamadi</div>';
+        }
+        html += '</div>';
+      });
+      html += '  </div>';
+
+      html += '</div>';
+    });
+    html += '    </div>';
+
+    // Student Leaderboard Table
+    html += '    <div class="space-y-3 pt-4 border-t border-gray-100 dark:border-gray-700">';
+    html += '      <h4 class="text-sm font-black text-gray-800 dark:text-gray-100">🏆 O\'quvchilar Yakuniy Reytingi</h4>';
+    html += '      <div class="overflow-x-auto">';
+    html += '        <table class="w-full text-xs text-left">';
+    html += '          <thead class="text-gray-400 uppercase bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">';
+    html += '            <tr>';
+    html += '              <th class="px-3 py-2">O\'rin</th>';
+    html += '              <th class="px-3 py-2">O\'quvchi</th>';
+    html += '              <th class="px-3 py-2">Ball</th>';
+    html += '              <th class="px-3 py-2">To\'g\'ri</th>';
+    html += '              <th class="px-3 py-2">Xato</th>';
+    html += '              <th class="px-3 py-2">Qoidabuzarlik</th>';
+    html += '              <th class="px-3 py-2">Yutilgan Sovg\'a</th>';
+    html += '            </tr>';
+    html += '          </thead>';
+    html += '          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">';
+    (analysis.rankings || []).forEach(function(r) {
+      html += '            <tr class="hover:bg-gray-50/50 dark:hover:bg-gray-900/50">';
+      html += '              <td class="px-3 py-2.5 font-bold font-mono">#' + r.rank + '</td>';
+      html += '              <td class="px-3 py-2.5 font-extrabold text-gray-900 dark:text-white">' + r.name + '</td>';
+      html += '              <td class="px-3 py-2.5 font-mono font-black text-amber-600 dark:text-amber-400">' + (r.score || 0).toLocaleString() + '</td>';
+      html += '              <td class="px-3 py-2.5 font-bold text-emerald-600">+' + (r.correctCount || 0) + '</td>';
+      html += '              <td class="px-3 py-2.5 font-bold text-rose-500">-' + (r.wrongCount || 0) + '</td>';
+      html += '              <td class="px-3 py-2.5">' + (r.infractions > 0 ? ('<span class="text-rose-500 font-bold">⚠️ ' + r.infractions + ' marta</span>') : '<span class="text-gray-400">0</span>') + '</td>';
+      html += '              <td class="px-3 py-2.5 font-medium">' + (r.prize ? (r.prize.icon + ' ' + r.prize.name) : '—') + '</td>';
+      html += '            </tr>';
+    });
+    html += '          </tbody>';
+    html += '        </table>';
+    html += '      </div>';
+    html += '    </div>';
+
+    html += '  </div>';
+
+    // Footer
+    html += '  <div class="border-t border-gray-100 dark:border-gray-700 pt-4 flex items-center justify-end">';
+    html += '    <button id="btnCloseAnalysisModalBottom" class="px-6 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs hover:bg-gray-200">';
+    html += '      Yopish';
+    html += '    </button>';
+    html += '  </div>';
+
+    html += '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    function close() { overlay.remove(); }
+    overlay.querySelector('#btnCloseAnalysisModal').onclick = close;
+    overlay.querySelector('#btnCloseAnalysisModalBottom').onclick = close;
+  }
+
+
+  // =========================================================================
+  // SEND GIFT MODAL (TRANSFER HILARIOUS UZBEK PRIZE TO A FRIEND)
+  // =========================================================================
+
+  function showSendGiftModal(gift, onSent) {
+    if (!gift) return;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto';
+
+    // Collect all unique students from classes
+    var friendsList = [];
+    var seenEmails = {};
+    (S.classes || []).forEach(function(cls) {
+      (cls.students || []).forEach(function(st) {
+        var email = (st.email || st.id || '').toLowerCase().trim();
+        if (email && email !== (S.user.email || '').toLowerCase().trim() && !seenEmails[email]) {
+          seenEmails[email] = true;
+          friendsList.push(st);
+        }
+      });
+    });
+
+    var html = '<div class="bg-white dark:bg-gray-800 rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl border border-gray-100 dark:border-gray-700 space-y-6 animate-fade-in">';
+
+    html += '  <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-700 pb-4">';
+    html += '    <div class="flex items-center gap-2.5">';
+    html += '      <span class="text-2xl">🎁</span>';
+    html += '      <h3 class="text-lg font-black text-gray-900 dark:text-white">Do\'stga Sovg\'a Qilish</h3>';
+    html += '    </div>';
+    html += '    <button id="btnCloseSendGift" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-bold p-1">✕</button>';
+    html += '  </div>';
+
+    // Gift Card Preview
+    html += '  <div class="eth-gift-card-3d bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-gray-900 border border-amber-300 dark:border-amber-700/80 rounded-2xl p-4 text-center space-y-1 shadow-md">';
+    html += '    <div class="text-5xl">' + (gift.icon || '🎁') + '</div>';
+    html += '    <div class="font-black text-base text-gray-900 dark:text-white mt-1">' + (gift.name || 'Sovg\'a') + '</div>';
+    html += '    <div class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">' + (gift.desc || '') + '</div>';
+    html += '  </div>';
+
+    // Friend Picker
+    html += '  <div class="space-y-2">';
+    html += '    <label class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Sovg\'ani qabul qiluvchi do\'stingizni tanlang:</label>';
+    if (friendsList.length === 0) {
+      html += '    <div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-xl text-center text-xs text-gray-400 border border-dashed border-gray-200 dark:border-gray-700">';
+      html += '      Sinfingizda hali boshqa o\'quvchilar mavjud emas. Sinflarga o\'quvchilar qo\'shilgach ularga sovg\'a yuborishingiz mumkin.';
+      html += '    </div>';
+    } else {
+      html += '    <div class="space-y-1.5 max-h-56 overflow-y-auto pr-1">';
+      friendsList.forEach(function(fr, fIdx) {
+        html += '<div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 flex items-center justify-between gap-3 hover:border-amber-400 transition-all">';
+        html += '  <div class="flex items-center gap-2.5 truncate">';
+        html += '    <span class="text-xl">👤</span>';
+        html += '    <div class="truncate">';
+        html += '      <div class="font-extrabold text-xs text-gray-900 dark:text-white truncate">' + fr.name + '</div>';
+        html += '      <div class="text-[10px] text-gray-400 truncate">' + (fr.email || '') + '</div>';
+        html += '    </div>';
+        html += '  </div>';
+        html += '  <button class="btnSendGiftToStudent px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-extrabold text-xs shadow hover:opacity-95 active:scale-95 transition-all flex-shrink-0" data-friend-idx="' + fIdx + '">';
+        html += '    Yuborish 🎁';
+        html += '  </button>';
+        html += '</div>';
+      });
+      html += '    </div>';
+    }
+    html += '  </div>';
+
+    html += '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    function close() { overlay.remove(); }
+    overlay.querySelector('#btnCloseSendGift').onclick = close;
+
+    overlay.querySelectorAll('.btnSendGiftToStudent').forEach(function(btn) {
+      btn.onclick = function() {
+        var idx = parseInt(btn.getAttribute('data-friend-idx'), 10);
+        var target = friendsList[idx];
+        if (!target) return;
+
+        if (confirm("Rostdan ham '" + gift.name + "' sovg'asini " + target.name + "ga yubormoqchimisiz?")) {
+          // Remove from sender inventory
+          S.user.gifts = S.user.gifts.filter(function(g) { return g.id !== gift.id; });
+          App.saveState();
+
+          // Broadcast via MQTT
+          if (window.EthithSync && window.EthithSync.publishLive) {
+            window.EthithSync.publishLive({
+              type: 'GIFT_SENT',
+              giftName: gift.name,
+              giftIcon: gift.icon,
+              giftDesc: gift.desc,
+              senderName: S.user.name,
+              recipientEmail: target.email,
+              recipientId: target.id
+            });
+          }
+
+          alert("Sovg'a muvaffaqiyatli yuborildi! 🎉 Do'stingiz ekranida maxsus bildirishnoma paydo bo'ladi.");
+          close();
+          if (onSent) onSent();
+        }
+      };
+    });
+  }
+
   window.EthithViews = {
+    renderQuizBattleView: renderQuizBattleView,
+    showCreateQuizModal: showCreateQuizModal,
+    startQuizBattleRunner: startQuizBattleRunner,
+    showQuizAnalysisModal: showQuizAnalysisModal,
+    showSendGiftModal: showSendGiftModal,
     renderAskAITeacher: renderAskAITeacher,
     renderLevelsView: renderLevelsView,
     renderClassesView: renderClassesView,
