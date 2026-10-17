@@ -8122,7 +8122,7 @@
             }
             html += '  </div>';
             html += '  <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700/60">';
-            html += '    <button class="btnSendGiftModal w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-extrabold text-xs shadow hover:opacity-95 active:scale-95 transition-all flex items-center justify-center gap-1.5" data-gift-idx="' + idx + '">';
+            html += '    <button class="btnSendGiftModal eth-gift-action-btn" data-gift-idx="' + idx + '">';
             html += '      <span>🎁 Do\'stga sovg\'a qilish</span>';
             html += '    </button>';
             html += '  </div>';
@@ -8833,7 +8833,7 @@
       }, 1000);
     }
 
-    // PHASE 3A: TEACHER LIVE COMMAND & PROCTORING CENTER (WAYGROUND 1:1)
+    // PHASE 3A: TEACHER LIVE COMMAND & PROCTORING CENTER (2-COLUMN WAYGROUND 1:1)
     function renderTeacherCommandCenter() {
       currentPhase = 'teacher_control';
       var list = Object.values(participantsMap);
@@ -8845,69 +8845,70 @@
       var totalQuestionsAnswered = list.reduce(function(acc, p) { return acc + (p.currentQ || 0); }, 0);
       var classAccuracyPct = totalQuestionsAnswered > 0 ? Math.round((totalCorrectAnswers / totalQuestionsAnswered) * 100) : 100;
 
-      var html = '<div class="eth-wayground-screen">';
+      var html = '<div class="eth-wayground-screen max-w-6xl w-full mx-auto p-4 md:p-6 space-y-5 animate-fade-in pb-16">';
 
-      // Top Wayground Bar
-      html += '<div class="eth-wayground-topbar">';
-      html += '  <div class="flex items-center gap-3">';
-      html += '    <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-xl shadow-inner">📡</div>';
+      // Top Command Header
+      html += '<div class="flex flex-wrap items-center justify-between gap-4 p-5 rounded-2xl bg-gray-900/95 border border-gray-700/80 backdrop-blur-xl shadow-2xl">';
+      html += '  <div class="flex items-center gap-4">';
+      html += '    <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-2xl shadow-inner">📡</div>';
       html += '    <div>';
       html += '      <div class="flex items-center gap-2">';
-      html += '        <h2 class="text-base md:text-lg font-black text-white leading-tight">' + (quiz.title || 'Quiz Test') + '</h2>';
-      html += '        <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-[10px] font-black uppercase flex items-center gap-1">';
-      html += '          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> JONLI NAZORAT';
+      html += '        <h2 class="text-xl md:text-2xl font-black text-white">' + (quiz.title || 'Quiz Test') + '</h2>';
+      html += '        <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-black uppercase flex items-center gap-1.5">';
+      html += '          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> JONLI NAZORAT';
       html += '        </span>';
       html += '      </div>';
-      html += '      <div class="text-[11px] text-gray-400 flex items-center gap-2 mt-0.5">';
+      html += '      <div class="text-xs text-gray-400 flex items-center gap-3 mt-1 font-medium">';
+      html += '        <span>Kod: <strong class="text-amber-400 font-mono">' + quiz.code + '</strong></span>';
+      html += '        <span>·</span>';
       html += '        <span>O\'quvchilar: <strong class="text-white">' + list.length + ' ta</strong></span>';
       html += '        <span>·</span>';
-      html += '        <span>Tugatgan: <strong class="text-emerald-400">' + totalFinished + ' / ' + list.length + '</strong></span>';
+      html += '        <span>Tugatganlar: <strong class="text-emerald-400">' + totalFinished + ' / ' + list.length + '</strong></span>';
+      html += '        <span>·</span>';
+      html += '        <span class="eth-wayground-gauge">Aniqlik: <strong class="' + (classAccuracyPct >= 70 ? 'text-emerald-400' : 'text-amber-400') + '">' + classAccuracyPct + '%</strong></span>';
       if (totalInfractions > 0) {
         html += '        <span>·</span>';
-        html += '        <span class="text-rose-400 font-extrabold">🚨 ' + totalInfractions + ' ta ogohlantirish</span>';
+        html += '        <span class="text-rose-400 font-extrabold">🚨 ' + totalInfractions + ' ta qoidabuzarlik</span>';
       }
       html += '      </div>';
       html += '    </div>';
       html += '  </div>';
 
-      // Center: Accuracy Gauge
-      html += '  <div class="eth-wayground-gauge">';
-      html += '    <div class="text-[10px] font-black text-gray-400 uppercase tracking-wider">Klass Aniqligi</div>';
-      html += '    <div class="text-lg md:text-xl font-black ' + (classAccuracyPct >= 70 ? 'text-emerald-400' : (classAccuracyPct >= 40 ? 'text-amber-400' : 'text-rose-400')) + '">' + classAccuracyPct + '%</div>';
-      html += '  </div>';
-
-      // Right Controls
-      html += '  <div class="flex items-center gap-2">';
-      html += '    <div class="eth-wayground-code-badge" id="btnCopyCommandCode" title="Kodni nusxalash">';
+      html += '  <div class="flex items-center gap-3">';
+      html += '    <button id="btnCopyCommandCode" class="px-3.5 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-amber-400 border border-amber-500/40 text-xs font-black transition-all flex items-center gap-1.5" title="Kodni nusxalash">';
       html += '      <span>KOD: ' + quiz.code + '</span>';
       html += '      <span class="text-xs">📋</span>';
-      html += '    </div>';
+      html += '    </button>';
       html += '    <button id="btnToggleQuizMusic" class="eth-wayground-music-btn eth-music-toggle-btn">';
       html +=        (isMusicMuted ? '🔇 Muzika' : '🔊 Muzika');
       html += '    </button>';
-      html += '    <button id="btnTeacherForceFinishLive" class="eth-teacher-finish-btn py-2 px-3.5 text-xs font-black">';
+      html += '    <button id="btnTeacherForceFinishLive" class="eth-teacher-finish-btn">';
       html += '      <span>🏁</span>';
-      html += '      <span>Yakunlash</span>';
+      html += '      <span>Barchaga Yakunlash (Podium)</span>';
       html += '    </button>';
       html += '    <button id="btnTeacherExitLive" class="eth-quiz-close-btn" title="Chiqish">✕</button>';
       html += '  </div>';
       html += '</div>';
 
-      // Leaderboard Box (Wayground 1:1)
-      html += '<div class="eth-wayground-leaderboard-box">';
-      html += '  <div class="eth-wayground-th-header">';
-      html += '    <div class="w-14 text-center">O\'RIN</div>';
-      html += '    <div class="flex-1">ISMI VA QAHRAMONI</div>';
-      html += '    <div class="w-28 text-right">NATIJA (BALL)</div>';
-      html += '    <div class="w-48 text-right hidden sm:block">JARAYON & STREAK 🔥</div>';
-      html += '  </div>';
+      // 2-Column Grid: Left (Leaderboard 60%), Right (Telemetry Stream 40%)
+      html += '<div class="grid grid-cols-1 lg:grid-cols-12 gap-5">';
+
+      // LEFT COLUMN: LIVE LEADERBOARD (7 cols)
+      html += '  <div class="lg:col-span-7 space-y-4">';
+      html += '    <div class="p-4 rounded-2xl bg-gray-900/90 border border-gray-700/80 shadow-xl space-y-3">';
+      html += '      <div class="flex items-center justify-between border-b border-gray-800 pb-2.5 px-1">';
+      html += '        <div class="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-2">';
+      html += '          <span>🏆 JONLI REYTING VA O\'QUVCHILAR NATIJALARI</span>';
+      html += '        </div>';
+      html += '        <span class="text-[11px] text-gray-400">To\'plangan ballar asosida</span>';
+      html += '      </div>';
 
       if (list.length === 0) {
-        html += '<div class="p-12 text-center text-gray-400 text-sm font-bold">';
-        html += '  <span>⏳ O\'quvchilar qo\'shilishini kutmoqdamiz...</span>';
+        html += '<div class="p-8 text-center text-gray-400 text-sm font-bold">';
+        html += '  <span>⏳ O\'quvchilar javob berishini kutmoqdamiz...</span>';
         html += '</div>';
       } else {
-        html += '  <div class="divide-y divide-gray-800/80">';
+        html += '      <div class="space-y-2 max-h-[520px] overflow-y-auto pr-1">';
         list.forEach(function(p, idx) {
           var newRank = idx + 1;
           var oldRank = previousRanksMap[p.id];
@@ -8922,53 +8923,96 @@
           previousRanksMap[p.id] = newRank;
 
           var hero = p.hero || getStudentHero(p.id, idx);
-          var medal = newRank === 1 ? '🥇 1' : (newRank === 2 ? '🥈 2' : (newRank === 3 ? '🥉 3' : ('#' + newRank)));
+          var medal = idx === 0 ? '🥇 1' : (idx === 1 ? '🥈 2' : (idx === 2 ? '🥉 3' : ('#' + (idx + 1))));
           var progressPct = p.totalQ > 0 ? Math.round(((p.currentQ || 0) / p.totalQ) * 100) : 0;
           var streak = p.streak || 0;
 
-          html += '<div class="eth-wayground-player-row ' + animClass + (p.id === myStudentId ? ' is-me' : '') + '">';
-          // Col 1: Rank
-          html += '  <div class="w-14 text-center font-black text-sm ' + (newRank === 1 ? 'text-amber-400' : 'text-gray-400') + '">' + medal + '</div>';
-          // Col 2: Hero + Name + Badges
-          html += '  <div class="flex-1 flex items-center gap-3 min-w-0">';
-          html += '    <div class="w-9 h-9 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background: ' + hero.bg + '; border: 1.5px solid ' + hero.border + ';">' + hero.emoji + '</div>';
+          html += '<div class="p-3.5 rounded-2xl bg-gray-800/80 ' + animClass + ' border ' + (idx === 0 ? 'border-amber-500/70 bg-gradient-to-r from-amber-950/30 to-gray-800/80' : 'border-gray-700/70') + ' flex items-center justify-between gap-3 shadow-md hover:bg-gray-800 transition-all">';
+          html += '  <div class="flex items-center gap-3 min-w-0">';
+          html += '    <div class="w-10 text-center font-black text-sm ' + (idx === 0 ? 'text-amber-400' : 'text-gray-400') + '">' + medal + '</div>';
+          html += '    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-2xl flex-shrink-0" style="background: ' + hero.bg + '; border: 1.5px solid ' + hero.border + ';">' + hero.emoji + '</div>';
           html += '    <div class="min-w-0">';
           html += '      <div class="flex items-center gap-2">';
-          html += '        <span class="font-black text-white text-sm truncate">' + p.name + '</span>';
+          html += '        <div class="font-black text-white text-sm truncate">' + p.name + '</div>';
           if (p.finished) {
-            html += '        <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[9px] font-black">✅ Yakunladi</span>';
+            html += '        <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-black">✅ Yakunladi</span>';
           }
           if (p.infractions > 0) {
-            html += '        <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/40 text-[9px] font-black">🚨 ' + p.infractions + ' marta</span>';
+            html += '        <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/40 text-[10px] font-black">🚨 ' + p.infractions + ' marta</span>';
           }
           html += '      </div>';
-          html += '      <div class="text-[10px] text-gray-400 font-semibold">' + hero.name + '</div>';
-          html += '    </div>';
-          html += '  </div>';
-          // Col 3: Score
-          html += '  <div class="w-28 text-right flex-shrink-0">';
-          html += '    <div class="font-mono font-black text-base text-amber-400">' + (p.score || 0).toLocaleString() + '</div>';
-          html += '    <div class="text-[10px] text-gray-400 uppercase font-bold">Ball</div>';
-          html += '  </div>';
-          // Col 4: Progress & Streak
-          html += '  <div class="w-48 text-right hidden sm:flex flex-col items-end gap-1 flex-shrink-0">';
-          html += '    <div class="flex items-center gap-2">';
+          html += '      <div class="flex items-center gap-2 mt-1">';
+          html += '        <div class="w-24 h-1.5 rounded-full bg-gray-700 overflow-hidden">';
+          html += '          <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width: ' + progressPct + '%;"></div>';
+          html += '        </div>';
+          html += '        <span class="text-[10px] text-gray-400 font-semibold">' + (p.currentQ || 0) + '/' + preparedQuestions.length + '</span>';
+          html += '        <span class="text-[10px] text-emerald-400 font-bold">+' + (p.correctCount || 0) + '</span>';
+          html += '        <span class="text-[10px] text-rose-400 font-bold">-' + (p.wrongCount || 0) + '</span>';
           if (streak >= 2) {
-            html += '      <span class="px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 text-[10px] font-black animate-pulse">🔥 ' + streak + ' streak</span>';
+            html += '        <span class="text-[10px] text-orange-400 font-black animate-pulse">🔥 ' + streak + ' streak</span>';
           }
-          html += '      <span class="text-[10px] font-mono text-gray-400">' + (p.currentQ || 0) + '/' + preparedQuestions.length + '</span>';
+          html += '      </div>';
           html += '    </div>';
-          html += '    <div class="w-32 h-1.5 rounded-full bg-gray-800 overflow-hidden">';
-          html += '      <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width: ' + progressPct + '%;"></div>';
-          html += '    </div>';
+          html += '  </div>';
+
+          html += '  <div class="text-right flex-shrink-0">';
+          html += '    <div class="font-mono font-black text-base md:text-lg text-amber-400">' + (p.score || 0).toLocaleString() + '</div>';
+          html += '    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Ball</div>';
           html += '  </div>';
           html += '</div>';
         });
-        html += '  </div>';
+        html += '      </div>';
       }
 
-      html += '</div>'; // End leaderboard box
-      html += '</div>'; // End screen
+      html += '    </div>';
+      html += '  </div>';
+
+      // RIGHT COLUMN: LIVE PROCTORING & TELEMETRY STREAM (5 cols)
+      html += '  <div class="lg:col-span-5 space-y-4">';
+      html += '    <div class="p-4 rounded-2xl bg-gray-900/90 border border-gray-700/80 shadow-xl space-y-3">';
+      html += '      <div class="flex items-center justify-between border-b border-gray-800 pb-2.5 px-1">';
+      html += '        <div class="text-xs font-black uppercase tracking-wider text-rose-400 flex items-center gap-2">';
+      html += '          <span>⚡ JONLI PROCTORING VA HARAKATLAR OQIMI</span>';
+      html += '        </div>';
+      html += '        <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>';
+      html += '      </div>';
+
+      if (teacherTelemetryLogs.length === 0) {
+        html += '<div class="p-8 text-center text-gray-400 text-xs font-bold space-y-1">';
+        html += '  <div>🟢 Oqim tayyor.</div>';
+        html += '  <div>O\'quvchi oynadan chiqsa, taqiqlangan tugma bossa yoki javob bersa real vaqtda shu yerda qayd etiladi.</div>';
+        html += '</div>';
+      } else {
+        html += '      <div class="space-y-2 max-h-[520px] overflow-y-auto pr-1">';
+        teacherTelemetryLogs.forEach(function(item) {
+          var borderClass = 'border-l-4 border-l-blue-500 bg-gray-800/60';
+          if (item.isViolation) {
+            borderClass = 'border-l-4 border-l-rose-500 bg-rose-950/30 border border-rose-900/40 text-rose-200';
+          } else if (item.action === 'TAB_RETURN' || item.action === 'FOCUS') {
+            borderClass = 'border-l-4 border-l-emerald-500 bg-emerald-950/20 text-emerald-200';
+          } else if (item.action === 'CORRECT') {
+            borderClass = 'border-l-4 border-l-amber-500 bg-amber-950/20 text-amber-200';
+          }
+
+          html += '<div class="p-2.5 rounded-xl ' + borderClass + ' text-xs space-y-1 shadow-sm animate-fade-in">';
+          html += '  <div class="flex items-center justify-between text-[10px] text-gray-400 font-mono">';
+          html += '    <span class="font-black text-white flex items-center gap-1.5">';
+          if (item.hero) html += '<span>' + item.hero.emoji + '</span>';
+          html += '      <span>' + item.studentName + '</span>';
+          html += '    </span>';
+          html += '    <span>' + item.timestamp + '</span>';
+          html += '  </div>';
+          html += '  <div class="font-bold text-xs leading-snug">' + item.detail + '</div>';
+          html += '</div>';
+        });
+        html += '      </div>';
+      }
+
+      html += '    </div>';
+      html += '  </div>';
+
+      html += '</div>'; // End Grid
+      html += '</div>'; // End Container
 
       root.innerHTML = html;
 
@@ -9395,10 +9439,12 @@
             rank: idx + 1,
             id: p.id,
             name: p.name,
+            hero: p.hero || getStudentHero(p.id, idx),
             score: p.score,
             correctCount: p.correctCount,
             wrongCount: p.wrongCount,
             infractions: p.infractions,
+            answers: p.answers || {},
             prize: p.prize || null
           };
         }),
@@ -9510,157 +9556,394 @@
   }
 
   // -------------------------------------------------------------------------
-  // PERSISTENT TEACHER & STUDENT QUIZ ANALYTICS MODAL (TRANSLUCENT COLORFUL)
+  // WAYGROUND 1:1 QUIZ ANALYSIS REPORT MODAL (ALL ENGLISH AS USER REQUESTED)
   // -------------------------------------------------------------------------
   function showQuizAnalysisModal(quiz) {
     if (!quiz) return;
     var analysis = quiz.lastSessionAnalysis;
     if (!analysis) {
-      alert("Ushbu quiz bo\'yicha hali tahlil ma\'lumotlari mavjud emas. Test o\'tkazilgandan so\'ng tahlil paydo bo\'ladi!");
+      alert("No report data available yet. Host or participate in this quiz to generate the full session report!");
       return;
     }
 
+    var rankings = analysis.rankings || [];
+    var qStats = analysis.questionStats || [];
+    var totalQuestions = qStats.length || (quiz.questions ? quiz.questions.length : 0);
+    var totalParticipants = analysis.totalParticipants || rankings.length;
+
+    // Calculate overall class accuracy
+    var totalCorrect = rankings.reduce(function(acc, r) { return acc + (r.correctCount || 0); }, 0);
+    var totalAnswered = totalQuestions * totalParticipants;
+    var accuracyPct = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 100;
+    var completionRatePct = totalParticipants > 0 ? 100 : 0;
+
+    var formattedDate = analysis.finishedAt ? new Date(analysis.finishedAt).toLocaleString('en-US', {
+      month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit'
+    }) : 'Just now';
+
     var overlay = document.createElement('div');
-    overlay.className = 'eth-quiz-analysis-overlay';
+    overlay.className = 'eth-wayground-report-overlay';
 
-    var html = '<div class="eth-quiz-analysis-dialog">';
+    var html = '<div class="eth-wayground-report-modal">';
 
-    html += '  <div class="flex items-center justify-between border-b border-gray-700/80 pb-4">';
-    html += '    <div class="flex items-center gap-3">';
-    html += '      <span class="text-3xl p-2 rounded-2xl bg-amber-500/20 border border-amber-500/30">📊</span>';
-    html += '      <div>';
-    html += '        <h3 class="text-xl font-black text-white">Quiz Test Tahlili: ' + (quiz.title || 'Quiz') + '</h3>';
-    html += '        <p class="text-xs text-gray-400">Har bir savol ketma-ketligi, variantlar taqsimoti va o\'quvchilar xatolari tahlili.</p>';
-    html += '      </div>';
-    html += '    </div>';
-    html += '    <button id="btnCloseAnalysisModal" class="eth-quiz-close-btn" title="Yopish">✕</button>';
+    // HEADER
+    html += '<div class="eth-wg-report-header">';
+    html += '  <div class="flex items-center gap-3 flex-wrap">';
+    html += '    <h3 class="text-xl md:text-2xl font-black text-gray-900 dark:text-white leading-tight">' + (quiz.title || 'Assessment Report') + '</h3>';
+    html += '    <span class="eth-wg-badge-active"><span class="dot"></span> Active</span>';
+    html += '    <span class="eth-wg-code-box">Code: ' + (quiz.code || '------') + '</span>';
     html += '  </div>';
-
-    html += '  <div class="flex-1 overflow-y-auto space-y-6 pr-1">';
-
-    html += '    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">';
-    html += '      <div class="p-3.5 bg-gray-800/80 rounded-2xl border border-gray-700/70 text-center">';
-    html += '        <div class="text-[11px] font-bold text-gray-400 uppercase">Qatnashchilar</div>';
-    html += '        <div class="text-xl font-black text-white mt-1">' + (analysis.totalParticipants || 0) + ' ta</div>';
-    html += '      </div>';
-
-    var mostMistakes = analysis.mostMistakesStudent;
-    html += '      <div class="p-3.5 bg-rose-950/40 rounded-2xl border border-rose-900/60 text-center">';
-    html += '        <div class="text-[11px] font-bold text-rose-400 uppercase">Eng ko\'p xato qilgan</div>';
-    html += '        <div class="text-xs font-black text-rose-300 mt-1 truncate">' + (mostMistakes ? mostMistakes.name + ' (' + mostMistakes.wrongCount + ' ta)' : '—') + '</div>';
-    html += '      </div>';
-
-    var leastMistakes = analysis.leastMistakesStudent;
-    html += '      <div class="p-3.5 bg-emerald-950/40 rounded-2xl border border-emerald-900/60 text-center">';
-    html += '        <div class="text-[11px] font-bold text-emerald-400 uppercase">Eng kam xato qilgan</div>';
-    html += '        <div class="text-xs font-black text-emerald-300 mt-1 truncate">' + (leastMistakes ? leastMistakes.name + ' (' + leastMistakes.correctCount + ' to\'g\'ri)' : '—') + '</div>';
-    html += '      </div>';
-
-    html += '      <div class="p-3.5 bg-amber-950/40 rounded-2xl border border-amber-900/60 text-center">';
-    html += '        <div class="text-[11px] font-bold text-amber-400 uppercase">O\'tkazilgan sana</div>';
-    html += '        <div class="text-xs font-extrabold text-amber-300 mt-1">' + (analysis.finishedAt ? new Date(analysis.finishedAt).toLocaleDateString() : '—') + '</div>';
-    html += '      </div>';
-    html += '    </div>';
-
-    // Question-by-question breakdown
-    html += '    <div class="space-y-4">';
-    html += '      <h4 class="text-sm font-black text-gray-200 flex items-center gap-2">';
-    html += '        <span>📋 Savollar Ketma-ketligi va O\'quvchilar Tanlagan Variantlari</span>';
-    html += '      </h4>';
-
-    (analysis.questionStats || []).forEach(function(stat, sIdx) {
-      var isHighAcc = stat.accuracyPct >= 70;
-      var isLowAcc = stat.accuracyPct < 40;
-
-      html += '<div class="p-4 bg-gray-800/70 rounded-2xl border border-gray-700/80 space-y-3">';
-      html += '  <div class="flex items-start justify-between gap-3">';
-      html += '    <div class="space-y-1">';
-      html += '      <div class="font-extrabold text-sm text-white">' + (sIdx + 1) + '. ' + stat.questionText + '</div>';
-      html += '      <div class="text-xs text-emerald-400 font-bold">To\'g\'ri javob: ' + String.fromCharCode(65 + stat.correctAnswer) + ') ' + (stat.options[stat.correctAnswer] || '') + '</div>';
-      html += '    </div>';
-      html += '    <div class="text-right flex-shrink-0">';
-      html += '      <span class="px-2.5 py-1 rounded-full text-xs font-black ' + (isHighAcc ? 'bg-emerald-900/50 text-emerald-300 border border-emerald-700/50' : (isLowAcc ? 'bg-rose-900/50 text-rose-300 border border-rose-700/50' : 'bg-amber-900/50 text-amber-300 border border-amber-700/50')) + '">';
-      html += '        ' + stat.accuracyPct + '% aniqlik';
-      html += '      </span>';
-      html += '    </div>';
-      html += '  </div>';
-
-      html += '  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">';
-      (stat.options || []).forEach(function(opt, optIdx) {
-        var letter = String.fromCharCode(65 + optIdx);
-        var isCorr = (optIdx === stat.correctAnswer);
-        var chosenStudents = (stat.optStudents && stat.optStudents[optIdx]) || [];
-
-        html += '<div class="p-2.5 rounded-xl border ' + (isCorr ? 'border-emerald-600/70 bg-emerald-950/30' : 'border-gray-700/60 bg-gray-800/50') + ' text-xs space-y-1">';
-        html += '  <div class="flex items-center justify-between font-bold">';
-        html += '    <span class="' + (isCorr ? 'text-emerald-400 font-black' : 'text-gray-300') + '">' + letter + ') ' + opt + (isCorr ? ' ✅' : '') + '</span>';
-        html += '    <span class="text-[11px] font-mono text-gray-400">' + chosenStudents.length + ' ta</span>';
-        html += '  </div>';
-
-        if (chosenStudents.length > 0) {
-          html += '  <div class="text-[11px] text-gray-400 truncate">';
-          html += '    Tanlaganlar: <span class="font-medium text-white">' + chosenStudents.join(', ') + '</span>';
-          html += '  </div>';
-        } else {
-          html += '  <div class="text-[10px] text-gray-500 italic">Hech kim tanlamadi</div>';
-        }
-        html += '</div>';
-      });
-      html += '  </div>';
-
-      html += '</div>';
-    });
-    html += '    </div>';
-
-    // Student Leaderboard Table
-    html += '    <div class="space-y-3 pt-4 border-t border-gray-700/80">';
-    html += '      <h4 class="text-sm font-black text-gray-200">🏆 O\'quvchilar Yakuniy Reytingi</h4>';
-    html += '      <div class="overflow-x-auto">';
-    html += '        <table class="w-full text-xs text-left">';
-    html += '          <thead class="text-gray-400 uppercase bg-gray-800/80 border-b border-gray-700">';
-    html += '            <tr>';
-    html += '              <th class="px-3 py-2">O\'rin</th>';
-    html += '              <th class="px-3 py-2">O\'quvchi</th>';
-    html += '              <th class="px-3 py-2">Ball</th>';
-    html += '              <th class="px-3 py-2">To\'g\'ri</th>';
-    html += '              <th class="px-3 py-2">Xato</th>';
-    html += '              <th class="px-3 py-2">Qoidabuzarlik</th>';
-    html += '              <th class="px-3 py-2">Yutilgan Sovg\'a</th>';
-    html += '            </tr>';
-    html += '          </thead>';
-    html += '          <tbody class="divide-y divide-gray-800">';
-    (analysis.rankings || []).forEach(function(r) {
-      html += '            <tr class="hover:bg-gray-800/50 transition-colors">';
-      html += '              <td class="px-3 py-2.5 font-bold font-mono text-amber-400">#' + r.rank + '</td>';
-      html += '              <td class="px-3 py-2.5 font-extrabold text-white">' + r.name + '</td>';
-      html += '              <td class="px-3 py-2.5 font-mono font-black text-amber-400">' + (r.score || 0).toLocaleString() + '</td>';
-      html += '              <td class="px-3 py-2.5 font-bold text-emerald-400">+' + (r.correctCount || 0) + '</td>';
-      html += '              <td class="px-3 py-2.5 font-bold text-rose-400">-' + (r.wrongCount || 0) + '</td>';
-      html += '              <td class="px-3 py-2.5">' + (r.infractions > 0 ? ('<span class="text-rose-400 font-bold">⚠️ ' + r.infractions + ' marta</span>') : '<span class="text-gray-500">0</span>') + '</td>';
-      html += '              <td class="px-3 py-2.5 font-medium text-amber-200">' + (r.prize ? (r.prize.icon + ' ' + r.prize.name) : '—') + '</td>';
-      html += '            </tr>';
-    });
-    html += '          </tbody>';
-    html += '        </table>';
-    html += '      </div>';
-    html += '    </div>';
-
-    html += '  </div>';
-
-    html += '  <div class="border-t border-gray-700/80 pt-4 flex items-center justify-end">';
-    html += '    <button id="btnCloseAnalysisModalBottom" class="px-6 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold text-xs border border-gray-600 transition-all">';
-    html += '      Yopish';
+    html += '  <div class="flex items-center gap-2">';
+    html += '    <button id="btnWgPrintReport" class="px-3.5 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-300 dark:border-gray-700 flex items-center gap-1.5 transition-all">';
+    html += '      <span>🖨️</span> <span>Print Report</span>';
     html += '    </button>';
+    html += '    <button id="btnCloseWgReport" class="eth-modal-close-btn" title="Close">✕</button>';
+    html += '  </div>';
+    html += '</div>';
+
+    // SUBHEADER (STARTED & LAST UPDATED)
+    html += '<div class="px-6 py-2.5 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between text-xs text-gray-500 dark:text-gray-400 font-medium">';
+    html += '  <div class="flex items-center gap-2">';
+    html += '    <span>Started: <strong>' + formattedDate + '</strong></span>';
+    html += '    <span>·</span>';
+    html += '    <span class="text-emerald-600 dark:text-emerald-400 font-bold">Live Quiz</span>';
+    html += '  </div>';
+    html += '  <div>Last updated: <strong>Just now</strong></div>';
+    html += '</div>';
+
+    // 4 STAT METRIC CARDS
+    html += '<div class="eth-wg-stat-grid">';
+
+    // Card 1: Accuracy
+    html += '  <div class="eth-wg-stat-item">';
+    html += '    <div class="eth-wg-stat-icon-box text-emerald-500">🎯</div>';
+    html += '    <div>';
+    html += '      <div class="eth-wg-stat-label">Accuracy</div>';
+    html += '      <div class="eth-wg-stat-val text-emerald-600 dark:text-emerald-400">' + accuracyPct + '%</div>';
+    html += '      <div class="text-[10px] text-gray-400 font-medium mt-0.5">Based on best attempt</div>';
+    html += '    </div>';
     html += '  </div>';
 
+    // Card 2: Completion Rate
+    html += '  <div class="eth-wg-stat-item">';
+    html += '    <div class="eth-wg-stat-icon-box text-blue-500">✅</div>';
+    html += '    <div>';
+    html += '      <div class="eth-wg-stat-label">Completion Rate</div>';
+    html += '      <div class="eth-wg-stat-val text-blue-600 dark:text-blue-400">' + completionRatePct + '%</div>';
+    html += '      <div class="text-[10px] text-gray-400 font-medium mt-0.5">Based on best attempt report</div>';
+    html += '    </div>';
+    html += '  </div>';
+
+    // Card 3: Total Students
+    html += '  <div class="eth-wg-stat-item">';
+    html += '    <div class="eth-wg-stat-icon-box text-amber-500">👥</div>';
+    html += '    <div>';
+    html += '      <div class="eth-wg-stat-label">Total Students</div>';
+    html += '      <div class="eth-wg-stat-val text-amber-600 dark:text-amber-400">' + totalParticipants + '</div>';
+    html += '      <div class="text-[10px] text-gray-400 font-medium mt-0.5">Participating students</div>';
+    html += '    </div>';
+    html += '  </div>';
+
+    // Card 4: Questions
+    html += '  <div class="eth-wg-stat-item">';
+    html += '    <div class="eth-wg-stat-icon-box text-purple-500">❓</div>';
+    html += '    <div>';
+    html += '      <div class="eth-wg-stat-label">Questions</div>';
+    html += '      <div class="eth-wg-stat-val text-purple-600 dark:text-purple-400">' + totalQuestions + '</div>';
+    html += '      <div class="text-[10px] text-gray-400 font-medium mt-0.5">Assigned questions</div>';
+    html += '    </div>';
+    html += '  </div>';
+
+    html += '</div>'; // End stats grid
+
+    // TABS BAR
+    html += '<div class="eth-wg-tabs-bar">';
+    html += '  <button class="eth-wg-tab-btn active" data-wg-tab="overview"><span>📊</span> Overview</button>';
+    html += '  <button class="eth-wg-tab-btn" data-wg-tab="participants"><span>👥</span> Participants (' + rankings.length + ')</button>';
+    html += '  <button class="eth-wg-tab-btn" data-wg-tab="questions"><span>❓</span> Questions (' + totalQuestions + ')</button>';
     html += '</div>';
+
+    // TAB CONTENTS CONTAINER
+    html += '<div class="flex-1 overflow-y-auto" id="wgReportTabBody" style="min-height: 380px;">';
+    html += '</div>';
+
+    html += '</div>'; // End modal
 
     overlay.innerHTML = html;
     document.body.appendChild(overlay);
 
-    function close() { overlay.remove(); }
-    overlay.querySelector('#btnCloseAnalysisModal').onclick = close;
-    overlay.querySelector('#btnCloseAnalysisModalBottom').onclick = close;
+    var activeTab = 'overview';
+
+    function renderWgReportTab() {
+      var bodyEl = overlay.querySelector('#wgReportTabBody');
+      if (!bodyEl) return;
+
+      var tabHtml = '';
+
+      if (activeTab === 'overview') {
+        // OVERVIEW: QUESTION MATRIX 1:1 WITH WAYGROUND
+        tabHtml += '<div class="p-4 md:p-6 space-y-4">';
+        tabHtml += '  <div class="flex items-center justify-between gap-3 flex-wrap">';
+        tabHtml += '    <div class="flex items-center gap-2 text-xs font-bold text-gray-600 dark:text-gray-300">';
+        tabHtml += '      <span>Sort by:</span>';
+        tabHtml += '      <span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200">Accuracy (High to Low)</span>';
+        tabHtml += '    </div>';
+        tabHtml += '    <div class="text-xs text-gray-500 dark:text-gray-400 font-medium">';
+        tabHtml += '      <span>Green: <strong>100% (Correct)</strong></span> · <span class="text-rose-500 font-bold">Red: 0% (Incorrect)</span>';
+        tabHtml += '    </div>';
+        tabHtml += '  </div>';
+
+        // Matrix Table
+        tabHtml += '  <div class="border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm bg-white dark:bg-gray-900">';
+        tabHtml += '    <div class="eth-wg-matrix-wrapper">';
+
+        // Header Row
+        tabHtml += '      <div class="eth-wg-matrix-row bg-gray-50 dark:bg-gray-800/80 font-black text-xs text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">';
+        tabHtml += '        <div class="eth-wg-matrix-left uppercase tracking-wider">Participant</div>';
+        tabHtml += '        <div class="eth-wg-matrix-right">';
+        for (var qIdx = 0; qIdx < totalQuestions; qIdx++) {
+          var qs = qStats[qIdx];
+          var qAcc = qs ? qs.accuracyPct : 100;
+          tabHtml += '        <div class="eth-wg-matrix-qcol" title="Question ' + (qIdx + 1) + '">';
+          tabHtml += '          <span class="font-extrabold text-gray-700 dark:text-gray-200">Q' + (qIdx + 1) + '</span>';
+          tabHtml += '          <span class="text-[10px] ' + (qAcc >= 70 ? 'text-emerald-500' : (qAcc >= 40 ? 'text-amber-500' : 'text-rose-500')) + ' font-bold">' + qAcc + '%</span>';
+          tabHtml += '        </div>';
+        }
+        tabHtml += '        </div>';
+        tabHtml += '      </div>';
+
+        // Participant Rows
+        if (rankings.length === 0) {
+          tabHtml += '    <div class="p-8 text-center text-gray-400 text-xs font-bold">No participants yet in this session.</div>';
+        } else {
+          rankings.forEach(function(r) {
+            var hero = r.hero || { emoji: '🎓', bg: '#fef3c7', border: '#f59e0b' };
+            var rAcc = totalQuestions > 0 ? Math.round(((r.correctCount || 0) / totalQuestions) * 100) : 100;
+            var rAnswers = r.answers || {};
+
+            tabHtml += '    <div class="eth-wg-matrix-row">';
+            // Left sticky participant info
+            tabHtml += '      <div class="eth-wg-matrix-left">';
+            tabHtml += '        <div class="flex items-center gap-2.5 min-w-0">';
+            tabHtml += '          <div class="w-8 h-8 rounded-lg flex items-center justify-center text-base flex-shrink-0" style="background:' + hero.bg + '; border:1.5px solid ' + hero.border + ';">' + hero.emoji + '</div>';
+            tabHtml += '          <div class="min-w-0">';
+            tabHtml += '            <div class="font-black text-xs text-gray-900 dark:text-white truncate" title="' + r.name + '">' + r.name + '</div>';
+            tabHtml += '            <div class="text-[10px] text-gray-400 font-semibold">' + (r.score || 0).toLocaleString() + ' pts</div>';
+            tabHtml += '          </div>';
+            tabHtml += '        </div>';
+            tabHtml += '        <div class="text-right flex-shrink-0">';
+            tabHtml += '          <span class="px-2 py-0.5 rounded text-[11px] font-black ' + (rAcc >= 70 ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400' : (rAcc >= 40 ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-400' : 'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400')) + '">' + rAcc + '%</span>';
+            tabHtml += '        </div>';
+            tabHtml += '      </div>';
+
+            // Right Question Cells
+            tabHtml += '      <div class="eth-wg-matrix-right">';
+            for (var qi = 0; qi < totalQuestions; qi++) {
+              var qId = (quiz.questions && quiz.questions[qi] && quiz.questions[qi].id) || ('q_' + qi);
+              var ans = rAnswers[qId] || rAnswers['q_' + qi];
+              if (!ans && quiz.questions && quiz.questions[qi]) {
+                for (var ak in rAnswers) {
+                  if (rAnswers[ak] && rAnswers[ak].questionText === quiz.questions[qi].question) {
+                    ans = rAnswers[ak];
+                    break;
+                  }
+                }
+              }
+
+              // Determine correct or wrong
+              var isCellCorrect = false;
+              var isCellAnswered = false;
+              if (ans !== undefined) {
+                isCellAnswered = true;
+                isCellCorrect = (ans.isCorrect === true);
+              } else if (r.correctCount !== undefined) {
+                // If detailed answer map is missing, display based on correct count
+                isCellAnswered = true;
+                isCellCorrect = (qi < (r.correctCount || 0));
+              }
+
+              tabHtml += '      <div class="eth-wg-matrix-qcol" title="Q' + (qi + 1) + ': ' + (isCellCorrect ? 'Correct (100%)' : 'Incorrect (0%)') + '">';
+              if (!isCellAnswered) {
+                tabHtml += '        <span class="eth-wg-qbadge-empty">—</span>';
+              } else if (isCellCorrect) {
+                tabHtml += '        <span class="eth-wg-qbadge-correct">100%</span>';
+              } else {
+                tabHtml += '        <span class="eth-wg-qbadge-wrong">0%</span>';
+              }
+              tabHtml += '      </div>';
+            }
+            tabHtml += '      </div>';
+
+            tabHtml += '    </div>';
+          });
+        }
+
+        tabHtml += '    </div>'; // End matrix wrapper
+        tabHtml += '  </div>'; // End table border box
+        tabHtml += '</div>';
+      }
+
+      else if (activeTab === 'participants') {
+        // PARTICIPANTS TAB: FULL LEADERBOARD TABLE IN ENGLISH
+        tabHtml += '<div class="p-4 md:p-6 space-y-4">';
+        tabHtml += '  <div class="flex items-center justify-between">';
+        tabHtml += '    <h4 class="text-sm font-black text-gray-800 dark:text-gray-200 uppercase tracking-wider">Student Rankings & Proctoring Telemetry</h4>';
+        tabHtml += '    <span class="text-xs text-gray-500 dark:text-gray-400">Total ' + rankings.length + ' participants</span>';
+        tabHtml += '  </div>';
+
+        tabHtml += '  <div class="border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm bg-white dark:bg-gray-900">';
+        tabHtml += '    <div class="overflow-x-auto">';
+        tabHtml += '      <table class="w-full text-xs text-left">';
+        tabHtml += '        <thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-500 dark:text-gray-400 uppercase font-black border-b border-gray-200 dark:border-gray-700">';
+        tabHtml += '          <tr>';
+        tabHtml += '            <th class="px-4 py-3 text-center w-14">Rank</th>';
+        tabHtml += '            <th class="px-4 py-3">Student Name</th>';
+        tabHtml += '            <th class="px-4 py-3 text-right">Score</th>';
+        tabHtml += '            <th class="px-4 py-3 text-center">Accuracy</th>';
+        tabHtml += '            <th class="px-4 py-3 text-center">Correct / Wrong</th>';
+        tabHtml += '            <th class="px-4 py-3 text-center">Proctoring Violations</th>';
+        tabHtml += '            <th class="px-4 py-3">Awarded 3D Prize</th>';
+        tabHtml += '          </tr>';
+        tabHtml += '        </thead>';
+        tabHtml += '        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">';
+
+        if (rankings.length === 0) {
+          tabHtml += '        <tr><td colspan="7" class="p-8 text-center text-gray-400 text-xs font-bold">No participants yet.</td></tr>';
+        } else {
+          rankings.forEach(function(r) {
+            var hero = r.hero || { emoji: '🎓', bg: '#fef3c7', border: '#f59e0b' };
+            var rAcc = totalQuestions > 0 ? Math.round(((r.correctCount || 0) / totalQuestions) * 100) : 100;
+            var rankMedal = r.rank === 1 ? '🥇 1' : (r.rank === 2 ? '🥈 2' : (r.rank === 3 ? '🥉 3' : ('#' + r.rank)));
+
+            tabHtml += '        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">';
+            tabHtml += '          <td class="px-4 py-3 text-center font-black ' + (r.rank === 1 ? 'text-amber-500' : 'text-gray-500') + '">' + rankMedal + '</td>';
+            tabHtml += '          <td class="px-4 py-3 font-extrabold text-gray-900 dark:text-white flex items-center gap-2.5">';
+            tabHtml += '            <span class="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style="background:' + hero.bg + '; border:1.5px solid ' + hero.border + ';">' + hero.emoji + '</span>';
+            tabHtml += '            <span>' + r.name + '</span>';
+            tabHtml += '          </td>';
+            tabHtml += '          <td class="px-4 py-3 text-right font-mono font-black text-amber-500">' + (r.score || 0).toLocaleString() + '</td>';
+            tabHtml += '          <td class="px-4 py-3 text-center">';
+            tabHtml += '            <span class="px-2 py-0.5 rounded text-[11px] font-black ' + (rAcc >= 70 ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400' : (rAcc >= 40 ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-400' : 'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400')) + '">' + rAcc + '%</span>';
+            tabHtml += '          </td>';
+            tabHtml += '          <td class="px-4 py-3 text-center font-bold">';
+            tabHtml += '            <span class="text-emerald-600 dark:text-emerald-400">+' + (r.correctCount || 0) + '</span> / <span class="text-rose-500">-' + (r.wrongCount || 0) + '</span>';
+            tabHtml += '          </td>';
+            tabHtml += '          <td class="px-4 py-3 text-center">';
+            if (r.infractions > 0) {
+              tabHtml += '            <span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400 font-extrabold text-[10px] border border-rose-300 dark:border-rose-800">🚨 ' + r.infractions + ' violations</span>';
+            } else {
+              tabHtml += '            <span class="text-emerald-600 dark:text-emerald-400 font-bold">Clean (0)</span>';
+            }
+            tabHtml += '          </td>';
+            tabHtml += '          <td class="px-4 py-3 font-semibold text-gray-700 dark:text-amber-200">';
+            tabHtml +=              r.prize ? (r.prize.icon + ' ' + r.prize.name) : '—';
+            tabHtml += '          </td>';
+            tabHtml += '        </tr>';
+          });
+        }
+
+        tabHtml += '        </tbody>';
+        tabHtml += '      </table>';
+        tabHtml += '    </div>';
+        tabHtml += '  </div>';
+        tabHtml += '</div>';
+      }
+
+      else if (activeTab === 'questions') {
+        // QUESTIONS TAB: FULL QUESTION BREAKDOWN WITH ANSWER DISTRIBUTIONS
+        tabHtml += '<div class="p-4 md:p-6 space-y-4">';
+        tabHtml += '  <div class="flex items-center justify-between">';
+        tabHtml += '    <h4 class="text-sm font-black text-gray-800 dark:text-gray-200 uppercase tracking-wider">Question Accuracy & Option Distributions</h4>';
+        tabHtml += '    <span class="text-xs text-gray-500 dark:text-gray-400">Total ' + qStats.length + ' questions</span>';
+        tabHtml += '  </div>';
+
+        if (qStats.length === 0) {
+          tabHtml += '  <div class="p-8 text-center text-gray-400 text-xs font-bold">No questions found in this assessment.</div>';
+        } else {
+          tabHtml += '  <div class="space-y-4">';
+          qStats.forEach(function(stat, sIdx) {
+            var isHighAcc = stat.accuracyPct >= 70;
+            var isLowAcc = stat.accuracyPct < 40;
+
+            tabHtml += '<div class="p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-850 shadow-sm space-y-3">';
+            tabHtml += '  <div class="flex items-start justify-between gap-3">';
+            tabHtml += '    <div class="space-y-1">';
+            tabHtml += '      <div class="font-extrabold text-sm text-gray-900 dark:text-white">Question ' + (sIdx + 1) + ': ' + stat.questionText + '</div>';
+            tabHtml += '      <div class="text-xs text-emerald-600 dark:text-emerald-400 font-bold">Correct Answer: ' + String.fromCharCode(65 + stat.correctAnswer) + ') ' + (stat.options[stat.correctAnswer] || '') + '</div>';
+            tabHtml += '    </div>';
+            tabHtml += '    <div class="text-right flex-shrink-0">';
+            tabHtml += '      <span class="px-2.5 py-1 rounded-full text-xs font-black ' + (isHighAcc ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800' : (isLowAcc ? 'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400 border border-rose-300 dark:border-rose-800' : 'bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-400 border border-amber-300 dark:border-amber-800')) + '">';
+            tabHtml += '        ' + stat.accuracyPct + '% Accuracy';
+            tabHtml += '      </span>';
+            tabHtml += '    </div>';
+            tabHtml += '  </div>';
+
+            tabHtml += '  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">';
+            (stat.options || []).forEach(function(opt, optIdx) {
+              var letter = String.fromCharCode(65 + optIdx);
+              var isCorr = (optIdx === stat.correctAnswer);
+              var chosenStudents = (stat.optStudents && stat.optStudents[optIdx]) || [];
+              var optCount = (stat.optCounts && stat.optCounts[optIdx]) || 0;
+              var optPct = stat.totalAnswered > 0 ? Math.round((optCount / stat.totalAnswered) * 100) : 0;
+
+              tabHtml += '<div class="p-2.5 rounded-xl border ' + (isCorr ? 'border-emerald-500/70 bg-emerald-50 dark:bg-emerald-950/30 dark:border-emerald-700/60' : 'border-gray-200 dark:border-gray-700/60 bg-gray-50/70 dark:bg-gray-800/50') + ' text-xs space-y-1.5">';
+              tabHtml += '  <div class="flex items-center justify-between font-bold">';
+              tabHtml += '    <span class="' + (isCorr ? 'text-emerald-700 dark:text-emerald-400 font-black' : 'text-gray-700 dark:text-gray-300') + '">' + letter + ') ' + opt + (isCorr ? ' ✅' : '') + '</span>';
+              tabHtml += '    <span class="text-[11px] font-mono text-gray-500 dark:text-gray-400">' + optCount + ' (' + optPct + '%)</span>';
+              tabHtml += '  </div>';
+
+              // Visual Progress Mini-Bar
+              tabHtml += '  <div class="w-full h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">';
+              tabHtml += '    <div class="h-full ' + (isCorr ? 'bg-emerald-500' : 'bg-gray-400') + ' rounded-full" style="width:' + optPct + '%;"></div>';
+              tabHtml += '  </div>';
+
+              if (chosenStudents.length > 0) {
+                tabHtml += '  <div class="text-[10px] text-gray-500 dark:text-gray-400 truncate">';
+                tabHtml += '    Selected by: <span class="font-medium text-gray-800 dark:text-gray-200">' + chosenStudents.join(', ') + '</span>';
+                tabHtml += '  </div>';
+              } else {
+                tabHtml += '  <div class="text-[10px] text-gray-400 italic">No students selected this</div>';
+              }
+              tabHtml += '</div>';
+            });
+            tabHtml += '  </div>';
+
+            tabHtml += '</div>';
+          });
+          tabHtml += '  </div>';
+        }
+        tabHtml += '</div>';
+      }
+
+      bodyEl.innerHTML = tabHtml;
+    }
+
+    renderWgReportTab();
+
+    // Tab buttons event listeners
+    overlay.querySelectorAll('.eth-wg-tab-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        overlay.querySelectorAll('.eth-wg-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeTab = btn.getAttribute('data-wg-tab');
+        renderWgReportTab();
+      };
+    });
+
+    // Close button
+    function closeReport() {
+      overlay.remove();
+    }
+    var closeBtn = overlay.querySelector('#btnCloseWgReport');
+    if (closeBtn) closeBtn.onclick = closeReport;
+
+    // Print button
+    var printBtn = overlay.querySelector('#btnWgPrintReport');
+    if (printBtn) {
+      printBtn.onclick = function() {
+        window.print();
+      };
+    }
   }
 
   // -------------------------------------------------------------------------
@@ -9691,7 +9974,7 @@
     html += '      <span class="text-2xl">🎁</span>';
     html += '      <h3 class="text-lg font-black text-gray-900 dark:text-white">Do\'stga Sovg\'a Qilish</h3>';
     html += '    </div>';
-    html += '    <button id="btnCloseSendGift" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-bold p-1">✕</button>';
+    html += '    <button id="btnCloseSendGift" class="eth-modal-close-btn" title="Yopish">✕</button>';
     html += '  </div>';
 
     html += '  <div class="eth-gift-card-3d bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-gray-900 border border-amber-300 dark:border-amber-700/80 rounded-2xl p-4 text-center space-y-1 shadow-md">';
@@ -9717,7 +10000,7 @@
         html += '      <div class="text-[10px] text-gray-400 truncate">' + (fr.email || '') + '</div>';
         html += '    </div>';
         html += '  </div>';
-        html += '  <button class="btnSendGiftToStudent px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-extrabold text-xs shadow hover:opacity-95 active:scale-95 transition-all flex-shrink-0" data-friend-idx="' + fIdx + '">';
+        html += '  <button class="btnSendGiftToStudent eth-gift-action-btn" style="width:auto!important;padding:7px 16px!important;font-size:12px!important" data-friend-idx="' + fIdx + '">';
         html += '    Yuborish 🎁';
         html += '  </button>';
         html += '</div>';
