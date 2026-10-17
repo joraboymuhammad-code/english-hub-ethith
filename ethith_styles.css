@@ -4063,7 +4063,7 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   transform: scale(0.98) !important;
 }
 
-/* Exact Dark Join Card from Image 3 - Ultra Modern Glassmorphism */
+/* Exact Dark Join Card - Sleek, Compact & Balanced Glassmorphism */
 @keyframes ethRainbowSlide {
   0% { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
@@ -4073,10 +4073,10 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   backdrop-filter: blur(24px) !important;
   -webkit-backdrop-filter: blur(24px) !important;
   border: 1.5px solid rgba(59, 130, 246, 0.35) !important;
-  border-radius: 26px !important;
-  padding: 30px 32px !important;
+  border-radius: 20px !important;
+  padding: 18px 22px !important;
   color: #ffffff !important;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(59, 130, 246, 0.15) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 35px rgba(59, 130, 246, 0.12) !important;
   position: relative !important;
   overflow: hidden !important;
 }
@@ -4086,51 +4086,53 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  height: 3px !important;
+  height: 2.5px !important;
   background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6) !important;
   background-size: 200% 100% !important;
   animation: ethRainbowSlide 4s linear infinite !important;
 }
 .eth-exam-join-input-dark {
   width: 100% !important;
-  background: rgba(3, 7, 18, 0.75) !important;
-  border: 1.5px solid rgba(59, 130, 246, 0.25) !important;
-  border-radius: 16px !important;
-  padding: 14px 18px !important;
+  height: 42px !important;
+  background: rgba(3, 7, 18, 0.8) !important;
+  border: 1.5px solid rgba(59, 130, 246, 0.3) !important;
+  border-radius: 12px !important;
+  padding: 8px 14px !important;
   color: #ffffff !important;
-  font-size: 15px !important;
+  font-size: 13.5px !important;
   font-weight: 700 !important;
   outline: none !important;
-  transition: all 0.25s ease !important;
+  transition: all 0.2s ease !important;
 }
 .eth-exam-join-input-dark:focus {
   border-color: #3b82f6 !important;
-  box-shadow: 0 0 22px rgba(59, 130, 246, 0.35) !important;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.4) !important;
   background: rgba(3, 7, 18, 0.95) !important;
 }
 .eth-exam-join-btn-blue {
-  width: 100% !important;
+  height: 42px !important;
   background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
   border: none !important;
-  border-radius: 16px !important;
-  padding: 16px 24px !important;
+  border-radius: 12px !important;
+  padding: 9px 20px !important;
   color: #ffffff !important;
-  font-size: 15px !important;
-  font-weight: 900 !important;
-  display: flex !important;
+  font-size: 13.5px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 10px !important;
+  gap: 8px !important;
   cursor: pointer !important;
-  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.45), 0 0 20px rgba(79, 70, 229, 0.3) !important;
-  transition: all 0.25s ease !important;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
 }
 .eth-exam-join-btn-blue:hover {
-  transform: translateY(-2px) scale(1.01) !important;
-  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.6), 0 0 30px rgba(79, 70, 229, 0.4) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.55) !important;
 }
 .eth-exam-join-btn-blue:active {
-  transform: scale(0.99) !important;
+  transform: scale(0.98) !important;
 }
 
 /* Modern Pill Subtabs */
@@ -4377,19 +4379,59 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
 }
 .wayground-subbar-input {
-  background: rgba(2, 6, 23, 0.7) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  background: #1e293b !important;
+  border: 1.5px solid rgba(148, 163, 184, 0.45) !important;
   border-radius: 12px !important;
   padding: 8px 14px !important;
   color: #ffffff !important;
-  font-weight: 700 !important;
-  font-size: 13.5px !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
   outline: none !important;
   transition: all 0.2s ease !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25) !important;
 }
 .wayground-subbar-input:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.45) !important;
+  color: #ffffff !important;
+  background: #0f172a !important;
+}
+.wayground-subbar-code {
+  color: #fbbf24 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.08em !important;
+  border-color: rgba(245, 158, 11, 0.5) !important;
+}
+.wayground-subbar-code:focus {
   border-color: #f59e0b !important;
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.3) !important;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.45) !important;
+}
+.wayground-regen-btn {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 12px !important;
+  background: rgba(6, 182, 212, 0.18) !important;
+  border: 1.5px solid rgba(6, 182, 212, 0.5) !important;
+  color: #06b6d4 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  outline: none !important;
+  padding: 0 !important;
+  flex-shrink: 0 !important;
+}
+.wayground-regen-btn:hover {
+  background: rgba(6, 182, 212, 0.35) !important;
+  border-color: #22d3ee !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.55) !important;
+  transform: scale(1.08) !important;
+}
+.wayground-regen-btn:active {
+  transform: scale(0.96) !important;
 }
 
 /* Wayground Main Canvas Area */

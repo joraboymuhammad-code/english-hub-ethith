@@ -7518,21 +7518,23 @@
       // Modern Glassmorphic Sub-bar (Title & Code)
       html += '  <div class="wayground-subbar">';
       html += '    <div class="flex-1 w-full flex items-center gap-2.5">';
-      html += '      <span class="text-xs font-black text-amber-400 uppercase tracking-wider">🎯 Quiz Nomi:</span>';
+      html += '      <span class="text-xs font-black text-amber-400 uppercase tracking-wider flex items-center gap-1.5">🎯 <span>Quiz Nomi:</span></span>';
       html += '      <input id="wgQuizTitleInput" type="text" value="' + esc(quizTitle) + '" placeholder="Quiz mavzusi yoki nomini kiriting..." class="flex-1 wayground-subbar-input" />';
       html += '    </div>';
       html += '    <div class="flex items-center gap-2">';
-      html += '      <span class="text-xs font-black text-cyan-400 uppercase tracking-wider">🔑 Maxsus Kod:</span>';
-      html += '      <input id="wgQuizCodeInput" type="text" value="' + esc(quizCode) + '" class="w-36 wayground-subbar-input font-mono font-black text-center text-amber-400 tracking-wider" />';
-      html += '      <button id="btnWgRegenCode" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 text-xs transition-all" title="Kodni yangilash">🔄</button>';
+      html += '      <span class="text-xs font-black text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">🔑 <span>Maxsus Kod:</span></span>';
+      html += '      <input id="wgQuizCodeInput" type="text" value="' + esc(quizCode) + '" class="w-36 wayground-subbar-input wayground-subbar-code text-center uppercase" />';
+      html += '      <button id="btnWgRegenCode" class="wayground-regen-btn group" title="Yangi kod generatsiya qilish">';
+      html += '        <svg class="w-4 h-4 text-cyan-300 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>';
+      html += '      </button>';
       html += '    </div>';
       html += '  </div>';
 
       // Large Question Input Box (1:1 with Wayground aspect-ratio canvas)
       html += '  <div class="wayground-question-box">';
-      html += '    <div class="text-[11px] uppercase font-black tracking-widest text-gray-400 mb-2 flex items-center justify-between">';
-      html += '      <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-400"></span> Savol Matni:</span>';
-      html += '      <span class="text-amber-400 font-bold">Har bir savol variantlari test paytida o\'quvchilarda avtomatik almashib tushadi</span>';
+      html += '    <div class="text-xs uppercase font-black tracking-wide text-gray-300 mb-2.5 flex items-center justify-between">';
+      html += '      <span class="flex items-center gap-2 text-cyan-400"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span> Savol Matni:</span>';
+      html += '      <span class="text-amber-300 font-extrabold bg-amber-500/15 px-2.5 py-1 rounded-lg border border-amber-500/30">⚡ Variantlar har bir o\'quvchida avtomatik chalkashib tushadi</span>';
       html += '    </div>';
       html += '    <textarea id="wgQuestionTextInput" class="wayground-question-textarea" placeholder="Savol matnini bu yerga yozing (masalan: She ___ to school every day)...">' + esc(questionText) + '</textarea>';
       html += '  </div>';
@@ -7925,95 +7927,104 @@
 
       // SUBTAB 1: QUIZZES
       if (activeSubtab === 'quizzes') {
-        // EXACT Image 3 Card: Ultra-Modern Glassmorphic Join Card
-        html += '<div class="eth-exam-join-card-dark max-w-2xl mx-auto space-y-5 my-2">';
-        html += '  <div class="flex items-center gap-3">';
-        html += '    <div class="w-11 h-11 rounded-2xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-xl text-blue-400 shadow-inner">🔒</div>';
-        html += '    <div>';
-        html += '      <h3 class="text-base font-black text-white tracking-wide">6 Xonali Kod Bilan Imtihonga Kirish</h3>';
-        html += '      <p class="text-[11px] text-gray-400 mt-0.5">Yashirin va rasmiy imtihonlar uchun maxsus himoyalangan kirish tizimi</p>';
+        // EXACT Image 3 Style: Compact & Balanced Glassmorphic Join Card
+        html += '<div class="eth-exam-join-card-dark max-w-4xl mx-auto space-y-2.5 my-2">';
+        html += '  <div class="flex items-center justify-between gap-3">';
+        html += '    <div class="flex items-center gap-2.5">';
+        html += '      <div class="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-sm text-blue-400">🔒</div>';
+        html += '      <div>';
+        html += '        <h3 class="text-sm font-black text-white leading-tight">Maxsus Kod Bilan Imtihonga Kirish</h3>';
+        html += '        <p class="text-[11px] text-gray-400 leading-tight">O\'qituvchi bergan 6 xonali kodni kiriting va testga qo\'shiling</p>';
+        html += '      </div>';
         html += '    </div>';
         html += '  </div>';
-        html += '  <p class="text-xs text-gray-300 leading-relaxed">';
-        html += '    O\'qituvchingiz bergan maxsus kodni kiriting. Yashirin va rasmiy imtihonlar qat\'iy nazorat va to\'liq ekran himoyasida o\'tkaziladi.';
-        html += '  </p>';
-        html += '  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">';
-        html += '    <div>';
-        html += '      <label class="text-[11px] font-black uppercase tracking-wider text-blue-300 block mb-1.5 flex items-center gap-1.5">';
-        html += '        <span>🔑 IMTIHON KODI</span>';
-        html += '      </label>';
+        html += '  <div class="flex flex-wrap items-end gap-3 pt-1">';
+        html += '    <div class="flex-1 min-w-[160px]">';
+        html += '      <label class="text-[10px] font-black uppercase tracking-wider text-blue-300 block mb-1">🔑 IMTIHON KODI</label>';
         html += '      <input id="quizCodeInputHero" type="text" placeholder="Masalan: QZ-7K#9X" class="eth-exam-join-input-dark font-mono uppercase tracking-wider" />';
         html += '    </div>';
-        html += '    <div>';
-        html += '      <label class="text-[11px] font-black uppercase tracking-wider text-blue-300 block mb-1.5 flex items-center gap-1.5">';
-        html += '        <span>👤 ISM VA FAMILIYANGIZ</span>';
-        html += '      </label>';
+        html += '    <div class="flex-1 min-w-[170px]">';
+        html += '      <label class="text-[10px] font-black uppercase tracking-wider text-blue-300 block mb-1">👤 ISM VA FAMILIYANGIZ</label>';
         html += '      <input id="quizStudentNameHero" type="text" value="' + esc(S.user.name || '') + '" class="eth-exam-join-input-dark font-bold" ' + (isTeacher ? '' : 'readonly') + ' />';
         html += '    </div>';
+        html += '    <button id="btnStartQuizHeroJoin" class="eth-exam-join-btn-blue">';
+        html += '      <span>Imtihonni Boshlash</span>';
+        html += '      <span>➔</span>';
+        html += '    </button>';
         html += '  </div>';
-        html += '  <button id="btnStartQuizHeroJoin" class="eth-exam-join-btn-blue mt-2">';
-        html += '    <span>Imtihonni Boshlash</span>';
-        html += '    <span class="text-lg">➔</span>';
-        html += '  </button>';
         html += '</div>';
 
-        // TEACHER QUIZ MANAGEMENT LIST (Only visible to teacher)
-        if (isTeacher) {
-          html += '<div class="space-y-4 pt-4">';
-          html += '  <div class="flex items-center justify-between">';
-          html += '    <h3 class="text-base font-black text-gray-900 dark:text-white flex items-center gap-2">';
-          html += '      <span>📋 O\'qituvchi Boshqaruvi (Mavjud Quiz Testlar)</span>';
-          html += '    </h3>';
-          html += '  </div>';
+        // 1:1 EXACT MOCK EXAM CARD LIST (Image 3 Style: ap-card in ap-grid g2)
+        html += '<div class="space-y-4 pt-4">';
+        html += '  <div class="flex items-center justify-between">';
+        html += '    <h3 class="text-base font-black text-gray-900 dark:text-white flex items-center gap-2">';
+        html += '      <span>📋 ' + (isTeacher ? 'O\'qituvchi Boshqaruvi (Mavjud Quiz Testlar)' : 'Mavjud Jonli Bellashuvlar') + '</span>';
+        html += '    </h3>';
+        html += '  </div>';
 
-          if (S.quizzes.length === 0) {
-            html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-10 text-center border border-gray-200 dark:border-gray-700">';
-            html += '  <div class="text-4xl mb-2">🎯</div>';
-            html += '  <h4 class="font-extrabold text-sm text-gray-800 dark:text-gray-200">Sizda hali quiz testlar yo\'q</h4>';
-            html += '  <p class="text-xs text-gray-500 mt-1">Yuqoridagi "+ Yangi Imtihon Tuzish" tugmasini bosib Wayground Studio orqali test tuzing.</p>';
-            html += '</div>';
-          } else {
-            html += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">';
-            S.quizzes.forEach(function(quiz) {
-              var qCount = (quiz.questions || []).length;
-              var hasAnalysis = Boolean(quiz.lastSessionAnalysis);
+        if (S.quizzes.length === 0) {
+          html += '<div class="ap-card ap-empty" style="text-align:center;padding:32px 20px">';
+          html += '  <div style="font-size:36px;margin-bottom:8px">🎯</div>';
+          html += '  <h3 style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:4px">Hozircha hech qanday quiz testlar yo\'q</h3>';
+          html += '  <p style="font-size:12.5px;color:var(--muted)">' + (isTeacher ? 'Yuqoridagi "+ Yangi Imtihon Tuzish" tugmasini bosib Wayground Studio orqali test tuzing.' : 'O\'qituvchingiz bergan kod orqali yuqoridagi panel orqali kiring.') + '</p>';
+          html += '</div>';
+        } else {
+          html += '<div class="ap-grid g2">';
+          S.quizzes.forEach(function(quiz) {
+            var qCount = (quiz.questions || []).length;
+            var hasAnalysis = Boolean(quiz.lastSessionAnalysis);
 
-              html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm flex flex-col justify-between">';
-              html += '  <div class="space-y-2">';
-              html += '    <div class="flex items-center justify-between gap-2">';
-              html += '      <span class="px-2.5 py-1 rounded-lg bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 font-mono text-xs font-black tracking-wider">' + quiz.code + '</span>';
-              if (quiz.status === 'active') {
-                html += '      <span class="px-2 py-0.5 rounded-full text-[11px] font-extrabold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 animate-pulse">🟢 Jonli Battle</span>';
-              } else if (quiz.status === 'finished') {
-                html += '      <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-purple-100 text-purple-800">🟣 Yakunlangan</span>';
-              } else {
-                html += '      <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300">🟡 Lobby</span>';
-              }
-              html += '    </div>';
+            var statusBadge = '';
+            if (quiz.status === 'active') {
+              statusBadge = '<span class="eth-badge-open animate-pulse">🟢 Jonli Battle</span>';
+            } else if (quiz.status === 'finished') {
+              statusBadge = '<span class="eth-badge-closed">🟣 Yakunlangan</span>';
+            } else {
+              statusBadge = '<span class="eth-badge-open" style="background:rgba(234,179,8,0.12);color:#eab308;border-color:rgba(234,179,8,0.3)">🟡 Lobby</span>';
+            }
 
-              html += '    <h4 class="font-black text-sm text-gray-900 dark:text-white line-clamp-2">' + (quiz.title || 'Quiz Test') + '</h4>';
-              html += '    <div class="text-xs text-gray-500 flex items-center gap-2">';
-              html += '      <span>📝 ' + qCount + ' ta savol</span>';
-              html += '      <span>·</span>';
-              html += '      <span class="text-amber-600 font-bold">⚡ +600 / +100 / -500</span>';
-              html += '    </div>';
-              html += '  </div>';
+            html += '<div class="ap-card" style="border:1.5px solid var(--border);position:relative;display:flex;flex-direction:column;justify-content:space-between">';
+            html += '  <div>';
+            html += '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;flex-wrap:wrap">';
+            html += '      <div style="display:flex;gap:6px;align-items:center">';
+            html += '        <span class="ap-tag">⚡ Blitz Quiz</span>';
+            html +=          statusBadge;
+            html += '        <span style="font-size:11.5px;color:var(--muted)">' + qCount + ' ta savol</span>';
+            html += '      </div>';
+            html += '      <span style="display:inline-flex;align-items:center;gap:6px;font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:3px 8px;border-radius:6px;font-size:12px">';
+            html += '        Code: ' + esc(quiz.code);
+            html += '        <button type="button" class="eth-copy-btn-mini" data-copy-code="' + esc(quiz.code) + '" title="Kodni nusxalash">📋 Nusxalash</button>';
+            html += '      </span>';
+            html += '    </div>';
 
-              html += '  <div class="pt-4 mt-3 border-t border-gray-100 dark:border-gray-700/60 flex items-center gap-2">';
-              html += '    <button class="btnStartQuizRunner flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black text-xs shadow hover:opacity-95" data-quiz-id="' + quiz.id + '">';
+            html += '    <h3 style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;line-height:1.3">' + esc(quiz.title || 'Quiz Test') + '</h3>';
+            html += '    <p style="color:var(--muted);font-size:12.5px;margin:0 0 14px">';
+            html += '      📝 ' + qCount + ' questions · ⚡ +600 / +100 / -500 ball · 🎁 100+ Sovg\'alar';
+            html += '    </p>';
+            html += '  </div>';
+
+            html += '  <div style="display:flex;gap:8px;align-items:center;padding-top:10px;border-top:1px solid var(--border)">';
+            if (isTeacher) {
+              html += '    <button class="ap-btn solid btnStartQuizRunner" data-quiz-id="' + quiz.id + '" style="flex:1;justify-content:center;padding:10px 16px;font-size:13.5px">';
               html += '      ▶️ Lobbyni ochish';
               html += '    </button>';
               if (hasAnalysis) {
-                html += '    <button class="btnViewQuizAnalysis py-2 px-3 rounded-xl bg-purple-100 text-purple-700 font-bold text-xs" data-quiz-id="' + quiz.id + '" title="Test Tahlili">📊 Tahlil</button>';
+                html += '    <button class="ap-btn out btnViewQuizAnalysis" data-quiz-id="' + quiz.id + '" style="padding:10px 14px;font-size:13px;justify-content:center" title="Test Tahlili">📊 Tahlil</button>';
               }
-              html += '    <button class="btnDeleteQuiz py-2 px-2.5 rounded-xl bg-rose-50 text-rose-600 font-bold text-xs hover:bg-rose-100" data-quiz-id="' + quiz.id + '" title="O\'chirish">🗑️</button>';
-              html += '  </div>';
-              html += '</div>';
-            });
+              html += '    <button class="ap-btn out btnDeleteQuiz" data-quiz-id="' + quiz.id + '" style="padding:10px 12px;color:#ef4444;justify-content:center" title="O\'chirish">';
+              html += '      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>';
+              html += '    </button>';
+            } else {
+              html += '    <button class="ap-btn solid btnStartQuizRunner" data-quiz-id="' + quiz.id + '" style="flex:1;justify-content:center;padding:10px 16px;font-size:13.5px">';
+              html += '      ⚡ Testga Qo\'shilish ➔';
+              html += '    </button>';
+            }
+            html += '  </div>';
             html += '</div>';
-          }
+          });
           html += '</div>';
         }
+        html += '</div>';
       }
 
       // SUBTAB 2: GIFTS
