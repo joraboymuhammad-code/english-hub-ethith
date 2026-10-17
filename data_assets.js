@@ -2803,3 +2803,488 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
   return 4;
 };
 
+
+// ====================================================
+// ETHITH MARKET PACKS CATALOG
+// ====================================================
+window.ETHITH_PACKS = [
+  {
+    id: "daily_pack",
+    name: "Kunlik Bepul Pack",
+    type: "daily",
+    price: 0,
+    isFreeDaily: true,
+    icon: "🎁",
+    desc: "Har 24 soatda faqat 1 marta bepul ochiladigan maxsus quti! Ichidan 50 - 250 Coin yoki kutilmagan sovg'alar chiqadi.",
+    badge: "24 SOATDA 1 MARTA",
+    gradient: "linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%)",
+    glowColor: "#34d399",
+    accentColor: "#10b981"
+  },
+  {
+    id: "lucky_prize_pack",
+    name: "Omadli Sovrin Packi",
+    type: "prize",
+    price: 150,
+    icon: "💎",
+    desc: "Katalogdagi barcha o'zbekcha qiziqarli sovg'alar! Oddiy, Kamyob, Epik va eng baland Afsonaviy buyumlar tushishi mumkin.",
+    badge: "OMAD SINOVI",
+    gradient: "linear-gradient(135deg, #b45309 0%, #d97706 50%, #fbbf24 100%)",
+    glowColor: "#fbbf24",
+    accentColor: "#f59e0b"
+  },
+  {
+    id: "chat_emoji_pack",
+    name: "Chat Emojilar Packi",
+    type: "emoji",
+    price: 80,
+    icon: "⚡",
+    desc: "Telegram chat va xabarlarga reaksiya bildirish uchun nodir emojilar! Kamdan-kam uchraydigan Epic va Legendary reaksiyalarni oching.",
+    badge: "CHAT & REAKSIYA",
+    gradient: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #60a5fa 100%)",
+    glowColor: "#60a5fa",
+    accentColor: "#3b82f6"
+  },
+  {
+    id: "boys_avatar_pack",
+    name: "Boys Avatar Pack",
+    type: "avatar_boy",
+    price: 200,
+    icon: "👑",
+    desc: "Yigitlar uchun eksklyuziv fantastik, anime va cyberpunk qahramonlar! Tojdor qirollar, kiber-samuraylar va kosmik jangchilar.",
+    badge: "YIGITLAR AVATARI",
+    gradient: "linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #818cf8 100%)",
+    glowColor: "#818cf8",
+    accentColor: "#6366f1"
+  },
+  {
+    id: "girls_avatar_pack",
+    name: "Girls Avatar Pack",
+    type: "avatar_girl",
+    price: 200,
+    icon: "✨",
+    desc: "Qizlar uchun sehrli, kinomatografik, kosmik va malika qahramonlar! Oltin tojli malikalar, kiber-valkiriyalar va ma'budalar.",
+    badge: "QIZLAR AVATARI",
+    gradient: "linear-gradient(135deg, #be185d 0%, #db2777 50%, #f472b6 100%)",
+    glowColor: "#f472b6",
+    accentColor: "#ec4899"
+  },
+  {
+    id: "neon_frames_pack",
+    name: "Hologram Nameplates & Borders",
+    type: "coming_soon",
+    price: 300,
+    isComingSoon: true,
+    icon: "🔮",
+    desc: "Profil va chat uchun maxsus harakatlanuvchi neon hoshiyalar va nom nishonlari to'plami.",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #334155 0%, #475569 50%, #64748b 100%)",
+    glowColor: "#94a3b8",
+    accentColor: "#64748b"
+  },
+  {
+    id: "audio_fx_pack",
+    name: "VIP Sound FX & Taunts",
+    type: "coming_soon",
+    price: 250,
+    isComingSoon: true,
+    icon: "🎵",
+    desc: "Quiz Battle va chatda raqiblarni hayratga soluvchi maxsus ovoz effektlari va jingle to'plami.",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%)",
+    glowColor: "#a5b4fc",
+    accentColor: "#6366f1"
+  }
+];
+
+// ====================================================
+// CHAT EMOJIS MASTER CATALOG (DEFAULT 3 UNLOCKED + PACK EMOJIS)
+// ====================================================
+window.ETHITH_DEFAULT_FREE_EMOJIS = ["👍", "😊", "❤️"];
+
+window.ETHITH_CHAT_EMOJIS = [
+  // Free default emojis
+  { emoji: "👍", name: "Like (Zo'r)", rarity: "Common", isDefault: true },
+  { emoji: "😊", name: "Tabassum", rarity: "Common", isDefault: true },
+  { emoji: "❤️", name: "Yurak", rarity: "Common", isDefault: true },
+
+  // Common Emojis
+  { emoji: "😂", name: "Qahqaha Kulgi", rarity: "Common" },
+  { emoji: "👏", name: "Qarsaklar", rarity: "Common" },
+  { emoji: "✍️", name: "Dars & Qalam", rarity: "Common" },
+  { emoji: "📚", name: "Kitoblar", rarity: "Common" },
+  { emoji: "👌", name: "A'lo Darajada", rarity: "Common" },
+
+  // Rare Emojis
+  { emoji: "🔥", name: "Olovli Ishtiyoq", rarity: "Rare" },
+  { emoji: "🎉", name: "Bayram & Fireworks", rarity: "Rare" },
+  { emoji: "💡", name: "Kreativ Fikr", rarity: "Rare" },
+  { emoji: "🎯", name: "Aniq Nishon", rarity: "Rare" },
+
+  // Epic Emojis
+  { emoji: "🌟", name: "Yorqin Yulduz", rarity: "Epic" },
+  { emoji: "🤔", name: "Falsafiy O'y", rarity: "Epic" },
+  { emoji: "🚀", name: "Kosmik Raketa", rarity: "Epic" },
+  { emoji: "💯", name: "Yuz Foiz", rarity: "Epic" },
+  { emoji: "⚡", name: "Chaqmoq Kuchi", rarity: "Epic" },
+
+  // Legendary Emojis
+  { emoji: "👑", name: "Oltin Shohona Toj", rarity: "Legendary" },
+  { emoji: "💎", name: "Qimmatbaho Olmos", rarity: "Legendary" },
+  { emoji: "🐉", name: "Afsonaviy Ajdarho", rarity: "Legendary" },
+  { emoji: "🏆", name: "Chempionlik Kubogi", rarity: "Legendary" },
+  { emoji: "🪐", name: "Koinot & Saturn", rarity: "Legendary" }
+];
+
+// ====================================================
+// CINEMATIC & ANIME / SCI-FI FANTASTIC AVATARS (BOYS & GIRLS)
+// ====================================================
+window.ETHITH_AVATARS = [
+  // --- BOYS AVATARS ---
+  // Common Boys
+  {
+    id: "boy_cadet",
+    name: "Kiber Kadet",
+    gender: "boy",
+    rarity: "Common",
+    tagline: "Akademiya talabasi, kiber-ko'zoynakli",
+    bg: "linear-gradient(135deg, #1e293b, #334155)",
+    border: "#64748b",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e293b"/><path d="M50 20 L65 42 L35 42 Z" fill="#38bdf8"/><circle cx="50" cy="52" r="22" fill="#fed7aa"/><rect x="35" y="46" width="30" height="9" rx="4" fill="#0284c7"/><rect x="37" y="48" width="11" height="5" rx="2" fill="#7dd3fc"/><rect x="52" y="48" width="11" height="5" rx="2" fill="#7dd3fc"/><path d="M44 65 Q50 70 56 65" stroke="#ea580c" stroke-width="2.5" fill="none"/><path d="M28 85 C28 72 38 68 50 68 C62 68 72 72 72 85 Z" fill="#0f172a"/><circle cx="50" cy="80" r="4" fill="#38bdf8"/></svg>'
+  },
+  {
+    id: "boy_gamer",
+    name: "Neon Geymer",
+    gender: "boy",
+    rarity: "Common",
+    tagline: "Neon quloqchinli anime geymer",
+    bg: "linear-gradient(135deg, #0f172a, #1e1b4b)",
+    border: "#6366f1",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#0f172a"/><circle cx="50" cy="50" r="24" fill="#ffedd5"/><path d="M30 40 C30 24 70 24 70 40" stroke="#818cf8" stroke-width="6" fill="none"/><rect x="24" y="40" width="9" height="18" rx="4" fill="#6366f1"/><rect x="67" y="40" width="9" height="18" rx="4" fill="#6366f1"/><circle cx="43" cy="52" r="3.5" fill="#312e81"/><circle cx="57" cy="52" r="3.5" fill="#312e81"/><path d="M46 63 Q50 67 54 63" stroke="#f43f5e" stroke-width="2" fill="none"/><path d="M26 88 C26 74 38 72 50 72 C62 72 74 74 74 88 Z" fill="#4338ca"/></svg>'
+  },
+  {
+    id: "boy_scout",
+    name: "Sayohat Qahramoni",
+    gender: "boy",
+    rarity: "Common",
+    tagline: "Futuristik kaskali tadqiqotchi",
+    bg: "linear-gradient(135deg, #064e3b, #047857)",
+    border: "#10b981",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#064e3b"/><circle cx="50" cy="50" r="22" fill="#fde68a"/><path d="M32 36 C35 22 65 22 68 36 Z" fill="#059669"/><rect x="36" y="46" width="10" height="6" rx="2" fill="#10b981"/><rect x="54" y="46" width="10" height="6" rx="2" fill="#10b981"/><path d="M45 64 Q50 68 55 64" stroke="#d97706" stroke-width="2.5" fill="none"/><path d="M25 86 C25 74 36 70 50 70 C64 70 75 74 75 86 Z" fill="#047857"/><circle cx="50" cy="78" r="4" fill="#34d399"/></svg>'
+  },
+  // Rare Boys
+  {
+    id: "boy_ninja",
+    name: "Kiber Shinobi (Ninja)",
+    gender: "boy",
+    rarity: "Rare",
+    tagline: "Kripto niqobli tungi soyachi",
+    bg: "linear-gradient(135deg, #18181b, #3f3f46)",
+    border: "#a1a1aa",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#18181b"/><circle cx="50" cy="50" r="23" fill="#27272a"/><path d="M30 48 L70 48 L65 72 L35 72 Z" fill="#09090b" stroke="#71717a" stroke-width="1.5"/><ellipse cx="43" cy="44" rx="5" ry="2.5" fill="#e11d48"/><ellipse cx="57" cy="44" rx="5" ry="2.5" fill="#e11d48"/><rect x="34" y="32" width="32" height="6" rx="2" fill="#71717a"/><circle cx="50" cy="35" r="2" fill="#f43f5e"/><path d="M24 88 C24 75 37 72 50 72 C63 72 76 75 76 88 Z" fill="#27272a"/><path d="M42 72 L50 82 L58 72 Z" fill="#e11d48"/></svg>'
+  },
+  {
+    id: "boy_mecha",
+    name: "Titan Mecha Uchuvchi",
+    gender: "boy",
+    rarity: "Rare",
+    tagline: "Holografik nishonli zirhli jangchi",
+    bg: "linear-gradient(135deg, #1e3a8a, #1d4ed8)",
+    border: "#3b82f6",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e3a8a"/><polygon points="50,18 76,36 70,68 50,82 30,68 24,36" fill="#172554" stroke="#60a5fa" stroke-width="2"/><path d="M34 46 L66 46 L60 56 L40 56 Z" fill="#38bdf8" opacity="0.9"/><circle cx="50" cy="51" r="3" fill="#ffffff"/><path d="M50 25 L50 40" stroke="#93c5fd" stroke-width="2"/><circle cx="50" cy="30" r="2" fill="#ef4444"/><path d="M22 88 C22 75 36 72 50 72 C64 72 78 75 78 88 Z" fill="#1e40af"/></svg>'
+  },
+  {
+    id: "boy_samurai",
+    name: "Neo Samuray",
+    gender: "boy",
+    rarity: "Rare",
+    tagline: "Lazer tig'li yapon kiber-ritsari",
+    bg: "linear-gradient(135deg, #701a75, #a21caf)",
+    border: "#e879f9",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#701a75"/><path d="M28 34 Q50 16 72 34 L66 44 L34 44 Z" fill="#e879f9"/><circle cx="50" cy="52" r="21" fill="#fed7aa"/><polygon points="50,22 45,34 55,34" fill="#facc15"/><rect x="36" y="47" width="28" height="8" rx="3" fill="#4a044e"/><circle cx="43" cy="51" r="2.5" fill="#f43f5e"/><circle cx="57" cy="51" r="2.5" fill="#f43f5e"/><path d="M36 62 L64 62 L60 72 L40 72 Z" fill="#2e1065"/><path d="M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z" fill="#581c87"/></svg>'
+  },
+  // Epic Boys
+  {
+    id: "boy_dragon_lord",
+    name: "Kiber Ajdarho Hukmdori",
+    gender: "boy",
+    rarity: "Epic",
+    tagline: "Qizil plazma shoxli qadimgi kiborg",
+    bg: "linear-gradient(135deg, #7f1d1d, #b91c1c)",
+    border: "#f87171",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#7f1d1d"/><path d="M32 20 L44 34 L36 38 Z" fill="#f87171"/><path d="M68 20 L56 34 L64 38 Z" fill="#f87171"/><circle cx="50" cy="52" r="23" fill="#1c1917" stroke="#ef4444" stroke-width="2"/><ellipse cx="42" cy="48" rx="6" ry="3" fill="#facc15"/><ellipse cx="58" cy="48" rx="6" ry="3" fill="#facc15"/><circle cx="42" cy="48" r="2" fill="#000"/><circle cx="58" cy="48" r="2" fill="#000"/><path d="M38 64 L50 72 L62 64" stroke="#f87171" stroke-width="3" fill="none"/><path d="M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/></svg>'
+  },
+  {
+    id: "boy_quantum",
+    name: "Kvant Sentineli",
+    gender: "boy",
+    rarity: "Epic",
+    tagline: "Vaqt to'lqinlari va koinot himoyachisi",
+    bg: "linear-gradient(135deg, #083344, #0e7490)",
+    border: "#22d3ee",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#083344"/><circle cx="50" cy="50" r="26" fill="#164e63" stroke="#22d3ee" stroke-width="2"/><circle cx="50" cy="50" r="14" fill="#06b6d4" opacity="0.8"/><circle cx="50" cy="50" r="8" fill="#cffafe"/><path d="M26 50 L74 50" stroke="#a5f3fc" stroke-width="2" stroke-dasharray="3 3"/><path d="M50 26 L50 74" stroke="#a5f3fc" stroke-width="2" stroke-dasharray="3 3"/><polygon points="50,15 54,24 64,24 56,30 59,40 50,34 41,40 44,30 36,24 46,24" fill="#22d3ee"/><path d="M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z" fill="#0e7490"/></svg>'
+  },
+  // Legendary Boys
+  {
+    id: "boy_emperor",
+    name: "Oltin Tojdor Imperator",
+    gender: "boy",
+    rarity: "Legendary",
+    tagline: "Koinot hukmdori, yonuvchi oltin toj sohibi",
+    bg: "linear-gradient(135deg, #78350f, #d97706, #f59e0b)",
+    border: "#fde047",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#78350f"/><circle cx="50" cy="50" r="44" fill="none" stroke="#fde047" stroke-width="1.5" stroke-dasharray="4 2"/><polygon points="26,38 34,20 50,32 66,20 74,38 50,44" fill="#facc15" stroke="#fffbeb" stroke-width="2"/><circle cx="34" cy="20" r="3.5" fill="#ef4444"/><circle cx="50" cy="32" r="4" fill="#3b82f6"/><circle cx="66" cy="20" r="3.5" fill="#ef4444"/><circle cx="50" cy="56" r="20" fill="#fef08a"/><ellipse cx="43" cy="53" rx="4" ry="2" fill="#78350f"/><ellipse cx="57" cy="53" rx="4" ry="2" fill="#78350f"/><path d="M44 65 Q50 70 56 65" stroke="#b45309" stroke-width="2.5" fill="none"/><path d="M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z" fill="#b45309" stroke="#fde047" stroke-width="2"/><circle cx="50" cy="80" r="5" fill="#facc15"/></svg>'
+  },
+  {
+    id: "boy_godspeed",
+    name: "Kosmik Chaqmoq Qiroli",
+    gender: "boy",
+    rarity: "Legendary",
+    tagline: "Yorug'lik tezligidagi afsonaviy kiborq",
+    bg: "linear-gradient(135deg, #312e81, #4338ca, #6366f1)",
+    border: "#a5b4fc",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#312e81"/><path d="M54 14 L36 44 L48 44 L42 78 L64 40 L52 40 Z" fill="#fde047" stroke="#ffffff" stroke-width="2"/><circle cx="50" cy="50" r="22" fill="#1e1b4b" opacity="0.6"/><ellipse cx="43" cy="48" rx="5" ry="3" fill="#67e8f9"/><ellipse cx="57" cy="48" rx="5" ry="3" fill="#67e8f9"/><path d="M22 88 C22 75 35 72 50 72 C65 72 78 75 78 88 Z" fill="#4338ca" stroke="#fde047" stroke-width="1.5"/></svg>'
+  },
+
+  // --- GIRLS AVATARS ---
+  // Common Girls
+  {
+    id: "girl_blossom",
+    name: "Neon Sakura Qizi",
+    gender: "girl",
+    rarity: "Common",
+    tagline: "Anime uslubidagi binafsha sochli talaba",
+    bg: "linear-gradient(135deg, #4a044e, #86198f)",
+    border: "#f472b6",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#4a044e"/><path d="M26 34 C26 14 74 14 74 34 L76 68 L70 70 L68 44 L32 44 L30 70 L24 68 Z" fill="#ec4899"/><circle cx="50" cy="50" r="20" fill="#fed7aa"/><circle cx="43" cy="50" r="3" fill="#be185d"/><circle cx="57" cy="50" r="3" fill="#be185d"/><path d="M45 62 Q50 66 55 62" stroke="#db2777" stroke-width="2" fill="none"/><path d="M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z" fill="#9d174d"/><circle cx="50" cy="78" r="3" fill="#f472b6"/></svg>'
+  },
+  {
+    id: "girl_scout",
+    name: "Kiber Izquvar",
+    gender: "girl",
+    rarity: "Common",
+    tagline: "Zamonaviy kiber-diadema kiygan qahramon",
+    bg: "linear-gradient(135deg, #134e4a, #0d9488)",
+    border: "#2dd4bf",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#134e4a"/><path d="M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z" fill="#14b8a6"/><circle cx="50" cy="50" r="20" fill="#fde68a"/><rect x="34" y="34" width="32" height="5" rx="2" fill="#2dd4bf"/><circle cx="43" cy="49" r="3" fill="#0f766e"/><circle cx="57" cy="49" r="3" fill="#0f766e"/><path d="M46 62 Q50 65 54 62" stroke="#0d9488" stroke-width="2" fill="none"/><path d="M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z" fill="#0f766e"/></svg>'
+  },
+  {
+    id: "girl_scholar",
+    name: "Sehrli Kitobxon",
+    gender: "girl",
+    rarity: "Common",
+    tagline: "Yulduzli ko'zli a'lochi o'quvchi qiz",
+    bg: "linear-gradient(135deg, #1e1b4b, #3730a3)",
+    border: "#818cf8",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e1b4b"/><path d="M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z" fill="#6366f1"/><circle cx="50" cy="51" r="20" fill="#fed7aa"/><circle cx="43" cy="49" r="3" fill="#312e81"/><circle cx="57" cy="49" r="3" fill="#312e81"/><circle cx="44" cy="48" r="1" fill="#fff"/><circle cx="58" cy="48" r="1" fill="#fff"/><path d="M45 62 Q50 66 55 62" stroke="#4f46e5" stroke-width="2" fill="none"/><path d="M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z" fill="#3730a3"/></svg>'
+  },
+  // Rare Girls
+  {
+    id: "girl_valkyrie",
+    name: "Kiber Valkiriya",
+    gender: "girl",
+    rarity: "Rare",
+    tagline: "Oq qanotli kelajak himoyachisi",
+    bg: "linear-gradient(135deg, #1e293b, #0f172a)",
+    border: "#38bdf8",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e293b"/><path d="M20 30 L35 44 L25 54 Z" fill="#38bdf8" opacity="0.8"/><path d="M80 30 L65 44 L75 54 Z" fill="#38bdf8" opacity="0.8"/><circle cx="50" cy="50" r="21" fill="#ffedd5"/><rect x="32" y="34" width="36" height="6" rx="2" fill="#0284c7"/><circle cx="50" cy="37" r="3" fill="#facc15"/><ellipse cx="43" cy="49" rx="3.5" ry="2.5" fill="#0369a1"/><ellipse cx="57" cy="49" rx="3.5" ry="2.5" fill="#0369a1"/><path d="M45 62 Q50 66 55 62" stroke="#0284c7" stroke-width="2" fill="none"/><path d="M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z" fill="#0369a1"/></svg>'
+  },
+  {
+    id: "girl_priestess",
+    name: "Quyosh Kohinasi",
+    gender: "girl",
+    rarity: "Rare",
+    tagline: "Oltin nurlar va sehrli doira egasi",
+    bg: "linear-gradient(135deg, #854d0e, #ca8a04)",
+    border: "#fde047",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#854d0e"/><circle cx="50" cy="50" r="36" fill="none" stroke="#fef08a" stroke-width="2" stroke-dasharray="4 3"/><circle cx="50" cy="50" r="21" fill="#fef08a"/><path d="M28 32 C35 18 65 18 72 32 L70 54 L30 54 Z" fill="#eab308"/><ellipse cx="43" cy="48" rx="4" ry="2.5" fill="#713f12"/><ellipse cx="57" cy="48" rx="4" ry="2.5" fill="#713f12"/><path d="M45 62 Q50 66 55 62" stroke="#a16207" stroke-width="2" fill="none"/><path d="M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z" fill="#a16207" stroke="#fde047" stroke-width="1.5"/></svg>'
+  },
+  // Epic Girls
+  {
+    id: "girl_empress_lotus",
+    name: "Kiber Lotus Malakasi",
+    gender: "girl",
+    rarity: "Epic",
+    tagline: "Neon binafsha tojli kiber-xonim",
+    bg: "linear-gradient(135deg, #581c87, #7e22ce)",
+    border: "#c084fc",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#581c87"/><polygon points="34,36 42,22 50,30 58,22 66,36 50,42" fill="#c084fc" stroke="#f5d0fe" stroke-width="1.5"/><circle cx="50" cy="52" r="21" fill="#fae8ff"/><ellipse cx="43" cy="50" rx="4" ry="2.5" fill="#6b21a8"/><ellipse cx="57" cy="50" rx="4" ry="2.5" fill="#6b21a8"/><path d="M45 64 Q50 68 55 64" stroke="#a855f7" stroke-width="2.5" fill="none"/><path d="M24 88 C24 74 36 70 50 70 C64 70 76 74 76 88 Z" fill="#6b21a8" stroke="#c084fc" stroke-width="2"/></svg>'
+  },
+  {
+    id: "girl_galaxy",
+    name: "Galaktika Kamonchisi",
+    gender: "girl",
+    rarity: "Epic",
+    tagline: "Yulduz changi va lazer kamonli qahramon",
+    bg: "linear-gradient(135deg, #022c22, #047857)",
+    border: "#34d399",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#022c22"/><circle cx="50" cy="50" r="40" fill="none" stroke="#34d399" stroke-width="1.5" stroke-dasharray="6 3"/><circle cx="50" cy="50" r="21" fill="#ecfdf5"/><path d="M30 36 C35 20 65 20 70 36 L72 64 L28 64 Z" fill="#059669"/><rect x="36" y="46" width="28" height="6" rx="2" fill="#10b981"/><circle cx="43" cy="49" r="2" fill="#ffffff"/><circle cx="57" cy="49" r="2" fill="#ffffff"/><path d="M24 88 C24 74 36 70 50 70 C64 70 76 74 76 88 Z" fill="#065f46" stroke="#34d399" stroke-width="1.5"/></svg>'
+  },
+  // Legendary Girls
+  {
+    id: "girl_queen",
+    name: "Oltin Tojdor Qirolicha",
+    gender: "girl",
+    rarity: "Legendary",
+    tagline: "Shon-shuhrat va qimmatbaho olmos toj egasi",
+    bg: "linear-gradient(135deg, #831843, #be185d, #f43f5e)",
+    border: "#fde047",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#831843"/><circle cx="50" cy="50" r="44" fill="none" stroke="#fde047" stroke-width="2" stroke-dasharray="4 2"/><polygon points="26,36 34,16 50,28 66,16 74,36 50,42" fill="#facc15" stroke="#fffbeb" stroke-width="2"/><circle cx="34" cy="16" r="3.5" fill="#f43f5e"/><circle cx="50" cy="28" r="4" fill="#a855f7"/><circle cx="66" cy="16" r="3.5" fill="#f43f5e"/><circle cx="50" cy="54" r="20" fill="#fef08a"/><ellipse cx="43" cy="51" rx="4" ry="2" fill="#831843"/><ellipse cx="57" cy="51" rx="4" ry="2" fill="#831843"/><path d="M44 64 Q50 69 56 64" stroke="#e11d48" stroke-width="2.5" fill="none"/><path d="M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z" fill="#9d174d" stroke="#fde047" stroke-width="2"/><circle cx="50" cy="78" r="4.5" fill="#facc15"/></svg>'
+  },
+  {
+    id: "girl_goddess",
+    name: "Kosmik Nur Ma'budasi",
+    gender: "girl",
+    rarity: "Legendary",
+    tagline: "Abadiy koinot nurlari va sehrli toj sohibasi",
+    bg: "linear-gradient(135deg, #0c4a6e, #0284c7, #38bdf8)",
+    border: "#7dd3fc",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#0c4a6e"/><path d="M50 8 L55 24 L72 24 L58 34 L64 50 L50 40 L36 50 L42 34 L28 24 L45 24 Z" fill="#fde047"/><circle cx="50" cy="54" r="21" fill="#e0f2fe"/><ellipse cx="43" cy="51" rx="4" ry="2.5" fill="#0369a1"/><ellipse cx="57" cy="51" rx="4" ry="2.5" fill="#0369a1"/><path d="M44 64 Q50 68 56 64" stroke="#0284c7" stroke-width="2.5" fill="none"/><path d="M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z" fill="#075985" stroke="#7dd3fc" stroke-width="2"/></svg>'
+  }
+];
+
+// ====================================================
+// UNIVERSAL AVATAR RENDERER
+// ====================================================
+window.ETHITH_RENDER_USER_AVATAR = function(user, size, extraClass, extraStyle) {
+  var s = size || 36;
+  var cls = extraClass || "";
+  var st = extraStyle || "";
+  var u = user || {};
+
+  var avatarObj = null;
+  if (u.avatar) {
+    if (typeof u.avatar === "string") {
+      avatarObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === u.avatar; });
+    } else if (u.avatar.id) {
+      avatarObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === u.avatar.id; }) || u.avatar;
+    }
+  }
+
+  if (avatarObj && avatarObj.svg) {
+    return '<div class="eth-avatar-circle ' + cls + '" style="width:' + s + 'px;height:' + s + 'px;border-radius:50%;overflow:hidden;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.18);display:inline-flex;align-items:center;justify-content:center;background:' + (avatarObj.bg || '#1e293b') + ';border:2px solid ' + (avatarObj.border || 'rgba(255,255,255,0.25)') + ';' + st + '" title="' + (avatarObj.name || '') + '">' +
+      avatarObj.svg +
+    '</div>';
+  }
+
+  // Fallback: Initial letter
+  var initial = (u.name && u.name.trim()) ? u.name.trim().charAt(0).toUpperCase() : "U";
+  return '<div class="eth-avatar-circle eth-avatar-fallback ' + cls + '" style="width:' + s + 'px;height:' + s + 'px;border-radius:50%;background:linear-gradient(135deg, #2563eb, #1d4ed8);color:#ffffff;font-weight:800;font-size:' + Math.round(s * 0.45) + 'px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;border:2px solid rgba(255,255,255,0.2);box-shadow:0 2px 6px rgba(0,0,0,0.15);' + st + '">' +
+    initial +
+  '</div>';
+};
+
+// ====================================================
+// PACK OPENING DROP LOGIC (RNG)
+// ====================================================
+window.ETHITH_OPEN_PACK = function(packId, user) {
+  var pack = (window.ETHITH_PACKS || []).find(function(p) { return p.id === packId; });
+  if (!pack) return null;
+
+  var rand = Math.random() * 100;
+  var rarity = "Common";
+  if (rand < 5) rarity = "Legendary";
+  else if (rand < 20) rarity = "Epic";
+  else if (rand < 50) rarity = "Rare";
+  else rarity = "Common";
+
+  if (pack.type === "daily") {
+    var roll = Math.random() * 100;
+    if (roll < 70) {
+      var coinAmounts = [50, 75, 100, 120, 150, 200, 250];
+      var amount = coinAmounts[Math.floor(Math.random() * coinAmounts.length)];
+      return {
+        type: "coins",
+        rarity: (amount >= 200 ? "Epic" : (amount >= 120 ? "Rare" : "Common")),
+        amount: amount,
+        name: amount + " ETHITH Coin!",
+        desc: "Hamyoningizga darhol qo'shildi!",
+        icon: "🪙"
+      };
+    } else if (roll < 90) {
+      var pz = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(rarity) : null;
+      return {
+        type: "prize",
+        rarity: (pz ? pz.rarity : rarity),
+        item: pz,
+        name: pz ? pz.name : "Kutilmagan Sovg'a",
+        desc: pz ? pz.desc : "Yangi sovrin!",
+        icon: pz ? pz.icon : "🎁"
+      };
+    } else {
+      var unlEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
+      var em = unlEmojis[Math.floor(Math.random() * unlEmojis.length)];
+      return {
+        type: "emoji",
+        rarity: em.rarity,
+        emoji: em.emoji,
+        name: em.emoji + " " + em.name,
+        desc: "Telegram chat va reaksiyalar uchun ochildi!",
+        icon: em.emoji
+      };
+    }
+  }
+
+  if (pack.type === "prize") {
+    var pz = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(rarity) : null;
+    return {
+      type: "prize",
+      rarity: (pz ? pz.rarity : rarity),
+      item: pz,
+      name: pz ? pz.name : "Omadli Sovg'a",
+      desc: pz ? pz.desc : "Ajoyib o'zbekcha sovrin!",
+      icon: pz ? pz.icon : "💎",
+      coinPrice: pz ? pz.price : 100
+    };
+  }
+
+  if (pack.type === "emoji") {
+    var matching = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) {
+      return !e.isDefault && (e.rarity === rarity || !rarity);
+    });
+    if (!matching.length) matching = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
+    var chosen = matching[Math.floor(Math.random() * matching.length)];
+    return {
+      type: "emoji",
+      rarity: chosen.rarity,
+      emoji: chosen.emoji,
+      name: chosen.emoji + " " + chosen.name,
+      desc: "Telegram chat va barcha reaksiyalarda endi erkin foydalanishingiz mumkin!",
+      icon: chosen.emoji
+    };
+  }
+
+  if (pack.type === "avatar_boy") {
+    var boys = (window.ETHITH_AVATARS || []).filter(function(a) {
+      return a.gender === "boy" && (a.rarity === rarity || !rarity);
+    });
+    if (!boys.length) boys = (window.ETHITH_AVATARS || []).filter(function(a) { return a.gender === "boy"; });
+    var chosen = boys[Math.floor(Math.random() * boys.length)];
+    return {
+      type: "avatar",
+      rarity: chosen.rarity,
+      avatar: chosen,
+      name: chosen.name,
+      desc: chosen.tagline,
+      icon: chosen.name
+    };
+  }
+
+  if (pack.type === "avatar_girl") {
+    var girls = (window.ETHITH_AVATARS || []).filter(function(a) {
+      return a.gender === "girl" && (a.rarity === rarity || !rarity);
+    });
+    if (!girls.length) girls = (window.ETHITH_AVATARS || []).filter(function(a) { return a.gender === "girl"; });
+    var chosen = girls[Math.floor(Math.random() * girls.length)];
+    return {
+      type: "avatar",
+      rarity: chosen.rarity,
+      avatar: chosen,
+      name: chosen.name,
+      desc: chosen.tagline,
+      icon: chosen.name
+    };
+  }
+
+  return null;
+};

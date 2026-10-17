@@ -6313,3 +6313,611 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 }
 
 
+
+/* ====================================================
+   ETHITH FUTURISTIC MOTION LEADERBOARD
+   ==================================================== */
+.eth-leaderboard-screen {
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.eth-lb-header {
+  text-align: center;
+  padding: 30px 20px 24px;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(15, 23, 42, 0.7) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.3), inset 0 0 20px rgba(59, 130, 246, 0.1);
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.eth-lb-header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 60%);
+  animation: ethLbGlowPulse 4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes ethLbGlowPulse {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.15); opacity: 0.9; }
+}
+
+.eth-lb-title {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #fef08a, #f59e0b, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 8px;
+}
+
+.eth-lb-subtitle {
+  font-size: 14px;
+  color: var(--muted, #94a3b8);
+  margin: 0;
+}
+
+.eth-lb-podium-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 30px;
+  padding: 10px 0;
+}
+
+/* Rank 1: Crowned Golden Champion */
+.eth-lb-card-1 {
+  flex: 1;
+  max-width: 320px;
+  background: linear-gradient(145deg, rgba(120, 53, 15, 0.35) 0%, rgba(217, 119, 6, 0.15) 100%);
+  border: 2px solid #f59e0b;
+  border-radius: 20px;
+  padding: 24px 16px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.35), inset 0 0 15px rgba(254, 240, 138, 0.2);
+  position: relative;
+  transform: translateY(-12px);
+  animation: ethChampionPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes ethChampionPulse {
+  0% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.3); transform: translateY(-12px); }
+  100% { box-shadow: 0 0 45px rgba(245, 158, 11, 0.6); transform: translateY(-16px); }
+}
+
+.eth-crown-badge {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  filter: drop-shadow(0 4px 10px rgba(245, 158, 11, 0.8));
+  animation: ethCrownFloat 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes ethCrownFloat {
+  0% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+  50% { transform: translateX(-50%) translateY(-6px) rotate(-4deg); }
+  100% { transform: translateX(-50%) translateY(0) rotate(4deg); }
+}
+
+/* Rank 2: Silver Motion */
+.eth-lb-card-2 {
+  flex: 1;
+  max-width: 290px;
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.3) 100%);
+  border: 2px solid #94a3b8;
+  border-radius: 18px;
+  padding: 20px 14px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(148, 163, 184, 0.3);
+  position: relative;
+  animation: ethSilverSway 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes ethSilverSway {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+/* Rank 3: Bronze Motion */
+.eth-lb-card-3 {
+  flex: 1;
+  max-width: 290px;
+  background: linear-gradient(145deg, rgba(67, 20, 7, 0.35) 0%, rgba(120, 53, 15, 0.2) 100%);
+  border: 2px solid #d97706;
+  border-radius: 18px;
+  padding: 20px 14px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(217, 119, 6, 0.25);
+  position: relative;
+  animation: ethBronzeSway 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes ethBronzeSway {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+/* Rank 4+ Regular Minimalist Rows */
+.eth-lb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eth-lb-row {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 14px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+[data-theme="dark"] .eth-lb-row,
+#app[data-theme="dark"] .eth-lb-row {
+  background: #0f2038;
+  border-color: #1b3252;
+}
+
+.eth-lb-row:hover {
+  transform: translateX(4px);
+  border-color: var(--pri2, #4e93e4);
+}
+
+.eth-lb-row.is-me {
+  border-color: #f59e0b !important;
+  background: rgba(245, 158, 11, 0.08) !important;
+}
+
+.eth-lb-rank-num {
+  width: 38px;
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--muted, #64748b);
+  flex-shrink: 0;
+}
+
+.eth-lb-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.eth-lb-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text, #0e2340);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eth-lb-coins {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 15px;
+  color: #d97706;
+}
+
+[data-theme="dark"] .eth-lb-coins {
+  color: #fbbf24;
+}
+
+/* ====================================================
+   ETHITH MARKET: EA SPORTS & MLBB PACKS
+   ==================================================== */
+.eth-market-screen {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.eth-market-banner {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #1e3a8a 100%);
+  border-radius: 24px;
+  padding: 32px 28px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid rgba(129, 140, 248, 0.3);
+  box-shadow: 0 16px 40px -10px rgba(30, 27, 75, 0.6);
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.eth-market-banner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 45%;
+  background: radial-gradient(circle at 70% 50%, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.eth-market-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+/* 3D Rectangular Pack Card */
+.eth-pack-card {
+  border-radius: 20px;
+  padding: 24px 20px;
+  color: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+.eth-pack-card::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.18) 50%, transparent 55%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+
+.eth-pack-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+}
+
+.eth-pack-card:hover::before {
+  transform: translate(50%, 50%);
+}
+
+.eth-pack-badge {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 16px;
+}
+
+.eth-pack-icon {
+  font-size: 48px;
+  margin: 10px auto 16px;
+  text-align: center;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4));
+  animation: ethPackFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes ethPackFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+.eth-pack-name {
+  font-size: 19px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.eth-pack-desc {
+  font-size: 12.5px;
+  line-height: 1.5;
+  opacity: 0.9;
+  text-align: center;
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+.eth-pack-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.eth-pack-btn:hover {
+  transform: translateY(-2px);
+  background: #f8fafc;
+}
+
+.eth-pack-btn.is-disabled {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ====================================================
+   MLBB PACK OPENING MODAL (5 BOXES DRAW & CONNECT)
+   ==================================================== */
+.eth-pack-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.92);
+  backdrop-filter: blur(14px);
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.eth-pack-arena {
+  width: 100%;
+  max-width: 540px;
+  min-height: 480px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.eth-pack-arena-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fde047;
+  text-shadow: 0 0 16px rgba(253, 224, 71, 0.6);
+  margin-bottom: 8px;
+}
+
+.eth-pack-arena-hint {
+  font-size: 13.5px;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+/* 5 Mystery Boxes Layout */
+.eth-boxes-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+}
+
+.eth-mystery-box {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 2px solid #38bdf8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  z-index: 2;
+}
+
+.eth-mystery-box.is-connected {
+  border-color: #f59e0b;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.8);
+  background: linear-gradient(135deg, #78350f, #d97706);
+  transform: scale(1.1);
+  animation: ethBoxPulsing 1s infinite alternate;
+}
+
+@keyframes ethBoxPulsing {
+  0% { transform: scale(1.1); }
+  100% { transform: scale(1.22); filter: drop-shadow(0 0 12px #fde047); }
+}
+
+/* Fusion Animation */
+.eth-boxes-container.fusing .eth-mystery-box {
+  top: 131px !important;
+  left: 131px !important;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.eth-supernova-blast {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  transform: translate(-50%, -50%);
+  animation: ethSupernova 0.7s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ethSupernova {
+  0% { width: 10px; height: 10px; opacity: 1; box-shadow: 0 0 80px 40px #f59e0b; }
+  50% { width: 340px; height: 340px; opacity: 0.9; box-shadow: 0 0 160px 80px #fde047; }
+  100% { width: 600px; height: 600px; opacity: 0; }
+}
+
+/* Reveal Card */
+.eth-revealed-card {
+  width: 280px;
+  border-radius: 22px;
+  padding: 26px 20px;
+  text-align: center;
+  background: linear-gradient(145deg, #0f172a, #1e293b);
+  border: 2px solid #f59e0b;
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.5);
+  animation: ethCardReveal3D 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes ethCardReveal3D {
+  0% { transform: scale(0.2) rotateY(180deg); opacity: 0; }
+  100% { transform: scale(1) rotateY(0deg); opacity: 1; }
+}
+
+.eth-rarity-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.eth-rarity-Common { background: #475569; color: #f8fafc; }
+.eth-rarity-Rare { background: #2563eb; color: #ffffff; box-shadow: 0 0 12px rgba(37, 99, 235, 0.6); }
+.eth-rarity-Epic { background: #9333ea; color: #ffffff; box-shadow: 0 0 16px rgba(147, 51, 234, 0.7); }
+.eth-rarity-Legendary {
+  background: linear-gradient(90deg, #d97706, #f59e0b, #fde047);
+  color: #78350f;
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.9);
+  animation: ethLegendGlow 1.5s infinite alternate;
+}
+
+@keyframes ethLegendGlow {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.3); }
+}
+
+/* ====================================================
+   ETHITH PROFILE VIEW
+   ==================================================== */
+.eth-profile-screen {
+  padding: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.eth-profile-hero {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,0.06));
+}
+
+[data-theme="dark"] .eth-profile-hero,
+#app[data-theme="dark"] .eth-profile-hero {
+  background: #0f2038;
+  border-color: #1b3252;
+}
+
+.eth-profile-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.eth-profile-change-av-btn {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  background: #2563eb;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.eth-profile-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.eth-pstat-card {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+[data-theme="dark"] .eth-pstat-card,
+#app[data-theme="dark"] .eth-pstat-card {
+  background: #0f2038;
+  border-color: #1b3252;
+}
+
+.eth-pstat-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text, #0e2340);
+}
+
+.eth-pstat-lbl {
+  font-size: 12px;
+  color: var(--muted, #64748b);
+}
+
+/* Chat Locked Emoji Pill */
+.tg-emoji-pill.is-locked {
+  opacity: 0.45;
+  filter: grayscale(0.8);
+  position: relative;
+}
+
+.tg-emoji-pill.is-locked::after {
+  content: "🔒";
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  font-size: 10px;
+}

@@ -185,6 +185,10 @@
 
 
 
+
+
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -6506,6 +6510,614 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 
 
 
+/* ====================================================
+   ETHITH FUTURISTIC MOTION LEADERBOARD
+   ==================================================== */
+.eth-leaderboard-screen {
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.eth-lb-header {
+  text-align: center;
+  padding: 30px 20px 24px;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(15, 23, 42, 0.7) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.3), inset 0 0 20px rgba(59, 130, 246, 0.1);
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.eth-lb-header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 60%);
+  animation: ethLbGlowPulse 4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes ethLbGlowPulse {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.15); opacity: 0.9; }
+}
+
+.eth-lb-title {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #fef08a, #f59e0b, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 8px;
+}
+
+.eth-lb-subtitle {
+  font-size: 14px;
+  color: var(--muted, #94a3b8);
+  margin: 0;
+}
+
+.eth-lb-podium-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 30px;
+  padding: 10px 0;
+}
+
+/* Rank 1: Crowned Golden Champion */
+.eth-lb-card-1 {
+  flex: 1;
+  max-width: 320px;
+  background: linear-gradient(145deg, rgba(120, 53, 15, 0.35) 0%, rgba(217, 119, 6, 0.15) 100%);
+  border: 2px solid #f59e0b;
+  border-radius: 20px;
+  padding: 24px 16px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.35), inset 0 0 15px rgba(254, 240, 138, 0.2);
+  position: relative;
+  transform: translateY(-12px);
+  animation: ethChampionPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes ethChampionPulse {
+  0% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.3); transform: translateY(-12px); }
+  100% { box-shadow: 0 0 45px rgba(245, 158, 11, 0.6); transform: translateY(-16px); }
+}
+
+.eth-crown-badge {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  filter: drop-shadow(0 4px 10px rgba(245, 158, 11, 0.8));
+  animation: ethCrownFloat 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes ethCrownFloat {
+  0% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+  50% { transform: translateX(-50%) translateY(-6px) rotate(-4deg); }
+  100% { transform: translateX(-50%) translateY(0) rotate(4deg); }
+}
+
+/* Rank 2: Silver Motion */
+.eth-lb-card-2 {
+  flex: 1;
+  max-width: 290px;
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.3) 100%);
+  border: 2px solid #94a3b8;
+  border-radius: 18px;
+  padding: 20px 14px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(148, 163, 184, 0.3);
+  position: relative;
+  animation: ethSilverSway 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes ethSilverSway {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+/* Rank 3: Bronze Motion */
+.eth-lb-card-3 {
+  flex: 1;
+  max-width: 290px;
+  background: linear-gradient(145deg, rgba(67, 20, 7, 0.35) 0%, rgba(120, 53, 15, 0.2) 100%);
+  border: 2px solid #d97706;
+  border-radius: 18px;
+  padding: 20px 14px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(217, 119, 6, 0.25);
+  position: relative;
+  animation: ethBronzeSway 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes ethBronzeSway {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+/* Rank 4+ Regular Minimalist Rows */
+.eth-lb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eth-lb-row {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 14px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+[data-theme="dark"] .eth-lb-row,
+#app[data-theme="dark"] .eth-lb-row {
+  background: #0f2038;
+  border-color: #1b3252;
+}
+
+.eth-lb-row:hover {
+  transform: translateX(4px);
+  border-color: var(--pri2, #4e93e4);
+}
+
+.eth-lb-row.is-me {
+  border-color: #f59e0b !important;
+  background: rgba(245, 158, 11, 0.08) !important;
+}
+
+.eth-lb-rank-num {
+  width: 38px;
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--muted, #64748b);
+  flex-shrink: 0;
+}
+
+.eth-lb-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.eth-lb-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text, #0e2340);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eth-lb-coins {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 15px;
+  color: #d97706;
+}
+
+[data-theme="dark"] .eth-lb-coins {
+  color: #fbbf24;
+}
+
+/* ====================================================
+   ETHITH MARKET: EA SPORTS & MLBB PACKS
+   ==================================================== */
+.eth-market-screen {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.eth-market-banner {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #1e3a8a 100%);
+  border-radius: 24px;
+  padding: 32px 28px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid rgba(129, 140, 248, 0.3);
+  box-shadow: 0 16px 40px -10px rgba(30, 27, 75, 0.6);
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.eth-market-banner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 45%;
+  background: radial-gradient(circle at 70% 50%, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.eth-market-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+/* 3D Rectangular Pack Card */
+.eth-pack-card {
+  border-radius: 20px;
+  padding: 24px 20px;
+  color: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+.eth-pack-card::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.18) 50%, transparent 55%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+
+.eth-pack-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+}
+
+.eth-pack-card:hover::before {
+  transform: translate(50%, 50%);
+}
+
+.eth-pack-badge {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 16px;
+}
+
+.eth-pack-icon {
+  font-size: 48px;
+  margin: 10px auto 16px;
+  text-align: center;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4));
+  animation: ethPackFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes ethPackFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+.eth-pack-name {
+  font-size: 19px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.eth-pack-desc {
+  font-size: 12.5px;
+  line-height: 1.5;
+  opacity: 0.9;
+  text-align: center;
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+.eth-pack-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.eth-pack-btn:hover {
+  transform: translateY(-2px);
+  background: #f8fafc;
+}
+
+.eth-pack-btn.is-disabled {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ====================================================
+   MLBB PACK OPENING MODAL (5 BOXES DRAW & CONNECT)
+   ==================================================== */
+.eth-pack-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.92);
+  backdrop-filter: blur(14px);
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.eth-pack-arena {
+  width: 100%;
+  max-width: 540px;
+  min-height: 480px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.eth-pack-arena-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fde047;
+  text-shadow: 0 0 16px rgba(253, 224, 71, 0.6);
+  margin-bottom: 8px;
+}
+
+.eth-pack-arena-hint {
+  font-size: 13.5px;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+/* 5 Mystery Boxes Layout */
+.eth-boxes-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+}
+
+.eth-mystery-box {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 2px solid #38bdf8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  z-index: 2;
+}
+
+.eth-mystery-box.is-connected {
+  border-color: #f59e0b;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.8);
+  background: linear-gradient(135deg, #78350f, #d97706);
+  transform: scale(1.1);
+  animation: ethBoxPulsing 1s infinite alternate;
+}
+
+@keyframes ethBoxPulsing {
+  0% { transform: scale(1.1); }
+  100% { transform: scale(1.22); filter: drop-shadow(0 0 12px #fde047); }
+}
+
+/* Fusion Animation */
+.eth-boxes-container.fusing .eth-mystery-box {
+  top: 131px !important;
+  left: 131px !important;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.eth-supernova-blast {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  transform: translate(-50%, -50%);
+  animation: ethSupernova 0.7s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ethSupernova {
+  0% { width: 10px; height: 10px; opacity: 1; box-shadow: 0 0 80px 40px #f59e0b; }
+  50% { width: 340px; height: 340px; opacity: 0.9; box-shadow: 0 0 160px 80px #fde047; }
+  100% { width: 600px; height: 600px; opacity: 0; }
+}
+
+/* Reveal Card */
+.eth-revealed-card {
+  width: 280px;
+  border-radius: 22px;
+  padding: 26px 20px;
+  text-align: center;
+  background: linear-gradient(145deg, #0f172a, #1e293b);
+  border: 2px solid #f59e0b;
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.5);
+  animation: ethCardReveal3D 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes ethCardReveal3D {
+  0% { transform: scale(0.2) rotateY(180deg); opacity: 0; }
+  100% { transform: scale(1) rotateY(0deg); opacity: 1; }
+}
+
+.eth-rarity-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.eth-rarity-Common { background: #475569; color: #f8fafc; }
+.eth-rarity-Rare { background: #2563eb; color: #ffffff; box-shadow: 0 0 12px rgba(37, 99, 235, 0.6); }
+.eth-rarity-Epic { background: #9333ea; color: #ffffff; box-shadow: 0 0 16px rgba(147, 51, 234, 0.7); }
+.eth-rarity-Legendary {
+  background: linear-gradient(90deg, #d97706, #f59e0b, #fde047);
+  color: #78350f;
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.9);
+  animation: ethLegendGlow 1.5s infinite alternate;
+}
+
+@keyframes ethLegendGlow {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.3); }
+}
+
+/* ====================================================
+   ETHITH PROFILE VIEW
+   ==================================================== */
+.eth-profile-screen {
+  padding: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.eth-profile-hero {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,0.06));
+}
+
+[data-theme="dark"] .eth-profile-hero,
+#app[data-theme="dark"] .eth-profile-hero {
+  background: #0f2038;
+  border-color: #1b3252;
+}
+
+.eth-profile-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.eth-profile-change-av-btn {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  background: #2563eb;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.eth-profile-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.eth-pstat-card {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+[data-theme="dark"] .eth-pstat-card,
+#app[data-theme="dark"] .eth-pstat-card {
+  background: #0f2038;
+  border-color: #1b3252;
+}
+
+.eth-pstat-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text, #0e2340);
+}
+
+.eth-pstat-lbl {
+  font-size: 12px;
+  color: var(--muted, #64748b);
+}
+
+/* Chat Locked Emoji Pill */
+.tg-emoji-pill.is-locked {
+  opacity: 0.45;
+  filter: grayscale(0.8);
+  position: relative;
+}
+
+.tg-emoji-pill.is-locked::after {
+  content: "🔒";
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  font-size: 10px;
+}
+
 </style>
 
 <script id="ethith-core-bundle">
@@ -9388,6 +10000,491 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
   return 4;
 };
 
+
+// ====================================================
+// ETHITH MARKET PACKS CATALOG
+// ====================================================
+window.ETHITH_PACKS = [
+  {
+    id: "daily_pack",
+    name: "Kunlik Bepul Pack",
+    type: "daily",
+    price: 0,
+    isFreeDaily: true,
+    icon: "🎁",
+    desc: "Har 24 soatda faqat 1 marta bepul ochiladigan maxsus quti! Ichidan 50 - 250 Coin yoki kutilmagan sovg'alar chiqadi.",
+    badge: "24 SOATDA 1 MARTA",
+    gradient: "linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%)",
+    glowColor: "#34d399",
+    accentColor: "#10b981"
+  },
+  {
+    id: "lucky_prize_pack",
+    name: "Omadli Sovrin Packi",
+    type: "prize",
+    price: 150,
+    icon: "💎",
+    desc: "Katalogdagi barcha o'zbekcha qiziqarli sovg'alar! Oddiy, Kamyob, Epik va eng baland Afsonaviy buyumlar tushishi mumkin.",
+    badge: "OMAD SINOVI",
+    gradient: "linear-gradient(135deg, #b45309 0%, #d97706 50%, #fbbf24 100%)",
+    glowColor: "#fbbf24",
+    accentColor: "#f59e0b"
+  },
+  {
+    id: "chat_emoji_pack",
+    name: "Chat Emojilar Packi",
+    type: "emoji",
+    price: 80,
+    icon: "⚡",
+    desc: "Telegram chat va xabarlarga reaksiya bildirish uchun nodir emojilar! Kamdan-kam uchraydigan Epic va Legendary reaksiyalarni oching.",
+    badge: "CHAT & REAKSIYA",
+    gradient: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #60a5fa 100%)",
+    glowColor: "#60a5fa",
+    accentColor: "#3b82f6"
+  },
+  {
+    id: "boys_avatar_pack",
+    name: "Boys Avatar Pack",
+    type: "avatar_boy",
+    price: 200,
+    icon: "👑",
+    desc: "Yigitlar uchun eksklyuziv fantastik, anime va cyberpunk qahramonlar! Tojdor qirollar, kiber-samuraylar va kosmik jangchilar.",
+    badge: "YIGITLAR AVATARI",
+    gradient: "linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #818cf8 100%)",
+    glowColor: "#818cf8",
+    accentColor: "#6366f1"
+  },
+  {
+    id: "girls_avatar_pack",
+    name: "Girls Avatar Pack",
+    type: "avatar_girl",
+    price: 200,
+    icon: "✨",
+    desc: "Qizlar uchun sehrli, kinomatografik, kosmik va malika qahramonlar! Oltin tojli malikalar, kiber-valkiriyalar va ma'budalar.",
+    badge: "QIZLAR AVATARI",
+    gradient: "linear-gradient(135deg, #be185d 0%, #db2777 50%, #f472b6 100%)",
+    glowColor: "#f472b6",
+    accentColor: "#ec4899"
+  },
+  {
+    id: "neon_frames_pack",
+    name: "Hologram Nameplates & Borders",
+    type: "coming_soon",
+    price: 300,
+    isComingSoon: true,
+    icon: "🔮",
+    desc: "Profil va chat uchun maxsus harakatlanuvchi neon hoshiyalar va nom nishonlari to'plami.",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #334155 0%, #475569 50%, #64748b 100%)",
+    glowColor: "#94a3b8",
+    accentColor: "#64748b"
+  },
+  {
+    id: "audio_fx_pack",
+    name: "VIP Sound FX & Taunts",
+    type: "coming_soon",
+    price: 250,
+    isComingSoon: true,
+    icon: "🎵",
+    desc: "Quiz Battle va chatda raqiblarni hayratga soluvchi maxsus ovoz effektlari va jingle to'plami.",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%)",
+    glowColor: "#a5b4fc",
+    accentColor: "#6366f1"
+  }
+];
+
+// ====================================================
+// CHAT EMOJIS MASTER CATALOG (DEFAULT 3 UNLOCKED + PACK EMOJIS)
+// ====================================================
+window.ETHITH_DEFAULT_FREE_EMOJIS = ["👍", "😊", "❤️"];
+
+window.ETHITH_CHAT_EMOJIS = [
+  // Free default emojis
+  { emoji: "👍", name: "Like (Zo'r)", rarity: "Common", isDefault: true },
+  { emoji: "😊", name: "Tabassum", rarity: "Common", isDefault: true },
+  { emoji: "❤️", name: "Yurak", rarity: "Common", isDefault: true },
+
+  // Common Emojis
+  { emoji: "😂", name: "Qahqaha Kulgi", rarity: "Common" },
+  { emoji: "👏", name: "Qarsaklar", rarity: "Common" },
+  { emoji: "✍️", name: "Dars & Qalam", rarity: "Common" },
+  { emoji: "📚", name: "Kitoblar", rarity: "Common" },
+  { emoji: "👌", name: "A'lo Darajada", rarity: "Common" },
+
+  // Rare Emojis
+  { emoji: "🔥", name: "Olovli Ishtiyoq", rarity: "Rare" },
+  { emoji: "🎉", name: "Bayram & Fireworks", rarity: "Rare" },
+  { emoji: "💡", name: "Kreativ Fikr", rarity: "Rare" },
+  { emoji: "🎯", name: "Aniq Nishon", rarity: "Rare" },
+
+  // Epic Emojis
+  { emoji: "🌟", name: "Yorqin Yulduz", rarity: "Epic" },
+  { emoji: "🤔", name: "Falsafiy O'y", rarity: "Epic" },
+  { emoji: "🚀", name: "Kosmik Raketa", rarity: "Epic" },
+  { emoji: "💯", name: "Yuz Foiz", rarity: "Epic" },
+  { emoji: "⚡", name: "Chaqmoq Kuchi", rarity: "Epic" },
+
+  // Legendary Emojis
+  { emoji: "👑", name: "Oltin Shohona Toj", rarity: "Legendary" },
+  { emoji: "💎", name: "Qimmatbaho Olmos", rarity: "Legendary" },
+  { emoji: "🐉", name: "Afsonaviy Ajdarho", rarity: "Legendary" },
+  { emoji: "🏆", name: "Chempionlik Kubogi", rarity: "Legendary" },
+  { emoji: "🪐", name: "Koinot & Saturn", rarity: "Legendary" }
+];
+
+// ====================================================
+// CINEMATIC & ANIME / SCI-FI FANTASTIC AVATARS (BOYS & GIRLS)
+// ====================================================
+window.ETHITH_AVATARS = [
+  // --- BOYS AVATARS ---
+  // Common Boys
+  {
+    id: "boy_cadet",
+    name: "Kiber Kadet",
+    gender: "boy",
+    rarity: "Common",
+    tagline: "Akademiya talabasi, kiber-ko'zoynakli",
+    bg: "linear-gradient(135deg, #1e293b, #334155)",
+    border: "#64748b",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e293b"/><path d="M50 20 L65 42 L35 42 Z" fill="#38bdf8"/><circle cx="50" cy="52" r="22" fill="#fed7aa"/><rect x="35" y="46" width="30" height="9" rx="4" fill="#0284c7"/><rect x="37" y="48" width="11" height="5" rx="2" fill="#7dd3fc"/><rect x="52" y="48" width="11" height="5" rx="2" fill="#7dd3fc"/><path d="M44 65 Q50 70 56 65" stroke="#ea580c" stroke-width="2.5" fill="none"/><path d="M28 85 C28 72 38 68 50 68 C62 68 72 72 72 85 Z" fill="#0f172a"/><circle cx="50" cy="80" r="4" fill="#38bdf8"/></svg>'
+  },
+  {
+    id: "boy_gamer",
+    name: "Neon Geymer",
+    gender: "boy",
+    rarity: "Common",
+    tagline: "Neon quloqchinli anime geymer",
+    bg: "linear-gradient(135deg, #0f172a, #1e1b4b)",
+    border: "#6366f1",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#0f172a"/><circle cx="50" cy="50" r="24" fill="#ffedd5"/><path d="M30 40 C30 24 70 24 70 40" stroke="#818cf8" stroke-width="6" fill="none"/><rect x="24" y="40" width="9" height="18" rx="4" fill="#6366f1"/><rect x="67" y="40" width="9" height="18" rx="4" fill="#6366f1"/><circle cx="43" cy="52" r="3.5" fill="#312e81"/><circle cx="57" cy="52" r="3.5" fill="#312e81"/><path d="M46 63 Q50 67 54 63" stroke="#f43f5e" stroke-width="2" fill="none"/><path d="M26 88 C26 74 38 72 50 72 C62 72 74 74 74 88 Z" fill="#4338ca"/></svg>'
+  },
+  {
+    id: "boy_scout",
+    name: "Sayohat Qahramoni",
+    gender: "boy",
+    rarity: "Common",
+    tagline: "Futuristik kaskali tadqiqotchi",
+    bg: "linear-gradient(135deg, #064e3b, #047857)",
+    border: "#10b981",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#064e3b"/><circle cx="50" cy="50" r="22" fill="#fde68a"/><path d="M32 36 C35 22 65 22 68 36 Z" fill="#059669"/><rect x="36" y="46" width="10" height="6" rx="2" fill="#10b981"/><rect x="54" y="46" width="10" height="6" rx="2" fill="#10b981"/><path d="M45 64 Q50 68 55 64" stroke="#d97706" stroke-width="2.5" fill="none"/><path d="M25 86 C25 74 36 70 50 70 C64 70 75 74 75 86 Z" fill="#047857"/><circle cx="50" cy="78" r="4" fill="#34d399"/></svg>'
+  },
+  // Rare Boys
+  {
+    id: "boy_ninja",
+    name: "Kiber Shinobi (Ninja)",
+    gender: "boy",
+    rarity: "Rare",
+    tagline: "Kripto niqobli tungi soyachi",
+    bg: "linear-gradient(135deg, #18181b, #3f3f46)",
+    border: "#a1a1aa",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#18181b"/><circle cx="50" cy="50" r="23" fill="#27272a"/><path d="M30 48 L70 48 L65 72 L35 72 Z" fill="#09090b" stroke="#71717a" stroke-width="1.5"/><ellipse cx="43" cy="44" rx="5" ry="2.5" fill="#e11d48"/><ellipse cx="57" cy="44" rx="5" ry="2.5" fill="#e11d48"/><rect x="34" y="32" width="32" height="6" rx="2" fill="#71717a"/><circle cx="50" cy="35" r="2" fill="#f43f5e"/><path d="M24 88 C24 75 37 72 50 72 C63 72 76 75 76 88 Z" fill="#27272a"/><path d="M42 72 L50 82 L58 72 Z" fill="#e11d48"/></svg>'
+  },
+  {
+    id: "boy_mecha",
+    name: "Titan Mecha Uchuvchi",
+    gender: "boy",
+    rarity: "Rare",
+    tagline: "Holografik nishonli zirhli jangchi",
+    bg: "linear-gradient(135deg, #1e3a8a, #1d4ed8)",
+    border: "#3b82f6",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e3a8a"/><polygon points="50,18 76,36 70,68 50,82 30,68 24,36" fill="#172554" stroke="#60a5fa" stroke-width="2"/><path d="M34 46 L66 46 L60 56 L40 56 Z" fill="#38bdf8" opacity="0.9"/><circle cx="50" cy="51" r="3" fill="#ffffff"/><path d="M50 25 L50 40" stroke="#93c5fd" stroke-width="2"/><circle cx="50" cy="30" r="2" fill="#ef4444"/><path d="M22 88 C22 75 36 72 50 72 C64 72 78 75 78 88 Z" fill="#1e40af"/></svg>'
+  },
+  {
+    id: "boy_samurai",
+    name: "Neo Samuray",
+    gender: "boy",
+    rarity: "Rare",
+    tagline: "Lazer tig'li yapon kiber-ritsari",
+    bg: "linear-gradient(135deg, #701a75, #a21caf)",
+    border: "#e879f9",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#701a75"/><path d="M28 34 Q50 16 72 34 L66 44 L34 44 Z" fill="#e879f9"/><circle cx="50" cy="52" r="21" fill="#fed7aa"/><polygon points="50,22 45,34 55,34" fill="#facc15"/><rect x="36" y="47" width="28" height="8" rx="3" fill="#4a044e"/><circle cx="43" cy="51" r="2.5" fill="#f43f5e"/><circle cx="57" cy="51" r="2.5" fill="#f43f5e"/><path d="M36 62 L64 62 L60 72 L40 72 Z" fill="#2e1065"/><path d="M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z" fill="#581c87"/></svg>'
+  },
+  // Epic Boys
+  {
+    id: "boy_dragon_lord",
+    name: "Kiber Ajdarho Hukmdori",
+    gender: "boy",
+    rarity: "Epic",
+    tagline: "Qizil plazma shoxli qadimgi kiborg",
+    bg: "linear-gradient(135deg, #7f1d1d, #b91c1c)",
+    border: "#f87171",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#7f1d1d"/><path d="M32 20 L44 34 L36 38 Z" fill="#f87171"/><path d="M68 20 L56 34 L64 38 Z" fill="#f87171"/><circle cx="50" cy="52" r="23" fill="#1c1917" stroke="#ef4444" stroke-width="2"/><ellipse cx="42" cy="48" rx="6" ry="3" fill="#facc15"/><ellipse cx="58" cy="48" rx="6" ry="3" fill="#facc15"/><circle cx="42" cy="48" r="2" fill="#000"/><circle cx="58" cy="48" r="2" fill="#000"/><path d="M38 64 L50 72 L62 64" stroke="#f87171" stroke-width="3" fill="none"/><path d="M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/></svg>'
+  },
+  {
+    id: "boy_quantum",
+    name: "Kvant Sentineli",
+    gender: "boy",
+    rarity: "Epic",
+    tagline: "Vaqt to'lqinlari va koinot himoyachisi",
+    bg: "linear-gradient(135deg, #083344, #0e7490)",
+    border: "#22d3ee",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#083344"/><circle cx="50" cy="50" r="26" fill="#164e63" stroke="#22d3ee" stroke-width="2"/><circle cx="50" cy="50" r="14" fill="#06b6d4" opacity="0.8"/><circle cx="50" cy="50" r="8" fill="#cffafe"/><path d="M26 50 L74 50" stroke="#a5f3fc" stroke-width="2" stroke-dasharray="3 3"/><path d="M50 26 L50 74" stroke="#a5f3fc" stroke-width="2" stroke-dasharray="3 3"/><polygon points="50,15 54,24 64,24 56,30 59,40 50,34 41,40 44,30 36,24 46,24" fill="#22d3ee"/><path d="M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z" fill="#0e7490"/></svg>'
+  },
+  // Legendary Boys
+  {
+    id: "boy_emperor",
+    name: "Oltin Tojdor Imperator",
+    gender: "boy",
+    rarity: "Legendary",
+    tagline: "Koinot hukmdori, yonuvchi oltin toj sohibi",
+    bg: "linear-gradient(135deg, #78350f, #d97706, #f59e0b)",
+    border: "#fde047",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#78350f"/><circle cx="50" cy="50" r="44" fill="none" stroke="#fde047" stroke-width="1.5" stroke-dasharray="4 2"/><polygon points="26,38 34,20 50,32 66,20 74,38 50,44" fill="#facc15" stroke="#fffbeb" stroke-width="2"/><circle cx="34" cy="20" r="3.5" fill="#ef4444"/><circle cx="50" cy="32" r="4" fill="#3b82f6"/><circle cx="66" cy="20" r="3.5" fill="#ef4444"/><circle cx="50" cy="56" r="20" fill="#fef08a"/><ellipse cx="43" cy="53" rx="4" ry="2" fill="#78350f"/><ellipse cx="57" cy="53" rx="4" ry="2" fill="#78350f"/><path d="M44 65 Q50 70 56 65" stroke="#b45309" stroke-width="2.5" fill="none"/><path d="M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z" fill="#b45309" stroke="#fde047" stroke-width="2"/><circle cx="50" cy="80" r="5" fill="#facc15"/></svg>'
+  },
+  {
+    id: "boy_godspeed",
+    name: "Kosmik Chaqmoq Qiroli",
+    gender: "boy",
+    rarity: "Legendary",
+    tagline: "Yorug'lik tezligidagi afsonaviy kiborq",
+    bg: "linear-gradient(135deg, #312e81, #4338ca, #6366f1)",
+    border: "#a5b4fc",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#312e81"/><path d="M54 14 L36 44 L48 44 L42 78 L64 40 L52 40 Z" fill="#fde047" stroke="#ffffff" stroke-width="2"/><circle cx="50" cy="50" r="22" fill="#1e1b4b" opacity="0.6"/><ellipse cx="43" cy="48" rx="5" ry="3" fill="#67e8f9"/><ellipse cx="57" cy="48" rx="5" ry="3" fill="#67e8f9"/><path d="M22 88 C22 75 35 72 50 72 C65 72 78 75 78 88 Z" fill="#4338ca" stroke="#fde047" stroke-width="1.5"/></svg>'
+  },
+
+  // --- GIRLS AVATARS ---
+  // Common Girls
+  {
+    id: "girl_blossom",
+    name: "Neon Sakura Qizi",
+    gender: "girl",
+    rarity: "Common",
+    tagline: "Anime uslubidagi binafsha sochli talaba",
+    bg: "linear-gradient(135deg, #4a044e, #86198f)",
+    border: "#f472b6",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#4a044e"/><path d="M26 34 C26 14 74 14 74 34 L76 68 L70 70 L68 44 L32 44 L30 70 L24 68 Z" fill="#ec4899"/><circle cx="50" cy="50" r="20" fill="#fed7aa"/><circle cx="43" cy="50" r="3" fill="#be185d"/><circle cx="57" cy="50" r="3" fill="#be185d"/><path d="M45 62 Q50 66 55 62" stroke="#db2777" stroke-width="2" fill="none"/><path d="M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z" fill="#9d174d"/><circle cx="50" cy="78" r="3" fill="#f472b6"/></svg>'
+  },
+  {
+    id: "girl_scout",
+    name: "Kiber Izquvar",
+    gender: "girl",
+    rarity: "Common",
+    tagline: "Zamonaviy kiber-diadema kiygan qahramon",
+    bg: "linear-gradient(135deg, #134e4a, #0d9488)",
+    border: "#2dd4bf",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#134e4a"/><path d="M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z" fill="#14b8a6"/><circle cx="50" cy="50" r="20" fill="#fde68a"/><rect x="34" y="34" width="32" height="5" rx="2" fill="#2dd4bf"/><circle cx="43" cy="49" r="3" fill="#0f766e"/><circle cx="57" cy="49" r="3" fill="#0f766e"/><path d="M46 62 Q50 65 54 62" stroke="#0d9488" stroke-width="2" fill="none"/><path d="M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z" fill="#0f766e"/></svg>'
+  },
+  {
+    id: "girl_scholar",
+    name: "Sehrli Kitobxon",
+    gender: "girl",
+    rarity: "Common",
+    tagline: "Yulduzli ko'zli a'lochi o'quvchi qiz",
+    bg: "linear-gradient(135deg, #1e1b4b, #3730a3)",
+    border: "#818cf8",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e1b4b"/><path d="M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z" fill="#6366f1"/><circle cx="50" cy="51" r="20" fill="#fed7aa"/><circle cx="43" cy="49" r="3" fill="#312e81"/><circle cx="57" cy="49" r="3" fill="#312e81"/><circle cx="44" cy="48" r="1" fill="#fff"/><circle cx="58" cy="48" r="1" fill="#fff"/><path d="M45 62 Q50 66 55 62" stroke="#4f46e5" stroke-width="2" fill="none"/><path d="M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z" fill="#3730a3"/></svg>'
+  },
+  // Rare Girls
+  {
+    id: "girl_valkyrie",
+    name: "Kiber Valkiriya",
+    gender: "girl",
+    rarity: "Rare",
+    tagline: "Oq qanotli kelajak himoyachisi",
+    bg: "linear-gradient(135deg, #1e293b, #0f172a)",
+    border: "#38bdf8",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e293b"/><path d="M20 30 L35 44 L25 54 Z" fill="#38bdf8" opacity="0.8"/><path d="M80 30 L65 44 L75 54 Z" fill="#38bdf8" opacity="0.8"/><circle cx="50" cy="50" r="21" fill="#ffedd5"/><rect x="32" y="34" width="36" height="6" rx="2" fill="#0284c7"/><circle cx="50" cy="37" r="3" fill="#facc15"/><ellipse cx="43" cy="49" rx="3.5" ry="2.5" fill="#0369a1"/><ellipse cx="57" cy="49" rx="3.5" ry="2.5" fill="#0369a1"/><path d="M45 62 Q50 66 55 62" stroke="#0284c7" stroke-width="2" fill="none"/><path d="M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z" fill="#0369a1"/></svg>'
+  },
+  {
+    id: "girl_priestess",
+    name: "Quyosh Kohinasi",
+    gender: "girl",
+    rarity: "Rare",
+    tagline: "Oltin nurlar va sehrli doira egasi",
+    bg: "linear-gradient(135deg, #854d0e, #ca8a04)",
+    border: "#fde047",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#854d0e"/><circle cx="50" cy="50" r="36" fill="none" stroke="#fef08a" stroke-width="2" stroke-dasharray="4 3"/><circle cx="50" cy="50" r="21" fill="#fef08a"/><path d="M28 32 C35 18 65 18 72 32 L70 54 L30 54 Z" fill="#eab308"/><ellipse cx="43" cy="48" rx="4" ry="2.5" fill="#713f12"/><ellipse cx="57" cy="48" rx="4" ry="2.5" fill="#713f12"/><path d="M45 62 Q50 66 55 62" stroke="#a16207" stroke-width="2" fill="none"/><path d="M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z" fill="#a16207" stroke="#fde047" stroke-width="1.5"/></svg>'
+  },
+  // Epic Girls
+  {
+    id: "girl_empress_lotus",
+    name: "Kiber Lotus Malakasi",
+    gender: "girl",
+    rarity: "Epic",
+    tagline: "Neon binafsha tojli kiber-xonim",
+    bg: "linear-gradient(135deg, #581c87, #7e22ce)",
+    border: "#c084fc",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#581c87"/><polygon points="34,36 42,22 50,30 58,22 66,36 50,42" fill="#c084fc" stroke="#f5d0fe" stroke-width="1.5"/><circle cx="50" cy="52" r="21" fill="#fae8ff"/><ellipse cx="43" cy="50" rx="4" ry="2.5" fill="#6b21a8"/><ellipse cx="57" cy="50" rx="4" ry="2.5" fill="#6b21a8"/><path d="M45 64 Q50 68 55 64" stroke="#a855f7" stroke-width="2.5" fill="none"/><path d="M24 88 C24 74 36 70 50 70 C64 70 76 74 76 88 Z" fill="#6b21a8" stroke="#c084fc" stroke-width="2"/></svg>'
+  },
+  {
+    id: "girl_galaxy",
+    name: "Galaktika Kamonchisi",
+    gender: "girl",
+    rarity: "Epic",
+    tagline: "Yulduz changi va lazer kamonli qahramon",
+    bg: "linear-gradient(135deg, #022c22, #047857)",
+    border: "#34d399",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#022c22"/><circle cx="50" cy="50" r="40" fill="none" stroke="#34d399" stroke-width="1.5" stroke-dasharray="6 3"/><circle cx="50" cy="50" r="21" fill="#ecfdf5"/><path d="M30 36 C35 20 65 20 70 36 L72 64 L28 64 Z" fill="#059669"/><rect x="36" y="46" width="28" height="6" rx="2" fill="#10b981"/><circle cx="43" cy="49" r="2" fill="#ffffff"/><circle cx="57" cy="49" r="2" fill="#ffffff"/><path d="M24 88 C24 74 36 70 50 70 C64 70 76 74 76 88 Z" fill="#065f46" stroke="#34d399" stroke-width="1.5"/></svg>'
+  },
+  // Legendary Girls
+  {
+    id: "girl_queen",
+    name: "Oltin Tojdor Qirolicha",
+    gender: "girl",
+    rarity: "Legendary",
+    tagline: "Shon-shuhrat va qimmatbaho olmos toj egasi",
+    bg: "linear-gradient(135deg, #831843, #be185d, #f43f5e)",
+    border: "#fde047",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#831843"/><circle cx="50" cy="50" r="44" fill="none" stroke="#fde047" stroke-width="2" stroke-dasharray="4 2"/><polygon points="26,36 34,16 50,28 66,16 74,36 50,42" fill="#facc15" stroke="#fffbeb" stroke-width="2"/><circle cx="34" cy="16" r="3.5" fill="#f43f5e"/><circle cx="50" cy="28" r="4" fill="#a855f7"/><circle cx="66" cy="16" r="3.5" fill="#f43f5e"/><circle cx="50" cy="54" r="20" fill="#fef08a"/><ellipse cx="43" cy="51" rx="4" ry="2" fill="#831843"/><ellipse cx="57" cy="51" rx="4" ry="2" fill="#831843"/><path d="M44 64 Q50 69 56 64" stroke="#e11d48" stroke-width="2.5" fill="none"/><path d="M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z" fill="#9d174d" stroke="#fde047" stroke-width="2"/><circle cx="50" cy="78" r="4.5" fill="#facc15"/></svg>'
+  },
+  {
+    id: "girl_goddess",
+    name: "Kosmik Nur Ma'budasi",
+    gender: "girl",
+    rarity: "Legendary",
+    tagline: "Abadiy koinot nurlari va sehrli toj sohibasi",
+    bg: "linear-gradient(135deg, #0c4a6e, #0284c7, #38bdf8)",
+    border: "#7dd3fc",
+    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#0c4a6e"/><path d="M50 8 L55 24 L72 24 L58 34 L64 50 L50 40 L36 50 L42 34 L28 24 L45 24 Z" fill="#fde047"/><circle cx="50" cy="54" r="21" fill="#e0f2fe"/><ellipse cx="43" cy="51" rx="4" ry="2.5" fill="#0369a1"/><ellipse cx="57" cy="51" rx="4" ry="2.5" fill="#0369a1"/><path d="M44 64 Q50 68 56 64" stroke="#0284c7" stroke-width="2.5" fill="none"/><path d="M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z" fill="#075985" stroke="#7dd3fc" stroke-width="2"/></svg>'
+  }
+];
+
+// ====================================================
+// UNIVERSAL AVATAR RENDERER
+// ====================================================
+window.ETHITH_RENDER_USER_AVATAR = function(user, size, extraClass, extraStyle) {
+  var s = size || 36;
+  var cls = extraClass || "";
+  var st = extraStyle || "";
+  var u = user || {};
+
+  var avatarObj = null;
+  if (u.avatar) {
+    if (typeof u.avatar === "string") {
+      avatarObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === u.avatar; });
+    } else if (u.avatar.id) {
+      avatarObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === u.avatar.id; }) || u.avatar;
+    }
+  }
+
+  if (avatarObj && avatarObj.svg) {
+    return '<div class="eth-avatar-circle ' + cls + '" style="width:' + s + 'px;height:' + s + 'px;border-radius:50%;overflow:hidden;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.18);display:inline-flex;align-items:center;justify-content:center;background:' + (avatarObj.bg || '#1e293b') + ';border:2px solid ' + (avatarObj.border || 'rgba(255,255,255,0.25)') + ';' + st + '" title="' + (avatarObj.name || '') + '">' +
+      avatarObj.svg +
+    '</div>';
+  }
+
+  // Fallback: Initial letter
+  var initial = (u.name && u.name.trim()) ? u.name.trim().charAt(0).toUpperCase() : "U";
+  return '<div class="eth-avatar-circle eth-avatar-fallback ' + cls + '" style="width:' + s + 'px;height:' + s + 'px;border-radius:50%;background:linear-gradient(135deg, #2563eb, #1d4ed8);color:#ffffff;font-weight:800;font-size:' + Math.round(s * 0.45) + 'px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;border:2px solid rgba(255,255,255,0.2);box-shadow:0 2px 6px rgba(0,0,0,0.15);' + st + '">' +
+    initial +
+  '</div>';
+};
+
+// ====================================================
+// PACK OPENING DROP LOGIC (RNG)
+// ====================================================
+window.ETHITH_OPEN_PACK = function(packId, user) {
+  var pack = (window.ETHITH_PACKS || []).find(function(p) { return p.id === packId; });
+  if (!pack) return null;
+
+  var rand = Math.random() * 100;
+  var rarity = "Common";
+  if (rand < 5) rarity = "Legendary";
+  else if (rand < 20) rarity = "Epic";
+  else if (rand < 50) rarity = "Rare";
+  else rarity = "Common";
+
+  if (pack.type === "daily") {
+    var roll = Math.random() * 100;
+    if (roll < 70) {
+      var coinAmounts = [50, 75, 100, 120, 150, 200, 250];
+      var amount = coinAmounts[Math.floor(Math.random() * coinAmounts.length)];
+      return {
+        type: "coins",
+        rarity: (amount >= 200 ? "Epic" : (amount >= 120 ? "Rare" : "Common")),
+        amount: amount,
+        name: amount + " ETHITH Coin!",
+        desc: "Hamyoningizga darhol qo'shildi!",
+        icon: "🪙"
+      };
+    } else if (roll < 90) {
+      var pz = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(rarity) : null;
+      return {
+        type: "prize",
+        rarity: (pz ? pz.rarity : rarity),
+        item: pz,
+        name: pz ? pz.name : "Kutilmagan Sovg'a",
+        desc: pz ? pz.desc : "Yangi sovrin!",
+        icon: pz ? pz.icon : "🎁"
+      };
+    } else {
+      var unlEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
+      var em = unlEmojis[Math.floor(Math.random() * unlEmojis.length)];
+      return {
+        type: "emoji",
+        rarity: em.rarity,
+        emoji: em.emoji,
+        name: em.emoji + " " + em.name,
+        desc: "Telegram chat va reaksiyalar uchun ochildi!",
+        icon: em.emoji
+      };
+    }
+  }
+
+  if (pack.type === "prize") {
+    var pz = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(rarity) : null;
+    return {
+      type: "prize",
+      rarity: (pz ? pz.rarity : rarity),
+      item: pz,
+      name: pz ? pz.name : "Omadli Sovg'a",
+      desc: pz ? pz.desc : "Ajoyib o'zbekcha sovrin!",
+      icon: pz ? pz.icon : "💎",
+      coinPrice: pz ? pz.price : 100
+    };
+  }
+
+  if (pack.type === "emoji") {
+    var matching = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) {
+      return !e.isDefault && (e.rarity === rarity || !rarity);
+    });
+    if (!matching.length) matching = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
+    var chosen = matching[Math.floor(Math.random() * matching.length)];
+    return {
+      type: "emoji",
+      rarity: chosen.rarity,
+      emoji: chosen.emoji,
+      name: chosen.emoji + " " + chosen.name,
+      desc: "Telegram chat va barcha reaksiyalarda endi erkin foydalanishingiz mumkin!",
+      icon: chosen.emoji
+    };
+  }
+
+  if (pack.type === "avatar_boy") {
+    var boys = (window.ETHITH_AVATARS || []).filter(function(a) {
+      return a.gender === "boy" && (a.rarity === rarity || !rarity);
+    });
+    if (!boys.length) boys = (window.ETHITH_AVATARS || []).filter(function(a) { return a.gender === "boy"; });
+    var chosen = boys[Math.floor(Math.random() * boys.length)];
+    return {
+      type: "avatar",
+      rarity: chosen.rarity,
+      avatar: chosen,
+      name: chosen.name,
+      desc: chosen.tagline,
+      icon: chosen.name
+    };
+  }
+
+  if (pack.type === "avatar_girl") {
+    var girls = (window.ETHITH_AVATARS || []).filter(function(a) {
+      return a.gender === "girl" && (a.rarity === rarity || !rarity);
+    });
+    if (!girls.length) girls = (window.ETHITH_AVATARS || []).filter(function(a) { return a.gender === "girl"; });
+    var chosen = girls[Math.floor(Math.random() * girls.length)];
+    return {
+      type: "avatar",
+      rarity: chosen.rarity,
+      avatar: chosen,
+      name: chosen.name,
+      desc: chosen.tagline,
+      icon: chosen.name
+    };
+  }
+
+  return null;
+};
 
 
 
@@ -13137,7 +14234,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
   // ====================================================
   // ETHITH AUTO-UPDATE & CACHE-BUSTING ENGINE
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.2144";
+  window.ETHITH_BUILD_VERSION = "2026.10.17.2250";
 
   function checkAppVersion() {
     if (typeof fetch === 'undefined') return;
@@ -13708,14 +14805,14 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
     safe = safe.replace(/^(\*{3,}|-{3,})$/gm, '<hr class="ai-divider">');
 
     // Pedagogical Badges & Labels:
-    safe = safe.replace(/\*\*(?:Meaning|Ma'nosi):\*\*/gi, '<span class="ai-badge ai-badge-meaning">Meaning</span>');
+    safe = safe.replace(/\*\*(?:Meaning|Ma\'nosi):\*\*/gi, '<span class="ai-badge ai-badge-meaning">Meaning</span>');
     safe = safe.replace(/\*\*(?:Example|Misol):\*\*/gi, '<span class="ai-badge ai-badge-example">Example</span>');
     safe = safe.replace(/\*\*(?:IELTS Tip|Tip|Maslahat):\*\*/gi, '<span class="ai-badge ai-badge-tip">IELTS Tip</span>');
     safe = safe.replace(/\*\*(?:Grammar Alert|Grammar Rule|Note):\*\*/gi, '<span class="ai-badge ai-badge-alert">Grammar Alert</span>');
     safe = safe.replace(/\*\*(?:Collocations|Collocation):\*\*/gi, '<span class="ai-badge ai-badge-colloc">Collocations</span>');
     safe = safe.replace(/\*\*(?:Synonyms|Synonym):\*\*/gi, '<span class="ai-badge ai-badge-syn">Synonyms</span>');
 
-    safe = safe.replace(/^(Meaning|Ma'nosi):\s*/gmi, '<span class="ai-badge ai-badge-meaning">Meaning</span> ');
+    safe = safe.replace(/^(Meaning|Ma\'nosi):\s*/gmi, '<span class="ai-badge ai-badge-meaning">Meaning</span> ');
     safe = safe.replace(/^(Example|Misol):\s*/gmi, '<span class="ai-badge ai-badge-example">Example</span> ');
     safe = safe.replace(/^(IELTS Tip|Tip|Maslahat):\s*/gmi, '<span class="ai-badge ai-badge-tip">IELTS Tip</span> ');
     safe = safe.replace(/^(Grammar Alert|Grammar Rule|Note):\s*/gmi, '<span class="ai-badge ai-badge-alert">Grammar Alert</span> ');
@@ -14698,7 +15795,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
             '  <b>' + esc(m.replyTo.senderName) + '</b>' +
             '  <span>' + esc(m.replyTo.text.slice(0, 60)) + '</span>' +
             '</div>' : '') +
-          (!isOwn ? '<div class="tg-msg-sender">' + esc(m.senderName) + '</div>' : '') +
+          ((!isOwn ? '<div class="tg-msg-sender" style="display:flex;align-items:center;gap:6px">' + (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR({ name: m.senderName, avatar: m.senderAvatar }, 22) : '') + '<span>' + esc(m.senderName) + '</span></div>' : '')) +
           '    <div class="tg-msg-text">' + esc(m.text) + '</div>' +
           '    <div class="tg-msg-meta">' + m.time + (isOwn ? ' ✓✓' : '') + '</div>' +
           (reactionsList.length > 0 ?
@@ -14725,22 +15822,17 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
       '  </div>' +
       '  <div class="tg-chat-emoji-tray" id="tgChatEmojiTray">' +
       '    <span style="font-size:11.5px;color:var(--muted);font-weight:700;margin-right:2px">Emojis:</span>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="😊">😊</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="😂">😂</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="👍">👍</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="❤️">❤️</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🔥">🔥</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="👏">👏</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🎉">🎉</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="✍️">✍️</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="📚">📚</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="💡">💡</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🎯">🎯</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🌟">🌟</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🤔">🤔</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🚀">🚀</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="💯">💯</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="👌">👌</button>' +
+      (function() {
+        var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍','😊','❤️'];
+        return (window.ETHITH_CHAT_EMOJIS || []).map(function(item) {
+          var isUnlocked = item.isDefault || (myUnlocked.indexOf(item.emoji) !== -1);
+          if (isUnlocked) {
+            return '<button type="button" class="tg-emoji-pill" data-insert-em="' + item.emoji + '" title="' + esc(item.name) + '">' + item.emoji + '</button>';
+          } else {
+            return '<button type="button" class="tg-emoji-pill is-locked" data-locked-em="' + item.emoji + '" title="' + esc(item.name) + ' (Qulflangan: Marketdan oching)">' + item.emoji + '</button>';
+          }
+        }).join('');
+      })() +
       '  </div>' +
       '</div>';
 
@@ -15647,7 +16739,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
       if (file.name.toLowerCase().endsWith('.pdf') || file.type === 'application/pdf') {
         loadPdfJs(function(pdfLib) {
           if (!pdfLib) {
-            alert("PDF kutubxonasi yuklanmadi. Iltimos, fayl matnini to'g'ridan-to'g'ri nusxalab joylashtiring yoki .txt fayl yuklang.");
+            alert("PDF kutubxonasi yuklanmadi. Iltimos, fayl matnini to\'g'ridan-to\'g'ri nusxalab joylashtiring yoki .txt fayl yuklang.");
             return;
           }
           var reader = new FileReader();
@@ -15663,7 +16755,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
               }
               cb(fullText);
             }).catch(function(err) {
-              alert("PDF o'qishda xatolik yuz berdi: " + (err.message || err));
+              alert("PDF o\'qishda xatolik yuz berdi: " + (err.message || err));
             });
           };
           reader.readAsArrayBuffer(file);
@@ -16163,7 +17255,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
               extractFileText(file, function(text) {
                 bulkTextCache = text;
                 renderModal();
-                alert("Savollar fayli muvaffaqiyatli o'qildi! (" + file.name + ")");
+                alert("Savollar fayli muvaffaqiyatli o\'qildi! (" + file.name + ")");
               });
             }
           }
@@ -16180,7 +17272,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
               bulkAnsCache = text;
               var aEl = overlay.querySelector('#bulkAnswerInput');
               if (aEl) aEl.value = text;
-              alert("Javoblar kaliti fayli muvaffaqiyatli o'qildi!");
+              alert("Javoblar kaliti fayli muvaffaqiyatli o\'qildi!");
             });
           }
         };
@@ -16247,7 +17339,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
                 renderModal();
                 alert("Mahalliy tahlil orqali " + fallbackExtracted.length + " ta savol kiritildi.");
               } else {
-                alert("AI savollarni ajrata olmadi. Iltimos, fayl yoki matnni tekshirib qaytadan urinib ko'ring.");
+                alert("AI savollarni ajrata olmadi. Iltimos, fayl yoki matnni tekshirib qaytadan urinib ko\'ring.");
               }
             }
           } catch(err) {
@@ -16257,7 +17349,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
             if (fallback2.length > 0) {
               questionsList = questionsList.concat(fallback2);
               renderModal();
-              alert("AI bandligi sabab mahalliy tahlil ishlatildi: " + fallback2.length + " ta savol qo'shildi!");
+              alert("AI bandligi sabab mahalliy tahlil ishlatildi: " + fallback2.length + " ta savol qo\'shildi!");
             } else {
               alert("Xatolik yuz berdi: " + (err.message || err));
             }
@@ -16287,11 +17379,11 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
           var ansMap = parseSmartAnswers(aText);
           var extracted = parseQuestionsText(qText, ansMap);
           if (extracted.length === 0) {
-            alert("Savollarni ajratib bo'lmadi. Savollar raqamlar bilan boshlanganiga ishonch hosil qiling (masalan: 1. yoki 1) )");
+            alert("Savollarni ajratib bo\'lmadi. Savollar raqamlar bilan boshlanganiga ishonch hosil qiling (masalan: 1. yoki 1) )");
             return;
           }
           questionsList = questionsList.concat(extracted);
-          alert(extracted.length + " ta savol muvaffaqiyatli aniqlandi va imtihonga qo'shildi!");
+          alert(extracted.length + " ta savol muvaffaqiyatli aniqlandi va imtihonga qo\'shildi!");
           renderModal();
         };
       }
@@ -16307,7 +17399,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
           var d = document.getElementById('mcOptD').value.trim();
           var ansKey = document.getElementById('mcAnsSelect').value;
           if (!qText || !a || !b) {
-            alert("Iltimos, savol matni va kamida A hamda B variantlarini to'ldiring!");
+            alert("Iltimos, savol matni va kamida A hamda B variantlarini to\'ldiring!");
             return;
           }
           var opts = [a, b, c || "None", d || "None"];
@@ -16331,7 +17423,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
           var qText = document.getElementById('wQText').value.trim();
           var ans = document.getElementById('wAnsText').value.trim();
           if (!qText || !ans) {
-            alert("Iltimos, yozma savol matni va kutilgan to'g'ri javobni kiriting!");
+            alert("Iltimos, yozma savol matni va kutilgan to\'g'ri javobni kiriting!");
             return;
           }
           questionsList.push({
@@ -16381,7 +17473,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
       var clearAllBtn = overlay.querySelector('#clearAllQBtn');
       if (clearAllBtn) {
         clearAllBtn.onclick = function() {
-          if (confirm("Barcha kiritilgan savollarni o'chirmoqchimisiz?")) {
+          if (confirm("Barcha kiritilgan savollarni o\'chirmoqchimisiz?")) {
             questionsList = [];
             renderModal();
           }
@@ -16395,7 +17487,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
           return;
         }
         if (questionsList.length === 0) {
-          alert("Iltimos, kamida bitta savol qo'shing!");
+          alert("Iltimos, kamida bitta savol qo\'shing!");
           return;
         }
 
@@ -16428,7 +17520,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
         }
 
         overlay.remove();
-        alert("Imtihon muvaffaqiyatli yaratildi!\nO'quvchilar uchun 6 xonali maxsus kod: " + code);
+        alert("Imtihon muvaffaqiyatli yaratildi!\nO\'quvchilar uchun 6 xonali maxsus kod: " + code);
         if (isLevelTransition && levelFrom) {
           renderLevelsView(container, levelFrom);
         } else {
@@ -16496,7 +17588,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
       }
 
       if (!exam) {
-        alert("Bunday 6 xonali kodga ega imtihon topilmadi! Kodni to'g'ri kiritganingizni tekshiring.");
+        alert("Bunday 6 xonali kodga ega imtihon topilmadi! Kodni to\'g'ri kiritganingizni tekshiring.");
         return;
       }
 
@@ -16725,7 +17817,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
         if (!isFs) {
           ensureFullscreen();
           if (!isExamLocked) {
-            triggerInfraction("O'quvchi Escape (Esc) tugmasini bosib ekrandan chiqishga urindi!");
+            triggerInfraction("O\'quvchi Escape (Esc) tugmasini bosib ekrandan chiqishga urindi!");
           }
         } else {
           requestKeyboardLock();
@@ -16737,19 +17829,19 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
         var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
         if (!isFs && !isExamLocked) {
           ensureFullscreen();
-          triggerInfraction("O'quvchi brauzer o'lchamini o'zgartirib chiqishga urindi!");
+          triggerInfraction("O\'quvchi brauzer o\'lchamini o\'zgartirib chiqishga urindi!");
         }
       }
 
       // 3. Anti-Cheat: Tab Switch & Window Blur Detection (students only)
       function onWindowBlur() {
         if (isTeacher || isExamFinished || isExamLocked) return;
-        triggerInfraction("Brauzer oynasi tark etildi yoki boshqa dasturga o'tildi!");
+        triggerInfraction("Brauzer oynasi tark etildi yoki boshqa dasturga o\'tildi!");
       }
       function onVisChange() {
         if (isTeacher || isExamFinished || isExamLocked) return;
         if (document.hidden) {
-          triggerInfraction("Boshqa tabga o'tildi yoki oyna kichraytirildi!");
+          triggerInfraction("Boshqa tabga o\'tildi yoki oyna kichraytirildi!");
         }
       }
 
@@ -16843,7 +17935,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
           } catch(err) {}
           ensureFullscreen();
           if (!isExamLocked) {
-            triggerInfraction("O'quvchi " + blockedKeyName + " tugmasini bosib ekranni o'zgartirib firibgarlik qilmoqchi bo'ldi!");
+            triggerInfraction("O\'quvchi " + blockedKeyName + " tugmasini bosib ekranni o\'zgartirib firibgarlik qilmoqchi bo\'ldi!");
           }
           return false;
         }
@@ -17010,14 +18102,14 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
               }
               if (noFaceTicks >= 12) {
                 if (angleBadge) {
-                  angleBadge.textContent = "Yuz yo'q";
+                  angleBadge.textContent = "Yuz yo\'q";
                   angleBadge.className = 'eth-cam-badge danger';
                 }
                 if (dot) dot.className = 'eth-cam-dot danger';
                 if (oval) oval.className = 'eth-cam-target-oval danger';
                 var missingSnap = captureProctorSnapshot();
                 playTitTitAlarm(6);
-                triggerInfraction("Kamerada o'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro'parasida o'tiring)", missingSnap);
+                triggerInfraction("Kamerada o\'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro\'parasida o\'tiring)", missingSnap);
               }
               return;
             }
@@ -17180,7 +18272,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
             }
 
             // Violation evaluation:
-            // Normal (< 50°) -> Green ("To'g'ri: XX°")
+            // Normal (< 50°) -> Green ("To\'g'ri: XX°")
             // 50° - 64° -> Yellow Warning ("Burilish: XX°"), NO lock!
             // >= 65° continuous for 2.5 seconds (10 ticks) -> DANGER: takes photo snapshot & locks!
             var isDanger = (angleHeadYaw >= 65) || isPitchExtreme;
@@ -17189,7 +18281,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
 
             if (angleBadge) {
               if (!isWarn && !isDanger) {
-                angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
+                angleBadge.textContent = "To\'g'ri: " + estimatedAngle + "°";
                 angleBadge.className = 'eth-cam-badge';
                 if (dot) dot.className = 'eth-cam-dot';
                 if (oval) oval.className = 'eth-cam-target-oval';
@@ -17214,9 +18306,9 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
                 var proofSnap = captureProctorSnapshot();
                 playTitTitAlarm(6);
                 if (isPitchExtreme) {
-                  triggerInfraction("O'quvchi boshini 80° dan ortiq tepaga/pastga burib 2.5 soniya turdi", proofSnap);
+                  triggerInfraction("O\'quvchi boshini 80° dan ortiq tepaga/pastga burib 2.5 soniya turdi", proofSnap);
                 } else {
-                  triggerInfraction("O'quvchi boshini 65° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
+                  triggerInfraction("O\'quvchi boshini 65° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
                 }
               }
             } else {
@@ -18066,7 +19158,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
             writingEval = {
               score: fallbackPts,
               wordCount: words.length,
-              feedback: "Yozma topshiriq topshirildi (" + words.length + " so'z).",
+              feedback: "Yozma topshiriq topshirildi (" + words.length + " so\'z).",
               criteria: { taskAchievement: Math.round(fallbackPts/4), coherence: Math.round(fallbackPts/4), lexical: Math.round(fallbackPts/4), grammar: Math.round(fallbackPts/4) }
             };
           }
@@ -19134,13 +20226,13 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
       function onWindowBlur() {
         if (isTestFinished || isExamLocked) return;
         playTitTitAlarm(6);
-        triggerInfraction("Brauzer oynasidan chiqish yoki boshqa oynalarga o'tish aniqlandi");
+        triggerInfraction("Brauzer oynasidan chiqish yoki boshqa oynalarga o\'tish aniqlandi");
       }
       function onVisChange() {
         if (isTestFinished || isExamLocked) return;
         if (document.hidden) {
           playTitTitAlarm(6);
-          triggerInfraction("Brauzer oynasi minimallashtirildi yoki boshqa sahifaga o'tildi");
+          triggerInfraction("Brauzer oynasi minimallashtirildi yoki boshqa sahifaga o\'tildi");
         }
       }
 
@@ -19166,7 +20258,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
         var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
         if (!isFs) {
           playTitTitAlarm(6);
-          triggerInfraction("To'liq ekran rejimidan chiqish aniqlandi! Qoidabuzarlik sababli placement test bloklandi.");
+          triggerInfraction("To\'liq ekran rejimidan chiqish aniqlandi! Qoidabuzarlik sababli placement test bloklandi.");
         }
       }
 
@@ -19320,14 +20412,14 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
             }
             if (noFaceTicks >= 12) {
               if (angleBadge) {
-                angleBadge.textContent = "Yuz yo'q";
+                angleBadge.textContent = "Yuz yo\'q";
                 angleBadge.className = 'eth-cam-badge danger';
               }
               if (dot) dot.className = 'eth-cam-dot danger';
               if (oval) oval.className = 'eth-cam-target-oval danger';
               var missingSnap = captureProctorSnapshot();
               playTitTitAlarm(6);
-              triggerInfraction("Kamerada o'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro'parasida o'tiring)", missingSnap);
+              triggerInfraction("Kamerada o\'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro\'parasida o\'tiring)", missingSnap);
             }
             return;
           }
@@ -19490,7 +20582,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
           }
 
           // Violation evaluation:
-          // Normal (< 50°) -> Green ("To'g'ri: XX°")
+          // Normal (< 50°) -> Green ("To\'g'ri: XX°")
           // 50° - 64° -> Yellow Warning ("Burilish: XX°"), NO lock!
           // >= 65° continuous for 2.5 seconds (10 ticks) -> DANGER: takes photo snapshot & locks!
           var isDanger = (angleHeadYaw >= 65) || isPitchExtreme;
@@ -19499,7 +20591,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
 
           if (angleBadge) {
             if (!isWarn && !isDanger) {
-              angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
+              angleBadge.textContent = "To\'g'ri: " + estimatedAngle + "°";
               angleBadge.className = 'eth-cam-badge';
               if (dot) dot.className = 'eth-cam-dot';
               if (oval) oval.className = 'eth-cam-target-oval';
@@ -19524,9 +20616,9 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
               var proofSnap = captureProctorSnapshot();
               playTitTitAlarm(6);
               if (isPitchExtreme) {
-                triggerInfraction("O'quvchi boshini 80° dan ortiq tepaga/pastga burib 2.5 soniya turdi", proofSnap);
+                triggerInfraction("O\'quvchi boshini 80° dan ortiq tepaga/pastga burib 2.5 soniya turdi", proofSnap);
               } else {
-                triggerInfraction("O'quvchi boshini 65° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
+                triggerInfraction("O\'quvchi boshini 65° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
               }
             }
           } else {
@@ -19547,7 +20639,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
           var dot = document.getElementById('proctorCamDot');
           if (dot) dot.className = 'eth-cam-dot';
           if (angleBadge) {
-            angleBadge.textContent = "To'g'ri: 0°";
+            angleBadge.textContent = "To\'g'ri: 0°";
             angleBadge.className = 'eth-cam-badge';
           }
           ensureFullscreen();
@@ -20291,7 +21383,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
         sampleQuestions = sampleQuestions.concat([
           { question: "The studio apartment on Green Street costs £___ per month.", options: [], answer: "450", type: "written", points: 1 },
           { question: "What type of parking facility is available for residents?", options: ["underground", "street-level", "valet", "none"], answer: "underground", type: "choice", points: 1 },
-          { question: "The caller's surname is spelt: H-A-R-L-I-N-G-T-O-N.", options: ["True", "False"], answer: "True", type: "bool", points: 1 },
+          { question: "The caller\'s surname is spelt: H-A-R-L-I-N-G-T-O-N.", options: ["True", "False"], answer: "True", type: "bool", points: 1 },
           { question: "The Orchid House is located immediately ___ of the central lake.", options: ["north", "south", "east", "west"], answer: "north", type: "choice", points: 1 }
         ]);
       }
@@ -20511,7 +21603,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
         btn.onclick = function() {
           syncFormToTemp();
           var idx = parseInt(btn.dataset.qidx, 10);
-          if (confirm("#" + (idx + 1) + "-savolni o'chirishga ishonchingiz komilmi?")) {
+          if (confirm("#" + (idx + 1) + "-savolni o\'chirishga ishonchingiz komilmi?")) {
             tempExam.questions.splice(idx, 1);
             renderEditForm();
           }
@@ -20538,7 +21630,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
         saveBtn.onclick = function() {
           syncFormToTemp();
           if (!tempExam.title) { alert("Iltimos, imtihon nomini kiriting!"); return; }
-          if (!tempExam.questions || tempExam.questions.length === 0) { alert("Kamida 1 ta savol bo'lishi shart!"); return; }
+          if (!tempExam.questions || tempExam.questions.length === 0) { alert("Kamida 1 ta savol bo\'lishi shart!"); return; }
 
           var exIdx = (S.exams || []).findIndex(function(x) {
             return (x.id && exam.id && String(x.id) === String(exam.id)) ||
@@ -21083,7 +22175,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
 
           addedQuestions.push(newQ);
 
-          // User-Requested Toast: "savol aftamatik tarzda pastga qo'shildi deb yozuv chiqadi"
+          // User-Requested Toast: "savol aftamatik tarzda pastga qo\'shildi deb yozuv chiqadi"
           var toast = document.createElement('div');
           toast.className = 'wayground-added-toast';
           toast.innerHTML = '<span>✅</span> <span>Savol avtomatik tarzda pastga qo\'shildi! (Jami: ' + addedQuestions.length + ' ta)</span>';
@@ -21582,7 +22674,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
           var giftName = giftObj.name || giftObj.title || "Sovrin";
           if (!confirm("Siz rostdan ham ushbu sovrinni (" + giftName + ") " + price + " ETHITH Coin evaziga sotmoqchimisiz?")) return;
           
-          // Remove gift from user's inventory
+          // Remove gift from user\'s inventory
           S.user.gifts.splice(idx, 1);
           // Credit ETHITH Coins
           S.user.coins = (S.user.coins || 0) + price;
@@ -21607,9 +22699,9 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
 
           App.saveState();
           if (typeof App.showToast === 'function') {
-            App.showToast("Muvaffaqiyatli sotildi! Hamyoningizga +" + price + " ETHITH Coin qo'shildi! 🪙", "success");
+            App.showToast("Muvaffaqiyatli sotildi! Hamyoningizga +" + price + " ETHITH Coin qo\'shildi! 🪙", "success");
           } else {
-            alert("Muvaffaqiyatli sotildi! Hamyoningizga +" + price + " ETHITH Coin qo'shildi! 🪙");
+            alert("Muvaffaqiyatli sotildi! Hamyoningizga +" + price + " ETHITH Coin qo\'shildi! 🪙");
           }
           renderContent();
         };
@@ -21779,13 +22871,22 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
         hash |= 0;
       }
       var selectedIndex = Math.abs(hash + (idx || 0)) % QUIZIZZ_HEROES.length;
+      var foundAcc = (S.accounts || []).find(function(a) {
+        return (a.name && a.name.toLowerCase() === str.toLowerCase()) || (a.id && a.id === str);
+      });
+      if (foundAcc && foundAcc.avatar) {
+        var avObj = (window.ETHITH_AVATARS || []).find(function(av) { return av.id === foundAcc.avatar || (foundAcc.avatar.id && av.id === foundAcc.avatar.id); });
+        if (avObj) {
+          return { id: avObj.id, name: avObj.name, emoji: '', isCustomAvatar: true, avatar: avObj, bg: avObj.bg || '#1e293b', border: avObj.border || '#38bdf8' };
+        }
+      }
       return QUIZIZZ_HEROES[selectedIndex];
     }
 
     // 1. Shuffle Questions order per student
     var shuffledQuestions = shuffleArray(quiz.questions);
 
-    // 2. Pre-shuffle OPTIONS for EACH question per student (User Requirement: "har bitta savolning variandining o'rniham almashib tushadi")
+    // 2. Pre-shuffle OPTIONS for EACH question per student (User Requirement: "har bitta savolning variandining o\'rniham almashib tushadi")
     var preparedQuestions = shuffledQuestions.map(function(q) {
       var origOpts = q.options || [];
       var mapped = origOpts.map(function(optText, oIdx) {
@@ -22807,8 +23908,8 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
       list.sort(function(a, b) { return b.score - a.score; });
 
       var prize1 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(1) : { name: "Eski rezina tapichka (43-razmer)", icon: "🩴", desc: "Sifatli va qalin tapichka", rarity: "oddiy", price: 60 };
-      var prize2 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg'a", rarity: "kamyob", price: 180 };
-      var prize3 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko'rkam tufli", rarity: "epika", price: 350 };
+      var prize2 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg\'a", rarity: "kamyob", price: 180 };
+      var prize3 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko\'rkam tufli", rarity: "epika", price: 350 };
 
       if (!prize1.price && window.ETHITH_GET_PRIZE_PRICE) prize1.price = window.ETHITH_GET_PRIZE_PRICE(prize1);
       if (!prize2.price && window.ETHITH_GET_PRIZE_PRICE) prize2.price = window.ETHITH_GET_PRIZE_PRICE(prize2);
@@ -22862,8 +23963,8 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
       var winner3 = list[2] || null;
 
       var prize1 = (officialPrizes && officialPrizes[1]) ? officialPrizes[1] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(1) : { name: "Eski rezina tapichka (43-razmer)", icon: "🩴", desc: "Sifatli va qalin tapichka", rarity: "oddiy", price: 60 });
-      var prize2 = (officialPrizes && officialPrizes[2]) ? officialPrizes[2] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg'a", rarity: "kamyob", price: 180 });
-      var prize3 = (officialPrizes && officialPrizes[3]) ? officialPrizes[3] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko'rkam tufli", rarity: "epika", price: 350 });
+      var prize2 = (officialPrizes && officialPrizes[2]) ? officialPrizes[2] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg\'a", rarity: "kamyob", price: 180 });
+      var prize3 = (officialPrizes && officialPrizes[3]) ? officialPrizes[3] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko\'rkam tufli", rarity: "epika", price: 350 });
 
       if (!prize1.price && window.ETHITH_GET_PRIZE_PRICE) prize1.price = window.ETHITH_GET_PRIZE_PRICE(prize1);
       if (!prize2.price && window.ETHITH_GET_PRIZE_PRICE) prize2.price = window.ETHITH_GET_PRIZE_PRICE(prize2);
@@ -22893,7 +23994,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
         };
         S.user.gifts.unshift(newWonGift);
 
-        // Also add to user's record in S.accounts
+        // Also add to user\'s record in S.accounts
         if (Array.isArray(S.accounts)) {
           var myAccountRec = S.accounts.find(function(a) {
             return (a.email && S.user.email && a.email.toLowerCase() === S.user.email.toLowerCase()) ||
@@ -23700,7 +24801,7 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
     function executeSend(targetName, targetEmail) {
       if (!confirm("Rostdan ham '" + gift.name + "' sovrinini " + targetName + " ga yubormoqchimisiz?")) return;
 
-      // 1. Remove from sender's gifts
+      // 1. Remove from sender\'s gifts
       if (Array.isArray(S.user.gifts)) {
         var gIdx = S.user.gifts.findIndex(function(g) { return (g.id && g.id === gift.id) || g.name === gift.name; });
         if (gIdx !== -1) S.user.gifts.splice(gIdx, 1);
@@ -23727,12 +24828,12 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
 
       var transferredGift = Object.assign({}, gift, {
         id: 'gift_' + Date.now(),
-        fromFriend: S.user.name || "Do'stingiz",
-        senderName: S.user.name || "Do'stingiz",
+        fromFriend: S.user.name || "Do\'stingiz",
+        senderName: S.user.name || "Do\'stingiz",
         transferredAt: Date.now()
       });
 
-      // 2. Save into recipient's auto-claim inbox in localStorage
+      // 2. Save into recipient\'s auto-claim inbox in localStorage
       var targetKeyName = 'ethith_received_gifts_' + targetName.toLowerCase().trim();
       var pending = [];
       try { pending = JSON.parse(localStorage.getItem(targetKeyName) || '[]'); } catch(e) {}
@@ -23754,13 +24855,13 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
           giftName: gift.name,
           giftIcon: gift.icon,
           giftDesc: gift.desc,
-          senderName: S.user.name || "Do'stingiz",
+          senderName: S.user.name || "Do\'stingiz",
           recipientName: targetName,
           recipientEmail: targetEmail
         });
       }
 
-      // 4. Top Toast Notification (User Requirement: "sovg'ani do'stiga yuborgach tepada habar kelsin")
+      // 4. Top Toast Notification (User Requirement: "sovg\'ani do\'stiga yuborgach tepada habar kelsin")
       var toast = document.createElement('div');
       toast.className = 'animate-fade-in';
       toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:14px 28px;border-radius:16px;font-weight:800;z-index:99999999;box-shadow:0 12px 35px rgba(0,0,0,0.5);border:2px solid #10b981;display:flex;align-items:center;gap:12px;backdrop-filter:blur(10px);';
@@ -23788,7 +24889,722 @@ window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
     }
   }
 
+  
+  // ====================================================
+  // 1. MOTION ANIMATED LEADERBOARD VIEW (COIN-BASED)
+  // ====================================================
+  function renderLeaderboardView(container) {
+    if (!container) return;
+
+    var regUsers = [];
+    try {
+      regUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+    } catch(e) {}
+
+    var allAccounts = (S.accounts || []).concat(regUsers);
+    var studentMap = {};
+
+    allAccounts.forEach(function(u) {
+      if (!u || u.role === 'teacher') return; // Teachers have NO coin system
+      var key = ((u.email && u.email.trim().toLowerCase()) || (u.id || u.name || '').toLowerCase()).trim();
+      if (!key) return;
+
+      if (!studentMap[key]) {
+        studentMap[key] = {
+          id: u.id || key,
+          name: u.name || "O\'quvchi",
+          email: u.email || '',
+          level: u.level || 'A1',
+          avatar: u.avatar || null,
+          coins: (u.coins !== undefined && u.coins !== null) ? Number(u.coins) : 0,
+          dailyMinutes: u.dailyMinutes || 0
+        };
+      } else {
+        if (u.coins !== undefined && u.coins !== null) {
+          studentMap[key].coins = Math.max(studentMap[key].coins, Number(u.coins));
+        }
+        if (u.avatar) studentMap[key].avatar = u.avatar;
+      }
+    });
+
+    // Ensure current active student is included with latest state
+    if (S.user && S.user.role !== 'teacher') {
+      var myKey = ((S.user.email && S.user.email.trim().toLowerCase()) || (S.user.id || S.user.name || '').toLowerCase()).trim();
+      studentMap[myKey] = {
+        id: S.user.id || myKey,
+        name: S.user.name || "O\'quvchi",
+        email: S.user.email || '',
+        level: S.level || 'A1',
+        avatar: S.user.avatar || null,
+        coins: Number(S.user.coins || 0),
+        dailyMinutes: S.user.dailyMinutes || 0
+      };
+    }
+
+    var students = Object.values(studentMap);
+    students.sort(function(a, b) {
+      if (b.coins !== a.coins) return b.coins - a.coins;
+      return (b.dailyMinutes || 0) - (a.dailyMinutes || 0);
+    });
+
+    students = students.slice(0, 50);
+
+    var myRank = -1;
+    if (S.user && S.user.role !== 'teacher') {
+      var myKey = ((S.user.email && S.user.email.trim().toLowerCase()) || (S.user.id || S.user.name || '').toLowerCase()).trim();
+      myRank = students.findIndex(function(s) {
+        return (s.email && s.email.toLowerCase() === myKey) || (s.id && s.id.toLowerCase() === myKey) || (s.name.toLowerCase() === S.user.name.toLowerCase());
+      }) + 1;
+    }
+
+    var first = students[0] || null;
+    var second = students[1] || null;
+    var third = students[2] || null;
+
+    var html = '<div class="eth-leaderboard-screen animate-fade-in">';
+
+    // Header
+    html += '<div class="eth-lb-header">' +
+      '<div class="eth-lb-title">⚡ ETHITH COIN LEADERBOARD ⚡</div>' +
+      '<p class="eth-lb-subtitle">Platformadagi barcha o\'quvchilarning tangalar bo\'yicha jonli reytingi</p>' +
+      (myRank > 0 ? '<div style="margin-top:14px;display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;background:rgba(245,158,11,0.18);border:1px solid #f59e0b;font-size:13px;font-weight:800;color:#fde047">' +
+        'Sizning o\'rningiz: <b style="font-size:15px">#' + myRank + '</b> (' + (S.user.coins || 0).toLocaleString() + ' Coin)</div>' : '') +
+    '</div>';
+
+    // Podium Row
+    if (first) {
+      html += '<div class="eth-lb-podium-row">';
+
+      // Rank 2: Silver Motion
+      if (second) {
+        html += '<div class="eth-lb-card-2">' +
+          '<div style="font-size:26px;margin-bottom:6px">🥈</div>' +
+          '<div style="display:flex;justify-content:center;margin-bottom:10px">' +
+            window.ETHITH_RENDER_USER_AVATAR(second, 56) +
+          '</div>' +
+          '<div style="font-weight:800;font-size:16px;color:#f8fafc;margin-bottom:4px">' + esc(second.name) + '</div>' +
+          '<div style="font-size:12px;color:#94a3b8;margin-bottom:10px">' + (second.level || 'A1') + ' Daraja</div>' +
+          '<div style="display:inline-flex;align-items:center;gap:6px;font-weight:900;color:#cbd5e1;background:rgba(255,255,255,0.08);padding:4px 12px;border-radius:12px">' +
+            window.ETHITH_COIN_SVG(18) + ' ' + (second.coins || 0).toLocaleString() +
+          '</div>' +
+        '</div>';
+      }
+
+      // Rank 1: Crowned Golden Champion
+      html += '<div class="eth-lb-card-1">' +
+        '<div class="eth-crown-badge">👑</div>' +
+        '<div style="display:flex;justify-content:center;margin-bottom:12px;margin-top:8px">' +
+          window.ETHITH_RENDER_USER_AVATAR(first, 68, '', 'box-shadow: 0 0 20px #f59e0b') +
+        '</div>' +
+        '<div style="font-weight:900;font-size:18px;color:#fde047;margin-bottom:4px">' + esc(first.name) + '</div>' +
+        '<div style="font-size:12.5px;color:#fef08a;margin-bottom:12px;font-weight:700">👑 1-O\'RIN CHEMPION (' + (first.level || 'A1') + ')</div>' +
+        '<div style="display:inline-flex;align-items:center;gap:6px;font-weight:900;color:#fbbf24;background:rgba(245,158,11,0.22);border:1px solid #f59e0b;padding:6px 16px;border-radius:16px;font-size:16px">' +
+          window.ETHITH_COIN_SVG(22) + ' ' + (first.coins || 0).toLocaleString() + ' <span style="font-size:11px">COIN</span>' +
+        '</div>' +
+      '</div>';
+
+      // Rank 3: Bronze Motion
+      if (third) {
+        html += '<div class="eth-lb-card-3">' +
+          '<div style="font-size:26px;margin-bottom:6px">🥉</div>' +
+          '<div style="display:flex;justify-content:center;margin-bottom:10px">' +
+            window.ETHITH_RENDER_USER_AVATAR(third, 56) +
+          '</div>' +
+          '<div style="font-weight:800;font-size:16px;color:#f8fafc;margin-bottom:4px">' + esc(third.name) + '</div>' +
+          '<div style="font-size:12px;color:#94a3b8;margin-bottom:10px">' + (third.level || 'A1') + ' Daraja</div>' +
+          '<div style="display:inline-flex;align-items:center;gap:6px;font-weight:900;color:#f59e0b;background:rgba(255,255,255,0.08);padding:4px 12px;border-radius:12px">' +
+            window.ETHITH_COIN_SVG(18) + ' ' + (third.coins || 0).toLocaleString() +
+          '</div>' +
+        '</div>';
+      }
+
+      html += '</div>';
+    }
+
+    // Remaining Ranks 4+ (Minimalist, uniform, no-effect clean rows)
+    var restStudents = students.slice(3);
+    if (restStudents.length > 0) {
+      html += '<div class="eth-lb-list">';
+      html += '<div style="font-weight:800;font-size:14px;color:var(--muted);margin-bottom:8px;padding-left:4px">BOSHQA O\'QUVCHILAR:</div>';
+      restStudents.forEach(function(st, idx) {
+        var rank = idx + 4;
+        var isMe = S.user && ((st.email && S.user.email && st.email.toLowerCase() === S.user.email.toLowerCase()) || st.name.toLowerCase() === S.user.name.toLowerCase());
+        html += '<div class="eth-lb-row ' + (isMe ? 'is-me' : '') + '">' +
+          '<div class="eth-lb-rank-num">#' + rank + '</div>' +
+          '<div class="eth-lb-user-info">' +
+            window.ETHITH_RENDER_USER_AVATAR(st, 36) +
+            '<div style="min-width:0;flex:1">' +
+              '<div class="eth-lb-name">' + esc(st.name) + (isMe ? ' <span style="font-size:11px;color:#f59e0b;font-weight:800">(Siz)</span>' : '') + '</div>' +
+              '<div style="font-size:11.5px;color:var(--muted)">' + (st.level || 'A1') + ' Daraja</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="eth-lb-coins">' +
+            window.ETHITH_COIN_SVG(16) + ' ' + (st.coins || 0).toLocaleString() +
+          '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+    }
+
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  // ====================================================
+  // 2. EA SPORTS & MLBB PACK MARKET VIEW
+  // ====================================================
+  function renderMarketView(container) {
+    if (!container) return;
+
+    var userCoins = (S.user && S.user.coins !== undefined) ? S.user.coins : 0;
+    var lastDaily = (S.user && S.user.lastDailyPackAt) ? Number(S.user.lastDailyPackAt) : 0;
+    var now = Date.now();
+    var diffMs = now - lastDaily;
+    var isDailyReady = diffMs >= 24 * 60 * 60 * 1000;
+    var remainingMs = Math.max(0, (24 * 60 * 60 * 1000) - diffMs);
+    var remainingHrs = Math.floor(remainingMs / (1000 * 60 * 60));
+    var remainingMins = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
+
+    var html = '<div class="eth-market-screen animate-fade-in">';
+
+    // Banner
+    html += '<div class="eth-market-banner">' +
+      '<div>' +
+        '<div style="font-size:12px;font-weight:800;letter-spacing:1px;color:#fde047;text-transform:uppercase;margin-bottom:6px">⚡ ETHITH PACK SHOP ⚡</div>' +
+        '<h2 style="font-size:26px;font-weight:900;margin:0 0 8px">Sehrli Qutilar & Packlar Marketi</h2>' +
+        '<p style="font-size:14px;color:#cbd5e1;margin:0;max-width:540px">ETHITH Coinlaringiz evaziga noyob personaj avatarlari, qimmatbaho sovrinlar va Telegram chat emojilarini yutib oling!</p>' +
+      '</div>' +
+      '<div style="text-align:right;flex-shrink:0">' +
+        '<div style="font-size:12px;color:#94a3b8;font-weight:700;margin-bottom:4px">HAMYONINGIZ:</div>' +
+        '<div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,0.35);border:1px solid #f59e0b;padding:8px 18px;border-radius:20px">' +
+          window.ETHITH_COIN_SVG(26) +
+          '<span style="font-size:20px;font-weight:900;color:#fde047;font-family:monospace">' + userCoins.toLocaleString() + '</span>' +
+          '<span style="font-size:11px;font-weight:800;color:#f59e0b">COIN</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    // Grid of Packs
+    html += '<div class="eth-market-grid">';
+    (window.ETHITH_PACKS || []).forEach(function(pack) {
+      var isComing = !!pack.isComingSoon;
+      var canOpenDaily = pack.isFreeDaily ? isDailyReady : true;
+
+      var btnLabel = '';
+      if (isComing) {
+        btnLabel = '🔒 TEZ KUNDA';
+      } else if (pack.isFreeDaily) {
+        btnLabel = isDailyReady ? '🎁 BEPUL OCHISH (0 COIN)' : ('⏳ ' + remainingHrs + 's ' + remainingMins + 'd kutish');
+      } else {
+        btnLabel = window.ETHITH_COIN_SVG(18) + ' ' + pack.price + ' COIN BILAN OCHISH';
+      }
+
+      html += '<div class="eth-pack-card" style="background:' + pack.gradient + ';border-color:' + pack.glowColor + '" data-pack-id="' + pack.id + '">' +
+        '<div class="eth-pack-badge">' + esc(pack.badge) + '</div>' +
+        '<div class="eth-pack-icon">' + pack.icon + '</div>' +
+        '<div class="eth-pack-name">' + esc(pack.name) + '</div>' +
+        '<div class="eth-pack-desc">' + esc(pack.desc) + '</div>' +
+        '<button type="button" class="eth-pack-btn ' + ((isComing || !canOpenDaily) ? 'is-disabled' : '') + '" data-action="open-pack" data-pack-id="' + pack.id + '">' +
+          btnLabel +
+        '</button>' +
+      '</div>';
+    });
+    html += '</div>';
+
+    html += '</div>';
+    container.innerHTML = html;
+
+    // Attach click listeners to open packs
+    container.querySelectorAll('[data-action="open-pack"]').forEach(function(btn) {
+      btn.onclick = function() {
+        var pId = btn.dataset.packId;
+        var p = (window.ETHITH_PACKS || []).find(function(item) { return item.id === pId; });
+        if (!p || p.isComingSoon) {
+          if (p && p.isComingSoon) alert("Ushbu pack tez kunda ochiladi!");
+          return;
+        }
+
+        if (p.isFreeDaily) {
+          var last = (S.user && S.user.lastDailyPackAt) ? Number(S.user.lastDailyPackAt) : 0;
+          if (Date.now() - last < 24 * 60 * 60 * 1000) {
+            alert("Kunlik bepul packni faqat 24 soatda 1 marta ochish mumkin! Iltimos, taymer tugashini kuting.");
+            return;
+          }
+        } else {
+          if (!S.user || (S.user.coins || 0) < p.price) {
+            alert("Mablag' yetarli emas! Sizda " + (S.user.coins || 0) + " Coin bor, ushbu pack narxi esa " + p.price + " Coin.");
+            return;
+          }
+        }
+
+        // Open MLBB style interactive modal
+        showMLBBPackOpeningModal(p, function() {
+          renderMarketView(container);
+          if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+        });
+      };
+    });
+  }
+
+  // ====================================================
+  // 3. MLBB STYLE 5-BOX DRAW & CONNECT PACK OPENING MODAL
+  // ====================================================
+  function showMLBBPackOpeningModal(pack, onDone) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-pack-modal-overlay animate-fade-in';
+
+    // 5 coordinates arranged in a stylish arc/pentagon
+    var boxPositions = [
+      { x: 131, y: 15 },   // Top Center
+      { x: 236, y: 95 },   // Top Right
+      { x: 196, y: 225 },  // Bottom Right
+      { x: 66,  y: 225 },  // Bottom Left
+      { x: 26,  y: 95 }    // Top Left
+    ];
+
+    var connectedBoxes = [];
+    var isFusing = false;
+
+    var arenaHtml = '' +
+      '<div class="eth-pack-arena" id="ethPackArena">' +
+      '  <div class="eth-pack-arena-title">✨ ' + esc(pack.name.toUpperCase()) + ' ✨</div>' +
+      '  <div class="eth-pack-arena-hint" id="ethPackArenaHint">Qutini ochish uchun 5 ta sehrli nuqtani ketma-ket bosing yoki birlashtiring (<b id="ethBoxCount">0</b>/5)</div>' +
+      '  <div class="eth-boxes-container" id="ethBoxesContainer">' +
+      '    <svg id="ethLaserSvg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1"></svg>' +
+           boxPositions.map(function(pos, i) {
+             return '<div class="eth-mystery-box" data-idx="' + i + '" style="left:' + pos.x + 'px;top:' + pos.y + 'px;">' + (i + 1) + '</div>';
+           }).join('') +
+      '  </div>' +
+      '  <div style="margin-top:24px;display:flex;gap:12px">' +
+      '    <button type="button" id="ethAutoConnectBtn" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer">⚡ Tezkor Ulash (Hammasi)</button>' +
+      '    <button type="button" id="ethCancelPackBtn" style="background:transparent;border:none;color:#94a3b8;font-size:13px;cursor:pointer">Bekor qilish</button>' +
+      '  </div>' +
+      '</div>';
+
+    overlay.innerHTML = arenaHtml;
+    document.body.appendChild(overlay);
+
+    var laserSvg = overlay.querySelector('#ethLaserSvg');
+    var countEl = overlay.querySelector('#ethBoxCount');
+    var hintEl = overlay.querySelector('#ethPackArenaHint');
+    var containerEl = overlay.querySelector('#ethBoxesContainer');
+
+    function drawLaserLine(x1, y1, x2, y2) {
+      var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', x1);
+      line.setAttribute('y1', y1);
+      line.setAttribute('x2', x2);
+      line.setAttribute('y2', y2);
+      line.setAttribute('stroke', '#fde047');
+      line.setAttribute('stroke-width', '4');
+      line.setAttribute('stroke-linecap', 'round');
+      line.setAttribute('filter', 'drop-shadow(0 0 8px #f59e0b)');
+      laserSvg.appendChild(line);
+    }
+
+    function connectBox(idx) {
+      if (isFusing || connectedBoxes.indexOf(idx) !== -1) return;
+
+      connectedBoxes.push(idx);
+      var boxEl = overlay.querySelector('.eth-mystery-box[data-idx="' + idx + '"]');
+      if (boxEl) {
+        boxEl.classList.add('is-connected');
+        boxEl.innerHTML = '⚡';
+      }
+
+      if (connectedBoxes.length > 1) {
+        var prevIdx = connectedBoxes[connectedBoxes.length - 2];
+        var p1 = boxPositions[prevIdx];
+        var p2 = boxPositions[idx];
+        drawLaserLine(p1.x + 29, p1.y + 29, p2.x + 29, p2.y + 29);
+      }
+
+      if (countEl) countEl.textContent = connectedBoxes.length;
+
+      // When all 5 connected -> FUSE & BLAST!
+      if (connectedBoxes.length >= 5) {
+        // Connect last to first
+        var pLast = boxPositions[connectedBoxes[4]];
+        var pFirst = boxPositions[connectedBoxes[0]];
+        drawLaserLine(pLast.x + 29, pLast.y + 29, pFirst.x + 29, pFirst.y + 29);
+        triggerFusionAndReveal();
+      }
+    }
+
+    overlay.querySelectorAll('.eth-mystery-box').forEach(function(box) {
+      box.onclick = function() {
+        var idx = Number(box.dataset.idx);
+        connectBox(idx);
+      };
+    });
+
+    var autoBtn = overlay.querySelector('#ethAutoConnectBtn');
+    if (autoBtn) {
+      autoBtn.onclick = function() {
+        [0, 1, 2, 3, 4].forEach(function(i, seq) {
+          setTimeout(function() { connectBox(i); }, seq * 120);
+        });
+      };
+    }
+
+    var cancelBtn = overlay.querySelector('#ethCancelPackBtn');
+    if (cancelBtn) {
+      cancelBtn.onclick = function() {
+        overlay.remove();
+      };
+    }
+
+    function triggerFusionAndReveal() {
+      if (isFusing) return;
+      isFusing = true;
+
+      if (autoBtn) autoBtn.style.display = 'none';
+      if (cancelBtn) cancelBtn.style.display = 'none';
+      if (hintEl) hintEl.innerHTML = '<span style="color:#fde047;font-weight:900">⚡ ENERGIYA BIRLASHMOQDA... ⚡</span>';
+
+      // Deduct coins & record daily
+      if (pack.isFreeDaily) {
+        S.user.lastDailyPackAt = Date.now();
+      } else {
+        S.user.coins = Math.max(0, (S.user.coins || 0) - pack.price);
+      }
+      App.saveState();
+      if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+
+      // Sound effect
+      try {
+        var chime = new Audio('audio_battle_1.mp3');
+        chime.volume = 0.5;
+        chime.play().catch(function(){});
+      } catch(e) {}
+
+      // Fuse boxes
+      containerEl.classList.add('fusing');
+
+      setTimeout(function() {
+        // Blast Supernova!
+        var blast = document.createElement('div');
+        blast.className = 'eth-supernova-blast';
+        containerEl.appendChild(blast);
+
+        // Run RNG drop
+        var wonItem = window.ETHITH_OPEN_PACK(pack.id, S.user);
+
+        // Process reward
+        if (wonItem.type === 'coins') {
+          S.user.coins = (S.user.coins || 0) + wonItem.amount;
+        } else if (wonItem.type === 'prize') {
+          if (!S.user.gifts) S.user.gifts = [];
+          S.user.gifts.unshift(wonItem.item || { name: wonItem.name, desc: wonItem.desc, icon: wonItem.icon, rarity: wonItem.rarity, price: wonItem.coinPrice || 100 });
+        } else if (wonItem.type === 'emoji') {
+          if (!S.user.unlockedEmojis) S.user.unlockedEmojis = (window.ETHITH_DEFAULT_FREE_EMOJIS || []).slice();
+          if (S.user.unlockedEmojis.indexOf(wonItem.emoji) === -1) {
+            S.user.unlockedEmojis.push(wonItem.emoji);
+          }
+        } else if (wonItem.type === 'avatar') {
+          if (!S.user.unlockedAvatars) S.user.unlockedAvatars = [];
+          if (S.user.unlockedAvatars.indexOf(wonItem.avatar.id) === -1) {
+            S.user.unlockedAvatars.push(wonItem.avatar.id);
+          }
+          if (!S.user.avatar) {
+            S.user.avatar = wonItem.avatar.id;
+          }
+        }
+
+        App.saveState();
+        if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+
+        setTimeout(function() {
+          renderRevealScreen(wonItem);
+        }, 600);
+      }, 700);
+    }
+
+    function renderRevealScreen(won) {
+      var cardGraphic = '';
+      if (won.type === 'avatar' && won.avatar) {
+        cardGraphic = '<div style="width:110px;height:110px;margin:0 auto 16px;border-radius:50%;overflow:hidden;border:3px solid #fde047;box-shadow:0 0 25px rgba(245,158,11,0.6)">' + won.avatar.svg + '</div>';
+      } else if (won.type === 'emoji') {
+        cardGraphic = '<div style="font-size:72px;margin:10px auto 16px;filter:drop-shadow(0 0 16px rgba(255,255,255,0.6))">' + won.emoji + '</div>';
+      } else {
+        cardGraphic = '<div style="font-size:68px;margin:10px auto 16px;filter:drop-shadow(0 0 16px rgba(245,158,11,0.6))">' + won.icon + '</div>';
+      }
+
+      var revealHtml = '' +
+        '<div class="eth-revealed-card">' +
+        '  <div class="eth-rarity-badge eth-rarity-' + won.rarity + '">' + won.rarity + '</div>' +
+           cardGraphic +
+        '  <div style="font-weight:900;font-size:20px;color:#fde047;margin-bottom:8px">' + esc(won.name) + '</div>' +
+        '  <div style="font-size:13px;color:#cbd5e1;line-height:1.5;margin-bottom:20px">' + esc(won.desc) + '</div>' +
+        '  <button type="button" id="ethClaimRewardBtn" style="width:100%;padding:12px;background:linear-gradient(135deg, #f59e0b, #d97706);border:none;border-radius:14px;color:#fff;font-weight:900;font-size:15px;cursor:pointer;box-shadow:0 6px 16px rgba(245,158,11,0.4)">' +
+        '    🎉 QABUL QILISH' +
+        '  </button>' +
+        '</div>';
+
+      var arena = overlay.querySelector('#ethPackArena');
+      arena.innerHTML = revealHtml;
+
+      var claimBtn = overlay.querySelector('#ethClaimRewardBtn');
+      if (claimBtn) {
+        claimBtn.onclick = function() {
+          overlay.remove();
+          if (onDone) onDone();
+        };
+      }
+    }
+  }
+
+  // ====================================================
+  // 4. USER PROFILE & AVATAR MANAGER VIEW
+  // ====================================================
+  function renderProfileView(container) {
+    if (!container) return;
+
+    var user = S.user || { name: 'Guest', email: '', role: 'student', coins: 0, dailyMinutes: 0 };
+    var isTeacher = user.role === 'teacher';
+
+    // Calculate Leaderboard Rank
+    var regUsers = [];
+    try { regUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]'); } catch(e) {}
+    var allAccounts = (S.accounts || []).concat(regUsers);
+    var studentMap = {};
+    allAccounts.forEach(function(u) {
+      if (!u || u.role === 'teacher') return;
+      var key = ((u.email && u.email.trim().toLowerCase()) || (u.id || u.name || '').toLowerCase()).trim();
+      if (!studentMap[key]) studentMap[key] = { coins: Number(u.coins || 0) };
+      else studentMap[key].coins = Math.max(studentMap[key].coins, Number(u.coins || 0));
+    });
+    if (user.role !== 'teacher') {
+      var myKey = ((user.email && user.email.trim().toLowerCase()) || (user.id || user.name || '').toLowerCase()).trim();
+      studentMap[myKey] = { coins: Number(user.coins || 0) };
+    }
+    var sorted = Object.values(studentMap).sort(function(a, b) { return b.coins - a.coins; });
+    var myRank = sorted.findIndex(function(s) { return s.coins <= (user.coins || 0); }) + 1;
+    if (myRank <= 0) myRank = 1;
+
+    var unlockedAvatars = user.unlockedAvatars || [];
+    var unlockedEmojis = user.unlockedEmojis || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
+    var gifts = user.gifts || [];
+
+    var html = '<div class="eth-profile-screen animate-fade-in">';
+
+    // Hero Section
+    html += '<div class="eth-profile-hero">' +
+      '<div class="eth-profile-avatar-wrap">' +
+        window.ETHITH_RENDER_USER_AVATAR(user, 90, '', 'border-width:3px') +
+        (!isTeacher ? '<button type="button" class="eth-profile-change-av-btn" id="btnChangeAvatar" title="Rasmni o\'zgartirish">✏️</button>' : '') +
+      '</div>' +
+      '<div style="flex:1;min-width:0">' +
+        '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">' +
+          '<h1 style="font-size:24px;font-weight:900;color:var(--text);margin:0">' + esc(user.name) + '</h1>' +
+          '<span style="padding:3px 10px;border-radius:12px;font-size:12px;font-weight:800;background:var(--soft);color:var(--pri)">' + (isTeacher ? 'O\'qituvchi (Master)' : user.level || S.level || 'A1') + '</span>' +
+        '</div>' +
+        '<div style="font-size:13.5px;color:var(--muted);margin-bottom:12px">📧 ' + esc(user.email || 'Email kiritilmagan') + '</div>' +
+        '<div style="display:flex;gap:10px;flex-wrap:wrap">' +
+          (!isTeacher ? '<button type="button" class="ap-btn pri" id="btnProfileOpenMarket" style="padding:6px 14px;font-size:13px">' + ic('sparkles') + ' Marketga o\'tish (Pack ochish)</button>' : '') +
+          '<button type="button" class="ap-btn gh" id="btnProfileLogout" style="padding:6px 14px;font-size:13px;color:#dc2626">' + ic('lock') + ' Tizimdan chiqish (Log out)</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    // Stats Grid
+    if (!isTeacher) {
+      html += '<div class="eth-profile-stats-grid">' +
+        '<div class="eth-pstat-card">' +
+          '<div style="font-size:32px">' + window.ETHITH_COIN_SVG(36) + '</div>' +
+          '<div>' +
+            '<div class="eth-pstat-val" style="color:#d97706">' + (user.coins || 0).toLocaleString() + '</div>' +
+            '<div class="eth-pstat-lbl">Jami ETHITH Coinlar</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="eth-pstat-card">' +
+          '<div style="font-size:32px">👑</div>' +
+          '<div>' +
+            '<div class="eth-pstat-val" style="color:#f59e0b">#' + myRank + '</div>' +
+            '<div class="eth-pstat-lbl">Leaderboard O\'rni</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="eth-pstat-card">' +
+          '<div style="font-size:32px">⏱️</div>' +
+          '<div>' +
+            '<div class="eth-pstat-val">' + (user.dailyMinutes || 0) + ' min</div>' +
+            '<div class="eth-pstat-lbl">Foydalanilgan Muddat</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="eth-pstat-card">' +
+          '<div style="font-size:32px">🎁</div>' +
+          '<div>' +
+            '<div class="eth-pstat-val">' + gifts.length + ' ta</div>' +
+            '<div class="eth-pstat-lbl">Yutilgan Sovrinlar</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    // Showcase Tabs: Avatars, Emojis, Gifts
+    if (!isTeacher) {
+      html += '<div style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:24px">';
+      html += '<h3 style="font-size:18px;font-weight:900;color:var(--text);margin:0 0 16px;display:flex;align-items:center;gap:8px">🎭 Mening Ochilgan Avatarlarim (' + unlockedAvatars.length + ')</h3>';
+
+      if (unlockedAvatars.length === 0) {
+        html += '<p style="font-size:13.5px;color:var(--muted)">Sizda hali ochilgan maxsus personaj rasmlari yo\'q. Marketdan <b>Boys Avatar Pack</b> yoki <b>Girls Avatar Pack</b> ochib ajoyib fantastik avatarlarni yutib oling!</p>';
+      } else {
+        html += '<div style="display:flex;gap:14px;flex-wrap:wrap">';
+        unlockedAvatars.forEach(function(avId) {
+          var avObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === avId; });
+          if (!avObj) return;
+          var isCurrent = (user.avatar === avId) || (user.avatar && user.avatar.id === avId);
+
+          html += '<div style="width:100px;text-align:center;padding:12px 8px;border-radius:16px;background:var(--soft);border:2px solid ' + (isCurrent ? '#f59e0b' : 'var(--line)') + ';position:relative">' +
+            (isCurrent ? '<span style="position:absolute;top:4px;right:4px;font-size:11px">⭐</span>' : '') +
+            '<div style="width:58px;height:58px;margin:0 auto 8px;border-radius:50%;overflow:hidden">' + avObj.svg + '</div>' +
+            '<div style="font-size:11.5px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(avObj.name) + '</div>' +
+            (isCurrent ? '<div style="font-size:10px;font-weight:800;color:#f59e0b;margin-top:4px">O\'RNATILGAN</div>' :
+              '<button type="button" class="btnSetAvatar" data-av-id="' + avObj.id + '" style="margin-top:6px;padding:3px 8px;font-size:10.5px;font-weight:700;background:var(--pri);color:#fff;border:none;border-radius:6px;cursor:pointer">Tanlash</button>') +
+          '</div>';
+        });
+        html += '</div>';
+      }
+      html += '</div>';
+
+      // Emojis showcase
+      html += '<div style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:24px">';
+      html += '<h3 style="font-size:18px;font-weight:900;color:var(--text);margin:0 0 16px;display:flex;align-items:center;gap:8px">⚡ Mening Chat Emojilarim (' + unlockedEmojis.length + ')</h3>';
+      html += '<div style="display:flex;gap:10px;flex-wrap:wrap">';
+      (window.ETHITH_CHAT_EMOJIS || []).forEach(function(emItem) {
+        var isUnlocked = emItem.isDefault || (unlockedEmojis.indexOf(emItem.emoji) !== -1);
+        html += '<div style="padding:8px 12px;border-radius:12px;background:var(--soft);border:1px solid ' + (isUnlocked ? 'var(--line)' : 'rgba(239,68,68,0.25)') + ';display:inline-flex;align-items:center;gap:6px;opacity:' + (isUnlocked ? '1' : '0.45') + '">' +
+          '<span style="font-size:20px">' + emItem.emoji + '</span>' +
+          '<span style="font-size:12px;font-weight:700;color:var(--text)">' + esc(emItem.name) + '</span>' +
+          (!isUnlocked ? '<span style="font-size:10px">🔒</span>' : '') +
+        '</div>';
+      });
+      html += '</div>';
+      html += '</div>';
+    }
+
+    html += '</div>';
+    container.innerHTML = html;
+
+    // Attach Handlers
+    var changeAvBtn = container.querySelector('#btnChangeAvatar');
+    if (changeAvBtn) {
+      changeAvBtn.onclick = function() {
+        showAvatarPickerModal(function() {
+          renderProfileView(container);
+          if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
+        });
+      };
+    }
+
+    var marketBtn = container.querySelector('#btnProfileOpenMarket');
+    if (marketBtn) {
+      marketBtn.onclick = function() {
+        if (window.go) window.go('market');
+      };
+    }
+
+    var logoutBtn = container.querySelector('#btnProfileLogout');
+    if (logoutBtn) {
+      logoutBtn.onclick = function() {
+        if (confirm("Rostdan ham tizimdan chiqishni xohlaysizmi?")) {
+          S.user = null;
+          App.saveState();
+          document.documentElement.classList.remove('eth-logged-in');
+          var ap = document.getElementById('app');
+          if (ap) ap.style.display = 'none';
+          var landing = document.getElementById('landing');
+          if (landing) landing.style.display = '';
+          if (App.showAuthModal) App.showAuthModal();
+        }
+      };
+    }
+
+    container.querySelectorAll('.btnSetAvatar').forEach(function(btn) {
+      btn.onclick = function() {
+        var targetId = btn.dataset.avId;
+        S.user.avatar = targetId;
+        App.saveState();
+        if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
+        renderProfileView(container);
+      };
+    });
+  }
+
+  // ====================================================
+  // 5. AVATAR PICKER MODAL (ONLY UNLOCKED AVATARS)
+  // ====================================================
+  function showAvatarPickerModal(onDone) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-pack-modal-overlay animate-fade-in';
+
+    var unlocked = (S.user && S.user.unlockedAvatars) || [];
+
+    var html = '' +
+      '<div style="background:var(--card, #0f172a);border:1px solid var(--line, #334155);border-radius:24px;padding:26px;max-width:540px;width:100%;color:var(--text, #fff);box-shadow:0 20px 50px rgba(0,0,0,0.6)">' +
+      '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">' +
+      '    <h3 style="margin:0;font-size:18px;font-weight:900">🎭 Profil Rasmini Tanlash</h3>' +
+      '    <button type="button" id="btnCloseAvPicker" style="background:none;border:none;font-size:20px;color:var(--muted);cursor:pointer">&times;</button>' +
+      '  </div>' +
+      '  <p style="font-size:13px;color:var(--muted);margin-bottom:18px">Faqat Marketdan yutib olingan fantastik va kinomatografik personaj rasmlarini o\'rnatish mumkin (ixtiyoriy rasm yuklash taqiqlangan):</p>' +
+      '  <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(90px, 1fr));gap:12px;max-height:300px;overflow-y:auto;padding:4px;margin-bottom:20px">' +
+      '    <div class="avChoiceCard" data-av-none="1" style="text-align:center;padding:12px 6px;border-radius:14px;background:var(--soft, #1e293b);border:2px solid ' + (!S.user.avatar ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
+      '      <div style="width:48px;height:48px;margin:0 auto 6px;border-radius:50%;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px">' + (S.user.name ? S.user.name.charAt(0).toUpperCase() : 'U') + '</div>' +
+      '      <div style="font-size:11px;font-weight:700">Bosh harf</div>' +
+      '    </div>';
+
+    unlocked.forEach(function(avId) {
+      var avObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === avId; });
+      if (!avObj) return;
+      var isCur = (S.user.avatar === avId) || (S.user.avatar && S.user.avatar.id === avId);
+
+      html += '<div class="avChoiceCard" data-av-id="' + avObj.id + '" style="text-align:center;padding:12px 6px;border-radius:14px;background:var(--soft, #1e293b);border:2px solid ' + (isCur ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
+        '<div style="width:48px;height:48px;margin:0 auto 6px;border-radius:50%;overflow:hidden">' + avObj.svg + '</div>' +
+        '<div style="font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(avObj.name) + '</div>' +
+      '</div>';
+    });
+
+    html += '  </div>' +
+      '  <div style="text-align:right">' +
+      '    <button type="button" id="btnGoMarketFromAv" style="padding:8px 16px;background:var(--soft);color:var(--pri);border:1px solid var(--line);border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;margin-right:8px">🎁 Yangi Avatar Olish (Market)</button>' +
+      '    <button type="button" id="btnDoneAvPicker" style="padding:8px 18px;background:var(--pri);color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer">Yopish</button>' +
+      '  </div>' +
+      '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    overlay.querySelectorAll('.avChoiceCard').forEach(function(card) {
+      card.onclick = function() {
+        if (card.dataset.avNone) {
+          S.user.avatar = null;
+        } else {
+          S.user.avatar = card.dataset.avId;
+        }
+        App.saveState();
+        if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
+        overlay.remove();
+        if (onDone) onDone();
+      };
+    });
+
+    overlay.querySelector('#btnCloseAvPicker').onclick = function() { overlay.remove(); };
+    overlay.querySelector('#btnDoneAvPicker').onclick = function() { overlay.remove(); };
+    var marketBtn = overlay.querySelector('#btnGoMarketFromAv');
+    if (marketBtn) {
+      marketBtn.onclick = function() {
+        overlay.remove();
+        if (window.go) window.go('market');
+      };
+    }
+  }
+
   window.EthithViews = {
+    renderLeaderboardView: renderLeaderboardView,
+    renderMarketView: renderMarketView,
+    showMLBBPackOpeningModal: showMLBBPackOpeningModal,
+    renderProfileView: renderProfileView,
+    showAvatarPickerModal: showAvatarPickerModal,
     showWaygroundStudioModal: showWaygroundStudioModal,
     renderQuizBattleView: renderQuizBattleView,
     showCreateQuizModal: showCreateQuizModal,
@@ -24833,7 +26649,23 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     h += '<button class="ap-item ' + (cur === 'exams' ? 'active' : '') + '" data-go="exams">' + ic('trophy') + 'Exams & Mocks</button>';
     h += '<button class="ap-item ' + (cur === 'mistakes' ? 'active' : '') + '" data-go="mistakes">' + ic('check') + 'Mistakes Notebook (' + (S.mistakes ? S.mistakes.length : 0) + ')</button>';
 
-    h += '</nav><div class="ap-plan"><small>Account Status</small><h4>' + (isTeacher ? 'Teacher (Master)' : 'Student (' + S.level + ')') + '</h4><button id="apLogoutBtn" style="background:#fee2e2;color:#dc2626;border:none;padding:6px 12px;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;width:100%;margin-top:8px">Log Out</button></div>';
+    h += '<div class="ap-label">Reyting & Market</div>';
+    h += '<button class="ap-item ' + (cur === 'leaderboard' ? 'active' : '') + '" data-go="leaderboard" style="color:#f59e0b;font-weight:700">' + ic('trophy') + 'Leaderboard (Reyting)</button>';
+    if (!isTeacher) {
+      h += '<button class="ap-item ' + (cur === 'market' ? 'active' : '') + '" data-go="market" style="color:#818cf8;font-weight:700">' + ic('sparkles') + 'Market (Packlar)</button>';
+    }
+
+    var myAvHtml = (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR(S.user, 36) : ('<span class="av">' + (S.user && S.user.name ? S.user.name.charAt(0).toUpperCase() : 'U') + '</span>'));
+    h += '</nav><div class="ap-plan" style="cursor:pointer" data-go="profile">' +
+      '<div style="display:flex;align-items:center;gap:10px">' +
+        myAvHtml +
+        '<div style="min-width:0;flex:1">' +
+          '<small style="font-weight:800;color:var(--pri2)">Mening Profilim</small>' +
+          '<h4 style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13.5px">' + esc(S.user ? S.user.name : 'Guest') + '</h4>' +
+        '</div>' +
+      '</div>' +
+      '<button id="apProfileSideBtn" style="background:var(--soft);color:var(--pri);border:1px solid var(--line);padding:7px 12px;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;width:100%;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px">' + ic('user') + ' Profilni Ochish</button>' +
+    '</div>';
 
     $('apSide').innerHTML = h;
   }
@@ -24848,7 +26680,10 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     quiz: 'Live Quiz Battle & Test',
     classes: 'Classes & Telegram Chat',
     exams: 'Exams & Leaderboard',
-    mistakes: 'Mistakes Notebook'
+    mistakes: 'Mistakes Notebook',
+    leaderboard: 'ETHITH Coin Leaderboard (Reyting)',
+    market: 'ETHITH Market & Packlar',
+    profile: 'Mening Profilim'
   };
 
   function top() {
@@ -24862,16 +26697,20 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
     var coinSvg = window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(20) : '🪙';
     var userCoins = (user && user.coins !== undefined && user.coins !== null) ? user.coins : 0;
+    var userAvatarHtml = window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR(user, 36) : ('<span class="av">' + (user.name ? user.name.charAt(0).toUpperCase() : 'U') + '</span>');
+    var isTeacherRole = user && user.role === 'teacher';
 
     $('apTop').innerHTML = '' +
       '<button class="ap-burger" id="apBurger">' + ic('menu') + '</button>' +
       '<div class="ttl">' + (TITLES[view.name] || 'ETHITH TESTS') + '</div>' +
       '<div style="flex:1"></div>' +
-      '<div id="topEthCoinPill" class="eth-top-coin-pill" title="ETHITH Coin Hamyoni (Bosib sovrinlar va tangalarni ko\'rish)">' +
-        coinSvg +
-        ' <b id="topEthCoinVal" style="color:#fbbf24;font-family:monospace;font-size:13.5px;font-weight:900">' + userCoins.toLocaleString() + '</b>' +
-        ' <span style="font-size:11px;font-weight:800;color:#f59e0b;text-transform:uppercase">Coin</span>' +
-      '</div>' +
+      (!isTeacherRole ? (
+        '<div id="topEthCoinPill" class="eth-top-coin-pill" title="ETHITH Coin Hamyoni (Bosib Market va Reytingni ko\\\'rish)">' +
+          coinSvg +
+          ' <b id="topEthCoinVal" style="color:#fbbf24;font-family:monospace;font-size:13.5px;font-weight:900">' + userCoins.toLocaleString() + '</b>' +
+          ' <span style="font-size:11px;font-weight:800;color:#f59e0b;text-transform:uppercase">Coin</span>' +
+        '</div>'
+      ) : '') +
       '<div class="eth-usage-time-pill" title="Foydalanilayotgan muddat: ' + (user.dailyMinutes || 0) + ' min">' +
         ic('clock') + ' Usage Time: <b>' + (user.dailyMinutes || 0) + ' min</b>' +
       '</div>' +
@@ -24880,16 +26719,15 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         (unreadNotifs > 0 ? '<span class="eth-notif-badge">' + unreadNotifs + '</span>' : '') +
       '</button>' +
       '<button class="ap-ib" id="apTheme">' + ic(S.theme === 'dark' ? 'sun' : 'moon') + '</button>' +
-      '<div class="ap-user">' +
-      '  <span class="av">' + (user.name ? user.name.charAt(0).toUpperCase() : 'U') + '</span>' +
-      '  <span><b>' + esc(user.name) + '</b><small>' + (user.role === 'teacher' ? 'Teacher' : 'Student (' + S.level + ')') + '</small></span>' +
+      '<div class="ap-user" style="cursor:pointer" onclick="go(\'profile\')" title="Profilni ochish">' +
+        userAvatarHtml +
+        '<span><b>' + esc(user.name) + '</b><small>' + (isTeacherRole ? 'Teacher' : 'Student (' + S.level + ')') + '</small></span>' +
       '</div>';
 
     var cPill = $('topEthCoinPill');
     if (cPill) {
       cPill.onclick = function() {
-        window._ethithQuizSubtab = 'gifts';
-        go('quiz');
+        go('market');
       };
     }
   }
@@ -24943,6 +26781,12 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       window.EthithViews.renderExamsView(v);
     } else if (view.name === 'mistakes') {
       window.EthithViews.renderMistakesNotebook(v);
+    } else if (view.name === 'leaderboard') {
+      window.EthithViews.renderLeaderboardView(v);
+    } else if (view.name === 'market') {
+      window.EthithViews.renderMarketView(v);
+    } else if (view.name === 'profile') {
+      window.EthithViews.renderProfileView(v);
     }
   }
 

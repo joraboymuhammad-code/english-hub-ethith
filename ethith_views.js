@@ -537,14 +537,14 @@
     safe = safe.replace(/^(\*{3,}|-{3,})$/gm, '<hr class="ai-divider">');
 
     // Pedagogical Badges & Labels:
-    safe = safe.replace(/\*\*(?:Meaning|Ma'nosi):\*\*/gi, '<span class="ai-badge ai-badge-meaning">Meaning</span>');
+    safe = safe.replace(/\*\*(?:Meaning|Ma\'nosi):\*\*/gi, '<span class="ai-badge ai-badge-meaning">Meaning</span>');
     safe = safe.replace(/\*\*(?:Example|Misol):\*\*/gi, '<span class="ai-badge ai-badge-example">Example</span>');
     safe = safe.replace(/\*\*(?:IELTS Tip|Tip|Maslahat):\*\*/gi, '<span class="ai-badge ai-badge-tip">IELTS Tip</span>');
     safe = safe.replace(/\*\*(?:Grammar Alert|Grammar Rule|Note):\*\*/gi, '<span class="ai-badge ai-badge-alert">Grammar Alert</span>');
     safe = safe.replace(/\*\*(?:Collocations|Collocation):\*\*/gi, '<span class="ai-badge ai-badge-colloc">Collocations</span>');
     safe = safe.replace(/\*\*(?:Synonyms|Synonym):\*\*/gi, '<span class="ai-badge ai-badge-syn">Synonyms</span>');
 
-    safe = safe.replace(/^(Meaning|Ma'nosi):\s*/gmi, '<span class="ai-badge ai-badge-meaning">Meaning</span> ');
+    safe = safe.replace(/^(Meaning|Ma\'nosi):\s*/gmi, '<span class="ai-badge ai-badge-meaning">Meaning</span> ');
     safe = safe.replace(/^(Example|Misol):\s*/gmi, '<span class="ai-badge ai-badge-example">Example</span> ');
     safe = safe.replace(/^(IELTS Tip|Tip|Maslahat):\s*/gmi, '<span class="ai-badge ai-badge-tip">IELTS Tip</span> ');
     safe = safe.replace(/^(Grammar Alert|Grammar Rule|Note):\s*/gmi, '<span class="ai-badge ai-badge-alert">Grammar Alert</span> ');
@@ -1527,7 +1527,7 @@
             '  <b>' + esc(m.replyTo.senderName) + '</b>' +
             '  <span>' + esc(m.replyTo.text.slice(0, 60)) + '</span>' +
             '</div>' : '') +
-          (!isOwn ? '<div class="tg-msg-sender">' + esc(m.senderName) + '</div>' : '') +
+          ((!isOwn ? '<div class="tg-msg-sender" style="display:flex;align-items:center;gap:6px">' + (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR({ name: m.senderName, avatar: m.senderAvatar }, 22) : '') + '<span>' + esc(m.senderName) + '</span></div>' : '')) +
           '    <div class="tg-msg-text">' + esc(m.text) + '</div>' +
           '    <div class="tg-msg-meta">' + m.time + (isOwn ? ' ✓✓' : '') + '</div>' +
           (reactionsList.length > 0 ?
@@ -1554,22 +1554,17 @@
       '  </div>' +
       '  <div class="tg-chat-emoji-tray" id="tgChatEmojiTray">' +
       '    <span style="font-size:11.5px;color:var(--muted);font-weight:700;margin-right:2px">Emojis:</span>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="😊">😊</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="😂">😂</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="👍">👍</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="❤️">❤️</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🔥">🔥</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="👏">👏</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🎉">🎉</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="✍️">✍️</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="📚">📚</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="💡">💡</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🎯">🎯</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🌟">🌟</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🤔">🤔</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="🚀">🚀</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="💯">💯</button>' +
-      '    <button type="button" class="tg-emoji-pill" data-insert-em="👌">👌</button>' +
+      (function() {
+        var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍','😊','❤️'];
+        return (window.ETHITH_CHAT_EMOJIS || []).map(function(item) {
+          var isUnlocked = item.isDefault || (myUnlocked.indexOf(item.emoji) !== -1);
+          if (isUnlocked) {
+            return '<button type="button" class="tg-emoji-pill" data-insert-em="' + item.emoji + '" title="' + esc(item.name) + '">' + item.emoji + '</button>';
+          } else {
+            return '<button type="button" class="tg-emoji-pill is-locked" data-locked-em="' + item.emoji + '" title="' + esc(item.name) + ' (Qulflangan: Marketdan oching)">' + item.emoji + '</button>';
+          }
+        }).join('');
+      })() +
       '  </div>' +
       '</div>';
 
@@ -2476,7 +2471,7 @@
       if (file.name.toLowerCase().endsWith('.pdf') || file.type === 'application/pdf') {
         loadPdfJs(function(pdfLib) {
           if (!pdfLib) {
-            alert("PDF kutubxonasi yuklanmadi. Iltimos, fayl matnini to'g'ridan-to'g'ri nusxalab joylashtiring yoki .txt fayl yuklang.");
+            alert("PDF kutubxonasi yuklanmadi. Iltimos, fayl matnini to\'g'ridan-to\'g'ri nusxalab joylashtiring yoki .txt fayl yuklang.");
             return;
           }
           var reader = new FileReader();
@@ -2492,7 +2487,7 @@
               }
               cb(fullText);
             }).catch(function(err) {
-              alert("PDF o'qishda xatolik yuz berdi: " + (err.message || err));
+              alert("PDF o\'qishda xatolik yuz berdi: " + (err.message || err));
             });
           };
           reader.readAsArrayBuffer(file);
@@ -2992,7 +2987,7 @@
               extractFileText(file, function(text) {
                 bulkTextCache = text;
                 renderModal();
-                alert("Savollar fayli muvaffaqiyatli o'qildi! (" + file.name + ")");
+                alert("Savollar fayli muvaffaqiyatli o\'qildi! (" + file.name + ")");
               });
             }
           }
@@ -3009,7 +3004,7 @@
               bulkAnsCache = text;
               var aEl = overlay.querySelector('#bulkAnswerInput');
               if (aEl) aEl.value = text;
-              alert("Javoblar kaliti fayli muvaffaqiyatli o'qildi!");
+              alert("Javoblar kaliti fayli muvaffaqiyatli o\'qildi!");
             });
           }
         };
@@ -3076,7 +3071,7 @@
                 renderModal();
                 alert("Mahalliy tahlil orqali " + fallbackExtracted.length + " ta savol kiritildi.");
               } else {
-                alert("AI savollarni ajrata olmadi. Iltimos, fayl yoki matnni tekshirib qaytadan urinib ko'ring.");
+                alert("AI savollarni ajrata olmadi. Iltimos, fayl yoki matnni tekshirib qaytadan urinib ko\'ring.");
               }
             }
           } catch(err) {
@@ -3086,7 +3081,7 @@
             if (fallback2.length > 0) {
               questionsList = questionsList.concat(fallback2);
               renderModal();
-              alert("AI bandligi sabab mahalliy tahlil ishlatildi: " + fallback2.length + " ta savol qo'shildi!");
+              alert("AI bandligi sabab mahalliy tahlil ishlatildi: " + fallback2.length + " ta savol qo\'shildi!");
             } else {
               alert("Xatolik yuz berdi: " + (err.message || err));
             }
@@ -3116,11 +3111,11 @@
           var ansMap = parseSmartAnswers(aText);
           var extracted = parseQuestionsText(qText, ansMap);
           if (extracted.length === 0) {
-            alert("Savollarni ajratib bo'lmadi. Savollar raqamlar bilan boshlanganiga ishonch hosil qiling (masalan: 1. yoki 1) )");
+            alert("Savollarni ajratib bo\'lmadi. Savollar raqamlar bilan boshlanganiga ishonch hosil qiling (masalan: 1. yoki 1) )");
             return;
           }
           questionsList = questionsList.concat(extracted);
-          alert(extracted.length + " ta savol muvaffaqiyatli aniqlandi va imtihonga qo'shildi!");
+          alert(extracted.length + " ta savol muvaffaqiyatli aniqlandi va imtihonga qo\'shildi!");
           renderModal();
         };
       }
@@ -3136,7 +3131,7 @@
           var d = document.getElementById('mcOptD').value.trim();
           var ansKey = document.getElementById('mcAnsSelect').value;
           if (!qText || !a || !b) {
-            alert("Iltimos, savol matni va kamida A hamda B variantlarini to'ldiring!");
+            alert("Iltimos, savol matni va kamida A hamda B variantlarini to\'ldiring!");
             return;
           }
           var opts = [a, b, c || "None", d || "None"];
@@ -3160,7 +3155,7 @@
           var qText = document.getElementById('wQText').value.trim();
           var ans = document.getElementById('wAnsText').value.trim();
           if (!qText || !ans) {
-            alert("Iltimos, yozma savol matni va kutilgan to'g'ri javobni kiriting!");
+            alert("Iltimos, yozma savol matni va kutilgan to\'g'ri javobni kiriting!");
             return;
           }
           questionsList.push({
@@ -3210,7 +3205,7 @@
       var clearAllBtn = overlay.querySelector('#clearAllQBtn');
       if (clearAllBtn) {
         clearAllBtn.onclick = function() {
-          if (confirm("Barcha kiritilgan savollarni o'chirmoqchimisiz?")) {
+          if (confirm("Barcha kiritilgan savollarni o\'chirmoqchimisiz?")) {
             questionsList = [];
             renderModal();
           }
@@ -3224,7 +3219,7 @@
           return;
         }
         if (questionsList.length === 0) {
-          alert("Iltimos, kamida bitta savol qo'shing!");
+          alert("Iltimos, kamida bitta savol qo\'shing!");
           return;
         }
 
@@ -3257,7 +3252,7 @@
         }
 
         overlay.remove();
-        alert("Imtihon muvaffaqiyatli yaratildi!\nO'quvchilar uchun 6 xonali maxsus kod: " + code);
+        alert("Imtihon muvaffaqiyatli yaratildi!\nO\'quvchilar uchun 6 xonali maxsus kod: " + code);
         if (isLevelTransition && levelFrom) {
           renderLevelsView(container, levelFrom);
         } else {
@@ -3325,7 +3320,7 @@
       }
 
       if (!exam) {
-        alert("Bunday 6 xonali kodga ega imtihon topilmadi! Kodni to'g'ri kiritganingizni tekshiring.");
+        alert("Bunday 6 xonali kodga ega imtihon topilmadi! Kodni to\'g'ri kiritganingizni tekshiring.");
         return;
       }
 
@@ -3554,7 +3549,7 @@
         if (!isFs) {
           ensureFullscreen();
           if (!isExamLocked) {
-            triggerInfraction("O'quvchi Escape (Esc) tugmasini bosib ekrandan chiqishga urindi!");
+            triggerInfraction("O\'quvchi Escape (Esc) tugmasini bosib ekrandan chiqishga urindi!");
           }
         } else {
           requestKeyboardLock();
@@ -3566,19 +3561,19 @@
         var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
         if (!isFs && !isExamLocked) {
           ensureFullscreen();
-          triggerInfraction("O'quvchi brauzer o'lchamini o'zgartirib chiqishga urindi!");
+          triggerInfraction("O\'quvchi brauzer o\'lchamini o\'zgartirib chiqishga urindi!");
         }
       }
 
       // 3. Anti-Cheat: Tab Switch & Window Blur Detection (students only)
       function onWindowBlur() {
         if (isTeacher || isExamFinished || isExamLocked) return;
-        triggerInfraction("Brauzer oynasi tark etildi yoki boshqa dasturga o'tildi!");
+        triggerInfraction("Brauzer oynasi tark etildi yoki boshqa dasturga o\'tildi!");
       }
       function onVisChange() {
         if (isTeacher || isExamFinished || isExamLocked) return;
         if (document.hidden) {
-          triggerInfraction("Boshqa tabga o'tildi yoki oyna kichraytirildi!");
+          triggerInfraction("Boshqa tabga o\'tildi yoki oyna kichraytirildi!");
         }
       }
 
@@ -3672,7 +3667,7 @@
           } catch(err) {}
           ensureFullscreen();
           if (!isExamLocked) {
-            triggerInfraction("O'quvchi " + blockedKeyName + " tugmasini bosib ekranni o'zgartirib firibgarlik qilmoqchi bo'ldi!");
+            triggerInfraction("O\'quvchi " + blockedKeyName + " tugmasini bosib ekranni o\'zgartirib firibgarlik qilmoqchi bo\'ldi!");
           }
           return false;
         }
@@ -3839,14 +3834,14 @@
               }
               if (noFaceTicks >= 12) {
                 if (angleBadge) {
-                  angleBadge.textContent = "Yuz yo'q";
+                  angleBadge.textContent = "Yuz yo\'q";
                   angleBadge.className = 'eth-cam-badge danger';
                 }
                 if (dot) dot.className = 'eth-cam-dot danger';
                 if (oval) oval.className = 'eth-cam-target-oval danger';
                 var missingSnap = captureProctorSnapshot();
                 playTitTitAlarm(6);
-                triggerInfraction("Kamerada o'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro'parasida o'tiring)", missingSnap);
+                triggerInfraction("Kamerada o\'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro\'parasida o\'tiring)", missingSnap);
               }
               return;
             }
@@ -4009,7 +4004,7 @@
             }
 
             // Violation evaluation:
-            // Normal (< 50°) -> Green ("To'g'ri: XX°")
+            // Normal (< 50°) -> Green ("To\'g'ri: XX°")
             // 50° - 64° -> Yellow Warning ("Burilish: XX°"), NO lock!
             // >= 65° continuous for 2.5 seconds (10 ticks) -> DANGER: takes photo snapshot & locks!
             var isDanger = (angleHeadYaw >= 65) || isPitchExtreme;
@@ -4018,7 +4013,7 @@
 
             if (angleBadge) {
               if (!isWarn && !isDanger) {
-                angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
+                angleBadge.textContent = "To\'g'ri: " + estimatedAngle + "°";
                 angleBadge.className = 'eth-cam-badge';
                 if (dot) dot.className = 'eth-cam-dot';
                 if (oval) oval.className = 'eth-cam-target-oval';
@@ -4043,9 +4038,9 @@
                 var proofSnap = captureProctorSnapshot();
                 playTitTitAlarm(6);
                 if (isPitchExtreme) {
-                  triggerInfraction("O'quvchi boshini 80° dan ortiq tepaga/pastga burib 2.5 soniya turdi", proofSnap);
+                  triggerInfraction("O\'quvchi boshini 80° dan ortiq tepaga/pastga burib 2.5 soniya turdi", proofSnap);
                 } else {
-                  triggerInfraction("O'quvchi boshini 65° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
+                  triggerInfraction("O\'quvchi boshini 65° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
                 }
               }
             } else {
@@ -4895,7 +4890,7 @@
             writingEval = {
               score: fallbackPts,
               wordCount: words.length,
-              feedback: "Yozma topshiriq topshirildi (" + words.length + " so'z).",
+              feedback: "Yozma topshiriq topshirildi (" + words.length + " so\'z).",
               criteria: { taskAchievement: Math.round(fallbackPts/4), coherence: Math.round(fallbackPts/4), lexical: Math.round(fallbackPts/4), grammar: Math.round(fallbackPts/4) }
             };
           }
@@ -5963,13 +5958,13 @@
       function onWindowBlur() {
         if (isTestFinished || isExamLocked) return;
         playTitTitAlarm(6);
-        triggerInfraction("Brauzer oynasidan chiqish yoki boshqa oynalarga o'tish aniqlandi");
+        triggerInfraction("Brauzer oynasidan chiqish yoki boshqa oynalarga o\'tish aniqlandi");
       }
       function onVisChange() {
         if (isTestFinished || isExamLocked) return;
         if (document.hidden) {
           playTitTitAlarm(6);
-          triggerInfraction("Brauzer oynasi minimallashtirildi yoki boshqa sahifaga o'tildi");
+          triggerInfraction("Brauzer oynasi minimallashtirildi yoki boshqa sahifaga o\'tildi");
         }
       }
 
@@ -5995,7 +5990,7 @@
         var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
         if (!isFs) {
           playTitTitAlarm(6);
-          triggerInfraction("To'liq ekran rejimidan chiqish aniqlandi! Qoidabuzarlik sababli placement test bloklandi.");
+          triggerInfraction("To\'liq ekran rejimidan chiqish aniqlandi! Qoidabuzarlik sababli placement test bloklandi.");
         }
       }
 
@@ -6149,14 +6144,14 @@
             }
             if (noFaceTicks >= 12) {
               if (angleBadge) {
-                angleBadge.textContent = "Yuz yo'q";
+                angleBadge.textContent = "Yuz yo\'q";
                 angleBadge.className = 'eth-cam-badge danger';
               }
               if (dot) dot.className = 'eth-cam-dot danger';
               if (oval) oval.className = 'eth-cam-target-oval danger';
               var missingSnap = captureProctorSnapshot();
               playTitTitAlarm(6);
-              triggerInfraction("Kamerada o'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro'parasida o'tiring)", missingSnap);
+              triggerInfraction("Kamerada o\'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro\'parasida o\'tiring)", missingSnap);
             }
             return;
           }
@@ -6319,7 +6314,7 @@
           }
 
           // Violation evaluation:
-          // Normal (< 50°) -> Green ("To'g'ri: XX°")
+          // Normal (< 50°) -> Green ("To\'g'ri: XX°")
           // 50° - 64° -> Yellow Warning ("Burilish: XX°"), NO lock!
           // >= 65° continuous for 2.5 seconds (10 ticks) -> DANGER: takes photo snapshot & locks!
           var isDanger = (angleHeadYaw >= 65) || isPitchExtreme;
@@ -6328,7 +6323,7 @@
 
           if (angleBadge) {
             if (!isWarn && !isDanger) {
-              angleBadge.textContent = "To'g'ri: " + estimatedAngle + "°";
+              angleBadge.textContent = "To\'g'ri: " + estimatedAngle + "°";
               angleBadge.className = 'eth-cam-badge';
               if (dot) dot.className = 'eth-cam-dot';
               if (oval) oval.className = 'eth-cam-target-oval';
@@ -6353,9 +6348,9 @@
               var proofSnap = captureProctorSnapshot();
               playTitTitAlarm(6);
               if (isPitchExtreme) {
-                triggerInfraction("O'quvchi boshini 80° dan ortiq tepaga/pastga burib 2.5 soniya turdi", proofSnap);
+                triggerInfraction("O\'quvchi boshini 80° dan ortiq tepaga/pastga burib 2.5 soniya turdi", proofSnap);
               } else {
-                triggerInfraction("O'quvchi boshini 65° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
+                triggerInfraction("O\'quvchi boshini 65° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
               }
             }
           } else {
@@ -6376,7 +6371,7 @@
           var dot = document.getElementById('proctorCamDot');
           if (dot) dot.className = 'eth-cam-dot';
           if (angleBadge) {
-            angleBadge.textContent = "To'g'ri: 0°";
+            angleBadge.textContent = "To\'g'ri: 0°";
             angleBadge.className = 'eth-cam-badge';
           }
           ensureFullscreen();
@@ -7120,7 +7115,7 @@
         sampleQuestions = sampleQuestions.concat([
           { question: "The studio apartment on Green Street costs £___ per month.", options: [], answer: "450", type: "written", points: 1 },
           { question: "What type of parking facility is available for residents?", options: ["underground", "street-level", "valet", "none"], answer: "underground", type: "choice", points: 1 },
-          { question: "The caller's surname is spelt: H-A-R-L-I-N-G-T-O-N.", options: ["True", "False"], answer: "True", type: "bool", points: 1 },
+          { question: "The caller\'s surname is spelt: H-A-R-L-I-N-G-T-O-N.", options: ["True", "False"], answer: "True", type: "bool", points: 1 },
           { question: "The Orchid House is located immediately ___ of the central lake.", options: ["north", "south", "east", "west"], answer: "north", type: "choice", points: 1 }
         ]);
       }
@@ -7340,7 +7335,7 @@
         btn.onclick = function() {
           syncFormToTemp();
           var idx = parseInt(btn.dataset.qidx, 10);
-          if (confirm("#" + (idx + 1) + "-savolni o'chirishga ishonchingiz komilmi?")) {
+          if (confirm("#" + (idx + 1) + "-savolni o\'chirishga ishonchingiz komilmi?")) {
             tempExam.questions.splice(idx, 1);
             renderEditForm();
           }
@@ -7367,7 +7362,7 @@
         saveBtn.onclick = function() {
           syncFormToTemp();
           if (!tempExam.title) { alert("Iltimos, imtihon nomini kiriting!"); return; }
-          if (!tempExam.questions || tempExam.questions.length === 0) { alert("Kamida 1 ta savol bo'lishi shart!"); return; }
+          if (!tempExam.questions || tempExam.questions.length === 0) { alert("Kamida 1 ta savol bo\'lishi shart!"); return; }
 
           var exIdx = (S.exams || []).findIndex(function(x) {
             return (x.id && exam.id && String(x.id) === String(exam.id)) ||
@@ -7912,7 +7907,7 @@
 
           addedQuestions.push(newQ);
 
-          // User-Requested Toast: "savol aftamatik tarzda pastga qo'shildi deb yozuv chiqadi"
+          // User-Requested Toast: "savol aftamatik tarzda pastga qo\'shildi deb yozuv chiqadi"
           var toast = document.createElement('div');
           toast.className = 'wayground-added-toast';
           toast.innerHTML = '<span>✅</span> <span>Savol avtomatik tarzda pastga qo\'shildi! (Jami: ' + addedQuestions.length + ' ta)</span>';
@@ -8411,7 +8406,7 @@
           var giftName = giftObj.name || giftObj.title || "Sovrin";
           if (!confirm("Siz rostdan ham ushbu sovrinni (" + giftName + ") " + price + " ETHITH Coin evaziga sotmoqchimisiz?")) return;
           
-          // Remove gift from user's inventory
+          // Remove gift from user\'s inventory
           S.user.gifts.splice(idx, 1);
           // Credit ETHITH Coins
           S.user.coins = (S.user.coins || 0) + price;
@@ -8436,9 +8431,9 @@
 
           App.saveState();
           if (typeof App.showToast === 'function') {
-            App.showToast("Muvaffaqiyatli sotildi! Hamyoningizga +" + price + " ETHITH Coin qo'shildi! 🪙", "success");
+            App.showToast("Muvaffaqiyatli sotildi! Hamyoningizga +" + price + " ETHITH Coin qo\'shildi! 🪙", "success");
           } else {
-            alert("Muvaffaqiyatli sotildi! Hamyoningizga +" + price + " ETHITH Coin qo'shildi! 🪙");
+            alert("Muvaffaqiyatli sotildi! Hamyoningizga +" + price + " ETHITH Coin qo\'shildi! 🪙");
           }
           renderContent();
         };
@@ -8608,13 +8603,22 @@
         hash |= 0;
       }
       var selectedIndex = Math.abs(hash + (idx || 0)) % QUIZIZZ_HEROES.length;
+      var foundAcc = (S.accounts || []).find(function(a) {
+        return (a.name && a.name.toLowerCase() === str.toLowerCase()) || (a.id && a.id === str);
+      });
+      if (foundAcc && foundAcc.avatar) {
+        var avObj = (window.ETHITH_AVATARS || []).find(function(av) { return av.id === foundAcc.avatar || (foundAcc.avatar.id && av.id === foundAcc.avatar.id); });
+        if (avObj) {
+          return { id: avObj.id, name: avObj.name, emoji: '', isCustomAvatar: true, avatar: avObj, bg: avObj.bg || '#1e293b', border: avObj.border || '#38bdf8' };
+        }
+      }
       return QUIZIZZ_HEROES[selectedIndex];
     }
 
     // 1. Shuffle Questions order per student
     var shuffledQuestions = shuffleArray(quiz.questions);
 
-    // 2. Pre-shuffle OPTIONS for EACH question per student (User Requirement: "har bitta savolning variandining o'rniham almashib tushadi")
+    // 2. Pre-shuffle OPTIONS for EACH question per student (User Requirement: "har bitta savolning variandining o\'rniham almashib tushadi")
     var preparedQuestions = shuffledQuestions.map(function(q) {
       var origOpts = q.options || [];
       var mapped = origOpts.map(function(optText, oIdx) {
@@ -9636,8 +9640,8 @@
       list.sort(function(a, b) { return b.score - a.score; });
 
       var prize1 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(1) : { name: "Eski rezina tapichka (43-razmer)", icon: "🩴", desc: "Sifatli va qalin tapichka", rarity: "oddiy", price: 60 };
-      var prize2 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg'a", rarity: "kamyob", price: 180 };
-      var prize3 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko'rkam tufli", rarity: "epika", price: 350 };
+      var prize2 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg\'a", rarity: "kamyob", price: 180 };
+      var prize3 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko\'rkam tufli", rarity: "epika", price: 350 };
 
       if (!prize1.price && window.ETHITH_GET_PRIZE_PRICE) prize1.price = window.ETHITH_GET_PRIZE_PRICE(prize1);
       if (!prize2.price && window.ETHITH_GET_PRIZE_PRICE) prize2.price = window.ETHITH_GET_PRIZE_PRICE(prize2);
@@ -9691,8 +9695,8 @@
       var winner3 = list[2] || null;
 
       var prize1 = (officialPrizes && officialPrizes[1]) ? officialPrizes[1] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(1) : { name: "Eski rezina tapichka (43-razmer)", icon: "🩴", desc: "Sifatli va qalin tapichka", rarity: "oddiy", price: 60 });
-      var prize2 = (officialPrizes && officialPrizes[2]) ? officialPrizes[2] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg'a", rarity: "kamyob", price: 180 });
-      var prize3 = (officialPrizes && officialPrizes[3]) ? officialPrizes[3] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko'rkam tufli", rarity: "epika", price: 350 });
+      var prize2 = (officialPrizes && officialPrizes[2]) ? officialPrizes[2] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg\'a", rarity: "kamyob", price: 180 });
+      var prize3 = (officialPrizes && officialPrizes[3]) ? officialPrizes[3] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko\'rkam tufli", rarity: "epika", price: 350 });
 
       if (!prize1.price && window.ETHITH_GET_PRIZE_PRICE) prize1.price = window.ETHITH_GET_PRIZE_PRICE(prize1);
       if (!prize2.price && window.ETHITH_GET_PRIZE_PRICE) prize2.price = window.ETHITH_GET_PRIZE_PRICE(prize2);
@@ -9722,7 +9726,7 @@
         };
         S.user.gifts.unshift(newWonGift);
 
-        // Also add to user's record in S.accounts
+        // Also add to user\'s record in S.accounts
         if (Array.isArray(S.accounts)) {
           var myAccountRec = S.accounts.find(function(a) {
             return (a.email && S.user.email && a.email.toLowerCase() === S.user.email.toLowerCase()) ||
@@ -10529,7 +10533,7 @@
     function executeSend(targetName, targetEmail) {
       if (!confirm("Rostdan ham '" + gift.name + "' sovrinini " + targetName + " ga yubormoqchimisiz?")) return;
 
-      // 1. Remove from sender's gifts
+      // 1. Remove from sender\'s gifts
       if (Array.isArray(S.user.gifts)) {
         var gIdx = S.user.gifts.findIndex(function(g) { return (g.id && g.id === gift.id) || g.name === gift.name; });
         if (gIdx !== -1) S.user.gifts.splice(gIdx, 1);
@@ -10556,12 +10560,12 @@
 
       var transferredGift = Object.assign({}, gift, {
         id: 'gift_' + Date.now(),
-        fromFriend: S.user.name || "Do'stingiz",
-        senderName: S.user.name || "Do'stingiz",
+        fromFriend: S.user.name || "Do\'stingiz",
+        senderName: S.user.name || "Do\'stingiz",
         transferredAt: Date.now()
       });
 
-      // 2. Save into recipient's auto-claim inbox in localStorage
+      // 2. Save into recipient\'s auto-claim inbox in localStorage
       var targetKeyName = 'ethith_received_gifts_' + targetName.toLowerCase().trim();
       var pending = [];
       try { pending = JSON.parse(localStorage.getItem(targetKeyName) || '[]'); } catch(e) {}
@@ -10583,13 +10587,13 @@
           giftName: gift.name,
           giftIcon: gift.icon,
           giftDesc: gift.desc,
-          senderName: S.user.name || "Do'stingiz",
+          senderName: S.user.name || "Do\'stingiz",
           recipientName: targetName,
           recipientEmail: targetEmail
         });
       }
 
-      // 4. Top Toast Notification (User Requirement: "sovg'ani do'stiga yuborgach tepada habar kelsin")
+      // 4. Top Toast Notification (User Requirement: "sovg\'ani do\'stiga yuborgach tepada habar kelsin")
       var toast = document.createElement('div');
       toast.className = 'animate-fade-in';
       toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:14px 28px;border-radius:16px;font-weight:800;z-index:99999999;box-shadow:0 12px 35px rgba(0,0,0,0.5);border:2px solid #10b981;display:flex;align-items:center;gap:12px;backdrop-filter:blur(10px);';
@@ -10617,7 +10621,722 @@
     }
   }
 
+  
+  // ====================================================
+  // 1. MOTION ANIMATED LEADERBOARD VIEW (COIN-BASED)
+  // ====================================================
+  function renderLeaderboardView(container) {
+    if (!container) return;
+
+    var regUsers = [];
+    try {
+      regUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+    } catch(e) {}
+
+    var allAccounts = (S.accounts || []).concat(regUsers);
+    var studentMap = {};
+
+    allAccounts.forEach(function(u) {
+      if (!u || u.role === 'teacher') return; // Teachers have NO coin system
+      var key = ((u.email && u.email.trim().toLowerCase()) || (u.id || u.name || '').toLowerCase()).trim();
+      if (!key) return;
+
+      if (!studentMap[key]) {
+        studentMap[key] = {
+          id: u.id || key,
+          name: u.name || "O\'quvchi",
+          email: u.email || '',
+          level: u.level || 'A1',
+          avatar: u.avatar || null,
+          coins: (u.coins !== undefined && u.coins !== null) ? Number(u.coins) : 0,
+          dailyMinutes: u.dailyMinutes || 0
+        };
+      } else {
+        if (u.coins !== undefined && u.coins !== null) {
+          studentMap[key].coins = Math.max(studentMap[key].coins, Number(u.coins));
+        }
+        if (u.avatar) studentMap[key].avatar = u.avatar;
+      }
+    });
+
+    // Ensure current active student is included with latest state
+    if (S.user && S.user.role !== 'teacher') {
+      var myKey = ((S.user.email && S.user.email.trim().toLowerCase()) || (S.user.id || S.user.name || '').toLowerCase()).trim();
+      studentMap[myKey] = {
+        id: S.user.id || myKey,
+        name: S.user.name || "O\'quvchi",
+        email: S.user.email || '',
+        level: S.level || 'A1',
+        avatar: S.user.avatar || null,
+        coins: Number(S.user.coins || 0),
+        dailyMinutes: S.user.dailyMinutes || 0
+      };
+    }
+
+    var students = Object.values(studentMap);
+    students.sort(function(a, b) {
+      if (b.coins !== a.coins) return b.coins - a.coins;
+      return (b.dailyMinutes || 0) - (a.dailyMinutes || 0);
+    });
+
+    students = students.slice(0, 50);
+
+    var myRank = -1;
+    if (S.user && S.user.role !== 'teacher') {
+      var myKey = ((S.user.email && S.user.email.trim().toLowerCase()) || (S.user.id || S.user.name || '').toLowerCase()).trim();
+      myRank = students.findIndex(function(s) {
+        return (s.email && s.email.toLowerCase() === myKey) || (s.id && s.id.toLowerCase() === myKey) || (s.name.toLowerCase() === S.user.name.toLowerCase());
+      }) + 1;
+    }
+
+    var first = students[0] || null;
+    var second = students[1] || null;
+    var third = students[2] || null;
+
+    var html = '<div class="eth-leaderboard-screen animate-fade-in">';
+
+    // Header
+    html += '<div class="eth-lb-header">' +
+      '<div class="eth-lb-title">⚡ ETHITH COIN LEADERBOARD ⚡</div>' +
+      '<p class="eth-lb-subtitle">Platformadagi barcha o\'quvchilarning tangalar bo\'yicha jonli reytingi</p>' +
+      (myRank > 0 ? '<div style="margin-top:14px;display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;background:rgba(245,158,11,0.18);border:1px solid #f59e0b;font-size:13px;font-weight:800;color:#fde047">' +
+        'Sizning o\'rningiz: <b style="font-size:15px">#' + myRank + '</b> (' + (S.user.coins || 0).toLocaleString() + ' Coin)</div>' : '') +
+    '</div>';
+
+    // Podium Row
+    if (first) {
+      html += '<div class="eth-lb-podium-row">';
+
+      // Rank 2: Silver Motion
+      if (second) {
+        html += '<div class="eth-lb-card-2">' +
+          '<div style="font-size:26px;margin-bottom:6px">🥈</div>' +
+          '<div style="display:flex;justify-content:center;margin-bottom:10px">' +
+            window.ETHITH_RENDER_USER_AVATAR(second, 56) +
+          '</div>' +
+          '<div style="font-weight:800;font-size:16px;color:#f8fafc;margin-bottom:4px">' + esc(second.name) + '</div>' +
+          '<div style="font-size:12px;color:#94a3b8;margin-bottom:10px">' + (second.level || 'A1') + ' Daraja</div>' +
+          '<div style="display:inline-flex;align-items:center;gap:6px;font-weight:900;color:#cbd5e1;background:rgba(255,255,255,0.08);padding:4px 12px;border-radius:12px">' +
+            window.ETHITH_COIN_SVG(18) + ' ' + (second.coins || 0).toLocaleString() +
+          '</div>' +
+        '</div>';
+      }
+
+      // Rank 1: Crowned Golden Champion
+      html += '<div class="eth-lb-card-1">' +
+        '<div class="eth-crown-badge">👑</div>' +
+        '<div style="display:flex;justify-content:center;margin-bottom:12px;margin-top:8px">' +
+          window.ETHITH_RENDER_USER_AVATAR(first, 68, '', 'box-shadow: 0 0 20px #f59e0b') +
+        '</div>' +
+        '<div style="font-weight:900;font-size:18px;color:#fde047;margin-bottom:4px">' + esc(first.name) + '</div>' +
+        '<div style="font-size:12.5px;color:#fef08a;margin-bottom:12px;font-weight:700">👑 1-O\'RIN CHEMPION (' + (first.level || 'A1') + ')</div>' +
+        '<div style="display:inline-flex;align-items:center;gap:6px;font-weight:900;color:#fbbf24;background:rgba(245,158,11,0.22);border:1px solid #f59e0b;padding:6px 16px;border-radius:16px;font-size:16px">' +
+          window.ETHITH_COIN_SVG(22) + ' ' + (first.coins || 0).toLocaleString() + ' <span style="font-size:11px">COIN</span>' +
+        '</div>' +
+      '</div>';
+
+      // Rank 3: Bronze Motion
+      if (third) {
+        html += '<div class="eth-lb-card-3">' +
+          '<div style="font-size:26px;margin-bottom:6px">🥉</div>' +
+          '<div style="display:flex;justify-content:center;margin-bottom:10px">' +
+            window.ETHITH_RENDER_USER_AVATAR(third, 56) +
+          '</div>' +
+          '<div style="font-weight:800;font-size:16px;color:#f8fafc;margin-bottom:4px">' + esc(third.name) + '</div>' +
+          '<div style="font-size:12px;color:#94a3b8;margin-bottom:10px">' + (third.level || 'A1') + ' Daraja</div>' +
+          '<div style="display:inline-flex;align-items:center;gap:6px;font-weight:900;color:#f59e0b;background:rgba(255,255,255,0.08);padding:4px 12px;border-radius:12px">' +
+            window.ETHITH_COIN_SVG(18) + ' ' + (third.coins || 0).toLocaleString() +
+          '</div>' +
+        '</div>';
+      }
+
+      html += '</div>';
+    }
+
+    // Remaining Ranks 4+ (Minimalist, uniform, no-effect clean rows)
+    var restStudents = students.slice(3);
+    if (restStudents.length > 0) {
+      html += '<div class="eth-lb-list">';
+      html += '<div style="font-weight:800;font-size:14px;color:var(--muted);margin-bottom:8px;padding-left:4px">BOSHQA O\'QUVCHILAR:</div>';
+      restStudents.forEach(function(st, idx) {
+        var rank = idx + 4;
+        var isMe = S.user && ((st.email && S.user.email && st.email.toLowerCase() === S.user.email.toLowerCase()) || st.name.toLowerCase() === S.user.name.toLowerCase());
+        html += '<div class="eth-lb-row ' + (isMe ? 'is-me' : '') + '">' +
+          '<div class="eth-lb-rank-num">#' + rank + '</div>' +
+          '<div class="eth-lb-user-info">' +
+            window.ETHITH_RENDER_USER_AVATAR(st, 36) +
+            '<div style="min-width:0;flex:1">' +
+              '<div class="eth-lb-name">' + esc(st.name) + (isMe ? ' <span style="font-size:11px;color:#f59e0b;font-weight:800">(Siz)</span>' : '') + '</div>' +
+              '<div style="font-size:11.5px;color:var(--muted)">' + (st.level || 'A1') + ' Daraja</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="eth-lb-coins">' +
+            window.ETHITH_COIN_SVG(16) + ' ' + (st.coins || 0).toLocaleString() +
+          '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+    }
+
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  // ====================================================
+  // 2. EA SPORTS & MLBB PACK MARKET VIEW
+  // ====================================================
+  function renderMarketView(container) {
+    if (!container) return;
+
+    var userCoins = (S.user && S.user.coins !== undefined) ? S.user.coins : 0;
+    var lastDaily = (S.user && S.user.lastDailyPackAt) ? Number(S.user.lastDailyPackAt) : 0;
+    var now = Date.now();
+    var diffMs = now - lastDaily;
+    var isDailyReady = diffMs >= 24 * 60 * 60 * 1000;
+    var remainingMs = Math.max(0, (24 * 60 * 60 * 1000) - diffMs);
+    var remainingHrs = Math.floor(remainingMs / (1000 * 60 * 60));
+    var remainingMins = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
+
+    var html = '<div class="eth-market-screen animate-fade-in">';
+
+    // Banner
+    html += '<div class="eth-market-banner">' +
+      '<div>' +
+        '<div style="font-size:12px;font-weight:800;letter-spacing:1px;color:#fde047;text-transform:uppercase;margin-bottom:6px">⚡ ETHITH PACK SHOP ⚡</div>' +
+        '<h2 style="font-size:26px;font-weight:900;margin:0 0 8px">Sehrli Qutilar & Packlar Marketi</h2>' +
+        '<p style="font-size:14px;color:#cbd5e1;margin:0;max-width:540px">ETHITH Coinlaringiz evaziga noyob personaj avatarlari, qimmatbaho sovrinlar va Telegram chat emojilarini yutib oling!</p>' +
+      '</div>' +
+      '<div style="text-align:right;flex-shrink:0">' +
+        '<div style="font-size:12px;color:#94a3b8;font-weight:700;margin-bottom:4px">HAMYONINGIZ:</div>' +
+        '<div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,0.35);border:1px solid #f59e0b;padding:8px 18px;border-radius:20px">' +
+          window.ETHITH_COIN_SVG(26) +
+          '<span style="font-size:20px;font-weight:900;color:#fde047;font-family:monospace">' + userCoins.toLocaleString() + '</span>' +
+          '<span style="font-size:11px;font-weight:800;color:#f59e0b">COIN</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    // Grid of Packs
+    html += '<div class="eth-market-grid">';
+    (window.ETHITH_PACKS || []).forEach(function(pack) {
+      var isComing = !!pack.isComingSoon;
+      var canOpenDaily = pack.isFreeDaily ? isDailyReady : true;
+
+      var btnLabel = '';
+      if (isComing) {
+        btnLabel = '🔒 TEZ KUNDA';
+      } else if (pack.isFreeDaily) {
+        btnLabel = isDailyReady ? '🎁 BEPUL OCHISH (0 COIN)' : ('⏳ ' + remainingHrs + 's ' + remainingMins + 'd kutish');
+      } else {
+        btnLabel = window.ETHITH_COIN_SVG(18) + ' ' + pack.price + ' COIN BILAN OCHISH';
+      }
+
+      html += '<div class="eth-pack-card" style="background:' + pack.gradient + ';border-color:' + pack.glowColor + '" data-pack-id="' + pack.id + '">' +
+        '<div class="eth-pack-badge">' + esc(pack.badge) + '</div>' +
+        '<div class="eth-pack-icon">' + pack.icon + '</div>' +
+        '<div class="eth-pack-name">' + esc(pack.name) + '</div>' +
+        '<div class="eth-pack-desc">' + esc(pack.desc) + '</div>' +
+        '<button type="button" class="eth-pack-btn ' + ((isComing || !canOpenDaily) ? 'is-disabled' : '') + '" data-action="open-pack" data-pack-id="' + pack.id + '">' +
+          btnLabel +
+        '</button>' +
+      '</div>';
+    });
+    html += '</div>';
+
+    html += '</div>';
+    container.innerHTML = html;
+
+    // Attach click listeners to open packs
+    container.querySelectorAll('[data-action="open-pack"]').forEach(function(btn) {
+      btn.onclick = function() {
+        var pId = btn.dataset.packId;
+        var p = (window.ETHITH_PACKS || []).find(function(item) { return item.id === pId; });
+        if (!p || p.isComingSoon) {
+          if (p && p.isComingSoon) alert("Ushbu pack tez kunda ochiladi!");
+          return;
+        }
+
+        if (p.isFreeDaily) {
+          var last = (S.user && S.user.lastDailyPackAt) ? Number(S.user.lastDailyPackAt) : 0;
+          if (Date.now() - last < 24 * 60 * 60 * 1000) {
+            alert("Kunlik bepul packni faqat 24 soatda 1 marta ochish mumkin! Iltimos, taymer tugashini kuting.");
+            return;
+          }
+        } else {
+          if (!S.user || (S.user.coins || 0) < p.price) {
+            alert("Mablag' yetarli emas! Sizda " + (S.user.coins || 0) + " Coin bor, ushbu pack narxi esa " + p.price + " Coin.");
+            return;
+          }
+        }
+
+        // Open MLBB style interactive modal
+        showMLBBPackOpeningModal(p, function() {
+          renderMarketView(container);
+          if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+        });
+      };
+    });
+  }
+
+  // ====================================================
+  // 3. MLBB STYLE 5-BOX DRAW & CONNECT PACK OPENING MODAL
+  // ====================================================
+  function showMLBBPackOpeningModal(pack, onDone) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-pack-modal-overlay animate-fade-in';
+
+    // 5 coordinates arranged in a stylish arc/pentagon
+    var boxPositions = [
+      { x: 131, y: 15 },   // Top Center
+      { x: 236, y: 95 },   // Top Right
+      { x: 196, y: 225 },  // Bottom Right
+      { x: 66,  y: 225 },  // Bottom Left
+      { x: 26,  y: 95 }    // Top Left
+    ];
+
+    var connectedBoxes = [];
+    var isFusing = false;
+
+    var arenaHtml = '' +
+      '<div class="eth-pack-arena" id="ethPackArena">' +
+      '  <div class="eth-pack-arena-title">✨ ' + esc(pack.name.toUpperCase()) + ' ✨</div>' +
+      '  <div class="eth-pack-arena-hint" id="ethPackArenaHint">Qutini ochish uchun 5 ta sehrli nuqtani ketma-ket bosing yoki birlashtiring (<b id="ethBoxCount">0</b>/5)</div>' +
+      '  <div class="eth-boxes-container" id="ethBoxesContainer">' +
+      '    <svg id="ethLaserSvg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1"></svg>' +
+           boxPositions.map(function(pos, i) {
+             return '<div class="eth-mystery-box" data-idx="' + i + '" style="left:' + pos.x + 'px;top:' + pos.y + 'px;">' + (i + 1) + '</div>';
+           }).join('') +
+      '  </div>' +
+      '  <div style="margin-top:24px;display:flex;gap:12px">' +
+      '    <button type="button" id="ethAutoConnectBtn" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer">⚡ Tezkor Ulash (Hammasi)</button>' +
+      '    <button type="button" id="ethCancelPackBtn" style="background:transparent;border:none;color:#94a3b8;font-size:13px;cursor:pointer">Bekor qilish</button>' +
+      '  </div>' +
+      '</div>';
+
+    overlay.innerHTML = arenaHtml;
+    document.body.appendChild(overlay);
+
+    var laserSvg = overlay.querySelector('#ethLaserSvg');
+    var countEl = overlay.querySelector('#ethBoxCount');
+    var hintEl = overlay.querySelector('#ethPackArenaHint');
+    var containerEl = overlay.querySelector('#ethBoxesContainer');
+
+    function drawLaserLine(x1, y1, x2, y2) {
+      var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', x1);
+      line.setAttribute('y1', y1);
+      line.setAttribute('x2', x2);
+      line.setAttribute('y2', y2);
+      line.setAttribute('stroke', '#fde047');
+      line.setAttribute('stroke-width', '4');
+      line.setAttribute('stroke-linecap', 'round');
+      line.setAttribute('filter', 'drop-shadow(0 0 8px #f59e0b)');
+      laserSvg.appendChild(line);
+    }
+
+    function connectBox(idx) {
+      if (isFusing || connectedBoxes.indexOf(idx) !== -1) return;
+
+      connectedBoxes.push(idx);
+      var boxEl = overlay.querySelector('.eth-mystery-box[data-idx="' + idx + '"]');
+      if (boxEl) {
+        boxEl.classList.add('is-connected');
+        boxEl.innerHTML = '⚡';
+      }
+
+      if (connectedBoxes.length > 1) {
+        var prevIdx = connectedBoxes[connectedBoxes.length - 2];
+        var p1 = boxPositions[prevIdx];
+        var p2 = boxPositions[idx];
+        drawLaserLine(p1.x + 29, p1.y + 29, p2.x + 29, p2.y + 29);
+      }
+
+      if (countEl) countEl.textContent = connectedBoxes.length;
+
+      // When all 5 connected -> FUSE & BLAST!
+      if (connectedBoxes.length >= 5) {
+        // Connect last to first
+        var pLast = boxPositions[connectedBoxes[4]];
+        var pFirst = boxPositions[connectedBoxes[0]];
+        drawLaserLine(pLast.x + 29, pLast.y + 29, pFirst.x + 29, pFirst.y + 29);
+        triggerFusionAndReveal();
+      }
+    }
+
+    overlay.querySelectorAll('.eth-mystery-box').forEach(function(box) {
+      box.onclick = function() {
+        var idx = Number(box.dataset.idx);
+        connectBox(idx);
+      };
+    });
+
+    var autoBtn = overlay.querySelector('#ethAutoConnectBtn');
+    if (autoBtn) {
+      autoBtn.onclick = function() {
+        [0, 1, 2, 3, 4].forEach(function(i, seq) {
+          setTimeout(function() { connectBox(i); }, seq * 120);
+        });
+      };
+    }
+
+    var cancelBtn = overlay.querySelector('#ethCancelPackBtn');
+    if (cancelBtn) {
+      cancelBtn.onclick = function() {
+        overlay.remove();
+      };
+    }
+
+    function triggerFusionAndReveal() {
+      if (isFusing) return;
+      isFusing = true;
+
+      if (autoBtn) autoBtn.style.display = 'none';
+      if (cancelBtn) cancelBtn.style.display = 'none';
+      if (hintEl) hintEl.innerHTML = '<span style="color:#fde047;font-weight:900">⚡ ENERGIYA BIRLASHMOQDA... ⚡</span>';
+
+      // Deduct coins & record daily
+      if (pack.isFreeDaily) {
+        S.user.lastDailyPackAt = Date.now();
+      } else {
+        S.user.coins = Math.max(0, (S.user.coins || 0) - pack.price);
+      }
+      App.saveState();
+      if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+
+      // Sound effect
+      try {
+        var chime = new Audio('audio_battle_1.mp3');
+        chime.volume = 0.5;
+        chime.play().catch(function(){});
+      } catch(e) {}
+
+      // Fuse boxes
+      containerEl.classList.add('fusing');
+
+      setTimeout(function() {
+        // Blast Supernova!
+        var blast = document.createElement('div');
+        blast.className = 'eth-supernova-blast';
+        containerEl.appendChild(blast);
+
+        // Run RNG drop
+        var wonItem = window.ETHITH_OPEN_PACK(pack.id, S.user);
+
+        // Process reward
+        if (wonItem.type === 'coins') {
+          S.user.coins = (S.user.coins || 0) + wonItem.amount;
+        } else if (wonItem.type === 'prize') {
+          if (!S.user.gifts) S.user.gifts = [];
+          S.user.gifts.unshift(wonItem.item || { name: wonItem.name, desc: wonItem.desc, icon: wonItem.icon, rarity: wonItem.rarity, price: wonItem.coinPrice || 100 });
+        } else if (wonItem.type === 'emoji') {
+          if (!S.user.unlockedEmojis) S.user.unlockedEmojis = (window.ETHITH_DEFAULT_FREE_EMOJIS || []).slice();
+          if (S.user.unlockedEmojis.indexOf(wonItem.emoji) === -1) {
+            S.user.unlockedEmojis.push(wonItem.emoji);
+          }
+        } else if (wonItem.type === 'avatar') {
+          if (!S.user.unlockedAvatars) S.user.unlockedAvatars = [];
+          if (S.user.unlockedAvatars.indexOf(wonItem.avatar.id) === -1) {
+            S.user.unlockedAvatars.push(wonItem.avatar.id);
+          }
+          if (!S.user.avatar) {
+            S.user.avatar = wonItem.avatar.id;
+          }
+        }
+
+        App.saveState();
+        if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+
+        setTimeout(function() {
+          renderRevealScreen(wonItem);
+        }, 600);
+      }, 700);
+    }
+
+    function renderRevealScreen(won) {
+      var cardGraphic = '';
+      if (won.type === 'avatar' && won.avatar) {
+        cardGraphic = '<div style="width:110px;height:110px;margin:0 auto 16px;border-radius:50%;overflow:hidden;border:3px solid #fde047;box-shadow:0 0 25px rgba(245,158,11,0.6)">' + won.avatar.svg + '</div>';
+      } else if (won.type === 'emoji') {
+        cardGraphic = '<div style="font-size:72px;margin:10px auto 16px;filter:drop-shadow(0 0 16px rgba(255,255,255,0.6))">' + won.emoji + '</div>';
+      } else {
+        cardGraphic = '<div style="font-size:68px;margin:10px auto 16px;filter:drop-shadow(0 0 16px rgba(245,158,11,0.6))">' + won.icon + '</div>';
+      }
+
+      var revealHtml = '' +
+        '<div class="eth-revealed-card">' +
+        '  <div class="eth-rarity-badge eth-rarity-' + won.rarity + '">' + won.rarity + '</div>' +
+           cardGraphic +
+        '  <div style="font-weight:900;font-size:20px;color:#fde047;margin-bottom:8px">' + esc(won.name) + '</div>' +
+        '  <div style="font-size:13px;color:#cbd5e1;line-height:1.5;margin-bottom:20px">' + esc(won.desc) + '</div>' +
+        '  <button type="button" id="ethClaimRewardBtn" style="width:100%;padding:12px;background:linear-gradient(135deg, #f59e0b, #d97706);border:none;border-radius:14px;color:#fff;font-weight:900;font-size:15px;cursor:pointer;box-shadow:0 6px 16px rgba(245,158,11,0.4)">' +
+        '    🎉 QABUL QILISH' +
+        '  </button>' +
+        '</div>';
+
+      var arena = overlay.querySelector('#ethPackArena');
+      arena.innerHTML = revealHtml;
+
+      var claimBtn = overlay.querySelector('#ethClaimRewardBtn');
+      if (claimBtn) {
+        claimBtn.onclick = function() {
+          overlay.remove();
+          if (onDone) onDone();
+        };
+      }
+    }
+  }
+
+  // ====================================================
+  // 4. USER PROFILE & AVATAR MANAGER VIEW
+  // ====================================================
+  function renderProfileView(container) {
+    if (!container) return;
+
+    var user = S.user || { name: 'Guest', email: '', role: 'student', coins: 0, dailyMinutes: 0 };
+    var isTeacher = user.role === 'teacher';
+
+    // Calculate Leaderboard Rank
+    var regUsers = [];
+    try { regUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]'); } catch(e) {}
+    var allAccounts = (S.accounts || []).concat(regUsers);
+    var studentMap = {};
+    allAccounts.forEach(function(u) {
+      if (!u || u.role === 'teacher') return;
+      var key = ((u.email && u.email.trim().toLowerCase()) || (u.id || u.name || '').toLowerCase()).trim();
+      if (!studentMap[key]) studentMap[key] = { coins: Number(u.coins || 0) };
+      else studentMap[key].coins = Math.max(studentMap[key].coins, Number(u.coins || 0));
+    });
+    if (user.role !== 'teacher') {
+      var myKey = ((user.email && user.email.trim().toLowerCase()) || (user.id || user.name || '').toLowerCase()).trim();
+      studentMap[myKey] = { coins: Number(user.coins || 0) };
+    }
+    var sorted = Object.values(studentMap).sort(function(a, b) { return b.coins - a.coins; });
+    var myRank = sorted.findIndex(function(s) { return s.coins <= (user.coins || 0); }) + 1;
+    if (myRank <= 0) myRank = 1;
+
+    var unlockedAvatars = user.unlockedAvatars || [];
+    var unlockedEmojis = user.unlockedEmojis || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
+    var gifts = user.gifts || [];
+
+    var html = '<div class="eth-profile-screen animate-fade-in">';
+
+    // Hero Section
+    html += '<div class="eth-profile-hero">' +
+      '<div class="eth-profile-avatar-wrap">' +
+        window.ETHITH_RENDER_USER_AVATAR(user, 90, '', 'border-width:3px') +
+        (!isTeacher ? '<button type="button" class="eth-profile-change-av-btn" id="btnChangeAvatar" title="Rasmni o\'zgartirish">✏️</button>' : '') +
+      '</div>' +
+      '<div style="flex:1;min-width:0">' +
+        '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">' +
+          '<h1 style="font-size:24px;font-weight:900;color:var(--text);margin:0">' + esc(user.name) + '</h1>' +
+          '<span style="padding:3px 10px;border-radius:12px;font-size:12px;font-weight:800;background:var(--soft);color:var(--pri)">' + (isTeacher ? 'O\'qituvchi (Master)' : user.level || S.level || 'A1') + '</span>' +
+        '</div>' +
+        '<div style="font-size:13.5px;color:var(--muted);margin-bottom:12px">📧 ' + esc(user.email || 'Email kiritilmagan') + '</div>' +
+        '<div style="display:flex;gap:10px;flex-wrap:wrap">' +
+          (!isTeacher ? '<button type="button" class="ap-btn pri" id="btnProfileOpenMarket" style="padding:6px 14px;font-size:13px">' + ic('sparkles') + ' Marketga o\'tish (Pack ochish)</button>' : '') +
+          '<button type="button" class="ap-btn gh" id="btnProfileLogout" style="padding:6px 14px;font-size:13px;color:#dc2626">' + ic('lock') + ' Tizimdan chiqish (Log out)</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    // Stats Grid
+    if (!isTeacher) {
+      html += '<div class="eth-profile-stats-grid">' +
+        '<div class="eth-pstat-card">' +
+          '<div style="font-size:32px">' + window.ETHITH_COIN_SVG(36) + '</div>' +
+          '<div>' +
+            '<div class="eth-pstat-val" style="color:#d97706">' + (user.coins || 0).toLocaleString() + '</div>' +
+            '<div class="eth-pstat-lbl">Jami ETHITH Coinlar</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="eth-pstat-card">' +
+          '<div style="font-size:32px">👑</div>' +
+          '<div>' +
+            '<div class="eth-pstat-val" style="color:#f59e0b">#' + myRank + '</div>' +
+            '<div class="eth-pstat-lbl">Leaderboard O\'rni</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="eth-pstat-card">' +
+          '<div style="font-size:32px">⏱️</div>' +
+          '<div>' +
+            '<div class="eth-pstat-val">' + (user.dailyMinutes || 0) + ' min</div>' +
+            '<div class="eth-pstat-lbl">Foydalanilgan Muddat</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="eth-pstat-card">' +
+          '<div style="font-size:32px">🎁</div>' +
+          '<div>' +
+            '<div class="eth-pstat-val">' + gifts.length + ' ta</div>' +
+            '<div class="eth-pstat-lbl">Yutilgan Sovrinlar</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    // Showcase Tabs: Avatars, Emojis, Gifts
+    if (!isTeacher) {
+      html += '<div style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:24px">';
+      html += '<h3 style="font-size:18px;font-weight:900;color:var(--text);margin:0 0 16px;display:flex;align-items:center;gap:8px">🎭 Mening Ochilgan Avatarlarim (' + unlockedAvatars.length + ')</h3>';
+
+      if (unlockedAvatars.length === 0) {
+        html += '<p style="font-size:13.5px;color:var(--muted)">Sizda hali ochilgan maxsus personaj rasmlari yo\'q. Marketdan <b>Boys Avatar Pack</b> yoki <b>Girls Avatar Pack</b> ochib ajoyib fantastik avatarlarni yutib oling!</p>';
+      } else {
+        html += '<div style="display:flex;gap:14px;flex-wrap:wrap">';
+        unlockedAvatars.forEach(function(avId) {
+          var avObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === avId; });
+          if (!avObj) return;
+          var isCurrent = (user.avatar === avId) || (user.avatar && user.avatar.id === avId);
+
+          html += '<div style="width:100px;text-align:center;padding:12px 8px;border-radius:16px;background:var(--soft);border:2px solid ' + (isCurrent ? '#f59e0b' : 'var(--line)') + ';position:relative">' +
+            (isCurrent ? '<span style="position:absolute;top:4px;right:4px;font-size:11px">⭐</span>' : '') +
+            '<div style="width:58px;height:58px;margin:0 auto 8px;border-radius:50%;overflow:hidden">' + avObj.svg + '</div>' +
+            '<div style="font-size:11.5px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(avObj.name) + '</div>' +
+            (isCurrent ? '<div style="font-size:10px;font-weight:800;color:#f59e0b;margin-top:4px">O\'RNATILGAN</div>' :
+              '<button type="button" class="btnSetAvatar" data-av-id="' + avObj.id + '" style="margin-top:6px;padding:3px 8px;font-size:10.5px;font-weight:700;background:var(--pri);color:#fff;border:none;border-radius:6px;cursor:pointer">Tanlash</button>') +
+          '</div>';
+        });
+        html += '</div>';
+      }
+      html += '</div>';
+
+      // Emojis showcase
+      html += '<div style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:24px">';
+      html += '<h3 style="font-size:18px;font-weight:900;color:var(--text);margin:0 0 16px;display:flex;align-items:center;gap:8px">⚡ Mening Chat Emojilarim (' + unlockedEmojis.length + ')</h3>';
+      html += '<div style="display:flex;gap:10px;flex-wrap:wrap">';
+      (window.ETHITH_CHAT_EMOJIS || []).forEach(function(emItem) {
+        var isUnlocked = emItem.isDefault || (unlockedEmojis.indexOf(emItem.emoji) !== -1);
+        html += '<div style="padding:8px 12px;border-radius:12px;background:var(--soft);border:1px solid ' + (isUnlocked ? 'var(--line)' : 'rgba(239,68,68,0.25)') + ';display:inline-flex;align-items:center;gap:6px;opacity:' + (isUnlocked ? '1' : '0.45') + '">' +
+          '<span style="font-size:20px">' + emItem.emoji + '</span>' +
+          '<span style="font-size:12px;font-weight:700;color:var(--text)">' + esc(emItem.name) + '</span>' +
+          (!isUnlocked ? '<span style="font-size:10px">🔒</span>' : '') +
+        '</div>';
+      });
+      html += '</div>';
+      html += '</div>';
+    }
+
+    html += '</div>';
+    container.innerHTML = html;
+
+    // Attach Handlers
+    var changeAvBtn = container.querySelector('#btnChangeAvatar');
+    if (changeAvBtn) {
+      changeAvBtn.onclick = function() {
+        showAvatarPickerModal(function() {
+          renderProfileView(container);
+          if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
+        });
+      };
+    }
+
+    var marketBtn = container.querySelector('#btnProfileOpenMarket');
+    if (marketBtn) {
+      marketBtn.onclick = function() {
+        if (window.go) window.go('market');
+      };
+    }
+
+    var logoutBtn = container.querySelector('#btnProfileLogout');
+    if (logoutBtn) {
+      logoutBtn.onclick = function() {
+        if (confirm("Rostdan ham tizimdan chiqishni xohlaysizmi?")) {
+          S.user = null;
+          App.saveState();
+          document.documentElement.classList.remove('eth-logged-in');
+          var ap = document.getElementById('app');
+          if (ap) ap.style.display = 'none';
+          var landing = document.getElementById('landing');
+          if (landing) landing.style.display = '';
+          if (App.showAuthModal) App.showAuthModal();
+        }
+      };
+    }
+
+    container.querySelectorAll('.btnSetAvatar').forEach(function(btn) {
+      btn.onclick = function() {
+        var targetId = btn.dataset.avId;
+        S.user.avatar = targetId;
+        App.saveState();
+        if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
+        renderProfileView(container);
+      };
+    });
+  }
+
+  // ====================================================
+  // 5. AVATAR PICKER MODAL (ONLY UNLOCKED AVATARS)
+  // ====================================================
+  function showAvatarPickerModal(onDone) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-pack-modal-overlay animate-fade-in';
+
+    var unlocked = (S.user && S.user.unlockedAvatars) || [];
+
+    var html = '' +
+      '<div style="background:var(--card, #0f172a);border:1px solid var(--line, #334155);border-radius:24px;padding:26px;max-width:540px;width:100%;color:var(--text, #fff);box-shadow:0 20px 50px rgba(0,0,0,0.6)">' +
+      '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">' +
+      '    <h3 style="margin:0;font-size:18px;font-weight:900">🎭 Profil Rasmini Tanlash</h3>' +
+      '    <button type="button" id="btnCloseAvPicker" style="background:none;border:none;font-size:20px;color:var(--muted);cursor:pointer">&times;</button>' +
+      '  </div>' +
+      '  <p style="font-size:13px;color:var(--muted);margin-bottom:18px">Faqat Marketdan yutib olingan fantastik va kinomatografik personaj rasmlarini o\'rnatish mumkin (ixtiyoriy rasm yuklash taqiqlangan):</p>' +
+      '  <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(90px, 1fr));gap:12px;max-height:300px;overflow-y:auto;padding:4px;margin-bottom:20px">' +
+      '    <div class="avChoiceCard" data-av-none="1" style="text-align:center;padding:12px 6px;border-radius:14px;background:var(--soft, #1e293b);border:2px solid ' + (!S.user.avatar ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
+      '      <div style="width:48px;height:48px;margin:0 auto 6px;border-radius:50%;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px">' + (S.user.name ? S.user.name.charAt(0).toUpperCase() : 'U') + '</div>' +
+      '      <div style="font-size:11px;font-weight:700">Bosh harf</div>' +
+      '    </div>';
+
+    unlocked.forEach(function(avId) {
+      var avObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === avId; });
+      if (!avObj) return;
+      var isCur = (S.user.avatar === avId) || (S.user.avatar && S.user.avatar.id === avId);
+
+      html += '<div class="avChoiceCard" data-av-id="' + avObj.id + '" style="text-align:center;padding:12px 6px;border-radius:14px;background:var(--soft, #1e293b);border:2px solid ' + (isCur ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
+        '<div style="width:48px;height:48px;margin:0 auto 6px;border-radius:50%;overflow:hidden">' + avObj.svg + '</div>' +
+        '<div style="font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(avObj.name) + '</div>' +
+      '</div>';
+    });
+
+    html += '  </div>' +
+      '  <div style="text-align:right">' +
+      '    <button type="button" id="btnGoMarketFromAv" style="padding:8px 16px;background:var(--soft);color:var(--pri);border:1px solid var(--line);border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;margin-right:8px">🎁 Yangi Avatar Olish (Market)</button>' +
+      '    <button type="button" id="btnDoneAvPicker" style="padding:8px 18px;background:var(--pri);color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer">Yopish</button>' +
+      '  </div>' +
+      '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    overlay.querySelectorAll('.avChoiceCard').forEach(function(card) {
+      card.onclick = function() {
+        if (card.dataset.avNone) {
+          S.user.avatar = null;
+        } else {
+          S.user.avatar = card.dataset.avId;
+        }
+        App.saveState();
+        if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
+        overlay.remove();
+        if (onDone) onDone();
+      };
+    });
+
+    overlay.querySelector('#btnCloseAvPicker').onclick = function() { overlay.remove(); };
+    overlay.querySelector('#btnDoneAvPicker').onclick = function() { overlay.remove(); };
+    var marketBtn = overlay.querySelector('#btnGoMarketFromAv');
+    if (marketBtn) {
+      marketBtn.onclick = function() {
+        overlay.remove();
+        if (window.go) window.go('market');
+      };
+    }
+  }
+
   window.EthithViews = {
+    renderLeaderboardView: renderLeaderboardView,
+    renderMarketView: renderMarketView,
+    showMLBBPackOpeningModal: showMLBBPackOpeningModal,
+    renderProfileView: renderProfileView,
+    showAvatarPickerModal: showAvatarPickerModal,
     showWaygroundStudioModal: showWaygroundStudioModal,
     renderQuizBattleView: renderQuizBattleView,
     showCreateQuizModal: showCreateQuizModal,
