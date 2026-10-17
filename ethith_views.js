@@ -7585,11 +7585,11 @@
       // Modern Glassmorphic Sub-bar (Title & Code)
       html += '  <div class="wayground-subbar">';
       html += '    <div class="flex-1 w-full flex items-center gap-2.5">';
-      html += '      <span class="text-xs font-black text-amber-400 uppercase tracking-wider flex items-center gap-1.5">🎯 <span>Quiz Nomi:</span></span>';
+      html += '      <span class="wayground-label-amber">🎯 <span>Quiz Nomi:</span></span>';
       html += '      <input id="wgQuizTitleInput" type="text" value="' + esc(quizTitle) + '" placeholder="Quiz mavzusi yoki nomini kiriting..." class="flex-1 wayground-subbar-input" />';
       html += '    </div>';
       html += '    <div class="flex items-center gap-2">';
-      html += '      <span class="text-xs font-black text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">🔑 <span>Maxsus Kod:</span></span>';
+      html += '      <span class="wayground-label-cyan">🔑 <span>Maxsus Kod:</span></span>';
       html += '      <input id="wgQuizCodeInput" type="text" value="' + esc(quizCode) + '" class="w-36 wayground-subbar-input wayground-subbar-code text-center uppercase" />';
       html += '      <button id="btnWgRegenCode" class="wayground-regen-btn group" title="Yangi kod generatsiya qilish">';
       html += '        <svg class="w-4 h-4 text-cyan-300 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>';
@@ -7599,9 +7599,9 @@
 
       // Large Question Input Box (1:1 with Wayground aspect-ratio canvas)
       html += '  <div class="wayground-question-box">';
-      html += '    <div class="text-xs uppercase font-black tracking-wide text-gray-300 mb-2.5 flex items-center justify-between">';
-      html += '      <span class="flex items-center gap-2 text-cyan-400"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span> Savol Matni:</span>';
-      html += '      <span class="text-amber-300 font-extrabold bg-amber-500/15 px-2.5 py-1 rounded-lg border border-amber-500/30">⚡ Variantlar har bir o\'quvchida avtomatik chalkashib tushadi</span>';
+      html += '    <div class="text-xs uppercase font-black tracking-wide mb-2.5 flex items-center justify-between">';
+      html += '      <span class="wayground-label-qtext"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span> Savol Matni:</span>';
+      html += '      <span class="wayground-badge-shuffle">⚡ Variantlar har bir o\'quvchida avtomatik chalkashib tushadi</span>';
       html += '    </div>';
       html += '    <textarea id="wgQuestionTextInput" class="wayground-question-textarea" placeholder="Savol matnini bu yerga yozing (masalan: She ___ to school every day)...">' + esc(questionText) + '</textarea>';
       html += '  </div>';
@@ -8021,57 +8021,55 @@
         html += '  </div>';
         html += '</div>';
 
-        // 1:1 EXACT MOCK EXAM CARD LIST (Image 3 Style: ap-card in ap-grid g2)
-        html += '<div class="space-y-4 pt-4">';
-        html += '  <div class="flex items-center justify-between">';
-        html += '    <h3 class="text-base font-black text-gray-900 dark:text-white flex items-center gap-2">';
-        html += '      <span>📋 ' + (isTeacher ? 'O\'qituvchi Boshqaruvi (Mavjud Quiz Testlar)' : 'Mavjud Jonli Bellashuvlar') + '</span>';
-        html += '    </h3>';
-        html += '  </div>';
+        // QUIZ CARDS: ONLY SHOWN TO TEACHERS (Students only see code join box per user requirement)
+        if (isTeacher) {
+          html += '<div class="space-y-4 pt-4">';
+          html += '  <div class="flex items-center justify-between">';
+          html += '    <h3 class="text-base font-black text-gray-900 dark:text-white flex items-center gap-2">';
+          html += '      <span>📋 O\'qituvchi Boshqaruvi (Mavjud Quiz Testlar)</span>';
+          html += '    </h3>';
+          html += '  </div>';
 
-        if (S.quizzes.length === 0) {
-          html += '<div class="ap-card ap-empty" style="text-align:center;padding:32px 20px">';
-          html += '  <div style="font-size:36px;margin-bottom:8px">🎯</div>';
-          html += '  <h3 style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:4px">Hozircha hech qanday quiz testlar yo\'q</h3>';
-          html += '  <p style="font-size:12.5px;color:var(--muted)">' + (isTeacher ? 'Yuqoridagi "+ Yangi Imtihon Tuzish" tugmasini bosib Wayground Studio orqali test tuzing.' : 'O\'qituvchingiz bergan kod orqali yuqoridagi panel orqali kiring.') + '</p>';
-          html += '</div>';
-        } else {
-          html += '<div class="ap-grid g2">';
-          S.quizzes.forEach(function(quiz) {
-            var qCount = (quiz.questions || []).length;
-            var hasAnalysis = Boolean(quiz.lastSessionAnalysis);
+          if (S.quizzes.length === 0) {
+            html += '<div class="ap-card ap-empty" style="text-align:center;padding:32px 20px">';
+            html += '  <div style="font-size:36px;margin-bottom:8px">🎯</div>';
+            html += '  <h3 style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:4px">Hozircha hech qanday quiz testlar yo\'q</h3>';
+            html += '  <p style="font-size:12.5px;color:var(--muted)">Yuqoridagi "+ Yangi Imtihon Tuzish" tugmasini bosib Wayground Studio orqali test tuzing.</p>';
+            html += '</div>';
+          } else {
+            html += '<div class="ap-grid g2">';
+            S.quizzes.forEach(function(quiz) {
+              var qCount = (quiz.questions || []).length;
+              var statusBadge = '';
+              if (quiz.status === 'active') {
+                statusBadge = '<span class="eth-badge-open animate-pulse">🟢 Jonli Battle</span>';
+              } else if (quiz.status === 'finished') {
+                statusBadge = '<span class="eth-badge-closed">🟣 Yakunlangan</span>';
+              } else {
+                statusBadge = '<span class="eth-badge-open" style="background:rgba(234,179,8,0.12);color:#eab308;border-color:rgba(234,179,8,0.3)">🟡 Lobby</span>';
+              }
 
-            var statusBadge = '';
-            if (quiz.status === 'active') {
-              statusBadge = '<span class="eth-badge-open animate-pulse">🟢 Jonli Battle</span>';
-            } else if (quiz.status === 'finished') {
-              statusBadge = '<span class="eth-badge-closed">🟣 Yakunlangan</span>';
-            } else {
-              statusBadge = '<span class="eth-badge-open" style="background:rgba(234,179,8,0.12);color:#eab308;border-color:rgba(234,179,8,0.3)">🟡 Lobby</span>';
-            }
+              html += '<div class="ap-card" style="border:1.5px solid var(--border);position:relative;display:flex;flex-direction:column;justify-content:space-between">';
+              html += '  <div>';
+              html += '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;flex-wrap:wrap">';
+              html += '      <div style="display:flex;gap:6px;align-items:center">';
+              html += '        <span class="ap-tag">⚡ Blitz Quiz</span>';
+              html +=          statusBadge;
+              html += '        <span style="font-size:11.5px;color:var(--muted)">' + qCount + ' ta savol</span>';
+              html += '      </div>';
+              html += '      <span style="display:inline-flex;align-items:center;gap:6px;font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:3px 8px;border-radius:6px;font-size:12px">';
+              html += '        Code: ' + esc(quiz.code);
+              html += '        <button type="button" class="eth-copy-btn-mini" data-copy-code="' + esc(quiz.code) + '" title="Kodni nusxalash">📋 Nusxalash</button>';
+              html += '      </span>';
+              html += '    </div>';
 
-            html += '<div class="ap-card" style="border:1.5px solid var(--border);position:relative;display:flex;flex-direction:column;justify-content:space-between">';
-            html += '  <div>';
-            html += '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;flex-wrap:wrap">';
-            html += '      <div style="display:flex;gap:6px;align-items:center">';
-            html += '        <span class="ap-tag">⚡ Blitz Quiz</span>';
-            html +=          statusBadge;
-            html += '        <span style="font-size:11.5px;color:var(--muted)">' + qCount + ' ta savol</span>';
-            html += '      </div>';
-            html += '      <span style="display:inline-flex;align-items:center;gap:6px;font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:3px 8px;border-radius:6px;font-size:12px">';
-            html += '        Code: ' + esc(quiz.code);
-            html += '        <button type="button" class="eth-copy-btn-mini" data-copy-code="' + esc(quiz.code) + '" title="Kodni nusxalash">📋 Nusxalash</button>';
-            html += '      </span>';
-            html += '    </div>';
+              html += '    <h3 style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;line-height:1.3">' + esc(quiz.title || 'Quiz Test') + '</h3>';
+              html += '    <p style="color:var(--muted);font-size:12.5px;margin:0 0 14px">';
+              html += '      📝 ' + qCount + ' questions · ⚡ +600 / +100 / -500 ball · 🎁 100+ Sovg\'alar';
+              html += '    </p>';
+              html += '  </div>';
 
-            html += '    <h3 style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;line-height:1.3">' + esc(quiz.title || 'Quiz Test') + '</h3>';
-            html += '    <p style="color:var(--muted);font-size:12.5px;margin:0 0 14px">';
-            html += '      📝 ' + qCount + ' questions · ⚡ +600 / +100 / -500 ball · 🎁 100+ Sovg\'alar';
-            html += '    </p>';
-            html += '  </div>';
-
-            html += '  <div style="display:flex;gap:8px;align-items:center;padding-top:10px;border-top:1px solid var(--border);flex-wrap:wrap">';
-            if (isTeacher) {
+              html += '  <div style="display:flex;gap:8px;align-items:center;padding-top:10px;border-top:1px solid var(--border);flex-wrap:wrap">';
               html += '    <button class="ap-btn solid btnStartQuizRunner" data-quiz-id="' + quiz.id + '" style="flex:1;justify-content:center;padding:10px 16px;font-size:13.5px">';
               html += '      ▶️ Lobbyni ochish';
               html += '    </button>';
@@ -8079,18 +8077,13 @@
               html += '    <button class="ap-btn out btnDeleteQuiz" data-quiz-id="' + quiz.id + '" style="padding:10px 12px;color:#ef4444;justify-content:center" title="O\'chirish">';
               html += '      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>';
               html += '    </button>';
-            } else {
-              html += '    <button class="ap-btn solid btnStartQuizRunner" data-quiz-id="' + quiz.id + '" style="flex:1;justify-content:center;padding:10px 16px;font-size:13.5px">';
-              html += '      ⚡ Testga Qo\'shilish ➔';
-              html += '    </button>';
-              html += '    <button class="ap-btn out btnViewQuizAnalysis" data-quiz-id="' + quiz.id + '" style="padding:10px 14px;font-size:13px;justify-content:center;color:#8b5cf6;border-color:rgba(139,92,246,0.4)" title="Test Tahlili">📊 Test Tahlili</button>';
-            }
-            html += '  </div>';
+              html += '  </div>';
+              html += '</div>';
+            });
             html += '</div>';
-          });
+          }
           html += '</div>';
         }
-        html += '</div>';
       }
 
       // SUBTAB 2: GIFTS
@@ -8454,6 +8447,7 @@
     }
 
     var teacherTelemetryLogs = [];
+    var teacherLiveActiveTab = 'leaderboard';
     function appendTeacherTelemetryLog(logItem) {
       teacherTelemetryLogs.unshift(logItem);
       if (teacherTelemetryLogs.length > 60) teacherTelemetryLogs.pop();
@@ -8833,7 +8827,7 @@
       }, 1000);
     }
 
-    // PHASE 3A: TEACHER LIVE COMMAND & PROCTORING CENTER (2-COLUMN WAYGROUND 1:1)
+    // PHASE 3A: TEACHER LIVE COMMAND & PROCTORING CENTER (WAYGROUND 17:59:33 1:1)
     function renderTeacherCommandCenter() {
       currentPhase = 'teacher_control';
       var list = Object.values(participantsMap);
@@ -8845,176 +8839,244 @@
       var totalQuestionsAnswered = list.reduce(function(acc, p) { return acc + (p.currentQ || 0); }, 0);
       var classAccuracyPct = totalQuestionsAnswered > 0 ? Math.round((totalCorrectAnswers / totalQuestionsAnswered) * 100) : 100;
 
-      var html = '<div class="eth-wayground-screen max-w-6xl w-full mx-auto p-4 md:p-6 space-y-5 animate-fade-in pb-16">';
+      var html = '<div class="eth-wayground-screen max-w-5xl w-full mx-auto p-4 md:p-6 space-y-4 animate-fade-in pb-16">';
 
-      // Top Command Header
-      html += '<div class="flex flex-wrap items-center justify-between gap-4 p-5 rounded-2xl bg-gray-900/95 border border-gray-700/80 backdrop-blur-xl shadow-2xl">';
-      html += '  <div class="flex items-center gap-4">';
-      html += '    <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-2xl shadow-inner">📡</div>';
+      // 1. TOP WAYGROUND BAR (Matches 17:59:33 with Central Giant Join Code Box)
+      html += '<div class="eth-wg-live-topbar">';
+      html += '  <div class="flex items-center gap-3">';
+      html += '    <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-xl shadow-inner">📡</div>';
       html += '    <div>';
       html += '      <div class="flex items-center gap-2">';
-      html += '        <h2 class="text-xl md:text-2xl font-black text-white">' + (quiz.title || 'Quiz Test') + '</h2>';
-      html += '        <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-black uppercase flex items-center gap-1.5">';
-      html += '          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> JONLI NAZORAT';
-      html += '        </span>';
+      html += '        <h2 class="text-base md:text-lg font-black text-white leading-tight">' + (quiz.title || 'Quiz Test') + '</h2>';
+      html += '        <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-[10px] font-black uppercase">JONLI EFIR</span>';
       html += '      </div>';
-      html += '      <div class="text-xs text-gray-400 flex items-center gap-3 mt-1 font-medium">';
-      html += '        <span>Kod: <strong class="text-amber-400 font-mono">' + quiz.code + '</strong></span>';
-      html += '        <span>·</span>';
+      html += '      <div class="text-[11px] text-gray-400 mt-0.5 flex items-center gap-2">';
       html += '        <span>O\'quvchilar: <strong class="text-white">' + list.length + ' ta</strong></span>';
       html += '        <span>·</span>';
-      html += '        <span>Tugatganlar: <strong class="text-emerald-400">' + totalFinished + ' / ' + list.length + '</strong></span>';
-      html += '        <span>·</span>';
-      html += '        <span class="eth-wayground-gauge">Aniqlik: <strong class="' + (classAccuracyPct >= 70 ? 'text-emerald-400' : 'text-amber-400') + '">' + classAccuracyPct + '%</strong></span>';
+      html += '        <span>Tugatgan: <strong class="text-emerald-400">' + totalFinished + ' / ' + list.length + '</strong></span>';
       if (totalInfractions > 0) {
         html += '        <span>·</span>';
-        html += '        <span class="text-rose-400 font-extrabold">🚨 ' + totalInfractions + ' ta qoidabuzarlik</span>';
+        html += '        <span class="text-rose-400 font-extrabold">🚨 ' + totalInfractions + ' ogohlantirish</span>';
       }
       html += '      </div>';
       html += '    </div>';
       html += '  </div>';
 
-      html += '  <div class="flex items-center gap-3">';
-      html += '    <button id="btnCopyCommandCode" class="px-3.5 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-amber-400 border border-amber-500/40 text-xs font-black transition-all flex items-center gap-1.5" title="Kodni nusxalash">';
-      html += '      <span>KOD: ' + quiz.code + '</span>';
-      html += '      <span class="text-xs">📋</span>';
-      html += '    </button>';
+      // Central Join Code Box (1:1 with Wayground 17:59:33)
+      html += '  <div class="eth-wg-live-code-center" id="btnCopyCommandCode" title="Kodni nusxalash">';
+      html += '    <span class="text-xs font-bold text-gray-400 uppercase">KOD:</span>';
+      html += '    <span class="eth-wg-live-code-digit">' + quiz.code + '</span>';
+      html += '    <span style="font-size:16px;">📋</span>';
+      html += '  </div>';
+
+      // Right Action Buttons
+      html += '  <div class="flex items-center gap-2">';
       html += '    <button id="btnToggleQuizMusic" class="eth-wayground-music-btn eth-music-toggle-btn">';
       html +=        (isMusicMuted ? '🔇 Muzika' : '🔊 Muzika');
       html += '    </button>';
-      html += '    <button id="btnTeacherForceFinishLive" class="eth-teacher-finish-btn">';
+      html += '    <button id="btnTeacherForceFinishLive" class="eth-teacher-finish-btn py-2 px-3.5 text-xs font-black">';
       html += '      <span>🏁</span>';
-      html += '      <span>Barchaga Yakunlash (Podium)</span>';
+      html += '      <span>Yakunlash</span>';
       html += '    </button>';
       html += '    <button id="btnTeacherExitLive" class="eth-quiz-close-btn" title="Chiqish">✕</button>';
       html += '  </div>';
       html += '</div>';
 
-      // 2-Column Grid: Left (Leaderboard 60%), Right (Telemetry Stream 40%)
-      html += '<div class="grid grid-cols-1 lg:grid-cols-12 gap-5">';
+      // 2. SUBBAR: CIRCULAR ACCURACY GAUGE + TABS (Leaderboard & Questions)
+      html += '<div class="flex flex-wrap items-center justify-between gap-4 p-3.5 rounded-2xl bg-gray-900/90 border border-gray-800 backdrop-blur-xl">';
+      html += '  <div class="eth-wg-live-gauge-wrap">';
+      html += '    <div class="eth-wg-live-gauge-circle">' + classAccuracyPct + '%</div>';
+      html += '    <div>';
+      html += '      <div style="font-size:12px;font-weight:800;color:#f8fafc;">Класс точности</div>';
+      html += '      <div style="font-size:10px;color:#94a3b8;">Class Accuracy</div>';
+      html += '    </div>';
+      html += '  </div>';
 
-      // LEFT COLUMN: LIVE LEADERBOARD (7 cols)
-      html += '  <div class="lg:col-span-7 space-y-4">';
-      html += '    <div class="p-4 rounded-2xl bg-gray-900/90 border border-gray-700/80 shadow-xl space-y-3">';
-      html += '      <div class="flex items-center justify-between border-b border-gray-800 pb-2.5 px-1">';
-      html += '        <div class="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-2">';
-      html += '          <span>🏆 JONLI REYTING VA O\'QUVCHILAR NATIJALARI</span>';
-      html += '        </div>';
-      html += '        <span class="text-[11px] text-gray-400">To\'plangan ballar asosida</span>';
-      html += '      </div>';
+      html += '  <div class="eth-wg-live-tabs">';
+      html += '    <button class="eth-wg-live-tab-btn ' + (teacherLiveActiveTab === 'leaderboard' ? 'active' : '') + '" id="btnLiveTabLeaderboard">';
+      html += '      <span>🏆</span> <span>Таблица лидеров</span>';
+      html += '    </button>';
+      html += '    <button class="eth-wg-live-tab-btn ' + (teacherLiveActiveTab === 'questions' ? 'active' : '') + '" id="btnLiveTabQuestions">';
+      html += '      <span>❓</span> <span>Вопросы (' + preparedQuestions.length + ')</span>';
+      html += '    </button>';
+      html += '  </div>';
+      html += '</div>';
 
-      if (list.length === 0) {
-        html += '<div class="p-8 text-center text-gray-400 text-sm font-bold">';
-        html += '  <span>⏳ O\'quvchilar javob berishini kutmoqdamiz...</span>';
+      // 3. TAB CONTENT
+      if (teacherLiveActiveTab === 'leaderboard') {
+        // TAB 1: LEADERBOARD (1:1 with Wayground 17:59:33)
+        html += '<div class="eth-wg-live-board">';
+        html += '  <div class="eth-wg-live-board-header">';
+        html += '    <div class="flex items-center gap-2"><span>👥</span> <span>' + list.length + ' участники (o\'quvchilar)</span></div>';
+        html += '    <span class="text-[11px] text-gray-400">To\'plangan ballar asosida jonli yangilanadi</span>';
+        html += '  </div>';
+
+        html += '  <div class="eth-wg-live-sub-header">';
+        html += '    <div style="width: 70px;">Классифицировать</div>';
+        html += '    <div style="flex: 1; padding-left: 12px;">Имя</div>';
+        html += '    <div style="width: 120px; text-align: right;">Результат</div>';
+        html += '    <div style="width: 170px; text-align: right; padding-right: 8px;">Jarayon & Streak 🔥</div>';
+        html += '  </div>';
+
+        if (list.length === 0) {
+          html += '<div class="p-12 text-center text-gray-400 text-sm font-bold">';
+          html += '  <span>⏳ O\'quvchilar qo\'shilishini kutmoqdamiz...</span>';
+          html += '</div>';
+        } else {
+          html += '  <div>';
+          list.forEach(function(p, idx) {
+            var newRank = idx + 1;
+            var oldRank = previousRanksMap[p.id];
+            var animClass = '';
+            if (oldRank !== undefined) {
+              if (newRank > oldRank) animClass = 'rank-fell';
+              else if (newRank < oldRank) animClass = 'rank-rose';
+            }
+            previousRanksMap[p.id] = newRank;
+
+            var hero = p.hero || getStudentHero(p.id, idx);
+            var medal = newRank === 1 ? '🥇 1' : (newRank === 2 ? '🥈 2' : (newRank === 3 ? '🥉 3' : (newRank)));
+            var streak = p.streak || 0;
+            var totalQ = preparedQuestions.length || 1;
+            var correctPct = Math.round(((p.correctCount || 0) / totalQ) * 100);
+            var wrongPct = Math.round(((p.wrongCount || 0) / totalQ) * 100);
+
+            html += '<div class="eth-wg-live-player-card ' + animClass + '">';
+            // Col 1: Rank
+            html += '  <div style="width: 70px;" class="font-black text-sm ' + (newRank === 1 ? 'text-amber-400' : 'text-gray-400') + '">' + medal + '</div>';
+            // Col 2: Avatar + Name + Badges
+            html += '  <div style="flex: 1; min-width: 0;" class="flex items-center gap-3">';
+            html += '    <div class="w-9 h-9 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background: ' + hero.bg + '; border: 1.5px solid ' + hero.border + ';">' + hero.emoji + '</div>';
+            html += '    <div class="min-w-0">';
+            html += '      <div class="flex items-center gap-2">';
+            html += '        <span class="font-black text-white text-sm truncate">' + p.name + '</span>';
+            if (p.finished) {
+              html += '        <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[9px] font-black">✅ Yakunladi</span>';
+            }
+            if (p.infractions > 0) {
+              html += '        <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/40 text-[9px] font-black">🚨 ' + p.infractions + ' marta</span>';
+            }
+            html += '      </div>';
+            html += '      <div class="text-[10px] text-gray-400 font-semibold">' + hero.name + '</div>';
+            html += '    </div>';
+            html += '  </div>';
+            // Col 3: Score
+            html += '  <div style="width: 120px; text-align: right;" class="flex-shrink-0">';
+            html += '    <div class="font-mono font-black text-base text-amber-400">' + (p.score || 0).toLocaleString() + '</div>';
+            html += '    <div class="text-[10px] text-gray-400 uppercase font-bold">Ball</div>';
+            html += '  </div>';
+            // Col 4: Progress Bar & Streak (Matches 17:59:33)
+            html += '  <div style="width: 170px;" class="flex items-center justify-end gap-2 flex-shrink-0">';
+            html += '    <div class="eth-wg-live-bar-wrap">';
+            html += '      <div class="eth-wg-live-bar-streak">';
+            html += '        <span>🔥</span> <span>' + streak + '</span>';
+            html += '      </div>';
+            html += '      <div class="eth-wg-live-bar-correct" style="width: ' + correctPct + '%;"></div>';
+            html += '      <div class="eth-wg-live-bar-incorrect" style="width: ' + wrongPct + '%;"></div>';
+            html += '    </div>';
+            html += '  </div>';
+            html += '</div>';
+          });
+          html += '  </div>';
+        }
         html += '</div>';
       } else {
-        html += '      <div class="space-y-2 max-h-[520px] overflow-y-auto pr-1">';
-        list.forEach(function(p, idx) {
-          var newRank = idx + 1;
-          var oldRank = previousRanksMap[p.id];
-          var animClass = '';
-          if (oldRank !== undefined) {
-            if (newRank > oldRank) {
-              animClass = 'rank-fell';
-            } else if (newRank < oldRank) {
-              animClass = 'rank-rose';
+        // TAB 2: QUESTIONS BREAKDOWN (Sequential list of questions with option distribution)
+        html += '<div class="space-y-4 max-h-[620px] overflow-y-auto pr-1">';
+        preparedQuestions.forEach(function(q, qIdx) {
+          var totalAnswered = 0;
+          var correctCountTotal = 0;
+          var optCounts = {};
+          var optStudents = {};
+          (q.options || []).forEach(function(opt, oIdx) {
+            optCounts[oIdx] = 0;
+            optStudents[oIdx] = [];
+          });
+
+          list.forEach(function(st) {
+            var stAns = st.answers ? (st.answers[q.id] || st.answers['q_' + qIdx]) : null;
+            if (stAns !== undefined && stAns !== null && stAns.chosenOriginalIndex !== undefined) {
+              totalAnswered++;
+              var cIdx = stAns.chosenOriginalIndex;
+              if (optCounts[cIdx] !== undefined) {
+                optCounts[cIdx]++;
+                optStudents[cIdx].push(st.name);
+              }
+              if (stAns.isCorrect) correctCountTotal++;
             }
-          }
-          previousRanksMap[p.id] = newRank;
+          });
 
-          var hero = p.hero || getStudentHero(p.id, idx);
-          var medal = idx === 0 ? '🥇 1' : (idx === 1 ? '🥈 2' : (idx === 2 ? '🥉 3' : ('#' + (idx + 1))));
-          var progressPct = p.totalQ > 0 ? Math.round(((p.currentQ || 0) / p.totalQ) * 100) : 0;
-          var streak = p.streak || 0;
+          var accPct = totalAnswered > 0 ? Math.round((correctCountTotal / totalAnswered) * 100) : 100;
+          var isHighAcc = accPct >= 70;
+          var isLowAcc = accPct < 40;
 
-          html += '<div class="p-3.5 rounded-2xl bg-gray-800/80 ' + animClass + ' border ' + (idx === 0 ? 'border-amber-500/70 bg-gradient-to-r from-amber-950/30 to-gray-800/80' : 'border-gray-700/70') + ' flex items-center justify-between gap-3 shadow-md hover:bg-gray-800 transition-all">';
-          html += '  <div class="flex items-center gap-3 min-w-0">';
-          html += '    <div class="w-10 text-center font-black text-sm ' + (idx === 0 ? 'text-amber-400' : 'text-gray-400') + '">' + medal + '</div>';
-          html += '    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-2xl flex-shrink-0" style="background: ' + hero.bg + '; border: 1.5px solid ' + hero.border + ';">' + hero.emoji + '</div>';
-          html += '    <div class="min-w-0">';
-          html += '      <div class="flex items-center gap-2">';
-          html += '        <div class="font-black text-white text-sm truncate">' + p.name + '</div>';
-          if (p.finished) {
-            html += '        <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-black">✅ Yakunladi</span>';
-          }
-          if (p.infractions > 0) {
-            html += '        <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/40 text-[10px] font-black">🚨 ' + p.infractions + ' marta</span>';
-          }
-          html += '      </div>';
-          html += '      <div class="flex items-center gap-2 mt-1">';
-          html += '        <div class="w-24 h-1.5 rounded-full bg-gray-700 overflow-hidden">';
-          html += '          <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width: ' + progressPct + '%;"></div>';
-          html += '        </div>';
-          html += '        <span class="text-[10px] text-gray-400 font-semibold">' + (p.currentQ || 0) + '/' + preparedQuestions.length + '</span>';
-          html += '        <span class="text-[10px] text-emerald-400 font-bold">+' + (p.correctCount || 0) + '</span>';
-          html += '        <span class="text-[10px] text-rose-400 font-bold">-' + (p.wrongCount || 0) + '</span>';
-          if (streak >= 2) {
-            html += '        <span class="text-[10px] text-orange-400 font-black animate-pulse">🔥 ' + streak + ' streak</span>';
-          }
+          html += '<div class="eth-wg-qreport-card">';
+          html += '  <div class="eth-wg-qreport-header">';
+          html += '    <div>';
+          html += '      <div class="eth-wg-qreport-title">Question ' + (qIdx + 1) + ': ' + q.question + '</div>';
+          html += '      <div class="eth-wg-qreport-correct-pill">';
+          html += '        <span>✅</span>';
+          html += '        <span>To\'g\'ri javob: ' + String.fromCharCode(65 + (q.correctAnswer || 0)) + ') ' + (q.options[q.correctAnswer || 0] || '') + '</span>';
           html += '      </div>';
           html += '    </div>';
-          html += '  </div>';
-
-          html += '  <div class="text-right flex-shrink-0">';
-          html += '    <div class="font-mono font-black text-base md:text-lg text-amber-400">' + (p.score || 0).toLocaleString() + '</div>';
-          html += '    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Ball</div>';
-          html += '  </div>';
-          html += '</div>';
-        });
-        html += '      </div>';
-      }
-
-      html += '    </div>';
-      html += '  </div>';
-
-      // RIGHT COLUMN: LIVE PROCTORING & TELEMETRY STREAM (5 cols)
-      html += '  <div class="lg:col-span-5 space-y-4">';
-      html += '    <div class="p-4 rounded-2xl bg-gray-900/90 border border-gray-700/80 shadow-xl space-y-3">';
-      html += '      <div class="flex items-center justify-between border-b border-gray-800 pb-2.5 px-1">';
-      html += '        <div class="text-xs font-black uppercase tracking-wider text-rose-400 flex items-center gap-2">';
-      html += '          <span>⚡ JONLI PROCTORING VA HARAKATLAR OQIMI</span>';
-      html += '        </div>';
-      html += '        <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>';
-      html += '      </div>';
-
-      if (teacherTelemetryLogs.length === 0) {
-        html += '<div class="p-8 text-center text-gray-400 text-xs font-bold space-y-1">';
-        html += '  <div>🟢 Oqim tayyor.</div>';
-        html += '  <div>O\'quvchi oynadan chiqsa, taqiqlangan tugma bossa yoki javob bersa real vaqtda shu yerda qayd etiladi.</div>';
-        html += '</div>';
-      } else {
-        html += '      <div class="space-y-2 max-h-[520px] overflow-y-auto pr-1">';
-        teacherTelemetryLogs.forEach(function(item) {
-          var borderClass = 'border-l-4 border-l-blue-500 bg-gray-800/60';
-          if (item.isViolation) {
-            borderClass = 'border-l-4 border-l-rose-500 bg-rose-950/30 border border-rose-900/40 text-rose-200';
-          } else if (item.action === 'TAB_RETURN' || item.action === 'FOCUS') {
-            borderClass = 'border-l-4 border-l-emerald-500 bg-emerald-950/20 text-emerald-200';
-          } else if (item.action === 'CORRECT') {
-            borderClass = 'border-l-4 border-l-amber-500 bg-amber-950/20 text-amber-200';
-          }
-
-          html += '<div class="p-2.5 rounded-xl ' + borderClass + ' text-xs space-y-1 shadow-sm animate-fade-in">';
-          html += '  <div class="flex items-center justify-between text-[10px] text-gray-400 font-mono">';
-          html += '    <span class="font-black text-white flex items-center gap-1.5">';
-          if (item.hero) html += '<span>' + item.hero.emoji + '</span>';
-          html += '      <span>' + item.studentName + '</span>';
+          html += '    <span class="eth-wg-qreport-acc-badge ' + (isHighAcc ? 'high' : (isLowAcc ? 'low' : 'mid')) + '">';
+          html += '      ' + accPct + '% Aniqlik';
           html += '    </span>';
-          html += '    <span>' + item.timestamp + '</span>';
           html += '  </div>';
-          html += '  <div class="font-bold text-xs leading-snug">' + item.detail + '</div>';
+
+          html += '  <div class="eth-wg-qreport-options-grid">';
+          (q.options || []).forEach(function(opt, oIdx) {
+            var letter = String.fromCharCode(65 + oIdx);
+            var isCorr = (oIdx === (q.correctAnswer || 0));
+            var oCount = optCounts[oIdx] || 0;
+            var oPct = totalAnswered > 0 ? Math.round((oCount / totalAnswered) * 100) : 0;
+            var stList = optStudents[oIdx] || [];
+
+            html += '<div class="eth-wg-qreport-opt-box ' + (isCorr ? 'is-correct' : '') + '">';
+            html += '  <div class="eth-wg-qreport-opt-top">';
+            html += '    <span style="' + (isCorr ? 'color:#10b981;font-weight:900;' : '') + '">' + letter + ') ' + opt + (isCorr ? ' ✅' : '') + '</span>';
+            html += '    <span style="font-family: monospace; font-size: 11px; opacity: 0.85;">' + oCount + ' (' + oPct + '%)</span>';
+            html += '  </div>';
+
+            html += '  <div class="eth-wg-qreport-bar-track">';
+            html += '    <div class="eth-wg-qreport-bar-fill ' + (isCorr ? 'is-correct' : '') + '" style="width:' + oPct + '%;"></div>';
+            html += '  </div>';
+
+            if (stList.length > 0) {
+              html += '  <div class="eth-wg-qreport-students" title="' + stList.join(', ') + '">';
+              html += '    👥 Tanlaganlar: <strong>' + stList.join(', ') + '</strong>';
+              html += '  </div>';
+            } else {
+              html += '  <div class="eth-wg-qreport-students" style="opacity: 0.6; font-style: italic;">Hech kim tanlamadi</div>';
+            }
+            html += '</div>';
+          });
+          html += '  </div>';
+
           html += '</div>';
         });
-        html += '      </div>';
+        html += '</div>';
       }
 
-      html += '    </div>';
-      html += '  </div>';
-
-      html += '</div>'; // End Grid
-      html += '</div>'; // End Container
+      html += '</div>'; // End Screen
 
       root.innerHTML = html;
+
+      // Event listeners for tabs
+      var tabLeaderboard = root.querySelector('#btnLiveTabLeaderboard');
+      if (tabLeaderboard) {
+        tabLeaderboard.onclick = function() {
+          teacherLiveActiveTab = 'leaderboard';
+          renderTeacherCommandCenter();
+        };
+      }
+      var tabQuestions = root.querySelector('#btnLiveTabQuestions');
+      if (tabQuestions) {
+        tabQuestions.onclick = function() {
+          teacherLiveActiveTab = 'questions';
+          renderTeacherCommandCenter();
+        };
+      }
 
       var btnCopyCode = root.querySelector('#btnCopyCommandCode');
       if (btnCopyCode) {
@@ -9850,35 +9912,35 @@
       }
 
       else if (activeTab === 'questions') {
-        // QUESTIONS TAB: FULL QUESTION BREAKDOWN WITH ANSWER DISTRIBUTIONS
-        tabHtml += '<div class="p-4 md:p-6 space-y-4">';
-        tabHtml += '  <div class="flex items-center justify-between">';
+        // QUESTIONS TAB: FULL QUESTION BREAKDOWN WITH OPTION DISTRIBUTIONS & METRICS
+        tabHtml += '<div class="eth-wg-qreport-scroll">';
+        tabHtml += '  <div class="flex items-center justify-between pb-2 border-b border-gray-200 dark:border-gray-800">';
         tabHtml += '    <h4 class="text-sm font-black text-gray-800 dark:text-gray-200 uppercase tracking-wider">Question Accuracy & Option Distributions</h4>';
-        tabHtml += '    <span class="text-xs text-gray-500 dark:text-gray-400">Total ' + qStats.length + ' questions</span>';
+        tabHtml += '    <span class="text-xs text-gray-500 dark:text-gray-400 font-bold">Total ' + qStats.length + ' questions</span>';
         tabHtml += '  </div>';
 
         if (qStats.length === 0) {
           tabHtml += '  <div class="p-8 text-center text-gray-400 text-xs font-bold">No questions found in this assessment.</div>';
         } else {
-          tabHtml += '  <div class="space-y-4">';
           qStats.forEach(function(stat, sIdx) {
             var isHighAcc = stat.accuracyPct >= 70;
             var isLowAcc = stat.accuracyPct < 40;
 
-            tabHtml += '<div class="p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-850 shadow-sm space-y-3">';
-            tabHtml += '  <div class="flex items-start justify-between gap-3">';
-            tabHtml += '    <div class="space-y-1">';
-            tabHtml += '      <div class="font-extrabold text-sm text-gray-900 dark:text-white">Question ' + (sIdx + 1) + ': ' + stat.questionText + '</div>';
-            tabHtml += '      <div class="text-xs text-emerald-600 dark:text-emerald-400 font-bold">Correct Answer: ' + String.fromCharCode(65 + stat.correctAnswer) + ') ' + (stat.options[stat.correctAnswer] || '') + '</div>';
+            tabHtml += '<div class="eth-wg-qreport-card">';
+            tabHtml += '  <div class="eth-wg-qreport-header">';
+            tabHtml += '    <div>';
+            tabHtml += '      <div class="eth-wg-qreport-title">Question ' + (sIdx + 1) + ': ' + stat.questionText + '</div>';
+            tabHtml += '      <div class="eth-wg-qreport-correct-pill">';
+            tabHtml += '        <span>✅</span>';
+            tabHtml += '        <span>Correct Answer: ' + String.fromCharCode(65 + stat.correctAnswer) + ') ' + (stat.options[stat.correctAnswer] || '') + '</span>';
+            tabHtml += '      </div>';
             tabHtml += '    </div>';
-            tabHtml += '    <div class="text-right flex-shrink-0">';
-            tabHtml += '      <span class="px-2.5 py-1 rounded-full text-xs font-black ' + (isHighAcc ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800' : (isLowAcc ? 'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400 border border-rose-300 dark:border-rose-800' : 'bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-400 border border-amber-300 dark:border-amber-800')) + '">';
-            tabHtml += '        ' + stat.accuracyPct + '% Accuracy';
-            tabHtml += '      </span>';
-            tabHtml += '    </div>';
+            tabHtml += '    <span class="eth-wg-qreport-acc-badge ' + (isHighAcc ? 'high' : (isLowAcc ? 'low' : 'mid')) + '">';
+            tabHtml += '      ' + stat.accuracyPct + '% Accuracy';
+            tabHtml += '    </span>';
             tabHtml += '  </div>';
 
-            tabHtml += '  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">';
+            tabHtml += '  <div class="eth-wg-qreport-options-grid">';
             (stat.options || []).forEach(function(opt, optIdx) {
               var letter = String.fromCharCode(65 + optIdx);
               var isCorr = (optIdx === stat.correctAnswer);
@@ -9886,23 +9948,23 @@
               var optCount = (stat.optCounts && stat.optCounts[optIdx]) || 0;
               var optPct = stat.totalAnswered > 0 ? Math.round((optCount / stat.totalAnswered) * 100) : 0;
 
-              tabHtml += '<div class="p-2.5 rounded-xl border ' + (isCorr ? 'border-emerald-500/70 bg-emerald-50 dark:bg-emerald-950/30 dark:border-emerald-700/60' : 'border-gray-200 dark:border-gray-700/60 bg-gray-50/70 dark:bg-gray-800/50') + ' text-xs space-y-1.5">';
-              tabHtml += '  <div class="flex items-center justify-between font-bold">';
-              tabHtml += '    <span class="' + (isCorr ? 'text-emerald-700 dark:text-emerald-400 font-black' : 'text-gray-700 dark:text-gray-300') + '">' + letter + ') ' + opt + (isCorr ? ' ✅' : '') + '</span>';
-              tabHtml += '    <span class="text-[11px] font-mono text-gray-500 dark:text-gray-400">' + optCount + ' (' + optPct + '%)</span>';
+              tabHtml += '<div class="eth-wg-qreport-opt-box ' + (isCorr ? 'is-correct' : '') + '">';
+              tabHtml += '  <div class="eth-wg-qreport-opt-top">';
+              tabHtml += '    <span style="' + (isCorr ? 'color:#10b981;font-weight:900;' : '') + '">' + letter + ') ' + opt + (isCorr ? ' ✅' : '') + '</span>';
+              tabHtml += '    <span style="font-family: monospace; font-size: 11px; opacity: 0.85;">' + optCount + ' (' + optPct + '%)</span>';
               tabHtml += '  </div>';
 
-              // Visual Progress Mini-Bar
-              tabHtml += '  <div class="w-full h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">';
-              tabHtml += '    <div class="h-full ' + (isCorr ? 'bg-emerald-500' : 'bg-gray-400') + ' rounded-full" style="width:' + optPct + '%;"></div>';
+              // Visual Progress Fill Bar
+              tabHtml += '  <div class="eth-wg-qreport-bar-track">';
+              tabHtml += '    <div class="eth-wg-qreport-bar-fill ' + (isCorr ? 'is-correct' : '') + '" style="width:' + optPct + '%;"></div>';
               tabHtml += '  </div>';
 
               if (chosenStudents.length > 0) {
-                tabHtml += '  <div class="text-[10px] text-gray-500 dark:text-gray-400 truncate">';
-                tabHtml += '    Selected by: <span class="font-medium text-gray-800 dark:text-gray-200">' + chosenStudents.join(', ') + '</span>';
+                tabHtml += '  <div class="eth-wg-qreport-students" title="' + chosenStudents.join(', ') + '">';
+                tabHtml += '    👥 Selected by: <strong class="text-gray-900 dark:text-gray-100">' + chosenStudents.join(', ') + '</strong>';
                 tabHtml += '  </div>';
               } else {
-                tabHtml += '  <div class="text-[10px] text-gray-400 italic">No students selected this</div>';
+                tabHtml += '  <div class="eth-wg-qreport-students" style="opacity: 0.6; font-style: italic;">No students selected this</div>';
               }
               tabHtml += '</div>';
             });
@@ -9910,7 +9972,6 @@
 
             tabHtml += '</div>';
           });
-          tabHtml += '  </div>';
         }
         tabHtml += '</div>';
       }
