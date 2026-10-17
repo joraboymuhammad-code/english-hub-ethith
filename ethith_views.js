@@ -3668,8 +3668,8 @@
         '</div>' +
         '<div class="eth-cam-footer" id="proctorStudentName">' +
         (isTeacher ?
-          '  👤 ' + esc((S.user && S.user.name) || 'Ustoz') + ' · Cheklovlar O\'chirilgan' :
-          '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 65° AI Biometrik Yuz Trekeri (Foto-Dalil)'
+          '  👤 <b style="font-weight:900;letter-spacing:0.3px">' + esc((S.user && S.user.name) || 'Ustoz') + '</b> · Cheklovlar O\'chirilgan' :
+          '  👤 <b style="font-weight:900;letter-spacing:0.3px">' + esc((S.user && S.user.name) || 'O\'quvchi') + '</b> · 65° AI Biometrik Yuz Trekeri (Foto-Dalil)'
         ) +
         '</div>';
       lockdownModal.appendChild(camBox);
@@ -4027,6 +4027,10 @@
           '<div class="eth-locked-box" style="max-width:520px;text-align:center;">' +
           '  <div class="eth-locked-icon">🚫</div>' +
           '  <h2 style="color:#ef4444;margin:8px 0 6px;">TEST BLOKLANDI: QOIDABUZARLIK ANIQLANDI</h2>' +
+          '  <div class="eth-locked-student-badge">' +
+          '    <span class="eth-locked-student-label">👤 BLOKLANGAN O\'QUVCHI:</span>' +
+          '    <div class="eth-locked-student-name">' + esc((S.user && S.user.name) || 'O\'quvchi') + '</div>' +
+          '  </div>' +
           '  <div class="eth-locked-reason" style="font-size:13.5px;padding:8px 12px;margin-bottom:12px;"><b>🚨 Qoidabuzarlik:</b> ' + esc(reason) + '</div>' +
           (snapshotImg ?
             '  <div class="eth-locked-snapshot-wrap">' +
@@ -5398,12 +5402,15 @@
             var timeStr = new Date(n.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
             return '' +
               '<div class="ap-card" style="border:1.5px solid ' + (n.resolved ? 'var(--border)' : '#ef4444') + ';padding:14px;background:' + (n.resolved ? 'var(--bg2)' : 'rgba(239, 68, 68, 0.04)') + '">' +
-              '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">' +
-              '    <b style="font-size:15px;color:' + (n.resolved ? 'var(--text)' : '#dc2626') + '">' + (n.resolved ? '✓ ' : '🚨 ') + esc(n.studentName) + '</b>' +
-              '    <span style="font-size:12px;color:var(--muted)">' + timeStr + '</span>' +
+              '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(0,0,0,0.06)">' +
+              '    <div>' +
+              '      <span style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;display:block;">👤 O\'quvchi:</span>' +
+              '      <span style="font-size:18px;font-weight:900;color:' + (n.resolved ? 'var(--text)' : '#dc2626') + ';letter-spacing:0.5px;text-transform:uppercase;">' + (n.resolved ? '✓ ' : '🚨 ') + esc(n.studentName) + '</span>' +
+              '    </div>' +
+              '    <span style="font-size:12px;color:var(--muted);font-weight:600">' + timeStr + '</span>' +
               '  </div>' +
               '  <div style="font-size:13px;color:var(--text);margin-bottom:6px">' +
-              '    <b>Exam:</b> ' + esc(n.examTitle) + ' (Code: ' + esc(n.examCode) + ')' +
+              '    <b>Imtihon:</b> ' + esc(n.examTitle) + ' (Code: ' + esc(n.examCode) + ')' +
               '  </div>' +
               '  <div style="font-size:13px;color:#b91c1c;background:rgba(239, 68, 68, 0.08);padding:8px 12px;border-radius:8px;margin-bottom:12px;border:1px solid rgba(239,68,68,0.2)">' +
               '    <b>🚨 Qoidabuzarlik:</b> ' + esc(n.reason) +
@@ -5503,10 +5510,13 @@
       '  <b style="font-size:15px;display:flex;align-items:center;gap:6px">🚨 O\'QUVCHI TESTDA BLOKLANDI!</b>' +
       '  <button type="button" style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer;opacity:0.8;line-height:1" onclick="this.closest(\'.eth-teacher-floating-alert\').remove()">✕</button>' +
       '</div>' +
-      '<div style="font-size:13px;line-height:1.45">' +
-      '  <b>O\'quvchi:</b> ' + esc(notif.studentName) + '<br>' +
+      '<div class="eth-teacher-alert-student-badge">' +
+      '  <span class="eth-teacher-alert-student-label">👤 BLOKLANGAN O\'QUVCHI:</span>' +
+      '  <div class="eth-teacher-alert-student-name">' + esc(notif.studentName) + '</div>' +
+      '</div>' +
+      '<div style="font-size:13px;line-height:1.45;color:#fee2e2">' +
       '  <b>Imtihon:</b> ' + esc(notif.examTitle) + ' (' + esc(notif.examCode) + ')<br>' +
-      '  <b>Qoidabuzarlik:</b> <span style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px">' + esc(notif.reason) + '</span>' +
+      '  <b>Qoidabuzarlik:</b> <span style="background:rgba(0,0,0,0.35);padding:2px 6px;border-radius:4px;color:#fff;font-weight:700">' + esc(notif.reason) + '</span>' +
       '</div>' +
       (notif.snapshot ?
         '<div style="margin:4px 0;background:#000;border-radius:10px;padding:6px;border:1.5px solid rgba(255,255,255,0.4);text-align:center">' +
@@ -5514,7 +5524,7 @@
         '  <img src="' + notif.snapshot + '" style="width:100%;max-height:180px;object-fit:cover;border-radius:6px;display:block;margin:0 auto;" alt="Dalil">' +
         '</div>' : ''
       ) +
-      '<button type="button" class="eth-btn-primary" style="background:#fff;color:#dc2626;font-weight:800;border:none;padding:9px 14px;border-radius:8px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.25)">' +
+      '<button type="button" class="eth-btn-primary" style="background:#fff;color:#dc2626;font-weight:900;border:none;padding:11px 16px;border-radius:8px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);font-size:14.5px;">' +
       '  🔓 O\'quvchini Blokdan Chiqarish' +
       '</button>';
 
@@ -5661,6 +5671,10 @@
           '<div class="eth-locked-box" style="max-width:520px;text-align:center;">' +
           '  <div class="eth-locked-icon">🚫</div>' +
           '  <h2 style="color:#ef4444;margin:8px 0 6px;">PLACEMENT TEST BLOKLANDI</h2>' +
+          '  <div class="eth-locked-student-badge">' +
+          '    <span class="eth-locked-student-label">👤 BLOKLANGAN O\'QUVCHI:</span>' +
+          '    <div class="eth-locked-student-name">' + esc((S.user && S.user.name) || 'O\'quvchi') + '</div>' +
+          '  </div>' +
           '  <div class="eth-locked-reason" style="font-size:13.5px;padding:8px 12px;margin-bottom:12px;"><b>🚨 Qoidabuzarlik:</b> ' + esc(reason) + '</div>' +
           (snapshotImg ?
             '  <div class="eth-locked-snapshot-wrap">' +
@@ -5805,7 +5819,7 @@
         '  </div>' +
         '</div>' +
         '<div class="eth-cam-footer" id="proctorStudentName">' +
-        '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 65° AI Biometrik Yuz Trekeri (Foto-Dalil)' +
+        '  👤 <b style="font-weight:900;letter-spacing:0.3px">' + esc((S.user && S.user.name) || 'O\'quvchi') + '</b> · 65° AI Biometrik Yuz Trekeri (Foto-Dalil)' +
         '</div>';
       lockdownModal.appendChild(camBox);
       makeElementDraggableAndCollapsible(camBox, camBox.querySelector('.eth-cam-header'), camBox.querySelector('#btnMinCam'));

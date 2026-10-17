@@ -3732,3 +3732,58 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   border-top: 1px dashed rgba(37, 99, 235, 0.2) !important;
 }
 
+/* ====================================================
+   PROMINENT STUDENT NAME BADGES (BLOCKED NOTIFICATIONS)
+   ==================================================== */
+.eth-teacher-alert-student-badge {
+  background: rgba(0, 0, 0, 0.32) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+  padding: 10px 14px !important;
+  border-radius: 10px !important;
+  margin: 3px 0 6px 0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+.eth-teacher-alert-student-label {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #fecaca !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  margin-bottom: 3px !important;
+  display: block !important;
+}
+.eth-teacher-alert-student-name {
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  letter-spacing: 0.6px !important;
+  line-height: 1.25 !important;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6) !important;
+  text-transform: uppercase !important;
+}
+.eth-locked-student-badge {
+  background: rgba(239, 68, 68, 0.08) !important;
+  border: 1.5px solid rgba(239, 68, 68, 0.35) !important;
+  padding: 10px 16px !important;
+  border-radius: 12px !important;
+  margin: 10px auto 14px !important;
+  max-width: 440px !important;
+}
+.eth-locked-student-label {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #ef4444 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  margin-bottom: 2px !important;
+  display: block !important;
+}
+.eth-locked-student-name {
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  color: #ef4444 !important;
+  letter-spacing: 0.6px !important;
+  text-transform: uppercase !important;
+}
+
+
