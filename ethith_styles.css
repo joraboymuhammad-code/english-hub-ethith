@@ -2230,74 +2230,43 @@ body[data-theme="light"] .eth-test-timer-pill {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90px;
-  height: 115px;
+  width: 78px;
+  height: 98px;
   border: 2px solid rgba(16, 185, 129, 0.85);
   border-radius: 50%;
   pointer-events: none;
-  transition: left 0.15s ease-out, top 0.15s ease-out, width 0.18s ease-out, height 0.18s ease-out, border-color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
-  overflow: hidden;
+  transition: left 0.12s ease-out, top 0.12s ease-out, width 0.14s ease-out, height 0.14s ease-out, border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
 }
 
-.eth-cam-cross-h {
+.eth-cam-pt {
   position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1.5px;
-  background: rgba(16, 185, 129, 0.65);
-  transform: translateY(-50%);
-}
-
-.eth-cam-cross-v {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1.5px;
-  background: rgba(16, 185, 129, 0.65);
-  transform: translateX(-50%);
-}
-
-.eth-cam-cross-dot {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   background: #10b981;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 6px #10b981;
+  pointer-events: none;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 
 .eth-cam-target-oval.warn {
   border-color: #f59e0b !important;
-  box-shadow: 0 0 10px rgba(245, 158, 11, 0.45) !important;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
 }
 
-.eth-cam-target-oval.warn .eth-cam-cross-h,
-.eth-cam-target-oval.warn .eth-cam-cross-v {
-  background: rgba(245, 158, 11, 0.75) !important;
-}
-
-.eth-cam-target-oval.warn .eth-cam-cross-dot {
+.eth-cam-target-oval.warn .eth-cam-pt {
   background: #f59e0b !important;
   box-shadow: 0 0 6px #f59e0b !important;
 }
 
 .eth-cam-target-oval.danger {
   border-color: #ef4444 !important;
-  box-shadow: 0 0 14px rgba(239, 68, 68, 0.65) !important;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.65) !important;
 }
 
-.eth-cam-target-oval.danger .eth-cam-cross-h,
-.eth-cam-target-oval.danger .eth-cam-cross-v {
-  background: rgba(239, 68, 68, 0.85) !important;
-}
-
-.eth-cam-target-oval.danger .eth-cam-cross-dot {
+.eth-cam-target-oval.danger .eth-cam-pt {
   background: #ef4444 !important;
   box-shadow: 0 0 8px #ef4444 !important;
 }
