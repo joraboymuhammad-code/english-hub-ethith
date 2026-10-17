@@ -2677,7 +2677,8 @@
         '      <label style="font-weight:700;font-size:13.5px">Savol Qo\'shish Usuli:</label>' +
         '      <div class="eth-tabs" style="margin-top:6px">' +
         '        <button class="eth-tab ' + (currentTab === 'bulk' ? 'active' : '') + '" id="tabBulkBtn">📋 Aqlli Universal Import (50-100+ Qs / PDF)</button>' +
-        '        <button class="eth-tab ' + (currentTab === 'mc' ? 'active' : '') + '" id="tabMcBtn">🔘 Variantli (MC)</button>' +
+        '        <button class="eth-tab" id="tabWaygroundStudioExBtn" style="background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;font-weight:800">⚡ Wayground Studio (1:1)</button>' +
+'        <button class="eth-tab ' + (currentTab === 'mc' ? 'active' : '') + '" id="tabMcBtn">🔘 Variantli (MC)</button>' +
         '        <button class="eth-tab ' + (currentTab === 'written' ? 'active' : '') + '" id="tabWrittenBtn">✍️ Yozma / Bo\'sh joy</button>' +
         '        <button class="eth-tab ' + (currentTab === 'bool' ? 'active' : '') + '" id="tabBoolBtn">☑️ True / False</button>' +
         '      </div>' +
@@ -7419,7 +7420,7 @@
 
   
   // =========================================================================
-  // ETHITH QUIZ TEST & LIVE BATTLE ARENA (GAMIFIED MULTIPLAYER SYSTEM)
+  // ETHITH QUIZ TEST & LIVE BATTLE ARENA (1:1 WAYGROUND STUDIO & MULTIPLAYER)
   // =========================================================================
 
   function shuffleArray(arr) {
@@ -7434,7 +7435,435 @@
     return copy;
   }
 
-  // Render the Main Quiz Battle View
+  // -------------------------------------------------------------------------
+  // 1:1 WAYGROUND TEST STUDIO MODAL (SINGLE CHOICE, CHECKBOX & TRUE/FALSE)
+  // -------------------------------------------------------------------------
+  function showWaygroundStudioModal(opts) {
+    opts = opts || {};
+    var isExamImport = Boolean(opts.isExamImport);
+    var addedQuestions = opts.existingQuestions ? JSON.parse(JSON.stringify(opts.existingQuestions)) : [];
+    var quizTitle = opts.title || ('English Quiz Battle #' + (S.quizzes ? S.quizzes.length + 1 : 1));
+    var quizCode = opts.code || generateRichExamCode('QZ');
+
+    // Studio state
+    var currentType = 'mcq'; // 'mcq' | 'checkbox' | 'bool'
+    var currentPoints = 1;
+    var currentTimeSec = 30;
+    var questionText = '';
+    var optionsList = ['', '', '', ''];
+    var correctIndices = [0];
+
+    var overlay = document.createElement('div');
+    overlay.className = 'wayground-modal-overlay animate-fade-in';
+
+    function renderStudio() {
+      var typeLabels = {
+        'mcq': 'Multiple choice',
+        'checkbox': 'Checkbox (Ko\'p tanlovli)',
+        'bool': 'True / False'
+      };
+
+      var html = '';
+
+      // 1. TOP HEADER BAR
+      html += '<header class="wayground-header-bar">';
+      html += '  <div class="flex items-center gap-3">';
+      html += '    <button id="btnWgBack" class="w-8 h-8 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center justify-center font-bold text-gray-700 dark:text-gray-200 hover:bg-gray-300 transition-all" title="Chiqish">✕</button>';
+      
+      // Question Types Dropdown
+      html += '    <div class="relative">';
+      html += '      <button id="btnWgTypeDropdown" class="wayground-dropdown-btn">';
+      html += '        <span class="w-4 h-4 rounded bg-amber-500 text-white flex items-center justify-center text-[10px]">☑</span>';
+      html += '        <span id="wgTypeLabelText">' + (typeLabels[currentType] || 'Multiple choice') + '</span>';
+      html += '        <span class="text-[10px] ml-1">▾</span>';
+      html += '      </button>';
+      html += '      <div id="wgTypeDropdownMenu" class="hidden absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-1 z-50">';
+      html += '        <button class="w-full text-left px-3.5 py-2 text-xs font-bold hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2" data-type="mcq"><span>🔘</span> Multiple choice (Yagona to\'g\'ri)</button>';
+      html += '        <button class="w-full text-left px-3.5 py-2 text-xs font-bold hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2" data-type="checkbox"><span>☑️</span> Checkbox (Ko\'p tanlovli)</button>';
+      html += '        <button class="w-full text-left px-3.5 py-2 text-xs font-bold hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2" data-type="bool"><span>⚖️</span> True / False (To\'g\'ri/Noto\'g\'ri)</button>';
+      html += '      </div>';
+      html += '    </div>';
+      html += '  </div>';
+
+      // Middle controls: Points & Timer
+      html += '  <div class="flex items-center gap-2">';
+      html += '    <select id="wgPointsSelect" class="wayground-dropdown-btn py-1 px-2.5 text-xs font-bold">';
+      [1, 2, 3, 5, 10].forEach(function(pts) {
+        html += '<option value="' + pts + '" ' + (currentPoints === pts ? 'selected' : '') + '>' + pts + ' point' + (pts > 1 ? 's' : '') + '</option>';
+      });
+      html += '    </select>';
+      html += '    <select id="wgTimerSelect" class="wayground-dropdown-btn py-1 px-2.5 text-xs font-bold">';
+      [10, 20, 30, 45, 60, 90].forEach(function(sec) {
+        html += '<option value="' + sec + '" ' + (currentTimeSec === sec ? 'selected' : '') + '>' + sec + ' sec</option>';
+      });
+      html += '    </select>';
+      html += '  </div>';
+
+      // Right: Add Question & Final Save
+      html += '  <div class="flex items-center gap-2">';
+      html += '    <button id="btnWgAddQuestion" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs shadow-md active:scale-95 transition-all flex items-center gap-1.5">';
+      html += '      <span>➕ Add question (Savol qo\'shish)</span>';
+      html += '    </button>';
+      html += '    <button id="btnWgSaveAllFinal" class="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-black text-xs shadow-md active:scale-95 transition-all">';
+      html += '      <span>💾 Saqlash va Yakunlash</span>';
+      html += '    </button>';
+      html += '  </div>';
+      html += '</header>';
+
+      // 2. MAIN STUDIO CANVAS
+      html += '<main class="wayground-studio-canvas">';
+
+      // Title & Code Bar
+      html += '  <div class="w-full max-w-[960px] flex flex-col sm:flex-row items-center justify-between gap-3 mb-4 bg-gray-900/80 p-3 rounded-2xl border border-gray-800">';
+      html += '    <div class="flex-1 w-full flex items-center gap-2">';
+      html += '      <span class="text-xs font-extrabold text-gray-400 uppercase">Quiz:</span>';
+      html += '      <input id="wgQuizTitleInput" type="text" value="' + esc(quizTitle) + '" placeholder="Quiz nomini kiriting..." class="flex-1 px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-xl text-white font-bold text-sm outline-none focus:border-amber-500" />';
+      html += '    </div>';
+      html += '    <div class="flex items-center gap-2">';
+      html += '      <span class="text-xs font-extrabold text-amber-400 uppercase">Kod:</span>';
+      html += '      <input id="wgQuizCodeInput" type="text" value="' + esc(quizCode) + '" class="w-32 px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-xl text-amber-400 font-mono font-black text-sm text-center outline-none" />';
+      html += '      <button id="btnWgRegenCode" class="p-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs" title="Kodni yangilash">🔄</button>';
+      html += '    </div>';
+      html += '  </div>';
+
+      // Large Question Input Box (1:1 with Wayground aspect-ratio canvas)
+      html += '  <div class="wayground-question-box">';
+      html += '    <div class="text-[11px] uppercase font-black tracking-widest text-gray-400 mb-2 flex items-center justify-between">';
+      html += '      <span>Savol Matni:</span>';
+      html += '      <span class="text-amber-400 font-bold">Har bir savol variantlari test paytida o\'quvchilarda avtomatik almashib tushadi</span>';
+      html += '    </div>';
+      html += '    <textarea id="wgQuestionTextInput" class="wayground-question-textarea" placeholder="Введите вопрос здесь / Savol matnini bu yerga yozing (masalan: She ___ to school every day)...">' + esc(questionText) + '</textarea>';
+      html += '  </div>';
+
+      // Options Grid with Ambient Morphing Colors
+      html += '  <div class="wayground-options-grid">';
+      optionsList.forEach(function(optText, optIdx) {
+        var isChecked = correctIndices.indexOf(optIdx) !== -1;
+        var brandClass = 'wayground-brand-' + (optIdx % 6);
+        var letter = String.fromCharCode(65 + optIdx);
+
+        html += '<div class="wayground-option-card ' + brandClass + ' ' + (isChecked ? 'is-correct' : '') + '" data-opt-idx="' + optIdx + '">';
+        html += '  <div class="wayground-card-topbar">';
+        if (currentType !== 'bool') {
+          html += '    <button class="btnWgDeleteOption text-white/70 hover:text-white p-1 text-xs" data-opt-idx="' + optIdx + '" title="O\'chirish">🗑️</button>';
+        } else {
+          html += '    <span></span>';
+        }
+        html += '    <span class="font-black text-white/90 text-sm font-mono">' + letter + '</span>';
+        html += '    <button class="wayground-check-btn ' + (isChecked ? 'checked' : '') + '" data-opt-idx="' + optIdx + '" title="To\'g\'ri javob deb belgilash">';
+        html += '      <span>✓</span>';
+        html += '    </button>';
+        html += '  </div>';
+
+        html += '  <textarea class="wayground-option-textarea wgOptTextInput" data-opt-idx="' + optIdx + '" placeholder="Введите вариант ответа здесь...">' + esc(optText) + '</textarea>';
+
+        html += '  <div class="text-center text-[10px] font-extrabold text-white/70 tracking-wider uppercase">';
+        html += (isChecked ? '✅ TO\'G\'RI JAVOB' : 'Tanlash uchun bosing');
+        html += '  </div>';
+        html += '</div>';
+      });
+
+      // Dedicated "+" card to add an option (User Requirement)
+      if (currentType !== 'bool') {
+        html += '<div id="btnWgAddOptionCard" class="wayground-add-option-card" title="Yangi variant qo\'shish">';
+        html += '  <div class="text-3xl font-black">+</div>';
+        html += '  <div class="text-xs font-bold">Variant qo\'shish</div>';
+        html += '</div>';
+      }
+
+      html += '  </div>';
+
+      // Bottom Saved Questions List
+      html += '  <div class="w-full max-w-[960px] bg-gray-900/90 rounded-2xl border border-gray-800 p-4 space-y-3">';
+      html += '    <div class="flex items-center justify-between">';
+      html += '      <div class="font-extrabold text-xs text-gray-300 uppercase tracking-wider flex items-center gap-2">';
+      html += '        <span>📋 Qo\'shilgan Savollar:</span>';
+      html += '        <span class="px-2 py-0.5 rounded-full bg-purple-900/60 text-purple-300 text-xs font-black">' + addedQuestions.length + ' ta</span>';
+      html += '      </div>';
+      if (addedQuestions.length > 0) {
+        html += '      <button id="btnWgClearAllAdded" class="text-xs font-bold text-rose-400 hover:text-rose-300">Tozalash</button>';
+      }
+      html += '    </div>';
+
+      if (addedQuestions.length === 0) {
+        html += '    <div class="p-6 text-center text-xs text-gray-500 border border-dashed border-gray-800 rounded-xl">';
+        html += '      Hali savollar qo\'shilmadi. Yuqorida savol va variantlarni kiritib, "Add question" tugmasini bosing!';
+        html += '    </div>';
+      } else {
+        html += '    <div class="space-y-2 max-h-64 overflow-y-auto pr-1">';
+        addedQuestions.forEach(function(q, qIdx) {
+          html += '<div class="p-3 bg-gray-800/80 rounded-xl border border-gray-700/80 flex items-start justify-between gap-3 text-xs">';
+          html += '  <div class="space-y-1 flex-1">';
+          html += '    <div class="font-black text-white">' + (qIdx + 1) + '. ' + q.question + '</div>';
+          html += '    <div class="flex flex-wrap gap-2 text-[11px]">';
+          q.options.forEach(function(opt, oIdx) {
+            var isCorr = Array.isArray(q.correctAnswers) ? (q.correctAnswers.indexOf(oIdx) !== -1) : (oIdx === q.correctAnswer);
+            html += '<span class="px-2 py-0.5 rounded ' + (isCorr ? 'bg-emerald-900/60 text-emerald-300 font-bold border border-emerald-700/50' : 'bg-gray-700 text-gray-300') + '">';
+            html += String.fromCharCode(65 + oIdx) + ') ' + opt + (isCorr ? ' ✅' : '');
+            html += '</span>';
+          });
+          html += '    </div>';
+          html += '  </div>';
+          html += '  <button class="btnWgDeleteSavedQ text-gray-400 hover:text-rose-400 font-bold p-1" data-q-idx="' + qIdx + '">✕</button>';
+          html += '</div>';
+        });
+        html += '    </div>';
+      }
+
+      html += '  </div>';
+
+      html += '</main>';
+
+      overlay.innerHTML = html;
+
+      // ATTACH LISTENERS
+      var btnBack = overlay.querySelector('#btnWgBack');
+      if (btnBack) btnBack.onclick = function() { overlay.remove(); };
+
+      // Type dropdown toggle
+      var btnType = overlay.querySelector('#btnWgTypeDropdown');
+      var typeMenu = overlay.querySelector('#wgTypeDropdownMenu');
+      if (btnType && typeMenu) {
+        btnType.onclick = function(e) {
+          e.stopPropagation();
+          typeMenu.classList.toggle('hidden');
+        };
+        overlay.addEventListener('click', function() {
+          if (!typeMenu.classList.contains('hidden')) typeMenu.classList.add('hidden');
+        });
+        typeMenu.querySelectorAll('button[data-type]').forEach(function(btn) {
+          btn.onclick = function(e) {
+            e.stopPropagation();
+            var t = btn.getAttribute('data-type');
+            currentType = t;
+            if (t === 'bool') {
+              optionsList = ['True', 'False'];
+              correctIndices = [0];
+            } else if (optionsList.length < 4) {
+              optionsList = ['', '', '', ''];
+              correctIndices = [0];
+            }
+            typeMenu.classList.add('hidden');
+            renderStudio();
+          };
+        });
+      }
+
+      // Points and Timer
+      var selPoints = overlay.querySelector('#wgPointsSelect');
+      if (selPoints) {
+        selPoints.onchange = function() { currentPoints = parseInt(selPoints.value, 10) || 1; };
+      }
+      var selTimer = overlay.querySelector('#wgTimerSelect');
+      if (selTimer) {
+        selTimer.onchange = function() { currentTimeSec = parseInt(selTimer.value, 10) || 30; };
+      }
+
+      // Title & Code inputs
+      var inTitle = overlay.querySelector('#wgQuizTitleInput');
+      if (inTitle) inTitle.oninput = function() { quizTitle = inTitle.value; };
+      var inCode = overlay.querySelector('#wgQuizCodeInput');
+      if (inCode) inCode.oninput = function() { quizCode = inCode.value.toUpperCase(); };
+
+      var btnRegen = overlay.querySelector('#btnWgRegenCode');
+      if (btnRegen) {
+        btnRegen.onclick = function() {
+          quizCode = generateRichExamCode('QZ');
+          if (inCode) inCode.value = quizCode;
+        };
+      }
+
+      // Question Text input
+      var qTextInput = overlay.querySelector('#wgQuestionTextInput');
+      if (qTextInput) {
+        qTextInput.oninput = function() { questionText = qTextInput.value; };
+      }
+
+      // Option inputs
+      overlay.querySelectorAll('.wgOptTextInput').forEach(function(optIn) {
+        optIn.oninput = function() {
+          var idx = parseInt(optIn.getAttribute('data-opt-idx'), 10);
+          optionsList[idx] = optIn.value;
+        };
+      });
+
+      // Checkmark button clicks ("Ptichka")
+      overlay.querySelectorAll('.wayground-check-btn').forEach(function(chkBtn) {
+        chkBtn.onclick = function(e) {
+          e.stopPropagation();
+          var idx = parseInt(chkBtn.getAttribute('data-opt-idx'), 10);
+          if (currentType === 'checkbox') {
+            var exist = correctIndices.indexOf(idx);
+            if (exist !== -1) {
+              if (correctIndices.length > 1) correctIndices.splice(exist, 1);
+            } else {
+              correctIndices.push(idx);
+            }
+          } else {
+            correctIndices = [idx];
+          }
+          renderStudio();
+        };
+      });
+
+      // Delete option button
+      overlay.querySelectorAll('.btnWgDeleteOption').forEach(function(delBtn) {
+        delBtn.onclick = function(e) {
+          e.stopPropagation();
+          var idx = parseInt(delBtn.getAttribute('data-opt-idx'), 10);
+          if (optionsList.length <= 2) {
+            alert("Kamida 2 ta variant bo\'lishi shart!");
+            return;
+          }
+          optionsList.splice(idx, 1);
+          correctIndices = correctIndices.filter(function(i) { return i !== idx; }).map(function(i) {
+            return i > idx ? (i - 1) : i;
+          });
+          if (correctIndices.length === 0) correctIndices = [0];
+          renderStudio();
+        };
+      });
+
+      // "+" Add Option Card (User Requirement)
+      var btnAddOpt = overlay.querySelector('#btnWgAddOptionCard');
+      if (btnAddOpt) {
+        btnAddOpt.onclick = function() {
+          optionsList.push('');
+          renderStudio();
+        };
+      }
+
+      // Delete saved question
+      overlay.querySelectorAll('.btnWgDeleteSavedQ').forEach(function(btn) {
+        btn.onclick = function() {
+          var idx = parseInt(btn.getAttribute('data-q-idx'), 10);
+          addedQuestions.splice(idx, 1);
+          renderStudio();
+        };
+      });
+
+      // Clear all
+      var btnClearAll = overlay.querySelector('#btnWgClearAllAdded');
+      if (btnClearAll) {
+        btnClearAll.onclick = function() {
+          if (confirm("Barcha qo\'shilgan savollarni tozalashni xohlaysizmi?")) {
+            addedQuestions = [];
+            renderStudio();
+          }
+        };
+      }
+
+      // "Add question" button (User Requirement: automatic notification & append)
+      var btnAddQuestion = overlay.querySelector('#btnWgAddQuestion');
+      if (btnAddQuestion) {
+        btnAddQuestion.onclick = function() {
+          var trimmedQ = (questionText || '').trim();
+          if (!trimmedQ) {
+            alert("Iltimos, avval savol matnini kiriting!");
+            if (qTextInput) qTextInput.focus();
+            return;
+          }
+
+          var hasEmpty = optionsList.some(function(o) { return !o || !o.trim(); });
+          if (hasEmpty) {
+            alert("Iltimos, barcha variantlar matnini to\'liq kiriting!");
+            return;
+          }
+
+          if (!correctIndices || correctIndices.length === 0) {
+            alert("Iltimos, to\'g\'ri javob ustidagi ptichka (✓) belgisini bosing!");
+            return;
+          }
+
+          var newQ = {
+            id: 'q_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+            type: currentType,
+            question: trimmedQ,
+            options: optionsList.slice(),
+            correctAnswers: correctIndices.slice(),
+            correctAnswer: correctIndices[0],
+            points: currentPoints,
+            timeSec: currentTimeSec
+          };
+
+          addedQuestions.push(newQ);
+
+          // User-Requested Toast: "savol aftamatik tarzda pastga qo'shildi deb yozuv chiqadi"
+          var toast = document.createElement('div');
+          toast.className = 'wayground-added-toast';
+          toast.innerHTML = '<span>✅</span> <span>Savol avtomatik tarzda pastga qo\'shildi! (Jami: ' + addedQuestions.length + ' ta)</span>';
+          document.body.appendChild(toast);
+          setTimeout(function() { if (toast && toast.parentNode) toast.remove(); }, 3500);
+
+          // Reset inputs for next question
+          questionText = '';
+          if (currentType === 'bool') {
+            optionsList = ['True', 'False'];
+            correctIndices = [0];
+          } else {
+            optionsList = ['', '', '', ''];
+            correctIndices = [0];
+          }
+
+          renderStudio();
+        };
+      }
+
+      // "Save All & Launch" button
+      var btnSaveAll = overlay.querySelector('#btnWgSaveAllFinal');
+      if (btnSaveAll) {
+        btnSaveAll.onclick = function() {
+          if (addedQuestions.length === 0) {
+            alert("Iltimos, kamida bitta savol qo\'shing!");
+            return;
+          }
+
+          if (isExamImport && opts.onSave) {
+            opts.onSave(addedQuestions);
+            overlay.remove();
+            return;
+          }
+
+          var newQuiz = {
+            id: 'quiz_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+            code: quizCode.trim().toUpperCase(),
+            title: quizTitle.trim() || 'English Blitz Battle',
+            created: Date.now(),
+            teacherEmail: S.user.email,
+            teacherName: S.user.name,
+            status: 'lobby',
+            questions: addedQuestions,
+            lobbyParticipants: [],
+            lastSessionAnalysis: null
+          };
+
+          if (!Array.isArray(S.quizzes)) S.quizzes = [];
+          S.quizzes.unshift(newQuiz);
+          App.saveState();
+
+          if (window.EthithSync && window.EthithSync.publishLive) {
+            window.EthithSync.publishLive({ type: 'QUIZ_CREATED', quiz: newQuiz });
+          }
+
+          overlay.remove();
+          if (window._ethithRefreshQuizList) window._ethithRefreshQuizList();
+          startQuizBattleRunner(newQuiz, true);
+        };
+      }
+    }
+
+    renderStudio();
+    document.body.appendChild(overlay);
+  }
+
+  // Alias for showCreateQuizModal
+  function showCreateQuizModal(container) {
+    showWaygroundStudioModal({});
+  }
+
+  // -------------------------------------------------------------------------
+  // MAIN QUIZ BATTLE DASHBOARD VIEW (STUDENT JOIN-ONLY VS TEACHER STUDIO)
+  // -------------------------------------------------------------------------
   function renderQuizBattleView(container) {
     if (!container) return;
     if (!S.user) {
@@ -7454,128 +7883,127 @@
 
       var html = '<div class="max-w-6xl mx-auto space-y-6 pb-20">';
 
-      // Top Hero Banner
-      html += '<div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-amber-500 via-orange-600 to-rose-600 text-white p-6 md:p-8 shadow-xl">';
-      html += '  <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">';
-      html += '    <div>';
-      html += '      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold tracking-wider uppercase mb-2">';
-      html += '        <span>⚡ ETHITH LIVE QUIZ BATTLE</span>';
-      html += '        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>';
-      html += '      </div>';
-      html += '      <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight">Quiz Test Bellashuvi</h1>';
-      html += '      <p class="text-sm md:text-base text-white/90 mt-1 max-w-2xl">';
-      html += '        Haqiqiy vaqt rejimida jonli test musobaqasi! 10 soniyalik tezlik bonusi (+100 ball), har bir to\'g\'ri javobga +600 ball, xatoga -500 ball va 1-2-3 o\'rinlarga 100 dan ortiq kulgili 3D o\'zbekcha sovg\'alar!';
-      html += '      </p>';
+      // Top Header Bar
+      html += '<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-6 bg-gradient-to-r from-gray-900 via-gray-950 to-blue-950 rounded-3xl border border-gray-800 shadow-2xl">';
+      html += '  <div>';
+      html += '    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-black tracking-wider uppercase mb-2">';
+      html += '      <span>⚡ ETHITH LIVE QUIZ BATTLE</span>';
+      html += '      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>';
       html += '    </div>';
-      html += '    <div class="flex items-center gap-3">';
-      if (isTeacher) {
-        html += '      <button id="btnCreateQuizModal" class="px-5 py-3 rounded-xl bg-white text-orange-600 font-extrabold text-sm shadow-lg hover:bg-orange-50 active:scale-95 transition-all flex items-center gap-2">';
-        html += '        <span>➕ Yangi Quiz Tuzish</span>';
-        html += '      </button>';
-      }
-      html += '    </div>';
+      html += '    <h1 class="text-2xl md:text-3xl font-black text-white tracking-tight">Quiz Test Bellashuvi</h1>';
+      html += '    <p class="text-xs md:text-sm text-gray-400 mt-1 max-w-2xl">';
+      html += '      Jonli multiplayer test musobaqasi! 10 soniyalik bonus (+100 ball), to\'g\'ri javobga +600 ball, xatoga -500 ball va 1-2-3 o\'rinlarga 100+ g\'alati 3D o\'zbekcha sovrinlar!';
+      html += '    </p>';
       html += '  </div>';
+
+      // Exact Image 1 button for Teacher ONLY: "+ Yangi Imtihon Tuzish"
+      if (isTeacher) {
+        html += '  <div>';
+        html += '    <button id="btnOpenWaygroundStudio" class="eth-exam-create-btn-dark">';
+        html += '      <span style="font-size:22px;line-height:1;margin-top:-2px">+</span>';
+        html += '      <span>Yangi Imtihon Tuzish</span>';
+        html += '    </button>';
+        html += '  </div>';
+      }
       html += '</div>';
 
-      // Navigation Subtabs
-      html += '<div class="flex items-center gap-3 border-b border-gray-200 dark:border-gray-700 pb-2">';
-      html += '  <button id="tabQuizzesBtn" class="px-5 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ' + (activeSubtab === 'quizzes' ? 'bg-amber-500 text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200') + '">';
-      html += '    <span>⚔️ Quiz Bellashuvlari (' + quizzesCount + ')</span>';
+      // Subtabs: Quizzes vs Gifts
+      html += '<div class="flex items-center gap-3 border-b border-gray-200 dark:border-gray-800 pb-2">';
+      html += '  <button id="tabQuizzesBtn" class="px-5 py-2.5 rounded-xl font-extrabold text-xs transition-all flex items-center gap-2 ' + (activeSubtab === 'quizzes' ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200') + '">';
+      html += '    <span>⚔️ Quiz Testlar (' + quizzesCount + ')</span>';
       html += '  </button>';
-      html += '  <button id="tabGiftsBtn" class="px-5 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ' + (activeSubtab === 'gifts' ? 'bg-amber-500 text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200') + '">';
+      html += '  <button id="tabGiftsBtn" class="px-5 py-2.5 rounded-xl font-extrabold text-xs transition-all flex items-center gap-2 ' + (activeSubtab === 'gifts' ? 'bg-amber-500 text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200') + '">';
       html += '    <span>🎁 Mening Kulgili Sovg\'alarim (' + giftsCount + ')</span>';
       html += '  </button>';
       html += '</div>';
 
-      // TAB 1: QUIZZES
+      // SUBTAB 1: QUIZZES
       if (activeSubtab === 'quizzes') {
-        // Search & Join Bar
-        html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col sm:flex-row items-center gap-4">';
-        html += '  <div class="relative flex-1 w-full">';
-        html += '    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg">🔍</span>';
-        html += '    <input id="quizCodeSearchInput" type="text" placeholder="Quiz kodini kiriting (masalan: QZ-7K#9X)..." class="w-full pl-11 pr-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl font-mono text-sm tracking-wide focus:outline-none focus:ring-2 focus:ring-amber-500" />';
+        // EXACT Image 3 Card: "🔒 6 Xonali Kod Bilan Imtihonga Kirish"
+        html += '<div class="eth-exam-join-card-dark max-w-2xl mx-auto space-y-4 my-2">';
+        html += '  <div class="flex items-center gap-2.5">';
+        html += '    <span class="text-2xl">🔒</span>';
+        html += '    <h3 class="text-base font-extrabold text-white">6 Xonali Kod Bilan Imtihonga Kirish</h3>';
         html += '  </div>';
-        html += '  <button id="btnJoinByCode" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-extrabold text-sm shadow hover:opacity-95 active:scale-95 transition-all whitespace-nowrap">';
-        html += '    🚀 Bellashuvga Kirish';
+        html += '  <p class="text-xs text-gray-400 leading-relaxed">';
+        html += '    O\'qituvchingiz bergan maxsus kodni kiriting. Yashirin va rasmiy imtihonlar qat\'iy nazorat va to\'liq ekran himoyasida o\'tkaziladi.';
+        html += '  </p>';
+        html += '  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">';
+        html += '    <div>';
+        html += '      <label class="text-[11px] font-bold uppercase tracking-wider text-gray-400 block mb-1">IMTIHON KODI</label>';
+        html += '      <input id="quizCodeInputHero" type="text" placeholder="Masalan: QZ-7K#9X" class="eth-exam-join-input-dark font-mono uppercase" />';
+        html += '    </div>';
+        html += '    <div>';
+        html += '      <label class="text-[11px] font-bold uppercase tracking-wider text-gray-400 block mb-1">ISM VA FAMILIYANGIZ</label>';
+        html += '      <input id="quizStudentNameHero" type="text" value="' + esc(S.user.name || '') + '" class="eth-exam-join-input-dark font-bold" ' + (isTeacher ? '' : 'readonly') + ' />';
+        html += '    </div>';
+        html += '  </div>';
+        html += '  <button id="btnStartQuizHeroJoin" class="eth-exam-join-btn-blue mt-2">';
+        html += '    <span>Imtihonni Boshlash</span>';
+        html += '    <span>➔</span>';
         html += '  </button>';
         html += '</div>';
 
-        // Quiz Cards Grid
-        if (S.quizzes.length === 0) {
-          html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-12 text-center border border-gray-100 dark:border-gray-700">';
-          html += '  <div class="text-5xl mb-3">🎯</div>';
-          html += '  <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">Hozircha hech qanday Quiz mavjud emas</h3>';
-          html += '  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-md mx-auto">O\'qituvchi yangi quiz test tuzishi yoki quiz kodi orqali bellashuvga qo\'shilishingiz mumkin.</p>';
-          if (isTeacher) {
-            html += '  <button id="btnCreateQuizEmpty" class="mt-4 px-6 py-2.5 rounded-xl bg-amber-500 text-white font-bold text-sm shadow hover:bg-amber-600">';
-            html += '    ➕ Yangi Quiz Yaratish';
-            html += '  </button>';
-          }
-          html += '</div>';
-        } else {
-          html += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">';
-          S.quizzes.forEach(function(quiz) {
-            var qCount = (quiz.questions || []).length;
-            var isHost = (S.user && (S.user.email === quiz.teacherEmail || isTeacher));
-            var hasAnalysis = Boolean(quiz.lastSessionAnalysis);
+        // TEACHER QUIZ MANAGEMENT LIST (Only visible to teacher)
+        if (isTeacher) {
+          html += '<div class="space-y-4 pt-4">';
+          html += '  <div class="flex items-center justify-between">';
+          html += '    <h3 class="text-base font-black text-gray-900 dark:text-white flex items-center gap-2">';
+          html += '      <span>📋 O\'qituvchi Boshqaruvi (Mavjud Quiz Testlar)</span>';
+          html += '    </h3>';
+          html += '  </div>';
 
-            html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700 flex flex-col justify-between transition-all relative overflow-hidden group">';
-            html += '  <div class="space-y-3">';
-            html += '    <div class="flex items-center justify-between gap-2">';
-            html += '      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 font-mono text-xs font-black tracking-wider">';
-            html += '        <span>' + quiz.code + '</span>';
-            html += '        <button class="btnCopyQuizCode opacity-70 hover:opacity-100" data-code="' + quiz.code + '" title="Nusxa olish">📋</button>';
-            html += '      </span>';
-
-            if (quiz.status === 'active') {
-              html += '      <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 animate-pulse">🟢 Jarayonda</span>';
-            } else if (quiz.status === 'finished') {
-              html += '      <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300">🟣 Yakunlangan</span>';
-            } else {
-              html += '      <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300">🟡 Lobby (Kutish)</span>';
-            }
-            html += '    </div>';
-
-            html += '    <h3 class="text-base font-extrabold text-gray-900 dark:text-white line-clamp-2 leading-snug">' + (quiz.title || 'Quiz Test') + '</h3>';
-
-            html += '    <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500 dark:text-gray-400">';
-            html += '      <span class="bg-gray-100 dark:bg-gray-700/60 px-2 py-0.5 rounded-md font-medium">📝 ' + qCount + ' ta savol</span>';
-            html += '      <span class="bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded-md font-bold">⚡ +600 / +100 / -500</span>';
-            html += '    </div>';
-
-            html += '    <div class="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1.5">';
-            html += '      <span>👤 Ustoz: ' + (quiz.teacherName || 'Instructor') + '</span>';
-            html += '    </div>';
-            html += '  </div>';
-
-            // Buttons
-            html += '  <div class="pt-4 mt-4 border-t border-gray-100 dark:border-gray-700/60 flex flex-col gap-2">';
-            html += '    <div class="flex items-center gap-2">';
-            html += '      <button class="btnStartQuizRunner flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-extrabold text-xs shadow hover:opacity-95 active:scale-95 transition-all flex items-center justify-center gap-1.5" data-quiz-id="' + quiz.id + '">';
-            html += '        <span>' + (isHost ? '▶️ Lobbyni ochish' : '🚀 Bellashuvga kirish') + '</span>';
-            html += '      </button>';
-
-            if (hasAnalysis) {
-              html += '      <button class="btnViewQuizAnalysis py-2.5 px-3 rounded-xl bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 font-bold text-xs hover:bg-purple-200 transition-all flex items-center justify-center gap-1" data-quiz-id="' + quiz.id + '" title="Test Tahlili">';
-              html += '        <span>📊 Tahlil</span>';
-              html += '      </button>';
-            }
-
-            if (isHost) {
-              html += '      <button class="btnDeleteQuiz py-2.5 px-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 font-bold text-xs hover:bg-rose-100 transition-all" data-quiz-id="' + quiz.id + '" title="O\'chirish">';
-              html += '        <span>🗑️</span>';
-              html += '      </button>';
-            }
-            html += '    </div>';
-            html += '  </div>';
-
+          if (S.quizzes.length === 0) {
+            html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-10 text-center border border-gray-200 dark:border-gray-700">';
+            html += '  <div class="text-4xl mb-2">🎯</div>';
+            html += '  <h4 class="font-extrabold text-sm text-gray-800 dark:text-gray-200">Sizda hali quiz testlar yo\'q</h4>';
+            html += '  <p class="text-xs text-gray-500 mt-1">Yuqoridagi "+ Yangi Imtihon Tuzish" tugmasini bosib Wayground Studio orqali test tuzing.</p>';
             html += '</div>';
-          });
+          } else {
+            html += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">';
+            S.quizzes.forEach(function(quiz) {
+              var qCount = (quiz.questions || []).length;
+              var hasAnalysis = Boolean(quiz.lastSessionAnalysis);
+
+              html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm flex flex-col justify-between">';
+              html += '  <div class="space-y-2">';
+              html += '    <div class="flex items-center justify-between gap-2">';
+              html += '      <span class="px-2.5 py-1 rounded-lg bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 font-mono text-xs font-black tracking-wider">' + quiz.code + '</span>';
+              if (quiz.status === 'active') {
+                html += '      <span class="px-2 py-0.5 rounded-full text-[11px] font-extrabold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 animate-pulse">🟢 Jonli Battle</span>';
+              } else if (quiz.status === 'finished') {
+                html += '      <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-purple-100 text-purple-800">🟣 Yakunlangan</span>';
+              } else {
+                html += '      <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300">🟡 Lobby</span>';
+              }
+              html += '    </div>';
+
+              html += '    <h4 class="font-black text-sm text-gray-900 dark:text-white line-clamp-2">' + (quiz.title || 'Quiz Test') + '</h4>';
+              html += '    <div class="text-xs text-gray-500 flex items-center gap-2">';
+              html += '      <span>📝 ' + qCount + ' ta savol</span>';
+              html += '      <span>·</span>';
+              html += '      <span class="text-amber-600 font-bold">⚡ +600 / +100 / -500</span>';
+              html += '    </div>';
+              html += '  </div>';
+
+              html += '  <div class="pt-4 mt-3 border-t border-gray-100 dark:border-gray-700/60 flex items-center gap-2">';
+              html += '    <button class="btnStartQuizRunner flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black text-xs shadow hover:opacity-95" data-quiz-id="' + quiz.id + '">';
+              html += '      ▶️ Lobbyni ochish';
+              html += '    </button>';
+              if (hasAnalysis) {
+                html += '    <button class="btnViewQuizAnalysis py-2 px-3 rounded-xl bg-purple-100 text-purple-700 font-bold text-xs" data-quiz-id="' + quiz.id + '" title="Test Tahlili">📊 Tahlil</button>';
+              }
+              html += '    <button class="btnDeleteQuiz py-2 px-2.5 rounded-xl bg-rose-50 text-rose-600 font-bold text-xs hover:bg-rose-100" data-quiz-id="' + quiz.id + '" title="O\'chirish">🗑️</button>';
+              html += '  </div>';
+              html += '</div>';
+            });
+            html += '</div>';
+          }
           html += '</div>';
         }
       }
 
-      // TAB 2: GIFTS
+      // SUBTAB 2: GIFTS
       else if (activeSubtab === 'gifts') {
         html += '<div class="space-y-4">';
         html += '  <div class="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-2xl p-4 text-xs md:text-sm text-amber-900 dark:text-amber-200 flex items-center gap-3">';
@@ -7619,7 +8047,7 @@
 
       container.innerHTML = html;
 
-      // Event Listeners
+      // ATTACH LISTENERS
       var tabQuizzesBtn = container.querySelector('#tabQuizzesBtn');
       var tabGiftsBtn = container.querySelector('#tabGiftsBtn');
       if (tabQuizzesBtn) {
@@ -7637,51 +8065,48 @@
         };
       }
 
-      // Create Quiz Modal
-      var btnCreateQuizModal = container.querySelector('#btnCreateQuizModal');
-      var btnCreateQuizEmpty = container.querySelector('#btnCreateQuizEmpty');
-      if (btnCreateQuizModal) btnCreateQuizModal.onclick = function() { showCreateQuizModal(container); };
-      if (btnCreateQuizEmpty) btnCreateQuizEmpty.onclick = function() { showCreateQuizModal(container); };
-
-      // Search & Join by Code
-      var btnJoinByCode = container.querySelector('#btnJoinByCode');
-      var searchInput = container.querySelector('#quizCodeSearchInput');
-      if (btnJoinByCode && searchInput) {
-        function doJoin() {
-          var val = searchInput.value.trim().toUpperCase();
-          if (!val) {
-            alert("Iltimos, quiz kodini kiriting! Masalan: QZ-7K#9X");
-            return;
-          }
-          var matched = S.quizzes.find(function(q) {
-            return q.code && (q.code.trim().toUpperCase() === val || q.code.trim().toUpperCase().indexOf(val) !== -1);
-          });
-          if (!matched) {
-            alert("Kiritilgan '" + val + "' kodi bo\'yicha hech qanday Quiz topilmadi! Kodni to\'g\'ri yozganingizni tekshiring.");
-            return;
-          }
-          startQuizBattleRunner(matched, false);
-        }
-        btnJoinByCode.onclick = doJoin;
-        searchInput.onkeydown = function(e) {
-          if (e.key === 'Enter') doJoin();
+      // Teacher Studio Trigger
+      var btnOpenStudio = container.querySelector('#btnOpenWaygroundStudio');
+      if (btnOpenStudio) {
+        btnOpenStudio.onclick = function() {
+          showWaygroundStudioModal({});
         };
       }
 
-      // Copy Code buttons
-      container.querySelectorAll('.btnCopyQuizCode').forEach(function(btn) {
-        btn.onclick = function(e) {
-          e.stopPropagation();
-          var cd = btn.getAttribute('data-code');
-          if (navigator.clipboard) {
-            navigator.clipboard.writeText(cd).then(function() {
-              alert("Quiz kodi (" + cd + ") nusxalandi!");
-            });
-          } else {
-            prompt("Quiz kodi:", cd);
+      // Hero Join Card Action
+      var btnHeroJoin = container.querySelector('#btnStartQuizHeroJoin');
+      var inHeroCode = container.querySelector('#quizCodeInputHero');
+      var inHeroName = container.querySelector('#quizStudentNameHero');
+
+      if (btnHeroJoin && inHeroCode) {
+        function doHeroJoin() {
+          var codeVal = inHeroCode.value.trim().toUpperCase();
+          if (!codeVal) {
+            alert("Iltimos, imtihon kodini kiriting! Masalan: QZ-7K#9X yoki 6 xonali kod");
+            return;
           }
+          if (inHeroName && inHeroName.value.trim()) {
+            S.user.name = inHeroName.value.trim();
+            App.saveState();
+          }
+
+          var matched = S.quizzes.find(function(q) {
+            return q.code && (q.code.trim().toUpperCase() === codeVal || q.code.trim().toUpperCase().indexOf(codeVal) !== -1);
+          });
+          if (!matched) {
+            alert("Kiritilgan '" + codeVal + "' kodi bo\'yicha hech qanday Quiz topilmadi! Kodni to\'g\'ri yozganingizni tekshiring.");
+            return;
+          }
+
+          var isHost = (S.user && (S.user.email === matched.teacherEmail || isTeacher));
+          startQuizBattleRunner(matched, isHost);
+        }
+
+        btnHeroJoin.onclick = doHeroJoin;
+        inHeroCode.onkeydown = function(e) {
+          if (e.key === 'Enter') doHeroJoin();
         };
-      });
+      }
 
       // Start Runner buttons
       container.querySelectorAll('.btnStartQuizRunner').forEach(function(btn) {
@@ -7700,9 +8125,7 @@
         btn.onclick = function() {
           var qId = btn.getAttribute('data-quiz-id');
           var quizObj = S.quizzes.find(function(q) { return q.id === qId; });
-          if (quizObj) {
-            showQuizAnalysisModal(quizObj);
-          }
+          if (quizObj) showQuizAnalysisModal(quizObj);
         };
       });
 
@@ -7739,282 +8162,15 @@
     window._ethithRefreshGifts = renderContent;
   }
 
-
-  // =========================================================================
-  // CREATE QUIZ MODAL (STANDARD MULTIPLE CHOICE WITH BULK QUICK PASTE)
-  // =========================================================================
-
-  function showCreateQuizModal(container) {
-    var overlay = document.createElement('div');
-    overlay.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto';
-
-    var generatedCode = generateRichExamCode('QZ');
-    var parsedQuestionsList = [];
-
-    var html = '<div class="bg-white dark:bg-gray-800 rounded-3xl max-w-3xl w-full p-6 md:p-8 shadow-2xl border border-gray-100 dark:border-gray-700 my-8 space-y-6 max-h-[90vh] flex flex-col justify-between">';
-    html += '  <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-700 pb-4">';
-    html += '    <div class="flex items-center gap-3">';
-    html += '      <span class="text-3xl">⚔️</span>';
-    html += '      <div>';
-    html += '        <h3 class="text-xl font-black text-gray-900 dark:text-white">Yangi Quiz Test Bellashuvi Tuzish</h3>';
-    html += '        <p class="text-xs text-gray-500 dark:text-gray-400">Faqat standart variantli testlar (A, B, C, D). Yozma va audio savollarsiz.</p>';
-    html += '      </div>';
-    html += '    </div>';
-    html += '    <button id="btnCloseCreateQuiz" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-bold p-1">✕</button>';
-    html += '  </div>';
-
-    // Scrollable Form Body
-    html += '  <div class="flex-1 overflow-y-auto space-y-5 pr-1">';
-    html += '    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">';
-    html += '      <div class="md:col-span-2 space-y-1.5">';
-    html += '        <label class="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300">Quiz Nomi</label>';
-    html += '        <input id="inputQuizTitle" type="text" placeholder="Masalan: English Grammar & Vocabulary Blitz" class="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-amber-500" value="English Blitz Battle #' + (S.quizzes.length + 1) + '" />';
-    html += '      </div>';
-    html += '      <div class="space-y-1.5">';
-    html += '        <label class="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300">Quiz Maxsus Kodi</label>';
-    html += '        <div class="flex items-center gap-2">';
-    html += '          <input id="inputQuizCode" type="text" class="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl font-mono text-sm font-black text-amber-600 dark:text-amber-400" value="' + generatedCode + '" />';
-    html += '          <button id="btnRegenCode" class="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-700 text-sm hover:bg-gray-200" title="Kodni yangilash">🔄</button>';
-    html += '        </div>';
-    html += '      </div>';
-    html += '    </div>';
-
-    // Tabs for adding questions: Bulk Paste vs Manual
-    html += '    <div class="border border-amber-200 dark:border-amber-800/80 rounded-2xl p-4 bg-amber-50/40 dark:bg-amber-950/20 space-y-4">';
-    html += '      <div class="flex items-center justify-between">';
-    html += '        <div class="text-xs font-extrabold uppercase tracking-wider text-amber-900 dark:text-amber-300 flex items-center gap-2">';
-    html += '          <span>⚡ 1-USUL: TEZKOR MATNDAN AJRATIB OLISH (BULK QUICK PASTE)</span>';
-    html += '        </div>';
-    html += '      </div>';
-    html += '      <p class="text-xs text-gray-500 dark:text-gray-400">';
-    html += '        Savollarni quyidagi formatda to\'g\'ridan-to\'g\'ri tashlang (50 tagacha bittada):<br>';
-    html += '        <span class="font-mono text-[11px] text-gray-600 dark:text-gray-300">1. Savol matni... A) variant B) variant C) variant D) variant Javob: B</span>';
-    html += '      </p>';
-    html += '      <textarea id="bulkPasteTextarea" rows="6" placeholder="1. What is the opposite of generous?\nA) Stingy\nB) Kind\nC) Polite\nD) Helpful\nJavob: A\n\n2. She ___ English since 2018.\nA) learns\nB) has been learning\nC) is learning\nD) had learned\nJavob: B" class="w-full p-3 font-mono text-xs bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-amber-500"></textarea>';
-    html += '      <button id="btnParseBulkQuestions" class="px-5 py-2.5 rounded-xl bg-amber-500 text-white font-extrabold text-xs shadow hover:bg-amber-600 transition-all flex items-center gap-2">';
-    html += '        <span>⚡ Savollarni tahlil qilish va qo\'shish</span>';
-    html += '      </button>';
-    html += '    </div>';
-
-    // Questions Counter and Preview
-    html += '    <div class="space-y-3">';
-    html += '      <div class="flex items-center justify-between">';
-    html += '        <h4 class="text-sm font-black text-gray-800 dark:text-gray-100 flex items-center gap-2">';
-    html += '          <span>📋 Kiritilgan Savollar Ro\'yxati</span>';
-    html += '          <span id="quizQuestionsCountBadge" class="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 text-xs font-bold">0 ta</span>';
-    html += '        </h4>';
-    html += '        <button id="btnClearAllQuestions" class="text-xs text-rose-500 hover:text-rose-700 font-bold">Barchasini tozalash</button>';
-    html += '      </div>';
-    html += '      <div id="quizQuestionsPreviewList" class="space-y-2 max-h-60 overflow-y-auto pr-1">';
-    html += '        <div class="text-xs text-gray-400 text-center py-6 border border-dashed border-gray-200 dark:border-gray-700 rounded-xl">Hali hech qanday savol qo\'shilmadi. Yuqoridagi maydondan foydalaning.</div>';
-    html += '      </div>';
-    html += '    </div>';
-    html += '  </div>';
-
-    // Footer actions
-    html += '  <div class="border-t border-gray-100 dark:border-gray-700 pt-4 flex items-center justify-end gap-3">';
-    html += '    <button id="btnCancelCreateQuiz" class="px-5 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs hover:bg-gray-200">';
-    html += '      Bekor qilish';
-    html += '    </button>';
-    html += '    <button id="btnSaveQuizFinal" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-extrabold text-sm shadow-lg hover:opacity-95 active:scale-95 transition-all flex items-center gap-2">';
-    html += '      <span>💾 Saqlash va Lobbyni Boshlash</span>';
-    html += '    </button>';
-    html += '  </div>';
-
-    html += '</div>';
-
-    overlay.innerHTML = html;
-    document.body.appendChild(overlay);
-
-    function updatePreview() {
-      var badge = overlay.querySelector('#quizQuestionsCountBadge');
-      var list = overlay.querySelector('#quizQuestionsPreviewList');
-      if (badge) badge.textContent = parsedQuestionsList.length + ' ta';
-
-      if (!list) return;
-      if (parsedQuestionsList.length === 0) {
-        list.innerHTML = '<div class="text-xs text-gray-400 text-center py-6 border border-dashed border-gray-200 dark:border-gray-700 rounded-xl">Hali hech qanday savol qo\'shilmadi. Yuqoridagi maydondan foydalaning.</div>';
-        return;
-      }
-
-      var pHtml = '';
-      parsedQuestionsList.forEach(function(q, qIdx) {
-        pHtml += '<div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 text-xs flex items-start justify-between gap-3">';
-        pHtml += '  <div class="space-y-1.5 flex-1">';
-        pHtml += '    <div class="font-extrabold text-gray-900 dark:text-white leading-snug">' + (qIdx + 1) + '. ' + q.question + '</div>';
-        pHtml += '    <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-600 dark:text-gray-400">';
-        q.options.forEach(function(opt, optIdx) {
-          var isCorr = (optIdx === q.correctAnswer);
-          pHtml += '      <div class="' + (isCorr ? 'font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 p-1 rounded' : 'p-1') + '">';
-          pHtml += '        ' + String.fromCharCode(65 + optIdx) + ') ' + opt + (isCorr ? ' ✅' : '');
-          pHtml += '      </div>';
-        });
-        pHtml += '    </div>';
-        pHtml += '  </div>';
-        pHtml += '  <button class="btnDeleteParsedQ text-gray-400 hover:text-rose-500 font-bold p-1" data-q-idx="' + qIdx + '">✕</button>';
-        pHtml += '</div>';
-      });
-      list.innerHTML = pHtml;
-
-      list.querySelectorAll('.btnDeleteParsedQ').forEach(function(btn) {
-        btn.onclick = function() {
-          var idx = parseInt(btn.getAttribute('data-q-idx'), 10);
-          parsedQuestionsList.splice(idx, 1);
-          updatePreview();
-        };
-      });
-    }
-
-    // Regen Code
-    var btnRegenCode = overlay.querySelector('#btnRegenCode');
-    var inputQuizCode = overlay.querySelector('#inputQuizCode');
-    if (btnRegenCode && inputQuizCode) {
-      btnRegenCode.onclick = function() {
-        generatedCode = generateRichExamCode('QZ');
-        inputQuizCode.value = generatedCode;
-      };
-    }
-
-    // Parse Bulk Text
-    var btnParseBulk = overlay.querySelector('#btnParseBulkQuestions');
-    var bulkTextarea = overlay.querySelector('#bulkPasteTextarea');
-    if (btnParseBulk && bulkTextarea) {
-      btnParseBulk.onclick = function() {
-        var rawText = bulkTextarea.value.trim();
-        if (!rawText) {
-          alert("Iltimos, matn maydoniga savollarni kiriting!");
-          return;
-        }
-
-        // Split by numbered question pattern e.g. "1.", "2)", "\n1."
-        var rawBlocks = rawText.split(/(?:^|\n+)(?:\d+[\.\)]\s*)/);
-        var addedCount = 0;
-
-        rawBlocks.forEach(function(block) {
-          block = block.trim();
-          if (!block || block.length < 5) return;
-
-          // Find options A), B), C), D)
-          var optA = '', optB = '', optC = '', optD = '';
-          var corrLetter = 'A';
-
-          // Extract Answer if present
-          var ansMatch = block.match(/(?:Javob|Answer|To'g'ri\s*javob|To‘g‘ri\s*javob):\s*([ABCDabcd])/i);
-          if (ansMatch) {
-            corrLetter = ansMatch[1].toUpperCase();
-            block = block.replace(/(?:Javob|Answer|To'g'ri\s*javob|To‘g‘ri\s*javob):\s*([ABCDabcd])/i, '').trim();
-          }
-
-          // Match options: A) ... B) ... C) ... D) ...
-          var optMatch = block.match(/A[\.\)]\s*([\s\S]+?)(?=B[\.\)]|$)/i);
-          var bMatch = block.match(/B[\.\)]\s*([\s\S]+?)(?=C[\.\)]|$)/i);
-          var cMatch = block.match(/C[\.\)]\s*([\s\S]+?)(?=D[\.\)]|$)/i);
-          var dMatch = block.match(/D[\.\)]\s*([\s\S]+?)$/i);
-
-          if (optMatch && bMatch) {
-            var qText = block.substring(0, block.search(/A[\.\)]/i)).trim();
-            optA = optMatch[1].trim();
-            optB = bMatch[1].trim();
-            optC = cMatch ? cMatch[1].trim() : 'Variant C';
-            optD = dMatch ? dMatch[1].trim() : 'Variant D';
-
-            var corrIdx = 0;
-            if (corrLetter === 'B') corrIdx = 1;
-            else if (corrLetter === 'C') corrIdx = 2;
-            else if (corrLetter === 'D') corrIdx = 3;
-
-            parsedQuestionsList.push({
-              id: 'q_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
-              question: qText || 'Savol',
-              options: [optA, optB, optC, optD],
-              correctAnswer: corrIdx
-            });
-            addedCount++;
-          }
-        });
-
-        if (addedCount > 0) {
-          bulkTextarea.value = '';
-          updatePreview();
-          alert(addedCount + " ta savol muvaffaqiyatli ajratib olindi va qo\'shildi!");
-        } else {
-          alert("Savollarni ajratib bo\'lmadi. Format A) B) C) D) va Javob: B ko\'rinishida ekanligiga ishonch hosil qiling.");
-        }
-      };
-    }
-
-    // Clear all
-    var btnClearAll = overlay.querySelector('#btnClearAllQuestions');
-    if (btnClearAll) {
-      btnClearAll.onclick = function() {
-        if (confirm("Barcha savollarni tozalashni xohlaysizmi?")) {
-          parsedQuestionsList = [];
-          updatePreview();
-        }
-      };
-    }
-
-    // Close / Cancel
-    function close() { overlay.remove(); }
-    overlay.querySelector('#btnCloseCreateQuiz').onclick = close;
-    overlay.querySelector('#btnCancelCreateQuiz').onclick = close;
-
-    // Save & Launch
-    overlay.querySelector('#btnSaveQuizFinal').onclick = function() {
-      var finalTitle = overlay.querySelector('#inputQuizTitle').value.trim();
-      var finalCode = overlay.querySelector('#inputQuizCode').value.trim().toUpperCase();
-
-      if (!finalTitle) {
-        alert("Iltimos, quiz nomini kiriting!");
-        return;
-      }
-      if (!finalCode) {
-        alert("Iltimos, quiz kodini kiriting!");
-        return;
-      }
-      if (parsedQuestionsList.length === 0) {
-        alert("Iltimos, kamida bitta savol qo\'shing!");
-        return;
-      }
-
-      var newQuiz = {
-        id: 'quiz_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
-        code: finalCode,
-        title: finalTitle,
-        created: Date.now(),
-        teacherEmail: S.user.email,
-        teacherName: S.user.name,
-        status: 'lobby',
-        questions: parsedQuestionsList,
-        lobbyParticipants: [],
-        lastSessionAnalysis: null
-      };
-
-      S.quizzes.unshift(newQuiz);
-      App.saveState();
-
-      if (window.EthithSync && window.EthithSync.publishLive) {
-        window.EthithSync.publishLive({ type: 'QUIZ_CREATED', quiz: newQuiz });
-      }
-
-      close();
-      if (window._ethithRefreshQuizList) window._ethithRefreshQuizList();
-      startQuizBattleRunner(newQuiz, true);
-    };
-  }
-
-
-  // =========================================================================
-  // LIVE QUIZ BATTLE RUNNER (LOBBY, 10S SPEED BONUS, REALTIME LEADERBOARD, PODIUM)
-  // =========================================================================
-
+  // -------------------------------------------------------------------------
+  // LIVE QUIZ BATTLE RUNNER (WITH COMPLETE OPTION SHUFFLING PER STUDENT)
+  // -------------------------------------------------------------------------
   function startQuizBattleRunner(quiz, isHost) {
     if (!quiz || !quiz.questions || quiz.questions.length === 0) {
       alert("Ushbu quizda savollar mavjud emas!");
       return;
     }
 
-    // Clean up any existing runner
     var old = document.querySelector('.eth-quiz-fullscreen');
     if (old) old.remove();
 
@@ -8022,8 +8178,7 @@
     var myStudentId = (S.user && (S.user.email || S.user.id)) || ('st_' + Date.now());
     var myStudentName = (S.user && S.user.name) || 'O\'quvchi';
 
-    // State for this battle session
-    var currentPhase = 'lobby'; // 'lobby' | 'countdown' | 'playing' | 'waiting_others' | 'finished'
+    var currentPhase = 'lobby';
     var myScore = 0;
     var correctCount = 0;
     var wrongCount = 0;
@@ -8033,20 +8188,48 @@
     var questionRemainingMs = 10000;
     var questionStartTime = 0;
 
-    // Shuffle questions so order is randomized for this participant
+    // 1. Shuffle Questions order per student
     var shuffledQuestions = shuffleArray(quiz.questions);
 
-    // Map: question.id -> { chosen: optIdx, correct: optIdx, isCorrect: bool, timeTaken: sec }
+    // 2. Pre-shuffle OPTIONS for EACH question per student (User Requirement: "har bitta savolning variandining o'rniham almashib tushadi")
+    var preparedQuestions = shuffledQuestions.map(function(q) {
+      var origOpts = q.options || [];
+      var mapped = origOpts.map(function(optText, oIdx) {
+        var isCorr = false;
+        if (Array.isArray(q.correctAnswers) && q.correctAnswers.length > 0) {
+          isCorr = (q.correctAnswers.indexOf(oIdx) !== -1);
+        } else {
+          isCorr = (oIdx === q.correctAnswer);
+        }
+        return {
+          text: optText,
+          origIndex: oIdx,
+          isCorrect: isCorr
+        };
+      });
+
+      // Scramble option positions for this student!
+      var scrambled = shuffleArray(mapped);
+
+      return {
+        id: q.id,
+        type: q.type || 'mcq',
+        question: q.question,
+        options: scrambled,
+        points: q.points || 1,
+        timeSec: q.timeSec || 10
+      };
+    });
+
     var studentAnswersMap = {};
 
-    // Live participants map: studentId -> { id, name, score, currentQ, totalQ, correctCount, wrongCount, infractions, finished }
     var participantsMap = {};
     participantsMap[myStudentId] = {
       id: myStudentId,
       name: myStudentName,
       score: 0,
       currentQ: 0,
-      totalQ: shuffledQuestions.length,
+      totalQ: preparedQuestions.length,
       correctCount: 0,
       wrongCount: 0,
       infractions: 0,
@@ -8054,13 +8237,11 @@
       answers: {}
     };
 
-    // Fullscreen Overlay
     var root = document.createElement('div');
     root.className = 'eth-quiz-fullscreen';
-
     document.body.appendChild(root);
 
-    // Announce to MQTT: Joined Lobby
+    // Announce Lobby Join via MQTT
     if (window.EthithSync && window.EthithSync.publishLive) {
       window.EthithSync.publishLive({
         type: 'QUIZ_LOBBY_STATE',
@@ -8071,7 +8252,7 @@
       });
     }
 
-    // Silent Proctoring Handler
+    // Silent Proctoring Handler (No camera preview, no blocking)
     function handleSilentInfraction(reason) {
       if (currentPhase !== 'playing') return;
       silentInfractions++;
@@ -8088,9 +8269,7 @@
     }
 
     var onVisibilityChange = function() {
-      if (document.visibilityState === 'hidden') {
-        handleSilentInfraction('Brauzer tabidan chiqdi');
-      }
+      if (document.visibilityState === 'hidden') handleSilentInfraction('Brauzer tabidan chiqdi');
     };
     var onWindowBlur = function() {
       handleSilentInfraction('Oyna fokusini yo\'qotdi');
@@ -8105,7 +8284,6 @@
       window._ethithOnQuizEvent = null;
     }
 
-    // Calculate current rank
     function getMyRank() {
       var arr = Object.values(participantsMap);
       arr.sort(function(a, b) { return b.score - a.score; });
@@ -8113,7 +8291,6 @@
       return idx >= 0 ? (idx + 1) : 1;
     }
 
-    // MQTT Event listener for live quiz events
     window._ethithOnQuizEvent = function(event) {
       if (!event || event.quizId !== quiz.id) return;
 
@@ -8124,7 +8301,7 @@
             name: event.studentName || 'O\'quvchi',
             score: 0,
             currentQ: 0,
-            totalQ: shuffledQuestions.length,
+            totalQ: preparedQuestions.length,
             correctCount: 0,
             wrongCount: 0,
             infractions: 0,
@@ -8135,9 +8312,7 @@
         if (currentPhase === 'lobby') renderLobby();
       }
       else if (event.type === 'QUIZ_STARTED') {
-        if (currentPhase === 'lobby') {
-          startCountdown();
-        }
+        if (currentPhase === 'lobby') startCountdown();
       }
       else if (event.type === 'QUIZ_SCORE_UPDATE') {
         if (!participantsMap[event.studentId]) {
@@ -8146,7 +8321,7 @@
         var p = participantsMap[event.studentId];
         p.score = event.score || 0;
         p.currentQ = event.currentQ || 0;
-        p.totalQ = event.totalQ || shuffledQuestions.length;
+        p.totalQ = event.totalQ || preparedQuestions.length;
         p.correctCount = event.correctCount || 0;
         p.wrongCount = event.wrongCount || 0;
         p.infractions = event.infractions || 0;
@@ -8171,18 +8346,14 @@
           participantsMap[event.studentId].score = event.score || participantsMap[event.studentId].score;
           if (event.answers) participantsMap[event.studentId].answers = event.answers;
         }
-        if (currentPhase === 'waiting_others') {
-          renderWaitingOthers();
-        }
+        if (currentPhase === 'waiting_others') renderWaitingOthers();
       }
       else if (event.type === 'QUIZ_FORCE_FINISH') {
         renderFinalePodium();
       }
     };
 
-    // -----------------------------------------------------------------------
     // PHASE 1: LOBBY
-    // -----------------------------------------------------------------------
     function renderLobby() {
       currentPhase = 'lobby';
       var participantList = Object.values(participantsMap);
@@ -8245,7 +8416,6 @@
 
       root.innerHTML = html;
 
-      // Exit
       var btnExit = root.querySelector('#btnExitQuizLobby');
       if (btnExit) {
         btnExit.onclick = function() {
@@ -8254,7 +8424,6 @@
         };
       }
 
-      // Copy
       var btnCopy = root.querySelector('#btnCopyLobbyCode');
       if (btnCopy) {
         btnCopy.onclick = function() {
@@ -8268,7 +8437,6 @@
         };
       }
 
-      // Teacher Start
       var btnStart = root.querySelector('#btnTeacherStartBattle');
       if (btnStart) {
         btnStart.onclick = function() {
@@ -8285,9 +8453,7 @@
       }
     }
 
-    // -----------------------------------------------------------------------
     // PHASE 2: 3-2-1 COUNTDOWN
-    // -----------------------------------------------------------------------
     function startCountdown() {
       currentPhase = 'countdown';
       var count = 3;
@@ -8315,9 +8481,7 @@
       }, 1000);
     }
 
-    // -----------------------------------------------------------------------
-    // PHASE 3: PLAYING QUESTIONS (10S SPEED BONUS + REALTIME FEEDBACK)
-    // -----------------------------------------------------------------------
+    // PHASE 3: PLAYING QUESTIONS (10S SPEED BONUS + SCRAMBLED OPTIONS)
     function updateLiveRankPill() {
       var rankEl = root.querySelector('#liveRankPill');
       var scoreEl = root.querySelector('#liveScorePill');
@@ -8332,12 +8496,12 @@
 
     function renderPlayingQuestion() {
       currentPhase = 'playing';
-      if (currentQIndex >= shuffledQuestions.length) {
+      if (currentQIndex >= preparedQuestions.length) {
         finishMyQuiz();
         return;
       }
 
-      var q = shuffledQuestions[currentQIndex];
+      var q = preparedQuestions[currentQIndex];
       questionRemainingMs = 10000;
       questionStartTime = Date.now();
       var isAnswered = false;
@@ -8348,7 +8512,7 @@
       html += '<div class="eth-quiz-topbar flex items-center justify-between px-5 py-3 rounded-2xl bg-gray-900/90 border border-gray-700/80 backdrop-blur-md">';
       html += '  <div class="flex items-center gap-2">';
       html += '    <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Savol:</span>';
-      html += '    <span class="text-sm font-extrabold text-white">' + (currentQIndex + 1) + ' / ' + shuffledQuestions.length + '</span>';
+      html += '    <span class="text-sm font-extrabold text-white">' + (currentQIndex + 1) + ' / ' + preparedQuestions.length + '</span>';
       html += '  </div>';
       html += '  <div class="flex items-center gap-3">';
       html += '    <div id="liveRankPill" class="eth-quiz-rank-pill">#' + getMyRank() + '-o\'rin</div>';
@@ -8371,22 +8535,22 @@
       html += '<div class="eth-quiz-card space-y-6">';
       html += '  <div class="text-lg md:text-2xl font-black text-white leading-relaxed">' + q.question + '</div>';
 
-      // Options
+      // Scrambled Option Buttons
       html += '  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">';
-      q.options.forEach(function(opt, optIdx) {
-        var letter = String.fromCharCode(65 + optIdx);
-        html += '<button class="eth-quiz-opt-btn" data-opt-idx="' + optIdx + '">';
+      q.options.forEach(function(optObj, sIdx) {
+        var letter = String.fromCharCode(65 + sIdx);
+        html += '<button class="eth-quiz-opt-btn" data-scrambled-idx="' + sIdx + '">';
         html += '  <span class="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center font-black text-amber-400 text-sm">' + letter + '</span>';
-        html += '  <span class="text-sm font-bold flex-1 text-left">' + opt + '</span>';
+        html += '  <span class="text-sm font-bold flex-1 text-left">' + optObj.text + '</span>';
         html += '</button>';
       });
       html += '  </div>';
       html += '</div>';
 
-      // Feedback Floating Container
+      // Floating Feedback Container
       html += '<div id="feedbackContainer" class="h-10 flex items-center justify-center"></div>';
 
-      // Teacher Cockpit (Live dashboard under test if teacher)
+      // Teacher Cockpit
       if (isTeacher) {
         html += '<div id="teacherCockpitContainer" class="mt-6 p-4 rounded-2xl bg-gray-900/95 border border-gray-700/80 space-y-3"></div>';
       }
@@ -8417,9 +8581,7 @@
         if (questionRemainingMs > 0) {
           if (timerLabel) timerLabel.innerHTML = '⚡ Tezlik bonusi: ' + (questionRemainingMs / 1000).toFixed(1) + 's (+100 ball)';
         } else {
-          if (timerLabel) {
-            timerLabel.innerHTML = '<span class="text-gray-400">⚡ Bonus muddati tugadi (Asosiy ball: +600)</span>';
-          }
+          if (timerLabel) timerLabel.innerHTML = '<span class="text-gray-400">⚡ Bonus muddati tugadi (Asosiy ball: +600)</span>';
           if (timerBar) timerBar.style.background = '#6b7280';
         }
       }, 50);
@@ -8431,29 +8593,28 @@
           isAnswered = true;
           if (questionTimerInterval) clearInterval(questionTimerInterval);
 
-          var chosenIdx = parseInt(btn.getAttribute('data-opt-idx'), 10);
+          var sIdx = parseInt(btn.getAttribute('data-scrambled-idx'), 10);
+          var chosenOptObj = q.options[sIdx];
           var elapsedSec = (Date.now() - questionStartTime) / 1000;
           var hasBonus = (elapsedSec <= 10.2);
-          var isCorrect = (chosenIdx === q.correctAnswer);
+          var isCorrect = Boolean(chosenOptObj && chosenOptObj.isCorrect);
 
-          // Scoring logic
-          var earnedPoints = 0;
           var feedbackHtml = '';
 
           if (isCorrect) {
             correctCount++;
-            earnedPoints = 600 + (hasBonus ? 100 : 0);
-            myScore += earnedPoints;
+            var earned = 600 + (hasBonus ? 100 : 0);
+            myScore += earned;
             btn.classList.add('correct');
             feedbackHtml = '<div class="eth-quiz-bonus-tag">' + (hasBonus ? '⚡ +700 (Tezlik Bonusi!)' : '✅ +600 Ball') + '</div>';
           } else {
             wrongCount++;
-            earnedPoints = -500;
             myScore = Math.max(0, myScore - 500);
             btn.classList.add('incorrect');
             // Highlight the correct one
             root.querySelectorAll('.eth-quiz-opt-btn').forEach(function(otherBtn) {
-              if (parseInt(otherBtn.getAttribute('data-opt-idx'), 10) === q.correctAnswer) {
+              var otherIdx = parseInt(otherBtn.getAttribute('data-scrambled-idx'), 10);
+              if (q.options[otherIdx] && q.options[otherIdx].isCorrect) {
                 otherBtn.classList.add('correct');
               }
             });
@@ -8463,20 +8624,17 @@
           // Record answer
           studentAnswersMap[q.id || ('q_' + currentQIndex)] = {
             questionText: q.question,
-            chosen: chosenIdx,
-            correct: q.correctAnswer,
+            chosenOriginalIndex: chosenOptObj ? chosenOptObj.origIndex : 0,
             isCorrect: isCorrect,
             timeTaken: elapsedSec
           };
 
-          // Update self in participantsMap
           participantsMap[myStudentId].score = myScore;
           participantsMap[myStudentId].currentQ = currentQIndex + 1;
           participantsMap[myStudentId].correctCount = correctCount;
           participantsMap[myStudentId].wrongCount = wrongCount;
           participantsMap[myStudentId].answers = studentAnswersMap;
 
-          // Broadcast score update via MQTT
           if (window.EthithSync && window.EthithSync.publishLive) {
             window.EthithSync.publishLive({
               type: 'QUIZ_SCORE_UPDATE',
@@ -8485,7 +8643,7 @@
               studentName: myStudentName,
               score: myScore,
               currentQ: currentQIndex + 1,
-              totalQ: shuffledQuestions.length,
+              totalQ: preparedQuestions.length,
               correctCount: correctCount,
               wrongCount: wrongCount,
               infractions: silentInfractions,
@@ -8499,7 +8657,6 @@
           var fBox = root.querySelector('#feedbackContainer');
           if (fBox) fBox.innerHTML = feedbackHtml;
 
-          // Auto-advance after 1.2 seconds
           setTimeout(function() {
             currentQIndex++;
             renderPlayingQuestion();
@@ -8508,7 +8665,7 @@
       });
     }
 
-    // Teacher Cockpit Panel Rendering
+    // TEACHER COCKPIT PANEL
     function renderTeacherCockpit() {
       var cBox = root.querySelector('#teacherCockpitContainer');
       if (!cBox) return;
@@ -8533,11 +8690,11 @@
         html += '    <span class="font-bold text-gray-400 font-mono w-4">#' + (idx + 1) + '</span>';
         html += '    <span class="font-extrabold text-white truncate">' + p.name + '</span>';
         if (p.infractions > 0) {
-          html += '    <span class="px-1.5 py-0.5 rounded bg-rose-950 text-rose-400 border border-rose-800 text-[10px] font-bold" title="Tabdan chiqishlar soni">⚠️ ' + p.infractions + ' marta</span>';
+          html += '    <span class="px-1.5 py-0.5 rounded bg-rose-950 text-rose-400 border border-rose-800 text-[10px] font-bold">⚠️ ' + p.infractions + ' marta</span>';
         }
         html += '  </div>';
         html += '  <div class="flex items-center gap-4 text-right flex-shrink-0">';
-        html += '    <span class="text-gray-400 text-[11px]">' + (p.currentQ || 0) + '/' + shuffledQuestions.length + '</span>';
+        html += '    <span class="text-gray-400 text-[11px]">' + (p.currentQ || 0) + '/' + preparedQuestions.length + '</span>';
         html += '    <span class="text-emerald-400 font-bold text-[11px]">+' + (p.correctCount || 0) + '</span>';
         html += '    <span class="text-rose-400 font-bold text-[11px]">-' + (p.wrongCount || 0) + '</span>';
         html += '    <span class="font-mono font-black text-amber-400 w-16">' + (p.score || 0).toLocaleString() + '</span>';
@@ -8560,14 +8717,11 @@
       }
     }
 
-    // -----------------------------------------------------------------------
-    // PHASE 4: FINISH MY QUIZ & WAITING OTHERS
-    // -----------------------------------------------------------------------
+    // PHASE 4: FINISH MY QUIZ & WAIT OTHERS (Points determine rank, not time)
     function finishMyQuiz() {
       currentPhase = 'waiting_others';
       participantsMap[myStudentId].finished = true;
 
-      // Broadcast finished
       if (window.EthithSync && window.EthithSync.publishLive) {
         window.EthithSync.publishLive({
           type: 'QUIZ_FINISHED',
@@ -8579,7 +8733,6 @@
         });
       }
 
-      // Check if all finished
       var allDone = Object.values(participantsMap).every(function(p) { return p.finished; });
       if (allDone && Object.values(participantsMap).length > 0) {
         renderFinalePodium();
@@ -8601,8 +8754,8 @@
       var html = '<div class="max-w-2xl w-full mx-auto p-6 md:p-8 bg-gray-900/90 border border-gray-700/80 rounded-3xl backdrop-blur-xl text-center space-y-6 shadow-2xl">';
       html += '  <div class="text-5xl">🎉</div>';
       html += '  <div class="space-y-1">';
-      html += '    <h3 class="text-2xl font-black text-white">Siz barcha testlarni yakunladingiz!</h3>';
-      html += '    <p class="text-xs text-gray-400">Testni birinchi tugatgan 1-o\'rinni olmaydi! Natijalar to\'plangan ballar bo\'yicha hisoblanadi. Boshqa o\'quvchilar testni tugatishini kuting...</p>';
+      html += '    <h3 class="text-2xl font-black text-white">Siz barcha savollarni yakunladingiz!</h3>';
+      html += '    <p class="text-xs text-gray-400">Testni birinchi tugatgan 1-o\'rinni olmaydi! Natijalar faqat to\'plangan ballar bo\'yicha hisoblanadi. Boshqa o\'quvchilar tugatishini kuting...</p>';
       html += '  </div>';
 
       html += '  <div class="p-4 bg-gray-800/80 rounded-2xl border border-gray-700 space-y-1">';
@@ -8611,7 +8764,6 @@
       html += '    <div class="text-xs text-emerald-400">To\'g\'ri: ' + correctCount + ' ta · Xato: ' + wrongCount + ' ta</div>';
       html += '  </div>';
 
-      // Live ranking preview while waiting
       html += '  <div class="space-y-2 text-left">';
       html += '    <div class="text-xs font-bold text-gray-300">Jonli Reyting:</div>';
       html += '    <div class="space-y-1.5 max-h-48 overflow-y-auto">';
@@ -8649,9 +8801,7 @@
       }
     }
 
-    // -----------------------------------------------------------------------
-    // PHASE 5: FINALE PODIUM WITH 3D HILARIOUS UZBEK PRIZES & PERSISTENT ANALYTICS
-    // -----------------------------------------------------------------------
+    // PHASE 5: FINALE PODIUM WITH 100+ HILARIOUS UZBEK PRIZES & PERSISTENT ANALYTICS
     function renderFinalePodium() {
       currentPhase = 'finished';
       cleanupListeners();
@@ -8663,7 +8813,6 @@
       var winner2 = list[1] || null;
       var winner3 = list[2] || null;
 
-      // Assign hilarious Uzbek gifts
       var prize1 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(1) : { name: "Eski rezina tapichka (43-razmer)", icon: "🩴", desc: "Sifatli va qalin tapichka" };
       var prize2 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg'a" };
       var prize3 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko'rkam tufli" };
@@ -8672,7 +8821,6 @@
       if (winner2) winner2.prize = prize2;
       if (winner3) winner3.prize = prize3;
 
-      // If current user is in top 3, award the prize into S.user.gifts!
       var myRank = getMyRank();
       if (myRank <= 3 && S.user) {
         if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
@@ -8693,8 +8841,7 @@
         }
       }
 
-      // Compile and Save Persistent Teacher Analytics
-      // Question-by-question statistics in original teacher order
+      // Compile Persistent Teacher Analytics (Original Question Order)
       var questionStats = (quiz.questions || []).map(function(origQ, qIdx) {
         var optCounts = { 0: 0, 1: 0, 2: 0, 3: 0 };
         var optStudents = { 0: [], 1: [], 2: [], 3: [] };
@@ -8703,10 +8850,8 @@
 
         list.forEach(function(student) {
           if (!student.answers) return;
-          // Look for student answer by question id or index
           var ans = student.answers[origQ.id] || student.answers['q_' + qIdx];
           if (!ans) {
-            // Check by matching questionText
             for (var k in student.answers) {
               if (student.answers[k] && student.answers[k].questionText === origQ.question) {
                 ans = student.answers[k];
@@ -8715,14 +8860,14 @@
             }
           }
 
-          if (ans !== undefined && ans.chosen !== undefined) {
+          if (ans !== undefined && ans.chosenOriginalIndex !== undefined) {
             totalAnswered++;
-            var cIdx = ans.chosen;
+            var cIdx = ans.chosenOriginalIndex;
             if (optCounts[cIdx] !== undefined) {
               optCounts[cIdx]++;
               optStudents[cIdx].push(student.name);
             }
-            if (cIdx === origQ.correctAnswer) correctCountTotal++;
+            if (ans.isCorrect) correctCountTotal++;
           }
         });
 
@@ -8732,7 +8877,7 @@
           questionIndex: qIdx,
           questionText: origQ.question,
           options: origQ.options,
-          correctAnswer: origQ.correctAnswer,
+          correctAnswer: origQ.correctAnswer || 0,
           optCounts: optCounts,
           optStudents: optStudents,
           totalAnswered: totalAnswered,
@@ -8740,7 +8885,6 @@
         };
       });
 
-      // Find student with most mistakes and student with least mistakes
       var sortedByMistakes = list.slice().sort(function(a, b) { return (b.wrongCount || 0) - (a.wrongCount || 0); });
       var mostMistakesStudent = sortedByMistakes[0] || null;
       var leastMistakesStudent = sortedByMistakes[sortedByMistakes.length - 1] || null;
@@ -8865,15 +9009,12 @@
       }
     }
 
-    // Launch Phase 1 Lobby
     renderLobby();
   }
 
-
-  // =========================================================================
+  // -------------------------------------------------------------------------
   // PERSISTENT TEACHER & STUDENT QUIZ ANALYTICS MODAL
-  // =========================================================================
-
+  // -------------------------------------------------------------------------
   function showQuizAnalysisModal(quiz) {
     if (!quiz) return;
     var analysis = quiz.lastSessionAnalysis;
@@ -8887,7 +9028,6 @@
 
     var html = '<div class="bg-white dark:bg-gray-800 rounded-3xl max-w-4xl w-full p-6 md:p-8 shadow-2xl border border-gray-100 dark:border-gray-700 my-8 space-y-6 max-h-[90vh] flex flex-col justify-between">';
 
-    // Header
     html += '  <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-700 pb-4">';
     html += '    <div class="flex items-center gap-3">';
     html += '      <span class="text-3xl">📊</span>';
@@ -8899,10 +9039,8 @@
     html += '    <button id="btnCloseAnalysisModal" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-bold p-1">✕</button>';
     html += '  </div>';
 
-    // Body
     html += '  <div class="flex-1 overflow-y-auto space-y-6 pr-1">';
 
-    // Summary Cards
     html += '    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">';
     html += '      <div class="p-3.5 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-700 text-center">';
     html += '        <div class="text-[11px] font-bold text-gray-400 uppercase">Qatnashchilar</div>';
@@ -8927,7 +9065,7 @@
     html += '      </div>';
     html += '    </div>';
 
-    // Question-by-question Breakdown
+    // Question-by-question breakdown
     html += '    <div class="space-y-4">';
     html += '      <h4 class="text-sm font-black text-gray-800 dark:text-gray-100 flex items-center gap-2">';
     html += '        <span>📋 Savollar Ketma-ketligi va O\'quvchilar Tanlagan Variantlari</span>';
@@ -8950,9 +9088,8 @@
       html += '    </div>';
       html += '  </div>';
 
-      // Options & which students selected each
       html += '  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">';
-      stat.options.forEach(function(opt, optIdx) {
+      (stat.options || []).forEach(function(opt, optIdx) {
         var letter = String.fromCharCode(65 + optIdx);
         var isCorr = (optIdx === stat.correctAnswer);
         var chosenStudents = (stat.optStudents && stat.optStudents[optIdx]) || [];
@@ -9013,7 +9150,6 @@
 
     html += '  </div>';
 
-    // Footer
     html += '  <div class="border-t border-gray-100 dark:border-gray-700 pt-4 flex items-center justify-end">';
     html += '    <button id="btnCloseAnalysisModalBottom" class="px-6 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs hover:bg-gray-200">';
     html += '      Yopish';
@@ -9030,18 +9166,15 @@
     overlay.querySelector('#btnCloseAnalysisModalBottom').onclick = close;
   }
 
-
-  // =========================================================================
+  // -------------------------------------------------------------------------
   // SEND GIFT MODAL (TRANSFER HILARIOUS UZBEK PRIZE TO A FRIEND)
-  // =========================================================================
-
+  // -------------------------------------------------------------------------
   function showSendGiftModal(gift, onSent) {
     if (!gift) return;
 
     var overlay = document.createElement('div');
     overlay.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto';
 
-    // Collect all unique students from classes
     var friendsList = [];
     var seenEmails = {};
     (S.classes || []).forEach(function(cls) {
@@ -9064,14 +9197,12 @@
     html += '    <button id="btnCloseSendGift" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-bold p-1">✕</button>';
     html += '  </div>';
 
-    // Gift Card Preview
     html += '  <div class="eth-gift-card-3d bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-gray-900 border border-amber-300 dark:border-amber-700/80 rounded-2xl p-4 text-center space-y-1 shadow-md">';
     html += '    <div class="text-5xl">' + (gift.icon || '🎁') + '</div>';
     html += '    <div class="font-black text-base text-gray-900 dark:text-white mt-1">' + (gift.name || 'Sovg\'a') + '</div>';
     html += '    <div class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">' + (gift.desc || '') + '</div>';
     html += '  </div>';
 
-    // Friend Picker
     html += '  <div class="space-y-2">';
     html += '    <label class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Sovg\'ani qabul qiluvchi do\'stingizni tanlang:</label>';
     if (friendsList.length === 0) {
@@ -9113,11 +9244,9 @@
         if (!target) return;
 
         if (confirm("Rostdan ham '" + gift.name + "' sovg'asini " + target.name + "ga yubormoqchimisiz?")) {
-          // Remove from sender inventory
           S.user.gifts = S.user.gifts.filter(function(g) { return g.id !== gift.id; });
           App.saveState();
 
-          // Broadcast via MQTT
           if (window.EthithSync && window.EthithSync.publishLive) {
             window.EthithSync.publishLive({
               type: 'GIFT_SENT',
@@ -9139,6 +9268,7 @@
   }
 
   window.EthithViews = {
+    showWaygroundStudioModal: showWaygroundStudioModal,
     renderQuizBattleView: renderQuizBattleView,
     showCreateQuizModal: showCreateQuizModal,
     startQuizBattleRunner: startQuizBattleRunner,

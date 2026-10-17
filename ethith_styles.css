@@ -4033,6 +4033,344 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 .eth-podium-2 { height: 125px !important; background: linear-gradient(180deg, #94a3b8, #475569) !important; order: 1 !important; }
 .eth-podium-3 { height: 95px !important; background: linear-gradient(180deg, #d97706, #78350f) !important; order: 3 !important; }
 
+/* =========================================================================
+   WAYGROUND 1:1 TEST STUDIO & EXACT DARK-BLUE BUTTON/CARD STYLES (IMAGES 1 & 3)
+   ========================================================================= */
+
+/* Exact Dark Navy Button from Image 1 */
+.eth-exam-create-btn-dark {
+  background: #0d1e38 !important;
+  border: 1.5px solid #1e3a6d !important;
+  color: #ffffff !important;
+  padding: 12px 28px !important;
+  border-radius: 14px !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  transition: all 0.2s ease !important;
+}
+.eth-exam-create-btn-dark:hover {
+  background: #132a4e !important;
+  border-color: #2b529a !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(30, 58, 109, 0.45) !important;
+}
+.eth-exam-create-btn-dark:active {
+  transform: scale(0.98) !important;
+}
+
+/* Exact Dark Join Card from Image 3 */
+.eth-exam-join-card-dark {
+  background: #081224 !important;
+  border: 1.5px solid #1c3560 !important;
+  border-radius: 18px !important;
+  padding: 24px 28px !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+.eth-exam-join-input-dark {
+  width: 100% !important;
+  background: #0c1c38 !important;
+  border: 1.5px solid #1c3866 !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  color: #ffffff !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+}
+.eth-exam-join-input-dark:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+}
+.eth-exam-join-btn-blue {
+  width: 100% !important;
+  background: #2563eb !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 14px 20px !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+  transition: all 0.2s ease !important;
+}
+.eth-exam-join-btn-blue:hover {
+  background: #1d4ed8 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5) !important;
+}
+.eth-exam-join-btn-blue:active {
+  transform: scale(0.99) !important;
+}
+
+/* Wayground 1:1 Studio Modal */
+.wayground-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  background: rgba(5, 10, 20, 0.88) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+/* Wayground Header Bar */
+.wayground-header-bar {
+  background: #f8fafc !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  height: 56px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 18px !important;
+  flex-shrink: 0 !important;
+  z-index: 100 !important;
+}
+body[data-theme="dark"] .wayground-header-bar,
+.dark .wayground-header-bar {
+  background: #0f172a !important;
+  border-bottom-color: #1e293b !important;
+}
+
+/* Wayground Dropdown button */
+.wayground-dropdown-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 14px !important;
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+body[data-theme="dark"] .wayground-dropdown-btn,
+.dark .wayground-dropdown-btn {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+.wayground-dropdown-btn:hover {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+body[data-theme="dark"] .wayground-dropdown-btn:hover,
+.dark .wayground-dropdown-btn:hover {
+  background: #334155 !important;
+}
+
+/* Wayground Main Canvas Area */
+.wayground-studio-canvas {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  background: #090e1a !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 24px 16px 80px !important;
+}
+
+/* Wayground Aspect-Ratio Question Box */
+.wayground-question-box {
+  width: 100% !important;
+  max-width: 960px !important;
+  background: #162036 !important;
+  border: 1.5px solid #233554 !important;
+  border-radius: 20px !important;
+  padding: 24px !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
+  margin-bottom: 20px !important;
+  position: relative !important;
+}
+.wayground-question-textarea {
+  width: 100% !important;
+  min-height: 110px !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
+  resize: none !important;
+}
+.wayground-question-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Wayground Options Grid */
+.wayground-options-grid {
+  width: 100% !important;
+  max-width: 960px !important;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)) !important;
+  gap: 14px !important;
+  margin-bottom: 24px !important;
+}
+
+/* Smooth Light/Pastel Ambient Color Shift Keyframes (User Requirement) */
+@keyframes waygroundColorShift {
+  0% {
+    filter: hue-rotate(0deg) brightness(1) saturate(1);
+  }
+  33% {
+    filter: hue-rotate(35deg) brightness(1.08) saturate(0.92);
+  }
+  66% {
+    filter: hue-rotate(-25deg) brightness(1.05) saturate(0.96);
+  }
+  100% {
+    filter: hue-rotate(0deg) brightness(1) saturate(1);
+  }
+}
+
+/* Option Card Base with Ambient Morphing Animation */
+.wayground-option-card {
+  min-height: 160px !important;
+  border-radius: 16px !important;
+  padding: 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  position: relative !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+  border: 3px solid transparent !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+  animation: waygroundColorShift 16s ease-in-out infinite alternate !important;
+}
+.wayground-option-card:hover {
+  transform: translateY(-3px) !important;
+}
+.wayground-option-card.is-correct {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.6), 0 8px 24px rgba(0,0,0,0.4) !important;
+}
+
+/* Quizizz/Wayground Brand Colors */
+.wayground-brand-0 { background: #2d70ae !important; } /* Blue */
+.wayground-brand-1 { background: #2d9da6 !important; } /* Teal */
+.wayground-brand-2 { background: #efa929 !important; } /* Amber */
+.wayground-brand-3 { background: #d5546d !important; } /* Rose */
+.wayground-brand-4 { background: #8b5cf6 !important; } /* Purple */
+.wayground-brand-5 { background: #10b981 !important; } /* Emerald */
+
+/* Option Action Header */
+.wayground-card-topbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+/* Circular Checkmark Button ("Ptichka") */
+.wayground-check-btn {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 2px solid rgba(255, 255, 255, 0.7) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+.wayground-check-btn:hover {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  transform: scale(1.1) !important;
+}
+.wayground-check-btn.checked {
+  background: #10b981 !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.9) !important;
+  transform: scale(1.15) !important;
+}
+
+/* Option Textarea */
+.wayground-option-textarea {
+  width: 100% !important;
+  flex: 1 !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: #ffffff !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
+  margin-top: 8px !important;
+  resize: none !important;
+}
+.wayground-option-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Plus Option Card */
+.wayground-add-option-card {
+  min-height: 160px !important;
+  border-radius: 16px !important;
+  border: 2px dashed rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+.wayground-add-option-card:hover {
+  border-color: #3b82f6 !important;
+  color: #3b82f6 !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Notification banner: "Savol avtomatik tarzda pastga qo'shildi!" */
+.wayground-added-toast {
+  position: fixed !important;
+  bottom: 24px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: #10b981 !important;
+  color: #ffffff !important;
+  padding: 12px 28px !important;
+  border-radius: 14px !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  animation: ethPopIn 0.3s ease !important;
+}
+
+
 
 
 
