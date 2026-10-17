@@ -8212,6 +8212,33 @@
     var questionRemainingMs = 10000;
     var questionStartTime = 0;
 
+    // 12 Distinct Quizizz-Style Animated Heroes
+    var QUIZIZZ_HEROES = [
+      { id: 'mustache', name: 'Professor Mo\'ylov', emoji: '🥸', bg: 'linear-gradient(135deg, #f59e0b, #d97706)', border: '#fbbf24' },
+      { id: 'robot', name: 'Kiber Bot 3000', emoji: '🤖', bg: 'linear-gradient(135deg, #06b6d4, #0891b2)', border: '#22d3ee' },
+      { id: 'fox', name: 'Hiylakor Tulki', emoji: '🦊', bg: 'linear-gradient(135deg, #f97316, #ea580c)', border: '#fb923c' },
+      { id: 'wizard', name: 'Sehrgar Bobo', emoji: '🧙‍♂️', bg: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', border: '#a78bfa' },
+      { id: 'dino', name: 'Tezkor Dino', emoji: '🦖', bg: 'linear-gradient(135deg, #10b981, #059669)', border: '#34d399' },
+      { id: 'ninja', name: 'Soyadagi Ninja', emoji: '🥷', bg: 'linear-gradient(135deg, #374151, #1f2937)', border: '#9ca3af' },
+      { id: 'alien', name: 'Galaktika O\'zgasi', emoji: '👾', bg: 'linear-gradient(135deg, #ec4899, #db2777)', border: '#f472b6' },
+      { id: 'lion', name: 'Jasur Arslon', emoji: '🦁', bg: 'linear-gradient(135deg, #eab308, #ca8a04)', border: '#fde047' },
+      { id: 'panda', name: 'Dono Panda', emoji: '🐼', bg: 'linear-gradient(135deg, #475569, #334155)', border: '#94a3b8' },
+      { id: 'unicorn', name: 'Sehrli Toychoq', emoji: '🦄', bg: 'linear-gradient(135deg, #a855f7, #9333ea)', border: '#c084fc' },
+      { id: 'superhero', name: 'Super Qahramon', emoji: '🦸', bg: 'linear-gradient(135deg, #ef4444, #dc2626)', border: '#f87171' },
+      { id: 'detective', name: 'Sirli Detektiv', emoji: '🕵️', bg: 'linear-gradient(135deg, #0284c7, #0369a1)', border: '#38bdf8' }
+    ];
+
+    function getStudentHero(idOrName, idx) {
+      var hash = 0;
+      var str = String(idOrName || idx || 'hero');
+      for (var i = 0; i < str.length; i++) {
+        hash = ((hash << 5) - hash) + str.charCodeAt(i);
+        hash |= 0;
+      }
+      var selectedIndex = Math.abs(hash + (idx || 0)) % QUIZIZZ_HEROES.length;
+      return QUIZIZZ_HEROES[selectedIndex];
+    }
+
     // 1. Shuffle Questions order per student
     var shuffledQuestions = shuffleArray(quiz.questions);
 
@@ -8246,64 +8273,124 @@
     });
 
     var studentAnswersMap = {};
+    var myHero = getStudentHero(myStudentId, 0);
 
     var participantsMap = {};
-    participantsMap[myStudentId] = {
-      id: myStudentId,
-      name: myStudentName,
-      score: 0,
-      currentQ: 0,
-      totalQ: preparedQuestions.length,
-      correctCount: 0,
-      wrongCount: 0,
-      infractions: 0,
-      finished: false,
-      answers: {}
-    };
+    if (!isTeacher) {
+      participantsMap[myStudentId] = {
+        id: myStudentId,
+        name: myStudentName,
+        hero: myHero,
+        joinIndex: 1,
+        score: 0,
+        currentQ: 0,
+        totalQ: preparedQuestions.length,
+        correctCount: 0,
+        wrongCount: 0,
+        infractions: 0,
+        finished: false,
+        answers: {}
+      };
+    }
+
+    var teacherTelemetryLogs = [];
+    function appendTeacherTelemetryLog(logItem) {
+      teacherTelemetryLogs.unshift(logItem);
+      if (teacherTelemetryLogs.length > 60) teacherTelemetryLogs.pop();
+    }
 
     var root = document.createElement('div');
     root.className = 'eth-quiz-fullscreen';
     document.body.appendChild(root);
 
     // Announce Lobby Join via MQTT
-    if (window.EthithSync && window.EthithSync.publishLive) {
+    if (!isTeacher && window.EthithSync && window.EthithSync.publishLive) {
       window.EthithSync.publishLive({
         type: 'QUIZ_LOBBY_STATE',
         quizId: quiz.id,
         studentId: myStudentId,
         studentName: myStudentName,
+        hero: myHero,
+        joinIndex: 1,
         action: 'join'
       });
     }
 
-    // Silent Proctoring Handler (No camera preview, no blocking)
-    function handleSilentInfraction(reason) {
-      if (currentPhase !== 'playing') return;
-      silentInfractions++;
+    // Silent Proctoring Telemetry Handler (No camera preview, no blocking)
+    function sendStudentTelemetry(actionType, detail, isViolation) {
+      if (isTeacher) return;
+      if (isViolation) {
+        silentInfractions++;
+        if (participantsMap[myStudentId]) participantsMap[myStudentId].infractions = silentInfractions;
+      }
+      var now = new Date();
+      var timeStr = (now.getHours() < 10 ? '0' : '') + now.getHours() + ':' +
+                    (now.getMinutes() < 10 ? '0' : '') + now.getMinutes() + ':' +
+                    (now.getSeconds() < 10 ? '0' : '') + now.getSeconds();
+
       if (window.EthithSync && window.EthithSync.publishLive) {
+        window.EthithSync.publishLive({
+          type: 'QUIZ_STUDENT_INFRACTION',
+          quizId: quiz.id,
+          studentId: myStudentId,
+          studentName: myStudentName,
+          hero: myHero,
+          action: actionType,
+          detail: detail,
+          isViolation: Boolean(isViolation),
+          infractions: silentInfractions,
+          timestamp: timeStr
+        });
         window.EthithSync.publishLive({
           type: 'QUIZ_SILENT_INFRACTION',
           quizId: quiz.id,
           studentId: myStudentId,
           studentName: myStudentName,
           infractions: silentInfractions,
-          reason: reason || 'Tabdan chiqdi / Boshqa ilovaga o\'tdi'
+          reason: detail
         });
       }
     }
 
     var onVisibilityChange = function() {
-      if (document.visibilityState === 'hidden') handleSilentInfraction('Brauzer tabidan chiqdi');
+      if (currentPhase !== 'playing') return;
+      if (document.visibilityState === 'hidden') {
+        sendStudentTelemetry('TAB_EXIT', '🚨 Brauzer oynasidan chiqdi / Boshqa ilovaga o\'tdi!', true);
+      } else if (document.visibilityState === 'visible') {
+        sendStudentTelemetry('TAB_RETURN', '🟢 Test oynasiga qaytdi.', false);
+      }
     };
+
     var onWindowBlur = function() {
-      handleSilentInfraction('Oyna fokusini yo\'qotdi');
+      if (currentPhase !== 'playing') return;
+      sendStudentTelemetry('BLUR', '⚠️ Oyna fokusini yo\'qotdi (boshqa oynani bosdi)', true);
     };
+
+    var onWindowFocus = function() {
+      if (currentPhase !== 'playing') return;
+      sendStudentTelemetry('FOCUS', '🟢 Oyna fokusiga qaytdi', false);
+    };
+
+    var onKeyDown = function(e) {
+      if (currentPhase !== 'playing' || isTeacher) return;
+      if (e.key === 'Alt' || e.key === 'F12' || (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'Tab')) || e.key === 'Escape') {
+        var keyLabel = e.key === ' ' ? 'Space' : e.key;
+        if (e.altKey && e.key !== 'Alt') keyLabel = 'Alt+' + keyLabel;
+        if (e.ctrlKey && e.key !== 'Control') keyLabel = 'Ctrl+' + keyLabel;
+        sendStudentTelemetry('FORBIDDEN_KEY', '⚠️ Taqiqlangan tugmani bosdi (' + keyLabel + ')!', true);
+      }
+    };
+
     document.addEventListener('visibilitychange', onVisibilityChange);
     window.addEventListener('blur', onWindowBlur);
+    window.addEventListener('focus', onWindowFocus);
+    window.addEventListener('keydown', onKeyDown);
 
     function cleanupListeners() {
       document.removeEventListener('visibilitychange', onVisibilityChange);
       window.removeEventListener('blur', onWindowBlur);
+      window.removeEventListener('focus', onWindowFocus);
+      window.removeEventListener('keydown', onKeyDown);
       if (questionTimerInterval) clearInterval(questionTimerInterval);
       window._ethithOnQuizEvent = null;
     }
@@ -8320,9 +8407,12 @@
 
       if (event.type === 'QUIZ_LOBBY_STATE') {
         if (!participantsMap[event.studentId]) {
+          var joinNum = Object.keys(participantsMap).length + 1;
           participantsMap[event.studentId] = {
             id: event.studentId,
             name: event.studentName || 'O\'quvchi',
+            hero: event.hero || getStudentHero(event.studentId, joinNum),
+            joinIndex: event.joinIndex || joinNum,
             score: 0,
             currentQ: 0,
             totalQ: preparedQuestions.length,
@@ -8338,11 +8428,36 @@
       else if (event.type === 'QUIZ_STARTED') {
         if (currentPhase === 'lobby') startCountdown();
       }
+      else if (event.type === 'QUIZ_STUDENT_INFRACTION') {
+        if (participantsMap[event.studentId]) {
+          if (event.isViolation) {
+            participantsMap[event.studentId].infractions = event.infractions || (participantsMap[event.studentId].infractions + 1);
+          }
+        }
+        if (isTeacher) {
+          appendTeacherTelemetryLog(event);
+          if (event.isViolation && typeof playTitTitAlarm === 'function') {
+            try { playTitTitAlarm(1); } catch(e) {}
+          }
+          if (currentPhase === 'teacher_control') {
+            renderTeacherCommandCenter();
+          }
+        }
+      }
       else if (event.type === 'QUIZ_SCORE_UPDATE') {
         if (!participantsMap[event.studentId]) {
-          participantsMap[event.studentId] = { id: event.studentId, name: event.studentName };
+          var jNum = Object.keys(participantsMap).length + 1;
+          participantsMap[event.studentId] = {
+            id: event.studentId,
+            name: event.studentName || 'O\'quvchi',
+            hero: event.hero || getStudentHero(event.studentId, jNum),
+            joinIndex: jNum
+          };
         }
         var p = participantsMap[event.studentId];
+        var oldScore = p.score || 0;
+        var diff = (event.score || 0) - oldScore;
+
         p.score = event.score || 0;
         p.currentQ = event.currentQ || 0;
         p.totalQ = event.totalQ || preparedQuestions.length;
@@ -8351,17 +8466,25 @@
         p.infractions = event.infractions || 0;
         if (event.answers) p.answers = event.answers;
 
+        if (isTeacher) {
+          var isEarned = (diff > 0);
+          appendTeacherTelemetryLog({
+            studentId: event.studentId,
+            studentName: event.studentName,
+            hero: p.hero,
+            action: isEarned ? 'CORRECT' : 'WRONG',
+            detail: isEarned ? ('⚡ ' + (event.studentName || 'O\'quvchi') + ' ' + (event.currentQ) + '-savolga to\'g\'ri javob berdi (+' + diff + ' ball)!') : ('❌ ' + (event.studentName || 'O\'quvchi') + ' ' + (event.currentQ) + '-savolda adashdi (-500 ball)'),
+            timestamp: new Date().toTimeString().slice(0, 8),
+            isViolation: false
+          });
+        }
+
         if (currentPhase === 'playing') {
           updateLiveRankPill();
-          if (isTeacher) renderTeacherCockpit();
+        } else if (currentPhase === 'teacher_control') {
+          renderTeacherCommandCenter();
         } else if (currentPhase === 'waiting_others') {
           renderWaitingOthers();
-        }
-      }
-      else if (event.type === 'QUIZ_SILENT_INFRACTION') {
-        if (participantsMap[event.studentId]) {
-          participantsMap[event.studentId].infractions = event.infractions || 1;
-          if (isTeacher && currentPhase === 'playing') renderTeacherCockpit();
         }
       }
       else if (event.type === 'QUIZ_FINISHED') {
@@ -8370,24 +8493,37 @@
           participantsMap[event.studentId].score = event.score || participantsMap[event.studentId].score;
           if (event.answers) participantsMap[event.studentId].answers = event.answers;
         }
-        if (currentPhase === 'waiting_others') renderWaitingOthers();
+        if (isTeacher) {
+          appendTeacherTelemetryLog({
+            studentId: event.studentId,
+            studentName: event.studentName,
+            hero: (participantsMap[event.studentId] && participantsMap[event.studentId].hero) || null,
+            action: 'FINISHED',
+            detail: '🏁 ' + (event.studentName || 'O\'quvchi') + ' barcha savollarni yakunladi! Yakuniy ball: ' + (event.score || 0),
+            timestamp: new Date().toTimeString().slice(0, 8),
+            isViolation: false
+          });
+          if (currentPhase === 'teacher_control') renderTeacherCommandCenter();
+        } else if (currentPhase === 'waiting_others') {
+          renderWaitingOthers();
+        }
       }
       else if (event.type === 'QUIZ_FORCE_FINISH') {
         renderFinalePodium();
       }
     };
 
-    // PHASE 1: LOBBY
+    // PHASE 1: LOBBY WITH ANIMATED QUIZIZZ CHARACTERS
     function renderLobby() {
       currentPhase = 'lobby';
       var participantList = Object.values(participantsMap);
 
-      var html = '<div class="max-w-2xl w-full mx-auto p-6 md:p-8 bg-gray-900/90 border border-gray-700/80 rounded-3xl backdrop-blur-xl text-center space-y-6 shadow-2xl animate-fade-in">';
-      html += '  <div class="flex items-center justify-between">';
-      html += '    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold">';
+      var html = '<div class="max-w-3xl w-full mx-auto p-6 md:p-8 bg-gray-900/95 border border-gray-700/80 rounded-3xl backdrop-blur-2xl text-center space-y-6 shadow-2xl animate-fade-in">';
+      html += '  <div class="flex items-center justify-between border-b border-gray-800 pb-4">';
+      html += '    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-black tracking-wide border border-amber-500/30">';
       html += '      <span>⚡ ETHITH QUIZ BATTLE LOBBY</span>';
       html += '    </div>';
-      html += '    <button id="btnExitQuizLobby" class="text-gray-400 hover:text-white text-xl font-bold p-1">✕</button>';
+      html += '    <button id="btnExitQuizLobby" class="eth-quiz-close-btn" title="Chiqish">✕</button>';
       html += '  </div>';
 
       html += '  <div class="space-y-2">';
@@ -8396,42 +8532,62 @@
       html += '  </div>';
 
       // Big Code Box
-      html += '  <div class="p-6 bg-gradient-to-br from-gray-800 to-gray-950 rounded-2xl border-2 border-amber-500/50 shadow-inner space-y-2">';
-      html += '    <div class="text-xs uppercase font-extrabold tracking-wider text-amber-400">Bellashuv Maxsus Kodi:</div>';
-      html += '    <div class="text-4xl md:text-5xl font-mono font-black text-amber-400 tracking-wider flex items-center justify-center gap-3">';
-      html += '      <span>' + quiz.code + '</span>';
-      html += '      <button id="btnCopyLobbyCode" class="text-xl p-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/40 text-amber-300 transition-all" title="Nusxa olish">📋</button>';
+      html += '  <div class="p-6 bg-gradient-to-br from-gray-800 to-gray-950 rounded-2xl border-2 border-amber-500/60 shadow-2xl space-y-3">';
+      html += '    <div class="text-xs uppercase font-extrabold tracking-widest text-amber-400">Bellashuv Maxsus Kodi:</div>';
+      html += '    <div class="flex flex-wrap items-center justify-center gap-4">';
+      html += '      <span class="text-4xl md:text-5xl font-mono font-black text-amber-400 tracking-wider">' + quiz.code + '</span>';
+      html += '      <button id="btnCopyLobbyCode" class="eth-quiz-copy-code-btn">📋 Koddan nusxa olish</button>';
       html += '    </div>';
-      html += '    <div class="text-[11px] text-gray-400">O\'quvchilar ushbu kod orqali tizimga kirishadi</div>';
+      html += '    <div class="text-[12px] text-gray-400 font-medium">O\'quvchilar ushbu kodni kiritib o\'z herochalari bilan jangga qo\'shiladilar</div>';
       html += '  </div>';
 
       // Participants list
       html += '  <div class="space-y-3 text-left">';
       html += '    <div class="flex items-center justify-between text-xs font-bold text-gray-300 px-1">';
-      html += '      <span>Qo\'shilgan O\'quvchilar (' + participantList.length + ' ta)</span>';
-      html += '      <span class="text-amber-400 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Jonli kutmoqda</span>';
+      html += '      <span>Qo\'shilgan Qahramonlar (' + participantList.length + ' ta)</span>';
+      html += '      <span class="text-amber-400 flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span> Jonli kutmoqda</span>';
       html += '    </div>';
-      html += '    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-48 overflow-y-auto p-1">';
-      participantList.forEach(function(p) {
-        var isMe = (p.id === myStudentId);
-        html += '<div class="px-3 py-2 rounded-xl bg-gray-800/80 border ' + (isMe ? 'border-amber-500/80 text-amber-300 font-bold' : 'border-gray-700 text-gray-300') + ' text-xs flex items-center gap-2 truncate">';
-        html += '  <span class="text-base">👤</span>';
-        html += '  <span class="truncate">' + p.name + (isMe ? ' (Siz)' : '') + '</span>';
+
+      if (participantList.length === 0) {
+        html += '<div class="p-8 text-center text-gray-400 bg-gray-800/40 rounded-2xl border border-dashed border-gray-700 text-sm font-bold">';
+        html += '  <span>⏳ Hozircha o\'quvchilar qo\'shilmadi. Kodni ulashing va o\'quvchilar paydo bo\'lishini kuting...</span>';
         html += '</div>';
-      });
-      html += '    </div>';
+      } else {
+        html += '    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5 max-h-72 overflow-y-auto p-1">';
+        participantList.forEach(function(p, idx) {
+          var isMe = (p.id === myStudentId);
+          var hero = p.hero || getStudentHero(p.id, idx);
+          html += '<div class="quiz-student-lobby-card" style="background: rgba(15, 23, 42, 0.85); border: 2px solid ' + hero.border + ';">';
+          html += '  <div class="flex items-center justify-between w-full text-[10px] font-black">';
+          html += '    <span class="px-2 py-0.5 rounded-full bg-black/50 text-amber-300 font-mono">#' + (p.joinIndex || (idx + 1)) + ' Qo\'shildi</span>';
+          if (isMe) {
+            html += '    <span class="px-2 py-0.5 rounded-full bg-emerald-500/90 text-white font-extrabold">Siz</span>';
+          }
+          html += '  </div>';
+          html += '  <div class="quiz-hero-avatar-box my-2" style="background: ' + hero.bg + '; border: 2.5px solid ' + hero.border + ';">';
+          html += '    <span class="quiz-hero-emoji text-4xl">' + hero.emoji + '</span>';
+          html += '  </div>';
+          html += '  <div class="w-full text-center">';
+          html += '    <div class="text-xs font-black text-white truncate max-w-[130px] mx-auto">' + p.name + '</div>';
+          html += '    <div class="text-[10px] font-bold text-gray-300 mt-0.5 truncate">' + hero.name + '</div>';
+          html += '  </div>';
+          html += '</div>';
+        });
+        html += '    </div>';
+      }
       html += '  </div>';
 
       // Action Button
-      html += '  <div class="pt-2">';
+      html += '  <div class="pt-3">';
       if (isTeacher) {
-        html += '    <button id="btnTeacherStartBattle" class="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-black text-base shadow-xl hover:opacity-95 active:scale-95 transition-all flex items-center justify-center gap-2">';
-        html += '      <span>🚀 BATTLE NI BOSHLASH (START)</span>';
+        html += '    <button id="btnTeacherStartBattle" class="eth-quiz-start-btn">';
+        html += '      <span class="text-xl">🚀</span>';
+        html += '      <span>BATTLE NI BOSHLASH (START)</span>';
         html += '    </button>';
       } else {
-        html += '    <div class="py-4 px-6 rounded-2xl bg-gray-800/60 border border-gray-700/60 text-sm font-bold text-amber-400 flex items-center justify-center gap-3 animate-pulse">';
-        html += '      <span class="text-xl">⏳</span>';
-        html += '      <span>Ustoz start berishini kutmoqdamiz...</span>';
+        html += '    <div class="py-4 px-6 rounded-2xl bg-gray-800/80 border border-gray-700/80 text-sm font-extrabold text-amber-400 flex items-center justify-center gap-3 animate-pulse shadow-lg">';
+        html += '      <span class="text-2xl">⏳</span>';
+        html += '      <span>Ustoz start berishini kutmoqdamiz... Qahramoningiz tayyor!</span>';
         html += '    </div>';
       }
       html += '  </div>';
@@ -8483,13 +8639,13 @@
       var count = 3;
 
       function renderCount() {
-        var html = '<div class="max-w-md w-full mx-auto p-12 text-center space-y-4">';
+        var html = '<div class="max-w-md w-full mx-auto p-12 text-center space-y-4 animate-fade-in">';
         html += '  <div class="text-xs uppercase font-extrabold tracking-widest text-amber-400">Battle boshlanmoqda!</div>';
         html += '  <div class="text-8xl md:text-9xl font-black text-white animate-bounce tracking-tight font-mono">' + count + '</div>';
         html += '  <div class="text-sm font-bold text-gray-300">Tez va to\'g\'ri javob bering, bonus ballarni qo\'lga kiriting!</div>';
         html += '</div>';
         root.innerHTML = html;
-        playTitTitAlarm(2);
+        if (typeof playTitTitAlarm === 'function') playTitTitAlarm(2);
       }
 
       renderCount();
@@ -8500,12 +8656,193 @@
           renderCount();
         } else {
           clearInterval(timer);
-          renderPlayingQuestion();
+          if (isTeacher) {
+            renderTeacherCommandCenter();
+          } else {
+            renderPlayingQuestion();
+          }
         }
       }, 1000);
     }
 
-    // PHASE 3: PLAYING QUESTIONS (10S SPEED BONUS + SCRAMBLED OPTIONS)
+    // PHASE 3A: TEACHER LIVE COMMAND & PROCTORING CENTER (NO QUESTIONS FOR TEACHER)
+    function renderTeacherCommandCenter() {
+      currentPhase = 'teacher_control';
+      var list = Object.values(participantsMap);
+      list.sort(function(a, b) { return b.score - a.score; });
+
+      var totalFinished = list.filter(function(p) { return p.finished; }).length;
+      var totalInfractions = list.reduce(function(acc, p) { return acc + (p.infractions || 0); }, 0);
+
+      var html = '<div class="max-w-6xl w-full mx-auto p-4 md:p-6 space-y-5 animate-fade-in pb-16">';
+
+      // Top Command Header
+      html += '<div class="flex flex-wrap items-center justify-between gap-4 p-5 rounded-2xl bg-gray-900/95 border border-gray-700/80 backdrop-blur-xl shadow-2xl">';
+      html += '  <div class="flex items-center gap-4">';
+      html += '    <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-2xl shadow-inner">📡</div>';
+      html += '    <div>';
+      html += '      <div class="flex items-center gap-2">';
+      html += '        <h2 class="text-xl md:text-2xl font-black text-white">' + (quiz.title || 'Quiz Test') + '</h2>';
+      html += '        <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-black uppercase flex items-center gap-1.5">';
+      html += '          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> JONLI NAZORAT';
+      html += '        </span>';
+      html += '      </div>';
+      html += '      <div class="text-xs text-gray-400 flex items-center gap-3 mt-1 font-medium">';
+      html += '        <span>Kod: <strong class="text-amber-400 font-mono">' + quiz.code + '</strong></span>';
+      html += '        <span>·</span>';
+      html += '        <span>O\'quvchilar: <strong class="text-white">' + list.length + ' ta</strong></span>';
+      html += '        <span>·</span>';
+      html += '        <span>Tugatganlar: <strong class="text-emerald-400">' + totalFinished + ' / ' + list.length + '</strong></span>';
+      if (totalInfractions > 0) {
+        html += '        <span>·</span>';
+        html += '        <span class="text-rose-400 font-extrabold">🚨 ' + totalInfractions + ' ta qoidabuzarlik</span>';
+      }
+      html += '      </div>';
+      html += '    </div>';
+      html += '  </div>';
+
+      html += '  <div class="flex items-center gap-3">';
+      html += '    <button id="btnTeacherForceFinishLive" class="eth-teacher-finish-btn">';
+      html += '      <span>🏁</span>';
+      html += '      <span>Barchaga Testni Yakunlash (Finish & Podium)</span>';
+      html += '    </button>';
+      html += '    <button id="btnTeacherExitLive" class="eth-quiz-close-btn" title="Chiqish">✕</button>';
+      html += '  </div>';
+      html += '</div>';
+
+      // 2-Column Grid: Left (Leaderboard 60%), Right (Telemetry Stream 40%)
+      html += '<div class="grid grid-cols-1 lg:grid-cols-12 gap-5">';
+
+      // LEFT COLUMN: LIVE LEADERBOARD (7 cols)
+      html += '  <div class="lg:col-span-7 space-y-4">';
+      html += '    <div class="p-4 rounded-2xl bg-gray-900/90 border border-gray-700/80 shadow-xl space-y-3">';
+      html += '      <div class="flex items-center justify-between border-b border-gray-800 pb-2.5 px-1">';
+      html += '        <div class="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-2">';
+      html += '          <span>🏆 JONLI REYTING VA O\'QUVCHILAR NATIJALARI</span>';
+      html += '        </div>';
+      html += '        <span class="text-[11px] text-gray-400">To\'plangan ballar asosida</span>';
+      html += '      </div>';
+
+      if (list.length === 0) {
+        html += '<div class="p-8 text-center text-gray-400 text-sm font-bold">';
+        html += '  <span>O\'quvchilar javob berishini kutmoqdamiz...</span>';
+        html += '</div>';
+      } else {
+        html += '      <div class="space-y-2 max-h-[520px] overflow-y-auto pr-1">';
+        list.forEach(function(p, idx) {
+          var hero = p.hero || getStudentHero(p.id, idx);
+          var medal = idx === 0 ? '🥇' : (idx === 1 ? '🥈' : (idx === 2 ? '🥉' : ('#' + (idx + 1))));
+          var progressPct = p.totalQ > 0 ? Math.round(((p.currentQ || 0) / p.totalQ) * 100) : 0;
+
+          html += '<div class="p-3.5 rounded-2xl bg-gray-800/80 border ' + (idx === 0 ? 'border-amber-500/70 bg-gradient-to-r from-amber-950/30 to-gray-800/80' : 'border-gray-700/70') + ' flex items-center justify-between gap-3 shadow-md hover:bg-gray-800 transition-all">';
+          html += '  <div class="flex items-center gap-3 min-w-0">';
+          html += '    <div class="w-7 text-center font-black text-sm ' + (idx === 0 ? 'text-amber-400' : 'text-gray-400') + '">' + medal + '</div>';
+          html += '    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-2xl flex-shrink-0" style="background: ' + hero.bg + '; border: 1.5px solid ' + hero.border + ';">' + hero.emoji + '</div>';
+          html += '    <div class="min-w-0">';
+          html += '      <div class="flex items-center gap-2">';
+          html += '        <div class="font-black text-white text-sm truncate">' + p.name + '</div>';
+          if (p.finished) {
+            html += '        <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-black">✅ Yakunladi</span>';
+          }
+          if (p.infractions > 0) {
+            html += '        <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/40 text-[10px] font-black">🚨 ' + p.infractions + ' marta</span>';
+          }
+          html += '      </div>';
+          html += '      <div class="flex items-center gap-2 mt-1">';
+          html += '        <div class="w-24 h-1.5 rounded-full bg-gray-700 overflow-hidden">';
+          html += '          <div class="h-full bg-emerald-500 rounded-full" style="width: ' + progressPct + '%;"></div>';
+          html += '        </div>';
+          html += '        <span class="text-[10px] text-gray-400 font-semibold">' + (p.currentQ || 0) + '/' + preparedQuestions.length + '</span>';
+          html += '        <span class="text-[10px] text-emerald-400 font-bold">+' + (p.correctCount || 0) + '</span>';
+          html += '        <span class="text-[10px] text-rose-400 font-bold">-' + (p.wrongCount || 0) + '</span>';
+          html += '      </div>';
+          html += '    </div>';
+          html += '  </div>';
+
+          html += '  <div class="text-right flex-shrink-0">';
+          html += '    <div class="font-mono font-black text-base md:text-lg text-amber-400">' + (p.score || 0).toLocaleString() + '</div>';
+          html += '    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Ball</div>';
+          html += '  </div>';
+          html += '</div>';
+        });
+        html += '      </div>';
+      }
+
+      html += '    </div>';
+      html += '  </div>';
+
+      // RIGHT COLUMN: LIVE PROCTORING & TELEMETRY STREAM (5 cols)
+      html += '  <div class="lg:col-span-5 space-y-4">';
+      html += '    <div class="p-4 rounded-2xl bg-gray-900/90 border border-gray-700/80 shadow-xl space-y-3">';
+      html += '      <div class="flex items-center justify-between border-b border-gray-800 pb-2.5 px-1">';
+      html += '        <div class="text-xs font-black uppercase tracking-wider text-rose-400 flex items-center gap-2">';
+      html += '          <span>⚡ JONLI PROCTORING VA HARAKATLAR OQIMI</span>';
+      html += '        </div>';
+      html += '        <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>';
+      html += '      </div>';
+
+      if (teacherTelemetryLogs.length === 0) {
+        html += '<div class="p-8 text-center text-gray-400 text-xs font-bold space-y-1">';
+        html += '  <div>🟢 Oqim tayyor.</div>';
+        html += '  <div>O\'quvchi oynadan chiqsa, taqiqlangan tugma bossa yoki javob bersa real vaqtda shu yerda qayd etiladi.</div>';
+        html += '</div>';
+      } else {
+        html += '      <div class="space-y-2 max-h-[520px] overflow-y-auto pr-1">';
+        teacherTelemetryLogs.forEach(function(item) {
+          var borderClass = 'border-l-4 border-l-blue-500 bg-gray-800/60';
+          if (item.isViolation) {
+            borderClass = 'border-l-4 border-l-rose-500 bg-rose-950/30 border border-rose-900/40 text-rose-200';
+          } else if (item.action === 'TAB_RETURN' || item.action === 'FOCUS') {
+            borderClass = 'border-l-4 border-l-emerald-500 bg-emerald-950/20 text-emerald-200';
+          } else if (item.action === 'CORRECT') {
+            borderClass = 'border-l-4 border-l-amber-500 bg-amber-950/20 text-amber-200';
+          }
+
+          html += '<div class="p-2.5 rounded-xl ' + borderClass + ' text-xs space-y-1 shadow-sm animate-fade-in">';
+          html += '  <div class="flex items-center justify-between text-[10px] text-gray-400 font-mono">';
+          html += '    <span class="font-black text-white flex items-center gap-1.5">';
+          if (item.hero) html += '<span>' + item.hero.emoji + '</span>';
+          html += '      <span>' + item.studentName + '</span>';
+          html += '    </span>';
+          html += '    <span>' + item.timestamp + '</span>';
+          html += '  </div>';
+          html += '  <div class="font-bold text-xs leading-snug">' + item.detail + '</div>';
+          html += '</div>';
+        });
+        html += '      </div>';
+      }
+
+      html += '    </div>';
+      html += '  </div>';
+
+      html += '</div>'; // End Grid
+      html += '</div>'; // End Container
+
+      root.innerHTML = html;
+
+      var btnFinishLive = root.querySelector('#btnTeacherForceFinishLive');
+      if (btnFinishLive) {
+        btnFinishLive.onclick = function() {
+          if (!confirm("Barcha o\'quvchilar uchun bellashuvni to\'xtatib, yakuniy 3D sovrinlar shousi va tahlilga o\'tilsinmi?")) return;
+          if (window.EthithSync && window.EthithSync.publishLive) {
+            window.EthithSync.publishLive({ type: 'QUIZ_FORCE_FINISH', quizId: quiz.id });
+          }
+          renderFinalePodium();
+        };
+      }
+
+      var btnExitLive = root.querySelector('#btnTeacherExitLive');
+      if (btnExitLive) {
+        btnExitLive.onclick = function() {
+          if (confirm("Jonli nazorat markazidan chiqishni xohlaysizmi? O\'quvchilar testni davom ettiradi.")) {
+            cleanupListeners();
+            root.remove();
+          }
+        };
+      }
+    }
+
+    // PHASE 3B: STUDENT PLAYING QUESTIONS (10S SPEED BONUS + 2x2 VIBRANT CARDS)
     function updateLiveRankPill() {
       var rankEl = root.querySelector('#liveRankPill');
       var scoreEl = root.querySelector('#liveScorePill');
@@ -8530,13 +8867,14 @@
       questionStartTime = Date.now();
       var isAnswered = false;
 
-      var html = '<div class="max-w-3xl w-full mx-auto space-y-4 pb-12">';
+      var html = '<div class="max-w-3xl w-full mx-auto space-y-5 pb-12 animate-fade-in">';
 
       // Top Status Bar
-      html += '<div class="eth-quiz-topbar flex items-center justify-between px-5 py-3 rounded-2xl bg-gray-900/90 border border-gray-700/80 backdrop-blur-md">';
-      html += '  <div class="flex items-center gap-2">';
+      html += '<div class="eth-quiz-topbar flex items-center justify-between px-5 py-3 rounded-2xl bg-gray-900/95 border border-gray-700/80 backdrop-blur-md shadow-xl">';
+      html += '  <div class="flex items-center gap-3">';
+      html += '    <div class="w-8 h-8 rounded-lg flex items-center justify-center text-xl" style="background: ' + myHero.bg + '; border: 1.5px solid ' + myHero.border + ';">' + myHero.emoji + '</div>';
       html += '    <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Savol:</span>';
-      html += '    <span class="text-sm font-extrabold text-white">' + (currentQIndex + 1) + ' / ' + preparedQuestions.length + '</span>';
+      html += '    <span class="text-sm font-black text-white">' + (currentQIndex + 1) + ' / ' + preparedQuestions.length + '</span>';
       html += '  </div>';
       html += '  <div class="flex items-center gap-3">';
       html += '    <div id="liveRankPill" class="eth-quiz-rank-pill">#' + getMyRank() + '-o\'rin</div>';
@@ -8545,10 +8883,10 @@
       html += '</div>';
 
       // 10s Timer Bar
-      html += '<div class="space-y-1">';
-      html += '  <div class="flex items-center justify-between text-[11px] font-bold text-gray-400 px-1">';
+      html += '<div class="space-y-1.5">';
+      html += '  <div class="flex items-center justify-between text-xs font-bold text-gray-300 px-1">';
       html += '    <span id="timerTextLabel" class="text-amber-400">⚡ Tezlik bonusi: 10.0s (+100 ball)</span>';
-      html += '    <span class="text-gray-500">To\'g\'ri: +600 | Xato: -500</span>';
+      html += '    <span class="text-gray-400">To\'g\'ri: +600 | Xato: -500</span>';
       html += '  </div>';
       html += '  <div class="eth-quiz-timer-track">';
       html += '    <div id="quizTimerBar" class="eth-quiz-timer-fill" style="width: 100%;"></div>';
@@ -8557,34 +8895,32 @@
 
       // Question Card
       html += '<div class="eth-quiz-card space-y-6">';
-      html += '  <div class="text-lg md:text-2xl font-black text-white leading-relaxed">' + q.question + '</div>';
+      html += '  <div class="text-xl md:text-3xl font-black text-white leading-relaxed text-center">' + q.question + '</div>';
 
-      // Scrambled Option Buttons
-      html += '  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">';
+      // 2x2 Vibrant Quizizz/Kahoot Options Grid
+      html += '  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">';
+      var optClasses = ['eth-quiz-opt-a', 'eth-quiz-opt-b', 'eth-quiz-opt-c', 'eth-quiz-opt-d'];
+      var optBadges = ['🔺 A', '🔷 B', '🟡 C', '⭐ D'];
+
       q.options.forEach(function(optObj, sIdx) {
-        var letter = String.fromCharCode(65 + sIdx);
-        html += '<button class="eth-quiz-opt-btn" data-scrambled-idx="' + sIdx + '">';
-        html += '  <span class="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center font-black text-amber-400 text-sm">' + letter + '</span>';
-        html += '  <span class="text-sm font-bold flex-1 text-left">' + optObj.text + '</span>';
+        var optClass = optClasses[sIdx % optClasses.length];
+        var optBadge = optBadges[sIdx % optBadges.length] || ('#' + (sIdx + 1));
+
+        html += '<button class="eth-quiz-opt-btn ' + optClass + '" data-scrambled-idx="' + sIdx + '">';
+        html += '  <div class="eth-quiz-opt-icon">' + optBadge + '</div>';
+        html += '  <div class="text-base font-extrabold text-white text-left flex-1">' + optObj.text + '</div>';
         html += '</button>';
       });
       html += '  </div>';
       html += '</div>';
 
       // Floating Feedback Container
-      html += '<div id="feedbackContainer" class="h-10 flex items-center justify-center"></div>';
-
-      // Teacher Cockpit
-      if (isTeacher) {
-        html += '<div id="teacherCockpitContainer" class="mt-6 p-4 rounded-2xl bg-gray-900/95 border border-gray-700/80 space-y-3"></div>';
-      }
+      html += '<div id="feedbackContainer" class="h-12 flex items-center justify-center"></div>';
 
       html += '</div>';
 
       root.innerHTML = html;
-
       updateLiveRankPill();
-      if (isTeacher) renderTeacherCockpit();
 
       // Start 10s Timer
       var timerBar = root.querySelector('#quizTimerBar');
@@ -8653,11 +8989,13 @@
             timeTaken: elapsedSec
           };
 
-          participantsMap[myStudentId].score = myScore;
-          participantsMap[myStudentId].currentQ = currentQIndex + 1;
-          participantsMap[myStudentId].correctCount = correctCount;
-          participantsMap[myStudentId].wrongCount = wrongCount;
-          participantsMap[myStudentId].answers = studentAnswersMap;
+          if (participantsMap[myStudentId]) {
+            participantsMap[myStudentId].score = myScore;
+            participantsMap[myStudentId].currentQ = currentQIndex + 1;
+            participantsMap[myStudentId].correctCount = correctCount;
+            participantsMap[myStudentId].wrongCount = wrongCount;
+            participantsMap[myStudentId].answers = studentAnswersMap;
+          }
 
           if (window.EthithSync && window.EthithSync.publishLive) {
             window.EthithSync.publishLive({
@@ -8676,7 +9014,6 @@
           }
 
           updateLiveRankPill();
-          if (isTeacher) renderTeacherCockpit();
 
           var fBox = root.querySelector('#feedbackContainer');
           if (fBox) fBox.innerHTML = feedbackHtml;
@@ -8689,62 +9026,12 @@
       });
     }
 
-    // TEACHER COCKPIT PANEL
-    function renderTeacherCockpit() {
-      var cBox = root.querySelector('#teacherCockpitContainer');
-      if (!cBox) return;
-
-      var list = Object.values(participantsMap);
-      list.sort(function(a, b) { return b.score - a.score; });
-
-      var html = '<div class="flex items-center justify-between border-b border-gray-700/80 pb-2">';
-      html += '  <div class="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-2">';
-      html += '    <span>📡 Jonli Ustoz Monitori (Real-Time Leaderboard)</span>';
-      html += '  </div>';
-      html += '  <button id="btnTeacherForceFinish" class="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-xs shadow">';
-      html += '    🏁 Barchaga Yakunlash';
-      html += '  </button>';
-      html += '</div>';
-
-      html += '<div class="max-h-48 overflow-y-auto space-y-1.5 pt-2">';
-      list.forEach(function(p, idx) {
-        var isMe = (p.id === myStudentId);
-        html += '<div class="px-3 py-2 rounded-xl bg-gray-800/80 border ' + (isMe ? 'border-amber-500/60' : 'border-gray-700/60') + ' text-xs flex items-center justify-between gap-2">';
-        html += '  <div class="flex items-center gap-2.5 truncate">';
-        html += '    <span class="font-bold text-gray-400 font-mono w-4">#' + (idx + 1) + '</span>';
-        html += '    <span class="font-extrabold text-white truncate">' + p.name + '</span>';
-        if (p.infractions > 0) {
-          html += '    <span class="px-1.5 py-0.5 rounded bg-rose-950 text-rose-400 border border-rose-800 text-[10px] font-bold">⚠️ ' + p.infractions + ' marta</span>';
-        }
-        html += '  </div>';
-        html += '  <div class="flex items-center gap-4 text-right flex-shrink-0">';
-        html += '    <span class="text-gray-400 text-[11px]">' + (p.currentQ || 0) + '/' + preparedQuestions.length + '</span>';
-        html += '    <span class="text-emerald-400 font-bold text-[11px]">+' + (p.correctCount || 0) + '</span>';
-        html += '    <span class="text-rose-400 font-bold text-[11px]">-' + (p.wrongCount || 0) + '</span>';
-        html += '    <span class="font-mono font-black text-amber-400 w-16">' + (p.score || 0).toLocaleString() + '</span>';
-        html += '  </div>';
-        html += '</div>';
-      });
-      html += '</div>';
-
-      cBox.innerHTML = html;
-
-      var btnFinish = cBox.querySelector('#btnTeacherForceFinish');
-      if (btnFinish) {
-        btnFinish.onclick = function() {
-          if (!confirm("Barcha o\'quvchilar uchun testni yakunlab, sovg\'alar va tahlilga o\'tmoqchimisiz?")) return;
-          if (window.EthithSync && window.EthithSync.publishLive) {
-            window.EthithSync.publishLive({ type: 'QUIZ_FORCE_FINISH', quizId: quiz.id });
-          }
-          renderFinalePodium();
-        };
-      }
-    }
-
     // PHASE 4: FINISH MY QUIZ & WAIT OTHERS (Points determine rank, not time)
     function finishMyQuiz() {
       currentPhase = 'waiting_others';
-      participantsMap[myStudentId].finished = true;
+      if (participantsMap[myStudentId]) {
+        participantsMap[myStudentId].finished = true;
+      }
 
       if (window.EthithSync && window.EthithSync.publishLive) {
         window.EthithSync.publishLive({
@@ -8775,37 +9062,39 @@
       var list = Object.values(participantsMap);
       list.sort(function(a, b) { return b.score - a.score; });
 
-      var html = '<div class="max-w-2xl w-full mx-auto p-6 md:p-8 bg-gray-900/90 border border-gray-700/80 rounded-3xl backdrop-blur-xl text-center space-y-6 shadow-2xl">';
-      html += '  <div class="text-5xl">🎉</div>';
+      var html = '<div class="max-w-2xl w-full mx-auto p-6 md:p-8 bg-gray-900/95 border border-gray-700/80 rounded-3xl backdrop-blur-xl text-center space-y-6 shadow-2xl animate-fade-in">';
+      html += '  <div class="text-6xl animate-bounce">🎉</div>';
       html += '  <div class="space-y-1">';
-      html += '    <h3 class="text-2xl font-black text-white">Siz barcha savollarni yakunladingiz!</h3>';
-      html += '    <p class="text-xs text-gray-400">Testni birinchi tugatgan 1-o\'rinni olmaydi! Natijalar faqat to\'plangan ballar bo\'yicha hisoblanadi. Boshqa o\'quvchilar tugatishini kuting...</p>';
+      html += '    <h3 class="text-2xl md:text-3xl font-black text-white">Siz barcha savollarni yakunladingiz!</h3>';
+      html += '    <p class="text-xs md:text-sm text-gray-400">Testni birinchi tugatgan 1-o\'rinni olmaydi! G\'oliblar faqat to\'plangan ballar bo\'yicha aniqlanadi. Boshqa qatnashuvchilar tugatishini kuting...</p>';
       html += '  </div>';
 
-      html += '  <div class="p-4 bg-gray-800/80 rounded-2xl border border-gray-700 space-y-1">';
-      html += '    <div class="text-xs text-gray-400 font-bold">Sizning yakuniy to\'plagan balingiz:</div>';
-      html += '    <div class="text-4xl font-mono font-black text-amber-400">' + myScore.toLocaleString() + ' Ball</div>';
-      html += '    <div class="text-xs text-emerald-400">To\'g\'ri: ' + correctCount + ' ta · Xato: ' + wrongCount + ' ta</div>';
+      html += '  <div class="p-5 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-gray-700 shadow-inner space-y-1">';
+      html += '    <div class="text-xs text-gray-400 font-bold uppercase tracking-wider">Sizning yakuniy to\'plagan balingiz:</div>';
+      html += '    <div class="text-4xl md:text-5xl font-mono font-black text-amber-400">' + myScore.toLocaleString() + ' Ball</div>';
+      html += '    <div class="text-xs text-emerald-400 font-bold mt-1">To\'g\'ri: ' + correctCount + ' ta · Xato: ' + wrongCount + ' ta</div>';
       html += '  </div>';
 
       html += '  <div class="space-y-2 text-left">';
-      html += '    <div class="text-xs font-bold text-gray-300">Jonli Reyting:</div>';
-      html += '    <div class="space-y-1.5 max-h-48 overflow-y-auto">';
+      html += '    <div class="text-xs font-bold text-gray-300 px-1">Jonli Reyting:</div>';
+      html += '    <div class="space-y-2 max-h-56 overflow-y-auto pr-1">';
       list.forEach(function(p, idx) {
         var isMe = (p.id === myStudentId);
-        html += '<div class="px-3 py-2 rounded-xl bg-gray-800/60 border ' + (isMe ? 'border-amber-500/60 text-amber-300 font-bold' : 'border-gray-700 text-gray-300') + ' text-xs flex items-center justify-between">';
-        html += '  <div class="flex items-center gap-2">';
-        html += '    <span>#' + (idx + 1) + '</span>';
-        html += '    <span>' + p.name + (p.finished ? ' (Yakunladi ✅)' : ' (Yechmoqda ⏳)') + '</span>';
+        var hero = p.hero || getStudentHero(p.id, idx);
+        html += '<div class="px-3.5 py-2.5 rounded-2xl bg-gray-800/70 border ' + (isMe ? 'border-amber-500/80 text-amber-300 font-black' : 'border-gray-700 text-gray-300') + ' text-xs flex items-center justify-between">';
+        html += '  <div class="flex items-center gap-2.5 truncate">';
+        html += '    <span class="font-mono font-bold text-gray-400 w-5">#' + (idx + 1) + '</span>';
+        html += '    <span class="text-lg">' + hero.emoji + '</span>';
+        html += '    <span class="truncate font-extrabold">' + p.name + (p.finished ? ' (Yakunladi ✅)' : ' (Yechmoqda ⏳)') + '</span>';
         html += '  </div>';
-        html += '  <span class="font-mono font-black text-amber-400">' + (p.score || 0).toLocaleString() + '</span>';
+        html += '  <span class="font-mono font-black text-amber-400 text-sm">' + (p.score || 0).toLocaleString() + '</span>';
         html += '</div>';
       });
       html += '    </div>';
       html += '  </div>';
 
       if (isTeacher) {
-        html += '  <button id="btnTeacherFinishFromWaiting" class="w-full py-3 rounded-xl bg-rose-600 text-white font-extrabold text-sm shadow hover:bg-rose-700">';
+        html += '  <button id="btnTeacherFinishFromWaiting" class="eth-teacher-finish-btn w-full justify-center text-sm py-3.5">';
         html += '    🏁 Testni Barchaga To\'xtatish va Sovg\'alarni Berish';
         html += '  </button>';
       }
@@ -8958,7 +9247,7 @@
         html += '    <div class="text-[11px] text-gray-400 mt-1">' + prize2.desc + '</div>';
         html += '  </div>';
         html += '  <div class="p-4 rounded-t-2xl bg-gradient-to-t from-gray-700 to-gray-600 text-white shadow-lg h-36 flex flex-col justify-end">';
-        html += '    <div class="font-black text-base truncate">' + winner2.name + '</div>';
+        html += '    <div class="font-black text-base truncate">' + (winner2.hero ? (winner2.hero.emoji + ' ') : '') + winner2.name + '</div>';
         html += '    <div class="font-mono text-sm text-amber-300 font-bold">' + winner2.score.toLocaleString() + ' Ball</div>';
         html += '    <div class="text-2xl font-black mt-1">2</div>';
         html += '  </div>';
@@ -8975,7 +9264,7 @@
         html += '    <div class="text-[11px] text-amber-100/80 mt-1">' + prize1.desc + '</div>';
         html += '  </div>';
         html += '  <div class="p-5 rounded-t-2xl bg-gradient-to-t from-amber-600 to-yellow-500 text-gray-950 shadow-2xl h-48 flex flex-col justify-end">';
-        html += '    <div class="font-black text-lg truncate">' + winner1.name + '</div>';
+        html += '    <div class="font-black text-lg truncate">' + (winner1.hero ? (winner1.hero.emoji + ' ') : '') + winner1.name + '</div>';
         html += '    <div class="font-mono text-base font-extrabold">' + winner1.score.toLocaleString() + ' Ball</div>';
         html += '    <div class="text-3xl font-black mt-1">🥇 1</div>';
         html += '  </div>';
@@ -8992,7 +9281,7 @@
         html += '    <div class="text-[11px] text-gray-400 mt-1">' + prize3.desc + '</div>';
         html += '  </div>';
         html += '  <div class="p-4 rounded-t-2xl bg-gradient-to-t from-amber-900 to-amber-800 text-white shadow-lg h-28 flex flex-col justify-end">';
-        html += '    <div class="font-black text-base truncate">' + winner3.name + '</div>';
+        html += '    <div class="font-black text-base truncate">' + (winner3.hero ? (winner3.hero.emoji + ' ') : '') + winner3.name + '</div>';
         html += '    <div class="font-mono text-sm text-amber-300 font-bold">' + winner3.score.toLocaleString() + ' Ball</div>';
         html += '    <div class="text-2xl font-black mt-1">3</div>';
         html += '  </div>';
