@@ -3374,6 +3374,7 @@
     var proctorInterval = null;
     var turnInfractionFrames = 0;
     var isPaletteCollapsed = false;
+    var sessionInfractions = [];
 
     var state = {
       i: 0,
@@ -3992,6 +3993,11 @@
         playTitTitAlarm(6);
 
         var snapshotImg = violationSnapshot || captureProctorSnapshot();
+        sessionInfractions.push({
+          reason: reason,
+          snapshot: snapshotImg,
+          timestamp: Date.now()
+        });
 
         var angleBadge = document.getElementById('proctorCamAngle');
         var dot = document.getElementById('proctorCamDot');
@@ -4893,7 +4899,9 @@
         incorrectCount: incorrectCount,
         timeSpent: timeSpentMin + ' daqiqa',
         date: new Date().toLocaleString(),
-        breakdown: breakdown
+        breakdown: breakdown,
+        blockedCount: sessionInfractions.length,
+        infractions: sessionInfractions
       };
 
       if (existing) {
@@ -4906,6 +4914,9 @@
         existing.breakdown = breakdown;
         existing.timeSpent = timeSpentMin + ' daqiqa';
         existing.date = new Date().toLocaleString();
+        existing.blockedCount = (existing.blockedCount || 0) + sessionInfractions.length;
+        if (!existing.infractions) existing.infractions = [];
+        existing.infractions = existing.infractions.concat(sessionInfractions);
         if (!existing.attemptsHistory) existing.attemptsHistory = [];
         existing.attemptsHistory.push(attemptRecord);
       } else {
@@ -4922,6 +4933,8 @@
           breakdown: breakdown,
           timeSpent: timeSpentMin + ' daqiqa',
           date: new Date().toLocaleString(),
+          blockedCount: sessionInfractions.length,
+          infractions: sessionInfractions,
           attemptsHistory: [attemptRecord]
         };
         exam.submissions.push(sub);
@@ -5063,6 +5076,49 @@
   }
 }
 
+  function getStudentInfractionStats(submission, exam) {
+    var sEmail = (submission.studentEmail || '').toLowerCase().trim();
+    var sId = (submission.studentId || '').toLowerCase().trim();
+    var sName = (submission.studentName || '').toLowerCase().trim();
+
+    // 1. Notifications matching from S.notifications
+    var allTimeNotifs = (S.notifications || []).filter(function(n) {
+      var nEmail = (n.studentEmail || '').toLowerCase().trim();
+      var nId = (n.studentId || '').toLowerCase().trim();
+      var nName = (n.studentName || '').toLowerCase().trim();
+      return (sEmail && nEmail === sEmail) ||
+             (sId && nId === sId) ||
+             (sName && nName === sName);
+    });
+
+    var examCode = (exam && (exam.code || exam.id)) ? String(exam.code || exam.id).trim().toLowerCase() : '';
+    var examNotifs = allTimeNotifs.filter(function(n) {
+      if (!examCode) return true;
+      var nCode = (n.examCode || n.examId) ? String(n.examCode || n.examId).trim().toLowerCase() : '';
+      return !nCode || nCode === examCode;
+    });
+
+    // 2. Direct blockedCount on submission or attemptsHistory
+    var directBlocks = (submission.blockedCount || 0);
+    if (Array.isArray(submission.attemptsHistory)) {
+      var attSum = 0;
+      submission.attemptsHistory.forEach(function(att) {
+        attSum += (att.blockedCount || 0);
+      });
+      directBlocks = Math.max(directBlocks, attSum);
+    }
+
+    var examCount = Math.max(examNotifs.length, directBlocks);
+    var totalCount = Math.max(allTimeNotifs.length, examCount);
+
+    return {
+      examBlocks: examCount,
+      totalBlocks: totalCount,
+      examNotifs: examNotifs,
+      allTimeNotifs: allTimeNotifs
+    };
+  }
+
   function showExamLeaderboardModal(exam) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
@@ -5082,7 +5138,7 @@
       });
 
       overlay.innerHTML = '' +
-        '<div class="eth-modal" style="max-width:760px">' +
+        '<div class="eth-modal" style="max-width:880px">' +
         '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseLeaderboard" title="Yopish">✕</button>' +
         '  <div class="eth-modal-header">' +
         '    <h2>' + ic('trophy') + ' ' + esc(exam.title) + ' · Natijalar Jadvali (Leaderboard)</h2>' +
@@ -5096,10 +5152,11 @@
           '  <span style="font-size:12px;background:rgba(37,99,235,0.08);color:#2563eb;padding:5px 12px;border-radius:999px;font-weight:700">Imtihon kodi: ' + (exam.code || exam.id) + '</span>' +
           '</div>' :
           '<table class="eth-leaderboard-table">' +
-          '  <thead><tr><th>O\'rin</th><th>O\'quvchi</th><th>Natija</th><th>Urinishlar</th><th>Vaqt</th><th>Harakat</th></tr></thead>' +
+          '  <thead><tr><th>O\'rin</th><th>O\'quvchi</th><th>Natija</th><th>Urinishlar</th><th>Vaqt</th><th>Harakat</th><th>Bloklanishlar</th></tr></thead>' +
           '  <tbody>' +
           subs.map(function(s, idx) {
             var rankCls = (idx === 0 ? 'eth-rank-1' : (idx === 1 ? 'eth-rank-2' : (idx === 2 ? 'eth-rank-3' : '')));
+            var stats = getStudentInfractionStats(s, exam);
             return '<tr>' +
               '  <td><span class="eth-rank-badge ' + rankCls + '">' + (idx + 1) + '</span></td>' +
               '  <td><b>' + esc(s.studentName) + '</b><div style="font-size:11px;color:var(--muted)">' + esc(s.studentEmail || '') + '</div></td>' +
@@ -5107,6 +5164,21 @@
               '  <td><span style="font-size:12px;background:rgba(37,99,235,0.08);color:#2563eb;padding:3px 8px;border-radius:6px;font-weight:700">' + (s.attempts || 1) + ' / ' + maxAtt + '</span></td>' +
               '  <td>' + esc(s.timeSpent) + '</td>' +
               '  <td><button type="button" class="ap-btn solid" data-view-analysis="' + idx + '" style="padding:6px 12px;font-size:12px;font-weight:700">🔍 Tahlil (Xatolar)</button></td>' +
+              '  <td>' +
+              (stats.totalBlocks > 0 ?
+                '<div style="display:flex;flex-direction:column;gap:3px">' +
+                '  <span class="eth-lb-block-pill danger" title="Umumiy jami ' + stats.totalBlocks + ' marta bloklangan">' +
+                '    🚨 <b>' + stats.totalBlocks + ' marta</b> bloklangan' +
+                '  </span>' +
+                (stats.totalBlocks !== stats.examBlocks ?
+                  '  <span style="font-size:11px;color:var(--muted);font-weight:700">(Bu testda: ' + stats.examBlocks + ' marta)</span>' : ''
+                ) +
+                '</div>' :
+                '<span class="eth-lb-block-pill clean" title="Hech qanday qoidabuzarlik yo\'q">' +
+                '  🛡️ <b>0 marta</b> (Toza)' +
+                '</span>'
+              ) +
+              '  </td>' +
               '</tr>';
           }).join('') +
           '  </tbody>' +
@@ -5242,6 +5314,7 @@
     });
 
     var latestBreakdown = submission.breakdown || (history.length > 0 ? history[history.length - 1].breakdown : []) || [];
+    var stats = getStudentInfractionStats(submission, exam);
 
     var html = '' +
       '<div class="eth-modal eth-analysis-modal" style="max-width:820px;max-height:92vh;display:flex;flex-direction:column">' +
@@ -5269,6 +5342,49 @@
       '        <span>Sarflangan Vaqt</span>' +
       '        <b>⏱ ' + esc(submission.timeSpent || '—') + '</b>' +
       '      </div>' +
+      '      <div class="eth-analysis-stat">' +
+      '        <span>Bloklanishlar (Kamera)</span>' +
+      (stats.totalBlocks > 0 ?
+        '        <b style="color:#dc2626">🚨 ' + stats.totalBlocks + ' marta bloklangan</b>' +
+        (stats.totalBlocks !== stats.examBlocks ? '<div style="font-size:11px;color:#ef4444;font-weight:700;margin-top:2px;">(Bu testda: ' + stats.examBlocks + ' marta)</div>' : '') :
+        '        <b style="color:#10b981">🛡️ 0 marta (Toza)</b>'
+      ) +
+      '      </div>' +
+      '    </div>' +
+      '    <!-- Proctoring Infractions History Card -->' +
+      '    <div style="margin:16px 0 20px;background:' + (stats.totalBlocks > 0 ? 'rgba(239, 68, 68, 0.06)' : 'rgba(16, 185, 129, 0.06)') + ';border:1.5px solid ' + (stats.totalBlocks > 0 ? '#ef4444' : '#10b981') + ';border-radius:14px;padding:16px 20px">' +
+      '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">' +
+      '        <h3 style="margin:0;font-size:16px;font-weight:800;color:' + (stats.totalBlocks > 0 ? '#dc2626' : '#10b981') + ';display:flex;align-items:center;gap:8px">' +
+      (stats.totalBlocks > 0 ? '🚨 Kamera va Proctoring Nazorati (Bloklanishlar Tarixi):' : '🛡️ Kamera va Proctoring Nazorati (Intizom Tahlili):') +
+      '        </h3>' +
+      '        <span style="font-size:12.5px;font-weight:800;padding:4px 12px;border-radius:999px;background:' + (stats.totalBlocks > 0 ? '#dc2626' : '#10b981') + ';color:#fff">' +
+      (stats.totalBlocks > 0 ? 'Umumiy jami: ' + stats.totalBlocks + ' marta bloklangan' : 'Toza (0 marta bloklangan)') +
+      '        </span>' +
+      '      </div>' +
+      '      <p style="margin:0 0 10px;font-size:13.5px;color:var(--text);line-height:1.45">' +
+      (stats.totalBlocks > 0 ?
+        'Ushbu o\'quvchi imtihon davomida jami <b>' + stats.totalBlocks + ' marta</b> test qoidalarini buzgani aniqlangan va kamera nazorati tomonidan bloklangan.' +
+        (stats.totalBlocks !== stats.examBlocks ? ' <i>(Ushbu imtihonning o\'zida: <b>' + stats.examBlocks + ' marta</b>)</i>' : '') :
+        'O\'quvchi test davomida biror marta ham qoidabuzarlik qilmagan, intizomni namunali darajada saqlagan.'
+      ) +
+      '      </p>' +
+      (stats.allTimeNotifs && stats.allTimeNotifs.length > 0 ?
+        '      <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">' +
+        stats.allTimeNotifs.map(function(n, ni) {
+          var nTime = new Date(n.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          return '<div style="background:var(--bg2, #f8fafc);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:10px 14px;font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">' +
+            '  <div>' +
+            '    <b style="color:#dc2626">🚨 #' + (ni + 1) + ' Qoidabuzarlik:</b> ' + esc(n.reason) +
+            (n.examTitle ? '<div style="font-size:11px;color:var(--muted);margin-top:2px">Imtihon: ' + esc(n.examTitle) + ' (' + esc(n.examCode || '') + ')</div>' : '') +
+            '  </div>' +
+            '  <div style="display:flex;align-items:center;gap:8px">' +
+            (n.snapshot ? '<img src="' + n.snapshot + '" style="height:38px;width:52px;object-fit:cover;border-radius:6px;border:1.5px solid #ef4444;cursor:pointer" title="Suratni kattalashtirib ko\'rish" onclick="window.open(this.src)">' : '') +
+            '    <span style="font-size:11.5px;color:var(--muted);font-weight:600">⏱ ' + nTime + '</span>' +
+            '  </div>' +
+            '</div>';
+        }).join('') +
+        '      </div>' : ''
+      ) +
       '    </div>' +
       '    <!-- Repeated Mistake Hotspots -->' +
       '    <div style="margin:22px 0 16px">' +

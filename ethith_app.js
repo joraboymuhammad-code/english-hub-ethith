@@ -486,7 +486,7 @@
   // ====================================================
   // ETHITH AUTO-UPDATE & CACHE-BUSTING ENGINE
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.1420";
+  window.ETHITH_BUILD_VERSION = "2026.10.17.1440";
 
   function checkAppVersion() {
     if (typeof fetch === 'undefined') return;
