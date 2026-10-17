@@ -8140,12 +8140,20 @@
         // SUBTAB 2: SOVRINLAR
         else if (activeSubtab === 'gifts') {
           html += '<div class="space-y-4">';
-          html += '  <div class="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-2xl p-4 text-xs md:text-sm text-amber-900 dark:text-amber-200 flex items-center gap-3">';
-          html += '    <span class="text-2xl">🎁</span>';
+
+          // ETHITH Coin Wallet Bar
+          html += '<div class="eth-coin-wallet-bar">';
+          html += '  <div style="display:flex;align-items:center;gap:14px;">';
+          html += '    <div style="width:48px;height:48px;border-radius:14px;background:rgba(245,158,11,0.2);border:1.5px solid #f59e0b;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 15px rgba(245,158,11,0.3);">🪙</div>';
           html += '    <div>';
-          html += '      <b>Sovrinlar Kolleksiyasi:</b> Quiz test bellashuvlarida 1, 2 va 3-o\'rinlarni egallagan o\'quvchilarga beriladigan 3D sovrinlar. Ushbu sovrinlarni do\'stlaringizga sovg\'a qilishingiz mumkin!';
+          html += '      <div style="font-size:11px;font-weight:900;text-transform:uppercase;color:#fbbf24;letter-spacing:0.06em;">ETHITH Hamyon Balansi</div>';
+          html += '      <div style="font-size:22px;font-weight:900;color:#ffffff;font-family:monospace;letter-spacing:0.5px;">' + (S.user.coins || 0).toLocaleString() + ' <span style="font-size:13px;color:#f59e0b;font-weight:800;">ETHITH Coin</span></div>';
           html += '    </div>';
           html += '  </div>';
+          html += '  <div style="font-size:12px;color:#94a3b8;font-weight:600;max-width:340px;line-height:1.5;">';
+          html += '    Kulgili 3D sovrinlaringizni istalgan payt <b>ETHITH Coinga</b> sotishingiz yoki sinfdosh do\'stlaringizga sovg\'a qilishingiz mumkin!';
+          html += '  </div>';
+          html += '</div>';
 
           if (S.user.gifts.length === 0) {
             html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-12 text-center border border-gray-100 dark:border-gray-700">';
@@ -8158,17 +8166,22 @@
             S.user.gifts.forEach(function(gift, idx) {
               var isFromFriend = Boolean(gift.fromFriend || gift.senderName);
               var senderTitle = gift.fromFriend || gift.senderName || '';
+              var giftPrice = window.ETHITH_GET_PRIZE_PRICE ? window.ETHITH_GET_PRIZE_PRICE(gift) : (gift.price || 50);
 
               html += '<div class="eth-gift-card-3d">';
               html += '  <div>';
               html += '    <div class="eth-gift-emoji-3d">' + (gift.icon || '🎁') + '</div>';
               html += '    <h4 style="font-size:16px;font-weight:900;color:#ffffff;margin:8px 0 4px;line-height:1.3;">' + esc(gift.name || 'Sovrin') + '</h4>';
               html += '    <p style="font-size:12px;color:#94a3b8;line-height:1.5;margin:6px 0;">' + esc(gift.desc || '') + '</p>';
+              html += '    <div class="eth-gift-price-badge">🪙 Qiymati: ' + giftPrice + ' ETHITH Coin</div>';
               if (isFromFriend) {
                 html += '    <div style="margin-top:8px;font-size:11px;font-weight:900;color:#60a5fa;background:rgba(37,99,235,0.15);border:1px solid rgba(96,165,250,0.4);border-radius:8px;padding:4px 10px;display:inline-flex;align-items:center;gap:6px;">🎁 Do\'stdan sovg\'a (' + esc(senderTitle) + ')</div>';
               }
               html += '  </div>';
-              html += '  <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);">';
+              html += '  <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;gap:8px;">';
+              html += '    <button type="button" class="btnSellGiftModal eth-gift-sell-btn" data-gift-idx="' + idx + '" data-price="' + giftPrice + '">';
+              html += '      💰 Sotish (+' + giftPrice + ' Coin)';
+              html += '    </button>';
               html += '    <button type="button" class="btnSendGiftModal eth-gift-action-btn" data-gift-idx="' + idx + '">';
               html += '      🎁 Do\'stga yuborish';
               html += '    </button>';
@@ -8325,9 +8338,56 @@
           var qId = btn.getAttribute('data-quiz-id');
           if (!confirm("Ushbu quiz testni butunlay o\'chirmoqchimisiz?")) return;
           S.quizzes = S.quizzes.filter(function(q) { return q.id !== qId; });
+          if (!S.deletedQuizIds) S.deletedQuizIds = [];
+          if (S.deletedQuizIds.indexOf(qId) === -1) {
+            S.deletedQuizIds.push(qId);
+          }
           App.saveState();
           if (window.EthithSync && window.EthithSync.publishLive) {
             window.EthithSync.publishLive({ type: 'QUIZ_DELETED', quizId: qId });
+          }
+          renderContent();
+        };
+      });
+
+      // Sell Gift buttons (Exchange for ETHITH Coins)
+      container.querySelectorAll('.btnSellGiftModal').forEach(function(btn) {
+        btn.onclick = function() {
+          var idx = parseInt(btn.getAttribute('data-gift-idx'), 10);
+          var giftObj = (S.user && S.user.gifts) ? S.user.gifts[idx] : null;
+          if (!giftObj) return;
+          var price = parseInt(btn.getAttribute('data-price'), 10) || (window.ETHITH_GET_PRIZE_PRICE ? window.ETHITH_GET_PRIZE_PRICE(giftObj) : 100);
+          var giftName = giftObj.name || giftObj.title || "Sovrin";
+          if (!confirm("Siz rostdan ham ushbu sovrinni (" + giftName + ") " + price + " ETHITH Coin evaziga sotmoqchimisiz?")) return;
+          
+          // Remove gift from user's inventory
+          S.user.gifts.splice(idx, 1);
+          // Credit ETHITH Coins
+          S.user.coins = (S.user.coins || 0) + price;
+
+          // Sync into S.accounts
+          if (Array.isArray(S.accounts)) {
+            var myAcc = S.accounts.find(function(a) {
+              return (a.email && S.user.email && a.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                     (a.name && S.user.name && a.name.toLowerCase() === S.user.name.toLowerCase());
+            });
+            if (myAcc) {
+              myAcc.coins = S.user.coins;
+              myAcc.gifts = S.user.gifts;
+            }
+          }
+
+          // Update dedicated localStorage backup
+          var myUserKey = (S.user.email || S.user.name || 'user').toLowerCase().trim();
+          try {
+            localStorage.setItem('ethith_student_gifts_' + myUserKey, JSON.stringify(S.user.gifts));
+          } catch(e) {}
+
+          App.saveState();
+          if (typeof App.showToast === 'function') {
+            App.showToast("Muvaffaqiyatli sotildi! Hamyoningizga +" + price + " ETHITH Coin qo'shildi! 🪙", "success");
+          } else {
+            alert("Muvaffaqiyatli sotildi! Hamyoningizga +" + price + " ETHITH Coin qo'shildi! 🪙");
           }
           renderContent();
         };
@@ -8367,6 +8427,7 @@
     var isTeacher = Boolean(isHost || (S.user && (S.user.role === 'teacher' || S.user.email === quiz.teacherEmail)));
     var myStudentId = (S.user && (S.user.email || S.user.id)) || ('st_' + Date.now());
     var myStudentName = (S.user && S.user.name) || 'O\'quvchi';
+    var hasAwardedPrizeThisSession = false;
 
     var currentPhase = 'lobby';
     var myScore = 0;
@@ -8773,8 +8834,8 @@
           renderWaitingOthers();
         }
       }
-      else if (event.type === 'QUIZ_FORCE_FINISH') {
-        renderFinalePodium();
+      else if (event.type === 'QUIZ_FORCE_FINISH' || event.type === 'QUIZ_FINISH_PODIUM') {
+        renderFinalePodium(event.officialPrizes, event.rankings);
       }
     };
 
@@ -9212,10 +9273,7 @@
       if (btnFinishLive) {
         btnFinishLive.onclick = function() {
           if (!confirm("Barcha o\'quvchilar uchun bellashuvni to\'xtatib, yakuniy 3D sovrinlar shousi va tahlilga o\'tilsinmi?")) return;
-          if (window.EthithSync && window.EthithSync.publishLive) {
-            window.EthithSync.publishLive({ type: 'QUIZ_FORCE_FINISH', quizId: quiz.id });
-          }
-          renderFinalePodium();
+          executeOfficialFinish();
         };
       }
 
@@ -9445,29 +9503,26 @@
         });
       }
 
-      var allDone = Object.values(participantsMap).every(function(p) { return p.finished; });
-      if (allDone && Object.values(participantsMap).length > 0) {
-        renderFinalePodium();
-      } else {
-        renderWaitingOthers();
-      }
+      // Students must wait for the teacher to officially finish the test
+      renderWaitingOthers();
     }
 
     function renderWaitingOthers() {
-      var allDone = Object.values(participantsMap).every(function(p) { return p.finished; });
-      if (allDone && Object.values(participantsMap).length > 0) {
-        renderFinalePodium();
-        return;
-      }
-
       var list = Object.values(participantsMap);
       list.sort(function(a, b) { return b.score - a.score; });
 
       var html = '<div class="max-w-2xl w-full mx-auto p-6 md:p-8 bg-gray-900/95 border border-gray-700/80 rounded-3xl backdrop-blur-xl text-center space-y-6 shadow-2xl animate-fade-in">';
       html += '  <div class="text-6xl animate-bounce">🎉</div>';
-      html += '  <div class="space-y-1">';
+      html += '  <div class="space-y-2">';
       html += '    <h3 class="text-2xl md:text-3xl font-black text-white">Siz barcha savollarni yakunladingiz!</h3>';
-      html += '    <p class="text-xs md:text-sm text-gray-400">Testni birinchi tugatgan 1-o\'rinni olmaydi! G\'oliblar faqat to\'plangan ballar bo\'yicha aniqlanadi. Boshqa qatnashuvchilar tugatishini kuting...</p>';
+      if (isTeacher) {
+        html += '    <p class="text-xs md:text-sm text-gray-300">O\'quvchilar javoblarini yakunlashini kuting yoki istalgan payt bellashuvni rasman to\'xtatib sovrinlarni barchaga e\'lon qiling.</p>';
+      } else {
+        html += '    <div style="background:rgba(245,158,11,0.15);border:1.5px solid #f59e0b;border-radius:14px;padding:12px 16px;text-align:center;">';
+        html += '      <div style="font-size:13px;font-weight:900;color:#fbbf24;display:flex;align-items:center;justify-content:center;gap:6px;">⏳ O\'qituvchi testni yakunlashini kuting...</div>';
+        html += '      <div style="font-size:11.5px;color:#cbd5e1;font-weight:600;margin-top:4px;">1, 2 va 3-o\'rinlar hamda kulgili sovrinlar faqat o\'qituvchi testni rasman yakunlaganidan so\'ng barchaga bir vaqtda e\'lon qilinadi!</div>';
+        html += '    </div>';
+      }
       html += '  </div>';
 
       html += '  <div class="p-5 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-gray-700 shadow-inner space-y-1">';
@@ -9477,7 +9532,7 @@
       html += '  </div>';
 
       html += '  <div class="space-y-2 text-left">';
-      html += '    <div class="text-xs font-bold text-gray-300 px-1">Jonli Reyting:</div>';
+      html += '    <div class="text-xs font-bold text-gray-300 px-1">Qatnashuvchilar holati (Jonli):</div>';
       html += '    <div class="space-y-2 max-h-56 overflow-y-auto pr-1">';
       list.forEach(function(p, idx) {
         var isMe = (p.id === myStudentId);
@@ -9498,6 +9553,10 @@
         html += '  <button id="btnTeacherFinishFromWaiting" class="eth-teacher-finish-btn w-full justify-center text-sm py-3.5">';
         html += '    🏁 Testni Barchaga To\'xtatish va Sovg\'alarni Berish';
         html += '  </button>';
+      } else if (list.length <= 1) {
+        html += '  <button id="btnStudentSoloFinish" class="eth-teacher-finish-btn w-full justify-center text-sm py-3.5" style="background:rgba(59,130,246,0.3);border-color:#3b82f6;">';
+        html += '    🏁 Yakka mashg\'ulotni yakunlash va natijani ko\'rish';
+        html += '  </button>';
       }
 
       html += '</div>';
@@ -9507,30 +9566,86 @@
       var btnFinish = root.querySelector('#btnTeacherFinishFromWaiting');
       if (btnFinish) {
         btnFinish.onclick = function() {
-          if (window.EthithSync && window.EthithSync.publishLive) {
-            window.EthithSync.publishLive({ type: 'QUIZ_FORCE_FINISH', quizId: quiz.id });
-          }
-          renderFinalePodium();
+          if (!confirm("Barcha o\'quvchilar uchun bellashuvni to\'xtatib, yakuniy 3D sovrinlar shousi va tahlilga o\'tilsinmi?")) return;
+          executeOfficialFinish();
+        };
+      }
+
+      var btnSolo = root.querySelector('#btnStudentSoloFinish');
+      if (btnSolo) {
+        btnSolo.onclick = function() {
+          executeOfficialFinish();
         };
       }
     }
 
-    // PHASE 5: FINALE PODIUM WITH 100+ HILARIOUS UZBEK PRIZES & PERSISTENT ANALYTICS
-    function renderFinalePodium() {
+    // OFFICIAL FINISH: Synchronously determine ranks, assign official prizes, and broadcast to all
+    function executeOfficialFinish() {
+      var list = Object.values(participantsMap);
+      list.sort(function(a, b) { return b.score - a.score; });
+
+      var prize1 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(1) : { name: "Eski rezina tapichka (43-razmer)", icon: "🩴", desc: "Sifatli va qalin tapichka", rarity: "oddiy", price: 60 };
+      var prize2 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg'a", rarity: "kamyob", price: 180 };
+      var prize3 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko'rkam tufli", rarity: "epika", price: 350 };
+
+      if (!prize1.price && window.ETHITH_GET_PRIZE_PRICE) prize1.price = window.ETHITH_GET_PRIZE_PRICE(prize1);
+      if (!prize2.price && window.ETHITH_GET_PRIZE_PRICE) prize2.price = window.ETHITH_GET_PRIZE_PRICE(prize2);
+      if (!prize3.price && window.ETHITH_GET_PRIZE_PRICE) prize3.price = window.ETHITH_GET_PRIZE_PRICE(prize3);
+
+      var officialPrizes = { 1: prize1, 2: prize2, 3: prize3 };
+
+      var rankingsData = list.map(function(p, idx) {
+        return {
+          rank: idx + 1,
+          id: p.id,
+          name: p.name,
+          hero: p.hero || getStudentHero(p.id, idx),
+          score: p.score || 0,
+          correctCount: p.correctCount || 0,
+          wrongCount: p.wrongCount || 0,
+          infractions: p.infractions || 0,
+          answers: p.answers || {},
+          prize: (idx === 0 ? prize1 : (idx === 1 ? prize2 : (idx === 2 ? prize3 : null)))
+        };
+      });
+
+      if (window.EthithSync && window.EthithSync.publishLive) {
+        window.EthithSync.publishLive({
+          type: 'QUIZ_FINISH_PODIUM',
+          quizId: quiz.id,
+          officialPrizes: officialPrizes,
+          rankings: rankingsData
+        });
+      }
+
+      renderFinalePodium(officialPrizes, rankingsData);
+    }
+
+    // PHASE 5: FINALE PODIUM WITH SYNCHRONIZED PRIZES & COIN ECONOMY
+    function renderFinalePodium(officialPrizes, providedRankings) {
       currentPhase = 'finished';
       cleanupListeners();
       stopBattleMusic();
 
-      var list = Object.values(participantsMap);
-      list.sort(function(a, b) { return b.score - a.score; });
+      var list = [];
+      if (Array.isArray(providedRankings) && providedRankings.length > 0) {
+        list = providedRankings;
+      } else {
+        list = Object.values(participantsMap);
+        list.sort(function(a, b) { return b.score - a.score; });
+      }
 
       var winner1 = list[0] || null;
       var winner2 = list[1] || null;
       var winner3 = list[2] || null;
 
-      var prize1 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(1) : { name: "Eski rezina tapichka (43-razmer)", icon: "🩴", desc: "Sifatli va qalin tapichka" };
-      var prize2 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg'a" };
-      var prize3 = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko'rkam tufli" };
+      var prize1 = (officialPrizes && officialPrizes[1]) ? officialPrizes[1] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(1) : { name: "Eski rezina tapichka (43-razmer)", icon: "🩴", desc: "Sifatli va qalin tapichka", rarity: "oddiy", price: 60 });
+      var prize2 = (officialPrizes && officialPrizes[2]) ? officialPrizes[2] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(2) : { name: "Bolalar tagligi (Pampers XXL)", icon: "👶", desc: "Ultra singdiruvchi maxsus sovg'a", rarity: "kamyob", price: 180 });
+      var prize3 = (officialPrizes && officialPrizes[3]) ? officialPrizes[3] : (window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(3) : { name: "Baland poshnali qizil tufli", icon: "👠", desc: "Klassik 12 sm poshnali ko'rkam tufli", rarity: "epika", price: 350 });
+
+      if (!prize1.price && window.ETHITH_GET_PRIZE_PRICE) prize1.price = window.ETHITH_GET_PRIZE_PRICE(prize1);
+      if (!prize2.price && window.ETHITH_GET_PRIZE_PRICE) prize2.price = window.ETHITH_GET_PRIZE_PRICE(prize2);
+      if (!prize3.price && window.ETHITH_GET_PRIZE_PRICE) prize3.price = window.ETHITH_GET_PRIZE_PRICE(prize3);
 
       if (winner1) winner1.prize = prize1;
       if (winner2) winner2.prize = prize2;
@@ -9538,7 +9653,8 @@
 
       var myRank = getMyRank();
       var awardedPrize = null;
-      if (myRank <= 3 && S.user) {
+      if (!hasAwardedPrizeThisSession && myRank <= 3 && S.user) {
+        hasAwardedPrizeThisSession = true;
         if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
         awardedPrize = (myRank === 1 ? prize1 : (myRank === 2 ? prize2 : prize3));
         var newWonGift = {
@@ -9547,6 +9663,8 @@
           name: awardedPrize.name,
           icon: awardedPrize.icon,
           desc: awardedPrize.desc,
+          price: awardedPrize.price || (window.ETHITH_GET_PRIZE_PRICE ? window.ETHITH_GET_PRIZE_PRICE(awardedPrize) : 100),
+          rarity: awardedPrize.rarity || 'oddiy',
           rank: myRank,
           quizTitle: quiz.title,
           wonAt: Date.now()
@@ -9562,6 +9680,7 @@
           if (myAccountRec) {
             if (!Array.isArray(myAccountRec.gifts)) myAccountRec.gifts = [];
             myAccountRec.gifts.unshift(newWonGift);
+            if (myAccountRec.coins === undefined) myAccountRec.coins = S.user.coins || 150;
           }
         }
 
@@ -9577,6 +9696,8 @@
         else if (typeof App !== 'undefined' && App.saveState) App.saveState();
 
         if (window._ethithRefreshGifts) window._ethithRefreshGifts();
+      } else if (myRank <= 3) {
+        awardedPrize = (myRank === 1 ? prize1 : (myRank === 2 ? prize2 : prize3));
       }
 
       // Compile Persistent Teacher Analytics (Original Question Order)
@@ -9631,6 +9752,7 @@
         finishedAt: Date.now(),
         totalParticipants: list.length,
         questionStats: questionStats,
+        officialPrizes: { 1: prize1, 2: prize2, 3: prize3 },
         rankings: list.map(function(p, idx) {
           return {
             rank: idx + 1,
@@ -9642,7 +9764,7 @@
             wrongCount: p.wrongCount,
             infractions: p.infractions,
             answers: p.answers || {},
-            prize: p.prize || null
+            prize: p.prize || (idx === 0 ? prize1 : (idx === 1 ? prize2 : (idx === 2 ? prize3 : null)))
           };
         }),
         mostMistakesStudent: mostMistakesStudent ? { name: mostMistakesStudent.name, wrongCount: mostMistakesStudent.wrongCount } : null,
@@ -9672,6 +9794,7 @@
         html += '    <div class="text-xs font-bold text-gray-400 uppercase">🥈 2-O\'rin Sovrini:</div>';
         html += '    <div class="font-extrabold text-sm text-white mt-1">' + prize2.name + '</div>';
         html += '    <div class="text-[11px] text-gray-400 mt-1">' + prize2.desc + '</div>';
+        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;">🪙 Qiymati: ' + (prize2.price || 180) + ' ETHITH Coin</div>';
         html += '  </div>';
         html += '  <div class="p-4 rounded-t-2xl bg-gradient-to-t from-gray-700 to-gray-600 text-white shadow-lg h-36 flex flex-col justify-end">';
         html += '    <div class="font-black text-base truncate">' + (winner2.hero ? (winner2.hero.emoji + ' ') : '') + winner2.name + '</div>';
@@ -9689,6 +9812,7 @@
         html += '    <div class="text-xs font-black text-amber-400 uppercase">👑 1-O\'RIN BOSHQAHRAMONI:</div>';
         html += '    <div class="font-extrabold text-base text-amber-300 mt-1">' + prize1.name + '</div>';
         html += '    <div class="text-[11px] text-amber-100/80 mt-1">' + prize1.desc + '</div>';
+        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;background:rgba(245,158,11,0.25);border-color:#f59e0b;color:#fde68a;">🪙 Qiymati: ' + (prize1.price || 500) + ' ETHITH Coin</div>';
         html += '  </div>';
         html += '  <div class="p-5 rounded-t-2xl bg-gradient-to-t from-amber-600 to-yellow-500 text-gray-950 shadow-2xl h-48 flex flex-col justify-end">';
         html += '    <div class="font-black text-lg truncate">' + (winner1.hero ? (winner1.hero.emoji + ' ') : '') + winner1.name + '</div>';
@@ -9706,6 +9830,7 @@
         html += '    <div class="text-xs font-bold text-amber-600 uppercase">🥉 3-O\'rin Sovrini:</div>';
         html += '    <div class="font-extrabold text-sm text-white mt-1">' + prize3.name + '</div>';
         html += '    <div class="text-[11px] text-gray-400 mt-1">' + prize3.desc + '</div>';
+        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;">🪙 Qiymati: ' + (prize3.price || 90) + ' ETHITH Coin</div>';
         html += '  </div>';
         html += '  <div class="p-4 rounded-t-2xl bg-gradient-to-t from-amber-900 to-amber-800 text-white shadow-lg h-28 flex flex-col justify-end">';
         html += '    <div class="font-black text-base truncate">' + (winner3.hero ? (winner3.hero.emoji + ' ') : '') + winner3.name + '</div>';
@@ -9723,7 +9848,7 @@
         html += '  <span style="font-size:38px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4));">' + awardedPrize.icon + '</span>';
         html += '  <div>';
         html += '    <div style="font-size:15px;font-weight:900;color:#34d399;display:flex;align-items:center;gap:6px;">🎉 Tabriklaymiz! Siz ' + myRank + '-o\'rinni egalladingiz!</div>';
-        html += '    <div style="font-size:12.5px;color:#ffffff;font-weight:700;margin-top:2px;">\'' + esc(awardedPrize.name) + '\' sovrini sizning Sovrinlar kolleksiyangizga muvaffaqiyatli qo\'shildi!</div>';
+        html += '    <div style="font-size:12.5px;color:#ffffff;font-weight:700;margin-top:2px;">\'' + esc(awardedPrize.name) + '\' (' + (awardedPrize.price || 100) + ' ETHITH Coin qiymatida) sovrini sizning Sovrinlar kolleksiyangizga muvaffaqiyatli qo\'shildi!</div>';
         html += '  </div>';
         html += '</div>';
       }

@@ -68,11 +68,20 @@
   } catch(e) {}
 
   if (!S.deletedExamIds) S.deletedExamIds = [];
+  if (!S.deletedQuizIds) S.deletedQuizIds = [];
+  if (S.deletedQuizIds.indexOf('quiz_main_blitz') === -1) {
+    S.deletedQuizIds.push('quiz_main_blitz');
+  }
   if (!S.notifications) S.notifications = [];
   if (!Array.isArray(S.quizzes)) S.quizzes = [];
+  // Ensure deleted quizzes are permanently filtered out
+  S.quizzes = S.quizzes.filter(function(q) {
+    return q && S.deletedQuizIds.indexOf(q.id) === -1 && S.deletedQuizIds.indexOf(q.code) === -1;
+  });
   if (!Array.isArray(S.accounts)) S.accounts = [];
 
   if (S.user) {
+    if (S.user.coins === undefined || S.user.coins === null) S.user.coins = 150;
     if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
 
     // Ensure user is present in S.accounts
@@ -88,10 +97,16 @@
         role: S.user.role || 'student',
         name: curName || 'Foydalanuvchi',
         email: curEmail || (curName.toLowerCase().replace(/\s+/g, '.') + '@ethith.uz'),
+        coins: S.user.coins,
         gifts: S.user.gifts,
         createdAt: Date.now()
       });
     } else {
+      if (exAcc.coins !== undefined && S.user.coins === 150) {
+        S.user.coins = exAcc.coins;
+      } else {
+        exAcc.coins = S.user.coins;
+      }
       if (Array.isArray(exAcc.gifts) && exAcc.gifts.length > 0 && S.user.gifts.length === 0) {
         S.user.gifts = exAcc.gifts.slice();
       }
@@ -99,94 +114,14 @@
 
     // Restore from dedicated localStorage backup if needed
     var myKey = (curEmail || curName).toLowerCase().trim();
-    if (myKey) {
+    if (myKey && S.user.gifts.length === 0) {
       try {
         var backupGifts = JSON.parse(localStorage.getItem('ethith_student_gifts_' + myKey) || '[]');
-        if (Array.isArray(backupGifts)) {
-          backupGifts.forEach(function(bg) {
-            if (!S.user.gifts.some(function(g) { return g.id === bg.id; })) {
-              S.user.gifts.push(bg);
-            }
-          });
+        if (Array.isArray(backupGifts) && backupGifts.length > 0) {
+          S.user.gifts = backupGifts.slice();
         }
       } catch(e) {}
     }
-  }
-
-  if (S.quizzes.length === 0) {
-    S.quizzes.push({
-      id: 'quiz_main_blitz',
-      code: 'QZ-7K#9X',
-      title: 'English Vocabulary & Grammar Blitz Battle',
-      created: Date.now(),
-      teacherEmail: 'joraboyevmuhammad85@gmail.com',
-      teacherName: 'Instructor Muhammadyusuf',
-      status: 'lobby',
-      questions: [
-        {
-          id: 'q1',
-          question: 'Which word is the opposite of "Abundant"?',
-          options: ['Scarce', 'Plentiful', 'Generous', 'Sufficient'],
-          correctAnswer: 0
-        },
-        {
-          id: 'q2',
-          question: 'If I ___ harder, I would have passed the IELTS exam.',
-          options: ['studied', 'had studied', 'study', 'have studied'],
-          correctAnswer: 1
-        },
-        {
-          id: 'q3',
-          question: 'Choose the correct synonym for "Meticulous":',
-          options: ['Careless', 'Careful & Precise', 'Fast', 'Lazy'],
-          correctAnswer: 1
-        },
-        {
-          id: 'q4',
-          question: 'Neither the teacher nor the students ___ present yesterday.',
-          options: ['was', 'were', 'is', 'are'],
-          correctAnswer: 1
-        },
-        {
-          id: 'q5',
-          question: 'What is the noun form of the adjective "Curious"?',
-          options: ['Curiosity', 'Curiously', 'Curiousity', 'Curiousment'],
-          correctAnswer: 0
-        },
-        {
-          id: 'q6',
-          question: 'She ___ English for 5 years before moving to London.',
-          options: ['has learned', 'had been learning', 'learned', 'is learning'],
-          correctAnswer: 1
-        },
-        {
-          id: 'q7',
-          question: 'Which idiom means "to face a difficult situation with courage"?',
-          options: ['Bite the bullet', 'Break a leg', 'Spill the beans', 'Under the weather'],
-          correctAnswer: 0
-        },
-        {
-          id: 'q8',
-          question: 'The book was so ___ that I couldn\'t put it down.',
-          options: ['gripping', 'bored', 'exhausted', 'grip'],
-          correctAnswer: 0
-        },
-        {
-          id: 'q9',
-          question: 'By the time we arrive, the concert ___ already.',
-          options: ['will start', 'will have started', 'starts', 'started'],
-          correctAnswer: 1
-        },
-        {
-          id: 'q10',
-          question: 'Select the correctly spelled word:',
-          options: ['Accomodate', 'Acommodate', 'Accommodate', 'Acomodate'],
-          correctAnswer: 2
-        }
-      ],
-      lobbyParticipants: [],
-      lastSessionAnalysis: null
-    });
   }
 
   if (!S.classes || S.classes.length === 0) {
@@ -439,6 +374,7 @@
             name: existingAcc.name || name,
             email: cleanEmail,
             dailyMinutes: existingAcc.dailyMinutes || 0,
+            coins: existingAcc.coins !== undefined ? existingAcc.coins : (S.user && S.user.coins !== undefined ? S.user.coins : 150),
             gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : (Array.isArray(S.user && S.user.gifts) ? S.user.gifts : [])
           };
           if (existingAcc.level) S.level = existingAcc.level;
@@ -475,6 +411,7 @@
             quizScores: {},
             mistakes: [],
             dailyMinutes: 0,
+            coins: 150,
             gifts: (S.user && Array.isArray(S.user.gifts)) ? S.user.gifts : [],
             createdAt: Date.now(),
             updatedAt: Date.now()
@@ -486,6 +423,7 @@
             name: newAcc.name,
             email: newAcc.email,
             dailyMinutes: 0,
+            coins: newAcc.coins,
             gifts: newAcc.gifts
           };
 
@@ -621,6 +559,7 @@
         acc.dailyMinutes = S.user.dailyMinutes || 0;
         acc.name = S.user.name;
         acc.gifts = S.user.gifts || [];
+        acc.coins = S.user.coins !== undefined ? S.user.coins : 150;
         acc.updatedAt = Date.now();
         saveState();
         if (window.EthithSync && window.EthithSync.pushRemoteStore) {
@@ -688,7 +627,7 @@
   // ====================================================
   // ETHITH AUTO-UPDATE & CACHE-BUSTING ENGINE
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.2035";
+  window.ETHITH_BUILD_VERSION = "2026.10.17.2110";
 
   function checkAppVersion() {
     if (typeof fetch === 'undefined') return;

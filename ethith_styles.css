@@ -5260,6 +5260,68 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 }
 
 /* ====================================================
+   ETHITH COIN WALLET BAR & SELL ACTION BUTTON
+   ==================================================== */
+.eth-coin-wallet-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)) !important;
+  border: 1.5px solid rgba(245, 158, 11, 0.4) !important;
+  border-radius: 20px !important;
+  padding: 18px 24px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+  margin-bottom: 20px !important;
+}
+
+.eth-gift-price-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: rgba(245, 158, 11, 0.15) !important;
+  border: 1px solid rgba(245, 158, 11, 0.4) !important;
+  color: #fbbf24 !important;
+  border-radius: 10px !important;
+  padding: 4px 10px !important;
+  font-size: 11.5px !important;
+  font-weight: 900 !important;
+  font-family: monospace !important;
+  margin: 6px auto !important;
+}
+
+.eth-gift-sell-btn {
+  width: 100% !important;
+  padding: 9px 16px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #10b981, #047857) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 12.5px !important;
+  border: 1.5px solid #34d399 !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+.eth-gift-sell-btn:hover {
+  background: linear-gradient(135deg, #34d399, #059669) !important;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6) !important;
+}
+.eth-gift-sell-btn:active {
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4) !important;
+}
+.eth-gift-sell-btn * {
+  pointer-events: none !important;
+}
+
+/* ====================================================
    WAYGROUND 18:42:01 REPORT & TEST ANALYSIS MODAL (ENGLISH 1:1)
    ==================================================== */
 .eth-wayground-report-overlay {

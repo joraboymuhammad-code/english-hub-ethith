@@ -2729,8 +2729,26 @@ window.ETHITH_FUNNY_PRIZES = [
   }
 ];
 
+window.ETHITH_GET_PRIZE_PRICE = function(prize) {
+  if (!prize) return 50;
+  if (typeof prize.price === 'number' && prize.price > 0) return prize.price;
+  var hash = 0;
+  var str = String(prize.name || 'prize');
+  for (var i = 0; i < str.length; i++) hash = ((hash << 5) - hash) + str.charCodeAt(i);
+  hash = Math.abs(hash);
+  var base = 50;
+  var rarity = String(prize.rarity || 'Common').toLowerCase();
+  if (rarity === 'legendary') base = 650 + (hash % 600);
+  else if (rarity === 'epic') base = 300 + (hash % 300);
+  else if (rarity === 'rare') base = 120 + (hash % 150);
+  else base = 40 + (hash % 60);
+  return base;
+};
+
 window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
   var p = window.ETHITH_FUNNY_PRIZES || [];
-  if (!p.length) return { name: "Oltin Tapichka", icon: "🩴", desc: "Afsonaviy sovg'a!", rarity: "Legendary" };
-  return p[Math.floor(Math.random() * p.length)];
+  if (!p.length) return { name: "Oltin Tapichka", icon: "🩴", desc: "Afsonaviy sovg'a!", rarity: "Legendary", price: 800 };
+  var selected = Object.assign({}, p[Math.floor(Math.random() * p.length)]);
+  selected.price = window.ETHITH_GET_PRIZE_PRICE(selected);
+  return selected;
 };
