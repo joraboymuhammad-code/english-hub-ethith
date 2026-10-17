@@ -179,6 +179,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -6406,6 +6408,79 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   color: #94a3b8 !important;
 }
 
+/* ====================================================
+   ETHITH COIN TOPBAR PILL & BADGES
+   ==================================================== */
+.eth-top-coin-pill {
+  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(217, 119, 6, 0.12));
+  border: 1.5px solid rgba(245, 158, 11, 0.45);
+  padding: 5px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.15);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+.eth-top-coin-pill:hover {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.28), rgba(217, 119, 6, 0.2));
+  border-color: #f59e0b;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+  transform: translateY(-1px);
+}
+.eth-top-coin-pill:active {
+  transform: translateY(0);
+}
+
+.eth-coin-svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  transition: transform 0.3s ease;
+}
+.eth-top-coin-pill:hover .eth-coin-svg {
+  transform: rotate(15deg) scale(1.08);
+}
+
+.eth-coin-earn-badge {
+  background: rgba(245, 158, 11, 0.2);
+  border: 1.5px solid #f59e0b;
+  padding: 6px 12px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 900;
+  color: #fbbf24;
+  font-size: 13px;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+  animation: ethCoinPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes ethCoinPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+  }
+}
+
+@media (max-width: 640px) {
+  .eth-top-coin-pill {
+    margin-right: 6px;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  .eth-top-coin-pill span {
+    display: none;
+  }
+}
+
+
 
 </style>
 
@@ -9238,6 +9313,57 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
   selected.price = window.ETHITH_GET_PRIZE_PRICE(selected);
   return selected;
 };
+
+// ====================================================
+// ETHITH COIN VECTOR EMBLEM (YELLOW COIN: SQUARE ON LEFT, LETTER 'E' ON RIGHT)
+// ====================================================
+window.ETHITH_COIN_SVG = function(size, extraClass, extraStyle) {
+  var s = size || 22;
+  var cls = extraClass || '';
+  var st = extraStyle || '';
+  return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 32 32" class="eth-coin-svg ' + cls + '" style="vertical-align:middle;display:inline-block;flex-shrink:0;' + st + '">' +
+    '<defs>' +
+    '  <linearGradient id="ethCoinGradGold" x1="0%" y1="0%" x2="100%" y2="100%">' +
+    '    <stop offset="0%" stop-color="#FEF08A" />' +
+    '    <stop offset="35%" stop-color="#FBBF24" />' +
+    '    <stop offset="70%" stop-color="#F59E0B" />' +
+    '    <stop offset="100%" stop-color="#D97706" />' +
+    '  </linearGradient>' +
+    '  <linearGradient id="ethCoinRimGold" x1="0%" y1="0%" x2="100%" y2="100%">' +
+    '    <stop offset="0%" stop-color="#FFFBEB" />' +
+    '    <stop offset="25%" stop-color="#FBBF24" />' +
+    '    <stop offset="75%" stop-color="#D97706" />' +
+    '    <stop offset="100%" stop-color="#78350F" />' +
+    '  </linearGradient>' +
+    '  <filter id="ethCoinShadow" x="-20%" y="-20%" width="140%" height="140%">' +
+    '    <feDropShadow dx="0" dy="1.2" stdDeviation="1" flood-color="#000000" flood-opacity="0.32"/>' +
+    '  </filter>' +
+    '</defs>' +
+    '<circle cx="16" cy="16" r="14.8" fill="url(#ethCoinRimGold)" filter="url(#ethCoinShadow)"/>' +
+    '<circle cx="16" cy="16" r="12.5" fill="url(#ethCoinGradGold)" stroke="#FEF08A" stroke-width="0.6"/>' +
+    '<circle cx="16" cy="16" r="11" fill="none" stroke="#FDE68A" stroke-width="0.75" stroke-dasharray="1.8 1.4" opacity="0.85"/>' +
+    '<!-- Left Side: Square (To\'rtburchak) -->' +
+    '<rect x="7" y="11" width="7" height="7" rx="1.5" fill="#78350F" stroke="#FEF08A" stroke-width="0.7"/>' +
+    '<rect x="8.8" y="12.8" width="3.4" height="3.4" rx="0.6" fill="#FDE047"/>' +
+    '<!-- Right Side: Letter E -->' +
+    '<text x="17.2" y="19.6" font-family="\'Inter\', system-ui, -apple-system, \'Segoe UI\', Arial, sans-serif" font-weight="900" font-size="10.5" fill="#78350F" stroke="#FEF08A" stroke-width="0.3">E</text>' +
+    '</svg>';
+};
+
+// ====================================================
+// TOPIC QUIZ QUESTION REWARD (COINS PER CORRECT ANSWER BY LEVEL)
+// ====================================================
+window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
+  var lv = String(level || 'A1').toUpperCase().trim();
+  if (lv === 'A1') return 3;
+  if (lv === 'A2') return 4;
+  if (lv === 'B1') return 5;
+  if (lv === 'B2') return 6;
+  if (lv === 'C1') return 8;
+  if (lv === 'C2') return 10;
+  return 4;
+};
+
 
 
 
@@ -12987,7 +13113,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
   // ====================================================
   // ETHITH AUTO-UPDATE & CACHE-BUSTING ENGINE
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.2110";
+  window.ETHITH_BUILD_VERSION = "2026.10.17.2135";
 
   function checkAppVersion() {
     if (typeof fetch === 'undefined') return;
@@ -13707,17 +13833,22 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       return e.isLevelTransition && (e.levelFrom === curLevel || (!e.levelFrom && curLevel === 'A1'));
     });
 
+    var levelReward = window.ETHITH_GET_TOPIC_QUESTION_COIN ? window.ETHITH_GET_TOPIC_QUESTION_COIN(curLevel) : 4;
     var html = '' +
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
       '    <h2>' + ic('layers') + ' CEFR English Levels (40 Topics)</h2>' +
       '    <p>Score 70% or higher on each topic quiz to unlock the next lesson.</p>' +
       '  </div>' +
+      '  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">' +
+      '    <div class="eth-top-coin-pill" style="margin:0;cursor:default" title="' + curLevel + ' darajasida har bir to\'g\'ri javob uchun beriladigan coin">' +
+             (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(20) : '🪙') +
+      '      <span style="font-size:12px;font-weight:900;color:#fbbf24">+' + levelReward + ' Coin / to\'g\'ri javob</span>' +
+      '    </div>' +
       (isTeacher ?
-        '  <div style="display:flex;gap:8px;flex-wrap:wrap">' +
         '    <button class="ap-btn solid" id="btnCreateLevelExam" style="background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;font-weight:700">🎓 Daraja O\'tish Testi Yaratish</button>' +
-        '    <button class="ap-btn out" id="tcAddTestBtn">' + ic('plus') + ' AI Mavzu Testi</button>' +
-        '  </div>' : '') +
+        '    <button class="ap-btn out" id="tcAddTestBtn">' + ic('plus') + ' AI Mavzu Testi</button>' : '') +
+      '  </div>' +
       '</div>' +
       '<div class="eth-tabs" style="margin:0 0 16px 0">' +
       levels.map(function(lv) {
@@ -13874,6 +14005,8 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
   function showQuizPromptModal(level, topicNum, topicTitle, mainContainer) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
+    var qCoinReward = window.ETHITH_GET_TOPIC_QUESTION_COIN ? window.ETHITH_GET_TOPIC_QUESTION_COIN(level) : 4;
+    var coinIconModal = window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(22) : '🪙';
     overlay.innerHTML = '' +
       '<div class="eth-modal">' +
       '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseQuizPrompt" title="Yopish">✕</button>' +
@@ -13889,8 +14022,9 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       '        <b id="quizCountVal" style="font-size:18px;color:#2563eb;min-width:36px;text-align:right">25</b>' +
       '      </div>' +
       '    </div>' +
-      '    <div style="background:var(--bg2);padding:12px;border-radius:12px;font-size:13px;color:var(--muted);margin-bottom:20px">' +
-      '      💡 ETHITH AI automatically generates an original quiz with your chosen question count. Passing grade: <b>70%</b>.' +
+      '    <div style="background:var(--bg2);padding:12px 14px;border-radius:14px;font-size:13px;color:var(--text);margin-bottom:14px;border:1.5px solid rgba(245,158,11,0.35);display:flex;align-items:center;gap:10px">' +
+      '      ' + coinIconModal +
+      '      <div><b>Coin Mukofoti:</b> Har bir to\'g\'ri javob uchun <b>+' + qCoinReward + ' ETHITH Coin</b> olasiz! O\'tish bali: <b>70%</b>.</div>' +
       '    </div>' +
       '    <div style="display:flex;gap:10px">' +
       '      <button class="ap-btn out" id="quizPromptCancel" style="flex:1">Cancel</button>' +
@@ -13935,9 +14069,11 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
 
   // Quiz runner for generated questions
   function startTopicQuizRunner(level, topicNum, topicTitle, questions, mainContainer) {
+    var coinsPerQ = window.ETHITH_GET_TOPIC_QUESTION_COIN ? window.ETHITH_GET_TOPIC_QUESTION_COIN(level) : 4;
     var state = {
       i: 0,
       score: 0,
+      earnedCoins: 0,
       answered: false,
       answers: []
     };
@@ -13951,6 +14087,8 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       var q = questions[state.i];
       state.answered = false;
 
+      var coinIcon = window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(18) : '🪙';
+
       var html = '' +
         '<div class="ap-quiz">' +
         '  <div class="ap-qtop">' +
@@ -13959,7 +14097,12 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         '    <b>' + (state.i + 1) + ' / ' + questions.length + '</b>' +
         '  </div>' +
         '  <div class="ap-qbox">' +
-        '    <div class="qn">' + level + ' · Topic ' + topicNum + ' · Question ' + (state.i + 1) + '</div>' +
+        '    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;flex-wrap:wrap">' +
+        '      <div class="qn" style="margin-bottom:0">' + level + ' · Topic ' + topicNum + ' · Question ' + (state.i + 1) + '</div>' +
+        '      <div style="font-size:12px;font-weight:800;color:#f59e0b;display:inline-flex;align-items:center;gap:5px;background:rgba(245,158,11,0.15);padding:3px 10px;border-radius:10px;border:1px solid rgba(245,158,11,0.3)">' +
+        coinIcon + ' To\'g\'ri javob: +' + coinsPerQ + ' Coin' +
+        '      </div>' +
+        '    </div>' +
         '    <h2>' + esc(q.question) + '</h2>' +
         '    <div id="quizOptionsBox">' +
         q.options.map(function(opt, idx) {
@@ -13993,6 +14136,21 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
 
           if (isCorrect) {
             state.score++;
+            state.earnedCoins += coinsPerQ;
+            if (S.user) {
+              S.user.coins = (S.user.coins || 0) + coinsPerQ;
+              if (Array.isArray(S.accounts)) {
+                var myAcc = S.accounts.find(function(a) {
+                  return (a.email && S.user.email && a.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                         (a.name && S.user.name && a.name.toLowerCase() === S.user.name.toLowerCase());
+                });
+                if (myAcc) myAcc.coins = S.user.coins;
+              }
+              App.saveState();
+              if (window._ethithUpdateTopCoins) {
+                window._ethithUpdateTopCoins();
+              }
+            }
           } else {
             btn.classList.add('no');
             // Log to mistakes notebook
@@ -14009,10 +14167,20 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
           }
 
           var feedbackBox = document.getElementById('quizFeedbackBox');
+          var coinSvgSmall = window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(20) : '🪙';
+          var coinBadgeHtml = isCorrect ? (
+            '<div class="eth-coin-earn-badge">' +
+              coinSvgSmall + ' <span>+' + coinsPerQ + ' Coin</span>' +
+            '</div>'
+          ) : '';
+
           feedbackBox.innerHTML = '' +
-            '<div style="background:' + (isCorrect ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)') + ';padding:12px 16px;border-radius:12px;margin-bottom:14px;border:1px solid ' + (isCorrect ? '#22c55e' : '#ef4444') + '">' +
-            '  <b style="color:' + (isCorrect ? '#16a34a' : '#ef4444') + '">' + (isCorrect ? '✓ To\'g\'ri!' : '✗ Noto\'g\'ri') + '</b>' +
-            '  <p style="margin:6px 0 0;font-size:13.5px;color:var(--text)">' + esc(q.explanation) + '</p>' +
+            '<div style="background:' + (isCorrect ? 'rgba(34,197,94,0.12)' : 'rgba(239,68,68,0.12)') + ';padding:14px 18px;border-radius:14px;margin-bottom:14px;border:1.5px solid ' + (isCorrect ? '#22c55e' : '#ef4444') + ';display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">' +
+            '  <div>' +
+            '    <b style="color:' + (isCorrect ? '#16a34a' : '#ef4444') + ';font-size:14px">' + (isCorrect ? '✓ To\'g\'ri javob!' : '✗ Noto\'g\'ri javob') + '</b>' +
+            '    <p style="margin:5px 0 0;font-size:13.5px;color:var(--text)">' + esc(q.explanation) + '</p>' +
+            '  </div>' +
+            coinBadgeHtml +
             '</div>' +
             '<button class="ap-btn solid" id="quizNextBtn">' + (state.i === questions.length - 1 ? 'View Results' : 'Next Question') + ' ' + ic('right') + '</button>';
 
@@ -14033,6 +14201,8 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         App.saveState();
       }
 
+      var coinSvgLarge = window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(28) : '🪙';
+
       var html = '' +
         '<div class="ap-res">' +
         '  <div class="ap-ring">' +
@@ -14046,6 +14216,13 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         '  <p>' + (passed ?
           'You successfully completed Topic ' + topicNum + ' (' + level + ') and unlocked the next topic!' :
           'You must achieve at least 70% to unlock the next topic. Review your Mistakes Notebook and try again.') + '</p>' +
+        '  <div style="margin:16px auto;max-width:380px;padding:12px 20px;background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(217,119,6,0.12));border:1.5px solid #f59e0b;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 4px 15px rgba(245,158,11,0.2)">' +
+             coinSvgLarge +
+        '    <div style="text-align:left">' +
+        '      <div style="font-size:11px;font-weight:800;color:#f59e0b;text-transform:uppercase;letter-spacing:0.04em">Ushbu darsdan ishlangan:</div>' +
+        '      <div style="font-size:20px;font-weight:900;color:#ffffff;font-family:monospace">+' + (state.earnedCoins || 0) + ' <span style="font-size:12.5px;color:#fbbf24">ETHITH Coin</span></div>' +
+        '    </div>' +
+        '  </div>' +
         '  <div class="acts">' +
         '    <button class="ap-btn out" id="resBackLevelsBtn">Topics List</button>' +
         (passed && topicNum < 40 ? '<button class="ap-btn solid" id="resNextTopicBtn">Next Topic ' + ic('right') + '</button>' : '') +
@@ -21165,7 +21342,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
           // ETHITH Coin Wallet Bar
           html += '<div class="eth-coin-wallet-bar">';
           html += '  <div style="display:flex;align-items:center;gap:14px;">';
-          html += '    <div style="width:48px;height:48px;border-radius:14px;background:rgba(245,158,11,0.2);border:1.5px solid #f59e0b;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 15px rgba(245,158,11,0.3);">🪙</div>';
+          html += '    <div style="width:48px;height:48px;border-radius:14px;background:rgba(245,158,11,0.2);border:1.5px solid #f59e0b;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(245,158,11,0.3);">' + (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(32) : '🪙') + '</div>';
           html += '    <div>';
           html += '      <div style="font-size:11px;font-weight:900;text-transform:uppercase;color:#fbbf24;letter-spacing:0.06em;">ETHITH Hamyon Balansi</div>';
           html += '      <div style="font-size:22px;font-weight:900;color:#ffffff;font-family:monospace;letter-spacing:0.5px;">' + (S.user.coins || 0).toLocaleString() + ' <span style="font-size:13px;color:#f59e0b;font-weight:800;">ETHITH Coin</span></div>';
@@ -21194,7 +21371,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
               html += '    <div class="eth-gift-emoji-3d">' + (gift.icon || '🎁') + '</div>';
               html += '    <h4 style="font-size:16px;font-weight:900;color:#ffffff;margin:8px 0 4px;line-height:1.3;">' + esc(gift.name || 'Sovrin') + '</h4>';
               html += '    <p style="font-size:12px;color:#94a3b8;line-height:1.5;margin:6px 0;">' + esc(gift.desc || '') + '</p>';
-              html += '    <div class="eth-gift-price-badge">🪙 Qiymati: ' + giftPrice + ' ETHITH Coin</div>';
+              html += '    <div class="eth-gift-price-badge">' + (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(16) : '🪙') + ' Qiymati: ' + giftPrice + ' ETHITH Coin</div>';
               if (isFromFriend) {
                 html += '    <div style="margin-top:8px;font-size:11px;font-weight:900;color:#60a5fa;background:rgba(37,99,235,0.15);border:1px solid rgba(96,165,250,0.4);border-radius:8px;padding:4px 10px;display:inline-flex;align-items:center;gap:6px;">🎁 Do\'stdan sovg\'a (' + esc(senderTitle) + ')</div>';
               }
@@ -22815,7 +22992,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         html += '    <div class="text-xs font-bold text-gray-400 uppercase">🥈 2-O\'rin Sovrini:</div>';
         html += '    <div class="font-extrabold text-sm text-white mt-1">' + prize2.name + '</div>';
         html += '    <div class="text-[11px] text-gray-400 mt-1">' + prize2.desc + '</div>';
-        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;">🪙 Qiymati: ' + (prize2.price || 180) + ' ETHITH Coin</div>';
+        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;">' + (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(16) : '🪙') + ' Qiymati: ' + (prize2.price || 180) + ' ETHITH Coin</div>';
         html += '  </div>';
         html += '  <div class="p-4 rounded-t-2xl bg-gradient-to-t from-gray-700 to-gray-600 text-white shadow-lg h-36 flex flex-col justify-end">';
         html += '    <div class="font-black text-base truncate">' + (winner2.hero ? (winner2.hero.emoji + ' ') : '') + winner2.name + '</div>';
@@ -22833,7 +23010,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         html += '    <div class="text-xs font-black text-amber-400 uppercase">👑 1-O\'RIN BOSHQAHRAMONI:</div>';
         html += '    <div class="font-extrabold text-base text-amber-300 mt-1">' + prize1.name + '</div>';
         html += '    <div class="text-[11px] text-amber-100/80 mt-1">' + prize1.desc + '</div>';
-        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;background:rgba(245,158,11,0.25);border-color:#f59e0b;color:#fde68a;">🪙 Qiymati: ' + (prize1.price || 500) + ' ETHITH Coin</div>';
+        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;background:rgba(245,158,11,0.25);border-color:#f59e0b;color:#fde68a;">' + (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(16) : '🪙') + ' Qiymati: ' + (prize1.price || 500) + ' ETHITH Coin</div>';
         html += '  </div>';
         html += '  <div class="p-5 rounded-t-2xl bg-gradient-to-t from-amber-600 to-yellow-500 text-gray-950 shadow-2xl h-48 flex flex-col justify-end">';
         html += '    <div class="font-black text-lg truncate">' + (winner1.hero ? (winner1.hero.emoji + ' ') : '') + winner1.name + '</div>';
@@ -22851,7 +23028,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         html += '    <div class="text-xs font-bold text-amber-600 uppercase">🥉 3-O\'rin Sovrini:</div>';
         html += '    <div class="font-extrabold text-sm text-white mt-1">' + prize3.name + '</div>';
         html += '    <div class="text-[11px] text-gray-400 mt-1">' + prize3.desc + '</div>';
-        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;">🪙 Qiymati: ' + (prize3.price || 90) + ' ETHITH Coin</div>';
+        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;">' + (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(16) : '🪙') + ' Qiymati: ' + (prize3.price || 90) + ' ETHITH Coin</div>';
         html += '  </div>';
         html += '  <div class="p-4 rounded-t-2xl bg-gradient-to-t from-amber-900 to-amber-800 text-white shadow-lg h-28 flex flex-col justify-end">';
         html += '    <div class="font-black text-base truncate">' + (winner3.hero ? (winner3.hero.emoji + ' ') : '') + winner3.name + '</div>';
@@ -24651,7 +24828,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
   };
 
   function top() {
-    var user = S.user || { name: 'Guest', role: 'student', dailyMinutes: 0 };
+    var user = S.user || { name: 'Guest', role: 'student', dailyMinutes: 0, coins: 0 };
     var unreadNotifs = 0;
     if (user.role === 'teacher') {
       unreadNotifs = (S.notifications || []).filter(function(n) { return !n.resolved; }).length;
@@ -24659,12 +24836,20 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       unreadNotifs = (user.gifts || []).filter(function(g) { return !g.read; }).length + ((S.studentNotifications || []).filter(function(n) { return !n.read; }).length);
     }
 
+    var coinSvg = window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(20) : '🪙';
+    var userCoins = (user && user.coins !== undefined && user.coins !== null) ? user.coins : 0;
+
     $('apTop').innerHTML = '' +
       '<button class="ap-burger" id="apBurger">' + ic('menu') + '</button>' +
       '<div class="ttl">' + (TITLES[view.name] || 'ETHITH TESTS') + '</div>' +
       '<div style="flex:1"></div>' +
-      '<div style="margin-right:12px;font-size:13px;background:var(--bg2);padding:6px 12px;border-radius:12px;display:flex;align-items:center;gap:6px">' +
-      ic('clock') + ' Today: <b>' + (user.dailyMinutes || 0) + ' min</b>' +
+      '<div id="topEthCoinPill" class="eth-top-coin-pill" title="ETHITH Coin Hamyoni (Bosib sovrinlar va tangalarni ko\'rish)">' +
+        coinSvg +
+        ' <b id="topEthCoinVal" style="color:#fbbf24;font-family:monospace;font-size:13.5px;font-weight:900">' + userCoins.toLocaleString() + '</b>' +
+        ' <span style="font-size:11px;font-weight:800;color:#f59e0b;text-transform:uppercase">Coin</span>' +
+      '</div>' +
+      '<div style="margin-right:12px;font-size:13px;background:var(--bg2);padding:6px 12px;border-radius:12px;display:flex;align-items:center;gap:6px" title="Foydalanilayotgan muddat: ' + (user.dailyMinutes || 0) + ' min">' +
+        ic('clock') + ' Usage Time: <b>' + (user.dailyMinutes || 0) + ' min</b>' +
       '</div>' +
       '<button class="ap-ib" id="apNotifications" style="position:relative;margin-right:6px" title="' + (user.role === 'teacher' ? 'Security & Proctoring Alerts' : 'Bildirishnomalar va Sovg\'alar') + '">' +
         ic('bell') +
@@ -24675,8 +24860,24 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '  <span class="av">' + (user.name ? user.name.charAt(0).toUpperCase() : 'U') + '</span>' +
       '  <span><b>' + esc(user.name) + '</b><small>' + (user.role === 'teacher' ? 'Teacher' : 'Student (' + S.level + ')') + '</small></span>' +
       '</div>';
+
+    var cPill = $('topEthCoinPill');
+    if (cPill) {
+      cPill.onclick = function() {
+        window._ethithQuizSubtab = 'gifts';
+        go('quiz');
+      };
+    }
   }
   window._ethithRefreshTopNav = function() { top(); };
+  window._ethithUpdateTopCoins = function() {
+    var valEl = $('topEthCoinVal');
+    if (valEl && S.user) {
+      valEl.textContent = (S.user.coins || 0).toLocaleString();
+    } else {
+      top();
+    }
+  };
 
   window._ethithInternalGo = go;
   function go(n, a) {

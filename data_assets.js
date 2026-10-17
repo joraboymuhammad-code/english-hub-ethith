@@ -2752,3 +2752,54 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
   selected.price = window.ETHITH_GET_PRIZE_PRICE(selected);
   return selected;
 };
+
+// ====================================================
+// ETHITH COIN VECTOR EMBLEM (YELLOW COIN: SQUARE ON LEFT, LETTER 'E' ON RIGHT)
+// ====================================================
+window.ETHITH_COIN_SVG = function(size, extraClass, extraStyle) {
+  var s = size || 22;
+  var cls = extraClass || '';
+  var st = extraStyle || '';
+  return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 32 32" class="eth-coin-svg ' + cls + '" style="vertical-align:middle;display:inline-block;flex-shrink:0;' + st + '">' +
+    '<defs>' +
+    '  <linearGradient id="ethCoinGradGold" x1="0%" y1="0%" x2="100%" y2="100%">' +
+    '    <stop offset="0%" stop-color="#FEF08A" />' +
+    '    <stop offset="35%" stop-color="#FBBF24" />' +
+    '    <stop offset="70%" stop-color="#F59E0B" />' +
+    '    <stop offset="100%" stop-color="#D97706" />' +
+    '  </linearGradient>' +
+    '  <linearGradient id="ethCoinRimGold" x1="0%" y1="0%" x2="100%" y2="100%">' +
+    '    <stop offset="0%" stop-color="#FFFBEB" />' +
+    '    <stop offset="25%" stop-color="#FBBF24" />' +
+    '    <stop offset="75%" stop-color="#D97706" />' +
+    '    <stop offset="100%" stop-color="#78350F" />' +
+    '  </linearGradient>' +
+    '  <filter id="ethCoinShadow" x="-20%" y="-20%" width="140%" height="140%">' +
+    '    <feDropShadow dx="0" dy="1.2" stdDeviation="1" flood-color="#000000" flood-opacity="0.32"/>' +
+    '  </filter>' +
+    '</defs>' +
+    '<circle cx="16" cy="16" r="14.8" fill="url(#ethCoinRimGold)" filter="url(#ethCoinShadow)"/>' +
+    '<circle cx="16" cy="16" r="12.5" fill="url(#ethCoinGradGold)" stroke="#FEF08A" stroke-width="0.6"/>' +
+    '<circle cx="16" cy="16" r="11" fill="none" stroke="#FDE68A" stroke-width="0.75" stroke-dasharray="1.8 1.4" opacity="0.85"/>' +
+    '<!-- Left Side: Square (To\'rtburchak) -->' +
+    '<rect x="7" y="11" width="7" height="7" rx="1.5" fill="#78350F" stroke="#FEF08A" stroke-width="0.7"/>' +
+    '<rect x="8.8" y="12.8" width="3.4" height="3.4" rx="0.6" fill="#FDE047"/>' +
+    '<!-- Right Side: Letter E -->' +
+    '<text x="17.2" y="19.6" font-family="\'Inter\', system-ui, -apple-system, \'Segoe UI\', Arial, sans-serif" font-weight="900" font-size="10.5" fill="#78350F" stroke="#FEF08A" stroke-width="0.3">E</text>' +
+    '</svg>';
+};
+
+// ====================================================
+// TOPIC QUIZ QUESTION REWARD (COINS PER CORRECT ANSWER BY LEVEL)
+// ====================================================
+window.ETHITH_GET_TOPIC_QUESTION_COIN = function(level) {
+  var lv = String(level || 'A1').toUpperCase().trim();
+  if (lv === 'A1') return 3;
+  if (lv === 'A2') return 4;
+  if (lv === 'B1') return 5;
+  if (lv === 'B2') return 6;
+  if (lv === 'C1') return 8;
+  if (lv === 'C2') return 10;
+  return 4;
+};
+

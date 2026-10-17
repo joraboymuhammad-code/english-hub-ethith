@@ -686,17 +686,22 @@
       return e.isLevelTransition && (e.levelFrom === curLevel || (!e.levelFrom && curLevel === 'A1'));
     });
 
+    var levelReward = window.ETHITH_GET_TOPIC_QUESTION_COIN ? window.ETHITH_GET_TOPIC_QUESTION_COIN(curLevel) : 4;
     var html = '' +
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
       '    <h2>' + ic('layers') + ' CEFR English Levels (40 Topics)</h2>' +
       '    <p>Score 70% or higher on each topic quiz to unlock the next lesson.</p>' +
       '  </div>' +
+      '  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">' +
+      '    <div class="eth-top-coin-pill" style="margin:0;cursor:default" title="' + curLevel + ' darajasida har bir to\'g\'ri javob uchun beriladigan coin">' +
+             (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(20) : '🪙') +
+      '      <span style="font-size:12px;font-weight:900;color:#fbbf24">+' + levelReward + ' Coin / to\'g\'ri javob</span>' +
+      '    </div>' +
       (isTeacher ?
-        '  <div style="display:flex;gap:8px;flex-wrap:wrap">' +
         '    <button class="ap-btn solid" id="btnCreateLevelExam" style="background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;font-weight:700">🎓 Daraja O\'tish Testi Yaratish</button>' +
-        '    <button class="ap-btn out" id="tcAddTestBtn">' + ic('plus') + ' AI Mavzu Testi</button>' +
-        '  </div>' : '') +
+        '    <button class="ap-btn out" id="tcAddTestBtn">' + ic('plus') + ' AI Mavzu Testi</button>' : '') +
+      '  </div>' +
       '</div>' +
       '<div class="eth-tabs" style="margin:0 0 16px 0">' +
       levels.map(function(lv) {
@@ -853,6 +858,8 @@
   function showQuizPromptModal(level, topicNum, topicTitle, mainContainer) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
+    var qCoinReward = window.ETHITH_GET_TOPIC_QUESTION_COIN ? window.ETHITH_GET_TOPIC_QUESTION_COIN(level) : 4;
+    var coinIconModal = window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(22) : '🪙';
     overlay.innerHTML = '' +
       '<div class="eth-modal">' +
       '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseQuizPrompt" title="Yopish">✕</button>' +
@@ -868,8 +875,9 @@
       '        <b id="quizCountVal" style="font-size:18px;color:#2563eb;min-width:36px;text-align:right">25</b>' +
       '      </div>' +
       '    </div>' +
-      '    <div style="background:var(--bg2);padding:12px;border-radius:12px;font-size:13px;color:var(--muted);margin-bottom:20px">' +
-      '      💡 ETHITH AI automatically generates an original quiz with your chosen question count. Passing grade: <b>70%</b>.' +
+      '    <div style="background:var(--bg2);padding:12px 14px;border-radius:14px;font-size:13px;color:var(--text);margin-bottom:14px;border:1.5px solid rgba(245,158,11,0.35);display:flex;align-items:center;gap:10px">' +
+      '      ' + coinIconModal +
+      '      <div><b>Coin Mukofoti:</b> Har bir to\'g\'ri javob uchun <b>+' + qCoinReward + ' ETHITH Coin</b> olasiz! O\'tish bali: <b>70%</b>.</div>' +
       '    </div>' +
       '    <div style="display:flex;gap:10px">' +
       '      <button class="ap-btn out" id="quizPromptCancel" style="flex:1">Cancel</button>' +
@@ -914,9 +922,11 @@
 
   // Quiz runner for generated questions
   function startTopicQuizRunner(level, topicNum, topicTitle, questions, mainContainer) {
+    var coinsPerQ = window.ETHITH_GET_TOPIC_QUESTION_COIN ? window.ETHITH_GET_TOPIC_QUESTION_COIN(level) : 4;
     var state = {
       i: 0,
       score: 0,
+      earnedCoins: 0,
       answered: false,
       answers: []
     };
@@ -930,6 +940,8 @@
       var q = questions[state.i];
       state.answered = false;
 
+      var coinIcon = window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(18) : '🪙';
+
       var html = '' +
         '<div class="ap-quiz">' +
         '  <div class="ap-qtop">' +
@@ -938,7 +950,12 @@
         '    <b>' + (state.i + 1) + ' / ' + questions.length + '</b>' +
         '  </div>' +
         '  <div class="ap-qbox">' +
-        '    <div class="qn">' + level + ' · Topic ' + topicNum + ' · Question ' + (state.i + 1) + '</div>' +
+        '    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;flex-wrap:wrap">' +
+        '      <div class="qn" style="margin-bottom:0">' + level + ' · Topic ' + topicNum + ' · Question ' + (state.i + 1) + '</div>' +
+        '      <div style="font-size:12px;font-weight:800;color:#f59e0b;display:inline-flex;align-items:center;gap:5px;background:rgba(245,158,11,0.15);padding:3px 10px;border-radius:10px;border:1px solid rgba(245,158,11,0.3)">' +
+        coinIcon + ' To\'g\'ri javob: +' + coinsPerQ + ' Coin' +
+        '      </div>' +
+        '    </div>' +
         '    <h2>' + esc(q.question) + '</h2>' +
         '    <div id="quizOptionsBox">' +
         q.options.map(function(opt, idx) {
@@ -972,6 +989,21 @@
 
           if (isCorrect) {
             state.score++;
+            state.earnedCoins += coinsPerQ;
+            if (S.user) {
+              S.user.coins = (S.user.coins || 0) + coinsPerQ;
+              if (Array.isArray(S.accounts)) {
+                var myAcc = S.accounts.find(function(a) {
+                  return (a.email && S.user.email && a.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                         (a.name && S.user.name && a.name.toLowerCase() === S.user.name.toLowerCase());
+                });
+                if (myAcc) myAcc.coins = S.user.coins;
+              }
+              App.saveState();
+              if (window._ethithUpdateTopCoins) {
+                window._ethithUpdateTopCoins();
+              }
+            }
           } else {
             btn.classList.add('no');
             // Log to mistakes notebook
@@ -988,10 +1020,20 @@
           }
 
           var feedbackBox = document.getElementById('quizFeedbackBox');
+          var coinSvgSmall = window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(20) : '🪙';
+          var coinBadgeHtml = isCorrect ? (
+            '<div class="eth-coin-earn-badge">' +
+              coinSvgSmall + ' <span>+' + coinsPerQ + ' Coin</span>' +
+            '</div>'
+          ) : '';
+
           feedbackBox.innerHTML = '' +
-            '<div style="background:' + (isCorrect ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)') + ';padding:12px 16px;border-radius:12px;margin-bottom:14px;border:1px solid ' + (isCorrect ? '#22c55e' : '#ef4444') + '">' +
-            '  <b style="color:' + (isCorrect ? '#16a34a' : '#ef4444') + '">' + (isCorrect ? '✓ To\'g\'ri!' : '✗ Noto\'g\'ri') + '</b>' +
-            '  <p style="margin:6px 0 0;font-size:13.5px;color:var(--text)">' + esc(q.explanation) + '</p>' +
+            '<div style="background:' + (isCorrect ? 'rgba(34,197,94,0.12)' : 'rgba(239,68,68,0.12)') + ';padding:14px 18px;border-radius:14px;margin-bottom:14px;border:1.5px solid ' + (isCorrect ? '#22c55e' : '#ef4444') + ';display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">' +
+            '  <div>' +
+            '    <b style="color:' + (isCorrect ? '#16a34a' : '#ef4444') + ';font-size:14px">' + (isCorrect ? '✓ To\'g\'ri javob!' : '✗ Noto\'g\'ri javob') + '</b>' +
+            '    <p style="margin:5px 0 0;font-size:13.5px;color:var(--text)">' + esc(q.explanation) + '</p>' +
+            '  </div>' +
+            coinBadgeHtml +
             '</div>' +
             '<button class="ap-btn solid" id="quizNextBtn">' + (state.i === questions.length - 1 ? 'View Results' : 'Next Question') + ' ' + ic('right') + '</button>';
 
@@ -1012,6 +1054,8 @@
         App.saveState();
       }
 
+      var coinSvgLarge = window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(28) : '🪙';
+
       var html = '' +
         '<div class="ap-res">' +
         '  <div class="ap-ring">' +
@@ -1025,6 +1069,13 @@
         '  <p>' + (passed ?
           'You successfully completed Topic ' + topicNum + ' (' + level + ') and unlocked the next topic!' :
           'You must achieve at least 70% to unlock the next topic. Review your Mistakes Notebook and try again.') + '</p>' +
+        '  <div style="margin:16px auto;max-width:380px;padding:12px 20px;background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(217,119,6,0.12));border:1.5px solid #f59e0b;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 4px 15px rgba(245,158,11,0.2)">' +
+             coinSvgLarge +
+        '    <div style="text-align:left">' +
+        '      <div style="font-size:11px;font-weight:800;color:#f59e0b;text-transform:uppercase;letter-spacing:0.04em">Ushbu darsdan ishlangan:</div>' +
+        '      <div style="font-size:20px;font-weight:900;color:#ffffff;font-family:monospace">+' + (state.earnedCoins || 0) + ' <span style="font-size:12.5px;color:#fbbf24">ETHITH Coin</span></div>' +
+        '    </div>' +
+        '  </div>' +
         '  <div class="acts">' +
         '    <button class="ap-btn out" id="resBackLevelsBtn">Topics List</button>' +
         (passed && topicNum < 40 ? '<button class="ap-btn solid" id="resNextTopicBtn">Next Topic ' + ic('right') + '</button>' : '') +
@@ -8144,7 +8195,7 @@
           // ETHITH Coin Wallet Bar
           html += '<div class="eth-coin-wallet-bar">';
           html += '  <div style="display:flex;align-items:center;gap:14px;">';
-          html += '    <div style="width:48px;height:48px;border-radius:14px;background:rgba(245,158,11,0.2);border:1.5px solid #f59e0b;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 15px rgba(245,158,11,0.3);">🪙</div>';
+          html += '    <div style="width:48px;height:48px;border-radius:14px;background:rgba(245,158,11,0.2);border:1.5px solid #f59e0b;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(245,158,11,0.3);">' + (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(32) : '🪙') + '</div>';
           html += '    <div>';
           html += '      <div style="font-size:11px;font-weight:900;text-transform:uppercase;color:#fbbf24;letter-spacing:0.06em;">ETHITH Hamyon Balansi</div>';
           html += '      <div style="font-size:22px;font-weight:900;color:#ffffff;font-family:monospace;letter-spacing:0.5px;">' + (S.user.coins || 0).toLocaleString() + ' <span style="font-size:13px;color:#f59e0b;font-weight:800;">ETHITH Coin</span></div>';
@@ -8173,7 +8224,7 @@
               html += '    <div class="eth-gift-emoji-3d">' + (gift.icon || '🎁') + '</div>';
               html += '    <h4 style="font-size:16px;font-weight:900;color:#ffffff;margin:8px 0 4px;line-height:1.3;">' + esc(gift.name || 'Sovrin') + '</h4>';
               html += '    <p style="font-size:12px;color:#94a3b8;line-height:1.5;margin:6px 0;">' + esc(gift.desc || '') + '</p>';
-              html += '    <div class="eth-gift-price-badge">🪙 Qiymati: ' + giftPrice + ' ETHITH Coin</div>';
+              html += '    <div class="eth-gift-price-badge">' + (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(16) : '🪙') + ' Qiymati: ' + giftPrice + ' ETHITH Coin</div>';
               if (isFromFriend) {
                 html += '    <div style="margin-top:8px;font-size:11px;font-weight:900;color:#60a5fa;background:rgba(37,99,235,0.15);border:1px solid rgba(96,165,250,0.4);border-radius:8px;padding:4px 10px;display:inline-flex;align-items:center;gap:6px;">🎁 Do\'stdan sovg\'a (' + esc(senderTitle) + ')</div>';
               }
@@ -9794,7 +9845,7 @@
         html += '    <div class="text-xs font-bold text-gray-400 uppercase">🥈 2-O\'rin Sovrini:</div>';
         html += '    <div class="font-extrabold text-sm text-white mt-1">' + prize2.name + '</div>';
         html += '    <div class="text-[11px] text-gray-400 mt-1">' + prize2.desc + '</div>';
-        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;">🪙 Qiymati: ' + (prize2.price || 180) + ' ETHITH Coin</div>';
+        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;">' + (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(16) : '🪙') + ' Qiymati: ' + (prize2.price || 180) + ' ETHITH Coin</div>';
         html += '  </div>';
         html += '  <div class="p-4 rounded-t-2xl bg-gradient-to-t from-gray-700 to-gray-600 text-white shadow-lg h-36 flex flex-col justify-end">';
         html += '    <div class="font-black text-base truncate">' + (winner2.hero ? (winner2.hero.emoji + ' ') : '') + winner2.name + '</div>';
@@ -9812,7 +9863,7 @@
         html += '    <div class="text-xs font-black text-amber-400 uppercase">👑 1-O\'RIN BOSHQAHRAMONI:</div>';
         html += '    <div class="font-extrabold text-base text-amber-300 mt-1">' + prize1.name + '</div>';
         html += '    <div class="text-[11px] text-amber-100/80 mt-1">' + prize1.desc + '</div>';
-        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;background:rgba(245,158,11,0.25);border-color:#f59e0b;color:#fde68a;">🪙 Qiymati: ' + (prize1.price || 500) + ' ETHITH Coin</div>';
+        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;background:rgba(245,158,11,0.25);border-color:#f59e0b;color:#fde68a;">' + (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(16) : '🪙') + ' Qiymati: ' + (prize1.price || 500) + ' ETHITH Coin</div>';
         html += '  </div>';
         html += '  <div class="p-5 rounded-t-2xl bg-gradient-to-t from-amber-600 to-yellow-500 text-gray-950 shadow-2xl h-48 flex flex-col justify-end">';
         html += '    <div class="font-black text-lg truncate">' + (winner1.hero ? (winner1.hero.emoji + ' ') : '') + winner1.name + '</div>';
@@ -9830,7 +9881,7 @@
         html += '    <div class="text-xs font-bold text-amber-600 uppercase">🥉 3-O\'rin Sovrini:</div>';
         html += '    <div class="font-extrabold text-sm text-white mt-1">' + prize3.name + '</div>';
         html += '    <div class="text-[11px] text-gray-400 mt-1">' + prize3.desc + '</div>';
-        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;">🪙 Qiymati: ' + (prize3.price || 90) + ' ETHITH Coin</div>';
+        html += '    <div class="eth-gift-price-badge" style="margin-top:8px;">' + (window.ETHITH_COIN_SVG ? window.ETHITH_COIN_SVG(16) : '🪙') + ' Qiymati: ' + (prize3.price || 90) + ' ETHITH Coin</div>';
         html += '  </div>';
         html += '  <div class="p-4 rounded-t-2xl bg-gradient-to-t from-amber-900 to-amber-800 text-white shadow-lg h-28 flex flex-col justify-end">';
         html += '    <div class="font-black text-base truncate">' + (winner3.hero ? (winner3.hero.emoji + ' ') : '') + winner3.name + '</div>';

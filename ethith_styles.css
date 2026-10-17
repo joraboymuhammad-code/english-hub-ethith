@@ -6220,3 +6220,76 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   color: #94a3b8 !important;
 }
 
+/* ====================================================
+   ETHITH COIN TOPBAR PILL & BADGES
+   ==================================================== */
+.eth-top-coin-pill {
+  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(217, 119, 6, 0.12));
+  border: 1.5px solid rgba(245, 158, 11, 0.45);
+  padding: 5px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.15);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+.eth-top-coin-pill:hover {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.28), rgba(217, 119, 6, 0.2));
+  border-color: #f59e0b;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+  transform: translateY(-1px);
+}
+.eth-top-coin-pill:active {
+  transform: translateY(0);
+}
+
+.eth-coin-svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  transition: transform 0.3s ease;
+}
+.eth-top-coin-pill:hover .eth-coin-svg {
+  transform: rotate(15deg) scale(1.08);
+}
+
+.eth-coin-earn-badge {
+  background: rgba(245, 158, 11, 0.2);
+  border: 1.5px solid #f59e0b;
+  padding: 6px 12px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 900;
+  color: #fbbf24;
+  font-size: 13px;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+  animation: ethCoinPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes ethCoinPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+  }
+}
+
+@media (max-width: 640px) {
+  .eth-top-coin-pill {
+    margin-right: 6px;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  .eth-top-coin-pill span {
+    display: none;
+  }
+}
+
+
