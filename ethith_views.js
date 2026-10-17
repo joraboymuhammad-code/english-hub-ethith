@@ -3663,7 +3663,7 @@
         '<div class="eth-cam-footer" id="proctorStudentName">' +
         (isTeacher ?
           '  👤 ' + esc((S.user && S.user.name) || 'Ustoz') + ' · Cheklovlar O\'chirilgan' :
-          '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 40° AI Yuz & Ko\'z Trekeri'
+          '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 70° AI Yuz & Ko\'z Trekeri (Foto-Dalil)'
         ) +
         '</div>';
       lockdownModal.appendChild(camBox);
@@ -3687,7 +3687,23 @@
         });
       }
 
-      // 5. Algorithmic Pure JS/Canvas 40° Dynamic Face Yaw & Eye Gaze Tracker (students only)
+      // Helper: Capture instant camera snapshot for photographic proof
+      function captureProctorSnapshot() {
+        try {
+          var v = document.getElementById('proctorVideo');
+          if (v && v.videoWidth && v.videoHeight) {
+            var snapC = document.createElement('canvas');
+            snapC.width = 320;
+            snapC.height = 240;
+            var snapCtx = snapC.getContext('2d');
+            snapCtx.drawImage(v, 0, 0, 320, 240);
+            return snapC.toDataURL('image/jpeg', 0.80);
+          }
+        } catch(e) {}
+        return null;
+      }
+
+      // 5. Algorithmic Pure JS/Canvas 70° Dynamic Face Yaw & Eye Gaze Tracker (2.5s continuous hold)
       if (!isTeacher) {
         var offCanvas = document.createElement('canvas');
         offCanvas.width = 160;
@@ -3733,8 +3749,8 @@
             var angleBadge = document.getElementById('proctorCamAngle');
             var dot = document.getElementById('proctorCamDot');
 
-            // Distance & scale tolerance (students can sit close or further away):
-            // Only flag if NO face is detected at all for 4 consecutive intervals (1 second)
+            // Distance & scale tolerance:
+            // Only flag if NO face is detected at all for 12 consecutive intervals (3.0 seconds)
             if (skinCount < 10) {
               noFaceTicks++;
               if (oval) {
@@ -3743,15 +3759,16 @@
                 oval.style.width = '85px';
                 oval.style.height = '115px';
               }
-              if (noFaceTicks >= 4) {
+              if (noFaceTicks >= 12) {
                 if (angleBadge) {
                   angleBadge.textContent = "Yuz yo'q";
                   angleBadge.className = 'eth-cam-badge danger';
                 }
                 if (dot) dot.className = 'eth-cam-dot danger';
                 if (oval) oval.className = 'eth-cam-target-oval danger';
+                var missingSnap = captureProctorSnapshot();
                 playTitTitAlarm(6);
-                triggerInfraction("Kamerada o'quvchi yuzi aniqlanmadi (Iltimos, kamera ro'parasida o'tiring)");
+                triggerInfraction("Kamerada o'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro'parasida o'tiring)", missingSnap);
               }
               return;
             }
@@ -3766,7 +3783,6 @@
             var faceH = Math.max(40, maxSkinY - minSkinY);
 
             // Dynamic Oval & Crosshair tracking:
-            // Since webcam video is mirrored via CSS scaleX(-1), mirrored screen X is (160 - faceMidX)
             if (oval) {
               var screenXPercent = ((160 - faceMidX) / 160) * 100;
               var screenYPercent = (faceMidY / 120) * 100;
@@ -3807,7 +3823,7 @@
             var rightRatio = relRightDark / (relRightSkin + 1);
             var profileContrast = Math.abs(leftRatio - rightRatio);
 
-            // Pass 3: Eye Gaze Analysis across Eye Band (Pupil centroid & Sclera distribution)
+            // Pass 3: Eye Gaze Analysis across Eye Band
             var eyeTop = Math.max(26, Math.round(minSkinY + faceH * 0.18));
             var eyeBottom = Math.min(76, Math.round(minSkinY + faceH * 0.44));
             var eyeLeftDark = 0, eyeRightDark = 0;
@@ -3832,25 +3848,26 @@
             var eyePupilAsym = (eyeLeftDark + eyeRightDark) > 6 ? (Math.abs(eyeLeftDark - eyeRightDark) / (eyeLeftDark + eyeRightDark + 1)) : 0;
             var eyeWhiteAsym = (eyeLeftWhite + eyeRightWhite) > 6 ? (Math.abs(eyeLeftWhite - eyeRightWhite) / (eyeLeftWhite + eyeRightWhite + 1)) : 0;
 
-            // 4. Angle calculations:
-            // Head Yaw: Normal tilts (< 25°) are green, 30°-40° warning, > 40° triggers DANGER/INFRACTION
-            var angleSkin = Math.round((skinAsym / 0.22) * 35);
-            var angleCentroid = Math.round((centroidMidDiff / 3.2) * 35);
-            var angleContrast = Math.round((profileContrast / 1.6) * 35);
+            // 4. Practical Relaxed Thresholds:
+            // Normal (< 50°) -> Green ("To'g'ri: XX°")
+            // 50° - 69° -> Yellow Warning ("Burilish: XX°" / "Ko'z: XX°"), NO lock!
+            // >= 70° sustained for 2.5 seconds (10 frames) -> DANGER: takes photo snapshot & locks!
+            var angleSkin = Math.round((skinAsym / 0.25) * 50);
+            var angleCentroid = Math.round((centroidMidDiff / 4.0) * 50);
+            var angleContrast = Math.round((profileContrast / 2.0) * 50);
             var angleHeadYaw = Math.min(90, Math.max(angleSkin, angleCentroid, angleContrast));
 
-            // Eye Gaze: Reading questions allows eye glance up to 45°-50°, > 48° triggers DANGER/INFRACTION
             var angleEyeGaze = Math.min(90, Math.max(
-              Math.round((eyePupilAsym / 0.45) * 50),
-              Math.round((eyeWhiteAsym / 0.48) * 50)
+              Math.round((eyePupilAsym / 0.45) * 55),
+              Math.round((eyeWhiteAsym / 0.48) * 55)
             ));
 
-            var isHeadDanger = (angleHeadYaw > 40);
-            var isEyeDanger = (angleEyeGaze > 48);
+            var isHeadDanger = (angleHeadYaw >= 70);
+            var isEyeDanger = (angleEyeGaze >= 70);
             var isDanger = isHeadDanger || isEyeDanger;
 
-            var isHeadWarn = (angleHeadYaw >= 30 && !isHeadDanger);
-            var isEyeWarn = (angleEyeGaze >= 35 && !isEyeDanger);
+            var isHeadWarn = (angleHeadYaw >= 48 && !isHeadDanger);
+            var isEyeWarn = (angleEyeGaze >= 50 && !isEyeDanger);
             var isWarn = (isHeadWarn || isEyeWarn) && !isDanger;
 
             var estimatedAngle = Math.max(angleHeadYaw, angleEyeGaze);
@@ -3868,23 +3885,25 @@
                 if (dot) dot.className = 'eth-cam-dot warn';
                 if (oval) oval.className = 'eth-cam-target-oval warn';
               } else {
+                var secLeft = Math.max(0, ((10 - turnInfractionFrames) * 0.25)).toFixed(1);
                 var dangerLabel = isEyeDanger ? "Ko'z XAVF: " : "XAVF: ";
-                angleBadge.textContent = dangerLabel + estimatedAngle + "°!";
+                angleBadge.textContent = dangerLabel + estimatedAngle + "° (" + secLeft + "s)";
                 angleBadge.className = 'eth-cam-badge danger';
                 if (dot) dot.className = 'eth-cam-dot danger';
                 if (oval) oval.className = 'eth-cam-target-oval danger';
               }
             }
 
-            // Trigger alarm and lock if head > 40° or eye > 48° for 2 consecutive ticks (~500ms)
+            // Only trigger alarm and lock if head or eye turns >= 70° continuously for 2.5 seconds (10 ticks)
             if (isDanger) {
               turnInfractionFrames++;
-              if (turnInfractionFrames >= 2) {
+              if (turnInfractionFrames >= 10) {
+                var proofSnap = captureProctorSnapshot();
                 playTitTitAlarm(6);
                 if (isEyeDanger) {
-                  triggerInfraction("O'quvchi ko'zini chetga burib ko'chirishga harakat qilmoqda (" + angleEyeGaze + "°)");
+                  triggerInfraction("O'quvchi ko'zini 70° dan ortiq chetga burib 2.5 soniya qaradi (" + angleEyeGaze + "°)", proofSnap);
                 } else {
-                  triggerInfraction("O'quvchi boshini 40° dan ortiq burib ko'chirishga harakat qilmoqda (" + angleHeadYaw + "°)");
+                  triggerInfraction("O'quvchi boshini 70° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
                 }
               }
             } else {
@@ -3894,11 +3913,13 @@
         }, 250);
       }
 
-      // 6. Trigger Infraction & Lock Exam
-      function triggerInfraction(reason) {
+      // 6. Trigger Infraction & Lock Exam with Photographic Proof
+      function triggerInfraction(reason, violationSnapshot) {
         if (isTeacher || isExamLocked || isExamFinished) return;
         isExamLocked = true;
         playTitTitAlarm(6);
+
+        var snapshotImg = violationSnapshot || captureProctorSnapshot();
 
         var angleBadge = document.getElementById('proctorCamAngle');
         var dot = document.getElementById('proctorCamDot');
@@ -3931,17 +3952,23 @@
         lockedOverlay.id = 'examLockedScreen';
         lockedOverlay.style.zIndex = '2147483648';
         lockedOverlay.innerHTML = '' +
-          '<div class="eth-locked-box">' +
+          '<div class="eth-locked-box" style="max-width:520px;text-align:center;">' +
           '  <div class="eth-locked-icon">🚫</div>' +
-          '  <h2>TEST BLOKLANDI: QOIDABUZARLIK ANIQLANDI</h2>' +
-          '  <div class="eth-locked-reason"><b>Qoidabuzarlik:</b> ' + esc(reason) + '</div>' +
-          '  <div class="eth-locked-msg">' +
-          '    Test paytida taqiqlangan tugmalarni bosish, boshni 50° dan ortiq burish yoki boshqa oynalarga o\'tish qat\'iyan taqiqlanadi.<br>' +
-          '    O\'qituvchingizga ushbu qoidabuzarlik haqida darhol xabar yuborildi.<br><br>' +
-          '    <b>Test to\'liq bloklandi. O\'qituvchi o\'z panelidan blokdan chiqarguniga qadar kuting.</b>' +
+          '  <h2 style="color:#ef4444;margin:8px 0 6px;">TEST BLOKLANDI: QOIDABUZARLIK ANIQLANDI</h2>' +
+          '  <div class="eth-locked-reason" style="font-size:13.5px;padding:8px 12px;margin-bottom:12px;"><b>🚨 Qoidabuzarlik:</b> ' + esc(reason) + '</div>' +
+          (snapshotImg ?
+            '  <div class="eth-locked-snapshot-wrap">' +
+            '    <div class="eth-locked-snapshot-badge">📸 Qoidabuzarlik Holati (Foto-Fakt Dalili)</div>' +
+            '    <img src="' + snapshotImg + '" alt="Qoidabuzarlik surati">' +
+            '    <div class="eth-locked-snapshot-hint">Ushbu foto-dalil avtomatik tarzda o\'qituvchingizga yuborildi</div>' +
+            '  </div>' : ''
+          ) +
+          '  <div class="eth-locked-msg" style="font-size:13.5px;line-height:1.5;margin-bottom:14px;">' +
+          '    Test paytida boshni 70° dan ortiq burish, 2.5 soniyadan ortiq chetga qarash yoki boshqa sahifalarga o\'tish qat\'iyan taqiqlanadi.<br>' +
+          '    <b>O\'qituvchingiz ushbu foto-dalilni tekshirib, sizni blokdan chiqarguniga qadar kuting.</b>' +
           '  </div>' +
           '  <div class="eth-locked-pulse">' +
-          '    <span class="eth-cam-dot danger"></span> O\'qituvchi tomonidan blokdan chiqarilishi kutilmoqda...' +
+          '    <span class="eth-cam-dot danger"></span> O\'qituvchi tomonidan ko\'rib chiqilishi kutilmoqda...' +
           '  </div>' +
           '</div>';
         lockdownModal.appendChild(lockedOverlay);
@@ -3956,6 +3983,7 @@
             examCode: exam.code,
             examTitle: exam.title,
             reason: reason,
+            snapshot: snapshotImg,
             timestamp: Date.now()
           });
         }
@@ -5308,6 +5336,12 @@
               '  <div style="font-size:13px;color:#b91c1c;background:rgba(239, 68, 68, 0.08);padding:8px 12px;border-radius:8px;margin-bottom:12px;border:1px solid rgba(239,68,68,0.2)">' +
               '    <b>🚨 Qoidabuzarlik:</b> ' + esc(n.reason) +
               '  </div>' +
+              (n.snapshot ?
+                '  <div style="margin:-4px 0 12px;background:#0f172a;padding:8px;border-radius:10px;border:1.5px solid #ef4444">' +
+                '    <div style="font-size:11px;color:#fca5a5;font-weight:700;margin-bottom:6px">📸 QOIDABUZARLIK SURATI (FOTO-DALIL):</div>' +
+                '    <img src="' + n.snapshot + '" style="max-height:170px;width:100%;object-fit:cover;border-radius:6px;display:block" alt="Qoidabuzarlik surati">' +
+                '  </div>' : ''
+              ) +
               '  <div style="display:flex;justify-content:flex-end;gap:8px">' +
               (n.resolved ?
                 '    <span style="font-size:12px;font-weight:700;color:#10b981;padding:6px 12px;background:rgba(16,185,129,0.1);border-radius:8px">✓ Blokdan chiqarilgan</span>' :
@@ -5402,6 +5436,12 @@
       '  <b>Imtihon:</b> ' + esc(notif.examTitle) + ' (' + esc(notif.examCode) + ')<br>' +
       '  <b>Qoidabuzarlik:</b> <span style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px">' + esc(notif.reason) + '</span>' +
       '</div>' +
+      (notif.snapshot ?
+        '<div style="margin:4px 0;background:#000;border-radius:10px;padding:6px;border:1.5px solid rgba(255,255,255,0.4);text-align:center">' +
+        '  <div style="font-size:10.5px;font-weight:700;color:#fca5a5;margin-bottom:4px">📸 O\'QUVCHI QOIDABUZARLIK SURATI (FOTO-DALIL):</div>' +
+        '  <img src="' + notif.snapshot + '" style="width:100%;max-height:180px;object-fit:cover;border-radius:6px;display:block;margin:0 auto;" alt="Dalil">' +
+        '</div>' : ''
+      ) +
       '<button type="button" class="eth-btn-primary" style="background:#fff;color:#dc2626;font-weight:800;border:none;padding:9px 14px;border-radius:8px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.25)">' +
       '  🔓 O\'quvchini Blokdan Chiqarish' +
       '</button>';
@@ -5508,10 +5548,27 @@
       ensureFullscreen();
       document.body.classList.add('proctored-fullscreen-mode');
 
-      function triggerInfraction(reason) {
+      function captureProctorSnapshot() {
+        try {
+          var v = document.getElementById('proctorVideo');
+          if (v && v.videoWidth && v.videoHeight) {
+            var snapC = document.createElement('canvas');
+            snapC.width = 320;
+            snapC.height = 240;
+            var snapCtx = snapC.getContext('2d');
+            snapCtx.drawImage(v, 0, 0, 320, 240);
+            return snapC.toDataURL('image/jpeg', 0.80);
+          }
+        } catch(e) {}
+        return null;
+      }
+
+      function triggerInfraction(reason, violationSnapshot) {
         if (isExamLocked || isTestFinished) return;
         isExamLocked = true;
         playTitTitAlarm(6);
+
+        var snapshotImg = violationSnapshot || captureProctorSnapshot();
 
         var angleBadge = document.getElementById('proctorCamAngle');
         var dot = document.getElementById('proctorCamDot');
@@ -5529,14 +5586,20 @@
         lockedOverlay.id = 'examLockedScreen';
         lockedOverlay.style.zIndex = '2147483648';
         lockedOverlay.innerHTML = '' +
-          '<div class="eth-locked-box">' +
+          '<div class="eth-locked-box" style="max-width:520px;text-align:center;">' +
           '  <div class="eth-locked-icon">🚫</div>' +
-          '  <h2>PLACEMENT TEST BLOKLANDI</h2>' +
-          '  <div class="eth-locked-reason"><b>Qoidabuzarlik:</b> ' + esc(reason) + '</div>' +
-          '  <div class="eth-locked-msg">' +
-          '    Placement test paytida taqiqlangan tugmalarni bosish, boshni 30° dan ortiq burish yoki boshqa oynalarga o\'tish qat\'iyan taqiqlanadi.<br>' +
-          '    O\'qituvchingizga ushbu qoidabuzarlik haqida darhol xabar yuborildi.<br><br>' +
-          '    <b>Test bloklandi. O\'qituvchi blokdan ochmaguncha kuting.</b>' +
+          '  <h2 style="color:#ef4444;margin:8px 0 6px;">PLACEMENT TEST BLOKLANDI</h2>' +
+          '  <div class="eth-locked-reason" style="font-size:13.5px;padding:8px 12px;margin-bottom:12px;"><b>🚨 Qoidabuzarlik:</b> ' + esc(reason) + '</div>' +
+          (snapshotImg ?
+            '  <div class="eth-locked-snapshot-wrap">' +
+            '    <div class="eth-locked-snapshot-badge">📸 Qoidabuzarlik Holati (Foto-Fakt Dalili)</div>' +
+            '    <img src="' + snapshotImg + '" alt="Qoidabuzarlik surati">' +
+            '    <div class="eth-locked-snapshot-hint">Ushbu foto-dalil avtomatik tarzda o\'qituvchingizga yuborildi</div>' +
+            '  </div>' : ''
+          ) +
+          '  <div class="eth-locked-msg" style="font-size:13.5px;line-height:1.5;margin-bottom:14px;">' +
+          '    Placement test paytida boshni 70° dan ortiq burish, 2.5 soniyadan ortiq chetga qarash yoki boshqa oynalarga o\'tish qat\'iyan taqiqlanadi.<br>' +
+          '    <b>O\'qituvchingiz ushbu foto-dalilni tekshirib, sizni blokdan ochmaguncha kuting.</b>' +
           '  </div>' +
           '  <div class="eth-locked-pulse">' +
           '    <span class="eth-cam-dot danger"></span> Blokdan chiqarilishi kutilmoqda...' +
@@ -5553,6 +5616,7 @@
             examId: 'placement_70',
             examTitle: 'CEFR Placement Test (70 Savol)',
             reason: reason,
+            snapshot: snapshotImg,
             timestamp: Date.now()
           });
         }
@@ -5663,7 +5727,7 @@
         '  </div>' +
         '</div>' +
         '<div class="eth-cam-footer" id="proctorStudentName">' +
-        '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 40° AI Yuz & Ko\'z Trekeri' +
+        '  👤 ' + esc((S.user && S.user.name) || 'O\'quvchi') + ' · 70° AI Yuz & Ko\'z Trekeri (Foto-Dalil)' +
         '</div>';
       lockdownModal.appendChild(camBox);
       makeElementDraggableAndCollapsible(camBox, camBox.querySelector('.eth-cam-header'), camBox.querySelector('#btnMinCam'));
@@ -5681,7 +5745,7 @@
         }).catch(function(err) {});
       }
 
-      // 40° Dynamic Face Yaw & Eye Gaze Tracker
+      // 70° Dynamic Face Yaw & Eye Gaze Tracker (2.5s continuous hold)
       var offCanvas = document.createElement('canvas');
       offCanvas.width = 160;
       offCanvas.height = 120;
@@ -5727,7 +5791,7 @@
           var angleBadge = document.getElementById('proctorCamAngle');
           var dot = document.getElementById('proctorCamDot');
 
-          // Distance & scale tolerance (sitting close or far):
+          // Distance & scale tolerance:
           if (skinCount < 10) {
             noFaceTicks++;
             if (oval) {
@@ -5736,15 +5800,16 @@
               oval.style.width = '85px';
               oval.style.height = '115px';
             }
-            if (noFaceTicks >= 4) {
+            if (noFaceTicks >= 12) {
               if (angleBadge) {
                 angleBadge.textContent = "Yuz yo'q";
                 angleBadge.className = 'eth-cam-badge danger';
               }
               if (dot) dot.className = 'eth-cam-dot danger';
               if (oval) oval.className = 'eth-cam-target-oval danger';
+              var missingSnap = captureProctorSnapshot();
               playTitTitAlarm(6);
-              triggerInfraction("Kamerada o'quvchi yuzi aniqlanmadi (Iltimos, kamera ro'parasida o'tiring)");
+              triggerInfraction("Kamerada o'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro'parasida o'tiring)", missingSnap);
             }
             return;
           }
@@ -5798,7 +5863,7 @@
           var rightRatio = relRightDark / (relRightSkin + 1);
           var profileContrast = Math.abs(leftRatio - rightRatio);
 
-          // Pass 3: Eye Gaze Analysis across Eye Band (Pupil centroid & Sclera distribution)
+          // Pass 3: Eye Gaze Analysis across Eye Band
           var eyeTop = Math.max(26, Math.round(minSkinY + faceH * 0.18));
           var eyeBottom = Math.min(76, Math.round(minSkinY + faceH * 0.44));
           var eyeLeftDark = 0, eyeRightDark = 0;
@@ -5823,25 +5888,26 @@
           var eyePupilAsym = (eyeLeftDark + eyeRightDark) > 6 ? (Math.abs(eyeLeftDark - eyeRightDark) / (eyeLeftDark + eyeRightDark + 1)) : 0;
           var eyeWhiteAsym = (eyeLeftWhite + eyeRightWhite) > 6 ? (Math.abs(eyeLeftWhite - eyeRightWhite) / (eyeLeftWhite + eyeRightWhite + 1)) : 0;
 
-          // 4. Angle calculations:
-          // Head Yaw: Normal tilts (< 25°) are green, 30°-40° warning, > 40° triggers DANGER/INFRACTION
-          var angleSkin = Math.round((skinAsym / 0.22) * 35);
-          var angleCentroid = Math.round((centroidMidDiff / 3.2) * 35);
-          var angleContrast = Math.round((profileContrast / 1.6) * 35);
+          // 4. Practical Relaxed Thresholds:
+          // Normal (< 50°) -> Green ("To'g'ri: XX°")
+          // 50° - 69° -> Yellow Warning ("Burilish: XX°" / "Ko'z: XX°"), NO lock!
+          // >= 70° sustained for 2.5 seconds (10 ticks) -> DANGER: takes photo snapshot & locks!
+          var angleSkin = Math.round((skinAsym / 0.25) * 50);
+          var angleCentroid = Math.round((centroidMidDiff / 4.0) * 50);
+          var angleContrast = Math.round((profileContrast / 2.0) * 50);
           var angleHeadYaw = Math.min(90, Math.max(angleSkin, angleCentroid, angleContrast));
 
-          // Eye Gaze: Reading questions allows eye glance up to 45°-50°, > 48° triggers DANGER/INFRACTION
           var angleEyeGaze = Math.min(90, Math.max(
-            Math.round((eyePupilAsym / 0.45) * 50),
-            Math.round((eyeWhiteAsym / 0.48) * 50)
+            Math.round((eyePupilAsym / 0.45) * 55),
+            Math.round((eyeWhiteAsym / 0.48) * 55)
           ));
 
-          var isHeadDanger = (angleHeadYaw > 40);
-          var isEyeDanger = (angleEyeGaze > 48);
+          var isHeadDanger = (angleHeadYaw >= 70);
+          var isEyeDanger = (angleEyeGaze >= 70);
           var isDanger = isHeadDanger || isEyeDanger;
 
-          var isHeadWarn = (angleHeadYaw >= 30 && !isHeadDanger);
-          var isEyeWarn = (angleEyeGaze >= 35 && !isEyeDanger);
+          var isHeadWarn = (angleHeadYaw >= 48 && !isHeadDanger);
+          var isEyeWarn = (angleEyeGaze >= 50 && !isEyeDanger);
           var isWarn = (isHeadWarn || isEyeWarn) && !isDanger;
 
           var estimatedAngle = Math.max(angleHeadYaw, angleEyeGaze);
@@ -5859,8 +5925,9 @@
               if (dot) dot.className = 'eth-cam-dot warn';
               if (oval) oval.className = 'eth-cam-target-oval warn';
             } else {
+              var secLeft = Math.max(0, ((10 - turnInfractionFrames) * 0.25)).toFixed(1);
               var dangerLabel = isEyeDanger ? "Ko'z XAVF: " : "XAVF: ";
-              angleBadge.textContent = dangerLabel + estimatedAngle + "°!";
+              angleBadge.textContent = dangerLabel + estimatedAngle + "° (" + secLeft + "s)";
               angleBadge.className = 'eth-cam-badge danger';
               if (dot) dot.className = 'eth-cam-dot danger';
               if (oval) oval.className = 'eth-cam-target-oval danger';
@@ -5869,12 +5936,13 @@
 
           if (isDanger) {
             turnInfractionFrames++;
-            if (turnInfractionFrames >= 2) {
+            if (turnInfractionFrames >= 10) {
+              var proofSnap = captureProctorSnapshot();
               playTitTitAlarm(6);
               if (isEyeDanger) {
-                triggerInfraction("O'quvchi ko'zlarini o'ngga/chapga qaratib ko'chirishga harakat qilmoqda (" + angleEyeGaze + "°)");
+                triggerInfraction("O'quvchi ko'zlarini 70° dan ortiq chetga burib 2.5 soniya qaradi (" + angleEyeGaze + "°)", proofSnap);
               } else {
-                triggerInfraction("O'quvchi boshini 40° dan ortiq burib ko'chirishga harakat qilmoqda (" + angleHeadYaw + "°)");
+                triggerInfraction("O'quvchi boshini 70° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
               }
             }
           } else {

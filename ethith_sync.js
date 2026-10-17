@@ -488,6 +488,7 @@
         examCode: event.examCode,
         examTitle: event.examTitle,
         reason: event.reason,
+        snapshot: event.snapshot || null,
         timestamp: event.timestamp || Date.now(),
         read: false,
         resolved: false
