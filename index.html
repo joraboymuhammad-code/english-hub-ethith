@@ -167,6 +167,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -4237,55 +4238,116 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   transform: scale(0.98) !important;
 }
 
-/* Exact Dark Join Card from Image 3 */
+/* Exact Dark Join Card from Image 3 - Ultra Modern Glassmorphism */
+@keyframes ethRainbowSlide {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
 .eth-exam-join-card-dark {
-  background: #081224 !important;
-  border: 1.5px solid #1c3560 !important;
-  border-radius: 18px !important;
-  padding: 24px 28px !important;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(8, 14, 28, 0.98)) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1.5px solid rgba(59, 130, 246, 0.35) !important;
+  border-radius: 26px !important;
+  padding: 30px 32px !important;
   color: #ffffff !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(59, 130, 246, 0.15) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.eth-exam-join-card-dark::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6) !important;
+  background-size: 200% 100% !important;
+  animation: ethRainbowSlide 4s linear infinite !important;
 }
 .eth-exam-join-input-dark {
   width: 100% !important;
-  background: #0c1c38 !important;
-  border: 1.5px solid #1c3866 !important;
-  border-radius: 12px !important;
-  padding: 12px 16px !important;
+  background: rgba(3, 7, 18, 0.75) !important;
+  border: 1.5px solid rgba(59, 130, 246, 0.25) !important;
+  border-radius: 16px !important;
+  padding: 14px 18px !important;
   color: #ffffff !important;
-  font-size: 14.5px !important;
-  font-weight: 600 !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
   outline: none !important;
-  transition: border-color 0.2s ease !important;
+  transition: all 0.25s ease !important;
 }
 .eth-exam-join-input-dark:focus {
   border-color: #3b82f6 !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+  box-shadow: 0 0 22px rgba(59, 130, 246, 0.35) !important;
+  background: rgba(3, 7, 18, 0.95) !important;
 }
 .eth-exam-join-btn-blue {
   width: 100% !important;
-  background: #2563eb !important;
+  background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
   border: none !important;
-  border-radius: 12px !important;
-  padding: 14px 20px !important;
+  border-radius: 16px !important;
+  padding: 16px 24px !important;
   color: #ffffff !important;
   font-size: 15px !important;
-  font-weight: 800 !important;
+  font-weight: 900 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
+  gap: 10px !important;
   cursor: pointer !important;
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
-  transition: all 0.2s ease !important;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.45), 0 0 20px rgba(79, 70, 229, 0.3) !important;
+  transition: all 0.25s ease !important;
 }
 .eth-exam-join-btn-blue:hover {
-  background: #1d4ed8 !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5) !important;
+  transform: translateY(-2px) scale(1.01) !important;
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.6), 0 0 30px rgba(79, 70, 229, 0.4) !important;
 }
 .eth-exam-join-btn-blue:active {
   transform: scale(0.99) !important;
+}
+
+/* Modern Pill Subtabs */
+.eth-quiz-pill-tabs {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: rgba(15, 23, 42, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  padding: 6px !important;
+  border-radius: 20px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
+}
+.eth-quiz-pill-tab {
+  padding: 10px 22px !important;
+  border-radius: 14px !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  color: #94a3b8 !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.eth-quiz-pill-tab:hover {
+  color: #f1f5f9 !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+.eth-quiz-pill-tab.active-quizzes {
+  background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45) !important;
+}
+.eth-quiz-pill-tab.active-gifts {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45) !important;
 }
 
 /* Wayground 1:1 Studio Modal */
@@ -4293,30 +4355,52 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   position: fixed !important;
   inset: 0 !important;
   z-index: 99999 !important;
-  background: rgba(5, 10, 20, 0.88) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+  background: rgba(5, 10, 20, 0.92) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   display: flex !important;
   flex-direction: column !important;
   overflow: hidden !important;
 }
 
-/* Wayground Header Bar */
+/* Wayground Header Bar - Unconditionally Dark Glassmorphic */
 .wayground-header-bar {
-  background: #f8fafc !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-  height: 56px !important;
+  background: rgba(13, 20, 38, 0.9) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  height: 64px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  padding: 0 18px !important;
+  padding: 0 24px !important;
   flex-shrink: 0 !important;
   z-index: 100 !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
 }
-body[data-theme="dark"] .wayground-header-bar,
-.dark .wayground-header-bar {
-  background: #0f172a !important;
-  border-bottom-color: #1e293b !important;
+
+/* Wayground Visible Back/Close Button */
+.wayground-back-btn {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  margin-right: 8px !important;
+  outline: none !important;
+}
+.wayground-back-btn:hover {
+  background: rgba(239, 68, 68, 0.25) !important;
+  border-color: #ef4444 !important;
+  color: #ef4444 !important;
+  transform: scale(1.08) !important;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.4) !important;
 }
 
 /* Wayground Dropdown button */
@@ -4324,29 +4408,163 @@ body[data-theme="dark"] .wayground-header-bar,
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
-  padding: 6px 14px !important;
-  background: #ffffff !important;
-  border: 1.5px solid #e2e8f0 !important;
-  border-radius: 10px !important;
+  padding: 8px 16px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 12px !important;
   font-size: 13px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  outline: none !important;
+}
+.wayground-dropdown-btn:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(147, 197, 253, 0.7) !important;
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Studio Dropdown Menu */
+.wayground-dropdown-menu {
+  background: rgba(15, 23, 42, 0.98) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+  overflow: hidden !important;
+  padding: 6px !important;
+  position: absolute !important;
+  top: calc(100% + 6px) !important;
+  left: 0 !important;
+  width: 260px !important;
+  z-index: 1000 !important;
+}
+.wayground-dropdown-item {
+  width: 100% !important;
+  text-align: left !important;
+  padding: 10px 14px !important;
+  font-size: 12.5px !important;
   font-weight: 700 !important;
-  color: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: transparent !important;
+  border: none !important;
   cursor: pointer !important;
   transition: all 0.15s ease !important;
 }
-body[data-theme="dark"] .wayground-dropdown-btn,
-.dark .wayground-dropdown-btn {
-  background: #1e293b !important;
-  border-color: #334155 !important;
-  color: #f1f5f9 !important;
+.wayground-dropdown-item:hover {
+  background: rgba(59, 130, 246, 0.25) !important;
+  color: #60a5fa !important;
+  transform: translateX(3px) !important;
 }
-.wayground-dropdown-btn:hover {
-  background: #f1f5f9 !important;
-  border-color: #cbd5e1 !important;
+
+/* Studio Select Controls */
+.wayground-select {
+  background: rgba(15, 23, 42, 0.85) !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 12px !important;
+  padding: 8px 14px !important;
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  outline: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
 }
-body[data-theme="dark"] .wayground-dropdown-btn:hover,
-.dark .wayground-dropdown-btn:hover {
-  background: #334155 !important;
+.wayground-select:hover {
+  border-color: rgba(147, 197, 253, 0.7) !important;
+}
+.wayground-select option {
+  background: #0f172a !important;
+  color: #ffffff !important;
+}
+
+/* Studio Action Buttons */
+.wayground-btn-add {
+  padding: 9px 20px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4) !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.2s ease !important;
+}
+.wayground-btn-add:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.55) !important;
+}
+.wayground-btn-add:active {
+  transform: scale(0.98) !important;
+}
+
+.wayground-btn-save {
+  padding: 9px 20px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #10b981, #0d9488) !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4) !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.2s ease !important;
+}
+.wayground-btn-save:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.55) !important;
+}
+.wayground-btn-save:active {
+  transform: scale(0.98) !important;
+}
+
+/* Studio Sub-bar */
+.wayground-subbar {
+  width: 100% !important;
+  max-width: 960px !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  padding: 14px 20px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+}
+.wayground-subbar-input {
+  background: rgba(2, 6, 23, 0.7) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important;
+  padding: 8px 14px !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 13.5px !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+}
+.wayground-subbar-input:focus {
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.3) !important;
 }
 
 /* Wayground Main Canvas Area */
@@ -4453,6 +4671,29 @@ body[data-theme="dark"] .wayground-dropdown-btn:hover,
   width: 100% !important;
 }
 
+/* Clean Translucent Vector Trash Button - ZERO White Artifact */
+.wayground-trash-btn {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.35) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  outline: none !important;
+  padding: 0 !important;
+}
+.wayground-trash-btn:hover {
+  background: rgba(239, 68, 68, 0.85) !important;
+  border-color: #ef4444 !important;
+  transform: scale(1.12) !important;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.7) !important;
+}
+
 /* Circular Checkmark Button ("Ptichka") */
 .wayground-check-btn {
   width: 32px !important;
@@ -4479,7 +4720,7 @@ body[data-theme="dark"] .wayground-dropdown-btn:hover,
   background: #10b981 !important;
   border-color: #ffffff !important;
   color: #ffffff !important;
-  box-shadow: 0 0 14px rgba(16, 185, 129, 0.9) !important;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.9) !important;
   transform: scale(1.15) !important;
 }
 
@@ -11008,7 +11249,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
   // ====================================================
   // ETHITH AUTO-UPDATE & CACHE-BUSTING ENGINE
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.1615";
+  window.ETHITH_BUILD_VERSION = "2026.10.17.1630";
 
   function checkAppVersion() {
     if (typeof fetch === 'undefined') return;
@@ -18507,10 +18748,12 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
 
       var html = '';
 
-      // 1. TOP HEADER BAR
+      // 1. TOP HEADER BAR - Modern Dark Glassmorphic
       html += '<header class="wayground-header-bar">';
       html += '  <div class="flex items-center gap-3">';
-      html += '    <button id="btnWgBack" class="w-8 h-8 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center justify-center font-bold text-gray-700 dark:text-gray-200 hover:bg-gray-300 transition-all" title="Chiqish">✕</button>';
+      html += '    <button id="btnWgBack" class="wayground-back-btn" title="Chiqish">';
+      html += '      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>';
+      html += '    </button>';
       
       // Question Types Dropdown
       html += '    <div class="relative">';
@@ -18519,22 +18762,22 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       html += '        <span id="wgTypeLabelText">' + (typeLabels[currentType] || 'Multiple choice') + '</span>';
       html += '        <span class="text-[10px] ml-1">▾</span>';
       html += '      </button>';
-      html += '      <div id="wgTypeDropdownMenu" class="hidden absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-1 z-50">';
-      html += '        <button class="w-full text-left px-3.5 py-2 text-xs font-bold hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2" data-type="mcq"><span>🔘</span> Multiple choice (Yagona to\'g\'ri)</button>';
-      html += '        <button class="w-full text-left px-3.5 py-2 text-xs font-bold hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2" data-type="checkbox"><span>☑️</span> Checkbox (Ko\'p tanlovli)</button>';
-      html += '        <button class="w-full text-left px-3.5 py-2 text-xs font-bold hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2" data-type="bool"><span>⚖️</span> True / False (To\'g\'ri/Noto\'g\'ri)</button>';
+      html += '      <div id="wgTypeDropdownMenu" class="hidden wayground-dropdown-menu">';
+      html += '        <button class="wayground-dropdown-item" data-type="mcq"><span>🔘</span> Multiple choice (Yagona to\'g\'ri)</button>';
+      html += '        <button class="wayground-dropdown-item" data-type="checkbox"><span>☑️</span> Checkbox (Ko\'p tanlovli)</button>';
+      html += '        <button class="wayground-dropdown-item" data-type="bool"><span>⚖️</span> True / False (To\'g\'ri/Noto\'g\'ri)</button>';
       html += '      </div>';
       html += '    </div>';
       html += '  </div>';
 
       // Middle controls: Points & Timer
       html += '  <div class="flex items-center gap-2">';
-      html += '    <select id="wgPointsSelect" class="wayground-dropdown-btn py-1 px-2.5 text-xs font-bold">';
+      html += '    <select id="wgPointsSelect" class="wayground-select">';
       [1, 2, 3, 5, 10].forEach(function(pts) {
         html += '<option value="' + pts + '" ' + (currentPoints === pts ? 'selected' : '') + '>' + pts + ' point' + (pts > 1 ? 's' : '') + '</option>';
       });
       html += '    </select>';
-      html += '    <select id="wgTimerSelect" class="wayground-dropdown-btn py-1 px-2.5 text-xs font-bold">';
+      html += '    <select id="wgTimerSelect" class="wayground-select">';
       [10, 20, 30, 45, 60, 90].forEach(function(sec) {
         html += '<option value="' + sec + '" ' + (currentTimeSec === sec ? 'selected' : '') + '>' + sec + ' sec</option>';
       });
@@ -18542,11 +18785,11 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       html += '  </div>';
 
       // Right: Add Question & Final Save
-      html += '  <div class="flex items-center gap-2">';
-      html += '    <button id="btnWgAddQuestion" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs shadow-md active:scale-95 transition-all flex items-center gap-1.5">';
+      html += '  <div class="flex items-center gap-2.5">';
+      html += '    <button id="btnWgAddQuestion" class="wayground-btn-add">';
       html += '      <span>➕ Add question (Savol qo\'shish)</span>';
       html += '    </button>';
-      html += '    <button id="btnWgSaveAllFinal" class="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-black text-xs shadow-md active:scale-95 transition-all">';
+      html += '    <button id="btnWgSaveAllFinal" class="wayground-btn-save">';
       html += '      <span>💾 Saqlash va Yakunlash</span>';
       html += '    </button>';
       html += '  </div>';
@@ -18555,26 +18798,26 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       // 2. MAIN STUDIO CANVAS
       html += '<main class="wayground-studio-canvas">';
 
-      // Title & Code Bar
-      html += '  <div class="w-full max-w-[960px] flex flex-col sm:flex-row items-center justify-between gap-3 mb-4 bg-gray-900/80 p-3 rounded-2xl border border-gray-800">';
-      html += '    <div class="flex-1 w-full flex items-center gap-2">';
-      html += '      <span class="text-xs font-extrabold text-gray-400 uppercase">Quiz:</span>';
-      html += '      <input id="wgQuizTitleInput" type="text" value="' + esc(quizTitle) + '" placeholder="Quiz nomini kiriting..." class="flex-1 px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-xl text-white font-bold text-sm outline-none focus:border-amber-500" />';
+      // Modern Glassmorphic Sub-bar (Title & Code)
+      html += '  <div class="wayground-subbar">';
+      html += '    <div class="flex-1 w-full flex items-center gap-2.5">';
+      html += '      <span class="text-xs font-black text-amber-400 uppercase tracking-wider">🎯 Quiz Nomi:</span>';
+      html += '      <input id="wgQuizTitleInput" type="text" value="' + esc(quizTitle) + '" placeholder="Quiz mavzusi yoki nomini kiriting..." class="flex-1 wayground-subbar-input" />';
       html += '    </div>';
       html += '    <div class="flex items-center gap-2">';
-      html += '      <span class="text-xs font-extrabold text-amber-400 uppercase">Kod:</span>';
-      html += '      <input id="wgQuizCodeInput" type="text" value="' + esc(quizCode) + '" class="w-32 px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-xl text-amber-400 font-mono font-black text-sm text-center outline-none" />';
-      html += '      <button id="btnWgRegenCode" class="p-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs" title="Kodni yangilash">🔄</button>';
+      html += '      <span class="text-xs font-black text-cyan-400 uppercase tracking-wider">🔑 Maxsus Kod:</span>';
+      html += '      <input id="wgQuizCodeInput" type="text" value="' + esc(quizCode) + '" class="w-36 wayground-subbar-input font-mono font-black text-center text-amber-400 tracking-wider" />';
+      html += '      <button id="btnWgRegenCode" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 text-xs transition-all" title="Kodni yangilash">🔄</button>';
       html += '    </div>';
       html += '  </div>';
 
       // Large Question Input Box (1:1 with Wayground aspect-ratio canvas)
       html += '  <div class="wayground-question-box">';
       html += '    <div class="text-[11px] uppercase font-black tracking-widest text-gray-400 mb-2 flex items-center justify-between">';
-      html += '      <span>Savol Matni:</span>';
+      html += '      <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-400"></span> Savol Matni:</span>';
       html += '      <span class="text-amber-400 font-bold">Har bir savol variantlari test paytida o\'quvchilarda avtomatik almashib tushadi</span>';
       html += '    </div>';
-      html += '    <textarea id="wgQuestionTextInput" class="wayground-question-textarea" placeholder="Введите вопрос здесь / Savol matnini bu yerga yozing (masalan: She ___ to school every day)...">' + esc(questionText) + '</textarea>';
+      html += '    <textarea id="wgQuestionTextInput" class="wayground-question-textarea" placeholder="Savol matnini bu yerga yozing (masalan: She ___ to school every day)...">' + esc(questionText) + '</textarea>';
       html += '  </div>';
 
       // Options Grid with Ambient Morphing Colors
@@ -18587,7 +18830,9 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         html += '<div class="wayground-option-card ' + brandClass + ' ' + (isChecked ? 'is-correct' : '') + '" data-opt-idx="' + optIdx + '">';
         html += '  <div class="wayground-card-topbar">';
         if (currentType !== 'bool') {
-          html += '    <button class="btnWgDeleteOption text-white/70 hover:text-white p-1 text-xs" data-opt-idx="' + optIdx + '" title="O\'chirish">🗑️</button>';
+          html += '    <button class="wayground-trash-btn btnWgDeleteOption" data-opt-idx="' + optIdx + '" title="Variantni o\'chirish">';
+          html += '      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>';
+          html += '    </button>';
         } else {
           html += '    <span></span>';
         }
@@ -18597,10 +18842,10 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         html += '    </button>';
         html += '  </div>';
 
-        html += '  <textarea class="wayground-option-textarea wgOptTextInput" data-opt-idx="' + optIdx + '" placeholder="Введите вариант ответа здесь...">' + esc(optText) + '</textarea>';
+        html += '  <textarea class="wayground-option-textarea wgOptTextInput" data-opt-idx="' + optIdx + '" placeholder="Variant matnini kiriting...">' + esc(optText) + '</textarea>';
 
-        html += '  <div class="text-center text-[10px] font-extrabold text-white/70 tracking-wider uppercase">';
-        html += (isChecked ? '✅ TO\'G\'RI JAVOB' : 'Tanlash uchun bosing');
+        html += '  <div class="text-center text-[10px] font-extrabold text-white/80 tracking-wider uppercase">';
+        html += (isChecked ? '✅ TO\'G\'RI JAVOB' : 'Tanlash uchun ptichkani bosing');
         html += '  </div>';
         html += '</div>';
       });
@@ -18949,40 +19194,49 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       }
       html += '</div>';
 
-      // Subtabs: Quizzes vs Gifts
-      html += '<div class="flex items-center gap-3 border-b border-gray-200 dark:border-gray-800 pb-2">';
-      html += '  <button id="tabQuizzesBtn" class="px-5 py-2.5 rounded-xl font-extrabold text-xs transition-all flex items-center gap-2 ' + (activeSubtab === 'quizzes' ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200') + '">';
-      html += '    <span>⚔️ Quiz Testlar (' + quizzesCount + ')</span>';
-      html += '  </button>';
-      html += '  <button id="tabGiftsBtn" class="px-5 py-2.5 rounded-xl font-extrabold text-xs transition-all flex items-center gap-2 ' + (activeSubtab === 'gifts' ? 'bg-amber-500 text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200') + '">';
-      html += '    <span>🎁 Mening Kulgili Sovg\'alarim (' + giftsCount + ')</span>';
-      html += '  </button>';
+      // Subtabs: Quizzes vs Gifts (Modern Floating Pill Tabs)
+      html += '<div class="flex items-center justify-start py-2">';
+      html += '  <div class="eth-quiz-pill-tabs">';
+      html += '    <button id="tabQuizzesBtn" class="eth-quiz-pill-tab ' + (activeSubtab === 'quizzes' ? 'active-quizzes' : '') + '">';
+      html += '      <span>⚡ Jonli Testlar (' + quizzesCount + ')</span>';
+      html += '    </button>';
+      html += '    <button id="tabGiftsBtn" class="eth-quiz-pill-tab ' + (activeSubtab === 'gifts' ? 'active-gifts' : '') + '">';
+      html += '      <span>🎁 Kulgili Sovg\'alar (' + giftsCount + ')</span>';
+      html += '    </button>';
+      html += '  </div>';
       html += '</div>';
 
       // SUBTAB 1: QUIZZES
       if (activeSubtab === 'quizzes') {
-        // EXACT Image 3 Card: "🔒 6 Xonali Kod Bilan Imtihonga Kirish"
-        html += '<div class="eth-exam-join-card-dark max-w-2xl mx-auto space-y-4 my-2">';
-        html += '  <div class="flex items-center gap-2.5">';
-        html += '    <span class="text-2xl">🔒</span>';
-        html += '    <h3 class="text-base font-extrabold text-white">6 Xonali Kod Bilan Imtihonga Kirish</h3>';
+        // EXACT Image 3 Card: Ultra-Modern Glassmorphic Join Card
+        html += '<div class="eth-exam-join-card-dark max-w-2xl mx-auto space-y-5 my-2">';
+        html += '  <div class="flex items-center gap-3">';
+        html += '    <div class="w-11 h-11 rounded-2xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-xl text-blue-400 shadow-inner">🔒</div>';
+        html += '    <div>';
+        html += '      <h3 class="text-base font-black text-white tracking-wide">6 Xonali Kod Bilan Imtihonga Kirish</h3>';
+        html += '      <p class="text-[11px] text-gray-400 mt-0.5">Yashirin va rasmiy imtihonlar uchun maxsus himoyalangan kirish tizimi</p>';
+        html += '    </div>';
         html += '  </div>';
-        html += '  <p class="text-xs text-gray-400 leading-relaxed">';
+        html += '  <p class="text-xs text-gray-300 leading-relaxed">';
         html += '    O\'qituvchingiz bergan maxsus kodni kiriting. Yashirin va rasmiy imtihonlar qat\'iy nazorat va to\'liq ekran himoyasida o\'tkaziladi.';
         html += '  </p>';
         html += '  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">';
         html += '    <div>';
-        html += '      <label class="text-[11px] font-bold uppercase tracking-wider text-gray-400 block mb-1">IMTIHON KODI</label>';
-        html += '      <input id="quizCodeInputHero" type="text" placeholder="Masalan: QZ-7K#9X" class="eth-exam-join-input-dark font-mono uppercase" />';
+        html += '      <label class="text-[11px] font-black uppercase tracking-wider text-blue-300 block mb-1.5 flex items-center gap-1.5">';
+        html += '        <span>🔑 IMTIHON KODI</span>';
+        html += '      </label>';
+        html += '      <input id="quizCodeInputHero" type="text" placeholder="Masalan: QZ-7K#9X" class="eth-exam-join-input-dark font-mono uppercase tracking-wider" />';
         html += '    </div>';
         html += '    <div>';
-        html += '      <label class="text-[11px] font-bold uppercase tracking-wider text-gray-400 block mb-1">ISM VA FAMILIYANGIZ</label>';
+        html += '      <label class="text-[11px] font-black uppercase tracking-wider text-blue-300 block mb-1.5 flex items-center gap-1.5">';
+        html += '        <span>👤 ISM VA FAMILIYANGIZ</span>';
+        html += '      </label>';
         html += '      <input id="quizStudentNameHero" type="text" value="' + esc(S.user.name || '') + '" class="eth-exam-join-input-dark font-bold" ' + (isTeacher ? '' : 'readonly') + ' />';
         html += '    </div>';
         html += '  </div>';
         html += '  <button id="btnStartQuizHeroJoin" class="eth-exam-join-btn-blue mt-2">';
         html += '    <span>Imtihonni Boshlash</span>';
-        html += '    <span>➔</span>';
+        html += '    <span class="text-lg">➔</span>';
         html += '  </button>';
         html += '</div>';
 

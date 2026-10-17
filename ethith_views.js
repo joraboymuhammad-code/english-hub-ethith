@@ -7465,10 +7465,12 @@
 
       var html = '';
 
-      // 1. TOP HEADER BAR
+      // 1. TOP HEADER BAR - Modern Dark Glassmorphic
       html += '<header class="wayground-header-bar">';
       html += '  <div class="flex items-center gap-3">';
-      html += '    <button id="btnWgBack" class="w-8 h-8 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center justify-center font-bold text-gray-700 dark:text-gray-200 hover:bg-gray-300 transition-all" title="Chiqish">✕</button>';
+      html += '    <button id="btnWgBack" class="wayground-back-btn" title="Chiqish">';
+      html += '      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>';
+      html += '    </button>';
       
       // Question Types Dropdown
       html += '    <div class="relative">';
@@ -7477,22 +7479,22 @@
       html += '        <span id="wgTypeLabelText">' + (typeLabels[currentType] || 'Multiple choice') + '</span>';
       html += '        <span class="text-[10px] ml-1">▾</span>';
       html += '      </button>';
-      html += '      <div id="wgTypeDropdownMenu" class="hidden absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-1 z-50">';
-      html += '        <button class="w-full text-left px-3.5 py-2 text-xs font-bold hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2" data-type="mcq"><span>🔘</span> Multiple choice (Yagona to\'g\'ri)</button>';
-      html += '        <button class="w-full text-left px-3.5 py-2 text-xs font-bold hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2" data-type="checkbox"><span>☑️</span> Checkbox (Ko\'p tanlovli)</button>';
-      html += '        <button class="w-full text-left px-3.5 py-2 text-xs font-bold hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2" data-type="bool"><span>⚖️</span> True / False (To\'g\'ri/Noto\'g\'ri)</button>';
+      html += '      <div id="wgTypeDropdownMenu" class="hidden wayground-dropdown-menu">';
+      html += '        <button class="wayground-dropdown-item" data-type="mcq"><span>🔘</span> Multiple choice (Yagona to\'g\'ri)</button>';
+      html += '        <button class="wayground-dropdown-item" data-type="checkbox"><span>☑️</span> Checkbox (Ko\'p tanlovli)</button>';
+      html += '        <button class="wayground-dropdown-item" data-type="bool"><span>⚖️</span> True / False (To\'g\'ri/Noto\'g\'ri)</button>';
       html += '      </div>';
       html += '    </div>';
       html += '  </div>';
 
       // Middle controls: Points & Timer
       html += '  <div class="flex items-center gap-2">';
-      html += '    <select id="wgPointsSelect" class="wayground-dropdown-btn py-1 px-2.5 text-xs font-bold">';
+      html += '    <select id="wgPointsSelect" class="wayground-select">';
       [1, 2, 3, 5, 10].forEach(function(pts) {
         html += '<option value="' + pts + '" ' + (currentPoints === pts ? 'selected' : '') + '>' + pts + ' point' + (pts > 1 ? 's' : '') + '</option>';
       });
       html += '    </select>';
-      html += '    <select id="wgTimerSelect" class="wayground-dropdown-btn py-1 px-2.5 text-xs font-bold">';
+      html += '    <select id="wgTimerSelect" class="wayground-select">';
       [10, 20, 30, 45, 60, 90].forEach(function(sec) {
         html += '<option value="' + sec + '" ' + (currentTimeSec === sec ? 'selected' : '') + '>' + sec + ' sec</option>';
       });
@@ -7500,11 +7502,11 @@
       html += '  </div>';
 
       // Right: Add Question & Final Save
-      html += '  <div class="flex items-center gap-2">';
-      html += '    <button id="btnWgAddQuestion" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs shadow-md active:scale-95 transition-all flex items-center gap-1.5">';
+      html += '  <div class="flex items-center gap-2.5">';
+      html += '    <button id="btnWgAddQuestion" class="wayground-btn-add">';
       html += '      <span>➕ Add question (Savol qo\'shish)</span>';
       html += '    </button>';
-      html += '    <button id="btnWgSaveAllFinal" class="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-black text-xs shadow-md active:scale-95 transition-all">';
+      html += '    <button id="btnWgSaveAllFinal" class="wayground-btn-save">';
       html += '      <span>💾 Saqlash va Yakunlash</span>';
       html += '    </button>';
       html += '  </div>';
@@ -7513,26 +7515,26 @@
       // 2. MAIN STUDIO CANVAS
       html += '<main class="wayground-studio-canvas">';
 
-      // Title & Code Bar
-      html += '  <div class="w-full max-w-[960px] flex flex-col sm:flex-row items-center justify-between gap-3 mb-4 bg-gray-900/80 p-3 rounded-2xl border border-gray-800">';
-      html += '    <div class="flex-1 w-full flex items-center gap-2">';
-      html += '      <span class="text-xs font-extrabold text-gray-400 uppercase">Quiz:</span>';
-      html += '      <input id="wgQuizTitleInput" type="text" value="' + esc(quizTitle) + '" placeholder="Quiz nomini kiriting..." class="flex-1 px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-xl text-white font-bold text-sm outline-none focus:border-amber-500" />';
+      // Modern Glassmorphic Sub-bar (Title & Code)
+      html += '  <div class="wayground-subbar">';
+      html += '    <div class="flex-1 w-full flex items-center gap-2.5">';
+      html += '      <span class="text-xs font-black text-amber-400 uppercase tracking-wider">🎯 Quiz Nomi:</span>';
+      html += '      <input id="wgQuizTitleInput" type="text" value="' + esc(quizTitle) + '" placeholder="Quiz mavzusi yoki nomini kiriting..." class="flex-1 wayground-subbar-input" />';
       html += '    </div>';
       html += '    <div class="flex items-center gap-2">';
-      html += '      <span class="text-xs font-extrabold text-amber-400 uppercase">Kod:</span>';
-      html += '      <input id="wgQuizCodeInput" type="text" value="' + esc(quizCode) + '" class="w-32 px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-xl text-amber-400 font-mono font-black text-sm text-center outline-none" />';
-      html += '      <button id="btnWgRegenCode" class="p-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs" title="Kodni yangilash">🔄</button>';
+      html += '      <span class="text-xs font-black text-cyan-400 uppercase tracking-wider">🔑 Maxsus Kod:</span>';
+      html += '      <input id="wgQuizCodeInput" type="text" value="' + esc(quizCode) + '" class="w-36 wayground-subbar-input font-mono font-black text-center text-amber-400 tracking-wider" />';
+      html += '      <button id="btnWgRegenCode" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 text-xs transition-all" title="Kodni yangilash">🔄</button>';
       html += '    </div>';
       html += '  </div>';
 
       // Large Question Input Box (1:1 with Wayground aspect-ratio canvas)
       html += '  <div class="wayground-question-box">';
       html += '    <div class="text-[11px] uppercase font-black tracking-widest text-gray-400 mb-2 flex items-center justify-between">';
-      html += '      <span>Savol Matni:</span>';
+      html += '      <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-400"></span> Savol Matni:</span>';
       html += '      <span class="text-amber-400 font-bold">Har bir savol variantlari test paytida o\'quvchilarda avtomatik almashib tushadi</span>';
       html += '    </div>';
-      html += '    <textarea id="wgQuestionTextInput" class="wayground-question-textarea" placeholder="Введите вопрос здесь / Savol matnini bu yerga yozing (masalan: She ___ to school every day)...">' + esc(questionText) + '</textarea>';
+      html += '    <textarea id="wgQuestionTextInput" class="wayground-question-textarea" placeholder="Savol matnini bu yerga yozing (masalan: She ___ to school every day)...">' + esc(questionText) + '</textarea>';
       html += '  </div>';
 
       // Options Grid with Ambient Morphing Colors
@@ -7545,7 +7547,9 @@
         html += '<div class="wayground-option-card ' + brandClass + ' ' + (isChecked ? 'is-correct' : '') + '" data-opt-idx="' + optIdx + '">';
         html += '  <div class="wayground-card-topbar">';
         if (currentType !== 'bool') {
-          html += '    <button class="btnWgDeleteOption text-white/70 hover:text-white p-1 text-xs" data-opt-idx="' + optIdx + '" title="O\'chirish">🗑️</button>';
+          html += '    <button class="wayground-trash-btn btnWgDeleteOption" data-opt-idx="' + optIdx + '" title="Variantni o\'chirish">';
+          html += '      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>';
+          html += '    </button>';
         } else {
           html += '    <span></span>';
         }
@@ -7555,10 +7559,10 @@
         html += '    </button>';
         html += '  </div>';
 
-        html += '  <textarea class="wayground-option-textarea wgOptTextInput" data-opt-idx="' + optIdx + '" placeholder="Введите вариант ответа здесь...">' + esc(optText) + '</textarea>';
+        html += '  <textarea class="wayground-option-textarea wgOptTextInput" data-opt-idx="' + optIdx + '" placeholder="Variant matnini kiriting...">' + esc(optText) + '</textarea>';
 
-        html += '  <div class="text-center text-[10px] font-extrabold text-white/70 tracking-wider uppercase">';
-        html += (isChecked ? '✅ TO\'G\'RI JAVOB' : 'Tanlash uchun bosing');
+        html += '  <div class="text-center text-[10px] font-extrabold text-white/80 tracking-wider uppercase">';
+        html += (isChecked ? '✅ TO\'G\'RI JAVOB' : 'Tanlash uchun ptichkani bosing');
         html += '  </div>';
         html += '</div>';
       });
@@ -7907,40 +7911,49 @@
       }
       html += '</div>';
 
-      // Subtabs: Quizzes vs Gifts
-      html += '<div class="flex items-center gap-3 border-b border-gray-200 dark:border-gray-800 pb-2">';
-      html += '  <button id="tabQuizzesBtn" class="px-5 py-2.5 rounded-xl font-extrabold text-xs transition-all flex items-center gap-2 ' + (activeSubtab === 'quizzes' ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200') + '">';
-      html += '    <span>⚔️ Quiz Testlar (' + quizzesCount + ')</span>';
-      html += '  </button>';
-      html += '  <button id="tabGiftsBtn" class="px-5 py-2.5 rounded-xl font-extrabold text-xs transition-all flex items-center gap-2 ' + (activeSubtab === 'gifts' ? 'bg-amber-500 text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200') + '">';
-      html += '    <span>🎁 Mening Kulgili Sovg\'alarim (' + giftsCount + ')</span>';
-      html += '  </button>';
+      // Subtabs: Quizzes vs Gifts (Modern Floating Pill Tabs)
+      html += '<div class="flex items-center justify-start py-2">';
+      html += '  <div class="eth-quiz-pill-tabs">';
+      html += '    <button id="tabQuizzesBtn" class="eth-quiz-pill-tab ' + (activeSubtab === 'quizzes' ? 'active-quizzes' : '') + '">';
+      html += '      <span>⚡ Jonli Testlar (' + quizzesCount + ')</span>';
+      html += '    </button>';
+      html += '    <button id="tabGiftsBtn" class="eth-quiz-pill-tab ' + (activeSubtab === 'gifts' ? 'active-gifts' : '') + '">';
+      html += '      <span>🎁 Kulgili Sovg\'alar (' + giftsCount + ')</span>';
+      html += '    </button>';
+      html += '  </div>';
       html += '</div>';
 
       // SUBTAB 1: QUIZZES
       if (activeSubtab === 'quizzes') {
-        // EXACT Image 3 Card: "🔒 6 Xonali Kod Bilan Imtihonga Kirish"
-        html += '<div class="eth-exam-join-card-dark max-w-2xl mx-auto space-y-4 my-2">';
-        html += '  <div class="flex items-center gap-2.5">';
-        html += '    <span class="text-2xl">🔒</span>';
-        html += '    <h3 class="text-base font-extrabold text-white">6 Xonali Kod Bilan Imtihonga Kirish</h3>';
+        // EXACT Image 3 Card: Ultra-Modern Glassmorphic Join Card
+        html += '<div class="eth-exam-join-card-dark max-w-2xl mx-auto space-y-5 my-2">';
+        html += '  <div class="flex items-center gap-3">';
+        html += '    <div class="w-11 h-11 rounded-2xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-xl text-blue-400 shadow-inner">🔒</div>';
+        html += '    <div>';
+        html += '      <h3 class="text-base font-black text-white tracking-wide">6 Xonali Kod Bilan Imtihonga Kirish</h3>';
+        html += '      <p class="text-[11px] text-gray-400 mt-0.5">Yashirin va rasmiy imtihonlar uchun maxsus himoyalangan kirish tizimi</p>';
+        html += '    </div>';
         html += '  </div>';
-        html += '  <p class="text-xs text-gray-400 leading-relaxed">';
+        html += '  <p class="text-xs text-gray-300 leading-relaxed">';
         html += '    O\'qituvchingiz bergan maxsus kodni kiriting. Yashirin va rasmiy imtihonlar qat\'iy nazorat va to\'liq ekran himoyasida o\'tkaziladi.';
         html += '  </p>';
         html += '  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">';
         html += '    <div>';
-        html += '      <label class="text-[11px] font-bold uppercase tracking-wider text-gray-400 block mb-1">IMTIHON KODI</label>';
-        html += '      <input id="quizCodeInputHero" type="text" placeholder="Masalan: QZ-7K#9X" class="eth-exam-join-input-dark font-mono uppercase" />';
+        html += '      <label class="text-[11px] font-black uppercase tracking-wider text-blue-300 block mb-1.5 flex items-center gap-1.5">';
+        html += '        <span>🔑 IMTIHON KODI</span>';
+        html += '      </label>';
+        html += '      <input id="quizCodeInputHero" type="text" placeholder="Masalan: QZ-7K#9X" class="eth-exam-join-input-dark font-mono uppercase tracking-wider" />';
         html += '    </div>';
         html += '    <div>';
-        html += '      <label class="text-[11px] font-bold uppercase tracking-wider text-gray-400 block mb-1">ISM VA FAMILIYANGIZ</label>';
+        html += '      <label class="text-[11px] font-black uppercase tracking-wider text-blue-300 block mb-1.5 flex items-center gap-1.5">';
+        html += '        <span>👤 ISM VA FAMILIYANGIZ</span>';
+        html += '      </label>';
         html += '      <input id="quizStudentNameHero" type="text" value="' + esc(S.user.name || '') + '" class="eth-exam-join-input-dark font-bold" ' + (isTeacher ? '' : 'readonly') + ' />';
         html += '    </div>';
         html += '  </div>';
         html += '  <button id="btnStartQuizHeroJoin" class="eth-exam-join-btn-blue mt-2">';
         html += '    <span>Imtihonni Boshlash</span>';
-        html += '    <span>➔</span>';
+        html += '    <span class="text-lg">➔</span>';
         html += '  </button>';
         html += '</div>';
 
