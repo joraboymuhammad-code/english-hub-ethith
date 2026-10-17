@@ -1148,7 +1148,13 @@
           if (!exists) {
             S.accounts.push(rAcc);
           } else {
-            if (rAcc.coins !== undefined) exists.coins = Math.max(exists.coins || 0, rAcc.coins);
+            var isCurrentActive = S.user && (
+              (S.user.email && exists.email && S.user.email.toLowerCase() === exists.email.toLowerCase()) ||
+              (S.user.name && exists.name && S.user.name.toLowerCase() === exists.name.toLowerCase())
+            );
+            if (!isCurrentActive && rAcc.coins !== undefined) {
+              exists.coins = rAcc.coins;
+            }
             if (rAcc.avatar) exists.avatar = rAcc.avatar;
             if (rAcc.level) exists.level = rAcc.level;
           }

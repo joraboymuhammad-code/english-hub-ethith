@@ -193,6 +193,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -7287,6 +7289,300 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   gap: 6px;
 }
 
+/* ====================================================
+   PITY SYSTEM & STUDENT ITEM EXCHANGE VAULT (SAVDO MAYDONCHASI)
+   ==================================================== */
+.eth-pity-banner {
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.88) 0%, rgba(88, 28, 135, 0.78) 50%, rgba(15, 23, 42, 0.92) 100%);
+  border: 1.5px solid rgba(168, 85, 247, 0.55);
+  border-radius: 20px;
+  padding: 18px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(147, 51, 234, 0.25);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.eth-pity-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, transparent 60%);
+  pointer-events: none;
+  animation: ethPityGlowSpin 12s linear infinite;
+}
+
+@keyframes ethPityGlowSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.eth-pity-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.eth-pity-title {
+  font-size: 14.5px;
+  font-weight: 900;
+  color: #f3e8ff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.eth-pity-badge {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: #ffffff;
+  padding: 4px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 900;
+  font-family: monospace;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.6);
+}
+
+.eth-pity-bar-wrap {
+  width: 100%;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 8px;
+}
+
+.eth-pity-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 14px rgba(236, 72, 153, 0.8);
+}
+
+.eth-pity-subtext {
+  font-size: 13px;
+  color: #cbd5e1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* STUDENT ITEM EXCHANGE & SELL VAULT */
+.eth-vault-section {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
+  border: 2px solid rgba(245, 158, 11, 0.45);
+  border-radius: 24px;
+  padding: 24px;
+  margin-top: 36px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(245, 158, 11, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.eth-vault-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f59e0b, #ec4899, #8b5cf6, #3b82f6, #f59e0b);
+  background-size: 200% 100%;
+  animation: ethVaultBorderAnim 4s linear infinite;
+}
+
+@keyframes ethVaultBorderAnim {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+.eth-vault-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.eth-vault-title-wrap h3 {
+  font-size: 22px;
+  font-weight: 900;
+  color: #fde047;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 0 0 14px rgba(245, 158, 11, 0.4);
+}
+
+.eth-vault-title-wrap p {
+  margin: 0;
+  font-size: 13.5px;
+  color: #94a3b8;
+}
+
+.eth-vault-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.eth-vault-filter-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.eth-vault-filter-btn:hover,
+.eth-vault-filter-btn.active {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-color: #fde047;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+}
+
+.eth-vault-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.eth-vault-card {
+  background: rgba(30, 41, 59, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.eth-vault-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 20px var(--vault-glow, rgba(245, 158, 11, 0.3));
+  border-color: var(--vault-glow, #f59e0b);
+}
+
+.eth-vault-card.rarity-Common { --vault-glow: #94a3b8; border-color: rgba(148, 163, 184, 0.3); }
+.eth-vault-card.rarity-Rare { --vault-glow: #38bdf8; border-color: rgba(56, 189, 248, 0.4); }
+.eth-vault-card.rarity-Epic { --vault-glow: #c084fc; border-color: rgba(192, 132, 252, 0.5); }
+.eth-vault-card.rarity-Legendary { --vault-glow: #fde047; border-color: rgba(253, 224, 71, 0.6); }
+
+.eth-vault-card-icon {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+}
+
+.eth-vault-card-icon svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.eth-vault-card-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.eth-vault-card-type {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+
+.eth-vault-price-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 900;
+  color: #fbbf24;
+  margin-bottom: 12px;
+}
+
+.eth-vault-sell-btn {
+  width: 100%;
+  padding: 9px 14px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+  transition: all 0.2s ease;
+}
+
+.eth-vault-sell-btn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
+}
+
+.eth-vault-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #94a3b8;
+}
+
+.eth-vault-empty-icon {
+  font-size: 52px;
+  margin-bottom: 12px;
+  opacity: 0.8;
+  animation: ethPulseEmpty 2.5s ease-in-out infinite;
+}
+
+@keyframes ethPulseEmpty {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
 </style>
 
 <script id="ethith-core-bundle">
@@ -10248,30 +10544,134 @@ window.ETHITH_PACKS = [
     accentColor: "#a855f7"
   },
   {
-    id: "neon_frames_pack",
-    name: "Hologram Nameplates & Borders",
+    id: "cyber_neon_pack",
+    name: "Cyberpunk Neon Elite Pack",
     type: "coming_soon",
-    price: 300,
+    price: 350,
     isComingSoon: true,
-    icon: "🔮",
-    desc: "Profil va chat uchun maxsus harakatlanuvchi neon hoshiyalar va nom nishonlari to'plami.",
+    icon: "⚡",
+    desc: "Futuristik kiberpank neon ramkalar, kiber-samuray animatsiyalari va shahar nurlari nishoni.",
     badge: "TEZ KUNDA",
-    gradient: "linear-gradient(135deg, #334155 0%, #475569 50%, #64748b 100%)",
-    glowColor: "#94a3b8",
-    accentColor: "#64748b"
+    gradient: "linear-gradient(135deg, #09090b 0%, #06b6d4 50%, #3b82f6 100%)",
+    glowColor: "#38bdf8",
+    accentColor: "#0284c7"
   },
   {
-    id: "audio_fx_pack",
-    name: "VIP Sound FX & Taunts",
+    id: "mythic_dragon_pack",
+    name: "Mythic Dragon Sovereign Pack",
     type: "coming_soon",
-    price: 250,
+    price: 400,
     isComingSoon: true,
-    icon: "🎵",
-    desc: "Quiz Battle va chatda raqiblarni hayratga soluvchi maxsus ovoz effektlari va jingle to'plami.",
+    icon: "🐉",
     badge: "TEZ KUNDA",
-    gradient: "linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%)",
-    glowColor: "#a5b4fc",
-    accentColor: "#6366f1"
+    gradient: "linear-gradient(135deg, #450a0a 0%, #dc2626 50%, #f97316 100%)",
+    glowColor: "#fb923c",
+    accentColor: "#ea580c",
+    desc: "Qadimiy olovli ajdarho auralari, qizil alangali chat effektlari va imperator unvoni."
+  },
+  {
+    id: "galaxy_nebula_pack",
+    name: "Galaxy Nebula Supreme Pack",
+    type: "coming_soon",
+    price: 320,
+    isComingSoon: true,
+    icon: "🌌",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #1e1b4b 0%, #6366f1 50%, #a855f7 100%)",
+    glowColor: "#c084fc",
+    accentColor: "#9333ea",
+    desc: "Fazoviy tumanliklar, super-portlash chaqnashlari va yulduzlar changi profillar to'plami."
+  },
+  {
+    id: "royal_crown_pack",
+    name: "Royal Golden Crown Pack",
+    type: "coming_soon",
+    price: 450,
+    isComingSoon: true,
+    icon: "👑",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #78350f 0%, #f59e0b 50%, #fef08a 100%)",
+    glowColor: "#fde047",
+    accentColor: "#d97706",
+    desc: "Shohona olmos tojlar, tillarang ism yozuvlari va oliy hukmdorlik ramzlari."
+  },
+  {
+    id: "ancient_pharaoh_pack",
+    name: "Ancient Pharaoh Relic Pack",
+    type: "coming_soon",
+    price: 280,
+    isComingSoon: true,
+    icon: "🏺",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #3f2c1d 0%, #b45309 50%, #fde047 100%)",
+    glowColor: "#fbbf24",
+    accentColor: "#b45309",
+    desc: "Qadimgi Misr ehromlari xazinasi, tillo skarabeylar va fir'avnlar sehrli kuchi."
+  },
+  {
+    id: "quantum_warp_pack",
+    name: "Quantum Temporal Warp Pack",
+    type: "coming_soon",
+    price: 380,
+    isComingSoon: true,
+    icon: "🌀",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #0f172a 0%, #0284c7 50%, #2dd4bf 100%)",
+    glowColor: "#5eead4",
+    accentColor: "#0f766e",
+    desc: "Vaqt va fazo portallari, kvant tebranishlar va sirli o'lchamlar harakati."
+  },
+  {
+    id: "celestial_angel_pack",
+    name: "Celestial Angelic Halo Pack",
+    type: "coming_soon",
+    price: 360,
+    isComingSoon: true,
+    icon: "🪽",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #1e293b 0%, #38bdf8 50%, #e0f2fe 100%)",
+    glowColor: "#7dd3fc",
+    accentColor: "#0284c7",
+    desc: "Nurli farishta qanotlari, muqaddas auralar va osmon nafasidagi maxsus belgilar."
+  },
+  {
+    id: "shadow_phantom_pack",
+    name: "Shadow Ninja Phantom Pack",
+    type: "coming_soon",
+    price: 290,
+    isComingSoon: true,
+    icon: "🗡️",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #020617 0%, #334155 50%, #64748b 100%)",
+    glowColor: "#94a3b8",
+    accentColor: "#475569",
+    desc: "Tungi sharpalar, qora tutunli qochishlar va shurikenli sirli reaksiyalar."
+  },
+  {
+    id: "retro_arcade_pack",
+    name: "Retro 80s Synthwave Pack",
+    type: "coming_soon",
+    price: 270,
+    isComingSoon: true,
+    icon: "🕹️",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #4a044e 0%, #c026d3 50%, #f43f5e 100%)",
+    glowColor: "#f472b6",
+    accentColor: "#db2777",
+    desc: "80-yillar pikselli retro arkadalari, neon to'lqinlar va elektron bitlar kolleksiyasi."
+  },
+  {
+    id: "atlantis_ocean_pack",
+    name: "Oceanic Atlantis Leviathan Pack",
+    type: "coming_soon",
+    price: 340,
+    isComingSoon: true,
+    icon: "🔱",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #083344 0%, #0891b2 50%, #67e8f9 100%)",
+    glowColor: "#67e8f9",
+    accentColor: "#0e7490",
+    desc: "Atlantida qa'ridagi dengiz marvaridlari, trident chaqnashlari va moviy suv to'lqinlari."
   }
 ];
 
@@ -10553,33 +10953,62 @@ window.ETHITH_RENDER_USER_AVATAR = function(user, size, extraClass, extraStyle) 
 };
 
 // ====================================================
-// PACK OPENING DROP LOGIC (RNG)
+// PACK OPENING DROP LOGIC (RNG & 15-PACK PITY SYSTEM)
 // ====================================================
 window.ETHITH_OPEN_PACK = function(packId, user) {
   var pack = (window.ETHITH_PACKS || []).find(function(p) { return p.id === packId; });
   if (!pack) return null;
 
-  var rand = Math.random() * 100;
+  if (!user) user = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || {};
+  var userKey = (user.email || user.name || 'guest').toLowerCase().trim().replace(/\s+/g, '_');
+  var pityStorageKey = 'ethith_pack_pity_' + userKey;
+  var currentPity = 0;
+  try {
+    currentPity = Number(user.pityCount || localStorage.getItem(pityStorageKey) || 0);
+  } catch(e) {}
+
+  // 15-PACK PITY RULE: 100% Epic or Legendary (50/50)
+  var isPityTriggered = (currentPity >= 15);
   var rarity = "Common";
-  if (rand < 5) rarity = "Legendary";
-  else if (rand < 20) rarity = "Epic";
-  else if (rand < 50) rarity = "Rare";
-  else rarity = "Common";
+
+  if (isPityTriggered) {
+    rarity = (Math.random() < 0.5) ? "Legendary" : "Epic";
+    currentPity = 0;
+  } else {
+    var rand = Math.random() * 100;
+    if (rand < 7) rarity = "Legendary";
+    else if (rand < 25) rarity = "Epic";
+    else if (rand < 55) rarity = "Rare";
+    else rarity = "Common";
+
+    if (rarity === "Epic" || rarity === "Legendary") {
+      currentPity = 0;
+    } else {
+      currentPity += 1;
+    }
+  }
+
+  user.pityCount = currentPity;
+  try { localStorage.setItem(pityStorageKey, String(currentPity)); } catch(e) {}
 
   if (pack.type === "daily") {
     var roll = Math.random() * 100;
-    if (roll < 70) {
-      var coinAmounts = [50, 75, 100, 120, 150, 200, 250];
+    if (roll < 60) {
+      var coinAmounts = [];
+      if (rarity === "Legendary") coinAmounts = [1200, 1600, 2200];
+      else if (rarity === "Epic") coinAmounts = [500, 650, 850];
+      else if (rarity === "Rare") coinAmounts = [240, 320, 420];
+      else coinAmounts = [100, 160, 200];
       var amount = coinAmounts[Math.floor(Math.random() * coinAmounts.length)];
       return {
         type: "coins",
-        rarity: (amount >= 200 ? "Epic" : (amount >= 120 ? "Rare" : "Common")),
+        rarity: rarity,
         amount: amount,
         name: amount + " ETHITH Coin!",
-        desc: "Hamyoningizga darhol qo'shildi!",
+        desc: "Kunlik qutidan tushgan xazina! Hamyoningizga darhol qo'shildi!",
         icon: "🪙"
       };
-    } else if (roll < 90) {
+    } else if (roll < 85) {
       var pz = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(rarity) : null;
       return {
         type: "prize",
@@ -10590,7 +11019,10 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         icon: pz ? pz.icon : "🎁"
       };
     } else {
-      var unlEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
+      var unlEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) {
+        return !e.isDefault && (e.rarity === rarity || !rarity);
+      });
+      if (!unlEmojis.length) unlEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
       var em = unlEmojis[Math.floor(Math.random() * unlEmojis.length)];
       return {
         type: "emoji",
@@ -10612,7 +11044,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
       name: pz ? pz.name : "Omadli Sovg'a",
       desc: pz ? pz.desc : "Ajoyib o'zbekcha sovrin!",
       icon: pz ? pz.icon : "💎",
-      coinPrice: pz ? pz.price : 100
+      coinPrice: pz ? pz.price : (rarity === "Legendary" ? 1000 : (rarity === "Epic" ? 450 : (rarity === "Rare" ? 200 : 80)))
     };
   }
 
@@ -10667,11 +11099,15 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
   if (pack.type === "mega") {
     var catRoll = Math.random() * 100;
     if (catRoll < 25) {
-      var coinAmounts = [150, 200, 250, 300, 400, 500, 750, 1000];
+      var coinAmounts = [];
+      if (rarity === "Legendary") coinAmounts = [1250, 1650, 2500];
+      else if (rarity === "Epic") coinAmounts = [600, 750, 950];
+      else if (rarity === "Rare") coinAmounts = [300, 420, 500];
+      else coinAmounts = [180, 220, 260];
       var amount = coinAmounts[Math.floor(Math.random() * coinAmounts.length)];
       return {
         type: "coins",
-        rarity: (amount >= 750 ? "Legendary" : (amount >= 400 ? "Epic" : (amount >= 250 ? "Rare" : "Common"))),
+        rarity: rarity,
         amount: amount,
         name: amount + " ETHITH Coin!",
         desc: "Universal Mega Packdan xazina! Hamyoningizga darhol qo'shildi!",
@@ -10686,7 +11122,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         name: pz ? pz.name : "Omadli Sovg'a",
         desc: pz ? pz.desc : "Mega Packdan tushgan maxsus sovrin!",
         icon: pz ? pz.icon : "💎",
-        coinPrice: pz ? pz.price : 150
+        coinPrice: pz ? pz.price : (rarity === "Legendary" ? 1000 : (rarity === "Epic" ? 450 : 200))
       };
     } else if (catRoll < 70) {
       var matching = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) {
@@ -13491,7 +13927,13 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
           if (!exists) {
             S.accounts.push(rAcc);
           } else {
-            if (rAcc.coins !== undefined) exists.coins = Math.max(exists.coins || 0, rAcc.coins);
+            var isCurrentActive = S.user && (
+              (S.user.email && exists.email && S.user.email.toLowerCase() === exists.email.toLowerCase()) ||
+              (S.user.name && exists.name && S.user.name.toLowerCase() === exists.name.toLowerCase())
+            );
+            if (!isCurrentActive && rAcc.coins !== undefined) {
+              exists.coins = rAcc.coins;
+            }
             if (rAcc.avatar) exists.avatar = rAcc.avatar;
             if (rAcc.level) exists.level = rAcc.level;
           }
@@ -14045,8 +14487,17 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
     var curEmail = (S.user.email || '').toLowerCase().trim();
     var curName = (S.user.name || '').trim();
     var isMuhammadUser = (curName.toLowerCase().indexOf('muhammad') !== -1 || curEmail.indexOf('muhammad') !== -1) && S.user.role !== 'teacher';
-    if (isMuhammadUser) {
-      S.user.coins = Math.max(S.user.coins || 0, 100000);
+    
+    var bonusGivenKey = 'ethith_bonus_100k_' + (curEmail || curName).toLowerCase().replace(/\s+/g, '_');
+    var alreadyGiven = false;
+    try {
+      alreadyGiven = (localStorage.getItem(bonusGivenKey) === 'true') || S.user.initial100kBonusGiven;
+    } catch(e) {}
+
+    if (isMuhammadUser && !alreadyGiven) {
+      S.user.coins = 100000;
+      S.user.initial100kBonusGiven = true;
+      try { localStorage.setItem(bonusGivenKey, 'true'); } catch(e) {}
     } else if (S.user.coins === undefined || S.user.coins === null) {
       S.user.coins = 150;
     }
@@ -14065,16 +14516,23 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         email: curEmail || (curName.toLowerCase().replace(/\s+/g, '.') + '@ethith.uz'),
         coins: S.user.coins,
         gifts: S.user.gifts,
+        initial100kBonusGiven: S.user.initial100kBonusGiven,
         createdAt: Date.now()
       });
     } else {
-      if (isMuhammadUser) {
-        exAcc.coins = Math.max(exAcc.coins || 0, 100000);
-        S.user.coins = exAcc.coins;
-      } else if (exAcc.coins !== undefined && S.user.coins === 150) {
-        S.user.coins = exAcc.coins;
+      if (isMuhammadUser && !alreadyGiven) {
+        exAcc.coins = 100000;
+        exAcc.initial100kBonusGiven = true;
+        S.user.coins = 100000;
       } else {
-        exAcc.coins = S.user.coins;
+        if (S.user.coins !== undefined && S.user.coins !== null) {
+          exAcc.coins = S.user.coins;
+        } else if (exAcc.coins !== undefined && exAcc.coins !== null) {
+          S.user.coins = exAcc.coins;
+        } else {
+          S.user.coins = 150;
+          exAcc.coins = 150;
+        }
       }
       if (Array.isArray(exAcc.gifts) && exAcc.gifts.length > 0 && S.user.gifts.length === 0) {
         S.user.gifts = exAcc.gifts.slice();
@@ -14610,7 +15068,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
   // Auto-reload is disabled per user requirement: No spontaneous page refreshes.
   // Real-time server state syncs seamlessly via MQTT/WebSockets without refreshing.
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.2355";
+  window.ETHITH_BUILD_VERSION = "2026.10.18.0010";
 
 })(window);
 
@@ -15540,6 +15998,60 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
     };
   }
 
+  // Audio feedback synthesizer for quiz answers
+  function playQuizAnswerSound(isCorrect) {
+    try {
+      var AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      if (!window._ethAudioCtx) window._ethAudioCtx = new AudioCtx();
+      var ctx = window._ethAudioCtx;
+      if (ctx.state === 'suspended') ctx.resume();
+
+      var now = ctx.currentTime;
+
+      if (isCorrect) {
+        // Joyful, sparkling major arpeggio chime (C5, E5, G5, C6)
+        var notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach(function(freq, idx) {
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.065);
+
+          gain.gain.setValueAtTime(0.001, now + idx * 0.065);
+          gain.gain.exponentialRampToValueAtTime(0.24, now + idx * 0.065 + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.065 + 0.45);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(now + idx * 0.065);
+          osc.stop(now + idx * 0.065 + 0.46);
+        });
+      } else {
+        // Distinct, soft descending error tones (D3 -> Bb2)
+        var errNotes = [293.66, 233.08];
+        errNotes.forEach(function(freq, idx) {
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.13);
+
+          gain.gain.setValueAtTime(0.001, now + idx * 0.13);
+          gain.gain.exponentialRampToValueAtTime(0.25, now + idx * 0.13 + 0.025);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.13 + 0.35);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(now + idx * 0.13);
+          osc.stop(now + idx * 0.13 + 0.36);
+        });
+      }
+    } catch(e) {}
+  }
+  window.playQuizAnswerSound = playQuizAnswerSound;
+
   // Quiz runner for generated questions
   function startTopicQuizRunner(level, topicNum, topicTitle, questions, mainContainer) {
     window._ethithIsTestInProgress = true;
@@ -15608,6 +16120,9 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
           state.answered = true;
           var selected = btn.dataset.opt;
           var isCorrect = (selected === q.answer);
+
+          // Audio feedback
+          playQuizAnswerSound(isCorrect);
 
           optionBtns.forEach(function(b) {
             b.disabled = true;
@@ -25535,8 +26050,10 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
   }
 
   // ====================================================
-  // 2. EA SPORTS & MLBB PACK MARKET VIEW
+  // 2. EA SPORTS & MLBB PACK MARKET VIEW + EXCHANGE VAULT
   // ====================================================
+  var _activeVaultFilter = 'all';
+
   function renderMarketView(container) {
     if (!container) return;
 
@@ -25549,14 +26066,23 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
     var remainingHrs = Math.floor(remainingMs / (1000 * 60 * 60));
     var remainingMins = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
 
+    // Pity count
+    var userKey = (S.user && (S.user.email || S.user.name || 'guest')).toLowerCase().trim().replace(/\s+/g, '_');
+    var pityStorageKey = 'ethith_pack_pity_' + userKey;
+    var pityCount = 0;
+    try {
+      pityCount = Number((S.user && S.user.pityCount) || localStorage.getItem(pityStorageKey) || 0);
+    } catch(e) {}
+    var pityPct = Math.min(100, Math.round((pityCount / 15) * 100));
+
     var html = '<div class="eth-market-screen animate-fade-in">';
 
     // Banner
     html += '<div class="eth-market-banner">' +
       '<div>' +
-        '<div style="font-size:12px;font-weight:800;letter-spacing:1px;color:#fde047;text-transform:uppercase;margin-bottom:6px">⚡ ETHITH PACK SHOP ⚡</div>' +
-        '<h2 style="font-size:26px;font-weight:900;margin:0 0 8px">Sehrli Qutilar & Packlar Marketi</h2>' +
-        '<p style="font-size:14px;color:#cbd5e1;margin:0;max-width:540px">ETHITH Coinlaringiz evaziga noyob personaj avatarlari, qimmatbaho sovrinlar va Telegram chat emojilarini yutib oling!</p>' +
+        '<div style="font-size:12px;font-weight:800;letter-spacing:1px;color:#fde047;text-transform:uppercase;margin-bottom:6px">⚡ ETHITH PACK SHOP & MARKETPLACE ⚡</div>' +
+        '<h2 style="font-size:26px;font-weight:900;margin:0 0 8px">Sehrli Qutilar & O\'quvchilar Savdo Maydonchasi</h2>' +
+        '<p style="font-size:14px;color:#cbd5e1;margin:0;max-width:540px">ETHITH Coinlaringiz evaziga qutilarni oching, yutgan personaj avatarlari, sovrin va emojilaringizni esa shu yerda tangalarga soting!</p>' +
       '</div>' +
       '<div style="text-align:right;flex-shrink:0">' +
         '<div style="font-size:12px;color:#94a3b8;font-weight:700;margin-bottom:4px">HAMYONINGIZ:</div>' +
@@ -25565,6 +26091,25 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
           '<span style="font-size:20px;font-weight:900;color:#fde047;font-family:monospace">' + userCoins.toLocaleString() + '</span>' +
           '<span style="font-size:11px;font-weight:800;color:#f59e0b">COIN</span>' +
         '</div>' +
+      '</div>' +
+    '</div>';
+
+    // Pity Banner (15-Pack Guarantee)
+    html += '<div class="eth-pity-banner">' +
+      '<div class="eth-pity-header">' +
+        '<div class="eth-pity-title">' +
+          '<span>🎯 OMAD KAFOLATI (PITY SYSTEM)</span>' +
+          (pityCount >= 15 ? '<span style="color:#fde047;font-size:12px;font-weight:800;animation:pulse 1s infinite">🔥 100% KAFOLAT FAOL!</span>' : '') +
+        '</div>' +
+        '<div class="eth-pity-badge">' + pityCount + ' / 15 Ochildi</div>' +
+      '</div>' +
+      '<div class="eth-pity-bar-wrap">' +
+        '<div class="eth-pity-fill" style="width:' + pityPct + '%"></div>' +
+      '</div>' +
+      '<div class="eth-pity-subtext">' +
+        (pityCount >= 15 ?
+          '✨ <b>Keyingi ochilgan packdan 100% aniq 50/50 nisbatda EPIC yoki LEGENDARY narsa tushadi!</b>' :
+          '💡 Har qanday packdan ketma-ket 15 marta ochilganda 100% kafolatlangan Epic yoki Legendary (50/50 nisbatda) sovrin chiqadi.') +
       '</div>' +
     '</div>';
 
@@ -25595,8 +26140,204 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
     });
     html += '</div>';
 
-    html += '</div>';
+    // Gather Student's Sellable Inventory Items
+    var sellableItems = [];
+
+    // 1. Gifts / Prizes
+    var userGifts = (S.user && Array.isArray(S.user.gifts)) ? S.user.gifts : [];
+    userGifts.forEach(function(g, idx) {
+      var rarity = g.rarity || 'Common';
+      var val = g.price || (rarity === 'Legendary' ? 1000 : (rarity === 'Epic' ? 450 : (rarity === 'Rare' ? 200 : 70)));
+      sellableItems.push({
+        type: 'gift',
+        index: idx,
+        id: 'gift_' + idx,
+        name: g.name || 'Sovrin',
+        desc: g.desc || 'Packdan tushgan maxsus buyum',
+        icon: g.icon || '🎁',
+        rarity: rarity,
+        price: val
+      });
+    });
+
+    // 2. Unlocked Emojis (non-default)
+    var defaultEmojis = window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
+    var userEmojis = (S.user && Array.isArray(S.user.unlockedEmojis)) ? S.user.unlockedEmojis : [];
+    userEmojis.forEach(function(emChar) {
+      if (defaultEmojis.indexOf(emChar) === -1) {
+        var catalogEntry = (window.ETHITH_CHAT_EMOJIS || []).find(function(e) { return e.emoji === emChar; });
+        var rarity = catalogEntry ? catalogEntry.rarity : 'Rare';
+        var val = (rarity === 'Legendary' ? 850 : (rarity === 'Epic' ? 400 : (rarity === 'Rare' ? 180 : 60)));
+        sellableItems.push({
+          type: 'emoji',
+          emojiChar: emChar,
+          id: 'emoji_' + emChar,
+          name: emChar + ' ' + (catalogEntry ? catalogEntry.name : 'Maxsus Emoji'),
+          desc: 'Chat va reaksiyalarda ochilgan emoji',
+          icon: emChar,
+          rarity: rarity,
+          price: val
+        });
+      }
+    });
+
+    // 3. Unlocked Avatars (exclude currently active avatar to prevent blank profile)
+    var userAvatars = (S.user && Array.isArray(S.user.unlockedAvatars)) ? S.user.unlockedAvatars : [];
+    userAvatars.forEach(function(avId) {
+      if (avId !== (S.user && S.user.avatar)) {
+        var avObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === avId; });
+        var rarity = avObj ? avObj.rarity : 'Epic';
+        var val = (rarity === 'Legendary' ? 1200 : (rarity === 'Epic' ? 550 : 250));
+        sellableItems.push({
+          type: 'avatar',
+          avatarId: avId,
+          id: 'avatar_' + avId,
+          name: avObj ? avObj.name : 'Personaj Avatari',
+          desc: avObj ? avObj.tagline : 'Eksklyuziv personaj avatari',
+          svg: avObj ? avObj.svg : '',
+          rarity: rarity,
+          price: val
+        });
+      }
+    });
+
+    // Filter items
+    var filteredItems = sellableItems.filter(function(item) {
+      if (_activeVaultFilter === 'gifts') return item.type === 'gift';
+      if (_activeVaultFilter === 'emojis') return item.type === 'emoji';
+      if (_activeVaultFilter === 'avatars') return item.type === 'avatar';
+      return true;
+    });
+
+    // Render Student Item Exchange & Sell Vault
+    html += '<div class="eth-vault-section">' +
+      '<div class="eth-vault-header">' +
+        '<div class="eth-vault-title-wrap">' +
+          '<h3>' +
+            '<span>🪙 O\'quvchilar Savdo & Ayirboshlash Maydonchasi</span>' +
+          '</h3>' +
+          '<p>Packlardan tushgan ortiqcha sovg\'alar, emojilar va personaj avatarlaringizni sotib, balansingizni ETHITH Coinlar bilan boyiting!</p>' +
+        '</div>' +
+        '<div class="eth-vault-filters">' +
+          '<button type="button" class="eth-vault-filter-btn ' + (_activeVaultFilter === 'all' ? 'active' : '') + '" data-vault-filter="all">Hammasi (' + sellableItems.length + ')</button>' +
+          '<button type="button" class="eth-vault-filter-btn ' + (_activeVaultFilter === 'gifts' ? 'active' : '') + '" data-vault-filter="gifts">Sovg\'alar (' + userGifts.length + ')</button>' +
+          '<button type="button" class="eth-vault-filter-btn ' + (_activeVaultFilter === 'emojis' ? 'active' : '') + '" data-vault-filter="emojis">Chat Emojilari</button>' +
+          '<button type="button" class="eth-vault-filter-btn ' + (_activeVaultFilter === 'avatars' ? 'active' : '') + '" data-vault-filter="avatars">Avatarlar</button>' +
+        '</div>' +
+      '</div>';
+
+    if (filteredItems.length === 0) {
+      html += '<div class="eth-vault-empty">' +
+        '<div class="eth-vault-empty-icon">📦</div>' +
+        '<h4 style="font-size:18px;font-weight:800;color:#f1f5f9;margin:0 0 6px">Sotiladigan buyumlar topilmadi</h4>' +
+        '<p style="margin:0;font-size:13.5px;max-width:460px;margin:0 auto">Yuqoridagi sehrli qutilardan (Pack) ochib, yangi sovrin, avatar yoki emojilarni yutib oling va shu yerda tangalarga soting!</p>' +
+      '</div>';
+    } else {
+      html += '<div class="eth-vault-grid">';
+      filteredItems.forEach(function(item) {
+        var iconHtml = '';
+        if (item.type === 'avatar' && item.svg) {
+          iconHtml = item.svg;
+        } else if (item.type === 'emoji') {
+          iconHtml = '<span>' + item.icon + '</span>';
+        } else {
+          iconHtml = '<span>' + (item.icon || '🎁') + '</span>';
+        }
+
+        html += '<div class="eth-vault-card rarity-' + item.rarity + '">' +
+          '<div class="eth-rarity-badge eth-rarity-' + item.rarity + '" style="position:static;margin-bottom:8px">' + item.rarity + '</div>' +
+          '<div class="eth-vault-card-icon">' + iconHtml + '</div>' +
+          '<div class="eth-vault-card-name">' + esc(item.name) + '</div>' +
+          '<div class="eth-vault-card-type">' + esc(item.desc) + '</div>' +
+          '<div class="eth-vault-price-badge">' +
+            window.ETHITH_COIN_SVG(16) +
+            '<span>+' + item.price.toLocaleString() + ' Coin</span>' +
+          '</div>' +
+          '<button type="button" class="eth-vault-sell-btn" data-action="sell-vault-item" data-item-type="' + item.type + '" data-item-id="' + item.id + '" data-item-price="' + item.price + '" data-item-name="' + esc(item.name) + '" data-item-key="' + (item.emojiChar || item.avatarId || item.index) + '">' +
+            '💰 Sotish (+' + item.price + ')' +
+          '</button>' +
+        '</div>';
+      });
+      html += '</div>';
+    }
+
+    html += '</div>'; // end eth-vault-section
+    html += '</div>'; // end eth-market-screen
+
     container.innerHTML = html;
+
+    // Filter Buttons Listener
+    container.querySelectorAll('[data-vault-filter]').forEach(function(btn) {
+      btn.onclick = function() {
+        _activeVaultFilter = btn.dataset.vaultFilter;
+        renderMarketView(container);
+      };
+    });
+
+    // Sell Items Listener
+    container.querySelectorAll('[data-action="sell-vault-item"]').forEach(function(btn) {
+      btn.onclick = function() {
+        var itType = btn.dataset.itemType;
+        var itPrice = Number(btn.dataset.itemPrice) || 0;
+        var itName = btn.dataset.itemName;
+        var itKey = btn.dataset.itemKey;
+
+        if (!confirm('"' + itName + '" buyumini +' + itPrice + ' ETHITH Coinga sotishni tasdiqlaysizmi?')) {
+          return;
+        }
+
+        if (itType === 'gift') {
+          var gIdx = Number(itKey);
+          if (Array.isArray(S.user.gifts) && gIdx >= 0 && gIdx < S.user.gifts.length) {
+            S.user.gifts.splice(gIdx, 1);
+          }
+        } else if (itType === 'emoji') {
+          if (Array.isArray(S.user.unlockedEmojis)) {
+            var eIdx = S.user.unlockedEmojis.indexOf(itKey);
+            if (eIdx > -1) S.user.unlockedEmojis.splice(eIdx, 1);
+          }
+        } else if (itType === 'avatar') {
+          if (Array.isArray(S.user.unlockedAvatars)) {
+            var aIdx = S.user.unlockedAvatars.indexOf(itKey);
+            if (aIdx > -1) S.user.unlockedAvatars.splice(aIdx, 1);
+          }
+        }
+
+        // Add coins to user balance
+        S.user.coins = (S.user.coins || 0) + itPrice;
+        if (Array.isArray(S.accounts)) {
+          var myAcc = S.accounts.find(function(a) {
+            return (a.email && S.user.email && a.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                   (a.name && S.user.name && a.name.toLowerCase() === S.user.name.toLowerCase());
+          });
+          if (myAcc) myAcc.coins = S.user.coins;
+        }
+
+        App.saveState();
+        if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+
+        // Broadcast user state
+        if (window.EthithSync && window.EthithSync.publishLive) {
+          window.EthithSync.publishLive({
+            type: 'USER_STATE_SYNC',
+            user: {
+              id: S.user.id,
+              name: S.user.name,
+              email: S.user.email,
+              role: S.user.role,
+              coins: S.user.coins,
+              avatar: S.user.avatar,
+              level: S.level || S.user.level,
+              dailyMinutes: S.user.dailyMinutes
+            }
+          });
+        }
+
+        playPackMagicSound('connect');
+        alert('🎉 "' + itName + '" muvaffaqiyatli sotildi!\nHamyoningizga +' + itPrice + ' ETHITH Coin qo\'shildi!');
+        renderMarketView(container);
+      };
+    });
 
     // Attach click listeners to open packs
     container.querySelectorAll('[data-action="open-pack"]').forEach(function(btn) {

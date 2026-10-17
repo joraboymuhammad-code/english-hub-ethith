@@ -7086,3 +7086,297 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   align-items: center;
   gap: 6px;
 }
+
+/* ====================================================
+   PITY SYSTEM & STUDENT ITEM EXCHANGE VAULT (SAVDO MAYDONCHASI)
+   ==================================================== */
+.eth-pity-banner {
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.88) 0%, rgba(88, 28, 135, 0.78) 50%, rgba(15, 23, 42, 0.92) 100%);
+  border: 1.5px solid rgba(168, 85, 247, 0.55);
+  border-radius: 20px;
+  padding: 18px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(147, 51, 234, 0.25);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.eth-pity-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, transparent 60%);
+  pointer-events: none;
+  animation: ethPityGlowSpin 12s linear infinite;
+}
+
+@keyframes ethPityGlowSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.eth-pity-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.eth-pity-title {
+  font-size: 14.5px;
+  font-weight: 900;
+  color: #f3e8ff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.eth-pity-badge {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: #ffffff;
+  padding: 4px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 900;
+  font-family: monospace;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.6);
+}
+
+.eth-pity-bar-wrap {
+  width: 100%;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 8px;
+}
+
+.eth-pity-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 14px rgba(236, 72, 153, 0.8);
+}
+
+.eth-pity-subtext {
+  font-size: 13px;
+  color: #cbd5e1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* STUDENT ITEM EXCHANGE & SELL VAULT */
+.eth-vault-section {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
+  border: 2px solid rgba(245, 158, 11, 0.45);
+  border-radius: 24px;
+  padding: 24px;
+  margin-top: 36px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(245, 158, 11, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.eth-vault-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f59e0b, #ec4899, #8b5cf6, #3b82f6, #f59e0b);
+  background-size: 200% 100%;
+  animation: ethVaultBorderAnim 4s linear infinite;
+}
+
+@keyframes ethVaultBorderAnim {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+.eth-vault-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.eth-vault-title-wrap h3 {
+  font-size: 22px;
+  font-weight: 900;
+  color: #fde047;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 0 0 14px rgba(245, 158, 11, 0.4);
+}
+
+.eth-vault-title-wrap p {
+  margin: 0;
+  font-size: 13.5px;
+  color: #94a3b8;
+}
+
+.eth-vault-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.eth-vault-filter-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.eth-vault-filter-btn:hover,
+.eth-vault-filter-btn.active {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-color: #fde047;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+}
+
+.eth-vault-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.eth-vault-card {
+  background: rgba(30, 41, 59, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.eth-vault-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 20px var(--vault-glow, rgba(245, 158, 11, 0.3));
+  border-color: var(--vault-glow, #f59e0b);
+}
+
+.eth-vault-card.rarity-Common { --vault-glow: #94a3b8; border-color: rgba(148, 163, 184, 0.3); }
+.eth-vault-card.rarity-Rare { --vault-glow: #38bdf8; border-color: rgba(56, 189, 248, 0.4); }
+.eth-vault-card.rarity-Epic { --vault-glow: #c084fc; border-color: rgba(192, 132, 252, 0.5); }
+.eth-vault-card.rarity-Legendary { --vault-glow: #fde047; border-color: rgba(253, 224, 71, 0.6); }
+
+.eth-vault-card-icon {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+}
+
+.eth-vault-card-icon svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.eth-vault-card-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.eth-vault-card-type {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+
+.eth-vault-price-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 900;
+  color: #fbbf24;
+  margin-bottom: 12px;
+}
+
+.eth-vault-sell-btn {
+  width: 100%;
+  padding: 9px 14px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+  transition: all 0.2s ease;
+}
+
+.eth-vault-sell-btn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
+}
+
+.eth-vault-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #94a3b8;
+}
+
+.eth-vault-empty-icon {
+  font-size: 52px;
+  margin-bottom: 12px;
+  opacity: 0.8;
+  animation: ethPulseEmpty 2.5s ease-in-out infinite;
+}
+
+@keyframes ethPulseEmpty {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; }
+}

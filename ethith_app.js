@@ -84,8 +84,17 @@
     var curEmail = (S.user.email || '').toLowerCase().trim();
     var curName = (S.user.name || '').trim();
     var isMuhammadUser = (curName.toLowerCase().indexOf('muhammad') !== -1 || curEmail.indexOf('muhammad') !== -1) && S.user.role !== 'teacher';
-    if (isMuhammadUser) {
-      S.user.coins = Math.max(S.user.coins || 0, 100000);
+    
+    var bonusGivenKey = 'ethith_bonus_100k_' + (curEmail || curName).toLowerCase().replace(/\s+/g, '_');
+    var alreadyGiven = false;
+    try {
+      alreadyGiven = (localStorage.getItem(bonusGivenKey) === 'true') || S.user.initial100kBonusGiven;
+    } catch(e) {}
+
+    if (isMuhammadUser && !alreadyGiven) {
+      S.user.coins = 100000;
+      S.user.initial100kBonusGiven = true;
+      try { localStorage.setItem(bonusGivenKey, 'true'); } catch(e) {}
     } else if (S.user.coins === undefined || S.user.coins === null) {
       S.user.coins = 150;
     }
@@ -104,16 +113,23 @@
         email: curEmail || (curName.toLowerCase().replace(/\s+/g, '.') + '@ethith.uz'),
         coins: S.user.coins,
         gifts: S.user.gifts,
+        initial100kBonusGiven: S.user.initial100kBonusGiven,
         createdAt: Date.now()
       });
     } else {
-      if (isMuhammadUser) {
-        exAcc.coins = Math.max(exAcc.coins || 0, 100000);
-        S.user.coins = exAcc.coins;
-      } else if (exAcc.coins !== undefined && S.user.coins === 150) {
-        S.user.coins = exAcc.coins;
+      if (isMuhammadUser && !alreadyGiven) {
+        exAcc.coins = 100000;
+        exAcc.initial100kBonusGiven = true;
+        S.user.coins = 100000;
       } else {
-        exAcc.coins = S.user.coins;
+        if (S.user.coins !== undefined && S.user.coins !== null) {
+          exAcc.coins = S.user.coins;
+        } else if (exAcc.coins !== undefined && exAcc.coins !== null) {
+          S.user.coins = exAcc.coins;
+        } else {
+          S.user.coins = 150;
+          exAcc.coins = 150;
+        }
       }
       if (Array.isArray(exAcc.gifts) && exAcc.gifts.length > 0 && S.user.gifts.length === 0) {
         S.user.gifts = exAcc.gifts.slice();
@@ -649,6 +665,6 @@
   // Auto-reload is disabled per user requirement: No spontaneous page refreshes.
   // Real-time server state syncs seamlessly via MQTT/WebSockets without refreshing.
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.2355";
+  window.ETHITH_BUILD_VERSION = "2026.10.18.0010";
 
 })(window);

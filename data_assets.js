@@ -2882,30 +2882,134 @@ window.ETHITH_PACKS = [
     accentColor: "#a855f7"
   },
   {
-    id: "neon_frames_pack",
-    name: "Hologram Nameplates & Borders",
+    id: "cyber_neon_pack",
+    name: "Cyberpunk Neon Elite Pack",
     type: "coming_soon",
-    price: 300,
+    price: 350,
     isComingSoon: true,
-    icon: "🔮",
-    desc: "Profil va chat uchun maxsus harakatlanuvchi neon hoshiyalar va nom nishonlari to'plami.",
+    icon: "⚡",
+    desc: "Futuristik kiberpank neon ramkalar, kiber-samuray animatsiyalari va shahar nurlari nishoni.",
     badge: "TEZ KUNDA",
-    gradient: "linear-gradient(135deg, #334155 0%, #475569 50%, #64748b 100%)",
-    glowColor: "#94a3b8",
-    accentColor: "#64748b"
+    gradient: "linear-gradient(135deg, #09090b 0%, #06b6d4 50%, #3b82f6 100%)",
+    glowColor: "#38bdf8",
+    accentColor: "#0284c7"
   },
   {
-    id: "audio_fx_pack",
-    name: "VIP Sound FX & Taunts",
+    id: "mythic_dragon_pack",
+    name: "Mythic Dragon Sovereign Pack",
     type: "coming_soon",
-    price: 250,
+    price: 400,
     isComingSoon: true,
-    icon: "🎵",
-    desc: "Quiz Battle va chatda raqiblarni hayratga soluvchi maxsus ovoz effektlari va jingle to'plami.",
+    icon: "🐉",
     badge: "TEZ KUNDA",
-    gradient: "linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%)",
-    glowColor: "#a5b4fc",
-    accentColor: "#6366f1"
+    gradient: "linear-gradient(135deg, #450a0a 0%, #dc2626 50%, #f97316 100%)",
+    glowColor: "#fb923c",
+    accentColor: "#ea580c",
+    desc: "Qadimiy olovli ajdarho auralari, qizil alangali chat effektlari va imperator unvoni."
+  },
+  {
+    id: "galaxy_nebula_pack",
+    name: "Galaxy Nebula Supreme Pack",
+    type: "coming_soon",
+    price: 320,
+    isComingSoon: true,
+    icon: "🌌",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #1e1b4b 0%, #6366f1 50%, #a855f7 100%)",
+    glowColor: "#c084fc",
+    accentColor: "#9333ea",
+    desc: "Fazoviy tumanliklar, super-portlash chaqnashlari va yulduzlar changi profillar to'plami."
+  },
+  {
+    id: "royal_crown_pack",
+    name: "Royal Golden Crown Pack",
+    type: "coming_soon",
+    price: 450,
+    isComingSoon: true,
+    icon: "👑",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #78350f 0%, #f59e0b 50%, #fef08a 100%)",
+    glowColor: "#fde047",
+    accentColor: "#d97706",
+    desc: "Shohona olmos tojlar, tillarang ism yozuvlari va oliy hukmdorlik ramzlari."
+  },
+  {
+    id: "ancient_pharaoh_pack",
+    name: "Ancient Pharaoh Relic Pack",
+    type: "coming_soon",
+    price: 280,
+    isComingSoon: true,
+    icon: "🏺",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #3f2c1d 0%, #b45309 50%, #fde047 100%)",
+    glowColor: "#fbbf24",
+    accentColor: "#b45309",
+    desc: "Qadimgi Misr ehromlari xazinasi, tillo skarabeylar va fir'avnlar sehrli kuchi."
+  },
+  {
+    id: "quantum_warp_pack",
+    name: "Quantum Temporal Warp Pack",
+    type: "coming_soon",
+    price: 380,
+    isComingSoon: true,
+    icon: "🌀",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #0f172a 0%, #0284c7 50%, #2dd4bf 100%)",
+    glowColor: "#5eead4",
+    accentColor: "#0f766e",
+    desc: "Vaqt va fazo portallari, kvant tebranishlar va sirli o'lchamlar harakati."
+  },
+  {
+    id: "celestial_angel_pack",
+    name: "Celestial Angelic Halo Pack",
+    type: "coming_soon",
+    price: 360,
+    isComingSoon: true,
+    icon: "🪽",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #1e293b 0%, #38bdf8 50%, #e0f2fe 100%)",
+    glowColor: "#7dd3fc",
+    accentColor: "#0284c7",
+    desc: "Nurli farishta qanotlari, muqaddas auralar va osmon nafasidagi maxsus belgilar."
+  },
+  {
+    id: "shadow_phantom_pack",
+    name: "Shadow Ninja Phantom Pack",
+    type: "coming_soon",
+    price: 290,
+    isComingSoon: true,
+    icon: "🗡️",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #020617 0%, #334155 50%, #64748b 100%)",
+    glowColor: "#94a3b8",
+    accentColor: "#475569",
+    desc: "Tungi sharpalar, qora tutunli qochishlar va shurikenli sirli reaksiyalar."
+  },
+  {
+    id: "retro_arcade_pack",
+    name: "Retro 80s Synthwave Pack",
+    type: "coming_soon",
+    price: 270,
+    isComingSoon: true,
+    icon: "🕹️",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #4a044e 0%, #c026d3 50%, #f43f5e 100%)",
+    glowColor: "#f472b6",
+    accentColor: "#db2777",
+    desc: "80-yillar pikselli retro arkadalari, neon to'lqinlar va elektron bitlar kolleksiyasi."
+  },
+  {
+    id: "atlantis_ocean_pack",
+    name: "Oceanic Atlantis Leviathan Pack",
+    type: "coming_soon",
+    price: 340,
+    isComingSoon: true,
+    icon: "🔱",
+    badge: "TEZ KUNDA",
+    gradient: "linear-gradient(135deg, #083344 0%, #0891b2 50%, #67e8f9 100%)",
+    glowColor: "#67e8f9",
+    accentColor: "#0e7490",
+    desc: "Atlantida qa'ridagi dengiz marvaridlari, trident chaqnashlari va moviy suv to'lqinlari."
   }
 ];
 
@@ -3187,33 +3291,62 @@ window.ETHITH_RENDER_USER_AVATAR = function(user, size, extraClass, extraStyle) 
 };
 
 // ====================================================
-// PACK OPENING DROP LOGIC (RNG)
+// PACK OPENING DROP LOGIC (RNG & 15-PACK PITY SYSTEM)
 // ====================================================
 window.ETHITH_OPEN_PACK = function(packId, user) {
   var pack = (window.ETHITH_PACKS || []).find(function(p) { return p.id === packId; });
   if (!pack) return null;
 
-  var rand = Math.random() * 100;
+  if (!user) user = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || {};
+  var userKey = (user.email || user.name || 'guest').toLowerCase().trim().replace(/\s+/g, '_');
+  var pityStorageKey = 'ethith_pack_pity_' + userKey;
+  var currentPity = 0;
+  try {
+    currentPity = Number(user.pityCount || localStorage.getItem(pityStorageKey) || 0);
+  } catch(e) {}
+
+  // 15-PACK PITY RULE: 100% Epic or Legendary (50/50)
+  var isPityTriggered = (currentPity >= 15);
   var rarity = "Common";
-  if (rand < 5) rarity = "Legendary";
-  else if (rand < 20) rarity = "Epic";
-  else if (rand < 50) rarity = "Rare";
-  else rarity = "Common";
+
+  if (isPityTriggered) {
+    rarity = (Math.random() < 0.5) ? "Legendary" : "Epic";
+    currentPity = 0;
+  } else {
+    var rand = Math.random() * 100;
+    if (rand < 7) rarity = "Legendary";
+    else if (rand < 25) rarity = "Epic";
+    else if (rand < 55) rarity = "Rare";
+    else rarity = "Common";
+
+    if (rarity === "Epic" || rarity === "Legendary") {
+      currentPity = 0;
+    } else {
+      currentPity += 1;
+    }
+  }
+
+  user.pityCount = currentPity;
+  try { localStorage.setItem(pityStorageKey, String(currentPity)); } catch(e) {}
 
   if (pack.type === "daily") {
     var roll = Math.random() * 100;
-    if (roll < 70) {
-      var coinAmounts = [50, 75, 100, 120, 150, 200, 250];
+    if (roll < 60) {
+      var coinAmounts = [];
+      if (rarity === "Legendary") coinAmounts = [1200, 1600, 2200];
+      else if (rarity === "Epic") coinAmounts = [500, 650, 850];
+      else if (rarity === "Rare") coinAmounts = [240, 320, 420];
+      else coinAmounts = [100, 160, 200];
       var amount = coinAmounts[Math.floor(Math.random() * coinAmounts.length)];
       return {
         type: "coins",
-        rarity: (amount >= 200 ? "Epic" : (amount >= 120 ? "Rare" : "Common")),
+        rarity: rarity,
         amount: amount,
         name: amount + " ETHITH Coin!",
-        desc: "Hamyoningizga darhol qo'shildi!",
+        desc: "Kunlik qutidan tushgan xazina! Hamyoningizga darhol qo'shildi!",
         icon: "🪙"
       };
-    } else if (roll < 90) {
+    } else if (roll < 85) {
       var pz = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(rarity) : null;
       return {
         type: "prize",
@@ -3224,7 +3357,10 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         icon: pz ? pz.icon : "🎁"
       };
     } else {
-      var unlEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
+      var unlEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) {
+        return !e.isDefault && (e.rarity === rarity || !rarity);
+      });
+      if (!unlEmojis.length) unlEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
       var em = unlEmojis[Math.floor(Math.random() * unlEmojis.length)];
       return {
         type: "emoji",
@@ -3246,7 +3382,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
       name: pz ? pz.name : "Omadli Sovg'a",
       desc: pz ? pz.desc : "Ajoyib o'zbekcha sovrin!",
       icon: pz ? pz.icon : "💎",
-      coinPrice: pz ? pz.price : 100
+      coinPrice: pz ? pz.price : (rarity === "Legendary" ? 1000 : (rarity === "Epic" ? 450 : (rarity === "Rare" ? 200 : 80)))
     };
   }
 
@@ -3301,11 +3437,15 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
   if (pack.type === "mega") {
     var catRoll = Math.random() * 100;
     if (catRoll < 25) {
-      var coinAmounts = [150, 200, 250, 300, 400, 500, 750, 1000];
+      var coinAmounts = [];
+      if (rarity === "Legendary") coinAmounts = [1250, 1650, 2500];
+      else if (rarity === "Epic") coinAmounts = [600, 750, 950];
+      else if (rarity === "Rare") coinAmounts = [300, 420, 500];
+      else coinAmounts = [180, 220, 260];
       var amount = coinAmounts[Math.floor(Math.random() * coinAmounts.length)];
       return {
         type: "coins",
-        rarity: (amount >= 750 ? "Legendary" : (amount >= 400 ? "Epic" : (amount >= 250 ? "Rare" : "Common"))),
+        rarity: rarity,
         amount: amount,
         name: amount + " ETHITH Coin!",
         desc: "Universal Mega Packdan xazina! Hamyoningizga darhol qo'shildi!",
@@ -3320,7 +3460,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         name: pz ? pz.name : "Omadli Sovg'a",
         desc: pz ? pz.desc : "Mega Packdan tushgan maxsus sovrin!",
         icon: pz ? pz.icon : "💎",
-        coinPrice: pz ? pz.price : 150
+        coinPrice: pz ? pz.price : (rarity === "Legendary" ? 1000 : (rarity === "Epic" ? 450 : 200))
       };
     } else if (catRoll < 70) {
       var matching = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) {

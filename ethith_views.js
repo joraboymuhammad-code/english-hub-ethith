@@ -923,6 +923,60 @@
     };
   }
 
+  // Audio feedback synthesizer for quiz answers
+  function playQuizAnswerSound(isCorrect) {
+    try {
+      var AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      if (!window._ethAudioCtx) window._ethAudioCtx = new AudioCtx();
+      var ctx = window._ethAudioCtx;
+      if (ctx.state === 'suspended') ctx.resume();
+
+      var now = ctx.currentTime;
+
+      if (isCorrect) {
+        // Joyful, sparkling major arpeggio chime (C5, E5, G5, C6)
+        var notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach(function(freq, idx) {
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.065);
+
+          gain.gain.setValueAtTime(0.001, now + idx * 0.065);
+          gain.gain.exponentialRampToValueAtTime(0.24, now + idx * 0.065 + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.065 + 0.45);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(now + idx * 0.065);
+          osc.stop(now + idx * 0.065 + 0.46);
+        });
+      } else {
+        // Distinct, soft descending error tones (D3 -> Bb2)
+        var errNotes = [293.66, 233.08];
+        errNotes.forEach(function(freq, idx) {
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.13);
+
+          gain.gain.setValueAtTime(0.001, now + idx * 0.13);
+          gain.gain.exponentialRampToValueAtTime(0.25, now + idx * 0.13 + 0.025);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.13 + 0.35);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(now + idx * 0.13);
+          osc.stop(now + idx * 0.13 + 0.36);
+        });
+      }
+    } catch(e) {}
+  }
+  window.playQuizAnswerSound = playQuizAnswerSound;
+
   // Quiz runner for generated questions
   function startTopicQuizRunner(level, topicNum, topicTitle, questions, mainContainer) {
     window._ethithIsTestInProgress = true;
@@ -991,6 +1045,9 @@
           state.answered = true;
           var selected = btn.dataset.opt;
           var isCorrect = (selected === q.answer);
+
+          // Audio feedback
+          playQuizAnswerSound(isCorrect);
 
           optionBtns.forEach(function(b) {
             b.disabled = true;
@@ -10918,8 +10975,10 @@
   }
 
   // ====================================================
-  // 2. EA SPORTS & MLBB PACK MARKET VIEW
+  // 2. EA SPORTS & MLBB PACK MARKET VIEW + EXCHANGE VAULT
   // ====================================================
+  var _activeVaultFilter = 'all';
+
   function renderMarketView(container) {
     if (!container) return;
 
@@ -10932,14 +10991,23 @@
     var remainingHrs = Math.floor(remainingMs / (1000 * 60 * 60));
     var remainingMins = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
 
+    // Pity count
+    var userKey = (S.user && (S.user.email || S.user.name || 'guest')).toLowerCase().trim().replace(/\s+/g, '_');
+    var pityStorageKey = 'ethith_pack_pity_' + userKey;
+    var pityCount = 0;
+    try {
+      pityCount = Number((S.user && S.user.pityCount) || localStorage.getItem(pityStorageKey) || 0);
+    } catch(e) {}
+    var pityPct = Math.min(100, Math.round((pityCount / 15) * 100));
+
     var html = '<div class="eth-market-screen animate-fade-in">';
 
     // Banner
     html += '<div class="eth-market-banner">' +
       '<div>' +
-        '<div style="font-size:12px;font-weight:800;letter-spacing:1px;color:#fde047;text-transform:uppercase;margin-bottom:6px">⚡ ETHITH PACK SHOP ⚡</div>' +
-        '<h2 style="font-size:26px;font-weight:900;margin:0 0 8px">Sehrli Qutilar & Packlar Marketi</h2>' +
-        '<p style="font-size:14px;color:#cbd5e1;margin:0;max-width:540px">ETHITH Coinlaringiz evaziga noyob personaj avatarlari, qimmatbaho sovrinlar va Telegram chat emojilarini yutib oling!</p>' +
+        '<div style="font-size:12px;font-weight:800;letter-spacing:1px;color:#fde047;text-transform:uppercase;margin-bottom:6px">⚡ ETHITH PACK SHOP & MARKETPLACE ⚡</div>' +
+        '<h2 style="font-size:26px;font-weight:900;margin:0 0 8px">Sehrli Qutilar & O\'quvchilar Savdo Maydonchasi</h2>' +
+        '<p style="font-size:14px;color:#cbd5e1;margin:0;max-width:540px">ETHITH Coinlaringiz evaziga qutilarni oching, yutgan personaj avatarlari, sovrin va emojilaringizni esa shu yerda tangalarga soting!</p>' +
       '</div>' +
       '<div style="text-align:right;flex-shrink:0">' +
         '<div style="font-size:12px;color:#94a3b8;font-weight:700;margin-bottom:4px">HAMYONINGIZ:</div>' +
@@ -10948,6 +11016,25 @@
           '<span style="font-size:20px;font-weight:900;color:#fde047;font-family:monospace">' + userCoins.toLocaleString() + '</span>' +
           '<span style="font-size:11px;font-weight:800;color:#f59e0b">COIN</span>' +
         '</div>' +
+      '</div>' +
+    '</div>';
+
+    // Pity Banner (15-Pack Guarantee)
+    html += '<div class="eth-pity-banner">' +
+      '<div class="eth-pity-header">' +
+        '<div class="eth-pity-title">' +
+          '<span>🎯 OMAD KAFOLATI (PITY SYSTEM)</span>' +
+          (pityCount >= 15 ? '<span style="color:#fde047;font-size:12px;font-weight:800;animation:pulse 1s infinite">🔥 100% KAFOLAT FAOL!</span>' : '') +
+        '</div>' +
+        '<div class="eth-pity-badge">' + pityCount + ' / 15 Ochildi</div>' +
+      '</div>' +
+      '<div class="eth-pity-bar-wrap">' +
+        '<div class="eth-pity-fill" style="width:' + pityPct + '%"></div>' +
+      '</div>' +
+      '<div class="eth-pity-subtext">' +
+        (pityCount >= 15 ?
+          '✨ <b>Keyingi ochilgan packdan 100% aniq 50/50 nisbatda EPIC yoki LEGENDARY narsa tushadi!</b>' :
+          '💡 Har qanday packdan ketma-ket 15 marta ochilganda 100% kafolatlangan Epic yoki Legendary (50/50 nisbatda) sovrin chiqadi.') +
       '</div>' +
     '</div>';
 
@@ -10978,8 +11065,204 @@
     });
     html += '</div>';
 
-    html += '</div>';
+    // Gather Student's Sellable Inventory Items
+    var sellableItems = [];
+
+    // 1. Gifts / Prizes
+    var userGifts = (S.user && Array.isArray(S.user.gifts)) ? S.user.gifts : [];
+    userGifts.forEach(function(g, idx) {
+      var rarity = g.rarity || 'Common';
+      var val = g.price || (rarity === 'Legendary' ? 1000 : (rarity === 'Epic' ? 450 : (rarity === 'Rare' ? 200 : 70)));
+      sellableItems.push({
+        type: 'gift',
+        index: idx,
+        id: 'gift_' + idx,
+        name: g.name || 'Sovrin',
+        desc: g.desc || 'Packdan tushgan maxsus buyum',
+        icon: g.icon || '🎁',
+        rarity: rarity,
+        price: val
+      });
+    });
+
+    // 2. Unlocked Emojis (non-default)
+    var defaultEmojis = window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
+    var userEmojis = (S.user && Array.isArray(S.user.unlockedEmojis)) ? S.user.unlockedEmojis : [];
+    userEmojis.forEach(function(emChar) {
+      if (defaultEmojis.indexOf(emChar) === -1) {
+        var catalogEntry = (window.ETHITH_CHAT_EMOJIS || []).find(function(e) { return e.emoji === emChar; });
+        var rarity = catalogEntry ? catalogEntry.rarity : 'Rare';
+        var val = (rarity === 'Legendary' ? 850 : (rarity === 'Epic' ? 400 : (rarity === 'Rare' ? 180 : 60)));
+        sellableItems.push({
+          type: 'emoji',
+          emojiChar: emChar,
+          id: 'emoji_' + emChar,
+          name: emChar + ' ' + (catalogEntry ? catalogEntry.name : 'Maxsus Emoji'),
+          desc: 'Chat va reaksiyalarda ochilgan emoji',
+          icon: emChar,
+          rarity: rarity,
+          price: val
+        });
+      }
+    });
+
+    // 3. Unlocked Avatars (exclude currently active avatar to prevent blank profile)
+    var userAvatars = (S.user && Array.isArray(S.user.unlockedAvatars)) ? S.user.unlockedAvatars : [];
+    userAvatars.forEach(function(avId) {
+      if (avId !== (S.user && S.user.avatar)) {
+        var avObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === avId; });
+        var rarity = avObj ? avObj.rarity : 'Epic';
+        var val = (rarity === 'Legendary' ? 1200 : (rarity === 'Epic' ? 550 : 250));
+        sellableItems.push({
+          type: 'avatar',
+          avatarId: avId,
+          id: 'avatar_' + avId,
+          name: avObj ? avObj.name : 'Personaj Avatari',
+          desc: avObj ? avObj.tagline : 'Eksklyuziv personaj avatari',
+          svg: avObj ? avObj.svg : '',
+          rarity: rarity,
+          price: val
+        });
+      }
+    });
+
+    // Filter items
+    var filteredItems = sellableItems.filter(function(item) {
+      if (_activeVaultFilter === 'gifts') return item.type === 'gift';
+      if (_activeVaultFilter === 'emojis') return item.type === 'emoji';
+      if (_activeVaultFilter === 'avatars') return item.type === 'avatar';
+      return true;
+    });
+
+    // Render Student Item Exchange & Sell Vault
+    html += '<div class="eth-vault-section">' +
+      '<div class="eth-vault-header">' +
+        '<div class="eth-vault-title-wrap">' +
+          '<h3>' +
+            '<span>🪙 O\'quvchilar Savdo & Ayirboshlash Maydonchasi</span>' +
+          '</h3>' +
+          '<p>Packlardan tushgan ortiqcha sovg\'alar, emojilar va personaj avatarlaringizni sotib, balansingizni ETHITH Coinlar bilan boyiting!</p>' +
+        '</div>' +
+        '<div class="eth-vault-filters">' +
+          '<button type="button" class="eth-vault-filter-btn ' + (_activeVaultFilter === 'all' ? 'active' : '') + '" data-vault-filter="all">Hammasi (' + sellableItems.length + ')</button>' +
+          '<button type="button" class="eth-vault-filter-btn ' + (_activeVaultFilter === 'gifts' ? 'active' : '') + '" data-vault-filter="gifts">Sovg\'alar (' + userGifts.length + ')</button>' +
+          '<button type="button" class="eth-vault-filter-btn ' + (_activeVaultFilter === 'emojis' ? 'active' : '') + '" data-vault-filter="emojis">Chat Emojilari</button>' +
+          '<button type="button" class="eth-vault-filter-btn ' + (_activeVaultFilter === 'avatars' ? 'active' : '') + '" data-vault-filter="avatars">Avatarlar</button>' +
+        '</div>' +
+      '</div>';
+
+    if (filteredItems.length === 0) {
+      html += '<div class="eth-vault-empty">' +
+        '<div class="eth-vault-empty-icon">📦</div>' +
+        '<h4 style="font-size:18px;font-weight:800;color:#f1f5f9;margin:0 0 6px">Sotiladigan buyumlar topilmadi</h4>' +
+        '<p style="margin:0;font-size:13.5px;max-width:460px;margin:0 auto">Yuqoridagi sehrli qutilardan (Pack) ochib, yangi sovrin, avatar yoki emojilarni yutib oling va shu yerda tangalarga soting!</p>' +
+      '</div>';
+    } else {
+      html += '<div class="eth-vault-grid">';
+      filteredItems.forEach(function(item) {
+        var iconHtml = '';
+        if (item.type === 'avatar' && item.svg) {
+          iconHtml = item.svg;
+        } else if (item.type === 'emoji') {
+          iconHtml = '<span>' + item.icon + '</span>';
+        } else {
+          iconHtml = '<span>' + (item.icon || '🎁') + '</span>';
+        }
+
+        html += '<div class="eth-vault-card rarity-' + item.rarity + '">' +
+          '<div class="eth-rarity-badge eth-rarity-' + item.rarity + '" style="position:static;margin-bottom:8px">' + item.rarity + '</div>' +
+          '<div class="eth-vault-card-icon">' + iconHtml + '</div>' +
+          '<div class="eth-vault-card-name">' + esc(item.name) + '</div>' +
+          '<div class="eth-vault-card-type">' + esc(item.desc) + '</div>' +
+          '<div class="eth-vault-price-badge">' +
+            window.ETHITH_COIN_SVG(16) +
+            '<span>+' + item.price.toLocaleString() + ' Coin</span>' +
+          '</div>' +
+          '<button type="button" class="eth-vault-sell-btn" data-action="sell-vault-item" data-item-type="' + item.type + '" data-item-id="' + item.id + '" data-item-price="' + item.price + '" data-item-name="' + esc(item.name) + '" data-item-key="' + (item.emojiChar || item.avatarId || item.index) + '">' +
+            '💰 Sotish (+' + item.price + ')' +
+          '</button>' +
+        '</div>';
+      });
+      html += '</div>';
+    }
+
+    html += '</div>'; // end eth-vault-section
+    html += '</div>'; // end eth-market-screen
+
     container.innerHTML = html;
+
+    // Filter Buttons Listener
+    container.querySelectorAll('[data-vault-filter]').forEach(function(btn) {
+      btn.onclick = function() {
+        _activeVaultFilter = btn.dataset.vaultFilter;
+        renderMarketView(container);
+      };
+    });
+
+    // Sell Items Listener
+    container.querySelectorAll('[data-action="sell-vault-item"]').forEach(function(btn) {
+      btn.onclick = function() {
+        var itType = btn.dataset.itemType;
+        var itPrice = Number(btn.dataset.itemPrice) || 0;
+        var itName = btn.dataset.itemName;
+        var itKey = btn.dataset.itemKey;
+
+        if (!confirm('"' + itName + '" buyumini +' + itPrice + ' ETHITH Coinga sotishni tasdiqlaysizmi?')) {
+          return;
+        }
+
+        if (itType === 'gift') {
+          var gIdx = Number(itKey);
+          if (Array.isArray(S.user.gifts) && gIdx >= 0 && gIdx < S.user.gifts.length) {
+            S.user.gifts.splice(gIdx, 1);
+          }
+        } else if (itType === 'emoji') {
+          if (Array.isArray(S.user.unlockedEmojis)) {
+            var eIdx = S.user.unlockedEmojis.indexOf(itKey);
+            if (eIdx > -1) S.user.unlockedEmojis.splice(eIdx, 1);
+          }
+        } else if (itType === 'avatar') {
+          if (Array.isArray(S.user.unlockedAvatars)) {
+            var aIdx = S.user.unlockedAvatars.indexOf(itKey);
+            if (aIdx > -1) S.user.unlockedAvatars.splice(aIdx, 1);
+          }
+        }
+
+        // Add coins to user balance
+        S.user.coins = (S.user.coins || 0) + itPrice;
+        if (Array.isArray(S.accounts)) {
+          var myAcc = S.accounts.find(function(a) {
+            return (a.email && S.user.email && a.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                   (a.name && S.user.name && a.name.toLowerCase() === S.user.name.toLowerCase());
+          });
+          if (myAcc) myAcc.coins = S.user.coins;
+        }
+
+        App.saveState();
+        if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+
+        // Broadcast user state
+        if (window.EthithSync && window.EthithSync.publishLive) {
+          window.EthithSync.publishLive({
+            type: 'USER_STATE_SYNC',
+            user: {
+              id: S.user.id,
+              name: S.user.name,
+              email: S.user.email,
+              role: S.user.role,
+              coins: S.user.coins,
+              avatar: S.user.avatar,
+              level: S.level || S.user.level,
+              dailyMinutes: S.user.dailyMinutes
+            }
+          });
+        }
+
+        playPackMagicSound('connect');
+        alert('🎉 "' + itName + '" muvaffaqiyatli sotildi!\nHamyoningizga +' + itPrice + ' ETHITH Coin qo\'shildi!');
+        renderMarketView(container);
+      };
+    });
 
     // Attach click listeners to open packs
     container.querySelectorAll('[data-action="open-pack"]').forEach(function(btn) {
