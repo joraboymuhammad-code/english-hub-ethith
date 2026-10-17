@@ -4197,21 +4197,75 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   color: #fff !important;
 }
 
-/* 3D Funny Prizes Gift Cards */
+/* Sovrinlar (Prizes) Grid & Cards - Rock Solid, No Cursor Flicker */
+.eth-sovrin-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+}
+@media (max-width: 900px) {
+  .eth-sovrin-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 560px) {
+  .eth-sovrin-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 .eth-gift-card-3d {
-  perspective: 600px !important;
-  transform-style: preserve-3d !important;
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)) !important;
-  border: 2px solid rgba(245, 158, 11, 0.5) !important;
-  border-radius: 16px !important;
-  padding: 20px !important;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)) !important;
+  border: 1.5px solid rgba(245, 158, 11, 0.35) !important;
+  border-radius: 20px !important;
+  padding: 24px 20px !important;
   text-align: center !important;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(245, 158, 11, 0.1) !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  position: relative !important;
 }
 .eth-gift-card-3d:hover {
-  transform: translateY(-6px) rotateX(4deg) !important;
-  box-shadow: 0 20px 45px rgba(245, 158, 11, 0.3) !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 14px 40px rgba(245, 158, 11, 0.25) !important;
+}
+
+/* Dedicated Send Gift Modal Overlay & Box */
+.eth-gift-modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 99999999 !important;
+  background: rgba(15, 23, 42, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+  overflow-y: auto !important;
+}
+
+.eth-gift-modal-box {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border-radius: 24px !important;
+  width: 100% !important;
+  max-width: 500px !important;
+  padding: 24px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  position: relative !important;
+  z-index: 100000000 !important;
+  animation: ethFadeIn 0.2s ease !important;
 }
 .eth-gift-emoji-3d {
   font-size: 64px !important;
@@ -5196,11 +5250,13 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 }
 .eth-gift-action-btn:hover {
   background: linear-gradient(135deg, #fbbf24, #f97316) !important;
-  transform: translateY(-2px) scale(1.02) !important;
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.65) !important;
+  box-shadow: 0 6px 22px rgba(245, 158, 11, 0.7) !important;
 }
 .eth-gift-action-btn:active {
-  transform: translateY(0) scale(0.98) !important;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4) !important;
+}
+.eth-gift-action-btn * {
+  pointer-events: none !important;
 }
 
 /* ====================================================

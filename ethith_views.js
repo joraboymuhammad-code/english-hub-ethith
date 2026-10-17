@@ -7953,14 +7953,23 @@
     function renderContent() {
       // 0. Auto-claim any received gifts from friends in localStorage
       var myRecKey = 'ethith_received_gifts_' + (S.user.name || '').toLowerCase().trim();
+      var myRecKeyEmail = 'ethith_received_gifts_' + (S.user.email || S.user.id || '').toLowerCase().trim();
       var pendingGifts = [];
-      try { pendingGifts = JSON.parse(localStorage.getItem(myRecKey) || '[]'); } catch(e) {}
+      try { pendingGifts = pendingGifts.concat(JSON.parse(localStorage.getItem(myRecKey) || '[]')); } catch(e) {}
+      try {
+        if (myRecKeyEmail && myRecKeyEmail !== myRecKey) {
+          pendingGifts = pendingGifts.concat(JSON.parse(localStorage.getItem(myRecKeyEmail) || '[]'));
+        }
+      } catch(e) {}
       if (pendingGifts.length > 0) {
         if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
         pendingGifts.forEach(function(g) {
-          S.user.gifts.unshift(g);
+          if (!S.user.gifts.some(function(existing) { return existing.id === g.id; })) {
+            S.user.gifts.unshift(g);
+          }
         });
         localStorage.removeItem(myRecKey);
+        if (myRecKeyEmail) localStorage.removeItem(myRecKeyEmail);
         if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
       }
 
@@ -8114,23 +8123,23 @@
             html += '  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-md mx-auto">Quiz Bellashuvlarida qatnashib kuchli uchlikka kiring va birinchi sovriningizni yutib oling!</p>';
             html += '</div>';
           } else {
-            html += '<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">';
+            html += '<div class="eth-sovrin-grid">';
             S.user.gifts.forEach(function(gift, idx) {
               var isFromFriend = Boolean(gift.fromFriend || gift.senderName);
               var senderTitle = gift.fromFriend || gift.senderName || '';
 
-              html += '<div class="eth-gift-card-3d bg-white dark:bg-gray-800 rounded-2xl p-5 border border-amber-200/60 dark:border-amber-700/60 shadow-md hover:shadow-xl transition-all flex flex-col justify-between text-center relative overflow-hidden">';
+              html += '<div class="eth-gift-card-3d">';
               html += '  <div>';
-              html += '    <div class="text-6xl my-2 transform hover:scale-110 transition-transform">' + (gift.icon || '🎁') + '</div>';
-              html += '    <h4 class="font-extrabold text-sm md:text-base text-gray-900 dark:text-white mt-2 leading-snug">' + (gift.name || 'Sovrin') + '</h4>';
-              html += '    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 line-clamp-3 leading-relaxed">' + (gift.desc || '') + '</p>';
+              html += '    <div class="eth-gift-emoji-3d">' + (gift.icon || '🎁') + '</div>';
+              html += '    <h4 style="font-size:16px;font-weight:900;color:#ffffff;margin:8px 0 4px;line-height:1.3;">' + esc(gift.name || 'Sovrin') + '</h4>';
+              html += '    <p style="font-size:12px;color:#94a3b8;line-height:1.5;margin:6px 0;">' + esc(gift.desc || '') + '</p>';
               if (isFromFriend) {
-                html += '    <div class="mt-2.5 text-[11px] font-black text-blue-500 bg-blue-50 dark:bg-blue-950/60 border border-blue-300 dark:border-blue-800/80 rounded-lg px-2.5 py-1 inline-flex items-center gap-1.5 shadow-sm">🎁 Do\'stdan sovg\'a (' + senderTitle + ')</div>';
+                html += '    <div style="margin-top:8px;font-size:11px;font-weight:900;color:#60a5fa;background:rgba(37,99,235,0.15);border:1px solid rgba(96,165,250,0.4);border-radius:8px;padding:4px 10px;display:inline-flex;align-items:center;gap:6px;">🎁 Do\'stdan sovg\'a (' + esc(senderTitle) + ')</div>';
               }
               html += '  </div>';
-              html += '  <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700/60">';
-              html += '    <button class="btnSendGiftModal eth-gift-action-btn" data-gift-idx="' + idx + '">';
-              html += '      <span>🎁 Do\'stga yuborish</span>';
+              html += '  <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);">';
+              html += '    <button type="button" class="btnSendGiftModal eth-gift-action-btn" data-gift-idx="' + idx + '">';
+              html += '      🎁 Do\'stga yuborish';
               html += '    </button>';
               html += '  </div>';
               html += '</div>';
@@ -10040,7 +10049,7 @@
     if (!gift) return;
 
     var overlay = document.createElement('div');
-    overlay.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md overflow-y-auto';
+    overlay.className = 'eth-gift-modal-overlay';
 
     var myEmail = (S.user && (S.user.email || S.user.id || '')).toLowerCase().trim();
     var myName = (S.user && S.user.name || '').toLowerCase().trim();
@@ -10083,38 +10092,36 @@
       { name: "John Doe", email: "john@ethith.uz" }
     ].forEach(addFriend);
 
-    var html = '<div class="bg-gray-900 text-white rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl border border-gray-800 space-y-5 animate-fade-in">';
+    var html = '<div class="eth-gift-modal-box">';
 
-    html += '  <div class="flex items-center justify-between border-b border-gray-800 pb-3.5">';
-    html += '    <div class="flex items-center gap-2.5">';
-    html += '      <span class="text-2xl">🎁</span>';
-    html += '      <h3 class="text-lg font-black text-white">Do\'stga Sovrin Yuborish</h3>';
+    html += '  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.12);padding-bottom:14px;">';
+    html += '    <div style="display:flex;align-items:center;gap:10px;">';
+    html += '      <span style="font-size:24px;">🎁</span>';
+    html += '      <h3 style="font-size:18px;font-weight:900;color:#ffffff;margin:0;">Do\'stga Sovrin Yuborish</h3>';
     html += '    </div>';
-    html += '    <button id="btnCloseSendGift" class="eth-modal-close-btn" title="Yopish">✕</button>';
+    html += '    <button type="button" id="btnCloseSendGift" class="eth-modal-close-btn" title="Yopish">✕</button>';
     html += '  </div>';
 
     // Prize Card Preview
-    html += '  <div class="eth-gift-card-3d bg-gray-800/80 border border-amber-500/40 rounded-2xl p-4 text-center space-y-1 shadow-inner">';
-    html += '    <div class="text-5xl">' + (gift.icon || '🎁') + '</div>';
-    html += '    <div class="font-black text-base text-white mt-1">' + (gift.name || 'Sovrin') + '</div>';
-    html += '    <div class="text-xs text-gray-400 leading-relaxed">' + (gift.desc || '') + '</div>';
+    html += '  <div class="eth-gift-card-3d" style="padding:16px!important;box-shadow:none!important;margin:0!important;">';
+    html += '    <div style="font-size:46px;line-height:1;margin-bottom:6px;">' + (gift.icon || '🎁') + '</div>';
+    html += '    <div style="font-weight:900;font-size:15px;color:#ffffff;">' + esc(gift.name || 'Sovrin') + '</div>';
+    html += '    <div style="font-size:11.5px;color:#94a3b8;line-height:1.4;margin-top:4px;">' + esc(gift.desc || '') + '</div>';
     html += '  </div>';
 
     // Search Box (User Requirement)
-    html += '  <div class="space-y-2">';
-    html += '    <label class="text-[11px] font-black uppercase tracking-wider text-gray-400 block">Do\'stingizni qidiring:</label>';
-    html += '    <div class="relative">';
-    html += '      <input id="inputFriendSearch" type="text" placeholder="🔍 Do\'stingizning ismini yozing..." class="w-full px-4 py-2.5 rounded-xl bg-gray-950 border border-gray-700 text-white text-xs font-bold focus:border-blue-500 focus:outline-none transition-all placeholder-gray-500" />';
-    html += '    </div>';
+    html += '  <div style="display:flex;flex-direction:column;gap:6px;">';
+    html += '    <label style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;color:#94a3b8;">Do\'stingizni qidiring:</label>';
+    html += '    <input id="inputFriendSearch" type="text" placeholder="🔍 Do\'stingizning ismini yozing..." style="width:100%;box-sizing:border-box;padding:11px 14px;border-radius:12px;background:#030712;border:1.5px solid #374151;color:#ffffff;font-size:13px;font-weight:700;outline:none;" />';
     html += '  </div>';
 
     // Dynamic Friends List Container
-    html += '  <div class="space-y-1.5">';
-    html += '    <div class="flex items-center justify-between text-[11px] text-gray-400 font-bold px-1">';
+    html += '  <div>';
+    html += '    <div style="display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:#94a3b8;font-weight:700;margin-bottom:8px;">';
     html += '      <span>Mavjud do\'stlar</span>';
-    html += '      <span id="friendsCountBadge" class="text-blue-400 font-mono">' + friendsList.length + ' ta</span>';
+    html += '      <span id="friendsCountBadge" style="color:#60a5fa;font-family:monospace;font-weight:900;">' + friendsList.length + ' ta</span>';
     html += '    </div>';
-    html += '    <div id="friendsListContainer" class="space-y-1.5 max-h-56 overflow-y-auto pr-1">';
+    html += '    <div id="friendsListContainer" style="display:flex;flex-direction:column;gap:8px;max-height:220px;overflow-y:auto;padding-right:4px;">';
     html += '    </div>';
     html += '  </div>';
 
@@ -10123,8 +10130,22 @@
     overlay.innerHTML = html;
     document.body.appendChild(overlay);
 
-    function close() { overlay.remove(); }
-    overlay.querySelector('#btnCloseSendGift').onclick = close;
+    var onEsc = function(e) {
+      if (e.key === 'Escape') close();
+    };
+    window.addEventListener('keydown', onEsc);
+
+    function close() {
+      window.removeEventListener('keydown', onEsc);
+      overlay.remove();
+    }
+
+    overlay.onclick = function(e) {
+      if (e.target === overlay) close();
+    };
+
+    var btnClose = overlay.querySelector('#btnCloseSendGift');
+    if (btnClose) btnClose.onclick = close;
 
     function renderFilteredFriends(query) {
       query = (query || '').toLowerCase().trim();
@@ -10139,21 +10160,21 @@
       if (!containerEl) return;
 
       if (filtered.length === 0) {
-        containerEl.innerHTML = '<div class="p-6 text-center text-xs text-gray-400 font-bold bg-gray-950/50 rounded-xl border border-dashed border-gray-800">Hech qanday o\'quvchi topilmadi</div>';
+        containerEl.innerHTML = '<div style="padding:24px;text-align:center;font-size:12px;color:#94a3b8;font-weight:700;background:#030712;border-radius:12px;border:1px dashed #374151;">Hech qanday o\'quvchi topilmadi</div>';
         return;
       }
 
       var itemsHtml = '';
       filtered.forEach(function(fr) {
-        itemsHtml += '<div class="p-3 bg-gray-800/90 rounded-xl border border-gray-700 flex items-center justify-between gap-3 hover:border-amber-400 transition-all">';
-        itemsHtml += '  <div class="flex items-center gap-2.5 min-w-0 flex-1 truncate">';
-        itemsHtml += '    <span class="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-sm flex-shrink-0">👤</span>';
-        itemsHtml += '    <div class="min-w-0 truncate">';
-        itemsHtml += '      <div class="font-extrabold text-xs text-white truncate">' + fr.name + '</div>';
-        itemsHtml += '      <div class="text-[10px] text-gray-400 truncate">' + fr.email + '</div>';
+        itemsHtml += '<div style="padding:10px 14px;background:rgba(30,41,59,0.9);border-radius:14px;border:1px solid #334155;display:flex;align-items:center;justify-content:space-between;gap:12px;">';
+        itemsHtml += '  <div style="display:flex;align-items:center;gap:10px;min-width:0;flex:1;">';
+        itemsHtml += '    <span style="width:34px;height:34px;border-radius:10px;background:rgba(59,130,246,0.2);border:1px solid rgba(96,165,250,0.4);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">👤</span>';
+        itemsHtml += '    <div style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">';
+        itemsHtml += '      <div style="font-weight:800;font-size:13px;color:#ffffff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(fr.name) + '</div>';
+        itemsHtml += '      <div style="font-size:10.5px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(fr.email) + '</div>';
         itemsHtml += '    </div>';
         itemsHtml += '  </div>';
-        itemsHtml += '  <button class="btnSendToThisFriend eth-gift-action-btn flex-shrink-0" style="width:auto!important;padding:6px 14px!important;font-size:11.5px!important" data-friend-name="' + esc(fr.name) + '" data-friend-email="' + esc(fr.email) + '">';
+        itemsHtml += '  <button type="button" class="btnSendToThisFriend eth-gift-action-btn" style="width:auto!important;padding:7px 14px!important;font-size:12px!important;flex-shrink:0;" data-friend-name="' + esc(fr.name) + '" data-friend-email="' + esc(fr.email) + '">';
         itemsHtml += '    Yuborish 🎁';
         itemsHtml += '  </button>';
         itemsHtml += '</div>';
@@ -10188,11 +10209,19 @@
       });
 
       // 2. Save into recipient's auto-claim inbox in localStorage
-      var targetKey = 'ethith_received_gifts_' + targetName.toLowerCase().trim();
+      var targetKeyName = 'ethith_received_gifts_' + targetName.toLowerCase().trim();
       var pending = [];
-      try { pending = JSON.parse(localStorage.getItem(targetKey) || '[]'); } catch(e) {}
+      try { pending = JSON.parse(localStorage.getItem(targetKeyName) || '[]'); } catch(e) {}
       pending.push(transferredGift);
-      localStorage.setItem(targetKey, JSON.stringify(pending));
+      localStorage.setItem(targetKeyName, JSON.stringify(pending));
+
+      if (targetEmail) {
+        var targetKeyEmail = 'ethith_received_gifts_' + targetEmail.toLowerCase().trim();
+        var pendingEmail = [];
+        try { pendingEmail = JSON.parse(localStorage.getItem(targetKeyEmail) || '[]'); } catch(e) {}
+        pendingEmail.push(transferredGift);
+        localStorage.setItem(targetKeyEmail, JSON.stringify(pendingEmail));
+      }
 
       // 3. Broadcast GIFT_SENT event via real-time sync
       if (window.EthithSync && window.EthithSync.publishLive) {
@@ -10211,7 +10240,7 @@
       var toast = document.createElement('div');
       toast.className = 'animate-fade-in';
       toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:14px 28px;border-radius:16px;font-weight:800;z-index:99999999;box-shadow:0 12px 35px rgba(0,0,0,0.5);border:2px solid #10b981;display:flex;align-items:center;gap:12px;backdrop-filter:blur(10px);';
-      toast.innerHTML = '<span style="font-size:26px;">🎁</span><div><div style="font-size:13px;font-weight:900;color:#10b981;">Sovrin Muvaffaqiyatli Yuborildi!</div><div style="font-size:12px;color:#e2e8f0;font-weight:600;">\'' + gift.name + '\' sovrini ' + targetName + ' ga yuborildi!</div></div>';
+      toast.innerHTML = '<span style="font-size:26px;">🎁</span><div><div style="font-size:13px;font-weight:900;color:#10b981;">Sovrin Muvaffaqiyatli Yuborildi!</div><div style="font-size:12px;color:#e2e8f0;font-weight:600;">\'' + esc(gift.name) + '\' sovrini ' + esc(targetName) + ' ga yuborildi!</div></div>';
       document.body.appendChild(toast);
       setTimeout(function() {
         toast.style.opacity = '0';
