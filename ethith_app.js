@@ -70,7 +70,48 @@
   if (!S.deletedExamIds) S.deletedExamIds = [];
   if (!S.notifications) S.notifications = [];
   if (!Array.isArray(S.quizzes)) S.quizzes = [];
-  if (S.user && !Array.isArray(S.user.gifts)) S.user.gifts = [];
+  if (!Array.isArray(S.accounts)) S.accounts = [];
+
+  if (S.user) {
+    if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
+
+    // Ensure user is present in S.accounts
+    var curEmail = (S.user.email || '').toLowerCase().trim();
+    var curName = (S.user.name || '').trim();
+    var exAcc = S.accounts.find(function(a) {
+      return (curEmail && a.email && a.email.toLowerCase() === curEmail) ||
+             (curName && a.name && a.name.toLowerCase() === curName.toLowerCase());
+    });
+    if (!exAcc) {
+      S.accounts.push({
+        id: S.user.id || ('st_' + Date.now()),
+        role: S.user.role || 'student',
+        name: curName || 'Foydalanuvchi',
+        email: curEmail || (curName.toLowerCase().replace(/\s+/g, '.') + '@ethith.uz'),
+        gifts: S.user.gifts,
+        createdAt: Date.now()
+      });
+    } else {
+      if (Array.isArray(exAcc.gifts) && exAcc.gifts.length > 0 && S.user.gifts.length === 0) {
+        S.user.gifts = exAcc.gifts.slice();
+      }
+    }
+
+    // Restore from dedicated localStorage backup if needed
+    var myKey = (curEmail || curName).toLowerCase().trim();
+    if (myKey) {
+      try {
+        var backupGifts = JSON.parse(localStorage.getItem('ethith_student_gifts_' + myKey) || '[]');
+        if (Array.isArray(backupGifts)) {
+          backupGifts.forEach(function(bg) {
+            if (!S.user.gifts.some(function(g) { return g.id === bg.id; })) {
+              S.user.gifts.push(bg);
+            }
+          });
+        }
+      } catch(e) {}
+    }
+  }
 
   if (S.quizzes.length === 0) {
     S.quizzes.push({
@@ -197,8 +238,18 @@
             S.classes = updated.classes || S.classes;
             S.exams = updated.exams || S.exams;
             S.quizzes = updated.quizzes || S.quizzes;
+            if (Array.isArray(updated.accounts)) S.accounts = updated.accounts;
+            if (updated.user && S.user && (updated.user.email === S.user.email || updated.user.id === S.user.id)) {
+              if (Array.isArray(updated.user.gifts)) S.user.gifts = updated.user.gifts;
+            }
             if (window._ethithCurrentView === 'classes' && S.activeClassId) {
               renderClassChat();
+            }
+            if (window._ethithRefreshGifts) {
+              window._ethithRefreshGifts();
+            }
+            if (window._ethithRefreshFriendsList) {
+              window._ethithRefreshFriendsList();
             }
           }
         } catch(err) {}
@@ -387,13 +438,23 @@
             role: 'student',
             name: existingAcc.name || name,
             email: cleanEmail,
-            dailyMinutes: existingAcc.dailyMinutes || 0
+            dailyMinutes: existingAcc.dailyMinutes || 0,
+            gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : (Array.isArray(S.user && S.user.gifts) ? S.user.gifts : [])
           };
           if (existingAcc.level) S.level = existingAcc.level;
           if (existingAcc.unlocked) S.unlocked = existingAcc.unlocked;
           if (existingAcc.quizScores) S.quizScores = existingAcc.quizScores;
           if (existingAcc.mistakes) S.mistakes = existingAcc.mistakes;
           existingAcc.updatedAt = Date.now();
+
+          try {
+            var regList = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+            if (!regList.some(function(u) { return (u.email && u.email.toLowerCase() === cleanEmail) || u.name.toLowerCase() === name.toLowerCase(); })) {
+              regList.push({ id: existingAcc.id, name: existingAcc.name || name, email: cleanEmail, role: 'student', joinedAt: Date.now() });
+              localStorage.setItem('ethith_all_registered_users', JSON.stringify(regList));
+            }
+          } catch(e) {}
+
           saveState();
           if (window.EthithSync) {
             window.EthithSync.pushRemoteStore();
@@ -414,6 +475,7 @@
             quizScores: {},
             mistakes: [],
             dailyMinutes: 0,
+            gifts: (S.user && Array.isArray(S.user.gifts)) ? S.user.gifts : [],
             createdAt: Date.now(),
             updatedAt: Date.now()
           };
@@ -423,8 +485,30 @@
             role: 'student',
             name: newAcc.name,
             email: newAcc.email,
-            dailyMinutes: 0
+            dailyMinutes: 0,
+            gifts: newAcc.gifts
           };
+
+          try {
+            var allUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+            if (!allUsers.some(function(u) { return (u.email && u.email.toLowerCase() === cleanEmail) || u.name.toLowerCase() === name.toLowerCase(); })) {
+              allUsers.push({ id: newAcc.id, name: name, email: cleanEmail, role: 'student', joinedAt: Date.now() });
+              localStorage.setItem('ethith_all_registered_users', JSON.stringify(allUsers));
+            }
+          } catch(e) {}
+
+          if (window.EthithSync && window.EthithSync.publishLive) {
+            window.EthithSync.publishLive({
+              type: 'USER_REGISTERED',
+              user: {
+                id: newAcc.id,
+                name: newAcc.name,
+                email: newAcc.email,
+                role: 'student'
+              }
+            });
+          }
+
           saveState();
           if (window.EthithSync) {
             window.EthithSync.pushRemoteStore();
@@ -455,14 +539,51 @@
           return;
         }
 
+        var cleanTcEmail = email.toLowerCase().trim();
         S.user = {
           id: 'tc_' + Math.random().toString(36).substr(2, 9),
           role: 'teacher',
           name: name,
-          email: email,
+          email: cleanTcEmail,
           dailyMinutes: 0
         };
+
+        if (!Array.isArray(S.accounts)) S.accounts = [];
+        var exTc = S.accounts.find(function(a) { return a.email && a.email.toLowerCase() === cleanTcEmail; });
+        if (!exTc) {
+          S.accounts.push({
+            id: S.user.id,
+            role: 'teacher',
+            name: name,
+            email: cleanTcEmail,
+            createdAt: Date.now()
+          });
+        }
+
+        try {
+          var allRegTc = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+          if (!allRegTc.some(function(u) { return (u.email && u.email.toLowerCase() === cleanTcEmail) || u.name.toLowerCase() === name.toLowerCase(); })) {
+            allRegTc.push({ id: S.user.id, name: name, email: cleanTcEmail, role: 'teacher', joinedAt: Date.now() });
+            localStorage.setItem('ethith_all_registered_users', JSON.stringify(allRegTc));
+          }
+        } catch(e) {}
+
+        if (window.EthithSync && window.EthithSync.publishLive) {
+          window.EthithSync.publishLive({
+            type: 'USER_REGISTERED',
+            user: {
+              id: S.user.id,
+              name: name,
+              email: cleanTcEmail,
+              role: 'teacher'
+            }
+          });
+        }
+
         saveState();
+        if (window.EthithSync) {
+          window.EthithSync.pushRemoteStore();
+        }
         overlay.remove();
         window.ethithOpenApp('dash');
       };
@@ -499,6 +620,7 @@
         acc.mistakes = S.mistakes;
         acc.dailyMinutes = S.user.dailyMinutes || 0;
         acc.name = S.user.name;
+        acc.gifts = S.user.gifts || [];
         acc.updatedAt = Date.now();
         saveState();
         if (window.EthithSync && window.EthithSync.pushRemoteStore) {
@@ -566,7 +688,7 @@
   // ====================================================
   // ETHITH AUTO-UPDATE & CACHE-BUSTING ENGINE
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.2025";
+  window.ETHITH_BUILD_VERSION = "2026.10.17.2035";
 
   function checkAppVersion() {
     if (typeof fetch === 'undefined') return;

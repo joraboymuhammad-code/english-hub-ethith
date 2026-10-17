@@ -7951,7 +7951,38 @@
     var activeSubtab = window._ethithQuizSubtab || 'quizzes';
 
     function renderContent() {
-      // 0. Auto-claim any received gifts from friends in localStorage
+      // 0. Restore gifts from account / local backup if any are missing
+      if (S.user) {
+        if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
+        var userBkpKey = (S.user.email || S.user.name || '').toLowerCase().trim();
+        if (userBkpKey) {
+          try {
+            var bGifts = JSON.parse(localStorage.getItem('ethith_student_gifts_' + userBkpKey) || '[]');
+            if (Array.isArray(bGifts)) {
+              bGifts.forEach(function(bg) {
+                if (!S.user.gifts.some(function(existing) { return existing.id === bg.id || (existing.quizId === bg.quizId && existing.name === bg.name); })) {
+                  S.user.gifts.push(bg);
+                }
+              });
+            }
+          } catch(e) {}
+        }
+        if (Array.isArray(S.accounts)) {
+          var myAccount = S.accounts.find(function(a) {
+            return (a.email && S.user.email && a.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                   (a.name && S.user.name && a.name.toLowerCase() === S.user.name.toLowerCase());
+          });
+          if (myAccount && Array.isArray(myAccount.gifts)) {
+            myAccount.gifts.forEach(function(ag) {
+              if (!S.user.gifts.some(function(existing) { return existing.id === ag.id || (existing.quizId === ag.quizId && existing.name === ag.name); })) {
+                S.user.gifts.push(ag);
+              }
+            });
+          }
+        }
+      }
+
+      // Auto-claim any received gifts from friends in localStorage
       var myRecKey = 'ethith_received_gifts_' + (S.user.name || '').toLowerCase().trim();
       var myRecKeyEmail = 'ethith_received_gifts_' + (S.user.email || S.user.id || '').toLowerCase().trim();
       var pendingGifts = [];
@@ -8195,7 +8226,57 @@
             return;
           }
           if (inHeroName && inHeroName.value.trim()) {
-            S.user.name = inHeroName.value.trim();
+            var inputStudentName = inHeroName.value.trim();
+            S.user.name = inputStudentName;
+            var cleanStEmail = (S.user.email || (inputStudentName.toLowerCase().replace(/\s+/g, '.') + '@ethith.uz')).toLowerCase().trim();
+
+            if (!Array.isArray(S.accounts)) S.accounts = [];
+            var exStudent = S.accounts.find(function(a) {
+              return (a.email && a.email.toLowerCase() === cleanStEmail) ||
+                     (a.name && a.name.toLowerCase() === inputStudentName.toLowerCase());
+            });
+            if (!exStudent) {
+              S.accounts.push({
+                id: S.user.id || ('st_' + Date.now()),
+                role: 'student',
+                name: inputStudentName,
+                email: cleanStEmail,
+                gifts: S.user.gifts || [],
+                createdAt: Date.now()
+              });
+            } else {
+              exStudent.name = inputStudentName;
+              if (Array.isArray(exStudent.gifts) && (!S.user.gifts || S.user.gifts.length === 0)) {
+                S.user.gifts = exStudent.gifts.slice();
+              }
+            }
+
+            try {
+              var allRegStudents = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+              if (!allRegStudents.some(function(u) { return (u.email && u.email.toLowerCase() === cleanStEmail) || u.name.toLowerCase() === inputStudentName.toLowerCase(); })) {
+                allRegStudents.push({
+                  id: S.user.id || ('st_' + Date.now()),
+                  name: inputStudentName,
+                  email: cleanStEmail,
+                  role: 'student',
+                  joinedAt: Date.now()
+                });
+                localStorage.setItem('ethith_all_registered_users', JSON.stringify(allRegStudents));
+              }
+            } catch(e) {}
+
+            if (window.EthithSync && window.EthithSync.publishLive) {
+              window.EthithSync.publishLive({
+                type: 'USER_REGISTERED',
+                user: {
+                  id: S.user.id || ('st_' + Date.now()),
+                  name: inputStudentName,
+                  email: cleanStEmail,
+                  role: 'student'
+                }
+              });
+            }
+
             App.saveState();
           }
 
@@ -9456,23 +9537,46 @@
       if (winner3) winner3.prize = prize3;
 
       var myRank = getMyRank();
+      var awardedPrize = null;
       if (myRank <= 3 && S.user) {
         if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
-        var awardedPrize = (myRank === 1 ? prize1 : (myRank === 2 ? prize2 : prize3));
-        var alreadyAwarded = S.user.gifts.some(function(g) { return g.quizId === quiz.id; });
-        if (!alreadyAwarded) {
-          S.user.gifts.unshift({
-            id: 'gift_' + Date.now(),
-            quizId: quiz.id,
-            name: awardedPrize.name,
-            icon: awardedPrize.icon,
-            desc: awardedPrize.desc,
-            rank: myRank,
-            quizTitle: quiz.title,
-            wonAt: Date.now()
+        awardedPrize = (myRank === 1 ? prize1 : (myRank === 2 ? prize2 : prize3));
+        var newWonGift = {
+          id: 'gift_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+          quizId: quiz.id,
+          name: awardedPrize.name,
+          icon: awardedPrize.icon,
+          desc: awardedPrize.desc,
+          rank: myRank,
+          quizTitle: quiz.title,
+          wonAt: Date.now()
+        };
+        S.user.gifts.unshift(newWonGift);
+
+        // Also add to user's record in S.accounts
+        if (Array.isArray(S.accounts)) {
+          var myAccountRec = S.accounts.find(function(a) {
+            return (a.email && S.user.email && a.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                   (a.name && S.user.name && a.name.toLowerCase() === S.user.name.toLowerCase());
           });
-          App.saveState();
+          if (myAccountRec) {
+            if (!Array.isArray(myAccountRec.gifts)) myAccountRec.gifts = [];
+            myAccountRec.gifts.unshift(newWonGift);
+          }
         }
+
+        // Dedicated local backup
+        var myUserKey = (S.user.email || S.user.name || 'user').toLowerCase().trim();
+        try {
+          var bkpList = JSON.parse(localStorage.getItem('ethith_student_gifts_' + myUserKey) || '[]');
+          bkpList.unshift(newWonGift);
+          localStorage.setItem('ethith_student_gifts_' + myUserKey, JSON.stringify(bkpList));
+        } catch(e) {}
+
+        if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+        else if (typeof App !== 'undefined' && App.saveState) App.saveState();
+
+        if (window._ethithRefreshGifts) window._ethithRefreshGifts();
       }
 
       // Compile Persistent Teacher Analytics (Original Question Order)
@@ -9613,8 +9717,24 @@
 
       html += '  </div>';
 
-      // Buttons (Using .eth-podium-analysis-btn & .eth-podium-exit-btn for guaranteed sleek design)
+      // Congratulatory Banner for Winners
+      if (myRank <= 3 && awardedPrize) {
+        html += '<div style="margin:20px auto;max-width:560px;padding:16px 22px;background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(5,150,105,0.25));border:2px solid #10b981;border-radius:20px;display:flex;align-items:center;gap:14px;box-shadow:0 10px 30px rgba(16,185,129,0.3);text-align:left;">';
+        html += '  <span style="font-size:38px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4));">' + awardedPrize.icon + '</span>';
+        html += '  <div>';
+        html += '    <div style="font-size:15px;font-weight:900;color:#34d399;display:flex;align-items:center;gap:6px;">🎉 Tabriklaymiz! Siz ' + myRank + '-o\'rinni egalladingiz!</div>';
+        html += '    <div style="font-size:12.5px;color:#ffffff;font-weight:700;margin-top:2px;">\'' + esc(awardedPrize.name) + '\' sovrini sizning Sovrinlar kolleksiyangizga muvaffaqiyatli qo\'shildi!</div>';
+        html += '  </div>';
+        html += '</div>';
+      }
+
+      // Buttons
       html += '  <div class="flex flex-wrap items-center justify-center gap-4 pt-6">';
+      if (myRank <= 3) {
+        html += '    <button id="btnViewGiftsFromPodium" class="eth-gift-action-btn" style="width:auto!important;padding:12px 24px!important;font-size:14px!important;">';
+        html += '      <span>🎁 Sovrinlarimni Ko\'rish (' + (S.user && S.user.gifts ? S.user.gifts.length : 1) + ')</span>';
+        html += '    </button>';
+      }
       html += '    <button id="btnViewAnalysisFromPodium" class="eth-podium-analysis-btn">';
       html += '      <span>📊 Batafsil Test Tahlilini Ko\'rish</span>';
       html += '    </button>';
@@ -9626,6 +9746,15 @@
       html += '</div>';
 
       root.innerHTML = html;
+
+      var btnGifts = root.querySelector('#btnViewGiftsFromPodium');
+      if (btnGifts) {
+        btnGifts.onclick = function() {
+          root.remove();
+          window._ethithQuizSubtab = 'gifts';
+          if (window._ethithRefreshQuizList) window._ethithRefreshQuizList();
+        };
+      }
 
       var btnExit = root.querySelector('#btnExitPodium');
       if (btnExit) {
@@ -10054,43 +10183,65 @@
     var myEmail = (S.user && (S.user.email || S.user.id || '')).toLowerCase().trim();
     var myName = (S.user && S.user.name || '').toLowerCase().trim();
 
-    var friendsList = [];
-    var seenNames = {};
+    function getRegisteredFriends() {
+      var list = [];
+      var seenNames = {};
 
-    function addFriend(st) {
-      if (!st || !st.name) return;
-      var name = String(st.name).trim();
-      var nameLower = name.toLowerCase();
-      var email = String(st.email || st.id || '').toLowerCase().trim();
+      function addFriend(st) {
+        if (!st || !st.name) return;
+        var name = String(st.name).trim();
+        var nameLower = name.toLowerCase();
+        var email = String(st.email || st.id || '').toLowerCase().trim();
 
-      if (email && email === myEmail) return;
-      if (nameLower === myName) return;
-      if (seenNames[nameLower]) return;
-      seenNames[nameLower] = true;
+        if (myEmail && email && email === myEmail) return;
+        if (myName && nameLower === myName) return;
+        if (seenNames[nameLower]) return;
+        seenNames[nameLower] = true;
 
-      friendsList.push({
-        name: name,
-        email: email || (nameLower.replace(/\s+/g, '.') + '@ethith.uz')
+        list.push({
+          id: st.id || ('u_' + nameLower.replace(/\s+/g, '_')),
+          name: name,
+          email: email || (nameLower.replace(/\s+/g, '.') + '@ethith.uz'),
+          role: st.role || 'student'
+        });
+      }
+
+      // 1. All registered accounts in S.accounts
+      (S.accounts || []).forEach(addFriend);
+
+      // 2. Dedicated localStorage registered users registry
+      try {
+        var storedUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+        if (Array.isArray(storedUsers)) storedUsers.forEach(addFriend);
+      } catch(e) {}
+
+      // 3. All students in S.classes
+      (S.classes || []).forEach(function(cls) {
+        (cls.students || []).forEach(addFriend);
       });
+
+      // 4. All students who submitted exams
+      (S.exams || []).forEach(function(ex) {
+        (ex.submissions || []).forEach(function(sub) {
+          if (sub && sub.studentName) {
+            addFriend({ name: sub.studentName, email: sub.studentEmail || sub.studentId || '' });
+          }
+        });
+      });
+
+      // 5. All quiz battle participants
+      (S.quizzes || []).forEach(function(qz) {
+        if (qz.lastSessionAnalysis && Array.isArray(qz.lastSessionAnalysis.rankings)) {
+          qz.lastSessionAnalysis.rankings.forEach(function(p) {
+            if (p && p.name) addFriend({ name: p.name, email: (p.id && p.id.indexOf('@') !== -1) ? p.id : '' });
+          });
+        }
+      });
+
+      return list;
     }
 
-    // Collect from classes
-    (S.classes || []).forEach(function(cls) {
-      (cls.students || []).forEach(addFriend);
-    });
-
-    // Collect from default classmates roster
-    [
-      { name: "Alisher Navoiy", email: "alisher@ethith.uz" },
-      { name: "Malika Sobirova", email: "malika@ethith.uz" },
-      { name: "Jasur Beknazarov", email: "jasur@ethith.uz" },
-      { name: "Madina Karimova", email: "madina@ethith.uz" },
-      { name: "Bobur Mirzo", email: "bobur@ethith.uz" },
-      { name: "Diyora Rustamova", email: "diyora@ethith.uz" },
-      { name: "Shaxzod Tursunov", email: "shaxzod@ethith.uz" },
-      { name: "Gulnoza Qosimova", email: "gulnoza@ethith.uz" },
-      { name: "John Doe", email: "john@ethith.uz" }
-    ].forEach(addFriend);
+    var friendsList = getRegisteredFriends();
 
     var html = '<div class="eth-gift-modal-box">';
 
@@ -10136,6 +10287,7 @@
     window.addEventListener('keydown', onEsc);
 
     function close() {
+      window._ethithRefreshFriendsList = null;
       window.removeEventListener('keydown', onEsc);
       overlay.remove();
     }
@@ -10146,6 +10298,11 @@
 
     var btnClose = overlay.querySelector('#btnCloseSendGift');
     if (btnClose) btnClose.onclick = close;
+
+    window._ethithRefreshFriendsList = function() {
+      friendsList = getRegisteredFriends();
+      renderFilteredFriends(searchInput ? searchInput.value : '');
+    };
 
     function renderFilteredFriends(query) {
       query = (query || '').toLowerCase().trim();
@@ -10160,7 +10317,9 @@
       if (!containerEl) return;
 
       if (filtered.length === 0) {
-        containerEl.innerHTML = '<div style="padding:24px;text-align:center;font-size:12px;color:#94a3b8;font-weight:700;background:#030712;border-radius:12px;border:1px dashed #374151;">Hech qanday o\'quvchi topilmadi</div>';
+        containerEl.innerHTML = '<div style="padding:22px;text-align:center;font-size:12px;color:#94a3b8;font-weight:700;background:#030712;border-radius:12px;border:1px dashed #374151;">' +
+          (query ? 'Kiritilgan nom bo\'yicha hech kim topilmadi' : 'Hozircha saytda boshqa ro\'yxatdan o\'tgan foydalanuvchilar yo\'q.<br>Yangi do\'stlaringiz saytga kirishi bilan bu yerda avtomatik paydo bo\'ladi!') +
+          '</div>';
         return;
       }
 
@@ -10198,6 +10357,24 @@
       if (Array.isArray(S.user.gifts)) {
         var gIdx = S.user.gifts.findIndex(function(g) { return (g.id && g.id === gift.id) || g.name === gift.name; });
         if (gIdx !== -1) S.user.gifts.splice(gIdx, 1);
+
+        // Update in S.accounts
+        if (Array.isArray(S.accounts)) {
+          var senderAccount = S.accounts.find(function(a) {
+            return (a.email && S.user.email && a.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                   (a.name && S.user.name && a.name.toLowerCase() === S.user.name.toLowerCase());
+          });
+          if (senderAccount) {
+            senderAccount.gifts = S.user.gifts.slice();
+          }
+        }
+
+        // Update local backup
+        var senderUserKey = (S.user.email || S.user.name || 'user').toLowerCase().trim();
+        try {
+          localStorage.setItem('ethith_student_gifts_' + senderUserKey, JSON.stringify(S.user.gifts));
+        } catch(e) {}
+
         if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
       }
 

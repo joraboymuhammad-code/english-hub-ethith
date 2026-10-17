@@ -616,8 +616,32 @@
         try { window._ethithOnQuizEvent(event); } catch(qe) {}
       }
     }
-    else if ((event.type && event.type.indexOf('QUIZ_') === 0) || event.type === 'GIFT_SENT') {
-      if (event.type === 'GIFT_SENT') {
+    else if ((event.type && event.type.indexOf('QUIZ_') === 0) || event.type === 'GIFT_SENT' || event.type === 'USER_REGISTERED') {
+      if (event.type === 'USER_REGISTERED' && event.user && event.user.name) {
+        if (!Array.isArray(S.accounts)) S.accounts = [];
+        var exists = S.accounts.some(function(a) {
+          return (a.email && event.user.email && a.email.toLowerCase() === event.user.email.toLowerCase()) ||
+                 (a.name && a.name.toLowerCase() === event.user.name.toLowerCase());
+        });
+        if (!exists) {
+          S.accounts.push(event.user);
+        }
+        var regKey = 'ethith_all_registered_users';
+        var regList = [];
+        try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
+        if (!regList.some(function(u) {
+          return (u.email && event.user.email && u.email.toLowerCase() === event.user.email.toLowerCase()) ||
+                 u.name.toLowerCase() === event.user.name.toLowerCase();
+        })) {
+          regList.push(event.user);
+          localStorage.setItem(regKey, JSON.stringify(regList));
+        }
+        if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+        if (window._ethithRefreshFriendsList) {
+          try { window._ethithRefreshFriendsList(); } catch(e) {}
+        }
+      }
+      else if (event.type === 'GIFT_SENT') {
         var myUserKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase().trim();
         var myUserName = (S.user && S.user.name || '').toLowerCase().trim();
         var targetKey = (event.recipientEmail || event.recipientId || '').toLowerCase().trim();

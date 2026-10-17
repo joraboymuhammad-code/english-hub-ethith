@@ -17,14 +17,7 @@
           "dailyMinutes": 732,
           "mistakes": 0
         },
-        {
-          "id": "std_sync_test",
-          "name": "John Doe",
-          "email": "john.doe@example.com",
-          "joinedAt": "23:25:42",
-          "activeMinutes": 25,
-          "mistakesCount": 0
-        },
+
         {
           "id": "std_live_test_1",
           "name": "Alisher Oquvchi",
