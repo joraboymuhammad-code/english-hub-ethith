@@ -2870,6 +2870,18 @@ window.ETHITH_PACKS = [
     accentColor: "#ec4899"
   },
   {
+    id: "mega_pack",
+    name: "Universal Mega Pack",
+    type: "mega",
+    price: 250,
+    icon: "🌌",
+    desc: "Barcha narsalar jamlangan super pack! Ichidan istalgan narsa: Katta ETHITH Coinlar, nodir sovrinlar, chat emojilari, yigitlar va qizlar fantastik avatarlari chiqishi mumkin!",
+    badge: "HAMMASI BIRDA",
+    gradient: "linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%)",
+    glowColor: "#c084fc",
+    accentColor: "#a855f7"
+  },
+  {
     id: "neon_frames_pack",
     name: "Hologram Nameplates & Borders",
     type: "coming_soon",
@@ -3284,6 +3296,75 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
       desc: chosen.tagline,
       icon: chosen.name
     };
+  }
+
+  if (pack.type === "mega") {
+    var catRoll = Math.random() * 100;
+    if (catRoll < 25) {
+      var coinAmounts = [150, 200, 250, 300, 400, 500, 750, 1000];
+      var amount = coinAmounts[Math.floor(Math.random() * coinAmounts.length)];
+      return {
+        type: "coins",
+        rarity: (amount >= 750 ? "Legendary" : (amount >= 400 ? "Epic" : (amount >= 250 ? "Rare" : "Common"))),
+        amount: amount,
+        name: amount + " ETHITH Coin!",
+        desc: "Universal Mega Packdan xazina! Hamyoningizga darhol qo'shildi!",
+        icon: "🪙"
+      };
+    } else if (catRoll < 50) {
+      var pz = window.ETHITH_GET_RANDOM_PRIZE ? window.ETHITH_GET_RANDOM_PRIZE(rarity) : null;
+      return {
+        type: "prize",
+        rarity: (pz ? pz.rarity : rarity),
+        item: pz,
+        name: pz ? pz.name : "Omadli Sovg'a",
+        desc: pz ? pz.desc : "Mega Packdan tushgan maxsus sovrin!",
+        icon: pz ? pz.icon : "💎",
+        coinPrice: pz ? pz.price : 150
+      };
+    } else if (catRoll < 70) {
+      var matching = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) {
+        return !e.isDefault && (e.rarity === rarity || !rarity);
+      });
+      if (!matching.length) matching = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
+      var chosenEm = matching[Math.floor(Math.random() * matching.length)];
+      return {
+        type: "emoji",
+        rarity: chosenEm.rarity,
+        emoji: chosenEm.emoji,
+        name: chosenEm.emoji + " " + chosenEm.name,
+        desc: "Universal Mega Packdan chat emojisi ochildi!",
+        icon: chosenEm.emoji
+      };
+    } else if (catRoll < 85) {
+      var boys = (window.ETHITH_AVATARS || []).filter(function(a) {
+        return a.gender === "boy" && (a.rarity === rarity || !rarity);
+      });
+      if (!boys.length) boys = (window.ETHITH_AVATARS || []).filter(function(a) { return a.gender === "boy"; });
+      var chosenBoy = boys[Math.floor(Math.random() * boys.length)];
+      return {
+        type: "avatar",
+        rarity: chosenBoy.rarity,
+        avatar: chosenBoy,
+        name: chosenBoy.name,
+        desc: chosenBoy.tagline,
+        icon: chosenBoy.name
+      };
+    } else {
+      var girls = (window.ETHITH_AVATARS || []).filter(function(a) {
+        return a.gender === "girl" && (a.rarity === rarity || !rarity);
+      });
+      if (!girls.length) girls = (window.ETHITH_AVATARS || []).filter(function(a) { return a.gender === "girl"; });
+      var chosenGirl = girls[Math.floor(Math.random() * girls.length)];
+      return {
+        type: "avatar",
+        rarity: chosenGirl.rarity,
+        avatar: chosenGirl,
+        name: chosenGirl.name,
+        desc: chosenGirl.tagline,
+        icon: chosenGirl.name
+      };
+    }
   }
 
   return null;

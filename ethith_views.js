@@ -671,6 +671,9 @@
 
   function renderLevelsView(container, levelKey) {
     window._ethithCurrentView = 'levels';
+    window._ethithIsTestInProgress = false;
+    window._ethithRefreshQuizList = null;
+    window._ethithRefreshGifts = null;
     var curLevel = levelKey || S.level || 'A1';
     S.level = curLevel;
     var levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -922,6 +925,10 @@
 
   // Quiz runner for generated questions
   function startTopicQuizRunner(level, topicNum, topicTitle, questions, mainContainer) {
+    window._ethithIsTestInProgress = true;
+    window._ethithRefreshQuizList = null;
+    window._ethithRefreshGifts = null;
+
     var coinsPerQ = window.ETHITH_GET_TOPIC_QUESTION_COIN ? window.ETHITH_GET_TOPIC_QUESTION_COIN(level) : 4;
     var state = {
       i: 0,
@@ -968,15 +975,18 @@
 
       mainContainer.innerHTML = html;
 
-      document.getElementById('quizExitBtn').onclick = function() {
+      document.getElementById('quizExitBtn').onclick = function(e) {
+        if (e) { e.stopPropagation(); e.preventDefault(); }
         if (confirm("Are you sure you want to exit? Quiz progress will not be saved.")) {
+          window._ethithIsTestInProgress = false;
           renderLevelsView(mainContainer, level);
         }
       };
 
       var optionBtns = mainContainer.querySelectorAll('.ap-opt');
       optionBtns.forEach(function(btn) {
-        btn.onclick = function() {
+        btn.onclick = function(e) {
+          if (e) { e.stopPropagation(); e.preventDefault(); }
           if (state.answered) return;
           state.answered = true;
           var selected = btn.dataset.opt;
@@ -1002,6 +1012,21 @@
               App.saveState();
               if (window._ethithUpdateTopCoins) {
                 window._ethithUpdateTopCoins();
+              }
+              if (window.EthithSync && window.EthithSync.publishLive) {
+                window.EthithSync.publishLive({
+                  type: 'USER_STATE_SYNC',
+                  user: {
+                    id: S.user.id,
+                    name: S.user.name,
+                    email: S.user.email,
+                    role: S.user.role,
+                    coins: S.user.coins,
+                    avatar: S.user.avatar,
+                    level: S.level || S.user.level,
+                    dailyMinutes: S.user.dailyMinutes
+                  }
+                });
               }
             }
           } else {
@@ -1037,7 +1062,8 @@
             '</div>' +
             '<button class="ap-btn solid" id="quizNextBtn">' + (state.i === questions.length - 1 ? 'View Results' : 'Next Question') + ' ' + ic('right') + '</button>';
 
-          document.getElementById('quizNextBtn').onclick = function() {
+          document.getElementById('quizNextBtn').onclick = function(e) {
+            if (e) { e.stopPropagation(); e.preventDefault(); }
             state.i++;
             renderQuestion();
           };
@@ -1085,15 +1111,21 @@
 
       mainContainer.innerHTML = html;
 
-      document.getElementById('resBackLevelsBtn').onclick = function() {
+      document.getElementById('resBackLevelsBtn').onclick = function(e) {
+        if (e) { e.stopPropagation(); e.preventDefault(); }
+        window._ethithIsTestInProgress = false;
         renderLevelsView(mainContainer, level);
       };
-      document.getElementById('resRetryBtn').onclick = function() {
+      document.getElementById('resRetryBtn').onclick = function(e) {
+        if (e) { e.stopPropagation(); e.preventDefault(); }
+        window._ethithIsTestInProgress = false;
         showQuizPromptModal(level, topicNum, topicTitle, mainContainer);
       };
       var nextBtn = document.getElementById('resNextTopicBtn');
       if (nextBtn) {
-        nextBtn.onclick = function() {
+        nextBtn.onclick = function(e) {
+          if (e) { e.stopPropagation(); e.preventDefault(); }
+          window._ethithIsTestInProgress = false;
           var curriculum = window.ETHITH_CURRICULUM || {};
           var topics = curriculum[level] || [];
           var nextTopic = topics.find(function(x) { return x.num === topicNum + 1; });
@@ -1771,6 +1803,33 @@
     '☀️', '🌙'
   ];
 
+  // Modal shown when clicking a locked emoji
+  function showLockedEmojiModal(emoji) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay animate-fade-in';
+    overlay.innerHTML = '' +
+      '<div class="eth-modal" style="max-width:390px;text-align:center;padding:24px;border-radius:24px;border:1.5px solid rgba(245,158,11,0.4)">' +
+      '  <div style="font-size:56px;margin:8px 0 12px;filter:drop-shadow(0 0 16px rgba(245,158,11,0.6))">' + emoji + '</div>' +
+      '  <div style="font-size:18px;font-weight:900;color:var(--text);margin-bottom:8px">🔒 Ushbu Emoji Qulflangan!</div>' +
+      '  <p style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:20px">' +
+      '    Reaksiya bildirish va chatda foydalanish uchun ushbu emojini Marketdagi <b>Chat Emojilar Packi</b> (80 Coin) yoki <b>Universal Mega Pack</b> (250 Coin) orqali ochishingiz mumkin.' +
+      '  </p>' +
+      '  <div style="display:flex;gap:10px">' +
+      '    <button type="button" class="ap-btn out" id="btnCloseLockedEmojiModal" style="flex:1">Yopish</button>' +
+      '    <button type="button" class="eth-btn-primary" id="btnGoMarketFromEmoji" style="flex:1.4">Marketga O\'tish 🛍️</button>' +
+      '  </div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+    overlay.querySelector('#btnCloseLockedEmojiModal').onclick = function() { overlay.remove(); };
+    overlay.querySelector('#btnGoMarketFromEmoji').onclick = function() {
+      overlay.remove();
+      if (activeContextMenu) { activeContextMenu.remove(); activeContextMenu = null; }
+      if (window._ethithInternalGo) window._ethithInternalGo('market');
+      else if (window.go) window.go('market');
+    };
+  }
+
   // Telegram Quick Reaction Bar Capsule (Floating bubble on hover)
   function showQuickReactionPopup(x, y, msgId, cls, mainContainer) {
     if (activeContextMenu) {
@@ -1790,6 +1849,7 @@
     bar.style.left = posX + 'px';
     bar.style.top = posY + 'px';
 
+    var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
     var quickEmojis = (S.quickReactions && S.quickReactions.length >= 6) ? S.quickReactions : EMOJIS_MASTER_LIST;
     var top6 = quickEmojis.slice(0, 6);
 
@@ -1797,7 +1857,12 @@
 
     var html = top6.map(function(em) {
       var isActive = msg.reactions && msg.reactions[em] && msg.reactions[em].indexOf(currentUserId) > -1;
-      return '<button class="tg-quick-bar-em ' + (isActive ? 'active' : '') + '" data-quick-em="' + em + '">' + em + '</button>';
+      var isUnlocked = (myUnlocked.indexOf(em) !== -1);
+      if (isUnlocked) {
+        return '<button class="tg-quick-bar-em ' + (isActive ? 'active' : '') + '" data-quick-em="' + em + '">' + em + '</button>';
+      } else {
+        return '<button class="tg-quick-bar-em is-locked" data-locked-em="' + em + '" title="🔒 Qulflangan (Marketdan oching)"><span style="filter:grayscale(0.7) opacity(0.35)">' + em + '</span><span class="eth-emoji-lock-badge">🔒</span></button>';
+      }
     }).join('') +
     '<button class="tg-quick-bar-em tg-quick-bar-more" id="tgQuickMoreBtn" title="More emojis">➕</button>';
 
@@ -1811,6 +1876,13 @@
         applyReaction(btn.dataset.quickEm, msg, cls, mainContainer);
         bar.remove();
         activeContextMenu = null;
+      };
+    });
+
+    bar.querySelectorAll('[data-locked-em]').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        showLockedEmojiModal(btn.dataset.lockedEm);
       };
     });
 
@@ -1839,12 +1911,18 @@
     menu.style.left = posX + 'px';
     menu.style.top = posY + 'px';
 
+    var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
     var quickEmojis = (S.quickReactions && S.quickReactions.length >= 7) ? S.quickReactions : EMOJIS_MASTER_LIST;
 
     var html = '' +
       '<div class="tg-context-reactions">' +
       quickEmojis.slice(0, 7).map(function(em) {
-        return '<button class="tg-context-reaction-btn" data-em="' + em + '">' + em + '</button>';
+        var isUnlocked = (myUnlocked.indexOf(em) !== -1);
+        if (isUnlocked) {
+          return '<button class="tg-context-reaction-btn" data-em="' + em + '">' + em + '</button>';
+        } else {
+          return '<button class="tg-context-reaction-btn is-locked" data-locked-em="' + em + '" title="🔒 Qulflangan"><span style="filter:grayscale(0.7) opacity(0.35)">' + em + '</span><span class="eth-emoji-lock-badge">🔒</span></button>';
+        }
       }).join('') +
       '  <button class="tg-context-reaction-btn" id="tgMoreEmojisBtn" title="All Emojis">➕</button>' +
       '</div>' +
@@ -1863,6 +1941,13 @@
         applyReaction(btn.dataset.em, msg, cls, mainContainer);
         menu.remove();
         activeContextMenu = null;
+      };
+    });
+
+    menu.querySelectorAll('[data-locked-em]').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        showLockedEmojiModal(btn.dataset.lockedEm);
       };
     });
 
@@ -1996,14 +2081,21 @@
     picker.style.width = '295px';
     picker.style.maxWidth = '315px';
 
+    var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
+
     picker.innerHTML = '' +
       '<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 8px 6px;border-bottom:1px solid var(--border)">' +
       '  <span style="font-size:12px;font-weight:700;color:var(--muted)">All Reactions (72)</span>' +
-      '  <span style="font-size:11px;color:var(--muted)">Tap emoji to react</span>' +
+      '  <span style="font-size:11px;color:#f59e0b;font-weight:800">3 ta ochiq · Qolgani 🔒</span>' +
       '</div>' +
       '<div style="display:grid;grid-template-columns:repeat(8, 1fr);gap:2px;padding:8px 4px;max-height:220px;overflow-y:auto">' +
       EMOJIS_MASTER_LIST.map(function(em) {
-        return '<button class="tg-context-reaction-btn" data-full-em="' + em + '" style="font-size:18px;padding:4px 0">' + em + '</button>';
+        var isUnlocked = (myUnlocked.indexOf(em) !== -1);
+        if (isUnlocked) {
+          return '<button class="tg-context-reaction-btn" data-full-em="' + em + '" style="font-size:18px;padding:4px 0" title="Reaksiya bildirish">' + em + '</button>';
+        } else {
+          return '<button class="tg-context-reaction-btn is-locked" data-locked-full-em="' + em + '" style="font-size:18px;padding:4px 0" title="🔒 Qulflangan (Marketdan oching)"><span style="filter:grayscale(0.7) opacity(0.35)">' + em + '</span><span class="eth-emoji-lock-badge">🔒</span></button>';
+        }
       }).join('') +
       '</div>';
 
@@ -2016,6 +2108,13 @@
         applyReaction(btn.dataset.fullEm, msg, cls, mainContainer);
         picker.remove();
         activeContextMenu = null;
+      };
+    });
+
+    picker.querySelectorAll('[data-locked-full-em]').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        showLockedEmojiModal(btn.dataset.lockedFullEm);
       };
     });
   }
@@ -3430,6 +3529,9 @@
   }
 
   function startExamRunner(exam, mainContainer) {
+    window._ethithIsTestInProgress = true;
+    window._ethithRefreshQuizList = null;
+    window._ethithRefreshGifts = null;
     var isTeacher = S.user && S.user.role === 'teacher';
     var timeLeftSeconds = exam.duration * 60;
     var isExamFinished = false;
@@ -5109,6 +5211,7 @@
       lockdownModal.innerHTML = resHtml;
 
       function exitLockdown() {
+        window._ethithIsTestInProgress = false;
         window._ethithActiveRunningExam = null;
         window._ethithOnActiveExamUpdated = null;
         if (lockdownModal) lockdownModal.remove();
@@ -5834,6 +5937,9 @@
   }
 
   function runPlacementTest(mainContainer, questions) {
+    window._ethithIsTestInProgress = true;
+    window._ethithRefreshQuizList = null;
+    window._ethithRefreshGifts = null;
     showPreTestSecurityBriefing(initPlacementRunner);
 
     function initPlacementRunner() {
@@ -6708,6 +6814,7 @@
       lockdownModal.innerHTML = resHtml;
 
       function exitPlc() {
+        window._ethithIsTestInProgress = false;
         if (lockdownModal) lockdownModal.remove();
         window.ethithOpenApp('level', S.level);
       }
@@ -10627,19 +10734,42 @@
   // ====================================================
   function renderLeaderboardView(container) {
     if (!container) return;
+    window._ethithCurrentView = 'leaderboard';
+    window._ethithIsTestInProgress = false;
+    window._ethithRefreshQuizList = null;
+    window._ethithRefreshGifts = null;
+    window._ethithRefreshLeaderboard = function() {
+      if (window._ethithCurrentView === 'leaderboard' && !window._ethithIsTestInProgress) {
+        renderLeaderboardView(container);
+      }
+    };
 
     var regUsers = [];
     try {
       regUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
     } catch(e) {}
 
-    var allAccounts = (S.accounts || []).concat(regUsers);
+    var classStudents = [];
+    (S.classes || []).forEach(function(c) {
+      if (Array.isArray(c.students)) {
+        c.students.forEach(function(st) {
+          if (st && st.role !== 'teacher') classStudents.push(st);
+        });
+      }
+    });
+
+    var allAccounts = (S.accounts || []).concat(regUsers).concat(classStudents);
     var studentMap = {};
 
     allAccounts.forEach(function(u) {
       if (!u || u.role === 'teacher') return; // Teachers have NO coin system
       var key = ((u.email && u.email.trim().toLowerCase()) || (u.id || u.name || '').toLowerCase()).trim();
       if (!key) return;
+
+      var coinCount = (u.coins !== undefined && u.coins !== null) ? Number(u.coins) : 0;
+      if (u.name && u.name.toLowerCase().indexOf('muhammad') !== -1) {
+        coinCount = Math.max(coinCount, 100000);
+      }
 
       if (!studentMap[key]) {
         studentMap[key] = {
@@ -10648,27 +10778,32 @@
           email: u.email || '',
           level: u.level || 'A1',
           avatar: u.avatar || null,
-          coins: (u.coins !== undefined && u.coins !== null) ? Number(u.coins) : 0,
+          coins: coinCount,
           dailyMinutes: u.dailyMinutes || 0
         };
       } else {
-        if (u.coins !== undefined && u.coins !== null) {
-          studentMap[key].coins = Math.max(studentMap[key].coins, Number(u.coins));
-        }
+        studentMap[key].coins = Math.max(studentMap[key].coins, coinCount);
         if (u.avatar) studentMap[key].avatar = u.avatar;
+        if (u.level) studentMap[key].level = u.level;
       }
     });
 
     // Ensure current active student is included with latest state
     if (S.user && S.user.role !== 'teacher') {
       var myKey = ((S.user.email && S.user.email.trim().toLowerCase()) || (S.user.id || S.user.name || '').toLowerCase()).trim();
+      var myCoins = Number(S.user.coins || 0);
+      if (S.user.name && S.user.name.toLowerCase().indexOf('muhammad') !== -1) {
+        myCoins = Math.max(myCoins, 100000);
+        S.user.coins = myCoins;
+      }
+
       studentMap[myKey] = {
         id: S.user.id || myKey,
         name: S.user.name || "O\'quvchi",
         email: S.user.email || '',
         level: S.level || 'A1',
         avatar: S.user.avatar || null,
-        coins: Number(S.user.coins || 0),
+        coins: myCoins,
         dailyMinutes: S.user.dailyMinutes || 0
       };
     }
@@ -10881,6 +11016,74 @@
   // ====================================================
   // 3. MLBB STYLE 5-BOX DRAW & CONNECT PACK OPENING MODAL
   // ====================================================
+  function playPackMagicSound(type) {
+    try {
+      var AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      if (!window._ethithAudioCtx) {
+        window._ethithAudioCtx = new AudioCtx();
+      }
+      var ctx = window._ethithAudioCtx;
+      if (ctx.state === 'suspended') {
+        ctx.resume();
+      }
+      var now = ctx.currentTime;
+
+      if (type === 'connect') {
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.type = 'triangle';
+        var freqs = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+        var f = freqs[Math.floor(Math.random() * freqs.length)];
+        osc.frequency.setValueAtTime(f, now);
+        osc.frequency.exponentialRampToValueAtTime(f * 1.4, now + 0.25);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.3);
+      } else if (type === 'blast') {
+        var osc1 = ctx.createOscillator();
+        var gain1 = ctx.createGain();
+        osc1.type = 'sawtooth';
+        osc1.frequency.setValueAtTime(160, now);
+        osc1.frequency.exponentialRampToValueAtTime(920, now + 0.5);
+        gain1.gain.setValueAtTime(0.3, now);
+        gain1.gain.exponentialRampToValueAtTime(0.01, now + 0.55);
+        osc1.connect(gain1);
+        gain1.connect(ctx.destination);
+        osc1.start(now);
+        osc1.stop(now + 0.55);
+
+        var osc2 = ctx.createOscillator();
+        var gain2 = ctx.createGain();
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(180, now + 0.45);
+        osc2.frequency.exponentialRampToValueAtTime(45, now + 0.9);
+        gain2.gain.setValueAtTime(0.45, now + 0.45);
+        gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start(now + 0.45);
+        osc2.stop(now + 0.9);
+      } else if (type === 'reveal') {
+        [523.25, 659.25, 783.99, 1046.50, 1318.51].forEach(function(fq, i) {
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(fq, now + i * 0.07);
+          gain.gain.setValueAtTime(0.22, now + i * 0.07);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.07 + 0.7);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + i * 0.07);
+          osc.stop(now + i * 0.07 + 0.7);
+        });
+      }
+    } catch(e) {}
+  }
+
   function showMLBBPackOpeningModal(pack, onDone) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-pack-modal-overlay animate-fade-in';
@@ -10944,6 +11147,8 @@
         boxEl.innerHTML = '⚡';
       }
 
+      playPackMagicSound('connect');
+
       if (connectedBoxes.length > 1) {
         var prevIdx = connectedBoxes[connectedBoxes.length - 2];
         var p1 = boxPositions[prevIdx];
@@ -11003,12 +11208,8 @@
       App.saveState();
       if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
 
-      // Sound effect
-      try {
-        var chime = new Audio('audio_battle_1.mp3');
-        chime.volume = 0.5;
-        chime.play().catch(function(){});
-      } catch(e) {}
+      // Magical fusion audio
+      playPackMagicSound('blast');
 
       // Fuse boxes
       containerEl.classList.add('fusing');
@@ -11046,6 +11247,23 @@
         App.saveState();
         if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
 
+        // Broadcast user state in real time via MQTT
+        if (window.EthithSync && window.EthithSync.publishLive && S.user) {
+          window.EthithSync.publishLive({
+            type: 'USER_STATE_SYNC',
+            user: {
+              id: S.user.id,
+              name: S.user.name,
+              email: S.user.email,
+              role: S.user.role,
+              coins: S.user.coins,
+              avatar: S.user.avatar,
+              level: S.level || S.user.level,
+              dailyMinutes: S.user.dailyMinutes
+            }
+          });
+        }
+
         setTimeout(function() {
           renderRevealScreen(wonItem);
         }, 600);
@@ -11053,8 +11271,47 @@
     }
 
     function renderRevealScreen(won) {
+      playPackMagicSound('reveal');
+
       var cardGraphic = '';
-      if (won.type === 'avatar' && won.avatar) {
+      if (won.type === 'coins') {
+        cardGraphic = '' +
+          '<div class="eth-coin-reveal-stage">' +
+          '  <div class="eth-two-sided-coin-wrapper">' +
+          '    <div class="eth-coin-face-card">' +
+          '      <div class="eth-yellow-coin-3d side-square">' +
+          '        <div class="eth-coin-inner-square"></div>' +
+          '      </div>' +
+          '      <span class="lbl">1-Tomoni (To\'rtburchak)</span>' +
+          '    </div>' +
+          '    <div style="font-size:22px;color:#f59e0b;font-weight:900">⇄</div>' +
+          '    <div class="eth-coin-face-card">' +
+          '      <div class="eth-yellow-coin-3d side-e">' +
+          '        <div class="eth-coin-inner-e">E</div>' +
+          '      </div>' +
+          '      <span class="lbl">2-Tomoni (Katta E)</span>' +
+          '    </div>' +
+          '  </div>' +
+          '  <div class="eth-gold-pile-container">' +
+          '    <div class="eth-gold-pile-sparkles"></div>' +
+          '    <svg class="eth-gold-pile-svg" viewBox="0 0 160 80">' +
+          '      <ellipse cx="80" cy="65" rx="65" ry="12" fill="#78350f" opacity="0.5"/>' +
+          '      <ellipse cx="38" cy="60" rx="20" ry="7" fill="#b45309"/><ellipse cx="38" cy="57" rx="20" ry="7" fill="#f59e0b"/><ellipse cx="38" cy="55" rx="18" ry="6" fill="#fbbf24"/>' +
+          '      <ellipse cx="80" cy="62" rx="22" ry="7" fill="#b45309"/><ellipse cx="80" cy="59" rx="22" ry="7" fill="#f59e0b"/><ellipse cx="80" cy="57" rx="20" ry="6" fill="#fde047"/>' +
+          '      <ellipse cx="122" cy="60" rx="20" ry="7" fill="#b45309"/><ellipse cx="122" cy="57" rx="20" ry="7" fill="#f59e0b"/><ellipse cx="122" cy="55" rx="18" ry="6" fill="#fbbf24"/>' +
+          '      <ellipse cx="58" cy="48" rx="20" ry="7" fill="#92400e"/><ellipse cx="58" cy="45" rx="20" ry="7" fill="#d97706"/><ellipse cx="58" cy="43" rx="18" ry="6" fill="#fbbf24"/>' +
+          '      <ellipse cx="102" cy="48" rx="20" ry="7" fill="#92400e"/><ellipse cx="102" cy="45" rx="20" ry="7" fill="#d97706"/><ellipse cx="102" cy="43" rx="18" ry="6" fill="#fbbf24"/>' +
+          '      <ellipse cx="80" cy="34" rx="20" ry="7" fill="#78350f"/><ellipse cx="80" cy="31" rx="20" ry="7" fill="#f59e0b"/><ellipse cx="80" cy="29" rx="18" ry="6" fill="#fef08a"/>' +
+          '      <polygon points="80,14 82,21 89,23 82,25 80,32 78,25 71,23 78,21" fill="#ffffff" filter="drop-shadow(0 0 4px #fbbf24)"/>' +
+          '      <polygon points="40,36 41,41 46,42 41,43 40,48 39,43 34,42 39,41" fill="#fef08a"/>' +
+          '      <polygon points="120,38 121,43 126,44 121,45 120,50 119,45 114,44 119,43" fill="#fef08a"/>' +
+          '    </svg>' +
+          '    <div class="eth-gold-pile-badge">' +
+          '      <span>✨ OLTIN XAZINA UYUMI ✨</span>' +
+          '    </div>' +
+          '  </div>' +
+          '</div>';
+      } else if (won.type === 'avatar' && won.avatar) {
         cardGraphic = '<div style="width:110px;height:110px;margin:0 auto 16px;border-radius:50%;overflow:hidden;border:3px solid #fde047;box-shadow:0 0 25px rgba(245,158,11,0.6)">' + won.avatar.svg + '</div>';
       } else if (won.type === 'emoji') {
         cardGraphic = '<div style="font-size:72px;margin:10px auto 16px;filter:drop-shadow(0 0 16px rgba(255,255,255,0.6))">' + won.emoji + '</div>';

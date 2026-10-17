@@ -686,8 +686,72 @@
         try { window._ethithOnQuizEvent(event); } catch(qe) {}
       }
     }
+    else if (event.type === 'USER_STATE_SYNC' || event.type === 'USER_COINS_UPDATE') {
+      if (event.user && (event.user.email || event.user.name || event.user.id)) {
+        var u = event.user;
+        if (!Array.isArray(S.accounts)) S.accounts = [];
+        var existingAcc = S.accounts.find(function(a) {
+          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
+                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase()) ||
+                 (a.id && u.id && a.id === u.id);
+        });
+        if (existingAcc) {
+          if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
+          if (u.avatar) existingAcc.avatar = u.avatar;
+          if (u.level) existingAcc.level = u.level;
+          if (u.dailyMinutes !== undefined) existingAcc.dailyMinutes = u.dailyMinutes;
+        } else {
+          S.accounts.push(u);
+        }
 
-    if (uiNeedsRefresh) {
+        // Also update registered list in localStorage
+        var regKey = 'ethith_all_registered_users';
+        var regList = [];
+        try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
+        var rIdx = regList.findIndex(function(a) {
+          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
+                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase());
+        });
+        if (rIdx > -1) {
+          if (u.coins !== undefined) regList[rIdx].coins = Number(u.coins);
+          if (u.avatar) regList[rIdx].avatar = u.avatar;
+          if (u.level) regList[rIdx].level = u.level;
+        } else {
+          regList.push(u);
+        }
+        localStorage.setItem(regKey, JSON.stringify(regList));
+
+        // Also update in class students
+        (S.classes || []).forEach(function(c) {
+          if (Array.isArray(c.students)) {
+            var st = c.students.find(function(s) {
+              return (s.email && u.email && s.email.toLowerCase() === u.email.toLowerCase()) ||
+                     (s.name && u.name && s.name.toLowerCase() === u.name.toLowerCase());
+            });
+            if (st) {
+              if (u.coins !== undefined) st.coins = Number(u.coins);
+              if (u.avatar) st.avatar = u.avatar;
+              if (u.dailyMinutes !== undefined) st.dailyMinutes = u.dailyMinutes;
+            }
+          }
+        });
+
+        // If this tab's user matches, update local coin display
+        if (S.user && ((u.email && S.user.email && u.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                       (u.name && S.user.name && u.name.toLowerCase() === S.user.name.toLowerCase()))) {
+          if (u.coins !== undefined) S.user.coins = Number(u.coins);
+          if (u.avatar) S.user.avatar = u.avatar;
+          if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+        }
+
+        // Real-time Leaderboard Auto-Refresh!
+        if (window._ethithRefreshLeaderboard && window._ethithCurrentView === 'leaderboard' && !window._ethithIsTestInProgress) {
+          try { window._ethithRefreshLeaderboard(); } catch(err) {}
+        }
+      }
+    }
+
+    if (uiNeedsRefresh && !window._ethithIsTestInProgress) {
       window.EthithApp.saveState();
       // Always refresh class detail if chat element is visible in DOM
       if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
@@ -707,6 +771,9 @@
       }
       if (window._ethithRefreshNotifsModal) {
         window._ethithRefreshNotifsModal();
+      }
+      if (window._ethithRefreshLeaderboard && window._ethithCurrentView === 'leaderboard') {
+        window._ethithRefreshLeaderboard();
       }
     }
   }
@@ -1071,6 +1138,41 @@
           if (S.deletedExamIds.indexOf(id) === -1) S.deletedExamIds.push(id);
         });
       }
+      if (remote.accounts && Array.isArray(remote.accounts)) {
+        if (!S.accounts) S.accounts = [];
+        remote.accounts.forEach(function(rAcc) {
+          var exists = S.accounts.find(function(a) {
+            return (a.email && rAcc.email && a.email.toLowerCase() === rAcc.email.toLowerCase()) ||
+                   (a.name && rAcc.name && a.name.toLowerCase() === rAcc.name.toLowerCase());
+          });
+          if (!exists) {
+            S.accounts.push(rAcc);
+          } else {
+            if (rAcc.coins !== undefined) exists.coins = Math.max(exists.coins || 0, rAcc.coins);
+            if (rAcc.avatar) exists.avatar = rAcc.avatar;
+            if (rAcc.level) exists.level = rAcc.level;
+          }
+        });
+
+        // Also merge into ethith_all_registered_users
+        var regKey = 'ethith_all_registered_users';
+        var regList = [];
+        try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
+        remote.accounts.forEach(function(rAcc) {
+          var rIdx = regList.findIndex(function(a) {
+            return (a.email && rAcc.email && a.email.toLowerCase() === rAcc.email.toLowerCase()) ||
+                   (a.name && rAcc.name && a.name.toLowerCase() === rAcc.name.toLowerCase());
+          });
+          if (rIdx > -1) {
+            if (rAcc.coins !== undefined) regList[rIdx].coins = Math.max(regList[rIdx].coins || 0, rAcc.coins);
+            if (rAcc.avatar) regList[rIdx].avatar = rAcc.avatar;
+          } else {
+            regList.push(rAcc);
+          }
+        });
+        localStorage.setItem(regKey, JSON.stringify(regList));
+      }
+
       var c1 = mergeClasses(S.classes, remote.classes || []);
       var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
       if ((c1 || c2) && window.EthithApp) {

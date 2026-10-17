@@ -13,6 +13,7 @@
           "id": "muhammedjoraboyev1@gmail.com",
           "name": "Muhammadyusuf",
           "email": "muhammedjoraboyev1@gmail.com",
+          "coins": 100000,
           "lastActive": 1791999647009,
           "dailyMinutes": 732,
           "mistakes": 0
@@ -918,6 +919,40 @@
     "595867",
     "exam_1792042206065",
     "792046"
+  ],
+  "accounts": [
+    {
+      "id": "muhammedjoraboyev1@gmail.com",
+      "name": "Muhammadyusuf",
+      "email": "muhammedjoraboyev1@gmail.com",
+      "role": "student",
+      "level": "C1",
+      "coins": 100000,
+      "dailyMinutes": 732,
+      "unlockedEmojis": ["👍", "😊", "❤️", "🔥", "👑", "💎"],
+      "updatedAt": 1792087202042
+    },
+    {
+      "id": "joraboymuhammad@gmail.com",
+      "name": "Muhammadyusuf",
+      "email": "joraboymuhammad@gmail.com",
+      "role": "student",
+      "level": "C1",
+      "coins": 100000,
+      "dailyMinutes": 320,
+      "unlockedEmojis": ["👍", "😊", "❤️", "🔥", "👑", "💎"],
+      "updatedAt": 1792087202042
+    },
+    {
+      "id": "std_live_test_1",
+      "name": "Alisher Oquvchi",
+      "email": "alisher@gmail.com",
+      "role": "student",
+      "level": "B2",
+      "coins": 180,
+      "dailyMinutes": 45,
+      "updatedAt": 1792087202042
+    }
   ],
   "updatedAt": 1792087202042
 }

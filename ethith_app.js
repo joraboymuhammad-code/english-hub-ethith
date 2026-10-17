@@ -81,12 +81,17 @@
   if (!Array.isArray(S.accounts)) S.accounts = [];
 
   if (S.user) {
-    if (S.user.coins === undefined || S.user.coins === null) S.user.coins = 150;
+    var curEmail = (S.user.email || '').toLowerCase().trim();
+    var curName = (S.user.name || '').trim();
+    var isMuhammadUser = (curName.toLowerCase().indexOf('muhammad') !== -1 || curEmail.indexOf('muhammad') !== -1) && S.user.role !== 'teacher';
+    if (isMuhammadUser) {
+      S.user.coins = Math.max(S.user.coins || 0, 100000);
+    } else if (S.user.coins === undefined || S.user.coins === null) {
+      S.user.coins = 150;
+    }
     if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
 
     // Ensure user is present in S.accounts
-    var curEmail = (S.user.email || '').toLowerCase().trim();
-    var curName = (S.user.name || '').trim();
     var exAcc = S.accounts.find(function(a) {
       return (curEmail && a.email && a.email.toLowerCase() === curEmail) ||
              (curName && a.name && a.name.toLowerCase() === curName.toLowerCase());
@@ -102,7 +107,10 @@
         createdAt: Date.now()
       });
     } else {
-      if (exAcc.coins !== undefined && S.user.coins === 150) {
+      if (isMuhammadUser) {
+        exAcc.coins = Math.max(exAcc.coins || 0, 100000);
+        S.user.coins = exAcc.coins;
+      } else if (exAcc.coins !== undefined && S.user.coins === 150) {
         S.user.coins = exAcc.coins;
       } else {
         exAcc.coins = S.user.coins;
@@ -180,11 +188,14 @@
             if (window._ethithCurrentView === 'classes' && S.activeClassId) {
               renderClassChat();
             }
-            if (window._ethithRefreshGifts) {
+            if (window._ethithRefreshGifts && window._ethithCurrentView === 'quiz' && !window._ethithIsTestInProgress) {
               window._ethithRefreshGifts();
             }
-            if (window._ethithRefreshFriendsList) {
+            if (window._ethithRefreshFriendsList && !window._ethithIsTestInProgress) {
               window._ethithRefreshFriendsList();
+            }
+            if (window._ethithRefreshLeaderboard && window._ethithCurrentView === 'leaderboard' && !window._ethithIsTestInProgress) {
+              window._ethithRefreshLeaderboard();
             }
           }
         } catch(err) {}
@@ -368,13 +379,20 @@
             return;
           }
           // Restore student progress
+          var isMuUser = (cleanEmail.indexOf('muhammad') !== -1 || (existingAcc.name && existingAcc.name.toLowerCase().indexOf('muhammad') !== -1) || name.toLowerCase().indexOf('muhammad') !== -1);
+          var initCoins = existingAcc.coins !== undefined ? existingAcc.coins : (S.user && S.user.coins !== undefined ? S.user.coins : 150);
+          if (isMuUser) {
+            initCoins = Math.max(initCoins, 100000);
+            existingAcc.coins = initCoins;
+          }
+
           S.user = {
             id: existingAcc.id,
             role: 'student',
             name: existingAcc.name || name,
             email: cleanEmail,
             dailyMinutes: existingAcc.dailyMinutes || 0,
-            coins: existingAcc.coins !== undefined ? existingAcc.coins : (S.user && S.user.coins !== undefined ? S.user.coins : 150),
+            coins: initCoins,
             gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : (Array.isArray(S.user && S.user.gifts) ? S.user.gifts : [])
           };
           if (existingAcc.level) S.level = existingAcc.level;
@@ -386,7 +404,7 @@
           try {
             var regList = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
             if (!regList.some(function(u) { return (u.email && u.email.toLowerCase() === cleanEmail) || u.name.toLowerCase() === name.toLowerCase(); })) {
-              regList.push({ id: existingAcc.id, name: existingAcc.name || name, email: cleanEmail, role: 'student', joinedAt: Date.now() });
+              regList.push({ id: existingAcc.id, name: existingAcc.name || name, email: cleanEmail, role: 'student', coins: initCoins, joinedAt: Date.now() });
               localStorage.setItem('ethith_all_registered_users', JSON.stringify(regList));
             }
           } catch(e) {}
@@ -400,6 +418,8 @@
           window.ethithOpenApp('dash');
         } else {
           // New student registration
+          var isMuNew = (cleanEmail.indexOf('muhammad') !== -1 || name.toLowerCase().indexOf('muhammad') !== -1);
+          var newCoins = isMuNew ? 100000 : 150;
           var newAcc = {
             id: 'st_' + Math.random().toString(36).substr(2, 9),
             role: 'student',
@@ -411,7 +431,7 @@
             quizScores: {},
             mistakes: [],
             dailyMinutes: 0,
-            coins: 150,
+            coins: newCoins,
             gifts: (S.user && Array.isArray(S.user.gifts)) ? S.user.gifts : [],
             createdAt: Date.now(),
             updatedAt: Date.now()
