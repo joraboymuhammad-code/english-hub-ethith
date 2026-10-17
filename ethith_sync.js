@@ -619,8 +619,12 @@
     else if ((event.type && event.type.indexOf('QUIZ_') === 0) || event.type === 'GIFT_SENT') {
       if (event.type === 'GIFT_SENT') {
         var myUserKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase().trim();
+        var myUserName = (S.user && S.user.name || '').toLowerCase().trim();
         var targetKey = (event.recipientEmail || event.recipientId || '').toLowerCase().trim();
-        if (myUserKey && targetKey && myUserKey === targetKey) {
+        var targetName = (event.recipientName || '').toLowerCase().trim();
+        var isMatch = (targetKey && myUserKey && targetKey === myUserKey) ||
+                      (targetName && myUserName && targetName === myUserName);
+        if (isMatch) {
           if (!S.user.gifts) S.user.gifts = [];
           S.user.gifts.unshift({
             id: 'gift_' + Date.now(),
@@ -628,13 +632,27 @@
             icon: event.giftIcon,
             desc: event.giftDesc,
             senderName: event.senderName,
+            fromFriend: event.senderName,
             timestamp: Date.now()
           });
-          window.EthithApp.saveState();
+          if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+
+          if (!Array.isArray(S.user.notifications)) S.user.notifications = [];
+          S.user.notifications.unshift({
+            id: 'notif_' + Date.now(),
+            type: 'gift',
+            icon: event.giftIcon || '🎁',
+            title: "Do'stdan Sovrin: " + event.giftName,
+            message: (event.senderName || "Do'stingiz") + " sizga '" + event.giftName + "' sovrinini yubordi!",
+            time: new Date().toLocaleTimeString().slice(0, 5),
+            date: 'Bugun',
+            read: false
+          });
+
           var toast = document.createElement('div');
           toast.className = 'eth-live-toast-alert';
-          toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:14px 28px;border-radius:12px;font-weight:800;z-index:2147483647;box-shadow:0 10px 30px rgba(0,0,0,0.35);border:2px solid #34d399;font-size:15px;text-align:center;';
-          toast.innerHTML = '🎁 <b>' + (event.senderName || 'Do\'stingiz') + '</b> sizga kulgili sovg\'a yubordi:<br><span style="font-size:20px;display:inline-block;margin-top:4px;">' + (event.giftIcon || '🎁') + ' ' + (event.giftName || 'Sovg\'a') + '</span>';
+          toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:14px 28px;border-radius:16px;font-weight:800;z-index:2147483647;box-shadow:0 12px 35px rgba(0,0,0,0.4);border:2px solid #34d399;font-size:15px;text-align:center;';
+          toast.innerHTML = '🎁 <b>' + (event.senderName || 'Do\'stingiz') + '</b> sizga yangi sovrin yubordi:<br><span style="font-size:22px;display:inline-block;margin-top:6px;">' + (event.giftIcon || '🎁') + ' ' + (event.giftName || 'Sovrin') + '</span>';
           document.body.appendChild(toast);
           setTimeout(function() { if (toast && toast.parentNode) toast.remove(); }, 6000);
           if (window._ethithRefreshGifts) window._ethithRefreshGifts();

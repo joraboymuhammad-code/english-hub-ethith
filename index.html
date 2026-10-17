@@ -175,6 +175,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -11325,8 +11326,12 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
     else if ((event.type && event.type.indexOf('QUIZ_') === 0) || event.type === 'GIFT_SENT') {
       if (event.type === 'GIFT_SENT') {
         var myUserKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase().trim();
+        var myUserName = (S.user && S.user.name || '').toLowerCase().trim();
         var targetKey = (event.recipientEmail || event.recipientId || '').toLowerCase().trim();
-        if (myUserKey && targetKey && myUserKey === targetKey) {
+        var targetName = (event.recipientName || '').toLowerCase().trim();
+        var isMatch = (targetKey && myUserKey && targetKey === myUserKey) ||
+                      (targetName && myUserName && targetName === myUserName);
+        if (isMatch) {
           if (!S.user.gifts) S.user.gifts = [];
           S.user.gifts.unshift({
             id: 'gift_' + Date.now(),
@@ -11334,13 +11339,27 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
             icon: event.giftIcon,
             desc: event.giftDesc,
             senderName: event.senderName,
+            fromFriend: event.senderName,
             timestamp: Date.now()
           });
-          window.EthithApp.saveState();
+          if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+
+          if (!Array.isArray(S.user.notifications)) S.user.notifications = [];
+          S.user.notifications.unshift({
+            id: 'notif_' + Date.now(),
+            type: 'gift',
+            icon: event.giftIcon || '🎁',
+            title: "Do'stdan Sovrin: " + event.giftName,
+            message: (event.senderName || "Do'stingiz") + " sizga '" + event.giftName + "' sovrinini yubordi!",
+            time: new Date().toLocaleTimeString().slice(0, 5),
+            date: 'Bugun',
+            read: false
+          });
+
           var toast = document.createElement('div');
           toast.className = 'eth-live-toast-alert';
-          toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:14px 28px;border-radius:12px;font-weight:800;z-index:2147483647;box-shadow:0 10px 30px rgba(0,0,0,0.35);border:2px solid #34d399;font-size:15px;text-align:center;';
-          toast.innerHTML = '🎁 <b>' + (event.senderName || 'Do\'stingiz') + '</b> sizga kulgili sovg\'a yubordi:<br><span style="font-size:20px;display:inline-block;margin-top:4px;">' + (event.giftIcon || '🎁') + ' ' + (event.giftName || 'Sovg\'a') + '</span>';
+          toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:14px 28px;border-radius:16px;font-weight:800;z-index:2147483647;box-shadow:0 12px 35px rgba(0,0,0,0.4);border:2px solid #34d399;font-size:15px;text-align:center;';
+          toast.innerHTML = '🎁 <b>' + (event.senderName || 'Do\'stingiz') + '</b> sizga yangi sovrin yubordi:<br><span style="font-size:22px;display:inline-block;margin-top:6px;">' + (event.giftIcon || '🎁') + ' ' + (event.giftName || 'Sovrin') + '</span>';
           document.body.appendChild(toast);
           setTimeout(function() { if (toast && toast.parentNode) toast.remove(); }, 6000);
           if (window._ethithRefreshGifts) window._ethithRefreshGifts();
@@ -12744,7 +12763,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
   // ====================================================
   // ETHITH AUTO-UPDATE & CACHE-BUSTING ENGINE
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.1945";
+  window.ETHITH_BUILD_VERSION = "2026.10.17.2015";
 
   function checkAppVersion() {
     if (typeof fetch === 'undefined') return;
@@ -20729,6 +20748,19 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
     var activeSubtab = window._ethithQuizSubtab || 'quizzes';
 
     function renderContent() {
+      // 0. Auto-claim any received gifts from friends in localStorage
+      var myRecKey = 'ethith_received_gifts_' + (S.user.name || '').toLowerCase().trim();
+      var pendingGifts = [];
+      try { pendingGifts = JSON.parse(localStorage.getItem(myRecKey) || '[]'); } catch(e) {}
+      if (pendingGifts.length > 0) {
+        if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
+        pendingGifts.forEach(function(g) {
+          S.user.gifts.unshift(g);
+        });
+        localStorage.removeItem(myRecKey);
+        if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+      }
+
       var quizzesCount = S.quizzes.length;
       var giftsCount = S.user.gifts.length;
 
@@ -20758,102 +20790,144 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       }
       html += '</div>';
 
-      // Subtabs: Quizzes vs Gifts (Modern Floating Pill Tabs)
-      html += '<div class="flex items-center justify-start py-2">';
-      html += '  <div class="eth-quiz-pill-tabs">';
-      html += '    <button id="tabQuizzesBtn" class="eth-quiz-pill-tab ' + (activeSubtab === 'quizzes' ? 'active-quizzes' : '') + '">';
-      html += '      <span>⚡ Jonli Testlar (' + quizzesCount + ')</span>';
-      html += '    </button>';
-      html += '    <button id="tabGiftsBtn" class="eth-quiz-pill-tab ' + (activeSubtab === 'gifts' ? 'active-gifts' : '') + '">';
-      html += '      <span>🎁 Kulgili Sovg\'alar (' + giftsCount + ')</span>';
-      html += '    </button>';
-      html += '  </div>';
-      html += '</div>';
-
-      // SUBTAB 1: QUIZZES
-      if (activeSubtab === 'quizzes') {
-        // EXACT Image 3 Style: Compact & Balanced Glassmorphic Join Card
-        html += '<div class="eth-exam-join-card-dark max-w-4xl mx-auto space-y-2.5 my-2">';
-        html += '  <div class="flex items-center justify-between gap-3">';
-        html += '    <div class="flex items-center gap-2.5">';
-        html += '      <div class="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-sm text-blue-400">🔒</div>';
-        html += '      <div>';
-        html += '        <h3 class="text-sm font-black text-white leading-tight">Maxsus Kod Bilan Imtihonga Kirish</h3>';
-        html += '        <p class="text-[11px] text-gray-400 leading-tight">O\'qituvchi bergan 6 xonali kodni kiriting va testga qo\'shiling</p>';
-        html += '      </div>';
-        html += '    </div>';
+      // TEACHER VIEW: Teachers do NOT take exams, only manage quizzes (No join card, no gifts tab!)
+      if (isTeacher) {
+        html += '<div class="space-y-4 pt-2">';
+        html += '  <div class="flex items-center justify-between">';
+        html += '    <h3 class="text-base font-black text-gray-900 dark:text-white flex items-center gap-2">';
+        html += '      <span>📋 O\'qituvchi Boshqaruvi (Mavjud Quiz Testlar)</span>';
+        html += '    </h3>';
         html += '  </div>';
-        html += '  <div class="flex flex-wrap items-end gap-3 pt-1">';
-        html += '    <div class="flex-1 min-w-[160px]">';
-        html += '      <label class="text-[10px] font-black uppercase tracking-wider text-blue-300 block mb-1">🔑 IMTIHON KODI</label>';
-        html += '      <input id="quizCodeInputHero" type="text" placeholder="Masalan: QZ-7K#9X" class="eth-exam-join-input-dark font-mono uppercase tracking-wider" />';
-        html += '    </div>';
-        html += '    <div class="flex-1 min-w-[170px]">';
-        html += '      <label class="text-[10px] font-black uppercase tracking-wider text-blue-300 block mb-1">👤 ISM VA FAMILIYANGIZ</label>';
-        html += '      <input id="quizStudentNameHero" type="text" value="' + esc(S.user.name || '') + '" class="eth-exam-join-input-dark font-bold" ' + (isTeacher ? '' : 'readonly') + ' />';
-        html += '    </div>';
-        html += '    <button id="btnStartQuizHeroJoin" class="eth-exam-join-btn-blue">';
-        html += '      <span>Imtihonni Boshlash</span>';
-        html += '      <span>➔</span>';
+
+        if (S.quizzes.length === 0) {
+          html += '<div class="ap-card ap-empty" style="text-align:center;padding:32px 20px">';
+          html += '  <div style="font-size:36px;margin-bottom:8px">🎯</div>';
+          html += '  <h3 style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:4px">Hozircha hech qanday quiz testlar yo\'q</h3>';
+          html += '  <p style="font-size:12.5px;color:var(--muted)">Yuqoridagi "+ Yangi Imtihon Tuzish" tugmasini bosib Wayground Studio orqali test tuzing.</p>';
+          html += '</div>';
+        } else {
+          html += '<div class="ap-grid g2">';
+          S.quizzes.forEach(function(quiz) {
+            var qCount = (quiz.questions || []).length;
+            var statusBadge = '';
+            if (quiz.status === 'active') {
+              statusBadge = '<span class="eth-badge-open animate-pulse">🟢 Jonli Battle</span>';
+            } else if (quiz.status === 'finished') {
+              statusBadge = '<span class="eth-badge-closed">🟣 Yakunlangan</span>';
+            } else {
+              statusBadge = '<span class="eth-badge-open" style="background:rgba(234,179,8,0.12);color:#eab308;border-color:rgba(234,179,8,0.3)">🟡 Lobby</span>';
+            }
+
+            html += '<div class="ap-card" style="border:1.5px solid var(--border);position:relative;display:flex;flex-direction:column;justify-content:space-between">';
+            html += '  <div>';
+            html += '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;flex-wrap:wrap">';
+            html += '      <div style="display:flex;gap:6px;align-items:center">';
+            html += '        <span class="ap-tag">⚡ Blitz Quiz</span>';
+            html +=          statusBadge;
+            html += '        <span style="font-size:11.5px;color:var(--muted)">' + qCount + ' ta savol</span>';
+            html += '      </div>';
+            html += '      <span style="display:inline-flex;align-items:center;gap:6px;font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:3px 8px;border-radius:6px;font-size:12px">';
+            html += '        Code: ' + esc(quiz.code);
+            html += '        <button type="button" class="eth-copy-btn-mini" data-copy-code="' + esc(quiz.code) + '" title="Kodni nusxalash">📋 Nusxalash</button>';
+            html += '      </span>';
+            html += '    </div>';
+
+            html += '    <h3 style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;line-height:1.3">' + esc(quiz.title || 'Quiz Test') + '</h3>';
+            html += '    <p style="color:var(--muted);font-size:12.5px;margin:0 0 14px">';
+            html += '      📝 ' + qCount + ' questions · ⚡ +600 / +100 / -500 ball · 🎁 100+ Sovrinlar';
+            html += '    </p>';
+            html += '  </div>';
+
+            html += '  <div style="display:flex;gap:8px;align-items:center;padding-top:10px;border-top:1px solid var(--border);flex-wrap:wrap">';
+            html += '    <button class="ap-btn solid btnStartQuizRunner" data-quiz-id="' + quiz.id + '" style="flex:1;justify-content:center;padding:10px 16px;font-size:13.5px">';
+            html += '      ▶️ Lobbyni ochish';
+            html += '    </button>';
+            html += '    <button class="ap-btn out btnViewQuizAnalysis" data-quiz-id="' + quiz.id + '" style="padding:10px 14px;font-size:13px;justify-content:center;color:#8b5cf6;border-color:rgba(139,92,246,0.4)" title="Test Tahlili">📊 Test Tahlili</button>';
+            html += '    <button class="ap-btn out btnDeleteQuiz" data-quiz-id="' + quiz.id + '" style="padding:10px 12px;color:#ef4444;justify-content:center" title="O\'chirish">';
+            html += '      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>';
+            html += '    </button>';
+            html += '  </div>';
+            html += '</div>';
+          });
+          html += '</div>';
+        }
+        html += '</div>';
+      }
+
+      // STUDENT VIEW: Clean Tabs (Enter Code vs Sovrinlar)
+      else {
+        html += '<div class="flex items-center justify-start py-2">';
+        html += '  <div class="eth-quiz-pill-tabs">';
+        html += '    <button id="tabQuizzesBtn" class="eth-quiz-pill-tab ' + (activeSubtab === 'quizzes' ? 'active-quizzes' : '') + '">';
+        html += '      <span>⚡ Imtihonga Kirish</span>';
+        html += '    </button>';
+        html += '    <button id="tabGiftsBtn" class="eth-quiz-pill-tab ' + (activeSubtab === 'gifts' ? 'active-gifts' : '') + '">';
+        html += '      <span>🎁 Sovrinlar (' + giftsCount + ')</span>';
         html += '    </button>';
         html += '  </div>';
         html += '</div>';
 
-        // QUIZ CARDS: ONLY SHOWN TO TEACHERS (Students only see code join box per user requirement)
-        if (isTeacher) {
-          html += '<div class="space-y-4 pt-4">';
-          html += '  <div class="flex items-center justify-between">';
-          html += '    <h3 class="text-base font-black text-gray-900 dark:text-white flex items-center gap-2">';
-          html += '      <span>📋 O\'qituvchi Boshqaruvi (Mavjud Quiz Testlar)</span>';
-          html += '    </h3>';
+        // SUBTAB 1: QUIZZES - COMPACT JOIN CARD (Less than half screen width, perfectly centered)
+        if (activeSubtab === 'quizzes') {
+          html += '<div class="eth-exam-join-card-dark max-w-sm sm:max-w-md mx-auto space-y-4 my-6 p-6 shadow-2xl" style="border-radius:22px;border:1.5px solid rgba(59,130,246,0.3);">';
+          html += '  <div class="flex items-center gap-3 border-b border-gray-800 pb-3">';
+          html += '    <div class="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-lg text-blue-400 flex-shrink-0">🔒</div>';
+          html += '    <div>';
+          html += '      <h3 class="text-base font-black text-white leading-tight">Maxsus Kod Bilan Kirish</h3>';
+          html += '      <p class="text-[11px] text-gray-400 leading-tight">O\'qituvchi bergan 6 xonali kodni kiriting</p>';
+          html += '    </div>';
+          html += '  </div>';
+          html += '  <div class="space-y-3.5 pt-1">';
+          html += '    <div>';
+          html += '      <label class="text-[10px] font-black uppercase tracking-wider text-blue-300 block mb-1">🔑 IMTIHON KODI</label>';
+          html += '      <input id="quizCodeInputHero" type="text" placeholder="Masalan: QZ-7K#9X" class="eth-exam-join-input-dark font-mono uppercase tracking-wider w-full" />';
+          html += '    </div>';
+          html += '    <div>';
+          html += '      <label class="text-[10px] font-black uppercase tracking-wider text-blue-300 block mb-1">👤 ISM VA FAMILIYANGIZ</label>';
+          html += '      <input id="quizStudentNameHero" type="text" value="' + esc(S.user.name || '') + '" class="eth-exam-join-input-dark font-bold w-full" readonly />';
+          html += '    </div>';
+          html += '    <button id="btnStartQuizHeroJoin" class="eth-exam-join-btn-blue w-full justify-center py-3 text-sm font-black shadow-lg" style="margin-top:8px;">';
+          html += '      <span>Imtihonni Boshlash</span>';
+          html += '      <span>➔</span>';
+          html += '    </button>';
+          html += '  </div>';
+          html += '</div>';
+        }
+
+        // SUBTAB 2: SOVRINLAR
+        else if (activeSubtab === 'gifts') {
+          html += '<div class="space-y-4">';
+          html += '  <div class="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-2xl p-4 text-xs md:text-sm text-amber-900 dark:text-amber-200 flex items-center gap-3">';
+          html += '    <span class="text-2xl">🎁</span>';
+          html += '    <div>';
+          html += '      <b>Sovrinlar Kolleksiyasi:</b> Quiz test bellashuvlarida 1, 2 va 3-o\'rinlarni egallagan o\'quvchilarga beriladigan 3D sovrinlar. Ushbu sovrinlarni do\'stlaringizga sovg\'a qilishingiz mumkin!';
+          html += '    </div>';
           html += '  </div>';
 
-          if (S.quizzes.length === 0) {
-            html += '<div class="ap-card ap-empty" style="text-align:center;padding:32px 20px">';
-            html += '  <div style="font-size:36px;margin-bottom:8px">🎯</div>';
-            html += '  <h3 style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:4px">Hozircha hech qanday quiz testlar yo\'q</h3>';
-            html += '  <p style="font-size:12.5px;color:var(--muted)">Yuqoridagi "+ Yangi Imtihon Tuzish" tugmasini bosib Wayground Studio orqali test tuzing.</p>';
+          if (S.user.gifts.length === 0) {
+            html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-12 text-center border border-gray-100 dark:border-gray-700">';
+            html += '  <div class="text-6xl mb-3">🏆</div>';
+            html += '  <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">Sizda hali sovrinlar yo\'q</h3>';
+            html += '  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-md mx-auto">Quiz Bellashuvlarida qatnashib kuchli uchlikka kiring va birinchi sovriningizni yutib oling!</p>';
             html += '</div>';
           } else {
-            html += '<div class="ap-grid g2">';
-            S.quizzes.forEach(function(quiz) {
-              var qCount = (quiz.questions || []).length;
-              var statusBadge = '';
-              if (quiz.status === 'active') {
-                statusBadge = '<span class="eth-badge-open animate-pulse">🟢 Jonli Battle</span>';
-              } else if (quiz.status === 'finished') {
-                statusBadge = '<span class="eth-badge-closed">🟣 Yakunlangan</span>';
-              } else {
-                statusBadge = '<span class="eth-badge-open" style="background:rgba(234,179,8,0.12);color:#eab308;border-color:rgba(234,179,8,0.3)">🟡 Lobby</span>';
-              }
+            html += '<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">';
+            S.user.gifts.forEach(function(gift, idx) {
+              var isFromFriend = Boolean(gift.fromFriend || gift.senderName);
+              var senderTitle = gift.fromFriend || gift.senderName || '';
 
-              html += '<div class="ap-card" style="border:1.5px solid var(--border);position:relative;display:flex;flex-direction:column;justify-content:space-between">';
+              html += '<div class="eth-gift-card-3d bg-white dark:bg-gray-800 rounded-2xl p-5 border border-amber-200/60 dark:border-amber-700/60 shadow-md hover:shadow-xl transition-all flex flex-col justify-between text-center relative overflow-hidden">';
               html += '  <div>';
-              html += '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;flex-wrap:wrap">';
-              html += '      <div style="display:flex;gap:6px;align-items:center">';
-              html += '        <span class="ap-tag">⚡ Blitz Quiz</span>';
-              html +=          statusBadge;
-              html += '        <span style="font-size:11.5px;color:var(--muted)">' + qCount + ' ta savol</span>';
-              html += '      </div>';
-              html += '      <span style="display:inline-flex;align-items:center;gap:6px;font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:3px 8px;border-radius:6px;font-size:12px">';
-              html += '        Code: ' + esc(quiz.code);
-              html += '        <button type="button" class="eth-copy-btn-mini" data-copy-code="' + esc(quiz.code) + '" title="Kodni nusxalash">📋 Nusxalash</button>';
-              html += '      </span>';
-              html += '    </div>';
-
-              html += '    <h3 style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;line-height:1.3">' + esc(quiz.title || 'Quiz Test') + '</h3>';
-              html += '    <p style="color:var(--muted);font-size:12.5px;margin:0 0 14px">';
-              html += '      📝 ' + qCount + ' questions · ⚡ +600 / +100 / -500 ball · 🎁 100+ Sovg\'alar';
-              html += '    </p>';
+              html += '    <div class="text-6xl my-2 transform hover:scale-110 transition-transform">' + (gift.icon || '🎁') + '</div>';
+              html += '    <h4 class="font-extrabold text-sm md:text-base text-gray-900 dark:text-white mt-2 leading-snug">' + (gift.name || 'Sovrin') + '</h4>';
+              html += '    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 line-clamp-3 leading-relaxed">' + (gift.desc || '') + '</p>';
+              if (isFromFriend) {
+                html += '    <div class="mt-2.5 text-[11px] font-black text-blue-500 bg-blue-50 dark:bg-blue-950/60 border border-blue-300 dark:border-blue-800/80 rounded-lg px-2.5 py-1 inline-flex items-center gap-1.5 shadow-sm">🎁 Do\'stdan sovg\'a (' + senderTitle + ')</div>';
+              }
               html += '  </div>';
-
-              html += '  <div style="display:flex;gap:8px;align-items:center;padding-top:10px;border-top:1px solid var(--border);flex-wrap:wrap">';
-              html += '    <button class="ap-btn solid btnStartQuizRunner" data-quiz-id="' + quiz.id + '" style="flex:1;justify-content:center;padding:10px 16px;font-size:13.5px">';
-              html += '      ▶️ Lobbyni ochish';
-              html += '    </button>';
-              html += '    <button class="ap-btn out btnViewQuizAnalysis" data-quiz-id="' + quiz.id + '" style="padding:10px 14px;font-size:13px;justify-content:center;color:#8b5cf6;border-color:rgba(139,92,246,0.4)" title="Test Tahlili">📊 Test Tahlili</button>';
-              html += '    <button class="ap-btn out btnDeleteQuiz" data-quiz-id="' + quiz.id + '" style="padding:10px 12px;color:#ef4444;justify-content:center" title="O\'chirish">';
-              html += '      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>';
+              html += '  <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700/60">';
+              html += '    <button class="btnSendGiftModal eth-gift-action-btn" data-gift-idx="' + idx + '">';
+              html += '      <span>🎁 Do\'stga yuborish</span>';
               html += '    </button>';
               html += '  </div>';
               html += '</div>';
@@ -20864,66 +20938,28 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         }
       }
 
-      // SUBTAB 2: GIFTS
-      else if (activeSubtab === 'gifts') {
-        html += '<div class="space-y-4">';
-        html += '  <div class="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-2xl p-4 text-xs md:text-sm text-amber-900 dark:text-amber-200 flex items-center gap-3">';
-        html += '    <span class="text-2xl">🎁</span>';
-        html += '    <div>';
-        html += '      <b>Kulgili Sovg\'alar Kolleksiyasi:</b> Quiz test bellashuvlarida 1, 2 va 3-o\'rinlarni egallagan o\'quvchilarga 100 dan ortiq kulgili o\'zbekcha sovg\'alar beriladi. Ushbu sovg\'alarni do\'stlaringizga yuborishingiz mumkin!';
-        html += '    </div>';
-        html += '  </div>';
-
-        if (S.user.gifts.length === 0) {
-          html += '<div class="bg-white dark:bg-gray-800 rounded-2xl p-12 text-center border border-gray-100 dark:border-gray-700">';
-          html += '  <div class="text-6xl mb-3">🩴</div>';
-          html += '  <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">Sizda hali kulgili sovg\'alar yo\'q</h3>';
-          html += '  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-md mx-auto">Quiz Bellashuvlarida qatnashib kuchli uchlikka kiring va birinchi kulgili sovg\'angizni (masalan: Eski rezina tapichka yoki Bolalar tagligi) yutib oling!</p>';
-          html += '</div>';
-        } else {
-          html += '<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">';
-          S.user.gifts.forEach(function(gift, idx) {
-            html += '<div class="eth-gift-card-3d bg-white dark:bg-gray-800 rounded-2xl p-5 border border-amber-200/60 dark:border-amber-700/60 shadow-md hover:shadow-xl transition-all flex flex-col justify-between text-center relative overflow-hidden">';
-            html += '  <div>';
-            html += '    <div class="text-6xl my-2 transform hover:scale-110 transition-transform">' + (gift.icon || '🎁') + '</div>';
-            html += '    <h4 class="font-extrabold text-sm md:text-base text-gray-900 dark:text-white mt-2 leading-snug">' + (gift.name || 'Kulgili Sovg\'a') + '</h4>';
-            html += '    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 line-clamp-3 leading-relaxed">' + (gift.desc || '') + '</p>';
-            if (gift.senderName) {
-              html += '    <div class="mt-2 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">Yuboruvchi: ' + gift.senderName + '</div>';
-            }
-            html += '  </div>';
-            html += '  <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700/60">';
-            html += '    <button class="btnSendGiftModal eth-gift-action-btn" data-gift-idx="' + idx + '">';
-            html += '      <span>🎁 Do\'stga sovg\'a qilish</span>';
-            html += '    </button>';
-            html += '  </div>';
-            html += '</div>';
-          });
-          html += '</div>';
-        }
-        html += '</div>';
-      }
-
       html += '</div>';
 
       container.innerHTML = html;
 
       // ATTACH LISTENERS
-      var tabQuizzesBtn = container.querySelector('#tabQuizzesBtn');
-      var tabGiftsBtn = container.querySelector('#tabGiftsBtn');
-      if (tabQuizzesBtn) {
-        tabQuizzesBtn.onclick = function() {
-          window._ethithQuizSubtab = 'quizzes';
-          activeSubtab = 'quizzes';
-          renderContent();
-        };
-      }
-      if (tabGiftsBtn) {
-        tabGiftsBtn.onclick = function() {
-          window._ethithQuizSubtab = 'gifts';
-          activeSubtab = 'gifts';
-          renderContent();
-        };
+      if (!isTeacher) {
+        var tabQuizzesBtn = container.querySelector('#tabQuizzesBtn');
+        var tabGiftsBtn = container.querySelector('#tabGiftsBtn');
+        if (tabQuizzesBtn) {
+          tabQuizzesBtn.onclick = function() {
+            window._ethithQuizSubtab = 'quizzes';
+            activeSubtab = 'quizzes';
+            renderContent();
+          };
+        }
+        if (tabGiftsBtn) {
+          tabGiftsBtn.onclick = function() {
+            window._ethithQuizSubtab = 'gifts';
+            activeSubtab = 'gifts';
+            renderContent();
+          };
+        }
       }
 
       // Teacher Studio Trigger
@@ -21789,13 +21825,16 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
           var isHighAcc = accPct >= 70;
           var isLowAcc = accPct < 40;
 
+          var corrOpt = q.options[q.correctAnswer || 0];
+          var corrText = (typeof corrOpt === 'object' && corrOpt !== null) ? (corrOpt.text || '') : String(corrOpt || '');
+
           html += '<div class="eth-wg-qreport-card">';
           html += '  <div class="eth-wg-qreport-header">';
           html += '    <div>';
           html += '      <div class="eth-wg-qreport-title">Question ' + (qIdx + 1) + ': ' + q.question + '</div>';
           html += '      <div class="eth-wg-qreport-correct-pill">';
           html += '        <span>✅</span>';
-          html += '        <span>To\'g\'ri javob: ' + String.fromCharCode(65 + (q.correctAnswer || 0)) + ') ' + (q.options[q.correctAnswer || 0] || '') + '</span>';
+          html += '        <span>To\'g\'ri javob: ' + String.fromCharCode(65 + (q.correctAnswer || 0)) + ') ' + esc(corrText) + '</span>';
           html += '      </div>';
           html += '    </div>';
           html += '    <span class="eth-wg-qreport-acc-badge ' + (isHighAcc ? 'high' : (isLowAcc ? 'low' : 'mid')) + '">';
@@ -21810,10 +21849,11 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
             var oCount = optCounts[oIdx] || 0;
             var oPct = totalAnswered > 0 ? Math.round((oCount / totalAnswered) * 100) : 0;
             var stList = optStudents[oIdx] || [];
+            var optText = (typeof opt === 'object' && opt !== null) ? (opt.text || '') : String(opt || '');
 
             html += '<div class="eth-wg-qreport-opt-box ' + (isCorr ? 'is-correct' : '') + '">';
             html += '  <div class="eth-wg-qreport-opt-top">';
-            html += '    <span style="' + (isCorr ? 'color:#10b981;font-weight:900;' : '') + '">' + letter + ') ' + opt + (isCorr ? ' ✅' : '') + '</span>';
+            html += '    <span style="' + (isCorr ? 'color:#10b981;font-weight:900;' : '') + '">' + letter + ') ' + esc(optText) + (isCorr ? ' ✅' : '') + '</span>';
             html += '    <span style="font-family: monospace; font-size: 11px; opacity: 0.85;">' + oCount + ' (' + oPct + '%)</span>';
             html += '  </div>';
 
@@ -22705,13 +22745,16 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
             var isHighAcc = stat.accuracyPct >= 70;
             var isLowAcc = stat.accuracyPct < 40;
 
+            var corrOpt = stat.options[stat.correctAnswer];
+            var corrText = (typeof corrOpt === 'object' && corrOpt !== null) ? (corrOpt.text || '') : String(corrOpt || '');
+
             tabHtml += '<div class="eth-wg-qreport-card">';
             tabHtml += '  <div class="eth-wg-qreport-header">';
             tabHtml += '    <div>';
             tabHtml += '      <div class="eth-wg-qreport-title">Question ' + (sIdx + 1) + ': ' + stat.questionText + '</div>';
             tabHtml += '      <div class="eth-wg-qreport-correct-pill">';
             tabHtml += '        <span>✅</span>';
-            tabHtml += '        <span>Correct Answer: ' + String.fromCharCode(65 + stat.correctAnswer) + ') ' + (stat.options[stat.correctAnswer] || '') + '</span>';
+            tabHtml += '        <span>Correct Answer: ' + String.fromCharCode(65 + stat.correctAnswer) + ') ' + esc(corrText) + '</span>';
             tabHtml += '      </div>';
             tabHtml += '    </div>';
             tabHtml += '    <span class="eth-wg-qreport-acc-badge ' + (isHighAcc ? 'high' : (isLowAcc ? 'low' : 'mid')) + '">';
@@ -22726,10 +22769,11 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
               var chosenStudents = (stat.optStudents && stat.optStudents[optIdx]) || [];
               var optCount = (stat.optCounts && stat.optCounts[optIdx]) || 0;
               var optPct = stat.totalAnswered > 0 ? Math.round((optCount / stat.totalAnswered) * 100) : 0;
+              var optText = (typeof opt === 'object' && opt !== null) ? (opt.text || '') : String(opt || '');
 
               tabHtml += '<div class="eth-wg-qreport-opt-box ' + (isCorr ? 'is-correct' : '') + '">';
               tabHtml += '  <div class="eth-wg-qreport-opt-top">';
-              tabHtml += '    <span style="' + (isCorr ? 'color:#10b981;font-weight:900;' : '') + '">' + letter + ') ' + opt + (isCorr ? ' ✅' : '') + '</span>';
+              tabHtml += '    <span style="' + (isCorr ? 'color:#10b981;font-weight:900;' : '') + '">' + letter + ') ' + esc(optText) + (isCorr ? ' ✅' : '') + '</span>';
               tabHtml += '    <span style="font-family: monospace; font-size: 11px; opacity: 0.85;">' + optCount + ' (' + optPct + '%)</span>';
               tabHtml += '  </div>';
 
@@ -22787,66 +22831,88 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
   }
 
   // -------------------------------------------------------------------------
-  // SEND GIFT MODAL (TRANSFER HILARIOUS UZBEK PRIZE TO A FRIEND)
+  // SEND GIFT MODAL (TRANSFER PRIZE TO A FRIEND WITH REALTIME SEARCH)
   // -------------------------------------------------------------------------
   function showSendGiftModal(gift, onSent) {
     if (!gift) return;
 
     var overlay = document.createElement('div');
-    overlay.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto';
+    overlay.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md overflow-y-auto';
+
+    var myEmail = (S.user && (S.user.email || S.user.id || '')).toLowerCase().trim();
+    var myName = (S.user && S.user.name || '').toLowerCase().trim();
 
     var friendsList = [];
-    var seenEmails = {};
-    (S.classes || []).forEach(function(cls) {
-      (cls.students || []).forEach(function(st) {
-        var email = (st.email || st.id || '').toLowerCase().trim();
-        if (email && email !== (S.user.email || '').toLowerCase().trim() && !seenEmails[email]) {
-          seenEmails[email] = true;
-          friendsList.push(st);
-        }
+    var seenNames = {};
+
+    function addFriend(st) {
+      if (!st || !st.name) return;
+      var name = String(st.name).trim();
+      var nameLower = name.toLowerCase();
+      var email = String(st.email || st.id || '').toLowerCase().trim();
+
+      if (email && email === myEmail) return;
+      if (nameLower === myName) return;
+      if (seenNames[nameLower]) return;
+      seenNames[nameLower] = true;
+
+      friendsList.push({
+        name: name,
+        email: email || (nameLower.replace(/\s+/g, '.') + '@ethith.uz')
       });
+    }
+
+    // Collect from classes
+    (S.classes || []).forEach(function(cls) {
+      (cls.students || []).forEach(addFriend);
     });
 
-    var html = '<div class="bg-white dark:bg-gray-800 rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl border border-gray-100 dark:border-gray-700 space-y-6 animate-fade-in">';
+    // Collect from default classmates roster
+    [
+      { name: "Alisher Navoiy", email: "alisher@ethith.uz" },
+      { name: "Malika Sobirova", email: "malika@ethith.uz" },
+      { name: "Jasur Beknazarov", email: "jasur@ethith.uz" },
+      { name: "Madina Karimova", email: "madina@ethith.uz" },
+      { name: "Bobur Mirzo", email: "bobur@ethith.uz" },
+      { name: "Diyora Rustamova", email: "diyora@ethith.uz" },
+      { name: "Shaxzod Tursunov", email: "shaxzod@ethith.uz" },
+      { name: "Gulnoza Qosimova", email: "gulnoza@ethith.uz" },
+      { name: "John Doe", email: "john@ethith.uz" }
+    ].forEach(addFriend);
 
-    html += '  <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-700 pb-4">';
+    var html = '<div class="bg-gray-900 text-white rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl border border-gray-800 space-y-5 animate-fade-in">';
+
+    html += '  <div class="flex items-center justify-between border-b border-gray-800 pb-3.5">';
     html += '    <div class="flex items-center gap-2.5">';
     html += '      <span class="text-2xl">🎁</span>';
-    html += '      <h3 class="text-lg font-black text-gray-900 dark:text-white">Do\'stga Sovg\'a Qilish</h3>';
+    html += '      <h3 class="text-lg font-black text-white">Do\'stga Sovrin Yuborish</h3>';
     html += '    </div>';
     html += '    <button id="btnCloseSendGift" class="eth-modal-close-btn" title="Yopish">✕</button>';
     html += '  </div>';
 
-    html += '  <div class="eth-gift-card-3d bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-gray-900 border border-amber-300 dark:border-amber-700/80 rounded-2xl p-4 text-center space-y-1 shadow-md">';
+    // Prize Card Preview
+    html += '  <div class="eth-gift-card-3d bg-gray-800/80 border border-amber-500/40 rounded-2xl p-4 text-center space-y-1 shadow-inner">';
     html += '    <div class="text-5xl">' + (gift.icon || '🎁') + '</div>';
-    html += '    <div class="font-black text-base text-gray-900 dark:text-white mt-1">' + (gift.name || 'Sovg\'a') + '</div>';
-    html += '    <div class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">' + (gift.desc || '') + '</div>';
+    html += '    <div class="font-black text-base text-white mt-1">' + (gift.name || 'Sovrin') + '</div>';
+    html += '    <div class="text-xs text-gray-400 leading-relaxed">' + (gift.desc || '') + '</div>';
     html += '  </div>';
 
+    // Search Box (User Requirement)
     html += '  <div class="space-y-2">';
-    html += '    <label class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Sovg\'ani qabul qiluvchi do\'stingizni tanlang:</label>';
-    if (friendsList.length === 0) {
-      html += '    <div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-xl text-center text-xs text-gray-400 border border-dashed border-gray-200 dark:border-gray-700">';
-      html += '      Sinfingizda hali boshqa o\'quvchilar mavjud emas. Sinflarga o\'quvchilar qo\'shilgach ularga sovg\'a yuborishingiz mumkin.';
-      html += '    </div>';
-    } else {
-      html += '    <div class="space-y-1.5 max-h-56 overflow-y-auto pr-1">';
-      friendsList.forEach(function(fr, fIdx) {
-        html += '<div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 flex items-center justify-between gap-3 hover:border-amber-400 transition-all">';
-        html += '  <div class="flex items-center gap-2.5 truncate">';
-        html += '    <span class="text-xl">👤</span>';
-        html += '    <div class="truncate">';
-        html += '      <div class="font-extrabold text-xs text-gray-900 dark:text-white truncate">' + fr.name + '</div>';
-        html += '      <div class="text-[10px] text-gray-400 truncate">' + (fr.email || '') + '</div>';
-        html += '    </div>';
-        html += '  </div>';
-        html += '  <button class="btnSendGiftToStudent eth-gift-action-btn" style="width:auto!important;padding:7px 16px!important;font-size:12px!important" data-friend-idx="' + fIdx + '">';
-        html += '    Yuborish 🎁';
-        html += '  </button>';
-        html += '</div>';
-      });
-      html += '    </div>';
-    }
+    html += '    <label class="text-[11px] font-black uppercase tracking-wider text-gray-400 block">Do\'stingizni qidiring:</label>';
+    html += '    <div class="relative">';
+    html += '      <input id="inputFriendSearch" type="text" placeholder="🔍 Do\'stingizning ismini yozing..." class="w-full px-4 py-2.5 rounded-xl bg-gray-950 border border-gray-700 text-white text-xs font-bold focus:border-blue-500 focus:outline-none transition-all placeholder-gray-500" />';
+    html += '    </div>';
+    html += '  </div>';
+
+    // Dynamic Friends List Container
+    html += '  <div class="space-y-1.5">';
+    html += '    <div class="flex items-center justify-between text-[11px] text-gray-400 font-bold px-1">';
+    html += '      <span>Mavjud do\'stlar</span>';
+    html += '      <span id="friendsCountBadge" class="text-blue-400 font-mono">' + friendsList.length + ' ta</span>';
+    html += '    </div>';
+    html += '    <div id="friendsListContainer" class="space-y-1.5 max-h-56 overflow-y-auto pr-1">';
+    html += '    </div>';
     html += '  </div>';
 
     html += '</div>';
@@ -22857,34 +22923,113 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
     function close() { overlay.remove(); }
     overlay.querySelector('#btnCloseSendGift').onclick = close;
 
-    overlay.querySelectorAll('.btnSendGiftToStudent').forEach(function(btn) {
-      btn.onclick = function() {
-        var idx = parseInt(btn.getAttribute('data-friend-idx'), 10);
-        var target = friendsList[idx];
-        if (!target) return;
+    function renderFilteredFriends(query) {
+      query = (query || '').toLowerCase().trim();
+      var filtered = friendsList.filter(function(fr) {
+        return !query || fr.name.toLowerCase().indexOf(query) !== -1 || fr.email.toLowerCase().indexOf(query) !== -1;
+      });
 
-        if (confirm("Rostdan ham '" + gift.name + "' sovg'asini " + target.name + "ga yubormoqchimisiz?")) {
-          S.user.gifts = S.user.gifts.filter(function(g) { return g.id !== gift.id; });
-          App.saveState();
+      var countEl = overlay.querySelector('#friendsCountBadge');
+      if (countEl) countEl.textContent = filtered.length + ' ta';
 
-          if (window.EthithSync && window.EthithSync.publishLive) {
-            window.EthithSync.publishLive({
-              type: 'GIFT_SENT',
-              giftName: gift.name,
-              giftIcon: gift.icon,
-              giftDesc: gift.desc,
-              senderName: S.user.name,
-              recipientEmail: target.email,
-              recipientId: target.id
-            });
-          }
+      var containerEl = overlay.querySelector('#friendsListContainer');
+      if (!containerEl) return;
 
-          alert("Sovg'a muvaffaqiyatli yuborildi! 🎉 Do'stingiz ekranida maxsus bildirishnoma paydo bo'ladi.");
-          close();
-          if (onSent) onSent();
-        }
+      if (filtered.length === 0) {
+        containerEl.innerHTML = '<div class="p-6 text-center text-xs text-gray-400 font-bold bg-gray-950/50 rounded-xl border border-dashed border-gray-800">Hech qanday o\'quvchi topilmadi</div>';
+        return;
+      }
+
+      var itemsHtml = '';
+      filtered.forEach(function(fr) {
+        itemsHtml += '<div class="p-3 bg-gray-800/90 rounded-xl border border-gray-700 flex items-center justify-between gap-3 hover:border-amber-400 transition-all">';
+        itemsHtml += '  <div class="flex items-center gap-2.5 min-w-0 flex-1 truncate">';
+        itemsHtml += '    <span class="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-sm flex-shrink-0">👤</span>';
+        itemsHtml += '    <div class="min-w-0 truncate">';
+        itemsHtml += '      <div class="font-extrabold text-xs text-white truncate">' + fr.name + '</div>';
+        itemsHtml += '      <div class="text-[10px] text-gray-400 truncate">' + fr.email + '</div>';
+        itemsHtml += '    </div>';
+        itemsHtml += '  </div>';
+        itemsHtml += '  <button class="btnSendToThisFriend eth-gift-action-btn flex-shrink-0" style="width:auto!important;padding:6px 14px!important;font-size:11.5px!important" data-friend-name="' + esc(fr.name) + '" data-friend-email="' + esc(fr.email) + '">';
+        itemsHtml += '    Yuborish 🎁';
+        itemsHtml += '  </button>';
+        itemsHtml += '</div>';
+      });
+
+      containerEl.innerHTML = itemsHtml;
+
+      containerEl.querySelectorAll('.btnSendToThisFriend').forEach(function(btn) {
+        btn.onclick = function() {
+          var targetName = btn.getAttribute('data-friend-name');
+          var targetEmail = btn.getAttribute('data-friend-email');
+          executeSend(targetName, targetEmail);
+        };
+      });
+    }
+
+    function executeSend(targetName, targetEmail) {
+      if (!confirm("Rostdan ham '" + gift.name + "' sovrinini " + targetName + " ga yubormoqchimisiz?")) return;
+
+      // 1. Remove from sender's gifts
+      if (Array.isArray(S.user.gifts)) {
+        var gIdx = S.user.gifts.findIndex(function(g) { return (g.id && g.id === gift.id) || g.name === gift.name; });
+        if (gIdx !== -1) S.user.gifts.splice(gIdx, 1);
+        if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+      }
+
+      var transferredGift = Object.assign({}, gift, {
+        id: 'gift_' + Date.now(),
+        fromFriend: S.user.name || "Do'stingiz",
+        senderName: S.user.name || "Do'stingiz",
+        transferredAt: Date.now()
+      });
+
+      // 2. Save into recipient's auto-claim inbox in localStorage
+      var targetKey = 'ethith_received_gifts_' + targetName.toLowerCase().trim();
+      var pending = [];
+      try { pending = JSON.parse(localStorage.getItem(targetKey) || '[]'); } catch(e) {}
+      pending.push(transferredGift);
+      localStorage.setItem(targetKey, JSON.stringify(pending));
+
+      // 3. Broadcast GIFT_SENT event via real-time sync
+      if (window.EthithSync && window.EthithSync.publishLive) {
+        window.EthithSync.publishLive({
+          type: 'GIFT_SENT',
+          giftName: gift.name,
+          giftIcon: gift.icon,
+          giftDesc: gift.desc,
+          senderName: S.user.name || "Do'stingiz",
+          recipientName: targetName,
+          recipientEmail: targetEmail
+        });
+      }
+
+      // 4. Top Toast Notification (User Requirement: "sovg'ani do'stiga yuborgach tepada habar kelsin")
+      var toast = document.createElement('div');
+      toast.className = 'animate-fade-in';
+      toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:14px 28px;border-radius:16px;font-weight:800;z-index:99999999;box-shadow:0 12px 35px rgba(0,0,0,0.5);border:2px solid #10b981;display:flex;align-items:center;gap:12px;backdrop-filter:blur(10px);';
+      toast.innerHTML = '<span style="font-size:26px;">🎁</span><div><div style="font-size:13px;font-weight:900;color:#10b981;">Sovrin Muvaffaqiyatli Yuborildi!</div><div style="font-size:12px;color:#e2e8f0;font-weight:600;">\'' + gift.name + '\' sovrini ' + targetName + ' ga yuborildi!</div></div>';
+      document.body.appendChild(toast);
+      setTimeout(function() {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translate(-50%, -20px)';
+        toast.style.transition = 'all 0.4s ease';
+        setTimeout(function() { if (toast && toast.parentNode) toast.remove(); }, 400);
+      }, 4000);
+
+      close();
+      if (onSent) onSent();
+    }
+
+    renderFilteredFriends('');
+
+    var searchInput = overlay.querySelector('#inputFriendSearch');
+    if (searchInput) {
+      searchInput.oninput = function() {
+        renderFilteredFriends(searchInput.value);
       };
-    });
+      setTimeout(function() { searchInput.focus(); }, 100);
+    }
   }
 
   window.EthithViews = {
