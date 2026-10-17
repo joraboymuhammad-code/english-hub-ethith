@@ -3724,33 +3724,31 @@
             var imgData = offCtx.getImageData(0, 0, 160, 120);
             var pixels = imgData.data;
 
-            var skinCount = 0;
-            var skinSumX = 0;
-            var skinSumY = 0;
-            var skinPixelsList = [];
+            var skinCoords = [];
+            var darkCoords = [];
 
-            // Upper/middle head region: y from 12 to 88, x from 12 to 148
-            for (var y = 12; y < 88; y += 2) {
-              for (var x = 12; x < 148; x += 2) {
+            // Upper/middle head region: y from 16 to 78, x from 12 to 148
+            for (var y = 16; y <= 78; y += 2) {
+              for (var x = 12; x <= 148; x += 2) {
                 var idx = (y * 160 + x) * 4;
                 var r = pixels[idx], g = pixels[idx + 1], b = pixels[idx + 2];
                 var lum = 0.299 * r + 0.587 * g + 0.114 * b;
 
-                // Refined biometric skin chrominance filter:
+                var satRed = (r - b) / (r + 1);
+                var satGreen = (r - g) / (r + 1);
                 var isSkin = (
-                  r > 65 && g > 40 && b > 25 &&
-                  r > g && (r - g) >= 8 && (r - g) <= 60 &&
-                  (r - b) >= 12 && (r - b) <= 75 &&
-                  (g - b) >= -5 &&
-                  lum >= 45 && lum <= 230
+                  r > 60 && g > 35 && b > 20 &&
+                  r > g && r > b &&
+                  satRed >= 0.18 &&
+                  satGreen >= 0.09 &&
+                  (r - g) >= 7 &&
+                  lum >= 45 && lum <= 220
                 );
 
-                if (isSkin) {
-                  skinCount++;
-                  skinSumX += x;
-                  skinSumY += y;
-                  skinPixelsList.push(x, y);
-                }
+                var isDark = (lum < 52 && (r + g + b) < 140);
+
+                if (isSkin) skinCoords.push(x, y);
+                else if (isDark) darkCoords.push(x, y);
               }
             }
 
@@ -3760,13 +3758,14 @@
 
             // Distance & scale tolerance:
             // Only flag if NO face is detected at all for 12 consecutive intervals (3.0 seconds)
-            if (skinCount < 18) {
+            if (skinCoords.length < 32) {
               noFaceTicks++;
               if (oval) {
                 oval.style.left = '50%';
                 oval.style.top = '50%';
                 oval.style.width = '85px';
                 oval.style.height = '115px';
+                oval.style.transform = 'translate(-50%, -50%)';
               }
               if (noFaceTicks >= 12) {
                 if (angleBadge) {
@@ -3783,70 +3782,163 @@
             }
             noFaceTicks = 0;
 
-            var avgSkinX = skinSumX / skinCount;
-            var avgSkinY = skinSumY / skinCount;
+            var minX = 160, maxX = 0, minY = 120, maxY = 0;
+            var sumX = 0, sumY = 0;
+            var numSkin = skinCoords.length / 2;
+            for (var si = 0; si < skinCoords.length; si += 2) {
+              var sx = skinCoords[si];
+              var sy = skinCoords[si + 1];
+              if (sx < minX) minX = sx;
+              if (sx > maxX) maxX = sx;
+              if (sy < minY) minY = sy;
+              if (sy > maxY) maxY = sy;
+              sumX += sx;
+              sumY += sy;
+            }
+            var avgSkinX = sumX / numSkin;
+            var avgSkinY = sumY / numSkin;
+            var skinH = Math.max(30, maxY - minY);
 
-            // Compute standard deviation of skin pixels to eliminate outlier edge pixels
+            // Compute standard deviation of skin pixels to eliminate outlier background pixels
             var sumSqDiffX = 0, sumSqDiffY = 0;
-            var numPts = skinPixelsList.length / 2;
-            for (var si = 0; si < skinPixelsList.length; si += 2) {
-              var pxVal = skinPixelsList[si];
-              var pyVal = skinPixelsList[si + 1];
-              var dx = pxVal - avgSkinX;
-              var dy = pyVal - avgSkinY;
-              sumSqDiffX += dx * dx;
-              sumSqDiffY += dy * dy;
+            for (var sdi = 0; sdi < skinCoords.length; sdi += 2) {
+              var ddx = skinCoords[sdi] - avgSkinX;
+              var ddy = skinCoords[sdi + 1] - avgSkinY;
+              sumSqDiffX += ddx * ddx;
+              sumSqDiffY += ddy * ddy;
+            }
+            var stdX = Math.sqrt(sumSqDiffX / numSkin);
+            var stdY = Math.sqrt(sumSqDiffY / numSkin);
+
+            var faceMinX = Math.max(10, Math.round(avgSkinX - 1.6 * stdX));
+            var faceMaxX = Math.min(150, Math.round(avgSkinX + 1.6 * stdX));
+            var faceMinY = Math.max(10, Math.round(avgSkinY - 1.5 * stdY));
+            var faceMaxY = Math.min(95, Math.round(avgSkinY + 1.5 * stdY));
+            var faceMidX = (faceMinX + faceMaxX) / 2;
+            var faceMidY = (faceMinY + faceMaxY) / 2;
+            var faceW = Math.max(26, faceMaxX - faceMinX);
+            var faceH = Math.max(34, faceMaxY - faceMinY);
+
+            // 1. Dark Headphone / Hair Profile Asymmetry
+            var darkLeft = 0, darkRight = 0;
+            for (var di = 0; di < darkCoords.length; di += 2) {
+              var dpx = darkCoords[di];
+              var dpy = darkCoords[di + 1];
+              if (dpy >= minY - 6 && dpy <= maxY + 6) {
+                if (dpx < avgSkinX) darkLeft++;
+                else darkRight++;
+              }
+            }
+            var maxDark = Math.max(darkLeft, darkRight);
+            var minDark = Math.min(darkLeft, darkRight);
+            var darkRatio = (maxDark + 5) / (minDark + 5);
+            var yawFromDark = Math.min(90, Math.max(0, Math.round((darkRatio - 1.30) * 42)));
+
+            // 2. Eye Occlusion in Eye Band (y in [minY + 0.18*H, minY + 0.48*H])
+            var eyeY1 = Math.round(minY + skinH * 0.18);
+            var eyeY2 = Math.round(minY + skinH * 0.48);
+            var eyeLeftDark = 0, eyeRightDark = 0;
+            for (var ey = eyeY1; ey <= eyeY2; ey += 2) {
+              for (var ex = minX; ex <= maxX; ex += 2) {
+                var eidx = (ey * 160 + ex) * 4;
+                var er = pixels[eidx], eg = pixels[eidx + 1], eb = pixels[eidx + 2];
+                var elum = 0.299 * er + 0.587 * eg + 0.114 * eb;
+                if (elum < 42) {
+                  if (ex < avgSkinX) eyeLeftDark++;
+                  else eyeRightDark++;
+                }
+              }
+            }
+            var eyeDarkTotal = eyeLeftDark + eyeRightDark;
+            var eyeDarkRatio = (eyeDarkTotal > 6) ? Math.abs(eyeLeftDark - eyeRightDark) / (eyeDarkTotal + 1) : 0;
+            var oneEyeOccluded = (eyeDarkRatio > 0.65);
+
+            // 3. 3D Cylindrical Width Compression
+            var normalFaceW = 75;
+            var compressionRatio = Math.max(0.15, Math.min(1.0, faceW / normalFaceW));
+            var yawFromWidth = Math.round(Math.acos(compressionRatio) * (180 / Math.PI));
+
+            // 4. Internal Skin Distribution Asymmetry
+            var skinL = 0, skinR = 0;
+            for (var si2 = 0; si2 < skinCoords.length; si2 += 2) {
+              if (skinCoords[si2] < faceMidX) skinL++;
+              else skinR++;
+            }
+            var skinAsym = (skinL + skinR) > 0 ? (Math.abs(skinL - skinR) / (skinL + skinR + 1)) : 0;
+            var yawFromSkinAsym = Math.round(skinAsym * 45);
+
+            // 5. Unified 3D Head Yaw
+            var angleHeadYaw = Math.min(90, Math.max(
+              yawFromDark,
+              Math.round(yawFromWidth * 0.70 + yawFromSkinAsym * 0.30)
+            ));
+
+            // Profile check: if one eye is occluded and face width is compressed, head is turned in profile (> 65°)
+            if (oneEyeOccluded && faceW < 60) {
+              angleHeadYaw = Math.max(angleHeadYaw, 75);
             }
 
-            var stdX = Math.sqrt(sumSqDiffX / numPts);
-            var stdY = Math.sqrt(sumSqDiffY / numPts);
+            var turnSide = (darkLeft > darkRight || eyeLeftDark > eyeRightDark) ? 1 : -1;
+            var signedYaw = angleHeadYaw * turnSide;
 
-            // Robust face bounds: avg ± 1.6 * std
-            var robustMinX = Math.max(10, Math.round(avgSkinX - 1.6 * stdX));
-            var robustMaxX = Math.min(150, Math.round(avgSkinX + 1.6 * stdX));
-            var robustMinY = Math.max(10, Math.round(avgSkinY - 1.5 * stdY));
-            var robustMaxY = Math.min(95, Math.round(avgSkinY + 1.5 * stdY));
+            // 6. 3D Pitch
+            var pitchDev = Math.round((avgSkinY - 48) * 1.5);
+            var anglePitch = Math.max(-85, Math.min(85, pitchDev));
+            var isPitchExtreme = (avgSkinY < 16 || avgSkinY > 86);
 
-            var faceMidX = (robustMinX + robustMaxX) / 2;
-            var faceMidY = (robustMinY + robustMaxY) / 2;
-            var faceW = Math.max(28, robustMaxX - robustMinX);
-            var faceH = Math.max(36, robustMaxY - robustMinY);
-
-            // Dynamic Oval & Biometric Landmarks positioning:
+            // Dynamic 3D Oval & Biometric Landmark Rotation:
             if (oval) {
               var screenXPercent = ((160 - faceMidX) / 160) * 100;
               var screenYPercent = (faceMidY / 120) * 100;
               var ovalPxW = Math.max(72, Math.min(130, Math.round(faceW * 1.30)));
               var ovalPxH = Math.max(92, Math.min(145, Math.round(faceH * 1.35)));
 
+              // 3D Perspective Rotation of the Oval:
+              var rotY = (-signedYaw * 0.85).toFixed(1);
+              var rotX = (anglePitch * 0.50).toFixed(1);
+
               oval.style.left = screenXPercent.toFixed(1) + '%';
               oval.style.top = screenYPercent.toFixed(1) + '%';
               oval.style.width = ovalPxW + 'px';
               oval.style.height = ovalPxH + 'px';
-            }
+              oval.style.transform = 'translate(-50%, -50%) perspective(300px) rotateY(' + rotY + 'deg) rotateX(' + rotX + 'deg)';
 
-            // Left / Right Facial Symmetry
-            var relLeftSkin = 0, relRightSkin = 0;
-            for (var rsi = 0; rsi < skinPixelsList.length; rsi += 2) {
-              var rpx = skinPixelsList[rsi];
-              var rpy = skinPixelsList[rsi + 1];
-              if (rpx >= robustMinX && rpx <= robustMaxX && rpy >= robustMinY && rpy <= robustMaxY) {
-                if (rpx < faceMidX) relLeftSkin++;
-                else relRightSkin++;
+              // Dynamic 3D Perspective Projection for 9 Landmark Points:
+              var pts = oval.querySelectorAll('.eth-cam-pt');
+              if (pts && pts.length === 9) {
+                var rad = (signedYaw * (Math.PI / 180)) * 0.85;
+                var cosY = Math.cos(rad);
+                var sinY = Math.sin(rad);
+
+                var basePts = [
+                  { x: 0,     y: -0.65, z: 0.10 },
+                  { x: -0.32, y: -0.25, z: 0.05 },
+                  { x: 0.32,  y: -0.25, z: 0.05 },
+                  { x: 0,     y: 0.05,  z: 0.45 },
+                  { x: -0.65, y: 0.08,  z: -0.15},
+                  { x: 0.65,  y: 0.08,  z: -0.15},
+                  { x: -0.25, y: 0.45,  z: 0.20 },
+                  { x: 0.25,  y: 0.45,  z: 0.20 },
+                  { x: 0,     y: 0.78,  z: 0.25 }
+                ];
+
+                for (var pi = 0; pi < 9; pi++) {
+                  var bp = basePts[pi];
+                  var rx = bp.x * cosY + bp.z * sinY;
+                  var rz = -bp.x * sinY + bp.z * cosY;
+
+                  var px = 50 + rx * 44;
+                  var py = 50 + bp.y * 44;
+                  var pOpacity = Math.max(0.25, Math.min(1.0, (rz + 0.6) / 1.0));
+
+                  pts[pi].style.left = px.toFixed(1) + '%';
+                  pts[pi].style.top = py.toFixed(1) + '%';
+                  pts[pi].style.opacity = pOpacity.toFixed(2);
+                }
               }
             }
 
-            var skinAsym = (relLeftSkin + relRightSkin) > 0 ? (Math.abs(relLeftSkin - relRightSkin) / (relLeftSkin + relRightSkin + 1)) : 0;
-            var centroidShift = Math.abs(avgSkinX - faceMidX);
-
-            // Biometric Head Yaw formula (Looking straight or down at screen is 4° - 15°):
-            var angleHeadYaw = Math.min(90, Math.round((skinAsym / 0.45) * 55 + (centroidShift / 4.5) * 35));
-
-            // Pitch limit: only extreme vertical tilt (> 80° e.g. looking straight up at ceiling or buried in desk)
-            var isPitchExtreme = (avgSkinY < 18 || avgSkinY > 86);
-
             // Violation evaluation:
-            // Relaxed thresholds:
             // Normal (< 50°) -> Green ("To'g'ri: XX°")
             // 50° - 64° -> Yellow Warning ("Burilish: XX°"), NO lock!
             // >= 65° continuous for 2.5 seconds (10 ticks) -> DANGER: takes photo snapshot & locks!
@@ -5746,33 +5838,31 @@
           var imgData = offCtx.getImageData(0, 0, 160, 120);
           var pixels = imgData.data;
 
-          var skinCount = 0;
-          var skinSumX = 0;
-          var skinSumY = 0;
-          var skinPixelsList = [];
+          var skinCoords = [];
+          var darkCoords = [];
 
-          // Upper/middle head region: y from 12 to 88, x from 12 to 148
-          for (var y = 12; y < 88; y += 2) {
-            for (var x = 12; x < 148; x += 2) {
+          // Upper/middle head region: y from 16 to 78, x from 12 to 148
+          for (var y = 16; y <= 78; y += 2) {
+            for (var x = 12; x <= 148; x += 2) {
               var idx = (y * 160 + x) * 4;
               var r = pixels[idx], g = pixels[idx + 1], b = pixels[idx + 2];
               var lum = 0.299 * r + 0.587 * g + 0.114 * b;
 
-              // Refined biometric skin chrominance filter:
+              var satRed = (r - b) / (r + 1);
+              var satGreen = (r - g) / (r + 1);
               var isSkin = (
-                r > 65 && g > 40 && b > 25 &&
-                r > g && (r - g) >= 8 && (r - g) <= 60 &&
-                (r - b) >= 12 && (r - b) <= 75 &&
-                (g - b) >= -5 &&
-                lum >= 45 && lum <= 230
+                r > 60 && g > 35 && b > 20 &&
+                r > g && r > b &&
+                satRed >= 0.18 &&
+                satGreen >= 0.09 &&
+                (r - g) >= 7 &&
+                lum >= 45 && lum <= 220
               );
 
-              if (isSkin) {
-                skinCount++;
-                skinSumX += x;
-                skinSumY += y;
-                skinPixelsList.push(x, y);
-              }
+              var isDark = (lum < 52 && (r + g + b) < 140);
+
+              if (isSkin) skinCoords.push(x, y);
+              else if (isDark) darkCoords.push(x, y);
             }
           }
 
@@ -5782,13 +5872,14 @@
 
           // Distance & scale tolerance:
           // Only flag if NO face is detected at all for 12 consecutive intervals (3.0 seconds)
-          if (skinCount < 18) {
+          if (skinCoords.length < 32) {
             noFaceTicks++;
             if (oval) {
               oval.style.left = '50%';
               oval.style.top = '50%';
               oval.style.width = '85px';
               oval.style.height = '115px';
+              oval.style.transform = 'translate(-50%, -50%)';
             }
             if (noFaceTicks >= 12) {
               if (angleBadge) {
@@ -5805,70 +5896,163 @@
           }
           noFaceTicks = 0;
 
-          var avgSkinX = skinSumX / skinCount;
-          var avgSkinY = skinSumY / skinCount;
+          var minX = 160, maxX = 0, minY = 120, maxY = 0;
+          var sumX = 0, sumY = 0;
+          var numSkin = skinCoords.length / 2;
+          for (var si = 0; si < skinCoords.length; si += 2) {
+            var sx = skinCoords[si];
+            var sy = skinCoords[si + 1];
+            if (sx < minX) minX = sx;
+            if (sx > maxX) maxX = sx;
+            if (sy < minY) minY = sy;
+            if (sy > maxY) maxY = sy;
+            sumX += sx;
+            sumY += sy;
+          }
+          var avgSkinX = sumX / numSkin;
+          var avgSkinY = sumY / numSkin;
+          var skinH = Math.max(30, maxY - minY);
 
-          // Compute standard deviation of skin pixels to eliminate outlier edge pixels
+          // Compute standard deviation of skin pixels to eliminate outlier background pixels
           var sumSqDiffX = 0, sumSqDiffY = 0;
-          var numPts = skinPixelsList.length / 2;
-          for (var si = 0; si < skinPixelsList.length; si += 2) {
-            var pxVal = skinPixelsList[si];
-            var pyVal = skinPixelsList[si + 1];
-            var dx = pxVal - avgSkinX;
-            var dy = pyVal - avgSkinY;
+          for (var sdi = 0; sdi < skinCoords.length; sdi += 2) {
+            var dx = skinCoords[sdi] - avgSkinX;
+            var dy = skinCoords[sdi + 1] - avgSkinY;
             sumSqDiffX += dx * dx;
             sumSqDiffY += dy * dy;
           }
+          var stdX = Math.sqrt(sumSqDiffX / numSkin);
+          var stdY = Math.sqrt(sumSqDiffY / numSkin);
 
-          var stdX = Math.sqrt(sumSqDiffX / numPts);
-          var stdY = Math.sqrt(sumSqDiffY / numPts);
+          var faceMinX = Math.max(10, Math.round(avgSkinX - 1.6 * stdX));
+          var faceMaxX = Math.min(150, Math.round(avgSkinX + 1.6 * stdX));
+          var faceMinY = Math.max(10, Math.round(avgSkinY - 1.5 * stdY));
+          var faceMaxY = Math.min(95, Math.round(avgSkinY + 1.5 * stdY));
+          var faceMidX = (faceMinX + faceMaxX) / 2;
+          var faceMidY = (faceMinY + faceMaxY) / 2;
+          var faceW = Math.max(26, faceMaxX - faceMinX);
+          var faceH = Math.max(34, faceMaxY - faceMinY);
 
-          // Robust face bounds: avg ± 1.6 * std
-          var robustMinX = Math.max(10, Math.round(avgSkinX - 1.6 * stdX));
-          var robustMaxX = Math.min(150, Math.round(avgSkinX + 1.6 * stdX));
-          var robustMinY = Math.max(10, Math.round(avgSkinY - 1.5 * stdY));
-          var robustMaxY = Math.min(95, Math.round(avgSkinY + 1.5 * stdY));
+          // 1. Dark Headphone / Hair Profile Asymmetry
+          var darkLeft = 0, darkRight = 0;
+          for (var di = 0; di < darkCoords.length; di += 2) {
+            var dpx = darkCoords[di];
+            var dpy = darkCoords[di + 1];
+            if (dpy >= minY - 6 && dpy <= maxY + 6) {
+              if (dpx < avgSkinX) darkLeft++;
+              else darkRight++;
+            }
+          }
+          var maxDark = Math.max(darkLeft, darkRight);
+          var minDark = Math.min(darkLeft, darkRight);
+          var darkRatio = (maxDark + 5) / (minDark + 5);
+          var yawFromDark = Math.min(90, Math.max(0, Math.round((darkRatio - 1.30) * 42)));
 
-          var faceMidX = (robustMinX + robustMaxX) / 2;
-          var faceMidY = (robustMinY + robustMaxY) / 2;
-          var faceW = Math.max(28, robustMaxX - robustMinX);
-          var faceH = Math.max(36, robustMaxY - robustMinY);
+          // 2. Eye Occlusion in Eye Band (y in [minY + 0.18*H, minY + 0.48*H])
+          var eyeY1 = Math.round(minY + skinH * 0.18);
+          var eyeY2 = Math.round(minY + skinH * 0.48);
+          var eyeLeftDark = 0, eyeRightDark = 0;
+          for (var ey = eyeY1; ey <= eyeY2; ey += 2) {
+            for (var ex = minX; ex <= maxX; ex += 2) {
+              var eidx = (ey * 160 + ex) * 4;
+              var er = pixels[eidx], eg = pixels[eidx + 1], eb = pixels[eidx + 2];
+              var elum = 0.299 * er + 0.587 * eg + 0.114 * eb;
+              if (elum < 42) {
+                if (ex < avgSkinX) eyeLeftDark++;
+                else eyeRightDark++;
+              }
+            }
+          }
+          var eyeDarkTotal = eyeLeftDark + eyeRightDark;
+          var eyeDarkRatio = (eyeDarkTotal > 6) ? Math.abs(eyeLeftDark - eyeRightDark) / (eyeDarkTotal + 1) : 0;
+          var oneEyeOccluded = (eyeDarkRatio > 0.65);
 
-          // Dynamic Oval & Biometric Landmarks positioning:
+          // 3. 3D Cylindrical Width Compression
+          var normalFaceW = 75;
+          var compressionRatio = Math.max(0.15, Math.min(1.0, faceW / normalFaceW));
+          var yawFromWidth = Math.round(Math.acos(compressionRatio) * (180 / Math.PI));
+
+          // 4. Internal Skin Distribution Asymmetry
+          var skinL = 0, skinR = 0;
+          for (var si2 = 0; si2 < skinCoords.length; si2 += 2) {
+            if (skinCoords[si2] < faceMidX) skinL++;
+            else skinR++;
+          }
+          var skinAsym = (skinL + skinR) > 0 ? (Math.abs(skinL - skinR) / (skinL + skinR + 1)) : 0;
+          var yawFromSkinAsym = Math.round(skinAsym * 45);
+
+          // 5. Unified 3D Head Yaw
+          var angleHeadYaw = Math.min(90, Math.max(
+            yawFromDark,
+            Math.round(yawFromWidth * 0.70 + yawFromSkinAsym * 0.30)
+          ));
+
+          // Profile check: if one eye is occluded and face width is compressed, head is turned in profile (> 65°)
+          if (oneEyeOccluded && faceW < 60) {
+            angleHeadYaw = Math.max(angleHeadYaw, 75);
+          }
+
+          var turnSide = (darkLeft > darkRight || eyeLeftDark > eyeRightDark) ? 1 : -1;
+          var signedYaw = angleHeadYaw * turnSide;
+
+          // 6. 3D Pitch
+          var pitchDev = Math.round((avgSkinY - 48) * 1.5);
+          var anglePitch = Math.max(-85, Math.min(85, pitchDev));
+          var isPitchExtreme = (avgSkinY < 16 || avgSkinY > 86);
+
+          // Dynamic 3D Oval & Biometric Landmark Rotation:
           if (oval) {
             var screenXPercent = ((160 - faceMidX) / 160) * 100;
             var screenYPercent = (faceMidY / 120) * 100;
             var ovalPxW = Math.max(72, Math.min(130, Math.round(faceW * 1.30)));
             var ovalPxH = Math.max(92, Math.min(145, Math.round(faceH * 1.35)));
 
+            // 3D Perspective Rotation of the Oval:
+            var rotY = (-signedYaw * 0.85).toFixed(1);
+            var rotX = (anglePitch * 0.50).toFixed(1);
+
             oval.style.left = screenXPercent.toFixed(1) + '%';
             oval.style.top = screenYPercent.toFixed(1) + '%';
             oval.style.width = ovalPxW + 'px';
             oval.style.height = ovalPxH + 'px';
-          }
+            oval.style.transform = 'translate(-50%, -50%) perspective(300px) rotateY(' + rotY + 'deg) rotateX(' + rotX + 'deg)';
 
-          // Left / Right Facial Symmetry
-          var relLeftSkin = 0, relRightSkin = 0;
-          for (var rsi = 0; rsi < skinPixelsList.length; rsi += 2) {
-            var rpx = skinPixelsList[rsi];
-            var rpy = skinPixelsList[rsi + 1];
-            if (rpx >= robustMinX && rpx <= robustMaxX && rpy >= robustMinY && rpy <= robustMaxY) {
-              if (rpx < faceMidX) relLeftSkin++;
-              else relRightSkin++;
+            // Dynamic 3D Perspective Projection for 9 Landmark Points:
+            var pts = oval.querySelectorAll('.eth-cam-pt');
+            if (pts && pts.length === 9) {
+              var rad = (signedYaw * (Math.PI / 180)) * 0.85;
+              var cosY = Math.cos(rad);
+              var sinY = Math.sin(rad);
+
+              var basePts = [
+                { x: 0,     y: -0.65, z: 0.10 },
+                { x: -0.32, y: -0.25, z: 0.05 },
+                { x: 0.32,  y: -0.25, z: 0.05 },
+                { x: 0,     y: 0.05,  z: 0.45 },
+                { x: -0.65, y: 0.08,  z: -0.15},
+                { x: 0.65,  y: 0.08,  z: -0.15},
+                { x: -0.25, y: 0.45,  z: 0.20 },
+                { x: 0.25,  y: 0.45,  z: 0.20 },
+                { x: 0,     y: 0.78,  z: 0.25 }
+              ];
+
+              for (var pi = 0; pi < 9; pi++) {
+                var bp = basePts[pi];
+                var rx = bp.x * cosY + bp.z * sinY;
+                var rz = -bp.x * sinY + bp.z * cosY;
+
+                var px = 50 + rx * 44;
+                var py = 50 + bp.y * 44;
+                var pOpacity = Math.max(0.25, Math.min(1.0, (rz + 0.6) / 1.0));
+
+                pts[pi].style.left = px.toFixed(1) + '%';
+                pts[pi].style.top = py.toFixed(1) + '%';
+                pts[pi].style.opacity = pOpacity.toFixed(2);
+              }
             }
           }
 
-          var skinAsym = (relLeftSkin + relRightSkin) > 0 ? (Math.abs(relLeftSkin - relRightSkin) / (relLeftSkin + relRightSkin + 1)) : 0;
-          var centroidShift = Math.abs(avgSkinX - faceMidX);
-
-          // Biometric Head Yaw formula (Looking straight or down at screen is 4° - 15°):
-          var angleHeadYaw = Math.min(90, Math.round((skinAsym / 0.45) * 55 + (centroidShift / 4.5) * 35));
-
-          // Pitch limit: only extreme vertical tilt (> 80° e.g. looking straight up at ceiling or buried in desk)
-          var isPitchExtreme = (avgSkinY < 18 || avgSkinY > 86);
-
           // Violation evaluation:
-          // Relaxed thresholds:
           // Normal (< 50°) -> Green ("To'g'ri: XX°")
           // 50° - 64° -> Yellow Warning ("Burilish: XX°"), NO lock!
           // >= 65° continuous for 2.5 seconds (10 ticks) -> DANGER: takes photo snapshot & locks!
