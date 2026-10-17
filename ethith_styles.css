@@ -6292,4 +6292,23 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   }
 }
 
+.eth-usage-time-pill {
+  margin-right: 12px;
+  font-size: 13px;
+  background: var(--bg2, rgba(255, 255, 255, 0.08));
+  color: #0f172a;
+  padding: 6px 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.08));
+}
+[data-theme="dark"] .eth-usage-time-pill,
+.dark .eth-usage-time-pill {
+  color: #f8fafc !important;
+  background: #142a49 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
 
