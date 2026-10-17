@@ -8689,21 +8689,21 @@
       html += '    <p class="text-xs md:text-sm text-gray-400">Barcha o\'quvchilar qo\'shilishini kuting. O\'qituvchi start berishi bilan hamma bir vaqtda boshlaydi!</p>';
       html += '  </div>';
 
-      // Big Code Box
-      html += '  <div class="p-6 bg-gradient-to-br from-gray-800 to-gray-950 rounded-2xl border-2 border-amber-500/60 shadow-2xl space-y-3">';
-      html += '    <div class="text-xs uppercase font-extrabold tracking-widest text-amber-400">Bellashuv Maxsus Kodi:</div>';
-      html += '    <div class="flex flex-wrap items-center justify-center gap-4">';
-      html += '      <span class="text-4xl md:text-5xl font-mono font-black text-amber-400 tracking-wider">' + quiz.code + '</span>';
-      html += '      <button id="btnCopyLobbyCode" class="eth-quiz-copy-code-btn">📋 Koddan nusxa olish</button>';
+      // Sleek Compact Code Box
+      html += '  <div class="p-4 bg-gray-800/90 rounded-2xl border border-gray-700 shadow-xl space-y-2">';
+      html += '    <div class="text-[11px] uppercase font-bold tracking-wider text-gray-400">Bellashuv Maxsus Kodi:</div>';
+      html += '    <div class="flex flex-wrap items-center justify-center gap-3">';
+      html += '      <span class="text-3xl md:text-4xl font-mono font-black text-white tracking-widest">' + quiz.code + '</span>';
+      html += '      <button id="btnCopyLobbyCode" class="eth-quiz-copy-code-btn">📋 Nusxalash</button>';
       html += '    </div>';
-      html += '    <div class="text-[12px] text-gray-400 font-medium">O\'quvchilar ushbu kodni kiritib o\'z herochalari bilan jangga qo\'shiladilar</div>';
+      html += '    <div class="text-[11px] text-gray-400 font-medium">O\'quvchilar ushbu kodni kiritib o\'z qahramonlari bilan jangga qo\'shiladilar</div>';
       html += '  </div>';
 
       // Participants list
-      html += '  <div class="space-y-3 text-left">';
+      html += '  <div class="space-y-2.5 text-left">';
       html += '    <div class="flex items-center justify-between text-xs font-bold text-gray-300 px-1">';
       html += '      <span>Qo\'shilgan Qahramonlar (' + participantList.length + ' ta)</span>';
-      html += '      <span class="text-amber-400 flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span> Jonli kutmoqda</span>';
+      html += '      <span class="text-emerald-400 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Jonli kutmoqda</span>';
       html += '    </div>';
 
       if (participantList.length === 0) {
@@ -8711,7 +8711,7 @@
         html += '  <span>⏳ Hozircha o\'quvchilar qo\'shilmadi. Kodni ulashing va o\'quvchilar paydo bo\'lishini kuting...</span>';
         html += '</div>';
       } else {
-        html += '    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 max-h-72 overflow-y-auto p-1">';
+        html += '    <div class="quiz-lobby-grid-3">';
         participantList.forEach(function(p, idx) {
           var isMe = (p.id === myStudentId);
           var hero = p.hero || getStudentHero(p.id, idx);
@@ -8726,7 +8726,7 @@
             html += '    <span class="px-1.5 py-0.2 rounded bg-emerald-500/80 text-[9px] font-black text-white">Siz</span>';
           }
           html += '    </div>';
-          html += '    <div class="text-[10px] text-gray-400 font-semibold truncate flex items-center gap-1.5 mt-0.5">';
+          html += '    <div class="text-[10px] text-gray-400 font-semibold truncate flex items-center gap-1 mt-0.5">';
           html += '      <span class="text-amber-400 font-mono">#' + (p.joinIndex || (idx + 1)) + '</span>';
           html += '      <span>·</span>';
           html += '      <span class="truncate">' + hero.name + '</span>';
@@ -8870,11 +8870,12 @@
       html += '  </div>';
 
       // Right Action Buttons
-      html += '  <div class="flex items-center gap-2">';
-      html += '    <button id="btnToggleQuizMusic" class="eth-wayground-music-btn eth-music-toggle-btn">';
-      html +=        (isMusicMuted ? '🔇 Muzika' : '🔊 Muzika');
+      html += '  <div class="eth-wg-live-actions">';
+      html += '    <button id="btnToggleQuizMusic" class="eth-wg-music-btn eth-music-toggle-btn">';
+      html += '      <span>' + (isMusicMuted ? '🔇' : '🔊') + '</span>';
+      html += '      <span>' + (isMusicMuted ? 'Ovoz: O\'chiq' : 'Muzika') + '</span>';
       html += '    </button>';
-      html += '    <button id="btnTeacherForceFinishLive" class="eth-teacher-finish-btn py-2 px-3.5 text-xs font-black">';
+      html += '    <button id="btnTeacherForceFinishLive" class="eth-teacher-finish-btn py-2 px-3 text-xs font-black">';
       html += '      <span>🏁</span>';
       html += '      <span>Yakunlash</span>';
       html += '    </button>';
@@ -8887,17 +8888,17 @@
       html += '  <div class="eth-wg-live-gauge-wrap">';
       html += '    <div class="eth-wg-live-gauge-circle">' + classAccuracyPct + '%</div>';
       html += '    <div>';
-      html += '      <div style="font-size:12px;font-weight:800;color:#f8fafc;">Класс точности</div>';
-      html += '      <div style="font-size:10px;color:#94a3b8;">Class Accuracy</div>';
+      html += '      <div style="font-size:12px;font-weight:800;color:#f8fafc;">Class Accuracy</div>';
+      html += '      <div style="font-size:10px;color:#94a3b8;">Sinf o\'rtacha aniqligi</div>';
       html += '    </div>';
       html += '  </div>';
 
       html += '  <div class="eth-wg-live-tabs">';
       html += '    <button class="eth-wg-live-tab-btn ' + (teacherLiveActiveTab === 'leaderboard' ? 'active' : '') + '" id="btnLiveTabLeaderboard">';
-      html += '      <span>🏆</span> <span>Таблица лидеров</span>';
+      html += '      <span>🏆</span> <span>Leaderboard (Reyting)</span>';
       html += '    </button>';
       html += '    <button class="eth-wg-live-tab-btn ' + (teacherLiveActiveTab === 'questions' ? 'active' : '') + '" id="btnLiveTabQuestions">';
-      html += '      <span>❓</span> <span>Вопросы (' + preparedQuestions.length + ')</span>';
+      html += '      <span>❓</span> <span>Questions (Savollar ' + preparedQuestions.length + ')</span>';
       html += '    </button>';
       html += '  </div>';
       html += '</div>';
@@ -8907,15 +8908,15 @@
         // TAB 1: LEADERBOARD (1:1 with Wayground 17:59:33)
         html += '<div class="eth-wg-live-board">';
         html += '  <div class="eth-wg-live-board-header">';
-        html += '    <div class="flex items-center gap-2"><span>👥</span> <span>' + list.length + ' участники (o\'quvchilar)</span></div>';
-        html += '    <span class="text-[11px] text-gray-400">To\'plangan ballar asosida jonli yangilanadi</span>';
+        html += '    <div class="flex items-center gap-2"><span>👥</span> <span>' + list.length + ' ta o\'quvchi (Students)</span></div>';
+        html += '    <span class="text-[11px] text-gray-400">To\'plangan ballar asosida jonli reyting</span>';
         html += '  </div>';
 
         html += '  <div class="eth-wg-live-sub-header">';
-        html += '    <div style="width: 70px;">Классифицировать</div>';
-        html += '    <div style="flex: 1; padding-left: 12px;">Имя</div>';
-        html += '    <div style="width: 120px; text-align: right;">Результат</div>';
-        html += '    <div style="width: 170px; text-align: right; padding-right: 8px;">Jarayon & Streak 🔥</div>';
+        html += '    <div style="width: 70px;">O\'rin (Rank)</div>';
+        html += '    <div style="flex: 1; padding-left: 12px;">O\'quvchi (Student)</div>';
+        html += '    <div style="width: 120px; text-align: right;">Ball (Score)</div>';
+        html += '    <div style="width: 170px; text-align: right; padding-right: 8px;">Streak & Jarayon 🔥</div>';
         html += '  </div>';
 
         if (list.length === 0) {
@@ -8945,10 +8946,10 @@
             // Col 1: Rank
             html += '  <div style="width: 70px;" class="font-black text-sm ' + (newRank === 1 ? 'text-amber-400' : 'text-gray-400') + '">' + medal + '</div>';
             // Col 2: Avatar + Name + Badges
-            html += '  <div style="flex: 1; min-width: 0;" class="flex items-center gap-3">';
-            html += '    <div class="w-9 h-9 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background: ' + hero.bg + '; border: 1.5px solid ' + hero.border + ';">' + hero.emoji + '</div>';
-            html += '    <div class="min-w-0">';
-            html += '      <div class="flex items-center gap-2">';
+            html += '  <div class="eth-wg-live-player-info">';
+            html += '    <div class="eth-wg-live-avatar" style="background: ' + hero.bg + '; border: 1.5px solid ' + hero.border + ';">' + hero.emoji + '</div>';
+            html += '    <div class="eth-wg-live-player-namebox">';
+            html += '      <div class="eth-wg-live-player-name-row">';
             html += '        <span class="font-black text-white text-sm truncate">' + p.name + '</span>';
             if (p.finished) {
               html += '        <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[9px] font-black">✅ Yakunladi</span>';
