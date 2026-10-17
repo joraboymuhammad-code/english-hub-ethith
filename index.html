@@ -170,6 +170,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -5058,10 +5059,296 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   animation: ethPopIn 0.3s ease !important;
 }
 
+/* Clean Circular Letter Badges for Quiz Options (No geometric shapes) */
+.eth-quiz-opt-letter {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.25) !important;
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+  font-weight: 900 !important;
+  flex-shrink: 0 !important;
+  color: #ffffff !important;
+}
 
+/* Compact ID-Card Style Lobby Card (User Requirement) */
+.quiz-student-lobby-card-compact {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 8px 14px !important;
+  border-radius: 14px !important;
+  background: rgba(15, 23, 42, 0.75) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.2s ease !important;
+}
+.quiz-student-lobby-card-compact:hover {
+  transform: translateY(-2px) !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 10px 24px rgba(245, 158, 11, 0.25) !important;
+}
+.quiz-student-lobby-card-compact.is-me {
+  border-color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+}
+.quiz-mini-avatar {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 20px !important;
+  flex-shrink: 0 !important;
+}
 
+/* Wayground 1:1 Live Game Leaderboard & Admin Screen */
+.eth-wayground-screen {
+  width: 100% !important;
+  max-width: 1040px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  animation: ethFadeIn 0.3s ease !important;
+}
+.eth-wayground-topbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  padding: 14px 22px !important;
+  border-radius: 20px !important;
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(16px) !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4) !important;
+}
+.eth-wayground-code-badge {
+  font-family: monospace !important;
+  font-size: 26px !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+  color: #f59e0b !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+.eth-wayground-gauge {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  padding: 6px 14px !important;
+  border-radius: 999px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+}
+.eth-wayground-gauge-pct {
+  font-size: 18px !important;
+  font-weight: 900 !important;
+  color: #10b981 !important;
+}
+.eth-wayground-gauge-label {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #94a3b8 !important;
+  text-transform: uppercase !important;
+}
+.eth-wayground-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+.eth-wayground-music-btn {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+}
+.eth-wayground-music-btn:hover {
+  background: rgba(245, 158, 11, 0.3) !important;
+  border-color: #f59e0b !important;
+  transform: scale(1.08) !important;
+}
+.eth-wayground-leaderboard-box {
+  background: rgba(15, 23, 42, 0.8) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(16px) !important;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45) !important;
+}
+.eth-wayground-th-header {
+  display: grid !important;
+  grid-template-columns: 70px 1fr 140px 160px !important;
+  padding: 12px 20px !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+@media (max-width: 640px) {
+  .eth-wayground-th-header {
+    grid-template-columns: 50px 1fr 100px !important;
+  }
+  .eth-wayground-th-streak { display: none !important; }
+}
+.eth-wayground-player-row {
+  display: grid !important;
+  grid-template-columns: 70px 1fr 140px 160px !important;
+  align-items: center !important;
+  padding: 14px 20px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease !important;
+}
+@media (max-width: 640px) {
+  .eth-wayground-player-row {
+    grid-template-columns: 50px 1fr 100px !important;
+  }
+}
+.eth-wayground-player-row:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+.eth-wayground-player-row.is-me {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border-left: 4px solid #f59e0b !important;
+}
+.eth-wayground-player-row.rank-fell {
+  animation: ethRankFall 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+.eth-wayground-player-row.rank-rose {
+  animation: ethRankRise 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+@keyframes ethRankFall {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-8px) scale(0.98); }
+  60% { transform: translateY(22px) scale(1.03); background: rgba(239, 68, 68, 0.25); }
+  100% { transform: translateY(0) scale(1); }
+}
+@keyframes ethRankRise {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(8px) scale(0.98); }
+  60% { transform: translateY(-22px) scale(1.03); background: rgba(16, 185, 129, 0.25); }
+  100% { transform: translateY(0) scale(1); }
+}
 
+/* Floating Teacher Infraction Toast (Bell Style - No Raw Bottom Dump) */
+.eth-quiz-infraction-toast {
+  position: fixed !important;
+  top: 24px !important;
+  right: 24px !important;
+  z-index: 9999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 14px 20px !important;
+  border-radius: 16px !important;
+  background: rgba(15, 23, 42, 0.95) !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(239, 68, 68, 0.6) !important;
+  box-shadow: 0 14px 40px rgba(239, 68, 68, 0.45) !important;
+  backdrop-filter: blur(16px) !important;
+  animation: ethToastIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  max-width: 420px !important;
+}
+.eth-quiz-infraction-toast.return {
+  border-color: rgba(16, 185, 129, 0.6) !important;
+  box-shadow: 0 14px 40px rgba(16, 185, 129, 0.35) !important;
+}
+@keyframes ethToastIn {
+  from { transform: translateX(100%) scale(0.9); opacity: 0; }
+  to { transform: translateX(0) scale(1); opacity: 1; }
+}
 
+/* Modern Translucent Colorful Quiz Analysis Modal */
+.eth-quiz-analysis-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  background: rgba(2, 6, 23, 0.8) !important;
+  backdrop-filter: blur(16px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+  overflow-y: auto !important;
+}
+.eth-quiz-analysis-dialog {
+  width: 100% !important;
+  max-width: 960px !important;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96)) !important;
+  border: 1.5px solid rgba(245, 158, 11, 0.4) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(245, 158, 11, 0.15) !important;
+  color: #f8fafc !important;
+  padding: 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  max-height: 90vh !important;
+}
+
+/* Podium Action Buttons (Zero Native Artifacts) */
+.eth-podium-analysis-btn {
+  padding: 14px 28px !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  border: 1.5px solid #a78bfa !important;
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.45) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  transition: all 0.25s ease !important;
+  outline: none !important;
+}
+.eth-podium-analysis-btn:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 14px 35px rgba(124, 58, 237, 0.6) !important;
+}
+.eth-podium-exit-btn {
+  padding: 14px 28px !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+  color: #f1f5f9 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  transition: all 0.25s ease !important;
+  outline: none !important;
+}
+.eth-podium-exit-btn:hover {
+  background: #334155 !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+}
 
 </style>
 
@@ -11522,7 +11809,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
   // ====================================================
   // ETHITH AUTO-UPDATE & CACHE-BUSTING ENGINE
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.1740";
+  window.ETHITH_BUILD_VERSION = "2026.10.17.1835";
 
   function checkAppVersion() {
     if (typeof fetch === 'undefined') return;
@@ -17186,6 +17473,73 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
     document.body.appendChild(overlay);
   }
 
+  function showStudentNotificationsModal() {
+    var existing = document.getElementById('studentNotifsOverlay');
+    if (existing) existing.remove();
+
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.id = 'studentNotifsOverlay';
+
+    var gifts = (S.user && S.user.gifts) || [];
+    var sNotifs = (S.studentNotifications) || [];
+
+    // Mark as read
+    gifts.forEach(function(g) { g.read = true; });
+    sNotifs.forEach(function(sn) { sn.read = true; });
+    App.saveState();
+    if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
+
+    var html = '' +
+      '<div class="eth-modal" style="max-width:580px">' +
+      '  <button type="button" class="eth-modal-close-btn" id="btnTopCloseStudentNotifs" title="Yopish">✕</button>' +
+      '  <div class="eth-modal-header">' +
+      '    <h2>' + ic('bell') + ' Bildirishnomalar va Sovg\'alar</h2>' +
+      '    <p>Do\'stlaringizdan kelgan sovg\'alar, quiz taklifnomalari va xabarlar.</p>' +
+      '  </div>' +
+      '  <div class="eth-modal-body" style="max-height:480px;overflow-y:auto">';
+
+    if (gifts.length === 0 && sNotifs.length === 0) {
+      html += '<div class="ap-card ap-empty" style="padding:32px 16px">' +
+              '  <div style="font-size:48px;margin-bottom:10px">🎁</div>' +
+              '  <h3 style="font-size:16px;font-weight:800;color:var(--text)">Hozircha xabarlar yo\'q</h3>' +
+              '  <p style="font-size:13px;color:var(--muted);max-width:320px;margin:4px auto 0">Quiz test bellashuvlarida qatnashing yoki sinfdoshlaringiz bilan sovg\'alar almashing!</p>' +
+              '</div>';
+    } else {
+      html += '<div style="display:flex;flex-direction:column;gap:12px">';
+      gifts.forEach(function(g) {
+        html += '<div class="ap-card" style="border:1.5px solid rgba(245,158,11,0.4);padding:14px;background:rgba(245,158,11,0.06);display:flex;align-items:center;gap:14px;border-radius:14px">' +
+                '  <div style="font-size:40px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.2))">' + (g.icon || '🎁') + '</div>' +
+                '  <div style="flex:1">' +
+                '    <div style="font-size:11px;font-weight:800;color:#f59e0b;text-transform:uppercase;letter-spacing:0.5px">🎁 ' + (g.senderName ? (esc(g.senderName) + ' sizga sovg\'a yubordi!') : 'Yangi Sovg\'a!') + '</div>' +
+                '    <div style="font-size:15px;font-weight:900;color:var(--text);margin-top:2px">' + esc(g.name) + '</div>' +
+                '    <div style="font-size:12px;color:var(--muted);margin-top:2px;line-height:1.4">' + esc(g.desc || '') + '</div>' +
+                '  </div>' +
+                '</div>';
+      });
+      sNotifs.forEach(function(sn) {
+        html += '<div class="ap-card" style="padding:14px;display:flex;align-items:center;gap:12px;border-radius:14px">' +
+                '  <div style="font-size:26px">⚡</div>' +
+                '  <div style="flex:1">' +
+                '    <div style="font-size:13px;font-weight:800;color:var(--text)">' + esc(sn.title || 'Xabar') + '</div>' +
+                '    <div style="font-size:12px;color:var(--muted)">' + esc(sn.message || '') + '</div>' +
+                '  </div>' +
+                '</div>';
+      });
+      html += '</div>';
+    }
+
+    html += '  </div>' +
+            '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    var btnClose = overlay.querySelector('#btnTopCloseStudentNotifs');
+    if (btnClose) btnClose.onclick = function() { overlay.remove(); };
+    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+  }
+
   window._ethithShowTeacherAlert = function(notif) {
     if (!S.user || S.user.role !== 'teacher') return;
     var existing = document.getElementById('floatingTeacherAlert_' + notif.id);
@@ -19559,14 +19913,12 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
             html += '    </p>';
             html += '  </div>';
 
-            html += '  <div style="display:flex;gap:8px;align-items:center;padding-top:10px;border-top:1px solid var(--border)">';
+            html += '  <div style="display:flex;gap:8px;align-items:center;padding-top:10px;border-top:1px solid var(--border);flex-wrap:wrap">';
             if (isTeacher) {
               html += '    <button class="ap-btn solid btnStartQuizRunner" data-quiz-id="' + quiz.id + '" style="flex:1;justify-content:center;padding:10px 16px;font-size:13.5px">';
               html += '      ▶️ Lobbyni ochish';
               html += '    </button>';
-              if (hasAnalysis) {
-                html += '    <button class="ap-btn out btnViewQuizAnalysis" data-quiz-id="' + quiz.id + '" style="padding:10px 14px;font-size:13px;justify-content:center" title="Test Tahlili">📊 Tahlil</button>';
-              }
+              html += '    <button class="ap-btn out btnViewQuizAnalysis" data-quiz-id="' + quiz.id + '" style="padding:10px 14px;font-size:13px;justify-content:center;color:#8b5cf6;border-color:rgba(139,92,246,0.4)" title="Test Tahlili">📊 Test Tahlili</button>';
               html += '    <button class="ap-btn out btnDeleteQuiz" data-quiz-id="' + quiz.id + '" style="padding:10px 12px;color:#ef4444;justify-content:center" title="O\'chirish">';
               html += '      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>';
               html += '    </button>';
@@ -19574,6 +19926,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
               html += '    <button class="ap-btn solid btnStartQuizRunner" data-quiz-id="' + quiz.id + '" style="flex:1;justify-content:center;padding:10px 16px;font-size:13.5px">';
               html += '      ⚡ Testga Qo\'shilish ➔';
               html += '    </button>';
+              html += '    <button class="ap-btn out btnViewQuizAnalysis" data-quiz-id="' + quiz.id + '" style="padding:10px 14px;font-size:13px;justify-content:center;color:#8b5cf6;border-color:rgba(139,92,246,0.4)" title="Test Tahlili">📊 Test Tahlili</button>';
             }
             html += '  </div>';
             html += '</div>';
@@ -19767,6 +20120,100 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
     var questionTimerInterval = null;
     var questionRemainingMs = 10000;
     var questionStartTime = 0;
+    var myStreak = 0;
+    var previousRanksMap = {};
+
+    // -------------------------------------------------------------------------
+    // SEQUENTIAL BATTLE AUDIO ENGINE (ETHITH TAST 1 & 2)
+    // -------------------------------------------------------------------------
+    var battleAudio = null;
+    var currentAudioTrack = 1;
+    var isMusicMuted = false;
+
+    function playBattleTrack(trackNum) {
+      if (isMusicMuted) return;
+      if (battleAudio) {
+        try { battleAudio.pause(); battleAudio.src = ''; } catch(e){}
+      }
+      currentAudioTrack = trackNum;
+      battleAudio = new Audio(trackNum === 1 ? 'audio_battle_1.mp3' : 'audio_battle_2.mp3');
+      battleAudio.volume = 0.55;
+      battleAudio.onended = function() {
+        playBattleTrack(currentAudioTrack === 1 ? 2 : 1);
+      };
+      battleAudio.play().catch(function(err) {
+        console.log("Audio autoplay prevented or failed:", err);
+      });
+    }
+
+    function startBattleMusic() {
+      if (!battleAudio && !isMusicMuted) {
+        playBattleTrack(1);
+      }
+    }
+
+    function toggleMusicMute() {
+      isMusicMuted = !isMusicMuted;
+      if (battleAudio) {
+        battleAudio.muted = isMusicMuted;
+        if (!isMusicMuted && battleAudio.paused) {
+          battleAudio.play().catch(function(){});
+        }
+      } else if (!isMusicMuted) {
+        playBattleTrack(currentAudioTrack);
+      }
+      root.querySelectorAll('.eth-music-toggle-btn').forEach(function(btn) {
+        btn.innerHTML = isMusicMuted ? '🔇 Muzika' : '🔊 Muzika';
+      });
+    }
+
+    function stopBattleMusic() {
+      if (battleAudio) {
+        try {
+          battleAudio.pause();
+          battleAudio.src = '';
+        } catch(e){}
+        battleAudio = null;
+      }
+    }
+
+    // Floating Infraction Toasts for Teacher Command Center
+    function showTeacherInfractionToast(event) {
+      if (!isTeacher) return;
+      var toastContainer = document.getElementById('ethQuizToastArea');
+      if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.id = 'ethQuizToastArea';
+        toastContainer.style.cssText = 'position:fixed;top:20px;right:20px;z-index:9999999;display:flex;flex-direction:column;gap:10px;pointer-events:none;';
+        document.body.appendChild(toastContainer);
+      }
+
+      var toast = document.createElement('div');
+      toast.className = 'eth-quiz-infraction-toast' + (event.action === 'TAB_RETURN' || event.action === 'FOCUS' ? ' return' : '');
+      toast.style.pointerEvents = 'auto';
+
+      var icon = event.isViolation ? '🚨' : (event.action === 'TAB_RETURN' ? '🟢' : '🔔');
+      toast.innerHTML = '<span style="font-size:24px;">' + icon + '</span>' +
+        '<div style="flex:1;min-width:0;">' +
+          '<div style="font-weight:900;font-size:13px;color:#fff;display:flex;align-items:center;gap:6px;">' +
+            (event.hero ? '<span>' + event.hero.emoji + '</span>' : '') +
+            '<span>' + (event.studentName || 'O\'quvchi') + '</span>' +
+            '<span style="font-size:10px;color:#94a3b8;margin-left:auto;">' + (event.timestamp || '') + '</span>' +
+          '</div>' +
+          '<div style="font-size:12px;color:' + (event.isViolation ? '#fca5a5' : '#86efac') + ';font-weight:700;margin-top:2px;">' +
+            event.detail +
+          '</div>' +
+        '</div>';
+
+      toastContainer.appendChild(toast);
+
+      setTimeout(function() {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        toast.style.transition = 'all 0.4s ease';
+        setTimeout(function() { toast.remove(); }, 400);
+      }, 4500);
+    }
 
     // 12 Distinct Quizizz-Style Animated Heroes
     var QUIZIZZ_HEROES = [
@@ -19948,6 +20395,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       window.removeEventListener('focus', onWindowFocus);
       window.removeEventListener('keydown', onKeyDown);
       if (questionTimerInterval) clearInterval(questionTimerInterval);
+      stopBattleMusic();
       window._ethithOnQuizEvent = null;
     }
 
@@ -19975,6 +20423,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
             correctCount: 0,
             wrongCount: 0,
             infractions: 0,
+            streak: 0,
             finished: false,
             answers: {}
           };
@@ -19992,6 +20441,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         }
         if (isTeacher) {
           appendTeacherTelemetryLog(event);
+          showTeacherInfractionToast(event);
           if (event.isViolation && typeof playTitTitAlarm === 'function') {
             try { playTitTitAlarm(1); } catch(e) {}
           }
@@ -20020,6 +20470,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         p.correctCount = event.correctCount || 0;
         p.wrongCount = event.wrongCount || 0;
         p.infractions = event.infractions || 0;
+        p.streak = (event.streak !== undefined) ? event.streak : (diff > 0 ? ((p.streak || 0) + 1) : 0);
         if (event.answers) p.answers = event.answers;
 
         if (isTeacher) {
@@ -20109,23 +20560,26 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         html += '  <span>⏳ Hozircha o\'quvchilar qo\'shilmadi. Kodni ulashing va o\'quvchilar paydo bo\'lishini kuting...</span>';
         html += '</div>';
       } else {
-        html += '    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5 max-h-72 overflow-y-auto p-1">';
+        html += '    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 max-h-72 overflow-y-auto p-1">';
         participantList.forEach(function(p, idx) {
           var isMe = (p.id === myStudentId);
           var hero = p.hero || getStudentHero(p.id, idx);
-          html += '<div class="quiz-student-lobby-card" style="background: rgba(15, 23, 42, 0.85); border: 2px solid ' + hero.border + ';">';
-          html += '  <div class="flex items-center justify-between w-full text-[10px] font-black">';
-          html += '    <span class="px-2 py-0.5 rounded-full bg-black/50 text-amber-300 font-mono">#' + (p.joinIndex || (idx + 1)) + ' Qo\'shildi</span>';
+          html += '<div class="quiz-student-lobby-card-compact" style="border-color: ' + hero.border + ';">';
+          html += '  <div class="quiz-mini-avatar" style="background: ' + hero.bg + '; border: 1.5px solid ' + hero.border + ';">';
+          html += '    <span>' + hero.emoji + '</span>';
+          html += '  </div>';
+          html += '  <div class="min-w-0 flex-1 text-left">';
+          html += '    <div class="flex items-center gap-1.5">';
+          html += '      <span class="text-xs font-black text-white truncate">' + p.name + '</span>';
           if (isMe) {
-            html += '    <span class="px-2 py-0.5 rounded-full bg-emerald-500/90 text-white font-extrabold">Siz</span>';
+            html += '    <span class="px-1.5 py-0.2 rounded bg-emerald-500/80 text-[9px] font-black text-white">Siz</span>';
           }
-          html += '  </div>';
-          html += '  <div class="quiz-hero-avatar-box my-2" style="background: ' + hero.bg + '; border: 2.5px solid ' + hero.border + ';">';
-          html += '    <span class="quiz-hero-emoji text-4xl">' + hero.emoji + '</span>';
-          html += '  </div>';
-          html += '  <div class="w-full text-center">';
-          html += '    <div class="text-xs font-black text-white truncate max-w-[130px] mx-auto">' + p.name + '</div>';
-          html += '    <div class="text-[10px] font-bold text-gray-300 mt-0.5 truncate">' + hero.name + '</div>';
+          html += '    </div>';
+          html += '    <div class="text-[10px] text-gray-400 font-semibold truncate flex items-center gap-1.5 mt-0.5">';
+          html += '      <span class="text-amber-400 font-mono">#' + (p.joinIndex || (idx + 1)) + '</span>';
+          html += '      <span>·</span>';
+          html += '      <span class="truncate">' + hero.name + '</span>';
+          html += '    </div>';
           html += '  </div>';
           html += '</div>';
         });
@@ -20212,6 +20666,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
           renderCount();
         } else {
           clearInterval(timer);
+          startBattleMusic();
           if (isTeacher) {
             renderTeacherCommandCenter();
           } else {
@@ -20221,7 +20676,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       }, 1000);
     }
 
-    // PHASE 3A: TEACHER LIVE COMMAND & PROCTORING CENTER (NO QUESTIONS FOR TEACHER)
+    // PHASE 3A: TEACHER LIVE COMMAND & PROCTORING CENTER (WAYGROUND 1:1)
     function renderTeacherCommandCenter() {
       currentPhase = 'teacher_control';
       var list = Object.values(participantsMap);
@@ -20229,152 +20684,154 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
 
       var totalFinished = list.filter(function(p) { return p.finished; }).length;
       var totalInfractions = list.reduce(function(acc, p) { return acc + (p.infractions || 0); }, 0);
+      var totalCorrectAnswers = list.reduce(function(acc, p) { return acc + (p.correctCount || 0); }, 0);
+      var totalQuestionsAnswered = list.reduce(function(acc, p) { return acc + (p.currentQ || 0); }, 0);
+      var classAccuracyPct = totalQuestionsAnswered > 0 ? Math.round((totalCorrectAnswers / totalQuestionsAnswered) * 100) : 100;
 
-      var html = '<div class="max-w-6xl w-full mx-auto p-4 md:p-6 space-y-5 animate-fade-in pb-16">';
+      var html = '<div class="eth-wayground-screen">';
 
-      // Top Command Header
-      html += '<div class="flex flex-wrap items-center justify-between gap-4 p-5 rounded-2xl bg-gray-900/95 border border-gray-700/80 backdrop-blur-xl shadow-2xl">';
-      html += '  <div class="flex items-center gap-4">';
-      html += '    <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-2xl shadow-inner">📡</div>';
+      // Top Wayground Bar
+      html += '<div class="eth-wayground-topbar">';
+      html += '  <div class="flex items-center gap-3">';
+      html += '    <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-xl shadow-inner">📡</div>';
       html += '    <div>';
       html += '      <div class="flex items-center gap-2">';
-      html += '        <h2 class="text-xl md:text-2xl font-black text-white">' + (quiz.title || 'Quiz Test') + '</h2>';
-      html += '        <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-black uppercase flex items-center gap-1.5">';
-      html += '          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> JONLI NAZORAT';
+      html += '        <h2 class="text-base md:text-lg font-black text-white leading-tight">' + (quiz.title || 'Quiz Test') + '</h2>';
+      html += '        <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-[10px] font-black uppercase flex items-center gap-1">';
+      html += '          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> JONLI NAZORAT';
       html += '        </span>';
       html += '      </div>';
-      html += '      <div class="text-xs text-gray-400 flex items-center gap-3 mt-1 font-medium">';
-      html += '        <span>Kod: <strong class="text-amber-400 font-mono">' + quiz.code + '</strong></span>';
-      html += '        <span>·</span>';
+      html += '      <div class="text-[11px] text-gray-400 flex items-center gap-2 mt-0.5">';
       html += '        <span>O\'quvchilar: <strong class="text-white">' + list.length + ' ta</strong></span>';
       html += '        <span>·</span>';
-      html += '        <span>Tugatganlar: <strong class="text-emerald-400">' + totalFinished + ' / ' + list.length + '</strong></span>';
+      html += '        <span>Tugatgan: <strong class="text-emerald-400">' + totalFinished + ' / ' + list.length + '</strong></span>';
       if (totalInfractions > 0) {
         html += '        <span>·</span>';
-        html += '        <span class="text-rose-400 font-extrabold">🚨 ' + totalInfractions + ' ta qoidabuzarlik</span>';
+        html += '        <span class="text-rose-400 font-extrabold">🚨 ' + totalInfractions + ' ta ogohlantirish</span>';
       }
       html += '      </div>';
       html += '    </div>';
       html += '  </div>';
 
-      html += '  <div class="flex items-center gap-3">';
-      html += '    <button id="btnTeacherForceFinishLive" class="eth-teacher-finish-btn">';
+      // Center: Accuracy Gauge
+      html += '  <div class="eth-wayground-gauge">';
+      html += '    <div class="text-[10px] font-black text-gray-400 uppercase tracking-wider">Klass Aniqligi</div>';
+      html += '    <div class="text-lg md:text-xl font-black ' + (classAccuracyPct >= 70 ? 'text-emerald-400' : (classAccuracyPct >= 40 ? 'text-amber-400' : 'text-rose-400')) + '">' + classAccuracyPct + '%</div>';
+      html += '  </div>';
+
+      // Right Controls
+      html += '  <div class="flex items-center gap-2">';
+      html += '    <div class="eth-wayground-code-badge" id="btnCopyCommandCode" title="Kodni nusxalash">';
+      html += '      <span>KOD: ' + quiz.code + '</span>';
+      html += '      <span class="text-xs">📋</span>';
+      html += '    </div>';
+      html += '    <button id="btnToggleQuizMusic" class="eth-wayground-music-btn eth-music-toggle-btn">';
+      html +=        (isMusicMuted ? '🔇 Muzika' : '🔊 Muzika');
+      html += '    </button>';
+      html += '    <button id="btnTeacherForceFinishLive" class="eth-teacher-finish-btn py-2 px-3.5 text-xs font-black">';
       html += '      <span>🏁</span>';
-      html += '      <span>Barchaga Testni Yakunlash (Finish & Podium)</span>';
+      html += '      <span>Yakunlash</span>';
       html += '    </button>';
       html += '    <button id="btnTeacherExitLive" class="eth-quiz-close-btn" title="Chiqish">✕</button>';
       html += '  </div>';
       html += '</div>';
 
-      // 2-Column Grid: Left (Leaderboard 60%), Right (Telemetry Stream 40%)
-      html += '<div class="grid grid-cols-1 lg:grid-cols-12 gap-5">';
-
-      // LEFT COLUMN: LIVE LEADERBOARD (7 cols)
-      html += '  <div class="lg:col-span-7 space-y-4">';
-      html += '    <div class="p-4 rounded-2xl bg-gray-900/90 border border-gray-700/80 shadow-xl space-y-3">';
-      html += '      <div class="flex items-center justify-between border-b border-gray-800 pb-2.5 px-1">';
-      html += '        <div class="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-2">';
-      html += '          <span>🏆 JONLI REYTING VA O\'QUVCHILAR NATIJALARI</span>';
-      html += '        </div>';
-      html += '        <span class="text-[11px] text-gray-400">To\'plangan ballar asosida</span>';
-      html += '      </div>';
+      // Leaderboard Box (Wayground 1:1)
+      html += '<div class="eth-wayground-leaderboard-box">';
+      html += '  <div class="eth-wayground-th-header">';
+      html += '    <div class="w-14 text-center">O\'RIN</div>';
+      html += '    <div class="flex-1">ISMI VA QAHRAMONI</div>';
+      html += '    <div class="w-28 text-right">NATIJA (BALL)</div>';
+      html += '    <div class="w-48 text-right hidden sm:block">JARAYON & STREAK 🔥</div>';
+      html += '  </div>';
 
       if (list.length === 0) {
-        html += '<div class="p-8 text-center text-gray-400 text-sm font-bold">';
-        html += '  <span>O\'quvchilar javob berishini kutmoqdamiz...</span>';
+        html += '<div class="p-12 text-center text-gray-400 text-sm font-bold">';
+        html += '  <span>⏳ O\'quvchilar qo\'shilishini kutmoqdamiz...</span>';
         html += '</div>';
       } else {
-        html += '      <div class="space-y-2 max-h-[520px] overflow-y-auto pr-1">';
+        html += '  <div class="divide-y divide-gray-800/80">';
         list.forEach(function(p, idx) {
-          var hero = p.hero || getStudentHero(p.id, idx);
-          var medal = idx === 0 ? '🥇' : (idx === 1 ? '🥈' : (idx === 2 ? '🥉' : ('#' + (idx + 1))));
-          var progressPct = p.totalQ > 0 ? Math.round(((p.currentQ || 0) / p.totalQ) * 100) : 0;
+          var newRank = idx + 1;
+          var oldRank = previousRanksMap[p.id];
+          var animClass = '';
+          if (oldRank !== undefined) {
+            if (newRank > oldRank) {
+              animClass = 'rank-fell';
+            } else if (newRank < oldRank) {
+              animClass = 'rank-rose';
+            }
+          }
+          previousRanksMap[p.id] = newRank;
 
-          html += '<div class="p-3.5 rounded-2xl bg-gray-800/80 border ' + (idx === 0 ? 'border-amber-500/70 bg-gradient-to-r from-amber-950/30 to-gray-800/80' : 'border-gray-700/70') + ' flex items-center justify-between gap-3 shadow-md hover:bg-gray-800 transition-all">';
-          html += '  <div class="flex items-center gap-3 min-w-0">';
-          html += '    <div class="w-7 text-center font-black text-sm ' + (idx === 0 ? 'text-amber-400' : 'text-gray-400') + '">' + medal + '</div>';
-          html += '    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-2xl flex-shrink-0" style="background: ' + hero.bg + '; border: 1.5px solid ' + hero.border + ';">' + hero.emoji + '</div>';
+          var hero = p.hero || getStudentHero(p.id, idx);
+          var medal = newRank === 1 ? '🥇 1' : (newRank === 2 ? '🥈 2' : (newRank === 3 ? '🥉 3' : ('#' + newRank)));
+          var progressPct = p.totalQ > 0 ? Math.round(((p.currentQ || 0) / p.totalQ) * 100) : 0;
+          var streak = p.streak || 0;
+
+          html += '<div class="eth-wayground-player-row ' + animClass + (p.id === myStudentId ? ' is-me' : '') + '">';
+          // Col 1: Rank
+          html += '  <div class="w-14 text-center font-black text-sm ' + (newRank === 1 ? 'text-amber-400' : 'text-gray-400') + '">' + medal + '</div>';
+          // Col 2: Hero + Name + Badges
+          html += '  <div class="flex-1 flex items-center gap-3 min-w-0">';
+          html += '    <div class="w-9 h-9 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background: ' + hero.bg + '; border: 1.5px solid ' + hero.border + ';">' + hero.emoji + '</div>';
           html += '    <div class="min-w-0">';
           html += '      <div class="flex items-center gap-2">';
-          html += '        <div class="font-black text-white text-sm truncate">' + p.name + '</div>';
+          html += '        <span class="font-black text-white text-sm truncate">' + p.name + '</span>';
           if (p.finished) {
-            html += '        <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-black">✅ Yakunladi</span>';
+            html += '        <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[9px] font-black">✅ Yakunladi</span>';
           }
           if (p.infractions > 0) {
-            html += '        <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/40 text-[10px] font-black">🚨 ' + p.infractions + ' marta</span>';
+            html += '        <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/40 text-[9px] font-black">🚨 ' + p.infractions + ' marta</span>';
           }
           html += '      </div>';
-          html += '      <div class="flex items-center gap-2 mt-1">';
-          html += '        <div class="w-24 h-1.5 rounded-full bg-gray-700 overflow-hidden">';
-          html += '          <div class="h-full bg-emerald-500 rounded-full" style="width: ' + progressPct + '%;"></div>';
-          html += '        </div>';
-          html += '        <span class="text-[10px] text-gray-400 font-semibold">' + (p.currentQ || 0) + '/' + preparedQuestions.length + '</span>';
-          html += '        <span class="text-[10px] text-emerald-400 font-bold">+' + (p.correctCount || 0) + '</span>';
-          html += '        <span class="text-[10px] text-rose-400 font-bold">-' + (p.wrongCount || 0) + '</span>';
-          html += '      </div>';
+          html += '      <div class="text-[10px] text-gray-400 font-semibold">' + hero.name + '</div>';
           html += '    </div>';
           html += '  </div>';
-
-          html += '  <div class="text-right flex-shrink-0">';
-          html += '    <div class="font-mono font-black text-base md:text-lg text-amber-400">' + (p.score || 0).toLocaleString() + '</div>';
-          html += '    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Ball</div>';
+          // Col 3: Score
+          html += '  <div class="w-28 text-right flex-shrink-0">';
+          html += '    <div class="font-mono font-black text-base text-amber-400">' + (p.score || 0).toLocaleString() + '</div>';
+          html += '    <div class="text-[10px] text-gray-400 uppercase font-bold">Ball</div>';
           html += '  </div>';
-          html += '</div>';
-        });
-        html += '      </div>';
-      }
-
-      html += '    </div>';
-      html += '  </div>';
-
-      // RIGHT COLUMN: LIVE PROCTORING & TELEMETRY STREAM (5 cols)
-      html += '  <div class="lg:col-span-5 space-y-4">';
-      html += '    <div class="p-4 rounded-2xl bg-gray-900/90 border border-gray-700/80 shadow-xl space-y-3">';
-      html += '      <div class="flex items-center justify-between border-b border-gray-800 pb-2.5 px-1">';
-      html += '        <div class="text-xs font-black uppercase tracking-wider text-rose-400 flex items-center gap-2">';
-      html += '          <span>⚡ JONLI PROCTORING VA HARAKATLAR OQIMI</span>';
-      html += '        </div>';
-      html += '        <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>';
-      html += '      </div>';
-
-      if (teacherTelemetryLogs.length === 0) {
-        html += '<div class="p-8 text-center text-gray-400 text-xs font-bold space-y-1">';
-        html += '  <div>🟢 Oqim tayyor.</div>';
-        html += '  <div>O\'quvchi oynadan chiqsa, taqiqlangan tugma bossa yoki javob bersa real vaqtda shu yerda qayd etiladi.</div>';
-        html += '</div>';
-      } else {
-        html += '      <div class="space-y-2 max-h-[520px] overflow-y-auto pr-1">';
-        teacherTelemetryLogs.forEach(function(item) {
-          var borderClass = 'border-l-4 border-l-blue-500 bg-gray-800/60';
-          if (item.isViolation) {
-            borderClass = 'border-l-4 border-l-rose-500 bg-rose-950/30 border border-rose-900/40 text-rose-200';
-          } else if (item.action === 'TAB_RETURN' || item.action === 'FOCUS') {
-            borderClass = 'border-l-4 border-l-emerald-500 bg-emerald-950/20 text-emerald-200';
-          } else if (item.action === 'CORRECT') {
-            borderClass = 'border-l-4 border-l-amber-500 bg-amber-950/20 text-amber-200';
+          // Col 4: Progress & Streak
+          html += '  <div class="w-48 text-right hidden sm:flex flex-col items-end gap-1 flex-shrink-0">';
+          html += '    <div class="flex items-center gap-2">';
+          if (streak >= 2) {
+            html += '      <span class="px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 text-[10px] font-black animate-pulse">🔥 ' + streak + ' streak</span>';
           }
-
-          html += '<div class="p-2.5 rounded-xl ' + borderClass + ' text-xs space-y-1 shadow-sm animate-fade-in">';
-          html += '  <div class="flex items-center justify-between text-[10px] text-gray-400 font-mono">';
-          html += '    <span class="font-black text-white flex items-center gap-1.5">';
-          if (item.hero) html += '<span>' + item.hero.emoji + '</span>';
-          html += '      <span>' + item.studentName + '</span>';
-          html += '    </span>';
-          html += '    <span>' + item.timestamp + '</span>';
+          html += '      <span class="text-[10px] font-mono text-gray-400">' + (p.currentQ || 0) + '/' + preparedQuestions.length + '</span>';
+          html += '    </div>';
+          html += '    <div class="w-32 h-1.5 rounded-full bg-gray-800 overflow-hidden">';
+          html += '      <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width: ' + progressPct + '%;"></div>';
+          html += '    </div>';
           html += '  </div>';
-          html += '  <div class="font-bold text-xs leading-snug">' + item.detail + '</div>';
           html += '</div>';
         });
-        html += '      </div>';
+        html += '  </div>';
       }
 
-      html += '    </div>';
-      html += '  </div>';
-
-      html += '</div>'; // End Grid
-      html += '</div>'; // End Container
+      html += '</div>'; // End leaderboard box
+      html += '</div>'; // End screen
 
       root.innerHTML = html;
+
+      var btnCopyCode = root.querySelector('#btnCopyCommandCode');
+      if (btnCopyCode) {
+        btnCopyCode.onclick = function() {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(quiz.code).then(function() {
+              alert("Quiz kodi nusxalandi: " + quiz.code);
+            });
+          } else {
+            prompt("Quiz kodi:", quiz.code);
+          }
+        };
+      }
+
+      var btnMusic = root.querySelector('#btnToggleQuizMusic');
+      if (btnMusic) {
+        btnMusic.onclick = toggleMusicMute;
+      }
 
       var btnFinishLive = root.querySelector('#btnTeacherForceFinishLive');
       if (btnFinishLive) {
@@ -20432,7 +20889,13 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       html += '    <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Savol:</span>';
       html += '    <span class="text-sm font-black text-white">' + (currentQIndex + 1) + ' / ' + preparedQuestions.length + '</span>';
       html += '  </div>';
-      html += '  <div class="flex items-center gap-3">';
+      html += '  <div class="flex items-center gap-2.5">';
+      if (myStreak >= 2) {
+        html += '    <div class="px-2.5 py-1 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-400 text-xs font-black animate-pulse">🔥 ' + myStreak + ' streak</div>';
+      }
+      html += '    <button id="btnToggleQuizMusic" class="eth-wayground-music-btn eth-music-toggle-btn text-xs py-1 px-2.5">';
+      html +=        (isMusicMuted ? '🔇 Muzika' : '🔊 Muzika');
+      html += '    </button>';
       html += '    <div id="liveRankPill" class="eth-quiz-rank-pill">#' + getMyRank() + '-o\'rin</div>';
       html += '    <div id="liveScorePill" class="eth-quiz-score-pill">' + myScore.toLocaleString() + ' Ball</div>';
       html += '  </div>';
@@ -20453,18 +20916,18 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       html += '<div class="eth-quiz-card space-y-6">';
       html += '  <div class="text-xl md:text-3xl font-black text-white leading-relaxed text-center">' + q.question + '</div>';
 
-      // 2x2 Vibrant Quizizz/Kahoot Options Grid
+      // 2x2 Clean Circular Badges Options Grid (NO GEOMETRIC SHAPES!)
       html += '  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">';
       var optClasses = ['eth-quiz-opt-a', 'eth-quiz-opt-b', 'eth-quiz-opt-c', 'eth-quiz-opt-d'];
-      var optBadges = ['🔺 A', '🔷 B', '🟡 C', '⭐ D'];
+      var letters = ['A', 'B', 'C', 'D'];
 
       q.options.forEach(function(optObj, sIdx) {
         var optClass = optClasses[sIdx % optClasses.length];
-        var optBadge = optBadges[sIdx % optBadges.length] || ('#' + (sIdx + 1));
+        var letter = letters[sIdx % letters.length] || String.fromCharCode(65 + sIdx);
 
         html += '<button class="eth-quiz-opt-btn ' + optClass + '" data-scrambled-idx="' + sIdx + '">';
-        html += '  <div class="eth-quiz-opt-icon">' + optBadge + '</div>';
-        html += '  <div class="text-base font-extrabold text-white text-left flex-1">' + optObj.text + '</div>';
+        html += '  <span class="eth-quiz-opt-letter">' + letter + '</span>';
+        html += '  <span class="text-base font-extrabold text-white text-left flex-1">' + optObj.text + '</span>';
         html += '</button>';
       });
       html += '  </div>';
@@ -20477,6 +20940,9 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
 
       root.innerHTML = html;
       updateLiveRankPill();
+
+      var btnMusic = root.querySelector('#btnToggleQuizMusic');
+      if (btnMusic) btnMusic.onclick = toggleMusicMute;
 
       // Start 10s Timer
       var timerBar = root.querySelector('#quizTimerBar');
@@ -20518,12 +20984,14 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
           var feedbackHtml = '';
 
           if (isCorrect) {
+            myStreak++;
             correctCount++;
             var earned = 600 + (hasBonus ? 100 : 0);
             myScore += earned;
             btn.classList.add('correct');
             feedbackHtml = '<div class="eth-quiz-bonus-tag">' + (hasBonus ? '⚡ +700 (Tezlik Bonusi!)' : '✅ +600 Ball') + '</div>';
           } else {
+            myStreak = 0;
             wrongCount++;
             myScore = Math.max(0, myScore - 500);
             btn.classList.add('incorrect');
@@ -20550,6 +21018,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
             participantsMap[myStudentId].currentQ = currentQIndex + 1;
             participantsMap[myStudentId].correctCount = correctCount;
             participantsMap[myStudentId].wrongCount = wrongCount;
+            participantsMap[myStudentId].streak = myStreak;
             participantsMap[myStudentId].answers = studentAnswersMap;
           }
 
@@ -20564,6 +21033,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
               totalQ: preparedQuestions.length,
               correctCount: correctCount,
               wrongCount: wrongCount,
+              streak: myStreak,
               infractions: silentInfractions,
               answers: studentAnswersMap
             });
@@ -20674,6 +21144,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
     function renderFinalePodium() {
       currentPhase = 'finished';
       cleanupListeners();
+      stopBattleMusic();
 
       var list = Object.values(participantsMap);
       list.sort(function(a, b) { return b.score - a.score; });
@@ -20846,13 +21317,13 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
 
       html += '  </div>';
 
-      // Buttons
+      // Buttons (Using .eth-podium-analysis-btn & .eth-podium-exit-btn for guaranteed sleek design)
       html += '  <div class="flex flex-wrap items-center justify-center gap-4 pt-6">';
-      html += '    <button id="btnViewAnalysisFromPodium" class="px-6 py-3.5 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-sm shadow-xl flex items-center gap-2">';
+      html += '    <button id="btnViewAnalysisFromPodium" class="eth-podium-analysis-btn">';
       html += '      <span>📊 Batafsil Test Tahlilini Ko\'rish</span>';
       html += '    </button>';
-      html += '    <button id="btnExitPodium" class="px-6 py-3.5 rounded-2xl bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold text-sm shadow-lg">';
-      html += '      🚪 Testni Tark Etish (Dashboard)';
+      html += '    <button id="btnExitPodium" class="eth-podium-exit-btn">';
+      html += '      <span>🚪 Testni Tark Etish (Dashboard)</span>';
       html += '    </button>';
       html += '  </div>';
 
@@ -20882,7 +21353,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
   }
 
   // -------------------------------------------------------------------------
-  // PERSISTENT TEACHER & STUDENT QUIZ ANALYTICS MODAL
+  // PERSISTENT TEACHER & STUDENT QUIZ ANALYTICS MODAL (TRANSLUCENT COLORFUL)
   // -------------------------------------------------------------------------
   function showQuizAnalysisModal(quiz) {
     if (!quiz) return;
@@ -20893,50 +21364,50 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
     }
 
     var overlay = document.createElement('div');
-    overlay.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md overflow-y-auto';
+    overlay.className = 'eth-quiz-analysis-overlay';
 
-    var html = '<div class="bg-white dark:bg-gray-800 rounded-3xl max-w-4xl w-full p-6 md:p-8 shadow-2xl border border-gray-100 dark:border-gray-700 my-8 space-y-6 max-h-[90vh] flex flex-col justify-between">';
+    var html = '<div class="eth-quiz-analysis-dialog">';
 
-    html += '  <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-700 pb-4">';
+    html += '  <div class="flex items-center justify-between border-b border-gray-700/80 pb-4">';
     html += '    <div class="flex items-center gap-3">';
-    html += '      <span class="text-3xl">📊</span>';
+    html += '      <span class="text-3xl p-2 rounded-2xl bg-amber-500/20 border border-amber-500/30">📊</span>';
     html += '      <div>';
-    html += '        <h3 class="text-xl font-black text-gray-900 dark:text-white">Quiz Test Tahlili: ' + (quiz.title || 'Quiz') + '</h3>';
-    html += '        <p class="text-xs text-gray-500 dark:text-gray-400">Har bir savol ketma-ketligi, variantlar taqsimoti va o\'quvchilar xatolari.</p>';
+    html += '        <h3 class="text-xl font-black text-white">Quiz Test Tahlili: ' + (quiz.title || 'Quiz') + '</h3>';
+    html += '        <p class="text-xs text-gray-400">Har bir savol ketma-ketligi, variantlar taqsimoti va o\'quvchilar xatolari tahlili.</p>';
     html += '      </div>';
     html += '    </div>';
-    html += '    <button id="btnCloseAnalysisModal" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-bold p-1">✕</button>';
+    html += '    <button id="btnCloseAnalysisModal" class="eth-quiz-close-btn" title="Yopish">✕</button>';
     html += '  </div>';
 
     html += '  <div class="flex-1 overflow-y-auto space-y-6 pr-1">';
 
     html += '    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">';
-    html += '      <div class="p-3.5 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-700 text-center">';
+    html += '      <div class="p-3.5 bg-gray-800/80 rounded-2xl border border-gray-700/70 text-center">';
     html += '        <div class="text-[11px] font-bold text-gray-400 uppercase">Qatnashchilar</div>';
-    html += '        <div class="text-xl font-black text-gray-900 dark:text-white mt-1">' + (analysis.totalParticipants || 0) + ' ta</div>';
+    html += '        <div class="text-xl font-black text-white mt-1">' + (analysis.totalParticipants || 0) + ' ta</div>';
     html += '      </div>';
 
     var mostMistakes = analysis.mostMistakesStudent;
-    html += '      <div class="p-3.5 bg-rose-50 dark:bg-rose-950/40 rounded-2xl border border-rose-100 dark:border-rose-900/40 text-center">';
-    html += '        <div class="text-[11px] font-bold text-rose-500 uppercase">Eng ko\'p xato qilgan</div>';
-    html += '        <div class="text-xs font-black text-rose-700 dark:text-rose-300 mt-1 truncate">' + (mostMistakes ? mostMistakes.name + ' (' + mostMistakes.wrongCount + ' ta)' : '—') + '</div>';
+    html += '      <div class="p-3.5 bg-rose-950/40 rounded-2xl border border-rose-900/60 text-center">';
+    html += '        <div class="text-[11px] font-bold text-rose-400 uppercase">Eng ko\'p xato qilgan</div>';
+    html += '        <div class="text-xs font-black text-rose-300 mt-1 truncate">' + (mostMistakes ? mostMistakes.name + ' (' + mostMistakes.wrongCount + ' ta)' : '—') + '</div>';
     html += '      </div>';
 
     var leastMistakes = analysis.leastMistakesStudent;
-    html += '      <div class="p-3.5 bg-emerald-50 dark:bg-emerald-950/40 rounded-2xl border border-emerald-100 dark:border-emerald-900/40 text-center">';
-    html += '        <div class="text-[11px] font-bold text-emerald-500 uppercase">Eng kam xato qilgan</div>';
-    html += '        <div class="text-xs font-black text-emerald-700 dark:text-emerald-300 mt-1 truncate">' + (leastMistakes ? leastMistakes.name + ' (' + leastMistakes.correctCount + ' to\'g\'ri)' : '—') + '</div>';
+    html += '      <div class="p-3.5 bg-emerald-950/40 rounded-2xl border border-emerald-900/60 text-center">';
+    html += '        <div class="text-[11px] font-bold text-emerald-400 uppercase">Eng kam xato qilgan</div>';
+    html += '        <div class="text-xs font-black text-emerald-300 mt-1 truncate">' + (leastMistakes ? leastMistakes.name + ' (' + leastMistakes.correctCount + ' to\'g\'ri)' : '—') + '</div>';
     html += '      </div>';
 
-    html += '      <div class="p-3.5 bg-amber-50 dark:bg-amber-950/40 rounded-2xl border border-amber-100 dark:border-amber-900/40 text-center">';
-    html += '        <div class="text-[11px] font-bold text-amber-600 uppercase">O\'tkazilgan sana</div>';
-    html += '        <div class="text-xs font-extrabold text-amber-700 dark:text-amber-300 mt-1">' + (analysis.finishedAt ? new Date(analysis.finishedAt).toLocaleDateString() : '—') + '</div>';
+    html += '      <div class="p-3.5 bg-amber-950/40 rounded-2xl border border-amber-900/60 text-center">';
+    html += '        <div class="text-[11px] font-bold text-amber-400 uppercase">O\'tkazilgan sana</div>';
+    html += '        <div class="text-xs font-extrabold text-amber-300 mt-1">' + (analysis.finishedAt ? new Date(analysis.finishedAt).toLocaleDateString() : '—') + '</div>';
     html += '      </div>';
     html += '    </div>';
 
     // Question-by-question breakdown
     html += '    <div class="space-y-4">';
-    html += '      <h4 class="text-sm font-black text-gray-800 dark:text-gray-100 flex items-center gap-2">';
+    html += '      <h4 class="text-sm font-black text-gray-200 flex items-center gap-2">';
     html += '        <span>📋 Savollar Ketma-ketligi va O\'quvchilar Tanlagan Variantlari</span>';
     html += '      </h4>';
 
@@ -20944,14 +21415,14 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
       var isHighAcc = stat.accuracyPct >= 70;
       var isLowAcc = stat.accuracyPct < 40;
 
-      html += '<div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 space-y-3">';
+      html += '<div class="p-4 bg-gray-800/70 rounded-2xl border border-gray-700/80 space-y-3">';
       html += '  <div class="flex items-start justify-between gap-3">';
       html += '    <div class="space-y-1">';
-      html += '      <div class="font-extrabold text-sm text-gray-900 dark:text-white">' + (sIdx + 1) + '. ' + stat.questionText + '</div>';
-      html += '      <div class="text-xs text-emerald-600 dark:text-emerald-400 font-bold">To\'g\'ri javob: ' + String.fromCharCode(65 + stat.correctAnswer) + ') ' + (stat.options[stat.correctAnswer] || '') + '</div>';
+      html += '      <div class="font-extrabold text-sm text-white">' + (sIdx + 1) + '. ' + stat.questionText + '</div>';
+      html += '      <div class="text-xs text-emerald-400 font-bold">To\'g\'ri javob: ' + String.fromCharCode(65 + stat.correctAnswer) + ') ' + (stat.options[stat.correctAnswer] || '') + '</div>';
       html += '    </div>';
       html += '    <div class="text-right flex-shrink-0">';
-      html += '      <span class="px-2.5 py-1 rounded-full text-xs font-black ' + (isHighAcc ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' : (isLowAcc ? 'bg-rose-100 text-rose-800 dark:bg-rose-900/50 dark:text-rose-300' : 'bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300')) + '">';
+      html += '      <span class="px-2.5 py-1 rounded-full text-xs font-black ' + (isHighAcc ? 'bg-emerald-900/50 text-emerald-300 border border-emerald-700/50' : (isLowAcc ? 'bg-rose-900/50 text-rose-300 border border-rose-700/50' : 'bg-amber-900/50 text-amber-300 border border-amber-700/50')) + '">';
       html += '        ' + stat.accuracyPct + '% aniqlik';
       html += '      </span>';
       html += '    </div>';
@@ -20963,18 +21434,18 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
         var isCorr = (optIdx === stat.correctAnswer);
         var chosenStudents = (stat.optStudents && stat.optStudents[optIdx]) || [];
 
-        html += '<div class="p-2.5 rounded-xl border ' + (isCorr ? 'border-emerald-300 dark:border-emerald-700 bg-emerald-50/50 dark:bg-emerald-950/20' : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800/80') + ' text-xs space-y-1">';
+        html += '<div class="p-2.5 rounded-xl border ' + (isCorr ? 'border-emerald-600/70 bg-emerald-950/30' : 'border-gray-700/60 bg-gray-800/50') + ' text-xs space-y-1">';
         html += '  <div class="flex items-center justify-between font-bold">';
-        html += '    <span class="' + (isCorr ? 'text-emerald-600 dark:text-emerald-400' : 'text-gray-700 dark:text-gray-300') + '">' + letter + ') ' + opt + (isCorr ? ' ✅' : '') + '</span>';
+        html += '    <span class="' + (isCorr ? 'text-emerald-400 font-black' : 'text-gray-300') + '">' + letter + ') ' + opt + (isCorr ? ' ✅' : '') + '</span>';
         html += '    <span class="text-[11px] font-mono text-gray-400">' + chosenStudents.length + ' ta</span>';
         html += '  </div>';
 
         if (chosenStudents.length > 0) {
-          html += '  <div class="text-[11px] text-gray-500 dark:text-gray-400 truncate">';
-          html += '    Tanlaganlar: <span class="font-medium text-gray-700 dark:text-gray-300">' + chosenStudents.join(', ') + '</span>';
+          html += '  <div class="text-[11px] text-gray-400 truncate">';
+          html += '    Tanlaganlar: <span class="font-medium text-white">' + chosenStudents.join(', ') + '</span>';
           html += '  </div>';
         } else {
-          html += '  <div class="text-[10px] text-gray-400 italic">Hech kim tanlamadi</div>';
+          html += '  <div class="text-[10px] text-gray-500 italic">Hech kim tanlamadi</div>';
         }
         html += '</div>';
       });
@@ -20985,11 +21456,11 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
     html += '    </div>';
 
     // Student Leaderboard Table
-    html += '    <div class="space-y-3 pt-4 border-t border-gray-100 dark:border-gray-700">';
-    html += '      <h4 class="text-sm font-black text-gray-800 dark:text-gray-100">🏆 O\'quvchilar Yakuniy Reytingi</h4>';
+    html += '    <div class="space-y-3 pt-4 border-t border-gray-700/80">';
+    html += '      <h4 class="text-sm font-black text-gray-200">🏆 O\'quvchilar Yakuniy Reytingi</h4>';
     html += '      <div class="overflow-x-auto">';
     html += '        <table class="w-full text-xs text-left">';
-    html += '          <thead class="text-gray-400 uppercase bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">';
+    html += '          <thead class="text-gray-400 uppercase bg-gray-800/80 border-b border-gray-700">';
     html += '            <tr>';
     html += '              <th class="px-3 py-2">O\'rin</th>';
     html += '              <th class="px-3 py-2">O\'quvchi</th>';
@@ -21000,16 +21471,16 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
     html += '              <th class="px-3 py-2">Yutilgan Sovg\'a</th>';
     html += '            </tr>';
     html += '          </thead>';
-    html += '          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">';
+    html += '          <tbody class="divide-y divide-gray-800">';
     (analysis.rankings || []).forEach(function(r) {
-      html += '            <tr class="hover:bg-gray-50/50 dark:hover:bg-gray-900/50">';
-      html += '              <td class="px-3 py-2.5 font-bold font-mono">#' + r.rank + '</td>';
-      html += '              <td class="px-3 py-2.5 font-extrabold text-gray-900 dark:text-white">' + r.name + '</td>';
-      html += '              <td class="px-3 py-2.5 font-mono font-black text-amber-600 dark:text-amber-400">' + (r.score || 0).toLocaleString() + '</td>';
-      html += '              <td class="px-3 py-2.5 font-bold text-emerald-600">+' + (r.correctCount || 0) + '</td>';
-      html += '              <td class="px-3 py-2.5 font-bold text-rose-500">-' + (r.wrongCount || 0) + '</td>';
-      html += '              <td class="px-3 py-2.5">' + (r.infractions > 0 ? ('<span class="text-rose-500 font-bold">⚠️ ' + r.infractions + ' marta</span>') : '<span class="text-gray-400">0</span>') + '</td>';
-      html += '              <td class="px-3 py-2.5 font-medium">' + (r.prize ? (r.prize.icon + ' ' + r.prize.name) : '—') + '</td>';
+      html += '            <tr class="hover:bg-gray-800/50 transition-colors">';
+      html += '              <td class="px-3 py-2.5 font-bold font-mono text-amber-400">#' + r.rank + '</td>';
+      html += '              <td class="px-3 py-2.5 font-extrabold text-white">' + r.name + '</td>';
+      html += '              <td class="px-3 py-2.5 font-mono font-black text-amber-400">' + (r.score || 0).toLocaleString() + '</td>';
+      html += '              <td class="px-3 py-2.5 font-bold text-emerald-400">+' + (r.correctCount || 0) + '</td>';
+      html += '              <td class="px-3 py-2.5 font-bold text-rose-400">-' + (r.wrongCount || 0) + '</td>';
+      html += '              <td class="px-3 py-2.5">' + (r.infractions > 0 ? ('<span class="text-rose-400 font-bold">⚠️ ' + r.infractions + ' marta</span>') : '<span class="text-gray-500">0</span>') + '</td>';
+      html += '              <td class="px-3 py-2.5 font-medium text-amber-200">' + (r.prize ? (r.prize.icon + ' ' + r.prize.name) : '—') + '</td>';
       html += '            </tr>';
     });
     html += '          </tbody>';
@@ -21019,8 +21490,8 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
 
     html += '  </div>';
 
-    html += '  <div class="border-t border-gray-100 dark:border-gray-700 pt-4 flex items-center justify-end">';
-    html += '    <button id="btnCloseAnalysisModalBottom" class="px-6 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs hover:bg-gray-200">';
+    html += '  <div class="border-t border-gray-700/80 pt-4 flex items-center justify-end">';
+    html += '    <button id="btnCloseAnalysisModalBottom" class="px-6 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold text-xs border border-gray-600 transition-all">';
     html += '      Yopish';
     html += '    </button>';
     html += '  </div>';
@@ -21156,6 +21627,7 @@ window.ETHITH_GET_RANDOM_PRIZE = function(rank) {
     showCreateLevelTransitionExamModal: showCreateLevelTransitionExamModal,
     showCreateExamModal: showCreateExamModal,
     showTeacherNotificationsModal: showTeacherNotificationsModal,
+    showStudentNotificationsModal: showStudentNotificationsModal,
     formatAIMarkdown: formatAIMarkdown,
     formatMarkdown: formatAIMarkdown,
     startExamRunner: startExamRunner,
@@ -22200,7 +22672,12 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
   function top() {
     var user = S.user || { name: 'Guest', role: 'student', dailyMinutes: 0 };
-    var unreadNotifs = (S.notifications || []).filter(function(n) { return !n.resolved; }).length;
+    var unreadNotifs = 0;
+    if (user.role === 'teacher') {
+      unreadNotifs = (S.notifications || []).filter(function(n) { return !n.resolved; }).length;
+    } else {
+      unreadNotifs = (user.gifts || []).filter(function(g) { return !g.read; }).length + ((S.studentNotifications || []).filter(function(n) { return !n.read; }).length);
+    }
 
     $('apTop').innerHTML = '' +
       '<button class="ap-burger" id="apBurger">' + ic('menu') + '</button>' +
@@ -22209,11 +22686,10 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '<div style="margin-right:12px;font-size:13px;background:var(--bg2);padding:6px 12px;border-radius:12px;display:flex;align-items:center;gap:6px">' +
       ic('clock') + ' Today: <b>' + (user.dailyMinutes || 0) + ' min</b>' +
       '</div>' +
-      (user.role === 'teacher' ?
-        '<button class="ap-ib" id="apNotifications" style="position:relative;margin-right:6px" title="Security & Proctoring Alerts">' +
-          ic('bell') +
-          (unreadNotifs > 0 ? '<span class="eth-notif-badge">' + unreadNotifs + '</span>' : '') +
-        '</button>' : '') +
+      '<button class="ap-ib" id="apNotifications" style="position:relative;margin-right:6px" title="' + (user.role === 'teacher' ? 'Security & Proctoring Alerts' : 'Bildirishnomalar va Sovg\'alar') + '">' +
+        ic('bell') +
+        (unreadNotifs > 0 ? '<span class="eth-notif-badge">' + unreadNotifs + '</span>' : '') +
+      '</button>' +
       '<button class="ap-ib" id="apTheme">' + ic(S.theme === 'dark' ? 'sun' : 'moon') + '</button>' +
       '<div class="ap-user">' +
       '  <span class="av">' + (user.name ? user.name.charAt(0).toUpperCase() : 'U') + '</span>' +
@@ -22335,8 +22811,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     }
 
     if (e.target.closest('#apNotifications')) {
-      if (window.EthithViews && window.EthithViews.showTeacherNotificationsModal) {
-        window.EthithViews.showTeacherNotificationsModal();
+      if (S.user && S.user.role === 'teacher') {
+        if (window.EthithViews && window.EthithViews.showTeacherNotificationsModal) {
+          window.EthithViews.showTeacherNotificationsModal();
+        }
+      } else {
+        if (window.EthithViews && window.EthithViews.showStudentNotificationsModal) {
+          window.EthithViews.showStudentNotificationsModal();
+        }
       }
       return;
     }

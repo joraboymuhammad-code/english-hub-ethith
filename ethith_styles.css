@@ -4881,7 +4881,293 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   animation: ethPopIn 0.3s ease !important;
 }
 
+/* Clean Circular Letter Badges for Quiz Options (No geometric shapes) */
+.eth-quiz-opt-letter {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.25) !important;
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+  font-weight: 900 !important;
+  flex-shrink: 0 !important;
+  color: #ffffff !important;
+}
 
+/* Compact ID-Card Style Lobby Card (User Requirement) */
+.quiz-student-lobby-card-compact {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 8px 14px !important;
+  border-radius: 14px !important;
+  background: rgba(15, 23, 42, 0.75) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.2s ease !important;
+}
+.quiz-student-lobby-card-compact:hover {
+  transform: translateY(-2px) !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 10px 24px rgba(245, 158, 11, 0.25) !important;
+}
+.quiz-student-lobby-card-compact.is-me {
+  border-color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+}
+.quiz-mini-avatar {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 20px !important;
+  flex-shrink: 0 !important;
+}
 
+/* Wayground 1:1 Live Game Leaderboard & Admin Screen */
+.eth-wayground-screen {
+  width: 100% !important;
+  max-width: 1040px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  animation: ethFadeIn 0.3s ease !important;
+}
+.eth-wayground-topbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  padding: 14px 22px !important;
+  border-radius: 20px !important;
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(16px) !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4) !important;
+}
+.eth-wayground-code-badge {
+  font-family: monospace !important;
+  font-size: 26px !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+  color: #f59e0b !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+.eth-wayground-gauge {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  padding: 6px 14px !important;
+  border-radius: 999px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+}
+.eth-wayground-gauge-pct {
+  font-size: 18px !important;
+  font-weight: 900 !important;
+  color: #10b981 !important;
+}
+.eth-wayground-gauge-label {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #94a3b8 !important;
+  text-transform: uppercase !important;
+}
+.eth-wayground-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+.eth-wayground-music-btn {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+}
+.eth-wayground-music-btn:hover {
+  background: rgba(245, 158, 11, 0.3) !important;
+  border-color: #f59e0b !important;
+  transform: scale(1.08) !important;
+}
+.eth-wayground-leaderboard-box {
+  background: rgba(15, 23, 42, 0.8) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(16px) !important;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45) !important;
+}
+.eth-wayground-th-header {
+  display: grid !important;
+  grid-template-columns: 70px 1fr 140px 160px !important;
+  padding: 12px 20px !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+@media (max-width: 640px) {
+  .eth-wayground-th-header {
+    grid-template-columns: 50px 1fr 100px !important;
+  }
+  .eth-wayground-th-streak { display: none !important; }
+}
+.eth-wayground-player-row {
+  display: grid !important;
+  grid-template-columns: 70px 1fr 140px 160px !important;
+  align-items: center !important;
+  padding: 14px 20px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease !important;
+}
+@media (max-width: 640px) {
+  .eth-wayground-player-row {
+    grid-template-columns: 50px 1fr 100px !important;
+  }
+}
+.eth-wayground-player-row:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+.eth-wayground-player-row.is-me {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border-left: 4px solid #f59e0b !important;
+}
+.eth-wayground-player-row.rank-fell {
+  animation: ethRankFall 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+.eth-wayground-player-row.rank-rose {
+  animation: ethRankRise 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+@keyframes ethRankFall {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-8px) scale(0.98); }
+  60% { transform: translateY(22px) scale(1.03); background: rgba(239, 68, 68, 0.25); }
+  100% { transform: translateY(0) scale(1); }
+}
+@keyframes ethRankRise {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(8px) scale(0.98); }
+  60% { transform: translateY(-22px) scale(1.03); background: rgba(16, 185, 129, 0.25); }
+  100% { transform: translateY(0) scale(1); }
+}
 
+/* Floating Teacher Infraction Toast (Bell Style - No Raw Bottom Dump) */
+.eth-quiz-infraction-toast {
+  position: fixed !important;
+  top: 24px !important;
+  right: 24px !important;
+  z-index: 9999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 14px 20px !important;
+  border-radius: 16px !important;
+  background: rgba(15, 23, 42, 0.95) !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(239, 68, 68, 0.6) !important;
+  box-shadow: 0 14px 40px rgba(239, 68, 68, 0.45) !important;
+  backdrop-filter: blur(16px) !important;
+  animation: ethToastIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  max-width: 420px !important;
+}
+.eth-quiz-infraction-toast.return {
+  border-color: rgba(16, 185, 129, 0.6) !important;
+  box-shadow: 0 14px 40px rgba(16, 185, 129, 0.35) !important;
+}
+@keyframes ethToastIn {
+  from { transform: translateX(100%) scale(0.9); opacity: 0; }
+  to { transform: translateX(0) scale(1); opacity: 1; }
+}
 
+/* Modern Translucent Colorful Quiz Analysis Modal */
+.eth-quiz-analysis-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  background: rgba(2, 6, 23, 0.8) !important;
+  backdrop-filter: blur(16px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+  overflow-y: auto !important;
+}
+.eth-quiz-analysis-dialog {
+  width: 100% !important;
+  max-width: 960px !important;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96)) !important;
+  border: 1.5px solid rgba(245, 158, 11, 0.4) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(245, 158, 11, 0.15) !important;
+  color: #f8fafc !important;
+  padding: 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  max-height: 90vh !important;
+}
+
+/* Podium Action Buttons (Zero Native Artifacts) */
+.eth-podium-analysis-btn {
+  padding: 14px 28px !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  border: 1.5px solid #a78bfa !important;
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.45) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  transition: all 0.25s ease !important;
+  outline: none !important;
+}
+.eth-podium-analysis-btn:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 14px 35px rgba(124, 58, 237, 0.6) !important;
+}
+.eth-podium-exit-btn {
+  padding: 14px 28px !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+  color: #f1f5f9 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  transition: all 0.25s ease !important;
+  outline: none !important;
+}
+.eth-podium-exit-btn:hover {
+  background: #334155 !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+}
