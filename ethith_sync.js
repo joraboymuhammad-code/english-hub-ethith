@@ -757,13 +757,13 @@
       if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
         window._ethithRefreshCurrentClass();
       }
-      if (window._ethithRefreshClassesList) {
+      if (window._ethithRefreshClassesList && window._ethithCurrentView === 'classes' && !S.activeClassId) {
         window._ethithRefreshClassesList();
       }
-      if (window._ethithRefreshExamsList) {
+      if (window._ethithRefreshExamsList && window._ethithCurrentView === 'exams') {
         window._ethithRefreshExamsList();
       }
-      if (window._ethithRefreshProgressionTests) {
+      if (window._ethithRefreshProgressionTests && window._ethithCurrentView === 'progression') {
         window._ethithRefreshProgressionTests();
       }
       if (window._ethithRefreshTopNav) {
@@ -1207,20 +1207,22 @@
         var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
         if (c1 || c2) {
           window.EthithApp.saveState();
-          if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
-            window._ethithRefreshCurrentClass();
-          }
-          if (window._ethithRefreshClassesList) {
-            window._ethithRefreshClassesList();
-          }
-          if (window._ethithRefreshExamsList) {
-            window._ethithRefreshExamsList();
-          }
-          if (window._ethithRefreshProgressionTests) {
-            window._ethithRefreshProgressionTests();
-          }
-          if (window._ethithRefreshTopNav) {
-            window._ethithRefreshTopNav();
+          if (!window._ethithIsTestInProgress) {
+            if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
+              window._ethithRefreshCurrentClass();
+            }
+            if (window._ethithRefreshClassesList && window._ethithCurrentView === 'classes' && !S.activeClassId) {
+              window._ethithRefreshClassesList();
+            }
+            if (window._ethithRefreshExamsList && window._ethithCurrentView === 'exams') {
+              window._ethithRefreshExamsList();
+            }
+            if (window._ethithRefreshProgressionTests && window._ethithCurrentView === 'progression') {
+              window._ethithRefreshProgressionTests();
+            }
+            if (window._ethithRefreshTopNav) {
+              window._ethithRefreshTopNav();
+            }
           }
         }
       }

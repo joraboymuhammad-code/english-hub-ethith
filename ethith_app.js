@@ -645,35 +645,10 @@
   }
 
   // ====================================================
-  // ETHITH AUTO-UPDATE & CACHE-BUSTING ENGINE
+  // ETHITH CLIENT BUILD VERSION
+  // Auto-reload is disabled per user requirement: No spontaneous page refreshes.
+  // Real-time server state syncs seamlessly via MQTT/WebSockets without refreshing.
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.17.2250";
-
-  function checkAppVersion() {
-    if (typeof fetch === 'undefined') return;
-    fetch('version.json?_t=' + Date.now(), { cache: 'no-store' })
-      .then(function(res) {
-        if (!res.ok) return null;
-        return res.json();
-      })
-      .then(function(data) {
-        if (data && data.version && data.version !== window.ETHITH_BUILD_VERSION) {
-          console.log('[ETHITH] New version deployed:', data.version, 'Local:', window.ETHITH_BUILD_VERSION);
-          // Auto-reload to latest version with cache-busting timestamp
-          var url = new URL(window.location.href);
-          url.searchParams.set('v', data.version);
-          window.location.replace(url.toString());
-        }
-      })
-      .catch(function(){});
-  }
-
-  // Periodic check every 12 seconds and when user switches back to browser tab
-  setInterval(checkAppVersion, 12000);
-  document.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'visible') {
-      checkAppVersion();
-    }
-  });
+  window.ETHITH_BUILD_VERSION = "2026.10.17.2355";
 
 })(window);
