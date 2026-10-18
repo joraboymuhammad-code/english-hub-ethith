@@ -619,26 +619,42 @@
     else if ((event.type && event.type.indexOf('QUIZ_') === 0) || event.type === 'GIFT_SENT' || event.type === 'USER_REGISTERED') {
       if (event.type === 'USER_REGISTERED' && event.user && event.user.name) {
         if (!Array.isArray(S.accounts)) S.accounts = [];
-        var exists = S.accounts.some(function(a) {
-          return (a.email && event.user.email && a.email.toLowerCase() === event.user.email.toLowerCase()) ||
-                 (a.name && a.name.toLowerCase() === event.user.name.toLowerCase());
+        var u = event.user;
+        var existingAcc = S.accounts.find(function(a) {
+          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
+                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase()) ||
+                 (a.id && u.id && a.id === u.id);
         });
-        if (!exists) {
-          S.accounts.push(event.user);
+        if (!existingAcc) {
+          S.accounts.push(u);
+        } else {
+          if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
+          if (u.avatar) existingAcc.avatar = u.avatar;
+          if (u.level) existingAcc.level = u.level;
+          if (u.nameStyle) existingAcc.nameStyle = u.nameStyle;
+          if (u.title) existingAcc.title = u.title;
         }
         var regKey = 'ethith_all_registered_users';
         var regList = [];
         try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
-        if (!regList.some(function(u) {
-          return (u.email && event.user.email && u.email.toLowerCase() === event.user.email.toLowerCase()) ||
-                 u.name.toLowerCase() === event.user.name.toLowerCase();
-        })) {
-          regList.push(event.user);
-          localStorage.setItem(regKey, JSON.stringify(regList));
+        var rIdx = regList.findIndex(function(a) {
+          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
+                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase());
+        });
+        if (rIdx === -1) {
+          regList.push(u);
+        } else {
+          if (u.coins !== undefined) regList[rIdx].coins = Number(u.coins);
+          if (u.avatar) regList[rIdx].avatar = u.avatar;
+          if (u.level) regList[rIdx].level = u.level;
         }
+        localStorage.setItem(regKey, JSON.stringify(regList));
         if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
         if (window._ethithRefreshFriendsList) {
           try { window._ethithRefreshFriendsList(); } catch(e) {}
+        }
+        if (window._ethithRefreshLeaderboard) {
+          try { window._ethithRefreshLeaderboard(); } catch(e) {}
         }
       }
       else if (event.type === 'GIFT_SENT') {
@@ -699,6 +715,9 @@
           if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
           if (u.avatar) existingAcc.avatar = u.avatar;
           if (u.level) existingAcc.level = u.level;
+          if (u.nameStyle) existingAcc.nameStyle = u.nameStyle;
+          if (u.title) existingAcc.title = u.title;
+          if (u.victorySound) existingAcc.victorySound = u.victorySound;
           if (u.dailyMinutes !== undefined) existingAcc.dailyMinutes = u.dailyMinutes;
         } else {
           S.accounts.push(u);
@@ -731,6 +750,8 @@
             if (st) {
               if (u.coins !== undefined) st.coins = Number(u.coins);
               if (u.avatar) st.avatar = u.avatar;
+              if (u.nameStyle) st.nameStyle = u.nameStyle;
+              if (u.title) st.title = u.title;
               if (u.dailyMinutes !== undefined) st.dailyMinutes = u.dailyMinutes;
             }
           }
@@ -741,6 +762,8 @@
                        (u.name && S.user.name && u.name.toLowerCase() === S.user.name.toLowerCase()))) {
           if (u.coins !== undefined) S.user.coins = Number(u.coins);
           if (u.avatar) S.user.avatar = u.avatar;
+          if (u.nameStyle) S.user.nameStyle = u.nameStyle;
+          if (u.title) S.user.title = u.title;
           if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
         }
 
@@ -748,6 +771,82 @@
         if (window._ethithRefreshLeaderboard && window._ethithCurrentView === 'leaderboard' && !window._ethithIsTestInProgress) {
           try { window._ethithRefreshLeaderboard(); } catch(err) {}
         }
+      }
+    }
+
+    // P2P MARKETPLACE & AUCTION EVENTS
+    else if (event.type === 'P2P_LIST_ITEM' && event.listing) {
+      if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
+      var exists = S.p2pListings.some(function(l) { return l.id === event.listing.id; });
+      if (!exists) {
+        S.p2pListings.unshift(event.listing);
+        if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+        if (window._ethithRefreshMarket && window._ethithCurrentView === 'market') {
+          try { window._ethithRefreshMarket(); } catch(e) {}
+        }
+      }
+    }
+    else if (event.type === 'P2P_BUY_ITEM') {
+      if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
+      S.p2pListings = S.p2pListings.filter(function(l) { return l.id !== event.listingId; });
+
+      var isMeSeller = S.user && (
+        (event.sellerEmail && S.user.email && event.sellerEmail.toLowerCase() === S.user.email.toLowerCase()) ||
+        (event.sellerId && S.user.id && event.sellerId === S.user.id) ||
+        (event.sellerName && S.user.name && event.sellerName.toLowerCase() === S.user.name.toLowerCase())
+      );
+      if (isMeSeller) {
+        S.user.coins = (S.user.coins || 0) + Number(event.price || 0);
+        if (Array.isArray(S.accounts)) {
+          var myAcc = S.accounts.find(function(a) {
+            return (a.email && S.user.email && a.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                   (a.name && S.user.name && a.name.toLowerCase() === S.user.name.toLowerCase());
+          });
+          if (myAcc) myAcc.coins = S.user.coins;
+        }
+        if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+
+        var toast = document.createElement('div');
+        toast.className = 'eth-live-toast-alert';
+        toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:14px 28px;border-radius:16px;font-weight:800;z-index:2147483647;box-shadow:0 12px 35px rgba(0,0,0,0.4);border:2px solid #34d399;font-size:15px;text-align:center;';
+        toast.innerHTML = '🪙 <b>Qora Bozor Savdosi!</b><br>Sizning <b>' + (event.itemName || 'buyum') + '</b> buyumingiz <b>' + (event.buyerName || 'O\'quvchi') + '</b> tomonidan sotib olindi!<br><span style="color:#fef08a;font-size:18px">+' + event.price + ' ETHITH Coin</span>';
+        document.body.appendChild(toast);
+        setTimeout(function() { toast.remove(); }, 6000);
+      }
+      if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+      if (window._ethithRefreshMarket && window._ethithCurrentView === 'market') {
+        try { window._ethithRefreshMarket(); } catch(e) {}
+      }
+    }
+    else if (event.type === 'P2P_BARTER_SWAP') {
+      if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
+      S.p2pListings = S.p2pListings.filter(function(l) { return l.id !== event.listingId; });
+      var isMeSeller = S.user && (
+        (event.sellerEmail && S.user.email && event.sellerEmail.toLowerCase() === S.user.email.toLowerCase()) ||
+        (event.sellerId && S.user.id && event.sellerId === S.user.id) ||
+        (event.sellerName && S.user.name && event.sellerName.toLowerCase() === S.user.name.toLowerCase())
+      );
+      if (isMeSeller && event.offeredItem) {
+        if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
+        S.user.gifts.unshift(event.offeredItem);
+        var toast = document.createElement('div');
+        toast.className = 'eth-live-toast-alert';
+        toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#8b5cf6;color:#fff;padding:14px 28px;border-radius:16px;font-weight:800;z-index:2147483647;box-shadow:0 12px 35px rgba(0,0,0,0.4);border:2px solid #a78bfa;font-size:15px;text-align:center;';
+        toast.innerHTML = '🔄 <b>Muvaffaqiyatli Barter!</b><br><b>' + (event.buyerName || 'O\'quvchi') + '</b> siz bilan buyum almashdi:<br><span style="color:#fef08a;font-size:18px">' + (event.offeredItem.icon || '🎁') + ' ' + (event.offeredItem.name || 'Sovrin') + '</span>';
+        document.body.appendChild(toast);
+        setTimeout(function() { toast.remove(); }, 6000);
+      }
+      if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+      if (window._ethithRefreshMarket && window._ethithCurrentView === 'market') {
+        try { window._ethithRefreshMarket(); } catch(e) {}
+      }
+    }
+    else if (event.type === 'P2P_REMOVE_ITEM') {
+      if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
+      S.p2pListings = S.p2pListings.filter(function(l) { return l.id !== event.listingId; });
+      if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+      if (window._ethithRefreshMarket && window._ethithCurrentView === 'market') {
+        try { window._ethithRefreshMarket(); } catch(e) {}
       }
     }
 
@@ -989,6 +1088,87 @@
     return changed;
   }
 
+  function mergeAccounts(localAccounts, remoteAccounts) {
+    var changed = false;
+    if (!Array.isArray(remoteAccounts)) return changed;
+    if (!Array.isArray(localAccounts)) return changed;
+
+    var regKey = 'ethith_all_registered_users';
+    var regList = [];
+    try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
+
+    remoteAccounts.forEach(function(rAcc) {
+      if (!rAcc || (!rAcc.name && !rAcc.email && !rAcc.id)) return;
+      var rEmail = (rAcc.email || '').toLowerCase().trim();
+      var rName = (rAcc.name || '').toLowerCase().trim();
+      var rId = (rAcc.id || '').trim();
+
+      var existing = localAccounts.find(function(a) {
+        return (rEmail && a.email && a.email.toLowerCase().trim() === rEmail) ||
+               (rName && a.name && a.name.toLowerCase().trim() === rName) ||
+               (rId && a.id && a.id === rId);
+      });
+
+      if (!existing) {
+        localAccounts.push(rAcc);
+        changed = true;
+      } else {
+        if ((rAcc.updatedAt || 0) > (existing.updatedAt || 0) || (rAcc.coins !== undefined && rAcc.coins !== existing.coins)) {
+          if (rAcc.coins !== undefined) existing.coins = rAcc.coins;
+          if (rAcc.avatar) existing.avatar = rAcc.avatar;
+          if (rAcc.level) existing.level = rAcc.level;
+          if (rAcc.nameStyle) existing.nameStyle = rAcc.nameStyle;
+          if (rAcc.title) existing.title = rAcc.title;
+          if (rAcc.victorySound) existing.victorySound = rAcc.victorySound;
+          if (rAcc.dailyMinutes !== undefined) existing.dailyMinutes = rAcc.dailyMinutes;
+          existing.updatedAt = Math.max(existing.updatedAt || 0, rAcc.updatedAt || Date.now());
+          changed = true;
+        }
+      }
+
+      var regItem = regList.find(function(u) {
+        return (rEmail && u.email && u.email.toLowerCase().trim() === rEmail) ||
+               (rName && u.name && u.name.toLowerCase().trim() === rName);
+      });
+      if (!regItem) {
+        regList.push({ id: rAcc.id, name: rAcc.name, email: rAcc.email, role: rAcc.role || 'student', coins: rAcc.coins, avatar: rAcc.avatar, level: rAcc.level });
+      } else {
+        if (rAcc.coins !== undefined) regItem.coins = rAcc.coins;
+        if (rAcc.avatar) regItem.avatar = rAcc.avatar;
+        if (rAcc.level) regItem.level = rAcc.level;
+      }
+    });
+
+    try { localStorage.setItem(regKey, JSON.stringify(regList)); } catch(e) {}
+    return changed;
+  }
+
+  function mergeP2PListings(localListings, remoteListings) {
+    var changed = false;
+    if (!Array.isArray(remoteListings)) return changed;
+    if (!Array.isArray(localListings)) return changed;
+
+    // Add missing remote listings
+    remoteListings.forEach(function(rList) {
+      if (!rList || !rList.id) return;
+      var exists = localListings.some(function(l) { return l.id === rList.id; });
+      if (!exists) {
+        localListings.push(rList);
+        changed = true;
+      }
+    });
+
+    // Remove listings that were deleted remotely
+    for (var i = localListings.length - 1; i >= 0; i--) {
+      var lx = localListings[i];
+      if (!remoteListings.some(function(r) { return r && r.id === lx.id; })) {
+        localListings.splice(i, 1);
+        changed = true;
+      }
+    }
+    return changed;
+  }
+
   // Safe Push Queue with Automatic 409 Conflict Retry
   var isPushing = false;
   var hasPendingPush = false;
@@ -1053,14 +1233,11 @@
         mergeExams(S.exams, remoteData.exams || [], S.deletedExamIds || []);
         if (remoteData.accounts && Array.isArray(remoteData.accounts)) {
           if (!S.accounts) S.accounts = [];
-          remoteData.accounts.forEach(function(rAcc) {
-            var exists = S.accounts.find(function(a) { return a.email && a.email.toLowerCase() === (rAcc.email || '').toLowerCase(); });
-            if (!exists) {
-              S.accounts.push(rAcc);
-            } else if ((rAcc.updatedAt || 0) > (exists.updatedAt || 0)) {
-              Object.assign(exists, rAcc);
-            }
-          });
+          mergeAccounts(S.accounts, remoteData.accounts);
+        }
+        if (remoteData.p2pListings && Array.isArray(remoteData.p2pListings)) {
+          if (!S.p2pListings) S.p2pListings = [];
+          mergeP2PListings(S.p2pListings, remoteData.p2pListings);
         }
 
         var cleanClasses = JSON.parse(JSON.stringify(S.classes));
@@ -1083,6 +1260,7 @@
           exams: cleanExams,
           deletedExamIds: dIds,
           accounts: S.accounts || [],
+          p2pListings: S.p2pListings || [],
           updatedAt: Date.now()
         };
 
@@ -1211,7 +1389,9 @@
         }
         var c1 = mergeClasses(S.classes, remote.classes || []);
         var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
-        if (c1 || c2) {
+        var c3 = mergeAccounts(S.accounts || [], remote.accounts || []);
+        var c4 = mergeP2PListings(S.p2pListings || [], remote.p2pListings || []);
+        if (c1 || c2 || c3 || c4) {
           window.EthithApp.saveState();
           if (!window._ethithIsTestInProgress) {
             if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
@@ -1225,6 +1405,15 @@
             }
             if (window._ethithRefreshProgressionTests && window._ethithCurrentView === 'progression') {
               window._ethithRefreshProgressionTests();
+            }
+            if (window._ethithRefreshLeaderboard && window._ethithCurrentView === 'leaderboard') {
+              window._ethithRefreshLeaderboard();
+            }
+            if (window._ethithRefreshFriendsList) {
+              window._ethithRefreshFriendsList();
+            }
+            if (window._ethithRefreshMarket && window._ethithCurrentView === 'market') {
+              window._ethithRefreshMarket();
             }
             if (window._ethithRefreshTopNav) {
               window._ethithRefreshTopNav();

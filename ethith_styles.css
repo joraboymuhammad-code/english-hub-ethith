@@ -7380,3 +7380,372 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   0%, 100% { transform: scale(1); opacity: 0.8; }
   50% { transform: scale(1.08); opacity: 1; }
 }
+
+/* ====================================================
+   ETHITH 2.0: GLOWING NAME EFFECTS & VIP TITLES
+   ==================================================== */
+.name-fx-flame {
+  color: #ffedd5 !important;
+  text-shadow: 0 0 4px #ea580c, 0 0 10px #dc2626, 0 0 18px #f97316 !important;
+  animation: ethFlameGlow 1.8s ease-in-out infinite alternate !important;
+  font-weight: 900 !important;
+  display: inline-block;
+}
+@keyframes ethFlameGlow {
+  0% { text-shadow: 0 0 4px #ea580c, 0 0 10px #dc2626, 0 0 18px #f97316; }
+  100% { text-shadow: 0 0 6px #f97316, 0 0 14px #ef4444, 0 0 24px #ffedd5; }
+}
+
+.name-fx-neon {
+  color: #e0f2fe !important;
+  text-shadow: 0 0 5px #06b6d4, 0 0 12px #0284c7, 0 0 20px #38bdf8 !important;
+  animation: ethNeonPulse 1.5s ease-in-out infinite alternate !important;
+  font-weight: 900 !important;
+  display: inline-block;
+}
+@keyframes ethNeonPulse {
+  0% { text-shadow: 0 0 5px #06b6d4, 0 0 12px #0284c7, 0 0 20px #38bdf8; }
+  100% { text-shadow: 0 0 8px #38bdf8, 0 0 18px #0ea5e9, 0 0 28px #7dd3fc; }
+}
+
+.name-fx-gold {
+  color: #fef08a !important;
+  text-shadow: 0 0 6px #f59e0b, 0 0 14px #d97706, 0 0 22px #fbbf24 !important;
+  animation: ethGoldShimmer 2s ease-in-out infinite alternate !important;
+  font-weight: 900 !important;
+  display: inline-block;
+}
+@keyframes ethGoldShimmer {
+  0% { text-shadow: 0 0 6px #f59e0b, 0 0 14px #d97706, 0 0 22px #fbbf24; }
+  100% { text-shadow: 0 0 10px #fde047, 0 0 20px #f59e0b, 0 0 30px #ffffff; }
+}
+
+.eth-user-title-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fde047;
+  letter-spacing: 0.3px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ====================================================
+   ETHITH MARKET TABS NAVIGATION
+   ==================================================== */
+.eth-market-tabs-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin: 20px 0 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.eth-market-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.eth-market-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.eth-market-tab-btn.active {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #ffffff;
+  border-color: #60a5fa;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+/* ====================================================
+   BOOSTERS GRID & CARDS
+   ==================================================== */
+.eth-booster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+.eth-booster-card {
+  border-radius: 20px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.25s ease;
+}
+.eth-booster-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+}
+.eth-booster-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 3px 10px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.eth-booster-icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+.eth-booster-name {
+  font-size: 17px;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+.eth-booster-desc {
+  font-size: 13px;
+  color: #cbd5e1;
+  line-height: 1.45;
+  margin-bottom: 16px;
+  flex: 1;
+}
+.eth-booster-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+.eth-booster-stock {
+  font-size: 12px;
+  font-weight: 800;
+  color: #fde047;
+}
+.eth-booster-buy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 900;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.eth-booster-buy-btn:hover {
+  transform: scale(1.03);
+  background: #fde047;
+}
+
+/* ====================================================
+   P2P TRADING & AUCTION (QORA BOZOR)
+   ==================================================== */
+.eth-p2p-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 18px 24px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+.eth-p2p-post-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  font-weight: 900;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+  transition: all 0.2s ease;
+}
+.eth-p2p-post-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+}
+.eth-p2p-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+.eth-p2p-card {
+  border-radius: 20px;
+  padding: 20px;
+  background: #111827;
+  border: 1.5px solid #374151;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+.eth-p2p-card:hover {
+  transform: translateY(-3px);
+  border-color: #f59e0b;
+}
+.eth-p2p-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.eth-p2p-item-visual {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 32px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.eth-p2p-seller-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 14px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+}
+.eth-p2p-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.eth-p2p-buy-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+  font-weight: 900;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.eth-p2p-barter-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 14px;
+  border-radius: 12px;
+  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid #8b5cf6;
+  color: #c4b5fd;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.eth-p2p-barter-btn:hover {
+  background: #8b5cf6;
+  color: #fff;
+}
+
+/* ====================================================
+   COSMETICS & TITLES GRID
+   ==================================================== */
+.eth-cosmetic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+.eth-cosmetic-card {
+  border-radius: 20px;
+  padding: 22px;
+  background: #111827;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.25s ease;
+}
+.eth-cosmetic-card:hover {
+  transform: translateY(-3px);
+  border-color: #60a5fa;
+}
+
+/* ====================================================
+   QUIZ IN-TEST BOOSTER BAR
+   ==================================================== */
+.eth-quiz-booster-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 16px;
+  flex-wrap: wrap;
+}
+.eth-booster-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.eth-booster-action-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+.eth-booster-action-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.08);
+}

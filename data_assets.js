@@ -2884,12 +2884,11 @@ window.ETHITH_PACKS = [
   {
     id: "cyber_neon_pack",
     name: "Cyberpunk Neon Elite Pack",
-    type: "coming_soon",
+    type: "cyber_neon",
     price: 350,
-    isComingSoon: true,
     icon: "⚡",
-    desc: "Futuristik kiberpank neon ramkalar, kiber-samuray animatsiyalari va shahar nurlari nishoni.",
-    badge: "TEZ KUNDA",
+    desc: "Futuristik kiberpank neon ramkalar, kiber-samuray avatarlari, neon chat effektlari va katta coinlar to'plami!",
+    badge: "KIBER NEON",
     gradient: "linear-gradient(135deg, #09090b 0%, #06b6d4 50%, #3b82f6 100%)",
     glowColor: "#38bdf8",
     accentColor: "#0284c7"
@@ -2897,41 +2896,38 @@ window.ETHITH_PACKS = [
   {
     id: "mythic_dragon_pack",
     name: "Mythic Dragon Sovereign Pack",
-    type: "coming_soon",
+    type: "mythic_dragon",
     price: 400,
-    isComingSoon: true,
     icon: "🐉",
-    badge: "TEZ KUNDA",
+    desc: "Qadimiy olovli ajdarho auralari, afsonaviy personajlar, olovli qizil chat reaksiyalari va imperatorlik tangalari!",
+    badge: "AFSONAVIY AJDAR",
     gradient: "linear-gradient(135deg, #450a0a 0%, #dc2626 50%, #f97316 100%)",
     glowColor: "#fb923c",
-    accentColor: "#ea580c",
-    desc: "Qadimiy olovli ajdarho auralari, qizil alangali chat effektlari va imperator unvoni."
+    accentColor: "#ea580c"
   },
   {
     id: "galaxy_nebula_pack",
     name: "Galaxy Nebula Supreme Pack",
-    type: "coming_soon",
+    type: "galaxy_nebula",
     price: 320,
-    isComingSoon: true,
     icon: "🌌",
-    badge: "TEZ KUNDA",
+    desc: "Fazoviy tumanliklar, kosmik sayohatchi avatarlari, super-portlash chaqnashlari va yulduzlar changi xazinasi!",
+    badge: "KOSMIK GALAXY",
     gradient: "linear-gradient(135deg, #1e1b4b 0%, #6366f1 50%, #a855f7 100%)",
     glowColor: "#c084fc",
-    accentColor: "#9333ea",
-    desc: "Fazoviy tumanliklar, super-portlash chaqnashlari va yulduzlar changi profillar to'plami."
+    accentColor: "#9333ea"
   },
   {
     id: "royal_crown_pack",
     name: "Royal Golden Crown Pack",
-    type: "coming_soon",
+    type: "royal_crown",
     price: 450,
-    isComingSoon: true,
     icon: "👑",
-    badge: "TEZ KUNDA",
+    desc: "Shohona olmos tojlar, oliy hukmdorlik ramzlari, tillarang imperatorlik personajlari va eng baland sovrinlar!",
+    badge: "SHOHONA TOJ",
     gradient: "linear-gradient(135deg, #78350f 0%, #f59e0b 50%, #fef08a 100%)",
     glowColor: "#fde047",
-    accentColor: "#d97706",
-    desc: "Shohona olmos tojlar, tillarang ism yozuvlari va oliy hukmdorlik ramzlari."
+    accentColor: "#d97706"
   },
   {
     id: "ancient_pharaoh_pack",
@@ -3016,246 +3012,1710 @@ window.ETHITH_PACKS = [
 // ====================================================
 // CHAT EMOJIS MASTER CATALOG (DEFAULT 3 UNLOCKED + PACK EMOJIS)
 // ====================================================
+
+// ====================================================
+// ETHITH POWER-UPS & BOOSTERS CATALOG (KUCHAYTIRGICHLAR)
+// ====================================================
+window.ETHITH_BOOSTERS = [
+  {
+    id: "50_50",
+    name: "50/50 (Ikki xatoni o'chirish)",
+    price: 150,
+    icon: "✂️",
+    desc: "Savoldagi 2 ta noto'g'ri javob variantini o'chirib tashlaydi. (Quiz va A1-C2 testlarida ishlaydi)",
+    badge: "KUCHAYTIRGICH",
+    gradient: "linear-gradient(135deg, #0284c7, #0369a1)",
+    glowColor: "#38bdf8"
+  },
+  {
+    id: "time_freeze",
+    name: "Vaqt muzlatgich (Time Freeze)",
+    price: 200,
+    icon: "⏱️",
+    desc: "Quiz bellashuvidagi 10 soniyalik taymerni 15 soniyaga to'xtatib / uzaytirib beradi.",
+    badge: "KUCHAYTIRGICH",
+    gradient: "linear-gradient(135deg, #0f766e, #0d9488)",
+    glowColor: "#2dd4bf"
+  },
+  {
+    id: "shield",
+    name: "Qalqon (Shield)",
+    price: 250,
+    icon: "🛡️",
+    desc: "Quiz bellashuvida 1 marta xato qilganda, 500 ball jarima olib tashlanishidan saqlab qoladi.",
+    badge: "HIMOYA",
+    gradient: "linear-gradient(135deg, #4338ca, #3730a3)",
+    glowColor: "#818cf8"
+  },
+  {
+    id: "booster_2x",
+    name: "2x Coin Booster (1 soat)",
+    price: 400,
+    icon: "⚡",
+    desc: "Keyingi 1 soat ichida yechilgan barcha A1–C2 dars testlaridan 2 barobar ko'p tanga beriladi!",
+    badge: "DOUBLER",
+    gradient: "linear-gradient(135deg, #b45309, #d97706)",
+    glowColor: "#fbbf24"
+  }
+];
+
+// ====================================================
+// ETHITH VIP COSMETICS, GLOWING NAMES, TITLES & SOUNDS
+// ====================================================
+window.ETHITH_COSMETICS = {
+  nameStyles: [
+    { id: "flame", name: "🔥 Olovli Alanga", price: 500, desc: "Ismingiz atrofida olovli qizil yonuvchi aura effekti", className: "name-fx-flame" },
+    { id: "neon", name: "⚡ Kiber Neon", price: 500, desc: "Ismingiz atrofida ko'k-kiber neon chaqnash effekti", className: "name-fx-neon" },
+    { id: "gold", name: "✨ Shohona Oltin", price: 750, desc: "Ismingiz oltin shohona nur bilan tovlanib turadi", className: "name-fx-gold" }
+  ],
+  titles: [
+    { id: "ielts_king", name: "👑 IELTS Qiroli", price: 350, desc: "Turnir jadvali va chatda ismingiz yonida turuvchi oliy maqom" },
+    { id: "grammar_term", name: "⚡ Grammatika Terminatori", price: 300, desc: "Grammatika bo'yicha yengilmas bilimdon yorlig'i" },
+    { id: "boss_c2", name: "🦾 A1 dan C2 gacha Boss", price: 400, desc: "Barcha darajalarni to'liq zabt etgan master" },
+    { id: "cefr_legend", name: "🌟 CEFR Afsonasi", price: 350, desc: "Xalqaro CEFR va IELTS bo'yicha afsonaviy maqom" },
+    { id: "vocab_genius", name: "🎯 Lug'at Dahosi", price: 250, desc: "Minglab so'zlarni xatosiz biluvchi daho yorlig'i" }
+  ],
+  victorySounds: [
+    { id: "royal_fanfare", name: "🎺 Shohona Fanfara", price: 300, desc: "Quizda 1-o'rinni olganda butun sinfga shohona tantana kuyi yangraydi" },
+    { id: "cyber_champ", name: "🚀 Kiber Chempion", price: 300, desc: "Futuristik kiber g'alaba signali yangraydi" },
+    { id: "rock_legend", name: "🎸 Rok Yulduzi", price: 300, desc: "G'alabada rok gitara va barabanlar tantanasi yangraydi" }
+  ]
+};
+
+// Global User Name Formatter with Styles & Title
+window.ETHITH_RENDER_USER_NAME_HTML = function(user, extraClasses) {
+  if (!user) return '';
+  var name = (user.name || 'Foydalanuvchi').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  var fxClass = '';
+  if (user.nameStyle === 'flame') fxClass = ' name-fx-flame';
+  else if (user.nameStyle === 'neon') fxClass = ' name-fx-neon';
+  else if (user.nameStyle === 'gold') fxClass = ' name-fx-gold';
+
+  var titleBadge = '';
+  if (user.title) {
+    var titleEsc = String(user.title).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    titleBadge = ' <span class="eth-user-title-badge">' + titleEsc + '</span>';
+  }
+
+  return '<span class="eth-user-styled-name' + fxClass + (extraClasses ? (' ' + extraClasses) : '') + '">' + name + '</span>' + titleBadge;
+};
+
 window.ETHITH_DEFAULT_FREE_EMOJIS = ["👍", "😊", "❤️"];
 
 window.ETHITH_CHAT_EMOJIS = [
-  // Free default emojis
-  { emoji: "👍", name: "Like (Zo'r)", rarity: "Common", isDefault: true },
-  { emoji: "😊", name: "Tabassum", rarity: "Common", isDefault: true },
-  { emoji: "❤️", name: "Yurak", rarity: "Common", isDefault: true },
-
-  // Common Emojis
-  { emoji: "😂", name: "Qahqaha Kulgi", rarity: "Common" },
-  { emoji: "👏", name: "Qarsaklar", rarity: "Common" },
-  { emoji: "✍️", name: "Dars & Qalam", rarity: "Common" },
-  { emoji: "📚", name: "Kitoblar", rarity: "Common" },
-  { emoji: "👌", name: "A'lo Darajada", rarity: "Common" },
-
-  // Rare Emojis
-  { emoji: "🔥", name: "Olovli Ishtiyoq", rarity: "Rare" },
-  { emoji: "🎉", name: "Bayram & Fireworks", rarity: "Rare" },
-  { emoji: "💡", name: "Kreativ Fikr", rarity: "Rare" },
-  { emoji: "🎯", name: "Aniq Nishon", rarity: "Rare" },
-
-  // Epic Emojis
-  { emoji: "🌟", name: "Yorqin Yulduz", rarity: "Epic" },
-  { emoji: "🤔", name: "Falsafiy O'y", rarity: "Epic" },
-  { emoji: "🚀", name: "Kosmik Raketa", rarity: "Epic" },
-  { emoji: "💯", name: "Yuz Foiz", rarity: "Epic" },
-  { emoji: "⚡", name: "Chaqmoq Kuchi", rarity: "Epic" },
-
-  // Legendary Emojis
-  { emoji: "👑", name: "Oltin Shohona Toj", rarity: "Legendary" },
-  { emoji: "💎", name: "Qimmatbaho Olmos", rarity: "Legendary" },
-  { emoji: "🐉", name: "Afsonaviy Ajdarho", rarity: "Legendary" },
-  { emoji: "🏆", name: "Chempionlik Kubogi", rarity: "Legendary" },
-  { emoji: "🪐", name: "Koinot & Saturn", rarity: "Legendary" }
+  {
+    "emoji": "👍",
+    "name": "Like (Zo'r)",
+    "rarity": "Common",
+    "isDefault": true
+  },
+  {
+    "emoji": "😊",
+    "name": "Tabassum",
+    "rarity": "Common",
+    "isDefault": true
+  },
+  {
+    "emoji": "❤️",
+    "name": "Yurak",
+    "rarity": "Common",
+    "isDefault": true
+  },
+  {
+    "emoji": "😂",
+    "name": "Qahqaha Kulgi",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "👏",
+    "name": "Qarsaklar",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "✍️",
+    "name": "Dars & Qalam",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "📚",
+    "name": "Kitoblar",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "👌",
+    "name": "A'lo Darajada",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "👋",
+    "name": "Salomlashish",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🤝",
+    "name": "Kelishuv & Do'stlik",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "☕",
+    "name": "Kofe Tanaffus",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "📝",
+    "name": "Daftar & Qayd",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🎓",
+    "name": "Bitiruvchi Qalpog'i",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "⭐",
+    "name": "Yulduzcha",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "✨",
+    "name": "Chaqnash",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🙌",
+    "name": "G'alaba Qo'llari",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🤩",
+    "name": "Hayratlangan Yulduz",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "😎",
+    "name": "Salqin Ko'zoynak",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🥳",
+    "name": "Bayram Shodligi",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🤗",
+    "name": "Samimiy Quchoq",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🤓",
+    "name": "Bilimdon Botanik",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "💪",
+    "name": "Kuch & Qat'iyat",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🎯",
+    "name": "Nishonga Urish",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🎈",
+    "name": "Rang-barang Shar",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🕊️",
+    "name": "Tinchlik Kabutari",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🍀",
+    "name": "To'rt Bargli Omad",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🌞",
+    "name": "Quyosh Nuri",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🌈",
+    "name": "Kamalak Jilosi",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "⚡",
+    "name": "Chaqmoq",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🔔",
+    "name": "Dars Qo'ng'irog'i",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🎨",
+    "name": "Ijod Palitrasi",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🎧",
+    "name": "Musiqa Quloqchini",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🧩",
+    "name": "Topishmoq Pazl",
+    "rarity": "Common"
+  },
+  {
+    "emoji": "🔥",
+    "name": "Olovli Ishtiyoq",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🎉",
+    "name": "Bayram Mushaklari",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "💡",
+    "name": "Kreativ Fikr",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🚀",
+    "name": "Parvoz Raketasi",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🏆",
+    "name": "Oltin Kubok",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🥇",
+    "name": "1-O'rin Medali",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🥈",
+    "name": "Kumush Medal",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🥉",
+    "name": "Bronza Medal",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🧠",
+    "name": "Super Miya Qobiliyati",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "⚡",
+    "name": "Tezkor Chaqmoq",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "💎",
+    "name": "Moviy Yoqut",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🎲",
+    "name": "Omad Suyagi",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🛸",
+    "name": "Uchar Tarelkacha",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🔮",
+    "name": "Sehrli Shar",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🛡️",
+    "name": "Himoya Qalqoni",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "⚔️",
+    "name": "Chalishtirilgan Qilichlar",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🏹",
+    "name": "Sehrli Kamon",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🗝️",
+    "name": "Xazina Kaliti",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🎪",
+    "name": "Sirli Chodir",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🗺️",
+    "name": "Qadimiy Xarita",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "⛵",
+    "name": "Okean Kemasi",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🌋",
+    "name": "Otilib Chiquvchi Vulqon",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🌪️",
+    "name": "Qudratli Bo'ron",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🪐",
+    "name": "Saturn Halqasi",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🌠",
+    "name": "Uchayotgan Yulduz",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🎆",
+    "name": "Tungi Mushakbozlik",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🪄",
+    "name": "Sehrgar Tayoqchasi",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🔋",
+    "name": "To'la Energiya",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "⏳",
+    "name": "Qumsoat Vaqti",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🧭",
+    "name": "Oltin Kompas",
+    "rarity": "Rare"
+  },
+  {
+    "emoji": "🌟",
+    "name": "Yorqin Yulduz",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🤔",
+    "name": "Falsafiy O'y",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "💯",
+    "name": "Yuz Foiz Mukammal",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "👑",
+    "name": "Shohona Toj",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🐉",
+    "name": "Olovli Ajdarho",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🦁",
+    "name": "Qudratli Sher",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🦅",
+    "name": "Mag'rur Burgut",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🐅",
+    "name": "Yovvoyi Yo'lbars",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🐺",
+    "name": "Bo'ron Bo'risi",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🦄",
+    "name": "Afsonaviy Yakkashox",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "👾",
+    "name": "Kiber O'zga Sayyoralik",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🤖",
+    "name": "Sun'iy Intellekt",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🧬",
+    "name": "DNK Kvant Zanjiri",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "💥",
+    "name": "Supernova Portlashi",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "☄️",
+    "name": "Olovli Kometalar",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🌌",
+    "name": "Somon Yo'li Galaktikasi",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "⚓",
+    "name": "Dengizchi Zanjiri",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🗿",
+    "name": "Qadimgi Moai Haykali",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🏛️",
+    "name": "Yunon Panteoni",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🏰",
+    "name": "Qirollik Qasri",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "⚜️",
+    "name": "Qirollik Liliyasi",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🎖️",
+    "name": "Faxriy Jasorat Nishoni",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "💵",
+    "name": "Dolar Boyligi",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🪙",
+    "name": "Qadimiy Oltin Tanga",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "🧿",
+    "name": "Moviy Nazar Tumori",
+    "rarity": "Epic"
+  },
+  {
+    "emoji": "👑",
+    "name": "Oliy Olmos Toj",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "💎",
+    "name": "Qimmatbaho Brilliant",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🔱",
+    "name": "Poseydon Uchayri",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🪽",
+    "name": "Farishta Qanotlari",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🪬",
+    "name": "Fotima Qo'li",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🥷",
+    "name": "Afsonaviy Soya Ninjasi",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🦹",
+    "name": "Qorong'u Hukmdor",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🧙",
+    "name": "Katta Sehrgar Master",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🦸",
+    "name": "Galaktika Superqahramoni",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🩸",
+    "name": "Ajdar Qoni Kristali",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🪞",
+    "name": "Haqiqat Ko'zgusi",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🪆",
+    "name": "Sirli Matryoshka",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🪔",
+    "name": "Alouddin Chirog'i",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🏺",
+    "name": "Fir'avnlar Amforasi",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "📯",
+    "name": "G'alaba Surnayi",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "🪐",
+    "name": "Koinot Imperatori Ramzi",
+    "rarity": "Legendary"
+  },
+  {
+    "emoji": "✨",
+    "name": "Mutloq Yorug'lik Mantiyasi",
+    "rarity": "Legendary"
+  }
 ];
 
 // ====================================================
 // CINEMATIC & ANIME / SCI-FI FANTASTIC AVATARS (BOYS & GIRLS)
 // ====================================================
 window.ETHITH_AVATARS = [
-  // --- BOYS AVATARS ---
-  // Common Boys
   {
-    id: "boy_cadet",
-    name: "Kiber Kadet",
-    gender: "boy",
-    rarity: "Common",
-    tagline: "Akademiya talabasi, kiber-ko'zoynakli",
-    bg: "linear-gradient(135deg, #1e293b, #334155)",
-    border: "#64748b",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e293b"/><path d="M50 20 L65 42 L35 42 Z" fill="#38bdf8"/><circle cx="50" cy="52" r="22" fill="#fed7aa"/><rect x="35" y="46" width="30" height="9" rx="4" fill="#0284c7"/><rect x="37" y="48" width="11" height="5" rx="2" fill="#7dd3fc"/><rect x="52" y="48" width="11" height="5" rx="2" fill="#7dd3fc"/><path d="M44 65 Q50 70 56 65" stroke="#ea580c" stroke-width="2.5" fill="none"/><path d="M28 85 C28 72 38 68 50 68 C62 68 72 72 72 85 Z" fill="#0f172a"/><circle cx="50" cy="80" r="4" fill="#38bdf8"/></svg>'
+    "id": "boy_cadet",
+    "name": "Kiber Kadet",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Akademiya talabasi, kiber-ko'zoynakli",
+    "bg": "linear-gradient(135deg, #1e293b, #334155)",
+    "border": "#64748b",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#38bdf8\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#0284c7\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#0284c7\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#38bdf8\"/></svg>"
   },
   {
-    id: "boy_gamer",
-    name: "Neon Geymer",
-    gender: "boy",
-    rarity: "Common",
-    tagline: "Neon quloqchinli anime geymer",
-    bg: "linear-gradient(135deg, #0f172a, #1e1b4b)",
-    border: "#6366f1",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#0f172a"/><circle cx="50" cy="50" r="24" fill="#ffedd5"/><path d="M30 40 C30 24 70 24 70 40" stroke="#818cf8" stroke-width="6" fill="none"/><rect x="24" y="40" width="9" height="18" rx="4" fill="#6366f1"/><rect x="67" y="40" width="9" height="18" rx="4" fill="#6366f1"/><circle cx="43" cy="52" r="3.5" fill="#312e81"/><circle cx="57" cy="52" r="3.5" fill="#312e81"/><path d="M46 63 Q50 67 54 63" stroke="#f43f5e" stroke-width="2" fill="none"/><path d="M26 88 C26 74 38 72 50 72 C62 72 74 74 74 88 Z" fill="#4338ca"/></svg>'
+    "id": "boy_gamer",
+    "name": "Neon Geymer",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Neon quloqchinli anime geymer",
+    "bg": "linear-gradient(135deg, #0f172a, #1e1b4b)",
+    "border": "#6366f1",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><circle cx=\"50\" cy=\"50\" r=\"24\" fill=\"#fed7aa\"/><path d=\"M30 40 C30 22 70 22 70 40\" stroke=\"#4338ca\" stroke-width=\"6\" fill=\"none\"/><rect x=\"23\" y=\"40\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#818cf8\"/><rect x=\"68\" y=\"40\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#818cf8\"/><circle cx=\"43\" cy=\"52\" r=\"3.5\" fill=\"#1e1b4b\"/><circle cx=\"57\" cy=\"52\" r=\"3.5\" fill=\"#1e1b4b\"/><path d=\"M46 63 Q50 67 54 63\" stroke=\"#f43f5e\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#4338ca\"/></svg>"
   },
   {
-    id: "boy_scout",
-    name: "Sayohat Qahramoni",
-    gender: "boy",
-    rarity: "Common",
-    tagline: "Futuristik kaskali tadqiqotchi",
-    bg: "linear-gradient(135deg, #064e3b, #047857)",
-    border: "#10b981",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#064e3b"/><circle cx="50" cy="50" r="22" fill="#fde68a"/><path d="M32 36 C35 22 65 22 68 36 Z" fill="#059669"/><rect x="36" y="46" width="10" height="6" rx="2" fill="#10b981"/><rect x="54" y="46" width="10" height="6" rx="2" fill="#10b981"/><path d="M45 64 Q50 68 55 64" stroke="#d97706" stroke-width="2.5" fill="none"/><path d="M25 86 C25 74 36 70 50 70 C64 70 75 74 75 86 Z" fill="#047857"/><circle cx="50" cy="78" r="4" fill="#34d399"/></svg>'
-  },
-  // Rare Boys
-  {
-    id: "boy_ninja",
-    name: "Kiber Shinobi (Ninja)",
-    gender: "boy",
-    rarity: "Rare",
-    tagline: "Kripto niqobli tungi soyachi",
-    bg: "linear-gradient(135deg, #18181b, #3f3f46)",
-    border: "#a1a1aa",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#18181b"/><circle cx="50" cy="50" r="23" fill="#27272a"/><path d="M30 48 L70 48 L65 72 L35 72 Z" fill="#09090b" stroke="#71717a" stroke-width="1.5"/><ellipse cx="43" cy="44" rx="5" ry="2.5" fill="#e11d48"/><ellipse cx="57" cy="44" rx="5" ry="2.5" fill="#e11d48"/><rect x="34" y="32" width="32" height="6" rx="2" fill="#71717a"/><circle cx="50" cy="35" r="2" fill="#f43f5e"/><path d="M24 88 C24 75 37 72 50 72 C63 72 76 75 76 88 Z" fill="#27272a"/><path d="M42 72 L50 82 L58 72 Z" fill="#e11d48"/></svg>'
+    "id": "boy_scout",
+    "name": "Sayohat Qahramoni",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Futuristik kaskali tadqiqotchi",
+    "bg": "linear-gradient(135deg, #064e3b, #047857)",
+    "border": "#10b981",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e293b\"/><polygon points=\"50,16 78,36 72,70 50,84 28,70 22,36\" fill=\"#059669\" stroke=\"#34d399\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"48\" r=\"18\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"44\" width=\"32\" height=\"6\" rx=\"2\" fill=\"#0f172a\"/><path d=\"M36 40 L64 40\" stroke=\"#34d399\" stroke-width=\"2\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#059669\"/><circle cx=\"50\" cy=\"78\" r=\"5\" fill=\"#34d399\"/></svg>"
   },
   {
-    id: "boy_mecha",
-    name: "Titan Mecha Uchuvchi",
-    gender: "boy",
-    rarity: "Rare",
-    tagline: "Holografik nishonli zirhli jangchi",
-    bg: "linear-gradient(135deg, #1e3a8a, #1d4ed8)",
-    border: "#3b82f6",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e3a8a"/><polygon points="50,18 76,36 70,68 50,82 30,68 24,36" fill="#172554" stroke="#60a5fa" stroke-width="2"/><path d="M34 46 L66 46 L60 56 L40 56 Z" fill="#38bdf8" opacity="0.9"/><circle cx="50" cy="51" r="3" fill="#ffffff"/><path d="M50 25 L50 40" stroke="#93c5fd" stroke-width="2"/><circle cx="50" cy="30" r="2" fill="#ef4444"/><path d="M22 88 C22 75 36 72 50 72 C64 72 78 75 78 88 Z" fill="#1e40af"/></svg>'
+    "id": "boy_coder",
+    "name": "Kvant Dasturchi",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Terminal kodi ustalari boshlig'i",
+    "bg": "linear-gradient(135deg, #0c4a6e, #075985)",
+    "border": "#38bdf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#7dd3fc\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#0284c7\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#0284c7\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#7dd3fc\"/></svg>"
   },
   {
-    id: "boy_samurai",
-    name: "Neo Samuray",
-    gender: "boy",
-    rarity: "Rare",
-    tagline: "Lazer tig'li yapon kiber-ritsari",
-    bg: "linear-gradient(135deg, #701a75, #a21caf)",
-    border: "#e879f9",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#701a75"/><path d="M28 34 Q50 16 72 34 L66 44 L34 44 Z" fill="#e879f9"/><circle cx="50" cy="52" r="21" fill="#fed7aa"/><polygon points="50,22 45,34 55,34" fill="#facc15"/><rect x="36" y="47" width="28" height="8" rx="3" fill="#4a044e"/><circle cx="43" cy="51" r="2.5" fill="#f43f5e"/><circle cx="57" cy="51" r="2.5" fill="#f43f5e"/><path d="M36 62 L64 62 L60 72 L40 72 Z" fill="#2e1065"/><path d="M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z" fill="#581c87"/></svg>'
-  },
-  // Epic Boys
-  {
-    id: "boy_dragon_lord",
-    name: "Kiber Ajdarho Hukmdori",
-    gender: "boy",
-    rarity: "Epic",
-    tagline: "Qizil plazma shoxli qadimgi kiborg",
-    bg: "linear-gradient(135deg, #7f1d1d, #b91c1c)",
-    border: "#f87171",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#7f1d1d"/><path d="M32 20 L44 34 L36 38 Z" fill="#f87171"/><path d="M68 20 L56 34 L64 38 Z" fill="#f87171"/><circle cx="50" cy="52" r="23" fill="#1c1917" stroke="#ef4444" stroke-width="2"/><ellipse cx="42" cy="48" rx="6" ry="3" fill="#facc15"/><ellipse cx="58" cy="48" rx="6" ry="3" fill="#facc15"/><circle cx="42" cy="48" r="2" fill="#000"/><circle cx="58" cy="48" r="2" fill="#000"/><path d="M38 64 L50 72 L62 64" stroke="#f87171" stroke-width="3" fill="none"/><path d="M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/></svg>'
+    "id": "boy_pilot",
+    "name": "Stratosfera Uchuvchisi",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Reaktiv qanotli uchar qahramon",
+    "bg": "linear-gradient(135deg, #1e3a8a, #2563eb)",
+    "border": "#60a5fa",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><circle cx=\"50\" cy=\"50\" r=\"24\" fill=\"#fed7aa\"/><path d=\"M30 40 C30 22 70 22 70 40\" stroke=\"#1d4ed8\" stroke-width=\"6\" fill=\"none\"/><rect x=\"23\" y=\"40\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#93c5fd\"/><rect x=\"68\" y=\"40\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#93c5fd\"/><circle cx=\"43\" cy=\"52\" r=\"3.5\" fill=\"#1e1b4b\"/><circle cx=\"57\" cy=\"52\" r=\"3.5\" fill=\"#1e1b4b\"/><path d=\"M46 63 Q50 67 54 63\" stroke=\"#f43f5e\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#1d4ed8\"/></svg>"
   },
   {
-    id: "boy_quantum",
-    name: "Kvant Sentineli",
-    gender: "boy",
-    rarity: "Epic",
-    tagline: "Vaqt to'lqinlari va koinot himoyachisi",
-    bg: "linear-gradient(135deg, #083344, #0e7490)",
-    border: "#22d3ee",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#083344"/><circle cx="50" cy="50" r="26" fill="#164e63" stroke="#22d3ee" stroke-width="2"/><circle cx="50" cy="50" r="14" fill="#06b6d4" opacity="0.8"/><circle cx="50" cy="50" r="8" fill="#cffafe"/><path d="M26 50 L74 50" stroke="#a5f3fc" stroke-width="2" stroke-dasharray="3 3"/><path d="M50 26 L50 74" stroke="#a5f3fc" stroke-width="2" stroke-dasharray="3 3"/><polygon points="50,15 54,24 64,24 56,30 59,40 50,34 41,40 44,30 36,24 46,24" fill="#22d3ee"/><path d="M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z" fill="#0e7490"/></svg>'
-  },
-  // Legendary Boys
-  {
-    id: "boy_emperor",
-    name: "Oltin Tojdor Imperator",
-    gender: "boy",
-    rarity: "Legendary",
-    tagline: "Koinot hukmdori, yonuvchi oltin toj sohibi",
-    bg: "linear-gradient(135deg, #78350f, #d97706, #f59e0b)",
-    border: "#fde047",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#78350f"/><circle cx="50" cy="50" r="44" fill="none" stroke="#fde047" stroke-width="1.5" stroke-dasharray="4 2"/><polygon points="26,38 34,20 50,32 66,20 74,38 50,44" fill="#facc15" stroke="#fffbeb" stroke-width="2"/><circle cx="34" cy="20" r="3.5" fill="#ef4444"/><circle cx="50" cy="32" r="4" fill="#3b82f6"/><circle cx="66" cy="20" r="3.5" fill="#ef4444"/><circle cx="50" cy="56" r="20" fill="#fef08a"/><ellipse cx="43" cy="53" rx="4" ry="2" fill="#78350f"/><ellipse cx="57" cy="53" rx="4" ry="2" fill="#78350f"/><path d="M44 65 Q50 70 56 65" stroke="#b45309" stroke-width="2.5" fill="none"/><path d="M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z" fill="#b45309" stroke="#fde047" stroke-width="2"/><circle cx="50" cy="80" r="5" fill="#facc15"/></svg>'
+    "id": "boy_detective",
+    "name": "Sibir Detektivi",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Sirli jumboqlar yechuvchi bilimdon",
+    "bg": "linear-gradient(135deg, #27272a, #3f3f46)",
+    "border": "#71717a",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#18181b\"/><circle cx=\"50\" cy=\"50\" r=\"23\" fill=\"#27272a\"/><path d=\"M28 48 L72 48 L66 74 L34 74 Z\" fill=\"#09090b\" stroke=\"#52525b\" stroke-width=\"1.5\"/><ellipse cx=\"42\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#a1a1aa\"/><ellipse cx=\"58\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#a1a1aa\"/><rect x=\"32\" y=\"32\" width=\"36\" height=\"7\" rx=\"2\" fill=\"#52525b\"/><circle cx=\"50\" cy=\"35\" r=\"2.5\" fill=\"#fff\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#27272a\"/><path d=\"M40 70 L50 82 L60 70 Z\" fill=\"#a1a1aa\"/></svg>"
   },
   {
-    id: "boy_godspeed",
-    name: "Kosmik Chaqmoq Qiroli",
-    gender: "boy",
-    rarity: "Legendary",
-    tagline: "Yorug'lik tezligidagi afsonaviy kiborq",
-    bg: "linear-gradient(135deg, #312e81, #4338ca, #6366f1)",
-    border: "#a5b4fc",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#312e81"/><path d="M54 14 L36 44 L48 44 L42 78 L64 40 L52 40 Z" fill="#fde047" stroke="#ffffff" stroke-width="2"/><circle cx="50" cy="50" r="22" fill="#1e1b4b" opacity="0.6"/><ellipse cx="43" cy="48" rx="5" ry="3" fill="#67e8f9"/><ellipse cx="57" cy="48" rx="5" ry="3" fill="#67e8f9"/><path d="M22 88 C22 75 35 72 50 72 C65 72 78 75 78 88 Z" fill="#4338ca" stroke="#fde047" stroke-width="1.5"/></svg>'
-  },
-
-  // --- GIRLS AVATARS ---
-  // Common Girls
-  {
-    id: "girl_blossom",
-    name: "Neon Sakura Qizi",
-    gender: "girl",
-    rarity: "Common",
-    tagline: "Anime uslubidagi binafsha sochli talaba",
-    bg: "linear-gradient(135deg, #4a044e, #86198f)",
-    border: "#f472b6",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#4a044e"/><path d="M26 34 C26 14 74 14 74 34 L76 68 L70 70 L68 44 L32 44 L30 70 L24 68 Z" fill="#ec4899"/><circle cx="50" cy="50" r="20" fill="#fed7aa"/><circle cx="43" cy="50" r="3" fill="#be185d"/><circle cx="57" cy="50" r="3" fill="#be185d"/><path d="M45 62 Q50 66 55 62" stroke="#db2777" stroke-width="2" fill="none"/><path d="M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z" fill="#9d174d"/><circle cx="50" cy="78" r="3" fill="#f472b6"/></svg>'
+    "id": "boy_runner",
+    "name": "Shahar Parkurchisi",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Tomlar uzra sakrovchi chaqqon yigit",
+    "bg": "linear-gradient(135deg, #7c2d12, #9a3412)",
+    "border": "#ea580c",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#fb923c\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#c2410c\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#c2410c\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#fb923c\"/></svg>"
   },
   {
-    id: "girl_scout",
-    name: "Kiber Izquvar",
-    gender: "girl",
-    rarity: "Common",
-    tagline: "Zamonaviy kiber-diadema kiygan qahramon",
-    bg: "linear-gradient(135deg, #134e4a, #0d9488)",
-    border: "#2dd4bf",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#134e4a"/><path d="M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z" fill="#14b8a6"/><circle cx="50" cy="50" r="20" fill="#fde68a"/><rect x="34" y="34" width="32" height="5" rx="2" fill="#2dd4bf"/><circle cx="43" cy="49" r="3" fill="#0f766e"/><circle cx="57" cy="49" r="3" fill="#0f766e"/><path d="M46 62 Q50 65 54 62" stroke="#0d9488" stroke-width="2" fill="none"/><path d="M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z" fill="#0f766e"/></svg>'
+    "id": "boy_medic",
+    "name": "Bio-Shifo Kiborgi",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Hayotiy energiyani tiklovchi mutaxassis",
+    "bg": "linear-gradient(135deg, #14532d, #166534)",
+    "border": "#22c55e",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#86efac\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#15803d\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#15803d\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#86efac\"/></svg>"
   },
   {
-    id: "girl_scholar",
-    name: "Sehrli Kitobxon",
-    gender: "girl",
-    rarity: "Common",
-    tagline: "Yulduzli ko'zli a'lochi o'quvchi qiz",
-    bg: "linear-gradient(135deg, #1e1b4b, #3730a3)",
-    border: "#818cf8",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e1b4b"/><path d="M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z" fill="#6366f1"/><circle cx="50" cy="51" r="20" fill="#fed7aa"/><circle cx="43" cy="49" r="3" fill="#312e81"/><circle cx="57" cy="49" r="3" fill="#312e81"/><circle cx="44" cy="48" r="1" fill="#fff"/><circle cx="58" cy="48" r="1" fill="#fff"/><path d="M45 62 Q50 66 55 62" stroke="#4f46e5" stroke-width="2" fill="none"/><path d="M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z" fill="#3730a3"/></svg>'
-  },
-  // Rare Girls
-  {
-    id: "girl_valkyrie",
-    name: "Kiber Valkiriya",
-    gender: "girl",
-    rarity: "Rare",
-    tagline: "Oq qanotli kelajak himoyachisi",
-    bg: "linear-gradient(135deg, #1e293b, #0f172a)",
-    border: "#38bdf8",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#1e293b"/><path d="M20 30 L35 44 L25 54 Z" fill="#38bdf8" opacity="0.8"/><path d="M80 30 L65 44 L75 54 Z" fill="#38bdf8" opacity="0.8"/><circle cx="50" cy="50" r="21" fill="#ffedd5"/><rect x="32" y="34" width="36" height="6" rx="2" fill="#0284c7"/><circle cx="50" cy="37" r="3" fill="#facc15"/><ellipse cx="43" cy="49" rx="3.5" ry="2.5" fill="#0369a1"/><ellipse cx="57" cy="49" rx="3.5" ry="2.5" fill="#0369a1"/><path d="M45 62 Q50 66 55 62" stroke="#0284c7" stroke-width="2" fill="none"/><path d="M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z" fill="#0369a1"/></svg>'
+    "id": "boy_mechanic",
+    "name": "Turbina Muhandisi",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Titan temirlarni birlashtiruvchi usta",
+    "bg": "linear-gradient(135deg, #713f12, #854d0e)",
+    "border": "#eab308",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e293b\"/><polygon points=\"50,16 78,36 72,70 50,84 28,70 22,36\" fill=\"#ca8a04\" stroke=\"#fde047\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"48\" r=\"18\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"44\" width=\"32\" height=\"6\" rx=\"2\" fill=\"#0f172a\"/><path d=\"M36 40 L64 40\" stroke=\"#fde047\" stroke-width=\"2\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#ca8a04\"/><circle cx=\"50\" cy=\"78\" r=\"5\" fill=\"#fde047\"/></svg>"
   },
   {
-    id: "girl_priestess",
-    name: "Quyosh Kohinasi",
-    gender: "girl",
-    rarity: "Rare",
-    tagline: "Oltin nurlar va sehrli doira egasi",
-    bg: "linear-gradient(135deg, #854d0e, #ca8a04)",
-    border: "#fde047",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#854d0e"/><circle cx="50" cy="50" r="36" fill="none" stroke="#fef08a" stroke-width="2" stroke-dasharray="4 3"/><circle cx="50" cy="50" r="21" fill="#fef08a"/><path d="M28 32 C35 18 65 18 72 32 L70 54 L30 54 Z" fill="#eab308"/><ellipse cx="43" cy="48" rx="4" ry="2.5" fill="#713f12"/><ellipse cx="57" cy="48" rx="4" ry="2.5" fill="#713f12"/><path d="M45 62 Q50 66 55 62" stroke="#a16207" stroke-width="2" fill="none"/><path d="M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z" fill="#a16207" stroke="#fde047" stroke-width="1.5"/></svg>'
-  },
-  // Epic Girls
-  {
-    id: "girl_empress_lotus",
-    name: "Kiber Lotus Malakasi",
-    gender: "girl",
-    rarity: "Epic",
-    tagline: "Neon binafsha tojli kiber-xonim",
-    bg: "linear-gradient(135deg, #581c87, #7e22ce)",
-    border: "#c084fc",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#581c87"/><polygon points="34,36 42,22 50,30 58,22 66,36 50,42" fill="#c084fc" stroke="#f5d0fe" stroke-width="1.5"/><circle cx="50" cy="52" r="21" fill="#fae8ff"/><ellipse cx="43" cy="50" rx="4" ry="2.5" fill="#6b21a8"/><ellipse cx="57" cy="50" rx="4" ry="2.5" fill="#6b21a8"/><path d="M45 64 Q50 68 55 64" stroke="#a855f7" stroke-width="2.5" fill="none"/><path d="M24 88 C24 74 36 70 50 70 C64 70 76 74 76 88 Z" fill="#6b21a8" stroke="#c084fc" stroke-width="2"/></svg>'
+    "id": "boy_astronomer",
+    "name": "Yulduzlar Kuzatuvchisi",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Teleskop orqali galaktika qidiruvchisi",
+    "bg": "linear-gradient(135deg, #312e81, #3730a3)",
+    "border": "#818cf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><circle cx=\"50\" cy=\"50\" r=\"24\" fill=\"#fed7aa\"/><path d=\"M30 40 C30 22 70 22 70 40\" stroke=\"#4f46e5\" stroke-width=\"6\" fill=\"none\"/><rect x=\"23\" y=\"40\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#a5b4fc\"/><rect x=\"68\" y=\"40\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#a5b4fc\"/><circle cx=\"43\" cy=\"52\" r=\"3.5\" fill=\"#1e1b4b\"/><circle cx=\"57\" cy=\"52\" r=\"3.5\" fill=\"#1e1b4b\"/><path d=\"M46 63 Q50 67 54 63\" stroke=\"#f43f5e\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#4f46e5\"/></svg>"
   },
   {
-    id: "girl_galaxy",
-    name: "Galaktika Kamonchisi",
-    gender: "girl",
-    rarity: "Epic",
-    tagline: "Yulduz changi va lazer kamonli qahramon",
-    bg: "linear-gradient(135deg, #022c22, #047857)",
-    border: "#34d399",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#022c22"/><circle cx="50" cy="50" r="40" fill="none" stroke="#34d399" stroke-width="1.5" stroke-dasharray="6 3"/><circle cx="50" cy="50" r="21" fill="#ecfdf5"/><path d="M30 36 C35 20 65 20 70 36 L72 64 L28 64 Z" fill="#059669"/><rect x="36" y="46" width="28" height="6" rx="2" fill="#10b981"/><circle cx="43" cy="49" r="2" fill="#ffffff"/><circle cx="57" cy="49" r="2" fill="#ffffff"/><path d="M24 88 C24 74 36 70 50 70 C64 70 76 74 76 88 Z" fill="#065f46" stroke="#34d399" stroke-width="1.5"/></svg>'
-  },
-  // Legendary Girls
-  {
-    id: "girl_queen",
-    name: "Oltin Tojdor Qirolicha",
-    gender: "girl",
-    rarity: "Legendary",
-    tagline: "Shon-shuhrat va qimmatbaho olmos toj egasi",
-    bg: "linear-gradient(135deg, #831843, #be185d, #f43f5e)",
-    border: "#fde047",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#831843"/><circle cx="50" cy="50" r="44" fill="none" stroke="#fde047" stroke-width="2" stroke-dasharray="4 2"/><polygon points="26,36 34,16 50,28 66,16 74,36 50,42" fill="#facc15" stroke="#fffbeb" stroke-width="2"/><circle cx="34" cy="16" r="3.5" fill="#f43f5e"/><circle cx="50" cy="28" r="4" fill="#a855f7"/><circle cx="66" cy="16" r="3.5" fill="#f43f5e"/><circle cx="50" cy="54" r="20" fill="#fef08a"/><ellipse cx="43" cy="51" rx="4" ry="2" fill="#831843"/><ellipse cx="57" cy="51" rx="4" ry="2" fill="#831843"/><path d="M44 64 Q50 69 56 64" stroke="#e11d48" stroke-width="2.5" fill="none"/><path d="M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z" fill="#9d174d" stroke="#fde047" stroke-width="2"/><circle cx="50" cy="78" r="4.5" fill="#facc15"/></svg>'
+    "id": "boy_rider",
+    "name": "Elektr Bayker",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Tezkor lazer motosikl egasi",
+    "bg": "linear-gradient(135deg, #831843, #9d174d)",
+    "border": "#f43f5e",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#fda4af\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#be123c\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#be123c\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#fda4af\"/></svg>"
   },
   {
-    id: "girl_goddess",
-    name: "Kosmik Nur Ma'budasi",
-    gender: "girl",
-    rarity: "Legendary",
-    tagline: "Abadiy koinot nurlari va sehrli toj sohibasi",
-    bg: "linear-gradient(135deg, #0c4a6e, #0284c7, #38bdf8)",
-    border: "#7dd3fc",
-    svg: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#0c4a6e"/><path d="M50 8 L55 24 L72 24 L58 34 L64 50 L50 40 L36 50 L42 34 L28 24 L45 24 Z" fill="#fde047"/><circle cx="50" cy="54" r="21" fill="#e0f2fe"/><ellipse cx="43" cy="51" rx="4" ry="2.5" fill="#0369a1"/><ellipse cx="57" cy="51" rx="4" ry="2.5" fill="#0369a1"/><path d="M44 64 Q50 68 56 64" stroke="#0284c7" stroke-width="2.5" fill="none"/><path d="M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z" fill="#075985" stroke="#7dd3fc" stroke-width="2"/></svg>'
+    "id": "boy_archer",
+    "name": "Yashil Kamonboz",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "O'rmon nishonlarini adashmay uruvchi",
+    "bg": "linear-gradient(135deg, #022c22, #064e3b)",
+    "border": "#10b981",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#18181b\"/><circle cx=\"50\" cy=\"50\" r=\"23\" fill=\"#27272a\"/><path d=\"M28 48 L72 48 L66 74 L34 74 Z\" fill=\"#09090b\" stroke=\"#047857\" stroke-width=\"1.5\"/><ellipse cx=\"42\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#6ee7b7\"/><ellipse cx=\"58\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#6ee7b7\"/><rect x=\"32\" y=\"32\" width=\"36\" height=\"7\" rx=\"2\" fill=\"#047857\"/><circle cx=\"50\" cy=\"35\" r=\"2.5\" fill=\"#fff\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#27272a\"/><path d=\"M40 70 L50 82 L60 70 Z\" fill=\"#6ee7b7\"/></svg>"
+  },
+  {
+    "id": "boy_diver",
+    "name": "Tubi Cheksiz G'avvos",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Chuqur okean marvaridlari izlovchisi",
+    "bg": "linear-gradient(135deg, #083344, #155e75)",
+    "border": "#06b6d4",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#67e8f9\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#0e7490\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#0e7490\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#67e8f9\"/></svg>"
+  },
+  {
+    "id": "boy_dj",
+    "name": "Klub Basmeykeri",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Ritmlar bilan yuraklarni yondiruvchi",
+    "bg": "linear-gradient(135deg, #581c87, #6b21a8)",
+    "border": "#c084fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><circle cx=\"50\" cy=\"50\" r=\"24\" fill=\"#fed7aa\"/><path d=\"M30 40 C30 22 70 22 70 40\" stroke=\"#7e22ce\" stroke-width=\"6\" fill=\"none\"/><rect x=\"23\" y=\"40\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#e9d5ff\"/><rect x=\"68\" y=\"40\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#e9d5ff\"/><circle cx=\"43\" cy=\"52\" r=\"3.5\" fill=\"#1e1b4b\"/><circle cx=\"57\" cy=\"52\" r=\"3.5\" fill=\"#1e1b4b\"/><path d=\"M46 63 Q50 67 54 63\" stroke=\"#f43f5e\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#7e22ce\"/></svg>"
+  },
+  {
+    "id": "boy_apprentice",
+    "name": "Sehr Maktabi Talabasi",
+    "gender": "boy",
+    "rarity": "Common",
+    "tagline": "Dastlabki afsunlarni sinayotgan o'quvchi",
+    "bg": "linear-gradient(135deg, #172554, #1e3a8a)",
+    "border": "#3b82f6",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e293b\"/><polygon points=\"50,16 78,36 72,70 50,84 28,70 22,36\" fill=\"#2563eb\" stroke=\"#bfdbfe\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"48\" r=\"18\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"44\" width=\"32\" height=\"6\" rx=\"2\" fill=\"#0f172a\"/><path d=\"M36 40 L64 40\" stroke=\"#bfdbfe\" stroke-width=\"2\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#2563eb\"/><circle cx=\"50\" cy=\"78\" r=\"5\" fill=\"#bfdbfe\"/></svg>"
+  },
+  {
+    "id": "boy_ninja",
+    "name": "Kiber Shinobi",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Kripto niqobli tungi soyachi",
+    "bg": "linear-gradient(135deg, #18181b, #3f3f46)",
+    "border": "#a1a1aa",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#18181b\"/><circle cx=\"50\" cy=\"50\" r=\"23\" fill=\"#27272a\"/><path d=\"M28 48 L72 48 L66 74 L34 74 Z\" fill=\"#09090b\" stroke=\"#27272a\" stroke-width=\"1.5\"/><ellipse cx=\"42\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#ef4444\"/><ellipse cx=\"58\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#ef4444\"/><rect x=\"32\" y=\"32\" width=\"36\" height=\"7\" rx=\"2\" fill=\"#27272a\"/><circle cx=\"50\" cy=\"35\" r=\"2.5\" fill=\"#fff\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#27272a\"/><path d=\"M40 70 L50 82 L60 70 Z\" fill=\"#ef4444\"/></svg>"
+  },
+  {
+    "id": "boy_mecha",
+    "name": "Titan Mecha Uchuvchi",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Holografik nishonli zirhli jangchi",
+    "bg": "linear-gradient(135deg, #1e3a8a, #1d4ed8)",
+    "border": "#3b82f6",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e293b\"/><polygon points=\"50,16 78,36 72,70 50,84 28,70 22,36\" fill=\"#1e40af\" stroke=\"#60a5fa\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"48\" r=\"18\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"44\" width=\"32\" height=\"6\" rx=\"2\" fill=\"#0f172a\"/><path d=\"M36 40 L64 40\" stroke=\"#60a5fa\" stroke-width=\"2\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#1e40af\"/><circle cx=\"50\" cy=\"78\" r=\"5\" fill=\"#60a5fa\"/></svg>"
+  },
+  {
+    "id": "boy_samurai",
+    "name": "Neo Samuray",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Lazer tig'li yapon kiber-ritsari",
+    "bg": "linear-gradient(135deg, #701a75, #a21caf)",
+    "border": "#e879f9",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#18181b\"/><circle cx=\"50\" cy=\"50\" r=\"23\" fill=\"#27272a\"/><path d=\"M28 48 L72 48 L66 74 L34 74 Z\" fill=\"#09090b\" stroke=\"#86198f\" stroke-width=\"1.5\"/><ellipse cx=\"42\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#f0abfc\"/><ellipse cx=\"58\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#f0abfc\"/><rect x=\"32\" y=\"32\" width=\"36\" height=\"7\" rx=\"2\" fill=\"#86198f\"/><circle cx=\"50\" cy=\"35\" r=\"2.5\" fill=\"#fff\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#27272a\"/><path d=\"M40 70 L50 82 L60 70 Z\" fill=\"#f0abfc\"/></svg>"
+  },
+  {
+    "id": "boy_frost_mage",
+    "name": "Muz Sehrgari",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Absolyut nol haroratda muzlatuvchi",
+    "bg": "linear-gradient(135deg, #0c4a6e, #0284c7)",
+    "border": "#38bdf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#bae6fd\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#0369a1\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#0369a1\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#bae6fd\"/></svg>"
+  },
+  {
+    "id": "boy_storm_striker",
+    "name": "Bo'ron Hujumchisi",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Tungi momaqaldiroq qudrati sohibi",
+    "bg": "linear-gradient(135deg, #1e1b4b, #4338ca)",
+    "border": "#818cf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#c7d2fe\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#3730a3\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#3730a3\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#c7d2fe\"/></svg>"
+  },
+  {
+    "id": "boy_gladiator",
+    "name": "Kiber Kolizey Chempioni",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Yengilmas jang maydoni faxri",
+    "bg": "linear-gradient(135deg, #7c2d12, #b45309)",
+    "border": "#f59e0b",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e293b\"/><polygon points=\"50,16 78,36 72,70 50,84 28,70 22,36\" fill=\"#9a3412\" stroke=\"#fde047\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"48\" r=\"18\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"44\" width=\"32\" height=\"6\" rx=\"2\" fill=\"#0f172a\"/><path d=\"M36 40 L64 40\" stroke=\"#fde047\" stroke-width=\"2\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#9a3412\"/><circle cx=\"50\" cy=\"78\" r=\"5\" fill=\"#fde047\"/></svg>"
+  },
+  {
+    "id": "boy_assassin",
+    "name": "Soya Qotili",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Hech kim payqamaydigan yashirin soyalar",
+    "bg": "linear-gradient(135deg, #09090b, #18181b)",
+    "border": "#dc2626",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#18181b\"/><circle cx=\"50\" cy=\"50\" r=\"23\" fill=\"#27272a\"/><path d=\"M28 48 L72 48 L66 74 L34 74 Z\" fill=\"#09090b\" stroke=\"#000000\" stroke-width=\"1.5\"/><ellipse cx=\"42\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#ef4444\"/><ellipse cx=\"58\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#ef4444\"/><rect x=\"32\" y=\"32\" width=\"36\" height=\"7\" rx=\"2\" fill=\"#000000\"/><circle cx=\"50\" cy=\"35\" r=\"2.5\" fill=\"#fff\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#27272a\"/><path d=\"M40 70 L50 82 L60 70 Z\" fill=\"#ef4444\"/></svg>"
+  },
+  {
+    "id": "boy_plasma_gunner",
+    "name": "Plazma Snayperi",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "1 kilometrdan aniq nishonga teguvchi",
+    "bg": "linear-gradient(135deg, #042f2e, #0d9488)",
+    "border": "#14b8a6",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#5eead4\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#115e59\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#115e59\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#5eead4\"/></svg>"
+  },
+  {
+    "id": "boy_alchemist",
+    "name": "Oltin Alkimyogar",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Temirlarni oltinga aylantiruvchi daho",
+    "bg": "linear-gradient(135deg, #713f12, #ca8a04)",
+    "border": "#eab308",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e293b\"/><polygon points=\"50,16 78,36 72,70 50,84 28,70 22,36\" fill=\"#a16207\" stroke=\"#fef08a\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"48\" r=\"18\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"44\" width=\"32\" height=\"6\" rx=\"2\" fill=\"#0f172a\"/><path d=\"M36 40 L64 40\" stroke=\"#fef08a\" stroke-width=\"2\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#a16207\"/><circle cx=\"50\" cy=\"78\" r=\"5\" fill=\"#fef08a\"/></svg>"
+  },
+  {
+    "id": "boy_corsair",
+    "name": "Kiber Qaroqchi Sardori",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Koinot xazinalarini qo'lga oluvchi",
+    "bg": "linear-gradient(135deg, #4c0519, #9f1239)",
+    "border": "#fb7185",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#18181b\"/><circle cx=\"50\" cy=\"50\" r=\"23\" fill=\"#27272a\"/><path d=\"M28 48 L72 48 L66 74 L34 74 Z\" fill=\"#09090b\" stroke=\"#881337\" stroke-width=\"1.5\"/><ellipse cx=\"42\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#fda4af\"/><ellipse cx=\"58\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#fda4af\"/><rect x=\"32\" y=\"32\" width=\"36\" height=\"7\" rx=\"2\" fill=\"#881337\"/><circle cx=\"50\" cy=\"35\" r=\"2.5\" fill=\"#fff\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#27272a\"/><path d=\"M40 70 L50 82 L60 70 Z\" fill=\"#fda4af\"/></svg>"
+  },
+  {
+    "id": "boy_sentinel",
+    "name": "Devor Himoyachisi",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Buzilmas po'lat qalqon egasi",
+    "bg": "linear-gradient(135deg, #1e293b, #475569)",
+    "border": "#94a3b8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e293b\"/><polygon points=\"50,16 78,36 72,70 50,84 28,70 22,36\" fill=\"#334155\" stroke=\"#cbd5e1\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"48\" r=\"18\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"44\" width=\"32\" height=\"6\" rx=\"2\" fill=\"#0f172a\"/><path d=\"M36 40 L64 40\" stroke=\"#cbd5e1\" stroke-width=\"2\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#334155\"/><circle cx=\"50\" cy=\"78\" r=\"5\" fill=\"#cbd5e1\"/></svg>"
+  },
+  {
+    "id": "boy_void_walker",
+    "name": "Bo'shliq Sayyohi",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "O'lchamlararo portallardan o'tuvchi",
+    "bg": "linear-gradient(135deg, #2e1065, #581c87)",
+    "border": "#a855f7",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#d8b4fe\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#3b0764\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#3b0764\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#d8b4fe\"/></svg>"
+  },
+  {
+    "id": "boy_flame_blade",
+    "name": "Alanga Qilichi",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Olov bilan chaqnagan shafqatsiz tig'",
+    "bg": "linear-gradient(135deg, #7f1d1d, #c2410c)",
+    "border": "#f97316",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e293b\"/><polygon points=\"50,16 78,36 72,70 50,84 28,70 22,36\" fill=\"#991b1b\" stroke=\"#fdba74\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"48\" r=\"18\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"44\" width=\"32\" height=\"6\" rx=\"2\" fill=\"#0f172a\"/><path d=\"M36 40 L64 40\" stroke=\"#fdba74\" stroke-width=\"2\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#991b1b\"/><circle cx=\"50\" cy=\"78\" r=\"5\" fill=\"#fdba74\"/></svg>"
+  },
+  {
+    "id": "boy_hacker",
+    "name": "Kripto Buzg'unchi",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Barcha xavfsizlik tizimlarini ochuvchi",
+    "bg": "linear-gradient(135deg, #022c22, #059669)",
+    "border": "#34d399",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><circle cx=\"50\" cy=\"50\" r=\"24\" fill=\"#fed7aa\"/><path d=\"M30 40 C30 22 70 22 70 40\" stroke=\"#065f46\" stroke-width=\"6\" fill=\"none\"/><rect x=\"23\" y=\"40\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#a7f3d0\"/><rect x=\"68\" y=\"40\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#a7f3d0\"/><circle cx=\"43\" cy=\"52\" r=\"3.5\" fill=\"#1e1b4b\"/><circle cx=\"57\" cy=\"52\" r=\"3.5\" fill=\"#1e1b4b\"/><path d=\"M46 63 Q50 67 54 63\" stroke=\"#f43f5e\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#065f46\"/></svg>"
+  },
+  {
+    "id": "boy_chrono_scout",
+    "name": "Vaqt Skauti",
+    "gender": "boy",
+    "rarity": "Rare",
+    "tagline": "Kelajak xabarlarini keltiruvchi elchi",
+    "bg": "linear-gradient(135deg, #172554, #1d4ed8)",
+    "border": "#60a5fa",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#bfdbfe\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#1e40af\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#1e40af\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#bfdbfe\"/></svg>"
+  },
+  {
+    "id": "boy_dragon_lord",
+    "name": "Kiber Ajdarho Hukmdori",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "Qizil plazma shoxli qadimgi kiborg",
+    "bg": "linear-gradient(135deg, #7f1d1d, #b91c1c)",
+    "border": "#f87171",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#450a0a\"/><path d=\"M30 18 L44 34 L34 38 Z\" fill=\"#fca5a5\"/><path d=\"M70 18 L56 34 L66 38 Z\" fill=\"#fca5a5\"/><circle cx=\"50\" cy=\"52\" r=\"23\" fill=\"#1c1917\" stroke=\"#991b1b\" stroke-width=\"2\"/><ellipse cx=\"41\" cy=\"48\" rx=\"6\" ry=\"3\" fill=\"#fca5a5\"/><ellipse cx=\"59\" cy=\"48\" rx=\"6\" ry=\"3\" fill=\"#fca5a5\"/><circle cx=\"41\" cy=\"48\" r=\"2\" fill=\"#000\"/><circle cx=\"59\" cy=\"48\" r=\"2\" fill=\"#000\"/><path d=\"M38 64 L50 72 L62 64\" stroke=\"#fca5a5\" stroke-width=\"3\" fill=\"none\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#292524\" stroke=\"#991b1b\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_quantum_sentinel",
+    "name": "Kvant Sentineli",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "Vaqt to'lqinlari va koinot himoyachisi",
+    "bg": "linear-gradient(135deg, #083344, #0e7490)",
+    "border": "#22d3ee",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#67e8f9\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#155e75\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#155e75\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#67e8f9\"/></svg>"
+  },
+  {
+    "id": "boy_archmage",
+    "name": "Arximag Oliy Hakimi",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "Qadimgi sehr kitoblarining sohibi",
+    "bg": "linear-gradient(135deg, #3b0764, #6b21a8)",
+    "border": "#c084fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#451a03\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#f3e8ff\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"26,38 34,18 50,30 66,18 74,38 50,44\" fill=\"#f3e8ff\" stroke=\"#fff\" stroke-width=\"1.5\"/><circle cx=\"34\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"30\" r=\"4\" fill=\"#581c87\"/><circle cx=\"66\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"56\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><circle cx=\"57\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#b45309\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#581c87\" stroke=\"#f3e8ff\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_cyber_general",
+    "name": "Kiber Armiya Generali",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "Minglab robotlar ustidan mutlaq qo'mondon",
+    "bg": "linear-gradient(135deg, #1e1b4b, #312e81)",
+    "border": "#818cf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e293b\"/><polygon points=\"50,16 78,36 72,70 50,84 28,70 22,36\" fill=\"#1e1b4b\" stroke=\"#c7d2fe\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"48\" r=\"18\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"44\" width=\"32\" height=\"6\" rx=\"2\" fill=\"#0f172a\"/><path d=\"M36 40 L64 40\" stroke=\"#c7d2fe\" stroke-width=\"2\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#1e1b4b\"/><circle cx=\"50\" cy=\"78\" r=\"5\" fill=\"#c7d2fe\"/></svg>"
+  },
+  {
+    "id": "boy_solar_champion",
+    "name": "Quyosh Chempioni",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "Quyosh tojlari va olovli g'alabalar egasi",
+    "bg": "linear-gradient(135deg, #78350f, #d97706)",
+    "border": "#fbbf24",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#451a03\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#fde047\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"26,38 34,18 50,30 66,18 74,38 50,44\" fill=\"#fde047\" stroke=\"#fff\" stroke-width=\"1.5\"/><circle cx=\"34\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"30\" r=\"4\" fill=\"#92400e\"/><circle cx=\"66\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"56\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><circle cx=\"57\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#b45309\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#92400e\" stroke=\"#fde047\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_abyss_knight",
+    "name": "Qorong'u Qa'r Ritsari",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "Qora tuynuk kuchini boshqaruvchi jangchi",
+    "bg": "linear-gradient(135deg, #09090b, #1c1917)",
+    "border": "#78716c",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#18181b\"/><circle cx=\"50\" cy=\"50\" r=\"23\" fill=\"#27272a\"/><path d=\"M28 48 L72 48 L66 74 L34 74 Z\" fill=\"#09090b\" stroke=\"#292524\" stroke-width=\"1.5\"/><ellipse cx=\"42\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#d6d3d1\"/><ellipse cx=\"58\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#d6d3d1\"/><rect x=\"32\" y=\"32\" width=\"36\" height=\"7\" rx=\"2\" fill=\"#292524\"/><circle cx=\"50\" cy=\"35\" r=\"2.5\" fill=\"#fff\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#27272a\"/><path d=\"M40 70 L50 82 L60 70 Z\" fill=\"#d6d3d1\"/></svg>"
+  },
+  {
+    "id": "boy_neon_samurai_lord",
+    "name": "Neon Shogun",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "Tokio kiber-ko'chalarining hukmdori",
+    "bg": "linear-gradient(135deg, #831843, #db2777)",
+    "border": "#f472b6",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#18181b\"/><circle cx=\"50\" cy=\"50\" r=\"23\" fill=\"#27272a\"/><path d=\"M28 48 L72 48 L66 74 L34 74 Z\" fill=\"#09090b\" stroke=\"#9d174d\" stroke-width=\"1.5\"/><ellipse cx=\"42\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#fbcfe8\"/><ellipse cx=\"58\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#fbcfe8\"/><rect x=\"32\" y=\"32\" width=\"36\" height=\"7\" rx=\"2\" fill=\"#9d174d\"/><circle cx=\"50\" cy=\"35\" r=\"2.5\" fill=\"#fff\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#27272a\"/><path d=\"M40 70 L50 82 L60 70 Z\" fill=\"#fbcfe8\"/></svg>"
+  },
+  {
+    "id": "boy_celestial_warden",
+    "name": "Osmon Posboni",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "Farishtasifat nurli himoya devori",
+    "bg": "linear-gradient(135deg, #0f172a, #0284c7)",
+    "border": "#38bdf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#bae6fd\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#0369a1\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#0369a1\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#bae6fd\"/></svg>"
+  },
+  {
+    "id": "boy_inferno_berserk",
+    "name": "Alanga Qoplon",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "To'xtatib bo'lmas g'azab kuchi",
+    "bg": "linear-gradient(135deg, #450a0a, #dc2626)",
+    "border": "#f87171",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#450a0a\"/><path d=\"M30 18 L44 34 L34 38 Z\" fill=\"#fca5a5\"/><path d=\"M70 18 L56 34 L66 38 Z\" fill=\"#fca5a5\"/><circle cx=\"50\" cy=\"52\" r=\"23\" fill=\"#1c1917\" stroke=\"#b91c1c\" stroke-width=\"2\"/><ellipse cx=\"41\" cy=\"48\" rx=\"6\" ry=\"3\" fill=\"#fca5a5\"/><ellipse cx=\"59\" cy=\"48\" rx=\"6\" ry=\"3\" fill=\"#fca5a5\"/><circle cx=\"41\" cy=\"48\" r=\"2\" fill=\"#000\"/><circle cx=\"59\" cy=\"48\" r=\"2\" fill=\"#000\"/><path d=\"M38 64 L50 72 L62 64\" stroke=\"#fca5a5\" stroke-width=\"3\" fill=\"none\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#292524\" stroke=\"#b91c1c\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_titan_breaker",
+    "name": "Devlar Yiqituvchisi",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "Qoyalarni parchalovchi afsonaviy zarba",
+    "bg": "linear-gradient(135deg, #1c1917, #57534e)",
+    "border": "#a8a29e",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e293b\"/><polygon points=\"50,16 78,36 72,70 50,84 28,70 22,36\" fill=\"#44403c\" stroke=\"#e7e5e4\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"48\" r=\"18\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"44\" width=\"32\" height=\"6\" rx=\"2\" fill=\"#0f172a\"/><path d=\"M36 40 L64 40\" stroke=\"#e7e5e4\" stroke-width=\"2\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#44403c\"/><circle cx=\"50\" cy=\"78\" r=\"5\" fill=\"#e7e5e4\"/></svg>"
+  },
+  {
+    "id": "boy_cosmic_phantom",
+    "name": "Yulduz Sharpasi",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "Yorug'likdan tezroq g'oyib bo'luvchi",
+    "bg": "linear-gradient(135deg, #2e1065, #7e22ce)",
+    "border": "#c084fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#18181b\"/><circle cx=\"50\" cy=\"50\" r=\"23\" fill=\"#27272a\"/><path d=\"M28 48 L72 48 L66 74 L34 74 Z\" fill=\"#09090b\" stroke=\"#6b21a8\" stroke-width=\"1.5\"/><ellipse cx=\"42\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#e9d5ff\"/><ellipse cx=\"58\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#e9d5ff\"/><rect x=\"32\" y=\"32\" width=\"36\" height=\"7\" rx=\"2\" fill=\"#6b21a8\"/><circle cx=\"50\" cy=\"35\" r=\"2.5\" fill=\"#fff\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#27272a\"/><path d=\"M40 70 L50 82 L60 70 Z\" fill=\"#e9d5ff\"/></svg>"
+  },
+  {
+    "id": "boy_overlord_ai",
+    "name": "Oliy Aql Hukmdori",
+    "gender": "boy",
+    "rarity": "Epic",
+    "tagline": "Superkompyuterlarning tirik yuragi",
+    "bg": "linear-gradient(135deg, #022c22, #0d9488)",
+    "border": "#2dd4bf",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#99f6e4\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#0f766e\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#0f766e\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#99f6e4\"/></svg>"
+  },
+  {
+    "id": "boy_emperor",
+    "name": "Oltin Tojdor Imperator",
+    "gender": "boy",
+    "rarity": "Legendary",
+    "tagline": "Koinot hukmdori, yonuvchi oltin toj sohibi",
+    "bg": "linear-gradient(135deg, #78350f, #d97706, #f59e0b)",
+    "border": "#fde047",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#451a03\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#fef08a\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"26,38 34,18 50,30 66,18 74,38 50,44\" fill=\"#fef08a\" stroke=\"#fff\" stroke-width=\"1.5\"/><circle cx=\"34\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"30\" r=\"4\" fill=\"#b45309\"/><circle cx=\"66\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"56\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><circle cx=\"57\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#b45309\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#b45309\" stroke=\"#fef08a\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_godspeed",
+    "name": "Kosmik Chaqmoq Qiroli",
+    "gender": "boy",
+    "rarity": "Legendary",
+    "tagline": "Yorug'lik tezligidagi afsonaviy kiborg",
+    "bg": "linear-gradient(135deg, #312e81, #4338ca, #6366f1)",
+    "border": "#a5b4fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#e0e7ff\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#4338ca\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#4338ca\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#e0e7ff\"/></svg>"
+  },
+  {
+    "id": "boy_dragon_god",
+    "name": "Abadiy Ajdarho Xudosi",
+    "gender": "boy",
+    "rarity": "Legendary",
+    "tagline": "Ming yillik olovli imperiya asoschisi",
+    "bg": "linear-gradient(135deg, #450a0a, #b91c1c, #f59e0b)",
+    "border": "#facc15",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#450a0a\"/><path d=\"M30 18 L44 34 L34 38 Z\" fill=\"#fef08a\"/><path d=\"M70 18 L56 34 L66 38 Z\" fill=\"#fef08a\"/><circle cx=\"50\" cy=\"52\" r=\"23\" fill=\"#1c1917\" stroke=\"#991b1b\" stroke-width=\"2\"/><ellipse cx=\"41\" cy=\"48\" rx=\"6\" ry=\"3\" fill=\"#fef08a\"/><ellipse cx=\"59\" cy=\"48\" rx=\"6\" ry=\"3\" fill=\"#fef08a\"/><circle cx=\"41\" cy=\"48\" r=\"2\" fill=\"#000\"/><circle cx=\"59\" cy=\"48\" r=\"2\" fill=\"#000\"/><path d=\"M38 64 L50 72 L62 64\" stroke=\"#fef08a\" stroke-width=\"3\" fill=\"none\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#292524\" stroke=\"#991b1b\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_galaxy_sovereign",
+    "name": "Galaktika Oliy Hakimi",
+    "gender": "boy",
+    "rarity": "Legendary",
+    "tagline": "Millionlab yulduzlar tizimi egasi",
+    "bg": "linear-gradient(135deg, #1e1b4b, #581c87, #3b82f6)",
+    "border": "#60a5fa",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#451a03\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#93c5fd\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"26,38 34,18 50,30 66,18 74,38 50,44\" fill=\"#93c5fd\" stroke=\"#fff\" stroke-width=\"1.5\"/><circle cx=\"34\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"30\" r=\"4\" fill=\"#4c1d95\"/><circle cx=\"66\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"56\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><circle cx=\"57\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#b45309\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#4c1d95\" stroke=\"#93c5fd\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_chrono_master",
+    "name": "Vaqt Lordi",
+    "gender": "boy",
+    "rarity": "Legendary",
+    "tagline": "O'tmish va kelajakni o'zgartiruvchi xudo",
+    "bg": "linear-gradient(135deg, #083344, #0e7490, #06b6d4)",
+    "border": "#22d3ee",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#451a03\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#a5f3fc\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"26,38 34,18 50,30 66,18 74,38 50,44\" fill=\"#a5f3fc\" stroke=\"#fff\" stroke-width=\"1.5\"/><circle cx=\"34\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"30\" r=\"4\" fill=\"#155e75\"/><circle cx=\"66\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"56\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><circle cx=\"57\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#b45309\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#155e75\" stroke=\"#a5f3fc\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_void_emperor",
+    "name": "Qora Materiya Imperatori",
+    "gender": "boy",
+    "rarity": "Legendary",
+    "tagline": "Koinot tugashidagi mutlaq sokinlik",
+    "bg": "linear-gradient(135deg, #020617, #1e293b, #475569)",
+    "border": "#e2e8f0",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#18181b\"/><circle cx=\"50\" cy=\"50\" r=\"23\" fill=\"#27272a\"/><path d=\"M28 48 L72 48 L66 74 L34 74 Z\" fill=\"#09090b\" stroke=\"#0f172a\" stroke-width=\"1.5\"/><ellipse cx=\"42\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#f8fafc\"/><ellipse cx=\"58\" cy=\"44\" rx=\"6\" ry=\"2.8\" fill=\"#f8fafc\"/><rect x=\"32\" y=\"32\" width=\"36\" height=\"7\" rx=\"2\" fill=\"#0f172a\"/><circle cx=\"50\" cy=\"35\" r=\"2.5\" fill=\"#fff\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#27272a\"/><path d=\"M40 70 L50 82 L60 70 Z\" fill=\"#f8fafc\"/></svg>"
+  },
+  {
+    "id": "boy_phoenix_king",
+    "name": "Qaqnus Qiroli",
+    "gender": "boy",
+    "rarity": "Legendary",
+    "tagline": "Kullardan qayta tug'iluvchi yengilmaslik",
+    "bg": "linear-gradient(135deg, #7c2d12, #ea580c, #facc15)",
+    "border": "#fef08a",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#450a0a\"/><path d=\"M30 18 L44 34 L34 38 Z\" fill=\"#fffbeb\"/><path d=\"M70 18 L56 34 L66 38 Z\" fill=\"#fffbeb\"/><circle cx=\"50\" cy=\"52\" r=\"23\" fill=\"#1c1917\" stroke=\"#c2410c\" stroke-width=\"2\"/><ellipse cx=\"41\" cy=\"48\" rx=\"6\" ry=\"3\" fill=\"#fffbeb\"/><ellipse cx=\"59\" cy=\"48\" rx=\"6\" ry=\"3\" fill=\"#fffbeb\"/><circle cx=\"41\" cy=\"48\" r=\"2\" fill=\"#000\"/><circle cx=\"59\" cy=\"48\" r=\"2\" fill=\"#000\"/><path d=\"M38 64 L50 72 L62 64\" stroke=\"#fffbeb\" stroke-width=\"3\" fill=\"none\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#292524\" stroke=\"#c2410c\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_omniscient_sage",
+    "name": "Cheksiz Bilim Dahosi",
+    "gender": "boy",
+    "rarity": "Legendary",
+    "tagline": "Dunyodagi barcha sirlarni ochgan avliyo",
+    "bg": "linear-gradient(135deg, #14532d, #15803d, #84cc16)",
+    "border": "#bef264",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#451a03\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#ecfccb\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"26,38 34,18 50,30 66,18 74,38 50,44\" fill=\"#ecfccb\" stroke=\"#fff\" stroke-width=\"1.5\"/><circle cx=\"34\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"30\" r=\"4\" fill=\"#166534\"/><circle cx=\"66\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"56\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><circle cx=\"57\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#b45309\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#166534\" stroke=\"#ecfccb\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_mythic_creator",
+    "name": "Koinot Yaratuvchisi",
+    "gender": "boy",
+    "rarity": "Mythic",
+    "tagline": "Hamma narsaning boshlanishi va yakuni",
+    "bg": "linear-gradient(135deg, #451a03, #b45309, #fde047)",
+    "border": "#ffffff",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#451a03\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"26,38 34,18 50,30 66,18 74,38 50,44\" fill=\"#ffffff\" stroke=\"#fff\" stroke-width=\"1.5\"/><circle cx=\"34\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"30\" r=\"4\" fill=\"#78350f\"/><circle cx=\"66\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"56\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><circle cx=\"57\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#b45309\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#78350f\" stroke=\"#ffffff\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_mythic_destroyer",
+    "name": "Yulduzlar Kushandasi",
+    "gender": "boy",
+    "rarity": "Mythic",
+    "tagline": "Sayyoralarni yo'q qiluvchi qora kuch",
+    "bg": "linear-gradient(135deg, #2e1065, #701a75, #ef4444)",
+    "border": "#fca5a5",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#450a0a\"/><path d=\"M30 18 L44 34 L34 38 Z\" fill=\"#fecaca\"/><path d=\"M70 18 L56 34 L66 38 Z\" fill=\"#fecaca\"/><circle cx=\"50\" cy=\"52\" r=\"23\" fill=\"#1c1917\" stroke=\"#4a044e\" stroke-width=\"2\"/><ellipse cx=\"41\" cy=\"48\" rx=\"6\" ry=\"3\" fill=\"#fecaca\"/><ellipse cx=\"59\" cy=\"48\" rx=\"6\" ry=\"3\" fill=\"#fecaca\"/><circle cx=\"41\" cy=\"48\" r=\"2\" fill=\"#000\"/><circle cx=\"59\" cy=\"48\" r=\"2\" fill=\"#000\"/><path d=\"M38 64 L50 72 L62 64\" stroke=\"#fecaca\" stroke-width=\"3\" fill=\"none\"/><path d=\"M22 88 C22 74 36 70 50 70 C64 70 78 74 78 88 Z\" fill=\"#292524\" stroke=\"#4a044e\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "boy_mythic_cyber_god",
+    "name": "Superkiber Omnipotent",
+    "gender": "boy",
+    "rarity": "Mythic",
+    "tagline": "Raqamli koinotning oliy mutlaq xudosi",
+    "bg": "linear-gradient(135deg, #022c22, #06b6d4, #ffffff)",
+    "border": "#67e8f9",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M50 18 L68 40 L32 40 Z\" fill=\"#ffffff\"/><circle cx=\"50\" cy=\"52\" r=\"22\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"46\" width=\"32\" height=\"10\" rx=\"4\" fill=\"#0891b2\"/><rect x=\"37\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><rect x=\"52\" y=\"48\" width=\"11\" height=\"6\" rx=\"2\" fill=\"#fff\" opacity=\"0.85\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#ea580c\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 86 C26 72 38 68 50 68 C62 68 74 72 74 86 Z\" fill=\"#0891b2\"/><circle cx=\"50\" cy=\"80\" r=\"4\" fill=\"#ffffff\"/></svg>"
+  },
+  {
+    "id": "boy_mythic_primordial",
+    "name": "Qadimgi Ibtidoiy Zot",
+    "gender": "boy",
+    "rarity": "Mythic",
+    "tagline": "Zamon va makondan tashqaridagi oliy mavjudot",
+    "bg": "linear-gradient(135deg, #1e1b4b, #6366f1, #f43f5e)",
+    "border": "#fbcfe8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#451a03\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#fed7aa\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"26,38 34,18 50,30 66,18 74,38 50,44\" fill=\"#fed7aa\" stroke=\"#fff\" stroke-width=\"1.5\"/><circle cx=\"34\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"30\" r=\"4\" fill=\"#4338ca\"/><circle cx=\"66\" cy=\"18\" r=\"3.5\" fill=\"#ef4444\"/><circle cx=\"50\" cy=\"56\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><circle cx=\"57\" cy=\"54\" r=\"3\" fill=\"#78350f\"/><path d=\"M44 65 Q50 70 56 65\" stroke=\"#b45309\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M22 88 C22 74 36 72 50 72 C64 72 78 74 78 88 Z\" fill=\"#4338ca\" stroke=\"#fed7aa\" stroke-width=\"2\"/></svg>"
+  },
+  {
+    "id": "girl_blossom",
+    "name": "Neon Sakura Qizi",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Anime uslubidagi binafsha sochli talaba",
+    "bg": "linear-gradient(135deg, #4a044e, #86198f)",
+    "border": "#f472b6",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#4a044e\"/><path d=\"M26 34 C26 14 74 14 74 34 L76 68 L70 70 L68 44 L32 44 L30 70 L24 68 Z\" fill=\"#ec4899\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z\" fill=\"#ec4899\"/><circle cx=\"50\" cy=\"78\" r=\"3\" fill=\"#fbcfe8\"/></svg>"
+  },
+  {
+    "id": "girl_scout",
+    "name": "Kiber Izquvar Qiz",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Zamonaviy kiber-diadema kiygan qahramon",
+    "bg": "linear-gradient(135deg, #134e4a, #0d9488)",
+    "border": "#2dd4bf",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#99f6e4\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#99f6e4\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#14b8a6\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#99f6e4\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#14b8a6\" stroke=\"#99f6e4\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_scholar",
+    "name": "Sehrli Kitobxon Qiz",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Yulduzli ko'zli a'lochi o'quvchi qiz",
+    "bg": "linear-gradient(135deg, #1e1b4b, #3730a3)",
+    "border": "#818cf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e1b4b\"/><path d=\"M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z\" fill=\"#6366f1\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"44\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><circle cx=\"58\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><polygon points=\"50,18 53,26 62,26 55,31 58,39 50,34 42,39 45,31 38,26 47,26\" fill=\"#c7d2fe\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#4f46e5\" stroke-width=\"2\" fill=\"none\"/><path d=\"M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z\" fill=\"#6366f1\"/></svg>"
+  },
+  {
+    "id": "girl_artist",
+    "name": "Raqamli Rassom",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Planshetda mo'jizalar yaratuvchi ijodkor",
+    "bg": "linear-gradient(135deg, #831843, #be185d)",
+    "border": "#fb7185",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#4a044e\"/><path d=\"M26 34 C26 14 74 14 74 34 L76 68 L70 70 L68 44 L32 44 L30 70 L24 68 Z\" fill=\"#e11d48\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z\" fill=\"#e11d48\"/><circle cx=\"50\" cy=\"78\" r=\"3\" fill=\"#fecdd3\"/></svg>"
+  },
+  {
+    "id": "girl_botanist",
+    "name": "Sehrli O'rmon Qizi",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Gullar va shifobaxsh o'tlar bilarmoni",
+    "bg": "linear-gradient(135deg, #064e3b, #047857)",
+    "border": "#34d399",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#a7f3d0\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#a7f3d0\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#10b981\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#a7f3d0\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#10b981\" stroke=\"#a7f3d0\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_astronomer",
+    "name": "Yulduzlar Malagi",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Tungi osmon xaritalarini chizuvchi",
+    "bg": "linear-gradient(135deg, #1e293b, #3b82f6)",
+    "border": "#60a5fa",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e1b4b\"/><path d=\"M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z\" fill=\"#2563eb\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"44\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><circle cx=\"58\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><polygon points=\"50,18 53,26 62,26 55,31 58,39 50,34 42,39 45,31 38,26 47,26\" fill=\"#bfdbfe\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#4f46e5\" stroke-width=\"2\" fill=\"none\"/><path d=\"M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z\" fill=\"#2563eb\"/></svg>"
+  },
+  {
+    "id": "girl_mechanic",
+    "name": "Robot Sozlovchi Qiz",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Kichik dronlar va mexanizmlar do'sti",
+    "bg": "linear-gradient(135deg, #713f12, #ca8a04)",
+    "border": "#fbbf24",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#fef08a\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#fef08a\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#a16207\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#fef08a\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#a16207\" stroke=\"#fef08a\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_runner",
+    "name": "Shahar Chaqqoni",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Neon chiroqlar ostida uchuvchi qiz",
+    "bg": "linear-gradient(135deg, #701a75, #a21caf)",
+    "border": "#e879f9",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#4a044e\"/><path d=\"M26 34 C26 14 74 14 74 34 L76 68 L70 70 L68 44 L32 44 L30 70 L24 68 Z\" fill=\"#c026d3\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z\" fill=\"#c026d3\"/><circle cx=\"50\" cy=\"78\" r=\"3\" fill=\"#f5d0fe\"/></svg>"
+  },
+  {
+    "id": "girl_diver",
+    "name": "Moviy Marvarid",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Dengiz tubidagi qadimiy marvaridlar",
+    "bg": "linear-gradient(135deg, #083344, #0891b2)",
+    "border": "#22d3ee",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#cffafe\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#cffafe\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#06b6d4\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#cffafe\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#06b6d4\" stroke=\"#cffafe\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_singer",
+    "name": "Ovoz Sehrgari",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Qo'shiqlari dillarni eritar go'zal",
+    "bg": "linear-gradient(135deg, #581c87, #7e22ce)",
+    "border": "#c084fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#4a044e\"/><path d=\"M26 34 C26 14 74 14 74 34 L76 68 L70 70 L68 44 L32 44 L30 70 L24 68 Z\" fill=\"#9333ea\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z\" fill=\"#9333ea\"/><circle cx=\"50\" cy=\"78\" r=\"3\" fill=\"#f3e8ff\"/></svg>"
+  },
+  {
+    "id": "girl_alchemist",
+    "name": "Dorishunos Qiz",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Ko'k eleksirlar tayyorlovchi talaba",
+    "bg": "linear-gradient(135deg, #022c22, #059669)",
+    "border": "#6ee7b7",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e1b4b\"/><path d=\"M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z\" fill=\"#10b981\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"44\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><circle cx=\"58\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><polygon points=\"50,18 53,26 62,26 55,31 58,39 50,34 42,39 45,31 38,26 47,26\" fill=\"#d1fae5\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#4f46e5\" stroke-width=\"2\" fill=\"none\"/><path d=\"M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z\" fill=\"#10b981\"/></svg>"
+  },
+  {
+    "id": "girl_archer",
+    "name": "O'tkir Kamonchi Qiz",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Shabada yo'nalishini biluvchi mergan",
+    "bg": "linear-gradient(135deg, #14532d, #16a34a)",
+    "border": "#4ade80",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#bbf7d0\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#bbf7d0\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#22c55e\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#bbf7d0\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#22c55e\" stroke=\"#bbf7d0\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_baker",
+    "name": "Shirinliklar Ustasi",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Sehrli tortlar va pishiriqlar quvonchi",
+    "bg": "linear-gradient(135deg, #881337, #e11d48)",
+    "border": "#fda4af",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#4a044e\"/><path d=\"M26 34 C26 14 74 14 74 34 L76 68 L70 70 L68 44 L32 44 L30 70 L24 68 Z\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"78\" r=\"3\" fill=\"#ffe4e6\"/></svg>"
+  },
+  {
+    "id": "girl_pilot",
+    "name": "Koinot Uchuvchisi Qiz",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Yulduzlararo kemani mohir boshqaruvchi",
+    "bg": "linear-gradient(135deg, #0f172a, #0284c7)",
+    "border": "#38bdf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#e0f2fe\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#e0f2fe\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#0369a1\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#e0f2fe\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#0369a1\" stroke=\"#e0f2fe\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_apprentice",
+    "name": "Yosh Afsungar Qiz",
+    "gender": "girl",
+    "rarity": "Common",
+    "tagline": "Sehrli tayog'i bilan dars qilayotgan qiz",
+    "bg": "linear-gradient(135deg, #312e81, #4f46e5)",
+    "border": "#a5b4fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e1b4b\"/><path d=\"M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z\" fill=\"#4338ca\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"44\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><circle cx=\"58\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><polygon points=\"50,18 53,26 62,26 55,31 58,39 50,34 42,39 45,31 38,26 47,26\" fill=\"#e0e7ff\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#4f46e5\" stroke-width=\"2\" fill=\"none\"/><path d=\"M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z\" fill=\"#4338ca\"/></svg>"
+  },
+  {
+    "id": "girl_valkyrie",
+    "name": "Kiber Valkiriya",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Moviy qanotli shafqatsiz kiber-jangchi",
+    "bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+    "border": "#38bdf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#bae6fd\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#bae6fd\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#0284c7\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#bae6fd\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#0284c7\" stroke=\"#bae6fd\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_frost_princess",
+    "name": "Qor Malikasi",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Muz billurlari va ayoz toji sohibasi",
+    "bg": "linear-gradient(135deg, #075985, #0284c7)",
+    "border": "#7dd3fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#e0f2fe\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#e0f2fe\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#0369a1\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#0369a1\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#e0f2fe\"/></svg>"
+  },
+  {
+    "id": "girl_storm_maiden",
+    "name": "Chaqmoq Qizi",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Yashin chaqnashi bilan harakatlanuvchi",
+    "bg": "linear-gradient(135deg, #3730a3, #4338ca)",
+    "border": "#818cf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#c7d2fe\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#c7d2fe\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#312e81\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#c7d2fe\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#312e81\" stroke=\"#c7d2fe\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_shadow_dancer",
+    "name": "Soya Raqqosasi",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Tungi soyalarda suzib yuruvchi mohir jangchi",
+    "bg": "linear-gradient(135deg, #18181b, #27272a)",
+    "border": "#a1a1aa",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#f43f5e\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#f43f5e\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#3f3f46\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#f43f5e\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#3f3f46\" stroke=\"#f43f5e\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_solar_maiden",
+    "name": "Quyosh Qizi",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Tonggi shafaq nurlari bilan nurlangan",
+    "bg": "linear-gradient(135deg, #b45309, #d97706)",
+    "border": "#fbbf24",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#fef08a\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#fef08a\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#ca8a04\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#ca8a04\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#fef08a\"/></svg>"
+  },
+  {
+    "id": "girl_enchantress",
+    "name": "Afsungar Malika",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Binafsha afsunlar to'quvchi go'zal",
+    "bg": "linear-gradient(135deg, #701a75, #c026d3)",
+    "border": "#f0abfc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#fae8ff\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#fae8ff\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#a21caf\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#a21caf\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#fae8ff\"/></svg>"
+  },
+  {
+    "id": "girl_blade_master",
+    "name": "Lazer Qilich Ustasi",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Tig'i bilan o'qlarni qaytaruvchi botir",
+    "bg": "linear-gradient(135deg, #831843, #db2777)",
+    "border": "#f472b6",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#fce7f3\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#fce7f3\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#be185d\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#fce7f3\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#be185d\" stroke=\"#fce7f3\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_star_seer",
+    "name": "Yulduzlar Bashoratchisi",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Kelajakni kristal shar orqali ko'ruvchi",
+    "bg": "linear-gradient(135deg, #1e1b4b, #6366f1)",
+    "border": "#a5b4fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e1b4b\"/><path d=\"M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z\" fill=\"#4f46e5\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"44\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><circle cx=\"58\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><polygon points=\"50,18 53,26 62,26 55,31 58,39 50,34 42,39 45,31 38,26 47,26\" fill=\"#e0e7ff\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#4f46e5\" stroke-width=\"2\" fill=\"none\"/><path d=\"M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z\" fill=\"#4f46e5\"/></svg>"
+  },
+  {
+    "id": "girl_crystal_maiden",
+    "name": "Brilliant Qiz",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Qimmatbaho javohirlar bilan bezangan",
+    "bg": "linear-gradient(135deg, #0e7490, #06b6d4)",
+    "border": "#67e8f9",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#cffafe\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#cffafe\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#0891b2\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#0891b2\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#cffafe\"/></svg>"
+  },
+  {
+    "id": "girl_flame_warden",
+    "name": "Olov Qorovuli Qiz",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Iliq olovlar va qizil alangalar homiysi",
+    "bg": "linear-gradient(135deg, #991b1b, #ea580c)",
+    "border": "#fb923c",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#fed7aa\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#fed7aa\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#c2410c\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#c2410c\" stroke=\"#fed7aa\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_forest_guardian",
+    "name": "O'rmon Qo'riqchisi",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Barcha jonzotlarning sirdoshi va do'sti",
+    "bg": "linear-gradient(135deg, #064e3b, #10b981)",
+    "border": "#6ee7b7",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#d1fae5\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#d1fae5\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#059669\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#d1fae5\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#059669\" stroke=\"#d1fae5\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_cyber_medic",
+    "name": "Nano-Shifokor Qiz",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Jarohatlarni bir lahzada davolovchi",
+    "bg": "linear-gradient(135deg, #0f766e, #14b8a6)",
+    "border": "#5eead4",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#ccfbf1\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#ccfbf1\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#0d9488\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#ccfbf1\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#0d9488\" stroke=\"#ccfbf1\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_wind_walker",
+    "name": "Shabada Qizi",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Havo oqimlarida yengil uchuvchi",
+    "bg": "linear-gradient(135deg, #1e3a8a, #38bdf8)",
+    "border": "#7dd3fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e1b4b\"/><path d=\"M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z\" fill=\"#0284c7\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"44\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><circle cx=\"58\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><polygon points=\"50,18 53,26 62,26 55,31 58,39 50,34 42,39 45,31 38,26 47,26\" fill=\"#e0f2fe\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#4f46e5\" stroke-width=\"2\" fill=\"none\"/><path d=\"M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z\" fill=\"#0284c7\"/></svg>"
+  },
+  {
+    "id": "girl_lunar_scout",
+    "name": "Oy Yo'lchisi",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "To'lin oy ostida yo'l topuvchi yo'lboshchi",
+    "bg": "linear-gradient(135deg, #312e81, #818cf8)",
+    "border": "#c7d2fe",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e1b4b\"/><path d=\"M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z\" fill=\"#4338ca\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"44\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><circle cx=\"58\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><polygon points=\"50,18 53,26 62,26 55,31 58,39 50,34 42,39 45,31 38,26 47,26\" fill=\"#eef2ff\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#4f46e5\" stroke-width=\"2\" fill=\"none\"/><path d=\"M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z\" fill=\"#4338ca\"/></svg>"
+  },
+  {
+    "id": "girl_neon_geisha",
+    "name": "Kiber Geysha",
+    "gender": "girl",
+    "rarity": "Rare",
+    "tagline": "Neon yelpig'ichli yapon kiber-afsonasi",
+    "bg": "linear-gradient(135deg, #9d174d, #f43f5e)",
+    "border": "#fda4af",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#4a044e\"/><path d=\"M26 34 C26 14 74 14 74 34 L76 68 L70 70 L68 44 L32 44 L30 70 L24 68 Z\" fill=\"#e11d48\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z\" fill=\"#e11d48\"/><circle cx=\"50\" cy=\"78\" r=\"3\" fill=\"#ffe4e6\"/></svg>"
+  },
+  {
+    "id": "girl_nebula_empress",
+    "name": "Tumanlik Imperatrisasi",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Kosmik fazoviy tumanliklar hukmdori",
+    "bg": "linear-gradient(135deg, #581c87, #9333ea)",
+    "border": "#c084fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#fae8ff\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#fae8ff\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#7e22ce\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#7e22ce\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#fae8ff\"/></svg>"
+  },
+  {
+    "id": "girl_dragon_priestess",
+    "name": "Ajdarho Kohinasi",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Qadimgi olovli ajdarlar bilan so'zlashuvchi",
+    "bg": "linear-gradient(135deg, #7f1d1d, #dc2626)",
+    "border": "#f87171",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#450a0a\"/><path d=\"M32 20 L42 32 L34 36 Z\" fill=\"#fca5a5\"/><path d=\"M68 20 L58 32 L66 36 Z\" fill=\"#fca5a5\"/><path d=\"M28 36 C28 18 72 18 72 36 L74 66 L66 64 L64 44 L36 44 L34 64 L26 66 Z\" fill=\"#991b1b\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><ellipse cx=\"43\" cy=\"49\" rx=\"4\" ry=\"2.5\" fill=\"#fca5a5\"/><ellipse cx=\"57\" cy=\"49\" rx=\"4\" ry=\"2.5\" fill=\"#fca5a5\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#ef4444\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#7f1d1d\" stroke=\"#fca5a5\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_phoenix_maiden",
+    "name": "Qaqnus Go'zali",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Oltin olov qanotlariga ega afsona",
+    "bg": "linear-gradient(135deg, #9a3412, #f97316)",
+    "border": "#fbbf24",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#450a0a\"/><path d=\"M32 20 L42 32 L34 36 Z\" fill=\"#fef08a\"/><path d=\"M68 20 L58 32 L66 36 Z\" fill=\"#fef08a\"/><path d=\"M28 36 C28 18 72 18 72 36 L74 66 L66 64 L64 44 L36 44 L34 64 L26 66 Z\" fill=\"#991b1b\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><ellipse cx=\"43\" cy=\"49\" rx=\"4\" ry=\"2.5\" fill=\"#fef08a\"/><ellipse cx=\"57\" cy=\"49\" rx=\"4\" ry=\"2.5\" fill=\"#fef08a\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#ef4444\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#7f1d1d\" stroke=\"#fef08a\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_celestial_archangel",
+    "name": "Farishtalar Malakasi",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Nurli qanotlar va osmon taxtining himoyachisi",
+    "bg": "linear-gradient(135deg, #1e3a8a, #60a5fa)",
+    "border": "#93c5fd",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#ffffff\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#ffffff\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#3b82f6\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#ffffff\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#3b82f6\" stroke=\"#ffffff\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_cyber_queen",
+    "name": "Kiber Qirolicha",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Matrix va kiber-shahar boshqaruvchisi",
+    "bg": "linear-gradient(135deg, #09090b, #06b6d4)",
+    "border": "#22d3ee",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#a5f3fc\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#a5f3fc\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#0891b2\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#0891b2\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#a5f3fc\"/></svg>"
+  },
+  {
+    "id": "girl_abyss_siren",
+    "name": "Sirli Sirena",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Okeanlar qa'ridagi gipnoz kuchi sohibi",
+    "bg": "linear-gradient(135deg, #083344, #0e7490)",
+    "border": "#38bdf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#67e8f9\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#67e8f9\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#0284c7\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#67e8f9\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#0284c7\" stroke=\"#67e8f9\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_chrono_witch",
+    "name": "Vaqt Jodugari",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Daqiqalarni to'xtatib qo'yuvchi daho",
+    "bg": "linear-gradient(135deg, #3b0764, #7e22ce)",
+    "border": "#d8b4fe",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e1b4b\"/><path d=\"M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z\" fill=\"#6b21a8\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"44\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><circle cx=\"58\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><polygon points=\"50,18 53,26 62,26 55,31 58,39 50,34 42,39 45,31 38,26 47,26\" fill=\"#f3e8ff\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#4f46e5\" stroke-width=\"2\" fill=\"none\"/><path d=\"M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z\" fill=\"#6b21a8\"/></svg>"
+  },
+  {
+    "id": "girl_astral_dancer",
+    "name": "Astral Sayohatchi",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Ruhlar olami va yulduzlararo raqs",
+    "bg": "linear-gradient(135deg, #1e1b4b, #4f46e5)",
+    "border": "#a5b4fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e1b4b\"/><path d=\"M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z\" fill=\"#4338ca\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"44\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><circle cx=\"58\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><polygon points=\"50,18 53,26 62,26 55,31 58,39 50,34 42,39 45,31 38,26 47,26\" fill=\"#e0e7ff\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#4f46e5\" stroke-width=\"2\" fill=\"none\"/><path d=\"M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z\" fill=\"#4338ca\"/></svg>"
+  },
+  {
+    "id": "girl_solar_valkyrie",
+    "name": "Quyosh Valkiriyasi",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Oltin zirhli yengilmas quyosh jangarisi",
+    "bg": "linear-gradient(135deg, #78350f, #f59e0b)",
+    "border": "#fde047",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#fef08a\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#fef08a\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#d97706\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#fef08a\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#d97706\" stroke=\"#fef08a\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_void_princess",
+    "name": "Bo'shliq Malikasi",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Qora olmoslar bilan bezatilgan tojsiz qirolicha",
+    "bg": "linear-gradient(135deg, #020617, #334155)",
+    "border": "#94a3b8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#f1f5f9\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#f1f5f9\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#1e293b\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#1e293b\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#f1f5f9\"/></svg>"
+  },
+  {
+    "id": "girl_sakura_goddess",
+    "name": "Bahor Ma'budasi",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Har qadamida gullar ochiluvchi mo'jiza",
+    "bg": "linear-gradient(135deg, #831843, #ec4899)",
+    "border": "#f472b6",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#4a044e\"/><path d=\"M26 34 C26 14 74 14 74 34 L76 68 L70 70 L68 44 L32 44 L30 70 L24 68 Z\" fill=\"#db2777\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M26 88 C26 75 36 72 50 72 C64 72 74 75 74 88 Z\" fill=\"#db2777\"/><circle cx=\"50\" cy=\"78\" r=\"3\" fill=\"#fce7f3\"/></svg>"
+  },
+  {
+    "id": "girl_glacier_queen",
+    "name": "Muzliklar Hukmdori",
+    "gender": "girl",
+    "rarity": "Epic",
+    "tagline": "Shimoliy qutbning mutlaq hukmroni",
+    "bg": "linear-gradient(135deg, #0c4a6e, #38bdf8)",
+    "border": "#7dd3fc",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#f0f9ff\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#f0f9ff\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#0284c7\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#0284c7\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#f0f9ff\"/></svg>"
+  },
+  {
+    "id": "girl_golden_empress",
+    "name": "Oltin Tojli Malika",
+    "gender": "girl",
+    "rarity": "Legendary",
+    "tagline": "Oltin tojli maftunkor malika",
+    "bg": "linear-gradient(135deg, #831843, #db2777, #f59e0b)",
+    "border": "#fde047",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#fef08a\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#fef08a\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#be185d\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#be185d\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#fef08a\"/></svg>"
+  },
+  {
+    "id": "girl_goddess_celestia",
+    "name": "Kosmik Ma'buda",
+    "gender": "girl",
+    "rarity": "Legendary",
+    "tagline": "Oliy ilohiy nurlar to'kuvchi malika",
+    "bg": "linear-gradient(135deg, #581c87, #a855f7, #ec4899)",
+    "border": "#f472b6",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#fdf2f8\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#fdf2f8\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#9333ea\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#9333ea\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#fdf2f8\"/></svg>"
+  },
+  {
+    "id": "girl_dragon_empress",
+    "name": "Olovli Ajdar Malikasi",
+    "gender": "girl",
+    "rarity": "Legendary",
+    "tagline": "Olov taxtiga ega yengilmas hukmdor",
+    "bg": "linear-gradient(135deg, #450a0a, #dc2626, #f97316)",
+    "border": "#fde047",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#450a0a\"/><path d=\"M32 20 L42 32 L34 36 Z\" fill=\"#fef08a\"/><path d=\"M68 20 L58 32 L66 36 Z\" fill=\"#fef08a\"/><path d=\"M28 36 C28 18 72 18 72 36 L74 66 L66 64 L64 44 L36 44 L34 64 L26 66 Z\" fill=\"#991b1b\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><ellipse cx=\"43\" cy=\"49\" rx=\"4\" ry=\"2.5\" fill=\"#fef08a\"/><ellipse cx=\"57\" cy=\"49\" rx=\"4\" ry=\"2.5\" fill=\"#fef08a\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#ef4444\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#7f1d1d\" stroke=\"#fef08a\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_galaxy_queen",
+    "name": "Galaktika Qirolichasi",
+    "gender": "girl",
+    "rarity": "Legendary",
+    "tagline": "Yulduzlar toji bilan porlagan afsona",
+    "bg": "linear-gradient(135deg, #1e1b4b, #6366f1, #38bdf8)",
+    "border": "#67e8f9",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#ffffff\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#4f46e5\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#4f46e5\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#ffffff\"/></svg>"
+  },
+  {
+    "id": "girl_light_bringer",
+    "name": "Yorug'lik Keltiruvchi",
+    "gender": "girl",
+    "rarity": "Legendary",
+    "tagline": "Zulmatni haydab nur taratuvchi oliy zot",
+    "bg": "linear-gradient(135deg, #713f12, #eab308, #ffffff)",
+    "border": "#fef08a",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#ffffff\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#ca8a04\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#ca8a04\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#ffffff\"/></svg>"
+  },
+  {
+    "id": "girl_infinite_time",
+    "name": "Vaqtlar Ma'budasi",
+    "gender": "girl",
+    "rarity": "Legendary",
+    "tagline": "Taqdirlar ipini to'quvchi donishmand",
+    "bg": "linear-gradient(135deg, #083344, #06b6d4, #a5f3fc)",
+    "border": "#22d3ee",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#f0fdfa\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#f0fdfa\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#0891b2\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#0891b2\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#f0fdfa\"/></svg>"
+  },
+  {
+    "id": "girl_phoenix_empress",
+    "name": "Abadiy Qaqnus Malikasi",
+    "gender": "girl",
+    "rarity": "Legendary",
+    "tagline": "O'lim ustidan kulib yashovchi malika",
+    "bg": "linear-gradient(135deg, #7c2d12, #ea580c, #fde047)",
+    "border": "#facc15",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#450a0a\"/><path d=\"M32 20 L42 32 L34 36 Z\" fill=\"#fffbeb\"/><path d=\"M68 20 L58 32 L66 36 Z\" fill=\"#fffbeb\"/><path d=\"M28 36 C28 18 72 18 72 36 L74 66 L66 64 L64 44 L36 44 L34 64 L26 66 Z\" fill=\"#991b1b\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><ellipse cx=\"43\" cy=\"49\" rx=\"4\" ry=\"2.5\" fill=\"#fffbeb\"/><ellipse cx=\"57\" cy=\"49\" rx=\"4\" ry=\"2.5\" fill=\"#fffbeb\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#ef4444\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#7f1d1d\" stroke=\"#fffbeb\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_nature_goddess",
+    "name": "Tabiat Oliy Onasi",
+    "gender": "girl",
+    "rarity": "Legendary",
+    "tagline": "Yer yuzidagi barcha hayotning yaratuvchisi",
+    "bg": "linear-gradient(135deg, #064e3b, #10b981, #bef264)",
+    "border": "#86efac",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#f7fee7\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#f7fee7\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#059669\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#059669\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#f7fee7\"/></svg>"
+  },
+  {
+    "id": "girl_mythic_starlight",
+    "name": "Ibtidoiy Yulduz Onasi",
+    "gender": "girl",
+    "rarity": "Mythic",
+    "tagline": "Koinotdagi birinchi yulduz chaqnashi",
+    "bg": "linear-gradient(135deg, #4a044e, #c026d3, #ffffff)",
+    "border": "#ffffff",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#ffffff\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#9333ea\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#9333ea\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#ffffff\"/></svg>"
+  },
+  {
+    "id": "girl_mythic_valkyrie_prime",
+    "name": "Oliy Kiber Valkiriya",
+    "gender": "girl",
+    "rarity": "Mythic",
+    "tagline": "Barcha dunyolararo janggohlar g'olibi",
+    "bg": "linear-gradient(135deg, #022c22, #0284c7, #ffffff)",
+    "border": "#38bdf8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#0f172a\"/><path d=\"M20 32 L36 40 L28 46 Z\" fill=\"#ffffff\"/><path d=\"M80 32 L64 40 L72 46 Z\" fill=\"#ffffff\"/><path d=\"M30 38 C30 20 70 20 70 38 L74 62 L66 60 L64 42 L36 42 L34 60 L26 62 Z\" fill=\"#0891b2\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><rect x=\"34\" y=\"34\" width=\"32\" height=\"5\" rx=\"2\" fill=\"#ffffff\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#0f766e\"/><path d=\"M46 62 Q50 65 54 62\" stroke=\"#0d9488\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#0891b2\" stroke=\"#ffffff\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_mythic_dragon_sovereign",
+    "name": "Qadimgi Ajdar Hukmdori",
+    "gender": "girl",
+    "rarity": "Mythic",
+    "tagline": "Dunyo tug'ilishidagi ajdarlar ajdadi",
+    "bg": "linear-gradient(135deg, #450a0a, #ea580c, #ffffff)",
+    "border": "#facc15",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#450a0a\"/><path d=\"M32 20 L42 32 L34 36 Z\" fill=\"#ffffff\"/><path d=\"M68 20 L58 32 L66 36 Z\" fill=\"#ffffff\"/><path d=\"M28 36 C28 18 72 18 72 36 L74 66 L66 64 L64 44 L36 44 L34 64 L26 66 Z\" fill=\"#991b1b\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><ellipse cx=\"43\" cy=\"49\" rx=\"4\" ry=\"2.5\" fill=\"#ffffff\"/><ellipse cx=\"57\" cy=\"49\" rx=\"4\" ry=\"2.5\" fill=\"#ffffff\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#ef4444\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 74 36 72 50 72 C64 72 76 74 76 88 Z\" fill=\"#7f1d1d\" stroke=\"#ffffff\" stroke-width=\"1.5\"/></svg>"
+  },
+  {
+    "id": "girl_mythic_eternity",
+    "name": "Cheksizlik Timsoli",
+    "gender": "girl",
+    "rarity": "Mythic",
+    "tagline": "Vaqt va makon tugagan joydagi abadiyat",
+    "bg": "linear-gradient(135deg, #1e1b4b, #a855f7, #ffffff)",
+    "border": "#fbcfe8",
+    "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#581c87\"/><circle cx=\"50\" cy=\"50\" r=\"45\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><polygon points=\"32,32 40,20 50,28 60,20 68,32 50,36\" fill=\"#ffffff\" stroke=\"#fff\" stroke-width=\"1.2\"/><circle cx=\"40\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><circle cx=\"50\" cy=\"28\" r=\"3\" fill=\"#38bdf8\"/><circle cx=\"60\" cy=\"20\" r=\"2.5\" fill=\"#f43f5e\"/><path d=\"M26 38 C26 18 74 18 74 38 L78 68 L70 70 L68 44 L32 44 L30 70 L22 68 Z\" fill=\"#6366f1\"/><circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><circle cx=\"57\" cy=\"50\" r=\"3\" fill=\"#be185d\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#db2777\" stroke-width=\"2\" fill=\"none\"/><path d=\"M24 88 C24 75 36 72 50 72 C64 72 76 75 76 88 Z\" fill=\"#6366f1\"/><circle cx=\"50\" cy=\"78\" r=\"4\" fill=\"#ffffff\"/></svg>"
   }
 ];
 
@@ -3503,6 +4963,185 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         name: chosenGirl.name,
         desc: chosenGirl.tagline,
         icon: chosenGirl.name
+      };
+    }
+  }
+
+  
+  if (pack.type === "cyber_neon") {
+    var roll = Math.random() * 100;
+    if (roll < 35) {
+      // Cyber Neon Avatars (boys/girls)
+      var cyberAvatars = (window.ETHITH_AVATARS || []).filter(function(a) {
+        return (a.id.indexOf('cyber') !== -1 || a.id.indexOf('neon') !== -1 || a.id.indexOf('mecha') !== -1 || a.id.indexOf('ninja') !== -1 || a.id.indexOf('valkyrie') !== -1) && (a.rarity === rarity || !rarity);
+      });
+      if (!cyberAvatars.length) cyberAvatars = (window.ETHITH_AVATARS || []).filter(function(a) { return a.rarity === rarity || !rarity; });
+      var ch = cyberAvatars[Math.floor(Math.random() * cyberAvatars.length)];
+      return {
+        type: "avatar",
+        rarity: ch.rarity,
+        avatar: ch,
+        name: ch.name,
+        desc: "Cyber Neon Packdan ochilgan futuristik personaj!",
+        icon: ch.name
+      };
+    } else if (roll < 65) {
+      var amounts = [400, 550, 750, 1100];
+      var amt = amounts[Math.floor(Math.random() * amounts.length)];
+      return {
+        type: "coins",
+        rarity: rarity,
+        amount: amt,
+        name: amt + " ETHITH Coin!",
+        desc: "Kiber Neon xazinasidan chiqqan tangalar!",
+        icon: "⚡"
+      };
+    } else {
+      var cyberEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) {
+        return !e.isDefault && (e.emoji === '⚡' || e.emoji === '🤖' || e.emoji === '🛸' || e.emoji === '🔮' || e.emoji === '👾' || e.emoji === '🚀' || e.emoji === '🔋');
+      });
+      if (!cyberEmojis.length) cyberEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
+      var em = cyberEmojis[Math.floor(Math.random() * cyberEmojis.length)];
+      return {
+        type: "emoji",
+        rarity: em.rarity,
+        emoji: em.emoji,
+        name: em.emoji + " " + em.name,
+        desc: "Cyber Neon chat emojisi ochildi!",
+        icon: em.emoji
+      };
+    }
+  }
+
+  if (pack.type === "mythic_dragon") {
+    var roll = Math.random() * 100;
+    if (roll < 40) {
+      // Dragon Avatars
+      var dragonAvatars = (window.ETHITH_AVATARS || []).filter(function(a) {
+        return (a.id.indexOf('dragon') !== -1 || a.id.indexOf('phoenix') !== -1 || a.id.indexOf('flame') !== -1 || a.id.indexOf('inferno') !== -1) && (a.rarity === rarity || !rarity);
+      });
+      if (!dragonAvatars.length) dragonAvatars = (window.ETHITH_AVATARS || []).filter(function(a) { return a.rarity === 'Epic' || a.rarity === 'Legendary' || a.rarity === 'Mythic'; });
+      var ch = dragonAvatars[Math.floor(Math.random() * dragonAvatars.length)];
+      return {
+        type: "avatar",
+        rarity: ch.rarity,
+        avatar: ch,
+        name: ch.name,
+        desc: "Mythic Dragon Sovereign Packdan qadimiy ajdarho personaji!",
+        icon: ch.name
+      };
+    } else if (roll < 70) {
+      var amounts = [500, 700, 950, 1500];
+      var amt = amounts[Math.floor(Math.random() * amounts.length)];
+      return {
+        type: "coins",
+        rarity: rarity,
+        amount: amt,
+        name: amt + " ETHITH Coin!",
+        desc: "Olovli ajdarho xazinasidan chiqqan tangalar!",
+        icon: "🐉"
+      };
+    } else {
+      var dragonEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) {
+        return !e.isDefault && (e.emoji === '🐉' || e.emoji === '🔥' || e.emoji === '🌋' || e.emoji === '💥' || e.emoji === '☄️' || e.emoji === '🩸');
+      });
+      if (!dragonEmojis.length) dragonEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
+      var em = dragonEmojis[Math.floor(Math.random() * dragonEmojis.length)];
+      return {
+        type: "emoji",
+        rarity: em.rarity,
+        emoji: em.emoji,
+        name: em.emoji + " " + em.name,
+        desc: "Mythic Dragon maxsus olovli reaksiyasi!",
+        icon: em.emoji
+      };
+    }
+  }
+
+  if (pack.type === "galaxy_nebula") {
+    var roll = Math.random() * 100;
+    if (roll < 40) {
+      var galaxyAvatars = (window.ETHITH_AVATARS || []).filter(function(a) {
+        return (a.id.indexOf('galaxy') !== -1 || a.id.indexOf('cosmic') !== -1 || a.id.indexOf('star') !== -1 || a.id.indexOf('nebula') !== -1 || a.id.indexOf('quantum') !== -1 || a.id.indexOf('celestial') !== -1) && (a.rarity === rarity || !rarity);
+      });
+      if (!galaxyAvatars.length) galaxyAvatars = (window.ETHITH_AVATARS || []).filter(function(a) { return a.rarity === rarity || !rarity; });
+      var ch = galaxyAvatars[Math.floor(Math.random() * galaxyAvatars.length)];
+      return {
+        type: "avatar",
+        rarity: ch.rarity,
+        avatar: ch,
+        name: ch.name,
+        desc: "Galaxy Nebula Packdan kosmik sayohatchi personaji!",
+        icon: ch.name
+      };
+    } else if (roll < 70) {
+      var amounts = [350, 500, 750, 1200];
+      var amt = amounts[Math.floor(Math.random() * amounts.length)];
+      return {
+        type: "coins",
+        rarity: rarity,
+        amount: amt,
+        name: amt + " ETHITH Coin!",
+        desc: "Yulduzlar changi xazinasidan chiqqan tangalar!",
+        icon: "🌌"
+      };
+    } else {
+      var galaxyEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) {
+        return !e.isDefault && (e.emoji === '🌌' || e.emoji === '🪐' || e.emoji === '🚀' || e.emoji === '🌠' || e.emoji === '🛸' || e.emoji === '🌟');
+      });
+      if (!galaxyEmojis.length) galaxyEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
+      var em = galaxyEmojis[Math.floor(Math.random() * galaxyEmojis.length)];
+      return {
+        type: "emoji",
+        rarity: em.rarity,
+        emoji: em.emoji,
+        name: em.emoji + " " + em.name,
+        desc: "Galaxy Nebula kosmik emojisi ochildi!",
+        icon: em.emoji
+      };
+    }
+  }
+
+  if (pack.type === "royal_crown") {
+    var roll = Math.random() * 100;
+    if (roll < 45) {
+      var royalAvatars = (window.ETHITH_AVATARS || []).filter(function(a) {
+        return (a.id.indexOf('emperor') !== -1 || a.id.indexOf('king') !== -1 || a.id.indexOf('queen') !== -1 || a.id.indexOf('princess') !== -1 || a.id.indexOf('royal') !== -1 || a.id.indexOf('god') !== -1 || a.id.indexOf('golden') !== -1) && (a.rarity === rarity || !rarity);
+      });
+      if (!royalAvatars.length) royalAvatars = (window.ETHITH_AVATARS || []).filter(function(a) { return a.rarity === 'Legendary' || a.rarity === 'Mythic' || a.rarity === 'Epic'; });
+      var ch = royalAvatars[Math.floor(Math.random() * royalAvatars.length)];
+      return {
+        type: "avatar",
+        rarity: ch.rarity,
+        avatar: ch,
+        name: ch.name,
+        desc: "Royal Golden Crown Packdan oliy hukmdorlik toji egasi!",
+        icon: ch.name
+      };
+    } else if (roll < 75) {
+      var amounts = [600, 850, 1250, 2000];
+      var amt = amounts[Math.floor(Math.random() * amounts.length)];
+      return {
+        type: "coins",
+        rarity: rarity,
+        amount: amt,
+        name: amt + " ETHITH Coin!",
+        desc: "Shohona oltin toj xazinasidan chiqqan tangalar!",
+        icon: "👑"
+      };
+    } else {
+      var royalEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) {
+        return !e.isDefault && (e.emoji === '👑' || e.emoji === '💎' || e.emoji === '🏆' || e.emoji === '🥇' || e.emoji === '⚜️' || e.emoji === '🔱');
+      });
+      if (!royalEmojis.length) royalEmojis = (window.ETHITH_CHAT_EMOJIS || []).filter(function(e) { return !e.isDefault; });
+      var em = royalEmojis[Math.floor(Math.random() * royalEmojis.length)];
+      return {
+        type: "emoji",
+        rarity: em.rarity,
+        emoji: em.emoji,
+        name: em.emoji + " " + em.name,
+        desc: "Shohona oltin toj reaksiyasi ochildi!",
+        icon: em.emoji
       };
     }
   }

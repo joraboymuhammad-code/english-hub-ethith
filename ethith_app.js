@@ -73,11 +73,12 @@
     S.deletedQuizIds.push('quiz_main_blitz');
   }
   if (!S.notifications) S.notifications = [];
-  if (!Array.isArray(S.quizzes)) S.quizzes = [];
-  // Ensure deleted quizzes are permanently filtered out
-  S.quizzes = S.quizzes.filter(function(q) {
-    return q && S.deletedQuizIds.indexOf(q.id) === -1 && S.deletedQuizIds.indexOf(q.code) === -1;
-  });
+  if (!Array.isArray(S.accounts)) S.accounts = [];
+  if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
+  if (S.user) {
+    if (!S.user.boosters) S.user.boosters = { '50_50': 0, 'time_freeze': 0, 'shield': 0, 'booster_2x': 0 };
+    if (S.user.booster2xUntil === undefined) S.user.booster2xUntil = 0;
+  }
   if (!Array.isArray(S.accounts)) S.accounts = [];
 
   if (S.user) {
@@ -478,7 +479,11 @@
                 id: newAcc.id,
                 name: newAcc.name,
                 email: newAcc.email,
-                role: 'student'
+                role: 'student',
+                coins: newAcc.coins || 0,
+                avatar: newAcc.avatar || null,
+                level: newAcc.level || 'A1',
+                joinedAt: newAcc.createdAt || Date.now()
               }
             });
           }
