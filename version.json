@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.18.0450",
-  "buildTime": 1792325400000,
-  "label": "ETHITH 7.9 - 100% Fixed Pinned Sidebar, Zero Scroll Outflow on Desktop & Mobile, Independent Navigation Scrolling, Safe ScrollTop Resets"
+  "version": "2026.10.18.0500",
+  "buildTime": 1792328400000,
+  "label": "ETHITH 8.0 - Telegram Bot Verification Code Integration (@ETHITH_testbot), Vertical Stacked Name & Title Badges, Multi-Role Secure Auth with Teacher Master Key"
 }

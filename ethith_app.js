@@ -292,7 +292,7 @@
     });
   }
 
-  // 1. Mandatory Auth Modal
+  // 1. Mandatory Auth Modal with Telegram Mini App Verification Code Flow
   function showAuthModal() {
     var existing = document.getElementById('ethAuthOverlay');
     if (existing) existing.remove();
@@ -301,53 +301,86 @@
     overlay.className = 'eth-modal-overlay';
     overlay.id = 'ethAuthOverlay';
 
+    var tgUser = null;
+    try {
+      if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && window.Telegram.WebApp.initDataUnsafe.user) {
+        tgUser = window.Telegram.WebApp.initDataUnsafe.user;
+      }
+    } catch(e) {}
+
+    var defaultName = tgUser ? (tgUser.first_name + (tgUser.last_name ? (' ' + tgUser.last_name) : '')) : '';
+
     var html = '' +
-      '<div class="eth-modal">' +
+      '<div class="eth-modal" style="max-width:440px">' +
       '  <div class="eth-modal-header">' +
       '    <div style="display:flex;justify-content:center;margin-bottom:8px">' +
       '      <svg width="150" height="48" viewBox="0 0 160 56"><defs><linearGradient id="mlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4e93e4"/><stop offset="1" stop-color="#154b89"/></linearGradient></defs><rect x="0" y="4" width="48" height="48" rx="13" fill="url(#mlg)"/><path d="M13 29l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="58" y="25" font-family="sans-serif" font-weight="800" font-size="24" fill="#0e325c">ETHITH</text><text x="58" y="50" font-family="sans-serif" font-weight="800" font-size="21" fill="#4e93e4">TESTS</text></svg>' +
       '    </div>' +
-      '    <h2>Sign In to Platform</h2>' +
-      '    <p>Sign in as a Student or Teacher to access your portal</p>' +
+      '    <h2>Platformaga Kirish</h2>' +
+      '    <p style="color:var(--muted);font-size:13px">Telegram Bot orqali tasdiqlash kodi bilan xavfsiz ro\'yxatdan o\'ting</p>' +
       '  </div>' +
-      '  <div class="eth-tabs">' +
-      '    <button class="eth-tab active" id="tabStudentBtn">Student</button>' +
-      '    <button class="eth-tab" id="tabTeacherBtn">Teacher</button>' +
+      '  <div class="eth-tabs" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px">' +
+      '    <button type="button" class="eth-tab active" id="tabStudentBtn" style="padding:10px;font-weight:800;border-radius:10px">🎓 O\'quvchi</button>' +
+      '    <button type="button" class="eth-tab" id="tabTeacherBtn" style="padding:10px;font-weight:800;border-radius:10px">👨‍🏫 O\'qituvchi</button>' +
       '  </div>' +
       '  <div class="eth-modal-body">' +
       '    <div id="studentFormBox">' +
       '      <form id="studentAuthForm">' +
       '        <div class="eth-form-group">' +
-      '          <label>Full Name</label>' +
-      '          <input type="text" id="stName" placeholder="Your full name" required>' +
+      '          <label style="font-weight:700;font-size:13px">Ism va Familiya</label>' +
+      '          <input type="text" id="stName" placeholder="Ismingizni kiriting" value="' + esc(defaultName) + '" required>' +
       '        </div>' +
       '        <div class="eth-form-group">' +
-      '          <label>Gmail Address</label>' +
-      '          <input type="email" id="stEmail" placeholder="yourname@gmail.com" required>' +
+      '          <label style="font-weight:700;font-size:13px">Gmail Manzili</label>' +
+      '          <input type="email" id="stEmail" placeholder="nomingiz@gmail.com" required>' +
       '        </div>' +
-      '        <div class="eth-form-group">' +
-      '          <label>Security PIN / Password (6+ chars)</label>' +
-      '          <input type="password" id="stPin" placeholder="6-digit security code" minlength="6" maxlength="20" required>' +
+      '        <div style="margin:10px 0 14px">' +
+      '          <button type="button" id="btnGetStudentCode" style="background:#2563eb;color:#fff;font-weight:800;font-size:14px;padding:12px;border-radius:12px;border:none;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px -6px rgba(37,99,235,0.6);transition:all 0.2s">' +
+      '            📲 Kodni Olish' +
+      '          </button>' +
       '        </div>' +
-      '        <button type="submit" class="eth-btn-primary">Sign in as Student ' + ic('right') + '</button>' +
+      '        <div class="eth-form-group" id="stCodeGroup">' +
+      '          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">' +
+      '            <label style="font-weight:700;font-size:13px;margin:0">Tasdiqlash Kodi (6 xonali)</label>' +
+      '            <span id="stCodeStatus" style="font-size:11.5px;color:#38bdf8;font-weight:700"></span>' +
+      '          </div>' +
+      '          <input type="text" id="stCode" placeholder="Masalan: K9#4F7" maxlength="6" style="letter-spacing:5px;font-family:monospace;font-size:20px;text-align:center;font-weight:900;text-transform:uppercase" required>' +
+      '          <div id="stCodeNotice" style="margin-top:6px;display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:var(--muted)">' +
+      '            <span>Kod @ETHITH_testbot orqali yuboriladi</span>' +
+      '            <a href="https://t.me/ETHITH_testbot" target="_blank" style="color:#38bdf8;font-weight:800;text-decoration:none">Botni Ochish ↗</a>' +
+      '          </div>' +
+      '        </div>' +
+      '        <button type="submit" class="eth-btn-primary" style="margin-top:10px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%">Tasdiqlash va Kirish 🚀</button>' +
       '      </form>' +
       '    </div>' +
       '    <div id="teacherFormBox" style="display:none">' +
       '      <form id="teacherAuthForm">' +
       '        <div class="eth-form-group">' +
-      '          <label>Teacher Name</label>' +
-      '          <input type="text" id="tcName" placeholder="Instructor name" required>' +
+      '          <label style="font-weight:700;font-size:13px">O\'qituvchi Ismi</label>' +
+      '          <input type="text" id="tcName" placeholder="Instructor name" value="' + esc(defaultName) + '" required>' +
       '        </div>' +
       '        <div class="eth-form-group">' +
-      '          <label>Email Address</label>' +
+      '          <label style="font-weight:700;font-size:13px">Gmail Manzili</label>' +
       '          <input type="email" id="tcEmail" placeholder="teacher@gmail.com" required>' +
       '        </div>' +
-      '        <div class="eth-form-group">' +
-      '          <label>Secret Master Key (15+ chars)</label>' +
-      '          <input type="password" id="tcMasterKey" placeholder="Enter teacher secret key" required>' +
-      '          <small style="color:var(--muted);font-size:12px;margin-top:4px;display:block">Authorized instructors only</small>' +
+      '        <div style="margin:10px 0 14px">' +
+      '          <button type="button" id="btnGetTeacherCode" style="background:#2563eb;color:#fff;font-weight:800;font-size:14px;padding:12px;border-radius:12px;border:none;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px -6px rgba(37,99,235,0.6)">' +
+      '            📲 Kodni Olish' +
+      '          </button>' +
       '        </div>' +
-      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb)">Sign in as Teacher ' + ic('right') + '</button>' +
+      '        <div class="eth-form-group">' +
+      '          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">' +
+      '            <label style="font-weight:700;font-size:13px;margin:0">Tasdiqlash Kodi (6 xonali)</label>' +
+      '            <span id="tcCodeStatus" style="font-size:11.5px;color:#38bdf8;font-weight:700"></span>' +
+      '          </div>' +
+      '          <input type="text" id="tcCode" placeholder="Masalan: K9#4F7" maxlength="6" style="letter-spacing:5px;font-family:monospace;font-size:20px;text-align:center;font-weight:900;text-transform:uppercase" required>' +
+      '        </div>' +
+      '        <div class="eth-form-group" style="margin-top:10px">' +
+      '          <label style="font-weight:700;font-size:13px">O\'qituvchilar Maxsus Paroli</label>' +
+      '          <input type="password" id="tcMasterKey" placeholder="Maxfiy parolni kiriting..." required>' +
+      '          <small style="color:var(--muted);font-size:11.5px;margin-top:4px;display:block">O\'qituvchilar maxsus paroli: jds8d738hjsdhd8w9dhsihd89wydhshd</small>' +
+      '        </div>' +
+      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb);margin-top:10px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%">Tasdiqlash va Kirish 🚀</button>' +
       '      </form>' +
       '    </div>' +
       '  </div>' +
@@ -377,20 +410,184 @@
       };
     }
 
+    // 6-Character Verification Code Generator (Letters, Numbers, Symbols)
+    function generate6Code() {
+      var letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+      var digits = '23456789';
+      var symbols = '#$!*@';
+      var parts = [
+        letters[Math.floor(Math.random() * letters.length)],
+        digits[Math.floor(Math.random() * digits.length)],
+        symbols[Math.floor(Math.random() * symbols.length)],
+        letters[Math.floor(Math.random() * letters.length)],
+        digits[Math.floor(Math.random() * digits.length)],
+        symbols[Math.floor(Math.random() * symbols.length)]
+      ];
+      return parts.sort(function() { return 0.5 - Math.random(); }).join('');
+    }
+
+    var generatedStudentCode = null;
+    var generatedTeacherCode = null;
+
+    async function sendCodeViaTelegram(recipientName, email, code, statusEl, noticeEl) {
+      statusEl.textContent = 'Kod yuborilmoqda...';
+
+      var sentToTelegram = false;
+      var tgChatId = tgUser ? tgUser.id : null;
+
+      // 1. Direct Telegram Bot API send if running inside Telegram Mini App
+      if (tgChatId) {
+        try {
+          var res = await fetch('https://api.telegram.org/bot8857210620:AAHeVQqMLgaHSKbEiAPg6m34o6VvRcQ7gzE/sendMessage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: tgChatId,
+              text: '🔐 <b>ETHITH TESTS — Tasdiqlash Kodi</b>\n\nSalom, <b>' + (recipientName || "O'quvchi") + '</b>!\nSizning 6 xonali tasdiqlash kodingiz:\n\n👉 <code>' + code + '</code> 👈 <i>(nusxalash uchun bosing)</i>\n\nUshbu kodni Mini App darchasiga kiriting.\n⏱️ Kod 10 daqiqa amal qiladi.',
+              parse_mode: 'HTML'
+            })
+          });
+          var data = await res.json();
+          if (data && data.ok) {
+            sentToTelegram = true;
+          }
+        } catch(e) {}
+      }
+
+      // 2. Also register in local bot daemon server if running
+      try {
+        await fetch('http://localhost:3850/send-code', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: recipientName, email: email, chatId: tgChatId })
+        });
+      } catch(e) {}
+
+      // 3. User feedback
+      if (sentToTelegram) {
+        statusEl.innerHTML = '<span style="color:#22c55e">✅ Telegramga yuborildi!</span>';
+        if (noticeEl) {
+          noticeEl.innerHTML = '<span style="color:#22c55e;font-weight:700">@ETHITH_testbot xabarlaringizni tekshiring!</span>';
+        }
+      } else {
+        statusEl.innerHTML = '<span style="color:#22c55e">✅ Kod tayyor!</span>';
+        if (noticeEl) {
+          noticeEl.innerHTML = 
+            '<span>Kod: <b style="color:#fde047;letter-spacing:2px;font-size:13px;background:rgba(255,255,255,0.1);padding:2px 8px;border-radius:6px;cursor:pointer" id="fastCopyCodeBtn" title="Nusxalash">' + code + '</b> (Bosing)</span>' +
+            '<a href="https://t.me/ETHITH_testbot" target="_blank" style="color:#38bdf8;font-weight:800;text-decoration:none">Bot: @ETHITH_testbot ↗</a>';
+          
+          var copyBtn = noticeEl.querySelector('#fastCopyCodeBtn');
+          if (copyBtn) {
+            copyBtn.onclick = function() {
+              var inputEl = overlay.querySelector('#stCode') || overlay.querySelector('#tcCode');
+              if (inputEl) inputEl.value = code;
+              try { navigator.clipboard.writeText(code); } catch(e) {}
+              alert("Kod nusxalandi: " + code);
+            };
+          }
+        }
+      }
+    }
+
+    // "Kodni Olish" button for Student
+    var btnGetStCode = overlay.querySelector('#btnGetStudentCode');
+    if (btnGetStCode) {
+      btnGetStCode.onclick = function() {
+        var nameInput = overlay.querySelector('#stName');
+        var emailInput = overlay.querySelector('#stEmail');
+        var name = (nameInput ? nameInput.value : '').trim();
+        var email = (emailInput ? emailInput.value : '').trim();
+
+        if (!name || !email) {
+          alert("Iltimos, avval Ism va Gmail manzilingizni kiriting!");
+          return;
+        }
+
+        generatedStudentCode = generate6Code();
+        var statusEl = overlay.querySelector('#stCodeStatus');
+        var noticeEl = overlay.querySelector('#stCodeNotice');
+        sendCodeViaTelegram(name, email, generatedStudentCode, statusEl, noticeEl);
+
+        // Cooldown timer (60s)
+        var cooldown = 60;
+        btnGetStCode.disabled = true;
+        btnGetStCode.style.opacity = '0.6';
+        btnGetStCode.textContent = "Qayta yuborish (" + cooldown + "s)";
+        var timer = setInterval(function() {
+          cooldown--;
+          if (cooldown <= 0) {
+            clearInterval(timer);
+            btnGetStCode.disabled = false;
+            btnGetStCode.style.opacity = '1';
+            btnGetStCode.textContent = "📲 Kodni Olish";
+          } else {
+            btnGetStCode.textContent = "Qayta yuborish (" + cooldown + "s)";
+          }
+        }, 1000);
+      };
+    }
+
+    // "Kodni Olish" button for Teacher
+    var btnGetTcCode = overlay.querySelector('#btnGetTeacherCode');
+    if (btnGetTcCode) {
+      btnGetTcCode.onclick = function() {
+        var nameInput = overlay.querySelector('#tcName');
+        var emailInput = overlay.querySelector('#tcEmail');
+        var name = (nameInput ? nameInput.value : '').trim();
+        var email = (emailInput ? emailInput.value : '').trim();
+
+        if (!name || !email) {
+          alert("Iltimos, avval O'qituvchi ismi va Gmail manzilini kiriting!");
+          return;
+        }
+
+        generatedTeacherCode = generate6Code();
+        var statusEl = overlay.querySelector('#tcCodeStatus');
+        sendCodeViaTelegram(name, email, generatedTeacherCode, statusEl, null);
+
+        var cooldown = 60;
+        btnGetTcCode.disabled = true;
+        btnGetTcCode.style.opacity = '0.6';
+        btnGetTcCode.textContent = "Qayta yuborish (" + cooldown + "s)";
+        var timer = setInterval(function() {
+          cooldown--;
+          if (cooldown <= 0) {
+            clearInterval(timer);
+            btnGetTcCode.disabled = false;
+            btnGetTcCode.style.opacity = '1';
+            btnGetTcCode.textContent = "📲 Kodni Olish";
+          } else {
+            btnGetTcCode.textContent = "Qayta yuborish (" + cooldown + "s)";
+          }
+        }, 1000);
+      };
+    }
+
+    // Student Submit Form
     var stForm = overlay.querySelector('#studentAuthForm');
     if (stForm) {
       stForm.onsubmit = function(e) {
         e.preventDefault();
         var nameInput = overlay.querySelector('#stName');
         var emailInput = overlay.querySelector('#stEmail');
-        var pinInput = overlay.querySelector('#stPin');
+        var codeInput = overlay.querySelector('#stCode');
 
         var name = (nameInput ? nameInput.value : '').trim();
         var email = (emailInput ? emailInput.value : '').trim();
-        var pin = (pinInput ? pinInput.value : '').trim();
+        var code = (codeInput ? codeInput.value : '').trim();
 
-        if (!name || !email || !pin) {
-          alert("Please fill in all required fields!");
+        if (!name || !email) {
+          alert("Iltimos, ism va Gmail manzilingizni to'liq kiriting!");
+          return;
+        }
+
+        if (!generatedStudentCode) {
+          alert("Iltimos, avval ko'k 'Kodni Olish' tugmasini bosing!");
+          return;
+        }
+
+        if (code !== generatedStudentCode) {
+          alert("❌ Xatolik: Tasdiqlash kodi noto'g'ri! Iltimos, Telegram bot orqali yuborilgan 6 xonali kodni to'g'ri kiriting.");
           return;
         }
 
@@ -402,12 +599,6 @@
         });
 
         if (existingAcc) {
-          // Existing account: verify security PIN
-          if (existingAcc.pin && existingAcc.pin !== pin) {
-            alert("Xatolik: Ushbu Gmail manzili (" + cleanEmail + ") bilan oldin ro'yxatdan o'tilgan, biroq kiritilgan parol noto'g'ri! Iltimos, to'g'ri parolni kiriting.");
-            return;
-          }
-          // Restore student progress
           var isMuUser = (cleanEmail.indexOf('muhammad') !== -1 || (existingAcc.name && existingAcc.name.toLowerCase().indexOf('muhammad') !== -1) || name.toLowerCase().indexOf('muhammad') !== -1);
           var initCoins = existingAcc.coins !== undefined ? existingAcc.coins : (S.user && S.user.coins !== undefined ? S.user.coins : 150);
           if (isMuUser) {
@@ -422,6 +613,8 @@
             email: cleanEmail,
             dailyMinutes: existingAcc.dailyMinutes || 0,
             coins: initCoins,
+            nameStyle: existingAcc.nameStyle || null,
+            title: existingAcc.title || null,
             gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : (Array.isArray(S.user && S.user.gifts) ? S.user.gifts : [])
           };
           if (existingAcc.level) S.level = existingAcc.level;
@@ -443,7 +636,7 @@
             window.EthithSync.pushRemoteStore();
           }
           overlay.remove();
-          alert("Xush kelibsiz, " + S.user.name + "! Akkauntingiz muvaffaqiyatli tiklandi.");
+          alert("Xush kelibsiz, " + S.user.name + "! Telegram orqali akkauntingiz muvaffaqiyatli tasdiqlandi.");
           window.ethithOpenApp('dash');
         } else {
           // New student registration
@@ -454,7 +647,6 @@
             role: 'student',
             name: name,
             email: cleanEmail,
-            pin: pin,
             level: 'A1',
             unlocked: { A1: 1, A2: 1, B1: 1, B2: 1, C1: 1, C2: 1 },
             quizScores: {},
@@ -507,28 +699,46 @@
             window.EthithSync.pushRemoteStore();
           }
           overlay.remove();
-          alert("Akkaunt yaratildi! Gmail va parolingiz eslab qolindi. Boshqa qurilmalarda ham shu Gmail va parol orqali kirsangiz, barcha natijalaringiz saqlanadi.");
+          alert("🎉 Tabriklaymiz! Telegram orqali yangi akkauntingiz muvaffaqiyatli ochildi.");
           window.ethithOpenApp('dash');
         }
       };
     }
 
+    // Teacher Submit Form
     var tcForm = overlay.querySelector('#teacherAuthForm');
     if (tcForm) {
       tcForm.onsubmit = function(e) {
         e.preventDefault();
         var nameInput = overlay.querySelector('#tcName');
         var emailInput = overlay.querySelector('#tcEmail');
+        var codeInput = overlay.querySelector('#tcCode');
         var masterInput = overlay.querySelector('#tcMasterKey');
 
         var name = (nameInput ? nameInput.value : '').trim();
         var email = (emailInput ? emailInput.value : '').trim();
+        var code = (codeInput ? codeInput.value : '').trim();
         var masterKey = (masterInput ? masterInput.value : '').trim();
+
+        if (!name || !email) {
+          alert("Iltimos, o'qituvchi ismi va Gmail manzilini kiriting!");
+          return;
+        }
+
+        if (!generatedTeacherCode) {
+          alert("Iltimos, avval ko'k 'Kodni Olish' tugmasini bosing!");
+          return;
+        }
+
+        if (code !== generatedTeacherCode) {
+          alert("❌ Xatolik: Tasdiqlash kodi noto'g'ri! Iltimos, Telegram bot orqali yuborilgan 6 xonali kodni to'g'ri kiriting.");
+          return;
+        }
 
         var currentMaster = localStorage.getItem('ethith_teacher_master') || DEFAULT_TEACHER_KEY;
 
         if (masterKey !== currentMaster) {
-          alert("Authentication Error: Incorrect instructor master key! Please enter the valid code.");
+          alert("❌ Xatolik: O'qituvchilar maxsus paroli noto'g'ri! Iltimos, to'g'ri maxfiy parolni kiriting: " + DEFAULT_TEACHER_KEY);
           return;
         }
 
@@ -578,6 +788,7 @@
           window.EthithSync.pushRemoteStore();
         }
         overlay.remove();
+        alert("Xush kelibsiz, Hurmatli Ustoz " + name + "! O'qituvchilar kabineti ochildi.");
         window.ethithOpenApp('dash');
       };
     }

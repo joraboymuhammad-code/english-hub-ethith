@@ -4458,11 +4458,9 @@ window.ETHITH_COSMETICS = {
   ]
 };
 
-window.ETHITH_RENDER_USER_NAME_HTML = function(user, extraClasses) {
+window.ETHITH_GET_USER_NAME_FX = function(user, extraClasses) {
   if (!user) return '';
   var name = (user.name || 'Foydalanuvchi').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  
-  // Check if active nameStyle is expired
   var fxClass = '';
   if (user.nameStyle) {
     var isExpired = false;
@@ -4474,22 +4472,33 @@ window.ETHITH_RENDER_USER_NAME_HTML = function(user, extraClasses) {
       fxClass = ' name-fx-' + user.nameStyle;
     }
   }
+  return '<span class="eth-user-styled-name' + fxClass + (extraClasses ? (' ' + extraClasses) : '') + '">' + name + '</span>';
+};
 
-  // Check if active title is expired
-  var titleBadge = '';
-  if (user.title) {
-    var isTitleExpired = false;
-    if (user.activeCosmetics && user.activeCosmetics[user.titleId || user.title]) {
-      var expT = Number(user.activeCosmetics[user.titleId || user.title].expiresAt || 0);
-      if (expT && Date.now() > expT) isTitleExpired = true;
-    }
-    if (!isTitleExpired) {
-      var titleEsc = String(user.title).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-      titleBadge = ' <span class="eth-user-title-badge">' + titleEsc + '</span>';
-    }
+window.ETHITH_GET_USER_TITLE_BADGE = function(user) {
+  if (!user || !user.title) return '';
+  var isTitleExpired = false;
+  if (user.activeCosmetics && user.activeCosmetics[user.titleId || user.title]) {
+    var expT = Number(user.activeCosmetics[user.titleId || user.title].expiresAt || 0);
+    if (expT && Date.now() > expT) isTitleExpired = true;
   }
+  if (isTitleExpired) return '';
+  var titleEsc = String(user.title).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return '<span class="eth-user-title-badge">' + titleEsc + '</span>';
+};
 
-  return '<span class="eth-user-styled-name' + fxClass + (extraClasses ? (' ' + extraClasses) : '') + '">' + name + '</span>' + titleBadge;
+window.ETHITH_RENDER_USER_NAME_HTML = function(user, extraClasses, stacked) {
+  if (!user) return '';
+  var nameHtml = window.ETHITH_GET_USER_NAME_FX(user, extraClasses);
+  var badgeHtml = window.ETHITH_GET_USER_TITLE_BADGE(user);
+  if (!badgeHtml) return nameHtml;
+  if (stacked) {
+    return '<span style="display:inline-flex;flex-direction:column;align-items:flex-start;vertical-align:middle;gap:2px">' +
+             nameHtml +
+             badgeHtml +
+           '</span>';
+  }
+  return nameHtml + ' ' + badgeHtml;
 };
 
 window.ETHITH_DEFAULT_FREE_EMOJIS = ["👍", "😊", "❤️"];

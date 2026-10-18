@@ -7620,8 +7620,14 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   border: 1px solid rgba(245, 158, 11, 0.4);
   color: #fde047;
   letter-spacing: 0.3px;
-  margin-left: 6px;
+  margin-left: 0;
   vertical-align: middle;
+}
+.ap-user .eth-user-title-badge {
+  font-size: 10px !important;
+  padding: 1px 6px !important;
+  border-radius: 6px !important;
+  margin-left: 0 !important;
 }
 
 /* ====================================================
