@@ -210,6 +210,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -18183,19 +18184,17 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
       }
     }
     else if ((event.type && event.type.indexOf('QUIZ_') === 0) || event.type === 'GIFT_SENT' || event.type === 'USER_REGISTERED') {
-      if (event.type === 'USER_REGISTERED' && event.user && event.user.name) {
+      if (event.type === 'USER_REGISTERED' && event.user && (event.user.email || event.user.name)) {
         if (!Array.isArray(S.accounts)) S.accounts = [];
         var u = event.user;
         var existingAcc = S.accounts.find(function(a) {
-          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
-                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase()) ||
-                 (a.id && u.id && a.id === u.id);
+          return a.email && u.email && a.email.toLowerCase().trim() === u.email.toLowerCase().trim();
         });
         if (!existingAcc) {
           S.accounts.push(u);
         } else {
           if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
-          if (u.avatar) existingAcc.avatar = u.avatar;
+          if (u.avatar !== undefined) existingAcc.avatar = u.avatar;
           if (u.level) existingAcc.level = u.level;
           if (u.nameStyle) existingAcc.nameStyle = u.nameStyle;
           if (u.title) existingAcc.title = u.title;
@@ -18204,14 +18203,13 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         var regList = [];
         try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
         var rIdx = regList.findIndex(function(a) {
-          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
-                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase());
+          return a.email && u.email && a.email.toLowerCase().trim() === u.email.toLowerCase().trim();
         });
         if (rIdx === -1) {
           regList.push(u);
         } else {
           if (u.coins !== undefined) regList[rIdx].coins = Number(u.coins);
-          if (u.avatar) regList[rIdx].avatar = u.avatar;
+          if (u.avatar !== undefined) regList[rIdx].avatar = u.avatar;
           if (u.level) regList[rIdx].level = u.level;
         }
         localStorage.setItem(regKey, JSON.stringify(regList));
@@ -18273,33 +18271,30 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         var u = event.user;
         if (!Array.isArray(S.accounts)) S.accounts = [];
         var existingAcc = S.accounts.find(function(a) {
-          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
-                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase()) ||
-                 (a.id && u.id && a.id === u.id);
+          return a.email && u.email && a.email.toLowerCase().trim() === u.email.toLowerCase().trim();
         });
         if (existingAcc) {
           if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
-          if (u.avatar) existingAcc.avatar = u.avatar;
+          if (u.avatar !== undefined) existingAcc.avatar = u.avatar;
           if (u.level) existingAcc.level = u.level;
-          if (u.nameStyle) existingAcc.nameStyle = u.nameStyle;
-          if (u.title) existingAcc.title = u.title;
-          if (u.victorySound) existingAcc.victorySound = u.victorySound;
+          if (u.nameStyle !== undefined) existingAcc.nameStyle = u.nameStyle;
+          if (u.title !== undefined) existingAcc.title = u.title;
+          if (u.victorySound !== undefined) existingAcc.victorySound = u.victorySound;
           if (u.dailyMinutes !== undefined) existingAcc.dailyMinutes = u.dailyMinutes;
         } else {
           S.accounts.push(u);
         }
 
-        // Also update registered list in localStorage
+        // Also update registered list in localStorage strictly by email
         var regKey = 'ethith_all_registered_users';
         var regList = [];
         try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
         var rIdx = regList.findIndex(function(a) {
-          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
-                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase());
+          return a.email && u.email && a.email.toLowerCase().trim() === u.email.toLowerCase().trim();
         });
         if (rIdx > -1) {
           if (u.coins !== undefined) regList[rIdx].coins = Number(u.coins);
-          if (u.avatar) regList[rIdx].avatar = u.avatar;
+          if (u.avatar !== undefined) regList[rIdx].avatar = u.avatar;
           if (u.level) regList[rIdx].level = u.level;
         } else {
           regList.push(u);
@@ -18310,27 +18305,40 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         (S.classes || []).forEach(function(c) {
           if (Array.isArray(c.students)) {
             var st = c.students.find(function(s) {
-              return (s.email && u.email && s.email.toLowerCase() === u.email.toLowerCase()) ||
-                     (s.name && u.name && s.name.toLowerCase() === u.name.toLowerCase());
+              return s.email && u.email && s.email.toLowerCase().trim() === u.email.toLowerCase().trim();
             });
             if (st) {
               if (u.coins !== undefined) st.coins = Number(u.coins);
-              if (u.avatar) st.avatar = u.avatar;
-              if (u.nameStyle) st.nameStyle = u.nameStyle;
-              if (u.title) st.title = u.title;
+              if (u.avatar !== undefined) st.avatar = u.avatar;
+              if (u.nameStyle !== undefined) st.nameStyle = u.nameStyle;
+              if (u.title !== undefined) st.title = u.title;
               if (u.dailyMinutes !== undefined) st.dailyMinutes = u.dailyMinutes;
             }
           }
         });
 
-        // If this tab's user matches, update local coin display
-        if (S.user && ((u.email && S.user.email && u.email.toLowerCase() === S.user.email.toLowerCase()) ||
-                       (u.name && S.user.name && u.name.toLowerCase() === S.user.name.toLowerCase()))) {
+        // If this tab's user matches strictly by email, update local display
+        if (S.user && u.email && S.user.email && u.email.toLowerCase().trim() === S.user.email.toLowerCase().trim()) {
           if (u.coins !== undefined) S.user.coins = Number(u.coins);
-          if (u.avatar) S.user.avatar = u.avatar;
-          if (u.nameStyle) S.user.nameStyle = u.nameStyle;
-          if (u.title) S.user.title = u.title;
+          if (u.avatar !== undefined) S.user.avatar = u.avatar;
+          if (u.nameStyle !== undefined) S.user.nameStyle = u.nameStyle;
+          if (u.title !== undefined) S.user.title = u.title;
           if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+
+          // Instant celebration chime and banner on incoming coin transfer!
+          if ((event.type === 'USER_COINS_UPDATE' || event.type === 'COIN_TRANSFER') && event.addedCoins) {
+            try {
+              if (window.ETHITH_SOUNDS_AUDIO && window.ETHITH_SOUNDS_AUDIO.playSuccess) {
+                window.ETHITH_SOUNDS_AUDIO.playSuccess();
+              }
+            } catch(se) {}
+            var toast = document.createElement('div');
+            toast.className = 'eth-toast-toast animate-slide-in';
+            toast.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg, #10b981, #059669);color:#fff;padding:12px 24px;border-radius:14px;font-weight:900;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,0.3);z-index:999999;display:flex;align-items:center;gap:10px';
+            toast.innerHTML = '<span>🪙</span> <span>+' + Number(event.addedCoins).toLocaleString() + ' ETHITH Coin hisobingizga tushdi! (Jami: ' + Number(S.user.coins).toLocaleString() + ')</span>';
+            document.body.appendChild(toast);
+            setTimeout(function() { toast.remove(); }, 4500);
+          }
         }
 
         // Real-time Leaderboard Auto-Refresh!
@@ -20156,27 +20164,28 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         if (!Array.isArray(S.accounts)) S.accounts = [];
 
         var existingAcc = S.accounts.find(function(acc) {
-          return acc.email && acc.email.toLowerCase() === cleanEmail;
+          return acc.email && acc.email.toLowerCase().trim() === cleanEmail;
         });
 
         if (existingAcc) {
-          var isMuUser = (cleanEmail.indexOf('muhammad') !== -1 || (existingAcc.name && existingAcc.name.toLowerCase().indexOf('muhammad') !== -1) || name.toLowerCase().indexOf('muhammad') !== -1);
-          var initCoins = existingAcc.coins !== undefined ? existingAcc.coins : (S.user && S.user.coins !== undefined ? S.user.coins : 150);
-          if (isMuUser) {
+          // One Gmail = exactly one account. Load existing account cleanly without inheriting previous session garbage
+          var initCoins = existingAcc.coins !== undefined ? Number(existingAcc.coins) : 150;
+          if (cleanEmail === 'muhammedjoraboyev1@gmail.com') {
             initCoins = Math.max(initCoins, 100000);
             existingAcc.coins = initCoins;
           }
 
           S.user = {
-            id: existingAcc.id,
-            role: 'student',
+            id: cleanEmail,
+            role: existingAcc.role || 'student',
             name: existingAcc.name || name,
             email: cleanEmail,
             dailyMinutes: existingAcc.dailyMinutes || 0,
             coins: initCoins,
+            avatar: existingAcc.avatar || null,
             nameStyle: existingAcc.nameStyle || null,
             title: existingAcc.title || null,
-            gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : (Array.isArray(S.user && S.user.gifts) ? S.user.gifts : [])
+            gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : []
           };
           if (existingAcc.level) S.level = existingAcc.level;
           if (existingAcc.unlocked) S.unlocked = existingAcc.unlocked;
@@ -20186,10 +20195,15 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
 
           try {
             var regList = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-            if (!regList.some(function(u) { return (u.email && u.email.toLowerCase() === cleanEmail) || u.name.toLowerCase() === name.toLowerCase(); })) {
-              regList.push({ id: existingAcc.id, name: existingAcc.name || name, email: cleanEmail, role: 'student', coins: initCoins, joinedAt: Date.now() });
-              localStorage.setItem('ethith_all_registered_users', JSON.stringify(regList));
+            var rIdx = regList.findIndex(function(u) { return u.email && u.email.toLowerCase().trim() === cleanEmail; });
+            if (rIdx === -1) {
+              regList.push({ id: cleanEmail, name: S.user.name, email: cleanEmail, role: 'student', coins: initCoins, joinedAt: Date.now() });
+            } else {
+              regList[rIdx].coins = initCoins;
+              regList[rIdx].avatar = S.user.avatar;
+              regList[rIdx].title = S.user.title;
             }
+            localStorage.setItem('ethith_all_registered_users', JSON.stringify(regList));
           } catch(e) {}
 
           saveState();
@@ -20200,11 +20214,12 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
           alert("Xush kelibsiz, " + S.user.name + "! Telegram orqali akkauntingiz muvaffaqiyatli tasdiqlandi.");
           window.ethithOpenApp('dash');
         } else {
-          // New student registration
-          var isMuNew = (cleanEmail.indexOf('muhammad') !== -1 || name.toLowerCase().indexOf('muhammad') !== -1);
+          // New student registration - Strict 1:1 Gmail rule:
+          // New account ALWAYS starts fresh: NO avatar, NO title, NO inherited gifts!
+          var isMuNew = (cleanEmail === 'muhammedjoraboyev1@gmail.com');
           var newCoins = isMuNew ? 100000 : 150;
           var newAcc = {
-            id: 'st_' + Math.random().toString(36).substr(2, 9),
+            id: cleanEmail,
             role: 'student',
             name: name,
             email: cleanEmail,
@@ -20214,39 +20229,49 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
             mistakes: [],
             dailyMinutes: 0,
             coins: newCoins,
-            gifts: (S.user && Array.isArray(S.user.gifts)) ? S.user.gifts : [],
+            avatar: null,
+            title: null,
+            nameStyle: null,
+            gifts: [],
             createdAt: Date.now(),
             updatedAt: Date.now()
           };
           S.accounts.push(newAcc);
           S.user = {
-            id: newAcc.id,
+            id: cleanEmail,
             role: 'student',
             name: newAcc.name,
-            email: newAcc.email,
+            email: cleanEmail,
             dailyMinutes: 0,
             coins: newAcc.coins,
-            gifts: newAcc.gifts
+            avatar: null,
+            title: null,
+            nameStyle: null,
+            gifts: []
           };
 
           try {
             var allUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-            if (!allUsers.some(function(u) { return (u.email && u.email.toLowerCase() === cleanEmail) || u.name.toLowerCase() === name.toLowerCase(); })) {
-              allUsers.push({ id: newAcc.id, name: name, email: cleanEmail, role: 'student', joinedAt: Date.now() });
-              localStorage.setItem('ethith_all_registered_users', JSON.stringify(allUsers));
+            var uIdx = allUsers.findIndex(function(u) { return u.email && u.email.toLowerCase().trim() === cleanEmail; });
+            if (uIdx === -1) {
+              allUsers.push({ id: cleanEmail, name: name, email: cleanEmail, role: 'student', coins: newCoins, joinedAt: Date.now() });
+            } else {
+              allUsers[uIdx].name = name;
+              allUsers[uIdx].coins = newCoins;
             }
+            localStorage.setItem('ethith_all_registered_users', JSON.stringify(allUsers));
           } catch(e) {}
 
           if (window.EthithSync && window.EthithSync.publishLive) {
             window.EthithSync.publishLive({
               type: 'USER_REGISTERED',
               user: {
-                id: newAcc.id,
+                id: cleanEmail,
                 name: newAcc.name,
-                email: newAcc.email,
+                email: cleanEmail,
                 role: 'student',
                 coins: newAcc.coins || 0,
-                avatar: newAcc.avatar || null,
+                avatar: null,
                 level: newAcc.level || 'A1',
                 joinedAt: newAcc.createdAt || Date.now()
               }
@@ -31517,17 +31542,20 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
 
       var coinCount = (u.coins !== undefined && u.coins !== null) ? Number(u.coins) : 0;
 
-      // Strict Deduplication: Match if same email OR same normalized name OR same id
+      // Strict Deduplication: Match primarily by email. Different emails are ALWAYS separate accounts!
       var existing = uniqueStudents.find(function(s) {
-        var sameEmail = cleanEmail && s.email && (cleanEmail === s.email);
-        var sameName = cleanName && s.name && (cleanName.toLowerCase() === s.name.toLowerCase());
-        var sameId = cleanId && s.id && (cleanId === s.id);
-        return sameEmail || sameName || sameId;
+        if (cleanEmail && s.email) {
+          return cleanEmail === s.email;
+        }
+        if (cleanId && s.id) {
+          return cleanId === s.id;
+        }
+        return false;
       });
 
       if (!existing) {
         uniqueStudents.push({
-          id: cleanId || cleanEmail || cleanName,
+          id: cleanEmail || cleanId || cleanName,
           name: cleanName || "O'quvchi",
           email: cleanEmail,
           level: u.level || 'A1',
@@ -31539,10 +31567,10 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         });
       } else {
         existing.coins = Math.max(existing.coins, coinCount);
-        if (u.avatar) existing.avatar = u.avatar;
+        if (u.avatar !== undefined) existing.avatar = u.avatar;
         if (u.level) existing.level = u.level;
-        if (u.nameStyle) existing.nameStyle = u.nameStyle;
-        if (u.title) existing.title = u.title;
+        if (u.nameStyle !== undefined) existing.nameStyle = u.nameStyle;
+        if (u.title !== undefined) existing.title = u.title;
         if (cleanEmail && !existing.email) existing.email = cleanEmail;
         if ((u.dailyMinutes || 0) > (existing.dailyMinutes || 0)) existing.dailyMinutes = u.dailyMinutes;
       }
@@ -31556,20 +31584,20 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
       var myCoins = Number(S.user.coins || 0);
 
       var meInList = uniqueStudents.find(function(s) {
-        return (myEmail && s.email && s.email === myEmail) ||
-               (myName && s.name && s.name.toLowerCase() === myName) ||
-               (myId && s.id && s.id === myId);
+        if (myEmail && s.email) return myEmail === s.email;
+        if (myId && s.id) return myId === s.id;
+        return false;
       });
 
       if (meInList) {
         meInList.coins = myCoins;
-        meInList.avatar = S.user.avatar || meInList.avatar;
+        meInList.avatar = S.user.avatar !== undefined ? S.user.avatar : meInList.avatar;
         meInList.level = S.level || S.user.level || meInList.level;
         meInList.nameStyle = S.user.nameStyle || meInList.nameStyle;
         meInList.title = S.user.title || meInList.title;
       } else {
         uniqueStudents.push({
-          id: myId || myEmail || S.user.name,
+          id: myEmail || myId || S.user.name,
           name: S.user.name || "O'quvchi",
           email: myEmail,
           level: S.level || 'A1',

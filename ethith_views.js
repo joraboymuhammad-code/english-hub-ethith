@@ -11056,17 +11056,20 @@
 
       var coinCount = (u.coins !== undefined && u.coins !== null) ? Number(u.coins) : 0;
 
-      // Strict Deduplication: Match if same email OR same normalized name OR same id
+      // Strict Deduplication: Match primarily by email. Different emails are ALWAYS separate accounts!
       var existing = uniqueStudents.find(function(s) {
-        var sameEmail = cleanEmail && s.email && (cleanEmail === s.email);
-        var sameName = cleanName && s.name && (cleanName.toLowerCase() === s.name.toLowerCase());
-        var sameId = cleanId && s.id && (cleanId === s.id);
-        return sameEmail || sameName || sameId;
+        if (cleanEmail && s.email) {
+          return cleanEmail === s.email;
+        }
+        if (cleanId && s.id) {
+          return cleanId === s.id;
+        }
+        return false;
       });
 
       if (!existing) {
         uniqueStudents.push({
-          id: cleanId || cleanEmail || cleanName,
+          id: cleanEmail || cleanId || cleanName,
           name: cleanName || "O'quvchi",
           email: cleanEmail,
           level: u.level || 'A1',
@@ -11078,10 +11081,10 @@
         });
       } else {
         existing.coins = Math.max(existing.coins, coinCount);
-        if (u.avatar) existing.avatar = u.avatar;
+        if (u.avatar !== undefined) existing.avatar = u.avatar;
         if (u.level) existing.level = u.level;
-        if (u.nameStyle) existing.nameStyle = u.nameStyle;
-        if (u.title) existing.title = u.title;
+        if (u.nameStyle !== undefined) existing.nameStyle = u.nameStyle;
+        if (u.title !== undefined) existing.title = u.title;
         if (cleanEmail && !existing.email) existing.email = cleanEmail;
         if ((u.dailyMinutes || 0) > (existing.dailyMinutes || 0)) existing.dailyMinutes = u.dailyMinutes;
       }
@@ -11095,20 +11098,20 @@
       var myCoins = Number(S.user.coins || 0);
 
       var meInList = uniqueStudents.find(function(s) {
-        return (myEmail && s.email && s.email === myEmail) ||
-               (myName && s.name && s.name.toLowerCase() === myName) ||
-               (myId && s.id && s.id === myId);
+        if (myEmail && s.email) return myEmail === s.email;
+        if (myId && s.id) return myId === s.id;
+        return false;
       });
 
       if (meInList) {
         meInList.coins = myCoins;
-        meInList.avatar = S.user.avatar || meInList.avatar;
+        meInList.avatar = S.user.avatar !== undefined ? S.user.avatar : meInList.avatar;
         meInList.level = S.level || S.user.level || meInList.level;
         meInList.nameStyle = S.user.nameStyle || meInList.nameStyle;
         meInList.title = S.user.title || meInList.title;
       } else {
         uniqueStudents.push({
-          id: myId || myEmail || S.user.name,
+          id: myEmail || myId || S.user.name,
           name: S.user.name || "O'quvchi",
           email: myEmail,
           level: S.level || 'A1',

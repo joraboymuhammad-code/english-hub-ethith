@@ -672,27 +672,28 @@
         if (!Array.isArray(S.accounts)) S.accounts = [];
 
         var existingAcc = S.accounts.find(function(acc) {
-          return acc.email && acc.email.toLowerCase() === cleanEmail;
+          return acc.email && acc.email.toLowerCase().trim() === cleanEmail;
         });
 
         if (existingAcc) {
-          var isMuUser = (cleanEmail.indexOf('muhammad') !== -1 || (existingAcc.name && existingAcc.name.toLowerCase().indexOf('muhammad') !== -1) || name.toLowerCase().indexOf('muhammad') !== -1);
-          var initCoins = existingAcc.coins !== undefined ? existingAcc.coins : (S.user && S.user.coins !== undefined ? S.user.coins : 150);
-          if (isMuUser) {
+          // One Gmail = exactly one account. Load existing account cleanly without inheriting previous session garbage
+          var initCoins = existingAcc.coins !== undefined ? Number(existingAcc.coins) : 150;
+          if (cleanEmail === 'muhammedjoraboyev1@gmail.com') {
             initCoins = Math.max(initCoins, 100000);
             existingAcc.coins = initCoins;
           }
 
           S.user = {
-            id: existingAcc.id,
-            role: 'student',
+            id: cleanEmail,
+            role: existingAcc.role || 'student',
             name: existingAcc.name || name,
             email: cleanEmail,
             dailyMinutes: existingAcc.dailyMinutes || 0,
             coins: initCoins,
+            avatar: existingAcc.avatar || null,
             nameStyle: existingAcc.nameStyle || null,
             title: existingAcc.title || null,
-            gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : (Array.isArray(S.user && S.user.gifts) ? S.user.gifts : [])
+            gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : []
           };
           if (existingAcc.level) S.level = existingAcc.level;
           if (existingAcc.unlocked) S.unlocked = existingAcc.unlocked;
@@ -702,10 +703,15 @@
 
           try {
             var regList = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-            if (!regList.some(function(u) { return (u.email && u.email.toLowerCase() === cleanEmail) || u.name.toLowerCase() === name.toLowerCase(); })) {
-              regList.push({ id: existingAcc.id, name: existingAcc.name || name, email: cleanEmail, role: 'student', coins: initCoins, joinedAt: Date.now() });
-              localStorage.setItem('ethith_all_registered_users', JSON.stringify(regList));
+            var rIdx = regList.findIndex(function(u) { return u.email && u.email.toLowerCase().trim() === cleanEmail; });
+            if (rIdx === -1) {
+              regList.push({ id: cleanEmail, name: S.user.name, email: cleanEmail, role: 'student', coins: initCoins, joinedAt: Date.now() });
+            } else {
+              regList[rIdx].coins = initCoins;
+              regList[rIdx].avatar = S.user.avatar;
+              regList[rIdx].title = S.user.title;
             }
+            localStorage.setItem('ethith_all_registered_users', JSON.stringify(regList));
           } catch(e) {}
 
           saveState();
@@ -716,11 +722,12 @@
           alert("Xush kelibsiz, " + S.user.name + "! Telegram orqali akkauntingiz muvaffaqiyatli tasdiqlandi.");
           window.ethithOpenApp('dash');
         } else {
-          // New student registration
-          var isMuNew = (cleanEmail.indexOf('muhammad') !== -1 || name.toLowerCase().indexOf('muhammad') !== -1);
+          // New student registration - Strict 1:1 Gmail rule:
+          // New account ALWAYS starts fresh: NO avatar, NO title, NO inherited gifts!
+          var isMuNew = (cleanEmail === 'muhammedjoraboyev1@gmail.com');
           var newCoins = isMuNew ? 100000 : 150;
           var newAcc = {
-            id: 'st_' + Math.random().toString(36).substr(2, 9),
+            id: cleanEmail,
             role: 'student',
             name: name,
             email: cleanEmail,
@@ -730,39 +737,49 @@
             mistakes: [],
             dailyMinutes: 0,
             coins: newCoins,
-            gifts: (S.user && Array.isArray(S.user.gifts)) ? S.user.gifts : [],
+            avatar: null,
+            title: null,
+            nameStyle: null,
+            gifts: [],
             createdAt: Date.now(),
             updatedAt: Date.now()
           };
           S.accounts.push(newAcc);
           S.user = {
-            id: newAcc.id,
+            id: cleanEmail,
             role: 'student',
             name: newAcc.name,
-            email: newAcc.email,
+            email: cleanEmail,
             dailyMinutes: 0,
             coins: newAcc.coins,
-            gifts: newAcc.gifts
+            avatar: null,
+            title: null,
+            nameStyle: null,
+            gifts: []
           };
 
           try {
             var allUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-            if (!allUsers.some(function(u) { return (u.email && u.email.toLowerCase() === cleanEmail) || u.name.toLowerCase() === name.toLowerCase(); })) {
-              allUsers.push({ id: newAcc.id, name: name, email: cleanEmail, role: 'student', joinedAt: Date.now() });
-              localStorage.setItem('ethith_all_registered_users', JSON.stringify(allUsers));
+            var uIdx = allUsers.findIndex(function(u) { return u.email && u.email.toLowerCase().trim() === cleanEmail; });
+            if (uIdx === -1) {
+              allUsers.push({ id: cleanEmail, name: name, email: cleanEmail, role: 'student', coins: newCoins, joinedAt: Date.now() });
+            } else {
+              allUsers[uIdx].name = name;
+              allUsers[uIdx].coins = newCoins;
             }
+            localStorage.setItem('ethith_all_registered_users', JSON.stringify(allUsers));
           } catch(e) {}
 
           if (window.EthithSync && window.EthithSync.publishLive) {
             window.EthithSync.publishLive({
               type: 'USER_REGISTERED',
               user: {
-                id: newAcc.id,
+                id: cleanEmail,
                 name: newAcc.name,
-                email: newAcc.email,
+                email: cleanEmail,
                 role: 'student',
                 coins: newAcc.coins || 0,
-                avatar: newAcc.avatar || null,
+                avatar: null,
                 level: newAcc.level || 'A1',
                 joinedAt: newAcc.createdAt || Date.now()
               }

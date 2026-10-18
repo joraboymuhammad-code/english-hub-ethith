@@ -617,19 +617,17 @@
       }
     }
     else if ((event.type && event.type.indexOf('QUIZ_') === 0) || event.type === 'GIFT_SENT' || event.type === 'USER_REGISTERED') {
-      if (event.type === 'USER_REGISTERED' && event.user && event.user.name) {
+      if (event.type === 'USER_REGISTERED' && event.user && (event.user.email || event.user.name)) {
         if (!Array.isArray(S.accounts)) S.accounts = [];
         var u = event.user;
         var existingAcc = S.accounts.find(function(a) {
-          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
-                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase()) ||
-                 (a.id && u.id && a.id === u.id);
+          return a.email && u.email && a.email.toLowerCase().trim() === u.email.toLowerCase().trim();
         });
         if (!existingAcc) {
           S.accounts.push(u);
         } else {
           if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
-          if (u.avatar) existingAcc.avatar = u.avatar;
+          if (u.avatar !== undefined) existingAcc.avatar = u.avatar;
           if (u.level) existingAcc.level = u.level;
           if (u.nameStyle) existingAcc.nameStyle = u.nameStyle;
           if (u.title) existingAcc.title = u.title;
@@ -638,14 +636,13 @@
         var regList = [];
         try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
         var rIdx = regList.findIndex(function(a) {
-          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
-                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase());
+          return a.email && u.email && a.email.toLowerCase().trim() === u.email.toLowerCase().trim();
         });
         if (rIdx === -1) {
           regList.push(u);
         } else {
           if (u.coins !== undefined) regList[rIdx].coins = Number(u.coins);
-          if (u.avatar) regList[rIdx].avatar = u.avatar;
+          if (u.avatar !== undefined) regList[rIdx].avatar = u.avatar;
           if (u.level) regList[rIdx].level = u.level;
         }
         localStorage.setItem(regKey, JSON.stringify(regList));
@@ -707,33 +704,30 @@
         var u = event.user;
         if (!Array.isArray(S.accounts)) S.accounts = [];
         var existingAcc = S.accounts.find(function(a) {
-          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
-                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase()) ||
-                 (a.id && u.id && a.id === u.id);
+          return a.email && u.email && a.email.toLowerCase().trim() === u.email.toLowerCase().trim();
         });
         if (existingAcc) {
           if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
-          if (u.avatar) existingAcc.avatar = u.avatar;
+          if (u.avatar !== undefined) existingAcc.avatar = u.avatar;
           if (u.level) existingAcc.level = u.level;
-          if (u.nameStyle) existingAcc.nameStyle = u.nameStyle;
-          if (u.title) existingAcc.title = u.title;
-          if (u.victorySound) existingAcc.victorySound = u.victorySound;
+          if (u.nameStyle !== undefined) existingAcc.nameStyle = u.nameStyle;
+          if (u.title !== undefined) existingAcc.title = u.title;
+          if (u.victorySound !== undefined) existingAcc.victorySound = u.victorySound;
           if (u.dailyMinutes !== undefined) existingAcc.dailyMinutes = u.dailyMinutes;
         } else {
           S.accounts.push(u);
         }
 
-        // Also update registered list in localStorage
+        // Also update registered list in localStorage strictly by email
         var regKey = 'ethith_all_registered_users';
         var regList = [];
         try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
         var rIdx = regList.findIndex(function(a) {
-          return (a.email && u.email && a.email.toLowerCase() === u.email.toLowerCase()) ||
-                 (a.name && u.name && a.name.toLowerCase() === u.name.toLowerCase());
+          return a.email && u.email && a.email.toLowerCase().trim() === u.email.toLowerCase().trim();
         });
         if (rIdx > -1) {
           if (u.coins !== undefined) regList[rIdx].coins = Number(u.coins);
-          if (u.avatar) regList[rIdx].avatar = u.avatar;
+          if (u.avatar !== undefined) regList[rIdx].avatar = u.avatar;
           if (u.level) regList[rIdx].level = u.level;
         } else {
           regList.push(u);
@@ -744,27 +738,40 @@
         (S.classes || []).forEach(function(c) {
           if (Array.isArray(c.students)) {
             var st = c.students.find(function(s) {
-              return (s.email && u.email && s.email.toLowerCase() === u.email.toLowerCase()) ||
-                     (s.name && u.name && s.name.toLowerCase() === u.name.toLowerCase());
+              return s.email && u.email && s.email.toLowerCase().trim() === u.email.toLowerCase().trim();
             });
             if (st) {
               if (u.coins !== undefined) st.coins = Number(u.coins);
-              if (u.avatar) st.avatar = u.avatar;
-              if (u.nameStyle) st.nameStyle = u.nameStyle;
-              if (u.title) st.title = u.title;
+              if (u.avatar !== undefined) st.avatar = u.avatar;
+              if (u.nameStyle !== undefined) st.nameStyle = u.nameStyle;
+              if (u.title !== undefined) st.title = u.title;
               if (u.dailyMinutes !== undefined) st.dailyMinutes = u.dailyMinutes;
             }
           }
         });
 
-        // If this tab's user matches, update local coin display
-        if (S.user && ((u.email && S.user.email && u.email.toLowerCase() === S.user.email.toLowerCase()) ||
-                       (u.name && S.user.name && u.name.toLowerCase() === S.user.name.toLowerCase()))) {
+        // If this tab's user matches strictly by email, update local display
+        if (S.user && u.email && S.user.email && u.email.toLowerCase().trim() === S.user.email.toLowerCase().trim()) {
           if (u.coins !== undefined) S.user.coins = Number(u.coins);
-          if (u.avatar) S.user.avatar = u.avatar;
-          if (u.nameStyle) S.user.nameStyle = u.nameStyle;
-          if (u.title) S.user.title = u.title;
+          if (u.avatar !== undefined) S.user.avatar = u.avatar;
+          if (u.nameStyle !== undefined) S.user.nameStyle = u.nameStyle;
+          if (u.title !== undefined) S.user.title = u.title;
           if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+
+          // Instant celebration chime and banner on incoming coin transfer!
+          if ((event.type === 'USER_COINS_UPDATE' || event.type === 'COIN_TRANSFER') && event.addedCoins) {
+            try {
+              if (window.ETHITH_SOUNDS_AUDIO && window.ETHITH_SOUNDS_AUDIO.playSuccess) {
+                window.ETHITH_SOUNDS_AUDIO.playSuccess();
+              }
+            } catch(se) {}
+            var toast = document.createElement('div');
+            toast.className = 'eth-toast-toast animate-slide-in';
+            toast.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg, #10b981, #059669);color:#fff;padding:12px 24px;border-radius:14px;font-weight:900;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,0.3);z-index:999999;display:flex;align-items:center;gap:10px';
+            toast.innerHTML = '<span>🪙</span> <span>+' + Number(event.addedCoins).toLocaleString() + ' ETHITH Coin hisobingizga tushdi! (Jami: ' + Number(S.user.coins).toLocaleString() + ')</span>';
+            document.body.appendChild(toast);
+            setTimeout(function() { toast.remove(); }, 4500);
+          }
         }
 
         // Real-time Leaderboard Auto-Refresh!
