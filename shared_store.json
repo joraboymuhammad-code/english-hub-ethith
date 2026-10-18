@@ -986,12 +986,12 @@
       "mistakes": [],
       "dailyMinutes": 72,
       "coins": 53050,
-      "avatar": null,
+      "avatar": "girl_chrono_witch",
       "title": null,
       "nameStyle": null,
       "gifts": [],
       "createdAt": 1792337512574,
-      "updatedAt": 1792342025199
+      "updatedAt": 1792342122457
     },
     {
       "id": "st_johndoe_mvdq86j7",
@@ -1028,5 +1028,5 @@
       "createdAt": 1792322765334
     }
   ],
-  "updatedAt": 1792342113973
+  "updatedAt": 1792342123137
 }
