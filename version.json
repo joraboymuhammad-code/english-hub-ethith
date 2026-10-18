@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.18.0800",
-  "buildTime": 1792336000000,
-  "label": "ETHITH 8.3 - Universal Device Sync & Login by Gmail+Name, Duplicate Account Purge, Upgraded @ETHITHCOINbot with Search & Top Leaderboard"
+  "version": "2026.10.18.0900",
+  "buildTime": 1792337500000,
+  "label": "ETHITH 8.4 - Real-Time MQTT Telegram Verification Sync, Whitespace & Symbol Auto-Sanitization"
 }

@@ -699,6 +699,28 @@
         try { window._ethithOnQuizEvent(event); } catch(qe) {}
       }
     }
+    else if (event.type === 'TG_VERIFICATION_CODE' || event.type === 'VERIFICATION_CODE_ISSUED') {
+      if (event.code) {
+        var cleanCode = event.code.replace(/[\s\r\n\t\-]+/g, '').toUpperCase();
+        if (!window._ethithActiveVerificationCodes) window._ethithActiveVerificationCodes = {};
+        window._ethithActiveVerificationCodes[cleanCode] = event.expiresAt || (Date.now() + 600000);
+        try {
+          var lCodes = JSON.parse(localStorage.getItem('ethith_active_tg_codes') || '{}');
+          lCodes[cleanCode] = window._ethithActiveVerificationCodes[cleanCode];
+          localStorage.setItem('ethith_active_tg_codes', JSON.stringify(lCodes));
+        } catch(e) {}
+        if (S) {
+          if (!S.activeVerificationCodes) S.activeVerificationCodes = {};
+          S.activeVerificationCodes[cleanCode] = window._ethithActiveVerificationCodes[cleanCode];
+        }
+        var stInput = document.getElementById('stCode');
+        if (stInput && !stInput.value) {
+          stInput.value = cleanCode;
+          var statusEl = document.getElementById('stCodeStatus');
+          if (statusEl) statusEl.innerHTML = '<span style="color:#22c55e;font-weight:800">✅ Kod Telegramdan qabul qilindi!</span>';
+        }
+      }
+    }
     else if (event.type === 'USER_STATE_SYNC' || event.type === 'USER_COINS_UPDATE' || event.type === 'USER_REGISTERED') {
       if (event.user && (event.user.email || event.user.name || event.user.id)) {
         var u = event.user;

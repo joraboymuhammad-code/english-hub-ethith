@@ -7,11 +7,71 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const net = require('net');
 
 const BOT_TOKEN = '8857210620:AAHeVQqMLgaHSKbEiAPg6m34o6VvRcQ7gzE';
 const MINI_APP_URL = 'https://joraboymuhammad-code.github.io/english-hub-ethith/';
 const CODES_FILE = path.join(__dirname, 'verification_codes.json');
 const HTTP_PORT = 3850;
+
+// MQTT Broadcaster (Pure Node.js TCP, sub-50ms to HiveMQ)
+function publishMqtt(topic, payloadObj) {
+  return new Promise((resolve) => {
+    try {
+      const payloadString = JSON.stringify(payloadObj);
+      const client = net.createConnection({ host: 'broker.hivemq.com', port: 1883 }, () => {
+        const clientId = 'eth_tg_bot_' + Math.random().toString(36).substr(2, 6);
+        const clientIdBuf = Buffer.from(clientId, 'utf8');
+        const varHeader = Buffer.from([0x00, 0x04, 0x4d, 0x51, 0x54, 0x54, 0x04, 0x02, 0x00, 0x3c]);
+        const payloadBuf = Buffer.concat([
+          Buffer.from([clientIdBuf.length >> 8, clientIdBuf.length & 0xff]),
+          clientIdBuf
+        ]);
+        const connectPacket = Buffer.concat([
+          Buffer.from([0x10, varHeader.length + payloadBuf.length]),
+          varHeader,
+          payloadBuf
+        ]);
+        client.write(connectPacket);
+      });
+
+      client.on('data', (data) => {
+        if (data[0] === 0x20) {
+          const topicBuf = Buffer.from(topic, 'utf8');
+          const msgBuf = Buffer.from(payloadString, 'utf8');
+          const varHeader = Buffer.concat([
+            Buffer.from([topicBuf.length >> 8, topicBuf.length & 0xff]),
+            topicBuf
+          ]);
+          const pubLen = varHeader.length + msgBuf.length;
+          let len = pubLen;
+          const lenBytes = [];
+          do {
+            let byte = len % 128;
+            len = Math.floor(len / 128);
+            if (len > 0) byte |= 128;
+            lenBytes.push(byte);
+          } while (len > 0);
+
+          const pubPacket = Buffer.concat([
+            Buffer.from([0x30, ...lenBytes]),
+            varHeader,
+            msgBuf
+          ]);
+          client.write(pubPacket, () => {
+            client.end();
+            resolve(true);
+          });
+        }
+      });
+
+      client.on('error', () => resolve(false));
+      setTimeout(() => { client.destroy(); resolve(false); }, 3000);
+    } catch(e) {
+      resolve(false);
+    }
+  });
+}
 
 // Helper to generate 6-character code (Numbers, Letters, and Symbols)
 function generate6CharCode() {
@@ -96,6 +156,15 @@ async function sendVerificationCodeToChat(chatId, userName = "Foydalanuvchi", cu
   };
   saveCodes(store);
   registerCodeInStore(code);
+
+  // Broadcast code over MQTT to web clients in real time (<50ms)
+  publishMqtt('ethith/v3/global', {
+    type: 'TG_VERIFICATION_CODE',
+    code: code,
+    chatId: chatId,
+    userName: userName,
+    expiresAt: Date.now() + 10 * 60 * 1000
+  });
 
   const text = 
     `🔐 <b>ETHITH TESTS — Tasdiqlash Kodi</b>\n\n` +

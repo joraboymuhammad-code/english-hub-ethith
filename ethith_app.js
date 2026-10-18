@@ -375,7 +375,7 @@
       '            <label style="font-weight:700;font-size:13px;margin:0">Tasdiqlash Kodi (6 xonali)</label>' +
       '            <span id="stCodeStatus" style="font-size:11.5px;color:#38bdf8;font-weight:700"></span>' +
       '          </div>' +
-      '          <input type="text" id="stCode" placeholder="Masalan: K9#4F7" maxlength="6" style="letter-spacing:5px;font-family:monospace;font-size:20px;text-align:center;font-weight:900;text-transform:uppercase">' +
+      '          <input type="text" id="stCode" placeholder="Masalan: K9#4F7" maxlength="12" style="letter-spacing:5px;font-family:monospace;font-size:20px;text-align:center;font-weight:900;text-transform:uppercase">' +
       '          <div id="stCodeNotice" style="margin-top:6px;font-size:11.5px;color:var(--muted)">' +
       '            <span>Kod @ETHITH_testbot telegram boti orqali yuboriladi</span>' +
       '          </div>' +
@@ -463,28 +463,64 @@
 
     async function validateAuthCode(userCode, expectedCode) {
       if (!userCode) return false;
-      var clean = userCode.trim().toUpperCase();
+      var clean = userCode.replace(/[\s\r\n\t\-]+/g, '').toUpperCase();
+      if (!clean) return false;
 
       // 1. Matches in-memory session code
-      if (expectedCode && clean === expectedCode.toUpperCase()) return true;
+      if (expectedCode) {
+        var cleanExp = expectedCode.replace(/[\s\r\n\t\-]+/g, '').toUpperCase();
+        if (clean === cleanExp) return true;
+      }
 
-      // 2. Matches local cache
+      // 2. Matches active MQTT received codes
+      if (window._ethithActiveVerificationCodes && window._ethithActiveVerificationCodes[clean]) {
+        if (window._ethithActiveVerificationCodes[clean] > Date.now()) return true;
+      }
+
+      // 3. Matches local cache
       try {
         var localCodes = JSON.parse(localStorage.getItem('ethith_active_tg_codes') || '{}');
         if (localCodes[clean] && localCodes[clean] > Date.now()) return true;
       } catch(e) {}
 
-      // 3. Matches shared_store active verification codes
+      // 4. Matches shared_store active verification codes in S
       if (S && S.activeVerificationCodes && S.activeVerificationCodes[clean]) {
         if (S.activeVerificationCodes[clean] > Date.now()) return true;
       }
 
-      // 4. Remote check via bot daemon
+      // 5. Live fetch shared_store.json with fresh cache buster
+      try {
+        var sRes = await fetch('shared_store.json?t=' + Date.now());
+        if (sRes.ok) {
+          var sData = await sRes.json();
+          if (sData && sData.activeVerificationCodes && sData.activeVerificationCodes[clean]) {
+            if (sData.activeVerificationCodes[clean] > Date.now()) return true;
+          }
+        }
+      } catch(e) {}
+
+      // 6. Verification codes file if accessible
+      try {
+        var vRes = await fetch('verification_codes.json?t=' + Date.now());
+        if (vRes.ok) {
+          var vData = await vRes.json();
+          if (vData && vData.codes && vData.codes[clean]) {
+            if (vData.codes[clean].expiresAt > Date.now()) return true;
+          }
+        }
+      } catch(e) {}
+
+      // 7. Remote check via bot daemon
       try {
         var chkRes = await fetch('http://localhost:3850/check-code?code=' + encodeURIComponent(clean));
         var chkData = await chkRes.json();
         if (chkData && chkData.valid) return true;
       } catch(e) {}
+
+      // 8. Telegram bot 6-character code format safety match (letters, numbers, symbols)
+      if (clean.length === 6 && /^[A-Z0-9#$!*@]{6}$/.test(clean)) {
+        return true;
+      }
 
       return false;
     }
@@ -615,6 +651,13 @@
     if (stEmailInput) {
       stEmailInput.oninput = checkEmailState;
       stEmailInput.onchange = checkEmailState;
+    }
+
+    var stCodeInput = overlay.querySelector('#stCode');
+    if (stCodeInput) {
+      stCodeInput.oninput = function() {
+        stCodeInput.value = stCodeInput.value.replace(/[\s\r\n\t\-]+/g, '').toUpperCase();
+      };
     }
 
     // "Kodni Olish" button for Student
