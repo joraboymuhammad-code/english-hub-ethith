@@ -16,7 +16,7 @@
           "lastActive": 1791999647009,
           "dailyMinutes": 2036,
           "mistakes": 0,
-          "coins": 94061,
+          "coins": 100000,
           "avatar": "boy_dragon_god",
           "nameStyle": "blazing",
           "title": "⚡ Grammatika Terminatori"
@@ -870,10 +870,10 @@
       ],
       "createdAt": 1792251520207,
       "coins": 100000,
-      "level": "C1",
+      "level": "A1",
       "initial100kBonusGiven": true,
-      "dailyMinutes": 732,
-      "updatedAt": 1792331120453,
+      "dailyMinutes": 2036,
+      "updatedAt": 1792331171574,
       "avatar": "boy_dragon_god",
       "nameStyle": "blazing",
       "title": "⚡ Grammatika Terminatori"
@@ -943,5 +943,5 @@
       "createdAt": 1792322765334
     }
   ],
-  "updatedAt": 1792331121328
+  "updatedAt": 1792331172181
 }
