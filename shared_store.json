@@ -5,10 +5,18 @@
       "name": "IELTS & General English Intensive",
       "code": "ETH-L6S8CM",
       "teacherId": "joraboyevmuhammad85@gmail.com",
-      "teacherName": "Ustoz Muhammadyusuf",
+      "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1791999637426,
+      "created": 1792003895709,
       "students": [
+        {
+          "id": "std_sync_test",
+          "name": "John Doe",
+          "email": "john.doe@example.com",
+          "joinedAt": "23:25:42",
+          "activeMinutes": 25,
+          "mistakesCount": 0
+        },
         {
           "id": "muhammedjoraboyev1@gmail.com",
           "name": "Muhammadyusuf",
@@ -17,17 +25,9 @@
           "dailyMinutes": 2181,
           "mistakes": 0,
           "coins": 102000,
-          "avatar": "boy_dragon_god",
+          "avatar": null,
           "nameStyle": "blazing",
-          "title": "⚡ Grammatika Terminatori"
-        },
-        {
-          "id": "std_sync_test",
-          "name": "John Doe",
-          "email": "john.doe@example.com",
-          "joinedAt": "23:25:42",
-          "activeMinutes": 25,
-          "mistakesCount": 0
+          "title": null
         },
         {
           "id": "std_live_test_1",
@@ -64,8 +64,8 @@
         {
           "id": "msg_welcome_1",
           "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Ustoz Muhammadyusuf",
-          "text": "Assalomu alaykum! ETHITH rasmiy sinfiga xush kelibsiz. Bu yerda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "senderName": "Instructor Muhammadyusuf",
+          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
           "time": "12:00",
           "reactions": {
             "👍": [
@@ -362,8 +362,8 @@
           "replyTo": null,
           "reactions": {
             "🌙": [
-              "joraboymuhammad@gmail.com",
-              "muhammedjoraboyev1@gmail.com"
+              "muhammedjoraboyev1@gmail.com",
+              "joraboymuhammad@gmail.com"
             ]
           }
         },
@@ -807,62 +807,6 @@
   ],
   "accounts": [
     {
-      "id": "muhammedjoraboyev1@gmail.com",
-      "role": "student",
-      "name": "Muhammadyusuf",
-      "email": "muhammedjoraboyev1@gmail.com",
-      "gifts": [],
-      "createdAt": 1792251520207,
-      "coins": 100000,
-      "level": "A1",
-      "initial100kBonusGiven": true,
-      "dailyMinutes": 35,
-      "updatedAt": 1792340097874,
-      "avatar": "boy_dragon_god",
-      "nameStyle": "blazing",
-      "title": "⚡ Grammatika Terminatori"
-    },
-    {
-      "id": "std_live_test_1",
-      "name": "Alisher Oquvchi",
-      "email": "alisher@gmail.com",
-      "role": "student",
-      "level": "B2",
-      "coins": 180,
-      "dailyMinutes": 45,
-      "updatedAt": 1792336159790
-    },
-    {
-      "id": "st_shamshod_mvdq86j7",
-      "name": "Shamshod",
-      "email": "strikeruzb52@gmail.com",
-      "role": "student",
-      "level": "A1",
-      "coins": 250,
-      "dailyMinutes": 15,
-      "updatedAt": 1792336159790
-    },
-    {
-      "id": "st_nursulton_mvdq86j7",
-      "name": "nursulton",
-      "email": "nursulton@ethith.uz",
-      "role": "student",
-      "level": "A1",
-      "coins": 0,
-      "dailyMinutes": 10,
-      "updatedAt": 1792336159790
-    },
-    {
-      "id": "st_johndoe_mvdq86j7",
-      "name": "John Doe",
-      "email": "johndoe@ethith.uz",
-      "role": "student",
-      "level": "A1",
-      "coins": 0,
-      "dailyMinutes": 5,
-      "updatedAt": 1792321974547
-    },
-    {
       "id": "tc_l78sgm19w",
       "role": "teacher",
       "name": "Muhammadyusuf",
@@ -936,21 +880,115 @@
       "dailyMinutes": 35,
       "nameStyle": "blazing",
       "title": "⚡ Grammatika Terminatori",
-      "updatedAt": 1792336885494
+      "updatedAt": 1792340097874
+    },
+    {
+      "id": "std_live_test_1",
+      "name": "Alisher Oquvchi",
+      "email": "alisher@gmail.com",
+      "role": "student",
+      "level": "B2",
+      "coins": 180,
+      "dailyMinutes": 45,
+      "updatedAt": 1792336159790,
+      "avatar": null,
+      "title": null
+    },
+    {
+      "id": "st_shamshod_mvdq86j7",
+      "name": "Shamshod",
+      "email": "strikeruzb52@gmail.com",
+      "role": "student",
+      "level": "A1",
+      "coins": 250,
+      "dailyMinutes": 15,
+      "updatedAt": 1792336159790,
+      "avatar": null,
+      "title": null
+    },
+    {
+      "id": "st_nursulton_mvdq86j7",
+      "name": "nursulton",
+      "email": "nursulton@ethith.uz",
+      "role": "student",
+      "level": "A1",
+      "coins": 0,
+      "dailyMinutes": 10,
+      "updatedAt": 1792336159790
+    },
+    {
+      "id": "st_johndoe_mvdq86j7",
+      "name": "John Doe",
+      "email": "johndoe@ethith.uz",
+      "role": "student",
+      "level": "A1",
+      "coins": 0,
+      "dailyMinutes": 5,
+      "updatedAt": 1792321974547
+    },
+    {
+      "id": "st_48opkyulq",
+      "role": "student",
+      "name": "Muhammadyusuf",
+      "email": "muhammedjoraboyev1@gmail.com",
+      "level": "A1",
+      "unlocked": {
+        "A1": 1,
+        "A2": 1,
+        "B1": 1,
+        "B2": 1,
+        "C1": 1,
+        "C2": 1
+      },
+      "quizScores": {},
+      "mistakes": [],
+      "dailyMinutes": 2128,
+      "coins": 102000,
+      "gifts": [],
+      "createdAt": 1792333964629,
+      "updatedAt": 1792335740736,
+      "avatar": null,
+      "nameStyle": "blazing",
+      "title": null
+    },
+    {
+      "id": "nasibaorazaliyev@gmail.com",
+      "name": "nursulton",
+      "email": "nasibaorazaliyev@gmail.com",
+      "role": "student",
+      "level": "A1",
+      "coins": 0,
+      "dailyMinutes": 10,
+      "avatar": null,
+      "title": null,
+      "nameStyle": null,
+      "gifts": [],
+      "updatedAt": 1792336159790
     },
     {
       "id": "aleksandermike37@gmail.com",
+      "role": "student",
       "name": "supermen",
       "email": "aleksandermike37@gmail.com",
-      "role": "student",
+      "level": "A1",
+      "unlocked": {
+        "A1": 1,
+        "A2": 1,
+        "B1": 1,
+        "B2": 1,
+        "C1": 1,
+        "C2": 1
+      },
+      "quizScores": {},
+      "mistakes": [],
+      "dailyMinutes": 42,
       "coins": 51050,
       "avatar": null,
-      "level": "A1",
-      "joinedAt": 1792337512574,
-      "dailyMinutes": 0,
-      "updatedAt": 1792338324601,
+      "title": null,
       "nameStyle": null,
-      "title": null
+      "gifts": [],
+      "createdAt": 1792337512574,
+      "updatedAt": 1792340109202
     }
   ],
   "p2pListings": [
@@ -977,5 +1015,5 @@
       "createdAt": 1792322765334
     }
   ],
-  "updatedAt": 1792340098543
+  "updatedAt": 1792340110141
 }
