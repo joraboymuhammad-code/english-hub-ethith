@@ -14,7 +14,7 @@
           "name": "Muhammadyusuf",
           "email": "muhammedjoraboyev1@gmail.com",
           "lastActive": 1791999647009,
-          "dailyMinutes": 1894,
+          "dailyMinutes": 1897,
           "mistakes": 0
         },
         {
@@ -913,6 +913,28 @@
       "updatedAt": 1792321974547
     }
   ],
-  "p2pListings": [],
-  "updatedAt": 1792322530730
+  "p2pListings": [
+    {
+      "id": "p2p_1792322748592_nls2",
+      "sellerId": "st_2liav71yk",
+      "sellerName": "Muhammadyusuf",
+      "sellerEmail": "muhammedjoraboyev1@gmail.com",
+      "sellerAvatar": "boy_dragon_god",
+      "sellerNameStyle": "blazing",
+      "sellerTitle": "⚡ Grammatika Terminatori",
+      "item": {
+        "type": "gift",
+        "index": 0,
+        "id": "gift_0",
+        "name": "Yog'och Bolta (O'yinchoq)",
+        "icon": "🪓",
+        "rarity": "Rare",
+        "desc": "O'tin yorishga mutlaqo yaramaydi, lekin qaltiratadi!"
+      },
+      "price": 1500,
+      "allowBarter": true,
+      "createdAt": 1792322748592
+    }
+  ],
+  "updatedAt": 1792322749641
 }
