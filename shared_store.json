@@ -10,9 +10,9 @@
       "created": 1791999637426,
       "students": [
         {
-          "id": "tc_l78sgm19w",
+          "id": "muhammedjoraboyev1@gmail.com",
           "name": "Muhammadyusuf",
-          "email": "joraboymuhammad@gmail.com",
+          "email": "muhammedjoraboyev1@gmail.com",
           "lastActive": 1791999647009,
           "dailyMinutes": 2228,
           "mistakes": 0,
@@ -42,7 +42,20 @@
           "coins": 100000,
           "lastActive": 1791999647009,
           "dailyMinutes": 2187,
-          "mistakes": 0
+          "mistakes": 0,
+          "avatar": "boy_dragon_god"
+        },
+        {
+          "id": "tc_l78sgm19w",
+          "name": "Muhammadyusuf",
+          "email": "joraboymuhammad@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 2228,
+          "mistakes": 0,
+          "coins": 100000,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": "⚡ Grammatika Terminatori"
         }
       ],
       "messages": [
@@ -816,17 +829,17 @@
   ],
   "accounts": [
     {
-      "id": "tc_l78sgm19w",
+      "id": "muhammedjoraboyev1@gmail.com",
       "role": "student",
       "name": "Muhammadyusuf",
-      "email": "joraboymuhammad@gmail.com",
+      "email": "muhammedjoraboyev1@gmail.com",
       "gifts": [],
       "createdAt": 1792251520207,
-      "coins": 100000,
-      "level": "A1",
+      "coins": 102000,
+      "level": "C1",
       "initial100kBonusGiven": true,
-      "dailyMinutes": 35,
-      "updatedAt": 1792341153285,
+      "dailyMinutes": 2187,
+      "updatedAt": 1792341163895,
       "avatar": "boy_dragon_god",
       "nameStyle": "blazing",
       "title": "⚡ Grammatika Terminatori"
@@ -890,21 +903,6 @@
       "updatedAt": 1792321974547
     },
     {
-      "id": "st_48opkyulq",
-      "name": "Muhammadyusuf",
-      "email": "muhammedjoraboyev1@gmail.com",
-      "role": "student",
-      "coins": 102000,
-      "avatar": null,
-      "level": "C1",
-      "joinedAt": 1792333964629,
-      "dailyMinutes": 2187,
-      "nameStyle": "blazing",
-      "title": null,
-      "updatedAt": 1792335740736,
-      "gifts": []
-    },
-    {
       "id": "st_nursulton_mvdq86j7",
       "name": "nursulton",
       "email": "nursulton@ethith.uz",
@@ -939,5 +937,5 @@
       "createdAt": 1792322765334
     }
   ],
-  "updatedAt": 1792341154007
+  "updatedAt": 1792341164744
 }
