@@ -5,10 +5,22 @@
       "name": "IELTS & General English Intensive",
       "code": "ETH-L6S8CM",
       "teacherId": "joraboyevmuhammad85@gmail.com",
-      "teacherName": "Instructor Muhammadyusuf",
+      "teacherName": "Ustoz Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792003895709,
+      "created": 1791999637426,
       "students": [
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 2225,
+          "mistakes": 0,
+          "coins": 100000,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": "⚡ Grammatika Terminatori"
+        },
         {
           "id": "std_sync_test",
           "name": "John Doe",
@@ -16,18 +28,6 @@
           "joinedAt": "23:25:42",
           "activeMinutes": 25,
           "mistakesCount": 0
-        },
-        {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "lastActive": 1791999647009,
-          "dailyMinutes": 2211,
-          "mistakes": 0,
-          "coins": 102000,
-          "avatar": "boy_dragon_god",
-          "nameStyle": "blazing",
-          "title": null
         },
         {
           "id": "std_live_test_1",
@@ -39,37 +39,11 @@
           "id": "muhammedjoraboyev1@gmail.com",
           "name": "Muhammadyusuf",
           "email": "muhammedjoraboyev1@gmail.com",
-          "coins": 102000,
+          "coins": 100000,
           "lastActive": 1791999647009,
-          "dailyMinutes": 2211,
+          "dailyMinutes": 2187,
           "mistakes": 0,
-          "avatar": "boy_dragon_god",
-          "nameStyle": "blazing",
-          "title": null
-        },
-        {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "lastActive": 1791999647009,
-          "dailyMinutes": 2211,
-          "mistakes": 0,
-          "coins": 102000,
-          "avatar": "boy_dragon_god",
-          "nameStyle": "blazing",
-          "title": null
-        },
-        {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "lastActive": 1791999647009,
-          "dailyMinutes": 2211,
-          "mistakes": 0,
-          "coins": 102000,
-          "avatar": "boy_dragon_god",
-          "nameStyle": "blazing",
-          "title": null
+          "avatar": "boy_dragon_god"
         },
         {
           "id": "tc_l78sgm19w",
@@ -112,8 +86,8 @@
         {
           "id": "msg_welcome_1",
           "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Instructor Muhammadyusuf",
-          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
+          "senderName": "Ustoz Muhammadyusuf",
+          "text": "Assalomu alaykum! ETHITH rasmiy sinfiga xush kelibsiz. Bu yerda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
           "time": "12:00",
           "reactions": {
             "👍": [
@@ -410,8 +384,8 @@
           "replyTo": null,
           "reactions": {
             "🌙": [
-              "muhammedjoraboyev1@gmail.com",
-              "joraboymuhammad@gmail.com"
+              "joraboymuhammad@gmail.com",
+              "muhammedjoraboyev1@gmail.com"
             ]
           }
         },
@@ -851,84 +825,25 @@
     "886265"
   ],
   "deletedListingIds": [
-    "p2p_1792322748592_nls2"
+    "p2p_1792322748592_nls2",
+    "p2p_1792322765334_1cj0"
   ],
   "accounts": [
     {
       "id": "muhammedjoraboyev1@gmail.com",
-      "role": "teacher",
+      "role": "student",
       "name": "Muhammadyusuf",
       "email": "muhammedjoraboyev1@gmail.com",
-      "gifts": [
-        {
-          "id": "gift_1792252030809_1dx5",
-          "quizId": "quiz_1792251905814_jg75l",
-          "name": "Chala Yeyilgan Xurmo",
-          "icon": "🫐",
-          "desc": "Og'izni g'ijim qilib bog'laydigan mevali syurpriz!",
-          "rank": 1,
-          "quizTitle": "English Quiz Battle #2",
-          "wonAt": 1792252030809
-        },
-        {
-          "id": "gift_1792251676106_s8fd",
-          "quizId": "quiz_1792249091127_oac0w",
-          "name": "Singan Futbol To'pi (Yassi)",
-          "icon": "⚽",
-          "desc": "Tepsa uchmaydigan, faqat yerda dumalaydigan charm qoplama!",
-          "rank": 1,
-          "quizTitle": "English Quiz Battle #1",
-          "wonAt": 1792251676106
-        },
-        {
-          "id": "gift_1792251614316_56dp",
-          "quizId": "quiz_1792249091127_oac0w",
-          "name": "Dastasi Yo'q Bolg'a",
-          "icon": "🔨",
-          "desc": "Faqat temir boshidan iborat og'ir vaznli mo''jiza!",
-          "rank": 1,
-          "quizTitle": "English Quiz Battle #1",
-          "wonAt": 1792251614316
-        },
-        {
-          "id": "gift_1792249161568",
-          "quizId": "quiz_1792249091127_oac0w",
-          "name": "Eski CD Disk (Ustida tirnalgan izlar)",
-          "icon": "💿",
-          "desc": "Faqat 3-qo'shiqni chala o'qiydigan lazer disk!",
-          "rank": 1,
-          "quizTitle": "English Quiz Battle #1",
-          "wonAt": 1792249161568
-        },
-        {
-          "id": "gift_1792246235202",
-          "quizId": "quiz_1792246158844_bdyw5",
-          "name": "Kamera Ko'zi Yopilgan Skotch",
-          "icon": "📹",
-          "desc": "Xavfsizlik uchun noutbuk kamerasiga yopishtirilgan qora lenta!",
-          "rank": 1,
-          "quizTitle": "English Quiz Battle #2",
-          "wonAt": 1792246235202
-        },
-        {
-          "id": "gift_1792240968308",
-          "quizId": "quiz_main_blitz",
-          "name": "G'ildiragi Yo'q Samokat",
-          "icon": "🛴",
-          "desc": "Ustiga chiqib turish mumkin, lekin harakatlanmaydi!",
-          "rank": 1,
-          "quizTitle": "English Vocabulary & Grammar Blitz Battle",
-          "wonAt": 1792240968308
-        }
-      ],
-      "createdAt": 1792251523891,
+      "gifts": [],
+      "createdAt": 1792251520207,
       "coins": 100000,
       "level": "A1",
-      "avatar": "boy_dragon_god",
+      "initial100kBonusGiven": true,
       "dailyMinutes": 35,
+      "updatedAt": 1792343177642,
+      "avatar": "boy_dragon_god",
       "nameStyle": "blazing",
-      "title": "⚡ Grammatika Terminatori",
-      "updatedAt": 1792341996595
+      "title": "⚡ Grammatika Terminatori"
     },
     {
       "id": "std_live_test_1",
@@ -938,9 +853,7 @@
       "level": "B2",
       "coins": 180,
       "dailyMinutes": 45,
-      "updatedAt": 1792336159790,
-      "avatar": null,
-      "title": null
+      "updatedAt": 1792336159790
     },
     {
       "id": "st_kzja6hz7s",
@@ -950,8 +863,20 @@
       "level": "A1",
       "coins": 250,
       "dailyMinutes": 18,
-      "updatedAt": 1792340545173,
-      "avatar": null,
+      "updatedAt": 1792340545173
+    },
+    {
+      "id": "aleksandermike37@gmail.com",
+      "name": "Yangi O'quvchi",
+      "email": "aleksandermike37@gmail.com",
+      "role": "student",
+      "coins": 53050,
+      "avatar": "girl_chrono_witch",
+      "level": "A1",
+      "joinedAt": 1792337512574,
+      "dailyMinutes": 72,
+      "updatedAt": 1792342122742,
+      "nameStyle": null,
       "title": null
     },
     {
@@ -969,31 +894,6 @@
       "updatedAt": 1792336159790
     },
     {
-      "id": "aleksandermike37@gmail.com",
-      "role": "student",
-      "name": "Yangi O'quvchi",
-      "email": "aleksandermike37@gmail.com",
-      "level": "A1",
-      "unlocked": {
-        "A1": 1,
-        "A2": 1,
-        "B1": 1,
-        "B2": 1,
-        "C1": 1,
-        "C2": 1
-      },
-      "quizScores": {},
-      "mistakes": [],
-      "dailyMinutes": 72,
-      "coins": 53050,
-      "avatar": "girl_chrono_witch",
-      "title": null,
-      "nameStyle": null,
-      "gifts": [],
-      "createdAt": 1792337512574,
-      "updatedAt": 1792342122457
-    },
-    {
       "id": "st_johndoe_mvdq86j7",
       "name": "John Doe",
       "email": "johndoe@ethith.uz",
@@ -1004,29 +904,6 @@
       "updatedAt": 1792321974547
     }
   ],
-  "p2pListings": [
-    {
-      "id": "p2p_1792322765334_1cj0",
-      "sellerId": "st_2liav71yk",
-      "sellerName": "Muhammadyusuf",
-      "sellerEmail": "muhammedjoraboyev1@gmail.com",
-      "sellerAvatar": "boy_dragon_god",
-      "sellerNameStyle": "blazing",
-      "sellerTitle": "⚡ Grammatika Terminatori",
-      "item": {
-        "type": "avatar",
-        "avatarId": "girl_chrono_witch",
-        "id": "avatar_girl_chrono_witch",
-        "name": "Vaqt Jodugari",
-        "svg": "<svg viewBox=\"0 0 100 100\" width=\"100%\" height=\"100%\"><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"#1e1b4b\"/><path d=\"M28 36 C28 18 72 18 72 36 L75 64 L67 62 L65 44 L35 44 L33 62 L25 64 Z\" fill=\"#6b21a8\"/><circle cx=\"50\" cy=\"51\" r=\"20\" fill=\"#fed7aa\"/><circle cx=\"43\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"57\" cy=\"49\" r=\"3\" fill=\"#312e81\"/><circle cx=\"44\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><circle cx=\"58\" cy=\"48\" r=\"1.2\" fill=\"#fff\"/><polygon points=\"50,18 53,26 62,26 55,31 58,39 50,34 42,39 45,31 38,26 47,26\" fill=\"#f3e8ff\"/><path d=\"M45 62 Q50 66 55 62\" stroke=\"#4f46e5\" stroke-width=\"2\" fill=\"none\"/><path d=\"M25 88 C25 75 36 72 50 72 C64 72 75 75 75 88 Z\" fill=\"#6b21a8\"/></svg>",
-        "icon": "👤",
-        "rarity": "Epic",
-        "desc": "Daqiqalarni to'xtatib qo'yuvchi daho"
-      },
-      "price": 1500,
-      "allowBarter": true,
-      "createdAt": 1792322765334
-    }
-  ],
-  "updatedAt": 1792342123137
+  "p2pListings": [],
+  "updatedAt": 1792343178618
 }
