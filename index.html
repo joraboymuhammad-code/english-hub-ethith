@@ -204,6 +204,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -254,20 +256,23 @@ html, body {
   width: 100%;
   margin: 0 !important;
   padding: 0 !important;
-  overflow-x: hidden !important;
+  overflow-x: clip !important;
   -webkit-text-size-adjust: 100%;
 }
 #app {
   width: 100%;
   min-height: 100vh;
   background: var(--bg, #081322) !important;
-  overflow-x: hidden;
+  overflow-x: clip !important;
 }
 .ap-shell {
   display: flex !important;
   min-height: 100vh;
   width: 100%;
+  position: relative !important;
 }
+
+/* SIDEBAR - 100% FIXED & PINNED, NEVER SCROLLS OFF SCREEN */
 .ap-side {
   width: 276px !important;
   flex: 0 0 276px !important;
@@ -277,37 +282,115 @@ html, body {
   border-right: 1px solid var(--line) !important;
   display: flex !important;
   flex-direction: column !important;
-  position: sticky !important;
+  position: fixed !important;
   top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
   height: 100vh !important;
-  z-index: 40 !important;
+  z-index: 100 !important;
   box-sizing: border-box !important;
   overflow: hidden !important;
+  transform: none !important;
 }
-.ap-main {
-  flex: 1 1 0% !important;
-  min-width: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
+
+.ap-logo {
+  flex: 0 0 auto !important;
+  padding: 16px 22px 6px !important;
+  display: block !important;
+}
+
+.eth-contact-badge-box {
+  flex: 0 0 auto !important;
+}
+
+.ap-nav {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow-y: auto !important;
   overflow-x: hidden !important;
-  background: var(--bg, #081322) !important;
+  padding: 6px 14px 14px !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch !important;
 }
-.ap-view {
-  width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
+
+.ap-nav::-webkit-scrollbar {
+  width: 5px !important;
 }
+.ap-nav::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+.ap-nav::-webkit-scrollbar-thumb {
+  background: var(--line, #1b3252) !important;
+  border-radius: 6px !important;
+}
+.ap-nav::-webkit-scrollbar-thumb:hover {
+  background: var(--muted, #9bb0cf) !important;
+}
+
+.ap-plan {
+  flex: 0 0 auto !important;
+  margin: 8px 14px 14px !important;
+}
+
+/* MAIN CONTENT - Sits beside fixed sidebar on desktop */
+@media (min-width: 861px) {
+  .ap-side {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    height: 100vh !important;
+    width: 276px !important;
+    transform: none !important;
+  }
+  .ap-main {
+    margin-left: 276px !important;
+    width: calc(100% - 276px) !important;
+    max-width: calc(100% - 276px) !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    background: var(--bg, #081322) !important;
+    box-sizing: border-box !important;
+    overflow-x: clip !important;
+  }
+}
+
+/* MOBILE DRAWER (<= 860px) */
 @media (max-width: 860px) {
   .ap-side {
     position: fixed !important;
     left: 0 !important;
     top: 0 !important;
+    bottom: 0 !important;
+    width: 280px !important;
+    max-width: 85vw !important;
+    height: 100vh !important;
     transform: translateX(-100%) !important;
-    transition: transform 0.3s ease !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 1000 !important;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6) !important;
   }
   .ap-side.open {
     transform: translateX(0) !important;
   }
+  .ap-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+}
+
+.ap-view {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 [data-theme="dark"], #app[data-theme="dark"], body[data-theme="dark"] {
@@ -34867,10 +34950,10 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 #app button{font-family:inherit;cursor:pointer}
 #app svg.ic{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .ap-shell{display:flex;min-height:100vh}
-.ap-side{width:276px;flex:none;background:var(--card);border-right:1px solid var(--line);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;z-index:40;transition:transform .3s}
-.ap-logo{padding:16px 22px 6px;cursor:pointer;display:block}
+.ap-side{width:276px;flex:0 0 276px;background:var(--card);border-right:1px solid var(--line);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;height:100vh;z-index:100;overflow:hidden;box-sizing:border-box}
+.ap-logo{padding:16px 22px 6px;cursor:pointer;display:block;flex:none}
 .ap-logo svg{display:block}
-.ap-nav{flex:1;overflow:auto;padding:6px 14px 14px}
+.ap-nav{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:6px 14px 14px;-webkit-overflow-scrolling:touch}
 .ap-nav::-webkit-scrollbar{width:6px}.ap-nav::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
 .ap-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:12px 10px 6px}
 .ap-item{display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:0;background:transparent;color:var(--text);border-radius:12px;font-size:14.5px;font-weight:600;text-align:left;transition:.2s;position:relative}
@@ -34883,12 +34966,12 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 .ap-lv .b{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 8px 16px -10px var(--c1)}
 .ap-lv .t{flex:1;min-width:0}.ap-lv .t b{display:block;font-size:13.5px}.ap-lv .t small{color:var(--muted);font-size:11.5px}
 .ap-lv .m{height:4px;border-radius:4px;background:var(--line);margin-top:5px;overflow:hidden}.ap-lv .m i{display:block;height:100%;background:linear-gradient(90deg,var(--c1),var(--c2));border-radius:4px;transition:width .6s}
-.ap-plan{margin:8px 14px 14px;padding:12px 14px;border-radius:16px;color:#fff;background:linear-gradient(150deg,#1f6fd1,#0d3059);position:relative;overflow:hidden}
+.ap-plan{margin:8px 14px 14px;padding:12px 14px;border-radius:16px;color:#fff;background:linear-gradient(150deg,#1f6fd1,#0d3059);position:relative;overflow:hidden;flex:none}
 .ap-plan:after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.12)}
 .ap-plan small{opacity:.8;font-size:11px;letter-spacing:.1em;text-transform:uppercase}.ap-plan h4{font-size:18px;margin:0 0 8px}
 .ap-plan button{width:100%;border:0;padding:10px;border-radius:10px;background:#fff;color:#0d3059;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
 .ap-plan button:hover{transform:translateY(-2px)}.ap-plan button .ic{color:#e0a100}
-.ap-main{flex:1;min-width:0;display:flex;flex-direction:column}
+.ap-main{margin-left:276px;width:calc(100% - 276px);max-width:calc(100% - 276px);min-width:0;flex:1 1 auto;display:flex;flex-direction:column;box-sizing:border-box}
 .ap-top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;padding:14px 28px;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .ap-top .ttl{font-weight:800;font-size:18px}
 .ap-burger{display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text);align-items:center;justify-content:center}
@@ -35031,7 +35114,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 .ap-ov{display:none;position:fixed;inset:0;background:rgba(5,15,30,.5);z-index:35}
 @media(max-height:960px){.ap-lv .t small{display:none}.ap-lv .m{margin-top:3px}}
 @media(max-width:1100px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}.ap-hero{grid-template-columns:1fr}}
-@media(max-width:860px){.ap-side{position:fixed;left:0;top:0;transform:translateX(-100%);box-shadow:0 0 40px rgba(0,0,0,.4)}.ap-side.open{transform:none}.ap-side.open~.ap-ov,.ap-ov.show{display:block}.ap-burger{display:flex}.ap-top{padding:12px 16px}.ap-view{padding:18px 16px 6px}.ap-lang,.ap-user small{display:none}}
+@media(max-width:860px){.ap-side{position:fixed;left:0;top:0;bottom:0;width:280px;max-width:85vw;height:100vh;transform:translateX(-100%);box-shadow:0 0 40px rgba(0,0,0,.4);z-index:1000;transition:transform .3s ease}.ap-side.open{transform:none}.ap-side.open~.ap-ov,.ap-ov.show{display:block}.ap-burger{display:flex}.ap-top{padding:12px 16px}.ap-main{margin-left:0;width:100%;max-width:100%}.ap-view{padding:18px 16px 6px}.ap-lang,.ap-user small{display:none}}
 @media(max-width:620px){.g2,.g3,.g4{grid-template-columns:1fr}.ap-hero{padding:24px}.ap-hero h1{font-size:30px}.ap-qbox{padding:20px}.ap-qbox h2{font-size:20px}.ap-lhero .pr{margin-left:0;width:100%}.ap-top .ttl{font-size:16px}.ap-user b{display:none}.ap-user{padding:5px}}
 </style>
 
@@ -35130,6 +35213,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     '</div>';
 
     $('apSide').innerHTML = h;
+    $('apSide').scrollTop = 0;
   }
 
   var TITLES = {
@@ -35213,6 +35297,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     window._ethithCurrentView = n;
     render();
     window.scrollTo(0, 0);
+    if ($('apSide')) $('apSide').scrollTop = 0;
     $('apSide').classList.remove('open');
     $('apOv').classList.remove('show');
   }

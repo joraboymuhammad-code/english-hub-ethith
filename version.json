@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.18.0430",
-  "buildTime": 1792324200000,
-  "label": "ETHITH 7.8 - Fixed Sidebar Layout, Renamed Qora Bozor to Sotish, Fixed P2P Cancel Listing, Deduplicated Leaderboard Accounts"
+  "version": "2026.10.18.0450",
+  "buildTime": 1792325400000,
+  "label": "ETHITH 7.9 - 100% Fixed Pinned Sidebar, Zero Scroll Outflow on Desktop & Mobile, Independent Navigation Scrolling, Safe ScrollTop Resets"
 }
