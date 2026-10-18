@@ -11205,7 +11205,7 @@
   // ====================================================
 
   // ====================================================
-  // WEB AUDIO API COMPREHENSIVE VICTORY SOUND SYNTHESIZER (50 SOUNDS)
+  // WEB AUDIO API COMPREHENSIVE 50 DISTINCT VICTORY SOUND GENERATORS
   // ====================================================
   var _activeAudioNodes = [];
 
@@ -11230,236 +11230,611 @@
       if (ctx.state === 'suspended') ctx.resume();
       var now = ctx.currentTime;
 
-      // Find sound config in catalog if available
-      var soundObj = (window.ETHITH_COSMETICS && window.ETHITH_COSMETICS.victorySounds || []).find(function(s) {
-        return s.id === soundId;
-      });
-      var type = soundObj ? soundObj.type : 'brass';
-      var durSec = 5;
-      if (soundObj && soundObj.duration) {
-        var m = soundObj.duration.match(/\d+/);
-        if (m) durSec = parseInt(m[0], 10);
+      function createTone(freq, type, startTime, duration, gainVal, endGain) {
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.type = type || 'sine';
+        osc.frequency.setValueAtTime(freq, startTime);
+        gain.gain.setValueAtTime(gainVal || 0.3, startTime);
+        gain.gain.exponentialRampToValueAtTime(endGain || 0.001, startTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(startTime);
+        osc.stop(startTime + duration);
+        _activeAudioNodes.push(osc, gain);
+        return { osc: osc, gain: gain };
       }
 
-      // 1. CLAPS & APPLAUSE (Stochastic filtered noise bursts)
-      if (type === 'claps' || soundId.includes('applause') || soundId.includes('ovation')) {
-        var bufferSize = ctx.sampleRate * Math.min(durSec, 8);
+      function createNoiseBurst(startTime, duration, freq, q, gainVal) {
+        var bufferSize = ctx.sampleRate * duration;
         var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
         var data = buffer.getChannelData(0);
         for (var i = 0; i < bufferSize; i++) {
-          data[i] = (Math.random() * 2 - 1) * 0.4;
+          data[i] = (Math.random() * 2 - 1);
         }
         var noise = ctx.createBufferSource();
         noise.buffer = buffer;
         var filter = ctx.createBiquadFilter();
         filter.type = 'bandpass';
-        filter.frequency.setValueAtTime(1400, now);
-        filter.Q.setValueAtTime(2.2, now);
-
+        filter.frequency.setValueAtTime(freq || 1200, startTime);
+        filter.Q.setValueAtTime(q || 2.0, startTime);
         var gain = ctx.createGain();
-        gain.gain.setValueAtTime(0.01, now);
-        gain.gain.linearRampToValueAtTime(0.45, now + 0.5);
-        gain.gain.setValueAtTime(0.45, now + durSec - 1.2);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + durSec);
-
+        gain.gain.setValueAtTime(gainVal || 0.25, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
         noise.connect(filter);
         filter.connect(gain);
         gain.connect(ctx.destination);
-        noise.start(now);
-        noise.stop(now + durSec);
+        noise.start(startTime);
+        noise.stop(startTime + duration);
         _activeAudioNodes.push(noise, filter, gain);
-
-        // Add periodic rhythmic clap pulses
-        for (var c = 0; c < durSec * 4; c++) {
-          var cOsc = ctx.createOscillator();
-          var cGain = ctx.createGain();
-          cOsc.type = 'triangle';
-          cOsc.frequency.setValueAtTime(450 + Math.random() * 200, now + c * 0.25);
-          cGain.gain.setValueAtTime(0.18, now + c * 0.25);
-          cGain.gain.exponentialRampToValueAtTime(0.001, now + c * 0.25 + 0.12);
-          cOsc.connect(cGain);
-          cGain.connect(ctx.destination);
-          cOsc.start(now + c * 0.25);
-          cOsc.stop(now + c * 0.25 + 0.12);
-          _activeAudioNodes.push(cOsc, cGain);
-        }
-        return;
+        return { noise: noise, filter: filter, gain: gain };
       }
 
-      // 2. URAAA & CROWD CHEERING (Double Formant vocal resonators)
-      if (type === 'ura' || type === 'cheer' || soundId.includes('ura') || soundId.includes('cheer')) {
-        // Vowel formant sweep: /u:/ (~400Hz, ~900Hz) shifting into /a:/ (~800Hz, ~1300Hz)
-        var fNotes = [220, 277, 330, 440];
-        fNotes.forEach(function(baseFreq, chordIdx) {
-          var osc = ctx.createOscillator();
-          var gain = ctx.createGain();
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(baseFreq * (1 + (chordIdx * 0.01)), now);
-          osc.frequency.linearRampToValueAtTime(baseFreq * 1.15, now + durSec);
+      // ====================================================
+      // 50 DEDICATED DISTINCT SOUND ENGINES
+      // ====================================================
+      var engines = {
+        // 1. STADIUM APPLAUSE (4s) - Open-air soccer stadium with low roar
+        applause_stadium_4s: function() {
+          createNoiseBurst(now, 4.0, 950, 1.2, 0.45);
+          createTone(65, 'sine', now, 3.8, 0.4, 0.01); // stadium low roar
+          for (var i = 0; i < 16; i++) {
+            createTone(420 + Math.random() * 200, 'triangle', now + i * 0.22, 0.12, 0.2);
+          }
+        },
 
-          var formantFilter = ctx.createBiquadFilter();
-          formantFilter.type = 'bandpass';
-          formantFilter.frequency.setValueAtTime(450, now);
-          formantFilter.frequency.linearRampToValueAtTime(850, now + durSec * 0.6);
-          formantFilter.Q.setValueAtTime(4.5, now);
+        // 2. HUGE CONCERT HALL APPLAUSE (6s) - Crisp woody snaps & reverb
+        applause_huge_6s: function() {
+          createNoiseBurst(now, 6.0, 1800, 2.8, 0.4);
+          for (var i = 0; i < 28; i++) {
+            createNoiseBurst(now + i * 0.2, 0.08, 2200 + Math.random() * 600, 4.0, 0.35);
+          }
+        },
 
-          gain.gain.setValueAtTime(0.01, now);
-          gain.gain.linearRampToValueAtTime(0.28, now + 0.4);
-          gain.gain.setValueAtTime(0.28, now + durSec - 1);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + durSec);
+        // 3. STANDING OVATION (8s) - Accelerating clapping + fan whistles
+        applause_standing_8s: function() {
+          createNoiseBurst(now, 8.0, 1500, 1.8, 0.5);
+          // 2 enthusiastic whistling slides
+          var w1 = createTone(1400, 'sine', now + 1.2, 1.4, 0.25);
+          w1.osc.frequency.linearRampToValueAtTime(2900, now + 2.0);
+          var w2 = createTone(1600, 'sine', now + 4.0, 1.6, 0.25);
+          w2.osc.frequency.linearRampToValueAtTime(3200, now + 4.9);
+        },
 
-          osc.connect(formantFilter);
-          formantFilter.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now);
-          osc.stop(now + durSec);
-          _activeAudioNodes.push(osc, formantFilter, gain);
-        });
-        return;
-      }
+        // 4. LOUD URAAA (3s) - Deep baritone masculine chant
+        cheer_ura_loud_3s: function() {
+          [220, 277.18, 329.63].forEach(function(f) {
+            var o = createTone(f, 'sawtooth', now, 3.0, 0.28);
+            o.osc.frequency.linearRampToValueAtTime(f * 1.15, now + 2.5);
+          });
+          createTone(110, 'sine', now, 3.0, 0.4);
+        },
 
-      // 3. ROCK GUITAR RIFFS
-      if (type === 'rock' || soundId.includes('rock')) {
-        var rockProg = [220, 220, 293.66, 329.63, 440];
-        rockProg.forEach(function(freq, i) {
-          var tStep = now + i * 0.35;
-          var osc = ctx.createOscillator();
-          var gain = ctx.createGain();
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(freq, tStep);
-          gain.gain.setValueAtTime(0.35, tStep);
-          gain.gain.exponentialRampToValueAtTime(0.001, tStep + 0.7);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(tStep);
-          osc.stop(tStep + 0.7);
-          _activeAudioNodes.push(osc, gain);
-        });
-        return;
-      }
+        // 5. CROWD URAAA CHANT (5s) - Double-wave chant: U-RA! ... U-RA!
+        cheer_ura_crowd_5s: function() {
+          // 1st wave
+          createTone(260, 'sawtooth', now + 0.1, 1.8, 0.35);
+          createTone(330, 'sawtooth', now + 0.1, 1.8, 0.3);
+          createNoiseBurst(now + 0.1, 1.8, 800, 1.5, 0.3);
+          // 2nd wave (higher pitch & louder!)
+          createTone(330, 'sawtooth', now + 2.4, 2.4, 0.45);
+          createTone(392, 'sawtooth', now + 2.4, 2.4, 0.4);
+          createNoiseBurst(now + 2.4, 2.4, 900, 1.5, 0.4);
+        },
 
-      // 4. DRUMS & TIMPANI
-      if (type === 'drums' || soundId.includes('drum') || soundId.includes('timpani')) {
-        var hitCount = Math.floor(durSec * 3);
-        for (var h = 0; h < hitCount; h++) {
-          var dOsc = ctx.createOscillator();
-          var dGain = ctx.createGain();
-          dOsc.type = 'sine';
-          var tHit = now + h * 0.28;
-          dOsc.frequency.setValueAtTime(140, tHit);
-          dOsc.frequency.exponentialRampToValueAtTime(48, tHit + 0.22);
-          dGain.gain.setValueAtTime(0.45, tHit);
-          dGain.gain.exponentialRampToValueAtTime(0.001, tHit + 0.25);
-          dOsc.connect(dGain);
-          dGain.connect(ctx.destination);
-          dOsc.start(tHit);
-          dOsc.stop(tHit + 0.25);
-          _activeAudioNodes.push(dOsc, dGain);
-        }
-        return;
-      }
+        // 6. STADIUM URAAA CRESCENDO (7s) - Massive 7-second rising roar
+        cheer_ura_stadium_7s: function() {
+          var roar = createTone(180, 'sawtooth', now, 7.0, 0.15);
+          roar.gain.gain.linearRampToValueAtTime(0.45, now + 3.5);
+          roar.osc.frequency.linearRampToValueAtTime(380, now + 5.5);
+          createNoiseBurst(now, 7.0, 1100, 1.2, 0.35);
+          // Fireworks thuds
+          createTone(90, 'sine', now + 3.0, 0.8, 0.5);
+          createTone(80, 'sine', now + 5.2, 0.9, 0.55);
+        },
 
-      // 5. FIREWORKS & CRACKERS
-      if (type === 'fireworks' || soundId.includes('fireworks')) {
-        for (var fw = 0; fw < durSec; fw++) {
-          var tFw = now + fw * 1.1;
-          var fOsc = ctx.createOscillator();
-          var fGain = ctx.createGain();
-          fOsc.type = 'sawtooth';
-          fOsc.frequency.setValueAtTime(180, tFw);
-          fOsc.frequency.exponentialRampToValueAtTime(40, tFw + 0.7);
-          fGain.gain.setValueAtTime(0.4, tFw);
-          fGain.gain.exponentialRampToValueAtTime(0.001, tFw + 0.75);
-          fOsc.connect(fGain);
-          fGain.connect(ctx.destination);
-          fOsc.start(tFw);
-          fOsc.stop(tFw + 0.75);
-          _activeAudioNodes.push(fOsc, fGain);
-        }
-        return;
-      }
+        // 7. YES CHAMPION (4s) - Punchy "YEEES!" shout + victory chime
+        cheer_yes_champion_4s: function() {
+          var v = createTone(440, 'sawtooth', now, 1.8, 0.4);
+          v.osc.frequency.linearRampToValueAtTime(660, now + 1.2);
+          // Ascending C - E - G - C arpeggio
+          [523.25, 659.25, 783.99, 1046.50].forEach(function(f, i) {
+            createTone(f, 'sine', now + 1.8 + i * 0.18, 1.2, 0.35);
+          });
+        },
 
-      // 6. RETRO 8-BIT & CHIPTUNE
-      if (type === 'retro' || soundId.includes('arcade') || soundId.includes('pixel') || soundId.includes('chiptune')) {
-        var arp = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
-        for (var rep = 0; rep < Math.ceil(durSec / 0.8); rep++) {
-          arp.forEach(function(f, idx) {
-            var o = ctx.createOscillator();
-            var g = ctx.createGain();
-            var tPos = now + rep * 0.8 + idx * 0.08;
-            o.type = 'square';
-            o.frequency.setValueAtTime(f, tPos);
-            g.gain.setValueAtTime(0.2, tPos);
-            g.gain.exponentialRampToValueAtTime(0.001, tPos + 0.12);
-            o.connect(g);
-            g.connect(ctx.destination);
-            o.start(tPos);
-            o.stop(tPos + 0.12);
-            _activeAudioNodes.push(o, g);
+        // 8. BRAVO OVATION (6s) - European opera "BRAVO!" shout + rhythmic claps
+        cheer_bravo_ovation_6s: function() {
+          // "BRA-VO!"
+          createTone(392, 'sawtooth', now, 0.6, 0.4);
+          createTone(587.33, 'sawtooth', now + 0.6, 1.4, 0.45);
+          // Clapping rhythm
+          for (var i = 0; i < 18; i++) {
+            createNoiseBurst(now + 1.8 + i * 0.22, 0.1, 1900, 3.0, 0.28);
+          }
+        },
+
+        // 9. STADIUM ROAR (8s) - Rhythmic foot-stomps and stadium cheer
+        cheer_stadium_roar_8s: function() {
+          createNoiseBurst(now, 8.0, 1000, 1.0, 0.35);
+          for (var s = 0; s < 6; s++) {
+            createTone(55, 'sine', now + s * 1.2, 0.6, 0.6); // bass stomp
+            createTone(110, 'triangle', now + s * 1.2, 0.4, 0.4);
+          }
+        },
+
+        // 10. FIREWORKS & CLAPS (10s) - 3 Whistling rockets + 3 massive booms + applause
+        cheer_fireworks_claps_10s: function() {
+          [0.2, 3.2, 6.2].forEach(function(tStart, idx) {
+            // Rocket whistle
+            var r = createTone(500, 'sine', now + tStart, 1.2, 0.2);
+            r.osc.frequency.exponentialRampToValueAtTime(2600 + idx * 300, now + tStart + 1.1);
+            // Explosion boom
+            var bTime = now + tStart + 1.2;
+            createTone(50, 'sine', bTime, 1.4, 0.6);
+            createNoiseBurst(bTime, 1.5, 450, 0.8, 0.45);
+          });
+          createNoiseBurst(now + 4.0, 6.0, 1600, 2.0, 0.35); // crowd claps
+        },
+
+        // 11. ROYAL FANFARE (3s) - Quick sharp C-E-G-C trumpet blast
+        royal_fanfare_3s: function() {
+          [523.25, 659.25, 783.99, 1046.50].forEach(function(f, i) {
+            createTone(f, 'triangle', now + i * 0.25, 0.3 + (i === 3 ? 1.5 : 0), 0.4);
+            createTone(f * 0.5, 'sawtooth', now + i * 0.25, 0.3 + (i === 3 ? 1.5 : 0), 0.18);
+          });
+        },
+
+        // 12. ROYAL FANFARE (5s) - British coronation dotted rhythm
+        royal_fanfare_5s: function() {
+          var seq = [
+            { f: 523.25, t: 0, d: 0.2 }, { f: 523.25, t: 0.25, d: 0.2 }, { f: 523.25, t: 0.5, d: 0.2 },
+            { f: 659.25, t: 0.75, d: 0.4 }, { f: 587.33, t: 1.2, d: 0.3 }, { f: 783.99, t: 1.6, d: 0.4 },
+            { f: 1046.50, t: 2.1, d: 2.6 }
+          ];
+          seq.forEach(function(s) {
+            createTone(s.f, 'triangle', now + s.t, s.d, 0.4);
+            createTone(s.f * 0.5, 'sawtooth', now + s.t, s.d, 0.18);
+          });
+        },
+
+        // 13. ROYAL FANFARE (8s) - Baroque palace clarino trumpet trills
+        royal_fanfare_8s: function() {
+          var trills = [523.25, 587.33, 523.25, 587.33, 659.25, 783.99, 1046.50];
+          trills.forEach(function(f, i) {
+            createTone(f, 'triangle', now + i * 0.2, 0.25, 0.35);
+          });
+          // Sustained regal chord (C maj)
+          [523.25, 659.25, 783.99, 1046.50].forEach(function(f) {
+            createTone(f, 'triangle', now + 1.6, 6.0, 0.35);
+            createTone(f * 0.5, 'sawtooth', now + 1.6, 6.0, 0.15);
+          });
+        },
+
+        // 14. OLYMPIC FANFARE (6s) - Famous Olympic rising intervals (G-C-E-G-C)
+        olympic_fanfare_6s: function() {
+          var notes = [392.00, 523.25, 659.25, 783.99, 1046.50];
+          var times = [0, 0.4, 0.8, 1.2, 1.8];
+          var durs = [0.35, 0.35, 0.35, 0.5, 4.0];
+          notes.forEach(function(f, i) {
+            createTone(f, 'triangle', now + times[i], durs[i], 0.45);
+            createTone(f * 2, 'sine', now + times[i], durs[i], 0.15);
+          });
+        },
+
+        // 15. CAESAR MARCH (7s) - Roman legion martial horns in D minor -> D major
+        caesar_march_7s: function() {
+          var melody = [293.66, 349.23, 440.00, 587.33, 739.99]; // D minor to triumphant D major!
+          melody.forEach(function(f, i) {
+            createTone(f, 'sawtooth', now + i * 0.5, 0.55, 0.35);
+            createTone(73.42, 'sine', now + i * 0.5, 0.4, 0.5); // war drum
+          });
+          [293.66, 369.99, 440.00, 587.33].forEach(function(f) {
+            createTone(f, 'triangle', now + 2.8, 4.0, 0.4);
+          });
+        },
+
+        // 16. TRIUMPHAL ARCH (5s) - French cavalry bugle call
+        triumphal_arch_5s: function() {
+          var bugle = [196, 261.63, 329.63, 392, 523.25, 392, 523.25];
+          var t = [0, 0.25, 0.5, 0.75, 1.1, 1.5, 2.0];
+          bugle.forEach(function(f, i) {
+            createTone(f, 'triangle', now + t[i], (i === 6 ? 2.8 : 0.3), 0.45);
+          });
+        },
+
+        // 17. GOLDEN HORNS (4s) - Mellow warm French Horn quartet in F major
+        golden_horns_4s: function() {
+          [174.61, 220.00, 261.63, 349.23].forEach(function(f) {
+            var h = createTone(f, 'sine', now, 3.8, 0.35);
+            h.gain.gain.linearRampToValueAtTime(0.45, now + 0.8);
+          });
+        },
+
+        // 18. CORONATION ANTHEM (9s) - Handel Zadok style arpeggios rising to climax
+        coronation_anthem_9s: function() {
+          var arp = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99, 1046.50];
+          for (var bar = 0; bar < 4; bar++) {
+            arp.forEach(function(f, i) {
+              createTone(f, 'sine', now + bar * 1.2 + i * 0.12, 0.2, 0.2);
+            });
+          }
+          // Climax grand chord
+          [261.63, 329.63, 392.00, 523.25, 1046.50].forEach(function(f) {
+            createTone(f, 'triangle', now + 5.0, 4.0, 0.4);
+          });
+        },
+
+        // 19. KNIGHTS TRIUMPH (6s) - Medieval tournament herald fanfare
+        knights_triumph_6s: function() {
+          var m = [293.66, 293.66, 329.63, 293.66, 440.00, 587.33];
+          var d = [0.25, 0.25, 0.25, 0.25, 0.6, 4.0];
+          var times = [0, 0.3, 0.6, 0.9, 1.3, 2.0];
+          m.forEach(function(f, i) {
+            createTone(f, 'triangle', now + times[i], d[i], 0.45);
+            createTone(f * 0.5, 'sawtooth', now + times[i], d[i], 0.2);
+          });
+        },
+
+        // 20. GRAND ORCHESTRA (10s) - Full symphony finale (C - F - G - C)
+        grand_orchestra_10s: function() {
+          var chords = [
+            { t: 0, f: [261.63, 329.63, 392.00] }, // C
+            { t: 2.2, f: [349.23, 440.00, 523.25] }, // F
+            { t: 4.4, f: [392.00, 493.88, 587.33] }, // G
+            { t: 6.6, f: [261.63, 329.63, 392.00, 523.25, 1046.50] } // C!
+          ];
+          chords.forEach(function(c) {
+            c.f.forEach(function(freq) {
+              createTone(freq, 'triangle', now + c.t, 2.2, 0.35);
+              createTone(freq * 0.5, 'sawtooth', now + c.t, 2.2, 0.15);
+            });
+            createTone(65.41, 'sine', now + c.t, 1.2, 0.6); // timpani
+          });
+        },
+
+        // 21. DRUM ROLL CYMBAL (3s) - Accelerating snare roll to cymbal splash
+        drum_roll_cymbal_3s: function() {
+          for (var i = 0; i < 35; i++) {
+            var t = now + Math.pow(i / 35, 1.8) * 2.2;
+            createNoiseBurst(t, 0.05, 1200, 2.0, 0.1 + (i / 35) * 0.4);
+          }
+          // Cymbal crash
+          createNoiseBurst(now + 2.2, 1.8, 3500, 0.8, 0.6);
+        },
+
+        // 22. TAIKO WAR DRUMS (5s) - Japanese massive drums: DON... DON... DOKO-DON!
+        taiko_war_drums_5s: function() {
+          var hits = [0, 0.8, 1.6, 2.2, 2.5, 3.2];
+          hits.forEach(function(t, idx) {
+            var d = createTone(55, 'sine', now + t, 0.6, 0.7);
+            d.osc.frequency.exponentialRampToValueAtTime(32, now + t + 0.3);
+            createTone(110, 'triangle', now + t, 0.25, 0.5);
+          });
+        },
+
+        // 23. TIMPANI THUNDER (6s) - Classical kettle drums rolling & striking
+        timpani_thunder_6s: function() {
+          for (var i = 0; i < 20; i++) {
+            var t = now + i * 0.12;
+            createTone(98 + (i % 2) * 5, 'sine', t, 0.2, 0.2 + (i / 20) * 0.4);
+          }
+          // Final strike on C
+          var strike = createTone(130.81, 'sine', now + 2.6, 3.0, 0.8);
+          strike.osc.frequency.exponentialRampToValueAtTime(65.41, now + 3.8);
+        },
+
+        // 24. STADIUM STOMP (4s) - Queen "We Will Rock You" (Boom-boom-CLAP!)
+        stadium_stomp_4s: function() {
+          [0, 2.0].forEach(function(offset) {
+            // Stomp 1
+            createTone(48, 'sine', now + offset, 0.35, 0.7);
+            // Stomp 2
+            createTone(48, 'sine', now + offset + 0.35, 0.35, 0.7);
+            // CLAP!
+            createNoiseBurst(now + offset + 0.7, 0.8, 1600, 1.5, 0.6);
+          });
+        },
+
+        // 25. MARCHING BAND DRUMS (7s) - Military snare drumline cadence
+        marching_band_drums_7s: function() {
+          for (var step = 0; step < 24; step++) {
+            var t = now + step * 0.28;
+            var isAccent = (step % 4 === 0);
+            createNoiseBurst(t, 0.08, 2200, 3.0, isAccent ? 0.5 : 0.2);
+            if (isAccent) createTone(65, 'sine', t, 0.25, 0.5);
+          }
+        },
+
+        // 26. AFRICAN DJEMBE (5s) - High-energy African hand drums
+        african_djembe_5s: function() {
+          for (var i = 0; i < 18; i++) {
+            var t = now + i * 0.26;
+            var isBass = (i % 3 === 0);
+            if (isBass) {
+              createTone(75, 'sine', t, 0.22, 0.6);
+            } else {
+              createTone(320, 'triangle', t, 0.12, 0.35);
+            }
+          }
+        },
+
+        // 27. BRASS & CYMBALS (6s) - Huge brass blast + orchestral crash cymbal
+        brass_and_cymbals_6s: function() {
+          [261.63, 329.63, 392.00, 523.25].forEach(function(f) {
+            createTone(f, 'triangle', now, 5.0, 0.4);
+            createTone(f * 0.5, 'sawtooth', now, 5.0, 0.2);
+          });
+          createNoiseBurst(now, 4.0, 3200, 0.7, 0.65); // giant crash
+        },
+
+        // 28. GONG DYNASTY (4s) - Deep Tibetan/Chinese temple gong
+        gong_dynasty_4s: function() {
+          [62.5, 128.3, 194.2, 312.5, 480.0].forEach(function(f, idx) {
+            createTone(f, 'sine', now, 4.0, 0.5 / (idx + 1));
+          });
+        },
+
+        // 29. DRUM SOLO VICTORY (8s) - Rock tom-tom fills around the kit
+        drum_solo_victory_8s: function() {
+          var toms = [240, 200, 160, 120, 90, 60];
+          toms.forEach(function(f, i) {
+            for (var r = 0; r < 3; r++) {
+              createTone(f, 'sine', now + i * 1.0 + r * 0.22, 0.25, 0.5);
+            }
+          });
+          createNoiseBurst(now + 6.5, 2.0, 3500, 0.8, 0.6); // final crash!
+        },
+
+        // 30. HEAVY BASS DROP (5s) - Modern 808 Trap sub-bass sliding down
+        heavy_bass_drop_5s: function() {
+          var b = createTone(180, 'sine', now, 4.8, 0.8);
+          b.osc.frequency.exponentialRampToValueAtTime(34, now + 1.8);
+          createTone(180, 'sawtooth', now, 1.0, 0.3); // initial bite
+        },
+
+        // 31. ROCK GUITAR RIFF (4s) - Hard rock power chord riff (E5 - G5 - A5 - Bb5 - A5)
+        rock_guitar_riff_4s: function() {
+          var riff = [
+            { f: 164.81, t: 0, d: 0.3 }, { f: 196.00, t: 0.4, d: 0.3 },
+            { f: 220.00, t: 0.8, d: 0.3 }, { f: 233.08, t: 1.2, d: 0.3 },
+            { f: 220.00, t: 1.6, d: 2.2 }
+          ];
+          riff.forEach(function(r) {
+            createTone(r.f, 'sawtooth', now + r.t, r.d, 0.4);
+            createTone(r.f * 1.5, 'sawtooth', now + r.t, r.d, 0.25);
+          });
+        },
+
+        // 32. ROCK POWER CHORDS (6s) - AC/DC stadium punch chords (A - D - G - A)
+        rock_power_chords_6s: function() {
+          var chords = [
+            { f: 220, t: 0 }, { f: 293.66, t: 1.0 }, { f: 392, t: 2.0 }, { f: 440, t: 3.2 }
+          ];
+          chords.forEach(function(c) {
+            createTone(c.f, 'sawtooth', now + c.t, 1.8, 0.4);
+            createTone(c.f * 1.5, 'sawtooth', now + c.t, 1.8, 0.3);
+            createTone(110, 'sine', now + c.t, 0.4, 0.5); // kick
+          });
+        },
+
+        // 33. ROCK SOLO LEGEND (8s) - 80s Metal tapping arpeggios & screaming bend
+        rock_solo_legend_8s: function() {
+          var notes = [440, 523.25, 659.25, 880, 1046.50, 1318.51, 1760];
+          for (var cycle = 0; cycle < 3; cycle++) {
+            notes.forEach(function(f, i) {
+              createTone(f, 'sawtooth', now + cycle * 1.4 + i * 0.15, 0.25, 0.3);
+            });
+          }
+          // Screaming high vibrato hold
+          var highLead = createTone(1760, 'sawtooth', now + 4.8, 3.2, 0.4);
+          highLead.osc.frequency.linearRampToValueAtTime(1975.53, now + 6.0);
+        },
+
+        // 34. CYBER SYNTH ARP (3s) - Fast 16th-note 140BPM synth arpeggios
+        cyber_synth_arp_3s: function() {
+          var arp = [440, 523.25, 659.25, 783.99, 880, 783.99, 659.25, 523.25];
+          for (var rep = 0; rep < 3; rep++) {
+            arp.forEach(function(f, i) {
+              createTone(f, 'square', now + rep * 0.96 + i * 0.12, 0.14, 0.2);
+            });
+          }
+        },
+
+        // 35. CYBERWAVE WIN (5s) - 80s Synthwave Outrun synth brass chords
+        cyberwave_win_5s: function() {
+          var chords = [
+            { t: 0, f: [261.63, 329.63, 392, 493.88] }, // Cmaj7
+            { t: 1.2, f: [220, 261.63, 329.63, 392] },   // Am7
+            { t: 2.4, f: [174.61, 220, 261.63, 329.63] },// Fmaj7
+            { t: 3.6, f: [196, 246.94, 293.66, 392] }    // G
+          ];
+          chords.forEach(function(c) {
+            c.f.forEach(function(freq) {
+              createTone(freq, 'sawtooth', now + c.t, 1.4, 0.2);
+              createTone(freq * 1.008, 'sawtooth', now + c.t, 1.4, 0.2); // stereo chorus
+            });
+          });
+        },
+
+        // 36. SYNTHWAVE ANTHEM (7s) - Analog bassline + glowing neon lead melody
+        synthwave_anthem_7s: function() {
+          // Bassline pulses
+          for (var b = 0; b < 14; b++) {
+            createTone(110, 'sawtooth', now + b * 0.45, 0.35, 0.35);
+          }
+          // Lead melody
+          var lead = [440, 493.88, 523.25, 659.25, 587.33, 440];
+          var times = [0, 0.9, 1.8, 2.7, 4.0, 5.0];
+          lead.forEach(function(f, idx) {
+            createTone(f, 'sine', now + times[idx], 1.2, 0.3);
+          });
+        },
+
+        // 37. TECHNO DROP (6s) - 303 acid filter sweep + four-on-the-floor beat
+        techno_drop_6s: function() {
+          // 4/4 Kick beat
+          for (var k = 0; k < 6; k++) {
+            createTone(55, 'sine', now + k * 0.9, 0.4, 0.7);
+          }
+          // Acid 303 squelch
+          var acid = createTone(110, 'sawtooth', now, 5.5, 0.35);
+          acid.osc.frequency.linearRampToValueAtTime(880, now + 3.0);
+          acid.osc.frequency.linearRampToValueAtTime(220, now + 5.5);
+        },
+
+        // 38. PIXEL ARCADE WIN (3s) - Nintendo NES 8-bit Mario level clear style
+        pixel_arcade_win_3s: function() {
+          var nes = [392, 523.25, 659.25, 783.99, 659.25, 783.99, 1046.50];
+          var t = [0, 0.14, 0.28, 0.42, 0.7, 0.84, 1.1];
+          nes.forEach(function(f, i) {
+            createTone(f, 'square', now + t[i], (i === 6 ? 1.8 : 0.16), 0.22);
+          });
+        },
+
+        // 39. ARCADE LEVEL UP (5s) - Sega Genesis 16-bit FM synth chime
+        arcade_level_up_5s: function() {
+          var seq = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98, 2093.00];
+          seq.forEach(function(f, i) {
+            createTone(f, 'triangle', now + i * 0.16, 0.3, 0.3);
+            createTone(f * 2, 'sine', now + i * 0.16, 0.2, 0.15); // sparkle
+          });
+          createTone(261.63, 'square', now + 1.2, 3.5, 0.2); // base hold
+        },
+
+        // 40. CHIPTUNE MELODY (7s) - Complete Game Boy chiptune theme
+        chiptune_melody_7s: function() {
+          var chiptuneNotes = [
+            440, 440, 659.25, 587.33, 523.25, 493.88, 523.25, 659.25,
+            880, 783.99, 659.25, 587.33, 659.25, 880, 1046.50
+          ];
+          chiptuneNotes.forEach(function(f, i) {
+            createTone(f, 'square', now + i * 0.38, 0.32, 0.2);
+            createTone(f * 0.5, 'triangle', now + i * 0.38, 0.32, 0.2);
+          });
+        },
+
+        // 41. GOLDEN BELLS (3s) - Bright sparkling glockenspiel in C7
+        golden_bells_3s: function() {
+          [1046.50, 1318.51, 1567.98, 2093.00].forEach(function(f, i) {
+            createTone(f, 'sine', now + i * 0.25, 1.8, 0.35);
+          });
+        },
+
+        // 42. CHURCH CHIMES (5s) - Big Ben Westminster cathedral bells
+        church_chimes_5s: function() {
+          var westminster = [329.63, 415.30, 369.99, 246.94]; // E - G# - F# - B
+          westminster.forEach(function(f, i) {
+            var b = createTone(f, 'sine', now + i * 0.9, 2.5, 0.4);
+            createTone(f * 2.76, 'sine', now + i * 0.9, 1.2, 0.15); // bell inharmonic
+          });
+        },
+
+        // 43. CRYSTAL GLOCKENSPIEL (4s) - Fairy dust crystal chimes
+        crystal_glockenspiel_4s: function() {
+          var penta = [783.99, 880.00, 987.77, 1174.66, 1318.51, 1567.98, 1760.00, 2093.00];
+          penta.forEach(function(f, i) {
+            createTone(f, 'sine', now + i * 0.14, 1.5, 0.28);
+          });
+        },
+
+        // 44. HARPA HEAVENLY (6s) - Angelic Celtic harp ascending 3 octaves
+        harpa_heavenly_6s: function() {
+          var harp = [
+            130.81, 164.81, 196.00, 261.63, 329.63, 392.00,
+            523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98
+          ];
+          harp.forEach(function(f, i) {
+            createTone(f, 'sine', now + i * 0.2, 3.5, 0.25);
+          });
+        },
+
+        // 45. VICTORY MARCH (7s) - Sousa American marching band
+        victory_march_7s: function() {
+          var tune = [523.25, 523.25, 587.33, 659.25, 523.25, 659.25, 783.99];
+          var t = [0, 0.3, 0.6, 0.9, 1.4, 1.7, 2.2];
+          tune.forEach(function(f, i) {
+            createTone(f, 'triangle', now + t[i], (i === 6 ? 4.0 : 0.28), 0.4);
+            createTone(f * 0.5, 'sawtooth', now + t[i], (i === 6 ? 4.0 : 0.28), 0.18);
+          });
+        },
+
+        // 46. CHAMPIONS LEAGUE (8s) - UEFA Champions League choral crescendo
+        champions_league_8s: function() {
+          var choir = [
+            { t: 0, f: [261.63, 329.63, 392] },
+            { t: 2.0, f: [293.66, 369.99, 440] },
+            { t: 4.0, f: [329.63, 415.30, 493.88] },
+            { t: 5.5, f: [523.25, 659.25, 783.99, 1046.50] } // Les grandes equipes!
+          ];
+          choir.forEach(function(c) {
+            c.f.forEach(function(freq) {
+              createTone(freq, 'sawtooth', now + c.t, 2.4, 0.2);
+              createTone(freq, 'sine', now + c.t, 2.4, 0.3);
+            });
+          });
+        },
+
+        // 47. EPIC TRAILER HIT (5s) - Hans Zimmer "BRAAAM" horn of doom to triumph
+        epic_trailer_hit_5s: function() {
+          var b = createTone(65.41, 'sawtooth', now, 4.5, 0.7); // massive BRAAAM
+          createTone(130.81, 'sawtooth', now, 4.5, 0.5);
+          createTone(45, 'sine', now, 1.5, 0.8); // sub impact
+        },
+
+        // 48. COSMIC ASCENSION (6s) - Interstellar space pipe organ chord
+        cosmic_ascension_6s: function() {
+          [65.41, 130.81, 196.00, 261.63, 392.00, 523.25].forEach(function(f) {
+            var o = createTone(f, 'triangle', now, 5.8, 0.35);
+            o.gain.gain.linearRampToValueAtTime(0.5, now + 2.5);
+          });
+        },
+
+        // 49. SUPERHERO THEME (9s) - Avengers / Marvel heroic galloping brass
+        superhero_theme_9s: function() {
+          var avengers = [
+            { f: 220, t: 0, d: 0.3 }, { f: 220, t: 0.35, d: 0.3 }, { f: 220, t: 0.7, d: 0.3 },
+            { f: 261.63, t: 1.1, d: 0.6 }, { f: 329.63, t: 1.8, d: 0.8 },
+            { f: 440, t: 2.8, d: 1.4 }, { f: 523.25, t: 4.4, d: 4.0 }
+          ];
+          avengers.forEach(function(a) {
+            createTone(a.f, 'triangle', now + a.t, a.d, 0.45);
+            createTone(a.f * 0.5, 'sawtooth', now + a.t, a.d, 0.2);
+          });
+        },
+
+        // 50. ULTIMATE GRAND WIN (10s) - Snare roll + Crowd URAAA + Fireworks + Brass
+        ultimate_grand_win_10s: function() {
+          // 1. Snare roll (0-2s)
+          for (var r = 0; r < 20; r++) {
+            createNoiseBurst(now + (r / 20) * 1.8, 0.06, 1400, 2.0, 0.1 + (r / 20) * 0.4);
+          }
+          // 2. Crowd URAAA! (2s)
+          createTone(260, 'sawtooth', now + 1.8, 4.0, 0.35);
+          createNoiseBurst(now + 1.8, 4.0, 1000, 1.2, 0.35);
+          // 3. Fireworks boom (4s)
+          createTone(55, 'sine', now + 3.8, 1.5, 0.7);
+          createNoiseBurst(now + 3.8, 1.5, 3000, 0.8, 0.5);
+          // 4. Grand Brass Fanfare (5s-10s)
+          [261.63, 329.63, 392.00, 523.25, 1046.50].forEach(function(f) {
+            createTone(f, 'triangle', now + 4.8, 5.0, 0.45);
           });
         }
-        return;
-      }
+      };
 
-      // 7. CYBER & SYNTHWAVE
-      if (type === 'cyber' || soundId.includes('cyber') || soundId.includes('synth')) {
-        var freqs = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
-        freqs.forEach(function(f, i) {
-          var osc = ctx.createOscillator();
-          var gain = ctx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(f, now + i * 0.12);
-          gain.gain.setValueAtTime(0.35, now + i * 0.12);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.12 + 0.6);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now + i * 0.12);
-          osc.stop(now + i * 0.12 + 0.6);
-          _activeAudioNodes.push(osc, gain);
-        });
-        return;
+      // Execute dedicated sound engine if available, or fallback
+      if (engines[soundId]) {
+        engines[soundId]();
+      } else {
+        // Fallback default
+        engines.royal_fanfare_3s();
       }
-
-      // 8. BELLS & CHIMES
-      if (type === 'bells' || soundId.includes('bells') || soundId.includes('chimes')) {
-        var bellNotes = [523.25, 659.25, 783.99, 1046.50];
-        bellNotes.forEach(function(f, i) {
-          var osc = ctx.createOscillator();
-          var gain = ctx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(f, now + i * 0.3);
-          gain.gain.setValueAtTime(0.4, now + i * 0.3);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.3 + 1.2);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now + i * 0.3);
-          osc.stop(now + i * 0.3 + 1.2);
-          _activeAudioNodes.push(osc, gain);
-        });
-        return;
-      }
-
-      // 9. DEFAULT / BRASS & ANTHEM (Royal Trumpet Fanfare)
-      var fanfareNotes = [523.25, 523.25, 523.25, 659.25, 783.99, 1046.50];
-      var times = [0, 0.22, 0.44, 0.66, 0.9, 1.2];
-      var durations = [0.18, 0.18, 0.18, 0.2, 0.3, durSec - 1.2];
-      fanfareNotes.forEach(function(freq, i) {
-        var osc = ctx.createOscillator();
-        var gain = ctx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(freq, now + times[i]);
-        gain.gain.setValueAtTime(0.4, now + times[i]);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + times[i] + durations[i]);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now + times[i]);
-        osc.stop(now + times[i] + durations[i]);
-        _activeAudioNodes.push(osc, gain);
-      });
-    } catch(e) {}
+    } catch(e) {
+      console.error('Audio synthesis error:', e);
+    }
   };
 
-  // Distinct audio for Pack Opening Rarity Reveals
+    // Distinct audio for Pack Opening Rarity Reveals
   function playPackRevealSound(rarity) {
     try {
       var AudioCtx = window.AudioContext || window.webkitAudioContext;
