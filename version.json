@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.18.0900",
-  "buildTime": 1792337500000,
-  "label": "ETHITH 8.4 - Real-Time MQTT Telegram Verification Sync, Whitespace & Symbol Auto-Sanitization"
+  "version": "2026.10.18.1000",
+  "buildTime": 1792338600000,
+  "label": "ETHITH 8.5 - Real-Time Profile & Avatar Sync, Leaderboard Deduplication, +COIN Modal & Bot Fixes"
 }

@@ -11032,14 +11032,35 @@
 
     var regUsers = [];
     try {
-      regUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+      var rawReg = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+      if (Array.isArray(rawReg)) {
+        var cleanReg = [];
+        var seenReg = {};
+        rawReg.forEach(function(r) {
+          if (!r) return;
+          var nm = (r.name || '').trim().toLowerCase();
+          var em = (r.email || '').trim().toLowerCase();
+          if (nm === 'john doe' || em.includes('john.doe') || em.includes('example.com') || em === 'nursulton@ethith.uz' || nm === 'test') return;
+          var key = em || nm;
+          if (!key || seenReg[key]) return;
+          seenReg[key] = true;
+          cleanReg.push(r);
+        });
+        localStorage.setItem('ethith_all_registered_users', JSON.stringify(cleanReg));
+        regUsers = cleanReg;
+      }
     } catch(e) {}
 
     var classStudents = [];
     (S.classes || []).forEach(function(c) {
       if (Array.isArray(c.students)) {
         c.students.forEach(function(st) {
-          if (st && st.role !== 'teacher') classStudents.push(st);
+          if (st && st.role !== 'teacher') {
+            var stName = (st.name || '').trim().toLowerCase();
+            var stEmail = (st.email || '').trim().toLowerCase();
+            if (stName === 'john doe' || stEmail.includes('john.doe') || stEmail.includes('example.com') || stEmail === 'nursulton@ethith.uz') return;
+            classStudents.push(st);
+          }
         });
       }
     });
@@ -11054,16 +11075,16 @@
       var cleanId = (u.id || '').trim();
       if (!cleanName && !cleanEmail && !cleanId) return;
 
+      var lowerName = cleanName.toLowerCase();
+      if (lowerName === 'john doe' || lowerName === 'test' || cleanEmail.includes('john.doe') || cleanEmail.includes('example.com') || cleanId.includes('sync_test') || cleanEmail === 'nursulton@ethith.uz') return;
+
       var coinCount = (u.coins !== undefined && u.coins !== null) ? Number(u.coins) : 0;
 
-      // Strict Deduplication: Match primarily by email. Different emails are ALWAYS separate accounts!
+      // Strict Deduplication: Match by email, id, or identical name!
       var existing = uniqueStudents.find(function(s) {
-        if (cleanEmail && s.email) {
-          return cleanEmail === s.email;
-        }
-        if (cleanId && s.id) {
-          return cleanId === s.id;
-        }
+        if (cleanEmail && s.email && cleanEmail === s.email) return true;
+        if (cleanId && s.id && cleanId === s.id) return true;
+        if (lowerName && s.name && lowerName === s.name.trim().toLowerCase()) return true;
         return false;
       });
 
@@ -11081,11 +11102,15 @@
         });
       } else {
         existing.coins = Math.max(existing.coins, coinCount);
-        if (u.avatar !== undefined) existing.avatar = u.avatar;
+        if (u.avatar !== undefined && u.avatar !== null) existing.avatar = u.avatar;
         if (u.level) existing.level = u.level;
-        if (u.nameStyle !== undefined) existing.nameStyle = u.nameStyle;
-        if (u.title !== undefined) existing.title = u.title;
-        if (cleanEmail && !existing.email) existing.email = cleanEmail;
+        if (u.nameStyle !== undefined && u.nameStyle !== null) existing.nameStyle = u.nameStyle;
+        if (u.title !== undefined && u.title !== null) existing.title = u.title;
+        if (cleanEmail && (!existing.email || existing.email.endsWith('@ethith.uz'))) {
+          existing.email = cleanEmail;
+          existing.id = cleanEmail;
+        }
+        if (cleanName && (!existing.name || existing.name === "O'quvchi")) existing.name = cleanName;
         if ((u.dailyMinutes || 0) > (existing.dailyMinutes || 0)) existing.dailyMinutes = u.dailyMinutes;
       }
     });
@@ -11098,8 +11123,9 @@
       var myCoins = Number(S.user.coins || 0);
 
       var meInList = uniqueStudents.find(function(s) {
-        if (myEmail && s.email) return myEmail === s.email;
-        if (myId && s.id) return myId === s.id;
+        if (myEmail && s.email && myEmail === s.email) return true;
+        if (myId && s.id && myId === s.id) return true;
+        if (myName && s.name && myName === s.name.trim().toLowerCase()) return true;
         return false;
       });
 
@@ -11109,6 +11135,11 @@
         meInList.level = S.level || S.user.level || meInList.level;
         meInList.nameStyle = S.user.nameStyle || meInList.nameStyle;
         meInList.title = S.user.title || meInList.title;
+        if (myEmail && (!meInList.email || meInList.email.endsWith('@ethith.uz'))) {
+          meInList.email = myEmail;
+          meInList.id = myEmail;
+        }
+        if (S.user.name) meInList.name = S.user.name;
       } else {
         uniqueStudents.push({
           id: myEmail || myId || S.user.name,
@@ -13697,7 +13728,8 @@
         '</div>' +
         '<div style="font-size:13.5px;color:var(--muted);margin-bottom:12px">📧 ' + esc(user.email || 'Email kiritilmagan') + '</div>' +
         '<div style="display:flex;gap:10px;flex-wrap:wrap">' +
-          (!isTeacher ? '<button type="button" class="ap-btn pri" id="btnProfileOpenMarket" style="padding:6px 14px;font-size:13px">' + ic('sparkles') + ' Marketga o\'tish (Pack ochish)</button>' : '') +
+          (!isTeacher ? '<button type="button" class="ap-btn pri" id="btnEditProfileInfo" style="padding:6px 14px;font-size:13px;display:inline-flex;align-items:center;gap:6px">' + ic('edit') + ' Profilni Tahrirlash</button>' : '') +
+          (!isTeacher ? '<button type="button" class="ap-btn gh" id="btnProfileOpenMarket" style="padding:6px 14px;font-size:13px">' + ic('sparkles') + ' Marketga o\'tish (Pack ochish)</button>' : '') +
           '<button type="button" class="ap-btn gh" id="btnProfileLogout" style="padding:6px 14px;font-size:13px;color:#dc2626">' + ic('lock') + ' Tizimdan chiqish (Log out)</button>' +
         '</div>' +
       '</div>' +
@@ -13838,13 +13870,23 @@
     container.innerHTML = html;
 
     // Attach Handlers
+    window._ethithRefreshProfile = function() {
+      if (window._ethithCurrentView === 'profile') {
+        renderProfileView(container);
+      }
+    };
+
+    var editProfBtn = container.querySelector('#btnEditProfileInfo');
+    if (editProfBtn) {
+      editProfBtn.onclick = function() {
+        showEditProfileModal(container);
+      };
+    }
+
     var changeAvBtn = container.querySelector('#btnChangeAvatar');
     if (changeAvBtn) {
       changeAvBtn.onclick = function() {
-        showAvatarPickerModal(function() {
-          renderProfileView(container);
-          if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
-        });
+        showEditProfileModal(container);
       };
     }
 
@@ -13891,13 +13933,23 @@
         var targetId = btn.dataset.avId;
         S.user.avatar = targetId;
         App.saveState();
+        if (window.EthithSync && window.EthithSync.publishLive) {
+          window.EthithSync.publishLive({
+            type: 'USER_STATE_SYNC',
+            user: S.user,
+            updatedAt: Date.now()
+          });
+        }
+        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+          window.EthithSync.pushRemoteStore();
+        }
         if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
         renderProfileView(container);
       };
     });
   }
 
-    // ====================================================
+  // ====================================================
   // 5. AVATAR PICKER MODAL (ONLY UNLOCKED AVATARS)
   // ====================================================
   function showAvatarPickerModal(onDone) {
@@ -13948,6 +14000,16 @@
           S.user.avatar = card.dataset.avId;
         }
         App.saveState();
+        if (window.EthithSync && window.EthithSync.publishLive) {
+          window.EthithSync.publishLive({
+            type: 'USER_STATE_SYNC',
+            user: S.user,
+            updatedAt: Date.now()
+          });
+        }
+        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+          window.EthithSync.pushRemoteStore();
+        }
         if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
         overlay.remove();
         if (onDone) onDone();
@@ -13965,12 +14027,252 @@
     }
   }
 
+  // ====================================================
+  // 5B. EDIT PROFILE & ACCOUNT MODAL (NAME, GMAIL, AVATAR)
+  // ====================================================
+  function showEditProfileModal(container) {
+    var user = S.user;
+    if (!user) return;
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-pack-modal-overlay animate-fade-in';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:999999;padding:16px;';
+
+    var unlocked = user.unlockedAvatars || [];
+    var currentAvatarId = (user.avatar && user.avatar.id) ? user.avatar.id : (user.avatar || null);
+    var selectedAvatar = currentAvatarId;
+
+    var html = '' +
+      '<div style="background:var(--card,#0f172a);border:1px solid var(--line,#334155);border-radius:24px;padding:26px;max-width:540px;width:100%;color:var(--text,#fff);box-shadow:0 25px 60px rgba(0,0,0,0.6);max-height:90vh;overflow-y:auto;position:relative">' +
+      '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">' +
+      '    <h3 style="margin:0;font-size:18px;font-weight:900;color:var(--text);display:flex;align-items:center;gap:8px">✏️ Akkaunt va Profilni Tahrirlash</h3>' +
+      '    <button type="button" id="btnCloseEditProfile" style="background:none;border:none;font-size:24px;color:var(--muted);cursor:pointer;line-height:1">&times;</button>' +
+      '  </div>' +
+      '  <p style="font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.4">Ismingiz, emailingiz va profilingiz avatarini o\'zgartirishingiz mumkin. O\'zgarishlar darhol barcha qurilmalarga uzatiladi:</p>' +
+      '  <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:18px">' +
+      '    <div>' +
+      '      <label style="display:block;font-size:12px;font-weight:800;color:var(--text);margin-bottom:6px">👤 Ismingiz (To\'liq ism yoki taxallus):</label>' +
+      '      <input type="text" id="inpEditName" value="' + esc(user.name || '') + '" style="width:100%;padding:10px 14px;background:var(--soft,#1e293b);border:1px solid var(--line,#334155);border-radius:12px;color:var(--text,#fff);font-size:14px;font-weight:700;box-sizing:border-box" placeholder="Ismingizni kiriting">' +
+      '    </div>' +
+      '    <div>' +
+      '      <label style="display:block;font-size:12px;font-weight:800;color:var(--text);margin-bottom:6px">📧 Gmail Pochta Manzilingiz (Akkaunt ID):</label>' +
+      '      <input type="email" id="inpEditEmail" value="' + esc(user.email || '') + '" style="width:100%;padding:10px 14px;background:var(--soft,#1e293b);border:1px solid var(--line,#334155);border-radius:12px;color:var(--text,#fff);font-size:14px;font-weight:700;box-sizing:border-box" placeholder="misol@gmail.com">' +
+      '      <small style="color:var(--muted);font-size:11px;margin-top:4px;display:block">⚠️ Gmail orqali boshqa qurilmalarda akkauntingizga kirishingiz va coinlarni qabul qilishingiz mumkin.</small>' +
+      '    </div>' +
+      '  </div>' +
+      '  <div style="margin-bottom:20px">' +
+      '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+      '      <label style="font-size:12px;font-weight:800;color:var(--text)">🎭 Profil Rasmi (Avatar):</label>' +
+      '      <button type="button" id="btnGoMarketFromEdit" style="background:none;border:none;color:#38bdf8;font-size:11.5px;font-weight:700;cursor:pointer">🎁 Yangi avatar olish (Market) ↗</button>' +
+      '    </div>' +
+      '    <div id="editAvatarListGrid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(88px, 1fr));gap:10px;max-height:190px;overflow-y:auto;padding:6px;background:rgba(0,0,0,0.15);border-radius:14px;border:1px solid var(--line,#334155)">' +
+      '      <div class="avChoiceCardEdit" data-av-id="" style="text-align:center;padding:10px 4px;border-radius:12px;background:var(--soft,#1e293b);border:2px solid ' + (!selectedAvatar ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
+      '        <div style="width:44px;height:44px;margin:0 auto 4px;border-radius:50%;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px" id="avEditInitialLetter">' + (user.name ? user.name.charAt(0).toUpperCase() : 'U') + '</div>' +
+      '        <div style="font-size:10.5px;font-weight:700">Bosh harf</div>' +
+      '      </div>';
+
+    unlocked.forEach(function(avId) {
+      var avObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === avId; });
+      if (!avObj) return;
+      var isCur = (selectedAvatar === avObj.id);
+      html += '<div class="avChoiceCardEdit" data-av-id="' + avObj.id + '" style="text-align:center;padding:10px 4px;border-radius:12px;background:var(--soft,#1e293b);border:2px solid ' + (isCur ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
+        '<div style="width:44px;height:44px;margin:0 auto 4px;border-radius:50%;overflow:hidden">' + avObj.svg + '</div>' +
+        '<div style="font-size:10.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(avObj.name) + '</div>' +
+      '</div>';
+    });
+
+    html += '    </div>' +
+      '  </div>' +
+      '  <div id="editProfileMsg" style="font-size:12.5px;margin-bottom:14px;padding:8px 12px;border-radius:10px;display:none"></div>' +
+      '  <div style="display:flex;justify-content:flex-end;gap:10px">' +
+      '    <button type="button" id="btnCancelEditProfile" style="padding:10px 18px;background:var(--soft);color:var(--text);border:1px solid var(--line);border-radius:12px;font-size:13px;font-weight:700;cursor:pointer">Bekor qilish</button>' +
+      '    <button type="button" id="btnSaveEditProfile" style="padding:10px 22px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;border:none;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,0.4)">💾 Saqlash va Yangilash</button>' +
+      '  </div>' +
+      '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    var inpName = overlay.querySelector('#inpEditName');
+    var inpEmail = overlay.querySelector('#inpEditEmail');
+    var letterEl = overlay.querySelector('#avEditInitialLetter');
+    if (inpName && letterEl) {
+      inpName.addEventListener('input', function() {
+        var v = inpName.value.trim();
+        letterEl.textContent = v ? v.charAt(0).toUpperCase() : 'U';
+      });
+    }
+
+    overlay.querySelectorAll('.avChoiceCardEdit').forEach(function(card) {
+      card.onclick = function() {
+        selectedAvatar = card.dataset.avId || null;
+        overlay.querySelectorAll('.avChoiceCardEdit').forEach(function(c) {
+          c.style.borderColor = 'transparent';
+        });
+        card.style.borderColor = '#f59e0b';
+      };
+    });
+
+    overlay.querySelector('#btnCloseEditProfile').onclick = function() { overlay.remove(); };
+    overlay.querySelector('#btnCancelEditProfile').onclick = function() { overlay.remove(); };
+
+    var marketLink = overlay.querySelector('#btnGoMarketFromEdit');
+    if (marketLink) {
+      marketLink.onclick = function() {
+        overlay.remove();
+        if (window.go) window.go('market');
+      };
+    }
+
+    overlay.querySelector('#btnSaveEditProfile').onclick = function() {
+      var msgEl = overlay.querySelector('#editProfileMsg');
+      var newName = (inpName.value || '').trim();
+      var newEmail = (inpEmail.value || '').trim().toLowerCase();
+
+      if (!newName) {
+        msgEl.style.display = 'block';
+        msgEl.style.background = 'rgba(239,68,68,0.15)';
+        msgEl.style.color = '#ef4444';
+        msgEl.textContent = "Iltimos, ismingizni kiriting!";
+        return;
+      }
+      if (!newEmail || !newEmail.includes('@')) {
+        msgEl.style.display = 'block';
+        msgEl.style.background = 'rgba(239,68,68,0.15)';
+        msgEl.style.color = '#ef4444';
+        msgEl.textContent = "Iltimos, to'g'ri Gmail manzilingizni kiriting!";
+        return;
+      }
+
+      var oldEmail = (user.email || '').trim().toLowerCase();
+      var oldName = (user.name || '').trim();
+
+      if (newEmail !== oldEmail) {
+        var existingOther = (S.accounts || []).find(function(a) {
+          return a && a.email && a.email.toLowerCase().trim() === newEmail &&
+                 a.id !== user.id && a.email.toLowerCase().trim() !== oldEmail;
+        });
+        if (existingOther) {
+          msgEl.style.display = 'block';
+          msgEl.style.background = 'rgba(239,68,68,0.15)';
+          msgEl.style.color = '#ef4444';
+          msgEl.textContent = "Ushbu Gmail bilan boshqa akkaunt mavjud! Iltimos, o'zingizning emailingizni kiriting.";
+          return;
+        }
+      }
+
+      user.name = newName;
+      user.email = newEmail;
+      user.id = newEmail;
+      user.avatar = selectedAvatar;
+
+      if (!Array.isArray(S.accounts)) S.accounts = [];
+      var accIdx = S.accounts.findIndex(function(a) {
+        if (!a) return false;
+        var aEm = (a.email || '').toLowerCase().trim();
+        var aNm = (a.name || '').toLowerCase().trim();
+        return (oldEmail && aEm === oldEmail) ||
+               (oldName && aNm === oldName.toLowerCase()) ||
+               (a.id && a.id === user.id);
+      });
+      if (accIdx > -1) {
+        S.accounts[accIdx].name = newName;
+        S.accounts[accIdx].email = newEmail;
+        S.accounts[accIdx].id = newEmail;
+        S.accounts[accIdx].avatar = selectedAvatar;
+        S.accounts[accIdx].coins = Number(user.coins || 0);
+        S.accounts[accIdx].updatedAt = Date.now();
+      } else {
+        S.accounts.push(user);
+      }
+
+      var deduped = [];
+      var seen = {};
+      S.accounts.forEach(function(a) {
+        if (!a || !a.email) return;
+        var em = a.email.toLowerCase().trim();
+        if (!seen[em]) {
+          seen[em] = true;
+          deduped.push(a);
+        }
+      });
+      S.accounts = deduped;
+
+      var regKey = 'ethith_all_registered_users';
+      var regList = [];
+      try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
+      var rIdx = regList.findIndex(function(a) {
+        if (!a) return false;
+        var aEm = (a.email || '').toLowerCase().trim();
+        var aNm = (a.name || '').toLowerCase().trim();
+        return (oldEmail && aEm === oldEmail) ||
+               (oldName && aNm === oldName.toLowerCase());
+      });
+      if (rIdx > -1) {
+        regList[rIdx].name = newName;
+        regList[rIdx].email = newEmail;
+        regList[rIdx].id = newEmail;
+        regList[rIdx].avatar = selectedAvatar;
+        regList[rIdx].coins = Number(user.coins || 0);
+      } else {
+        regList.push(user);
+      }
+      localStorage.setItem(regKey, JSON.stringify(regList));
+
+      (S.classes || []).forEach(function(c) {
+        if (Array.isArray(c.students)) {
+          c.students.forEach(function(st) {
+            var sEm = (st.email || '').toLowerCase().trim();
+            var sNm = (st.name || '').toLowerCase().trim();
+            if ((oldEmail && sEm === oldEmail) || (oldName && sNm === oldName.toLowerCase())) {
+              st.name = newName;
+              st.email = newEmail;
+              st.id = newEmail;
+              st.avatar = selectedAvatar;
+            }
+          });
+        }
+      });
+
+      App.saveState();
+
+      if (window.EthithSync && window.EthithSync.publishLive) {
+        window.EthithSync.publishLive({
+          type: 'USER_STATE_SYNC',
+          user: user,
+          oldEmail: oldEmail,
+          oldName: oldName,
+          updatedAt: Date.now()
+        });
+      }
+
+      if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+        window.EthithSync.pushRemoteStore();
+      }
+
+      if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
+      if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+      if (window._ethithRefreshLeaderboard) window._ethithRefreshLeaderboard();
+      if (window._ethithRefreshFriendsList) window._ethithRefreshFriendsList();
+      if (container) renderProfileView(container);
+
+      overlay.remove();
+
+      var toast = document.createElement('div');
+      toast.className = 'eth-toast-toast animate-slide-in';
+      toast.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg, #10b981, #059669);color:#fff;padding:12px 24px;border-radius:14px;font-weight:900;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,0.3);z-index:999999;';
+      toast.innerHTML = '✅ Profil ma\'lumotlaringiz muvaffaqiyatli saqlandi va barcha qurilmalarda yangilandi!';
+      document.body.appendChild(toast);
+      setTimeout(function() { toast.remove(); }, 4000);
+    };
+  }
+
   window.EthithViews = {
     renderLeaderboardView: renderLeaderboardView,
     renderMarketView: renderMarketView,
     showMLBBPackOpeningModal: showMLBBPackOpeningModal,
     renderProfileView: renderProfileView,
     showAvatarPickerModal: showAvatarPickerModal,
+    showEditProfileModal: showEditProfileModal,
     showWaygroundStudioModal: showWaygroundStudioModal,
     renderQuizBattleView: renderQuizBattleView,
     showCreateQuizModal: showCreateQuizModal,

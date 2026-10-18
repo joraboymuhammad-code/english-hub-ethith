@@ -724,11 +724,29 @@
     else if (event.type === 'USER_STATE_SYNC' || event.type === 'USER_COINS_UPDATE' || event.type === 'USER_REGISTERED') {
       if (event.user && (event.user.email || event.user.name || event.user.id)) {
         var u = event.user;
+        var oldEmail = (event.oldEmail || '').toLowerCase().trim();
+        var oldName = (event.oldName || '').toLowerCase().trim();
+        var uEmail = (u.email || '').toLowerCase().trim();
+        var uName = (u.name || '').trim();
+        var uId = (u.id || '').trim();
+
         if (!Array.isArray(S.accounts)) S.accounts = [];
         var existingAcc = S.accounts.find(function(a) {
-          return a.email && u.email && a.email.toLowerCase().trim() === u.email.toLowerCase().trim();
+          if (!a) return false;
+          var aEm = (a.email || '').toLowerCase().trim();
+          var aNm = (a.name || '').toLowerCase().trim();
+          if (oldEmail && aEm === oldEmail) return true;
+          if (uEmail && aEm === uEmail) return true;
+          if (oldName && aNm === oldName) return true;
+          if (uName && aNm === uName.toLowerCase()) return true;
+          if (uId && a.id && a.id === uId) return true;
+          return false;
         });
+
         if (existingAcc) {
+          if (uName) existingAcc.name = uName;
+          if (uEmail) existingAcc.email = uEmail;
+          if (uId) existingAcc.id = uId;
           if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
           if (u.avatar !== undefined) existingAcc.avatar = u.avatar;
           if (u.level) existingAcc.level = u.level;
@@ -736,18 +754,43 @@
           if (u.title !== undefined) existingAcc.title = u.title;
           if (u.victorySound !== undefined) existingAcc.victorySound = u.victorySound;
           if (u.dailyMinutes !== undefined) existingAcc.dailyMinutes = u.dailyMinutes;
+          existingAcc.updatedAt = Date.now();
         } else {
           S.accounts.push(u);
         }
 
-        // Also update registered list in localStorage strictly by email
+        // Deduplicate S.accounts strictly
+        var dedupedAccounts = [];
+        var seenAccounts = {};
+        S.accounts.forEach(function(a) {
+          if (!a) return;
+          var em = (a.email || '').toLowerCase().trim();
+          var nm = (a.name || '').toLowerCase().trim();
+          if (nm === 'john doe' || em.includes('john.doe') || em.includes('example.com') || em === 'nursulton@ethith.uz') return;
+          var key = em || nm;
+          if (!key || seenAccounts[key]) return;
+          seenAccounts[key] = true;
+          dedupedAccounts.push(a);
+        });
+        S.accounts = dedupedAccounts;
+
+        // Also update registered list in localStorage strictly
         var regKey = 'ethith_all_registered_users';
         var regList = [];
         try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
         var rIdx = regList.findIndex(function(a) {
-          return a.email && u.email && a.email.toLowerCase().trim() === u.email.toLowerCase().trim();
+          if (!a) return false;
+          var aEm = (a.email || '').toLowerCase().trim();
+          var aNm = (a.name || '').toLowerCase().trim();
+          return (oldEmail && aEm === oldEmail) ||
+                 (uEmail && aEm === uEmail) ||
+                 (oldName && aNm === oldName) ||
+                 (uName && aNm === uName.toLowerCase());
         });
         if (rIdx > -1) {
+          if (uName) regList[rIdx].name = uName;
+          if (uEmail) regList[rIdx].email = uEmail;
+          if (uId) regList[rIdx].id = uId;
           if (u.coins !== undefined) regList[rIdx].coins = Number(u.coins);
           if (u.avatar !== undefined) regList[rIdx].avatar = u.avatar;
           if (u.level) regList[rIdx].level = u.level;
@@ -759,46 +802,76 @@
         // Also update in class students
         (S.classes || []).forEach(function(c) {
           if (Array.isArray(c.students)) {
-            var st = c.students.find(function(s) {
-              return s.email && u.email && s.email.toLowerCase().trim() === u.email.toLowerCase().trim();
+            c.students.forEach(function(st) {
+              var sEm = (st.email || '').toLowerCase().trim();
+              var sNm = (st.name || '').toLowerCase().trim();
+              if ((oldEmail && sEm === oldEmail) || (uEmail && sEm === uEmail) || (oldName && sNm === oldName) || (uName && sNm === uName.toLowerCase())) {
+                if (uName) st.name = uName;
+                if (uEmail) st.email = uEmail;
+                if (uId) st.id = uId;
+                if (u.coins !== undefined) st.coins = Number(u.coins);
+                if (u.avatar !== undefined) st.avatar = u.avatar;
+                if (u.nameStyle !== undefined) st.nameStyle = u.nameStyle;
+                if (u.title !== undefined) st.title = u.title;
+                if (u.dailyMinutes !== undefined) st.dailyMinutes = u.dailyMinutes;
+              }
             });
-            if (st) {
-              if (u.coins !== undefined) st.coins = Number(u.coins);
-              if (u.avatar !== undefined) st.avatar = u.avatar;
-              if (u.nameStyle !== undefined) st.nameStyle = u.nameStyle;
-              if (u.title !== undefined) st.title = u.title;
-              if (u.dailyMinutes !== undefined) st.dailyMinutes = u.dailyMinutes;
-            }
           }
         });
 
-        // If this tab's user matches strictly by email, update local display
-        if (S.user && u.email && S.user.email && u.email.toLowerCase().trim() === S.user.email.toLowerCase().trim()) {
-          if (u.coins !== undefined) S.user.coins = Number(u.coins);
-          if (u.avatar !== undefined) S.user.avatar = u.avatar;
-          if (u.nameStyle !== undefined) S.user.nameStyle = u.nameStyle;
-          if (u.title !== undefined) S.user.title = u.title;
-          if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+        // If this tab's user matches, update local display
+        if (S.user) {
+          var myEm = (S.user.email || '').toLowerCase().trim();
+          var myNm = (S.user.name || '').toLowerCase().trim();
+          var isMe = (oldEmail && myEm === oldEmail) || (uEmail && myEm === uEmail) || (oldName && myNm === oldName);
+          if (isMe) {
+            if (uName) S.user.name = uName;
+            if (uEmail) S.user.email = uEmail;
+            if (uId) S.user.id = uId;
+            if (u.coins !== undefined) S.user.coins = Number(u.coins);
+            if (u.avatar !== undefined) S.user.avatar = u.avatar;
+            if (u.nameStyle !== undefined) S.user.nameStyle = u.nameStyle;
+            if (u.title !== undefined) S.user.title = u.title;
+            if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+            if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
 
-          // Instant celebration chime and banner on incoming coin transfer!
-          if ((event.type === 'USER_COINS_UPDATE' || event.type === 'COIN_TRANSFER') && event.addedCoins) {
-            try {
-              if (window.ETHITH_SOUNDS_AUDIO && window.ETHITH_SOUNDS_AUDIO.playSuccess) {
-                window.ETHITH_SOUNDS_AUDIO.playSuccess();
-              }
-            } catch(se) {}
-            var toast = document.createElement('div');
-            toast.className = 'eth-toast-toast animate-slide-in';
-            toast.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg, #10b981, #059669);color:#fff;padding:12px 24px;border-radius:14px;font-weight:900;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,0.3);z-index:999999;display:flex;align-items:center;gap:10px';
-            toast.innerHTML = '<span>🪙</span> <span>+' + Number(event.addedCoins).toLocaleString() + ' ETHITH Coin hisobingizga tushdi! (Jami: ' + Number(S.user.coins).toLocaleString() + ')</span>';
-            document.body.appendChild(toast);
-            setTimeout(function() { toast.remove(); }, 4500);
+            // Instant celebration chime and banner on incoming coin transfer!
+            if ((event.type === 'USER_COINS_UPDATE' || event.type === 'COIN_TRANSFER') && event.addedCoins) {
+              try {
+                if (window.ETHITH_SOUNDS_AUDIO && window.ETHITH_SOUNDS_AUDIO.playSuccess) {
+                  window.ETHITH_SOUNDS_AUDIO.playSuccess();
+                }
+              } catch(se) {}
+              var toast = document.createElement('div');
+              toast.className = 'eth-toast-toast animate-slide-in';
+              toast.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg, #10b981, #059669);color:#fff;padding:12px 24px;border-radius:14px;font-weight:900;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,0.3);z-index:999999;display:flex;align-items:center;gap:10px';
+              toast.innerHTML = '<span>🪙</span> <span>+' + Number(event.addedCoins).toLocaleString() + ' ETHITH Coin hisobingizga tushdi! (Jami: ' + Number(S.user.coins).toLocaleString() + ')</span>';
+              document.body.appendChild(toast);
+              setTimeout(function() { toast.remove(); }, 4500);
+            }
           }
         }
 
-        // Real-time Leaderboard Auto-Refresh!
-        if (window._ethithRefreshLeaderboard && window._ethithCurrentView === 'leaderboard' && !window._ethithIsTestInProgress) {
+        if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+
+        // Sub-100ms real-time UI refresh triggers across all clients
+        if (window._ethithRefreshLeaderboard) {
           try { window._ethithRefreshLeaderboard(); } catch(err) {}
+        }
+        if (window._ethithRefreshTopNav) {
+          try { window._ethithRefreshTopNav(); } catch(err) {}
+        }
+        if (window._ethithRefreshCurrentClass) {
+          try { window._ethithRefreshCurrentClass(); } catch(err) {}
+        }
+        if (window._ethithRefreshClassesList) {
+          try { window._ethithRefreshClassesList(); } catch(err) {}
+        }
+        if (window._ethithRefreshFriendsList) {
+          try { window._ethithRefreshFriendsList(); } catch(err) {}
+        }
+        if (window._ethithRefreshProfile && window._ethithCurrentView === 'profile') {
+          try { window._ethithRefreshProfile(); } catch(err) {}
         }
       }
     }
