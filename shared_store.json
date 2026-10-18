@@ -934,11 +934,11 @@
       },
       "quizScores": {},
       "mistakes": [],
-      "dailyMinutes": 0,
+      "dailyMinutes": 2,
       "coins": 150,
       "gifts": [],
       "createdAt": 1792333964629,
-      "updatedAt": 1792333964629
+      "updatedAt": 1792334044464
     }
   ],
   "p2pListings": [
@@ -965,5 +965,5 @@
       "createdAt": 1792322765334
     }
   ],
-  "updatedAt": 1792333968326
+  "updatedAt": 1792334044997
 }
