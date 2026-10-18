@@ -1452,33 +1452,27 @@
           if (!exists) {
             S.accounts.push(rAcc);
           } else {
-            exists.name = rAcc.name || exists.name;
+            if (rAcc.name && !exists.name) exists.name = rAcc.name;
             if (rAcc.coins !== undefined) {
               exists.coins = Math.max(Number(exists.coins) || 0, Number(rAcc.coins) || 0);
             }
             if (rAcc.level) exists.level = rAcc.level;
-            if (rAcc.avatar !== undefined) exists.avatar = rAcc.avatar;
-            if (rAcc.title !== undefined) exists.title = rAcc.title;
+            if (rAcc.avatar !== undefined && rAcc.avatar !== null) exists.avatar = rAcc.avatar;
+            if (rAcc.title !== undefined && rAcc.title !== null) exists.title = rAcc.title;
           }
 
           var isCurrentActive = S.user && S.user.email && S.user.email.toLowerCase().trim() === rEmail;
           if (isCurrentActive) {
-            S.user.name = rAcc.name || S.user.name;
+            if (rAcc.name && !S.user.name) S.user.name = rAcc.name;
             if (rAcc.coins !== undefined) {
               S.user.coins = Math.max(Number(S.user.coins) || 0, Number(rAcc.coins) || 0);
             }
+            if (rAcc.avatar && !S.user.avatar) {
+              S.user.avatar = rAcc.avatar;
+            }
             if (rEmail === 'muhammedjoraboyev1@gmail.com') {
-              S.user.name = 'Muhammadyusuf';
+              if (!S.user.name) S.user.name = 'Muhammadyusuf';
               S.user.coins = Math.max(Number(S.user.coins) || 0, 100000);
-              S.user.avatar = null;
-              S.user.title = null;
-              S.user.nameStyle = null;
-              S.user.gifts = [];
-              try {
-                localStorage.removeItem('ethith_student_gifts_muhammedjoraboyev1@gmail.com');
-                localStorage.removeItem('ethith_student_gifts_striker_uzb');
-                localStorage.removeItem('ethith_student_gifts_muhammadyusuf');
-              } catch(e) {}
             }
             if (window.EthithApp && window.EthithApp.saveState) {
               window.EthithApp.saveState();
@@ -1500,11 +1494,8 @@
           if (seenEmails[em]) return;
           seenEmails[em] = true;
           if (em === 'muhammedjoraboyev1@gmail.com') {
-            acc.name = 'Muhammadyusuf';
+            if (!acc.name) acc.name = 'Muhammadyusuf';
             acc.coins = Math.max(Number(acc.coins) || 0, 100000);
-            acc.avatar = null;
-            acc.title = null;
-            acc.gifts = [];
           }
           dedupedAccounts.push(acc);
         });

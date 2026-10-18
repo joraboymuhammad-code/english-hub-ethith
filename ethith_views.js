@@ -13955,20 +13955,21 @@
   function showAvatarPickerModal(onDone) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-pack-modal-overlay animate-fade-in';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:999999;padding:16px;';
 
     var unlocked = (S.user && S.user.unlockedAvatars) || [];
 
     var html = '' +
-      '<div style="background:var(--card, #0f172a);border:1px solid var(--line, #334155);border-radius:24px;padding:26px;max-width:540px;width:100%;color:var(--text, #fff);box-shadow:0 20px 50px rgba(0,0,0,0.6)">' +
+      '<div style="background:#0f172a;border:1.5px solid #3b82f6;border-radius:24px;padding:26px;max-width:540px;width:100%;color:#ffffff;box-shadow:0 25px 60px rgba(0,0,0,0.85);max-height:90vh;overflow-y:auto">' +
       '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">' +
-      '    <h3 style="margin:0;font-size:18px;font-weight:900">🎭 Profil Rasmini Tanlash</h3>' +
-      '    <button type="button" id="btnCloseAvPicker" style="background:none;border:none;font-size:20px;color:var(--muted);cursor:pointer">&times;</button>' +
+      '    <h3 style="margin:0;font-size:20px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px">🎭 Profil Rasmini Tanlash</h3>' +
+      '    <button type="button" id="btnCloseAvPicker" style="background:none;border:none;font-size:26px;color:#94a3b8;cursor:pointer;line-height:1">&times;</button>' +
       '  </div>' +
-      '  <p style="font-size:13px;color:var(--muted);margin-bottom:18px">Faqat Marketdan yutib olingan fantastik va kinomatografik personaj rasmlarini o\'rnatish mumkin (ixtiyoriy rasm yuklash taqiqlangan):</p>' +
-      '  <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(90px, 1fr));gap:12px;max-height:300px;overflow-y:auto;padding:4px;margin-bottom:20px">' +
-      '    <div class="avChoiceCard" data-av-none="1" style="text-align:center;padding:12px 6px;border-radius:14px;background:var(--soft, #1e293b);border:2px solid ' + (!S.user.avatar ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
+      '  <p style="font-size:13.5px;color:#cbd5e1;margin-bottom:18px;line-height:1.5">Faqat Marketdan yutib olingan fantastik va kinomatografik personaj rasmlarini o\'rnatish mumkin (ixtiyoriy rasm yuklash taqiqlangan):</p>' +
+      '  <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(90px, 1fr));gap:12px;max-height:300px;overflow-y:auto;padding:8px;background:#09101d;border-radius:14px;border:1px solid #334155;margin-bottom:20px">' +
+      '    <div class="avChoiceCard" data-av-none="1" style="text-align:center;padding:12px 6px;border-radius:14px;background:#1e293b;border:2px solid ' + (!S.user.avatar ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
       '      <div style="width:48px;height:48px;margin:0 auto 6px;border-radius:50%;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px">' + (S.user.name ? S.user.name.charAt(0).toUpperCase() : 'U') + '</div>' +
-      '      <div style="font-size:11px;font-weight:700">Bosh harf</div>' +
+      '      <div style="font-size:11.5px;font-weight:800;color:#f1f5f9">Bosh harf</div>' +
       '    </div>';
 
     unlocked.forEach(function(avId) {
@@ -13976,16 +13977,16 @@
       if (!avObj) return;
       var isCur = (S.user.avatar === avId) || (S.user.avatar && S.user.avatar.id === avId);
 
-      html += '<div class="avChoiceCard" data-av-id="' + avObj.id + '" style="text-align:center;padding:12px 6px;border-radius:14px;background:var(--soft, #1e293b);border:2px solid ' + (isCur ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
+      html += '<div class="avChoiceCard" data-av-id="' + avObj.id + '" style="text-align:center;padding:12px 6px;border-radius:14px;background:#1e293b;border:2px solid ' + (isCur ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
         '<div style="width:48px;height:48px;margin:0 auto 6px;border-radius:50%;overflow:hidden">' + avObj.svg + '</div>' +
-        '<div style="font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(avObj.name) + '</div>' +
+        '<div style="font-size:11.5px;font-weight:800;color:#f1f5f9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(avObj.name) + '</div>' +
       '</div>';
     });
 
     html += '  </div>' +
-      '  <div style="text-align:right">' +
-      '    <button type="button" id="btnGoMarketFromAv" style="padding:8px 16px;background:var(--soft);color:var(--pri);border:1px solid var(--line);border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;margin-right:8px">🎁 Yangi Avatar Olish (Market)</button>' +
-      '    <button type="button" id="btnDoneAvPicker" style="padding:8px 18px;background:var(--pri);color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer">Yopish</button>' +
+      '  <div style="display:flex;justify-content:flex-end;gap:10px">' +
+      '    <button type="button" id="btnGoMarketFromAv" style="padding:10px 16px;background:#1e293b;color:#38bdf8;border:1px solid #334155;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer">🎁 Yangi Avatar Olish (Market)</button>' +
+      '    <button type="button" id="btnDoneAvPicker" style="padding:10px 20px;background:#3b82f6;color:#fff;border:none;border-radius:12px;font-size:13.5px;font-weight:900;cursor:pointer">Yopish</button>' +
       '  </div>' +
       '</div>';
 
@@ -13994,12 +13995,41 @@
 
     overlay.querySelectorAll('.avChoiceCard').forEach(function(card) {
       card.onclick = function() {
-        if (card.dataset.avNone) {
-          S.user.avatar = null;
-        } else {
-          S.user.avatar = card.dataset.avId;
+        var chosenAv = card.dataset.avNone ? null : card.dataset.avId;
+        S.user.avatar = chosenAv;
+
+        if (!Array.isArray(S.accounts)) S.accounts = [];
+        var acc = S.accounts.find(function(a) {
+          return a && ((S.user.email && a.email && a.email.toLowerCase().trim() === S.user.email.toLowerCase().trim()) || (a.id && a.id === S.user.id));
+        });
+        if (acc) {
+          acc.avatar = chosenAv;
+          acc.updatedAt = Date.now();
         }
+
+        var regKey = 'ethith_all_registered_users';
+        var regList = [];
+        try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
+        var rIdx = regList.findIndex(function(a) {
+          return a && a.email && S.user.email && a.email.toLowerCase().trim() === S.user.email.toLowerCase().trim();
+        });
+        if (rIdx > -1) {
+          regList[rIdx].avatar = chosenAv;
+          localStorage.setItem(regKey, JSON.stringify(regList));
+        }
+
+        (S.classes || []).forEach(function(c) {
+          if (Array.isArray(c.students)) {
+            c.students.forEach(function(st) {
+              if (st && st.email && S.user.email && st.email.toLowerCase().trim() === S.user.email.toLowerCase().trim()) {
+                st.avatar = chosenAv;
+              }
+            });
+          }
+        });
+
         App.saveState();
+
         if (window.EthithSync && window.EthithSync.publishLive) {
           window.EthithSync.publishLive({
             type: 'USER_STATE_SYNC',
@@ -14035,57 +14065,57 @@
     if (!user) return;
     var overlay = document.createElement('div');
     overlay.className = 'eth-pack-modal-overlay animate-fade-in';
-    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:999999;padding:16px;';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:999999;padding:16px;';
 
     var unlocked = user.unlockedAvatars || [];
     var currentAvatarId = (user.avatar && user.avatar.id) ? user.avatar.id : (user.avatar || null);
     var selectedAvatar = currentAvatarId;
 
     var html = '' +
-      '<div style="background:var(--card,#0f172a);border:1px solid var(--line,#334155);border-radius:24px;padding:26px;max-width:540px;width:100%;color:var(--text,#fff);box-shadow:0 25px 60px rgba(0,0,0,0.6);max-height:90vh;overflow-y:auto;position:relative">' +
+      '<div style="background:#0f172a;border:1.5px solid #3b82f6;border-radius:24px;padding:26px;max-width:540px;width:100%;color:#ffffff;box-shadow:0 25px 60px rgba(0,0,0,0.85);max-height:90vh;overflow-y:auto;position:relative">' +
       '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">' +
-      '    <h3 style="margin:0;font-size:18px;font-weight:900;color:var(--text);display:flex;align-items:center;gap:8px">✏️ Akkaunt va Profilni Tahrirlash</h3>' +
-      '    <button type="button" id="btnCloseEditProfile" style="background:none;border:none;font-size:24px;color:var(--muted);cursor:pointer;line-height:1">&times;</button>' +
+      '    <h3 style="margin:0;font-size:20px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px">✏️ Akkaunt va Profilni Tahrirlash</h3>' +
+      '    <button type="button" id="btnCloseEditProfile" style="background:none;border:none;font-size:26px;color:#94a3b8;cursor:pointer;line-height:1">&times;</button>' +
       '  </div>' +
-      '  <p style="font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.4">Ismingiz, emailingiz va profilingiz avatarini o\'zgartirishingiz mumkin. O\'zgarishlar darhol barcha qurilmalarga uzatiladi:</p>' +
+      '  <p style="font-size:13.5px;color:#cbd5e1;margin-bottom:18px;line-height:1.5">Ismingiz, emailingiz va profilingiz avatarini o\'zgartirishingiz mumkin. O\'zgarishlar darhol barcha qurilmalarga uzatiladi:</p>' +
       '  <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:18px">' +
       '    <div>' +
-      '      <label style="display:block;font-size:12px;font-weight:800;color:var(--text);margin-bottom:6px">👤 Ismingiz (To\'liq ism yoki taxallus):</label>' +
-      '      <input type="text" id="inpEditName" value="' + esc(user.name || '') + '" style="width:100%;padding:10px 14px;background:var(--soft,#1e293b);border:1px solid var(--line,#334155);border-radius:12px;color:var(--text,#fff);font-size:14px;font-weight:700;box-sizing:border-box" placeholder="Ismingizni kiriting">' +
+      '      <label style="display:block;font-size:13px;font-weight:800;color:#f1f5f9;margin-bottom:6px">👤 Ismingiz (To\'liq ism yoki taxallus):</label>' +
+      '      <input type="text" id="inpEditName" value="' + esc(user.name || '') + '" style="width:100%;padding:11px 14px;background:#1e293b;border:1.5px solid #475569;border-radius:12px;color:#ffffff !important;font-size:14.5px;font-weight:700;box-sizing:border-box" placeholder="Ismingizni kiriting">' +
       '    </div>' +
       '    <div>' +
-      '      <label style="display:block;font-size:12px;font-weight:800;color:var(--text);margin-bottom:6px">📧 Gmail Pochta Manzilingiz (Akkaunt ID):</label>' +
-      '      <input type="email" id="inpEditEmail" value="' + esc(user.email || '') + '" style="width:100%;padding:10px 14px;background:var(--soft,#1e293b);border:1px solid var(--line,#334155);border-radius:12px;color:var(--text,#fff);font-size:14px;font-weight:700;box-sizing:border-box" placeholder="misol@gmail.com">' +
-      '      <small style="color:var(--muted);font-size:11px;margin-top:4px;display:block">⚠️ Gmail orqali boshqa qurilmalarda akkauntingizga kirishingiz va coinlarni qabul qilishingiz mumkin.</small>' +
+      '      <label style="display:block;font-size:13px;font-weight:800;color:#f1f5f9;margin-bottom:6px">📧 Gmail Pochta Manzilingiz (Akkaunt ID):</label>' +
+      '      <input type="email" id="inpEditEmail" value="' + esc(user.email || '') + '" style="width:100%;padding:11px 14px;background:#1e293b;border:1.5px solid #475569;border-radius:12px;color:#ffffff !important;font-size:14.5px;font-weight:700;box-sizing:border-box" placeholder="misol@gmail.com">' +
+      '      <small style="color:#fbbf24;font-size:12px;font-weight:600;margin-top:5px;display:block">⚠️ Gmail orqali boshqa qurilmalarda akkauntingizga kirishingiz va coinlarni qabul qilishingiz mumkin.</small>' +
       '    </div>' +
       '  </div>' +
       '  <div style="margin-bottom:20px">' +
       '    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
-      '      <label style="font-size:12px;font-weight:800;color:var(--text)">🎭 Profil Rasmi (Avatar):</label>' +
-      '      <button type="button" id="btnGoMarketFromEdit" style="background:none;border:none;color:#38bdf8;font-size:11.5px;font-weight:700;cursor:pointer">🎁 Yangi avatar olish (Market) ↗</button>' +
+      '      <label style="font-size:13px;font-weight:800;color:#f1f5f9">🎭 Profil Rasmi (Avatar):</label>' +
+      '      <button type="button" id="btnGoMarketFromEdit" style="background:none;border:none;color:#38bdf8;font-size:12px;font-weight:800;cursor:pointer">🎁 Yangi avatar olish (Market) ↗</button>' +
       '    </div>' +
-      '    <div id="editAvatarListGrid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(88px, 1fr));gap:10px;max-height:190px;overflow-y:auto;padding:6px;background:rgba(0,0,0,0.15);border-radius:14px;border:1px solid var(--line,#334155)">' +
-      '      <div class="avChoiceCardEdit" data-av-id="" style="text-align:center;padding:10px 4px;border-radius:12px;background:var(--soft,#1e293b);border:2px solid ' + (!selectedAvatar ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
-      '        <div style="width:44px;height:44px;margin:0 auto 4px;border-radius:50%;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px" id="avEditInitialLetter">' + (user.name ? user.name.charAt(0).toUpperCase() : 'U') + '</div>' +
-      '        <div style="font-size:10.5px;font-weight:700">Bosh harf</div>' +
+      '    <div id="editAvatarListGrid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(88px, 1fr));gap:10px;max-height:190px;overflow-y:auto;padding:8px;background:#09101d;border-radius:14px;border:1px solid #334155">' +
+      '      <div class="avChoiceCardEdit" data-av-id="" style="text-align:center;padding:10px 4px;border-radius:12px;background:#1e293b;border:2px solid ' + (!selectedAvatar ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
+      '        <div style="width:44px;height:44px;margin:0 auto 6px;border-radius:50%;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px" id="avEditInitialLetter">' + (user.name ? user.name.charAt(0).toUpperCase() : 'U') + '</div>' +
+      '        <div style="font-size:11.5px;font-weight:800;color:#f1f5f9">Bosh harf</div>' +
       '      </div>';
 
     unlocked.forEach(function(avId) {
       var avObj = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === avId; });
       if (!avObj) return;
       var isCur = (selectedAvatar === avObj.id);
-      html += '<div class="avChoiceCardEdit" data-av-id="' + avObj.id + '" style="text-align:center;padding:10px 4px;border-radius:12px;background:var(--soft,#1e293b);border:2px solid ' + (isCur ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
-        '<div style="width:44px;height:44px;margin:0 auto 4px;border-radius:50%;overflow:hidden">' + avObj.svg + '</div>' +
-        '<div style="font-size:10.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(avObj.name) + '</div>' +
+      html += '<div class="avChoiceCardEdit" data-av-id="' + avObj.id + '" style="text-align:center;padding:10px 4px;border-radius:12px;background:#1e293b;border:2px solid ' + (isCur ? '#f59e0b' : 'transparent') + ';cursor:pointer">' +
+        '<div style="width:44px;height:44px;margin:0 auto 6px;border-radius:50%;overflow:hidden">' + avObj.svg + '</div>' +
+        '<div style="font-size:11.5px;font-weight:800;color:#f1f5f9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(avObj.name) + '</div>' +
       '</div>';
     });
 
     html += '    </div>' +
       '  </div>' +
-      '  <div id="editProfileMsg" style="font-size:12.5px;margin-bottom:14px;padding:8px 12px;border-radius:10px;display:none"></div>' +
+      '  <div id="editProfileMsg" style="font-size:13px;margin-bottom:14px;padding:8px 12px;border-radius:10px;display:none;font-weight:700"></div>' +
       '  <div style="display:flex;justify-content:flex-end;gap:10px">' +
-      '    <button type="button" id="btnCancelEditProfile" style="padding:10px 18px;background:var(--soft);color:var(--text);border:1px solid var(--line);border-radius:12px;font-size:13px;font-weight:700;cursor:pointer">Bekor qilish</button>' +
-      '    <button type="button" id="btnSaveEditProfile" style="padding:10px 22px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;border:none;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,0.4)">💾 Saqlash va Yangilash</button>' +
+      '    <button type="button" id="btnCancelEditProfile" style="padding:10px 18px;background:#334155;color:#f1f5f9 !important;border:1px solid #475569;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer">Bekor qilish</button>' +
+      '    <button type="button" id="btnSaveEditProfile" style="padding:10px 22px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#ffffff !important;border:none;border-radius:12px;font-size:14px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,0.4)">💾 Saqlash va Yangilash</button>' +
       '  </div>' +
       '</div>';
 
@@ -14130,15 +14160,15 @@
 
       if (!newName) {
         msgEl.style.display = 'block';
-        msgEl.style.background = 'rgba(239,68,68,0.15)';
-        msgEl.style.color = '#ef4444';
+        msgEl.style.background = 'rgba(239,68,68,0.2)';
+        msgEl.style.color = '#fca5a5';
         msgEl.textContent = "Iltimos, ismingizni kiriting!";
         return;
       }
       if (!newEmail || !newEmail.includes('@')) {
         msgEl.style.display = 'block';
-        msgEl.style.background = 'rgba(239,68,68,0.15)';
-        msgEl.style.color = '#ef4444';
+        msgEl.style.background = 'rgba(239,68,68,0.2)';
+        msgEl.style.color = '#fca5a5';
         msgEl.textContent = "Iltimos, to'g'ri Gmail manzilingizni kiriting!";
         return;
       }
@@ -14153,8 +14183,8 @@
         });
         if (existingOther) {
           msgEl.style.display = 'block';
-          msgEl.style.background = 'rgba(239,68,68,0.15)';
-          msgEl.style.color = '#ef4444';
+          msgEl.style.background = 'rgba(239,68,68,0.2)';
+          msgEl.style.color = '#fca5a5';
           msgEl.textContent = "Ushbu Gmail bilan boshqa akkaunt mavjud! Iltimos, o'zingizning emailingizni kiriting.";
           return;
         }
@@ -14164,6 +14194,7 @@
       user.email = newEmail;
       user.id = newEmail;
       user.avatar = selectedAvatar;
+      user.updatedAt = Date.now();
 
       if (!Array.isArray(S.accounts)) S.accounts = [];
       var accIdx = S.accounts.findIndex(function(a) {
@@ -14259,12 +14290,86 @@
 
       var toast = document.createElement('div');
       toast.className = 'eth-toast-toast animate-slide-in';
-      toast.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg, #10b981, #059669);color:#fff;padding:12px 24px;border-radius:14px;font-weight:900;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,0.3);z-index:999999;';
+      toast.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg, #10b981, #059669);color:#ffffff !important;padding:12px 24px;border-radius:14px;font-weight:900;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,0.5);z-index:999999;';
       toast.innerHTML = '✅ Profil ma\'lumotlaringiz muvaffaqiyatli saqlandi va barcha qurilmalarda yangilandi!';
       document.body.appendChild(toast);
       setTimeout(function() { toast.remove(); }, 4000);
     };
   }
+
+  function showBuyCoinsModal() {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-pack-modal-overlay animate-fade-in';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:999999;padding:16px;';
+
+    var myEmail = (S.user && S.user.email) ? S.user.email : 'Hisobga kirilmagan';
+    var coinSvg = '<svg width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;display:inline-block"><circle cx="12" cy="12" r="10" fill="#f59e0b"/><circle cx="12" cy="12" r="7.5" stroke="#fbbf24" stroke-width="1.5"/><text x="12" y="15.5" font-size="11" font-weight="900" fill="#78350f" text-anchor="middle">¢</text></svg>';
+    var bigCoinSvg = '<svg width="28" height="28" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#f59e0b"/><circle cx="12" cy="12" r="7.5" stroke="#fbbf24" stroke-width="1.5"/><text x="12" y="15.5" font-size="11" font-weight="900" fill="#78350f" text-anchor="middle">¢</text></svg>';
+
+    var html = '' +
+      '<div style="background:#0f172a;border:1.5px solid #f59e0b;border-radius:24px;padding:28px 24px;max-width:520px;width:100%;color:#ffffff !important;box-shadow:0 25px 60px rgba(0,0,0,0.85);position:relative;animation:popIn 0.25s ease">' +
+      '  <button type="button" id="btnCloseBuyCoinsModal" style="position:absolute;top:16px;right:18px;background:none;border:none;font-size:24px;color:#94a3b8;cursor:pointer;line-height:1">&times;</button>' +
+      '  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">' +
+      '    <div style="width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#f59e0b,#b45309);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(245,158,11,0.4)">' + bigCoinSvg + '</div>' +
+      '    <div>' +
+      '      <h3 style="margin:0;font-size:20px;font-weight:900;color:#fde047">Rasmiy ETHITH Coin Xaridi</h3>' +
+      '      <span style="font-size:12px;color:#38bdf8;font-weight:800;display:inline-flex;align-items:center;gap:4px">🛡️ 100% Rasmiy & Xavfsiz Xizmat</span>' +
+      '    </div>' +
+      '  </div>' +
+      '  <div style="background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(5,150,105,0.15));border:1.5px solid #10b981;border-radius:16px;padding:14px 16px;margin-bottom:16px">' +
+      '    <div style="font-size:13.5px;font-weight:900;color:#34d399;margin-bottom:6px;display:flex;align-items:center;gap:6px">✅ 100% KAFOLAT:</div>' +
+      '    <div style="font-size:13.5px;color:#ffffff !important;line-height:1.5;font-weight:700">' +
+      '      Sizlar uchun faqat sifatli coin beramiz 100% kafolat bilan agar coin o\'tmasa pulingiz 100% qaytarib beriladi.' +
+      '    </div>' +
+      '  </div>' +
+      '  <div style="background:#1e293b;border:1px solid #334155;border-radius:16px;padding:14px;margin-bottom:16px">' +
+      '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">' +
+      '      <span style="font-size:13px;font-weight:800;color:#cbd5e1 !important">Narxlar tarifi:</span>' +
+      '      <span style="font-size:13px;font-weight:900;color:#f59e0b">' + coinSvg + ' 100 ta Coin = 2,000 so\'m</span>' +
+      '    </div>' +
+      '    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">' +
+      '      <div style="background:#0f172a;border:1px solid #334155;border-radius:10px;padding:10px;text-align:center">' +
+      '        <div style="font-size:14px;font-weight:900;color:#fde047;display:flex;align-items:center;justify-content:center;gap:4px">' + coinSvg + ' 100 Coin</div>' +
+      '        <div style="font-size:12px;font-weight:800;color:#22c55e">2,000 so\'m</div>' +
+      '      </div>' +
+      '      <div style="background:#0f172a;border:1px solid #334155;border-radius:10px;padding:10px;text-align:center">' +
+      '        <div style="font-size:14px;font-weight:900;color:#fde047;display:flex;align-items:center;justify-content:center;gap:4px">' + coinSvg + ' 500 Coin</div>' +
+      '        <div style="font-size:12px;font-weight:800;color:#22c55e">10,000 so\'m</div>' +
+      '      </div>' +
+      '      <div style="background:#0f172a;border:1px solid #334155;border-radius:10px;padding:10px;text-align:center">' +
+      '        <div style="font-size:14px;font-weight:900;color:#fde047;display:flex;align-items:center;justify-content:center;gap:4px">' + coinSvg + ' 1,000 Coin</div>' +
+      '        <div style="font-size:12px;font-weight:800;color:#22c55e">20,000 so\'m</div>' +
+      '      </div>' +
+      '      <div style="background:#0f172a;border:1.5px solid rgba(245,158,11,0.5);border-radius:10px;padding:10px;text-align:center;box-shadow:0 0 10px rgba(245,158,11,0.2)">' +
+      '        <div style="font-size:14px;font-weight:900;color:#fde047;display:flex;align-items:center;justify-content:center;gap:4px">' + coinSvg + ' 5,000 Coin 🔥</div>' +
+      '        <div style="font-size:12px;font-weight:800;color:#22c55e">100,000 so\'m</div>' +
+      '      </div>' +
+      '    </div>' +
+      '  </div>' +
+      '  <div style="background:rgba(239,68,68,0.15);border:1.5px solid rgba(239,68,68,0.4);border-radius:14px;padding:12px 14px;margin-bottom:16px">' +
+      '    <div style="font-size:12.5px;font-weight:800;color:#fca5a5;line-height:1.4">' +
+      '      ⚠️ DIQQAT: Faqatgina manashu Admindan coin olishingiz mumkin, boshqalarga ishonmang!' +
+      '    </div>' +
+      '    <div style="font-size:12.5px;color:#e2e8f0 !important;margin-top:6px;font-weight:700">' +
+      '      Rasmiy Admin: <b style="color:#38bdf8;font-size:13px">@Mu_striker</b>' +
+      '    </div>' +
+      '  </div>' +
+      '  <div style="font-size:12.5px;color:#cbd5e1 !important;margin-bottom:18px;text-align:center;line-height:1.5;font-weight:600">' +
+      '    Sizning emailingiz: <b style="color:#fbbf24;font-size:13px;background:rgba(245,158,11,0.15);padding:2px 8px;border-radius:6px;border:1px solid rgba(245,158,11,0.3)">' + esc(myEmail) + '</b><br>' +
+      '    Adminga ushbu emailingizni yozsangiz, bot orqali darhol hisobingizga coinlar o\'tkaziladi.' +
+      '  </div>' +
+      '  <a href="https://t.me/Mu_striker?text=' + encodeURIComponent("Assalomu alaykum, ETHITH Coin sotib olmoqchiman. Mening emailim: " + myEmail) + '" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 20px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#ffffff !important;border-radius:16px;font-size:15px;font-weight:900;text-decoration:none;box-shadow:0 10px 25px rgba(2,132,199,0.4);box-sizing:border-box;text-align:center">' +
+      '    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>' +
+      '    Coin olish uchun adminga murojaat qiling' +
+      '  </a>' +
+      '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    overlay.querySelector('#btnCloseBuyCoinsModal').onclick = function() { overlay.remove(); };
+  }
+  window.showBuyCoinsModal = showBuyCoinsModal;
 
   window.EthithViews = {
     renderLeaderboardView: renderLeaderboardView,
@@ -14273,6 +14378,7 @@
     renderProfileView: renderProfileView,
     showAvatarPickerModal: showAvatarPickerModal,
     showEditProfileModal: showEditProfileModal,
+    showBuyCoinsModal: showBuyCoinsModal,
     showWaygroundStudioModal: showWaygroundStudioModal,
     renderQuizBattleView: renderQuizBattleView,
     showCreateQuizModal: showCreateQuizModal,

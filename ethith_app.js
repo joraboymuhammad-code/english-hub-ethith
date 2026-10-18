@@ -98,20 +98,11 @@
     var curName = (S.user.name || '').trim();
     var isMuhammadUser = (curEmail === 'muhammedjoraboyev1@gmail.com' || curName.toLowerCase().indexOf('muhammadyusuf') !== -1) && S.user.role !== 'teacher';
     
-    // Strict Cleanse for canonical user: Muhammadyusuf (muhammedjoraboyev1@gmail.com)
+    // Canonical user: Muhammadyusuf (muhammedjoraboyev1@gmail.com)
     if (curEmail === 'muhammedjoraboyev1@gmail.com') {
-      S.user.name = 'Muhammadyusuf';
       S.user.id = 'muhammedjoraboyev1@gmail.com';
+      if (!S.user.name) S.user.name = 'Muhammadyusuf';
       S.user.coins = Math.max(Number(S.user.coins) || 0, 100000);
-      S.user.avatar = null;
-      S.user.title = null;
-      S.user.nameStyle = null;
-      S.user.gifts = [];
-      try {
-        localStorage.removeItem('ethith_student_gifts_muhammedjoraboyev1@gmail.com');
-        localStorage.removeItem('ethith_student_gifts_striker_uzb');
-        localStorage.removeItem('ethith_student_gifts_muhammadyusuf');
-      } catch(e) {}
     } else if (S.user.coins === undefined || S.user.coins === null) {
       S.user.coins = 150;
     }
@@ -157,11 +148,8 @@
       if (seenMap[em]) return;
       seenMap[em] = true;
       if (em === 'muhammedjoraboyev1@gmail.com') {
-        acc.name = 'Muhammadyusuf';
+        if (!acc.name) acc.name = 'Muhammadyusuf';
         acc.coins = Math.max(Number(acc.coins) || 0, 100000);
-        acc.avatar = null;
-        acc.title = null;
-        acc.gifts = [];
       }
       dedupedAccounts.push(acc);
     });
@@ -812,17 +800,8 @@
             var initCoins = existingAcc.coins !== undefined ? Number(existingAcc.coins) : 150;
             if (cleanEmail === 'muhammedjoraboyev1@gmail.com') {
               initCoins = Math.max(initCoins, 100000);
-              existingAcc.name = 'Muhammadyusuf';
               existingAcc.coins = initCoins;
-              existingAcc.avatar = null;
-              existingAcc.title = null;
-              existingAcc.nameStyle = null;
-              existingAcc.gifts = [];
-              try {
-                localStorage.removeItem('ethith_student_gifts_muhammedjoraboyev1@gmail.com');
-                localStorage.removeItem('ethith_student_gifts_striker_uzb');
-                localStorage.removeItem('ethith_student_gifts_muhammadyusuf');
-              } catch(e) {}
+              if (!existingAcc.name) existingAcc.name = 'Muhammadyusuf';
             }
 
             S.user = {
