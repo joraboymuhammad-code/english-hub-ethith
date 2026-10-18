@@ -64,9 +64,22 @@ async function tgCall(method, body = {}) {
   }
 }
 
+// Helper to register active code in shared_store.json
+function registerCodeInStore(code) {
+  try {
+    const storePath = path.join(__dirname, 'shared_store.json');
+    if (fs.existsSync(storePath)) {
+      const data = JSON.parse(fs.readFileSync(storePath, 'utf8'));
+      if (!data.activeVerificationCodes) data.activeVerificationCodes = {};
+      data.activeVerificationCodes[code.toUpperCase()] = Date.now() + 10 * 60 * 1000;
+      fs.writeFileSync(storePath, JSON.stringify(data, null, 2), 'utf8');
+    }
+  } catch (e) {}
+}
+
 // Send Verification Code to a Chat ID
-async function sendVerificationCodeToChat(chatId, userName = "Foydalanuvchi") {
-  const code = generate6CharCode();
+async function sendVerificationCodeToChat(chatId, userName = "Foydalanuvchi", customCode = null) {
+  const code = (customCode || generate6CharCode()).toUpperCase();
   const store = loadCodes();
 
   store.codes[code] = {
@@ -82,10 +95,11 @@ async function sendVerificationCodeToChat(chatId, userName = "Foydalanuvchi") {
     createdAt: Date.now()
   };
   saveCodes(store);
+  registerCodeInStore(code);
 
   const text = 
     `🔐 <b>ETHITH TESTS — Tasdiqlash Kodi</b>\n\n` +
-    `Salom, <b>${userName}</b>!\n` +
+    `Assalomu alaykum, <b>${userName}</b>!\n\n` +
     `Sizning 6 xonali tasdiqlash kodingiz:\n\n` +
     `👉 <code>${code}</code> 👈 <i>(nusxalash uchun ustiga bosing)</i>\n\n` +
     `Ushbu kodni Mini App dagi <b>Tasdiqlash Kodi</b> maydoniga kiriting.\n` +
@@ -119,6 +133,21 @@ async function handleMessage(msg) {
   const chatId = msg.chat.id;
   const text = (msg.text || '').trim();
   const userName = msg.from ? (msg.from.first_name || msg.from.username || "O'quvchi") : "Foydalanuvchi";
+
+  // Remember user chat ID
+  const store = loadCodes();
+  if (!store.users) store.users = {};
+  if (msg.from && msg.from.username) {
+    store.users[msg.from.username.toLowerCase().replace('@', '')] = chatId;
+  }
+  store.lastChatId = chatId;
+  saveCodes(store);
+
+  // If start command has "code" parameter or user asked for code
+  if (text.includes('code') || text.includes('kod') || text === '🔑 Tasdiqlash Kodi' || text === '/code') {
+    await sendVerificationCodeToChat(chatId, userName);
+    return;
+  }
 
   if (text.startsWith('/start') || text.startsWith('/webapp')) {
     const welcomeText = 
@@ -175,11 +204,6 @@ async function handleMessage(msg) {
       text: "Mini App menyusi aktivlashtirildi. 'ETHITH TESTS' tugmasi orqali istalgan vaqt platformaga kirishingiz mumkin.",
       reply_markup: replyKeyboard
     });
-    return;
-  }
-
-  if (text === '/code' || text === '🔑 Tasdiqlash Kodi' || text.toLowerCase().includes('kod')) {
-    await sendVerificationCodeToChat(chatId, userName);
     return;
   }
 
@@ -263,7 +287,16 @@ const server = http.createServer((req, res) => {
   if (url.pathname === '/latest-code') {
     const store = loadCodes();
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ ok: true, latest: store.latest }));
+    res.end(JSON.stringify({ ok: true, latest: store.latest, codes: Object.keys(store.codes || {}) }));
+    return;
+  }
+
+  if (url.pathname === '/check-code') {
+    const code = (url.searchParams.get('code') || '').trim().toUpperCase();
+    const store = loadCodes();
+    const isValid = !!(store.codes && store.codes[code] && (store.codes[code].expiresAt > Date.now()));
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ ok: true, valid: isValid, code: code }));
     return;
   }
 
@@ -273,7 +306,7 @@ const server = http.createServer((req, res) => {
     req.on('end', async () => {
       try {
         const payload = JSON.parse(body || '{}');
-        const code = generate6CharCode();
+        const code = (payload.code || generate6CharCode()).toUpperCase();
         const store = loadCodes();
 
         store.codes[code] = {
@@ -291,14 +324,27 @@ const server = http.createServer((req, res) => {
           createdAt: Date.now()
         };
         saveCodes(store);
+        registerCodeInStore(code);
 
-        // If a chatId is provided, deliver message to user
-        if (payload.chatId) {
-          await sendVerificationCodeToChat(payload.chatId, payload.name || "Foydalanuvchi");
+        let targetChatId = payload.chatId;
+        if (!targetChatId && payload.username) {
+          const cleanU = payload.username.toLowerCase().replace('@', '').trim();
+          if (store.users && store.users[cleanU]) {
+            targetChatId = store.users[cleanU];
+          }
+        }
+        if (!targetChatId && store.lastChatId) {
+          targetChatId = store.lastChatId;
+        }
+
+        let sent = false;
+        if (targetChatId) {
+          await sendVerificationCodeToChat(targetChatId, payload.name || "Foydalanuvchi", code);
+          sent = true;
         }
 
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ ok: true, code: code, message: 'Code generated and saved successfully' }));
+        res.end(JSON.stringify({ ok: true, code: code, sent: sent }));
       } catch (err) {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ ok: false, error: err.message }));
