@@ -40,7 +40,7 @@
     level: 'A1',
     unlocked: { A1: 1, A2: 1, B1: 1, B2: 1, C1: 1, C2: 1 },
     mistakes: [],
-    theme: 'light',
+    theme: 'dark',
     classes: DEFAULT_CLASSES.slice(),
     exams: [],
     quizzes: [],
@@ -66,6 +66,10 @@
       }
     }
   } catch(e) {}
+
+  if (!localStorage.getItem('ethith_explicit_theme')) {
+    S.theme = 'dark';
+  }
 
   if (!S.deletedExamIds) S.deletedExamIds = [];
   if (!S.deletedQuizIds) S.deletedQuizIds = [];
@@ -166,16 +170,46 @@
   if (!Array.isArray(S.aiConversations)) {
     S.aiConversations = [];
   }
-  // User Requirement: When the site is reloaded/refreshed, always start with a fresh new chat session
-  var freshChatId = 'conv_' + Date.now();
-  var freshChat = {
-    id: freshChatId,
-    title: 'Yangi Suhbat',
-    messages: [],
-    updatedAt: Date.now()
-  };
-  S.aiConversations.unshift(freshChat);
-  S.currentAiChatId = freshChatId;
+  // AI Conversations Management:
+  // 1. Filter out duplicate empty conversations
+  var nonEmptyConversations = S.aiConversations.filter(function(c) {
+    return c && Array.isArray(c.messages) && c.messages.length > 0;
+  });
+
+  // 2. Check if there is already an existing empty conversation
+  var existingEmpty = S.aiConversations.find(function(c) {
+    return c && (!c.messages || c.messages.length === 0);
+  });
+
+  if (existingEmpty) {
+    // Reuse existing empty chat - do NOT create duplicate empty chats on refresh
+    S.currentAiChatId = existingEmpty.id;
+    S.aiConversations = [existingEmpty].concat(nonEmptyConversations.filter(function(c) {
+      return c.id !== existingEmpty.id;
+    }));
+  } else if (nonEmptyConversations.length > 0) {
+    // Previous conversation had messages, prepare a fresh conversation
+    var freshChatId = 'conv_' + Date.now();
+    var freshChat = {
+      id: freshChatId,
+      title: 'Yangi Suhbat',
+      messages: [],
+      updatedAt: Date.now()
+    };
+    S.aiConversations = [freshChat].concat(nonEmptyConversations);
+    S.currentAiChatId = freshChatId;
+  } else {
+    // Initial empty state
+    var initChatId = 'conv_' + Date.now();
+    var initChat = {
+      id: initChatId,
+      title: 'Yangi Suhbat',
+      messages: [],
+      updatedAt: Date.now()
+    };
+    S.aiConversations = [initChat];
+    S.currentAiChatId = initChatId;
+  }
   S.aiHistory = [];
 
   // Trigger remote sync if available

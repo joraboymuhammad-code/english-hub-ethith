@@ -195,7 +195,7 @@
     if (!S.aiConversations || S.aiConversations.length === 0) {
       var initConv = {
         id: 'conv_' + Date.now(),
-        title: 'New Conversation',
+        title: 'Yangi Suhbat',
         messages: S.aiHistory ? S.aiHistory.slice() : [],
         updatedAt: Date.now()
       };
@@ -209,6 +209,7 @@
       S.currentAiChatId = activeConv.id;
     }
 
+    var hasMessagesInActive = activeConv && Array.isArray(activeConv.messages) && activeConv.messages.length > 0;
     var history = activeConv.messages || [];
 
     var html = '' +
@@ -272,7 +273,7 @@
       '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">' +
       '      <b style="font-size:13.5px;color:var(--text);display:flex;align-items:center;gap:6px">' + ic('layers') + ' Conversations</b>' +
       '      <div style="display:flex;align-items:center;gap:6px">' +
-      '        <button class="eth-btn-primary" id="aiNewChatBtn" style="padding:6px 12px;font-size:12px;width:auto;border-radius:8px">' + ic('plus') + ' New</button>' +
+      '        <button class="eth-btn-primary" id="aiNewChatBtn" style="padding:6px 12px;font-size:12px;width:auto;border-radius:8px;' + (!hasMessagesInActive ? 'opacity:0.4;cursor:not-allowed;' : '') + '" ' + (!hasMessagesInActive ? 'disabled title="Hozirgi suhbatingiz bo\'sh. Yangi suhbat ochish uchun avval xabar yozing."' : 'title="Yangi suhbat ochish"') + '>' + ic('plus') + ' Yangi</button>' +
       '        <button class="eth-modal-close-btn" id="btnCloseAiDrawer" style="position:static !important;width:30px !important;height:30px !important;font-size:13px !important" title="Yopish">✕</button>' +
       '      </div>' +
       '    </div>' +
@@ -371,9 +372,13 @@
     var newChatBtn = document.getElementById('aiNewChatBtn');
     if (newChatBtn) {
       newChatBtn.onclick = function() {
+        if (!hasMessagesInActive) {
+          alert("⚠️ Hozirgi suhbatingiz hali bo'sh! Yangi suhbat ochish uchun avval unga biror xabar yozing.");
+          return;
+        }
         var newC = {
           id: 'conv_' + Date.now(),
-          title: 'New Conversation',
+          title: 'Yangi Suhbat',
           messages: [],
           updatedAt: Date.now()
         };
@@ -436,10 +441,17 @@
         };
 
         activeConv.messages.push(userMsg);
-        if (activeConv.title === 'New Conversation' && promptText) {
+        if ((activeConv.title === 'New Conversation' || activeConv.title === 'Yangi Suhbat') && promptText) {
           activeConv.title = promptText.slice(0, 32).trim() + (promptText.length > 32 ? '...' : '');
         }
         activeConv.updatedAt = Date.now();
+        hasMessagesInActive = true;
+        if (newChatBtn) {
+          newChatBtn.disabled = false;
+          newChatBtn.style.opacity = '1';
+          newChatBtn.style.cursor = 'pointer';
+          newChatBtn.title = 'Yangi suhbat ochish';
+        }
         App.saveState();
 
         input.value = '';
