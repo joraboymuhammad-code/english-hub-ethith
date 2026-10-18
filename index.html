@@ -211,6 +211,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -18916,37 +18918,86 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
       if (remote.accounts && Array.isArray(remote.accounts)) {
         if (!S.accounts) S.accounts = [];
         remote.accounts.forEach(function(rAcc) {
+          if (!rAcc || !rAcc.email) return;
+          var rEmail = rAcc.email.toLowerCase().trim();
           var exists = S.accounts.find(function(a) {
-            return (a.email && rAcc.email && a.email.toLowerCase() === rAcc.email.toLowerCase()) ||
-                   (a.name && rAcc.name && a.name.toLowerCase() === rAcc.name.toLowerCase());
+            return a.email && a.email.toLowerCase().trim() === rEmail;
           });
           if (!exists) {
             S.accounts.push(rAcc);
           } else {
-            var isCurrentActive = S.user && (
-              (S.user.email && exists.email && S.user.email.toLowerCase() === exists.email.toLowerCase()) ||
-              (S.user.name && exists.name && S.user.name.toLowerCase() === exists.name.toLowerCase())
-            );
-            if (!isCurrentActive && rAcc.coins !== undefined) {
-              exists.coins = rAcc.coins;
+            exists.name = rAcc.name || exists.name;
+            if (rAcc.coins !== undefined) {
+              exists.coins = Math.max(Number(exists.coins) || 0, Number(rAcc.coins) || 0);
             }
-            if (rAcc.avatar) exists.avatar = rAcc.avatar;
             if (rAcc.level) exists.level = rAcc.level;
+            if (rAcc.avatar !== undefined) exists.avatar = rAcc.avatar;
+            if (rAcc.title !== undefined) exists.title = rAcc.title;
+          }
+
+          var isCurrentActive = S.user && S.user.email && S.user.email.toLowerCase().trim() === rEmail;
+          if (isCurrentActive) {
+            S.user.name = rAcc.name || S.user.name;
+            if (rAcc.coins !== undefined) {
+              S.user.coins = Math.max(Number(S.user.coins) || 0, Number(rAcc.coins) || 0);
+            }
+            if (rEmail === 'muhammedjoraboyev1@gmail.com') {
+              S.user.name = 'Muhammadyusuf';
+              S.user.coins = Math.max(Number(S.user.coins) || 0, 100000);
+              S.user.avatar = null;
+              S.user.title = null;
+              S.user.nameStyle = null;
+              S.user.gifts = [];
+              try {
+                localStorage.removeItem('ethith_student_gifts_muhammedjoraboyev1@gmail.com');
+                localStorage.removeItem('ethith_student_gifts_striker_uzb');
+                localStorage.removeItem('ethith_student_gifts_muhammadyusuf');
+              } catch(e) {}
+            }
+            if (window.EthithApp && window.EthithApp.saveState) {
+              window.EthithApp.saveState();
+            }
+            // Update top bar DOM elements
+            var coinEl = document.getElementById('user-coins');
+            if (coinEl) coinEl.innerText = (S.user.coins || 0).toLocaleString();
+            var nameEl = document.getElementById('user-name');
+            if (nameEl) nameEl.innerText = S.user.name;
           }
         });
+
+        // Deduplicate S.accounts so each Gmail has strictly 1 account
+        var dedupedAccounts = [];
+        var seenEmails = {};
+        S.accounts.forEach(function(acc) {
+          if (!acc || !acc.email) return;
+          var em = acc.email.toLowerCase().trim();
+          if (seenEmails[em]) return;
+          seenEmails[em] = true;
+          if (em === 'muhammedjoraboyev1@gmail.com') {
+            acc.name = 'Muhammadyusuf';
+            acc.coins = Math.max(Number(acc.coins) || 0, 100000);
+            acc.avatar = null;
+            acc.title = null;
+            acc.gifts = [];
+          }
+          dedupedAccounts.push(acc);
+        });
+        S.accounts = dedupedAccounts;
 
         // Also merge into ethith_all_registered_users
         var regKey = 'ethith_all_registered_users';
         var regList = [];
         try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
         remote.accounts.forEach(function(rAcc) {
+          if (!rAcc || !rAcc.email) return;
+          var rEmail = rAcc.email.toLowerCase().trim();
           var rIdx = regList.findIndex(function(a) {
-            return (a.email && rAcc.email && a.email.toLowerCase() === rAcc.email.toLowerCase()) ||
-                   (a.name && rAcc.name && a.name.toLowerCase() === rAcc.name.toLowerCase());
+            return a.email && a.email.toLowerCase().trim() === rEmail;
           });
           if (rIdx > -1) {
+            regList[rIdx].name = rAcc.name || regList[rIdx].name;
             if (rAcc.coins !== undefined) regList[rIdx].coins = Math.max(regList[rIdx].coins || 0, rAcc.coins);
-            if (rAcc.avatar) regList[rIdx].avatar = rAcc.avatar;
+            if (rAcc.avatar !== undefined) regList[rIdx].avatar = rAcc.avatar;
           } else {
             regList.push(rAcc);
           }
@@ -19588,69 +19639,76 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
   if (S.user) {
     var curEmail = (S.user.email || '').toLowerCase().trim();
     var curName = (S.user.name || '').trim();
-    var isMuhammadUser = (curName.toLowerCase().indexOf('muhammad') !== -1 || curEmail.indexOf('muhammad') !== -1) && S.user.role !== 'teacher';
+    var isMuhammadUser = (curEmail === 'muhammedjoraboyev1@gmail.com' || curName.toLowerCase().indexOf('muhammadyusuf') !== -1) && S.user.role !== 'teacher';
     
-    var bonusGivenKey = 'ethith_bonus_100k_' + (curEmail || curName).toLowerCase().replace(/\s+/g, '_');
-    var alreadyGiven = false;
-    try {
-      alreadyGiven = (localStorage.getItem(bonusGivenKey) === 'true') || S.user.initial100kBonusGiven;
-    } catch(e) {}
-
-    if (isMuhammadUser && !alreadyGiven) {
-      S.user.coins = 100000;
-      S.user.initial100kBonusGiven = true;
-      try { localStorage.setItem(bonusGivenKey, 'true'); } catch(e) {}
+    // Strict Cleanse for canonical user: Muhammadyusuf (muhammedjoraboyev1@gmail.com)
+    if (curEmail === 'muhammedjoraboyev1@gmail.com') {
+      S.user.name = 'Muhammadyusuf';
+      S.user.id = 'muhammedjoraboyev1@gmail.com';
+      S.user.coins = Math.max(Number(S.user.coins) || 0, 100000);
+      S.user.avatar = null;
+      S.user.title = null;
+      S.user.nameStyle = null;
+      S.user.gifts = [];
+      try {
+        localStorage.removeItem('ethith_student_gifts_muhammedjoraboyev1@gmail.com');
+        localStorage.removeItem('ethith_student_gifts_striker_uzb');
+        localStorage.removeItem('ethith_student_gifts_muhammadyusuf');
+      } catch(e) {}
     } else if (S.user.coins === undefined || S.user.coins === null) {
       S.user.coins = 150;
     }
     if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
 
-    // Ensure user is present in S.accounts
+    // Ensure user is present in S.accounts strictly by clean email
+    if (!Array.isArray(S.accounts)) S.accounts = [];
     var exAcc = S.accounts.find(function(a) {
-      return (curEmail && a.email && a.email.toLowerCase() === curEmail) ||
-             (curName && a.name && a.name.toLowerCase() === curName.toLowerCase());
+      return curEmail && a.email && a.email.toLowerCase().trim() === curEmail;
     });
+
     if (!exAcc) {
       S.accounts.push({
-        id: S.user.id || ('st_' + Date.now()),
+        id: curEmail || S.user.id || ('st_' + Date.now()),
         role: S.user.role || 'student',
-        name: curName || 'Foydalanuvchi',
-        email: curEmail || (curName.toLowerCase().replace(/\s+/g, '.') + '@ethith.uz'),
+        name: S.user.name || 'Foydalanuvchi',
+        email: curEmail || ((S.user.name || 'user').toLowerCase().replace(/\s+/g, '.') + '@ethith.uz'),
         coins: S.user.coins,
         gifts: S.user.gifts,
-        initial100kBonusGiven: S.user.initial100kBonusGiven,
+        avatar: S.user.avatar || null,
+        title: S.user.title || null,
+        nameStyle: S.user.nameStyle || null,
         createdAt: Date.now()
       });
     } else {
-      if (isMuhammadUser && !alreadyGiven) {
-        exAcc.coins = 100000;
-        exAcc.initial100kBonusGiven = true;
-        S.user.coins = 100000;
-      } else {
-        if (S.user.coins !== undefined && S.user.coins !== null) {
-          exAcc.coins = S.user.coins;
-        } else if (exAcc.coins !== undefined && exAcc.coins !== null) {
-          S.user.coins = exAcc.coins;
-        } else {
-          S.user.coins = 150;
-          exAcc.coins = 150;
-        }
-      }
-      if (Array.isArray(exAcc.gifts) && exAcc.gifts.length > 0 && S.user.gifts.length === 0) {
-        S.user.gifts = exAcc.gifts.slice();
-      }
+      exAcc.name = S.user.name;
+      exAcc.coins = S.user.coins;
+      exAcc.avatar = S.user.avatar;
+      exAcc.title = S.user.title;
+      exAcc.gifts = S.user.gifts;
     }
 
-    // Restore from dedicated localStorage backup if needed
-    var myKey = (curEmail || curName).toLowerCase().trim();
-    if (myKey && S.user.gifts.length === 0) {
-      try {
-        var backupGifts = JSON.parse(localStorage.getItem('ethith_student_gifts_' + myKey) || '[]');
-        if (Array.isArray(backupGifts) && backupGifts.length > 0) {
-          S.user.gifts = backupGifts.slice();
-        }
-      } catch(e) {}
-    }
+    // Deduplicate S.accounts so each Gmail has strictly 1 account
+    var dedupedAccounts = [];
+    var seenMap = {};
+    S.accounts.forEach(function(acc) {
+      if (!acc) return;
+      var em = (acc.email || '').toLowerCase().trim();
+      if (!em) {
+        dedupedAccounts.push(acc);
+        return;
+      }
+      if (seenMap[em]) return;
+      seenMap[em] = true;
+      if (em === 'muhammedjoraboyev1@gmail.com') {
+        acc.name = 'Muhammadyusuf';
+        acc.coins = Math.max(Number(acc.coins) || 0, 100000);
+        acc.avatar = null;
+        acc.title = null;
+        acc.gifts = [];
+      }
+      dedupedAccounts.push(acc);
+    });
+    S.accounts = dedupedAccounts;
   }
 
   if (!S.classes || S.classes.length === 0) {
@@ -19843,29 +19901,28 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
       '    <div id="studentFormBox">' +
       '      <form id="studentAuthForm">' +
       '        <div class="eth-form-group">' +
-      '          <label style="font-weight:700;font-size:13px">Ism va Familiya</label>' +
-      '          <input type="text" id="stName" placeholder="Ismingizni kiriting" value="' + esc(defaultName) + '" required>' +
+      '          <label style="font-weight:700;font-size:13px">Gmail Manzili</label>' +
+      '          <input type="email" id="stEmail" placeholder="nomingiz@gmail.com" required autocomplete="email">' +
       '        </div>' +
       '        <div class="eth-form-group">' +
-      '          <label style="font-weight:700;font-size:13px">Gmail Manzili</label>' +
-      '          <input type="email" id="stEmail" placeholder="nomingiz@gmail.com" required>' +
+      '          <label style="font-weight:700;font-size:13px">Ism va Familiya</label>' +
+      '          <input type="text" id="stName" placeholder="Ismingiz (yoki ro\'yxatdan o\'tgan ism)" value="" required autocomplete="name">' +
       '        </div>' +
-      '        <div style="margin:10px 0 14px">' +
-      '          <button type="button" id="btnGetStudentCode" style="background:#2563eb;color:#fff;font-weight:800;font-size:14px;padding:12px;border-radius:12px;border:none;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px -6px rgba(37,99,235,0.6);transition:all 0.2s">' +
-      '            📲 Kodni Olish' +
-      '          </button>' +
+      '        <div id="stAccountNotice" style="margin:6px 0 10px;padding:8px 12px;border-radius:10px;font-size:12px;display:none"></div>' +
+      '        <div style="margin:10px 0 12px;display:flex;flex-direction:column;gap:8px">' +
+      '          <button type="submit" id="btnStudentSubmit" class="eth-btn-primary" style="background:#2563eb;color:#fff;font-weight:800;font-size:15px;padding:12px;border-radius:12px;border:none;cursor:pointer;width:100%;box-shadow:0 8px 20px -6px rgba(37,99,235,0.6)">🚀 Akkauntga Kirish</button>' +
+      '          <button type="button" id="btnGetStudentCode" style="background:rgba(255,255,255,0.06);color:var(--text);font-weight:700;font-size:12.5px;padding:9px;border-radius:10px;border:1px solid var(--line);cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:6px">📲 Yangi Ro\'yxatdan O\'tish (Telegram Kod Bilan)</button>' +
       '        </div>' +
-      '        <div class="eth-form-group" id="stCodeGroup">' +
+      '        <div class="eth-form-group" id="stCodeGroup" style="display:none">' +
       '          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">' +
       '            <label style="font-weight:700;font-size:13px;margin:0">Tasdiqlash Kodi (6 xonali)</label>' +
       '            <span id="stCodeStatus" style="font-size:11.5px;color:#38bdf8;font-weight:700"></span>' +
       '          </div>' +
-      '          <input type="text" id="stCode" placeholder="Masalan: K9#4F7" maxlength="6" style="letter-spacing:5px;font-family:monospace;font-size:20px;text-align:center;font-weight:900;text-transform:uppercase" required>' +
+      '          <input type="text" id="stCode" placeholder="Masalan: K9#4F7" maxlength="6" style="letter-spacing:5px;font-family:monospace;font-size:20px;text-align:center;font-weight:900;text-transform:uppercase">' +
       '          <div id="stCodeNotice" style="margin-top:6px;font-size:11.5px;color:var(--muted)">' +
       '            <span>Kod @ETHITH_testbot telegram boti orqali yuboriladi</span>' +
       '          </div>' +
       '        </div>' +
-      '        <button type="submit" class="eth-btn-primary" style="margin-top:10px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%">Tasdiqlash va Kirish 🚀</button>' +
       '      </form>' +
       '    </div>' +
       '    <div id="teacherFormBox" style="display:none">' +
@@ -20061,6 +20118,48 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
       }
     }
 
+    // Student Live Email Checker & Auto-fill
+    var stEmailInput = overlay.querySelector('#stEmail');
+    var stNameInput = overlay.querySelector('#stName');
+    var stNotice = overlay.querySelector('#stAccountNotice');
+    var stSubmitBtn = overlay.querySelector('#btnStudentSubmit');
+    var stCodeGrp = overlay.querySelector('#stCodeGroup');
+
+    function checkEmailState() {
+      if (!stEmailInput) return;
+      var em = stEmailInput.value.toLowerCase().trim();
+      if (!em || !em.includes('@')) {
+        if (stNotice) stNotice.style.display = 'none';
+        return;
+      }
+      var existing = (S.accounts || []).find(function(a) { return a.email && a.email.toLowerCase().trim() === em; });
+      if (existing) {
+        if (stNotice) {
+          stNotice.style.display = 'block';
+          stNotice.style.background = 'rgba(56, 189, 248, 0.12)';
+          stNotice.style.border = '1px solid rgba(56, 189, 248, 0.4)';
+          stNotice.style.color = '#38bdf8';
+          stNotice.innerHTML = '⚡ <b>Mavjud Akkaunt:</b> ' + esc(existing.name) + ' (' + (existing.coins || 0).toLocaleString() + ' Coin). Ismingizni tasdiqlang va to\'g\'ridan-to\'g\'ri kiring!';
+        }
+        if (stNameInput && !stNameInput.value) {
+          stNameInput.value = existing.name;
+        }
+        if (stSubmitBtn) {
+          stSubmitBtn.innerHTML = '🚀 Akkauntga Kirish (' + esc(existing.name) + ')';
+        }
+      } else {
+        if (stNotice) stNotice.style.display = 'none';
+        if (stSubmitBtn) {
+          stSubmitBtn.innerHTML = '🚀 Akkauntga Kirish';
+        }
+      }
+    }
+
+    if (stEmailInput) {
+      stEmailInput.oninput = checkEmailState;
+      stEmailInput.onchange = checkEmailState;
+    }
+
     // "Kodni Olish" button for Student
     var btnGetStCode = overlay.querySelector('#btnGetStudentCode');
     if (btnGetStCode) {
@@ -20070,10 +20169,16 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         var name = (nameInput ? nameInput.value : '').trim();
         var email = (emailInput ? emailInput.value : '').trim();
 
-        if (!name || !email) {
-          alert("Iltimos, avval Ism va Gmail manzilingizni kiriting!");
+        if (!email) {
+          alert("Iltimos, avval Gmail manzilingizni kiriting!");
           return;
         }
+        if (!name) {
+          alert("Iltimos, ismingizni kiriting!");
+          return;
+        }
+
+        if (stCodeGrp) stCodeGrp.style.display = 'block';
 
         generatedStudentCode = generate6Code();
         var statusEl = overlay.querySelector('#stCodeStatus');
@@ -20091,7 +20196,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
             clearInterval(timer);
             btnGetStCode.disabled = false;
             btnGetStCode.style.opacity = '1';
-            btnGetStCode.textContent = "📲 Kodni Olish";
+            btnGetStCode.textContent = "📲 Yangi Ro'yxatdan O'tish (Telegram Kod Bilan)";
           } else {
             btnGetStCode.textContent = "Qayta yuborish (" + cooldown + "s)";
           }
@@ -20136,7 +20241,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
       };
     }
 
-    // Student Submit Form
+    // Student Submit Form - Universal Login & Cloud Restore by Gmail + Name
     var stForm = overlay.querySelector('#studentAuthForm');
     if (stForm) {
       stForm.onsubmit = async function(e) {
@@ -20149,8 +20254,131 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         var email = (emailInput ? emailInput.value : '').trim();
         var code = (codeInput ? codeInput.value : '').trim();
 
-        if (!name || !email) {
-          alert("Iltimos, ism va Gmail manzilingizni to'liq kiriting!");
+        if (!email) {
+          alert("Iltimos, Gmail manzilingizni kiriting!");
+          return;
+        }
+        if (!name) {
+          alert("Iltimos, ismingizni kiriting!");
+          return;
+        }
+
+        var cleanEmail = email.toLowerCase().trim();
+        var cleanName = name.toLowerCase().trim();
+
+        if (!Array.isArray(S.accounts)) S.accounts = [];
+
+        // 1. Search existing account in memory or remote store
+        var existingAcc = S.accounts.find(function(acc) {
+          return acc.email && acc.email.toLowerCase().trim() === cleanEmail;
+        });
+
+        if (!existingAcc) {
+          try {
+            var fetchRes = await fetch('shared_store.json?t=' + Date.now());
+            if (fetchRes.ok) {
+              var remoteData = await fetchRes.json();
+              if (remoteData && Array.isArray(remoteData.accounts)) {
+                existingAcc = remoteData.accounts.find(function(a) {
+                  return a.email && a.email.toLowerCase().trim() === cleanEmail;
+                });
+              }
+            }
+          } catch(err) {}
+        }
+
+        // SCENARIO 1: Existing Account — Cloud Sync / Universal Device Login
+        if (existingAcc) {
+          var regName = (existingAcc.name || '').toLowerCase().trim();
+          var nameMatches = (regName === cleanName || cleanName.indexOf(regName) !== -1 || regName.indexOf(cleanName) !== -1);
+
+          var authorized = false;
+          if (nameMatches) {
+            authorized = true;
+          } else if (code) {
+            authorized = await validateAuthCode(code, generatedStudentCode);
+            if (!authorized) {
+              alert("❌ Tasdiqlash kodi noto'g'ri! Ushbu akkauntga kirish uchun to'g'ri ismni kiriting yoki Telegram bot (@ETHITH_testbot) kodini to'g'ri tering.");
+              return;
+            }
+            existingAcc.name = name;
+          } else {
+            if (stCodeGrp) stCodeGrp.style.display = 'block';
+            alert("⚠️ Ushbu Gmail bo'yicha akkaunt allaqachon mavjud!\n\nAkkaunt egasi: " + existingAcc.name + "\n\nIltimos, ushbu hisobga kirish uchun ro'yxatdan o'tgan to'g'ri ismingizni kiriting (" + existingAcc.name + ") yoki 'Telegram Kod Bilan' tugmasini bosing.");
+            return;
+          }
+
+          if (authorized) {
+            var initCoins = existingAcc.coins !== undefined ? Number(existingAcc.coins) : 150;
+            if (cleanEmail === 'muhammedjoraboyev1@gmail.com') {
+              initCoins = Math.max(initCoins, 100000);
+              existingAcc.name = 'Muhammadyusuf';
+              existingAcc.coins = initCoins;
+              existingAcc.avatar = null;
+              existingAcc.title = null;
+              existingAcc.nameStyle = null;
+              existingAcc.gifts = [];
+              try {
+                localStorage.removeItem('ethith_student_gifts_muhammedjoraboyev1@gmail.com');
+                localStorage.removeItem('ethith_student_gifts_striker_uzb');
+                localStorage.removeItem('ethith_student_gifts_muhammadyusuf');
+              } catch(e) {}
+            }
+
+            S.user = {
+              id: cleanEmail,
+              role: existingAcc.role || 'student',
+              name: existingAcc.name || name,
+              email: cleanEmail,
+              dailyMinutes: existingAcc.dailyMinutes || 0,
+              coins: initCoins,
+              avatar: existingAcc.avatar || null,
+              nameStyle: existingAcc.nameStyle || null,
+              title: existingAcc.title || null,
+              gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : []
+            };
+            if (existingAcc.level) S.level = existingAcc.level;
+            if (existingAcc.unlocked) S.unlocked = existingAcc.unlocked;
+            if (existingAcc.quizScores) S.quizScores = existingAcc.quizScores;
+            if (existingAcc.mistakes) S.mistakes = existingAcc.mistakes;
+            existingAcc.updatedAt = Date.now();
+
+            var aIdx = S.accounts.findIndex(function(a) { return a.email && a.email.toLowerCase().trim() === cleanEmail; });
+            if (aIdx === -1) {
+              S.accounts.push(existingAcc);
+            } else {
+              S.accounts[aIdx] = existingAcc;
+            }
+
+            try {
+              var regList = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+              var rIdx = regList.findIndex(function(u) { return u.email && u.email.toLowerCase().trim() === cleanEmail; });
+              if (rIdx === -1) {
+                regList.push({ id: cleanEmail, name: S.user.name, email: cleanEmail, role: 'student', coins: initCoins, joinedAt: Date.now() });
+              } else {
+                regList[rIdx].name = S.user.name;
+                regList[rIdx].coins = initCoins;
+                regList[rIdx].avatar = S.user.avatar;
+                regList[rIdx].title = S.user.title;
+              }
+              localStorage.setItem('ethith_all_registered_users', JSON.stringify(regList));
+            } catch(e) {}
+
+            saveState();
+            if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+              window.EthithSync.pushRemoteStore();
+            }
+            overlay.remove();
+            alert("🎉 Xush kelibsiz, " + S.user.name + "! Akkauntingiz muvaffaqiyatli ushbu qurilmaga o'tkazildi.");
+            window.ethithOpenApp('dash');
+            return;
+          }
+        }
+
+        // SCENARIO 2: Brand New Registration (Requires 6-digit Telegram Code)
+        if (!code) {
+          if (stCodeGrp) stCodeGrp.style.display = 'block';
+          alert("ℹ️ Yangi ro'yxatdan o'tish uchun 'Telegram Kod Bilan' tugmasini bosing va @ETHITH_testbot dan kelgan 6 xonali kodni kiriting.");
           return;
         }
 
@@ -20160,134 +20388,76 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
           return;
         }
 
-        var cleanEmail = email.toLowerCase().trim();
-        if (!Array.isArray(S.accounts)) S.accounts = [];
+        // New student registration - Strict 1:1 Gmail rule:
+        // New account ALWAYS starts fresh: NO avatar, NO title, NO inherited gifts!
+        var isMuNew = (cleanEmail === 'muhammedjoraboyev1@gmail.com');
+        var newCoins = isMuNew ? 100000 : 150;
+        var newAcc = {
+          id: cleanEmail,
+          role: 'student',
+          name: name,
+          email: cleanEmail,
+          level: 'A1',
+          unlocked: { A1: 1, A2: 1, B1: 1, B2: 1, C1: 1, C2: 1 },
+          quizScores: {},
+          mistakes: [],
+          dailyMinutes: 0,
+          coins: newCoins,
+          avatar: null,
+          title: null,
+          nameStyle: null,
+          gifts: [],
+          createdAt: Date.now(),
+          updatedAt: Date.now()
+        };
+        S.accounts.push(newAcc);
+        S.user = {
+          id: cleanEmail,
+          role: 'student',
+          name: newAcc.name,
+          email: cleanEmail,
+          dailyMinutes: 0,
+          coins: newAcc.coins,
+          avatar: null,
+          title: null,
+          nameStyle: null,
+          gifts: []
+        };
 
-        var existingAcc = S.accounts.find(function(acc) {
-          return acc.email && acc.email.toLowerCase().trim() === cleanEmail;
-        });
-
-        if (existingAcc) {
-          // One Gmail = exactly one account. Load existing account cleanly without inheriting previous session garbage
-          var initCoins = existingAcc.coins !== undefined ? Number(existingAcc.coins) : 150;
-          if (cleanEmail === 'muhammedjoraboyev1@gmail.com') {
-            initCoins = Math.max(initCoins, 100000);
-            existingAcc.coins = initCoins;
+        try {
+          var allUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+          var uIdx = allUsers.findIndex(function(u) { return u.email && u.email.toLowerCase().trim() === cleanEmail; });
+          if (uIdx === -1) {
+            allUsers.push({ id: cleanEmail, name: name, email: cleanEmail, role: 'student', coins: newCoins, joinedAt: Date.now() });
+          } else {
+            allUsers[uIdx].name = name;
+            allUsers[uIdx].coins = newCoins;
           }
+          localStorage.setItem('ethith_all_registered_users', JSON.stringify(allUsers));
+        } catch(e) {}
 
-          S.user = {
-            id: cleanEmail,
-            role: existingAcc.role || 'student',
-            name: existingAcc.name || name,
-            email: cleanEmail,
-            dailyMinutes: existingAcc.dailyMinutes || 0,
-            coins: initCoins,
-            avatar: existingAcc.avatar || null,
-            nameStyle: existingAcc.nameStyle || null,
-            title: existingAcc.title || null,
-            gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : []
-          };
-          if (existingAcc.level) S.level = existingAcc.level;
-          if (existingAcc.unlocked) S.unlocked = existingAcc.unlocked;
-          if (existingAcc.quizScores) S.quizScores = existingAcc.quizScores;
-          if (existingAcc.mistakes) S.mistakes = existingAcc.mistakes;
-          existingAcc.updatedAt = Date.now();
-
-          try {
-            var regList = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-            var rIdx = regList.findIndex(function(u) { return u.email && u.email.toLowerCase().trim() === cleanEmail; });
-            if (rIdx === -1) {
-              regList.push({ id: cleanEmail, name: S.user.name, email: cleanEmail, role: 'student', coins: initCoins, joinedAt: Date.now() });
-            } else {
-              regList[rIdx].coins = initCoins;
-              regList[rIdx].avatar = S.user.avatar;
-              regList[rIdx].title = S.user.title;
+        saveState();
+        if (window.EthithSync && window.EthithSync.publishLive) {
+          window.EthithSync.publishLive({
+            type: 'USER_REGISTERED',
+            user: {
+              id: cleanEmail,
+              name: newAcc.name,
+              email: cleanEmail,
+              role: 'student',
+              coins: newAcc.coins || 0,
+              avatar: null,
+              level: newAcc.level || 'A1',
+              joinedAt: newAcc.createdAt || Date.now()
             }
-            localStorage.setItem('ethith_all_registered_users', JSON.stringify(regList));
-          } catch(e) {}
-
-          saveState();
-          if (window.EthithSync) {
-            window.EthithSync.pushRemoteStore();
-          }
-          overlay.remove();
-          alert("Xush kelibsiz, " + S.user.name + "! Telegram orqali akkauntingiz muvaffaqiyatli tasdiqlandi.");
-          window.ethithOpenApp('dash');
-        } else {
-          // New student registration - Strict 1:1 Gmail rule:
-          // New account ALWAYS starts fresh: NO avatar, NO title, NO inherited gifts!
-          var isMuNew = (cleanEmail === 'muhammedjoraboyev1@gmail.com');
-          var newCoins = isMuNew ? 100000 : 150;
-          var newAcc = {
-            id: cleanEmail,
-            role: 'student',
-            name: name,
-            email: cleanEmail,
-            level: 'A1',
-            unlocked: { A1: 1, A2: 1, B1: 1, B2: 1, C1: 1, C2: 1 },
-            quizScores: {},
-            mistakes: [],
-            dailyMinutes: 0,
-            coins: newCoins,
-            avatar: null,
-            title: null,
-            nameStyle: null,
-            gifts: [],
-            createdAt: Date.now(),
-            updatedAt: Date.now()
-          };
-          S.accounts.push(newAcc);
-          S.user = {
-            id: cleanEmail,
-            role: 'student',
-            name: newAcc.name,
-            email: cleanEmail,
-            dailyMinutes: 0,
-            coins: newAcc.coins,
-            avatar: null,
-            title: null,
-            nameStyle: null,
-            gifts: []
-          };
-
-          try {
-            var allUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-            var uIdx = allUsers.findIndex(function(u) { return u.email && u.email.toLowerCase().trim() === cleanEmail; });
-            if (uIdx === -1) {
-              allUsers.push({ id: cleanEmail, name: name, email: cleanEmail, role: 'student', coins: newCoins, joinedAt: Date.now() });
-            } else {
-              allUsers[uIdx].name = name;
-              allUsers[uIdx].coins = newCoins;
-            }
-            localStorage.setItem('ethith_all_registered_users', JSON.stringify(allUsers));
-          } catch(e) {}
-
-          if (window.EthithSync && window.EthithSync.publishLive) {
-            window.EthithSync.publishLive({
-              type: 'USER_REGISTERED',
-              user: {
-                id: cleanEmail,
-                name: newAcc.name,
-                email: cleanEmail,
-                role: 'student',
-                coins: newAcc.coins || 0,
-                avatar: null,
-                level: newAcc.level || 'A1',
-                joinedAt: newAcc.createdAt || Date.now()
-              }
-            });
-          }
-
-          saveState();
-          if (window.EthithSync && window.EthithSync.broadcastUserState) {
-            window.EthithSync.broadcastUserState();
-          } else if (window.EthithSync) {
-            window.EthithSync.pushRemoteStore();
-          }
-          overlay.remove();
-          alert("🎉 Tabriklaymiz! Telegram orqali yangi akkauntingiz muvaffaqiyatli ochildi.");
-          window.ethithOpenApp('dash');
+          });
         }
+        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+          window.EthithSync.pushRemoteStore();
+        }
+        overlay.remove();
+        alert("🎉 Tabriklaymiz! Telegram orqali yangi akkauntingiz muvaffaqiyatli ochildi.");
+        window.ethithOpenApp('dash');
       };
     }
 

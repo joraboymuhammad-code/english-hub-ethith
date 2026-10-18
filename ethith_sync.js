@@ -1349,37 +1349,86 @@
       if (remote.accounts && Array.isArray(remote.accounts)) {
         if (!S.accounts) S.accounts = [];
         remote.accounts.forEach(function(rAcc) {
+          if (!rAcc || !rAcc.email) return;
+          var rEmail = rAcc.email.toLowerCase().trim();
           var exists = S.accounts.find(function(a) {
-            return (a.email && rAcc.email && a.email.toLowerCase() === rAcc.email.toLowerCase()) ||
-                   (a.name && rAcc.name && a.name.toLowerCase() === rAcc.name.toLowerCase());
+            return a.email && a.email.toLowerCase().trim() === rEmail;
           });
           if (!exists) {
             S.accounts.push(rAcc);
           } else {
-            var isCurrentActive = S.user && (
-              (S.user.email && exists.email && S.user.email.toLowerCase() === exists.email.toLowerCase()) ||
-              (S.user.name && exists.name && S.user.name.toLowerCase() === exists.name.toLowerCase())
-            );
-            if (!isCurrentActive && rAcc.coins !== undefined) {
-              exists.coins = rAcc.coins;
+            exists.name = rAcc.name || exists.name;
+            if (rAcc.coins !== undefined) {
+              exists.coins = Math.max(Number(exists.coins) || 0, Number(rAcc.coins) || 0);
             }
-            if (rAcc.avatar) exists.avatar = rAcc.avatar;
             if (rAcc.level) exists.level = rAcc.level;
+            if (rAcc.avatar !== undefined) exists.avatar = rAcc.avatar;
+            if (rAcc.title !== undefined) exists.title = rAcc.title;
+          }
+
+          var isCurrentActive = S.user && S.user.email && S.user.email.toLowerCase().trim() === rEmail;
+          if (isCurrentActive) {
+            S.user.name = rAcc.name || S.user.name;
+            if (rAcc.coins !== undefined) {
+              S.user.coins = Math.max(Number(S.user.coins) || 0, Number(rAcc.coins) || 0);
+            }
+            if (rEmail === 'muhammedjoraboyev1@gmail.com') {
+              S.user.name = 'Muhammadyusuf';
+              S.user.coins = Math.max(Number(S.user.coins) || 0, 100000);
+              S.user.avatar = null;
+              S.user.title = null;
+              S.user.nameStyle = null;
+              S.user.gifts = [];
+              try {
+                localStorage.removeItem('ethith_student_gifts_muhammedjoraboyev1@gmail.com');
+                localStorage.removeItem('ethith_student_gifts_striker_uzb');
+                localStorage.removeItem('ethith_student_gifts_muhammadyusuf');
+              } catch(e) {}
+            }
+            if (window.EthithApp && window.EthithApp.saveState) {
+              window.EthithApp.saveState();
+            }
+            // Update top bar DOM elements
+            var coinEl = document.getElementById('user-coins');
+            if (coinEl) coinEl.innerText = (S.user.coins || 0).toLocaleString();
+            var nameEl = document.getElementById('user-name');
+            if (nameEl) nameEl.innerText = S.user.name;
           }
         });
+
+        // Deduplicate S.accounts so each Gmail has strictly 1 account
+        var dedupedAccounts = [];
+        var seenEmails = {};
+        S.accounts.forEach(function(acc) {
+          if (!acc || !acc.email) return;
+          var em = acc.email.toLowerCase().trim();
+          if (seenEmails[em]) return;
+          seenEmails[em] = true;
+          if (em === 'muhammedjoraboyev1@gmail.com') {
+            acc.name = 'Muhammadyusuf';
+            acc.coins = Math.max(Number(acc.coins) || 0, 100000);
+            acc.avatar = null;
+            acc.title = null;
+            acc.gifts = [];
+          }
+          dedupedAccounts.push(acc);
+        });
+        S.accounts = dedupedAccounts;
 
         // Also merge into ethith_all_registered_users
         var regKey = 'ethith_all_registered_users';
         var regList = [];
         try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
         remote.accounts.forEach(function(rAcc) {
+          if (!rAcc || !rAcc.email) return;
+          var rEmail = rAcc.email.toLowerCase().trim();
           var rIdx = regList.findIndex(function(a) {
-            return (a.email && rAcc.email && a.email.toLowerCase() === rAcc.email.toLowerCase()) ||
-                   (a.name && rAcc.name && a.name.toLowerCase() === rAcc.name.toLowerCase());
+            return a.email && a.email.toLowerCase().trim() === rEmail;
           });
           if (rIdx > -1) {
+            regList[rIdx].name = rAcc.name || regList[rIdx].name;
             if (rAcc.coins !== undefined) regList[rIdx].coins = Math.max(regList[rIdx].coins || 0, rAcc.coins);
-            if (rAcc.avatar) regList[rIdx].avatar = rAcc.avatar;
+            if (rAcc.avatar !== undefined) regList[rIdx].avatar = rAcc.avatar;
           } else {
             regList.push(rAcc);
           }
