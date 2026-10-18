@@ -1151,7 +1151,9 @@
               if (window._ethithUpdateTopCoins) {
                 window._ethithUpdateTopCoins();
               }
-              if (window.EthithSync && window.EthithSync.publishLive) {
+              if (window.EthithSync && window.EthithSync.broadcastUserState) {
+                window.EthithSync.broadcastUserState();
+              } else if (window.EthithSync && window.EthithSync.publishLive) {
                 window.EthithSync.publishLive({
                   type: 'USER_STATE_SYNC',
                   user: {
@@ -13477,8 +13479,10 @@
         App.saveState();
         if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
 
-        // Broadcast user state in real time via MQTT
-        if (window.EthithSync && window.EthithSync.publishLive && S.user) {
+        // Broadcast user state in real time via MQTT & Remote Store
+        if (window.EthithSync && window.EthithSync.broadcastUserState) {
+          window.EthithSync.broadcastUserState();
+        } else if (window.EthithSync && window.EthithSync.publishLive && S.user) {
           window.EthithSync.publishLive({
             type: 'USER_STATE_SYNC',
             user: {

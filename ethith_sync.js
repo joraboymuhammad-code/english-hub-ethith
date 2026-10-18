@@ -702,7 +702,7 @@
         try { window._ethithOnQuizEvent(event); } catch(qe) {}
       }
     }
-    else if (event.type === 'USER_STATE_SYNC' || event.type === 'USER_COINS_UPDATE') {
+    else if (event.type === 'USER_STATE_SYNC' || event.type === 'USER_COINS_UPDATE' || event.type === 'USER_REGISTERED') {
       if (event.user && (event.user.email || event.user.name || event.user.id)) {
         var u = event.user;
         if (!Array.isArray(S.accounts)) S.accounts = [];
@@ -780,6 +780,7 @@
       var exists = S.p2pListings.some(function(l) { return l.id === event.listing.id; });
       if (!exists) {
         S.p2pListings.unshift(event.listing);
+        try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(S.p2pListings)); } catch(e) {}
         if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
         if (window._ethithRefreshMarket && window._ethithCurrentView === 'market') {
           try { window._ethithRefreshMarket(); } catch(e) {}
@@ -789,6 +790,9 @@
     else if (event.type === 'P2P_BUY_ITEM') {
       if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
       S.p2pListings = S.p2pListings.filter(function(l) { return l.id !== event.listingId; });
+      if (!S.deletedListingIds) S.deletedListingIds = [];
+      if (S.deletedListingIds.indexOf(event.listingId) === -1) S.deletedListingIds.push(event.listingId);
+      try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(S.p2pListings)); localStorage.setItem('ethith_deleted_listing_ids', JSON.stringify(S.deletedListingIds)); } catch(e) {}
 
       var isMeSeller = S.user && (
         (event.sellerEmail && S.user.email && event.sellerEmail.toLowerCase() === S.user.email.toLowerCase()) ||
@@ -821,6 +825,9 @@
     else if (event.type === 'P2P_BARTER_SWAP') {
       if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
       S.p2pListings = S.p2pListings.filter(function(l) { return l.id !== event.listingId; });
+      if (!S.deletedListingIds) S.deletedListingIds = [];
+      if (S.deletedListingIds.indexOf(event.listingId) === -1) S.deletedListingIds.push(event.listingId);
+      try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(S.p2pListings)); localStorage.setItem('ethith_deleted_listing_ids', JSON.stringify(S.deletedListingIds)); } catch(e) {}
       var isMeSeller = S.user && (
         (event.sellerEmail && S.user.email && event.sellerEmail.toLowerCase() === S.user.email.toLowerCase()) ||
         (event.sellerId && S.user.id && event.sellerId === S.user.id) ||
@@ -844,6 +851,9 @@
     else if (event.type === 'P2P_REMOVE_ITEM') {
       if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
       S.p2pListings = S.p2pListings.filter(function(l) { return l.id !== event.listingId; });
+      if (!S.deletedListingIds) S.deletedListingIds = [];
+      if (S.deletedListingIds.indexOf(event.listingId) === -1) S.deletedListingIds.push(event.listingId);
+      try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(S.p2pListings)); localStorage.setItem('ethith_deleted_listing_ids', JSON.stringify(S.deletedListingIds)); } catch(e) {}
       if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
       if (window._ethithRefreshMarket && window._ethithCurrentView === 'market') {
         try { window._ethithRefreshMarket(); } catch(e) {}
@@ -887,8 +897,7 @@
         headers: {
           'Authorization': 'token ' + token,
           'Accept': 'application/vnd.github.v3+json',
-          'User-Agent': 'ETHITH-Sync'
-        },
+                  },
         cache: 'no-store'
       });
       if (res.ok) {
@@ -1143,29 +1152,42 @@
     return changed;
   }
 
-  function mergeP2PListings(localListings, remoteListings) {
+  function mergeP2PListings(localListings, remoteListings, deletedListingIds) {
     var changed = false;
-    if (!Array.isArray(remoteListings)) return changed;
     if (!Array.isArray(localListings)) return changed;
+    var dIds = Array.isArray(deletedListingIds) ? deletedListingIds : [];
 
-    // Add missing remote listings
-    remoteListings.forEach(function(rList) {
-      if (!rList || !rList.id) return;
-      var exists = localListings.some(function(l) { return l.id === rList.id; });
-      if (!exists) {
-        localListings.push(rList);
-        changed = true;
-      }
-    });
-
-    // Remove listings that were deleted remotely
+    // Filter out locally any explicitly deleted listings
     for (var i = localListings.length - 1; i >= 0; i--) {
-      var lx = localListings[i];
-      if (!remoteListings.some(function(r) { return r && r.id === lx.id; })) {
+      if (dIds.indexOf(localListings[i].id) !== -1) {
         localListings.splice(i, 1);
         changed = true;
       }
     }
+
+    if (!Array.isArray(remoteListings)) {
+      try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(localListings)); } catch(e) {}
+      return changed;
+    }
+
+    // Merge remote listings without purging local listings!
+    remoteListings.forEach(function(rList) {
+      if (!rList || !rList.id) return;
+      if (dIds.indexOf(rList.id) !== -1) return;
+
+      var loc = localListings.find(function(l) { return l.id === rList.id; });
+      if (!loc) {
+        localListings.push(rList);
+        changed = true;
+      } else {
+        if (rList.status && rList.status !== loc.status) {
+          loc.status = rList.status;
+          changed = true;
+        }
+      }
+    });
+
+    try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(localListings)); } catch(e) {}
     return changed;
   }
 
@@ -1206,8 +1228,7 @@
           headers: {
             'Authorization': 'token ' + token,
             'Accept': 'application/vnd.github.v3+json',
-            'User-Agent': 'ETHITH-Sync'
-          },
+                      },
           cache: 'no-store'
         });
 
@@ -1235,10 +1256,12 @@
           if (!S.accounts) S.accounts = [];
           mergeAccounts(S.accounts, remoteData.accounts);
         }
-        if (remoteData.p2pListings && Array.isArray(remoteData.p2pListings)) {
-          if (!S.p2pListings) S.p2pListings = [];
-          mergeP2PListings(S.p2pListings, remoteData.p2pListings);
+        if (remoteData.deletedListingIds && Array.isArray(remoteData.deletedListingIds)) {
+          if (!S.deletedListingIds) S.deletedListingIds = [];
+          remoteData.deletedListingIds.forEach(function(id) { if (S.deletedListingIds.indexOf(id) === -1) S.deletedListingIds.push(id); });
         }
+        if (!S.p2pListings) S.p2pListings = [];
+        mergeP2PListings(S.p2pListings, remoteData.p2pListings || [], S.deletedListingIds || []);
 
         var cleanClasses = JSON.parse(JSON.stringify(S.classes));
         cleanClasses.forEach(function(c) {
@@ -1259,6 +1282,7 @@
           classes: cleanClasses,
           exams: cleanExams,
           deletedExamIds: dIds,
+          deletedListingIds: S.deletedListingIds || [],
           accounts: S.accounts || [],
           p2pListings: S.p2pListings || [],
           updatedAt: Date.now()
@@ -1279,8 +1303,7 @@
             'Authorization': 'token ' + token,
             'Content-Type': 'application/json',
             'Accept': 'application/vnd.github.v3+json',
-            'User-Agent': 'ETHITH-Sync'
-          },
+                      },
           body: JSON.stringify(body)
         });
 
@@ -1357,6 +1380,14 @@
         localStorage.setItem(regKey, JSON.stringify(regList));
       }
 
+      if (remote.deletedListingIds && Array.isArray(remote.deletedListingIds)) {
+        if (!S.deletedListingIds) S.deletedListingIds = [];
+        remote.deletedListingIds.forEach(function(id) { if (S.deletedListingIds.indexOf(id) === -1) S.deletedListingIds.push(id); });
+      }
+      if (remote.p2pListings && Array.isArray(remote.p2pListings)) {
+        if (!S.p2pListings) S.p2pListings = [];
+        mergeP2PListings(S.p2pListings, remote.p2pListings, S.deletedListingIds || []);
+      }
       var c1 = mergeClasses(S.classes, remote.classes || []);
       var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
       if ((c1 || c2) && window.EthithApp) {
@@ -1367,6 +1398,9 @@
     (S.classes || []).forEach(function(c) {
       subscribeClass(c.code || c.id);
     });
+    if (S.user && window.EthithSync && window.EthithSync.broadcastUserState) {
+      setTimeout(window.EthithSync.broadcastUserState, 500);
+    }
   }
 
   // Background Poller (Safety net fallback every 3.5s)
@@ -1390,7 +1424,7 @@
         var c1 = mergeClasses(S.classes, remote.classes || []);
         var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
         var c3 = mergeAccounts(S.accounts || [], remote.accounts || []);
-        var c4 = mergeP2PListings(S.p2pListings || [], remote.p2pListings || []);
+        var c4 = mergeP2PListings(S.p2pListings || [], remote.p2pListings || [], S.deletedListingIds || []);
         if (c1 || c2 || c3 || c4) {
           window.EthithApp.saveState();
           if (!window._ethithIsTestInProgress) {
@@ -1438,7 +1472,78 @@
     }
   }
 
+
+  function broadcastUserState() {
+    if (!window.EthithApp || !window.EthithApp.state) return;
+    var S = window.EthithApp.state;
+    if (!S.user) return;
+
+    if (!Array.isArray(S.accounts)) S.accounts = [];
+    var curEmail = (S.user.email || '').toLowerCase().trim();
+    var curName = (S.user.name || '').trim();
+
+    var userAcc = S.accounts.find(function(a) {
+      return (curEmail && a.email && a.email.toLowerCase().trim() === curEmail) ||
+             (curName && a.name && a.name.toLowerCase().trim() === curName.toLowerCase()) ||
+             (S.user.id && a.id && a.id === S.user.id);
+    });
+
+    if (!userAcc) {
+      userAcc = {
+        id: S.user.id || ('st_' + Date.now().toString(36)),
+        role: S.user.role || 'student',
+        name: curName || "O'quvchi",
+        email: curEmail || (curName.toLowerCase().replace(/\s+/g, '.') + '@ethith.uz'),
+        coins: S.user.coins !== undefined ? Number(S.user.coins) : 150,
+        avatar: S.user.avatar || null,
+        level: S.level || S.user.level || 'A1',
+        dailyMinutes: S.user.dailyMinutes || 0,
+        nameStyle: S.user.nameStyle || null,
+        title: S.user.title || null,
+        victorySound: S.user.victorySound || null,
+        updatedAt: Date.now()
+      };
+      S.accounts.push(userAcc);
+    } else {
+      userAcc.coins = S.user.coins !== undefined ? Number(S.user.coins) : userAcc.coins;
+      userAcc.avatar = S.user.avatar || userAcc.avatar;
+      userAcc.level = S.level || S.user.level || userAcc.level;
+      userAcc.nameStyle = S.user.nameStyle || userAcc.nameStyle;
+      userAcc.title = S.user.title || userAcc.title;
+      userAcc.victorySound = S.user.victorySound || userAcc.victorySound;
+      userAcc.dailyMinutes = S.user.dailyMinutes || userAcc.dailyMinutes;
+      userAcc.updatedAt = Date.now();
+    }
+
+    var regKey = 'ethith_all_registered_users';
+    var regList = [];
+    try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
+    var rIdx = regList.findIndex(function(a) {
+      return (curEmail && a.email && a.email.toLowerCase().trim() === curEmail) ||
+             (curName && a.name && a.name.toLowerCase().trim() === curName.toLowerCase());
+    });
+    if (rIdx > -1) {
+      regList[rIdx].coins = userAcc.coins;
+      regList[rIdx].avatar = userAcc.avatar;
+      regList[rIdx].level = userAcc.level;
+      regList[rIdx].nameStyle = userAcc.nameStyle;
+      regList[rIdx].title = userAcc.title;
+      regList[rIdx].victorySound = userAcc.victorySound;
+    } else {
+      regList.push(userAcc);
+    }
+    try { localStorage.setItem(regKey, JSON.stringify(regList)); } catch(e) {}
+
+    publishLive({
+      type: 'USER_STATE_SYNC',
+      user: userAcc
+    });
+
+    if (pushRemoteStore) pushRemoteStore();
+  }
+
   window.EthithSync = {
+    broadcastUserState: broadcastUserState,
     publishLive: publishLive,
     handleIncomingLiveEvent: handleIncomingLiveEvent,
     subscribeClass: subscribeClass,

@@ -37,6 +37,28 @@ svg.ic, .ic, button svg, .eth-btn-primary svg, .ap-btn svg, .tg-context-item svg
   box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
 }
 
+html, body {
+  background: #081322 !important;
+  color: #e7eefb;
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-text-size-adjust: 100%;
+}
+#app, .ap-shell, .ap-main {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  background: var(--bg, #081322) !important;
+}
+.ap-view {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 [data-theme="dark"], #app[data-theme="dark"], body[data-theme="dark"] {
   --bg: #081322 !important;
   --bg2: #142a49 !important;
@@ -6320,8 +6342,17 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 .eth-leaderboard-screen {
   padding: 24px;
   max-width: 1100px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   position: relative;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .eth-leaderboard-screen {
+    padding: 14px 10px !important;
+  }
 }
 
 .eth-lb-header {
@@ -6377,12 +6408,46 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   gap: 16px;
   margin-bottom: 30px;
   padding: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .eth-lb-podium-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px 0 !important;
+    margin-bottom: 24px !important;
+  }
+  .eth-lb-card-1 {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+    margin-top: 20px !important;
+  }
+  .eth-lb-card-2 {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+  }
+  .eth-lb-card-3 {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+  }
 }
 
 /* Rank 1: Crowned Golden Champion */
 .eth-lb-card-1 {
   flex: 1;
   max-width: 320px;
+  box-sizing: border-box !important;
   background: linear-gradient(145deg, rgba(120, 53, 15, 0.35) 0%, rgba(217, 119, 6, 0.15) 100%);
   border: 2px solid #f59e0b;
   border-radius: 20px;
@@ -6419,6 +6484,7 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 .eth-lb-card-2 {
   flex: 1;
   max-width: 290px;
+  box-sizing: border-box !important;
   background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.3) 100%);
   border: 2px solid #94a3b8;
   border-radius: 18px;
@@ -6438,6 +6504,7 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 .eth-lb-card-3 {
   flex: 1;
   max-width: 290px;
+  box-sizing: border-box !important;
   background: linear-gradient(145deg, rgba(67, 20, 7, 0.35) 0%, rgba(120, 53, 15, 0.2) 100%);
   border: 2px solid #d97706;
   border-radius: 18px;
@@ -8093,3 +8160,8 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   box-shadow: 0 0 12px #f59e0b;
   transition: width 0.4s ease;
 }
+
+/* ETHITH Official Contacts Block */
+.eth-contact-badge-box a { transition: all 0.2s ease; text-decoration: none !important; }
+.eth-contact-badge-box a:hover { filter: brightness(1.2); transform: translateY(-1px); }
+.eth-contact-badge-box svg { width: 16px !important; height: 16px !important; min-width: 16px !important; min-height: 16px !important; max-width: 16px !important; max-height: 16px !important; display: inline-block !important; flex-shrink: 0 !important; }

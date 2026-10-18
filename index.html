@@ -201,6 +201,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -243,6 +245,28 @@ svg.ic, .ic, button svg, .eth-btn-primary svg, .ap-btn svg, .tg-context-item svg
   border-radius: 50%;
   background: #16a34a;
   box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
+}
+
+html, body {
+  background: #081322 !important;
+  color: #e7eefb;
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-text-size-adjust: 100%;
+}
+#app, .ap-shell, .ap-main {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  background: var(--bg, #081322) !important;
+}
+.ap-view {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 [data-theme="dark"], #app[data-theme="dark"], body[data-theme="dark"] {
@@ -6528,8 +6552,17 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 .eth-leaderboard-screen {
   padding: 24px;
   max-width: 1100px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   position: relative;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .eth-leaderboard-screen {
+    padding: 14px 10px !important;
+  }
 }
 
 .eth-lb-header {
@@ -6585,12 +6618,46 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   gap: 16px;
   margin-bottom: 30px;
   padding: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .eth-lb-podium-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px 0 !important;
+    margin-bottom: 24px !important;
+  }
+  .eth-lb-card-1 {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+    margin-top: 20px !important;
+  }
+  .eth-lb-card-2 {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+  }
+  .eth-lb-card-3 {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+  }
 }
 
 /* Rank 1: Crowned Golden Champion */
 .eth-lb-card-1 {
   flex: 1;
   max-width: 320px;
+  box-sizing: border-box !important;
   background: linear-gradient(145deg, rgba(120, 53, 15, 0.35) 0%, rgba(217, 119, 6, 0.15) 100%);
   border: 2px solid #f59e0b;
   border-radius: 20px;
@@ -6627,6 +6694,7 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 .eth-lb-card-2 {
   flex: 1;
   max-width: 290px;
+  box-sizing: border-box !important;
   background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.3) 100%);
   border: 2px solid #94a3b8;
   border-radius: 18px;
@@ -6646,6 +6714,7 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 .eth-lb-card-3 {
   flex: 1;
   max-width: 290px;
+  box-sizing: border-box !important;
   background: linear-gradient(145deg, rgba(67, 20, 7, 0.35) 0%, rgba(120, 53, 15, 0.2) 100%);
   border: 2px solid #d97706;
   border-radius: 18px;
@@ -8301,6 +8370,11 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   box-shadow: 0 0 12px #f59e0b;
   transition: width 0.4s ease;
 }
+
+/* ETHITH Official Contacts Block */
+.eth-contact-badge-box a { transition: all 0.2s ease; text-decoration: none !important; }
+.eth-contact-badge-box a:hover { filter: brightness(1.2); transform: translateY(-1px); }
+.eth-contact-badge-box svg { width: 16px !important; height: 16px !important; min-width: 16px !important; min-height: 16px !important; max-width: 16px !important; max-height: 16px !important; display: inline-block !important; flex-shrink: 0 !important; }
 
 </style>
 
@@ -18051,7 +18125,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         try { window._ethithOnQuizEvent(event); } catch(qe) {}
       }
     }
-    else if (event.type === 'USER_STATE_SYNC' || event.type === 'USER_COINS_UPDATE') {
+    else if (event.type === 'USER_STATE_SYNC' || event.type === 'USER_COINS_UPDATE' || event.type === 'USER_REGISTERED') {
       if (event.user && (event.user.email || event.user.name || event.user.id)) {
         var u = event.user;
         if (!Array.isArray(S.accounts)) S.accounts = [];
@@ -18129,6 +18203,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
       var exists = S.p2pListings.some(function(l) { return l.id === event.listing.id; });
       if (!exists) {
         S.p2pListings.unshift(event.listing);
+        try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(S.p2pListings)); } catch(e) {}
         if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
         if (window._ethithRefreshMarket && window._ethithCurrentView === 'market') {
           try { window._ethithRefreshMarket(); } catch(e) {}
@@ -18138,6 +18213,9 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
     else if (event.type === 'P2P_BUY_ITEM') {
       if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
       S.p2pListings = S.p2pListings.filter(function(l) { return l.id !== event.listingId; });
+      if (!S.deletedListingIds) S.deletedListingIds = [];
+      if (S.deletedListingIds.indexOf(event.listingId) === -1) S.deletedListingIds.push(event.listingId);
+      try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(S.p2pListings)); localStorage.setItem('ethith_deleted_listing_ids', JSON.stringify(S.deletedListingIds)); } catch(e) {}
 
       var isMeSeller = S.user && (
         (event.sellerEmail && S.user.email && event.sellerEmail.toLowerCase() === S.user.email.toLowerCase()) ||
@@ -18170,6 +18248,9 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
     else if (event.type === 'P2P_BARTER_SWAP') {
       if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
       S.p2pListings = S.p2pListings.filter(function(l) { return l.id !== event.listingId; });
+      if (!S.deletedListingIds) S.deletedListingIds = [];
+      if (S.deletedListingIds.indexOf(event.listingId) === -1) S.deletedListingIds.push(event.listingId);
+      try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(S.p2pListings)); localStorage.setItem('ethith_deleted_listing_ids', JSON.stringify(S.deletedListingIds)); } catch(e) {}
       var isMeSeller = S.user && (
         (event.sellerEmail && S.user.email && event.sellerEmail.toLowerCase() === S.user.email.toLowerCase()) ||
         (event.sellerId && S.user.id && event.sellerId === S.user.id) ||
@@ -18193,6 +18274,9 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
     else if (event.type === 'P2P_REMOVE_ITEM') {
       if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
       S.p2pListings = S.p2pListings.filter(function(l) { return l.id !== event.listingId; });
+      if (!S.deletedListingIds) S.deletedListingIds = [];
+      if (S.deletedListingIds.indexOf(event.listingId) === -1) S.deletedListingIds.push(event.listingId);
+      try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(S.p2pListings)); localStorage.setItem('ethith_deleted_listing_ids', JSON.stringify(S.deletedListingIds)); } catch(e) {}
       if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
       if (window._ethithRefreshMarket && window._ethithCurrentView === 'market') {
         try { window._ethithRefreshMarket(); } catch(e) {}
@@ -18236,8 +18320,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         headers: {
           'Authorization': 'token ' + token,
           'Accept': 'application/vnd.github.v3+json',
-          'User-Agent': 'ETHITH-Sync'
-        },
+                  },
         cache: 'no-store'
       });
       if (res.ok) {
@@ -18492,29 +18575,42 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
     return changed;
   }
 
-  function mergeP2PListings(localListings, remoteListings) {
+  function mergeP2PListings(localListings, remoteListings, deletedListingIds) {
     var changed = false;
-    if (!Array.isArray(remoteListings)) return changed;
     if (!Array.isArray(localListings)) return changed;
+    var dIds = Array.isArray(deletedListingIds) ? deletedListingIds : [];
 
-    // Add missing remote listings
-    remoteListings.forEach(function(rList) {
-      if (!rList || !rList.id) return;
-      var exists = localListings.some(function(l) { return l.id === rList.id; });
-      if (!exists) {
-        localListings.push(rList);
-        changed = true;
-      }
-    });
-
-    // Remove listings that were deleted remotely
+    // Filter out locally any explicitly deleted listings
     for (var i = localListings.length - 1; i >= 0; i--) {
-      var lx = localListings[i];
-      if (!remoteListings.some(function(r) { return r && r.id === lx.id; })) {
+      if (dIds.indexOf(localListings[i].id) !== -1) {
         localListings.splice(i, 1);
         changed = true;
       }
     }
+
+    if (!Array.isArray(remoteListings)) {
+      try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(localListings)); } catch(e) {}
+      return changed;
+    }
+
+    // Merge remote listings without purging local listings!
+    remoteListings.forEach(function(rList) {
+      if (!rList || !rList.id) return;
+      if (dIds.indexOf(rList.id) !== -1) return;
+
+      var loc = localListings.find(function(l) { return l.id === rList.id; });
+      if (!loc) {
+        localListings.push(rList);
+        changed = true;
+      } else {
+        if (rList.status && rList.status !== loc.status) {
+          loc.status = rList.status;
+          changed = true;
+        }
+      }
+    });
+
+    try { localStorage.setItem('ethith_p2p_listings', JSON.stringify(localListings)); } catch(e) {}
     return changed;
   }
 
@@ -18555,8 +18651,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
           headers: {
             'Authorization': 'token ' + token,
             'Accept': 'application/vnd.github.v3+json',
-            'User-Agent': 'ETHITH-Sync'
-          },
+                      },
           cache: 'no-store'
         });
 
@@ -18584,10 +18679,12 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
           if (!S.accounts) S.accounts = [];
           mergeAccounts(S.accounts, remoteData.accounts);
         }
-        if (remoteData.p2pListings && Array.isArray(remoteData.p2pListings)) {
-          if (!S.p2pListings) S.p2pListings = [];
-          mergeP2PListings(S.p2pListings, remoteData.p2pListings);
+        if (remoteData.deletedListingIds && Array.isArray(remoteData.deletedListingIds)) {
+          if (!S.deletedListingIds) S.deletedListingIds = [];
+          remoteData.deletedListingIds.forEach(function(id) { if (S.deletedListingIds.indexOf(id) === -1) S.deletedListingIds.push(id); });
         }
+        if (!S.p2pListings) S.p2pListings = [];
+        mergeP2PListings(S.p2pListings, remoteData.p2pListings || [], S.deletedListingIds || []);
 
         var cleanClasses = JSON.parse(JSON.stringify(S.classes));
         cleanClasses.forEach(function(c) {
@@ -18608,6 +18705,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
           classes: cleanClasses,
           exams: cleanExams,
           deletedExamIds: dIds,
+          deletedListingIds: S.deletedListingIds || [],
           accounts: S.accounts || [],
           p2pListings: S.p2pListings || [],
           updatedAt: Date.now()
@@ -18628,8 +18726,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
             'Authorization': 'token ' + token,
             'Content-Type': 'application/json',
             'Accept': 'application/vnd.github.v3+json',
-            'User-Agent': 'ETHITH-Sync'
-          },
+                      },
           body: JSON.stringify(body)
         });
 
@@ -18706,6 +18803,14 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         localStorage.setItem(regKey, JSON.stringify(regList));
       }
 
+      if (remote.deletedListingIds && Array.isArray(remote.deletedListingIds)) {
+        if (!S.deletedListingIds) S.deletedListingIds = [];
+        remote.deletedListingIds.forEach(function(id) { if (S.deletedListingIds.indexOf(id) === -1) S.deletedListingIds.push(id); });
+      }
+      if (remote.p2pListings && Array.isArray(remote.p2pListings)) {
+        if (!S.p2pListings) S.p2pListings = [];
+        mergeP2PListings(S.p2pListings, remote.p2pListings, S.deletedListingIds || []);
+      }
       var c1 = mergeClasses(S.classes, remote.classes || []);
       var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
       if ((c1 || c2) && window.EthithApp) {
@@ -18716,6 +18821,9 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
     (S.classes || []).forEach(function(c) {
       subscribeClass(c.code || c.id);
     });
+    if (S.user && window.EthithSync && window.EthithSync.broadcastUserState) {
+      setTimeout(window.EthithSync.broadcastUserState, 500);
+    }
   }
 
   // Background Poller (Safety net fallback every 3.5s)
@@ -18739,7 +18847,7 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         var c1 = mergeClasses(S.classes, remote.classes || []);
         var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
         var c3 = mergeAccounts(S.accounts || [], remote.accounts || []);
-        var c4 = mergeP2PListings(S.p2pListings || [], remote.p2pListings || []);
+        var c4 = mergeP2PListings(S.p2pListings || [], remote.p2pListings || [], S.deletedListingIds || []);
         if (c1 || c2 || c3 || c4) {
           window.EthithApp.saveState();
           if (!window._ethithIsTestInProgress) {
@@ -18787,7 +18895,78 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
     }
   }
 
+
+  function broadcastUserState() {
+    if (!window.EthithApp || !window.EthithApp.state) return;
+    var S = window.EthithApp.state;
+    if (!S.user) return;
+
+    if (!Array.isArray(S.accounts)) S.accounts = [];
+    var curEmail = (S.user.email || '').toLowerCase().trim();
+    var curName = (S.user.name || '').trim();
+
+    var userAcc = S.accounts.find(function(a) {
+      return (curEmail && a.email && a.email.toLowerCase().trim() === curEmail) ||
+             (curName && a.name && a.name.toLowerCase().trim() === curName.toLowerCase()) ||
+             (S.user.id && a.id && a.id === S.user.id);
+    });
+
+    if (!userAcc) {
+      userAcc = {
+        id: S.user.id || ('st_' + Date.now().toString(36)),
+        role: S.user.role || 'student',
+        name: curName || "O'quvchi",
+        email: curEmail || (curName.toLowerCase().replace(/\s+/g, '.') + '@ethith.uz'),
+        coins: S.user.coins !== undefined ? Number(S.user.coins) : 150,
+        avatar: S.user.avatar || null,
+        level: S.level || S.user.level || 'A1',
+        dailyMinutes: S.user.dailyMinutes || 0,
+        nameStyle: S.user.nameStyle || null,
+        title: S.user.title || null,
+        victorySound: S.user.victorySound || null,
+        updatedAt: Date.now()
+      };
+      S.accounts.push(userAcc);
+    } else {
+      userAcc.coins = S.user.coins !== undefined ? Number(S.user.coins) : userAcc.coins;
+      userAcc.avatar = S.user.avatar || userAcc.avatar;
+      userAcc.level = S.level || S.user.level || userAcc.level;
+      userAcc.nameStyle = S.user.nameStyle || userAcc.nameStyle;
+      userAcc.title = S.user.title || userAcc.title;
+      userAcc.victorySound = S.user.victorySound || userAcc.victorySound;
+      userAcc.dailyMinutes = S.user.dailyMinutes || userAcc.dailyMinutes;
+      userAcc.updatedAt = Date.now();
+    }
+
+    var regKey = 'ethith_all_registered_users';
+    var regList = [];
+    try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
+    var rIdx = regList.findIndex(function(a) {
+      return (curEmail && a.email && a.email.toLowerCase().trim() === curEmail) ||
+             (curName && a.name && a.name.toLowerCase().trim() === curName.toLowerCase());
+    });
+    if (rIdx > -1) {
+      regList[rIdx].coins = userAcc.coins;
+      regList[rIdx].avatar = userAcc.avatar;
+      regList[rIdx].level = userAcc.level;
+      regList[rIdx].nameStyle = userAcc.nameStyle;
+      regList[rIdx].title = userAcc.title;
+      regList[rIdx].victorySound = userAcc.victorySound;
+    } else {
+      regList.push(userAcc);
+    }
+    try { localStorage.setItem(regKey, JSON.stringify(regList)); } catch(e) {}
+
+    publishLive({
+      type: 'USER_STATE_SYNC',
+      user: userAcc
+    });
+
+    if (pushRemoteStore) pushRemoteStore();
+  }
+
   window.EthithSync = {
+    broadcastUserState: broadcastUserState,
     publishLive: publishLive,
     handleIncomingLiveEvent: handleIncomingLiveEvent,
     subscribeClass: subscribeClass,
@@ -19236,12 +19415,24 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
   }
   if (!S.notifications) S.notifications = [];
   if (!Array.isArray(S.accounts)) S.accounts = [];
+  if (!Array.isArray(S.p2pListings) || S.p2pListings.length === 0) {
+    try {
+      var savedP2P = JSON.parse(localStorage.getItem('ethith_p2p_listings') || '[]');
+      if (Array.isArray(savedP2P) && savedP2P.length > 0) S.p2pListings = savedP2P;
+    } catch(e) {}
+  }
+  if (!Array.isArray(S.deletedListingIds)) {
+    try {
+      var savedDelP2P = JSON.parse(localStorage.getItem('ethith_deleted_listing_ids') || '[]');
+      if (Array.isArray(savedDelP2P)) S.deletedListingIds = savedDelP2P;
+    } catch(e) {}
+  }
   if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
+  if (!Array.isArray(S.deletedListingIds)) S.deletedListingIds = [];
   if (S.user) {
     if (!S.user.boosters) S.user.boosters = { '50_50': 0, 'time_freeze': 0, 'shield': 0, 'booster_2x': 0 };
     if (S.user.booster2xUntil === undefined) S.user.booster2xUntil = 0;
   }
-  if (!Array.isArray(S.accounts)) S.accounts = [];
 
   if (S.user) {
     var curEmail = (S.user.email || '').toLowerCase().trim();
@@ -19651,7 +19842,9 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
           }
 
           saveState();
-          if (window.EthithSync) {
+          if (window.EthithSync && window.EthithSync.broadcastUserState) {
+            window.EthithSync.broadcastUserState();
+          } else if (window.EthithSync) {
             window.EthithSync.pushRemoteStore();
           }
           overlay.remove();
@@ -19765,7 +19958,9 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         acc.coins = S.user.coins !== undefined ? S.user.coins : 150;
         acc.updatedAt = Date.now();
         saveState();
-        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+        if (window.EthithSync && window.EthithSync.broadcastUserState) {
+          window.EthithSync.broadcastUserState();
+        } else if (window.EthithSync && window.EthithSync.pushRemoteStore) {
           window.EthithSync.pushRemoteStore();
         }
       }
@@ -20990,7 +21185,9 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
               if (window._ethithUpdateTopCoins) {
                 window._ethithUpdateTopCoins();
               }
-              if (window.EthithSync && window.EthithSync.publishLive) {
+              if (window.EthithSync && window.EthithSync.broadcastUserState) {
+                window.EthithSync.broadcastUserState();
+              } else if (window.EthithSync && window.EthithSync.publishLive) {
                 window.EthithSync.publishLive({
                   type: 'USER_STATE_SYNC',
                   user: {
@@ -33316,8 +33513,10 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
         App.saveState();
         if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
 
-        // Broadcast user state in real time via MQTT
-        if (window.EthithSync && window.EthithSync.publishLive && S.user) {
+        // Broadcast user state in real time via MQTT & Remote Store
+        if (window.EthithSync && window.EthithSync.broadcastUserState) {
+          window.EthithSync.broadcastUserState();
+        } else if (window.EthithSync && window.EthithSync.publishLive && S.user) {
           window.EthithSync.publishLive({
             type: 'USER_STATE_SYNC',
             user: {
@@ -34533,7 +34732,13 @@ window.ETHITH_OPEN_PACK = function(packId, user) {
  </div>
  </div>
  <div class=copyright>
- © 2026 <strong>ETHITH TESTS</strong>. All rights reserved.<div class="eth-footer-brand">Powered by <strong>ETHITH Company</strong> · Created by <strong>Muhammadyusuf Jo'raboyev</strong></div>
+ © 2026 <strong>ETHITH TESTS</strong>. All rights reserved.<div class="eth-contact-landing-row" style="margin:12px auto;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;font-size:13px;">
+  <span style="font-weight:800;color:var(--muted,#94a3b8)">📞 Murojaat uchun:</span>
+  <a href="mailto:joraboymuhammad@gmail.com" target="_blank" rel="noopener noreferrer" style="color:#60a5fa;display:inline-flex;align-items:center;gap:5px;text-decoration:none;"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:middle"><path fill="#EA4335" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> joraboymuhammad@gmail.com</a>
+  <a href="https://t.me/Mu_striker" target="_blank" rel="noopener noreferrer" style="color:#38bdf8;display:inline-flex;align-items:center;gap:5px;text-decoration:none;"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:middle"><path fill="#24A1DE" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg> @Mu_striker</a>
+  <a href="https://wa.me/qr/YGEQI2OQGACRD1" target="_blank" rel="noopener noreferrer" style="color:#4ade80;display:inline-flex;align-items:center;gap:5px;text-decoration:none;"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:middle"><path fill="#25D366" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm0 17.65c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a7.89 7.89 0 01-1.22-4.22c0-4.34 3.53-7.87 7.88-7.87 2.1 0 4.07.82 5.56 2.31 1.49 1.49 2.31 3.47 2.31 5.56 0 4.34-3.53 7.88-7.86 7.88zm4.31-5.9c-.24-.12-1.4-.69-1.62-.77-.22-.08-.37-.12-.53.12-.16.24-.61.77-.75.93-.14.16-.28.18-.51.06-.24-.12-1-.37-1.9-1.18-.7-.63-1.18-1.4-1.32-1.64-.14-.24-.01-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.53-1.28-.73-1.75-.19-.46-.39-.4-.53-.41h-.45c-.16 0-.41.06-.63.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.58.25 1.02.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.45-.28z"/></svg> WhatsApp</a>
+</div>
+<div class="eth-footer-brand">Powered by <strong>ETHITH Company</strong> · Created by <strong>Muhammadyusuf Jo'raboyev</strong></div>
  </div>
 </div>
  </footer>
@@ -34778,6 +34983,29 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     toast.t = setTimeout(function(){ t.classList.remove('show'); }, 2200);
   }
 
+  
+  function contactBlock() {
+    return '<div class="eth-contact-badge-box" style="padding:10px 16px 14px;border-bottom:1px solid var(--line);margin-bottom:8px;">' +
+      '<div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:7px;display:flex;align-items:center;gap:6px;">' +
+        '<span>📞</span> Murojaat uchun:' +
+      '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:5px;">' +
+        '<a href="mailto:joraboymuhammad@gmail.com" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text);padding:5px 8px;border-radius:9px;background:rgba(234,67,53,0.08);border:1px solid rgba(234,67,53,0.22);" title="Gmail: joraboymuhammad@gmail.com">' +
+          '<svg width="15" height="15" viewBox="0 0 24 24" style="min-width:15px;max-width:15px;min-height:15px;max-height:15px;flex-shrink:0;"><path fill="#EA4335" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>' +
+          '<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;">joraboymuhammad@gmail.com</span>' +
+        '</a>' +
+        '<a href="https://t.me/Mu_striker" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text);padding:5px 8px;border-radius:9px;background:rgba(36,161,222,0.08);border:1px solid rgba(36,161,222,0.22);" title="Telegram: https://t.me/Mu_striker">' +
+          '<svg width="15" height="15" viewBox="0 0 24 24" style="min-width:15px;max-width:15px;min-height:15px;max-height:15px;flex-shrink:0;"><path fill="#24A1DE" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>' +
+          '<span style="font-weight:600;">Telegram: @Mu_striker</span>' +
+        '</a>' +
+        '<a href="https://wa.me/qr/YGEQI2OQGACRD1" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text);padding:5px 8px;border-radius:9px;background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.22);" title="WhatsApp: https://wa.me/qr/YGEQI2OQGACRD1">' +
+          '<svg width="15" height="15" viewBox="0 0 24 24" style="min-width:15px;max-width:15px;min-height:15px;max-height:15px;flex-shrink:0;"><path fill="#25D366" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm0 17.65c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a7.89 7.89 0 01-1.22-4.22c0-4.34 3.53-7.87 7.88-7.87 2.1 0 4.07.82 5.56 2.31 1.49 1.49 2.31 3.47 2.31 5.56 0 4.34-3.53 7.88-7.86 7.88zm4.31-5.9c-.24-.12-1.4-.69-1.62-.77-.22-.08-.37-.12-.53.12-.16.24-.61.77-.75.93-.14.16-.28.18-.51.06-.24-.12-1-.37-1.9-1.18-.7-.63-1.18-1.4-1.32-1.64-.14-.24-.01-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.53-1.28-.73-1.75-.19-.46-.39-.4-.53-.41h-.45c-.16 0-.41.06-.63.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.58.25 1.02.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.45-.28z"/></svg>' +
+          '<span style="font-weight:600;">WhatsApp: Aloqa</span>' +
+        '</a>' +
+      '</div>' +
+    '</div>';
+  }
+
   function logo() {
     return '<svg width="170" height="56" viewBox="0 0 170 56"><defs><linearGradient id="alg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4e93e4"/><stop offset="1" stop-color="#154b89"/></linearGradient></defs><rect x="0" y="4" width="48" height="48" rx="13" fill="url(#alg)"/><path d="M13 29l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="58" y="26" font-family="sans-serif" font-weight="800" font-size="24" fill="currentColor">ETHITH</text><text x="58" y="50" font-family="sans-serif" font-weight="800" font-size="21" fill="#4e93e4">TESTS</text></svg>';
   }
@@ -34786,7 +35014,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     var cur = view.name, a = view.arg;
     var isTeacher = S.user && S.user.role === 'teacher';
 
-    var h = '<a class="ap-logo" id="apLogo" style="color:var(--text);cursor:pointer">' + logo() + '</a><nav class="ap-nav">';
+    var h = '<a class="ap-logo" id="apLogo" style="color:var(--text);cursor:pointer">' + logo() + '</a>' + contactBlock() + '<nav class="ap-nav">';
     h += '<button class="ap-item ' + (cur === 'dash' ? 'active' : '') + '" data-go="dash">' + ic('grid') + 'Dashboard</button>';
     h += '<button class="ap-item ' + (cur === 'ask_ai' ? 'active' : '') + '" data-go="ask_ai" style="color:#2563eb;font-weight:700">' + ic('sparkles') + 'Ask AI Teacher</button>';
     

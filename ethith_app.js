@@ -74,12 +74,24 @@
   }
   if (!S.notifications) S.notifications = [];
   if (!Array.isArray(S.accounts)) S.accounts = [];
+  if (!Array.isArray(S.p2pListings) || S.p2pListings.length === 0) {
+    try {
+      var savedP2P = JSON.parse(localStorage.getItem('ethith_p2p_listings') || '[]');
+      if (Array.isArray(savedP2P) && savedP2P.length > 0) S.p2pListings = savedP2P;
+    } catch(e) {}
+  }
+  if (!Array.isArray(S.deletedListingIds)) {
+    try {
+      var savedDelP2P = JSON.parse(localStorage.getItem('ethith_deleted_listing_ids') || '[]');
+      if (Array.isArray(savedDelP2P)) S.deletedListingIds = savedDelP2P;
+    } catch(e) {}
+  }
   if (!Array.isArray(S.p2pListings)) S.p2pListings = [];
+  if (!Array.isArray(S.deletedListingIds)) S.deletedListingIds = [];
   if (S.user) {
     if (!S.user.boosters) S.user.boosters = { '50_50': 0, 'time_freeze': 0, 'shield': 0, 'booster_2x': 0 };
     if (S.user.booster2xUntil === undefined) S.user.booster2xUntil = 0;
   }
-  if (!Array.isArray(S.accounts)) S.accounts = [];
 
   if (S.user) {
     var curEmail = (S.user.email || '').toLowerCase().trim();
@@ -489,7 +501,9 @@
           }
 
           saveState();
-          if (window.EthithSync) {
+          if (window.EthithSync && window.EthithSync.broadcastUserState) {
+            window.EthithSync.broadcastUserState();
+          } else if (window.EthithSync) {
             window.EthithSync.pushRemoteStore();
           }
           overlay.remove();
@@ -603,7 +617,9 @@
         acc.coins = S.user.coins !== undefined ? S.user.coins : 150;
         acc.updatedAt = Date.now();
         saveState();
-        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+        if (window.EthithSync && window.EthithSync.broadcastUserState) {
+          window.EthithSync.broadcastUserState();
+        } else if (window.EthithSync && window.EthithSync.pushRemoteStore) {
           window.EthithSync.pushRemoteStore();
         }
       }
