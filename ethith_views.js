@@ -1019,6 +1019,9 @@
         '      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">' +
         (has2xBooster ? '<div style="font-size:11.5px;font-weight:900;color:#fde047;background:rgba(245,158,11,0.25);border:1px solid #f59e0b;padding:3px 8px;border-radius:8px;animation:pulse 1.5s infinite">🔥 2X COIN FAOL</div>' : '') +
         (S.user && S.user.boosters && S.user.boosters['50_50'] > 0 ? '<button id="btnTopicBooster50" type="button" class="eth-booster-action-btn" style="padding:4px 10px;font-size:12px">✂️ 50/50 (' + S.user.boosters['50_50'] + ')</button>' : '') +
+        (S.user && S.user.boosters && S.user.boosters['hint_master'] > 0 ? '<button id="btnTopicBoosterHint" type="button" class="eth-booster-action-btn" style="padding:4px 10px;font-size:12px">💡 Yordam (' + S.user.boosters['hint_master'] + ')</button>' : '') +
+        (S.user && S.user.boosters && S.user.boosters['auto_solve'] > 0 ? '<button id="btnTopicBoosterAuto" type="button" class="eth-booster-action-btn" style="padding:4px 10px;font-size:12px">🤖 Avto-AI (' + S.user.boosters['auto_solve'] + ')</button>' : '') +
+        (S.user && S.user.boosters && S.user.boosters['skip_pass'] > 0 ? '<button id="btnTopicBoosterSkip" type="button" class="eth-booster-action-btn" style="padding:4px 10px;font-size:12px">⏭️ Sakrash (' + S.user.boosters['skip_pass'] + ')</button>' : '') +
         '<div style="font-size:12px;font-weight:800;color:#f59e0b;display:inline-flex;align-items:center;gap:5px;background:rgba(245,158,11,0.15);padding:3px 10px;border-radius:10px;border:1px solid rgba(245,158,11,0.3)">' +
         coinIcon + ' To\'g\'ri javob: +' + coinsPerQ + ' Coin' +
         '      </div>' +
@@ -1035,6 +1038,50 @@
         '</div>';
 
       mainContainer.innerHTML = html;
+
+      var btnBoosterHint = document.getElementById('btnTopicBoosterHint');
+      if (btnBoosterHint) {
+        btnBoosterHint.onclick = function(e) {
+          if (e) { e.stopPropagation(); e.preventDefault(); }
+          if (state.answered) return;
+          if (!S.user || !S.user.boosters || (S.user.boosters['hint_master'] || 0) <= 0) return;
+          S.user.boosters['hint_master']--;
+          App.saveState();
+          btnBoosterHint.disabled = true;
+          var ans = q.answer || '';
+          alert('💡 Donishmand Maslahati:\nTo\'g\'ri javob: "' + ans.slice(0, Math.ceil(ans.length / 2)) + '..." bilan bog\'liq!');
+        };
+      }
+
+      var btnBoosterAuto = document.getElementById('btnTopicBoosterAuto');
+      if (btnBoosterAuto) {
+        btnBoosterAuto.onclick = function(e) {
+          if (e) { e.stopPropagation(); e.preventDefault(); }
+          if (state.answered) return;
+          if (!S.user || !S.user.boosters || (S.user.boosters['auto_solve'] || 0) <= 0) return;
+          S.user.boosters['auto_solve']--;
+          App.saveState();
+          btnBoosterAuto.disabled = true;
+          optionBtns.forEach(function(b) {
+            if (b.dataset.opt === q.answer) b.click();
+          });
+        };
+      }
+
+      var btnBoosterSkip = document.getElementById('btnTopicBoosterSkip');
+      if (btnBoosterSkip) {
+        btnBoosterSkip.onclick = function(e) {
+          if (e) { e.stopPropagation(); e.preventDefault(); }
+          if (state.answered) return;
+          if (!S.user || !S.user.boosters || (S.user.boosters['skip_pass'] || 0) <= 0) return;
+          S.user.boosters['skip_pass']--;
+          App.saveState();
+          btnBoosterSkip.disabled = true;
+          optionBtns.forEach(function(b) {
+            if (b.dataset.opt === q.answer) b.click();
+          });
+        };
+      }
 
       var btnBooster50 = document.getElementById('btnTopicBooster50');
       if (btnBooster50) {
@@ -9602,6 +9649,9 @@
       var b50 = (S.user && S.user.boosters && S.user.boosters['50_50']) || 0;
       var bFreeze = (S.user && S.user.boosters && S.user.boosters['time_freeze']) || 0;
       var bShield = (S.user && S.user.boosters && S.user.boosters['shield']) || 0;
+      var bHint = (S.user && S.user.boosters && S.user.boosters['hint_master']) || 0;
+      var bAuto = (S.user && S.user.boosters && S.user.boosters['auto_solve']) || 0;
+      var bTimeBonus = (S.user && S.user.boosters && S.user.boosters['time_bonus']) || 0;
 
       if (b50 > 0 || bFreeze > 0 || bShield > 0) {
         html += '<div class="eth-quiz-booster-bar flex items-center justify-center gap-3 py-1">';
@@ -9613,6 +9663,15 @@
         }
         if (bShield > 0) {
           html += '<div class="eth-booster-action-btn" style="border-color:#38bdf8;background:rgba(2,132,199,0.2);color:#7dd3fc;cursor:default;">🛡️ Qalqon Faol (' + bShield + ')</div>';
+        }
+        if (bHint > 0) {
+          html += '<button id="btnQuizBoosterHint" type="button" class="eth-booster-action-btn">💡 Yordam (' + bHint + ')</button>';
+        }
+        if (bTimeBonus > 0) {
+          html += '<button id="btnQuizBoosterTimeBonus" type="button" class="eth-booster-action-btn">⏱️ +20s Vaqt (' + bTimeBonus + ')</button>';
+        }
+        if (bAuto > 0) {
+          html += '<button id="btnQuizBoosterAuto" type="button" class="eth-booster-action-btn">🤖 Avto-AI (' + bAuto + ')</button>';
         }
         html += '</div>';
       }
@@ -9673,6 +9732,49 @@
       }
 
       // Booster Time Freeze in Quiz (+15s)
+            var btnQHint = root.querySelector('#btnQuizBoosterHint');
+      if (btnQHint) {
+        btnQHint.onclick = function() {
+          if (isAnswered) return;
+          if (!S.user || !S.user.boosters || (S.user.boosters['hint_master'] || 0) <= 0) return;
+          S.user.boosters['hint_master']--;
+          App.saveState();
+          btnQHint.disabled = true;
+          var correctOpt = q.options.find(function(o) { return o.isCorrect; });
+          var hintText = correctOpt ? correctOpt.text : '';
+          alert('💡 Donishmand Maslahati:\nTo\'g\'ri javob: "' + hintText.slice(0, Math.ceil(hintText.length / 2)) + '..."');
+        };
+      }
+
+      var btnQTimeBonus = root.querySelector('#btnQuizBoosterTimeBonus');
+      if (btnQTimeBonus) {
+        btnQTimeBonus.onclick = function() {
+          if (isAnswered) return;
+          if (!S.user || !S.user.boosters || (S.user.boosters['time_bonus'] || 0) <= 0) return;
+          S.user.boosters['time_bonus']--;
+          App.saveState();
+          btnQTimeBonus.disabled = true;
+          questionStartTime += 20000;
+        };
+      }
+
+      var btnQAuto = root.querySelector('#btnQuizBoosterAuto');
+      if (btnQAuto) {
+        btnQAuto.onclick = function() {
+          if (isAnswered) return;
+          if (!S.user || !S.user.boosters || (S.user.boosters['auto_solve'] || 0) <= 0) return;
+          S.user.boosters['auto_solve']--;
+          App.saveState();
+          btnQAuto.disabled = true;
+          var correctBtn = null;
+          root.querySelectorAll('.eth-quiz-opt-btn').forEach(function(b) {
+            var sIdx = parseInt(b.getAttribute('data-scrambled-idx'), 10);
+            if (q.options[sIdx] && q.options[sIdx].isCorrect) correctBtn = b;
+          });
+          if (correctBtn) correctBtn.click();
+        };
+      }
+
       var btnQFreeze = root.querySelector('#btnQuizBoosterFreeze');
       if (btnQFreeze) {
         btnQFreeze.onclick = function() {
@@ -11101,9 +11203,264 @@
   // ====================================================
   
   // ====================================================
-  // WEB AUDIO API VICTORY SOUND SYNTHESIZER
+
   // ====================================================
+  // WEB AUDIO API COMPREHENSIVE VICTORY SOUND SYNTHESIZER (50 SOUNDS)
+  // ====================================================
+  var _activeAudioNodes = [];
+
+  window.stopCurrentFanfare = function() {
+    try {
+      _activeAudioNodes.forEach(function(node) {
+        try { if (node.stop) node.stop(); } catch(e) {}
+        try { if (node.disconnect) node.disconnect(); } catch(e) {}
+      });
+      _activeAudioNodes = [];
+    } catch(e) {}
+  };
+
   window.playVictoryFanfare = function(soundId) {
+    try {
+      window.stopCurrentFanfare();
+
+      var AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      var ctx = window._ethithAudioCtx || new AudioCtx();
+      window._ethithAudioCtx = ctx;
+      if (ctx.state === 'suspended') ctx.resume();
+      var now = ctx.currentTime;
+
+      // Find sound config in catalog if available
+      var soundObj = (window.ETHITH_COSMETICS && window.ETHITH_COSMETICS.victorySounds || []).find(function(s) {
+        return s.id === soundId;
+      });
+      var type = soundObj ? soundObj.type : 'brass';
+      var durSec = 5;
+      if (soundObj && soundObj.duration) {
+        var m = soundObj.duration.match(/\d+/);
+        if (m) durSec = parseInt(m[0], 10);
+      }
+
+      // 1. CLAPS & APPLAUSE (Stochastic filtered noise bursts)
+      if (type === 'claps' || soundId.includes('applause') || soundId.includes('ovation')) {
+        var bufferSize = ctx.sampleRate * Math.min(durSec, 8);
+        var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        var data = buffer.getChannelData(0);
+        for (var i = 0; i < bufferSize; i++) {
+          data[i] = (Math.random() * 2 - 1) * 0.4;
+        }
+        var noise = ctx.createBufferSource();
+        noise.buffer = buffer;
+        var filter = ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(1400, now);
+        filter.Q.setValueAtTime(2.2, now);
+
+        var gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.01, now);
+        gain.gain.linearRampToValueAtTime(0.45, now + 0.5);
+        gain.gain.setValueAtTime(0.45, now + durSec - 1.2);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + durSec);
+
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+        noise.start(now);
+        noise.stop(now + durSec);
+        _activeAudioNodes.push(noise, filter, gain);
+
+        // Add periodic rhythmic clap pulses
+        for (var c = 0; c < durSec * 4; c++) {
+          var cOsc = ctx.createOscillator();
+          var cGain = ctx.createGain();
+          cOsc.type = 'triangle';
+          cOsc.frequency.setValueAtTime(450 + Math.random() * 200, now + c * 0.25);
+          cGain.gain.setValueAtTime(0.18, now + c * 0.25);
+          cGain.gain.exponentialRampToValueAtTime(0.001, now + c * 0.25 + 0.12);
+          cOsc.connect(cGain);
+          cGain.connect(ctx.destination);
+          cOsc.start(now + c * 0.25);
+          cOsc.stop(now + c * 0.25 + 0.12);
+          _activeAudioNodes.push(cOsc, cGain);
+        }
+        return;
+      }
+
+      // 2. URAAA & CROWD CHEERING (Double Formant vocal resonators)
+      if (type === 'ura' || type === 'cheer' || soundId.includes('ura') || soundId.includes('cheer')) {
+        // Vowel formant sweep: /u:/ (~400Hz, ~900Hz) shifting into /a:/ (~800Hz, ~1300Hz)
+        var fNotes = [220, 277, 330, 440];
+        fNotes.forEach(function(baseFreq, chordIdx) {
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(baseFreq * (1 + (chordIdx * 0.01)), now);
+          osc.frequency.linearRampToValueAtTime(baseFreq * 1.15, now + durSec);
+
+          var formantFilter = ctx.createBiquadFilter();
+          formantFilter.type = 'bandpass';
+          formantFilter.frequency.setValueAtTime(450, now);
+          formantFilter.frequency.linearRampToValueAtTime(850, now + durSec * 0.6);
+          formantFilter.Q.setValueAtTime(4.5, now);
+
+          gain.gain.setValueAtTime(0.01, now);
+          gain.gain.linearRampToValueAtTime(0.28, now + 0.4);
+          gain.gain.setValueAtTime(0.28, now + durSec - 1);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + durSec);
+
+          osc.connect(formantFilter);
+          formantFilter.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + durSec);
+          _activeAudioNodes.push(osc, formantFilter, gain);
+        });
+        return;
+      }
+
+      // 3. ROCK GUITAR RIFFS
+      if (type === 'rock' || soundId.includes('rock')) {
+        var rockProg = [220, 220, 293.66, 329.63, 440];
+        rockProg.forEach(function(freq, i) {
+          var tStep = now + i * 0.35;
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(freq, tStep);
+          gain.gain.setValueAtTime(0.35, tStep);
+          gain.gain.exponentialRampToValueAtTime(0.001, tStep + 0.7);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(tStep);
+          osc.stop(tStep + 0.7);
+          _activeAudioNodes.push(osc, gain);
+        });
+        return;
+      }
+
+      // 4. DRUMS & TIMPANI
+      if (type === 'drums' || soundId.includes('drum') || soundId.includes('timpani')) {
+        var hitCount = Math.floor(durSec * 3);
+        for (var h = 0; h < hitCount; h++) {
+          var dOsc = ctx.createOscillator();
+          var dGain = ctx.createGain();
+          dOsc.type = 'sine';
+          var tHit = now + h * 0.28;
+          dOsc.frequency.setValueAtTime(140, tHit);
+          dOsc.frequency.exponentialRampToValueAtTime(48, tHit + 0.22);
+          dGain.gain.setValueAtTime(0.45, tHit);
+          dGain.gain.exponentialRampToValueAtTime(0.001, tHit + 0.25);
+          dOsc.connect(dGain);
+          dGain.connect(ctx.destination);
+          dOsc.start(tHit);
+          dOsc.stop(tHit + 0.25);
+          _activeAudioNodes.push(dOsc, dGain);
+        }
+        return;
+      }
+
+      // 5. FIREWORKS & CRACKERS
+      if (type === 'fireworks' || soundId.includes('fireworks')) {
+        for (var fw = 0; fw < durSec; fw++) {
+          var tFw = now + fw * 1.1;
+          var fOsc = ctx.createOscillator();
+          var fGain = ctx.createGain();
+          fOsc.type = 'sawtooth';
+          fOsc.frequency.setValueAtTime(180, tFw);
+          fOsc.frequency.exponentialRampToValueAtTime(40, tFw + 0.7);
+          fGain.gain.setValueAtTime(0.4, tFw);
+          fGain.gain.exponentialRampToValueAtTime(0.001, tFw + 0.75);
+          fOsc.connect(fGain);
+          fGain.connect(ctx.destination);
+          fOsc.start(tFw);
+          fOsc.stop(tFw + 0.75);
+          _activeAudioNodes.push(fOsc, fGain);
+        }
+        return;
+      }
+
+      // 6. RETRO 8-BIT & CHIPTUNE
+      if (type === 'retro' || soundId.includes('arcade') || soundId.includes('pixel') || soundId.includes('chiptune')) {
+        var arp = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+        for (var rep = 0; rep < Math.ceil(durSec / 0.8); rep++) {
+          arp.forEach(function(f, idx) {
+            var o = ctx.createOscillator();
+            var g = ctx.createGain();
+            var tPos = now + rep * 0.8 + idx * 0.08;
+            o.type = 'square';
+            o.frequency.setValueAtTime(f, tPos);
+            g.gain.setValueAtTime(0.2, tPos);
+            g.gain.exponentialRampToValueAtTime(0.001, tPos + 0.12);
+            o.connect(g);
+            g.connect(ctx.destination);
+            o.start(tPos);
+            o.stop(tPos + 0.12);
+            _activeAudioNodes.push(o, g);
+          });
+        }
+        return;
+      }
+
+      // 7. CYBER & SYNTHWAVE
+      if (type === 'cyber' || soundId.includes('cyber') || soundId.includes('synth')) {
+        var freqs = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+        freqs.forEach(function(f, i) {
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(f, now + i * 0.12);
+          gain.gain.setValueAtTime(0.35, now + i * 0.12);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.12 + 0.6);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + i * 0.12);
+          osc.stop(now + i * 0.12 + 0.6);
+          _activeAudioNodes.push(osc, gain);
+        });
+        return;
+      }
+
+      // 8. BELLS & CHIMES
+      if (type === 'bells' || soundId.includes('bells') || soundId.includes('chimes')) {
+        var bellNotes = [523.25, 659.25, 783.99, 1046.50];
+        bellNotes.forEach(function(f, i) {
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(f, now + i * 0.3);
+          gain.gain.setValueAtTime(0.4, now + i * 0.3);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.3 + 1.2);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + i * 0.3);
+          osc.stop(now + i * 0.3 + 1.2);
+          _activeAudioNodes.push(osc, gain);
+        });
+        return;
+      }
+
+      // 9. DEFAULT / BRASS & ANTHEM (Royal Trumpet Fanfare)
+      var fanfareNotes = [523.25, 523.25, 523.25, 659.25, 783.99, 1046.50];
+      var times = [0, 0.22, 0.44, 0.66, 0.9, 1.2];
+      var durations = [0.18, 0.18, 0.18, 0.2, 0.3, durSec - 1.2];
+      fanfareNotes.forEach(function(freq, i) {
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + times[i]);
+        gain.gain.setValueAtTime(0.4, now + times[i]);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + times[i] + durations[i]);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + times[i]);
+        osc.stop(now + times[i] + durations[i]);
+        _activeAudioNodes.push(osc, gain);
+      });
+    } catch(e) {}
+  };
+
+  // Distinct audio for Pack Opening Rarity Reveals
+  function playPackRevealSound(rarity) {
     try {
       var AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) return;
@@ -11112,57 +11469,76 @@
       if (ctx.state === 'suspended') ctx.resume();
       var now = ctx.currentTime;
 
-      if (soundId === 'rock_legend') {
-        // Rock guitar power-chords progression
-        var notes = [220, 277.18, 329.63, 440];
-        notes.forEach(function(freq, i) {
-          var osc = ctx.createOscillator();
-          var gain = ctx.createGain();
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(freq, now + i * 0.14);
-          gain.gain.setValueAtTime(0.3, now + i * 0.14);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.14 + 0.6);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now + i * 0.14);
-          osc.stop(now + i * 0.14 + 0.6);
-        });
-      } else if (soundId === 'cyber_champ') {
-        // Cyber synth arpeggios
-        var freqs = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
-        freqs.forEach(function(f, i) {
-          var osc = ctx.createOscillator();
-          var gain = ctx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(f, now + i * 0.08);
-          gain.gain.setValueAtTime(0.35, now + i * 0.08);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.4);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now + i * 0.08);
-          osc.stop(now + i * 0.08 + 0.4);
-        });
-      } else {
-        // Royal Fanfare default: C5 - E5 - G5 - C6 triumphant blast
-        var fanfareNotes = [523.25, 523.25, 523.25, 659.25, 783.99, 1046.50];
-        var times = [0, 0.18, 0.36, 0.54, 0.72, 1.0];
-        var durations = [0.15, 0.15, 0.15, 0.15, 0.25, 0.8];
-        fanfareNotes.forEach(function(freq, i) {
+      if (rarity === 'Legendary' || rarity === 'Mythic') {
+        // Boom + Fanfare + Cymbal crash!
+        var bOsc = ctx.createOscillator();
+        var bGain = ctx.createGain();
+        bOsc.type = 'sawtooth';
+        bOsc.frequency.setValueAtTime(260, now);
+        bOsc.frequency.exponentialRampToValueAtTime(45, now + 0.8);
+        bGain.gain.setValueAtTime(0.5, now);
+        bGain.gain.exponentialRampToValueAtTime(0.001, now + 0.85);
+        bOsc.connect(bGain);
+        bGain.connect(ctx.destination);
+        bOsc.start(now);
+        bOsc.stop(now + 0.85);
+
+        [523.25, 659.25, 783.99, 1046.50, 1318.51].forEach(function(f, i) {
           var osc = ctx.createOscillator();
           var gain = ctx.createGain();
           osc.type = 'triangle';
-          osc.frequency.setValueAtTime(freq, now + times[i]);
-          gain.gain.setValueAtTime(0.4, now + times[i]);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + times[i] + durations[i]);
+          osc.frequency.setValueAtTime(f, now + 0.2 + i * 0.1);
+          gain.gain.setValueAtTime(0.4, now + 0.2 + i * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2 + i * 0.1 + 0.8);
           osc.connect(gain);
           gain.connect(ctx.destination);
-          osc.start(now + times[i]);
-          osc.stop(now + times[i] + durations[i]);
+          osc.start(now + 0.2 + i * 0.1);
+          osc.stop(now + 0.2 + i * 0.1 + 0.8);
         });
+      } else if (rarity === 'Epic') {
+        // Mystical violet synth riser
+        [392.00, 523.25, 659.25, 783.99, 1046.50].forEach(function(f, i) {
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(f, now + i * 0.09);
+          gain.gain.setValueAtTime(0.35, now + i * 0.09);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.09 + 0.6);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + i * 0.09);
+          osc.stop(now + i * 0.09 + 0.6);
+        });
+      } else if (rarity === 'Rare') {
+        // Sparkling azure chime
+        [523.25, 659.25, 783.99, 1046.50].forEach(function(f, i) {
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(f, now + i * 0.08);
+          gain.gain.setValueAtTime(0.28, now + i * 0.08);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.5);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + i * 0.08);
+          osc.stop(now + i * 0.08 + 0.5);
+        });
+      } else {
+        // Common soft chime
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(554.37, now + 0.25);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.35);
       }
     } catch(e) {}
-  };
-
+  }
 
   // ====================================================
   // 2. ETHITH 2.0 MULTI-TAB MARKET, BOOSTERS & P2P AUCTION
@@ -11170,6 +11546,32 @@
   var _activeMarketTab = 'packs'; // 'packs', 'boosters', 'p2p', 'cosmetics', 'vault'
   var _activeVaultFilter = 'all';
   var _activeP2pFilter = 'all'; // 'all', 'mine'
+  var _currentlyPlayingPreview = null;
+
+  function isSameCalendarDay(ts1, ts2) {
+    if (!ts1) return false;
+    var d1 = new Date(ts1);
+    var d2 = new Date(ts2);
+    return d1.getFullYear() === d2.getFullYear() &&
+           d1.getMonth() === d2.getMonth() &&
+           d1.getDate() === d2.getDate();
+  }
+
+  function getCosmeticStatus(user, itemId) {
+    if (!user || !user.activeCosmetics || !user.activeCosmetics[itemId]) {
+      return { active: false, expired: false, label: '7 kunlik litsenziya', isOwned: false };
+    }
+    var info = user.activeCosmetics[itemId];
+    var exp = Number(info.expiresAt || 0);
+    var now = Date.now();
+    if (now >= exp) {
+      return { active: false, expired: true, label: '🔴 Muddati tugagan', isOwned: true };
+    }
+    var daysLeft = Math.ceil((exp - now) / (1000 * 60 * 60 * 24));
+    var hoursLeft = Math.ceil((exp - now) / (1000 * 60 * 60));
+    var displayStr = (daysLeft > 1) ? (daysLeft + ' kun qoldi') : (hoursLeft + ' soat qoldi');
+    return { active: true, expired: false, daysLeft: daysLeft, label: '⏳ ' + displayStr, isOwned: true };
+  }
 
   function renderMarketView(container) {
     if (!container) return;
@@ -11186,20 +11588,30 @@
     var userCoins = (S.user && S.user.coins !== undefined) ? Number(S.user.coins) : 0;
     var lastDaily = (S.user && S.user.lastDailyPackAt) ? Number(S.user.lastDailyPackAt) : 0;
     var now = Date.now();
-    var diffMs = now - lastDaily;
-    var isDailyReady = diffMs >= 24 * 60 * 60 * 1000;
-    var remainingMs = Math.max(0, (24 * 60 * 60 * 1000) - diffMs);
+    
+    // Daily free pack midnight (00:00:00) reset check
+    var isDailyReady = !isSameCalendarDay(lastDaily, now);
+    var nextMidnight = new Date();
+    nextMidnight.setHours(24, 0, 0, 0);
+    var remainingMs = Math.max(0, nextMidnight.getTime() - now);
     var remainingHrs = Math.floor(remainingMs / (1000 * 60 * 60));
     var remainingMins = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
+    var timeToMidnightStr = remainingHrs + 's ' + remainingMins + 'd';
 
-    // Pity count
-    var userKey = (S.user && (S.user.email || S.user.name || 'guest')).toLowerCase().trim().replace(/\s+/g, '_');
-    var pityStorageKey = 'ethith_pack_pity_' + userKey;
-    var pityCount = 0;
-    try {
-      pityCount = Number((S.user && S.user.pityCount) || localStorage.getItem(pityStorageKey) || 0);
-    } catch(e) {}
-    var pityPct = Math.min(100, Math.round((pityCount / 15) * 100));
+    // Daily 10-pack Pity check (00:00:00 reset)
+    var todayStr = (function() {
+      var d = new Date();
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    })();
+
+    if (S.user) {
+      if (S.user.dailyPityDate !== todayStr) {
+        S.user.dailyPityCount = 0;
+        S.user.dailyPityDate = todayStr;
+      }
+    }
+    var dailyPity = S.user ? Number(S.user.dailyPityCount || 0) : 0;
+    var dailyPityPct = Math.min(100, Math.round((dailyPity / 10) * 100));
 
     var html = '<div class="eth-market-screen animate-fade-in">';
 
@@ -11220,39 +11632,39 @@
       '</div>' +
     '</div>';
 
-    // Market Navigation Tabs
+    // Market Navigation Tabs (5 Tabs)
     html += '<div class="eth-market-tabs-wrap">' +
-      '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'packs' ? 'active' : '') + '" data-market-tab="packs">🎁 Qutilar (Packs)</button>' +
-      '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'boosters' ? 'active' : '') + '" data-market-tab="boosters">⚡ Kuchaytirgichlar (Boosters)</button>' +
+      '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'packs' ? 'active' : '') + '" data-market-tab="packs">🎁 Qutilar (' + (window.ETHITH_PACKS || []).length + ' ta)</button>' +
+      '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'boosters' ? 'active' : '') + '" data-market-tab="boosters">⚡ Kuchaytirgichlar (' + (window.ETHITH_BOOSTERS || []).length + ' ta)</button>' +
       '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'p2p' ? 'active' : '') + '" data-market-tab="p2p">🏴‍☠️ Qora Bozor & Auksion (P2P)</button>' +
-      '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'cosmetics' ? 'active' : '') + '" data-market-tab="cosmetics">👑 VIP Kosmetika & Unvonlar</button>' +
+      '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'cosmetics' ? 'active' : '') + '" data-market-tab="cosmetics">👑 VIP Pardozlar & Ovozlar</button>' +
       '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'vault' ? 'active' : '') + '" data-market-tab="vault">🪙 Shaxsiy Seyf (Sell Vault)</button>' +
     '</div>';
 
     // -------------------------------------------------------------
-    // TAB 1: PACKS (SEHRLI QUTILAR)
+    // TAB 1: PACKS (20 SEHRLI QUTILAR + 10-PACK DAILY PITY)
     // -------------------------------------------------------------
     if (_activeMarketTab === 'packs') {
-      // Pity Banner (15-Pack Guarantee)
+      // 10-Pack Daily Pity Banner
       html += '<div class="eth-pity-banner">' +
         '<div class="eth-pity-header">' +
           '<div class="eth-pity-title">' +
-            '<span>🎯 OMAD KAFOLATI (PITY SYSTEM)</span>' +
-            (pityCount >= 15 ? '<span style="color:#fde047;font-size:12px;font-weight:800;animation:pulse 1s infinite">🔥 100% KAFOLAT FAOL!</span>' : '') +
+            '<span>🎯 KUNLIK OMAD KAFOLATI (DAILY PITY 10 PACK)</span>' +
+            (dailyPity >= 9 ? '<span style="color:#fde047;font-size:12px;font-weight:900;animation:pulse 1s infinite">🔥 100% KAFOLAT FAOL!</span>' : '') +
           '</div>' +
-          '<div class="eth-pity-badge">' + pityCount + ' / 15 Ochildi</div>' +
+          '<div class="eth-pity-badge">' + dailyPity + ' / 10 Ochildi</div>' +
         '</div>' +
         '<div class="eth-pity-bar-wrap">' +
-          '<div class="eth-pity-fill" style="width:' + pityPct + '%"></div>' +
+          '<div class="eth-pity-fill" style="width:' + dailyPityPct + '%"></div>' +
         '</div>' +
         '<div class="eth-pity-subtext">' +
-          (pityCount >= 15 ?
-            '✨ <b>Keyingi ochilgan packdan 100% aniq 50/50 nisbatda EPIC yoki LEGENDARY narsa tushadi!</b>' :
-            '💡 Har qanday packdan ketma-ket 15 marta ochilganda 100% kafolatlangan Epic yoki Legendary (50/50 nisbatda) sovrin chiqadi.') +
+          (dailyPity >= 9 ?
+            '✨ <b>Keyingi ochilgan packdan 100% KAFOLATLANGAN holda EPIC yoki LEGENDARY (50/50) tushadi!</b>' :
+            '💡 Har kuni 10-paketda 100% Epic yoki Legendary tushishi kafolatlangan! Agar 10-paketga yetmasdan Epic yoki Legendary tushsa, hisoblagich avtomatik 0 ga qaytadi.') +
         '</div>' +
       '</div>';
 
-      // Grid of Packs
+      // Grid of 20 Packs
       html += '<div class="eth-market-grid">';
       (window.ETHITH_PACKS || []).forEach(function(pack) {
         var isComing = Boolean(pack.isComingSoon);
@@ -11262,7 +11674,7 @@
         if (isComing) {
           btnLabel = '🔒 TEZ KUNDA';
         } else if (pack.isFreeDaily) {
-          btnLabel = isDailyReady ? '🎁 BEPUL OCHISH (0 COIN)' : ('⏳ ' + remainingHrs + 's ' + remainingMins + 'd kutish');
+          btnLabel = isDailyReady ? '🎁 BEPUL OCHISH (0 COIN)' : ('⏳ Yangi kunga: ' + timeToMidnightStr);
         } else {
           btnLabel = window.ETHITH_COIN_SVG(18) + ' ' + pack.price + ' COIN BILAN OCHISH';
         }
@@ -11281,7 +11693,7 @@
     }
 
     // -------------------------------------------------------------
-    // TAB 2: POWER-UPS & BOOSTERS (KUCHAYTIRGICHLAR)
+    // TAB 2: POWER-UPS & BOOSTERS (19 KUCHAYTIRGICHLAR)
     // -------------------------------------------------------------
     else if (_activeMarketTab === 'boosters') {
       var userBoosters = (S.user && S.user.boosters) || {};
@@ -11290,8 +11702,8 @@
 
       html += '<div style="margin-bottom:20px;background:rgba(2,132,199,0.12);border:1px solid #0284c7;padding:16px 20px;border-radius:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">' +
         '<div>' +
-          '<h3 style="margin:0 0 4px;font-size:17px;font-weight:900;color:#38bdf8">⚡ Test va Quiz Kuchaytirgichlari (Super Powers)</h3>' +
-          '<p style="margin:0;font-size:13px;color:#cbd5e1">Faqat Quiz va A1–C2 dars mashqlarida yordam beradi (jiddiy Mock imtihonlarda ishlamaydi).</p>' +
+          '<h3 style="margin:0 0 4px;font-size:17px;font-weight:900;color:#38bdf8">⚡ Test va Quiz Kuchaytirgichlari (' + (window.ETHITH_BOOSTERS || []).length + ' xil Super Kuch)</h3>' +
+          '<p style="margin:0;font-size:13px;color:#cbd5e1">Faqat Quiz Bellashuvi va A1–C2 dars testlarida yordam beradi (jiddiy Mock imtihonlarda ishlamaydi).</p>' +
         '</div>' +
         (has2xActive ? '<div style="background:rgba(245,158,11,0.2);border:1px solid #f59e0b;padding:6px 14px;border-radius:12px;font-weight:900;color:#fde047;font-size:13px;display:inline-flex;align-items:center;gap:6px">' +
           '🔥 2X Coin Faol: ' + remain2xMins + ' daqiqa qoldi</div>' : '') +
@@ -11401,7 +11813,7 @@
     }
 
     // -------------------------------------------------------------
-    // TAB 4: VIP COSMETICS, GLOWING NAMES, TITLES & SOUNDS
+    // TAB 4: VIP COSMETICS, 15 GLOWING NAMES, 100 TITLES & 50 SOUNDS
     // -------------------------------------------------------------
     else if (_activeMarketTab === 'cosmetics') {
       var cosmetics = window.ETHITH_COSMETICS || {};
@@ -11409,15 +11821,24 @@
       var myTitle = S.user ? S.user.title : null;
       var myVictorySound = S.user ? S.user.victorySound : null;
 
-      html += '<div style="margin-bottom:28px">' +
-        '<h3 style="font-size:18px;font-weight:900;color:#fde047;margin:0 0 6px">🔥 1. Yonib Turuvchi Nikneym Effektlari</h3>' +
-        '<p style="font-size:13px;color:#94a3b8;margin:0 0 16px">Turnir jadvali, chat va quiz g\'oliblik maydonida ismingiz olov, neon yoki oltin nur bilan yonib turadi!</p>' +
+      // 1. 15 GLOWING NICKNAME STYLES
+      html += '<div style="margin-bottom:34px">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">' +
+          '<h3 style="font-size:18px;font-weight:900;color:#fde047;margin:0">🔥 1. Yonib Turuvchi Nikneym Effektlari (15 xil)</h3>' +
+          '<span style="font-size:12px;font-weight:800;color:#34d399;background:rgba(16,185,129,0.15);padding:3px 10px;border-radius:10px">⏳ 7 Kunlik Litsenziya</span>' +
+        '</div>' +
+        '<p style="font-size:13px;color:#94a3b8;margin:0 0 16px">Turnir jadvali, shaxsiy profilingiz va chatda ismingiz olov, neon yoki shohona ranglar bilan yonib turadi!</p>' +
         '<div class="eth-cosmetic-grid">';
 
       (cosmetics.nameStyles || []).forEach(function(ns) {
-        var isEquipped = myNameStyle === ns.id;
+        var status = getCosmeticStatus(S.user, ns.id);
+        var isEquipped = (myNameStyle === ns.id) && status.active;
+
         html += '<div class="eth-cosmetic-card" style="border-color:' + (isEquipped ? '#f59e0b' : 'rgba(255,255,255,0.12)') + '">' +
-          '<div style="font-size:14px;color:#94a3b8;font-weight:700;margin-bottom:8px">PREVIEW (KO\'RINISH):</div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">' +
+            '<span style="font-size:12px;color:#94a3b8;font-weight:700">PREVIEW:</span>' +
+            '<span class="eth-vip-timer-badge ' + (status.expired ? 'expired' : '') + '">' + status.label + '</span>' +
+          '</div>' +
           '<div style="background:#030712;padding:12px;border-radius:12px;text-align:center;margin-bottom:14px;border:1px solid #1f2937">' +
             '<span class="' + ns.className + '" style="font-size:18px;font-weight:900">' + esc(S.user ? S.user.name : 'Muhammadyusuf') + '</span>' +
           '</div>' +
@@ -11427,59 +11848,84 @@
             '<div style="font-size:15px;font-weight:900;color:#fde047;font-family:monospace">' + window.ETHITH_COIN_SVG(16) + ' ' + ns.price + ' Coin</div>' +
             (isEquipped ?
               '<button type="button" class="eth-vault-sell-btn" style="background:#475569;font-size:12px;padding:6px 12px" data-action="unequip-name-style">O\'chirish</button>' :
-              '<button type="button" class="eth-p2p-buy-btn" style="font-size:12px;padding:6px 14px" data-action="equip-name-style" data-style-id="' + ns.id + '" data-price="' + ns.price + '">Faollashtirish</button>'
+              '<button type="button" class="eth-p2p-buy-btn" style="font-size:12px;padding:6px 14px" data-action="equip-name-style" data-style-id="' + ns.id + '" data-price="' + ns.price + '" data-style-name="' + esc(ns.name) + '">' +
+                (status.active ? 'Tanlash' : (status.expired ? 'Yangilash (7 kun)' : 'Sotib Olish (7 kun)')) +
+              '</button>'
             ) +
           '</div>' +
         '</div>';
       });
       html += '</div></div>';
 
-      // Titles section
-      html += '<div style="margin-bottom:28px">' +
-        '<h3 style="font-size:18px;font-weight:900;color:#60a5fa;margin:0 0 6px">👑 2. Maxsus Maqomlar & Unvonlar (VIP Titles)</h3>' +
-        '<p style="font-size:13px;color:#94a3b8;margin:0 0 16px">Ismingiz ostida barchaga ko\'rinib turuvchi eksklyuziv oliy unvonlar yorlig\'i.</p>' +
-        '<div class="eth-cosmetic-grid">';
+      // 2. 100 VIP TITLES
+      html += '<div style="margin-bottom:34px">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">' +
+          '<h3 style="font-size:18px;font-weight:900;color:#60a5fa;margin:0">👑 2. Maxsus Maqomlar & Unvonlar (' + (cosmetics.titles || []).length + ' ta)</h3>' +
+          '<span style="font-size:12px;font-weight:800;color:#34d399;background:rgba(16,185,129,0.15);padding:3px 10px;border-radius:10px">⏳ 7 Kunlik Litsenziya</span>' +
+        '</div>' +
+        '<p style="font-size:13px;color:#94a3b8;margin:0 0 16px">Ismingiz ostida barchaga ko\'rinib turuvchi eksklyuziv oliy maqomlar va unvonlar yorlig\'i.</p>' +
+        '<div class="eth-cosmetic-grid" style="grid-template-columns:repeat(auto-fill, minmax(260px, 1fr))">';
 
       (cosmetics.titles || []).forEach(function(tt) {
-        var isEquipped = myTitle === tt.name;
+        var status = getCosmeticStatus(S.user, tt.id);
+        var isEquipped = (myTitle === tt.name) && status.active;
+
         html += '<div class="eth-cosmetic-card" style="border-color:' + (isEquipped ? '#3b82f6' : 'rgba(255,255,255,0.12)') + '">' +
-          '<div style="font-size:14px;color:#94a3b8;font-weight:700;margin-bottom:8px">UNVON YORLIG\'I:</div>' +
-          '<div style="background:#030712;padding:12px;border-radius:12px;text-align:center;margin-bottom:14px;border:1px solid #1f2937">' +
-            '<span class="eth-user-title-badge" style="font-size:13px;padding:4px 12px">' + esc(tt.name) + '</span>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">' +
+            '<span style="font-size:11px;color:#94a3b8;font-weight:700">UNVON:</span>' +
+            '<span class="eth-vip-timer-badge ' + (status.expired ? 'expired' : '') + '">' + status.label + '</span>' +
           '</div>' +
-          '<div style="font-size:16px;font-weight:900;color:#fff;margin-bottom:4px">' + esc(tt.name) + '</div>' +
-          '<div style="font-size:12.5px;color:#cbd5e1;line-height:1.4;margin-bottom:16px;flex:1">' + esc(tt.desc) + '</div>' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.1);padding-top:12px">' +
-            '<div style="font-size:15px;font-weight:900;color:#fde047;font-family:monospace">' + window.ETHITH_COIN_SVG(16) + ' ' + tt.price + ' Coin</div>' +
+          '<div style="background:#030712;padding:10px;border-radius:12px;text-align:center;margin-bottom:12px;border:1px solid #1f2937">' +
+            '<span class="eth-user-title-badge" style="font-size:12.5px;padding:3px 10px">' + esc(tt.name) + '</span>' +
+          '</div>' +
+          '<div style="font-size:15px;font-weight:900;color:#fff;margin-bottom:4px">' + esc(tt.name) + '</div>' +
+          '<div style="font-size:11.5px;color:#cbd5e1;line-height:1.4;margin-bottom:14px;flex:1">' + esc(tt.desc) + '</div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.1);padding-top:10px">' +
+            '<div style="font-size:14px;font-weight:900;color:#fde047;font-family:monospace">' + window.ETHITH_COIN_SVG(15) + ' ' + tt.price + ' Coin</div>' +
             (isEquipped ?
-              '<button type="button" class="eth-vault-sell-btn" style="background:#475569;font-size:12px;padding:6px 12px" data-action="unequip-title">O\'chirish</button>' :
-              '<button type="button" class="eth-p2p-buy-btn" style="font-size:12px;padding:6px 14px" data-action="equip-title" data-title-name="' + esc(tt.name) + '" data-price="' + tt.price + '">Tanlash</button>'
+              '<button type="button" class="eth-vault-sell-btn" style="background:#475569;font-size:11px;padding:5px 10px" data-action="unequip-title">O\'chirish</button>' :
+              '<button type="button" class="eth-p2p-buy-btn" style="font-size:11px;padding:5px 12px" data-action="equip-title" data-title-id="' + tt.id + '" data-title-name="' + esc(tt.name) + '" data-price="' + tt.price + '">' +
+                (status.active ? 'Tanlash' : (status.expired ? 'Yangilash (7 kun)' : 'Sotib Olish (7 kun)')) +
+              '</button>'
             ) +
           '</div>' +
         '</div>';
       });
       html += '</div></div>';
 
-      // Victory Sounds section
-      html += '<div style="margin-bottom:28px">' +
-        '<h3 style="font-size:18px;font-weight:900;color:#a855f7;margin:0 0 6px">🎺 3. Quiz G\'alaba Ovozlar (Victory Fanfares)</h3>' +
-        '<p style="font-size:13px;color:#94a3b8;margin:0 0 16px">Quiz Bellashuvida 1-o\'rinni olganingizda ustoz va barcha o\'quvchilar ekranida tantanali yangraydi!</p>' +
-        '<div class="eth-cosmetic-grid">';
+      // 3. 50 VICTORY SOUNDS (WITH PREVIEWS & DURATIONS 2s-10s)
+      html += '<div style="margin-bottom:34px">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">' +
+          '<h3 style="font-size:18px;font-weight:900;color:#a855f7;margin:0">🎺 3. Quiz G\'alaba Ovozlar (' + (cosmetics.victorySounds || []).length + ' ta - 2s dan 10s gacha)</h3>' +
+          '<span style="font-size:12px;font-weight:800;color:#34d399;background:rgba(16,185,129,0.15);padding:3px 10px;border-radius:10px">⏳ 7 Kunlik Litsenziya</span>' +
+        '</div>' +
+        '<p style="font-size:13px;color:#94a3b8;margin:0 0 16px">Quiz Bellashuvida 1-o\'rinni olganingizda ustoz va barcha sinfdoshlar ekranida maxsus qarsaklar, URA! hayqiriqlari yoki orkestr sadolari yangraydi!</p>' +
+        '<div class="eth-cosmetic-grid" style="grid-template-columns:repeat(auto-fill, minmax(260px, 1fr))">';
 
       (cosmetics.victorySounds || []).forEach(function(vs) {
-        var isEquipped = (myVictorySound === vs.id) || (!myVictorySound && vs.id === 'royal_fanfare');
+        var status = getCosmeticStatus(S.user, vs.id);
+        var isEquipped = (myVictorySound === vs.id) || (!myVictorySound && vs.id === 'applause_stadium_4s');
+        var isPlayingThis = (_currentlyPlayingPreview === vs.id);
+
         html += '<div class="eth-cosmetic-card" style="border-color:' + (isEquipped ? '#a855f7' : 'rgba(255,255,255,0.12)') + '">' +
-          '<div style="font-size:28px;margin-bottom:8px">' + vs.name.split(' ')[0] + '</div>' +
-          '<div style="font-size:16px;font-weight:900;color:#fff;margin-bottom:4px">' + esc(vs.name) + '</div>' +
-          '<div style="font-size:12.5px;color:#cbd5e1;line-height:1.4;margin-bottom:16px;flex:1">' + esc(vs.desc) + '</div>' +
-          '<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">' +
-            '<button type="button" class="eth-p2p-barter-btn" style="flex:1;padding:6px 10px;font-size:12px" data-action="preview-sound" data-sound-id="' + vs.id + '">▶️ Eshitib ko\'rish</button>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">' +
+            '<span style="font-size:11px;font-weight:800;color:#c084fc;background:rgba(168,85,247,0.15);padding:2px 8px;border-radius:8px">⏱️ ' + vs.duration + '</span>' +
+            '<span class="eth-vip-timer-badge ' + (status.expired ? 'expired' : '') + '">' + status.label + '</span>' +
           '</div>' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.1);padding-top:12px">' +
-            '<div style="font-size:15px;font-weight:900;color:#fde047;font-family:monospace">' + window.ETHITH_COIN_SVG(16) + ' ' + vs.price + ' Coin</div>' +
+          '<div style="font-size:15px;font-weight:900;color:#fff;margin-bottom:4px">' + esc(vs.name) + '</div>' +
+          '<div style="font-size:11.5px;color:#cbd5e1;line-height:1.4;margin-bottom:12px;flex:1">' + esc(vs.desc) + '</div>' +
+          '<div style="margin-bottom:12px">' +
+            '<button type="button" class="eth-sound-preview-btn ' + (isPlayingThis ? 'playing' : '') + '" style="width:100%;justify-content:center" data-action="preview-sound" data-sound-id="' + vs.id + '">' +
+              (isPlayingThis ? '⏹ To\'xtatish' : '▶ Tinglash (' + vs.duration + ')') +
+            '</button>' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.1);padding-top:10px">' +
+            '<div style="font-size:14px;font-weight:900;color:#fde047;font-family:monospace">' + window.ETHITH_COIN_SVG(15) + ' ' + vs.price + ' Coin</div>' +
             (isEquipped ?
-              '<span style="font-size:12px;font-weight:900;color:#a855f7">✓ Tanlangan</span>' :
-              '<button type="button" class="eth-p2p-buy-btn" style="font-size:12px;padding:6px 14px" data-action="equip-sound" data-sound-id="' + vs.id + '" data-price="' + vs.price + '">O\'rnatish</button>'
+              '<span style="font-size:11px;font-weight:900;color:#a855f7">✓ Tanlangan</span>' :
+              '<button type="button" class="eth-p2p-buy-btn" style="font-size:11px;padding:5px 12px" data-action="equip-sound" data-sound-id="' + vs.id + '" data-price="' + vs.price + '" data-sound-name="' + esc(vs.name) + '">' +
+                (status.active ? 'Tanlash' : (status.expired ? 'Yangilash (7 kun)' : 'Sotib Olish (7 kun)')) +
+              '</button>'
             ) +
           '</div>' +
         '</div>';
@@ -11618,6 +12064,8 @@
     // -------------------------------------------------------------
     container.querySelectorAll('[data-market-tab]').forEach(function(btn) {
       btn.onclick = function() {
+        if (window.stopCurrentFanfare) window.stopCurrentFanfare();
+        _currentlyPlayingPreview = null;
         _activeMarketTab = btn.dataset.marketTab;
         renderMarketView(container);
       };
@@ -11637,7 +12085,7 @@
       };
     });
 
-    // Buy Booster listener
+    // Buy Booster listener (Supports all 19 Boosters)
     container.querySelectorAll('[data-action="buy-booster"]').forEach(function(btn) {
       btn.onclick = function() {
         var bId = btn.dataset.boosterId;
@@ -11696,7 +12144,7 @@
       };
     });
 
-    // Open Post P2P Listing Modal
+    // P2P Listeners
     var btnPostP2p = container.querySelector('#btnOpenPostP2PModal') || container.querySelector('#btnEmptyPostP2P');
     if (btnPostP2p) {
       btnPostP2p.onclick = function() {
@@ -11706,7 +12154,6 @@
       };
     }
 
-    // Buy P2P Listing listener
     container.querySelectorAll('[data-action="buy-p2p"]').forEach(function(btn) {
       btn.onclick = function() {
         var lId = btn.dataset.listingId;
@@ -11769,7 +12216,6 @@
       };
     });
 
-    // Cancel P2P Listing listener
     container.querySelectorAll('[data-action="cancel-p2p"]').forEach(function(btn) {
       btn.onclick = function() {
         var lId = btn.dataset.listingId;
@@ -11806,7 +12252,6 @@
       };
     });
 
-    // Barter P2P Listing listener
     container.querySelectorAll('[data-action="barter-p2p"]').forEach(function(btn) {
       btn.onclick = function() {
         var lId = btn.dataset.listingId;
@@ -11819,18 +12264,42 @@
       };
     });
 
-    // Cosmetics Actions (Equip / Unequip Name Styles, Titles, Sounds)
+    // VIP Cosmetics (Temporary 7-Day License Purchase & Equipping)
     container.querySelectorAll('[data-action="equip-name-style"]').forEach(function(btn) {
       btn.onclick = function() {
         var sId = btn.dataset.styleId;
+        var sName = btn.dataset.styleName || sId;
         var price = Number(btn.dataset.price) || 0;
-        if (!confirm('Ushbu nikneym effektini ' + price + ' ETHITH Coinga faollashtirishni tasdiqlaysizmi?')) return;
+        var status = getCosmeticStatus(S.user, sId);
+
+        if (status.active) {
+          // Already active, just equip
+          S.user.nameStyle = sId;
+          App.saveState();
+          if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
+          renderMarketView(container);
+          alert('✓ "' + sName + '" faol nikneym sifatida o\'rnatildi!');
+          return;
+        }
+
+        if (!confirm('"' + sName + '" nikneym effektining 7 kunlik litsenziyasini ' + price + ' ETHITH Coinga sotib olishni tasdiqlaysizmi?')) return;
         if ((S.user.coins || 0) < price) {
           alert("Mablag' yetarli emas! Sizda " + (S.user.coins || 0) + " Coin bor.");
           return;
         }
+
         S.user.coins -= price;
         S.user.nameStyle = sId;
+        if (!S.user.activeCosmetics) S.user.activeCosmetics = {};
+        var existing = S.user.activeCosmetics[sId];
+        var baseTime = (existing && existing.expiresAt > Date.now()) ? existing.expiresAt : Date.now();
+        S.user.activeCosmetics[sId] = {
+          id: sId,
+          type: 'nameStyle',
+          name: sName,
+          expiresAt: baseTime + (7 * 24 * 60 * 60 * 1000)
+        };
+
         App.saveState();
         if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
         if (window.EthithSync && window.EthithSync.publishLive) {
@@ -11852,7 +12321,7 @@
           if (window.EthithSync.pushRemoteStore) window.EthithSync.pushRemoteStore();
         }
         playPackMagicSound('connect');
-        alert("🎉 Nikneym effekti faollashtirildi! Endi ismingiz barcha joyda ajoyib nur bilan tovlanadi.");
+        alert("🎉 Nikneym effekti 7 kunga faollashtirildi! Endi ismingiz barcha joyda ajoyib nur bilan yonadi.");
         renderMarketView(container);
       };
     });
@@ -11875,15 +12344,39 @@
 
     container.querySelectorAll('[data-action="equip-title"]').forEach(function(btn) {
       btn.onclick = function() {
+        var tId = btn.dataset.titleId;
         var tName = btn.dataset.titleName;
         var price = Number(btn.dataset.price) || 0;
-        if (!confirm('"' + tName + '" unvonini ' + price + ' ETHITH Coinga o\'rnatishni tasdiqlaysizmi?')) return;
+        var status = getCosmeticStatus(S.user, tId);
+
+        if (status.active) {
+          S.user.title = tName;
+          S.user.titleId = tId;
+          App.saveState();
+          renderMarketView(container);
+          alert('✓ "' + tName + '" unvoni faol maqom sifatida o\'rnatildi!');
+          return;
+        }
+
+        if (!confirm('"' + tName + '" unvonining 7 kunlik litsenziyasini ' + price + ' ETHITH Coinga sotib olishni tasdiqlaysizmi?')) return;
         if ((S.user.coins || 0) < price) {
           alert("Mablag' yetarli emas! Sizda " + (S.user.coins || 0) + " Coin bor.");
           return;
         }
+
         S.user.coins -= price;
         S.user.title = tName;
+        S.user.titleId = tId;
+        if (!S.user.activeCosmetics) S.user.activeCosmetics = {};
+        var existing = S.user.activeCosmetics[tId];
+        var baseTime = (existing && existing.expiresAt > Date.now()) ? existing.expiresAt : Date.now();
+        S.user.activeCosmetics[tId] = {
+          id: tId,
+          type: 'title',
+          name: tName,
+          expiresAt: baseTime + (7 * 24 * 60 * 60 * 1000)
+        };
+
         App.saveState();
         if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
         if (window.EthithSync && window.EthithSync.publishLive) {
@@ -11905,7 +12398,7 @@
           if (window.EthithSync.pushRemoteStore) window.EthithSync.pushRemoteStore();
         }
         playPackMagicSound('connect');
-        alert('🎉 "' + tName + '" unvoni muvaffaqiyatli o\'rnatildi!');
+        alert('🎉 "' + tName + '" unvoni 7 kunga muvaffaqiyatli o\'rnatildi!');
         renderMarketView(container);
       };
     });
@@ -11913,6 +12406,7 @@
     container.querySelectorAll('[data-action="unequip-title"]').forEach(function(btn) {
       btn.onclick = function() {
         S.user.title = null;
+        S.user.titleId = null;
         App.saveState();
         if (window.EthithSync && window.EthithSync.publishLive) {
           window.EthithSync.publishLive({
@@ -11926,24 +12420,56 @@
       };
     });
 
+    // Preview Victory Sound with Toggle
     container.querySelectorAll('[data-action="preview-sound"]').forEach(function(btn) {
       btn.onclick = function() {
         var sId = btn.dataset.soundId;
-        if (window.playVictoryFanfare) window.playVictoryFanfare(sId);
+        if (_currentlyPlayingPreview === sId) {
+          if (window.stopCurrentFanfare) window.stopCurrentFanfare();
+          _currentlyPlayingPreview = null;
+          renderMarketView(container);
+        } else {
+          _currentlyPlayingPreview = sId;
+          if (window.playVictoryFanfare) window.playVictoryFanfare(sId);
+          renderMarketView(container);
+        }
       };
     });
 
+    // Equip / Buy Victory Sound (Temporary 7-Day Lease)
     container.querySelectorAll('[data-action="equip-sound"]').forEach(function(btn) {
       btn.onclick = function() {
         var sId = btn.dataset.soundId;
+        var sName = btn.dataset.soundName || sId;
         var price = Number(btn.dataset.price) || 0;
-        if (!confirm('Ushbu g\'alaba ovozini ' + price + ' ETHITH Coinga sotib olishni tasdiqlaysizmi?')) return;
+        var status = getCosmeticStatus(S.user, sId);
+
+        if (status.active) {
+          S.user.victorySound = sId;
+          App.saveState();
+          renderMarketView(container);
+          alert('✓ "' + sName + '" g\'alaba sadolari sifatida tanlandi!');
+          return;
+        }
+
+        if (!confirm('"' + sName + '" g\'alaba ovozining 7 kunlik litsenziyasini ' + price + ' ETHITH Coinga sotib olishni tasdiqlaysizmi?')) return;
         if ((S.user.coins || 0) < price) {
           alert("Mablag' yetarli emas! Sizda " + (S.user.coins || 0) + " Coin bor.");
           return;
         }
+
         S.user.coins -= price;
         S.user.victorySound = sId;
+        if (!S.user.activeCosmetics) S.user.activeCosmetics = {};
+        var existing = S.user.activeCosmetics[sId];
+        var baseTime = (existing && existing.expiresAt > Date.now()) ? existing.expiresAt : Date.now();
+        S.user.activeCosmetics[sId] = {
+          id: sId,
+          type: 'victorySound',
+          name: sName,
+          expiresAt: baseTime + (7 * 24 * 60 * 60 * 1000)
+        };
+
         App.saveState();
         if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
         if (window.EthithSync && window.EthithSync.publishLive) {
@@ -11954,12 +12480,12 @@
           if (window.EthithSync.pushRemoteStore) window.EthithSync.pushRemoteStore();
         }
         if (window.playVictoryFanfare) window.playVictoryFanfare(sId);
-        alert("🎉 G'alaba ovozi o'rnatildi! Quizda 1-o'rinni olganingizda shu kuy yangraydi.");
+        alert("🎉 G'alaba ovozi 7 kunga o'rnatildi! Quizda 1-o'rinni olganingizda shu kuy yangraydi.");
         renderMarketView(container);
       };
     });
 
-    // Sell Items from Vault Listener
+    // Sell Vault Item Listener
     container.querySelectorAll('[data-action="sell-vault-item"]').forEach(function(btn) {
       btn.onclick = function() {
         var itType = btn.dataset.itemType;
@@ -12023,7 +12549,7 @@
       };
     });
 
-    // Open Pack Listener
+    // Open Pack Listener (Daily 00:00 midnight reset check)
     container.querySelectorAll('[data-action="open-pack"]').forEach(function(btn) {
       btn.onclick = function() {
         var pId = btn.dataset.packId;
@@ -12035,8 +12561,8 @@
 
         if (p.isFreeDaily) {
           var last = (S.user && S.user.lastDailyPackAt) ? Number(S.user.lastDailyPackAt) : 0;
-          if (Date.now() - last < 24 * 60 * 60 * 1000) {
-            alert("Kunlik bepul packni faqat 24 soatda 1 marta ochish mumkin! Iltimos, taymer tugashini kuting.");
+          if (isSameCalendarDay(last, Date.now())) {
+            alert("Kunlik bepul pack bugun uchun allaqachon ochilgan! Yangi kun boshlanishi (soat 00:00) bilan yana ochishingiz mumkin.");
             return;
           }
         } else {
@@ -12600,7 +13126,31 @@
     }
 
     function renderRevealScreen(won) {
-      playPackMagicSound('reveal');
+      if (typeof playPackRevealSound === 'function') {
+        playPackRevealSound(won.rarity);
+      } else {
+        playPackMagicSound('reveal');
+      }
+
+      var arena = overlay.querySelector('#ethPackArena');
+      var isUltra = (won.rarity === 'Legendary' || won.rarity === 'Mythic');
+      
+      // Screen tremor & fire embers on Legendary / Mythic
+      if (isUltra && arena) {
+        arena.classList.add('eth-legendary-shake');
+        for (var e = 0; e < 24; e++) {
+          var ember = document.createElement('div');
+          ember.className = 'eth-fire-ember';
+          var size = Math.floor(Math.random() * 8) + 4;
+          ember.style.width = size + 'px';
+          ember.style.height = size + 'px';
+          ember.style.left = (Math.random() * 90 + 5) + '%';
+          ember.style.top = (Math.random() * 40 + 50) + '%';
+          ember.style.setProperty('--ember-dx', ((Math.random() - 0.5) * 80) + 'px');
+          ember.style.animationDelay = (Math.random() * 0.8) + 's';
+          overlay.appendChild(ember);
+        }
+      }
 
       var cardGraphic = '';
       if (won.type === 'coins') {
@@ -12648,8 +13198,9 @@
         cardGraphic = '<div style="font-size:68px;margin:10px auto 16px;filter:drop-shadow(0 0 16px rgba(245,158,11,0.6))">' + won.icon + '</div>';
       }
 
+      var rarityCls = (won.rarity || 'common').toLowerCase();
       var revealHtml = '' +
-        '<div class="eth-revealed-card">' +
+        '<div class="eth-revealed-card eth-card-rarity-' + rarityCls + ' eth-reveal-' + rarityCls + '">' +
         '  <div class="eth-rarity-badge eth-rarity-' + won.rarity + '">' + won.rarity + '</div>' +
            cardGraphic +
         '  <div style="font-weight:900;font-size:20px;color:#fde047;margin-bottom:8px">' + esc(won.name) + '</div>' +
@@ -12659,8 +13210,7 @@
         '  </button>' +
         '</div>';
 
-      var arena = overlay.querySelector('#ethPackArena');
-      arena.innerHTML = revealHtml;
+      if (arena) arena.innerHTML = revealHtml;
 
       var claimBtn = overlay.querySelector('#ethClaimRewardBtn');
       if (claimBtn) {
@@ -12671,6 +13221,7 @@
       }
     }
   }
+
 
   // ====================================================
   // 4. USER PROFILE & AVATAR MANAGER VIEW
@@ -12706,15 +13257,17 @@
 
     var html = '<div class="eth-profile-screen animate-fade-in">';
 
-    // Hero Section
+    // Hero Section with Styled Name
+    var userStyledNameHtml = window.ETHITH_RENDER_USER_NAME_HTML ? window.ETHITH_RENDER_USER_NAME_HTML(user) : ('<span style="font-size:24px;font-weight:900">' + esc(user.name) + '</span>');
+
     html += '<div class="eth-profile-hero">' +
       '<div class="eth-profile-avatar-wrap">' +
         window.ETHITH_RENDER_USER_AVATAR(user, 90, '', 'border-width:3px') +
         (!isTeacher ? '<button type="button" class="eth-profile-change-av-btn" id="btnChangeAvatar" title="Rasmni o\'zgartirish">✏️</button>' : '') +
       '</div>' +
       '<div style="flex:1;min-width:0">' +
-        '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">' +
-          '<h1 style="font-size:24px;font-weight:900;color:var(--text);margin:0">' + esc(user.name) + '</h1>' +
+        '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">' +
+          '<h1 style="font-size:24px;font-weight:900;color:var(--text);margin:0;display:inline-flex;align-items:center;gap:6px">' + userStyledNameHtml + '</h1>' +
           '<span style="padding:3px 10px;border-radius:12px;font-size:12px;font-weight:800;background:var(--soft);color:var(--pri)">' + (isTeacher ? 'O\'qituvchi (Master)' : user.level || S.level || 'A1') + '</span>' +
         '</div>' +
         '<div style="font-size:13.5px;color:var(--muted);margin-bottom:12px">📧 ' + esc(user.email || 'Email kiritilmagan') + '</div>' +
@@ -12757,6 +13310,61 @@
           '</div>' +
         '</div>' +
       '</div>';
+    }
+
+    // VIP STATUS SHOWCASE SECTION (Active Glowing Names, Titles, and Victory Sounds with Countdown)
+    if (!isTeacher) {
+      var activeCosmetics = user.activeCosmetics || {};
+      var activeItemsList = Object.values(activeCosmetics);
+
+      html += '<div style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:24px">';
+      html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">' +
+        '<h3 style="font-size:18px;font-weight:900;color:#fde047;margin:0;display:flex;align-items:center;gap:8px">✨ Mening VIP Statusim & Litsenziyalarim</h3>' +
+        '<button type="button" class="ap-btn pri" id="btnManageVIPInMarket" style="padding:5px 12px;font-size:12px">Pardozlarni Yangilash</button>' +
+      '</div>';
+
+      if (activeItemsList.length === 0 && !user.nameStyle && !user.title) {
+        html += '<p style="font-size:13.5px;color:var(--muted);margin:0">Sizda hali faol VIP pardoz yoki maxsus unvon litsenziyasi yo\'q. Marketdagi <b>👑 VIP Pardozlar</b> bo\'limidan yonuvchi ism, unvon yoki g\'alaba ovozlarini sotib olishingiz mumkin!</p>';
+      } else {
+        html += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));gap:14px">';
+        
+        // Active Name Style
+        if (user.nameStyle) {
+          var nsStatus = getCosmeticStatus(user, user.nameStyle);
+          html += '<div style="padding:14px;background:var(--soft);border:1px solid rgba(245,158,11,0.3);border-radius:14px">' +
+            '<div style="font-size:11px;font-weight:800;color:#f59e0b;margin-bottom:6px">YONUVCHI ISM EFFEKTI:</div>' +
+            '<div style="font-size:16px;font-weight:900;margin-bottom:8px" class="name-fx-' + user.nameStyle + '">' + esc(user.name) + '</div>' +
+            '<span class="eth-vip-timer-badge ' + (nsStatus.expired ? 'expired' : '') + '">' + nsStatus.label + '</span>' +
+          '</div>';
+        }
+
+        // Active Title
+        if (user.title) {
+          var tId = user.titleId || user.title;
+          var tStatus = getCosmeticStatus(user, tId);
+          html += '<div style="padding:14px;background:var(--soft);border:1px solid rgba(59,130,246,0.3);border-radius:14px">' +
+            '<div style="font-size:11px;font-weight:800;color:#60a5fa;margin-bottom:6px">MAQSUS VIP UNVON:</div>' +
+            '<div style="margin-bottom:8px"><span class="eth-user-title-badge" style="font-size:13px">' + esc(user.title) + '</span></div>' +
+            '<span class="eth-vip-timer-badge ' + (tStatus.expired ? 'expired' : '') + '">' + tStatus.label + '</span>' +
+          '</div>';
+        }
+
+        // Active Victory Sound
+        var vsId = user.victorySound || 'applause_stadium_4s';
+        var vsStatus = getCosmeticStatus(user, vsId);
+        var vsObj = (window.ETHITH_COSMETICS && window.ETHITH_COSMETICS.victorySounds || []).find(function(s) { return s.id === vsId; });
+        html += '<div style="padding:14px;background:var(--soft);border:1px solid rgba(168,85,247,0.3);border-radius:14px">' +
+          '<div style="font-size:11px;font-weight:800;color:#c084fc;margin-bottom:6px">QUIZ G\'ALABA OVOZI:</div>' +
+          '<div style="font-size:14px;font-weight:900;color:var(--text);margin-bottom:8px">' + (vsObj ? vsObj.name : 'Stadion Qarsaklari') + '</div>' +
+          '<div style="display:flex;align-items:center;gap:8px">' +
+            '<button type="button" class="eth-sound-preview-btn" style="padding:3px 10px;font-size:11px" id="btnPlayMyVictorySound">▶ Tinglash</button>' +
+            '<span class="eth-vip-timer-badge ' + (vsStatus.expired ? 'expired' : '') + '">' + vsStatus.label + '</span>' +
+          '</div>' +
+        '</div>';
+
+        html += '</div>';
+      }
+      html += '</div>';
     }
 
     // Showcase Tabs: Avatars, Emojis, Gifts
@@ -12822,6 +13430,21 @@
       };
     }
 
+    var manageVipBtn = container.querySelector('#btnManageVIPInMarket');
+    if (manageVipBtn) {
+      manageVipBtn.onclick = function() {
+        _activeMarketTab = 'cosmetics';
+        if (window.go) window.go('market');
+      };
+    }
+
+    var mySoundBtn = container.querySelector('#btnPlayMyVictorySound');
+    if (mySoundBtn) {
+      mySoundBtn.onclick = function() {
+        if (window.playVictoryFanfare) window.playVictoryFanfare(user.victorySound || 'applause_stadium_4s');
+      };
+    }
+
     var logoutBtn = container.querySelector('#btnProfileLogout');
     if (logoutBtn) {
       logoutBtn.onclick = function() {
@@ -12849,7 +13472,7 @@
     });
   }
 
-  // ====================================================
+    // ====================================================
   // 5. AVATAR PICKER MODAL (ONLY UNLOCKED AVATARS)
   // ====================================================
   function showAvatarPickerModal(onDone) {

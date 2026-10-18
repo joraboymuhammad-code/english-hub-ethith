@@ -7749,3 +7749,347 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   cursor: not-allowed;
   border-color: rgba(255, 255, 255, 0.08);
 }
+
+/* ====================================================
+   ETHITH 7.0 EXPANSION: 4-TIER RARITY REVEAL ANIMATIONS
+   ==================================================== */
+
+/* 1. COMMON: Soft Clean Pop & Gentle Ambient Glow */
+.eth-card-rarity-common, .eth-reveal-common {
+  animation: commonCardPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.25), 0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.35) !important;
+}
+@keyframes commonCardPop {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* 2. RARE: Beautiful Cyan/Azure Sparkle & Electric Glow */
+.eth-card-rarity-rare, .eth-reveal-rare {
+  position: relative;
+  animation: rareCardEntrance 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  box-shadow: 0 0 55px rgba(0, 210, 255, 0.65), 0 0 90px rgba(0, 114, 255, 0.35), inset 0 0 25px rgba(56, 189, 248, 0.3);
+  border: 2.5px solid #38bdf8 !important;
+}
+.eth-card-rarity-rare::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 28px;
+  border: 2px solid #00d2ff;
+  opacity: 0.6;
+  pointer-events: none;
+  animation: rareAuraPulse 2s ease-in-out infinite;
+}
+@keyframes rareCardEntrance {
+  0% { transform: scale(0.7) rotate(-3deg); opacity: 0; }
+  60% { transform: scale(1.06) rotate(1deg); }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+@keyframes rareAuraPulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; box-shadow: 0 0 20px #00d2ff; }
+  50% { transform: scale(1.04); opacity: 0.85; box-shadow: 0 0 45px #38bdf8; }
+}
+
+/* 3. EPIC: Liquid Violet / Purple Swirling Majestic Vortex */
+.eth-card-rarity-epic, .eth-reveal-epic {
+  position: relative;
+  animation: epicCardEntrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  box-shadow: 0 0 75px rgba(168, 85, 247, 0.85), 0 0 130px rgba(217, 70, 239, 0.5), inset 0 0 35px rgba(192, 132, 252, 0.45);
+  border: 3px solid #c084fc !important;
+}
+.eth-card-rarity-epic::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border-radius: 34px;
+  background: conic-gradient(from 0deg, #9333ea, #c026d3, #a855f7, #e879f9, #9333ea);
+  filter: blur(14px);
+  z-index: -1;
+  opacity: 0.75;
+  animation: epicLiquidSwirl 4s linear infinite;
+}
+@keyframes epicCardEntrance {
+  0% { transform: scale(0.6) translateY(40px); opacity: 0; filter: brightness(2.5); }
+  50% { transform: scale(1.1) translateY(-10px); filter: brightness(1.6); }
+  100% { transform: scale(1) translateY(0); opacity: 1; filter: brightness(1); }
+}
+@keyframes epicLiquidSwirl {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 4. LEGENDARY & MYTHIC: Screen Tremor, Fiery Inferno Flare, Crimson & Orange Explosion! */
+.eth-legendary-shake {
+  animation: legendaryScreenTremor 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+@keyframes legendaryScreenTremor {
+  10%, 90% { transform: translate3d(-3px, 0, 0); }
+  20%, 80% { transform: translate3d(5px, -3px, 0); }
+  30%, 50%, 70% { transform: translate3d(-6px, 5px, 0); }
+  40%, 60% { transform: translate3d(6px, -4px, 0); }
+}
+
+.eth-card-rarity-legendary, .eth-card-rarity-mythic, .eth-reveal-legendary {
+  position: relative;
+  animation: legendaryCardEntrance 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  box-shadow: 0 0 100px #ff0844, 0 0 160px #f97316, 0 0 220px rgba(254, 240, 138, 0.4), inset 0 0 45px #fde047;
+  border: 3.5px solid #fde047 !important;
+}
+.eth-card-rarity-legendary::before, .eth-card-rarity-mythic::before {
+  content: '';
+  position: absolute;
+  inset: -35px;
+  border-radius: 40px;
+  background: conic-gradient(from 0deg, #ff0844, #ff4e50, #f97316, #eab308, #ff0844);
+  filter: blur(20px);
+  z-index: -1;
+  opacity: 0.9;
+  animation: infernoRaySpin 3s linear infinite;
+}
+.eth-card-rarity-legendary::after, .eth-card-rarity-mythic::after {
+  content: '';
+  position: absolute;
+  inset: -50px;
+  background: radial-gradient(circle, rgba(255, 78, 80, 0.4) 0%, transparent 70%);
+  z-index: -2;
+  animation: infernoPulse 1.5s ease-in-out infinite alternate;
+}
+@keyframes legendaryCardEntrance {
+  0% { transform: scale(0.3) rotate(-15deg); opacity: 0; filter: brightness(4); }
+  45% { transform: scale(1.18) rotate(3deg); filter: brightness(2.2); }
+  75% { transform: scale(0.96) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0); opacity: 1; filter: brightness(1); }
+}
+@keyframes infernoRaySpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.08); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+@keyframes infernoPulse {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Fiery floating embers across screen on Legendary reveal */
+.eth-fire-ember {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  background: #ffedd5;
+  box-shadow: 0 0 10px #f97316, 0 0 20px #ef4444;
+  animation: fireEmberFloat 1.8s ease-out forwards;
+}
+@keyframes fireEmberFloat {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-160px) translateX(var(--ember-dx, 20px)) scale(0.2); opacity: 0; }
+}
+
+/* ====================================================
+   15 GLOWING NAME STYLES (NAME-FX)
+   ==================================================== */
+.name-fx-emerald {
+  color: #86efac !important;
+  text-shadow: 0 0 10px #22c55e, 0 0 20px #16a34a;
+  animation: nameFxPulseEmerald 2s ease-in-out infinite alternate;
+}
+@keyframes nameFxPulseEmerald {
+  0% { text-shadow: 0 0 8px #22c55e, 0 0 18px #15803d; }
+  100% { text-shadow: 0 0 16px #4ade80, 0 0 30px #22c55e; }
+}
+
+.name-fx-amethyst {
+  color: #f0abfc !important;
+  text-shadow: 0 0 10px #c026d3, 0 0 22px #9333ea;
+  animation: nameFxPulseAmethyst 2s ease-in-out infinite alternate;
+}
+@keyframes nameFxPulseAmethyst {
+  0% { text-shadow: 0 0 8px #c026d3, 0 0 18px #7e22ce; }
+  100% { text-shadow: 0 0 18px #e879f9, 0 0 32px #a855f7; }
+}
+
+.name-fx-crimson {
+  color: #fca5a5 !important;
+  text-shadow: 0 0 10px #dc2626, 0 0 22px #991b1b;
+  animation: nameFxPulseCrimson 1.8s ease-in-out infinite alternate;
+}
+@keyframes nameFxPulseCrimson {
+  0% { text-shadow: 0 0 8px #dc2626, 0 0 18px #7f1d1d; }
+  100% { text-shadow: 0 0 20px #ef4444, 0 0 35px #b91c1c; }
+}
+
+.name-fx-rainbow {
+  background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nameFxRainbowCycle 4s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+@keyframes nameFxRainbowCycle {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.name-fx-ice {
+  color: #e0f2fe !important;
+  text-shadow: 0 0 10px #38bdf8, 0 0 22px #0284c7;
+  animation: nameFxPulseIce 2.5s ease-in-out infinite alternate;
+}
+@keyframes nameFxPulseIce {
+  0% { text-shadow: 0 0 8px #38bdf8, 0 0 18px #0369a1; }
+  100% { text-shadow: 0 0 18px #bae6fd, 0 0 30px #0284c7; }
+}
+
+.name-fx-lightning {
+  color: #bae6fd !important;
+  text-shadow: 0 0 10px #0ea5e9, 0 0 25px #0284c7;
+  animation: nameFxFlickerLightning 1.5s steps(3, start) infinite;
+}
+@keyframes nameFxFlickerLightning {
+  0%, 100% { text-shadow: 0 0 10px #0ea5e9, 0 0 25px #0284c7; }
+  33% { text-shadow: 0 0 20px #38bdf8, 0 0 40px #0284c7, 0 0 60px #ffffff; }
+  66% { text-shadow: 0 0 6px #0369a1; }
+}
+
+.name-fx-sunset {
+  color: #fed7aa !important;
+  text-shadow: 0 0 10px #f97316, 0 0 22px #c2410c;
+  animation: nameFxPulseSunset 2s ease-in-out infinite alternate;
+}
+@keyframes nameFxPulseSunset {
+  0% { text-shadow: 0 0 8px #f97316, 0 0 18px #ea580c; }
+  100% { text-shadow: 0 0 18px #fb923c, 0 0 32px #f97316; }
+}
+
+.name-fx-starlight {
+  color: #ede9fe !important;
+  text-shadow: 0 0 10px #8b5cf6, 0 0 25px #6d28d9;
+  animation: nameFxPulseStarlight 2.2s ease-in-out infinite alternate;
+}
+@keyframes nameFxPulseStarlight {
+  0% { text-shadow: 0 0 8px #8b5cf6, 0 0 16px #5b21b6; }
+  100% { text-shadow: 0 0 20px #c4b5fd, 0 0 35px #7c3aed; }
+}
+
+.name-fx-toxic {
+  color: #bef264 !important;
+  text-shadow: 0 0 10px #84cc16, 0 0 22px #4d7c0f;
+  animation: nameFxPulseToxic 1.8s ease-in-out infinite alternate;
+}
+@keyframes nameFxPulseToxic {
+  0% { text-shadow: 0 0 8px #84cc16, 0 0 18px #3f6212; }
+  100% { text-shadow: 0 0 18px #d9f99d, 0 0 32px #65a30d; }
+}
+
+.name-fx-phantom {
+  color: #e2e8f0 !important;
+  text-shadow: 0 0 10px #94a3b8, 0 0 22px #475569;
+  animation: nameFxPulsePhantom 3s ease-in-out infinite alternate;
+}
+@keyframes nameFxPulsePhantom {
+  0% { opacity: 0.8; text-shadow: 0 0 8px #94a3b8; }
+  100% { opacity: 1; text-shadow: 0 0 20px #cbd5e1, 0 0 35px #64748b; }
+}
+
+.name-fx-blazing {
+  color: #fef08a !important;
+  text-shadow: 0 0 10px #ea580c, 0 0 24px #dc2626;
+  animation: nameFxPulseBlazing 1.6s ease-in-out infinite alternate;
+}
+@keyframes nameFxPulseBlazing {
+  0% { text-shadow: 0 0 10px #ea580c, 0 0 20px #dc2626; }
+  100% { text-shadow: 0 0 22px #facc15, 0 0 40px #ef4444; }
+}
+
+.name-fx-diamond {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px #38bdf8, 0 0 18px #818cf8, 0 0 30px #c084fc;
+  animation: nameFxPulseDiamond 2s ease-in-out infinite alternate;
+}
+@keyframes nameFxPulseDiamond {
+  0% { text-shadow: 0 0 8px #38bdf8, 0 0 18px #818cf8; }
+  100% { text-shadow: 0 0 16px #67e8f9, 0 0 28px #e879f9, 0 0 40px #ffffff; }
+}
+
+/* ====================================================
+   VIP EXPIRY BADGES & PREVIEW CONTROLS
+   ==================================================== */
+.eth-vip-timer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid #10b981;
+  color: #34d399;
+}
+.eth-vip-timer-badge.expired {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  color: #f87171;
+}
+
+.eth-sound-preview-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.eth-sound-preview-btn:hover {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: #f59e0b;
+  color: #fbbf24;
+}
+.eth-sound-preview-btn.playing {
+  background: #f59e0b;
+  color: #000;
+  border-color: #fbbf24;
+  animation: soundPlayingPulse 0.8s ease-in-out infinite alternate;
+}
+@keyframes soundPlayingPulse {
+  0% { transform: scale(1); box-shadow: 0 0 6px #f59e0b; }
+  100% { transform: scale(1.04); box-shadow: 0 0 16px #fbbf24; }
+}
+
+/* Daily Pity Status Banner */
+.eth-daily-pity-banner {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(245, 158, 11, 0.12));
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-radius: 18px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.eth-daily-pity-progress-bar {
+  height: 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+  min-width: 140px;
+}
+.eth-daily-pity-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+  box-shadow: 0 0 12px #f59e0b;
+  transition: width 0.4s ease;
+}
