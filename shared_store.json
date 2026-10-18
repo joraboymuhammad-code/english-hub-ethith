@@ -1075,11 +1075,11 @@
       "name": "Yangi O'quvchi",
       "email": "aleksandermike37@gmail.com",
       "role": "student",
-      "coins": 50000,
+      "coins": 50050,
       "level": "A1",
       "dailyMinutes": 0,
       "createdAt": 1792337882318,
-      "updatedAt": 1792337882318
+      "updatedAt": 1792337997368
     }
   ],
   "updatedAt": 1792323321662,
