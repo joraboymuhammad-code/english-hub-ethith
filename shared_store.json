@@ -1,26 +1,13 @@
 {
   "classes": [
     {
-      "id": "cls_ethith_main",
-      "name": "IELTS & General English Intensive",
+      "id": "cls_1791996374490",
+      "name": "IELTS GURuh",
       "code": "ETH-L6S8CM",
-      "teacherId": "joraboyevmuhammad85@gmail.com",
-      "teacherName": "Ustoz Muhammadyusuf",
-      "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1791999637426,
+      "teacherId": "tc_l78sgm19w",
+      "teacherName": "Muhammadyusuf",
+      "teacherEmail": "joraboymuhammad@gmail.com",
       "students": [
-        {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "lastActive": 1791999647009,
-          "dailyMinutes": 2036,
-          "mistakes": 0,
-          "coins": 100000,
-          "avatar": "boy_dragon_god",
-          "nameStyle": "blazing",
-          "title": "⚡ Grammatika Terminatori"
-        },
         {
           "id": "std_sync_test",
           "name": "John Doe",
@@ -30,6 +17,18 @@
           "mistakesCount": 0
         },
         {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 2036,
+          "mistakes": 0,
+          "coins": 94061,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": "⚡ Grammatika Terminatori"
+        },
+        {
           "id": "std_live_test_1",
           "name": "Alisher Oquvchi",
           "email": "alisher@gmail.com",
@@ -37,18 +36,6 @@
         }
       ],
       "messages": [
-        {
-          "id": "msg_welcome",
-          "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Ustoz Muhammadyusuf",
-          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
-          "time": "12:00",
-          "reactions": {
-            "👍": [
-              "joraboyevmuhammad85@gmail.com"
-            ]
-          }
-        },
         {
           "id": "msg_init",
           "senderId": "tc_l78sgm19w",
@@ -62,10 +49,22 @@
           }
         },
         {
-          "id": "msg_welcome_1",
+          "id": "msg_welcome",
           "senderId": "joraboyevmuhammad85@gmail.com",
           "senderName": "Ustoz Muhammadyusuf",
-          "text": "Assalomu alaykum! ETHITH rasmiy sinfiga xush kelibsiz. Bu yerda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_welcome_1",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Instructor Muhammadyusuf",
+          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
           "time": "12:00",
           "reactions": {
             "👍": [
@@ -362,8 +361,8 @@
           "replyTo": null,
           "reactions": {
             "🌙": [
-              "joraboymuhammad@gmail.com",
-              "muhammedjoraboyev1@gmail.com"
+              "muhammedjoraboyev1@gmail.com",
+              "joraboymuhammad@gmail.com"
             ]
           }
         },
@@ -807,76 +806,80 @@
   ],
   "accounts": [
     {
-      "id": "st_2liav71yk",
-      "role": "student",
+      "id": "tc_l78sgm19w",
+      "role": "teacher",
       "name": "Muhammadyusuf",
-      "email": "muhammedjoraboyev1@gmail.com",
+      "email": "joraboymuhammad@gmail.com",
       "gifts": [
         {
-          "id": "gift_1792251954488_q2go",
+          "id": "gift_1792252030809_1dx5",
           "quizId": "quiz_1792251905814_jg75l",
-          "name": "Bo'sh Qolgan Parfyum Flakoni",
-          "icon": "🧴",
-          "desc": "Hidi qolgan, lekin ichidan havodan boshqa hech narsa chiqmaydi!",
+          "name": "Chala Yeyilgan Xurmo",
+          "icon": "🫐",
+          "desc": "Og'izni g'ijim qilib bog'laydigan mevali syurpriz!",
           "rank": 1,
           "quizTitle": "English Quiz Battle #2",
-          "wonAt": 1792251954489,
-          "read": true
+          "wonAt": 1792252030809
         },
         {
-          "id": "gift_1792251666911_m8fd",
+          "id": "gift_1792251676106_s8fd",
           "quizId": "quiz_1792249091127_oac0w",
-          "name": "Teshik Qoshiq (Sho'rva uchun)",
-          "icon": "🥄",
-          "desc": "Qat'iy parhez tutayotganlar uchun eng samarali oshxona quroli!",
+          "name": "Singan Futbol To'pi (Yassi)",
+          "icon": "⚽",
+          "desc": "Tepsa uchmaydigan, faqat yerda dumalaydigan charm qoplama!",
           "rank": 1,
           "quizTitle": "English Quiz Battle #1",
-          "wonAt": 1792251666911,
-          "read": true
+          "wonAt": 1792251676106
         },
         {
-          "id": "gift_1792249127338",
+          "id": "gift_1792251614316_56dp",
           "quizId": "quiz_1792249091127_oac0w",
-          "name": "Plastik Qoraygan Qoshiqcha",
-          "icon": "🥄",
-          "desc": "Issiq choyga solganda egilib qolgan bir martalik qoshiq!",
+          "name": "Dastasi Yo'q Bolg'a",
+          "icon": "🔨",
+          "desc": "Faqat temir boshidan iborat og'ir vaznli mo''jiza!",
           "rank": 1,
           "quizTitle": "English Quiz Battle #1",
-          "wonAt": 1792249127338,
-          "read": true
+          "wonAt": 1792251614316
         },
         {
-          "id": "gift_1792246216833",
+          "id": "gift_1792249161568",
+          "quizId": "quiz_1792249091127_oac0w",
+          "name": "Eski CD Disk (Ustida tirnalgan izlar)",
+          "icon": "💿",
+          "desc": "Faqat 3-qo'shiqni chala o'qiydigan lazer disk!",
+          "rank": 1,
+          "quizTitle": "English Quiz Battle #1",
+          "wonAt": 1792249161568
+        },
+        {
+          "id": "gift_1792246235202",
           "quizId": "quiz_1792246158844_bdyw5",
-          "name": "Singan Cho'p Muzqaymoq Cho'pi",
-          "icon": "🪵",
-          "desc": "Ustida 'Yana bitta yuting' degan yozuvi o'chib ketgan cho'p!",
+          "name": "Kamera Ko'zi Yopilgan Skotch",
+          "icon": "📹",
+          "desc": "Xavfsizlik uchun noutbuk kamerasiga yopishtirilgan qora lenta!",
           "rank": 1,
           "quizTitle": "English Quiz Battle #2",
-          "wonAt": 1792246216833,
-          "read": true
+          "wonAt": 1792246235202
         },
         {
-          "id": "gift_1792238420159",
+          "id": "gift_1792240968308",
           "quizId": "quiz_main_blitz",
-          "name": "Toshli Guruch Donasi",
-          "icon": "🍚",
-          "desc": "Osh yeyayotganda tishga qirsillab tegadigan yagona donacha!",
+          "name": "G'ildiragi Yo'q Samokat",
+          "icon": "🛴",
+          "desc": "Ustiga chiqib turish mumkin, lekin harakatlanmaydi!",
           "rank": 1,
           "quizTitle": "English Vocabulary & Grammar Blitz Battle",
-          "wonAt": 1792238420159,
-          "read": true
+          "wonAt": 1792240968308
         }
       ],
-      "createdAt": 1792251520207,
+      "createdAt": 1792251523891,
       "coins": 100000,
       "level": "A1",
-      "initial100kBonusGiven": true,
-      "dailyMinutes": 2036,
-      "updatedAt": 1792331171574,
       "avatar": "boy_dragon_god",
+      "dailyMinutes": 2036,
       "nameStyle": "blazing",
-      "title": "⚡ Grammatika Terminatori"
+      "title": "⚡ Grammatika Terminatori",
+      "updatedAt": 1792331175111
     },
     {
       "id": "std_live_test_1",
@@ -943,5 +946,5 @@
       "createdAt": 1792322765334
     }
   ],
-  "updatedAt": 1792331172181
+  "updatedAt": 1792331175656
 }
