@@ -11045,55 +11045,83 @@
     });
 
     var allAccounts = (S.accounts || []).concat(regUsers).concat(classStudents);
-    var studentMap = {};
+    var uniqueStudents = [];
 
     allAccounts.forEach(function(u) {
-      if (!u || u.role === 'teacher') return; // Teachers have NO coin system
-      var key = ((u.email && u.email.trim().toLowerCase()) || (u.id || u.name || '').toLowerCase()).trim();
-      if (!key) return;
+      if (!u || u.role === 'teacher') return;
+      var cleanName = (u.name || '').trim();
+      var cleanEmail = (u.email || '').trim().toLowerCase();
+      var cleanId = (u.id || '').trim();
+      if (!cleanName && !cleanEmail && !cleanId) return;
 
       var coinCount = (u.coins !== undefined && u.coins !== null) ? Number(u.coins) : 0;
 
-      if (!studentMap[key]) {
-        studentMap[key] = {
-          id: u.id || key,
-          name: u.name || "O\'quvchi",
-          email: u.email || '',
+      // Strict Deduplication: Match if same email OR same normalized name OR same id
+      var existing = uniqueStudents.find(function(s) {
+        var sameEmail = cleanEmail && s.email && (cleanEmail === s.email);
+        var sameName = cleanName && s.name && (cleanName.toLowerCase() === s.name.toLowerCase());
+        var sameId = cleanId && s.id && (cleanId === s.id);
+        return sameEmail || sameName || sameId;
+      });
+
+      if (!existing) {
+        uniqueStudents.push({
+          id: cleanId || cleanEmail || cleanName,
+          name: cleanName || "O'quvchi",
+          email: cleanEmail,
           level: u.level || 'A1',
           avatar: u.avatar || null,
           coins: coinCount,
           nameStyle: u.nameStyle || null,
           title: u.title || null,
           dailyMinutes: u.dailyMinutes || 0
-        };
+        });
       } else {
-        studentMap[key].coins = Math.max(studentMap[key].coins, coinCount);
-        if (u.avatar) studentMap[key].avatar = u.avatar;
-        if (u.level) studentMap[key].level = u.level;
-        if (u.nameStyle) studentMap[key].nameStyle = u.nameStyle;
-        if (u.title) studentMap[key].title = u.title;
+        existing.coins = Math.max(existing.coins, coinCount);
+        if (u.avatar) existing.avatar = u.avatar;
+        if (u.level) existing.level = u.level;
+        if (u.nameStyle) existing.nameStyle = u.nameStyle;
+        if (u.title) existing.title = u.title;
+        if (cleanEmail && !existing.email) existing.email = cleanEmail;
+        if ((u.dailyMinutes || 0) > (existing.dailyMinutes || 0)) existing.dailyMinutes = u.dailyMinutes;
       }
     });
 
-    // Ensure current active student is included with latest state
+    // Ensure current active student is updated or added without duplication
     if (S.user && S.user.role !== 'teacher') {
-      var myKey = ((S.user.email && S.user.email.trim().toLowerCase()) || (S.user.id || S.user.name || '').toLowerCase()).trim();
+      var myName = (S.user.name || '').trim().toLowerCase();
+      var myEmail = (S.user.email || '').trim().toLowerCase();
+      var myId = (S.user.id || '').trim();
       var myCoins = Number(S.user.coins || 0);
 
-      studentMap[myKey] = {
-        id: S.user.id || myKey,
-        name: S.user.name || "O\'quvchi",
-        email: S.user.email || '',
-        level: S.level || 'A1',
-        avatar: S.user.avatar || null,
-        coins: myCoins,
-        nameStyle: S.user.nameStyle || null,
-        title: S.user.title || null,
-        dailyMinutes: S.user.dailyMinutes || 0
-      };
+      var meInList = uniqueStudents.find(function(s) {
+        return (myEmail && s.email && s.email === myEmail) ||
+               (myName && s.name && s.name.toLowerCase() === myName) ||
+               (myId && s.id && s.id === myId);
+      });
+
+      if (meInList) {
+        meInList.coins = myCoins;
+        meInList.avatar = S.user.avatar || meInList.avatar;
+        meInList.level = S.level || S.user.level || meInList.level;
+        meInList.nameStyle = S.user.nameStyle || meInList.nameStyle;
+        meInList.title = S.user.title || meInList.title;
+      } else {
+        uniqueStudents.push({
+          id: myId || myEmail || S.user.name,
+          name: S.user.name || "O'quvchi",
+          email: myEmail,
+          level: S.level || 'A1',
+          avatar: S.user.avatar || null,
+          coins: myCoins,
+          nameStyle: S.user.nameStyle || null,
+          title: S.user.title || null,
+          dailyMinutes: S.user.dailyMinutes || 0
+        });
+      }
     }
 
-    var students = Object.values(studentMap);
+    var students = uniqueStudents;
     students.sort(function(a, b) {
       if (b.coins !== a.coins) return b.coins - a.coins;
       return (b.dailyMinutes || 0) - (a.dailyMinutes || 0);
@@ -12013,7 +12041,7 @@
     html += '<div class="eth-market-tabs-wrap">' +
       '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'packs' ? 'active' : '') + '" data-market-tab="packs">🎁 Qutilar (' + (window.ETHITH_PACKS || []).length + ' ta)</button>' +
       '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'boosters' ? 'active' : '') + '" data-market-tab="boosters">⚡ Kuchaytirgichlar (' + (window.ETHITH_BOOSTERS || []).length + ' ta)</button>' +
-      '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'p2p' ? 'active' : '') + '" data-market-tab="p2p">🏴‍☠️ Qora Bozor & Auksion (P2P)</button>' +
+      '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'p2p' ? 'active' : '') + '" data-market-tab="p2p">🏷️ Sotish & Savdo (P2P)</button>' +
       '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'cosmetics' ? 'active' : '') + '" data-market-tab="cosmetics">👑 VIP Pardozlar & Ovozlar</button>' +
       '<button type="button" class="eth-market-tab-btn ' + (_activeMarketTab === 'vault' ? 'active' : '') + '" data-market-tab="vault">🪙 Shaxsiy Seyf (Sell Vault)</button>' +
     '</div>';
@@ -12133,7 +12161,7 @@
 
       if (filteredListings.length === 0) {
         html += '<div class="eth-vault-empty">' +
-          '<div class="eth-vault-empty-icon">🏴‍☠️</div>' +
+          '<div class="eth-vault-empty-icon">🏷️</div>' +
           '<h3 style="font-size:18px;font-weight:800;color:#cbd5e1;margin-bottom:6px">Hozircha faol e\'lonlar yo\'q</h3>' +
           '<p style="font-size:13px;color:#64748b;max-width:420px;margin:0 auto 16px">Birinchi bo\'lib o\'zingizning nodir sovriningiz, emojingiz yoki personaj avataringizni auksionga chiqaring!</p>' +
           '<button type="button" class="eth-p2p-post-btn" id="btnEmptyPostP2P">+ E\'lon Berish</button>' +
@@ -12599,21 +12627,36 @@
         var listing = (S.p2pListings || []).find(function(l) { return l.id === lId; });
         if (!listing) return;
 
-        if (!confirm('Ushbu e\'lonni bekor qilib, buyumni qaytarib olishni tasdiqlaysizmi?')) return;
+        if (!confirm("Ushbu e'lonni bekor qilib, buyumni inventaringizga qaytarishni xohlaysizmi?")) return;
 
         var it = listing.item;
-        if (it.type === 'gift') {
-          if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
-          S.user.gifts.unshift(it);
-        } else if (it.type === 'emoji') {
-          if (!Array.isArray(S.user.unlockedEmojis)) S.user.unlockedEmojis = [];
-          if (S.user.unlockedEmojis.indexOf(it.emojiChar) === -1) S.user.unlockedEmojis.push(it.emojiChar);
-        } else if (it.type === 'avatar') {
-          if (!Array.isArray(S.user.unlockedAvatars)) S.user.unlockedAvatars = [];
-          if (S.user.unlockedAvatars.indexOf(it.avatarId) === -1) S.user.unlockedAvatars.push(it.avatarId);
+        if (it) {
+          if (it.type === 'gift' || it.type === 'prize') {
+            if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
+            S.user.gifts.unshift(it);
+          } else if (it.type === 'emoji' || it.emojiChar) {
+            var emChar = it.emojiChar || it.emoji || it.icon;
+            if (!Array.isArray(S.user.unlockedEmojis)) S.user.unlockedEmojis = [];
+            if (emChar && S.user.unlockedEmojis.indexOf(emChar) === -1) S.user.unlockedEmojis.push(emChar);
+          } else if (it.type === 'avatar' || it.avatarId) {
+            var avId = it.avatarId || it.id;
+            if (!Array.isArray(S.user.unlockedAvatars)) S.user.unlockedAvatars = [];
+            if (avId && S.user.unlockedAvatars.indexOf(avId) === -1) S.user.unlockedAvatars.push(avId);
+          }
         }
 
-        S.p2pListings = S.p2pListings.filter(function(l) { return l.id !== lId; });
+        // Remove from listings
+        S.p2pListings = (S.p2pListings || []).filter(function(l) { return l.id !== lId; });
+
+        // Explicitly record in deletedListingIds so sync poller never re-adds it!
+        if (!S.deletedListingIds) S.deletedListingIds = [];
+        if (S.deletedListingIds.indexOf(lId) === -1) S.deletedListingIds.push(lId);
+
+        try {
+          localStorage.setItem('ethith_p2p_listings', JSON.stringify(S.p2pListings));
+          localStorage.setItem('ethith_deleted_listing_ids', JSON.stringify(S.deletedListingIds));
+        } catch(e) {}
+
         App.saveState();
 
         if (window.EthithSync && window.EthithSync.publishLive) {
@@ -12624,7 +12667,7 @@
           if (window.EthithSync.pushRemoteStore) window.EthithSync.pushRemoteStore();
         }
 
-        alert("E'lon bekor qilindi, buyum inventaringizga qaytarildi.");
+        alert("E'lon bekor qilindi va buyum inventaringizga muvaffaqiyatli qaytarildi.");
         renderMarketView(container);
       };
     });
@@ -13027,7 +13070,7 @@
           '</label>' +
         '</div>' +
         '<button type="button" id="btnConfirmPostP2P" style="width:100%;padding:13px;background:linear-gradient(135deg, #10b981, #059669);border:none;border-radius:14px;color:#fff;font-weight:900;font-size:15px;cursor:pointer;box-shadow:0 6px 16px rgba(16,185,129,0.35)">' +
-          '🚀 Auksionga Chiqarish' +
+          '🏷️ Sotuvga Chiqarish' +
         '</button>';
     }
 

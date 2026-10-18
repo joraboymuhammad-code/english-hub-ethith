@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.18.0400",
-  "buildTime": 1792323600000,
-  "label": "ETHITH 7.7 - P2P Marketplace Listings Fix, Official Contacts (Gmail, Telegram, WhatsApp), Mobile/Telegram WebView Horizontal Overflow Fix, Real-Time Leaderboard Multi-Account Sync"
+  "version": "2026.10.18.0430",
+  "buildTime": 1792324200000,
+  "label": "ETHITH 7.8 - Fixed Sidebar Layout, Renamed Qora Bozor to Sotish, Fixed P2P Cancel Listing, Deduplicated Leaderboard Accounts"
 }

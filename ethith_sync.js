@@ -813,7 +813,7 @@
         var toast = document.createElement('div');
         toast.className = 'eth-live-toast-alert';
         toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:14px 28px;border-radius:16px;font-weight:800;z-index:2147483647;box-shadow:0 12px 35px rgba(0,0,0,0.4);border:2px solid #34d399;font-size:15px;text-align:center;';
-        toast.innerHTML = '🪙 <b>Qora Bozor Savdosi!</b><br>Sizning <b>' + (event.itemName || 'buyum') + '</b> buyumingiz <b>' + (event.buyerName || 'O\'quvchi') + '</b> tomonidan sotib olindi!<br><span style="color:#fef08a;font-size:18px">+' + event.price + ' ETHITH Coin</span>';
+        toast.innerHTML = '🪙 <b>Muvaffaqiyatli Savdo!</b><br>Sizning <b>' + (event.itemName || 'buyum') + '</b> buyumingiz <b>' + (event.buyerName || 'O\'quvchi') + '</b> tomonidan sotib olindi!<br><span style="color:#fef08a;font-size:18px">+' + event.price + ' ETHITH Coin</span>';
         document.body.appendChild(toast);
         setTimeout(function() { toast.remove(); }, 6000);
       }
