@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.19.2248",
-  "buildTime": 1792435700000,
-  "label": "ETHITH 9.5.1 - Calibrated Oxford Navigate B1+ Unit 1.1 Coordinates (Perfect Alignment on Physical Book Pages)"
+  "version": "2026.10.19.2255",
+  "buildTime": 1792436100000,
+  "label": "ETHITH 9.5.2 - Fixed Boshlash Button Click Event & Exposed window.go for Instant Unit 1.1 Opening"
 }

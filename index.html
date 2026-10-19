@@ -233,6 +233,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -55644,6 +55645,21 @@ window.NAVIGATE_CURRICULUM = {
     });
   };
 
+  // Open Lesson Helper with robust multi-layer fallback
+  WB.openLesson = function(unitNum, lessonCode, pageNum) {
+    unitNum = parseInt(unitNum, 10) || 1;
+    lessonCode = lessonCode || '1.1';
+    pageNum = parseInt(pageNum, 10) || 4;
+    var apView = document.getElementById('apView');
+    if (window.go) {
+      window.go('intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum });
+    } else if (window.ethithOpenApp) {
+      window.ethithOpenApp('intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum });
+    } else if (apView) {
+      renderLesson1_1(apView, pageNum);
+    }
+  };
+
   // Main Intermediate View Entry Point
   window.EthithViews = window.EthithViews || {};
   window.EthithViews.renderIntermediateView = function(container, arg) {
@@ -55700,12 +55716,16 @@ window.NAVIGATE_CURRICULUM = {
       if (isAvail && u.lessons) {
         h += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">';
         u.lessons.forEach(function(les) {
-          h += '<div class="eth-wb-lesson-row" data-unit="' + u.unit + '" data-lesson="' + les.code + '" style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:' + (les.active ? 'rgba(14,165,233,0.1)' : 'var(--soft)') + ';border:1px solid ' + (les.active ? 'rgba(56,189,248,0.4)' : 'transparent') + ';cursor:' + (les.active ? 'pointer' : 'default') + ';transition:all 0.2s;">' +
+          h += '<div class="eth-wb-lesson-row" data-unit="' + u.unit + '" data-lesson="' + les.code + '" ' +
+            (les.active ? 'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\', 4);"' : '') +
+            ' style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:' + (les.active ? 'rgba(14,165,233,0.12)' : 'var(--soft)') + ';border:1.5px solid ' + (les.active ? '#38bdf8' : 'transparent') + ';cursor:' + (les.active ? 'pointer' : 'default') + ';transition:all 0.2s;">' +
             '<div style="min-width:0;flex:1;">' +
-              '<div style="font-size:13px;font-weight:800;color:' + (les.active ? '#0284c7' : 'var(--text)') + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+              '<div style="font-size:13.5px;font-weight:800;color:' + (les.active ? '#0284c7' : 'var(--text)') + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
               '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
             '</div>' +
-            '<button style="flex:none;background:' + (les.active ? '#0284c7' : 'var(--line)') + ';color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:800;cursor:pointer;">' +
+            '<button type="button" ' +
+              (les.active ? 'onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\', 4);"' : '') +
+              ' style="flex:none;background:' + (les.active ? 'linear-gradient(135deg, #0284c7, #154b89)' : 'var(--line)') + ';color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:' + (les.active ? '0 4px 14px rgba(2,132,199,0.45)' : 'none') + ';">' +
               (les.active ? 'Boshlash ➔' : 'Tez kunda') +
             '</button>' +
           '</div>';
@@ -55726,15 +55746,18 @@ window.NAVIGATE_CURRICULUM = {
 
     // Attach click events on lesson rows
     container.querySelectorAll('.eth-wb-lesson-row').forEach(function(row) {
-      row.addEventListener('click', function() {
+      row.addEventListener('click', function(e) {
         var un = this.getAttribute('data-unit');
         var les = this.getAttribute('data-lesson');
         if (les === '1.1') {
-          if (window.go) window.go('intermediate', { unit: parseInt(un, 10), lesson: les, page: 4 });
+          WB.openLesson(un, les, 4);
         }
       });
     });
   }
+
+  WB.renderUnitsCatalog = renderUnitsCatalog;
+  WB.renderLesson1_1 = renderLesson1_1;
 
   // 2. Interactive Digital Workbook Viewer (Unit 1.1)
   function renderLesson1_1(container, activePage) {
@@ -57459,6 +57482,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
   };
 
   window._ethithInternalGo = go;
+  window.go = go;
   function go(n, a) {
     if (!S.user) {
       App.showAuthModal();
@@ -57475,6 +57499,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     $('apSide').classList.remove('open');
     $('apOv').classList.remove('show');
   }
+  window.go = go;
 
   function render() {
     if (view.name !== 'quiz') {
