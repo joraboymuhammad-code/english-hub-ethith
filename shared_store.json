@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792036856757,
+      "created": 1792386786198,
       "students": [
         {
           "id": "std_sync_test",
@@ -972,6 +972,13 @@
       "coins": 0,
       "dailyMinutes": 5,
       "updatedAt": 1792321974547
+    },
+    {
+      "id": "tc_5sp5pd4im",
+      "role": "teacher",
+      "name": "Azizbek",
+      "email": "azizbekurolov24@gmail.com",
+      "createdAt": 1792387056897
     }
   ],
   "p2pListings": [
@@ -994,5 +1001,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792386702921
+  "updatedAt": 1792387059884
 }
