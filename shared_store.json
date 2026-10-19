@@ -974,6 +974,25 @@
       "updatedAt": 1792321974547
     }
   ],
-  "p2pListings": [],
-  "updatedAt": 1792383407211
+  "p2pListings": [
+    {
+      "id": "p2p_1792383468123_seg5",
+      "sellerId": "st_kzja6hz7s",
+      "sellerName": "Shamshod",
+      "sellerEmail": "strikeruzb52@gmail.com",
+      "item": {
+        "type": "gift",
+        "index": 0,
+        "id": "gift_0",
+        "name": "Teshik Soyabon",
+        "icon": "☂️",
+        "rarity": "Rare",
+        "desc": "Yomg'irda boshingizni emas, yelkangizni ho'l qiladigan maxsus model!"
+      },
+      "price": 5000,
+      "allowBarter": true,
+      "createdAt": 1792383468123
+    }
+  ],
+  "updatedAt": 1792383469704
 }
