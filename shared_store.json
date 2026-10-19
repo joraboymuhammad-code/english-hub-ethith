@@ -923,39 +923,6 @@
         }
       ],
       "submissions": []
-    },
-    {
-      "id": "exam_1792388305633",
-      "code": "MCK-6ZV&46Z",
-      "title": "English Examination 2026",
-      "duration": 30,
-      "pointsPerQ": 2,
-      "isPublic": true,
-      "maxAttempts": 10,
-      "audioData": null,
-      "audioName": null,
-      "audioMaxPlays": 1,
-      "pdfData": null,
-      "pdfName": null,
-      "isLevelTransition": false,
-      "levelFrom": null,
-      "levelTo": null,
-      "questions": [
-        {
-          "id": 1,
-          "type": "choice",
-          "question": "xdfgxdgfxg",
-          "options": [
-            "fcgcfg",
-            "gcfgcfg",
-            "cfgcfgf",
-            "cfg"
-          ],
-          "answer": "fcgcfg",
-          "points": 2
-        }
-      ],
-      "submissions": []
     }
   ],
   "deletedExamIds": [
@@ -988,7 +955,9 @@
     "exam_1792158596312",
     "624941",
     "exam_1792163386283",
-    "886265"
+    "886265",
+    "exam_1792388305633",
+    "MCK-6ZV&46Z"
   ],
   "deletedListingIds": [
     "p2p_1792322748592_nls2",
@@ -1295,5 +1264,5 @@
       "createdAt": 1792417155969
     }
   ],
-  "updatedAt": 1792427523791
+  "updatedAt": 1792427574662
 }
