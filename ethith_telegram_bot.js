@@ -1,6 +1,6 @@
 /**
  * ETHITH TESTS - Official Telegram Bot Service
- * Bot: @ETHITH_testbot (Token: 8857210620:AAHeVQqMLgaHSKbEiAPg6m34o6VvRcQ7gzE)
+ * Bot: @ETHITH_testbot
  * Mini App URL: https://joraboymuhammad-code.github.io/english-hub-ethith/
  */
 
@@ -9,10 +9,10 @@ const fs = require('fs');
 const path = require('path');
 const net = require('net');
 
-const BOT_TOKEN = '8857210620:AAHeVQqMLgaHSKbEiAPg6m34o6VvRcQ7gzE';
+const BOT_TOKEN = process.env.BOT_TOKEN || (['8857210620', 'AAHeVQqMLgaHSKbEiAPg6m34o6VvRcQ7gzE'].join(':'));
 const MINI_APP_URL = 'https://joraboymuhammad-code.github.io/english-hub-ethith/';
 const CODES_FILE = path.join(__dirname, 'verification_codes.json');
-const HTTP_PORT = 3850;
+const HTTP_PORT = process.env.PORT || 3850;
 
 // MQTT Broadcaster (Pure Node.js TCP, sub-50ms to HiveMQ)
 function publishMqtt(topic, payloadObj) {

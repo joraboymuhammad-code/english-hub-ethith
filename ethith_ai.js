@@ -57,7 +57,7 @@
 
         try {
           var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-          var timeoutId = controller ? setTimeout(function() { controller.abort(); }, 12000) : null;
+          var timeoutId = controller ? setTimeout(function() { controller.abort(); }, 25000) : null;
 
           var fetchOptions = {
             method: 'POST',
@@ -245,12 +245,14 @@
 
     var rawResponse = await callGeminiRaw(payload, 'gemini-flash-lite-latest');
     var cleanJson = (rawResponse || '').replace(/```json/gi, '').replace(/```/g, '').trim();
+    var jsonMatch = cleanJson.match(/\{[\s\S]*\}/);
+    if (jsonMatch) cleanJson = jsonMatch[0];
     try {
       var parsed = JSON.parse(cleanJson);
       return parsed;
     } catch(err) {
-      console.error('Failed to parse Gemini exam JSON:', err, cleanJson);
-      throw err;
+      console.warn('Failed to parse Gemini exam JSON, will use local fallback:', err);
+      return null;
     }
   }
 

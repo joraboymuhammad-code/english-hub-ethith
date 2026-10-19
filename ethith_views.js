@@ -682,6 +682,11 @@
   }
 
   function renderLevelsView(container, levelKey) {
+    if (window.renderNavigateView) {
+      var navKey = (levelKey === 'upperIntermediate' || levelKey === 'B2') ? 'upperIntermediate' : 'intermediate';
+      window.renderNavigateView(container, navKey);
+      return;
+    }
     window._ethithCurrentView = 'levels';
     window._ethithIsTestInProgress = false;
     window._ethithRefreshQuizList = null;
@@ -3302,13 +3307,39 @@
 
             if (aiRes && Array.isArray(aiRes.questions) && aiRes.questions.length > 0) {
               aiRes.questions.forEach(function(q, idx) {
+                var rawType = String(q.type || '').toLowerCase();
+                var qType = 'choice';
+                if (rawType.includes('bool') || rawType.includes('true') || (Array.isArray(q.options) && q.options.length === 2 && /true/i.test(q.options[0]))) {
+                  qType = 'bool';
+                } else if (rawType.includes('writ') || rawType.includes('gap') || rawType.includes('fill') || !q.options || q.options.length === 0) {
+                  qType = 'written';
+                }
+
+                var cleanOptions = [];
+                if (qType === 'bool') {
+                  cleanOptions = ['True', 'False'];
+                } else if (Array.isArray(q.options)) {
+                  cleanOptions = q.options.map(function(opt) {
+                    return String(opt || '').replace(/^[A-Da-d1-4][\.\)]\s*/, '').trim();
+                  }).filter(Boolean);
+                }
+
+                var cleanAns = String(q.answer || '').replace(/^[A-Da-d1-4][\.\)]\s*/, '').trim();
+                var letterIdx = ['a', 'b', 'c', 'd'].indexOf(String(q.answer || '').trim().toLowerCase().replace(/[\.\)]/, ''));
+                if (letterIdx !== -1 && cleanOptions[letterIdx]) {
+                  cleanAns = cleanOptions[letterIdx];
+                }
+                if (!cleanAns) {
+                  cleanAns = (qType === 'bool') ? 'True' : (cleanOptions[0] || 'A');
+                }
+
                 questionsList.push({
                   id: questionsList.length + 1,
                   num: q.num || (idx + 1),
-                  type: q.type || 'choice',
-                  question: q.question,
-                  options: q.options || (q.type === 'bool' ? ['True', 'False'] : []),
-                  answer: q.answer || (q.type === 'bool' ? 'True' : ((q.options && q.options[0]) || 'Jawob kiritilmagan')),
+                  type: qType,
+                  question: String(q.question || '').replace(/^\d+[\.\)]\s*/, '').trim(),
+                  options: cleanOptions,
+                  answer: cleanAns,
                   points: q.points || currentPoints || 2
                 });
               });
@@ -3956,354 +3987,13 @@
         window.addEventListener('click', ensureFullscreen, true);
       }
 
-      // 4. Prominent Mirrored WebCam Picture-in-Picture Box (Floating top-right)
-      var camBox = document.createElement('div');
-      camBox.className = 'eth-proctor-cam-box';
-      camBox.id = 'proctorCamBox';
-      camBox.innerHTML = '' +
-        '<div class="eth-cam-header">' +
-        '  <div style="display:flex;align-items:center">' +
-        '    <span class="eth-cam-dot" id="proctorCamDot"></span>' +
-        '    <span id="proctorCamTitle">' + (isTeacher ? '👨‍🏫 Ustoz Sinovi' : 'Kamera Nazorati') + '</span>' +
-        '  </div>' +
-        '  <div style="display:flex;align-items:center;gap:4px">' +
-        '    <span class="eth-cam-badge" id="proctorCamAngle">' + (isTeacher ? 'Nazoratsiz' : 'To\'g\'ri: 0°') + '</span>' +
-        '    <button type="button" class="eth-cam-btn-min" id="btnMinCam" title="Kichraytirish / Yashirish">—</button>' +
-        '  </div>' +
-        '</div>' +
-        '<div class="eth-cam-video-wrap">' +
-        '  <video id="proctorVideo" autoplay playsinline muted></video>' +
-        '  <div class="eth-cam-target-oval" id="proctorOval">' +
-        '    <span class="eth-cam-pt" style="top:18%;left:50%" title="Peshona"></span>' +
-        '    <span class="eth-cam-pt" style="top:36%;left:30%" title="Chap ko\'z"></span>' +
-        '    <span class="eth-cam-pt" style="top:36%;left:70%" title="O\'ng ko\'z"></span>' +
-        '    <span class="eth-cam-pt" style="top:52%;left:50%" title="Burun"></span>' +
-        '    <span class="eth-cam-pt" style="top:52%;left:18%" title="Chap yuz"></span>' +
-        '    <span class="eth-cam-pt" style="top:52%;left:82%" title="O\'ng yuz"></span>' +
-        '    <span class="eth-cam-pt" style="top:72%;left:36%" title="Lab chap"></span>' +
-        '    <span class="eth-cam-pt" style="top:72%;left:64%" title="Lab o\'ng"></span>' +
-        '    <span class="eth-cam-pt" style="top:88%;left:50%" title="Iyak"></span>' +
-        '  </div>' +
-        '</div>' +
-        '<div class="eth-cam-footer" id="proctorStudentName">' +
-        (isTeacher ?
-          '  👤 <b style="font-weight:900;letter-spacing:0.3px">' + esc((S.user && S.user.name) || 'Ustoz') + '</b> · Cheklovlar O\'chirilgan' :
-          '  👤 <b style="font-weight:900;letter-spacing:0.3px">' + esc((S.user && S.user.name) || 'O\'quvchi') + '</b> · 65° AI Biometrik Yuz Trekeri (Foto-Dalil)'
-        ) +
-        '</div>';
-      lockdownModal.appendChild(camBox);
-      makeElementDraggableAndCollapsible(camBox, camBox.querySelector('.eth-cam-header'), camBox.querySelector('#btnMinCam'));
-
-      var proctorVideo = document.getElementById('proctorVideo');
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({
-          video: { width: { ideal: 320 }, height: { ideal: 240 }, facingMode: 'user' }
-        }).then(function(stream) {
-          proctorStream = stream;
-          var vid = document.getElementById('proctorVideo');
-          if (vid) {
-            vid.srcObject = stream;
-            vid.onloadedmetadata = function() {
-              vid.play().catch(function(){});
-            };
-          }
-        }).catch(function(err) {
-          console.warn("Kamera xatosi:", err);
-        });
-      }
-
-      // Helper: Capture instant camera snapshot for photographic proof
+      // Camera proctoring completely disabled
       function captureProctorSnapshot() {
-        try {
-          var v = document.getElementById('proctorVideo');
-          if (v && v.videoWidth && v.videoHeight) {
-            var snapC = document.createElement('canvas');
-            snapC.width = 320;
-            snapC.height = 240;
-            var snapCtx = snapC.getContext('2d');
-            snapCtx.drawImage(v, 0, 0, 320, 240);
-            return snapC.toDataURL('image/jpeg', 0.80);
-          }
-        } catch(e) {}
         return null;
       }
 
-      // 5. Algorithmic Pure JS/Canvas 65° Biometric Face Landmark Tracker (2.5s continuous hold)
-      if (!isTeacher) {
-        var offCanvas = document.createElement('canvas');
-        offCanvas.width = 160;
-        offCanvas.height = 120;
-        var offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
-        var noFaceTicks = 0;
 
-        proctorInterval = setInterval(function() {
-          if (!proctorVideo || !proctorVideo.videoWidth || isExamLocked || isExamFinished) return;
-          try {
-            offCtx.drawImage(proctorVideo, 0, 0, 160, 120);
-            var imgData = offCtx.getImageData(0, 0, 160, 120);
-            var pixels = imgData.data;
-
-            var skinCoords = [];
-            var darkCoords = [];
-
-            // Upper/middle head region: y from 16 to 78, x from 12 to 148
-            for (var y = 16; y <= 78; y += 2) {
-              for (var x = 12; x <= 148; x += 2) {
-                var idx = (y * 160 + x) * 4;
-                var r = pixels[idx], g = pixels[idx + 1], b = pixels[idx + 2];
-                var lum = 0.299 * r + 0.587 * g + 0.114 * b;
-
-                var satRed = (r - b) / (r + 1);
-                var satGreen = (r - g) / (r + 1);
-                var isSkin = (
-                  r > 60 && g > 35 && b > 20 &&
-                  r > g && r > b &&
-                  satRed >= 0.18 &&
-                  satGreen >= 0.09 &&
-                  (r - g) >= 7 &&
-                  lum >= 45 && lum <= 220
-                );
-
-                var isDark = (lum < 52 && (r + g + b) < 140);
-
-                if (isSkin) skinCoords.push(x, y);
-                else if (isDark) darkCoords.push(x, y);
-              }
-            }
-
-            var oval = document.getElementById('proctorOval');
-            var angleBadge = document.getElementById('proctorCamAngle');
-            var dot = document.getElementById('proctorCamDot');
-
-            // Distance & scale tolerance:
-            // Only flag if NO face is detected at all for 12 consecutive intervals (3.0 seconds)
-            if (skinCoords.length < 32) {
-              noFaceTicks++;
-              if (oval) {
-                oval.style.left = '50%';
-                oval.style.top = '50%';
-                oval.style.width = '85px';
-                oval.style.height = '115px';
-                oval.style.transform = 'translate(-50%, -50%)';
-              }
-              if (noFaceTicks >= 12) {
-                if (angleBadge) {
-                  angleBadge.textContent = "Yuz yo\'q";
-                  angleBadge.className = 'eth-cam-badge danger';
-                }
-                if (dot) dot.className = 'eth-cam-dot danger';
-                if (oval) oval.className = 'eth-cam-target-oval danger';
-                var missingSnap = captureProctorSnapshot();
-                playTitTitAlarm(6);
-                triggerInfraction("Kamerada o\'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro\'parasida o\'tiring)", missingSnap);
-              }
-              return;
-            }
-            noFaceTicks = 0;
-
-            var minX = 160, maxX = 0, minY = 120, maxY = 0;
-            var sumX = 0, sumY = 0;
-            var numSkin = skinCoords.length / 2;
-            for (var si = 0; si < skinCoords.length; si += 2) {
-              var sx = skinCoords[si];
-              var sy = skinCoords[si + 1];
-              if (sx < minX) minX = sx;
-              if (sx > maxX) maxX = sx;
-              if (sy < minY) minY = sy;
-              if (sy > maxY) maxY = sy;
-              sumX += sx;
-              sumY += sy;
-            }
-            var avgSkinX = sumX / numSkin;
-            var avgSkinY = sumY / numSkin;
-            var skinH = Math.max(30, maxY - minY);
-
-            // Compute standard deviation of skin pixels to eliminate outlier background pixels
-            var sumSqDiffX = 0, sumSqDiffY = 0;
-            for (var sdi = 0; sdi < skinCoords.length; sdi += 2) {
-              var ddx = skinCoords[sdi] - avgSkinX;
-              var ddy = skinCoords[sdi + 1] - avgSkinY;
-              sumSqDiffX += ddx * ddx;
-              sumSqDiffY += ddy * ddy;
-            }
-            var stdX = Math.sqrt(sumSqDiffX / numSkin);
-            var stdY = Math.sqrt(sumSqDiffY / numSkin);
-
-            var faceMinX = Math.max(10, Math.round(avgSkinX - 1.6 * stdX));
-            var faceMaxX = Math.min(150, Math.round(avgSkinX + 1.6 * stdX));
-            var faceMinY = Math.max(10, Math.round(avgSkinY - 1.5 * stdY));
-            var faceMaxY = Math.min(95, Math.round(avgSkinY + 1.5 * stdY));
-            var faceMidX = (faceMinX + faceMaxX) / 2;
-            var faceMidY = (faceMinY + faceMaxY) / 2;
-            var faceW = Math.max(26, faceMaxX - faceMinX);
-            var faceH = Math.max(34, faceMaxY - faceMinY);
-
-            // 1. Dark Headphone / Hair Profile Asymmetry
-            var darkLeft = 0, darkRight = 0;
-            for (var di = 0; di < darkCoords.length; di += 2) {
-              var dpx = darkCoords[di];
-              var dpy = darkCoords[di + 1];
-              if (dpy >= minY - 6 && dpy <= maxY + 6) {
-                if (dpx < avgSkinX) darkLeft++;
-                else darkRight++;
-              }
-            }
-            var maxDark = Math.max(darkLeft, darkRight);
-            var minDark = Math.min(darkLeft, darkRight);
-            var darkRatio = (maxDark + 5) / (minDark + 5);
-            var yawFromDark = Math.min(90, Math.max(0, Math.round((darkRatio - 1.30) * 42)));
-
-            // 2. Eye Occlusion in Eye Band (y in [minY + 0.18*H, minY + 0.48*H])
-            var eyeY1 = Math.round(minY + skinH * 0.18);
-            var eyeY2 = Math.round(minY + skinH * 0.48);
-            var eyeLeftDark = 0, eyeRightDark = 0;
-            for (var ey = eyeY1; ey <= eyeY2; ey += 2) {
-              for (var ex = minX; ex <= maxX; ex += 2) {
-                var eidx = (ey * 160 + ex) * 4;
-                var er = pixels[eidx], eg = pixels[eidx + 1], eb = pixels[eidx + 2];
-                var elum = 0.299 * er + 0.587 * eg + 0.114 * eb;
-                if (elum < 42) {
-                  if (ex < avgSkinX) eyeLeftDark++;
-                  else eyeRightDark++;
-                }
-              }
-            }
-            var eyeDarkTotal = eyeLeftDark + eyeRightDark;
-            var eyeDarkRatio = (eyeDarkTotal > 6) ? Math.abs(eyeLeftDark - eyeRightDark) / (eyeDarkTotal + 1) : 0;
-            var oneEyeOccluded = (eyeDarkRatio > 0.65);
-
-            // 3. 3D Cylindrical Width Compression
-            var normalFaceW = 75;
-            var compressionRatio = Math.max(0.15, Math.min(1.0, faceW / normalFaceW));
-            var yawFromWidth = Math.round(Math.acos(compressionRatio) * (180 / Math.PI));
-
-            // 4. Internal Skin Distribution Asymmetry
-            var skinL = 0, skinR = 0;
-            for (var si2 = 0; si2 < skinCoords.length; si2 += 2) {
-              if (skinCoords[si2] < faceMidX) skinL++;
-              else skinR++;
-            }
-            var skinAsym = (skinL + skinR) > 0 ? (Math.abs(skinL - skinR) / (skinL + skinR + 1)) : 0;
-            var yawFromSkinAsym = Math.round(skinAsym * 45);
-
-            // 5. Unified 3D Head Yaw
-            var angleHeadYaw = Math.min(90, Math.max(
-              yawFromDark,
-              Math.round(yawFromWidth * 0.70 + yawFromSkinAsym * 0.30)
-            ));
-
-            // Profile check: if one eye is occluded and face width is compressed, head is turned in profile (> 65°)
-            if (oneEyeOccluded && faceW < 60) {
-              angleHeadYaw = Math.max(angleHeadYaw, 75);
-            }
-
-            var turnSide = (darkLeft > darkRight || eyeLeftDark > eyeRightDark) ? 1 : -1;
-            var signedYaw = angleHeadYaw * turnSide;
-
-            // 6. 3D Pitch
-            var pitchDev = Math.round((avgSkinY - 48) * 1.5);
-            var anglePitch = Math.max(-85, Math.min(85, pitchDev));
-            var isPitchExtreme = (avgSkinY < 16 || avgSkinY > 86);
-
-            // Dynamic 3D Oval & Biometric Landmark Rotation:
-            if (oval) {
-              var screenXPercent = ((160 - faceMidX) / 160) * 100;
-              var screenYPercent = (faceMidY / 120) * 100;
-              var ovalPxW = Math.max(72, Math.min(130, Math.round(faceW * 1.30)));
-              var ovalPxH = Math.max(92, Math.min(145, Math.round(faceH * 1.35)));
-
-              // 3D Perspective Rotation of the Oval:
-              var rotY = (-signedYaw * 0.85).toFixed(1);
-              var rotX = (anglePitch * 0.50).toFixed(1);
-
-              oval.style.left = screenXPercent.toFixed(1) + '%';
-              oval.style.top = screenYPercent.toFixed(1) + '%';
-              oval.style.width = ovalPxW + 'px';
-              oval.style.height = ovalPxH + 'px';
-              oval.style.transform = 'translate(-50%, -50%) perspective(300px) rotateY(' + rotY + 'deg) rotateX(' + rotX + 'deg)';
-
-              // Dynamic 3D Perspective Projection for 9 Landmark Points:
-              var pts = oval.querySelectorAll('.eth-cam-pt');
-              if (pts && pts.length === 9) {
-                var rad = (signedYaw * (Math.PI / 180)) * 0.85;
-                var cosY = Math.cos(rad);
-                var sinY = Math.sin(rad);
-
-                var basePts = [
-                  { x: 0,     y: -0.65, z: 0.10 },
-                  { x: -0.32, y: -0.25, z: 0.05 },
-                  { x: 0.32,  y: -0.25, z: 0.05 },
-                  { x: 0,     y: 0.05,  z: 0.45 },
-                  { x: -0.65, y: 0.08,  z: -0.15},
-                  { x: 0.65,  y: 0.08,  z: -0.15},
-                  { x: -0.25, y: 0.45,  z: 0.20 },
-                  { x: 0.25,  y: 0.45,  z: 0.20 },
-                  { x: 0,     y: 0.78,  z: 0.25 }
-                ];
-
-                for (var pi = 0; pi < 9; pi++) {
-                  var bp = basePts[pi];
-                  var rx = bp.x * cosY + bp.z * sinY;
-                  var rz = -bp.x * sinY + bp.z * cosY;
-
-                  var px = 50 + rx * 44;
-                  var py = 50 + bp.y * 44;
-                  var pOpacity = Math.max(0.25, Math.min(1.0, (rz + 0.6) / 1.0));
-
-                  pts[pi].style.left = px.toFixed(1) + '%';
-                  pts[pi].style.top = py.toFixed(1) + '%';
-                  pts[pi].style.opacity = pOpacity.toFixed(2);
-                }
-              }
-            }
-
-            // Violation evaluation:
-            // Normal (< 50°) -> Green ("To\'g'ri: XX°")
-            // 50° - 64° -> Yellow Warning ("Burilish: XX°"), NO lock!
-            // >= 65° continuous for 2.5 seconds (10 ticks) -> DANGER: takes photo snapshot & locks!
-            var isDanger = (angleHeadYaw >= 65) || isPitchExtreme;
-            var isWarn = (angleHeadYaw >= 50 && !isDanger);
-            var estimatedAngle = angleHeadYaw;
-
-            if (angleBadge) {
-              if (!isWarn && !isDanger) {
-                angleBadge.textContent = "To\'g'ri: " + estimatedAngle + "°";
-                angleBadge.className = 'eth-cam-badge';
-                if (dot) dot.className = 'eth-cam-dot';
-                if (oval) oval.className = 'eth-cam-target-oval';
-              } else if (isWarn) {
-                angleBadge.textContent = "Burilish: " + estimatedAngle + "°";
-                angleBadge.className = 'eth-cam-badge warn';
-                if (dot) dot.className = 'eth-cam-dot warn';
-                if (oval) oval.className = 'eth-cam-target-oval warn';
-              } else {
-                var secLeft = Math.max(0, ((10 - turnInfractionFrames) * 0.25)).toFixed(1);
-                angleBadge.textContent = "XAVF: " + estimatedAngle + "° (" + secLeft + "s)";
-                angleBadge.className = 'eth-cam-badge danger';
-                if (dot) dot.className = 'eth-cam-dot danger';
-                if (oval) oval.className = 'eth-cam-target-oval danger';
-              }
-            }
-
-            // Only trigger alarm and lock if head turns >= 65° continuously for 2.5 seconds (10 ticks)
-            if (isDanger) {
-              turnInfractionFrames++;
-              if (turnInfractionFrames >= 10) {
-                var proofSnap = captureProctorSnapshot();
-                playTitTitAlarm(6);
-                if (isPitchExtreme) {
-                  triggerInfraction("O\'quvchi boshini 80° dan ortiq tepaga/pastga burib 2.5 soniya turdi", proofSnap);
-                } else {
-                  triggerInfraction("O\'quvchi boshini 65° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
-                }
-              }
-            } else {
-              turnInfractionFrames = 0;
-            }
-          } catch(err) {}
-        }, 250);
-      }
-
+      // Camera face tracking removed
       // 6. Trigger Infraction & Lock Exam with Photographic Proof
       function triggerInfraction(reason, violationSnapshot) {
         if (isTeacher || isExamLocked || isExamFinished) return;
@@ -6136,17 +5826,6 @@
       document.body.classList.add('proctored-fullscreen-mode');
 
       function captureProctorSnapshot() {
-        try {
-          var v = document.getElementById('proctorVideo');
-          if (v && v.videoWidth && v.videoHeight) {
-            var snapC = document.createElement('canvas');
-            snapC.width = 320;
-            snapC.height = 240;
-            var snapCtx = snapC.getContext('2d');
-            snapCtx.drawImage(v, 0, 0, 320, 240);
-            return snapC.toDataURL('image/jpeg', 0.80);
-          }
-        } catch(e) {}
         return null;
       }
 
@@ -6294,329 +5973,7 @@
       document.addEventListener('MSFullscreenChange', onFullscreenChange);
       window.addEventListener('click', ensureFullscreen, true);
 
-      // Camera Box for Placement Test
-      var camBox = document.createElement('div');
-      camBox.className = 'eth-proctor-cam-box';
-      camBox.id = 'proctorCamBox';
-      camBox.innerHTML = '' +
-        '<div class="eth-cam-header">' +
-        '  <div style="display:flex;align-items:center">' +
-        '    <span class="eth-cam-dot" id="proctorCamDot"></span>' +
-        '    <span id="proctorCamTitle">Kamera Nazorati</span>' +
-        '  </div>' +
-        '  <div style="display:flex;align-items:center;gap:4px">' +
-        '    <span class="eth-cam-badge" id="proctorCamAngle">To\'g\'ri: 0°</span>' +
-        '    <button type="button" class="eth-cam-btn-min" id="btnMinCam" title="Kichraytirish">—</button>' +
-        '  </div>' +
-        '</div>' +
-        '<div class="eth-cam-video-wrap">' +
-        '  <video id="proctorVideo" autoplay playsinline muted></video>' +
-        '  <div class="eth-cam-target-oval" id="proctorOval">' +
-        '    <span class="eth-cam-pt" style="top:18%;left:50%" title="Peshona"></span>' +
-        '    <span class="eth-cam-pt" style="top:36%;left:30%" title="Chap ko\'z"></span>' +
-        '    <span class="eth-cam-pt" style="top:36%;left:70%" title="O\'ng ko\'z"></span>' +
-        '    <span class="eth-cam-pt" style="top:52%;left:50%" title="Burun"></span>' +
-        '    <span class="eth-cam-pt" style="top:52%;left:18%" title="Chap yuz"></span>' +
-        '    <span class="eth-cam-pt" style="top:52%;left:82%" title="O\'ng yuz"></span>' +
-        '    <span class="eth-cam-pt" style="top:72%;left:36%" title="Lab chap"></span>' +
-        '    <span class="eth-cam-pt" style="top:72%;left:64%" title="Lab o\'ng"></span>' +
-        '    <span class="eth-cam-pt" style="top:88%;left:50%" title="Iyak"></span>' +
-        '  </div>' +
-        '</div>' +
-        '<div class="eth-cam-footer" id="proctorStudentName">' +
-        '  👤 <b style="font-weight:900;letter-spacing:0.3px">' + esc((S.user && S.user.name) || 'O\'quvchi') + '</b> · 65° AI Biometrik Yuz Trekeri (Foto-Dalil)' +
-        '</div>';
-      lockdownModal.appendChild(camBox);
-      makeElementDraggableAndCollapsible(camBox, camBox.querySelector('.eth-cam-header'), camBox.querySelector('#btnMinCam'));
-
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({
-          video: { width: { ideal: 320 }, height: { ideal: 240 }, facingMode: 'user' }
-        }).then(function(stream) {
-          proctorStream = stream;
-          var vid = document.getElementById('proctorVideo');
-          if (vid) {
-            vid.srcObject = stream;
-            vid.onloadedmetadata = function() { vid.play().catch(function(){}); };
-          }
-        }).catch(function(err) {});
-      }
-
-      // 65° Biometric Face Landmark Tracker (2.5s continuous hold)
-      var offCanvas = document.createElement('canvas');
-      offCanvas.width = 160;
-      offCanvas.height = 120;
-      var offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
-      var noFaceTicks = 0;
-
-      proctorInterval = setInterval(function() {
-        var vid = document.getElementById('proctorVideo');
-        if (!vid || !vid.videoWidth || isExamLocked || isTestFinished) return;
-        try {
-          offCtx.drawImage(vid, 0, 0, 160, 120);
-          var imgData = offCtx.getImageData(0, 0, 160, 120);
-          var pixels = imgData.data;
-
-          var skinCoords = [];
-          var darkCoords = [];
-
-          // Upper/middle head region: y from 16 to 78, x from 12 to 148
-          for (var y = 16; y <= 78; y += 2) {
-            for (var x = 12; x <= 148; x += 2) {
-              var idx = (y * 160 + x) * 4;
-              var r = pixels[idx], g = pixels[idx + 1], b = pixels[idx + 2];
-              var lum = 0.299 * r + 0.587 * g + 0.114 * b;
-
-              var satRed = (r - b) / (r + 1);
-              var satGreen = (r - g) / (r + 1);
-              var isSkin = (
-                r > 60 && g > 35 && b > 20 &&
-                r > g && r > b &&
-                satRed >= 0.18 &&
-                satGreen >= 0.09 &&
-                (r - g) >= 7 &&
-                lum >= 45 && lum <= 220
-              );
-
-              var isDark = (lum < 52 && (r + g + b) < 140);
-
-              if (isSkin) skinCoords.push(x, y);
-              else if (isDark) darkCoords.push(x, y);
-            }
-          }
-
-          var oval = document.getElementById('proctorOval');
-          var angleBadge = document.getElementById('proctorCamAngle');
-          var dot = document.getElementById('proctorCamDot');
-
-          // Distance & scale tolerance:
-          // Only flag if NO face is detected at all for 12 consecutive intervals (3.0 seconds)
-          if (skinCoords.length < 32) {
-            noFaceTicks++;
-            if (oval) {
-              oval.style.left = '50%';
-              oval.style.top = '50%';
-              oval.style.width = '85px';
-              oval.style.height = '115px';
-              oval.style.transform = 'translate(-50%, -50%)';
-            }
-            if (noFaceTicks >= 12) {
-              if (angleBadge) {
-                angleBadge.textContent = "Yuz yo\'q";
-                angleBadge.className = 'eth-cam-badge danger';
-              }
-              if (dot) dot.className = 'eth-cam-dot danger';
-              if (oval) oval.className = 'eth-cam-target-oval danger';
-              var missingSnap = captureProctorSnapshot();
-              playTitTitAlarm(6);
-              triggerInfraction("Kamerada o\'quvchi yuzi 3 soniyadan ortiq aniqlanmadi (Iltimos, kamera ro\'parasida o\'tiring)", missingSnap);
-            }
-            return;
-          }
-          noFaceTicks = 0;
-
-          var minX = 160, maxX = 0, minY = 120, maxY = 0;
-          var sumX = 0, sumY = 0;
-          var numSkin = skinCoords.length / 2;
-          for (var si = 0; si < skinCoords.length; si += 2) {
-            var sx = skinCoords[si];
-            var sy = skinCoords[si + 1];
-            if (sx < minX) minX = sx;
-            if (sx > maxX) maxX = sx;
-            if (sy < minY) minY = sy;
-            if (sy > maxY) maxY = sy;
-            sumX += sx;
-            sumY += sy;
-          }
-          var avgSkinX = sumX / numSkin;
-          var avgSkinY = sumY / numSkin;
-          var skinH = Math.max(30, maxY - minY);
-
-          // Compute standard deviation of skin pixels to eliminate outlier background pixels
-          var sumSqDiffX = 0, sumSqDiffY = 0;
-          for (var sdi = 0; sdi < skinCoords.length; sdi += 2) {
-            var dx = skinCoords[sdi] - avgSkinX;
-            var dy = skinCoords[sdi + 1] - avgSkinY;
-            sumSqDiffX += dx * dx;
-            sumSqDiffY += dy * dy;
-          }
-          var stdX = Math.sqrt(sumSqDiffX / numSkin);
-          var stdY = Math.sqrt(sumSqDiffY / numSkin);
-
-          var faceMinX = Math.max(10, Math.round(avgSkinX - 1.6 * stdX));
-          var faceMaxX = Math.min(150, Math.round(avgSkinX + 1.6 * stdX));
-          var faceMinY = Math.max(10, Math.round(avgSkinY - 1.5 * stdY));
-          var faceMaxY = Math.min(95, Math.round(avgSkinY + 1.5 * stdY));
-          var faceMidX = (faceMinX + faceMaxX) / 2;
-          var faceMidY = (faceMinY + faceMaxY) / 2;
-          var faceW = Math.max(26, faceMaxX - faceMinX);
-          var faceH = Math.max(34, faceMaxY - faceMinY);
-
-          // 1. Dark Headphone / Hair Profile Asymmetry
-          var darkLeft = 0, darkRight = 0;
-          for (var di = 0; di < darkCoords.length; di += 2) {
-            var dpx = darkCoords[di];
-            var dpy = darkCoords[di + 1];
-            if (dpy >= minY - 6 && dpy <= maxY + 6) {
-              if (dpx < avgSkinX) darkLeft++;
-              else darkRight++;
-            }
-          }
-          var maxDark = Math.max(darkLeft, darkRight);
-          var minDark = Math.min(darkLeft, darkRight);
-          var darkRatio = (maxDark + 5) / (minDark + 5);
-          var yawFromDark = Math.min(90, Math.max(0, Math.round((darkRatio - 1.30) * 42)));
-
-          // 2. Eye Occlusion in Eye Band (y in [minY + 0.18*H, minY + 0.48*H])
-          var eyeY1 = Math.round(minY + skinH * 0.18);
-          var eyeY2 = Math.round(minY + skinH * 0.48);
-          var eyeLeftDark = 0, eyeRightDark = 0;
-          for (var ey = eyeY1; ey <= eyeY2; ey += 2) {
-            for (var ex = minX; ex <= maxX; ex += 2) {
-              var eidx = (ey * 160 + ex) * 4;
-              var er = pixels[eidx], eg = pixels[eidx + 1], eb = pixels[eidx + 2];
-              var elum = 0.299 * er + 0.587 * eg + 0.114 * eb;
-              if (elum < 42) {
-                if (ex < avgSkinX) eyeLeftDark++;
-                else eyeRightDark++;
-              }
-            }
-          }
-          var eyeDarkTotal = eyeLeftDark + eyeRightDark;
-          var eyeDarkRatio = (eyeDarkTotal > 6) ? Math.abs(eyeLeftDark - eyeRightDark) / (eyeDarkTotal + 1) : 0;
-          var oneEyeOccluded = (eyeDarkRatio > 0.65);
-
-          // 3. 3D Cylindrical Width Compression
-          var normalFaceW = 75;
-          var compressionRatio = Math.max(0.15, Math.min(1.0, faceW / normalFaceW));
-          var yawFromWidth = Math.round(Math.acos(compressionRatio) * (180 / Math.PI));
-
-          // 4. Internal Skin Distribution Asymmetry
-          var skinL = 0, skinR = 0;
-          for (var si2 = 0; si2 < skinCoords.length; si2 += 2) {
-            if (skinCoords[si2] < faceMidX) skinL++;
-            else skinR++;
-          }
-          var skinAsym = (skinL + skinR) > 0 ? (Math.abs(skinL - skinR) / (skinL + skinR + 1)) : 0;
-          var yawFromSkinAsym = Math.round(skinAsym * 45);
-
-          // 5. Unified 3D Head Yaw
-          var angleHeadYaw = Math.min(90, Math.max(
-            yawFromDark,
-            Math.round(yawFromWidth * 0.70 + yawFromSkinAsym * 0.30)
-          ));
-
-          // Profile check: if one eye is occluded and face width is compressed, head is turned in profile (> 65°)
-          if (oneEyeOccluded && faceW < 60) {
-            angleHeadYaw = Math.max(angleHeadYaw, 75);
-          }
-
-          var turnSide = (darkLeft > darkRight || eyeLeftDark > eyeRightDark) ? 1 : -1;
-          var signedYaw = angleHeadYaw * turnSide;
-
-          // 6. 3D Pitch
-          var pitchDev = Math.round((avgSkinY - 48) * 1.5);
-          var anglePitch = Math.max(-85, Math.min(85, pitchDev));
-          var isPitchExtreme = (avgSkinY < 16 || avgSkinY > 86);
-
-          // Dynamic 3D Oval & Biometric Landmark Rotation:
-          if (oval) {
-            var screenXPercent = ((160 - faceMidX) / 160) * 100;
-            var screenYPercent = (faceMidY / 120) * 100;
-            var ovalPxW = Math.max(72, Math.min(130, Math.round(faceW * 1.30)));
-            var ovalPxH = Math.max(92, Math.min(145, Math.round(faceH * 1.35)));
-
-            // 3D Perspective Rotation of the Oval:
-            var rotY = (-signedYaw * 0.85).toFixed(1);
-            var rotX = (anglePitch * 0.50).toFixed(1);
-
-            oval.style.left = screenXPercent.toFixed(1) + '%';
-            oval.style.top = screenYPercent.toFixed(1) + '%';
-            oval.style.width = ovalPxW + 'px';
-            oval.style.height = ovalPxH + 'px';
-            oval.style.transform = 'translate(-50%, -50%) perspective(300px) rotateY(' + rotY + 'deg) rotateX(' + rotX + 'deg)';
-
-            // Dynamic 3D Perspective Projection for 9 Landmark Points:
-            var pts = oval.querySelectorAll('.eth-cam-pt');
-            if (pts && pts.length === 9) {
-              var rad = (signedYaw * (Math.PI / 180)) * 0.85;
-              var cosY = Math.cos(rad);
-              var sinY = Math.sin(rad);
-
-              var basePts = [
-                { x: 0,     y: -0.65, z: 0.10 },
-                { x: -0.32, y: -0.25, z: 0.05 },
-                { x: 0.32,  y: -0.25, z: 0.05 },
-                { x: 0,     y: 0.05,  z: 0.45 },
-                { x: -0.65, y: 0.08,  z: -0.15},
-                { x: 0.65,  y: 0.08,  z: -0.15},
-                { x: -0.25, y: 0.45,  z: 0.20 },
-                { x: 0.25,  y: 0.45,  z: 0.20 },
-                { x: 0,     y: 0.78,  z: 0.25 }
-              ];
-
-              for (var pi = 0; pi < 9; pi++) {
-                var bp = basePts[pi];
-                var rx = bp.x * cosY + bp.z * sinY;
-                var rz = -bp.x * sinY + bp.z * cosY;
-
-                var px = 50 + rx * 44;
-                var py = 50 + bp.y * 44;
-                var pOpacity = Math.max(0.25, Math.min(1.0, (rz + 0.6) / 1.0));
-
-                pts[pi].style.left = px.toFixed(1) + '%';
-                pts[pi].style.top = py.toFixed(1) + '%';
-                pts[pi].style.opacity = pOpacity.toFixed(2);
-              }
-            }
-          }
-
-          // Violation evaluation:
-          // Normal (< 50°) -> Green ("To\'g'ri: XX°")
-          // 50° - 64° -> Yellow Warning ("Burilish: XX°"), NO lock!
-          // >= 65° continuous for 2.5 seconds (10 ticks) -> DANGER: takes photo snapshot & locks!
-          var isDanger = (angleHeadYaw >= 65) || isPitchExtreme;
-          var isWarn = (angleHeadYaw >= 50 && !isDanger);
-          var estimatedAngle = angleHeadYaw;
-
-          if (angleBadge) {
-            if (!isWarn && !isDanger) {
-              angleBadge.textContent = "To\'g'ri: " + estimatedAngle + "°";
-              angleBadge.className = 'eth-cam-badge';
-              if (dot) dot.className = 'eth-cam-dot';
-              if (oval) oval.className = 'eth-cam-target-oval';
-            } else if (isWarn) {
-              angleBadge.textContent = "Burilish: " + estimatedAngle + "°";
-              angleBadge.className = 'eth-cam-badge warn';
-              if (dot) dot.className = 'eth-cam-dot warn';
-              if (oval) oval.className = 'eth-cam-target-oval warn';
-            } else {
-              var secLeft = Math.max(0, ((10 - turnInfractionFrames) * 0.25)).toFixed(1);
-              angleBadge.textContent = "XAVF: " + estimatedAngle + "° (" + secLeft + "s)";
-              angleBadge.className = 'eth-cam-badge danger';
-              if (dot) dot.className = 'eth-cam-dot danger';
-              if (oval) oval.className = 'eth-cam-target-oval danger';
-            }
-          }
-
-          // Only trigger alarm and lock if head turns >= 65° continuously for 2.5 seconds (10 ticks)
-          if (isDanger) {
-            turnInfractionFrames++;
-            if (turnInfractionFrames >= 10) {
-              var proofSnap = captureProctorSnapshot();
-              playTitTitAlarm(6);
-              if (isPitchExtreme) {
-                triggerInfraction("O\'quvchi boshini 80° dan ortiq tepaga/pastga burib 2.5 soniya turdi", proofSnap);
-              } else {
-                triggerInfraction("O\'quvchi boshini 65° dan ortiq burib 2.5 soniya chetga qaradi (" + angleHeadYaw + "°)", proofSnap);
-              }
-            }
-          } else {
-            turnInfractionFrames = 0;
-          }
-        } catch(err) {}
-      }, 250);
-
+      // Placement test camera removed
       window._ethithOnStudentUnblocked = function(ev) {
         var myKey = (S.user && (S.user.email || S.user.id || '')).toLowerCase();
         if ((ev.studentEmail && ev.studentEmail.toLowerCase() === myKey) ||

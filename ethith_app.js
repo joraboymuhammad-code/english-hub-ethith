@@ -407,34 +407,16 @@
       '    <div id="teacherFormBox" style="display:none">' +
       '      <form id="teacherAuthForm">' +
       '        <div class="eth-form-group">' +
-      '          <label style="font-weight:700;font-size:13px">O\'qituvchi Ismi</label>' +
-      '          <input type="text" id="tcName" placeholder="Instructor name" value="' + esc(defaultName) + '" required>' +
-      '        </div>' +
       '        <div class="eth-form-group">' +
-      '          <label style="font-weight:700;font-size:13px">Gmail Manzili</label>' +
-      '          <input type="email" id="tcEmail" placeholder="teacher@gmail.com" required>' +
-      '        </div>' +
-      '        <div style="margin:10px 0 14px">' +
-      '          <button type="button" id="btnGetTeacherCode" style="background:#2563eb;color:#fff;font-weight:800;font-size:14px;padding:12px;border-radius:12px;border:none;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px -6px rgba(37,99,235,0.6)">' +
-      '            📲 Kodni Olish' +
-      '          </button>' +
-      '        </div>' +
-      '        <div class="eth-form-group" id="tcCodeGroup">' +
-      '          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">' +
-      '            <label style="font-weight:700;font-size:13px;margin:0">Tasdiqlash Kodi (6 xonali)</label>' +
-      '            <span id="tcCodeStatus" style="font-size:11.5px;color:#38bdf8;font-weight:700"></span>' +
-      '          </div>' +
-      '          <input type="text" id="tcCode" placeholder="Masalan: K9#4F7" maxlength="6" style="letter-spacing:5px;font-family:monospace;font-size:20px;text-align:center;font-weight:900;text-transform:uppercase" required>' +
-      '          <div id="tcCodeNotice" style="margin-top:6px;font-size:11.5px;color:var(--muted)">' +
-      '            <span>Kod @ETHITH_testbot telegram boti orqali yuboriladi</span>' +
-      '          </div>' +
+      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">Super Admin / Ustoz Logini</label>' +
+      '          <input type="text" id="tcLogin" placeholder="ADMIN_..." style="font-family:monospace;font-weight:800" required autocomplete="username">' +
       '        </div>' +
       '        <div class="eth-form-group" style="margin-top:10px">' +
-      '          <label style="font-weight:700;font-size:13px">O\'qituvchilar Maxsus Paroli</label>' +
-      '          <input type="password" id="tcMasterKey" placeholder="Maxfiy parolni kiriting..." required>' +
-      '          <small style="color:var(--muted);font-size:11.5px;margin-top:4px;display:block">O\'qituvchilar maxsus paroli: jds8d738hjsdhd8w9dhsihd89wydhshd</small>' +
+      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">Maxfiy Ustoz Paroli</label>' +
+      '          <input type="password" id="tcPassword" placeholder="Parolni kiriting..." required autocomplete="current-password">' +
+      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:4px;display:block">🔒 Faqat rasmiy Super Admin login va paroli orqali kirish mumkin.</small>' +
       '        </div>' +
-      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb);margin-top:10px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%">Tasdiqlash va Kirish 🚀</button>' +
+      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb);margin-top:14px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%">Tasdiqlash va Kirish 🚀</button>' +
       '      </form>' +
       '    </div>' +
       '  </div>' +
@@ -974,44 +956,30 @@
       };
     }
 
-    // Teacher Submit Form
+    // Teacher Submit Form - Super Admin Exclusive Authentication
     var tcForm = overlay.querySelector('#teacherAuthForm');
     if (tcForm) {
-      tcForm.onsubmit = async function(e) {
+      tcForm.onsubmit = function(e) {
         e.preventDefault();
-        var nameInput = overlay.querySelector('#tcName');
-        var emailInput = overlay.querySelector('#tcEmail');
-        var codeInput = overlay.querySelector('#tcCode');
-        var masterInput = overlay.querySelector('#tcMasterKey');
+        var loginInput = overlay.querySelector('#tcLogin');
+        var passInput = overlay.querySelector('#tcPassword');
 
-        var name = (nameInput ? nameInput.value : '').trim();
-        var email = (emailInput ? emailInput.value : '').trim();
-        var code = (codeInput ? codeInput.value : '').trim();
-        var masterKey = (masterInput ? masterInput.value : '').trim();
+        var enteredLogin = (loginInput ? loginInput.value : '').trim();
+        var enteredPass = (passInput ? passInput.value : '').trim();
 
-        if (!name || !email) {
-          alert("Iltimos, o'qituvchi ismi va Gmail manzilini kiriting!");
+        var SUPER_TEACHER_LOGIN = 'ADMIN_12038F1aq8syash';
+        var SUPER_TEACHER_PASS = 'sajdhwuqe812ewbcb9ydhuedb_82';
+
+        if (enteredLogin !== SUPER_TEACHER_LOGIN || enteredPass !== SUPER_TEACHER_PASS) {
+          alert("❌ Xatolik: Super Admin login yoki maxfiy paroli noto'g'ri!\n\nFaqat rasmiy ustoz hisobi orqali kirish mumkin.");
           return;
         }
 
-        var isOk = await validateAuthCode(code, generatedTeacherCode);
-        if (!isOk) {
-          alert("❌ Xatolik: Tasdiqlash kodi noto'g'ri! Iltimos, Telegram bot (@ETHITH_testbot) orqali yuborilgan 6 xonali kodni to'g'ri kiriting.");
-          return;
-        }
-
-        var currentMaster = localStorage.getItem('ethith_teacher_master') || DEFAULT_TEACHER_KEY;
-
-        if (masterKey !== currentMaster) {
-          alert("❌ Xatolik: O'qituvchilar maxsus paroli noto'g'ri! Iltimos, to'g'ri maxfiy parolni kiriting: " + DEFAULT_TEACHER_KEY);
-          return;
-        }
-
-        var cleanTcEmail = email.toLowerCase().trim();
+        var cleanTcEmail = 'joraboyevmuhammad85@gmail.com';
         S.user = {
-          id: 'tc_' + Math.random().toString(36).substr(2, 9),
+          id: 'admin_official_teacher',
           role: 'teacher',
-          name: name,
+          name: 'Ustoz Muhammadyusuf',
           email: cleanTcEmail,
           dailyMinutes: 0
         };

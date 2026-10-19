@@ -743,17 +743,27 @@
           return false;
         });
 
+        var isPlaceholder = function(str) {
+          if (!str) return true;
+          var s = String(str).toLowerCase().trim();
+          return s === 'yangi o\'quvchi' || s === 'yangi foydalanuvchi' || s === 'foydalanuvchi' || s === 'user' || s === 'student' || s === 'guest';
+        };
+
         if (existingAcc) {
-          if (uName) existingAcc.name = uName;
-          if (uEmail) existingAcc.email = uEmail;
-          if (uId) existingAcc.id = uId;
-          if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
-          if (u.avatar !== undefined) existingAcc.avatar = u.avatar;
-          if (u.level) existingAcc.level = u.level;
-          if (u.nameStyle !== undefined) existingAcc.nameStyle = u.nameStyle;
-          if (u.title !== undefined) existingAcc.title = u.title;
-          if (u.victorySound !== undefined) existingAcc.victorySound = u.victorySound;
-          if (u.dailyMinutes !== undefined) existingAcc.dailyMinutes = u.dailyMinutes;
+          if (event.type === 'USER_COINS_UPDATE' || event.type === 'COIN_TRANSFER') {
+            if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
+          } else {
+            if (uName && (!existingAcc.name || !isPlaceholder(uName))) existingAcc.name = uName;
+            if (uEmail) existingAcc.email = uEmail;
+            if (uId) existingAcc.id = uId;
+            if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
+            if (u.avatar !== undefined) existingAcc.avatar = u.avatar;
+            if (u.level) existingAcc.level = u.level;
+            if (u.nameStyle !== undefined) existingAcc.nameStyle = u.nameStyle;
+            if (u.title !== undefined) existingAcc.title = u.title;
+            if (u.victorySound !== undefined) existingAcc.victorySound = u.victorySound;
+            if (u.dailyMinutes !== undefined) existingAcc.dailyMinutes = u.dailyMinutes;
+          }
           existingAcc.updatedAt = Date.now();
         } else {
           S.accounts.push(u);
@@ -825,13 +835,15 @@
           var myNm = (S.user.name || '').toLowerCase().trim();
           var isMe = (oldEmail && myEm === oldEmail) || (uEmail && myEm === uEmail) || (oldName && myNm === oldName);
           if (isMe) {
-            if (uName) S.user.name = uName;
-            if (uEmail) S.user.email = uEmail;
-            if (uId) S.user.id = uId;
+            if (event.type !== 'USER_COINS_UPDATE' && event.type !== 'COIN_TRANSFER') {
+              if (uName && (!S.user.name || !isPlaceholder(uName))) S.user.name = uName;
+              if (uEmail) S.user.email = uEmail;
+              if (uId) S.user.id = uId;
+              if (u.avatar !== undefined) S.user.avatar = u.avatar;
+              if (u.nameStyle !== undefined) S.user.nameStyle = u.nameStyle;
+              if (u.title !== undefined) S.user.title = u.title;
+            }
             if (u.coins !== undefined) S.user.coins = Number(u.coins);
-            if (u.avatar !== undefined) S.user.avatar = u.avatar;
-            if (u.nameStyle !== undefined) S.user.nameStyle = u.nameStyle;
-            if (u.title !== undefined) S.user.title = u.title;
             if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
             if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
 
