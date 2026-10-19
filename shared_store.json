@@ -1127,8 +1127,8 @@
       },
       "quizScores": {},
       "mistakes": [],
-      "dailyMinutes": 122,
-      "coins": 100000,
+      "dailyMinutes": 0,
+      "coins": 53050,
       "avatar": "boy_v7_merlin_2",
       "title": null,
       "nameStyle": null,
@@ -1258,6 +1258,13 @@
       "dailyMinutes": 0,
       "createdAt": 1792337882318,
       "updatedAt": 1792340498709
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "",
+      "email": "joraboyevmuhammad85@gmail.com",
+      "createdAt": 1792425095812
     }
   ],
   "p2pListings": [
@@ -1283,5 +1290,5 @@
       "createdAt": 1792417155969
     }
   ],
-  "updatedAt": 1792425070018
+  "updatedAt": 1792425100556
 }
