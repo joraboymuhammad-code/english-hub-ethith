@@ -1234,6 +1234,27 @@
   ],
   "p2pListings": [
     {
+      "id": "p2p_1792417155969_yg4v",
+      "sellerId": "sarvartovboyev09@gmail.com",
+      "sellerName": "Yangi O'quvchi",
+      "sellerEmail": "sarvartovboyev09@gmail.com",
+      "sellerAvatar": "boy_v7_merlin_2",
+      "sellerNameStyle": null,
+      "sellerTitle": null,
+      "item": {
+        "type": "gift",
+        "index": 0,
+        "id": "gift_0",
+        "name": "Yuvilgan Paypoqning Jufti (Qidirilmoqda)",
+        "icon": "🧦",
+        "rarity": "Legendary",
+        "desc": "Kir yuvish mashinasi yutib yuborgan juftining akasi!"
+      },
+      "price": 1000,
+      "allowBarter": true,
+      "createdAt": 1792417155969
+    },
+    {
       "id": "p2p_1792383468123_seg5",
       "sellerId": "st_kzja6hz7s",
       "sellerName": "Shamshod",
@@ -1252,5 +1273,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792417152010
+  "updatedAt": 1792417173442
 }
