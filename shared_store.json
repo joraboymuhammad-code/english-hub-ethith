@@ -1075,7 +1075,7 @@
       "updatedAt": 1792336159790
     },
     {
-      "id": "aleksandermike37@gmail.com",
+      "id": "sarvartovboyev09@gmail.com",
       "role": "student",
       "name": "Yangi O'quvchi",
       "email": "sarvartovboyev09@gmail.com",
@@ -1091,8 +1091,8 @@
       "quizScores": {},
       "mistakes": [],
       "dailyMinutes": 0,
-      "coins": 100000,
-      "avatar": null,
+      "coins": 53050,
+      "avatar": "boy_v7_merlin_2",
       "title": null,
       "nameStyle": null,
       "gifts": [
@@ -1106,7 +1106,7 @@
         }
       ],
       "createdAt": 1792337512574,
-      "updatedAt": 1792417026702
+      "updatedAt": 1792417119217
     },
     {
       "id": "tc_l78sgm19w",
@@ -1252,5 +1252,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792417102251
+  "updatedAt": 1792417130247
 }
