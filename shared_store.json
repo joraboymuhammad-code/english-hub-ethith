@@ -879,7 +879,8 @@
   ],
   "deletedListingIds": [
     "p2p_1792322748592_nls2",
-    "p2p_1792322765334_1cj0"
+    "p2p_1792322765334_1cj0",
+    "p2p_1792387876695_p00d"
   ],
   "accounts": [
     {
@@ -1075,27 +1076,6 @@
   ],
   "p2pListings": [
     {
-      "id": "p2p_1792387876695_p00d",
-      "sellerId": "shodiyorovinch030@gmail.com",
-      "sellerName": "Urolov",
-      "sellerEmail": "shodiyorovinch030@gmail.com",
-      "sellerAvatar": null,
-      "sellerNameStyle": null,
-      "sellerTitle": null,
-      "item": {
-        "type": "gift",
-        "index": 0,
-        "id": "gift_0",
-        "name": "G'ildiragi Yo'q Samokat",
-        "icon": "🛴",
-        "rarity": "Rare",
-        "desc": "Ustiga chiqib turish mumkin, lekin harakatlanmaydi!"
-      },
-      "price": 500,
-      "allowBarter": true,
-      "createdAt": 1792387876695
-    },
-    {
       "id": "p2p_1792383468123_seg5",
       "sellerId": "st_kzja6hz7s",
       "sellerName": "Shamshod",
@@ -1114,5 +1094,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792387878873
+  "updatedAt": 1792387936163
 }
