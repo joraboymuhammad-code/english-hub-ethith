@@ -228,6 +228,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -38514,7 +38515,7 @@ window.NAVIGATE_CURRICULUM = {
         var b64Content = encodeUtf8Base64(jsonStr);
 
         var body = {
-          message: 'Sync live study data',
+          message: 'Sync live study data [skip ci]',
           content: b64Content
         };
         if (sha) body.sha = sha;
@@ -55452,7 +55453,7 @@ window.NAVIGATE_CURRICULUM = {
  </a>
  <div class=navbar-menu-actions>
  
- <ul class=navbar-menu><li class=navbar-item><a class="navbar-link active" href="#">Home</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('ask_ai')">Ask AI Teacher</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('placement')">Placement Test</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('levels')">Levels (A1-C2)</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('classes')">Classes & Chat</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('exams')">Exams & Mocks</a></li></ul>
+ <ul class=navbar-menu><li class=navbar-item><a class="navbar-link active" href="#">Home</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('ask_ai')">Ask AI Teacher</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('quiz')">Quiz Test</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('classes')">Classes & Chat</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('exams')">Exams & Mocks</a></li></ul>
  
  <div class=navbar-actions>
  <a href="#" class="navbar-login" onclick="window.ethithOpenApp('dash');return false;" onclick="window.ethithOpenApp('dash');return false;">
@@ -56466,23 +56467,10 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     h += '<button class="ap-item ' + (cur === 'dash' ? 'active' : '') + '" data-go="dash">' + ic('grid') + 'Dashboard</button>';
     h += '<button class="ap-item ' + (cur === 'ask_ai' ? 'active' : '') + '" data-go="ask_ai" style="color:#2563eb;font-weight:700">' + ic('sparkles') + 'Ask AI Teacher</button>';
     
-    h += '<div class="ap-label">Oxford Navigate Dasturi</div>';
-    h += '<button class="ap-item ' + ((cur === 'navigate' || cur === 'levels') && (!a || a === 'intermediate' || a === 'B1' || a === 'A1') ? 'active' : '') + '" data-go="navigate" data-arg="intermediate">' + ic('book') + 'Intermediate (B1+)</button>';
-    h += '<button class="ap-item ' + ((cur === 'navigate' || cur === 'levels') && (a === 'upperIntermediate' || a === 'B2') ? 'active' : '') + '" data-go="navigate" data-arg="upperIntermediate">' + ic('book') + 'Upper-Intermediate (B2)</button>';
-
-    if (isTeacher) {
-      h += '<div class="ap-label" style="color:#f59e0b">Ustoz & CRM Tizimi</div>';
-      h += '<button class="ap-item ' + (cur === 'attendance' ? 'active' : '') + '" data-go="attendance">' + ic('users') + 'Kunlik Davomat & SMS</button>';
-      h += '<button class="ap-item ' + (cur === 'homework' ? 'active' : '') + '" data-go="homework">' + ic('clip') + 'Uyga Vazifalar & Nazorat</button>';
-    }
-
     h += '<div class="ap-label">Learning & Testing</div>';
-    h += '<button class="ap-item ' + (cur === 'placement' ? 'active' : '') + '" data-go="placement">' + ic('clip') + 'Placement Test (70)</button>';
-    h += '<button class="ap-item ' + (cur === 'progression' ? 'active' : '') + '" data-go="progression">' + ic('trophy') + 'Level Progression Tests</button>';
     h += '<button class="ap-item ' + (cur === 'quiz' ? 'active' : '') + '" data-go="quiz" style="color:#f59e0b;font-weight:700">' + ic('sparkles') + 'Quiz Test</button>';
     h += '<button class="ap-item ' + (cur === 'classes' ? 'active' : '') + '" data-go="classes">' + ic('users') + 'Classes & Chat</button>';
     h += '<button class="ap-item ' + (cur === 'exams' ? 'active' : '') + '" data-go="exams">' + ic('trophy') + 'Exams & Mocks</button>';
-    h += '<button class="ap-item ' + (cur === 'mistakes' ? 'active' : '') + '" data-go="mistakes">' + ic('check') + 'Mistakes Notebook (' + (S.mistakes ? S.mistakes.length : 0) + ')</button>';
 
     h += '<div class="ap-label">Reyting & Market</div>';
     h += '<button class="ap-item ' + (cur === 'leaderboard' ? 'active' : '') + '" data-go="leaderboard" style="color:#f59e0b;font-weight:700">' + ic('trophy') + 'Leaderboard (Reyting)</button>';
@@ -56509,14 +56497,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
   var TITLES = {
     dash: 'Dashboard',
     ask_ai: 'ETHITH AI Teacher',
-    levels: 'CEFR English Levels (40 Topics)',
-    level: 'CEFR English Levels (40 Topics)',
-    progression: 'Level Progression Tests (Daraja O\'tish Imtihonlari)',
-    placement: 'Placement Test (70 Questions)',
     quiz: 'Live Quiz Battle & Test',
     classes: 'Classes & Telegram Chat',
     exams: 'Exams & Leaderboard',
-    mistakes: 'Mistakes Notebook',
     leaderboard: 'ETHITH Coin Leaderboard (Reyting)',
     market: 'ETHITH Market & Packlar',
     profile: 'Mening Profilim'
@@ -56699,38 +56682,20 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       rDash(v);
     } else if (view.name === 'ask_ai') {
       window.EthithViews.renderAskAITeacher(v);
-    } else if (view.name === 'navigate') {
-      if (window.renderNavigateView) window.renderNavigateView(v, view.arg || 'intermediate');
-      else if (window.EthithViews && window.EthithViews.renderNavigateView) window.EthithViews.renderNavigateView(v, view.arg || 'intermediate');
-      else window.EthithViews.renderLevelsView(v, view.arg);
-    } else if (view.name === 'attendance') {
-      if (window.renderAttendancePortal) window.renderAttendancePortal(v);
-      else if (window.EthithViews && window.EthithViews.renderAttendancePortal) window.EthithViews.renderAttendancePortal(v);
-    } else if (view.name === 'homework') {
-      if (window.renderHomeworkPortal) window.renderHomeworkPortal(v);
-      else if (window.EthithViews && window.EthithViews.renderHomeworkPortal) window.EthithViews.renderHomeworkPortal(v);
-    } else if (view.name === 'levels' || view.name === 'level') {
-      if (window.renderNavigateView) window.renderNavigateView(v, (view.arg === 'B2' || view.arg === 'upperIntermediate') ? 'upperIntermediate' : 'intermediate');
-      else if (window.EthithViews && window.EthithViews.renderNavigateView) window.EthithViews.renderNavigateView(v, (view.arg === 'B2' || view.arg === 'upperIntermediate') ? 'upperIntermediate' : 'intermediate');
-      else window.EthithViews.renderLevelsView(v, view.arg || S.level);
-    } else if (view.name === 'progression') {
-      window.EthithViews.renderProgressionTestsView(v);
-    } else if (view.name === 'placement') {
-      window.EthithViews.renderPlacementView(v);
     } else if (view.name === 'quiz') {
       window.EthithViews.renderQuizBattleView(v);
     } else if (view.name === 'classes') {
       window.EthithViews.renderClassesView(v);
     } else if (view.name === 'exams') {
       window.EthithViews.renderExamsView(v);
-    } else if (view.name === 'mistakes') {
-      window.EthithViews.renderMistakesNotebook(v);
     } else if (view.name === 'leaderboard') {
       window.EthithViews.renderLeaderboardView(v);
     } else if (view.name === 'market') {
       window.EthithViews.renderMarketView(v);
     } else if (view.name === 'profile') {
       window.EthithViews.renderProfileView(v);
+    } else {
+      rDash(v);
     }
   }
 
@@ -56741,14 +56706,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     var h = '<section class="ap-hero"><div class="blob b1"></div><div class="blob b2"></div><div>' +
       '<div class="ap-badge">' + ic('flame') + ' ETHITH TESTS PLATFORM</div>' +
       '<h1>Welcome, <span>' + esc(user.name) + '</span>!</h1>' +
-      '<p>' + (isTeacher ? 'Teacher Management Hub: A1-C2 curriculum, classes, real-time Telegram chat, and custom exams.' : 'Comprehensive A1 to C2 curriculum, Ask AI Teacher, real-time Telegram class chat, and official tests.') + '</p>' +
+      '<p>' + (isTeacher ? 'Teacher Management Hub: Quiz Test, classes, real-time Telegram chat, and custom exams.' : 'Interactive learning, Ask AI Teacher, real-time Telegram class chat, and official quizzes.') + '</p>' +
       '<div class="cta">' +
-      '  <button class="ap-btn pri" data-go="levels" data-arg="' + S.level + '">Continue Lessons (' + S.level + ') ' + ic('right') + '</button>' +
+      '  <button class="ap-btn pri" data-go="quiz">' + ic('sparkles') + ' Start Quiz Test ' + ic('right') + '</button>' +
       '  <button class="ap-btn gh" data-go="ask_ai">' + ic('sparkles') + ' Ask AI Teacher</button>' +
       '</div></div>' +
       '<div class="ap-metrics">' +
-      '  <div class="ap-glass"><div class="ap-curlv">' + S.level + '</div><span class="lbl">Current Level</span></div>' +
-      '  <div class="ap-glass"><div class="ap-curlv">' + (S.mistakes ? S.mistakes.length : 0) + '</div><span class="lbl">Mistakes Notebook</span></div>' +
+      '  <div class="ap-glass"><div class="ap-curlv">' + (user.coins || 0).toLocaleString() + '</div><span class="lbl">ETHITH Coins</span></div>' +
+      '  <div class="ap-glass"><div class="ap-curlv">' + ((S.completedQuizzes || []).length) + '</div><span class="lbl">Tugallangan Testlar</span></div>' +
       '</div></section>';
 
     h += '<div class="ap-sec"><div><h2>' + ic('sparkles') + ' Quick Actions</h2><p>Instant access to core learning and testing sections</p></div></div>';
@@ -56756,9 +56721,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
     [
       ['q1', 'sparkles', 'Ask AI Teacher', 'Interactive learning with your 24/7 AI tutor', 'ask_ai'],
-      ['q2', 'layers', 'Levels (A1-C2)', '40 curriculum topics and quizzes per CEFR level', 'levels'],
-      ['q3', 'clip', 'Placement Test', '70-question official proficiency benchmark exam', 'placement'],
-      ['q4', 'users', 'Classes & Chat', 'Live Telegram-style class chat and collaboration', 'classes']
+      ['q2', 'sparkles', 'Quiz Test', 'Interactive timed test studio & exams', 'quiz'],
+      ['q3', 'users', 'Classes & Chat', 'Live Telegram-style class chat and collaboration', 'classes'],
+      ['q4', 'trophy', 'Exams & Mocks', 'Official tests and leaderboard rankings', 'exams']
     ].forEach(function(q, i) {
       h += '<div class="ap-card ap-quick ' + q[0] + '" style="cursor:pointer" data-go="' + q[4] + '">' +
         ic(q[1], 'lg') + '<h3>' + q[2] + '</h3><p>' + q[3] + '</p><span class="go">Open ' + ic('right') + '</span></div>';

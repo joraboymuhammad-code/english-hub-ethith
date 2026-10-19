@@ -1443,7 +1443,7 @@
         var b64Content = encodeUtf8Base64(jsonStr);
 
         var body = {
-          message: 'Sync live study data',
+          message: 'Sync live study data [skip ci]',
           content: b64Content
         };
         if (sha) body.sha = sha;
