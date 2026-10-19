@@ -935,6 +935,205 @@
           ]
         }
       ]
+    },
+    {
+      "id": "vocab_intermediate_u1",
+      "title": "Unit 1 Vocabulary (Coursebook Bold Words)",
+      "duration": 25,
+      "pointsPerQ": 2,
+      "questions": [
+        {
+          "num": 1,
+          "question": "What is the meaning of the bold word: \"breakthrough\"? (\"Scientists made a major breakthrough in renewable energy.\")",
+          "options": [
+            "An important discovery or event that helps solve a problem",
+            "A minor, insignificant detail",
+            "Something done without preparation",
+            "A temporary delay"
+          ],
+          "answer": "An important discovery or event that helps solve a problem",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 2,
+          "question": "What is the meaning of the bold word: \"crucial\"? (\"Clear communication is crucial in any relationship.\")",
+          "options": [
+            "Extremely important or necessary",
+            "A minor, insignificant detail",
+            "Something done without preparation",
+            "A temporary delay"
+          ],
+          "answer": "Extremely important or necessary",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 3,
+          "question": "What is the meaning of the bold word: \"enhance\"? (\"Good lighting enhances the atmosphere of the room.\")",
+          "options": [
+            "To improve the quality, amount, or strength of something",
+            "A minor, insignificant detail",
+            "Something done without preparation",
+            "A temporary delay"
+          ],
+          "answer": "To improve the quality, amount, or strength of something",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 4,
+          "question": "What is the meaning of the bold word: \"inevitable\"? (\"Accidents are inevitable if safety rules are ignored.\")",
+          "options": [
+            "Certain to happen and impossible to prevent",
+            "A minor, insignificant detail",
+            "Something done without preparation",
+            "A temporary delay"
+          ],
+          "answer": "Certain to happen and impossible to prevent",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 5,
+          "question": "What is the meaning of the bold word: \"resilient\"? (\"Children are remarkably resilient and adapt fast.\")",
+          "options": [
+            "Able to quickly recover from difficulties or tough conditions",
+            "A minor, insignificant detail",
+            "Something done without preparation",
+            "A temporary delay"
+          ],
+          "answer": "Able to quickly recover from difficulties or tough conditions",
+          "type": "choice",
+          "points": 2
+        }
+      ],
+      "isPublic": true,
+      "submissions": [
+        {
+          "studentId": "ADMIN_12038F1aq8syash@ethith.uz",
+          "studentName": "Ustoz Muhammadyusuf",
+          "studentEmail": "ADMIN_12038F1aq8syash@ethith.uz",
+          "score": 0,
+          "totalPossible": 10,
+          "percent": 0,
+          "correctCount": 0,
+          "incorrectCount": 5,
+          "attempts": 1,
+          "breakdown": [
+            {
+              "qNum": 1,
+              "question": "What is the meaning of the bold word: \"breakthrough\"? (\"Scientists made a major breakthrough in renewable energy.\")",
+              "userAns": "Belgilanmagan",
+              "correctAns": "An important discovery or event that helps solve a problem",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 2,
+              "question": "What is the meaning of the bold word: \"crucial\"? (\"Clear communication is crucial in any relationship.\")",
+              "userAns": "Belgilanmagan",
+              "correctAns": "Extremely important or necessary",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 3,
+              "question": "What is the meaning of the bold word: \"enhance\"? (\"Good lighting enhances the atmosphere of the room.\")",
+              "userAns": "Belgilanmagan",
+              "correctAns": "To improve the quality, amount, or strength of something",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 4,
+              "question": "What is the meaning of the bold word: \"inevitable\"? (\"Accidents are inevitable if safety rules are ignored.\")",
+              "userAns": "Belgilanmagan",
+              "correctAns": "Certain to happen and impossible to prevent",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 5,
+              "question": "What is the meaning of the bold word: \"resilient\"? (\"Children are remarkably resilient and adapt fast.\")",
+              "userAns": "Belgilanmagan",
+              "correctAns": "Able to quickly recover from difficulties or tough conditions",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            }
+          ],
+          "timeSpent": "1 daqiqa",
+          "date": "19/10/2026, 21:43:42",
+          "blockedCount": 0,
+          "infractions": [],
+          "attemptsHistory": [
+            {
+              "attemptNum": 1,
+              "score": 0,
+              "totalPossible": 10,
+              "percent": 0,
+              "correctCount": 0,
+              "incorrectCount": 5,
+              "timeSpent": "1 daqiqa",
+              "date": "19/10/2026, 21:43:42",
+              "breakdown": [
+                {
+                  "qNum": 1,
+                  "question": "What is the meaning of the bold word: \"breakthrough\"? (\"Scientists made a major breakthrough in renewable energy.\")",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "An important discovery or event that helps solve a problem",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 2,
+                  "question": "What is the meaning of the bold word: \"crucial\"? (\"Clear communication is crucial in any relationship.\")",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "Extremely important or necessary",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 3,
+                  "question": "What is the meaning of the bold word: \"enhance\"? (\"Good lighting enhances the atmosphere of the room.\")",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "To improve the quality, amount, or strength of something",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 4,
+                  "question": "What is the meaning of the bold word: \"inevitable\"? (\"Accidents are inevitable if safety rules are ignored.\")",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "Certain to happen and impossible to prevent",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 5,
+                  "question": "What is the meaning of the bold word: \"resilient\"? (\"Children are remarkably resilient and adapt fast.\")",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "Able to quickly recover from difficulties or tough conditions",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                }
+              ],
+              "blockedCount": 0,
+              "infractions": []
+            }
+          ]
+        }
+      ]
     }
   ],
   "deletedExamIds": [
@@ -1028,5 +1227,5 @@
       "createdAt": 1792417155969
     }
   ],
-  "updatedAt": 1792428186522
+  "updatedAt": 1792428222801
 }
