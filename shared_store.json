@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792003895709,
+      "created": 1792416763365,
       "students": [
         {
           "id": "std_sync_test",
@@ -34,42 +34,6 @@
           "name": "Alisher Oquvchi",
           "email": "alisher@gmail.com",
           "dailyMinutes": 5
-        },
-        {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "coins": 102000,
-          "lastActive": 1791999647009,
-          "dailyMinutes": 2211,
-          "mistakes": 0,
-          "avatar": "boy_dragon_god",
-          "nameStyle": "blazing",
-          "title": null
-        },
-        {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "lastActive": 1791999647009,
-          "dailyMinutes": 2211,
-          "mistakes": 0,
-          "coins": 102000,
-          "avatar": "boy_dragon_god",
-          "nameStyle": "blazing",
-          "title": null
-        },
-        {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "lastActive": 1791999647009,
-          "dailyMinutes": 2211,
-          "mistakes": 0,
-          "coins": 102000,
-          "avatar": "boy_dragon_god",
-          "nameStyle": "blazing",
-          "title": null
         },
         {
           "id": "tc_l78sgm19w",
@@ -1244,6 +1208,31 @@
       "gifts": [],
       "createdAt": 1792387770870,
       "updatedAt": 1792388820326
+    },
+    {
+      "id": "sarvartovboyev09@gmail.com",
+      "role": "student",
+      "name": "Sarvar Tovboyev",
+      "email": "sarvartovboyev09@gmail.com",
+      "level": "A1",
+      "unlocked": {
+        "A1": 1,
+        "A2": 1,
+        "B1": 1,
+        "B2": 1,
+        "C1": 1,
+        "C2": 1
+      },
+      "quizScores": {},
+      "mistakes": [],
+      "dailyMinutes": 0,
+      "coins": 150,
+      "avatar": null,
+      "title": null,
+      "nameStyle": null,
+      "gifts": [],
+      "createdAt": 1792416808987,
+      "updatedAt": 1792416808987
     }
   ],
   "p2pListings": [
@@ -1266,5 +1255,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792416687618
+  "updatedAt": 1792416814842
 }
