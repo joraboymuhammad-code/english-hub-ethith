@@ -34,16 +34,40 @@
     }
   ];
 
+  var PURGED_EMAILS = [
+    'muhammedjoraboyev1@gmail.com', 'strikeruzb52@gmail.com', 'alisher@gmail.com',
+    'nasibaorazaliyev@gmail.com', 'joraboymuhammad@gmail.com', 'aleksandermike37@gmail.com',
+    'sarvartovboyev09@gmail.com', 'azizbekurolov24@gmail.com', 'shodiyorovinch030@gmail.com',
+    'nursulton@ethith.uz', 'john.doe@ethith.uz', 'yangi o\'quvchi', 'alisher oquvchi',
+    'shamshod', 'nursulton', 'azizbek', 'urolov', 'sarvar tovboyev', 'aleksander mike'
+  ];
+
+  function isPurgedAccount(acc) {
+    if (!acc) return true;
+    var email = (acc.email || '').toLowerCase().trim();
+    var name = (acc.name || '').toLowerCase().trim();
+    var id = (acc.id || '').toLowerCase().trim();
+    if (!name && !email) return true;
+    if (id === 'admin_official_teacher' || email === 'admin_12038f1aq8syash@ethith.uz' || (name === 'ustoz muhammadyusuf' && acc.role === 'teacher')) {
+      return false;
+    }
+    for (var i = 0; i < PURGED_EMAILS.length; i++) {
+      var p = PURGED_EMAILS[i];
+      if (email === p || email.indexOf(p) !== -1 || name === p) return true;
+    }
+    return false;
+  }
+
   // Mandatory fresh accounts reset per user directive: wipe all previous accounts
   try {
-    if (localStorage.getItem('ethith_wipe_v4_accounts') !== 'done') {
+    if (localStorage.getItem('ethith_wipe_v6_accounts') !== 'done') {
       localStorage.removeItem('ethith_all_registered_users');
       localStorage.removeItem('ethith_v2_state');
       localStorage.removeItem('ethith_user');
       localStorage.removeItem('ethith_accounts');
       localStorage.removeItem('ethith_p2p_listings');
       localStorage.removeItem('ethith_active_tg_codes');
-      localStorage.setItem('ethith_wipe_v4_accounts', 'done');
+      localStorage.setItem('ethith_wipe_v6_accounts', 'done');
     }
   } catch(e) {}
 
@@ -81,6 +105,13 @@
       }
     }
   } catch(e) {}
+
+  if (Array.isArray(S.accounts)) {
+    S.accounts = S.accounts.filter(function(a) { return !isPurgedAccount(a); });
+  }
+  if (S.user && isPurgedAccount(S.user)) {
+    S.user = null;
+  }
 
   if (!localStorage.getItem('ethith_explicit_theme')) {
     S.theme = 'dark';

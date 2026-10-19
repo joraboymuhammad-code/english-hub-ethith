@@ -1211,17 +1211,53 @@
     return changed;
   }
 
+  function isPurgedAccount(acc) {
+    if (!acc) return true;
+    var email = (acc.email || '').toLowerCase().trim();
+    var name = (acc.name || '').toLowerCase().trim();
+    var id = (acc.id || '').toLowerCase().trim();
+    if (!name && !email) return true;
+    if (id === 'admin_official_teacher' || email === 'admin_12038f1aq8syash@ethith.uz' || (name === 'ustoz muhammadyusuf' && acc.role === 'teacher')) {
+      return false;
+    }
+    var purgedList = [
+      'muhammedjoraboyev1@gmail.com', 'strikeruzb52@gmail.com', 'alisher@gmail.com',
+      'nasibaorazaliyev@gmail.com', 'joraboymuhammad@gmail.com', 'aleksandermike37@gmail.com',
+      'sarvartovboyev09@gmail.com', 'azizbekurolov24@gmail.com', 'shodiyorovinch030@gmail.com',
+      'nursulton@ethith.uz', 'john.doe@ethith.uz', 'yangi o\'quvchi', 'alisher oquvchi',
+      'shamshod', 'nursulton', 'azizbek', 'urolov', 'sarvar tovboyev', 'aleksander mike'
+    ];
+    for (var i = 0; i < purgedList.length; i++) {
+      var p = purgedList[i];
+      if (email === p || email.indexOf(p) !== -1 || name === p) return true;
+    }
+    return false;
+  }
+
   function mergeAccounts(localAccounts, remoteAccounts) {
     var changed = false;
-    if (!Array.isArray(remoteAccounts)) return changed;
     if (!Array.isArray(localAccounts)) return changed;
+    if (!Array.isArray(remoteAccounts)) remoteAccounts = [];
+
+    // Filter out purged accounts immediately from both local and remote
+    for (var li = localAccounts.length - 1; li >= 0; li--) {
+      if (isPurgedAccount(localAccounts[li])) {
+        localAccounts.splice(li, 1);
+        changed = true;
+      }
+    }
 
     var regKey = 'ethith_all_registered_users';
     var regList = [];
-    try { regList = JSON.parse(localStorage.getItem(regKey) || '[]'); } catch(e) {}
+    try {
+      regList = JSON.parse(localStorage.getItem(regKey) || '[]');
+      if (Array.isArray(regList)) {
+        regList = regList.filter(function(u) { return !isPurgedAccount(u); });
+      }
+    } catch(e) {}
 
     remoteAccounts.forEach(function(rAcc) {
-      if (!rAcc || (!rAcc.name && !rAcc.email && !rAcc.id)) return;
+      if (!rAcc || isPurgedAccount(rAcc)) return;
       var rEmail = (rAcc.email || '').toLowerCase().trim();
       var rName = (rAcc.name || '').toLowerCase().trim();
       var rId = (rAcc.id || '').trim();
@@ -1255,10 +1291,6 @@
       });
       if (!regItem) {
         regList.push({ id: rAcc.id, name: rAcc.name, email: rAcc.email, role: rAcc.role || 'student', coins: rAcc.coins, avatar: rAcc.avatar, level: rAcc.level });
-      } else {
-        if (rAcc.coins !== undefined) regItem.coins = rAcc.coins;
-        if (rAcc.avatar) regItem.avatar = rAcc.avatar;
-        if (rAcc.level) regItem.level = rAcc.level;
       }
     });
 
@@ -1392,12 +1424,17 @@
         });
         S.exams = cleanExams;
 
+        var cleanAccounts = (S.accounts || []).filter(function(a) {
+          return !isPurgedAccount(a);
+        });
+        S.accounts = cleanAccounts;
+
         var contentObj = {
           classes: cleanClasses,
           exams: cleanExams,
           deletedExamIds: dIds,
           deletedListingIds: S.deletedListingIds || [],
-          accounts: S.accounts || [],
+          accounts: cleanAccounts,
           p2pListings: S.p2pListings || [],
           updatedAt: Date.now()
         };
@@ -1406,7 +1443,7 @@
         var b64Content = encodeUtf8Base64(jsonStr);
 
         var body = {
-          message: 'Sync classes, messages, reactions and exams [skip ci]',
+          message: 'Sync live study data',
           content: b64Content
         };
         if (sha) body.sha = sha;

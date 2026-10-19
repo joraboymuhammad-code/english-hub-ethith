@@ -5748,41 +5748,177 @@
   // VIEW 5: PLACEMENT TEST (70 QUESTIONS)
   // ==========================================
   function renderPlacementView(container) {
+    if (!container) return;
     window._ethithCurrentView = 'placement';
+    var isTeacher = S.user && (S.user.role === 'teacher' || S.user.email === 'ADMIN_12038F1aq8syash@ethith.uz');
     var questions = window.ETHITH_PLACEMENT || [];
+    var customPlacements = S.placementTests || [];
+    var submissions = S.placementSubmissions || [];
 
-    var html = '' +
-      '<div class="ap-sec" style="margin-top:0">' +
-      '  <div>' +
-      '    <h2>' + ic('clip') + ' Language Hub Official Placement Test (70 Questions)</h2>' +
-      '    <p>Assess your accurate English proficiency level according to the official CEFR scale. Total time: 1.5 hours (90 minutes).</p>' +
-      '  </div>' +
-      '</div>' +
-      '<div class="ap-intro">' +
-      '  <div class="ap-lhero">' +
-      '    <h1>CEFR Placement Test</h1>' +
-      '    <p>70 diagnostic grammar and vocabulary questions from Beginner (A1) to Advanced (C2).</p>' +
-      '  </div>' +
-      '  <ul>' +
-      '    <li>' + ic('list') + ' 70 comprehensive multiple-choice grammar and vocabulary questions</li>' +
-      '    <li>' + ic('clock') + ' 1.5 hours (90 minutes) total continuous time</li>' +
-      '    <li>' + ic('trophy') + ' Instant, accurate CEFR level assessment (A1 through C2) based on official standards</li>' +
-      '  </ul>' +
-      '  <button class="eth-btn-primary" id="startPlacementTestBtn" style="font-size:16px;padding:14px 28px">Start Test ' + ic('right') + '</button>' +
-      '</div>';
+    var html = '<div class="ap-sec" style="margin-top:0">';
+    html += '  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">';
+    html += '    <div>';
+    html += '      <h2 style="margin:0 0 4px;font-size:22px;font-weight:900;color:var(--text)">' + ic('clip') + ' CEFR Rasmiy Placement Test & Test Markazi</h2>';
+    html += '      <p style="margin:0;font-size:13px;color:var(--muted)">O\'quvchilarning aniq CEFR darajasini (A1 dan C2 gacha) aniqlash va diagnostika qilish tizimi.</p>';
+    html += '    </div>';
+    if (isTeacher) {
+      html += '    <div style="display:inline-flex;gap:8px;flex-wrap:wrap">';
+      html += '      <button type="button" class="ap-btn solid" id="btnCreatePlacementWithQuizStudio" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-weight:800;padding:10px 18px;border-radius:12px;font-size:13px;box-shadow:0 6px 16px rgba(245,158,11,0.3)">➕ Yangi Placement Test Tuzish (Quiz Studio)</button>';
+      html += '    </div>';
+    }
+    html += '  </div>';
+    html += '</div>';
+
+    // Official Placement Hero Card
+    html += '<div class="ap-intro" style="margin-bottom:24px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);padding:24px">';
+    html += '  <div class="ap-lhero" style="margin-bottom:14px">';
+    html += '    <div style="font-size:11px;font-weight:900;letter-spacing:1px;color:#2563eb;text-transform:uppercase;margin-bottom:4px">RASMIY DIAGNOSTIKA STANDARTI</div>';
+    html += '    <h3 style="margin:0 0 6px;font-size:20px;font-weight:900;color:var(--text)">Language Hub 70-talik CEFR Placement Test</h3>';
+    html += '    <p style="margin:0;font-size:13px;color:var(--muted)">Beginner (A1) darajasidan Advanced (C2) darajasigacha bo\'lgan 70 ta diagnostik savol. Umumiy vaqt: 90 daqiqa.</p>';
+    html += '  </div>';
+    html += '  <ul style="list-style:none;padding:0;margin:0 0 18px;display:flex;flex-direction:column;gap:8px">';
+    html += '    <li style="font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px">' + ic('list') + ' 70 ta keng qamrovli grammatika va leksika savollari</li>';
+    html += '    <li style="font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px">' + ic('clock') + ' 90 daqiqa umumiy test vaqti</li>';
+    html += '    <li style="font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px">' + ic('trophy') + ' A1, A2, B1, B1+, B2, C1, C2 aniq CEFR darajasi baholanishi</li>';
+    html += '  </ul>';
+    html += '  <button class="eth-btn-primary" id="startPlacementTestBtn" style="font-size:15px;font-weight:800;padding:12px 26px;border-radius:12px;background:#2563eb;color:#fff">Rasmiy Testni Boshlash ' + ic('right') + '</button>';
+    html += '</div>';
+
+    // Custom Placement Tests created by Teacher
+    if (customPlacements.length > 0) {
+      html += '<div style="margin-bottom:24px">';
+      html += '  <h3 style="font-size:18px;font-weight:900;color:var(--text);margin:0 0 12px">📚 Ustoz Tomonidan Tuzilgan Maxsus Placement Testlar</h3>';
+      html += '  <div class="eth-grid-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px">';
+      customPlacements.forEach(function(pt, ptIdx) {
+        html += '<div class="ap-card" style="padding:18px;border-radius:18px;border:1.5px solid var(--border);display:flex;flex-direction:column;justify-content:space-between">';
+        html += '  <div>';
+        html += '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">';
+        html += '      <span style="font-size:11px;font-weight:900;padding:3px 8px;border-radius:8px;background:rgba(245,158,11,0.15);color:#f59e0b;text-transform:uppercase">KOD: ' + esc(pt.code || 'TEST') + '</span>';
+        html += '      <span style="font-size:11.5px;color:var(--muted)">' + (pt.questions ? pt.questions.length : 0) + ' ta savol</span>';
+        html += '    </div>';
+        html += '    <h4 style="margin:0 0 6px;font-size:16px;font-weight:800;color:var(--text)">' + esc(pt.title) + '</h4>';
+        html += '  </div>';
+        html += '  <div style="display:flex;gap:8px;margin-top:14px">';
+        html += '    <button type="button" class="ap-btn solid" style="flex:1;padding:8px;font-size:12px;font-weight:800;background:#2563eb;color:#fff" data-start-custom-placement="' + ptIdx + '">Boshlash</button>';
+        if (isTeacher) {
+          html += '    <button type="button" class="ap-btn out" style="padding:8px 12px;font-size:12px;font-weight:800;color:#ef4444;border-color:#ef4444" data-del-custom-placement="' + ptIdx + '">O\'chirish</button>';
+        }
+        html += '  </div>';
+        html += '</div>';
+      });
+      html += '  </div>';
+      html += '</div>';
+    }
+
+    // Teacher Test Takers & Submissions Roster
+    if (isTeacher) {
+      html += '<div style="margin-top:24px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);padding:22px">';
+      html += '  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:16px">';
+      html += '    <div>';
+      html += '      <h3 style="margin:0 0 4px;font-size:18px;font-weight:900;color:var(--text)">📊 Test Yechuvchilar & Olingan Natijalar Ro\'yxati</h3>';
+      html += '      <p style="margin:0;font-size:12.5px;color:var(--muted)">O\'quvchilar topshirgan placement testlar, ularning aniqlangan CEFR darajasi va to\'plagan ballari.</p>';
+      html += '    </div>';
+      html += '    <span style="font-size:12px;font-weight:800;padding:4px 10px;border-radius:10px;background:rgba(37,99,235,0.12);color:#2563eb">Jami topshirganlar: ' + submissions.length + ' ta</span>';
+      html += '  </div>';
+
+      if (submissions.length === 0) {
+        html += '<div style="text-align:center;padding:32px 16px;color:var(--muted);font-size:13.5px">';
+        html += '  <div style="font-size:32px;margin-bottom:8px">📝</div>';
+        html += '  <b>Hozircha hech kim Placement Test topshirmadi.</b><br>';
+        html += '  <span>O\'quvchilar testni yechgach, ularning ism-familiyasi va aniqlangan CEFR darajasi shu yerda avtomatik chiqadi.</span>';
+        html += '</div>';
+      } else {
+        html += '<div style="overflow-x:auto">';
+        html += '  <table style="width:100%;border-collapse:collapse;font-size:13px;text-align:left">';
+        html += '    <thead>';
+        html += '      <tr style="border-bottom:1.5px solid var(--line);color:var(--muted);font-size:11.5px;text-transform:uppercase">';
+        html += '        <th style="padding:10px 12px">O\'quvchi</th>';
+        html += '        <th style="padding:10px 12px">Topshirgan Testi</th>';
+        html += '        <th style="padding:10px 12px">Natija (Ball)</th>';
+        html += '        <th style="padding:10px 12px">Aniqlangan Daraja</th>';
+        html += '        <th style="padding:10px 12px">Vaqt</th>';
+        html += '      </tr>';
+        html += '    </thead>';
+        html += '    <tbody>';
+        submissions.forEach(function(sub) {
+          var dateStr = sub.submittedAt ? new Date(sub.submittedAt).toLocaleString() : 'Yaqinda';
+          var lvlColor = (sub.level && (sub.level.includes('B2') || sub.level.includes('C1') || sub.level.includes('C2'))) ? '#10b981' : ((sub.level && sub.level.includes('B1')) ? '#3b82f6' : '#f59e0b');
+          html += '      <tr style="border-bottom:1px solid var(--line)">';
+          html += '        <td style="padding:12px;font-weight:700;color:var(--text)">' + esc(sub.studentName) + '<br><small style="color:var(--muted);font-weight:400">' + esc(sub.studentEmail) + '</small></td>';
+          html += '        <td style="padding:12px;color:var(--text)">' + esc(sub.testTitle || 'Placement Test') + '</td>';
+          html += '        <td style="padding:12px;font-weight:800;color:var(--text)">' + (sub.score || 0) + ' / ' + (sub.total || 70) + ' (' + (sub.scorePct || 0) + '%)</td>';
+          html += '        <td style="padding:12px"><span style="display:inline-flex;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:900;background:rgba(37,99,235,0.12);color:' + lvlColor + '">' + esc(sub.level || 'A1') + '</span></td>';
+          html += '        <td style="padding:12px;color:var(--muted);font-size:12px">' + dateStr + '</td>';
+          html += '      </tr>';
+        });
+        html += '    </tbody>';
+        html += '  </table>';
+        html += '</div>';
+      }
+      html += '</div>';
+    }
 
     container.innerHTML = html;
 
-    document.getElementById('startPlacementTestBtn').onclick = function() {
-      runPlacementTest(container, questions);
-    };
+    // Listeners
+    var btnStart = container.querySelector('#startPlacementTestBtn');
+    if (btnStart) {
+      btnStart.onclick = function() {
+        runPlacementTest(container, questions);
+      };
+    }
+
+    var btnStudio = container.querySelector('#btnCreatePlacementWithQuizStudio');
+    if (btnStudio) {
+      btnStudio.onclick = function() {
+        showWaygroundStudioModal({
+          isPlacement: true,
+          onSave: function(addedQuestions, meta) {
+            if (!S.placementTests) S.placementTests = [];
+            S.placementTests.unshift({
+              id: 'custom_pl_' + Date.now(),
+              title: (meta && meta.title) || 'Custom Placement Test',
+              code: (meta && meta.code) || 'PLACE',
+              questions: addedQuestions,
+              createdAt: Date.now()
+            });
+            if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+            if (window.EthithSync && window.EthithSync.pushRemoteStore) window.EthithSync.pushRemoteStore();
+            alert("✅ Yangi Placement Test muvaffaqiyatli saqlandi!");
+            renderPlacementView(container);
+          }
+        });
+      };
+    }
+
+    container.querySelectorAll('[data-start-custom-placement]').forEach(function(btn) {
+      btn.onclick = function() {
+        var idx = parseInt(btn.dataset.startCustomPlacement, 10);
+        var pt = customPlacements[idx];
+        if (pt && pt.questions) {
+          runPlacementTest(container, pt.questions, pt.title);
+        }
+      };
+    });
+
+    container.querySelectorAll('[data-del-custom-placement]').forEach(function(btn) {
+      btn.onclick = function() {
+        var idx = parseInt(btn.dataset.delCustomPlacement, 10);
+        if (confirm("Ushbu placement testni o'chirishni tasdiqlaysizmi?")) {
+          S.placementTests.splice(idx, 1);
+          if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+          if (window.EthithSync && window.EthithSync.pushRemoteStore) window.EthithSync.pushRemoteStore();
+          renderPlacementView(container);
+        }
+      };
+    });
   }
 
-  function runPlacementTest(mainContainer, questions) {
+  function runPlacementTest(mainContainer, questions, customTitle) {
     window._ethithIsTestInProgress = true;
     window._ethithRefreshQuizList = null;
     window._ethithRefreshGifts = null;
-    showPreTestSecurityBriefing(initPlacementRunner);
+    initPlacementRunner();
 
     function initPlacementRunner() {
       var timeLeft = 90 * 60; // Exactly 1.5 hours (90 minutes) total for all 70 questions
@@ -5830,80 +5966,11 @@
       }
 
       function triggerInfraction(reason, violationSnapshot) {
-        if (isExamLocked || isTestFinished) return;
-        isExamLocked = true;
-        playTitTitAlarm(6);
-
-        var snapshotImg = violationSnapshot || captureProctorSnapshot();
-
-        var angleBadge = document.getElementById('proctorCamAngle');
-        var dot = document.getElementById('proctorCamDot');
-        if (dot) dot.className = 'eth-cam-dot danger';
-        if (angleBadge) {
-          angleBadge.textContent = 'BLOKLANDI';
-          angleBadge.className = 'eth-cam-badge danger';
-        }
-
-        var existingLock = document.getElementById('examLockedScreen');
-        if (existingLock) existingLock.remove();
-
-        var lockedOverlay = document.createElement('div');
-        lockedOverlay.className = 'eth-exam-locked-screen';
-        lockedOverlay.id = 'examLockedScreen';
-        lockedOverlay.style.zIndex = '2147483648';
-        lockedOverlay.innerHTML = '' +
-          '<div class="eth-locked-box" style="max-width:520px;text-align:center;">' +
-          '  <div class="eth-locked-icon">🚫</div>' +
-          '  <h2 style="color:#ef4444;margin:8px 0 6px;">PLACEMENT TEST BLOKLANDI</h2>' +
-          '  <div class="eth-locked-student-badge">' +
-          '    <span class="eth-locked-student-label">👤 BLOKLANGAN O\'QUVCHI:</span>' +
-          '    <div class="eth-locked-student-name">' + esc((S.user && S.user.name) || 'O\'quvchi') + '</div>' +
-          '  </div>' +
-          '  <div class="eth-locked-reason" style="font-size:13.5px;padding:8px 12px;margin-bottom:12px;"><b>🚨 Qoidabuzarlik:</b> ' + esc(reason) + '</div>' +
-          (snapshotImg ?
-            '  <div class="eth-locked-snapshot-wrap">' +
-            '    <div class="eth-locked-snapshot-badge">📸 Qoidabuzarlik Holati (Foto-Fakt Dalili)</div>' +
-            '    <img src="' + snapshotImg + '" alt="Qoidabuzarlik surati">' +
-            '    <div class="eth-locked-snapshot-hint">Ushbu foto-dalil avtomatik tarzda o\'qituvchingizga yuborildi</div>' +
-            '  </div>' : ''
-          ) +
-          '  <div class="eth-locked-msg" style="font-size:13.5px;line-height:1.5;margin-bottom:14px;">' +
-          '    Placement test paytida boshni 65° dan ortiq burish, 2.5 soniyadan ortiq chetga qarash yoki boshqa oynalarga o\'tish qat\'iyan taqiqlanadi.<br>' +
-          '    <b>O\'qituvchingiz ushbu foto-dalilni tekshirib, sizni blokdan ochmaguncha kuting.</b>' +
-          '  </div>' +
-          '  <div class="eth-locked-pulse">' +
-          '    <span class="eth-cam-dot danger"></span> Blokdan chiqarilishi kutilmoqda...' +
-          '  </div>' +
-          '</div>';
-        lockdownModal.appendChild(lockedOverlay);
-
-        if (window.EthithSync) {
-          window.EthithSync.publishLive({
-            type: 'STUDENT_BLOCKED',
-            studentId: (S.user && (S.user.email || S.user.id)) || 'guest',
-            studentName: (S.user && S.user.name) || 'O\'quvchi',
-            studentEmail: (S.user && S.user.email) || '',
-            examId: 'placement_70',
-            examTitle: 'CEFR Placement Test (70 Savol)',
-            reason: reason,
-            snapshot: snapshotImg,
-            timestamp: Date.now()
-          });
-        }
+        return;
       }
 
-      function onWindowBlur() {
-        if (isTestFinished || isExamLocked) return;
-        playTitTitAlarm(6);
-        triggerInfraction("Brauzer oynasidan chiqish yoki boshqa oynalarga o\'tish aniqlandi");
-      }
-      function onVisChange() {
-        if (isTestFinished || isExamLocked) return;
-        if (document.hidden) {
-          playTitTitAlarm(6);
-          triggerInfraction("Brauzer oynasi minimallashtirildi yoki boshqa sahifaga o\'tildi");
-        }
-      }
+      function onWindowBlur() {}
+      function onVisChange() {}
 
       function requestKeyboardLock() {
         if (isTestFinished) return;
@@ -6252,7 +6319,28 @@
       else { level = 'C1/C2'; levelDesc = 'Advanced'; }
 
       S.level = level.slice(0, 2);
+      
+      var placementSub = {
+        id: 'plsub_' + Date.now(),
+        studentName: S.user ? S.user.name : 'O\'quvchi',
+        studentEmail: S.user ? S.user.email : 'student@ethith.uz',
+        testTitle: customTitle || 'Language Hub Official Placement Test',
+        score: score,
+        total: questions.length,
+        scorePct: pct,
+        level: level + ' (' + levelDesc + ')',
+        submittedAt: Date.now()
+      };
+      if (!Array.isArray(S.placementSubmissions)) S.placementSubmissions = [];
+      S.placementSubmissions.unshift(placementSub);
       App.saveState();
+
+      if (window.EthithSync && window.EthithSync.publishLive) {
+        window.EthithSync.publishLive({ type: 'PLACEMENT_TEST_SUBMITTED', submission: placementSub });
+      }
+      if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+        window.EthithSync.pushRemoteStore();
+      }
 
       // Render Comprehensive Luxury Results Screen
       var resHtml = '' +
@@ -7553,8 +7641,12 @@
             return;
           }
 
-          if (isExamImport && opts.onSave) {
-            opts.onSave(addedQuestions);
+          if (opts.onSave) {
+            opts.onSave(addedQuestions, {
+              title: quizTitle.trim() || 'CEFR Placement Test',
+              code: quizCode.trim().toUpperCase(),
+              questions: addedQuestions
+            });
             overlay.remove();
             return;
           }
