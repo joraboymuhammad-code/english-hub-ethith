@@ -510,6 +510,26 @@
         "msg_1792042022803_twjuy",
         "msg_1792042028763_65lk8"
       ]
+    },
+    {
+      "id": "cls_1792387726786",
+      "name": "ielts",
+      "code": "ETH-0KK7DQ",
+      "teacherId": "tc_5sp5pd4im",
+      "teacherName": "Azizbek",
+      "teacherEmail": "azizbekurolov24@gmail.com",
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_init",
+          "senderId": "tc_5sp5pd4im",
+          "senderName": "Azizbek",
+          "text": "Welcome to our class! Here we can discuss grammar topics, collaborate on quizzes, and share answers in real-time.",
+          "time": "10:28 AM",
+          "reactions": {}
+        }
+      ],
+      "pinnedId": null
     }
   ],
   "exams": [
@@ -1047,5 +1067,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792387697221
+  "updatedAt": 1792387727782
 }
