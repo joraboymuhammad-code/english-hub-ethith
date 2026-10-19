@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792386736723,
+      "created": 1792003895709,
       "students": [
         {
           "id": "std_sync_test",
@@ -23,13 +23,53 @@
           "email": "muhammedjoraboyev1@gmail.com",
           "lastActive": 1791999647009,
           "dailyMinutes": 2225,
-          "mistakes": 0
+          "mistakes": 0,
+          "coins": 102000,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": null
         },
         {
           "id": "std_live_test_1",
           "name": "Alisher Oquvchi",
           "email": "alisher@gmail.com",
           "dailyMinutes": 5
+        },
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "coins": 102000,
+          "lastActive": 1791999647009,
+          "dailyMinutes": 2211,
+          "mistakes": 0,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": null
+        },
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 2211,
+          "mistakes": 0,
+          "coins": 102000,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": null
+        },
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 2211,
+          "mistakes": 0,
+          "coins": 102000,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": null
         },
         {
           "id": "tc_l78sgm19w",
@@ -370,8 +410,8 @@
           "replyTo": null,
           "reactions": {
             "🌙": [
-              "joraboymuhammad@gmail.com",
-              "muhammedjoraboyev1@gmail.com"
+              "muhammedjoraboyev1@gmail.com",
+              "joraboymuhammad@gmail.com"
             ]
           }
         },
@@ -945,38 +985,80 @@
   ],
   "accounts": [
     {
-      "id": "st_kzja6hz7s",
-      "role": "student",
-      "name": "Shamshod",
-      "email": "strikeruzb52@gmail.com",
-      "coins": 250,
-      "gifts": [],
-      "createdAt": 1792264636840,
-      "level": "A1",
-      "dailyMinutes": 24,
-      "updatedAt": 1792386702111
-    },
-    {
       "id": "muhammedjoraboyev1@gmail.com",
+      "role": "teacher",
       "name": "Muhammadyusuf",
       "email": "muhammedjoraboyev1@gmail.com",
-      "role": "student",
-      "level": "A1",
-      "coins": 100000,
-      "dailyMinutes": 35,
-      "unlockedEmojis": [
-        "👍",
-        "😊",
-        "❤️",
-        "🔥",
-        "👑",
-        "💎"
+      "gifts": [
+        {
+          "id": "gift_1792252030809_1dx5",
+          "quizId": "quiz_1792251905814_jg75l",
+          "name": "Chala Yeyilgan Xurmo",
+          "icon": "🫐",
+          "desc": "Og'izni g'ijim qilib bog'laydigan mevali syurpriz!",
+          "rank": 1,
+          "quizTitle": "English Quiz Battle #2",
+          "wonAt": 1792252030809
+        },
+        {
+          "id": "gift_1792251676106_s8fd",
+          "quizId": "quiz_1792249091127_oac0w",
+          "name": "Singan Futbol To'pi (Yassi)",
+          "icon": "⚽",
+          "desc": "Tepsa uchmaydigan, faqat yerda dumalaydigan charm qoplama!",
+          "rank": 1,
+          "quizTitle": "English Quiz Battle #1",
+          "wonAt": 1792251676106
+        },
+        {
+          "id": "gift_1792251614316_56dp",
+          "quizId": "quiz_1792249091127_oac0w",
+          "name": "Dastasi Yo'q Bolg'a",
+          "icon": "🔨",
+          "desc": "Faqat temir boshidan iborat og'ir vaznli mo''jiza!",
+          "rank": 1,
+          "quizTitle": "English Quiz Battle #1",
+          "wonAt": 1792251614316
+        },
+        {
+          "id": "gift_1792249161568",
+          "quizId": "quiz_1792249091127_oac0w",
+          "name": "Eski CD Disk (Ustida tirnalgan izlar)",
+          "icon": "💿",
+          "desc": "Faqat 3-qo'shiqni chala o'qiydigan lazer disk!",
+          "rank": 1,
+          "quizTitle": "English Quiz Battle #1",
+          "wonAt": 1792249161568
+        },
+        {
+          "id": "gift_1792246235202",
+          "quizId": "quiz_1792246158844_bdyw5",
+          "name": "Kamera Ko'zi Yopilgan Skotch",
+          "icon": "📹",
+          "desc": "Xavfsizlik uchun noutbuk kamerasiga yopishtirilgan qora lenta!",
+          "rank": 1,
+          "quizTitle": "English Quiz Battle #2",
+          "wonAt": 1792246235202
+        },
+        {
+          "id": "gift_1792240968308",
+          "quizId": "quiz_main_blitz",
+          "name": "G'ildiragi Yo'q Samokat",
+          "icon": "🛴",
+          "desc": "Ustiga chiqib turish mumkin, lekin harakatlanmaydi!",
+          "rank": 1,
+          "quizTitle": "English Vocabulary & Grammar Blitz Battle",
+          "wonAt": 1792240968308
+        }
       ],
-      "updatedAt": 1792343177642,
+      "createdAt": 1792251523891,
+      "coins": 100000,
+      "level": "A1",
       "avatar": "boy_dragon_god",
+      "dailyMinutes": 35,
+      "nameStyle": "blazing",
       "title": "⚡ Grammatika Terminatori",
-      "gifts": [],
-      "nameStyle": "blazing"
+      "updatedAt": 1792343177642
     },
     {
       "id": "std_live_test_1",
@@ -986,7 +1068,70 @@
       "level": "B2",
       "coins": 180,
       "dailyMinutes": 45,
+      "updatedAt": 1792336159790,
+      "avatar": null,
+      "title": null
+    },
+    {
+      "id": "st_kzja6hz7s",
+      "name": "Shamshod",
+      "email": "strikeruzb52@gmail.com",
+      "role": "student",
+      "level": "A1",
+      "coins": 250,
+      "dailyMinutes": 24,
+      "updatedAt": 1792386702111,
+      "avatar": null,
+      "title": null
+    },
+    {
+      "id": "nasibaorazaliyev@gmail.com",
+      "name": "nursulton",
+      "email": "nasibaorazaliyev@gmail.com",
+      "role": "student",
+      "level": "A1",
+      "coins": 0,
+      "dailyMinutes": 10,
+      "avatar": null,
+      "title": null,
+      "nameStyle": null,
+      "gifts": [],
       "updatedAt": 1792336159790
+    },
+    {
+      "id": "aleksandermike37@gmail.com",
+      "role": "student",
+      "name": "Yangi O'quvchi",
+      "email": "aleksandermike37@gmail.com",
+      "level": "A1",
+      "unlocked": {
+        "A1": 1,
+        "A2": 1,
+        "B1": 1,
+        "B2": 1,
+        "C1": 1,
+        "C2": 1
+      },
+      "quizScores": {},
+      "mistakes": [],
+      "dailyMinutes": 86,
+      "coins": 53050,
+      "avatar": "girl_chrono_witch",
+      "title": null,
+      "nameStyle": null,
+      "gifts": [],
+      "createdAt": 1792337512574,
+      "updatedAt": 1792416675332
+    },
+    {
+      "id": "st_johndoe_mvdq86j7",
+      "name": "John Doe",
+      "email": "johndoe@ethith.uz",
+      "role": "student",
+      "level": "A1",
+      "coins": 0,
+      "dailyMinutes": 5,
+      "updatedAt": 1792321974547
     },
     {
       "id": "tc_l78sgm19w",
@@ -1065,44 +1210,6 @@
       "updatedAt": 1792336885494
     },
     {
-      "id": "aleksandermike37@gmail.com",
-      "name": "Yangi O'quvchi",
-      "email": "aleksandermike37@gmail.com",
-      "role": "student",
-      "coins": 53050,
-      "avatar": "girl_chrono_witch",
-      "level": "A1",
-      "joinedAt": 1792337512574,
-      "dailyMinutes": 72,
-      "updatedAt": 1792342122742,
-      "nameStyle": null,
-      "title": null
-    },
-    {
-      "id": "nasibaorazaliyev@gmail.com",
-      "name": "nursulton",
-      "email": "nasibaorazaliyev@gmail.com",
-      "role": "student",
-      "level": "A1",
-      "coins": 0,
-      "dailyMinutes": 10,
-      "avatar": null,
-      "title": null,
-      "nameStyle": null,
-      "gifts": [],
-      "updatedAt": 1792336159790
-    },
-    {
-      "id": "st_johndoe_mvdq86j7",
-      "name": "John Doe",
-      "email": "johndoe@ethith.uz",
-      "role": "student",
-      "level": "A1",
-      "coins": 0,
-      "dailyMinutes": 5,
-      "updatedAt": 1792321974547
-    },
-    {
       "id": "tc_5sp5pd4im",
       "role": "teacher",
       "name": "Azizbek",
@@ -1159,5 +1266,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792388821616
+  "updatedAt": 1792416687618
 }
