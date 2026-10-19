@@ -13,6 +13,17 @@
 (function(window) {
   'use strict';
 
+  var App = window.EthithApp || {};
+  var S = (App && App.state) || window.S || {};
+
+  function getS() {
+    if (!S || !S.classes) {
+      App = window.EthithApp || {};
+      S = (App && App.state) || window.S || S || {};
+    }
+    return S;
+  }
+
   var _activeNavLevel = 'intermediate'; // 'intermediate' or 'upperIntermediate'
   var _activeNavTab = 'workbook'; // 'workbook' | 'unitTests' | 'progressTests' | 'vocab' | 'grammar' | 'studio'
   var _activeAttendanceGroup = 'Navigate Intermediate (B1+) - Guruh 1';
@@ -29,6 +40,17 @@
     });
   }
 
+  // Safe Exam Runner bridge to window.EthithViews.startExamRunner
+  function runExam(examObj, container) {
+    if (window.EthithViews && typeof window.EthithViews.startExamRunner === 'function') {
+      window.EthithViews.startExamRunner(examObj, container);
+    } else if (typeof window.startExamRunner === 'function') {
+      window.startExamRunner(examObj, container);
+    } else {
+      alert("Test boshlashda xatolik: imtihon tizimi topilmadi.");
+    }
+  }
+
   // -------------------------------------------------------------
   // 1. MAIN NAVIGATE CURRICULUM VIEW
   // -------------------------------------------------------------
@@ -37,14 +59,20 @@
     window._ethithCurrentView = 'navigate';
     window._ethithIsTestInProgress = false;
 
-    if (levelKey && (levelKey === 'intermediate' || levelKey === 'upperIntermediate')) {
-      _activeNavLevel = levelKey;
+    var curS = getS();
+
+    if (levelKey) {
+      if (levelKey === 'upperIntermediate' || levelKey === 'B2' || levelKey === 'b2') {
+        _activeNavLevel = 'upperIntermediate';
+      } else {
+        _activeNavLevel = 'intermediate';
+      }
     }
     if (subTabKey) {
       _activeNavTab = subTabKey;
     }
 
-    var isTeacher = S.user && S.user.role === 'teacher';
+    var isTeacher = curS.user && curS.user.role === 'teacher';
     var curriculum = window.NAVIGATE_CURRICULUM || {};
     var curLevelData = curriculum[_activeNavLevel] || curriculum.intermediate || {};
 
@@ -332,7 +360,7 @@
         var list = (tType === 'unit') ? curData.unitTests : curData.progressTests;
         var found = (list || []).find(function(t) { return t.id === tId; });
         if (found) {
-          startExamRunner(found, container);
+          runExam(found, container);
         } else {
           alert("Test topilmadi.");
         }
@@ -354,7 +382,7 @@
             questions: mod.quizQuestions,
             isPublic: true
           };
-          startExamRunner(examObj, container);
+          runExam(examObj, container);
         }
       };
     });
@@ -374,7 +402,7 @@
             questions: mod.quizQuestions,
             isPublic: true
           };
-          startExamRunner(examObj, container);
+          runExam(examObj, container);
         }
       };
     });
@@ -444,16 +472,24 @@
     html += '</div>';
     container.innerHTML = html;
 
-    container.querySelector('#btnBackToWorkbook').onclick = function() {
-      renderNavigateView(container, levelKey, 'workbook');
-    };
+    var btnBack = container.querySelector('#btnBackToWorkbook');
+    if (btnBack) {
+      btnBack.onclick = function() {
+        renderNavigateView(container, levelKey, 'workbook');
+      };
+    }
 
-    container.querySelector('#btnResetFillin').onclick = function() {
-      renderWorkbookViewer(container, levelKey, unitNum, lessonCode);
-    };
+    var btnReset = container.querySelector('#btnResetFillin');
+    if (btnReset) {
+      btnReset.onclick = function() {
+        renderWorkbookViewer(container, levelKey, unitNum, lessonCode);
+      };
+    }
 
     // "Tekshirish" Verification Logic supporting 'or', case-insensitivity, and auto-score
-    container.querySelector('#btnCheckFillin').onclick = function() {
+    var btnCheck = container.querySelector('#btnCheckFillin');
+    if (btnCheck) {
+      btnCheck.onclick = function() {
       var allInputs = container.querySelectorAll('.eth-fillin-input');
       var total = allInputs.length;
       var correct = 0;
@@ -537,7 +573,8 @@
       }
 
       alert("Tekshirildi!\nTo'g'ri javoblar: " + correct + " / " + total + " (" + pct + "%)\nNatijangiz saqlandi va ustozingizga yuborildi.");
-    };
+      };
+    }
   }
 
   // -------------------------------------------------------------
@@ -835,21 +872,30 @@
     container.innerHTML = html;
 
     // Group dropdown change
-    container.querySelector('#selectAttGroup').onchange = function(e) {
-      _activeAttendanceGroup = e.target.value;
-      renderAttendancePortal(container);
-    };
+    var selGrp = container.querySelector('#selectAttGroup');
+    if (selGrp) {
+      selGrp.onchange = function(e) {
+        _activeAttendanceGroup = e.target.value;
+        renderAttendancePortal(container);
+      };
+    }
 
     // Sort homework toggle
-    container.querySelector('#btnSortHomework').onclick = function() {
-      _attendanceSortHomework = !_attendanceSortHomework;
-      renderAttendancePortal(container);
-    };
+    var btnSortHw = container.querySelector('#btnSortHomework');
+    if (btnSortHw) {
+      btnSortHw.onclick = function() {
+        _attendanceSortHomework = !_attendanceSortHomework;
+        renderAttendancePortal(container);
+      };
+    }
 
     // Eskiz Settings button
-    container.querySelector('#btnEskizSettings').onclick = function() {
-      showEskizTokenModal();
-    };
+    var btnEskiz = container.querySelector('#btnEskizSettings');
+    if (btnEskiz) {
+      btnEskiz.onclick = function() {
+        showEskizTokenModal();
+      };
+    }
 
     // Attendance Buttons Handlers
     container.querySelectorAll('.eth-att-btn').forEach(function(btn) {
@@ -1132,11 +1178,18 @@
     };
   }
 
-  // Export functions to global window
+  // Export functions to global window and window.EthithViews
   window.renderNavigateView = renderNavigateView;
   window.renderWorkbookViewer = renderWorkbookViewer;
   window.renderAttendancePortal = renderAttendancePortal;
   window.renderHomeworkPortal = renderHomeworkPortal;
   window.renderStudioInlineHtml = renderStudioInlineHtml;
+
+  if (window.EthithViews) {
+    window.EthithViews.renderNavigateView = renderNavigateView;
+    window.EthithViews.renderWorkbookViewer = renderWorkbookViewer;
+    window.EthithViews.renderAttendancePortal = renderAttendancePortal;
+    window.EthithViews.renderHomeworkPortal = renderHomeworkPortal;
+  }
 
 })(window);

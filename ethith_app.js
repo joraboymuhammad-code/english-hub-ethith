@@ -34,6 +34,19 @@
     }
   ];
 
+  // Mandatory fresh accounts reset per user directive: wipe all previous accounts
+  try {
+    if (localStorage.getItem('ethith_wipe_v4_accounts') !== 'done') {
+      localStorage.removeItem('ethith_all_registered_users');
+      localStorage.removeItem('ethith_v2_state');
+      localStorage.removeItem('ethith_user');
+      localStorage.removeItem('ethith_accounts');
+      localStorage.removeItem('ethith_p2p_listings');
+      localStorage.removeItem('ethith_active_tg_codes');
+      localStorage.setItem('ethith_wipe_v4_accounts', 'done');
+    }
+  } catch(e) {}
+
   // Application State
   var S = {
     user: null, // { role: 'student'|'teacher', name: '', email: '', id: '', dailyMinutes: 0 }
@@ -53,7 +66,9 @@
     activeClassId: null,
     activeExamId: null,
     activeTopicQuiz: null,
-    activePlacementQuiz: null
+    activePlacementQuiz: null,
+    accounts: [],
+    p2pListings: []
   };
 
   // Load state from localStorage
@@ -407,16 +422,15 @@
       '    <div id="teacherFormBox" style="display:none">' +
       '      <form id="teacherAuthForm">' +
       '        <div class="eth-form-group">' +
-      '        <div class="eth-form-group">' +
-      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">Super Admin / Ustoz Logini</label>' +
-      '          <input type="text" id="tcLogin" placeholder="ADMIN_..." style="font-family:monospace;font-weight:800" required autocomplete="username">' +
+      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Logini</label>' +
+      '          <input type="text" id="tcLogin" placeholder="ADMIN_..." style="font-family:monospace;font-weight:800;letter-spacing:1px" required autocomplete="username">' +
       '        </div>' +
-      '        <div class="eth-form-group" style="margin-top:10px">' +
-      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">Maxfiy Ustoz Paroli</label>' +
+      '        <div class="eth-form-group" style="margin-top:12px">' +
+      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Paroli</label>' +
       '          <input type="password" id="tcPassword" placeholder="Parolni kiriting..." required autocomplete="current-password">' +
-      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:4px;display:block">🔒 Faqat rasmiy Super Admin login va paroli orqali kirish mumkin.</small>' +
+      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:4px;display:block">🔒 Faqat rasmiy ustoz logini va maxfiy paroli bilan kirish mumkin.</small>' +
       '        </div>' +
-      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb);margin-top:14px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%">Tasdiqlash va Kirish 🚀</button>' +
+      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb);margin-top:16px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%">O\'qituvchi Kabinetiga Kirish 🚀</button>' +
       '      </form>' +
       '    </div>' +
       '  </div>' +
@@ -975,22 +989,23 @@
           return;
         }
 
-        var cleanTcEmail = 'joraboyevmuhammad85@gmail.com';
+        var teacherName = 'Ustoz Muhammadyusuf';
+        var cleanTcEmail = 'ADMIN_12038F1aq8syash@ethith.uz';
         S.user = {
           id: 'admin_official_teacher',
           role: 'teacher',
-          name: 'Ustoz Muhammadyusuf',
+          name: teacherName,
           email: cleanTcEmail,
           dailyMinutes: 0
         };
 
         if (!Array.isArray(S.accounts)) S.accounts = [];
-        var exTc = S.accounts.find(function(a) { return a.email && a.email.toLowerCase() === cleanTcEmail; });
+        var exTc = S.accounts.find(function(a) { return a.id === 'admin_official_teacher' || (a.email && a.email.toLowerCase() === cleanTcEmail.toLowerCase()); });
         if (!exTc) {
           S.accounts.push({
             id: S.user.id,
             role: 'teacher',
-            name: name,
+            name: teacherName,
             email: cleanTcEmail,
             createdAt: Date.now()
           });
@@ -998,8 +1013,8 @@
 
         try {
           var allRegTc = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-          if (!allRegTc.some(function(u) { return (u.email && u.email.toLowerCase() === cleanTcEmail) || u.name.toLowerCase() === name.toLowerCase(); })) {
-            allRegTc.push({ id: S.user.id, name: name, email: cleanTcEmail, role: 'teacher', joinedAt: Date.now() });
+          if (!allRegTc.some(function(u) { return u.id === S.user.id; })) {
+            allRegTc.push({ id: S.user.id, name: teacherName, email: cleanTcEmail, role: 'teacher', joinedAt: Date.now() });
             localStorage.setItem('ethith_all_registered_users', JSON.stringify(allRegTc));
           }
         } catch(e) {}
@@ -1009,7 +1024,7 @@
             type: 'USER_REGISTERED',
             user: {
               id: S.user.id,
-              name: name,
+              name: teacherName,
               email: cleanTcEmail,
               role: 'teacher'
             }
@@ -1017,11 +1032,11 @@
         }
 
         saveState();
-        if (window.EthithSync) {
+        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
           window.EthithSync.pushRemoteStore();
         }
         overlay.remove();
-        alert("Xush kelibsiz, Hurmatli Ustoz " + name + "! O'qituvchilar kabineti ochildi.");
+        alert("👋 Xush kelibsiz, Hurmatli " + teacherName + "! O'qituvchilar kabineti muvaffaqiyatli ochildi.");
         window.ethithOpenApp('dash');
       };
     }
@@ -1070,6 +1085,7 @@
     }
   }
 
+  window.S = S;
   window.EthithApp = {
     state: S,
     showAuthModal: showAuthModal,

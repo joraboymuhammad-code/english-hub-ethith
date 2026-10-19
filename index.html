@@ -224,6 +224,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -39175,6 +39177,19 @@ window.NAVIGATE_CURRICULUM = {
     }
   ];
 
+  // Mandatory fresh accounts reset per user directive: wipe all previous accounts
+  try {
+    if (localStorage.getItem('ethith_wipe_v4_accounts') !== 'done') {
+      localStorage.removeItem('ethith_all_registered_users');
+      localStorage.removeItem('ethith_v2_state');
+      localStorage.removeItem('ethith_user');
+      localStorage.removeItem('ethith_accounts');
+      localStorage.removeItem('ethith_p2p_listings');
+      localStorage.removeItem('ethith_active_tg_codes');
+      localStorage.setItem('ethith_wipe_v4_accounts', 'done');
+    }
+  } catch(e) {}
+
   // Application State
   var S = {
     user: null, // { role: 'student'|'teacher', name: '', email: '', id: '', dailyMinutes: 0 }
@@ -39194,7 +39209,9 @@ window.NAVIGATE_CURRICULUM = {
     activeClassId: null,
     activeExamId: null,
     activeTopicQuiz: null,
-    activePlacementQuiz: null
+    activePlacementQuiz: null,
+    accounts: [],
+    p2pListings: []
   };
 
   // Load state from localStorage
@@ -39548,16 +39565,15 @@ window.NAVIGATE_CURRICULUM = {
       '    <div id="teacherFormBox" style="display:none">' +
       '      <form id="teacherAuthForm">' +
       '        <div class="eth-form-group">' +
-      '        <div class="eth-form-group">' +
-      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">Super Admin / Ustoz Logini</label>' +
-      '          <input type="text" id="tcLogin" placeholder="ADMIN_..." style="font-family:monospace;font-weight:800" required autocomplete="username">' +
+      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Logini</label>' +
+      '          <input type="text" id="tcLogin" placeholder="ADMIN_..." style="font-family:monospace;font-weight:800;letter-spacing:1px" required autocomplete="username">' +
       '        </div>' +
-      '        <div class="eth-form-group" style="margin-top:10px">' +
-      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">Maxfiy Ustoz Paroli</label>' +
+      '        <div class="eth-form-group" style="margin-top:12px">' +
+      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Paroli</label>' +
       '          <input type="password" id="tcPassword" placeholder="Parolni kiriting..." required autocomplete="current-password">' +
-      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:4px;display:block">🔒 Faqat rasmiy Super Admin login va paroli orqali kirish mumkin.</small>' +
+      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:4px;display:block">🔒 Faqat rasmiy ustoz logini va maxfiy paroli bilan kirish mumkin.</small>' +
       '        </div>' +
-      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb);margin-top:14px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%">Tasdiqlash va Kirish 🚀</button>' +
+      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb);margin-top:16px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%">O\'qituvchi Kabinetiga Kirish 🚀</button>' +
       '      </form>' +
       '    </div>' +
       '  </div>' +
@@ -40116,22 +40132,23 @@ window.NAVIGATE_CURRICULUM = {
           return;
         }
 
-        var cleanTcEmail = 'joraboyevmuhammad85@gmail.com';
+        var teacherName = 'Ustoz Muhammadyusuf';
+        var cleanTcEmail = 'ADMIN_12038F1aq8syash@ethith.uz';
         S.user = {
           id: 'admin_official_teacher',
           role: 'teacher',
-          name: 'Ustoz Muhammadyusuf',
+          name: teacherName,
           email: cleanTcEmail,
           dailyMinutes: 0
         };
 
         if (!Array.isArray(S.accounts)) S.accounts = [];
-        var exTc = S.accounts.find(function(a) { return a.email && a.email.toLowerCase() === cleanTcEmail; });
+        var exTc = S.accounts.find(function(a) { return a.id === 'admin_official_teacher' || (a.email && a.email.toLowerCase() === cleanTcEmail.toLowerCase()); });
         if (!exTc) {
           S.accounts.push({
             id: S.user.id,
             role: 'teacher',
-            name: name,
+            name: teacherName,
             email: cleanTcEmail,
             createdAt: Date.now()
           });
@@ -40139,8 +40156,8 @@ window.NAVIGATE_CURRICULUM = {
 
         try {
           var allRegTc = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-          if (!allRegTc.some(function(u) { return (u.email && u.email.toLowerCase() === cleanTcEmail) || u.name.toLowerCase() === name.toLowerCase(); })) {
-            allRegTc.push({ id: S.user.id, name: name, email: cleanTcEmail, role: 'teacher', joinedAt: Date.now() });
+          if (!allRegTc.some(function(u) { return u.id === S.user.id; })) {
+            allRegTc.push({ id: S.user.id, name: teacherName, email: cleanTcEmail, role: 'teacher', joinedAt: Date.now() });
             localStorage.setItem('ethith_all_registered_users', JSON.stringify(allRegTc));
           }
         } catch(e) {}
@@ -40150,7 +40167,7 @@ window.NAVIGATE_CURRICULUM = {
             type: 'USER_REGISTERED',
             user: {
               id: S.user.id,
-              name: name,
+              name: teacherName,
               email: cleanTcEmail,
               role: 'teacher'
             }
@@ -40158,11 +40175,11 @@ window.NAVIGATE_CURRICULUM = {
         }
 
         saveState();
-        if (window.EthithSync) {
+        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
           window.EthithSync.pushRemoteStore();
         }
         overlay.remove();
-        alert("Xush kelibsiz, Hurmatli Ustoz " + name + "! O'qituvchilar kabineti ochildi.");
+        alert("👋 Xush kelibsiz, Hurmatli " + teacherName + "! O'qituvchilar kabineti muvaffaqiyatli ochildi.");
         window.ethithOpenApp('dash');
       };
     }
@@ -40211,6 +40228,7 @@ window.NAVIGATE_CURRICULUM = {
     }
   }
 
+  window.S = S;
   window.EthithApp = {
     state: S,
     showAuthModal: showAuthModal,
@@ -40291,6 +40309,17 @@ window.NAVIGATE_CURRICULUM = {
 (function(window) {
   'use strict';
 
+  var App = window.EthithApp || {};
+  var S = (App && App.state) || window.S || {};
+
+  function getS() {
+    if (!S || !S.classes) {
+      App = window.EthithApp || {};
+      S = (App && App.state) || window.S || S || {};
+    }
+    return S;
+  }
+
   var _activeNavLevel = 'intermediate'; // 'intermediate' or 'upperIntermediate'
   var _activeNavTab = 'workbook'; // 'workbook' | 'unitTests' | 'progressTests' | 'vocab' | 'grammar' | 'studio'
   var _activeAttendanceGroup = 'Navigate Intermediate (B1+) - Guruh 1';
@@ -40307,6 +40336,17 @@ window.NAVIGATE_CURRICULUM = {
     });
   }
 
+  // Safe Exam Runner bridge to window.EthithViews.startExamRunner
+  function runExam(examObj, container) {
+    if (window.EthithViews && typeof window.EthithViews.startExamRunner === 'function') {
+      window.EthithViews.startExamRunner(examObj, container);
+    } else if (typeof window.startExamRunner === 'function') {
+      window.startExamRunner(examObj, container);
+    } else {
+      alert("Test boshlashda xatolik: imtihon tizimi topilmadi.");
+    }
+  }
+
   // -------------------------------------------------------------
   // 1. MAIN NAVIGATE CURRICULUM VIEW
   // -------------------------------------------------------------
@@ -40315,14 +40355,20 @@ window.NAVIGATE_CURRICULUM = {
     window._ethithCurrentView = 'navigate';
     window._ethithIsTestInProgress = false;
 
-    if (levelKey && (levelKey === 'intermediate' || levelKey === 'upperIntermediate')) {
-      _activeNavLevel = levelKey;
+    var curS = getS();
+
+    if (levelKey) {
+      if (levelKey === 'upperIntermediate' || levelKey === 'B2' || levelKey === 'b2') {
+        _activeNavLevel = 'upperIntermediate';
+      } else {
+        _activeNavLevel = 'intermediate';
+      }
     }
     if (subTabKey) {
       _activeNavTab = subTabKey;
     }
 
-    var isTeacher = S.user && S.user.role === 'teacher';
+    var isTeacher = curS.user && curS.user.role === 'teacher';
     var curriculum = window.NAVIGATE_CURRICULUM || {};
     var curLevelData = curriculum[_activeNavLevel] || curriculum.intermediate || {};
 
@@ -40610,7 +40656,7 @@ window.NAVIGATE_CURRICULUM = {
         var list = (tType === 'unit') ? curData.unitTests : curData.progressTests;
         var found = (list || []).find(function(t) { return t.id === tId; });
         if (found) {
-          startExamRunner(found, container);
+          runExam(found, container);
         } else {
           alert("Test topilmadi.");
         }
@@ -40632,7 +40678,7 @@ window.NAVIGATE_CURRICULUM = {
             questions: mod.quizQuestions,
             isPublic: true
           };
-          startExamRunner(examObj, container);
+          runExam(examObj, container);
         }
       };
     });
@@ -40652,7 +40698,7 @@ window.NAVIGATE_CURRICULUM = {
             questions: mod.quizQuestions,
             isPublic: true
           };
-          startExamRunner(examObj, container);
+          runExam(examObj, container);
         }
       };
     });
@@ -40722,16 +40768,24 @@ window.NAVIGATE_CURRICULUM = {
     html += '</div>';
     container.innerHTML = html;
 
-    container.querySelector('#btnBackToWorkbook').onclick = function() {
-      renderNavigateView(container, levelKey, 'workbook');
-    };
+    var btnBack = container.querySelector('#btnBackToWorkbook');
+    if (btnBack) {
+      btnBack.onclick = function() {
+        renderNavigateView(container, levelKey, 'workbook');
+      };
+    }
 
-    container.querySelector('#btnResetFillin').onclick = function() {
-      renderWorkbookViewer(container, levelKey, unitNum, lessonCode);
-    };
+    var btnReset = container.querySelector('#btnResetFillin');
+    if (btnReset) {
+      btnReset.onclick = function() {
+        renderWorkbookViewer(container, levelKey, unitNum, lessonCode);
+      };
+    }
 
     // "Tekshirish" Verification Logic supporting 'or', case-insensitivity, and auto-score
-    container.querySelector('#btnCheckFillin').onclick = function() {
+    var btnCheck = container.querySelector('#btnCheckFillin');
+    if (btnCheck) {
+      btnCheck.onclick = function() {
       var allInputs = container.querySelectorAll('.eth-fillin-input');
       var total = allInputs.length;
       var correct = 0;
@@ -40815,7 +40869,8 @@ window.NAVIGATE_CURRICULUM = {
       }
 
       alert("Tekshirildi!\nTo'g'ri javoblar: " + correct + " / " + total + " (" + pct + "%)\nNatijangiz saqlandi va ustozingizga yuborildi.");
-    };
+      };
+    }
   }
 
   // -------------------------------------------------------------
@@ -41113,21 +41168,30 @@ window.NAVIGATE_CURRICULUM = {
     container.innerHTML = html;
 
     // Group dropdown change
-    container.querySelector('#selectAttGroup').onchange = function(e) {
-      _activeAttendanceGroup = e.target.value;
-      renderAttendancePortal(container);
-    };
+    var selGrp = container.querySelector('#selectAttGroup');
+    if (selGrp) {
+      selGrp.onchange = function(e) {
+        _activeAttendanceGroup = e.target.value;
+        renderAttendancePortal(container);
+      };
+    }
 
     // Sort homework toggle
-    container.querySelector('#btnSortHomework').onclick = function() {
-      _attendanceSortHomework = !_attendanceSortHomework;
-      renderAttendancePortal(container);
-    };
+    var btnSortHw = container.querySelector('#btnSortHomework');
+    if (btnSortHw) {
+      btnSortHw.onclick = function() {
+        _attendanceSortHomework = !_attendanceSortHomework;
+        renderAttendancePortal(container);
+      };
+    }
 
     // Eskiz Settings button
-    container.querySelector('#btnEskizSettings').onclick = function() {
-      showEskizTokenModal();
-    };
+    var btnEskiz = container.querySelector('#btnEskizSettings');
+    if (btnEskiz) {
+      btnEskiz.onclick = function() {
+        showEskizTokenModal();
+      };
+    }
 
     // Attendance Buttons Handlers
     container.querySelectorAll('.eth-att-btn').forEach(function(btn) {
@@ -41410,12 +41474,19 @@ window.NAVIGATE_CURRICULUM = {
     };
   }
 
-  // Export functions to global window
+  // Export functions to global window and window.EthithViews
   window.renderNavigateView = renderNavigateView;
   window.renderWorkbookViewer = renderWorkbookViewer;
   window.renderAttendancePortal = renderAttendancePortal;
   window.renderHomeworkPortal = renderHomeworkPortal;
   window.renderStudioInlineHtml = renderStudioInlineHtml;
+
+  if (window.EthithViews) {
+    window.EthithViews.renderNavigateView = renderNavigateView;
+    window.EthithViews.renderWorkbookViewer = renderWorkbookViewer;
+    window.EthithViews.renderAttendancePortal = renderAttendancePortal;
+    window.EthithViews.renderHomeworkPortal = renderHomeworkPortal;
+  }
 
 })(window);
 
@@ -55196,6 +55267,15 @@ window.NAVIGATE_CURRICULUM = {
     runPlacementTest: runPlacementTest
   };
 
+  window.startExamRunner = startExamRunner;
+  window.runPlacementTest = runPlacementTest;
+  if (window.renderNavigateView) {
+    window.EthithViews.renderNavigateView = window.renderNavigateView;
+    window.EthithViews.renderWorkbookViewer = window.renderWorkbookViewer;
+    window.EthithViews.renderAttendancePortal = window.renderAttendancePortal;
+    window.EthithViews.renderHomeworkPortal = window.renderHomeworkPortal;
+  }
+
 })(window);
 
 </script>
@@ -55981,8 +56061,8 @@ document.addEventListener('click',function(){document.querySelectorAll('.dropdow
         return;
       }
 
-      var targetGo = el.dataset.go || 'dash';
-      var targetArg = el.dataset.arg || el.dataset.lv || null;
+      var targetGo = el.dataset.go || (el.dataset.lv ? 'navigate' : 'dash');
+      var targetArg = el.dataset.arg || (el.dataset.lv === 'B2' ? 'upperIntermediate' : (el.dataset.lv ? 'intermediate' : null));
       window.ethithOpenApp(targetGo, targetArg);
     }
   }
@@ -56459,13 +56539,17 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       window.EthithViews.renderAskAITeacher(v);
     } else if (view.name === 'navigate') {
       if (window.renderNavigateView) window.renderNavigateView(v, view.arg || 'intermediate');
+      else if (window.EthithViews && window.EthithViews.renderNavigateView) window.EthithViews.renderNavigateView(v, view.arg || 'intermediate');
       else window.EthithViews.renderLevelsView(v, view.arg);
     } else if (view.name === 'attendance') {
       if (window.renderAttendancePortal) window.renderAttendancePortal(v);
+      else if (window.EthithViews && window.EthithViews.renderAttendancePortal) window.EthithViews.renderAttendancePortal(v);
     } else if (view.name === 'homework') {
       if (window.renderHomeworkPortal) window.renderHomeworkPortal(v);
+      else if (window.EthithViews && window.EthithViews.renderHomeworkPortal) window.EthithViews.renderHomeworkPortal(v);
     } else if (view.name === 'levels' || view.name === 'level') {
       if (window.renderNavigateView) window.renderNavigateView(v, (view.arg === 'B2' || view.arg === 'upperIntermediate') ? 'upperIntermediate' : 'intermediate');
+      else if (window.EthithViews && window.EthithViews.renderNavigateView) window.EthithViews.renderNavigateView(v, (view.arg === 'B2' || view.arg === 'upperIntermediate') ? 'upperIntermediate' : 'intermediate');
       else window.EthithViews.renderLevelsView(v, view.arg || S.level);
     } else if (view.name === 'progression') {
       window.EthithViews.renderProgressionTestsView(v);

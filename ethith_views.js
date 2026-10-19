@@ -13774,4 +13774,13 @@
     runPlacementTest: runPlacementTest
   };
 
+  window.startExamRunner = startExamRunner;
+  window.runPlacementTest = runPlacementTest;
+  if (window.renderNavigateView) {
+    window.EthithViews.renderNavigateView = window.renderNavigateView;
+    window.EthithViews.renderWorkbookViewer = window.renderWorkbookViewer;
+    window.EthithViews.renderAttendancePortal = window.renderAttendancePortal;
+    window.EthithViews.renderHomeworkPortal = window.renderHomeworkPortal;
+  }
+
 })(window);
