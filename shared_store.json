@@ -829,6 +829,112 @@
           ]
         }
       ]
+    },
+    {
+      "id": "grammar_intermediate_u1",
+      "title": "Unit 1 Grammar: State verbs, Present simple & continuous",
+      "duration": 25,
+      "pointsPerQ": 2,
+      "questions": [
+        {
+          "num": 1,
+          "question": "Which sentence correctly illustrates State verbs?",
+          "options": [
+            "She has been studying English for four years.",
+            "She is studying English since four years.",
+            "She study English four years ago.",
+            "She had study English yesterday."
+          ],
+          "answer": "She has been studying English for four years.",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 2,
+          "question": "Identify the grammatical error: \"Neither of the candidates were prepared for the debate.\"",
+          "options": [
+            "\"were\" should be \"was\" (singular subject)",
+            "\"Neither\" should be \"Either\"",
+            "\"prepared\" is in the wrong tense",
+            "There is no error in the sentence"
+          ],
+          "answer": "\"were\" should be \"was\" (singular subject)",
+          "type": "choice",
+          "points": 2
+        }
+      ],
+      "isPublic": true,
+      "submissions": [
+        {
+          "studentId": "ADMIN_12038F1aq8syash@ethith.uz",
+          "studentName": "Ustoz Muhammadyusuf",
+          "studentEmail": "ADMIN_12038F1aq8syash@ethith.uz",
+          "score": 0,
+          "totalPossible": 4,
+          "percent": 0,
+          "correctCount": 0,
+          "incorrectCount": 2,
+          "attempts": 1,
+          "breakdown": [
+            {
+              "qNum": 1,
+              "question": "Which sentence correctly illustrates State verbs?",
+              "userAns": "Belgilanmagan",
+              "correctAns": "She has been studying English for four years.",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 2,
+              "question": "Identify the grammatical error: \"Neither of the candidates were prepared for the debate.\"",
+              "userAns": "Belgilanmagan",
+              "correctAns": "\"were\" should be \"was\" (singular subject)",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            }
+          ],
+          "timeSpent": "1 daqiqa",
+          "date": "19/10/2026, 21:43:05",
+          "blockedCount": 0,
+          "infractions": [],
+          "attemptsHistory": [
+            {
+              "attemptNum": 1,
+              "score": 0,
+              "totalPossible": 4,
+              "percent": 0,
+              "correctCount": 0,
+              "incorrectCount": 2,
+              "timeSpent": "1 daqiqa",
+              "date": "19/10/2026, 21:43:05",
+              "breakdown": [
+                {
+                  "qNum": 1,
+                  "question": "Which sentence correctly illustrates State verbs?",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "She has been studying English for four years.",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 2,
+                  "question": "Identify the grammatical error: \"Neither of the candidates were prepared for the debate.\"",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "\"were\" should be \"was\" (singular subject)",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                }
+              ],
+              "blockedCount": 0,
+              "infractions": []
+            }
+          ]
+        }
+      ]
     }
   ],
   "deletedExamIds": [
@@ -922,5 +1028,5 @@
       "createdAt": 1792417155969
     }
   ],
-  "updatedAt": 1792428152533
+  "updatedAt": 1792428186522
 }
