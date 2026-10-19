@@ -1,13 +1,12 @@
 {
   "classes": [
     {
-      "id": "cls_ethith_main",
-      "name": "IELTS & General English Intensive",
+      "id": "cls_1791996374490",
+      "name": "IELTS GURuh",
       "code": "ETH-L6S8CM",
-      "teacherId": "joraboyevmuhammad85@gmail.com",
-      "teacherName": "Instructor Muhammadyusuf",
-      "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792416763365,
+      "teacherId": "tc_l78sgm19w",
+      "teacherName": "Muhammadyusuf",
+      "teacherEmail": "joraboymuhammad@gmail.com",
       "students": [
         {
           "id": "std_sync_test",
@@ -36,6 +35,30 @@
           "dailyMinutes": 5
         },
         {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "coins": 102000,
+          "lastActive": 1791999647009,
+          "dailyMinutes": 2211,
+          "mistakes": 0,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": null
+        },
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 2211,
+          "mistakes": 0,
+          "coins": 102000,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": null
+        },
+        {
           "id": "tc_l78sgm19w",
           "name": "Muhammadyusuf",
           "email": "joraboymuhammad@gmail.com",
@@ -50,18 +73,6 @@
       ],
       "messages": [
         {
-          "id": "msg_welcome",
-          "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Ustoz Muhammadyusuf",
-          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
-          "time": "12:00",
-          "reactions": {
-            "👍": [
-              "joraboyevmuhammad85@gmail.com"
-            ]
-          }
-        },
-        {
           "id": "msg_init",
           "senderId": "tc_l78sgm19w",
           "senderName": "Muhammadyusuf",
@@ -70,6 +81,18 @@
           "reactions": {
             "💡": [
               "joraboymuhammad@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_welcome",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Ustoz Muhammadyusuf",
+          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
             ]
           }
         },
@@ -1022,7 +1045,7 @@
       "dailyMinutes": 35,
       "nameStyle": "blazing",
       "title": "⚡ Grammatika Terminatori",
-      "updatedAt": 1792343177642
+      "updatedAt": 1792416875776
     },
     {
       "id": "std_live_test_1",
@@ -1032,21 +1055,31 @@
       "level": "B2",
       "coins": 180,
       "dailyMinutes": 45,
-      "updatedAt": 1792336159790,
-      "avatar": null,
-      "title": null
+      "updatedAt": 1792336159790
     },
     {
-      "id": "st_kzja6hz7s",
+      "id": "st_shamshod_mvdq86j7",
       "name": "Shamshod",
       "email": "strikeruzb52@gmail.com",
       "role": "student",
       "level": "A1",
       "coins": 250,
       "dailyMinutes": 24,
-      "updatedAt": 1792386702111,
-      "avatar": null,
-      "title": null
+      "updatedAt": 1792386702111
+    },
+    {
+      "id": "aleksandermike37@gmail.com",
+      "name": "Yangi O'quvchi",
+      "email": "aleksandermike37@gmail.com",
+      "role": "student",
+      "coins": 53050,
+      "avatar": "girl_chrono_witch",
+      "level": "A1",
+      "joinedAt": 1792337512574,
+      "nameStyle": null,
+      "title": null,
+      "dailyMinutes": 86,
+      "updatedAt": 1792416675332
     },
     {
       "id": "nasibaorazaliyev@gmail.com",
@@ -1061,31 +1094,6 @@
       "nameStyle": null,
       "gifts": [],
       "updatedAt": 1792336159790
-    },
-    {
-      "id": "aleksandermike37@gmail.com",
-      "role": "student",
-      "name": "Yangi O'quvchi",
-      "email": "aleksandermike37@gmail.com",
-      "level": "A1",
-      "unlocked": {
-        "A1": 1,
-        "A2": 1,
-        "B1": 1,
-        "B2": 1,
-        "C1": 1,
-        "C2": 1
-      },
-      "quizScores": {},
-      "mistakes": [],
-      "dailyMinutes": 86,
-      "coins": 53050,
-      "avatar": "girl_chrono_witch",
-      "title": null,
-      "nameStyle": null,
-      "gifts": [],
-      "createdAt": 1792337512574,
-      "updatedAt": 1792416675332
     },
     {
       "id": "st_johndoe_mvdq86j7",
@@ -1255,5 +1263,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792416814842
+  "updatedAt": 1792416878110
 }
