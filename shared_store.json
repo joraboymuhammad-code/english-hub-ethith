@@ -1134,6 +1134,779 @@
           ]
         }
       ]
+    },
+    {
+      "id": "b1_progress_1",
+      "progressNum": 1,
+      "units": "Units 1–3",
+      "title": "Progress Test 1: Units 1–3",
+      "subtitle": "Navigate B1+ Comprehensive Milestone Examination",
+      "duration": 50,
+      "totalPoints": 44,
+      "locked": false,
+      "questions": [
+        {
+          "num": 1,
+          "exerciseNum": 1,
+          "exerciseTitle": "Exercise 1",
+          "question": " Listen to an interview in which a woman is",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "True",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 2,
+          "exerciseNum": 5,
+          "exerciseTitle": "According to Katia, personal skills have always",
+          "question": "points for each correct answer 10",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 3,
+          "exerciseNum": 5,
+          "exerciseTitle": "According to Katia, personal skills have always",
+          "question": " Listen to the interview again. Choose the",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 4,
+          "exerciseNum": 10,
+          "exerciseTitle": "Katia explains that managing your time well …",
+          "question": "points for each correct answer 10",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 5,
+          "exerciseNum": 3,
+          "exerciseTitle": "Read the text about friendships in the twenty-",
+          "question": "feel / want / seem to be losing other more important",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "True",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 6,
+          "exerciseNum": 3,
+          "exerciseTitle": "Read the text about friendships in the twenty-",
+          "question": "make friends / trust someone / have a lot in common,",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 7,
+          "exerciseNum": 3,
+          "exerciseTitle": "Read the text about friendships in the twenty-",
+          "question": "achievement / connection / happiness with? Which",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "a",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 8,
+          "exerciseNum": 3,
+          "exerciseTitle": "Read the text about friendships in the twenty-",
+          "question": "points for each correct answer 20",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 9,
+          "exerciseNum": 4,
+          "exerciseTitle": "Complete the online post with abbreviations",
+          "question": "c esp ppl r u w/",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "True",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 10,
+          "exerciseNum": 4,
+          "exerciseTitle": "Complete the online post with abbreviations",
+          "question": "__________ that matter most to me and",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "written",
+          "points": 2
+        },
+        {
+          "num": 11,
+          "exerciseNum": 4,
+          "exerciseTitle": "Complete the online post with abbreviations",
+          "question": "__________ looking forward 2 2morrow – my",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "written",
+          "points": 2
+        },
+        {
+          "num": 12,
+          "exerciseNum": 4,
+          "exerciseTitle": "Complete the online post with abbreviations",
+          "question": "__________ cake! ",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "written",
+          "points": 2
+        },
+        {
+          "num": 13,
+          "exerciseNum": 4,
+          "exerciseTitle": "Complete the online post with abbreviations",
+          "question": "point for each correct answer 5",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "True",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 14,
+          "exerciseNum": 5,
+          "exerciseTitle": "Read the text about storytelling. Match the",
+          "question": "mentions an animal that probably doesn’t exist?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "True",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 15,
+          "exerciseNum": 5,
+          "exerciseTitle": "Read the text about storytelling. Match the",
+          "question": "explains why the truth behind a story often gets",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 16,
+          "exerciseNum": 5,
+          "exerciseTitle": "Read the text about storytelling. Match the",
+          "question": "gives a general explanation for storytelling? _____",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "written",
+          "points": 2
+        },
+        {
+          "num": 17,
+          "exerciseNum": 5,
+          "exerciseTitle": "Read the text about storytelling. Match the",
+          "question": "explains why some stories have been told for a very",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "True",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 18,
+          "exerciseNum": 5,
+          "exerciseTitle": "Read the text about storytelling. Match the",
+          "question": "says that people from all times and places tell and",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 19,
+          "exerciseNum": 5,
+          "exerciseTitle": "Read the text about storytelling. Match the",
+          "question": "points for each correct answer 10",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "choice",
+          "points": 2
+        },
+        {
+          "num": 20,
+          "exerciseNum": 6,
+          "exerciseTitle": "Read the text again and complete the notes. Use",
+          "question": "__________ causes bad things to",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "True",
+          "type": "written",
+          "points": 2
+        },
+        {
+          "num": 21,
+          "exerciseNum": 6,
+          "exerciseTitle": "Read the text again and complete the notes. Use",
+          "question": "__________.",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "written",
+          "points": 2
+        },
+        {
+          "num": 22,
+          "exerciseNum": 6,
+          "exerciseTitle": "Read the text again and complete the notes. Use",
+          "question": "points for each correct answer 10",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answer": "False",
+          "type": "choice",
+          "points": 2
+        }
+      ],
+      "submissions": [
+        {
+          "studentId": "ADMIN_12038F1aq8syash@ethith.uz",
+          "studentName": "Ustoz Muhammadyusuf",
+          "studentEmail": "ADMIN_12038F1aq8syash@ethith.uz",
+          "score": 0,
+          "totalPossible": 44,
+          "percent": 0,
+          "correctCount": 0,
+          "incorrectCount": 22,
+          "attempts": 1,
+          "breakdown": [
+            {
+              "qNum": 1,
+              "question": " Listen to an interview in which a woman is",
+              "userAns": "Belgilanmagan",
+              "correctAns": "True",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 2,
+              "question": "points for each correct answer 10",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 3,
+              "question": " Listen to the interview again. Choose the",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 4,
+              "question": "points for each correct answer 10",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 5,
+              "question": "feel / want / seem to be losing other more important",
+              "userAns": "Belgilanmagan",
+              "correctAns": "True",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 6,
+              "question": "make friends / trust someone / have a lot in common,",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 7,
+              "question": "achievement / connection / happiness with? Which",
+              "userAns": "Belgilanmagan",
+              "correctAns": "a",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 8,
+              "question": "points for each correct answer 20",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 9,
+              "question": "c esp ppl r u w/",
+              "userAns": "Belgilanmagan",
+              "correctAns": "True",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 10,
+              "question": "__________ that matter most to me and",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 11,
+              "question": "__________ looking forward 2 2morrow – my",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 12,
+              "question": "__________ cake! ",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 13,
+              "question": "point for each correct answer 5",
+              "userAns": "Belgilanmagan",
+              "correctAns": "True",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 14,
+              "question": "mentions an animal that probably doesn’t exist?",
+              "userAns": "Belgilanmagan",
+              "correctAns": "True",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 15,
+              "question": "explains why the truth behind a story often gets",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 16,
+              "question": "gives a general explanation for storytelling? _____",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 17,
+              "question": "explains why some stories have been told for a very",
+              "userAns": "Belgilanmagan",
+              "correctAns": "True",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 18,
+              "question": "says that people from all times and places tell and",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 19,
+              "question": "points for each correct answer 10",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 20,
+              "question": "__________ causes bad things to",
+              "userAns": "Belgilanmagan",
+              "correctAns": "True",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 21,
+              "question": "__________.",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            },
+            {
+              "qNum": 22,
+              "question": "points for each correct answer 10",
+              "userAns": "Belgilanmagan",
+              "correctAns": "False",
+              "isCorrect": false,
+              "points": 2,
+              "writingEvaluation": null
+            }
+          ],
+          "timeSpent": "1 daqiqa",
+          "date": "19/10/2026, 21:44:04",
+          "blockedCount": 0,
+          "infractions": [],
+          "attemptsHistory": [
+            {
+              "attemptNum": 1,
+              "score": 0,
+              "totalPossible": 44,
+              "percent": 0,
+              "correctCount": 0,
+              "incorrectCount": 22,
+              "timeSpent": "1 daqiqa",
+              "date": "19/10/2026, 21:44:04",
+              "breakdown": [
+                {
+                  "qNum": 1,
+                  "question": " Listen to an interview in which a woman is",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "True",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 2,
+                  "question": "points for each correct answer 10",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 3,
+                  "question": " Listen to the interview again. Choose the",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 4,
+                  "question": "points for each correct answer 10",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 5,
+                  "question": "feel / want / seem to be losing other more important",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "True",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 6,
+                  "question": "make friends / trust someone / have a lot in common,",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 7,
+                  "question": "achievement / connection / happiness with? Which",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "a",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 8,
+                  "question": "points for each correct answer 20",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 9,
+                  "question": "c esp ppl r u w/",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "True",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 10,
+                  "question": "__________ that matter most to me and",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 11,
+                  "question": "__________ looking forward 2 2morrow – my",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 12,
+                  "question": "__________ cake! ",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 13,
+                  "question": "point for each correct answer 5",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "True",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 14,
+                  "question": "mentions an animal that probably doesn’t exist?",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "True",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 15,
+                  "question": "explains why the truth behind a story often gets",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 16,
+                  "question": "gives a general explanation for storytelling? _____",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 17,
+                  "question": "explains why some stories have been told for a very",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "True",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 18,
+                  "question": "says that people from all times and places tell and",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 19,
+                  "question": "points for each correct answer 10",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 20,
+                  "question": "__________ causes bad things to",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "True",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 21,
+                  "question": "__________.",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                },
+                {
+                  "qNum": 22,
+                  "question": "points for each correct answer 10",
+                  "userAns": "Belgilanmagan",
+                  "correctAns": "False",
+                  "isCorrect": false,
+                  "points": 2,
+                  "writingEvaluation": null
+                }
+              ],
+              "blockedCount": 0,
+              "infractions": []
+            }
+          ]
+        }
+      ]
     }
   ],
   "deletedExamIds": [
@@ -1227,5 +2000,5 @@
       "createdAt": 1792417155969
     }
   ],
-  "updatedAt": 1792428222801
+  "updatedAt": 1792428245575
 }
