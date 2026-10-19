@@ -1,12 +1,13 @@
 {
   "classes": [
     {
-      "id": "cls_1791996374490",
-      "name": "IELTS GURuh",
+      "id": "cls_ethith_main",
+      "name": "IELTS & General English Intensive",
       "code": "ETH-L6S8CM",
-      "teacherId": "tc_l78sgm19w",
-      "teacherName": "Muhammadyusuf",
-      "teacherEmail": "joraboymuhammad@gmail.com",
+      "teacherId": "joraboyevmuhammad85@gmail.com",
+      "teacherName": "Instructor Muhammadyusuf",
+      "teacherEmail": "joraboyevmuhammad85@gmail.com",
+      "created": 1792416763365,
       "students": [
         {
           "id": "std_sync_test",
@@ -21,12 +22,12 @@
           "name": "Muhammadyusuf",
           "email": "muhammedjoraboyev1@gmail.com",
           "lastActive": 1791999647009,
-          "dailyMinutes": 2225,
+          "dailyMinutes": 2246,
           "mistakes": 0,
-          "coins": 102000,
+          "coins": 103500,
           "avatar": "boy_dragon_god",
           "nameStyle": "blazing",
-          "title": null
+          "title": "⚡ Grammatika Terminatori"
         },
         {
           "id": "std_live_test_1",
@@ -38,25 +39,13 @@
           "id": "muhammedjoraboyev1@gmail.com",
           "name": "Muhammadyusuf",
           "email": "muhammedjoraboyev1@gmail.com",
-          "coins": 102000,
           "lastActive": 1791999647009,
-          "dailyMinutes": 2211,
+          "dailyMinutes": 2246,
           "mistakes": 0,
+          "coins": 103500,
           "avatar": "boy_dragon_god",
           "nameStyle": "blazing",
-          "title": null
-        },
-        {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "Muhammadyusuf",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "lastActive": 1791999647009,
-          "dailyMinutes": 2211,
-          "mistakes": 0,
-          "coins": 102000,
-          "avatar": "boy_dragon_god",
-          "nameStyle": "blazing",
-          "title": null
+          "title": "⚡ Grammatika Terminatori"
         },
         {
           "id": "tc_l78sgm19w",
@@ -73,18 +62,6 @@
       ],
       "messages": [
         {
-          "id": "msg_init",
-          "senderId": "tc_l78sgm19w",
-          "senderName": "Muhammadyusuf",
-          "text": "Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.",
-          "time": "21:46",
-          "reactions": {
-            "💡": [
-              "joraboymuhammad@gmail.com"
-            ]
-          }
-        },
-        {
           "id": "msg_welcome",
           "senderId": "joraboyevmuhammad85@gmail.com",
           "senderName": "Ustoz Muhammadyusuf",
@@ -93,6 +70,18 @@
           "reactions": {
             "👍": [
               "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_init",
+          "senderId": "tc_l78sgm19w",
+          "senderName": "Muhammadyusuf",
+          "text": "Assalomu alaykum! Sinfimizga xush kelibsiz. Bu yerda bir-birimiz bilan fikr almashamiz va savollarni muhokama qilamiz.",
+          "time": "21:46",
+          "reactions": {
+            "💡": [
+              "joraboymuhammad@gmail.com"
             ]
           }
         },
@@ -1055,31 +1044,21 @@
       "level": "B2",
       "coins": 180,
       "dailyMinutes": 45,
-      "updatedAt": 1792336159790
+      "updatedAt": 1792336159790,
+      "avatar": null,
+      "title": null
     },
     {
-      "id": "st_shamshod_mvdq86j7",
+      "id": "st_kzja6hz7s",
       "name": "Shamshod",
       "email": "strikeruzb52@gmail.com",
       "role": "student",
       "level": "A1",
       "coins": 250,
       "dailyMinutes": 24,
-      "updatedAt": 1792386702111
-    },
-    {
-      "id": "aleksandermike37@gmail.com",
-      "name": "Yangi O'quvchi",
-      "email": "aleksandermike37@gmail.com",
-      "role": "student",
-      "coins": 53050,
-      "avatar": "girl_chrono_witch",
-      "level": "A1",
-      "joinedAt": 1792337512574,
-      "nameStyle": null,
-      "title": null,
-      "dailyMinutes": 86,
-      "updatedAt": 1792416675332
+      "updatedAt": 1792386702111,
+      "avatar": null,
+      "title": null
     },
     {
       "id": "nasibaorazaliyev@gmail.com",
@@ -1096,14 +1075,29 @@
       "updatedAt": 1792336159790
     },
     {
-      "id": "st_johndoe_mvdq86j7",
-      "name": "John Doe",
-      "email": "johndoe@ethith.uz",
+      "id": "aleksandermike37@gmail.com",
       "role": "student",
+      "name": "Yangi O'quvchi",
+      "email": "aleksandermike37@gmail.com",
       "level": "A1",
-      "coins": 0,
-      "dailyMinutes": 5,
-      "updatedAt": 1792321974547
+      "unlocked": {
+        "A1": 1,
+        "A2": 1,
+        "B1": 1,
+        "B2": 1,
+        "C1": 1,
+        "C2": 1
+      },
+      "quizScores": {},
+      "mistakes": [],
+      "dailyMinutes": 86,
+      "coins": 53050,
+      "avatar": "girl_chrono_witch",
+      "title": null,
+      "nameStyle": null,
+      "gifts": [],
+      "createdAt": 1792337512574,
+      "updatedAt": 1792416675332
     },
     {
       "id": "tc_l78sgm19w",
@@ -1241,6 +1235,16 @@
       "gifts": [],
       "createdAt": 1792416808987,
       "updatedAt": 1792416808987
+    },
+    {
+      "id": "st_johndoe_mvdq86j7",
+      "name": "John Doe",
+      "email": "johndoe@ethith.uz",
+      "role": "student",
+      "level": "A1",
+      "coins": 0,
+      "dailyMinutes": 5,
+      "updatedAt": 1792321974547
     }
   ],
   "p2pListings": [
@@ -1263,5 +1267,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792416878110
+  "updatedAt": 1792416878173
 }
