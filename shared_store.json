@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792386786198,
+      "created": 1792386736723,
       "students": [
         {
           "id": "std_sync_test",
@@ -518,7 +518,16 @@
       "teacherId": "tc_5sp5pd4im",
       "teacherName": "Azizbek",
       "teacherEmail": "azizbekurolov24@gmail.com",
-      "students": [],
+      "students": [
+        {
+          "id": "shodiyorovinch030@gmail.com",
+          "name": "Urolov",
+          "email": "shodiyorovinch030@gmail.com",
+          "lastActive": 1792388083643,
+          "dailyMinutes": 5,
+          "mistakes": 0
+        }
+      ],
       "messages": [
         {
           "id": "msg_init",
@@ -1048,7 +1057,6 @@
       "email": "azizbekurolov24@gmail.com",
       "createdAt": 1792387056897,
       "coins": 150,
-      "gifts": [],
       "level": "A1",
       "dailyMinutes": 14,
       "updatedAt": 1792388015479
@@ -1099,5 +1107,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792388022232
+  "updatedAt": 1792388084444
 }
