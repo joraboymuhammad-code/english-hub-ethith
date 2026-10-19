@@ -229,6 +229,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -55453,7 +55454,7 @@ window.NAVIGATE_CURRICULUM = {
  </a>
  <div class=navbar-menu-actions>
  
- <ul class=navbar-menu><li class=navbar-item><a class="navbar-link active" href="#">Home</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('ask_ai')">Ask AI Teacher</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('quiz')">Quiz Test</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('classes')">Classes & Chat</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('exams')">Exams & Mocks</a></li></ul>
+ <ul class=navbar-menu><li class=navbar-item><a class="navbar-link active" href="#">Home</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('ask_ai')">Ask AI Teacher</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('quiz')">Quiz Test</a></li><li class=navbar-item><a class="navbar-link" href="javascript:void(0)" onclick="window.ethithOpenApp('classes')">Classes & Chat</a></li></ul>
  
  <div class=navbar-actions>
  <a href="#" class="navbar-login" onclick="window.ethithOpenApp('dash');return false;" onclick="window.ethithOpenApp('dash');return false;">
@@ -56470,7 +56471,6 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     h += '<div class="ap-label">Learning & Testing</div>';
     h += '<button class="ap-item ' + (cur === 'quiz' ? 'active' : '') + '" data-go="quiz" style="color:#f59e0b;font-weight:700">' + ic('sparkles') + 'Quiz Test</button>';
     h += '<button class="ap-item ' + (cur === 'classes' ? 'active' : '') + '" data-go="classes">' + ic('users') + 'Classes & Chat</button>';
-    h += '<button class="ap-item ' + (cur === 'exams' ? 'active' : '') + '" data-go="exams">' + ic('trophy') + 'Exams & Mocks</button>';
 
     h += '<div class="ap-label">Reyting & Market</div>';
     h += '<button class="ap-item ' + (cur === 'leaderboard' ? 'active' : '') + '" data-go="leaderboard" style="color:#f59e0b;font-weight:700">' + ic('trophy') + 'Leaderboard (Reyting)</button>';
@@ -56499,7 +56499,6 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     ask_ai: 'ETHITH AI Teacher',
     quiz: 'Live Quiz Battle & Test',
     classes: 'Classes & Telegram Chat',
-    exams: 'Exams & Leaderboard',
     leaderboard: 'ETHITH Coin Leaderboard (Reyting)',
     market: 'ETHITH Market & Packlar',
     profile: 'Mening Profilim'
@@ -56686,8 +56685,6 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       window.EthithViews.renderQuizBattleView(v);
     } else if (view.name === 'classes') {
       window.EthithViews.renderClassesView(v);
-    } else if (view.name === 'exams') {
-      window.EthithViews.renderExamsView(v);
     } else if (view.name === 'leaderboard') {
       window.EthithViews.renderLeaderboardView(v);
     } else if (view.name === 'market') {
@@ -56717,13 +56714,12 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '</div></section>';
 
     h += '<div class="ap-sec"><div><h2>' + ic('sparkles') + ' Quick Actions</h2><p>Instant access to core learning and testing sections</p></div></div>';
-    h += '<div class="ap-grid g4">';
+    h += '<div class="ap-grid g3">';
 
     [
       ['q1', 'sparkles', 'Ask AI Teacher', 'Interactive learning with your 24/7 AI tutor', 'ask_ai'],
       ['q2', 'sparkles', 'Quiz Test', 'Interactive timed test studio & exams', 'quiz'],
-      ['q3', 'users', 'Classes & Chat', 'Live Telegram-style class chat and collaboration', 'classes'],
-      ['q4', 'trophy', 'Exams & Mocks', 'Official tests and leaderboard rankings', 'exams']
+      ['q3', 'users', 'Classes & Chat', 'Live Telegram-style class chat and collaboration', 'classes']
     ].forEach(function(q, i) {
       h += '<div class="ap-card ap-quick ' + q[0] + '" style="cursor:pointer" data-go="' + q[4] + '">' +
         ic(q[1], 'lg') + '<h3>' + q[2] + '</h3><p>' + q[3] + '</p><span class="go">Open ' + ic('right') + '</span></div>';
