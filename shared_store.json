@@ -535,7 +535,11 @@
           "senderName": "Azizbek",
           "text": "Welcome to our class! Here we can discuss grammar topics, collaborate on quizzes, and share answers in real-time.",
           "time": "10:28 AM",
-          "reactions": {}
+          "reactions": {
+            "❤️": [
+              "shodiyorovinch030@gmail.com"
+            ]
+          }
         },
         {
           "id": "msg_1792388095649_s6e3i",
@@ -1118,5 +1122,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792388096426
+  "updatedAt": 1792388105486
 }
