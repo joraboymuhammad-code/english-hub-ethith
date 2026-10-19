@@ -54,48 +54,48 @@
       { id: "p4_ex1_9", page: 4, exercise: "1", label: "9", top: 97.2, left: 9.0, width: 16.5, height: 2.3, correct: "have just checked or 've just checked" },
 
       // Exercise 2: Cross out the incorrect word/phrase (Sentences 1 to 6)
-      { id: "p4_ex2_1", page: 4, exercise: "2", label: "2.1", top: 12.0, left: 52.0, width: 38.0, height: 2.3, correct: "yet" },
-      { id: "p4_ex2_2", page: 4, exercise: "2", label: "2.2", top: 15.2, left: 52.0, width: 38.0, height: 2.3, correct: "all the time" },
-      { id: "p4_ex2_3", page: 4, exercise: "2", label: "2.3", top: 18.4, left: 52.0, width: 38.0, height: 2.3, correct: "already" },
-      { id: "p4_ex2_4", page: 4, exercise: "2", label: "2.4", top: 21.6, left: 52.0, width: 38.0, height: 2.3, correct: "at the moment" },
-      { id: "p4_ex2_5", page: 4, exercise: "2", label: "2.5", top: 24.8, left: 52.0, width: 38.0, height: 2.3, correct: "now" },
-      { id: "p4_ex2_6", page: 4, exercise: "2", label: "2.6", top: 28.0, left: 52.0, width: 38.0, height: 2.3, correct: "every time" },
+      { id: "p4_ex2_1", page: 4, exercise: "2", label: "2.1", top: 35.6, left: 53.0, width: 38.0, height: 2.3, correct: "yet" },
+      { id: "p4_ex2_2", page: 4, exercise: "2", label: "2.2", top: 39.3, left: 53.0, width: 38.0, height: 2.3, correct: "all the time" },
+      { id: "p4_ex2_3", page: 4, exercise: "2", label: "2.3", top: 42.9, left: 53.0, width: 38.0, height: 2.3, correct: "already" },
+      { id: "p4_ex2_4", page: 4, exercise: "2", label: "2.4", top: 46.5, left: 53.0, width: 38.0, height: 2.3, correct: "at the moment" },
+      { id: "p4_ex2_5", page: 4, exercise: "2", label: "2.5", top: 50.1, left: 53.0, width: 38.0, height: 2.3, correct: "now" },
+      { id: "p4_ex2_6", page: 4, exercise: "2", label: "2.6", top: 53.7, left: 53.0, width: 38.0, height: 2.3, correct: "every time" },
 
       // Exercise 3: Work for LinkedIn (Blanks 1 to 8)
-      { id: "p4_ex3_1", page: 4, exercise: "3", label: "3.1", top: 43.5, left: 54.0, width: 23.0, height: 2.3, correct: "Have you heard or have you heard" },
-      { id: "p4_ex3_2", page: 4, exercise: "3", label: "3.2", top: 52.8, left: 69.0, width: 18.0, height: 2.3, correct: "is increasing or 's increasing" },
-      { id: "p4_ex3_3", page: 4, exercise: "3", label: "3.3", top: 57.6, left: 74.0, width: 14.0, height: 2.3, correct: "has or HAS" },
-      { id: "p4_ex3_4", page: 4, exercise: "3", label: "3.4", top: 60.0, left: 70.0, width: 18.0, height: 2.3, correct: "check or CHECK" },
-      { id: "p4_ex3_5", page: 4, exercise: "3", label: "3.5", top: 64.7, left: 71.0, width: 16.0, height: 2.3, correct: "use or USE" },
-      { id: "p4_ex3_6", page: 4, exercise: "3", label: "3.6", top: 71.8, left: 54.0, width: 22.0, height: 2.3, correct: "has already visited or 's already visited" },
-      { id: "p4_ex3_7", page: 4, exercise: "3", label: "3.7", top: 76.5, left: 63.0, width: 16.0, height: 2.3, correct: "include or INCLUDE" },
-      { id: "p4_ex3_8", page: 4, exercise: "3", label: "3.8", top: 81.3, left: 62.0, width: 20.0, height: 2.3, correct: "are taking place or 're taking place" }
+      { id: "p4_ex3_1", page: 4, exercise: "3", label: "3.1", top: 65.1, left: 54.0, width: 22.0, height: 2.3, correct: "Have you heard or have you heard" },
+      { id: "p4_ex3_2", page: 4, exercise: "3", label: "3.2", top: 73.9, left: 69.0, width: 18.0, height: 2.3, correct: "is increasing or 's increasing" },
+      { id: "p4_ex3_3", page: 4, exercise: "3", label: "3.3", top: 77.5, left: 74.0, width: 14.0, height: 2.3, correct: "has or HAS" },
+      { id: "p4_ex3_4", page: 4, exercise: "3", label: "3.4", top: 81.1, left: 70.0, width: 18.0, height: 2.3, correct: "check or CHECK" },
+      { id: "p4_ex3_5", page: 4, exercise: "3", label: "3.5", top: 84.7, left: 71.0, width: 16.0, height: 2.3, correct: "use or USE" },
+      { id: "p4_ex3_6", page: 4, exercise: "3", label: "3.6", top: 90.4, left: 54.0, width: 22.0, height: 2.3, correct: "has already visited or 's already visited" },
+      { id: "p4_ex3_7", page: 4, exercise: "3", label: "3.7", top: 94.0, left: 63.0, width: 16.0, height: 2.3, correct: "include or INCLUDE" },
+      { id: "p4_ex3_8", page: 4, exercise: "3", label: "3.8", top: 97.1, left: 62.0, width: 20.0, height: 2.3, correct: "are taking place or 're taking place" }
     ],
     5: [
       // Exercise 4a: Match questions 1-6 to answers a-f
-      { id: "p5_ex4_1", page: 5, exercise: "4a", label: "4.1", top: 7.2, left: 7.0, width: 4.5, height: 2.3, correct: "c" },
-      { id: "p5_ex4_2", page: 5, exercise: "4a", label: "4.2", top: 9.3, left: 7.0, width: 4.5, height: 2.3, correct: "f" },
-      { id: "p5_ex4_3", page: 5, exercise: "4a", label: "4.3", top: 11.4, left: 7.0, width: 4.5, height: 2.3, correct: "a" },
-      { id: "p5_ex4_4", page: 5, exercise: "4a", label: "4.4", top: 13.5, left: 7.0, width: 4.5, height: 2.3, correct: "d" },
-      { id: "p5_ex4_5", page: 5, exercise: "4a", label: "4.5", top: 15.6, left: 7.0, width: 4.5, height: 2.3, correct: "e" },
-      { id: "p5_ex4_6", page: 5, exercise: "4a", label: "4.6", top: 17.7, left: 7.0, width: 4.5, height: 2.3, correct: "b" },
+      { id: "p5_ex4_1", page: 5, exercise: "4a", label: "4.1", top: 12.9, left: 7.0, width: 5.5, height: 2.3, correct: "c" },
+      { id: "p5_ex4_2", page: 5, exercise: "4a", label: "4.2", top: 15.0, left: 7.0, width: 5.5, height: 2.3, correct: "f" },
+      { id: "p5_ex4_3", page: 5, exercise: "4a", label: "4.3", top: 17.0, left: 7.0, width: 5.5, height: 2.3, correct: "a" },
+      { id: "p5_ex4_4", page: 5, exercise: "4a", label: "4.4", top: 19.1, left: 7.0, width: 5.5, height: 2.3, correct: "d" },
+      { id: "p5_ex4_5", page: 5, exercise: "4a", label: "4.5", top: 21.2, left: 7.0, width: 5.5, height: 2.3, correct: "e" },
+      { id: "p5_ex4_6", page: 5, exercise: "4a", label: "4.6", top: 23.2, left: 7.0, width: 5.5, height: 2.3, correct: "b" },
 
       // Exercise 5: Put word in brackets in the correct place
-      { id: "p5_ex5_1", page: 5, exercise: "5", label: "5.1", top: 40.5, left: 7.0, width: 9.0, height: 2.3, correct: "out" },
-      { id: "p5_ex5_2", page: 5, exercise: "5", label: "5.2", top: 42.6, left: 7.0, width: 9.0, height: 2.3, correct: "out" },
-      { id: "p5_ex5_3", page: 5, exercise: "5", label: "5.3", top: 44.7, left: 7.0, width: 9.0, height: 2.3, correct: "on" },
-      { id: "p5_ex5_4", page: 5, exercise: "5", label: "5.4", top: 46.8, left: 7.0, width: 9.0, height: 2.3, correct: "in" },
-      { id: "p5_ex5_5", page: 5, exercise: "5", label: "5.5", top: 48.9, left: 7.0, width: 9.0, height: 2.3, correct: "with" },
+      { id: "p5_ex5_1", page: 5, exercise: "5", label: "5.1", top: 43.4, left: 7.0, width: 9.0, height: 2.3, correct: "out" },
+      { id: "p5_ex5_2", page: 5, exercise: "5", label: "5.2", top: 45.5, left: 7.0, width: 9.0, height: 2.3, correct: "out" },
+      { id: "p5_ex5_3", page: 5, exercise: "5", label: "5.3", top: 47.5, left: 7.0, width: 9.0, height: 2.3, correct: "on" },
+      { id: "p5_ex5_4", page: 5, exercise: "5", label: "5.4", top: 49.6, left: 7.0, width: 9.0, height: 2.3, correct: "in" },
+      { id: "p5_ex5_5", page: 5, exercise: "5", label: "5.5", top: 51.7, left: 7.0, width: 9.0, height: 2.3, correct: "with" },
 
       // Exercise 6: Complete opinions with have, help, keep, make, trust
-      { id: "p5_ex6_2", page: 5, exercise: "6", label: "6.2", top: 62.5, left: 24.0, width: 14.0, height: 2.3, correct: "help" },
-      { id: "p5_ex6_3", page: 5, exercise: "6", label: "6.3", top: 66.0, left: 12.0, width: 14.0, height: 2.3, correct: "trust" },
-      { id: "p5_ex6_4", page: 5, exercise: "6", label: "6.4", top: 72.8, left: 10.0, width: 14.0, height: 2.3, correct: "have" },
-      { id: "p5_ex6_5", page: 5, exercise: "6", label: "6.5", top: 76.5, left: 40.0, width: 15.0, height: 2.3, correct: "make" },
+      { id: "p5_ex6_2", page: 5, exercise: "6", label: "6.2", top: 69.7, left: 23.0, width: 14.0, height: 2.3, correct: "help" },
+      { id: "p5_ex6_3", page: 5, exercise: "6", label: "6.3", top: 73.3, left: 13.0, width: 14.0, height: 2.3, correct: "trust" },
+      { id: "p5_ex6_4", page: 5, exercise: "6", label: "6.4", top: 79.0, left: 10.0, width: 14.0, height: 2.3, correct: "have" },
+      { id: "p5_ex6_5", page: 5, exercise: "6", label: "6.5", top: 82.1, left: 39.0, width: 14.0, height: 2.3, correct: "make" },
 
       // Exercise 7b: Pronunciation rule (consonant / vowel)
-      { id: "p5_ex7_1", page: 5, exercise: "7b", label: "7.1", top: 57.0, left: 68.0, width: 15.0, height: 2.3, correct: "consonant" },
-      { id: "p5_ex7_2", page: 5, exercise: "7b", label: "7.2", top: 60.5, left: 81.0, width: 14.0, height: 2.3, correct: "vowel" }
+      { id: "p5_ex7_1", page: 5, exercise: "7b", label: "7.1", top: 57.3, left: 66.0, width: 16.0, height: 2.3, correct: "consonant" },
+      { id: "p5_ex7_2", page: 5, exercise: "7b", label: "7.2", top: 60.4, left: 78.0, width: 14.0, height: 2.3, correct: "vowel" }
     ]
   };
 
