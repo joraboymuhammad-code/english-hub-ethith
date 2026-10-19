@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792416763365,
+      "created": 1792003895709,
       "students": [
         {
           "id": "std_sync_test",
@@ -34,6 +34,42 @@
           "name": "Alisher Oquvchi",
           "email": "alisher@gmail.com",
           "dailyMinutes": 5
+        },
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "coins": 103500,
+          "lastActive": 1791999647009,
+          "dailyMinutes": 2246,
+          "mistakes": 0,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": "⚡ Grammatika Terminatori"
+        },
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 2246,
+          "mistakes": 0,
+          "coins": 103500,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": "⚡ Grammatika Terminatori"
+        },
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "Muhammadyusuf",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "lastActive": 1791999647009,
+          "dailyMinutes": 2246,
+          "mistakes": 0,
+          "coins": 103500,
+          "avatar": "boy_dragon_god",
+          "nameStyle": "blazing",
+          "title": "⚡ Grammatika Terminatori"
         },
         {
           "id": "muhammedjoraboyev1@gmail.com",
@@ -957,7 +993,8 @@
   "deletedListingIds": [
     "p2p_1792322748592_nls2",
     "p2p_1792322765334_1cj0",
-    "p2p_1792387876695_p00d"
+    "p2p_1792387876695_p00d",
+    "p2p_1792383468123_seg5"
   ],
   "accounts": [
     {
@@ -1034,7 +1071,7 @@
       "dailyMinutes": 35,
       "nameStyle": "blazing",
       "title": "⚡ Grammatika Terminatori",
-      "updatedAt": 1792416875776
+      "updatedAt": 1792416876046
     },
     {
       "id": "std_live_test_1",
@@ -1095,18 +1132,9 @@
       "avatar": "boy_v7_merlin_2",
       "title": null,
       "nameStyle": null,
-      "gifts": [
-        {
-          "id": 87,
-          "name": "Yuvilgan Paypoqning Jufti (Qidirilmoqda)",
-          "desc": "Kir yuvish mashinasi yutib yuborgan juftining akasi!",
-          "icon": "🧦",
-          "rarity": "Legendary",
-          "price": 940
-        }
-      ],
+      "gifts": [],
       "createdAt": 1792337512574,
-      "updatedAt": 1792417119217
+      "updatedAt": 1792417341306
     },
     {
       "id": "tc_l78sgm19w",
@@ -1253,25 +1281,7 @@
       "price": 1000,
       "allowBarter": true,
       "createdAt": 1792417155969
-    },
-    {
-      "id": "p2p_1792383468123_seg5",
-      "sellerId": "st_kzja6hz7s",
-      "sellerName": "Shamshod",
-      "sellerEmail": "strikeruzb52@gmail.com",
-      "item": {
-        "type": "gift",
-        "index": 0,
-        "id": "gift_0",
-        "name": "Teshik Soyabon",
-        "icon": "☂️",
-        "rarity": "Rare",
-        "desc": "Yomg'irda boshingizni emas, yelkangizni ho'l qiladigan maxsus model!"
-      },
-      "price": 5000,
-      "allowBarter": true,
-      "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792417196772
+  "updatedAt": 1792417344970
 }
