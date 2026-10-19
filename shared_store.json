@@ -529,7 +529,8 @@
           "reactions": {}
         }
       ],
-      "pinnedId": null
+      "pinnedId": null,
+      "deletedMsgIds": []
     }
   ],
   "exams": [
@@ -1092,5 +1093,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792387772687
+  "updatedAt": 1792387848547
 }
