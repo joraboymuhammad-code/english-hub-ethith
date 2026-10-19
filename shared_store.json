@@ -883,8 +883,20 @@
       "coins": 150,
       "gifts": [],
       "level": "A1",
-      "dailyMinutes": 39,
-      "updatedAt": 1792427522965
+      "dailyMinutes": 4,
+      "updatedAt": 1792428151899
+    },
+    {
+      "id": "admin_12038f1aq8syash@ethith.uz",
+      "role": "teacher",
+      "name": "Ustoz Muhammadyusuf",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 150,
+      "gifts": [],
+      "avatar": null,
+      "title": null,
+      "nameStyle": null,
+      "createdAt": 1792428150254
     }
   ],
   "p2pListings": [
@@ -910,5 +922,5 @@
       "createdAt": 1792417155969
     }
   ],
-  "updatedAt": 1792427700646
+  "updatedAt": 1792428152533
 }
