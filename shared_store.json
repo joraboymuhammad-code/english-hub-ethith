@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792386786198,
+      "created": 1792386736723,
       "students": [
         {
           "id": "std_sync_test",
@@ -1045,6 +1045,31 @@
       "name": "Azizbek",
       "email": "azizbekurolov24@gmail.com",
       "createdAt": 1792387056897
+    },
+    {
+      "id": "shodiyorovinch030@gmail.com",
+      "role": "student",
+      "name": "Urolov",
+      "email": "shodiyorovinch030@gmail.com",
+      "level": "A1",
+      "unlocked": {
+        "A1": 1,
+        "A2": 1,
+        "B1": 1,
+        "B2": 1,
+        "C1": 1,
+        "C2": 1
+      },
+      "quizScores": {},
+      "mistakes": [],
+      "dailyMinutes": 0,
+      "coins": 150,
+      "avatar": null,
+      "title": null,
+      "nameStyle": null,
+      "gifts": [],
+      "createdAt": 1792387770870,
+      "updatedAt": 1792387770870
     }
   ],
   "p2pListings": [
@@ -1067,5 +1092,5 @@
       "createdAt": 1792383468123
     }
   ],
-  "updatedAt": 1792387727782
+  "updatedAt": 1792387772687
 }
