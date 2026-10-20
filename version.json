@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.20.2010",
-  "buildTime": 1792511400000,
-  "label": "ETHITH 10.0.0 - Full Precision Calibration for Units 1, 2, 3, 4 (Pages 4-31) with Direct Fill Inputs, Instant Feedback & Zero Catalog Overlap"
+  "version": "2026.10.20.2035",
+  "buildTime": 1792512900000,
+  "label": "ETHITH 10.1.0 - Complete Overhaul of Unit 2: Fixed Page 11 Broken Stacked Inputs, Restored Missing Blanks in Ex 3b, Calibrated Choice Chips in Ex 4, Full Calibration for Pages 10-14"
 }
