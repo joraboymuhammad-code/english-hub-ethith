@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792499045394,
+      "created": 1792509019496,
       "students": [],
       "messages": [
         {
@@ -570,15 +570,28 @@
   ],
   "accounts": [
     {
+      "id": "tg_98124765",
+      "role": "student",
+      "name": "Muhammad Jo'raboyev",
+      "email": "mu_striker@telegram.org",
+      "coins": 100,
+      "level": "A1",
+      "dailyMinutes": 0,
+      "nameStyle": null,
+      "victorySound": null,
+      "updatedAt": 1792510435643,
+      "gifts": []
+    },
+    {
       "id": "admin_official_teacher",
       "role": "teacher",
       "name": "Ustoz Muhammadyusuf",
       "email": "admin_12038f1aq8syash@ethith.uz",
       "createdAt": 1792429101989,
-      "coins": 150,
+      "coins": 500,
       "gifts": [],
       "level": "A1",
-      "dailyMinutes": 237,
+      "dailyMinutes": 20,
       "updatedAt": 1792509373652
     },
     {
@@ -596,22 +609,8 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null
-    },
-    {
-      "id": "tg_98124765",
-      "role": "student",
-      "name": "Muhammad Jo'raboyev",
-      "email": "mu_striker@telegram.org",
-      "coins": 100,
-      "avatar": null,
-      "level": "A1",
-      "dailyMinutes": 0,
-      "nameStyle": null,
-      "title": null,
-      "victorySound": null,
-      "updatedAt": 1792510080665
     }
   ],
   "p2pListings": [],
-  "updatedAt": 1792510081684
+  "updatedAt": 1792510437128
 }
