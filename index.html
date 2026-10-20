@@ -253,6 +253,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -55885,7 +55887,7 @@ window.NAVIGATE_CURRICULUM = {
   // Check if current user is Teacher/Admin
   function isTeacherRole() {
     var u = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || (window.S && window.S.user);
-    return !!(u && (u.role === 'teacher' || u.role === 'admin'));
+    return !!(u && (u.role === 'teacher' || u.role === 'admin')) || (window._ethithWbEditorMode === true);
   }
 
   // 12 Authentic Units from Oxford Navigate Intermediate B1+
@@ -61758,588 +61760,2967 @@ window.NAVIGATE_CURRICULUM = {
 ],
     28: [
   {
-    "id": "p28_ex1_1",
-    "type": "fill",
+    "id": "p28_ex1_2a",
+    "type": "choose",
     "page": 28,
-    "exercise": "1",
-    "label": "1",
-    "top": 24,
-    "left": 10.9,
-    "width": 10,
-    "height": 1.8,
-    "correct": "at"
+    "group": "p28_1_2",
+    "text": "anywhere",
+    "top": 45.6,
+    "left": 21,
+    "width": 7,
+    "height": 1.6,
+    "correct": true
   },
   {
-    "id": "p28_ex1_2",
-    "type": "fill",
+    "id": "p28_ex1_2b",
+    "type": "choose",
     "page": 28,
-    "exercise": "1",
-    "label": "2",
-    "top": 27.5,
-    "left": 10.9,
-    "width": 14,
-    "height": 1.8,
-    "correct": "anywhere"
+    "group": "p28_1_2",
+    "text": "everywhere",
+    "top": 45.6,
+    "left": 28.5,
+    "width": 8.5,
+    "height": 1.6,
+    "correct": false
   },
   {
-    "id": "p28_ex1_3",
-    "type": "fill",
+    "id": "p28_ex1_2c",
+    "type": "choose",
     "page": 28,
-    "exercise": "1",
-    "label": "3",
-    "top": 31,
-    "left": 10.9,
-    "width": 14,
-    "height": 1.8,
-    "correct": "sardines"
+    "group": "p28_1_2",
+    "text": "nowhere",
+    "top": 47.4,
+    "left": 12,
+    "width": 6.8,
+    "height": 1.6,
+    "correct": false
   },
   {
-    "id": "p28_ex1_4",
-    "type": "fill",
+    "id": "p28_ex1_3a",
+    "type": "choose",
     "page": 28,
-    "exercise": "1",
-    "label": "4",
-    "top": 34.5,
-    "left": 10.9,
-    "width": 10,
-    "height": 1.8,
-    "correct": "of"
+    "group": "p28_1_3",
+    "text": "fish",
+    "top": 56.4,
+    "left": 14.5,
+    "width": 3.5,
+    "height": 1.6,
+    "correct": false
   },
   {
-    "id": "p28_ex1_5",
-    "type": "fill",
+    "id": "p28_ex1_3b",
+    "type": "choose",
     "page": 28,
-    "exercise": "1",
-    "label": "5",
-    "top": 38,
-    "left": 10.9,
-    "width": 10,
-    "height": 1.8,
-    "correct": "for"
+    "group": "p28_1_3",
+    "text": "sardines",
+    "top": 56.4,
+    "left": 18.5,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": true
   },
   {
-    "id": "p28_ex1_6",
-    "type": "fill",
+    "id": "p28_ex1_3c",
+    "type": "choose",
     "page": 28,
-    "exercise": "1",
-    "label": "6",
-    "top": 41.5,
-    "left": 10.9,
-    "width": 10,
-    "height": 1.8,
-    "correct": "back"
+    "group": "p28_1_3",
+    "text": "tuna",
+    "top": 56.4,
+    "left": 25.5,
+    "width": 3.8,
+    "height": 1.6,
+    "correct": false
   },
   {
-    "id": "p28_ex1_7",
-    "type": "fill",
+    "id": "p28_ex1_4a",
+    "type": "choose",
     "page": 28,
-    "exercise": "1",
-    "label": "7",
-    "top": 45,
-    "left": 10.9,
-    "width": 10,
-    "height": 1.8,
-    "correct": "down"
+    "group": "p28_1_4",
+    "text": "at",
+    "top": 62,
+    "left": 30.5,
+    "width": 2.5,
+    "height": 1.6,
+    "correct": false
   },
   {
-    "id": "p28_ex1_8",
-    "type": "fill",
+    "id": "p28_ex1_4b",
+    "type": "choose",
     "page": 28,
-    "exercise": "1",
-    "label": "8",
-    "top": 48.5,
-    "left": 10.9,
-    "width": 10,
-    "height": 1.8,
-    "correct": "over"
+    "group": "p28_1_4",
+    "text": "of",
+    "top": 62,
+    "left": 33.5,
+    "width": 2.5,
+    "height": 1.6,
+    "correct": true
   },
   {
-    "id": "p28_ex2_1",
-    "type": "fill",
+    "id": "p28_ex1_5a",
+    "type": "choose",
     "page": 28,
-    "exercise": "2",
-    "label": "1",
-    "top": 60,
-    "left": 10.9,
-    "width": 30,
-    "height": 1.8,
-    "correct": "are making themselves at home"
+    "group": "p28_1_5",
+    "text": "for",
+    "top": 64.6,
+    "left": 24,
+    "width": 3,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p28_ex1_5b",
+    "type": "choose",
+    "page": 28,
+    "group": "p28_1_5",
+    "text": "from",
+    "top": 64.6,
+    "left": 27.5,
+    "width": 4,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p28_ex1_5c",
+    "type": "choose",
+    "page": 28,
+    "group": "p28_1_5",
+    "text": "of",
+    "top": 64.6,
+    "left": 32,
+    "width": 2.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p28_ex1_6a",
+    "type": "choose",
+    "page": 28,
+    "group": "p28_1_6",
+    "text": "back",
+    "top": 71.6,
+    "left": 14.5,
+    "width": 4,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p28_ex1_6b",
+    "type": "choose",
+    "page": 28,
+    "group": "p28_1_6",
+    "text": "fingers",
+    "top": 71.6,
+    "left": 19,
+    "width": 5.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p28_ex1_6c",
+    "type": "choose",
+    "page": 28,
+    "group": "p28_1_6",
+    "text": "front",
+    "top": 71.6,
+    "left": 25,
+    "width": 4.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p28_ex1_7a",
+    "type": "choose",
+    "page": 28,
+    "group": "p28_1_7",
+    "text": "down",
+    "top": 78.8,
+    "left": 22.5,
+    "width": 4.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p28_ex1_7b",
+    "type": "choose",
+    "page": 28,
+    "group": "p28_1_7",
+    "text": "in",
+    "top": 78.8,
+    "left": 27.5,
+    "width": 2.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p28_ex1_7c",
+    "type": "choose",
+    "page": 28,
+    "group": "p28_1_7",
+    "text": "up",
+    "top": 78.8,
+    "left": 30.5,
+    "width": 2.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p28_ex1_8a",
+    "type": "choose",
+    "page": 28,
+    "group": "p28_1_8",
+    "text": "for",
+    "top": 88,
+    "left": 13.8,
+    "width": 3,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p28_ex1_8b",
+    "type": "choose",
+    "page": 28,
+    "group": "p28_1_8",
+    "text": "over",
+    "top": 88,
+    "left": 17.2,
+    "width": 3.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p28_ex1_8c",
+    "type": "choose",
+    "page": 28,
+    "group": "p28_1_8",
+    "text": "up",
+    "top": 88,
+    "left": 21.2,
+    "width": 2.5,
+    "height": 1.6,
+    "correct": false
   },
   {
     "id": "p28_ex2_2",
     "type": "fill",
     "page": 28,
-    "exercise": "2",
     "label": "2",
-    "top": 64.5,
-    "left": 10.9,
-    "width": 22,
-    "height": 1.8,
+    "top": 43.8,
+    "left": 74,
+    "width": 17,
+    "height": 1.7,
     "correct": "run out of space"
   },
   {
     "id": "p28_ex2_3",
     "type": "fill",
     "page": 28,
-    "exercise": "2",
     "label": "3",
-    "top": 69,
-    "left": 10.9,
-    "width": 18,
-    "height": 1.8,
+    "top": 45.6,
+    "left": 75,
+    "width": 16,
+    "height": 1.7,
     "correct": "get rid of"
   },
   {
     "id": "p28_ex2_4",
     "type": "fill",
     "page": 28,
-    "exercise": "2",
     "label": "4",
-    "top": 73.5,
-    "left": 10.9,
-    "width": 22,
-    "height": 1.8,
+    "top": 49.2,
+    "left": 70.5,
+    "width": 17,
+    "height": 1.7,
     "correct": "all over the place"
   },
   {
     "id": "p28_ex2_5",
     "type": "fill",
     "page": 28,
-    "exercise": "2",
     "label": "5",
-    "top": 78,
-    "left": 10.9,
-    "width": 18,
-    "height": 1.8,
+    "top": 51,
+    "left": 45.5,
+    "width": 16,
+    "height": 1.7,
     "correct": "settling down"
   },
   {
     "id": "p28_ex2_6",
     "type": "fill",
     "page": 28,
-    "exercise": "2",
     "label": "6",
-    "top": 82.5,
-    "left": 10.9,
-    "width": 18,
-    "height": 1.8,
+    "top": 52.8,
+    "left": 67.5,
+    "width": 15,
+    "height": 1.7,
     "correct": "feel at home"
+  },
+  {
+    "id": "p28_ex3_2",
+    "type": "fill",
+    "page": 28,
+    "label": "2",
+    "top": 73,
+    "left": 72.5,
+    "width": 10,
+    "height": 1.7,
+    "correct": "coast"
+  },
+  {
+    "id": "p28_ex3_3",
+    "type": "fill",
+    "page": 28,
+    "label": "3",
+    "top": 74.8,
+    "left": 72.5,
+    "width": 10,
+    "height": 1.7,
+    "correct": "ferry"
+  },
+  {
+    "id": "p28_ex3_4",
+    "type": "fill",
+    "page": 28,
+    "label": "4",
+    "top": 76.6,
+    "left": 72.5,
+    "width": 10,
+    "height": 1.7,
+    "correct": "lake"
+  },
+  {
+    "id": "p28_ex3_5",
+    "type": "fill",
+    "page": 28,
+    "label": "5",
+    "top": 78.4,
+    "left": 72.5,
+    "width": 10,
+    "height": 1.7,
+    "correct": "canal"
+  },
+  {
+    "id": "p28_ex3_6",
+    "type": "fill",
+    "page": 28,
+    "label": "6",
+    "top": 80.2,
+    "left": 72.5,
+    "width": 10,
+    "height": 1.7,
+    "correct": "forest"
+  },
+  {
+    "id": "p28_ex3_7",
+    "type": "fill",
+    "page": 28,
+    "label": "7",
+    "top": 82,
+    "left": 72.5,
+    "width": 10,
+    "height": 1.7,
+    "correct": "season"
+  },
+  {
+    "id": "p28_ex3_8",
+    "type": "fill",
+    "page": 28,
+    "label": "8",
+    "top": 83.8,
+    "left": 72.5,
+    "width": 10,
+    "height": 1.7,
+    "correct": "island"
+  },
+  {
+    "id": "p28_ex4_2",
+    "type": "fill",
+    "page": 28,
+    "label": "2",
+    "top": 92.5,
+    "left": 61.5,
+    "width": 6,
+    "height": 1.7,
+    "correct": "a, c or c, a or a,c or c,a"
+  },
+  {
+    "id": "p28_ex4_3",
+    "type": "fill",
+    "page": 28,
+    "label": "3",
+    "top": 94.3,
+    "left": 61.5,
+    "width": 6,
+    "height": 1.7,
+    "correct": "b, c or c, b or b,c or c,b"
+  },
+  {
+    "id": "p28_ex4_4",
+    "type": "fill",
+    "page": 28,
+    "label": "4",
+    "top": 90.7,
+    "left": 88,
+    "width": 5.5,
+    "height": 1.7,
+    "correct": "c"
+  },
+  {
+    "id": "p28_ex4_5",
+    "type": "fill",
+    "page": 28,
+    "label": "5",
+    "top": 92.5,
+    "left": 88,
+    "width": 5.5,
+    "height": 1.7,
+    "correct": "b, c or c, b or b,c or c,b"
+  },
+  {
+    "id": "p28_ex4_6",
+    "type": "fill",
+    "page": 28,
+    "label": "6",
+    "top": 94.3,
+    "left": 88,
+    "width": 5.5,
+    "height": 1.7,
+    "correct": "b, c or c, b or b,c or c,b"
   }
 ],
     29: [
   {
-    "id": "p29_ex1b_1",
+    "id": "p29_ex1a_a",
     "type": "fill",
     "page": 29,
-    "exercise": "1b",
-    "label": "1",
-    "top": 32.5,
-    "left": 10.9,
-    "width": 10,
-    "height": 1.8,
-    "correct": "can I"
+    "label": "a",
+    "top": 24.3,
+    "left": 25.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "3"
   },
   {
-    "id": "p29_ex1b_2",
+    "id": "p29_ex1a_b",
     "type": "fill",
     "page": 29,
-    "exercise": "1b",
+    "label": "b",
+    "top": 26.5,
+    "left": 22.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "4"
+  },
+  {
+    "id": "p29_ex1a_d",
+    "type": "fill",
+    "page": 29,
+    "label": "d",
+    "top": 26.5,
+    "left": 45.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "2"
+  },
+  {
+    "id": "p29_ex2a_2",
+    "type": "fill",
+    "page": 29,
     "label": "2",
-    "top": 35.5,
-    "left": 10.9,
-    "width": 14,
-    "height": 1.8,
+    "top": 58.5,
+    "left": 13.5,
+    "width": 15,
+    "height": 1.7,
     "correct": "wonder if"
   },
   {
-    "id": "p29_ex1b_3",
+    "id": "p29_ex2a_3",
     "type": "fill",
     "page": 29,
-    "exercise": "1b",
     "label": "3",
-    "top": 38.5,
-    "left": 10.9,
-    "width": 14,
-    "height": 1.8,
+    "top": 61.9,
+    "left": 25,
+    "width": 15,
+    "height": 1.7,
     "correct": "aware that"
   },
   {
-    "id": "p29_ex1b_4",
+    "id": "p29_ex2a_4",
     "type": "fill",
     "page": 29,
-    "exercise": "1b",
     "label": "4",
-    "top": 41.5,
-    "left": 10.9,
-    "width": 12,
-    "height": 1.8,
+    "top": 65.3,
+    "left": 33,
+    "width": 14.5,
+    "height": 1.7,
     "correct": "Could you"
   },
   {
-    "id": "p29_ex1b_5",
+    "id": "p29_ex2a_5",
     "type": "fill",
     "page": 29,
-    "exercise": "1b",
     "label": "5",
-    "top": 44.5,
-    "left": 10.9,
-    "width": 16,
-    "height": 1.8,
+    "top": 68.7,
+    "left": 30,
+    "width": 14.5,
+    "height": 1.7,
     "correct": "with anything"
   },
   {
-    "id": "p29_ex1b_6",
+    "id": "p29_ex2a_6",
     "type": "fill",
     "page": 29,
-    "exercise": "1b",
     "label": "6",
-    "top": 47.5,
-    "left": 10.9,
-    "width": 12,
-    "height": 1.8,
+    "top": 70.4,
+    "left": 18,
+    "width": 14.5,
+    "height": 1.7,
     "correct": "you tell"
   },
   {
-    "id": "p29_ex1b_7",
+    "id": "p29_ex2a_7",
     "type": "fill",
     "page": 29,
-    "exercise": "1b",
     "label": "7",
-    "top": 50.5,
-    "left": 10.9,
-    "width": 16,
-    "height": 1.8,
-    "correct": "appreciate"
+    "top": 76.8,
+    "left": 31,
+    "width": 11.5,
+    "height": 1.7,
+    "correct": "I appreciate or appreciate"
+  },
+  {
+    "id": "p29_ex3b_2",
+    "type": "fill",
+    "page": 29,
+    "label": "2",
+    "top": 55.4,
+    "left": 71,
+    "width": 8,
+    "height": 1.7,
+    "correct": "it"
+  },
+  {
+    "id": "p29_ex3b_3",
+    "type": "fill",
+    "page": 29,
+    "label": "3",
+    "top": 56.9,
+    "left": 66.5,
+    "width": 12,
+    "height": 1.7,
+    "correct": "fascinating"
+  },
+  {
+    "id": "p29_ex3b_4",
+    "type": "fill",
+    "page": 29,
+    "label": "4",
+    "top": 58.4,
+    "left": 56.5,
+    "width": 11,
+    "height": 1.7,
+    "correct": "traditional"
+  },
+  {
+    "id": "p29_ex3b_5",
+    "type": "fill",
+    "page": 29,
+    "label": "5",
+    "top": 62.9,
+    "left": 74.5,
+    "width": 12.5,
+    "height": 1.7,
+    "correct": "hometown"
+  },
+  {
+    "id": "p29_ex3b_6",
+    "type": "fill",
+    "page": 29,
+    "label": "6",
+    "top": 64.4,
+    "left": 60.5,
+    "width": 9,
+    "height": 1.7,
+    "correct": "place"
+  },
+  {
+    "id": "p29_ex3b_7",
+    "type": "fill",
+    "page": 29,
+    "label": "7",
+    "top": 68.9,
+    "left": 59.5,
+    "width": 10,
+    "height": 1.7,
+    "correct": "there"
+  },
+  {
+    "id": "p29_ex3b_8",
+    "type": "fill",
+    "page": 29,
+    "label": "8",
+    "top": 70.4,
+    "left": 74.5,
+    "width": 9.5,
+    "height": 1.7,
+    "correct": "great"
   }
 ],
     30: [
   {
-    "id": "p30_ex1_1",
-    "type": "choose",
-    "page": 30,
-    "exercise": "1",
-    "group": "p30_1",
-    "text": "Cardboard shelters",
-    "top": 58.5,
-    "left": 10.9,
-    "width": 22,
-    "height": 1.7,
-    "correct": true
-  },
-  {
     "id": "p30_ex1_2",
-    "type": "choose",
-    "page": 30,
-    "exercise": "1",
-    "group": "p30_1",
-    "text": "Concrete skyscrapers",
-    "top": 61.5,
-    "left": 10.9,
-    "width": 22,
-    "height": 1.7,
-    "correct": false
-  },
-  {
-    "id": "p30_ex2_2",
     "type": "fill",
     "page": 30,
-    "exercise": "2",
     "label": "2",
-    "top": 68,
-    "left": 10.9,
-    "width": 14,
-    "height": 1.8,
+    "top": 55.4,
+    "left": 27.5,
+    "width": 9,
+    "height": 1.7,
     "correct": "architect"
   },
   {
-    "id": "p30_ex2_3",
+    "id": "p30_ex1_3",
     "type": "fill",
     "page": 30,
-    "exercise": "2",
     "label": "3",
-    "top": 71.5,
-    "left": 10.9,
-    "width": 16,
-    "height": 1.8,
+    "top": 56.9,
+    "left": 37.5,
+    "width": 9.5,
+    "height": 1.7,
     "correct": "architecture"
   },
   {
-    "id": "p30_ex2_4",
+    "id": "p30_ex1_4",
     "type": "fill",
     "page": 30,
-    "exercise": "2",
     "label": "4",
-    "top": 75,
-    "left": 10.9,
-    "width": 14,
-    "height": 1.8,
+    "top": 87.7,
+    "left": 23.5,
+    "width": 8.5,
+    "height": 1.7,
     "correct": "recycled"
   },
   {
-    "id": "p30_ex3_1",
+    "id": "p30_ex1_5",
     "type": "fill",
     "page": 30,
-    "exercise": "3",
-    "label": "1",
-    "top": 50,
-    "left": 55,
-    "width": 12,
-    "height": 1.8,
-    "correct": "known"
+    "label": "5",
+    "top": 89.2,
+    "left": 39,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "shelters"
+  },
+  {
+    "id": "p30_ex1_6",
+    "type": "fill",
+    "page": 30,
+    "label": "6",
+    "top": 90.7,
+    "left": 27.5,
+    "width": 9,
+    "height": 1.7,
+    "correct": "paper tubing"
+  },
+  {
+    "id": "p30_ex1_7",
+    "type": "fill",
+    "page": 30,
+    "label": "7",
+    "top": 92.2,
+    "left": 20,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "refugees"
+  },
+  {
+    "id": "p30_ex1_8",
+    "type": "fill",
+    "page": 30,
+    "label": "8",
+    "top": 49.3,
+    "left": 79.5,
+    "width": 9,
+    "height": 1.7,
+    "correct": "designs"
   },
   {
     "id": "p30_ex3_2",
-    "type": "fill",
+    "type": "choose",
     "page": 30,
-    "exercise": "3",
-    "label": "2",
-    "top": 53.5,
-    "left": 55,
-    "width": 12,
-    "height": 1.8,
-    "correct": "disaster"
+    "group": "p30_3_2",
+    "text": "disaster",
+    "top": 69.4,
+    "left": 75,
+    "width": 6.8,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p30_ex3_2b",
+    "type": "choose",
+    "page": 30,
+    "group": "p30_3_2",
+    "text": "disastrous",
+    "top": 69.4,
+    "left": 82.5,
+    "width": 8,
+    "height": 1.6,
+    "correct": false
   },
   {
     "id": "p30_ex3_3",
-    "type": "fill",
+    "type": "choose",
     "page": 30,
-    "exercise": "3",
-    "label": "3",
-    "top": 57,
-    "left": 55,
-    "width": 12,
-    "height": 1.8,
-    "correct": "solution"
+    "group": "p30_3_3",
+    "text": "result",
+    "top": 72.8,
+    "left": 69.5,
+    "width": 5.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p30_ex3_3b",
+    "type": "choose",
+    "page": 30,
+    "group": "p30_3_3",
+    "text": "solution",
+    "top": 72.8,
+    "left": 75.5,
+    "width": 7,
+    "height": 1.6,
+    "correct": true
   },
   {
     "id": "p30_ex3_4",
-    "type": "fill",
+    "type": "choose",
     "page": 30,
-    "exercise": "3",
-    "label": "4",
-    "top": 60.5,
-    "left": 55,
-    "width": 12,
-    "height": 1.8,
-    "correct": "refugee"
+    "group": "p30_3_4",
+    "text": "question",
+    "top": 74.5,
+    "left": 66.5,
+    "width": 6.8,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p30_ex3_4b",
+    "type": "choose",
+    "page": 30,
+    "group": "p30_3_4",
+    "text": "refugee",
+    "top": 74.5,
+    "left": 74,
+    "width": 6.8,
+    "height": 1.6,
+    "correct": true
   },
   {
     "id": "p30_ex3_5",
-    "type": "fill",
+    "type": "choose",
     "page": 30,
-    "exercise": "3",
-    "label": "5",
-    "top": 64,
-    "left": 55,
-    "width": 12,
-    "height": 1.8,
-    "correct": "homes"
+    "group": "p30_3_5",
+    "text": "homes",
+    "top": 76.2,
+    "left": 86.5,
+    "width": 5.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p30_ex3_5b",
+    "type": "choose",
+    "page": 30,
+    "group": "p30_3_5",
+    "text": "houses",
+    "top": 77.9,
+    "left": 57.5,
+    "width": 5.5,
+    "height": 1.6,
+    "correct": false
   },
   {
     "id": "p30_ex3_6",
-    "type": "fill",
+    "type": "choose",
     "page": 30,
-    "exercise": "3",
-    "label": "6",
-    "top": 67.5,
-    "left": 55,
-    "width": 12,
-    "height": 1.8,
-    "correct": "wood"
+    "group": "p30_3_6",
+    "text": "stone",
+    "top": 77.9,
+    "left": 79.5,
+    "width": 4.8,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p30_ex3_6b",
+    "type": "choose",
+    "page": 30,
+    "group": "p30_3_6",
+    "text": "wood",
+    "top": 77.9,
+    "left": 85,
+    "width": 4.8,
+    "height": 1.6,
+    "correct": true
   },
   {
     "id": "p30_ex3_7",
-    "type": "fill",
+    "type": "choose",
     "page": 30,
-    "exercise": "3",
-    "label": "7",
-    "top": 71,
-    "left": 55,
-    "width": 10,
-    "height": 1.8,
-    "correct": "easy"
+    "group": "p30_3_7",
+    "text": "easy",
+    "top": 83,
+    "left": 70.5,
+    "width": 4.2,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p30_ex3_7b",
+    "type": "choose",
+    "page": 30,
+    "group": "p30_3_7",
+    "text": "hard",
+    "top": 83,
+    "left": 75.5,
+    "width": 4.2,
+    "height": 1.6,
+    "correct": false
   },
   {
     "id": "p30_ex3_8",
-    "type": "fill",
+    "type": "choose",
     "page": 30,
-    "exercise": "3",
-    "label": "8",
-    "top": 74.5,
-    "left": 55,
-    "width": 10,
-    "height": 1.8,
-    "correct": "saved"
+    "group": "p30_3_8",
+    "text": "saved",
+    "top": 84.7,
+    "left": 57.5,
+    "width": 5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p30_ex3_8b",
+    "type": "choose",
+    "page": 30,
+    "group": "p30_3_8",
+    "text": "spent",
+    "top": 84.7,
+    "left": 63.5,
+    "width": 5,
+    "height": 1.6,
+    "correct": false
   }
 ],
     31: [
   {
-    "id": "p31_ex1_1",
-    "type": "fill",
-    "page": 31,
-    "exercise": "1",
-    "label": "1",
-    "top": 22,
-    "left": 10.9,
-    "width": 35,
-    "height": 1.8,
-    "correct": "Andy wasn't able to open the front door."
-  },
-  {
     "id": "p31_ex1_2",
     "type": "fill",
     "page": 31,
-    "exercise": "1",
     "label": "2",
-    "top": 26.5,
-    "left": 10.9,
-    "width": 35,
-    "height": 1.8,
-    "correct": "We definitely won't get home before nine o'clock."
+    "top": 28.5,
+    "left": 14.5,
+    "width": 32.5,
+    "height": 1.7,
+    "correct": "definitely won't get home before nine o'clock or We definitely won't get home before nine o'clock"
   },
   {
     "id": "p31_ex1_3",
     "type": "fill",
     "page": 31,
-    "exercise": "1",
     "label": "3",
-    "top": 31,
-    "left": 10.9,
-    "width": 35,
-    "height": 1.8,
-    "correct": "I didn't manage to finish the exercise."
+    "top": 32,
+    "left": 13,
+    "width": 34,
+    "height": 1.7,
+    "correct": "didn't manage to finish the exercise or I didn't manage to finish the exercise"
   },
   {
     "id": "p31_ex1_4",
     "type": "fill",
     "page": 31,
-    "exercise": "1",
     "label": "4",
     "top": 35.5,
-    "left": 10.9,
-    "width": 35,
-    "height": 1.8,
-    "correct": "You don't have to stay here all evening."
+    "left": 14.5,
+    "width": 32.5,
+    "height": 1.7,
+    "correct": "don't have to stay here all evening or You don't have to stay here all evening"
   },
   {
     "id": "p31_ex1_5",
     "type": "fill",
     "page": 31,
-    "exercise": "1",
     "label": "5",
-    "top": 40,
-    "left": 10.9,
-    "width": 35,
-    "height": 1.8,
-    "correct": "They are unlikely to get much better at maths."
+    "top": 39,
+    "left": 15,
+    "width": 32,
+    "height": 1.7,
+    "correct": "are unlikely to get much better at maths or They are unlikely to get much better at maths"
   },
   {
     "id": "p31_ex1_6",
     "type": "fill",
     "page": 31,
-    "exercise": "1",
     "label": "6",
-    "top": 44.5,
-    "left": 10.9,
-    "width": 35,
-    "height": 1.8,
-    "correct": "What does she need to do to pass the exam?"
+    "top": 42.5,
+    "left": 15.5,
+    "width": 31.5,
+    "height": 1.7,
+    "correct": "does she need to do to pass the exam? or does she need to do to pass the exam or What does she need to do to pass the exam?"
   },
   {
-    "id": "p31_ex3_1",
-    "type": "fill",
+    "id": "p31_ex2_1",
+    "type": "choose",
     "page": 31,
-    "exercise": "3",
-    "label": "1",
-    "top": 56,
-    "left": 10.9,
+    "group": "p31_2_1",
+    "text": "can't",
+    "top": 46.8,
+    "left": 12,
+    "width": 4.8,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p31_ex2_1b",
+    "type": "choose",
+    "page": 31,
+    "group": "p31_2_1",
+    "text": "don't have to",
+    "top": 46.8,
+    "left": 17.5,
+    "width": 9.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p31_ex2_2",
+    "type": "choose",
+    "page": 31,
+    "group": "p31_2_2",
+    "text": "will",
+    "top": 48.4,
+    "left": 18,
+    "width": 3.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p31_ex2_2b",
+    "type": "choose",
+    "page": 31,
+    "group": "p31_2_2",
+    "text": "'m going to",
+    "top": 48.4,
+    "left": 22,
+    "width": 9,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p31_ex2_3",
+    "type": "choose",
+    "page": 31,
+    "group": "p31_2_3",
+    "text": "will",
+    "top": 50,
+    "left": 14.5,
+    "width": 3.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p31_ex2_3b",
+    "type": "choose",
+    "page": 31,
+    "group": "p31_2_3",
+    "text": "might",
+    "top": 50,
+    "left": 18.5,
+    "width": 5.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p31_ex2_4",
+    "type": "choose",
+    "page": 31,
+    "group": "p31_2_4",
+    "text": "couldn't",
+    "top": 51.6,
+    "left": 22.5,
+    "width": 6.8,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p31_ex2_4b",
+    "type": "choose",
+    "page": 31,
+    "group": "p31_2_4",
+    "text": "didn't manage to",
+    "top": 51.6,
+    "left": 30,
     "width": 12,
-    "height": 1.8,
-    "correct": "peak"
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p31_ex2_5",
+    "type": "choose",
+    "page": 31,
+    "group": "p31_2_5",
+    "text": "will",
+    "top": 54.8,
+    "left": 16,
+    "width": 3.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p31_ex2_5b",
+    "type": "choose",
+    "page": 31,
+    "group": "p31_2_5",
+    "text": "is going to",
+    "top": 54.8,
+    "left": 20,
+    "width": 8.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p31_ex2_6",
+    "type": "choose",
+    "page": 31,
+    "group": "p31_2_6",
+    "text": "don't have to",
+    "top": 56.4,
+    "left": 12.5,
+    "width": 9.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p31_ex2_6b",
+    "type": "choose",
+    "page": 31,
+    "group": "p31_2_6",
+    "text": "mustn't",
+    "top": 56.4,
+    "left": 23,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": false
   },
   {
     "id": "p31_ex3_2",
     "type": "fill",
     "page": 31,
-    "exercise": "3",
     "label": "2",
-    "top": 59.5,
-    "left": 10.9,
-    "width": 12,
-    "height": 1.8,
-    "correct": "coast"
+    "top": 72,
+    "left": 10,
+    "width": 10,
+    "height": 1.7,
+    "correct": "can"
   },
   {
     "id": "p31_ex3_3",
     "type": "fill",
     "page": 31,
-    "exercise": "3",
     "label": "3",
-    "top": 63,
-    "left": 10.9,
-    "width": 12,
-    "height": 1.8,
-    "correct": "ferry"
+    "top": 76.8,
+    "left": 18.5,
+    "width": 10,
+    "height": 1.7,
+    "correct": "couldn't"
   },
   {
     "id": "p31_ex3_4",
     "type": "fill",
     "page": 31,
-    "exercise": "3",
     "label": "4",
-    "top": 66.5,
-    "left": 10.9,
-    "width": 12,
-    "height": 1.8,
-    "correct": "lake"
+    "top": 80.2,
+    "left": 23.5,
+    "width": 10,
+    "height": 1.7,
+    "correct": "can't"
   },
   {
     "id": "p31_ex3_5",
     "type": "fill",
     "page": 31,
-    "exercise": "3",
     "label": "5",
-    "top": 70,
-    "left": 10.9,
-    "width": 12,
-    "height": 1.8,
-    "correct": "canal"
+    "top": 84.8,
+    "left": 32.5,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "may"
   },
   {
     "id": "p31_ex3_6",
     "type": "fill",
     "page": 31,
-    "exercise": "3",
     "label": "6",
-    "top": 73.5,
-    "left": 10.9,
-    "width": 12,
-    "height": 1.8,
-    "correct": "forest"
+    "top": 88.2,
+    "left": 37,
+    "width": 6.5,
+    "height": 1.7,
+    "correct": "will"
   },
   {
     "id": "p31_ex3_7",
     "type": "fill",
     "page": 31,
-    "exercise": "3",
     "label": "7",
-    "top": 77,
-    "left": 10.9,
-    "width": 12,
-    "height": 1.8,
-    "correct": "season"
+    "top": 91.6,
+    "left": 19.5,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "won't"
   },
   {
-    "id": "p31_ex3_8",
+    "id": "p31_ex4_2",
     "type": "fill",
     "page": 31,
-    "exercise": "3",
+    "label": "2",
+    "top": 40,
+    "left": 63.5,
+    "width": 15,
+    "height": 1.7,
+    "correct": "rise to the challenge"
+  },
+  {
+    "id": "p31_ex4_3",
+    "type": "fill",
+    "page": 31,
+    "label": "3",
+    "top": 49.3,
+    "left": 65.5,
+    "width": 16,
+    "height": 1.7,
+    "correct": "take responsibility"
+  },
+  {
+    "id": "p31_ex4_4",
+    "type": "fill",
+    "page": 31,
+    "label": "4",
+    "top": 52.7,
+    "left": 54.5,
+    "width": 18,
+    "height": 1.7,
+    "correct": "deal with problems"
+  },
+  {
+    "id": "p31_ex4_5",
+    "type": "fill",
+    "page": 31,
+    "label": "5",
+    "top": 62,
+    "left": 74.5,
+    "width": 15.5,
+    "height": 1.7,
+    "correct": "succeed in achieving"
+  }
+],
+    32: [
+  {
+    "id": "p32_ex1_1b",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_1b",
+    "text": "performance",
+    "top": 74.4,
+    "left": 14,
+    "width": 10.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p32_ex1_1b2",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_1b",
+    "text": "play",
+    "top": 72.8,
+    "left": 40.5,
+    "width": 5.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p32_ex1_2a",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_2a",
+    "text": "plays",
+    "top": 77.6,
+    "left": 23,
+    "width": 4.8,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p32_ex1_2a2",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_2a",
+    "text": "sets",
+    "top": 77.6,
+    "left": 28.5,
+    "width": 4.2,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p32_ex1_2b",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_2b",
+    "text": "characters",
+    "top": 77.6,
+    "left": 40,
+    "width": 8.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p32_ex1_2b2",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_2b",
+    "text": "remakes",
+    "top": 79.2,
+    "left": 14,
+    "width": 7.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p32_ex1_3a",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_3a",
+    "text": "stars",
+    "top": 82.5,
+    "left": 36.5,
+    "width": 4.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p32_ex1_3a2",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_3a",
+    "text": "plays",
+    "top": 82.5,
+    "left": 41.5,
+    "width": 4.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p32_ex1_3b",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_3b",
+    "text": "set",
+    "top": 84.1,
+    "left": 45,
+    "width": 3.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p32_ex1_3b2",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_3b",
+    "text": "put",
+    "top": 85.7,
+    "left": 14,
+    "width": 3.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p32_ex1_4a",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_4a",
+    "text": "play",
+    "top": 87.3,
+    "left": 45,
+    "width": 4,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p32_ex1_4a2",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_4a",
+    "text": "plot",
+    "top": 88.9,
+    "left": 14,
+    "width": 4,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p32_ex1_4b",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_4b",
+    "text": "cast",
+    "top": 90.5,
+    "left": 42,
+    "width": 4,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p32_ex1_4b2",
+    "type": "choose",
+    "page": 32,
+    "group": "p32_1_4b",
+    "text": "set",
+    "top": 90.5,
+    "left": 46.5,
+    "width": 3.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p32_ex2_2",
+    "type": "fill",
+    "page": 32,
+    "label": "2",
+    "top": 64,
+    "left": 75.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "e"
+  },
+  {
+    "id": "p32_ex2_3",
+    "type": "fill",
+    "page": 32,
+    "label": "3",
+    "top": 65.6,
+    "left": 91.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "f"
+  },
+  {
+    "id": "p32_ex2_4",
+    "type": "fill",
+    "page": 32,
+    "label": "4",
+    "top": 70,
+    "left": 91.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "b"
+  },
+  {
+    "id": "p32_ex2_5",
+    "type": "fill",
+    "page": 32,
+    "label": "5",
+    "top": 72,
+    "left": 80,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "a"
+  },
+  {
+    "id": "p32_ex2_6",
+    "type": "fill",
+    "page": 32,
+    "label": "6",
+    "top": 73.8,
+    "left": 89,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "d"
+  }
+],
+    33: [
+  {
+    "id": "p33_ex3_2",
+    "type": "fill",
+    "page": 33,
+    "label": "2",
+    "top": 24.2,
+    "left": 27.5,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "set"
+  },
+  {
+    "id": "p33_ex3_3",
+    "type": "fill",
+    "page": 33,
+    "label": "3",
+    "top": 29,
+    "left": 16.5,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "stars"
+  },
+  {
+    "id": "p33_ex3_4",
+    "type": "fill",
+    "page": 33,
+    "label": "4",
+    "top": 32.5,
+    "left": 17.5,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "character"
+  },
+  {
+    "id": "p33_ex3_5",
+    "type": "fill",
+    "page": 33,
+    "label": "5",
+    "top": 36,
+    "left": 27.5,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "performance"
+  },
+  {
+    "id": "p33_ex3_6",
+    "type": "fill",
+    "page": 33,
+    "label": "6",
+    "top": 40.8,
+    "left": 36.5,
+    "width": 8,
+    "height": 1.7,
+    "correct": "cast"
+  },
+  {
+    "id": "p33_ex3_7",
+    "type": "fill",
+    "page": 33,
+    "label": "7",
+    "top": 49.3,
+    "left": 23.5,
+    "width": 17,
+    "height": 1.7,
+    "correct": "special effects"
+  },
+  {
+    "id": "p33_ex4_1_2",
+    "type": "fill",
+    "page": 33,
+    "label": "1.2",
+    "top": 66.5,
+    "left": 22.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "a"
+  },
+  {
+    "id": "p33_ex4_2_1",
+    "type": "fill",
+    "page": 33,
+    "label": "2.1",
+    "top": 68.8,
+    "left": 24.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "a"
+  },
+  {
+    "id": "p33_ex4_2_2",
+    "type": "fill",
+    "page": 33,
+    "label": "2.2",
+    "top": 70.4,
+    "left": 24.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "b"
+  },
+  {
+    "id": "p33_ex4_3_1",
+    "type": "fill",
+    "page": 33,
+    "label": "3.1",
+    "top": 72.5,
+    "left": 24.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "b"
+  },
+  {
+    "id": "p33_ex4_3_2",
+    "type": "fill",
+    "page": 33,
+    "label": "3.2",
+    "top": 75.8,
+    "left": 26.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "a"
+  },
+  {
+    "id": "p33_ex4_4_1",
+    "type": "fill",
+    "page": 33,
+    "label": "4.1",
+    "top": 79,
+    "left": 24.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "a"
+  },
+  {
+    "id": "p33_ex4_4_2",
+    "type": "fill",
+    "page": 33,
+    "label": "4.2",
+    "top": 80.6,
+    "left": 26.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "b"
+  },
+  {
+    "id": "p33_ex4_5_1",
+    "type": "fill",
+    "page": 33,
+    "label": "5.1",
+    "top": 82.8,
+    "left": 22.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "b"
+  },
+  {
+    "id": "p33_ex4_5_2",
+    "type": "fill",
+    "page": 33,
+    "label": "5.2",
+    "top": 84.4,
+    "left": 22.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "a"
+  },
+  {
+    "id": "p33_ex5_2",
+    "type": "fill",
+    "page": 33,
+    "label": "2",
+    "top": 18.8,
+    "left": 76.5,
+    "width": 9.5,
+    "height": 1.7,
+    "correct": "Talk"
+  },
+  {
+    "id": "p33_ex5_3",
+    "type": "fill",
+    "page": 33,
+    "label": "3",
+    "top": 26.5,
+    "left": 60.5,
+    "width": 9.5,
+    "height": 1.7,
+    "correct": "Trying"
+  },
+  {
+    "id": "p33_ex5_4",
+    "type": "fill",
+    "page": 33,
+    "label": "4",
+    "top": 26.5,
+    "left": 78.5,
+    "width": 9.5,
+    "height": 1.7,
+    "correct": "to Get"
+  },
+  {
+    "id": "p33_ex5_5",
+    "type": "fill",
+    "page": 33,
+    "label": "5",
+    "top": 32.5,
+    "left": 57.5,
+    "width": 9.5,
+    "height": 1.7,
+    "correct": "Worrying"
+  },
+  {
+    "id": "p33_ex5_6",
+    "type": "fill",
+    "page": 33,
+    "label": "6",
+    "top": 32.5,
+    "left": 75,
+    "width": 9.5,
+    "height": 1.7,
+    "correct": "Losing"
+  },
+  {
+    "id": "p33_ex6_2",
+    "type": "fill",
+    "page": 33,
+    "label": "2",
+    "top": 42.4,
+    "left": 73.5,
+    "width": 10.5,
+    "height": 1.7,
+    "correct": "taking"
+  },
+  {
+    "id": "p33_ex6_3",
+    "type": "fill",
+    "page": 33,
+    "label": "3",
+    "top": 47,
+    "left": 54.5,
+    "width": 16.5,
+    "height": 1.7,
+    "correct": "to promote"
+  },
+  {
+    "id": "p33_ex6_4",
+    "type": "fill",
+    "page": 33,
+    "label": "4",
+    "top": 50.4,
+    "left": 73,
+    "width": 10.5,
+    "height": 1.7,
+    "correct": "to see"
+  },
+  {
+    "id": "p33_ex6_5",
+    "type": "fill",
+    "page": 33,
+    "label": "5",
+    "top": 52.6,
+    "left": 68.5,
+    "width": 15.5,
+    "height": 1.7,
+    "correct": "to find"
+  },
+  {
+    "id": "p33_ex6_6",
+    "type": "fill",
+    "page": 33,
+    "label": "6",
+    "top": 58.4,
+    "left": 75.5,
+    "width": 10.5,
+    "height": 1.7,
+    "correct": "falling"
+  },
+  {
+    "id": "p33_ex6_7",
+    "type": "fill",
+    "page": 33,
+    "label": "7",
+    "top": 60,
+    "left": 60.5,
+    "width": 15.5,
+    "height": 1.7,
+    "correct": "living"
+  },
+  {
+    "id": "p33_ex6_8",
+    "type": "fill",
+    "page": 33,
     "label": "8",
-    "top": 80.5,
-    "left": 10.9,
+    "top": 65,
+    "left": 54.5,
+    "width": 16.5,
+    "height": 1.7,
+    "correct": "to give"
+  },
+  {
+    "id": "p33_ex6_9",
+    "type": "fill",
+    "page": 33,
+    "label": "9",
+    "top": 71.8,
+    "left": 54.5,
+    "width": 16.5,
+    "height": 1.7,
+    "correct": "to be"
+  },
+  {
+    "id": "p33_ex6_10",
+    "type": "fill",
+    "page": 33,
+    "label": "10",
+    "top": 80,
+    "left": 59,
+    "width": 16.5,
+    "height": 1.7,
+    "correct": "to be"
+  }
+],
+    34: [
+  {
+    "id": "p34_ex1_p1",
+    "type": "fill",
+    "page": 34,
+    "label": "pos 1",
+    "top": 37,
+    "left": 11,
+    "width": 17,
+    "height": 1.7,
+    "correct": "intelligent or entertaining or amusing or original or enjoyable"
+  },
+  {
+    "id": "p34_ex1_p2",
+    "type": "fill",
+    "page": 34,
+    "label": "pos 2",
+    "top": 39,
+    "left": 11,
+    "width": 17,
+    "height": 1.7,
+    "correct": "intelligent or entertaining or amusing or original or enjoyable"
+  },
+  {
+    "id": "p34_ex1_p3",
+    "type": "fill",
+    "page": 34,
+    "label": "pos 3",
+    "top": 41,
+    "left": 11,
+    "width": 17,
+    "height": 1.7,
+    "correct": "intelligent or entertaining or amusing or original or enjoyable"
+  },
+  {
+    "id": "p34_ex1_p4",
+    "type": "fill",
+    "page": 34,
+    "label": "pos 4",
+    "top": 43,
+    "left": 11,
+    "width": 17,
+    "height": 1.7,
+    "correct": "intelligent or entertaining or amusing or original or enjoyable"
+  },
+  {
+    "id": "p34_ex1_p5",
+    "type": "fill",
+    "page": 34,
+    "label": "pos 5",
+    "top": 45,
+    "left": 11,
+    "width": 17,
+    "height": 1.7,
+    "correct": "intelligent or entertaining or amusing or original or enjoyable"
+  },
+  {
+    "id": "p34_ex1_n1",
+    "type": "fill",
+    "page": 34,
+    "label": "neg 1",
+    "top": 37,
+    "left": 31,
+    "width": 17,
+    "height": 1.7,
+    "correct": "silly or dull or violent or unexciting or predictable or disappointing"
+  },
+  {
+    "id": "p34_ex1_n2",
+    "type": "fill",
+    "page": 34,
+    "label": "neg 2",
+    "top": 39,
+    "left": 31,
+    "width": 17,
+    "height": 1.7,
+    "correct": "silly or dull or violent or unexciting or predictable or disappointing"
+  },
+  {
+    "id": "p34_ex1_n3",
+    "type": "fill",
+    "page": 34,
+    "label": "neg 3",
+    "top": 41,
+    "left": 31,
+    "width": 17,
+    "height": 1.7,
+    "correct": "silly or dull or violent or unexciting or predictable or disappointing"
+  },
+  {
+    "id": "p34_ex1_n4",
+    "type": "fill",
+    "page": 34,
+    "label": "neg 4",
+    "top": 43,
+    "left": 31,
+    "width": 17,
+    "height": 1.7,
+    "correct": "silly or dull or violent or unexciting or predictable or disappointing"
+  },
+  {
+    "id": "p34_ex1_n5",
+    "type": "fill",
+    "page": 34,
+    "label": "neg 5",
+    "top": 45,
+    "left": 31,
+    "width": 17,
+    "height": 1.7,
+    "correct": "silly or dull or violent or unexciting or predictable or disappointing"
+  },
+  {
+    "id": "p34_ex1_n6",
+    "type": "fill",
+    "page": 34,
+    "label": "neg 6",
+    "top": 47,
+    "left": 31,
+    "width": 17,
+    "height": 1.7,
+    "correct": "silly or dull or violent or unexciting or predictable or disappointing"
+  },
+  {
+    "id": "p34_ex2_2",
+    "type": "fill",
+    "page": 34,
+    "label": "2",
+    "top": 66.2,
+    "left": 18.5,
     "width": 12,
-    "height": 1.8,
-    "correct": "island"
+    "height": 1.7,
+    "correct": "intelligent"
+  },
+  {
+    "id": "p34_ex2_3",
+    "type": "fill",
+    "page": 34,
+    "label": "3",
+    "top": 69.6,
+    "left": 28.5,
+    "width": 12,
+    "height": 1.7,
+    "correct": "surprising"
+  },
+  {
+    "id": "p34_ex2_4",
+    "type": "fill",
+    "page": 34,
+    "label": "4",
+    "top": 73,
+    "left": 40.5,
+    "width": 10,
+    "height": 1.7,
+    "correct": "original"
+  },
+  {
+    "id": "p34_ex2_5",
+    "type": "fill",
+    "page": 34,
+    "label": "5",
+    "top": 76.4,
+    "left": 14,
+    "width": 10,
+    "height": 1.7,
+    "correct": "enjoyable"
+  },
+  {
+    "id": "p34_ex2_6",
+    "type": "fill",
+    "page": 34,
+    "label": "6",
+    "top": 76.4,
+    "left": 36,
+    "width": 10,
+    "height": 1.7,
+    "correct": "amusing"
+  },
+  {
+    "id": "p34_ex3_2",
+    "type": "fill",
+    "page": 34,
+    "label": "2",
+    "top": 34,
+    "left": 60.5,
+    "width": 12,
+    "height": 1.7,
+    "correct": "disappointing"
+  },
+  {
+    "id": "p34_ex3_3",
+    "type": "fill",
+    "page": 34,
+    "label": "3",
+    "top": 37.4,
+    "left": 73.5,
+    "width": 12,
+    "height": 1.7,
+    "correct": "ordinary"
+  },
+  {
+    "id": "p34_ex3_4",
+    "type": "fill",
+    "page": 34,
+    "label": "4",
+    "top": 42.6,
+    "left": 72.5,
+    "width": 12,
+    "height": 1.7,
+    "correct": "predictable"
+  },
+  {
+    "id": "p34_ex3_5",
+    "type": "fill",
+    "page": 34,
+    "label": "5",
+    "top": 46,
+    "left": 70,
+    "width": 12,
+    "height": 1.7,
+    "correct": "violent"
+  },
+  {
+    "id": "p34_ex3_6",
+    "type": "fill",
+    "page": 34,
+    "label": "6",
+    "top": 47.8,
+    "left": 80,
+    "width": 10,
+    "height": 1.7,
+    "correct": "silly"
+  },
+  {
+    "id": "p34_ex4a_2",
+    "type": "fill",
+    "page": 34,
+    "label": "2",
+    "top": 82.5,
+    "left": 71,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "d"
+  },
+  {
+    "id": "p34_ex4a_3",
+    "type": "fill",
+    "page": 34,
+    "label": "3",
+    "top": 84.1,
+    "left": 71,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "a"
+  },
+  {
+    "id": "p34_ex4a_4",
+    "type": "fill",
+    "page": 34,
+    "label": "4",
+    "top": 85.8,
+    "left": 71,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "c"
+  }
+],
+    35: [
+  {
+    "id": "p35_ex5_2",
+    "type": "fill",
+    "page": 35,
+    "label": "2",
+    "top": 34.6,
+    "left": 22,
+    "width": 9,
+    "height": 1.7,
+    "correct": "just"
+  },
+  {
+    "id": "p35_ex5_3",
+    "type": "fill",
+    "page": 35,
+    "label": "3",
+    "top": 37.8,
+    "left": 10.5,
+    "width": 9,
+    "height": 1.7,
+    "correct": "ago"
+  },
+  {
+    "id": "p35_ex5_4",
+    "type": "fill",
+    "page": 35,
+    "label": "4",
+    "top": 37.8,
+    "left": 25,
+    "width": 9,
+    "height": 1.7,
+    "correct": "last"
+  },
+  {
+    "id": "p35_ex5_5",
+    "type": "fill",
+    "page": 35,
+    "label": "5",
+    "top": 45.4,
+    "left": 10.5,
+    "width": 9,
+    "height": 1.7,
+    "correct": "since"
+  },
+  {
+    "id": "p35_ex5_6",
+    "type": "fill",
+    "page": 35,
+    "label": "6",
+    "top": 45.4,
+    "left": 30,
+    "width": 9.5,
+    "height": 1.7,
+    "correct": "already"
+  },
+  {
+    "id": "p35_ex5_7",
+    "type": "fill",
+    "page": 35,
+    "label": "7",
+    "top": 48.6,
+    "left": 17.5,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "never"
+  },
+  {
+    "id": "p35_ex5_8",
+    "type": "fill",
+    "page": 35,
+    "label": "8",
+    "top": 50.2,
+    "left": 17.5,
+    "width": 9,
+    "height": 1.7,
+    "correct": "for"
+  },
+  {
+    "id": "p35_ex6_2",
+    "type": "choose",
+    "page": 35,
+    "group": "p35_6_2",
+    "text": "didn't start",
+    "top": 66.8,
+    "left": 12.5,
+    "width": 8.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p35_ex6_2b",
+    "type": "choose",
+    "page": 35,
+    "group": "p35_6_2",
+    "text": "haven't started",
+    "top": 66.8,
+    "left": 21.5,
+    "width": 11.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p35_ex6_3",
+    "type": "choose",
+    "page": 35,
+    "group": "p35_6_3",
+    "text": "wasn't",
+    "top": 70,
+    "left": 21,
+    "width": 5.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p35_ex6_3b",
+    "type": "choose",
+    "page": 35,
+    "group": "p35_6_3",
+    "text": "haven't been",
+    "top": 70,
+    "left": 27,
+    "width": 9,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p35_ex6_4",
+    "type": "choose",
+    "page": 35,
+    "group": "p35_6_4",
+    "text": "changed",
+    "top": 73.2,
+    "left": 27.5,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p35_ex6_4b",
+    "type": "choose",
+    "page": 35,
+    "group": "p35_6_4",
+    "text": "'ve changed",
+    "top": 73.2,
+    "left": 34.5,
+    "width": 9,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p35_ex6_5",
+    "type": "choose",
+    "page": 35,
+    "group": "p35_6_5",
+    "text": "worked",
+    "top": 76.4,
+    "left": 12.5,
+    "width": 5.8,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p35_ex6_5b",
+    "type": "choose",
+    "page": 35,
+    "group": "p35_6_5",
+    "text": "'ve worked",
+    "top": 76.4,
+    "left": 19,
+    "width": 8.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p35_ex6_6",
+    "type": "choose",
+    "page": 35,
+    "group": "p35_6_6",
+    "text": "watched",
+    "top": 79.6,
+    "left": 12.5,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p35_ex6_6b",
+    "type": "choose",
+    "page": 35,
+    "group": "p35_6_6",
+    "text": "'ve watched",
+    "top": 79.6,
+    "left": 19.5,
+    "width": 9,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p35_ex7_2",
+    "type": "fill",
+    "page": 35,
+    "label": "2",
+    "top": 27.5,
+    "left": 54.5,
+    "width": 16.5,
+    "height": 1.7,
+    "correct": "filmed"
+  },
+  {
+    "id": "p35_ex7_3",
+    "type": "fill",
+    "page": 35,
+    "label": "3",
+    "top": 29.2,
+    "left": 63.5,
+    "width": 15,
+    "height": 1.7,
+    "correct": "has been"
+  },
+  {
+    "id": "p35_ex7_4",
+    "type": "fill",
+    "page": 35,
+    "label": "4",
+    "top": 33.8,
+    "left": 68,
+    "width": 15.5,
+    "height": 1.7,
+    "correct": "has become"
+  },
+  {
+    "id": "p35_ex7_5",
+    "type": "fill",
+    "page": 35,
+    "label": "5",
+    "top": 41.2,
+    "left": 60.5,
+    "width": 15.5,
+    "height": 1.7,
+    "correct": "have gone"
+  },
+  {
+    "id": "p35_ex7_6",
+    "type": "fill",
+    "page": 35,
+    "label": "6",
+    "top": 42.8,
+    "left": 72.5,
+    "width": 15.5,
+    "height": 1.7,
+    "correct": "have needed"
+  },
+  {
+    "id": "p35_ex7_7",
+    "type": "fill",
+    "page": 35,
+    "label": "7",
+    "top": 45.8,
+    "left": 69.5,
+    "width": 15.5,
+    "height": 1.7,
+    "correct": "starred"
+  },
+  {
+    "id": "p35_ex7_8",
+    "type": "fill",
+    "page": 35,
+    "label": "8",
+    "top": 54.5,
+    "left": 54.5,
+    "width": 16.5,
+    "height": 1.7,
+    "correct": "have visited"
+  }
+],
+    36: [
+  {
+    "id": "p36_ex1a_2",
+    "type": "fill",
+    "page": 36,
+    "label": "2",
+    "top": 36.6,
+    "left": 38,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "delicious"
+  },
+  {
+    "id": "p36_ex1a_3",
+    "type": "fill",
+    "page": 36,
+    "label": "3",
+    "top": 39.8,
+    "left": 30.5,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "freezing"
+  },
+  {
+    "id": "p36_ex1a_4",
+    "type": "fill",
+    "page": 36,
+    "label": "4",
+    "top": 43.4,
+    "left": 36,
+    "width": 9.5,
+    "height": 1.7,
+    "correct": "enormous"
+  },
+  {
+    "id": "p36_ex1a_5",
+    "type": "fill",
+    "page": 36,
+    "label": "5",
+    "top": 46.8,
+    "left": 30.5,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "terrifying"
+  },
+  {
+    "id": "p36_ex1a_6",
+    "type": "fill",
+    "page": 36,
+    "label": "6",
+    "top": 49.8,
+    "left": 31,
+    "width": 9,
+    "height": 1.7,
+    "correct": "brilliant"
+  },
+  {
+    "id": "p36_ex1a_7",
+    "type": "fill",
+    "page": 36,
+    "label": "7",
+    "top": 56,
+    "left": 21,
+    "width": 10.5,
+    "height": 1.7,
+    "correct": "terrible"
+  },
+  {
+    "id": "p36_ex1a_8",
+    "type": "fill",
+    "page": 36,
+    "label": "8",
+    "top": 61.4,
+    "left": 34.5,
+    "width": 9,
+    "height": 1.7,
+    "correct": "astonishing"
+  },
+  {
+    "id": "p36_ex2_2",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_2",
+    "text": "impossible",
+    "top": 79.2,
+    "left": 42,
+    "width": 10,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p36_ex2_2b",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_2",
+    "text": "difficult",
+    "top": 78,
+    "left": 47.5,
+    "width": 5.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p36_ex2_3",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_3",
+    "text": "cold",
+    "top": 77.8,
+    "left": 63,
+    "width": 4.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p36_ex2_3b",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_3",
+    "text": "freezing",
+    "top": 77.8,
+    "left": 68,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p36_ex2_4",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_4",
+    "text": "scary",
+    "top": 79.5,
+    "left": 81.5,
+    "width": 4.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p36_ex2_4b",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_4",
+    "text": "terrifying",
+    "top": 80.8,
+    "left": 74,
+    "width": 7.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p36_ex2_5",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_5",
+    "text": "astonishing",
+    "top": 87.5,
+    "left": 18,
+    "width": 8.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p36_ex2_5b",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_5",
+    "text": "surprising",
+    "top": 86,
+    "left": 24.5,
+    "width": 7.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p36_ex2_6",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_6",
+    "text": "tasty",
+    "top": 84.5,
+    "left": 47,
+    "width": 4.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p36_ex2_6b",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_6",
+    "text": "delicious",
+    "top": 86,
+    "left": 37,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p36_ex2_7",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_7",
+    "text": "clever",
+    "top": 86,
+    "left": 62.5,
+    "width": 5.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p36_ex2_7b",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_7",
+    "text": "brilliant",
+    "top": 86,
+    "left": 68.5,
+    "width": 5.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p36_ex2_8",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_8",
+    "text": "brilliant",
+    "top": 87.5,
+    "left": 74.5,
+    "width": 6,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p36_ex2_8b",
+    "type": "choose",
+    "page": 36,
+    "group": "p36_2_8",
+    "text": "good",
+    "top": 86,
+    "left": 82.5,
+    "width": 4.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p36_ex3_2",
+    "type": "fill",
+    "page": 36,
+    "label": "2",
+    "top": 31,
+    "left": 61.5,
+    "width": 8,
+    "height": 1.7,
+    "correct": "set"
+  },
+  {
+    "id": "p36_ex3_3",
+    "type": "fill",
+    "page": 36,
+    "label": "3",
+    "top": 34.5,
+    "left": 59.5,
+    "width": 9.5,
+    "height": 1.7,
+    "correct": "star"
+  },
+  {
+    "id": "p36_ex3_4",
+    "type": "fill",
+    "page": 36,
+    "label": "4",
+    "top": 38,
+    "left": 57,
+    "width": 9,
+    "height": 1.7,
+    "correct": "performance"
+  },
+  {
+    "id": "p36_ex3_5",
+    "type": "fill",
+    "page": 36,
+    "label": "5",
+    "top": 41.5,
+    "left": 65,
+    "width": 9,
+    "height": 1.7,
+    "correct": "cast"
+  },
+  {
+    "id": "p36_ex3_6",
+    "type": "fill",
+    "page": 36,
+    "label": "6",
+    "top": 45,
+    "left": 57,
+    "width": 9,
+    "height": 1.7,
+    "correct": "characters"
+  },
+  {
+    "id": "p36_ex3_7",
+    "type": "fill",
+    "page": 36,
+    "label": "7",
+    "top": 48.5,
+    "left": 58,
+    "width": 8.5,
+    "height": 1.7,
+    "correct": "remake"
+  },
+  {
+    "id": "p36_ex3_8",
+    "type": "fill",
+    "page": 36,
+    "label": "8",
+    "top": 52,
+    "left": 65,
+    "width": 9,
+    "height": 1.7,
+    "correct": "scenes"
+  },
+  {
+    "id": "p36_ex3_9",
+    "type": "fill",
+    "page": 36,
+    "label": "9",
+    "top": 55.5,
+    "left": 65,
+    "width": 9,
+    "height": 1.7,
+    "correct": "effects"
+  },
+  {
+    "id": "p36_ex4_1",
+    "type": "fill",
+    "page": 36,
+    "label": "1",
+    "top": 65,
+    "left": 64,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "a"
+  },
+  {
+    "id": "p36_ex4_2",
+    "type": "fill",
+    "page": 36,
+    "label": "2",
+    "top": 66.8,
+    "left": 73,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "b"
+  },
+  {
+    "id": "p36_ex4_3",
+    "type": "fill",
+    "page": 36,
+    "label": "3",
+    "top": 68.6,
+    "left": 82.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "c"
+  },
+  {
+    "id": "p36_ex4_4",
+    "type": "fill",
+    "page": 36,
+    "label": "4",
+    "top": 70.4,
+    "left": 73,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "b"
+  }
+],
+    37: [
+  {
+    "id": "p37_ex1a_godfather",
+    "type": "fill",
+    "page": 37,
+    "label": "Godfather",
+    "top": 28.5,
+    "left": 26.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "2"
+  },
+  {
+    "id": "p37_ex1a_jaws",
+    "type": "fill",
+    "page": 37,
+    "label": "Jaws",
+    "top": 38,
+    "left": 41,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "3"
+  },
+  {
+    "id": "p37_ex1a_raiders",
+    "type": "fill",
+    "page": 37,
+    "label": "Raiders",
+    "top": 33.2,
+    "left": 44,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "4"
+  },
+  {
+    "id": "p37_ex1a_starwars",
+    "type": "fill",
+    "page": 37,
+    "label": "Star Wars",
+    "top": 33.2,
+    "left": 25.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "5"
+  },
+  {
+    "id": "p37_ex1b_a2",
+    "type": "fill",
+    "page": 37,
+    "label": "A2",
+    "top": 48.5,
+    "left": 25,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "d"
+  },
+  {
+    "id": "p37_ex1b_a3",
+    "type": "fill",
+    "page": 37,
+    "label": "A3",
+    "top": 50.3,
+    "left": 25,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "a"
+  },
+  {
+    "id": "p37_ex1b_a4",
+    "type": "fill",
+    "page": 37,
+    "label": "A4",
+    "top": 52,
+    "left": 25,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "b"
+  },
+  {
+    "id": "p37_ex1b_b1",
+    "type": "fill",
+    "page": 37,
+    "label": "B1",
+    "top": 58.2,
+    "left": 28.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "c"
+  },
+  {
+    "id": "p37_ex1b_b2",
+    "type": "fill",
+    "page": 37,
+    "label": "B2",
+    "top": 60,
+    "left": 28.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "d"
+  },
+  {
+    "id": "p37_ex1b_b3",
+    "type": "fill",
+    "page": 37,
+    "label": "B3",
+    "top": 61.8,
+    "left": 28.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "a"
+  },
+  {
+    "id": "p37_ex1b_b4",
+    "type": "fill",
+    "page": 37,
+    "label": "B4",
+    "top": 63.6,
+    "left": 28.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "b"
+  },
+  {
+    "id": "p37_ex2a_2",
+    "type": "fill",
+    "page": 37,
+    "label": "2",
+    "top": 72.5,
+    "left": 35,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "c"
+  },
+  {
+    "id": "p37_ex2a_3",
+    "type": "fill",
+    "page": 37,
+    "label": "3",
+    "top": 74.3,
+    "left": 31.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "a"
+  },
+  {
+    "id": "p37_ex3_1",
+    "type": "fill",
+    "page": 37,
+    "label": "cast",
+    "top": 24.8,
+    "left": 58.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "2"
+  },
+  {
+    "id": "p37_ex3_2",
+    "type": "fill",
+    "page": 37,
+    "label": "plot",
+    "top": 26.5,
+    "left": 58.5,
+    "width": 6.5,
+    "height": 1.7,
+    "correct": "1, 2, 3 or 1,2,3 or 1 2 3"
+  },
+  {
+    "id": "p37_ex3_3",
+    "type": "fill",
+    "page": 37,
+    "label": "setting",
+    "top": 24.8,
+    "left": 74.5,
+    "width": 3.5,
+    "height": 1.7,
+    "correct": "1"
+  },
+  {
+    "id": "p37_ex3_4",
+    "type": "fill",
+    "page": 37,
+    "label": "effects",
+    "top": 26.5,
+    "left": 78,
+    "width": 5.5,
+    "height": 1.7,
+    "correct": "1, 3 or 1,3 or 1 3"
+  },
+  {
+    "id": "p37_ex4_1",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_1",
+    "text": "Despite",
+    "top": 29.8,
+    "left": 63.5,
+    "width": 6,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p37_ex4_1b",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_1",
+    "text": "Although",
+    "top": 29.8,
+    "left": 56.5,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p37_ex4_2",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_2",
+    "text": "in spite of",
+    "top": 42.2,
+    "left": 64.5,
+    "width": 8,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p37_ex4_2b",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_2",
+    "text": "even though",
+    "top": 42.2,
+    "left": 55.5,
+    "width": 8.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p37_ex4_3",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_3",
+    "text": "however",
+    "top": 46.8,
+    "left": 65.5,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p37_ex4_3b",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_3",
+    "text": "despite",
+    "top": 46.8,
+    "left": 60,
+    "width": 5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p37_ex4_4",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_4",
+    "text": "Although",
+    "top": 48,
+    "left": 78,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p37_ex4_4b",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_4",
+    "text": "However",
+    "top": 48,
+    "left": 85,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p37_ex4_5",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_5",
+    "text": "However",
+    "top": 63.5,
+    "left": 62.5,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p37_ex4_5b",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_5",
+    "text": "Although",
+    "top": 63.5,
+    "left": 55.5,
+    "width": 6.5,
+    "height": 1.6,
+    "correct": false
+  },
+  {
+    "id": "p37_ex4_6",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_6",
+    "text": "even though",
+    "top": 64.8,
+    "left": 66.5,
+    "width": 8.5,
+    "height": 1.6,
+    "correct": true
+  },
+  {
+    "id": "p37_ex4_6b",
+    "type": "choose",
+    "page": 37,
+    "group": "p37_4_6",
+    "text": "despite",
+    "top": 66.4,
+    "left": 57.5,
+    "width": 5.5,
+    "height": 1.6,
+    "correct": false
   }
 ]
   };
@@ -62349,7 +64730,7 @@ window.NAVIGATE_CURRICULUM = {
     var toDelete = [];
     for (var kIdx = 0; kIdx < localStorage.length; kIdx++) {
       var lk = localStorage.key(kIdx);
-      if (lk && lk.indexOf('ethith_wb_coords_') === 0 && lk.indexOf('v12_') === -1) {
+      if (lk && lk.indexOf('ethith_wb_coords_') === 0 && lk.indexOf('v13_') === -1) {
         toDelete.push(lk);
       }
     }
@@ -62360,7 +64741,7 @@ window.NAVIGATE_CURRICULUM = {
   WB.getPageInputs = function(page) {
     page = parseInt(page, 10);
     try {
-      var saved = localStorage.getItem('ethith_wb_coords_v12_' + page);
+      var saved = localStorage.getItem('ethith_wb_coords_v13_' + page);
       if (saved) {
         var parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
@@ -62374,7 +64755,7 @@ window.NAVIGATE_CURRICULUM = {
   WB.savePageInputs = function(page, inputs, noBroadcast) {
     page = parseInt(page, 10);
     try {
-      localStorage.setItem('ethith_wb_coords_v12_' + page, JSON.stringify(inputs));
+      localStorage.setItem('ethith_wb_coords_v13_' + page, JSON.stringify(inputs));
     } catch(e) {}
 
     // INSTANT SUB-100MS REAL-TIME BROADCAST TO ALL STUDENTS AND TEACHERS GLOBALLY
@@ -62393,7 +64774,7 @@ window.NAVIGATE_CURRICULUM = {
   WB.resetPageInputs = function(page) {
     page = parseInt(page, 10);
     try {
-      localStorage.removeItem('ethith_wb_coords_v12_' + page);
+      localStorage.removeItem('ethith_wb_coords_v13_' + page);
       localStorage.removeItem('ethith_wb_coords_v10_' + page);
       localStorage.removeItem('ethith_wb_coords_v2_' + page);
     } catch(e) {}
@@ -62695,12 +65076,19 @@ window.NAVIGATE_CURRICULUM = {
 
     // Interactive Edit Modal for Teachers
     if (isTeacher) {
-      h += '<div id="ethWbInputModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px);">' +
-        '<div style="background:var(--card);border:2px solid #38bdf8;border-radius:18px;padding:22px;max-width:440px;width:90%;color:var(--text);box-shadow:0 20px 50px rgba(0,0,0,0.5);">' +
-          '<h3 id="ethWbModalTitle" style="font-size:17px;font-weight:900;margin:0 0 14px;color:#0284c7;">Katakcha Sozlamalari</h3>' +
-          '<div style="margin-bottom:12px;">' +
-            '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">Turi (type):</label>' +
-            '<select id="ethWbModalType" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;">' +
+      h += '<div id="ethWbInputModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:99999;backdrop-filter:blur(2px);">' +
+        '<div id="ethWbModalHighlight" style="position:fixed;display:none;border:2.5px dashed #38bdf8;background:rgba(56,189,248,0.25);border-radius:6px;pointer-events:none;box-shadow:0 0 16px rgba(56,189,248,0.6);z-index:100000;"></div>' +
+        '<div id="ethWbModalCard" style="position:fixed;width:340px;max-width:calc(100vw - 24px);background:#0f172a;border:2px solid #38bdf8;border-radius:14px;padding:16px;box-shadow:0 20px 50px rgba(0,0,0,0.7);color:#f8fafc;z-index:100001;box-sizing:border-box;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid #334155;padding-bottom:8px;">' +
+            '<div style="display:flex;align-items:center;gap:6px;">' +
+              '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#38bdf8;box-shadow:0 0 8px #38bdf8;"></span>' +
+              '<h3 id="ethWbModalTitle" style="font-size:14px;font-weight:900;margin:0;color:#38bdf8;">Katakcha Sozlamalari</h3>' +
+            '</div>' +
+            '<button id="ethWbModalCloseX" style="background:transparent;border:none;color:#94a3b8;font-size:16px;font-weight:900;cursor:pointer;padding:2px 6px;line-height:1;">✕</button>' +
+          '</div>' +
+          '<div style="margin-bottom:10px;">' +
+            '<label style="display:block;font-size:11px;font-weight:800;margin-bottom:4px;color:#94a3b8;">Turi (interaction type):</label>' +
+            '<select id="ethWbModalType" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12px;">' +
               '<option value="fill">Fill (O‘qib yozish)</option>' +
               '<option value="cross">Cross (Chizib o‘chirish)</option>' +
               '<option value="choose">Choose (Variant tanlash)</option>' +
@@ -62708,19 +65096,19 @@ window.NAVIGATE_CURRICULUM = {
               '<option value="insert">Insert (Prepozitsiya kiritish)</option>' +
             '</select>' +
           '</div>' +
-          '<div style="margin-bottom:12px;">' +
-            '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">Guruh / Belgisi:</label>' +
-            '<input type="text" id="ethWbModalLabel" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;" placeholder="masalan: 2 yoki 3.1" />' +
+          '<div style="margin-bottom:10px;">' +
+            '<label style="display:block;font-size:11px;font-weight:800;margin-bottom:4px;color:#94a3b8;">Guruh / Belgisi (Label / Group):</label>' +
+            '<input type="text" id="ethWbModalLabel" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12px;box-sizing:border-box;" placeholder="masalan: 2 yoki 3a" />' +
           '</div>' +
           '<div style="margin-bottom:14px;">' +
-            '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">To‘g‘ri Javob ("or" bilan ajrating):</label>' +
-            '<input type="text" id="ethWbModalCorrect" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;" placeholder="masalan: access yoki time or TIME" />' +
+            '<label style="display:block;font-size:11px;font-weight:800;margin-bottom:4px;color:#94a3b8;">To‘g‘ri Javob ("or" bilan variantlar):</label>' +
+            '<input type="text" id="ethWbModalCorrect" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12px;box-sizing:border-box;" placeholder="masalan: coast yoki a" />' +
           '</div>' +
           '<div style="display:flex;justify-content:space-between;gap:8px;">' +
-            '<button id="ethWbModalDeleteBtn" style="background:#ef4444;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">O‘chirish</button>' +
+            '<button id="ethWbModalDeleteBtn" style="background:#ef4444;color:#fff;border:none;padding:7px 12px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;">O‘chirish</button>' +
             '<div style="display:flex;gap:8px;">' +
-              '<button id="ethWbModalCancelBtn" style="background:var(--soft);color:var(--text);border:1px solid var(--line);padding:8px 14px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Bekor qilish</button>' +
-              '<button id="ethWbModalSaveBtn" style="background:#0284c7;color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Saqlash</button>' +
+              '<button id="ethWbModalCancelBtn" style="background:#334155;color:#f8fafc;border:none;padding:7px 12px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;">Bekor qilish</button>' +
+              '<button id="ethWbModalSaveBtn" style="background:#0284c7;color:#fff;border:none;padding:7px 16px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;">Saqlash</button>' +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -63415,42 +65803,50 @@ window.NAVIGATE_CURRICULUM = {
       modalDelete.style.display = isNew ? 'none' : 'block';
 
       var card = modal.querySelector('#ethWbModalCard');
-      if (card) {
-        var popW = 340;
-        var popH = 300;
-        var x = 20, y = 20;
+      var highlight = modal.querySelector('#ethWbModalHighlight');
 
-        if (anchorRect && typeof anchorRect.left === 'number') {
-          // Position right next to target
-          x = anchorRect.left + (anchorRect.width || 0) + 12;
-          y = anchorRect.top - 8;
-
-          if (x + popW > window.innerWidth - 16) {
-            x = anchorRect.left - popW - 12;
-          }
-          if (x < 16) {
-            x = Math.max(16, Math.min(window.innerWidth - popW - 16, anchorRect.left));
-            y = anchorRect.top + (anchorRect.height || 0) + 12;
-          }
-          if (y + popH > window.innerHeight - 16) {
-            y = Math.max(16, window.innerHeight - popH - 16);
-          }
-          if (y < 16) y = 16;
-        } else {
-          x = Math.max(16, (window.innerWidth - popW) / 2);
-          y = Math.max(16, (window.innerHeight - popH) / 2);
+      if (anchorRect && typeof anchorRect.left === 'number') {
+        if (highlight) {
+          highlight.style.display = 'block';
+          highlight.style.left = anchorRect.left + 'px';
+          highlight.style.top = anchorRect.top + 'px';
+          highlight.style.width = Math.max(12, anchorRect.width) + 'px';
+          highlight.style.height = Math.max(12, anchorRect.height) + 'px';
         }
 
-        card.style.position = 'fixed';
-        card.style.left = x + 'px';
-        card.style.top = y + 'px';
+        if (card) {
+          var popW = 340;
+          var popH = 280;
+          var x = anchorRect.left;
+          var y = anchorRect.top + (anchorRect.height || 0) + 8; // directly docked under the marked area
+
+          // If close to bottom of screen, dock directly ABOVE the marked area
+          if (y + popH > window.innerHeight - 12) {
+            y = anchorRect.top - popH - 8;
+          }
+
+          // Screen horizontal bounds clamping
+          if (x + popW > window.innerWidth - 12) {
+            x = window.innerWidth - popW - 12;
+          }
+          if (x < 12) x = 12;
+          if (y < 12) y = 12;
+
+          card.style.left = Math.round(x) + 'px';
+          card.style.top = Math.round(y) + 'px';
+        }
       }
 
       modal.style.display = 'block';
+      setTimeout(function() {
+        if (modalCorrect) modalCorrect.focus();
+      }, 50);
     }
 
     function closeModal() {
       if (modal) modal.style.display = 'none';
+      var highlight = modal ? modal.querySelector('#ethWbModalHighlight') : null;
+      if (highlight) highlight.style.display = 'none';
       currentTarget = null;
     }
 
