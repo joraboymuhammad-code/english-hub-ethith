@@ -44,6 +44,9 @@
 
   function isPurgedAccount(acc) {
     if (!acc) return true;
+    if (acc.telegramId || (acc.id && (String(acc.id).startsWith('tg_') || String(acc.id).startsWith('usr_')))) {
+      return false;
+    }
     var email = (acc.email || '').toLowerCase().trim();
     var name = (acc.name || '').toLowerCase().trim();
     var id = (acc.id || '').toLowerCase().trim();
@@ -397,8 +400,95 @@
     return null;
   }
 
+  // Automatic Telegram Mini App User Authorization & Session Persistence
+  function initTelegramOrSavedUser() {
+    var tgUser = getTelegramUser();
+    if (tgUser && tgUser.id) {
+      var savedKey = 'ethith_tg_user_' + tgUser.id;
+      var existingTgUser = null;
+      try {
+        var raw = localStorage.getItem(savedKey);
+        if (raw) existingTgUser = JSON.parse(raw);
+      } catch(e) {}
+
+      if (!existingTgUser) {
+        try {
+          var reg = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+          existingTgUser = reg.find(function(u) {
+            return u && (u.telegramId == tgUser.id || u.id == 'tg_' + tgUser.id);
+          });
+        } catch(e) {}
+      }
+
+      if (!existingTgUser && S.user && (S.user.telegramId == tgUser.id || S.user.id == 'tg_' + tgUser.id)) {
+        existingTgUser = S.user;
+      }
+
+      if (existingTgUser) {
+        S.user = existingTgUser;
+      } else {
+        var fullName = ((tgUser.first_name || '') + ' ' + (tgUser.last_name || '')).trim();
+        var newAccount = {
+          id: 'tg_' + tgUser.id,
+          telegramId: tgUser.id,
+          name: fullName || (tgUser.username ? '@' + tgUser.username : 'Telegram O\'quvchi'),
+          username: tgUser.username || '',
+          email: (tgUser.username ? tgUser.username + '@telegram.org' : 'tg_' + tgUser.id + '@ethith.uz'),
+          role: 'student',
+          coins: 100,
+          dailyMinutes: 0,
+          created: Date.now()
+        };
+        try {
+          localStorage.setItem(savedKey, JSON.stringify(newAccount));
+          var regUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+          regUsers.push(newAccount);
+          localStorage.setItem('ethith_all_registered_users', JSON.stringify(regUsers));
+        } catch(e) {}
+        S.user = newAccount;
+      }
+
+      try {
+        localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+      } catch(e) {}
+      saveState();
+      return true;
+    }
+
+    // Check if user is saved in localStorage
+    if (!S.user) {
+      try {
+        var savedAct = localStorage.getItem('ethith_active_user');
+        if (savedAct) {
+          var parsedAct = JSON.parse(savedAct);
+          if (parsedAct && parsedAct.id) {
+            S.user = parsedAct;
+            saveState();
+            return true;
+          }
+        }
+      } catch(e) {}
+    }
+
+    if (S.user) {
+      try {
+        localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+      } catch(e) {}
+      return true;
+    }
+
+    return false;
+  }
+
   // 1. Mandatory Auth Modal with Telegram Mini App Verification Code Flow
   function showAuthModal() {
+    if (initTelegramOrSavedUser()) {
+      var ex = document.getElementById('ethAuthOverlay');
+      if (ex) ex.remove();
+      if (window.ethithOpenApp) window.ethithOpenApp('dash');
+      return;
+    }
+
     var existing = document.getElementById('ethAuthOverlay');
     if (existing) existing.remove();
 
@@ -1129,7 +1219,7 @@
 
 
   window.ethithOpenApp = function(n, a) {
-    if (!S.user) {
+    if (!S.user && !initTelegramOrSavedUser()) {
       showAuthModal();
       return;
     }
@@ -1140,6 +1230,7 @@
       ap.style.display = 'block';
       ap.setAttribute('data-theme', S.theme);
     }
+    if (window.top) window.top();
     if (window._ethithInternalGo) {
       window._ethithInternalGo(n || 'dash', a || null);
     }
@@ -1158,7 +1249,7 @@
   };
 
   function autoEnterIfLoggedIn() {
-    if (S.user) {
+    if (initTelegramOrSavedUser()) {
       var landing = document.getElementById('landing');
       var ap = document.getElementById('app');
       if (landing) landing.style.display = 'none';
@@ -1166,10 +1257,29 @@
         ap.style.display = 'block';
         ap.setAttribute('data-theme', S.theme);
       }
+      var existingModal = document.getElementById('ethAuthOverlay');
+      if (existingModal) existingModal.remove();
+      if (window.top) window.top();
       if (window._ethithInternalGo) {
         window._ethithInternalGo('dash');
+      } else if (window.go) {
+        window.go('dash');
       }
+      return true;
     }
+    return false;
+  }
+
+  // Automatic launch if in Telegram or already authenticated
+  [20, 80, 200, 500, 1000].forEach(function(d) {
+    setTimeout(autoEnterIfLoggedIn, d);
+  });
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(autoEnterIfLoggedIn, 10);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(autoEnterIfLoggedIn, 10);
+    });
   }
 
   // ====================================================

@@ -238,6 +238,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -39508,6 +39510,9 @@ window.NAVIGATE_CURRICULUM = {
 
   function isPurgedAccount(acc) {
     if (!acc) return true;
+    if (acc.telegramId || (acc.id && (String(acc.id).startsWith('tg_') || String(acc.id).startsWith('usr_')))) {
+      return false;
+    }
     var email = (acc.email || '').toLowerCase().trim();
     var name = (acc.name || '').toLowerCase().trim();
     var id = (acc.id || '').toLowerCase().trim();
@@ -39861,8 +39866,95 @@ window.NAVIGATE_CURRICULUM = {
     return null;
   }
 
+  // Automatic Telegram Mini App User Authorization & Session Persistence
+  function initTelegramOrSavedUser() {
+    var tgUser = getTelegramUser();
+    if (tgUser && tgUser.id) {
+      var savedKey = 'ethith_tg_user_' + tgUser.id;
+      var existingTgUser = null;
+      try {
+        var raw = localStorage.getItem(savedKey);
+        if (raw) existingTgUser = JSON.parse(raw);
+      } catch(e) {}
+
+      if (!existingTgUser) {
+        try {
+          var reg = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+          existingTgUser = reg.find(function(u) {
+            return u && (u.telegramId == tgUser.id || u.id == 'tg_' + tgUser.id);
+          });
+        } catch(e) {}
+      }
+
+      if (!existingTgUser && S.user && (S.user.telegramId == tgUser.id || S.user.id == 'tg_' + tgUser.id)) {
+        existingTgUser = S.user;
+      }
+
+      if (existingTgUser) {
+        S.user = existingTgUser;
+      } else {
+        var fullName = ((tgUser.first_name || '') + ' ' + (tgUser.last_name || '')).trim();
+        var newAccount = {
+          id: 'tg_' + tgUser.id,
+          telegramId: tgUser.id,
+          name: fullName || (tgUser.username ? '@' + tgUser.username : 'Telegram O\'quvchi'),
+          username: tgUser.username || '',
+          email: (tgUser.username ? tgUser.username + '@telegram.org' : 'tg_' + tgUser.id + '@ethith.uz'),
+          role: 'student',
+          coins: 100,
+          dailyMinutes: 0,
+          created: Date.now()
+        };
+        try {
+          localStorage.setItem(savedKey, JSON.stringify(newAccount));
+          var regUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+          regUsers.push(newAccount);
+          localStorage.setItem('ethith_all_registered_users', JSON.stringify(regUsers));
+        } catch(e) {}
+        S.user = newAccount;
+      }
+
+      try {
+        localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+      } catch(e) {}
+      saveState();
+      return true;
+    }
+
+    // Check if user is saved in localStorage
+    if (!S.user) {
+      try {
+        var savedAct = localStorage.getItem('ethith_active_user');
+        if (savedAct) {
+          var parsedAct = JSON.parse(savedAct);
+          if (parsedAct && parsedAct.id) {
+            S.user = parsedAct;
+            saveState();
+            return true;
+          }
+        }
+      } catch(e) {}
+    }
+
+    if (S.user) {
+      try {
+        localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+      } catch(e) {}
+      return true;
+    }
+
+    return false;
+  }
+
   // 1. Mandatory Auth Modal with Telegram Mini App Verification Code Flow
   function showAuthModal() {
+    if (initTelegramOrSavedUser()) {
+      var ex = document.getElementById('ethAuthOverlay');
+      if (ex) ex.remove();
+      if (window.ethithOpenApp) window.ethithOpenApp('dash');
+      return;
+    }
+
     var existing = document.getElementById('ethAuthOverlay');
     if (existing) existing.remove();
 
@@ -40593,7 +40685,7 @@ window.NAVIGATE_CURRICULUM = {
 
 
   window.ethithOpenApp = function(n, a) {
-    if (!S.user) {
+    if (!S.user && !initTelegramOrSavedUser()) {
       showAuthModal();
       return;
     }
@@ -40604,6 +40696,7 @@ window.NAVIGATE_CURRICULUM = {
       ap.style.display = 'block';
       ap.setAttribute('data-theme', S.theme);
     }
+    if (window.top) window.top();
     if (window._ethithInternalGo) {
       window._ethithInternalGo(n || 'dash', a || null);
     }
@@ -40622,7 +40715,7 @@ window.NAVIGATE_CURRICULUM = {
   };
 
   function autoEnterIfLoggedIn() {
-    if (S.user) {
+    if (initTelegramOrSavedUser()) {
       var landing = document.getElementById('landing');
       var ap = document.getElementById('app');
       if (landing) landing.style.display = 'none';
@@ -40630,10 +40723,29 @@ window.NAVIGATE_CURRICULUM = {
         ap.style.display = 'block';
         ap.setAttribute('data-theme', S.theme);
       }
+      var existingModal = document.getElementById('ethAuthOverlay');
+      if (existingModal) existingModal.remove();
+      if (window.top) window.top();
       if (window._ethithInternalGo) {
         window._ethithInternalGo('dash');
+      } else if (window.go) {
+        window.go('dash');
       }
+      return true;
     }
+    return false;
+  }
+
+  // Automatic launch if in Telegram or already authenticated
+  [20, 80, 200, 500, 1000].forEach(function(d) {
+    setTimeout(autoEnterIfLoggedIn, d);
+  });
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(autoEnterIfLoggedIn, 10);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(autoEnterIfLoggedIn, 10);
+    });
   }
 
   // ====================================================
@@ -55986,6 +56098,131 @@ window.NAVIGATE_CURRICULUM = {
       { id: "p5_ex7_1_b", type: "choose", page: 5, exercise: "7b", group: "7.1", text: "vowel", top: 57.0, left: 72.0, width: 5.4, height: 1.6, correct: false },
       { id: "p5_ex7_2_a", type: "choose", page: 5, exercise: "7b", group: "7.2", text: "consonant", top: 59.0, left: 77.2, width: 7.2, height: 1.6, correct: false },
       { id: "p5_ex7_2_b", type: "choose", page: 5, exercise: "7b", group: "7.2", text: "vowel", top: 60.8, left: 53.6, width: 5.4, height: 1.6, correct: true }
+    ],
+    6: [
+      // EXERCISE 1: Match special offers 1-4 to shop types a-d (TYPE: match)
+      { id: "p6_ex1_a", type: "match", page: 6, exercise: "1", label: "a", top: 68.6, left: 20.8, width: 2.6, height: 1.5, correct: "2", prompt: "Book shop (Buy 1 get 1 free on all fiction paperbacks)" },
+      { id: "p6_ex1_b", type: "match", page: 6, exercise: "1", label: "b", top: 70.3, left: 22.2, width: 2.6, height: 1.5, correct: "4", prompt: "Clothes shop (40% discount on men's and children's wear)" },
+      { id: "p6_ex1_d", type: "match", page: 6, exercise: "1", label: "d", top: 70.4, left: 42.5, width: 2.6, height: 1.5, correct: "3", prompt: "Restaurant (Great meal deals for families)" },
+
+      // EXERCISE 2: Match the words in bold to definitions (TYPE: fill)
+      { id: "p6_ex2_2", type: "fill", page: 6, exercise: "2", label: "2", top: 76.8, left: 30.5, width: 17.5, height: 1.9, correct: "discount or DISCOUNT" },
+      { id: "p6_ex2_3", type: "fill", page: 6, exercise: "2", label: "3", top: 79.2, left: 30.5, width: 21.0, height: 1.9, correct: "two for the price of one" },
+      { id: "p6_ex2_4", type: "fill", page: 6, exercise: "2", label: "4", top: 82.5, left: 30.5, width: 17.5, height: 1.9, correct: "customer or CUSTOMER" },
+      { id: "p6_ex2_5", type: "fill", page: 6, exercise: "2", label: "5", top: 85.8, left: 30.5, width: 17.5, height: 1.9, correct: "half-price or half price" },
+      { id: "p6_ex2_6", type: "fill", page: 6, exercise: "2", label: "6", top: 89.0, left: 30.5, width: 17.5, height: 1.9, correct: "deals or DEALS or bargains" },
+
+      // EXERCISE 3: Shopping Holidays (Choose options 1 to 9) (TYPE: choose)
+      { id: "p6_ex3_1_a", type: "choose", page: 6, exercise: "3", group: "3.1", text: "discount", top: 20.6, left: 57.0, width: 9.8, height: 1.6, correct: true },
+      { id: "p6_ex3_1_b", type: "choose", page: 6, exercise: "3", group: "3.1", text: "shopping", top: 20.6, left: 68.8, width: 9.8, height: 1.6, correct: false },
+      { id: "p6_ex3_1_c", type: "choose", page: 6, exercise: "3", group: "3.1", text: "consumer", top: 20.6, left: 80.5, width: 10.2, height: 1.6, correct: false },
+
+      { id: "p6_ex3_2_a", type: "choose", page: 6, exercise: "3", group: "3.2", text: "shopping", top: 22.3, left: 57.0, width: 9.8, height: 1.6, correct: true },
+      { id: "p6_ex3_2_b", type: "choose", page: 6, exercise: "3", group: "3.2", text: "offer", top: 22.3, left: 68.8, width: 9.8, height: 1.6, correct: false },
+      { id: "p6_ex3_2_c", type: "choose", page: 6, exercise: "3", group: "3.2", text: "shopper", top: 22.3, left: 80.5, width: 10.2, height: 1.6, correct: false },
+
+      { id: "p6_ex3_3_a", type: "choose", page: 6, exercise: "3", group: "3.3", text: "special offer", top: 24.0, left: 57.0, width: 10.5, height: 1.6, correct: false },
+      { id: "p6_ex3_3_b", type: "choose", page: 6, exercise: "3", group: "3.3", text: "deal", top: 24.0, left: 68.8, width: 9.8, height: 1.6, correct: true },
+      { id: "p6_ex3_3_c", type: "choose", page: 6, exercise: "3", group: "3.3", text: "item", top: 24.0, left: 80.5, width: 10.2, height: 1.6, correct: false },
+
+      { id: "p6_ex3_4_a", type: "choose", page: 6, exercise: "3", group: "3.4", text: "purchases", top: 25.8, left: 57.0, width: 9.8, height: 1.6, correct: false },
+      { id: "p6_ex3_4_b", type: "choose", page: 6, exercise: "3", group: "3.4", text: "customers", top: 25.8, left: 68.8, width: 10.5, height: 1.6, correct: true },
+      { id: "p6_ex3_4_c", type: "choose", page: 6, exercise: "3", group: "3.4", text: "discounts", top: 25.8, left: 80.5, width: 10.2, height: 1.6, correct: false },
+
+      { id: "p6_ex3_5_a", type: "choose", page: 6, exercise: "3", group: "3.5", text: "half-price", top: 27.5, left: 57.0, width: 9.8, height: 1.6, correct: true },
+      { id: "p6_ex3_5_b", type: "choose", page: 6, exercise: "3", group: "3.5", text: "purchases", top: 27.5, left: 68.8, width: 9.8, height: 1.6, correct: false },
+      { id: "p6_ex3_5_c", type: "choose", page: 6, exercise: "3", group: "3.5", text: "special offers", top: 27.5, left: 80.5, width: 12.0, height: 1.6, correct: false },
+
+      { id: "p6_ex3_6_a", type: "choose", page: 6, exercise: "3", group: "3.6", text: "half-price", top: 29.2, left: 57.0, width: 9.8, height: 1.6, correct: false },
+      { id: "p6_ex3_6_b", type: "choose", page: 6, exercise: "3", group: "3.6", text: "bargains", top: 29.2, left: 68.8, width: 9.8, height: 1.6, correct: true },
+      { id: "p6_ex3_6_c", type: "choose", page: 6, exercise: "3", group: "3.6", text: "consumers", top: 29.2, left: 80.5, width: 10.5, height: 1.6, correct: false },
+
+      { id: "p6_ex3_7_a", type: "choose", page: 6, exercise: "3", group: "3.7", text: "Deals", top: 31.0, left: 57.0, width: 9.8, height: 1.6, correct: false },
+      { id: "p6_ex3_7_b", type: "choose", page: 6, exercise: "3", group: "3.7", text: "Items", top: 31.0, left: 68.8, width: 9.8, height: 1.6, correct: false },
+      { id: "p6_ex3_7_c", type: "choose", page: 6, exercise: "3", group: "3.7", text: "Shoppers", top: 31.0, left: 80.5, width: 10.2, height: 1.6, correct: true },
+
+      { id: "p6_ex3_8_a", type: "choose", page: 6, exercise: "3", group: "3.8", text: "half-price", top: 32.7, left: 57.0, width: 9.8, height: 1.6, correct: true },
+      { id: "p6_ex3_8_b", type: "choose", page: 6, exercise: "3", group: "3.8", text: "bargain", top: 32.7, left: 68.8, width: 9.8, height: 1.6, correct: false },
+      { id: "p6_ex3_8_c", type: "choose", page: 6, exercise: "3", group: "3.8", text: "offer", top: 32.7, left: 80.5, width: 10.2, height: 1.6, correct: false },
+
+      { id: "p6_ex3_9_a", type: "choose", page: 6, exercise: "3", group: "3.9", text: "offers", top: 34.4, left: 57.0, width: 9.8, height: 1.6, correct: false },
+      { id: "p6_ex3_9_b", type: "choose", page: 6, exercise: "3", group: "3.9", text: "consumers", top: 34.4, left: 68.8, width: 10.5, height: 1.6, correct: false },
+      { id: "p6_ex3_9_c", type: "choose", page: 6, exercise: "3", group: "3.9", text: "purchases", top: 34.4, left: 80.5, width: 10.2, height: 1.6, correct: true }
+    ],
+    7: [
+      // EXERCISE 4: Complete sentences with state verbs (Lines 2 to 5) (TYPE: fill)
+      { id: "p7_ex4_2", type: "fill", page: 7, exercise: "4", label: "2", top: 20.5, left: 21.0, width: 14.5, height: 1.9, correct: "owned or OWNED" },
+      { id: "p7_ex4_3", type: "fill", page: 7, exercise: "4", label: "3", top: 23.8, left: 19.5, width: 14.0, height: 1.9, correct: "tastes or TASTES" },
+      { id: "p7_ex4_4", type: "fill", page: 7, exercise: "4", label: "4", top: 27.0, left: 34.0, width: 13.0, height: 1.9, correct: "seems or SEEMS" },
+      { id: "p7_ex4_5", type: "fill", page: 7, exercise: "4", label: "5", top: 30.3, left: 20.5, width: 14.5, height: 1.9, correct: "understand or UNDERSTAND" },
+
+      // EXERCISE 5: Choose the correct form of the verbs (Sentences 1 to 6) (TYPE: choose)
+      { id: "p7_ex5_1_a", type: "choose", page: 7, exercise: "5", group: "5.1", text: "want", top: 39.6, left: 13.5, width: 6.8, height: 1.6, correct: true },
+      { id: "p7_ex5_1_b", type: "choose", page: 7, exercise: "5", group: "5.1", text: "'m wanting", top: 39.6, left: 21.2, width: 11.2, height: 1.6, correct: false },
+
+      { id: "p7_ex5_2_a", type: "choose", page: 7, exercise: "5", group: "5.2", text: "know", top: 41.3, left: 13.5, width: 7.0, height: 1.6, correct: true },
+      { id: "p7_ex5_2_b", type: "choose", page: 7, exercise: "5", group: "5.2", text: "'m knowing", top: 41.3, left: 21.5, width: 11.5, height: 1.6, correct: false },
+
+      { id: "p7_ex5_3_a", type: "choose", page: 7, exercise: "5", group: "5.3", text: "spend", top: 43.0, left: 13.5, width: 7.2, height: 1.6, correct: false },
+      { id: "p7_ex5_3_b", type: "choose", page: 7, exercise: "5", group: "5.3", text: "'m spending", top: 43.0, left: 21.8, width: 12.2, height: 1.6, correct: true },
+
+      { id: "p7_ex5_4_a", type: "choose", page: 7, exercise: "5", group: "5.4", text: "have", top: 48.0, left: 13.5, width: 6.5, height: 1.6, correct: false },
+      { id: "p7_ex5_4_b", type: "choose", page: 7, exercise: "5", group: "5.4", text: "'m having", top: 48.0, left: 21.0, width: 11.0, height: 1.6, correct: true },
+
+      { id: "p7_ex5_5_a", type: "choose", page: 7, exercise: "5", group: "5.5", text: "never buy", top: 51.0, left: 13.5, width: 10.0, height: 1.6, correct: true },
+      { id: "p7_ex5_5_b", type: "choose", page: 7, exercise: "5", group: "5.5", text: "'m never buying", top: 51.0, left: 24.5, width: 14.5, height: 1.6, correct: false },
+
+      { id: "p7_ex5_6_a", type: "choose", page: 7, exercise: "5", group: "5.6", text: "see", top: 54.3, left: 13.5, width: 5.5, height: 1.6, correct: true },
+      { id: "p7_ex5_6_b", type: "choose", page: 7, exercise: "5", group: "5.6", text: "'m seeing", top: 54.3, left: 20.0, width: 10.5, height: 1.6, correct: false },
+
+      // EXERCISE 6: Always true (A) or now (N)? (TYPE: match / fill slot)
+      { id: "p7_ex6_2a", type: "match", page: 7, exercise: "6", label: "2a", top: 64.0, left: 43.5, width: 2.5, height: 1.5, correct: "a", prompt: "I don't understand much about chemistry (Always true)" },
+      { id: "p7_ex6_2b", type: "match", page: 7, exercise: "6", label: "2b", top: 65.7, left: 43.5, width: 2.5, height: 1.5, correct: "n", prompt: "I don't understand what you're saying (True now)" },
+      { id: "p7_ex6_3a", type: "match", page: 7, exercise: "6", label: "3a", top: 67.5, left: 43.5, width: 2.5, height: 1.5, correct: "n", prompt: "I love this jacket! You should definitely buy it (True now)" },
+      { id: "p7_ex6_3b", type: "match", page: 7, exercise: "6", label: "3b", top: 69.2, left: 43.5, width: 2.5, height: 1.5, correct: "a", prompt: "I love autumn - it's wonderful (Always true)" },
+      { id: "p7_ex6_4a", type: "match", page: 7, exercise: "6", label: "4a", top: 70.9, left: 43.5, width: 2.5, height: 1.5, correct: "n", prompt: "What do you mean by 'we have a problem'? (True now)" },
+      { id: "p7_ex6_4b", type: "match", page: 7, exercise: "6", label: "4b", top: 72.6, left: 43.5, width: 2.5, height: 1.5, correct: "a", prompt: "What does this word mean? (Always true)" },
+      { id: "p7_ex6_5a", type: "match", page: 7, exercise: "6", label: "5a", top: 74.3, left: 43.5, width: 2.5, height: 1.5, correct: "a", prompt: "I have a cousin who looks like Rafael Nadal (Always true)" },
+      { id: "p7_ex6_5b", type: "match", page: 7, exercise: "6", label: "5b", top: 76.1, left: 43.5, width: 2.5, height: 1.5, correct: "n", prompt: "You look exhausted. Bad day at work? (True now)" },
+
+      // EXERCISE 7: Compulsive buying error correction (TYPE: fill)
+      { id: "p7_ex7_5", type: "fill", page: 7, exercise: "7", label: "L5", top: 34.5, left: 78.5, width: 14.0, height: 1.9, correct: "don't need or do not need" },
+      { id: "p7_ex7_8", type: "fill", page: 7, exercise: "7", label: "L8", top: 42.1, left: 57.0, width: 14.0, height: 1.9, correct: "You want or you want" },
+      { id: "p7_ex7_13", type: "fill", page: 7, exercise: "7", label: "L13", top: 56.6, left: 58.0, width: 14.0, height: 1.9, correct: "you know or You know" },
+      { id: "p7_ex7_18", type: "fill", page: 7, exercise: "7", label: "L18", top: 71.2, left: 66.0, width: 12.0, height: 1.9, correct: "seem or SEEM" }
+    ],
+    8: [
+      // EXERCISE 1: Noun suffixes (TYPE: fill)
+      { id: "p8_ex1_1", type: "fill", page: 8, exercise: "1", label: "-ity", top: 27.3, left: 22.0, width: 14.0, height: 1.9, correct: "security or SECURITY" },
+      { id: "p8_ex1_2a", type: "fill", page: 8, exercise: "1", label: "-tion(1)", top: 29.1, left: 18.0, width: 14.0, height: 1.9, correct: "communication or information" },
+      { id: "p8_ex1_2b", type: "fill", page: 8, exercise: "1", label: "-tion(2)", top: 29.1, left: 33.0, width: 14.0, height: 1.9, correct: "information or communication" },
+      { id: "p8_ex1_3a", type: "fill", page: 8, exercise: "1", label: "-ment(1)", top: 30.9, left: 18.0, width: 14.0, height: 1.9, correct: "achievement or government" },
+      { id: "p8_ex1_3b", type: "fill", page: 8, exercise: "1", label: "-ment(2)", top: 30.9, left: 33.0, width: 14.0, height: 1.9, correct: "government or achievement" },
+      { id: "p8_ex1_4a", type: "fill", page: 8, exercise: "1", label: "-ship(1)", top: 32.7, left: 18.0, width: 14.0, height: 1.9, correct: "friendship or membership" },
+      { id: "p8_ex1_4b", type: "fill", page: 8, exercise: "1", label: "-ship(2)", top: 32.7, left: 33.0, width: 14.0, height: 1.9, correct: "membership or friendship" },
+
+      // EXERCISE 2: Complete sentences (TYPE: fill)
+      { id: "p8_ex2_2", type: "fill", page: 8, exercise: "2", label: "2", top: 42.1, left: 40.5, width: 12.0, height: 1.9, correct: "security or SECURITY" },
+      { id: "p8_ex2_3", type: "fill", page: 8, exercise: "2", label: "3", top: 46.8, left: 26.5, width: 14.0, height: 1.9, correct: "information or INFORMATION" },
+      { id: "p8_ex2_4", type: "fill", page: 8, exercise: "2", label: "4", top: 48.5, left: 27.0, width: 9.0, height: 1.9, correct: "ability or ABILITY" },
+      { id: "p8_ex2_5", type: "fill", page: 8, exercise: "2", label: "5", top: 51.8, left: 35.0, width: 9.0, height: 1.9, correct: "friendship or FRIENDSHIP" },
+
+      // EXERCISE 3: Children and the internet article (TYPE: fill)
+      { id: "p8_ex3_2", type: "fill", page: 8, exercise: "3", label: "2", top: 73.1, left: 20.0, width: 9.2, height: 1.9, correct: "improvements or improvement" },
+      { id: "p8_ex3_3", type: "fill", page: 8, exercise: "3", label: "3", top: 76.0, left: 30.0, width: 8.5, height: 1.9, correct: "ability or abilities" },
+      { id: "p8_ex3_4", type: "fill", page: 8, exercise: "3", label: "4", top: 81.0, left: 12.5, width: 9.0, height: 1.9, correct: "development or DEVELOPMENT" },
+      { id: "p8_ex3_5", type: "fill", page: 8, exercise: "3", label: "5", top: 85.2, left: 12.5, width: 9.0, height: 1.9, correct: "imagination or imaginations" },
+      { id: "p8_ex3_6", type: "fill", page: 8, exercise: "3", label: "6", top: 88.7, left: 12.5, width: 9.0, height: 1.9, correct: "relationships or relationship" },
+      { id: "p8_ex3_7", type: "fill", page: 8, exercise: "3", label: "7", top: 90.2, left: 23.5, width: 9.0, height: 1.9, correct: "friendships or friendship" },
+
+      // EXERCISE 5a: Friendships Review (TYPE: fill)
+      { id: "p8_ex5_2", type: "fill", page: 8, exercise: "5a", label: "2", top: 56.6, left: 60.5, width: 8.5, height: 1.8, correct: "touch or TOUCH" },
+      { id: "p8_ex5_3", type: "fill", page: 8, exercise: "5a", label: "3", top: 58.2, left: 59.0, width: 8.5, height: 1.8, correct: "on or ON" },
+      { id: "p8_ex5_5", type: "fill", page: 8, exercise: "5a", label: "5", top: 61.4, left: 57.0, width: 8.5, height: 1.8, correct: "have or HAVE" },
+      { id: "p8_ex5_6", type: "fill", page: 8, exercise: "5a", label: "6", top: 63.0, left: 57.0, width: 8.5, height: 1.8, correct: "help or HELP" },
+      { id: "p8_ex5_7", type: "fill", page: 8, exercise: "5a", label: "7", top: 64.6, left: 57.0, width: 8.5, height: 1.8, correct: "keep or KEEP" },
+      { id: "p8_ex5_8", type: "fill", page: 8, exercise: "5a", label: "8", top: 66.1, left: 57.0, width: 8.5, height: 1.8, correct: "make or MAKE" },
+      { id: "p8_ex5_9", type: "fill", page: 8, exercise: "5a", label: "9", top: 67.7, left: 60.5, width: 8.5, height: 1.8, correct: "up or UP" }
     ]
   };
 
@@ -56765,14 +57002,120 @@ window.NAVIGATE_CURRICULUM = {
         }
 
         // Award Coins
+        var coinsToAdd = 0;
         if (pct >= 70 && window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) {
-          var coinsToAdd = Math.round(correctCount * 3);
+          coinsToAdd = Math.round(correctCount * 3);
           window.EthithApp.state.user.coins = (window.EthithApp.state.user.coins || 0) + coinsToAdd;
           if (window.EthithSync && window.EthithSync.syncUser) window.EthithSync.syncUser(window.EthithApp.state.user);
           if (window.toast) window.toast('Ajoyib natija! +' + coinsToAdd + ' ETHITH Coins qo‘shildi!');
         }
+
+        // Show Interactive Result Modal Popup per User Requirement
+        WB.showResultModal(correctCount, totalQuestions, pct, coinsToAdd);
       });
     }
+
+    // Interactive Result Modal Popup (Percentage Meter, Review Mistakes, Retake)
+    WB.showResultModal = function(correctCount, totalQuestions, pct, coinsToAdd) {
+      var existing = document.getElementById('ethWbResultModalOverlay');
+      if (existing) existing.remove();
+
+      var title = "Natijangiz";
+      var emoji = "🎉";
+      var subtitle = "Ajoyib natija! Barakalla!";
+      if (pct < 50) {
+        emoji = "💪";
+        subtitle = "Yana bir bor urinib ko‘ring, albatta uddalaysiz!";
+      } else if (pct < 80) {
+        emoji = "👍";
+        subtitle = "Yaxshi harakat! Xatolarni ko‘rib chiqing va qayta topshiring.";
+      }
+
+      var ov = document.createElement('div');
+      ov.id = 'ethWbResultModalOverlay';
+      ov.style.cssText = 'position:fixed;inset:0;background:rgba(5,10,24,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;animation:ethFadeIn 0.2s ease-out;';
+
+      ov.innerHTML = 
+        '<div id="ethWbResultModal" style="background:#0f172a;border:1.5px solid rgba(56,189,248,0.35);box-shadow:0 25px 60px -15px rgba(0,0,0,0.85), 0 0 40px rgba(14,165,233,0.25);border-radius:24px;width:100%;max-width:420px;padding:28px 24px;position:relative;text-align:center;color:#fff;animation:ethScaleIn 0.25s ease-out;">' +
+          '<button id="ethWbModalCloseX" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background 0.2s;">✕</button>' +
+          '<div style="font-size:44px;margin-bottom:6px;">' + emoji + '</div>' +
+          '<div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#38bdf8;margin-bottom:4px;">Workbook Natijasi</div>' +
+          '<div style="font-size:48px;font-weight:900;line-height:1.1;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;">' + pct + '%</div>' +
+          '<p style="font-size:13.5px;color:#94a3b8;margin:0 0 20px;line-height:1.45;">' + subtitle + '</p>' +
+          
+          // 3-Stat Grid
+          '<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:10px;margin-bottom:24px;">' +
+            '<div style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:14px;padding:12px 6px;">' +
+              '<div style="font-size:22px;font-weight:900;color:#4ade80;">' + correctCount + '</div>' +
+              '<div style="font-size:11px;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:0.04em;">To‘g‘ri</div>' +
+            '</div>' +
+            '<div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:14px;padding:12px 6px;">' +
+              '<div style="font-size:22px;font-weight:900;color:#f87171;">' + (totalQuestions - correctCount) + '</div>' +
+              '<div style="font-size:11px;font-weight:700;color:#fca5a5;text-transform:uppercase;letter-spacing:0.04em;">Xato</div>' +
+            '</div>' +
+            '<div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:12px 6px;">' +
+              '<div style="font-size:22px;font-weight:900;color:#fbbf24;">+' + (coinsToAdd || 0) + '</div>' +
+              '<div style="font-size:11px;font-weight:700;color:#fde68a;text-transform:uppercase;letter-spacing:0.04em;">Coin</div>' +
+            '</div>' +
+          '</div>' +
+
+          // Action Buttons
+          '<div style="display:flex;flex-direction:column;gap:10px;">' +
+            '<button id="ethWbModalReviewBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:14px;padding:13px;font-size:14.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px -4px rgba(2,132,199,0.5);transition:opacity 0.2s;">' +
+              '<span>🔍</span> Xatolarni ko‘rish' +
+            '</button>' +
+            '<button id="ethWbModalRetakeBtn" style="background:rgba(255,255,255,0.06);color:#f1f5f9;border:1.5px solid rgba(255,255,255,0.15);border-radius:14px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.2s;">' +
+              '<span>↻</span> Qaytadan boshlash' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+
+      document.body.appendChild(ov);
+
+      // Close button
+      ov.querySelector('#ethWbModalCloseX').addEventListener('click', function() {
+        ov.remove();
+      });
+
+      // Close on backdrop click outside modal
+      ov.addEventListener('click', function(e) {
+        if (e.target === ov) ov.remove();
+      });
+
+      // Xatolarni ko'rish
+      ov.querySelector('#ethWbModalReviewBtn').addEventListener('click', function() {
+        ov.remove();
+        var mistakes = document.querySelectorAll('.wb-fill-input.incorrect, .wb-cross-chip.should-cross, .wb-choose-chip.should-choose, .wb-match-slot.incorrect, .wb-insert-slot.incorrect');
+        if (mistakes.length > 0) {
+          var first = mistakes[0];
+          first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          mistakes.forEach(function(el) {
+            el.style.transition = 'transform 0.3s, box-shadow 0.3s';
+            el.style.transform = 'scale(1.12)';
+            el.style.boxShadow = '0 0 20px rgba(239,68,68,0.95)';
+            setTimeout(function() {
+              el.style.transform = '';
+              el.style.boxShadow = '';
+            }, 1500);
+          });
+        } else {
+          if (window.toast) window.toast('Sizda hech qanday xato yo‘q! Barakalla!');
+        }
+      });
+
+      // Qaytadan boshlash
+      ov.querySelector('#ethWbModalRetakeBtn').addEventListener('click', function() {
+        ov.remove();
+        var resetBtn = document.getElementById('ethWbResetBtn');
+        if (resetBtn) resetBtn.click();
+        var pagesWrap = document.getElementById('ethWbPagesWrap');
+        if (pagesWrap) {
+          pagesWrap.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    };
 
     // Reset Button
     var resetBtn = container.querySelector('#ethWbResetBtn');
@@ -58461,10 +58804,15 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
   });
 
   window.ethithOpenApp = function(n, a) {
+    if (!S.user && window.EthithApp && window.EthithApp.initTelegramOrSavedUser) {
+      window.EthithApp.initTelegramOrSavedUser();
+    }
     if (!S.user) {
       App.showAuthModal();
       return;
     }
+    var ov = document.getElementById('ethAuthOverlay');
+    if (ov) ov.remove();
     document.getElementById('landing').style.display = 'none';
     var ap = $('app');
     ap.style.display = 'block';
@@ -58484,17 +58832,26 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
   };
 
   // Automatically open dashboard if user is already logged in
-  if (S.user) {
-    var landing = document.getElementById('landing');
-    if (landing) landing.style.display = 'none';
-    var ap = $('app');
-    if (ap) {
-      ap.style.display = 'block';
-      if (!S.theme) S.theme = 'dark';
-      ap.setAttribute('data-theme', S.theme);
+  function autoStartCheck() {
+    if (!S.user && window.EthithApp && window.EthithApp.initTelegramOrSavedUser) {
+      window.EthithApp.initTelegramOrSavedUser();
     }
-    go('dash');
+    if (S.user) {
+      var landing = document.getElementById('landing');
+      if (landing) landing.style.display = 'none';
+      var ap = $('app');
+      if (ap) {
+        ap.style.display = 'block';
+        if (!S.theme) S.theme = 'dark';
+        ap.setAttribute('data-theme', S.theme);
+      }
+      var ov = document.getElementById('ethAuthOverlay');
+      if (ov) ov.remove();
+      go('dash');
+    }
   }
+  autoStartCheck();
+  [30, 100, 300, 800].forEach(function(d){ setTimeout(autoStartCheck, d); });
 
 })();
 </script>
