@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792429062767,
+      "created": 1792499045394,
       "students": [],
       "messages": [
         {
@@ -572,6 +572,18 @@
     {
       "id": "admin_official_teacher",
       "role": "teacher",
+      "name": "Ustoz Muhammadyusuf",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "createdAt": 1792429101989,
+      "coins": 150,
+      "gifts": [],
+      "level": "A1",
+      "dailyMinutes": 20,
+      "updatedAt": 1792503190687
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
       "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
@@ -584,20 +596,8 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null
-    },
-    {
-      "id": "admin_12038f1aq8syash@ethith.uz",
-      "role": "teacher",
-      "name": "Ustoz Muhammadyusuf",
-      "email": "admin_12038f1aq8syash@ethith.uz",
-      "coins": 150,
-      "gifts": [],
-      "avatar": null,
-      "title": null,
-      "nameStyle": null,
-      "createdAt": 1792502058827
     }
   ],
   "p2pListings": [],
-  "updatedAt": 1792502063667
+  "updatedAt": 1792503190687
 }
