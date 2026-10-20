@@ -8496,42 +8496,256 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   position: relative;
   transition: transform 0.2s ease;
 }
-.eth-wb-input {
+
+/* 1. FILL INPUTS (O'qib yoziladigan) */
+.eth-wb-input, .wb-fill-input {
+  box-sizing: border-box;
+  background: transparent;
+  border: 1.5px dashed rgba(56, 189, 248, 0.55);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+  padding: 1px 6px;
+  outline: none;
   transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
-.eth-wb-input:hover {
+.eth-wb-input:hover, .wb-fill-input:hover {
   border-color: #0284c7 !important;
   background: rgba(56, 189, 248, 0.08) !important;
 }
-.eth-wb-input:focus {
+.eth-wb-input:focus, .wb-fill-input:focus {
   background: rgba(15, 23, 42, 0.95) !important;
   color: #38bdf8 !important;
   border: 1.5px solid #38bdf8 !important;
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.4) !important;
 }
-.eth-wb-input.correct {
+.eth-wb-input.correct, .wb-fill-input.correct {
   border: 2px solid #10b981 !important;
   background: rgba(16, 185, 129, 0.22) !important;
   color: #047857 !important;
   font-weight: 800 !important;
 }
-[data-theme="dark"] .eth-wb-input.correct {
+[data-theme="dark"] .eth-wb-input.correct, [data-theme="dark"] .wb-fill-input.correct {
   color: #34d399 !important;
 }
-.eth-wb-input.incorrect {
+.eth-wb-input.incorrect, .wb-fill-input.incorrect {
   border: 2px solid #ef4444 !important;
   background: rgba(239, 68, 68, 0.22) !important;
   color: #b91c1c !important;
   font-weight: 800 !important;
 }
-[data-theme="dark"] .eth-wb-input.incorrect {
+[data-theme="dark"] .eth-wb-input.incorrect, [data-theme="dark"] .wb-fill-input.incorrect {
   color: #f87171 !important;
 }
+
+/* 2. CROSS-OUT CHIPS (O'chiriladigan - Ex 2) */
+.wb-cross-chip {
+  position: absolute;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 4px;
+  background: rgba(244, 63, 94, 0.04);
+  border: 1px dashed rgba(244, 63, 94, 0.35);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.wb-cross-chip:hover {
+  background: rgba(244, 63, 94, 0.14);
+  border-color: #ef4444;
+}
+.wb-cross-chip.crossed {
+  background: rgba(239, 68, 68, 0.16) !important;
+  border: 1.5px solid #ef4444 !important;
+}
+.wb-cross-chip.crossed::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 50%;
+  height: 2.5px;
+  background: #ef4444;
+  transform: rotate(-5deg);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.6);
+}
+.wb-cross-chip.crossed.correct {
+  background: rgba(16, 185, 129, 0.18) !important;
+  border-color: #10b981 !important;
+}
+.wb-cross-chip.crossed.correct::after {
+  background: #10b981 !important;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
+}
+.wb-cross-chip.should-cross {
+  border: 2px solid #10b981 !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+  animation: pulseCross 1.5s infinite;
+}
+@keyframes pulseCross {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+}
+
+/* 3. CHOOSE CHIPS (Belgilanadigan - Ex 3 & Ex 7b) */
+.wb-choose-chip {
+  position: absolute;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 5px;
+  background: rgba(14, 165, 233, 0.05);
+  border: 1px dashed rgba(14, 165, 233, 0.45);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.wb-choose-chip:hover {
+  background: rgba(14, 165, 233, 0.16);
+  border-color: #0284c7;
+}
+.wb-choose-chip.selected {
+  background: rgba(14, 165, 233, 0.26) !important;
+  border: 2px solid #0284c7 !important;
+  box-shadow: 0 0 8px rgba(14, 165, 233, 0.4);
+}
+.wb-choose-chip.selected.correct {
+  background: rgba(16, 185, 129, 0.25) !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+.wb-choose-chip.selected.incorrect {
+  background: rgba(239, 68, 68, 0.22) !important;
+  border-color: #ef4444 !important;
+}
+.wb-choose-chip.should-choose {
+  border: 2px dashed #10b981 !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+}
+
+/* 4. MATCH SLOTS (Bog'lanadigan - Ex 4a) */
+.wb-match-slot {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13.5px;
+  font-weight: 900;
+  color: #0284c7;
+  background: #ffffff;
+  border: 1.5px solid #0284c7;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  transition: all 0.2s;
+  user-select: none;
+}
+.wb-match-slot:hover {
+  background: rgba(14, 165, 233, 0.12);
+  transform: scale(1.08);
+}
+.wb-match-slot.correct {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-color: #059669 !important;
+}
+.wb-match-slot.incorrect {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-color: #dc2626 !important;
+}
+.wb-letter-popover {
+  position: absolute;
+  left: 105%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 4px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1.5px solid #38bdf8;
+  border-radius: 8px;
+  padding: 4px 6px;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+.wb-letter-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.wb-letter-btn:hover {
+  background: #0284c7;
+  border-color: #38bdf8;
+}
+
+/* 5. INSERT SLOTS (Chiziladigan / Joylashtiriladigan - Ex 5) */
+.wb-insert-slot {
+  position: absolute;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px dashed rgba(168, 85, 247, 0.6);
+  background: rgba(168, 85, 247, 0.08);
+  border-radius: 3px;
+  transition: all 0.2s;
+  user-select: none;
+}
+.wb-insert-slot:hover {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: #9333ea;
+}
+.wb-insert-slot.inserted {
+  background: rgba(168, 85, 247, 0.22) !important;
+  border: 1.5px solid #9333ea !important;
+}
+.wb-insert-slot.inserted::before {
+  content: '/';
+  font-size: 18px;
+  font-weight: 900;
+  color: #9333ea;
+}
+.wb-insert-slot.inserted .wb-insert-text {
+  display: block;
+}
+.wb-insert-text {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #9333ea;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  margin-bottom: 2px;
+}
+.wb-insert-slot.correct {
+  border-color: #10b981 !important;
+}
+.wb-insert-slot.correct::before {
+  color: #10b981 !important;
+}
+.wb-insert-slot.correct .wb-insert-text {
+  background: #10b981 !important;
+}
+
 @media (max-width: 768px) {
   .eth-wb-viewer {
     padding: 8px 8px 90px !important;
   }
-  .eth-wb-input {
+  .eth-wb-input, .wb-fill-input {
     font-size: 11px !important;
     padding: 0 3px !important;
   }

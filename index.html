@@ -234,6 +234,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -8737,42 +8739,256 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   position: relative;
   transition: transform 0.2s ease;
 }
-.eth-wb-input {
+
+/* 1. FILL INPUTS (O'qib yoziladigan) */
+.eth-wb-input, .wb-fill-input {
+  box-sizing: border-box;
+  background: transparent;
+  border: 1.5px dashed rgba(56, 189, 248, 0.55);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+  padding: 1px 6px;
+  outline: none;
   transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
-.eth-wb-input:hover {
+.eth-wb-input:hover, .wb-fill-input:hover {
   border-color: #0284c7 !important;
   background: rgba(56, 189, 248, 0.08) !important;
 }
-.eth-wb-input:focus {
+.eth-wb-input:focus, .wb-fill-input:focus {
   background: rgba(15, 23, 42, 0.95) !important;
   color: #38bdf8 !important;
   border: 1.5px solid #38bdf8 !important;
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.4) !important;
 }
-.eth-wb-input.correct {
+.eth-wb-input.correct, .wb-fill-input.correct {
   border: 2px solid #10b981 !important;
   background: rgba(16, 185, 129, 0.22) !important;
   color: #047857 !important;
   font-weight: 800 !important;
 }
-[data-theme="dark"] .eth-wb-input.correct {
+[data-theme="dark"] .eth-wb-input.correct, [data-theme="dark"] .wb-fill-input.correct {
   color: #34d399 !important;
 }
-.eth-wb-input.incorrect {
+.eth-wb-input.incorrect, .wb-fill-input.incorrect {
   border: 2px solid #ef4444 !important;
   background: rgba(239, 68, 68, 0.22) !important;
   color: #b91c1c !important;
   font-weight: 800 !important;
 }
-[data-theme="dark"] .eth-wb-input.incorrect {
+[data-theme="dark"] .eth-wb-input.incorrect, [data-theme="dark"] .wb-fill-input.incorrect {
   color: #f87171 !important;
 }
+
+/* 2. CROSS-OUT CHIPS (O'chiriladigan - Ex 2) */
+.wb-cross-chip {
+  position: absolute;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 4px;
+  background: rgba(244, 63, 94, 0.04);
+  border: 1px dashed rgba(244, 63, 94, 0.35);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.wb-cross-chip:hover {
+  background: rgba(244, 63, 94, 0.14);
+  border-color: #ef4444;
+}
+.wb-cross-chip.crossed {
+  background: rgba(239, 68, 68, 0.16) !important;
+  border: 1.5px solid #ef4444 !important;
+}
+.wb-cross-chip.crossed::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 50%;
+  height: 2.5px;
+  background: #ef4444;
+  transform: rotate(-5deg);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.6);
+}
+.wb-cross-chip.crossed.correct {
+  background: rgba(16, 185, 129, 0.18) !important;
+  border-color: #10b981 !important;
+}
+.wb-cross-chip.crossed.correct::after {
+  background: #10b981 !important;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
+}
+.wb-cross-chip.should-cross {
+  border: 2px solid #10b981 !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+  animation: pulseCross 1.5s infinite;
+}
+@keyframes pulseCross {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+}
+
+/* 3. CHOOSE CHIPS (Belgilanadigan - Ex 3 & Ex 7b) */
+.wb-choose-chip {
+  position: absolute;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 5px;
+  background: rgba(14, 165, 233, 0.05);
+  border: 1px dashed rgba(14, 165, 233, 0.45);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.wb-choose-chip:hover {
+  background: rgba(14, 165, 233, 0.16);
+  border-color: #0284c7;
+}
+.wb-choose-chip.selected {
+  background: rgba(14, 165, 233, 0.26) !important;
+  border: 2px solid #0284c7 !important;
+  box-shadow: 0 0 8px rgba(14, 165, 233, 0.4);
+}
+.wb-choose-chip.selected.correct {
+  background: rgba(16, 185, 129, 0.25) !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+.wb-choose-chip.selected.incorrect {
+  background: rgba(239, 68, 68, 0.22) !important;
+  border-color: #ef4444 !important;
+}
+.wb-choose-chip.should-choose {
+  border: 2px dashed #10b981 !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+}
+
+/* 4. MATCH SLOTS (Bog'lanadigan - Ex 4a) */
+.wb-match-slot {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13.5px;
+  font-weight: 900;
+  color: #0284c7;
+  background: #ffffff;
+  border: 1.5px solid #0284c7;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  transition: all 0.2s;
+  user-select: none;
+}
+.wb-match-slot:hover {
+  background: rgba(14, 165, 233, 0.12);
+  transform: scale(1.08);
+}
+.wb-match-slot.correct {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-color: #059669 !important;
+}
+.wb-match-slot.incorrect {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-color: #dc2626 !important;
+}
+.wb-letter-popover {
+  position: absolute;
+  left: 105%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 4px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1.5px solid #38bdf8;
+  border-radius: 8px;
+  padding: 4px 6px;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+.wb-letter-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.wb-letter-btn:hover {
+  background: #0284c7;
+  border-color: #38bdf8;
+}
+
+/* 5. INSERT SLOTS (Chiziladigan / Joylashtiriladigan - Ex 5) */
+.wb-insert-slot {
+  position: absolute;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px dashed rgba(168, 85, 247, 0.6);
+  background: rgba(168, 85, 247, 0.08);
+  border-radius: 3px;
+  transition: all 0.2s;
+  user-select: none;
+}
+.wb-insert-slot:hover {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: #9333ea;
+}
+.wb-insert-slot.inserted {
+  background: rgba(168, 85, 247, 0.22) !important;
+  border: 1.5px solid #9333ea !important;
+}
+.wb-insert-slot.inserted::before {
+  content: '/';
+  font-size: 18px;
+  font-weight: 900;
+  color: #9333ea;
+}
+.wb-insert-slot.inserted .wb-insert-text {
+  display: block;
+}
+.wb-insert-text {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #9333ea;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  margin-bottom: 2px;
+}
+.wb-insert-slot.correct {
+  border-color: #10b981 !important;
+}
+.wb-insert-slot.correct::before {
+  color: #10b981 !important;
+}
+.wb-insert-slot.correct .wb-insert-text {
+  background: #10b981 !important;
+}
+
 @media (max-width: 768px) {
   .eth-wb-viewer {
     padding: 8px 8px 90px !important;
   }
-  .eth-wb-input {
+  .eth-wb-input, .wb-fill-input {
     font-size: 11px !important;
     padding: 0 3px !important;
   }
@@ -55510,6 +55726,13 @@ window.NAVIGATE_CURRICULUM = {
  * Authentic OUP Navigate Intermediate (B1+) Material
  * High-performance, lightweight image-overlay system with zero PDF lag.
  * Omits all listening exercises strictly per requirements.
+ *
+ * Rich Authentic Interaction Types:
+ * 1. fill   - O'qib yoziladigan (Text inputs on printed lines)
+ * 2. cross  - O'chiriladigan (Realistic pen strikethrough for incorrect words)
+ * 3. choose - Belgilanadigan (Highlighting correct option in pairs)
+ * 4. match  - Bog'lanadigan (Letter selector badges for matching questions to answers)
+ * 5. insert - Chiziladigan / Joylashtiriladigan (Slash caret insertion between words)
  */
 
 (function(window) {
@@ -55545,71 +55768,114 @@ window.NAVIGATE_CURRICULUM = {
     { unit: 12, title: "Unit 12: Influence", subtitle: "Reported speech & questions · Vocabulary: Advertising and persuasion", available: false, lessonsCount: 5 }
   ];
 
-  // Verified Answer Keys and Overlay Coordinates for Unit 1.1 (Pages 4 and 5)
-  // Page 4: Grammar (Ex 1, Ex 2, Ex 3)
-  // Page 5: Vocabulary friendship (Ex 4a, Ex 5, Ex 6, Ex 7b)
+  // 100% Calibrated Coordinates & Multi-Type Data for Unit 1.1 (Pages 4 and 5)
+  // Listening exercises (4b, 7a, 7c, 7d) omitted strictly per requirements.
   WB.defaultInputs = {
     4: [
-      // Exercise 1: Present Simple, Continuous & Perfect (Lines 2 to 9)
-      { id: "p4_ex1_2", page: 4, exercise: "1", label: "2", top: 63.3, left: 18.0, width: 14.5, height: 2.3, correct: "access or ACCESS" },
-      { id: "p4_ex1_3", page: 4, exercise: "1", label: "3", top: 68.6, left: 9.0, width: 17.0, height: 2.3, correct: "is still changing or 's still changing" },
-      { id: "p4_ex1_4", page: 4, exercise: "1", label: "4", top: 73.1, left: 24.5, width: 16.0, height: 2.3, correct: "check or CHECK" },
-      { id: "p4_ex1_5", page: 4, exercise: "1", label: "5", top: 79.5, left: 9.0, width: 16.5, height: 2.3, correct: "is increasing or 's increasing" },
-      { id: "p4_ex1_6", page: 4, exercise: "1", label: "6", top: 83.9, left: 20.0, width: 16.5, height: 2.3, correct: "have already uploaded or 've already uploaded" },
-      { id: "p4_ex1_7", page: 4, exercise: "1", label: "7", top: 88.3, left: 17.0, width: 16.5, height: 2.3, correct: "is currently growing or 's currently growing" },
-      { id: "p4_ex1_8", page: 4, exercise: "1", label: "8", top: 92.7, left: 17.0, width: 15.5, height: 2.3, correct: "has or HAS" },
-      { id: "p4_ex1_9", page: 4, exercise: "1", label: "9", top: 97.2, left: 9.0, width: 16.5, height: 2.3, correct: "have just checked or 've just checked" },
+      // EXERCISE 1: Grammar · present simple, continuous & perfect (Lines 2 to 9) - TYPE: fill
+      { id: "p4_ex1_2", type: "fill", page: 4, exercise: "1", label: "2", top: 61.2, left: 20.8, width: 22.0, height: 1.9, correct: "access or ACCESS" },
+      { id: "p4_ex1_3", type: "fill", page: 4, exercise: "1", label: "3", top: 65.6, left: 12.0, width: 22.0, height: 1.9, correct: "is still changing or 's still changing" },
+      { id: "p4_ex1_4", type: "fill", page: 4, exercise: "1", label: "4", top: 67.2, left: 28.5, width: 17.0, height: 1.9, correct: "check or CHECK" },
+      { id: "p4_ex1_5", type: "fill", page: 4, exercise: "1", label: "5", top: 74.0, left: 13.5, width: 22.0, height: 1.9, correct: "is increasing or 's increasing" },
+      { id: "p4_ex1_6", type: "fill", page: 4, exercise: "1", label: "6", top: 76.2, left: 24.5, width: 17.0, height: 1.9, correct: "have already uploaded or 've already uploaded" },
+      { id: "p4_ex1_7", type: "fill", page: 4, exercise: "1", label: "7", top: 80.8, left: 19.5, width: 17.0, height: 1.9, correct: "is currently growing or 's currently growing" },
+      { id: "p4_ex1_8", type: "fill", page: 4, exercise: "1", label: "8", top: 85.4, left: 19.5, width: 17.0, height: 1.9, correct: "has or HAS" },
+      { id: "p4_ex1_9", type: "fill", page: 4, exercise: "1", label: "9", top: 91.5, left: 12.0, width: 17.0, height: 1.9, correct: "have just checked or 've just checked" },
 
-      // Exercise 2: Cross out the incorrect word/phrase (Sentences 1 to 6)
-      { id: "p4_ex2_1", page: 4, exercise: "2", label: "2.1", top: 35.6, left: 53.0, width: 38.0, height: 2.3, correct: "yet" },
-      { id: "p4_ex2_2", page: 4, exercise: "2", label: "2.2", top: 39.3, left: 53.0, width: 38.0, height: 2.3, correct: "all the time" },
-      { id: "p4_ex2_3", page: 4, exercise: "2", label: "2.3", top: 42.9, left: 53.0, width: 38.0, height: 2.3, correct: "already" },
-      { id: "p4_ex2_4", page: 4, exercise: "2", label: "2.4", top: 46.5, left: 53.0, width: 38.0, height: 2.3, correct: "at the moment" },
-      { id: "p4_ex2_5", page: 4, exercise: "2", label: "2.5", top: 50.1, left: 53.0, width: 38.0, height: 2.3, correct: "now" },
-      { id: "p4_ex2_6", page: 4, exercise: "2", label: "2.6", top: 53.7, left: 53.0, width: 38.0, height: 2.3, correct: "every time" },
+      // EXERCISE 2: Cross out the incorrect word or phrase (Sentences 2 to 6) - TYPE: cross
+      // Sentence 2: incorrect is "all the time"
+      { id: "p4_ex2_2_a", type: "cross", page: 4, exercise: "2", group: "2.2", text: "this week", top: 31.6, left: 69.5, width: 6.8, height: 1.6, incorrect: false },
+      { id: "p4_ex2_2_b", type: "cross", page: 4, exercise: "2", group: "2.2", text: "at the moment", top: 31.6, left: 78.0, width: 9.8, height: 1.6, incorrect: false },
+      { id: "p4_ex2_2_c", type: "cross", page: 4, exercise: "2", group: "2.2", text: "all the time", top: 33.4, left: 56.4, width: 9.2, height: 1.6, incorrect: true },
 
-      // Exercise 3: Work for LinkedIn (Blanks 1 to 8)
-      { id: "p4_ex3_1", page: 4, exercise: "3", label: "3.1", top: 65.1, left: 54.0, width: 22.0, height: 2.3, correct: "Have you heard or have you heard" },
-      { id: "p4_ex3_2", page: 4, exercise: "3", label: "3.2", top: 73.9, left: 69.0, width: 18.0, height: 2.3, correct: "is increasing or 's increasing" },
-      { id: "p4_ex3_3", page: 4, exercise: "3", label: "3.3", top: 77.5, left: 74.0, width: 14.0, height: 2.3, correct: "has or HAS" },
-      { id: "p4_ex3_4", page: 4, exercise: "3", label: "3.4", top: 81.1, left: 70.0, width: 18.0, height: 2.3, correct: "check or CHECK" },
-      { id: "p4_ex3_5", page: 4, exercise: "3", label: "3.5", top: 84.7, left: 71.0, width: 16.0, height: 2.3, correct: "use or USE" },
-      { id: "p4_ex3_6", page: 4, exercise: "3", label: "3.6", top: 90.4, left: 54.0, width: 22.0, height: 2.3, correct: "has already visited or 's already visited" },
-      { id: "p4_ex3_7", page: 4, exercise: "3", label: "3.7", top: 94.0, left: 63.0, width: 16.0, height: 2.3, correct: "include or INCLUDE" },
-      { id: "p4_ex3_8", page: 4, exercise: "3", label: "3.8", top: 97.1, left: 62.0, width: 20.0, height: 2.3, correct: "are taking place or 're taking place" }
+      // Sentence 3: incorrect is "already"
+      { id: "p4_ex2_3_a", type: "cross", page: 4, exercise: "2", group: "2.3", text: "already", top: 35.4, left: 59.8, width: 5.6, height: 1.6, incorrect: true },
+      { id: "p4_ex2_3_b", type: "cross", page: 4, exercise: "2", group: "2.3", text: "always", top: 35.4, left: 66.2, width: 5.4, height: 1.6, incorrect: false },
+      { id: "p4_ex2_3_c", type: "cross", page: 4, exercise: "2", group: "2.3", text: "usually", top: 35.4, left: 72.8, width: 5.6, height: 1.6, incorrect: false },
+
+      // Sentence 4: incorrect is "at the moment"
+      { id: "p4_ex2_4_a", type: "cross", page: 4, exercise: "2", group: "2.4", text: "for a long time", top: 39.2, left: 51.5, width: 11.2, height: 1.6, incorrect: false },
+      { id: "p4_ex2_4_b", type: "cross", page: 4, exercise: "2", group: "2.4", text: "lately", top: 39.2, left: 64.5, width: 5.0, height: 1.6, incorrect: false },
+      { id: "p4_ex2_4_c", type: "cross", page: 4, exercise: "2", group: "2.4", text: "at the moment", top: 41.0, left: 54.0, width: 6.8, height: 1.6, incorrect: true },
+
+      // Sentence 5: incorrect is "now"
+      { id: "p4_ex2_5_a", type: "cross", page: 4, exercise: "2", group: "2.5", text: "every week", top: 44.8, left: 54.0, width: 5.0, height: 1.6, incorrect: false },
+      { id: "p4_ex2_5_b", type: "cross", page: 4, exercise: "2", group: "2.5", text: "now", top: 44.8, left: 60.5, width: 4.2, height: 1.6, incorrect: true },
+      { id: "p4_ex2_5_c", type: "cross", page: 4, exercise: "2", group: "2.5", text: "all the time", top: 44.8, left: 66.0, width: 9.0, height: 1.6, incorrect: false },
+
+      // Sentence 6: incorrect is "every time"
+      { id: "p4_ex2_6_a", type: "cross", page: 4, exercise: "2", group: "2.6", text: "every time", top: 48.0, left: 54.0, width: 8.4, height: 1.6, incorrect: true },
+      { id: "p4_ex2_6_b", type: "cross", page: 4, exercise: "2", group: "2.6", text: "these days", top: 48.0, left: 63.5, width: 8.4, height: 1.6, incorrect: false },
+      { id: "p4_ex2_6_c", type: "cross", page: 4, exercise: "2", group: "2.6", text: "nowadays", top: 48.0, left: 72.8, width: 8.4, height: 1.6, incorrect: false },
+
+      // EXERCISE 3: Choose correct options (LinkedIn card) - TYPE: choose
+      // 2: is increasing / increases
+      { id: "p4_ex3_2_a", type: "choose", page: 4, exercise: "3", group: "3.2", text: "is increasing", top: 68.6, left: 70.8, width: 9.6, height: 1.6, correct: true },
+      { id: "p4_ex3_2_b", type: "choose", page: 4, exercise: "3", group: "3.2", text: "increases", top: 70.5, left: 54.2, width: 7.2, height: 1.6, correct: false },
+
+      // 3: is having / has
+      { id: "p4_ex3_3_a", type: "choose", page: 4, exercise: "3", group: "3.3", text: "is having", top: 72.3, left: 69.8, width: 7.2, height: 1.6, correct: false },
+      { id: "p4_ex3_3_b", type: "choose", page: 4, exercise: "3", group: "3.3", text: "has", top: 72.3, left: 78.4, width: 3.8, height: 1.6, correct: true },
+
+      // 4: have checked / check
+      { id: "p4_ex3_4_a", type: "choose", page: 4, exercise: "3", group: "3.4", text: "have checked", top: 74.2, left: 76.5, width: 10.8, height: 1.6, correct: false },
+      { id: "p4_ex3_4_b", type: "choose", page: 4, exercise: "3", group: "3.4", text: "check", top: 76.1, left: 54.2, width: 5.0, height: 1.6, correct: true },
+
+      // 5: use / have used
+      { id: "p4_ex3_5_a", type: "choose", page: 4, exercise: "3", group: "3.5", text: "use", top: 78.0, left: 74.2, width: 3.6, height: 1.6, correct: true },
+      { id: "p4_ex3_5_b", type: "choose", page: 4, exercise: "3", group: "3.5", text: "have used", top: 78.0, left: 79.2, width: 8.8, height: 1.6, correct: false },
+
+      // 6: already visited / has already visited
+      { id: "p4_ex3_6_a", type: "choose", page: 4, exercise: "3", group: "3.6", text: "already visited", top: 85.4, left: 54.2, width: 6.8, height: 1.6, correct: false },
+      { id: "p4_ex3_6_b", type: "choose", page: 4, exercise: "3", group: "3.6", text: "has already visited", top: 85.4, left: 63.8, width: 14.8, height: 1.6, correct: true },
+
+      // 7: include / are including
+      { id: "p4_ex3_7_a", type: "choose", page: 4, exercise: "3", group: "3.7", text: "include", top: 87.3, left: 67.2, width: 6.2, height: 1.6, correct: true },
+      { id: "p4_ex3_7_b", type: "choose", page: 4, exercise: "3", group: "3.7", text: "are including", top: 87.3, left: 75.0, width: 10.2, height: 1.6, correct: false },
+
+      // 8: are taking place / have taken place
+      { id: "p4_ex3_8_a", type: "choose", page: 4, exercise: "3", group: "3.8", text: "are taking place", top: 91.0, left: 65.5, width: 13.5, height: 1.6, correct: true },
+      { id: "p4_ex3_8_b", type: "choose", page: 4, exercise: "3", group: "3.8", text: "have taken place", top: 91.0, left: 80.5, width: 14.0, height: 1.6, correct: false }
     ],
     5: [
-      // Exercise 4a: Match questions 1-6 to answers a-f
-      { id: "p5_ex4_1", page: 5, exercise: "4a", label: "4.1", top: 12.9, left: 7.0, width: 5.5, height: 2.3, correct: "c" },
-      { id: "p5_ex4_2", page: 5, exercise: "4a", label: "4.2", top: 15.0, left: 7.0, width: 5.5, height: 2.3, correct: "f" },
-      { id: "p5_ex4_3", page: 5, exercise: "4a", label: "4.3", top: 17.0, left: 7.0, width: 5.5, height: 2.3, correct: "a" },
-      { id: "p5_ex4_4", page: 5, exercise: "4a", label: "4.4", top: 19.1, left: 7.0, width: 5.5, height: 2.3, correct: "d" },
-      { id: "p5_ex4_5", page: 5, exercise: "4a", label: "4.5", top: 21.2, left: 7.0, width: 5.5, height: 2.3, correct: "e" },
-      { id: "p5_ex4_6", page: 5, exercise: "4a", label: "4.6", top: 23.2, left: 7.0, width: 5.5, height: 2.3, correct: "b" },
+      // EXERCISE 4a: Match questions 1-6 to answers a-f - TYPE: match
+      { id: "p5_ex4_1", type: "match", page: 5, exercise: "4a", label: "1", top: 13.5, left: 5.5, width: 2.4, height: 1.5, correct: "c", prompt: "Do you get on well with your neighbours?" },
+      { id: "p5_ex4_2", type: "match", page: 5, exercise: "4a", label: "2", top: 15.3, left: 5.5, width: 2.4, height: 1.5, correct: "f", prompt: "Do you have a lot in common with your partner?" },
+      { id: "p5_ex4_3", type: "match", page: 5, exercise: "4a", label: "3", top: 17.2, left: 5.5, width: 2.4, height: 1.5, correct: "a", prompt: "When was the last time you had an argument with your best friend?" },
+      { id: "p5_ex4_4", type: "match", page: 5, exercise: "4a", label: "4", top: 19.0, left: 5.5, width: 2.4, height: 1.5, correct: "d", prompt: "How often do you meet up with your friends?" },
+      { id: "p5_ex4_5", type: "match", page: 5, exercise: "4a", label: "5", top: 20.8, left: 5.5, width: 2.4, height: 1.5, correct: "e", prompt: "Do you make new friends easily?" },
+      { id: "p5_ex4_6", type: "match", page: 5, exercise: "4a", label: "6", top: 22.7, left: 5.5, width: 2.4, height: 1.5, correct: "b", prompt: "How many old classmates do you keep in touch with?" },
 
-      // Exercise 5: Put word in brackets in the correct place
-      { id: "p5_ex5_1", page: 5, exercise: "5", label: "5.1", top: 43.4, left: 7.0, width: 9.0, height: 2.3, correct: "out" },
-      { id: "p5_ex5_2", page: 5, exercise: "5", label: "5.2", top: 45.5, left: 7.0, width: 9.0, height: 2.3, correct: "out" },
-      { id: "p5_ex5_3", page: 5, exercise: "5", label: "5.3", top: 47.5, left: 7.0, width: 9.0, height: 2.3, correct: "on" },
-      { id: "p5_ex5_4", page: 5, exercise: "5", label: "5.4", top: 49.6, left: 7.0, width: 9.0, height: 2.3, correct: "in" },
-      { id: "p5_ex5_5", page: 5, exercise: "5", label: "5.5", top: 51.7, left: 7.0, width: 9.0, height: 2.3, correct: "with" },
+      // EXERCISE 5: Slash Caret Insertion (Put word in brackets in correct place) - TYPE: insert
+      // Sentence 2: helped me [out /] when
+      { id: "p5_ex5_2", type: "insert", page: 5, exercise: "5", group: "5.2", word: "out", top: 46.5, left: 23.5, width: 2.0, height: 1.6, correct: true },
+      // Sentence 3: get [on /] well
+      { id: "p5_ex5_3", type: "insert", page: 5, exercise: "5", group: "5.3", word: "on", top: 48.6, left: 11.2, width: 2.0, height: 1.6, correct: true },
+      // Sentence 4: getting [in /] touch
+      { id: "p5_ex5_4", type: "insert", page: 5, exercise: "5", group: "5.4", word: "in", top: 50.8, left: 23.5, width: 2.0, height: 1.6, correct: true },
+      // Sentence 5: met up [with /] people
+      { id: "p5_ex5_5", type: "insert", page: 5, exercise: "5", group: "5.5", word: "with", top: 53.0, left: 14.5, width: 2.0, height: 1.6, correct: true },
 
-      // Exercise 6: Complete opinions with have, help, keep, make, trust
-      { id: "p5_ex6_2", page: 5, exercise: "6", label: "6.2", top: 69.7, left: 23.0, width: 14.0, height: 2.3, correct: "help" },
-      { id: "p5_ex6_3", page: 5, exercise: "6", label: "6.3", top: 73.3, left: 13.0, width: 14.0, height: 2.3, correct: "trust" },
-      { id: "p5_ex6_4", page: 5, exercise: "6", label: "6.4", top: 79.0, left: 10.0, width: 14.0, height: 2.3, correct: "have" },
-      { id: "p5_ex6_5", page: 5, exercise: "6", label: "6.5", top: 82.1, left: 39.0, width: 14.0, height: 2.3, correct: "make" },
+      // EXERCISE 6: Complete opinions with have, help, keep, make, trust - TYPE: fill
+      { id: "p5_ex6_2", type: "fill", page: 5, exercise: "6", label: "2", top: 64.6, left: 21.0, width: 10.0, height: 1.9, correct: "help or HELP" },
+      { id: "p5_ex6_3", type: "fill", page: 5, exercise: "6", label: "3", top: 66.8, left: 13.0, width: 10.0, height: 1.9, correct: "trust or TRUST" },
+      { id: "p5_ex6_4", type: "fill", page: 5, exercise: "6", label: "4", top: 73.5, left: 8.0, width: 10.0, height: 1.9, correct: "have or HAVE" },
+      { id: "p5_ex6_5", type: "fill", page: 5, exercise: "6", label: "5", top: 74.5, left: 40.0, width: 10.0, height: 1.9, correct: "make or MAKE" },
 
-      // Exercise 7b: Pronunciation rule (consonant / vowel)
-      { id: "p5_ex7_1", page: 5, exercise: "7b", label: "7.1", top: 57.3, left: 66.0, width: 16.0, height: 2.3, correct: "consonant" },
-      { id: "p5_ex7_2", page: 5, exercise: "7b", label: "7.2", top: 60.4, left: 78.0, width: 14.0, height: 2.3, correct: "vowel" }
+      // EXERCISE 7b: Pronunciation rule (consonant / vowel) - TYPE: choose
+      // Choice 1:
+      { id: "p5_ex7_1_a", type: "choose", page: 5, exercise: "7b", group: "7.1", text: "consonant", top: 57.0, left: 63.8, width: 7.2, height: 1.6, correct: true },
+      { id: "p5_ex7_1_b", type: "choose", page: 5, exercise: "7b", group: "7.1", text: "vowel", top: 57.0, left: 72.0, width: 5.4, height: 1.6, correct: false },
+      // Choice 2:
+      { id: "p5_ex7_2_a", type: "choose", page: 5, exercise: "7b", group: "7.2", text: "consonant", top: 59.0, left: 77.2, width: 7.2, height: 1.6, correct: false },
+      { id: "p5_ex7_2_b", type: "choose", page: 5, exercise: "7b", group: "7.2", text: "vowel", top: 60.8, left: 53.6, width: 5.4, height: 1.6, correct: true }
     ]
   };
 
   // Get active inputs for a page (with custom saved overrides)
   WB.getPageInputs = function(page) {
     try {
-      var saved = localStorage.getItem('ethith_wb_coords_' + page);
+      var saved = localStorage.getItem('ethith_wb_coords_v2_' + page);
       if (saved) return JSON.parse(saved);
     } catch(e) {}
     return WB.defaultInputs[page] || [];
@@ -55617,13 +55883,13 @@ window.NAVIGATE_CURRICULUM = {
 
   WB.savePageInputs = function(page, inputs) {
     try {
-      localStorage.setItem('ethith_wb_coords_' + page, JSON.stringify(inputs));
+      localStorage.setItem('ethith_wb_coords_v2_' + page, JSON.stringify(inputs));
     } catch(e) {}
   };
 
   WB.resetPageInputs = function(page) {
     try {
-      localStorage.removeItem('ethith_wb_coords_' + page);
+      localStorage.removeItem('ethith_wb_coords_v2_' + page);
     } catch(e) {}
   };
 
@@ -55682,7 +55948,7 @@ window.NAVIGATE_CURRICULUM = {
           '</div>' +
           '<h1 style="font-size:26px;font-weight:900;margin:0 0 6px;color:var(--text)">Intermediate (B1+) Darslik Dasturi</h1>' +
           '<p style="font-size:14px;color:var(--muted);margin:0;max-width:650px;line-height:1.5;">' +
-            '12 ta rasmiy Unitlar. Kitob sahifalari ustiga shaffof interaktiv kataklar orqali to‘g‘ridan-to‘g‘ri yeching. <b style="color:#38bdf8;">(Listening mashqlari butunlay chiqarib tashlangan).</b>' +
+            '12 ta rasmiy Unitlar. Haqiqiy kitobdagi kabi turli xil interaktiv mashqlar: <b>o‘qib yozish</b>, <b>chizib o‘chirish</b>, <b>variant tanlash</b>, <b>bog‘lash</b> va <b>prepozitsiya kiritish</b>. <b style="color:#38bdf8;">(Listening mashqlari butunlay chiqarib tashlangan).</b>' +
           '</p>' +
         '</div>' +
         '<div style="display:flex;gap:10px;align-items:center;">' +
@@ -55744,9 +56010,8 @@ window.NAVIGATE_CURRICULUM = {
     h += '</div></div>';
     container.innerHTML = h;
 
-    // Attach click events on lesson rows
     container.querySelectorAll('.eth-wb-lesson-row').forEach(function(row) {
-      row.addEventListener('click', function(e) {
+      row.addEventListener('click', function() {
         var un = this.getAttribute('data-unit');
         var les = this.getAttribute('data-lesson');
         if (les === '1.1') {
@@ -55762,10 +56027,8 @@ window.NAVIGATE_CURRICULUM = {
   // 2. Interactive Digital Workbook Viewer (Unit 1.1)
   function renderLesson1_1(container, activePage) {
     activePage = parseInt(activePage, 10) || 4;
-    var isTeacher = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user && window.EthithApp.state.user.role === 'teacher');
     var isEditor = (window._ethithWbEditorMode === true);
 
-    // Resolve robust image path
     var basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
     var p4Img = basePath + 'workbook_b1_u1_p4.jpg';
     var p5Img = basePath + 'workbook_b1_u1_p5.jpg';
@@ -55782,11 +56045,11 @@ window.NAVIGATE_CURRICULUM = {
           '</button>' +
           '<div>' +
             '<div style="font-size:15px;font-weight:900;color:var(--text);">Unit 1.1: Are you really my friend?</div>' +
-            '<div style="font-size:11.5px;color:var(--muted);">Oxford Navigate B1+ Workbook · Unit 1 Trends (Listening chiqarib tashlangan)</div>' +
+            '<div style="font-size:11.5px;color:var(--muted);">Grammar (Present tenses) · Vocabulary (Friendship) · Pronunciation (Listening chiqarilgan)</div>' +
           '</div>' +
         '</div>' +
 
-        // Controls (Page Tabs & Editor Toggle)
+        // Controls
         '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
           '<div style="display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;">' +
             '<button class="eth-wb-page-tab ' + (activePage === 4 ? 'active' : '') + '" data-page="4" style="border:none;background:' + (activePage === 4 ? '#0284c7' : 'transparent') + ';color:' + (activePage === 4 ? '#fff' : 'var(--text)') + ';padding:6px 14px;border-radius:8px;font-weight:800;font-size:12px;cursor:pointer;">1-sahifa (Grammar)</button>' +
@@ -55805,7 +56068,7 @@ window.NAVIGATE_CURRICULUM = {
     if (isEditor) {
       h += '<div id="ethWbEditorToolbar" style="background:rgba(15,23,42,0.95);border:2px solid #38bdf8;border-radius:14px;padding:12px 18px;margin-bottom:14px;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,0.4);">' +
         '<div style="font-size:13px;font-weight:700;">' +
-          '<span style="color:#38bdf8;">Visual Editor Faol:</span> Rasm ustida sichqoncha bilan to‘rtburchak tortib yangi katakcha chizing yoki mavjud kataklar ustiga bosib tahrirlang/o‘chiring.' +
+          '<span style="color:#38bdf8;">Visual Editor Faol:</span> Katakchalar ustiga bosib tahrirlang yoki rasm ustida to‘rtburchak tortib yangisini chizing.' +
         '</div>' +
         '<div style="display:flex;gap:8px;">' +
           '<button id="ethWbExportBtn" style="background:#0284c7;color:#fff;border:none;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">📋 JSON Nusxa Olish</button>' +
@@ -55815,26 +56078,33 @@ window.NAVIGATE_CURRICULUM = {
       '</div>';
     }
 
+    // Interactive Instruction Badge
+    h += '<div style="margin-bottom:14px;background:rgba(14,165,233,0.1);border:1px solid rgba(56,189,248,0.3);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--text);flex-wrap:wrap;">' +
+      '<span style="font-weight:800;color:#0284c7;">🎯 Mashq usullari:</span>' +
+      '<span>✍️ <b>Yozish:</b> bo‘sh chiziqqa bosing</span>' +
+      '<span>✂️ <b>O‘chirish:</b> noto‘g‘ri so‘z ustiga bosing</span>' +
+      '<span>🔘 <b>Tanlash:</b> to‘g‘ri variant ustiga bosing</span>' +
+      '<span>🔗 <b>Bog‘lash:</b> harf katagiga bosing</span>' +
+      '<span>📍 <b>Joylashtirish:</b> so‘zlar orasiga bosing</span>' +
+    '</div>';
+
     // Pages Display Container
     h += '<div id="ethWbPagesWrap" style="display:flex;flex-direction:column;gap:24px;align-items:center;">';
 
-    // Page 4 Container
     if (activePage === 4 || activePage === 0) {
       h += renderSinglePageBlock(4, p4Img, p4Inputs, isEditor);
     }
-
-    // Page 5 Container
     if (activePage === 5 || activePage === 0) {
       h += renderSinglePageBlock(5, p5Img, p5Inputs, isEditor);
     }
 
     h += '</div>';
 
-    // Bottom Sticky Action Bar (Check Answers, Reset, Score)
+    // Bottom Sticky Action Bar
     h += '<div style="position:sticky;bottom:16px;z-index:90;margin-top:20px;background:rgba(15,23,42,0.92);backdrop-filter:blur(12px);border:1px solid rgba(56,189,248,0.4);border-radius:18px;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 14px 40px rgba(0,0,0,0.5);color:#fff;">' +
       '<div style="display:flex;align-items:center;gap:14px;">' +
         '<div id="ethWbScoreDisplay" style="font-size:14px;font-weight:800;display:inline-flex;align-items:center;gap:6px;">' +
-          '<span>Javoblar: <b id="ethWbAnsweredCount" style="color:#38bdf8;">0</b> / <span id="ethWbTotalCount">0</span></span>' +
+          '<span>Bajarildi: <b id="ethWbAnsweredCount" style="color:#38bdf8;">0</b> / <span id="ethWbTotalCount">0</span></span>' +
         '</div>' +
         '<div id="ethWbResultPill" style="display:none;font-size:13px;font-weight:800;padding:4px 12px;border-radius:20px;background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(52,211,153,0.4);"></div>' +
       '</div>' +
@@ -55849,18 +56119,27 @@ window.NAVIGATE_CURRICULUM = {
       '</div>' +
     '</div>';
 
-    // Interactive Edit/Add Modal Container
+    // Interactive Edit Modal for Teachers
     h += '<div id="ethWbInputModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px);">' +
       '<div style="background:var(--card);border:2px solid #38bdf8;border-radius:18px;padding:22px;max-width:440px;width:90%;color:var(--text);box-shadow:0 20px 50px rgba(0,0,0,0.5);">' +
         '<h3 id="ethWbModalTitle" style="font-size:17px;font-weight:900;margin:0 0 14px;color:#0284c7;">Katakcha Sozlamalari</h3>' +
         '<div style="margin-bottom:12px;">' +
-          '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">Mashq Belgisi / Raqami:</label>' +
+          '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">Turi (type):</label>' +
+          '<select id="ethWbModalType" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;">' +
+            '<option value="fill">Fill (O‘qib yozish)</option>' +
+            '<option value="cross">Cross (Chizib o‘chirish)</option>' +
+            '<option value="choose">Choose (Variant tanlash)</option>' +
+            '<option value="match">Match (Harf bilan bog‘lash)</option>' +
+            '<option value="insert">Insert (Prepozitsiya kiritish)</option>' +
+          '</select>' +
+        '</div>' +
+        '<div style="margin-bottom:12px;">' +
+          '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">Guruh / Belgisi:</label>' +
           '<input type="text" id="ethWbModalLabel" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;" placeholder="masalan: 2 yoki 3.1" />' +
         '</div>' +
         '<div style="margin-bottom:14px;">' +
-          '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">To‘g‘ri Javob(lar) ("or" bilan ajrating):</label>' +
+          '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">To‘g‘ri Javob ("or" bilan ajrating):</label>' +
           '<input type="text" id="ethWbModalCorrect" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;" placeholder="masalan: access yoki time or TIME" />' +
-          '<small style="font-size:11px;color:var(--muted);display:block;margin-top:4px;">Bir nechta variant bo‘lsa, " or " bilan yozing (masalan: has or HAS or \'s).</small>' +
         '</div>' +
         '<div style="display:flex;justify-content:space-between;gap:8px;">' +
           '<button id="ethWbModalDeleteBtn" style="background:#ef4444;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">O‘chirish</button>' +
@@ -55875,33 +56154,81 @@ window.NAVIGATE_CURRICULUM = {
     h += '</div>';
     container.innerHTML = h;
 
-    // Attach Interactivity & Event Handlers
     attachViewerHandlers(container, activePage, isEditor);
   }
 
-  // Render a single page with its overlay inputs
+  // Render a single page with multi-type interactive elements
   function renderSinglePageBlock(pageNum, imgSrc, inputs, isEditor) {
     var h = '<div class="eth-wb-page-box" data-page="' + pageNum + '" style="position:relative;width:100%;max-width:920px;margin:0 auto;box-shadow:0 10px 40px rgba(0,0,0,0.2);border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);">' +
-      // Book Image
       '<img src="' + imgSrc + '" class="eth-wb-img" data-page="' + pageNum + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:' + (isEditor ? 'none' : 'auto') + ';" alt="Oxford Navigate B1+ Page ' + pageNum + '" />' +
-
-      // Overlays Container
       '<div class="eth-wb-overlay-layer" data-page="' + pageNum + '" style="position:absolute;inset:0;width:100%;height:100%;' + (isEditor ? 'cursor:crosshair;' : '') + '">';
 
     inputs.forEach(function(item) {
-      h += '<div class="eth-wb-input-wrap" data-id="' + item.id + '" data-page="' + pageNum + '" style="position:absolute;top:' + item.top + '%;left:' + item.left + '%;width:' + item.width + '%;height:' + item.height + '%;z-index:' + (isEditor ? '50' : '10') + ';">' +
-        '<input type="text" ' +
-          'class="eth-wb-input" ' +
+      var itemType = item.type || 'fill';
+      var zIndex = isEditor ? '50' : '10';
+
+      h += '<div class="eth-wb-item-wrap" data-id="' + item.id + '" data-page="' + pageNum + '" data-type="' + itemType + '" data-group="' + (item.group || '') + '" ' +
+        'style="position:absolute;top:' + item.top + '%;left:' + item.left + '%;width:' + item.width + '%;height:' + item.height + '%;z-index:' + zIndex + ';">';
+
+      if (itemType === 'fill') {
+        h += '<input type="text" ' +
+          'class="eth-wb-input wb-fill-input" ' +
           'data-id="' + item.id + '" ' +
           'data-page="' + pageNum + '" ' +
+          'data-type="fill" ' +
           'data-correct="' + (item.correct || '').replace(/"/g, '&quot;') + '" ' +
           (isEditor ? 'disabled ' : '') +
-          'style="width:100%;height:100%;box-sizing:border-box;background:transparent;border:1.5px dashed ' + (isEditor ? '#0284c7' : 'rgba(56,189,248,0.55)') + ';border-radius:4px;font-family:inherit;font-size:13.5px;font-weight:700;color:#0f172a;padding:1px 6px;outline:none;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
+          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
           'placeholder="' + (item.label ? item.label : '...') + '" autocomplete="off" spellcheck="false" />' +
-        '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
+          '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
+      } else if (itemType === 'cross') {
+        h += '<div class="wb-cross-chip" ' +
+          'data-id="' + item.id + '" ' +
+          'data-page="' + pageNum + '" ' +
+          'data-type="cross" ' +
+          'data-group="' + (item.group || '') + '" ' +
+          'data-incorrect="' + (item.incorrect === true ? 'true' : 'false') + '" ' +
+          'data-text="' + (item.text || '').replace(/"/g, '&quot;') + '" ' +
+          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
+          'title="O‘chirish uchun bosing: ' + (item.text || '') + '"></div>' +
+          '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
+      } else if (itemType === 'choose') {
+        h += '<div class="wb-choose-chip" ' +
+          'data-id="' + item.id + '" ' +
+          'data-page="' + pageNum + '" ' +
+          'data-type="choose" ' +
+          'data-group="' + (item.group || '') + '" ' +
+          'data-correct="' + (item.correct === true ? 'true' : 'false') + '" ' +
+          'data-text="' + (item.text || '').replace(/"/g, '&quot;') + '" ' +
+          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
+          'title="Tanlash uchun bosing: ' + (item.text || '') + '"></div>' +
+          '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
+      } else if (itemType === 'match') {
+        h += '<div class="wb-match-slot" ' +
+          'data-id="' + item.id + '" ' +
+          'data-page="' + pageNum + '" ' +
+          'data-type="match" ' +
+          'data-correct="' + (item.correct || '') + '" ' +
+          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
+          'title="Javob harfini tanlang (a-f)">?</div>' +
+          '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
+      } else if (itemType === 'insert') {
+        h += '<div class="wb-insert-slot" ' +
+          'data-id="' + item.id + '" ' +
+          'data-page="' + pageNum + '" ' +
+          'data-type="insert" ' +
+          'data-group="' + (item.group || '') + '" ' +
+          'data-word="' + (item.word || '') + '" ' +
+          'data-correct="' + (item.correct === true ? 'true' : 'false') + '" ' +
+          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
+          'title="So‘zni shu yerga joylashtirish">' +
+            '<span class="wb-insert-text">' + (item.word || '') + '</span>' +
+          '</div>' +
+          '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
+      }
 
       if (isEditor) {
-        h += '<div class="eth-wb-edit-handle" data-id="' + item.id + '" style="position:absolute;inset:0;background:rgba(2,132,199,0.18);border:1.5px solid #0284c7;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0284c7;font-size:11px;font-weight:900;">' +
+        h += '<div class="eth-wb-edit-handle" data-id="' + item.id + '" style="position:absolute;inset:0;background:rgba(2,132,199,0.2);border:1.5px solid #0284c7;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0284c7;font-size:10px;font-weight:900;">' +
           (item.label || item.id) +
         '</div>';
       }
@@ -55909,7 +56236,6 @@ window.NAVIGATE_CURRICULUM = {
       h += '</div>';
     });
 
-    // Editor Drawing Box
     if (isEditor) {
       h += '<div class="eth-wb-drag-box" style="display:none;position:absolute;border:2px dashed #ef4444;background:rgba(239,68,68,0.2);pointer-events:none;z-index:100;"></div>';
     }
@@ -55918,9 +56244,8 @@ window.NAVIGATE_CURRICULUM = {
     return h;
   }
 
-  // Event Handlers for Page Switching, Answering, Checking, and Visual Editor
+  // Attach All Multi-Type Event Handlers
   function attachViewerHandlers(container, activePage, isEditor) {
-    // Back Button
     var backBtn = container.querySelector('#ethWbBackBtn');
     if (backBtn) {
       backBtn.addEventListener('click', function() {
@@ -55928,7 +56253,6 @@ window.NAVIGATE_CURRICULUM = {
       });
     }
 
-    // Page Tab Buttons
     container.querySelectorAll('.eth-wb-page-tab').forEach(function(tab) {
       tab.addEventListener('click', function() {
         var p = parseInt(this.getAttribute('data-page'), 10);
@@ -55936,7 +56260,6 @@ window.NAVIGATE_CURRICULUM = {
       });
     });
 
-    // Toggle Visual Editor
     var toggleBtn = container.querySelector('#ethWbToggleEditor');
     if (toggleBtn) {
       toggleBtn.addEventListener('click', function() {
@@ -55945,14 +56268,48 @@ window.NAVIGATE_CURRICULUM = {
       });
     }
 
-    // Update Answered Count
+    // Dynamic Counter for Answered Questions
     function updateCount() {
-      var inputs = container.querySelectorAll('.eth-wb-input');
-      var total = inputs.length;
+      // Distinct questions:
+      // Fill inputs: 12
+      // Cross groups: 5
+      // Choose groups: 9
+      // Match slots: 6
+      // Insert slots: 4
+      var total = 36;
       var filled = 0;
-      inputs.forEach(function(inp) {
+
+      // 1. Fill inputs with text
+      container.querySelectorAll('.wb-fill-input').forEach(function(inp) {
         if (inp.value && inp.value.trim().length > 0) filled++;
       });
+
+      // 2. Cross groups with at least one crossed
+      var crossGroups = {};
+      container.querySelectorAll('.wb-cross-chip.crossed').forEach(function(chip) {
+        var grp = chip.getAttribute('data-group');
+        if (grp) crossGroups[grp] = true;
+      });
+      filled += Object.keys(crossGroups).length;
+
+      // 3. Choose groups with a selected chip
+      var chooseGroups = {};
+      container.querySelectorAll('.wb-choose-chip.selected').forEach(function(chip) {
+        var grp = chip.getAttribute('data-group');
+        if (grp) chooseGroups[grp] = true;
+      });
+      filled += Object.keys(chooseGroups).length;
+
+      // 4. Match slots with an answered letter
+      container.querySelectorAll('.wb-match-slot').forEach(function(slot) {
+        if (slot.textContent && slot.textContent !== '?') filled++;
+      });
+
+      // 5. Insert slots with inserted active
+      container.querySelectorAll('.wb-insert-slot.inserted').forEach(function() {
+        filled++;
+      });
+
       var aEl = container.querySelector('#ethWbAnsweredCount');
       var tEl = container.querySelector('#ethWbTotalCount');
       if (aEl) aEl.textContent = filled;
@@ -55960,65 +56317,151 @@ window.NAVIGATE_CURRICULUM = {
     }
     updateCount();
 
-    container.querySelectorAll('.eth-wb-input').forEach(function(inp) {
+    // 1. Fill Inputs Interaction
+    container.querySelectorAll('.wb-fill-input').forEach(function(inp) {
       inp.addEventListener('input', function() {
         this.classList.remove('correct', 'incorrect');
-        this.style.borderColor = '';
-        this.style.background = '';
-        var wrap = this.closest('.eth-wb-input-wrap');
+        var wrap = this.closest('.eth-wb-item-wrap');
         if (wrap) {
           var hint = wrap.querySelector('.eth-wb-hint-badge');
           if (hint) hint.style.display = 'none';
         }
         updateCount();
       });
+    });
 
-      // Typing Focus Styling
-      inp.addEventListener('focus', function() {
-        this.style.background = 'rgba(15, 23, 42, 0.92)';
-        this.style.color = '#38bdf8';
-        this.style.borderColor = '#38bdf8';
-      });
-      inp.addEventListener('blur', function() {
-        if (!this.classList.contains('correct') && !this.classList.contains('incorrect')) {
-          this.style.background = 'transparent';
-          this.style.color = '#0f172a';
-          this.style.borderColor = 'rgba(56,189,248,0.55)';
+    // 2. Cross-out Chips Interaction (Click to strike through)
+    container.querySelectorAll('.wb-cross-chip').forEach(function(chip) {
+      chip.addEventListener('click', function(e) {
+        if (isEditor) return;
+        e.stopPropagation();
+        this.classList.toggle('crossed');
+        this.classList.remove('correct', 'incorrect', 'should-cross');
+        var wrap = this.closest('.eth-wb-item-wrap');
+        if (wrap) {
+          var hint = wrap.querySelector('.eth-wb-hint-badge');
+          if (hint) hint.style.display = 'none';
         }
+        updateCount();
       });
     });
 
-    // Check Answers Button
+    // 3. Choose Chips Interaction (Click to select option in pair)
+    container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
+      chip.addEventListener('click', function(e) {
+        if (isEditor) return;
+        e.stopPropagation();
+        var grp = this.getAttribute('data-group');
+        var wasSelected = this.classList.contains('selected');
+
+        // Deselect sibling chips in same group
+        if (grp) {
+          container.querySelectorAll('.wb-choose-chip[data-group="' + grp + '"]').forEach(function(c) {
+            c.classList.remove('selected', 'correct', 'incorrect', 'should-choose');
+            var wrap = c.closest('.eth-wb-item-wrap');
+            if (wrap) {
+              var hint = wrap.querySelector('.eth-wb-hint-badge');
+              if (hint) hint.style.display = 'none';
+            }
+          });
+        }
+
+        if (!wasSelected) {
+          this.classList.add('selected');
+        }
+        updateCount();
+      });
+    });
+
+    // 4. Match Slot Interaction (Click to open letter picker)
+    var activePopover = null;
+    function closePopover() {
+      if (activePopover && activePopover.parentNode) {
+        activePopover.parentNode.removeChild(activePopover);
+      }
+      activePopover = null;
+    }
+    document.addEventListener('click', closePopover);
+
+    container.querySelectorAll('.wb-match-slot').forEach(function(slot) {
+      slot.addEventListener('click', function(e) {
+        if (isEditor) return;
+        e.stopPropagation();
+        closePopover();
+
+        var pop = document.createElement('div');
+        pop.className = 'wb-letter-popover';
+        var letters = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+        letters.forEach(function(l) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'wb-letter-btn';
+          btn.textContent = l;
+          btn.addEventListener('click', function(ev) {
+            ev.stopPropagation();
+            slot.textContent = l;
+            slot.classList.remove('correct', 'incorrect');
+            closePopover();
+            updateCount();
+          });
+          pop.appendChild(btn);
+        });
+
+        // Clear option
+        var clr = document.createElement('button');
+        clr.type = 'button';
+        clr.className = 'wb-letter-btn';
+        clr.textContent = '✕';
+        clr.style.color = '#ef4444';
+        clr.addEventListener('click', function(ev) {
+          ev.stopPropagation();
+          slot.textContent = '?';
+          slot.classList.remove('correct', 'incorrect');
+          closePopover();
+          updateCount();
+        });
+        pop.appendChild(clr);
+
+        slot.parentNode.appendChild(pop);
+        activePopover = pop;
+      });
+    });
+
+    // 5. Insert Slot Interaction (Click to place slash and insert bracketed word)
+    container.querySelectorAll('.wb-insert-slot').forEach(function(slot) {
+      slot.addEventListener('click', function(e) {
+        if (isEditor) return;
+        e.stopPropagation();
+        this.classList.toggle('inserted');
+        this.classList.remove('correct', 'incorrect');
+        updateCount();
+      });
+    });
+
+    // Check Answers Button Logic
     var checkBtn = container.querySelector('#ethWbCheckBtn');
     if (checkBtn) {
       checkBtn.addEventListener('click', function() {
-        var inputs = container.querySelectorAll('.eth-wb-input');
         var correctCount = 0;
-        var total = inputs.length;
+        var totalQuestions = 36;
 
-        inputs.forEach(function(inp) {
+        // 1. Check Fill Inputs (12 items)
+        container.querySelectorAll('.wb-fill-input').forEach(function(inp) {
           var userVal = inp.value || '';
           var correctRaw = inp.getAttribute('data-correct') || '';
           var isCorrect = WB.checkAnswer(userVal, correctRaw);
-          var wrap = inp.closest('.eth-wb-input-wrap');
+          var wrap = inp.closest('.eth-wb-item-wrap');
           var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
 
           if (isCorrect) {
             correctCount++;
             inp.classList.add('correct');
             inp.classList.remove('incorrect');
-            inp.style.borderColor = '#10b981';
-            inp.style.background = 'rgba(16, 185, 129, 0.22)';
-            inp.style.color = '#047857';
             if (hint) hint.style.display = 'none';
           } else {
             inp.classList.add('incorrect');
             inp.classList.remove('correct');
-            inp.style.borderColor = '#ef4444';
-            inp.style.background = 'rgba(239, 68, 68, 0.22)';
-            inp.style.color = '#b91c1c';
-
-            // Show correct answer hint
             if (hint) {
               var displayAns = correctRaw.split(/\s+or\s+/i)[0] || correctRaw;
               hint.textContent = '✓ ' + displayAns;
@@ -56027,12 +56470,110 @@ window.NAVIGATE_CURRICULUM = {
           }
         });
 
+        // 2. Check Cross-out Groups (5 groups: 2.2, 2.3, 2.4, 2.5, 2.6)
+        ['2.2', '2.3', '2.4', '2.5', '2.6'].forEach(function(grp) {
+          var chips = container.querySelectorAll('.wb-cross-chip[data-group="' + grp + '"]');
+          var correctChip = null;
+          var userWrongCrossed = false;
+          var userCrossedTarget = false;
+
+          chips.forEach(function(c) {
+            var isTarget = (c.getAttribute('data-incorrect') === 'true');
+            var isCrossed = c.classList.contains('crossed');
+            if (isTarget) correctChip = c;
+            if (isCrossed && isTarget) userCrossedTarget = true;
+            if (isCrossed && !isTarget) userWrongCrossed = true;
+          });
+
+          if (userCrossedTarget && !userWrongCrossed) {
+            correctCount++;
+            if (correctChip) {
+              correctChip.classList.add('correct');
+              correctChip.classList.remove('should-cross');
+            }
+          } else {
+            chips.forEach(function(c) {
+              if (c.classList.contains('crossed') && c.getAttribute('data-incorrect') !== 'true') {
+                c.classList.add('incorrect');
+              }
+            });
+            if (correctChip) {
+              correctChip.classList.add('should-cross');
+            }
+          }
+        });
+
+        // 3. Check Choose Groups (9 groups: 3.2 to 3.8 and 7.1, 7.2)
+        ['3.2', '3.3', '3.4', '3.5', '3.6', '3.7', '3.8', '7.1', '7.2'].forEach(function(grp) {
+          var chips = container.querySelectorAll('.wb-choose-chip[data-group="' + grp + '"]');
+          var selectedChip = null;
+          var correctChip = null;
+
+          chips.forEach(function(c) {
+            if (c.classList.contains('selected')) selectedChip = c;
+            if (c.getAttribute('data-correct') === 'true') correctChip = c;
+          });
+
+          if (selectedChip && selectedChip.getAttribute('data-correct') === 'true') {
+            correctCount++;
+            selectedChip.classList.add('correct');
+            selectedChip.classList.remove('incorrect');
+          } else {
+            if (selectedChip) {
+              selectedChip.classList.add('incorrect');
+              selectedChip.classList.remove('correct');
+            }
+            if (correctChip) {
+              correctChip.classList.add('should-choose');
+            }
+          }
+        });
+
+        // 4. Check Match Slots (6 slots: p5_ex4_1 to p5_ex4_6)
+        container.querySelectorAll('.wb-match-slot').forEach(function(slot) {
+          var userLetter = (slot.textContent || '').trim().toLowerCase();
+          var correctLetter = (slot.getAttribute('data-correct') || '').trim().toLowerCase();
+          var wrap = slot.closest('.eth-wb-item-wrap');
+          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
+
+          if (userLetter === correctLetter && userLetter !== '?') {
+            correctCount++;
+            slot.classList.add('correct');
+            slot.classList.remove('incorrect');
+            if (hint) hint.style.display = 'none';
+          } else {
+            slot.classList.add('incorrect');
+            slot.classList.remove('correct');
+            if (hint) {
+              hint.textContent = '✓ ' + correctLetter.toUpperCase();
+              hint.style.display = 'block';
+            }
+          }
+        });
+
+        // 5. Check Insert Slots (4 slots: 5.2, 5.3, 5.4, 5.5)
+        container.querySelectorAll('.wb-insert-slot').forEach(function(slot) {
+          var isInserted = slot.classList.contains('inserted');
+          var isCorrect = (slot.getAttribute('data-correct') === 'true');
+
+          if (isInserted && isCorrect) {
+            correctCount++;
+            slot.classList.add('correct');
+            slot.classList.remove('incorrect');
+          } else if (isInserted && !isCorrect) {
+            slot.classList.add('incorrect');
+            slot.classList.remove('correct');
+          } else {
+            slot.classList.add('incorrect');
+          }
+        });
+
         // Show Score Pill
-        var pct = Math.round((correctCount / (total || 1)) * 100);
+        var pct = Math.round((correctCount / totalQuestions) * 100);
         var pill = container.querySelector('#ethWbResultPill');
         if (pill) {
           pill.style.display = 'inline-block';
-          pill.innerHTML = 'Natija: <b>' + correctCount + ' / ' + total + ' (' + pct + '%)</b>';
+          pill.innerHTML = 'Natija: <b>' + correctCount + ' / ' + totalQuestions + ' (' + pct + '%)</b>';
           if (pct >= 80) {
             pill.style.background = 'rgba(16,185,129,0.2)';
             pill.style.color = '#34d399';
@@ -56044,7 +56585,7 @@ window.NAVIGATE_CURRICULUM = {
           }
         }
 
-        // Award ETHITH Coins on good performance
+        // Award Coins
         if (pct >= 70 && window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) {
           var coinsToAdd = Math.round(correctCount * 3);
           window.EthithApp.state.user.coins = (window.EthithApp.state.user.coins || 0) + coinsToAdd;
@@ -56058,47 +56599,64 @@ window.NAVIGATE_CURRICULUM = {
     var resetBtn = container.querySelector('#ethWbResetBtn');
     if (resetBtn) {
       resetBtn.addEventListener('click', function() {
-        container.querySelectorAll('.eth-wb-input').forEach(function(inp) {
+        // Clear fill inputs
+        container.querySelectorAll('.wb-fill-input').forEach(function(inp) {
           inp.value = '';
           inp.classList.remove('correct', 'incorrect');
-          inp.style.background = 'transparent';
-          inp.style.color = '#0f172a';
-          inp.style.borderColor = 'rgba(56,189,248,0.55)';
-          var wrap = inp.closest('.eth-wb-input-wrap');
-          if (wrap) {
-            var hint = wrap.querySelector('.eth-wb-hint-badge');
-            if (hint) hint.style.display = 'none';
-          }
         });
+        // Clear cross chips
+        container.querySelectorAll('.wb-cross-chip').forEach(function(chip) {
+          chip.classList.remove('crossed', 'correct', 'incorrect', 'should-cross');
+        });
+        // Clear choose chips
+        container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
+          chip.classList.remove('selected', 'correct', 'incorrect', 'should-choose');
+        });
+        // Clear match slots
+        container.querySelectorAll('.wb-match-slot').forEach(function(slot) {
+          slot.textContent = '?';
+          slot.classList.remove('correct', 'incorrect');
+        });
+        // Clear insert slots
+        container.querySelectorAll('.wb-insert-slot').forEach(function(slot) {
+          slot.classList.remove('inserted', 'correct', 'incorrect');
+        });
+        // Clear hints
+        container.querySelectorAll('.eth-wb-hint-badge').forEach(function(badge) {
+          badge.style.display = 'none';
+        });
+
         var pill = container.querySelector('#ethWbResultPill');
         if (pill) pill.style.display = 'none';
         updateCount();
       });
     }
 
-    // Visual Editor Functionality (Click to edit, Drag to create new box)
+    // Visual Editor Setup for Teachers
     if (isEditor) {
       setupVisualEditor(container, activePage);
     }
   }
 
-  // Setup Visual Editor Dragging & Editing
+  // Teacher Visual Editor Dragging & Editing Setup
   function setupVisualEditor(container, activePage) {
     var modal = container.querySelector('#ethWbInputModal');
     var modalTitle = container.querySelector('#ethWbModalTitle');
+    var modalType = container.querySelector('#ethWbModalType');
     var modalLabel = container.querySelector('#ethWbModalLabel');
     var modalCorrect = container.querySelector('#ethWbModalCorrect');
     var modalSave = container.querySelector('#ethWbModalSaveBtn');
     var modalCancel = container.querySelector('#ethWbModalCancelBtn');
     var modalDelete = container.querySelector('#ethWbModalDeleteBtn');
 
-    var currentTarget = null; // { isNew: bool, page: num, data: {...} }
+    var currentTarget = null;
 
     function openModal(isNew, pageNum, item) {
       currentTarget = { isNew: isNew, page: pageNum, item: item };
       modalTitle.textContent = isNew ? 'Yangi Katakcha Qo‘shish' : 'Katakchani Tahrirlash (' + item.id + ')';
-      modalLabel.value = item.label || '';
-      modalCorrect.value = item.correct || '';
+      modalType.value = item.type || 'fill';
+      modalLabel.value = item.label || item.group || '';
+      modalCorrect.value = item.correct || (item.incorrect ? 'incorrect' : '');
       modalDelete.style.display = isNew ? 'none' : 'block';
       modal.style.display = 'flex';
     }
@@ -56110,7 +56668,6 @@ window.NAVIGATE_CURRICULUM = {
 
     if (modalCancel) modalCancel.addEventListener('click', closeModal);
 
-    // Save Modal
     if (modalSave) {
       modalSave.addEventListener('click', function() {
         if (!currentTarget) return;
@@ -56120,12 +56677,14 @@ window.NAVIGATE_CURRICULUM = {
         if (currentTarget.isNew) {
           var newItem = currentTarget.item;
           newItem.id = 'p' + page + '_custom_' + Date.now().toString().slice(-5);
+          newItem.type = modalType.value;
           newItem.label = modalLabel.value.trim() || 'New';
           newItem.correct = modalCorrect.value.trim() || '';
           inputs.push(newItem);
         } else {
           var exist = inputs.find(function(x) { return x.id === currentTarget.item.id; });
           if (exist) {
+            exist.type = modalType.value;
             exist.label = modalLabel.value.trim();
             exist.correct = modalCorrect.value.trim();
           }
@@ -56137,7 +56696,6 @@ window.NAVIGATE_CURRICULUM = {
       });
     }
 
-    // Delete Modal
     if (modalDelete) {
       modalDelete.addEventListener('click', function() {
         if (!currentTarget || currentTarget.isNew) return;
@@ -56149,12 +56707,11 @@ window.NAVIGATE_CURRICULUM = {
       });
     }
 
-    // Existing handles click to edit
     container.querySelectorAll('.eth-wb-edit-handle').forEach(function(handle) {
       handle.addEventListener('click', function(e) {
         e.stopPropagation();
         var id = this.getAttribute('data-id');
-        var wrap = this.closest('.eth-wb-input-wrap');
+        var wrap = this.closest('.eth-wb-item-wrap');
         var page = parseInt(wrap.getAttribute('data-page'), 10);
         var inputs = WB.getPageInputs(page);
         var item = inputs.find(function(x) { return x.id === id; });
@@ -56162,7 +56719,6 @@ window.NAVIGATE_CURRICULUM = {
       });
     });
 
-    // Drag-to-Draw New Box on Page
     container.querySelectorAll('.eth-wb-overlay-layer').forEach(function(layer) {
       var page = parseInt(layer.getAttribute('data-page'), 10);
       var dragBox = layer.querySelector('.eth-wb-drag-box');
@@ -56171,7 +56727,7 @@ window.NAVIGATE_CURRICULUM = {
       var rect = null;
 
       layer.addEventListener('mousedown', function(e) {
-        if (e.target.classList.contains('eth-wb-edit-handle')) return;
+        if (e.target.classList.contains('eth-wb-edit-handle') || e.target.classList.contains('wb-letter-btn')) return;
         isDrawing = true;
         rect = layer.getBoundingClientRect();
         startX = e.clientX - rect.left;
@@ -56211,7 +56767,6 @@ window.NAVIGATE_CURRICULUM = {
         var wPx = Math.abs(endX - startX);
         var hPx = Math.abs(endY - startY);
 
-        // Only register if box is at least 15px by 10px
         if (wPx > 15 && hPx > 10) {
           var topPct = parseFloat(((Math.min(startY, endY) / rect.height) * 100).toFixed(1));
           var leftPct = parseFloat(((Math.min(startX, endX) / rect.width) * 100).toFixed(1));
@@ -56220,6 +56775,7 @@ window.NAVIGATE_CURRICULUM = {
 
           var newItem = {
             page: page,
+            type: 'fill',
             top: topPct,
             left: leftPct,
             width: widthPct,
@@ -56233,7 +56789,6 @@ window.NAVIGATE_CURRICULUM = {
       });
     });
 
-    // Toolbar Buttons (Export, Save, Reset)
     var exportBtn = container.querySelector('#ethWbExportBtn');
     if (exportBtn) {
       exportBtn.addEventListener('click', function() {
@@ -56243,7 +56798,7 @@ window.NAVIGATE_CURRICULUM = {
         };
         var jsonStr = JSON.stringify(all, null, 2);
         navigator.clipboard.writeText(jsonStr).then(function() {
-          alert('Unit 1.1 koordinatalari buferga (clipboard) nusxa olindi!');
+          alert('Unit 1.1 koordinatalari buferga nusxa olindi!');
         }).catch(function() {
           prompt('Koordinatalar JSON kodi:', jsonStr);
         });
