@@ -1020,7 +1020,7 @@
           return;
         }
 
-        var teacherName = 'Ustoz Muhammadyusuf';
+        var teacherName = 'Ustoz';
         var cleanTcEmail = 'ADMIN_12038F1aq8syash@ethith.uz';
         S.user = {
           id: 'admin_official_teacher',

@@ -9,7 +9,17 @@ const fs = require('fs');
 const path = require('path');
 const net = require('net');
 
-const BOT_TOKEN = process.env.BOT_TOKEN || (['8857210620', 'AAHeVQqMLgaHSKbEiAPg6m34o6VvRcQ7gzE'].join(':'));
+function loadToken() {
+  if (process.env.BOT_TOKEN) return process.env.BOT_TOKEN.trim();
+  const secretFile = path.join(__dirname, 'bot_token.secret');
+  if (fs.existsSync(secretFile)) return fs.readFileSync(secretFile, 'utf8').trim();
+  return '';
+}
+
+const BOT_TOKEN = loadToken();
+if (!BOT_TOKEN) {
+  console.warn('⚠️ Diqqat: Telegram BOT_TOKEN topilmadi! Tokenni bot_token.secret fayliga joylang yoki BOT_TOKEN env o\'zgaruvchisiga bering.');
+}
 const MINI_APP_URL = 'https://joraboymuhammad-code.github.io/english-hub-ethith/';
 const CODES_FILE = path.join(__dirname, 'verification_codes.json');
 const HTTP_PORT = process.env.PORT || 3850;

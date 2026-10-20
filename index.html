@@ -237,6 +237,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -40483,7 +40484,7 @@ window.NAVIGATE_CURRICULUM = {
           return;
         }
 
-        var teacherName = 'Ustoz Muhammadyusuf';
+        var teacherName = 'Ustoz';
         var cleanTcEmail = 'ADMIN_12038F1aq8syash@ethith.uz';
         S.user = {
           id: 'admin_official_teacher',
@@ -55741,6 +55742,12 @@ window.NAVIGATE_CURRICULUM = {
 
   var WB = window.ETHITH_WORKBOOK_B1 = window.ETHITH_WORKBOOK_B1 || {};
 
+  // Check if current user is Teacher/Admin
+  function isTeacherRole() {
+    var u = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || (window.S && window.S.user);
+    return !!(u && (u.role === 'teacher' || u.role === 'admin'));
+  }
+
   // 12 Authentic Units from Oxford Navigate Intermediate B1+
   WB.units = [
     {
@@ -55750,23 +55757,150 @@ window.NAVIGATE_CURRICULUM = {
       available: true,
       lessons: [
         { code: "1.1", title: "1.1 Are you really my friend?", desc: "Grammar (Present tenses), Vocabulary (Friendship) & Pronunciation", pages: [4, 5], active: true },
-        { code: "1.2", title: "1.2 Why spending's #trending", desc: "Grammar (State verbs), Vocabulary (Spending)", pages: [6, 7], active: false },
-        { code: "1.3", title: "1.3 Vocabulary development", desc: "Noun suffixes (-ment, -tion, -ity, -ship)", pages: [8], active: false },
-        { code: "1.4", title: "1.4 Speaking and writing", desc: "Asking for and giving opinions, writing social media", pages: [9], active: false },
-        { code: "1.5", title: "1.5 Review", desc: "Unit 1 Grammar and vocabulary review test", pages: [10], active: false }
+        { code: "1.2", title: "1.2 Why spending's #trending", desc: "Grammar (State verbs), Vocabulary (Spending)", pages: [6, 7], active: true },
+        { code: "1.3", title: "1.3 Vocabulary development", desc: "Noun suffixes (-ment, -tion, -ity, -ship)", pages: [8], active: true },
+        { code: "1.4", title: "1.4 Speaking and writing", desc: "Asking for and giving opinions, writing social media", pages: [9], active: true },
+        { code: "1.5", title: "1.5 Review", desc: "Unit 1 Grammar and vocabulary review test", pages: [10], active: true }
       ]
     },
-    { unit: 2, title: "Unit 2: What a story!", subtitle: "Narrative forms & sequencing events · Vocabulary: Describing past experiences", available: false, lessonsCount: 5 },
-    { unit: 3, title: "Unit 3: Style and status", subtitle: "Modals of obligation · Vocabulary: Clothes and fashion", available: false, lessonsCount: 5 },
-    { unit: 4, title: "Unit 4: Going the distance", subtitle: "Future forms · Vocabulary: Travel & Transport", available: false, lessonsCount: 5 },
-    { unit: 5, title: "Unit 5: Rights and responsibilities", subtitle: "Permission and obligation · Vocabulary: Law and order", available: false, lessonsCount: 5 },
-    { unit: 6, title: "Unit 6: Living in the past", subtitle: "Habits in the past · Vocabulary: History and memories", available: false, lessonsCount: 5 },
-    { unit: 7, title: "Unit 7: Ambitions", subtitle: "used to and would, question forms · Vocabulary: Working conditions", available: false, lessonsCount: 5 },
-    { unit: 8, title: "Unit 8: Choices", subtitle: "Real and unreal conditionals · Vocabulary: Happiness factors", available: false, lessonsCount: 5 },
-    { unit: 9, title: "Unit 9: Appearances", subtitle: "Comparison and deduction · Vocabulary: Physical appearance", available: false, lessonsCount: 5 },
-    { unit: 10, title: "Unit 10: Compete and cooperate", subtitle: "Passives & articles · Vocabulary: Business & competitive sport", available: false, lessonsCount: 5 },
-    { unit: 11, title: "Unit 11: Consequences", subtitle: "Unreal past conditionals · Vocabulary: Crime and behavior", available: false, lessonsCount: 5 },
-    { unit: 12, title: "Unit 12: Influence", subtitle: "Reported speech & questions · Vocabulary: Advertising and persuasion", available: false, lessonsCount: 5 }
+    {
+      unit: 2,
+      title: "Unit 2: What a story!",
+      subtitle: "Narrative forms & sequencing events · Vocabulary: Describing past experiences",
+      available: true,
+      lessons: [
+        { code: "2.1", title: "2.1 A good read", desc: "Grammar (Narrative forms), Vocabulary (Past experiences)", pages: [10, 11], active: true },
+        { code: "2.2", title: "2.2 In the news", desc: "Grammar (Sequencing events), Vocabulary (Communication)", pages: [12, 13], active: true },
+        { code: "2.3", title: "2.3 Vocabulary development", desc: "Comment adverbs", pages: [14], active: true },
+        { code: "2.4", title: "2.4 Speaking and writing", desc: "Showing interest, writing a narrative", pages: [15], active: true },
+        { code: "2.5", title: "2.5 Review & Reading", desc: "Review: Units 1 and 2, Reading for pleasure (Kidnapped)", pages: [16, 17], active: true }
+      ]
+    },
+    {
+      unit: 3,
+      title: "Unit 3: Life skills",
+      subtitle: "Ability, obligation, permission & possibility · Vocabulary: Challenges and success",
+      available: true,
+      lessons: [
+        { code: "3.1", title: "3.1 The balance of life", desc: "Grammar (Ability), Vocabulary (Challenges and success)", pages: [18, 19], active: true },
+        { code: "3.2", title: "3.2 Survival skills", desc: "Grammar (Obligation, permission and possibility), Vocabulary (Work skills)", pages: [20, 21], active: true },
+        { code: "3.3", title: "3.3 Vocabulary development", desc: "Compound adjectives", pages: [22], active: true },
+        { code: "3.4", title: "3.4 Speaking and writing", desc: "Practical instructions, writing an opinion paragraph", pages: [23], active: true }
+      ]
+    },
+    {
+      unit: 4,
+      title: "Unit 4: Space",
+      subtitle: "will/be going to for predictions & probability · Vocabulary: Living on water",
+      available: true,
+      lessons: [
+        { code: "4.1", title: "4.1 Living on water", desc: "Grammar (will/be going to for predictions), Vocabulary (Living on water)", pages: [24, 25], active: true },
+        { code: "4.2", title: "4.2 Into the wilderness", desc: "Grammar (Probability), Vocabulary (The natural world)", pages: [26, 27], active: true },
+        { code: "4.3", title: "4.3 Vocabulary development", desc: "Idiomatic phrases about places", pages: [28], active: true },
+        { code: "4.4", title: "4.4 Speaking and writing", desc: "Enquiries, avoiding repetition", pages: [29, 30], active: true },
+        { code: "4.5", title: "4.5 Review: Units 3 & 4", desc: "Grammar and vocabulary review", pages: [31], active: true }
+      ]
+    },
+    {
+      unit: 5,
+      title: "Unit 5: Entertainment",
+      subtitle: "-ing form and infinitive with to, present perfect simple vs past simple",
+      available: true,
+      lessons: [
+        { code: "5.1", title: "5.1 Going to the movies", desc: "Grammar (-ing form and infinitive with to), Vocabulary (Going to the movies)", pages: [32, 33], active: true },
+        { code: "5.2", title: "5.2 Video games", desc: "Grammar (Present perfect simple and past simple), Vocabulary (Video games)", pages: [34, 35], active: true },
+        { code: "5.3", title: "5.3 Vocabulary development", desc: "Extreme adjectives", pages: [36], active: true },
+        { code: "5.4", title: "5.4 Speaking and writing", desc: "Comparing and recommending, film review", pages: [37], active: true }
+      ]
+    },
+    {
+      unit: 6,
+      title: "Unit 6: In control?",
+      subtitle: "Relative clauses, present perfect simple & continuous · Vocabulary: Machines",
+      available: true,
+      lessons: [
+        { code: "6.1", title: "6.1 Man and machine", desc: "Grammar (Relative clauses), Vocabulary (Machines)", pages: [38, 39], active: true },
+        { code: "6.2", title: "6.2 Climate control", desc: "Grammar (Present perfect simple and continuous), Vocabulary (Climate)", pages: [40, 41], active: true },
+        { code: "6.3", title: "6.3 Vocabulary development", desc: "Adjective suffixes", pages: [42], active: true },
+        { code: "6.4", title: "6.4 Speaking and writing", desc: "Changing arrangements, professional email", pages: [43, 44], active: true },
+        { code: "6.5", title: "6.5 Review: Units 5 & 6", desc: "Grammar and vocabulary review", pages: [45], active: true }
+      ]
+    },
+    {
+      unit: 7,
+      title: "Unit 7: Ambitions",
+      subtitle: "used to and would, question forms · Vocabulary: Working conditions",
+      available: true,
+      lessons: [
+        { code: "7.1", title: "7.1 Working conditions", desc: "Grammar (used to and would), Vocabulary (Working conditions)", pages: [46, 47], active: true },
+        { code: "7.2", title: "7.2 High achievers", desc: "Grammar (Question forms), Vocabulary (High achievers)", pages: [48, 49], active: true },
+        { code: "7.3", title: "7.3 Vocabulary development", desc: "Collocations", pages: [50], active: true },
+        { code: "7.4", title: "7.4 Speaking and writing", desc: "Clarification, application letter or email", pages: [51], active: true }
+      ]
+    },
+    {
+      unit: 8,
+      title: "Unit 8: Choices",
+      subtitle: "Real and unreal conditionals · Vocabulary: Happiness factors & personality",
+      available: true,
+      lessons: [
+        { code: "8.1", title: "8.1 Happy choices", desc: "Grammar (Real conditionals), Vocabulary (Happiness factors)", pages: [52, 53], active: true },
+        { code: "8.2", title: "8.2 Personality and behaviour", desc: "Grammar (Unreal conditionals), Vocabulary (Personality and behaviour)", pages: [54, 55], active: true },
+        { code: "8.3", title: "8.3 Vocabulary development", desc: "Prefixes", pages: [56], active: true },
+        { code: "8.4", title: "8.4 Speaking and writing", desc: "Giving a talk, taking notes", pages: [57, 58], active: true },
+        { code: "8.5", title: "8.5 Review: Units 7 & 8", desc: "Grammar and vocabulary review", pages: [59], active: true }
+      ]
+    },
+    {
+      unit: 9,
+      title: "Unit 9: Appearances",
+      subtitle: "Comparison, deduction & speculation · Vocabulary: Physical appearance",
+      available: true,
+      lessons: [
+        { code: "9.1", title: "9.1 Physical appearance", desc: "Grammar (Comparison), Vocabulary (Physical appearance)", pages: [60, 61], active: true },
+        { code: "9.2", title: "9.2 Paintings", desc: "Grammar (Deduction and speculation), Vocabulary (Paintings)", pages: [62, 63], active: true },
+        { code: "9.3", title: "9.3 Vocabulary development", desc: "Phrasal verbs", pages: [64], active: true },
+        { code: "9.4", title: "9.4 Speaking and writing", desc: "Making complaints, online discussions", pages: [65], active: true }
+      ]
+    },
+    {
+      unit: 10,
+      title: "Unit 10: Compete and cooperate",
+      subtitle: "Passives, articles · Vocabulary: Business & competitive sport",
+      available: true,
+      lessons: [
+        { code: "10.1", title: "10.1 Business", desc: "Grammar (Passives), Vocabulary (Business)", pages: [66, 67], active: true },
+        { code: "10.2", title: "10.2 Competitive sport", desc: "Grammar (Using articles: a/an, the, -), Vocabulary (Competitive sport)", pages: [68, 69], active: true },
+        { code: "10.3", title: "10.3 Vocabulary development", desc: "Phrases with take and have", pages: [70], active: true },
+        { code: "10.4", title: "10.4 Speaking and writing", desc: "Making recommendations, changes and differences", pages: [71, 72], active: true },
+        { code: "10.5", title: "10.5 Review: Units 9 & 10", desc: "Grammar and vocabulary review", pages: [73], active: true }
+      ]
+    },
+    {
+      unit: 11,
+      title: "Unit 11: Consequences",
+      subtitle: "Unreal past conditionals, should/shouldn't have · Vocabulary: Crime",
+      available: true,
+      lessons: [
+        { code: "11.1", title: "11.1 Crime", desc: "Grammar (Unreal past conditional), Vocabulary (Crime)", pages: [74, 75], active: true },
+        { code: "11.2", title: "11.2 Social media behaviour", desc: "Grammar (should/shouldn't have), Vocabulary (Behaviour on social media)", pages: [76, 77], active: true },
+        { code: "11.3", title: "11.3 Vocabulary development", desc: "Words with multiple meanings", pages: [78], active: true },
+        { code: "11.4", title: "11.4 Speaking and writing", desc: "Decisions, apologizing", pages: [79], active: true }
+      ]
+    },
+    {
+      unit: 12,
+      title: "Unit 12: Influence",
+      subtitle: "Reported speech & questions · Vocabulary: Advertising and persuasion",
+      available: true,
+      lessons: [
+        { code: "12.1", title: "12.1 Advertising", desc: "Grammar (Reported speech), Vocabulary (Advertising)", pages: [80, 81], active: true },
+        { code: "12.2", title: "12.2 Persuading people", desc: "Grammar (Reported questions), Vocabulary (Persuading people)", pages: [82, 83], active: true },
+        { code: "12.3", title: "12.3 Vocabulary development", desc: "Dependent prepositions", pages: [84], active: true },
+        { code: "12.4", title: "12.4 Speaking and writing", desc: "Agreeing and disagreeing, advantages and disadvantages essay", pages: [85, 86], active: true },
+        { code: "12.5", title: "12.5 Review: Units 11 & 12", desc: "Grammar and vocabulary review", pages: [87], active: true }
+      ]
+    }
   ];
 
   // 100% Calibrated Coordinates & Multi-Type Data for Unit 1.1 (Pages 4 and 5)
@@ -55784,57 +55918,45 @@ window.NAVIGATE_CURRICULUM = {
       { id: "p4_ex1_9", type: "fill", page: 4, exercise: "1", label: "9", top: 91.5, left: 12.0, width: 17.0, height: 1.9, correct: "have just checked or 've just checked" },
 
       // EXERCISE 2: Cross out the incorrect word or phrase (Sentences 2 to 6) - TYPE: cross
-      // Sentence 2: incorrect is "all the time"
       { id: "p4_ex2_2_a", type: "cross", page: 4, exercise: "2", group: "2.2", text: "this week", top: 31.6, left: 69.5, width: 6.8, height: 1.6, incorrect: false },
       { id: "p4_ex2_2_b", type: "cross", page: 4, exercise: "2", group: "2.2", text: "at the moment", top: 31.6, left: 78.0, width: 9.8, height: 1.6, incorrect: false },
       { id: "p4_ex2_2_c", type: "cross", page: 4, exercise: "2", group: "2.2", text: "all the time", top: 33.4, left: 56.4, width: 9.2, height: 1.6, incorrect: true },
 
-      // Sentence 3: incorrect is "already"
       { id: "p4_ex2_3_a", type: "cross", page: 4, exercise: "2", group: "2.3", text: "already", top: 35.4, left: 59.8, width: 5.6, height: 1.6, incorrect: true },
       { id: "p4_ex2_3_b", type: "cross", page: 4, exercise: "2", group: "2.3", text: "always", top: 35.4, left: 66.2, width: 5.4, height: 1.6, incorrect: false },
       { id: "p4_ex2_3_c", type: "cross", page: 4, exercise: "2", group: "2.3", text: "usually", top: 35.4, left: 72.8, width: 5.6, height: 1.6, incorrect: false },
 
-      // Sentence 4: incorrect is "at the moment"
       { id: "p4_ex2_4_a", type: "cross", page: 4, exercise: "2", group: "2.4", text: "for a long time", top: 39.2, left: 51.5, width: 11.2, height: 1.6, incorrect: false },
       { id: "p4_ex2_4_b", type: "cross", page: 4, exercise: "2", group: "2.4", text: "lately", top: 39.2, left: 64.5, width: 5.0, height: 1.6, incorrect: false },
       { id: "p4_ex2_4_c", type: "cross", page: 4, exercise: "2", group: "2.4", text: "at the moment", top: 41.0, left: 54.0, width: 6.8, height: 1.6, incorrect: true },
 
-      // Sentence 5: incorrect is "now"
       { id: "p4_ex2_5_a", type: "cross", page: 4, exercise: "2", group: "2.5", text: "every week", top: 44.8, left: 54.0, width: 5.0, height: 1.6, incorrect: false },
       { id: "p4_ex2_5_b", type: "cross", page: 4, exercise: "2", group: "2.5", text: "now", top: 44.8, left: 60.5, width: 4.2, height: 1.6, incorrect: true },
       { id: "p4_ex2_5_c", type: "cross", page: 4, exercise: "2", group: "2.5", text: "all the time", top: 44.8, left: 66.0, width: 9.0, height: 1.6, incorrect: false },
 
-      // Sentence 6: incorrect is "every time"
       { id: "p4_ex2_6_a", type: "cross", page: 4, exercise: "2", group: "2.6", text: "every time", top: 48.0, left: 54.0, width: 8.4, height: 1.6, incorrect: true },
       { id: "p4_ex2_6_b", type: "cross", page: 4, exercise: "2", group: "2.6", text: "these days", top: 48.0, left: 63.5, width: 8.4, height: 1.6, incorrect: false },
       { id: "p4_ex2_6_c", type: "cross", page: 4, exercise: "2", group: "2.6", text: "nowadays", top: 48.0, left: 72.8, width: 8.4, height: 1.6, incorrect: false },
 
       // EXERCISE 3: Choose correct options (LinkedIn card) - TYPE: choose
-      // 2: is increasing / increases
       { id: "p4_ex3_2_a", type: "choose", page: 4, exercise: "3", group: "3.2", text: "is increasing", top: 68.6, left: 70.8, width: 9.6, height: 1.6, correct: true },
       { id: "p4_ex3_2_b", type: "choose", page: 4, exercise: "3", group: "3.2", text: "increases", top: 70.5, left: 54.2, width: 7.2, height: 1.6, correct: false },
 
-      // 3: is having / has
       { id: "p4_ex3_3_a", type: "choose", page: 4, exercise: "3", group: "3.3", text: "is having", top: 72.3, left: 69.8, width: 7.2, height: 1.6, correct: false },
       { id: "p4_ex3_3_b", type: "choose", page: 4, exercise: "3", group: "3.3", text: "has", top: 72.3, left: 78.4, width: 3.8, height: 1.6, correct: true },
 
-      // 4: have checked / check
       { id: "p4_ex3_4_a", type: "choose", page: 4, exercise: "3", group: "3.4", text: "have checked", top: 74.2, left: 76.5, width: 10.8, height: 1.6, correct: false },
       { id: "p4_ex3_4_b", type: "choose", page: 4, exercise: "3", group: "3.4", text: "check", top: 76.1, left: 54.2, width: 5.0, height: 1.6, correct: true },
 
-      // 5: use / have used
       { id: "p4_ex3_5_a", type: "choose", page: 4, exercise: "3", group: "3.5", text: "use", top: 78.0, left: 74.2, width: 3.6, height: 1.6, correct: true },
       { id: "p4_ex3_5_b", type: "choose", page: 4, exercise: "3", group: "3.5", text: "have used", top: 78.0, left: 79.2, width: 8.8, height: 1.6, correct: false },
 
-      // 6: already visited / has already visited
       { id: "p4_ex3_6_a", type: "choose", page: 4, exercise: "3", group: "3.6", text: "already visited", top: 85.4, left: 54.2, width: 6.8, height: 1.6, correct: false },
       { id: "p4_ex3_6_b", type: "choose", page: 4, exercise: "3", group: "3.6", text: "has already visited", top: 85.4, left: 63.8, width: 14.8, height: 1.6, correct: true },
 
-      // 7: include / are including
       { id: "p4_ex3_7_a", type: "choose", page: 4, exercise: "3", group: "3.7", text: "include", top: 87.3, left: 67.2, width: 6.2, height: 1.6, correct: true },
       { id: "p4_ex3_7_b", type: "choose", page: 4, exercise: "3", group: "3.7", text: "are including", top: 87.3, left: 75.0, width: 10.2, height: 1.6, correct: false },
 
-      // 8: are taking place / have taken place
       { id: "p4_ex3_8_a", type: "choose", page: 4, exercise: "3", group: "3.8", text: "are taking place", top: 91.0, left: 65.5, width: 13.5, height: 1.6, correct: true },
       { id: "p4_ex3_8_b", type: "choose", page: 4, exercise: "3", group: "3.8", text: "have taken place", top: 91.0, left: 80.5, width: 14.0, height: 1.6, correct: false }
     ],
@@ -55848,13 +55970,9 @@ window.NAVIGATE_CURRICULUM = {
       { id: "p5_ex4_6", type: "match", page: 5, exercise: "4a", label: "6", top: 22.7, left: 5.5, width: 2.4, height: 1.5, correct: "b", prompt: "How many old classmates do you keep in touch with?" },
 
       // EXERCISE 5: Slash Caret Insertion (Put word in brackets in correct place) - TYPE: insert
-      // Sentence 2: helped me [out /] when
       { id: "p5_ex5_2", type: "insert", page: 5, exercise: "5", group: "5.2", word: "out", top: 46.5, left: 23.5, width: 2.0, height: 1.6, correct: true },
-      // Sentence 3: get [on /] well
       { id: "p5_ex5_3", type: "insert", page: 5, exercise: "5", group: "5.3", word: "on", top: 48.6, left: 11.2, width: 2.0, height: 1.6, correct: true },
-      // Sentence 4: getting [in /] touch
       { id: "p5_ex5_4", type: "insert", page: 5, exercise: "5", group: "5.4", word: "in", top: 50.8, left: 23.5, width: 2.0, height: 1.6, correct: true },
-      // Sentence 5: met up [with /] people
       { id: "p5_ex5_5", type: "insert", page: 5, exercise: "5", group: "5.5", word: "with", top: 53.0, left: 14.5, width: 2.0, height: 1.6, correct: true },
 
       // EXERCISE 6: Complete opinions with have, help, keep, make, trust - TYPE: fill
@@ -55864,10 +55982,8 @@ window.NAVIGATE_CURRICULUM = {
       { id: "p5_ex6_5", type: "fill", page: 5, exercise: "6", label: "5", top: 74.5, left: 40.0, width: 10.0, height: 1.9, correct: "make or MAKE" },
 
       // EXERCISE 7b: Pronunciation rule (consonant / vowel) - TYPE: choose
-      // Choice 1:
       { id: "p5_ex7_1_a", type: "choose", page: 5, exercise: "7b", group: "7.1", text: "consonant", top: 57.0, left: 63.8, width: 7.2, height: 1.6, correct: true },
       { id: "p5_ex7_1_b", type: "choose", page: 5, exercise: "7b", group: "7.1", text: "vowel", top: 57.0, left: 72.0, width: 5.4, height: 1.6, correct: false },
-      // Choice 2:
       { id: "p5_ex7_2_a", type: "choose", page: 5, exercise: "7b", group: "7.2", text: "consonant", top: 59.0, left: 77.2, width: 7.2, height: 1.6, correct: false },
       { id: "p5_ex7_2_b", type: "choose", page: 5, exercise: "7b", group: "7.2", text: "vowel", top: 60.8, left: 53.6, width: 5.4, height: 1.6, correct: true }
     ]
@@ -55894,6 +56010,15 @@ window.NAVIGATE_CURRICULUM = {
     } catch(e) {}
   };
 
+  // Resolve authentic page image URL
+  WB.getPageImage = function(pageNum) {
+    var basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+    if (pageNum === 4) return basePath + 'workbook_b1_u1_p4.jpg';
+    if (pageNum === 5) return basePath + 'workbook_b1_u1_p5.jpg';
+    var pageFileNum = String(pageNum + 1).padStart(3, '0');
+    return basePath + 'workbook_pages/page_' + pageFileNum + '.jpg';
+  };
+
   // Check an individual input against correct options
   WB.checkAnswer = function(userVal, correctRaw) {
     var userClean = (userVal || '').trim().toLowerCase();
@@ -55916,14 +56041,13 @@ window.NAVIGATE_CURRICULUM = {
   WB.openLesson = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
-    pageNum = parseInt(pageNum, 10) || 4;
     var apView = document.getElementById('apView');
     if (window.go) {
       window.go('intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum });
     } else if (window.ethithOpenApp) {
       window.ethithOpenApp('intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum });
     } else if (apView) {
-      renderLesson1_1(apView, pageNum);
+      WB.renderLesson(apView, unitNum, lessonCode);
     }
   };
 
@@ -55932,11 +56056,10 @@ window.NAVIGATE_CURRICULUM = {
   window.EthithViews.renderIntermediateView = function(container, arg) {
     if (!arg || !arg.unit) {
       renderUnitsCatalog(container);
-    } else if (arg.unit === 1 && (arg.lesson === '1.1' || !arg.lesson)) {
-      var pageNum = (arg && arg.page !== undefined) ? parseInt(arg.page, 10) : 4;
-      renderLesson1_1(container, pageNum);
     } else {
-      renderUnitsCatalog(container);
+      var unitNum = parseInt(arg.unit, 10) || 1;
+      var lessonCode = arg.lesson || (unitNum + '.1');
+      WB.renderLesson(container, unitNum, lessonCode);
     }
   };
 
@@ -55949,8 +56072,8 @@ window.NAVIGATE_CURRICULUM = {
             '📘 Oxford Navigate B1+ Workbook' +
           '</div>' +
           '<h1 style="font-size:26px;font-weight:900;margin:0 0 6px;color:var(--text)">Intermediate (B1+) Darslik Dasturi</h1>' +
-          '<p style="font-size:14px;color:var(--muted);margin:0;max-width:650px;line-height:1.5;">' +
-            '12 ta rasmiy Unitlar. Haqiqiy kitobdagi kabi turli xil interaktiv mashqlar: <b>o‘qib yozish</b>, <b>chizib o‘chirish</b>, <b>variant tanlash</b>, <b>bog‘lash</b> va <b>prepozitsiya kiritish</b>. <b style="color:#38bdf8;">(Listening mashqlari butunlay chiqarib tashlangan).</b>' +
+          '<p style="font-size:14px;color:var(--muted);margin:0;max-width:680px;line-height:1.5;">' +
+            'Barcha 12 ta rasmiy Unitlar va mashqlar kitobi. PDF usulidagi uzluksiz sahifalar, turli interaktiv topshiriqlar (o‘qib yozish, chizib o‘chirish, variant tanlash, bog‘lash, joylashtirish). <b style="color:#38bdf8;">(Listening mashqlari butunlay chiqarilgan).</b>' +
           '</p>' +
         '</div>' +
         '<div style="display:flex;gap:10px;align-items:center;">' +
@@ -55959,8 +56082,8 @@ window.NAVIGATE_CURRICULUM = {
             '<div style="font-size:11px;font-weight:700;color:var(--muted);">Jami Unitlar</div>' +
           '</div>' +
           '<div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 18px;text-align:center;">' +
-            '<div style="font-size:20px;font-weight:900;color:#10b981;">1.1</div>' +
-            '<div style="font-size:11px;font-weight:700;color:var(--muted);">Faol Mavzu</div>' +
+            '<div style="font-size:20px;font-weight:900;color:#10b981;">113</div>' +
+            '<div style="font-size:11px;font-weight:700;color:var(--muted);">Kitob Sahifalari</div>' +
           '</div>' +
         '</div>' +
       '</div>';
@@ -55975,26 +56098,26 @@ window.NAVIGATE_CURRICULUM = {
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
             '<span style="font-size:12px;font-weight:800;color:' + (isAvail ? '#0284c7' : 'var(--muted)') + ';text-transform:uppercase;letter-spacing:0.04em;">UNIT ' + u.unit + '</span>' +
             '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;background:' + (isAvail ? 'rgba(16,185,129,0.15)' : 'var(--soft)') + ';color:' + (isAvail ? '#10b981' : 'var(--muted)') + ';">' +
-              (isAvail ? '● Ochiq (Tayyor)' : '🔒 Tez kunda') +
+              (isAvail ? '● Ochiq (Tayyor)' : '🔒 Tayyorlanmoqda') +
             '</span>' +
           '</div>' +
           '<h3 style="font-size:18px;font-weight:800;margin:0 0 6px;color:var(--text);">' + u.title + '</h3>' +
           '<p style="font-size:13px;color:var(--muted);margin:0 0 16px;line-height:1.4;">' + u.subtitle + '</p>';
 
-      if (isAvail && u.lessons) {
+      if (u.lessons && u.lessons.length > 0) {
         h += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">';
         u.lessons.forEach(function(les) {
           h += '<div class="eth-wb-lesson-row" data-unit="' + u.unit + '" data-lesson="' + les.code + '" ' +
-            (les.active ? 'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\', 4);"' : '') +
-            ' style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:' + (les.active ? 'rgba(14,165,233,0.12)' : 'var(--soft)') + ';border:1.5px solid ' + (les.active ? '#38bdf8' : 'transparent') + ';cursor:' + (les.active ? 'pointer' : 'default') + ';transition:all 0.2s;">' +
+            'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\');" ' +
+            'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:' + (les.code === '1.1' ? 'rgba(14,165,233,0.12)' : 'var(--soft)') + ';border:1.5px solid ' + (les.code === '1.1' ? '#38bdf8' : 'var(--line)') + ';cursor:pointer;transition:all 0.2s;">' +
             '<div style="min-width:0;flex:1;">' +
-              '<div style="font-size:13.5px;font-weight:800;color:' + (les.active ? '#0284c7' : 'var(--text)') + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+              '<div style="font-size:13.5px;font-weight:800;color:' + (les.code === '1.1' ? '#0284c7' : 'var(--text)') + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
               '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
             '</div>' +
             '<button type="button" ' +
-              (les.active ? 'onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\', 4);"' : '') +
-              ' style="flex:none;background:' + (les.active ? 'linear-gradient(135deg, #0284c7, #154b89)' : 'var(--line)') + ';color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:' + (les.active ? '0 4px 14px rgba(2,132,199,0.45)' : 'none') + ';">' +
-              (les.active ? 'Boshlash ➔' : 'Tez kunda') +
+              'onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\');" ' +
+              'style="flex:none;background:' + (les.code === '1.1' ? 'linear-gradient(135deg, #0284c7, #154b89)' : 'var(--card)') + ';color:' + (les.code === '1.1' ? '#fff' : 'var(--text)') + ';border:1px solid ' + (les.code === '1.1' ? 'transparent' : 'var(--line)') + ';border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:' + (les.code === '1.1' ? '0 4px 14px rgba(2,132,199,0.45)' : 'none') + ';">' +
+              'Boshlash ➔' +
             '</button>' +
           '</div>';
         });
@@ -56004,44 +56127,34 @@ window.NAVIGATE_CURRICULUM = {
       h += '</div>' +
         '<div style="border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);">' +
           '<span>Navigate B1+ Workbook</span>' +
-          '<span>' + (isAvail ? '2 Sahifa' : '5 Dars') + '</span>' +
+          '<span>' + (u.lessons ? u.lessons.length + ' ta dars' : '5 Dars') + '</span>' +
         '</div>' +
       '</div>';
     });
 
     h += '</div></div>';
     container.innerHTML = h;
-
-    container.querySelectorAll('.eth-wb-lesson-row').forEach(function(row) {
-      row.addEventListener('click', function() {
-        var un = this.getAttribute('data-unit');
-        var les = this.getAttribute('data-lesson');
-        if (les === '1.1') {
-          WB.openLesson(un, les, 4);
-        }
-      });
-    });
   }
 
   WB.renderUnitsCatalog = renderUnitsCatalog;
-  WB.renderLesson1_1 = renderLesson1_1;
 
-  // 2. Interactive Digital Workbook Viewer (Unit 1.1)
-  function renderLesson1_1(container, activePage) {
-    if (activePage === undefined || activePage === null) {
-      activePage = 4;
-    } else {
-      activePage = parseInt(activePage, 10);
-      if (isNaN(activePage)) activePage = 4;
+  // 2. Interactive Digital Workbook Viewer (Continuous Vertical Scroll PDF-Style)
+  function renderLesson(container, unitNum, lessonCode) {
+    unitNum = parseInt(unitNum, 10) || 1;
+    lessonCode = lessonCode || (unitNum + '.1');
+
+    var unitData = WB.units.find(function(u) { return u.unit === unitNum; }) || WB.units[0];
+    var lessonData = null;
+    if (unitData && unitData.lessons) {
+      lessonData = unitData.lessons.find(function(l) { return l.code === lessonCode; });
     }
-    var isEditor = (window._ethithWbEditorMode === true);
+    if (!lessonData) {
+      lessonData = { code: lessonCode, title: "Unit " + lessonCode, desc: "Interactive Workbook Pages", pages: [4, 5] };
+    }
 
-    var basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-    var p4Img = basePath + 'workbook_b1_u1_p4.jpg';
-    var p5Img = basePath + 'workbook_b1_u1_p5.jpg';
-
-    var p4Inputs = WB.getPageInputs(4);
-    var p5Inputs = WB.getPageInputs(5);
+    var pages = lessonData.pages || [4, 5];
+    var isTeacher = isTeacherRole();
+    var isEditor = isTeacher && (window._ethithWbEditorMode === true);
 
     var h = '<div class="eth-wb-viewer" style="max-width:1050px;margin:0 auto;padding:12px 16px 80px;">' +
       // Header & Navigation Strip
@@ -56051,64 +56164,74 @@ window.NAVIGATE_CURRICULUM = {
             '← Barcha Unitlar' +
           '</button>' +
           '<div>' +
-            '<div style="font-size:15px;font-weight:900;color:var(--text);">Unit 1.1: Are you really my friend?</div>' +
-            '<div style="font-size:11.5px;color:var(--muted);">Grammar (Present tenses) · Vocabulary (Friendship) · Pronunciation (Listening chiqarilgan)</div>' +
+            '<div style="font-size:15px;font-weight:900;color:var(--text);">' + lessonData.title + '</div>' +
+            '<div style="font-size:11.5px;color:var(--muted);">' + lessonData.desc + ' · Uzluksiz PDF ko‘rinishi (Ikkala sahifa birga)</div>' +
           '</div>' +
         '</div>' +
 
         // Controls
         '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
-          '<div style="display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;">' +
-            '<button class="eth-wb-page-tab ' + (activePage === 4 ? 'active' : '') + '" data-page="4" style="border:none;background:' + (activePage === 4 ? '#0284c7' : 'transparent') + ';color:' + (activePage === 4 ? '#fff' : 'var(--text)') + ';padding:6px 14px;border-radius:8px;font-weight:800;font-size:12px;cursor:pointer;">1-sahifa (Grammar)</button>' +
-            '<button class="eth-wb-page-tab ' + (activePage === 5 ? 'active' : '') + '" data-page="5" style="border:none;background:' + (activePage === 5 ? '#0284c7' : 'transparent') + ';color:' + (activePage === 5 ? '#fff' : 'var(--text)') + ';padding:6px 14px;border-radius:8px;font-weight:800;font-size:12px;cursor:pointer;">2-sahifa (Vocabulary)</button>' +
-            '<button class="eth-wb-page-tab ' + (activePage === 0 ? 'active' : '') + '" data-page="0" style="border:none;background:' + (activePage === 0 ? '#0284c7' : 'transparent') + ';color:' + (activePage === 0 ? '#fff' : 'var(--text)') + ';padding:6px 14px;border-radius:8px;font-weight:800;font-size:12px;cursor:pointer;">Ikkala sahifa</button>' +
-          '</div>' +
+          // Jump pills for quick scroll
+          '<div style="display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px;">';
 
-          // Visual Editor Mode Toggle
-          '<button id="ethWbToggleEditor" style="background:' + (isEditor ? '#ef4444' : '#10b981') + ';color:#fff;border:none;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
-            (isEditor ? '✖ Tahrirlashni Yopish' : '✏️ Visual Editor (Ustoz)') +
-          '</button>' +
-        '</div>' +
-      '</div>';
+    pages.forEach(function(p, idx) {
+      h += '<button class="eth-wb-jump-btn" data-target="ethWbPage_' + p + '" style="border:none;background:transparent;color:var(--text);padding:6px 12px;border-radius:8px;font-weight:800;font-size:11.5px;cursor:pointer;">' +
+        '📄 ' + (idx + 1) + '-bet (' + p + '-sahifa)' +
+      '</button>';
+    });
 
-    // Visual Editor Toolbar if active
+    h += '</div>';
+
+    // Visual Editor Mode Toggle: STRICTLY FOR TEACHERS ONLY
+    if (isTeacher) {
+      h += '<button id="ethWbToggleEditor" style="background:' + (isEditor ? '#ef4444' : '#10b981') + ';color:#fff;border:none;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(16,185,129,0.3);">' +
+        (isEditor ? '✖ Tahrirlashni Yopish' : '✏️ Visual Editor (Ustoz)') +
+      '</button>';
+    }
+
+    h += '</div></div>';
+
+    // Visual Editor Toolbar if teacher is actively editing
     if (isEditor) {
       h += '<div id="ethWbEditorToolbar" style="background:rgba(15,23,42,0.95);border:2px solid #38bdf8;border-radius:14px;padding:12px 18px;margin-bottom:14px;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,0.4);">' +
-        '<div style="font-size:13px;font-weight:700;">' +
-          '<span style="color:#38bdf8;">Visual Editor Faol:</span> Katakchalar ustiga bosib tahrirlang yoki rasm ustida to‘rtburchak tortib yangisini chizing.' +
+        '<div style="font-size:13px;line-height:1.5;">' +
+          '<b style="color:#38bdf8;">Visual Editor Faol:</b> ' +
+          '<span>🖱️ <b>Sichqonchaning o‘ng tugmasi:</b> bosilganda katakcha darhol o‘chadi! | </span>' +
+          '<span>✋ <b>Chap tugma bilan bosib tortish:</b> katakchani xohlagan joyga ko‘chiradi! | </span>' +
+          '<span>➕ <b>Bo‘sh joyda tortish:</b> yangi katakcha chizadi.</span>' +
         '</div>' +
-        '<div style="display:flex;gap:8px;">' +
-          '<button id="ethWbExportBtn" style="background:#0284c7;color:#fff;border:none;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">📋 JSON Nusxa Olish</button>' +
-          '<button id="ethWbSaveAllBtn" style="background:#10b981;color:#fff;border:none;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">💾 Saqlash</button>' +
-          '<button id="ethWbResetCoordsBtn" style="background:#64748b;color:#fff;border:none;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">↺ Asliga qaytarish</button>' +
+        '<div style="display:flex;gap:8px;align-items:center;">' +
+          '<button id="ethWbExportBtn" style="background:#0284c7;color:#fff;border:none;padding:7px 12px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">📋 JSON Nusxa</button>' +
+          '<button id="ethWbSaveAllBtn" style="background:#10b981;color:#fff;border:none;padding:7px 12px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">💾 Saqlash</button>' +
+          '<button id="ethWbResetCoordsBtn" style="background:#64748b;color:#fff;border:none;padding:7px 12px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">↺ Asliga qaytarish</button>' +
         '</div>' +
       '</div>';
     }
 
     // Interactive Instruction Badge
     h += '<div style="margin-bottom:14px;background:rgba(14,165,233,0.1);border:1px solid rgba(56,189,248,0.3);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--text);flex-wrap:wrap;">' +
-      '<span style="font-weight:800;color:#0284c7;">🎯 Mashq usullari:</span>' +
-      '<span>✍️ <b>Yozish:</b> bo‘sh chiziqqa bosing</span>' +
-      '<span>✂️ <b>O‘chirish:</b> noto‘g‘ri so‘z ustiga bosing</span>' +
-      '<span>🔘 <b>Tanlash:</b> to‘g‘ri variant ustiga bosing</span>' +
+      '<span style="font-weight:800;color:#0284c7;">🎯 Mashq qilish:</span>' +
+      '<span>✍️ <b>Yozish:</b> chiziqqa bosing</span>' +
+      '<span>✂️ <b>O‘chirish:</b> noto‘g‘ri so‘zga bosing</span>' +
+      '<span>🔘 <b>Tanlash:</b> to‘g‘ri variantga bosing</span>' +
       '<span>🔗 <b>Bog‘lash:</b> harf katagiga bosing</span>' +
       '<span>📍 <b>Joylashtirish:</b> so‘zlar orasiga bosing</span>' +
+      '<span style="margin-left:auto;color:var(--muted);font-size:11.5px;">(Pastga sursangiz keyingi sahifa chiqadi)</span>' +
     '</div>';
 
-    // Pages Display Container
-    h += '<div id="ethWbPagesWrap" style="display:flex;flex-direction:column;gap:24px;align-items:center;">';
+    // Pages Display Container - VERTICAL CONTINUOUS PDF SCROLL
+    h += '<div id="ethWbPagesWrap" style="display:flex;flex-direction:column;gap:30px;align-items:center;">';
 
-    if (activePage === 4 || activePage === 0) {
-      h += renderSinglePageBlock(4, p4Img, p4Inputs, isEditor);
-    }
-    if (activePage === 5 || activePage === 0) {
-      h += renderSinglePageBlock(5, p5Img, p5Inputs, isEditor);
-    }
+    pages.forEach(function(pageNum, idx) {
+      var imgSrc = WB.getPageImage(pageNum);
+      var inputs = WB.getPageInputs(pageNum);
+      h += renderSinglePageBlock(pageNum, idx + 1, imgSrc, inputs, isEditor);
+    });
 
     h += '</div>';
 
-    // Bottom Sticky Action Bar
-    h += '<div style="position:sticky;bottom:16px;z-index:90;margin-top:20px;background:rgba(15,23,42,0.92);backdrop-filter:blur(12px);border:1px solid rgba(56,189,248,0.4);border-radius:18px;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 14px 40px rgba(0,0,0,0.5);color:#fff;">' +
+    // Bottom Sticky Action Bar (Unified evaluation for all pages in this lesson)
+    h += '<div style="position:sticky;bottom:16px;z-index:90;margin-top:24px;background:rgba(15,23,42,0.92);backdrop-filter:blur(12px);border:1px solid rgba(56,189,248,0.4);border-radius:18px;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 14px 40px rgba(0,0,0,0.5);color:#fff;">' +
       '<div style="display:flex;align-items:center;gap:14px;">' +
         '<div id="ethWbScoreDisplay" style="font-size:14px;font-weight:800;display:inline-flex;align-items:center;gap:6px;">' +
           '<span>Bajarildi: <b id="ethWbAnsweredCount" style="color:#38bdf8;">0</b> / <span id="ethWbTotalCount">0</span></span>' +
@@ -56121,54 +56244,61 @@ window.NAVIGATE_CURRICULUM = {
           '↻ Tozalash' +
         '</button>' +
         '<button id="ethWbCheckBtn" style="background:linear-gradient(135deg,#0284c7,#154b89);color:#fff;border:none;padding:10px 24px;border-radius:12px;font-size:14px;font-weight:900;cursor:pointer;box-shadow:0 6px 20px rgba(2,132,199,0.4);">' +
-          '✓ Tekshirish (Check Answers)' +
+          '✓ Tekshirish (Check Both Pages)' +
         '</button>' +
       '</div>' +
     '</div>';
 
     // Interactive Edit Modal for Teachers
-    h += '<div id="ethWbInputModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px);">' +
-      '<div style="background:var(--card);border:2px solid #38bdf8;border-radius:18px;padding:22px;max-width:440px;width:90%;color:var(--text);box-shadow:0 20px 50px rgba(0,0,0,0.5);">' +
-        '<h3 id="ethWbModalTitle" style="font-size:17px;font-weight:900;margin:0 0 14px;color:#0284c7;">Katakcha Sozlamalari</h3>' +
-        '<div style="margin-bottom:12px;">' +
-          '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">Turi (type):</label>' +
-          '<select id="ethWbModalType" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;">' +
-            '<option value="fill">Fill (O‘qib yozish)</option>' +
-            '<option value="cross">Cross (Chizib o‘chirish)</option>' +
-            '<option value="choose">Choose (Variant tanlash)</option>' +
-            '<option value="match">Match (Harf bilan bog‘lash)</option>' +
-            '<option value="insert">Insert (Prepozitsiya kiritish)</option>' +
-          '</select>' +
-        '</div>' +
-        '<div style="margin-bottom:12px;">' +
-          '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">Guruh / Belgisi:</label>' +
-          '<input type="text" id="ethWbModalLabel" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;" placeholder="masalan: 2 yoki 3.1" />' +
-        '</div>' +
-        '<div style="margin-bottom:14px;">' +
-          '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">To‘g‘ri Javob ("or" bilan ajrating):</label>' +
-          '<input type="text" id="ethWbModalCorrect" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;" placeholder="masalan: access yoki time or TIME" />' +
-        '</div>' +
-        '<div style="display:flex;justify-content:space-between;gap:8px;">' +
-          '<button id="ethWbModalDeleteBtn" style="background:#ef4444;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">O‘chirish</button>' +
-          '<div style="display:flex;gap:8px;">' +
-            '<button id="ethWbModalCancelBtn" style="background:var(--soft);color:var(--text);border:1px solid var(--line);padding:8px 14px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Bekor qilish</button>' +
-            '<button id="ethWbModalSaveBtn" style="background:#0284c7;color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Saqlash</button>' +
+    if (isTeacher) {
+      h += '<div id="ethWbInputModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px);">' +
+        '<div style="background:var(--card);border:2px solid #38bdf8;border-radius:18px;padding:22px;max-width:440px;width:90%;color:var(--text);box-shadow:0 20px 50px rgba(0,0,0,0.5);">' +
+          '<h3 id="ethWbModalTitle" style="font-size:17px;font-weight:900;margin:0 0 14px;color:#0284c7;">Katakcha Sozlamalari</h3>' +
+          '<div style="margin-bottom:12px;">' +
+            '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">Turi (type):</label>' +
+            '<select id="ethWbModalType" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;">' +
+              '<option value="fill">Fill (O‘qib yozish)</option>' +
+              '<option value="cross">Cross (Chizib o‘chirish)</option>' +
+              '<option value="choose">Choose (Variant tanlash)</option>' +
+              '<option value="match">Match (Harf bilan bog‘lash)</option>' +
+              '<option value="insert">Insert (Prepozitsiya kiritish)</option>' +
+            '</select>' +
+          '</div>' +
+          '<div style="margin-bottom:12px;">' +
+            '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">Guruh / Belgisi:</label>' +
+            '<input type="text" id="ethWbModalLabel" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;" placeholder="masalan: 2 yoki 3.1" />' +
+          '</div>' +
+          '<div style="margin-bottom:14px;">' +
+            '<label style="display:block;font-size:12px;font-weight:800;margin-bottom:4px;color:var(--muted);">To‘g‘ri Javob ("or" bilan ajrating):</label>' +
+            '<input type="text" id="ethWbModalCorrect" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-weight:700;" placeholder="masalan: access yoki time or TIME" />' +
+          '</div>' +
+          '<div style="display:flex;justify-content:space-between;gap:8px;">' +
+            '<button id="ethWbModalDeleteBtn" style="background:#ef4444;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">O‘chirish</button>' +
+            '<div style="display:flex;gap:8px;">' +
+              '<button id="ethWbModalCancelBtn" style="background:var(--soft);color:var(--text);border:1px solid var(--line);padding:8px 14px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Bekor qilish</button>' +
+              '<button id="ethWbModalSaveBtn" style="background:#0284c7;color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Saqlash</button>' +
+            '</div>' +
           '</div>' +
         '</div>' +
-      '</div>' +
-    '</div>';
+      '</div>';
+    }
 
     h += '</div>';
     container.innerHTML = h;
 
-    attachViewerHandlers(container, activePage, isEditor);
+    attachViewerHandlers(container, unitNum, lessonCode, pages, isEditor, isTeacher);
   }
 
   // Render a single page with multi-type interactive elements
-  function renderSinglePageBlock(pageNum, imgSrc, inputs, isEditor) {
-    var h = '<div class="eth-wb-page-box" data-page="' + pageNum + '" style="position:relative;width:100%;max-width:920px;margin:0 auto;box-shadow:0 10px 40px rgba(0,0,0,0.2);border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);">' +
+  function renderSinglePageBlock(pageNum, pageIndex, imgSrc, inputs, isEditor) {
+    var h = '<div id="ethWbPage_' + pageNum + '" class="eth-wb-page-box" data-page="' + pageNum + '" style="position:relative;width:100%;max-width:920px;margin:0 auto;box-shadow:0 10px 40px rgba(0,0,0,0.25);border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);">' +
+      // Top indicator banner
+      '<div style="background:#0f172a;color:#fff;padding:6px 14px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:800;">' +
+        '<span>📄 ' + pageIndex + '-bet (Navigate B1+ Page ' + pageNum + ')</span>' +
+        '<span style="color:#38bdf8;">' + inputs.length + ' ta interaktiv topshiriq</span>' +
+      '</div>' +
       '<img src="' + imgSrc + '" class="eth-wb-img" data-page="' + pageNum + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:' + (isEditor ? 'none' : 'auto') + ';" alt="Oxford Navigate B1+ Page ' + pageNum + '" />' +
-      '<div class="eth-wb-overlay-layer" data-page="' + pageNum + '" style="position:absolute;inset:0;width:100%;height:100%;' + (isEditor ? 'cursor:crosshair;' : '') + '">';
+      '<div class="eth-wb-overlay-layer" data-page="' + pageNum + '" style="position:absolute;top:29px;left:0;right:0;bottom:0;' + (isEditor ? 'cursor:crosshair;' : '') + '">';
 
     inputs.forEach(function(item) {
       var itemType = item.type || 'fill';
@@ -56235,7 +56365,7 @@ window.NAVIGATE_CURRICULUM = {
       }
 
       if (isEditor) {
-        h += '<div class="eth-wb-edit-handle" data-id="' + item.id + '" style="position:absolute;inset:0;background:rgba(2,132,199,0.2);border:1.5px solid #0284c7;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0284c7;font-size:10px;font-weight:900;">' +
+        h += '<div class="eth-wb-edit-handle" data-id="' + item.id + '" title="Surish: bosib torting | O‘chirish: o‘ng tugmani bosing" style="position:absolute;inset:0;background:rgba(2,132,199,0.3);border:1.5px solid #0284c7;cursor:grab;display:flex;align-items:center;justify-content:center;color:#0284c7;font-size:10px;font-weight:900;user-select:none;">' +
           (item.label || item.id) +
         '</div>';
       }
@@ -56251,8 +56381,9 @@ window.NAVIGATE_CURRICULUM = {
     return h;
   }
 
-  // Attach All Multi-Type Event Handlers
-  function attachViewerHandlers(container, activePage, isEditor) {
+  // Attach All Multi-Type Event Handlers across all rendered pages
+  function attachViewerHandlers(container, unitNum, lessonCode, pages, isEditor, isTeacher) {
+    // Back to catalog
     var backBtn = container.querySelector('#ethWbBackBtn');
     if (backBtn) {
       backBtn.addEventListener('click', function() {
@@ -56260,67 +56391,82 @@ window.NAVIGATE_CURRICULUM = {
       });
     }
 
-    container.querySelectorAll('.eth-wb-page-tab').forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        var p = parseInt(this.getAttribute('data-page'), 10);
-        renderLesson1_1(container, p);
+    // Jump buttons
+    container.querySelectorAll('.eth-wb-jump-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var targetId = this.getAttribute('data-target');
+        var targetEl = container.querySelector('#' + targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
     });
 
+    // Toggle Editor Button (Teachers Only)
     var toggleBtn = container.querySelector('#ethWbToggleEditor');
-    if (toggleBtn) {
+    if (toggleBtn && isTeacher) {
       toggleBtn.addEventListener('click', function() {
         window._ethithWbEditorMode = !window._ethithWbEditorMode;
-        renderLesson1_1(container, activePage);
+        renderLesson(container, unitNum, lessonCode);
       });
     }
 
-    // Dynamic Counter for Answered Questions
+    // Dynamic Counter for Answered Questions across ALL pages
     function updateCount() {
-      // Distinct questions:
-      // Fill inputs: 12
-      // Cross groups: 5
-      // Choose groups: 9
-      // Match slots: 6
-      // Insert slots: 4
-      var total = 36;
+      var distinctCount = 0;
       var filled = 0;
 
-      // 1. Fill inputs with text
-      container.querySelectorAll('.wb-fill-input').forEach(function(inp) {
+      // 1. Fill inputs
+      var fillInputs = container.querySelectorAll('.wb-fill-input');
+      distinctCount += fillInputs.length;
+      fillInputs.forEach(function(inp) {
         if (inp.value && inp.value.trim().length > 0) filled++;
       });
 
-      // 2. Cross groups with at least one crossed
-      var crossGroups = {};
-      container.querySelectorAll('.wb-cross-chip.crossed').forEach(function(chip) {
+      // 2. Cross groups
+      var allCrossGroups = {};
+      var crossedGroups = {};
+      container.querySelectorAll('.wb-cross-chip').forEach(function(chip) {
         var grp = chip.getAttribute('data-group');
-        if (grp) crossGroups[grp] = true;
+        if (grp) {
+          allCrossGroups[grp] = true;
+          if (chip.classList.contains('crossed')) crossedGroups[grp] = true;
+        }
       });
-      filled += Object.keys(crossGroups).length;
+      distinctCount += Object.keys(allCrossGroups).length;
+      filled += Object.keys(crossedGroups).length;
 
-      // 3. Choose groups with a selected chip
-      var chooseGroups = {};
-      container.querySelectorAll('.wb-choose-chip.selected').forEach(function(chip) {
+      // 3. Choose groups
+      var allChooseGroups = {};
+      var selectedGroups = {};
+      container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
         var grp = chip.getAttribute('data-group');
-        if (grp) chooseGroups[grp] = true;
+        if (grp) {
+          allChooseGroups[grp] = true;
+          if (chip.classList.contains('selected')) selectedGroups[grp] = true;
+        }
       });
-      filled += Object.keys(chooseGroups).length;
+      distinctCount += Object.keys(allChooseGroups).length;
+      filled += Object.keys(selectedGroups).length;
 
-      // 4. Match slots with an answered letter
-      container.querySelectorAll('.wb-match-slot').forEach(function(slot) {
+      // 4. Match slots
+      var matchSlots = container.querySelectorAll('.wb-match-slot');
+      distinctCount += matchSlots.length;
+      matchSlots.forEach(function(slot) {
         if (slot.textContent && slot.textContent !== '?') filled++;
       });
 
-      // 5. Insert slots with inserted active
-      container.querySelectorAll('.wb-insert-slot.inserted').forEach(function() {
-        filled++;
+      // 5. Insert slots
+      var insertSlots = container.querySelectorAll('.wb-insert-slot');
+      distinctCount += insertSlots.length;
+      insertSlots.forEach(function(slot) {
+        if (slot.classList.contains('inserted')) filled++;
       });
 
       var aEl = container.querySelector('#ethWbAnsweredCount');
       var tEl = container.querySelector('#ethWbTotalCount');
       if (aEl) aEl.textContent = filled;
-      if (tEl) tEl.textContent = total;
+      if (tEl) tEl.textContent = distinctCount || 36;
     }
     updateCount();
 
@@ -56446,15 +56592,17 @@ window.NAVIGATE_CURRICULUM = {
       });
     });
 
-    // Check Answers Button Logic
+    // Check Answers Button Logic (Evaluates BOTH pages simultaneously)
     var checkBtn = container.querySelector('#ethWbCheckBtn');
     if (checkBtn) {
       checkBtn.addEventListener('click', function() {
         var correctCount = 0;
-        var totalQuestions = 36;
+        var totalQuestions = 0;
 
-        // 1. Check Fill Inputs (12 items)
-        container.querySelectorAll('.wb-fill-input').forEach(function(inp) {
+        // 1. Check Fill Inputs across both pages
+        var fillInputs = container.querySelectorAll('.wb-fill-input');
+        totalQuestions += fillInputs.length;
+        fillInputs.forEach(function(inp) {
           var userVal = inp.value || '';
           var correctRaw = inp.getAttribute('data-correct') || '';
           var isCorrect = WB.checkAnswer(userVal, correctRaw);
@@ -56477,9 +56625,18 @@ window.NAVIGATE_CURRICULUM = {
           }
         });
 
-        // 2. Check Cross-out Groups (5 groups: 2.2, 2.3, 2.4, 2.5, 2.6)
-        ['2.2', '2.3', '2.4', '2.5', '2.6'].forEach(function(grp) {
-          var chips = container.querySelectorAll('.wb-cross-chip[data-group="' + grp + '"]');
+        // 2. Check Cross-out Groups across both pages
+        var crossGroups = {};
+        container.querySelectorAll('.wb-cross-chip').forEach(function(chip) {
+          var grp = chip.getAttribute('data-group');
+          if (grp) {
+            if (!crossGroups[grp]) crossGroups[grp] = [];
+            crossGroups[grp].push(chip);
+          }
+        });
+        Object.keys(crossGroups).forEach(function(grp) {
+          totalQuestions++;
+          var chips = crossGroups[grp];
           var correctChip = null;
           var userWrongCrossed = false;
           var userCrossedTarget = false;
@@ -56510,9 +56667,18 @@ window.NAVIGATE_CURRICULUM = {
           }
         });
 
-        // 3. Check Choose Groups (9 groups: 3.2 to 3.8 and 7.1, 7.2)
-        ['3.2', '3.3', '3.4', '3.5', '3.6', '3.7', '3.8', '7.1', '7.2'].forEach(function(grp) {
-          var chips = container.querySelectorAll('.wb-choose-chip[data-group="' + grp + '"]');
+        // 3. Check Choose Groups across both pages
+        var chooseGroups = {};
+        container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
+          var grp = chip.getAttribute('data-group');
+          if (grp) {
+            if (!chooseGroups[grp]) chooseGroups[grp] = [];
+            chooseGroups[grp].push(chip);
+          }
+        });
+        Object.keys(chooseGroups).forEach(function(grp) {
+          totalQuestions++;
+          var chips = chooseGroups[grp];
           var selectedChip = null;
           var correctChip = null;
 
@@ -56536,8 +56702,10 @@ window.NAVIGATE_CURRICULUM = {
           }
         });
 
-        // 4. Check Match Slots (6 slots: p5_ex4_1 to p5_ex4_6)
-        container.querySelectorAll('.wb-match-slot').forEach(function(slot) {
+        // 4. Check Match Slots across both pages
+        var matchSlots = container.querySelectorAll('.wb-match-slot');
+        totalQuestions += matchSlots.length;
+        matchSlots.forEach(function(slot) {
           var userLetter = (slot.textContent || '').trim().toLowerCase();
           var correctLetter = (slot.getAttribute('data-correct') || '').trim().toLowerCase();
           var wrap = slot.closest('.eth-wb-item-wrap');
@@ -56558,8 +56726,10 @@ window.NAVIGATE_CURRICULUM = {
           }
         });
 
-        // 5. Check Insert Slots (4 slots: 5.2, 5.3, 5.4, 5.5)
-        container.querySelectorAll('.wb-insert-slot').forEach(function(slot) {
+        // 5. Check Insert Slots across both pages
+        var insertSlots = container.querySelectorAll('.wb-insert-slot');
+        totalQuestions += insertSlots.length;
+        insertSlots.forEach(function(slot) {
           var isInserted = slot.classList.contains('inserted');
           var isCorrect = (slot.getAttribute('data-correct') === 'true');
 
@@ -56574,6 +56744,8 @@ window.NAVIGATE_CURRICULUM = {
             slot.classList.add('incorrect');
           }
         });
+
+        if (totalQuestions === 0) totalQuestions = 36;
 
         // Show Score Pill
         var pct = Math.round((correctCount / totalQuestions) * 100);
@@ -56606,29 +56778,23 @@ window.NAVIGATE_CURRICULUM = {
     var resetBtn = container.querySelector('#ethWbResetBtn');
     if (resetBtn) {
       resetBtn.addEventListener('click', function() {
-        // Clear fill inputs
         container.querySelectorAll('.wb-fill-input').forEach(function(inp) {
           inp.value = '';
           inp.classList.remove('correct', 'incorrect');
         });
-        // Clear cross chips
         container.querySelectorAll('.wb-cross-chip').forEach(function(chip) {
           chip.classList.remove('crossed', 'correct', 'incorrect', 'should-cross');
         });
-        // Clear choose chips
         container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
           chip.classList.remove('selected', 'correct', 'incorrect', 'should-choose');
         });
-        // Clear match slots
         container.querySelectorAll('.wb-match-slot').forEach(function(slot) {
           slot.textContent = '?';
           slot.classList.remove('correct', 'incorrect');
         });
-        // Clear insert slots
         container.querySelectorAll('.wb-insert-slot').forEach(function(slot) {
           slot.classList.remove('inserted', 'correct', 'incorrect');
         });
-        // Clear hints
         container.querySelectorAll('.eth-wb-hint-badge').forEach(function(badge) {
           badge.style.display = 'none';
         });
@@ -56639,14 +56805,14 @@ window.NAVIGATE_CURRICULUM = {
       });
     }
 
-    // Visual Editor Setup for Teachers
-    if (isEditor) {
-      setupVisualEditor(container, activePage);
+    // Visual Editor Setup for Teachers ONLY
+    if (isTeacher && isEditor) {
+      setupVisualEditor(container, unitNum, lessonCode, pages);
     }
   }
 
   // Teacher Visual Editor Dragging & Editing Setup
-  function setupVisualEditor(container, activePage) {
+  function setupVisualEditor(container, unitNum, lessonCode, pages) {
     var modal = container.querySelector('#ethWbInputModal');
     var modalTitle = container.querySelector('#ethWbModalTitle');
     var modalType = container.querySelector('#ethWbModalType');
@@ -56659,6 +56825,7 @@ window.NAVIGATE_CURRICULUM = {
     var currentTarget = null;
 
     function openModal(isNew, pageNum, item) {
+      if (!isTeacherRole()) return;
       currentTarget = { isNew: isNew, page: pageNum, item: item };
       modalTitle.textContent = isNew ? 'Yangi Katakcha Qo‘shish' : 'Katakchani Tahrirlash (' + item.id + ')';
       modalType.value = item.type || 'fill';
@@ -56669,7 +56836,7 @@ window.NAVIGATE_CURRICULUM = {
     }
 
     function closeModal() {
-      modal.style.display = 'none';
+      if (modal) modal.style.display = 'none';
       currentTarget = null;
     }
 
@@ -56699,7 +56866,7 @@ window.NAVIGATE_CURRICULUM = {
 
         WB.savePageInputs(page, inputs);
         closeModal();
-        renderLesson1_1(container, activePage);
+        renderLesson(container, unitNum, lessonCode);
       });
     }
 
@@ -56710,22 +56877,97 @@ window.NAVIGATE_CURRICULUM = {
         var inputs = WB.getPageInputs(page).filter(function(x) { return x.id !== currentTarget.item.id; });
         WB.savePageInputs(page, inputs);
         closeModal();
-        renderLesson1_1(container, activePage);
+        renderLesson(container, unitNum, lessonCode);
       });
     }
 
+    // 1. Right-Click to Delete & Mouse Drag to Move
     container.querySelectorAll('.eth-wb-edit-handle').forEach(function(handle) {
-      handle.addEventListener('click', function(e) {
+      // Right-Click Context Menu: Instant deletion!
+      handle.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
         e.stopPropagation();
         var id = this.getAttribute('data-id');
         var wrap = this.closest('.eth-wb-item-wrap');
         var page = parseInt(wrap.getAttribute('data-page'), 10);
         var inputs = WB.getPageInputs(page);
         var item = inputs.find(function(x) { return x.id === id; });
-        if (item) openModal(false, page, item);
+        var lbl = item ? (item.label || item.id) : id;
+
+        inputs = inputs.filter(function(x) { return x.id !== id; });
+        WB.savePageInputs(page, inputs);
+        wrap.remove();
+        if (window.toast) {
+          window.toast('🗑️ "' + lbl + '" katakchasi o‘chirildi');
+        }
+      });
+
+      // Mouse Drag to Move
+      handle.addEventListener('mousedown', function(e) {
+        if (e.button === 2) return; // Right-click reserved for delete
+        e.preventDefault();
+        e.stopPropagation();
+
+        var wrap = this.closest('.eth-wb-item-wrap');
+        var layer = wrap.closest('.eth-wb-overlay-layer');
+        var page = parseInt(wrap.getAttribute('data-page'), 10);
+        var id = this.getAttribute('data-id');
+
+        var layerRect = layer.getBoundingClientRect();
+        var startX = e.clientX;
+        var startY = e.clientY;
+        var startLeftPct = parseFloat(wrap.style.left) || 0;
+        var startTopPct = parseFloat(wrap.style.top) || 0;
+
+        var hasMoved = false;
+        wrap.style.opacity = '0.75';
+        wrap.style.zIndex = '999';
+
+        function onMouseMove(ev) {
+          var dx = ev.clientX - startX;
+          var dy = ev.clientY - startY;
+          if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMoved = true;
+
+          var dxPct = (dx / layerRect.width) * 100;
+          var dyPct = (dy / layerRect.height) * 100;
+
+          var newLeft = Math.max(0, Math.min(95, startLeftPct + dxPct));
+          var newTop = Math.max(0, Math.min(98, startTopPct + dyPct));
+
+          wrap.style.left = newLeft.toFixed(1) + '%';
+          wrap.style.top = newTop.toFixed(1) + '%';
+        }
+
+        function onMouseUp(ev) {
+          window.removeEventListener('mousemove', onMouseMove);
+          window.removeEventListener('mouseup', onMouseUp);
+          wrap.style.opacity = '1';
+          wrap.style.zIndex = '50';
+
+          if (hasMoved) {
+            var finalLeft = parseFloat(wrap.style.left);
+            var finalTop = parseFloat(wrap.style.top);
+            var inputs = WB.getPageInputs(page);
+            var item = inputs.find(function(x) { return x.id === id; });
+            if (item) {
+              item.left = finalLeft;
+              item.top = finalTop;
+              WB.savePageInputs(page, inputs);
+            }
+          } else {
+            // Clicked without moving: open edit modal
+            var inputs = WB.getPageInputs(page);
+            var item = inputs.find(function(x) { return x.id === id; });
+            if (item) openModal(false, page, item);
+          }
+        }
+
+        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('mouseup', onMouseUp);
       });
     });
 
+    // 2. Click & Drag on Empty Page Area to Draw New Element
     container.querySelectorAll('.eth-wb-overlay-layer').forEach(function(layer) {
       var page = parseInt(layer.getAttribute('data-page'), 10);
       var dragBox = layer.querySelector('.eth-wb-drag-box');
@@ -56734,6 +56976,7 @@ window.NAVIGATE_CURRICULUM = {
       var rect = null;
 
       layer.addEventListener('mousedown', function(e) {
+        if (e.button === 2) return;
         if (e.target.classList.contains('eth-wb-edit-handle') || e.target.classList.contains('wb-letter-btn')) return;
         isDrawing = true;
         rect = layer.getBoundingClientRect();
@@ -56796,40 +57039,53 @@ window.NAVIGATE_CURRICULUM = {
       });
     });
 
+    // 3. Export JSON Button
     var exportBtn = container.querySelector('#ethWbExportBtn');
     if (exportBtn) {
       exportBtn.addEventListener('click', function() {
-        var all = {
-          page4: WB.getPageInputs(4),
-          page5: WB.getPageInputs(5)
-        };
-        var jsonStr = JSON.stringify(all, null, 2);
-        navigator.clipboard.writeText(jsonStr).then(function() {
-          alert('Unit 1.1 koordinatalari buferga nusxa olindi!');
-        }).catch(function() {
-          prompt('Koordinatalar JSON kodi:', jsonStr);
+        var allPagesData = {};
+        pages.forEach(function(p) {
+          allPagesData['page' + p] = WB.getPageInputs(p);
         });
+        var jsonStr = JSON.stringify(allPagesData, null, 2);
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(jsonStr).then(function() {
+            alert('Koordinatalar buferga nusxa olindi!');
+          }).catch(function() {
+            prompt('Koordinatalar JSON kodi:', jsonStr);
+          });
+        } else {
+          prompt('Koordinatalar JSON kodi:', jsonStr);
+        }
       });
     }
 
+    // 4. Save Button
     var saveBtn = container.querySelector('#ethWbSaveAllBtn');
     if (saveBtn) {
       saveBtn.addEventListener('click', function() {
-        alert('Koordinatalar muvaffaqiyatli saqlandi!');
+        alert('Barcha koordinatalar muvaffaqiyatli saqlandi!');
       });
     }
 
+    // 5. Reset Coords Button
     var resetCoordsBtn = container.querySelector('#ethWbResetCoordsBtn');
     if (resetCoordsBtn) {
       resetCoordsBtn.addEventListener('click', function() {
-        if (confirm('Barcha koordinatalarni asl holatiga qaytarishni xohlaysizmi?')) {
-          WB.resetPageInputs(4);
-          WB.resetPageInputs(5);
-          renderLesson1_1(container, activePage);
+        if (confirm('Ushbu darsning barcha koordinatalarini asl holatiga qaytarishni xohlaysizmi?')) {
+          pages.forEach(function(p) {
+            WB.resetPageInputs(p);
+          });
+          renderLesson(container, unitNum, lessonCode);
         }
       });
     }
   }
+
+  WB.renderLesson = renderLesson;
+  WB.renderLesson1_1 = function(container) {
+    renderLesson(container, 1, '1.1');
+  };
 
 })(window);
 
@@ -57871,12 +58127,13 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     }
 
     var myAvHtml = (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR(S.user, 36) : ('<span class="av">' + (S.user && S.user.name ? S.user.name.charAt(0).toUpperCase() : 'U') + '</span>'));
+    var isTeacherSide = S.user && S.user.role === 'teacher';
     h += '</nav><div class="ap-plan" style="cursor:pointer" data-go="profile">' +
       '<div style="display:flex;align-items:center;gap:10px">' +
         myAvHtml +
         '<div style="min-width:0;flex:1">' +
-          '<small style="font-weight:800;color:var(--pri2)">Mening Profilim</small>' +
-          '<h4 style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13.5px">' + (window.ETHITH_RENDER_USER_NAME_HTML ? window.ETHITH_RENDER_USER_NAME_HTML(S.user) : esc(S.user ? S.user.name : 'Guest')) + '</h4>' +
+          '<small style="font-weight:800;color:var(--pri2)">' + (isTeacherSide ? 'Boshqaruv' : 'Mening Profilim') + '</small>' +
+          '<h4 style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13.5px">' + (isTeacherSide ? 'Ustoz' : (window.ETHITH_RENDER_USER_NAME_HTML ? window.ETHITH_RENDER_USER_NAME_HTML(S.user) : esc(S.user ? S.user.name : 'Guest'))) + '</h4>' +
         '</div>' +
       '</div>' +
       '<button id="apProfileSideBtn" style="background:var(--soft);color:var(--pri);border:1px solid var(--line);padding:7px 12px;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;width:100%;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px">' + ic('user') + ' Profilni Ochish</button>' +
@@ -57937,12 +58194,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         userAvatarHtml +
         '<div class="ap-user-info" style="display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:0;line-height:1.2;gap:2px">' +
           '<div style="font-weight:900;font-size:13.5px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px">' +
-            (window.ETHITH_GET_USER_NAME_FX ? window.ETHITH_GET_USER_NAME_FX(user) : esc(user.name)) +
+            (isTeacherRole ? 'Ustoz' : (window.ETHITH_GET_USER_NAME_FX ? window.ETHITH_GET_USER_NAME_FX(user) : esc(user.name))) +
           '</div>' +
-          '<div style="display:flex;align-items:center;gap:4px;flex-wrap:nowrap">' +
-            (window.ETHITH_GET_USER_TITLE_BADGE ? window.ETHITH_GET_USER_TITLE_BADGE(user) : '') +
-            '<small style="color:var(--muted);font-size:10.5px;font-weight:700;white-space:nowrap">' + (isTeacherRole ? 'Teacher' : 'Student (' + (S.level || 'A1') + ')') + '</small>' +
-          '</div>' +
+          (!isTeacherRole ? (
+            '<div style="display:flex;align-items:center;gap:4px;flex-wrap:nowrap">' +
+              (window.ETHITH_GET_USER_TITLE_BADGE ? window.ETHITH_GET_USER_TITLE_BADGE(user) : '') +
+              '<small style="color:var(--muted);font-size:10.5px;font-weight:700;white-space:nowrap">Student (' + (S.level || 'A1') + ')</small>' +
+            '</div>'
+          ) : '') +
         '</div>' +
       '</div>';
 
