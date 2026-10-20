@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.20.2035",
-  "buildTime": 1792512900000,
-  "label": "ETHITH 10.1.0 - Complete Overhaul of Unit 2: Fixed Page 11 Broken Stacked Inputs, Restored Missing Blanks in Ex 3b, Calibrated Choice Chips in Ex 4, Full Calibration for Pages 10-14"
+  "version": "2026.10.20.2115",
+  "buildTime": 1792512751488,
+  "label": "ETHITH 11.0.0 - Real-Time Live Refresh Engine, Auto-Purge v11, Instant MQTT Sync & Clean Unit 2 Layout"
 }

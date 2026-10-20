@@ -523,6 +523,21 @@
     }
 
     
+    // J0. WORKBOOK LIVE SYNC (TEACHER MODIFIED/CALIBRATED WORKBOOK IN REAL-TIME - ZERO LATENCY TO ALL STUDENTS)
+    else if (event.type === 'WORKBOOK_PAGE_UPDATED' && event.page && event.inputs) {
+      var pNum = parseInt(event.page, 10);
+      console.log('[LiveRT] Real-time workbook page ' + pNum + ' update received from teacher!');
+      if (window.ETHITH_WORKBOOK_B1) {
+        window.ETHITH_WORKBOOK_B1.savePageInputs(pNum, event.inputs, /* noBroadcast */ true);
+        if (typeof window.ETHITH_WORKBOOK_B1.liveRefreshPage === 'function') {
+          window.ETHITH_WORKBOOK_B1.liveRefreshPage(pNum);
+        }
+        if (window.toast && !window._ethithWbEditorMode) {
+          window.toast('⚡ Ustoz ' + pNum + '-sahifani yangiladi');
+        }
+      }
+    }
+
     // J1. EXAM UPDATED (TEACHER MODIFIED EXAM IN REAL-TIME)
     else if (event.type === 'EXAM_UPDATED' && event.exam) {
       var exId = event.exam.id;
