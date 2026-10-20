@@ -34,8 +34,7 @@
         { code: "1.1", title: "1.1 Are you really my friend?", desc: "Grammar (Present tenses), Vocabulary (Friendship) & Pronunciation", pages: [4, 5], active: true },
         { code: "1.2", title: "1.2 Why spending's #trending", desc: "Grammar (State verbs), Vocabulary (Spending)", pages: [6, 7], active: true },
         { code: "1.3", title: "1.3 Vocabulary development", desc: "Noun suffixes (-ment, -tion, -ity, -ship)", pages: [8], active: true },
-        { code: "1.4", title: "1.4 Speaking and writing", desc: "Asking for and giving opinions, writing social media", pages: [9], active: true },
-        { code: "1.5", title: "1.5 Review", desc: "Unit 1 Grammar and vocabulary review test", pages: [10], active: true }
+        { code: "1.4", title: "1.4 Speaking and writing", desc: "Asking for and giving opinions, writing social media", pages: [9], active: true }
       ]
     },
     {
@@ -44,8 +43,8 @@
       subtitle: "Narrative forms & sequencing events · Vocabulary: Describing past experiences",
       available: true,
       lessons: [
-        { code: "2.1", title: "2.1 A good read", desc: "Grammar (Narrative forms), Vocabulary (Past experiences)", pages: [10, 11], active: true },
-        { code: "2.2", title: "2.2 In the news", desc: "Grammar (Sequencing events), Vocabulary (Communication)", pages: [12, 13], active: true },
+        { code: "2.1", title: "2.1 I'll never forget that day", desc: "Grammar (Narrative forms), Vocabulary (Past experiences)", pages: [10, 11], active: true },
+        { code: "2.2", title: "2.2 Unbelievable?", desc: "Grammar (Sequencing events), Vocabulary (Communication)", pages: [12, 13], active: true },
         { code: "2.3", title: "2.3 Vocabulary development", desc: "Comment adverbs", pages: [14], active: true },
         { code: "2.4", title: "2.4 Speaking and writing", desc: "Showing interest, writing a narrative", pages: [15], active: true },
         { code: "2.5", title: "2.5 Review & Reading", desc: "Review: Units 1 and 2, Reading for pleasure (Kidnapped)", pages: [16, 17], active: true }
@@ -236,13 +235,13 @@
       { id: "p4_ex3_8_b", type: "choose", page: 4, exercise: "3", group: "3.8", text: "have taken place", top: 91.0, left: 80.5, width: 14.0, height: 1.6, correct: false }
     ],
     5: [
-      // EXERCISE 4a: Match questions 1-6 to answers a-f - TYPE: match
-      { id: "p5_ex4_1", type: "match", page: 5, exercise: "4a", label: "1", top: 13.5, left: 5.5, width: 2.4, height: 1.5, correct: "c", prompt: "Do you get on well with your neighbours?" },
-      { id: "p5_ex4_2", type: "match", page: 5, exercise: "4a", label: "2", top: 15.3, left: 5.5, width: 2.4, height: 1.5, correct: "f", prompt: "Do you have a lot in common with your partner?" },
-      { id: "p5_ex4_3", type: "match", page: 5, exercise: "4a", label: "3", top: 17.2, left: 5.5, width: 2.4, height: 1.5, correct: "a", prompt: "When was the last time you had an argument with your best friend?" },
-      { id: "p5_ex4_4", type: "match", page: 5, exercise: "4a", label: "4", top: 19.0, left: 5.5, width: 2.4, height: 1.5, correct: "d", prompt: "How often do you meet up with your friends?" },
-      { id: "p5_ex4_5", type: "match", page: 5, exercise: "4a", label: "5", top: 20.8, left: 5.5, width: 2.4, height: 1.5, correct: "e", prompt: "Do you make new friends easily?" },
-      { id: "p5_ex4_6", type: "match", page: 5, exercise: "4a", label: "6", top: 22.7, left: 5.5, width: 2.4, height: 1.5, correct: "b", prompt: "How many old classmates do you keep in touch with?" },
+      // EXERCISE 4a: Match questions 1-6 to answers a-f - TYPE: fill (Student types letter directly)
+      { id: "p5_ex4_1", type: "fill", page: 5, exercise: "4a", label: "...", top: 13.6, left: 5.5, width: 2.8, height: 1.8, correct: "c" },
+      { id: "p5_ex4_2", type: "fill", page: 5, exercise: "4a", label: "...", top: 15.4, left: 5.5, width: 2.8, height: 1.8, correct: "f" },
+      { id: "p5_ex4_3", type: "fill", page: 5, exercise: "4a", label: "...", top: 17.2, left: 5.5, width: 2.8, height: 1.8, correct: "a" },
+      { id: "p5_ex4_4", type: "fill", page: 5, exercise: "4a", label: "...", top: 19.0, left: 5.5, width: 2.8, height: 1.8, correct: "d" },
+      { id: "p5_ex4_5", type: "fill", page: 5, exercise: "4a", label: "...", top: 20.8, left: 5.5, width: 2.8, height: 1.8, correct: "e" },
+      { id: "p5_ex4_6", type: "fill", page: 5, exercise: "4a", label: "...", top: 22.7, left: 5.5, width: 2.8, height: 1.8, correct: "b" },
 
       // EXERCISE 5: Slash Caret Insertion (Put word in brackets in correct place) - TYPE: insert
       { id: "p5_ex5_2", type: "insert", page: 5, exercise: "5", group: "5.2", word: "out", top: 46.5, left: 23.5, width: 2.0, height: 1.6, correct: true },
@@ -263,10 +262,10 @@
       { id: "p5_ex7_2_b", type: "choose", page: 5, exercise: "7b", group: "7.2", text: "vowel", top: 60.8, left: 53.6, width: 5.4, height: 1.6, correct: true }
     ],
     6: [
-      // EXERCISE 1: Match special offers 1-4 to shop types a-d (TYPE: match)
-      { id: "p6_ex1_a", type: "match", page: 6, exercise: "1", label: "a", top: 68.6, left: 20.8, width: 2.6, height: 1.5, correct: "2", prompt: "Book shop (Buy 1 get 1 free on all fiction paperbacks)" },
-      { id: "p6_ex1_b", type: "match", page: 6, exercise: "1", label: "b", top: 70.3, left: 22.2, width: 2.6, height: 1.5, correct: "4", prompt: "Clothes shop (40% discount on men's and children's wear)" },
-      { id: "p6_ex1_d", type: "match", page: 6, exercise: "1", label: "d", top: 70.4, left: 42.5, width: 2.6, height: 1.5, correct: "3", prompt: "Restaurant (Great meal deals for families)" },
+      // EXERCISE 1: Match special offers 1-4 to shop types a-d - TYPE: fill (Student types number directly)
+      { id: "p6_ex1_a", type: "fill", page: 6, exercise: "1", label: "...", top: 68.6, left: 20.8, width: 2.8, height: 1.8, correct: "2" },
+      { id: "p6_ex1_b", type: "fill", page: 6, exercise: "1", label: "...", top: 70.3, left: 22.2, width: 2.8, height: 1.8, correct: "4" },
+      { id: "p6_ex1_d", type: "fill", page: 6, exercise: "1", label: "...", top: 70.4, left: 42.5, width: 2.8, height: 1.8, correct: "3" },
 
       // EXERCISE 2: Match the words in bold to definitions (TYPE: fill)
       { id: "p6_ex2_2", type: "fill", page: 6, exercise: "2", label: "2", top: 76.8, left: 30.5, width: 17.5, height: 1.9, correct: "discount or DISCOUNT" },
@@ -338,15 +337,15 @@
       { id: "p7_ex5_6_a", type: "choose", page: 7, exercise: "5", group: "5.6", text: "see", top: 54.3, left: 13.5, width: 5.5, height: 1.6, correct: true },
       { id: "p7_ex5_6_b", type: "choose", page: 7, exercise: "5", group: "5.6", text: "'m seeing", top: 54.3, left: 20.0, width: 10.5, height: 1.6, correct: false },
 
-      // EXERCISE 6: Always true (A) or now (N)? (TYPE: match / fill slot)
-      { id: "p7_ex6_2a", type: "match", page: 7, exercise: "6", label: "2a", top: 64.0, left: 43.5, width: 2.5, height: 1.5, correct: "a", prompt: "I don't understand much about chemistry (Always true)" },
-      { id: "p7_ex6_2b", type: "match", page: 7, exercise: "6", label: "2b", top: 65.7, left: 43.5, width: 2.5, height: 1.5, correct: "n", prompt: "I don't understand what you're saying (True now)" },
-      { id: "p7_ex6_3a", type: "match", page: 7, exercise: "6", label: "3a", top: 67.5, left: 43.5, width: 2.5, height: 1.5, correct: "n", prompt: "I love this jacket! You should definitely buy it (True now)" },
-      { id: "p7_ex6_3b", type: "match", page: 7, exercise: "6", label: "3b", top: 69.2, left: 43.5, width: 2.5, height: 1.5, correct: "a", prompt: "I love autumn - it's wonderful (Always true)" },
-      { id: "p7_ex6_4a", type: "match", page: 7, exercise: "6", label: "4a", top: 70.9, left: 43.5, width: 2.5, height: 1.5, correct: "n", prompt: "What do you mean by 'we have a problem'? (True now)" },
-      { id: "p7_ex6_4b", type: "match", page: 7, exercise: "6", label: "4b", top: 72.6, left: 43.5, width: 2.5, height: 1.5, correct: "a", prompt: "What does this word mean? (Always true)" },
-      { id: "p7_ex6_5a", type: "match", page: 7, exercise: "6", label: "5a", top: 74.3, left: 43.5, width: 2.5, height: 1.5, correct: "a", prompt: "I have a cousin who looks like Rafael Nadal (Always true)" },
-      { id: "p7_ex6_5b", type: "match", page: 7, exercise: "6", label: "5b", top: 76.1, left: 43.5, width: 2.5, height: 1.5, correct: "n", prompt: "You look exhausted. Bad day at work? (True now)" },
+      // EXERCISE 6: Always true (A) or now (N)? - TYPE: fill (Student types A or N directly on underline)
+      { id: "p7_ex6_2a", type: "fill", page: 7, exercise: "6", label: "A/N", top: 63.8, left: 41.5, width: 3.2, height: 1.8, correct: "a or A" },
+      { id: "p7_ex6_2b", type: "fill", page: 7, exercise: "6", label: "A/N", top: 65.5, left: 38.5, width: 3.2, height: 1.8, correct: "n or N" },
+      { id: "p7_ex6_3a", type: "fill", page: 7, exercise: "6", label: "A/N", top: 67.3, left: 43.5, width: 3.2, height: 1.8, correct: "n or N" },
+      { id: "p7_ex6_3b", type: "fill", page: 7, exercise: "6", label: "A/N", top: 69.0, left: 33.5, width: 3.2, height: 1.8, correct: "a or A" },
+      { id: "p7_ex6_4a", type: "fill", page: 7, exercise: "6", label: "A/N", top: 70.7, left: 42.0, width: 3.2, height: 1.8, correct: "n or N" },
+      { id: "p7_ex6_4b", type: "fill", page: 7, exercise: "6", label: "A/N", top: 72.4, left: 31.5, width: 3.2, height: 1.8, correct: "a or A" },
+      { id: "p7_ex6_5a", type: "fill", page: 7, exercise: "6", label: "A/N", top: 74.1, left: 42.5, width: 3.2, height: 1.8, correct: "a or A" },
+      { id: "p7_ex6_5b", type: "fill", page: 7, exercise: "6", label: "A/N", top: 75.9, left: 38.0, width: 3.2, height: 1.8, correct: "n or N" },
 
       // EXERCISE 7: Compulsive buying error correction (TYPE: fill)
       { id: "p7_ex7_5", type: "fill", page: 7, exercise: "7", label: "L5", top: 34.5, left: 78.5, width: 14.0, height: 1.9, correct: "don't need or do not need" },
@@ -387,7 +386,1001 @@
       { id: "p8_ex5_8", type: "fill", page: 8, exercise: "5a", label: "8", top: 66.1, left: 57.0, width: 8.5, height: 1.8, correct: "make or MAKE" },
       { id: "p8_ex5_9", type: "fill", page: 8, exercise: "5a", label: "9", top: 67.7, left: 60.5, width: 8.5, height: 1.8, correct: "up or UP" }
     ]
-  };
+,
+    9: [
+      {
+            "id": "p9_ex1b_b",
+            "type": "fill",
+            "page": 9,
+            "exercise": "1b",
+            "label": "some",
+            "top": 30.7,
+            "left": 14.5,
+            "width": 8.5,
+            "height": 1.8,
+            "correct": "some or SOME"
+      },
+      {
+            "id": "p9_ex1b_c",
+            "type": "fill",
+            "page": 9,
+            "exercise": "1b",
+            "label": "personally",
+            "top": 32.4,
+            "left": 15.5,
+            "width": 9,
+            "height": 1.8,
+            "correct": "personally or PERSONALLY"
+      },
+      {
+            "id": "p9_ex1b_d",
+            "type": "fill",
+            "page": 9,
+            "exercise": "1b",
+            "label": "me",
+            "top": 34.1,
+            "left": 30.5,
+            "width": 7,
+            "height": 1.8,
+            "correct": "me or ME"
+      },
+      {
+            "id": "p9_ex1b_e",
+            "type": "fill",
+            "page": 9,
+            "exercise": "1b",
+            "label": "think",
+            "top": 35.8,
+            "left": 18,
+            "width": 8.5,
+            "height": 1.8,
+            "correct": "think or THINK"
+      },
+      {
+            "id": "p9_ex1b_f",
+            "type": "fill",
+            "page": 9,
+            "exercise": "1b",
+            "label": "convinced",
+            "top": 37.6,
+            "left": 13.5,
+            "width": 9,
+            "height": 1.8,
+            "correct": "convinced or CONVINCED"
+      },
+      {
+            "id": "p9_ex1b_g",
+            "type": "fill",
+            "page": 9,
+            "exercise": "1b",
+            "label": "definitely",
+            "top": 39.3,
+            "left": 12,
+            "width": 9,
+            "height": 1.8,
+            "correct": "definitely or DEFINITELY"
+      },
+      {
+            "id": "p9_ex1b_h",
+            "type": "fill",
+            "page": 9,
+            "exercise": "1b",
+            "label": "far",
+            "top": 41,
+            "left": 17,
+            "width": 7.5,
+            "height": 1.8,
+            "correct": "far or FAR"
+      },
+      {
+            "id": "p9_ex3_1",
+            "type": "fill",
+            "page": 9,
+            "exercise": "3",
+            "label": "1",
+            "top": 62.2,
+            "left": 15.5,
+            "width": 8,
+            "height": 1.8,
+            "correct": "How or how"
+      },
+      {
+            "id": "p9_ex3_2",
+            "type": "fill",
+            "page": 9,
+            "exercise": "3",
+            "label": "2",
+            "top": 62.2,
+            "left": 27.5,
+            "width": 8,
+            "height": 1.8,
+            "correct": "about or ABOUT"
+      },
+      {
+            "id": "p9_ex3_3",
+            "type": "fill",
+            "page": 9,
+            "exercise": "3",
+            "label": "3",
+            "top": 64,
+            "left": 21,
+            "width": 7.5,
+            "height": 1.8,
+            "correct": "you or YOU"
+      },
+      {
+            "id": "p9_ex3_4",
+            "type": "fill",
+            "page": 9,
+            "exercise": "3",
+            "label": "4",
+            "top": 65.8,
+            "left": 21,
+            "width": 7.5,
+            "height": 1.8,
+            "correct": "me or ME"
+      },
+      {
+            "id": "p9_ex3_5",
+            "type": "fill",
+            "page": 9,
+            "exercise": "3",
+            "label": "5",
+            "top": 67.5,
+            "left": 14.5,
+            "width": 7,
+            "height": 1.8,
+            "correct": "to or TO"
+      },
+      {
+            "id": "p9_ex3_6",
+            "type": "fill",
+            "page": 9,
+            "exercise": "3",
+            "label": "6",
+            "top": 69.3,
+            "left": 16,
+            "width": 8,
+            "height": 1.8,
+            "correct": "don't or dont"
+      },
+      {
+            "id": "p9_ex3_7",
+            "type": "fill",
+            "page": 9,
+            "exercise": "3",
+            "label": "7",
+            "top": 69.3,
+            "left": 28.5,
+            "width": 8,
+            "height": 1.8,
+            "correct": "think or THINK"
+      },
+      {
+            "id": "p9_ex3_8",
+            "type": "fill",
+            "page": 9,
+            "exercise": "3",
+            "label": "8",
+            "top": 71,
+            "left": 14.5,
+            "width": 7.5,
+            "height": 1.8,
+            "correct": "am or 'm"
+      },
+      {
+            "id": "p9_ex3_9",
+            "type": "fill",
+            "page": 9,
+            "exercise": "3",
+            "label": "9",
+            "top": 72.8,
+            "left": 17.5,
+            "width": 7.5,
+            "height": 1.8,
+            "correct": "far or FAR"
+      },
+      {
+            "id": "p9_ex3_10",
+            "type": "fill",
+            "page": 9,
+            "exercise": "3",
+            "label": "10",
+            "top": 72.8,
+            "left": 33,
+            "width": 10,
+            "height": 1.8,
+            "correct": "concerned or CONCERNED"
+      }
+],
+    10: [
+      {
+            "id": "p10_ex1a_1_a",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.1",
+            "text": "have you ever been",
+            "top": 34.8,
+            "left": 13.5,
+            "width": 17.5,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p10_ex1a_1_b",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.1",
+            "text": "were you ever",
+            "top": 34.8,
+            "left": 32,
+            "width": 13.5,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p10_ex1a_2_a",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.2",
+            "text": "did you ever feel",
+            "top": 39.8,
+            "left": 13.5,
+            "width": 15.5,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p10_ex1a_2_b",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.2",
+            "text": "do you ever feel",
+            "top": 39.8,
+            "left": 30,
+            "width": 15.5,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p10_ex1a_3_a",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.3",
+            "text": "have you ever had",
+            "top": 44.8,
+            "left": 13.5,
+            "width": 17,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p10_ex1a_3_b",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.3",
+            "text": "did you ever have",
+            "top": 44.8,
+            "left": 31.5,
+            "width": 17,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p10_ex1a_4_a",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.4",
+            "text": "do you ever wonder",
+            "top": 51.5,
+            "left": 13.5,
+            "width": 18,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p10_ex1a_4_b",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.4",
+            "text": "are you ever wondering",
+            "top": 51.5,
+            "left": 32.5,
+            "width": 20,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p10_ex1a_5_a",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.5",
+            "text": "did you ever see",
+            "top": 58.2,
+            "left": 13.5,
+            "width": 15.5,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p10_ex1a_5_b",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.5",
+            "text": "have you ever seen",
+            "top": 58.2,
+            "left": 30,
+            "width": 17.5,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p10_ex1a_6_a",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.6",
+            "text": "do you ever think",
+            "top": 63.2,
+            "left": 13.5,
+            "width": 16.5,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p10_ex1a_6_b",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.6",
+            "text": "did you ever think",
+            "top": 63.2,
+            "left": 31,
+            "width": 16.5,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p10_ex1a_7_a",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.7",
+            "text": "have you ever had",
+            "top": 70,
+            "left": 13.5,
+            "width": 17,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p10_ex1a_7_b",
+            "type": "choose",
+            "page": 10,
+            "exercise": "1a",
+            "group": "1a.7",
+            "text": "did you ever have",
+            "top": 70,
+            "left": 31.5,
+            "width": 17,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p10_ex2a_b",
+            "type": "fill",
+            "page": 10,
+            "exercise": "2a",
+            "label": "remember",
+            "top": 53.8,
+            "left": 58,
+            "width": 9,
+            "height": 1.8,
+            "correct": "remember or REMEMBER"
+      },
+      {
+            "id": "p10_ex2a_c",
+            "type": "fill",
+            "page": 10,
+            "exercise": "2a",
+            "label": "expecting",
+            "top": 58.6,
+            "left": 81.5,
+            "width": 10.5,
+            "height": 1.8,
+            "correct": "expecting or EXPECTING"
+      },
+      {
+            "id": "p10_ex2a_d",
+            "type": "fill",
+            "page": 10,
+            "exercise": "2a",
+            "label": "reminded",
+            "top": 62,
+            "left": 74,
+            "width": 10,
+            "height": 1.8,
+            "correct": "reminded or REMINDED"
+      },
+      {
+            "id": "p10_ex2a_e",
+            "type": "fill",
+            "page": 10,
+            "exercise": "2a",
+            "label": "believe",
+            "top": 65.5,
+            "left": 63.5,
+            "width": 9,
+            "height": 1.8,
+            "correct": "believe or BELIEVE"
+      },
+      {
+            "id": "p10_ex2a_f",
+            "type": "fill",
+            "page": 10,
+            "exercise": "2a",
+            "label": "realize",
+            "top": 70,
+            "left": 74,
+            "width": 9,
+            "height": 1.8,
+            "correct": "realize or REALIZE"
+      },
+      {
+            "id": "p10_ex2a_g",
+            "type": "fill",
+            "page": 10,
+            "exercise": "2a",
+            "label": "wonder",
+            "top": 73.5,
+            "left": 60,
+            "width": 9,
+            "height": 1.8,
+            "correct": "wonder or WONDER"
+      }
+],
+    11: [
+      {
+            "id": "p11_ex3b_1",
+            "type": "fill",
+            "page": 11,
+            "exercise": "3b",
+            "label": "1",
+            "top": 25.5,
+            "left": 28.5,
+            "width": 3.2,
+            "height": 1.8,
+            "correct": "d or D"
+      },
+      {
+            "id": "p11_ex3b_2",
+            "type": "fill",
+            "page": 11,
+            "exercise": "3b",
+            "label": "2",
+            "top": 33.9,
+            "left": 24.5,
+            "width": 3.2,
+            "height": 1.8,
+            "correct": "e or E"
+      },
+      {
+            "id": "p11_ex3b_3",
+            "type": "fill",
+            "page": 11,
+            "exercise": "3b",
+            "label": "3",
+            "top": 38.5,
+            "left": 18,
+            "width": 3.2,
+            "height": 1.8,
+            "correct": "b or B"
+      },
+      {
+            "id": "p11_ex3b_4",
+            "type": "fill",
+            "page": 11,
+            "exercise": "3b",
+            "label": "4",
+            "top": 40,
+            "left": 19.5,
+            "width": 3.2,
+            "height": 1.8,
+            "correct": "a or A"
+      },
+      {
+            "id": "p11_ex3b_5",
+            "type": "fill",
+            "page": 11,
+            "exercise": "3b",
+            "label": "5",
+            "top": 50,
+            "left": 18,
+            "width": 3.2,
+            "height": 1.8,
+            "correct": "c or C"
+      },
+      {
+            "id": "p11_ex4_1",
+            "type": "fill",
+            "page": 11,
+            "exercise": "4",
+            "label": "1",
+            "top": 21,
+            "left": 71,
+            "width": 16,
+            "height": 1.8,
+            "correct": "had always dreamt or had always dreamed"
+      },
+      {
+            "id": "p11_ex4_2",
+            "type": "fill",
+            "page": 11,
+            "exercise": "4",
+            "label": "2",
+            "top": 22.8,
+            "left": 71,
+            "width": 14,
+            "height": 1.8,
+            "correct": "had taken or HAD TAKEN"
+      },
+      {
+            "id": "p11_ex4_3",
+            "type": "fill",
+            "page": 11,
+            "exercise": "4",
+            "label": "3",
+            "top": 24.5,
+            "left": 71,
+            "width": 12,
+            "height": 1.8,
+            "correct": "missed or MISSED"
+      },
+      {
+            "id": "p11_ex4_4",
+            "type": "fill",
+            "page": 11,
+            "exercise": "4",
+            "label": "4",
+            "top": 26.2,
+            "left": 71,
+            "width": 14,
+            "height": 1.8,
+            "correct": "were waiting or WERE WAITING"
+      },
+      {
+            "id": "p11_ex4_5",
+            "type": "fill",
+            "page": 11,
+            "exercise": "4",
+            "label": "5",
+            "top": 28,
+            "left": 71,
+            "width": 14,
+            "height": 1.8,
+            "correct": "disappeared or DISAPPEARED"
+      },
+      {
+            "id": "p11_ex4_6",
+            "type": "fill",
+            "page": 11,
+            "exercise": "4",
+            "label": "6",
+            "top": 29.8,
+            "left": 71,
+            "width": 14,
+            "height": 1.8,
+            "correct": "had taken or HAD TAKEN"
+      },
+      {
+            "id": "p11_ex4_7",
+            "type": "fill",
+            "page": 11,
+            "exercise": "4",
+            "label": "7",
+            "top": 31.5,
+            "left": 71,
+            "width": 14,
+            "height": 1.8,
+            "correct": "were going or WERE GOING"
+      },
+      {
+            "id": "p11_ex4_8",
+            "type": "fill",
+            "page": 11,
+            "exercise": "4",
+            "label": "8",
+            "top": 33.2,
+            "left": 71,
+            "width": 14,
+            "height": 1.8,
+            "correct": "hadn't seen or had not seen"
+      },
+      {
+            "id": "p11_ex4_9",
+            "type": "fill",
+            "page": 11,
+            "exercise": "4",
+            "label": "9",
+            "top": 35,
+            "left": 71,
+            "width": 12,
+            "height": 1.8,
+            "correct": "rained or RAINED"
+      },
+      {
+            "id": "p11_ex4_10",
+            "type": "fill",
+            "page": 11,
+            "exercise": "4",
+            "label": "10",
+            "top": 36.8,
+            "left": 71,
+            "width": 16,
+            "height": 1.8,
+            "correct": "had already gone or 'd already gone"
+      },
+      {
+            "id": "p11_ex4_11",
+            "type": "fill",
+            "page": 11,
+            "exercise": "4",
+            "label": "11",
+            "top": 38.5,
+            "left": 71,
+            "width": 14,
+            "height": 1.8,
+            "correct": "were watching or WERE WATCHING"
+      }
+],
+    12: [
+      {
+            "id": "p12_ex2_1",
+            "type": "fill",
+            "page": 12,
+            "exercise": "2",
+            "label": "1",
+            "top": 48,
+            "left": 57,
+            "width": 12,
+            "height": 1.8,
+            "correct": "during or DURING"
+      },
+      {
+            "id": "p12_ex2_2",
+            "type": "fill",
+            "page": 12,
+            "exercise": "2",
+            "label": "2",
+            "top": 52,
+            "left": 57,
+            "width": 10,
+            "height": 1.8,
+            "correct": "until or UNTIL"
+      },
+      {
+            "id": "p12_ex2_3",
+            "type": "fill",
+            "page": 12,
+            "exercise": "2",
+            "label": "3",
+            "top": 56,
+            "left": 57,
+            "width": 14,
+            "height": 1.8,
+            "correct": "As soon as or as soon as"
+      },
+      {
+            "id": "p12_ex2_4",
+            "type": "fill",
+            "page": 12,
+            "exercise": "2",
+            "label": "4",
+            "top": 60,
+            "left": 57,
+            "width": 10,
+            "height": 1.8,
+            "correct": "while or WHILE"
+      },
+      {
+            "id": "p12_ex2_5",
+            "type": "fill",
+            "page": 12,
+            "exercise": "2",
+            "label": "5",
+            "top": 64,
+            "left": 57,
+            "width": 14,
+            "height": 1.8,
+            "correct": "Meanwhile or in the meanwhile"
+      },
+      {
+            "id": "p12_ex2_6",
+            "type": "fill",
+            "page": 12,
+            "exercise": "2",
+            "label": "6",
+            "top": 68,
+            "left": 57,
+            "width": 14,
+            "height": 1.8,
+            "correct": "By the time or by the time"
+      }
+],
+    13: [
+      {
+            "id": "p13_ex5a_1_a",
+            "type": "choose",
+            "page": 13,
+            "exercise": "5a",
+            "group": "5a.1",
+            "text": "announced",
+            "top": 40.2,
+            "left": 24.5,
+            "width": 12,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p13_ex5a_1_b",
+            "type": "choose",
+            "page": 13,
+            "exercise": "5a",
+            "group": "5a.1",
+            "text": "told",
+            "top": 40.2,
+            "left": 38,
+            "width": 8.5,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p13_ex5a_2_a",
+            "type": "choose",
+            "page": 13,
+            "exercise": "5a",
+            "group": "5a.2",
+            "text": "admitted",
+            "top": 45.2,
+            "left": 23.5,
+            "width": 11.5,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p13_ex5a_2_b",
+            "type": "choose",
+            "page": 13,
+            "exercise": "5a",
+            "group": "5a.2",
+            "text": "interviewed",
+            "top": 45.2,
+            "left": 36.5,
+            "width": 14,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p13_ex5a_3_a",
+            "type": "choose",
+            "page": 13,
+            "exercise": "5a",
+            "group": "5a.3",
+            "text": "claimed",
+            "top": 51.5,
+            "left": 24.5,
+            "width": 10.5,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p13_ex5a_3_b",
+            "type": "choose",
+            "page": 13,
+            "exercise": "5a",
+            "group": "5a.3",
+            "text": "invented",
+            "top": 51.5,
+            "left": 36.5,
+            "width": 11.5,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p13_ex5a_4_a",
+            "type": "choose",
+            "page": 13,
+            "exercise": "5a",
+            "group": "5a.4",
+            "text": "reported",
+            "top": 57.8,
+            "left": 23.5,
+            "width": 11.5,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p13_ex5a_4_b",
+            "type": "choose",
+            "page": 13,
+            "exercise": "5a",
+            "group": "5a.4",
+            "text": "informed",
+            "top": 57.8,
+            "left": 36.5,
+            "width": 12,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p13_ex5a_5_a",
+            "type": "choose",
+            "page": 13,
+            "exercise": "5a",
+            "group": "5a.5",
+            "text": "claimed",
+            "top": 66,
+            "left": 23.5,
+            "width": 10.5,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p13_ex5a_5_b",
+            "type": "choose",
+            "page": 13,
+            "exercise": "5a",
+            "group": "5a.5",
+            "text": "invented",
+            "top": 66,
+            "left": 35.5,
+            "width": 11.5,
+            "height": 1.6,
+            "correct": true
+      }
+],
+    14: [
+      {
+            "id": "p14_ex1_2_a",
+            "type": "choose",
+            "page": 14,
+            "exercise": "1",
+            "group": "1.2",
+            "text": "Fortunately",
+            "top": 33.7,
+            "left": 12.5,
+            "width": 13,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p14_ex1_2_b",
+            "type": "choose",
+            "page": 14,
+            "exercise": "1",
+            "group": "1.2",
+            "text": "Curiously",
+            "top": 33.7,
+            "left": 26.5,
+            "width": 12,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p14_ex1_3_a",
+            "type": "choose",
+            "page": 14,
+            "exercise": "1",
+            "group": "1.3",
+            "text": "Remarkably",
+            "top": 38.5,
+            "left": 12.5,
+            "width": 13.5,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p14_ex1_3_b",
+            "type": "choose",
+            "page": 14,
+            "exercise": "1",
+            "group": "1.3",
+            "text": "Personally",
+            "top": 38.5,
+            "left": 27,
+            "width": 12.5,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p14_ex1_4_a",
+            "type": "choose",
+            "page": 14,
+            "exercise": "1",
+            "group": "1.4",
+            "text": "Fortunately",
+            "top": 43.3,
+            "left": 12.5,
+            "width": 13,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p14_ex1_4_b",
+            "type": "choose",
+            "page": 14,
+            "exercise": "1",
+            "group": "1.4",
+            "text": "Sadly",
+            "top": 43.3,
+            "left": 26.5,
+            "width": 8.5,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p14_ex1_5_a",
+            "type": "choose",
+            "page": 14,
+            "exercise": "1",
+            "group": "1.5",
+            "text": "Amazingly",
+            "top": 49.6,
+            "left": 35,
+            "width": 12.5,
+            "height": 1.6,
+            "correct": false
+      },
+      {
+            "id": "p14_ex1_5_b",
+            "type": "choose",
+            "page": 14,
+            "exercise": "1",
+            "group": "1.5",
+            "text": "Naturally",
+            "top": 49.6,
+            "left": 48.5,
+            "width": 11.5,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p14_ex1_6_a",
+            "type": "choose",
+            "page": 14,
+            "exercise": "1",
+            "group": "1.6",
+            "text": "interestingly",
+            "top": 57.5,
+            "left": 29.5,
+            "width": 14,
+            "height": 1.6,
+            "correct": true
+      },
+      {
+            "id": "p14_ex1_6_b",
+            "type": "choose",
+            "page": 14,
+            "exercise": "1",
+            "group": "1.6",
+            "text": "unfortunately",
+            "top": 57.5,
+            "left": 44.5,
+            "width": 15,
+            "height": 1.6,
+            "correct": false
+      }
+]  };
 
   // Get active inputs for a page (with custom saved overrides)
   WB.getPageInputs = function(page) {
@@ -509,14 +1502,14 @@
         u.lessons.forEach(function(les) {
           h += '<div class="eth-wb-lesson-row" data-unit="' + u.unit + '" data-lesson="' + les.code + '" ' +
             'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\');" ' +
-            'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:' + (les.code === '1.1' ? 'rgba(14,165,233,0.12)' : 'var(--soft)') + ';border:1.5px solid ' + (les.code === '1.1' ? '#38bdf8' : 'var(--line)') + ';cursor:pointer;transition:all 0.2s;">' +
+            'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(14,165,233,0.08);border:1.5px solid rgba(56,189,248,0.25);cursor:pointer;transition:all 0.2s;">' +
             '<div style="min-width:0;flex:1;">' +
-              '<div style="font-size:13.5px;font-weight:800;color:' + (les.code === '1.1' ? '#0284c7' : 'var(--text)') + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+              '<div style="font-size:13.5px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
               '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
             '</div>' +
             '<button type="button" ' +
               'onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\');" ' +
-              'style="flex:none;background:' + (les.code === '1.1' ? 'linear-gradient(135deg, #0284c7, #154b89)' : 'var(--card)') + ';color:' + (les.code === '1.1' ? '#fff' : 'var(--text)') + ';border:1px solid ' + (les.code === '1.1' ? 'transparent' : 'var(--line)') + ';border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:' + (les.code === '1.1' ? '0 4px 14px rgba(2,132,199,0.45)' : 'none') + ';">' +
+              'style="flex:none;background:linear-gradient(135deg, #0284c7, #154b89);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(2,132,199,0.35);">' +
               'Boshlash ➔' +
             '</button>' +
           '</div>';
@@ -708,14 +1701,19 @@
         'style="position:absolute;top:' + item.top + '%;left:' + item.left + '%;width:' + item.width + '%;height:' + item.height + '%;z-index:' + zIndex + ';">';
 
       if (itemType === 'fill') {
+        var isSmallLetter = (item.width && item.width <= 4.0);
+        var inputStyle = 'width:100%;height:100%;' + 
+          (isEditor ? 'pointer-events:none;' : '') + 
+          (isSmallLetter ? 'text-align:center;text-transform:uppercase;font-weight:900;padding:0;font-size:13px;' : '');
+
         h += '<input type="text" ' +
-          'class="eth-wb-input wb-fill-input" ' +
+          'class="eth-wb-input wb-fill-input' + (isSmallLetter ? ' wb-small-letter' : '') + '" ' +
           'data-id="' + item.id + '" ' +
           'data-page="' + pageNum + '" ' +
           'data-type="fill" ' +
           'data-correct="' + (item.correct || '').replace(/"/g, '&quot;') + '" ' +
           (isEditor ? 'disabled ' : '') +
-          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
+          'style="' + inputStyle + '" ' +
           'placeholder="' + (item.label ? item.label : '...') + '" autocomplete="off" spellcheck="false" />' +
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       } else if (itemType === 'cross') {
@@ -899,7 +1897,7 @@
       });
     });
 
-    // 3. Choose Chips Interaction (Click to select option in pair)
+    // 3. Choose Chips Interaction (Click to select option with instant correct/incorrect feedback)
     container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
       chip.addEventListener('click', function(e) {
         if (isEditor) return;
@@ -914,13 +1912,39 @@
             var wrap = c.closest('.eth-wb-item-wrap');
             if (wrap) {
               var hint = wrap.querySelector('.eth-wb-hint-badge');
-              if (hint) hint.style.display = 'none';
+              if (hint) {
+                hint.style.display = 'none';
+                hint.textContent = '';
+              }
             }
           });
         }
 
         if (!wasSelected) {
           this.classList.add('selected');
+          var isCorrect = (this.getAttribute('data-correct') === 'true');
+          var wrap = this.closest('.eth-wb-item-wrap');
+          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
+
+          if (isCorrect) {
+            this.classList.add('correct');
+            this.classList.remove('incorrect');
+            if (hint) {
+              hint.innerHTML = '<span style="color:#22c55e;font-weight:900;">✓ To‘g‘ri javob</span>';
+              hint.style.display = 'block';
+              hint.style.background = 'rgba(6, 78, 59, 0.95)';
+              hint.style.borderColor = '#10b981';
+            }
+          } else {
+            this.classList.add('incorrect');
+            this.classList.remove('correct');
+            if (hint) {
+              hint.innerHTML = '<span style="color:#f87171;font-weight:900;">✗ Noto‘g‘ri</span>';
+              hint.style.display = 'block';
+              hint.style.background = 'rgba(127, 29, 29, 0.95)';
+              hint.style.borderColor = '#ef4444';
+            }
+          }
         }
         updateCount();
       });
