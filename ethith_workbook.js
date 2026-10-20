@@ -209,7 +209,8 @@
     if (!arg || !arg.unit) {
       renderUnitsCatalog(container);
     } else if (arg.unit === 1 && (arg.lesson === '1.1' || !arg.lesson)) {
-      renderLesson1_1(container, arg.page || 4);
+      var pageNum = (arg && arg.page !== undefined) ? parseInt(arg.page, 10) : 4;
+      renderLesson1_1(container, pageNum);
     } else {
       renderUnitsCatalog(container);
     }
@@ -303,7 +304,12 @@
 
   // 2. Interactive Digital Workbook Viewer (Unit 1.1)
   function renderLesson1_1(container, activePage) {
-    activePage = parseInt(activePage, 10) || 4;
+    if (activePage === undefined || activePage === null) {
+      activePage = 4;
+    } else {
+      activePage = parseInt(activePage, 10);
+      if (isNaN(activePage)) activePage = 4;
+    }
     var isEditor = (window._ethithWbEditorMode === true);
 
     var basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
