@@ -16230,8 +16230,20 @@
         "label": "5",
         "id": "p87_custom_93894",
         "group": "5"
+      },
+      {
+        "page": 87,
+        "type": "fill",
+        "top": 47.8,
+        "left": 21.8,
+        "width": 26,
+        "height": 2.3,
+        "correct": "what I was doing the next/ following day.",
+        "label": "6",
+        "id": "p87_custom_15786",
+        "group": "6"
       }
     ]
   },
-  "updatedAt": 1792599498358
+  "updatedAt": 1792599516740
 }
