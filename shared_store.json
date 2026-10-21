@@ -9559,7 +9559,20 @@
         "height": 1.8,
         "correct": "5"
       }
+    ],
+    "80": [
+      {
+        "page": 80,
+        "type": "fill",
+        "top": 44.7,
+        "left": 12.5,
+        "width": 9.2,
+        "height": 1.7,
+        "correct": "adverts",
+        "label": "2",
+        "id": "p80_custom_69334"
+      }
     ]
   },
-  "updatedAt": 1792582929304
+  "updatedAt": 1792584170718
 }
