@@ -17320,8 +17320,8 @@
         "id": "u10_p75_ex7_10",
         "type": "fill",
         "page": 75,
-        "top": 74.5,
-        "left": 63.8,
+        "top": 72.6,
+        "left": 63.5,
         "width": 16.5,
         "height": 2,
         "correct": "might have escaped",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601174662
+  "updatedAt": 1792601180461
 }
