@@ -15359,8 +15359,8 @@
         "id": "u10_p68_ex2_6",
         "type": "fill",
         "page": 68,
-        "top": 88,
-        "left": 33.5,
+        "top": 86.6,
+        "left": 34.1,
         "width": 9,
         "height": 2,
         "correct": "broke",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600837929
+  "updatedAt": 1792600841237
 }
