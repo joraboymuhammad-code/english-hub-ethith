@@ -14987,8 +14987,8 @@
         "id": "u10_p67_ex5_2_b",
         "type": "choose",
         "page": 67,
-        "top": 22.3,
-        "left": 27,
+        "top": 21.6,
+        "left": 26.7,
         "width": 8.8,
         "height": 2,
         "correct": false,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600745113
+  "updatedAt": 1792600752459
 }
