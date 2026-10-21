@@ -14751,7 +14751,7 @@
         "id": "u10_p66_ex4_5_became",
         "type": "choose",
         "page": 66,
-        "top": 52.8,
+        "top": 52,
         "left": 64.2,
         "width": 6.5,
         "height": 1.8,
@@ -14764,8 +14764,8 @@
         "id": "u10_p66_ex4_5_raised",
         "type": "choose",
         "page": 66,
-        "top": 52.8,
-        "left": 71.2,
+        "top": 52.1,
+        "left": 70.8,
         "width": 5.8,
         "height": 1.8,
         "correct": false,
@@ -14790,7 +14790,7 @@
         "id": "u10_p66_ex4_6_take",
         "type": "choose",
         "page": 66,
-        "top": 54.5,
+        "top": 53.8,
         "left": 60,
         "width": 4,
         "height": 1.8,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600724217
+  "updatedAt": 1792600727387
 }
