@@ -12376,8 +12376,8 @@
         "id": "u8_p59_ex2_7",
         "type": "fill",
         "page": 59,
-        "top": 92,
-        "left": 24.5,
+        "top": 90.3,
+        "left": 28.5,
         "width": 15.5,
         "height": 2.2,
         "correct": "holiday",
@@ -12632,8 +12632,8 @@
         "id": "u8_p59_ex4a_2",
         "type": "fill",
         "page": 59,
-        "top": 75,
-        "left": 55,
+        "top": 74.7,
+        "left": 54.9,
         "width": 35,
         "height": 2.2,
         "correct": "I'm here to talk to you about decisions|I'm here to talk to you about decisions.|here",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592477492
+  "updatedAt": 1792592480691
 }
