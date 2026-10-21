@@ -15434,8 +15434,20 @@
         "label": "5",
         "id": "p83_custom_07453",
         "group": "5"
+      },
+      {
+        "page": 83,
+        "type": "fill",
+        "top": 77.6,
+        "left": 55.5,
+        "width": 36.8,
+        "height": 1.7,
+        "correct": "He asked if I was prepared to work in their office abroad.",
+        "label": "New",
+        "id": "p83_custom_31469",
+        "group": ""
       }
     ]
   },
-  "updatedAt": 1792595711332
+  "updatedAt": 1792595732438
 }
