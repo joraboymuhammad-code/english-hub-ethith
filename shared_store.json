@@ -8773,8 +8773,8 @@
         "type": "fill",
         "page": 46,
         "label": "2",
-        "top": 65.2,
-        "left": 71.5,
+        "top": 63.5,
+        "left": 71.6,
         "width": 15.5,
         "height": 1.8,
         "correct": "rent-free accommodation"
@@ -8784,8 +8784,8 @@
         "type": "fill",
         "page": 46,
         "label": "3",
-        "top": 67,
-        "left": 78.5,
+        "top": 65.7,
+        "left": 78.2,
         "width": 15.5,
         "height": 1.8,
         "correct": "promotion"
@@ -8795,8 +8795,8 @@
         "type": "fill",
         "page": 46,
         "label": "4",
-        "top": 70.4,
-        "left": 77.2,
+        "top": 69.2,
+        "left": 77.6,
         "width": 16.5,
         "height": 1.8,
         "correct": "career prospects"
@@ -8806,8 +8806,8 @@
         "type": "fill",
         "page": 46,
         "label": "5",
-        "top": 74.8,
-        "left": 75.2,
+        "top": 73.5,
+        "left": 75.3,
         "width": 16,
         "height": 1.8,
         "correct": "job satisfaction"
@@ -8817,8 +8817,8 @@
         "type": "fill",
         "page": 46,
         "label": "6",
-        "top": 79.5,
-        "left": 56.5,
+        "top": 79.9,
+        "left": 56.8,
         "width": 16.5,
         "height": 1.8,
         "correct": "sick pay"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587171679
+  "updatedAt": 1792587178779
 }
