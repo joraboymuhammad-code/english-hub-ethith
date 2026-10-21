@@ -4676,7 +4676,240 @@
         "height": 1.6,
         "correct": false
       }
+    ],
+    "38": [
+      {
+        "id": "p38_ex1_2",
+        "type": "fill",
+        "page": 38,
+        "label": "2",
+        "top": 43.5,
+        "left": 16.5,
+        "width": 8,
+        "height": 1.7,
+        "correct": "lane"
+      },
+      {
+        "id": "p38_ex1_3",
+        "type": "fill",
+        "page": 38,
+        "label": "3",
+        "top": 47,
+        "left": 16.5,
+        "width": 8,
+        "height": 1.7,
+        "correct": "accident"
+      },
+      {
+        "id": "p38_ex1_4",
+        "type": "fill",
+        "page": 38,
+        "label": "4",
+        "top": 52.8,
+        "left": 16.5,
+        "width": 8,
+        "height": 1.7,
+        "correct": "limit"
+      },
+      {
+        "id": "p38_ex1_5",
+        "type": "fill",
+        "page": 38,
+        "label": "5",
+        "top": 56.5,
+        "left": 32.5,
+        "width": 7.5,
+        "height": 1.7,
+        "correct": "wheel"
+      },
+      {
+        "id": "p38_ex1_6",
+        "type": "fill",
+        "page": 38,
+        "label": "6",
+        "top": 60,
+        "left": 34.5,
+        "width": 8,
+        "height": 1.7,
+        "correct": "injured"
+      },
+      {
+        "id": "p38_ex1_7",
+        "type": "fill",
+        "page": 38,
+        "label": "7",
+        "top": 63.5,
+        "left": 25.5,
+        "width": 5,
+        "height": 1.7,
+        "correct": "at"
+      },
+      {
+        "id": "p38_ex1_8",
+        "type": "fill",
+        "page": 38,
+        "label": "8",
+        "top": 65.5,
+        "left": 23,
+        "width": 7.5,
+        "height": 1.7,
+        "correct": "lights"
+      },
+      {
+        "id": "p38_ex3a_1",
+        "type": "fill",
+        "page": 38,
+        "label": "1",
+        "top": 24.3,
+        "left": 45,
+        "width": 3.5,
+        "height": 1.7,
+        "correct": "B"
+      },
+      {
+        "id": "p38_ex3a_2",
+        "type": "fill",
+        "page": 38,
+        "label": "2",
+        "top": 26,
+        "left": 45,
+        "width": 3.5,
+        "height": 1.7,
+        "correct": "C"
+      },
+      {
+        "id": "p38_ex3a_3",
+        "type": "fill",
+        "page": 38,
+        "label": "3",
+        "top": 24.3,
+        "left": 65,
+        "width": 3.5,
+        "height": 1.7,
+        "correct": "A"
+      },
+      {
+        "id": "p38_ex3b_2",
+        "type": "fill",
+        "page": 38,
+        "label": "2",
+        "top": 30.8,
+        "left": 54,
+        "width": 9,
+        "height": 1.7,
+        "correct": "accident"
+      },
+      {
+        "id": "p38_ex3b_3",
+        "type": "fill",
+        "page": 38,
+        "label": "3",
+        "top": 32.4,
+        "left": 56.5,
+        "width": 8,
+        "height": 1.7,
+        "correct": "motorway"
+      },
+      {
+        "id": "p38_ex3b_4",
+        "type": "fill",
+        "page": 38,
+        "label": "4",
+        "top": 36.8,
+        "left": 52.5,
+        "width": 8,
+        "height": 1.7,
+        "correct": "jam"
+      },
+      {
+        "id": "p38_ex3b_5",
+        "type": "fill",
+        "page": 38,
+        "label": "5",
+        "top": 41.8,
+        "left": 58.5,
+        "width": 7.5,
+        "height": 1.7,
+        "correct": "busy"
+      },
+      {
+        "id": "p38_ex3b_6",
+        "type": "fill",
+        "page": 38,
+        "label": "6",
+        "top": 47.7,
+        "left": 45.5,
+        "width": 8,
+        "height": 1.7,
+        "correct": "wheel"
+      },
+      {
+        "id": "p38_ex3b_7",
+        "type": "fill",
+        "page": 38,
+        "label": "7",
+        "top": 50.7,
+        "left": 45.5,
+        "width": 8,
+        "height": 1.7,
+        "correct": "lights"
+      },
+      {
+        "id": "p38_ex3b_8",
+        "type": "fill",
+        "page": 38,
+        "label": "8",
+        "top": 53.6,
+        "left": 55,
+        "width": 8,
+        "height": 1.7,
+        "correct": "park"
+      },
+      {
+        "id": "p38_ex3b_9",
+        "type": "fill",
+        "page": 38,
+        "label": "9",
+        "top": 59.5,
+        "left": 55.5,
+        "width": 9,
+        "height": 1.7,
+        "correct": "lane"
+      },
+      {
+        "id": "p38_ex3b_10",
+        "type": "fill",
+        "page": 38,
+        "label": "10",
+        "top": 59.5,
+        "left": 78,
+        "width": 8.5,
+        "height": 1.7,
+        "correct": "overtake"
+      },
+      {
+        "id": "p38_ex3b_11",
+        "type": "fill",
+        "page": 38,
+        "label": "11",
+        "top": 74,
+        "left": 65.1,
+        "width": 8.5,
+        "height": 1.7,
+        "correct": "junction"
+      },
+      {
+        "id": "p38_ex3b_12",
+        "type": "fill",
+        "page": 38,
+        "label": "12",
+        "top": 75.4,
+        "left": 49.4,
+        "width": 9,
+        "height": 1.7,
+        "correct": "brake"
+      }
     ]
   },
-  "updatedAt": 1792548883152
+  "updatedAt": 1792548898398
 }
