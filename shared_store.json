@@ -13114,8 +13114,8 @@
         "id": "u9_p60_ex3_4_slim",
         "type": "choose",
         "page": 60,
-        "top": 67.6,
-        "left": 56.2,
+        "top": 69,
+        "left": 55.8,
         "width": 4,
         "height": 2,
         "correct": false,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592575526
+  "updatedAt": 1792592579564
 }
