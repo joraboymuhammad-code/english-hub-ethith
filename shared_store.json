@@ -15482,8 +15482,8 @@
         "id": "u10_p69_ex4_8",
         "type": "fill",
         "page": 69,
-        "top": 43.2,
-        "left": 23.5,
+        "top": 41.3,
+        "left": 23.1,
         "width": 5.2,
         "height": 2,
         "correct": "-|no article|–",
@@ -15493,7 +15493,7 @@
         "id": "u10_p69_ex4_9",
         "type": "fill",
         "page": 69,
-        "top": 51.5,
+        "top": 50,
         "left": 16.5,
         "width": 5,
         "height": 2,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600847961
+  "updatedAt": 1792600851095
 }
