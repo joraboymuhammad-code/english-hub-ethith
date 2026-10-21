@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792590934650,
+      "created": 1792591565482,
       "students": [],
       "messages": [
         {
@@ -608,7 +608,7 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "updatedAt": 1792548645295
+      "updatedAt": 1792591567877
     }
   ],
   "p2pListings": [],
@@ -10732,5 +10732,5 @@
       }
     ]
   },
-  "updatedAt": 1792590938873
+  "updatedAt": 1792591569751
 }
