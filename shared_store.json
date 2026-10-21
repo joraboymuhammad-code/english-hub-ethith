@@ -18411,8 +18411,8 @@
         "id": "u10_p79_ex3_2",
         "type": "fill",
         "page": 79,
-        "top": 71.5,
-        "left": 58.5,
+        "top": 69.4,
+        "left": 58.2,
         "width": 8.5,
         "height": 2,
         "correct": "hope",
@@ -18422,8 +18422,8 @@
         "id": "u10_p79_ex3_3",
         "type": "fill",
         "page": 79,
-        "top": 75,
-        "left": 59.8,
+        "top": 72.7,
+        "left": 60.8,
         "width": 8.5,
         "height": 2,
         "correct": "forgive",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601340497
+  "updatedAt": 1792601345768
 }
