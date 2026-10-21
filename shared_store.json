@@ -15874,8 +15874,8 @@
         "id": "u10_p70_ex3_2_a",
         "type": "choose",
         "page": 70,
-        "top": 24.6,
-        "left": 68,
+        "top": 24,
+        "left": 67.9,
         "width": 7.5,
         "height": 1.8,
         "correct": true,
@@ -15887,8 +15887,8 @@
         "id": "u10_p70_ex3_2_b",
         "type": "choose",
         "page": 70,
-        "top": 24.6,
-        "left": 80,
+        "top": 23.8,
+        "left": 80.3,
         "width": 9,
         "height": 1.8,
         "correct": false,
@@ -15913,8 +15913,8 @@
         "id": "u10_p70_ex3_3_b",
         "type": "choose",
         "page": 70,
-        "top": 26.5,
-        "left": 80,
+        "top": 27,
+        "left": 79.9,
         "width": 9,
         "height": 1.8,
         "correct": true,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600899271
+  "updatedAt": 1792600904702
 }
