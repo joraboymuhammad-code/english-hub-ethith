@@ -4859,8 +4859,8 @@
         "type": "fill",
         "page": 38,
         "label": "8",
-        "top": 53.6,
-        "left": 55,
+        "top": 65,
+        "left": 56.3,
         "width": 8,
         "height": 1.7,
         "correct": "park"
@@ -4870,8 +4870,8 @@
         "type": "fill",
         "page": 38,
         "label": "9",
-        "top": 72.1,
-        "left": 55.4,
+        "top": 72.6,
+        "left": 56.7,
         "width": 9,
         "height": 1.7,
         "correct": "lane"
@@ -4911,5 +4911,5 @@
       }
     ]
   },
-  "updatedAt": 1792548904428
+  "updatedAt": 1792548911781
 }
