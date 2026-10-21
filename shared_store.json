@@ -665,7 +665,7 @@
           },
           "2026-10-22": {
             "std_5": {
-              "status": "K"
+              "status": ""
             }
           }
         },
@@ -676,7 +676,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792606703758
+        "updatedAt": 1792606706665
       },
       "customStudentNames": {}
     },
@@ -21224,5 +21224,5 @@
       }
     ]
   },
-  "updatedAt": 1792606704569
+  "updatedAt": 1792606707510
 }
