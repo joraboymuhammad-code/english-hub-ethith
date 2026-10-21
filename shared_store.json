@@ -14511,8 +14511,8 @@
         "id": "u10_p66_ex1_2",
         "type": "fill",
         "page": 66,
-        "top": 41.5,
-        "left": 23.5,
+        "top": 40.4,
+        "left": 22.5,
         "width": 9.5,
         "height": 2,
         "correct": "a loan",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600673173
+  "updatedAt": 1792600689204
 }
