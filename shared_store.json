@@ -17359,8 +17359,8 @@
         "id": "u10_p76_ex1_3_feel",
         "type": "choose",
         "page": 76,
-        "top": 45.4,
-        "left": 21,
+        "top": 45.2,
+        "left": 20.4,
         "width": 3.5,
         "height": 1.8,
         "correct": true,
@@ -17385,8 +17385,8 @@
         "id": "u10_p76_ex1_4_say",
         "type": "choose",
         "page": 76,
-        "top": 56.5,
-        "left": 24.5,
+        "top": 55.6,
+        "left": 24.2,
         "width": 3.2,
         "height": 1.8,
         "correct": true,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601189588
+  "updatedAt": 1792601194690
 }
