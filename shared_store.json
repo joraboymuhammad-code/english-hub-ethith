@@ -15374,8 +15374,20 @@
         "label": "5",
         "id": "p83_custom_60161",
         "group": "5"
+      },
+      {
+        "page": 83,
+        "type": "fill",
+        "top": 80.9,
+        "left": 13.6,
+        "width": 34.8,
+        "height": 1.8,
+        "correct": "He asked me if I was going to travel back to Brussels the next day.",
+        "label": "6",
+        "id": "p83_custom_77067",
+        "group": "6"
       }
     ]
   },
-  "updatedAt": 1792595361304
+  "updatedAt": 1792595378089
 }
