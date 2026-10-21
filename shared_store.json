@@ -1016,8 +1016,8 @@
         "exercise": "3",
         "group": "3.6",
         "text": "already visited",
-        "top": 85.4,
-        "left": 54.2,
+        "top": 82.9,
+        "left": 54.4,
         "width": 6.8,
         "height": 1.6,
         "correct": false
@@ -1029,8 +1029,8 @@
         "exercise": "3",
         "group": "3.6",
         "text": "has already visited",
-        "top": 85.4,
-        "left": 63.8,
+        "top": 83.4,
+        "left": 62.4,
         "width": 14.8,
         "height": 1.6,
         "correct": true
@@ -1055,8 +1055,8 @@
         "exercise": "3",
         "group": "3.7",
         "text": "are including",
-        "top": 87.3,
-        "left": 75,
+        "top": 85.5,
+        "left": 72.8,
         "width": 10.2,
         "height": 1.6,
         "correct": false
@@ -8613,5 +8613,5 @@
       }
     ]
   },
-  "updatedAt": 1792582653129
+  "updatedAt": 1792582660752
 }
