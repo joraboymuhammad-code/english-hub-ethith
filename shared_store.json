@@ -16592,8 +16592,8 @@
         "id": "u10_p73_ex1_5_cant",
         "type": "choose",
         "page": 73,
-        "top": 36.2,
-        "left": 25.8,
+        "top": 35.4,
+        "left": 24.2,
         "width": 6.5,
         "height": 1.8,
         "correct": false,
@@ -16605,8 +16605,8 @@
         "id": "u10_p73_ex2_2",
         "type": "fill",
         "page": 73,
-        "top": 48,
-        "left": 27.5,
+        "top": 47,
+        "left": 28.4,
         "width": 16,
         "height": 2,
         "correct": "as popular as",
@@ -16616,8 +16616,8 @@
         "id": "u10_p73_ex2_3",
         "type": "fill",
         "page": 73,
-        "top": 51.8,
-        "left": 23.5,
+        "top": 50.3,
+        "left": 25.5,
         "width": 16,
         "height": 2,
         "correct": "far easier than",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601076337
+  "updatedAt": 1792601082289
 }
