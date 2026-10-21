@@ -14135,8 +14135,8 @@
         "id": "u9_p64_ex2_3",
         "type": "fill",
         "page": 64,
-        "top": 67.4,
-        "left": 44,
+        "top": 68.4,
+        "left": 13.9,
         "width": 3.5,
         "height": 2.2,
         "correct": "off",
@@ -14146,8 +14146,8 @@
         "id": "u9_p64_ex2_4",
         "type": "fill",
         "page": 64,
-        "top": 72.6,
-        "left": 22,
+        "top": 71.3,
+        "left": 22.6,
         "width": 8,
         "height": 2.2,
         "correct": "after",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792593474401
+  "updatedAt": 1792593478245
 }
