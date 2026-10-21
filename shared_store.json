@@ -11267,7 +11267,7 @@
         "id": "u8_p55_ex4_5_b",
         "type": "choose",
         "page": 55,
-        "top": 35.5,
+        "top": 35,
         "left": 15.5,
         "width": 7.2,
         "height": 2,
@@ -11280,7 +11280,7 @@
         "id": "u8_p55_ex4_6_a",
         "type": "choose",
         "page": 55,
-        "top": 37.2,
+        "top": 36.5,
         "left": 23.5,
         "width": 4,
         "height": 2,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592203880
+  "updatedAt": 1792592207189
 }
