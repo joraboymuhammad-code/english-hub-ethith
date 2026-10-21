@@ -14080,8 +14080,8 @@
         "id": "u9_p64_ex1_5",
         "type": "fill",
         "page": 64,
-        "top": 44.8,
-        "left": 12.5,
+        "top": 39.9,
+        "left": 17.8,
         "width": 36,
         "height": 2.2,
         "correct": "thought about your choices",
@@ -14091,8 +14091,8 @@
         "id": "u9_p64_ex1_6",
         "type": "fill",
         "page": 64,
-        "top": 49.7,
-        "left": 12.5,
+        "top": 44.4,
+        "left": 10.3,
         "width": 36,
         "height": 2.2,
         "correct": "make him out",
@@ -14102,8 +14102,8 @@
         "id": "u9_p64_ex1_7",
         "type": "fill",
         "page": 64,
-        "top": 54.7,
-        "left": 12.5,
+        "top": 47.9,
+        "left": 13.1,
         "width": 36,
         "height": 2.2,
         "correct": "broken down",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792593454677
+  "updatedAt": 1792593460049
 }
