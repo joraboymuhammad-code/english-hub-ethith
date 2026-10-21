@@ -1429,8 +1429,8 @@
         "page": 9,
         "exercise": "3",
         "label": "3",
-        "top": 64,
-        "left": 21,
+        "top": 65,
+        "left": 25.4,
         "width": 7.5,
         "height": 1.8,
         "correct": "you or YOU"
@@ -1441,8 +1441,8 @@
         "page": 9,
         "exercise": "3",
         "label": "4",
-        "top": 65.8,
-        "left": 21,
+        "top": 64.6,
+        "left": 39.6,
         "width": 7.5,
         "height": 1.8,
         "correct": "me or ME"
@@ -1477,8 +1477,8 @@
         "page": 9,
         "exercise": "3",
         "label": "7",
-        "top": 69.3,
-        "left": 28.5,
+        "top": 77,
+        "left": 14.8,
         "width": 8,
         "height": 1.8,
         "correct": "think or THINK"
@@ -9045,5 +9045,5 @@
       }
     ]
   },
-  "updatedAt": 1792582793871
+  "updatedAt": 1792582798606
 }
