@@ -7391,8 +7391,8 @@
         "page": 41,
         "group": "p41_5a_4",
         "text": "a Well, she's done better at school...",
-        "top": 68,
-        "left": 10.5,
+        "top": 67,
+        "left": 10.9,
         "width": 37.5,
         "height": 3,
         "correct": false
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586914595
+  "updatedAt": 1792586918834
 }
