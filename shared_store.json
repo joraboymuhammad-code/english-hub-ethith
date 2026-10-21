@@ -16108,8 +16108,20 @@
         "label": "2",
         "id": "p86_custom_64660",
         "group": "2"
+      },
+      {
+        "page": 86,
+        "type": "fill",
+        "top": 69.9,
+        "left": 80.8,
+        "width": 9.1,
+        "height": 1.7,
+        "correct": "told",
+        "label": "3",
+        "id": "p86_custom_78768",
+        "group": "3"
       }
     ]
   },
-  "updatedAt": 1792599168767
+  "updatedAt": 1792599179692
 }
