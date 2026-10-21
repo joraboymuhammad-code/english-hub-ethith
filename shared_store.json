@@ -12632,8 +12632,8 @@
         "id": "u8_p59_ex4a_2",
         "type": "fill",
         "page": 59,
-        "top": 72.1,
-        "left": 54.8,
+        "top": 74.5,
+        "left": 54.2,
         "width": 35,
         "height": 2.2,
         "correct": "I'm here to talk to you about decisions|I'm here to talk to you about decisions.|here",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592495615
+  "updatedAt": 1792592499386
 }
