@@ -13350,8 +13350,8 @@
         "id": "u9_p61_ex6_3",
         "type": "fill",
         "page": 61,
-        "top": 19.5,
-        "left": 49.5,
+        "top": 18,
+        "left": 49.2,
         "width": 42,
         "height": 2.2,
         "correct": "is far more confident than his brother, Kamal|is far more confident than his brother Kamal",
@@ -13361,8 +13361,8 @@
         "id": "u9_p61_ex6_4",
         "type": "fill",
         "page": 61,
-        "top": 23,
-        "left": 49,
+        "top": 21.5,
+        "left": 48.9,
         "width": 42,
         "height": 2.2,
         "correct": "used to be much shorter than it is now|is much shorter now than it used to be",
@@ -13372,8 +13372,8 @@
         "id": "u9_p61_ex6_5",
         "type": "fill",
         "page": 61,
-        "top": 26.8,
-        "left": 47,
+        "top": 25.1,
+        "left": 46.7,
         "width": 44,
         "height": 2.2,
         "correct": "is the most valuable painting in the museum",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592591074
+  "updatedAt": 1792592595190
 }
