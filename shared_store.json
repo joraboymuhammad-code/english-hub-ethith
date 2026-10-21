@@ -15026,8 +15026,8 @@
         "id": "u10_p67_ex5_4_a",
         "type": "choose",
         "page": 67,
-        "top": 33.5,
-        "left": 15.5,
+        "top": 32.6,
+        "left": 15.4,
         "width": 10,
         "height": 2,
         "correct": false,
@@ -15039,7 +15039,7 @@
         "id": "u10_p67_ex5_4_b",
         "type": "choose",
         "page": 67,
-        "top": 33.5,
+        "top": 32.8,
         "left": 26.2,
         "width": 12,
         "height": 2,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600755591
+  "updatedAt": 1792600758961
 }
