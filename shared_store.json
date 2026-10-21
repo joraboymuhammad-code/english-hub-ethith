@@ -938,8 +938,8 @@
         "exercise": "3",
         "group": "3.3",
         "text": "is having",
-        "top": 72.3,
-        "left": 69.8,
+        "top": 71.2,
+        "left": 75,
         "width": 7.2,
         "height": 1.6,
         "correct": false
@@ -951,8 +951,8 @@
         "exercise": "3",
         "group": "3.3",
         "text": "has",
-        "top": 72.3,
-        "left": 78.4,
+        "top": 71.3,
+        "left": 84.2,
         "width": 3.8,
         "height": 1.6,
         "correct": true
@@ -8613,5 +8613,5 @@
       }
     ]
   },
-  "updatedAt": 1792582639400
+  "updatedAt": 1792582646947
 }
