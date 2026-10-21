@@ -527,7 +527,15 @@
     else if (event.type === 'WORKBOOK_PAGE_UPDATED' && event.page && event.inputs) {
       var pNum = parseInt(event.page, 10);
       console.log('[LiveRT] Real-time workbook page ' + pNum + ' update received from teacher!');
+      if (!S.workbookOverrides) S.workbookOverrides = {};
+      S.workbookOverrides[pNum] = event.inputs;
+      try {
+        localStorage.setItem('ethith_wb_coords_v13_' + pNum, JSON.stringify(event.inputs));
+      } catch(e) {}
       if (window.ETHITH_WORKBOOK_B1) {
+        if (window.ETHITH_WORKBOOK_B1.defaultInputs) {
+          window.ETHITH_WORKBOOK_B1.defaultInputs[pNum] = event.inputs;
+        }
         window.ETHITH_WORKBOOK_B1.savePageInputs(pNum, event.inputs, /* noBroadcast */ true);
         if (typeof window.ETHITH_WORKBOOK_B1.liveRefreshPage === 'function') {
           window.ETHITH_WORKBOOK_B1.liveRefreshPage(pNum);
@@ -1424,6 +1432,15 @@
         if (!S.p2pListings) S.p2pListings = [];
         mergeP2PListings(S.p2pListings, remoteData.p2pListings || [], S.deletedListingIds || []);
 
+        if (!S.workbookOverrides) S.workbookOverrides = {};
+        if (remoteData.workbookOverrides && typeof remoteData.workbookOverrides === 'object') {
+          Object.keys(remoteData.workbookOverrides).forEach(function(k) {
+            if (!S.workbookOverrides[k]) {
+              S.workbookOverrides[k] = remoteData.workbookOverrides[k];
+            }
+          });
+        }
+
         var cleanClasses = JSON.parse(JSON.stringify(S.classes));
         cleanClasses.forEach(function(c) {
           if (c.deletedMsgIds && Array.isArray(c.deletedMsgIds) && c.messages) {
@@ -1451,6 +1468,7 @@
           deletedListingIds: S.deletedListingIds || [],
           accounts: cleanAccounts,
           p2pListings: S.p2pListings || [],
+          workbookOverrides: S.workbookOverrides || {},
           updatedAt: Date.now()
         };
 
@@ -1594,6 +1612,22 @@
         if (!S.p2pListings) S.p2pListings = [];
         mergeP2PListings(S.p2pListings, remote.p2pListings, S.deletedListingIds || []);
       }
+      if (remote.workbookOverrides && typeof remote.workbookOverrides === 'object') {
+        if (!S.workbookOverrides) S.workbookOverrides = {};
+        Object.keys(remote.workbookOverrides).forEach(function(pKey) {
+          var pNum = parseInt(pKey, 10);
+          var inps = remote.workbookOverrides[pKey];
+          if (Array.isArray(inps) && inps.length > 0) {
+            S.workbookOverrides[pNum] = inps;
+            try {
+              localStorage.setItem('ethith_wb_coords_v13_' + pNum, JSON.stringify(inps));
+            } catch(e) {}
+            if (window.ETHITH_WORKBOOK_B1 && window.ETHITH_WORKBOOK_B1.defaultInputs) {
+              window.ETHITH_WORKBOOK_B1.defaultInputs[pNum] = inps;
+            }
+          }
+        });
+      }
       var c1 = mergeClasses(S.classes, remote.classes || []);
       var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
       if ((c1 || c2) && window.EthithApp) {
@@ -1606,6 +1640,10 @@
     });
     if (S.user && window.EthithSync && window.EthithSync.broadcastUserState) {
       setTimeout(window.EthithSync.broadcastUserState, 500);
+    }
+    // Auto-sync any local teacher edits to cloud
+    if (window.EthithSync && window.EthithSync.syncAllLocalWorkbookOverridesToCloud) {
+      setTimeout(window.EthithSync.syncAllLocalWorkbookOverridesToCloud, 1200);
     }
   }
 
@@ -1625,6 +1663,31 @@
           if (!S.deletedExamIds) S.deletedExamIds = [];
           remote.deletedExamIds.forEach(function(id) {
             if (S.deletedExamIds.indexOf(id) === -1) S.deletedExamIds.push(id);
+          });
+        }
+        if (remote.workbookOverrides && typeof remote.workbookOverrides === 'object') {
+          if (!S.workbookOverrides) S.workbookOverrides = {};
+          var wbChanged = false;
+          Object.keys(remote.workbookOverrides).forEach(function(pKey) {
+            var pNum = parseInt(pKey, 10);
+            var inps = remote.workbookOverrides[pKey];
+            if (Array.isArray(inps) && inps.length > 0) {
+              var curSaved = localStorage.getItem('ethith_wb_coords_v13_' + pNum);
+              var curStr = JSON.stringify(inps);
+              if (curSaved !== curStr) {
+                S.workbookOverrides[pNum] = inps;
+                try {
+                  localStorage.setItem('ethith_wb_coords_v13_' + pNum, curStr);
+                } catch(e) {}
+                if (window.ETHITH_WORKBOOK_B1 && window.ETHITH_WORKBOOK_B1.defaultInputs) {
+                  window.ETHITH_WORKBOOK_B1.defaultInputs[pNum] = inps;
+                }
+                if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.liveRefreshPage === 'function') {
+                  window.ETHITH_WORKBOOK_B1.liveRefreshPage(pNum);
+                }
+                wbChanged = true;
+              }
+            }
           });
         }
         var c1 = mergeClasses(S.classes, remote.classes || []);
@@ -1748,6 +1811,64 @@
     if (pushRemoteStore) pushRemoteStore();
   }
 
+  function saveWorkbookCloudOverrides(page, inputs) {
+    page = parseInt(page, 10);
+    var S = (window.EthithApp && window.EthithApp.state) || {};
+    if (!S.workbookOverrides) S.workbookOverrides = {};
+    S.workbookOverrides[page] = inputs;
+
+    // Instant live real-time broadcast via MQTT + BroadcastChannel
+    publishLive({
+      type: 'WORKBOOK_PAGE_UPDATED',
+      page: page,
+      inputs: inputs,
+      version: '13.0',
+      ts: Date.now()
+    });
+
+    // Save persistently to GitHub cloud store
+    pushRemoteStore().then(function() {
+      console.log('[WB-Sync] Page ' + page + ' saved to cloud store successfully');
+    }).catch(function(e) {
+      console.warn('[WB-Sync] Cloud save deferred:', e);
+    });
+  }
+
+  function getWorkbookCloudOverrides(page) {
+    page = parseInt(page, 10);
+    var S = (window.EthithApp && window.EthithApp.state) || {};
+    return (S.workbookOverrides && S.workbookOverrides[page]) ? S.workbookOverrides[page] : null;
+  }
+
+  function syncAllLocalWorkbookOverridesToCloud() {
+    var S = (window.EthithApp && window.EthithApp.state) || {};
+    if (!S.workbookOverrides) S.workbookOverrides = {};
+    var count = 0;
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf('ethith_wb_coords_') === 0) {
+          var match = k.match(/ethith_wb_coords_(?:v\d+_)?(\d+)$/);
+          if (match && match[1]) {
+            var pNum = parseInt(match[1], 10);
+            try {
+              var val = JSON.parse(localStorage.getItem(k));
+              if (Array.isArray(val) && val.length > 0) {
+                S.workbookOverrides[pNum] = val;
+                localStorage.setItem('ethith_wb_coords_v13_' + pNum, JSON.stringify(val));
+                count++;
+              }
+            } catch(e) {}
+          }
+        }
+      }
+    } catch(e) {}
+    if (count > 0) {
+      console.log('[WB-Sync] Auto-syncing ' + count + ' workbook pages to cloud...');
+      pushRemoteStore().catch(function() {});
+    }
+  }
+
   window.EthithSync = {
     broadcastUserState: broadcastUserState,
     publishLive: publishLive,
@@ -1757,6 +1878,9 @@
     pushRemoteStore: pushRemoteStore,
     syncInitialData: syncInitialData,
     broadcastLocal: broadcastLocal,
+    saveWorkbookCloudOverrides: saveWorkbookCloudOverrides,
+    getWorkbookCloudOverrides: getWorkbookCloudOverrides,
+    syncAllLocalWorkbookOverridesToCloud: syncAllLocalWorkbookOverridesToCloud,
     isMqttConnected: function() {
       return isMeshConnected;
     }
