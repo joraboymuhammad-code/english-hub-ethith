@@ -7871,8 +7871,8 @@
         "type": "fill",
         "page": 42,
         "label": "7",
-        "top": 76.2,
-        "left": 66.8,
+        "top": 74.9,
+        "left": 69.5,
         "width": 10,
         "height": 1.8,
         "correct": "limit"
@@ -7882,8 +7882,8 @@
         "type": "fill",
         "page": 42,
         "label": "8",
-        "top": 78,
-        "left": 62.5,
+        "top": 76.5,
+        "left": 63.2,
         "width": 10,
         "height": 1.8,
         "correct": "lights"
@@ -7893,8 +7893,8 @@
         "type": "fill",
         "page": 42,
         "label": "9",
-        "top": 79.5,
-        "left": 64.5,
+        "top": 78.3,
+        "left": 65.1,
         "width": 10,
         "height": 1.8,
         "correct": "accident"
@@ -7904,8 +7904,8 @@
         "type": "fill",
         "page": 42,
         "label": "10",
-        "top": 81.2,
-        "left": 67,
+        "top": 80.1,
+        "left": 67.6,
         "width": 10,
         "height": 1.8,
         "correct": "injured"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586992652
+  "updatedAt": 1792587000243
 }
