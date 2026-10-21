@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792499045394,
+      "created": 1792429062767,
       "students": [],
       "messages": [
         {
@@ -572,18 +572,6 @@
     {
       "id": "admin_official_teacher",
       "role": "teacher",
-      "name": "Ustoz Muhammadyusuf",
-      "email": "admin_12038f1aq8syash@ethith.uz",
-      "createdAt": 1792429101989,
-      "coins": 500,
-      "gifts": [],
-      "level": "A1",
-      "dailyMinutes": 20,
-      "updatedAt": 1792600668240
-    },
-    {
-      "id": "admin_official_teacher",
-      "role": "teacher",
       "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
@@ -591,11 +579,22 @@
       "gifts": [],
       "level": "A1",
       "dailyMinutes": 20,
-      "updatedAt": 1792502061638,
+      "updatedAt": 1792600668240,
       "avatar": null,
       "nameStyle": null,
       "title": null,
       "victorySound": null
+    },
+    {
+      "id": "admin_12038f1aq8syash@ethith.uz",
+      "role": "teacher",
+      "name": "Ustoz Muhammadyusuf",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 150,
+      "gifts": [],
+      "nameStyle": null,
+      "createdAt": 1792502058827,
+      "level": "A1"
     },
     {
       "id": "tg_98124765",
@@ -603,12 +602,13 @@
       "name": "Striker_uzb",
       "email": "mu_striker@telegram.org",
       "coins": 100,
+      "avatar": null,
       "level": "A1",
       "dailyMinutes": 0,
       "nameStyle": null,
+      "title": null,
       "victorySound": null,
-      "updatedAt": 1792601425974,
-      "gifts": []
+      "updatedAt": 1792601426082
     }
   ],
   "p2pListings": [],
@@ -20466,8 +20466,8 @@
       {
         "page": 87,
         "type": "fill",
-        "top": 44.7,
-        "left": 78.4,
+        "top": 45.3,
+        "left": 78.3,
         "width": 3,
         "height": 1.9,
         "correct": "a",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601433695
+  "updatedAt": 1792603039192
 }
