@@ -9768,8 +9768,8 @@
         "type": "fill",
         "page": 50,
         "label": "iday",
-        "top": 76.5,
-        "left": 47,
+        "top": 75,
+        "left": 46.9,
         "width": 6.5,
         "height": 1.8,
         "correct": "iday"
@@ -9779,8 +9779,8 @@
         "type": "fill",
         "page": 50,
         "label": "faction",
-        "top": 78.2,
-        "left": 49,
+        "top": 76.5,
+        "left": 50.6,
         "width": 7,
         "height": 1.8,
         "correct": "faction"
@@ -9790,8 +9790,8 @@
         "type": "fill",
         "page": 50,
         "label": "dant",
-        "top": 80,
-        "left": 57,
+        "top": 78.2,
+        "left": 59.1,
         "width": 6,
         "height": 1.8,
         "correct": "dant"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792588536888
+  "updatedAt": 1792588542288
 }
