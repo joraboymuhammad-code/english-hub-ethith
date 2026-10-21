@@ -6674,8 +6674,8 @@
         "page": 38,
         "group": "p38_1_7",
         "text": "lane",
-        "top": 62,
-        "left": 37.5,
+        "top": 63.2,
+        "left": 26.4,
         "width": 5.5,
         "height": 1.8,
         "correct": true
@@ -6686,8 +6686,8 @@
         "page": 38,
         "group": "p38_1_8",
         "text": "accident",
-        "top": 65,
-        "left": 28.5,
+        "top": 66.2,
+        "left": 22.1,
         "width": 7,
         "height": 1.8,
         "correct": true
@@ -6698,8 +6698,8 @@
         "page": 38,
         "group": "p38_1_8",
         "text": "overtake",
-        "top": 65,
-        "left": 36,
+        "top": 66.5,
+        "left": 29.5,
         "width": 7.2,
         "height": 1.8,
         "correct": false
@@ -7019,7 +7019,7 @@
         "type": "fill",
         "page": 39,
         "label": "5b",
-        "top": 80.9,
+        "top": 79.9,
         "left": 33.2,
         "width": 8.5,
         "height": 1.8,
@@ -7030,7 +7030,7 @@
         "type": "fill",
         "page": 39,
         "label": "5c",
-        "top": 82.5,
+        "top": 81.7,
         "left": 37.2,
         "width": 8.5,
         "height": 1.8,
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586839697
+  "updatedAt": 1792586849961
 }
