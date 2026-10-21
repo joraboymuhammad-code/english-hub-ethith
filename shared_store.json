@@ -15370,8 +15370,8 @@
         "id": "u10_p68_ex3_2",
         "type": "fill",
         "page": 68,
-        "top": 34,
-        "left": 60,
+        "top": 32.3,
+        "left": 60.4,
         "width": 13.5,
         "height": 2,
         "correct": "tournament",
@@ -15381,7 +15381,7 @@
         "id": "u10_p68_ex3_3",
         "type": "fill",
         "page": 68,
-        "top": 40.5,
+        "top": 38.7,
         "left": 60,
         "width": 13.5,
         "height": 2,
@@ -15392,8 +15392,8 @@
         "id": "u10_p68_ex3_4",
         "type": "fill",
         "page": 68,
-        "top": 47,
-        "left": 60,
+        "top": 44.9,
+        "left": 60.4,
         "width": 13.5,
         "height": 2,
         "correct": "race",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600828001
+  "updatedAt": 1792600831334
 }
