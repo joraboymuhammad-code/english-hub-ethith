@@ -13023,7 +13023,7 @@
         "id": "u9_p60_ex3_3_shape_good",
         "type": "choose",
         "page": 60,
-        "top": 63.4,
+        "top": 62.8,
         "left": 80,
         "width": 4.5,
         "height": 2,
@@ -13036,7 +13036,7 @@
         "id": "u9_p60_ex3_3_shape_large",
         "type": "choose",
         "page": 60,
-        "top": 63.4,
+        "top": 62.9,
         "left": 84.5,
         "width": 4.8,
         "height": 2,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592564285
+  "updatedAt": 1792592567558
 }
