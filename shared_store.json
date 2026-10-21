@@ -15378,8 +15378,8 @@
       {
         "page": 83,
         "type": "fill",
-        "top": 80.9,
-        "left": 13.6,
+        "top": 80,
+        "left": 13.3,
         "width": 34.8,
         "height": 1.8,
         "correct": "He asked me if I was going to travel back to Brussels the next day.",
@@ -15389,5 +15389,5 @@
       }
     ]
   },
-  "updatedAt": 1792595378089
+  "updatedAt": 1792595381576
 }
