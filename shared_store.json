@@ -15170,8 +15170,8 @@
         "id": "u10_p67_ex7_3",
         "type": "fill",
         "page": 67,
-        "top": 66.8,
-        "left": 43.5,
+        "top": 65.1,
+        "left": 43.2,
         "width": 16.5,
         "height": 2,
         "correct": "is made",
@@ -15181,8 +15181,8 @@
         "id": "u10_p67_ex7_4",
         "type": "fill",
         "page": 67,
-        "top": 68.3,
-        "left": 52,
+        "top": 66.9,
+        "left": 50.8,
         "width": 12,
         "height": 2,
         "correct": "contains",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600772862
+  "updatedAt": 1792600776503
 }
