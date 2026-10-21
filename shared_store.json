@@ -15690,9 +15690,9 @@
         "width": 7.1,
         "height": 1.8,
         "correct": "in",
-        "label": "New",
+        "label": "3",
         "id": "p84_custom_66354",
-        "group": ""
+        "group": "3"
       },
       {
         "page": 84,
@@ -15780,5 +15780,5 @@
       }
     ]
   },
-  "updatedAt": 1792597164559
+  "updatedAt": 1792597168953
 }
