@@ -15984,8 +15984,21 @@
         "id": "p85_custom_42330",
         "group": "1",
         "text": "1"
+      },
+      {
+        "page": 85,
+        "type": "choose",
+        "top": 26.6,
+        "left": 52.9,
+        "width": 39.3,
+        "height": 1.7,
+        "correct": true,
+        "label": "New",
+        "id": "p85_custom_62988",
+        "group": "p85_grp_2988",
+        "text": ""
       }
     ]
   },
-  "updatedAt": 1792598951923
+  "updatedAt": 1792598963864
 }
