@@ -2161,8 +2161,8 @@
         "exercise": "1",
         "group": "p14_1_5",
         "text": "Amazingly",
-        "top": 49.1,
-        "left": 31.1,
+        "top": 49.5,
+        "left": 30.8,
         "width": 10.5,
         "height": 1.6,
         "correct": false
@@ -2175,7 +2175,7 @@
         "group": "p14_1_5",
         "text": "Naturally",
         "top": 49.5,
-        "left": 43.2,
+        "left": 42.6,
         "width": 9.5,
         "height": 1.6,
         "correct": true
@@ -2187,8 +2187,8 @@
         "exercise": "1",
         "group": "p14_1_6",
         "text": "interestingly",
-        "top": 57.3,
-        "left": 26,
+        "top": 57.2,
+        "left": 21.7,
         "width": 12,
         "height": 1.6,
         "correct": false
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586683388
+  "updatedAt": 1792586689799
 }
