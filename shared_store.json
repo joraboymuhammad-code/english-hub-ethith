@@ -12154,7 +12154,7 @@
         "id": "u8_p58_ex3_2",
         "type": "fill",
         "page": 58,
-        "top": 74,
+        "top": 73.7,
         "left": 66.5,
         "width": 8.5,
         "height": 2.2,
@@ -12176,8 +12176,8 @@
         "id": "u8_p58_ex3_4",
         "type": "fill",
         "page": 58,
-        "top": 77.8,
-        "left": 55,
+        "top": 77.1,
+        "left": 54.9,
         "width": 8.5,
         "height": 2.2,
         "correct": "foraged",
@@ -12187,8 +12187,8 @@
         "id": "u8_p58_ex3_5",
         "type": "fill",
         "page": 58,
-        "top": 79.5,
-        "left": 44,
+        "top": 78.5,
+        "left": 44.1,
         "width": 9.5,
         "height": 2.2,
         "correct": "collecting",
@@ -12198,8 +12198,8 @@
         "id": "u8_p58_ex3_6",
         "type": "fill",
         "page": 58,
-        "top": 79.5,
-        "left": 81,
+        "top": 78.5,
+        "left": 80.9,
         "width": 10.5,
         "height": 2.2,
         "correct": "would save|'d save",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592416421
+  "updatedAt": 1792592420531
 }
