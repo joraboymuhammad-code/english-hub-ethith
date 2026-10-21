@@ -14599,8 +14599,8 @@
         "id": "u10_p66_ex2_4",
         "type": "fill",
         "page": 66,
-        "top": 73.8,
-        "left": 26,
+        "top": 72.1,
+        "left": 26.3,
         "width": 4.8,
         "height": 2,
         "correct": "out",
@@ -14610,8 +14610,8 @@
         "id": "u10_p66_ex2_5",
         "type": "fill",
         "page": 66,
-        "top": 78.4,
-        "left": 30.5,
+        "top": 77.1,
+        "left": 30.9,
         "width": 4.8,
         "height": 2,
         "correct": "of",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600696459
+  "updatedAt": 1792600699915
 }
