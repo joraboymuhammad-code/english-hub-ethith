@@ -13284,7 +13284,7 @@
         "id": "u9_p61_ex5_2",
         "type": "fill",
         "page": 61,
-        "top": 58.7,
+        "top": 57.6,
         "left": 10.5,
         "width": 16,
         "height": 2.2,
@@ -13295,8 +13295,8 @@
         "id": "u9_p61_ex5_3",
         "type": "fill",
         "page": 61,
-        "top": 62.5,
-        "left": 20,
+        "top": 60.8,
+        "left": 19.4,
         "width": 16,
         "height": 2.2,
         "correct": "more interested",
@@ -13383,8 +13383,8 @@
         "id": "u9_p61_ex7_2",
         "type": "fill",
         "page": 61,
-        "top": 61.5,
-        "left": 47,
+        "top": 59.3,
+        "left": 46.7,
         "width": 15.5,
         "height": 2.2,
         "correct": "as young as",
@@ -13394,7 +13394,7 @@
         "id": "u9_p61_ex7_3",
         "type": "fill",
         "page": 61,
-        "top": 62.2,
+        "top": 61.1,
         "left": 44,
         "width": 16,
         "height": 2.2,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592603272
+  "updatedAt": 1792592607322
 }
