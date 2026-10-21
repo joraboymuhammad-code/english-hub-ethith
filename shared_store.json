@@ -9793,8 +9793,19 @@
         "correct": "",
         "label": "New",
         "id": "p81_custom_87061"
+      },
+      {
+        "page": 81,
+        "type": "choose",
+        "top": 75.4,
+        "left": 22.6,
+        "width": 11.5,
+        "height": 1.8,
+        "correct": "true",
+        "label": "New",
+        "id": "p81_custom_01758"
       }
     ]
   },
-  "updatedAt": 1792584688808
+  "updatedAt": 1792584704000
 }
