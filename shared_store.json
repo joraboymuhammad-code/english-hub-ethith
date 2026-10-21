@@ -15817,8 +15817,8 @@
       {
         "page": 84,
         "type": "fill",
-        "top": 29.4,
-        "left": 65.6,
+        "top": 28.9,
+        "left": 65.5,
         "width": 11.8,
         "height": 1.7,
         "correct": "poster",
@@ -15828,5 +15828,5 @@
       }
     ]
   },
-  "updatedAt": 1792597303039
+  "updatedAt": 1792597309937
 }
