@@ -1787,13 +1787,12 @@
       "name": "Striker_uzb",
       "email": "mu_striker@telegram.org",
       "coins": 100,
-      "avatar": null,
       "level": "A1",
       "dailyMinutes": 0,
       "nameStyle": null,
-      "title": null,
       "victorySound": null,
-      "updatedAt": 1792609545413
+      "updatedAt": 1792609667571,
+      "gifts": []
     },
     {
       "id": "teacher_1",
@@ -21712,5 +21711,5 @@
       }
     ]
   },
-  "updatedAt": 1792609551587
+  "updatedAt": 1792609668494
 }
