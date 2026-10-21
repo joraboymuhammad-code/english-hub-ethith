@@ -120,7 +120,7 @@
             },
             "std_2": {
               "status": "K",
-              "score": "2"
+              "score": ""
             },
             "std_3": {
               "status": "S",
@@ -671,7 +671,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792606682086
+        "updatedAt": 1792606688149
       },
       "customStudentNames": {}
     },
@@ -21219,5 +21219,5 @@
       }
     ]
   },
-  "updatedAt": 1792606683302
+  "updatedAt": 1792606689065
 }
