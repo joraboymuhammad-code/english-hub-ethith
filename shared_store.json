@@ -692,8 +692,8 @@
         "page": 4,
         "exercise": "1",
         "label": "8",
-        "top": 85.4,
-        "left": 19.5,
+        "top": 84.4,
+        "left": 19.3,
         "width": 17,
         "height": 1.9,
         "correct": "has or HAS"
@@ -8613,5 +8613,5 @@
       }
     ]
   },
-  "updatedAt": 1792582673371
+  "updatedAt": 1792582680169
 }
