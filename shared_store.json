@@ -7926,7 +7926,7 @@
         "type": "fill",
         "page": 42,
         "label": "3",
-        "top": 87.2,
+        "top": 87.9,
         "left": 61.8,
         "width": 4,
         "height": 1.8,
@@ -7937,8 +7937,8 @@
         "type": "fill",
         "page": 42,
         "label": "4",
-        "top": 91,
-        "left": 62,
+        "top": 89.8,
+        "left": 61.7,
         "width": 4,
         "height": 1.8,
         "correct": "b or wave"
@@ -7948,7 +7948,7 @@
         "type": "fill",
         "page": 42,
         "label": "5",
-        "top": 92.8,
+        "top": 91.7,
         "left": 62,
         "width": 4,
         "height": 1.8,
@@ -7959,8 +7959,8 @@
         "type": "fill",
         "page": 42,
         "label": "6",
-        "top": 94.6,
-        "left": 62,
+        "top": 93.3,
+        "left": 61.9,
         "width": 4,
         "height": 1.8,
         "correct": "a or warming"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587023111
+  "updatedAt": 1792587034840
 }
