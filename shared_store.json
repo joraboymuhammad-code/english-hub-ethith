@@ -1611,8 +1611,8 @@
         "page": 12,
         "exercise": "3",
         "label": "2",
-        "top": 47,
-        "left": 77,
+        "top": 46.7,
+        "left": 75,
         "width": 14,
         "height": 1.8,
         "correct": "as soon as"
@@ -1623,8 +1623,8 @@
         "page": 12,
         "exercise": "3",
         "label": "3",
-        "top": 50.3,
-        "left": 57,
+        "top": 50,
+        "left": 58,
         "width": 14,
         "height": 1.8,
         "correct": "By the time"
@@ -1635,8 +1635,8 @@
         "page": 12,
         "exercise": "3",
         "label": "4",
-        "top": 53.5,
-        "left": 78,
+        "top": 53.1,
+        "left": 74.7,
         "width": 14,
         "height": 1.8,
         "correct": "Meanwhile"
@@ -1647,8 +1647,8 @@
         "page": 12,
         "exercise": "3",
         "label": "5",
-        "top": 58.3,
-        "left": 80,
+        "top": 58,
+        "left": 78.4,
         "width": 10,
         "height": 1.8,
         "correct": "until"
@@ -1659,8 +1659,8 @@
         "page": 12,
         "exercise": "3",
         "label": "6",
-        "top": 61.6,
-        "left": 82,
+        "top": 61.2,
+        "left": 81.6,
         "width": 10,
         "height": 1.8,
         "correct": "during"
@@ -9191,5 +9191,5 @@
       }
     ]
   },
-  "updatedAt": 1792582899140
+  "updatedAt": 1792582907423
 }
