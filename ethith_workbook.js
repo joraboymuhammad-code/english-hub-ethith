@@ -1206,13 +1206,31 @@
           if (window.toast) window.toast('Ajoyib natija! +' + coinsToAdd + ' ETHITH Coins qo‘shildi!');
         }
 
+        // Automatically record student homework completion & put automatic daily grade in Attendance Journal!
+        var autoDailyGrade = pct >= 86 ? 5 : (pct >= 71 ? 4 : (pct >= 55 ? 3 : 2));
+        if (window.EthithAttendance && typeof window.EthithAttendance.recordStudentHomeworkCompletion === 'function') {
+          try {
+            window.EthithAttendance.recordStudentHomeworkCompletion({
+              unit: unitNum,
+              lessonCode: lessonCode,
+              pages: pages,
+              correctCount: correctCount,
+              totalQuestions: totalQuestions,
+              pct: pct,
+              autoGrade: autoDailyGrade
+            });
+          } catch (hwErr) {
+            console.warn('Homework auto-grade error:', hwErr);
+          }
+        }
+
         // Show Interactive Result Modal Popup per User Requirement
-        WB.showResultModal(correctCount, totalQuestions, pct, coinsToAdd);
+        WB.showResultModal(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade);
       });
     }
 
     // Interactive Result Modal Popup (Percentage Meter, Review Mistakes, Retake)
-    WB.showResultModal = function(correctCount, totalQuestions, pct, coinsToAdd) {
+    WB.showResultModal = function(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade) {
       var existing = document.getElementById('ethWbResultModalOverlay');
       if (existing) existing.remove();
 
@@ -1239,19 +1257,23 @@
           '<div style="font-size:48px;font-weight:900;line-height:1.1;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;">' + pct + '%</div>' +
           '<p style="font-size:13.5px;color:#94a3b8;margin:0 0 20px;line-height:1.45;">' + subtitle + '</p>' +
           
-          // 3-Stat Grid
-          '<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:10px;margin-bottom:24px;">' +
-            '<div style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:14px;padding:12px 6px;">' +
-              '<div style="font-size:22px;font-weight:900;color:#4ade80;">' + correctCount + '</div>' +
-              '<div style="font-size:11px;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:0.04em;">To‘g‘ri</div>' +
+          // 4-Stat Grid (including Auto Daily Grade in Davomat Journal)
+          '<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:8px;margin-bottom:24px;">' +
+            '<div style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:14px;padding:12px 4px;">' +
+              '<div style="font-size:20px;font-weight:900;color:#4ade80;">' + correctCount + '</div>' +
+              '<div style="font-size:10px;font-weight:700;color:#86efac;text-transform:uppercase;">To‘g‘ri</div>' +
             '</div>' +
-            '<div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:14px;padding:12px 6px;">' +
-              '<div style="font-size:22px;font-weight:900;color:#f87171;">' + (totalQuestions - correctCount) + '</div>' +
-              '<div style="font-size:11px;font-weight:700;color:#fca5a5;text-transform:uppercase;letter-spacing:0.04em;">Xato</div>' +
+            '<div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:14px;padding:12px 4px;">' +
+              '<div style="font-size:20px;font-weight:900;color:#f87171;">' + (totalQuestions - correctCount) + '</div>' +
+              '<div style="font-size:10px;font-weight:700;color:#fca5a5;text-transform:uppercase;">Xato</div>' +
             '</div>' +
-            '<div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:12px 6px;">' +
-              '<div style="font-size:22px;font-weight:900;color:#fbbf24;">+' + (coinsToAdd || 0) + '</div>' +
-              '<div style="font-size:11px;font-weight:700;color:#fde68a;text-transform:uppercase;letter-spacing:0.04em;">Coin</div>' +
+            '<div style="background:rgba(56,189,248,0.14);border:1px solid rgba(56,189,248,0.4);border-radius:14px;padding:12px 4px;">' +
+              '<div style="font-size:20px;font-weight:900;color:#38bdf8;">' + (autoDailyGrade || (pct >= 86 ? 5 : (pct >= 71 ? 4 : (pct >= 55 ? 3 : 2)))) + '</div>' +
+              '<div style="font-size:10px;font-weight:700;color:#7dd3fc;text-transform:uppercase;">Jurnal Baho</div>' +
+            '</div>' +
+            '<div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:12px 4px;">' +
+              '<div style="font-size:20px;font-weight:900;color:#fbbf24;">+' + (coinsToAdd || 0) + '</div>' +
+              '<div style="font-size:10px;font-weight:700;color:#fde68a;text-transform:uppercase;">Coin</div>' +
             '</div>' +
           '</div>' +
 

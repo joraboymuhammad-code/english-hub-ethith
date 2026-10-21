@@ -464,6 +464,7 @@
         if (event.attendance) attCls.attendance = event.attendance;
         if (event.schedule) attCls.schedule = event.schedule;
         if (event.customStudentNames) attCls.customStudentNames = event.customStudentNames;
+        if (event.activeHomework !== undefined) attCls.activeHomework = event.activeHomework;
         uiNeedsRefresh = true;
         if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {
           try { window._ethithRefreshAttendance(); } catch(e) {}
@@ -1177,6 +1178,12 @@
       }
 
       // Sync Attendance, Schedule & Custom Student Names
+      if (rc.activeHomework) {
+        if (!localCls.activeHomework || (rc.activeHomework.assignedAt || 0) >= (localCls.activeHomework.assignedAt || 0)) {
+          localCls.activeHomework = JSON.parse(JSON.stringify(rc.activeHomework));
+          changed = true;
+        }
+      }
       if (rc.schedule && rc.schedule !== localCls.schedule) {
         var rAttTs = (rc.attendance && rc.attendance.updatedAt) || 0;
         var lAttTs = (localCls.attendance && localCls.attendance.updatedAt) || 0;

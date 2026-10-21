@@ -536,6 +536,19 @@
         resultEl.innerHTML = '<span style="color:' + (pct >= 70 ? '#10b981' : '#ef4444') + ';font-size:16px;font-weight:900">NATIJA: ' + correct + ' / ' + total + ' (' + pct + '%)</span>' + (pct >= 70 ? ' 🎉 A\'lo natija!' : ' 💡 Xatolaringizni ko\'rib chiqing');
       }
 
+      if (window.EthithAttendance && typeof window.EthithAttendance.recordStudentHomeworkCompletion === 'function') {
+        try {
+          window.EthithAttendance.recordStudentHomeworkCompletion({
+            unit: unitNum,
+            lessonCode: lessonCode,
+            correctCount: correct,
+            totalQuestions: total || 1,
+            pct: pct,
+            autoGrade: pct >= 86 ? 5 : (pct >= 71 ? 4 : (pct >= 55 ? 3 : 2))
+          });
+        } catch (e) {}
+      }
+
       // Save student score
       if (S.user) {
         if (!S.user.workbookProgress) S.user.workbookProgress = {};

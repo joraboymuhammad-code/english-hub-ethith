@@ -1655,11 +1655,32 @@
     }
     var isTeacher = S.user && S.user.role === 'teacher';
     var pinnedMsg = cls.messages.find(function(m) { return m.id === cls.pinnedId; });
+    var activeHw = cls.activeHomework || (window.EthithAttendance && window.EthithAttendance.getLatestClassHomework ? window.EthithAttendance.getLatestClassHomework(cls) : null) || {
+      dateKey: new Date().getFullYear() + '-' + String(new Date().getMonth() + 1).padStart(2, '0') + '-' + String(new Date().getDate()).padStart(2, '0'),
+      dateDisp: String(new Date().getDate()).padStart(2, '0') + '.' + String(new Date().getMonth() + 1).padStart(2, '0') + '.' + new Date().getFullYear(),
+      unit: 1,
+      lessonCode: '1.1',
+      lessonTitle: "1.1 Are you really my friend?",
+      pages: [4, 5],
+      note: "Workbook mashqlarini bajarib Tekshirish tugmasini bosing — baho Davomat jurnaliga avtomatik qo'yiladi."
+    };
+
+    var myStRecord = null;
+    if (cls.attendance && cls.attendance.records && activeHw && activeHw.dateKey) {
+      var dRecs = cls.attendance.records[activeHw.dateKey] || {};
+      var myUid = (S.user && (S.user.id || S.user.email)) || '';
+      myStRecord = dRecs[myUid] || null;
+      if (!myStRecord && S.user && S.user.name && cls.students) {
+        var foundSt = cls.students.find(function(st) { return st.name && st.name.toLowerCase() === S.user.name.toLowerCase(); });
+        if (foundSt) myStRecord = dRecs[foundSt.id || foundSt.email] || null;
+      }
+    }
 
     var html = '' +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px;flex-wrap:wrap">' +
       '  <button class="ap-back" id="backClassesListBtn" style="margin:0">' + ic('left') + ' Back to Classes</button>' +
       '  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">' +
+      (isTeacher ? '    <button class="ap-btn solid" id="clsAssignHwTopBtn" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;font-weight:800">📚 Uy vazifasi belgilash</button>' : '') +
       '    <button class="ap-btn solid" id="clsOpenAttendanceBtn" style="background:#0284c7;color:#fff;font-weight:800">' + ic('calendar') + ' Davomat (Attendance)</button>' +
       (isTeacher ? '    <button class="ap-btn out" id="clsMonitoringBtn">' + ic('user') + ' Student Roster (' + (cls.students ? cls.students.length : 0) + ')</button>' : '') +
       '  </div>' +
@@ -1672,6 +1693,26 @@
       '        <h3>' + esc(cls.name) + '</h3>' +
       '        <span>' + (cls.students ? cls.students.length : 0) + ' members · Code: <b style="color:#2563eb;user-select:all">' + cls.code + '</b></span>' +
       '      </div>' +
+      '    </div>' +
+      '  </div>' +
+      // HOMEWORK BAR AT TOP OF GROUP CHAT (Students see assigned task & open it; system auto-grades into Davomat)
+      '  <div id="tgHomeworkBar" style="background:linear-gradient(135deg,rgba(15,23,42,0.92),rgba(30,58,138,0.85));border-bottom:1.5px solid rgba(56,189,248,0.4);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#f8fafc;">' +
+      '    <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:240px;">' +
+      '      <div style="width:40px;height:40px;border-radius:12px;background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.45);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📚</div>' +
+      '      <div>' +
+      '        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+      '          <span style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;padding:2px 8px;border-radius:6px;background:rgba(56,189,248,0.22);color:#7dd3fc;border:1px solid rgba(56,189,248,0.4);">UY VAZIFASI (' + esc(activeHw.dateDisp || activeHw.dateKey) + ')</span>' +
+      (myStRecord && myStRecord.hwDone
+        ? '<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(16,185,129,0.22);color:#6ee7b7;border:1px solid rgba(52,211,153,0.45);">✅ Bajarildi (' + (myStRecord.hwPct || 100) + '% • Avtomatik baho: ' + (myStRecord.score || 5) + ')</span>'
+        : '<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(245,158,11,0.2);color:#fde68a;border:1px solid rgba(251,191,36,0.4);">⚡ Avtomatik tekshirish va baholash faol</span>') +
+      '        </div>' +
+      '        <div style="font-size:14px;font-weight:800;color:#ffffff;margin-top:3px;">Intermediate (B1+) · Unit ' + esc(activeHw.unit) + ' — ' + esc(activeHw.lessonTitle || activeHw.lessonCode) + (activeHw.pages ? ' <span style="color:#7dd3fc;font-size:12.5px;">(Workbook ' + activeHw.pages.join('–') + '-betlar)</span>' : '') + '</div>' +
+      (activeHw.note ? '<div style="font-size:12px;color:#cbd5e1;margin-top:1px;">' + esc(activeHw.note) + '</div>' : '') +
+      '      </div>' +
+      '    </div>' +
+      '    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+      (isTeacher ? '<button type="button" id="tgEditHomeworkBtn" style="background:rgba(255,255,255,0.1);color:#e2e8f0;border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;">✏️ Vazifani O\'zgartirish</button>' : '') +
+      '      <button type="button" id="tgOpenHomeworkLessonBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.4);display:inline-flex;align-items:center;gap:6px;">🚀 Vazifani Bajarish (Ochish) &rarr;</button>' +
       '    </div>' +
       '  </div>' +
       (pinnedMsg ?
@@ -1792,10 +1833,50 @@
       openAttBtn.onclick = function() {
         if (window.EthithAttendance) {
           window.EthithAttendance.activeClassId = cls.id;
-          window.EthithAttendance.subView = 'journal';
+          window.EthithAttendance.activeStudentId = null;
         }
         if (typeof window.go === 'function') {
           window.go('attendance');
+        }
+      };
+    }
+
+    var assignHwTopBtn = document.getElementById('clsAssignHwTopBtn');
+    if (assignHwTopBtn) {
+      assignHwTopBtn.onclick = function() {
+        if (window.EthithAttendance && typeof window.EthithAttendance.openHomeworkAssignModal === 'function') {
+          window.EthithAttendance.openHomeworkAssignModal(container, cls, null, function() {
+            renderClassDetail(container, cls);
+          });
+        }
+      };
+    }
+
+    var editHwBtn = document.getElementById('tgEditHomeworkBtn');
+    if (editHwBtn) {
+      editHwBtn.onclick = function() {
+        if (window.EthithAttendance && typeof window.EthithAttendance.openHomeworkAssignModal === 'function') {
+          window.EthithAttendance.openHomeworkAssignModal(container, cls, activeHw ? activeHw.dateKey : null, function() {
+            renderClassDetail(container, cls);
+          });
+        }
+      };
+    }
+
+    var openHwLessonBtn = document.getElementById('tgOpenHomeworkLessonBtn');
+    if (openHwLessonBtn && activeHw) {
+      openHwLessonBtn.onclick = function() {
+        window._ethithActiveHwContext = {
+          classId: cls.id,
+          classCode: cls.code,
+          dateKey: activeHw.dateKey,
+          unit: activeHw.unit,
+          lessonCode: activeHw.lessonCode
+        };
+        if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.openLesson === 'function') {
+          window.ETHITH_WORKBOOK_B1.openLesson(activeHw.unit, activeHw.lessonCode, (activeHw.pages && activeHw.pages[0]) || 4);
+        } else if (typeof window.go === 'function') {
+          window.go('intermediate', { unit: activeHw.unit, lesson: activeHw.lessonCode });
         }
       };
     }

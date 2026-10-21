@@ -1,9 +1,11 @@
 /**
- * ETHITH ATTENDANCE (DAVOMAT) & QUANTUM-EDU STUDENT ANALYTICS SYSTEM
- * - Shaffof Dark-Mode Glassmorphic PIIMA Attendance & Grading Journal
- * - Fixed Modal Persistence (never auto-closes during live sync)
+ * ETHITH ATTENDANCE (DAVOMAT), HOMEWORK AUTO-GRADER & QUANTUM-EDU ANALYTICS
+ * - Shaffof Dark-Mode Glassmorphic Attendance & Automatic Grading Journal (No BSB/CHSB)
+ * - Teacher Homework Assignment System ("Uy vazifasi belgilash") linked to Intermediate (B1+) Units 1-12
+ * - Top-of-Chat Homework Banner for students & real-time automatic grading (5, 4, 3, 2) into 'B' column
+ * - Persistent Edit Modals (never auto-closes during live sync)
  * - Automatic QuantumEdu Student Daily Tasks & Growth/Decline Analytics on Student Click
- * - Real-time sync with Classes & Chats, 10+2 day window & full history, 100% Excel (.xlsx) & Word (.doc) export
+ * - 100% Genuine Excel (.xlsx) & Word (.doc) Export
  */
 
 (function(window) {
@@ -11,7 +13,7 @@
 
   var EA = window.EthithAttendance = window.EthithAttendance || {};
 
-  // Authentic PIIMA demo students if a class has no students yet
+  // Authentic demo students if a class has no students yet
   EA.DEMO_STUDENTS = [
     { id: "std_1", name: "Ashurov Dilyorbek Azizbek o'g'li", joinedAt: "2026-09-02" },
     { id: "std_2", name: "Ergasheva Madina Asad qizi", joinedAt: "2026-09-02" },
@@ -229,6 +231,24 @@
     return u && (u.role === 'teacher' || u.role === 'admin' || u.isTeacher === true);
   }
 
+  function getWorkbookUnitsList() {
+    if (window.ETHITH_WORKBOOK_B1 && Array.isArray(window.ETHITH_WORKBOOK_B1.units)) {
+      return window.ETHITH_WORKBOOK_B1.units;
+    }
+    return [
+      {
+        unit: 1,
+        title: "Unit 1: Trends",
+        lessons: [
+          { code: "1.1", title: "1.1 Are you really my friend?", pages: [4, 5] },
+          { code: "1.2", title: "1.2 Why spending's #trending", pages: [6, 7] },
+          { code: "1.3", title: "1.3 Vocabulary development", pages: [8] },
+          { code: "1.4", title: "1.4 Speaking and writing", pages: [9] }
+        ]
+      }
+    ];
+  }
+
   function getAvailableClasses() {
     var sClasses = (window.S && window.S.classes) || [];
     if (sClasses.length === 0) {
@@ -248,6 +268,7 @@
           records: {},
           lessonTypes: {},
           holidays: {},
+          homeworks: {},
           updatedAt: Date.now()
         }
       };
@@ -276,12 +297,54 @@
     if (!cls.attendance.records) cls.attendance.records = {};
     if (!cls.attendance.lessonTypes) cls.attendance.lessonTypes = {};
     if (!cls.attendance.holidays) cls.attendance.holidays = {};
+    if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
     if (!cls.customStudentNames) cls.customStudentNames = {};
     if (!cls.schedule) cls.schedule = 'har_kuni';
     if (!cls.students) cls.students = [];
 
     if ((cls.id === 'cls_1_guruh' || cls.id === 'cls_ethith_main' || cls.name === '1-GURUH') && cls.students.length === 0) {
       cls.students = EA.DEMO_STUDENTS.slice();
+    }
+
+    // Purge any legacy BSB / CHSB labels and normalize any >5 scores to 5-point scale
+    Object.keys(cls.attendance.lessonTypes).forEach(function(k) {
+      var lt = cls.attendance.lessonTypes[k] || '';
+      if (lt.indexOf('BSB') !== -1 || lt.indexOf('CHSB') !== -1) {
+        cls.attendance.lessonTypes[k] = 'Oddiy';
+      }
+    });
+    Object.keys(cls.attendance.records).forEach(function(dk) {
+      var dObj = cls.attendance.records[dk] || {};
+      Object.keys(dObj).forEach(function(sid) {
+        var r = dObj[sid];
+        if (r && r.score !== undefined && r.score !== '') {
+          var num = Number(r.score);
+          if (num > 5) {
+            r.score = num >= 28 ? '5' : (num >= 22 ? '4' : '3');
+          }
+        }
+      });
+    });
+
+    // Ensure default activeHomework exists
+    if (!cls.activeHomework) {
+      var todayObj = new Date();
+      var tKey = formatDateKey(todayObj);
+      var tDisp = formatDisplayDate(todayObj);
+      cls.activeHomework = {
+        dateKey: tKey,
+        dateDisp: tDisp,
+        unit: 1,
+        lessonCode: '1.1',
+        lessonTitle: "1.1 Are you really my friend?",
+        pages: [4, 5],
+        note: "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        assignedAt: Date.now()
+      };
+      cls.attendance.homeworks[tKey] = cls.activeHomework;
+      if (!cls.attendance.lessonTypes[tKey] || cls.attendance.lessonTypes[tKey] === 'Oddiy') {
+        cls.attendance.lessonTypes[tKey] = 'Vazifa: 1.1';
+      }
     }
 
     cls.students.forEach(function(st) {
@@ -298,8 +361,13 @@
     return cls;
   }
 
+  EA.getLatestClassHomework = function(cls) {
+    ensureClassAttendance(cls);
+    return cls.activeHomework;
+  };
+
   function seedDemoWindowIfNeeded(cls, dates) {
-    if (!cls || !cls.attendance || cls.attendance.seededWindowV2) return;
+    if (!cls || !cls.attendance || cls.attendance.seededWindowV3) return;
     if (cls.id !== 'cls_1_guruh' && cls.id !== 'cls_ethith_main' && cls.name !== '1-GURUH') return;
 
     var todayObj = new Date();
@@ -308,48 +376,157 @@
     var stList = cls.students || [];
     if (stList.length === 0) return;
 
+    var sampleLessons = ['1.1', '1.2', '1.3', '1.4', '2.1', '2.2', '2.3', '2.4', '3.1', '3.2', '3.3'];
+
     dates.forEach(function(dt, dIdx) {
       if (dt > todayObj) return;
       if (dt.getDay() === 0) return;
       var dKey = formatDateKey(dt);
       if (cls.attendance.holidays && cls.attendance.holidays[dKey]) return;
 
-      if (cls.attendance.records[dKey] && Object.keys(cls.attendance.records[dKey]).length > 0) return;
-      cls.attendance.records[dKey] = {};
-
-      if (dIdx === dates.length - 5 && !cls.attendance.lessonTypes[dKey]) {
-        cls.attendance.lessonTypes[dKey] = 'BSB - Y1';
+      var lesCode = sampleLessons[dIdx % sampleLessons.length];
+      if (!cls.attendance.lessonTypes[dKey] || cls.attendance.lessonTypes[dKey] === 'Oddiy') {
+        cls.attendance.lessonTypes[dKey] = 'Vazifa: ' + lesCode;
       }
 
-      var isBsb = (cls.attendance.lessonTypes[dKey] === 'BSB - Y1');
+      if (!cls.attendance.records[dKey]) cls.attendance.records[dKey] = {};
 
       stList.forEach(function(st, sIdx) {
         var stId = st.id || st.email || ('std_' + sIdx);
+        var existing = cls.attendance.records[dKey][stId];
+        if (existing && existing.hwCompletedAt) return; // Don't overwrite real student submissions
+
         var hash = (dIdx * 7 + sIdx * 13) % 19;
         var status = 'K';
-        var score = '';
+        var score = '5';
+        var hwDone = true;
+        var hwPct = 92;
 
         if (hash === 3 || hash === 11) {
           status = 'Q';
+          score = '2';
+          hwDone = false;
+          hwPct = 0;
         } else if (hash === 7) {
           status = 'S';
+          score = '';
+          hwDone = false;
+          hwPct = 0;
+        } else if (hash % 4 === 0) {
+          score = '4';
+          hwPct = 80;
+        } else if (hash % 9 === 0) {
+          score = '3';
+          hwPct = 66;
         } else {
-          if (isBsb) {
-            var bsbScores = ['30', '28', '32', '25', '29', '13', '23', '35', '31', '26', '27', '19'];
-            score = bsbScores[sIdx % bsbScores.length];
-          } else if (hash % 3 === 0) {
-            score = '5';
-          } else if (hash % 5 === 0) {
-            score = '4';
-          }
+          score = '5';
+          hwPct = 94;
         }
 
-        cls.attendance.records[dKey][stId] = { status: status, score: score };
+        cls.attendance.records[dKey][stId] = {
+          status: status,
+          score: score,
+          hwDone: hwDone,
+          hwPct: hwPct,
+          hwLesson: lesCode
+        };
       });
     });
 
-    cls.attendance.seededWindowV2 = true;
+    cls.attendance.seededWindowV3 = true;
   }
+
+  // ============================================================================
+  // AUTOMATIC HOMEWORK TRACKING & DAILY GRADING ENGINE
+  // Called automatically when a student completes & checks exercises in Intermediate (B1+)
+  // ============================================================================
+  EA.recordStudentHomeworkCompletion = function(data) {
+    if (!data) return;
+    var u = getActiveUser();
+    var pct = typeof data.pct === 'number' ? data.pct : 100;
+    var autoGrade = data.autoGrade || (pct >= 86 ? 5 : (pct >= 71 ? 4 : (pct >= 55 ? 3 : 2)));
+    var lessonCode = data.lessonCode || '1.1';
+    var todayKey = formatDateKey(new Date());
+
+    var allClasses = getAvailableClasses();
+    var updatedAny = false;
+
+    allClasses.forEach(function(cls) {
+      ensureClassAttendance(cls);
+
+      // Find which date has this homework assigned, or fallback to activeHomework dateKey or todayKey
+      var targetDateKey = todayKey;
+      if (window._ethithActiveHwContext && window._ethithActiveHwContext.classId === cls.id && window._ethithActiveHwContext.dateKey) {
+        targetDateKey = window._ethithActiveHwContext.dateKey;
+      } else if (cls.activeHomework && cls.activeHomework.lessonCode === lessonCode && cls.activeHomework.dateKey) {
+        targetDateKey = cls.activeHomework.dateKey;
+      } else if (cls.attendance.homeworks) {
+        Object.keys(cls.attendance.homeworks).forEach(function(dk) {
+          if (cls.attendance.homeworks[dk] && cls.attendance.homeworks[dk].lessonCode === lessonCode) {
+            targetDateKey = dk;
+          }
+        });
+      }
+
+      // Match student in class
+      var myId = u.id || u.email || '';
+      var myEmail = (u.email || '').toLowerCase().trim();
+      var myName = (u.name || '').toLowerCase().trim();
+
+      var matchedSt = (cls.students || []).find(function(s) {
+        var sId = (s.id || '').toLowerCase().trim();
+        var sEm = (s.email || '').toLowerCase().trim();
+        var sNm = (cls.customStudentNames[s.id] || s.name || '').toLowerCase().trim();
+        return (myId && (s.id === myId || s.email === myId)) ||
+               (myEmail && (sEm === myEmail || sId === myEmail)) ||
+               (myName && sNm && (sNm === myName || sNm.indexOf(myName) !== -1 || myName.indexOf(sNm) !== -1));
+      });
+
+      // If student is logged in and not yet in class roster, or testing as demo user, match or enroll
+      var targetStId = null;
+      if (matchedSt) {
+        targetStId = matchedSt.id || matchedSt.email;
+      } else if (u && u.role === 'student' && (u.id || u.email || u.name)) {
+        targetStId = u.id || u.email || ('std_' + Date.now());
+        cls.students.push({
+          id: targetStId,
+          name: u.name || "O'quvchi",
+          email: u.email || '',
+          joinedAt: todayKey
+        });
+      } else if (cls.students && cls.students.length > 0) {
+        // Fallback to first student if teacher is testing homework auto-grading
+        targetStId = cls.students[0].id || cls.students[0].email;
+      }
+
+      if (targetStId) {
+        if (!cls.attendance.records[targetDateKey]) cls.attendance.records[targetDateKey] = {};
+        cls.attendance.records[targetDateKey][targetStId] = {
+          status: 'K', // Automatically mark Present (Kelgan)
+          score: String(autoGrade), // Automatically put Daily Grade (5, 4, 3, 2)
+          hwDone: true,
+          hwPct: pct,
+          hwLesson: lessonCode,
+          hwCorrect: data.correctCount || 0,
+          hwTotal: data.totalQuestions || 0,
+          hwCompletedAt: Date.now()
+        };
+        if (!cls.attendance.lessonTypes[targetDateKey] || cls.attendance.lessonTypes[targetDateKey] === 'Oddiy') {
+          cls.attendance.lessonTypes[targetDateKey] = 'Vazifa: ' + lessonCode;
+        }
+        persistAttendance(cls);
+        updatedAny = true;
+      }
+    });
+
+    if (updatedAny) {
+      var banner = document.createElement('div');
+      banner.style.cssText = 'position:fixed;top:22px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#059669,#0284c7);color:#ffffff;padding:14px 26px;border-radius:16px;font-weight:800;font-size:14px;z-index:2147483647;box-shadow:0 16px 40px rgba(0,0,0,0.55);border:1.5px solid #34d399;text-align:center;';
+      banner.innerHTML = '✅ <b>Uy vazifasi (' + esc(lessonCode) + ') avtomatik tekshirildi!</b><br><span style="font-size:13px;color:#d1fae5;">Natija: <b>' + pct + '%</b> • Davomat jurnaliga avtomatik <b>"' + autoGrade + '" baho</b> va <b>"K" (Kelgan)</b> qo\'yildi!</span>';
+      document.body.appendChild(banner);
+      setTimeout(function() { if (banner && banner.parentNode) banner.remove(); }, 5000);
+    }
+  };
 
   function formatDisplayDate(d) {
     var day = String(d.getDate()).padStart(2, '0');
@@ -472,6 +649,7 @@
           attendance: cls.attendance,
           schedule: cls.schedule,
           customStudentNames: cls.customStudentNames,
+          activeHomework: cls.activeHomework,
           ts: cls.attendance.updatedAt
         });
       }
@@ -484,7 +662,6 @@
     }
   }
 
-  // Global modal root in document.body so re-rendering #apView NEVER closes open modals!
   function getGlobalModalRoot() {
     var root = document.getElementById('eaGlobalModalRoot');
     if (!root) {
@@ -501,14 +678,12 @@
     if (root) root.innerHTML = '';
   }
 
-  // Global hook for real-time incoming sync refresh (guarded against open modals or active input!)
   window._ethithRefreshAttendance = function() {
     if (window._ethithCurrentView !== 'attendance') return;
-    if (EA.isModalOpen) return; // Never interrupt open modal!
+    if (EA.isModalOpen) return;
     var modalRoot = document.getElementById('eaGlobalModalRoot');
     if (modalRoot && modalRoot.innerHTML.trim() !== '') return;
-    if (document.activeElement && document.activeElement.classList && document.activeElement.classList.contains('ea-score-input')) return;
-    if (EA.activeStudentId) return; // Don't wipe student analytics chart while user is inspecting it
+    if (EA.activeStudentId) return;
 
     var container = document.getElementById('apView');
     if (container) {
@@ -562,23 +737,23 @@
       'toq': 'Toq kunlari (Dushanba, Chorshanba, Juma)'
     };
     var currentSchedLabel = schedLabels[cls.schedule] || schedLabels['har_kuni'];
+    var activeHw = cls.activeHomework;
 
     var h = '<div class="eth-attendance-wrap ea-quantum-wrap" data-qe-theme="' + esc(EA.qeTheme) + '" style="max-width:100%;margin:0 auto;padding:10px 14px 80px;position:relative;z-index:1;">';
 
-    // Ambient Cosmic Glass Background behind the journal
     h += '<div class="ea-ambient-bg"><div class="ea-orb ea-orb-1"></div><div class="ea-orb ea-orb-2"></div><div class="ea-orb ea-orb-3"></div></div>';
     h += '<div class="ea-cyber-grid"></div>';
 
     h += '<div style="position:relative;z-index:2;">';
 
     // 0. CLASSES & CHATS SYNCED CLASS SELECTOR BAR
-    h += '<div class="qe-glass-panel" style="border-radius:20px;padding:12px 16px;margin-bottom:16px;">' +
+    h += '<div class="qe-glass-panel" style="border-radius:20px;padding:12px 16px;margin-bottom:14px;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">' +
         '<div style="font-size:12px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:8px;">' +
           '<span style="width:8px;height:8px;border-radius:50%;background:#38bdf8;box-shadow:0 0 10px #38bdf8;display:inline-block;"></span>' +
           '<span>🏫 Classes &amp; Chats Sinflari (' + allClasses.length + ' ta) — Ustiga bosib tanlang:</span>' +
         '</div>' +
-        '<button id="eaGoClassesBtn" class="qe-glass-pill" style="color:#38bdf8;border-radius:10px;padding:6px 14px;font-size:12px;font-weight:800;cursor:pointer;">+ Yangi sinf ochish / Guruhga qo\'shilish &rarr;</button>' +
+        '<button id="eaGoClassesBtn" class="qe-glass-pill" style="color:#38bdf8;border-radius:10px;padding:6px 14px;font-size:12px;font-weight:800;cursor:pointer;">💬 Guruh Chatiga O\'tish / Yangi Sinf &rarr;</button>' +
       '</div>' +
       '<div style="display:flex;align-items:center;gap:10px;overflow-x:auto;padding-bottom:4px;">';
 
@@ -600,16 +775,27 @@
 
     h += '</div></div>';
 
-    // 1. Top Notification Banner (Shaffof Dark-Mode Amber Glass)
-    h += '<div style="background:rgba(245,158,11,0.12);backdrop-filter:blur(16px);border:1px solid rgba(251,191,36,0.35);border-radius:12px;padding:9px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px;font-size:12.5px;color:#fde68a;font-weight:600;max-width:780px;margin-left:auto;margin-right:auto;box-shadow:0 4px 20px rgba(245,158,11,0.12);">' +
-      '<div style="display:flex;align-items:center;gap:10px;">' +
-        '<span style="font-size:16px;color:#fbbf24;">ⓘ</span>' +
-        '<span>Choraklik baholar chorak yakunidan keyin 5 kun o\'tib hisoblanadi. <b>O\'quvchi ismining ustiga bossangiz, uning shaxsiy QuantumEdu o\'sish/cho\'kish tahlili ochiladi!</b></span>' +
-      '</div>' +
-    '</div>';
+    // 1. ACTIVE HOMEWORK & AUTO-GRADING BANNER (For every class!)
+    if (activeHw) {
+      h += '<div class="qe-glass-panel" style="border-radius:18px;padding:12px 18px;margin-bottom:16px;border-color:rgba(56,189,248,0.4);background:linear-gradient(135deg,rgba(15,23,42,0.75),rgba(30,58,138,0.45));display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;flex:1;min-width:240px;">' +
+          '<div style="width:42px;height:42px;border-radius:12px;background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.45);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📚</div>' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+              '<span style="font-size:11px;font-weight:900;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:rgba(56,189,248,0.22);color:#7dd3fc;border:1px solid rgba(56,189,248,0.4);">SINF UY VAZIFASI (' + esc(activeHw.dateDisp || activeHw.dateKey) + ')</span>' +
+              '<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(16,185,129,0.2);color:#6ee7b7;border:1px solid rgba(52,211,153,0.4);">⚡ Avtomatik tekshirish va kunlik baho (B) qo\'yish faol</span>' +
+            '</div>' +
+            '<div style="font-size:14px;font-weight:800;color:#ffffff;margin-top:3px;">Intermediate (B1+) · Unit ' + esc(activeHw.unit) + ' — ' + esc(activeHw.lessonTitle || activeHw.lessonCode) + (activeHw.pages ? ' <span style="color:#7dd3fc;font-size:12.5px;">(Workbook ' + activeHw.pages.join('–') + '-betlar)</span>' : '') + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+          '<button type="button" id="eaOpenActiveHwBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:none;border-radius:10px;padding:8px 15px;font-size:12.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.35);">🚀 Topshiriqni Ochish / Bajarish &rarr;</button>' +
+        '</div>' +
+      '</div>';
+    }
 
     // 2. Class Header & Title
-    h += '<div style="text-align:center;margin-bottom:18px;">' +
+    h += '<div style="text-align:center;margin-bottom:16px;">' +
       '<h2 style="font-size:24px;font-weight:900;margin:0 0 6px;color:#ffffff;letter-spacing:-0.02em;text-shadow:0 0 24px rgba(56,189,248,0.25);">' +
         '<span style="background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">' + esc(cls.name || '1-GURUH') + '</span>' +
         '<span style="color:#64748b;margin:0 8px;">—</span>' +
@@ -622,23 +808,26 @@
       '</div>' +
     '</div>';
 
-    // 3. Top Toolbar: Teacher "Tahrirlash" + Excel "Yuklab olish" button
+    // 3. Top Toolbar: Teacher "Tahrirlash" + "Uy vazifasi belgilash" + Excel "Yuklab olish" button
     h += '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px;">' +
       '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">';
 
     if (isTeacher) {
-      h += '<button id="eaScheduleBtn" style="background:linear-gradient(135deg, rgba(56,189,248,0.25), rgba(129,140,248,0.25));backdrop-filter:blur(14px);color:#ffffff;border:1px solid rgba(56,189,248,0.5);border-radius:12px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 22px -4px rgba(56,189,248,0.35);transition:all 0.2s;">' +
+      h += '<button type="button" id="eaScheduleBtn" style="background:linear-gradient(135deg, rgba(56,189,248,0.22), rgba(129,140,248,0.22));backdrop-filter:blur(14px);color:#ffffff;border:1px solid rgba(56,189,248,0.5);border-radius:12px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 22px -4px rgba(56,189,248,0.35);transition:all 0.2s;">' +
         '<span>✏️ Tahrirlash (' + (cls.schedule === 'juft' ? 'Juft kunlari' : (cls.schedule === 'toq' ? 'Toq kunlari' : 'Har kungi dars')) + ')</span>' +
       '</button>';
+      h += '<button type="button" id="eaAssignHomeworkBtn" style="background:linear-gradient(135deg, #8b5cf6, #6366f1);color:#ffffff;border:1px solid rgba(192,132,252,0.55);border-radius:12px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 24px -4px rgba(139,92,246,0.5);transition:all 0.2s;">' +
+        '<span>📚 Uy vazifasi belgilash (Intermediate B1+)</span>' +
+      '</button>';
     } else {
-      h += '<span class="qe-glass-pill" style="color:#cbd5e1;border-radius:12px;padding:8px 14px;font-size:12.5px;font-weight:800;">👁 O\'quvchi rejimi (Faqat ko\'rish)</span>';
+      h += '<span class="qe-glass-pill" style="color:#cbd5e1;border-radius:12px;padding:8px 14px;font-size:12.5px;font-weight:800;">👁 O\'quvchi rejimi (Baholar vazifa bajarilgach avtomatik qo\'yiladi)</span>';
     }
 
     h += '</div>';
 
     // Right Action: Authentic Green PIIMA Excel Export Button ("Yuklab olish")
     h += '<div style="display:flex;align-items:center;gap:10px;">' +
-      '<button id="eaExportExcelBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:1px solid rgba(52,211,153,0.5);border-radius:12px;padding:9px 20px;font-size:13.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 24px -2px rgba(16,185,129,0.45);transition:all 0.2s;">' +
+      '<button type="button" id="eaExportExcelBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:1px solid rgba(52,211,153,0.5);border-radius:12px;padding:9px 20px;font-size:13.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 24px -2px rgba(16,185,129,0.45);transition:all 0.2s;">' +
         '<span>Yuklab olish</span>' +
         '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">' +
           '<path d="M12 3.5H23.5V20.5H12V3.5Z" fill="white"></path>' +
@@ -669,14 +858,14 @@
     h += '<thead><tr style="background:rgba(8,13,26,0.65);">';
 
     // Sticky Col 1: №
-    h += '<th style="position:sticky;left:0;z-index:30;background:rgba(8,13,26,0.92);backdrop-filter:blur(20px);width:54px;min-width:54px;padding:8px;border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.08);">' +
+    h += '<th style="position:sticky;left:0;z-index:30;background:rgba(8,13,26,0.97);backdrop-filter:blur(20px);width:54px;min-width:54px;padding:8px;border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.08);">' +
       '<div style="height:115px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#94a3b8;border:1px solid rgba(255,255,255,0.12);border-radius:12px;background:rgba(15,23,42,0.65);box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);">' +
         '№' +
       '</div>' +
     '</th>';
 
     // Sticky Col 2: O'quvchi F.I.SH
-    h += '<th style="position:sticky;left:54px;z-index:30;background:rgba(8,13,26,0.92);backdrop-filter:blur(20px);width:265px;min-width:265px;padding:8px;border-bottom:1px solid rgba(255,255,255,0.1);border-right:2px solid rgba(56,189,248,0.28);">' +
+    h += '<th style="position:sticky;left:54px;z-index:30;background:rgba(8,13,26,0.97);backdrop-filter:blur(20px);width:265px;min-width:265px;padding:8px;border-bottom:1px solid rgba(255,255,255,0.1);border-right:2px solid rgba(56,189,248,0.28);">' +
       '<div style="height:115px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#f8fafc;border:1px solid rgba(255,255,255,0.12);border-radius:12px;background:rgba(15,23,42,0.65);padding:0 12px;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);">' +
         '<span>O’quvchi F.I.SH</span>' +
         '<span style="font-size:10.5px;font-weight:600;color:#38bdf8;margin-top:4px;">(Tahlil uchun ism ustiga bosing 📊)</span>' +
@@ -694,7 +883,15 @@
       var isSunday = (dt.getDay() === 0);
       var isHoliday = isSunday || (cls.attendance.holidays && cls.attendance.holidays[dKey] === true);
       var isFuture = dt > todayObj;
-      var lessonType = isSunday ? 'Yakshanba' : (cls.attendance.lessonTypes[dKey] || (isHoliday ? 'Dam olish' : 'Oddiy'));
+      var hwForDate = cls.attendance.homeworks && cls.attendance.homeworks[dKey];
+      var rawType = cls.attendance.lessonTypes[dKey] || '';
+      if (rawType.indexOf('BSB') !== -1 || rawType.indexOf('CHSB') !== -1) rawType = 'Oddiy';
+
+      var lessonType = isSunday
+        ? 'Yakshanba'
+        : (isHoliday
+          ? 'Dam olish'
+          : (hwForDate ? ('📚 Vazifa: ' + hwForDate.lessonCode) : (rawType || 'Oddiy')));
       var isToday = (dKey === todayKey);
 
       var cardBg = isHoliday
@@ -717,14 +914,14 @@
 
       var typeColor = isHoliday
         ? '#fb7185'
-        : (lessonType === 'BSB - Y1' || lessonType === 'CHSB' ? '#38bdf8' : (isFuture ? '#34d399' : '#cbd5e1'));
+        : (lessonType.indexOf('Vazifa') !== -1 ? '#38bdf8' : (isFuture ? '#34d399' : '#cbd5e1'));
 
       h += '<th style="width:136px;min-width:136px;padding:8px 6px;border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.06);">' +
         '<div class="ea-date-header-card" data-date="' + dKey + '" data-sunday="' + (isSunday ? '1' : '0') + '" ' +
           'title="' + (isSunday ? 'Yakshanba - Dam olish kuni' : (isTeacher ? '1 marta bosish: Qizil Dam olish kuni qilish / qaytarish' : dDisp)) + '" ' +
           'style="height:115px;border-radius:12px;border:1.5px solid ' + cardBorder + ';background:' + cardBg + ';box-shadow:' + cardShadow + ';display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;cursor:' + (isTeacher && !isSunday ? 'pointer' : 'default') + ';transition:all 0.2s;">' +
           (isTeacher && !isSunday ?
-            '<div class="ea-date-opts-btn" data-date="' + dKey + '" data-disp="' + dDisp + '" title="Dars turini tanlash (Oddiy / BSB / CHSB / Dam olish)" style="position:absolute;top:4px;right:5px;cursor:pointer;color:#94a3b8;font-size:15px;font-weight:900;line-height:1;z-index:5;padding:2px 5px;border-radius:6px;background:rgba(255,255,255,0.06);">' +
+            '<div class="ea-date-opts-btn" data-date="' + dKey + '" data-disp="' + dDisp + '" title="Sana sozlamasi va Uy vazifasi belgilash" style="position:absolute;top:4px;right:5px;cursor:pointer;color:#94a3b8;font-size:15px;font-weight:900;line-height:1;z-index:5;padding:2px 5px;border-radius:6px;background:rgba(255,255,255,0.06);">' +
               '⋮' +
             '</div>' : '') +
           '<div style="grid-column:span 2;padding:6px 8px 4px;border-bottom:1px solid ' + cardBorder + ';text-align:center;">' +
@@ -736,8 +933,8 @@
               dDisp +
             '</div>' +
           '</div>' +
-          '<div style="display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:' + (isHoliday ? '#fb7185' : '#94a3b8') + ';padding:4px 0;">D</div>' +
-          '<div style="display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:' + (isHoliday ? '#fb7185' : '#94a3b8') + ';padding:4px 0;border-left:1px solid ' + cardBorder + ';">B</div>' +
+          '<div style="display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:' + (isHoliday ? '#fb7185' : '#94a3b8') + ';padding:4px 0;" title="Davomat (K / K / S)">D</div>' +
+          '<div style="display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:' + (isHoliday ? '#fb7185' : '#38bdf8') + ';padding:4px 0;border-left:1px solid ' + cardBorder + ';" title="Avtomatik Kunlik Baho (Vazifa natijasiga ko\'ra)">B ⚡</div>' +
         '</div>' +
       '</th>';
     });
@@ -773,7 +970,7 @@
               '</div>' +
               (EA.viewMode === 'all'
                 ? '<div style="font-size:10.5px;font-weight:700;color:#38bdf8;margin-top:2px;">📅 Qo\'shilgan: ' + esc(joinedDisp) + '</div>'
-                : '<div style="font-size:10px;font-weight:600;color:#64748b;margin-top:1px;">📈 Statistika va tahlil &rarr;</div>') +
+                : '<div style="font-size:10px;font-weight:600;color:#64748b;margin-top:1px;">📈 Kunlik vazifa va o\'sish tahlili &rarr;</div>') +
             '</div>' +
             (isTeacher ?
               '<button type="button" class="ea-edit-student-btn" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O\'quvchi ismini tahrirlash" style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#cbd5e1;cursor:pointer;padding:4px 6px;font-size:11px;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
@@ -790,7 +987,7 @@
 
           var rec = (cls.attendance.records[dKey] && cls.attendance.records[dKey][stId]) || {};
           var status = rec.status || '';
-          var score = (rec.score !== undefined && rec.score !== null) ? rec.score : '';
+          var score = (rec.score !== undefined && rec.score !== null) ? String(rec.score) : '';
 
           // Shaffof Dark-Mode Box Styles for D
           var dBoxStyle = 'height:38px;width:60px;min-width:60px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;transition:all 0.18s;user-select:none;';
@@ -804,20 +1001,53 @@
             dText = 'K';
           } else if (status === 'Q' || status === 'absent') {
             dBoxStyle += 'background:rgba(244,63,94,0.22);color:#fb7185;border:1px solid rgba(251,113,133,0.55);cursor:' + (isTeacher ? 'pointer' : 'default') + ';box-shadow:0 0 14px rgba(244,63,94,0.25),inset 0 1px 0 rgba(255,255,255,0.15);text-shadow:0 0 8px rgba(251,113,133,0.4);';
-            dText = 'K'; // Red K = Kelmagan
+            dText = 'K';
           } else if (status === 'S' || status === 'excused') {
             dBoxStyle += 'background:rgba(245,158,11,0.22);color:#fbbf24;border:1px solid rgba(251,191,36,0.55);cursor:' + (isTeacher ? 'pointer' : 'default') + ';box-shadow:0 0 14px rgba(245,158,11,0.22),inset 0 1px 0 rgba(255,255,255,0.15);text-shadow:0 0 8px rgba(251,191,36,0.4);';
-            dText = 'S'; // Yellow S = Sababli
+            dText = 'S';
           } else {
             dBoxStyle += 'background:rgba(15,23,42,0.55);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);cursor:' + (isTeacher ? 'pointer' : 'default') + ';';
             dText = '';
           }
 
-          // Shaffof Dark-Mode Box Styles for B (Baho / Score)
-          var hasScore = String(score).trim() !== '';
-          var bBoxStyle = 'height:38px;width:60px;min-width:60px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;border:1px solid ' +
-            (isHoliday ? 'rgba(251,113,133,0.35)' : (hasScore ? 'rgba(56,189,248,0.45)' : 'rgba(255,255,255,0.1)')) +
-            ';background:' + (isHoliday ? 'rgba(244,63,94,0.14)' : (hasScore ? 'rgba(56,189,248,0.14)' : 'rgba(15,23,42,0.55)')) + ';';
+          // Automatic Daily Grade Box Styles for B (Baho / Score automatically set by system)
+          var hasScore = score.trim() !== '';
+          var scoreNum = parseInt(score, 10);
+          var scoreColor = '#f8fafc';
+          var scoreBg = 'rgba(15,23,42,0.55)';
+          var scoreBorder = 'rgba(255,255,255,0.1)';
+
+          if (isHoliday) {
+            scoreBg = 'rgba(244,63,94,0.14)';
+            scoreBorder = 'rgba(251,113,133,0.35)';
+            scoreColor = '#fb7185';
+          } else if (hasScore) {
+            if (scoreNum >= 5) {
+              scoreBg = 'rgba(56,189,248,0.18)';
+              scoreBorder = 'rgba(56,189,248,0.55)';
+              scoreColor = '#38bdf8';
+            } else if (scoreNum === 4) {
+              scoreBg = 'rgba(16,185,129,0.16)';
+              scoreBorder = 'rgba(52,211,153,0.45)';
+              scoreColor = '#34d399';
+            } else if (scoreNum === 3) {
+              scoreBg = 'rgba(245,158,11,0.18)';
+              scoreBorder = 'rgba(251,191,36,0.45)';
+              scoreColor = '#fbbf24';
+            } else {
+              scoreBg = 'rgba(244,63,94,0.18)';
+              scoreBorder = 'rgba(251,113,133,0.45)';
+              scoreColor = '#fb7185';
+            }
+          }
+
+          var bTitle = isHoliday
+            ? 'Dam olish kuni'
+            : (rec.hwDone
+              ? ('Avtomatik Baho: ' + score + ' (Uy vazifasi ' + (rec.hwLesson || '') + ' — ' + (rec.hwPct || 95) + '% bajarildi ✓)')
+              : (score === '2' ? 'Avtomatik Baho: 2 (Uy vazifasi bajarilmagan / Dars qoldirilgan)' : 'Avtomatik baho: O\'quvchi uy vazifasini bajarganda tizim o\'zi qo\'yadi'));
+
+          var bBoxStyle = 'height:38px;width:60px;min-width:60px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13.5px;border:1px solid ' + scoreBorder + ';background:' + scoreBg + ';color:' + scoreColor + ';user-select:none;';
 
           h += '<td style="width:136px;min-width:136px;padding:6px;border-bottom:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06);">' +
             '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;align-items:center;">' +
@@ -827,13 +1057,8 @@
                 'title="' + (isHoliday ? 'Dam olish kuni' : (isTeacher ? 'Bosish: Yashil K (Kelgan) -> Qizil K (Kelmagan) -> Sariq S (Sababli) -> Bo\'sh' : 'Davomat holati')) + '">' +
                 dText +
               '</div>' +
-              '<div style="' + bBoxStyle + '">' +
-                (isTeacher && !isHoliday ?
-                  '<input type="text" class="ea-score-input" data-date="' + dKey + '" data-stid="' + esc(stId) + '" ' +
-                    'value="' + esc(score) + '" maxlength="3" ' +
-                    'placeholder="" ' +
-                    'style="width:100%;height:100%;border:none;background:transparent;text-align:center;font-weight:900;font-size:13px;color:#f8fafc;outline:none;" />' :
-                  '<span style="color:' + (isHoliday ? '#fb7185' : '#f8fafc') + ';">' + (isHoliday ? '🔒' : esc(score)) + '</span>') +
+              '<div style="' + bBoxStyle + '" title="' + esc(bTitle) + '">' +
+                (isHoliday ? '🔒' : esc(score)) +
               '</div>' +
             '</div>' +
           '</td>';
@@ -848,15 +1073,15 @@
     // 5. BOTTOM "UMUMIY DAVOMAT" BUTTON & LEGEND
     h += '<div class="qe-glass-panel" style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;border-radius:18px;padding:14px 18px;">' +
       '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">' +
-        '<button id="eaBottomToggleAllBtn" style="background:' + (EA.viewMode === 'all' ? 'linear-gradient(135deg,#6366f1,#8b5cf6)' : 'linear-gradient(135deg,#0284c7,#2563eb)') + ';color:#ffffff;border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:10px 20px;font-size:13.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 24px -4px rgba(56,189,248,0.45);">' +
+        '<button type="button" id="eaBottomToggleAllBtn" style="background:' + (EA.viewMode === 'all' ? 'linear-gradient(135deg,#6366f1,#8b5cf6)' : 'linear-gradient(135deg,#0284c7,#2563eb)') + ';color:#ffffff;border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:10px 20px;font-size:13.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 24px -4px rgba(56,189,248,0.45);">' +
           (EA.viewMode === 'all' ? '🔙 10 Kunlik + Kelasi 2 Kunlik rejimga qaytish' : '📋 Umumiy davomat (Barcha sanalar va qo\'shilgan vaqtlar)') +
         '</button>' +
       '</div>' +
       '<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:12.5px;color:#cbd5e1;">' +
         '<div style="display:inline-flex;align-items:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:rgba(16,185,129,0.2);border:1px solid rgba(52,211,153,0.55);color:#34d399;font-weight:900;font-size:11.5px;">K</span> <b>Kelgan</b></div>' +
         '<div style="display:inline-flex;align-items:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:rgba(244,63,94,0.22);border:1px solid rgba(251,113,133,0.55);color:#fb7185;font-weight:900;font-size:11.5px;">K</span> <b>Kelmagan</b></div>' +
-        '<div style="display:inline-flex;align-items:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:rgba(245,158,11,0.22);border:1px solid rgba(251,191,36,0.55);color:#fbbf24;font-weight:900;font-size:11.5px;">S</span> <b>Sababli (Javob so\'ragan)</b></div>' +
-        '<div style="display:inline-flex;align-items:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:rgba(244,63,94,0.14);border:1px solid rgba(251,113,133,0.35);color:#fb7185;font-weight:900;font-size:11.5px;">🔒</span> <b>Dam olish / Yakshanba</b></div>' +
+        '<div style="display:inline-flex;align-items:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:rgba(245,158,11,0.22);border:1px solid rgba(251,191,36,0.55);color:#fbbf24;font-weight:900;font-size:11.5px;">S</span> <b>Sababli</b></div>' +
+        '<div style="display:inline-flex;align-items:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.55);color:#38bdf8;font-weight:900;font-size:11.5px;">5</span> <b>Avtomatik Baho (Vazifadan)</b></div>' +
       '</div>' +
     '</div>';
 
@@ -896,7 +1121,28 @@
     var goClsBtn = container.querySelector('#eaGoClassesBtn');
     if (goClsBtn) {
       goClsBtn.onclick = function() {
+        if (window.S) window.S.activeClassId = cls.id;
         if (typeof window.go === 'function') window.go('classes');
+      };
+    }
+
+    // Open active homework lesson directly
+    var openActiveHwBtn = container.querySelector('#eaOpenActiveHwBtn');
+    if (openActiveHwBtn && cls.activeHomework) {
+      openActiveHwBtn.onclick = function() {
+        var hw = cls.activeHomework;
+        window._ethithActiveHwContext = {
+          classId: cls.id,
+          classCode: cls.code,
+          dateKey: hw.dateKey,
+          unit: hw.unit,
+          lessonCode: hw.lessonCode
+        };
+        if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.openLesson === 'function') {
+          window.ETHITH_WORKBOOK_B1.openLesson(hw.unit, hw.lessonCode, (hw.pages && hw.pages[0]) || 4);
+        } else if (typeof window.go === 'function') {
+          window.go('intermediate', { unit: hw.unit, lesson: hw.lessonCode });
+        }
       };
     }
 
@@ -915,6 +1161,15 @@
       schedBtn.onclick = function(e) {
         e.stopPropagation();
         EA.openScheduleModal(container, cls);
+      };
+    }
+
+    // Top "📚 Uy vazifasi belgilash" Modal
+    var assignHwBtn = container.querySelector('#eaAssignHomeworkBtn');
+    if (assignHwBtn && isTeacher) {
+      assignHwBtn.onclick = function(e) {
+        e.stopPropagation();
+        EA.openHomeworkAssignModal(container, cls);
       };
     }
 
@@ -967,25 +1222,15 @@
           if (!cls.attendance.records[dKey][stId]) cls.attendance.records[dKey][stId] = {};
           cls.attendance.records[dKey][stId].status = next;
 
+          // If marked absent ('Q') and student hasn't completed homework, set automatic 2
+          if (next === 'Q' && !cls.attendance.records[dKey][stId].hwDone) {
+            cls.attendance.records[dKey][stId].score = '2';
+          } else if (next === 'S' && !cls.attendance.records[dKey][stId].hwDone) {
+            cls.attendance.records[dKey][stId].score = '';
+          }
+
           persistAttendance(cls);
           EA.render(container, scrollWrap ? scrollWrap.scrollLeft : 0);
-        };
-      });
-    }
-
-    // Score Input (B) change
-    if (isTeacher) {
-      container.querySelectorAll('.ea-score-input').forEach(function(inp) {
-        inp.onchange = function() {
-          var dKey = inp.dataset.date;
-          var stId = inp.dataset.stid;
-          var val = inp.value.trim();
-
-          if (!cls.attendance.records[dKey]) cls.attendance.records[dKey] = {};
-          if (!cls.attendance.records[dKey][stId]) cls.attendance.records[dKey][stId] = {};
-          cls.attendance.records[dKey][stId].score = val;
-
-          persistAttendance(cls);
         };
       });
     }
@@ -1021,7 +1266,140 @@
   };
 
   // ============================================================================
-  // PERSISTENT DARK-GLASS MODALS (RENDERED IN DOCUMENT.BODY — NEVER AUTO-CLOSES)
+  // MODAL: ASSIGN HOMEWORK ("📚 Uy vazifasi belgilash")
+  // ============================================================================
+  EA.openHomeworkAssignModal = function(container, cls, defaultDateKey, onDoneCallback) {
+    EA.isModalOpen = true;
+    var modalRoot = getGlobalModalRoot();
+    ensureClassAttendance(cls);
+
+    var dates = getJournalDates(cls, 'window').filter(function(d) { return d.getDay() !== 0; });
+    var todayKey = formatDateKey(new Date());
+    var selectedDateKey = defaultDateKey || (cls.activeHomework && cls.activeHomework.dateKey) || todayKey;
+
+    var units = getWorkbookUnitsList();
+    var curHw = (cls.attendance.homeworks && cls.attendance.homeworks[selectedDateKey]) || cls.activeHomework || { unit: 1, lessonCode: '1.1', note: '' };
+    var selUnitNum = parseInt(curHw.unit, 10) || 1;
+    var selLessonCode = curHw.lessonCode || '1.1';
+
+    var dateOptsHtml = '';
+    dates.forEach(function(dt) {
+      var dk = formatDateKey(dt);
+      var dd = formatDisplayDate(dt);
+      dateOptsHtml += '<option value="' + dk + '" data-disp="' + dd + '" ' + (dk === selectedDateKey ? 'selected' : '') + '>' + dd + (dk === todayKey ? ' (Bugun)' : '') + '</option>';
+    });
+
+    var unitOptsHtml = '';
+    units.forEach(function(u) {
+      unitOptsHtml += '<option value="' + u.unit + '" ' + (u.unit === selUnitNum ? 'selected' : '') + '>' + esc(u.title) + '</option>';
+    });
+
+    function buildLessonOptions(uNum, activeCode) {
+      var uObj = units.find(function(x) { return x.unit === parseInt(uNum, 10); }) || units[0];
+      var html = '';
+      (uObj.lessons || []).forEach(function(les) {
+        var pgStr = (les.pages && les.pages.length) ? ' (Workbook ' + les.pages.join('–') + '-betlar)' : '';
+        html += '<option value="' + esc(les.code) + '" ' + (les.code === activeCode ? 'selected' : '') + '>' + esc(les.title) + pgStr + '</option>';
+      });
+      return html;
+    }
+
+    var mHtml = '<div id="eaHwOverlayBg" style="position:fixed;inset:0;background:rgba(2,6,23,0.76);backdrop-filter:blur(10px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;">' +
+      '<div style="background:rgba(15,23,42,0.95);backdrop-filter:blur(24px);border:1.5px solid rgba(139,92,246,0.5);border-radius:24px;max-width:500px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.8),0 0 35px rgba(139,92,246,0.22);color:#f8fafc;font-family:inherit;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">' +
+          '<h3 style="margin:0;font-size:19px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">📚 Uy Vazifasi Belgilash (' + esc(cls.name) + ')</h3>' +
+          '<button type="button" id="eaCloseHwModal" style="border:none;background:rgba(255,255,255,0.08);width:32px;height:32px;border-radius:10px;font-size:16px;cursor:pointer;color:#cbd5e1;">✕</button>' +
+        '</div>' +
+        '<p style="font-size:12.5px;color:#94a3b8;margin:0 0 18px;line-height:1.5;">' +
+          'Intermediate (B1+) darsligidan topshiriq tanlang. Vazifa shu zahoti guruh chatining tepasida chiqadi va o\'quvchi uni bajarganda tizim avtomatik ravishda tekshirib, kunlik bahosini (<b>5, 4, 3, 2</b>) Davomat jurnaliga qo\'yadi!' +
+        '</p>' +
+        '<div style="display:flex;flex-direction:column;gap:14px;margin-bottom:22px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📅 Qaysi sanaga belgilansin:</label>' +
+            '<select id="eaHwDateSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.16);background:rgba(8,13,26,0.9);color:#fff;font-weight:800;font-size:13.5px;outline:none;">' +
+              dateOptsHtml +
+            '</select>' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📘 Intermediate (B1+) Bo\'limi (Unit 1–12):</label>' +
+            '<select id="eaHwUnitSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(56,189,248,0.45);background:rgba(8,13,26,0.9);color:#38bdf8;font-weight:800;font-size:13.5px;outline:none;">' +
+              unitOptsHtml +
+            '</select>' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📝 Topshiriq / Workbook Darsi:</label>' +
+            '<select id="eaHwLessonSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(16,185,129,0.45);background:rgba(8,13,26,0.9);color:#34d399;font-weight:800;font-size:13.5px;outline:none;">' +
+              buildLessonOptions(selUnitNum, selLessonCode) +
+            '</select>' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">💬 O\'quvchilarga izoh (ixtiyoriy):</label>' +
+            '<input type="text" id="eaHwNoteInput" value="' + esc(curHw.note || "Workbook mashqlarini bajarib Tekshirish tugmasini bosing — baho avtomatik qo'yiladi.") + '" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.16);background:rgba(8,13,26,0.9);color:#fff;font-size:13px;box-sizing:border-box;outline:none;" />' +
+          '</div>' +
+        '</div>' +
+        '<div style="display:flex;gap:10px;justify-content:flex-end;">' +
+          '<button type="button" id="eaCancelHwBtn" style="background:rgba(255,255,255,0.07);color:#cbd5e1;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+          '<button type="button" id="eaSaveHwBtn" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(139,92,246,0.45);">✅ Vazifani Belgilash va Yuborish</button>' +
+        '</div>' +
+      '</div></div>';
+
+    modalRoot.innerHTML = mHtml;
+
+    var unitSel = modalRoot.querySelector('#eaHwUnitSelect');
+    var lesSel = modalRoot.querySelector('#eaHwLessonSelect');
+    unitSel.onchange = function() {
+      var uNum = parseInt(unitSel.value, 10);
+      lesSel.innerHTML = buildLessonOptions(uNum, uNum + '.1');
+    };
+
+    modalRoot.querySelector('#eaCloseHwModal').onclick = closeGlobalModal;
+    modalRoot.querySelector('#eaCancelHwBtn').onclick = closeGlobalModal;
+    modalRoot.querySelector('#eaHwOverlayBg').onclick = function(e) {
+      if (e.target.id === 'eaHwOverlayBg') closeGlobalModal();
+    };
+
+    modalRoot.querySelector('#eaSaveHwBtn').onclick = function() {
+      var dateSel = modalRoot.querySelector('#eaHwDateSelect');
+      var dKey = dateSel.value;
+      var dDisp = (dateSel.options[dateSel.selectedIndex] && dateSel.options[dateSel.selectedIndex].dataset.disp) || dKey;
+      var uNum = parseInt(unitSel.value, 10) || 1;
+      var lCode = lesSel.value || (uNum + '.1');
+      var noteVal = modalRoot.querySelector('#eaHwNoteInput').value.trim();
+
+      var uObj = units.find(function(x) { return x.unit === uNum; }) || units[0];
+      var lObj = (uObj.lessons || []).find(function(l) { return l.code === lCode; }) || { code: lCode, title: lCode, pages: [4, 5] };
+
+      var hwObj = {
+        dateKey: dKey,
+        dateDisp: dDisp,
+        unit: uNum,
+        lessonCode: lCode,
+        lessonTitle: lObj.title,
+        pages: lObj.pages || [],
+        note: noteVal,
+        assignedAt: Date.now(),
+        teacherName: cls.teacherName || 'Ustoz'
+      };
+
+      if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
+      cls.attendance.homeworks[dKey] = hwObj;
+      cls.activeHomework = hwObj;
+      cls.attendance.lessonTypes[dKey] = 'Vazifa: ' + lCode;
+      delete cls.attendance.holidays[dKey];
+
+      persistAttendance(cls);
+      closeGlobalModal();
+
+      if (typeof onDoneCallback === 'function') {
+        onDoneCallback(hwObj);
+      } else {
+        EA.render(container);
+      }
+    };
+  };
+
+  // ============================================================================
+  // PERSISTENT DARK-GLASS MODALS (NO BSB / CHSB)
   // ============================================================================
   EA.openScheduleModal = function(container, cls) {
     EA.isModalOpen = true;
@@ -1076,12 +1454,12 @@
     };
   };
 
+  // Date Options Modal (ONLY Oddiy dars, Dam olish kuni, or Uy vazifasi belgilash — NO BSB/CHSB!)
   EA.openDateOptsModal = function(container, cls, dKey, dDisp) {
     EA.isModalOpen = true;
     var modalRoot = getGlobalModalRoot();
 
     var isHol = cls.attendance.holidays && cls.attendance.holidays[dKey] === true;
-    var curType = cls.attendance.lessonTypes[dKey] || (isHol ? 'Dam olish' : 'Oddiy');
 
     var mHtml = '<div id="eaDateOverlayBg" style="position:fixed;inset:0;background:rgba(2,6,23,0.72);backdrop-filter:blur(10px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;">' +
       '<div style="background:rgba(15,23,42,0.92);backdrop-filter:blur(24px);border:1px solid rgba(56,189,248,0.35);border-radius:24px;max-width:420px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.75);color:#f8fafc;font-family:inherit;">' +
@@ -1089,14 +1467,15 @@
           '<h3 style="margin:0;font-size:17px;font-weight:900;color:#ffffff;">📅 Sana Sozlamasi: ' + esc(dDisp) + '</h3>' +
           '<button type="button" id="eaCloseDateModal" style="border:none;background:rgba(255,255,255,0.08);width:32px;height:32px;border-radius:10px;font-size:16px;cursor:pointer;color:#cbd5e1;">✕</button>' +
         '</div>' +
-        '<div style="margin-bottom:20px;">' +
-          '<label style="display:block;font-size:12.5px;font-weight:800;color:#94a3b8;margin-bottom:8px;">Dars Turi (yoki Dam olish kuni):</label>' +
+        '<div style="margin-bottom:18px;">' +
+          '<label style="display:block;font-size:12.5px;font-weight:800;color:#94a3b8;margin-bottom:8px;">Kun holati:</label>' +
           '<select id="eaDateTypeSelect" style="width:100%;padding:11px 14px;border-radius:12px;border:1px solid rgba(56,189,248,0.4);background:rgba(8,13,26,0.9);font-weight:800;font-size:13.5px;box-sizing:border-box;color:#ffffff;outline:none;">' +
-            '<option value="Oddiy" ' + (curType === 'Oddiy' ? 'selected' : '') + '>Oddiy dars</option>' +
-            '<option value="Dam olish" ' + (curType === 'Dam olish' || isHol ? 'selected' : '') + '>Dam olish kuni (Qizil / Qulf 🔒)</option>' +
-            '<option value="BSB - Y1" ' + (curType === 'BSB - Y1' ? 'selected' : '') + '>BSB - Y1 (Nazorat ishi)</option>' +
-            '<option value="CHSB" ' + (curType === 'CHSB' ? 'selected' : '') + '>CHSB (Choraklik baholash)</option>' +
+            '<option value="Oddiy" ' + (!isHol ? 'selected' : '') + '>Oddiy o\'quv kuni</option>' +
+            '<option value="Dam olish" ' + (isHol ? 'selected' : '') + '>Dam olish kuni (Qizil / Qulf 🔒)</option>' +
           '</select>' +
+        '</div>' +
+        '<div style="margin-bottom:20px;">' +
+          '<button type="button" id="eaDateOpenHwModalBtn" style="width:100%;padding:11px 14px;border-radius:12px;border:1px solid rgba(139,92,246,0.5);background:linear-gradient(135deg,rgba(139,92,246,0.25),rgba(99,102,241,0.25));color:#d8b4fe;font-weight:800;font-size:13px;cursor:pointer;">📚 Shu kunga Intermediate (B1+) Uy Vazifasi Belgilash &rarr;</button>' +
         '</div>' +
         '<div style="display:flex;gap:10px;justify-content:flex-end;">' +
           '<button type="button" id="eaCancelDateBtn" style="background:rgba(255,255,255,0.07);color:#cbd5e1;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
@@ -1110,6 +1489,10 @@
     modalRoot.querySelector('#eaCancelDateBtn').onclick = closeGlobalModal;
     modalRoot.querySelector('#eaDateOverlayBg').onclick = function(e) {
       if (e.target.id === 'eaDateOverlayBg') closeGlobalModal();
+    };
+
+    modalRoot.querySelector('#eaDateOpenHwModalBtn').onclick = function() {
+      EA.openHomeworkAssignModal(container, cls, dKey);
     };
 
     modalRoot.querySelector('#eaSaveDateBtn').onclick = function() {
@@ -1180,8 +1563,6 @@
 
   // ============================================================================
   // QUANTUM-EDU STUDENT DAILY TASKS & GROWTH/DECLINE ANALYTICS VIEW
-  // Exact replica of quantumedu_o_quvchi_kunlik_vazifalar_va_o_sish_cho_kish_statistikasi.html
-  // dynamically computed from the student's real attendance & scores in `cls`!
   // ============================================================================
   function buildStudentAnalyticsProfile(cls, st, sIdx) {
     var stId = st.id || st.email || ('std_' + sIdx);
@@ -1211,32 +1592,31 @@
       var stStatus = rec.status || '';
       var rawScore = parseFloat(rec.score);
 
-      // Only count days where attendance or grade was recorded
       if (!stStatus && isNaN(rawScore)) return;
 
       totalPastLessons++;
       var dayPerf = 88 + ((sIdx * 5 + totalPastLessons * 3) % 10);
-      var note = 'Darsda faol (Kelgan)';
+      var lesTag = rec.hwLesson ? ('Unit ' + rec.hwLesson) : 'Kunlik vazifa';
+      var note = 'Kelgan (K) • ' + lesTag + ' bajarildi';
 
       if (stStatus === 'K' || stStatus === 'present') {
         presentCount++;
-        if (!isNaN(rawScore)) {
-          dayPerf = rawScore <= 5 ? Math.min(100, Math.round((rawScore / 5) * 100)) : Math.min(100, Math.round(68 + rawScore));
+        if (rec.hwPct) {
+          dayPerf = rec.hwPct;
+        } else if (!isNaN(rawScore)) {
+          dayPerf = rawScore <= 5 ? Math.min(100, Math.round((rawScore / 5) * 100)) : Math.min(100, Math.round(rawScore));
         } else {
           dayPerf = Math.min(99, 88 + ((totalPastLessons + sIdx * 2) % 11));
         }
-        note = 'Kelgan (K) • Vazifa bajarildi';
+        note = 'Kelgan (K) • ' + lesTag + ' bajarildi (Baho: ' + (rec.score || 5) + ')';
       } else if (stStatus === 'Q' || stStatus === 'absent') {
         absentCount++;
-        dayPerf = Math.max(65, 75 - ((totalPastLessons + sIdx) % 8));
-        note = 'Kelmagan (Qizil K) • Dars qoldirildi';
+        dayPerf = Math.max(52, 68 - ((totalPastLessons + sIdx) % 8));
+        note = 'Kelmagan (Qizil K) • Vazifa bajarilmadi (Baho: 2)';
       } else if (stStatus === 'S' || stStatus === 'excused') {
         excusedCount++;
-        dayPerf = 82;
+        dayPerf = 80;
         note = 'Sababli (S) • Javob so\'ragan';
-      } else if (!isNaN(rawScore)) {
-        presentCount++;
-        dayPerf = rawScore <= 5 ? Math.min(100, Math.round((rawScore / 5) * 100)) : Math.min(100, Math.round(68 + rawScore));
       }
 
       dailyLabels.push(formatDisplayDate(dt).slice(0, 5));
@@ -1245,10 +1625,9 @@
     });
 
     if (dailyScores.length < 7) {
-      var fallbackDays = ["Dushanba", "Seshanba", "Chorshanba", "Payshanba", "Juma", "Shanba", "Bugun"];
-      dailyLabels = fallbackDays;
+      dailyLabels = ["Dushanba", "Seshanba", "Chorshanba", "Payshanba", "Juma", "Shanba", "Bugun"];
       dailyScores = [86.0, 89.5, 92.0, 94.5, 96.0, 97.2, 98.4];
-      dailyNotes = Array(7).fill("6/6 vazifa bajarildi");
+      dailyNotes = Array(7).fill("Vazifa bajarildi (Baho: 5)");
     }
 
     var attPct = totalPastLessons > 0 ? Number((((presentCount + excusedCount * 0.5) / totalPastLessons) * 100).toFixed(1)) : 96.5;
@@ -1394,7 +1773,7 @@
 
     h += '<div style="position:relative;z-index:5;display:flex;flex-direction:column;gap:22px;">';
 
-    // TOP GLASS FILTER BAR (with Back to Journal button + Student Selector + 7/14/30 Kunlik + Shaffoflik & Mavzu)
+    // TOP GLASS FILTER BAR
     h += '<header class="qe-glass-panel" style="border-radius:24px;padding:14px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">' +
       '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
         '<button type="button" id="qeBackToJournalBtn" class="qe-glass-pill" style="padding:9px 16px;border-radius:14px;color:#38bdf8;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;border-color:rgba(56,189,248,0.4);">' +
@@ -1507,7 +1886,7 @@
       '</div>' +
     '</section>';
 
-    // NAVIGATION TABS (DAILY OVERVIEW + ATTENDANCE HEATMAP)
+    // NAVIGATION TABS
     h += '<nav class="qe-glass-panel" style="border-radius:18px;padding:6px;display:flex;flex-wrap:wrap;gap:6px;">' +
       '<button type="button" data-qe-tab="overview" class="qe-nav-tab ' + (EA.qeTab === 'overview' ? 'qe-tab-active' : '') + '" style="flex:1;min-width:200px;padding:10px 16px;border-radius:13px;font-size:13px;font-weight:700;color:#cbd5e1;background:transparent;border:1px solid transparent;cursor:pointer;">' +
         '📊 Umumiy Kunlik Ko\'rsatkichlar (O\'sish / Cho\'kish)' +
@@ -1520,7 +1899,6 @@
     // TAB 1: DAILY OVERVIEW
     h += '<div id="qe-tab-overview" style="display:' + (EA.qeTab === 'overview' ? 'flex' : 'none') + ';flex-direction:column;gap:22px;">' +
       '<div class="qe-kpi-grid">' +
-        // KPI 1: GPA
         '<div class="qe-glass-panel qe-glass-interactive" style="border-radius:24px;padding:20px;">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;">' +
             '<span style="font-size:11.5px;font-weight:700;text-transform:uppercase;color:#94a3b8;">Kunlik Dars O\'zlashtirish</span>' +
@@ -1536,7 +1914,6 @@
           '</div>' +
           '<div style="margin-top:10px;font-size:12px;color:#94a3b8;">Kunlik o\'rtacha natija: <b style="color:#e2e8f0;">' + trend.avgVal + '%</b></div>' +
         '</div>' +
-        // KPI 2: Attendance
         '<div class="qe-glass-panel qe-glass-interactive" style="border-radius:24px;padding:20px;">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;">' +
             '<span style="font-size:11.5px;font-weight:700;text-transform:uppercase;color:#94a3b8;">Davomat Ko\'rsatkichi</span>' +
@@ -1551,7 +1928,6 @@
           '</div>' +
           '<div style="margin-top:10px;font-size:12px;color:#94a3b8;">Qoldirilgan darslar: <b style="color:#e2e8f0;">' + esc(st.missedNote) + '</b></div>' +
         '</div>' +
-        // KPI 3: Daily Homework & Tasks
         '<div class="qe-glass-panel qe-glass-interactive" style="border-radius:24px;padding:20px;">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;">' +
             '<span style="font-size:11.5px;font-weight:700;text-transform:uppercase;color:#94a3b8;">Kunlik Vazifalar va Ishlar</span>' +
@@ -1566,7 +1942,6 @@
           '</div>' +
           '<div style="margin-top:10px;font-size:12px;color:#94a3b8;">Vaqtida topshirilgan: <b style="color:#e2e8f0;">' + st.earlyTasks + ' ta kunlik ish</b></div>' +
         '</div>' +
-        // KPI 4: Growth vs Decline
         '<div class="qe-glass-panel qe-glass-interactive" style="border-radius:24px;padding:20px;">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;">' +
             '<span style="font-size:11.5px;font-weight:700;text-transform:uppercase;color:#94a3b8;">O\'sish / Cho\'kish Holati</span>' +
@@ -1583,7 +1958,7 @@
         '</div>' +
       '</div>';
 
-    // CHARTS ROW: LINE CHART + RADAR CHART
+    // CHARTS ROW
     var series = st.dailySeries[EA.qePeriod] || st.dailySeries.quarter;
     var maxVal = Math.max.apply(null, series.student);
     var maxIdx = series.student.indexOf(maxVal);
@@ -1654,16 +2029,16 @@
       h += '<div style="display:flex;flex-direction:column;gap:6px;"><div style="font-size:10px;color:#94a3b8;text-align:center;font-family:monospace;">' + w + '-h</div>';
       for (var d = 0; d < 6; d++) {
         var seed = (w * 7 + d * 3 + Math.round(trend.lastVal)) % 17;
-        var stText = "Darsda faol, kunlik vazifa 100% bajarildi (O'sish ↑)";
+        var stText = "Darsda faol, kunlik vazifa 100% bajarildi (O'sish ↑ • Baho: 5)";
         var cellStyle = "background:#34d399;box-shadow:0 0 8px rgba(52,211,153,0.45);";
         if (!trend.isGrowing && w >= 9 && d >= 3) {
-          stText = "Kunlik vazifa to'liq bajarilmadi / Dars qoldirildi (Cho'kish ↓)";
+          stText = "Kunlik vazifa bajarilmadi / Dars qoldirildi (Cho'kish ↓ • Baho: 2)";
           cellStyle = "background:rgba(244,63,94,0.65);";
         } else if (seed === 0) {
           stText = "Qisman bajarildi / Sababli (S)";
           cellStyle = "background:rgba(251,191,36,0.65);";
         } else if (seed < 5) {
-          stText = "Darsda qatnashdi (K), vazifa bajarildi (5/5)";
+          stText = "Darsda qatnashdi (K), vazifa bajarildi (Baho: 5)";
           cellStyle = "background:rgba(16,185,129,0.45);";
         }
         var dateLbl = w + "-hafta, " + daysNames[d];
@@ -1696,12 +2071,10 @@
 
     container.innerHTML = h;
 
-    // Render Chart.js Charts & Attach Analytics Events
     EA.initQuantumCharts(container, cls, st, trend);
   };
 
   EA.initQuantumCharts = function(container, cls, st, trend) {
-    // 1. Back to Journal
     var backBtn = container.querySelector('#qeBackToJournalBtn');
     if (backBtn) {
       backBtn.onclick = function() {
@@ -1710,7 +2083,6 @@
       };
     }
 
-    // 2. Student switcher dropdown
     var stSel = container.querySelector('#qeStudentSelect');
     if (stSel) {
       stSel.onchange = function() {
@@ -1719,7 +2091,6 @@
       };
     }
 
-    // 3. Period buttons (7 / 14 / 30 Kunlik)
     container.querySelectorAll('.qe-period-btn').forEach(function(btn) {
       btn.onclick = function() {
         EA.qePeriod = btn.dataset.qePeriod;
@@ -1727,7 +2098,6 @@
       };
     });
 
-    // 4. Tabs (Overview vs Attendance Heatmap)
     container.querySelectorAll('.qe-nav-tab').forEach(function(tab) {
       tab.onclick = function() {
         EA.qeTab = tab.dataset.qeTab;
@@ -1735,7 +2105,6 @@
       };
     });
 
-    // 5. Metric toggle (score vs gpa)
     container.querySelectorAll('.qe-metric-btn').forEach(function(btn) {
       btn.onclick = function() {
         EA.qeMetric = btn.dataset.qeMetric;
@@ -1743,7 +2112,6 @@
       };
     });
 
-    // 6. Glass Customizer Toggle & Sliders
     var glassBtn = container.querySelector('#qeToggleGlassMenu');
     var glassPanel = container.querySelector('#qeGlassCustomizer');
     if (glassBtn && glassPanel) {
@@ -1782,7 +2150,6 @@
       };
     });
 
-    // 7. Heatmap cell click
     container.querySelectorAll('.qe-heat-cell').forEach(function(cell) {
       cell.onclick = function() {
         var banner = container.querySelector('#qeHeatmapBanner');
@@ -1792,7 +2159,6 @@
       };
     });
 
-    // 8. Export Student Excel & Word with Diagrams
     var exBtn = container.querySelector('#qeExportExcelBtn');
     if (exBtn) {
       exBtn.onclick = function() {
@@ -1807,7 +2173,6 @@
       };
     }
 
-    // 9. Draw Chart.js Charts if Chart is loaded
     if (typeof window.Chart === 'undefined') return;
 
     var series = st.dailySeries[EA.qePeriod] || st.dailySeries.quarter;
@@ -2037,7 +2402,7 @@
 
     var wsData = [];
 
-    wsData.push([(cls.name || '1-GURUH') + " - " + (cls.teacherName || 'Ustoz'), "", "DAVOMAT VA BAHOLASH JURNALI"]);
+    wsData.push([(cls.name || '1-GURUH') + " - " + (cls.teacherName || 'Ustoz'), "", "DAVOMAT VA AVTOMATIK BAHOLASH JURNALI"]);
     wsData.push(["Sinf kodi: " + (cls.code || ''), "Jadval: " + (cls.schedule || 'har_kuni'), "Eksport sanasi: " + formatDisplayDate(new Date())]);
     wsData.push([]);
 
@@ -2113,7 +2478,7 @@
 
     var colWidths = [{ wch: 6 }, { wch: 36 }, { wch: 15 }];
     dates.forEach(function() {
-      colWidths.push({ wch: 13 });
+      colWidths.push({ wch: 14 });
       colWidths.push({ wch: 6 });
     });
     colWidths.push({ wch: 18 }, { wch: 18 }, { wch: 16 }, { wch: 15 });
