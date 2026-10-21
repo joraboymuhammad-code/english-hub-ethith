@@ -11613,8 +11613,8 @@
         "id": "u8_p56_ex2_5",
         "type": "fill",
         "page": 56,
-        "top": 50.8,
-        "left": 18.5,
+        "top": 49.4,
+        "left": 12.3,
         "width": 11,
         "height": 2.2,
         "correct": "reappeared",
@@ -11624,8 +11624,8 @@
         "id": "u8_p56_ex2_6",
         "type": "fill",
         "page": 56,
-        "top": 52.6,
-        "left": 20,
+        "top": 51.1,
+        "left": 19.4,
         "width": 10.5,
         "height": 2.2,
         "correct": "misunderstand",
@@ -11864,8 +11864,8 @@
         "id": "u8_p56_ex5_4",
         "type": "fill",
         "page": 56,
-        "top": 59.5,
-        "left": 75,
+        "top": 56.6,
+        "left": 75.3,
         "width": 16.5,
         "height": 2.2,
         "correct": "pollution",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592358758
+  "updatedAt": 1792592361992
 }
