@@ -33,6 +33,7 @@
   EA.viewMode = 'window'; // 'window' (10 past + 2 future) or 'all' (Umumiy davomat)
   EA.isModalOpen = false; // Prevents background sync from closing open modals
   EA.activeStudentId = null; // When set, renders QuantumEdu Student Analytics view
+  EA.isNamesCollapsed = false; // Collapses student names column to the left showing only initials/starts
 
   // QuantumEdu Analytics State
   EA.qePeriod = 'quarter'; // 'quarter' (7 kun) | 'semester' (14 kun) | 'year' (30 kun)
@@ -173,8 +174,23 @@
       @keyframes qeShimmer {
         100% { left: 160%; }
       }
-      .ea-journal-row:hover td {
+      .ea-journal-row:hover td:not(.ea-sticky-cell) {
         background: rgba(56, 189, 248, 0.09) !important;
+      }
+      .ea-journal-row:hover td.ea-sticky-cell {
+        background: rgba(14, 25, 48, 0.99) !important;
+      }
+      .ea-names-col-cell {
+        transition: width 0.24s cubic-bezier(0.16, 1, 0.3, 1), min-width 0.24s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.24s cubic-bezier(0.16, 1, 0.3, 1), padding 0.2s ease;
+      }
+      .ea-collapse-names-btn {
+        transition: all 0.2s ease;
+      }
+      .ea-collapse-names-btn:hover {
+        background: rgba(56, 189, 248, 0.28) !important;
+        border-color: rgba(56, 189, 248, 0.75) !important;
+        transform: scale(1.04);
+        box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
       }
       .ea-student-name-link {
         cursor: pointer;
@@ -851,6 +867,31 @@
     '</div></div>';
 
     // 4. THE SHAFFOF DARK-MODE GLASSMORPHIC JOURNAL TABLE CONTAINER
+    var isCollapsed = !!EA.isNamesCollapsed;
+    var numColW = isCollapsed ? 40 : 54;
+    var nameColW = isCollapsed ? 96 : 265;
+
+    function getStudentShortInfo(fullName) {
+      var clean = String(fullName || '').trim();
+      if (!clean) return { initials: '?', shortStart: '?' };
+      var parts = clean.split(/\s+/);
+      function firstLetter(word) {
+        if (!word) return '';
+        var u = word.toUpperCase();
+        if (u.indexOf("O'") === 0 || u.indexOf("O‘") === 0 || u.indexOf("O’") === 0) return "O'";
+        if (u.indexOf("G'") === 0 || u.indexOf("G‘") === 0 || u.indexOf("G’") === 0) return "G'";
+        if (u.indexOf("SH") === 0) return "Sh";
+        if (u.indexOf("CH") === 0) return "Ch";
+        return u.charAt(0);
+      }
+      var l1 = firstLetter(parts[0]);
+      var l2 = parts.length > 1 ? firstLetter(parts[1]) : '';
+      var initials = l1 + (l2 ? '.' + l2 : '');
+      var w1 = parts[0] || clean;
+      var shortStart = w1.length > 6 ? (w1.slice(0, 6) + '…') : (w1 + (l2 ? ' ' + l2 + '.' : ''));
+      return { initials: initials, shortStart: shortStart };
+    }
+
     h += '<div class="ea-table-scroll-wrap qe-glass-panel" style="position:relative;width:100%;overflow-x:auto;border-radius:22px;padding:2px;">';
     h += '<table class="my-table" style="border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;">';
 
@@ -858,17 +899,25 @@
     h += '<thead><tr style="background:rgba(8,13,26,0.65);">';
 
     // Sticky Col 1: №
-    h += '<th style="position:sticky;left:0;z-index:30;background:rgba(8,13,26,0.97);backdrop-filter:blur(20px);width:54px;min-width:54px;padding:8px;border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.08);">' +
-      '<div style="height:115px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#94a3b8;border:1px solid rgba(255,255,255,0.12);border-radius:12px;background:rgba(15,23,42,0.65);box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);">' +
+    h += '<th class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:0;z-index:30;background:rgba(8,13,26,0.98);backdrop-filter:blur(20px);width:' + numColW + 'px;min-width:' + numColW + 'px;max-width:' + numColW + 'px;padding:' + (isCollapsed ? '6px 4px' : '8px') + ';border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.08);">' +
+      '<div style="height:115px;display:flex;align-items:center;justify-content:center;font-size:' + (isCollapsed ? '12.5px' : '14px') + ';font-weight:900;color:#94a3b8;border:1px solid rgba(255,255,255,0.12);border-radius:12px;background:rgba(15,23,42,0.65);box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);">' +
         '№' +
       '</div>' +
     '</th>';
 
-    // Sticky Col 2: O'quvchi F.I.SH
-    h += '<th style="position:sticky;left:54px;z-index:30;background:rgba(8,13,26,0.97);backdrop-filter:blur(20px);width:265px;min-width:265px;padding:8px;border-bottom:1px solid rgba(255,255,255,0.1);border-right:2px solid rgba(56,189,248,0.28);">' +
-      '<div style="height:115px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#f8fafc;border:1px solid rgba(255,255,255,0.12);border-radius:12px;background:rgba(15,23,42,0.65);padding:0 12px;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);">' +
-        '<span>O’quvchi F.I.SH</span>' +
-        '<span style="font-size:10.5px;font-weight:600;color:#38bdf8;margin-top:4px;">(Tahlil uchun ism ustiga bosing 📊)</span>' +
+    // Sticky Col 2: O'quvchi F.I.SH (Collapsible to the left!)
+    h += '<th class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:' + numColW + 'px;z-index:30;background:rgba(8,13,26,0.98);backdrop-filter:blur(20px);width:' + nameColW + 'px;min-width:' + nameColW + 'px;max-width:' + nameColW + 'px;padding:' + (isCollapsed ? '6px 5px' : '8px') + ';border-bottom:1px solid rgba(255,255,255,0.1);border-right:2px solid rgba(56,189,248,0.35);">' +
+      '<div id="eaToggleNamesHeaderBox" title="' + (isCollapsed ? 'Ismlarni to\'liq ko\'rsatish (Kattalashtirish)' : 'Ismlarni chap tomonga yig\'ish (Kichraytirish)') + '" style="height:115px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:' + (isCollapsed ? '12px' : '14px') + ';font-weight:900;color:#f8fafc;border:1px solid rgba(56,189,248,0.22);border-radius:12px;background:rgba(15,23,42,0.72);padding:' + (isCollapsed ? '4px' : '0 12px') + ';text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.12);cursor:pointer;overflow:hidden;">' +
+        (isCollapsed
+          ? '<span style="font-size:11.5px;font-weight:900;color:#e2e8f0;letter-spacing:0.02em;">F.I.SH</span>' +
+            '<button type="button" id="eaToggleNamesColBtn" class="ea-collapse-names-btn" style="margin-top:8px;background:rgba(56,189,248,0.2);color:#38bdf8;border:1px solid rgba(56,189,248,0.5);border-radius:8px;padding:4px 8px;font-size:11px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:4px;box-shadow:0 0 10px rgba(56,189,248,0.25);">' +
+              '<span>Ochish</span><span>&raquo;</span>' +
+            '</button>'
+          : '<span>O’quvchi F.I.SH</span>' +
+            '<span style="font-size:10.5px;font-weight:600;color:#38bdf8;margin-top:3px;">(Tahlil uchun ism ustiga bosing 📊)</span>' +
+            '<button type="button" id="eaToggleNamesColBtn" class="ea-collapse-names-btn" style="margin-top:7px;background:rgba(56,189,248,0.16);color:#7dd3fc;border:1px solid rgba(56,189,248,0.42);border-radius:8px;padding:3px 10px;font-size:11px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:5px;">' +
+              '<span>&laquo; Chapga yopish</span>' +
+            '</button>') +
       '</div>' +
     '</th>';
 
@@ -954,29 +1003,36 @@
         var rowBg = sIdx % 2 === 0 ? 'rgba(15, 23, 42, 0.35)' : 'rgba(15, 23, 42, 0.52)';
         var stickyBg = sIdx % 2 === 0 ? 'rgba(8, 13, 26, 0.97)' : 'rgba(11, 18, 34, 0.98)';
 
+        var shortInfo = getStudentShortInfo(stName);
+
         h += '<tr class="ea-journal-row" style="background:' + rowBg + ';transition:background 0.15s;">';
 
         // Sticky Col 1: №
-        h += '<td style="position:sticky;left:0;z-index:20;background:' + stickyBg + ';backdrop-filter:blur(18px);width:54px;min-width:54px;text-align:center;font-size:13px;font-weight:900;color:#94a3b8;padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.08);">' +
+        h += '<td class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:0;z-index:20;background:' + stickyBg + ';backdrop-filter:blur(18px);width:' + numColW + 'px;min-width:' + numColW + 'px;max-width:' + numColW + 'px;text-align:center;font-size:' + (isCollapsed ? '12px' : '13px') + ';font-weight:900;color:#94a3b8;padding:' + (isCollapsed ? '6px 2px' : '8px 4px') + ';border-bottom:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.08);">' +
           (sIdx + 1) +
         '</td>';
 
-        // Sticky Col 2: Student Name (Clickable -> Opens QuantumEdu Student Analytics!)
-        h += '<td style="position:sticky;left:54px;z-index:20;background:' + stickyBg + ';backdrop-filter:blur(18px);width:265px;min-width:265px;padding:7px 12px;border-bottom:1px solid rgba(255,255,255,0.06);border-right:2px solid rgba(56,189,248,0.28);">' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;">' +
-            '<div class="ea-student-name-link" data-stid="' + esc(stId) + '" style="overflow:hidden;flex:1;" title="Bosish: O\'quvchining kunlik vazifalari va o\'sish/cho\'kish tahlilini ochish">' +
-              '<div style="font-size:13px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px;">' +
-                '<span>' + esc(stName) + '</span>' +
-              '</div>' +
-              (EA.viewMode === 'all'
-                ? '<div style="font-size:10.5px;font-weight:700;color:#38bdf8;margin-top:2px;">📅 Qo\'shilgan: ' + esc(joinedDisp) + '</div>'
-                : '<div style="font-size:10px;font-weight:600;color:#64748b;margin-top:1px;">📈 Kunlik vazifa va o\'sish tahlili &rarr;</div>') +
-            '</div>' +
-            (isTeacher ?
-              '<button type="button" class="ea-edit-student-btn" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O\'quvchi ismini tahrirlash" style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#cbd5e1;cursor:pointer;padding:4px 6px;font-size:11px;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
-                '✏️' +
-              '</button>' : '') +
-          '</div>' +
+        // Sticky Col 2: Student Name (Clickable -> Opens QuantumEdu Student Analytics! Collapsible to left!)
+        h += '<td class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:' + numColW + 'px;z-index:20;background:' + stickyBg + ';backdrop-filter:blur(18px);width:' + nameColW + 'px;min-width:' + nameColW + 'px;max-width:' + nameColW + 'px;padding:' + (isCollapsed ? '6px 6px' : '7px 12px') + ';border-bottom:1px solid rgba(255,255,255,0.06);border-right:2px solid rgba(56,189,248,0.35);overflow:hidden;">' +
+          (isCollapsed
+            ? '<div class="ea-student-name-link" data-stid="' + esc(stId) + '" title="' + esc(stName) + ' (Bosish: Tahlilni ochish)" style="display:flex;align-items:center;gap:5px;overflow:hidden;width:100%;">' +
+                '<span style="width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,rgba(56,189,248,0.22),rgba(129,140,248,0.22));border:1px solid rgba(56,189,248,0.45);color:#7dd3fc;font-size:10px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:-0.03em;">' + esc(shortInfo.initials) + '</span>' +
+                '<span style="font-size:11.5px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>' +
+              '</div>'
+            : '<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;">' +
+                '<div class="ea-student-name-link" data-stid="' + esc(stId) + '" style="overflow:hidden;flex:1;" title="Bosish: O\'quvchining kunlik vazifalari va o\'sish/cho\'kish tahlilini ochish">' +
+                  '<div style="font-size:13px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px;">' +
+                    '<span>' + esc(stName) + '</span>' +
+                  '</div>' +
+                  (EA.viewMode === 'all'
+                    ? '<div style="font-size:10.5px;font-weight:700;color:#38bdf8;margin-top:2px;">📅 Qo\'shilgan: ' + esc(joinedDisp) + '</div>'
+                    : '<div style="font-size:10px;font-weight:600;color:#64748b;margin-top:1px;">📈 Statistika va tahlil &rarr;</div>') +
+                '</div>' +
+                (isTeacher ?
+                  '<button type="button" class="ea-edit-student-btn" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O\'quvchi ismini tahrirlash" style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#cbd5e1;cursor:pointer;padding:4px 6px;font-size:11px;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
+                    '✏️' +
+                  '</button>' : '') +
+              '</div>') +
         '</td>';
 
         // Date Cells for this Student
@@ -1233,6 +1289,16 @@
           EA.render(container, scrollWrap ? scrollWrap.scrollLeft : 0);
         };
       });
+    }
+
+    // Toggle Student Names Column Collapse / Expand (Left shrink/expand)
+    var toggleNamesHeaderBox = container.querySelector('#eaToggleNamesHeaderBox');
+    if (toggleNamesHeaderBox) {
+      toggleNamesHeaderBox.onclick = function(e) {
+        e.stopPropagation();
+        EA.isNamesCollapsed = !EA.isNamesCollapsed;
+        EA.render(container, scrollWrap ? scrollWrap.scrollLeft : 0);
+      };
     }
 
     // Click on Student Name -> Open QuantumEdu Student Analytics!
