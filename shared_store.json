@@ -12744,7 +12744,7 @@
         "id": "u9_p60_ex1_2",
         "type": "fill",
         "page": 60,
-        "top": 60,
+        "top": 59.1,
         "left": 37,
         "width": 11,
         "height": 2.2,
@@ -12821,8 +12821,8 @@
         "id": "u9_p60_ex2_3",
         "type": "fill",
         "page": 60,
-        "top": 33,
-        "left": 76.5,
+        "top": 31.7,
+        "left": 76.8,
         "width": 3.5,
         "height": 2.2,
         "correct": "a",
@@ -12832,7 +12832,7 @@
         "id": "u9_p60_ex2_4",
         "type": "fill",
         "page": 60,
-        "top": 35,
+        "top": 33.6,
         "left": 66.5,
         "width": 3.5,
         "height": 2.2,
@@ -12843,8 +12843,8 @@
         "id": "u9_p60_ex2_5",
         "type": "fill",
         "page": 60,
-        "top": 36.8,
-        "left": 69,
+        "top": 35.2,
+        "left": 69.6,
         "width": 3.5,
         "height": 2.2,
         "correct": "b",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592527221
+  "updatedAt": 1792592532316
 }
