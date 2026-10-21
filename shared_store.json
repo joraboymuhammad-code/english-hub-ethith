@@ -6626,8 +6626,8 @@
         "page": 38,
         "group": "p38_1_5",
         "text": "lights",
-        "top": 52.8,
-        "left": 26,
+        "top": 54.7,
+        "left": 30.5,
         "width": 5.5,
         "height": 1.8,
         "correct": true
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586823683
+  "updatedAt": 1792586830790
 }
