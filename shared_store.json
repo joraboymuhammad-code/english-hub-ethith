@@ -17177,8 +17177,8 @@
         "id": "u10_p75_ex5_3b",
         "type": "fill",
         "page": 75,
-        "top": 37.4,
-        "left": 27.2,
+        "top": 34.8,
+        "left": 25.6,
         "width": 12,
         "height": 2,
         "correct": "hadn't left|had not left",
@@ -17188,8 +17188,8 @@
         "id": "u10_p75_ex5_4a",
         "type": "fill",
         "page": 75,
-        "top": 39,
-        "left": 15.5,
+        "top": 36.1,
+        "left": 15.1,
         "width": 12.5,
         "height": 2,
         "correct": "hadn't shot|had not shot",
@@ -17199,8 +17199,8 @@
         "id": "u10_p75_ex5_4b",
         "type": "fill",
         "page": 75,
-        "top": 40.8,
-        "left": 19,
+        "top": 38.1,
+        "left": 25.2,
         "width": 13,
         "height": 2,
         "correct": "have become",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601146928
+  "updatedAt": 1792601154242
 }
