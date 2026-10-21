@@ -11842,8 +11842,8 @@
         "id": "u8_p56_ex5_2",
         "type": "fill",
         "page": 56,
-        "top": 59,
-        "left": 55,
+        "top": 57.9,
+        "left": 55.9,
         "width": 14.5,
         "height": 2.2,
         "correct": "physical activity",
@@ -11853,7 +11853,7 @@
         "id": "u8_p56_ex5_3",
         "type": "fill",
         "page": 56,
-        "top": 54.8,
+        "top": 53.1,
         "left": 75,
         "width": 16.5,
         "height": 2.2,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592355385
+  "updatedAt": 1792592358758
 }
