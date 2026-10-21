@@ -14378,8 +14378,8 @@
         "id": "u9_p64_ex4_5_a",
         "type": "choose",
         "page": 64,
-        "top": 79.5,
-        "left": 56.5,
+        "top": 79.2,
+        "left": 55.5,
         "width": 9,
         "height": 2,
         "correct": false,
@@ -14391,8 +14391,8 @@
         "id": "u9_p64_ex4_5_b",
         "type": "choose",
         "page": 64,
-        "top": 79.5,
-        "left": 70.5,
+        "top": 79.2,
+        "left": 69.1,
         "width": 10,
         "height": 2,
         "correct": true,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792593497470
+  "updatedAt": 1792593503326
 }
