@@ -10979,8 +10979,8 @@
         "id": "u8_p54_ex3_2_b",
         "type": "choose",
         "page": 54,
-        "top": 71.8,
-        "left": 75,
+        "top": 72.1,
+        "left": 75.9,
         "width": 5.2,
         "height": 2,
         "correct": true,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592172096
+  "updatedAt": 1792592175040
 }
