@@ -12654,8 +12654,8 @@
         "id": "u8_p59_ex4a_4",
         "type": "fill",
         "page": 59,
-        "top": 82,
-        "left": 55,
+        "top": 79.8,
+        "left": 54.4,
         "width": 35,
         "height": 2.2,
         "correct": "So we've looked at the main factors that create stress|So we've looked at the main factors that create stress.|at",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592499386
+  "updatedAt": 1792592502828
 }
