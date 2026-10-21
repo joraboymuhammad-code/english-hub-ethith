@@ -14712,8 +14712,8 @@
         "id": "u10_p66_ex4_4_get",
         "type": "choose",
         "page": 66,
-        "top": 47.2,
-        "left": 80,
+        "top": 47.5,
+        "left": 79.3,
         "width": 3.5,
         "height": 1.8,
         "correct": true,
@@ -14725,8 +14725,8 @@
         "id": "u10_p66_ex4_4_put",
         "type": "choose",
         "page": 66,
-        "top": 47.2,
-        "left": 84,
+        "top": 47.9,
+        "left": 83.1,
         "width": 3.5,
         "height": 1.8,
         "correct": false,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600708199
+  "updatedAt": 1792600711464
 }
