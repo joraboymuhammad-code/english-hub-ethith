@@ -15314,8 +15314,20 @@
         "label": "5",
         "id": "p83_custom_45338",
         "group": "5"
+      },
+      {
+        "page": 83,
+        "type": "fill",
+        "top": 47.9,
+        "left": 58.1,
+        "width": 34,
+        "height": 1.6,
+        "correct": "He asked me what I did to resolve those disagreements.",
+        "label": "6",
+        "id": "p83_custom_65410",
+        "group": "6"
       }
     ]
   },
-  "updatedAt": 1792595149774
+  "updatedAt": 1792595166364
 }
