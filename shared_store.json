@@ -662,6 +662,11 @@
               "status": "K",
               "score": "5"
             }
+          },
+          "2026-10-22": {
+            "std_5": {
+              "status": "K"
+            }
           }
         },
         "lessonTypes": {
@@ -671,7 +676,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792606688149
+        "updatedAt": 1792606703758
       },
       "customStudentNames": {}
     },
@@ -21219,5 +21224,5 @@
       }
     ]
   },
-  "updatedAt": 1792606689065
+  "updatedAt": 1792606704569
 }
