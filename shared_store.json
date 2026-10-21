@@ -9709,8 +9709,8 @@
       {
         "page": 81,
         "type": "fill",
-        "top": 27.5,
-        "left": 9.7,
+        "top": 27.1,
+        "left": 9.6,
         "width": 9.6,
         "height": 1.8,
         "correct": "adverst",
@@ -9720,8 +9720,8 @@
       {
         "page": 81,
         "type": "fill",
-        "top": 27.7,
-        "left": 29.1,
+        "top": 26.9,
+        "left": 28.7,
         "width": 9.2,
         "height": 1.6,
         "correct": "memorable",
@@ -9731,8 +9731,8 @@
       {
         "page": 81,
         "type": "fill",
-        "top": 30.2,
-        "left": 11.7,
+        "top": 29.8,
+        "left": 11.1,
         "width": 9.8,
         "height": 1.6,
         "correct": "slogan",
@@ -9742,8 +9742,8 @@
       {
         "page": 81,
         "type": "fill",
-        "top": 32.4,
-        "left": 10.5,
+        "top": 32,
+        "left": 9.8,
         "width": 8.7,
         "height": 1.5,
         "correct": "clever",
@@ -9753,8 +9753,8 @@
       {
         "page": 81,
         "type": "fill",
-        "top": 37,
-        "left": 13.9,
+        "top": 36.7,
+        "left": 13.8,
         "width": 9.6,
         "height": 1.5,
         "correct": "amusing",
@@ -9785,5 +9785,5 @@
       }
     ]
   },
-  "updatedAt": 1792586046685
+  "updatedAt": 1792586053457
 }
