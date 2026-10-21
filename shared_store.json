@@ -15270,8 +15270,8 @@
       {
         "page": 83,
         "type": "fill",
-        "top": 31.2,
-        "left": 73,
+        "top": 30.5,
+        "left": 72.3,
         "width": 20.5,
         "height": 2.2,
         "correct": "The interviewer asked me why I thought it had failed.",
@@ -15293,5 +15293,5 @@
       }
     ]
   },
-  "updatedAt": 1792595095147
+  "updatedAt": 1792595100060
 }
