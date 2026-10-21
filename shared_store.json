@@ -665,13 +665,12 @@
           }
         },
         "lessonTypes": {
-          "2026-10-19": "Dam olish"
+          "2026-10-19": "Oddiy",
+          "2026-10-21": "Oddiy"
         },
-        "holidays": {
-          "2026-10-19": true
-        },
+        "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792605476398
+        "updatedAt": 1792605478694
       },
       "customStudentNames": {}
     },
@@ -21219,5 +21218,5 @@
       }
     ]
   },
-  "updatedAt": 1792605476790
+  "updatedAt": 1792605479930
 }
