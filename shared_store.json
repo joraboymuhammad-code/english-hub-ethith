@@ -8989,8 +8989,8 @@
         "page": 48,
         "group": "p48_1_3",
         "text": "achievement",
-        "top": 37,
-        "left": 22.8,
+        "top": 36.7,
+        "left": 23.4,
         "width": 8.5,
         "height": 1.8,
         "correct": true
@@ -9002,7 +9002,7 @@
         "group": "p48_1_3",
         "text": "awards",
         "top": 37,
-        "left": 32,
+        "left": 33,
         "width": 5.5,
         "height": 1.8,
         "correct": false
@@ -9013,8 +9013,8 @@
         "page": 48,
         "group": "p48_1_4",
         "text": "An expert",
-        "top": 42,
-        "left": 12,
+        "top": 41.8,
+        "left": 13,
         "width": 6.5,
         "height": 1.8,
         "correct": true
@@ -9025,8 +9025,8 @@
         "page": 48,
         "group": "p48_1_4",
         "text": "A champion",
-        "top": 42,
-        "left": 20,
+        "top": 41.6,
+        "left": 20.6,
         "width": 7.5,
         "height": 1.8,
         "correct": false
@@ -9050,7 +9050,7 @@
         "group": "p48_1_5",
         "text": "A champion",
         "top": 48,
-        "left": 20,
+        "left": 19.9,
         "width": 7.5,
         "height": 1.8,
         "correct": true
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587225865
+  "updatedAt": 1792587234315
 }
