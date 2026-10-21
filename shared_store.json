@@ -16391,8 +16391,21 @@
         "id": "p87_custom_31291",
         "group": "p87_grp_1291",
         "text": ""
+      },
+      {
+        "page": 87,
+        "type": "choose",
+        "top": 25.5,
+        "left": 70.4,
+        "width": 5.5,
+        "height": 2.3,
+        "correct": false,
+        "label": "New",
+        "id": "p87_custom_35959",
+        "group": "p87_grp_5959",
+        "text": ""
       }
     ]
   },
-  "updatedAt": 1792599733034
+  "updatedAt": 1792599738359
 }
