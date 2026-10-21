@@ -13638,8 +13638,8 @@
         "id": "u9_p62_ex4_3",
         "type": "fill",
         "page": 62,
-        "top": 68.6,
-        "left": 83.5,
+        "top": 67.6,
+        "left": 84.4,
         "width": 11.5,
         "height": 2.2,
         "correct": "the bottom right-hand corner",
@@ -13649,8 +13649,8 @@
         "id": "u9_p62_ex4_4",
         "type": "fill",
         "page": 62,
-        "top": 70.3,
-        "left": 65,
+        "top": 68.8,
+        "left": 66,
         "width": 13.5,
         "height": 2.2,
         "correct": "the left",
@@ -13660,8 +13660,8 @@
         "id": "u9_p62_ex4_5",
         "type": "fill",
         "page": 62,
-        "top": 72.1,
-        "left": 68.5,
+        "top": 71,
+        "left": 68.6,
         "width": 10,
         "height": 2.2,
         "correct": "front of",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592659054
+  "updatedAt": 1792592662190
 }
