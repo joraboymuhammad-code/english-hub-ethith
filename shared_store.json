@@ -12932,8 +12932,8 @@
         "id": "u9_p60_ex3_3_spiky",
         "type": "choose",
         "page": 60,
-        "top": 60,
-        "left": 73,
+        "top": 59.8,
+        "left": 71.7,
         "width": 4.8,
         "height": 2,
         "correct": false,
@@ -12945,8 +12945,8 @@
         "id": "u9_p60_ex3_3_dyed",
         "type": "choose",
         "page": 60,
-        "top": 60,
-        "left": 77.8,
+        "top": 59.8,
+        "left": 76.8,
         "width": 4.5,
         "height": 2,
         "correct": false,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592552320
+  "updatedAt": 1792592556498
 }
