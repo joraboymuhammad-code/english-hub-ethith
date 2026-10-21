@@ -10466,8 +10466,8 @@
         "id": "u8_p53_ex3_3",
         "type": "fill",
         "page": 53,
-        "top": 32.3,
-        "left": 21.8,
+        "top": 31.6,
+        "left": 21.2,
         "width": 9,
         "height": 2.2,
         "correct": "pollution",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592108202
+  "updatedAt": 1792592111737
 }
