@@ -1064,7 +1064,7 @@
               "status": ""
             },
             "std_1": {
-              "status": "S",
+              "status": "",
               "score": ""
             },
             "std_2": {
@@ -1090,7 +1090,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792608022058,
+        "updatedAt": 1792608025450,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -21668,5 +21668,5 @@
       }
     ]
   },
-  "updatedAt": 1792608022477
+  "updatedAt": 1792608025508
 }
