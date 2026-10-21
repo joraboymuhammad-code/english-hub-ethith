@@ -10649,8 +10649,8 @@
         "id": "u8_p53_ex4_6_b",
         "type": "choose",
         "page": 53,
-        "top": 39.5,
-        "left": 65.5,
+        "top": 40,
+        "left": 64.9,
         "width": 6.5,
         "height": 2,
         "correct": false,
@@ -10675,8 +10675,8 @@
         "id": "u8_p53_ex4_7_b",
         "type": "choose",
         "page": 53,
-        "top": 43.5,
-        "left": 66,
+        "top": 43,
+        "left": 66.6,
         "width": 5.5,
         "height": 2,
         "correct": true,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592125720
+  "updatedAt": 1792592129183
 }
