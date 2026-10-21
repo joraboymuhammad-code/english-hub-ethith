@@ -17254,8 +17254,8 @@
         "id": "u10_p75_ex7_4",
         "type": "fill",
         "page": 75,
-        "top": 48.6,
-        "left": 63.8,
+        "top": 47.6,
+        "left": 64.1,
         "width": 16.5,
         "height": 2,
         "correct": "probably wouldn't have committed|would probably not have committed",
@@ -17265,8 +17265,8 @@
         "id": "u10_p75_ex7_5",
         "type": "fill",
         "page": 75,
-        "top": 53.8,
-        "left": 59.5,
+        "top": 52.2,
+        "left": 56,
         "width": 15.5,
         "height": 2,
         "correct": "hadn't told|had not told",
@@ -17276,8 +17276,8 @@
         "id": "u10_p75_ex7_6",
         "type": "fill",
         "page": 75,
-        "top": 55.6,
-        "left": 63.8,
+        "top": 54,
+        "left": 63.5,
         "width": 16.5,
         "height": 2,
         "correct": "probably wouldn't have gone|would probably not have gone",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601162536
+  "updatedAt": 1792601168964
 }
