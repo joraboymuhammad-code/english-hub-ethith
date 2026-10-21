@@ -9249,8 +9249,8 @@
         "type": "fill",
         "page": 49,
         "label": "obj",
-        "top": 30.8,
-        "left": 26.5,
+        "top": 29.4,
+        "left": 27.5,
         "width": 3.5,
         "height": 1.8,
         "correct": "6"
@@ -9260,8 +9260,8 @@
         "type": "fill",
         "page": 49,
         "label": "subj1",
-        "top": 32.5,
-        "left": 23.5,
+        "top": 31.3,
+        "left": 23.1,
         "width": 3.5,
         "height": 1.8,
         "correct": "2"
@@ -9271,8 +9271,8 @@
         "type": "fill",
         "page": 49,
         "label": "subj2",
-        "top": 32.5,
-        "left": 28.5,
+        "top": 31.6,
+        "left": 28.8,
         "width": 3.5,
         "height": 1.8,
         "correct": "5"
@@ -9293,8 +9293,8 @@
         "type": "fill",
         "page": 49,
         "label": "ind2",
-        "top": 34.3,
-        "left": 29.4,
+        "top": 33.7,
+        "left": 28.8,
         "width": 3.5,
         "height": 1.8,
         "correct": "4"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587255968
+  "updatedAt": 1792587264909
 }
