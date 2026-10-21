@@ -12244,8 +12244,8 @@
         "id": "u8_p59_ex1_3",
         "type": "fill",
         "page": 59,
-        "top": 36.8,
-        "left": 19.5,
+        "top": 35.7,
+        "left": 19.2,
         "width": 7,
         "height": 2.2,
         "correct": "feel|be",
@@ -12255,8 +12255,8 @@
         "id": "u8_p59_ex1_4",
         "type": "fill",
         "page": 59,
-        "top": 39.5,
-        "left": 31,
+        "top": 38.4,
+        "left": 30.9,
         "width": 7.5,
         "height": 2.2,
         "correct": "unless",
@@ -12266,8 +12266,8 @@
         "id": "u8_p59_ex1_5",
         "type": "fill",
         "page": 59,
-        "top": 42.2,
-        "left": 20,
+        "top": 41.2,
+        "left": 21.2,
         "width": 9.5,
         "height": 2.2,
         "correct": "would|'d",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592434388
+  "updatedAt": 1792592437277
 }
