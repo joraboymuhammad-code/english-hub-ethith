@@ -10420,8 +10420,8 @@
         "id": "u8_p52_ex2c_u1",
         "type": "fill",
         "page": 52,
-        "top": 84,
-        "left": 63.8,
+        "top": 82.7,
+        "left": 62.9,
         "width": 3,
         "height": 2.2,
         "correct": "2|3|4",
@@ -10431,8 +10431,8 @@
         "id": "u8_p52_ex2c_u2",
         "type": "fill",
         "page": 52,
-        "top": 84,
-        "left": 67.5,
+        "top": 82.6,
+        "left": 66.8,
         "width": 3,
         "height": 2.2,
         "correct": "3|4",
@@ -10442,7 +10442,7 @@
         "id": "u8_p52_ex2c_u3",
         "type": "fill",
         "page": 52,
-        "top": 84,
+        "top": 82.6,
         "left": 72.5,
         "width": 3,
         "height": 2.2,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592100689
+  "updatedAt": 1792592104145
 }
