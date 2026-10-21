@@ -14566,8 +14566,8 @@
         "id": "u10_p66_ex1_7",
         "type": "fill",
         "page": 66,
-        "top": 61,
-        "left": 28.5,
+        "top": 59.6,
+        "left": 28.9,
         "width": 9.5,
         "height": 2,
         "correct": "a profit",
@@ -14577,8 +14577,8 @@
         "id": "u10_p66_ex2_2",
         "type": "fill",
         "page": 66,
-        "top": 68.3,
-        "left": 19.8,
+        "top": 67.4,
+        "left": 18.4,
         "width": 4.8,
         "height": 2,
         "correct": "in",
@@ -14588,8 +14588,8 @@
         "id": "u10_p66_ex2_3",
         "type": "fill",
         "page": 66,
-        "top": 70.4,
-        "left": 38,
+        "top": 69.3,
+        "left": 38.1,
         "width": 4.8,
         "height": 2,
         "correct": "up",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600692882
+  "updatedAt": 1792600696459
 }
