@@ -10583,8 +10583,21 @@
         "id": "p81_custom_15014",
         "group": "p81_grp_5014",
         "text": ""
+      },
+      {
+        "page": 81,
+        "type": "choose",
+        "top": 85.3,
+        "left": 10.4,
+        "width": 7.2,
+        "height": 1.7,
+        "correct": false,
+        "label": "New",
+        "id": "p81_custom_34819",
+        "group": "p81_grp_4819",
+        "text": ""
       }
     ]
   },
-  "updatedAt": 1792588724963
+  "updatedAt": 1792588736355
 }
