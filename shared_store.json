@@ -12643,8 +12643,8 @@
         "id": "u8_p59_ex4a_3",
         "type": "fill",
         "page": 59,
-        "top": 77,
-        "left": 55,
+        "top": 78.3,
+        "left": 59.2,
         "width": 35,
         "height": 2.2,
         "correct": "Could you give me some examples of your achievements?|Could you give me some examples of your achievements|me",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592488723
+  "updatedAt": 1792592492209
 }
