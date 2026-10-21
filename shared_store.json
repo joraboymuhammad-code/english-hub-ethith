@@ -12665,8 +12665,8 @@
         "id": "u8_p59_ex4a_5",
         "type": "fill",
         "page": 59,
-        "top": 84.3,
-        "left": 55,
+        "top": 82.4,
+        "left": 54.9,
         "width": 35,
         "height": 2.2,
         "correct": "What I mean is that I have good time management skills|What I mean is that I have good time management skills.|mean",
@@ -12676,7 +12676,7 @@
         "id": "u8_p59_ex4a_6",
         "type": "fill",
         "page": 59,
-        "top": 87,
+        "top": 85.3,
         "left": 55,
         "width": 35,
         "height": 2.2,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592502828
+  "updatedAt": 1792592506186
 }
