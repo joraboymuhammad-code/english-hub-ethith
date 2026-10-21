@@ -15242,8 +15242,20 @@
         "label": "5",
         "id": "p83_custom_66380",
         "group": "5"
+      },
+      {
+        "page": 83,
+        "type": "fill",
+        "top": 18.4,
+        "left": 53.2,
+        "width": 39,
+        "height": 2.1,
+        "correct": "Are you going to travel back to Brussels tomorrow?",
+        "label": "6",
+        "id": "p83_custom_89857",
+        "group": "6"
       }
     ]
   },
-  "updatedAt": 1792594274794
+  "updatedAt": 1792594291198
 }
