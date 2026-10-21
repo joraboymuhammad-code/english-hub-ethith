@@ -1489,8 +1489,8 @@
         "page": 9,
         "exercise": "3",
         "label": "8",
-        "top": 71,
-        "left": 14.5,
+        "top": 78.4,
+        "left": 35.5,
         "width": 7.5,
         "height": 1.8,
         "correct": "am or 'm"
@@ -1513,8 +1513,8 @@
         "page": 9,
         "exercise": "3",
         "label": "10",
-        "top": 72.8,
-        "left": 33,
+        "top": 81,
+        "left": 35.6,
         "width": 10,
         "height": 1.8,
         "correct": "concerned or CONCERNED"
@@ -9045,5 +9045,5 @@
       }
     ]
   },
-  "updatedAt": 1792582801471
+  "updatedAt": 1792582804150
 }
