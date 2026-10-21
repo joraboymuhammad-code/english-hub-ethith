@@ -15330,8 +15330,8 @@
       {
         "page": 83,
         "type": "fill",
-        "top": 54.4,
-        "left": 13.2,
+        "top": 53.9,
+        "left": 13.3,
         "width": 34.8,
         "height": 1.7,
         "correct": "He wondered why I had decided to apply for that job.",
@@ -15341,5 +15341,5 @@
       }
     ]
   },
-  "updatedAt": 1792595271750
+  "updatedAt": 1792595275950
 }
