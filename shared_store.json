@@ -16715,8 +16715,8 @@
         "id": "u10_p73_ex4_1b",
         "type": "fill",
         "page": 73,
-        "top": 28.5,
-        "left": 72.5,
+        "top": 27.5,
+        "left": 73.1,
         "width": 10,
         "height": 2,
         "correct": "shape",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601009813
+  "updatedAt": 1792601026145
 }
