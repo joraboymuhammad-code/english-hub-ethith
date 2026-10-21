@@ -2057,8 +2057,8 @@
         "exercise": "1",
         "group": "p14_1_1",
         "text": "Surprisingly",
-        "top": 24.3,
-        "left": 38,
+        "top": 25.6,
+        "left": 8.8,
         "width": 12,
         "height": 1.6,
         "correct": true
@@ -2070,8 +2070,8 @@
         "exercise": "1",
         "group": "p14_1_1",
         "text": "luckily",
-        "top": 24.3,
-        "left": 51,
+        "top": 25.6,
+        "left": 21.9,
         "width": 8,
         "height": 1.6,
         "correct": false
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586668705
+  "updatedAt": 1792586674823
 }
