@@ -12687,8 +12687,8 @@
         "id": "u8_p59_ex4b_t1",
         "type": "fill",
         "page": 59,
-        "top": 92,
-        "left": 60.5,
+        "top": 90.9,
+        "left": 60.6,
         "width": 3.5,
         "height": 2.2,
         "correct": "2|4",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592506186
+  "updatedAt": 1792592509643
 }
