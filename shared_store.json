@@ -17692,8 +17692,8 @@
         "id": "u10_p77_ex6_3",
         "type": "fill",
         "page": 77,
-        "top": 61,
-        "left": 13.5,
+        "top": 59.4,
+        "left": 12.8,
         "width": 16,
         "height": 2,
         "correct": "should have spoken",
@@ -17703,7 +17703,7 @@
         "id": "u10_p77_ex6_4",
         "type": "fill",
         "page": 77,
-        "top": 64.8,
+        "top": 63,
         "left": 13,
         "width": 16.5,
         "height": 2,
@@ -17714,8 +17714,8 @@
         "id": "u10_p77_ex6_5",
         "type": "fill",
         "page": 77,
-        "top": 68.2,
-        "left": 13.5,
+        "top": 66.4,
+        "left": 13.8,
         "width": 16,
         "height": 2,
         "correct": "should have written",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601243849
+  "updatedAt": 1792601248766
 }
