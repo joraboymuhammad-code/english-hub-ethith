@@ -9159,8 +9159,8 @@
         "type": "fill",
         "page": 48,
         "label": "6",
-        "top": 76.8,
-        "left": 56.5,
+        "top": 75.3,
+        "left": 57.1,
         "width": 12,
         "height": 1.8,
         "correct": "talented"
@@ -9170,8 +9170,8 @@
         "type": "fill",
         "page": 48,
         "label": "7",
-        "top": 78.5,
-        "left": 71.5,
+        "top": 77.4,
+        "left": 74.3,
         "width": 12,
         "height": 1.8,
         "correct": "achievement"
@@ -9181,8 +9181,8 @@
         "type": "fill",
         "page": 48,
         "label": "8",
-        "top": 83.5,
-        "left": 51.5,
+        "top": 81.8,
+        "left": 50.4,
         "width": 11.5,
         "height": 1.8,
         "correct": "champions"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587244090
+  "updatedAt": 1792587248186
 }
