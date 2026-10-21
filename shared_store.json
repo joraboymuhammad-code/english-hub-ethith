@@ -165,11 +165,11 @@
           },
           "2026-10-10": {
             "std_1": {
-              "status": "",
+              "status": "S",
               "score": ""
             },
             "std_2": {
-              "status": "Q",
+              "status": "",
               "score": ""
             },
             "std_3": {
@@ -669,7 +669,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792604961084
+        "updatedAt": 1792604964024
       },
       "customStudentNames": {}
     },
@@ -21217,5 +21217,5 @@
       }
     ]
   },
-  "updatedAt": 1792604961208
+  "updatedAt": 1792604964268
 }
