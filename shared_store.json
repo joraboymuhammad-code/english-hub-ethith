@@ -13417,7 +13417,7 @@
         "type": "fill",
         "page": 61,
         "top": 67.4,
-        "left": 53.6,
+        "left": 53,
         "width": 15.5,
         "height": 2.2,
         "correct": "as wide as",
@@ -13427,8 +13427,8 @@
         "id": "u9_p61_ex7_6",
         "type": "fill",
         "page": 61,
-        "top": 72,
-        "left": 43.5,
+        "top": 70.4,
+        "left": 46,
         "width": 18.5,
         "height": 2.2,
         "correct": "no more unusual than",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592612087
+  "updatedAt": 1792592615397
 }
