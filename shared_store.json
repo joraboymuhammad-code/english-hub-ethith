@@ -9604,8 +9604,19 @@
         "correct": "slogans",
         "label": "5",
         "id": "p80_custom_97732"
+      },
+      {
+        "page": 80,
+        "type": "fill",
+        "top": 52,
+        "left": 28.1,
+        "width": 9.1,
+        "height": 1.5,
+        "correct": "logos",
+        "label": "6",
+        "id": "p80_custom_12450"
       }
     ]
   },
-  "updatedAt": 1792584299212
+  "updatedAt": 1792584313427
 }
