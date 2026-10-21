@@ -15290,8 +15290,20 @@
         "label": "3",
         "id": "p83_custom_55993",
         "group": "3"
+      },
+      {
+        "page": 83,
+        "type": "fill",
+        "top": 40.2,
+        "left": 57.4,
+        "width": 35.1,
+        "height": 1.6,
+        "correct": "He asked me how others had responded to my leadership.",
+        "label": "New",
+        "id": "p83_custom_15626",
+        "group": ""
       }
     ]
   },
-  "updatedAt": 1792595100060
+  "updatedAt": 1792595116618
 }
