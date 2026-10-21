@@ -354,21 +354,39 @@
     return basePath + 'workbook_pages/page_' + pageFileNum + '.jpg';
   };
 
-  // Check an individual input against correct options
+  // Check an individual input against correct options (Case-insensitive, punctuation & contraction tolerant)
   WB.checkAnswer = function(userVal, correctRaw) {
-    var userClean = (userVal || '').trim().toLowerCase();
-    if (!userClean) return false;
+    function norm(str) {
+      if (!str) return '';
+      return String(str)
+        .trim()
+        .toLowerCase()
+        .replace(/[\u2018\u2019\u0060\u00B4]/g, "'") // smart apostrophes
+        .replace(/\s+/g, ' ') // collapse multi-spaces
+        .replace(/^[.,;:!?\s]+|[.,;:!?\s]+$/g, ''); // strip leading/trailing punctuation
+    }
+
+    var u = norm(userVal);
+    if (!u) return false;
+
     var allowed = [];
     if (Array.isArray(correctRaw)) {
       allowed = correctRaw;
     } else if (typeof correctRaw === 'string') {
-      allowed = correctRaw.split(/\s+or\s+/i);
+      allowed = correctRaw.split(/\s+or\s+|[,;]|\s*\/\s*/i);
     }
+
     return allowed.some(function(opt) {
-      var optClean = opt.trim().toLowerCase();
-      var norm1 = userClean.replace(/’/g, "'");
-      var norm2 = optClean.replace(/’/g, "'");
-      return norm1 === norm2;
+      var o = norm(opt);
+      if (!o) return false;
+      if (u === o) return true;
+
+      // Allow contraction match: haven't == havent == have not
+      var uNoApos = u.replace(/'/g, '');
+      var oNoApos = o.replace(/'/g, '');
+      if (uNoApos === oNoApos) return true;
+
+      return false;
     });
   };
 
@@ -618,8 +636,12 @@
             '<input type="text" id="ethWbModalLabel" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12px;box-sizing:border-box;" placeholder="masalan: 2 yoki 3a" />' +
           '</div>' +
           '<div style="margin-bottom:14px;">' +
-            '<label style="display:block;font-size:11px;font-weight:800;margin-bottom:4px;color:#94a3b8;">To‘g‘ri Javob ("or" bilan variantlar):</label>' +
+            '<label id="ethWbModalCorrectLabel" style="display:block;font-size:11px;font-weight:800;margin-bottom:4px;color:#94a3b8;">To‘g‘ri Javob ("or" bilan variantlar):</label>' +
             '<input type="text" id="ethWbModalCorrect" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12px;box-sizing:border-box;" placeholder="masalan: coast yoki a" />' +
+            '<div id="ethWbModalChooseHelper" style="display:none;margin-top:6px;gap:6px;">' +
+              '<button type="button" id="ethWbModalBtnTrue" style="flex:1;background:rgba(16,185,129,0.15);border:1.5px solid #10b981;color:#34d399;border-radius:6px;padding:6px;font-size:11px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;">✓ To‘g‘ri variant</button>' +
+              '<button type="button" id="ethWbModalBtnFalse" style="flex:1;background:rgba(239,68,68,0.15);border:1.5px solid #ef4444;color:#f87171;border-radius:6px;padding:6px;font-size:11px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;">✕ Noto‘g‘ri variant</button>' +
+            '</div>' +
           '</div>' +
           '<div style="display:flex;justify-content:space-between;gap:8px;">' +
             '<button id="ethWbModalDeleteBtn" style="background:#ef4444;color:#fff;border:none;padding:7px 12px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;">O‘chirish</button>' +
@@ -660,7 +682,7 @@
         var isSmallLetter = (item.width && item.width <= 7.0) || (item.correct && item.correct.length <= 8 && !item.correct.includes(' '));
         var inputStyle = 'width:100%;height:100%;' + 
           (isEditor ? 'pointer-events:none;' : '') + 
-          (isSmallLetter ? 'text-align:center;text-transform:uppercase;font-weight:900;padding:0;font-size:13px;' : '');
+          (isSmallLetter ? 'text-align:center;font-weight:900;padding:0;font-size:13px;' : '');
 
         h += '<input type="text" ' +
           'class="eth-wb-input wb-fill-input' + (isSmallLetter ? ' wb-small-letter' : '') + '" ' +
@@ -684,15 +706,16 @@
           'title="O‘chirish uchun bosing: ' + (item.text || '') + '"></div>' +
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       } else if (itemType === 'choose') {
+        var isItemCorrect = (item.correct === true || item.correct === 'true' || item.correct === 'To‘g‘ri' || item.correct === 'to\'g\'ri' || item.correct === 'ha' || item.correct === 'yes');
         h += '<div class="wb-choose-chip" ' +
           'data-id="' + item.id + '" ' +
           'data-page="' + pageNum + '" ' +
           'data-type="choose" ' +
           'data-group="' + (item.group || '') + '" ' +
-          'data-correct="' + (item.correct === true ? 'true' : 'false') + '" ' +
-          'data-text="' + (item.text || '').replace(/"/g, '&quot;') + '" ' +
+          'data-correct="' + (isItemCorrect ? 'true' : 'false') + '" ' +
+          'data-text="' + (item.text || item.label || '').replace(/"/g, '&quot;') + '" ' +
           'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
-          'title="Tanlash uchun bosing: ' + (item.text || '') + '"></div>' +
+          'title="Tanlash uchun bosing: ' + (item.text || item.label || '') + '"></div>' +
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       } else if (itemType === 'match') {
         h += '<div class="wb-match-slot" ' +
@@ -853,7 +876,7 @@
       });
     });
 
-    // 3. Choose Chips Interaction (Click to select option with instant correct/incorrect feedback)
+    // 3. Choose Chips Interaction (Click to select option cleanly without spoiling answers before check)
     container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
       chip.addEventListener('click', function(e) {
         if (isEditor) return;
@@ -861,7 +884,7 @@
         var grp = this.getAttribute('data-group');
         var wasSelected = this.classList.contains('selected');
 
-        // Deselect sibling chips in same group
+        // Deselect sibling chips in same group and hide previous hints
         if (grp) {
           container.querySelectorAll('.wb-choose-chip[data-group="' + grp + '"]').forEach(function(c) {
             c.classList.remove('selected', 'correct', 'incorrect', 'should-choose');
@@ -878,29 +901,6 @@
 
         if (!wasSelected) {
           this.classList.add('selected');
-          var isCorrect = (this.getAttribute('data-correct') === 'true');
-          var wrap = this.closest('.eth-wb-item-wrap');
-          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
-
-          if (isCorrect) {
-            this.classList.add('correct');
-            this.classList.remove('incorrect');
-            if (hint) {
-              hint.innerHTML = '<span style="color:#22c55e;font-weight:900;">✓ To‘g‘ri javob</span>';
-              hint.style.display = 'block';
-              hint.style.background = 'rgba(6, 78, 59, 0.95)';
-              hint.style.borderColor = '#10b981';
-            }
-          } else {
-            this.classList.add('incorrect');
-            this.classList.remove('correct');
-            if (hint) {
-              hint.innerHTML = '<span style="color:#f87171;font-weight:900;">✗ Noto‘g‘ri</span>';
-              hint.style.display = 'block';
-              hint.style.background = 'rgba(127, 29, 29, 0.95)';
-              hint.style.borderColor = '#ef4444';
-            }
-          }
         }
         updateCount();
       });
@@ -1070,14 +1070,39 @@
           if (selectedChip && selectedChip.getAttribute('data-correct') === 'true') {
             correctCount++;
             selectedChip.classList.add('correct');
-            selectedChip.classList.remove('incorrect');
+            selectedChip.classList.remove('incorrect', 'should-choose');
+            var wrap = selectedChip.closest('.eth-wb-item-wrap');
+            var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
+            if (hint) {
+              hint.innerHTML = '<span style="color:#22c55e;font-weight:900;">✓ To‘g‘ri</span>';
+              hint.style.display = 'block';
+              hint.style.background = 'rgba(6, 78, 59, 0.95)';
+              hint.style.borderColor = '#10b981';
+            }
           } else {
             if (selectedChip) {
               selectedChip.classList.add('incorrect');
-              selectedChip.classList.remove('correct');
+              selectedChip.classList.remove('correct', 'should-choose');
+              var wrapS = selectedChip.closest('.eth-wb-item-wrap');
+              var hintS = wrapS ? wrapS.querySelector('.eth-wb-hint-badge') : null;
+              if (hintS) {
+                hintS.innerHTML = '<span style="color:#f87171;font-weight:900;">✗ Noto‘g‘ri</span>';
+                hintS.style.display = 'block';
+                hintS.style.background = 'rgba(127, 29, 29, 0.95)';
+                hintS.style.borderColor = '#ef4444';
+              }
             }
             if (correctChip) {
               correctChip.classList.add('should-choose');
+              var wrapC = correctChip.closest('.eth-wb-item-wrap');
+              var hintC = wrapC ? wrapC.querySelector('.eth-wb-hint-badge') : null;
+              if (hintC) {
+                var cText = correctChip.getAttribute('data-text') || '';
+                hintC.innerHTML = '<span style="color:#22c55e;font-weight:900;">✓ To‘g‘ri javob' + (cText ? (': ' + cText) : '') + '</span>';
+                hintC.style.display = 'block';
+                hintC.style.background = 'rgba(6, 78, 59, 0.95)';
+                hintC.style.borderColor = '#10b981';
+              }
             }
           }
         });
@@ -1310,14 +1335,101 @@
 
     var currentTarget = null;
 
+    function isModalValueTrue() {
+      var val = (modalCorrect && modalCorrect.value ? modalCorrect.value : '').trim().toLowerCase();
+      return (val === 'to‘g‘ri' || val === 'to\'g\'ri' || val === 'togri' || val === 'to`g`ri' || val === 'true' || val === 'ha' || val === 'yes' || val === '1' || val === 'correct');
+    }
+
+    function updateChoosePillsHighlight() {
+      var isTrue = isModalValueTrue();
+      var btnTrue = modal ? modal.querySelector('#ethWbModalBtnTrue') : null;
+      var btnFalse = modal ? modal.querySelector('#ethWbModalBtnFalse') : null;
+      if (btnTrue && btnFalse) {
+        if (isTrue) {
+          btnTrue.style.background = '#10b981';
+          btnTrue.style.color = '#ffffff';
+          btnTrue.style.borderColor = '#10b981';
+          btnFalse.style.background = 'rgba(239,68,68,0.12)';
+          btnFalse.style.color = '#f87171';
+          btnFalse.style.borderColor = '#ef4444';
+        } else {
+          btnTrue.style.background = 'rgba(16,185,129,0.12)';
+          btnTrue.style.color = '#34d399';
+          btnTrue.style.borderColor = '#10b981';
+          btnFalse.style.background = '#ef4444';
+          btnFalse.style.color = '#ffffff';
+          btnFalse.style.borderColor = '#ef4444';
+        }
+      }
+    }
+
+    function updateModalUIForType() {
+      var t = modalType ? modalType.value : 'fill';
+      var helper = modal ? modal.querySelector('#ethWbModalChooseHelper') : null;
+      var lbl = modal ? modal.querySelector('#ethWbModalCorrectLabel') : null;
+
+      if (t === 'choose') {
+        if (lbl) lbl.textContent = "Ushbu variant to‘g‘rimi? (Variant to‘g‘riligi):";
+        if (helper) helper.style.display = 'flex';
+        if (modalCorrect) modalCorrect.placeholder = "Bo‘sh = Noto‘g‘ri. 'To‘g‘ri' bosilsa = To‘g‘ri";
+        updateChoosePillsHighlight();
+      } else {
+        if (lbl) lbl.textContent = 'To‘g‘ri Javob ("or" bilan variantlar):';
+        if (helper) helper.style.display = 'none';
+        if (modalCorrect) modalCorrect.placeholder = "masalan: coast yoki a";
+      }
+    }
+
+    if (modalType) {
+      modalType.addEventListener('change', updateModalUIForType);
+    }
+    if (modalCorrect) {
+      modalCorrect.addEventListener('input', function() {
+        if (modalType && modalType.value === 'choose') {
+          updateChoosePillsHighlight();
+        }
+      });
+      modalCorrect.addEventListener('focus', function() {
+        if (modalType && modalType.value === 'choose') {
+          updateChoosePillsHighlight();
+        }
+      });
+    }
+
+    var btnTrue = modal ? modal.querySelector('#ethWbModalBtnTrue') : null;
+    if (btnTrue) {
+      btnTrue.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (modalCorrect) modalCorrect.value = 'To‘g‘ri';
+        updateChoosePillsHighlight();
+      });
+    }
+
+    var btnFalse = modal ? modal.querySelector('#ethWbModalBtnFalse') : null;
+    if (btnFalse) {
+      btnFalse.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (modalCorrect) modalCorrect.value = '';
+        updateChoosePillsHighlight();
+      });
+    }
+
     function openModal(isNew, pageNum, item, anchorRect) {
       if (!isTeacherRole()) return;
       currentTarget = { isNew: isNew, page: pageNum, item: item, anchorRect: anchorRect };
       modalTitle.textContent = isNew ? '➕ Yangi Katakcha' : '✏️ Katakcha (' + (item.label || item.id) + ')';
-      modalType.value = item.type || 'fill';
+      var itemType = item.type || 'fill';
+      modalType.value = itemType;
       modalLabel.value = item.label || item.group || '';
-      modalCorrect.value = item.correct || (item.incorrect ? 'incorrect' : '');
+
+      if (itemType === 'choose') {
+        var isItemTrue = (item.correct === true || item.correct === 'true' || item.correct === 'To‘g‘ri' || item.correct === 'to\'g\'ri' || item.correct === 'ha' || item.correct === 'yes');
+        modalCorrect.value = isItemTrue ? 'To‘g‘ri' : '';
+      } else {
+        modalCorrect.value = item.correct || (item.incorrect ? 'incorrect' : '');
+      }
       modalDelete.style.display = isNew ? 'none' : 'block';
+      updateModalUIForType();
 
       // Move modal to document.body so position:fixed is 100% immune to container transform/clipping
       if (modal && modal.parentElement !== document.body) {
@@ -1353,7 +1465,7 @@
           if (cardX < 8) cardX = 8;
 
           // Vertical docking: Directly under or directly above
-          var cardH = 295;
+          var cardH = 320;
           var targetBottom = anchorRect.top + anchorRect.height;
           var spaceBelow = vh - targetBottom;
           var spaceAbove = anchorRect.top;
@@ -1400,20 +1512,37 @@
         if (!currentTarget) return;
         var page = currentTarget.page;
         var inputs = WB.getPageInputs(page);
+        var curType = modalType.value;
+        var grpVal = modalLabel.value.trim();
+        var rawCorr = modalCorrect.value.trim();
 
         if (currentTarget.isNew) {
           var newItem = currentTarget.item;
           newItem.id = 'p' + page + '_custom_' + Date.now().toString().slice(-5);
-          newItem.type = modalType.value;
-          newItem.label = modalLabel.value.trim() || 'New';
-          newItem.correct = modalCorrect.value.trim() || '';
+          newItem.type = curType;
+          newItem.label = grpVal || 'New';
+          if (curType === 'choose') {
+            newItem.group = grpVal || ('p' + page + '_grp_' + Date.now().toString().slice(-4));
+            newItem.correct = isModalValueTrue(); // Always BOOLEAN true or false
+            newItem.text = grpVal;
+          } else {
+            newItem.group = grpVal;
+            newItem.correct = rawCorr;
+          }
           inputs.push(newItem);
         } else {
           var exist = inputs.find(function(x) { return x.id === currentTarget.item.id; });
           if (exist) {
-            exist.type = modalType.value;
-            exist.label = modalLabel.value.trim();
-            exist.correct = modalCorrect.value.trim();
+            exist.type = curType;
+            exist.label = grpVal || exist.label;
+            if (curType === 'choose') {
+              exist.group = grpVal || exist.group || ('p' + page + '_grp_' + Date.now().toString().slice(-4));
+              exist.correct = isModalValueTrue(); // Always BOOLEAN true or false
+              if (grpVal) exist.text = grpVal;
+            } else {
+              exist.group = grpVal;
+              exist.correct = rawCorr;
+            }
           }
         }
 
