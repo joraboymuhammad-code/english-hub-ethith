@@ -7,79 +7,67 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792429062767,
+      "created": 1792606423292,
       "students": [
         {
           "id": "std_1",
           "name": "Ashurov Dilyorbek Azizbek o'g'li",
-          "email": "ashurov@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         },
         {
           "id": "std_2",
           "name": "Ergasheva Madina Asad qizi",
-          "email": "ergasheva@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         },
         {
           "id": "std_3",
           "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
-          "email": "erkinov@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         },
         {
           "id": "std_4",
           "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
-          "email": "joraboyev@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         },
         {
           "id": "std_5",
           "name": "Jo'raboyev Javoxir Murod o'g'li",
-          "email": "javoxir@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         },
         {
           "id": "std_6",
           "name": "Mavlonova Ruxshona Oybek qizi",
-          "email": "mavlonova@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         },
         {
           "id": "std_7",
           "name": "Muxtaraliyeva Dilora Dilshod qizi",
-          "email": "muxtaraliyeva@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         },
         {
           "id": "std_8",
           "name": "O'razboyev O'tkir Baxtiyor o'g'li",
-          "email": "orazboyev@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         },
         {
           "id": "std_9",
           "name": "Saparova Aida Sarvar qizi",
-          "email": "saparova@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         },
         {
           "id": "std_10",
           "name": "Umarov Nursulton Alisher o'g'li",
-          "email": "umarov@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         },
         {
           "id": "std_11",
           "name": "Xolmurodova Muazzam G'ulom qizi",
-          "email": "xolmurodova@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         },
         {
           "id": "std_12",
           "name": "Kaxarova Xumora Olimjon qizi",
-          "email": "kaxarova@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-02"
         }
       ],
       "messages": [
@@ -109,8 +97,6 @@
         }
       ],
       "pinnedId": null,
-      "deletedMsgIds": [],
-      "schedule": "har_kuni",
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -672,7 +658,9 @@
         "seededWindowV2": true,
         "updatedAt": 1792605478694
       },
-      "customStudentNames": {}
+      "customStudentNames": {},
+      "schedule": "har_kuni",
+      "deletedMsgIds": []
     },
     {
       "id": "cls_1792041880052",
@@ -1313,7 +1301,7 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "updatedAt": 1792604795483
+      "updatedAt": 1792606425547
     }
   ],
   "p2pListings": [],
@@ -21218,5 +21206,5 @@
       }
     ]
   },
-  "updatedAt": 1792605479930
+  "updatedAt": 1792606427274
 }
