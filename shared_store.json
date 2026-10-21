@@ -12528,8 +12528,8 @@
         "id": "u8_p59_ex3_7_a",
         "type": "choose",
         "page": 59,
-        "top": 46.5,
-        "left": 68.5,
+        "top": 47.6,
+        "left": 66.5,
         "width": 5.5,
         "height": 2,
         "correct": true,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592454874
+  "updatedAt": 1792592459122
 }
