@@ -2200,8 +2200,8 @@
         "exercise": "1",
         "group": "p14_1_6",
         "text": "unfortunately",
-        "top": 57.3,
-        "left": 39,
+        "top": 57.5,
+        "left": 35.2,
         "width": 13,
         "height": 1.6,
         "correct": true
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586689799
+  "updatedAt": 1792586696377
 }
