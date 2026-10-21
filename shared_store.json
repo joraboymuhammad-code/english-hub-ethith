@@ -15813,8 +15813,20 @@
         "label": "3",
         "id": "p84_custom_65622",
         "group": "3"
+      },
+      {
+        "page": 84,
+        "type": "fill",
+        "top": 29.4,
+        "left": 65.6,
+        "width": 11.8,
+        "height": 1.7,
+        "correct": "poster",
+        "label": "New",
+        "id": "p84_custom_95176",
+        "group": ""
       }
     ]
   },
-  "updatedAt": 1792597283385
+  "updatedAt": 1792597296451
 }
