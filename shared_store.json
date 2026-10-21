@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792591565482,
+      "created": 1792429062767,
       "students": [],
       "messages": [
         {
@@ -578,8 +578,8 @@
       "coins": 150,
       "gifts": [],
       "level": "A1",
-      "dailyMinutes": 602,
-      "updatedAt": 1792588482789,
+      "dailyMinutes": 655,
+      "updatedAt": 1792591687986,
       "avatar": null,
       "nameStyle": null,
       "title": null,
@@ -602,12 +602,13 @@
       "name": "Muhammad Jo'raboyev",
       "email": "mu_striker@telegram.org",
       "coins": 100,
+      "avatar": null,
       "level": "A1",
       "dailyMinutes": 0,
       "nameStyle": null,
+      "title": null,
       "victorySound": null,
-      "updatedAt": 1792591615468,
-      "gifts": []
+      "updatedAt": 1792591615586
     }
   ],
   "p2pListings": [],
@@ -10731,5 +10732,5 @@
       }
     ]
   },
-  "updatedAt": 1792591617753
+  "updatedAt": 1792591689389
 }
