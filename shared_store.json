@@ -116,551 +116,947 @@
           "2026-10-09": {
             "std_1": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
             },
             "std_2": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             },
             "std_3": {
               "status": "S",
-              "score": ""
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
             },
             "std_4": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             },
             "std_5": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             },
             "std_6": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
             },
             "std_7": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             },
             "std_8": {
               "status": "K",
-              "score": "5"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             },
             "std_9": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.1"
             },
             "std_10": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
             },
             "std_11": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
             },
             "std_12": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             }
           },
           "2026-10-10": {
             "std_1": {
-              "status": "K",
-              "score": ""
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
             },
             "std_2": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
             },
             "std_3": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
             },
             "std_4": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
             },
             "std_5": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
             },
             "std_6": {
               "status": "K",
-              "score": "5"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
             },
             "std_7": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.2"
             },
             "std_8": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
             },
             "std_9": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
             },
             "std_10": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
             },
             "std_11": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
             },
             "std_12": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
             }
           },
           "2026-10-12": {
             "std_1": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
             },
             "std_2": {
               "status": "K",
-              "score": "5"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
             },
             "std_3": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.4"
             },
             "std_4": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.4"
             },
             "std_5": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.4"
             },
             "std_6": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
             },
             "std_7": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.4"
             },
             "std_8": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
             },
             "std_9": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.4"
             },
             "std_10": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
             },
             "std_11": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.4"
             },
             "std_12": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.4"
             }
           },
           "2026-10-13": {
             "std_1": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.1"
             },
             "std_2": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.1"
             },
             "std_3": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
             },
             "std_4": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
             },
             "std_5": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
             },
             "std_6": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
             },
             "std_7": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.1"
             },
             "std_8": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
             },
             "std_9": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.1"
             },
             "std_10": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
             },
             "std_11": {
               "status": "K",
-              "score": "5"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
             },
             "std_12": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
             }
           },
           "2026-10-14": {
             "std_1": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
             },
             "std_2": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
             },
             "std_3": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
             },
             "std_4": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
             },
             "std_5": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.2"
             },
             "std_6": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
             },
             "std_7": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.2"
             },
             "std_8": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
             },
             "std_9": {
               "status": "K",
-              "score": "5"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
             },
             "std_10": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
             },
             "std_11": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
             },
             "std_12": {
               "status": "S",
-              "score": ""
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.2"
             }
           },
           "2026-10-15": {
             "std_1": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.3"
             },
             "std_2": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
             },
             "std_3": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.3"
             },
             "std_4": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
             },
             "std_5": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.3"
             },
             "std_6": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.3"
             },
             "std_7": {
               "status": "K",
-              "score": "5"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
             },
             "std_8": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.3"
             },
             "std_9": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
             },
             "std_10": {
               "status": "S",
-              "score": ""
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.3"
             },
             "std_11": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
             },
             "std_12": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
             }
           },
           "2026-10-16": {
             "std_1": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.4"
             },
             "std_2": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
             },
             "std_3": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.4"
             },
             "std_4": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.4"
             },
             "std_5": {
               "status": "K",
-              "score": "5"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
             },
             "std_6": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.4"
             },
             "std_7": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
             },
             "std_8": {
               "status": "S",
-              "score": ""
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.4"
             },
             "std_9": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
             },
             "std_10": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
             },
             "std_11": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.4"
             },
             "std_12": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
             }
           },
           "2026-10-17": {
             "std_1": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "3.1"
             },
             "std_2": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.1"
             },
             "std_3": {
               "status": "K",
-              "score": "5"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
             },
             "std_4": {
               "status": "K",
-              "score": "5"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.1"
             },
             "std_5": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
             },
             "std_6": {
               "status": "S",
-              "score": ""
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "3.1"
             },
             "std_7": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
             },
             "std_8": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
             },
             "std_9": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.1"
             },
             "std_10": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
             },
             "std_11": {
               "status": "K",
-              "score": "5"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
             },
             "std_12": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "3.1"
             }
           },
           "2026-10-19": {
             "std_1": {
               "status": "K",
-              "score": "30"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
             },
             "std_2": {
               "status": "S",
-              "score": ""
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "3.3"
             },
             "std_3": {
               "status": "K",
-              "score": "32"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
             },
             "std_4": {
               "status": "K",
-              "score": "25"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
             },
             "std_5": {
               "status": "K",
-              "score": "29"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.3"
             },
             "std_6": {
               "status": "K",
-              "score": "13"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
             },
             "std_7": {
               "status": "K",
-              "score": "23"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
             },
             "std_8": {
               "status": "K",
-              "score": "35"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "3.3"
             },
             "std_9": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "3.3"
             },
             "std_10": {
               "status": "K",
-              "score": "26"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.3"
             },
             "std_11": {
               "status": "K",
-              "score": "27"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
             },
             "std_12": {
               "status": "K",
-              "score": "19"
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.3"
             }
           },
           "2026-10-20": {
             "std_1": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             },
             "std_2": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             },
             "std_3": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
             },
             "std_4": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             },
             "std_5": {
               "status": "K",
-              "score": "5"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             },
             "std_6": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.1"
             },
             "std_7": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
             },
             "std_8": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
             },
             "std_9": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             },
             "std_10": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
             },
             "std_11": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
             },
             "std_12": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
             }
           },
           "2026-10-21": {
             "std_1": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
             },
             "std_2": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
             },
             "std_3": {
               "status": "K",
-              "score": "5"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
             },
             "std_4": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.2"
             },
             "std_5": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
             },
             "std_6": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
             },
             "std_7": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
             },
             "std_8": {
               "status": "K",
-              "score": ""
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
             },
             "std_9": {
               "status": "K",
-              "score": ""
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
             },
             "std_10": {
               "status": "Q",
-              "score": ""
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
             },
             "std_11": {
               "status": "K",
-              "score": "4"
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
             },
             "std_12": {
               "status": "K",
-              "score": "5"
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.2"
             }
           },
           "2026-10-22": {
@@ -670,15 +1066,52 @@
           }
         },
         "lessonTypes": {
-          "2026-10-19": "Oddiy",
-          "2026-10-21": "Oddiy",
-          "2026-10-10": "Oddiy"
+          "2026-10-19": "Vazifa: 3.3",
+          "2026-10-21": "Vazifa: 1.1",
+          "2026-10-10": "Vazifa: 1.2",
+          "2026-10-09": "Vazifa: 1.1",
+          "2026-10-12": "Vazifa: 1.4",
+          "2026-10-13": "Vazifa: 2.1",
+          "2026-10-14": "Vazifa: 2.2",
+          "2026-10-15": "Vazifa: 2.3",
+          "2026-10-16": "Vazifa: 2.4",
+          "2026-10-17": "Vazifa: 3.1",
+          "2026-10-20": "Vazifa: 1.1"
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792606706665
+        "updatedAt": 1792606706665,
+        "homeworks": {
+          "2026-10-21": {
+            "dateKey": "2026-10-21",
+            "dateDisp": "21.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 1792607960771
+          }
+        },
+        "seededWindowV3": true
       },
-      "customStudentNames": {}
+      "customStudentNames": {},
+      "activeHomework": {
+        "dateKey": "2026-10-21",
+        "dateDisp": "21.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792607960771
+      }
     },
     {
       "id": "cls_1792041880052",
@@ -1277,7 +1710,7 @@
       "gifts": [],
       "level": "A1",
       "dailyMinutes": 923,
-      "updatedAt": 1792607908085,
+      "updatedAt": 1792607960236,
       "avatar": null,
       "nameStyle": null,
       "title": null,
@@ -21225,5 +21658,5 @@
       }
     ]
   },
-  "updatedAt": 1792607912771
+  "updatedAt": 1792607961220
 }
