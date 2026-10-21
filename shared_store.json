@@ -4815,8 +4815,8 @@
         "type": "fill",
         "page": 38,
         "label": "4",
-        "top": 43.3,
-        "left": 52,
+        "top": 45,
+        "left": 52.8,
         "width": 8,
         "height": 1.7,
         "correct": "jam"
@@ -4911,5 +4911,5 @@
       }
     ]
   },
-  "updatedAt": 1792549004383
+  "updatedAt": 1792549010266
 }
