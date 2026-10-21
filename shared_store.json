@@ -13685,7 +13685,7 @@
         "type": "choose",
         "page": 63,
         "top": 45,
-        "left": 33,
+        "left": 31.6,
         "width": 4.2,
         "height": 2,
         "correct": false,
@@ -14045,8 +14045,8 @@
         "id": "u9_p63_ex6_10",
         "type": "fill",
         "page": 63,
-        "top": 53.5,
-        "left": 54,
+        "top": 52.7,
+        "left": 54.4,
         "width": 10.5,
         "height": 2.2,
         "correct": "must",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592678915
+  "updatedAt": 1792592683188
 }
