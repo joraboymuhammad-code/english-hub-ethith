@@ -8641,8 +8641,8 @@
         "type": "fill",
         "page": 46,
         "label": "6",
-        "top": 43,
-        "left": 26.5,
+        "top": 41.8,
+        "left": 19.3,
         "width": 3.5,
         "height": 1.8,
         "correct": "e"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587161472
+  "updatedAt": 1792587171679
 }
