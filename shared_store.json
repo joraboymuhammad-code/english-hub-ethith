@@ -16906,8 +16906,8 @@
         "id": "u10_p74_ex1_2_b",
         "type": "choose",
         "page": 74,
-        "top": 38.6,
-        "left": 23.5,
+        "top": 38,
+        "left": 23.4,
         "width": 7,
         "height": 1.8,
         "correct": false,
@@ -16919,8 +16919,8 @@
         "id": "u10_p74_ex1_2_c",
         "type": "choose",
         "page": 74,
-        "top": 38.6,
-        "left": 36.8,
+        "top": 37.9,
+        "left": 37.5,
         "width": 6.5,
         "height": 1.8,
         "correct": true,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601097911
+  "updatedAt": 1792601115118
 }
