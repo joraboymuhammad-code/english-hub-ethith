@@ -15326,8 +15326,20 @@
         "label": "6",
         "id": "p83_custom_65410",
         "group": "6"
+      },
+      {
+        "page": 83,
+        "type": "fill",
+        "top": 54.4,
+        "left": 13.2,
+        "width": 34.8,
+        "height": 1.7,
+        "correct": "He wondered why I had decided to apply for that job.",
+        "label": "New",
+        "id": "p83_custom_70775",
+        "group": ""
       }
     ]
   },
-  "updatedAt": 1792595171072
+  "updatedAt": 1792595271750
 }
