@@ -15075,8 +15075,21 @@
         "id": "p82_custom_78793",
         "group": "p82_grp_8793",
         "text": ""
+      },
+      {
+        "page": 82,
+        "type": "choose",
+        "top": 46,
+        "left": 55.7,
+        "width": 26.4,
+        "height": 1.9,
+        "correct": true,
+        "label": "New",
+        "id": "p82_custom_87682",
+        "group": "p82_grp_7682",
+        "text": ""
       }
     ]
   },
-  "updatedAt": 1792594079858
+  "updatedAt": 1792594089346
 }
