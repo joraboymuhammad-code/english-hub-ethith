@@ -6530,8 +6530,8 @@
         "page": 38,
         "group": "p38_1_2",
         "text": "lane",
-        "top": 36.9,
-        "left": 25.3,
+        "top": 39.3,
+        "left": 29.6,
         "width": 5.5,
         "height": 1.8,
         "correct": true
@@ -6542,8 +6542,8 @@
         "page": 38,
         "group": "p38_1_2",
         "text": "wheel",
-        "top": 43.2,
-        "left": 17.6,
+        "top": 40.6,
+        "left": 9.8,
         "width": 6,
         "height": 1.8,
         "correct": false
@@ -6554,8 +6554,8 @@
         "page": 38,
         "group": "p38_1_3",
         "text": "accident",
-        "top": 44.9,
-        "left": 21.1,
+        "top": 44.7,
+        "left": 18.8,
         "width": 7,
         "height": 1.8,
         "correct": false
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586800713
+  "updatedAt": 1792586808658
 }
