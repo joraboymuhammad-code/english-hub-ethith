@@ -14777,8 +14777,8 @@
         "id": "u10_p66_ex4_6_do",
         "type": "choose",
         "page": 66,
-        "top": 54.5,
-        "left": 56.5,
+        "top": 53.6,
+        "left": 56.8,
         "width": 3,
         "height": 1.8,
         "correct": false,
@@ -14803,8 +14803,8 @@
         "id": "u10_p66_ex4_6_make",
         "type": "choose",
         "page": 66,
-        "top": 54.5,
-        "left": 64.5,
+        "top": 53.9,
+        "left": 64.2,
         "width": 4.8,
         "height": 1.8,
         "correct": true,
@@ -14816,7 +14816,7 @@
         "id": "u10_p66_ex4_7_found",
         "type": "choose",
         "page": 66,
-        "top": 57.5,
+        "top": 56.8,
         "left": 56.5,
         "width": 5,
         "height": 1.8,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600727387
+  "updatedAt": 1792600730844
 }
