@@ -1190,7 +1190,7 @@
         "msg_1792042358929_8iaq2",
         "msg_1792041984917_cd4i9"
       ],
-      "schedule": "toq",
+      "schedule": "har_kuni",
       "attendance": {
         "records": {
           "2026-09-29": {
@@ -1225,7 +1225,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1792608483871
+        "updatedAt": 1792608489537
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -21712,5 +21712,5 @@
       }
     ]
   },
-  "updatedAt": 1792608487649
+  "updatedAt": 1792608491213
 }
