@@ -16893,7 +16893,7 @@
         "id": "u10_p74_ex1_2_a",
         "type": "choose",
         "page": 74,
-        "top": 38.6,
+        "top": 38,
         "left": 12,
         "width": 6,
         "height": 1.8,
@@ -16932,8 +16932,8 @@
         "id": "u10_p74_ex1_3_a",
         "type": "choose",
         "page": 74,
-        "top": 42,
-        "left": 12,
+        "top": 41.5,
+        "left": 12.3,
         "width": 6.5,
         "height": 1.8,
         "correct": false,
@@ -16958,8 +16958,8 @@
         "id": "u10_p74_ex1_3_c",
         "type": "choose",
         "page": 74,
-        "top": 42,
-        "left": 36.8,
+        "top": 41.2,
+        "left": 36.9,
         "width": 7.2,
         "height": 1.8,
         "correct": false,
@@ -16971,8 +16971,8 @@
         "id": "u10_p74_ex1_4_a",
         "type": "choose",
         "page": 74,
-        "top": 45.4,
-        "left": 12,
+        "top": 45.1,
+        "left": 12.6,
         "width": 7,
         "height": 1.8,
         "correct": true,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601115118
+  "updatedAt": 1792601120868
 }
