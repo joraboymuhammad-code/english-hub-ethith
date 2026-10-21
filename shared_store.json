@@ -1219,8 +1219,8 @@
         "page": 5,
         "exercise": "6",
         "label": "2",
-        "top": 63.6,
-        "left": 22.3,
+        "top": 63.3,
+        "left": 22.5,
         "width": 10,
         "height": 1.9,
         "correct": "help or HELP"
@@ -1231,8 +1231,8 @@
         "page": 5,
         "exercise": "6",
         "label": "3",
-        "top": 66.8,
-        "left": 13,
+        "top": 65.1,
+        "left": 15,
         "width": 10,
         "height": 1.9,
         "correct": "trust or TRUST"
@@ -1255,8 +1255,8 @@
         "page": 5,
         "exercise": "6",
         "label": "5",
-        "top": 74.5,
-        "left": 40,
+        "top": 72,
+        "left": 39.8,
         "width": 10,
         "height": 1.9,
         "correct": "make or MAKE"
@@ -8839,5 +8839,5 @@
       }
     ]
   },
-  "updatedAt": 1792582692811
+  "updatedAt": 1792582698851
 }
