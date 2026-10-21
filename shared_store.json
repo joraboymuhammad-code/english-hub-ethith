@@ -7208,8 +7208,8 @@
         "type": "fill",
         "page": 40,
         "label": "2",
-        "top": 70.8,
-        "left": 56.8,
+        "top": 69.1,
+        "left": 55.9,
         "width": 11.5,
         "height": 1.8,
         "correct": "drought"
@@ -7219,8 +7219,8 @@
         "type": "fill",
         "page": 40,
         "label": "3",
-        "top": 73.8,
-        "left": 67.5,
+        "top": 72,
+        "left": 67.6,
         "width": 9.5,
         "height": 1.8,
         "correct": "rainfall"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586870423
+  "updatedAt": 1792586896274
 }
