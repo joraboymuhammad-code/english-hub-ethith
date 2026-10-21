@@ -7596,8 +7596,8 @@
         "type": "fill",
         "page": 42,
         "label": "2",
-        "top": 45.4,
-        "left": 10.5,
+        "top": 43.8,
+        "left": 10.1,
         "width": 17.5,
         "height": 1.8,
         "correct": "reliable"
@@ -7607,8 +7607,8 @@
         "type": "fill",
         "page": 42,
         "label": "3",
-        "top": 48.8,
-        "left": 10.5,
+        "top": 46.9,
+        "left": 8.7,
         "width": 17.5,
         "height": 1.8,
         "correct": "colourful"
@@ -7618,8 +7618,8 @@
         "type": "fill",
         "page": 42,
         "label": "4",
-        "top": 52,
-        "left": 27.5,
+        "top": 50.4,
+        "left": 25.4,
         "width": 17.5,
         "height": 1.8,
         "correct": "healthy"
@@ -7629,8 +7629,8 @@
         "type": "fill",
         "page": 42,
         "label": "5",
-        "top": 53.6,
-        "left": 29.5,
+        "top": 52.5,
+        "left": 27.8,
         "width": 16.5,
         "height": 1.8,
         "correct": "careless"
@@ -7640,8 +7640,8 @@
         "type": "fill",
         "page": 42,
         "label": "6",
-        "top": 57,
-        "left": 29.5,
+        "top": 55.3,
+        "left": 27.4,
         "width": 16.5,
         "height": 1.8,
         "correct": "personal"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586966154
+  "updatedAt": 1792586972743
 }
