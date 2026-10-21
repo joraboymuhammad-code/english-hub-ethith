@@ -575,10 +575,10 @@
       "name": "Ustoz Muhammadyusuf",
       "email": "admin_12038f1aq8syash@ethith.uz",
       "createdAt": 1792429101989,
-      "coins": 150,
+      "coins": 500,
       "gifts": [],
       "level": "A1",
-      "dailyMinutes": 803,
+      "dailyMinutes": 20,
       "updatedAt": 1792600668240
     },
     {
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601428491
+  "updatedAt": 1792601433695
 }
