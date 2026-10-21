@@ -10702,7 +10702,7 @@
         "type": "choose",
         "page": 53,
         "top": 45,
-        "left": 60,
+        "left": 59.6,
         "width": 6.5,
         "height": 2,
         "correct": false,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592129183
+  "updatedAt": 1792592132178
 }
