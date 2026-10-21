@@ -17287,8 +17287,8 @@
         "id": "u10_p75_ex7_7",
         "type": "fill",
         "page": 75,
-        "top": 62.5,
-        "left": 58.5,
+        "top": 60.2,
+        "left": 55.5,
         "width": 15.5,
         "height": 2,
         "correct": "hadn't spent|had not spent",
@@ -17298,8 +17298,8 @@
         "id": "u10_p75_ex7_8",
         "type": "fill",
         "page": 75,
-        "top": 64.2,
-        "left": 56.5,
+        "top": 61.8,
+        "left": 56.1,
         "width": 17,
         "height": 2,
         "correct": "probably wouldn't have known|would probably not have known",
@@ -17309,8 +17309,8 @@
         "id": "u10_p75_ex7_9",
         "type": "fill",
         "page": 75,
-        "top": 72.8,
-        "left": 54.5,
+        "top": 70.7,
+        "left": 54.2,
         "width": 18.5,
         "height": 2,
         "correct": "hadn't started|had not started",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601168964
+  "updatedAt": 1792601174662
 }
