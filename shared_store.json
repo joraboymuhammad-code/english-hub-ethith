@@ -16124,8 +16124,8 @@
       {
         "page": 86,
         "type": "fill",
-        "top": 74.1,
-        "left": 56.5,
+        "top": 73.4,
+        "left": 56.2,
         "width": 9.2,
         "height": 2.1,
         "correct": "explained",
@@ -16135,5 +16135,5 @@
       }
     ]
   },
-  "updatedAt": 1792599197700
+  "updatedAt": 1792599201007
 }
