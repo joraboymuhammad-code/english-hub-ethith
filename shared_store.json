@@ -13339,8 +13339,8 @@
         "id": "u9_p61_ex6_2",
         "type": "fill",
         "page": 61,
-        "top": 16,
-        "left": 47,
+        "top": 14.7,
+        "left": 46.3,
         "width": 44,
         "height": 2.2,
         "correct": "is the most insecure person I know|Luke is the most insecure person I know",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592588207
+  "updatedAt": 1792592591074
 }
