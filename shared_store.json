@@ -11391,7 +11391,7 @@
         "id": "u8_p55_ex5a_5",
         "type": "fill",
         "page": 55,
-        "top": 66.8,
+        "top": 65,
         "left": 20.5,
         "width": 16.5,
         "height": 2.2,
@@ -11402,8 +11402,8 @@
         "id": "u8_p55_ex5a_6",
         "type": "fill",
         "page": 55,
-        "top": 68,
-        "left": 13.5,
+        "top": 66.9,
+        "left": 12.8,
         "width": 14.5,
         "height": 2.2,
         "correct": "had",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592210799
+  "updatedAt": 1792592214537
 }
