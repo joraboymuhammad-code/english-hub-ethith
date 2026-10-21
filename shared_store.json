@@ -13506,8 +13506,8 @@
         "id": "u9_p62_ex1_4",
         "type": "fill",
         "page": 62,
-        "top": 32.5,
-        "left": 24.5,
+        "top": 32.2,
+        "left": 23.9,
         "width": 9.5,
         "height": 2.2,
         "correct": "old-fashioned|modern|traditional",
@@ -13517,8 +13517,8 @@
         "id": "u9_p62_ex1_5",
         "type": "fill",
         "page": 62,
-        "top": 34.5,
-        "left": 24.5,
+        "top": 36.6,
+        "left": 24.6,
         "width": 9.5,
         "height": 2.2,
         "correct": "traditional|modern|old-fashioned",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592636134
+  "updatedAt": 1792592641184
 }
