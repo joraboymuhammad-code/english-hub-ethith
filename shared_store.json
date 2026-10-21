@@ -15682,8 +15682,8 @@
         "id": "u10_p70_ex1_3",
         "type": "fill",
         "page": 70,
-        "top": 37,
-        "left": 12.5,
+        "top": 36,
+        "left": 12.6,
         "width": 9,
         "height": 2,
         "correct": "took",
@@ -15693,8 +15693,8 @@
         "id": "u10_p70_ex1_4",
         "type": "fill",
         "page": 70,
-        "top": 39,
-        "left": 27,
+        "top": 37.6,
+        "left": 27.9,
         "width": 9,
         "height": 2,
         "correct": "take",
@@ -15704,8 +15704,8 @@
         "id": "u10_p70_ex1_5",
         "type": "fill",
         "page": 70,
-        "top": 44.5,
-        "left": 17.5,
+        "top": 42.6,
+        "left": 17.4,
         "width": 9,
         "height": 2,
         "correct": "had",
@@ -15715,8 +15715,8 @@
         "id": "u10_p70_ex1_6",
         "type": "fill",
         "page": 70,
-        "top": 47,
-        "left": 27,
+        "top": 45.5,
+        "left": 27.1,
         "width": 9,
         "height": 2,
         "correct": "take",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600881189
+  "updatedAt": 1792600884879
 }
