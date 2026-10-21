@@ -16120,8 +16120,20 @@
         "label": "3",
         "id": "p86_custom_78768",
         "group": "3"
+      },
+      {
+        "page": 86,
+        "type": "fill",
+        "top": 74.1,
+        "left": 56.5,
+        "width": 9.2,
+        "height": 2.1,
+        "correct": "explained",
+        "label": "4",
+        "id": "p86_custom_96722",
+        "group": "4"
       }
     ]
   },
-  "updatedAt": 1792599183622
+  "updatedAt": 1792599197700
 }
