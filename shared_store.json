@@ -15863,8 +15863,8 @@
         "id": "u10_p70_ex2b_e",
         "type": "fill",
         "page": 70,
-        "top": 79.5,
-        "left": 20.5,
+        "top": 76.5,
+        "left": 20.1,
         "width": 4.5,
         "height": 2,
         "correct": "2",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600946623
+  "updatedAt": 1792600951699
 }
