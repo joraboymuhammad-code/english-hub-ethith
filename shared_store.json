@@ -15318,8 +15318,8 @@
       {
         "page": 83,
         "type": "fill",
-        "top": 47.9,
-        "left": 58.1,
+        "top": 47.6,
+        "left": 57.4,
         "width": 34,
         "height": 1.6,
         "correct": "He asked me what I did to resolve those disagreements.",
@@ -15329,5 +15329,5 @@
       }
     ]
   },
-  "updatedAt": 1792595166364
+  "updatedAt": 1792595171072
 }
