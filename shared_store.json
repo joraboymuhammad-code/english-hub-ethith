@@ -15254,8 +15254,20 @@
         "label": "6",
         "id": "p83_custom_89857",
         "group": "6"
+      },
+      {
+        "page": 83,
+        "type": "fill",
+        "top": 28.2,
+        "left": 72.7,
+        "width": 20.1,
+        "height": 1.8,
+        "correct": "The interviewer asked me ifI could tell him about an advertising campaign that hadn't worked.",
+        "label": "1",
+        "id": "p83_custom_18990",
+        "group": "1"
       }
     ]
   },
-  "updatedAt": 1792594296927
+  "updatedAt": 1792594319935
 }
