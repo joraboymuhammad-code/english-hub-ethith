@@ -10681,8 +10681,20 @@
         "label": "2",
         "id": "p81_custom_92355",
         "group": "2"
+      },
+      {
+        "page": 81,
+        "type": "fill",
+        "top": 70.2,
+        "left": 66.9,
+        "width": 22.7,
+        "height": 1.8,
+        "correct": "was one of the largest advertising agencies",
+        "label": "3",
+        "id": "p81_custom_08997",
+        "group": "3"
       }
     ]
   },
-  "updatedAt": 1792588907077
+  "updatedAt": 1792588917520
 }
