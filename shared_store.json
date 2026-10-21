@@ -12632,8 +12632,8 @@
         "id": "u8_p59_ex4a_2",
         "type": "fill",
         "page": 59,
-        "top": 73.4,
-        "left": 63,
+        "top": 72.1,
+        "left": 54.8,
         "width": 35,
         "height": 2.2,
         "correct": "I'm here to talk to you about decisions|I'm here to talk to you about decisions.|here",
@@ -12643,8 +12643,8 @@
         "id": "u8_p59_ex4a_3",
         "type": "fill",
         "page": 59,
-        "top": 78.3,
-        "left": 59.2,
+        "top": 76.8,
+        "left": 54.4,
         "width": 35,
         "height": 2.2,
         "correct": "Could you give me some examples of your achievements?|Could you give me some examples of your achievements|me",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592492209
+  "updatedAt": 1792592495615
 }
