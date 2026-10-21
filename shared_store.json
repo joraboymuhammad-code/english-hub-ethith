@@ -112,10 +112,566 @@
       "deletedMsgIds": [],
       "schedule": "har_kuni",
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
-        "holidays": {}
-      }
+        "records": {
+          "2026-10-09": {
+            "std_1": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_2": {
+              "status": "K",
+              "score": ""
+            },
+            "std_3": {
+              "status": "S",
+              "score": ""
+            },
+            "std_4": {
+              "status": "K",
+              "score": ""
+            },
+            "std_5": {
+              "status": "K",
+              "score": ""
+            },
+            "std_6": {
+              "status": "K",
+              "score": ""
+            },
+            "std_7": {
+              "status": "K",
+              "score": ""
+            },
+            "std_8": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_10": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_11": {
+              "status": "K",
+              "score": ""
+            },
+            "std_12": {
+              "status": "K",
+              "score": "4"
+            }
+          },
+          "2026-10-10": {
+            "std_1": {
+              "status": "",
+              "score": ""
+            },
+            "std_2": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_3": {
+              "status": "K",
+              "score": ""
+            },
+            "std_4": {
+              "status": "K",
+              "score": ""
+            },
+            "std_5": {
+              "status": "K",
+              "score": ""
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_8": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_9": {
+              "status": "K",
+              "score": ""
+            },
+            "std_10": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_11": {
+              "status": "K",
+              "score": ""
+            },
+            "std_12": {
+              "status": "K",
+              "score": ""
+            }
+          },
+          "2026-10-12": {
+            "std_1": {
+              "status": "K",
+              "score": ""
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_4": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_5": {
+              "status": "K",
+              "score": ""
+            },
+            "std_6": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_7": {
+              "status": "K",
+              "score": ""
+            },
+            "std_8": {
+              "status": "K",
+              "score": ""
+            },
+            "std_9": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_10": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5"
+            }
+          },
+          "2026-10-13": {
+            "std_1": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_2": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_3": {
+              "status": "K",
+              "score": ""
+            },
+            "std_4": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_5": {
+              "status": "K",
+              "score": ""
+            },
+            "std_6": {
+              "status": "K",
+              "score": ""
+            },
+            "std_7": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_8": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5"
+            }
+          },
+          "2026-10-14": {
+            "std_1": {
+              "status": "K",
+              "score": ""
+            },
+            "std_2": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_3": {
+              "status": "K",
+              "score": ""
+            },
+            "std_4": {
+              "status": "K",
+              "score": ""
+            },
+            "std_5": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_6": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_11": {
+              "status": "K",
+              "score": ""
+            },
+            "std_12": {
+              "status": "S",
+              "score": ""
+            }
+          },
+          "2026-10-15": {
+            "std_1": {
+              "status": "K",
+              "score": ""
+            },
+            "std_2": {
+              "status": "K",
+              "score": ""
+            },
+            "std_3": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_4": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_9": {
+              "status": "K",
+              "score": ""
+            },
+            "std_10": {
+              "status": "S",
+              "score": ""
+            },
+            "std_11": {
+              "status": "K",
+              "score": ""
+            },
+            "std_12": {
+              "status": "K",
+              "score": ""
+            }
+          },
+          "2026-10-16": {
+            "std_1": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_2": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_7": {
+              "status": "K",
+              "score": ""
+            },
+            "std_8": {
+              "status": "S",
+              "score": ""
+            },
+            "std_9": {
+              "status": "K",
+              "score": ""
+            },
+            "std_10": {
+              "status": "K",
+              "score": ""
+            },
+            "std_11": {
+              "status": "K",
+              "score": ""
+            },
+            "std_12": {
+              "status": "K",
+              "score": ""
+            }
+          },
+          "2026-10-17": {
+            "std_1": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_5": {
+              "status": "K",
+              "score": ""
+            },
+            "std_6": {
+              "status": "S",
+              "score": ""
+            },
+            "std_7": {
+              "status": "K",
+              "score": ""
+            },
+            "std_8": {
+              "status": "K",
+              "score": ""
+            },
+            "std_9": {
+              "status": "K",
+              "score": ""
+            },
+            "std_10": {
+              "status": "K",
+              "score": ""
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5"
+            }
+          },
+          "2026-10-19": {
+            "std_1": {
+              "status": "K",
+              "score": "30"
+            },
+            "std_2": {
+              "status": "S",
+              "score": ""
+            },
+            "std_3": {
+              "status": "K",
+              "score": "32"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "25"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "29"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "13"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "23"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "35"
+            },
+            "std_9": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_10": {
+              "status": "K",
+              "score": "26"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "27"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "19"
+            }
+          },
+          "2026-10-20": {
+            "std_1": {
+              "status": "K",
+              "score": ""
+            },
+            "std_2": {
+              "status": "K",
+              "score": ""
+            },
+            "std_3": {
+              "status": "K",
+              "score": ""
+            },
+            "std_4": {
+              "status": "K",
+              "score": ""
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_7": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_8": {
+              "status": "K",
+              "score": ""
+            },
+            "std_9": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_10": {
+              "status": "K",
+              "score": ""
+            },
+            "std_11": {
+              "status": "K",
+              "score": ""
+            },
+            "std_12": {
+              "status": "Q",
+              "score": ""
+            }
+          },
+          "2026-10-21": {
+            "std_1": {
+              "status": "K",
+              "score": ""
+            },
+            "std_2": {
+              "status": "K",
+              "score": ""
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5"
+            },
+            "std_5": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_6": {
+              "status": "K",
+              "score": ""
+            },
+            "std_7": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_8": {
+              "status": "K",
+              "score": ""
+            },
+            "std_9": {
+              "status": "K",
+              "score": ""
+            },
+            "std_10": {
+              "status": "Q",
+              "score": ""
+            },
+            "std_11": {
+              "status": "K",
+              "score": "4"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5"
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-19": "BSB - Y1"
+        },
+        "holidays": {},
+        "seededWindowV2": true,
+        "updatedAt": 1792604961084
+      },
+      "customStudentNames": {}
     },
     {
       "id": "cls_1792041880052",
@@ -20661,5 +21217,5 @@
       }
     ]
   },
-  "updatedAt": 1792604934853
+  "updatedAt": 1792604961208
 }
