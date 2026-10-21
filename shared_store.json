@@ -708,10 +708,10 @@
       "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
-      "coins": 5000,
+      "coins": 150,
       "level": "A1",
       "dailyMinutes": 0,
-      "updatedAt": 1792611378100,
+      "updatedAt": 1792611382607,
       "avatar": null,
       "nameStyle": null,
       "title": null,
@@ -732,9 +732,9 @@
       "updatedAt": 1792609667571
     },
     {
-      "id": "teacher_1",
+      "id": "admin_official_teacher",
       "role": "teacher",
-      "name": "MAMADIYOROV KARIMJON RABBIMQUL O‘G‘LI",
+      "name": "Ustoz",
       "email": "teacher@ethith.uz",
       "coins": 5000,
       "avatar": null,
@@ -746,9 +746,9 @@
       "updatedAt": 1792606425762
     },
     {
-      "id": "admin_12038f1aq8syash@ethith.uz",
+      "id": "admin_official_teacher",
       "role": "teacher",
-      "name": "Ustoz Muhammadyusuf",
+      "name": "Ustoz",
       "email": "admin_12038f1aq8syash@ethith.uz",
       "coins": 150,
       "gifts": [],
@@ -772,5 +772,6 @@
     }
   ],
   "p2pListings": [],
-  "updatedAt": 1792611378101
+  "workbookOverrides": {},
+  "updatedAt": 1792611382607
 }
