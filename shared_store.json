@@ -6590,8 +6590,8 @@
         "page": 38,
         "group": "p38_1_4",
         "text": "injured",
-        "top": 49,
-        "left": 16.5,
+        "top": 48.9,
+        "left": 29.8,
         "width": 6.5,
         "height": 1.8,
         "correct": false
@@ -6602,8 +6602,8 @@
         "page": 38,
         "group": "p38_1_4",
         "text": "limit",
-        "top": 49,
-        "left": 23.5,
+        "top": 50.6,
+        "left": 12.1,
         "width": 5.5,
         "height": 1.8,
         "correct": true
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586816453
+  "updatedAt": 1792586823683
 }
