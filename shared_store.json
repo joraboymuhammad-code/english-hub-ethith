@@ -9727,8 +9727,19 @@
         "correct": "memorable",
         "label": "5",
         "id": "p81_custom_23613"
+      },
+      {
+        "page": 81,
+        "type": "fill",
+        "top": 30.2,
+        "left": 11.7,
+        "width": 9.8,
+        "height": 1.6,
+        "correct": "slogan",
+        "label": "New",
+        "id": "p81_custom_39819"
       }
     ]
   },
-  "updatedAt": 1792584524608
+  "updatedAt": 1792584540927
 }
