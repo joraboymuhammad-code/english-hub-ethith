@@ -14907,8 +14907,8 @@
         "id": "u10_p66_ex4_9_backed",
         "type": "choose",
         "page": 66,
-        "top": 61,
-        "left": 75.5,
+        "top": 61.5,
+        "left": 75.2,
         "width": 5.5,
         "height": 1.8,
         "correct": true,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600737990
+  "updatedAt": 1792600741262
 }
