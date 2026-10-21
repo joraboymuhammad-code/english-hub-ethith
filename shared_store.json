@@ -14012,8 +14012,8 @@
         "id": "u9_p63_ex6_7",
         "type": "fill",
         "page": 63,
-        "top": 46.8,
-        "left": 58,
+        "top": 46.5,
+        "left": 58.3,
         "width": 8.5,
         "height": 2.2,
         "correct": "must",
@@ -14023,8 +14023,8 @@
         "id": "u9_p63_ex6_8",
         "type": "fill",
         "page": 63,
-        "top": 48.8,
-        "left": 73.5,
+        "top": 47.9,
+        "left": 73.1,
         "width": 10,
         "height": 2.2,
         "correct": "can't",
@@ -14034,8 +14034,8 @@
         "id": "u9_p63_ex6_9",
         "type": "fill",
         "page": 63,
-        "top": 50.8,
-        "left": 69,
+        "top": 49.7,
+        "left": 70,
         "width": 10,
         "height": 2.2,
         "correct": "might",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592674806
+  "updatedAt": 1792592678915
 }
