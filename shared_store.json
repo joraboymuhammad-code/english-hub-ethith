@@ -13088,8 +13088,8 @@
         "id": "u9_p60_ex3_4_thick",
         "type": "choose",
         "page": 60,
-        "top": 68.5,
-        "left": 82.5,
+        "top": 67.7,
+        "left": 82.2,
         "width": 4.5,
         "height": 2,
         "correct": true,
@@ -13101,8 +13101,8 @@
         "id": "u9_p60_ex3_4_spiky",
         "type": "choose",
         "page": 60,
-        "top": 68.5,
-        "left": 87,
+        "top": 67.7,
+        "left": 86.9,
         "width": 4.5,
         "height": 2,
         "correct": false,
@@ -13114,8 +13114,8 @@
         "id": "u9_p60_ex3_4_slim",
         "type": "choose",
         "page": 60,
-        "top": 68.5,
-        "left": 56.5,
+        "top": 67.6,
+        "left": 56.2,
         "width": 4,
         "height": 2,
         "correct": false,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592571121
+  "updatedAt": 1792592575526
 }
