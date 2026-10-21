@@ -15198,8 +15198,8 @@
       {
         "page": 83,
         "type": "fill",
-        "top": 11.4,
-        "left": 55.1,
+        "top": 10.7,
+        "left": 54.8,
         "width": 37.7,
         "height": 2.1,
         "correct": "Why have you decided to apply for this job?",
@@ -15210,16 +15210,16 @@
       {
         "page": 83,
         "type": "fill",
-        "top": 13.6,
-        "left": 54.8,
+        "top": 12.7,
+        "left": 54.4,
         "width": 38.7,
         "height": 1.7,
         "correct": "What projects are you working on now/at the moment/at this time?",
-        "label": "New",
+        "label": "2",
         "id": "p83_custom_16383",
-        "group": ""
+        "group": "2"
       }
     ]
   },
-  "updatedAt": 1792594220100
+  "updatedAt": 1792594233621
 }
