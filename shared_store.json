@@ -13484,8 +13484,8 @@
         "id": "u9_p62_ex1_2",
         "type": "fill",
         "page": 62,
-        "top": 29.5,
-        "left": 24.5,
+        "top": 29.3,
+        "left": 24.4,
         "width": 9.5,
         "height": 2.2,
         "correct": "warm",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592623792
+  "updatedAt": 1792592636134
 }
