@@ -578,8 +578,8 @@
       "coins": 150,
       "gifts": [],
       "level": "A1",
-      "dailyMinutes": 655,
-      "updatedAt": 1792591687986,
+      "dailyMinutes": 656,
+      "updatedAt": 1792591755508,
       "avatar": null,
       "nameStyle": null,
       "title": null,
@@ -10732,5 +10732,5 @@
       }
     ]
   },
-  "updatedAt": 1792591694363
+  "updatedAt": 1792591756656
 }
