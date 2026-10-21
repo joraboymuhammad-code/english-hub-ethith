@@ -16984,8 +16984,8 @@
         "id": "u10_p74_ex1_4_b",
         "type": "choose",
         "page": 74,
-        "top": 45.4,
-        "left": 23.5,
+        "top": 45.1,
+        "left": 23.8,
         "width": 5.5,
         "height": 1.8,
         "correct": false,
@@ -16997,8 +16997,8 @@
         "id": "u10_p74_ex1_4_c",
         "type": "choose",
         "page": 74,
-        "top": 45.4,
-        "left": 36.8,
+        "top": 44.8,
+        "left": 36.7,
         "width": 5,
         "height": 1.8,
         "correct": false,
@@ -17010,7 +17010,7 @@
         "id": "u10_p74_ex2_2",
         "type": "fill",
         "page": 74,
-        "top": 65.5,
+        "top": 64.4,
         "left": 12,
         "width": 9,
         "height": 2,
@@ -17021,8 +17021,8 @@
         "id": "u10_p74_ex2_3",
         "type": "fill",
         "page": 74,
-        "top": 71,
-        "left": 16.8,
+        "top": 69.9,
+        "left": 16.9,
         "width": 10,
         "height": 2,
         "correct": "captured",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601120868
+  "updatedAt": 1792601126224
 }
