@@ -14522,8 +14522,8 @@
         "id": "u10_p66_ex1_3",
         "type": "fill",
         "page": 66,
-        "top": 44.8,
-        "left": 21.5,
+        "top": 43.7,
+        "left": 21.8,
         "width": 9.5,
         "height": 2,
         "correct": "a risk",
@@ -14533,8 +14533,8 @@
         "id": "u10_p66_ex1_4",
         "type": "fill",
         "page": 66,
-        "top": 49.5,
-        "left": 12.5,
+        "top": 47.9,
+        "left": 12.2,
         "width": 11,
         "height": 2,
         "correct": "a guarantee",
@@ -14544,8 +14544,8 @@
         "id": "u10_p66_ex1_5",
         "type": "fill",
         "page": 66,
-        "top": 54,
-        "left": 12.5,
+        "top": 52.9,
+        "left": 12.2,
         "width": 11,
         "height": 2,
         "correct": "an investor",
@@ -14555,8 +14555,8 @@
         "id": "u10_p66_ex1_6",
         "type": "fill",
         "page": 66,
-        "top": 57.5,
-        "left": 29,
+        "top": 56.4,
+        "left": 28.7,
         "width": 9.5,
         "height": 2,
         "correct": "funding",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600689204
+  "updatedAt": 1792600692882
 }
