@@ -14974,8 +14974,8 @@
         "id": "u10_p67_ex5_2_a",
         "type": "choose",
         "page": 67,
-        "top": 22.3,
-        "left": 20.8,
+        "top": 21.8,
+        "left": 20.4,
         "width": 5.8,
         "height": 2,
         "correct": true,
@@ -15000,8 +15000,8 @@
         "id": "u10_p67_ex5_3_a",
         "type": "choose",
         "page": 67,
-        "top": 27.2,
-        "left": 28.5,
+        "top": 26.3,
+        "left": 29.7,
         "width": 7.8,
         "height": 2,
         "correct": false,
@@ -15013,8 +15013,8 @@
         "id": "u10_p67_ex5_3_b",
         "type": "choose",
         "page": 67,
-        "top": 28.8,
-        "left": 10.5,
+        "top": 27.8,
+        "left": 10.8,
         "width": 11.5,
         "height": 2,
         "correct": true,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600752459
+  "updatedAt": 1792600755591
 }
