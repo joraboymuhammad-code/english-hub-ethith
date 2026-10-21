@@ -15214,8 +15214,8 @@
         "id": "u10_p67_ex7_7",
         "type": "fill",
         "page": 67,
-        "top": 74.8,
-        "left": 43.5,
+        "top": 73.5,
+        "left": 44.5,
         "width": 16.5,
         "height": 2,
         "correct": "are made",
@@ -15225,7 +15225,7 @@
         "id": "u10_p67_ex7_8",
         "type": "fill",
         "page": 67,
-        "top": 76.5,
+        "top": 75.1,
         "left": 47,
         "width": 16,
         "height": 2,
@@ -15236,8 +15236,8 @@
         "id": "u10_p67_ex7_9",
         "type": "fill",
         "page": 67,
-        "top": 79.5,
-        "left": 43.5,
+        "top": 78,
+        "left": 44.2,
         "width": 16.5,
         "height": 2,
         "correct": "find",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600780113
+  "updatedAt": 1792600783540
 }
