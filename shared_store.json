@@ -15658,8 +15658,8 @@
         "id": "u10_p69_ex6_12",
         "type": "fill",
         "page": 69,
-        "top": 64.8,
-        "left": 61.5,
+        "top": 63,
+        "left": 64,
         "width": 5,
         "height": 2,
         "correct": "the",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600869922
+  "updatedAt": 1792600873037
 }
