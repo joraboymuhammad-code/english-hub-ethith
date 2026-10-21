@@ -602,13 +602,12 @@
       "name": "Muhammad Jo'raboyev",
       "email": "mu_striker@telegram.org",
       "coins": 100,
-      "avatar": null,
       "level": "A1",
       "dailyMinutes": 0,
       "nameStyle": null,
-      "title": null,
       "victorySound": null,
-      "updatedAt": 1792591567877
+      "updatedAt": 1792591615468,
+      "gifts": []
     }
   ],
   "p2pListings": [],
@@ -10732,5 +10731,5 @@
       }
     ]
   },
-  "updatedAt": 1792591569751
+  "updatedAt": 1792591617753
 }
