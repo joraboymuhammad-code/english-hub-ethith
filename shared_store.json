@@ -16272,8 +16272,8 @@
         "id": "u10_p71_ex3a_1_t",
         "type": "choose",
         "page": 71,
-        "top": 25.8,
-        "left": 80.8,
+        "top": 25.6,
+        "left": 80.2,
         "width": 2.5,
         "height": 1.8,
         "correct": true,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600951699
+  "updatedAt": 1792600981054
 }
