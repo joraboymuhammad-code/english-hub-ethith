@@ -964,8 +964,8 @@
         "exercise": "3",
         "group": "3.4",
         "text": "have checked",
-        "top": 74.2,
-        "left": 76.5,
+        "top": 73.2,
+        "left": 77.3,
         "width": 10.8,
         "height": 1.6,
         "correct": false
@@ -977,8 +977,8 @@
         "exercise": "3",
         "group": "3.4",
         "text": "check",
-        "top": 76.1,
-        "left": 54.2,
+        "top": 76.4,
+        "left": 57.4,
         "width": 5,
         "height": 1.6,
         "correct": true
@@ -990,8 +990,8 @@
         "exercise": "3",
         "group": "3.5",
         "text": "use",
-        "top": 78,
-        "left": 74.2,
+        "top": 77,
+        "left": 71.7,
         "width": 3.6,
         "height": 1.6,
         "correct": true
@@ -1003,8 +1003,8 @@
         "exercise": "3",
         "group": "3.5",
         "text": "have used",
-        "top": 78,
-        "left": 79.2,
+        "top": 76.4,
+        "left": 76.4,
         "width": 8.8,
         "height": 1.6,
         "correct": false
@@ -8613,5 +8613,5 @@
       }
     ]
   },
-  "updatedAt": 1792582646947
+  "updatedAt": 1792582653129
 }
