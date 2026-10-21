@@ -547,7 +547,7 @@
       '      <svg width="150" height="48" viewBox="0 0 160 56"><defs><linearGradient id="mlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4e93e4"/><stop offset="1" stop-color="#154b89"/></linearGradient></defs><rect x="0" y="4" width="48" height="48" rx="13" fill="url(#mlg)"/><path d="M13 29l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="58" y="25" font-family="sans-serif" font-weight="800" font-size="24" fill="#0e325c">ETHITH</text><text x="58" y="50" font-family="sans-serif" font-weight="800" font-size="21" fill="#4e93e4">TESTS</text></svg>' +
       '    </div>' +
       '    <h2>Platformaga Kirish</h2>' +
-      '    <p style="color:var(--muted);font-size:13px">Telegram Bot orqali tasdiqlash kodi bilan xavfsiz ro\'yxatdan o\'ting</p>' +
+      '    <p style="color:var(--muted);font-size:13px">O\'quvchi yoki O\'qituvchi sifatida darhol tizimga kiring</p>' +
       '  </div>' +
       '  <div class="eth-tabs" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px">' +
       '    <button type="button" class="eth-tab active" id="tabStudentBtn" style="padding:10px;font-weight:800;border-radius:10px">🎓 O\'quvchi</button>' +
@@ -562,22 +562,11 @@
       '        </div>' +
       '        <div class="eth-form-group">' +
       '          <label style="font-weight:700;font-size:13px">Ism va Familiya</label>' +
-      '          <input type="text" id="stName" placeholder="Ismingiz (yoki ro\'yxatdan o\'tgan ism)" value="" required autocomplete="name">' +
+      '          <input type="text" id="stName" placeholder="Ism va familiyangizni kiriting" value="' + esc(defaultName) + '" required autocomplete="name">' +
       '        </div>' +
       '        <div id="stAccountNotice" style="margin:6px 0 10px;padding:8px 12px;border-radius:10px;font-size:12px;display:none"></div>' +
-      '        <div style="margin:10px 0 12px;display:flex;flex-direction:column;gap:8px">' +
-      '          <button type="submit" id="btnStudentSubmit" class="eth-btn-primary" style="background:#2563eb;color:#fff;font-weight:800;font-size:15px;padding:12px;border-radius:12px;border:none;cursor:pointer;width:100%;box-shadow:0 8px 20px -6px rgba(37,99,235,0.6)">🚀 Akkauntga Kirish</button>' +
-      '          <button type="button" id="btnGetStudentCode" style="background:rgba(255,255,255,0.06);color:var(--text);font-weight:700;font-size:12.5px;padding:9px;border-radius:10px;border:1px solid var(--line);cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:6px">📲 Yangi Ro\'yxatdan O\'tish (Telegram Kod Bilan)</button>' +
-      '        </div>' +
-      '        <div class="eth-form-group" id="stCodeGroup" style="display:none">' +
-      '          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">' +
-      '            <label style="font-weight:700;font-size:13px;margin:0">Tasdiqlash Kodi (6 xonali)</label>' +
-      '            <span id="stCodeStatus" style="font-size:11.5px;color:#38bdf8;font-weight:700"></span>' +
-      '          </div>' +
-      '          <input type="text" id="stCode" placeholder="Masalan: K9#4F7" maxlength="12" style="letter-spacing:5px;font-family:monospace;font-size:20px;text-align:center;font-weight:900;text-transform:uppercase">' +
-      '          <div id="stCodeNotice" style="margin-top:6px;font-size:11.5px;color:var(--muted)">' +
-      '            <span>Kod @ETHITH_testbot telegram boti orqali yuboriladi</span>' +
-      '          </div>' +
+      '        <div style="margin:12px 0 6px;display:flex;flex-direction:column;gap:8px">' +
+      '          <button type="submit" id="btnStudentSubmit" class="eth-btn-primary" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:800;font-size:15px;padding:13px;border-radius:12px;border:none;cursor:pointer;width:100%;box-shadow:0 8px 20px -6px rgba(37,99,235,0.6)">🚀 Darhol Kirish / Qo\'shilish</button>' +
       '        </div>' +
       '      </form>' +
       '    </div>' +
@@ -1345,7 +1334,7 @@
   // ====================================================
   // ETHITH CLIENT BUILD VERSION & ONE-TIME STARTUP CACHE-BUSTER
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.22.0025";
+  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "2026.10.22.0035";
 
   (function ensureFreshBuildOnStartup() {
     try {
