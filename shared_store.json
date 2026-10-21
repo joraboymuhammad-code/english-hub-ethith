@@ -16404,8 +16404,60 @@
         "id": "p87_custom_35959",
         "group": "p87_grp_5959",
         "text": ""
+      },
+      {
+        "page": 87,
+        "type": "choose",
+        "top": 28.6,
+        "left": 72.3,
+        "width": 6.8,
+        "height": 2.6,
+        "correct": false,
+        "label": "New",
+        "id": "p87_custom_39708",
+        "group": "p87_grp_9708",
+        "text": ""
+      },
+      {
+        "page": 87,
+        "type": "choose",
+        "top": 28.7,
+        "left": 80.1,
+        "width": 5.8,
+        "height": 2.5,
+        "correct": false,
+        "label": "New",
+        "id": "p87_custom_44086",
+        "group": "p87_grp_4086",
+        "text": ""
+      },
+      {
+        "page": 87,
+        "type": "choose",
+        "top": 32,
+        "left": 79.1,
+        "width": 4.6,
+        "height": 2.2,
+        "correct": false,
+        "label": "New",
+        "id": "p87_custom_47784",
+        "group": "p87_grp_7784",
+        "text": ""
+      },
+      {
+        "page": 87,
+        "type": "choose",
+        "top": 32.3,
+        "left": 71.7,
+        "width": 7.4,
+        "height": 1.9,
+        "correct": false,
+        "label": "New",
+        "id": "p87_custom_53471",
+        "group": "p87_grp_3471",
+        "text": ""
       }
     ]
   },
-  "updatedAt": 1792599738359
+  "updatedAt": 1792599755962
 }
