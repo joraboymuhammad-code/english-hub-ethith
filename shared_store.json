@@ -9738,8 +9738,19 @@
         "correct": "slogan",
         "label": "6",
         "id": "p81_custom_39819"
+      },
+      {
+        "page": 81,
+        "type": "fill",
+        "top": 32.4,
+        "left": 10.5,
+        "width": 8.7,
+        "height": 1.5,
+        "correct": "clever",
+        "label": "7",
+        "id": "p81_custom_61242"
       }
     ]
   },
-  "updatedAt": 1792584547454
+  "updatedAt": 1792584564336
 }
