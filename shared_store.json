@@ -9694,8 +9694,19 @@
         "correct": "brand",
         "label": "2",
         "id": "p81_custom_54486"
+      },
+      {
+        "page": 81,
+        "type": "fill",
+        "top": 21.3,
+        "left": 12.2,
+        "width": 9.4,
+        "height": 1.7,
+        "correct": "logo",
+        "label": "3",
+        "id": "p81_custom_74421"
       }
     ]
   },
-  "updatedAt": 1792584455445
+  "updatedAt": 1792584475937
 }
