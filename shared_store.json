@@ -1088,6 +1088,232 @@
         "correct": false
       }
     ],
+    "5": [
+      {
+        "id": "p5_ex4_1",
+        "type": "fill",
+        "page": 5,
+        "exercise": "4a",
+        "label": "...",
+        "top": 13.6,
+        "left": 5.5,
+        "width": 2.8,
+        "height": 1.8,
+        "correct": "c"
+      },
+      {
+        "id": "p5_ex4_2",
+        "type": "fill",
+        "page": 5,
+        "exercise": "4a",
+        "label": "...",
+        "top": 15.4,
+        "left": 5.5,
+        "width": 2.8,
+        "height": 1.8,
+        "correct": "f"
+      },
+      {
+        "id": "p5_ex4_3",
+        "type": "fill",
+        "page": 5,
+        "exercise": "4a",
+        "label": "...",
+        "top": 17.2,
+        "left": 5.5,
+        "width": 2.8,
+        "height": 1.8,
+        "correct": "a"
+      },
+      {
+        "id": "p5_ex4_4",
+        "type": "fill",
+        "page": 5,
+        "exercise": "4a",
+        "label": "...",
+        "top": 19,
+        "left": 5.5,
+        "width": 2.8,
+        "height": 1.8,
+        "correct": "d"
+      },
+      {
+        "id": "p5_ex4_5",
+        "type": "fill",
+        "page": 5,
+        "exercise": "4a",
+        "label": "...",
+        "top": 20.8,
+        "left": 5.5,
+        "width": 2.8,
+        "height": 1.8,
+        "correct": "e"
+      },
+      {
+        "id": "p5_ex4_6",
+        "type": "fill",
+        "page": 5,
+        "exercise": "4a",
+        "label": "...",
+        "top": 22.7,
+        "left": 5.5,
+        "width": 2.8,
+        "height": 1.8,
+        "correct": "b"
+      },
+      {
+        "id": "p5_ex5_2",
+        "type": "insert",
+        "page": 5,
+        "exercise": "5",
+        "group": "5.2",
+        "word": "out",
+        "top": 46.5,
+        "left": 23.5,
+        "width": 2,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p5_ex5_3",
+        "type": "insert",
+        "page": 5,
+        "exercise": "5",
+        "group": "5.3",
+        "word": "on",
+        "top": 48.6,
+        "left": 11.2,
+        "width": 2,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p5_ex5_4",
+        "type": "insert",
+        "page": 5,
+        "exercise": "5",
+        "group": "5.4",
+        "word": "in",
+        "top": 50.8,
+        "left": 23.5,
+        "width": 2,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p5_ex5_5",
+        "type": "insert",
+        "page": 5,
+        "exercise": "5",
+        "group": "5.5",
+        "word": "with",
+        "top": 53,
+        "left": 14.5,
+        "width": 2,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p5_ex6_2",
+        "type": "fill",
+        "page": 5,
+        "exercise": "6",
+        "label": "2",
+        "top": 63.6,
+        "left": 22.3,
+        "width": 10,
+        "height": 1.9,
+        "correct": "help or HELP"
+      },
+      {
+        "id": "p5_ex6_3",
+        "type": "fill",
+        "page": 5,
+        "exercise": "6",
+        "label": "3",
+        "top": 66.8,
+        "left": 13,
+        "width": 10,
+        "height": 1.9,
+        "correct": "trust or TRUST"
+      },
+      {
+        "id": "p5_ex6_4",
+        "type": "fill",
+        "page": 5,
+        "exercise": "6",
+        "label": "4",
+        "top": 73.5,
+        "left": 8,
+        "width": 10,
+        "height": 1.9,
+        "correct": "have or HAVE"
+      },
+      {
+        "id": "p5_ex6_5",
+        "type": "fill",
+        "page": 5,
+        "exercise": "6",
+        "label": "5",
+        "top": 74.5,
+        "left": 40,
+        "width": 10,
+        "height": 1.9,
+        "correct": "make or MAKE"
+      },
+      {
+        "id": "p5_ex7_1_a",
+        "type": "choose",
+        "page": 5,
+        "exercise": "7b",
+        "group": "7.1",
+        "text": "consonant",
+        "top": 57,
+        "left": 63.8,
+        "width": 7.2,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p5_ex7_1_b",
+        "type": "choose",
+        "page": 5,
+        "exercise": "7b",
+        "group": "7.1",
+        "text": "vowel",
+        "top": 57,
+        "left": 72,
+        "width": 5.4,
+        "height": 1.6,
+        "correct": false
+      },
+      {
+        "id": "p5_ex7_2_a",
+        "type": "choose",
+        "page": 5,
+        "exercise": "7b",
+        "group": "7.2",
+        "text": "consonant",
+        "top": 59,
+        "left": 77.2,
+        "width": 7.2,
+        "height": 1.6,
+        "correct": false
+      },
+      {
+        "id": "p5_ex7_2_b",
+        "type": "choose",
+        "page": 5,
+        "exercise": "7b",
+        "group": "7.2",
+        "text": "vowel",
+        "top": 60.8,
+        "left": 53.6,
+        "width": 5.4,
+        "height": 1.6,
+        "correct": true
+      }
+    ],
     "24": [
       {
         "id": "p24_ex1_1a",
@@ -8613,5 +8839,5 @@
       }
     ]
   },
-  "updatedAt": 1792582680169
+  "updatedAt": 1792582686842
 }
