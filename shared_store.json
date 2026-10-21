@@ -1206,7 +1206,8 @@
           }
         },
         "lessonTypes": {
-          "2026-10-21": "Vazifa: 1.1"
+          "2026-10-21": "Vazifa: 1.1",
+          "2026-10-19": "Oddiy"
         },
         "holidays": {},
         "homeworks": {
@@ -1224,7 +1225,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1792608477877
+        "updatedAt": 1792608483871
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -21711,5 +21712,5 @@
       }
     ]
   },
-  "updatedAt": 1792608478868
+  "updatedAt": 1792608484422
 }
