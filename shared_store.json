@@ -15474,8 +15474,21 @@
         "id": "p84_custom_04984",
         "group": "p84_grp_4984",
         "text": ""
+      },
+      {
+        "page": 84,
+        "type": "choose",
+        "top": 30.7,
+        "left": 46.1,
+        "width": 3.5,
+        "height": 1.5,
+        "correct": true,
+        "label": "New",
+        "id": "p84_custom_18106",
+        "group": "p84_grp_8106",
+        "text": ""
       }
     ]
   },
-  "updatedAt": 1792596909301
+  "updatedAt": 1792596919003
 }
