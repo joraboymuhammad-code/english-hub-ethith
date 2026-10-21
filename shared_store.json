@@ -15697,8 +15697,8 @@
       {
         "page": 84,
         "type": "fill",
-        "top": 73,
-        "left": 32.3,
+        "top": 72.5,
+        "left": 33,
         "width": 5.8,
         "height": 1.8,
         "correct": "about",
@@ -15709,7 +15709,7 @@
       {
         "page": 84,
         "type": "fill",
-        "top": 74.8,
+        "top": 74.2,
         "left": 34,
         "width": 4.8,
         "height": 2,
@@ -15720,5 +15720,5 @@
       }
     ]
   },
-  "updatedAt": 1792597092105
+  "updatedAt": 1792597096052
 }
