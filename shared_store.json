@@ -1199,6 +1199,9 @@
             },
             "std_2": {
               "status": "K"
+            },
+            "std_3": {
+              "status": "K"
             }
           }
         },
@@ -1221,7 +1224,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1792608464835
+        "updatedAt": 1792608465357
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -21708,5 +21711,5 @@
       }
     ]
   },
-  "updatedAt": 1792608465013
+  "updatedAt": 1792608468209
 }
