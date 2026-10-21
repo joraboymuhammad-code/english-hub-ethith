@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792429062767,
+      "created": 1792609541611,
       "students": [
         {
           "id": "std_1",
@@ -110,7 +110,21 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [],
+      "activeHomework": {
+        "dateKey": "2026-10-21",
+        "dateDisp": "21.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792607960771
+      },
       "schedule": "har_kuni",
+      "customStudentNames": {},
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -1107,20 +1121,6 @@
           }
         },
         "seededWindowV3": true
-      },
-      "customStudentNames": {},
-      "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792607960771
       }
     },
     {
@@ -1793,7 +1793,7 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "updatedAt": 1792604050213
+      "updatedAt": 1792609545413
     },
     {
       "id": "teacher_1",
@@ -21712,5 +21712,5 @@
       }
     ]
   },
-  "updatedAt": 1792608491213
+  "updatedAt": 1792609546781
 }
