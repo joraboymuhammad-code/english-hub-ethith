@@ -13166,8 +13166,8 @@
         "id": "u9_p60_ex3_5_thick",
         "type": "choose",
         "page": 60,
-        "top": 75.8,
-        "left": 62.5,
+        "top": 75.3,
+        "left": 60.2,
         "width": 4.8,
         "height": 2,
         "correct": false,
@@ -13179,8 +13179,8 @@
         "id": "u9_p60_ex3_5_overweight",
         "type": "choose",
         "page": 60,
-        "top": 75.8,
-        "left": 67.2,
+        "top": 75.3,
+        "left": 65.9,
         "width": 8,
         "height": 2,
         "correct": true,
@@ -13192,8 +13192,8 @@
         "id": "u9_p60_ex3_5_wellbuilt",
         "type": "choose",
         "page": 60,
-        "top": 75.8,
-        "left": 75,
+        "top": 75.3,
+        "left": 74.9,
         "width": 7,
         "height": 2,
         "correct": false,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592583626
+  "updatedAt": 1792592588207
 }
