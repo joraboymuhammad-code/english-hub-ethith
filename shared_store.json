@@ -15426,8 +15426,8 @@
       {
         "page": 83,
         "type": "fill",
-        "top": 74.3,
-        "left": 55.4,
+        "top": 73.8,
+        "left": 55.3,
         "width": 37.1,
         "height": 1.6,
         "correct": "He asked me how much they had paid me in my last job.",
@@ -15437,5 +15437,5 @@
       }
     ]
   },
-  "updatedAt": 1792595708249
+  "updatedAt": 1792595711332
 }
