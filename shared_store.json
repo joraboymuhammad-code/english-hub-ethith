@@ -1520,6 +1520,152 @@
         "correct": "concerned or CONCERNED"
       }
     ],
+    "12": [
+      {
+        "id": "p12_ex2_1",
+        "type": "fill",
+        "page": 12,
+        "exercise": "2",
+        "label": "1",
+        "top": 80,
+        "left": 35,
+        "width": 14,
+        "height": 1.8,
+        "correct": "during"
+      },
+      {
+        "id": "p12_ex2_2",
+        "type": "fill",
+        "page": 12,
+        "exercise": "2",
+        "label": "2",
+        "top": 86.5,
+        "left": 45,
+        "width": 12,
+        "height": 1.8,
+        "correct": "until"
+      },
+      {
+        "id": "p12_ex2_3",
+        "type": "fill",
+        "page": 12,
+        "exercise": "2",
+        "label": "3",
+        "top": 92.5,
+        "left": 11,
+        "width": 14,
+        "height": 1.8,
+        "correct": "as soon as"
+      },
+      {
+        "id": "p12_ex2_4",
+        "type": "fill",
+        "page": 12,
+        "exercise": "2",
+        "label": "4",
+        "top": 16.6,
+        "left": 62.4,
+        "width": 12,
+        "height": 1.8,
+        "correct": "while"
+      },
+      {
+        "id": "p12_ex2_5",
+        "type": "fill",
+        "page": 12,
+        "exercise": "2",
+        "label": "5",
+        "top": 30.6,
+        "left": 59.6,
+        "width": 14,
+        "height": 1.8,
+        "correct": "Meanwhile"
+      },
+      {
+        "id": "p12_ex2_6",
+        "type": "fill",
+        "page": 12,
+        "exercise": "2",
+        "label": "6",
+        "top": 36,
+        "left": 57,
+        "width": 14,
+        "height": 1.8,
+        "correct": "By the time"
+      },
+      {
+        "id": "p12_ex3_1",
+        "type": "fill",
+        "page": 12,
+        "exercise": "3",
+        "label": "1",
+        "top": 43.8,
+        "left": 80,
+        "width": 12,
+        "height": 1.8,
+        "correct": "while"
+      },
+      {
+        "id": "p12_ex3_2",
+        "type": "fill",
+        "page": 12,
+        "exercise": "3",
+        "label": "2",
+        "top": 47,
+        "left": 77,
+        "width": 14,
+        "height": 1.8,
+        "correct": "as soon as"
+      },
+      {
+        "id": "p12_ex3_3",
+        "type": "fill",
+        "page": 12,
+        "exercise": "3",
+        "label": "3",
+        "top": 50.3,
+        "left": 57,
+        "width": 14,
+        "height": 1.8,
+        "correct": "By the time"
+      },
+      {
+        "id": "p12_ex3_4",
+        "type": "fill",
+        "page": 12,
+        "exercise": "3",
+        "label": "4",
+        "top": 53.5,
+        "left": 78,
+        "width": 14,
+        "height": 1.8,
+        "correct": "Meanwhile"
+      },
+      {
+        "id": "p12_ex3_5",
+        "type": "fill",
+        "page": 12,
+        "exercise": "3",
+        "label": "5",
+        "top": 58.3,
+        "left": 80,
+        "width": 10,
+        "height": 1.8,
+        "correct": "until"
+      },
+      {
+        "id": "p12_ex3_6",
+        "type": "fill",
+        "page": 12,
+        "exercise": "3",
+        "label": "6",
+        "top": 61.6,
+        "left": 82,
+        "width": 10,
+        "height": 1.8,
+        "correct": "during"
+      }
+    ],
     "24": [
       {
         "id": "p24_ex1_1a",
@@ -9045,5 +9191,5 @@
       }
     ]
   },
-  "updatedAt": 1792582811151
+  "updatedAt": 1792582885415
 }
