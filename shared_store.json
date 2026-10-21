@@ -10288,8 +10288,8 @@
         "id": "u8_p52_ex1_2",
         "type": "fill",
         "page": 52,
-        "top": 54.5,
-        "left": 23.5,
+        "top": 53.7,
+        "left": 24.5,
         "width": 12,
         "height": 2.2,
         "correct": "leisure time",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592074195
+  "updatedAt": 1792592086603
 }
