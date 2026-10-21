@@ -15647,8 +15647,8 @@
       {
         "page": 84,
         "type": "choose",
-        "top": 40.5,
-        "left": 21.4,
+        "top": 40.1,
+        "left": 16.1,
         "width": 3.5,
         "height": 2,
         "correct": false,
@@ -15659,5 +15659,5 @@
       }
     ]
   },
-  "updatedAt": 1792597015177
+  "updatedAt": 1792597018206
 }
