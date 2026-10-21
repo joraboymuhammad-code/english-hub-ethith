@@ -9194,8 +9194,8 @@
         "type": "fill",
         "page": 49,
         "label": "2",
-        "top": 19.2,
-        "left": 15,
+        "top": 18.4,
+        "left": 15.9,
         "width": 5.5,
         "height": 1.8,
         "correct": "told or Who told you about The Art of Doing?"
@@ -9216,8 +9216,8 @@
         "type": "fill",
         "page": 49,
         "label": "4",
-        "top": 22.5,
-        "left": 38,
+        "top": 22.3,
+        "left": 36.9,
         "width": 5.5,
         "height": 1.8,
         "correct": "was or Can I ask which your favourite chapter was?"
@@ -9282,8 +9282,8 @@
         "type": "fill",
         "page": 49,
         "label": "ind1",
-        "top": 34.2,
-        "left": 23.5,
+        "top": 34,
+        "left": 22.6,
         "width": 3.5,
         "height": 1.8,
         "correct": "3"
@@ -9293,8 +9293,8 @@
         "type": "fill",
         "page": 49,
         "label": "ind2",
-        "top": 34.2,
-        "left": 28.5,
+        "top": 34.3,
+        "left": 29.4,
         "width": 3.5,
         "height": 1.8,
         "correct": "4"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587248186
+  "updatedAt": 1792587255968
 }
