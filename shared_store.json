@@ -10657,8 +10657,20 @@
         "label": "5",
         "id": "p81_custom_47403",
         "group": "5"
+      },
+      {
+        "page": 81,
+        "type": "fill",
+        "top": 46.4,
+        "left": 55.1,
+        "width": 30.5,
+        "height": 1.8,
+        "correct": "had left advertising as fast as he could",
+        "label": "6",
+        "id": "p81_custom_71436",
+        "group": "6"
       }
     ]
   },
-  "updatedAt": 1792588863199
+  "updatedAt": 1792588873342
 }
