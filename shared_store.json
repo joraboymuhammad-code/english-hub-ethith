@@ -10693,8 +10693,20 @@
         "label": "3",
         "id": "p81_custom_08997",
         "group": "3"
+      },
+      {
+        "page": 81,
+        "type": "fill",
+        "top": 73.9,
+        "left": 69.8,
+        "width": 22.6,
+        "height": 1.7,
+        "correct": "involved designing adverts for their clients'",
+        "label": "4",
+        "id": "p81_custom_27923",
+        "group": "4"
       }
     ]
   },
-  "updatedAt": 1792588917520
+  "updatedAt": 1792588928965
 }
