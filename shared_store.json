@@ -13944,8 +13944,8 @@
         "id": "u9_p63_ex5a_8_cant",
         "type": "choose",
         "page": 63,
-        "top": 77,
-        "left": 33.2,
+        "top": 76.8,
+        "left": 33.3,
         "width": 4,
         "height": 2,
         "correct": false,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592706102
+  "updatedAt": 1792592709967
 }
