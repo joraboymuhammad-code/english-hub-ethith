@@ -12906,8 +12906,8 @@
         "id": "u9_p60_ex3_2_twenties",
         "type": "choose",
         "page": 60,
-        "top": 58,
-        "left": 56.5,
+        "top": 60.1,
+        "left": 56.4,
         "width": 10.5,
         "height": 2,
         "correct": true,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592539002
+  "updatedAt": 1792592543945
 }
