@@ -12867,7 +12867,7 @@
         "id": "u9_p60_ex3_2_slim",
         "type": "choose",
         "page": 60,
-        "top": 57.5,
+        "top": 56.1,
         "left": 56.5,
         "width": 4.2,
         "height": 2,
@@ -12880,7 +12880,7 @@
         "id": "u9_p60_ex3_2_double",
         "type": "choose",
         "page": 60,
-        "top": 57.5,
+        "top": 56.1,
         "left": 60.5,
         "width": 5.8,
         "height": 2,
@@ -12906,7 +12906,7 @@
         "id": "u9_p60_ex3_2_twenties",
         "type": "choose",
         "page": 60,
-        "top": 60.1,
+        "top": 58.2,
         "left": 56.4,
         "width": 10.5,
         "height": 2,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592543945
+  "updatedAt": 1792592548185
 }
