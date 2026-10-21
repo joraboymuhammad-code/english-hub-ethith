@@ -8597,8 +8597,8 @@
         "type": "fill",
         "page": 46,
         "label": "2",
-        "top": 36,
-        "left": 26.5,
+        "top": 34.7,
+        "left": 20.4,
         "width": 3.5,
         "height": 1.8,
         "correct": "f"
@@ -8729,8 +8729,8 @@
         "type": "fill",
         "page": 46,
         "label": "4",
-        "top": 42.6,
-        "left": 58.5,
+        "top": 41,
+        "left": 58.2,
         "width": 9,
         "height": 1.8,
         "correct": "occupation"
@@ -8740,8 +8740,8 @@
         "type": "fill",
         "page": 46,
         "label": "5w",
-        "top": 44.5,
-        "left": 66.5,
+        "top": 43.4,
+        "left": 66.8,
         "width": 9,
         "height": 1.8,
         "correct": "working"
@@ -8751,7 +8751,7 @@
         "type": "fill",
         "page": 46,
         "label": "5c",
-        "top": 44.5,
+        "top": 43,
         "left": 77.5,
         "width": 9,
         "height": 1.8,
@@ -8762,8 +8762,8 @@
         "type": "fill",
         "page": 46,
         "label": "6",
-        "top": 48,
-        "left": 64,
+        "top": 46.4,
+        "left": 64.1,
         "width": 9,
         "height": 1.8,
         "correct": "salary"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587144648
+  "updatedAt": 1792587156299
 }
