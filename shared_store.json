@@ -14124,8 +14124,8 @@
         "id": "u9_p64_ex2_2",
         "type": "fill",
         "page": 64,
-        "top": 64,
-        "left": 25.5,
+        "top": 63.2,
+        "left": 24.6,
         "width": 8.5,
         "height": 2.2,
         "correct": "up",
@@ -14278,8 +14278,8 @@
         "id": "u9_p64_ex3_9",
         "type": "fill",
         "page": 64,
-        "top": 59.1,
-        "left": 66.5,
+        "top": 56.1,
+        "left": 66.2,
         "width": 3.5,
         "height": 2.2,
         "correct": "h",
@@ -14289,8 +14289,8 @@
         "id": "u9_p64_ex3_10",
         "type": "fill",
         "page": 64,
-        "top": 61.1,
-        "left": 64.5,
+        "top": 58,
+        "left": 64.2,
         "width": 3.5,
         "height": 2.2,
         "correct": "i",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792593468933
+  "updatedAt": 1792593474401
 }
