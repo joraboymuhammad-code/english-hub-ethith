@@ -11591,8 +11591,8 @@
         "id": "u8_p56_ex2_3",
         "type": "fill",
         "page": 56,
-        "top": 42.6,
-        "left": 12.5,
+        "top": 41.5,
+        "left": 11.3,
         "width": 11,
         "height": 2.2,
         "correct": "misbehaving",
@@ -11602,8 +11602,8 @@
         "id": "u8_p56_ex2_4",
         "type": "fill",
         "page": 56,
-        "top": 44.3,
-        "left": 40.5,
+        "top": 43.2,
+        "left": 40.2,
         "width": 9.5,
         "height": 2.2,
         "correct": "inconvenient",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592366355
+  "updatedAt": 1792592369684
 }
