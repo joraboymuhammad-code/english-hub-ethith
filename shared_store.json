@@ -12515,8 +12515,8 @@
         "id": "u8_p59_ex3_6_b",
         "type": "choose",
         "page": 59,
-        "top": 44.8,
-        "left": 73.5,
+        "top": 43.5,
+        "left": 73.1,
         "width": 6,
         "height": 2,
         "correct": false,
@@ -12528,8 +12528,8 @@
         "id": "u8_p59_ex3_7_a",
         "type": "choose",
         "page": 59,
-        "top": 47.6,
-        "left": 66.5,
+        "top": 45.4,
+        "left": 67.4,
         "width": 5.5,
         "height": 2,
         "correct": true,
@@ -12541,8 +12541,8 @@
         "id": "u8_p59_ex3_7_b",
         "type": "choose",
         "page": 59,
-        "top": 46.5,
-        "left": 74.5,
+        "top": 45.5,
+        "left": 73.8,
         "width": 5,
         "height": 2,
         "correct": false,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592459122
+  "updatedAt": 1792592462941
 }
