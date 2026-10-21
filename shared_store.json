@@ -12698,8 +12698,8 @@
         "id": "u8_p59_ex4b_t2",
         "type": "fill",
         "page": 59,
-        "top": 92,
-        "left": 64.5,
+        "top": 90.6,
+        "left": 67,
         "width": 3.5,
         "height": 2.2,
         "correct": "4|2",
@@ -12709,8 +12709,8 @@
         "id": "u8_p59_ex4b_i1",
         "type": "fill",
         "page": 59,
-        "top": 94,
-        "left": 64,
+        "top": 92.5,
+        "left": 63.7,
         "width": 3.5,
         "height": 2.2,
         "correct": "3",
@@ -12720,7 +12720,7 @@
         "id": "u8_p59_ex4b_i2",
         "type": "fill",
         "page": 59,
-        "top": 94,
+        "top": 92.3,
         "left": 67.5,
         "width": 3.5,
         "height": 2.2,
@@ -12731,8 +12731,8 @@
         "id": "u8_p59_ex4b_i3",
         "type": "fill",
         "page": 59,
-        "top": 94,
-        "left": 71.5,
+        "top": 92.6,
+        "left": 73.2,
         "width": 3.5,
         "height": 2.2,
         "correct": "6",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592509643
+  "updatedAt": 1792592513881
 }
