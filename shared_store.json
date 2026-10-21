@@ -15422,8 +15422,20 @@
         "label": "4",
         "id": "p83_custom_74400",
         "group": "4"
+      },
+      {
+        "page": 83,
+        "type": "fill",
+        "top": 74.3,
+        "left": 55.4,
+        "width": 37.1,
+        "height": 1.6,
+        "correct": "He asked me how much they had paid me in my last job.",
+        "label": "5",
+        "id": "p83_custom_07453",
+        "group": "5"
       }
     ]
   },
-  "updatedAt": 1792595695323
+  "updatedAt": 1792595708249
 }
