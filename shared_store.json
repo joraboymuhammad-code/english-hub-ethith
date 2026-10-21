@@ -12343,7 +12343,7 @@
         "id": "u8_p59_ex2_4",
         "type": "fill",
         "page": 59,
-        "top": 83.5,
+        "top": 82.1,
         "left": 24.5,
         "width": 9.5,
         "height": 2.2,
@@ -12354,8 +12354,8 @@
         "id": "u8_p59_ex2_5",
         "type": "fill",
         "page": 59,
-        "top": 88,
-        "left": 20,
+        "top": 86.9,
+        "left": 20.1,
         "width": 10.5,
         "height": 2.2,
         "correct": "salary",
@@ -12365,8 +12365,8 @@
         "id": "u8_p59_ex2_6",
         "type": "fill",
         "page": 59,
-        "top": 89.6,
-        "left": 30.5,
+        "top": 88.7,
+        "left": 35.7,
         "width": 6,
         "height": 2.2,
         "correct": "leisure",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592473785
+  "updatedAt": 1792592477492
 }
