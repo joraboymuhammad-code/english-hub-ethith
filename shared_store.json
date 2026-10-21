@@ -16374,12 +16374,12 @@
         "width": 2.7,
         "height": 2.6,
         "correct": true,
-        "label": "New",
+        "label": "5",
         "id": "p87_custom_01606",
-        "group": "p87_grp_1606",
-        "text": ""
+        "group": "5",
+        "text": "5"
       }
     ]
   },
-  "updatedAt": 1792599716060
+  "updatedAt": 1792599719484
 }
