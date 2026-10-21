@@ -15390,8 +15390,8 @@
       {
         "page": 83,
         "type": "fill",
-        "top": 62.6,
-        "left": 55.4,
+        "top": 62.1,
+        "left": 55.3,
         "width": 37,
         "height": 1.7,
         "correct": "He asked me if I would sign the work contract that afternoon.",
@@ -15401,5 +15401,5 @@
       }
     ]
   },
-  "updatedAt": 1792595427547
+  "updatedAt": 1792595431283
 }
