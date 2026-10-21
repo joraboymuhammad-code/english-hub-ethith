@@ -7750,8 +7750,8 @@
         "type": "fill",
         "page": 42,
         "label": "1a",
-        "top": 28.5,
-        "left": 79.5,
+        "top": 27.5,
+        "left": 74.4,
         "width": 8.5,
         "height": 1.8,
         "correct": "careless or lucky"
@@ -7761,8 +7761,8 @@
         "type": "fill",
         "page": 42,
         "label": "1b",
-        "top": 28.5,
-        "left": 89.5,
+        "top": 27.7,
+        "left": 82.7,
         "width": 8.5,
         "height": 1.8,
         "correct": "careless or lucky"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586938580
+  "updatedAt": 1792586953024
 }
