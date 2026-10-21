@@ -6920,8 +6920,8 @@
         "type": "fill",
         "page": 39,
         "label": "1b",
-        "top": 54.4,
-        "left": 21,
+        "top": 53.8,
+        "left": 21.1,
         "width": 8.5,
         "height": 1.8,
         "correct": "which or that"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586859825
+  "updatedAt": 1792586870423
 }
