@@ -10669,8 +10669,20 @@
         "label": "6",
         "id": "p81_custom_71436",
         "group": "6"
+      },
+      {
+        "page": 81,
+        "type": "fill",
+        "top": 67.7,
+        "left": 65.2,
+        "width": 23.4,
+        "height": 1.7,
+        "correct": "he had started working there at WPP in London",
+        "label": "2",
+        "id": "p81_custom_92355",
+        "group": "2"
       }
     ]
   },
-  "updatedAt": 1792588881904
+  "updatedAt": 1792588893977
 }
