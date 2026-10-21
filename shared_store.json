@@ -7506,7 +7506,7 @@
         "type": "fill",
         "page": 41,
         "label": "6",
-        "top": 49.2,
+        "top": 47.6,
         "left": 54.8,
         "width": 17,
         "height": 1.8,
@@ -7517,8 +7517,8 @@
         "type": "fill",
         "page": 41,
         "label": "7",
-        "top": 52.4,
-        "left": 71,
+        "top": 50.7,
+        "left": 69.4,
         "width": 13.5,
         "height": 1.8,
         "correct": "have been"
@@ -7528,8 +7528,8 @@
         "type": "fill",
         "page": 41,
         "label": "8",
-        "top": 55.6,
-        "left": 67.2,
+        "top": 54.8,
+        "left": 67.8,
         "width": 15.5,
         "height": 1.8,
         "correct": "has saved"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586904587
+  "updatedAt": 1792586910645
 }
