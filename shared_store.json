@@ -10488,8 +10488,8 @@
         "id": "u8_p53_ex3_5",
         "type": "fill",
         "page": 53,
-        "top": 51.5,
-        "left": 21,
+        "top": 50.9,
+        "left": 25.5,
         "width": 9,
         "height": 2.2,
         "correct": "physical",
@@ -10499,8 +10499,8 @@
         "id": "u8_p53_ex3_6",
         "type": "fill",
         "page": 53,
-        "top": 63.8,
-        "left": 20.5,
+        "top": 63.6,
+        "left": 21.1,
         "width": 9,
         "height": 2.2,
         "correct": "activities",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592140111
+  "updatedAt": 1792592143429
 }
