@@ -10366,7 +10366,7 @@
         "type": "fill",
         "page": 52,
         "top": 58,
-        "left": 59.5,
+        "left": 59.2,
         "width": 9,
         "height": 2.2,
         "correct": "ollution|pollution",
@@ -10376,8 +10376,8 @@
         "id": "u8_p52_ex2a_4",
         "type": "fill",
         "page": 52,
-        "top": 62.5,
-        "left": 80.5,
+        "top": 62.3,
+        "left": 82.4,
         "width": 6,
         "height": 2.2,
         "correct": "overty|poverty",
@@ -10387,8 +10387,8 @@
         "id": "u8_p52_ex2a_5",
         "type": "fill",
         "page": 52,
-        "top": 70,
-        "left": 59.5,
+        "top": 70.5,
+        "left": 59.2,
         "width": 8.5,
         "height": 2.2,
         "correct": "olunteer|volunteer",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592094123
+  "updatedAt": 1792592097375
 }
