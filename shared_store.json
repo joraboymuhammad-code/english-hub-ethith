@@ -8084,8 +8084,8 @@
         "type": "fill",
         "page": 44,
         "label": "Equipment",
-        "top": 16.8,
-        "left": 48.8,
+        "top": 17,
+        "left": 27.2,
         "width": 28,
         "height": 2.8,
         "correct": "rope, ice axe, backpack, climbing boots, oxygen masks, tent, goggles or rope or ice axe or boots"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587096981
+  "updatedAt": 1792587106456
 }
