@@ -12209,8 +12209,8 @@
         "id": "u8_p58_ex3_7",
         "type": "fill",
         "page": 58,
-        "top": 83,
-        "left": 45,
+        "top": 81.3,
+        "left": 45.1,
         "width": 9,
         "height": 2.2,
         "correct": "waste",
@@ -12220,8 +12220,8 @@
         "id": "u8_p58_ex3_8",
         "type": "fill",
         "page": 58,
-        "top": 84.6,
-        "left": 50,
+        "top": 83.5,
+        "left": 49,
         "width": 7.5,
         "height": 2.2,
         "correct": "bartered",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592420531
+  "updatedAt": 1792592424035
 }
