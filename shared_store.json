@@ -6742,8 +6742,8 @@
         "type": "fill",
         "page": 38,
         "label": "2",
-        "top": 30.5,
-        "left": 54.8,
+        "top": 37,
+        "left": 55.5,
         "width": 9.5,
         "height": 1.8,
         "correct": "accident"
@@ -6764,8 +6764,8 @@
         "type": "fill",
         "page": 38,
         "label": "4",
-        "top": 36.2,
-        "left": 81,
+        "top": 43.4,
+        "left": 53.3,
         "width": 7.5,
         "height": 1.8,
         "correct": "jam"
@@ -6775,8 +6775,8 @@
         "type": "fill",
         "page": 38,
         "label": "5",
-        "top": 41.5,
-        "left": 65.5,
+        "top": 50.4,
+        "left": 60.1,
         "width": 7.5,
         "height": 1.8,
         "correct": "busy"
@@ -6786,8 +6786,8 @@
         "type": "fill",
         "page": 38,
         "label": "6",
-        "top": 45.4,
-        "left": 68.5,
+        "top": 45.3,
+        "left": 66.7,
         "width": 8.5,
         "height": 1.8,
         "correct": "wheel"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586760543
+  "updatedAt": 1792586770079
 }
