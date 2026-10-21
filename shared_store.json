@@ -15789,8 +15789,20 @@
         "label": "2",
         "id": "p84_custom_29164",
         "group": "2"
+      },
+      {
+        "page": 84,
+        "type": "fill",
+        "top": 25.6,
+        "left": 65.9,
+        "width": 11.8,
+        "height": 2.1,
+        "correct": "billboard",
+        "label": "3",
+        "id": "p84_custom_45270",
+        "group": "3"
       }
     ]
   },
-  "updatedAt": 1792597230352
+  "updatedAt": 1792597246075
 }
