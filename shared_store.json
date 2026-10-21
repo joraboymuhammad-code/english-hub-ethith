@@ -9126,8 +9126,8 @@
         "type": "fill",
         "page": 48,
         "label": "3",
-        "top": 60.8,
-        "left": 74.8,
+        "top": 60.2,
+        "left": 76.5,
         "width": 10.5,
         "height": 1.8,
         "correct": "determined"
@@ -9137,8 +9137,8 @@
         "type": "fill",
         "page": 48,
         "label": "4",
-        "top": 66.8,
-        "left": 76.5,
+        "top": 66.1,
+        "left": 77.2,
         "width": 11.5,
         "height": 1.8,
         "correct": "hard-working or hardworking"
@@ -9148,8 +9148,8 @@
         "type": "fill",
         "page": 48,
         "label": "5",
-        "top": 71.8,
-        "left": 59,
+        "top": 70.2,
+        "left": 58.4,
         "width": 12,
         "height": 1.8,
         "correct": "well known or well-known"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587239659
+  "updatedAt": 1792587244090
 }
