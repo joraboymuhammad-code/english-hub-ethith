@@ -16392,8 +16392,8 @@
         "id": "u10_p72_ex1_2",
         "type": "fill",
         "page": 72,
-        "top": 26.6,
-        "left": 33.5,
+        "top": 24.8,
+        "left": 33.1,
         "width": 4.5,
         "height": 2,
         "correct": "e",
@@ -16403,8 +16403,8 @@
         "id": "u10_p72_ex1_3",
         "type": "fill",
         "page": 72,
-        "top": 28.3,
-        "left": 29.5,
+        "top": 26.6,
+        "left": 29.6,
         "width": 4.5,
         "height": 2,
         "correct": "b",
@@ -16414,8 +16414,8 @@
         "id": "u10_p72_ex1_4",
         "type": "fill",
         "page": 72,
-        "top": 30.2,
-        "left": 28.5,
+        "top": 28.5,
+        "left": 28.6,
         "width": 4.5,
         "height": 2,
         "correct": "a",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601000072
+  "updatedAt": 1792601005393
 }
