@@ -1230,7 +1230,7 @@
       ap.style.display = 'block';
       ap.setAttribute('data-theme', S.theme);
     }
-    if (window.top) window.top();
+    if (typeof window._ethithRefreshTopNav === 'function') window._ethithRefreshTopNav();
     if (window._ethithInternalGo) {
       window._ethithInternalGo(n || 'dash', a || null);
     }
@@ -1259,11 +1259,15 @@
       }
       var existingModal = document.getElementById('ethAuthOverlay');
       if (existingModal) existingModal.remove();
-      if (window.top) window.top();
-      if (window._ethithInternalGo) {
-        window._ethithInternalGo('dash');
-      } else if (window.go) {
-        window.go('dash');
+      if (typeof window._ethithRefreshTopNav === 'function') window._ethithRefreshTopNav();
+      // Only auto-open dashboard if user has not already navigated somewhere else
+      var curV = window._ethithCurrentView;
+      if (!curV || curV === 'dash') {
+        if (window._ethithInternalGo) {
+          window._ethithInternalGo('dash');
+        } else if (window.go) {
+          window.go('dash');
+        }
       }
       return true;
     }

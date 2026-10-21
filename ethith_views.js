@@ -1507,6 +1507,10 @@
         teacherId: S.user.id,
         teacherName: S.user.name,
         teacherEmail: S.user.email,
+        created: Date.now(),
+        schedule: 'har_kuni',
+        attendance: { records: {}, lessonTypes: {}, holidays: {}, updatedAt: Date.now() },
+        customStudentNames: {},
         students: [],
         messages: [
           {
@@ -1602,11 +1606,15 @@
       var studentId = S.user.email || S.user.id;
       var already = found.students.some(function(s) { return s.id === studentId || s.email === S.user.email; });
 
+      var dNowJoin = new Date();
+      var joinDateStr = dNowJoin.getFullYear() + '-' + String(dNowJoin.getMonth() + 1).padStart(2, '0') + '-' + String(dNowJoin.getDate()).padStart(2, '0');
+
       if (!already) {
         found.students.push({
           id: studentId,
           name: S.user.name,
           email: S.user.email,
+          joinedAt: joinDateStr,
           lastActive: Date.now(),
           dailyMinutes: S.user.dailyMinutes || 0,
           mistakes: (S.mistakes || []).length
@@ -1623,6 +1631,7 @@
             id: studentId,
             name: S.user.name,
             email: S.user.email,
+            joinedAt: joinDateStr,
             lastActive: Date.now(),
             dailyMinutes: S.user.dailyMinutes || 0,
             mistakes: (S.mistakes || []).length
@@ -1648,9 +1657,12 @@
     var pinnedMsg = cls.messages.find(function(m) { return m.id === cls.pinnedId; });
 
     var html = '' +
-      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px;flex-wrap:wrap">' +
       '  <button class="ap-back" id="backClassesListBtn" style="margin:0">' + ic('left') + ' Back to Classes</button>' +
-      (isTeacher ? '  <button class="ap-btn out" id="clsMonitoringBtn">' + ic('user') + ' Student Roster (' + (cls.students ? cls.students.length : 0) + ')</button>' : '') +
+      '  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">' +
+      '    <button class="ap-btn solid" id="clsOpenAttendanceBtn" style="background:#0284c7;color:#fff;font-weight:800">' + ic('calendar') + ' Davomat (Attendance)</button>' +
+      (isTeacher ? '    <button class="ap-btn out" id="clsMonitoringBtn">' + ic('user') + ' Student Roster (' + (cls.students ? cls.students.length : 0) + ')</button>' : '') +
+      '  </div>' +
       '</div>' +
       '<div class="tg-chat-wrap">' +
       '  <div class="tg-header">' +
@@ -1772,6 +1784,19 @@
     if (monitorBtn) {
       monitorBtn.onclick = function() {
         showClassMonitoringModal(cls);
+      };
+    }
+
+    var openAttBtn = document.getElementById('clsOpenAttendanceBtn');
+    if (openAttBtn) {
+      openAttBtn.onclick = function() {
+        if (window.EthithAttendance) {
+          window.EthithAttendance.activeClassId = cls.id;
+          window.EthithAttendance.subView = 'journal';
+        }
+        if (typeof window.go === 'function') {
+          window.go('attendance');
+        }
       };
     }
 

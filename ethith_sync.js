@@ -446,8 +446,28 @@
         return (s.email && s.email === event.student.email) || (s.id && s.id === event.student.id);
       });
       if (!sExists) {
+        if (!event.student.joinedAt) {
+          var dNow = new Date();
+          event.student.joinedAt = dNow.getFullYear() + '-' + String(dNow.getMonth() + 1).padStart(2, '0') + '-' + String(dNow.getDate()).padStart(2, '0');
+        }
         targetCls.students.push(event.student);
         uiNeedsRefresh = true;
+      }
+    }
+
+    // E2. ATTENDANCE & JOURNAL REAL-TIME UPDATE
+    else if (event.type === 'ATTENDANCE_UPDATED') {
+      var attCls = targetCls || classes.find(function(c) {
+        return (event.classId && c.id === event.classId) || (event.classCode && c.code === event.classCode);
+      });
+      if (attCls) {
+        if (event.attendance) attCls.attendance = event.attendance;
+        if (event.schedule) attCls.schedule = event.schedule;
+        if (event.customStudentNames) attCls.customStudentNames = event.customStudentNames;
+        uiNeedsRefresh = true;
+        if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {
+          try { window._ethithRefreshAttendance(); } catch(e) {}
+        }
       }
     }
 
@@ -1022,6 +1042,9 @@
       if (window._ethithRefreshLeaderboard && window._ethithCurrentView === 'leaderboard') {
         window._ethithRefreshLeaderboard();
       }
+      if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {
+        window._ethithRefreshAttendance();
+      }
     }
   }
 
@@ -1150,6 +1173,73 @@
         } else {
           localCls.pinnedId = null;
           changed = true;
+        }
+      }
+
+      // Sync Attendance, Schedule & Custom Student Names
+      if (rc.schedule && rc.schedule !== localCls.schedule) {
+        var rAttTs = (rc.attendance && rc.attendance.updatedAt) || 0;
+        var lAttTs = (localCls.attendance && localCls.attendance.updatedAt) || 0;
+        if (rAttTs >= lAttTs) {
+          localCls.schedule = rc.schedule;
+          changed = true;
+        }
+      }
+      if (rc.customStudentNames && typeof rc.customStudentNames === 'object') {
+        if (!localCls.customStudentNames) localCls.customStudentNames = {};
+        for (var stK in rc.customStudentNames) {
+          if (localCls.customStudentNames[stK] !== rc.customStudentNames[stK]) {
+            var rTs2 = (rc.attendance && rc.attendance.updatedAt) || 0;
+            var lTs2 = (localCls.attendance && localCls.attendance.updatedAt) || 0;
+            if (rTs2 >= lTs2 || !localCls.customStudentNames[stK]) {
+              localCls.customStudentNames[stK] = rc.customStudentNames[stK];
+              changed = true;
+            }
+          }
+        }
+      }
+      if (rc.attendance && typeof rc.attendance === 'object') {
+        if (!localCls.attendance) {
+          localCls.attendance = JSON.parse(JSON.stringify(rc.attendance));
+          changed = true;
+        } else {
+          var rUpdated = rc.attendance.updatedAt || 0;
+          var lUpdated = localCls.attendance.updatedAt || 0;
+          if (rUpdated > lUpdated) {
+            localCls.attendance = JSON.parse(JSON.stringify(rc.attendance));
+            changed = true;
+          } else {
+            // Merge missing dates/records without overwriting newer local state
+            if (!localCls.attendance.records) localCls.attendance.records = {};
+            if (rc.attendance.records) {
+              for (var dKey in rc.attendance.records) {
+                if (!localCls.attendance.records[dKey]) {
+                  localCls.attendance.records[dKey] = JSON.parse(JSON.stringify(rc.attendance.records[dKey]));
+                  changed = true;
+                } else {
+                  for (var sId in rc.attendance.records[dKey]) {
+                    if (!localCls.attendance.records[dKey][sId]) {
+                      localCls.attendance.records[dKey][sId] = JSON.parse(JSON.stringify(rc.attendance.records[dKey][sId]));
+                      changed = true;
+                    }
+                  }
+                }
+              }
+            }
+            if (!localCls.attendance.holidays) localCls.attendance.holidays = {};
+            if (rc.attendance.holidays && rUpdated >= lUpdated) {
+              localCls.attendance.holidays = JSON.parse(JSON.stringify(rc.attendance.holidays));
+            }
+            if (!localCls.attendance.lessonTypes) localCls.attendance.lessonTypes = {};
+            if (rc.attendance.lessonTypes) {
+              for (var ltKey in rc.attendance.lessonTypes) {
+                if (!localCls.attendance.lessonTypes[ltKey]) {
+                  localCls.attendance.lessonTypes[ltKey] = rc.attendance.lessonTypes[ltKey];
+                  changed = true;
+                }
+              }
+            }
+          }
         }
       }
     });
@@ -1746,6 +1836,9 @@
             }
             if (window._ethithRefreshMarket && window._ethithCurrentView === 'market') {
               window._ethithRefreshMarket();
+            }
+            if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {
+              window._ethithRefreshAttendance();
             }
             if (window._ethithRefreshTopNav) {
               window._ethithRefreshTopNav();
