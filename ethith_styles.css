@@ -8500,8 +8500,9 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 /* 1. FILL INPUTS (O'qib yoziladigan) */
 .eth-wb-input, .wb-fill-input {
   box-sizing: border-box;
-  background: transparent;
-  border: 1.5px dashed rgba(56, 189, 248, 0.55);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-bottom: 2px solid #0284c7;
   border-radius: 4px;
   font-family: inherit;
   font-size: 13.5px;
@@ -8511,9 +8512,15 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   outline: none;
   transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
+.eth-wb-editor-active .wb-fill-input,
+.eth-wb-page-box.is-editing .wb-fill-input {
+  border: 1.5px dashed #0284c7 !important;
+  background: rgba(56, 189, 248, 0.15) !important;
+}
 .eth-wb-input:hover, .wb-fill-input:hover {
   border-color: #0284c7 !important;
-  background: rgba(56, 189, 248, 0.08) !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.3) !important;
 }
 .eth-wb-input:focus, .wb-fill-input:focus {
   background: rgba(15, 23, 42, 0.95) !important;
@@ -8546,10 +8553,15 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   box-sizing: border-box;
   cursor: pointer;
   border-radius: 4px;
-  background: rgba(244, 63, 94, 0.04);
-  border: 1px dashed rgba(244, 63, 94, 0.35);
+  background: transparent;
+  border: 1px solid transparent;
   transition: all 0.2s ease;
   user-select: none;
+}
+.eth-wb-editor-active .wb-cross-chip,
+.eth-wb-page-box.is-editing .wb-cross-chip {
+  border: 1px dashed rgba(244, 63, 94, 0.5) !important;
+  background: rgba(244, 63, 94, 0.08) !important;
 }
 .wb-cross-chip:hover {
   background: rgba(244, 63, 94, 0.14);
@@ -8595,14 +8607,19 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   box-sizing: border-box;
   cursor: pointer;
   border-radius: 5px;
-  background: rgba(14, 165, 233, 0.05);
-  border: 1px dashed rgba(14, 165, 233, 0.45);
+  background: transparent;
+  border: 1.5px solid transparent;
   transition: all 0.2s ease;
   user-select: none;
 }
+.eth-wb-editor-active .wb-choose-chip,
+.eth-wb-page-box.is-editing .wb-choose-chip {
+  border: 1px dashed rgba(14, 165, 233, 0.55) !important;
+  background: rgba(14, 165, 233, 0.08) !important;
+}
 .wb-choose-chip:hover {
-  background: rgba(14, 165, 233, 0.16);
-  border-color: #0284c7;
+  background: rgba(14, 165, 233, 0.14);
+  border-color: rgba(14, 165, 233, 0.4);
 }
 .wb-choose-chip.selected {
   background: rgba(14, 165, 233, 0.26) !important;
