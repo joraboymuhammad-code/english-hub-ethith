@@ -834,8 +834,8 @@
         "exercise": "2",
         "group": "2.5",
         "text": "every week",
-        "top": 44.8,
-        "left": 54,
+        "top": 44.1,
+        "left": 56,
         "width": 5,
         "height": 1.6,
         "incorrect": false
@@ -847,8 +847,8 @@
         "exercise": "2",
         "group": "2.5",
         "text": "now",
-        "top": 44.8,
-        "left": 60.5,
+        "top": 43.9,
+        "left": 61.4,
         "width": 4.2,
         "height": 1.6,
         "incorrect": true
@@ -860,7 +860,7 @@
         "exercise": "2",
         "group": "2.5",
         "text": "all the time",
-        "top": 44.8,
+        "top": 43.9,
         "left": 66,
         "width": 9,
         "height": 1.6,
@@ -873,8 +873,8 @@
         "exercise": "2",
         "group": "2.6",
         "text": "every time",
-        "top": 48,
-        "left": 54,
+        "top": 47.2,
+        "left": 54.2,
         "width": 8.4,
         "height": 1.6,
         "incorrect": true
@@ -886,7 +886,7 @@
         "exercise": "2",
         "group": "2.6",
         "text": "these days",
-        "top": 48,
+        "top": 47.1,
         "left": 63.5,
         "width": 8.4,
         "height": 1.6,
@@ -8613,5 +8613,5 @@
       }
     ]
   },
-  "updatedAt": 1792582592781
+  "updatedAt": 1792582602675
 }
