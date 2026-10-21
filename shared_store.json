@@ -9037,8 +9037,8 @@
         "page": 48,
         "group": "p48_1_5",
         "text": "An expert",
-        "top": 48,
-        "left": 12,
+        "top": 48.2,
+        "left": 13.3,
         "width": 6.5,
         "height": 1.8,
         "correct": false
@@ -9050,7 +9050,7 @@
         "group": "p48_1_5",
         "text": "A champion",
         "top": 48,
-        "left": 19.9,
+        "left": 20.3,
         "width": 7.5,
         "height": 1.8,
         "correct": true
@@ -9115,8 +9115,8 @@
         "type": "fill",
         "page": 48,
         "label": "2",
-        "top": 60.8,
-        "left": 45.2,
+        "top": 59.8,
+        "left": 45.3,
         "width": 11,
         "height": 1.8,
         "correct": "achieved"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587234315
+  "updatedAt": 1792587239659
 }
