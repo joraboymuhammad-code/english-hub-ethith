@@ -15559,8 +15559,8 @@
         "id": "u10_p69_ex6_3",
         "type": "fill",
         "page": 69,
-        "top": 29.8,
-        "left": 66.8,
+        "top": 27.5,
+        "left": 67.8,
         "width": 5,
         "height": 2,
         "correct": "the",
@@ -15570,8 +15570,8 @@
         "id": "u10_p69_ex6_4",
         "type": "fill",
         "page": 69,
-        "top": 32.2,
-        "left": 55.5,
+        "top": 30.5,
+        "left": 56.1,
         "width": 5,
         "height": 2,
         "correct": "a",
@@ -15581,8 +15581,8 @@
         "id": "u10_p69_ex6_5",
         "type": "fill",
         "page": 69,
-        "top": 33.6,
-        "left": 56.5,
+        "top": 32,
+        "left": 60,
         "width": 5,
         "height": 2,
         "correct": "the",
@@ -15592,8 +15592,8 @@
         "id": "u10_p69_ex6_6",
         "type": "fill",
         "page": 69,
-        "top": 37,
-        "left": 65.5,
+        "top": 35.4,
+        "left": 66.4,
         "width": 5,
         "height": 2,
         "correct": "the",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600858260
+  "updatedAt": 1792600862800
 }
