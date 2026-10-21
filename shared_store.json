@@ -18378,8 +18378,8 @@
         "id": "u10_p79_ex2a_2",
         "type": "fill",
         "page": 79,
-        "top": 29.2,
-        "left": 65,
+        "top": 27.4,
+        "left": 64.9,
         "width": 15.5,
         "height": 2,
         "correct": "must admit that",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601317285
+  "updatedAt": 1792601324548
 }
