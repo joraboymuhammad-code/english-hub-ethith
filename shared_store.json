@@ -16218,8 +16218,20 @@
         "label": "4",
         "id": "p87_custom_78482",
         "group": "4"
+      },
+      {
+        "page": 87,
+        "type": "fill",
+        "top": 44.1,
+        "left": 20.1,
+        "width": 28.8,
+        "height": 2.2,
+        "correct": "if we did any market research before launching a new product.",
+        "label": "5",
+        "id": "p87_custom_93894",
+        "group": "5"
       }
     ]
   },
-  "updatedAt": 1792599482823
+  "updatedAt": 1792599495068
 }
