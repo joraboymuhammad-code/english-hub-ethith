@@ -10299,8 +10299,8 @@
         "id": "u8_p52_ex1_3",
         "type": "fill",
         "page": 52,
-        "top": 56.6,
-        "left": 26.5,
+        "top": 55.9,
+        "left": 27.7,
         "width": 13,
         "height": 2.2,
         "correct": "balanced diet",
@@ -10310,8 +10310,8 @@
         "id": "u8_p52_ex1_4",
         "type": "fill",
         "page": 52,
-        "top": 61.5,
-        "left": 21,
+        "top": 60.4,
+        "left": 20.9,
         "width": 18,
         "height": 2.2,
         "correct": "high taxes",
@@ -10321,8 +10321,8 @@
         "id": "u8_p52_ex1_5",
         "type": "fill",
         "page": 52,
-        "top": 63.8,
-        "left": 23,
+        "top": 63.2,
+        "left": 22.9,
         "width": 15.5,
         "height": 2.2,
         "correct": "healthcare",
@@ -10332,8 +10332,8 @@
         "id": "u8_p52_ex1_6",
         "type": "fill",
         "page": 52,
-        "top": 66.2,
-        "left": 27,
+        "top": 65.3,
+        "left": 26.7,
         "width": 19,
         "height": 2.2,
         "correct": "strong economy",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592086603
+  "updatedAt": 1792592090892
 }
