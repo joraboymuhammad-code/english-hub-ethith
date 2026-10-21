@@ -9282,8 +9282,8 @@
         "type": "fill",
         "page": 49,
         "label": "ind1",
-        "top": 34,
-        "left": 22.6,
+        "top": 33.3,
+        "left": 23,
         "width": 3.5,
         "height": 1.8,
         "correct": "3"
@@ -9304,8 +9304,8 @@
         "type": "fill",
         "page": 49,
         "label": "b",
-        "top": 44,
-        "left": 45,
+        "top": 42.7,
+        "left": 44.9,
         "width": 3.5,
         "height": 1.8,
         "correct": "3"
@@ -9315,8 +9315,8 @@
         "type": "fill",
         "page": 49,
         "label": "c",
-        "top": 47.4,
-        "left": 45,
+        "top": 45.9,
+        "left": 44.4,
         "width": 3.5,
         "height": 1.8,
         "correct": "4"
@@ -9326,7 +9326,7 @@
         "type": "fill",
         "page": 49,
         "label": "d",
-        "top": 50.8,
+        "top": 49.3,
         "left": 45,
         "width": 3.5,
         "height": 1.8,
@@ -9337,8 +9337,8 @@
         "type": "fill",
         "page": 49,
         "label": "e",
-        "top": 54,
-        "left": 45,
+        "top": 52.3,
+        "left": 44.6,
         "width": 3.5,
         "height": 1.8,
         "correct": "6"
@@ -9348,8 +9348,8 @@
         "type": "fill",
         "page": 49,
         "label": "f",
-        "top": 57.5,
-        "left": 45,
+        "top": 55.6,
+        "left": 44.1,
         "width": 3.5,
         "height": 1.8,
         "correct": "1"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587264909
+  "updatedAt": 1792587275036
 }
