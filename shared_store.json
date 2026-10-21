@@ -1771,10 +1771,10 @@
       "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
-      "coins": 150,
+      "coins": 5000,
       "gifts": [],
       "level": "A1",
-      "dailyMinutes": 973,
+      "dailyMinutes": 0,
       "updatedAt": 1792611360466,
       "avatar": null,
       "nameStyle": null,
@@ -21737,5 +21737,5 @@
       }
     ]
   },
-  "updatedAt": 1792611361513
+  "updatedAt": 1792611364960
 }
