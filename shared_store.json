@@ -6786,8 +6786,8 @@
         "type": "fill",
         "page": 38,
         "label": "6",
-        "top": 45.3,
-        "left": 66.7,
+        "top": 57.4,
+        "left": 46,
         "width": 8.5,
         "height": 1.8,
         "correct": "wheel"
@@ -6797,8 +6797,8 @@
         "type": "fill",
         "page": 38,
         "label": "7",
-        "top": 49,
-        "left": 68.5,
+        "top": 61.5,
+        "left": 45.8,
         "width": 8.5,
         "height": 1.8,
         "correct": "lights"
@@ -6808,8 +6808,8 @@
         "type": "fill",
         "page": 38,
         "label": "8",
-        "top": 53,
-        "left": 62.5,
+        "top": 64.8,
+        "left": 56.7,
         "width": 8.5,
         "height": 1.8,
         "correct": "park"
@@ -6819,8 +6819,8 @@
         "type": "fill",
         "page": 38,
         "label": "9",
-        "top": 59,
-        "left": 54.8,
+        "top": 72.5,
+        "left": 57.4,
         "width": 8.5,
         "height": 1.8,
         "correct": "lane"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586770079
+  "updatedAt": 1792586779082
 }
