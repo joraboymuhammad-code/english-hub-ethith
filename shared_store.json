@@ -10584,8 +10584,8 @@
         "id": "u8_p53_ex4_4_a",
         "type": "choose",
         "page": 53,
-        "top": 32.4,
-        "left": 46.5,
+        "top": 31.8,
+        "left": 46.6,
         "width": 7.2,
         "height": 2,
         "correct": false,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592118141
+  "updatedAt": 1792592122506
 }
