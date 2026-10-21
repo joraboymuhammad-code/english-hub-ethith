@@ -16759,8 +16759,8 @@
         "id": "u10_p73_ex4_3a",
         "type": "fill",
         "page": 73,
-        "top": 40,
-        "left": 63.1,
+        "top": 39.9,
+        "left": 62.7,
         "width": 7.5,
         "height": 2,
         "correct": "team",
@@ -16770,8 +16770,8 @@
         "id": "u10_p73_ex4_3b",
         "type": "fill",
         "page": 73,
-        "top": 41.6,
-        "left": 76.5,
+        "top": 41.4,
+        "left": 75.9,
         "width": 12,
         "height": 2,
         "correct": "final",
@@ -16792,8 +16792,8 @@
         "id": "u10_p73_ex4_4b",
         "type": "fill",
         "page": 73,
-        "top": 49.7,
-        "left": 54.9,
+        "top": 49.9,
+        "left": 55.9,
         "width": 9.5,
         "height": 2,
         "correct": "bright",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601051214
+  "updatedAt": 1792601056015
 }
