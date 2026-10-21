@@ -743,8 +743,8 @@
         "exercise": "2",
         "group": "2.2",
         "text": "all the time",
-        "top": 29,
-        "left": 55.5,
+        "top": 33.9,
+        "left": 63.7,
         "width": 9.2,
         "height": 1.6,
         "incorrect": true
@@ -912,8 +912,8 @@
         "exercise": "3",
         "group": "3.2",
         "text": "is increasing",
-        "top": 68.6,
-        "left": 70.8,
+        "top": 67.8,
+        "left": 73.1,
         "width": 9.6,
         "height": 1.6,
         "correct": true
@@ -925,8 +925,8 @@
         "exercise": "3",
         "group": "3.2",
         "text": "increases",
-        "top": 70.5,
-        "left": 54.2,
+        "top": 69.3,
+        "left": 55.7,
         "width": 7.2,
         "height": 1.6,
         "correct": false
@@ -8613,5 +8613,5 @@
       }
     ]
   },
-  "updatedAt": 1792582632488
+  "updatedAt": 1792582639400
 }
