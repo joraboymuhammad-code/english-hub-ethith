@@ -1527,8 +1527,8 @@
         "page": 12,
         "exercise": "2",
         "label": "1",
-        "top": 80,
-        "left": 35,
+        "top": 79.9,
+        "left": 27.4,
         "width": 14,
         "height": 1.8,
         "correct": "during"
@@ -1539,8 +1539,8 @@
         "page": 12,
         "exercise": "2",
         "label": "2",
-        "top": 86.5,
-        "left": 45,
+        "top": 87.3,
+        "left": 33.7,
         "width": 12,
         "height": 1.8,
         "correct": "until"
@@ -1551,8 +1551,8 @@
         "page": 12,
         "exercise": "2",
         "label": "3",
-        "top": 92.5,
-        "left": 11,
+        "top": 91.1,
+        "left": 8.7,
         "width": 14,
         "height": 1.8,
         "correct": "as soon as"
@@ -1576,7 +1576,7 @@
         "exercise": "2",
         "label": "5",
         "top": 30.6,
-        "left": 59.6,
+        "left": 60.6,
         "width": 14,
         "height": 1.8,
         "correct": "Meanwhile"
@@ -1587,8 +1587,8 @@
         "page": 12,
         "exercise": "2",
         "label": "6",
-        "top": 36,
-        "left": 57,
+        "top": 35.5,
+        "left": 54.3,
         "width": 14,
         "height": 1.8,
         "correct": "By the time"
@@ -1599,8 +1599,8 @@
         "page": 12,
         "exercise": "3",
         "label": "1",
-        "top": 43.8,
-        "left": 80,
+        "top": 43.5,
+        "left": 76.9,
         "width": 12,
         "height": 1.8,
         "correct": "while"
@@ -9191,5 +9191,5 @@
       }
     ]
   },
-  "updatedAt": 1792582885415
+  "updatedAt": 1792582899140
 }
