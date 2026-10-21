@@ -12854,8 +12854,8 @@
         "id": "u9_p60_ex3_2_thick",
         "type": "choose",
         "page": 60,
-        "top": 56,
-        "left": 86.8,
+        "top": 54.5,
+        "left": 85.9,
         "width": 4.8,
         "height": 2,
         "correct": false,
@@ -12893,8 +12893,8 @@
         "id": "u9_p60_ex3_2_twenty",
         "type": "choose",
         "page": 60,
-        "top": 57.5,
-        "left": 84.5,
+        "top": 56.8,
+        "left": 84.3,
         "width": 10,
         "height": 2,
         "correct": false,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592548185
+  "updatedAt": 1792592552320
 }
