@@ -14432,8 +14432,8 @@
         "id": "u9_p65_ex3a_1",
         "type": "fill",
         "page": 65,
-        "top": 24.4,
-        "left": 60.5,
+        "top": 23.1,
+        "left": 60.2,
         "width": 4.5,
         "height": 2.2,
         "correct": "c",
@@ -14443,8 +14443,8 @@
         "id": "u9_p65_ex3a_2",
         "type": "fill",
         "page": 65,
-        "top": 24.4,
-        "left": 74,
+        "top": 23.5,
+        "left": 74.1,
         "width": 4.5,
         "height": 2.2,
         "correct": "b",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792593512642
+  "updatedAt": 1792593533606
 }
