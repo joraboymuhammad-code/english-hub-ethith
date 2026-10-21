@@ -15271,8 +15271,8 @@
         "id": "u10_p68_ex1_3",
         "type": "fill",
         "page": 68,
-        "top": 31.8,
-        "left": 40.5,
+        "top": 29.6,
+        "left": 40.1,
         "width": 9,
         "height": 2,
         "correct": "tournaments",
@@ -15282,8 +15282,8 @@
         "id": "u10_p68_ex1_4",
         "type": "fill",
         "page": 68,
-        "top": 34.5,
-        "left": 31,
+        "top": 33.2,
+        "left": 31.7,
         "width": 9.5,
         "height": 2,
         "correct": "winner",
@@ -15293,8 +15293,8 @@
         "id": "u10_p68_ex1_5",
         "type": "fill",
         "page": 68,
-        "top": 39,
-        "left": 28,
+        "top": 37.7,
+        "left": 27.7,
         "width": 9.5,
         "height": 2,
         "correct": "against",
@@ -15304,8 +15304,8 @@
         "id": "u10_p68_ex1_6",
         "type": "fill",
         "page": 68,
-        "top": 42.5,
-        "left": 23.5,
+        "top": 41.2,
+        "left": 23.8,
         "width": 9.5,
         "height": 2,
         "correct": "race",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600824342
+  "updatedAt": 1792600828001
 }
