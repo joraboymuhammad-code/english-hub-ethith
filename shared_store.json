@@ -14326,8 +14326,8 @@
         "id": "u9_p64_ex4_3_a",
         "type": "choose",
         "page": 64,
-        "top": 71.7,
-        "left": 56.5,
+        "top": 71.2,
+        "left": 55.5,
         "width": 8.5,
         "height": 2,
         "correct": true,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792593488386
+  "updatedAt": 1792593492892
 }
