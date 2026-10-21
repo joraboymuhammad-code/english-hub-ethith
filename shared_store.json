@@ -15386,8 +15386,20 @@
         "label": "6",
         "id": "p83_custom_77067",
         "group": "6"
+      },
+      {
+        "page": 83,
+        "type": "fill",
+        "top": 62.6,
+        "left": 55.4,
+        "width": 37,
+        "height": 1.7,
+        "correct": "He asked me if I would sign the work contract that afternoon.",
+        "label": "2",
+        "id": "p83_custom_26275",
+        "group": "2"
       }
     ]
   },
-  "updatedAt": 1792595381576
+  "updatedAt": 1792595427547
 }
