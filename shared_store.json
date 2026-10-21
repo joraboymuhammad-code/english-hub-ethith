@@ -1268,8 +1268,8 @@
         "exercise": "7b",
         "group": "7.1",
         "text": "consonant",
-        "top": 57.3,
-        "left": 63.8,
+        "top": 57.8,
+        "left": 69.2,
         "width": 7.2,
         "height": 1.6,
         "correct": true
@@ -1281,8 +1281,8 @@
         "exercise": "7b",
         "group": "7.1",
         "text": "vowel",
-        "top": 57,
-        "left": 72,
+        "top": 57.7,
+        "left": 78.3,
         "width": 5.4,
         "height": 1.6,
         "correct": false
@@ -8839,5 +8839,5 @@
       }
     ]
   },
-  "updatedAt": 1792582704724
+  "updatedAt": 1792582710692
 }
