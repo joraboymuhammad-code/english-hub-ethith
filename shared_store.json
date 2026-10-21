@@ -17514,8 +17514,8 @@
         "id": "u10_p76_ex4_2",
         "type": "fill",
         "page": 76,
-        "top": 50.4,
-        "left": 58,
+        "top": 49.5,
+        "left": 58.4,
         "width": 10,
         "height": 2,
         "correct": "replaced",
@@ -17525,8 +17525,8 @@
         "id": "u10_p76_ex4_3",
         "type": "fill",
         "page": 76,
-        "top": 54,
-        "left": 66.8,
+        "top": 52.5,
+        "left": 66.5,
         "width": 9.5,
         "height": 2,
         "correct": "say",
@@ -17536,7 +17536,7 @@
         "id": "u10_p76_ex4_4",
         "type": "fill",
         "page": 76,
-        "top": 55.8,
+        "top": 55.5,
         "left": 81.5,
         "width": 9,
         "height": 2,
@@ -17547,8 +17547,8 @@
         "id": "u10_p76_ex4_5",
         "type": "fill",
         "page": 76,
-        "top": 57.5,
-        "left": 64,
+        "top": 56.9,
+        "left": 66.9,
         "width": 10,
         "height": 2,
         "correct": "feel",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601210969
+  "updatedAt": 1792601216097
 }
