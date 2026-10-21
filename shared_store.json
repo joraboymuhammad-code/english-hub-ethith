@@ -16324,8 +16324,8 @@
         "id": "u10_p71_ex3b_2",
         "type": "fill",
         "page": 71,
-        "top": 56.5,
-        "left": 59.5,
+        "top": 55.8,
+        "left": 59.1,
         "width": 8.5,
         "height": 2,
         "correct": "Whereas|whereas",
@@ -16335,7 +16335,7 @@
         "id": "u10_p71_ex3b_3",
         "type": "fill",
         "page": 71,
-        "top": 58.2,
+        "top": 56.7,
         "left": 75,
         "width": 9.5,
         "height": 2,
@@ -16346,8 +16346,8 @@
         "id": "u10_p71_ex3b_4",
         "type": "fill",
         "page": 71,
-        "top": 61.8,
-        "left": 65.8,
+        "top": 61.2,
+        "left": 67.7,
         "width": 9.5,
         "height": 2,
         "correct": "changes",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600985677
+  "updatedAt": 1792600990500
 }
