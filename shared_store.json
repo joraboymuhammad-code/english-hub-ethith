@@ -795,8 +795,8 @@
         "exercise": "2",
         "group": "2.4",
         "text": "for a long time",
-        "top": 39.2,
-        "left": 51.5,
+        "top": 39,
+        "left": 71.9,
         "width": 11.2,
         "height": 1.6,
         "incorrect": false
@@ -808,8 +808,8 @@
         "exercise": "2",
         "group": "2.4",
         "text": "lately",
-        "top": 39.2,
-        "left": 64.5,
+        "top": 39,
+        "left": 83.9,
         "width": 5,
         "height": 1.6,
         "incorrect": false
@@ -834,8 +834,8 @@
         "exercise": "2",
         "group": "2.5",
         "text": "every week",
-        "top": 44.1,
-        "left": 56,
+        "top": 43.8,
+        "left": 55.7,
         "width": 5,
         "height": 1.6,
         "incorrect": false
@@ -8613,5 +8613,5 @@
       }
     ]
   },
-  "updatedAt": 1792582602675
+  "updatedAt": 1792582611926
 }
