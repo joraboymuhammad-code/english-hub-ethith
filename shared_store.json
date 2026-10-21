@@ -15115,8 +15115,8 @@
         "id": "u10_p67_ex6_3",
         "type": "fill",
         "page": 67,
-        "top": 60.5,
-        "left": 19.5,
+        "top": 58.7,
+        "left": 19.2,
         "width": 14,
         "height": 2,
         "correct": "is made",
@@ -15126,8 +15126,8 @@
         "id": "u10_p67_ex6_4",
         "type": "fill",
         "page": 67,
-        "top": 65.5,
-        "left": 10.5,
+        "top": 64.9,
+        "left": 11.7,
         "width": 16,
         "height": 2,
         "correct": "has been manufactured",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600766226
+  "updatedAt": 1792600769488
 }
