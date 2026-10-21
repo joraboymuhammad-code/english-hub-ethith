@@ -17087,8 +17087,8 @@
         "id": "u10_p74_ex4_4",
         "type": "fill",
         "page": 74,
-        "top": 79.5,
-        "left": 64,
+        "top": 77.9,
+        "left": 67.3,
         "width": 7,
         "height": 2,
         "correct": "theft",
@@ -17098,8 +17098,8 @@
         "id": "u10_p74_ex4_5",
         "type": "fill",
         "page": 74,
-        "top": 89,
-        "left": 72.8,
+        "top": 87.7,
+        "left": 73.2,
         "width": 9.5,
         "height": 2,
         "correct": "suspected",
@@ -17109,8 +17109,8 @@
         "id": "u10_p74_ex4_6",
         "type": "fill",
         "page": 74,
-        "top": 90.8,
-        "left": 56.5,
+        "top": 89,
+        "left": 57,
         "width": 9.5,
         "height": 2,
         "correct": "burglar",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601132796
+  "updatedAt": 1792601139873
 }
