@@ -17210,8 +17210,8 @@
         "id": "u10_p75_ex5_5a",
         "type": "fill",
         "page": 75,
-        "top": 44.2,
-        "left": 26.5,
+        "top": 42.7,
+        "left": 26.8,
         "width": 16,
         "height": 2,
         "correct": "not have died",
@@ -17221,8 +17221,8 @@
         "id": "u10_p75_ex5_5b",
         "type": "fill",
         "page": 75,
-        "top": 46,
-        "left": 10.5,
+        "top": 44.1,
+        "left": 10.9,
         "width": 16,
         "height": 2,
         "correct": "had made",
@@ -17232,8 +17232,8 @@
         "id": "u10_p75_ex7_2",
         "type": "fill",
         "page": 75,
-        "top": 36.5,
-        "left": 54.5,
+        "top": 35.2,
+        "left": 54.9,
         "width": 15.5,
         "height": 2,
         "correct": "hadn't been|had not been",
@@ -17243,8 +17243,8 @@
         "id": "u10_p75_ex7_3",
         "type": "fill",
         "page": 75,
-        "top": 46.8,
-        "left": 54.5,
+        "top": 46.2,
+        "left": 55.2,
         "width": 15.5,
         "height": 2,
         "correct": "had found",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601154242
+  "updatedAt": 1792601162536
 }
