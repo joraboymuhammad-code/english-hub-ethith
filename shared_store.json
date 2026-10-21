@@ -15326,8 +15326,8 @@
         "id": "u10_p68_ex2_3",
         "type": "fill",
         "page": 68,
-        "top": 70.3,
-        "left": 14,
+        "top": 69.4,
+        "left": 13.9,
         "width": 9,
         "height": 2,
         "correct": "won",
@@ -15337,8 +15337,8 @@
         "id": "u10_p68_ex2_4",
         "type": "fill",
         "page": 68,
-        "top": 77.5,
-        "left": 26.5,
+        "top": 76.1,
+        "left": 26.9,
         "width": 9.5,
         "height": 2,
         "correct": "taken",
@@ -15348,7 +15348,7 @@
         "id": "u10_p68_ex2_5",
         "type": "fill",
         "page": 68,
-        "top": 81,
+        "top": 79.7,
         "left": 20.5,
         "width": 9,
         "height": 2,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600834647
+  "updatedAt": 1792600837929
 }
