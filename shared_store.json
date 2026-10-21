@@ -110,7 +110,7 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [],
-      "schedule": "juft",
+      "schedule": "toq",
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -669,7 +669,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792604982110
+        "updatedAt": 1792604985657
       },
       "customStudentNames": {}
     },
@@ -21217,5 +21217,5 @@
       }
     ]
   },
-  "updatedAt": 1792604983353
+  "updatedAt": 1792604986669
 }
