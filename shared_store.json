@@ -16361,10 +16361,10 @@
         "width": 5.3,
         "height": 2.6,
         "correct": true,
-        "label": "New",
+        "label": "4",
         "id": "p87_custom_92135",
-        "group": "p87_grp_2135",
-        "text": ""
+        "group": "4",
+        "text": "4"
       },
       {
         "page": 87,
@@ -16381,5 +16381,5 @@
       }
     ]
   },
-  "updatedAt": 1792599711787
+  "updatedAt": 1792599716060
 }
