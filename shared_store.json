@@ -9687,8 +9687,8 @@
       {
         "page": 81,
         "type": "fill",
-        "top": 20.2,
-        "left": 14.9,
+        "top": 19.1,
+        "left": 14.8,
         "width": 9.9,
         "height": 1.5,
         "correct": "brand",
@@ -9698,8 +9698,8 @@
       {
         "page": 81,
         "type": "fill",
-        "top": 21.3,
-        "left": 12.2,
+        "top": 21,
+        "left": 11.6,
         "width": 9.4,
         "height": 1.7,
         "correct": "logo",
@@ -9785,5 +9785,5 @@
       }
     ]
   },
-  "updatedAt": 1792585352330
+  "updatedAt": 1792586046685
 }
