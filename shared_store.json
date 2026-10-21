@@ -18090,8 +18090,8 @@
         "id": "u10_p78_ex3_5",
         "type": "fill",
         "page": 78,
-        "top": 30.2,
-        "left": 71.5,
+        "top": 28.6,
+        "left": 70.8,
         "width": 4.5,
         "height": 2,
         "correct": "b",
@@ -18101,8 +18101,8 @@
         "id": "u10_p78_ex3_6",
         "type": "fill",
         "page": 78,
-        "top": 32,
-        "left": 74,
+        "top": 30.4,
+        "left": 73.6,
         "width": 4.5,
         "height": 2,
         "correct": "c",
@@ -18112,8 +18112,8 @@
         "id": "u10_p78_ex4_2",
         "type": "fill",
         "page": 78,
-        "top": 51.5,
-        "left": 75.5,
+        "top": 50.2,
+        "left": 74.6,
         "width": 9,
         "height": 2,
         "correct": "theft",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601270918
+  "updatedAt": 1792601275673
 }
