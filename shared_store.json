@@ -13427,8 +13427,8 @@
         "id": "u9_p61_ex7_6",
         "type": "fill",
         "page": 61,
-        "top": 70.4,
-        "left": 46,
+        "top": 69.3,
+        "left": 69.3,
         "width": 18.5,
         "height": 2.2,
         "correct": "no more unusual than",
@@ -13438,8 +13438,8 @@
         "id": "u9_p61_ex7_7",
         "type": "fill",
         "page": 61,
-        "top": 74,
-        "left": 43.5,
+        "top": 72.4,
+        "left": 44.5,
         "width": 15.5,
         "height": 2.2,
         "correct": "a lot better",
@@ -13449,8 +13449,8 @@
         "id": "u9_p61_ex7_8",
         "type": "fill",
         "page": 61,
-        "top": 75.8,
-        "left": 63.5,
+        "top": 74.1,
+        "left": 64.5,
         "width": 16,
         "height": 2.2,
         "correct": "as vain as",
@@ -13460,8 +13460,8 @@
         "id": "u9_p61_ex7_9",
         "type": "fill",
         "page": 61,
-        "top": 79,
-        "left": 54,
+        "top": 77.3,
+        "left": 54.1,
         "width": 15.5,
         "height": 2.2,
         "correct": "as fast as",
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592615397
+  "updatedAt": 1792592619104
 }
