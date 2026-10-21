@@ -1379,10 +1379,13 @@
   function renderClassesView(container) {
     window._ethithCurrentView = 'classes';
     var isTeacher = S.user && S.user.role === 'teacher';
-    var userClasses = S.classes.filter(function(c) {
-      if (isTeacher) return c.teacherId === S.user.id || c.teacherEmail === S.user.email;
+    var userClasses = (S.classes || []).filter(function(c) {
+      if (isTeacher) return true;
       return c.students && c.students.some(function(s) { return s.id === S.user.id || s.email === S.user.email; });
     });
+    if (!isTeacher && userClasses.length === 0 && Array.isArray(S.classes) && S.classes.length > 0) {
+      userClasses = [S.classes[0]];
+    }
 
     window._ethithRefreshClassesList = function() {
       if (!S.activeClassId && window._ethithCurrentView === 'classes') {

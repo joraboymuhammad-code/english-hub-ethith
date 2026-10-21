@@ -285,7 +285,7 @@
           lessonTypes: {},
           holidays: {},
           homeworks: {},
-          updatedAt: Date.now()
+          updatedAt: 0
         }
       };
       if (window.S) {
@@ -355,7 +355,7 @@
         lessonTitle: "1.1 Are you really my friend?",
         pages: [4, 5],
         note: "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        assignedAt: Date.now()
+        assignedAt: 0
       };
       cls.attendance.homeworks[tKey] = cls.activeHomework;
       if (!cls.attendance.lessonTypes[tKey] || cls.attendance.lessonTypes[tKey] === 'Oddiy') {

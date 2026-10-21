@@ -551,7 +551,7 @@
       if (!S.workbookOverrides) S.workbookOverrides = {};
       S.workbookOverrides[pNum] = event.inputs;
       try {
-        localStorage.setItem('ethith_wb_coords_v14_' + pNum, JSON.stringify(event.inputs));
+        localStorage.setItem('ethith_wb_coords_v15_' + pNum, JSON.stringify(event.inputs));
         localStorage.setItem('ethith_wb_ts_' + pNum, (event.ts || Date.now()).toString());
       } catch(e) {}
       if (window.ETHITH_WORKBOOK_B1) {
@@ -1105,6 +1105,19 @@
         return;
       }
 
+      if (rc.name && rc.name !== localCls.name) {
+        var rTsName = (rc.attendance && rc.attendance.updatedAt) || 0;
+        var lTsName = (localCls.attendance && localCls.attendance.updatedAt) || 0;
+        if (rTsName >= lTsName || localCls.name === 'IELTS & General English Intensive') {
+          localCls.name = rc.name;
+          changed = true;
+        }
+      }
+      if (rc.teacherName && rc.teacherName !== localCls.teacherName) {
+        localCls.teacherName = rc.teacherName;
+        changed = true;
+      }
+
       // Sync Deleted Message IDs
       if (!localCls.deletedMsgIds) localCls.deletedMsgIds = [];
       if (rc.deletedMsgIds && Array.isArray(rc.deletedMsgIds)) {
@@ -1262,11 +1275,54 @@
                 }
               }
             }
+            if (!localCls.attendance.homeworks) localCls.attendance.homeworks = {};
+            if (rc.attendance.homeworks) {
+              for (var hwKey in rc.attendance.homeworks) {
+                if (!localCls.attendance.homeworks[hwKey]) {
+                  localCls.attendance.homeworks[hwKey] = JSON.parse(JSON.stringify(rc.attendance.homeworks[hwKey]));
+                  changed = true;
+                }
+              }
+            }
           }
         }
       }
     });
 
+    return changed;
+  }
+
+  function mergeQuizzes(localQuizzes, remoteQuizzes, deletedQuizIds) {
+    var changed = false;
+    if (!Array.isArray(localQuizzes)) return changed;
+    var dIds = deletedQuizIds || (window.EthithApp && window.EthithApp.state && window.EthithApp.state.deletedQuizIds) || [];
+    if (dIds.length > 0) {
+      for (var i = localQuizzes.length - 1; i >= 0; i--) {
+        var lq = localQuizzes[i];
+        if (dIds.indexOf(lq.id) !== -1 || (lq.code && dIds.indexOf(lq.code) !== -1)) {
+          localQuizzes.splice(i, 1);
+          changed = true;
+        }
+      }
+    }
+    if (!Array.isArray(remoteQuizzes)) return changed;
+    remoteQuizzes.forEach(function(rq) {
+      if (!rq) return;
+      if (dIds.indexOf(rq.id) !== -1 || (rq.code && dIds.indexOf(rq.code) !== -1)) return;
+      var exists = localQuizzes.find(function(q) {
+        return (q.id && rq.id && String(q.id) === String(rq.id)) ||
+               (q.code && rq.code && String(q.code).trim() === String(rq.code).trim());
+      });
+      if (!exists) {
+        localQuizzes.push(rq);
+        changed = true;
+      } else {
+        if ((rq.updatedAt || 0) > (exists.updatedAt || 0) || ((rq.participants && rq.participants.length) || 0) > ((exists.participants && exists.participants.length) || 0)) {
+          Object.assign(exists, rq);
+          changed = true;
+        }
+      }
+    });
     return changed;
   }
 
@@ -1535,6 +1591,15 @@
           });
         }
 
+        if (remoteData.deletedQuizIds && Array.isArray(remoteData.deletedQuizIds)) {
+          if (!S.deletedQuizIds) S.deletedQuizIds = [];
+          remoteData.deletedQuizIds.forEach(function(id) {
+            if (S.deletedQuizIds.indexOf(id) === -1) S.deletedQuizIds.push(id);
+          });
+        }
+        if (!S.quizzes) S.quizzes = [];
+        mergeQuizzes(S.quizzes, remoteData.quizzes || [], S.deletedQuizIds || []);
+
         mergeClasses(S.classes, remoteData.classes || []);
         mergeExams(S.exams, remoteData.exams || [], S.deletedExamIds || []);
         if (remoteData.accounts && Array.isArray(remoteData.accounts)) {
@@ -1549,9 +1614,25 @@
         mergeP2PListings(S.p2pListings, remoteData.p2pListings || [], S.deletedListingIds || []);
 
         if (!S.workbookOverrides) S.workbookOverrides = {};
+        // Also harvest any local v15/v14 workbook overrides from localStorage before pushing
+        try {
+          for (var lsIdx = 0; lsIdx < localStorage.length; lsIdx++) {
+            var lsK = localStorage.key(lsIdx);
+            if (lsK && (lsK.indexOf('ethith_wb_coords_v15_') === 0 || lsK.indexOf('ethith_wb_coords_v14_') === 0)) {
+              var mPage = lsK.match(/ethith_wb_coords_v1[45]_(\d+)$/);
+              if (mPage && mPage[1]) {
+                var pN = parseInt(mPage[1], 10);
+                var parsedInps = JSON.parse(localStorage.getItem(lsK));
+                if (Array.isArray(parsedInps) && parsedInps.length > 0) {
+                  S.workbookOverrides[pN] = parsedInps;
+                }
+              }
+            }
+          }
+        } catch(e) {}
         if (remoteData.workbookOverrides && typeof remoteData.workbookOverrides === 'object') {
           Object.keys(remoteData.workbookOverrides).forEach(function(k) {
-            if (!S.workbookOverrides[k]) {
+            if (!S.workbookOverrides[k] || !Array.isArray(S.workbookOverrides[k]) || S.workbookOverrides[k].length === 0) {
               S.workbookOverrides[k] = remoteData.workbookOverrides[k];
             }
           });
@@ -1572,6 +1653,12 @@
         });
         S.exams = cleanExams;
 
+        var dqIds = S.deletedQuizIds || [];
+        var cleanQuizzes = (S.quizzes || []).filter(function(q) {
+          return dqIds.indexOf(q.id) === -1 && (!q.code || dqIds.indexOf(q.code) === -1);
+        });
+        S.quizzes = cleanQuizzes;
+
         var cleanAccounts = (S.accounts || []).filter(function(a) {
           return !isPurgedAccount(a);
         });
@@ -1580,7 +1667,9 @@
         var contentObj = {
           classes: cleanClasses,
           exams: cleanExams,
+          quizzes: cleanQuizzes,
           deletedExamIds: dIds,
+          deletedQuizIds: dqIds,
           deletedListingIds: S.deletedListingIds || [],
           accounts: cleanAccounts,
           p2pListings: S.p2pListings || [],
@@ -1737,6 +1826,14 @@
         if (!S.p2pListings) S.p2pListings = [];
         mergeP2PListings(S.p2pListings, remote.p2pListings, S.deletedListingIds || []);
       }
+      if (remote.deletedQuizIds && Array.isArray(remote.deletedQuizIds)) {
+        if (!S.deletedQuizIds) S.deletedQuizIds = [];
+        remote.deletedQuizIds.forEach(function(id) { if (S.deletedQuizIds.indexOf(id) === -1) S.deletedQuizIds.push(id); });
+      }
+      if (remote.quizzes && Array.isArray(remote.quizzes)) {
+        if (!S.quizzes) S.quizzes = [];
+        mergeQuizzes(S.quizzes, remote.quizzes, S.deletedQuizIds || []);
+      }
       if (remote.workbookOverrides && typeof remote.workbookOverrides === 'object') {
         if (!S.workbookOverrides) S.workbookOverrides = {};
         var isTeacherUserInit = (window.EthithApp && window.EthithApp.isTeacher && window.EthithApp.isTeacher()) || window._ethithWbEditorMode;
@@ -1745,35 +1842,64 @@
           var inps = remote.workbookOverrides[pKey];
           if (Array.isArray(inps) && inps.length > 0) {
             if (isTeacherUserInit) {
-              var localSavedInit = localStorage.getItem('ethith_wb_coords_v14_' + pNum);
+              var localSavedInit = localStorage.getItem('ethith_wb_coords_v15_' + pNum);
               if (localSavedInit) {
-                return;
+                try {
+                  var parsedLocal = JSON.parse(localSavedInit);
+                  if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
+                    S.workbookOverrides[pNum] = parsedLocal;
+                    return;
+                  }
+                } catch(e) {}
               }
             }
             S.workbookOverrides[pNum] = inps;
             try {
-              localStorage.setItem('ethith_wb_coords_v14_' + pNum, JSON.stringify(inps));
+              localStorage.setItem('ethith_wb_coords_v15_' + pNum, JSON.stringify(inps));
               localStorage.setItem('ethith_wb_ts_' + pNum, (remote.updatedAt || Date.now()).toString());
             } catch(e) {}
             if (window.ETHITH_WORKBOOK_B1 && window.ETHITH_WORKBOOK_B1.defaultInputs) {
               window.ETHITH_WORKBOOK_B1.defaultInputs[pNum] = inps;
+            }
+            if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.liveRefreshPage === 'function' && !window._ethithWbEditorMode) {
+              window.ETHITH_WORKBOOK_B1.liveRefreshPage(pNum);
             }
           }
         });
       }
       var c1 = mergeClasses(S.classes, remote.classes || []);
       var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
-      if ((c1 || c2) && window.EthithApp) {
+      if (window.EthithApp) {
         window.EthithApp.saveState();
+      }
+      if (!window._ethithIsTestInProgress) {
+        if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
+          try { window._ethithRefreshCurrentClass(); } catch(e) {}
+        }
+        if (window._ethithRefreshClassesList && window._ethithCurrentView === 'classes' && !S.activeClassId) {
+          try { window._ethithRefreshClassesList(); } catch(e) {}
+        }
+        if (window._ethithRefreshExamsList && window._ethithCurrentView === 'exams') {
+          try { window._ethithRefreshExamsList(); } catch(e) {}
+        }
+        if (window._ethithRefreshQuizList && window._ethithCurrentView === 'quiz') {
+          try { window._ethithRefreshQuizList(); } catch(e) {}
+        }
+        if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {
+          try { window._ethithRefreshAttendance(); } catch(e) {}
+        }
+        if (window._ethithRefreshLeaderboard && window._ethithCurrentView === 'leaderboard') {
+          try { window._ethithRefreshLeaderboard(); } catch(e) {}
+        }
+        if (window._ethithRefreshTopNav) {
+          try { window._ethithRefreshTopNav(); } catch(e) {}
+        }
       }
     }
     // Auto-subscribe to all enrolled classes on start
     (S.classes || []).forEach(function(c) {
       subscribeClass(c.code || c.id);
     });
-    if (S.user && window.EthithSync && window.EthithSync.broadcastUserState) {
-      setTimeout(window.EthithSync.broadcastUserState, 500);
-    }
     // Auto-sync any local teacher edits to cloud
     if (window.EthithSync && window.EthithSync.syncAllLocalWorkbookOverridesToCloud) {
       setTimeout(window.EthithSync.syncAllLocalWorkbookOverridesToCloud, 1200);
@@ -1798,6 +1924,12 @@
             if (S.deletedExamIds.indexOf(id) === -1) S.deletedExamIds.push(id);
           });
         }
+        if (remote.deletedQuizIds && Array.isArray(remote.deletedQuizIds)) {
+          if (!S.deletedQuizIds) S.deletedQuizIds = [];
+          remote.deletedQuizIds.forEach(function(id) {
+            if (S.deletedQuizIds.indexOf(id) === -1) S.deletedQuizIds.push(id);
+          });
+        }
         if (remote.workbookOverrides && typeof remote.workbookOverrides === 'object') {
           if (!S.workbookOverrides) S.workbookOverrides = {};
           var wbChanged = false;
@@ -1810,25 +1942,25 @@
             if (Array.isArray(inps) && inps.length > 0) {
               // ZERO-REVERT SHIELD:
               // Never overwrite teacher's local edits or active workbook pages with stale poller data!
-              if (isTeacherUser || editWindowActive || window._ethithWbEditorMode) {
-                var localSaved = localStorage.getItem('ethith_wb_coords_v14_' + pNum);
+              if (editWindowActive || window._ethithWbEditorMode) {
+                var localSaved = localStorage.getItem('ethith_wb_coords_v15_' + pNum);
                 if (localSaved) {
-                  return; // Protect teacher's local master state!
+                  return; // Protect teacher's active editing state!
                 }
               }
 
-              // Also protect students if real-time event was newer than remote CDN cache
+              // Also protect if local real-time update is newer than remote cache
               var localTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || '0', 10);
-              if (localTs > (remote.updatedAt || 0)) {
-                return; // Local real-time update is newer than remote cache!
+              if (localTs > (remote.updatedAt || 0) && localStorage.getItem('ethith_wb_coords_v15_' + pNum)) {
+                return;
               }
 
-              var curSaved = localStorage.getItem('ethith_wb_coords_v14_' + pNum);
+              var curSaved = localStorage.getItem('ethith_wb_coords_v15_' + pNum);
               var curStr = JSON.stringify(inps);
               if (curSaved !== curStr) {
                 S.workbookOverrides[pNum] = inps;
                 try {
-                  localStorage.setItem('ethith_wb_coords_v14_' + pNum, curStr);
+                  localStorage.setItem('ethith_wb_coords_v15_' + pNum, curStr);
                   localStorage.setItem('ethith_wb_ts_' + pNum, (remote.updatedAt || Date.now()).toString());
                 } catch(e) {}
                 if (window.ETHITH_WORKBOOK_B1 && window.ETHITH_WORKBOOK_B1.defaultInputs) {
@@ -1843,11 +1975,13 @@
             }
           });
         }
+        if (!S.quizzes) S.quizzes = [];
+        var c0 = mergeQuizzes(S.quizzes, remote.quizzes || [], S.deletedQuizIds || []);
         var c1 = mergeClasses(S.classes, remote.classes || []);
         var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
         var c3 = mergeAccounts(S.accounts || [], remote.accounts || []);
         var c4 = mergeP2PListings(S.p2pListings || [], remote.p2pListings || [], S.deletedListingIds || []);
-        if (c1 || c2 || c3 || c4) {
+        if (c0 || c1 || c2 || c3 || c4) {
           window.EthithApp.saveState();
           if (!window._ethithIsTestInProgress) {
             if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
@@ -1858,6 +1992,9 @@
             }
             if (window._ethithRefreshExamsList && window._ethithCurrentView === 'exams') {
               window._ethithRefreshExamsList();
+            }
+            if (window._ethithRefreshQuizList && window._ethithCurrentView === 'quiz') {
+              window._ethithRefreshQuizList();
             }
             if (window._ethithRefreshProgressionTests && window._ethithCurrentView === 'progression') {
               window._ethithRefreshProgressionTests();
@@ -1979,7 +2116,7 @@
 
     window._lastTeacherEditTime = Date.now();
     try {
-      localStorage.setItem('ethith_wb_coords_v14_' + page, JSON.stringify(inputs));
+      localStorage.setItem('ethith_wb_coords_v15_' + page, JSON.stringify(inputs));
       localStorage.setItem('ethith_wb_ts_' + page, Date.now().toString());
     } catch(e) {}
 
@@ -1988,7 +2125,7 @@
       type: 'WORKBOOK_PAGE_UPDATED',
       page: page,
       inputs: inputs,
-      version: '14.0',
+      version: '15.0',
       ts: Date.now()
     });
 
@@ -2013,15 +2150,19 @@
     try {
       for (var i = 0; i < localStorage.length; i++) {
         var k = localStorage.key(i);
-        if (k && k.indexOf('ethith_wb_coords_v14_') === 0) {
-          var match = k.match(/ethith_wb_coords_v14_(\d+)$/);
+        if (k && (k.indexOf('ethith_wb_coords_v15_') === 0 || k.indexOf('ethith_wb_coords_v14_') === 0)) {
+          var match = k.match(/ethith_wb_coords_v1[45]_(\d+)$/);
           if (match && match[1]) {
             var pNum = parseInt(match[1], 10);
             try {
               var val = JSON.parse(localStorage.getItem(k));
               if (Array.isArray(val) && val.length > 0) {
+                localStorage.setItem('ethith_wb_coords_v15_' + pNum, JSON.stringify(val));
+                var prevStr = S.workbookOverrides[pNum] ? JSON.stringify(S.workbookOverrides[pNum]) : '';
+                if (prevStr !== JSON.stringify(val)) {
+                  count++;
+                }
                 S.workbookOverrides[pNum] = val;
-                count++;
               }
             } catch(e) {}
           }
@@ -2029,7 +2170,7 @@
       }
     } catch(e) {}
     if (count > 0) {
-      console.log('[WB-Sync] Auto-syncing ' + count + ' workbook pages to cloud...');
+      console.log('[WB-Sync] Auto-syncing ' + count + ' updated workbook pages to cloud...');
       pushRemoteStore().catch(function() {});
     }
   }
