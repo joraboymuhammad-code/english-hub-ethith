@@ -15137,8 +15137,8 @@
         "id": "u10_p67_ex6_5",
         "type": "fill",
         "page": 67,
-        "top": 69.5,
-        "left": 14.5,
+        "top": 68.2,
+        "left": 15.2,
         "width": 14.5,
         "height": 2,
         "correct": "is used",
@@ -15148,8 +15148,8 @@
         "id": "u10_p67_ex6_6",
         "type": "fill",
         "page": 67,
-        "top": 73,
-        "left": 24.5,
+        "top": 71.5,
+        "left": 23.9,
         "width": 12,
         "height": 2,
         "correct": "were introduced",
@@ -15159,8 +15159,8 @@
         "id": "u10_p67_ex7_2",
         "type": "fill",
         "page": 67,
-        "top": 63.8,
-        "left": 43.5,
+        "top": 62.4,
+        "left": 43.4,
         "width": 16.5,
         "height": 2,
         "correct": "was set",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600769488
+  "updatedAt": 1792600772862
 }
