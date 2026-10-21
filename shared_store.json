@@ -9749,8 +9749,19 @@
         "correct": "clever",
         "label": "7",
         "id": "p81_custom_61242"
+      },
+      {
+        "page": 81,
+        "type": "fill",
+        "top": 37,
+        "left": 13.9,
+        "width": 9.6,
+        "height": 1.5,
+        "correct": "amusing",
+        "label": "8",
+        "id": "p81_custom_03944"
       }
     ]
   },
-  "updatedAt": 1792584597281
+  "updatedAt": 1792584605199
 }
