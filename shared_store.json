@@ -17848,8 +17848,8 @@
         "id": "u10_p78_ex1_1b",
         "type": "fill",
         "page": 78,
-        "top": 34,
-        "left": 23.5,
+        "top": 32.3,
+        "left": 22.8,
         "width": 9,
         "height": 2,
         "correct": "waves",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601254168
+  "updatedAt": 1792601265764
 }
