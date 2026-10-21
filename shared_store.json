@@ -169,7 +169,7 @@
               "score": ""
             },
             "std_2": {
-              "status": "",
+              "status": "K",
               "score": ""
             },
             "std_3": {
@@ -669,7 +669,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792604964024
+        "updatedAt": 1792604967434
       },
       "customStudentNames": {}
     },
@@ -21217,5 +21217,5 @@
       }
     ]
   },
-  "updatedAt": 1792604964268
+  "updatedAt": 1792604967536
 }
