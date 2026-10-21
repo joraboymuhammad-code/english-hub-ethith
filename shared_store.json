@@ -7915,8 +7915,8 @@
         "type": "fill",
         "page": 42,
         "label": "2",
-        "top": 84.9,
-        "left": 62.1,
+        "top": 86.7,
+        "left": 61.3,
         "width": 4,
         "height": 1.8,
         "correct": "a or damage"
@@ -7926,8 +7926,8 @@
         "type": "fill",
         "page": 42,
         "label": "3",
-        "top": 87.9,
-        "left": 61.8,
+        "top": 88.1,
+        "left": 61.4,
         "width": 4,
         "height": 1.8,
         "correct": "b or fall"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587034840
+  "updatedAt": 1792587045653
 }
