@@ -15414,8 +15414,8 @@
       {
         "page": 83,
         "type": "fill",
-        "top": 70.9,
-        "left": 56,
+        "top": 70.3,
+        "left": 54.8,
         "width": 36.8,
         "height": 1.9,
         "correct": "He asked if I was ready to start work there the following Monday.",
@@ -15425,5 +15425,5 @@
       }
     ]
   },
-  "updatedAt": 1792595691247
+  "updatedAt": 1792595695323
 }
