@@ -20454,8 +20454,8 @@
       {
         "page": 87,
         "type": "fill",
-        "top": 42.7,
-        "left": 77.5,
+        "top": 42.9,
+        "left": 77.9,
         "width": 3.8,
         "height": 2.5,
         "correct": "f",
@@ -20466,8 +20466,8 @@
       {
         "page": 87,
         "type": "fill",
-        "top": 45.3,
-        "left": 78.3,
+        "top": 45.4,
+        "left": 78.7,
         "width": 3,
         "height": 1.9,
         "correct": "a",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792603042261
+  "updatedAt": 1792603045229
 }
