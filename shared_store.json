@@ -15278,8 +15278,20 @@
         "label": "2",
         "id": "p83_custom_36498",
         "group": "2"
+      },
+      {
+        "page": 83,
+        "type": "fill",
+        "top": 36.5,
+        "left": 57.7,
+        "width": 35.8,
+        "height": 1.8,
+        "correct": "He asked me if I had ever been in a situation where I had led a team.",
+        "label": "3",
+        "id": "p83_custom_55993",
+        "group": "3"
       }
     ]
   },
-  "updatedAt": 1792594337674
+  "updatedAt": 1792594357119
 }
