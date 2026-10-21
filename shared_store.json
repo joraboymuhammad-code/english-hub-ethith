@@ -15294,8 +15294,8 @@
       {
         "page": 83,
         "type": "fill",
-        "top": 40.2,
-        "left": 57.4,
+        "top": 39.4,
+        "left": 57.1,
         "width": 35.1,
         "height": 1.6,
         "correct": "He asked me how others had responded to my leadership.",
@@ -15305,5 +15305,5 @@
       }
     ]
   },
-  "updatedAt": 1792595116618
+  "updatedAt": 1792595120905
 }
