@@ -9571,8 +9571,19 @@
         "correct": "adverts",
         "label": "2",
         "id": "p80_custom_19614"
+      },
+      {
+        "page": 80,
+        "type": "fill",
+        "top": 46.7,
+        "left": 18.5,
+        "width": 8.4,
+        "height": 1.6,
+        "correct": "posters",
+        "label": "3",
+        "id": "p80_custom_55806"
       }
     ]
   },
-  "updatedAt": 1792584232150
+  "updatedAt": 1792584257193
 }
