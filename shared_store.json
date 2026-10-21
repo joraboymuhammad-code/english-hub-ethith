@@ -9414,8 +9414,8 @@
         "type": "fill",
         "page": 49,
         "label": "2b",
-        "top": 59.8,
-        "left": 61.5,
+        "top": 59.1,
+        "left": 61.8,
         "width": 16,
         "height": 1.8,
         "correct": "did Malala Yousafzai receive"
@@ -9425,7 +9425,7 @@
         "type": "fill",
         "page": 49,
         "label": "3a",
-        "top": 65,
+        "top": 63.7,
         "left": 60.5,
         "width": 17,
         "height": 1.8,
@@ -9436,8 +9436,8 @@
         "type": "fill",
         "page": 49,
         "label": "3b",
-        "top": 67.8,
-        "left": 64.5,
+        "top": 67,
+        "left": 64.6,
         "width": 17,
         "height": 1.8,
         "correct": "books has Paulo Coelho"
@@ -9447,8 +9447,8 @@
         "type": "fill",
         "page": 49,
         "label": "4a",
-        "top": 73,
-        "left": 60.5,
+        "top": 71.4,
+        "left": 59.9,
         "width": 17,
         "height": 1.8,
         "correct": "won three gold medals"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587282219
+  "updatedAt": 1792587287160
 }
