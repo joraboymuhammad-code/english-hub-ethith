@@ -115,6 +115,11 @@
   if (S.user && isPurgedAccount(S.user)) {
     S.user = null;
   }
+  try {
+    if (localStorage.getItem('ethith_explicit_logout') === '1' || sessionStorage.getItem('ethith_explicit_logout') === '1') {
+      S.user = null;
+    }
+  } catch(e) {}
 
   if (!localStorage.getItem('ethith_explicit_theme')) {
     S.theme = 'dark';
@@ -149,6 +154,14 @@
   if (S.user) {
     var curEmail = (S.user.email || '').toLowerCase().trim();
     var curName = (S.user.name || '').trim();
+    if (S.user.role === 'teacher' || S.user.id === 'admin_official_teacher' || curEmail === 'admin_12038f1aq8syash@ethith.uz') {
+      S.user.id = 'admin_official_teacher';
+      S.user.role = 'teacher';
+      S.user.name = 'Ustoz';
+      S.user.email = 'ADMIN_12038F1aq8syash@ethith.uz';
+      curEmail = 'admin_12038f1aq8syash@ethith.uz';
+      curName = 'Ustoz';
+    }
     var isMuhammadUser = (curEmail === 'muhammedjoraboyev1@gmail.com' || curName.toLowerCase().indexOf('muhammadyusuf') !== -1) && S.user.role !== 'teacher';
     
     // Canonical user: Muhammadyusuf (muhammedjoraboyev1@gmail.com)
@@ -402,6 +415,41 @@
 
   // Automatic Telegram Mini App User Authorization & Session Persistence
   function initTelegramOrSavedUser() {
+    try {
+      if (localStorage.getItem('ethith_explicit_logout') === '1' || sessionStorage.getItem('ethith_explicit_logout') === '1') {
+        S.user = null;
+        return false;
+      }
+    } catch(e) {}
+
+    // Check if user is saved in localStorage first (respects teacher login even inside Telegram)
+    if (!S.user) {
+      try {
+        var savedAct = localStorage.getItem('ethith_active_user');
+        if (savedAct) {
+          var parsedAct = JSON.parse(savedAct);
+          if (parsedAct && (parsedAct.id || parsedAct.email)) {
+            S.user = parsedAct;
+          }
+        }
+      } catch(e) {}
+    }
+
+    if (S.user) {
+      var uEm = (S.user.email || '').toLowerCase().trim();
+      if (S.user.role === 'teacher' || S.user.id === 'admin_official_teacher' || uEm === 'admin_12038f1aq8syash@ethith.uz') {
+        S.user.id = 'admin_official_teacher';
+        S.user.role = 'teacher';
+        S.user.name = 'Ustoz';
+        S.user.email = 'ADMIN_12038F1aq8syash@ethith.uz';
+      }
+      try {
+        localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+      } catch(e) {}
+      saveState();
+      return true;
+    }
+
     var tgUser = getTelegramUser();
     if (tgUser && tgUser.id) {
       var savedKey = 'ethith_tg_user_' + tgUser.id;
@@ -420,10 +468,6 @@
         } catch(e) {}
       }
 
-      if (!existingTgUser && S.user && (S.user.telegramId == tgUser.id || S.user.id == 'tg_' + tgUser.id)) {
-        existingTgUser = S.user;
-      }
-
       if (existingTgUser) {
         S.user = existingTgUser;
       } else {
@@ -435,7 +479,7 @@
           username: tgUser.username || '',
           email: (tgUser.username ? tgUser.username + '@telegram.org' : 'tg_' + tgUser.id + '@ethith.uz'),
           role: 'student',
-          coins: 100,
+          coins: 150,
           dailyMinutes: 0,
           created: Date.now()
         };
@@ -455,34 +499,31 @@
       return true;
     }
 
-    // Check if user is saved in localStorage
-    if (!S.user) {
-      try {
-        var savedAct = localStorage.getItem('ethith_active_user');
-        if (savedAct) {
-          var parsedAct = JSON.parse(savedAct);
-          if (parsedAct && parsedAct.id) {
-            S.user = parsedAct;
-            saveState();
-            return true;
-          }
-        }
-      } catch(e) {}
-    }
-
-    if (S.user) {
-      try {
-        localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
-      } catch(e) {}
-      return true;
-    }
-
     return false;
   }
 
-  // 1. Mandatory Auth Modal with Telegram Mini App Verification Code Flow
-  function showAuthModal() {
-    if (initTelegramOrSavedUser()) {
+  // Universal Instant Logout Function
+  function logoutUser() {
+    S.user = null;
+    try {
+      localStorage.removeItem('ethith_active_user');
+      localStorage.removeItem('ethith_user');
+      localStorage.setItem('ethith_explicit_logout', '1');
+      sessionStorage.setItem('ethith_explicit_logout', '1');
+    } catch(e) {}
+    saveState();
+    document.documentElement.classList.remove('eth-logged-in');
+    var ap = document.getElementById('app');
+    if (ap) ap.style.display = 'none';
+    var landing = document.getElementById('landing');
+    if (landing) landing.style.display = '';
+    showAuthModal(true);
+  }
+  window.ethithLogout = logoutUser;
+
+  // 1. Auth Modal (Instant Student Login/Registration + Super Admin Ustoz Login)
+  function showAuthModal(forceOpen) {
+    if (!forceOpen && initTelegramOrSavedUser()) {
       var ex = document.getElementById('ethAuthOverlay');
       if (ex) ex.remove();
       if (window.ethithOpenApp) window.ethithOpenApp('dash');
@@ -880,18 +921,16 @@
       };
     }
 
-    // Student Submit Form - Universal Login & Cloud Restore by Gmail + Name
+    // Student Submit Form - Instant Login & Registration by Gmail + Name
     var stForm = overlay.querySelector('#studentAuthForm');
     if (stForm) {
       stForm.onsubmit = async function(e) {
         e.preventDefault();
         var nameInput = overlay.querySelector('#stName');
         var emailInput = overlay.querySelector('#stEmail');
-        var codeInput = overlay.querySelector('#stCode');
 
         var name = (nameInput ? nameInput.value : '').trim();
         var email = (emailInput ? emailInput.value : '').trim();
-        var code = (codeInput ? codeInput.value : '').trim();
 
         if (!email) {
           alert("Iltimos, Gmail manzilingizni kiriting!");
@@ -903,13 +942,17 @@
         }
 
         var cleanEmail = email.toLowerCase().trim();
-        var cleanName = name.toLowerCase().trim();
+
+        try {
+          localStorage.removeItem('ethith_explicit_logout');
+          sessionStorage.removeItem('ethith_explicit_logout');
+        } catch(err) {}
 
         if (!Array.isArray(S.accounts)) S.accounts = [];
 
         // 1. Search existing account in memory or remote store
         var existingAcc = S.accounts.find(function(acc) {
-          return acc.email && acc.email.toLowerCase().trim() === cleanEmail;
+          return acc && acc.email && acc.email.toLowerCase().trim() === cleanEmail;
         });
 
         if (!existingAcc) {
@@ -919,107 +962,107 @@
               var remoteData = await fetchRes.json();
               if (remoteData && Array.isArray(remoteData.accounts)) {
                 existingAcc = remoteData.accounts.find(function(a) {
-                  return a.email && a.email.toLowerCase().trim() === cleanEmail;
+                  return a && a.email && a.email.toLowerCase().trim() === cleanEmail;
                 });
               }
             }
           } catch(err) {}
         }
 
-        // SCENARIO 1: Existing Account — Cloud Sync / Universal Device Login
-        if (existingAcc) {
-          var regName = (existingAcc.name || '').toLowerCase().trim();
-          var nameMatches = (regName === cleanName || cleanName.indexOf(regName) !== -1 || regName.indexOf(cleanName) !== -1);
+        var dNowObj = new Date();
+        var todayIsoStr = dNowObj.getFullYear() + '-' + String(dNowObj.getMonth() + 1).padStart(2, '0') + '-' + String(dNowObj.getDate()).padStart(2, '0');
 
-          var authorized = false;
-          if (nameMatches) {
-            authorized = true;
-          } else if (code) {
-            authorized = await validateAuthCode(code, generatedStudentCode);
-            if (!authorized) {
-              alert("❌ Tasdiqlash kodi noto'g'ri! Ushbu akkauntga kirish uchun to'g'ri ismni kiriting yoki Telegram bot (@ETHITH_testbot) kodini to'g'ri tering.");
-              return;
-            }
-            existingAcc.name = name;
-          } else {
-            if (stCodeGrp) stCodeGrp.style.display = 'block';
-            alert("⚠️ Ushbu Gmail bo'yicha akkaunt allaqachon mavjud!\n\nAkkaunt egasi: " + existingAcc.name + "\n\nIltimos, ushbu hisobga kirish uchun ro'yxatdan o'tgan to'g'ri ismingizni kiriting (" + existingAcc.name + ") yoki 'Telegram Kod Bilan' tugmasini bosing.");
-            return;
-          }
-
-          if (authorized) {
-            var initCoins = existingAcc.coins !== undefined ? Number(existingAcc.coins) : 150;
-            if (cleanEmail === 'muhammedjoraboyev1@gmail.com') {
-              initCoins = Math.max(initCoins, 100000);
-              existingAcc.coins = initCoins;
-              if (!existingAcc.name) existingAcc.name = 'Muhammadyusuf';
-            }
-
-            S.user = {
-              id: cleanEmail,
-              role: existingAcc.role || 'student',
-              name: existingAcc.name || name,
+        // Helper to ensure student is enrolled in the main class immediately
+        function autoEnrollStudentInMainClass(studentUser) {
+          if (!studentUser || studentUser.role === 'teacher') return;
+          if (!Array.isArray(S.classes) || S.classes.length === 0) return;
+          var mainCls = S.classes[0];
+          if (!mainCls.students) mainCls.students = [];
+          var alreadyIn = mainCls.students.some(function(s) {
+            return (s.email && s.email.toLowerCase().trim() === cleanEmail) || (s.id && s.id === studentUser.id);
+          });
+          if (!alreadyIn) {
+            var stEntry = {
+              id: studentUser.id || cleanEmail,
+              name: studentUser.name || name,
               email: cleanEmail,
-              dailyMinutes: existingAcc.dailyMinutes || 0,
-              coins: initCoins,
-              avatar: existingAcc.avatar || null,
-              nameStyle: existingAcc.nameStyle || null,
-              title: existingAcc.title || null,
-              gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : []
+              joinedAt: todayIsoStr,
+              dailyMinutes: studentUser.dailyMinutes || 0
             };
-            if (existingAcc.level) S.level = existingAcc.level;
-            if (existingAcc.unlocked) S.unlocked = existingAcc.unlocked;
-            if (existingAcc.quizScores) S.quizScores = existingAcc.quizScores;
-            if (existingAcc.mistakes) S.mistakes = existingAcc.mistakes;
-            existingAcc.updatedAt = Date.now();
-
-            var aIdx = S.accounts.findIndex(function(a) { return a.email && a.email.toLowerCase().trim() === cleanEmail; });
-            if (aIdx === -1) {
-              S.accounts.push(existingAcc);
-            } else {
-              S.accounts[aIdx] = existingAcc;
+            mainCls.students.push(stEntry);
+            if (window.EthithSync && window.EthithSync.publishLive) {
+              window.EthithSync.publishLive({
+                type: 'STUDENT_JOIN',
+                classId: mainCls.code || mainCls.id,
+                student: stEntry
+              });
             }
-
-            try {
-              var regList = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-              var rIdx = regList.findIndex(function(u) { return u.email && u.email.toLowerCase().trim() === cleanEmail; });
-              if (rIdx === -1) {
-                regList.push({ id: cleanEmail, name: S.user.name, email: cleanEmail, role: 'student', coins: initCoins, joinedAt: Date.now() });
-              } else {
-                regList[rIdx].name = S.user.name;
-                regList[rIdx].coins = initCoins;
-                regList[rIdx].avatar = S.user.avatar;
-                regList[rIdx].title = S.user.title;
-              }
-              localStorage.setItem('ethith_all_registered_users', JSON.stringify(regList));
-            } catch(e) {}
-
-            saveState();
-            if (window.EthithSync && window.EthithSync.pushRemoteStore) {
-              window.EthithSync.pushRemoteStore();
-            }
-            overlay.remove();
-            alert("🎉 Xush kelibsiz, " + S.user.name + "! Akkauntingiz muvaffaqiyatli ushbu qurilmaga o'tkazildi.");
-            window.ethithOpenApp('dash');
-            return;
           }
         }
 
-        // SCENARIO 2: Brand New Registration (Requires 6-digit Telegram Code)
-        if (!code) {
-          if (stCodeGrp) stCodeGrp.style.display = 'block';
-          alert("ℹ️ Yangi ro'yxatdan o'tish uchun 'Telegram Kod Bilan' tugmasini bosing va @ETHITH_testbot dan kelgan 6 xonali kodni kiriting.");
+        // SCENARIO 1: Existing Account — Instant Login
+        if (existingAcc) {
+          var initCoins = existingAcc.coins !== undefined ? Number(existingAcc.coins) : 150;
+          if (cleanEmail === 'muhammedjoraboyev1@gmail.com') {
+            initCoins = Math.max(initCoins, 100000);
+            existingAcc.coins = initCoins;
+            if (!existingAcc.name) existingAcc.name = 'Muhammadyusuf';
+          }
+          if (name) {
+            existingAcc.name = name;
+          }
+
+          S.user = {
+            id: cleanEmail,
+            role: 'student',
+            name: existingAcc.name || name,
+            email: cleanEmail,
+            dailyMinutes: existingAcc.dailyMinutes || 0,
+            coins: initCoins,
+            avatar: existingAcc.avatar || null,
+            nameStyle: existingAcc.nameStyle || null,
+            title: existingAcc.title || null,
+            gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : []
+          };
+          if (existingAcc.level) S.level = existingAcc.level;
+          if (existingAcc.unlocked) S.unlocked = existingAcc.unlocked;
+          if (existingAcc.quizScores) S.quizScores = existingAcc.quizScores;
+          if (existingAcc.mistakes) S.mistakes = existingAcc.mistakes;
+          existingAcc.updatedAt = Date.now();
+
+          var aIdx = S.accounts.findIndex(function(a) { return a && a.email && a.email.toLowerCase().trim() === cleanEmail; });
+          if (aIdx === -1) {
+            S.accounts.push(existingAcc);
+          } else {
+            S.accounts[aIdx] = existingAcc;
+          }
+
+          try {
+            localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+            var regList = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+            var rIdx = regList.findIndex(function(u) { return u && u.email && u.email.toLowerCase().trim() === cleanEmail; });
+            if (rIdx === -1) {
+              regList.push({ id: cleanEmail, name: S.user.name, email: cleanEmail, role: 'student', coins: initCoins, joinedAt: Date.now() });
+            } else {
+              regList[rIdx].name = S.user.name;
+              regList[rIdx].coins = initCoins;
+              regList[rIdx].avatar = S.user.avatar;
+              regList[rIdx].title = S.user.title;
+            }
+            localStorage.setItem('ethith_all_registered_users', JSON.stringify(regList));
+          } catch(e) {}
+
+          autoEnrollStudentInMainClass(S.user);
+          saveState();
+          if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+            window.EthithSync.pushRemoteStore();
+          }
+          overlay.remove();
+          window.ethithOpenApp('dash');
           return;
         }
 
-        var isOk = await validateAuthCode(code, generatedStudentCode);
-        if (!isOk) {
-          alert("❌ Xatolik: Tasdiqlash kodi noto'g'ri! Iltimos, Telegram bot (@ETHITH_testbot) orqali yuborilgan 6 xonali kodni to'g'ri kiriting.");
-          return;
-        }
-
-        // New student registration - Strict 1:1 Gmail rule:
-        // New account ALWAYS starts fresh: NO avatar, NO title, NO inherited gifts!
+        // SCENARIO 2: Brand New Student Registration — Instant Registration & Login (No Code Wall!)
         var isMuNew = (cleanEmail === 'muhammedjoraboyev1@gmail.com');
         var newCoins = isMuNew ? 100000 : 150;
         var newAcc = {
@@ -1055,8 +1098,9 @@
         };
 
         try {
+          localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
           var allUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-          var uIdx = allUsers.findIndex(function(u) { return u.email && u.email.toLowerCase().trim() === cleanEmail; });
+          var uIdx = allUsers.findIndex(function(u) { return u && u.email && u.email.toLowerCase().trim() === cleanEmail; });
           if (uIdx === -1) {
             allUsers.push({ id: cleanEmail, name: name, email: cleanEmail, role: 'student', coins: newCoins, joinedAt: Date.now() });
           } else {
@@ -1066,6 +1110,7 @@
           localStorage.setItem('ethith_all_registered_users', JSON.stringify(allUsers));
         } catch(e) {}
 
+        autoEnrollStudentInMainClass(S.user);
         saveState();
         if (window.EthithSync && window.EthithSync.publishLive) {
           window.EthithSync.publishLive({
@@ -1086,7 +1131,6 @@
           window.EthithSync.pushRemoteStore();
         }
         overlay.remove();
-        alert("🎉 Tabriklaymiz! Telegram orqali yangi akkauntingiz muvaffaqiyatli ochildi.");
         window.ethithOpenApp('dash');
       };
     }
@@ -1105,10 +1149,15 @@
         var SUPER_TEACHER_LOGIN = 'ADMIN_12038F1aq8syash';
         var SUPER_TEACHER_PASS = 'sajdhwuqe812ewbcb9ydhuedb_82';
 
-        if (enteredLogin !== SUPER_TEACHER_LOGIN || enteredPass !== SUPER_TEACHER_PASS) {
+        if (enteredLogin.toLowerCase() !== SUPER_TEACHER_LOGIN.toLowerCase() || enteredPass !== SUPER_TEACHER_PASS) {
           alert("❌ Xatolik: Super Admin login yoki maxfiy paroli noto'g'ri!\n\nFaqat rasmiy ustoz hisobi orqali kirish mumkin.");
           return;
         }
+
+        try {
+          localStorage.removeItem('ethith_explicit_logout');
+          sessionStorage.removeItem('ethith_explicit_logout');
+        } catch(err) {}
 
         var teacherName = 'Ustoz';
         var cleanTcEmail = 'ADMIN_12038F1aq8syash@ethith.uz';
@@ -1117,27 +1166,33 @@
           role: 'teacher',
           name: teacherName,
           email: cleanTcEmail,
+          coins: 150,
           dailyMinutes: 0
         };
 
+        try {
+          localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+        } catch(err) {}
+
         if (!Array.isArray(S.accounts)) S.accounts = [];
-        var exTc = S.accounts.find(function(a) { return a.id === 'admin_official_teacher' || (a.email && a.email.toLowerCase() === cleanTcEmail.toLowerCase()); });
-        if (!exTc) {
-          S.accounts.push({
-            id: S.user.id,
-            role: 'teacher',
-            name: teacherName,
-            email: cleanTcEmail,
-            createdAt: Date.now()
-          });
-        }
+        // Remove any old teacher duplicates and keep strictly 'Ustoz'
+        S.accounts = S.accounts.filter(function(a) {
+          return a && a.role !== 'teacher' && a.id !== 'admin_official_teacher' && (!a.email || a.email.toLowerCase() !== cleanTcEmail.toLowerCase());
+        });
+        S.accounts.push({
+          id: 'admin_official_teacher',
+          role: 'teacher',
+          name: 'Ustoz',
+          email: cleanTcEmail,
+          coins: 150,
+          createdAt: Date.now()
+        });
 
         try {
           var allRegTc = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-          if (!allRegTc.some(function(u) { return u.id === S.user.id; })) {
-            allRegTc.push({ id: S.user.id, name: teacherName, email: cleanTcEmail, role: 'teacher', joinedAt: Date.now() });
-            localStorage.setItem('ethith_all_registered_users', JSON.stringify(allRegTc));
-          }
+          allRegTc = allRegTc.filter(function(u) { return u && u.role !== 'teacher' && u.id !== 'admin_official_teacher'; });
+          allRegTc.push({ id: 'admin_official_teacher', name: 'Ustoz', email: cleanTcEmail, role: 'teacher', joinedAt: Date.now() });
+          localStorage.setItem('ethith_all_registered_users', JSON.stringify(allRegTc));
         } catch(e) {}
 
         if (window.EthithSync && window.EthithSync.publishLive) {
@@ -1157,7 +1212,6 @@
           window.EthithSync.pushRemoteStore();
         }
         overlay.remove();
-        alert("👋 Xush kelibsiz, Hurmatli " + teacherName + "! O'qituvchilar kabineti muvaffaqiyatli ochildi.");
         window.ethithOpenApp('dash');
       };
     }
@@ -1210,6 +1264,8 @@
   window.EthithApp = {
     state: S,
     showAuthModal: showAuthModal,
+    logout: logoutUser,
+    initTelegramOrSavedUser: initTelegramOrSavedUser,
     showComingSoon: showComingSoon,
     saveState: saveState,
     syncCurrentStudentAccount: syncCurrentStudentAccount,
@@ -1287,10 +1343,36 @@
   }
 
   // ====================================================
-  // ETHITH CLIENT BUILD VERSION
-  // Auto-reload is disabled per user requirement: No spontaneous page refreshes.
-  // Real-time server state syncs seamlessly via MQTT/WebSockets without refreshing.
+  // ETHITH CLIENT BUILD VERSION & ONE-TIME STARTUP CACHE-BUSTER
   // ====================================================
-  window.ETHITH_BUILD_VERSION = "2026.10.18.0010";
+  window.ETHITH_BUILD_VERSION = "2026.10.22.0025";
+
+  (function ensureFreshBuildOnStartup() {
+    try {
+      if ('serviceWorker' in navigator && navigator.serviceWorker.getRegistrations) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          regs.forEach(function(r) { r.unregister(); });
+        }).catch(function() {});
+      }
+      if (window.caches && window.caches.keys) {
+        window.caches.keys().then(function(keys) {
+          keys.forEach(function(k) { window.caches.delete(k); });
+        }).catch(function() {});
+      }
+      fetch('version.json?_t=' + Date.now(), { cache: 'no-store' })
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(vData) {
+          if (vData && vData.version && vData.version !== window.ETHITH_BUILD_VERSION) {
+            var guardKey = 'ethith_ver_redir_' + vData.version;
+            if (!sessionStorage.getItem(guardKey)) {
+              sessionStorage.setItem(guardKey, '1');
+              var url = new URL(window.location.href);
+              url.searchParams.set('v', vData.version);
+              window.location.replace(url.toString());
+            }
+          }
+        }).catch(function() {});
+    } catch(e) {}
+  })();
 
 })(window);

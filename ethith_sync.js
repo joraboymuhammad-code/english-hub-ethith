@@ -794,13 +794,26 @@
           return s === 'yangi o\'quvchi' || s === 'yangi foydalanuvchi' || s === 'foydalanuvchi' || s === 'user' || s === 'student' || s === 'guest';
         };
 
+        var isTeacherAcc = (u.role === 'teacher' || uEmail === 'admin_12038f1aq8syash@ethith.uz' || uId === 'admin_official_teacher');
+        if (isTeacherAcc) {
+          u.name = 'Ustoz';
+          uName = 'Ustoz';
+          u.id = 'admin_official_teacher';
+          uId = 'admin_official_teacher';
+        }
+
         if (existingAcc) {
+          if (isTeacherAcc || existingAcc.role === 'teacher' || (existingAcc.email || '').toLowerCase().trim() === 'admin_12038f1aq8syash@ethith.uz') {
+            existingAcc.name = 'Ustoz';
+            existingAcc.id = 'admin_official_teacher';
+            existingAcc.role = 'teacher';
+          }
           if (event.type === 'USER_COINS_UPDATE' || event.type === 'COIN_TRANSFER') {
             if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
           } else {
-            if (uName && (!existingAcc.name || !isPlaceholder(uName))) existingAcc.name = uName;
+            if (!isTeacherAcc && existingAcc.role !== 'teacher' && uName && (!existingAcc.name || !isPlaceholder(uName))) existingAcc.name = uName;
             if (uEmail) existingAcc.email = uEmail;
-            if (uId) existingAcc.id = uId;
+            if (uId && existingAcc.role !== 'teacher') existingAcc.id = uId;
             if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
             if (u.avatar !== undefined) existingAcc.avatar = u.avatar;
             if (u.level) existingAcc.level = u.level;
@@ -880,7 +893,10 @@
           var myNm = (S.user.name || '').toLowerCase().trim();
           var isMe = (oldEmail && myEm === oldEmail) || (uEmail && myEm === uEmail) || (oldName && myNm === oldName);
           if (isMe) {
-            if (event.type !== 'USER_COINS_UPDATE' && event.type !== 'COIN_TRANSFER') {
+            if (S.user.role === 'teacher' || isTeacherAcc) {
+              S.user.name = 'Ustoz';
+              S.user.id = 'admin_official_teacher';
+            } else if (event.type !== 'USER_COINS_UPDATE' && event.type !== 'COIN_TRANSFER') {
               if (uName && (!S.user.name || !isPlaceholder(uName))) S.user.name = uName;
               if (uEmail) S.user.email = uEmail;
               if (uId) S.user.id = uId;
@@ -1338,7 +1354,9 @@
     var name = (acc.name || '').toLowerCase().trim();
     var id = (acc.id || '').toLowerCase().trim();
     if (!name && !email) return true;
-    if (id === 'admin_official_teacher' || email === 'admin_12038f1aq8syash@ethith.uz' || (name === 'ustoz muhammadyusuf' && acc.role === 'teacher')) {
+    if (id === 'admin_official_teacher' || email === 'admin_12038f1aq8syash@ethith.uz' || acc.role === 'teacher') {
+      acc.name = 'Ustoz';
+      acc.id = 'admin_official_teacher';
       return false;
     }
     var purgedList = [
@@ -1642,8 +1660,17 @@
           }
 
           var isCurrentActive = S.user && S.user.email && S.user.email.toLowerCase().trim() === rEmail;
+          if (rAcc.role === 'teacher' || rEmail === 'admin_12038f1aq8syash@ethith.uz') {
+            rAcc.name = 'Ustoz';
+            rAcc.id = 'admin_official_teacher';
+          }
           if (isCurrentActive) {
-            if (rAcc.name && !S.user.name) S.user.name = rAcc.name;
+            if (S.user.role === 'teacher' || rEmail === 'admin_12038f1aq8syash@ethith.uz') {
+              S.user.name = 'Ustoz';
+              S.user.id = 'admin_official_teacher';
+            } else if (rAcc.name && !S.user.name) {
+              S.user.name = rAcc.name;
+            }
             if (rAcc.coins !== undefined) {
               S.user.coins = Math.max(Number(S.user.coins) || 0, Number(rAcc.coins) || 0);
             }
@@ -1877,6 +1904,10 @@
     if (!S.user) return;
 
     if (!Array.isArray(S.accounts)) S.accounts = [];
+    if (S.user.role === 'teacher') {
+      S.user.name = 'Ustoz';
+      S.user.id = 'admin_official_teacher';
+    }
     var curEmail = (S.user.email || '').toLowerCase().trim();
     var curName = (S.user.name || '').trim();
 

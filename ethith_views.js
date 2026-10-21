@@ -13281,7 +13281,7 @@
     var html = '<div class="eth-profile-screen animate-fade-in">';
 
     // Hero Section with Styled Name
-    var userStyledNameHtml = window.ETHITH_RENDER_USER_NAME_HTML ? window.ETHITH_RENDER_USER_NAME_HTML(user) : ('<span style="font-size:24px;font-weight:900">' + esc(user.name) + '</span>');
+    var userStyledNameHtml = isTeacher ? '<span style="font-size:24px;font-weight:900">Ustoz</span>' : (window.ETHITH_RENDER_USER_NAME_HTML ? window.ETHITH_RENDER_USER_NAME_HTML(user) : ('<span style="font-size:24px;font-weight:900">' + esc(user.name) + '</span>'));
 
     html += '<div class="eth-profile-hero">' +
       '<div class="eth-profile-avatar-wrap">' +
@@ -13481,17 +13481,30 @@
 
     var logoutBtn = container.querySelector('#btnProfileLogout');
     if (logoutBtn) {
-      logoutBtn.onclick = function() {
-        if (confirm("Rostdan ham tizimdan chiqishni xohlaysizmi?")) {
-          S.user = null;
-          App.saveState();
-          document.documentElement.classList.remove('eth-logged-in');
-          var ap = document.getElementById('app');
-          if (ap) ap.style.display = 'none';
-          var landing = document.getElementById('landing');
-          if (landing) landing.style.display = '';
-          if (App.showAuthModal) App.showAuthModal();
+      logoutBtn.onclick = function(e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        if (window.ethithLogout) {
+          window.ethithLogout();
+          return;
         }
+        if (App && App.logout) {
+          App.logout();
+          return;
+        }
+        try {
+          localStorage.removeItem('ethith_active_user');
+          localStorage.removeItem('ethith_user');
+          localStorage.setItem('ethith_explicit_logout', '1');
+          sessionStorage.setItem('ethith_explicit_logout', '1');
+        } catch(err) {}
+        S.user = null;
+        App.saveState();
+        document.documentElement.classList.remove('eth-logged-in');
+        var ap = document.getElementById('app');
+        if (ap) ap.style.display = 'none';
+        var landing = document.getElementById('landing');
+        if (landing) landing.style.display = '';
+        if (App.showAuthModal) App.showAuthModal(true);
       };
     }
 
