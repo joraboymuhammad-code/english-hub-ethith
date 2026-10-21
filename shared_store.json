@@ -9826,8 +9826,30 @@
         "correct": "true",
         "label": "New",
         "id": "p81_custom_29061"
+      },
+      {
+        "page": 81,
+        "type": "choose",
+        "top": 80.3,
+        "left": 15.2,
+        "width": 7.8,
+        "height": 1.9,
+        "correct": "",
+        "label": "New",
+        "id": "p81_custom_35199"
+      },
+      {
+        "page": 81,
+        "type": "choose",
+        "top": 80.2,
+        "left": 42.3,
+        "width": 5.8,
+        "height": 1.9,
+        "correct": "",
+        "label": "New",
+        "id": "p81_custom_40638"
       }
     ]
   },
-  "updatedAt": 1792584732060
+  "updatedAt": 1792584742100
 }
