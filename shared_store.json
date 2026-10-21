@@ -15247,8 +15247,8 @@
         "id": "u10_p67_ex7_10",
         "type": "fill",
         "page": 67,
-        "top": 82.5,
-        "left": 61,
+        "top": 80.8,
+        "left": 61.7,
         "width": 15.5,
         "height": 2,
         "correct": "are sold",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600783540
+  "updatedAt": 1792600786793
 }
