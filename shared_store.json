@@ -7706,8 +7706,8 @@
         "type": "fill",
         "page": 42,
         "label": "7",
-        "top": 85.2,
-        "left": 25.5,
+        "top": 84,
+        "left": 25.8,
         "width": 9,
         "height": 1.8,
         "correct": "personal"
@@ -7717,8 +7717,8 @@
         "type": "fill",
         "page": 42,
         "label": "8",
-        "top": 87,
-        "left": 15.5,
+        "top": 85.4,
+        "left": 15.1,
         "width": 9,
         "height": 1.8,
         "correct": "social"
@@ -7728,8 +7728,8 @@
         "type": "fill",
         "page": 42,
         "label": "9",
-        "top": 88.5,
-        "left": 36.5,
+        "top": 86.4,
+        "left": 34.9,
         "width": 10,
         "height": 1.8,
         "correct": "traditional"
@@ -7739,8 +7739,8 @@
         "type": "fill",
         "page": 42,
         "label": "10",
-        "top": 93.6,
-        "left": 12,
+        "top": 92.1,
+        "left": 12.3,
         "width": 10.5,
         "height": 1.8,
         "correct": "dusty"
@@ -7816,8 +7816,8 @@
         "type": "fill",
         "page": 42,
         "label": "2",
-        "top": 67.5,
-        "left": 63.5,
+        "top": 65.9,
+        "left": 65.8,
         "width": 10,
         "height": 1.8,
         "correct": "lane"
@@ -7827,8 +7827,8 @@
         "type": "fill",
         "page": 42,
         "label": "3",
-        "top": 69.2,
-        "left": 67.2,
+        "top": 68.1,
+        "left": 69.9,
         "width": 10,
         "height": 1.8,
         "correct": "junction"
@@ -7838,8 +7838,8 @@
         "type": "fill",
         "page": 42,
         "label": "4",
-        "top": 71,
-        "left": 65,
+        "top": 69.7,
+        "left": 67.6,
         "width": 10,
         "height": 1.8,
         "correct": "jam"
@@ -7849,8 +7849,8 @@
         "type": "fill",
         "page": 42,
         "label": "5",
-        "top": 72.8,
-        "left": 58.5,
+        "top": 71.6,
+        "left": 61.3,
         "width": 10,
         "height": 1.8,
         "correct": "driverless"
@@ -7860,8 +7860,8 @@
         "type": "fill",
         "page": 42,
         "label": "6",
-        "top": 74.5,
-        "left": 66.8,
+        "top": 73.3,
+        "left": 69.6,
         "width": 10,
         "height": 1.8,
         "correct": "wheel"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586979638
+  "updatedAt": 1792586992652
 }
