@@ -20238,8 +20238,8 @@
       {
         "page": 87,
         "type": "fill",
-        "top": 66.1,
-        "left": 28.2,
+        "top": 66.7,
+        "left": 28.3,
         "width": 15.2,
         "height": 1.5,
         "correct": "should have cancelled",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792603056417
+  "updatedAt": 1792603059570
 }
