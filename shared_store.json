@@ -16803,8 +16803,8 @@
         "id": "u10_p73_ex4_4c",
         "type": "fill",
         "page": 73,
-        "top": 51.5,
-        "left": 73.5,
+        "top": 50.6,
+        "left": 77.1,
         "width": 16.5,
         "height": 2,
         "correct": "stories",
@@ -16814,8 +16814,8 @@
         "id": "u10_p73_ex4_5a",
         "type": "fill",
         "page": 73,
-        "top": 52.2,
-        "left": 63.1,
+        "top": 56.7,
+        "left": 60.8,
         "width": 8.5,
         "height": 2,
         "correct": "bottom",
@@ -16825,8 +16825,8 @@
         "id": "u10_p73_ex4_5b",
         "type": "fill",
         "page": 73,
-        "top": 58.3,
-        "left": 58.4,
+        "top": 58.5,
+        "left": 59.1,
         "width": 9.5,
         "height": 2,
         "correct": "mysterious",
@@ -16836,8 +16836,8 @@
         "id": "u10_p73_ex4_5c",
         "type": "fill",
         "page": 73,
-        "top": 61.8,
-        "left": 71.9,
+        "top": 60.9,
+        "left": 56,
         "width": 8,
         "height": 2,
         "correct": "seems",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601045892
+  "updatedAt": 1792601051214
 }
