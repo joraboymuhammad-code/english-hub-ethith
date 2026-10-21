@@ -2083,8 +2083,8 @@
         "exercise": "1",
         "group": "p14_1_2",
         "text": "Fortunately",
-        "top": 32.5,
-        "left": 10.9,
+        "top": 33.6,
+        "left": 13.7,
         "width": 11,
         "height": 1.6,
         "correct": false
@@ -2096,8 +2096,8 @@
         "exercise": "1",
         "group": "p14_1_2",
         "text": "Curiously",
-        "top": 32.5,
-        "left": 23,
+        "top": 33.7,
+        "left": 26.4,
         "width": 10,
         "height": 1.6,
         "correct": true
@@ -2109,8 +2109,8 @@
         "exercise": "1",
         "group": "p14_1_3",
         "text": "Remarkably",
-        "top": 38.8,
-        "left": 15.5,
+        "top": 38.2,
+        "left": 17.3,
         "width": 12,
         "height": 1.6,
         "correct": true
@@ -2122,8 +2122,8 @@
         "exercise": "1",
         "group": "p14_1_3",
         "text": "Personally",
-        "top": 38.8,
-        "left": 28.5,
+        "top": 38.4,
+        "left": 30.5,
         "width": 11,
         "height": 1.6,
         "correct": false
@@ -2135,8 +2135,8 @@
         "exercise": "1",
         "group": "p14_1_4",
         "text": "Fortunately",
-        "top": 43.5,
-        "left": 10.9,
+        "top": 43.1,
+        "left": 10,
         "width": 11,
         "height": 1.6,
         "correct": false
@@ -2148,8 +2148,8 @@
         "exercise": "1",
         "group": "p14_1_4",
         "text": "Sadly",
-        "top": 43.5,
-        "left": 23,
+        "top": 43.2,
+        "left": 21.9,
         "width": 7,
         "height": 1.6,
         "correct": true
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586674823
+  "updatedAt": 1792586683388
 }
