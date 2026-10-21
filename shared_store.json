@@ -8830,8 +8830,8 @@
         "type": "fill",
         "page": 47,
         "label": "2",
-        "top": 30.5,
-        "left": 41,
+        "top": 29.7,
+        "left": 39.9,
         "width": 6.5,
         "height": 1.8,
         "correct": "didn't use to like"
@@ -8841,8 +8841,8 @@
         "type": "fill",
         "page": 47,
         "label": "3",
-        "top": 40.5,
-        "left": 41,
+        "top": 40.2,
+        "left": 39.6,
         "width": 6.5,
         "height": 1.8,
         "correct": "correct or would talk"
@@ -8863,8 +8863,8 @@
         "type": "fill",
         "page": 47,
         "label": "5",
-        "top": 48.8,
-        "left": 22,
+        "top": 48.4,
+        "left": 22.3,
         "width": 6.5,
         "height": 1.8,
         "correct": "correct or used to have"
@@ -8874,8 +8874,8 @@
         "type": "fill",
         "page": 47,
         "label": "6",
-        "top": 55.4,
-        "left": 31,
+        "top": 55.2,
+        "left": 30.9,
         "width": 6.5,
         "height": 1.8,
         "correct": "used to work"
@@ -8885,8 +8885,8 @@
         "type": "fill",
         "page": 47,
         "label": "7",
-        "top": 60,
-        "left": 37,
+        "top": 59.6,
+        "left": 36.7,
         "width": 6.5,
         "height": 1.8,
         "correct": "used to be responsible or used to be"
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792587196453
+  "updatedAt": 1792587204849
 }
