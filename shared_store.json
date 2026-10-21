@@ -17333,8 +17333,8 @@
         "id": "u10_p76_ex1_2_insulted",
         "type": "choose",
         "page": 76,
-        "top": 39.2,
-        "left": 24.5,
+        "top": 38.9,
+        "left": 23.9,
         "width": 5.5,
         "height": 1.8,
         "correct": true,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601180461
+  "updatedAt": 1792601189588
 }
