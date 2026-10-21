@@ -665,11 +665,13 @@
           }
         },
         "lessonTypes": {
-          "2026-10-19": "BSB - Y1"
+          "2026-10-19": "Dam olish"
         },
-        "holidays": {},
+        "holidays": {
+          "2026-10-19": true
+        },
         "seededWindowV2": true,
-        "updatedAt": 1792604988582
+        "updatedAt": 1792605469312
       },
       "customStudentNames": {}
     },
@@ -21217,5 +21219,5 @@
       }
     ]
   },
-  "updatedAt": 1792604990571
+  "updatedAt": 1792605470331
 }
