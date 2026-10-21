@@ -14933,8 +14933,8 @@
         "id": "u10_p66_ex4_10_sharing",
         "type": "choose",
         "page": 66,
-        "top": 62.6,
-        "left": 87.5,
+        "top": 62.8,
+        "left": 86.8,
         "width": 6,
         "height": 1.8,
         "correct": true,
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792600741262
+  "updatedAt": 1792600745113
 }
