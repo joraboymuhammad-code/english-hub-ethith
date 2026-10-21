@@ -7367,8 +7367,8 @@
         "page": 41,
         "group": "p41_5a_3",
         "text": "a Yes. We've known each other for ages.",
-        "top": 62.4,
-        "left": 10.5,
+        "top": 61.6,
+        "left": 10.6,
         "width": 37.5,
         "height": 1.8,
         "correct": true
@@ -7379,7 +7379,7 @@
         "page": 41,
         "group": "p41_5a_3",
         "text": "b Yes. We've been knowing each other...",
-        "top": 64.2,
+        "top": 63.5,
         "left": 10.5,
         "width": 37.5,
         "height": 1.8,
@@ -7403,7 +7403,7 @@
         "page": 41,
         "group": "p41_5a_4",
         "text": "b Well, she's been doing better at school...",
-        "top": 71.2,
+        "top": 70.3,
         "left": 10.5,
         "width": 37.5,
         "height": 3,
@@ -10508,5 +10508,5 @@
       }
     ]
   },
-  "updatedAt": 1792586918834
+  "updatedAt": 1792586923174
 }
