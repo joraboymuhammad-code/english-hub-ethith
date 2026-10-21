@@ -9670,8 +9670,19 @@
         "correct": "f",
         "label": "5",
         "id": "p80_custom_13632"
+      },
+      {
+        "page": 80,
+        "type": "fill",
+        "top": 86.5,
+        "left": 88.4,
+        "width": 4,
+        "height": 2.1,
+        "correct": "c",
+        "label": "6",
+        "id": "p80_custom_23410"
       }
     ]
   },
-  "updatedAt": 1792584415192
+  "updatedAt": 1792584424515
 }
