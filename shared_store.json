@@ -9705,19 +9705,8 @@
         "correct": "logo",
         "label": "3",
         "id": "p81_custom_74421"
-      },
-      {
-        "page": 81,
-        "type": "fill",
-        "top": 27.4,
-        "left": 9.5,
-        "width": 9.1,
-        "height": 1.8,
-        "correct": "adverts",
-        "label": "New",
-        "id": "p81_custom_91426"
       }
     ]
   },
-  "updatedAt": 1792584492376
+  "updatedAt": 1792584496064
 }
