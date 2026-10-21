@@ -666,11 +666,12 @@
         },
         "lessonTypes": {
           "2026-10-19": "Oddiy",
-          "2026-10-21": "Oddiy"
+          "2026-10-21": "Oddiy",
+          "2026-10-10": "Oddiy"
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792605478694
+        "updatedAt": 1792606592287
       },
       "customStudentNames": {}
     },
@@ -21218,5 +21219,5 @@
       }
     ]
   },
-  "updatedAt": 1792606578346
+  "updatedAt": 1792606592832
 }
