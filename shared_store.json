@@ -15282,8 +15282,8 @@
       {
         "page": 83,
         "type": "fill",
-        "top": 36.5,
-        "left": 57.7,
+        "top": 35.9,
+        "left": 57.4,
         "width": 35.8,
         "height": 1.8,
         "correct": "He asked me if I had ever been in a situation where I had led a team.",
@@ -15293,5 +15293,5 @@
       }
     ]
   },
-  "updatedAt": 1792594357119
+  "updatedAt": 1792594364318
 }
