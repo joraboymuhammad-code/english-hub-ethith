@@ -10609,8 +10609,20 @@
         "id": "p81_custom_41392",
         "group": "p81_grp_1392",
         "text": ""
+      },
+      {
+        "page": 81,
+        "type": "fill",
+        "top": 21.4,
+        "left": 57.9,
+        "width": 30.2,
+        "height": 1.5,
+        "correct": "many a small thing had been made large",
+        "label": "2",
+        "id": "p81_custom_63931",
+        "group": "2"
       }
     ]
   },
-  "updatedAt": 1792588742402
+  "updatedAt": 1792588765508
 }
