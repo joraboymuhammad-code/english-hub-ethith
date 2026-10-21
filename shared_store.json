@@ -17602,7 +17602,7 @@
         "id": "u10_p76_ex4_10",
         "type": "fill",
         "page": 76,
-        "top": 91,
+        "top": 88.9,
         "left": 80,
         "width": 9.5,
         "height": 2,
@@ -17615,8 +17615,8 @@
         "id": "u10_p77_ex5a_2",
         "type": "fill",
         "page": 77,
-        "top": 21.2,
-        "left": 14.5,
+        "top": 19.7,
+        "left": 13.5,
         "width": 33.5,
         "height": 2,
         "correct": "shouldn't have criticized other celebrities|should not have criticized other celebrities",
@@ -17626,8 +17626,8 @@
         "id": "u10_p77_ex5a_3",
         "type": "fill",
         "page": 77,
-        "top": 24.6,
-        "left": 16,
+        "top": 22.8,
+        "left": 15,
         "width": 32,
         "height": 2,
         "correct": "he have said that|he have said that?",
@@ -20513,5 +20513,5 @@
       }
     ]
   },
-  "updatedAt": 1792601221329
+  "updatedAt": 1792601226297
 }
