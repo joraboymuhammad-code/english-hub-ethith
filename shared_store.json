@@ -1243,8 +1243,8 @@
         "page": 5,
         "exercise": "6",
         "label": "4",
-        "top": 73.5,
-        "left": 8,
+        "top": 70.1,
+        "left": 10.5,
         "width": 10,
         "height": 1.9,
         "correct": "have or HAVE"
@@ -1307,8 +1307,8 @@
         "exercise": "7b",
         "group": "7.2",
         "text": "vowel",
-        "top": 60.8,
-        "left": 53.6,
+        "top": 59.4,
+        "left": 30.1,
         "width": 5.4,
         "height": 1.6,
         "correct": true
@@ -8839,5 +8839,5 @@
       }
     ]
   },
-  "updatedAt": 1792582686842
+  "updatedAt": 1792582692811
 }
