@@ -16246,8 +16246,8 @@
       {
         "page": 87,
         "type": "fill",
-        "top": 60.9,
-        "left": 11,
+        "top": 60.4,
+        "left": 10.7,
         "width": 16,
         "height": 1.5,
         "correct": "shouldn't have trusted",
@@ -16257,5 +16257,5 @@
       }
     ]
   },
-  "updatedAt": 1792599534534
+  "updatedAt": 1792599537820
 }
