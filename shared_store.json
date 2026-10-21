@@ -11772,8 +11772,8 @@
         "id": "u8_p56_ex3_6_a",
         "type": "choose",
         "page": 56,
-        "top": 87.5,
-        "left": 19.5,
+        "top": 86.7,
+        "left": 18.6,
         "width": 6.8,
         "height": 2,
         "correct": false,
@@ -14955,5 +14955,5 @@
       }
     ]
   },
-  "updatedAt": 1792592379943
+  "updatedAt": 1792592383619
 }
