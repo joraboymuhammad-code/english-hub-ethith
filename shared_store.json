@@ -16082,8 +16082,20 @@
         "label": "7",
         "id": "p85_custom_01832",
         "group": "7"
+      },
+      {
+        "page": 85,
+        "type": "fill",
+        "top": 84.6,
+        "left": 67.2,
+        "width": 3.6,
+        "height": 1.7,
+        "correct": "7",
+        "label": "8",
+        "id": "p85_custom_14480",
+        "group": "8"
       }
     ]
   },
-  "updatedAt": 1792599105663
+  "updatedAt": 1792599115469
 }
