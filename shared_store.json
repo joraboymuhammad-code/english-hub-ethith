@@ -1062,6 +1062,13 @@
           "2026-10-22": {
             "std_5": {
               "status": ""
+            },
+            "std_1": {
+              "status": "K"
+            },
+            "std_2": {
+              "status": "S",
+              "score": ""
             }
           }
         },
@@ -1082,7 +1089,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792608015593,
+        "updatedAt": 1792608018472,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -21660,5 +21667,5 @@
       }
     ]
   },
-  "updatedAt": 1792608015829
+  "updatedAt": 1792608019498
 }
