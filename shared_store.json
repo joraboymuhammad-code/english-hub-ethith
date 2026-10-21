@@ -15993,12 +15993,12 @@
         "width": 39.3,
         "height": 1.7,
         "correct": true,
-        "label": "New",
+        "label": "2",
         "id": "p85_custom_62988",
-        "group": "p85_grp_2988",
-        "text": ""
+        "group": "2",
+        "text": "2"
       }
     ]
   },
-  "updatedAt": 1792598963864
+  "updatedAt": 1792598970237
 }
