@@ -1190,7 +1190,7 @@
         "msg_1792042358929_8iaq2",
         "msg_1792041984917_cd4i9"
       ],
-      "schedule": "juft",
+      "schedule": "toq",
       "attendance": {
         "records": {
           "2026-09-29": {
@@ -1224,7 +1224,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1792608465357
+        "updatedAt": 1792608477877
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -21711,5 +21711,5 @@
       }
     ]
   },
-  "updatedAt": 1792608468209
+  "updatedAt": 1792608478868
 }
