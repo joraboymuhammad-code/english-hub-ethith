@@ -4837,8 +4837,8 @@
         "type": "fill",
         "page": 38,
         "label": "6",
-        "top": 57.5,
-        "left": 46,
+        "top": 57.2,
+        "left": 44.7,
         "width": 8,
         "height": 1.7,
         "correct": "wheel"
@@ -4848,8 +4848,8 @@
         "type": "fill",
         "page": 38,
         "label": "7",
-        "top": 61.4,
-        "left": 46.6,
+        "top": 61.5,
+        "left": 46.2,
         "width": 8,
         "height": 1.7,
         "correct": "lights"
@@ -4911,5 +4911,5 @@
       }
     ]
   },
-  "updatedAt": 1792548946758
+  "updatedAt": 1792548952818
 }
