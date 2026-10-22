@@ -21845,8 +21845,8 @@
         "group": "b2_p4_3a_2",
         "text": "ease",
         "label": "2a",
-        "top": 82.7,
-        "left": 12.5,
+        "top": 82.3,
+        "left": 12.2,
         "width": 6.5,
         "height": 1.6,
         "correct": false
@@ -21887,8 +21887,8 @@
         "group": "b2_p4_3a_3",
         "text": "entertaining",
         "label": "3a",
-        "top": 84.5,
-        "left": 12.5,
+        "top": 84.1,
+        "left": 12.2,
         "width": 10.5,
         "height": 1.6,
         "correct": false
@@ -21901,7 +21901,7 @@
         "group": "b2_p4_3a_3",
         "text": "dominate",
         "label": "3b",
-        "top": 84.5,
+        "top": 83.9,
         "left": 24.2,
         "width": 9,
         "height": 1.6,
@@ -21929,8 +21929,8 @@
         "group": "b2_p4_3a_4",
         "text": "awkward",
         "label": "4a",
-        "top": 86.3,
-        "left": 12.5,
+        "top": 85.9,
+        "left": 12.8,
         "width": 8.5,
         "height": 1.6,
         "correct": true
@@ -22078,7 +22078,7 @@
     "85": 1792612525678,
     "86": 1792612525678,
     "87": 1792612525678,
-    "2004": 1792672381686
+    "2004": 1792672385804
   },
-  "updatedAt": 1792672382646
+  "updatedAt": 1792672386613
 }
