@@ -1790,14 +1790,14 @@
       "role": "student",
       "name": "Striker_uzb",
       "email": "mu_striker@telegram.org",
-      "coins": 100,
+      "coins": 1100,
       "avatar": null,
       "level": "A1",
       "dailyMinutes": 0,
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "updatedAt": 1792612121485
+      "updatedAt": 1792673953881
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -1834,6 +1834,126 @@
       "dailyMinutes": 0,
       "createdAt": 1792673102972,
       "updatedAt": 1792673102972
+    },
+    {
+      "id": "std_1",
+      "role": "student",
+      "name": "Ashurov Dilyorbek Azizbek o'g'li",
+      "email": "ashurov@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_2",
+      "role": "student",
+      "name": "Ergasheva Madina Asad qizi",
+      "email": "ergasheva@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_3",
+      "role": "student",
+      "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
+      "email": "erkinov@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_4",
+      "role": "student",
+      "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
+      "email": "joraboyev@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_5",
+      "role": "student",
+      "name": "Jo'raboyev Javoxir Murod o'g'li",
+      "email": "javoxir@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_6",
+      "role": "student",
+      "name": "Mavlonova Ruxshona Oybek qizi",
+      "email": "mavlonova@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_7",
+      "role": "student",
+      "name": "Muxtaraliyeva Dilora Dilshod qizi",
+      "email": "muxtaraliyeva@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_8",
+      "role": "student",
+      "name": "O'razboyev O'tkir Baxtiyor o'g'li",
+      "email": "orazboyev@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_9",
+      "role": "student",
+      "name": "Saparova Aida Sarvar qizi",
+      "email": "saparova@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_10",
+      "role": "student",
+      "name": "Umarov Nursulton Alisher o'g'li",
+      "email": "umarov@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_11",
+      "role": "student",
+      "name": "Xolmurodova Muazzam G'ulom qizi",
+      "email": "xolmurodova@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_12",
+      "role": "student",
+      "name": "Kaxarova Xumora Olimjon qizi",
+      "email": "kaxarova@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
     }
   ],
   "p2pListings": [],
@@ -22368,7 +22488,7 @@
     "2004": 1792672406322,
     "2005": 1792672414530
   },
-  "updatedAt": 1792673102972,
+  "updatedAt": 1792673953881,
   "authorizedAdminChatIds": [
     6772427596,
     98124765
