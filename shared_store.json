@@ -21795,8 +21795,8 @@
         "page": 2004,
         "exercise": "2",
         "label": "6",
-        "top": 74.5,
-        "left": 68.6,
+        "top": 74,
+        "left": 68.7,
         "width": 15,
         "height": 1.8,
         "correct": "misunderstanding"
@@ -21807,8 +21807,8 @@
         "page": 2004,
         "exercise": "2",
         "label": "7",
-        "top": 82.8,
-        "left": 74.7,
+        "top": 82.5,
+        "left": 74.3,
         "width": 14.8,
         "height": 1.8,
         "correct": "hit it off"
@@ -21819,8 +21819,8 @@
         "page": 2004,
         "exercise": "2",
         "label": "8",
-        "top": 87.2,
-        "left": 57.5,
+        "top": 86.6,
+        "left": 57.4,
         "width": 15,
         "height": 1.8,
         "correct": "small talk"
@@ -21831,8 +21831,8 @@
         "page": 2004,
         "exercise": "2",
         "label": "9",
-        "top": 88.8,
-        "left": 57.5,
+        "top": 88.4,
+        "left": 56.9,
         "width": 15,
         "height": 1.8,
         "correct": "offended"
@@ -22078,7 +22078,7 @@
     "85": 1792612525678,
     "86": 1792612525678,
     "87": 1792612525678,
-    "2004": 1792672395499
+    "2004": 1792672400926
   },
-  "updatedAt": 1792672397012
+  "updatedAt": 1792672401123
 }
