@@ -1,6 +1,7 @@
 /**
- * ETHITH TESTS - Official Admin Coin Transfer Bot
+ * ETHITH TESTS - Official Online GitHub-Connected Admin Coin Transfer Bot
  * Bot: @ETHITHCOINbot
+ * Connected 100% live to GitHub shared_store.json + Dual MQTT Brokers (HiveMQ & EMQX)
  */
 
 const fs = require('fs');
@@ -16,17 +17,21 @@ const REPO = 'english-hub-ethith';
 const AUTH_FILE = path.join(__dirname, 'admin_authorized.json');
 const STORE_FILE = path.join(__dirname, 'shared_store.json');
 
+// Owner @Mu_striker is permanently authorized across all cloud & local instances
+const DEFAULT_ADMIN_IDS = [6772427596, 98124765];
+
 // In-memory conversation state for each admin chat_id
 const adminStates = {};
 
-// Load authorized admins from disk
 function loadAuthorizedAdmins() {
+  const set = new Set(DEFAULT_ADMIN_IDS.map(Number));
   try {
     if (fs.existsSync(AUTH_FILE)) {
-      return JSON.parse(fs.readFileSync(AUTH_FILE, 'utf8'));
+      const arr = JSON.parse(fs.readFileSync(AUTH_FILE, 'utf8'));
+      if (Array.isArray(arr)) arr.forEach(id => set.add(Number(id)));
     }
   } catch (e) {}
-  return [];
+  return Array.from(set);
 }
 
 function saveAuthorizedAdmins(list) {
@@ -38,12 +43,14 @@ function saveAuthorizedAdmins(list) {
 let authorizedAdmins = loadAuthorizedAdmins();
 
 function isAuthorized(chatId) {
-  return authorizedAdmins.includes(Number(chatId)) || authorizedAdmins.includes(String(chatId));
+  const num = Number(chatId);
+  return authorizedAdmins.includes(num) || DEFAULT_ADMIN_IDS.includes(num);
 }
 
 function authorizeAdmin(chatId) {
-  if (!isAuthorized(chatId)) {
-    authorizedAdmins.push(Number(chatId));
+  const num = Number(chatId);
+  if (!authorizedAdmins.includes(num)) {
+    authorizedAdmins.push(num);
     saveAuthorizedAdmins(authorizedAdmins);
   }
 }
@@ -63,66 +70,215 @@ async function tgCall(method, body = {}) {
   }
 }
 
-// Load and Save shared_store.json
-function loadStore() {
+// Ensure all students from classes are also represented in store.accounts
+function unifyAccountsAndStudents(store) {
+  if (!store || typeof store !== 'object') store = { accounts: [], classes: [] };
+  if (!Array.isArray(store.accounts)) store.accounts = [];
+  if (!Array.isArray(store.classes)) store.classes = [];
+
+  if (Array.isArray(store.authorizedAdminChatIds)) {
+    store.authorizedAdminChatIds.forEach(id => {
+      const n = Number(id);
+      if (n && !authorizedAdmins.includes(n)) authorizedAdmins.push(n);
+    });
+  }
+
+  store.classes.forEach(cls => {
+    if (!cls || !Array.isArray(cls.students)) return;
+    cls.students.forEach(st => {
+      if (!st) return;
+      const stEmail = (st.email || (st.id && String(st.id).includes('@') ? st.id : '')).toLowerCase().trim();
+      const stName = (cls.customStudentNames && cls.customStudentNames[st.id]) || st.name || '';
+      if (!stEmail && !stName) return;
+
+      const existing = store.accounts.find(a => {
+        if (!a) return false;
+        const aEm = (a.email || '').toLowerCase().trim();
+        const aNm = (a.name || '').toLowerCase().trim();
+        return (stEmail && aEm === stEmail) || (stName && aNm === stName.toLowerCase().trim());
+      });
+
+      if (!existing) {
+        store.accounts.push({
+          id: st.id || stEmail || ('st_' + Date.now()),
+          role: 'student',
+          name: stName || (stEmail ? stEmail.split('@')[0] : "O'quvchi"),
+          email: stEmail || (stName.toLowerCase().replace(/[^a-z0-9]/g, '') + '@ethith.uz'),
+          coins: st.coins !== undefined ? Number(st.coins) : 150,
+          level: st.level || 'B1+',
+          dailyMinutes: st.dailyMinutes || 0,
+          updatedAt: st.updatedAt || Date.now()
+        });
+      } else {
+        if (stName && (!existing.name || existing.name === "Yangi O'quvchi" || existing.name === "O'quvchi")) {
+          existing.name = stName;
+        }
+        if (st.coins !== undefined && Number(st.coins) > Number(existing.coins || 0)) {
+          existing.coins = Number(st.coins);
+        }
+      }
+    });
+  });
+
+  return store;
+}
+
+// Fetch LIVE shared_store.json directly from GitHub (with local fallback)
+async function fetchLiveStoreFromGitHub() {
+  const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/shared_store.json?_t=${Date.now()}`;
+  const headers = {
+    'Authorization': `token ${GH_TOKEN}`,
+    'User-Agent': 'ETHITH-AdminBot-Live',
+    'Accept': 'application/vnd.github.v3+json',
+    'Cache-Control': 'no-cache, no-store'
+  };
+
+  try {
+    const res = await fetch(url, { headers, cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.content) {
+        const jsonStr = Buffer.from(data.content, 'base64').toString('utf8');
+        const parsed = unifyAccountsAndStudents(JSON.parse(jsonStr));
+        parsed._githubSha = data.sha;
+        try {
+          const toSaveLocal = { ...parsed };
+          delete toSaveLocal._githubSha;
+          fs.writeFileSync(STORE_FILE, JSON.stringify(toSaveLocal, null, 2), 'utf8');
+        } catch (e) {}
+        return parsed;
+      }
+    }
+  } catch (err) {
+    console.warn('[ADMIN BOT] Live GitHub fetch warning, falling back to local:', err.message);
+  }
+
   try {
     if (fs.existsSync(STORE_FILE)) {
-      return JSON.parse(fs.readFileSync(STORE_FILE, 'utf8'));
+      return unifyAccountsAndStudents(JSON.parse(fs.readFileSync(STORE_FILE, 'utf8')));
     }
   } catch (e) {}
   return { accounts: [], classes: [] };
 }
 
-function saveStore(data) {
-  try {
-    fs.writeFileSync(STORE_FILE, JSON.stringify(data, null, 2), 'utf8');
-  } catch (e) {
-    console.error('[ADMIN BOT] Error saving shared_store.json:', e.message);
-  }
-}
+// Atomic GitHub Push with 409 Conflict Retry & Account Balance Preservation
+async function updateStudentCoinsOnGitHub(targetEmail, targetName, amountToAdd, isAbsoluteSet = false) {
+  const cleanEmail = targetEmail.toLowerCase().trim();
+  const headers = {
+    'Authorization': `token ${GH_TOKEN}`,
+    'User-Agent': 'ETHITH-AdminBot-Live',
+    'Accept': 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json'
+  };
+  const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/shared_store.json`;
 
-// GitHub API: Push updated shared_store.json
-async function pushStoreToGitHub(storeData) {
-  try {
-    const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/shared_store.json`;
-    const headers = {
-      'Authorization': `token ${GH_TOKEN}`,
-      'User-Agent': 'ETHITH-AdminBot',
-      'Accept': 'application/vnd.github.v3+json',
-      'Content-Type': 'application/json'
-    };
+  let finalAccount = null;
 
-    // Get current SHA
-    const getRes = await fetch(url, { headers });
-    let sha = null;
-    if (getRes.ok) {
-      const getData = await getRes.json();
-      sha = getData.sha;
+  for (let attempt = 1; attempt <= 5; attempt++) {
+    try {
+      const getRes = await fetch(`${url}?_t=${Date.now()}`, { headers, cache: 'no-store' });
+      let sha = null;
+      let store = { accounts: [], classes: [] };
+
+      if (getRes.ok) {
+        const getData = await getRes.json();
+        sha = getData.sha;
+        store = unifyAccountsAndStudents(JSON.parse(Buffer.from(getData.content, 'base64').toString('utf8')));
+      } else if (fs.existsSync(STORE_FILE)) {
+        store = unifyAccountsAndStudents(JSON.parse(fs.readFileSync(STORE_FILE, 'utf8')));
+      }
+
+      if (!Array.isArray(store.accounts)) store.accounts = [];
+      store.authorizedAdminChatIds = authorizedAdmins;
+
+      let acc = store.accounts.find(a => a && a.email && a.email.toLowerCase().trim() === cleanEmail);
+      const now = Date.now();
+
+      if (acc) {
+        acc.coins = isAbsoluteSet ? amountToAdd : ((Number(acc.coins) || 0) + amountToAdd);
+        if (targetName && !targetName.includes("Yangi") && (!acc.name || acc.name.includes("Yangi"))) {
+          acc.name = targetName;
+        }
+        acc.updatedAt = now;
+      } else {
+        const safeName = (targetName && !targetName.includes("Yangi")) ? targetName : (cleanEmail.split('@')[0] || "O'quvchi");
+        acc = {
+          id: cleanEmail,
+          name: safeName,
+          email: cleanEmail,
+          role: 'student',
+          coins: amountToAdd,
+          level: 'B1+',
+          dailyMinutes: 0,
+          createdAt: now,
+          updatedAt: now
+        };
+        store.accounts.push(acc);
+      }
+
+      // Also update inside any class student roster so class views stay in sync
+      if (Array.isArray(store.classes)) {
+        store.classes.forEach(cls => {
+          if (cls && Array.isArray(cls.students)) {
+            cls.students.forEach(st => {
+              if (!st) return;
+              const stEm = (st.email || st.id || '').toLowerCase().trim();
+              const stNm = (st.name || '').toLowerCase().trim();
+              if (stEm === cleanEmail || (acc.name && stNm === acc.name.toLowerCase().trim())) {
+                st.coins = acc.coins;
+                st.updatedAt = now;
+              }
+            });
+          }
+        });
+      }
+
+      store.updatedAt = now;
+      finalAccount = acc;
+
+      // Save locally
+      try {
+        fs.writeFileSync(STORE_FILE, JSON.stringify(store, null, 2), 'utf8');
+      } catch (e) {}
+
+      // Push to GitHub
+      const contentBase64 = Buffer.from(JSON.stringify(store, null, 2), 'utf8').toString('base64');
+      const putRes = await fetch(url, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify({
+          message: `Admin Coin Bot: +${amountToAdd} Coin to ${cleanEmail} (Total: ${acc.coins})`,
+          content: contentBase64,
+          sha: sha || undefined
+        })
+      });
+
+      if (putRes.ok) {
+        const putData = await putRes.json();
+        console.log(`[ADMIN BOT] GitHub store updated for ${cleanEmail}: ${acc.coins} Coin (commit ${putData.commit ? putData.commit.sha.slice(0, 7) : 'OK'})`);
+        return { ok: true, account: finalAccount };
+      } else if (putRes.status === 409) {
+        console.warn(`[ADMIN BOT] 409 Conflict on attempt ${attempt}, retrying...`);
+        await new Promise(r => setTimeout(r, 250 * attempt));
+        continue;
+      } else {
+        const errTxt = await putRes.text();
+        console.warn(`[ADMIN BOT] GitHub PUT status ${putRes.status}:`, errTxt);
+      }
+    } catch (err) {
+      console.warn(`[ADMIN BOT] GitHub update error on attempt ${attempt}:`, err.message);
+      await new Promise(r => setTimeout(r, 300));
     }
-
-    const contentBase64 = Buffer.from(JSON.stringify(storeData, null, 2)).toString('base64');
-    const putRes = await fetch(url, {
-      method: 'PUT',
-      headers: headers,
-      body: JSON.stringify({
-        message: 'Admin Coin Bot: Balance update via @ETHITHCOINbot',
-        content: contentBase64,
-        sha: sha
-      })
-    });
-    const putData = await putRes.json();
-    console.log('[ADMIN BOT] GitHub remote store updated:', putData.commit ? putData.commit.sha : 'OK');
-  } catch (err) {
-    console.warn('[ADMIN BOT] GitHub push error (non-fatal, local saved):', err.message);
   }
+
+  return { ok: false, account: finalAccount };
 }
 
-// MQTT Instant Broadcaster (Pure Node.js TCP socket, QoS 0, sub-50ms)
-function publishMqtt(topic, payloadObj) {
+// MQTT Instant Broadcaster to BOTH HiveMQ & EMQX (Pure Node.js TCP socket, sub-50ms)
+function publishSingleBroker(host, topic, payloadString) {
   return new Promise((resolve) => {
-    const payloadString = JSON.stringify(payloadObj);
-    const client = net.createConnection({ host: 'broker.hivemq.com', port: 1883 }, () => {
-      const clientId = 'eth_admin_bot_' + Math.random().toString(36).substr(2, 6);
+    const client = net.createConnection({ host, port: 1883 }, () => {
+      const clientId = 'eth_adm_' + Math.random().toString(36).substr(2, 7);
       const clientIdBuf = Buffer.from(clientId, 'utf8');
       const varHeader = Buffer.from([0x00, 0x04, 0x4d, 0x51, 0x54, 0x54, 0x04, 0x02, 0x00, 0x3c]);
       const payloadBuf = Buffer.concat([
@@ -168,8 +324,16 @@ function publishMqtt(topic, payloadObj) {
     });
 
     client.on('error', () => resolve(false));
-    setTimeout(() => { client.destroy(); resolve(false); }, 3000);
+    setTimeout(() => { client.destroy(); resolve(false); }, 2500);
   });
+}
+
+async function publishMqtt(topic, payloadObj) {
+  const payloadString = JSON.stringify(payloadObj);
+  await Promise.all([
+    publishSingleBroker('broker.hivemq.com', topic, payloadString),
+    publishSingleBroker('broker.emqx.io', topic, payloadString)
+  ]);
 }
 
 // Main Menu Keyboard
@@ -186,7 +350,7 @@ function getMainMenuKeyboard() {
 
 // Helper: Show confirmation prompt for coin transfer
 async function promptCoinConfirmation(chatId, targetEmail, targetName, currentCoins, amount, existingMsgId = null) {
-  const newTotal = currentCoins + amount;
+  const newTotal = (Number(currentCoins) || 0) + amount;
   adminStates[chatId] = {
     step: 'confirm',
     targetEmail: targetEmail,
@@ -198,7 +362,7 @@ async function promptCoinConfirmation(chatId, targetEmail, targetName, currentCo
   const confirmButtons = {
     inline_keyboard: [
       [
-        { text: `✅ Ha, ${amount.toLocaleString()} Coin O'tkazilsin!`, callback_data: `confirm_send:${amount}` }
+        { text: `✅ Ha, +${amount.toLocaleString()} Coin O'tkazilsin!`, callback_data: `confirm_send:${amount}` }
       ],
       [
         { text: '❌ Bekor qilish', callback_data: 'cancel_send' }
@@ -209,8 +373,9 @@ async function promptCoinConfirmation(chatId, targetEmail, targetName, currentCo
   const text = `❓ <b>O'tkazmani tasdiqlaysizmi?</b>\n\n` +
                `👤 Qabul qiluvchi: <b>${targetName}</b>\n` +
                `📧 Gmail: <code>${targetEmail}</code>\n` +
+               `💰 Hozirgi Balans: <b>${(Number(currentCoins) || 0).toLocaleString()} Coin</b>\n` +
                `➕ Qo'shilayotgan Coin: <b>+${amount.toLocaleString()} Coin</b>\n` +
-               `💰 Yangi Balans: <b>${newTotal.toLocaleString()} Coin</b>\n\n` +
+               `🚀 Yangi Balans: <b>${newTotal.toLocaleString()} Coin</b>\n\n` +
                `Tasdiqlash uchun quyidagi tugmani bosing:`;
 
   if (existingMsgId) {
@@ -237,7 +402,7 @@ async function sendPresetAmountMenu(chatId, targetEmail, targetName, currentCoin
     step: 'waiting_amount',
     targetEmail: targetEmail,
     targetName: targetName,
-    currentCoins: currentCoins
+    currentCoins: Number(currentCoins) || 0
   };
 
   const presetKeyboard = {
@@ -265,11 +430,77 @@ async function sendPresetAmountMenu(chatId, targetEmail, targetName, currentCoin
     chat_id: chatId,
     text: `👤 <b>O'quvchi:</b> <b>${targetName}</b>\n` +
           `📧 Gmail: <code>${targetEmail}</code>\n` +
-          `💰 Joriy Balans: <b>${currentCoins.toLocaleString()} Coin</b>\n\n` +
+          `💰 GitHub'dagi Joriy Balans: <b>${(Number(currentCoins) || 0).toLocaleString()} Coin</b>\n\n` +
           `Quyidagi tezkor tugmalardan birini bosing yoki xabarda istalgan miqdorni son bilan yozing (masalan: <code>2500</code>):`,
     parse_mode: 'HTML',
     reply_markup: presetKeyboard
   });
+}
+
+// Helper: Perform search and send matching student cards
+async function performStudentSearch(chatId, queryText) {
+  const q = queryText.toLowerCase().trim();
+  const store = await fetchLiveStoreFromGitHub();
+  const accounts = (store.accounts || []).filter(a => a && a.role !== 'teacher');
+  const matches = accounts.filter(a => {
+    const name = (a.name || '').toLowerCase();
+    const email = (a.email || '').toLowerCase();
+    return name.includes(q) || email.includes(q);
+  });
+
+  if (matches.length === 0) {
+    await tgCall('sendMessage', {
+      chat_id: chatId,
+      text: `❌ <b>"${queryText}" bo'yicha o'quvchi topilmadi.</b>\n\nAgar yangi Gmail manziliga coin o'tkazmoqchi bo'lsangiz, to'liq Gmail manzilini yozing (masalan: <code>user@gmail.com</code>).`,
+      parse_mode: 'HTML',
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: '🔍 Qayta qidirish', callback_data: 'start_search' }],
+          [{ text: '👥 Barcha o\'quvchilar', callback_data: 'view_all_students' }]
+        ]
+      }
+    });
+    return;
+  }
+
+  await tgCall('sendMessage', {
+    chat_id: chatId,
+    text: `🎯 <b>"${queryText}" bo'yicha GitHub bazasidan ${matches.length} ta o'quvchi topildi:</b>`,
+    parse_mode: 'HTML',
+    reply_markup: getMainMenuKeyboard()
+  });
+
+  for (const acc of matches.slice(0, 6)) {
+    const email = acc.email;
+    const coins = (Number(acc.coins) || 0).toLocaleString();
+    const card = `👤 <b>${acc.name}</b>\n` +
+                 `📧 Gmail: <code>${email}</code>\n` +
+                 `💰 Balans: <b>${coins} Coin</b>\n` +
+                 `🎓 Daraja: <b>${acc.level || 'B1+'}</b>`;
+
+    const quickButtons = {
+      inline_keyboard: [
+        [
+          { text: '🪙 +500', callback_data: `quick_send:${email}:500` },
+          { text: '🪙 +1,000', callback_data: `quick_send:${email}:1000` },
+          { text: '🪙 +5,000', callback_data: `quick_send:${email}:5000` }
+        ],
+        [
+          { text: '🪙 +10,000', callback_data: `quick_send:${email}:10000` },
+          { text: '🪙 +50,000', callback_data: `quick_send:${email}:50000` },
+          { text: '✏️ Boshqa miqdor', callback_data: `send_to:${email}` }
+        ]
+      ]
+    };
+
+    await tgCall('sendMessage', {
+      chat_id: chatId,
+      text: card,
+      parse_mode: 'HTML',
+      reply_markup: quickButtons
+    });
+  }
+  adminStates[chatId] = { step: 'idle' };
 }
 
 // Handle Incoming Telegram Message
@@ -277,6 +508,7 @@ async function handleMessage(msg) {
   if (!msg || !msg.chat) return;
   const chatId = msg.chat.id;
   const text = (msg.text || '').trim();
+  if (!text) return;
 
   // 1. Check if user is authorized
   if (!isAuthorized(chatId)) {
@@ -287,7 +519,7 @@ async function handleMessage(msg) {
         chat_id: chatId,
         text: '✅ <b>Maxfiy kod to\'g\'ri! Siz muvaffaqiyatli avtorizatsiyadan o\'tdingiz.</b>\n\n' +
               '👑 <b>Xush kelibsiz, Bosh Admin!</b>\n' +
-              'Ushbu bot orqali istalgan o\'quvchini qidirish va uning hisobiga soniya ichida ETHITH Coin o\'tkazishingiz mumkin.',
+              'Bot GitHub bulut bazasiga va MQTT tarmog\'iga 100% online ulangan.',
         parse_mode: 'HTML',
         reply_markup: getMainMenuKeyboard()
       });
@@ -304,64 +536,70 @@ async function handleMessage(msg) {
     }
   }
 
-  // User is authorized from here on
-  let state = adminStates[chatId] || { step: 'idle' };
-
+  // 2. ALWAYS check top-level Menu Commands FIRST so the bot NEVER gets stuck in a state!
   if (text === '/start' || text === '/menu') {
     adminStates[chatId] = { step: 'idle' };
     await tgCall('sendMessage', {
       chat_id: chatId,
-      text: '👑 <b>ETHITH Admin Coin Boshqaruvi</b>\n\nQuyidagi tugmalardan birini tanlang:',
+      text: '👑 <b>ETHITH Admin Coin Boshqaruvi (GitHub Online)</b>\n\n' +
+            '💡 <i>Maslahat: Tugmalardan foydalanishingiz yoki istalgan vaqtda to\'g\'ridan-to\'g\'ri o\'quvchining Gmail manzilini (masalan: <code>user@gmail.com</code>) yozib yuborishingiz mumkin!</i>',
       parse_mode: 'HTML',
+      reply_markup: getMainMenuKeyboard()
+    });
+    return;
+  }
+
+  if (text === '❌ Bekor qilish' || text === '/cancel') {
+    adminStates[chatId] = { step: 'idle' };
+    await tgCall('sendMessage', {
+      chat_id: chatId,
+      text: '✅ Amal bekor qilindi. Asosiy menyudasiz:',
       reply_markup: getMainMenuKeyboard()
     });
     return;
   }
 
   if (text === 'ℹ️ Yordam' || text === '/help') {
-    await tgCall('sendMessage', {
-      chat_id: chatId,
-      text: 'ℹ️ <b>Admin Qo\'llanmasi:</b>\n\n' +
-            '🔍 <b>O\'quvchini Qidirish:</b> O\'quvchining ismi yoki Gmail manzili bo\'yicha topish va bir bosishda coin o\'tkazish.\n' +
-            '🪙 <b>Coin O\'tkazish:</b> Gmail manzilini kiritish orqali tezkor tanga yuborish.\n' +
-            '👥 <b>O\'quvchilar Ro\'yxati:</b> Ro\'yxatdan o\'tgan barcha o\'quvchilar va ularning balanslari.\n' +
-            '🏆 <b>Top Balanslar:</b> Eng ko\'p tangaga ega bo\'lgan o\'quvchilar reytingi.\n' +
-            '🔄 <b>Baza Holati:</b> Tizim va MQTT statistikasi.',
-      parse_mode: 'HTML',
-      reply_markup: getMainMenuKeyboard()
-    });
-    return;
-  }
-
-  if (text === '🔄 Baza Holati') {
-    const store = loadStore();
-    const count = (store.accounts || []).length;
-    await tgCall('sendMessage', {
-      chat_id: chatId,
-      text: `📊 <b>Tizim Statistikasi:</b>\n\n• Ro'yxatdan o'tganlar: <b>${count} ta</b>\n• MQTT Mesh: <b>Faol (HiveMQ + EMQX)</b>\n• Server: <b>Online</b>`,
-      parse_mode: 'HTML',
-      reply_markup: getMainMenuKeyboard()
-    });
-    return;
-  }
-
-  if (text === '❌ Bekor qilish') {
     adminStates[chatId] = { step: 'idle' };
     await tgCall('sendMessage', {
       chat_id: chatId,
-      text: 'Amal bekor qilindi.',
+      text: 'ℹ️ <b>Admin Qo\'llanmasi (Online GitHub Baza):</b>\n\n' +
+            '1️⃣ <b>Tezkor usul:</b> Chatga shunchaki o\'quvchining Gmail manzilini yozing (masalan: <code>sarvartovboyev09@gmail.com</code>) — bot darhol tanga miqdorini so\'raydi!\n' +
+            '2️⃣ <b>Super tezkor usul:</b> Gmail va miqdorni bitta xabarda yozing (masalan: <code>sarvartovboyev09@gmail.com 10000</code>).\n' +
+            '3️⃣ <b>🔍 O\'quvchini Qidirish:</b> Ism yoki Gmail orqali GitHub bazasidan qidirish.\n' +
+            '4️⃣ <b>👥 O\'quvchilar Ro\'yxati:</b> Barcha guruh va ro\'yxatdagi o\'quvchilar.\n' +
+            '5️⃣ <b>🏆 Top Balanslar:</b> Eng ko\'p tangaga ega o\'quvchilar.',
+      parse_mode: 'HTML',
       reply_markup: getMainMenuKeyboard()
     });
     return;
   }
 
-  // COMMAND: 🔍 O'quvchini Qidirish
+  if (text === '🔄 Baza Holati' || text === '/status') {
+    adminStates[chatId] = { step: 'idle' };
+    const store = await fetchLiveStoreFromGitHub();
+    const students = (store.accounts || []).filter(a => a && a.role !== 'teacher');
+    const classesCount = (store.classes || []).length;
+    await tgCall('sendMessage', {
+      chat_id: chatId,
+      text: `🟢 <b>GitHub Cloud & MQTT Baza Holati:</b>\n\n` +
+            `• GitHub Repo: <code>${OWNER}/${REPO}</code> (Ulangan ✅)\n` +
+            `• Jami O'quvchilar: <b>${students.length} ta</b>\n` +
+            `• Faol Guruhlar: <b>${classesCount} ta</b>\n` +
+            `• Real-Vaqt Tarmog'i: <b>HiveMQ + EMQX (Faol ⚡)</b>\n` +
+            `• Holat: <b>100% Online</b>`,
+      parse_mode: 'HTML',
+      reply_markup: getMainMenuKeyboard()
+    });
+    return;
+  }
+
   if (text === '🔍 O\'quvchini Qidirish' || text === '/search') {
     adminStates[chatId] = { step: 'waiting_search_query' };
     await tgCall('sendMessage', {
       chat_id: chatId,
       text: '🔍 <b>O\'quvchini Qidirish:</b>\n\n' +
-            'O\'quvchining <b>ismi</b> yoki <b>Gmail manzilini</b> yozing (masalan: <code>Muhammadyusuf</code>, <code>Shamshod</code> yoki <code>muhammed...</code>):',
+            'O\'quvchining <b>ismi</b> yoki <b>Gmail manzilini</b> yozing (masalan: <code>Sardorbek</code>, <code>Ashurov</code> yoki <code>sarvar...</code>):',
       parse_mode: 'HTML',
       reply_markup: {
         keyboard: [[{ text: '❌ Bekor qilish' }]],
@@ -371,77 +609,24 @@ async function handleMessage(msg) {
     return;
   }
 
-  // STEP: Waiting for search query
-  if (state.step === 'waiting_search_query') {
-    const q = text.toLowerCase().trim();
-    const store = loadStore();
-    const accounts = (store.accounts || []).filter(a => a.role !== 'teacher');
-    const matches = accounts.filter(a => {
-      const name = (a.name || '').toLowerCase();
-      const email = (a.email || '').toLowerCase();
-      return name.includes(q) || email.includes(q);
-    });
-
-    if (matches.length === 0) {
-      await tgCall('sendMessage', {
-        chat_id: chatId,
-        text: `❌ <b>"${text}" bo'yicha hech qanday o'quvchi topilmadi.</b>\n\nIltimos, ism yoki Gmail to'g'ri yozilganini tekshiring yoki ro'yxatdan qidiring.`,
-        parse_mode: 'HTML',
-        reply_markup: {
-          inline_keyboard: [
-            [{ text: '🔍 Qayta qidirish', callback_data: 'start_search' }],
-            [{ text: '👥 Barcha o\'quvchilar', callback_data: 'view_all_students' }]
-          ]
-        }
-      });
-      return;
-    }
-
+  if (text === '🪙 Coin O\'tkazish' || text === '/sendcoin') {
+    adminStates[chatId] = { step: 'waiting_email' };
     await tgCall('sendMessage', {
       chat_id: chatId,
-      text: `🎯 <b>"${text}" bo'yicha ${matches.length} ta o'quvchi topildi:</b>\nQuyidagi o'quvchilardan birini tanlang yoki tezkor tanga o'tkazing:`,
+      text: '📧 <b>Qaysi o\'quvchiga coin o\'tkazmoqchisiz?</b>\n\nFoydalanuvchining <b>Gmail manzilini</b> kiriting (masalan: <code>sarvartovboyev09@gmail.com</code>):',
       parse_mode: 'HTML',
-      reply_markup: getMainMenuKeyboard()
+      reply_markup: {
+        keyboard: [[{ text: '❌ Bekor qilish' }]],
+        resize_keyboard: true
+      }
     });
-
-    for (const acc of matches.slice(0, 5)) {
-      const email = acc.email;
-      const coins = (acc.coins || 0).toLocaleString();
-      const card = `👤 <b>${acc.name}</b>\n` +
-                   `📧 Gmail: <code>${email}</code>\n` +
-                   `💰 Balans: <b>${coins} Coin</b>\n` +
-                   `🎓 Daraja: <b>${acc.level || 'A1'}</b> | ⏱️ <b>${acc.dailyMinutes || 0} daqiqa</b>`;
-
-      const quickButtons = {
-        inline_keyboard: [
-          [
-            { text: '🪙 +500', callback_data: `quick_send:${email}:500` },
-            { text: '🪙 +1,000', callback_data: `quick_send:${email}:1000` },
-            { text: '🪙 +5,000', callback_data: `quick_send:${email}:5000` }
-          ],
-          [
-            { text: '🪙 +10,000', callback_data: `quick_send:${email}:10000` },
-            { text: '🪙 +50,000', callback_data: `quick_send:${email}:50000` },
-            { text: '✏️ Boshqa miqdor', callback_data: `send_to:${email}` }
-          ]
-        ]
-      };
-
-      await tgCall('sendMessage', {
-        chat_id: chatId,
-        text: card,
-        parse_mode: 'HTML',
-        reply_markup: quickButtons
-      });
-    }
-    adminStates[chatId] = { step: 'idle' };
     return;
   }
 
-  // COMMAND: 🏆 Top Balanslar
   if (text === '🏆 Top Balanslar' || text === '/top') {
-    const store = loadStore();
-    const accounts = (store.accounts || []).filter(a => a.role !== 'teacher');
+    adminStates[chatId] = { step: 'idle' };
+    const store = await fetchLiveStoreFromGitHub();
+    const accounts = (store.accounts || []).filter(a => a && a.role !== 'teacher');
     accounts.sort((a, b) => (Number(b.coins) || 0) - (Number(a.coins) || 0));
 
     if (accounts.length === 0) {
@@ -453,17 +638,17 @@ async function handleMessage(msg) {
       return;
     }
 
-    let topText = '🏆 <b>Eng Ko\'p Coin Yig\'gan O\'quvchilar:</b>\n\n';
+    let topText = '🏆 <b>GitHub Bazadagi Eng Ko\'p Coin Yig\'gan O\'quvchilar:</b>\n\n';
     const inlineButtons = [];
 
-    accounts.slice(0, 10).forEach((acc, i) => {
+    accounts.slice(0, 12).forEach((acc, i) => {
       const medal = i === 0 ? '🥇' : (i === 1 ? '🥈' : (i === 2 ? '🥉' : `${i + 1}.`));
       const email = acc.email || 'Email yo\'q';
-      const coins = (acc.coins || 0).toLocaleString();
+      const coins = (Number(acc.coins) || 0).toLocaleString();
       topText += `${medal} <b>${acc.name || "O'quvchi"}</b> — <b>${coins} Coin</b>\n   📧 <code>${email}</code>\n\n`;
       if (email.includes('@')) {
         inlineButtons.push([{
-          text: `🪙 ${acc.name} ga coin berish`,
+          text: `🪙 ${acc.name} (${coins}) ga coin berish`,
           callback_data: `send_to:${email}`
         }]);
       }
@@ -478,10 +663,10 @@ async function handleMessage(msg) {
     return;
   }
 
-  // COMMAND: 👥 O'quvchilar Ro'yxati
   if (text === '👥 O\'quvchilar Ro\'yxati' || text === '/users') {
-    const store = loadStore();
-    const accounts = (store.accounts || []).filter(a => a.role !== 'teacher');
+    adminStates[chatId] = { step: 'idle' };
+    const store = await fetchLiveStoreFromGitHub();
+    const accounts = (store.accounts || []).filter(a => a && a.role !== 'teacher');
     if (accounts.length === 0) {
       await tgCall('sendMessage', {
         chat_id: chatId,
@@ -491,13 +676,13 @@ async function handleMessage(msg) {
       return;
     }
 
-    let listText = '📋 <b>Platformadagi O\'quvchilar Ro\'yxati:</b>\n\n';
+    let listText = `📋 <b>GitHub Bazadagi O'quvchilar Ro'yxati (${accounts.length} ta):</b>\n\n`;
     const inlineButtons = [];
 
     accounts.slice(0, 15).forEach((acc, i) => {
       const email = acc.email || 'Email yo\'q';
-      const coins = (acc.coins || 0).toLocaleString();
-      listText += `${i + 1}. 👤 <b>${acc.name || "O'quvchi"}</b>\n   📧 <code>${email}</code>\n   💰 <b>${coins} Coin</b> | 🎓 ${acc.level || 'A1'}\n\n`;
+      const coins = (Number(acc.coins) || 0).toLocaleString();
+      listText += `${i + 1}. 👤 <b>${acc.name || "O'quvchi"}</b>\n   📧 <code>${email}</code>\n   💰 <b>${coins} Coin</b> | 🎓 ${acc.level || 'B1+'}\n\n`;
       if (email.includes('@')) {
         inlineButtons.push([{
           text: `🪙 ${acc.name || email} ga coin berish`,
@@ -515,58 +700,41 @@ async function handleMessage(msg) {
     return;
   }
 
-  // COMMAND: 🪙 Coin O'tkazish
-  if (text === '🪙 Coin O\'tkazish' || text === '/sendcoin') {
-    adminStates[chatId] = { step: 'waiting_email' };
-    await tgCall('sendMessage', {
-      chat_id: chatId,
-      text: '📧 <b>Qaysi o\'quvchiga coin o\'tkazmoqchisiz?</b>\n\nFoydalanuvchining <b>Gmail manzilini</b> kiriting (masalan: <code>muhammedjoraboyev1@gmail.com</code>):',
-      parse_mode: 'HTML',
-      reply_markup: {
-        keyboard: [[{ text: '❌ Bekor qilish' }]],
-        resize_keyboard: true
+  // 3. SMART DIRECT INPUT: Check if user typed "email@gmail.com 5000" or "email@gmail.com" in ANY state!
+  const emailMatch = text.match(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/);
+  if (emailMatch) {
+    const cleanEmail = emailMatch[1].toLowerCase().trim();
+    const remainder = text.replace(emailMatch[0], '').replace(/[^0-9]/g, '').trim();
+    const store = await fetchLiveStoreFromGitHub();
+    const userAcc = (store.accounts || []).find(a => a && a.email && a.email.toLowerCase().trim() === cleanEmail);
+    const userName = (userAcc && userAcc.name && !userAcc.name.includes("Yangi")) ? userAcc.name : (cleanEmail.split('@')[0] || "O'quvchi");
+    const curCoins = userAcc ? (Number(userAcc.coins) || 0) : 0;
+
+    if (remainder.length > 0) {
+      const directAmt = parseInt(remainder, 10);
+      if (directAmt > 0) {
+        await promptCoinConfirmation(chatId, cleanEmail, userName, curCoins, directAmt);
+        return;
       }
-    });
-    return;
-  }
-
-  // STEP: Waiting for email
-  if (state.step === 'waiting_email') {
-    const cleanEmail = text.toLowerCase().trim();
-    if (!cleanEmail.includes('@') || !cleanEmail.includes('.')) {
-      await tgCall('sendMessage', {
-        chat_id: chatId,
-        text: '⚠️ Iltimos, haqiqiy Gmail manzilini to\'g\'ri formatda kiriting (masalan: <code>user@gmail.com</code>):',
-        parse_mode: 'HTML'
-      });
-      return;
     }
-
-    const store = loadStore();
-    const userAcc = (store.accounts || []).find(a => a.email && a.email.toLowerCase().trim() === cleanEmail);
-
-    let userName = (userAcc && userAcc.name && !userAcc.name.includes("Yangi")) ? userAcc.name : (cleanEmail.split('@')[0] || "O'quvchi");
-    let curCoins = userAcc ? (userAcc.coins || 0) : 0;
 
     await sendPresetAmountMenu(chatId, cleanEmail, userName, curCoins);
     return;
   }
 
-  // STEP: Waiting for coin amount (Custom Typed Number)
+  // 4. State-specific handling
+  const state = adminStates[chatId] || { step: 'idle' };
+
   if (state.step === 'waiting_amount') {
     const num = parseInt(text.replace(/[^0-9]/g, ''), 10);
-    if (isNaN(num) || num <= 0) {
-      await tgCall('sendMessage', {
-        chat_id: chatId,
-        text: '⚠️ Iltimos, musbat son kiriting (Masalan: <code>1000</code>):',
-        parse_mode: 'HTML'
-      });
+    if (!isNaN(num) && num > 0) {
+      await promptCoinConfirmation(chatId, state.targetEmail, state.targetName, state.currentCoins || 0, num);
       return;
     }
-
-    await promptCoinConfirmation(chatId, state.targetEmail, state.targetName, state.currentCoins || 0, num);
-    return;
   }
+
+  // If user typed a name or search query in waiting_search_query, waiting_email, or idle: search students!
+  await performStudentSearch(chatId, text);
 }
 
 // Handle Callback Queries (Inline buttons)
@@ -602,28 +770,27 @@ async function handleCallbackQuery(cb) {
 
   if (data.startsWith('send_to:')) {
     const email = data.split('send_to:')[1];
-    const store = loadStore();
-    const userAcc = (store.accounts || []).find(a => a.email && a.email.toLowerCase().trim() === email.toLowerCase().trim());
-    const userName = userAcc ? userAcc.name : email;
-    const curCoins = userAcc ? (userAcc.coins || 0) : 0;
-
     await tgCall('answerCallbackQuery', { callback_query_id: cb.id });
+    const store = await fetchLiveStoreFromGitHub();
+    const userAcc = (store.accounts || []).find(a => a && a.email && a.email.toLowerCase().trim() === email.toLowerCase().trim());
+    const userName = userAcc ? userAcc.name : email;
+    const curCoins = userAcc ? (Number(userAcc.coins) || 0) : 0;
+
     await sendPresetAmountMenu(chatId, email, userName, curCoins);
     return;
   }
 
   if (data.startsWith('quick_send:')) {
-    // Format: quick_send:email:amount
     const parts = data.split(':');
     const email = parts[1];
     const amount = parseInt(parts[2], 10);
 
-    const store = loadStore();
-    const userAcc = (store.accounts || []).find(a => a.email && a.email.toLowerCase().trim() === email.toLowerCase().trim());
-    const userName = userAcc ? userAcc.name : email;
-    const curCoins = userAcc ? (userAcc.coins || 0) : 0;
-
     await tgCall('answerCallbackQuery', { callback_query_id: cb.id });
+    const store = await fetchLiveStoreFromGitHub();
+    const userAcc = (store.accounts || []).find(a => a && a.email && a.email.toLowerCase().trim() === email.toLowerCase().trim());
+    const userName = userAcc ? userAcc.name : email;
+    const curCoins = userAcc ? (Number(userAcc.coins) || 0) : 0;
+
     await promptCoinConfirmation(chatId, email, userName, curCoins, amount);
     return;
   }
@@ -632,11 +799,11 @@ async function handleCallbackQuery(cb) {
     const amount = parseInt(data.split('preset_amt:')[1], 10);
     const state = adminStates[chatId];
     if (!state || !state.targetEmail) {
-      await tgCall('answerCallbackQuery', { callback_query_id: cb.id, text: 'Sessiya eskirgan' });
+      await tgCall('answerCallbackQuery', { callback_query_id: cb.id, text: 'Iltimos, Gmail manzilini qaytadan tanlang' });
       return;
     }
     await tgCall('answerCallbackQuery', { callback_query_id: cb.id });
-    await promptCoinConfirmation(chatId, state.targetEmail, state.targetName, state.currentCoins || 0, amount);
+    await promptCoinConfirmation(chatId, state.targetEmail, state.targetName, state.currentCoins || 0, amount, cb.message.message_id);
     return;
   }
 
@@ -665,43 +832,23 @@ async function handleCallbackQuery(cb) {
   if (data.startsWith('confirm_send:')) {
     const state = adminStates[chatId];
     if (!state || state.step !== 'confirm') {
-      await tgCall('answerCallbackQuery', { callback_query_id: cb.id, text: 'Sessiya eskirgan' });
+      await tgCall('answerCallbackQuery', { callback_query_id: cb.id, text: 'Ushbu o\'tkazma allaqachon bajarilgan yoki eskirgan' });
       return;
     }
 
     const targetEmail = state.targetEmail;
     const targetName = state.targetName;
     const amount = state.amount;
-    const newTotal = state.newTotal;
 
-    await tgCall('answerCallbackQuery', { callback_query_id: cb.id, text: 'O\'tkazilmoqda...' });
+    // Prevent double-tap duplicate transfers
+    adminStates[chatId] = { step: 'idle' };
+    await tgCall('answerCallbackQuery', { callback_query_id: cb.id, text: 'GitHub bazasiga yozilmoqda...' });
 
-    // 1. Update shared_store.json on disk
-    const store = loadStore();
-    if (!Array.isArray(store.accounts)) store.accounts = [];
+    // 1. Atomically update GitHub shared_store.json + local store
+    const res = await updateStudentCoinsOnGitHub(targetEmail, targetName, amount, false);
+    const acc = res.account || { name: targetName, email: targetEmail, coins: state.newTotal };
 
-    let acc = store.accounts.find(a => a.email && a.email.toLowerCase().trim() === targetEmail.toLowerCase().trim());
-    if (acc) {
-      acc.coins = (Number(acc.coins) || 0) + amount;
-      acc.updatedAt = Date.now();
-    } else {
-      const safeName = (targetName && !targetName.includes("Yangi")) ? targetName : (targetEmail.split('@')[0] || "O'quvchi");
-      acc = {
-        id: targetEmail,
-        name: safeName,
-        email: targetEmail,
-        role: 'student',
-        coins: amount,
-        level: 'B1+',
-        dailyMinutes: 0,
-        createdAt: Date.now(),
-        updatedAt: Date.now()
-      };
-      store.accounts.push(acc);
-    }
-    saveStore(store);
-
-    // 2. Broadcast via MQTT to web & Mini App clients
+    // 2. Broadcast via Dual MQTT Brokers (HiveMQ + EMQX) to web & Mini App clients
     const mqttPayload = {
       type: 'USER_COINS_UPDATE',
       eventId: 'ev_admin_coin_' + Date.now(),
@@ -710,62 +857,110 @@ async function handleCallbackQuery(cb) {
       newBalance: acc.coins,
       user: {
         email: targetEmail,
-        coins: acc.coins
+        name: acc.name,
+        coins: acc.coins,
+        updatedAt: Date.now()
       }
     };
     await publishMqtt('ethith/v3/global', mqttPayload);
 
-    // 3. Push to GitHub in background
-    pushStoreToGitHub(store);
-
-    adminStates[chatId] = { step: 'idle' };
-
     await tgCall('editMessageText', {
       chat_id: chatId,
       message_id: cb.message.message_id,
-      text: `🎉 <b>Coin Muvaffaqiyatli O'tkazildi!</b>\n\n` +
+      text: `🎉 <b>Coin Muvaffaqiyatli O'tkazildi (GitHub + Live Sync)!</b>\n\n` +
             `👤 O'quvchi: <b>${acc.name}</b>\n` +
             `📧 Gmail: <code>${targetEmail}</code>\n` +
             `➕ O'tkazilgan: <b>+${amount.toLocaleString()} Coin</b>\n` +
-            `💰 Yangi Balans: <b>${acc.coins.toLocaleString()} Coin</b>\n\n` +
-            `⚡ <i>Foydalanuvchi platformada bo'lsa, tangalar uning ekranida darhol ko'paydi va g'alaba tovushi yangradi!</i>`,
+            `💰 Yangi Balans: <b>${Number(acc.coins).toLocaleString()} Coin</b>\n` +
+            `☁️ GitHub Baza: <b>${res.ok ? 'Saqlandi ✅' : 'Sinxronlandi ⚡'}</b>\n\n` +
+            `⚡ <i>Tangalar o'quvchining GitHub bulut hisobiga yozildi va ekranida darhol yangilandi!</i>`,
       parse_mode: 'HTML'
     });
 
     await tgCall('sendMessage', {
       chat_id: chatId,
-      text: 'Yana boshqa amal bajarish uchun quyidagi menyudan foydalaning:',
+      text: 'Yana boshqa amal bajarish uchun quyidagi menyudan foydalaning yoki Gmail yozing:',
       reply_markup: getMainMenuKeyboard()
     });
   }
 }
 
-// Telegram Long Polling Runner
+// Telegram Long Polling Runner with Batch Deduplication (no spam on reconnect)
 let lastUpdateId = 0;
+let isPollingActive = true;
+
 async function pollUpdates() {
+  if (!isPollingActive) return;
   try {
     const res = await tgCall('getUpdates', {
       offset: lastUpdateId + 1,
-      timeout: 25,
+      timeout: 20,
       allowed_updates: ['message', 'callback_query']
     });
 
-    if (res && res.ok && Array.isArray(res.result)) {
-      for (const update of res.result) {
-        lastUpdateId = update.update_id;
-        if (update.message) {
-          await handleMessage(update.message);
-        } else if (update.callback_query) {
-          await handleCallbackQuery(update.callback_query);
+    if (res && res.ok && Array.isArray(res.result) && res.result.length > 0) {
+      // Advance offset past all received updates
+      for (const u of res.result) {
+        if (u.update_id > lastUpdateId) lastUpdateId = u.update_id;
+      }
+
+      // If multiple messages queued up from the same chat while offline, only process the LATEST update per chat!
+      const latestByChat = new Map();
+      const callbacks = [];
+      for (const u of res.result) {
+        if (u.callback_query) {
+          callbacks.push(u.callback_query);
+        } else if (u.message && u.message.chat) {
+          latestByChat.set(u.message.chat.id, u.message);
         }
       }
+
+      for (const cb of callbacks) {
+        await handleCallbackQuery(cb);
+      }
+      for (const msg of latestByChat.values()) {
+        await handleMessage(msg);
+      }
+    } else if (res && res.error_code === 409) {
+      if (process.env.GITHUB_ACTIONS === 'true') {
+        console.log('[ADMIN BOT] Primary bot instance is already active and polling. Cloud standby yielding cleanly.');
+        process.exit(0);
+      }
+      await new Promise(r => setTimeout(r, 1000));
     }
   } catch (e) {
     console.error('[ADMIN BOT] Polling error:', e.message);
   }
 
-  setTimeout(pollUpdates, 500);
+  if (isPollingActive) {
+    setTimeout(pollUpdates, 400);
+  }
 }
 
-console.log('[ETHITH ADMIN BOT] Starting @ETHITHCOINbot service...');
-pollUpdates();
+// If running inside GitHub Actions, re-dispatch workflow before 50-minute mark for 24/7 cloud operation
+if (process.env.GITHUB_ACTIONS === 'true') {
+  const MAX_RUN_MS = 45 * 60 * 1000; // 45 minutes
+  setTimeout(async () => {
+    console.log('[ADMIN BOT] 45m cycle complete on GitHub Actions. Triggering next cloud cycle...');
+    isPollingActive = false;
+    try {
+      await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/ethith_coin_bot.yml/dispatches`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `token ${GH_TOKEN}`,
+          'User-Agent': 'ETHITH-AdminBot-Chain',
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ref: 'main' })
+      });
+    } catch (e) {}
+    setTimeout(() => process.exit(0), 1500);
+  }, MAX_RUN_MS);
+}
+
+console.log('[ETHITH ADMIN BOT] Starting @ETHITHCOINbot (GitHub Live Cloud Sync)...');
+// Ensure webhook is cleared so getUpdates works reliably
+tgCall('deleteWebhook', { drop_pending_updates: false }).then(() => {
+  pollUpdates();
+});

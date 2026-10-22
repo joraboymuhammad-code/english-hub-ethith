@@ -1773,7 +1773,7 @@
       "id": "admin_official_teacher",
       "role": "teacher",
       "name": "Ustoz",
-      "email": "admin@ethith.uz",
+      "email": "admin_12038f1aq8syash@ethith.uz",
       "createdAt": 1792429101989,
       "coins": 5000,
       "gifts": [],
@@ -1784,17 +1784,6 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null
-    },
-    {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
-      "email": "admin_12038f1aq8syash@ethith.uz",
-      "coins": 5000,
-      "gifts": [],
-      "nameStyle": null,
-      "createdAt": 1792502058827,
-      "level": "C2"
     },
     {
       "id": "tg_98124765",
@@ -1809,20 +1798,6 @@
       "title": null,
       "victorySound": null,
       "updatedAt": 1792612121485
-    },
-    {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
-      "email": "teacher@ethith.uz",
-      "coins": 5000,
-      "avatar": null,
-      "level": "A1",
-      "dailyMinutes": 0,
-      "nameStyle": null,
-      "title": null,
-      "victorySound": null,
-      "updatedAt": 1792606425762
     },
     {
       "id": "sardorbek@ethith.uz",

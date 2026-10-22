@@ -1,0 +1,28 @@
+name: ETHITH Coin Bot 24/7 Cloud Service
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+
+concurrency:
+  group: ethith-coin-bot-cloud
+  cancel-in-progress: false
+
+jobs:
+  run-coin-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run ETHITH Coin Admin Bot (GitHub Cloud Standby/Active)
+        env:
+          GITHUB_ACTIONS: 'true'
+        run: node ethith_admin_bot.js

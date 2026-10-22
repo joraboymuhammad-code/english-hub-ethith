@@ -280,6 +280,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9065,7 +9067,7 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.22.0060";
+window.ETHITH_BUILD_VERSION = "2026.10.22.0065";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -38922,6 +38924,9 @@ window.NAVIGATE_CURRICULUM = {
       }
     } catch(e) {}
 
+    var S = window.EthithApp ? window.EthithApp.state : null;
+    var activeUserEmail = (S && S.user && S.user.email) ? S.user.email.toLowerCase().trim() : '';
+
     remoteAccounts.forEach(function(rAcc) {
       if (!rAcc || isPurgedAccount(rAcc)) return;
       var rEmail = (rAcc.email || '').toLowerCase().trim();
@@ -38938,15 +38943,46 @@ window.NAVIGATE_CURRICULUM = {
         localAccounts.push(rAcc);
         changed = true;
       } else {
-        if ((rAcc.updatedAt || 0) > (existing.updatedAt || 0) || (rAcc.coins !== undefined && rAcc.coins !== existing.coins)) {
-          if (rAcc.coins !== undefined) existing.coins = rAcc.coins;
+        var rUpdated = Number(rAcc.updatedAt) || 0;
+        var lUpdated = Number(existing.updatedAt) || 0;
+        if (rUpdated >= lUpdated || (rAcc.coins !== undefined && Number(rAcc.coins) > Number(existing.coins || 0))) {
+          if (rAcc.coins !== undefined) existing.coins = Number(rAcc.coins);
           if (rAcc.avatar) existing.avatar = rAcc.avatar;
           if (rAcc.level) existing.level = rAcc.level;
           if (rAcc.nameStyle) existing.nameStyle = rAcc.nameStyle;
           if (rAcc.title) existing.title = rAcc.title;
           if (rAcc.victorySound) existing.victorySound = rAcc.victorySound;
           if (rAcc.dailyMinutes !== undefined) existing.dailyMinutes = rAcc.dailyMinutes;
-          existing.updatedAt = Math.max(existing.updatedAt || 0, rAcc.updatedAt || Date.now());
+          existing.updatedAt = Math.max(lUpdated, rUpdated || Date.now());
+          changed = true;
+        }
+      }
+
+      if (activeUserEmail && rEmail === activeUserEmail && S && S.user && rAcc.coins !== undefined) {
+        var rCoins = Number(rAcc.coins) || 0;
+        var myCoins = Number(S.user.coins) || 0;
+        if (rCoins !== myCoins && ((Number(rAcc.updatedAt) || 0) >= (Number(S.user.updatedAt) || 0) || rCoins > myCoins)) {
+          var diff = rCoins - myCoins;
+          S.user.coins = rCoins;
+          S.user.updatedAt = Math.max(Number(S.user.updatedAt) || 0, Number(rAcc.updatedAt) || Date.now());
+          try {
+            localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+            localStorage.setItem('ethith_user', JSON.stringify(S.user));
+          } catch(e) {}
+          if (window._ethithUpdateTopCoins) {
+            try { window._ethithUpdateTopCoins(); } catch(e) {}
+          }
+          if (diff > 0 && typeof document !== 'undefined' && document.body) {
+            var toastEl = document.getElementById('ethCoinLiveToast');
+            if (!toastEl) {
+              toastEl = document.createElement('div');
+              toastEl.id = 'ethCoinLiveToast';
+              toastEl.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:12px 24px;border-radius:16px;font-weight:900;font-size:14px;z-index:2147483647;box-shadow:0 15px 35px rgba(245,158,11,0.5);border:1.5px solid #fde68a;display:flex;align-items:center;gap:10px;';
+              document.body.appendChild(toastEl);
+            }
+            toastEl.innerHTML = '<span>🪙</span> <span>+' + diff.toLocaleString() + ' ETHITH Coin hisobingizga tushdi! (Jami: ' + rCoins.toLocaleString() + ' Coin)</span>';
+            setTimeout(function() { if (toastEl && toastEl.parentNode) toastEl.remove(); }, 5000);
+          }
           changed = true;
         }
       }
@@ -38957,6 +38993,8 @@ window.NAVIGATE_CURRICULUM = {
       });
       if (!regItem) {
         regList.push({ id: rAcc.id, name: rAcc.name, email: rAcc.email, role: rAcc.role || 'student', coins: rAcc.coins, avatar: rAcc.avatar, level: rAcc.level });
+      } else if (rAcc.coins !== undefined) {
+        regItem.coins = Math.max(Number(regItem.coins) || 0, Number(rAcc.coins) || 0);
       }
     });
 
@@ -39252,8 +39290,11 @@ window.NAVIGATE_CURRICULUM = {
             if (window.EthithApp && window.EthithApp.saveState) {
               window.EthithApp.saveState();
             }
+            if (window._ethithUpdateTopCoins) {
+              try { window._ethithUpdateTopCoins(); } catch(e) {}
+            }
             // Update top bar DOM elements
-            var coinEl = document.getElementById('user-coins');
+            var coinEl = document.getElementById('topEthCoinVal') || document.getElementById('user-coins');
             if (coinEl) coinEl.innerText = (S.user.coins || 0).toLocaleString();
             var nameEl = document.getElementById('user-name');
             if (nameEl) nameEl.innerText = S.user.name;
