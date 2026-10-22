@@ -1773,7 +1773,7 @@
       "id": "admin_official_teacher",
       "role": "teacher",
       "name": "Ustoz",
-      "email": "admin_12038f1aq8syash@ethith.uz",
+      "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
       "coins": 5000,
       "gifts": [],
@@ -1784,6 +1784,17 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 5000,
+      "gifts": [],
+      "nameStyle": null,
+      "createdAt": 1792502058827,
+      "level": "C2"
     },
     {
       "id": "tg_98124765",
@@ -1797,7 +1808,21 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "updatedAt": 1792673953881
+      "updatedAt": 1792673956873
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "teacher@ethith.uz",
+      "coins": 5000,
+      "avatar": null,
+      "level": "A1",
+      "dailyMinutes": 0,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null,
+      "updatedAt": 1792606425762
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -1812,28 +1837,6 @@
       "title": null,
       "dailyMinutes": 0,
       "updatedAt": 1792611123890
-    },
-    {
-      "id": "sarvartovboyev09@gmail.com",
-      "name": "Sarvar Tovboyev",
-      "email": "sarvartovboyev09@gmail.com",
-      "role": "student",
-      "coins": 100000,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "createdAt": 1792673102972,
-      "updatedAt": 1792673102972
-    },
-    {
-      "id": "muhammedjoraboyev1@gmail.com",
-      "name": "Muhammadyusuf",
-      "email": "muhammedjoraboyev1@gmail.com",
-      "role": "student",
-      "coins": 100000,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "createdAt": 1792673102972,
-      "updatedAt": 1792673102972
     },
     {
       "id": "std_1",
@@ -22121,6 +22124,18 @@
         "width": 7.5,
         "height": 1.6,
         "correct": false
+      },
+      {
+        "page": 2004,
+        "type": "fill",
+        "top": 45.1,
+        "left": 33,
+        "width": 20.3,
+        "height": 1.8,
+        "correct": "making small talk",
+        "label": "2",
+        "id": "p2004_custom_89481",
+        "group": "2"
       }
     ],
     "2005": [
@@ -22485,12 +22500,8 @@
     "85": 1792612525678,
     "86": 1792612525678,
     "87": 1792612525678,
-    "2004": 1792672406322,
+    "2004": 1792676089481,
     "2005": 1792672414530
   },
-  "updatedAt": 1792673953881,
-  "authorizedAdminChatIds": [
-    6772427596,
-    98124765
-  ]
+  "updatedAt": 1792676091058
 }
