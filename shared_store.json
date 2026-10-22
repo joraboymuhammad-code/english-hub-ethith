@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792612514081,
+      "created": 1792429062767,
       "students": [
         {
           "id": "std_1",
@@ -110,21 +110,7 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [],
-      "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792607960771
-      },
       "schedule": "har_kuni",
-      "customStudentNames": {},
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -1121,6 +1107,20 @@
           }
         },
         "seededWindowV3": true
+      },
+      "customStudentNames": {},
+      "activeHomework": {
+        "dateKey": "2026-10-21",
+        "dateDisp": "21.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792607960771
       }
     },
     {
@@ -1735,7 +1735,6 @@
       "submissions": []
     }
   ],
-  "quizzes": [],
   "deletedExamIds": [
     "exam_1792011716430",
     "407221",
@@ -1748,9 +1747,6 @@
     "exam_1792042206065",
     "792046"
   ],
-  "deletedQuizIds": [
-    "quiz_main_blitz"
-  ],
   "deletedListingIds": [
     "p2p_1792322748592_nls2",
     "p2p_1792322765334_1cj0",
@@ -1759,23 +1755,22 @@
   ],
   "accounts": [
     {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 5000,
+      "level": "C2",
+      "dailyMinutes": 0,
+      "updatedAt": 1792612121485
+    },
+    {
       "id": "tg_98124765",
       "role": "student",
       "name": "Muhammad Jo'raboyev",
       "email": "mu_striker@telegram.org",
       "coins": 100,
       "level": "A1",
-      "dailyMinutes": 0,
-      "updatedAt": 1792612121485
-    },
-    {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
-      "email": "ADMIN_12038F1aq8syash@ethith.uz",
-      "coins": 5000,
-      "createdAt": 1792612524777,
-      "level": "C2",
       "dailyMinutes": 0,
       "updatedAt": 1792612121485
     }
@@ -21682,5 +21677,5 @@
       }
     ]
   },
-  "updatedAt": 1792612525678
+  "updatedAt": 1792611364960
 }

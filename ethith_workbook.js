@@ -177,6 +177,160 @@
     }
   ];
 
+  // 12 Authentic Units from Oxford Navigate Upper-Intermediate (B2) Workbook (Pages 4..87 -> internal IDs 2004..2087)
+  WB.unitsB2 = [
+    {
+      unit: 1,
+      title: "Unit 1: Communication",
+      subtitle: "Grammar: using different question types, present perfect simple and continuous · Vocabulary: conversation, written communication",
+      available: true,
+      lessons: [
+        { code: "1.1", title: "1.1 The rules of conversation", desc: "Vocabulary (Conversation), Grammar (Using different question types) & Pronunciation", pages: [2004, 2005], active: true },
+        { code: "1.2", title: "1.2 The letter is dead, long live the letter!", desc: "Vocabulary (Written communication), Grammar (Present perfect simple and continuous)", pages: [2006, 2007], active: true },
+        { code: "1.3", title: "1.3 Vocabulary development", desc: "Verbs + prepositions, vocabulary extension", pages: [2008], active: true },
+        { code: "1.4", title: "1.4 Speaking and writing", desc: "Dealing with problems on the phone, an informal email giving news", pages: [2009], active: true }
+      ]
+    },
+    {
+      unit: 2,
+      title: "Unit 2: Escape",
+      subtitle: "Grammar: talking about past events, past perfect forms · Vocabulary: travel and adventure, adjectives of feeling",
+      available: true,
+      lessons: [
+        { code: "2.1", title: "2.1 Out of your comfort zone", desc: "Vocabulary (Talking about travel and adventure), Grammar (Talking about past events)", pages: [2010, 2011], active: true },
+        { code: "2.2", title: "2.2 An extraordinary escape", desc: "Grammar (Past perfect forms), Vocabulary (Adjectives of feeling)", pages: [2012, 2013], active: true },
+        { code: "2.3", title: "2.3 Vocabulary development", desc: "North American English, vocabulary extension", pages: [2014], active: true },
+        { code: "2.4", title: "2.4 Speaking and writing", desc: "Telling and reacting to a story, an email of complaint", pages: [2015], active: true },
+        { code: "2.5", title: "2.5 Reading & Review: Units 1 & 2", desc: "Reading for pleasure (The Riddle of the Sands), Review: Units 1 and 2", pages: [2016, 2017], active: true }
+      ]
+    },
+    {
+      unit: 3,
+      title: "Unit 3: Invest",
+      subtitle: "Grammar: talking about the future (1) & (2) · Vocabulary: learning, thinking and knowledge, collocations with time and money",
+      available: true,
+      lessons: [
+        { code: "3.1", title: "3.1 Invest in your future", desc: "Grammar (Talking about the future (1)), Vocabulary (Learning, thinking and knowledge)", pages: [2018, 2019], active: true },
+        { code: "3.2", title: "3.2 The changing face of work", desc: "Vocabulary (Collocations with time and money), Grammar (Talking about the future (2))", pages: [2020, 2021], active: true },
+        { code: "3.3", title: "3.3 Vocabulary development", desc: "Noun suffixes, vocabulary extension", pages: [2022], active: true },
+        { code: "3.4", title: "3.4 Speaking and writing", desc: "Saying how likely something is to happen, a balanced opinion essay", pages: [2023], active: true }
+      ]
+    },
+    {
+      unit: 4,
+      title: "Unit 4: Creativity",
+      subtitle: "Grammar: using the passive, causative have and get · Vocabulary: how things work, describing your impressions",
+      available: true,
+      lessons: [
+        { code: "4.1", title: "4.1 Inventive ideas", desc: "Grammar (Using the passive), Vocabulary (How things work)", pages: [2024, 2025], active: true },
+        { code: "4.2", title: "4.2 Creative environments", desc: "Vocabulary (Describing your impressions), Grammar (Using causative have and get)", pages: [2026, 2027], active: true },
+        { code: "4.3", title: "4.3 Vocabulary development", desc: "Easily confused words, vocabulary extension", pages: [2028], active: true },
+        { code: "4.4", title: "4.4 Speaking and writing", desc: "Giving opinions and trying to change someone's opinion, writing a summary", pages: [2029, 2030], active: true },
+        { code: "4.5", title: "4.5 Review: Units 3 & 4", desc: "Grammar and vocabulary review", pages: [2031], active: true }
+      ]
+    },
+    {
+      unit: 5,
+      title: "Unit 5: Mind",
+      subtitle: "Grammar: using verbs with -ing and infinitive · Vocabulary: childhood memories, emotions and behaviour",
+      available: true,
+      lessons: [
+        { code: "5.1", title: "5.1 As if it were yesterday ...", desc: "Vocabulary (Talking about childhood memories), Grammar (Using verbs with -ing and infinitive)", pages: [2032, 2033], active: true },
+        { code: "5.2", title: "5.2 Bored!", desc: "Vocabulary (Emotions and behaviour), Grammar (Other uses of -ing and infinitive with to)", pages: [2034, 2035], active: true },
+        { code: "5.3", title: "5.3 Vocabulary development", desc: "Phrasal verbs with out and up, vocabulary extension", pages: [2036], active: true },
+        { code: "5.4", title: "5.4 Speaking and writing", desc: "Language to give solutions, an article giving advice", pages: [2037], active: true }
+      ]
+    },
+    {
+      unit: 6,
+      title: "Unit 6: Community",
+      subtitle: "Grammar: articles, using determiners and qualifiers · Vocabulary: cultures and communities, housing and living",
+      available: true,
+      lessons: [
+        { code: "6.1", title: "6.1 Crossing cultures", desc: "Vocabulary (Cultures and communities), Grammar (Articles)", pages: [2038, 2039], active: true },
+        { code: "6.2", title: "6.2 Alone or together?", desc: "Vocabulary (Housing and living), Grammar (Using determiners and qualifiers)", pages: [2040, 2041], active: true },
+        { code: "6.3", title: "6.3 Vocabulary development", desc: "High-frequency verb collocations, vocabulary extension", pages: [2042], active: true },
+        { code: "6.4", title: "6.4 Speaking, writing & Reading", desc: "Starting a conversation with a stranger, describing data, Seventeenth-century London", pages: [2043, 2044], active: true },
+        { code: "6.5", title: "6.5 Review: Units 5 & 6", desc: "Grammar and vocabulary review", pages: [2045], active: true }
+      ]
+    },
+    {
+      unit: 7,
+      title: "Unit 7: Rules",
+      subtitle: "Grammar: present modal verbs, past modals of deduction · Vocabulary: crime and justice, using verbs and prepositions",
+      available: true,
+      lessons: [
+        { code: "7.1", title: "7.1 Finders keepers?", desc: "Vocabulary (Crime and justice), Grammar (Present modal verbs)", pages: [2046, 2047], active: true },
+        { code: "7.2", title: "7.2 Rules at work", desc: "Vocabulary (Using verbs and prepositions), Grammar (Past modals of deduction)", pages: [2048, 2049], active: true },
+        { code: "7.3", title: "7.3 Vocabulary development", desc: "The meaning of prefixes, vocabulary extension", pages: [2050], active: true },
+        { code: "7.4", title: "7.4 Speaking and writing", desc: "Agreeing and disagreeing, a persuasive letter/email", pages: [2051], active: true }
+      ]
+    },
+    {
+      unit: 8,
+      title: "Unit 8: Old and new",
+      subtitle: "Grammar: relative clauses, participle clauses · Vocabulary: smart technology, describing people",
+      available: true,
+      lessons: [
+        { code: "8.1", title: "8.1 The Internet of Things", desc: "Vocabulary (Smart technology), Grammar (Relative clauses)", pages: [2052, 2053], active: true },
+        { code: "8.2", title: "8.2 Gen X, Gen Y, Gen Z", desc: "Vocabulary (Describing people), Grammar (Participle clauses)", pages: [2054, 2055], active: true },
+        { code: "8.3", title: "8.3 Vocabulary development", desc: "Adjectives + dependent prepositions, vocabulary extension", pages: [2056], active: true },
+        { code: "8.4", title: "8.4 Speaking and writing", desc: "Giving your impressions of an event, writing a review", pages: [2057, 2058], active: true },
+        { code: "8.5", title: "8.5 Review: Units 7 & 8", desc: "Grammar and vocabulary review", pages: [2059], active: true }
+      ]
+    },
+    {
+      unit: 9,
+      title: "Unit 9: Nightlife",
+      subtitle: "Grammar: adjectives and adverbs, past and present habits · Vocabulary: different climates and lifestyles, sleep patterns",
+      available: true,
+      lessons: [
+        { code: "9.1", title: "9.1 Dark days and white nights", desc: "Vocabulary (Different climates and lifestyles), Grammar (Adjectives and adverbs)", pages: [2060, 2061], active: true },
+        { code: "9.2", title: "9.2 Sleep", desc: "Grammar (Past and present habits), Vocabulary (Sleep patterns)", pages: [2062, 2063], active: true },
+        { code: "9.3", title: "9.3 Vocabulary development", desc: "Synonyms and antonyms, vocabulary extension", pages: [2064], active: true },
+        { code: "9.4", title: "9.4 Speaking and writing", desc: "Interrupting appropriately, writing a report", pages: [2065], active: true }
+      ]
+    },
+    {
+      unit: 10,
+      title: "Unit 10: Senses",
+      subtitle: "Grammar: order of adjectives, if + other conjunction clauses · Vocabulary: words for looking and seeing, rating performances",
+      available: true,
+      lessons: [
+        { code: "10.1", title: "10.1 Can you believe your eyes?", desc: "Vocabulary (Words for looking and seeing), Grammar (Order of adjectives)", pages: [2066, 2067], active: true },
+        { code: "10.2", title: "10.2 Sense of humour", desc: "Grammar (if + other conjunction clauses), Vocabulary (Rating performances)", pages: [2068, 2069], active: true },
+        { code: "10.3", title: "10.3 Vocabulary development", desc: "Easily confused sense verbs, vocabulary extension", pages: [2070], active: true },
+        { code: "10.4", title: "10.4 Speaking, writing & Reading", desc: "Checking and clarifying, describing a scene in detail, Authentic newspaper article", pages: [2071, 2072], active: true },
+        { code: "10.5", title: "10.5 Review: Units 9 & 10", desc: "Grammar and vocabulary review", pages: [2073], active: true }
+      ]
+    },
+    {
+      unit: 11,
+      title: "Unit 11: Media",
+      subtitle: "Grammar: reported speech, reporting verbs · Vocabulary: television viewing habits, talking about news",
+      available: true,
+      lessons: [
+        { code: "11.1", title: "11.1 Extreme streaming", desc: "Vocabulary (Television viewing habits), Grammar (Reported speech)", pages: [2074, 2075], active: true },
+        { code: "11.2", title: "11.2 Positive news", desc: "Vocabulary (Talking about news), Grammar (Reporting verbs)", pages: [2076, 2077], active: true },
+        { code: "11.3", title: "11.3 Vocabulary development", desc: "Adjective suffixes, vocabulary extension", pages: [2078], active: true },
+        { code: "11.4", title: "11.4 Speaking and writing", desc: "Retelling a (news) story, an opinion essay in a formal style", pages: [2079], active: true }
+      ]
+    },
+    {
+      unit: 12,
+      title: "Unit 12: Life stages",
+      subtitle: "Grammar: unreal situations, using wish and if only · Vocabulary: family and relationships, life events and choices",
+      available: true,
+      lessons: [
+        { code: "12.1", title: "12.1 Nearest and dearest", desc: "Vocabulary (Family and relationships), Grammar (Unreal situations)", pages: [2080, 2081], active: true },
+        { code: "12.2", title: "12.2 If I could turn back time ...", desc: "Vocabulary (Life events and choices), Grammar (Using wish and if only)", pages: [2082, 2083], active: true },
+        { code: "12.3", title: "12.3 Vocabulary development", desc: "Compound adjectives, vocabulary extension", pages: [2084], active: true },
+        { code: "12.4", title: "12.4 Speaking and writing", desc: "Reflecting on life events and choices, writing a biography", pages: [2085, 2086], active: true },
+        { code: "12.5", title: "12.5 Review: Units 11 & 12", desc: "Grammar and vocabulary review", pages: [2087], active: true }
+      ]
+    }
+  ];
+
   // 100% Calibrated Coordinates & Multi-Type Data for Unit 1.1 (Pages 4 and 5)
   // Listening exercises (4b, 7a, 7c, 7d) omitted strictly per requirements.
   WB.defaultInputs = {
@@ -263,7 +417,53 @@
     84: [{"page":84,"type":"choose","top":24.3,"left":30.9,"width":3.4,"height":1.6,"correct":true,"label":"New","id":"p84_custom_89802","group":"p84_grp_9802","text":""},{"page":84,"type":"choose","top":29.1,"left":18.9,"width":3.2,"height":1.5,"correct":false,"label":"New","id":"p84_custom_04984","group":"p84_grp_4984","text":""},{"page":84,"type":"choose","top":30.7,"left":46.1,"width":3.5,"height":1.5,"correct":true,"label":"New","id":"p84_custom_18106","group":"p84_grp_8106","text":""},{"page":84,"type":"choose","top":33.8,"left":31.3,"width":2.3,"height":1.8,"correct":true,"label":"New","id":"p84_custom_28236","group":"p84_grp_8236","text":""},{"page":84,"type":"choose","top":38.4,"left":18.4,"width":2.9,"height":2.1,"correct":true,"label":"New","id":"p84_custom_36086","group":"p84_grp_6086","text":""},{"page":84,"type":"choose","top":40.2,"left":29,"width":3.2,"height":2.2,"correct":true,"label":"New","id":"p84_custom_44556","group":"p84_grp_4556","text":""},{"page":84,"type":"choose","top":23.9,"left":27.8,"width":2.8,"height":2.4,"correct":false,"label":"New","id":"p84_custom_50204","group":"p84_grp_0204","text":""},{"page":84,"type":"choose","top":23.6,"left":24.9,"width":2.8,"height":2.8,"correct":false,"label":"New","id":"p84_custom_55642","group":"p84_grp_5642","text":""},{"page":84,"type":"choose","top":28.8,"left":22.7,"width":2.3,"height":2.2,"correct":false,"label":"New","id":"p84_custom_62340","group":"p84_grp_2340","text":""},{"page":84,"type":"choose","top":28.8,"left":25.6,"width":3.4,"height":2,"correct":false,"label":"New","id":"p84_custom_67498","group":"p84_grp_7498","text":""},{"page":84,"type":"choose","top":30.1,"left":40.9,"width":4.8,"height":2.2,"correct":false,"label":"New","id":"p84_custom_72936","group":"p84_grp_2936","text":""},{"page":84,"type":"choose","top":33.7,"left":34.4,"width":2.8,"height":2.2,"correct":false,"label":"New","id":"p84_custom_78816","group":"p84_grp_8816","text":""},{"page":84,"type":"choose","top":33.7,"left":37.3,"width":4.5,"height":2.7,"correct":false,"label":"New","id":"p84_custom_89986","group":"p84_grp_9986","text":""},{"page":84,"type":"choose","top":38.2,"left":11.9,"width":5.8,"height":2.3,"correct":false,"label":"New","id":"p84_custom_02162","group":"p84_grp_2162","text":""},{"page":84,"type":"choose","top":38.4,"left":22.1,"width":4.1,"height":2,"correct":false,"label":"New","id":"p84_custom_06530","group":"p84_grp_6530","text":""},{"page":84,"type":"choose","top":40.6,"left":22.5,"width":3.5,"height":2,"correct":false,"label":"New","id":"p84_custom_14358","group":"p84_grp_4358","text":""},{"page":84,"type":"choose","top":40.6,"left":26.1,"width":2.5,"height":2,"correct":false,"label":"New","id":"p84_custom_22350","group":"p84_grp_2350","text":""},{"page":84,"type":"fill","top":62.6,"left":11.9,"width":5.5,"height":2.1,"correct":"about","label":"2","id":"p84_custom_56326","group":"2"},{"page":84,"type":"fill","top":70.6,"left":40.4,"width":7.1,"height":1.8,"correct":"in","label":"3","id":"p84_custom_66354","group":"3"},{"page":84,"type":"fill","top":72.5,"left":33,"width":5.8,"height":1.8,"correct":"about","label":"4","id":"p84_custom_75562","group":"4"},{"page":84,"type":"fill","top":74,"left":33.4,"width":4.8,"height":2,"correct":"on","label":"5","id":"p84_custom_86792","group":"5"},{"page":84,"type":"fill","top":77.8,"left":30.9,"width":5,"height":1.5,"correct":"of","label":"6","id":"p84_custom_05004","group":"6"},{"page":84,"type":"fill","top":79.4,"left":27.1,"width":5.7,"height":1.6,"correct":"to","label":"7","id":"p84_custom_21438","group":"7"},{"page":84,"type":"fill","top":81.1,"left":29.7,"width":5.5,"height":2,"correct":"for","label":"8","id":"p84_custom_30632","group":"8"},{"page":84,"type":"fill","top":82.6,"left":35.7,"width":5,"height":2,"correct":"to","label":"9","id":"p84_custom_37478","group":"9"},{"page":84,"type":"fill","top":90.9,"left":18.1,"width":5.5,"height":2,"correct":"on","label":"10","id":"p84_custom_44764","group":"10"},{"page":84,"type":"fill","top":23.6,"left":65.6,"width":9.6,"height":2.2,"correct":"logo","label":"2","id":"p84_custom_29164","group":"2"},{"page":84,"type":"fill","top":25.3,"left":65.3,"width":11.8,"height":2.1,"correct":"billboard","label":"3","id":"p84_custom_45270","group":"3"},{"page":84,"type":"fill","top":27.2,"left":65.2,"width":11.1,"height":2.1,"correct":"brand","label":"3","id":"p84_custom_65622","group":"3"},{"page":84,"type":"fill","top":28.9,"left":65.5,"width":11.8,"height":1.7,"correct":"poster","label":"5","id":"p84_custom_95176","group":"5"},{"page":84,"type":"fill","top":30.8,"left":65.4,"width":12.1,"height":1.7,"correct":"product","label":"6","id":"p84_custom_31484","group":"6"},{"page":84,"type":"fill","top":32.4,"left":65.1,"width":12.4,"height":2,"correct":"slogan","label":"7","id":"p84_custom_54266","group":"7"},{"page":84,"type":"fill","top":40.1,"left":61.2,"width":3.8,"height":2,"correct":"d","label":"2","id":"p84_custom_74214","group":"2"},{"page":84,"type":"fill","top":42.2,"left":62.5,"width":3.4,"height":1.7,"correct":"f","label":"3","id":"p84_custom_88600","group":"3"},{"page":84,"type":"fill","top":43.7,"left":63,"width":3.4,"height":2.1,"correct":"a","label":"4","id":"p84_custom_03228","group":"4"},{"page":84,"type":"fill","top":45.9,"left":65.4,"width":2.6,"height":1.4,"correct":"g","label":"5","id":"p84_custom_24324","group":"5"},{"page":84,"type":"fill","top":47.4,"left":64.9,"width":2.8,"height":1.5,"correct":"c","label":"6","id":"p84_custom_40174","group":"6"},{"page":84,"type":"fill","top":49.5,"left":64.1,"width":2.9,"height":1.8,"correct":"b","label":"7","id":"p84_custom_54043","group":"7"},{"page":84,"type":"fill","top":55.1,"left":62.4,"width":9.8,"height":1.6,"correct":"own","label":"2","id":"p84_custom_76546","group":"2"},{"page":84,"type":"fill","top":56.9,"left":65.5,"width":9.3,"height":1.6,"correct":"round","label":"3","id":"p84_custom_93013","group":"3"},{"page":84,"type":"fill","top":58.8,"left":67.5,"width":9.3,"height":1.8,"correct":"way","label":"4","id":"p84_custom_10584","group":"4"},{"page":84,"type":"fill","top":60.6,"left":64.7,"width":9.2,"height":1.8,"correct":"over","label":"5","id":"p84_custom_28263","group":"5"}],
     85: [{"page":85,"type":"choose","top":24.8,"left":53,"width":38.7,"height":1.9,"correct":false,"label":"1","id":"p85_custom_42330","group":"1","text":"1"},{"page":85,"type":"choose","top":26.6,"left":52.9,"width":39.3,"height":1.7,"correct":true,"label":"2","id":"p85_custom_62988","group":"2","text":"2"},{"page":85,"type":"choose","top":28.2,"left":52.9,"width":39.6,"height":1.9,"correct":false,"label":"3","id":"p85_custom_83858","group":"3","text":"3"},{"page":85,"type":"fill","top":74,"left":75.9,"width":3.2,"height":1.7,"correct":"1","label":"2","id":"p85_custom_18508","group":"2"},{"page":85,"type":"fill","top":75.6,"left":67.7,"width":4,"height":2.3,"correct":"3","label":"3","id":"p85_custom_28074","group":"3"},{"page":85,"type":"fill","top":77.6,"left":70,"width":3.6,"height":1.8,"correct":"5","label":"4","id":"p85_custom_54582","group":"4"},{"page":85,"type":"fill","top":78.9,"left":65.8,"width":3.6,"height":2.1,"correct":"4","label":"5","id":"p85_custom_68702","group":"5"},{"page":85,"type":"fill","top":80.8,"left":66.9,"width":2.9,"height":1.8,"correct":"8","label":"6","id":"p85_custom_87048","group":"6"},{"page":85,"type":"fill","top":82.5,"left":65.9,"width":3.3,"height":1.7,"correct":"2","label":"7","id":"p85_custom_01832","group":"7"},{"page":85,"type":"fill","top":84.3,"left":67.5,"width":3.6,"height":1.7,"correct":"7","label":"8","id":"p85_custom_14480","group":"8"}],
     86: [{"page":86,"type":"fill","top":64.9,"left":81.3,"width":9.1,"height":1.8,"correct":"remember","label":"2","id":"p86_custom_64660","group":"2"},{"page":86,"type":"fill","top":69.6,"left":80.7,"width":9.1,"height":1.7,"correct":"told","label":"3","id":"p86_custom_78768","group":"3"},{"page":86,"type":"fill","top":73.4,"left":56.2,"width":9.2,"height":2.1,"correct":"explained","label":"4","id":"p86_custom_96722","group":"4"},{"page":86,"type":"fill","top":78,"left":83.2,"width":9.5,"height":1.7,"correct":"went on","label":"5","id":"p86_custom_13900","group":"5"},{"page":86,"type":"fill","top":79.7,"left":57.8,"width":9.5,"height":1.6,"correct":"tell","label":"6","id":"p86_custom_27598","group":"6"},{"page":86,"type":"fill","top":84.3,"left":83.6,"width":8.7,"height":1.6,"correct":"gave","label":"7","id":"p86_custom_40846","group":"7"},{"page":86,"type":"fill","top":87.3,"left":72.6,"width":9.4,"height":1.6,"correct":"talk","label":"8","id":"p86_custom_54726","group":"8"}],
-    87: [{"page":87,"type":"fill","top":29.7,"left":23.4,"width":25,"height":2.5,"correct":"had worked on a really exciting advertising campaign the year before.","label":"2","id":"p87_custom_45218","group":"2"},{"page":87,"type":"fill","top":35.7,"left":10.3,"width":38.7,"height":1.7,"correct":"were hoping to start a new company the following year.","label":"3","id":"p87_custom_61188","group":"3"},{"page":87,"type":"fill","top":39,"left":29.4,"width":18.6,"height":2.1,"correct":"how many employees I had in my company.","label":"4","id":"p87_custom_78482","group":"4"},{"page":87,"type":"fill","top":43.2,"left":20.7,"width":28.8,"height":2.2,"correct":"if we did any market research before launching a new product.","label":"5","id":"p87_custom_93894","group":"5"},{"page":87,"type":"fill","top":47.4,"left":22.2,"width":26,"height":2.3,"correct":"what I was doing the next/ following day.","label":"6","id":"p87_custom_15786","group":"6"},{"page":87,"type":"fill","top":60.8,"left":10.7,"width":16,"height":1.5,"correct":"shouldn't have trusted","label":"2","id":"p87_custom_33570","group":"2"},{"page":87,"type":"fill","top":65.2,"left":11.3,"width":16.3,"height":1.5,"correct":"wented","label":"3","id":"p87_custom_46098","group":"3"},{"page":87,"type":"fill","top":66.7,"left":28.3,"width":15.2,"height":1.5,"correct":"should have cancelled","label":"4","id":"p87_custom_65848","group":"4"},{"page":87,"type":"fill","top":73,"left":26.5,"width":16.5,"height":1.6,"correct":"had installed","label":"5","id":"p87_custom_77800","group":"5"},{"page":87,"type":"fill","top":75.8,"left":28.5,"width":15.9,"height":1.8,"correct":"should have done","label":"6","id":"p87_custom_90524","group":"6"},{"page":87,"type":"fill","top":76.9,"left":27.4,"width":16.6,"height":1.7,"correct":"had made","label":"7","id":"p87_custom_10126","group":"7"},{"page":87,"type":"fill","top":78.5,"left":23.2,"width":16.2,"height":1.6,"correct":"wouldn't be or wouldn't have been","label":"8","id":"p87_custom_32503","group":"8"},{"page":87,"type":"choose","top":25.6,"left":59.7,"width":5.6,"height":1.9,"correct":true,"label":"2","id":"p87_custom_68818","group":"2","text":"2"},{"page":87,"type":"choose","top":28.6,"left":64.9,"width":6.6,"height":2.1,"correct":true,"label":"3","id":"p87_custom_83245","group":"3","text":"3"},{"page":87,"type":"choose","top":31.7,"left":84.9,"width":5.3,"height":2.6,"correct":true,"label":"4","id":"p87_custom_92135","group":"4","text":"4"},{"page":87,"type":"choose","top":34.8,"left":81.5,"width":2.7,"height":2.6,"correct":true,"label":"5","id":"p87_custom_01606","group":"5","text":"5"},{"page":87,"type":"choose","top":25.7,"left":65.8,"width":4,"height":1.8,"correct":false,"label":"New","id":"p87_custom_31291","group":"p87_grp_1291","text":""},{"page":87,"type":"choose","top":25.5,"left":70.4,"width":5.5,"height":2.3,"correct":false,"label":"New","id":"p87_custom_35959","group":"p87_grp_5959","text":""},{"page":87,"type":"choose","top":28.6,"left":72.3,"width":6.8,"height":2.6,"correct":false,"label":"New","id":"p87_custom_39708","group":"p87_grp_9708","text":""},{"page":87,"type":"choose","top":28.7,"left":80.1,"width":5.8,"height":2.5,"correct":false,"label":"New","id":"p87_custom_44086","group":"p87_grp_4086","text":""},{"page":87,"type":"choose","top":32,"left":79.1,"width":4.6,"height":2.2,"correct":false,"label":"New","id":"p87_custom_47784","group":"p87_grp_7784","text":""},{"page":87,"type":"choose","top":32.3,"left":71.7,"width":7.4,"height":1.9,"correct":false,"label":"New","id":"p87_custom_53471","group":"p87_grp_3471","text":""},{"page":87,"type":"choose","top":35.2,"left":74.6,"width":2.7,"height":2.2,"correct":false,"label":"New","id":"p87_custom_58030","group":"p87_grp_8030","text":""},{"page":87,"type":"choose","top":35.5,"left":78.2,"width":2.6,"height":1.9,"correct":false,"label":"New","id":"p87_custom_62698","group":"p87_grp_2698","text":""},{"page":87,"type":"fill","top":45.4,"left":78.7,"width":3,"height":1.9,"correct":"a","label":"New","id":"p87_custom_88501","group":""},{"page":87,"type":"fill","top":46.5,"left":83.7,"width":2.6,"height":1.7,"correct":"e","label":"New","id":"p87_custom_97997","group":""},{"page":87,"type":"fill","top":48.3,"left":84.7,"width":3.2,"height":1.8,"correct":"b","label":"New","id":"p87_custom_06136","group":""},{"page":87,"type":"fill","top":50,"left":77.3,"width":3.8,"height":2.1,"correct":"d","label":"New","id":"p87_custom_13001","group":""},{"page":87,"type":"fill","top":43.5,"left":78.1,"width":2.9,"height":1.5,"correct":"f","label":"New","id":"p87_custom_96352","group":""}]
+    87: [{"page":87,"type":"fill","top":29.7,"left":23.4,"width":25,"height":2.5,"correct":"had worked on a really exciting advertising campaign the year before.","label":"2","id":"p87_custom_45218","group":"2"},{"page":87,"type":"fill","top":35.7,"left":10.3,"width":38.7,"height":1.7,"correct":"were hoping to start a new company the following year.","label":"3","id":"p87_custom_61188","group":"3"},{"page":87,"type":"fill","top":39,"left":29.4,"width":18.6,"height":2.1,"correct":"how many employees I had in my company.","label":"4","id":"p87_custom_78482","group":"4"},{"page":87,"type":"fill","top":43.2,"left":20.7,"width":28.8,"height":2.2,"correct":"if we did any market research before launching a new product.","label":"5","id":"p87_custom_93894","group":"5"},{"page":87,"type":"fill","top":47.4,"left":22.2,"width":26,"height":2.3,"correct":"what I was doing the next/ following day.","label":"6","id":"p87_custom_15786","group":"6"},{"page":87,"type":"fill","top":60.8,"left":10.7,"width":16,"height":1.5,"correct":"shouldn't have trusted","label":"2","id":"p87_custom_33570","group":"2"},{"page":87,"type":"fill","top":65.2,"left":11.3,"width":16.3,"height":1.5,"correct":"wented","label":"3","id":"p87_custom_46098","group":"3"},{"page":87,"type":"fill","top":66.7,"left":28.3,"width":15.2,"height":1.5,"correct":"should have cancelled","label":"4","id":"p87_custom_65848","group":"4"},{"page":87,"type":"fill","top":73,"left":26.5,"width":16.5,"height":1.6,"correct":"had installed","label":"5","id":"p87_custom_77800","group":"5"},{"page":87,"type":"fill","top":75.8,"left":28.5,"width":15.9,"height":1.8,"correct":"should have done","label":"6","id":"p87_custom_90524","group":"6"},{"page":87,"type":"fill","top":76.9,"left":27.4,"width":16.6,"height":1.7,"correct":"had made","label":"7","id":"p87_custom_10126","group":"7"},{"page":87,"type":"fill","top":78.5,"left":23.2,"width":16.2,"height":1.6,"correct":"wouldn't be or wouldn't have been","label":"8","id":"p87_custom_32503","group":"8"},{"page":87,"type":"choose","top":25.6,"left":59.7,"width":5.6,"height":1.9,"correct":true,"label":"2","id":"p87_custom_68818","group":"2","text":"2"},{"page":87,"type":"choose","top":28.6,"left":64.9,"width":6.6,"height":2.1,"correct":true,"label":"3","id":"p87_custom_83245","group":"3","text":"3"},{"page":87,"type":"choose","top":31.7,"left":84.9,"width":5.3,"height":2.6,"correct":true,"label":"4","id":"p87_custom_92135","group":"4","text":"4"},{"page":87,"type":"choose","top":34.8,"left":81.5,"width":2.7,"height":2.6,"correct":true,"label":"5","id":"p87_custom_01606","group":"5","text":"5"},{"page":87,"type":"choose","top":25.7,"left":65.8,"width":4,"height":1.8,"correct":false,"label":"New","id":"p87_custom_31291","group":"p87_grp_1291","text":""},{"page":87,"type":"choose","top":25.5,"left":70.4,"width":5.5,"height":2.3,"correct":false,"label":"New","id":"p87_custom_35959","group":"p87_grp_5959","text":""},{"page":87,"type":"choose","top":28.6,"left":72.3,"width":6.8,"height":2.6,"correct":false,"label":"New","id":"p87_custom_39708","group":"p87_grp_9708","text":""},{"page":87,"type":"choose","top":28.7,"left":80.1,"width":5.8,"height":2.5,"correct":false,"label":"New","id":"p87_custom_44086","group":"p87_grp_4086","text":""},{"page":87,"type":"choose","top":32,"left":79.1,"width":4.6,"height":2.2,"correct":false,"label":"New","id":"p87_custom_47784","group":"p87_grp_7784","text":""},{"page":87,"type":"choose","top":32.3,"left":71.7,"width":7.4,"height":1.9,"correct":false,"label":"New","id":"p87_custom_53471","group":"p87_grp_3471","text":""},{"page":87,"type":"choose","top":35.2,"left":74.6,"width":2.7,"height":2.2,"correct":false,"label":"New","id":"p87_custom_58030","group":"p87_grp_8030","text":""},{"page":87,"type":"choose","top":35.5,"left":78.2,"width":2.6,"height":1.9,"correct":false,"label":"New","id":"p87_custom_62698","group":"p87_grp_2698","text":""},{"page":87,"type":"fill","top":45.4,"left":78.7,"width":3,"height":1.9,"correct":"a","label":"New","id":"p87_custom_88501","group":""},{"page":87,"type":"fill","top":46.5,"left":83.7,"width":2.6,"height":1.7,"correct":"e","label":"New","id":"p87_custom_97997","group":""},{"page":87,"type":"fill","top":48.3,"left":84.7,"width":3.2,"height":1.8,"correct":"b","label":"New","id":"p87_custom_06136","group":""},{"page":87,"type":"fill","top":50,"left":77.3,"width":3.8,"height":2.1,"correct":"d","label":"New","id":"p87_custom_13001","group":""},{"page":87,"type":"fill","top":43.5,"left":78.1,"width":2.9,"height":1.5,"correct":"f","label":"New","id":"p87_custom_96352","group":""}],
+    2004: [
+      {"id":"p2004_ex2_2","type":"fill","page":2004,"exercise":"2","label":"2","top":40.1,"left":70.1,"width":14.5,"height":1.8,"correct":"awkward"},
+      {"id":"p2004_ex2_3","type":"fill","page":2004,"exercise":"2","label":"3","top":45.9,"left":64.2,"width":15.2,"height":1.8,"correct":"put my foot in it"},
+      {"id":"p2004_ex2_4","type":"fill","page":2004,"exercise":"2","label":"4","top":49.2,"left":65.0,"width":14.8,"height":1.8,"correct":"appropriate"},
+      {"id":"p2004_ex2_5","type":"fill","page":2004,"exercise":"2","label":"5","top":68.6,"left":57.5,"width":14.8,"height":1.8,"correct":"enthusiastically"},
+      {"id":"p2004_ex2_6","type":"fill","page":2004,"exercise":"2","label":"6","top":74.5,"left":68.6,"width":15.0,"height":1.8,"correct":"misunderstanding"},
+      {"id":"p2004_ex2_7","type":"fill","page":2004,"exercise":"2","label":"7","top":82.8,"left":74.7,"width":14.8,"height":1.8,"correct":"hit it off"},
+      {"id":"p2004_ex2_8","type":"fill","page":2004,"exercise":"2","label":"8","top":87.2,"left":57.5,"width":15.0,"height":1.8,"correct":"small talk"},
+      {"id":"p2004_ex2_9","type":"fill","page":2004,"exercise":"2","label":"9","top":88.8,"left":57.5,"width":15.0,"height":1.8,"correct":"offended"},
+      {"id":"p2004_ex3a_2a","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_2","text":"ease","label":"2a","top":82.7,"left":12.5,"width":6.5,"height":1.6,"correct":false},
+      {"id":"p2004_ex3a_2b","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_2","text":"enthusiastic","label":"2b","top":82.7,"left":24.2,"width":10.5,"height":1.6,"correct":false},
+      {"id":"p2004_ex3a_2c","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_2","text":"misunderstanding","label":"2c","top":82.7,"left":36.0,"width":14.5,"height":1.6,"correct":true},
+      {"id":"p2004_ex3a_3a","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_3","text":"entertaining","label":"3a","top":84.5,"left":12.5,"width":10.5,"height":1.6,"correct":false},
+      {"id":"p2004_ex3a_3b","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_3","text":"dominate","label":"3b","top":84.5,"left":24.2,"width":9.0,"height":1.6,"correct":false},
+      {"id":"p2004_ex3a_3c","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_3","text":"appropriate","label":"3c","top":84.5,"left":36.0,"width":10.5,"height":1.6,"correct":true},
+      {"id":"p2004_ex3a_4a","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_4","text":"awkward","label":"4a","top":86.3,"left":12.5,"width":8.5,"height":1.6,"correct":true},
+      {"id":"p2004_ex3a_4b","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_4","text":"small","label":"4b","top":86.3,"left":24.2,"width":6.5,"height":1.6,"correct":false},
+      {"id":"p2004_ex3a_4c","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_4","text":"story","label":"4c","top":86.3,"left":36.0,"width":6.5,"height":1.6,"correct":false},
+      {"id":"p2004_ex3a_5a","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_5","text":"loud","label":"5a","top":88.1,"left":12.5,"width":6.5,"height":1.6,"correct":false},
+      {"id":"p2004_ex3a_5b","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_5","text":"talk","label":"5b","top":88.1,"left":24.2,"width":6.0,"height":1.6,"correct":true},
+      {"id":"p2004_ex3a_5c","type":"choose","page":2004,"exercise":"3a","group":"b2_p4_3a_5","text":"row","label":"5c","top":88.1,"left":36.0,"width":7.5,"height":1.6,"correct":false}
+    ],
+    2005: [
+      {"id":"p2005_ex4a_2a","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_2","text":"did invent","label":"2a","top":15.2,"left":14.2,"width":7.2,"height":1.6,"correct":false},
+      {"id":"p2005_ex4a_2b","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_2","text":"invented","label":"2b","top":15.2,"left":22.2,"width":6.2,"height":1.6,"correct":true},
+      {"id":"p2005_ex4a_3a","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_3","text":"did you have","label":"3a","top":17.0,"left":14.8,"width":8.6,"height":1.6,"correct":true},
+      {"id":"p2005_ex4a_3b","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_3","text":"had you","label":"3b","top":17.0,"left":24.2,"width":5.8,"height":1.6,"correct":false},
+      {"id":"p2005_ex4a_4a","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_4","text":"did Apple make","label":"4a","top":18.8,"left":14.2,"width":10.4,"height":1.6,"correct":true},
+      {"id":"p2005_ex4a_4b","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_4","text":"Apple made","label":"4b","top":18.8,"left":25.6,"width":8.2,"height":1.6,"correct":false},
+      {"id":"p2005_ex4a_5a","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_5","text":"do you want","label":"5a","top":20.6,"left":14.8,"width":8.2,"height":1.6,"correct":true},
+      {"id":"p2005_ex4a_5b","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_5","text":"want you","label":"5b","top":20.6,"left":23.9,"width":6.4,"height":1.6,"correct":false},
+      {"id":"p2005_ex4a_6a","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_6","text":"came","label":"6a","top":22.4,"left":14.8,"width":4.0,"height":1.6,"correct":true},
+      {"id":"p2005_ex4a_6b","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_6","text":"did come","label":"6b","top":22.4,"left":19.6,"width":6.2,"height":1.6,"correct":false},
+      {"id":"p2005_ex4a_7a","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_7","text":"means Siri","label":"7a","top":24.2,"left":14.8,"width":7.8,"height":1.6,"correct":false},
+      {"id":"p2005_ex4a_7b","type":"choose","page":2005,"exercise":"4a","group":"b2_p5_4a_7","text":"does Siri mean","label":"7b","top":24.2,"left":23.6,"width":11.2,"height":1.6,"correct":true},
+      {"id":"p2005_ex4b_a","type":"fill","page":2005,"exercise":"4b","label":"a","top":30.3,"left":20.5,"width":3.2,"height":1.7,"correct":"6"},
+      {"id":"p2005_ex4b_b","type":"fill","page":2005,"exercise":"4b","label":"b","top":32.0,"left":35.2,"width":3.2,"height":1.7,"correct":"5"},
+      {"id":"p2005_ex4b_c","type":"fill","page":2005,"exercise":"4b","label":"c","top":33.8,"left":35.5,"width":3.2,"height":1.7,"correct":"3"},
+      {"id":"p2005_ex4b_d","type":"fill","page":2005,"exercise":"4b","label":"d","top":35.6,"left":19.5,"width":3.2,"height":1.7,"correct":"4"},
+      {"id":"p2005_ex4b_f","type":"fill","page":2005,"exercise":"4b","label":"f","top":39.0,"left":40.0,"width":3.2,"height":1.7,"correct":"2"},
+      {"id":"p2005_ex4b_g","type":"fill","page":2005,"exercise":"4b","label":"g","top":40.8,"left":45.8,"width":3.2,"height":1.7,"correct":"7"},
+      {"id":"p2005_ex6_2","type":"fill","page":2005,"exercise":"6","label":"6.2","top":72.1,"left":19.8,"width":22.8,"height":1.8,"correct":"he'll come to the meeting? or he will come to the meeting? or if he'll come to the meeting?"},
+      {"id":"p2005_ex6_3","type":"fill","page":2005,"exercise":"6","label":"6.3","top":75.5,"left":25.2,"width":22.8,"height":1.8,"correct":"what he's talking about? or what he is talking about?"},
+      {"id":"p2005_ex6_4","type":"fill","page":2005,"exercise":"6","label":"6.4","top":79.0,"left":23.8,"width":22.8,"height":1.8,"correct":"where you put the keys?"},
+      {"id":"p2005_ex6_5","type":"fill","page":2005,"exercise":"6","label":"6.5","top":82.5,"left":19.8,"width":22.8,"height":1.8,"correct":"how this coffee machine works?"}
+    ]
   };
 
   // PURGE ANY OBSOLETE PRE-V14 WORKBOOK CACHE KEYS SO CALIBRATED COORDINATES ARE NEVER OVERWRITTEN
@@ -280,21 +480,32 @@
     });
   } catch(e) {}
 
+  // Helper to get human-readable book page number (e.g., 2004 -> 4)
+  WB.getDisplayPageNum = function(pageNum) {
+    pageNum = parseInt(pageNum, 10);
+    return pageNum > 2000 ? (pageNum - 2000) : pageNum;
+  };
+
+  WB.isUpperPage = function(pageNum) {
+    return parseInt(pageNum, 10) > 2000;
+  };
+
   // Get active inputs for a page (with custom saved overrides & cloud store fallback)
   WB.getPageInputs = function(page) {
     page = parseInt(page, 10);
     try {
       var saved = localStorage.getItem('ethith_wb_coords_v15_' + page);
+      var hasTs = localStorage.getItem('ethith_wb_ts_' + page);
       if (saved) {
         var parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed) && (parsed.length > 0 || hasTs)) {
           return parsed;
         }
       }
     } catch(e) {}
     if (window.EthithSync && typeof window.EthithSync.getWorkbookCloudOverrides === 'function') {
       var cloudInps = window.EthithSync.getWorkbookCloudOverrides(page);
-      if (Array.isArray(cloudInps) && cloudInps.length > 0) return cloudInps;
+      if (Array.isArray(cloudInps) && (cloudInps.length > 0 || page > 2000)) return cloudInps;
     }
     return WB.defaultInputs[page] || [];
   };
@@ -311,7 +522,7 @@
       WB.defaultInputs[page] = inputs;
     }
 
-    // INSTANT SUB-100MS REAL-TIME BROADCAST + GITHUB CLOUD STORE PERSISTENCE
+    // INSTANT MILLISECOND REAL-TIME BROADCAST + GITHUB CLOUD STORE PERSISTENCE
     if (!noBroadcast && window.EthithSync) {
       if (typeof window.EthithSync.saveWorkbookCloudOverrides === 'function') {
         window.EthithSync.saveWorkbookCloudOverrides(page, inputs);
@@ -320,7 +531,7 @@
           type: 'WORKBOOK_PAGE_UPDATED',
           page: page,
           inputs: inputs,
-          version: '14.0',
+          version: '15.0',
           ts: Date.now()
         });
       }
@@ -361,7 +572,7 @@
         });
       }
 
-      renderLesson(WB._currentLesson.container, WB._currentLesson.unitNum, WB._currentLesson.lessonCode);
+      renderLesson(WB._currentLesson.container, WB._currentLesson.unitNum, WB._currentLesson.lessonCode, WB._currentLesson.bookLevel);
 
       if (!window._ethithWbEditorMode) {
         Object.keys(savedValues).forEach(function(k) {
@@ -381,9 +592,15 @@
     }
   };
 
-  // Resolve authentic page image URL
+  // Resolve authentic page image URL for both Intermediate (B1+) and Upper-Intermediate (B2)
   WB.getPageImage = function(pageNum) {
+    pageNum = parseInt(pageNum, 10);
     var basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+    if (pageNum > 2000) {
+      var b2Page = pageNum - 2000;
+      var b2FileNum = String(b2Page + 1).padStart(3, '0');
+      return basePath + 'workbook_upper_pages/page_' + b2FileNum + '.jpg';
+    }
     if (pageNum === 4) return basePath + 'workbook_b1_u1_p4.jpg';
     if (pageNum === 5) return basePath + 'workbook_b1_u1_p5.jpg';
     var pageFileNum = String(pageNum + 1).padStart(3, '0');
@@ -426,33 +643,61 @@
     });
   };
 
-  // Open Lesson Helper with robust multi-layer fallback
+  // Open Lesson Helper for Intermediate (B1+)
   WB.openLesson = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
+    WB._activeBook = 'b1';
     var apView = document.getElementById('apView');
     if (window.go) {
-      window.go('intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum });
+      window.go('intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum, bookLevel: 'b1' });
     } else if (window.ethithOpenApp) {
-      window.ethithOpenApp('intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum });
+      window.ethithOpenApp('intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum, bookLevel: 'b1' });
     } else if (apView) {
-      WB.renderLesson(apView, unitNum, lessonCode);
+      WB.renderLesson(apView, unitNum, lessonCode, 'b1');
     }
   };
 
-  // Main Intermediate View Entry Point
+  // Open Lesson Helper for Upper-Intermediate (B2)
+  WB.openLessonB2 = function(unitNum, lessonCode, pageNum) {
+    unitNum = parseInt(unitNum, 10) || 1;
+    lessonCode = lessonCode || '1.1';
+    WB._activeBook = 'b2';
+    var apView = document.getElementById('apView');
+    if (window.go) {
+      window.go('upper_intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum, bookLevel: 'b2' });
+    } else if (window.ethithOpenApp) {
+      window.ethithOpenApp('upper_intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum, bookLevel: 'b2' });
+    } else if (apView) {
+      WB.renderLesson(apView, unitNum, lessonCode, 'b2');
+    }
+  };
+
+  // Main Intermediate (B1+) & Upper-Intermediate (B2) View Entry Points
   window.EthithViews = window.EthithViews || {};
   window.EthithViews.renderIntermediateView = function(container, arg) {
+    WB._activeBook = 'b1';
     if (!arg || !arg.unit) {
       renderUnitsCatalog(container);
     } else {
       var unitNum = parseInt(arg.unit, 10) || 1;
       var lessonCode = arg.lesson || (unitNum + '.1');
-      WB.renderLesson(container, unitNum, lessonCode);
+      WB.renderLesson(container, unitNum, lessonCode, 'b1');
     }
   };
 
-  // 1. Units Catalog View (Shows 12 Units in sequence)
+  window.EthithViews.renderUpperIntermediateView = function(container, arg) {
+    WB._activeBook = 'b2';
+    if (!arg || !arg.unit) {
+      renderUnitsCatalogB2(container);
+    } else {
+      var unitNum = parseInt(arg.unit, 10) || 1;
+      var lessonCode = arg.lesson || (unitNum + '.1');
+      WB.renderLesson(container, unitNum, lessonCode, 'b2');
+    }
+  };
+
+  // 1A. Intermediate (B1+) Units Catalog View
   function renderUnitsCatalog(container) {
     var h = '<div class="eth-wb-catalog" style="max-width:1100px;margin:0 auto;padding:16px 20px 60px;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:24px;background:linear-gradient(135deg,rgba(14,165,233,0.12),rgba(30,58,138,0.22));border:1px solid rgba(56,189,248,0.3);padding:22px 26px;border-radius:20px;backdrop-filter:blur(10px);">' +
@@ -525,54 +770,143 @@
     container.innerHTML = h;
   }
 
-  WB.renderUnitsCatalog = renderUnitsCatalog;
+  // 1B. Upper-Intermediate (B2) Units Catalog View
+  function renderUnitsCatalogB2(container) {
+    var h = '<div class="eth-wb-catalog" style="max-width:1100px;margin:0 auto;padding:16px 20px 60px;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:24px;background:linear-gradient(135deg,rgba(249,115,22,0.14),rgba(124,45,18,0.26));border:1px solid rgba(251,146,60,0.4);padding:22px 26px;border-radius:20px;backdrop-filter:blur(10px);">' +
+        '<div>' +
+          '<div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#ea580c,#c2410c);color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">' +
+            '📙 Oxford Navigate B2 Workbook' +
+          '</div>' +
+          '<h1 style="font-size:26px;font-weight:900;margin:0 0 6px;color:var(--text)">Upper-Intermediate (B2) Darslik Dasturi</h1>' +
+          '<p style="font-size:14px;color:var(--muted);margin:0;max-width:680px;line-height:1.5;">' +
+            'Barcha 12 ta rasmiy Upper-Intermediate (B2) Unitlar va mashqlar kitobi. Uzluksiz PDF sahifalar, kattalashtirish/kichraytirish (Zoom) va Visual Editor bilan millisekundlarda barcha akkauntlarga sinxronlanadi!' +
+          '</p>' +
+        '</div>' +
+        '<div style="display:flex;gap:10px;align-items:center;">' +
+          '<div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 18px;text-align:center;">' +
+            '<div style="font-size:20px;font-weight:900;color:#fb923c;">12</div>' +
+            '<div style="font-size:11px;font-weight:700;color:var(--muted);">Jami Unitlar</div>' +
+          '</div>' +
+          '<div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 18px;text-align:center;">' +
+            '<div style="font-size:20px;font-weight:900;color:#10b981;">113</div>' +
+            '<div style="font-size:11px;font-weight:700;color:var(--muted);">Kitob Sahifalari</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
 
-  // 2. Interactive Digital Workbook Viewer (Continuous Vertical Scroll PDF-Style)
-  function renderLesson(container, unitNum, lessonCode) {
+    // Unit Grid (12 units)
+    h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;">';
+
+    WB.unitsB2.forEach(function(u) {
+      var isAvail = u.available;
+      h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid ' + (isAvail ? '#fb923c' : 'var(--line)') + ';border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;box-shadow:' + (isAvail ? '0 12px 30px -10px rgba(249,115,22,0.28)' : 'none') + ';">' +
+        '<div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
+            '<span style="font-size:12px;font-weight:800;color:' + (isAvail ? '#fb923c' : 'var(--muted)') + ';text-transform:uppercase;letter-spacing:0.04em;">UNIT ' + u.unit + ' · B2</span>' +
+            '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;background:' + (isAvail ? 'rgba(16,185,129,0.15)' : 'var(--soft)') + ';color:' + (isAvail ? '#10b981' : 'var(--muted)') + ';">' +
+              (isAvail ? '● Ochiq (Tayyor)' : '🔒 Tayyorlanmoqda') +
+            '</span>' +
+          '</div>' +
+          '<h3 style="font-size:18px;font-weight:800;margin:0 0 6px;color:var(--text);">' + u.title + '</h3>' +
+          '<p style="font-size:13px;color:var(--muted);margin:0 0 16px;line-height:1.4;">' + u.subtitle + '</p>';
+
+      if (u.lessons && u.lessons.length > 0) {
+        h += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">';
+        u.lessons.forEach(function(les) {
+          h += '<div class="eth-wb-lesson-row" data-unit="' + u.unit + '" data-lesson="' + les.code + '" ' +
+            'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB2(' + u.unit + ', \'' + les.code + '\');" ' +
+            'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(249,115,22,0.08);border:1.5px solid rgba(251,146,60,0.28);cursor:pointer;transition:all 0.2s;">' +
+            '<div style="min-width:0;flex:1;">' +
+              '<div style="font-size:13.5px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+              '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
+            '</div>' +
+            '<button type="button" ' +
+              'onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB2(' + u.unit + ', \'' + les.code + '\');" ' +
+              'style="flex:none;background:linear-gradient(135deg, #ea580c, #c2410c);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(234,88,12,0.35);">' +
+              'Boshlash ➔' +
+            '</button>' +
+          '</div>';
+        });
+        h += '</div>';
+      }
+
+      h += '</div>' +
+        '<div style="border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);">' +
+          '<span>Navigate B2 Upper-Intermediate</span>' +
+          '<span>' + (u.lessons ? u.lessons.length + ' ta dars' : '5 Dars') + '</span>' +
+        '</div>' +
+      '</div>';
+    });
+
+    h += '</div></div>';
+    container.innerHTML = h;
+  }
+
+  WB.renderUnitsCatalog = renderUnitsCatalog;
+  WB.renderUnitsCatalogB2 = renderUnitsCatalogB2;
+
+  // 2. Interactive Digital Workbook Viewer (Continuous Vertical Scroll PDF-Style + Responsive Zoom)
+  function renderLesson(container, unitNum, lessonCode, bookLevel) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || (unitNum + '.1');
+    bookLevel = bookLevel || (WB._currentLesson && WB._currentLesson.bookLevel) || WB._activeBook || 'b1';
+    var isB2 = (bookLevel === 'b2');
+    WB._activeBook = bookLevel;
 
-    var unitData = WB.units.find(function(u) { return u.unit === unitNum; }) || WB.units[0];
+    var unitsList = isB2 ? WB.unitsB2 : WB.units;
+    var unitData = unitsList.find(function(u) { return u.unit === unitNum; }) || unitsList[0];
     var lessonData = null;
     if (unitData && unitData.lessons) {
       lessonData = unitData.lessons.find(function(l) { return l.code === lessonCode; });
     }
     if (!lessonData) {
-      lessonData = { code: lessonCode, title: "Unit " + lessonCode, desc: "Interactive Workbook Pages", pages: [4, 5] };
+      lessonData = { code: lessonCode, title: "Unit " + lessonCode, desc: "Interactive Workbook Pages", pages: isB2 ? [2004, 2005] : [4, 5] };
     }
 
-    var pages = lessonData.pages || [4, 5];
+    var pages = lessonData.pages || (isB2 ? [2004, 2005] : [4, 5]);
     var isTeacher = isTeacherRole();
     var isEditor = isTeacher && (window._ethithWbEditorMode === true);
+    var curZoom = window._ethWbZoom || 1;
+    var curZoomPct = Math.round(curZoom * 100);
 
     WB._currentLesson = {
       container: container,
       unitNum: unitNum,
       lessonCode: lessonCode,
-      pages: pages
+      pages: pages,
+      bookLevel: bookLevel
     };
 
     var h = '<div class="eth-wb-viewer' + (isEditor ? ' eth-wb-editor-active' : '') + '" style="max-width:1050px;margin:0 auto;padding:12px 16px 80px;">' +
       // Header & Navigation Strip
       '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 18px;">' +
-        '<div style="display:flex;align-items:center;gap:10px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
           '<button id="ethWbBackBtn" style="background:var(--soft);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
             '← Barcha Unitlar' +
           '</button>' +
           '<div>' +
-            '<div style="font-size:15px;font-weight:900;color:var(--text);">' + lessonData.title + '</div>' +
-            '<div style="font-size:11.5px;color:var(--muted);">' + lessonData.desc + ' · Uzluksiz PDF ko‘rinishi (Ikkala sahifa birga)</div>' +
+            '<div style="font-size:15px;font-weight:900;color:var(--text);">' + lessonData.title + (isB2 ? ' <span style="font-size:11px;background:#ea580c;color:#fff;padding:2px 7px;border-radius:8px;vertical-align:middle;margin-left:4px;">B2 Upper</span>' : '') + '</div>' +
+            '<div style="font-size:11.5px;color:var(--muted);">' + lessonData.desc + ' · Uzluksiz PDF ko‘rinishi</div>' +
           '</div>' +
         '</div>' +
 
-        // Controls
+        // Controls (Jump pills + Zoom controls + Teacher Editor Toggle)
         '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+          // Interactive Book Zoom Bar (Kattalashtirish / Kichraytirish)
+          '<div style="display:inline-flex;align-items:center;background:var(--soft);border:1px solid rgba(56,189,248,0.35);border-radius:10px;padding:3px;gap:3px;" title="Kitobni kattalashtirish yoki kichraytirish">' +
+            '<button type="button" id="ethWbZoomOutBtn" style="border:none;background:rgba(255,255,255,0.08);color:var(--text);width:28px;height:28px;border-radius:7px;font-weight:900;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">−</button>' +
+            '<button type="button" id="ethWbZoomResetBtn" style="border:none;background:transparent;color:#38bdf8;padding:4px 8px;border-radius:7px;font-weight:900;font-size:11.5px;cursor:pointer;min-width:52px;text-align:center;">🔍 ' + curZoomPct + '%</button>' +
+            '<button type="button" id="ethWbZoomInBtn" style="border:none;background:rgba(255,255,255,0.08);color:var(--text);width:28px;height:28px;border-radius:7px;font-weight:900;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">+</button>' +
+          '</div>' +
+
           // Jump pills for quick scroll
           '<div style="display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px;">';
 
     pages.forEach(function(p, idx) {
+      var dispP = WB.getDisplayPageNum(p);
       h += '<button class="eth-wb-jump-btn" data-target="ethWbPage_' + p + '" style="border:none;background:transparent;color:var(--text);padding:6px 12px;border-radius:8px;font-weight:800;font-size:11.5px;cursor:pointer;">' +
-        '📄 ' + (idx + 1) + '-bet (' + p + '-sahifa)' +
+        '📄 ' + (idx + 1) + '-bet (' + dispP + '-sahifa)' +
       '</button>';
     });
 
@@ -612,16 +946,16 @@
       '<span>🔘 <b>Tanlash:</b> to‘g‘ri variantga bosing</span>' +
       '<span>🔗 <b>Bog‘lash:</b> harf katagiga bosing</span>' +
       '<span>📍 <b>Joylashtirish:</b> so‘zlar orasiga bosing</span>' +
-      '<span style="margin-left:auto;color:var(--muted);font-size:11.5px;">(Pastga sursangiz keyingi sahifa chiqadi)</span>' +
+      '<span style="margin-left:auto;color:#38bdf8;font-size:11.5px;font-weight:700;">🔍 Ikki barmoq bilan yoki (− / +) tugmalari orqali kitobni kattalashtiring/kichraytiring</span>' +
     '</div>';
 
-    // Pages Display Container - VERTICAL CONTINUOUS PDF SCROLL
-    h += '<div id="ethWbPagesWrap" style="display:flex;flex-direction:column;gap:30px;align-items:center;">';
+    // Pages Display Container - VERTICAL CONTINUOUS PDF SCROLL + HORIZONTAL PAN WHEN ZOOMED
+    h += '<div id="ethWbPagesWrap" style="display:block;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:12px;">';
 
     pages.forEach(function(pageNum, idx) {
       var imgSrc = WB.getPageImage(pageNum);
       var inputs = WB.getPageInputs(pageNum);
-      h += renderSinglePageBlock(pageNum, idx + 1, imgSrc, inputs, isEditor);
+      h += renderSinglePageBlock(pageNum, idx + 1, imgSrc, inputs, isEditor, curZoom);
     });
 
     h += '</div>';
@@ -693,18 +1027,21 @@
     h += '</div>';
     container.innerHTML = h;
 
-    attachViewerHandlers(container, unitNum, lessonCode, pages, isEditor, isTeacher);
+    attachViewerHandlers(container, unitNum, lessonCode, pages, isEditor, isTeacher, bookLevel);
   }
 
   // Render a single page with multi-type interactive elements
-  function renderSinglePageBlock(pageNum, pageIndex, imgSrc, inputs, isEditor) {
-    var h = '<div id="ethWbPage_' + pageNum + '" class="eth-wb-page-box' + (isEditor ? ' is-editing' : '') + '" data-page="' + pageNum + '" style="position:relative;width:100%;max-width:920px;margin:0 auto;box-shadow:0 10px 40px rgba(0,0,0,0.25);border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);">' +
+  function renderSinglePageBlock(pageNum, pageIndex, imgSrc, inputs, isEditor, curZoom) {
+    curZoom = curZoom || window._ethWbZoom || 1;
+    var dispP = WB.getDisplayPageNum(pageNum);
+    var bookLabel = WB.isUpperPage(pageNum) ? 'Navigate B2 Upper-Intermediate' : 'Navigate B1+';
+    var h = '<div id="ethWbPage_' + pageNum + '" class="eth-wb-page-box' + (isEditor ? ' is-editing' : '') + '" data-page="' + pageNum + '" style="--wb-zoom:' + curZoom + ';container-type:inline-size;position:relative;width:calc(100% * var(--wb-zoom, 1));max-width:calc(920px * var(--wb-zoom, 1));margin:0 auto 30px auto;box-shadow:0 10px 40px rgba(0,0,0,0.25);border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);">' +
       // Top indicator banner
       '<div style="background:#0f172a;color:#fff;padding:6px 14px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:800;">' +
-        '<span>📄 ' + pageIndex + '-bet (Navigate B1+ Page ' + pageNum + ')</span>' +
+        '<span>📄 ' + pageIndex + '-bet (' + bookLabel + ' Page ' + dispP + ')</span>' +
         '<span style="color:#38bdf8;">' + inputs.length + ' ta interaktiv topshiriq</span>' +
       '</div>' +
-      '<img src="' + imgSrc + '" class="eth-wb-img" data-page="' + pageNum + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:' + (isEditor ? 'none' : 'auto') + ';" alt="Oxford Navigate B1+ Page ' + pageNum + '" />' +
+      '<img src="' + imgSrc + '" class="eth-wb-img" data-page="' + pageNum + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:' + (isEditor ? 'none' : 'auto') + ';" alt="Oxford ' + bookLabel + ' Page ' + dispP + '" />' +
       '<div class="eth-wb-overlay-layer" data-page="' + pageNum + '" style="position:absolute;top:29px;left:0;right:0;bottom:0;' + (isEditor ? 'cursor:crosshair;' : '') + '">';
 
     inputs.forEach(function(item) {
@@ -795,13 +1132,81 @@
   }
 
   // Attach All Multi-Type Event Handlers across all rendered pages
-  function attachViewerHandlers(container, unitNum, lessonCode, pages, isEditor, isTeacher) {
+  function attachViewerHandlers(container, unitNum, lessonCode, pages, isEditor, isTeacher, bookLevel) {
+    bookLevel = bookLevel || (WB._currentLesson && WB._currentLesson.bookLevel) || 'b1';
+    var isB2 = (bookLevel === 'b2');
+
     // Back to catalog
     var backBtn = container.querySelector('#ethWbBackBtn');
     if (backBtn) {
       backBtn.addEventListener('click', function() {
-        if (window.go) window.go('intermediate');
+        if (window.go) window.go(isB2 ? 'upper_intermediate' : 'intermediate');
       });
+    }
+
+    // Book Zoom Controls (− / 100% / + and two-finger pinch-to-zoom)
+    var zoomOutBtn = container.querySelector('#ethWbZoomOutBtn');
+    var zoomResetBtn = container.querySelector('#ethWbZoomResetBtn');
+    var zoomInBtn = container.querySelector('#ethWbZoomInBtn');
+    var pagesWrap = container.querySelector('#ethWbPagesWrap');
+
+    function applyBookZoom(newZoom) {
+      var z = Math.max(0.5, Math.min(3.0, Math.round(newZoom * 20) / 20));
+      window._ethWbZoom = z;
+      if (zoomResetBtn) {
+        zoomResetBtn.textContent = '🔍 ' + Math.round(z * 100) + '%';
+      }
+      container.querySelectorAll('.eth-wb-page-box').forEach(function(box) {
+        box.style.setProperty('--wb-zoom', z);
+        box.style.width = 'calc(100% * ' + z + ')';
+        box.style.maxWidth = 'calc(920px * ' + z + ')';
+      });
+    }
+
+    if (zoomOutBtn) {
+      zoomOutBtn.addEventListener('click', function() {
+        applyBookZoom((window._ethWbZoom || 1) - 0.15);
+      });
+    }
+    if (zoomResetBtn) {
+      zoomResetBtn.addEventListener('click', function() {
+        applyBookZoom(1);
+      });
+    }
+    if (zoomInBtn) {
+      zoomInBtn.addEventListener('click', function() {
+        applyBookZoom((window._ethWbZoom || 1) + 0.15);
+      });
+    }
+
+    // Two-finger pinch-to-zoom on #ethWbPagesWrap for mobile/tablet touchscreens
+    if (pagesWrap) {
+      var pinchStartDist = 0;
+      var pinchStartZoom = 1;
+      pagesWrap.addEventListener('touchstart', function(e) {
+        if (e.touches && e.touches.length === 2) {
+          var dx = e.touches[0].clientX - e.touches[1].clientX;
+          var dy = e.touches[0].clientY - e.touches[1].clientY;
+          pinchStartDist = Math.hypot(dx, dy);
+          pinchStartZoom = window._ethWbZoom || 1;
+        }
+      }, { passive: true });
+
+      pagesWrap.addEventListener('touchmove', function(e) {
+        if (e.touches && e.touches.length === 2 && pinchStartDist > 20) {
+          var dx = e.touches[0].clientX - e.touches[1].clientX;
+          var dy = e.touches[0].clientY - e.touches[1].clientY;
+          var dist = Math.hypot(dx, dy);
+          var ratio = dist / pinchStartDist;
+          applyBookZoom(pinchStartZoom * ratio);
+        }
+      }, { passive: true });
+
+      pagesWrap.addEventListener('touchend', function(e) {
+        if (!e.touches || e.touches.length < 2) {
+          pinchStartDist = 0;
+        }
+      }, { passive: true });
     }
 
     // Jump buttons
@@ -820,7 +1225,7 @@
     if (toggleBtn && isTeacher) {
       toggleBtn.addEventListener('click', function() {
         window._ethithWbEditorMode = !window._ethithWbEditorMode;
-        renderLesson(container, unitNum, lessonCode);
+        renderLesson(container, unitNum, lessonCode, bookLevel);
       });
     }
 
@@ -1376,12 +1781,13 @@
 
     // Visual Editor Setup for Teachers ONLY
     if (isTeacher && isEditor) {
-      setupVisualEditor(container, unitNum, lessonCode, pages);
+      setupVisualEditor(container, unitNum, lessonCode, pages, bookLevel);
     }
   }
 
   // Teacher Visual Editor Dragging & Editing Setup
-  function setupVisualEditor(container, unitNum, lessonCode, pages) {
+  function setupVisualEditor(container, unitNum, lessonCode, pages, bookLevel) {
+    bookLevel = bookLevel || (WB._currentLesson && WB._currentLesson.bookLevel) || 'b1';
     var modal = container.querySelector('#ethWbInputModal');
     var modalTitle = container.querySelector('#ethWbModalTitle');
     var modalType = container.querySelector('#ethWbModalType');
@@ -1557,7 +1963,7 @@
     }
 
     if (modalCancel) modalCancel.addEventListener('click', closeModal);
-    var modalX = container.querySelector('#ethWbModalCloseX');
+    var modalX = modal ? modal.querySelector('#ethWbModalCloseX') : container.querySelector('#ethWbModalCloseX');
     if (modalX) modalX.addEventListener('click', closeModal);
     if (modal) {
       modal.addEventListener('click', function(e) {
@@ -1607,7 +2013,7 @@
         var curScroll = window.scrollY || window.pageYOffset || 0;
         WB.savePageInputs(page, inputs);
         closeModal();
-        renderLesson(container, unitNum, lessonCode);
+        renderLesson(container, unitNum, lessonCode, bookLevel);
         window.scrollTo(0, curScroll);
       });
     }
@@ -1620,7 +2026,7 @@
         var curScroll = window.scrollY || window.pageYOffset || 0;
         WB.savePageInputs(page, inputs);
         closeModal();
-        renderLesson(container, unitNum, lessonCode);
+        renderLesson(container, unitNum, lessonCode, bookLevel);
         window.scrollTo(0, curScroll);
       });
     }
@@ -1649,6 +2055,7 @@
       // Mouse & Touch Drag to Move with Instant Zero-Latency Feedback
       function startDrag(e) {
         var isTouch = !!e.touches;
+        if (isTouch && e.touches.length > 1) return; // Allow 2-finger pinch zoom!
         if (!isTouch && e.button === 2) return; // Right-click handled by contextmenu
         if (e.cancelable) e.preventDefault();
         e.stopPropagation();
@@ -1670,6 +2077,7 @@
         wrap.style.zIndex = '999';
 
         function onMove(ev) {
+          if (ev.touches && ev.touches.length > 1) return;
           if (ev.cancelable) ev.preventDefault();
           var p = ev.touches ? ev.touches[0] : ev;
           var dx = p.clientX - startX;
@@ -1844,7 +2252,7 @@
           pages.forEach(function(p) {
             WB.resetPageInputs(p);
           });
-          renderLesson(container, unitNum, lessonCode);
+          renderLesson(container, unitNum, lessonCode, bookLevel);
         }
       });
     }
@@ -1852,7 +2260,7 @@
 
   WB.renderLesson = renderLesson;
   WB.renderLesson1_1 = function(container) {
-    renderLesson(container, 1, '1.1');
+    renderLesson(container, 1, '1.1', 'b1');
   };
 
 })(window);

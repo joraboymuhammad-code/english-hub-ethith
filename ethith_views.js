@@ -1709,7 +1709,7 @@
         ? '<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(16,185,129,0.22);color:#6ee7b7;border:1px solid rgba(52,211,153,0.45);">✅ Bajarildi (' + (myStRecord.hwPct || 100) + '% • Avtomatik baho: ' + (myStRecord.score || 5) + ')</span>'
         : '<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(245,158,11,0.2);color:#fde68a;border:1px solid rgba(251,191,36,0.4);">⚡ Avtomatik tekshirish va baholash faol</span>') +
       '        </div>' +
-      '        <div style="font-size:14px;font-weight:800;color:#ffffff;margin-top:3px;">Intermediate (B1+) · Unit ' + esc(activeHw.unit) + ' — ' + esc(activeHw.lessonTitle || activeHw.lessonCode) + (activeHw.pages ? ' <span style="color:#7dd3fc;font-size:12.5px;">(Workbook ' + activeHw.pages.join('–') + '-betlar)</span>' : '') + '</div>' +
+      '        <div style="font-size:14px;font-weight:800;color:#ffffff;margin-top:3px;">' + (activeHw.bookLevel === 'B2' || (activeHw.pages && activeHw.pages[0] > 2000) ? 'Upper-Intermediate (B2)' : 'Intermediate (B1+)') + ' · Unit ' + esc(activeHw.unit) + ' — ' + esc(activeHw.lessonTitle || activeHw.lessonCode) + (activeHw.pages ? ' <span style="color:#7dd3fc;font-size:12.5px;">(Workbook ' + activeHw.pages.map(function(p) { return p > 2000 ? (p - 2000) : p; }).join('–') + '-betlar)</span>' : '') + '</div>' +
       (activeHw.note ? '<div style="font-size:12px;color:#cbd5e1;margin-top:1px;">' + esc(activeHw.note) + '</div>' : '') +
       '      </div>' +
       '    </div>' +
@@ -1869,17 +1869,27 @@
     var openHwLessonBtn = document.getElementById('tgOpenHomeworkLessonBtn');
     if (openHwLessonBtn && activeHw) {
       openHwLessonBtn.onclick = function() {
+        var firstPg = (activeHw.pages && activeHw.pages[0]) || (activeHw.bookLevel === 'B2' ? 2004 : 4);
         window._ethithActiveHwContext = {
           classId: cls.id,
           classCode: cls.code,
           dateKey: activeHw.dateKey,
+          bookLevel: activeHw.bookLevel || (firstPg > 2000 ? 'B2' : 'B1+'),
           unit: activeHw.unit,
           lessonCode: activeHw.lessonCode
         };
-        if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.openLesson === 'function') {
-          window.ETHITH_WORKBOOK_B1.openLesson(activeHw.unit, activeHw.lessonCode, (activeHw.pages && activeHw.pages[0]) || 4);
-        } else if (typeof window.go === 'function') {
-          window.go('intermediate', { unit: activeHw.unit, lesson: activeHw.lessonCode });
+        if (activeHw.bookLevel === 'B2' || firstPg > 2000) {
+          if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.openLessonB2 === 'function') {
+            window.ETHITH_WORKBOOK_B1.openLessonB2(activeHw.unit, activeHw.lessonCode, firstPg);
+          } else if (typeof window.go === 'function') {
+            window.go('upper_intermediate', { unit: activeHw.unit, lesson: activeHw.lessonCode });
+          }
+        } else {
+          if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.openLesson === 'function') {
+            window.ETHITH_WORKBOOK_B1.openLesson(activeHw.unit, activeHw.lessonCode, firstPg);
+          } else if (typeof window.go === 'function') {
+            window.go('intermediate', { unit: activeHw.unit, lesson: activeHw.lessonCode });
+          }
         }
       };
     }

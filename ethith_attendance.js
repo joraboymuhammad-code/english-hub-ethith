@@ -247,7 +247,12 @@
     return u && (u.role === 'teacher' || u.role === 'admin' || u.isTeacher === true);
   }
 
-  function getWorkbookUnitsList() {
+  function getWorkbookUnitsList(bookLevel) {
+    if (bookLevel === 'B2') {
+      if (window.ETHITH_WORKBOOK_B1 && Array.isArray(window.ETHITH_WORKBOOK_B1.unitsB2)) {
+        return window.ETHITH_WORKBOOK_B1.unitsB2;
+      }
+    }
     if (window.ETHITH_WORKBOOK_B1 && Array.isArray(window.ETHITH_WORKBOOK_B1.units)) {
       return window.ETHITH_WORKBOOK_B1.units;
     }
@@ -1191,13 +1196,23 @@
           classId: cls.id,
           classCode: cls.code,
           dateKey: hw.dateKey,
+          bookLevel: hw.bookLevel || 'B1+',
           unit: hw.unit,
           lessonCode: hw.lessonCode
         };
-        if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.openLesson === 'function') {
-          window.ETHITH_WORKBOOK_B1.openLesson(hw.unit, hw.lessonCode, (hw.pages && hw.pages[0]) || 4);
-        } else if (typeof window.go === 'function') {
-          window.go('intermediate', { unit: hw.unit, lesson: hw.lessonCode });
+        var firstPg = (hw.pages && hw.pages[0]) || (hw.bookLevel === 'B2' ? 2004 : 4);
+        if (hw.bookLevel === 'B2' || firstPg > 2000) {
+          if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.openLessonB2 === 'function') {
+            window.ETHITH_WORKBOOK_B1.openLessonB2(hw.unit, hw.lessonCode, firstPg);
+          } else if (typeof window.go === 'function') {
+            window.go('upper_intermediate', { unit: hw.unit, lesson: hw.lessonCode });
+          }
+        } else {
+          if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.openLesson === 'function') {
+            window.ETHITH_WORKBOOK_B1.openLesson(hw.unit, hw.lessonCode, firstPg);
+          } else if (typeof window.go === 'function') {
+            window.go('intermediate', { unit: hw.unit, lesson: hw.lessonCode });
+          }
         }
       };
     }
@@ -1343,8 +1358,9 @@
     var todayKey = formatDateKey(new Date());
     var selectedDateKey = defaultDateKey || (cls.activeHomework && cls.activeHomework.dateKey) || todayKey;
 
-    var units = getWorkbookUnitsList();
-    var curHw = (cls.attendance.homeworks && cls.attendance.homeworks[selectedDateKey]) || cls.activeHomework || { unit: 1, lessonCode: '1.1', note: '' };
+    var curHw = (cls.attendance.homeworks && cls.attendance.homeworks[selectedDateKey]) || cls.activeHomework || { bookLevel: 'B1+', unit: 1, lessonCode: '1.1', note: '' };
+    var selBookLevel = curHw.bookLevel || 'B1+';
+    var units = getWorkbookUnitsList(selBookLevel);
     var selUnitNum = parseInt(curHw.unit, 10) || 1;
     var selLessonCode = curHw.lessonCode || '1.1';
 
@@ -1355,31 +1371,37 @@
       dateOptsHtml += '<option value="' + dk + '" data-disp="' + dd + '" ' + (dk === selectedDateKey ? 'selected' : '') + '>' + dd + (dk === todayKey ? ' (Bugun)' : '') + '</option>';
     });
 
-    var unitOptsHtml = '';
-    units.forEach(function(u) {
-      unitOptsHtml += '<option value="' + u.unit + '" ' + (u.unit === selUnitNum ? 'selected' : '') + '>' + esc(u.title) + '</option>';
-    });
+    function buildUnitOptions(bLevel, activeUnitNum) {
+      var uList = getWorkbookUnitsList(bLevel);
+      var html = '';
+      uList.forEach(function(u) {
+        html += '<option value="' + u.unit + '" ' + (u.unit === activeUnitNum ? 'selected' : '') + '>' + esc(u.title) + '</option>';
+      });
+      return html;
+    }
 
-    function buildLessonOptions(uNum, activeCode) {
-      var uObj = units.find(function(x) { return x.unit === parseInt(uNum, 10); }) || units[0];
+    function buildLessonOptions(bLevel, uNum, activeCode) {
+      var uList = getWorkbookUnitsList(bLevel);
+      var uObj = uList.find(function(x) { return x.unit === parseInt(uNum, 10); }) || uList[0];
       var html = '';
       (uObj.lessons || []).forEach(function(les) {
-        var pgStr = (les.pages && les.pages.length) ? ' (Workbook ' + les.pages.join('–') + '-betlar)' : '';
+        var dispPgs = (les.pages || []).map(function(p) { return p > 2000 ? (p - 2000) : p; });
+        var pgStr = dispPgs.length ? ' (Workbook ' + dispPgs.join('–') + '-betlar)' : '';
         html += '<option value="' + esc(les.code) + '" ' + (les.code === activeCode ? 'selected' : '') + '>' + esc(les.title) + pgStr + '</option>';
       });
       return html;
     }
 
     var mHtml = '<div id="eaHwOverlayBg" style="position:fixed;inset:0;background:rgba(2,6,23,0.76);backdrop-filter:blur(10px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;">' +
-      '<div style="background:rgba(15,23,42,0.95);backdrop-filter:blur(24px);border:1.5px solid rgba(139,92,246,0.5);border-radius:24px;max-width:500px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.8),0 0 35px rgba(139,92,246,0.22);color:#f8fafc;font-family:inherit;">' +
+      '<div style="background:rgba(15,23,42,0.95);backdrop-filter:blur(24px);border:1.5px solid rgba(139,92,246,0.5);border-radius:24px;max-width:520px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.8),0 0 35px rgba(139,92,246,0.22);color:#f8fafc;font-family:inherit;">' +
         '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">' +
           '<h3 style="margin:0;font-size:19px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">📚 Uy Vazifasi Belgilash (' + esc(cls.name) + ')</h3>' +
           '<button type="button" id="eaCloseHwModal" style="border:none;background:rgba(255,255,255,0.08);width:32px;height:32px;border-radius:10px;font-size:16px;cursor:pointer;color:#cbd5e1;">✕</button>' +
         '</div>' +
         '<p style="font-size:12.5px;color:#94a3b8;margin:0 0 18px;line-height:1.5;">' +
-          'Intermediate (B1+) darsligidan topshiriq tanlang. Vazifa shu zahoti guruh chatining tepasida chiqadi va o\'quvchi uni bajarganda tizim avtomatik ravishda tekshirib, kunlik bahosini (<b>5, 4, 3, 2</b>) Davomat jurnaliga qo\'yadi!' +
+          'Intermediate (B1+) yoki Upper-Intermediate (B2) darsligidan topshiriq tanlang. Vazifa shu zahoti guruh chatining tepasida chiqadi va o\'quvchi uni bajarganda tizim avtomatik ravishda tekshirib, kunlik bahosini (<b>5, 4, 3, 2</b>) Davomat jurnaliga qo\'yadi!' +
         '</p>' +
-        '<div style="display:flex;flex-direction:column;gap:14px;margin-bottom:22px;">' +
+        '<div style="display:flex;flex-direction:column;gap:13px;margin-bottom:22px;">' +
           '<div>' +
             '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📅 Qaysi sanaga belgilansin:</label>' +
             '<select id="eaHwDateSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.16);background:rgba(8,13,26,0.9);color:#fff;font-weight:800;font-size:13.5px;outline:none;">' +
@@ -1387,15 +1409,22 @@
             '</select>' +
           '</div>' +
           '<div>' +
-            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📘 Intermediate (B1+) Bo\'limi (Unit 1–12):</label>' +
+            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📖 Kitob darajasi (Workbook):</label>' +
+            '<select id="eaHwBookLevelSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(168,85,247,0.5);background:rgba(8,13,26,0.9);color:#c084fc;font-weight:800;font-size:13.5px;outline:none;">' +
+              '<option value="B1+" ' + (selBookLevel === 'B1+' ? 'selected' : '') + '>📘 Intermediate (B1+) Workbook</option>' +
+              '<option value="B2" ' + (selBookLevel === 'B2' ? 'selected' : '') + '>📕 Upper-Intermediate (B2) Workbook</option>' +
+            '</select>' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📘 Bo\'lim (Unit 1–12):</label>' +
             '<select id="eaHwUnitSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(56,189,248,0.45);background:rgba(8,13,26,0.9);color:#38bdf8;font-weight:800;font-size:13.5px;outline:none;">' +
-              unitOptsHtml +
+              buildUnitOptions(selBookLevel, selUnitNum) +
             '</select>' +
           '</div>' +
           '<div>' +
             '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📝 Topshiriq / Workbook Darsi:</label>' +
             '<select id="eaHwLessonSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(16,185,129,0.45);background:rgba(8,13,26,0.9);color:#34d399;font-weight:800;font-size:13.5px;outline:none;">' +
-              buildLessonOptions(selUnitNum, selLessonCode) +
+              buildLessonOptions(selBookLevel, selUnitNum, selLessonCode) +
             '</select>' +
           '</div>' +
           '<div>' +
@@ -1411,11 +1440,20 @@
 
     modalRoot.innerHTML = mHtml;
 
+    var bookLvlSel = modalRoot.querySelector('#eaHwBookLevelSelect');
     var unitSel = modalRoot.querySelector('#eaHwUnitSelect');
     var lesSel = modalRoot.querySelector('#eaHwLessonSelect');
+
+    bookLvlSel.onchange = function() {
+      var bLvl = bookLvlSel.value;
+      var uNum = parseInt(unitSel.value, 10) || 1;
+      unitSel.innerHTML = buildUnitOptions(bLvl, uNum);
+      lesSel.innerHTML = buildLessonOptions(bLvl, uNum, uNum + '.1');
+    };
     unitSel.onchange = function() {
+      var bLvl = bookLvlSel.value;
       var uNum = parseInt(unitSel.value, 10);
-      lesSel.innerHTML = buildLessonOptions(uNum, uNum + '.1');
+      lesSel.innerHTML = buildLessonOptions(bLvl, uNum, uNum + '.1');
     };
 
     modalRoot.querySelector('#eaCloseHwModal').onclick = closeGlobalModal;
@@ -1428,16 +1466,19 @@
       var dateSel = modalRoot.querySelector('#eaHwDateSelect');
       var dKey = dateSel.value;
       var dDisp = (dateSel.options[dateSel.selectedIndex] && dateSel.options[dateSel.selectedIndex].dataset.disp) || dKey;
+      var bLvl = bookLvlSel.value || 'B1+';
       var uNum = parseInt(unitSel.value, 10) || 1;
       var lCode = lesSel.value || (uNum + '.1');
       var noteVal = modalRoot.querySelector('#eaHwNoteInput').value.trim();
 
-      var uObj = units.find(function(x) { return x.unit === uNum; }) || units[0];
-      var lObj = (uObj.lessons || []).find(function(l) { return l.code === lCode; }) || { code: lCode, title: lCode, pages: [4, 5] };
+      var uList = getWorkbookUnitsList(bLvl);
+      var uObj = uList.find(function(x) { return x.unit === uNum; }) || uList[0];
+      var lObj = (uObj.lessons || []).find(function(l) { return l.code === lCode; }) || { code: lCode, title: lCode, pages: [bLvl === 'B2' ? 2004 : 4] };
 
       var hwObj = {
         dateKey: dKey,
         dateDisp: dDisp,
+        bookLevel: bLvl,
         unit: uNum,
         lessonCode: lCode,
         lessonTitle: lObj.title,
@@ -1450,7 +1491,7 @@
       if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
       cls.attendance.homeworks[dKey] = hwObj;
       cls.activeHomework = hwObj;
-      cls.attendance.lessonTypes[dKey] = 'Vazifa: ' + lCode;
+      cls.attendance.lessonTypes[dKey] = 'Vazifa (' + bLvl + '): ' + lCode;
       delete cls.attendance.holidays[dKey];
 
       persistAttendance(cls);

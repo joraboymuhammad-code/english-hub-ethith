@@ -20,7 +20,14 @@ const BOT_TOKEN = loadToken();
 if (!BOT_TOKEN) {
   console.warn('⚠️ Diqqat: Telegram BOT_TOKEN topilmadi! Tokenni bot_token.secret fayliga joylang yoki BOT_TOKEN env o\'zgaruvchisiga bering.');
 }
-const MINI_APP_URL = 'https://joraboymuhammad-code.github.io/english-hub-ethith/';
+let verSuffix = Date.now();
+try {
+  const vFile = path.join(__dirname, 'version.json');
+  if (fs.existsSync(vFile)) {
+    verSuffix = JSON.parse(fs.readFileSync(vFile, 'utf8')).version || verSuffix;
+  }
+} catch (e) {}
+const MINI_APP_URL = 'https://joraboymuhammad-code.github.io/english-hub-ethith/?v=' + encodeURIComponent(verSuffix);
 const CODES_FILE = path.join(__dirname, 'verification_codes.json');
 const HTTP_PORT = process.env.PORT || 3850;
 

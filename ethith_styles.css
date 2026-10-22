@@ -43,14 +43,15 @@ html, body {
   width: 100%;
   margin: 0 !important;
   padding: 0 !important;
-  overflow-x: clip !important;
+  overflow-x: auto !important;
   -webkit-text-size-adjust: 100%;
+  touch-action: pan-x pan-y pinch-zoom;
 }
 #app {
   width: 100%;
   min-height: 100vh;
   background: var(--bg, #081322) !important;
-  overflow-x: clip !important;
+  overflow-x: auto !important;
 }
 .ap-shell {
   display: flex !important;
@@ -141,7 +142,7 @@ html, body {
     flex: 1 1 auto !important;
     background: var(--bg, #081322) !important;
     box-sizing: border-box !important;
-    overflow-x: clip !important;
+    overflow-x: auto !important;
   }
 }
 
@@ -8498,6 +8499,9 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 }
 
 /* 1. FILL INPUTS (O'qib yoziladigan) */
+.eth-wb-page-box {
+  container-type: inline-size;
+}
 .eth-wb-input, .wb-fill-input {
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.92);
@@ -8505,10 +8509,10 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   border-bottom: 2px solid #0284c7;
   border-radius: 4px;
   font-family: inherit;
-  font-size: 13.5px;
+  font-size: clamp(7px, 1.45cqw, 28px) !important;
   font-weight: 700;
   color: #0f172a;
-  padding: 1px 6px;
+  padding: 0 0.5cqw !important;
   outline: none;
   transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
@@ -8760,10 +8764,13 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 
 @media (max-width: 768px) {
   .eth-wb-viewer {
-    padding: 8px 8px 90px !important;
+    padding: 8px 6px 90px !important;
   }
   .eth-wb-input, .wb-fill-input {
-    font-size: 11px !important;
-    padding: 0 3px !important;
+    font-size: clamp(7px, 1.45cqw, 28px) !important;
+    padding: 0 0.5cqw !important;
+  }
+  .wb-match-slot {
+    font-size: clamp(8px, 1.5cqw, 24px) !important;
   }
 }
