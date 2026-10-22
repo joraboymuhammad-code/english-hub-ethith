@@ -1075,8 +1075,14 @@
               "status": ""
             },
             "std_1": {
-              "status": "",
-              "score": ""
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 8,
+              "hwLesson": "1.3",
+              "hwCorrect": 3,
+              "hwTotal": 37,
+              "hwCompletedAt": 1792689503201
             },
             "std_2": {
               "status": "",
@@ -1096,12 +1102,12 @@
           "2026-10-16": "Vazifa: 2.4",
           "2026-10-17": "Vazifa: 3.1",
           "2026-10-20": "Vazifa: 1.1",
-          "2026-10-22": "Oddiy",
+          "2026-10-22": "Vazifa: 1.3",
           "2026-10-23": "Oddiy"
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792608025450,
+        "updatedAt": 1792689503201,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1214,11 +1220,24 @@
             "std_3": {
               "status": "K"
             }
+          },
+          "2026-10-22": {
+            "std_1": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 8,
+              "hwLesson": "1.3",
+              "hwCorrect": 3,
+              "hwTotal": 37,
+              "hwCompletedAt": 1792689503211
+            }
           }
         },
         "lessonTypes": {
           "2026-10-21": "Vazifa: 1.1",
-          "2026-10-19": "Oddiy"
+          "2026-10-19": "Oddiy",
+          "2026-10-22": "Vazifa: 1.3"
         },
         "holidays": {},
         "homeworks": {
@@ -1236,7 +1255,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1792608489537
+        "updatedAt": 1792689503211
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -23819,5 +23838,5 @@
     "2007": 1792688920690,
     "2008": 1792689424325
   },
-  "updatedAt": 1792689426286
+  "updatedAt": 1792689504042
 }
