@@ -1837,6 +1837,28 @@
       "title": null,
       "dailyMinutes": 0,
       "updatedAt": 1792611123890
+    },
+    {
+      "id": "sarvartovboyev09@gmail.com",
+      "name": "Sarvar Tovboyev",
+      "email": "sarvartovboyev09@gmail.com",
+      "role": "student",
+      "coins": 100000,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "createdAt": 1792673102972,
+      "updatedAt": 1792673102972
+    },
+    {
+      "id": "muhammedjoraboyev1@gmail.com",
+      "name": "Muhammadyusuf",
+      "email": "muhammedjoraboyev1@gmail.com",
+      "role": "student",
+      "coins": 100000,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "createdAt": 1792673102972,
+      "updatedAt": 1792673102972
     }
   ],
   "p2pListings": [],
@@ -22371,5 +22393,9 @@
     "2004": 1792672406322,
     "2005": 1792672414530
   },
-  "updatedAt": 1792672417322
+  "updatedAt": 1792673102972,
+  "authorizedAdminChatIds": [
+    6772427596,
+    98124765
+  ]
 }
