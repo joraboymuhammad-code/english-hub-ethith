@@ -319,8 +319,8 @@
               "hwLesson": "1.4"
             },
             "std_4": {
-              "status": "Q",
-              "score": "2",
+              "status": "K",
+              "score": "",
               "hwDone": false,
               "hwPct": 0,
               "hwLesson": "1.4"
@@ -1107,7 +1107,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792689503201,
+        "updatedAt": 1792758232014,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -24101,5 +24101,5 @@
     "2008": 1792689424325,
     "2009": 1792693751103
   },
-  "updatedAt": 1792693753940
+  "updatedAt": 1792758236027
 }
