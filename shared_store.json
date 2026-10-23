@@ -1075,7 +1075,7 @@
               "status": ""
             },
             "std_1": {
-              "status": "K",
+              "status": "S",
               "score": "2",
               "hwDone": true,
               "hwPct": 8,
@@ -1086,6 +1086,12 @@
             },
             "std_2": {
               "status": "",
+              "score": ""
+            }
+          },
+          "2026-10-26": {
+            "std_7": {
+              "status": "S",
               "score": ""
             }
           }
@@ -1108,7 +1114,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792758389395,
+        "updatedAt": 1792758402945,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -24102,5 +24108,5 @@
     "2008": 1792689424325,
     "2009": 1792693751103
   },
-  "updatedAt": 1792758392048
+  "updatedAt": 1792758403565
 }
