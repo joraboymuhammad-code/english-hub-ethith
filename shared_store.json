@@ -121,7 +121,7 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [],
-      "schedule": "har_kuni",
+      "schedule": "toq",
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -391,8 +391,8 @@
               "hwLesson": "2.1"
             },
             "std_2": {
-              "status": "Q",
-              "score": "2",
+              "status": "K",
+              "score": "",
               "hwDone": false,
               "hwPct": 0,
               "hwLesson": "2.1"
@@ -821,7 +821,7 @@
               "hwLesson": "3.3"
             },
             "std_2": {
-              "status": "S",
+              "status": "K",
               "score": "",
               "hwDone": false,
               "hwPct": 0,
@@ -987,10 +987,13 @@
           "2026-10-21": {
             "std_1": {
               "status": "K",
-              "score": "4",
+              "score": "2",
               "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.2"
+              "hwPct": 0,
+              "hwLesson": "1.2",
+              "hwCorrect": 0,
+              "hwTotal": 64,
+              "hwCompletedAt": 1792777678076
             },
             "std_2": {
               "status": "K",
@@ -1072,7 +1075,8 @@
           },
           "2026-10-22": {
             "std_5": {
-              "status": ""
+              "status": "K",
+              "score": ""
             },
             "std_1": {
               "status": "K",
@@ -1087,10 +1091,28 @@
             "std_2": {
               "status": "K",
               "score": ""
+            },
+            "std_4": {
+              "status": "Q",
+              "score": "2"
             }
           },
           "2026-10-26": {
             "std_7": {
+              "status": "",
+              "score": ""
+            },
+            "std_1": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "2.2",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792778622885
+            },
+            "std_5": {
               "status": "S",
               "score": ""
             }
@@ -1099,12 +1121,28 @@
             "std_8": {
               "status": "",
               "score": ""
+            },
+            "std_1": {
+              "status": "K",
+              "score": ""
+            }
+          },
+          "2026-10-24": {
+            "std_1": {
+              "status": "",
+              "score": ""
+            }
+          },
+          "2026-10-28": {
+            "std_4": {
+              "status": "",
+              "score": ""
             }
           }
         },
         "lessonTypes": {
           "2026-10-19": "Vazifa: 3.3",
-          "2026-10-21": "Vazifa (B1+): 7.1",
+          "2026-10-21": "Oddiy",
           "2026-10-10": "Vazifa: 1.2",
           "2026-10-09": "Vazifa: 1.1",
           "2026-10-12": "Vazifa: 1.4",
@@ -1116,11 +1154,12 @@
           "2026-10-20": "Vazifa: 1.1",
           "2026-10-22": "Vazifa: 1.3",
           "2026-10-23": "Oddiy",
-          "2026-10-24": "Oddiy"
+          "2026-10-24": "Oddiy",
+          "2026-10-26": "Vazifa (B2): 2.2"
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792760912168,
+        "updatedAt": 1792778622885,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1136,24 +1175,39 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 1792760912168,
             "teacherName": "Instructor Muhammadyusuf"
+          },
+          "2026-10-26": {
+            "dateKey": "2026-10-26",
+            "dateDisp": "26.10.2026",
+            "bookLevel": "B2",
+            "unit": 2,
+            "lessonCode": "2.2",
+            "lessonTitle": "2.2 An extraordinary escape",
+            "pages": [
+              2012,
+              2013
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 1792778188732,
+            "teacherName": "Instructor Muhammadyusuf"
           }
         },
         "seededWindowV3": true
       },
       "customStudentNames": {},
       "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
-        "bookLevel": "B1+",
-        "unit": 7,
-        "lessonCode": "7.1",
-        "lessonTitle": "7.1 Working conditions",
+        "dateKey": "2026-10-26",
+        "dateDisp": "26.10.2026",
+        "bookLevel": "B2",
+        "unit": 2,
+        "lessonCode": "2.2",
+        "lessonTitle": "2.2 An extraordinary escape",
         "pages": [
-          46,
-          47
+          2012,
+          2013
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792760912168,
+        "assignedAt": 1792778188732,
         "teacherName": "Instructor Muhammadyusuf"
       }
     },
@@ -1249,12 +1303,30 @@
               "hwTotal": 37,
               "hwCompletedAt": 1792689503211
             }
+          },
+          "2026-10-23": {
+            "std_1": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "2.2",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792778622895
+            }
+          },
+          "2026-10-12": {
+            "std_1": {
+              "status": "K"
+            }
           }
         },
         "lessonTypes": {
           "2026-10-21": "Vazifa: 1.1",
           "2026-10-19": "Oddiy",
-          "2026-10-22": "Vazifa: 1.3"
+          "2026-10-22": "Vazifa: 1.3",
+          "2026-10-23": "Vazifa: 1.2"
         },
         "holidays": {},
         "homeworks": {
@@ -1272,7 +1344,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1792689503211
+        "updatedAt": 1792778622895
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -18394,7 +18466,7 @@
         "id": "u10_p74_ex2_2",
         "type": "fill",
         "page": 74,
-        "top": 65.5,
+        "top": 65.1,
         "left": 12,
         "width": 9,
         "height": 2,
@@ -18405,8 +18477,8 @@
         "id": "u10_p74_ex2_3",
         "type": "fill",
         "page": 74,
-        "top": 71,
-        "left": 16.8,
+        "top": 70,
+        "left": 17.3,
         "width": 10,
         "height": 2,
         "correct": "captured",
@@ -18416,8 +18488,8 @@
         "id": "u10_p74_ex2_4",
         "type": "fill",
         "page": 74,
-        "top": 79.5,
-        "left": 12,
+        "top": 78.6,
+        "left": 11.7,
         "width": 9.5,
         "height": 2,
         "correct": "robbers",
@@ -18427,8 +18499,8 @@
         "id": "u10_p74_ex2_5",
         "type": "fill",
         "page": 74,
-        "top": 83.5,
-        "left": 26.5,
+        "top": 83,
+        "left": 26.4,
         "width": 9.5,
         "height": 2,
         "correct": "theft",
@@ -18438,8 +18510,8 @@
         "id": "u10_p74_ex2_6",
         "type": "fill",
         "page": 74,
-        "top": 91,
-        "left": 28.5,
+        "top": 88.9,
+        "left": 28.6,
         "width": 9.5,
         "height": 2,
         "correct": "stealing",
@@ -18449,7 +18521,7 @@
         "id": "u10_p74_ex4_2",
         "type": "fill",
         "page": 74,
-        "top": 76.5,
+        "top": 75.2,
         "left": 61.5,
         "width": 9.5,
         "height": 2,
@@ -18460,8 +18532,8 @@
         "id": "u10_p74_ex4_3",
         "type": "fill",
         "page": 74,
-        "top": 77.8,
-        "left": 70.8,
+        "top": 76.5,
+        "left": 70.7,
         "width": 9.5,
         "height": 2,
         "correct": "sentenced",
@@ -18471,8 +18543,8 @@
         "id": "u10_p74_ex4_4",
         "type": "fill",
         "page": 74,
-        "top": 79.5,
-        "left": 64,
+        "top": 78.1,
+        "left": 68.5,
         "width": 7,
         "height": 2,
         "correct": "theft",
@@ -18482,8 +18554,8 @@
         "id": "u10_p74_ex4_5",
         "type": "fill",
         "page": 74,
-        "top": 89,
-        "left": 72.8,
+        "top": 87.9,
+        "left": 73.4,
         "width": 9.5,
         "height": 2,
         "correct": "suspected",
@@ -18493,8 +18565,8 @@
         "id": "u10_p74_ex4_6",
         "type": "fill",
         "page": 74,
-        "top": 90.8,
-        "left": 56.5,
+        "top": 89.3,
+        "left": 56.8,
         "width": 9.5,
         "height": 2,
         "correct": "burglar",
@@ -18504,8 +18576,8 @@
         "id": "u10_p74_ex4_7",
         "type": "fill",
         "page": 74,
-        "top": 92.5,
-        "left": 60.8,
+        "top": 90.7,
+        "left": 56.9,
         "width": 9.5,
         "height": 2,
         "correct": "stolen",
@@ -18517,8 +18589,8 @@
         "id": "u10_p75_ex5_1b",
         "type": "fill",
         "page": 75,
-        "top": 26.6,
-        "left": 20,
+        "top": 26.2,
+        "left": 18.4,
         "width": 13,
         "height": 2,
         "correct": "wouldn't have|would not have",
@@ -18528,8 +18600,8 @@
         "id": "u10_p75_ex5_2a",
         "type": "fill",
         "page": 75,
-        "top": 30.2,
-        "left": 17.5,
+        "top": 28.9,
+        "left": 16.9,
         "width": 10.5,
         "height": 2,
         "correct": "hadn't spent|had not spent",
@@ -18539,8 +18611,8 @@
         "id": "u10_p75_ex5_2b",
         "type": "fill",
         "page": 75,
-        "top": 32,
-        "left": 21.8,
+        "top": 30.5,
+        "left": 21,
         "width": 14.5,
         "height": 2,
         "correct": "would probably have|would probably 've",
@@ -18550,8 +18622,8 @@
         "id": "u10_p75_ex5_3a",
         "type": "fill",
         "page": 75,
-        "top": 35.6,
-        "left": 16.5,
+        "top": 33.5,
+        "left": 17.9,
         "width": 11,
         "height": 2,
         "correct": "might never",
@@ -18561,8 +18633,8 @@
         "id": "u10_p75_ex5_3b",
         "type": "fill",
         "page": 75,
-        "top": 37.4,
-        "left": 27.2,
+        "top": 35,
+        "left": 24.9,
         "width": 12,
         "height": 2,
         "correct": "hadn't left|had not left",
@@ -18572,8 +18644,8 @@
         "id": "u10_p75_ex5_4a",
         "type": "fill",
         "page": 75,
-        "top": 39,
-        "left": 15.5,
+        "top": 36.6,
+        "left": 16.2,
         "width": 12.5,
         "height": 2,
         "correct": "hadn't shot|had not shot",
@@ -18583,8 +18655,8 @@
         "id": "u10_p75_ex5_4b",
         "type": "fill",
         "page": 75,
-        "top": 40.8,
-        "left": 19,
+        "top": 38.5,
+        "left": 25.7,
         "width": 13,
         "height": 2,
         "correct": "have become",
@@ -18594,8 +18666,8 @@
         "id": "u10_p75_ex5_5a",
         "type": "fill",
         "page": 75,
-        "top": 44.2,
-        "left": 26.5,
+        "top": 43.5,
+        "left": 27,
         "width": 16,
         "height": 2,
         "correct": "not have died",
@@ -18605,8 +18677,8 @@
         "id": "u10_p75_ex5_5b",
         "type": "fill",
         "page": 75,
-        "top": 46,
-        "left": 10.5,
+        "top": 45.3,
+        "left": 10.3,
         "width": 16,
         "height": 2,
         "correct": "had made",
@@ -18616,8 +18688,8 @@
         "id": "u10_p75_ex7_2",
         "type": "fill",
         "page": 75,
-        "top": 36.5,
-        "left": 54.5,
+        "top": 36.1,
+        "left": 54.4,
         "width": 15.5,
         "height": 2,
         "correct": "hadn't been|had not been",
@@ -18649,8 +18721,8 @@
         "id": "u10_p75_ex7_5",
         "type": "fill",
         "page": 75,
-        "top": 53.8,
-        "left": 59.5,
+        "top": 53.1,
+        "left": 55.7,
         "width": 15.5,
         "height": 2,
         "correct": "hadn't told|had not told",
@@ -18660,8 +18732,8 @@
         "id": "u10_p75_ex7_6",
         "type": "fill",
         "page": 75,
-        "top": 55.6,
-        "left": 63.8,
+        "top": 54.6,
+        "left": 64.1,
         "width": 16.5,
         "height": 2,
         "correct": "probably wouldn't have gone|would probably not have gone",
@@ -18671,8 +18743,8 @@
         "id": "u10_p75_ex7_7",
         "type": "fill",
         "page": 75,
-        "top": 62.5,
-        "left": 58.5,
+        "top": 60.6,
+        "left": 55,
         "width": 15.5,
         "height": 2,
         "correct": "hadn't spent|had not spent",
@@ -18682,8 +18754,8 @@
         "id": "u10_p75_ex7_8",
         "type": "fill",
         "page": 75,
-        "top": 64.2,
-        "left": 56.5,
+        "top": 62.4,
+        "left": 55.9,
         "width": 17,
         "height": 2,
         "correct": "probably wouldn't have known|would probably not have known",
@@ -18693,8 +18765,8 @@
         "id": "u10_p75_ex7_9",
         "type": "fill",
         "page": 75,
-        "top": 72.8,
-        "left": 54.5,
+        "top": 71.5,
+        "left": 52.4,
         "width": 18.5,
         "height": 2,
         "correct": "hadn't started|had not started",
@@ -18704,8 +18776,8 @@
         "id": "u10_p75_ex7_10",
         "type": "fill",
         "page": 75,
-        "top": 74.5,
-        "left": 63.8,
+        "top": 73.1,
+        "left": 63.5,
         "width": 16.5,
         "height": 2,
         "correct": "might have escaped",
@@ -21452,8 +21524,8 @@
       {
         "page": 86,
         "type": "fill",
-        "top": 64.9,
-        "left": 81.3,
+        "top": 65.8,
+        "left": 80.8,
         "width": 9.1,
         "height": 1.8,
         "correct": "remember",
@@ -21464,8 +21536,8 @@
       {
         "page": 86,
         "type": "fill",
-        "top": 69.6,
-        "left": 80.7,
+        "top": 70.2,
+        "left": 80.5,
         "width": 9.1,
         "height": 1.7,
         "correct": "told",
@@ -21476,8 +21548,8 @@
       {
         "page": 86,
         "type": "fill",
-        "top": 73.4,
-        "left": 56.2,
+        "top": 74.4,
+        "left": 56.3,
         "width": 9.2,
         "height": 2.1,
         "correct": "explained",
@@ -21488,7 +21560,7 @@
       {
         "page": 86,
         "type": "fill",
-        "top": 78,
+        "top": 78.8,
         "left": 83.2,
         "width": 9.5,
         "height": 1.7,
@@ -21500,7 +21572,7 @@
       {
         "page": 86,
         "type": "fill",
-        "top": 79.7,
+        "top": 80.2,
         "left": 57.8,
         "width": 9.5,
         "height": 1.6,
@@ -21512,7 +21584,7 @@
       {
         "page": 86,
         "type": "fill",
-        "top": 84.3,
+        "top": 84.7,
         "left": 83.6,
         "width": 8.7,
         "height": 1.6,
@@ -21524,8 +21596,8 @@
       {
         "page": 86,
         "type": "fill",
-        "top": 87.3,
-        "left": 72.6,
+        "top": 87.6,
+        "left": 72.7,
         "width": 9.4,
         "height": 1.6,
         "correct": "talk",
@@ -24954,8 +25026,8 @@
     "71": 1792612525678,
     "72": 1792612525678,
     "73": 1792612525678,
-    "74": 1792612525678,
-    "75": 1792612525678,
+    "74": 1792777016833,
+    "75": 1792777056939,
     "76": 1792612525678,
     "77": 1792612525678,
     "78": 1792612525678,
@@ -24966,7 +25038,7 @@
     "83": 1792612525678,
     "84": 1792612525678,
     "85": 1792612525678,
-    "86": 1792612525678,
+    "86": 1792777408628,
     "87": 1792612525678,
     "2004": 1792676701799,
     "2005": 1792672414530,
@@ -24977,5 +25049,5 @@
     "2010": 1792769008573,
     "2011": 1792769756183
   },
-  "updatedAt": 1792770344104
+  "updatedAt": 1792778704090
 }
