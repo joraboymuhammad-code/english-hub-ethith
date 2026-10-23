@@ -14,9 +14,8 @@
           "name": "Etiborxon Usmonqulova",
           "email": "usmonqulovaetiborxon@gmail.com",
           "joinedAt": "2026-10-23",
-          "dailyMinutes": 2,
-          "coins": 5150,
-          "updatedAt": 1792779026561
+          "dailyMinutes": 23,
+          "coins": 5150
         },
         {
           "id": "std_1",
@@ -1883,7 +1882,8 @@
     "p2p_1792322748592_nls2",
     "p2p_1792322765334_1cj0",
     "p2p_1792387876695_p00d",
-    "p2p_1792383468123_seg5"
+    "p2p_1792383468123_seg5",
+    "p2p_1792779324856_1e9n"
   ],
   "accounts": [
     {
@@ -1909,7 +1909,7 @@
       "nameStyle": null,
       "gifts": [],
       "createdAt": 1792778756475,
-      "updatedAt": 1792779026561
+      "updatedAt": 1792779063259
     },
     {
       "id": "admin_official_teacher",
@@ -25083,9 +25083,5 @@
     "2010": 1792769008573,
     "2011": 1792769756183
   },
-  "updatedAt": 1792779026561,
-  "authorizedAdminChatIds": [
-    6772427596,
-    98124765
-  ]
+  "updatedAt": 1792780186397
 }
