@@ -1104,7 +1104,7 @@
         },
         "lessonTypes": {
           "2026-10-19": "Vazifa: 3.3",
-          "2026-10-21": "Vazifa: 1.1",
+          "2026-10-21": "Vazifa (B1+): 7.1",
           "2026-10-10": "Vazifa: 1.2",
           "2026-10-09": "Vazifa: 1.1",
           "2026-10-12": "Vazifa: 1.4",
@@ -1120,20 +1120,22 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792758413947,
+        "updatedAt": 1792760912168,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
             "dateDisp": "21.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
+            "bookLevel": "B1+",
+            "unit": 7,
+            "lessonCode": "7.1",
+            "lessonTitle": "7.1 Working conditions",
             "pages": [
-              4,
-              5
+              46,
+              47
             ],
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 1792607960771
+            "assignedAt": 1792760912168,
+            "teacherName": "Instructor Muhammadyusuf"
           }
         },
         "seededWindowV3": true
@@ -1142,15 +1144,17 @@
       "activeHomework": {
         "dateKey": "2026-10-21",
         "dateDisp": "21.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
+        "bookLevel": "B1+",
+        "unit": 7,
+        "lessonCode": "7.1",
+        "lessonTitle": "7.1 Working conditions",
         "pages": [
-          4,
-          5
+          46,
+          47
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792607960771
+        "assignedAt": 1792760912168,
+        "teacherName": "Instructor Muhammadyusuf"
       }
     },
     {
@@ -24114,5 +24118,5 @@
     "2008": 1792689424325,
     "2009": 1792693751103
   },
-  "updatedAt": 1792758422033
+  "updatedAt": 1792760913803
 }
