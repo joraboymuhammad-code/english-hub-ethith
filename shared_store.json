@@ -319,8 +319,8 @@
               "hwLesson": "1.4"
             },
             "std_4": {
-              "status": "K",
-              "score": "",
+              "status": "Q",
+              "score": "2",
               "hwDone": false,
               "hwPct": 0,
               "hwLesson": "1.4"
@@ -491,7 +491,7 @@
               "hwLesson": "2.2"
             },
             "std_4": {
-              "status": "K",
+              "status": "Q",
               "score": "5",
               "hwDone": true,
               "hwPct": 94,
@@ -577,7 +577,7 @@
               "hwLesson": "2.3"
             },
             "std_4": {
-              "status": "K",
+              "status": "Q",
               "score": "5",
               "hwDone": true,
               "hwPct": 94,
@@ -663,7 +663,7 @@
               "hwLesson": "2.4"
             },
             "std_4": {
-              "status": "K",
+              "status": "Q",
               "score": "4",
               "hwDone": true,
               "hwPct": 80,
@@ -749,7 +749,7 @@
               "hwLesson": "3.1"
             },
             "std_4": {
-              "status": "K",
+              "status": "Q",
               "score": "4",
               "hwDone": true,
               "hwPct": 80,
@@ -842,7 +842,7 @@
               "hwLesson": "3.3"
             },
             "std_5": {
-              "status": "K",
+              "status": "Q",
               "score": "4",
               "hwDone": true,
               "hwPct": 80,
@@ -1107,7 +1107,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792758232014,
+        "updatedAt": 1792758348618,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -24101,5 +24101,5 @@
     "2008": 1792689424325,
     "2009": 1792693751103
   },
-  "updatedAt": 1792758279891
+  "updatedAt": 1792758349248
 }
