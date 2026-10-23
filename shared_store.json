@@ -319,8 +319,8 @@
               "hwLesson": "1.4"
             },
             "std_4": {
-              "status": "Q",
-              "score": "2",
+              "status": "K",
+              "score": "",
               "hwDone": false,
               "hwPct": 0,
               "hwLesson": "1.4"
@@ -491,7 +491,7 @@
               "hwLesson": "2.2"
             },
             "std_4": {
-              "status": "Q",
+              "status": "",
               "score": "5",
               "hwDone": true,
               "hwPct": 94,
@@ -577,7 +577,7 @@
               "hwLesson": "2.3"
             },
             "std_4": {
-              "status": "Q",
+              "status": "K",
               "score": "5",
               "hwDone": true,
               "hwPct": 94,
@@ -663,7 +663,7 @@
               "hwLesson": "2.4"
             },
             "std_4": {
-              "status": "Q",
+              "status": "K",
               "score": "4",
               "hwDone": true,
               "hwPct": 80,
@@ -749,7 +749,7 @@
               "hwLesson": "3.1"
             },
             "std_4": {
-              "status": "Q",
+              "status": "K",
               "score": "4",
               "hwDone": true,
               "hwPct": 80,
@@ -1107,7 +1107,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792758348618,
+        "updatedAt": 1792758375412,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -24101,5 +24101,5 @@
     "2008": 1792689424325,
     "2009": 1792693751103
   },
-  "updatedAt": 1792758363347
+  "updatedAt": 1792758376357
 }
