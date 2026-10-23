@@ -7,8 +7,15 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792429062767,
+      "created": 1792778728977,
       "students": [
+        {
+          "id": "usmonqulovaetiborxon@gmail.com",
+          "name": "Etiborxon Usmonqulova",
+          "email": "usmonqulovaetiborxon@gmail.com",
+          "joinedAt": "2026-10-23",
+          "dailyMinutes": 2
+        },
         {
           "id": "std_1",
           "name": "Ashurov Dilyorbek Azizbek o'g'li",
@@ -121,7 +128,23 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [],
+      "activeHomework": {
+        "dateKey": "2026-10-26",
+        "dateDisp": "26.10.2026",
+        "bookLevel": "B2",
+        "unit": 2,
+        "lessonCode": "2.2",
+        "lessonTitle": "2.2 An extraordinary escape",
+        "pages": [
+          2012,
+          2013
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792778188732,
+        "teacherName": "Instructor Muhammadyusuf"
+      },
       "schedule": "toq",
+      "customStudentNames": {},
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -1193,22 +1216,6 @@
           }
         },
         "seededWindowV3": true
-      },
-      "customStudentNames": {},
-      "activeHomework": {
-        "dateKey": "2026-10-26",
-        "dateDisp": "26.10.2026",
-        "bookLevel": "B2",
-        "unit": 2,
-        "lessonCode": "2.2",
-        "lessonTitle": "2.2 An extraordinary escape",
-        "pages": [
-          2012,
-          2013
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792778188732,
-        "teacherName": "Instructor Muhammadyusuf"
       }
     },
     {
@@ -1877,6 +1884,31 @@
     "p2p_1792383468123_seg5"
   ],
   "accounts": [
+    {
+      "id": "usmonqulovaetiborxon@gmail.com",
+      "role": "student",
+      "name": "Etiborxon Usmonqulova",
+      "email": "usmonqulovaetiborxon@gmail.com",
+      "level": "A1",
+      "unlocked": {
+        "A1": 1,
+        "A2": 1,
+        "B1": 1,
+        "B2": 1,
+        "C1": 1,
+        "C2": 1
+      },
+      "quizScores": {},
+      "mistakes": [],
+      "dailyMinutes": 0,
+      "coins": 150,
+      "avatar": null,
+      "title": null,
+      "nameStyle": null,
+      "gifts": [],
+      "createdAt": 1792778756475,
+      "updatedAt": 1792778756475
+    },
     {
       "id": "admin_official_teacher",
       "role": "teacher",
@@ -25049,5 +25081,5 @@
     "2010": 1792769008573,
     "2011": 1792769756183
   },
-  "updatedAt": 1792778704090
+  "updatedAt": 1792778897077
 }
