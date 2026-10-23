@@ -14,7 +14,9 @@
           "name": "Etiborxon Usmonqulova",
           "email": "usmonqulovaetiborxon@gmail.com",
           "joinedAt": "2026-10-23",
-          "dailyMinutes": 2
+          "dailyMinutes": 2,
+          "coins": 5150,
+          "updatedAt": 1792779026561
         },
         {
           "id": "std_1",
@@ -1901,13 +1903,13 @@
       "quizScores": {},
       "mistakes": [],
       "dailyMinutes": 0,
-      "coins": 150,
+      "coins": 5150,
       "avatar": null,
       "title": null,
       "nameStyle": null,
       "gifts": [],
       "createdAt": 1792778756475,
-      "updatedAt": 1792778756475
+      "updatedAt": 1792779026561
     },
     {
       "id": "admin_official_teacher",
@@ -25081,5 +25083,9 @@
     "2010": 1792769008573,
     "2011": 1792769756183
   },
-  "updatedAt": 1792778897077
+  "updatedAt": 1792779026561,
+  "authorizedAdminChatIds": [
+    6772427596,
+    98124765
+  ]
 }
