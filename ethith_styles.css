@@ -8504,17 +8504,17 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 }
 .eth-wb-input, .wb-fill-input {
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  border-bottom: 2px solid #0284c7;
+  background: transparent !important;
+  border: 1px solid rgba(37, 99, 235, 0.35) !important;
+  border-bottom: 2px solid #2563eb !important;
   border-radius: 4px;
   font-family: inherit;
   font-size: clamp(7px, 1.45cqw, 28px) !important;
   font-weight: 700;
-  color: #0f172a;
+  color: #000000 !important;
   padding: 0 0.5cqw !important;
   outline: none;
-  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
 }
 .eth-wb-editor-active .wb-fill-input,
 .eth-wb-page-box.is-editing .wb-fill-input {
@@ -8522,15 +8522,19 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   background: rgba(56, 189, 248, 0.15) !important;
 }
 .eth-wb-input:hover, .wb-fill-input:hover {
-  border-color: #0284c7 !important;
-  background: #ffffff !important;
-  box-shadow: 0 0 6px rgba(56, 189, 248, 0.3) !important;
+  border-color: #2563eb !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.25) !important;
 }
 .eth-wb-input:focus, .wb-fill-input:focus {
-  background: rgba(15, 23, 42, 0.95) !important;
-  color: #38bdf8 !important;
-  border: 1.5px solid #38bdf8 !important;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4) !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25) !important;
+}
+.eth-wb-input:not(:placeholder-shown), .wb-fill-input:not(:placeholder-shown) {
+  background: #ffffff !important;
+  color: #000000 !important;
 }
 .eth-wb-input.correct, .wb-fill-input.correct {
   border: 2px solid #10b981 !important;
