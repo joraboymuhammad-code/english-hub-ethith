@@ -35483,8 +35483,8 @@
         "exercise": "4",
         "label": "3",
         "text": "ceremony",
-        "top": 59.5,
-        "left": 54.2,
+        "top": 59,
+        "left": 54.5,
         "width": 4.3,
         "height": 1.4,
         "isCorrect": false,
@@ -35496,8 +35496,8 @@
         "exercise": "4",
         "label": "3",
         "text": "festival",
-        "top": 61,
-        "left": 35.5,
+        "top": 57.5,
+        "left": 83.2,
         "width": 3.3,
         "height": 1.4,
         "isCorrect": true,
@@ -35745,7 +35745,7 @@
     "2042": 2026,
     "2043": 1792937534840,
     "2044": 1792937544078,
-    "2045": 1792937628066
+    "2045": 1792937632650
   },
-  "updatedAt": 1792937629374
+  "updatedAt": 1792937632683
 }
