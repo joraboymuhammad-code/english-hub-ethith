@@ -35112,8 +35112,8 @@
         "exercise": "1",
         "label": "4",
         "text": "A large number of",
-        "top": 29.3,
-        "left": 6.8,
+        "top": 30.9,
+        "left": 14.1,
         "width": 8.1,
         "height": 1.4,
         "isCorrect": true,
@@ -35125,8 +35125,8 @@
         "exercise": "1",
         "label": "4",
         "text": "A large quantity of",
-        "top": 29.6,
-        "left": 22.3,
+        "top": 30.9,
+        "left": 23.6,
         "width": 7.9,
         "height": 1.4,
         "isCorrect": false,
@@ -35745,7 +35745,7 @@
     "2042": 2026,
     "2043": 1792937534840,
     "2044": 1792937544078,
-    "2045": 1792937586638
+    "2045": 1792937590162
   },
-  "updatedAt": 1792937587222
+  "updatedAt": 1792937590295
 }
