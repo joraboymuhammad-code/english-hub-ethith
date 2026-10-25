@@ -91,6 +91,17 @@
           "avatar": null,
           "nameStyle": null,
           "title": null
+        },
+        {
+          "id": "usmonqulovaetiborxon@gmail.com",
+          "name": "Etiborxon Usmonqulova",
+          "email": "usmonqulovaetiborxon@gmail.com",
+          "joinedAt": "2026-10-23",
+          "dailyMinutes": 28,
+          "coins": 4670,
+          "avatar": "girl_v7_valkyrie_samurai_1",
+          "nameStyle": "flame",
+          "title": "👑 IELTS Qiroli"
         }
       ],
       "messages": [
@@ -319,8 +330,8 @@
               "hwLesson": "1.4"
             },
             "std_4": {
-              "status": "Q",
-              "score": "2",
+              "status": "K",
+              "score": "",
               "hwDone": false,
               "hwPct": 0,
               "hwLesson": "1.4"
@@ -391,8 +402,8 @@
               "hwLesson": "2.1"
             },
             "std_2": {
-              "status": "Q",
-              "score": "2",
+              "status": "K",
+              "score": "",
               "hwDone": false,
               "hwPct": 0,
               "hwLesson": "2.1"
@@ -491,7 +502,7 @@
               "hwLesson": "2.2"
             },
             "std_4": {
-              "status": "K",
+              "status": "",
               "score": "5",
               "hwDone": true,
               "hwPct": 94,
@@ -821,7 +832,7 @@
               "hwLesson": "3.3"
             },
             "std_2": {
-              "status": "S",
+              "status": "K",
               "score": "",
               "hwDone": false,
               "hwPct": 0,
@@ -842,7 +853,7 @@
               "hwLesson": "3.3"
             },
             "std_5": {
-              "status": "K",
+              "status": "Q",
               "score": "4",
               "hwDone": true,
               "hwPct": 80,
@@ -987,10 +998,13 @@
           "2026-10-21": {
             "std_1": {
               "status": "K",
-              "score": "4",
+              "score": "2",
               "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.2"
+              "hwPct": 0,
+              "hwLesson": "1.2",
+              "hwCorrect": 0,
+              "hwTotal": 64,
+              "hwCompletedAt": 1792777678076
             },
             "std_2": {
               "status": "K",
@@ -1072,13 +1086,88 @@
           },
           "2026-10-22": {
             "std_5": {
-              "status": ""
+              "status": "K",
+              "score": ""
             },
             "std_1": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 8,
+              "hwLesson": "1.3",
+              "hwCorrect": 3,
+              "hwTotal": 37,
+              "hwCompletedAt": 1792689503201
+            },
+            "std_2": {
+              "status": "K",
+              "score": ""
+            },
+            "std_4": {
+              "status": "Q",
+              "score": "2"
+            }
+          },
+          "2026-10-26": {
+            "std_7": {
               "status": "",
               "score": ""
             },
+            "std_1": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "2.2",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792778622885
+            },
+            "std_5": {
+              "status": "S",
+              "score": ""
+            }
+          },
+          "2026-10-23": {
+            "std_8": {
+              "status": "",
+              "score": ""
+            },
+            "std_1": {
+              "status": "K",
+              "score": ""
+            },
             "std_2": {
+              "status": "",
+              "score": ""
+            }
+          },
+          "2026-10-24": {
+            "std_1": {
+              "status": "",
+              "score": ""
+            }
+          },
+          "2026-10-28": {
+            "std_4": {
+              "status": "",
+              "score": ""
+            }
+          },
+          "2026-10-25": {
+            "test_student": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 3,
+              "hwLesson": "1.2",
+              "hwCorrect": 2,
+              "hwTotal": 64,
+              "hwCompletedAt": 1792910931768
+            }
+          },
+          "2026-10-07": {
+            "std_3": {
               "status": "",
               "score": ""
             }
@@ -1086,7 +1175,7 @@
         },
         "lessonTypes": {
           "2026-10-19": "Vazifa: 3.3",
-          "2026-10-21": "Vazifa: 1.1",
+          "2026-10-21": "Oddiy",
           "2026-10-10": "Vazifa: 1.2",
           "2026-10-09": "Vazifa: 1.1",
           "2026-10-12": "Vazifa: 1.4",
@@ -1096,42 +1185,66 @@
           "2026-10-16": "Vazifa: 2.4",
           "2026-10-17": "Vazifa: 3.1",
           "2026-10-20": "Vazifa: 1.1",
-          "2026-10-22": "Oddiy",
-          "2026-10-23": "Oddiy"
+          "2026-10-22": "Vazifa: 1.3",
+          "2026-10-23": "Oddiy",
+          "2026-10-24": "Oddiy",
+          "2026-10-26": "Vazifa (B2): 2.2",
+          "2026-10-25": "Vazifa: 1.2",
+          "2026-10-02": "Oddiy",
+          "2026-10-05": "Oddiy"
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792608025450,
+        "updatedAt": 1792924486457,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
             "dateDisp": "21.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
+            "bookLevel": "B1+",
+            "unit": 7,
+            "lessonCode": "7.1",
+            "lessonTitle": "7.1 Working conditions",
             "pages": [
-              4,
-              5
+              46,
+              47
             ],
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 1792607960771
+            "assignedAt": 1792760912168,
+            "teacherName": "Instructor Muhammadyusuf"
+          },
+          "2026-10-26": {
+            "dateKey": "2026-10-26",
+            "dateDisp": "26.10.2026",
+            "bookLevel": "B2",
+            "unit": 2,
+            "lessonCode": "2.2",
+            "lessonTitle": "2.2 An extraordinary escape",
+            "pages": [
+              2012,
+              2013
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 1792778188732,
+            "teacherName": "Instructor Muhammadyusuf"
           }
         },
         "seededWindowV3": true
       },
       "customStudentNames": {},
       "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
+        "dateKey": "2026-10-26",
+        "dateDisp": "26.10.2026",
+        "bookLevel": "B2",
+        "unit": 2,
+        "lessonCode": "2.2",
+        "lessonTitle": "2.2 An extraordinary escape",
         "pages": [
-          4,
-          5
+          2012,
+          2013
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792607960771
+        "assignedAt": 1792778188732,
+        "teacherName": "Instructor Muhammadyusuf"
       }
     },
     {
@@ -1214,11 +1327,55 @@
             "std_3": {
               "status": "K"
             }
+          },
+          "2026-10-22": {
+            "std_1": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 8,
+              "hwLesson": "1.3",
+              "hwCorrect": 3,
+              "hwTotal": 37,
+              "hwCompletedAt": 1792689503211
+            }
+          },
+          "2026-10-23": {
+            "std_1": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "2.2",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792778622895
+            }
+          },
+          "2026-10-12": {
+            "std_1": {
+              "status": "K"
+            }
+          },
+          "2026-10-25": {
+            "test_student": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 3,
+              "hwLesson": "1.2",
+              "hwCorrect": 2,
+              "hwTotal": 64,
+              "hwCompletedAt": 1792910931780
+            }
           }
         },
         "lessonTypes": {
           "2026-10-21": "Vazifa: 1.1",
-          "2026-10-19": "Oddiy"
+          "2026-10-19": "Oddiy",
+          "2026-10-22": "Vazifa: 1.3",
+          "2026-10-23": "Vazifa: 1.2",
+          "2026-10-25": "Vazifa: 1.2"
         },
         "holidays": {},
         "homeworks": {
@@ -1236,7 +1393,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1792608489537
+        "updatedAt": 1792910931780
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -1766,14 +1923,15 @@
     "p2p_1792322748592_nls2",
     "p2p_1792322765334_1cj0",
     "p2p_1792387876695_p00d",
-    "p2p_1792383468123_seg5"
+    "p2p_1792383468123_seg5",
+    "p2p_1792779324856_1e9n"
   ],
   "accounts": [
     {
       "id": "admin_official_teacher",
       "role": "teacher",
       "name": "Ustoz",
-      "email": "admin_12038f1aq8syash@ethith.uz",
+      "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
       "coins": 5000,
       "gifts": [],
@@ -1784,6 +1942,17 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 5000,
+      "gifts": [],
+      "nameStyle": null,
+      "createdAt": 1792502058827,
+      "level": "C2"
     },
     {
       "id": "tg_98124765",
@@ -1797,7 +1966,21 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "updatedAt": 1792673953881
+      "updatedAt": 1792673956873
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "teacher@ethith.uz",
+      "coins": 5000,
+      "avatar": null,
+      "level": "A1",
+      "dailyMinutes": 0,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null,
+      "updatedAt": 1792606425762
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -1812,28 +1995,6 @@
       "title": null,
       "dailyMinutes": 0,
       "updatedAt": 1792611123890
-    },
-    {
-      "id": "sarvartovboyev09@gmail.com",
-      "name": "Sarvar Tovboyev",
-      "email": "sarvartovboyev09@gmail.com",
-      "role": "student",
-      "coins": 100000,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "createdAt": 1792673102972,
-      "updatedAt": 1792673102972
-    },
-    {
-      "id": "muhammedjoraboyev1@gmail.com",
-      "name": "Muhammadyusuf",
-      "email": "muhammedjoraboyev1@gmail.com",
-      "role": "student",
-      "coins": 100000,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "createdAt": 1792673102972,
-      "updatedAt": 1792673102972
     },
     {
       "id": "std_1",
@@ -1954,6 +2115,20 @@
       "level": "B1+",
       "dailyMinutes": 0,
       "updatedAt": 1792673953881
+    },
+    {
+      "id": "usmonqulovaetiborxon@gmail.com",
+      "name": "Etiborxon Usmonqulova",
+      "email": "usmonqulovaetiborxon@gmail.com",
+      "role": "student",
+      "coins": 5150,
+      "avatar": "girl_v7_valkyrie_samurai_1",
+      "level": "A1",
+      "joinedAt": 1792778756475,
+      "nameStyle": "flame",
+      "title": "👑 IELTS Qiroli",
+      "dailyMinutes": 0,
+      "updatedAt": 1792780081815
     }
   ],
   "p2pListings": [],
@@ -26975,8 +27150,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "4",
-        "top": 57.9,
-        "left": 63.8,
+        "top": 59,
+        "left": 64.2,
         "width": 7.8,
         "height": 1.5,
         "correct": [
@@ -30919,11 +31094,105 @@
       }
     ]
   },
-  "workbookOverridesTs": 1792960000000,
-  "updatedAt": 1792928067428,
-  "authorizedAdminChatIds": [
-    6772427596,
-    98124765
-  ],
-  "timestamp": 1792921840624
+  "workbookOverridesTs": {
+    "4": 1792928067428,
+    "5": 1792928067428,
+    "9": 1792928067428,
+    "12": 1792928067428,
+    "13": 1792928067428,
+    "14": 1792928067428,
+    "24": 1792928067428,
+    "25": 1792928067428,
+    "26": 1792928067428,
+    "27": 1792928067428,
+    "28": 1792928067428,
+    "29": 1792928067428,
+    "30": 1792928067428,
+    "31": 1792928067428,
+    "32": 1792928067428,
+    "33": 1792928067428,
+    "34": 1792928067428,
+    "35": 1792928067428,
+    "36": 1792928067428,
+    "37": 1792928067428,
+    "38": 1792928067428,
+    "39": 1792928067428,
+    "40": 1792928067428,
+    "41": 1792928067428,
+    "42": 1792928067428,
+    "43": 1792928067428,
+    "44": 1792928067428,
+    "45": 1792928067428,
+    "46": 1792928067428,
+    "47": 1792928067428,
+    "48": 1792928067428,
+    "49": 1792928067428,
+    "50": 1792928067428,
+    "51": 1792928067428,
+    "52": 1792928067428,
+    "53": 1792928067428,
+    "54": 1792928067428,
+    "55": 1792928067428,
+    "56": 1792928067428,
+    "57": 1792928067428,
+    "58": 1792928067428,
+    "59": 1792928067428,
+    "60": 1792928067428,
+    "61": 1792928067428,
+    "62": 1792928067428,
+    "63": 1792928067428,
+    "64": 1792928067428,
+    "65": 1792928067428,
+    "66": 1792928067428,
+    "67": 1792928067428,
+    "68": 1792928067428,
+    "69": 1792928067428,
+    "70": 1792928067428,
+    "71": 1792928067428,
+    "72": 1792928067428,
+    "73": 1792928067428,
+    "74": 1792928067428,
+    "75": 1792928067428,
+    "76": 1792928067428,
+    "77": 1792928067428,
+    "78": 1792928067428,
+    "79": 1792928067428,
+    "80": 1792928067428,
+    "81": 1792928067428,
+    "82": 1792928067428,
+    "83": 1792928067428,
+    "84": 1792928067428,
+    "85": 1792928067428,
+    "86": 1792928067428,
+    "87": 1792928067428,
+    "2004": 1792928067428,
+    "2005": 1792928067428,
+    "2006": 1792928067428,
+    "2007": 1792928067428,
+    "2008": 1792928067428,
+    "2009": 1792928067428,
+    "2010": 1792928067428,
+    "2011": 1792928067428,
+    "2012": 1792928067428,
+    "2013": 1792928067428,
+    "2014": 1792928067428,
+    "2015": 1792928067428,
+    "2016": 1792928067428,
+    "2017": 1792928067428,
+    "2018": 1792932518415,
+    "2019": 1792928067428,
+    "2020": 1792928067428,
+    "2021": 1792928067428,
+    "2022": 1792928067428,
+    "2023": 1792928067428,
+    "2024": 1792928067428,
+    "2025": 1792928067428,
+    "2026": 1792928067428,
+    "2027": 1792928067428,
+    "2028": 1792928067428,
+    "2029": 1792928067428,
+    "2030": 1792928067428,
+    "2031": 1792928067428
+  },
+  "updatedAt": 1792932519251
 }
