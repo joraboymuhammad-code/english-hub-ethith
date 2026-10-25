@@ -8460,8 +8460,8 @@
                 "exercise": "1",
                 "label": "5",
                 "top": 53.9,
-                "left": 66.1,
-                "width": 8.1,
+                "left": 59.2,
+                "width": 7.5,
                 "height": 1.5,
                 "correct": "white",
                 "page": 2030
@@ -8471,9 +8471,9 @@
                 "type": "fill",
                 "exercise": "1",
                 "label": "6",
-                "top": 56.3,
-                "left": 78.5,
-                "width": 7.5,
+                "top": 57.3,
+                "left": 69.7,
+                "width": 7.2,
                 "height": 1.5,
                 "correct": "harm",
                 "page": 2030

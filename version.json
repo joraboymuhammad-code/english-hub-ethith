@@ -1,7 +1,7 @@
 {
-  "version": "2026.10.25.0415",
-  "timestamp": 1792929000000,
-  "label": "Release: B2 Workbook Pages 18-31 Synchronized",
-  "buildTimestamp": 1792929000000,
-  "description": "Cleaned shared_store overrides, perfect transparent inputs, white focus with crisp blue border, black text, and verified calibration on all pages 18 to 31"
+  "version": "2026.10.25.0425",
+  "timestamp": 1792929600000,
+  "label": "Release: B2 Workbook Pages 18-31 Verified Calibration",
+  "buildTimestamp": 1792929600000,
+  "description": "Page 30 items 5 and 6 exact caption underline calibration, zero overlaps across all pages 18 to 31"
 }
