@@ -29737,8 +29737,8 @@
         "type": "fill",
         "exercise": "6",
         "label": "2",
-        "top": 33,
-        "left": 37.1,
+        "top": 31.7,
+        "left": 55,
         "width": 26.7,
         "height": 1.5,
         "correct": "have the receptionist send you a new appointment",
@@ -29749,8 +29749,8 @@
         "type": "fill",
         "exercise": "6",
         "label": "3",
-        "top": 35.1,
-        "left": 29.9,
+        "top": 33.6,
+        "left": 45.1,
         "width": 26.7,
         "height": 1.5,
         "correct": "had his house burgled while he was out",
@@ -31208,11 +31208,11 @@
     "2024": 1792928067428,
     "2025": 1792928067428,
     "2026": 1792932798830,
-    "2027": 1792932810044,
+    "2027": 1792932813730,
     "2028": 1792932724216,
     "2029": 1792932640204,
     "2030": 1792932660380,
     "2031": 1792932590242
   },
-  "updatedAt": 1792932811617
+  "updatedAt": 1792932815022
 }
