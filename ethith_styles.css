@@ -8503,18 +8503,18 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   container-type: inline-size;
 }
 .eth-wb-input, .wb-fill-input {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   background: transparent !important;
   border: 1px solid rgba(37, 99, 235, 0.35) !important;
   border-bottom: 2px solid #2563eb !important;
-  border-radius: 4px;
-  font-family: inherit;
+  border-radius: 4px !important;
+  font-family: inherit !important;
   font-size: clamp(7px, 1.45cqw, 28px) !important;
-  font-weight: 700;
+  font-weight: 700 !important;
   color: #000000 !important;
   padding: 0 0.5cqw !important;
-  outline: none;
-  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+  outline: none !important;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s !important;
 }
 .eth-wb-editor-active .wb-fill-input,
 .eth-wb-page-box.is-editing .wb-fill-input {
@@ -8523,18 +8523,15 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 }
 .eth-wb-input:hover, .wb-fill-input:hover {
   border-color: #2563eb !important;
-  background: rgba(255, 255, 255, 0.45) !important;
-  box-shadow: 0 0 6px rgba(37, 99, 235, 0.25) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.2) !important;
 }
 .eth-wb-input:focus, .wb-fill-input:focus {
   background: #ffffff !important;
   color: #000000 !important;
   border: 2px solid #2563eb !important;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25) !important;
-}
-.eth-wb-input:not(:placeholder-shown), .wb-fill-input:not(:placeholder-shown) {
-  background: #ffffff !important;
-  color: #000000 !important;
+  outline: none !important;
 }
 .eth-wb-input.correct, .wb-fill-input.correct {
   border: 2px solid #10b981 !important;
