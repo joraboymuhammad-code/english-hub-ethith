@@ -4458,9 +4458,19 @@ window.ETHITH_COSMETICS = {
   ]
 };
 
+window.ethithCleanStudentName = function(name) {
+  if (!name || typeof name !== 'string') return name || '';
+  return name
+    .replace(/\s+[^\s]+\s+(o['‘`’]?g['‘`’]?li|qizi)\b/gi, '')
+    .replace(/\s+(o['‘`’]?g['‘`’]?li|qizi)\b/gi, '')
+    .trim();
+};
+
 window.ETHITH_GET_USER_NAME_FX = function(user, extraClasses) {
   if (!user) return '';
-  var name = (user.name || 'Foydalanuvchi').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  var rawName = user.name || 'Foydalanuvchi';
+  var clean = window.ethithCleanStudentName ? window.ethithCleanStudentName(rawName) : rawName;
+  var name = clean.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   var fxClass = '';
   if (user.nameStyle) {
     var isExpired = false;

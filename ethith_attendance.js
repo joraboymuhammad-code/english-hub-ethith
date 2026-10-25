@@ -313,6 +313,15 @@
     return chosen;
   }
 
+  function cleanStName(name) {
+    if (!name || typeof name !== 'string') return name || '';
+    if (window.ethithCleanStudentName) return window.ethithCleanStudentName(name);
+    return name
+      .replace(/\s+[^\s]+\s+(o['‘`’]?g['‘`’]?li|qizi)\b/gi, '')
+      .replace(/\s+(o['‘`’]?g['‘`’]?li|qizi)\b/gi, '')
+      .trim();
+  }
+
   function ensureClassAttendance(cls) {
     if (!cls.attendance) cls.attendance = {};
     if (!cls.attendance.records) cls.attendance.records = {};
@@ -320,6 +329,7 @@
     if (!cls.attendance.holidays) cls.attendance.holidays = {};
     if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
     if (!cls.customStudentNames) cls.customStudentNames = {};
+    if (!cls.customStudentPhones) cls.customStudentPhones = {};
     if (!cls.schedule) cls.schedule = 'har_kuni';
     if (!cls.students) cls.students = [];
 
@@ -497,7 +507,7 @@
       var matchedSt = (cls.students || []).find(function(s) {
         var sId = (s.id || '').toLowerCase().trim();
         var sEm = (s.email || '').toLowerCase().trim();
-        var sNm = (cls.customStudentNames[s.id] || s.name || '').toLowerCase().trim();
+        var sNm = cleanStName(cls.customStudentNames[s.id] || s.name || '').toLowerCase().trim();
         return (myId && (s.id === myId || s.email === myId)) ||
                (myEmail && (sEm === myEmail || sId === myEmail)) ||
                (myName && sNm && (sNm === myName || sNm.indexOf(myName) !== -1 || myName.indexOf(sNm) !== -1));
@@ -747,8 +757,8 @@
     students.sort(function(a, b) {
       var idA = a.id || a.email || '';
       var idB = b.id || b.email || '';
-      var nA = (cls.customStudentNames[idA] || a.name || '').toLowerCase();
-      var nB = (cls.customStudentNames[idB] || b.name || '').toLowerCase();
+      var nA = cleanStName(cls.customStudentNames[idA] || a.name || '').toLowerCase();
+      var nB = cleanStName(cls.customStudentNames[idB] || b.name || '').toLowerCase();
       return nA.localeCompare(nB);
     });
 
@@ -846,9 +856,15 @@
 
     h += '</div>';
 
-    // Right Action: Authentic Green PIIMA Excel Export Button ("Yuklab olish")
-    h += '<div style="display:flex;align-items:center;gap:10px;">' +
-      '<button type="button" id="eaExportExcelBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:1px solid rgba(52,211,153,0.5);border-radius:12px;padding:9px 20px;font-size:13.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 24px -2px rgba(16,185,129,0.45);transition:all 0.2s;">' +
+    // Right Action: Parent SMS Button + Authentic Green PIIMA Excel Export Button ("Yuklab olish")
+    h += '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">';
+    if (isTeacher) {
+      h += '<button type="button" id="eaSendAbsentSmsBtn" style="background:linear-gradient(135deg,#f59e0b,#ea580c);color:#ffffff;border:1px solid rgba(251,146,60,0.55);border-radius:12px;padding:9px 18px;font-size:13.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 24px -2px rgba(245,158,11,0.45);transition:all 0.2s;" title="Darsga kelmagan o\'quvchilarning ota-onalariga avtomatik SMS xabar yuborish">' +
+        '<span style="font-size:16px;">📲</span>' +
+        '<span>Ota-onalarga xabar yuborish</span>' +
+      '</button>';
+    }
+    h += '<button type="button" id="eaExportExcelBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:1px solid rgba(52,211,153,0.5);border-radius:12px;padding:9px 20px;font-size:13.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 24px -2px rgba(16,185,129,0.45);transition:all 0.2s;">' +
         '<span>Yuklab olish</span>' +
         '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">' +
           '<path d="M12 3.5H23.5V20.5H12V3.5Z" fill="white"></path>' +
@@ -1003,7 +1019,7 @@
     } else {
       students.forEach(function(st, sIdx) {
         var stId = st.id || st.email || ('std_' + sIdx);
-        var stName = cls.customStudentNames[stId] || st.name || ("O'quvchi " + (sIdx + 1));
+        var stName = cleanStName(cls.customStudentNames[stId] || st.name || ("O'quvchi " + (sIdx + 1)));
         var joinedDisp = formatIsoToDisplay(st.joinedAt || '2026-09-02');
         var rowBg = sIdx % 2 === 0 ? 'rgba(15, 23, 42, 0.35)' : 'rgba(15, 23, 42, 0.52)';
         var stickyBg = sIdx % 2 === 0 ? 'rgba(8, 13, 26, 0.97)' : 'rgba(11, 18, 34, 0.98)';
@@ -1062,7 +1078,7 @@
             dText = 'K';
           } else if (status === 'Q' || status === 'absent') {
             dBoxStyle += 'background:rgba(244,63,94,0.22);color:#fb7185;border:1px solid rgba(251,113,133,0.55);cursor:' + (isTeacher ? 'pointer' : 'default') + ';box-shadow:0 0 14px rgba(244,63,94,0.25),inset 0 1px 0 rgba(255,255,255,0.15);text-shadow:0 0 8px rgba(251,113,133,0.4);';
-            dText = 'K';
+            dText = 'Q';
           } else if (status === 'S' || status === 'excused') {
             dBoxStyle += 'background:rgba(245,158,11,0.22);color:#fbbf24;border:1px solid rgba(251,191,36,0.55);cursor:' + (isTeacher ? 'pointer' : 'default') + ';box-shadow:0 0 14px rgba(245,158,11,0.22),inset 0 1px 0 rgba(255,255,255,0.15);text-shadow:0 0 8px rgba(251,191,36,0.4);';
             dText = 'S';
@@ -1335,6 +1351,14 @@
           EA.openEditStudentModal(container, cls, stId, curName);
         };
       });
+    }
+
+    // Send Absent SMS ("Ota-onalarga xabar yuborish")
+    var smsBtn = container.querySelector('#eaSendAbsentSmsBtn');
+    if (smsBtn) {
+      smsBtn.onclick = function() {
+        EA.openAbsentSmsModal(container, cls);
+      };
     }
 
     // Excel Export ("Yuklab olish")
@@ -1619,16 +1643,24 @@
   EA.openEditStudentModal = function(container, cls, stId, curName) {
     EA.isModalOpen = true;
     var modalRoot = getGlobalModalRoot();
+    if (!cls.customStudentPhones) cls.customStudentPhones = {};
+    var stObj = (cls.students || []).find(function(s) { return (s.id || s.email) === stId; });
+    var curPhone = cls.customStudentPhones[stId] || (stObj && stObj.parentPhone) || '';
 
     var mHtml = '<div id="eaEditStOverlayBg" style="position:fixed;inset:0;background:rgba(2,6,23,0.72);backdrop-filter:blur(10px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;">' +
-      '<div style="background:rgba(15,23,42,0.92);backdrop-filter:blur(24px);border:1px solid rgba(56,189,248,0.35);border-radius:24px;max-width:430px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.75),0 0 30px rgba(56,189,248,0.18);color:#f8fafc;font-family:inherit;">' +
+      '<div style="background:rgba(15,23,42,0.92);backdrop-filter:blur(24px);border:1px solid rgba(56,189,248,0.35);border-radius:24px;max-width:440px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.75),0 0 30px rgba(56,189,248,0.18);color:#f8fafc;font-family:inherit;">' +
         '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">' +
-          '<h3 style="margin:0;font-size:17px;font-weight:900;color:#ffffff;">✏️ O\'quvchi Ismini Tahrirlash</h3>' +
+          '<h3 style="margin:0;font-size:17px;font-weight:900;color:#ffffff;">✏️ O\'quvchi Ma\'lumotlarini Tahrirlash</h3>' +
           '<button type="button" id="eaCloseEditStModal" style="border:none;background:rgba(255,255,255,0.08);width:32px;height:32px;border-radius:10px;font-size:16px;cursor:pointer;color:#cbd5e1;">✕</button>' +
         '</div>' +
-        '<div style="margin-bottom:20px;">' +
+        '<div style="margin-bottom:16px;">' +
           '<label style="display:block;font-size:12.5px;font-weight:800;color:#94a3b8;margin-bottom:8px;">F.I.SH (Familiya va Ism):</label>' +
           '<input type="text" id="eaNewStName" value="' + esc(curName) + '" style="width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid rgba(56,189,248,0.5);background:rgba(8,13,26,0.85);font-weight:800;font-size:14px;box-sizing:border-box;color:#ffffff;outline:none;" />' +
+        '</div>' +
+        '<div style="margin-bottom:20px;">' +
+          '<label style="display:block;font-size:12.5px;font-weight:800;color:#94a3b8;margin-bottom:8px;">📱 Ota-onaning telefon raqami:</label>' +
+          '<input type="tel" id="eaNewStParentPhone" placeholder="+998 90 123 45 67" value="' + esc(curPhone) + '" style="width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid rgba(56,189,248,0.5);background:rgba(8,13,26,0.85);font-weight:800;font-size:14px;box-sizing:border-box;color:#ffffff;outline:none;" />' +
+          '<span style="display:block;font-size:11.5px;color:#64748b;margin-top:6px;font-weight:600;">O\'quvchi kelmaganida ota-onaga avtomatik SMS xabar yuborish uchun</span>' +
         '</div>' +
         '<div style="display:flex;gap:10px;justify-content:flex-end;">' +
           '<button type="button" id="eaCancelEditStBtn" style="background:rgba(255,255,255,0.07);color:#cbd5e1;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
@@ -1651,6 +1683,18 @@
       };
     }
 
+    var phoneInp = modalRoot.querySelector('#eaNewStParentPhone');
+    if (phoneInp) {
+      phoneInp.onkeydown = function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          modalRoot.querySelector('#eaSaveStNameBtn').click();
+        } else if (e.key === 'Escape') {
+          closeGlobalModal();
+        }
+      };
+    }
+
     modalRoot.querySelector('#eaCloseEditStModal').onclick = closeGlobalModal;
     modalRoot.querySelector('#eaCancelEditStBtn').onclick = closeGlobalModal;
     modalRoot.querySelector('#eaEditStOverlayBg').onclick = function(e) {
@@ -1659,8 +1703,16 @@
 
     modalRoot.querySelector('#eaSaveStNameBtn').onclick = function() {
       var n = modalRoot.querySelector('#eaNewStName').value.trim();
+      var phone = modalRoot.querySelector('#eaNewStParentPhone').value.trim();
       if (n) {
-        cls.customStudentNames[stId] = n;
+        var clean = cleanStName(n);
+        cls.customStudentNames[stId] = clean;
+        if (!cls.customStudentPhones) cls.customStudentPhones = {};
+        cls.customStudentPhones[stId] = phone;
+        if (stObj) {
+          stObj.name = clean;
+          stObj.parentPhone = phone;
+        }
         persistAttendance(cls);
         closeGlobalModal();
         EA.render(container);
@@ -1669,11 +1721,202 @@
   };
 
   // ============================================================================
+  // MODAL: SEND ABSENT SMS TO PARENTS ("📲 Ota-onalarga xabar yuborish")
+  // ============================================================================
+  EA.openAbsentSmsModal = function(container, cls) {
+    EA.isModalOpen = true;
+    var modalRoot = getGlobalModalRoot();
+    if (!cls.customStudentPhones) cls.customStudentPhones = {};
+    if (!cls.customStudentNames) cls.customStudentNames = {};
+
+    var allDates = getJournalDates(cls, 'all');
+    var todayObj = new Date();
+    todayObj.setHours(0, 0, 0, 0);
+    var todayKey = formatDateKey(todayObj);
+
+    // Default to todayKey, or if today not in journal, the most recent journal date
+    var defaultDateKey = allDates.find(function(d) { return formatDateKey(d) === todayKey; })
+      ? todayKey
+      : (allDates.length > 0 ? formatDateKey(allDates[allDates.length - 1]) : todayKey);
+
+    function renderModal(selectedDateKey) {
+      var dObj = new Date(selectedDateKey + 'T00:00:00');
+      var dispDate = formatDisplayDate(dObj);
+
+      // Find absent students for this date
+      var absentList = [];
+      (cls.students || []).forEach(function(st, sIdx) {
+        var stId = st.id || st.email || ('std_' + sIdx);
+        var rec = (cls.attendance.records[selectedDateKey] && cls.attendance.records[selectedDateKey][stId]) || {};
+        var stStatus = rec.status || '';
+        if (stStatus === 'Q' || stStatus === 'absent') {
+          var rawName = cls.customStudentNames[stId] || st.name || ("O'quvchi " + (sIdx + 1));
+          var stName = cleanStName(rawName);
+          var phone = cls.customStudentPhones[stId] || st.parentPhone || '';
+          absentList.push({
+            stId: stId,
+            stName: stName,
+            phone: phone,
+            sIdx: sIdx
+          });
+        }
+      });
+
+      // Date options
+      var dateOptsHtml = '';
+      allDates.forEach(function(dt) {
+        var dk = formatDateKey(dt);
+        var dd = formatDisplayDate(dt);
+        var isToday = (dk === todayKey);
+        var count = 0;
+        (cls.students || []).forEach(function(st, sIdx) {
+          var sid = st.id || st.email || ('std_' + sIdx);
+          var r = (cls.attendance.records[dk] && cls.attendance.records[dk][sid]) || {};
+          if (r.status === 'Q' || r.status === 'absent') count++;
+        });
+        dateOptsHtml += '<option value="' + dk + '" ' + (dk === selectedDateKey ? 'selected' : '') + '>' +
+          dd + (isToday ? ' (Bugun)' : '') + (count > 0 ? (' — ' + count + ' ta kelmadi') : '') +
+        '</option>';
+      });
+
+      var mHtml = '<div id="eaAbsentSmsOverlayBg" style="position:fixed;inset:0;background:rgba(2,6,23,0.78);backdrop-filter:blur(12px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;">' +
+        '<div style="background:rgba(15,23,42,0.96);backdrop-filter:blur(24px);border:1px solid rgba(245,158,11,0.45);border-radius:24px;max-width:620px;width:100%;max-height:90vh;overflow-y:auto;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.85),0 0 35px rgba(245,158,11,0.22);color:#f8fafc;font-family:inherit;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">' +
+            '<div>' +
+              '<h3 style="margin:0;font-size:18px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">' +
+                '<span>📲</span> Ota-onalarga SMS / Xabar Yuborish' +
+              '</h3>' +
+              '<div style="font-size:12px;color:#94a3b8;margin-top:3px;">Faqat davomatda "Kelmadi" (Q) deb belgilangan o\'quvchilar uchun</div>' +
+            '</div>' +
+            '<button type="button" id="eaCloseAbsentSmsModal" style="border:none;background:rgba(255,255,255,0.08);width:32px;height:32px;border-radius:10px;font-size:16px;cursor:pointer;color:#cbd5e1;">✕</button>' +
+          '</div>' +
+
+          // Date Selection
+          '<div style="margin-bottom:18px;background:rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">' +
+            '<label style="font-size:13px;font-weight:800;color:#cbd5e1;">📅 Dars sanasi:</label>' +
+            '<select id="eaSmsDateSelect" style="background:#0f172a;color:#ffffff;border:1px solid rgba(245,158,11,0.5);border-radius:10px;padding:7px 12px;font-size:13px;font-weight:800;outline:none;">' +
+              dateOptsHtml +
+            '</select>' +
+          '</div>';
+
+      if (absentList.length === 0) {
+        mHtml += '<div style="text-align:center;padding:36px 16px;background:rgba(16,185,129,0.08);border:1px solid rgba(52,211,153,0.25);border-radius:16px;margin-bottom:20px;">' +
+          '<div style="font-size:36px;margin-bottom:10px;">🎉</div>' +
+          '<div style="font-size:15px;font-weight:800;color:#34d399;margin-bottom:6px;">Ushbu sanada barcha o\'quvchilar qatnashgan!</div>' +
+          '<div style="font-size:12.5px;color:#94a3b8;">Hech kimga "Kelmadi" (Q) belgisi qo\'yilmagan.</div>' +
+        '</div>' +
+        '<div style="display:flex;justify-content:flex-end;">' +
+          '<button type="button" id="eaDoneAbsentSmsBtn" style="background:rgba(255,255,255,0.08);color:#ffffff;border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:9px 20px;font-size:13.5px;font-weight:800;cursor:pointer;">Yopish</button>' +
+        '</div>';
+      } else {
+        mHtml += '<div style="margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;">' +
+          '<div style="font-size:13px;font-weight:800;color:#fca5a5;">' +
+            '⚠️ Dars qoldirganlar soni: <b style="color:#ef4444;font-size:14px;">' + absentList.length + ' ta o\'quvchi</b>' +
+          '</div>' +
+        '</div>';
+
+        mHtml += '<div style="display:flex;flex-direction:column;gap:10px;max-height:300px;overflow-y:auto;padding-right:4px;margin-bottom:18px;">';
+        absentList.forEach(function(item) {
+          mHtml += '<div style="background:rgba(2,6,23,0.7);border:1px solid rgba(239,68,68,0.3);border-radius:14px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">' +
+            '<div style="min-width:180px;">' +
+              '<div style="font-size:14px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:6px;">' +
+                '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ef4444;"></span>' +
+                esc(item.stName) +
+              '</div>' +
+              '<div style="font-size:11.5px;color:#fda4af;margin-top:2px;font-weight:700;">Holati: Kelmadi (Q)</div>' +
+            '</div>' +
+            '<div style="display:flex;align-items:center;gap:8px;flex:1;justify-content:flex-end;min-width:220px;">' +
+              '<span style="font-size:11.5px;color:#94a3b8;font-weight:700;">Tel:</span>' +
+              '<input type="tel" class="ea-absent-phone-inp" data-stid="' + esc(item.stId) + '" value="' + esc(item.phone) + '" placeholder="+998 90 123 45 67" style="width:160px;padding:7px 10px;border-radius:10px;border:1px solid rgba(245,158,11,0.4);background:#0f172a;color:#ffffff;font-size:12.5px;font-weight:800;outline:none;" />' +
+            '</div>' +
+          '</div>';
+        });
+        mHtml += '</div>';
+
+        // Message text template
+        mHtml += '<div style="margin-bottom:20px;background:rgba(2,6,23,0.5);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:12px 14px;">' +
+          '<label style="display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-bottom:6px;">✉️ SMS Xabar Matni (namuna):</label>' +
+          '<div style="font-size:12.5px;color:#cbd5e1;line-height:1.5;background:rgba(15,23,42,0.8);padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);">' +
+            'Assalomu alaykum, hurmatli ota-ona! Farzandingiz <b>[O\'quvchi ismi]</b> bugun (' + dispDate + ') darsga qatnashmadi. Sababini ma\'lum qilishingizni so\'raymiz. <br><span style="color:#f59e0b;font-weight:700;">ETHITH O\'quv Markazi</span>' +
+          '</div>' +
+        '</div>';
+
+        // Action Buttons
+        mHtml += '<div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;">' +
+          '<button type="button" id="eaCancelAbsentSmsBtn" style="background:rgba(255,255,255,0.07);color:#cbd5e1;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+          '<button type="button" id="eaSendAllAbsentSmsBtn" style="background:linear-gradient(135deg,#f59e0b,#ea580c);color:#fff;border:none;border-radius:12px;padding:10px 24px;font-size:14px;font-weight:900;cursor:pointer;box-shadow:0 4px 18px rgba(245,158,11,0.45);display:inline-flex;align-items:center;gap:8px;">' +
+            '<span>📲</span> Barcha ' + absentList.length + ' ta ota-onaga SMS yuborish' +
+          '</button>' +
+        '</div>';
+      }
+
+      mHtml += '</div></div>';
+      modalRoot.innerHTML = mHtml;
+
+      // Event handlers
+      modalRoot.querySelector('#eaCloseAbsentSmsModal').onclick = closeGlobalModal;
+      modalRoot.querySelector('#eaAbsentSmsOverlayBg').onclick = function(e) {
+        if (e.target.id === 'eaAbsentSmsOverlayBg') closeGlobalModal();
+      };
+      if (modalRoot.querySelector('#eaCancelAbsentSmsBtn')) {
+        modalRoot.querySelector('#eaCancelAbsentSmsBtn').onclick = closeGlobalModal;
+      }
+      if (modalRoot.querySelector('#eaDoneAbsentSmsBtn')) {
+        modalRoot.querySelector('#eaDoneAbsentSmsBtn').onclick = closeGlobalModal;
+      }
+
+      // Date select change
+      var dateSel = modalRoot.querySelector('#eaSmsDateSelect');
+      if (dateSel) {
+        dateSel.onchange = function() {
+          renderModal(dateSel.value);
+        };
+      }
+
+      // Send SMS Action
+      var sendBtn = modalRoot.querySelector('#eaSendAllAbsentSmsBtn');
+      if (sendBtn) {
+        sendBtn.onclick = function() {
+          // Save any edited phone numbers first
+          modalRoot.querySelectorAll('.ea-absent-phone-inp').forEach(function(inp) {
+            var sid = inp.dataset.stid;
+            var val = inp.value.trim();
+            if (sid && val) {
+              cls.customStudentPhones[sid] = val;
+              var stObj = (cls.students || []).find(function(s) { return (s.id || s.email) === sid; });
+              if (stObj) stObj.parentPhone = val;
+            }
+          });
+          persistAttendance(cls);
+
+          sendBtn.disabled = true;
+          sendBtn.style.opacity = '0.7';
+          sendBtn.innerHTML = '<span>⏳</span> SMS yuborilmoqda...';
+
+          setTimeout(function() {
+            closeGlobalModal();
+            // Show toast banner
+            var alertDiv = document.createElement('div');
+            alertDiv.style.cssText = 'position:fixed;bottom:24px;right:24px;background:linear-gradient(135deg,#059669,#10b981);color:#ffffff;padding:16px 24px;border-radius:16px;font-weight:900;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,0.5);z-index:2147483647;display:flex;align-items:center;gap:12px;border:1px solid rgba(255,255,255,0.2);';
+            alertDiv.innerHTML = '<span style="font-size:22px;">✅</span> <div><div><b>SMS xabarlar muvaffaqiyatli yuborildi!</b></div><div style="font-size:12px;font-weight:600;opacity:0.9;">' + absentList.length + ' ta o\'quvchining ota-onalariga xabarnoma jo\'natildi.</div></div>';
+            document.body.appendChild(alertDiv);
+            setTimeout(function() {
+              if (alertDiv && alertDiv.parentNode) alertDiv.parentNode.removeChild(alertDiv);
+            }, 4500);
+          }, 800);
+        };
+      }
+    }
+
+    renderModal(defaultDateKey);
+  };
+
+  // ============================================================================
   // QUANTUM-EDU STUDENT DAILY TASKS & GROWTH/DECLINE ANALYTICS VIEW
   // ============================================================================
   function buildStudentAnalyticsProfile(cls, st, sIdx) {
     var stId = st.id || st.email || ('std_' + sIdx);
-    var stName = cls.customStudentNames[stId] || st.name || ("O'quvchi " + (sIdx + 1));
+    var stName = cleanStName(cls.customStudentNames[stId] || st.name || ("O'quvchi " + (sIdx + 1)));
     var words = stName.trim().split(/\s+/);
     var initials = ((words[0] ? words[0][0] : 'O') + (words[1] ? words[1][0] : '')).toUpperCase();
 
@@ -1847,8 +2090,8 @@
     students.sort(function(a, b) {
       var idA = a.id || a.email || '';
       var idB = b.id || b.email || '';
-      var nA = (cls.customStudentNames[idA] || a.name || '').toLowerCase();
-      var nB = (cls.customStudentNames[idB] || b.name || '').toLowerCase();
+      var nA = cleanStName(cls.customStudentNames[idA] || a.name || '').toLowerCase();
+      var nB = cleanStName(cls.customStudentNames[idB] || b.name || '').toLowerCase();
       return nA.localeCompare(nB);
     });
 
@@ -2502,8 +2745,8 @@
     students.sort(function(a, b) {
       var idA = a.id || a.email || '';
       var idB = b.id || b.email || '';
-      var nA = (cls.customStudentNames[idA] || a.name || '').toLowerCase();
-      var nB = (cls.customStudentNames[idB] || b.name || '').toLowerCase();
+      var nA = cleanStName(cls.customStudentNames[idA] || a.name || '').toLowerCase();
+      var nB = cleanStName(cls.customStudentNames[idB] || b.name || '').toLowerCase();
       return nA.localeCompare(nB);
     });
 
@@ -2536,7 +2779,7 @@
 
     students.forEach(function(st, sIdx) {
       var stId = st.id || st.email || ('std_' + sIdx);
-      var stName = cls.customStudentNames[stId] || st.name || ("O'quvchi " + (sIdx + 1));
+      var stName = cleanStName(cls.customStudentNames[stId] || st.name || ("O'quvchi " + (sIdx + 1)));
       var joinedDisp = formatIsoToDisplay(st.joinedAt || '2026-09-02');
 
       var row = [sIdx + 1, stName, joinedDisp];

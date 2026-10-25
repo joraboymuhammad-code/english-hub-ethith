@@ -1,7 +1,7 @@
 {
-  "version": "2026.10.25.1900",
-  "timestamp": 1792945200000,
-  "label": "Release: B2 Workbook Pages 32-45 (Units 5 & 6) Calibrated & Integrated",
-  "buildTimestamp": 1792945200000,
-  "description": "Oxford Navigate B2 Workbook Pages 32 to 45 (Units 5 & 6, IDs 2032-2045) calibrated with 348 pixel-perfect interactive inputs and official answer keys"
+  "version": "2026.10.25.2010",
+  "timestamp": 1792949400000,
+  "label": "Release: B2 Workbook Pages 46-59 (Units 7 & 8) + Davomat SMS & Clean Names",
+  "buildTimestamp": 1792949400000,
+  "description": "Oxford Navigate B2 Workbook Pages 46 to 59 (Units 7 & 8, IDs 2046-2059) calibrated with 375 pixel-perfect interactive inputs + Davomat absent parent SMS + Student parent phone + Clean names (no patronymics)"
 }

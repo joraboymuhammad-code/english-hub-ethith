@@ -10650,7 +10650,8 @@
 
     allAccounts.forEach(function(u) {
       if (!u || u.role === 'teacher') return;
-      var cleanName = (u.name || '').trim();
+      var rawName = (u.name || '').trim();
+      var cleanName = (window.ethithCleanStudentName ? window.ethithCleanStudentName(rawName) : rawName).trim();
       var cleanEmail = (u.email || '').trim().toLowerCase();
       var cleanId = (u.id || '').trim();
       if (!cleanName && !cleanEmail && !cleanId) return;
