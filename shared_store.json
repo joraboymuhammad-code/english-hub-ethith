@@ -1164,6 +1164,16 @@
               "hwCorrect": 2,
               "hwTotal": 64,
               "hwCompletedAt": 1792910931768
+            },
+            "std_1": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "4.4",
+              "hwCorrect": 0,
+              "hwTotal": 29,
+              "hwCompletedAt": 1792932662053
             }
           },
           "2026-10-07": {
@@ -1195,7 +1205,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792924486457,
+        "updatedAt": 1792932662053,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1367,6 +1377,16 @@
               "hwCorrect": 2,
               "hwTotal": 64,
               "hwCompletedAt": 1792910931780
+            },
+            "std_1": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "4.4",
+              "hwCorrect": 0,
+              "hwTotal": 29,
+              "hwCompletedAt": 1792932662063
             }
           }
         },
@@ -1393,7 +1413,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1792910931780
+        "updatedAt": 1792932662063
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -30690,8 +30710,8 @@
         "type": "fill",
         "exercise": "4",
         "label": "9",
-        "top": 91.4,
-        "left": 14,
+        "top": 91.7,
+        "left": 12.4,
         "width": 7.5,
         "height": 1.5,
         "correct": "older",
@@ -31191,8 +31211,8 @@
     "2027": 1792928067428,
     "2028": 1792928067428,
     "2029": 1792932640204,
-    "2030": 1792932657878,
+    "2030": 1792932660380,
     "2031": 1792932590242
   },
-  "updatedAt": 1792932659845
+  "updatedAt": 1792932662430
 }
