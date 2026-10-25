@@ -1,7 +1,7 @@
 {
-  "version": "2026.10.25.0400",
-  "timestamp": 1792928500000,
-  "label": "Release: Upper-Intermediate (B2) Workbook Pages 18-31 100% Calibrated & Transparent",
-  "buildTimestamp": 1792928500000,
-  "description": "Transparent inputs, white focus with crisp blue border, black text, and verified calibration on all pages 18 to 31"
+  "version": "2026.10.25.0415",
+  "timestamp": 1792929000000,
+  "label": "Release: B2 Workbook Pages 18-31 Synchronized",
+  "buildTimestamp": 1792929000000,
+  "description": "Cleaned shared_store overrides, perfect transparent inputs, white focus with crisp blue border, black text, and verified calibration on all pages 18 to 31"
 }
