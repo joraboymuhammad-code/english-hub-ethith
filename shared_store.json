@@ -35060,8 +35060,8 @@
         "exercise": "1",
         "label": "2",
         "text": "to see",
-        "top": 24.1,
-        "left": 19.7,
+        "top": 26.2,
+        "left": 20.4,
         "width": 2.9,
         "height": 1.4,
         "isCorrect": false,
@@ -35099,8 +35099,8 @@
         "exercise": "1",
         "label": "3",
         "text": "Lake Windermere",
-        "top": 26.1,
-        "left": 23.6,
+        "top": 27.9,
+        "left": 26.1,
         "width": 7.8,
         "height": 1.4,
         "isCorrect": true,
@@ -35745,7 +35745,7 @@
     "2042": 2026,
     "2043": 1792937534840,
     "2044": 1792937544078,
-    "2045": 1792937595256
+    "2045": 1792937597790
   },
-  "updatedAt": 1792937595513
+  "updatedAt": 1792937598062
 }
