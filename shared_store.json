@@ -26502,43 +26502,7 @@
         "correct": false
       }
     ],
-    "2016": [
-      {
-        "id": "p2016_ex2_1",
-        "type": "fill",
-        "page": 2016,
-        "exercise": "2",
-        "label": "1",
-        "top": 20.6,
-        "left": 9.3,
-        "width": 28,
-        "height": 2.3,
-        "correct": [
-          "He thought the journey would be cold and uncomfortable, and he didn't feel he knew Davies very well and thought he was a bit dull",
-          "He thought the journey would be cold and uncomfortable",
-          "cold and uncomfortable",
-          "didn't feel he knew Davies very well",
-          "thought he was a bit dull"
-        ]
-      },
-      {
-        "id": "p2016_ex2_2",
-        "type": "fill",
-        "page": 2016,
-        "exercise": "2",
-        "label": "2",
-        "top": 16.7,
-        "left": 9,
-        "width": 28,
-        "height": 2.3,
-        "correct": [
-          "Davies was worried that Caruthers had too much luggage and Caruthers felt that Davies didn't look like a typical yachtsman",
-          "Davies was worried that Caruthers had too much luggage",
-          "too much luggage",
-          "didn't look like a typical yachtsman"
-        ]
-      }
-    ],
+    "2016": [],
     "2017": [
       {
         "id": "p2017_ex1_2",
@@ -27001,8 +26965,8 @@
     "2013": 1792915104098,
     "2014": 1792915104098,
     "2015": 1792915104098,
-    "2016": 1792915949570,
+    "2016": 1792915950744,
     "2017": 1792915104098
   },
-  "updatedAt": 1792915950117
+  "updatedAt": 1792915952859
 }
