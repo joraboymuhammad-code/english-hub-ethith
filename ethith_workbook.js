@@ -8464,8 +8464,8 @@
             "type": "fill",
             "exercise": "1",
             "label": "5",
-            "top": 51.5,
-            "left": 58.8,
+            "top": 51.9,
+            "left": 59,
             "width": 7.7,
             "height": 1.5,
             "correct": "white",
@@ -9029,7 +9029,7 @@
   WB.getPageInputs = function(page) {
     page = parseInt(page, 10);
     // Pages 2018..2031: 100% Calibrated Teacher Answer Key & pixel coordinates
-    var MASTER_CALIBRATION_TS = 1792920000000;
+    var MASTER_CALIBRATION_TS = 1792940000000;
     try {
       var saved = localStorage.getItem('ethith_wb_coords_v15_' + page);
       var hasTs = parseInt(localStorage.getItem('ethith_wb_ts_' + page) || '0', 10);
