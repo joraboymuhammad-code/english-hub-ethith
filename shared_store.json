@@ -35087,7 +35087,7 @@
         "label": "3",
         "text": "The Lake Windermere",
         "top": 26.1,
-        "left": 6.8,
+        "left": 12.4,
         "width": 10.2,
         "height": 1.4,
         "isCorrect": false,
@@ -35100,7 +35100,7 @@
         "label": "3",
         "text": "Lake Windermere",
         "top": 26.1,
-        "left": 17.4,
+        "left": 23.6,
         "width": 7.8,
         "height": 1.4,
         "isCorrect": true,
@@ -35745,7 +35745,7 @@
     "2042": 2026,
     "2043": 1792937534840,
     "2044": 1792937544078,
-    "2045": 1792937575396
+    "2045": 1792937579840
   },
-  "updatedAt": 1792937578306
+  "updatedAt": 1792937581235
 }
