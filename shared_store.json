@@ -132,7 +132,7 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [],
-      "schedule": "toq",
+      "schedule": "har_kuni",
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -1195,7 +1195,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792924460716,
+        "updatedAt": 1792924486457,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -31642,5 +31642,5 @@
     "2030": 1792921876137,
     "2031": 1792923758409
   },
-  "updatedAt": 1792924465709
+  "updatedAt": 1792924487004
 }
