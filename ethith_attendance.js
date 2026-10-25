@@ -1726,6 +1726,9 @@
   EA.openAbsentSmsModal = function(container, cls) {
     EA.isModalOpen = true;
     var modalRoot = getGlobalModalRoot();
+    if (!cls) {
+      cls = (EA.classes && EA.classes.find(function(c) { return c.id === EA.currentClassId; })) || (EA.classes && EA.classes[0]) || { customStudentPhones: {}, customStudentNames: {}, students: [] };
+    }
     if (!cls.customStudentPhones) cls.customStudentPhones = {};
     if (!cls.customStudentNames) cls.customStudentNames = {};
 

@@ -307,6 +307,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9093,7 +9095,7 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.25.2010";
+window.ETHITH_BUILD_VERSION = "2026.10.25.2015";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -80165,6 +80167,9 @@ window.NAVIGATE_CURRICULUM = {
   EA.openAbsentSmsModal = function(container, cls) {
     EA.isModalOpen = true;
     var modalRoot = getGlobalModalRoot();
+    if (!cls) {
+      cls = (EA.classes && EA.classes.find(function(c) { return c.id === EA.currentClassId; })) || (EA.classes && EA.classes[0]) || { customStudentPhones: {}, customStudentNames: {}, students: [] };
+    }
     if (!cls.customStudentPhones) cls.customStudentPhones = {};
     if (!cls.customStudentNames) cls.customStudentNames = {};
 
