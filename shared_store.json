@@ -34931,33 +34931,6 @@
         "page": 2043
       },
       {
-        "id": "p2043_ex2a_3",
-        "type": "fill",
-        "exercise": "2a",
-        "label": "3",
-        "top": 73.6,
-        "left": 42.7,
-        "width": 5.9,
-        "height": 1.4,
-        "correct": [
-          "a long time",
-          "for a long time"
-        ],
-        "page": 2043
-      },
-      {
-        "id": "p2043_ex2a_4",
-        "type": "fill",
-        "exercise": "2a",
-        "label": "4",
-        "top": 77.8,
-        "left": 43.4,
-        "width": 5.9,
-        "height": 1.4,
-        "correct": "weather",
-        "page": 2043
-      },
-      {
         "id": "p2043_ex3_2",
         "type": "fill",
         "exercise": "3",
@@ -35785,9 +35758,9 @@
     "2040": 1792937388042,
     "2041": 1792937466098,
     "2042": 2026,
-    "2043": 1792937528844,
+    "2043": 1792937533908,
     "2044": 2026,
     "2045": 2026
   },
-  "updatedAt": 1792937531194
+  "updatedAt": 1792937534052
 }
