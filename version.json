@@ -1,7 +1,7 @@
 {
-  "version": "2026.10.25.0425",
-  "timestamp": 1792929600000,
-  "label": "Release: B2 Workbook Pages 18-31 Verified Calibration",
-  "buildTimestamp": 1792929600000,
-  "description": "Page 30 items 5 and 6 exact caption underline calibration, zero overlaps across all pages 18 to 31"
+  "version": "2026.10.25.1900",
+  "timestamp": 1792945200000,
+  "label": "Release: B2 Workbook Pages 32-45 (Units 5 & 6) Calibrated & Integrated",
+  "buildTimestamp": 1792945200000,
+  "description": "Oxford Navigate B2 Workbook Pages 32 to 45 (Units 5 & 6, IDs 2032-2045) calibrated with 348 pixel-perfect interactive inputs and official answer keys"
 }
