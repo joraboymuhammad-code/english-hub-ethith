@@ -315,6 +315,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9101,7 +9102,7 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.26.2130";
+window.ETHITH_BUILD_VERSION = "2026.10.26.2145";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -81696,6 +81697,7 @@ window.NAVIGATE_CURRICULUM = {
     var S = getStore();
     var fe = S.fileExplorer || { folders: [], tests: [] };
     var isStaff = isAdminOrTeacher();
+    var selectedFolderId = null;
 
     // Ensure root folder exists
     if (!fe.folders.find(function(f) { return f.id === 'f_root'; })) {
@@ -81725,38 +81727,45 @@ window.NAVIGATE_CURRICULUM = {
 
     if (explorerSearchQuery.trim()) {
       var q = explorerSearchQuery.toLowerCase().trim();
-      subFolders = fe.folders.filter(function(f) { return f.id !== 'f_root' && f.name.toLowerCase().includes(q); });
-      subTests = fe.tests.filter(function(t) { return t.title.toLowerCase().includes(q) || (t.id && t.id.toLowerCase().includes(q)); });
+      subFolders = fe.folders.filter(function(f) {
+        if (f.id === 'f_root') return false;
+        return f.name.toLowerCase().includes(q);
+      });
+      subTests = fe.tests.filter(function(t) {
+        return (t.title && t.title.toLowerCase().includes(q)) || (t.id && t.id.toLowerCase().includes(q));
+      });
     }
 
-    var h = '<div class="ee-explorer-wrap" style="max-width:1200px;margin:0 auto;padding:16px 20px 80px;">' +
-      // Header & Stats
-      '<div style="background:linear-gradient(135deg,rgba(15,23,42,0.9),rgba(30,41,59,0.85));border:1px solid rgba(56,189,248,0.2);border-radius:20px;padding:22px 26px;margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.35);backdrop-filter:blur(16px);">' +
+    var h = '<div class="ee-explorer-wrap" tabindex="0" style="outline:none;">' +
+      // Header
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:22px;margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.4);">' +
         '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">' +
-          '<div>' +
-            '<div style="display:flex;align-items:center;gap:10px;">' +
-              '<span style="font-size:26px;">💻</span>' +
+          '<div style="display:flex;align-items:center;gap:12px;">' +
+            '<div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(37,99,235,0.2));border:1px solid rgba(56,189,248,0.4);display:flex;align-items:center;justify-content:center;font-size:24px;">💻</div>' +
+            '<div>' +
               '<h2 style="margin:0;font-size:22px;font-weight:900;color:#f8fafc;letter-spacing:-0.4px;">💻 Qo‘shimcha testlar va Savollar Banki</h2>' +
+              '<p style="margin:4px 0 0;font-size:13px;color:#94a3b8;">Kompyuter fayl tizimidek: papkalarni bosib turib sudrang (Drag & Drop), F2 bilan nomini o‘zgartiring va o‘ng tugma bilan boshqaring.</p>' +
             '</div>' +
-            '<p style="margin:6px 0 0;font-size:13.5px;color:#94a3b8;">Kompyuter fayl tizimidek papkalar oching, bo‘sh joyga sichqonchaning o‘ng tugmasini bosing, rasm/PDF ustiga shaffof tahrirlash qatlamini qo‘shing va o‘quvchilarga kerakli urinishlar soni bilan yuboring.</p>' +
           '</div>' +
-          '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
-            (isStaff ? '<button id="eeNewFolderBtn" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:12px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;">📁 Yangi Papka</button>' : '') +
-            (isStaff ? '<button id="eeNewVisualBtn" style="background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:12px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 4px 16px rgba(16,185,129,0.4);">🎨 Interaktiv Rasm/PDF Test</button>' : '') + (isStaff ? '<button id="eeNewTestBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 4px 16px rgba(2,132,199,0.4);">➕ Yangi Test Yaratish</button>' : '') +
-          '</div>' +
+          (isStaff ? (
+            '<div style="display:flex;gap:10px;flex-wrap:wrap;">' +
+              '<button id="eeNewFolderBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#f1f5f9;border-radius:12px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;">📁 Yangi Papka</button>' +
+              '<button id="eeNewVisualBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:9px 18px;font-size:13px;font-weight:900;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(2,132,199,0.4);">🎨 Interaktiv Rasm/PDF Test</button>' +
+              '<button id="eeNewTestBtn" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:12px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;">📝 Standart Test</button>' +
+            '</div>'
+          ) : '') +
         '</div>' +
 
-        // Breadcrumb & Search bar
-        '<div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">' +
-          '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13px;font-weight:700;">' +
-            '<span style="color:#64748b;">Manzil:</span>';
+        // Breadcrumbs & Search Bar
+        '<div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">' +
+          '<div style="display:flex;align-items:center;gap:8px;font-size:13px;flex-wrap:wrap;">';
             breadcrumbs.forEach(function(b, idx) {
-              var isLast = (idx === breadcrumbs.length - 1);
+              var isLast = idx === breadcrumbs.length - 1;
               h += '<button class="ee-breadcrumb-item" data-fid="' + b.id + '" ' +
-                'ondragover="event.preventDefault();this.style.color=\'#38bdf8\';this.style.background=\'rgba(56,189,248,0.15)\';" ' +
+                'ondragover="event.preventDefault();this.style.color=\'#00c0ff\';this.style.background=\'rgba(0,192,255,0.2)\';" ' +
                 'ondragleave="this.style.color=\'' + (isLast ? '#38bdf8' : '#94a3b8') + '\';this.style.background=\'none\';" ' +
                 'ondrop="window.EthithEnterprise.handleDropItem(event, \'' + b.id + '\');" ' +
-                'style="background:none;border:none;color:' + (isLast ? '#38bdf8' : '#94a3b8') + ';font-weight:' + (isLast ? '800' : '600') + ';cursor:pointer;padding:2px 6px;border-radius:6px;transition:all 0.15s ease;">' +
+                'style="background:none;border:none;color:' + (isLast ? '#38bdf8' : '#94a3b8') + ';font-weight:' + (isLast ? '800' : '600') + ';cursor:pointer;padding:4px 8px;border-radius:6px;transition:all 0.15s ease;">' +
                 (idx === 0 ? '🏠 ' : '📁 ') + esc(b.name) + 
               '</button>';
               if (!isLast) h += '<span style="color:#475569;">/</span>';
@@ -81771,30 +81780,29 @@ window.NAVIGATE_CURRICULUM = {
         '</div>' +
       '</div>';
 
-    // Folder drop target note
-    h += '<div style="font-size:12px;color:#64748b;margin-bottom:12px;font-weight:600;">' +
-      '💡 Maslahat: Bo‘sh joyga sichqonchaning o‘ng tugmasini (Right Click) bosib yangi papka yoki interaktiv test yaratishingiz mumkin. Testlarni sudrab papkalarga joylang (Drag & Drop).' +
-    '</div>';
-
-    // Explorer Content Grid / List
+    // Empty state
     if (subFolders.length === 0 && subTests.length === 0) {
-      h += '<div style="background:rgba(15,23,42,0.6);border:1px dashed rgba(255,255,255,0.15);border-radius:18px;padding:48px 20px;text-align:center;color:#64748b;">' +
-        '<div style="font-size:42px;margin-bottom:12px;">📂</div>' +
-        '<div style="font-size:15px;font-weight:800;color:#94a3b8;">Ushbu papka bo‘sh</div>' +
-        '<div style="font-size:12.5px;margin-top:4px;">Yangi papka oching yoki test qo‘shing</div>' +
+      h += '<div style="background:rgba(15,23,42,0.6);border:2px dashed rgba(255,255,255,0.1);border-radius:20px;padding:60px 20px;text-align:center;color:#94a3b8;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📂</div>' +
+        '<h3 style="margin:0 0 6px;color:#f8fafc;font-size:16px;">Ushbu papka bo‘sh</h3>' +
+        '<p style="margin:0;font-size:13px;">O‘ng tugmani bosing yoki yuqoridagi tugmalar orqali yangi papka yoki test qo‘shing.</p>' +
       '</div>';
     } else if (explorerViewMode === 'grid') {
-      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;">';
+      // Grid Mode
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;">';
+
       // Render Folders
       subFolders.forEach(function(f) {
         var itemsCount = fe.tests.filter(function(t) { return t.folderId === f.id; }).length;
-        h += '<div class="ee-folder-card" data-fid="' + f.id + '" style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px;cursor:pointer;transition:all 0.2s ease;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;" ' +
-          'ondragover="event.preventDefault();this.style.borderColor=\'#38bdf8\';this.style.background=\'rgba(56,189,248,0.15)\';" ' +
-          'ondragleave="this.style.borderColor=\'rgba(255,255,255,0.1)\';this.style.background=\'rgba(15,23,42,0.7)\';" ' +
-          'ondrop="window.EthithEnterprise.handleDropTest(event, \'' + f.id + '\');">' +
-          '<div style="font-size:40px;margin-bottom:8px;line-height:1;">📁</div>' +
-          '<div style="font-size:13.5px;font-weight:800;color:#f8fafc;word-break:break-word;">' + esc(f.name) + '</div>' +
-          '<div style="font-size:11.5px;color:#64748b;margin-top:4px;">' + itemsCount + ' ta test</div>' +
+        h += '<div class="ee-folder-card" data-fid="' + f.id + '" draggable="true" ' +
+          'ondragstart="window.EthithEnterprise.handleFolderDragStart(event, \'' + f.id + '\');" ' +
+          'ondragover="window.EthithEnterprise.handleFolderDragOver(event, this);" ' +
+          'ondragleave="window.EthithEnterprise.handleFolderDragLeave(event, this);" ' +
+          'ondrop="window.EthithEnterprise.handleFolderDrop(event, \'' + f.id + '\');" ' +
+          'style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px;cursor:pointer;transition:all 0.15s ease;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;user-select:none;">' +
+          '<div style="font-size:44px;margin-bottom:8px;line-height:1;pointer-events:none;">📁</div>' +
+          '<div class="ee-folder-name" data-fid="' + f.id + '" style="font-size:13.5px;font-weight:800;color:#f8fafc;word-break:break-word;width:100%;min-height:22px;display:flex;align-items:center;justify-content:center;padding:2px 4px;border-radius:6px;" title="Double-click bilan nomini o‘zgartiring">' + esc(f.name) + '</div>' +
+          '<div style="font-size:11.5px;color:#64748b;margin-top:4px;pointer-events:none;">' + itemsCount + ' ta test</div>' +
           (isStaff ? '<button class="ee-del-folder-btn" data-fid="' + f.id + '" style="position:absolute;top:8px;right:8px;background:none;border:none;color:#64748b;cursor:pointer;font-size:12px;" title="Papkani o‘chirish">✕</button>' : '') +
         '</div>';
       });
@@ -81807,7 +81815,7 @@ window.NAVIGATE_CURRICULUM = {
           'style="background:rgba(30,41,59,0.7);border:1px solid rgba(56,189,248,0.25);border-radius:16px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;cursor:grab;transition:all 0.2s ease;box-shadow:0 4px 16px rgba(0,0,0,0.25);">' +
           '<div>' +
             '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
-              '<span style="font-size:24px;">📝</span>' +
+              '<span style="font-size:24px;">' + (t.type === 'visual_overlay' ? '🎨' : '📝') + '</span>' +
               '<span style="background:rgba(56,189,248,0.15);color:#38bdf8;font-size:10.5px;font-weight:900;padding:2px 8px;border-radius:6px;border:1px solid rgba(56,189,248,0.3);">' + esc(t.id) + '</span>' +
             '</div>' +
             '<div style="font-size:13.5px;font-weight:800;color:#f8fafc;line-height:1.3;margin-bottom:6px;">' + esc(t.title) + '</div>' +
@@ -81816,7 +81824,7 @@ window.NAVIGATE_CURRICULUM = {
             '</div>' +
           '</div>' +
           '<div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap;">' +
-            (isStaff ? '<button class="ee-assign-hw-btn" data-tid="' + t.id + '" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:8px;padding:6px 8px;font-size:11px;font-weight:800;cursor:pointer;">📤 Guruhga yuborish</button>' : '') +
+            (isStaff ? '<button class="ee-assign-hw-btn" data-tid="' + t.id + '" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:8px;padding:6px 8px;font-size:11px;font-weight:800;cursor:pointer;">📤 Guruhga</button>' : '') +
             '<button class="ee-take-test-btn" data-tid="' + t.id + '" style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:8px;padding:6px 10px;font-size:11px;font-weight:800;cursor:pointer;">✍️ Ishlash</button>' +
             (isStaff ? '<button class="ee-del-test-btn" data-tid="' + t.id + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:none;border-radius:8px;padding:6px 8px;font-size:11px;font-weight:800;cursor:pointer;">🗑</button>' : '') +
           '</div>' +
@@ -81838,9 +81846,13 @@ window.NAVIGATE_CURRICULUM = {
           '</thead>' +
           '<tbody>';
           subFolders.forEach(function(f) {
-            h += '<tr style="border-top:1px solid rgba(255,255,255,0.06);cursor:pointer;" class="ee-folder-row" data-fid="' + f.id + '" draggable="true" ondragstart="event.dataTransfer.setData(\'text/folder-id\', \'' + f.id + '\'); event.stopPropagation();" ondragover="event.preventDefault();this.style.background=\'rgba(56,189,248,0.15)\';" ondragleave="this.style.background=\'\';" ondrop="window.EthithEnterprise.handleDropItem(event, \'' + f.id + '\');">' +
+            h += '<tr style="border-top:1px solid rgba(255,255,255,0.06);cursor:pointer;user-select:none;" class="ee-folder-row" data-fid="' + f.id + '" draggable="true" ' +
+              'ondragstart="window.EthithEnterprise.handleFolderDragStart(event, \'' + f.id + '\');" ' +
+              'ondragover="window.EthithEnterprise.handleFolderDragOver(event, this);" ' +
+              'ondragleave="window.EthithEnterprise.handleFolderDragLeave(event, this);" ' +
+              'ondrop="window.EthithEnterprise.handleFolderDrop(event, \'' + f.id + '\');">' +
               '<td style="padding:12px 16px;font-weight:800;color:#f8fafc;display:flex;align-items:center;gap:8px;">' +
-                '<span style="font-size:18px;">📁</span> ' + esc(f.name) +
+                '<span style="font-size:18px;">📁</span> <span class="ee-folder-name" data-fid="' + f.id + '">' + esc(f.name) + '</span>' +
               '</td>' +
               '<td style="padding:12px 16px;color:#64748b;">—</td>' +
               '<td style="padding:12px 16px;color:#64748b;">Papka</td>' +
@@ -81853,17 +81865,15 @@ window.NAVIGATE_CURRICULUM = {
           subTests.forEach(function(t) {
             h += '<tr style="border-top:1px solid rgba(255,255,255,0.06);">' +
               '<td style="padding:12px 16px;font-weight:800;color:#f8fafc;">' +
-                '<span style="margin-right:8px;">📝</span>' + esc(t.title) +
+                '<span style="font-size:16px;margin-right:6px;">' + (t.type === 'visual_overlay' ? '🎨' : '📝') + '</span> ' + esc(t.title) +
               '</td>' +
-              '<td style="padding:12px 16px;"><span style="background:rgba(56,189,248,0.15);color:#38bdf8;padding:2px 8px;border-radius:4px;font-weight:800;font-size:11px;">' + esc(t.id) + '</span></td>' +
-              '<td style="padding:12px 16px;color:#cbd5e1;">' + (t.questions || []).length + ' ta</td>' +
+              '<td style="padding:12px 16px;color:#38bdf8;font-weight:800;">' + esc(t.id) + '</td>' +
+              '<td style="padding:12px 16px;color:#94a3b8;">' + (t.questions || []).length + ' ta</td>' +
               '<td style="padding:12px 16px;color:#94a3b8;">' + esc(t.authorName || 'Ustoz') + '</td>' +
               '<td style="padding:12px 16px;text-align:right;">' +
-                '<div style="display:inline-flex;gap:6px;">' +
-                  (isStaff ? '<button class="ee-assign-hw-btn" data-tid="' + t.id + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:800;cursor:pointer;">📤 Guruhga</button>' : '') +
-                  '<button class="ee-take-test-btn" data-tid="' + t.id + '" style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:6px;padding:4px 8px;font-size:11px;font-weight:800;cursor:pointer;">✍️ Ishlash</button>' +
-                  (isStaff ? '<button class="ee-del-test-btn" data-tid="' + t.id + '" style="background:none;border:none;color:#ef4444;font-size:12px;cursor:pointer;">🗑</button>' : '') +
-                '</div>' +
+                (isStaff ? '<button class="ee-assign-hw-btn" data-tid="' + t.id + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:800;cursor:pointer;margin-right:6px;">Guruhga</button>' : '') +
+                '<button class="ee-take-test-btn" data-tid="' + t.id + '" style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:800;cursor:pointer;margin-right:6px;">Ishlash</button>' +
+                (isStaff ? '<button class="ee-del-test-btn" data-tid="' + t.id + '" style="background:none;border:none;color:#ef4444;font-weight:700;cursor:pointer;">O‘chirish</button>' : '') +
               '</td>' +
             '</tr>';
           });
@@ -81871,6 +81881,7 @@ window.NAVIGATE_CURRICULUM = {
     }
 
     h += '</div>';
+
     container.innerHTML = h;
 
     // Attach Event Handlers
@@ -81881,13 +81892,63 @@ window.NAVIGATE_CURRICULUM = {
       };
     });
 
+    // PC Folder Interactions: Single Click (Select), Double Click (Open), Double Click Name (Rename)
     container.querySelectorAll('.ee-folder-card, .ee-folder-row').forEach(function(el) {
+      var fid = el.getAttribute('data-fid');
+
+      // Dragend restore opacity
+      el.ondragend = function() { el.style.opacity = '1'; };
+
+      // Single click selects card
       el.onclick = function(e) {
-        if (e.target.classList.contains('ee-del-folder-btn')) return;
-        currentFolderId = el.getAttribute('data-fid');
+        if (e.target.closest('.ee-del-folder-btn, .ee-inline-rename-input')) return;
+        container.querySelectorAll('.ee-folder-card, .ee-folder-row').forEach(function(o) {
+          o.classList.remove('ee-selected');
+          o.style.borderColor = 'rgba(255,255,255,0.1)';
+          o.style.background = 'rgba(15,23,42,0.7)';
+          o.style.boxShadow = '';
+        });
+        el.classList.add('ee-selected');
+        el.style.borderColor = '#00c0ff';
+        el.style.background = 'rgba(0,192,255,0.15)';
+        el.style.boxShadow = '0 0 16px rgba(0,192,255,0.35)';
+        selectedFolderId = fid;
+      };
+
+      // Double click opens folder
+      el.ondblclick = function(e) {
+        if (e.target.closest('.ee-del-folder-btn, .ee-inline-rename-input')) return;
+        currentFolderId = fid;
         EE.renderExplorerView(container);
       };
+
+      // Double click on folder name triggers inline rename
+      var nameEl = el.querySelector('.ee-folder-name');
+      if (nameEl) {
+        nameEl.ondblclick = function(e) {
+          e.stopPropagation();
+          EE.startInlineRenameFolder(fid, container);
+        };
+      }
     });
+
+    // Keyboard F2 support for inline rename
+    var wrap = container.querySelector('.ee-explorer-wrap');
+    if (wrap) {
+      wrap.onkeydown = function(e) {
+        if (e.key === 'F2' && selectedFolderId) {
+          e.preventDefault();
+          EE.startInlineRenameFolder(selectedFolderId, container);
+        }
+      };
+
+      wrap.oncontextmenu = function(e) {
+        if (!isStaff) return;
+        if (e.target.closest('button, input, select, a, textarea, .ee-folder-card, .ee-folder-row')) return;
+        e.preventDefault();
+        EE.showExplorerContextMenu(e.clientX, e.clientY, container, currentFolderId);
+      };
+    }
 
     var viewBtn = container.querySelector('#eeToggleViewMode');
     if (viewBtn) {
@@ -81910,18 +81971,18 @@ window.NAVIGATE_CURRICULUM = {
     var newFolderBtn = container.querySelector('#eeNewFolderBtn');
     if (newFolderBtn) {
       newFolderBtn.onclick = function() {
-        var n = prompt("Yangi papka nomini kiriting:", "Yangi Papka");
-        if (n && n.trim()) {
-          fe.folders.push({
-            id: 'f_' + Date.now(),
-            name: n.trim(),
-            parentId: currentFolderId,
-            createdAt: Date.now()
-          });
-          saveStore();
-          showToast("Papka muvaffaqiyatli yaratildi");
-          EE.renderExplorerView(container);
-        }
+        var newFid = 'f_' + Date.now();
+        fe.folders.push({
+          id: newFid,
+          name: "Yangi Papka",
+          parentId: currentFolderId,
+          createdAt: Date.now()
+        });
+        saveStore();
+        EE.renderExplorerView(container);
+        setTimeout(function() {
+          EE.startInlineRenameFolder(newFid, container);
+        }, 80);
       };
     }
 
@@ -81932,16 +81993,6 @@ window.NAVIGATE_CURRICULUM = {
       };
     }
 
-    var wrap = container.querySelector('.ee-explorer-wrap');
-    if (wrap) {
-      wrap.oncontextmenu = function(e) {
-        if (!isStaff) return;
-        if (e.target.closest('button, input, select, a, textarea')) return;
-        e.preventDefault();
-        EE.showExplorerContextMenu(e.clientX, e.clientY, container, currentFolderId);
-      };
-    }
-
     var newTestBtn = container.querySelector('#eeNewTestBtn');
     if (newTestBtn) {
       newTestBtn.onclick = function() {
@@ -81949,7 +82000,6 @@ window.NAVIGATE_CURRICULUM = {
       };
     }
 
-    
     // Folder context menu (right click)
     container.querySelectorAll('.ee-folder-card, .ee-folder-row').forEach(function(el) {
       el.oncontextmenu = function(e) {
@@ -82006,7 +82056,85 @@ window.NAVIGATE_CURRICULUM = {
     });
   };
 
-  // Drag & drop test into folder
+  // PC-Style Drag and Drop Handlers for Folders
+  EE.handleFolderDragStart = function(e, folderId) {
+    e.dataTransfer.setData('text/folder-id', folderId);
+    e.dataTransfer.effectAllowed = 'move';
+    var el = e.currentTarget;
+    setTimeout(function() { if (el) el.style.opacity = '0.35'; }, 0);
+  };
+
+  EE.handleFolderDragOver = function(e, el) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    el.style.borderColor = '#00c0ff';
+    el.style.background = 'rgba(0,192,255,0.22)';
+    el.style.transform = 'translateY(-3px) scale(1.03)';
+    el.style.boxShadow = '0 10px 30px rgba(0,192,255,0.4)';
+  };
+
+  EE.handleFolderDragLeave = function(e, el) {
+    el.style.borderColor = '';
+    el.style.background = '';
+    el.style.transform = '';
+    el.style.boxShadow = '';
+  };
+
+  EE.handleFolderDrop = function(e, targetFolderId) {
+    e.preventDefault();
+    e.currentTarget.style.borderColor = '';
+    e.currentTarget.style.background = '';
+    e.currentTarget.style.transform = '';
+    e.currentTarget.style.boxShadow = '';
+    EE.handleDropItem(e, targetFolderId);
+  };
+
+  // PC-Style Inline Rename on Card
+  EE.startInlineRenameFolder = function(folderId, container) {
+    var S = getStore();
+    var fe = S.fileExplorer || { folders: [] };
+    var f = fe.folders.find(function(item) { return item.id === folderId; });
+    if (!f) return;
+
+    var nameEl = container.querySelector('.ee-folder-name[data-fid="' + folderId + '"]');
+    if (!nameEl) return;
+
+    var origName = f.name;
+    nameEl.innerHTML = '<input type="text" class="ee-inline-rename-input" value="' + esc(origName) + '" style="width:96%;background:#020617;border:2px solid #00c0ff;border-radius:6px;color:#fff;padding:3px 6px;font-size:13px;font-weight:800;text-align:center;outline:none;box-shadow:0 0 14px rgba(0,192,255,0.6);" />';
+
+    var inp = nameEl.querySelector('.ee-inline-rename-input');
+    inp.focus();
+    inp.select();
+
+    var committed = false;
+    function commitRename() {
+      if (committed) return;
+      committed = true;
+      var val = inp.value.trim();
+      if (val && val !== origName) {
+        f.name = val;
+        saveStore();
+        showToast("✓ Papka nomi o‘zgartirildi: " + val);
+      }
+      EE.renderExplorerView(container);
+    }
+
+    inp.onkeydown = function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        commitRename();
+      } else if (e.key === 'Escape') {
+        committed = true;
+        EE.renderExplorerView(container);
+      }
+    };
+
+    inp.onblur = function() {
+      commitRename();
+    };
+  };
+
+  // Drag & drop test or folder into folder
   EE.handleDropItem = function(e, targetFolderId) {
     e.preventDefault();
     e.stopPropagation();
@@ -82034,7 +82162,7 @@ window.NAVIGATE_CURRICULUM = {
 
       movingF.parentId = targetFolderId;
       saveStore();
-      showToast("Papka muvaffaqiyatli ko‘chirildi!");
+      showToast("✓ Papka muvaffaqiyatli ko‘chirildi!");
       var c = document.getElementById('apView');
       if (c) EE.renderExplorerView(c);
       return;
@@ -82045,7 +82173,7 @@ window.NAVIGATE_CURRICULUM = {
       if (test) {
         test.folderId = targetFolderId;
         saveStore();
-        showToast("Test muvaffaqiyatli ko‘chirildi!");
+        showToast("✓ Test muvaffaqiyatli ko‘chirildi!");
         var c = document.getElementById('apView');
         if (c) EE.renderExplorerView(c);
       }
@@ -82053,9 +82181,6 @@ window.NAVIGATE_CURRICULUM = {
   };
   EE.handleDropTest = EE.handleDropItem;
 
-  // Create Test Builder Modal
-  
-  
   // Folder Context Menu
   EE.showFolderContextMenu = function(x, y, container, folderId) {
     var old = document.getElementById('eeContextMenu');
@@ -82068,18 +82193,18 @@ window.NAVIGATE_CURRICULUM = {
 
     var menu = document.createElement('div');
     menu.id = 'eeContextMenu';
-    menu.style.cssText = 'position:fixed;top:' + y + 'px;left:' + x + 'px;z-index:2147483647;background:rgba(15,23,42,0.96);backdrop-filter:blur(16px);border:1px solid rgba(56,189,248,0.35);border-radius:14px;padding:6px;min-width:230px;box-shadow:0 16px 40px rgba(0,0,0,0.65);';
+    menu.style.cssText = 'position:fixed;top:' + y + 'px;left:' + x + 'px;z-index:2147483647;background:rgba(15,23,42,0.96);backdrop-filter:blur(16px);border:1.5px solid #00c0ff;border-radius:14px;padding:6px;min-width:240px;box-shadow:0 16px 40px rgba(0,0,0,0.7);';
 
     menu.innerHTML = '' +
       '<div style="padding:6px 10px;font-size:11px;font-weight:900;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:4px;">📁 ' + esc(folderName) + '</div>' +
       '<div class="ee-ctx-item" id="eeCtxOpenFolder" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#f1f5f9;font-size:13px;font-weight:700;cursor:pointer;">' +
         '<span style="font-size:16px;">📂</span> <span>Papkani Ochish</span>' +
       '</div>' +
-      '<div class="ee-ctx-item" id="eeCtxMoveFolder" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#38bdf8;font-size:13px;font-weight:800;cursor:pointer;">' +
-        '<span style="font-size:16px;">📦</span> <span>Boshqa Papkaga Ko‘chirish...</span>' +
+      '<div class="ee-ctx-item" id="eeCtxRenameFolder" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#38bdf8;font-size:13px;font-weight:800;cursor:pointer;">' +
+        '<span style="font-size:16px;">✏️</span> <span>Nomini O‘zgartirish (F2)</span>' +
       '</div>' +
-      '<div class="ee-ctx-item" id="eeCtxRenameFolder" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#f1f5f9;font-size:13px;font-weight:700;cursor:pointer;">' +
-        '<span style="font-size:16px;">✏️</span> <span>Nomini O‘zgartirish</span>' +
+      '<div class="ee-ctx-item" id="eeCtxMoveFolder" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#f1f5f9;font-size:13px;font-weight:700;cursor:pointer;">' +
+        '<span style="font-size:16px;">📦</span> <span>Boshqa Papkaga Ko‘chirish...</span>' +
       '</div>' +
       '<div style="height:1px;background:rgba(255,255,255,0.06);margin:4px 0;"></div>' +
       '<div class="ee-ctx-item" id="eeCtxDelFolder" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#ef4444;font-size:13px;font-weight:700;cursor:pointer;">' +
@@ -82096,18 +82221,12 @@ window.NAVIGATE_CURRICULUM = {
       EE.renderExplorerView(container);
     };
 
-    menu.querySelector('#eeCtxMoveFolder').onclick = function() {
-      EE.openMoveFolderModal(folderId, container);
+    menu.querySelector('#eeCtxRenameFolder').onclick = function() {
+      EE.startInlineRenameFolder(folderId, container);
     };
 
-    menu.querySelector('#eeCtxRenameFolder').onclick = function() {
-      var n = prompt("Papka yangi nomini kiriting:", folderName);
-      if (n && n.trim()) {
-        f.name = n.trim();
-        saveStore();
-        showToast("Papka nomi yangilandi");
-        EE.renderExplorerView(container);
-      }
+    menu.querySelector('#eeCtxMoveFolder').onclick = function() {
+      EE.openMoveFolderModal(folderId, container);
     };
 
     menu.querySelector('#eeCtxDelFolder').onclick = function() {
@@ -82121,7 +82240,6 @@ window.NAVIGATE_CURRICULUM = {
     };
   };
 
-  // Open Move Folder Modal
   EE.openMoveFolderModal = function(folderId, container) {
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
     var S = getStore();
@@ -82129,7 +82247,6 @@ window.NAVIGATE_CURRICULUM = {
     var currentF = fe.folders.find(function(f) { return f.id === folderId; });
     if (!currentF) return;
 
-    // Filter valid destination folders (cannot be itself or descendant)
     function isDescendant(checkId, ancestorId) {
       var cur = checkId;
       while (cur && cur !== 'f_root') {
@@ -82149,9 +82266,9 @@ window.NAVIGATE_CURRICULUM = {
 
     var m = document.createElement('div');
     m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(10px);z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:16px;';
-    var h = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);border-radius:18px;max-width:440px;width:100%;padding:22px;color:#f8fafc;box-shadow:0 20px 50px rgba(0,0,0,0.8);">' +
+    var h = '<div style="background:#0f172a;border:1.5px solid #00c0ff;border-radius:18px;max-width:440px;width:100%;padding:22px;color:#f8fafc;box-shadow:0 20px 50px rgba(0,0,0,0.8);">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">' +
-        '<h3 style="margin:0;font-size:16px;font-weight:900;color:#38bdf8;">📦 Papkani Ko‘chirish: ' + esc(currentF.name) + '</h3>' +
+        '<h3 style="margin:0;font-size:16px;font-weight:900;color:#00c0ff;">📦 Papkani Ko‘chirish: ' + esc(currentF.name) + '</h3>' +
         '<button id="eeCloseMoveF" style="background:none;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">✕</button>' +
       '</div>' +
       '<p style="font-size:12.5px;color:#94a3b8;margin:0 0 14px;">Qaysi manzil papkasiga ko‘chirmoqchisiz?</p>' +
@@ -82185,7 +82302,7 @@ window.NAVIGATE_CURRICULUM = {
         currentF.parentId = tid;
         saveStore();
         close();
-        showToast("Papka muvaffaqiyatli ko‘chirildi!");
+        showToast("✓ Papka muvaffaqiyatli ko‘chirildi!");
         if (container) EE.renderExplorerView(container);
       };
     });
