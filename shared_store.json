@@ -1273,6 +1273,35 @@
         "assignedAt": 1792608458469
       },
       "customStudentPhones": {}
+    },
+    {
+      "id": "cls_1792999428651",
+      "name": "Upper Intermediate",
+      "code": "ETH-IP91XZ",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "teacherEmail": "ADMIN_12038F1aq8syash@ethith.uz",
+      "created": 1792999428651,
+      "schedule": "har_kuni",
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "updatedAt": 1792999428651
+      },
+      "customStudentNames": {},
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_init",
+          "senderId": "admin_official_teacher",
+          "senderName": "Ustoz",
+          "text": "Welcome to our class! Here we can discuss grammar topics, collaborate on quizzes, and share answers in real-time.",
+          "time": "12:23 PM",
+          "reactions": {}
+        }
+      ],
+      "pinnedId": null
     }
   ],
   "exams": [
@@ -42322,5 +42351,5 @@
     "2058": 2026,
     "2059": 2026
   },
-  "updatedAt": 1792999380643
+  "updatedAt": 1792999429286
 }
