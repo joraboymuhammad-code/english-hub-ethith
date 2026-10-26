@@ -1845,7 +1845,6 @@
             }
             if (rEmail === 'muhammedjoraboyev1@gmail.com') {
               if (!S.user.name) S.user.name = 'Muhammadyusuf';
-              S.user.coins = Math.max(Number(S.user.coins) || 0, 100000);
             }
             if (window.EthithApp && window.EthithApp.saveState) {
               window.EthithApp.saveState();
@@ -1871,7 +1870,6 @@
           seenEmails[em] = true;
           if (em === 'muhammedjoraboyev1@gmail.com') {
             if (!acc.name) acc.name = 'Muhammadyusuf';
-            acc.coins = Math.max(Number(acc.coins) || 0, 100000);
           }
           dedupedAccounts.push(acc);
         });

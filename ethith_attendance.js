@@ -725,6 +725,55 @@
   };
 
   // ============================================================================
+  // STUDENT PAYMENT STATUS TOGGLE (✓ Paid / ? Partial / ✗ Unpaid)
+  // ============================================================================
+  EA.toggleStudentPayment = function(container, cls, stId, stName) {
+    var S_app = (window.EthithApp && window.EthithApp.state) || {};
+    if (!S_app.finance) S_app.finance = {};
+    if (!S_app.finance.studentFees) S_app.finance.studentFees = {};
+    if (!cls.studentPayments) cls.studentPayments = {};
+
+    var cur = cls.studentPayments[stId] || S_app.finance.studentFees[stId] || { fee: 1400000, paid: 1400000, status: 'paid' };
+    var feeVal = cur.fee || 1400000;
+    var nextStatus = 'unpaid';
+    var nextPaid = 0;
+
+    if (cur.status === 'paid') {
+      nextStatus = 'partial';
+      nextPaid = Math.round(feeVal / 2);
+    } else if (cur.status === 'partial') {
+      nextStatus = 'unpaid';
+      nextPaid = 0;
+    } else {
+      nextStatus = 'paid';
+      nextPaid = feeVal;
+    }
+
+    var upd = {
+      fee: feeVal,
+      paid: nextPaid,
+      status: nextStatus,
+      method: nextStatus === 'unpaid' ? '—' : (cur.method || 'Click'),
+      date: nextStatus === 'unpaid' ? 'To‘lanmagan' : new Date().toISOString().split('T')[0]
+    };
+
+    cls.studentPayments[stId] = upd;
+    S_app.finance.studentFees[stId] = upd;
+
+    if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
+      window.EthithEnterprise.saveStore();
+    } else if (window.EthithApp && window.EthithApp.saveState) {
+      window.EthithApp.saveState();
+    }
+
+    var lbl = nextStatus === 'paid' ? 'BERGAN (✓ To‘liq to‘lagan)' : (nextStatus === 'partial' ? 'CHALA TO‘LAGAN (?): ' + nextPaid.toLocaleString() + ' so‘m' : 'BERMAGAN (✗ To‘lamagan)');
+    if (window.EthithApp && window.EthithApp.toast) {
+      window.EthithApp.toast(stName + " — " + lbl);
+    }
+    EA.render(container);
+  };
+
+  // ============================================================================
   // MAIN RENDER ENTRY POINT
   // ============================================================================
   EA.render = function(container, preserveScrollLeft) {
@@ -1032,6 +1081,28 @@
 
         var shortInfo = getStudentShortInfo(stName);
 
+        // Student monthly payment indicator (✓ Bergan / ? Chala to'lagan / ✗ Bermagan)
+        var S_app = (window.EthithApp && window.EthithApp.state) || {};
+        if (!S_app.finance) S_app.finance = {};
+        if (!S_app.finance.studentFees) S_app.finance.studentFees = {};
+        if (!cls.studentPayments) cls.studentPayments = {};
+        var pInfo = cls.studentPayments[stId] || (st.email ? cls.studentPayments[st.email.toLowerCase().trim()] : null) ||
+                    S_app.finance.studentFees[stId] || (st.email ? S_app.finance.studentFees[st.email.toLowerCase().trim()] : null);
+        if (!pInfo) {
+          pInfo = { fee: 1400000, paid: 1400000, status: 'paid', method: 'Click', date: '2026-10-05' };
+          cls.studentPayments[stId] = pInfo;
+          S_app.finance.studentFees[stId] = pInfo;
+        }
+
+        var payBadge = '';
+        if (pInfo.status === 'paid') {
+          payBadge = '<span class="ea-pay-toggle-btn" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="To‘lov holati: BERGAN (To‘liq to‘lagan: ✓). Bosish: Holatni o‘zgartirish" style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:rgba(16,185,129,0.22);border:1px solid rgba(16,185,129,0.6);color:#10b981;font-size:12px;font-weight:900;cursor:pointer;flex-shrink:0;box-shadow:0 0 8px rgba(16,185,129,0.3);line-height:1;margin-right:4px;">✓</span>';
+        } else if (pInfo.status === 'partial') {
+          payBadge = '<span class="ea-pay-toggle-btn" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="To‘lov holati: CHALA / KAM TO‘LAGAN (?). Bosish: Holatni o‘zgartirish" style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:rgba(245,158,11,0.22);border:1px solid rgba(245,158,11,0.6);color:#f59e0b;font-size:12px;font-weight:900;cursor:pointer;flex-shrink:0;box-shadow:0 0 8px rgba(245,158,11,0.3);line-height:1;margin-right:4px;">?</span>';
+        } else {
+          payBadge = '<span class="ea-pay-toggle-btn" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="To‘lov holati: BERMAGAN (To‘lamagan: ✗). Bosish: Holatni o‘zgartirish" style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:rgba(239,68,68,0.22);border:1px solid rgba(239,68,68,0.6);color:#ef4444;font-size:12px;font-weight:900;cursor:pointer;flex-shrink:0;box-shadow:0 0 8px rgba(239,68,68,0.3);line-height:1;margin-right:4px;">✗</span>';
+        }
+
         h += '<tr class="ea-journal-row" style="background:' + rowBg + ';transition:background 0.15s;">';
 
         // Sticky Col 1: №
@@ -1043,12 +1114,14 @@
         h += '<td class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:' + numColW + 'px;z-index:20;background:' + stickyBg + ';backdrop-filter:blur(18px);width:' + nameColW + 'px;min-width:' + nameColW + 'px;max-width:' + nameColW + 'px;padding:' + (isCollapsed ? '6px 6px' : '7px 12px') + ';border-bottom:1px solid rgba(255,255,255,0.06);border-right:2px solid rgba(56,189,248,0.35);overflow:hidden;">' +
           (isCollapsed
             ? '<div class="ea-student-name-link" data-stid="' + esc(stId) + '" title="' + esc(stName) + ' (Bosish: Tahlilni ochish)" style="display:flex;align-items:center;gap:5px;overflow:hidden;width:100%;">' +
+                payBadge +
                 '<span style="width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,rgba(56,189,248,0.22),rgba(129,140,248,0.22));border:1px solid rgba(56,189,248,0.45);color:#7dd3fc;font-size:10px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:-0.03em;">' + esc(shortInfo.initials) + '</span>' +
                 '<span style="font-size:11.5px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>' +
               '</div>'
             : '<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;">' +
                 '<div class="ea-student-name-link" data-stid="' + esc(stId) + '" style="overflow:hidden;flex:1;" title="Bosish: O\'quvchining kunlik vazifalari va o\'sish/cho\'kish tahlilini ochish">' +
                   '<div style="font-size:13px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px;">' +
+                    payBadge +
                     '<span>' + esc(stName) + '</span>' +
                   '</div>' +
                   (EA.viewMode === 'all'
@@ -1353,6 +1426,38 @@
       link.onclick = function(e) {
         e.stopPropagation();
         EA.activeStudentId = link.dataset.stid;
+        EA.render(container);
+      };
+    });
+
+    // Toggle Student Payment Status (✓ Bergan, ? Chala, ✗ Bermagan)
+    container.querySelectorAll('.ea-pay-toggle-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        var stId = btn.getAttribute('data-stid');
+        var stName = btn.getAttribute('data-stname');
+        EA.toggleStudentPayment(container, cls, stId, stName);
+      };
+      btn.oncontextmenu = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var stId = btn.getAttribute('data-stid');
+        var stName = btn.getAttribute('data-stname');
+        var S_app = (window.EthithApp && window.EthithApp.state) || {};
+        if (!S_app.finance) S_app.finance = {};
+        if (!S_app.finance.studentFees) S_app.finance.studentFees = {};
+        if (!cls.studentPayments) cls.studentPayments = {};
+        var cur = cls.studentPayments[stId] || S_app.finance.studentFees[stId] || { fee: 1400000, paid: 1400000 };
+        var input = prompt(stName + " uchun to‘langan summani kiriting (so‘m):", cur.paid !== undefined ? cur.paid : (cur.fee || 1400000));
+        if (input === null) return;
+        var amt = parseInt(String(input).replace(/\s+/g, ''), 10) || 0;
+        var feeVal = cur.fee || 1400000;
+        var status = amt >= feeVal ? 'paid' : (amt > 0 ? 'partial' : 'unpaid');
+        var upd = { fee: feeVal, paid: amt, status: status, method: amt > 0 ? 'Click' : '—', date: amt > 0 ? new Date().toISOString().split('T')[0] : 'To‘lanmagan' };
+        cls.studentPayments[stId] = upd;
+        S_app.finance.studentFees[stId] = upd;
+        if (window.EthithEnterprise && window.EthithEnterprise.saveStore) window.EthithEnterprise.saveStore();
+        if (window.EthithApp && window.EthithApp.toast) window.EthithApp.toast(stName + " to‘lovi: " + amt.toLocaleString() + " so‘m saqlandi!");
         EA.render(container);
       };
     });

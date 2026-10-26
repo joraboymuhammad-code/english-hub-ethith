@@ -333,6 +333,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9815,7 +9817,7 @@ html, body {
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.27.0100";
+window.ETHITH_BUILD_VERSION = "2026.10.27.0200";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -40072,7 +40074,6 @@ window.NAVIGATE_CURRICULUM = {
             }
             if (rEmail === 'muhammedjoraboyev1@gmail.com') {
               if (!S.user.name) S.user.name = 'Muhammadyusuf';
-              S.user.coins = Math.max(Number(S.user.coins) || 0, 100000);
             }
             if (window.EthithApp && window.EthithApp.saveState) {
               window.EthithApp.saveState();
@@ -40098,7 +40099,6 @@ window.NAVIGATE_CURRICULUM = {
           seenEmails[em] = true;
           if (em === 'muhammedjoraboyev1@gmail.com') {
             if (!acc.name) acc.name = 'Muhammadyusuf';
-            acc.coins = Math.max(Number(acc.coins) || 0, 100000);
           }
           dedupedAccounts.push(acc);
         });
@@ -41051,12 +41051,8 @@ window.NAVIGATE_CURRICULUM = {
     }
     var isMuhammadUser = (curEmail === 'muhammedjoraboyev1@gmail.com' || curName.toLowerCase().indexOf('muhammadyusuf') !== -1) && S.user.role !== 'teacher';
     
-    // Canonical user: Muhammadyusuf (muhammedjoraboyev1@gmail.com)
-    if (curEmail === 'muhammedjoraboyev1@gmail.com') {
-      S.user.id = 'muhammedjoraboyev1@gmail.com';
-      if (!S.user.name) S.user.name = 'Muhammadyusuf';
-      S.user.coins = Math.max(Number(S.user.coins) || 0, 100000);
-    } else if (S.user.coins === undefined || S.user.coins === null) {
+    // Standard user initialization: bonus is 150 coins for all students
+    if (S.user.coins === undefined || S.user.coins === null) {
       S.user.coins = 150;
     }
     if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
@@ -41102,7 +41098,6 @@ window.NAVIGATE_CURRICULUM = {
       seenMap[em] = true;
       if (em === 'muhammedjoraboyev1@gmail.com') {
         if (!acc.name) acc.name = 'Muhammadyusuf';
-        acc.coins = Math.max(Number(acc.coins) || 0, 100000);
       }
       dedupedAccounts.push(acc);
     });
@@ -41900,8 +41895,6 @@ window.NAVIGATE_CURRICULUM = {
         if (existingAcc) {
           var initCoins = existingAcc.coins !== undefined ? Number(existingAcc.coins) : 150;
           if (cleanEmail === 'muhammedjoraboyev1@gmail.com') {
-            initCoins = Math.max(initCoins, 100000);
-            existingAcc.coins = initCoins;
             if (!existingAcc.name) existingAcc.name = 'Muhammadyusuf';
           }
           if (name) {
@@ -41958,9 +41951,8 @@ window.NAVIGATE_CURRICULUM = {
           return;
         }
 
-        // SCENARIO 2: Brand New Student Registration — Instant Registration & Login (No Code Wall!)
-        var isMuNew = (cleanEmail === 'muhammedjoraboyev1@gmail.com');
-        var newCoins = isMuNew ? 100000 : 150;
+        // SCENARIO 2: Brand New Student Registration — Instant Registration & Login (150 bonus coins strictly)
+        var newCoins = 150;
         var newAcc = {
           id: cleanEmail,
           role: 'student',
@@ -91743,6 +91735,55 @@ window.NAVIGATE_CURRICULUM = {
   };
 
   // ============================================================================
+  // STUDENT PAYMENT STATUS TOGGLE (✓ Paid / ? Partial / ✗ Unpaid)
+  // ============================================================================
+  EA.toggleStudentPayment = function(container, cls, stId, stName) {
+    var S_app = (window.EthithApp && window.EthithApp.state) || {};
+    if (!S_app.finance) S_app.finance = {};
+    if (!S_app.finance.studentFees) S_app.finance.studentFees = {};
+    if (!cls.studentPayments) cls.studentPayments = {};
+
+    var cur = cls.studentPayments[stId] || S_app.finance.studentFees[stId] || { fee: 1400000, paid: 1400000, status: 'paid' };
+    var feeVal = cur.fee || 1400000;
+    var nextStatus = 'unpaid';
+    var nextPaid = 0;
+
+    if (cur.status === 'paid') {
+      nextStatus = 'partial';
+      nextPaid = Math.round(feeVal / 2);
+    } else if (cur.status === 'partial') {
+      nextStatus = 'unpaid';
+      nextPaid = 0;
+    } else {
+      nextStatus = 'paid';
+      nextPaid = feeVal;
+    }
+
+    var upd = {
+      fee: feeVal,
+      paid: nextPaid,
+      status: nextStatus,
+      method: nextStatus === 'unpaid' ? '—' : (cur.method || 'Click'),
+      date: nextStatus === 'unpaid' ? 'To‘lanmagan' : new Date().toISOString().split('T')[0]
+    };
+
+    cls.studentPayments[stId] = upd;
+    S_app.finance.studentFees[stId] = upd;
+
+    if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
+      window.EthithEnterprise.saveStore();
+    } else if (window.EthithApp && window.EthithApp.saveState) {
+      window.EthithApp.saveState();
+    }
+
+    var lbl = nextStatus === 'paid' ? 'BERGAN (✓ To‘liq to‘lagan)' : (nextStatus === 'partial' ? 'CHALA TO‘LAGAN (?): ' + nextPaid.toLocaleString() + ' so‘m' : 'BERMAGAN (✗ To‘lamagan)');
+    if (window.EthithApp && window.EthithApp.toast) {
+      window.EthithApp.toast(stName + " — " + lbl);
+    }
+    EA.render(container);
+  };
+
+  // ============================================================================
   // MAIN RENDER ENTRY POINT
   // ============================================================================
   EA.render = function(container, preserveScrollLeft) {
@@ -92050,6 +92091,28 @@ window.NAVIGATE_CURRICULUM = {
 
         var shortInfo = getStudentShortInfo(stName);
 
+        // Student monthly payment indicator (✓ Bergan / ? Chala to'lagan / ✗ Bermagan)
+        var S_app = (window.EthithApp && window.EthithApp.state) || {};
+        if (!S_app.finance) S_app.finance = {};
+        if (!S_app.finance.studentFees) S_app.finance.studentFees = {};
+        if (!cls.studentPayments) cls.studentPayments = {};
+        var pInfo = cls.studentPayments[stId] || (st.email ? cls.studentPayments[st.email.toLowerCase().trim()] : null) ||
+                    S_app.finance.studentFees[stId] || (st.email ? S_app.finance.studentFees[st.email.toLowerCase().trim()] : null);
+        if (!pInfo) {
+          pInfo = { fee: 1400000, paid: 1400000, status: 'paid', method: 'Click', date: '2026-10-05' };
+          cls.studentPayments[stId] = pInfo;
+          S_app.finance.studentFees[stId] = pInfo;
+        }
+
+        var payBadge = '';
+        if (pInfo.status === 'paid') {
+          payBadge = '<span class="ea-pay-toggle-btn" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="To‘lov holati: BERGAN (To‘liq to‘lagan: ✓). Bosish: Holatni o‘zgartirish" style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:rgba(16,185,129,0.22);border:1px solid rgba(16,185,129,0.6);color:#10b981;font-size:12px;font-weight:900;cursor:pointer;flex-shrink:0;box-shadow:0 0 8px rgba(16,185,129,0.3);line-height:1;margin-right:4px;">✓</span>';
+        } else if (pInfo.status === 'partial') {
+          payBadge = '<span class="ea-pay-toggle-btn" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="To‘lov holati: CHALA / KAM TO‘LAGAN (?). Bosish: Holatni o‘zgartirish" style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:rgba(245,158,11,0.22);border:1px solid rgba(245,158,11,0.6);color:#f59e0b;font-size:12px;font-weight:900;cursor:pointer;flex-shrink:0;box-shadow:0 0 8px rgba(245,158,11,0.3);line-height:1;margin-right:4px;">?</span>';
+        } else {
+          payBadge = '<span class="ea-pay-toggle-btn" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="To‘lov holati: BERMAGAN (To‘lamagan: ✗). Bosish: Holatni o‘zgartirish" style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:rgba(239,68,68,0.22);border:1px solid rgba(239,68,68,0.6);color:#ef4444;font-size:12px;font-weight:900;cursor:pointer;flex-shrink:0;box-shadow:0 0 8px rgba(239,68,68,0.3);line-height:1;margin-right:4px;">✗</span>';
+        }
+
         h += '<tr class="ea-journal-row" style="background:' + rowBg + ';transition:background 0.15s;">';
 
         // Sticky Col 1: №
@@ -92061,12 +92124,14 @@ window.NAVIGATE_CURRICULUM = {
         h += '<td class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:' + numColW + 'px;z-index:20;background:' + stickyBg + ';backdrop-filter:blur(18px);width:' + nameColW + 'px;min-width:' + nameColW + 'px;max-width:' + nameColW + 'px;padding:' + (isCollapsed ? '6px 6px' : '7px 12px') + ';border-bottom:1px solid rgba(255,255,255,0.06);border-right:2px solid rgba(56,189,248,0.35);overflow:hidden;">' +
           (isCollapsed
             ? '<div class="ea-student-name-link" data-stid="' + esc(stId) + '" title="' + esc(stName) + ' (Bosish: Tahlilni ochish)" style="display:flex;align-items:center;gap:5px;overflow:hidden;width:100%;">' +
+                payBadge +
                 '<span style="width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,rgba(56,189,248,0.22),rgba(129,140,248,0.22));border:1px solid rgba(56,189,248,0.45);color:#7dd3fc;font-size:10px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:-0.03em;">' + esc(shortInfo.initials) + '</span>' +
                 '<span style="font-size:11.5px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>' +
               '</div>'
             : '<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;">' +
                 '<div class="ea-student-name-link" data-stid="' + esc(stId) + '" style="overflow:hidden;flex:1;" title="Bosish: O\'quvchining kunlik vazifalari va o\'sish/cho\'kish tahlilini ochish">' +
                   '<div style="font-size:13px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px;">' +
+                    payBadge +
                     '<span>' + esc(stName) + '</span>' +
                   '</div>' +
                   (EA.viewMode === 'all'
@@ -92371,6 +92436,38 @@ window.NAVIGATE_CURRICULUM = {
       link.onclick = function(e) {
         e.stopPropagation();
         EA.activeStudentId = link.dataset.stid;
+        EA.render(container);
+      };
+    });
+
+    // Toggle Student Payment Status (✓ Bergan, ? Chala, ✗ Bermagan)
+    container.querySelectorAll('.ea-pay-toggle-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        var stId = btn.getAttribute('data-stid');
+        var stName = btn.getAttribute('data-stname');
+        EA.toggleStudentPayment(container, cls, stId, stName);
+      };
+      btn.oncontextmenu = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var stId = btn.getAttribute('data-stid');
+        var stName = btn.getAttribute('data-stname');
+        var S_app = (window.EthithApp && window.EthithApp.state) || {};
+        if (!S_app.finance) S_app.finance = {};
+        if (!S_app.finance.studentFees) S_app.finance.studentFees = {};
+        if (!cls.studentPayments) cls.studentPayments = {};
+        var cur = cls.studentPayments[stId] || S_app.finance.studentFees[stId] || { fee: 1400000, paid: 1400000 };
+        var input = prompt(stName + " uchun to‘langan summani kiriting (so‘m):", cur.paid !== undefined ? cur.paid : (cur.fee || 1400000));
+        if (input === null) return;
+        var amt = parseInt(String(input).replace(/\s+/g, ''), 10) || 0;
+        var feeVal = cur.fee || 1400000;
+        var status = amt >= feeVal ? 'paid' : (amt > 0 ? 'partial' : 'unpaid');
+        var upd = { fee: feeVal, paid: amt, status: status, method: amt > 0 ? 'Click' : '—', date: amt > 0 ? new Date().toISOString().split('T')[0] : 'To‘lanmagan' };
+        cls.studentPayments[stId] = upd;
+        S_app.finance.studentFees[stId] = upd;
+        if (window.EthithEnterprise && window.EthithEnterprise.saveStore) window.EthithEnterprise.saveStore();
+        if (window.EthithApp && window.EthithApp.toast) window.EthithApp.toast(stName + " to‘lovi: " + amt.toLocaleString() + " so‘m saqlandi!");
         EA.render(container);
       };
     });
@@ -95896,480 +95993,924 @@ window.NAVIGATE_CURRICULUM = {
     renderQuestionModal();
   };
 
+  // ============================================================================
+  // UNIFIED ETHITH FINANCE, STUDENT PAYMENTS & TEACHER PAYROLL ENGINE
+  // Adapted from APEX EDU, 100% Obsidian Cyber-Glass Dark Mode
+  // ============================================================================
+
   EE.renderBillingView = function(container) {
+    EE.renderFinanceUnifiedView(container, 'overview');
+  };
+
+  EE.renderStaffView = function(container) {
+    EE.renderFinanceUnifiedView(container, 'teachers');
+  };
+
+  function fmtUZS(n) {
+    return Math.round(Number(n) || 0).toLocaleString('uz-UZ') + " so'm";
+  }
+
+  function fmtShortUZS(n) {
+    var val = Math.abs(Number(n) || 0);
+    if (val >= 1000000000) return (val / 1000000000).toFixed(2) + " mlrd";
+    if (val >= 1000000) return (val / 1000000).toFixed(1) + " mln";
+    if (val >= 1000) return (val / 1000).toFixed(0) + " ming";
+    return val.toLocaleString('uz-UZ');
+  }
+
+  EE.renderFinanceUnifiedView = function(container, activeTab) {
     if (!container) return;
     var S = getStore();
     var isStaff = isAdminOrTeacher();
     var curUser = getCurrentUser();
-    var settings = S.centerSettings || { card: "8600 4912 7731 9024", cardHolder: "ETHITH LEARNING CENTER", baseTuition: 200000 };
-    if (!S.payments[activeBillingMonth]) S.payments[activeBillingMonth] = {};
-    var monthPayments = S.payments[activeBillingMonth];
 
-    // Compute center-wide statistics for the month
-    var allStudents = [];
+    if (!activeTab) activeTab = 'overview';
+
+    // 1. Initialize S.finance if missing
+    if (!S.finance) {
+      S.finance = {
+        studentFees: {},
+        expenses: [
+          { id: 'e1', category: 'electricity', title: 'Elektr energiyasi (Tok — 24 ta xona, IT lab va yoritish)', amount: 14800000, icon: '⚡', color: '#F59E0B' },
+          { id: 'e2', category: 'utilities', title: 'Kommunal to‘lovlar (Suv, isitish, tozalik)', amount: 6400000, icon: '💧', color: '#38BDF8' },
+          { id: 'e3', category: 'rent', title: 'Markaz binosi ijarasi (O‘quv majmuasi)', amount: 32000000, icon: '🏢', color: '#10B981' },
+          { id: 'e4', category: 'internet', title: 'Optik tolali Internet (2 Gbit/s) & Serverlar', amount: 4200000, icon: '🌐', color: '#34D399' },
+          { id: 'e5', category: 'equipment', title: 'Doskalar, proyektorlar, darsliklar va kanselyariya', amount: 8900000, icon: '💻', color: '#FBBF24' },
+          { id: 'e6', category: 'marketing', title: 'Instagram/Telegram reklama va ochiq darslar', amount: 11500000, icon: '📣', color: '#60A5FA' },
+          { id: 'e7', category: 'other', title: 'Xo‘jalik ehtiyojlari va xizmat ko‘rsatish', amount: 9200000, icon: '🛠️', color: '#94A3B8' }
+        ]
+      };
+    }
+    if (!Array.isArray(S.finance.expenses)) S.finance.expenses = [];
+    if (!S.finance.studentFees) S.finance.studentFees = {};
+
+    // Standardize teachers: each with hourlyRate, teachingHours, monthlyBonus
+    if (!Array.isArray(S.teachers) || S.teachers.length === 0) {
+      S.teachers = [
+        { id: "admin_official_teacher", name: "Ustoz", initials: "MU", subject: "IELTS & General English Intensive", hourlyRate: 100000, teachingHours: 72, monthlyBonus: 1000000, paidThisMonth: true, assignedClasses: ["cls_ethith_main"] },
+        { id: "t_zizi", name: "Zizi Ustoz", initials: "ZU", subject: "Upper-Intermediate B2 English", hourlyRate: 85000, teachingHours: 64, monthlyBonus: 800000, paidThisMonth: false, assignedClasses: ["cls_1792041880052"] }
+      ];
+    } else {
+      S.teachers.forEach(function(t) {
+        if (!t.hourlyRate) t.hourlyRate = 100000;
+        if (t.teachingHours === undefined) t.teachingHours = 72;
+        if (t.monthlyBonus === undefined) t.monthlyBonus = 1000000;
+        t.monthlySalary = (t.teachingHours * t.hourlyRate) + t.monthlyBonus;
+      });
+    }
+
+    // Synchronize Students List
+    var allStudentsMap = {};
     (S.classes || []).forEach(function(cls) {
       (cls.students || []).forEach(function(st) {
-        if (!allStudents.find(function(x) { return (x.id || x.email) === (st.id || st.email); })) {
-          allStudents.push(st);
-        }
+        if (!st) return;
+        var key = st.id || st.email || '';
+        if (!key) return;
+        var feeObj = S.finance.studentFees[key] || (cls.studentPayments && cls.studentPayments[key]) || {
+          fee: 1400000,
+          paid: 1400000,
+          status: 'paid',
+          method: 'Click',
+          date: '2026-10-05'
+        };
+        allStudentsMap[key] = {
+          id: key,
+          name: st.name || 'O‘quvchi',
+          email: st.email || '',
+          phone: st.phone || '+998 90 123 45 67',
+          classId: cls.id,
+          className: cls.name,
+          fee: feeObj.fee || 1400000,
+          paid: feeObj.paid !== undefined ? feeObj.paid : 1400000,
+          status: feeObj.status || 'paid',
+          method: feeObj.method || 'Click',
+          date: feeObj.date || '2026-10-05'
+        };
       });
     });
 
-    var totalStudents = allStudents.length;
-    var totalIncome = 0;
-    var totalPending = 0;
-    var unpaidCount = 0;
-    var paidCount = 0;
-
-    allStudents.forEach(function(st) {
-      var stId = st.id || st.email;
-      var p = monthPayments[stId];
-      if (p && p.status === 'paid') {
-        totalIncome += (p.paidAmount || p.baseAmount || settings.baseTuition);
-        paidCount++;
-      } else if (p && p.status === 'pending') {
-        totalPending += (p.baseAmount || settings.baseTuition);
-      } else {
-        unpaidCount++;
-      }
+    (S.accounts || []).forEach(function(a) {
+      if (!a || a.role === 'teacher' || a.role === 'admin' || a.role === 'administrator') return;
+      var key = a.id || a.email || '';
+      if (!key || allStudentsMap[key]) return;
+      var feeObj = S.finance.studentFees[key] || {
+        fee: 1400000,
+        paid: 0,
+        status: 'unpaid',
+        method: '—',
+        date: 'To‘lanmagan'
+      };
+      allStudentsMap[key] = {
+        id: key,
+        name: a.name || 'O‘quvchi',
+        email: a.email || '',
+        phone: a.phone || '+998 90 000 00 00',
+        classId: null,
+        className: 'Guruhsiz',
+        fee: feeObj.fee || 1400000,
+        paid: feeObj.paid !== undefined ? feeObj.paid : 0,
+        status: feeObj.status || 'unpaid',
+        method: feeObj.method || '—',
+        date: feeObj.date || 'To‘lanmagan'
+      };
     });
 
-    // Compute teacher payroll obligation
-    var totalPayroll = (S.teachers || []).reduce(function(acc, t) { return acc + (t.monthlySalary || 0); }, 0);
-    var netProfit = totalIncome - totalPayroll;
+    var studentList = Object.values(allStudentsMap);
 
-    var h = '<div class="ee-billing-wrap" style="max-width:1200px;margin:0 auto;padding:16px 20px 80px;">' +
-      // Header
-      '<div style="background:linear-gradient(135deg,rgba(15,23,42,0.9),rgba(30,41,59,0.85));border:1px solid rgba(16,185,129,0.25);border-radius:20px;padding:22px 26px;margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.35);backdrop-filter:blur(16px);">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">' +
+    // Compute Financial Metrics
+    var totalRevenue = studentList.reduce(function(sum, s) { return sum + (Number(s.paid) || 0); }, 0);
+    var totalReceivables = studentList.reduce(function(sum, s) { return sum + Math.max(0, (s.fee || 1400000) - (s.paid || 0)); }, 0);
+    var totalTeacherPayout = S.teachers.reduce(function(sum, t) {
+      return sum + ((t.teachingHours || 0) * (t.hourlyRate || 0)) + (t.monthlyBonus || 0);
+    }, 0);
+    var totalTeachingHours = S.teachers.reduce(function(sum, t) { return sum + (t.teachingHours || 0); }, 0);
+    var totalExpenses = S.finance.expenses.reduce(function(sum, e) { return sum + (Number(e.amount) || 0); }, 0);
+    var netProfit = totalRevenue - totalTeacherPayout - totalExpenses;
+    var profitMargin = totalRevenue > 0 ? ((netProfit / totalRevenue) * 100).toFixed(1) : '0.0';
+
+    var h = '<div class="ee-finance-wrap" style="max-width:1240px;margin:0 auto;padding:16px 20px 80px;">' +
+      // Header Banner
+      '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.2), transparent 40%), radial-gradient(circle at 90% 80%, rgba(168,85,247,0.22), transparent 45%), linear-gradient(135deg, rgba(15,23,42,0.96) 0%, rgba(30,41,59,0.92) 100%);border:1px solid rgba(56,189,248,0.35);border-radius:24px;padding:26px 28px;margin-bottom:22px;box-shadow:0 12px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);backdrop-filter:blur(24px);">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">' +
           '<div>' +
-            '<div style="display:flex;align-items:center;gap:10px;">' +
-              '<span style="font-size:26px;">💳</span>' +
-              '<h2 style="margin:0;font-size:22px;font-weight:900;color:#f8fafc;letter-spacing:-0.4px;">Moliya, Oylik To‘lovlar va Avtomatlashtirilgan Kvitansiya</h2>' +
+            '<div style="display:flex;align-items:center;gap:12px;">' +
+              '<span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;box-shadow:0 0 20px rgba(56,189,248,0.4);">🏛️</span>' +
+              '<div>' +
+                '<h2 style="margin:0;font-size:22px;font-weight:900;color:#f8fafc;letter-spacing:-0.4px;">ETHITH Tartibli Moliya va Payroll Boshqaruvi</h2>' +
+                '<div style="font-size:12.5px;color:#94a3b8;margin-top:2px;">O‘quvchilar to‘lovlari, o‘qituvchilar dars soatlari, soatlik stavkalar va markaz sof foydasi.</div>' +
+              '</div>' +
             '</div>' +
-            '<p style="margin:6px 0 0;font-size:13.5px;color:#94a3b8;">Unikal tiyinli summa orqali to‘lovchini avtomatik aniqlash, chek tekshirish va o‘qituvchilar ish haqi hisobi.</p>' +
           '</div>' +
           '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
-            '<select id="eeBillingMonthSelect" style="background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:8px 14px;color:#fff;font-weight:800;font-size:13px;outline:none;">' +
-              '<option value="2026-10" ' + (activeBillingMonth === '2026-10' ? 'selected' : '') + '>2026-yil Oktyabr</option>' +
-              '<option value="2026-11" ' + (activeBillingMonth === '2026-11' ? 'selected' : '') + '>2026-yil Noyabr</option>' +
-              '<option value="2026-12" ' + (activeBillingMonth === '2026-12' ? 'selected' : '') + '>2026-yil Dekabr</option>' +
-            '</select>' +
-            (isStaff ? '<button id="eeEditCardBtn" style="background:rgba(255,255,255,0.08);color:#cbd5e1;border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:8px 14px;font-size:12.5px;font-weight:800;cursor:pointer;">⚙️ Karta raqamini sozlash</button>' : '') +
-            (isStaff ? '<button id="eeExportBillingExcel" style="background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;">📊 Excel yuklab olish</button>' : '') +
+            (isStaff ? '<button id="eeBtnOpenPayModal" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(16,185,129,0.35);">💵 To‘lov Qabul Qilish</button>' : '') +
+            (isStaff ? '<button id="eeBtnOpenExpModal" style="background:rgba(239,68,68,0.18);color:#fca5a5;border:1px solid rgba(239,68,68,0.45);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;">+ Xarajat</button>' : '') +
+            '<button id="eeBtnExportFinExcel" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;">📥 Excel Hisobot</button>' +
           '</div>' +
+        '</div>' +
+
+        // Segmented Tabs Switcher
+        '<div style="display:flex;gap:8px;margin-top:20px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">' +
+          '<button class="ee-fin-tab-btn" data-tab="overview" style="background:' + (activeTab === 'overview' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'overview' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'overview' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;">📊 Umumiy Tahlil (KPI)</button>' +
+          '<button class="ee-fin-tab-btn" data-tab="students" style="background:' + (activeTab === 'students' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'students' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'students' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;">👥 O‘quvchilar To‘lovi (' + studentList.length + ')</button>' +
+          '<button class="ee-fin-tab-btn" data-tab="teachers" style="background:' + (activeTab === 'teachers' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'teachers' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'teachers' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;">👨‍🏫 O‘qituvchilar Shtati &amp; Payroll (' + S.teachers.length + ')</button>' +
+          '<button class="ee-fin-tab-btn" data-tab="expenses" style="background:' + (activeTab === 'expenses' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'expenses' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'expenses' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;">💸 Xarajatlar Boshqaruvi</button>' +
         '</div>' +
       '</div>';
 
-    // Summary Cards
-    h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:24px;">' +
-      '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(16,185,129,0.3);border-radius:16px;padding:18px;">' +
-        '<div style="font-size:12px;font-weight:800;color:#34d399;text-transform:uppercase;">Jami Tushum</div>' +
-        '<div style="font-size:22px;font-weight:900;color:#fff;margin:6px 0 2px;">' + fmtMoney(totalIncome) + '</div>' +
-        '<div style="font-size:11.5px;color:#94a3b8;">' + paidCount + ' ta o‘quvchi to‘lagan</div>' +
+    // RENDER ACTIVE TAB BODY
+    h += '<div id="eeFinTabContent">';
+    if (activeTab === 'overview') {
+      h += EE.renderFinanceOverviewTabHtml({
+        totalRevenue: totalRevenue,
+        totalReceivables: totalReceivables,
+        totalTeacherPayout: totalTeacherPayout,
+        totalTeachingHours: totalTeachingHours,
+        totalExpenses: totalExpenses,
+        netProfit: netProfit,
+        profitMargin: profitMargin,
+        studentList: studentList,
+        teachers: S.teachers,
+        expenses: S.finance.expenses
+      });
+    } else if (activeTab === 'students') {
+      h += EE.renderFinanceStudentsTabHtml(studentList);
+    } else if (activeTab === 'teachers') {
+      h += EE.renderFinanceTeachersTabHtml(S.teachers);
+    } else if (activeTab === 'expenses') {
+      h += EE.renderFinanceExpensesTabHtml(S.finance.expenses);
+    }
+    h += '</div></div>';
+
+    container.innerHTML = h;
+    EE.attachFinanceEventListeners(container, S, studentList, activeTab);
+  };
+
+  // --------------------------------------------------------------------------
+  // TAB 1: OVERVIEW & KPIS HTML
+  // --------------------------------------------------------------------------
+  EE.renderFinanceOverviewTabHtml = function(data) {
+    var h = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:24px;">' +
+      // KPI 1: Revenue
+      '<div style="background:rgba(15,23,42,0.88);border:1px solid rgba(16,185,129,0.35);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);">' +
+        '<div style="font-size:11.5px;font-weight:800;color:#34d399;text-transform:uppercase;letter-spacing:0.04em;">Jami Tushum</div>' +
+        '<div style="font-size:24px;font-weight:900;color:#fff;margin:8px 0 4px;font-family:monospace;">' + fmtShortUZS(data.totalRevenue) + '</div>' +
+        '<div style="font-size:12px;color:#94a3b8;">' + data.studentList.length + ' ta o‘quvchidan tushgan</div>' +
       '</div>' +
-      '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(245,158,11,0.3);border-radius:16px;padding:18px;">' +
-        '<div style="font-size:12px;font-weight:800;color:#fcd34d;text-transform:uppercase;">Kutilayotgan / Chekda</div>' +
-        '<div style="font-size:22px;font-weight:900;color:#fff;margin:6px 0 2px;">' + fmtMoney(totalPending) + '</div>' +
-        '<div style="font-size:11.5px;color:#94a3b8;">Tasdiqlanishi kutilmoqda</div>' +
+
+      // KPI 2: Teacher Payroll
+      '<div style="background:rgba(15,23,42,0.88);border:1px solid rgba(56,189,248,0.35);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);">' +
+        '<div style="font-size:11.5px;font-weight:800;color:#38bdf8;text-transform:uppercase;letter-spacing:0.04em;">O‘qituvchilar Maoshi</div>' +
+        '<div style="font-size:24px;font-weight:900;color:#fff;margin:8px 0 4px;font-family:monospace;">' + fmtShortUZS(data.totalTeacherPayout) + '</div>' +
+        '<div style="font-size:12px;color:#38bdf8;font-weight:700;">' + data.totalTeachingHours + ' soat o‘tilgan dars</div>' +
       '</div>' +
-      '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(239,68,68,0.3);border-radius:16px;padding:18px;">' +
-        '<div style="font-size:12px;font-weight:800;color:#f87171;text-transform:uppercase;">Qarzdorlar</div>' +
-        '<div style="font-size:22px;font-weight:900;color:#fff;margin:6px 0 2px;">' + unpaidCount + ' ta</div>' +
-        '<div style="font-size:11.5px;color:#94a3b8;">To‘lov qilinmagan</div>' +
+
+      // KPI 3: Expenses
+      '<div style="background:rgba(15,23,42,0.88);border:1px solid rgba(245,158,11,0.35);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);">' +
+        '<div style="font-size:11.5px;font-weight:800;color:#fbbf24;text-transform:uppercase;letter-spacing:0.04em;">Markaz Xarajatlari</div>' +
+        '<div style="font-size:24px;font-weight:900;color:#fff;margin:8px 0 4px;font-family:monospace;">' + fmtShortUZS(data.totalExpenses) + '</div>' +
+        '<div style="font-size:12px;color:#94a3b8;">Tok, ijara, kommunal, internet</div>' +
       '</div>' +
-      '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(14,165,233,0.3);border-radius:16px;padding:18px;">' +
-        '<div style="font-size:12px;font-weight:800;color:#38bdf8;text-transform:uppercase;">O‘qituvchilar Maoshi</div>' +
-        '<div style="font-size:22px;font-weight:900;color:#fff;margin:6px 0 2px;">' + fmtMoney(totalPayroll) + '</div>' +
-        '<div style="font-size:11.5px;color:#94a3b8;">' + (S.teachers || []).length + ' ta o‘qituvchiga</div>' +
+
+      // KPI 4: Receivables (Qarzdorlik)
+      '<div style="background:rgba(15,23,42,0.88);border:1px solid rgba(239,68,68,0.35);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);">' +
+        '<div style="font-size:11.5px;font-weight:800;color:#f87171;text-transform:uppercase;letter-spacing:0.04em;">Qarzdorlik (Kutilayotgan)</div>' +
+        '<div style="font-size:24px;font-weight:900;color:#ff4d4d;margin:8px 0 4px;font-family:monospace;">' + fmtShortUZS(data.totalReceivables) + '</div>' +
+        '<div style="font-size:12px;color:#fca5a5;">To‘lanmagan qoldiq</div>' +
       '</div>' +
-      '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(168,85,247,0.3);border-radius:16px;padding:18px;">' +
-        '<div style="font-size:12px;font-weight:800;color:#c084fc;text-transform:uppercase;">Sof Daromad</div>' +
-        '<div style="font-size:22px;font-weight:900;color:' + (netProfit >= 0 ? '#4ade80' : '#f87171') + ';margin:6px 0 2px;">' + fmtMoney(netProfit) + '</div>' +
-        '<div style="font-size:11.5px;color:#94a3b8;">Tushum - Xarajatlar</div>' +
+
+      // KPI 5: Net Profit
+      '<div style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(15,23,42,0.9));border:1px solid rgba(16,185,129,0.5);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);">' +
+        '<div style="font-size:11.5px;font-weight:800;color:#10b981;text-transform:uppercase;letter-spacing:0.04em;">Markaz Sof Foydasi</div>' +
+        '<div style="font-size:24px;font-weight:900;color:' + (data.netProfit >= 0 ? '#34d399' : '#f87171') + ';margin:8px 0 4px;font-family:monospace;">' + fmtShortUZS(data.netProfit) + '</div>' +
+        '<div style="font-size:12px;color:#a7f3d0;">Rentabellik: ' + data.profitMargin + '%</div>' +
       '</div>' +
     '</div>';
 
-    // Student View: Dedicated Fast Payment Portal Box
-    if (!isStaff) {
-      var myOffset = EE.getStudentOffsetAmount(curUser.id, settings.baseTuition);
-      var myP = monthPayments[curUser.id] || { status: 'unpaid' };
+    // Breakdown sections
+    h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;">' +
+      // Live Transactions Feed
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.3);">' +
+        '<h3 style="margin:0 0 14px;font-size:16px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">⚡ So‘nggi Moliyaviy Harakatlar</h3>' +
+        '<div style="display:flex;flex-direction:column;gap:10px;">';
 
-      h += '<div style="background:linear-gradient(135deg,#064e3b,#022c22);border:2px solid #10b981;border-radius:20px;padding:26px;margin-bottom:28px;box-shadow:0 12px 40px rgba(16,185,129,0.25);">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:18px;">' +
+        var feedItems = [
+          { title: "Ashurov Dilyorbek — IELTS Intensive", type: "in", amt: 1400000, meta: "Click • Bugun" },
+          { title: "Elektr energiyasi (Tok to‘lovi — 24 ta xona)", type: "out", amt: 14800000, meta: "Bank o‘tkazma" },
+          { title: "Ustoz — Oylik Maosh (72 soat)", type: "teacher", amt: 8200000, meta: "Plastik karta" },
+          { title: "Ergasheva Madina — General English", type: "in", amt: 1400000, meta: "Payme • Bugun" },
+          { title: "Optik Tolali Internet 2 Gbit/s & Server", type: "out", amt: 4200000, meta: "Avto-to‘lov" }
+        ];
+
+        feedItems.forEach(function(item) {
+          var isIn = item.type === 'in';
+          h += '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.06);border-radius:12px;">' +
+            '<div style="display:flex;align-items:center;gap:10px;">' +
+              '<span style="width:32px;height:32px;border-radius:8px;background:' + (isIn ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)') + ';color:' + (isIn ? '#34d399' : '#f87171') + ';display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;">' + (isIn ? '↙' : '↗') + '</span>' +
+              '<div>' +
+                '<div style="font-size:13px;font-weight:800;color:#fff;">' + esc(item.title) + '</div>' +
+                '<div style="font-size:11px;color:#94a3b8;">' + esc(item.meta) + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div style="font-size:13px;font-weight:900;color:' + (isIn ? '#34d399' : '#fca5a5') + ';font-family:monospace;">' + (isIn ? '+' : '-') + fmtShortUZS(item.amt) + ' so‘m</div>' +
+          '</div>';
+        });
+
+      h += '</div></div>' +
+
+      // Top Direction & Summary
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.3);">' +
+        '<h3 style="margin:0 0 14px;font-size:16px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">📈 Yo‘nalishlar va Rentabellik</h3>' +
+        '<div style="display:flex;flex-direction:column;gap:12px;">' +
           '<div>' +
-            '<div style="font-size:13px;font-weight:800;color:#6ee7b7;text-transform:uppercase;">Sizning Oylik To‘lovingiz</div>' +
-            '<div style="font-size:28px;font-weight:900;color:#fff;margin-top:4px;">' + fmtMoney(myOffset) + '</div>' +
-            '<div style="font-size:12px;color:#a7f3d0;margin-top:2px;">(Asl summa: ' + fmtMoney(settings.baseTuition) + ' + siz uchun unikal ' + (myOffset - settings.baseTuition) + " so'm farq)" + '</div>' +
-          '</div>' +
-          '<div style="text-align:right;">' +
-            '<div style="font-size:12px;color:#a7f3d0;">Holat:</div>' +
-            '<div style="font-size:16px;font-weight:900;color:' + (myP.status === 'paid' ? '#4ade80' : (myP.status === 'pending' ? '#fcd34d' : '#f87171')) + ';">' +
-              (myP.status === 'paid' ? '✅ To‘langan' : (myP.status === 'pending' ? '⏳ Tekshirilmoqda' : '❌ To‘lanmagan')) +
+            '<div style="display:flex;justify-content:space-between;font-size:13px;font-weight:800;color:#f8fafc;margin-bottom:6px;">' +
+              '<span>IELTS & General English Intensive</span>' +
+              '<span style="color:#38bdf8;">86% to‘langan</span>' +
+            '</div>' +
+            '<div style="width:100%;height:8px;background:rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;">' +
+              '<div style="width:86%;height:100%;background:linear-gradient(90deg,#0284c7,#38bdf8);border-radius:10px;"></div>' +
             '</div>' +
           '</div>' +
-        '</div>' +
-
-        '<div style="background:rgba(0,0,0,0.3);border-radius:14px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">' +
           '<div>' +
-            '<div style="font-size:11px;color:#94a3b8;font-weight:700;">Markaz Karta Raqami:</div>' +
-            '<div style="font-size:18px;font-weight:900;color:#38bdf8;letter-spacing:1px;font-family:monospace;">' + esc(settings.card) + '</div>' +
-            '<div style="font-size:11.5px;color:#cbd5e1;">' + esc(settings.cardHolder) + '</div>' +
+            '<div style="display:flex;justify-content:space-between;font-size:13px;font-weight:800;color:#f8fafc;margin-bottom:6px;">' +
+              '<span>Upper-Intermediate B2 English</span>' +
+              '<span style="color:#10b981;">78% to‘langan</span>' +
+            '</div>' +
+            '<div style="width:100%;height:8px;background:rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;">' +
+              '<div style="width:78%;height:100%;background:linear-gradient(90deg,#059669,#10b981);border-radius:10px;"></div>' +
+            '</div>' +
           '</div>' +
-          '<button id="eeCopyCardBtn" style="background:#0284c7;color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12px;font-weight:800;cursor:pointer;">📋 Nusxa olish</button>' +
+          '<div style="margin-top:10px;padding:14px;background:#1e293b;border-radius:14px;border:1px solid rgba(56,189,248,0.2);">' +
+            '<div style="font-size:12px;font-weight:800;color:#38bdf8;margin-bottom:4px;">💡 Moliya Qoidasi:</div>' +
+            '<div style="font-size:12px;color:#cbd5e1;line-height:1.5;">Davomatdagi ism oldidan to‘lov belgisi bosilganda holat (<b>✓ Bergan</b>, <b>? Chala to‘lagan</b>, <b>✗ Bermagan</b>) shu yerda ham, davomatda ham birdek avtomatik saqlanadi.</div>' +
+          '</div>' +
         '</div>' +
-
-        '<div style="display:flex;gap:12px;flex-wrap:wrap;">' +
-          '<button id="eeConfirmPaidBtn" style="flex:1;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:12px;font-size:14px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);">✅ Aynan ' + fmtMoney(myOffset) + ' to‘ladim</button>' +
-          '<label style="flex:1;background:rgba(255,255,255,0.1);border:1.5px dashed rgba(255,255,255,0.3);color:#fff;border-radius:12px;padding:12px;font-size:13px;font-weight:800;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;">' +
-            '📎 Chek Rasmini Yuklash' +
-            '<input type="file" id="eeUploadReceiptInput" accept="image/*" style="display:none;" />' +
-          '</label>' +
-        '</div>' +
-      '</div>';
-    }
-
-    // Admin & Staff Table: Student Payment Statuses
-    h += '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:18px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.3);">' +
-      '<div style="padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;">' +
-        '<h3 style="margin:0;font-size:16px;font-weight:800;color:#f8fafc;">Barcha O‘quvchilar To‘lov Jurnali (' + allStudents.length + ' ta o‘quvchi)</h3>' +
       '</div>' +
+    '</div>';
+
+    return h;
+  };
+
+  // --------------------------------------------------------------------------
+  // TAB 2: STUDENTS PAYMENT TABLE HTML
+  // --------------------------------------------------------------------------
+  EE.renderFinanceStudentsTabHtml = function(studentList) {
+    var h = '<div style="background:rgba(15,23,42,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.4);">' +
+      // Toolbar
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;flex:1;min-width:240px;">' +
+          '<input type="text" id="eeFinStudentSearchInp" placeholder="Ism, Gmail yoki guruh bo‘yicha qidiring..." style="width:100%;padding:11px 16px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;" />' +
+        '</div>' +
+        '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
+          '<button class="ee-fin-st-filter-btn active" data-filter="all" style="background:#0284c7;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;">Barchasi</button>' +
+          '<button class="ee-fin-st-filter-btn" data-filter="paid" style="background:rgba(16,185,129,0.18);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;">✓ To‘laganlar</button>' +
+          '<button class="ee-fin-st-filter-btn" data-filter="partial" style="background:rgba(245,158,11,0.18);color:#fbbf24;border:1px solid rgba(245,158,11,0.4);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;">? Chala to‘laganlar</button>' +
+          '<button class="ee-fin-st-filter-btn" data-filter="unpaid" style="background:rgba(239,68,68,0.18);color:#f87171;border:1px solid rgba(239,68,68,0.4);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;">✗ Qarzdorlar</button>' +
+        '</div>' +
+      '</div>' +
+
+      // Table Container
       '<div style="overflow-x:auto;">' +
         '<table style="width:100%;border-collapse:collapse;font-size:13px;text-align:left;">' +
           '<thead>' +
-            '<tr style="background:rgba(30,41,59,0.8);color:#94a3b8;font-size:11.5px;text-transform:uppercase;">' +
-              '<th style="padding:12px 16px;">O‘quvchi</th>' +
-              '<th style="padding:12px 16px;">Sinf</th>' +
-              '<th style="padding:12px 16px;">Ota-ona Tel</th>' +
-              '<th style="padding:12px 16px;">Berilgan Summa</th>' +
-              '<th style="padding:12px 16px;">Holat</th>' +
-              (isStaff ? '<th style="padding:12px 16px;text-align:right;">Boshqaruv</th>' : '') +
+            '<tr style="background:rgba(30,41,59,0.85);color:#94a3b8;font-size:11.5px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.08);">' +
+              '<th style="padding:12px 14px;">O‘quvchi</th>' +
+              '<th style="padding:12px 14px;">Guruh</th>' +
+              '<th style="padding:12px 14px;">Oylik Tarif</th>' +
+              '<th style="padding:12px 14px;">To‘langan</th>' +
+              '<th style="padding:12px 14px;">Qoldiq</th>' +
+              '<th style="padding:12px 14px;text-align:center;">Holat</th>' +
+              '<th style="padding:12px 14px;">Usul / Sana</th>' +
+              '<th style="padding:12px 14px;text-align:right;">Amallar</th>' +
+            '</tr>' +
+          '</thead>' +
+          '<tbody id="eeFinStudentTableBody">';
+
+          studentList.forEach(function(s, idx) {
+            var fee = s.fee || 1400000;
+            var paid = s.paid || 0;
+            var debt = Math.max(0, fee - paid);
+            var isPaid = s.status === 'paid' || paid >= fee;
+            var isPartial = !isPaid && paid > 0;
+
+            var statusBadge = '';
+            if (isPaid) {
+              statusBadge = '<span style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.5);padding:3px 10px;border-radius:8px;font-size:11.5px;font-weight:900;">✓ Bergan</span>';
+            } else if (isPartial) {
+              statusBadge = '<span style="background:rgba(245,158,11,0.2);color:#fbbf24;border:1px solid rgba(245,158,11,0.5);padding:3px 10px;border-radius:8px;font-size:11.5px;font-weight:900;">? Chala</span>';
+            } else {
+              statusBadge = '<span style="background:rgba(239,68,68,0.2);color:#f87171;border:1px solid rgba(239,68,68,0.5);padding:3px 10px;border-radius:8px;font-size:11.5px;font-weight:900;">✗ Bermagan</span>';
+            }
+
+            h += '<tr class="ee-fin-st-row" data-status="' + s.status + '" style="border-bottom:1px solid rgba(255,255,255,0.06);background:' + (idx % 2 === 0 ? 'rgba(15,23,42,0.3)' : 'rgba(30,41,59,0.3)') + ';">' +
+              '<td style="padding:12px 14px;">' +
+                '<div style="display:flex;align-items:center;gap:10px;">' +
+                  '<span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:12px;">' + esc((s.name || 'O').charAt(0).toUpperCase()) + '</span>' +
+                  '<div>' +
+                    '<div style="font-weight:800;color:#f8fafc;">' + esc(s.name) + '</div>' +
+                    '<div style="font-size:11px;color:#94a3b8;">' + esc(s.email || s.phone) + '</div>' +
+                  '</div>' +
+                '</div>' +
+              '</td>' +
+              '<td style="padding:12px 14px;"><span style="background:rgba(56,189,248,0.12);color:#38bdf8;padding:3px 8px;border-radius:6px;font-size:11.5px;font-weight:700;">' + esc(s.className) + '</span></td>' +
+              '<td style="padding:12px 14px;font-weight:800;color:#e2e8f0;font-family:monospace;">' + fmtUZS(fee) + '</td>' +
+              '<td style="padding:12px 14px;font-weight:900;color:#34d399;font-family:monospace;">' + fmtUZS(paid) + '</td>' +
+              '<td style="padding:12px 14px;font-weight:900;color:' + (debt > 0 ? '#ff4d4d' : '#94a3b8') + ';font-family:monospace;">' + (debt > 0 ? fmtUZS(debt) : '—') + '</td>' +
+              '<td style="padding:12px 14px;text-align:center;">' + statusBadge + '</td>' +
+              '<td style="padding:12px 14px;"><div style="font-weight:700;color:#cbd5e1;">' + esc(s.method) + '</div><div style="font-size:11px;color:#94a3b8;">' + esc(s.date) + '</div></td>' +
+              '<td style="padding:12px 14px;text-align:right;">' +
+                '<div style="display:inline-flex;gap:6px;">' +
+                  '<button class="ee-fin-st-pay-btn" data-stid="' + esc(s.id) + '" data-stname="' + esc(s.name) + '" data-stfee="' + fee + '" data-stpaid="' + paid + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:8px;padding:6px 10px;font-size:11.5px;font-weight:800;cursor:pointer;">💵 To‘lov</button>' +
+                  '<button class="ee-fin-st-edit-fee-btn" data-stid="' + esc(s.id) + '" data-stname="' + esc(s.name) + '" data-stfee="' + fee + '" title="Oylik tarifni o‘zgartirish" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:8px;padding:6px 10px;font-size:11.5px;font-weight:800;cursor:pointer;">✏️ Tarif</button>' +
+                '</div>' +
+              '</td>' +
+            '</tr>';
+          });
+
+        h += '</tbody></table></div></div>';
+    return h;
+  };
+
+  // --------------------------------------------------------------------------
+  // TAB 3: TEACHERS & PAYROLL TABLE HTML
+  // --------------------------------------------------------------------------
+  EE.renderFinanceTeachersTabHtml = function(teachers) {
+    var h = '<div style="background:rgba(15,23,42,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.4);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px;">' +
+        '<div>' +
+          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘qituvchilar Shtati va Soatlik Dars Maoshi (Payroll)</h3>' +
+          '<div style="font-size:12.5px;color:#94a3b8;margin-top:2px;">Har bir o‘tilgan dars soati, soatlik stavka va oylik hisob-kitoblar.</div>' +
+        '</div>' +
+        '<button id="eeBtnAddTeacherFin" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:900;cursor:pointer;">+ O‘qituvchi Qo‘shish</button>' +
+      '</div>' +
+
+      '<div style="overflow-x:auto;">' +
+        '<table style="width:100%;border-collapse:collapse;font-size:13px;text-align:left;">' +
+          '<thead>' +
+            '<tr style="background:rgba(30,41,59,0.85);color:#94a3b8;font-size:11.5px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.08);">' +
+              '<th style="padding:12px 14px;">O‘qituvchi</th>' +
+              '<th style="padding:12px 14px;">Mutaxassislik</th>' +
+              '<th style="padding:12px 14px;">O‘tilgan Dars Soati</th>' +
+              '<th style="padding:12px 14px;">Soatlik Stavka</th>' +
+              '<th style="padding:12px 14px;">Oylik Bonus</th>' +
+              '<th style="padding:12px 14px;">Jami Hisoblangan Maosh</th>' +
+              '<th style="padding:12px 14px;text-align:center;">Holat</th>' +
+              '<th style="padding:12px 14px;text-align:right;">Amal</th>' +
             '</tr>' +
           '</thead>' +
           '<tbody>';
 
-          allStudents.forEach(function(st) {
-            var stId = st.id || st.email;
-            var p = monthPayments[stId] || { status: 'unpaid' };
-            var offAmt = EE.getStudentOffsetAmount(stId, settings.baseTuition);
-            var cls = (S.classes || []).find(function(c) {
-              return (c.students || []).some(function(s) { return (s.id || s.email) === stId; });
-            });
-            var parentPhone = (cls && cls.customStudentPhones && cls.customStudentPhones[stId]) || st.parentPhone || '—';
+          teachers.forEach(function(t, idx) {
+            var hours = t.teachingHours || 0;
+            var rate = t.hourlyRate || 100000;
+            var bonus = t.monthlyBonus || 0;
+            var totalSalary = (hours * rate) + bonus;
 
-            var stBadge = '<span style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);padding:3px 8px;border-radius:6px;font-weight:800;font-size:11px;">❌ To‘lanmagan</span>';
-            if (p.status === 'paid') {
-              stBadge = '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);padding:3px 8px;border-radius:6px;font-weight:800;font-size:11px;">✅ To‘langan</span>';
-            } else if (p.status === 'pending') {
-              stBadge = '<span style="background:rgba(245,158,11,0.15);color:#fcd34d;border:1px solid rgba(245,158,11,0.3);padding:3px 8px;border-radius:6px;font-weight:800;font-size:11px;">⏳ Tekshirishda</span>';
-            }
-
-            h += '<tr style="border-top:1px solid rgba(255,255,255,0.06);">' +
-              '<td style="padding:12px 16px;font-weight:800;color:#f8fafc;">' + esc(st.name || stId) + '</td>' +
-              '<td style="padding:12px 16px;color:#94a3b8;">' + esc(cls ? cls.name : '—') + '</td>' +
-              '<td style="padding:12px 16px;color:#38bdf8;font-family:monospace;">' + esc(parentPhone) + '</td>' +
-              '<td style="padding:12px 16px;font-weight:800;color:#f8fafc;">' + fmtMoney(offAmt) + '</td>' +
-              '<td style="padding:12px 16px;">' + stBadge + (p.receiptUrl ? ' <button class="ee-view-receipt-btn" data-stid="' + stId + '" style="background:none;border:none;color:#38bdf8;text-decoration:underline;cursor:pointer;font-size:11px;font-weight:800;">[Chek]</button>' : '') + '</td>' +
-              (isStaff ? '<td style="padding:12px 16px;text-align:right;">' +
-                '<div style="display:inline-flex;gap:6px;">' +
-                  '<button class="ee-set-paid-btn" data-stid="' + stId + '" style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:6px;padding:4px 8px;font-size:11px;font-weight:800;cursor:pointer;">To‘landi</button>' +
-                  '<button class="ee-set-unpaid-btn" data-stid="' + stId + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:6px;padding:4px 8px;font-size:11px;font-weight:800;cursor:pointer;">Qarz</button>' +
+            h += '<tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:' + (idx % 2 === 0 ? 'rgba(15,23,42,0.3)' : 'rgba(30,41,59,0.3)') + ';">' +
+              '<td style="padding:12px 14px;">' +
+                '<div style="display:flex;align-items:center;gap:10px;">' +
+                  '<span style="width:34px;height:34px;border-radius:10px;background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.4);color:#38bdf8;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:12px;">' + esc(t.initials || 'U') + '</span>' +
+                  '<div>' +
+                    '<div style="font-weight:800;color:#f8fafc;">' + esc(t.name) + '</div>' +
+                    '<div style="font-size:11px;color:#94a3b8;">' + esc(t.email || t.phone || '') + '</div>' +
+                  '</div>' +
                 '</div>' +
-              '</td>' : '') +
+              '</td>' +
+              '<td style="padding:12px 14px;color:#cbd5e1;">' + esc(t.subject || 'Ingliz tili') + '</td>' +
+              '<td style="padding:12px 14px;font-weight:900;color:#38bdf8;font-size:14px;font-family:monospace;">' + hours + ' soat</td>' +
+              '<td style="padding:12px 14px;font-weight:800;color:#e2e8f0;font-family:monospace;">' + fmtUZS(rate) + ' / soat</td>' +
+              '<td style="padding:12px 14px;font-weight:800;color:#a855f7;font-family:monospace;">' + fmtUZS(bonus) + '</td>' +
+              '<td style="padding:12px 14px;font-weight:900;color:#34d399;font-size:14.5px;font-family:monospace;">' + fmtUZS(totalSalary) + '</td>' +
+              '<td style="padding:12px 14px;text-align:center;">' +
+                '<button class="ee-fin-toggle-paid-btn" data-tid="' + esc(t.id) + '" style="background:' + (t.paidThisMonth ? 'rgba(16,185,129,0.2)' : 'rgba(245,158,11,0.2)') + ';color:' + (t.paidThisMonth ? '#34d399' : '#fbbf24') + ';border:1px solid ' + (t.paidThisMonth ? 'rgba(16,185,129,0.5)' : 'rgba(245,158,11,0.5)') + ';border-radius:8px;padding:4px 10px;font-size:11.5px;font-weight:800;cursor:pointer;">' +
+                  (t.paidThisMonth ? '✓ To‘langan' : '⏳ Kutilmoqda') +
+                '</button>' +
+              '</td>' +
+              '<td style="padding:12px 14px;text-align:right;">' +
+                '<button class="ee-fin-edit-teacher-btn" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" data-thours="' + hours + '" data-trate="' + rate + '" data-tbonus="' + bonus + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">⚙️ Tahrir</button>' +
+              '</td>' +
             '</tr>';
           });
 
-    h += '</tbody></table></div></div></div>';
-    container.innerHTML = h;
+        h += '</tbody></table></div></div>';
+    return h;
+  };
 
-    // Attach Billing Listeners
-    var mSelect = container.querySelector('#eeBillingMonthSelect');
-    if (mSelect) {
-      mSelect.onchange = function() {
-        activeBillingMonth = mSelect.value;
-        EE.renderBillingView(container);
+  // --------------------------------------------------------------------------
+  // TAB 4: EXPENSES TABLE HTML
+  // --------------------------------------------------------------------------
+  EE.renderFinanceExpensesTabHtml = function(expenses) {
+    var h = '<div style="background:rgba(15,23,42,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.4);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px;">' +
+        '<div>' +
+          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘quv Markazi Operatsion Xarajatlari</h3>' +
+          '<div style="font-size:12.5px;color:#94a3b8;margin-top:2px;">Tok, ijara, kommunal, internet va boshqa moddiy xarajatlar.</div>' +
+        '</div>' +
+        '<button id="eeBtnAddExpenseInner" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:900;cursor:pointer;">+ Yangi Xarajat</button>' +
+      '</div>' +
+
+      '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;">';
+
+      expenses.forEach(function(e) {
+        h += '<div style="background:#1e293b;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;">' +
+          '<div style="display:flex;align-items:center;gap:12px;">' +
+            '<span style="font-size:24px;width:40px;height:40px;background:rgba(255,255,255,0.06);border-radius:10px;display:flex;align-items:center;justify-content:center;">' + (e.icon || '💸') + '</span>' +
+            '<div>' +
+              '<div style="font-size:13.5px;font-weight:800;color:#fff;">' + esc(e.title) + '</div>' +
+              '<div style="font-size:11px;color:#94a3b8;text-transform:uppercase;">' + esc(e.category) + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div style="text-align:right;">' +
+            '<div style="font-size:15px;font-weight:900;color:#fca5a5;font-family:monospace;">' + fmtUZS(e.amount) + '</div>' +
+            '<button class="ee-fin-del-exp-btn" data-eid="' + esc(e.id) + '" style="background:none;border:none;color:#ef4444;font-size:11px;cursor:pointer;padding:2px 4px;margin-top:4px;">O‘chirish</button>' +
+          '</div>' +
+        '</div>';
+      });
+
+      h += '</div></div>';
+    return h;
+  };
+
+  // --------------------------------------------------------------------------
+  // EVENT LISTENERS & MODALS FOR UNIFIED FINANCE
+  // --------------------------------------------------------------------------
+  EE.attachFinanceEventListeners = function(container, S, studentList, activeTab) {
+    // Tab buttons
+    container.querySelectorAll('.ee-fin-tab-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var t = btn.getAttribute('data-tab');
+        EE.renderFinanceUnifiedView(container, t);
+      };
+    });
+
+    // Student Search & Filter
+    var searchInp = container.querySelector('#eeFinStudentSearchInp');
+    if (searchInp) {
+      searchInp.oninput = function() {
+        var q = searchInp.value.toLowerCase().trim();
+        container.querySelectorAll('.ee-fin-st-row').forEach(function(row) {
+          var text = row.textContent.toLowerCase();
+          row.style.display = text.includes(q) ? '' : 'none';
+        });
       };
     }
 
-    var copyBtn = container.querySelector('#eeCopyCardBtn');
-    if (copyBtn) {
-      copyBtn.onclick = function() {
-        navigator.clipboard.writeText(settings.card.replace(/\s+/g, ''));
-        showToast("Karta raqami nusxalandi!");
-      };
-    }
+    container.querySelectorAll('.ee-fin-st-filter-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        container.querySelectorAll('.ee-fin-st-filter-btn').forEach(function(b) { b.classList.remove('active'); b.style.background = 'rgba(255,255,255,0.06)'; b.style.color = '#94a3b8'; });
+        btn.classList.add('active');
+        btn.style.background = '#0284c7';
+        btn.style.color = '#fff';
 
-    var confirmPaidBtn = container.querySelector('#eeConfirmPaidBtn');
-    if (confirmPaidBtn) {
-      confirmPaidBtn.onclick = function() {
-        var myOffset = EE.getStudentOffsetAmount(curUser.id, settings.baseTuition);
-        monthPayments[curUser.id] = {
-          status: 'paid',
-          baseAmount: settings.baseTuition,
-          offsetAmount: myOffset,
-          paidAmount: myOffset,
-          paidAt: Date.now(),
-          verifiedBy: 'auto_offset'
-        };
+        var f = btn.getAttribute('data-filter');
+        container.querySelectorAll('.ee-fin-st-row').forEach(function(row) {
+          var st = row.getAttribute('data-status');
+          if (f === 'all') {
+            row.style.display = '';
+          } else {
+            row.style.display = (st === f) ? '' : 'none';
+          }
+        });
+      };
+    });
+
+    // Student Payment Button (💵 To'lov Qabul Qilish)
+    container.querySelectorAll('.ee-fin-st-pay-btn, #eeBtnOpenPayModal').forEach(function(btn) {
+      btn.onclick = function() {
+        var stId = btn.getAttribute('data-stid') || (studentList[0] ? studentList[0].id : '');
+        var stName = btn.getAttribute('data-stname') || (studentList[0] ? studentList[0].name : '');
+        var fee = btn.getAttribute('data-stfee') || (studentList[0] ? studentList[0].fee : 1400000);
+        var paid = btn.getAttribute('data-stpaid') || 0;
+        EE.openRecordPaymentModal(container, S, studentList, stId, stName, fee, paid);
+      };
+    });
+
+    // Student Edit Fee Button (✏️ Tarif)
+    container.querySelectorAll('.ee-fin-st-edit-fee-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var stId = btn.getAttribute('data-stid');
+        var stName = btn.getAttribute('data-stname');
+        var fee = btn.getAttribute('data-stfee');
+        var newFee = prompt(stName + " uchun oylik to‘lov tarifini kiriting (so‘m):", fee || 1400000);
+        if (newFee === null) return;
+        var feeAmt = parseInt(String(newFee).replace(/\s+/g, ''), 10) || 1400000;
+
+        if (!S.finance.studentFees[stId]) S.finance.studentFees[stId] = {};
+        S.finance.studentFees[stId].fee = feeAmt;
+        if (S.finance.studentFees[stId].paid === undefined) S.finance.studentFees[stId].paid = feeAmt;
+
         saveStore();
-        showToast("To‘lov tasdiqlandi va hisobga o‘tdi!");
-        EE.renderBillingView(container);
+        showToast(stName + " tarifi " + fmtUZS(feeAmt) + " qilib belgilandi!");
+        EE.renderFinanceUnifiedView(container, 'students');
       };
-    }
+    });
 
-    var uploadReceiptInp = container.querySelector('#eeUploadReceiptInput');
-    if (uploadReceiptInp) {
-      uploadReceiptInp.onchange = function() {
-        var f = uploadReceiptInp.files[0];
-        if (!f) return;
-        var r = new FileReader();
-        r.onload = function(e) {
-          var dataUrl = e.target.result;
-          var myOffset = EE.getStudentOffsetAmount(curUser.id, settings.baseTuition);
-          monthPayments[curUser.id] = {
-            status: 'pending',
-            baseAmount: settings.baseTuition,
-            offsetAmount: myOffset,
-            receiptUrl: dataUrl,
-            paidAt: Date.now()
-          };
-          saveStore();
-          showToast("Chek yuklandi va admin ko‘rib chiqishiga yuborildi!");
-          EE.renderBillingView(container);
-        };
-        r.readAsDataURL(f);
+    // Teacher Edit Button (⚙️ Tahrir)
+    container.querySelectorAll('.ee-fin-edit-teacher-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var tid = btn.getAttribute('data-tid');
+        EE.openEditTeacherPayrollModal(container, S, tid);
       };
-    }
+    });
 
-    var editCardBtn = container.querySelector('#eeEditCardBtn');
-    if (editCardBtn) {
-      editCardBtn.onclick = function() {
-        var c = prompt("Yangi karta raqamini kiriting:", settings.card);
-        if (c && c.trim()) {
-          settings.card = c.trim();
-          var hName = prompt("Karta egasining ismini kiriting:", settings.cardHolder);
-          if (hName) settings.cardHolder = hName.trim();
+    // Teacher Toggle Paid
+    container.querySelectorAll('.ee-fin-toggle-paid-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var tid = btn.getAttribute('data-tid');
+        var t = S.teachers.find(function(x) { return x.id === tid; });
+        if (t) {
+          t.paidThisMonth = !t.paidThisMonth;
           saveStore();
-          showToast("Karta ma‘lumotlari saqlandi!");
-          EE.renderBillingView(container);
+          showToast(t.name + " maoshi: " + (t.paidThisMonth ? "To‘langan deb belgilandi" : "Kutilmoqda deb belgilandi"));
+          EE.renderFinanceUnifiedView(container, 'teachers');
         }
       };
+    });
+
+    // Add Teacher Button
+    var addTBtn = container.querySelector('#eeBtnAddTeacherFin');
+    if (addTBtn) {
+      addTBtn.onclick = function() {
+        var name = prompt("O‘qituvchi ism va familiyasi:");
+        if (!name || !name.trim()) return;
+        var subject = prompt("Fani / Yo‘nalishi:", "IELTS & General English");
+        var rate = parseInt(prompt("Soatlik dars stavkasi (so‘m/soat):", "100000"), 10) || 100000;
+        var bonus = parseInt(prompt("Oylik bonus / oklad (so‘m):", "1000000"), 10) || 1000000;
+        var hours = parseInt(prompt("O‘tilgan dars soati:", "72"), 10) || 72;
+
+        var newT = {
+          id: 't_' + Date.now(),
+          name: name.trim(),
+          initials: name.split(' ').map(function(w){return w[0];}).join('').slice(0, 2).toUpperCase(),
+          subject: subject || 'Ingliz tili',
+          hourlyRate: rate,
+          teachingHours: hours,
+          monthlyBonus: bonus,
+          monthlySalary: (hours * rate) + bonus,
+          paidThisMonth: false,
+          assignedClasses: []
+        };
+        S.teachers.push(newT);
+        saveStore();
+        showToast("Yangi o‘qituvchi shtatga qo‘shildi!");
+        EE.renderFinanceUnifiedView(container, 'teachers');
+      };
     }
 
-    // Set paid/unpaid buttons
-    container.querySelectorAll('.ee-set-paid-btn').forEach(function(b) {
-      b.onclick = function() {
-        var sId = b.getAttribute('data-stid');
-        var offAmt = EE.getStudentOffsetAmount(sId, settings.baseTuition);
-        monthPayments[sId] = {
-          status: 'paid',
-          baseAmount: settings.baseTuition,
-          offsetAmount: offAmt,
-          paidAmount: offAmt,
-          paidAt: Date.now(),
-          verifiedBy: 'admin_manual'
-        };
-        saveStore();
-        showToast("O‘quvchi to‘lovi tasdiqlandi!");
-        EE.renderBillingView(container);
+    // Add Expense Buttons
+    container.querySelectorAll('#eeBtnOpenExpModal, #eeBtnAddExpenseInner').forEach(function(btn) {
+      btn.onclick = function() {
+        EE.openAddExpenseModal(container, S);
       };
     });
 
-    container.querySelectorAll('.ee-set-unpaid-btn').forEach(function(b) {
-      b.onclick = function() {
-        var sId = b.getAttribute('data-stid');
-        monthPayments[sId] = { status: 'unpaid', baseAmount: settings.baseTuition };
-        saveStore();
-        showToast("O‘quvchi to‘lanmagan deb belgilandi");
-        EE.renderBillingView(container);
-      };
-    });
-
-    // View receipt button
-    container.querySelectorAll('.ee-view-receipt-btn').forEach(function(b) {
-      b.onclick = function() {
-        var sId = b.getAttribute('data-stid');
-        var p = monthPayments[sId];
-        if (p && p.receiptUrl) {
-          var w = window.open("");
-          w.document.write('<img src="' + p.receiptUrl + '" style="max-width:100%;height:auto;" />');
+    // Delete Expense
+    container.querySelectorAll('.ee-fin-del-exp-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var eid = btn.getAttribute('data-eid');
+        if (confirm("Ushbu xarajatni o‘chirishni tasdiqlaysizmi?")) {
+          S.finance.expenses = S.finance.expenses.filter(function(x) { return x.id !== eid; });
+          saveStore();
+          showToast("Xarajat o‘chirildi");
+          EE.renderFinanceUnifiedView(container, 'expenses');
         }
       };
     });
 
     // Export Excel
-    var exportExcelBtn = container.querySelector('#eeExportBillingExcel');
-    if (exportExcelBtn && window.XLSX) {
-      exportExcelBtn.onclick = function() {
-        var data = [["O'quvchi", "Sinf", "Ota-ona Tel", "Summa (so'm)", "Holat"]];
-        allStudents.forEach(function(st) {
-          var stId = st.id || st.email;
-          var p = monthPayments[stId] || { status: 'unpaid' };
-          var offAmt = EE.getStudentOffsetAmount(stId, settings.baseTuition);
-          var cls = (S.classes || []).find(function(c) { return (c.students || []).some(function(s) { return (s.id || s.email) === stId; }); });
-          var parentPhone = (cls && cls.customStudentPhones && cls.customStudentPhones[stId]) || st.parentPhone || '';
-          data.push([st.name || stId, cls ? cls.name : '', parentPhone, offAmt, p.status === 'paid' ? "To'langan" : (p.status === 'pending' ? "Kutilmoqda" : "To'lanmagan")]);
-        });
-        var ws = window.XLSX.utils.aoa_to_sheet(data);
+    var exportBtn = container.querySelector('#eeBtnExportFinExcel');
+    if (exportBtn) {
+      exportBtn.onclick = function() {
+        if (!window.XLSX) { alert("XLSX kutubxonasi mavjud emas!"); return; }
         var wb = window.XLSX.utils.book_new();
-        window.XLSX.utils.book_append_sheet(wb, ws, "Tolovlar");
-        window.XLSX.writeFile(wb, "ETHITH_Tolovlar_" + activeBillingMonth + ".xlsx");
-      };
-    }
-  };
 
-  // ============================================================================
-  // 3. STAFF & TEACHER PAYROLL MANAGEMENT
-  // ============================================================================
-  EE.renderStaffView = function(container) {
-    if (!container) return;
-    var S = getStore();
-    var teachers = S.teachers || [];
-
-    var totalPayroll = teachers.reduce(function(a, t) { return a + (t.monthlySalary || 0); }, 0);
-    var paidCount = teachers.filter(function(t) { return t.paidThisMonth; }).length;
-
-    var h = '<div class="ee-staff-wrap" style="max-width:1200px;margin:0 auto;padding:16px 20px 80px;">' +
-      '<div style="background:linear-gradient(135deg,rgba(15,23,42,0.9),rgba(30,41,59,0.85));border:1px solid rgba(14,165,233,0.25);border-radius:20px;padding:22px 26px;margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.35);backdrop-filter:blur(16px);">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">' +
-          '<div>' +
-            '<div style="display:flex;align-items:center;gap:10px;">' +
-              '<span style="font-size:26px;">👨‍🏫</span>' +
-              '<h2 style="margin:0;font-size:22px;font-weight:900;color:#f8fafc;">O‘qituvchilar Shtati va Oylik Ish Haqi (Payroll)</h2>' +
-            '</div>' +
-            '<p style="margin:6px 0 0;font-size:13.5px;color:#94a3b8;">Barcha o‘qituvchilarning dars soatlari, karta raqamlari va oylik maoshlarini hisoblab berish.</p>' +
-          '</div>' +
-          '<button id="eeAddTeacherBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:10px 20px;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,0.4);">+ O‘qituvchi Qo‘shish</button>' +
-        '</div>' +
-      '</div>' +
-
-      // Stats
-      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:24px;">' +
-        '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(56,189,248,0.2);border-radius:16px;padding:18px;">' +
-          '<div style="font-size:12px;font-weight:800;color:#38bdf8;text-transform:uppercase;">O‘qituvchilar Soni</div>' +
-          '<div style="font-size:24px;font-weight:900;color:#fff;margin:6px 0 2px;">' + teachers.length + ' nafar</div>' +
-        '</div>' +
-        '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(16,185,129,0.2);border-radius:16px;padding:18px;">' +
-          '<div style="font-size:12px;font-weight:800;color:#34d399;text-transform:uppercase;">Oylik Ish Haqi Fondi</div>' +
-          '<div style="font-size:24px;font-weight:900;color:#fff;margin:6px 0 2px;">' + fmtMoney(totalPayroll) + '</div>' +
-        '</div>' +
-        '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(168,85,247,0.2);border-radius:16px;padding:18px;">' +
-          '<div style="font-size:12px;font-weight:800;color:#c084fc;text-transform:uppercase;">To‘langanlik</div>' +
-          '<div style="font-size:24px;font-weight:900;color:#fff;margin:6px 0 2px;">' + paidCount + ' / ' + teachers.length + ' ta</div>' +
-        '</div>' +
-      '</div>' +
-
-      // Teachers Table
-      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:18px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.3);">' +
-        '<table style="width:100%;border-collapse:collapse;font-size:13px;text-align:left;">' +
-          '<thead>' +
-            '<tr style="background:rgba(30,41,59,0.8);color:#94a3b8;font-size:11.5px;text-transform:uppercase;">' +
-              '<th style="padding:12px 16px;">O‘qituvchi</th>' +
-              '<th style="padding:12px 16px;">Aloqa / Karta</th>' +
-              '<th style="padding:12px 16px;">Biriktirilgan Sinflar</th>' +
-              '<th style="padding:12px 16px;">Dars Soati</th>' +
-              '<th style="padding:12px 16px;">Oylik Maosh</th>' +
-              '<th style="padding:12px 16px;text-align:right;">Amal</th>' +
-            '</tr>' +
-          '</thead>' +
-          '<tbody>';
-
-          teachers.forEach(function(t) {
-            var clsNames = (t.assignedClasses || []).map(function(cid) {
-              var c = (S.classes || []).find(function(x) { return x.id === cid; });
-              return c ? c.name : cid;
-            }).join(', ') || 'Biriktirilmagan';
-
-            h += '<tr style="border-top:1px solid rgba(255,255,255,0.06);">' +
-              '<td style="padding:12px 16px;font-weight:800;color:#f8fafc;display:flex;align-items:center;gap:10px;">' +
-                '<span style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;">' +
-                  esc((t.name || 'U').charAt(0).toUpperCase()) +
-                '</span>' +
-                '<div>' +
-                  '<div>' + esc(t.name) + '</div>' +
-                  '<div style="font-size:11.5px;color:#64748b;">' + esc(t.email) + '</div>' +
-                '</div>' +
-              '</td>' +
-              '<td style="padding:12px 16px;">' +
-                '<div style="color:#cbd5e1;">' + esc(t.phone || '—') + '</div>' +
-                '<div style="color:#38bdf8;font-family:monospace;font-size:11.5px;">' + esc(t.card || 'Karta kiritilmagan') + '</div>' +
-              '</td>' +
-              '<td style="padding:12px 16px;color:#94a3b8;">' + esc(clsNames) + '</td>' +
-              '<td style="padding:12px 16px;color:#cbd5e1;font-weight:700;">' + (t.teachingHours || 0) + ' soat</td>' +
-              '<td style="padding:12px 16px;font-weight:900;color:#34d399;">' + fmtMoney(t.monthlySalary) + '</td>' +
-              '<td style="padding:12px 16px;text-align:right;">' +
-                '<div style="display:inline-flex;gap:6px;">' +
-                  '<button class="ee-pay-teacher-btn" data-tid="' + t.id + '" style="background:' + (t.paidThisMonth ? 'rgba(16,185,129,0.15)' : 'linear-gradient(135deg,#059669,#10b981)') + ';color:' + (t.paidThisMonth ? '#34d399' : '#fff') + ';border:1px solid rgba(16,185,129,0.4);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">' +
-                    (t.paidThisMonth ? '✅ To‘langan' : '💵 Oylik berish') +
-                  '</button>' +
-                  '<button class="ee-del-teacher-btn" data-tid="' + t.id + '" style="background:none;border:none;color:#ef4444;font-size:13px;cursor:pointer;" title="O‘chirish">🗑</button>' +
-                '</div>' +
-              '</td>' +
-            '</tr>';
-          });
-
-    h += '</tbody></table></div></div>';
-    container.innerHTML = h;
-
-    // Add teacher button
-    var addBtn = container.querySelector('#eeAddTeacherBtn');
-    if (addBtn) {
-      addBtn.onclick = function() {
-        var name = prompt("O‘qituvchi ism-familiyasi:", "Zizi Ustoz");
-        if (!name || !name.trim()) return;
-        var email = prompt("Email manzili:", name.toLowerCase().replace(/\s+/g, '') + "@ethith.uz");
-        var phone = prompt("Telefon raqami:", "+998 90 123 45 67");
-        var card = prompt("Plastik karta raqami:", "8600 0000 0000 0000");
-        var salary = parseInt(prompt("Oylik maoshi (so'm):", "6000000"), 10) || 6000000;
-
-        teachers.push({
-          id: 't_' + Date.now(),
-          name: name.trim(),
-          email: email ? email.trim() : '',
-          phone: phone ? phone.trim() : '',
-          card: card ? card.trim() : '',
-          monthlySalary: salary,
-          hourlyRate: 85000,
-          teachingHours: 64,
-          paidThisMonth: false,
-          assignedClasses: []
+        // Sheet 1: O'quvchilar To'lovi
+        var stData = [["№", "O'quvchi F.I.Sh", "Guruh", "Oylik Tarif", "To'langan Summa", "Qoldiq Qarz", "Holat", "To'lov Usuli", "Sana"]];
+        studentList.forEach(function(s, idx) {
+          var fee = s.fee || 1400000;
+          var paid = s.paid || 0;
+          var debt = Math.max(0, fee - paid);
+          stData.push([idx + 1, s.name, s.className, fee, paid, debt, s.status, s.method, s.date]);
         });
-        saveStore();
-        showToast("Yangi o‘qituvchi qo‘shildi!");
-        EE.renderStaffView(container);
+        var ws1 = window.XLSX.utils.aoa_to_sheet(stData);
+        window.XLSX.utils.book_append_sheet(wb, ws1, "Oquvchilar_Tolovlari");
+
+        // Sheet 2: O'qituvchilar Payroll
+        var tData = [["№", "O'qituvchi", "Mutaxassislik", "Dars Soati", "Soatlik Stavka", "Bonus", "Jami Maosh", "To'langanlik"]];
+        S.teachers.forEach(function(t, idx) {
+          var hours = t.teachingHours || 0;
+          var rate = t.hourlyRate || 100000;
+          var bonus = t.monthlyBonus || 0;
+          tData.push([idx + 1, t.name, t.subject, hours, rate, bonus, (hours * rate) + bonus, t.paidThisMonth ? "To'langan" : "Kutilmoqda"]);
+        });
+        var ws2 = window.XLSX.utils.aoa_to_sheet(tData);
+        window.XLSX.utils.book_append_sheet(wb, ws2, "Uqituvchilar_Payroll");
+
+        // Sheet 3: Xarajatlar
+        var expData = [["№", "Kategoriya", "Xarajat Nomi", "Summa"]];
+        S.finance.expenses.forEach(function(e, idx) {
+          expData.push([idx + 1, e.category, e.title, e.amount]);
+        });
+        var ws3 = window.XLSX.utils.aoa_to_sheet(expData);
+        window.XLSX.utils.book_append_sheet(wb, ws3, "Xarajatlar");
+
+        window.XLSX.writeFile(wb, "ETHITH_Moliya_Hisoboti_" + new Date().toISOString().split('T')[0] + ".xlsx");
       };
     }
-
-    // Pay teacher
-    container.querySelectorAll('.ee-pay-teacher-btn').forEach(function(b) {
-      b.onclick = function() {
-        var tid = b.getAttribute('data-tid');
-        var t = teachers.find(function(x) { return x.id === tid; });
-        if (!t) return;
-        t.paidThisMonth = !t.paidThisMonth;
-        saveStore();
-        showToast(t.name + " ga oylik to‘langan deb belgilandi!");
-        EE.renderStaffView(container);
-      };
-    });
-
-    // Delete teacher
-    container.querySelectorAll('.ee-del-teacher-btn').forEach(function(b) {
-      b.onclick = function() {
-        var tid = b.getAttribute('data-tid');
-        if (confirm("Ushbu o‘qituvchini o‘chirishni tasdiqlaysizmi?")) {
-          S.teachers = S.teachers.filter(function(x) { return x.id !== tid; });
-          saveStore();
-          showToast("O‘qituvchi o‘chirildi");
-          EE.renderStaffView(container);
-        }
-      };
-    });
   };
 
-  // ============================================================================
-  // 4. TIMETABLE & CLASS CAPACITY LIMITS
-  // ============================================================================
+  // --------------------------------------------------------------------------
+  // MODAL: RECORD STUDENT PAYMENT
+  // --------------------------------------------------------------------------
+  EE.openRecordPaymentModal = function(container, S, studentList, selStId, selStName, fee, paid) {
+    var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
+    var existing = document.getElementById('eeFinPayModalOverlay');
+    if (existing) existing.remove();
+
+    var m = document.createElement('div');
+    m.id = 'eeFinPayModalOverlay';
+    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(24px);z-index:2147483645;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    var optionsHtml = '';
+    studentList.forEach(function(s) {
+      optionsHtml += '<option value="' + esc(s.id) + '" ' + (s.id === selStId ? 'selected' : '') + '>' + esc(s.name) + ' (' + esc(s.className) + ')</option>';
+    });
+
+    m.innerHTML = '<div style="background:rgba(15,23,42,0.96);border:1px solid rgba(16,185,129,0.4);border-radius:24px;max-width:480px;width:100%;padding:26px 28px;color:#f8fafc;box-shadow:0 25px 60px rgba(0,0,0,0.7),0 0 40px rgba(16,185,129,0.2);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:22px;">💵</span>' +
+          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘quvchi To‘lovini Qabul Qilish</h3>' +
+        '</div>' +
+        '<button id="eeClosePayModal" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
+      '</div>' +
+
+      '<div style="display:flex;flex-direction:column;gap:14px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">O‘quvchini Tanlang</label>' +
+          '<select id="eePayStSelect" style="width:100%;padding:12px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;">' +
+            optionsHtml +
+          '</select>' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#10b981;text-transform:uppercase;margin-bottom:6px;">To‘langan Summa (so‘m)</label>' +
+          '<input type="number" id="eePayAmountInp" value="' + (paid || fee || 1400000) + '" style="width:100%;padding:12px 14px;background:#1e293b;border:1.5px solid #10b981;border-radius:12px;color:#34d399;font-weight:900;font-size:18px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">To‘lov Usuli</label>' +
+          '<select id="eePayMethodSelect" style="width:100%;padding:12px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;">' +
+            '<option value="Click">Click</option>' +
+            '<option value="Payme">Payme</option>' +
+            '<option value="Uzum">Uzum Bank</option>' +
+            '<option value="Naqd">Naqd Pul (Kassa)</option>' +
+          '</select>' +
+        '</div>' +
+      '</div>' +
+
+      '<div style="display:flex;gap:12px;margin-top:24px;">' +
+        '<button id="eeCancelPayModal" style="flex:1;background:rgba(255,255,255,0.08);color:#94a3b8;border:none;border-radius:12px;padding:12px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
+        '<button id="eeSavePayModal" style="flex:1;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:12px;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 4px 15px rgba(16,185,129,0.4);">💾 To‘lovni Saqlash</button>' +
+      '</div>' +
+    '</div>';
+
+    modalRoot.appendChild(m);
+    var close = function() { m.remove(); };
+    m.querySelector('#eeClosePayModal').onclick = close;
+    m.querySelector('#eeCancelPayModal').onclick = close;
+
+    m.querySelector('#eeSavePayModal').onclick = function() {
+      var sId = m.querySelector('#eePayStSelect').value;
+      var amt = parseInt(m.querySelector('#eePayAmountInp').value, 10) || 0;
+      var method = m.querySelector('#eePayMethodSelect').value;
+
+      var st = studentList.find(function(x) { return x.id === sId; });
+      var feeVal = (st && st.fee) || 1400000;
+      var status = amt >= feeVal ? 'paid' : (amt > 0 ? 'partial' : 'unpaid');
+
+      var upd = {
+        fee: feeVal,
+        paid: amt,
+        status: status,
+        method: method,
+        date: new Date().toISOString().split('T')[0]
+      };
+
+      if (!S.finance.studentFees) S.finance.studentFees = {};
+      S.finance.studentFees[sId] = upd;
+
+      // Update in classes studentPayments
+      (S.classes || []).forEach(function(c) {
+        if (!c.studentPayments) c.studentPayments = {};
+        if ((c.students || []).some(function(x) { return x.id === sId || x.email === sId; })) {
+          c.studentPayments[sId] = upd;
+        }
+      });
+
+      saveStore();
+      showToast((st ? st.name : 'O‘quvchi') + " to‘lovi (" + fmtUZS(amt) + ") muvaffaqiyatli qabul qilindi!");
+      close();
+      EE.renderFinanceUnifiedView(container, 'students');
+    };
+  };
+
+  // --------------------------------------------------------------------------
+  // MODAL: EDIT TEACHER PAYROLL (HOURLY RATE & HOURS & BONUS)
+  // --------------------------------------------------------------------------
+  EE.openEditTeacherPayrollModal = function(container, S, tid) {
+    var t = S.teachers.find(function(x) { return x.id === tid; });
+    if (!t) return;
+
+    var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
+    var existing = document.getElementById('eeFinTeacherModalOverlay');
+    if (existing) existing.remove();
+
+    var m = document.createElement('div');
+    m.id = 'eeFinTeacherModalOverlay';
+    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(24px);z-index:2147483645;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    m.innerHTML = '<div style="background:rgba(15,23,42,0.96);border:1px solid rgba(56,189,248,0.4);border-radius:24px;max-width:480px;width:100%;padding:26px 28px;color:#f8fafc;box-shadow:0 25px 60px rgba(0,0,0,0.7),0 0 40px rgba(56,189,248,0.2);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:22px;">⚙️</span>' +
+          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘qituvchi Stavka va Dars Soatini Tahrirlash</h3>' +
+        '</div>' +
+        '<button id="eeCloseTeacherModal" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
+      '</div>' +
+
+      '<div style="display:flex;flex-direction:column;gap:14px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">O‘qituvchi Ismi</label>' +
+          '<input type="text" id="eeEditTName" value="' + esc(t.name) + '" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#38bdf8;text-transform:uppercase;margin-bottom:6px;">O‘tilgan Dars Soati (Soat)</label>' +
+          '<input type="number" id="eeEditTHours" value="' + (t.teachingHours || 72) + '" style="width:100%;padding:12px 14px;background:#1e293b;border:1.5px solid #38bdf8;border-radius:12px;color:#38bdf8;font-weight:900;font-size:17px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#10b981;text-transform:uppercase;margin-bottom:6px;">Soatlik Stavka (so‘m / dars soati)</label>' +
+          '<input type="number" id="eeEditTRate" value="' + (t.hourlyRate || 100000) + '" style="width:100%;padding:12px 14px;background:#1e293b;border:1.5px solid #10b981;border-radius:12px;color:#34d399;font-weight:900;font-size:17px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#a855f7;text-transform:uppercase;margin-bottom:6px;">Oylik Bonus / Oklad (so‘m)</label>' +
+          '<input type="number" id="eeEditTBonus" value="' + (t.monthlyBonus || 1000000) + '" style="width:100%;padding:12px 14px;background:#1e293b;border:1px solid rgba(168,85,247,0.4);border-radius:12px;color:#c084fc;font-weight:900;font-size:17px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+      '</div>' +
+
+      '<div style="display:flex;gap:12px;margin-top:24px;">' +
+        '<button id="eeCancelTeacherModal" style="flex:1;background:rgba(255,255,255,0.08);color:#94a3b8;border:none;border-radius:12px;padding:12px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
+        '<button id="eeSaveTeacherModal" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:12px;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 4px 15px rgba(2,132,199,0.4);">💾 Saqlash</button>' +
+      '</div>' +
+    '</div>';
+
+    modalRoot.appendChild(m);
+    var close = function() { m.remove(); };
+    m.querySelector('#eeCloseTeacherModal').onclick = close;
+    m.querySelector('#eeCancelTeacherModal').onclick = close;
+
+    m.querySelector('#eeSaveTeacherModal').onclick = function() {
+      var nName = m.querySelector('#eeEditTName').value.trim();
+      var nHours = parseInt(m.querySelector('#eeEditTHours').value, 10) || 0;
+      var nRate = parseInt(m.querySelector('#eeEditTRate').value, 10) || 0;
+      var nBonus = parseInt(m.querySelector('#eeEditTBonus').value, 10) || 0;
+
+      t.name = nName || t.name;
+      t.teachingHours = nHours;
+      t.hourlyRate = nRate;
+      t.monthlyBonus = nBonus;
+      t.monthlySalary = (nHours * nRate) + nBonus;
+
+      saveStore();
+      showToast(t.name + " maosh parametrlari (" + nHours + " soat x " + fmtUZS(nRate) + ") saqlandi!");
+      close();
+      EE.renderFinanceUnifiedView(container, 'teachers');
+    };
+  };
+
+  // --------------------------------------------------------------------------
+  // MODAL: ADD EXPENSE
+  // --------------------------------------------------------------------------
+  EE.openAddExpenseModal = function(container, S) {
+    var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
+    var existing = document.getElementById('eeFinExpModalOverlay');
+    if (existing) existing.remove();
+
+    var m = document.createElement('div');
+    m.id = 'eeFinExpModalOverlay';
+    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(24px);z-index:2147483645;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    m.innerHTML = '<div style="background:rgba(15,23,42,0.96);border:1px solid rgba(239,68,68,0.4);border-radius:24px;max-width:480px;width:100%;padding:26px 28px;color:#f8fafc;box-shadow:0 25px 60px rgba(0,0,0,0.7),0 0 40px rgba(239,68,68,0.2);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:22px;">💸</span>' +
+          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Yangi Operatsion Xarajat Kiritish</h3>' +
+        '</div>' +
+        '<button id="eeCloseExpModal" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
+      '</div>' +
+
+      '<div style="display:flex;flex-direction:column;gap:14px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Xarajat Nomi</label>' +
+          '<input type="text" id="eeExpTitleInp" placeholder="masalan: Qoshimcha proyektor tamiri" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#ef4444;text-transform:uppercase;margin-bottom:6px;">Xarajat Summasi (so‘m)</label>' +
+          '<input type="number" id="eeExpAmountInp" placeholder="1500000" style="width:100%;padding:12px 14px;background:#1e293b;border:1.5px solid #ef4444;border-radius:12px;color:#fca5a5;font-weight:900;font-size:17px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Kategoriya</label>' +
+          '<select id="eeExpCatSelect" style="width:100%;padding:12px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;">' +
+            '<option value="electricity">⚡ Elektr Energiyasi (Tok)</option>' +
+            '<option value="utilities">💧 Kommunal (Suv, isitish, chiqindi)</option>' +
+            '<option value="rent">🏢 Bino Ijarasi</option>' +
+            '<option value="internet">🌐 Internet &amp; LMS Server</option>' +
+            '<option value="equipment">💻 Jihozlar va Tamir</option>' +
+            '<option value="marketing">📣 Marketing &amp; Reklama</option>' +
+            '<option value="other">🛠️ Xo‘jalik va Boshqalar</option>' +
+          '</select>' +
+        '</div>' +
+      '</div>' +
+
+      '<div style="display:flex;gap:12px;margin-top:24px;">' +
+        '<button id="eeCancelExpModal" style="flex:1;background:rgba(255,255,255,0.08);color:#94a3b8;border:none;border-radius:12px;padding:12px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
+        '<button id="eeSaveExpModal" style="flex:1;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;padding:12px;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 4px 15px rgba(239,68,68,0.4);">💾 Xarajatni Saqlash</button>' +
+      '</div>' +
+    '</div>';
+
+    modalRoot.appendChild(m);
+    var close = function() { m.remove(); };
+    m.querySelector('#eeCloseExpModal').onclick = close;
+    m.querySelector('#eeCancelExpModal').onclick = close;
+
+    m.querySelector('#eeSaveExpModal').onclick = function() {
+      var title = m.querySelector('#eeExpTitleInp').value.trim();
+      var amt = parseInt(m.querySelector('#eeExpAmountInp').value, 10) || 0;
+      var cat = m.querySelector('#eeExpCatSelect').value;
+
+      if (!title || amt <= 0) { alert("Xarajat nomi va summasini to‘g‘ri kiriting!"); return; }
+
+      var icons = { electricity: '⚡', utilities: '💧', rent: '🏢', internet: '🌐', equipment: '💻', marketing: '📣', other: '🛠️' };
+
+      S.finance.expenses.push({
+        id: 'e_' + Date.now(),
+        category: cat,
+        title: title,
+        amount: amt,
+        icon: icons[cat] || '💸'
+      });
+
+      saveStore();
+      showToast("Xarajat (" + fmtUZS(amt) + ") muvaffaqiyatli saqlandi!");
+      close();
+      EE.renderFinanceUnifiedView(container, 'expenses');
+    };
+  };
+
   EE.renderTimetableView = function(container) {
     if (!container) return;
     var S = getStore();
@@ -98497,9 +99038,6 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += item('explorer', '📝', 'Qo‘shimcha vazifalar');
       h += item('classes', ic('users'), 'Sinflarim');
 
-      h += sec('Moliya & To‘lov');
-      h += item('billing', '💳', 'Oylik To‘lov');
-
       h += sec('Reyting & Musobaqalar');
       h += item('contests', '🏆', 'Onlayn Musobaqalar');
       h += item('quiz', ic('sparkles'), 'Quiz Test');
@@ -98733,6 +99271,11 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     if (!S.user) {
       App.showAuthModal();
       return;
+    }
+    // Block students from financial and staff management
+    if ((n === 'billing' || n === 'staff') && S.user.role === 'student') {
+      toast("🛡️ Moliya bo‘limi faqat Admin va O‘qituvchilar uchun ochiq");
+      n = 'dash';
     }
     if (typeof a === 'string' && a.startsWith('{')) {
       try { a = JSON.parse(a); } catch(e) {}

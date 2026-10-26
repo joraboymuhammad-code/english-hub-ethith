@@ -167,12 +167,8 @@
     }
     var isMuhammadUser = (curEmail === 'muhammedjoraboyev1@gmail.com' || curName.toLowerCase().indexOf('muhammadyusuf') !== -1) && S.user.role !== 'teacher';
     
-    // Canonical user: Muhammadyusuf (muhammedjoraboyev1@gmail.com)
-    if (curEmail === 'muhammedjoraboyev1@gmail.com') {
-      S.user.id = 'muhammedjoraboyev1@gmail.com';
-      if (!S.user.name) S.user.name = 'Muhammadyusuf';
-      S.user.coins = Math.max(Number(S.user.coins) || 0, 100000);
-    } else if (S.user.coins === undefined || S.user.coins === null) {
+    // Standard user initialization: bonus is 150 coins for all students
+    if (S.user.coins === undefined || S.user.coins === null) {
       S.user.coins = 150;
     }
     if (!Array.isArray(S.user.gifts)) S.user.gifts = [];
@@ -218,7 +214,6 @@
       seenMap[em] = true;
       if (em === 'muhammedjoraboyev1@gmail.com') {
         if (!acc.name) acc.name = 'Muhammadyusuf';
-        acc.coins = Math.max(Number(acc.coins) || 0, 100000);
       }
       dedupedAccounts.push(acc);
     });
@@ -1016,8 +1011,6 @@
         if (existingAcc) {
           var initCoins = existingAcc.coins !== undefined ? Number(existingAcc.coins) : 150;
           if (cleanEmail === 'muhammedjoraboyev1@gmail.com') {
-            initCoins = Math.max(initCoins, 100000);
-            existingAcc.coins = initCoins;
             if (!existingAcc.name) existingAcc.name = 'Muhammadyusuf';
           }
           if (name) {
@@ -1074,9 +1067,8 @@
           return;
         }
 
-        // SCENARIO 2: Brand New Student Registration — Instant Registration & Login (No Code Wall!)
-        var isMuNew = (cleanEmail === 'muhammedjoraboyev1@gmail.com');
-        var newCoins = isMuNew ? 100000 : 150;
+        // SCENARIO 2: Brand New Student Registration — Instant Registration & Login (150 bonus coins strictly)
+        var newCoins = 150;
         var newAcc = {
           id: cleanEmail,
           role: 'student',
