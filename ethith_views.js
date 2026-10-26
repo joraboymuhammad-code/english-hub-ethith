@@ -13268,6 +13268,8 @@
 
     var user = S.user || { name: 'Guest', email: '', role: 'student', coins: 0, dailyMinutes: 0 };
     var isTeacher = user.role === 'teacher';
+    var isAdmin = user.role === 'admin' || user.role === 'administrator';
+    var isStaff = isTeacher || isAdmin;
 
     // Calculate Leaderboard Rank
     var regUsers = [];
@@ -13275,12 +13277,12 @@
     var allAccounts = (S.accounts || []).concat(regUsers);
     var studentMap = {};
     allAccounts.forEach(function(u) {
-      if (!u || u.role === 'teacher') return;
+      if (!u || u.role === 'teacher' || u.role === 'admin' || u.role === 'administrator') return;
       var key = ((u.email && u.email.trim().toLowerCase()) || (u.id || u.name || '').toLowerCase()).trim();
       if (!studentMap[key]) studentMap[key] = { coins: Number(u.coins || 0) };
       else studentMap[key].coins = Math.max(studentMap[key].coins, Number(u.coins || 0));
     });
-    if (user.role !== 'teacher') {
+    if (!isStaff) {
       var myKey = ((user.email && user.email.trim().toLowerCase()) || (user.id || user.name || '').toLowerCase()).trim();
       studentMap[myKey] = { coins: Number(user.coins || 0) };
     }
@@ -13295,29 +13297,29 @@
     var html = '<div class="eth-profile-screen animate-fade-in">';
 
     // Hero Section with Styled Name
-    var userStyledNameHtml = isTeacher ? '<span style="font-size:24px;font-weight:900">Ustoz</span>' : (window.ETHITH_RENDER_USER_NAME_HTML ? window.ETHITH_RENDER_USER_NAME_HTML(user) : ('<span style="font-size:24px;font-weight:900">' + esc(user.name) + '</span>'));
+    var userStyledNameHtml = isAdmin ? '<span style="font-size:24px;font-weight:900;color:#f87171;">Bosh Administrator</span>' : (isTeacher ? '<span style="font-size:24px;font-weight:900;color:#38bdf8;">' + esc(user.name || 'Ustoz') + '</span>' : (window.ETHITH_RENDER_USER_NAME_HTML ? window.ETHITH_RENDER_USER_NAME_HTML(user) : ('<span style="font-size:24px;font-weight:900">' + esc(user.name) + '</span>')));
 
     html += '<div class="eth-profile-hero">' +
       '<div class="eth-profile-avatar-wrap">' +
-        window.ETHITH_RENDER_USER_AVATAR(user, 90, '', 'border-width:3px') +
-        (!isTeacher ? '<button type="button" class="eth-profile-change-av-btn" id="btnChangeAvatar" title="Rasmni o\'zgartirish">✏️</button>' : '') +
+        (isAdmin ? '<span class="av" style="background:#dc2626;color:#fff;font-size:36px;width:90px;height:90px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:3px solid #f87171;">A</span>' : window.ETHITH_RENDER_USER_AVATAR(user, 90, '', 'border-width:3px')) +
+        (!isStaff ? '<button type="button" class="eth-profile-change-av-btn" id="btnChangeAvatar" title="Rasmni o\'zgartirish">✏️</button>' : '') +
       '</div>' +
       '<div style="flex:1;min-width:0">' +
         '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">' +
           '<h1 style="font-size:24px;font-weight:900;color:var(--text);margin:0;display:inline-flex;align-items:center;gap:6px">' + userStyledNameHtml + '</h1>' +
-          '<span style="padding:3px 10px;border-radius:12px;font-size:12px;font-weight:800;background:var(--soft);color:var(--pri)">' + (isTeacher ? 'O\'qituvchi (Master)' : user.level || S.level || 'A1') + '</span>' +
+          '<span style="padding:3px 10px;border-radius:12px;font-size:12px;font-weight:800;background:var(--soft);color:var(--pri)">' + (isAdmin ? 'Bosh Admin (Administrator)' : (isTeacher ? 'O\'qituvchi (Master)' : user.level || S.level || 'A1')) + '</span>' +
         '</div>' +
         '<div style="font-size:13.5px;color:var(--muted);margin-bottom:12px">📧 ' + esc(user.email || 'Email kiritilmagan') + '</div>' +
         '<div style="display:flex;gap:10px;flex-wrap:wrap">' +
-          (!isTeacher ? '<button type="button" class="ap-btn pri" id="btnEditProfileInfo" style="padding:6px 14px;font-size:13px;display:inline-flex;align-items:center;gap:6px">' + ic('edit') + ' Profilni Tahrirlash</button>' : '') +
-          (!isTeacher ? '<button type="button" class="ap-btn gh" id="btnProfileOpenMarket" style="padding:6px 14px;font-size:13px">' + ic('sparkles') + ' Marketga o\'tish (Pack ochish)</button>' : '') +
+          (!isStaff ? '<button type="button" class="ap-btn pri" id="btnEditProfileInfo" style="padding:6px 14px;font-size:13px;display:inline-flex;align-items:center;gap:6px">' + ic('edit') + ' Profilni Tahrirlash</button>' : '') +
+          (!isStaff ? '<button type="button" class="ap-btn gh" id="btnProfileOpenMarket" style="padding:6px 14px;font-size:13px">' + ic('sparkles') + ' Marketga o\'tish (Pack ochish)</button>' : '') +
           '<button type="button" class="ap-btn gh" id="btnProfileLogout" style="padding:6px 14px;font-size:13px;color:#dc2626">' + ic('lock') + ' Tizimdan chiqish (Log out)</button>' +
         '</div>' +
       '</div>' +
     '</div>';
 
     // Stats Grid
-    if (!isTeacher) {
+    if (!isStaff) {
       html += '<div class="eth-profile-stats-grid">' +
         '<div class="eth-pstat-card">' +
           '<div style="font-size:32px">' + window.ETHITH_COIN_SVG(36) + '</div>' +
@@ -13351,7 +13353,7 @@
     }
 
     // VIP STATUS SHOWCASE SECTION (Active Glowing Names, Titles, and Victory Sounds with Countdown)
-    if (!isTeacher) {
+    if (!isStaff) {
       var activeCosmetics = user.activeCosmetics || {};
       var activeItemsList = Object.values(activeCosmetics);
 
@@ -13406,7 +13408,7 @@
     }
 
     // Showcase Tabs: Avatars, Emojis, Gifts
-    if (!isTeacher) {
+    if (!isStaff) {
       html += '<div style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:24px">';
       html += '<h3 style="font-size:18px;font-weight:900;color:var(--text);margin:0 0 16px;display:flex;align-items:center;gap:8px">🎭 Mening Ochilgan Avatarlarim (' + unlockedAvatars.length + ')</h3>';
 
@@ -13892,6 +13894,8 @@
   }
 
   function showBuyCoinsModal() {
+    var uRole = (S.user && S.user.role) || '';
+    if (uRole === 'admin' || uRole === 'administrator' || uRole === 'teacher') return;
     var overlay = document.createElement('div');
     overlay.className = 'eth-pack-modal-overlay animate-fade-in';
     overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:999999;padding:16px;';

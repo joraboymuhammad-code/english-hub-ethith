@@ -41831,10 +41831,6017 @@
         ],
         "page": 2059
       }
+    ],
+    "2060": [
+      {
+        "id": "p2060_ex1_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2",
+        "top": 41.8,
+        "left": 18.9,
+        "width": 5.9,
+        "height": 1.5,
+        "correct": [
+          "dramatic"
+        ],
+        "acceptedAnswers": [
+          "dramatic"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex1_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3",
+        "top": 45.9,
+        "left": 10.7,
+        "width": 5.5,
+        "height": 1.5,
+        "correct": [
+          "slightly"
+        ],
+        "acceptedAnswers": [
+          "slightly"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex1_4",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4",
+        "top": 50.1,
+        "left": 8.8,
+        "width": 5.9,
+        "height": 1.5,
+        "correct": [
+          "basically"
+        ],
+        "acceptedAnswers": [
+          "basically"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex1_5",
+        "type": "fill",
+        "exercise": "1",
+        "label": "5",
+        "top": 54.2,
+        "left": 15.6,
+        "width": 5.5,
+        "height": 1.5,
+        "correct": [
+          "originally"
+        ],
+        "acceptedAnswers": [
+          "originally"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex1_6",
+        "type": "fill",
+        "exercise": "1",
+        "label": "6",
+        "top": 58.3,
+        "left": 9.4,
+        "width": 5.5,
+        "height": 1.5,
+        "correct": [
+          "gradually"
+        ],
+        "acceptedAnswers": [
+          "gradually"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 70.7,
+        "left": 16.9,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "depressing"
+        ],
+        "acceptedAnswers": [
+          "depressing"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 74.8,
+        "left": 18.6,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "automatically"
+        ],
+        "acceptedAnswers": [
+          "automatically"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 79,
+        "left": 16,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "lively"
+        ],
+        "acceptedAnswers": [
+          "lively"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 83.1,
+        "left": 18.6,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "considerably"
+        ],
+        "acceptedAnswers": [
+          "considerably"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 87.2,
+        "left": 10.4,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "artificial"
+        ],
+        "acceptedAnswers": [
+          "artificial"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex2_7",
+        "type": "fill",
+        "exercise": "2",
+        "label": "7",
+        "top": 91.4,
+        "left": 17.3,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "dramatic"
+        ],
+        "acceptedAnswers": [
+          "dramatic"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex2_8",
+        "type": "fill",
+        "exercise": "2",
+        "label": "8",
+        "top": 95.5,
+        "left": 20.5,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "gradually"
+        ],
+        "acceptedAnswers": [
+          "gradually"
+        ],
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_1a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2060_ex3_1",
+        "top": 36.8,
+        "left": 37.1,
+        "width": 4.7,
+        "height": 1.3,
+        "text": "Dramatic",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_1b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2060_ex3_1",
+        "top": 36.8,
+        "left": 42.2,
+        "width": 4.4,
+        "height": 1.3,
+        "text": "Artificial",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_2a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2060_ex3_2",
+        "top": 40.9,
+        "left": 37.1,
+        "width": 4.7,
+        "height": 1.3,
+        "text": "basically",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_2b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2060_ex3_2",
+        "top": 40.9,
+        "left": 42.2,
+        "width": 6,
+        "height": 1.3,
+        "text": "never sleeps",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_3a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2060_ex3_3",
+        "top": 42.5,
+        "left": 43.3,
+        "width": 2.9,
+        "height": 1.3,
+        "text": "cosy",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_3b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2060_ex3_3",
+        "top": 42.5,
+        "left": 46.9,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "lively",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_4a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2060_ex3_4",
+        "top": 43.6,
+        "left": 47.4,
+        "width": 7,
+        "height": 1.3,
+        "text": "automatically",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_4b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2060_ex3_4",
+        "top": 43.6,
+        "left": 55,
+        "width": 6.5,
+        "height": 1.3,
+        "text": "considerably",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_5a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2060_ex3_5",
+        "top": 47.8,
+        "left": 48.3,
+        "width": 4.1,
+        "height": 1.3,
+        "text": "magical",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_5b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2060_ex3_5",
+        "top": 47.8,
+        "left": 53.1,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "depressing",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_6a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "6",
+        "group": "p2060_ex3_6",
+        "top": 68.3,
+        "left": 37.1,
+        "width": 5.1,
+        "height": 1.3,
+        "text": "Originally",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_6b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "6",
+        "group": "p2060_ex3_6",
+        "top": 68.3,
+        "left": 42.6,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "Basically",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_7a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "7",
+        "group": "p2060_ex3_7",
+        "top": 72.4,
+        "left": 39.8,
+        "width": 3.9,
+        "height": 1.3,
+        "text": "slightly",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2060
+      },
+      {
+        "id": "p2060_ex3_7b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "7",
+        "group": "p2060_ex3_7",
+        "top": 72.4,
+        "left": 44.3,
+        "width": 4.9,
+        "height": 1.3,
+        "text": "gradually",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2060
+      }
+    ],
+    "2061": [
+      {
+        "id": "p2061_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 17.5,
+        "left": 14,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "encouraging"
+        ],
+        "acceptedAnswers": [
+          "encouraging"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 20.6,
+        "left": 12.7,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "remarkable"
+        ],
+        "acceptedAnswers": [
+          "remarkable"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 22.2,
+        "left": 15.3,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "softly"
+        ],
+        "acceptedAnswers": [
+          "softly"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 25.3,
+        "left": 22.5,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "irresponsibly"
+        ],
+        "acceptedAnswers": [
+          "irresponsibly"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 28.9,
+        "left": 24.7,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "determinedly"
+        ],
+        "acceptedAnswers": [
+          "determinedly"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex4_7",
+        "type": "fill",
+        "exercise": "4",
+        "label": "7",
+        "top": 30.4,
+        "left": 14.3,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "artificially"
+        ],
+        "acceptedAnswers": [
+          "artificially"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex4_8",
+        "type": "fill",
+        "exercise": "4",
+        "label": "8",
+        "top": 33.5,
+        "left": 18.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "cosy"
+        ],
+        "acceptedAnswers": [
+          "cosy"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex5_2",
+        "type": "fill",
+        "exercise": "5",
+        "label": "2",
+        "top": 39.7,
+        "left": 26.7,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "happy"
+        ],
+        "acceptedAnswers": [
+          "happy"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex5_3",
+        "type": "fill",
+        "exercise": "5",
+        "label": "3",
+        "top": 41.5,
+        "left": 30.6,
+        "width": 4.4,
+        "height": 1.5,
+        "correct": [
+          "self-confident",
+          "self confident"
+        ],
+        "acceptedAnswers": [
+          "self-confident",
+          "self confident"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex5_4",
+        "type": "fill",
+        "exercise": "5",
+        "label": "4",
+        "top": 43.1,
+        "left": 22.5,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "✓",
+          "correct"
+        ],
+        "acceptedAnswers": [
+          "✓",
+          "correct"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex5_5",
+        "type": "fill",
+        "exercise": "5",
+        "label": "5",
+        "top": 44.6,
+        "left": 30.3,
+        "width": 4.8,
+        "height": 1.5,
+        "correct": [
+          "beautiful"
+        ],
+        "acceptedAnswers": [
+          "beautiful"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex5_6",
+        "type": "fill",
+        "exercise": "5",
+        "label": "6",
+        "top": 46.2,
+        "left": 24.7,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "honestly"
+        ],
+        "acceptedAnswers": [
+          "honestly"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex5_7",
+        "type": "fill",
+        "exercise": "5",
+        "label": "7",
+        "top": 47.7,
+        "left": 30.5,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "considerably"
+        ],
+        "acceptedAnswers": [
+          "considerably"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex5_8",
+        "type": "fill",
+        "exercise": "5",
+        "label": "8",
+        "top": 49.5,
+        "left": 22.1,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "✓",
+          "correct"
+        ],
+        "acceptedAnswers": [
+          "✓",
+          "correct"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex6_1",
+        "type": "fill",
+        "exercise": "6",
+        "label": "1",
+        "top": 63.2,
+        "left": 12,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "c"
+        ],
+        "acceptedAnswers": [
+          "c"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex6_2",
+        "type": "fill",
+        "exercise": "6",
+        "label": "2",
+        "top": 64.9,
+        "left": 12,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "a"
+        ],
+        "acceptedAnswers": [
+          "a"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex6_3",
+        "type": "fill",
+        "exercise": "6",
+        "label": "3",
+        "top": 66.6,
+        "left": 12,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "d"
+        ],
+        "acceptedAnswers": [
+          "d"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex6_4",
+        "type": "fill",
+        "exercise": "6",
+        "label": "4",
+        "top": 68.3,
+        "left": 12,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "b"
+        ],
+        "acceptedAnswers": [
+          "b"
+        ],
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_1a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "1",
+        "group": "p2061_ex7_1",
+        "top": 44.7,
+        "left": 38.4,
+        "width": 5.3,
+        "height": 1.3,
+        "text": "depressing",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_1b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "1",
+        "group": "p2061_ex7_1",
+        "top": 44.7,
+        "left": 44.3,
+        "width": 5.5,
+        "height": 1.3,
+        "text": "depressingly",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_2a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "2",
+        "group": "p2061_ex7_2",
+        "top": 49.4,
+        "left": 38.4,
+        "width": 3.9,
+        "height": 1.3,
+        "text": "artificial",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_2b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "2",
+        "group": "p2061_ex7_2",
+        "top": 49.4,
+        "left": 42.8,
+        "width": 5,
+        "height": 1.3,
+        "text": "artificially",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_3a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "3",
+        "group": "p2061_ex7_3",
+        "top": 50.5,
+        "left": 50.1,
+        "width": 3.1,
+        "height": 1.3,
+        "text": "bright",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_3b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "3",
+        "group": "p2061_ex7_3",
+        "top": 50.5,
+        "left": 53.7,
+        "width": 3.6,
+        "height": 1.3,
+        "text": "brightly",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_4a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "4",
+        "group": "p2061_ex7_4",
+        "top": 71.4,
+        "left": 48.3,
+        "width": 2.8,
+        "height": 1.3,
+        "text": "basic",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_4b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "4",
+        "group": "p2061_ex7_4",
+        "top": 71.4,
+        "left": 51.6,
+        "width": 4.1,
+        "height": 1.3,
+        "text": "basically",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_5a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "5",
+        "group": "p2061_ex7_5",
+        "top": 74.5,
+        "left": 39.7,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "correct",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_5b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "5",
+        "group": "p2061_ex7_5",
+        "top": 74.5,
+        "left": 43.5,
+        "width": 4,
+        "height": 1.3,
+        "text": "correctly",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_6a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "6",
+        "group": "p2061_ex7_6",
+        "top": 77.8,
+        "left": 49.6,
+        "width": 3.5,
+        "height": 1.3,
+        "text": "sleepy",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_6b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "6",
+        "group": "p2061_ex7_6",
+        "top": 77.8,
+        "left": 53.5,
+        "width": 3.8,
+        "height": 1.3,
+        "text": "sleepily",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_7a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "7",
+        "group": "p2061_ex7_7",
+        "top": 82.4,
+        "left": 41.3,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "interesting",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2061
+      },
+      {
+        "id": "p2061_ex7_7b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "7",
+        "group": "p2061_ex7_7",
+        "top": 82.4,
+        "left": 47,
+        "width": 5.7,
+        "height": 1.3,
+        "text": "interestingly",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2061
+      }
+    ],
+    "2062": [
+      {
+        "id": "p2062_ex1_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2",
+        "top": 27.6,
+        "left": 14.3,
+        "width": 3.9,
+        "height": 1.5,
+        "correct": [
+          "would"
+        ],
+        "acceptedAnswers": [
+          "would"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex1_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3",
+        "top": 31.5,
+        "left": 21.2,
+        "width": 3.9,
+        "height": 1.5,
+        "correct": [
+          "would"
+        ],
+        "acceptedAnswers": [
+          "would"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex1_4",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4",
+        "top": 35.3,
+        "left": 8.8,
+        "width": 3.9,
+        "height": 1.5,
+        "correct": [
+          "stative",
+          "no change",
+          "-",
+          "used to"
+        ],
+        "acceptedAnswers": [
+          "stative",
+          "no change",
+          "-",
+          "used to"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex1_5",
+        "type": "fill",
+        "exercise": "1",
+        "label": "5",
+        "top": 39.2,
+        "left": 22.1,
+        "width": 3.9,
+        "height": 1.5,
+        "correct": [
+          "would"
+        ],
+        "acceptedAnswers": [
+          "would"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex1_6",
+        "type": "fill",
+        "exercise": "1",
+        "label": "6",
+        "top": 43.1,
+        "left": 8.8,
+        "width": 3.9,
+        "height": 1.5,
+        "correct": [
+          "stative",
+          "no change",
+          "-",
+          "used to"
+        ],
+        "acceptedAnswers": [
+          "stative",
+          "no change",
+          "-",
+          "used to"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex1_7",
+        "type": "fill",
+        "exercise": "1",
+        "label": "7",
+        "top": 47,
+        "left": 17.3,
+        "width": 3.9,
+        "height": 1.5,
+        "correct": [
+          "would"
+        ],
+        "acceptedAnswers": [
+          "would"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex1_8",
+        "type": "fill",
+        "exercise": "1",
+        "label": "8",
+        "top": 50.8,
+        "left": 9.8,
+        "width": 3.9,
+        "height": 1.5,
+        "correct": [
+          "stative",
+          "no change",
+          "-",
+          "used to"
+        ],
+        "acceptedAnswers": [
+          "stative",
+          "no change",
+          "-",
+          "used to"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_1a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "1",
+        "group": "p2062_ex2_1",
+        "top": 11.5,
+        "left": 9.4,
+        "width": 8,
+        "height": 1.3,
+        "text": "used to drinking",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_1b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "1",
+        "group": "p2062_ex2_1",
+        "top": 11.5,
+        "left": 17.9,
+        "width": 6.5,
+        "height": 1.3,
+        "text": "used to drink",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_2a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "2",
+        "group": "p2062_ex2_2",
+        "top": 14.6,
+        "left": 21.8,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "has used to",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_2b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "2",
+        "group": "p2062_ex2_2",
+        "top": 16.1,
+        "left": 8.3,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "got used to",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_3a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "3",
+        "group": "p2062_ex2_3",
+        "top": 17.7,
+        "left": 9.4,
+        "width": 5.4,
+        "height": 1.3,
+        "text": "didn't use to",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_3b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "3",
+        "group": "p2062_ex2_3",
+        "top": 17.7,
+        "left": 15.3,
+        "width": 3.6,
+        "height": 1.3,
+        "text": "used to",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_4a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "4",
+        "group": "p2062_ex2_4",
+        "top": 20.9,
+        "left": 13.3,
+        "width": 3.7,
+        "height": 1.3,
+        "text": "used to",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_4b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "4",
+        "group": "p2062_ex2_4",
+        "top": 20.9,
+        "left": 17.6,
+        "width": 3.1,
+        "height": 1.3,
+        "text": "use to",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_5a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "5",
+        "group": "p2062_ex2_5",
+        "top": 24.1,
+        "left": 14.8,
+        "width": 3.1,
+        "height": 1.3,
+        "text": "use to",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_5b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "5",
+        "group": "p2062_ex2_5",
+        "top": 24.1,
+        "left": 18.4,
+        "width": 4.8,
+        "height": 1.3,
+        "text": "be used to",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_6a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "6",
+        "group": "p2062_ex2_6",
+        "top": 27.2,
+        "left": 8.3,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "used to",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex2_6b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "6",
+        "group": "p2062_ex2_6",
+        "top": 27.2,
+        "left": 12,
+        "width": 5.4,
+        "height": 1.3,
+        "text": "was used to",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex3_2",
+        "type": "fill",
+        "exercise": "3",
+        "label": "2",
+        "top": 12.2,
+        "left": 47.2,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "used to"
+        ],
+        "acceptedAnswers": [
+          "used to"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex3_3",
+        "type": "fill",
+        "exercise": "3",
+        "label": "3",
+        "top": 24.7,
+        "left": 50.5,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "get used to"
+        ],
+        "acceptedAnswers": [
+          "get used to"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex3_4",
+        "type": "fill",
+        "exercise": "3",
+        "label": "4",
+        "top": 29.9,
+        "left": 30.9,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "usually"
+        ],
+        "acceptedAnswers": [
+          "usually"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex3_5",
+        "type": "fill",
+        "exercise": "3",
+        "label": "5",
+        "top": 34,
+        "left": 37.1,
+        "width": 6.5,
+        "height": 1.5,
+        "correct": [
+          "would",
+          "used to"
+        ],
+        "acceptedAnswers": [
+          "would",
+          "used to"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex3_6",
+        "type": "fill",
+        "exercise": "3",
+        "label": "6",
+        "top": 37.1,
+        "left": 30.9,
+        "width": 5.9,
+        "height": 1.5,
+        "correct": [
+          "am used to"
+        ],
+        "acceptedAnswers": [
+          "am used to"
+        ],
+        "page": 2062
+      },
+      {
+        "id": "p2062_ex3_7",
+        "type": "fill",
+        "exercise": "3",
+        "label": "7",
+        "top": 40.8,
+        "left": 40.7,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "used to"
+        ],
+        "acceptedAnswers": [
+          "used to"
+        ],
+        "page": 2062
+      }
+    ],
+    "2063": [
+      {
+        "id": "p2063_ex4_1",
+        "type": "fill",
+        "exercise": "4",
+        "label": "1",
+        "top": 12.9,
+        "left": 15.3,
+        "width": 2.9,
+        "height": 1.5,
+        "correct": [
+          "g"
+        ],
+        "acceptedAnswers": [
+          "g"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 14.4,
+        "left": 15.3,
+        "width": 2.9,
+        "height": 1.5,
+        "correct": [
+          "b"
+        ],
+        "acceptedAnswers": [
+          "b"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 16,
+        "left": 15.3,
+        "width": 2.9,
+        "height": 1.5,
+        "correct": [
+          "c",
+          "e"
+        ],
+        "acceptedAnswers": [
+          "c",
+          "e"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 17.5,
+        "left": 15.3,
+        "width": 2.9,
+        "height": 1.5,
+        "correct": [
+          "a"
+        ],
+        "acceptedAnswers": [
+          "a"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 19.1,
+        "left": 15.3,
+        "width": 2.9,
+        "height": 1.5,
+        "correct": [
+          "d"
+        ],
+        "acceptedAnswers": [
+          "d"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 20.6,
+        "left": 15.3,
+        "width": 2.9,
+        "height": 1.5,
+        "correct": [
+          "f"
+        ],
+        "acceptedAnswers": [
+          "f"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex4_7",
+        "type": "fill",
+        "exercise": "4",
+        "label": "7",
+        "top": 22.2,
+        "left": 15.3,
+        "width": 2.9,
+        "height": 1.5,
+        "correct": [
+          "e",
+          "c"
+        ],
+        "acceptedAnswers": [
+          "e",
+          "c"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex5_2",
+        "type": "fill",
+        "exercise": "5",
+        "label": "2",
+        "top": 28.9,
+        "left": 6.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "have"
+        ],
+        "acceptedAnswers": [
+          "have"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex5_3",
+        "type": "fill",
+        "exercise": "5",
+        "label": "3",
+        "top": 30.7,
+        "left": 6.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "be"
+        ],
+        "acceptedAnswers": [
+          "be"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex5_4",
+        "type": "fill",
+        "exercise": "5",
+        "label": "4",
+        "top": 32.5,
+        "left": 6.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "have"
+        ],
+        "acceptedAnswers": [
+          "have"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex5_5",
+        "type": "fill",
+        "exercise": "5",
+        "label": "5",
+        "top": 34.3,
+        "left": 6.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "be"
+        ],
+        "acceptedAnswers": [
+          "be"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex5_6",
+        "type": "fill",
+        "exercise": "5",
+        "label": "6",
+        "top": 36.1,
+        "left": 6.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "be"
+        ],
+        "acceptedAnswers": [
+          "be"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex5_7",
+        "type": "fill",
+        "exercise": "5",
+        "label": "7",
+        "top": 37.9,
+        "left": 6.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "have"
+        ],
+        "acceptedAnswers": [
+          "have"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex6_2",
+        "type": "fill",
+        "exercise": "6",
+        "label": "2",
+        "top": 49,
+        "left": 16,
+        "width": 15,
+        "height": 1.5,
+        "correct": [
+          "I'm a light sleeper",
+          "im a light sleeper"
+        ],
+        "acceptedAnswers": [
+          "I'm a light sleeper",
+          "im a light sleeper"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex6_3",
+        "type": "fill",
+        "exercise": "6",
+        "label": "3",
+        "top": 54.2,
+        "left": 14,
+        "width": 16.9,
+        "height": 1.5,
+        "correct": [
+          "I nodded off",
+          "nodded off",
+          "had a nap",
+          "had a snooze"
+        ],
+        "acceptedAnswers": [
+          "I nodded off",
+          "nodded off",
+          "had a nap",
+          "had a snooze"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex6_4a",
+        "type": "fill",
+        "exercise": "6",
+        "label": "4a",
+        "top": 59.3,
+        "left": 12,
+        "width": 18.9,
+        "height": 1.5,
+        "correct": [
+          "has a nap",
+          "has a snooze"
+        ],
+        "acceptedAnswers": [
+          "has a nap",
+          "has a snooze"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex6_4b",
+        "type": "fill",
+        "exercise": "6",
+        "label": "4b",
+        "top": 61.2,
+        "left": 12,
+        "width": 18.9,
+        "height": 1.5,
+        "correct": [
+          "has a snooze",
+          "has a nap"
+        ],
+        "acceptedAnswers": [
+          "has a snooze",
+          "has a nap"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex6_5",
+        "type": "fill",
+        "exercise": "6",
+        "label": "5",
+        "top": 66.6,
+        "left": 7.8,
+        "width": 18.9,
+        "height": 1.5,
+        "correct": [
+          "didn't sleep a wink",
+          "did not sleep a wink"
+        ],
+        "acceptedAnswers": [
+          "didn't sleep a wink",
+          "did not sleep a wink"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex6_6",
+        "type": "fill",
+        "exercise": "6",
+        "label": "6",
+        "top": 71.7,
+        "left": 24.4,
+        "width": 6.5,
+        "height": 1.5,
+        "correct": [
+          "get up at the crack of dawn"
+        ],
+        "acceptedAnswers": [
+          "get up at the crack of dawn"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex6_7",
+        "type": "fill",
+        "exercise": "6",
+        "label": "7",
+        "top": 10.8,
+        "left": 48.8,
+        "width": 11.1,
+        "height": 1.5,
+        "correct": [
+          "was wide awake"
+        ],
+        "acceptedAnswers": [
+          "was wide awake"
+        ],
+        "page": 2063
+      },
+      {
+        "id": "p2063_ex6_8",
+        "type": "fill",
+        "exercise": "6",
+        "label": "8",
+        "top": 16,
+        "left": 48.8,
+        "width": 11.1,
+        "height": 1.5,
+        "correct": [
+          "have a lie-in",
+          "have a lie in"
+        ],
+        "acceptedAnswers": [
+          "have a lie-in",
+          "have a lie in"
+        ],
+        "page": 2063
+      }
+    ],
+    "2064": [
+      {
+        "id": "p2064_ex1_1",
+        "type": "fill",
+        "exercise": "1",
+        "label": "1",
+        "top": 28.1,
+        "left": 14,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "cease"
+        ],
+        "acceptedAnswers": [
+          "cease"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex1_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2",
+        "top": 29.9,
+        "left": 6.8,
+        "width": 14.3,
+        "height": 1.5,
+        "correct": [
+          "presence"
+        ],
+        "acceptedAnswers": [
+          "presence"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex1_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3",
+        "top": 31.8,
+        "left": 8.8,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "absence"
+        ],
+        "acceptedAnswers": [
+          "absence"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex1_4",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4",
+        "top": 33.8,
+        "left": 12.4,
+        "width": 17.6,
+        "height": 1.5,
+        "correct": [
+          "deliberate"
+        ],
+        "acceptedAnswers": [
+          "deliberate"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex1_5",
+        "type": "fill",
+        "exercise": "1",
+        "label": "5",
+        "top": 35.7,
+        "left": 10.4,
+        "width": 8.8,
+        "height": 1.5,
+        "correct": [
+          "faked"
+        ],
+        "acceptedAnswers": [
+          "faked"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex1_6",
+        "type": "fill",
+        "exercise": "1",
+        "label": "6",
+        "top": 37.7,
+        "left": 8.8,
+        "width": 10.4,
+        "height": 1.5,
+        "correct": [
+          "praise"
+        ],
+        "acceptedAnswers": [
+          "praise"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex1_7",
+        "type": "fill",
+        "exercise": "1",
+        "label": "7",
+        "top": 41.5,
+        "left": 14,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "genuine"
+        ],
+        "acceptedAnswers": [
+          "genuine"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex1_8",
+        "type": "fill",
+        "exercise": "1",
+        "label": "8",
+        "top": 43.5,
+        "left": 12.4,
+        "width": 14,
+        "height": 1.5,
+        "correct": [
+          "contrast"
+        ],
+        "acceptedAnswers": [
+          "contrast"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex1_9",
+        "type": "fill",
+        "exercise": "1",
+        "label": "9",
+        "top": 45.4,
+        "left": 15.8,
+        "width": 9,
+        "height": 1.5,
+        "correct": [
+          "match"
+        ],
+        "acceptedAnswers": [
+          "match"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex1_10",
+        "type": "fill",
+        "exercise": "1",
+        "label": "10",
+        "top": 47.2,
+        "left": 12.4,
+        "width": 6.8,
+        "height": 1.5,
+        "correct": [
+          "evil"
+        ],
+        "acceptedAnswers": [
+          "evil"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_2a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "2",
+        "group": "p2064_ex2_2",
+        "top": 86.4,
+        "left": 14.8,
+        "width": 3.1,
+        "height": 1.3,
+        "text": "praise",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_2b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "2",
+        "group": "p2064_ex2_2",
+        "top": 86.4,
+        "left": 18.6,
+        "width": 3.9,
+        "height": 1.3,
+        "text": "criticism",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_3a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "3",
+        "group": "p2064_ex2_3",
+        "top": 88.2,
+        "left": 19.4,
+        "width": 5,
+        "height": 1.3,
+        "text": "accidental",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_3b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "3",
+        "group": "p2064_ex2_3",
+        "top": 88.2,
+        "left": 24.9,
+        "width": 4.8,
+        "height": 1.3,
+        "text": "deliberate",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_4a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "4",
+        "group": "p2064_ex2_4",
+        "top": 91.3,
+        "left": 16.6,
+        "width": 4.1,
+        "height": 1.3,
+        "text": "absence",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_4b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "4",
+        "group": "p2064_ex2_4",
+        "top": 91.3,
+        "left": 21.2,
+        "width": 4.2,
+        "height": 1.3,
+        "text": "presence",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_5a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "5",
+        "group": "p2064_ex2_5",
+        "top": 16.6,
+        "left": 40.7,
+        "width": 3.9,
+        "height": 1.3,
+        "text": "stopped",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_5b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "5",
+        "group": "p2064_ex2_5",
+        "top": 16.6,
+        "left": 45.2,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "ceased",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_6a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "6",
+        "group": "p2064_ex2_6",
+        "top": 21.3,
+        "left": 35.7,
+        "width": 4,
+        "height": 1.3,
+        "text": "contrast",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_6b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "6",
+        "group": "p2064_ex2_6",
+        "top": 21.3,
+        "left": 40.2,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "match",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_7a",
+        "type": "choice",
+        "exercise": "2",
+        "label": "7",
+        "group": "p2064_ex2_7",
+        "top": 22.8,
+        "left": 42.6,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "an evil",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex2_7b",
+        "type": "choice",
+        "exercise": "2",
+        "label": "7",
+        "group": "p2064_ex2_7",
+        "top": 22.8,
+        "left": 46.5,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "a good",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_2a",
+        "type": "fill",
+        "exercise": "3",
+        "label": "2a",
+        "top": 38.7,
+        "left": 42.3,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "peaceful"
+        ],
+        "acceptedAnswers": [
+          "peaceful"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_2b",
+        "type": "fill",
+        "exercise": "3",
+        "label": "2b",
+        "top": 38.7,
+        "left": 46.2,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "A"
+        ],
+        "acceptedAnswers": [
+          "A"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_3a",
+        "type": "fill",
+        "exercise": "3",
+        "label": "3a",
+        "top": 40.5,
+        "left": 42.3,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "modern"
+        ],
+        "acceptedAnswers": [
+          "modern"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_3b",
+        "type": "fill",
+        "exercise": "3",
+        "label": "3b",
+        "top": 40.5,
+        "left": 46.2,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "S"
+        ],
+        "acceptedAnswers": [
+          "S"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_4a",
+        "type": "fill",
+        "exercise": "3",
+        "label": "4a",
+        "top": 42.1,
+        "left": 42.3,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "strong"
+        ],
+        "acceptedAnswers": [
+          "strong"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_4b",
+        "type": "fill",
+        "exercise": "3",
+        "label": "4b",
+        "top": 42.1,
+        "left": 46.2,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "A"
+        ],
+        "acceptedAnswers": [
+          "A"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_5a",
+        "type": "fill",
+        "exercise": "3",
+        "label": "5a",
+        "top": 43.9,
+        "left": 42.3,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "difficult"
+        ],
+        "acceptedAnswers": [
+          "difficult"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_5b",
+        "type": "fill",
+        "exercise": "3",
+        "label": "5b",
+        "top": 43.9,
+        "left": 46.2,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "S"
+        ],
+        "acceptedAnswers": [
+          "S"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_6a",
+        "type": "fill",
+        "exercise": "3",
+        "label": "6a",
+        "top": 37.1,
+        "left": 56.3,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "plan"
+        ],
+        "acceptedAnswers": [
+          "plan"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_6b",
+        "type": "fill",
+        "exercise": "3",
+        "label": "6b",
+        "top": 37.1,
+        "left": 59.9,
+        "width": 1.4,
+        "height": 1.5,
+        "correct": [
+          "S"
+        ],
+        "acceptedAnswers": [
+          "S"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_7a",
+        "type": "fill",
+        "exercise": "3",
+        "label": "7a",
+        "top": 38.7,
+        "left": 56.3,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "alternative"
+        ],
+        "acceptedAnswers": [
+          "alternative"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_7b",
+        "type": "fill",
+        "exercise": "3",
+        "label": "7b",
+        "top": 38.7,
+        "left": 59.9,
+        "width": 1.4,
+        "height": 1.5,
+        "correct": [
+          "S"
+        ],
+        "acceptedAnswers": [
+          "S"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_8a",
+        "type": "fill",
+        "exercise": "3",
+        "label": "8a",
+        "top": 40.5,
+        "left": 56.3,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "see-through",
+          "see through"
+        ],
+        "acceptedAnswers": [
+          "see-through",
+          "see through"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_8b",
+        "type": "fill",
+        "exercise": "3",
+        "label": "8b",
+        "top": 40.5,
+        "left": 59.9,
+        "width": 1.4,
+        "height": 1.5,
+        "correct": [
+          "S"
+        ],
+        "acceptedAnswers": [
+          "S"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_9a",
+        "type": "fill",
+        "exercise": "3",
+        "label": "9a",
+        "top": 42.1,
+        "left": 56.3,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "poverty"
+        ],
+        "acceptedAnswers": [
+          "poverty"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_9b",
+        "type": "fill",
+        "exercise": "3",
+        "label": "9b",
+        "top": 42.1,
+        "left": 59.9,
+        "width": 1.4,
+        "height": 1.5,
+        "correct": [
+          "A"
+        ],
+        "acceptedAnswers": [
+          "A"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_10a",
+        "type": "fill",
+        "exercise": "3",
+        "label": "10a",
+        "top": 43.9,
+        "left": 56.3,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "urban"
+        ],
+        "acceptedAnswers": [
+          "urban"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex3_10b",
+        "type": "fill",
+        "exercise": "3",
+        "label": "10b",
+        "top": 43.9,
+        "left": 59.9,
+        "width": 1.4,
+        "height": 1.5,
+        "correct": [
+          "A"
+        ],
+        "acceptedAnswers": [
+          "A"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 64.3,
+        "left": 47.9,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "wealth"
+        ],
+        "acceptedAnswers": [
+          "wealth"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 68.9,
+        "left": 41.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "substitute",
+          "alternative"
+        ],
+        "acceptedAnswers": [
+          "substitute",
+          "alternative"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 72.3,
+        "left": 35.7,
+        "width": 5,
+        "height": 1.5,
+        "correct": [
+          "aggressive"
+        ],
+        "acceptedAnswers": [
+          "aggressive"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 75.4,
+        "left": 35.7,
+        "width": 5,
+        "height": 1.5,
+        "correct": [
+          "delicate"
+        ],
+        "acceptedAnswers": [
+          "delicate"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 78.5,
+        "left": 42.2,
+        "width": 5,
+        "height": 1.5,
+        "correct": [
+          "tough"
+        ],
+        "acceptedAnswers": [
+          "tough"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex4_7",
+        "type": "fill",
+        "exercise": "4",
+        "label": "7",
+        "top": 80.3,
+        "left": 56.3,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "contemporary"
+        ],
+        "acceptedAnswers": [
+          "contemporary"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex4_8",
+        "type": "fill",
+        "exercise": "4",
+        "label": "8",
+        "top": 81.8,
+        "left": 40.2,
+        "width": 5,
+        "height": 1.5,
+        "correct": [
+          "rural"
+        ],
+        "acceptedAnswers": [
+          "rural"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex4_9",
+        "type": "fill",
+        "exercise": "4",
+        "label": "9",
+        "top": 85.2,
+        "left": 41.3,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "strategy"
+        ],
+        "acceptedAnswers": [
+          "strategy"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex4_10",
+        "type": "fill",
+        "exercise": "4",
+        "label": "10",
+        "top": 88.3,
+        "left": 51.1,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "acquire"
+        ],
+        "acceptedAnswers": [
+          "acquire"
+        ],
+        "page": 2064
+      },
+      {
+        "id": "p2064_ex4_11",
+        "type": "fill",
+        "exercise": "4",
+        "label": "11",
+        "top": 91.4,
+        "left": 56.3,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "urban"
+        ],
+        "acceptedAnswers": [
+          "urban"
+        ],
+        "page": 2064
+      }
+    ],
+    "2065": [
+      {
+        "id": "p2065_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 11.1,
+        "left": 9.9,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "just"
+        ],
+        "acceptedAnswers": [
+          "just"
+        ],
+        "page": 2065
+      },
+      {
+        "id": "p2065_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 14,
+        "left": 9.6,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "second"
+        ],
+        "acceptedAnswers": [
+          "second"
+        ],
+        "page": 2065
+      },
+      {
+        "id": "p2065_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 24.4,
+        "left": 14,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "interrupting"
+        ],
+        "acceptedAnswers": [
+          "interrupting"
+        ],
+        "page": 2065
+      },
+      {
+        "id": "p2065_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 32.2,
+        "left": 19.9,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "may"
+        ],
+        "acceptedAnswers": [
+          "may"
+        ],
+        "page": 2065
+      },
+      {
+        "id": "p2065_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 46.7,
+        "left": 42.6,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "According"
+        ],
+        "acceptedAnswers": [
+          "According"
+        ],
+        "page": 2065
+      },
+      {
+        "id": "p2065_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 51.6,
+        "left": 46.4,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "pointed"
+        ],
+        "acceptedAnswers": [
+          "pointed"
+        ],
+        "page": 2065
+      },
+      {
+        "id": "p2065_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 58.1,
+        "left": 42.6,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "suggested"
+        ],
+        "acceptedAnswers": [
+          "suggested"
+        ],
+        "page": 2065
+      },
+      {
+        "id": "p2065_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 62.6,
+        "left": 42.6,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "majority"
+        ],
+        "acceptedAnswers": [
+          "majority"
+        ],
+        "page": 2065
+      },
+      {
+        "id": "p2065_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 67.6,
+        "left": 45.9,
+        "width": 5,
+        "height": 1.5,
+        "correct": [
+          "evident"
+        ],
+        "acceptedAnswers": [
+          "evident"
+        ],
+        "page": 2065
+      },
+      {
+        "id": "p2065_ex4_7",
+        "type": "fill",
+        "exercise": "4",
+        "label": "7",
+        "top": 73.6,
+        "left": 42.6,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "consider"
+        ],
+        "acceptedAnswers": [
+          "consider"
+        ],
+        "page": 2065
+      }
+    ],
+    "2066": [
+      {
+        "id": "p2066_ex1_1b",
+        "type": "fill",
+        "exercise": "1",
+        "label": "1b",
+        "top": 40.2,
+        "left": 25.7,
+        "width": 5,
+        "height": 1.5,
+        "correct": [
+          "glancing"
+        ],
+        "acceptedAnswers": [
+          "glancing"
+        ],
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex1_2a",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2a",
+        "top": 47.6,
+        "left": 11.7,
+        "width": 4.7,
+        "height": 1.5,
+        "correct": [
+          "spotted"
+        ],
+        "acceptedAnswers": [
+          "spotted"
+        ],
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex1_2b",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2b",
+        "top": 50.8,
+        "left": 9.6,
+        "width": 5,
+        "height": 1.5,
+        "correct": [
+          "observed"
+        ],
+        "acceptedAnswers": [
+          "observed"
+        ],
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex1_3a",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3a",
+        "top": 58.1,
+        "left": 11.1,
+        "width": 5.1,
+        "height": 1.5,
+        "correct": [
+          "glared"
+        ],
+        "acceptedAnswers": [
+          "glared"
+        ],
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex1_3b",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3b",
+        "top": 64.2,
+        "left": 12.9,
+        "width": 5,
+        "height": 1.5,
+        "correct": [
+          "glanced"
+        ],
+        "acceptedAnswers": [
+          "glanced"
+        ],
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 76.9,
+        "left": 19.2,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "reveal"
+        ],
+        "acceptedAnswers": [
+          "reveal"
+        ],
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 81.3,
+        "left": 13.3,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "reflect"
+        ],
+        "acceptedAnswers": [
+          "reflect"
+        ],
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 82.9,
+        "left": 22,
+        "width": 4.7,
+        "height": 1.5,
+        "correct": [
+          "distinguish"
+        ],
+        "acceptedAnswers": [
+          "distinguish"
+        ],
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 87.5,
+        "left": 11.7,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "vision"
+        ],
+        "acceptedAnswers": [
+          "vision"
+        ],
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 90.6,
+        "left": 13.3,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "focus on"
+        ],
+        "acceptedAnswers": [
+          "focus on"
+        ],
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_1a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2066_ex3_1",
+        "top": 32.9,
+        "left": 44.6,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "visible",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_1b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2066_ex3_1",
+        "top": 32.9,
+        "left": 48.2,
+        "width": 3.4,
+        "height": 1.3,
+        "text": "vision",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_2a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2066_ex3_2",
+        "top": 35.4,
+        "left": 37.1,
+        "width": 3.8,
+        "height": 1.3,
+        "text": "revealed",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_2b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2066_ex3_2",
+        "top": 35.4,
+        "left": 41.3,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "reflected",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_3a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2066_ex3_3",
+        "top": 42.5,
+        "left": 38.1,
+        "width": 8.8,
+        "height": 1.3,
+        "text": "distinguish between",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_3b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2066_ex3_3",
+        "top": 42.5,
+        "left": 47.4,
+        "width": 3.9,
+        "height": 1.3,
+        "text": "focus on",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_4a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2066_ex3_4",
+        "top": 47.4,
+        "left": 41.5,
+        "width": 6.3,
+        "height": 1.3,
+        "text": "staring",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_4b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2066_ex3_4",
+        "top": 47.4,
+        "left": 48.3,
+        "width": 7.7,
+        "height": 1.3,
+        "text": "glaring",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_5a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2066_ex3_5",
+        "top": 68.3,
+        "left": 40.2,
+        "width": 3.1,
+        "height": 1.3,
+        "text": "glance",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_5b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2066_ex3_5",
+        "top": 68.3,
+        "left": 43.8,
+        "width": 2.1,
+        "height": 1.3,
+        "text": "gaze",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_6a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "6",
+        "group": "p2066_ex3_6",
+        "top": 70.9,
+        "left": 37.1,
+        "width": 2.7,
+        "height": 1.3,
+        "text": "vision",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_6b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "6",
+        "group": "p2066_ex3_6",
+        "top": 70.9,
+        "left": 40.4,
+        "width": 4.2,
+        "height": 1.3,
+        "text": "reflection",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_7a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "7",
+        "group": "p2066_ex3_7",
+        "top": 70.9,
+        "left": 48.3,
+        "width": 4.4,
+        "height": 1.3,
+        "text": "observing",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2066
+      },
+      {
+        "id": "p2066_ex3_7b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "7",
+        "group": "p2066_ex3_7",
+        "top": 70.9,
+        "left": 53.3,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "gazing",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2066
+      }
+    ],
+    "2067": [
+      {
+        "id": "p2067_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 17.8,
+        "left": 7,
+        "width": 23.9,
+        "height": 1.5,
+        "correct": [
+          "tall blond German boy",
+          "tall blond German"
+        ],
+        "acceptedAnswers": [
+          "tall blond German boy",
+          "tall blond German"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 21.1,
+        "left": 7,
+        "width": 23.9,
+        "height": 1.5,
+        "correct": [
+          "✓",
+          "correct"
+        ],
+        "acceptedAnswers": [
+          "✓",
+          "correct"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 24.5,
+        "left": 7,
+        "width": 23.9,
+        "height": 1.5,
+        "correct": [
+          "✓",
+          "correct"
+        ],
+        "acceptedAnswers": [
+          "✓",
+          "correct"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 27.8,
+        "left": 7,
+        "width": 23.9,
+        "height": 1.5,
+        "correct": [
+          "empty glass jam jars"
+        ],
+        "acceptedAnswers": [
+          "empty glass jam jars"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 31.2,
+        "left": 7,
+        "width": 23.9,
+        "height": 1.5,
+        "correct": [
+          "gorgeous black silk dress"
+        ],
+        "acceptedAnswers": [
+          "gorgeous black silk dress"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex4_7",
+        "type": "fill",
+        "exercise": "4",
+        "label": "7",
+        "top": 34.6,
+        "left": 7,
+        "width": 23.9,
+        "height": 1.5,
+        "correct": [
+          "amazing old Chinese vase"
+        ],
+        "acceptedAnswers": [
+          "amazing old Chinese vase"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex4_8",
+        "type": "fill",
+        "exercise": "4",
+        "label": "8",
+        "top": 37.9,
+        "left": 7,
+        "width": 23.9,
+        "height": 1.5,
+        "correct": [
+          "delicate little silver chain"
+        ],
+        "acceptedAnswers": [
+          "delicate little silver chain"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_2a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "2",
+        "group": "p2067_ex5_2",
+        "top": 30.8,
+        "left": 8.1,
+        "width": 9.1,
+        "height": 1.3,
+        "text": "silk black-and-white",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_2b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "2",
+        "group": "p2067_ex5_2",
+        "top": 32.3,
+        "left": 8.1,
+        "width": 9.1,
+        "height": 1.3,
+        "text": "black-and-white silk",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_2c",
+        "type": "choice",
+        "exercise": "5",
+        "label": "2",
+        "group": "p2067_ex5_2",
+        "top": 33.8,
+        "left": 8.1,
+        "width": 10.9,
+        "height": 1.3,
+        "text": "white-and-black and silk",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_3a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "3",
+        "group": "p2067_ex5_3",
+        "top": 37,
+        "left": 8.1,
+        "width": 9.1,
+        "height": 1.3,
+        "text": "beautiful sewing old",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_3b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "3",
+        "group": "p2067_ex5_3",
+        "top": 38.6,
+        "left": 8.1,
+        "width": 9.1,
+        "height": 1.3,
+        "text": "old beautiful sewing",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_3c",
+        "type": "choice",
+        "exercise": "5",
+        "label": "3",
+        "group": "p2067_ex5_3",
+        "top": 40.1,
+        "left": 8.1,
+        "width": 9.1,
+        "height": 1.3,
+        "text": "beautiful old sewing",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_4a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "4",
+        "group": "p2067_ex5_4",
+        "top": 43.5,
+        "left": 8.1,
+        "width": 10.6,
+        "height": 1.3,
+        "text": "dressing French antique",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_4b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "4",
+        "group": "p2067_ex5_4",
+        "top": 45,
+        "left": 8.1,
+        "width": 10.6,
+        "height": 1.3,
+        "text": "antique French dressing",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_4c",
+        "type": "choice",
+        "exercise": "5",
+        "label": "4",
+        "group": "p2067_ex5_4",
+        "top": 46.6,
+        "left": 8.1,
+        "width": 10.6,
+        "height": 1.3,
+        "text": "French antique dressing",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_5a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "5",
+        "group": "p2067_ex5_5",
+        "top": 49.7,
+        "left": 8.1,
+        "width": 9.8,
+        "height": 1.3,
+        "text": "curly and long, blonde",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_5b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "5",
+        "group": "p2067_ex5_5",
+        "top": 51.2,
+        "left": 8.1,
+        "width": 8.8,
+        "height": 1.3,
+        "text": "blonde, curly, long",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_5c",
+        "type": "choice",
+        "exercise": "5",
+        "label": "5",
+        "group": "p2067_ex5_5",
+        "top": 52.8,
+        "left": 8.1,
+        "width": 9.8,
+        "height": 1.3,
+        "text": "long, curly and blonde",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_6a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "6",
+        "group": "p2067_ex5_6",
+        "top": 56.1,
+        "left": 8.1,
+        "width": 8.3,
+        "height": 1.3,
+        "text": "large square silver",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_6b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "6",
+        "group": "p2067_ex5_6",
+        "top": 57.7,
+        "left": 8.1,
+        "width": 8.3,
+        "height": 1.3,
+        "text": "silver square large",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex5_6c",
+        "type": "choice",
+        "exercise": "5",
+        "label": "6",
+        "group": "p2067_ex5_6",
+        "top": 59.2,
+        "left": 8.1,
+        "width": 8.3,
+        "height": 1.3,
+        "text": "large silver square",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex6_2",
+        "type": "fill",
+        "exercise": "6",
+        "label": "2",
+        "top": 29.4,
+        "left": 38.9,
+        "width": 20,
+        "height": 1.5,
+        "correct": [
+          "terrifying deep"
+        ],
+        "acceptedAnswers": [
+          "terrifying deep"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex6_3",
+        "type": "fill",
+        "exercise": "6",
+        "label": "3",
+        "top": 34,
+        "left": 38.9,
+        "width": 20,
+        "height": 1.5,
+        "correct": [
+          "glowing volcanic"
+        ],
+        "acceptedAnswers": [
+          "glowing volcanic"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex6_4",
+        "type": "fill",
+        "exercise": "6",
+        "label": "4",
+        "top": 35.6,
+        "left": 47.9,
+        "width": 10.4,
+        "height": 1.5,
+        "correct": [
+          "wild and dangerous",
+          "dangerous and wild"
+        ],
+        "acceptedAnswers": [
+          "wild and dangerous",
+          "dangerous and wild"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex6_5",
+        "type": "fill",
+        "exercise": "6",
+        "label": "5",
+        "top": 40.2,
+        "left": 47.2,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "large 3D"
+        ],
+        "acceptedAnswers": [
+          "large 3D"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex6_6",
+        "type": "fill",
+        "exercise": "6",
+        "label": "6",
+        "top": 43.5,
+        "left": 38.9,
+        "width": 10.2,
+        "height": 1.5,
+        "correct": [
+          "acrylic wall"
+        ],
+        "acceptedAnswers": [
+          "acrylic wall"
+        ],
+        "page": 2067
+      },
+      {
+        "id": "p2067_ex6_7",
+        "type": "fill",
+        "exercise": "6",
+        "label": "7",
+        "top": 48.1,
+        "left": 49.2,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "sudden rain"
+        ],
+        "acceptedAnswers": [
+          "sudden rain"
+        ],
+        "page": 2067
+      }
+    ],
+    "2068": [
+      {
+        "id": "p2068_ex1_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2",
+        "top": 27.6,
+        "left": 11.1,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "are looking"
+        ],
+        "acceptedAnswers": [
+          "are looking"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex1_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3",
+        "top": 30.7,
+        "left": 26,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "run out"
+        ],
+        "acceptedAnswers": [
+          "run out"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex1_4",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4",
+        "top": 33.8,
+        "left": 24,
+        "width": 5,
+        "height": 1.5,
+        "correct": [
+          "'ll pass",
+          "will pass"
+        ],
+        "acceptedAnswers": [
+          "'ll pass",
+          "will pass"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex1_5",
+        "type": "fill",
+        "exercise": "1",
+        "label": "5",
+        "top": 37,
+        "left": 19.9,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "calls"
+        ],
+        "acceptedAnswers": [
+          "calls"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex1_6",
+        "type": "fill",
+        "exercise": "1",
+        "label": "6",
+        "top": 40.1,
+        "left": 8.8,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "'ll tell",
+          "will tell"
+        ],
+        "acceptedAnswers": [
+          "'ll tell",
+          "will tell"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 58.1,
+        "left": 14.5,
+        "width": 10.3,
+        "height": 1.5,
+        "correct": [
+          "as soon as she heard the news"
+        ],
+        "acceptedAnswers": [
+          "as soon as she heard the news"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 63,
+        "left": 17.7,
+        "width": 10.3,
+        "height": 1.5,
+        "correct": [
+          "until all the guests arrived",
+          "until all the guests had arrived"
+        ],
+        "acceptedAnswers": [
+          "until all the guests arrived",
+          "until all the guests had arrived"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 68,
+        "left": 18.1,
+        "width": 9.9,
+        "height": 1.5,
+        "correct": [
+          "when I've had a cup of tea",
+          "when I have had a cup of tea"
+        ],
+        "acceptedAnswers": [
+          "when I've had a cup of tea",
+          "when I have had a cup of tea"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 71.2,
+        "left": 16,
+        "width": 10.4,
+        "height": 1.5,
+        "correct": [
+          "in case it rains"
+        ],
+        "acceptedAnswers": [
+          "in case it rains"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 76.2,
+        "left": 22,
+        "width": 10.2,
+        "height": 1.5,
+        "correct": [
+          "if they don't pay me",
+          "if they do not pay me"
+        ],
+        "acceptedAnswers": [
+          "if they don't pay me",
+          "if they do not pay me"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex2_7",
+        "type": "fill",
+        "exercise": "2",
+        "label": "7",
+        "top": 81,
+        "left": 16,
+        "width": 10.4,
+        "height": 1.5,
+        "correct": [
+          "if he worked harder"
+        ],
+        "acceptedAnswers": [
+          "if he worked harder"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex2_8",
+        "type": "fill",
+        "exercise": "2",
+        "label": "8",
+        "top": 86,
+        "left": 17.3,
+        "width": 10.4,
+        "height": 1.5,
+        "correct": [
+          "as soon as the TV programme finishes"
+        ],
+        "acceptedAnswers": [
+          "as soon as the TV programme finishes"
+        ],
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_1a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2068_ex3_1",
+        "top": 32.1,
+        "left": 52.6,
+        "width": 1.1,
+        "height": 1.3,
+        "text": "if",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_1b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2068_ex3_1",
+        "top": 32.1,
+        "left": 54.4,
+        "width": 2.9,
+        "height": 1.3,
+        "text": "unless",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_2a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2068_ex3_2",
+        "top": 35,
+        "left": 44.9,
+        "width": 3.4,
+        "height": 1.3,
+        "text": "In case",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_2b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2068_ex3_2",
+        "top": 35,
+        "left": 48.8,
+        "width": 4.9,
+        "height": 1.3,
+        "text": "As soon as",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_3a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2068_ex3_3",
+        "top": 40.2,
+        "left": 37.1,
+        "width": 3.1,
+        "height": 1.3,
+        "text": "unless",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_3b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2068_ex3_3",
+        "top": 40.2,
+        "left": 40.7,
+        "width": 1.1,
+        "height": 1.3,
+        "text": "if",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_4a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2068_ex3_4",
+        "top": 43,
+        "left": 54.6,
+        "width": 1.1,
+        "height": 1.3,
+        "text": "if",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_4b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2068_ex3_4",
+        "top": 43,
+        "left": 56.1,
+        "width": 2.1,
+        "height": 1.3,
+        "text": "until",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_5a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2068_ex3_5",
+        "top": 47.1,
+        "left": 48.3,
+        "width": 3.1,
+        "height": 1.3,
+        "text": "unless",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_5b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2068_ex3_5",
+        "top": 47.1,
+        "left": 52,
+        "width": 3.1,
+        "height": 1.3,
+        "text": "in case",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_6a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "6",
+        "group": "p2068_ex3_6",
+        "top": 49.9,
+        "left": 47.2,
+        "width": 2.8,
+        "height": 1.3,
+        "text": "When",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2068
+      },
+      {
+        "id": "p2068_ex3_6b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "6",
+        "group": "p2068_ex3_6",
+        "top": 49.9,
+        "left": 50.5,
+        "width": 2.6,
+        "height": 1.3,
+        "text": "Until",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2068
+      }
+    ],
+    "2069": [
+      {
+        "id": "p2069_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 48.2,
+        "left": 7,
+        "width": 5,
+        "height": 1.5,
+        "correct": [
+          "pointless"
+        ],
+        "acceptedAnswers": [
+          "pointless"
+        ],
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 49.8,
+        "left": 20.5,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "childish"
+        ],
+        "acceptedAnswers": [
+          "childish"
+        ],
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 52.9,
+        "left": 13.3,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "comical"
+        ],
+        "acceptedAnswers": [
+          "comical"
+        ],
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 61.4,
+        "left": 15.3,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "predictable"
+        ],
+        "acceptedAnswers": [
+          "predictable"
+        ],
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 64.5,
+        "left": 26.4,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "annoying"
+        ],
+        "acceptedAnswers": [
+          "annoying"
+        ],
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_1a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "1",
+        "group": "p2069_ex5_1",
+        "top": 71.4,
+        "left": 7.5,
+        "width": 2.8,
+        "height": 1.3,
+        "text": "witty",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_1b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "1",
+        "group": "p2069_ex5_1",
+        "top": 71.4,
+        "left": 10.7,
+        "width": 8.1,
+        "height": 1.3,
+        "text": "thought-provoking",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_2a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "2",
+        "group": "p2069_ex5_2",
+        "top": 74.5,
+        "left": 13.3,
+        "width": 4.1,
+        "height": 1.3,
+        "text": "pointless",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_2b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "2",
+        "group": "p2069_ex5_2",
+        "top": 74.5,
+        "left": 17.9,
+        "width": 3.5,
+        "height": 1.3,
+        "text": "tedious",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_3a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "3",
+        "group": "p2069_ex5_3",
+        "top": 77.6,
+        "left": 13.3,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "ridiculous",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_3b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "3",
+        "group": "p2069_ex5_3",
+        "top": 77.6,
+        "left": 18.4,
+        "width": 3.9,
+        "height": 1.3,
+        "text": "hilarious",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_4a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "4",
+        "group": "p2069_ex5_4",
+        "top": 80.7,
+        "left": 13.3,
+        "width": 5,
+        "height": 1.3,
+        "text": "predictable",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_4b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "4",
+        "group": "p2069_ex5_4",
+        "top": 80.7,
+        "left": 18.9,
+        "width": 8.1,
+        "height": 1.3,
+        "text": "thought-provoking",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_5a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "5",
+        "group": "p2069_ex5_5",
+        "top": 83.8,
+        "left": 7.5,
+        "width": 3.9,
+        "height": 1.3,
+        "text": "hilarious",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_5b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "5",
+        "group": "p2069_ex5_5",
+        "top": 83.8,
+        "left": 11.8,
+        "width": 2.6,
+        "height": 1.3,
+        "text": "witty",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_6a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "6",
+        "group": "p2069_ex5_6",
+        "top": 86.9,
+        "left": 13.3,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "distasteful",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex5_6b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "6",
+        "group": "p2069_ex5_6",
+        "top": 86.9,
+        "left": 18.4,
+        "width": 4.1,
+        "height": 1.3,
+        "text": "irritating",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex6_2",
+        "type": "fill",
+        "exercise": "6",
+        "label": "2",
+        "top": 30.2,
+        "left": 36.1,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "witty"
+        ],
+        "acceptedAnswers": [
+          "witty"
+        ],
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex6_3",
+        "type": "fill",
+        "exercise": "6",
+        "label": "3",
+        "top": 35.1,
+        "left": 36.1,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "tedious"
+        ],
+        "acceptedAnswers": [
+          "tedious"
+        ],
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex6_4",
+        "type": "fill",
+        "exercise": "6",
+        "label": "4",
+        "top": 39.5,
+        "left": 36.1,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "distasteful"
+        ],
+        "acceptedAnswers": [
+          "distasteful"
+        ],
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex6_5",
+        "type": "fill",
+        "exercise": "6",
+        "label": "5",
+        "top": 43.9,
+        "left": 36.1,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "predictable"
+        ],
+        "acceptedAnswers": [
+          "predictable"
+        ],
+        "page": 2069
+      },
+      {
+        "id": "p2069_ex6_6",
+        "type": "fill",
+        "exercise": "6",
+        "label": "6",
+        "top": 48.2,
+        "left": 36.1,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "childish"
+        ],
+        "acceptedAnswers": [
+          "childish"
+        ],
+        "page": 2069
+      }
+    ],
+    "2070": [
+      {
+        "id": "p2070_ex1_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2",
+        "top": 31.2,
+        "left": 9.9,
+        "width": 5.7,
+        "height": 1.5,
+        "correct": [
+          "touch"
+        ],
+        "acceptedAnswers": [
+          "touch"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex1_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3",
+        "top": 34.3,
+        "left": 7,
+        "width": 5.7,
+        "height": 1.5,
+        "correct": [
+          "feel"
+        ],
+        "acceptedAnswers": [
+          "feel"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex1_4",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4",
+        "top": 36.1,
+        "left": 12.4,
+        "width": 5.5,
+        "height": 1.5,
+        "correct": [
+          "watching"
+        ],
+        "acceptedAnswers": [
+          "watching"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex1_5",
+        "type": "fill",
+        "exercise": "1",
+        "label": "5",
+        "top": 39.2,
+        "left": 14,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "listen"
+        ],
+        "acceptedAnswers": [
+          "listen"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex1_6",
+        "type": "fill",
+        "exercise": "1",
+        "label": "6",
+        "top": 42.3,
+        "left": 8.1,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "looked"
+        ],
+        "acceptedAnswers": [
+          "looked"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex1_7",
+        "type": "fill",
+        "exercise": "1",
+        "label": "7",
+        "top": 44,
+        "left": 23.1,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "saw"
+        ],
+        "acceptedAnswers": [
+          "saw"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 61.9,
+        "left": 20.5,
+        "width": 6.5,
+        "height": 1.5,
+        "correct": [
+          "✓",
+          "correct"
+        ],
+        "acceptedAnswers": [
+          "✓",
+          "correct"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 64.2,
+        "left": 8.1,
+        "width": 5.9,
+        "height": 1.5,
+        "correct": [
+          "Listen to",
+          "listen to"
+        ],
+        "acceptedAnswers": [
+          "Listen to",
+          "listen to"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 66.6,
+        "left": 22.5,
+        "width": 5.9,
+        "height": 1.5,
+        "correct": [
+          "see"
+        ],
+        "acceptedAnswers": [
+          "see"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 70.7,
+        "left": 19.9,
+        "width": 5.9,
+        "height": 1.5,
+        "correct": [
+          "heard"
+        ],
+        "acceptedAnswers": [
+          "heard"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 74.6,
+        "left": 25.4,
+        "width": 5.9,
+        "height": 1.5,
+        "correct": [
+          "watching"
+        ],
+        "acceptedAnswers": [
+          "watching"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex2_7",
+        "type": "fill",
+        "exercise": "2",
+        "label": "7",
+        "top": 78.5,
+        "left": 15.3,
+        "width": 6.5,
+        "height": 1.5,
+        "correct": [
+          "✓",
+          "correct"
+        ],
+        "acceptedAnswers": [
+          "✓",
+          "correct"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex2_8",
+        "type": "fill",
+        "exercise": "2",
+        "label": "8",
+        "top": 81,
+        "left": 27,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "touch"
+        ],
+        "acceptedAnswers": [
+          "touch"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 29.4,
+        "left": 42.6,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "sticky"
+        ],
+        "acceptedAnswers": [
+          "sticky"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 33.2,
+        "left": 37.1,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "fresh"
+        ],
+        "acceptedAnswers": [
+          "fresh"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 34.3,
+        "left": 52.4,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "bright"
+        ],
+        "acceptedAnswers": [
+          "bright"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 38.9,
+        "left": 42.6,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "spicy"
+        ],
+        "acceptedAnswers": [
+          "spicy"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 42.3,
+        "left": 55,
+        "width": 4.9,
+        "height": 1.5,
+        "correct": [
+          "bitter"
+        ],
+        "acceptedAnswers": [
+          "bitter"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_7",
+        "type": "fill",
+        "exercise": "4",
+        "label": "7",
+        "top": 43.9,
+        "left": 47.2,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "sour"
+        ],
+        "acceptedAnswers": [
+          "sour"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_8",
+        "type": "fill",
+        "exercise": "4",
+        "label": "8",
+        "top": 47,
+        "left": 53.7,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "savoury"
+        ],
+        "acceptedAnswers": [
+          "savoury"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_9",
+        "type": "fill",
+        "exercise": "4",
+        "label": "9",
+        "top": 50.2,
+        "left": 41.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "stunning"
+        ],
+        "acceptedAnswers": [
+          "stunning"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_10",
+        "type": "fill",
+        "exercise": "4",
+        "label": "10",
+        "top": 53.4,
+        "left": 44.3,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "prickly"
+        ],
+        "acceptedAnswers": [
+          "prickly"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_11",
+        "type": "fill",
+        "exercise": "4",
+        "label": "11",
+        "top": 58.1,
+        "left": 43.3,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "crunchy",
+          "fresh"
+        ],
+        "acceptedAnswers": [
+          "crunchy",
+          "fresh"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_12",
+        "type": "fill",
+        "exercise": "4",
+        "label": "12",
+        "top": 59.6,
+        "left": 49.2,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "striped"
+        ],
+        "acceptedAnswers": [
+          "striped"
+        ],
+        "page": 2070
+      },
+      {
+        "id": "p2070_ex4_13",
+        "type": "fill",
+        "exercise": "4",
+        "label": "13",
+        "top": 61.2,
+        "left": 51.3,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "smooth"
+        ],
+        "acceptedAnswers": [
+          "smooth"
+        ],
+        "page": 2070
+      }
+    ],
+    "2071": [
+      {
+        "id": "p2071_ex2_1",
+        "type": "fill",
+        "exercise": "2",
+        "label": "1",
+        "top": 42.6,
+        "left": 18.6,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "c"
+        ],
+        "acceptedAnswers": [
+          "c"
+        ],
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 44.4,
+        "left": 18.6,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "d"
+        ],
+        "acceptedAnswers": [
+          "d"
+        ],
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 45.9,
+        "left": 18.6,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "a"
+        ],
+        "acceptedAnswers": [
+          "a"
+        ],
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 47.6,
+        "left": 18.6,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "e"
+        ],
+        "acceptedAnswers": [
+          "e"
+        ],
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 49.3,
+        "left": 18.6,
+        "width": 3.3,
+        "height": 1.5,
+        "correct": [
+          "b"
+        ],
+        "acceptedAnswers": [
+          "b"
+        ],
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 30.1,
+        "left": 34.5,
+        "width": 1.6,
+        "height": 1.5,
+        "correct": [
+          "4"
+        ],
+        "acceptedAnswers": [
+          "4"
+        ],
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 33.2,
+        "left": 34.5,
+        "width": 1.6,
+        "height": 1.5,
+        "correct": [
+          "3"
+        ],
+        "acceptedAnswers": [
+          "3"
+        ],
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 34.7,
+        "left": 34.5,
+        "width": 1.6,
+        "height": 1.5,
+        "correct": [
+          "2"
+        ],
+        "acceptedAnswers": [
+          "2"
+        ],
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_1a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "1",
+        "group": "p2071_ex5_1",
+        "top": 31.9,
+        "left": 45.9,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "golden",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_1b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "1",
+        "group": "p2071_ex5_1",
+        "top": 31.9,
+        "left": 49.6,
+        "width": 3.1,
+        "height": 1.3,
+        "text": "prickly",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_2a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "2",
+        "group": "p2071_ex5_2",
+        "top": 39,
+        "left": 42.6,
+        "width": 4.9,
+        "height": 1.3,
+        "text": "decorative",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_2b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "2",
+        "group": "p2071_ex5_2",
+        "top": 39,
+        "left": 48,
+        "width": 2.7,
+        "height": 1.3,
+        "text": "bitter",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_3a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "3",
+        "group": "p2071_ex5_3",
+        "top": 40.5,
+        "left": 41.3,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "ancient",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_3b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "3",
+        "group": "p2071_ex5_3",
+        "top": 40.5,
+        "left": 45.1,
+        "width": 4.1,
+        "height": 1.3,
+        "text": "twinkling",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_4a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "4",
+        "group": "p2071_ex5_4",
+        "top": 43.5,
+        "left": 38.1,
+        "width": 2.6,
+        "height": 1.3,
+        "text": "crisp",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_4b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "4",
+        "group": "p2071_ex5_4",
+        "top": 43.5,
+        "left": 41.3,
+        "width": 3.9,
+        "height": 1.3,
+        "text": "stunning",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_5a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "5",
+        "group": "p2071_ex5_5",
+        "top": 51.2,
+        "left": 39.4,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "clatter",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_5b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "5",
+        "group": "p2071_ex5_5",
+        "top": 51.2,
+        "left": 43.1,
+        "width": 4.1,
+        "height": 1.3,
+        "text": "murmur",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_6a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "6",
+        "group": "p2071_ex5_6",
+        "top": 54.1,
+        "left": 39.4,
+        "width": 2.3,
+        "height": 1.3,
+        "text": "hum",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_6b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "6",
+        "group": "p2071_ex5_6",
+        "top": 54.1,
+        "left": 42.2,
+        "width": 3.1,
+        "height": 1.3,
+        "text": "crunch",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_7a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "7",
+        "group": "p2071_ex5_7",
+        "top": 62.6,
+        "left": 53.3,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "smooth",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_7b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "7",
+        "group": "p2071_ex5_7",
+        "top": 64.2,
+        "left": 35.7,
+        "width": 3.7,
+        "height": 1.3,
+        "text": "savoury",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_8a",
+        "type": "choice",
+        "exercise": "5",
+        "label": "8",
+        "group": "p2071_ex5_8",
+        "top": 65.7,
+        "left": 45.2,
+        "width": 3.9,
+        "height": 1.3,
+        "text": "delicious",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2071
+      },
+      {
+        "id": "p2071_ex5_8b",
+        "type": "choice",
+        "exercise": "5",
+        "label": "8",
+        "group": "p2071_ex5_8",
+        "top": 65.7,
+        "left": 49.6,
+        "width": 2.8,
+        "height": 1.3,
+        "text": "sticky",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2071
+      }
+    ],
+    "2072": [
+      {
+        "id": "p2072_ex1_1",
+        "type": "fill",
+        "exercise": "1",
+        "label": "1",
+        "top": 21.1,
+        "left": 17.3,
+        "width": 2.6,
+        "height": 1.5,
+        "correct": [
+          "f"
+        ],
+        "acceptedAnswers": [
+          "f"
+        ],
+        "page": 2072
+      },
+      {
+        "id": "p2072_ex1_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2",
+        "top": 22.9,
+        "left": 17.3,
+        "width": 2.6,
+        "height": 1.5,
+        "correct": [
+          "e"
+        ],
+        "acceptedAnswers": [
+          "e"
+        ],
+        "page": 2072
+      },
+      {
+        "id": "p2072_ex1_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3",
+        "top": 24.7,
+        "left": 17.3,
+        "width": 2.6,
+        "height": 1.5,
+        "correct": [
+          "a"
+        ],
+        "acceptedAnswers": [
+          "a"
+        ],
+        "page": 2072
+      },
+      {
+        "id": "p2072_ex1_4",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4",
+        "top": 26.5,
+        "left": 17.3,
+        "width": 2.6,
+        "height": 1.5,
+        "correct": [
+          "d"
+        ],
+        "acceptedAnswers": [
+          "d"
+        ],
+        "page": 2072
+      },
+      {
+        "id": "p2072_ex1_5",
+        "type": "fill",
+        "exercise": "1",
+        "label": "5",
+        "top": 28.4,
+        "left": 17.3,
+        "width": 2.6,
+        "height": 1.5,
+        "correct": [
+          "b"
+        ],
+        "acceptedAnswers": [
+          "b"
+        ],
+        "page": 2072
+      },
+      {
+        "id": "p2072_ex1_6",
+        "type": "fill",
+        "exercise": "1",
+        "label": "6",
+        "top": 30.2,
+        "left": 17.3,
+        "width": 2.6,
+        "height": 1.5,
+        "correct": [
+          "c"
+        ],
+        "acceptedAnswers": [
+          "c"
+        ],
+        "page": 2072
+      }
+    ],
+    "2073": [
+      {
+        "id": "p2073_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 30.7,
+        "left": 6.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "likely"
+        ],
+        "acceptedAnswers": [
+          "likely"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 33,
+        "left": 6.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "When"
+        ],
+        "acceptedAnswers": [
+          "When"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 34.7,
+        "left": 25.4,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "significantly"
+        ],
+        "acceptedAnswers": [
+          "significantly"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 36.4,
+        "left": 6.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "if",
+          "when"
+        ],
+        "acceptedAnswers": [
+          "if",
+          "when"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 42.1,
+        "left": 6.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "got used to"
+        ],
+        "acceptedAnswers": [
+          "got used to"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex2_7",
+        "type": "fill",
+        "exercise": "2",
+        "label": "7",
+        "top": 43.9,
+        "left": 28.3,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "unless"
+        ],
+        "acceptedAnswers": [
+          "unless"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex2_8",
+        "type": "fill",
+        "exercise": "2",
+        "label": "8",
+        "top": 45.4,
+        "left": 15.3,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "comfortable"
+        ],
+        "acceptedAnswers": [
+          "comfortable"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_1a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2073_ex3_1",
+        "top": 74.5,
+        "left": 20.5,
+        "width": 2.9,
+        "height": 1.3,
+        "text": "tough",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_1b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2073_ex3_1",
+        "top": 74.5,
+        "left": 24.1,
+        "width": 2.7,
+        "height": 1.3,
+        "text": "urban",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_1c",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2073_ex3_1",
+        "top": 74.5,
+        "left": 27.5,
+        "width": 3.8,
+        "height": 1.3,
+        "text": "modern",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_2a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2073_ex3_2",
+        "top": 76,
+        "left": 18.4,
+        "width": 2.6,
+        "height": 1.3,
+        "text": "glare",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_2b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2073_ex3_2",
+        "top": 76,
+        "left": 21.5,
+        "width": 2.5,
+        "height": 1.3,
+        "text": "stare",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_2c",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2073_ex3_2",
+        "top": 76,
+        "left": 24.4,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "glance",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_3a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2073_ex3_3",
+        "top": 77.6,
+        "left": 19.9,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "deliberate",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_3b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2073_ex3_3",
+        "top": 77.6,
+        "left": 24.9,
+        "width": 3.9,
+        "height": 1.3,
+        "text": "peaceful",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_3c",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2073_ex3_3",
+        "top": 77.6,
+        "left": 29.3,
+        "width": 3.6,
+        "height": 1.3,
+        "text": "delicate",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_4a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2073_ex3_4",
+        "top": 79.1,
+        "left": 18.2,
+        "width": 4.9,
+        "height": 1.3,
+        "text": "ridiculous",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_4b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2073_ex3_4",
+        "top": 79.1,
+        "left": 23.6,
+        "width": 3.8,
+        "height": 1.3,
+        "text": "amusing",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_4c",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2073_ex3_4",
+        "top": 79.1,
+        "left": 27.9,
+        "width": 4,
+        "height": 1.3,
+        "text": "pointless",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_5a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2073_ex3_5",
+        "top": 80.7,
+        "left": 18.9,
+        "width": 3.6,
+        "height": 1.3,
+        "text": "irritating",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_5b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2073_ex3_5",
+        "top": 80.7,
+        "left": 22.9,
+        "width": 8,
+        "height": 1.3,
+        "text": "thought-provoking",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex3_5c",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2073_ex3_5",
+        "top": 80.7,
+        "left": 31.4,
+        "width": 4.1,
+        "height": 1.3,
+        "text": "hilarious",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_1a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "1",
+        "group": "p2073_ex4_1",
+        "top": 24.1,
+        "left": 51.8,
+        "width": 3.5,
+        "height": 1.3,
+        "text": "nod off",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_1b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "1",
+        "group": "p2073_ex4_1",
+        "top": 25.7,
+        "left": 40.7,
+        "width": 5.9,
+        "height": 1.3,
+        "text": "have a lie-in",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_2a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "2",
+        "group": "p2073_ex4_2",
+        "top": 32.9,
+        "left": 47.9,
+        "width": 2.3,
+        "height": 1.3,
+        "text": "case",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_2b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "2",
+        "group": "p2073_ex4_2",
+        "top": 32.9,
+        "left": 50.7,
+        "width": 3.7,
+        "height": 1.3,
+        "text": "contrast",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_3a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "3",
+        "group": "p2073_ex4_3",
+        "top": 35.7,
+        "left": 48.7,
+        "width": 2.9,
+        "height": 1.3,
+        "text": "lively",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_3b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "3",
+        "group": "p2073_ex4_3",
+        "top": 35.7,
+        "left": 52.1,
+        "width": 2.3,
+        "height": 1.3,
+        "text": "cosy",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_4a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "4",
+        "group": "p2073_ex4_4",
+        "top": 40.5,
+        "left": 53.3,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "tedious",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_4b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "4",
+        "group": "p2073_ex4_4",
+        "top": 42.1,
+        "left": 40.7,
+        "width": 3.6,
+        "height": 1.3,
+        "text": "genuine",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_5a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "5",
+        "group": "p2073_ex4_5",
+        "top": 45,
+        "left": 41.3,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "slightly",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_5b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "5",
+        "group": "p2073_ex4_5",
+        "top": 45,
+        "left": 45.1,
+        "width": 4.1,
+        "height": 1.3,
+        "text": "gradually",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_6a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "6",
+        "group": "p2073_ex4_6",
+        "top": 47.8,
+        "left": 52.4,
+        "width": 6.1,
+        "height": 1.3,
+        "text": "considerably",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_6b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "6",
+        "group": "p2073_ex4_6",
+        "top": 49.3,
+        "left": 40.7,
+        "width": 3.6,
+        "height": 1.3,
+        "text": "basically",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_7a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "7",
+        "group": "p2073_ex4_7",
+        "top": 68.6,
+        "left": 46.9,
+        "width": 4.7,
+        "height": 1.3,
+        "text": "distinguish",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_7b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "7",
+        "group": "p2073_ex4_7",
+        "top": 68.6,
+        "left": 52.1,
+        "width": 2.9,
+        "height": 1.3,
+        "text": "reflect",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_8a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "8",
+        "group": "p2073_ex4_8",
+        "top": 72.9,
+        "left": 42.6,
+        "width": 3.1,
+        "height": 1.3,
+        "text": "visible",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex4_8b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "8",
+        "group": "p2073_ex4_8",
+        "top": 72.9,
+        "left": 46.2,
+        "width": 2.7,
+        "height": 1.3,
+        "text": "vision",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex5_1",
+        "type": "fill",
+        "exercise": "5",
+        "label": "1",
+        "top": 24.6,
+        "left": 57.6,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "A"
+        ],
+        "acceptedAnswers": [
+          "A"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex5_2",
+        "type": "fill",
+        "exercise": "5",
+        "label": "2",
+        "top": 26.1,
+        "left": 51.6,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "I"
+        ],
+        "acceptedAnswers": [
+          "I"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex5_3",
+        "type": "fill",
+        "exercise": "5",
+        "label": "3",
+        "top": 27.7,
+        "left": 50.1,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "I"
+        ],
+        "acceptedAnswers": [
+          "I"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex5_4",
+        "type": "fill",
+        "exercise": "5",
+        "label": "4",
+        "top": 29.5,
+        "left": 56.3,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "I"
+        ],
+        "acceptedAnswers": [
+          "I"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex5_5",
+        "type": "fill",
+        "exercise": "5",
+        "label": "5",
+        "top": 31.2,
+        "left": 50.1,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "C"
+        ],
+        "acceptedAnswers": [
+          "C"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex5_6",
+        "type": "fill",
+        "exercise": "5",
+        "label": "6",
+        "top": 33,
+        "left": 55.7,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "C"
+        ],
+        "acceptedAnswers": [
+          "C"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex5_7",
+        "type": "fill",
+        "exercise": "5",
+        "label": "7",
+        "top": 34.6,
+        "left": 47.9,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "A"
+        ],
+        "acceptedAnswers": [
+          "A"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex5_8",
+        "type": "fill",
+        "exercise": "5",
+        "label": "8",
+        "top": 36.3,
+        "left": 53.1,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "I"
+        ],
+        "acceptedAnswers": [
+          "I"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex5_9",
+        "type": "fill",
+        "exercise": "5",
+        "label": "9",
+        "top": 37.9,
+        "left": 56.6,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "A"
+        ],
+        "acceptedAnswers": [
+          "A"
+        ],
+        "page": 2073
+      },
+      {
+        "id": "p2073_ex5_10",
+        "type": "fill",
+        "exercise": "5",
+        "label": "10",
+        "top": 39.7,
+        "left": 51.1,
+        "width": 2,
+        "height": 1.5,
+        "correct": [
+          "C"
+        ],
+        "acceptedAnswers": [
+          "C"
+        ],
+        "page": 2073
+      }
     ]
   },
-  "workbookOverridesTs": 1792940005670,
-  "updatedAt": "2026-10-26T13:53:04.620Z",
+  "workbookOverridesTs": 1793035435175,
+  "updatedAt": "2026-10-26T17:23:55.176Z",
   "authorizedAdminChatIds": [
     6772427596,
     98124765
