@@ -1646,6 +1646,29 @@
           if (!S.accounts) S.accounts = [];
           mergeAccounts(S.accounts, remoteData.accounts);
         }
+        if (remoteData.fileExplorer && Array.isArray(remoteData.fileExplorer.folders)) {
+          if (!S.fileExplorer) S.fileExplorer = remoteData.fileExplorer;
+          else {
+            remoteData.fileExplorer.folders.forEach(function(rf) {
+              if (!S.fileExplorer.folders.find(function(lf) { return lf.id === rf.id; })) {
+                S.fileExplorer.folders.push(rf);
+              }
+            });
+            if (Array.isArray(remoteData.fileExplorer.tests)) {
+              if (!Array.isArray(S.fileExplorer.tests)) S.fileExplorer.tests = [];
+              remoteData.fileExplorer.tests.forEach(function(rt) {
+                if (!S.fileExplorer.tests.find(function(lt) { return lt.id === rt.id; })) {
+                  S.fileExplorer.tests.push(rt);
+                }
+              });
+            }
+          }
+        }
+        if (remoteData.centerSettings && !S.centerSettings) S.centerSettings = remoteData.centerSettings;
+        if (remoteData.teachers && (!S.teachers || S.teachers.length === 0)) S.teachers = remoteData.teachers;
+        if (remoteData.timetable && (!S.timetable || S.timetable.length === 0)) S.timetable = remoteData.timetable;
+        if (remoteData.contests && (!S.contests || S.contests.length === 0)) S.contests = remoteData.contests;
+        if (remoteData.payments && (!S.payments || Object.keys(S.payments).length === 0)) S.payments = remoteData.payments;
         if (remoteData.deletedListingIds && Array.isArray(remoteData.deletedListingIds)) {
           if (!S.deletedListingIds) S.deletedListingIds = [];
           remoteData.deletedListingIds.forEach(function(id) { if (S.deletedListingIds.indexOf(id) === -1) S.deletedListingIds.push(id); });
@@ -1722,6 +1745,12 @@
           p2pListings: S.p2pListings || [],
           workbookOverrides: S.workbookOverrides || {},
           workbookOverridesTs: S.workbookOverridesTs || {},
+          centerSettings: S.centerSettings || null,
+          teachers: S.teachers || [],
+          fileExplorer: S.fileExplorer || { folders: [], tests: [] },
+          timetable: S.timetable || [],
+          contests: S.contests || [],
+          payments: S.payments || {},
           updatedAt: Date.now()
         };
 
