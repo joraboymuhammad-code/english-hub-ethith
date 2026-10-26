@@ -312,6 +312,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -83143,7 +83144,7 @@ window.NAVIGATE_CURRICULUM = {
           students.forEach(function(st, idx) {
             var stId = st.id || st.email;
             var r = records[stId] || { score: 75, passed: true };
-            h += '<tr style="border-top:1px solid rgba(255,255,255,0.05);background:' + (r.passed ? 'transparent' : 'rgba(239,68,68,0.06)') + ';">' +
+            mHtml += '<tr style="border-top:1px solid rgba(255,255,255,0.05);background:' + (r.passed ? 'transparent' : 'rgba(239,68,68,0.06)') + ';">' +
               '<td style="padding:10px 14px;color:#94a3b8;">' + (idx + 1) + '</td>' +
               '<td style="padding:10px 14px;font-weight:800;color:#fff;">' + esc(st.name || stId) + '</td>' +
               '<td style="padding:10px 14px;font-weight:900;color:' + (r.passed ? '#34d399' : '#f87171') + ';">' + r.score + '%</td>' +
