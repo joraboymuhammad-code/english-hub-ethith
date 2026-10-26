@@ -325,6 +325,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9432,7 +9433,7 @@ html, body {
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.26.2345";
+window.ETHITH_BUILD_VERSION = "2026.10.26.2355";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -86325,23 +86326,22 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       var stCount = (cls.students || []).length;
       var maxCap = cls.maxCapacity || 16;
       var isFull = stCount >= maxCap;
-      h += '<div class="ap-card" style="background:rgba(15,23,42,0.75);border:1px solid ' + (isFull ? 'rgba(239,68,68,0.35)' : 'rgba(56,189,248,0.25)') + ';border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 24px rgba(0,0,0,0.3);">' +
+      h += '<div class="ap-card" style="background:rgba(15,23,42,0.75);border:1px solid ' + (isFull ? 'rgba(239,68,68,0.45)' : 'rgba(56,189,248,0.35)') + ';border-radius:18px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 30px rgba(0,0,0,0.4);transition:all 0.3s ease;">' +
         '<div>' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
-            '<span style="font-size:24px;">👥</span>' +
-            '<span style="background:' + (isFull ? 'rgba(239,68,68,0.15)' : 'rgba(16,185,129,0.15)') + ';color:' + (isFull ? '#f87171' : '#34d399') + ';font-size:11px;font-weight:900;padding:3px 10px;border-radius:8px;border:1px solid ' + (isFull ? 'rgba(239,68,68,0.3)' : 'rgba(16,185,129,0.3)') + ';">' +
+          '<div style="display:flex;align-items:center;justify-content:flex-end;margin-bottom:12px;">' +
+            '<span style="background:' + (isFull ? 'rgba(239,68,68,0.2)' : 'rgba(16,185,129,0.2)') + ';color:' + (isFull ? '#ff4d4d' : '#10b981') + ';font-size:12px;font-weight:900;padding:4px 12px;border-radius:8px;border:1px solid ' + (isFull ? 'rgba(239,68,68,0.5)' : 'rgba(16,185,129,0.5)') + ';box-shadow:0 0 12px ' + (isFull ? 'rgba(239,68,68,0.25)' : 'rgba(16,185,129,0.25)') + ';">' +
               stCount + ' / ' + maxCap + ' ta joy' +
             '</span>' +
           '</div>' +
-          '<h3 style="margin:0 0 6px;font-size:16px;font-weight:900;color:#f8fafc;">' + esc(cls.name) + '</h3>' +
-          '<div style="font-size:12px;color:#94a3b8;display:flex;gap:12px;flex-wrap:wrap;">' +
+          '<h3 style="margin:0 0 6px;font-size:17px;font-weight:900;color:#ffffff;letter-spacing:-0.2px;">' + esc(cls.name) + '</h3>' +
+          '<div style="font-size:12.5px;color:#cbd5e1;display:flex;gap:14px;flex-wrap:wrap;font-weight:600;">' +
             '<span>👨‍🏫 ' + esc(cls.teacher || 'Ustoz') + '</span>' +
             '<span>🚪 ' + esc(cls.room || 'Xona') + '</span>' +
           '</div>' +
         '</div>' +
-        '<div style="display:flex;gap:8px;margin-top:16px;">' +
-          '<button class="ap-btn" data-go="attendance" style="flex:1;background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.35);padding:7px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">📋 Davomat</button>' +
-          '<button class="ap-btn" data-go="classes" style="flex:1;background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);padding:7px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Guruhga Kirish</button>' +
+        '<div style="display:flex;gap:10px;margin-top:18px;">' +
+          '<button class="ap-btn" data-go="attendance" style="flex:1;background:rgba(16,185,129,0.2);color:#10b981;border:1px solid rgba(16,185,129,0.5);padding:9px 12px;border-radius:10px;font-size:12.5px;font-weight:800;cursor:pointer;transition:all 0.2s;">📋 Davomat</button>' +
+          '<button class="ap-btn" data-go="classes" style="flex:1;background:rgba(56,189,248,0.2);color:#38bdf8;border:1px solid rgba(56,189,248,0.5);padding:9px 12px;border-radius:10px;font-size:12.5px;font-weight:800;cursor:pointer;transition:all 0.2s;">Guruhga Kirish</button>' +
         '</div>' +
       '</div>';
     });
@@ -86398,11 +86398,11 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         desc: 'Kompyuter explorer kabi testlar va interaktiv rasm/PDF yaratuvchi',
         icon: '💻',
         badge: 'Test Studio',
-        color: '#38bdf8',
-        gradient: 'linear-gradient(135deg, rgba(2, 132, 199, 0.22), rgba(15, 23, 42, 0.8))',
-        border: 'rgba(56, 189, 248, 0.35)',
-        glow: 'rgba(2, 132, 199, 0.35)',
-        btnBg: 'linear-gradient(135deg, #0284c7, #2563eb)'
+        color: '#00e5ff',
+        gradient: 'linear-gradient(135deg, rgba(0, 229, 255, 0.28), rgba(15, 23, 42, 0.85))',
+        border: 'rgba(0, 229, 255, 0.65)',
+        glow: 'rgba(0, 229, 255, 0.55)',
+        btnBg: 'linear-gradient(135deg, #00b4d8, #0077b6)'
       },
       {
         id: 'timetable',
@@ -86410,11 +86410,11 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         desc: 'Haftalik va kunlik dars jadvallari hamda xonalar taqvimi',
         icon: '📅',
         badge: 'Jadval',
-        color: '#fbbf24',
-        gradient: 'linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(15, 23, 42, 0.8))',
-        border: 'rgba(251, 191, 36, 0.35)',
-        glow: 'rgba(245, 158, 11, 0.35)',
-        btnBg: 'linear-gradient(135deg, #d97706, #b45309)'
+        color: '#ffc107',
+        gradient: 'linear-gradient(135deg, rgba(255, 193, 7, 0.28), rgba(15, 23, 42, 0.85))',
+        border: 'rgba(255, 193, 7, 0.65)',
+        glow: 'rgba(255, 193, 7, 0.55)',
+        btnBg: 'linear-gradient(135deg, #ff9800, #f57c00)'
       },
       {
         id: 'billing',
@@ -86422,11 +86422,11 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         desc: 'Aqlli tiyinli summa, kvitansiya tekshirish va moliya tahlili',
         icon: '💳',
         badge: 'Moliya',
-        color: '#34d399',
-        gradient: 'linear-gradient(135deg, rgba(5, 150, 105, 0.22), rgba(15, 23, 42, 0.8))',
-        border: 'rgba(52, 211, 153, 0.35)',
-        glow: 'rgba(16, 185, 129, 0.35)',
-        btnBg: 'linear-gradient(135deg, #059669, #047857)'
+        color: '#00e676',
+        gradient: 'linear-gradient(135deg, rgba(0, 230, 118, 0.28), rgba(15, 23, 42, 0.85))',
+        border: 'rgba(0, 230, 118, 0.65)',
+        glow: 'rgba(0, 230, 118, 0.55)',
+        btnBg: 'linear-gradient(135deg, #00c853, #009624)'
       },
       {
         id: 'contests',
@@ -86434,11 +86434,11 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         desc: 'Vaqtli topshiriqlar, bellashuvlar va Top-10 Coin sovrinlari',
         icon: '🏆',
         badge: 'Top-10 Coins',
-        color: '#c084fc',
-        gradient: 'linear-gradient(135deg, rgba(147, 51, 234, 0.22), rgba(15, 23, 42, 0.8))',
-        border: 'rgba(192, 132, 252, 0.35)',
-        glow: 'rgba(168, 85, 247, 0.35)',
-        btnBg: 'linear-gradient(135deg, #7c3aed, #6d28d9)'
+        color: '#d500f9',
+        gradient: 'linear-gradient(135deg, rgba(213, 0, 249, 0.28), rgba(15, 23, 42, 0.85))',
+        border: 'rgba(213, 0, 249, 0.65)',
+        glow: 'rgba(213, 0, 249, 0.55)',
+        btnBg: 'linear-gradient(135deg, #aa00ff, #7200ca)'
       },
       {
         id: 'ask_ai',
@@ -86446,11 +86446,11 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         desc: '24/7 sun‘iy intellekt repetitori bilan erkin inglizcha muloqot',
         icon: '🤖',
         badge: 'AI 24/7',
-        color: '#818cf8',
-        gradient: 'linear-gradient(135deg, rgba(79, 70, 229, 0.22), rgba(15, 23, 42, 0.8))',
-        border: 'rgba(129, 140, 248, 0.35)',
-        glow: 'rgba(99, 102, 241, 0.35)',
-        btnBg: 'linear-gradient(135deg, #4f46e5, #4338ca)'
+        color: '#3d5afe',
+        gradient: 'linear-gradient(135deg, rgba(61, 90, 254, 0.28), rgba(15, 23, 42, 0.85))',
+        border: 'rgba(61, 90, 254, 0.65)',
+        glow: 'rgba(61, 90, 254, 0.55)',
+        btnBg: 'linear-gradient(135deg, #304ffe, #1a237e)'
       },
       {
         id: 'quiz',
@@ -86458,11 +86458,11 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         desc: 'Jonli testlar, qiziqarli savollar va interaktiv sinovlar',
         icon: '⚡',
         badge: 'Live Quiz',
-        color: '#fb7185',
-        gradient: 'linear-gradient(135deg, rgba(225, 29, 72, 0.22), rgba(15, 23, 42, 0.8))',
-        border: 'rgba(251, 113, 133, 0.35)',
-        glow: 'rgba(244, 63, 94, 0.35)',
-        btnBg: 'linear-gradient(135deg, #e11d48, #be123c)'
+        color: '#ff1744',
+        gradient: 'linear-gradient(135deg, rgba(255, 23, 68, 0.28), rgba(15, 23, 42, 0.85))',
+        border: 'rgba(255, 23, 68, 0.65)',
+        glow: 'rgba(255, 23, 68, 0.55)',
+        btnBg: 'linear-gradient(135deg, #d50000, #b71c1c)'
       }
     ];
 
