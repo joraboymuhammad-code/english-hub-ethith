@@ -7,78 +7,77 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1761463060596,
+      "created": 1792609541611,
       "students": [
         {
           "id": "std_1",
-          "name": "Ashurov Dilyorbek",
+          "name": "Ashurov Dilyorbek Azizbek o'g'li",
           "email": "ashurov@ethith.uz",
-          "joinedAt": "2026-09-01",
-          "parentPhone": ""
+          "joinedAt": "2026-09-01"
         },
         {
           "id": "std_2",
-          "name": "Ergasheva Madina",
+          "name": "Ergasheva Madina Asad qizi",
           "email": "ergasheva@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_3",
-          "name": "Erkinov Aslbekjon",
+          "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
           "email": "erkinov@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_4",
-          "name": "JO‘RABOYEV MUXAMMADYUSUF",
+          "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
           "email": "joraboyev@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_5",
-          "name": "Jo'raboyev Javoxir",
+          "name": "Jo'raboyev Javoxir Murod o'g'li",
           "email": "javoxir@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_6",
-          "name": "Mavlonova Ruxshona",
+          "name": "Mavlonova Ruxshona Oybek qizi",
           "email": "mavlonova@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_7",
-          "name": "Muxtaraliyeva Dilora",
+          "name": "Muxtaraliyeva Dilora Dilshod qizi",
           "email": "muxtaraliyeva@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_8",
-          "name": "O'razboyev O'tkir",
+          "name": "O'razboyev O'tkir Baxtiyor o'g'li",
           "email": "orazboyev@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_9",
-          "name": "Saparova Aida",
+          "name": "Saparova Aida Sarvar qizi",
           "email": "saparova@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_10",
-          "name": "Umarov Nursulton",
+          "name": "Umarov Nursulton Alisher o'g'li",
           "email": "umarov@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_11",
-          "name": "Xolmurodova Muazzam",
+          "name": "Xolmurodova Muazzam G'ulom qizi",
           "email": "xolmurodova@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_12",
-          "name": "Kaxarova Xumora",
+          "name": "Kaxarova Xumora Olimjon qizi",
           "email": "kaxarova@ethith.uz",
           "joinedAt": "2026-09-01"
         },
@@ -92,6 +91,12 @@
           "avatar": null,
           "nameStyle": null,
           "title": null
+        },
+        {
+          "id": "tg_6772427596",
+          "name": "Striker_uzb",
+          "email": "Mu_striker@telegram.org",
+          "joinedAt": "2026-10-26"
         }
       ],
       "messages": [
@@ -1085,6 +1090,16 @@
               "hwDone": true,
               "hwPct": 66,
               "hwLesson": "1.2"
+            },
+            "tg_6772427596": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792999900973
             }
           },
           "2026-10-22": {
@@ -1132,7 +1147,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792999378751,
+        "updatedAt": 1792999900973,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1150,9 +1165,7 @@
         },
         "seededWindowV3": true
       },
-      "customStudentPhones": {
-        "std_1": ""
-      }
+      "customStudentPhones": {}
     },
     {
       "id": "cls_1792041880052",
@@ -1164,51 +1177,57 @@
       "students": [
         {
           "id": "std_1",
-          "name": "Ashurov Dilyorbek",
+          "name": "Ashurov Dilyorbek Azizbek o'g'li",
           "email": "ashurov@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_2",
-          "name": "Ergasheva Madina",
+          "name": "Ergasheva Madina Asad qizi",
           "email": "ergasheva@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_3",
-          "name": "Erkinov Aslbekjon",
+          "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
           "email": "erkinov@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_4",
-          "name": "JO‘RABOYEV MUXAMMADYUSUF",
+          "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
           "email": "joraboyev@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_5",
-          "name": "Jo'raboyev Javoxir",
+          "name": "Jo'raboyev Javoxir Murod o'g'li",
           "email": "javoxir@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_6",
-          "name": "Mavlonova Ruxshona",
+          "name": "Mavlonova Ruxshona Oybek qizi",
           "email": "mavlonova@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_7",
-          "name": "Muxtaraliyeva Dilora",
+          "name": "Muxtaraliyeva Dilora Dilshod qizi",
           "email": "muxtaraliyeva@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_8",
-          "name": "O'razboyev O'tkir",
+          "name": "O'razboyev O'tkir Baxtiyor o'g'li",
           "email": "orazboyev@ethith.uz",
           "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "tg_6772427596",
+          "name": "Striker_uzb",
+          "email": "Mu_striker@telegram.org",
+          "joinedAt": "2026-10-26"
         }
       ],
       "messages": [],
@@ -1234,6 +1253,18 @@
             "std_3": {
               "status": "K"
             }
+          },
+          "2026-10-21": {
+            "tg_6772427596": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792999901066
+            }
           }
         },
         "lessonTypes": {
@@ -1256,7 +1287,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1792608489537
+        "updatedAt": 1792999901066
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -1284,13 +1315,50 @@
       "created": 1792999428651,
       "schedule": "har_kuni",
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-26": {
+            "tg_6772427596": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792999901135
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-26": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "updatedAt": 1792999428651
+        "updatedAt": 1792999901135,
+        "homeworks": {
+          "2026-10-26": {
+            "dateKey": "2026-10-26",
+            "dateDisp": "26.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        }
       },
       "customStudentNames": {},
-      "students": [],
+      "students": [
+        {
+          "id": "tg_6772427596",
+          "name": "Striker_uzb",
+          "email": "Mu_striker@telegram.org",
+          "joinedAt": "2026-10-26"
+        }
+      ],
       "messages": [
         {
           "id": "msg_init",
@@ -1301,7 +1369,22 @@
           "reactions": {}
         }
       ],
-      "pinnedId": null
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "customStudentPhones": {},
+      "activeHomework": {
+        "dateKey": "2026-10-26",
+        "dateDisp": "26.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     }
   ],
   "exams": [
@@ -1820,18 +1903,58 @@
   ],
   "accounts": [
     {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "admin@ethith.uz",
+      "createdAt": 1792429101989,
+      "coins": 5000,
+      "gifts": [],
+      "level": "C2",
+      "dailyMinutes": 0,
+      "updatedAt": 1792612121485,
+      "avatar": null,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 5000,
+      "gifts": [],
+      "nameStyle": null,
+      "createdAt": 1792502058827,
+      "level": "C2"
+    },
+    {
       "id": "tg_98124765",
       "role": "student",
       "name": "Striker_uzb",
       "email": "mu_striker@telegram.org",
-      "coins": 1100,
+      "coins": 101100,
+      "level": "A1",
+      "dailyMinutes": 0,
+      "nameStyle": null,
+      "victorySound": null,
+      "updatedAt": 1792997212404,
+      "gifts": []
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "teacher@ethith.uz",
+      "coins": 5000,
       "avatar": null,
       "level": "A1",
       "dailyMinutes": 0,
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "updatedAt": 1792673953881
+      "updatedAt": 1792606425762
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -1966,17 +2089,6 @@
       "level": "B1+",
       "dailyMinutes": 0,
       "updatedAt": 1792673953881
-    },
-    {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
-      "email": "ADMIN_12038F1aq8syash@ethith.uz",
-      "coins": 5000,
-      "createdAt": 1761463093502,
-      "level": "C2",
-      "dailyMinutes": 0,
-      "updatedAt": 1792612121485
     }
   ],
   "p2pListings": [],
@@ -42223,77 +42335,77 @@
     ]
   },
   "workbookOverridesTs": {
-    "4": 2026,
-    "5": 2026,
-    "9": 2026,
+    "4": 1792612525678,
+    "5": 1792612525678,
+    "9": 1792612525678,
     "10": 1761463225569,
-    "12": 2026,
-    "13": 2026,
-    "14": 2026,
-    "24": 2026,
-    "25": 2026,
-    "26": 2026,
-    "27": 2026,
-    "28": 2026,
-    "29": 2026,
-    "30": 2026,
-    "31": 2026,
-    "32": 2026,
-    "33": 2026,
-    "34": 2026,
-    "35": 2026,
-    "36": 2026,
-    "37": 2026,
-    "38": 2026,
-    "39": 2026,
-    "40": 2026,
-    "41": 2026,
-    "42": 2026,
-    "43": 2026,
-    "44": 2026,
-    "45": 2026,
-    "46": 2026,
-    "47": 2026,
-    "48": 2026,
-    "49": 2026,
-    "50": 2026,
-    "51": 2026,
-    "52": 2026,
-    "53": 2026,
-    "54": 2026,
-    "55": 2026,
-    "56": 2026,
-    "57": 2026,
-    "58": 2026,
-    "59": 2026,
-    "60": 2026,
-    "61": 2026,
-    "62": 2026,
-    "63": 2026,
-    "64": 2026,
-    "65": 2026,
-    "66": 2026,
-    "67": 2026,
-    "68": 2026,
-    "69": 2026,
-    "70": 2026,
-    "71": 2026,
-    "72": 2026,
-    "73": 2026,
-    "74": 2026,
-    "75": 2026,
-    "76": 2026,
-    "77": 2026,
-    "78": 2026,
-    "79": 2026,
-    "80": 2026,
-    "81": 2026,
-    "82": 2026,
-    "83": 2026,
-    "84": 2026,
-    "85": 2026,
-    "86": 2026,
-    "87": 1761463180247,
+    "12": 1792612525678,
+    "13": 1792612525678,
+    "14": 1792612525678,
+    "24": 1792612525678,
+    "25": 1792612525678,
+    "26": 1792612525678,
+    "27": 1792612525678,
+    "28": 1792612525678,
+    "29": 1792612525678,
+    "30": 1792612525678,
+    "31": 1792612525678,
+    "32": 1792612525678,
+    "33": 1792612525678,
+    "34": 1792612525678,
+    "35": 1792612525678,
+    "36": 1792612525678,
+    "37": 1792612525678,
+    "38": 1792612525678,
+    "39": 1792612525678,
+    "40": 1792612525678,
+    "41": 1792612525678,
+    "42": 1792612525678,
+    "43": 1792612525678,
+    "44": 1792612525678,
+    "45": 1792612525678,
+    "46": 1792612525678,
+    "47": 1792612525678,
+    "48": 1792612525678,
+    "49": 1792612525678,
+    "50": 1792612525678,
+    "51": 1792612525678,
+    "52": 1792612525678,
+    "53": 1792612525678,
+    "54": 1792612525678,
+    "55": 1792612525678,
+    "56": 1792612525678,
+    "57": 1792612525678,
+    "58": 1792612525678,
+    "59": 1792612525678,
+    "60": 1792612525678,
+    "61": 1792612525678,
+    "62": 1792612525678,
+    "63": 1792612525678,
+    "64": 1792612525678,
+    "65": 1792612525678,
+    "66": 1792612525678,
+    "67": 1792612525678,
+    "68": 1792612525678,
+    "69": 1792612525678,
+    "70": 1792612525678,
+    "71": 1792612525678,
+    "72": 1792612525678,
+    "73": 1792612525678,
+    "74": 1792612525678,
+    "75": 1792612525678,
+    "76": 1792612525678,
+    "77": 1792612525678,
+    "78": 1792612525678,
+    "79": 1792612525678,
+    "80": 1792612525678,
+    "81": 1792612525678,
+    "82": 1792612525678,
+    "83": 1792612525678,
+    "84": 1792612525678,
+    "85": 1792612525678,
+    "86": 1792612525678,
+    "87": 1792999533659,
     "2004": 2026,
     "2005": 2026,
     "2006": 2026,
@@ -42351,5 +42463,5 @@
     "2058": 2026,
     "2059": 2026
   },
-  "updatedAt": 1792999429286
+  "updatedAt": 1792999901731
 }
