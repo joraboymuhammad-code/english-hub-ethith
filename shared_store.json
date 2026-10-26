@@ -1096,11 +1096,6 @@
               "status": "",
               "score": ""
             }
-          },
-          "2025-10-15": {
-            "std_1": {
-              "status": "K"
-            }
           }
         },
         "lessonTypes": {
@@ -1120,7 +1115,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1761463251324,
+        "updatedAt": 1792608025450,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -42308,5 +42303,5 @@
     "2058": 2026,
     "2059": 2026
   },
-  "updatedAt": 1761463252650
+  "updatedAt": 1761463255549
 }
