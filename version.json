@@ -1,7 +1,7 @@
 {
-  "version": "2026.10.26.2000",
-  "timestamp": 1793035200000,
-  "label": "Release: Enterprise ERP, PC File Explorer, Smart Billing & Level Tests",
-  "buildTimestamp": 1793035200000,
+  "version": "2026.10.26.2015",
+  "timestamp": 1793036100000,
+  "label": "Release: Enterprise ERP, PC File Explorer, Smart Billing & Level Tests v2",
+  "buildTimestamp": 1793036100000,
   "description": "Full Enterprise LMS/ERP with Windows-style File Explorer (Drag & Drop, 1-attempt HW), Automated Cent-Offset Billing, Teacher Payroll, Timetable & Capacity, Telegram Member Search & 3-Month Level Test Auto-Drop"
 }

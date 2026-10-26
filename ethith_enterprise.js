@@ -22,36 +22,107 @@
   var _store = null;
 
   function getStore() {
-    if (window.EthithSync && window.EthithSync.store) {
-      _store = window.EthithSync.store;
-    } else if (!_store) {
-      try {
-        var raw = localStorage.getItem('ethith_shared_store');
-        _store = raw ? JSON.parse(raw) : {};
-      } catch (e) {
-        _store = {};
+    var appState = (window.EthithApp && window.EthithApp.state) || {};
+    if (!appState.centerSettings) {
+      appState.centerSettings = { card: "8600 4912 7731 9024", cardHolder: "ETHITH LEARNING CENTER", baseTuition: 200000, currency: "UZS" };
+    }
+    if (!appState.teachers || appState.teachers.length === 0) {
+      appState.teachers = [
+        { id: "admin_official_teacher", name: "Ustoz", email: "admin_12038f1aq8syash@ethith.uz", phone: "+998 90 123 45 67", card: "8600 1122 3344 5566", monthlySalary: 6000000, hourlyRate: 100000, teachingHours: 72, paidThisMonth: true, assignedClasses: ["cls_ethith_main"] },
+        { id: "t_zizi", name: "Zizi Ustoz", email: "zizi@ethith.uz", phone: "+998 93 987 65 43", card: "9860 7788 9900 1122", monthlySalary: 5500000, hourlyRate: 85000, teachingHours: 64, paidThisMonth: false, assignedClasses: ["cls_1792041880052"] }
+      ];
+    }
+    if (!appState.fileExplorer || !appState.fileExplorer.folders || appState.fileExplorer.folders.length === 0) {
+      appState.fileExplorer = {
+        folders: [
+          { id: "f_root", name: "Bosh Papka", parentId: null, createdAt: Date.now() },
+          { id: "f_grammar", name: "Grammar Mastery", parentId: "f_root", createdAt: Date.now() },
+          { id: "f_vocab", name: "Vocabulary Builder", parentId: "f_root", createdAt: Date.now() },
+          { id: "f_ielts", name: "IELTS Mock Tests", parentId: "f_root", createdAt: Date.now() }
+        ],
+        tests: [
+          {
+            id: "TST-7K2M9",
+            title: "Unit 7: Modals of Deduction & Obligation",
+            folderId: "f_grammar",
+            authorName: "Ustoz",
+            createdAt: Date.now(),
+            maxAttempts: 1,
+            questions: [
+              { q: "You ______ be exhausted after working for 14 hours straight!", options: ["must", "can't", "might not", "should"], correct: 0 },
+              { q: "He ______ have stolen the money; he was with me in London that evening.", options: ["must", "can't", "ought to", "might"], correct: 1 },
+              { q: "Students ______ wear uniforms during official exams according to school rules.", options: ["have to", "might", "could", "would"], correct: 0 },
+              { q: "You ______ tell anyone this secret; it's strictly confidential.", options: ["mustn't", "don't have to", "needn't", "may not"], correct: 0 },
+              { q: "We ______ have left earlier; look at all this traffic now!", options: ["should", "must", "can't", "might"], correct: 0 }
+            ]
+          },
+          {
+            id: "TST-4H8R1",
+            title: "Unit 8: Compound Adjectives & Participle Clauses",
+            folderId: "f_vocab",
+            authorName: "Zizi Ustoz",
+            createdAt: Date.now(),
+            maxAttempts: 1,
+            questions: [
+              { q: "A person who is relaxed and not easily upset is ______.", options: ["easy-going", "short-tempered", "well-mannered", "broad-minded"], correct: 0 },
+              { q: "______ for 10 a.m. tomorrow, the conference has now been rescheduled.", options: ["Scheduled", "Scheduling", "To schedule", "Having schedule"], correct: 0 },
+              { q: "Products ______ locally are often fresher and support the local economy.", options: ["grown", "growing", "have grown", "to grow"], correct: 0 },
+              { q: "A person with a great knowledge from books is ______.", options: ["well-educated", "quick-witted", "bad-tempered", "open-minded"], correct: 0 }
+            ]
+          }
+        ]
+      };
+    }
+    if (!appState.timetable || appState.timetable.length === 0) {
+      appState.timetable = [
+        { id: "tt_1", time: "08:00 - 09:30", days: "Du-Chor-Jum", teacherId: "t_zizi", teacherName: "Zizi Ustoz", classId: "cls_1792041880052", className: "Bizani gurux (B1+)", room: "Room 101 (Green Room)" },
+        { id: "tt_2", time: "10:00 - 11:30", days: "Du-Chor-Jum", teacherId: "admin_official_teacher", teacherName: "Ustoz", classId: "cls_ethith_main", className: "IELTS Intensive (B2)", room: "Room 102 (Blue Room)" },
+        { id: "tt_3", time: "14:00 - 15:30", days: "Se-Pay-Shan", teacherId: "t_zizi", teacherName: "Zizi Ustoz", classId: "cls_1792041880052", className: "Bizani gurux (B1+)", room: "Room 101 (Green Room)" },
+        { id: "tt_4", time: "16:00 - 17:30", days: "Se-Pay-Shan", teacherId: "admin_official_teacher", teacherName: "Ustoz", classId: "cls_ethith_main", className: "IELTS Intensive (B2)", room: "Room 102 (Blue Room)" }
+      ];
+    }
+    if (!appState.contests || appState.contests.length === 0) {
+      appState.contests = [
+        {
+          id: "cnt_kuzgi_2026",
+          title: "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
+          desc: "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
+          startDate: Date.now() - 86400000,
+          endDate: Date.now() + 86400000 * 7,
+          prizeCoins: 1000,
+          testId: "TST-7K2M9",
+          participants: {
+            "std_1": { name: "Ashurov Dilyorbek", score: 95, timeSec: 140, completedAt: Date.now() - 3600000 },
+            "std_2": { name: "Ergasheva Madina", score: 92, timeSec: 165, completedAt: Date.now() - 3500000 },
+            "std_4": { name: "JO‘RABOYEV MUXAMMADYUSUF", score: 98, timeSec: 110, completedAt: Date.now() - 3400000 },
+            "std_5": { name: "Jo'raboyev Javoxir", score: 88, timeSec: 180, completedAt: Date.now() - 3300000 },
+            "std_6": { name: "Mavlonova Ruxshona", score: 85, timeSec: 190, completedAt: Date.now() - 3200000 }
+          },
+          status: "active"
+        }
+      ];
+    }
+    if (!appState.payments) appState.payments = {};
+    if (!appState.payments['2026-10']) {
+      appState.payments['2026-10'] = {
+        "std_1": { status: "paid", baseAmount: 200000, offsetAmount: 200014, paidAmount: 200014, paidAt: Date.now() - 86400000 * 3, verifiedBy: "auto_offset" },
+        "std_2": { status: "paid", baseAmount: 200000, offsetAmount: 200028, paidAmount: 200028, paidAt: Date.now() - 86400000 * 2, verifiedBy: "auto_offset" },
+        "std_3": { status: "unpaid", baseAmount: 200000, offsetAmount: 200042, paidAmount: 0 },
+        "std_4": { status: "paid", baseAmount: 200000, offsetAmount: 200056, paidAmount: 200056, paidAt: Date.now() - 86400000, verifiedBy: "auto_offset" },
+        "std_5": { status: "pending", baseAmount: 200000, offsetAmount: 200070, paidAmount: 200070, receiptUrl: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>", paidAt: Date.now() - 7200000 }
+      };
+    }
+    if (!appState.classes || appState.classes.length === 0) {
+      if (window.EthithAttendance && window.EthithAttendance.classes && window.EthithAttendance.classes.length > 0) {
+        appState.classes = window.EthithAttendance.classes;
       }
     }
-    // Initialize default collections if missing
-    if (!_store.centerSettings) {
-      _store.centerSettings = { card: "8600 4912 7731 9024", cardHolder: "ETHITH LEARNING CENTER", baseTuition: 200000, currency: "UZS" };
-    }
-    if (!_store.teachers) _store.teachers = [];
-    if (!_store.fileExplorer) _store.fileExplorer = { folders: [], tests: [] };
-    if (!_store.timetable) _store.timetable = [];
-    if (!_store.contests) _store.contests = [];
-    if (!_store.payments) _store.payments = {};
-    if (!_store.classes) _store.classes = [];
-    return _store;
+    return appState;
   }
 
   function saveStore() {
-    if (window.EthithSync && typeof window.EthithSync.saveStore === 'function') {
-      window.EthithSync.saveStore(_store);
-    } else {
-      try {
-        localStorage.setItem('ethith_shared_store', JSON.stringify(_store));
-      } catch (e) {}
+    if (window.EthithApp && typeof window.EthithApp.saveState === 'function') {
+      window.EthithApp.saveState();
     }
   }
 

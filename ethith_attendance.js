@@ -952,7 +952,7 @@
     todayObj.setHours(0, 0, 0, 0);
     var todayKey = formatDateKey(todayObj);
 
-    dates.forEach(function(dt) {
+    dates.forEach(function(dt, dIdx) {
       var dKey = formatDateKey(dt);
       var dDisp = formatDisplayDate(dt);
       var isSunday = (dt.getDay() === 0);
@@ -2789,7 +2789,7 @@
     var hRow1 = ["№", "O'quvchi F.I.SH", "Qo'shilgan sana"];
     var hRow2 = ["", "", ""];
 
-    dates.forEach(function(dt) {
+    dates.forEach(function(dt, dIdx) {
       var dKey = formatDateKey(dt);
       var dDisp = formatDisplayDate(dt);
       var isSun = (dt.getDay() === 0);
