@@ -2569,21 +2569,33 @@
       var stCount = (cls.students || []).length;
       var maxCap = cls.maxCapacity || 16;
       var isFull = (stCount >= maxCap);
+      var pct = Math.min(100, Math.round((stCount / maxCap) * 100));
+      var barColor = isFull ? 'linear-gradient(90deg,#ef4444,#dc2626)' : (pct > 75 ? 'linear-gradient(90deg,#f59e0b,#eab308)' : 'linear-gradient(90deg,#10b981,#06b6d4)');
 
-      h += '<div class="ee-class-card" style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 24px rgba(0,0,0,0.3);">' +
+      h += '<div class="ee-class-card" style="background:rgba(15,23,42,0.88);border:1px solid ' + (isFull ? 'rgba(239,68,68,0.4)' : 'rgba(56,189,248,0.3)') + ';border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 10px 30px rgba(0,0,0,0.45);backdrop-filter:blur(20px);position:relative;">' +
         '<div>' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-            '<span style="background:rgba(14,165,233,0.15);color:#38bdf8;font-size:11px;font-weight:900;padding:3px 10px;border-radius:6px;border:1px solid rgba(14,165,233,0.3);">' + esc(cls.code || 'ETH-CLASS') + '</span>' +
-            '<span style="font-size:12px;font-weight:900;color:' + (isFull ? '#f87171' : '#34d399') + ';">' + stCount + ' / ' + maxCap + ' ta joy</span>' +
+            '<span style="background:rgba(14,165,233,0.15);color:#38bdf8;font-size:11.5px;font-weight:900;padding:3px 10px;border-radius:8px;border:1px solid rgba(14,165,233,0.35);font-family:monospace;letter-spacing:0.04em;">' + esc(cls.code || 'ETH-CLASS') + '</span>' +
+            '<button class="ee-quick-edit-cap-btn" data-cid="' + cls.id + '" title="Sig‘imni o‘zgartirish uchun bosing" style="background:' + (isFull ? 'rgba(239,68,68,0.18)' : 'rgba(16,185,129,0.18)') + ';color:' + (isFull ? '#f87171' : '#34d399') + ';font-size:12px;font-weight:900;padding:4px 12px;border-radius:8px;border:1px solid ' + (isFull ? 'rgba(239,68,68,0.4)' : 'rgba(16,185,129,0.4)') + ';cursor:pointer;display:inline-flex;align-items:center;gap:4px;">' +
+              '<span>' + stCount + ' / ' + maxCap + ' ta joy</span>' +
+              '<span style="font-size:10px;opacity:0.8;">✏️</span>' +
+            '</button>' +
           '</div>' +
-          '<h3 style="margin:0 0 6px;font-size:18px;font-weight:900;color:#f8fafc;">' + esc(cls.name) + '</h3>' +
-          '<div style="font-size:13px;color:#94a3b8;margin-bottom:12px;">👨‍🏫 ' + esc(cls.teacherName || 'Ustoz') + '</div>' +
+          '<h3 style="margin:0 0 6px;font-size:18px;font-weight:900;color:#f8fafc;letter-spacing:-0.2px;">' + esc(cls.name) + '</h3>' +
+          '<div style="display:flex;align-items:center;gap:12px;font-size:13px;color:#94a3b8;margin-bottom:6px;flex-wrap:wrap;">' +
+            '<span>👨‍🏫 ' + esc(cls.teacherName || cls.teacher || 'Ustoz') + '</span>' +
+            (cls.room ? '<span>🚪 ' + esc(cls.room) + '</span>' : '') +
+          '</div>' +
+          '<div class="ee-occupancy-track" style="width:100%;height:6px;background:rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;margin-top:8px;">' +
+            '<div class="ee-occupancy-fill" style="width:' + pct + '%;height:100%;background:' + barColor + ';border-radius:10px;transition:width 0.4s ease;"></div>' +
+          '</div>' +
         '</div>' +
 
         '<div>' +
-          '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">' +
-            '<button class="ee-open-attendance-btn" data-cid="' + cls.id + '" style="flex:1;background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:10px;padding:9px;font-size:12.5px;font-weight:800;cursor:pointer;">📋 Davomat Jurnali</button>' +
-            (isStaff ? '<button class="ee-add-student-search-btn" data-cid="' + cls.id + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;">+ O‘quvchi</button>' : '') +
+          '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">' +
+            '<button class="ee-open-attendance-btn" data-cid="' + cls.id + '" style="flex:1;min-width:130px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:10px;padding:9px;font-size:12.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.3);">📋 Davomat Jurnali</button>' +
+            (isStaff ? '<button class="ee-add-student-search-btn" data-cid="' + cls.id + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:10px;padding:9px 12px;font-size:12px;font-weight:800;cursor:pointer;">+ O‘quvchi</button>' : '') +
+            (isStaff ? '<button class="ee-edit-class-btn" data-cid="' + cls.id + '" title="Guruh va sig‘imni tahrirlash" style="background:rgba(168,85,247,0.15);color:#c084fc;border:1px solid rgba(168,85,247,0.4);border-radius:10px;padding:9px 12px;font-size:12px;font-weight:800;cursor:pointer;">✏️ Tahrir</button>' : '') +
           '</div>' +
         '</div>' +
       '</div>';
@@ -2597,7 +2609,7 @@
       createBtn.onclick = function() {
         var n = prompt("Guruh nomini kiriting:", "IELTS B2 Upper-Intensive");
         if (!n || !n.trim()) return;
-        var cap = parseInt(prompt("Maksimal o‘quvchilar sig‘imi:", "16"), 10) || 16;
+        var cap = parseInt(prompt("Maksimal o‘quvchilar sig‘imi (Joy soni):", "16"), 10) || 16;
         var code = "ETH-" + Math.random().toString(36).substring(2, 8).toUpperCase();
 
         classes.push({
@@ -2606,6 +2618,8 @@
           code: code,
           teacherId: getCurrentUser().id,
           teacherName: getCurrentUser().name || 'Ustoz',
+          teacher: getCurrentUser().name || 'Ustoz',
+          room: '302-xona',
           created: Date.now(),
           maxCapacity: cap,
           startDate: new Date().toISOString().split('T')[0],
@@ -2620,7 +2634,7 @@
       };
     }
 
-    // Join by code
+    // Join by code (Strict Single-Group Rule)
     var joinBtn = container.querySelector('#eeJoinClassByCodeBtn');
     if (joinBtn) {
       joinBtn.onclick = function() {
@@ -2629,18 +2643,41 @@
         var cls = classes.find(function(c) { return (c.code || '').toUpperCase() === code.trim().toUpperCase(); });
         if (!cls) { alert("Bunday kodli sinf topilmadi!"); return; }
         var curU = getCurrentUser();
-        if ((cls.students || []).length >= (cls.maxCapacity || 16)) {
-          alert("Kechirasiz, ushbu guruh to‘lgan! Boshqa o‘quvchi qo‘shila olmaydi.");
+
+        // Check if student is already in this class
+        if (cls.students && cls.students.some(function(s) { return (s.id && s.id === curU.id) || (s.email && s.email.toLowerCase().trim() === curU.email.toLowerCase().trim()); })) {
+          alert("Siz allaqachon ushbu guruhga a‘zosiz!");
           return;
         }
-        if (!cls.students.some(function(s) { return (s.id || s.email) === curU.id; })) {
-          cls.students.push({ id: curU.id, name: curU.name, email: curU.email, joinedAt: new Date().toISOString().split('T')[0] });
-          saveStore();
-          showToast("Siz '" + cls.name + "' guruhiga muvaffaqiyatli a‘zo bo‘ldingiz!");
-          EE.renderClassesView(container);
-        } else {
-          alert("Siz allaqachon ushbu guruhga a‘zosiz!");
+
+        if ((cls.students || []).length >= (cls.maxCapacity || 16)) {
+          alert("Kechirasiz, ushbu guruh to‘lgan! Maksimal sig‘im: " + cls.maxCapacity + " ta.");
+          return;
         }
+
+        // Strict Single Group Rule: Remove from all other classes
+        var prevClsName = '';
+        classes.forEach(function(c) {
+          if (c.id !== cls.id && Array.isArray(c.students)) {
+            var had = c.students.some(function(s) {
+              return (s.id && s.id === curU.id) || (s.email && curU.email && s.email.toLowerCase().trim() === curU.email.toLowerCase().trim());
+            });
+            if (had) prevClsName = c.name;
+            c.students = c.students.filter(function(s) {
+              return (s.id && s.id !== curU.id) && (!s.email || !curU.email || s.email.toLowerCase().trim() !== curU.email.toLowerCase().trim());
+            });
+          }
+        });
+
+        if (!cls.students) cls.students = [];
+        cls.students.push({ id: curU.id, name: curU.name, email: curU.email, joinedAt: new Date().toISOString().split('T')[0] });
+        saveStore();
+        if (prevClsName) {
+          showToast("Siz '" + prevClsName + "' guruhidan chiqib, '" + cls.name + "' guruhiga ulandingiz!");
+        } else {
+          showToast("Siz '" + cls.name + "' guruhiga muvaffaqiyatli a‘zo bo‘ldingiz!");
+        }
+        EE.renderClassesView(container);
       };
     }
 
@@ -2662,88 +2699,499 @@
         EE.openTelegramSearchStudentModal(cid);
       };
     });
+
+    // Edit class modal triggers
+    container.querySelectorAll('.ee-edit-class-btn, .ee-quick-edit-cap-btn').forEach(function(b) {
+      b.onclick = function() {
+        var cid = b.getAttribute('data-cid');
+        EE.openEditClassModal(cid);
+      };
+    });
   };
 
-  // Telegram-style quick student addition
-  EE.openTelegramSearchStudentModal = function(classId) {
+  // ============================================================================
+  // EDIT CLASS & STUDENT CAPACITY MODAL
+  // ============================================================================
+  EE.openEditClassModal = function(classId) {
     var S = getStore();
-    var cls = S.classes.find(function(c) { return c.id === classId; });
+    var cls = (S.classes || []).find(function(c) { return c.id === classId; });
     if (!cls) return;
 
-    if ((cls.students || []).length >= (cls.maxCapacity || 16)) {
-      alert("⚠️ Guruh to‘lgan! Maksimal sig‘im: " + cls.maxCapacity + " ta.");
-      return;
-    }
-
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
-    var m = document.createElement('div');
-    m.id = 'eeTgSearchOverlay';
-    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(10px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;';
+    var existing = document.getElementById('eeEditClassOverlay');
+    if (existing) existing.remove();
 
-    m.innerHTML = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.3);border-radius:20px;max-width:520px;width:100%;padding:24px;color:#f8fafc;box-shadow:0 20px 50px rgba(0,0,0,0.6);">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">' +
+    var curCap = cls.maxCapacity || 16;
+    var curName = cls.name || '';
+    var curTeacher = cls.teacherName || cls.teacher || 'Ustoz';
+    var curRoom = cls.room || '302-xona';
+
+    var m = document.createElement('div');
+    m.id = 'eeEditClassOverlay';
+    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);z-index:2147483645;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    m.innerHTML = '<div style="max-width:480px;width:100%;background:rgba(15,23,42,0.95);border:1px solid rgba(56,189,248,0.35);border-radius:24px;padding:26px 28px;box-shadow:0 25px 60px rgba(0,0,0,0.7),0 0 40px rgba(56,189,248,0.15);color:#f8fafc;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">' +
         '<div style="display:flex;align-items:center;gap:10px;">' +
-          '<span style="font-size:22px;">🔍</span>' +
-          '<h3 style="margin:0;font-size:17px;font-weight:900;">Telegram Uslubida O‘quvchi Qidirish</h3>' +
+          '<span style="font-size:22px;">⚙️</span>' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Guruhni Tahrirlash</h3>' +
+            '<div style="font-size:12px;color:#38bdf8;font-weight:700;">Kod: ' + esc(cls.code || cls.id) + '</div>' +
+          '</div>' +
         '</div>' +
-        '<button id="eeCloseTgSearch" style="background:none;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">✕</button>' +
+        '<button id="eeCloseEditClass" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;line-height:1;">✕</button>' +
       '</div>' +
-      '<input type="text" id="eeTgSearchInp" placeholder="Ism yoki Gmail bo‘yicha qidiring..." style="width:100%;padding:12px 16px;background:#1e293b;border:1.5px solid rgba(56,189,248,0.4);border-radius:12px;color:#fff;font-weight:700;font-size:14px;box-sizing:border-box;margin-bottom:16px;outline:none;" />' +
-      '<div id="eeTgSearchResults" style="max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;"></div>' +
+
+      '<div style="display:flex;flex-direction:column;gap:14px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Guruh Nomi</label>' +
+          '<input type="text" id="eeEditClassName" value="' + esc(curName) + '" style="width:100%;padding:12px 14px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:12px;color:#fff;font-weight:700;font-size:14px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11px;font-weight:800;color:#38bdf8;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Maksimal O‘quvchilar Sig‘imi (Joy Soni)</label>' +
+          '<div style="display:flex;align-items:center;gap:10px;">' +
+            '<input type="number" id="eeEditClassCap" min="1" max="150" value="' + curCap + '" style="flex:1;padding:12px 14px;background:#1e293b;border:1.5px solid #38bdf8;border-radius:12px;color:#38bdf8;font-weight:900;font-size:18px;outline:none;box-sizing:border-box;" />' +
+            '<div style="display:flex;gap:6px;">' +
+              '<button type="button" class="ee-quick-cap-btn" data-cap="16" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:8px;padding:8px 10px;font-weight:800;font-size:12px;cursor:pointer;">16</button>' +
+              '<button type="button" class="ee-quick-cap-btn" data-cap="20" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:8px;padding:8px 10px;font-weight:800;font-size:12px;cursor:pointer;">20</button>' +
+              '<button type="button" class="ee-quick-cap-btn" data-cap="25" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:8px;padding:8px 10px;font-weight:800;font-size:12px;cursor:pointer;">25</button>' +
+              '<button type="button" class="ee-quick-cap-btn" data-cap="30" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:8px;padding:8px 10px;font-weight:800;font-size:12px;cursor:pointer;">30</button>' +
+            '</div>' +
+          '</div>' +
+          '<div style="font-size:11.5px;color:#94a3b8;margin-top:4px;">Hozirda a‘zo o‘quvchilar soni: <b style="color:#f8fafc;">' + (cls.students || []).length + ' ta</b></div>' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Ustoz Ismi</label>' +
+          '<input type="text" id="eeEditClassTeacher" value="' + esc(curTeacher) + '" style="width:100%;padding:12px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:14px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Dars Xonasi</label>' +
+          '<input type="text" id="eeEditClassRoom" value="' + esc(curRoom) + '" style="width:100%;padding:12px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:14px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+      '</div>' +
+
+      '<div style="display:flex;gap:12px;margin-top:24px;">' +
+        '<button id="eeCancelEditClass" style="flex:1;background:rgba(255,255,255,0.08);color:#94a3b8;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;">Bekor Qilish</button>' +
+        '<button id="eeSaveEditClass" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:12px;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 4px 15px rgba(2,132,199,0.4);">💾 Saqlash</button>' +
+      '</div>' +
     '</div>';
 
     modalRoot.appendChild(m);
     var close = function() { m.remove(); };
+    m.querySelector('#eeCloseEditClass').onclick = close;
+    m.querySelector('#eeCancelEditClass').onclick = close;
+
+    m.querySelectorAll('.ee-quick-cap-btn').forEach(function(b) {
+      b.onclick = function() {
+        m.querySelector('#eeEditClassCap').value = b.getAttribute('data-cap');
+      };
+    });
+
+    m.querySelector('#eeSaveEditClass').onclick = function() {
+      var nName = m.querySelector('#eeEditClassName').value.trim();
+      var nCap = parseInt(m.querySelector('#eeEditClassCap').value, 10);
+      var nTeacher = m.querySelector('#eeEditClassTeacher').value.trim();
+      var nRoom = m.querySelector('#eeEditClassRoom').value.trim();
+
+      if (!nName) { alert("Guruh nomini kiriting!"); return; }
+      if (!nCap || nCap < 1) nCap = 16;
+
+      cls.name = nName;
+      cls.maxCapacity = nCap;
+      cls.teacherName = nTeacher || 'Ustoz';
+      cls.teacher = nTeacher || 'Ustoz';
+      cls.room = nRoom || '302-xona';
+
+      saveStore();
+      showToast("Guruh ma‘lumotlari va sig‘imi (" + nCap + " ta) muvaffaqiyatli saqlandi!");
+      close();
+
+      var classesWrap = document.querySelector('.ee-classes-wrap');
+      if (classesWrap && classesWrap.parentElement) {
+        EE.renderClassesView(classesWrap.parentElement);
+      }
+      if (window.EthithApp && typeof window.EthithApp.refreshView === 'function') {
+        window.EthithApp.refreshView();
+      } else if (window.go && window.location.hash.includes('dash')) {
+        window.go('dash');
+      }
+    };
+  };
+
+  // ============================================================================
+  // TELEGRAM-STYLE QUICK STUDENT ADDITION & INSTANT REGISTRATION
+  // STRICT SINGLE-GROUP RULE ENFORCED
+  // ============================================================================
+  EE.openTelegramSearchStudentModal = function(classId) {
+    var S = getStore();
+    var cls = (S.classes || []).find(function(c) { return c.id === classId; });
+    if (!cls) return;
+
+    var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
+    var existing = document.getElementById('eeTgSearchOverlay');
+    if (existing) existing.remove();
+
+    var m = document.createElement('div');
+    m.id = 'eeTgSearchOverlay';
+    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);z-index:2147483645;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    var curCap = cls.maxCapacity || 16;
+    var curCount = (cls.students || []).length;
+    var isFull = curCount >= curCap;
+
+    m.innerHTML = '<div style="background:rgba(15,23,42,0.96);border:1px solid rgba(56,189,248,0.35);border-radius:24px;max-width:560px;width:100%;padding:24px 26px;color:#f8fafc;box-shadow:0 25px 60px rgba(0,0,0,0.7),0 0 40px rgba(56,189,248,0.15);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:22px;">🔍</span>' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:17.5px;font-weight:900;color:#fff;">Guruhga O‘quvchi Qo‘shish & Boshqarish</h3>' +
+            '<div style="font-size:12px;color:#94a3b8;margin-top:2px;">Guruh: <b style="color:#38bdf8;">' + esc(cls.name) + '</b> • Sig‘im: <b id="eeTgModalCapText" style="color:' + (isFull ? '#f87171' : '#34d399') + ';">' + curCount + ' / ' + curCap + ' ta joy</b></div>' +
+          '</div>' +
+        '</div>' +
+        '<button id="eeCloseTgSearch" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;line-height:1;">✕</button>' +
+      '</div>' +
+
+      // Capacity Notice if full
+      '<div id="eeTgCapAlert" style="' + (isFull ? 'display:flex;' : 'display:none;') + 'align-items:center;justify-content:space-between;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:12.5px;color:#fca5a5;">' +
+        '<span>⚠️ Guruh sig‘imi to‘lgan (' + curCount + ' / ' + curCap + ').</span>' +
+        '<button id="eeTgQuickBumpCapBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:11.5px;font-weight:900;cursor:pointer;">+5 Joy Qo‘shish</button>' +
+      '</div>' +
+
+      '<input type="text" id="eeTgSearchInp" placeholder="Ism yoki Gmail bo‘yicha qidiring..." style="width:100%;padding:12px 16px;background:#1e293b;border:1.5px solid rgba(56,189,248,0.4);border-radius:12px;color:#fff;font-weight:700;font-size:14px;box-sizing:border-box;margin-bottom:14px;outline:none;" />' +
+
+      // Quick inline student creator
+      '<div style="background:rgba(30,41,59,0.6);border:1px dashed rgba(56,189,248,0.3);border-radius:14px;padding:12px 14px;margin-bottom:14px;">' +
+        '<div style="font-size:12px;font-weight:800;color:#38bdf8;margin-bottom:8px;">➕ Yangi O‘quvchini Ro‘yxatga Olish va Ushbu Guruhga Qo‘shish:</div>' +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+          '<input type="text" id="eeNewStName" placeholder="Ism va familiyasi" style="flex:1;min-width:140px;padding:8px 12px;background:#0f172a;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:12.5px;outline:none;" />' +
+          '<input type="text" id="eeNewStEmail" placeholder="Gmail yoki telefon" style="flex:1;min-width:140px;padding:8px 12px;background:#0f172a;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:12.5px;outline:none;" />' +
+          '<button id="eeCreateAndAddStBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:900;cursor:pointer;white-space:nowrap;">+ Qo‘shish</button>' +
+        '</div>' +
+      '</div>' +
+
+      '<div style="font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Barcha Tizimdagi O‘quvchilar:</div>' +
+      '<div id="eeTgSearchResults" style="max-height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px;"></div>' +
+    '</div>';
+
+    modalRoot.appendChild(m);
+    var close = function() {
+      m.remove();
+      var classesWrap = document.querySelector('.ee-classes-wrap');
+      if (classesWrap && classesWrap.parentElement) {
+        EE.renderClassesView(classesWrap.parentElement);
+      }
+      if (window.go && window.location.hash.includes('dash')) {
+        window.go('dash');
+      }
+    };
     m.querySelector('#eeCloseTgSearch').onclick = close;
 
     var inp = m.querySelector('#eeTgSearchInp');
     var resBox = m.querySelector('#eeTgSearchResults');
 
+    // Quick capacity bump handler
+    var bumpBtn = m.querySelector('#eeTgQuickBumpCapBtn');
+    if (bumpBtn) {
+      bumpBtn.onclick = function() {
+        cls.maxCapacity = (cls.maxCapacity || 16) + 5;
+        saveStore();
+        showToast("Guruh sig‘imi 5 taga oshirildi! Yangi sig‘im: " + cls.maxCapacity + " ta.");
+        m.querySelector('#eeTgCapAlert').style.display = 'none';
+        m.querySelector('#eeTgModalCapText').textContent = (cls.students || []).length + ' / ' + cls.maxCapacity + ' ta joy';
+        m.querySelector('#eeTgModalCapText').style.color = '#34d399';
+        search(inp.value);
+      };
+    }
+
+    // Quick new student creator handler
+    m.querySelector('#eeCreateAndAddStBtn').onclick = function() {
+      var nName = m.querySelector('#eeNewStName').value.trim();
+      var nEmail = m.querySelector('#eeNewStEmail').value.trim().toLowerCase();
+      if (!nName) { alert("O‘quvchi ism va familiyasini kiriting!"); return; }
+      if (!nEmail) nEmail = 'student_' + Date.now() + '@ethith.uz';
+
+      if (!Array.isArray(S.accounts)) S.accounts = [];
+      var existAcc = S.accounts.find(function(a) {
+        return (a.email && a.email.toLowerCase().trim() === nEmail) || (a.id && a.id === nEmail);
+      });
+
+      var stId = existAcc ? existAcc.id : ('st_' + Date.now());
+      if (!existAcc) {
+        var newAccObj = {
+          id: stId,
+          name: nName,
+          email: nEmail,
+          role: 'student',
+          coins: 150,
+          joinedAt: new Date().toISOString().split('T')[0]
+        };
+        S.accounts.push(newAccObj);
+        try {
+          var allU = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+          allU.push(newAccObj);
+          localStorage.setItem('ethith_all_registered_users', JSON.stringify(allU));
+        } catch(e) {}
+      } else {
+        existAcc.name = nName;
+      }
+
+      // Enforce strict single group rule: remove from all other groups
+      S.classes.forEach(function(other) {
+        if (other.id !== cls.id && Array.isArray(other.students)) {
+          other.students = other.students.filter(function(s) {
+            return (s.id && s.id !== stId) && (!s.email || s.email.toLowerCase().trim() !== nEmail);
+          });
+        }
+      });
+
+      // Add to this class
+      if (!cls.students) cls.students = [];
+      var alreadyIn = cls.students.some(function(s) {
+        return (s.id && s.id === stId) || (s.email && s.email.toLowerCase().trim() === nEmail);
+      });
+
+      if (!alreadyIn) {
+        cls.students.push({
+          id: stId,
+          name: nName,
+          email: nEmail,
+          joinedAt: new Date().toISOString().split('T')[0]
+        });
+        if (cls.students.length > (cls.maxCapacity || 16)) {
+          cls.maxCapacity = cls.students.length;
+        }
+      }
+
+      saveStore();
+      showToast(nName + " ro‘yxatdan o‘tkazildi va guruhga qo‘shildi!");
+      m.querySelector('#eeNewStName').value = '';
+      m.querySelector('#eeNewStEmail').value = '';
+      search(inp.value);
+    };
+
     function search(query) {
       query = (query || '').toLowerCase().trim();
-      var matches = (S.accounts || []).filter(function(a) {
-        if (a.role === 'teacher') return false;
-        var inCls = (cls.students || []).some(function(s) { return (s.id || s.email) === a.id; });
-        if (inCls) return false;
+
+      // Gather ALL known students across the platform
+      var allStudentsMap = {};
+
+      // 1. S.accounts
+      (S.accounts || []).forEach(function(a) {
+        if (!a || a.role === 'teacher' || a.role === 'admin' || a.role === 'administrator') return;
+        var key = (a.email || a.id || '').toLowerCase().trim();
+        if (!key) return;
+        allStudentsMap[key] = {
+          id: a.id || key,
+          name: a.name || 'O‘quvchi',
+          email: a.email || key
+        };
+      });
+
+      // 2. localStorage 'ethith_all_registered_users'
+      try {
+        var localUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
+        localUsers.forEach(function(u) {
+          if (!u || u.role === 'teacher' || u.role === 'admin' || u.role === 'administrator') return;
+          var key = (u.email || u.id || '').toLowerCase().trim();
+          if (!key) return;
+          if (!allStudentsMap[key]) {
+            allStudentsMap[key] = {
+              id: u.id || key,
+              name: u.name || 'O‘quvchi',
+              email: u.email || key
+            };
+          } else if (u.name && (!allStudentsMap[key].name || allStudentsMap[key].name === 'O‘quvchi')) {
+            allStudentsMap[key].name = u.name;
+          }
+        });
+      } catch(e) {}
+
+      // 3. Students from all classes
+      (S.classes || []).forEach(function(c) {
+        (c.students || []).forEach(function(st) {
+          if (!st) return;
+          var key = (st.email || st.id || '').toLowerCase().trim();
+          if (!key) return;
+          if (!allStudentsMap[key]) {
+            allStudentsMap[key] = {
+              id: st.id || key,
+              name: st.name || 'O‘quvchi',
+              email: st.email || key
+            };
+          } else if (st.name && (!allStudentsMap[key].name || allStudentsMap[key].name === 'O‘quvchi')) {
+            allStudentsMap[key].name = st.name;
+          }
+        });
+      });
+
+      var studentList = Object.values(allStudentsMap);
+
+      var matches = studentList.filter(function(a) {
         if (!query) return true;
         return (a.name && a.name.toLowerCase().includes(query)) || (a.email && a.email.toLowerCase().includes(query));
-      }).slice(0, 10);
+      });
+
+      // Sort: unassigned first, then other classes, then already in this class
+      matches.sort(function(a, b) {
+        var aInThis = (cls.students || []).some(function(s) { return (s.id && s.id === a.id) || (s.email && s.email.toLowerCase().trim() === a.email.toLowerCase().trim()); });
+        var bInThis = (cls.students || []).some(function(s) { return (s.id && s.id === b.id) || (s.email && s.email.toLowerCase().trim() === b.email.toLowerCase().trim()); });
+        if (aInThis && !bInThis) return 1;
+        if (!aInThis && bInThis) return -1;
+        return 0;
+      });
 
       if (matches.length === 0) {
-        resBox.innerHTML = '<div style="text-align:center;color:#64748b;padding:20px;">Mos o‘quvchilar topilmadi</div>';
+        resBox.innerHTML = '<div style="text-align:center;color:#64748b;padding:24px;font-size:13.5px;">Mos o‘quvchilar topilmadi.<br><span style="font-size:12px;color:#94a3b8;">Yuqoridagi shakl orqali yangi o‘quvchi qo‘shishingiz mumkin.</span></div>';
         return;
       }
 
       var rh = '';
       matches.forEach(function(acc) {
-        rh += '<div style="background:#1e293b;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;">' +
-          '<div style="display:flex;align-items:center;gap:10px;">' +
-            '<span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;">' +
+        // Determine current group of this student
+        var enrolledClass = null;
+        (S.classes || []).forEach(function(c) {
+          var found = (c.students || []).some(function(s) {
+            return (s.id && s.id === acc.id) || (s.email && acc.email && s.email.toLowerCase().trim() === acc.email.toLowerCase().trim());
+          });
+          if (found) enrolledClass = c;
+        });
+
+        var isInThisClass = enrolledClass && (enrolledClass.id === cls.id);
+        var isInOtherClass = enrolledClass && (enrolledClass.id !== cls.id);
+
+        var statusBadge = '';
+        var actionBtn = '';
+
+        if (isInThisClass) {
+          statusBadge = '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">✓ Ushbu guruhda</span>';
+          actionBtn = '<button class="ee-remove-st-btn" data-accid="' + acc.id + '" data-accemail="' + esc(acc.email) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.4);border-radius:8px;padding:6px 10px;font-size:11.5px;font-weight:800;cursor:pointer;">Chiqarish</button>';
+        } else if (isInOtherClass) {
+          statusBadge = '<span style="background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;" title="Boshqa guruh a‘zosi">⚠️ ' + esc(enrolledClass.name) + '</span>';
+          actionBtn = '<button class="ee-transfer-st-btn" data-accid="' + acc.id + '" data-accemail="' + esc(acc.email) + '" data-oldclsid="' + enrolledClass.id + '" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">⇄ Ko‘chirish</button>';
+        } else {
+          statusBadge = '<span style="background:rgba(56,189,248,0.12);color:#38bdf8;border:1px solid rgba(56,189,248,0.25);padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;">Guruhsiz</span>';
+          actionBtn = '<button class="ee-add-st-btn" data-accid="' + acc.id + '" data-accemail="' + esc(acc.email) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">+ Qo‘shish</button>';
+        }
+
+        rh += '<div style="background:#1e293b;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;">' +
+          '<div style="display:flex;align-items:center;gap:10px;min-width:0;">' +
+            '<span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;flex-shrink:0;">' +
               esc((acc.name || 'O').charAt(0).toUpperCase()) +
             '</span>' +
-            '<div>' +
-              '<div style="font-size:13.5px;font-weight:800;color:#f8fafc;">' + esc(acc.name || 'O‘quvchi') + '</div>' +
-              '<div style="font-size:11.5px;color:#94a3b8;">' + esc(acc.email) + '</div>' +
+            '<div style="min-width:0;">' +
+              '<div style="font-size:13.5px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(acc.name || 'O‘quvchi') + '</div>' +
+              '<div style="font-size:11px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(acc.email) + '</div>' +
             '</div>' +
           '</div>' +
-          '<button class="ee-add-st-btn" data-accid="' + acc.id + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:800;cursor:pointer;">+ Qo‘shish</button>' +
+          '<div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">' +
+            statusBadge +
+            actionBtn +
+          '</div>' +
         '</div>';
       });
       resBox.innerHTML = rh;
 
+      // Bind Add button (Unassigned -> Group)
       resBox.querySelectorAll('.ee-add-st-btn').forEach(function(b) {
         b.onclick = function() {
           var accId = b.getAttribute('data-accid');
-          var acc = S.accounts.find(function(x) { return x.id === accId; });
+          var accEmail = b.getAttribute('data-accemail');
+          var acc = studentList.find(function(x) { return x.id === accId || (x.email && x.email === accEmail); });
           if (!acc) return;
+
+          // Strict Single Group Rule: Remove from all other groups
+          S.classes.forEach(function(other) {
+            if (other.id !== cls.id && Array.isArray(other.students)) {
+              other.students = other.students.filter(function(s) {
+                return (s.id && s.id !== acc.id) && (!s.email || !acc.email || s.email.toLowerCase().trim() !== acc.email.toLowerCase().trim());
+              });
+            }
+          });
+
+          if (!cls.students) cls.students = [];
           cls.students.push({
             id: acc.id,
             name: acc.name,
             email: acc.email,
             joinedAt: new Date().toISOString().split('T')[0]
           });
+
+          if (cls.students.length > (cls.maxCapacity || 16)) {
+            cls.maxCapacity = cls.students.length;
+          }
+
           saveStore();
-          showToast(acc.name + " guruhga qo‘shildi!");
+          showToast(acc.name + " '" + cls.name + "' guruhiga qo‘shildi!");
+          m.querySelector('#eeTgModalCapText').textContent = cls.students.length + ' / ' + (cls.maxCapacity || 16) + ' ta joy';
+          search(inp.value);
+        };
+      });
+
+      // Bind Transfer button (Other Group -> This Group)
+      resBox.querySelectorAll('.ee-transfer-st-btn').forEach(function(b) {
+        b.onclick = function() {
+          var accId = b.getAttribute('data-accid');
+          var accEmail = b.getAttribute('data-accemail');
+          var oldClsId = b.getAttribute('data-oldclsid');
+          var acc = studentList.find(function(x) { return x.id === accId || (x.email && x.email === accEmail); });
+          var oldCls = (S.classes || []).find(function(c) { return c.id === oldClsId; });
+          if (!acc) return;
+
+          // Remove from old class
+          if (oldCls && Array.isArray(oldCls.students)) {
+            oldCls.students = oldCls.students.filter(function(s) {
+              return (s.id && s.id !== acc.id) && (!s.email || !acc.email || s.email.toLowerCase().trim() !== acc.email.toLowerCase().trim());
+            });
+          }
+
+          // Strict Single Group Rule: remove from any other class too
+          S.classes.forEach(function(other) {
+            if (other.id !== cls.id && Array.isArray(other.students)) {
+              other.students = other.students.filter(function(s) {
+                return (s.id && s.id !== acc.id) && (!s.email || !acc.email || s.email.toLowerCase().trim() !== acc.email.toLowerCase().trim());
+              });
+            }
+          });
+
+          if (!cls.students) cls.students = [];
+          cls.students.push({
+            id: acc.id,
+            name: acc.name,
+            email: acc.email,
+            joinedAt: new Date().toISOString().split('T')[0]
+          });
+
+          if (cls.students.length > (cls.maxCapacity || 16)) {
+            cls.maxCapacity = cls.students.length;
+          }
+
+          saveStore();
+          showToast(acc.name + " '" + (oldCls ? oldCls.name : 'avvalgi') + "' guruhidan ushbu guruhga ko‘chirildi!");
+          m.querySelector('#eeTgModalCapText').textContent = cls.students.length + ' / ' + (cls.maxCapacity || 16) + ' ta joy';
+          search(inp.value);
+        };
+      });
+
+      // Bind Remove button (Remove from this group)
+      resBox.querySelectorAll('.ee-remove-st-btn').forEach(function(b) {
+        b.onclick = function() {
+          var accId = b.getAttribute('data-accid');
+          var accEmail = b.getAttribute('data-accemail');
+          var acc = studentList.find(function(x) { return x.id === accId || (x.email && x.email === accEmail); });
+          var stName = acc ? acc.name : 'O‘quvchi';
+
+          if (!confirm(stName + " ni guruhdan chiqarishni tasdiqlaysizmi?")) return;
+
+          cls.students = (cls.students || []).filter(function(s) {
+            return (s.id && s.id !== accId) && (!s.email || !accEmail || s.email.toLowerCase().trim() !== accEmail.toLowerCase().trim());
+          });
+
+          saveStore();
+          showToast(stName + " guruhdan chiqarildi!");
+          m.querySelector('#eeTgModalCapText').textContent = cls.students.length + ' / ' + (cls.maxCapacity || 16) + ' ta joy';
           search(inp.value);
         };
       });
@@ -2751,7 +3199,7 @@
 
     inp.oninput = function() { search(inp.value); };
     search('');
-    setTimeout(function() { inp.focus(); }, 50);
+    setTimeout(function() { inp.focus(); }, 60);
   };
 
   // ============================================================================

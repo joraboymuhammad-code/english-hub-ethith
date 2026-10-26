@@ -1006,32 +1006,10 @@
         var dNowObj = new Date();
         var todayIsoStr = dNowObj.getFullYear() + '-' + String(dNowObj.getMonth() + 1).padStart(2, '0') + '-' + String(dNowObj.getDate()).padStart(2, '0');
 
-        // Helper to ensure student is enrolled in the main class immediately
+        // Registered students belong to the platform (S.accounts) and are enrolled into groups by teachers/admins or via class codes
         function autoEnrollStudentInMainClass(studentUser) {
-          if (!studentUser || studentUser.role === 'teacher') return;
-          if (!Array.isArray(S.classes) || S.classes.length === 0) return;
-          var mainCls = S.classes[0];
-          if (!mainCls.students) mainCls.students = [];
-          var alreadyIn = mainCls.students.some(function(s) {
-            return (s.email && s.email.toLowerCase().trim() === cleanEmail) || (s.id && s.id === studentUser.id);
-          });
-          if (!alreadyIn) {
-            var stEntry = {
-              id: studentUser.id || cleanEmail,
-              name: studentUser.name || name,
-              email: cleanEmail,
-              joinedAt: todayIsoStr,
-              dailyMinutes: studentUser.dailyMinutes || 0
-            };
-            mainCls.students.push(stEntry);
-            if (window.EthithSync && window.EthithSync.publishLive) {
-              window.EthithSync.publishLive({
-                type: 'STUDENT_JOIN',
-                classId: mainCls.code || mainCls.id,
-                student: stEntry
-              });
-            }
-          }
+          // Strict single-group: do not blindly force into class 0
+          return;
         }
 
         // SCENARIO 1: Existing Account — Instant Login
