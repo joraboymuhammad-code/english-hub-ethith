@@ -13,7 +13,8 @@
           "id": "std_1",
           "name": "Ashurov Dilyorbek",
           "email": "ashurov@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-01",
+          "parentPhone": ""
         },
         {
           "id": "std_2",
@@ -135,7 +136,9 @@
         "assignedAt": 1792607960771
       },
       "schedule": "har_kuni",
-      "customStudentNames": {},
+      "customStudentNames": {
+        "std_1": "Ashurov Dilyorbek"
+      },
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -1121,7 +1124,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792999346301,
+        "updatedAt": 1792999357120,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1139,7 +1142,9 @@
         },
         "seededWindowV3": true
       },
-      "customStudentPhones": {}
+      "customStudentPhones": {
+        "std_1": ""
+      }
     },
     {
       "id": "cls_1792041880052",
@@ -42309,5 +42314,5 @@
     "2058": 2026,
     "2059": 2026
   },
-  "updatedAt": 1792999348620
+  "updatedAt": 1792999357776
 }
