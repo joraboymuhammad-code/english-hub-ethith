@@ -8977,3 +8977,122 @@ html, body {
   border-radius: 16px !important;
   color: #f1f5f9 !important;
 }
+
+
+/* ==========================================================================
+   ETHITH CYBER-GLASS MOTION CARDS
+   Harmonious Themed Accents, Floating Hover, Ambient Glow & Shimmer
+   ========================================================================== */
+
+.eth-motion-card {
+  position: relative !important;
+  border-radius: 20px !important;
+  padding: 22px 20px !important;
+  border: 1px solid var(--c-border) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  cursor: pointer !important;
+  overflow: hidden !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.eth-motion-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  border-color: var(--c-accent) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px var(--c-glow) !important;
+}
+
+/* Ambient Radial Glow Blob in background */
+.eth-card-ambient-glow {
+  position: absolute !important;
+  right: -30px !important;
+  top: -30px !important;
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle, var(--c-accent), transparent 70%) !important;
+  filter: blur(30px) !important;
+  opacity: 0.35 !important;
+  pointer-events: none !important;
+  transition: all 0.4s ease !important;
+  z-index: 1 !important;
+}
+
+.eth-motion-card:hover .eth-card-ambient-glow {
+  opacity: 0.75 !important;
+  transform: scale(1.35) !important;
+}
+
+/* Shimmer Sweep Animation on Hover */
+.eth-card-shimmer {
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 60% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent) !important;
+  transform: skewX(-25deg) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: none !important;
+}
+
+.eth-motion-card:hover .eth-card-shimmer {
+  animation: ethShimmerSweep 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+@keyframes ethShimmerSweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Icon Squircle */
+.eth-card-icon-box {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.eth-motion-card:hover .eth-card-icon-box {
+  transform: scale(1.12) rotate(5deg) !important;
+}
+
+/* Badge */
+.eth-card-badge {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  padding: 3px 9px !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+}
+
+/* Action Button */
+.eth-card-action-btn {
+  color: #ffffff !important;
+  font-size: 12.5px !important;
+  font-weight: 800 !important;
+  padding: 7px 16px !important;
+  border-radius: 10px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.eth-arrow-move {
+  display: inline-block !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.eth-motion-card:hover .eth-arrow-move {
+  transform: translateX(5px) !important;
+}

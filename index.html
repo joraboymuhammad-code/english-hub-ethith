@@ -324,6 +324,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9309,10 +9310,129 @@ html, body {
   color: #f1f5f9 !important;
 }
 
+
+/* ==========================================================================
+   ETHITH CYBER-GLASS MOTION CARDS
+   Harmonious Themed Accents, Floating Hover, Ambient Glow & Shimmer
+   ========================================================================== */
+
+.eth-motion-card {
+  position: relative !important;
+  border-radius: 20px !important;
+  padding: 22px 20px !important;
+  border: 1px solid var(--c-border) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  cursor: pointer !important;
+  overflow: hidden !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.eth-motion-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  border-color: var(--c-accent) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px var(--c-glow) !important;
+}
+
+/* Ambient Radial Glow Blob in background */
+.eth-card-ambient-glow {
+  position: absolute !important;
+  right: -30px !important;
+  top: -30px !important;
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle, var(--c-accent), transparent 70%) !important;
+  filter: blur(30px) !important;
+  opacity: 0.35 !important;
+  pointer-events: none !important;
+  transition: all 0.4s ease !important;
+  z-index: 1 !important;
+}
+
+.eth-motion-card:hover .eth-card-ambient-glow {
+  opacity: 0.75 !important;
+  transform: scale(1.35) !important;
+}
+
+/* Shimmer Sweep Animation on Hover */
+.eth-card-shimmer {
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 60% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent) !important;
+  transform: skewX(-25deg) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: none !important;
+}
+
+.eth-motion-card:hover .eth-card-shimmer {
+  animation: ethShimmerSweep 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+@keyframes ethShimmerSweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Icon Squircle */
+.eth-card-icon-box {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.eth-motion-card:hover .eth-card-icon-box {
+  transform: scale(1.12) rotate(5deg) !important;
+}
+
+/* Badge */
+.eth-card-badge {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  padding: 3px 9px !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+}
+
+/* Action Button */
+.eth-card-action-btn {
+  color: #ffffff !important;
+  font-size: 12.5px !important;
+  font-weight: 800 !important;
+  padding: 7px 16px !important;
+  border-radius: 10px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.eth-arrow-move {
+  display: inline-block !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.eth-motion-card:hover .eth-arrow-move {
+  transform: translateX(5px) !important;
+}
+
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.26.2330";
+window.ETHITH_BUILD_VERSION = "2026.10.26.2345";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -86267,20 +86387,103 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
     h += '</div>';
 
-    // 3. TEZKOR BOSHQARUV VOSITALARI
-    h += '<div class="ap-sec" style="margin-top:20px;"><div><h2>' + ic('sparkles') + ' Tezkor Boshqaruv Vositalari</h2><p style="margin:2px 0 0;font-size:13px;color:#94a3b8;">Qo‘shimcha testlar, dars jadvallari, moliya va reyting</p></div></div>';
-    h += '<div class="ap-grid g4" style="grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:16px;">';
+    // 3. TEZKOR BOSHQARUV VOSITALARI (Cyber-Glass Motion Cards)
+    h += '<div class="ap-sec" style="margin-top:24px;"><div><h2>' + ic('sparkles') + ' Tezkor Boshqaruv Vositalari</h2><p style="margin:2px 0 0;font-size:13px;color:#94a3b8;">Qo‘shimcha testlar, dars jadvallari, moliya va reyting</p></div></div>';
+    h += '<div class="ap-grid g4" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));gap:18px;margin-bottom:30px;">';
 
-    [
-      ['q_exp', 'sparkles', 'Qo‘shimcha testlar', 'Kompyuter explorer kabi testlar va interaktiv rasm/PDF yaratuvchi', 'explorer'],
-      ['q_time', 'sparkles', 'Dars Jadvallari', 'Haftalik va kunlik dars jadvallari hamda xonalar', 'timetable'],
-      ['q_bill', 'sparkles', 'Oylik To‘lovlar', 'Aqlli tiyinli summa, kvitansiya tekshirish va moliya tahlili', 'billing'],
-      ['q_cont', 'trophy', 'Onlayn Musobaqalar', 'Vaqtli topshiriqlar va Top-10 Coin sovrinlari', 'contests'],
-      ['q_ai', 'sparkles', 'Ask AI Teacher', '24/7 sun‘iy intellekt repetitori bilan muloqot', 'ask_ai'],
-      ['q_quiz', 'sparkles', 'Quiz Test Studio', 'Jonli testlar va interaktiv sinovlar', 'quiz']
-    ].forEach(function(q) {
-      h += '<div class="ap-card ap-quick" style="cursor:pointer;background:rgba(15,23,42,0.65);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:16px;" data-go="' + q[4] + '">' +
-        ic(q[1], 'lg') + '<h3 style="font-size:15px;margin:8px 0 4px;">' + q[2] + '</h3><p style="font-size:12px;color:#94a3b8;line-height:1.4;">' + q[3] + '</p><span class="go">Ochish ' + ic('right') + '</span></div>';
+    var quickTools = [
+      {
+        id: 'explorer',
+        title: 'Qo‘shimcha testlar',
+        desc: 'Kompyuter explorer kabi testlar va interaktiv rasm/PDF yaratuvchi',
+        icon: '💻',
+        badge: 'Test Studio',
+        color: '#38bdf8',
+        gradient: 'linear-gradient(135deg, rgba(2, 132, 199, 0.22), rgba(15, 23, 42, 0.8))',
+        border: 'rgba(56, 189, 248, 0.35)',
+        glow: 'rgba(2, 132, 199, 0.35)',
+        btnBg: 'linear-gradient(135deg, #0284c7, #2563eb)'
+      },
+      {
+        id: 'timetable',
+        title: 'Dars Jadvallari',
+        desc: 'Haftalik va kunlik dars jadvallari hamda xonalar taqvimi',
+        icon: '📅',
+        badge: 'Jadval',
+        color: '#fbbf24',
+        gradient: 'linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(15, 23, 42, 0.8))',
+        border: 'rgba(251, 191, 36, 0.35)',
+        glow: 'rgba(245, 158, 11, 0.35)',
+        btnBg: 'linear-gradient(135deg, #d97706, #b45309)'
+      },
+      {
+        id: 'billing',
+        title: 'Oylik To‘lovlar',
+        desc: 'Aqlli tiyinli summa, kvitansiya tekshirish va moliya tahlili',
+        icon: '💳',
+        badge: 'Moliya',
+        color: '#34d399',
+        gradient: 'linear-gradient(135deg, rgba(5, 150, 105, 0.22), rgba(15, 23, 42, 0.8))',
+        border: 'rgba(52, 211, 153, 0.35)',
+        glow: 'rgba(16, 185, 129, 0.35)',
+        btnBg: 'linear-gradient(135deg, #059669, #047857)'
+      },
+      {
+        id: 'contests',
+        title: 'Onlayn Musobaqalar',
+        desc: 'Vaqtli topshiriqlar, bellashuvlar va Top-10 Coin sovrinlari',
+        icon: '🏆',
+        badge: 'Top-10 Coins',
+        color: '#c084fc',
+        gradient: 'linear-gradient(135deg, rgba(147, 51, 234, 0.22), rgba(15, 23, 42, 0.8))',
+        border: 'rgba(192, 132, 252, 0.35)',
+        glow: 'rgba(168, 85, 247, 0.35)',
+        btnBg: 'linear-gradient(135deg, #7c3aed, #6d28d9)'
+      },
+      {
+        id: 'ask_ai',
+        title: 'Ask AI Teacher',
+        desc: '24/7 sun‘iy intellekt repetitori bilan erkin inglizcha muloqot',
+        icon: '🤖',
+        badge: 'AI 24/7',
+        color: '#818cf8',
+        gradient: 'linear-gradient(135deg, rgba(79, 70, 229, 0.22), rgba(15, 23, 42, 0.8))',
+        border: 'rgba(129, 140, 248, 0.35)',
+        glow: 'rgba(99, 102, 241, 0.35)',
+        btnBg: 'linear-gradient(135deg, #4f46e5, #4338ca)'
+      },
+      {
+        id: 'quiz',
+        title: 'Quiz Test Studio',
+        desc: 'Jonli testlar, qiziqarli savollar va interaktiv sinovlar',
+        icon: '⚡',
+        badge: 'Live Quiz',
+        color: '#fb7185',
+        gradient: 'linear-gradient(135deg, rgba(225, 29, 72, 0.22), rgba(15, 23, 42, 0.8))',
+        border: 'rgba(251, 113, 133, 0.35)',
+        glow: 'rgba(244, 63, 94, 0.35)',
+        btnBg: 'linear-gradient(135deg, #e11d48, #be123c)'
+      }
+    ];
+
+    quickTools.forEach(function(q) {
+      h += '<div class="eth-motion-card" data-go="' + q.id + '" style="--c-accent:' + q.color + '; --c-glow:' + q.glow + '; --c-border:' + q.border + '; background:' + q.gradient + ';">' +
+        '<div class="eth-card-ambient-glow"></div>' +
+        '<div class="eth-card-shimmer"></div>' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;position:relative;z-index:2;">' +
+          '<div class="eth-card-icon-box" style="background:' + q.glow + ';border:1px solid ' + q.border + ';">' +
+            '<span style="font-size:22px;">' + q.icon + '</span>' +
+          '</div>' +
+          '<span class="eth-card-badge" style="color:' + q.color + ';background:rgba(255,255,255,0.06);border:1px solid ' + q.border + ';">' + q.badge + '</span>' +
+        '</div>' +
+        '<h3 class="eth-card-title" style="color:#ffffff;font-size:16.5px;font-weight:900;margin:0 0 6px;position:relative;z-index:2;letter-spacing:-0.3px;">' + q.title + '</h3>' +
+        '<p class="eth-card-desc" style="font-size:12.5px;color:#94a3b8;line-height:1.45;margin:0 0 16px;min-height:36px;position:relative;z-index:2;">' + q.desc + '</p>' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2;">' +
+          '<span class="eth-card-action-btn" style="background:' + q.btnBg + ';box-shadow:0 4px 14px ' + q.glow + ';">' +
+            'Ochish <span class="eth-arrow-move">→</span>' +
+          '</span>' +
+        '</div>' +
+      '</div>';
     });
 
     h += '</div>';
