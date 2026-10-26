@@ -863,6 +863,11 @@
         '<span style="font-size:16px;">📲</span>' +
         '<span>Ota-onalarga xabar yuborish</span>' +
       '</button>';
+
+      h += '<button type="button" id="eaOpenLevelTestBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:1px solid rgba(52,211,153,0.55);border-radius:12px;padding:9px 18px;font-size:13.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 24px -2px rgba(16,185,129,0.45);transition:all 0.2s;" title="3 Oylik Level Test imtihoni, baholar va yiqilganlarni avtomatik saralash">' +
+        '<span style="font-size:16px;">🟢</span>' +
+        '<span>Level Test Imtihoni</span>' +
+      '</button>';
     }
     h += '<button type="button" id="eaExportExcelBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:1px solid rgba(52,211,153,0.5);border-radius:12px;padding:9px 20px;font-size:13.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 24px -2px rgba(16,185,129,0.45);transition:all 0.2s;">' +
         '<span>Yuklab olish</span>' +
@@ -989,7 +994,8 @@
       h += '<th style="width:136px;min-width:136px;padding:8px 6px;border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.06);">' +
         '<div class="ea-date-header-card" data-date="' + dKey + '" data-sunday="' + (isSunday ? '1' : '0') + '" ' +
           'title="' + (isSunday ? 'Yakshanba - Dam olish kuni' : (isTeacher ? '1 marta bosish: Qizil Dam olish kuni qilish / qaytarish' : dDisp)) + '" ' +
-          'style="height:115px;border-radius:12px;border:1.5px solid ' + cardBorder + ';background:' + cardBg + ';box-shadow:' + cardShadow + ';display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;cursor:' + (isTeacher && !isSunday ? 'pointer' : 'default') + ';transition:all 0.2s;">' +
+          'style="height:115px;border-radius:12px;border:1.5px solid ' + (dIdx === dates.length - 1 ? '#10b981' : cardBorder) + ';background:' + (dIdx === dates.length - 1 ? 'linear-gradient(180deg,rgba(16,185,129,0.2),rgba(15,23,42,0.9))' : cardBg) + ';box-shadow:' + (dIdx === dates.length - 1 ? '0 0 20px rgba(16,185,129,0.4)' : cardShadow) + ';display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;cursor:' + (isTeacher && !isSunday ? 'pointer' : 'default') + ';transition:all 0.2s;">' +
+          (dIdx === dates.length - 1 ? '<div class="ea-level-test-pill" data-date="' + dKey + '" title="3 Oylik Level Test Imtihoni — Bosib natijalarni ko‘ring" style="position:absolute;top:0;left:0;right:0;background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;font-size:9.5px;font-weight:900;text-align:center;padding:2px 0;letter-spacing:0.5px;box-shadow:0 0 12px rgba(16,185,129,0.85);cursor:pointer;z-index:10;">🟢 LEVEL TEST</div>' : '') +
           (isTeacher && !isSunday ?
             '<div class="ea-date-opts-btn" data-date="' + dKey + '" data-disp="' + dDisp + '" title="Sana sozlamasi va Uy vazifasi belgilash" style="position:absolute;top:4px;right:5px;cursor:pointer;color:#94a3b8;font-size:15px;font-weight:900;line-height:1;z-index:5;padding:2px 5px;border-radius:6px;background:rgba(255,255,255,0.06);">' +
               '⋮' +
@@ -1270,11 +1276,21 @@
       };
     });
 
+    // Level Test Neon Banner Click
+    container.querySelectorAll('.ea-level-test-pill').forEach(function(pill) {
+      pill.onclick = function(e) {
+        e.stopPropagation();
+        if (window.EthithEnterprise && typeof window.EthithEnterprise.openLevelTestModal === 'function') {
+          window.EthithEnterprise.openLevelTestModal(cls, pill.getAttribute('data-date'));
+        }
+      };
+    });
+
     // Direct 1-click on Date Header Card to toggle red "Dam olish kuni"
     if (isTeacher) {
       container.querySelectorAll('.ea-date-header-card').forEach(function(card) {
         card.onclick = function(e) {
-          if (e.target.closest('.ea-date-opts-btn')) return;
+          if (e.target.closest('.ea-date-opts-btn') || e.target.closest('.ea-level-test-pill')) return;
           if (card.dataset.sunday === '1') return;
           var dKey = card.dataset.date;
           var isHol = cls.attendance.holidays && cls.attendance.holidays[dKey] === true;
@@ -1358,6 +1374,16 @@
     if (smsBtn) {
       smsBtn.onclick = function() {
         EA.openAbsentSmsModal(container, cls);
+      };
+    }
+
+    // 3-Month Level Test Assessment & Auto-Drop
+    var ltBtn = container.querySelector('#eaOpenLevelTestBtn');
+    if (ltBtn) {
+      ltBtn.onclick = function() {
+        if (window.EthithEnterprise && typeof window.EthithEnterprise.openLevelTestModal === 'function') {
+          window.EthithEnterprise.openLevelTestModal(cls);
+        }
       };
     }
 
@@ -1643,9 +1669,10 @@
   EA.openEditStudentModal = function(container, cls, stId, curName) {
     EA.isModalOpen = true;
     var modalRoot = getGlobalModalRoot();
+    if (!cls) cls = {};
     if (!cls.customStudentPhones) cls.customStudentPhones = {};
     var stObj = (cls.students || []).find(function(s) { return (s.id || s.email) === stId; });
-    var curPhone = cls.customStudentPhones[stId] || (stObj && stObj.parentPhone) || '';
+    var curPhone = (cls.customStudentPhones && cls.customStudentPhones[stId]) || (stObj && stObj.parentPhone) || '';
 
     var mHtml = '<div id="eaEditStOverlayBg" style="position:fixed;inset:0;background:rgba(2,6,23,0.72);backdrop-filter:blur(10px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;">' +
       '<div style="background:rgba(15,23,42,0.92);backdrop-filter:blur(24px);border:1px solid rgba(56,189,248,0.35);border-radius:24px;max-width:440px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.75),0 0 30px rgba(56,189,248,0.18);color:#f8fafc;font-family:inherit;">' +
