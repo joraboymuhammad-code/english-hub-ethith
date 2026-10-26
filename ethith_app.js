@@ -1438,36 +1438,70 @@
   }
 
   // ====================================================
-  // ETHITH CLIENT BUILD VERSION & ONE-TIME STARTUP CACHE-BUSTER
+  // ETHITH CLIENT BUILD VERSION & REAL-TIME CACHE-BUSTER
   // ====================================================
-  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "2026.10.22.0035";
+  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "2026.10.26.2230";
 
   (function ensureFreshBuildOnStartup() {
+    function purgeCachesAndReload(newVer) {
+      try {
+        if ('serviceWorker' in navigator && navigator.serviceWorker.getRegistrations) {
+          navigator.serviceWorker.getRegistrations().then(function(regs) {
+            regs.forEach(function(r) { r.unregister(); });
+          }).catch(function() {});
+        }
+        if (window.caches && window.caches.keys) {
+          window.caches.keys().then(function(keys) {
+            keys.forEach(function(k) { window.caches.delete(k); });
+          }).catch(function() {});
+        }
+      } catch (e) {}
+
+      var u = new URL(window.location.href);
+      u.searchParams.set('_v', newVer || Date.now());
+      u.searchParams.set('_t', Date.now());
+      window.location.replace(u.toString());
+    }
+
+    // Startup check
     try {
-      if ('serviceWorker' in navigator && navigator.serviceWorker.getRegistrations) {
-        navigator.serviceWorker.getRegistrations().then(function(regs) {
-          regs.forEach(function(r) { r.unregister(); });
-        }).catch(function() {});
-      }
-      if (window.caches && window.caches.keys) {
-        window.caches.keys().then(function(keys) {
-          keys.forEach(function(k) { window.caches.delete(k); });
-        }).catch(function() {});
-      }
       fetch('version.json?_t=' + Date.now(), { cache: 'no-store' })
         .then(function(r) { return r.ok ? r.json() : null; })
         .then(function(vData) {
           if (vData && vData.version && vData.version !== window.ETHITH_BUILD_VERSION) {
-            var guardKey = 'ethith_ver_redir_' + vData.version;
-            if (!sessionStorage.getItem(guardKey)) {
-              sessionStorage.setItem(guardKey, '1');
-              var url = new URL(window.location.href);
-              url.searchParams.set('v', vData.version);
-              window.location.replace(url.toString());
+            console.log("⚡ Auto-updating to latest build version:", vData.version);
+            var lastRedirVer = sessionStorage.getItem('ethith_last_synced_ver');
+            if (lastRedirVer !== vData.version) {
+              sessionStorage.setItem('ethith_last_synced_ver', vData.version);
+              purgeCachesAndReload(vData.version);
             }
           }
         }).catch(function() {});
     } catch(e) {}
+
+    // Active polling for background updates every 4 seconds
+    setInterval(function() {
+      try {
+        fetch('version.json?_t=' + Date.now(), { cache: 'no-store' })
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(vData) {
+            if (vData && vData.version && vData.version !== window.ETHITH_BUILD_VERSION) {
+              var banner = document.getElementById('eeAutoUpdateBanner');
+              if (!banner) {
+                banner = document.createElement('div');
+                banner.id = 'eeAutoUpdateBanner';
+                banner.style.cssText = 'position:fixed;top:18px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;padding:12px 24px;border-radius:30px;box-shadow:0 12px 35px rgba(0,0,0,0.85);z-index:2147483647;font-weight:900;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:10px;border:2px solid #38bdf8;animation:pulse 2s infinite;';
+                banner.innerHTML = '⚡ Tizim yangilandi (v' + vData.version + ')! Eng so‘nggi talqinga o‘tish uchun shu yerni bosing';
+                banner.onclick = function() {
+                  sessionStorage.setItem('ethith_last_synced_ver', vData.version);
+                  purgeCachesAndReload(vData.version);
+                };
+                document.body.appendChild(banner);
+              }
+            }
+          }).catch(function() {});
+      } catch (e) {}
+    }, 4000);
   })();
 
 })(window);
