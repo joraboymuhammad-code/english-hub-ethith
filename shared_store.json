@@ -4,7 +4,7 @@
       "id": "cls_ethith_main",
       "name": "IELTS & General English Intensive",
       "code": "ETH-L6S8CM",
-      "teacherId": "joraboyevmuhammad85@gmail.com",
+      "teacherId": "admin_official_teacher",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
       "created": 1792429062767,
@@ -1096,13 +1096,14 @@
       "maxCapacity": 16,
       "startDate": "2026-08-01",
       "level": "B1+",
-      "extraHomework": []
+      "extraHomework": [],
+      "teacher": "Ustoz"
     },
     {
       "id": "cls_1792041880052",
       "name": "Bizani gurux",
       "code": "ETH-QOY2Z8",
-      "teacherId": "tc_oprlehyw5",
+      "teacherId": "t_zizi",
       "teacherName": "Name",
       "teacherEmail": "strikeruzb52@gmail.com",
       "students": [
@@ -1202,7 +1203,8 @@
       "maxCapacity": 16,
       "startDate": "2026-08-01",
       "level": "B1+",
-      "extraHomework": []
+      "extraHomework": [],
+      "teacher": "Zizi Ustoz"
     }
   ],
   "exams": [
@@ -53516,7 +53518,8 @@
       "paidThisMonth": true,
       "assignedClasses": [
         "cls_ethith_main"
-      ]
+      ],
+      "subject": "IELTS & General English"
     },
     {
       "id": "t_zizi",
@@ -53530,7 +53533,8 @@
       "paidThisMonth": false,
       "assignedClasses": [
         "cls_1792041880052"
-      ]
+      ],
+      "subject": "General B2 English"
     }
   ],
   "fileExplorer": {

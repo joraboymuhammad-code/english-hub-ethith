@@ -338,6 +338,9 @@
 
 
 
+
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9835,7 +9838,7 @@ html, body {
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.27.0230";
+window.ETHITH_BUILD_VERSION = "2026.10.27.0142";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -91058,6 +91061,7 @@ window.NAVIGATE_CURRICULUM = {
   ];
 
   EA.activeClassId = null;
+  EA.activeTeacherId = null;
   EA.viewMode = 'window'; // 'window' (10 past + 2 future) or 'all' (Umumiy davomat)
   EA.isModalOpen = false; // Prevents background sync from closing open modals
   EA.activeStudentId = null; // When set, renders QuantumEdu Student Analytics view
@@ -91268,6 +91272,52 @@ window.NAVIGATE_CURRICULUM = {
 
   function getActiveUser() {
     return (window.S && window.S.user) || (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || {};
+  }
+
+  
+  function isAdminRole() {
+    var u = getActiveUser();
+    return u && (u.role === 'admin' || (u.email && u.email.toLowerCase().includes('admin')));
+  }
+
+  function getStoreTeachers() {
+    var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+    if (!S.teachers || S.teachers.length === 0) {
+      S.teachers = [
+        { id: 'admin_official_teacher', name: 'Ustoz', email: 'admin_12038f1aq8syash@ethith.uz', subject: 'Ingliz tili (IELTS Intensive)', hourlyRate: 100000, teachingHours: 72 },
+        { id: 't_zizi', name: 'Zizi Ustoz', email: 'zizi@ethith.uz', subject: 'Ingliz tili (General B2)', hourlyRate: 85000, teachingHours: 64 }
+      ];
+    }
+    return S.teachers;
+  }
+
+  function getClassesForTeacher(teacherId) {
+    var sClasses = getAvailableClasses();
+    var teachers = getStoreTeachers();
+    var t = teachers.find(function(item) { return item.id === teacherId; });
+    var tName = t ? t.name : '';
+    var tEmail = t && t.email ? t.email.toLowerCase().trim() : '';
+
+    return sClasses.filter(function(cls) {
+      if (cls.teacherId === teacherId) return true;
+      if (tEmail && cls.teacherId && cls.teacherId.toLowerCase().trim() === tEmail) return true;
+      if (tEmail && cls.teacherEmail && cls.teacherEmail.toLowerCase().trim() === tEmail) return true;
+      if (tName && cls.teacher && cls.teacher.toLowerCase().trim() === tName.toLowerCase().trim()) return true;
+      if (tName && cls.teacherName && cls.teacherName.toLowerCase().trim() === tName.toLowerCase().trim()) return true;
+      if (t && Array.isArray(t.assignedClasses) && t.assignedClasses.includes(cls.id)) return true;
+      // Default fallback associations for primary teachers so cards are never empty
+      if (teacherId === 'admin_official_teacher') {
+        if (!cls.teacherId || cls.teacherId === 'admin_official_root' || cls.teacherId === 'joraboyevmuhammad85@gmail.com' || cls.id === 'cls_ethith_main' || cls.id === 'cls_1_guruh') {
+          return true;
+        }
+      }
+      if (teacherId === 't_zizi') {
+        if (cls.id === 'cls_1792041880052' || cls.teacherId === 'tc_oprlehyw5') {
+          return true;
+        }
+      }
+      return false;
+    });
   }
 
   function isTeacherRole() {
@@ -91804,12 +91854,843 @@ window.NAVIGATE_CURRICULUM = {
   // ============================================================================
   // MAIN RENDER ENTRY POINT
   // ============================================================================
-  EA.render = function(container, preserveScrollLeft) {
+  
+  // --------------------------------------------------------------------------
+  // LEVEL 1: ALL TEACHERS DIRECTORY (O'QITUVCHILAR TARTIBI)
+  // --------------------------------------------------------------------------
+  EA.renderTeachersDirectory = function(container) {
+    var teachers = getStoreTeachers();
+    var sClasses = getAvailableClasses();
+
+    var h = '<div class="ea-teachers-dir-wrap" style="max-width:1240px;margin:0 auto;padding:16px 20px 80px;">' +
+      // HERO HEADER
+      '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.22), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px solid rgba(56,189,248,0.3);border-radius:24px;padding:26px 30px;box-shadow:0 16px 50px rgba(0,0,0,0.6);backdrop-filter:blur(24px);margin-bottom:24px;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">' +
+          '<div style="display:flex;align-items:center;gap:16px;">' +
+            '<div style="width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 8px 24px rgba(2,132,199,0.4);flex-shrink:0;">📅</div>' +
+            '<div>' +
+              '<h1 style="margin:0;font-size:24px;font-weight:900;color:#fff;display:flex;align-items:center;gap:10px;">' +
+                'Attendance &amp; O‘qituvchilar Boshqaruvi' +
+                '<span style="background:rgba(56,189,248,0.18);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:900;">' + teachers.length + ' ta Ustoz</span>' +
+              '</h1>' +
+              '<p style="margin:4px 0 0;font-size:13.5px;color:#94a3b8;font-weight:600;">Har bir o‘qituvchi tartib bilan, ularga biriktirilgan guruhlar va davomat jurnali.</p>' +
+            '</div>' +
+          '</div>' +
+          '<button id="eaBtnAddTeacherGlobal" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:11px 20px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 18px rgba(16,185,129,0.35);transition:all 0.2s;">' +
+            '➕ Yangi O‘qituvchi Qo‘shish' +
+          '</button>' +
+        '</div>' +
+      '</div>';
+
+    // GRID OF TEACHER CARDS
+    h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">';
+    teachers.forEach(function(t) {
+      var tClasses = getClassesForTeacher(t.id);
+      var totalStudents = tClasses.reduce(function(acc, c) { return acc + (c.students || []).length; }, 0);
+      var avChar = t.name ? t.name.charAt(0).toUpperCase() : 'U';
+
+      h += '<div class="ea-teacher-card" style="background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:24px;box-shadow:0 12px 35px rgba(0,0,0,0.45);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s;" onmouseover="this.style.borderColor=\'rgba(56,189,248,0.5)\'" onmouseout="this.style.borderColor=\'rgba(255,255,255,0.1)\'">' +
+        '<div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">' +
+            '<div style="display:flex;align-items:center;gap:14px;">' +
+              '<div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;box-shadow:0 6px 18px rgba(2,132,199,0.35);">' + avChar + '</div>' +
+              '<div>' +
+                '<h3 style="margin:0;font-size:17px;font-weight:900;color:#fff;">' + esc(t.name) + '</h3>' +
+                '<div style="font-size:12px;color:#38bdf8;font-weight:700;margin-top:2px;">' + esc(t.subject || 'Ingliz tili') + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:4px 10px;font-size:11px;font-weight:800;">Faol Ustoz</span>' +
+          '</div>' +
+
+          // Stats Chips
+          '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:rgba(11,16,27,0.7);padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);margin-bottom:16px;">' +
+            '<div style="text-align:center;">' +
+              '<div style="font-size:10px;color:#94a3b8;font-weight:700;text-transform:uppercase;">Guruhlar</div>' +
+              '<div style="font-size:15px;font-weight:900;color:#fff;margin-top:2px;">' + tClasses.length + ' ta</div>' +
+            '</div>' +
+            '<div style="text-align:center;border-left:1px solid rgba(255,255,255,0.08);border-right:1px solid rgba(255,255,255,0.08);">' +
+              '<div style="font-size:10px;color:#94a3b8;font-weight:700;text-transform:uppercase;">O‘quvchilar</div>' +
+              '<div style="font-size:15px;font-weight:900;color:#34d399;margin-top:2px;">' + totalStudents + ' nafar</div>' +
+            '</div>' +
+            '<div style="text-align:center;">' +
+              '<div style="font-size:10px;color:#94a3b8;font-weight:700;text-transform:uppercase;">Dars Soati</div>' +
+              '<div style="font-size:15px;font-weight:900;color:#38bdf8;margin-top:2px;">' + (t.teachingHours || 0) + ' soat</div>' +
+            '</div>' +
+          '</div>' +
+
+          // Groups Pills
+          '<div style="margin-bottom:20px;">' +
+            '<div style="font-size:11px;color:#94a3b8;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em;">Biriktirilgan Guruhlar:</div>' +
+            '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
+              (tClasses.length > 0 ? tClasses.map(function(c) {
+                return '<span style="background:rgba(255,255,255,0.05);color:#cbd5e1;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:3px 9px;font-size:11.5px;font-weight:700;">' + esc(c.name) + '</span>';
+              }).join('') : '<span style="color:#64748b;font-size:12px;font-style:italic;">Hali guruh qo‘shilmagan</span>') +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+
+        // Actions
+        '<div style="display:flex;gap:10px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">' +
+          '<button class="ea-btn-open-teacher" data-tid="' + esc(t.id) + '" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.3);">' +
+            '📂 Guruhlar &amp; Davomat &rarr;' +
+          '</button>' +
+          '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:800;cursor:pointer;" title="Shu o‘qituvchiga yangi guruh qo‘shish">' +
+            '➕ Guruh' +
+          '</button>' +
+        '</div>' +
+
+      '</div>';
+    });
+    h += '</div></div>';
+
+    container.innerHTML = h;
+    EA.attachTeachersDirListeners(container);
+  };
+
+  // --------------------------------------------------------------------------
+  // LEVEL 2: TEACHER GROUPS VIEW (USTOZNING GURUHLARI)
+  // --------------------------------------------------------------------------
+  EA.renderTeacherGroups = function(container, teacherId) {
+    var teachers = getStoreTeachers();
+    var t = teachers.find(function(item) { return item.id === teacherId; }) || teachers[0];
+    var tClasses = getClassesForTeacher(t.id);
+    var isAdmin = isAdminRole();
+
+    var h = '<div class="ea-teacher-groups-wrap" style="max-width:1240px;margin:0 auto;padding:16px 20px 80px;">' +
+      // BREADCRUMB & HEADER
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          (isAdmin ? '<button id="eaBtnBackToAllTeachers" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:10px;padding:8px 14px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">&larr; Barcha O‘qituvchilar</button>' : '') +
+          '<div>' +
+            '<h2 style="margin:0;font-size:22px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">' +
+              '👨‍🏫 ' + esc(t.name) + ' — O‘quv Guruhlari va Davomat' +
+            '</h2>' +
+            '<div style="font-size:12.5px;color:#94a3b8;font-weight:600;margin-top:2px;">Fan: <b style="color:#38bdf8;">' + esc(t.subject || 'Ingliz tili') + '</b> | Soatlik stavka: <b style="color:#34d399;">' + (Number(t.hourlyRate) || 100000).toLocaleString() + ' so‘m/soat</b></div>' +
+          '</div>' +
+        '</div>' +
+        '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(16,185,129,0.35);">' +
+          '➕ Shu Ustozga Yangi Guruh Qo‘shish' +
+        '</button>' +
+      '</div>';
+
+    // GROUPS OF THIS TEACHER
+    if (tClasses.length === 0) {
+      h += '<div style="background:rgba(15,23,42,0.8);border:1px dashed rgba(255,255,255,0.15);border-radius:20px;padding:48px 24px;text-align:center;color:#94a3b8;">' +
+        '<div style="font-size:42px;margin-bottom:12px;">🏫</div>' +
+        '<h3 style="margin:0 0 8px;font-size:18px;font-weight:800;color:#fff;">Ushbu o‘qituvchiga hali guruh biriktirilmagan</h3>' +
+        '<p style="margin:0 0 20px;font-size:13px;color:#94a3b8;">Yuqoridagi <b>"+ Shu Ustozga Yangi Guruh Qo‘shish"</b> tugmasini bosib, yangi guruh oching!</p>' +
+        '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:800;cursor:pointer;">+ Birinchi Guruhni Qo‘shish</button>' +
+      '</div>';
+    } else {
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">';
+      tClasses.forEach(function(cls) {
+        var stCount = (cls.students || []).length;
+        var maxCap = cls.maxCapacity || 16;
+        var pct = Math.min(100, Math.round((stCount / maxCap) * 100));
+
+        h += '<div class="ee-class-card" style="background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(56,189,248,0.25);border-radius:22px;padding:22px;box-shadow:0 12px 35px rgba(0,0,0,0.45);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
+              '<span style="background:rgba(56,189,248,0.18);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:8px;padding:3px 9px;font-size:11px;font-weight:900;font-family:monospace;">' + esc(cls.code || 'ETH-GROUP') + '</span>' +
+              '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:3px 10px;font-size:11.5px;font-weight:800;">' + stCount + ' / ' + maxCap + ' ta joy</span>' +
+            '</div>' +
+            '<h3 style="margin:0 0 6px;font-size:18px;font-weight:900;color:#fff;">' + esc(cls.name) + '</h3>' +
+            '<div style="font-size:12.5px;color:#94a3b8;margin-bottom:14px;">📍 Xona: <b style="color:#cbd5e1;">' + esc(cls.room || '302-xona') + '</b> | Tartib: <b style="color:#cbd5e1;">' + (cls.schedule === 'juft' ? 'Juft kunlari' : (cls.schedule === 'toq' ? 'Toq kunlari' : 'Har kungi dars')) + '</b></div>' +
+
+            // Capacity Progress Bar
+            '<div style="background:rgba(255,255,255,0.06);border-radius:999px;height:6px;overflow:hidden;margin-bottom:18px;">' +
+              '<div style="background:linear-gradient(90deg,#0284c7,#10b981);height:100%;width:' + pct + '%;"></div>' +
+            '</div>' +
+          '</div>' +
+
+          // Action Buttons
+          '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+            '<button class="ea-open-journal-btn" data-cid="' + esc(cls.id) + '" style="flex:1;min-width:140px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(16,185,129,0.35);">' +
+              '📋 Davomat Jurnali &rarr;' +
+            '</button>' +
+            '<button class="dash-add-student-btn" data-cid="' + esc(cls.id) + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;">+ O‘quvchi</button>' +
+            '<button class="dash-edit-class-btn" data-cid="' + esc(cls.id) + '" style="background:rgba(255,255,255,0.06);color:#cbd5e1;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;">✏️</button>' +
+          '</div>' +
+
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    h += '</div>';
+    container.innerHTML = h;
+    EA.attachTeacherGroupsListeners(container, t);
+  };
+
+  // --------------------------------------------------------------------------
+  // EVENT LISTENERS & MODALS FOR TEACHER-CENTRIC ATTENDANCE
+  // --------------------------------------------------------------------------
+  EA.attachTeachersDirListeners = function(container) {
+    var addBtn = container.querySelector('#eaBtnAddTeacherGlobal');
+    if (addBtn) {
+      addBtn.onclick = function() { EA.openAddTeacherModal(); };
+    }
+
+    container.querySelectorAll('.ea-btn-open-teacher').forEach(function(btn) {
+      btn.onclick = function() {
+        var tid = btn.getAttribute('data-tid');
+        EA.activeTeacherId = tid;
+        EA.activeClassId = null;
+        EA.render(container);
+      };
+    });
+
+    container.querySelectorAll('.ea-btn-add-group-for-t').forEach(function(btn) {
+      btn.onclick = function() {
+        var tid = btn.getAttribute('data-tid');
+        var teachers = getStoreTeachers();
+        var t = teachers.find(function(item) { return item.id === tid; });
+        if (t) EA.openAddGroupForTeacherModal(t);
+      };
+    });
+  };
+
+  EA.attachTeacherGroupsListeners = function(container, teacher) {
+    var backBtn = container.querySelector('#eaBtnBackToAllTeachers');
+    if (backBtn) {
+      backBtn.onclick = function() {
+        EA.activeTeacherId = null;
+        EA.activeClassId = null;
+        EA.render(container);
+      };
+    }
+
+    var addGrpBtn = container.querySelector('.ea-btn-add-group-for-t');
+    if (addGrpBtn) {
+      addGrpBtn.onclick = function() {
+        EA.openAddGroupForTeacherModal(teacher);
+      };
+    }
+
+    container.querySelectorAll('.ea-open-journal-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var cid = btn.getAttribute('data-cid');
+        EA.activeClassId = cid;
+        EA.render(container);
+      };
+    });
+  };
+
+  // MODAL 1: ADD TEACHER
+  EA.openAddTeacherModal = function() {
+    var old = document.getElementById('eaAddTeacherModalOverlay');
+    if (old) old.remove();
+
+    var overlay = document.createElement('div');
+    overlay.id = 'eaAddTeacherModalOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(16px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1px solid rgba(56,189,248,0.35);border-radius:24px;width:100%;max-width:480px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,0.8);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:24px;">👨‍🏫</span>' +
+          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Yangi O‘qituvchi Qo‘shish</h3>' +
+        '</div>' +
+        '<button id="eaCloseAddTModalBtn" style="background:transparent;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">&times;</button>' +
+      '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:14px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Ism va Familiya</label>' +
+          '<input type="text" id="eaNewTName" placeholder="masalan: Anvar Ergashev" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Email (Login)</label>' +
+          '<input type="email" id="eaNewTEmail" placeholder="anvar@ethith.uz" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Fan / Mutaxassislik</label>' +
+          '<input type="text" id="eaNewTSubject" value="Ingliz tili (IELTS / General)" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Soatlik Stavka (so‘m/dars soati)</label>' +
+          '<input type="number" id="eaNewTRate" value="100000" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#34d399;font-weight:900;font-size:14px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+        '<div style="display:flex;gap:10px;margin-top:10px;">' +
+          '<button id="eaCancelAddTBtn" style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#cbd5e1;padding:12px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
+          '<button id="eaSaveAddTBtn" style="flex:1;background:linear-gradient(135deg,#10b981,#059669);border:none;border-radius:12px;color:#fff;padding:12px;font-weight:900;cursor:pointer;">💾 Saqlash</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    document.body.appendChild(overlay);
+
+    function close() { overlay.remove(); }
+    overlay.querySelector('#eaCloseAddTModalBtn').onclick = close;
+    overlay.querySelector('#eaCancelAddTBtn').onclick = close;
+
+    overlay.querySelector('#eaSaveAddTBtn').onclick = function() {
+      var name = overlay.querySelector('#eaNewTName').value.trim();
+      var email = overlay.querySelector('#eaNewTEmail').value.trim();
+      var subject = overlay.querySelector('#eaNewTSubject').value.trim() || 'Ingliz tili';
+      var rate = Number(overlay.querySelector('#eaNewTRate').value) || 100000;
+
+      if (!name) { alert("Iltimos, o'qituvchi ismini kiriting!"); return; }
+      if (!email) email = name.toLowerCase().replace(/[^a-z0-9]/g, '') + '@ethith.uz';
+
+      var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+      if (!S.teachers) S.teachers = getStoreTeachers();
+
+      var newT = {
+        id: 'teacher_' + Date.now(),
+        name: name,
+        email: email,
+        subject: subject,
+        hourlyRate: rate,
+        teachingHours: 0,
+        monthlyBonus: 0,
+        status: 'pending'
+      };
+
+      S.teachers.push(newT);
+      if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
+      if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') window.EthithSync.pushStoreUpdate();
+
+      close();
+      EA.render(document.getElementById('apView'));
+    };
+  };
+
+  // MODAL 2: ADD GROUP FOR SPECIFIC TEACHER
+  EA.openAddGroupForTeacherModal = function(teacher) {
+    var old = document.getElementById('eaAddGroupModalOverlay');
+    if (old) old.remove();
+
+    var overlay = document.createElement('div');
+    overlay.id = 'eaAddGroupModalOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(16px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1px solid rgba(56,189,248,0.35);border-radius:24px;width:100%;max-width:500px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,0.8);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:24px;">🏫</span>' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Yangi Guruh Qo‘shish</h3>' +
+            '<div style="font-size:12px;color:#38bdf8;font-weight:700;margin-top:2px;">Ustoz: ' + esc(teacher.name) + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<button id="eaCloseAddGModalBtn" style="background:transparent;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">&times;</button>' +
+      '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:14px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Guruh Nomi</label>' +
+          '<input type="text" id="eaNewGName" placeholder="masalan: IELTS Band 7.5 Morning" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Xona</label>' +
+            '<input type="text" id="eaNewGRoom" value="302-xona" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Sig‘imi (joy)</label>' +
+            '<input type="number" id="eaNewGCap" value="16" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#38bdf8;font-weight:900;font-size:14px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+        '</div>' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Dars Kunlari (Jadval)</label>' +
+          '<select id="eaNewGSched" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;">' +
+            '<option value="har_kuni">Har kungi dars (Dushanba – Shanba)</option>' +
+            '<option value="toq">Toq kunlari (Dushanba, Chorshanba, Juma)</option>' +
+            '<option value="juft">Juft kunlari (Seshanba, Payshanba, Shanba)</option>' +
+          '</select>' +
+        '</div>' +
+        '<div style="display:flex;gap:10px;margin-top:10px;">' +
+          '<button id="eaCancelAddGBtn" style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#cbd5e1;padding:12px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
+          '<button id="eaSaveAddGBtn" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);border:none;border-radius:12px;color:#fff;padding:12px;font-weight:900;cursor:pointer;">🏫 Guruhni Yaratish</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    document.body.appendChild(overlay);
+
+    function close() { overlay.remove(); }
+    overlay.querySelector('#eaCloseAddGModalBtn').onclick = close;
+    overlay.querySelector('#eaCancelAddGBtn').onclick = close;
+
+    overlay.querySelector('#eaSaveAddGBtn').onclick = function() {
+      var name = overlay.querySelector('#eaNewGName').value.trim();
+      var room = overlay.querySelector('#eaNewGRoom').value.trim() || '302-xona';
+      var cap = Number(overlay.querySelector('#eaNewGCap').value) || 16;
+      var sched = overlay.querySelector('#eaNewGSched').value || 'har_kuni';
+
+      if (!name) { alert("Iltimos, guruh nomini kiriting!"); return; }
+
+      var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+      if (!S.classes) S.classes = [];
+
+      var randCode = 'ETH-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+      var newCls = {
+        id: 'cls_' + Date.now(),
+        code: randCode,
+        name: name,
+        teacher: teacher.name,
+        teacherId: teacher.id,
+        teacherName: teacher.name,
+        room: room,
+        schedule: sched,
+        maxCapacity: cap,
+        students: [],
+        customStudentNames: {},
+        attendance: { records: {}, lessonTypes: {}, holidays: {}, homeworks: {} }
+      };
+
+      S.classes.push(newCls);
+      if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
+      if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') window.EthithSync.pushStoreUpdate();
+
+      close();
+      EA.activeTeacherId = teacher.id;
+      EA.activeClassId = null;
+      EA.render(document.getElementById('apView'));
+    };
+  };
+
+
+  // --------------------------------------------------------------------------
+  // LEVEL 1: ALL TEACHERS DIRECTORY (O'QITUVCHILAR TARTIBI)
+  // --------------------------------------------------------------------------
+  EA.renderTeachersDirectory = function(container) {
+    var teachers = getStoreTeachers();
+    var sClasses = getAvailableClasses();
+
+    var h = '<div class="ea-teachers-dir-wrap" style="max-width:1240px;margin:0 auto;padding:16px 20px 80px;">' +
+      // HERO HEADER
+      '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.22), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px solid rgba(56,189,248,0.3);border-radius:24px;padding:26px 30px;box-shadow:0 16px 50px rgba(0,0,0,0.6);backdrop-filter:blur(24px);margin-bottom:24px;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">' +
+          '<div style="display:flex;align-items:center;gap:16px;">' +
+            '<div style="width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 8px 24px rgba(2,132,199,0.4);flex-shrink:0;">📅</div>' +
+            '<div>' +
+              '<h1 style="margin:0;font-size:24px;font-weight:900;color:#fff;display:flex;align-items:center;gap:10px;">' +
+                'Attendance &amp; O‘qituvchilar Boshqaruvi' +
+                '<span style="background:rgba(56,189,248,0.18);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:900;">' + teachers.length + ' ta Ustoz</span>' +
+              '</h1>' +
+              '<p style="margin:4px 0 0;font-size:13.5px;color:#94a3b8;font-weight:600;">Har bir o‘qituvchi tartib bilan, ularga biriktirilgan guruhlar va davomat jurnali.</p>' +
+            '</div>' +
+          '</div>' +
+          '<button id="eaBtnAddTeacherGlobal" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:11px 20px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 18px rgba(16,185,129,0.35);transition:all 0.2s;">' +
+            '➕ Yangi O‘qituvchi Qo‘shish' +
+          '</button>' +
+        '</div>' +
+      '</div>';
+
+    // GRID OF TEACHER CARDS
+    h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">';
+    teachers.forEach(function(t) {
+      var tClasses = getClassesForTeacher(t.id);
+      var totalStudents = tClasses.reduce(function(acc, c) { return acc + (c.students || []).length; }, 0);
+      var avChar = t.name ? t.name.charAt(0).toUpperCase() : 'U';
+
+      h += '<div class="ea-teacher-card" data-tid="' + esc(t.id) + '" style="background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:24px;box-shadow:0 12px 35px rgba(0,0,0,0.45);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s;" onmouseover="this.style.borderColor=\'rgba(56,189,248,0.5)\'" onmouseout="this.style.borderColor=\'rgba(255,255,255,0.1)\'">' +
+        '<div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">' +
+            '<div style="display:flex;align-items:center;gap:14px;">' +
+              '<div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;box-shadow:0 6px 18px rgba(2,132,199,0.35);">' + avChar + '</div>' +
+              '<div>' +
+                '<h3 style="margin:0;font-size:17px;font-weight:900;color:#fff;">' + esc(t.name) + '</h3>' +
+                '<div style="font-size:12px;color:#38bdf8;font-weight:700;margin-top:2px;">' + esc(t.subject || 'Ingliz tili') + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:4px 10px;font-size:11px;font-weight:800;">Faol Ustoz</span>' +
+          '</div>' +
+
+          // Stats Chips
+          '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:rgba(11,16,27,0.7);padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);margin-bottom:16px;">' +
+            '<div style="text-align:center;">' +
+              '<div style="font-size:10px;color:#94a3b8;font-weight:700;text-transform:uppercase;">Guruhlar</div>' +
+              '<div style="font-size:15px;font-weight:900;color:#fff;margin-top:2px;">' + tClasses.length + ' ta</div>' +
+            '</div>' +
+            '<div style="text-align:center;border-left:1px solid rgba(255,255,255,0.08);border-right:1px solid rgba(255,255,255,0.08);">' +
+              '<div style="font-size:10px;color:#94a3b8;font-weight:700;text-transform:uppercase;">O‘quvchilar</div>' +
+              '<div style="font-size:15px;font-weight:900;color:#34d399;margin-top:2px;">' + totalStudents + ' nafar</div>' +
+            '</div>' +
+            '<div style="text-align:center;">' +
+              '<div style="font-size:10px;color:#94a3b8;font-weight:700;text-transform:uppercase;">Dars Soati</div>' +
+              '<div style="font-size:15px;font-weight:900;color:#38bdf8;margin-top:2px;">' + (t.teachingHours || 0) + ' soat</div>' +
+            '</div>' +
+          '</div>' +
+
+          // Groups Pills
+          '<div style="margin-bottom:20px;">' +
+            '<div style="font-size:11px;color:#94a3b8;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em;">Biriktirilgan Guruhlar:</div>' +
+            '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
+              (tClasses.length > 0 ? tClasses.map(function(c) {
+                return '<span style="background:rgba(255,255,255,0.05);color:#cbd5e1;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:3px 9px;font-size:11.5px;font-weight:700;">' + esc(c.name) + '</span>';
+              }).join('') : '<span style="color:#64748b;font-size:12px;font-style:italic;">Hali guruh qo‘shilmagan</span>') +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+
+        // Actions
+        '<div style="display:flex;gap:10px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">' +
+          '<button class="ea-btn-open-teacher" data-tid="' + esc(t.id) + '" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.3);">' +
+            '📂 Guruhlar &amp; Davomat &rarr;' +
+          '</button>' +
+          '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:800;cursor:pointer;" title="Shu o‘qituvchiga yangi guruh qo‘shish">' +
+            '➕ Guruh' +
+          '</button>' +
+        '</div>' +
+
+      '</div>';
+    });
+    h += '</div></div>';
+
+    container.innerHTML = h;
+    EA.attachTeachersDirListeners(container);
+  };
+
+  // --------------------------------------------------------------------------
+  // LEVEL 2: TEACHER GROUPS VIEW (USTOZNING GURUHLARI)
+  // --------------------------------------------------------------------------
+  EA.renderTeacherGroups = function(container, teacherId) {
+    var teachers = getStoreTeachers();
+    var t = teachers.find(function(item) { return item.id === teacherId; }) || teachers[0];
+    var tClasses = getClassesForTeacher(t.id);
+    var isAdmin = isAdminRole();
+
+    var h = '<div class="ea-teacher-groups-wrap" style="max-width:1240px;margin:0 auto;padding:16px 20px 80px;">' +
+      // BREADCRUMB & HEADER
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          (isAdmin ? '<button id="eaBtnBackToAllTeachers" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:10px;padding:8px 14px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">&larr; Barcha O‘qituvchilar</button>' : '') +
+          '<div>' +
+            '<h2 style="margin:0;font-size:22px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">' +
+              '👨‍🏫 ' + esc(t.name) + ' — O‘quv Guruhlari va Davomat' +
+            '</h2>' +
+            '<div style="font-size:12.5px;color:#94a3b8;font-weight:600;margin-top:2px;">Fan: <b style="color:#38bdf8;">' + esc(t.subject || 'Ingliz tili') + '</b> | Soatlik stavka: <b style="color:#34d399;">' + (Number(t.hourlyRate) || 100000).toLocaleString() + ' so‘m/soat</b></div>' +
+          '</div>' +
+        '</div>' +
+        '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(16,185,129,0.35);">' +
+          '➕ Shu Ustozga Yangi Guruh Qo‘shish' +
+        '</button>' +
+      '</div>';
+
+    // GROUPS OF THIS TEACHER
+    if (tClasses.length === 0) {
+      h += '<div style="background:rgba(15,23,42,0.8);border:1px dashed rgba(255,255,255,0.15);border-radius:20px;padding:48px 24px;text-align:center;color:#94a3b8;">' +
+        '<div style="font-size:42px;margin-bottom:12px;">🏫</div>' +
+        '<h3 style="margin:0 0 8px;font-size:18px;font-weight:800;color:#fff;">Ushbu o‘qituvchiga hali guruh biriktirilmagan</h3>' +
+        '<p style="margin:0 0 20px;font-size:13px;color:#94a3b8;">Yuqoridagi <b>"+ Shu Ustozga Yangi Guruh Qo‘shish"</b> tugmasini bosib, yangi guruh oching!</p>' +
+        '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:800;cursor:pointer;">+ Birinchi Guruhni Qo‘shish</button>' +
+      '</div>';
+    } else {
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">';
+      tClasses.forEach(function(cls) {
+        var stCount = (cls.students || []).length;
+        var maxCap = cls.maxCapacity || 16;
+        var pct = Math.min(100, Math.round((stCount / maxCap) * 100));
+
+        h += '<div class="ee-class-card" style="background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(56,189,248,0.25);border-radius:22px;padding:22px;box-shadow:0 12px 35px rgba(0,0,0,0.45);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
+              '<span style="background:rgba(56,189,248,0.18);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:8px;padding:3px 9px;font-size:11px;font-weight:900;font-family:monospace;">' + esc(cls.code || 'ETH-GROUP') + '</span>' +
+              '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:3px 10px;font-size:11.5px;font-weight:800;">' + stCount + ' / ' + maxCap + ' ta joy</span>' +
+            '</div>' +
+            '<h3 style="margin:0 0 6px;font-size:18px;font-weight:900;color:#fff;">' + esc(cls.name) + '</h3>' +
+            '<div style="font-size:12.5px;color:#94a3b8;margin-bottom:14px;">📍 Xona: <b style="color:#cbd5e1;">' + esc(cls.room || '302-xona') + '</b> | Tartib: <b style="color:#cbd5e1;">' + (cls.schedule === 'juft' ? 'Juft kunlari' : (cls.schedule === 'toq' ? 'Toq kunlari' : 'Har kungi dars')) + '</b></div>' +
+
+            // Capacity Progress Bar
+            '<div style="background:rgba(255,255,255,0.06);border-radius:999px;height:6px;overflow:hidden;margin-bottom:18px;">' +
+              '<div style="background:linear-gradient(90deg,#0284c7,#10b981);height:100%;width:' + pct + '%;"></div>' +
+            '</div>' +
+          '</div>' +
+
+          // Action Buttons
+          '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+            '<button class="ea-open-journal-btn" data-cid="' + esc(cls.id) + '" style="flex:1;min-width:140px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(16,185,129,0.35);">' +
+              '📋 Davomat Jurnali &rarr;' +
+            '</button>' +
+            '<button class="dash-add-student-btn" data-cid="' + esc(cls.id) + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;">+ O‘quvchi</button>' +
+            '<button class="dash-edit-class-btn" data-cid="' + esc(cls.id) + '" style="background:rgba(255,255,255,0.06);color:#cbd5e1;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;">✏️</button>' +
+          '</div>' +
+
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    h += '</div>';
+    container.innerHTML = h;
+    EA.attachTeacherGroupsListeners(container, t);
+  };
+
+  // --------------------------------------------------------------------------
+  // EVENT LISTENERS & MODALS FOR TEACHER-CENTRIC ATTENDANCE
+  // --------------------------------------------------------------------------
+  EA.attachTeachersDirListeners = function(container) {
+    container.querySelectorAll('.ea-teacher-card').forEach(function(card) {
+      card.style.cursor = 'pointer';
+      card.onclick = function(e) {
+        if (e.target.closest('button')) return;
+        var tid = card.getAttribute('data-tid');
+        if (tid) {
+          EA.activeTeacherId = tid;
+          EA.activeClassId = null;
+          EA.render(container);
+        }
+      };
+    });
+    var addBtn = container.querySelector('#eaBtnAddTeacherGlobal');
+    if (addBtn) {
+      addBtn.onclick = function() { EA.openAddTeacherModal(); };
+    }
+
+    container.querySelectorAll('.ea-btn-open-teacher').forEach(function(btn) {
+      btn.onclick = function() {
+        var tid = btn.getAttribute('data-tid');
+        EA.activeTeacherId = tid;
+        EA.activeClassId = null;
+        EA.render(container);
+      };
+    });
+
+    container.querySelectorAll('.ea-btn-add-group-for-t').forEach(function(btn) {
+      btn.onclick = function() {
+        var tid = btn.getAttribute('data-tid');
+        var teachers = getStoreTeachers();
+        var t = teachers.find(function(item) { return item.id === tid; });
+        if (t) EA.openAddGroupForTeacherModal(t);
+      };
+    });
+  };
+
+  EA.attachTeacherGroupsListeners = function(container, teacher) {
+    var backBtn = container.querySelector('#eaBtnBackToAllTeachers');
+    if (backBtn) {
+      backBtn.onclick = function() {
+        EA.activeTeacherId = null;
+        EA.activeClassId = null;
+        EA.render(container);
+      };
+    }
+
+    var addGrpBtn = container.querySelector('.ea-btn-add-group-for-t');
+    if (addGrpBtn) {
+      addGrpBtn.onclick = function() {
+        EA.openAddGroupForTeacherModal(teacher);
+      };
+    }
+
+    container.querySelectorAll('.ea-open-journal-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var cid = btn.getAttribute('data-cid');
+        EA.activeClassId = cid;
+        EA.render(container);
+      };
+    });
+  };
+
+  // MODAL 1: ADD TEACHER
+  EA.openAddTeacherModal = function() {
+    var old = document.getElementById('eaAddTeacherModalOverlay');
+    if (old) old.remove();
+
+    var overlay = document.createElement('div');
+    overlay.id = 'eaAddTeacherModalOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(16px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1px solid rgba(56,189,248,0.35);border-radius:24px;width:100%;max-width:480px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,0.8);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:24px;">👨‍🏫</span>' +
+          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Yangi O‘qituvchi Qo‘shish</h3>' +
+        '</div>' +
+        '<button id="eaCloseAddTModalBtn" style="background:transparent;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">&times;</button>' +
+      '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:14px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Ism va Familiya</label>' +
+          '<input type="text" id="eaNewTName" placeholder="masalan: Anvar Ergashev" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Email (Login)</label>' +
+          '<input type="email" id="eaNewTEmail" placeholder="anvar@ethith.uz" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Fan / Mutaxassislik</label>' +
+          '<input type="text" id="eaNewTSubject" value="Ingliz tili (IELTS / General)" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Soatlik Stavka (so‘m/dars soati)</label>' +
+          '<input type="number" id="eaNewTRate" value="100000" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#34d399;font-weight:900;font-size:14px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+        '<div style="display:flex;gap:10px;margin-top:10px;">' +
+          '<button id="eaCancelAddTBtn" style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#cbd5e1;padding:12px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
+          '<button id="eaSaveAddTBtn" style="flex:1;background:linear-gradient(135deg,#10b981,#059669);border:none;border-radius:12px;color:#fff;padding:12px;font-weight:900;cursor:pointer;">💾 Saqlash</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    document.body.appendChild(overlay);
+
+    function close() { overlay.remove(); }
+    overlay.querySelector('#eaCloseAddTModalBtn').onclick = close;
+    overlay.querySelector('#eaCancelAddTBtn').onclick = close;
+
+    overlay.querySelector('#eaSaveAddTBtn').onclick = function() {
+      var name = overlay.querySelector('#eaNewTName').value.trim();
+      var email = overlay.querySelector('#eaNewTEmail').value.trim();
+      var subject = overlay.querySelector('#eaNewTSubject').value.trim() || 'Ingliz tili';
+      var rate = Number(overlay.querySelector('#eaNewTRate').value) || 100000;
+
+      if (!name) { alert("Iltimos, o'qituvchi ismini kiriting!"); return; }
+      if (!email) email = name.toLowerCase().replace(/[^a-z0-9]/g, '') + '@ethith.uz';
+
+      var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+      if (!S.teachers) S.teachers = getStoreTeachers();
+
+      var newT = {
+        id: 'teacher_' + Date.now(),
+        name: name,
+        email: email,
+        subject: subject,
+        hourlyRate: rate,
+        teachingHours: 0,
+        monthlyBonus: 0,
+        status: 'pending'
+      };
+
+      S.teachers.push(newT);
+      if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
+      if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') window.EthithSync.pushStoreUpdate();
+
+      close();
+      EA.render(document.getElementById('apView'));
+    };
+  };
+
+  // MODAL 2: ADD GROUP FOR SPECIFIC TEACHER
+  EA.openAddGroupForTeacherModal = function(teacher) {
+    var old = document.getElementById('eaAddGroupModalOverlay');
+    if (old) old.remove();
+
+    var overlay = document.createElement('div');
+    overlay.id = 'eaAddGroupModalOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(16px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1px solid rgba(56,189,248,0.35);border-radius:24px;width:100%;max-width:500px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,0.8);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:24px;">🏫</span>' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Yangi Guruh Qo‘shish</h3>' +
+            '<div style="font-size:12px;color:#38bdf8;font-weight:700;margin-top:2px;">Ustoz: ' + esc(teacher.name) + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<button id="eaCloseAddGModalBtn" style="background:transparent;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">&times;</button>' +
+      '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:14px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Guruh Nomi</label>' +
+          '<input type="text" id="eaNewGName" placeholder="masalan: IELTS Band 7.5 Morning" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Xona</label>' +
+            '<input type="text" id="eaNewGRoom" value="302-xona" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Sig‘imi (joy)</label>' +
+            '<input type="number" id="eaNewGCap" value="16" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#38bdf8;font-weight:900;font-size:14px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+        '</div>' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Dars Kunlari (Jadval)</label>' +
+          '<select id="eaNewGSched" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;">' +
+            '<option value="har_kuni">Har kungi dars (Dushanba – Shanba)</option>' +
+            '<option value="toq">Toq kunlari (Dushanba, Chorshanba, Juma)</option>' +
+            '<option value="juft">Juft kunlari (Seshanba, Payshanba, Shanba)</option>' +
+          '</select>' +
+        '</div>' +
+        '<div style="display:flex;gap:10px;margin-top:10px;">' +
+          '<button id="eaCancelAddGBtn" style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#cbd5e1;padding:12px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
+          '<button id="eaSaveAddGBtn" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);border:none;border-radius:12px;color:#fff;padding:12px;font-weight:900;cursor:pointer;">🏫 Guruhni Yaratish</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    document.body.appendChild(overlay);
+
+    function close() { overlay.remove(); }
+    overlay.querySelector('#eaCloseAddGModalBtn').onclick = close;
+    overlay.querySelector('#eaCancelAddGBtn').onclick = close;
+
+    overlay.querySelector('#eaSaveAddGBtn').onclick = function() {
+      var name = overlay.querySelector('#eaNewGName').value.trim();
+      var room = overlay.querySelector('#eaNewGRoom').value.trim() || '302-xona';
+      var cap = Number(overlay.querySelector('#eaNewGCap').value) || 16;
+      var sched = overlay.querySelector('#eaNewGSched').value || 'har_kuni';
+
+      if (!name) { alert("Iltimos, guruh nomini kiriting!"); return; }
+
+      var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+      if (!S.classes) S.classes = [];
+
+      var randCode = 'ETH-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+      var newCls = {
+        id: 'cls_' + Date.now(),
+        code: randCode,
+        name: name,
+        teacher: teacher.name,
+        teacherId: teacher.id,
+        teacherName: teacher.name,
+        room: room,
+        schedule: sched,
+        maxCapacity: cap,
+        students: [],
+        customStudentNames: {},
+        attendance: { records: {}, lessonTypes: {}, holidays: {}, homeworks: {} }
+      };
+
+      S.classes.push(newCls);
+      if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
+      if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') window.EthithSync.pushStoreUpdate();
+
+      close();
+      EA.activeTeacherId = teacher.id;
+      EA.activeClassId = null;
+      EA.render(document.getElementById('apView'));
+    };
+  };
+
+EA.render = function(container, preserveScrollLeft) {
     if (!container) container = document.getElementById('apView');
     if (!container) return;
 
     ensureStylesInjected();
     window._ethithCurrentView = 'attendance';
+
+    var isAdmin = isAdminRole();
+    var isTeacher = isTeacherRole();
+
+    // 1. If Admin has not selected a teacher and not selected a class -> Show Teachers Directory (Level 1)
+    if (isAdmin && !EA.activeTeacherId && !EA.activeClassId) {
+      EA.renderTeachersDirectory(container);
+      return;
+    }
+
+    // 2. If a teacher is selected (or user is a teacher) but no class selected -> Show Teacher Groups (Level 2)
+    if ((isAdmin || isTeacher) && EA.activeTeacherId && !EA.activeClassId) {
+      EA.renderTeacherGroups(container, EA.activeTeacherId);
+      return;
+    }
+
+    // If teacher is logged in and no activeTeacherId set yet
+    if (isTeacher && !isAdmin && !EA.activeTeacherId) {
+      var curUser = getActiveUser();
+      var teachers = getStoreTeachers();
+      var matchT = teachers.find(function(t) { return t.id === curUser.id || (curUser.email && t.email && t.email.toLowerCase() === curUser.email.toLowerCase()); }) || teachers[0];
+      if (matchT) {
+        EA.activeTeacherId = matchT.id;
+        if (!EA.activeClassId) {
+          EA.renderTeacherGroups(container, EA.activeTeacherId);
+          return;
+        }
+      }
+    }
 
     var allClasses = getAvailableClasses();
     var cls = getActiveOrFirstClass();
@@ -91854,16 +92735,19 @@ window.NAVIGATE_CURRICULUM = {
 
     h += '<div style="position:relative;z-index:2;">';
 
-    // 0. CLASSES & CHATS SYNCED CLASS SELECTOR BAR
-    h += '<div class="qe-glass-panel" style="border-radius:20px;padding:12px 16px;margin-bottom:14px;">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">' +
-        '<div style="font-size:12px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:8px;">' +
-          '<span style="width:8px;height:8px;border-radius:50%;background:#38bdf8;box-shadow:0 0 10px #38bdf8;display:inline-block;"></span>' +
-          '<span>🏫 Classes &amp; Chats Sinflari (' + allClasses.length + ' ta) — Ustiga bosib tanlang:</span>' +
-        '</div>' +
-        '<button id="eaGoClassesBtn" class="qe-glass-pill" style="color:#38bdf8;border-radius:10px;padding:6px 14px;font-size:12px;font-weight:800;cursor:pointer;">💬 Guruh Chatiga O\'tish / Yangi Sinf &rarr;</button>' +
+    // 0. HIERARCHICAL NAVIGATION BAR (BACK TO TEACHER GROUPS & ALL TEACHERS)
+    var curTName = cls.teacherName || cls.teacher || 'Ustoz';
+    h += '<div class="qe-glass-panel" style="border-radius:20px;padding:12px 18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">' +
+      '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
+        '<button id="eaBtnBackToTeacherGroupsFromJ" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.3);">&larr; ' + esc(curTName) + ' Guruhlariga Qaytish</button>' +
+        (isAdmin ? '<button id="eaBtnBackToAllTeachersFromJ" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;">Barcha O‘qituvchilar</button>' : '') +
       '</div>' +
-      '<div style="display:flex;align-items:center;gap:10px;overflow-x:auto;padding-bottom:4px;">';
+      '<div style="display:flex;align-items:center;gap:10px;">' +
+        '<span style="font-size:12.5px;color:#94a3b8;">Ustoz: <b style="color:#fff;">' + esc(curTName) + '</b></span>' +
+        '<span style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:12px;padding:3px 10px;font-size:11.5px;font-weight:800;">' + students.length + ' nafar o‘quvchi</span>' +
+      '</div>' +
+    '</div>' +
+    '<div style="display:none;">';
 
     allClasses.forEach(function(c) {
       var isAct = (c.id === cls.id);
@@ -99485,10 +100369,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     if (isAdmin) {
       // 1. ADMIN NAVIGATION: Full administrative management, attendance, billing, payroll, timetable, classes, contests, workbook editors
       h += sec('Admin Boshqaruvi');
-      h += item('attendance', ic('check'), 'Davomat & SMS');
+      h += item('attendance', '📅', 'Attendance');
       h += item('billing', '💳', 'Oylik To‘lovlar (Moliya)');
       h += item('staff', '👨‍🏫', 'O‘qituvchilar (Payroll)');
-      h += item('timetable', '📅', 'Dars Jadvallari');
       h += item('classes', ic('users'), 'Sinflar & Guruhlar');
       h += item('contests', '🏆', 'Onlayn Musobaqalar');
 
@@ -99502,8 +100385,8 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += sec('O‘qituvchi Kabineti');
       h += item('explorer', '💻', 'Qo‘shimcha testlar');
       h += item('classes', ic('users'), 'Sinflar & Guruhlar');
-      h += item('attendance', ic('check'), 'Davomat (Attendance)');
-      h += item('timetable', '📅', 'Dars Jadvallari');
+      h += item('attendance', '📅', 'Attendance');
+      // timetable merged into attendance
 
       h += sec('Darsliklar & Materiallar');
       h += item('intermediate', ic('book'), 'Intermediate (B1+)');
@@ -99552,9 +100435,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     ask_ai: 'ETHITH AI Teacher',
     quiz: 'Live Quiz Battle & Test',
     classes: 'Sinflar & Guruhlar',
-    attendance: 'Attendance (Davomat)',
+    attendance: 'Attendance (O‘qituvchilar & Guruhlar)',
     explorer: 'Qo‘shimcha testlar va Savollar Banki',
-    timetable: 'Dars Jadvallari & Guruhlar Sig‘imi',
+    timetable: 'Attendance (O‘qituvchilar & Guruhlar)',
     billing: 'Oylik To‘lovlar & Moliya',
     staff: 'O‘qituvchilar (Payroll)',
     contests: 'Onlayn Musobaqalar & Coinlar',
@@ -99753,6 +100636,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       return;
     }
     // Block students from financial and staff management
+    if (n === 'timetable') { n = 'attendance'; }
     if ((n === 'billing' || n === 'staff') && S.user.role === 'student') {
       toast("🛡️ Moliya bo‘limi faqat Admin va O‘qituvchilar uchun ochiq");
       n = 'dash';
