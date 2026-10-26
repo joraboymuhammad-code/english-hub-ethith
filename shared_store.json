@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1793030096051,
+      "created": 1792429062767,
       "students": [
         {
           "id": "std_1",
@@ -139,25 +139,7 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [],
-      "activeHomework": {
-        "dateKey": "2026-10-26",
-        "dateDisp": "26.10.2026",
-        "bookLevel": "B2",
-        "unit": 2,
-        "lessonCode": "2.2",
-        "lessonTitle": "2.2 An extraordinary escape",
-        "pages": [
-          2012,
-          2013
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792778188732,
-        "teacherName": "Instructor Muhammadyusuf"
-      },
       "schedule": "har_kuni",
-      "customStudentNames": {
-        "std_1": "Ashurov Dilyorbek"
-      },
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -1178,7 +1160,26 @@
           }
         },
         "seededWindowV3": true
-      }
+      },
+      "customStudentNames": {
+        "std_1": "Ashurov Dilyorbek"
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-26",
+        "dateDisp": "26.10.2026",
+        "bookLevel": "B2",
+        "unit": 2,
+        "lessonCode": "2.2",
+        "lessonTitle": "2.2 An extraordinary escape",
+        "pages": [
+          2012,
+          2013
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792778188732,
+        "teacherName": "Instructor Muhammadyusuf"
+      },
+      "customStudentPhones": {}
     },
     {
       "id": "cls_1792041880052",
@@ -42482,7 +42483,7 @@
       "monthlySalary": 5500000,
       "hourlyRate": 85000,
       "teachingHours": 64,
-      "paidThisMonth": false,
+      "paidThisMonth": true,
       "assignedClasses": [
         "cls_1792041880052"
       ]
@@ -42494,87 +42495,40 @@
         "id": "f_root",
         "name": "Bosh Papka",
         "parentId": null,
-        "createdAt": 1793030098610
+        "createdAt": 1793024168370
       },
       {
         "id": "f_grammar",
         "name": "Grammar Mastery",
         "parentId": "f_root",
-        "createdAt": 1793030098610
-      },
-      {
-        "id": "f_vocab",
-        "name": "Vocabulary Builder",
-        "parentId": "f_root",
-        "createdAt": 1793030098610
+        "createdAt": 1793024168370
       },
       {
         "id": "f_ielts",
         "name": "IELTS Mock Tests",
         "parentId": "f_root",
-        "createdAt": 1793030098610
+        "createdAt": 1793024168370
+      },
+      {
+        "id": "f_1793028050497",
+        "name": "Yangi Papka",
+        "parentId": "f_root",
+        "createdAt": 1793028050497
+      },
+      {
+        "id": "f_1793030124872",
+        "name": "Yangi Papka",
+        "parentId": "f_1793028050497",
+        "createdAt": 1793030124872
       }
     ],
     "tests": [
-      {
-        "id": "TST-NAV-MULTI",
-        "title": "Oxford Navigate B2 Unit Test 1A (Continuous PDF)",
-        "type": "visual_overlay",
-        "folderId": "f_ielts",
-        "createdAt": 1793030098610,
-        "authorName": "Zizi Ustoz",
-        "maxAttempts": 3,
-        "pages": [
-          {
-            "pageNum": 1,
-            "imageUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22900%22%20height%3D%221200%22%20viewBox%3D%220%200%20900%201200%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23ffffff%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2280%22%20font-family%3D%22sans-serif%22%20font-weight%3D%22900%22%20font-size%3D%2228%22%20fill%3D%22%230f172a%22%3EB2%20Unit%20test%201A%20Navigate%3C%2Ftext%3E%3Ctext%20x%3D%2260%22%20y%3D%22140%22%20font-family%3D%22sans-serif%22%20font-weight%3D%22700%22%20font-size%3D%2218%22%20fill%3D%22%231e293b%22%3E1%20Choose%20the%20correct%20option%20a-d%20to%20complete%20the%20text%3C%2Ftext%3E%3Crect%20x%3D%2260%22%20y%3D%22180%22%20width%3D%22400%22%20height%3D%22400%22%20fill%3D%22%23f8fafc%22%20stroke%3D%22%23cbd5e1%22%2F%3E%3Ctext%20x%3D%2280%22%20y%3D%22220%22%20font-family%3D%22sans-serif%22%20font-size%3D%2215%22%20fill%3D%22%23334155%22%3EStudents%20study%20language%20at%20their%20own%20speed.%3C%2Ftext%3E%3Ctext%20x%3D%2280%22%20y%3D%22270%22%20font-family%3D%22sans-serif%22%20font-size%3D%2215%22%20fill%3D%22%23334155%22%3E1.%20They%20________________%20on%20their%20headset.%3C%2Ftext%3E%3Ctext%20x%3D%2280%22%20y%3D%22340%22%20font-family%3D%22sans-serif%22%20font-size%3D%2215%22%20fill%3D%22%23334155%22%3E2.%20They%20________________%20conversations%20with%20peers.%3C%2Ftext%3E%3Ctext%20x%3D%22500%22%20y%3D%22220%22%20font-family%3D%22sans-serif%22%20font-size%3D%2215%22%20fill%3D%22%23334155%22%3E1%20a%20put%20%20b%20get%20%20c%20force%3C%2Ftext%3E%3Ctext%20x%3D%22500%22%20y%3D%22270%22%20font-family%3D%22sans-serif%22%20font-size%3D%2215%22%20fill%3D%22%23334155%22%3E2%20a%20speak%20%20b%20talk%20%20c%20hold%3C%2Ftext%3E%3C%2Fsvg%3E",
-            "elements": [
-              {
-                "id": "el_p1_1",
-                "top": 21,
-                "left": 16,
-                "width": 20,
-                "height": 3,
-                "type": "fill",
-                "label": "1",
-                "correct": "put"
-              },
-              {
-                "id": "el_p1_2",
-                "top": 26.8,
-                "left": 16,
-                "width": 20,
-                "height": 3,
-                "type": "fill",
-                "label": "2",
-                "correct": "hold"
-              }
-            ]
-          },
-          {
-            "pageNum": 2,
-            "imageUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22900%22%20height%3D%221200%22%20viewBox%3D%220%200%20900%201200%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23ffffff%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2280%22%20font-family%3D%22sans-serif%22%20font-weight%3D%22900%22%20font-size%3D%2228%22%20fill%3D%22%230f172a%22%3EB2%20Unit%20test%201A%20%E2%80%94%20Page%202%20Sign%20Language%3C%2Ftext%3E%3Ctext%20x%3D%2260%22%20y%3D%22140%22%20font-family%3D%22sans-serif%22%20font-weight%3D%22700%22%20font-size%3D%2218%22%20fill%3D%22%231e293b%22%3E5%20Read%20the%20article%20and%20match%20definitions%3C%2Ftext%3E%3Crect%20x%3D%2260%22%20y%3D%22180%22%20width%3D%22760%22%20height%3D%22350%22%20fill%3D%22%23f8fafc%22%20stroke%3D%22%23cbd5e1%22%2F%3E%3Ctext%20x%3D%2280%22%20y%3D%22230%22%20font-family%3D%22sans-serif%22%20font-size%3D%2215%22%20fill%3D%22%23334155%22%3ESign%20language%20is%20used%20both%20by%20the%20deaf%20and%20people%20who%20can%20hear.%3C%2Ftext%3E%3Ctext%20x%3D%2280%22%20y%3D%22280%22%20font-family%3D%22sans-serif%22%20font-size%3D%2215%22%20fill%3D%22%23334155%22%3EMany%20signs%20are%20in%20use%20around%20the%20world.%3C%2Ftext%3E%3C%2Fsvg%3E",
-            "elements": [
-              {
-                "id": "el_p2_1",
-                "top": 22.5,
-                "left": 18,
-                "width": 35,
-                "height": 3,
-                "type": "fill",
-                "label": "3",
-                "correct": "manual"
-              }
-            ]
-          }
-        ]
-      },
       {
         "id": "TST-7K2M9",
         "title": "Unit 7: Modals of Deduction & Obligation",
         "folderId": "f_grammar",
         "authorName": "Ustoz",
-        "createdAt": 1793030098610,
+        "createdAt": 1793024168370,
         "maxAttempts": 1,
         "questions": [
           {
@@ -42624,56 +42578,6 @@
               "must",
               "can't",
               "might"
-            ],
-            "correct": 0
-          }
-        ]
-      },
-      {
-        "id": "TST-4H8R1",
-        "title": "Unit 8: Compound Adjectives & Participle Clauses",
-        "folderId": "f_vocab",
-        "authorName": "Zizi Ustoz",
-        "createdAt": 1793030098610,
-        "maxAttempts": 1,
-        "questions": [
-          {
-            "q": "A person who is relaxed and not easily upset is ______.",
-            "options": [
-              "easy-going",
-              "short-tempered",
-              "well-mannered",
-              "broad-minded"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "______ for 10 a.m. tomorrow, the conference has now been rescheduled.",
-            "options": [
-              "Scheduled",
-              "Scheduling",
-              "To schedule",
-              "Having schedule"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Products ______ locally are often fresher and support the local economy.",
-            "options": [
-              "grown",
-              "growing",
-              "have grown",
-              "to grow"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "A person with a great knowledge from books is ______.",
-            "options": [
-              "well-educated",
-              "quick-witted",
-              "bad-tempered",
-              "open-minded"
             ],
             "correct": 0
           }
@@ -42728,8 +42632,8 @@
       "id": "cnt_kuzgi_2026",
       "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
       "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
-      "startDate": 1792943698610,
-      "endDate": 1793634898610,
+      "startDate": 1792937768370,
+      "endDate": 1793628968370,
       "prizeCoins": 1000,
       "testId": "TST-7K2M9",
       "participants": {
@@ -42737,31 +42641,31 @@
           "name": "Ashurov Dilyorbek",
           "score": 95,
           "timeSec": 140,
-          "completedAt": 1793026498610
+          "completedAt": 1793020568370
         },
         "std_2": {
           "name": "Ergasheva Madina",
           "score": 92,
           "timeSec": 165,
-          "completedAt": 1793026598610
+          "completedAt": 1793020668370
         },
         "std_4": {
           "name": "JO‘RABOYEV MUXAMMADYUSUF",
           "score": 98,
           "timeSec": 110,
-          "completedAt": 1793026698610
+          "completedAt": 1793020768370
         },
         "std_5": {
           "name": "Jo'raboyev Javoxir",
           "score": 88,
           "timeSec": 180,
-          "completedAt": 1793026798610
+          "completedAt": 1793020868370
         },
         "std_6": {
           "name": "Mavlonova Ruxshona",
           "score": 85,
           "timeSec": 190,
-          "completedAt": 1793026898610
+          "completedAt": 1793020968370
         }
       },
       "status": "active"
@@ -42772,17 +42676,17 @@
       "std_1": {
         "status": "paid",
         "baseAmount": 200000,
-        "offsetAmount": 200014,
-        "paidAmount": 200014,
-        "paidAt": 1792770898610,
-        "verifiedBy": "auto_offset"
+        "offsetAmount": 200081,
+        "paidAmount": 200081,
+        "paidAt": 1793024274243,
+        "verifiedBy": "admin_manual"
       },
       "std_2": {
         "status": "paid",
         "baseAmount": 200000,
         "offsetAmount": 200028,
         "paidAmount": 200028,
-        "paidAt": 1792857298610,
+        "paidAt": 1792851368370,
         "verifiedBy": "auto_offset"
       },
       "std_3": {
@@ -42796,7 +42700,7 @@
         "baseAmount": 200000,
         "offsetAmount": 200056,
         "paidAmount": 200056,
-        "paidAt": 1792943698610,
+        "paidAt": 1792937768370,
         "verifiedBy": "auto_offset"
       },
       "std_5": {
@@ -42805,9 +42709,9 @@
         "offsetAmount": 200070,
         "paidAmount": 200070,
         "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
-        "paidAt": 1793022898610
+        "paidAt": 1793016968370
       }
     }
   },
-  "updatedAt": 1793030099425
+  "updatedAt": 1793030125508
 }
