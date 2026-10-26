@@ -42576,56 +42576,6 @@
             "correct": 0
           }
         ]
-      },
-      {
-        "id": "TST-4H8R1",
-        "title": "Unit 8: Compound Adjectives & Participle Clauses",
-        "folderId": "f_root",
-        "authorName": "Zizi Ustoz",
-        "createdAt": 1793024168370,
-        "maxAttempts": 1,
-        "questions": [
-          {
-            "q": "A person who is relaxed and not easily upset is ______.",
-            "options": [
-              "easy-going",
-              "short-tempered",
-              "well-mannered",
-              "broad-minded"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "______ for 10 a.m. tomorrow, the conference has now been rescheduled.",
-            "options": [
-              "Scheduled",
-              "Scheduling",
-              "To schedule",
-              "Having schedule"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Products ______ locally are often fresher and support the local economy.",
-            "options": [
-              "grown",
-              "growing",
-              "have grown",
-              "to grow"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "A person with a great knowledge from books is ______.",
-            "options": [
-              "well-educated",
-              "quick-witted",
-              "bad-tempered",
-              "open-minded"
-            ],
-            "correct": 0
-          }
-        ]
       }
     ]
   },
@@ -42757,5 +42707,5 @@
       }
     }
   },
-  "updatedAt": 1793028959109
+  "updatedAt": 1793028968410
 }
