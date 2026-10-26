@@ -316,6 +316,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -81541,7 +81543,7 @@ window.NAVIGATE_CURRICULUM = {
             folderId: "f_grammar",
             authorName: "Ustoz",
             createdAt: Date.now(),
-            maxAttempts: parseInt(m.querySelector('#eeHwMaxAttempts').value, 10) || 1,
+            maxAttempts: 1,
             questions: [
               { q: "You ______ be exhausted after working for 14 hours straight!", options: ["must", "can't", "might not", "should"], correct: 0 },
               { q: "He ______ have stolen the money; he was with me in London that evening.", options: ["must", "can't", "ought to", "might"], correct: 1 },
@@ -82400,7 +82402,7 @@ window.NAVIGATE_CURRICULUM = {
 
     var m = document.createElement('div');
     m.id = 'eeVisualBuilderOverlay';
-    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.94);backdrop-filter:blur(14px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:12px;box-sizing:border-box;';
+    m.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;background:#070b14;z-index:2147483640;display:flex;flex-direction:column;overflow:hidden;margin:0;padding:0;box-sizing:border-box;color:#f8fafc;font-family:system-ui,-apple-system,sans-serif;';
 
     var defaultImg = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200"><rect width="100%" height="100%" fill="#ffffff"/><rect x="40" y="40" width="820" height="1120" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/><text x="70" y="100" font-family="sans-serif" font-weight="900" font-size="28" fill="#0f172a">ETHITH ENGLISH TEST SHEET</text><text x="70" y="135" font-family="sans-serif" font-weight="600" font-size="16" fill="#64748b">Exercise 1: Read the sentences and fill in the missing grammar forms</text><line x1="70" y1="155" x2="830" y2="155" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="210" font-family="sans-serif" font-size="17" fill="#334155">1. By the time Sarah arrived, the train _________________ (already / leave).</text><text x="70" y="270" font-family="sans-serif" font-size="17" fill="#334155">2. If you study diligently every day, you _________________ (pass) the IELTS exam.</text><text x="70" y="330" font-family="sans-serif" font-size="17" fill="#334155">3. Neither John nor his friends _________________ (be) aware of the changes.</text><text x="70" y="390" font-family="sans-serif" font-size="17" fill="#334155">4. The CEO demanded that the report _________________ (submit) before noon.</text><text x="70" y="450" font-family="sans-serif" font-size="17" fill="#334155">5. I wish I _________________ (know) the truth earlier!</text><text x="70" y="520" font-family="sans-serif" font-weight="700" font-size="18" fill="#0f172a">Exercise 2: Choose the correct preposition or connector</text><line x1="70" y1="540" x2="830" y2="540" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="590" font-family="sans-serif" font-size="17" fill="#334155">6. She is extremely passionate [ about / with / for ] environmental protection.</text><text x="70" y="650" font-family="sans-serif" font-size="17" fill="#334155">7. Despite [ of the rain / the heavy rain / it was raining ], the match continued.</text><text x="70" y="710" font-family="sans-serif" font-size="17" fill="#334155">8. We arrived at the venue just [ in / on / at ] time for the opening speech.</text></svg>');
 
@@ -82409,64 +82411,61 @@ window.NAVIGATE_CURRICULUM = {
     var pdfDoc = null;
     var currentPdfPage = 1;
     var totalPdfPages = 1;
+    var currentWidthPx = 1040; // Default spacious crisp width
 
-    m.innerHTML = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);border-radius:20px;max-width:1200px;width:100%;max-height:96vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,0.85);overflow:hidden;color:#f8fafc;">' +
-      // Header
-      '<div style="padding:14px 22px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;background:rgba(30,41,59,0.5);">' +
-        '<div style="display:flex;align-items:center;gap:12px;">' +
-          '<span style="font-size:24px;">🎨</span>' +
-          '<div>' +
-            '<h3 style="margin:0;font-size:16.5px;font-weight:900;color:#f8fafc;">Interaktiv Rasm / PDF Ustiga Shaffof Qatlam Tahrirlovchisi</h3>' +
-            '<p style="margin:2px 0 0;font-size:12px;color:#94a3b8;">PDF yoki Rasm yuklang va ustiga sichqoncha bilan katakcha chizing — tizim katakcha parametrlarini ochadi.</p>' +
+    m.innerHTML = '' +
+      // Unified Studio Topbar
+      '<div style="height:62px;padding:0 20px;background:#0f172a;border-bottom:1px solid rgba(56,189,248,0.25);display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 4px 20px rgba(0,0,0,0.5);flex-shrink:0;z-index:50;">' +
+        // Left
+        '<div style="display:flex;align-items:center;gap:12px;flex:1;max-width:440px;">' +
+          '<div style="font-size:24px;line-height:1;">🎨</div>' +
+          '<input type="text" id="eeVisualTitle" placeholder="Test Nomi (masalan: Unit 1 Test B2)" style="width:100%;padding:8px 14px;background:#1e293b;border:1.5px solid rgba(56,189,248,0.3);border-radius:10px;color:#fff;font-weight:800;font-size:13.5px;outline:none;" />' +
+          '<div style="display:flex;align-items:center;gap:5px;flex-shrink:0;">' +
+            '<span style="font-size:11.5px;color:#94a3b8;font-weight:700;">Urinish:</span>' +
+            '<input type="number" id="eeVisualAttempts" min="1" max="50" value="1" style="width:52px;padding:6px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-weight:900;font-size:12px;text-align:center;outline:none;" title="O‘quvchi necha marta ishlay oladi" />' +
           '</div>' +
         '</div>' +
+
+        // Center: Upload + Pagination + Zoom Controls
         '<div style="display:flex;align-items:center;gap:10px;">' +
-          '<span style="background:rgba(56,189,248,0.15);color:#38bdf8;padding:4px 10px;border-radius:8px;font-weight:900;font-size:12px;">' + randCode + '</span>' +
-          '<button id="eeCloseVisualModal" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;padding:2px 6px;">✕</button>' +
-        '</div>' +
-      '</div>' +
-
-      // Toolbar
-      '<div style="padding:10px 22px;background:#1e293b;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;gap:12px;align-items:center;flex-wrap:wrap;">' +
-        '<div style="flex:2;min-width:200px;">' +
-          '<input type="text" id="eeVisualTitle" placeholder="Test Nomi (masalan: Unit 5 Grammar Practice)" style="width:100%;padding:8px 12px;background:#0f172a;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:700;font-size:12.5px;outline:none;" />' +
-        '</div>' +
-        '<div style="display:flex;align-items:center;gap:6px;">' +
-          '<label style="font-size:12px;font-weight:700;color:#94a3b8;">Urinishlar:</label>' +
-          '<input type="number" id="eeVisualAttempts" min="1" max="50" value="1" style="width:60px;padding:7px;background:#0f172a;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:900;font-size:12.5px;text-align:center;outline:none;" title="O‘quvchi necha marta ishlay oladi" />' +
-        '</div>' +
-        '<div style="display:flex;align-items:center;gap:8px;">' +
-          '<label style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);padding:7px 14px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
-            '📁 Rasm / PDF Yuklash <input type="file" id="eeVisualFileInput" accept="image/*,application/pdf,.pdf" style="display:none;" />' +
+          '<label style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(37,99,235,0.2));color:#38bdf8;border:1.5px solid #38bdf8;padding:7px 14px;border-radius:10px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 0 12px rgba(56,189,248,0.2);">' +
+            '📁 PDF / Rasm Yuklash <input type="file" id="eeVisualFileInput" accept="image/*,application/pdf,.pdf" style="display:none;" />' +
           '</label>' +
+
+          // Multi-page switcher
+          '<div id="eePdfPageControls" style="display:none;align-items:center;gap:6px;background:#1e293b;padding:4px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);">' +
+            '<button id="eePdfPrevPage" style="background:#334155;border:none;color:#fff;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:800;cursor:pointer;">◀</button>' +
+            '<span id="eePdfPageInfo" style="font-size:12px;font-weight:800;color:#38bdf8;min-width:44px;text-align:center;">1 / 1</span>' +
+            '<button id="eePdfNextPage" style="background:#334155;border:none;color:#fff;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:800;cursor:pointer;">▶</button>' +
+          '</div>' +
+
+          // Zoom & Fit Controls
+          '<div style="display:flex;align-items:center;gap:4px;background:#1e293b;padding:3px 6px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);">' +
+            '<button id="eeZoomOutBtn" style="background:#334155;border:none;color:#cbd5e1;padding:5px 9px;border-radius:6px;font-size:12px;font-weight:900;cursor:pointer;" title="Kichiklashtirish">🔍−</button>' +
+            '<button id="eeZoom100Btn" style="background:none;border:none;color:#38bdf8;padding:4px 8px;font-size:11.5px;font-weight:800;cursor:pointer;" title="Asl o‘lcham (100%)">100%</button>' +
+            '<button id="eeZoomInBtn" style="background:#334155;border:none;color:#cbd5e1;padding:5px 9px;border-radius:6px;font-size:12px;font-weight:900;cursor:pointer;" title="Kattalashtirish">🔍+</button>' +
+            '<button id="eeFitWidthBtn" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;padding:4px 10px;border-radius:6px;font-size:11.5px;font-weight:800;cursor:pointer;margin-left:4px;" title="Ekranga to‘liq moslash">↔️ Kenglikka moslash</button>' +
+          '</div>' +
         '</div>' +
-        '<div id="eePdfPageControls" style="display:none;align-items:center;gap:6px;background:rgba(15,23,42,0.6);padding:4px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);">' +
-          '<button id="eePdfPrevPage" style="background:#334155;border:none;color:#fff;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:800;cursor:pointer;">◀</button>' +
-          '<span id="eePdfPageInfo" style="font-size:11.5px;font-weight:800;color:#38bdf8;">1 / 1</span>' +
-          '<button id="eePdfNextPage" style="background:#334155;border:none;color:#fff;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:800;cursor:pointer;">▶</button>' +
+
+        // Right: Counter + Save + Close
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<div id="eeVisualCounter" style="font-size:12.5px;font-weight:800;color:#10b981;background:rgba(16,185,129,0.12);padding:5px 10px;border-radius:8px;border:1px solid rgba(16,185,129,0.25);">0 ta katakcha qo‘shildi</div>' +
+          '<button id="eeSaveVisualBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;font-size:13.5px;cursor:pointer;box-shadow:0 4px 18px rgba(2,132,199,0.5);display:flex;align-items:center;gap:6px;">💾 Testni Saqlash</button>' +
+          '<button id="eeCloseVisualModal" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:18px;font-weight:900;cursor:pointer;padding:8px 12px;border-radius:10px;" title="Chiqish">✕</button>' +
         '</div>' +
-        '<div id="eeVisualCounter" style="margin-left:auto;font-size:12.5px;font-weight:800;color:#10b981;">0 ta katakcha qo‘shildi</div>' +
       '</div>' +
 
-      // Sheet workspace
-      '<div style="flex:1;overflow:auto;padding:16px;display:flex;justify-content:center;background:#020617;position:relative;" id="eeVisualWorkspace">' +
-        '<div id="eeVisualCanvasWrap" style="position:relative;display:inline-block;max-width:880px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,0.85);border-radius:12px;overflow:hidden;background:#ffffff;">' +
-          '<img id="eeVisualImg" src="' + currentImg + '" style="width:100%;display:block;user-select:none;pointer-events:none;" />' +
+      // Full Height Scrollable Workspace (Unconstrained, spacious, full natural page display)
+      '<div id="eeVisualWorkspace" style="flex:1;overflow-y:scroll;overflow-x:auto;padding:28px 24px 140px 24px;display:flex;flex-direction:column;align-items:center;background:#070b14;position:relative;">' +
+        '<div id="eeVisualCanvasWrap" style="position:relative;display:inline-block;width:' + currentWidthPx + 'px;max-width:98vw;box-shadow:0 14px 60px rgba(0,0,0,0.9);border-radius:4px;background:#ffffff;transition:width 0.15s ease;">' +
+          '<img id="eeVisualImg" src="' + currentImg + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:none;" />' +
           '<div id="eeVisualOverlay" style="position:absolute;inset:0;cursor:crosshair;z-index:20;user-select:none;"></div>' +
         '</div>' +
-      '</div>' +
-
-      // Footer
-      '<div style="padding:12px 22px;border-top:1px solid rgba(255,255,255,0.08);background:#0f172a;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">' +
-        '<div style="font-size:12px;color:#94a3b8;">' +
+        '<div style="margin-top:20px;font-size:12.5px;color:#64748b;text-align:center;">' +
           '💡 Sichqoncha bilan varaq ustiga to‘rtburchak chizing — tizim <b>Yangi Katakcha</b> parametrlarini ochadi.' +
         '</div>' +
-        '<div style="display:flex;gap:10px;">' +
-          '<button id="eeCancelVisualBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:8px 18px;border-radius:9px;font-weight:700;font-size:12.5px;cursor:pointer;">Bekor qilish</button>' +
-          '<button id="eeSaveVisualBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#fff;padding:8px 24px;border-radius:9px;font-weight:900;font-size:13px;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,0.5);">💾 Testni Saqlash</button>' +
-        '</div>' +
-      '</div>' +
-    '</div>';
+      '</div>';
 
     modalRoot.appendChild(m);
 
@@ -82480,11 +82479,25 @@ window.NAVIGATE_CURRICULUM = {
     var pdfPrevBtn = m.querySelector('#eePdfPrevPage');
     var pdfNextBtn = m.querySelector('#eePdfNextPage');
 
-    // PDF Rendering Engine (<0.2 sec ultra-fast)
+    // Zoom handlers
+    function applyWrapWidth(w) {
+      currentWidthPx = Math.max(650, Math.min(2200, w));
+      canvasWrap.style.width = currentWidthPx + 'px';
+    }
+
+    m.querySelector('#eeZoomInBtn').onclick = function() { applyWrapWidth(currentWidthPx + 150); };
+    m.querySelector('#eeZoomOutBtn').onclick = function() { applyWrapWidth(currentWidthPx - 150); };
+    m.querySelector('#eeZoom100Btn').onclick = function() { applyWrapWidth(1040); };
+    m.querySelector('#eeFitWidthBtn').onclick = function() {
+      var wsW = m.querySelector('#eeVisualWorkspace').clientWidth;
+      applyWrapWidth(Math.floor(wsW * 0.94));
+    };
+
+    // PDF Rendering Engine (<0.2 sec ultra-fast high DPI)
     function renderPdfPageNumber(pageNo) {
       if (!pdfDoc) return;
       pdfDoc.getPage(pageNo).then(function(page) {
-        var scale = 1.6;
+        var scale = 2.0; // High DPI crystal clear resolution
         var viewport = page.getViewport({ scale: scale });
         var canvas = document.createElement('canvas');
         var ctx = canvas.getContext('2d');
@@ -82607,7 +82620,7 @@ window.NAVIGATE_CURRICULUM = {
 
       var km = document.createElement('div');
       km.id = 'eeKatakchaModal';
-      km.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2147483647;backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:14px;';
+      km.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:2147483647;backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:14px;';
 
       var defaultLabel = isNew ? ((elements.length + 1).toString()) : (item.label || '');
       var defaultCorrect = isNew ? '' : (item.correct || '');
@@ -82771,7 +82784,7 @@ window.NAVIGATE_CURRICULUM = {
       var wPx = Math.abs(endX - startX);
       var hPx = Math.abs(endY - startY);
 
-      if (wPx > 12 && hPx > 8) {
+      if (wPx > 10 && hPx > 8) {
         var topPct = parseFloat(((Math.min(startY, endY) / rect.height) * 100).toFixed(2));
         var leftPct = parseFloat(((Math.min(startX, endX) / rect.width) * 100).toFixed(2));
         var widthPct = parseFloat(((wPx / rect.width) * 100).toFixed(2));
@@ -82788,7 +82801,6 @@ window.NAVIGATE_CURRICULUM = {
 
     var closeAll = function() { m.remove(); };
     m.querySelector('#eeCloseVisualModal').onclick = closeAll;
-    m.querySelector('#eeCancelVisualBtn').onclick = closeAll;
 
     m.querySelector('#eeSaveVisualBtn').onclick = function() {
       var title = m.querySelector('#eeVisualTitle').value.trim();
@@ -82816,9 +82828,7 @@ window.NAVIGATE_CURRICULUM = {
       showToast("Interaktiv test saqlandi! Test ID: " + randCode);
       if (container) EE.renderExplorerView(container);
     };
-  };
-
-  EE.openCreateTestModal = function(container, folderId) {
+  };EE.openCreateTestModal = function(container, folderId) {
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
     var randCode = 'TST-' + Math.random().toString(36).substring(2, 6).toUpperCase() + Math.floor(Math.random() * 9 + 1);
 
