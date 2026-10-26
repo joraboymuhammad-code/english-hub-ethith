@@ -323,6 +323,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9106,10 +9107,212 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   }
 }
 
+
+/* ==========================================================================
+   ETHITH CYBER-GLASS OBSIDIAN DARK MODE (PERMANENT UNIVERSAL THEME)
+   Designed for Ultra High-End LMS (Admin, Teacher, Student)
+   ========================================================================== */
+
+:root, body, #app, #app[data-theme="dark"], #app[data-theme="light"] {
+  --bg: #060b14 !important;
+  --bg-deep: #030712 !important;
+  --card: rgba(15, 23, 42, 0.75) !important;
+  --card-solid: #0b1324 !important;
+  --card-border: rgba(255, 255, 255, 0.08) !important;
+  --card-border-glow: rgba(56, 189, 248, 0.35) !important;
+  --text: #f1f5f9 !important;
+  --text-pure: #ffffff !important;
+  --muted: #94a3b8 !important;
+  --muted-dark: #64748b !important;
+  --line: rgba(255, 255, 255, 0.08) !important;
+  --soft: rgba(255, 255, 255, 0.04) !important;
+  --pri: #0284c7 !important;
+  --pri2: #2563eb !important;
+  --pri-glow: rgba(2, 132, 199, 0.4) !important;
+  --emerald: #10b981 !important;
+  --amber: #f59e0b !important;
+  --shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8) !important;
+}
+
+html, body {
+  background: #060b14 !important;
+  color: #f1f5f9 !important;
+}
+
+#app {
+  background: #060b14 !important;
+  color: #f1f5f9 !important;
+}
+
+/* Glassmorphism Sidebar */
+.ap-side {
+  background: rgba(10, 16, 31, 0.88) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 4px 0 35px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Sidebar Navigation Items */
+.ap-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  padding: 10px 14px !important;
+  border-radius: 12px !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: #94a3b8 !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  margin-bottom: 3px !important;
+}
+
+.ap-item:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+  transform: translateX(4px) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.ap-item.active {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.28), rgba(37, 99, 235, 0.18)) !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  transform: none !important;
+}
+
+.ap-icon-wrap {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 15px !important;
+  flex-shrink: 0 !important;
+  color: #38bdf8 !important;
+  transition: all 0.2s ease !important;
+}
+
+.ap-icon-wrap svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.ap-item:hover .ap-icon-wrap {
+  background: rgba(56, 189, 248, 0.12) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
+  color: #ffffff !important;
+}
+
+.ap-item.active .ap-icon-wrap {
+  background: linear-gradient(135deg, #0284c7, #2563eb) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.4) !important;
+}
+
+.ap-item-label {
+  flex: 1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  letter-spacing: -0.2px !important;
+}
+
+.ap-item-badge {
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  padding: 2px 7px !important;
+  border-radius: 6px !important;
+  background: rgba(56, 189, 248, 0.15) !important;
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Sidebar Section Headers */
+.ap-label {
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #64748b !important;
+  margin: 18px 12px 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.ap-label::after {
+  content: "" !important;
+  flex: 1 !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent) !important;
+}
+
+/* Glassmorphism Profile Card at bottom of sidebar */
+.ap-plan {
+  margin: 10px 14px 14px !important;
+  padding: 14px 16px !important;
+  border-radius: 16px !important;
+  color: #fff !important;
+  background: rgba(15, 23, 42, 0.75) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Sticky Header with Glassmorphism */
+.ap-top {
+  background: rgba(10, 16, 31, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+.ap-top .ttl {
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.3px !important;
+}
+
+/* Main View Body */
+.ap-view {
+  background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.04), transparent 45%), radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.03), transparent 40%), #060b14 !important;
+  min-height: calc(100vh - 65px) !important;
+  padding: 24px 28px !important;
+}
+
+/* All Cards, Panels, and Glass Containers */
+.card, .ap-card, .ee-card, .eth-card, .stat-box, .ap-qbox, .ap-hero, .ap-lhero {
+  background: rgba(15, 23, 42, 0.65) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+  border-radius: 16px !important;
+  color: #f1f5f9 !important;
+}
+
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.26.2300";
+window.ETHITH_BUILD_VERSION = "2026.10.26.2330";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -85603,54 +85806,67 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     var isTeacher = userRole === 'teacher';
     var isStudent = !isAdmin && !isTeacher;
 
+    function item(id, iconHtml, labelText, badgeHtml) {
+      var isActive = cur === id;
+      return '<button class="ap-item ' + (isActive ? 'active' : '') + '" data-go="' + id + '">' +
+        '<span class="ap-icon-wrap">' + iconHtml + '</span>' +
+        '<span class="ap-item-label">' + esc(labelText) + '</span>' +
+        (badgeHtml ? ('<span class="ap-item-badge">' + badgeHtml + '</span>') : '') +
+      '</button>';
+    }
+
+    function sec(title) {
+      return '<div class="ap-label">' + esc(title) + '</div>';
+    }
+
     var h = '<a class="ap-logo" id="apLogo" style="color:var(--text);cursor:pointer">' + logo() + '</a>' + contactBlock() + '<nav class="ap-nav">';
-    h += '<button class="ap-item ' + (cur === 'dash' ? 'active' : '') + '" data-go="dash">' + ic('grid') + 'Dashboard</button>';
+    h += item('dash', ic('grid'), 'Dashboard');
 
     if (isAdmin) {
       // 1. ADMIN NAVIGATION: Full administrative management, attendance, billing, payroll, timetable, classes, contests, workbook editors
-      h += '<div class="ap-label">Admin Boshqaruvi</div>';
-      h += '<button class="ap-item ' + (cur === 'attendance' ? 'active' : '') + '" data-go="attendance" style="color:#10b981;font-weight:700">' + ic('check') + 'Davomat (Attendance & SMS)</button>';
-      h += '<button class="ap-item ' + (cur === 'billing' ? 'active' : '') + '" data-go="billing" style="color:#34d399;font-weight:700"><span style="margin-right:6px;">💳</span>Oylik To‘lovlar (Moliya)</button>';
-      h += '<button class="ap-item ' + (cur === 'staff' ? 'active' : '') + '" data-go="staff" style="color:#a855f7;font-weight:700"><span style="margin-right:6px;">👨‍🏫</span>O‘qituvchilar (Payroll)</button>';
-      h += '<button class="ap-item ' + (cur === 'timetable' ? 'active' : '') + '" data-go="timetable" style="color:#f59e0b;font-weight:700"><span style="margin-right:6px;">📅</span>Dars Jadvallari</button>';
-      h += '<button class="ap-item ' + (cur === 'classes' ? 'active' : '') + '" data-go="classes">' + ic('users') + 'Sinflar & Guruhlar</button>';
-      h += '<button class="ap-item ' + (cur === 'contests' ? 'active' : '') + '" data-go="contests" style="color:#f59e0b;font-weight:700"><span style="margin-right:6px;">🏆</span>Onlayn Musobaqalar</button>';
+      h += sec('Admin Boshqaruvi');
+      h += item('attendance', ic('check'), 'Davomat & SMS');
+      h += item('billing', '💳', 'Oylik To‘lovlar (Moliya)');
+      h += item('staff', '👨‍🏫', 'O‘qituvchilar (Payroll)');
+      h += item('timetable', '📅', 'Dars Jadvallari');
+      h += item('classes', ic('users'), 'Sinflar & Guruhlar');
+      h += item('contests', '🏆', 'Onlayn Musobaqalar');
 
-      h += '<div class="ap-label">Dasturlar & Tahrirlovchi</div>';
-      h += '<button class="ap-item ' + (cur === 'intermediate' ? 'active' : '') + '" data-go="intermediate" style="color:#0ea5e9;font-weight:700">' + ic('book') + 'Intermediate (B1+) Tahrir</button>';
-      h += '<button class="ap-item ' + (cur === 'upper_intermediate' ? 'active' : '') + '" data-go="upper_intermediate" style="color:#a855f7;font-weight:700">' + ic('book') + 'Upper-Inter (B2) Tahrir</button>';
-      h += '<button class="ap-item ' + (cur === 'explorer' ? 'active' : '') + '" data-go="explorer" style="color:#38bdf8;font-weight:800"><span style="margin-right:6px;">💻</span>Qo‘shimcha testlar</button>';
-      h += '<button class="ap-item ' + (cur === 'ask_ai' ? 'active' : '') + '" data-go="ask_ai" style="color:#2563eb;font-weight:700">' + ic('sparkles') + 'Ask AI Teacher</button>';
+      h += sec('Dasturlar & Tahrirlovchi');
+      h += item('intermediate', ic('book'), 'Intermediate (B1+) Tahrir');
+      h += item('upper_intermediate', ic('book'), 'Upper-Inter (B2) Tahrir');
+      h += item('explorer', '💻', 'Qo‘shimcha testlar');
+      h += item('ask_ai', ic('sparkles'), 'Ask AI Teacher');
     } else if (isTeacher) {
       // 2. TEACHER NAVIGATION: Qo'shimcha testlar, Sinflar, Davomat, Dars jadvallari, Kitoblar, Musobaqalar
-      h += '<div class="ap-label">O‘qituvchi Kabineti</div>';
-      h += '<button class="ap-item ' + (cur === 'explorer' ? 'active' : '') + '" data-go="explorer" style="color:#38bdf8;font-weight:800"><span style="margin-right:6px;">💻</span>Qo‘shimcha testlar</button>';
-      h += '<button class="ap-item ' + (cur === 'classes' ? 'active' : '') + '" data-go="classes" style="font-weight:700">' + ic('users') + 'Sinflar & Guruhlar</button>';
-      h += '<button class="ap-item ' + (cur === 'attendance' ? 'active' : '') + '" data-go="attendance" style="color:#10b981;font-weight:700">' + ic('check') + 'Davomat (Attendance)</button>';
-      h += '<button class="ap-item ' + (cur === 'timetable' ? 'active' : '') + '" data-go="timetable" style="color:#f59e0b;font-weight:700"><span style="margin-right:6px;">📅</span>Dars Jadvallari</button>';
+      h += sec('O‘qituvchi Kabineti');
+      h += item('explorer', '💻', 'Qo‘shimcha testlar');
+      h += item('classes', ic('users'), 'Sinflar & Guruhlar');
+      h += item('attendance', ic('check'), 'Davomat (Attendance)');
+      h += item('timetable', '📅', 'Dars Jadvallari');
 
-      h += '<div class="ap-label">Darsliklar & Materiallar</div>';
-      h += '<button class="ap-item ' + (cur === 'intermediate' ? 'active' : '') + '" data-go="intermediate" style="color:#0ea5e9;font-weight:700">' + ic('book') + 'Intermediate (B1+)</button>';
-      h += '<button class="ap-item ' + (cur === 'upper_intermediate' ? 'active' : '') + '" data-go="upper_intermediate" style="color:#a855f7;font-weight:700">' + ic('book') + 'Upper-Intermediate (B2)</button>';
-      h += '<button class="ap-item ' + (cur === 'contests' ? 'active' : '') + '" data-go="contests" style="color:#f59e0b;font-weight:700"><span style="margin-right:6px;">🏆</span>Onlayn Musobaqalar</button>';
-      h += '<button class="ap-item ' + (cur === 'ask_ai' ? 'active' : '') + '" data-go="ask_ai" style="color:#2563eb;font-weight:700">' + ic('sparkles') + 'Ask AI Teacher</button>';
+      h += sec('Darsliklar & Materiallar');
+      h += item('intermediate', ic('book'), 'Intermediate (B1+)');
+      h += item('upper_intermediate', ic('book'), 'Upper-Intermediate (B2)');
+      h += item('contests', '🏆', 'Onlayn Musobaqalar');
+      h += item('ask_ai', ic('sparkles'), 'Ask AI Teacher');
     } else {
       // 3. STUDENT NAVIGATION: Kitoblar, Qo'shimcha vazifalar, Sinflarim, Oylik To'lov, Musobaqalar, Quiz, Leaderboard, Market
-      h += '<div class="ap-label">Darslar & Kitoblar</div>';
-      h += '<button class="ap-item ' + (cur === 'intermediate' ? 'active' : '') + '" data-go="intermediate" style="color:#0ea5e9;font-weight:700">' + ic('book') + 'Intermediate (B1+)</button>';
-      h += '<button class="ap-item ' + (cur === 'upper_intermediate' ? 'active' : '') + '" data-go="upper_intermediate" style="color:#a855f7;font-weight:700">' + ic('book') + 'Upper-Intermediate (B2)</button>';
-      h += '<button class="ap-item ' + (cur === 'explorer' ? 'active' : '') + '" data-go="explorer" style="color:#38bdf8;font-weight:800"><span style="margin-right:6px;">📝</span>Qo‘shimcha vazifalar</button>';
-      h += '<button class="ap-item ' + (cur === 'classes' ? 'active' : '') + '" data-go="classes">' + ic('users') + 'Sinflarim</button>';
+      h += sec('Darslar & Kitoblar');
+      h += item('intermediate', ic('book'), 'Intermediate (B1+)');
+      h += item('upper_intermediate', ic('book'), 'Upper-Intermediate (B2)');
+      h += item('explorer', '📝', 'Qo‘shimcha vazifalar');
+      h += item('classes', ic('users'), 'Sinflarim');
 
-      h += '<div class="ap-label">Moliya & To‘lov</div>';
-      h += '<button class="ap-item ' + (cur === 'billing' ? 'active' : '') + '" data-go="billing" style="color:#34d399;font-weight:700"><span style="margin-right:6px;">💳</span>Oylik To‘lov</button>';
+      h += sec('Moliya & To‘lov');
+      h += item('billing', '💳', 'Oylik To‘lov');
 
-      h += '<div class="ap-label">Reyting & Musobaqalar</div>';
-      h += '<button class="ap-item ' + (cur === 'contests' ? 'active' : '') + '" data-go="contests" style="color:#f59e0b;font-weight:700"><span style="margin-right:6px;">🏆</span>Onlayn Musobaqalar</button>';
-      h += '<button class="ap-item ' + (cur === 'quiz' ? 'active' : '') + '" data-go="quiz" style="color:#f59e0b;font-weight:700">' + ic('sparkles') + 'Quiz Test</button>';
-      h += '<button class="ap-item ' + (cur === 'leaderboard' ? 'active' : '') + '" data-go="leaderboard" style="color:#f59e0b;font-weight:700">' + ic('trophy') + 'Leaderboard (Reyting)</button>';
-      h += '<button class="ap-item ' + (cur === 'market' ? 'active' : '') + '" data-go="market" style="color:#818cf8;font-weight:700">' + ic('sparkles') + 'Market (Packlar)</button>';
-      h += '<button class="ap-item ' + (cur === 'ask_ai' ? 'active' : '') + '" data-go="ask_ai" style="color:#2563eb;font-weight:700">' + ic('sparkles') + 'Ask AI Teacher</button>';
+      h += sec('Reyting & Musobaqalar');
+      h += item('contests', '🏆', 'Onlayn Musobaqalar');
+      h += item('quiz', ic('sparkles'), 'Quiz Test');
+      h += item('leaderboard', ic('trophy'), 'Leaderboard (Reyting)');
+      h += item('market', ic('sparkles'), 'Market (Packlar)');
+      h += item('ask_ai', ic('sparkles'), 'Ask AI Teacher');
     }
 
     var roleLabel = isAdmin ? '🛡️ Bosh Admin' : (isTeacher ? '👨‍🏫 Ustoz' : '🎓 O‘quvchi');
@@ -85660,12 +85876,12 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '<div style="display:flex;align-items:center;gap:10px;cursor:pointer" data-go="profile">' +
         myAvHtml +
         '<div style="min-width:0;flex:1">' +
-          '<small style="font-weight:800;color:var(--pri2)">' + roleLabel + '</small>' +
-          '<h4 style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13.5px">' + (window.ETHITH_RENDER_USER_NAME_HTML ? window.ETHITH_RENDER_USER_NAME_HTML(S.user) : esc(S.user ? S.user.name : 'Guest')) + '</h4>' +
+          '<small style="font-weight:800;color:#38bdf8">' + roleLabel + '</small>' +
+          '<h4 style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13.5px;color:#f8fafc;margin:2px 0 0">' + (window.ETHITH_RENDER_USER_NAME_HTML ? window.ETHITH_RENDER_USER_NAME_HTML(S.user) : esc(S.user ? S.user.name : 'Guest')) + '</h4>' +
         '</div>' +
       '</div>' +
-      '<button id="apProfileSideBtn" type="button" data-go="profile" style="background:var(--soft);color:var(--pri);border:1px solid var(--line);padding:7px 12px;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;width:100%;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px">' + ic('user') + ' Profilni Ochish</button>' +
-      '<button id="apLogoutBtn" type="button" style="background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.3);padding:7px 12px;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;width:100%;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px">' + ic('lock') + ' Tizimdan Chiqish</button>' +
+      '<button id="apProfileSideBtn" type="button" data-go="profile" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.25);padding:8px 12px;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;width:100%;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;">' + ic('user') + ' Profilni Ochish</button>' +
+      '<button id="apLogoutBtn" type="button" style="background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.3);padding:8px 12px;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;width:100%;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;">' + ic('lock') + ' Tizimdan Chiqish</button>' +
     '</div>';
 
     $('apSide').innerHTML = h;
@@ -85743,7 +85959,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         ic('bell') +
         (unreadNotifs > 0 ? '<span class="eth-notif-badge">' + unreadNotifs + '</span>' : '') +
       '</button>' +
-      '<button class="ap-ib" id="apTheme">' + ic(S.theme === 'dark' ? 'sun' : 'moon') + '</button>' +
+      '<div id="apTheme" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:10px;background:rgba(2,132,199,0.12);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;font-size:12px;font-weight:800;cursor:default;" title="Faqat Cyber Obsidian Dark Mode faol">' +
+        '<span>🌙</span><span style="font-size:11px;letter-spacing:0.04em;">DARK MODE</span>' +
+      '</div>' +
       '<div class="ap-user" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:4px 12px 4px 6px;border-radius:14px;border:1px solid var(--line);background:var(--card);min-width:0" onclick="go(\'profile\')" title="Profilni ochish">' +
         userAvatarHtml +
         '<div class="ap-user-info" style="display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:0;line-height:1.2;gap:2px">' +
@@ -86130,11 +86348,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     }
 
     if (e.target.closest('#apTheme')) {
-      S.theme = S.theme === 'dark' ? 'light' : 'dark';
-      $('app').setAttribute('data-theme', S.theme);
-      try { localStorage.setItem('ethith_explicit_theme', S.theme); } catch(e) {}
-      App.saveState();
-      top();
+      S.theme = 'dark';
+      $('app').setAttribute('data-theme', 'dark');
+      toast("🌙 Tizim faqat Cyber Obsidian Dark Mode rejimida ishlaydi");
       return;
     }
 
