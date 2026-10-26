@@ -1780,9 +1780,9 @@
   ],
   "accounts": [
     {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
+      "id": "admin_official_root",
+      "role": "admin",
+      "name": "Bosh Admin",
       "email": "admin_12038f1aq8syash@ethith.uz",
       "createdAt": 1792429101989,
       "coins": 5000,

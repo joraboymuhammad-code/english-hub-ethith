@@ -1,7 +1,7 @@
 {
-  "version": "2026.10.26.2025",
-  "timestamp": 1793036700000,
-  "label": "Release: Enterprise ERP, PC File Explorer, Smart Billing & Level Tests v2",
-  "buildTimestamp": 1793036700000,
-  "description": "Full Enterprise LMS/ERP with Windows-style File Explorer (Drag & Drop, 1-attempt HW), Automated Cent-Offset Billing, Teacher Payroll, Timetable & Capacity, Telegram Member Search & 3-Month Level Test Auto-Drop"
+  "version": "2026.10.26.2050",
+  "timestamp": 1793038200000,
+  "label": "Release: Qo‘shimcha testlar, Right-Click Menu, Visual Test Builder, Custom Attempts & Strict Role Separation v3",
+  "buildTimestamp": 1793038200000,
+  "description": "Renamed to Qo‘shimcha testlar, added Right-Click Context Menu on open space, Visual Overlay Interactive Test Creator over sheets/images, customizable homework attempts, and strictly separated Admin, Teacher, and Student login & navigation"
 }

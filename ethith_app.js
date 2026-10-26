@@ -154,13 +154,16 @@
   if (S.user) {
     var curEmail = (S.user.email || '').toLowerCase().trim();
     var curName = (S.user.name || '').trim();
-    if (S.user.role === 'teacher' || S.user.id === 'admin_official_teacher' || curEmail === 'admin_12038f1aq8syash@ethith.uz') {
-      S.user.id = 'admin_official_teacher';
-      S.user.role = 'teacher';
-      S.user.name = 'Ustoz';
+    if (S.user.role === 'admin' || curEmail === 'admin_12038f1aq8syash@ethith.uz') {
+      S.user.id = 'admin_official_root';
+      S.user.role = 'admin';
+      S.user.name = 'Bosh Admin';
       S.user.email = 'ADMIN_12038F1aq8syash@ethith.uz';
       curEmail = 'admin_12038f1aq8syash@ethith.uz';
-      curName = 'Ustoz';
+      curName = 'Bosh Admin';
+    } else if (S.user.role === 'teacher') {
+      S.user.role = 'teacher';
+      if (!S.user.name) S.user.name = 'Ustoz';
     }
     var isMuhammadUser = (curEmail === 'muhammedjoraboyev1@gmail.com' || curName.toLowerCase().indexOf('muhammadyusuf') !== -1) && S.user.role !== 'teacher';
     
@@ -437,11 +440,14 @@
 
     if (S.user) {
       var uEm = (S.user.email || '').toLowerCase().trim();
-      if (S.user.role === 'teacher' || S.user.id === 'admin_official_teacher' || uEm === 'admin_12038f1aq8syash@ethith.uz') {
-        S.user.id = 'admin_official_teacher';
-        S.user.role = 'teacher';
-        S.user.name = 'Ustoz';
+      if (S.user.role === 'admin' || uEm === 'admin_12038f1aq8syash@ethith.uz') {
+        S.user.id = 'admin_official_root';
+        S.user.role = 'admin';
+        S.user.name = 'Bosh Admin';
         S.user.email = 'ADMIN_12038F1aq8syash@ethith.uz';
+      } else if (S.user.role === 'teacher') {
+        S.user.role = 'teacher';
+        if (!S.user.name) S.user.name = 'Ustoz';
       }
       try {
         localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
@@ -541,15 +547,25 @@
     var defaultName = tgUser ? (tgUser.first_name + (tgUser.last_name ? (' ' + tgUser.last_name) : '')) : '';
 
     var html = '' +
-      '<div class="eth-modal" style="max-width:440px">' +
+      '<div class="eth-modal" style="max-width:460px">' +
       '  <div class="eth-modal-header">' +
       '    <div style="display:flex;justify-content:center;margin-bottom:8px">' +
       '      <svg width="150" height="48" viewBox="0 0 160 56"><defs><linearGradient id="mlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4e93e4"/><stop offset="1" stop-color="#154b89"/></linearGradient></defs><rect x="0" y="4" width="48" height="48" rx="13" fill="url(#mlg)"/><path d="M13 29l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="58" y="25" font-family="sans-serif" font-weight="800" font-size="24" fill="#0e325c">ETHITH</text><text x="58" y="50" font-family="sans-serif" font-weight="800" font-size="21" fill="#4e93e4">TESTS</text></svg>' +
       '    </div>' +
       '    <h2>Platformaga Kirish</h2>' +
-      '    <p style="color:var(--muted);font-size:13px">O\'quvchi yoki O\'qituvchi sifatida darhol tizimga kiring</p>' +
+      '    <p style="color:var(--muted);font-size:13px">O‘quvchi yoki O‘qituvchi sifatida tizimga kiring</p>' +
       '  </div>' +
-      '  <div class="eth-tabs" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px">' +
+      '  <div style="background:linear-gradient(135deg,rgba(220,38,38,0.15),rgba(147,51,234,0.15));border:1px solid rgba(220,38,38,0.3);border-radius:12px;padding:9px 12px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;">' +
+      '    <div style="display:flex;align-items:center;gap:8px;">' +
+      '      <span style="font-size:18px;">🛡️</span>' +
+      '      <div>' +
+      '        <div style="font-size:12.5px;font-weight:800;color:#f8fafc;">Bosh Admin Kirish</div>' +
+      '        <div style="font-size:11px;color:#94a3b8;">Maxsus login & parol orqali</div>' +
+      '      </div>' +
+      '    </div>' +
+      '    <button type="button" id="tabAdminToggleBtn" style="background:linear-gradient(135deg,#dc2626,#9333ea);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;box-shadow:0 2px 10px rgba(220,38,38,0.35);">Admin Kirish 🔒</button>' +
+      '  </div>' +
+      '  <div id="authTabsRow" class="eth-tabs" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px">' +
       '    <button type="button" class="eth-tab active" id="tabStudentBtn" style="padding:10px;font-weight:800;border-radius:10px">🎓 O\'quvchi</button>' +
       '    <button type="button" class="eth-tab" id="tabTeacherBtn" style="padding:10px;font-weight:800;border-radius:10px">👨‍🏫 O\'qituvchi</button>' +
       '  </div>' +
@@ -566,22 +582,45 @@
       '        </div>' +
       '        <div id="stAccountNotice" style="margin:6px 0 10px;padding:8px 12px;border-radius:10px;font-size:12px;display:none"></div>' +
       '        <div style="margin:12px 0 6px;display:flex;flex-direction:column;gap:8px">' +
-      '          <button type="submit" id="btnStudentSubmit" class="eth-btn-primary" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:800;font-size:15px;padding:13px;border-radius:12px;border:none;cursor:pointer;width:100%;box-shadow:0 8px 20px -6px rgba(37,99,235,0.6)">🚀 Darhol Kirish / Qo\'shilish</button>' +
+      '          <button type="submit" id="btnStudentSubmit" class="eth-btn-primary" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:800;font-size:15px;padding:13px;border-radius:12px;border:none;cursor:pointer;width:100%;box-shadow:0 8px 20px -6px rgba(37,99,235,0.6)">🚀 O\'quvchi Sifatida Kirish</button>' +
       '        </div>' +
       '      </form>' +
       '    </div>' +
       '    <div id="teacherFormBox" style="display:none">' +
       '      <form id="teacherAuthForm">' +
       '        <div class="eth-form-group">' +
-      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Logini</label>' +
-      '          <input type="text" id="tcLogin" placeholder="ADMIN_..." style="font-family:monospace;font-weight:800;letter-spacing:1px" required autocomplete="username">' +
+      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Ismi va Familiyasi</label>' +
+      '          <input type="text" id="tcName" placeholder="Masalan: Ustoz yoki Zizi Ustoz" required autocomplete="name">' +
       '        </div>' +
-      '        <div class="eth-form-group" style="margin-top:12px">' +
-      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Paroli</label>' +
-      '          <input type="password" id="tcPassword" placeholder="Parolni kiriting..." required autocomplete="current-password">' +
-      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:4px;display:block">🔒 Faqat rasmiy ustoz logini va maxfiy paroli bilan kirish mumkin.</small>' +
+      '        <div class="eth-form-group" style="margin-top:10px">' +
+      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Gmaili</label>' +
+      '          <input type="email" id="tcEmail" placeholder="ustoz@gmail.com" required autocomplete="email">' +
       '        </div>' +
-      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg, #0f172a, #2563eb);margin-top:16px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%">O\'qituvchi Kabinetiga Kirish 🚀</button>' +
+      '        <div class="eth-form-group" style="margin-top:10px">' +
+      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Maxfiy Paroli</label>' +
+      '          <input type="password" id="tcPassword" placeholder="O\'qituvchi parolini kiriting..." required autocomplete="current-password">' +
+      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:4px;display:block">🔒 Faqat tasdiqlangan o‘qituvchi paroli bilan kirish mumkin.</small>' +
+      '        </div>' +
+      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg,#0284c7,#2563eb);margin-top:16px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%;box-shadow:0 8px 20px -6px rgba(2,132,199,0.5)">👨‍🏫 O\'qituvchi Kabinetiga Kirish 🚀</button>' +
+      '      </form>' +
+      '    </div>' +
+      '    <div id="adminFormBox" style="display:none">' +
+      '      <form id="adminAuthForm">' +
+      '        <div style="background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.3);border-radius:10px;padding:8px 12px;font-size:12px;color:#fca5a5;margin-bottom:12px;">' +
+      '          🛡️ <b>Bosh Admin Tizimi:</b> Faqat markaz rahbari maxfiy logini va paroli orqali kiriladi.' +
+      '        </div>' +
+      '        <div class="eth-form-group">' +
+      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">Admin Logini</label>' +
+      '          <input type="text" id="admLogin" placeholder="ADMIN_..." style="font-family:monospace;font-weight:800;letter-spacing:1px" required autocomplete="username">' +
+      '        </div>' +
+      '        <div class="eth-form-group" style="margin-top:10px">' +
+      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">Admin Paroli</label>' +
+      '          <input type="password" id="admPassword" placeholder="Admin parolini kiriting..." required autocomplete="current-password">' +
+      '        </div>' +
+      '        <div style="display:flex;gap:8px;margin-top:16px;">' +
+      '          <button type="button" id="btnCancelAdminLogin" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;">Ortga</button>' +
+      '          <button type="submit" class="eth-btn-primary" style="flex:1;background:linear-gradient(135deg,#dc2626,#9333ea);padding:12px;font-size:15px;font-weight:800;border-radius:12px;box-shadow:0 8px 20px -6px rgba(220,38,38,0.5)">🛡️ Bosh Admin Kirish 🚀</button>' +
+      '        </div>' +
       '      </form>' +
       '    </div>' +
       '  </div>' +
@@ -592,24 +631,40 @@
 
     var tabStudentBtn = overlay.querySelector('#tabStudentBtn');
     var tabTeacherBtn = overlay.querySelector('#tabTeacherBtn');
+    var tabAdminToggleBtn = overlay.querySelector('#tabAdminToggleBtn');
+    var btnCancelAdminLogin = overlay.querySelector('#btnCancelAdminLogin');
+    var authTabsRow = overlay.querySelector('#authTabsRow');
     var studentFormBox = overlay.querySelector('#studentFormBox');
     var teacherFormBox = overlay.querySelector('#teacherFormBox');
+    var adminFormBox = overlay.querySelector('#adminFormBox');
 
-    if (tabStudentBtn && tabTeacherBtn) {
-      tabStudentBtn.onclick = function() {
-        tabStudentBtn.classList.add('active');
-        tabTeacherBtn.classList.remove('active');
-        studentFormBox.style.display = 'block';
+    function showMode(mode) {
+      if (mode === 'admin') {
+        studentFormBox.style.display = 'none';
         teacherFormBox.style.display = 'none';
-      };
-
-      tabTeacherBtn.onclick = function() {
-        tabTeacherBtn.classList.add('active');
-        tabStudentBtn.classList.remove('active');
+        adminFormBox.style.display = 'block';
+        if (authTabsRow) authTabsRow.style.display = 'none';
+      } else if (mode === 'teacher') {
         studentFormBox.style.display = 'none';
         teacherFormBox.style.display = 'block';
-      };
+        adminFormBox.style.display = 'none';
+        if (authTabsRow) authTabsRow.style.display = 'grid';
+        if (tabTeacherBtn) tabTeacherBtn.classList.add('active');
+        if (tabStudentBtn) tabStudentBtn.classList.remove('active');
+      } else {
+        studentFormBox.style.display = 'block';
+        teacherFormBox.style.display = 'none';
+        adminFormBox.style.display = 'none';
+        if (authTabsRow) authTabsRow.style.display = 'grid';
+        if (tabStudentBtn) tabStudentBtn.classList.add('active');
+        if (tabTeacherBtn) tabTeacherBtn.classList.remove('active');
+      }
     }
+
+    if (tabStudentBtn) tabStudentBtn.onclick = function() { showMode('student'); };
+    if (tabTeacherBtn) tabTeacherBtn.onclick = function() { showMode('teacher'); };
+    if (tabAdminToggleBtn) tabAdminToggleBtn.onclick = function() { showMode('admin'); };
+    if (btnCancelAdminLogin) btnCancelAdminLogin.onclick = function() { showMode('student'); };
 
     // 6-Character Verification Code Generator (Letters, Numbers, Symbols)
     function generate6Code() {
@@ -1124,22 +1179,28 @@
       };
     }
 
-    // Teacher Submit Form - Super Admin Exclusive Authentication
+    // Teacher Submit Form - Teacher Authentication with Secret Key
     var tcForm = overlay.querySelector('#teacherAuthForm');
     if (tcForm) {
       tcForm.onsubmit = function(e) {
         e.preventDefault();
-        var loginInput = overlay.querySelector('#tcLogin');
+        var nameInput = overlay.querySelector('#tcName');
+        var emailInput = overlay.querySelector('#tcEmail');
         var passInput = overlay.querySelector('#tcPassword');
 
-        var enteredLogin = (loginInput ? loginInput.value : '').trim();
+        var teacherName = (nameInput ? nameInput.value : '').trim() || 'Ustoz';
+        var teacherEmail = (emailInput ? emailInput.value : '').trim();
         var enteredPass = (passInput ? passInput.value : '').trim();
 
-        var SUPER_TEACHER_LOGIN = 'ADMIN_12038F1aq8syash';
-        var SUPER_TEACHER_PASS = 'sajdhwuqe812ewbcb9ydhuedb_82';
+        var TEACHER_SECRET_PASS = 'jds8d738hjsdhd8w9dhsihd89wydhshd';
 
-        if (enteredLogin.toLowerCase() !== SUPER_TEACHER_LOGIN.toLowerCase() || enteredPass !== SUPER_TEACHER_PASS) {
-          alert("❌ Xatolik: Super Admin login yoki maxfiy paroli noto'g'ri!\n\nFaqat rasmiy ustoz hisobi orqali kirish mumkin.");
+        if (enteredPass !== TEACHER_SECRET_PASS) {
+          alert("❌ Xatolik: O'qituvchi maxfiy paroli noto'g'ri!\n\nTo'g'ri maxfiy parolni kiritmaguningizcha o'qituvchi sifatida kira olmaysiz.");
+          return;
+        }
+
+        if (!teacherEmail) {
+          alert("Iltimos, o'qituvchi Gmail manzilini kiriting!");
           return;
         }
 
@@ -1148,14 +1209,13 @@
           sessionStorage.removeItem('ethith_explicit_logout');
         } catch(err) {}
 
-        var teacherName = 'Ustoz';
-        var cleanTcEmail = 'ADMIN_12038F1aq8syash@ethith.uz';
+        var cleanTcEmail = teacherEmail.toLowerCase().trim();
         S.user = {
-          id: 'admin_official_teacher',
+          id: cleanTcEmail,
           role: 'teacher',
           name: teacherName,
           email: cleanTcEmail,
-          coins: 150,
+          coins: 500,
           dailyMinutes: 0
         };
 
@@ -1164,23 +1224,23 @@
         } catch(err) {}
 
         if (!Array.isArray(S.accounts)) S.accounts = [];
-        // Remove any old teacher duplicates and keep strictly 'Ustoz'
-        S.accounts = S.accounts.filter(function(a) {
-          return a && a.role !== 'teacher' && a.id !== 'admin_official_teacher' && (!a.email || a.email.toLowerCase() !== cleanTcEmail.toLowerCase());
-        });
-        S.accounts.push({
-          id: 'admin_official_teacher',
+        var existIdx = S.accounts.findIndex(function(a) { return a && a.email && a.email.toLowerCase() === cleanTcEmail; });
+        var accObj = {
+          id: cleanTcEmail,
           role: 'teacher',
-          name: 'Ustoz',
+          name: teacherName,
           email: cleanTcEmail,
-          coins: 150,
+          coins: 500,
           createdAt: Date.now()
-        });
+        };
+        if (existIdx === -1) S.accounts.push(accObj);
+        else S.accounts[existIdx] = accObj;
 
         try {
           var allRegTc = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-          allRegTc = allRegTc.filter(function(u) { return u && u.role !== 'teacher' && u.id !== 'admin_official_teacher'; });
-          allRegTc.push({ id: 'admin_official_teacher', name: 'Ustoz', email: cleanTcEmail, role: 'teacher', joinedAt: Date.now() });
+          var rIdx = allRegTc.findIndex(function(u) { return u && u.email && u.email.toLowerCase() === cleanTcEmail; });
+          if (rIdx === -1) allRegTc.push({ id: cleanTcEmail, name: teacherName, email: cleanTcEmail, role: 'teacher', joinedAt: Date.now() });
+          else { allRegTc[rIdx].name = teacherName; allRegTc[rIdx].role = 'teacher'; }
           localStorage.setItem('ethith_all_registered_users', JSON.stringify(allRegTc));
         } catch(e) {}
 
@@ -1195,6 +1255,52 @@
             }
           });
         }
+
+        saveState();
+        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+          window.EthithSync.pushRemoteStore();
+        }
+        overlay.remove();
+        window.ethithOpenApp('dash');
+      };
+    }
+
+    // Admin Submit Form - Exclusive Super Admin Authentication
+    var admForm = overlay.querySelector('#adminAuthForm');
+    if (admForm) {
+      admForm.onsubmit = function(e) {
+        e.preventDefault();
+        var loginInput = overlay.querySelector('#admLogin');
+        var passInput = overlay.querySelector('#admPassword');
+
+        var enteredLogin = (loginInput ? loginInput.value : '').trim();
+        var enteredPass = (passInput ? passInput.value : '').trim();
+
+        var SUPER_ADMIN_LOGIN = 'ADMIN_12038F1aq8syash';
+        var SUPER_ADMIN_PASS = 'sajdhwuqe812ewbcb9ydhuedb_82';
+
+        if (enteredLogin.toLowerCase() !== SUPER_ADMIN_LOGIN.toLowerCase() || enteredPass !== SUPER_ADMIN_PASS) {
+          alert("❌ Xatolik: Bosh Admin logini yoki maxfiy paroli noto'g'ri!\n\nFaqat rasmiy Admin hisobi orqali kirish mumkin.");
+          return;
+        }
+
+        try {
+          localStorage.removeItem('ethith_explicit_logout');
+          sessionStorage.removeItem('ethith_explicit_logout');
+        } catch(err) {}
+
+        S.user = {
+          id: 'admin_official_root',
+          role: 'admin',
+          name: 'Bosh Admin',
+          email: 'ADMIN_12038F1aq8syash@ethith.uz',
+          coins: 50000,
+          dailyMinutes: 0
+        };
+
+        try {
+          localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+        } catch(err) {}
 
         saveState();
         if (window.EthithSync && window.EthithSync.pushRemoteStore) {

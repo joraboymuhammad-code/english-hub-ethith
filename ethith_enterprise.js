@@ -47,7 +47,7 @@
             folderId: "f_grammar",
             authorName: "Ustoz",
             createdAt: Date.now(),
-            maxAttempts: 1,
+            maxAttempts: parseInt(m.querySelector('#eeHwMaxAttempts').value, 10) || 1,
             questions: [
               { q: "You ______ be exhausted after working for 14 hours straight!", options: ["must", "can't", "might not", "should"], correct: 0 },
               { q: "He ______ have stolen the money; he was with me in London that evening.", options: ["must", "can't", "ought to", "might"], correct: 1 },
@@ -231,13 +231,13 @@
           '<div>' +
             '<div style="display:flex;align-items:center;gap:10px;">' +
               '<span style="font-size:26px;">💻</span>' +
-              '<h2 style="margin:0;font-size:22px;font-weight:900;color:#f8fafc;letter-spacing:-0.4px;">PC Explorer: Testlar va Savollar Banki</h2>' +
+              '<h2 style="margin:0;font-size:22px;font-weight:900;color:#f8fafc;letter-spacing:-0.4px;">💻 Qo‘shimcha testlar va Savollar Banki</h2>' +
             '</div>' +
-            '<p style="margin:6px 0 0;font-size:13.5px;color:#94a3b8;">Kompyuter fayl tizimi kabi papkalar oching, testlarni sudrab joylang va o‘quvchilarga 1 martalik uy vazifasi qilib yuboring.</p>' +
+            '<p style="margin:6px 0 0;font-size:13.5px;color:#94a3b8;">Kompyuter fayl tizimidek papkalar oching, bo‘sh joyga sichqonchaning o‘ng tugmasini bosing, rasm/PDF ustiga shaffof tahrirlash qatlamini qo‘shing va o‘quvchilarga kerakli urinishlar soni bilan yuboring.</p>' +
           '</div>' +
           '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
             (isStaff ? '<button id="eeNewFolderBtn" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:12px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;">📁 Yangi Papka</button>' : '') +
-            (isStaff ? '<button id="eeNewTestBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 4px 16px rgba(2,132,199,0.4);">➕ Yangi Test Yaratish</button>' : '') +
+            (isStaff ? '<button id="eeNewVisualBtn" style="background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:12px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 4px 16px rgba(16,185,129,0.4);">🎨 Interaktiv Rasm/PDF Test</button>' : '') + (isStaff ? '<button id="eeNewTestBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 4px 16px rgba(2,132,199,0.4);">➕ Yangi Test Yaratish</button>' : '') +
           '</div>' +
         '</div>' +
 
@@ -264,7 +264,7 @@
 
     // Folder drop target note
     h += '<div style="font-size:12px;color:#64748b;margin-bottom:12px;font-weight:600;">' +
-      '💡 Maslahat: Har qanday test kartochkasini sichqoncha bilan ushlab boshqa papkaga sudrab tashlashingiz (Drag & Drop) mumkin.' +
+      '💡 Maslahat: Bo‘sh joyga sichqonchaning o‘ng tugmasini (Right Click) bosib yangi papka yoki interaktiv test yaratishingiz mumkin. Testlarni sudrab papkalarga joylang (Drag & Drop).' +
     '</div>';
 
     // Explorer Content Grid / List
@@ -416,6 +416,23 @@
       };
     }
 
+    var newVisualBtn = container.querySelector('#eeNewVisualBtn');
+    if (newVisualBtn) {
+      newVisualBtn.onclick = function() {
+        EE.openVisualTestBuilderModal(container, currentFolderId);
+      };
+    }
+
+    var wrap = container.querySelector('.ee-explorer-wrap');
+    if (wrap) {
+      wrap.oncontextmenu = function(e) {
+        if (!isStaff) return;
+        if (e.target.closest('button, input, select, a, textarea')) return;
+        e.preventDefault();
+        EE.showExplorerContextMenu(e.clientX, e.clientY, container, currentFolderId);
+      };
+    }
+
     var newTestBtn = container.querySelector('#eeNewTestBtn');
     if (newTestBtn) {
       newTestBtn.onclick = function() {
@@ -485,6 +502,295 @@
   };
 
   // Create Test Builder Modal
+  
+  // ============================================================================
+  // RIGHT-CLICK CONTEXT MENU (Sichqonchaning o'ng tugmasi)
+  // ============================================================================
+  EE.showExplorerContextMenu = function(x, y, container, folderId) {
+    var old = document.getElementById('eeContextMenu');
+    if (old) old.remove();
+
+    var menu = document.createElement('div');
+    menu.id = 'eeContextMenu';
+    menu.style.cssText = 'position:fixed;top:' + y + 'px;left:' + x + 'px;z-index:2147483647;background:rgba(15,23,42,0.96);backdrop-filter:blur(16px);border:1px solid rgba(56,189,248,0.35);border-radius:14px;padding:6px;min-width:230px;box-shadow:0 16px 40px rgba(0,0,0,0.65);';
+
+    menu.innerHTML = '' +
+      '<div style="padding:6px 10px;font-size:11px;font-weight:900;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:4px;">Qo‘shimcha Testlar Menyusi</div>' +
+      '<div class="ee-ctx-item" id="eeCtxNewFolder" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#f1f5f9;font-size:13px;font-weight:700;cursor:pointer;">' +
+        '<span style="font-size:16px;">📁</span> <span>Yangi Papka Ochish</span>' +
+      '</div>' +
+      '<div class="ee-ctx-item" id="eeCtxNewVisual" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#38bdf8;font-size:13px;font-weight:800;cursor:pointer;">' +
+        '<span style="font-size:16px;">🎨</span> <span>Interaktiv Rasm/PDF Test</span>' +
+      '</div>' +
+      '<div class="ee-ctx-item" id="eeCtxNewTest" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#f1f5f9;font-size:13px;font-weight:700;cursor:pointer;">' +
+        '<span style="font-size:16px;">📝</span> <span>Standart Test Yaratish</span>' +
+      '</div>' +
+      '<div style="height:1px;background:rgba(255,255,255,0.06);margin:4px 0;"></div>' +
+      '<div class="ee-ctx-item" id="eeCtxRefresh" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#94a3b8;font-size:12.5px;font-weight:700;cursor:pointer;">' +
+        '<span style="font-size:15px;">🔄</span> <span>Sahifani Yangilash</span>' +
+      '</div>';
+
+    document.body.appendChild(menu);
+
+    var rect = menu.getBoundingClientRect();
+    if (rect.right > window.innerWidth - 10) menu.style.left = (window.innerWidth - rect.width - 12) + 'px';
+    if (rect.bottom > window.innerHeight - 10) menu.style.top = (window.innerHeight - rect.height - 12) + 'px';
+
+    menu.querySelectorAll('.ee-ctx-item').forEach(function(it) {
+      it.onmouseenter = function() { it.style.background = 'rgba(56,189,248,0.18)'; };
+      it.onmouseleave = function() { it.style.background = 'transparent'; };
+    });
+
+    var close = function() { if (menu && menu.parentNode) menu.remove(); };
+
+    menu.querySelector('#eeCtxNewFolder').onclick = function() {
+      close();
+      var n = prompt("Yangi papka nomini kiriting:", "Yangi Papka");
+      if (n && n.trim()) {
+        var S = getStore();
+        S.fileExplorer.folders.push({
+          id: 'f_' + Date.now(),
+          name: n.trim(),
+          parentId: folderId,
+          createdAt: Date.now()
+        });
+        saveStore();
+        showToast("Papka yaratildi");
+        EE.renderExplorerView(container);
+      }
+    };
+
+    menu.querySelector('#eeCtxNewVisual').onclick = function() {
+      close();
+      EE.openVisualTestBuilderModal(container, folderId);
+    };
+
+    menu.querySelector('#eeCtxNewTest').onclick = function() {
+      close();
+      EE.openCreateTestModal(container, folderId);
+    };
+
+    menu.querySelector('#eeCtxRefresh').onclick = function() {
+      close();
+      EE.renderExplorerView(container);
+    };
+
+    setTimeout(function() {
+      var onDocClick = function(e) {
+        if (!menu.contains(e.target)) {
+          close();
+          document.removeEventListener('click', onDocClick);
+        }
+      };
+      document.addEventListener('click', onDocClick);
+    }, 10);
+  };
+
+  // ============================================================================
+  // VISUAL OVERLAY INTERACTIVE TEST BUILDER (Rasm / PDF ustida shaffof tahrirlash)
+  // ============================================================================
+  EE.openVisualTestBuilderModal = function(container, folderId) {
+    var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
+    var randCode = 'TST-' + Math.random().toString(36).substring(2, 6).toUpperCase() + Math.floor(Math.random() * 9 + 1);
+
+    var m = document.createElement('div');
+    m.id = 'eeVisualBuilderOverlay';
+    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.92);backdrop-filter:blur(14px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:14px;';
+
+    var defaultImg = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200"><rect width="100%" height="100%" fill="#ffffff"/><rect x="40" y="40" width="820" height="1120" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/><text x="70" y="100" font-family="sans-serif" font-weight="900" font-size="28" fill="#0f172a">ETHITH ENGLISH TEST SHEET</text><text x="70" y="135" font-family="sans-serif" font-weight="600" font-size="16" fill="#64748b">Exercise 1: Read the sentences and fill in the missing grammar forms</text><line x1="70" y1="155" x2="830" y2="155" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="210" font-family="sans-serif" font-size="17" fill="#334155">1. By the time Sarah arrived, the train _________________ (already / leave).</text><text x="70" y="270" font-family="sans-serif" font-size="17" fill="#334155">2. If you study diligently every day, you _________________ (pass) the IELTS exam.</text><text x="70" y="330" font-family="sans-serif" font-size="17" fill="#334155">3. Neither John nor his friends _________________ (be) aware of the changes.</text><text x="70" y="390" font-family="sans-serif" font-size="17" fill="#334155">4. The CEO demanded that the report _________________ (submit) before noon.</text><text x="70" y="450" font-family="sans-serif" font-size="17" fill="#334155">5. I wish I _________________ (know) the truth earlier!</text><text x="70" y="520" font-family="sans-serif" font-weight="700" font-size="18" fill="#0f172a">Exercise 2: Choose the correct preposition or connector</text><line x1="70" y1="540" x2="830" y2="540" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="590" font-family="sans-serif" font-size="17" fill="#334155">6. She is extremely passionate [ about / with / for ] environmental protection.</text><text x="70" y="650" font-family="sans-serif" font-size="17" fill="#334155">7. Despite [ of the rain / the heavy rain / it was raining ], the match continued.</text><text x="70" y="710" font-family="sans-serif" font-size="17" fill="#334155">8. We arrived at the venue just [ in / on / at ] time for the opening speech.</text></svg>');
+
+    var elements = [];
+    var currentImg = defaultImg;
+
+    m.innerHTML = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);border-radius:22px;max-width:1150px;width:100%;max-height:94vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,0.8);overflow:hidden;color:#f8fafc;">' +
+      '<div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;background:rgba(30,41,59,0.5);">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<span style="font-size:24px;">🎨</span>' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:17px;font-weight:900;">Interaktiv Rasm / PDF Ustiga Shaffof Qatlam Tahrirlovchisi</h3>' +
+            '<p style="margin:2px 0 0;font-size:12px;color:#94a3b8;">Rasm ustiga sichqoncha bilan to‘rtburchak chizing — tizim avtomatik shaffof yozish oynasini yopishtiradi.</p>' +
+          '</div>' +
+        '</div>' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="background:rgba(56,189,248,0.15);color:#38bdf8;padding:4px 10px;border-radius:8px;font-weight:900;font-size:12px;">' + randCode + '</span>' +
+          '<button id="eeCloseVisualModal" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
+        '</div>' +
+      '</div>' +
+
+      '<div style="padding:12px 24px;background:#1e293b;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;gap:14px;align-items:center;flex-wrap:wrap;">' +
+        '<div style="flex:2;min-width:220px;">' +
+          '<input type="text" id="eeVisualTitle" placeholder="Test Nomi (masalan: Unit 5 Grammar Practice)" style="width:100%;padding:8px 14px;background:#0f172a;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:700;font-size:13px;outline:none;" />' +
+        '</div>' +
+        '<div style="display:flex;align-items:center;gap:8px;">' +
+          '<label style="font-size:12px;font-weight:700;color:#94a3b8;">Urinishlar soni:</label>' +
+          '<input type="number" id="eeVisualAttempts" min="1" max="50" value="1" style="width:65px;padding:8px;background:#0f172a;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:900;font-size:13px;text-align:center;outline:none;" />' +
+        '</div>' +
+        '<div style="display:flex;align-items:center;gap:8px;">' +
+          '<label class="eth-btn-upload" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);padding:7px 14px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
+            '📁 Rasm/PDF Yuklash <input type="file" id="eeVisualFileInput" accept="image/*,.pdf" style="display:none;" />' +
+          '</label>' +
+        '</div>' +
+        '<div id="eeVisualCounter" style="margin-left:auto;font-size:12.5px;font-weight:800;color:#10b981;">0 ta interaktiv savol qo‘shildi</div>' +
+      '</div>' +
+
+      '<div style="flex:1;overflow:auto;padding:20px;display:flex;justify-content:center;background:#020617;position:relative;" id="eeVisualWorkspace">' +
+        '<div id="eeVisualCanvasWrap" style="position:relative;display:inline-block;max-width:850px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,0.8);border-radius:12px;overflow:hidden;">' +
+          '<img id="eeVisualImg" src="' + currentImg + '" style="width:100%;display:block;user-select:none;pointer-events:none;" />' +
+          '<div id="eeVisualOverlay" style="position:absolute;inset:0;cursor:crosshair;z-index:20;user-select:none;"></div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div style="padding:14px 24px;border-top:1px solid rgba(255,255,255,0.08);background:#0f172a;display:flex;align-items:center;justify-content:space-between;">' +
+        '<div style="font-size:12px;color:#94a3b8;">' +
+          '💡 Sichqoncha bilan rasm ustidagi istalgan mashq/savol ustiga to‘rtburchak chizing.' +
+        '</div>' +
+        '<div style="display:flex;gap:10px;">' +
+          '<button id="eeCancelVisualBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:9px 18px;border-radius:10px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+          '<button id="eeSaveVisualBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;font-size:13.5px;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,0.5);">💾 Testni Saqlash</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    modalRoot.appendChild(m);
+
+    var overlayLayer = m.querySelector('#eeVisualOverlay');
+    var canvasWrap = m.querySelector('#eeVisualCanvasWrap');
+    var fileInp = m.querySelector('#eeVisualFileInput');
+    var imgEl = m.querySelector('#eeVisualImg');
+    var counterEl = m.querySelector('#eeVisualCounter');
+
+    fileInp.onchange = function(e) {
+      var file = e.target.files && e.target.files[0];
+      if (file) {
+        var reader = new FileReader();
+        reader.onload = function(evt) {
+          currentImg = evt.target.result;
+          imgEl.src = currentImg;
+          showToast("Rasm muvaffaqiyatli yuklandi");
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+
+    function renderPins() {
+      overlayLayer.querySelectorAll('.ee-visual-pin').forEach(function(el) { el.remove(); });
+      elements.forEach(function(el, idx) {
+        var pin = document.createElement('div');
+        pin.className = 'ee-visual-pin';
+        pin.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;border:2px solid #38bdf8;background:rgba(56,189,248,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:auto;cursor:pointer;';
+        pin.title = 'Javob: ' + el.correct;
+        pin.innerHTML = '<span style="background:#0284c7;color:#fff;font-size:10.5px;font-weight:900;padding:1px 6px;border-radius:4px;">' + (idx + 1) + ': ' + esc(el.correct) + '</span>' +
+          '<button class="ee-del-pin-btn" data-idx="' + idx + '" style="position:absolute;top:-8px;right:-8px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:11px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>';
+        overlayLayer.appendChild(pin);
+      });
+      counterEl.textContent = elements.length + " ta interaktiv savol qo‘shildi";
+
+      overlayLayer.querySelectorAll('.ee-del-pin-btn').forEach(function(b) {
+        b.onclick = function(e) {
+          e.stopPropagation();
+          var i = parseInt(b.getAttribute('data-idx'), 10);
+          elements.splice(i, 1);
+          renderPins();
+        };
+      });
+    }
+
+    var isDrawing = false;
+    var startX = 0, startY = 0;
+    var drawBox = document.createElement('div');
+    drawBox.style.cssText = 'position:absolute;border:2px dashed #10b981;background:rgba(16,185,129,0.25);display:none;pointer-events:none;z-index:30;';
+    overlayLayer.appendChild(drawBox);
+
+    overlayLayer.onmousedown = function(e) {
+      if (e.target.closest('.ee-visual-pin')) return;
+      isDrawing = true;
+      var rect = overlayLayer.getBoundingClientRect();
+      startX = e.clientX - rect.left;
+      startY = e.clientY - rect.top;
+      drawBox.style.left = startX + 'px';
+      drawBox.style.top = startY + 'px';
+      drawBox.style.width = '0px';
+      drawBox.style.height = '0px';
+      drawBox.style.display = 'block';
+    };
+
+    window.addEventListener('mousemove', function(e) {
+      if (!isDrawing) return;
+      var rect = overlayLayer.getBoundingClientRect();
+      var curX = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
+      var curY = Math.max(0, Math.min(rect.height, e.clientY - rect.top));
+      drawBox.style.left = Math.min(startX, curX) + 'px';
+      drawBox.style.top = Math.min(startY, curY) + 'px';
+      drawBox.style.width = Math.abs(curX - startX) + 'px';
+      drawBox.style.height = Math.abs(curY - startY) + 'px';
+    });
+
+    window.addEventListener('mouseup', function(e) {
+      if (!isDrawing) return;
+      isDrawing = false;
+      drawBox.style.display = 'none';
+
+      var rect = overlayLayer.getBoundingClientRect();
+      var endX = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
+      var endY = Math.max(0, Math.min(rect.height, e.clientY - rect.top));
+      var wPx = Math.abs(endX - startX);
+      var hPx = Math.abs(endY - startY);
+
+      if (wPx > 15 && hPx > 10) {
+        var topPct = parseFloat(((Math.min(startY, endY) / rect.height) * 100).toFixed(2));
+        var leftPct = parseFloat(((Math.min(startX, endX) / rect.width) * 100).toFixed(2));
+        var widthPct = parseFloat(((wPx / rect.width) * 100).toFixed(2));
+        var heightPct = parseFloat(((hPx / rect.height) * 100).toFixed(2));
+
+        var corr = prompt("Ushbu bo‘sh joy uchun to‘g‘ri javobni kiriting:", "");
+        if (corr && corr.trim()) {
+          elements.push({
+            id: 'el_' + Date.now() + '_' + Math.floor(Math.random() * 100),
+            top: topPct,
+            left: leftPct,
+            width: widthPct,
+            height: heightPct,
+            correct: corr.trim(),
+            type: 'fill',
+            points: 1
+          });
+          renderPins();
+        }
+      }
+    });
+
+    var close = function() { m.remove(); };
+    m.querySelector('#eeCloseVisualModal').onclick = close;
+    m.querySelector('#eeCancelVisualBtn').onclick = close;
+
+    m.querySelector('#eeSaveVisualBtn').onclick = function() {
+      var title = m.querySelector('#eeVisualTitle').value.trim();
+      var attempts = parseInt(m.querySelector('#eeVisualAttempts').value, 10) || 1;
+      if (!title) { alert("Iltimos, test nomini kiriting!"); return; }
+      if (elements.length === 0) { alert("Iltimos, rasm ustiga kamida 1 ta interaktiv savol belgilang!"); return; }
+
+      var S = getStore();
+      S.fileExplorer.tests.push({
+        id: randCode,
+        title: title,
+        type: 'visual_overlay',
+        folderId: folderId || 'f_root',
+        createdAt: Date.now(),
+        authorName: getCurrentUser().name || 'Ustoz',
+        maxAttempts: attempts,
+        imageUrl: currentImg,
+        elements: elements,
+        questions: elements.map(function(el, i) {
+          return { id: el.id, q: (i + 1) + "-mashq savoli", correct: el.correct, points: 1 };
+        })
+      });
+      saveStore();
+      close();
+      showToast("Interaktiv test saqlandi! Test ID: " + randCode);
+      if (container) EE.renderExplorerView(container);
+    };
+  };
+
   EE.openCreateTestModal = function(container, folderId) {
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
     var randCode = 'TST-' + Math.random().toString(36).substring(2, 6).toUpperCase() + Math.floor(Math.random() * 9 + 1);
@@ -646,8 +952,12 @@
           clsOpts +
         '</select>' +
       '</div>' +
-      '<div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:10px;padding:10px 14px;font-size:12px;color:#fcd34d;margin-bottom:18px;">' +
-        '⚠️ Ushbu test guruhdagi barcha o‘quvchilarda paydo bo‘ladi va faqat <b>1 marta</b> topshirish mumkin bo‘ladi.' +
+      '<div style="margin-bottom:16px;">' +
+        '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Urinishlar soni (necha marta topshirish mumkin):</label>' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<input type="number" id="eeHwMaxAttempts" min="1" max="50" value="1" style="width:80px;padding:9px 12px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;font-size:14px;text-align:center;" />' +
+          '<span style="font-size:12px;color:#94a3b8;">marta ishlashga ruxsat berish (masalan 1, 2, 3...)</span>' +
+        '</div>' +
       '</div>' +
       '<div style="display:flex;justify-content:flex-end;gap:10px;">' +
         '<button id="eeCancelAssignBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:8px 16px;border-radius:10px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
@@ -687,20 +997,122 @@
     var user = getCurrentUser();
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
 
-    // Check if user already took this test in any class
-    var alreadySubmitted = false;
-    var prevScore = 0;
+    // Check user past submissions and allowed attempts
+    var hwMatch = null;
+    var pastSub = null;
     (S.classes || []).forEach(function(c) {
       (c.extraHomework || []).forEach(function(hw) {
-        if (hw.testId === testId && hw.submissions && hw.submissions[user.id]) {
-          alreadySubmitted = true;
-          prevScore = hw.submissions[user.id].score;
+        if (hw.testId === testId) {
+          hwMatch = hw;
+          if (hw.submissions && hw.submissions[user.id]) {
+            pastSub = hw.submissions[user.id];
+          }
         }
       });
     });
 
-    if (alreadySubmitted && user.role !== 'teacher') {
-      alert("⚠️ Siz ushbu topshiriqni allaqachon topshirgansiz! Natijangiz: " + prevScore + "%. Tizim qayta ishlashga ruxsat bermaydi.");
+    var maxAttempts = (hwMatch && hwMatch.maxAttempts) || test.maxAttempts || 1;
+    var attemptsDone = (pastSub && pastSub.attemptsCount) || (pastSub ? 1 : 0);
+
+    if (attemptsDone >= maxAttempts && user.role !== 'teacher' && user.role !== 'admin') {
+      alert("⚠️ Ushbu topshiriq uchun berilgan barcha " + maxAttempts + " ta urinishdan foydalangansiz!\n\nEng yuqori natijangiz: " + (pastSub.bestScore || pastSub.score) + "%.");
+      return;
+    }
+
+    // Branch for visual overlay tests (image with transparent input boxes)
+    if (test.type === 'visual_overlay') {
+      var vm = document.createElement('div');
+      vm.id = 'eeTakeVisualOverlay';
+      vm.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.92);backdrop-filter:blur(14px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:14px;';
+
+      var vh = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);border-radius:22px;max-width:1150px;width:100%;max-height:94vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,0.8);overflow:hidden;color:#f8fafc;">' +
+        '<div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;background:rgba(30,41,59,0.5);">' +
+          '<div style="display:flex;align-items:center;gap:12px;">' +
+            '<span style="font-size:24px;">🎨</span>' +
+            '<div>' +
+              '<h3 style="margin:0;font-size:17px;font-weight:900;">' + esc(test.title) + '</h3>' +
+              '<p style="margin:2px 0 0;font-size:12px;color:#94a3b8;">Mashq varaqasi ustidagi bo‘sh kataklarga to‘g‘ri javoblarni yozing.</p>' +
+            '</div>' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;gap:10px;">' +
+            '<span style="background:rgba(16,185,129,0.15);color:#34d399;padding:4px 10px;border-radius:8px;font-weight:900;font-size:12px;">Urinish: ' + (attemptsDone + 1) + ' / ' + maxAttempts + '</span>' +
+            '<button id="eeCloseTakeVisualTest" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
+          '</div>' +
+        '</div>' +
+        '<div style="flex:1;overflow:auto;padding:20px;display:flex;justify-content:center;background:#020617;position:relative;">' +
+          '<div style="position:relative;display:inline-block;max-width:850px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,0.8);border-radius:12px;overflow:hidden;">' +
+            '<img src="' + test.imageUrl + '" style="width:100%;display:block;user-select:none;pointer-events:none;" />' +
+            '<div id="eeVisualTakeOverlay" style="position:absolute;inset:0;z-index:20;">';
+            (test.elements || []).forEach(function(el, idx) {
+              vh += '<input type="text" class="ee-take-input" data-idx="' + idx + '" placeholder="..." style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;background:rgba(15,23,42,0.85);border:2px solid #38bdf8;border-radius:6px;color:#fff;font-weight:800;font-size:13px;padding:2px 8px;outline:none;box-shadow:0 0 10px rgba(56,189,248,0.3);box-sizing:border-box;" />';
+            });
+      vh += '</div></div></div>' +
+        '<div style="padding:14px 24px;border-top:1px solid rgba(255,255,255,0.08);background:#0f172a;display:flex;align-items:center;justify-content:space-between;">' +
+          '<div style="font-size:12px;color:#94a3b8;">Jami ' + (test.elements || []).length + ' ta savol</div>' +
+          '<div style="display:flex;gap:10px;">' +
+            '<button id="eeCancelTakeVisual" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:9px 18px;border-radius:10px;font-weight:700;cursor:pointer;">Chiqish</button>' +
+            '<button id="eeSubmitTakeVisual" style="background:linear-gradient(135deg,#10b981,#059669);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;font-size:13.5px;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);">✅ Topshirish</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+      vm.innerHTML = vh;
+
+      vm.querySelector('#eeCloseTakeVisualTest').onclick = function() {
+        if (confirm("Chiqmoqchimisiz? Natijangiz saqlanmaydi.")) vm.remove();
+      };
+      vm.querySelector('#eeCancelTakeVisual').onclick = function() {
+        if (confirm("Chiqmoqchimisiz? Natijangiz saqlanmaydi.")) vm.remove();
+      };
+
+      vm.querySelector('#eeSubmitTakeVisual').onclick = function() {
+        var correctCount = 0;
+        var totalElements = (test.elements || []).length;
+        var inputs = vm.querySelectorAll('.ee-take-input');
+
+        inputs.forEach(function(inp) {
+          var idx = parseInt(inp.getAttribute('data-idx'), 10);
+          var el = test.elements[idx];
+          var val = inp.value.trim().toLowerCase();
+          var exp = (el.correct || '').trim().toLowerCase();
+
+          if (val === exp) {
+            correctCount++;
+            inp.style.borderColor = '#10b981';
+            inp.style.background = 'rgba(16,185,129,0.3)';
+          } else {
+            inp.style.borderColor = '#ef4444';
+            inp.style.background = 'rgba(239,68,68,0.3)';
+            inp.title = "To'g'ri javob: " + el.correct;
+          }
+        });
+
+        var pct = totalElements > 0 ? Math.round((correctCount / totalElements) * 100) : 100;
+        var prevBest = (pastSub && (pastSub.bestScore || pastSub.score)) || 0;
+        var newBest = Math.max(prevBest, pct);
+
+        (S.classes || []).forEach(function(c) {
+          (c.extraHomework || []).forEach(function(hw) {
+            if (hw.testId === testId) {
+              if (!hw.submissions) hw.submissions = {};
+              hw.submissions[user.id] = {
+                score: pct,
+                bestScore: newBest,
+                attemptsCount: attemptsDone + 1,
+                correct: correctCount,
+                total: totalElements,
+                completedAt: Date.now()
+              };
+            }
+          });
+        });
+        saveStore();
+        setTimeout(function() {
+          alert("✅ Test natijangiz: " + pct + "%\nTo'g'ri javoblar: " + correctCount + " / " + totalElements + "\nUrinishlar: " + (attemptsDone + 1) + " / " + maxAttempts);
+          vm.remove();
+        }, 300);
+      };
+
+      modalRoot.appendChild(vm);
       return;
     }
 
