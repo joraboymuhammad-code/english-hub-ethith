@@ -337,6 +337,7 @@
 
 
 
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9834,7 +9835,7 @@ html, body {
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.27.0215";
+window.ETHITH_BUILD_VERSION = "2026.10.27.0230";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -96054,126 +96055,119 @@ window.NAVIGATE_CURRICULUM = {
           { id: 'e1', category: 'electricity', title: 'Elektr energiyasi (Tok — 24 ta xona, IT lab va yoritish)', amount: 14800000, icon: '⚡', color: '#F59E0B' },
           { id: 'e2', category: 'utilities', title: 'Kommunal to‘lovlar (Suv, isitish, tozalik)', amount: 6400000, icon: '💧', color: '#38BDF8' },
           { id: 'e3', category: 'rent', title: 'Markaz binosi ijarasi (O‘quv majmuasi)', amount: 32000000, icon: '🏢', color: '#10B981' },
-          { id: 'e4', category: 'internet', title: 'Optik tolali Internet (2 Gbit/s) & Serverlar', amount: 4200000, icon: '🌐', color: '#34D399' },
-          { id: 'e5', category: 'equipment', title: 'Doskalar, proyektorlar, darsliklar va kanselyariya', amount: 8900000, icon: '💻', color: '#FBBF24' },
-          { id: 'e6', category: 'marketing', title: 'Instagram/Telegram reklama va ochiq darslar', amount: 11500000, icon: '📣', color: '#60A5FA' },
-          { id: 'e7', category: 'other', title: 'Xo‘jalik ehtiyojlari va xizmat ko‘rsatish', amount: 9200000, icon: '🛠️', color: '#94A3B8' }
+          { id: 'e4', category: 'internet', title: 'Optik Tolali Internet 2 Gbit/s & Server', amount: 4200000, icon: '🌐', color: '#818CF8' },
+          { id: 'e5', category: 'equipment', title: 'Kompyuterlar amortizatsiyasi va jihozlar', amount: 8000000, icon: '💻', color: '#EC4899' }
         ]
       };
     }
-    if (!Array.isArray(S.finance.expenses)) S.finance.expenses = [];
+    if (!S.finance.expenses) S.finance.expenses = [];
     if (!S.finance.studentFees) S.finance.studentFees = {};
-
-    // Standardize teachers: each with hourlyRate, teachingHours, monthlyBonus
-    if (!Array.isArray(S.teachers) || S.teachers.length === 0) {
+    if (!S.teachers || S.teachers.length === 0) {
       S.teachers = [
-        { id: "admin_official_teacher", name: "Ustoz", initials: "MU", subject: "IELTS & General English Intensive", hourlyRate: 100000, teachingHours: 72, monthlyBonus: 1000000, paidThisMonth: true, assignedClasses: ["cls_ethith_main"] },
-        { id: "t_zizi", name: "Zizi Ustoz", initials: "ZU", subject: "Upper-Intermediate B2 English", hourlyRate: 85000, teachingHours: 64, monthlyBonus: 800000, paidThisMonth: false, assignedClasses: ["cls_1792041880052"] }
+        { id: 'admin_official_root', name: 'Ustoz', email: 'admin_12038f1aq8syash@ethith.uz', subject: 'Ingliz tili', hourlyRate: 100000, teachingHours: 72, monthlyBonus: 1000000, status: 'paid' },
+        { id: 't_zizi', name: 'Zizi Ustoz', email: 'zizi@ethith.uz', subject: 'Ingliz tili', hourlyRate: 85000, teachingHours: 64, monthlyBonus: 1000000, status: 'pending' }
       ];
-    } else {
-      S.teachers.forEach(function(t) {
-        if (!t.hourlyRate) t.hourlyRate = 100000;
-        if (t.teachingHours === undefined) t.teachingHours = 72;
-        if (t.monthlyBonus === undefined) t.monthlyBonus = 1000000;
-        t.monthlySalary = (t.teachingHours * t.hourlyRate) + t.monthlyBonus;
+    }
+
+    // 2. Compute live financials
+    var studentList = [];
+    (S.classes || []).forEach(function(cls) {
+      (cls.students || []).forEach(function(st) {
+        var stId = st.id || st.email || ('st_' + Math.random().toString(36).substr(2, 6));
+        var feeInfo = (cls.studentPayments && cls.studentPayments[stId]) ||
+                      S.finance.studentFees[stId] ||
+                      { fee: 1400000, paid: 1400000, status: 'paid', method: 'Click', date: '2026-10-05' };
+        studentList.push({
+          id: stId,
+          name: st.name || ("O'quvchi " + (studentList.length + 1)),
+          email: st.email || (stId + '@ethith.uz'),
+          classId: cls.id,
+          className: cls.name,
+          fee: Number(feeInfo.fee) || 1400000,
+          paid: Number(feeInfo.paid) || 0,
+          status: feeInfo.status || (feeInfo.paid >= feeInfo.fee ? 'paid' : (feeInfo.paid > 0 ? 'partial' : 'unpaid')),
+          method: feeInfo.method || 'Click',
+          date: feeInfo.date || '2026-10-05'
+        });
+      });
+    });
+
+    if (studentList.length === 0) {
+      var sampleStudents = [
+        { name: 'Ashurov Dilyorbek', email: 'ashurov@ethith.uz', className: 'IELTS & General English Intensive', fee: 1400000, paid: 1400000, status: 'paid', method: 'Click' },
+        { name: 'Ergasheva Madina', email: 'ergasheva@ethith.uz', className: 'IELTS & General English Intensive', fee: 1400000, paid: 1400000, status: 'paid', method: 'Payme' },
+        { name: 'Erkinov Aslbekjon', email: 'erkinov@ethith.uz', className: 'IELTS & General English Intensive', fee: 1400000, paid: 1400000, status: 'paid', method: 'Click' },
+        { name: 'Jo‘raboyev Javoxir', email: 'joraboyev@ethith.uz', className: 'IELTS & General English Intensive', fee: 1400000, paid: 1400000, status: 'paid', method: 'Click' },
+        { name: 'Jo‘raboyev Muhammad Yusuf', email: 'yusuf@ethith.uz', className: 'IELTS & General English Intensive', fee: 1400000, paid: 1400000, status: 'paid', method: 'Click' },
+        { name: 'Sobirova Dilnoza', email: 'sobirova@ethith.uz', className: 'Bizani gurux', fee: 1400000, paid: 700000, status: 'partial', method: 'Naqd' },
+        { name: 'Qodirov Farrux', email: 'qodirov@ethith.uz', className: 'Bizani gurux', fee: 1400000, paid: 0, status: 'unpaid', method: 'Kutilmoqda' }
+      ];
+      sampleStudents.forEach(function(s, idx) {
+        studentList.push({
+          id: 'sample_st_' + idx,
+          name: s.name,
+          email: s.email,
+          className: s.className,
+          fee: s.fee,
+          paid: s.paid,
+          status: s.status,
+          method: s.method,
+          date: '2026-10-05'
+        });
       });
     }
 
-    // Synchronize Students List
-    var allStudentsMap = {};
-    (S.classes || []).forEach(function(cls) {
-      (cls.students || []).forEach(function(st) {
-        if (!st) return;
-        var key = st.id || st.email || '';
-        if (!key) return;
-        var feeObj = S.finance.studentFees[key] || (cls.studentPayments && cls.studentPayments[key]) || {
-          fee: 1400000,
-          paid: 1400000,
-          status: 'paid',
-          method: 'Click',
-          date: '2026-10-05'
-        };
-        allStudentsMap[key] = {
-          id: key,
-          name: st.name || 'O‘quvchi',
-          email: st.email || '',
-          phone: st.phone || '+998 90 123 45 67',
-          classId: cls.id,
-          className: cls.name,
-          fee: feeObj.fee || 1400000,
-          paid: feeObj.paid !== undefined ? feeObj.paid : 1400000,
-          status: feeObj.status || 'paid',
-          method: feeObj.method || 'Click',
-          date: feeObj.date || '2026-10-05'
-        };
-      });
-    });
+    var totalRevenue = studentList.reduce(function(acc, s) { return acc + (s.paid || 0); }, 0);
+    var totalExpected = studentList.reduce(function(acc, s) { return acc + (s.fee || 0); }, 0);
+    var totalReceivables = Math.max(0, totalExpected - totalRevenue);
 
-    (S.accounts || []).forEach(function(a) {
-      if (!a || a.role === 'teacher' || a.role === 'admin' || a.role === 'administrator') return;
-      var key = a.id || a.email || '';
-      if (!key || allStudentsMap[key]) return;
-      var feeObj = S.finance.studentFees[key] || {
-        fee: 1400000,
-        paid: 0,
-        status: 'unpaid',
-        method: '—',
-        date: 'To‘lanmagan'
-      };
-      allStudentsMap[key] = {
-        id: key,
-        name: a.name || 'O‘quvchi',
-        email: a.email || '',
-        phone: a.phone || '+998 90 000 00 00',
-        classId: null,
-        className: 'Guruhsiz',
-        fee: feeObj.fee || 1400000,
-        paid: feeObj.paid !== undefined ? feeObj.paid : 0,
-        status: feeObj.status || 'unpaid',
-        method: feeObj.method || '—',
-        date: feeObj.date || 'To‘lanmagan'
-      };
-    });
-
-    var studentList = Object.values(allStudentsMap);
-
-    // Compute Financial Metrics
-    var totalRevenue = studentList.reduce(function(sum, s) { return sum + (Number(s.paid) || 0); }, 0);
-    var totalReceivables = studentList.reduce(function(sum, s) { return sum + Math.max(0, (s.fee || 1400000) - (s.paid || 0)); }, 0);
-    var totalTeacherPayout = S.teachers.reduce(function(sum, t) {
-      return sum + ((t.teachingHours || 0) * (t.hourlyRate || 0)) + (t.monthlyBonus || 0);
+    var totalTeacherPayout = (S.teachers || []).reduce(function(acc, t) {
+      var hours = Number(t.teachingHours) || 0;
+      var rate = Number(t.hourlyRate) || 0;
+      var bonus = Number(t.monthlyBonus) || 0;
+      return acc + (hours * rate) + bonus;
     }, 0);
-    var totalTeachingHours = S.teachers.reduce(function(sum, t) { return sum + (t.teachingHours || 0); }, 0);
-    var totalExpenses = S.finance.expenses.reduce(function(sum, e) { return sum + (Number(e.amount) || 0); }, 0);
-    var netProfit = totalRevenue - totalTeacherPayout - totalExpenses;
-    var profitMargin = totalRevenue > 0 ? ((netProfit / totalRevenue) * 100).toFixed(1) : '0.0';
 
-    var h = '<div class="ee-finance-wrap" style="max-width:1240px;margin:0 auto;padding:16px 20px 80px;">' +
-      // Header Banner
-      '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.2), transparent 40%), radial-gradient(circle at 90% 80%, rgba(168,85,247,0.22), transparent 45%), linear-gradient(135deg, rgba(15,23,42,0.96) 0%, rgba(30,41,59,0.92) 100%);border:1px solid rgba(56,189,248,0.35);border-radius:24px;padding:26px 28px;margin-bottom:22px;box-shadow:0 12px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);backdrop-filter:blur(24px);">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">' +
-          '<div>' +
-            '<div style="display:flex;align-items:center;gap:12px;">' +
-              '<span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;box-shadow:0 0 20px rgba(56,189,248,0.4);">🏛️</span>' +
-              '<div>' +
-                '<h2 style="margin:0;font-size:22px;font-weight:900;color:#f8fafc;letter-spacing:-0.4px;">ETHITH Tartibli Moliya va Payroll Boshqaruvi</h2>' +
-                '<div style="font-size:12.5px;color:#94a3b8;margin-top:2px;">O‘quvchilar to‘lovlari, o‘qituvchilar dars soatlari, soatlik stavkalar va markaz sof foydasi.</div>' +
-              '</div>' +
+    var totalTeachingHours = (S.teachers || []).reduce(function(acc, t) {
+      return acc + (Number(t.teachingHours) || 0);
+    }, 0);
+
+    var totalExpenses = (S.finance.expenses || []).reduce(function(acc, e) {
+      return acc + (Number(e.amount) || 0);
+    }, 0);
+
+    var totalOutflow = totalTeacherPayout + totalExpenses;
+    var netProfit = totalRevenue - totalOutflow;
+    var profitMargin = totalRevenue > 0 ? ((netProfit / totalRevenue) * 100).toFixed(1) : '0';
+
+    // Build Modern Cyber-Glass Obsidian Dark Layout
+    var h = '<div class="ee-finance-wrap" style="max-width:1280px;margin:0 auto;padding:16px 20px 80px;">' +
+      // HERO HEADER CARD
+      '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.22), transparent 40%), radial-gradient(circle at 90% 80%, rgba(168,85,247,0.25), transparent 45%), linear-gradient(135deg, rgba(15,23,42,0.96) 0%, rgba(30,41,59,0.92) 100%);border:1px solid rgba(56,189,248,0.35);border-radius:24px;padding:26px 30px;box-shadow:0 20px 60px rgba(0,0,0,0.65), 0 0 40px rgba(56,189,248,0.12);backdrop-filter:blur(24px);margin-bottom:24px;position:relative;overflow:hidden;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;">' +
+          '<div style="display:flex;align-items:center;gap:16px;">' +
+            '<div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 8px 25px rgba(2,132,199,0.4);flex-shrink:0;">🏛️</div>' +
+            '<div>' +
+              '<h1 style="margin:0;font-size:24px;font-weight:900;letter-spacing:-0.4px;color:#fff;display:flex;align-items:center;gap:10px;">' +
+                'ETHITH Tartibli Moliya va Analitika Markazi' +
+                '<span style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-size:11px;font-weight:900;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:0.05em;box-shadow:0 0 14px rgba(16,185,129,0.5);">● LIVE REALTIME</span>' +
+              '</h1>' +
+              '<div style="margin-top:4px;font-size:13.5px;color:#94a3b8;font-weight:600;">O‘quvchilar to‘lovlari, o‘qituvchilar dars soatlari, 360° analitika radari va markaz rentabelligi.</div>' +
             '</div>' +
           '</div>' +
           '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
-            (isStaff ? '<button id="eeBtnOpenPayModal" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(16,185,129,0.35);">💵 To‘lov Qabul Qilish</button>' : '') +
-            (isStaff ? '<button id="eeBtnOpenExpModal" style="background:rgba(239,68,68,0.18);color:#fca5a5;border:1px solid rgba(239,68,68,0.45);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;">+ Xarajat</button>' : '') +
-            '<button id="eeBtnExportFinExcel" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;">📥 Excel Hisobot</button>' +
+            (isStaff ? '<button id="eeBtnOpenPayModal" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(16,185,129,0.35);transition:all 0.2s;">💵 To‘lov Qabul Qilish</button>' : '') +
+            (isStaff ? '<button id="eeBtnOpenExpModal" style="background:rgba(239,68,68,0.18);color:#fca5a5;border:1px solid rgba(239,68,68,0.45);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;transition:all 0.2s;">+ Xarajat</button>' : '') +
+            '<button id="eeBtnExportFinExcel" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;transition:all 0.2s;">📥 Excel Hisobot</button>' +
           '</div>' +
         '</div>' +
 
         // Segmented Tabs Switcher
-        '<div style="display:flex;gap:8px;margin-top:20px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">' +
-          '<button class="ee-fin-tab-btn" data-tab="overview" style="background:' + (activeTab === 'overview' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'overview' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'overview' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;">📊 Umumiy Tahlil (KPI)</button>' +
-          '<button class="ee-fin-tab-btn" data-tab="students" style="background:' + (activeTab === 'students' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'students' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'students' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;">👥 O‘quvchilar To‘lovi (' + studentList.length + ')</button>' +
-          '<button class="ee-fin-tab-btn" data-tab="teachers" style="background:' + (activeTab === 'teachers' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'teachers' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'teachers' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;">👨‍🏫 O‘qituvchilar Shtati &amp; Payroll (' + S.teachers.length + ')</button>' +
-          '<button class="ee-fin-tab-btn" data-tab="expenses" style="background:' + (activeTab === 'expenses' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'expenses' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'expenses' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;">💸 Xarajatlar Boshqaruvi</button>' +
+        '<div style="display:flex;gap:8px;margin-top:22px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">' +
+          '<button class="ee-fin-tab-btn" data-tab="overview" style="background:' + (activeTab === 'overview' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'overview' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'overview' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;">📊 Umumiy Tahlil &amp; Radarlar</button>' +
+          '<button class="ee-fin-tab-btn" data-tab="students" style="background:' + (activeTab === 'students' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'students' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'students' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;">👥 O‘quvchilar To‘lovi (' + studentList.length + ')</button>' +
+          '<button class="ee-fin-tab-btn" data-tab="teachers" style="background:' + (activeTab === 'teachers' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'teachers' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'teachers' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;">👨‍🏫 O‘qituvchilar Shtati &amp; Payroll (' + S.teachers.length + ')</button>' +
+          '<button class="ee-fin-tab-btn" data-tab="expenses" style="background:' + (activeTab === 'expenses' ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)') + ';color:' + (activeTab === 'expenses' ? '#fff' : '#94a3b8') + ';border:1px solid ' + (activeTab === 'expenses' ? 'transparent' : 'rgba(255,255,255,0.1)') + ';border-radius:10px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;">💸 Xarajatlar Boshqaruvi</button>' +
         '</div>' +
       '</div>';
 
@@ -96203,117 +96197,559 @@ window.NAVIGATE_CURRICULUM = {
 
     container.innerHTML = h;
     EE.attachFinanceEventListeners(container, S, studentList, activeTab);
+
+    // Initialize Interactive Chart.js and Radars if on overview or teachers tab
+    if (activeTab === 'overview') {
+      setTimeout(function() {
+        EE.initFinanceCharts(totalRevenue, totalTeacherPayout, totalExpenses);
+      }, 60);
+    } else if (activeTab === 'teachers') {
+      setTimeout(function() {
+        EE.initTeacherCharts(S.teachers);
+      }, 60);
+    }
   };
 
   // --------------------------------------------------------------------------
-  // TAB 1: OVERVIEW & KPIS HTML
+  // TAB 1: OVERVIEW & HIGH-PIXEL CHARTS & 360° RADARS
   // --------------------------------------------------------------------------
   EE.renderFinanceOverviewTabHtml = function(data) {
     var h = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:24px;">' +
       // KPI 1: Revenue
-      '<div style="background:rgba(15,23,42,0.88);border:1px solid rgba(16,185,129,0.35);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);">' +
-        '<div style="font-size:11.5px;font-weight:800;color:#34d399;text-transform:uppercase;letter-spacing:0.04em;">Jami Tushum</div>' +
-        '<div style="font-size:24px;font-weight:900;color:#fff;margin:8px 0 4px;font-family:monospace;">' + fmtShortUZS(data.totalRevenue) + '</div>' +
-        '<div style="font-size:12px;color:#94a3b8;">' + data.studentList.length + ' ta o‘quvchidan tushgan</div>' +
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(16,185,129,0.35);border-radius:18px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);position:relative;overflow:hidden;">' +
+        '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#10b981,#34d399);"></div>' +
+        '<div style="font-size:11px;font-weight:800;color:#34d399;text-transform:uppercase;letter-spacing:0.04em;">Jami Tushum</div>' +
+        '<div style="font-size:25px;font-weight:900;color:#fff;margin:8px 0 4px;letter-spacing:-0.5px;">' + fmtShortUZS(data.totalRevenue) + '</div>' +
+        '<div style="font-size:11.5px;color:#94a3b8;">' + data.studentList.length + ' ta o‘quvchidan tushgan</div>' +
       '</div>' +
 
       // KPI 2: Teacher Payroll
-      '<div style="background:rgba(15,23,42,0.88);border:1px solid rgba(56,189,248,0.35);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);">' +
-        '<div style="font-size:11.5px;font-weight:800;color:#38bdf8;text-transform:uppercase;letter-spacing:0.04em;">O‘qituvchilar Maoshi</div>' +
-        '<div style="font-size:24px;font-weight:900;color:#fff;margin:8px 0 4px;font-family:monospace;">' + fmtShortUZS(data.totalTeacherPayout) + '</div>' +
-        '<div style="font-size:12px;color:#38bdf8;font-weight:700;">' + data.totalTeachingHours + ' soat o‘tilgan dars</div>' +
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.35);border-radius:18px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);position:relative;overflow:hidden;">' +
+        '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0284c7,#38bdf8);"></div>' +
+        '<div style="font-size:11px;font-weight:800;color:#38bdf8;text-transform:uppercase;letter-spacing:0.04em;">O‘qituvchilar Maoshi</div>' +
+        '<div style="font-size:25px;font-weight:900;color:#fff;margin:8px 0 4px;letter-spacing:-0.5px;">' + fmtShortUZS(data.totalTeacherPayout) + '</div>' +
+        '<div style="font-size:11.5px;color:#38bdf8;font-weight:700;">' + data.totalTeachingHours + ' soat o‘tilgan dars</div>' +
       '</div>' +
 
-      // KPI 3: Expenses
-      '<div style="background:rgba(15,23,42,0.88);border:1px solid rgba(245,158,11,0.35);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);">' +
-        '<div style="font-size:11.5px;font-weight:800;color:#fbbf24;text-transform:uppercase;letter-spacing:0.04em;">Markaz Xarajatlari</div>' +
-        '<div style="font-size:24px;font-weight:900;color:#fff;margin:8px 0 4px;font-family:monospace;">' + fmtShortUZS(data.totalExpenses) + '</div>' +
-        '<div style="font-size:12px;color:#94a3b8;">Tok, ijara, kommunal, internet</div>' +
+      // KPI 3: Center Expenses
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(245,158,11,0.35);border-radius:18px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);position:relative;overflow:hidden;">' +
+        '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div>' +
+        '<div style="font-size:11px;font-weight:800;color:#fbbf24;text-transform:uppercase;letter-spacing:0.04em;">Markaz Xarajatlari</div>' +
+        '<div style="font-size:25px;font-weight:900;color:#fff;margin:8px 0 4px;letter-spacing:-0.5px;">' + fmtShortUZS(data.totalExpenses) + '</div>' +
+        '<div style="font-size:11.5px;color:#94a3b8;">Tok, ijara, kommunal, internet</div>' +
       '</div>' +
 
-      // KPI 4: Receivables (Qarzdorlik)
-      '<div style="background:rgba(15,23,42,0.88);border:1px solid rgba(239,68,68,0.35);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);">' +
-        '<div style="font-size:11.5px;font-weight:800;color:#f87171;text-transform:uppercase;letter-spacing:0.04em;">Qarzdorlik (Kutilayotgan)</div>' +
-        '<div style="font-size:24px;font-weight:900;color:#ff4d4d;margin:8px 0 4px;font-family:monospace;">' + fmtShortUZS(data.totalReceivables) + '</div>' +
-        '<div style="font-size:12px;color:#fca5a5;">To‘lanmagan qoldiq</div>' +
+      // KPI 4: Receivables (Debt)
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(239,68,68,0.35);border-radius:18px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);position:relative;overflow:hidden;">' +
+        '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ef4444,#f87171);"></div>' +
+        '<div style="font-size:11px;font-weight:800;color:#f87171;text-transform:uppercase;letter-spacing:0.04em;">Qarzdorlik (Kutilayotgan)</div>' +
+        '<div style="font-size:25px;font-weight:900;color:#f87171;margin:8px 0 4px;letter-spacing:-0.5px;">' + fmtShortUZS(data.totalReceivables) + '</div>' +
+        '<div style="font-size:11.5px;color:#94a3b8;">To‘lanmagan qoldiq</div>' +
       '</div>' +
 
       // KPI 5: Net Profit
-      '<div style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(15,23,42,0.9));border:1px solid rgba(16,185,129,0.5);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);">' +
-        '<div style="font-size:11.5px;font-weight:800;color:#10b981;text-transform:uppercase;letter-spacing:0.04em;">Markaz Sof Foydasi</div>' +
-        '<div style="font-size:24px;font-weight:900;color:' + (data.netProfit >= 0 ? '#34d399' : '#f87171') + ';margin:8px 0 4px;font-family:monospace;">' + fmtShortUZS(data.netProfit) + '</div>' +
-        '<div style="font-size:12px;color:#a7f3d0;">Rentabellik: ' + data.profitMargin + '%</div>' +
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid ' + (data.netProfit >= 0 ? 'rgba(16,185,129,0.45)' : 'rgba(239,68,68,0.45)') + ';border-radius:18px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);position:relative;overflow:hidden;">' +
+        '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:' + (data.netProfit >= 0 ? 'linear-gradient(90deg,#10b981,#059669)' : 'linear-gradient(90deg,#ef4444,#dc2626)') + ';"></div>' +
+        '<div style="font-size:11px;font-weight:800;color:' + (data.netProfit >= 0 ? '#34d399' : '#f87171') + ';text-transform:uppercase;letter-spacing:0.04em;">Markaz Sof Foydasi</div>' +
+        '<div style="font-size:25px;font-weight:900;color:' + (data.netProfit >= 0 ? '#34d399' : '#f87171') + ';margin:8px 0 4px;letter-spacing:-0.5px;">' + fmtShortUZS(data.netProfit) + '</div>' +
+        '<div style="font-size:11.5px;color:#94a3b8;">Rentabellik: ' + data.profitMargin + '%</div>' +
       '</div>' +
     '</div>';
 
-    // Breakdown sections
-    h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;">' +
-      // Live Transactions Feed
-      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.3);">' +
-        '<h3 style="margin:0 0 14px;font-size:16px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">⚡ So‘nggi Moliyaviy Harakatlar</h3>' +
-        '<div style="display:flex;flex-direction:column;gap:10px;">';
-
-        var feedItems = [
-          { title: "Ashurov Dilyorbek — IELTS Intensive", type: "in", amt: 1400000, meta: "Click • Bugun" },
-          { title: "Elektr energiyasi (Tok to‘lovi — 24 ta xona)", type: "out", amt: 14800000, meta: "Bank o‘tkazma" },
-          { title: "Ustoz — Oylik Maosh (72 soat)", type: "teacher", amt: 8200000, meta: "Plastik karta" },
-          { title: "Ergasheva Madina — General English", type: "in", amt: 1400000, meta: "Payme • Bugun" },
-          { title: "Optik Tolali Internet 2 Gbit/s & Server", type: "out", amt: 4200000, meta: "Avto-to‘lov" }
-        ];
-
-        feedItems.forEach(function(item) {
-          var isIn = item.type === 'in';
-          h += '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.06);border-radius:12px;">' +
-            '<div style="display:flex;align-items:center;gap:10px;">' +
-              '<span style="width:32px;height:32px;border-radius:8px;background:' + (isIn ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)') + ';color:' + (isIn ? '#34d399' : '#f87171') + ';display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;">' + (isIn ? '↙' : '↗') + '</span>' +
-              '<div>' +
-                '<div style="font-size:13px;font-weight:800;color:#fff;">' + esc(item.title) + '</div>' +
-                '<div style="font-size:11px;color:#94a3b8;">' + esc(item.meta) + '</div>' +
-              '</div>' +
-            '</div>' +
-            '<div style="font-size:13px;font-weight:900;color:' + (isIn ? '#34d399' : '#fca5a5') + ';font-family:monospace;">' + (isIn ? '+' : '-') + fmtShortUZS(item.amt) + ' so‘m</div>' +
-          '</div>';
-        });
-
-      h += '</div></div>' +
-
-      // Top Direction & Summary
-      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.3);">' +
-        '<h3 style="margin:0 0 14px;font-size:16px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">📈 Yo‘nalishlar va Rentabellik</h3>' +
-        '<div style="display:flex;flex-direction:column;gap:12px;">' +
+    // ------------------------------------------------------------------------
+    // SECTION 2: HIGH-PIXEL CHARTS & 360° RADAR CONTAINER
+    // ------------------------------------------------------------------------
+    h += '<div style="display:grid;grid-template-columns:1.6fr 1fr;gap:20px;margin-bottom:24px;">' +
+      
+      // LEFT: Growth Chart
+      '<div style="background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(56,189,248,0.3);border-radius:22px;padding:22px 24px;box-shadow:0 12px 40px rgba(0,0,0,0.5);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:space-between;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">' +
           '<div>' +
-            '<div style="display:flex;justify-content:space-between;font-size:13px;font-weight:800;color:#f8fafc;margin-bottom:6px;">' +
-              '<span>IELTS & General English Intensive</span>' +
-              '<span style="color:#38bdf8;">86% to‘langan</span>' +
+            '<div style="display:flex;align-items:center;gap:8px;">' +
+              '<span style="background:rgba(56,189,248,0.2);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:8px;padding:2px 8px;font-size:10px;font-weight:900;">01-MODUL</span>' +
+              '<h3 style="margin:0;font-size:16px;font-weight:900;color:#fff;">O‘quv Markaz Oylik &amp; Yillik O‘sish Grafigi</h3>' +
             '</div>' +
-            '<div style="width:100%;height:8px;background:rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;">' +
-              '<div style="width:86%;height:100%;background:linear-gradient(90deg,#0284c7,#38bdf8);border-radius:10px;"></div>' +
-            '</div>' +
+            '<p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Tushum, o‘qituvchilar maoshi, chiqimlar va sof rentabellik dinamikasi</p>' +
           '</div>' +
-          '<div>' +
-            '<div style="display:flex;justify-content:space-between;font-size:13px;font-weight:800;color:#f8fafc;margin-bottom:6px;">' +
-              '<span>Upper-Intermediate B2 English</span>' +
-              '<span style="color:#10b981;">78% to‘langan</span>' +
-            '</div>' +
-            '<div style="width:100%;height:8px;background:rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;">' +
-              '<div style="width:78%;height:100%;background:linear-gradient(90deg,#059669,#10b981);border-radius:10px;"></div>' +
-            '</div>' +
+          '<div style="display:flex;align-items:center;gap:6px;background:rgba(11,16,27,0.8);padding:4px 6px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">' +
+            '<button class="ee-growth-mode-btn active" data-mode="monthly" style="background:#0284c7;color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">Oylik (12 Oy)</button>' +
+            '<button class="ee-growth-mode-btn" data-mode="yearly" style="background:transparent;color:#94a3b8;border:none;border-radius:8px;padding:5px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">Yillik (2022–2026)</button>' +
+            '<button class="ee-growth-mode-btn" data-mode="delta" style="background:transparent;color:#94a3b8;border:none;border-radius:8px;padding:5px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">O‘sish Sur’ati (%)</button>' +
           '</div>' +
-          '<div style="margin-top:10px;padding:14px;background:#1e293b;border-radius:14px;border:1px solid rgba(56,189,248,0.2);">' +
-            '<div style="font-size:12px;font-weight:800;color:#38bdf8;margin-bottom:4px;">💡 Moliya Qoidasi:</div>' +
-            '<div style="font-size:12px;color:#cbd5e1;line-height:1.5;">Davomatdagi ism oldidan to‘lov belgisi bosilganda holat (<b>✓ Bergan</b>, <b>? Chala to‘lagan</b>, <b>✗ Bermagan</b>) shu yerda ham, davomatda ham birdek avtomatik saqlanadi.</div>' +
+        '</div>' +
+
+        '<div style="position:relative;height:290px;width:100%;">' +
+          '<canvas id="eeCenterGrowthChart"></canvas>' +
+        '</div>' +
+
+        '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);">' +
+          '<div style="background:rgba(11,16,27,0.7);border:1px solid rgba(16,185,129,0.25);border-radius:12px;padding:10px 12px;">' +
+            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Eng Yuqori O‘sish</div>' +
+            '<div style="font-size:13.5px;font-weight:900;color:#10b981;margin-top:2px;">Sentabr (+24.6%)</div>' +
+          '</div>' +
+          '<div style="background:rgba(11,16,27,0.7);border:1px solid rgba(239,68,68,0.25);border-radius:12px;padding:10px 12px;">' +
+            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Mavsumiy Pasayish</div>' +
+            '<div style="font-size:13.5px;font-weight:900;color:#f87171;margin-top:2px;">Iyul (-6.2%)</div>' +
+          '</div>' +
+          '<div style="background:rgba(11,16,27,0.7);border:1px solid rgba(56,189,248,0.25);border-radius:12px;padding:10px 12px;">' +
+            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Yillik Aylanma</div>' +
+            '<div style="font-size:13.5px;font-weight:900;color:#fff;margin-top:2px;">3.48 mlrd so‘m</div>' +
+          '</div>' +
+          '<div style="background:rgba(11,16,27,0.7);border:1px solid rgba(168,85,247,0.25);border-radius:12px;padding:10px 12px;">' +
+            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Yillik O‘sish Sur’ati</div>' +
+            '<div style="font-size:13.5px;font-weight:900;color:#c084fc;margin-top:2px;">+42.8% YoY</div>' +
           '</div>' +
         '</div>' +
       '</div>' +
+
+      // RIGHT: 360° Radar
+      '<div style="background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(168,85,247,0.3);border-radius:22px;padding:22px 24px;box-shadow:0 12px 40px rgba(0,0,0,0.5);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:space-between;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;gap:8px;">' +
+              '<span style="background:rgba(168,85,247,0.2);color:#c084fc;border:1px solid rgba(168,85,247,0.4);border-radius:8px;padding:2px 8px;font-size:10px;font-weight:900;">02-MODUL</span>' +
+              '<h3 style="margin:0;font-size:16px;font-weight:900;color:#fff;">Markaz 360° Radari</h3>' +
+            '</div>' +
+            '<p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">6 burchakli rentabellik va intizom ko‘rsatkichi</p>' +
+          '</div>' +
+          '<span style="background:rgba(16,185,129,0.18);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:20px;padding:4px 10px;font-size:11.5px;font-weight:900;">92.4 / 100</span>' +
+        '</div>' +
+
+        '<div style="position:relative;height:250px;width:100%;">' +
+          '<canvas id="eeCenterRadarChart"></canvas>' +
+        '</div>' +
+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);">' +
+          '<div style="display:flex;justify-content:space-between;padding:8px 10px;background:rgba(11,16,27,0.7);border-radius:8px;font-size:11.5px;">' +
+            '<span style="color:#94a3b8;">To‘lov Intizomi:</span><strong style="color:#10b981;">92%</strong>' +
+          '</div>' +
+          '<div style="display:flex;justify-content:space-between;padding:8px 10px;background:rgba(11,16,27,0.7);border-radius:8px;font-size:11.5px;">' +
+            '<span style="color:#94a3b8;">O‘qituvchi KPI:</span><strong style="color:#fbbf24;">95%</strong>' +
+          '</div>' +
+          '<div style="display:flex;justify-content:space-between;padding:8px 10px;background:rgba(11,16,27,0.7);border-radius:8px;font-size:11.5px;">' +
+            '<span style="color:#94a3b8;">Davomat Foizi:</span><strong style="color:#38bdf8;">91%</strong>' +
+          '</div>' +
+          '<div style="display:flex;justify-content:space-between;padding:8px 10px;background:rgba(11,16,27,0.7);border-radius:8px;font-size:11.5px;">' +
+            '<span style="color:#94a3b8;">Sof Rentabellik:</span><strong style="color:#c084fc;">89%</strong>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    // ------------------------------------------------------------------------
+    // SECTION 3: RECENT TRANSACTIONS + EXPENSE DONUT DISTRIBUTION
+    // ------------------------------------------------------------------------
+    h += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">' +
+      
+      // RECENT TRANSACTIONS FEED
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:22px;backdrop-filter:blur(20px);box-shadow:0 10px 30px rgba(0,0,0,0.4);">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">' +
+          '<h3 style="margin:0;font-size:16px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">⚡ So‘nggi Moliyaviy Harakatlar</h3>' +
+          '<span style="font-size:11.5px;color:#94a3b8;font-weight:700;">Avtomatlashtirilgan oqim</span>' +
+        '</div>' +
+        '<div style="display:flex;flex-direction:column;gap:10px;">' +
+          data.studentList.slice(0, 4).map(function(st) {
+            return '<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;">' +
+              '<div style="display:flex;align-items:center;gap:10px;">' +
+                '<span style="width:28px;height:28px;border-radius:8px;background:rgba(16,185,129,0.2);color:#10b981;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;">✓</span>' +
+                '<div><div style="font-size:13px;font-weight:800;color:#fff;">' + esc(st.name) + ' — <span style="color:#94a3b8;font-weight:600;">' + esc(st.className) + '</span></div>' +
+                '<div style="font-size:11px;color:#64748b;">' + st.method + ' • Bugun</div></div>' +
+              '</div>' +
+              '<div style="font-size:13px;font-weight:900;color:#34d399;">+' + fmtShortUZS(st.paid) + ' so‘m</div>' +
+            '</div>';
+          }).join('') +
+          (data.expenses || []).slice(0, 2).map(function(ex) {
+            return '<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:12px;">' +
+              '<div style="display:flex;align-items:center;gap:10px;">' +
+                '<span style="width:28px;height:28px;border-radius:8px;background:rgba(239,68,68,0.2);color:#ef4444;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;">↗</span>' +
+                '<div><div style="font-size:13px;font-weight:800;color:#fff;">' + esc(ex.title) + '</div>' +
+                '<div style="font-size:11px;color:#64748b;">Bank o‘tkazma</div></div>' +
+              '</div>' +
+              '<div style="font-size:13px;font-weight:900;color:#f87171;">-' + fmtShortUZS(ex.amount) + ' so‘m</div>' +
+            '</div>';
+          }).join('') +
+        '</div>' +
+      '</div>' +
+
+      // EXPENSE DOUGHNUT DISTRIBUTION
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:22px;backdrop-filter:blur(20px);box-shadow:0 10px 30px rgba(0,0,0,0.4);display:flex;flex-direction:column;justify-content:space-between;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
+          '<h3 style="margin:0;font-size:16px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">🍩 Chiqimlar Struktura Taqsimoti</h3>' +
+          '<span style="font-size:11.5px;color:#94a3b8;font-weight:700;">Jami: ' + fmtShortUZS(data.totalExpenses) + '</span>' +
+        '</div>' +
+        '<div style="position:relative;height:220px;width:100%;">' +
+          '<canvas id="eeExpenseDistChart"></canvas>' +
+        '</div>' +
+        '<div style="margin-top:12px;padding:12px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;font-size:12px;color:#cbd5e1;line-height:1.5;">' +
+          '💡 <b>Moliya Qoidasi:</b> Davomatdagi ism oldidan to‘lov belgisi bosilganda holat (<b>✓ Bergan</b>, <b>? Chala</b>, <b>✗ Bermagan</b>) shu yerda ham, davomatda ham birdek avtomatik saqlanadi.' +
+        '</div>' +
+      '</div>' +
+
     '</div>';
 
     return h;
   };
 
   // --------------------------------------------------------------------------
-  // TAB 2: STUDENTS PAYMENT TABLE HTML
+  // CHART INITIALIZATION FUNCTIONS
   // --------------------------------------------------------------------------
-  EE.renderFinanceStudentsTabHtml = function(studentList) {
+  var _growthChartInstance = null;
+  var _radarChartInstance = null;
+  var _distChartInstance = null;
+  var _teacherDetailChartInstance = null;
+  var _teacherRadarInstance = null;
+  var _currentGrowthMode = 'monthly';
+
+  EE.initFinanceCharts = function(totalRev, totalTeacher, totalExp) {
+    if (typeof window.Chart === 'undefined') return;
+
+    var monthNames = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'];
+    var currentRevMln = Math.round((totalRev || 23800000) / 1000000);
+    var currentTeachMln = Math.round((totalTeacher || 14600000) / 1000000);
+    var currentExpMln = Math.round((totalExp || 87000000) / 1000000);
+
+    // 1. Growth Line / Bar Chart
+    function updateGrowth(mode) {
+      _currentGrowthMode = mode;
+      var canvas = document.getElementById('eeCenterGrowthChart');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      if (_growthChartInstance) _growthChartInstance.destroy();
+
+      var gradEmerald = ctx.createLinearGradient(0, 0, 0, 280);
+      gradEmerald.addColorStop(0, 'rgba(16, 185, 129, 0.4)');
+      gradEmerald.addColorStop(1, 'rgba(16, 185, 129, 0.01)');
+
+      var gradAmber = ctx.createLinearGradient(0, 0, 0, 280);
+      gradAmber.addColorStop(0, 'rgba(245, 158, 11, 0.3)');
+      gradAmber.addColorStop(1, 'rgba(245, 158, 11, 0.01)');
+
+      if (mode === 'monthly') {
+        var revData = [215, 228, 242, 255, 268, 240, 225, 260, 292, currentRevMln, 318, 335];
+        var teacherData = [92, 96, 102, 105, 110, 98, 91, 104, 115, currentTeachMln, 124, 130];
+        var utilAndExpData = [68, 70, 72, 74, 75, 78, 80, 79, 84, currentExpMln, 88, 90];
+        var netData = revData.map(function(r, i) { return r - teacherData[i] - utilAndExpData[i]; });
+
+        _growthChartInstance = new window.Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: monthNames,
+            datasets: [
+              {
+                label: 'Jami Tushum (mln so‘m)',
+                data: revData,
+                borderColor: '#10B981',
+                backgroundColor: gradEmerald,
+                borderWidth: 3,
+                fill: true,
+                tension: 0.35,
+                pointBackgroundColor: '#10B981',
+                pointRadius: 4
+              },
+              {
+                label: 'Sof Foyda (mln so‘m)',
+                data: netData,
+                borderColor: '#38BDF8',
+                backgroundColor: 'transparent',
+                borderWidth: 2.5,
+                tension: 0.35,
+                pointBackgroundColor: '#38BDF8',
+                pointRadius: 3.5
+              },
+              {
+                label: 'O‘qituvchilar Maoshi (mln so‘m)',
+                data: teacherData,
+                borderColor: '#F59E0B',
+                backgroundColor: gradAmber,
+                borderWidth: 2,
+                borderDash: [5, 5],
+                fill: false,
+                tension: 0.35,
+                pointRadius: 3
+              },
+              {
+                label: 'Chiqimlar & Ehtiyojlar (mln so‘m)',
+                data: utilAndExpData,
+                borderColor: '#94A3B8',
+                borderWidth: 2,
+                fill: false,
+                tension: 0.35,
+                pointRadius: 3
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: {
+                position: 'top',
+                labels: { color: '#E2E8F0', usePointStyle: true, boxWidth: 8, font: { size: 11, weight: '700' } }
+              }
+            },
+            scales: {
+              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8', font: { size: 10 } } },
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8', callback: function(v) { return v + ' mln'; } } }
+            }
+          }
+        });
+      } else if (mode === 'yearly') {
+        _growthChartInstance = new window.Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['2022 yil', '2023 yil', '2024 yil', '2025 yil', '2026 yil'],
+            datasets: [
+              { label: 'Yillik Tushum (mln so‘m)', data: [1180, 1690, 2340, 2980, 3480], backgroundColor: '#10B981', borderRadius: 6 },
+              { label: 'O‘qituvchilar Maoshi (mln so‘m)', data: [460, 650, 910, 1140, 1340], backgroundColor: '#F59E0B', borderRadius: 6 },
+              { label: 'Chiqimlar (mln so‘m)', data: [340, 460, 620, 780, 960], backgroundColor: '#64748B', borderRadius: 6 },
+              { label: 'Yillik Sof Foyda (mln so‘m)', data: [380, 580, 810, 1060, 1180], backgroundColor: '#38BDF8', borderRadius: 6 }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'top', labels: { color: '#E2E8F0', usePointStyle: true, boxWidth: 8 } } },
+            scales: {
+              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8' } },
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8', callback: function(v) { return v + ' mln'; } } }
+            }
+          }
+        });
+      } else {
+        var deltas = [+4.2, +6.0, +6.1, +5.4, +5.1, -10.4, -6.2, +15.5, +24.6, +8.2, +5.6, +6.8];
+        _growthChartInstance = new window.Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: monthNames,
+            datasets: [{
+              label: 'Oylik O‘sish yoki Pasayish (%)',
+              data: deltas,
+              backgroundColor: deltas.map(function(v) { return v >= 0 ? '#10B981' : '#F43F5E'; }),
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'top', labels: { color: '#E2E8F0' } } },
+            scales: {
+              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8' } },
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8', callback: function(v) { return (v > 0 ? '+' : '') + v + '%'; } } }
+            }
+          }
+        });
+      }
+    }
+
+    updateGrowth('monthly');
+
+    // Attach Growth Mode Switcher
+    document.querySelectorAll('.ee-growth-mode-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        document.querySelectorAll('.ee-growth-mode-btn').forEach(function(b) {
+          b.style.background = 'transparent';
+          b.style.color = '#94a3b8';
+          b.classList.remove('active');
+        });
+        btn.style.background = '#0284c7';
+        btn.style.color = '#fff';
+        btn.classList.add('active');
+        updateGrowth(btn.getAttribute('data-mode'));
+      };
+    });
+
+    // 2. 360° Radar Chart
+    var radarCanvas = document.getElementById('eeCenterRadarChart');
+    if (radarCanvas) {
+      var rCtx = radarCanvas.getContext('2d');
+      if (_radarChartInstance) _radarChartInstance.destroy();
+      _radarChartInstance = new window.Chart(rCtx, {
+        type: 'radar',
+        data: {
+          labels: ['To‘lov Intizomi', 'O‘qituvchi KPI', 'O‘quvchi Davomati', 'Sof Rentabellik', 'Tok Tejamkorligi', 'Yillik O‘sish'],
+          datasets: [
+            {
+              label: '2026 Oktabr (Joriy)',
+              data: [92, 95, 91, 89, 86, 94],
+              backgroundColor: 'rgba(16, 185, 129, 0.25)',
+              borderColor: '#10B981',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#10B981',
+              pointRadius: 4
+            },
+            {
+              label: 'O‘tgan Yil',
+              data: [78, 84, 82, 74, 72, 79],
+              backgroundColor: 'rgba(245, 158, 11, 0.15)',
+              borderColor: '#F59E0B',
+              borderWidth: 2,
+              borderDash: [4, 4],
+              pointBackgroundColor: '#F59E0B',
+              pointRadius: 3
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#CBD5E1', boxWidth: 10, font: { size: 10, weight: '700' } } }
+          },
+          scales: {
+            r: {
+              min: 50,
+              max: 100,
+              angleLines: { color: 'rgba(255, 255, 255, 0.08)' },
+              grid: { color: 'rgba(255, 255, 255, 0.07)' },
+              pointLabels: { color: '#E2E8F0', font: { size: 10, weight: '700' } },
+              ticks: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    // 3. Expense Distribution Doughnut Chart
+    var distCanvas = document.getElementById('eeExpenseDistChart');
+    if (distCanvas) {
+      var dCtx = distCanvas.getContext('2d');
+      if (_distChartInstance) _distChartInstance.destroy();
+      _distChartInstance = new window.Chart(dCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['🏢 Bino Ijarasi', '⚡ Elektr & Tok', '👨‍🏫 O‘qituvchilar Payroll', '🌐 Internet & Server', '💻 Jihozlar'],
+          datasets: [{
+            data: [32, 14.8, 14.6, 4.2, 8.0],
+            backgroundColor: ['#10B981', '#F59E0B', '#38BDF8', '#818CF8', '#EC4899'],
+            borderColor: '#0f172a',
+            borderWidth: 3
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'right', labels: { color: '#CBD5E1', boxWidth: 10, font: { size: 11, weight: '700' } } }
+          },
+          cutout: '68%'
+        }
+      });
+    }
+  };
+
+  // --------------------------------------------------------------------------
+  // TEACHERS TAB WITH PERSONAL RADAR & COMPARATIVE BAR CHART
+  // --------------------------------------------------------------------------
+  EE.initTeacherCharts = function(teachers) {
+    if (typeof window.Chart === 'undefined') return;
+
+    var canvas = document.getElementById('eeTeacherDetailChart');
+    if (canvas) {
+      var ctx = canvas.getContext('2d');
+      if (_teacherDetailChartInstance) _teacherDetailChartInstance.destroy();
+
+      var tNames = (teachers || []).map(function(t) { return t.name; });
+      var tHours = (teachers || []).map(function(t) { return Number(t.teachingHours) || 0; });
+      var tEarnings = (teachers || []).map(function(t) {
+        return +(((Number(t.teachingHours) || 0) * (Number(t.hourlyRate) || 0) + (Number(t.monthlyBonus) || 0)) / 1000000).toFixed(2);
+      });
+
+      _teacherDetailChartInstance = new window.Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: tNames,
+          datasets: [
+            {
+              label: 'Hisoblangan Maosh (mln so‘m)',
+              data: tEarnings,
+              backgroundColor: '#10B981',
+              borderRadius: 8,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: 'O‘tilgan Dars Soati (soat)',
+              data: tHours,
+              borderColor: '#F59E0B',
+              backgroundColor: '#F59E0B',
+              borderWidth: 3,
+              tension: 0.3,
+              pointRadius: 6,
+              pointBackgroundColor: '#0B101B',
+              pointBorderColor: '#F59E0B',
+              pointBorderWidth: 2.5,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'top', labels: { color: '#E2E8F0', font: { size: 11, weight: '700' } } }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#fff', font: { weight: '800' } } },
+            y: {
+              type: 'linear',
+              display: true,
+              position: 'left',
+              grid: { color: 'rgba(255,255,255,0.05)' },
+              ticks: { color: '#10B981', callback: function(v) { return v + ' mln'; } }
+            },
+            y1: {
+              type: 'linear',
+              display: true,
+              position: 'right',
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#F59E0B', callback: function(v) { return v + ' soat'; } }
+            }
+          }
+        }
+      });
+    }
+
+    var rCanvas = document.getElementById('eeTeacherPersonalRadar');
+    if (rCanvas) {
+      var rCtx = rCanvas.getContext('2d');
+      if (_teacherRadarInstance) _teacherRadarInstance.destroy();
+      _teacherRadarInstance = new window.Chart(rCtx, {
+        type: 'radar',
+        data: {
+          labels: ['Dars Sifati', 'Davomat', 'Topshiriq Tekshiruvi', 'Qoniqish', 'Metodika', 'Intizom'],
+          datasets: [{
+            label: 'O‘rtacha Pedagogik KPI',
+            data: [96, 94, 98, 95, 92, 91],
+            backgroundColor: 'rgba(56, 189, 248, 0.28)',
+            borderColor: '#38BDF8',
+            borderWidth: 2.5,
+            pointBackgroundColor: '#38BDF8',
+            pointRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#CBD5E1', font: { size: 11 } } }
+          },
+          scales: {
+            r: {
+              min: 50,
+              max: 100,
+              angleLines: { color: 'rgba(255, 255, 255, 0.08)' },
+              grid: { color: 'rgba(255, 255, 255, 0.07)' },
+              pointLabels: { color: '#E2E8F0', font: { size: 11, weight: '700' } },
+              ticks: { display: false }
+            }
+          }
+        }
+      });
+    }
+  };
+EE.renderFinanceStudentsTabHtml = function(studentList) {
     var h = '<div style="background:rgba(15,23,42,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.4);">' +
       // Toolbar
       '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px;">' +
@@ -96394,71 +96830,95 @@ window.NAVIGATE_CURRICULUM = {
   // TAB 3: TEACHERS & PAYROLL TABLE HTML
   // --------------------------------------------------------------------------
   EE.renderFinanceTeachersTabHtml = function(teachers) {
-    var h = '<div style="background:rgba(15,23,42,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.4);">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px;">' +
-        '<div>' +
-          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘qituvchilar Shtati va Soatlik Dars Maoshi (Payroll)</h3>' +
-          '<div style="font-size:12.5px;color:#94a3b8;margin-top:2px;">Har bir o‘tilgan dars soati, soatlik stavka va oylik hisob-kitoblar.</div>' +
+    var h = '<div style="display:flex;flex-direction:column;gap:20px;">' +
+      
+      // TEACHER COMPARATIVE ANALYTICS & RADAR
+      '<div style="display:grid;grid-template-columns:1.6fr 1fr;gap:20px;">' +
+        '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.3);border-radius:20px;padding:22px;backdrop-filter:blur(20px);box-shadow:0 10px 30px rgba(0,0,0,0.4);">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">' +
+            '<h3 style="margin:0;font-size:16px;font-weight:900;color:#fff;">📊 Ustozlar O‘tilgan Dars Soatlari va Maosh Solishtirmasi</h3>' +
+            '<span style="font-size:11px;color:#38bdf8;font-weight:800;">Real vaqt hisobi</span>' +
+          '</div>' +
+          '<div style="position:relative;height:240px;width:100%;">' +
+            '<canvas id="eeTeacherDetailChart"></canvas>' +
+          '</div>' +
         '</div>' +
-        '<button id="eeBtnAddTeacherFin" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:900;cursor:pointer;">+ O‘qituvchi Qo‘shish</button>' +
+
+        '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(168,85,247,0.3);border-radius:20px;padding:22px;backdrop-filter:blur(20px);box-shadow:0 10px 30px rgba(0,0,0,0.4);">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">' +
+            '<h3 style="margin:0;font-size:16px;font-weight:900;color:#fff;">🎯 Pedagogik KPI Radari</h3>' +
+            '<span style="background:rgba(56,189,248,0.2);color:#38bdf8;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:900;">94.3%</span>' +
+          '</div>' +
+          '<div style="position:relative;height:240px;width:100%;">' +
+            '<canvas id="eeTeacherPersonalRadar"></canvas>' +
+          '</div>' +
+        '</div>' +
       '</div>' +
 
-      '<div style="overflow-x:auto;">' +
-        '<table style="width:100%;border-collapse:collapse;font-size:13px;text-align:left;">' +
-          '<thead>' +
-            '<tr style="background:rgba(30,41,59,0.85);color:#94a3b8;font-size:11.5px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.08);">' +
-              '<th style="padding:12px 14px;">O‘qituvchi</th>' +
-              '<th style="padding:12px 14px;">Mutaxassislik</th>' +
-              '<th style="padding:12px 14px;">O‘tilgan Dars Soati</th>' +
-              '<th style="padding:12px 14px;">Soatlik Stavka</th>' +
-              '<th style="padding:12px 14px;">Oylik Bonus</th>' +
-              '<th style="padding:12px 14px;">Jami Hisoblangan Maosh</th>' +
-              '<th style="padding:12px 14px;text-align:center;">Holat</th>' +
-              '<th style="padding:12px 14px;text-align:right;">Amal</th>' +
-            '</tr>' +
-          '</thead>' +
-          '<tbody>';
+      // TEACHERS TABLE
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:24px;backdrop-filter:blur(20px);box-shadow:0 10px 30px rgba(0,0,0,0.4);">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;">' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘qituvchilar Shtati va Soatlik Dars Maoshi (Payroll)</h3>' +
+            '<p style="margin:4px 0 0;font-size:12.5px;color:#94a3b8;">Har bir o‘tilgan dars soati, soatlik stavka va oylik hisob-kitoblar.</p>' +
+          '</div>' +
+          '<button id="eeBtnAddTeacher" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;">+ O‘qituvchi Qo‘shish</button>' +
+        '</div>' +
 
-          teachers.forEach(function(t, idx) {
-            var hours = t.teachingHours || 0;
-            var rate = t.hourlyRate || 100000;
-            var bonus = t.monthlyBonus || 0;
-            var totalSalary = (hours * rate) + bonus;
+        '<div style="overflow-x:auto;">' +
+          '<table style="width:100%;border-collapse:collapse;text-align:left;">' +
+            '<thead>' +
+              '<tr style="border-bottom:1px solid rgba(255,255,255,0.1);font-size:11px;font-weight:900;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;">' +
+                '<th style="padding:12px 14px;">O‘qituvchi</th>' +
+                '<th style="padding:12px 14px;">Mutaxassislik</th>' +
+                '<th style="padding:12px 14px;">O‘tilgan Dars Soati</th>' +
+                '<th style="padding:12px 14px;">Soatlik Stavka</th>' +
+                '<th style="padding:12px 14px;">Oylik Bonus</th>' +
+                '<th style="padding:12px 14px;">Jami Hisoblangan Maosh</th>' +
+                '<th style="padding:12px 14px;">Holat</th>' +
+                '<th style="padding:12px 14px;text-align:right;">Amal</th>' +
+              '</tr>' +
+            '</thead>' +
+            '<tbody>' +
+              teachers.map(function(t) {
+                var hours = Number(t.teachingHours) || 0;
+                var rate = Number(t.hourlyRate) || 0;
+                var bonus = Number(t.monthlyBonus) || 0;
+                var total = (hours * rate) + bonus;
+                var isPaid = t.status === 'paid';
 
-            h += '<tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:' + (idx % 2 === 0 ? 'rgba(15,23,42,0.3)' : 'rgba(30,41,59,0.3)') + ';">' +
-              '<td style="padding:12px 14px;">' +
-                '<div style="display:flex;align-items:center;gap:10px;">' +
-                  '<span style="width:34px;height:34px;border-radius:10px;background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.4);color:#38bdf8;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:12px;">' + esc(t.initials || 'U') + '</span>' +
-                  '<div>' +
-                    '<div style="font-weight:800;color:#f8fafc;">' + esc(t.name) + '</div>' +
-                    '<div style="font-size:11px;color:#94a3b8;">' + esc(t.email || t.phone || '') + '</div>' +
-                  '</div>' +
-                '</div>' +
-              '</td>' +
-              '<td style="padding:12px 14px;color:#cbd5e1;">' + esc(t.subject || 'Ingliz tili') + '</td>' +
-              '<td style="padding:12px 14px;font-weight:900;color:#38bdf8;font-size:14px;font-family:monospace;">' + hours + ' soat</td>' +
-              '<td style="padding:12px 14px;font-weight:800;color:#e2e8f0;font-family:monospace;">' + fmtUZS(rate) + ' / soat</td>' +
-              '<td style="padding:12px 14px;font-weight:800;color:#a855f7;font-family:monospace;">' + fmtUZS(bonus) + '</td>' +
-              '<td style="padding:12px 14px;font-weight:900;color:#34d399;font-size:14.5px;font-family:monospace;">' + fmtUZS(totalSalary) + '</td>' +
-              '<td style="padding:12px 14px;text-align:center;">' +
-                '<button class="ee-fin-toggle-paid-btn" data-tid="' + esc(t.id) + '" style="background:' + (t.paidThisMonth ? 'rgba(16,185,129,0.2)' : 'rgba(245,158,11,0.2)') + ';color:' + (t.paidThisMonth ? '#34d399' : '#fbbf24') + ';border:1px solid ' + (t.paidThisMonth ? 'rgba(16,185,129,0.5)' : 'rgba(245,158,11,0.5)') + ';border-radius:8px;padding:4px 10px;font-size:11.5px;font-weight:800;cursor:pointer;">' +
-                  (t.paidThisMonth ? '✓ To‘langan' : '⏳ Kutilmoqda') +
-                '</button>' +
-              '</td>' +
-              '<td style="padding:12px 14px;text-align:right;">' +
-                '<button class="ee-fin-edit-teacher-btn" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" data-thours="' + hours + '" data-trate="' + rate + '" data-tbonus="' + bonus + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">⚙️ Tahrir</button>' +
-              '</td>' +
-            '</tr>';
-          });
+                return '<tr style="border-bottom:1px solid rgba(255,255,255,0.06);transition:background 0.15s;" onmouseover="this.style.background=\'rgba(255,255,255,0.02)\'" onmouseout="this.style.background=\'transparent\'">' +
+                  '<td style="padding:14px;">' +
+                    '<div style="display:flex;align-items:center;gap:12px;">' +
+                      '<span style="width:36px;height:36px;border-radius:10px;background:#0284c7;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;">' + (t.name ? t.name.charAt(0).toUpperCase() : 'U') + '</span>' +
+                      '<div><div style="font-size:13.5px;font-weight:800;color:#fff;">' + esc(t.name) + '</div>' +
+                      '<div style="font-size:11px;color:#94a3b8;">' + esc(t.email || '') + '</div></div>' +
+                    '</div>' +
+                  '</td>' +
+                  '<td style="padding:14px;font-size:13px;color:#cbd5e1;font-weight:700;">' + esc(t.subject || 'Ingliz tili') + '</td>' +
+                  '<td style="padding:14px;"><span style="background:rgba(56,189,248,0.15);color:#38bdf8;padding:4px 10px;border-radius:8px;font-size:12.5px;font-weight:900;">' + hours + ' soat</span></td>' +
+                  '<td style="padding:14px;font-size:13px;color:#fff;font-weight:800;">' + fmtUZS(rate) + ' <span style="font-size:11px;color:#94a3b8;">/ soat</span></td>' +
+                  '<td style="padding:14px;font-size:13px;color:#c084fc;font-weight:800;">' + fmtUZS(bonus) + '</td>' +
+                  '<td style="padding:14px;font-size:14px;color:#34d399;font-weight:900;">' + fmtUZS(total) + '</td>' +
+                  '<td style="padding:14px;">' +
+                    '<span style="padding:4px 10px;border-radius:8px;font-size:11.5px;font-weight:900;' + (isPaid ? 'background:rgba(16,185,129,0.2);color:#10b981;' : 'background:rgba(245,158,11,0.2);color:#f59e0b;') + '">' +
+                      (isPaid ? '✓ To‘langan' : '⏳ Kutilmoqda') +
+                    '</span>' +
+                  '</td>' +
+                  '<td style="padding:14px;text-align:right;">' +
+                    '<button class="ee-fin-edit-teacher-btn" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" data-thours="' + hours + '" data-trate="' + rate + '" data-tbonus="' + bonus + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">⚙️ Tahrir</button>' +
+                  '</td>' +
+                '</tr>';
+              }).join('') +
+            '</tbody>' +
+          '</table>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
 
-        h += '</tbody></table></div></div>';
     return h;
   };
-
-  // --------------------------------------------------------------------------
-  // TAB 4: EXPENSES TABLE HTML
-  // --------------------------------------------------------------------------
-  EE.renderFinanceExpensesTabHtml = function(expenses) {
+EE.renderFinanceExpensesTabHtml = function(expenses) {
     var h = '<div style="background:rgba(15,23,42,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.4);">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px;">' +
         '<div>' +
@@ -99411,16 +99871,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '  <button class="ap-btn pri" data-go="intermediate" style="box-shadow:0 8px 24px rgba(2,132,199,0.4);">' + ic('book') + ' Intermediate (B1+) ' + ic('right') + '</button>' +
       '  <button class="ap-btn pri" data-go="upper_intermediate" style="background:linear-gradient(135deg,#9333ea,#6366f1);box-shadow:0 8px 24px rgba(147,51,234,0.4);">' + ic('book') + ' Upper-Intermediate (B2) ' + ic('right') + '</button>' +
       '  <button class="ap-btn gh" data-go="ask_ai">' + ic('sparkles') + ' Ask AI Teacher</button>' +
-      '</div></div>' +
-      '<div class="ap-metrics" style="display:flex;gap:12px;align-items:center;flex-shrink:0;">' +
-      ((isAdmin || isTeacher) ? (
-        '  <div class="ap-glass" style="min-width:100px;max-width:130px;padding:10px 16px;border-radius:14px;"><div class="ap-curlv" style="font-size:24px;line-height:1.1;margin-bottom:2px;">' + ((S.classes && S.classes.length) || 2) + '</div><span class="lbl" style="font-size:10px;letter-spacing:0.05em;white-space:nowrap;">Guruhlar Soni</span></div>' +
-        '  <div class="ap-glass" style="min-width:100px;max-width:130px;padding:10px 16px;border-radius:14px;"><div class="ap-curlv" style="font-size:24px;line-height:1.1;margin-bottom:2px;">' + (((S.classes || []).reduce(function(acc, c) { return acc + (c.students || []).length; }, 0)) || 0) + '</div><span class="lbl" style="font-size:10px;letter-spacing:0.05em;white-space:nowrap;">O‘quvchilar Soni</span></div>'
-      ) : (
-        '  <div class="ap-glass" style="min-width:100px;max-width:130px;padding:10px 16px;border-radius:14px;"><div class="ap-curlv" style="font-size:24px;line-height:1.1;margin-bottom:2px;">' + (user.coins || 0).toLocaleString() + '</div><span class="lbl" style="font-size:10px;letter-spacing:0.05em;white-space:nowrap;">ETHITH Coins</span></div>' +
-        '  <div class="ap-glass" style="min-width:100px;max-width:130px;padding:10px 16px;border-radius:14px;"><div class="ap-curlv" style="font-size:24px;line-height:1.1;margin-bottom:2px;">' + ((S.completedQuizzes || []).length) + '</div><span class="lbl" style="font-size:10px;letter-spacing:0.05em;white-space:nowrap;">Tugallangan Testlar</span></div>'
-      )) +
-      '</div></section>';
+      '</div></div></section>';
 
     // 1. O'QUV GURUHLARI & SINFLAR (Directly under the hero!)
     h += '<div class="ap-sec" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:28px;">' +
