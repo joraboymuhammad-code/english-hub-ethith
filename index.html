@@ -318,6 +318,10 @@
 
 
 
+
+
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9104,7 +9108,7 @@ body[data-theme="light"] .eth-worksheet-wrapper,
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.26.2145";
+window.ETHITH_BUILD_VERSION = "2026.10.26.2230";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -82404,19 +82408,17 @@ window.NAVIGATE_CURRICULUM = {
     m.id = 'eeVisualBuilderOverlay';
     m.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;background:#070b14;z-index:2147483640;display:flex;flex-direction:column;overflow:hidden;margin:0;padding:0;box-sizing:border-box;color:#f8fafc;font-family:system-ui,-apple-system,sans-serif;';
 
-    var defaultImg = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200"><rect width="100%" height="100%" fill="#ffffff"/><rect x="40" y="40" width="820" height="1120" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/><text x="70" y="100" font-family="sans-serif" font-weight="900" font-size="28" fill="#0f172a">ETHITH ENGLISH TEST SHEET</text><text x="70" y="135" font-family="sans-serif" font-weight="600" font-size="16" fill="#64748b">Exercise 1: Read the sentences and fill in the missing grammar forms</text><line x1="70" y1="155" x2="830" y2="155" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="210" font-family="sans-serif" font-size="17" fill="#334155">1. By the time Sarah arrived, the train _________________ (already / leave).</text><text x="70" y="270" font-family="sans-serif" font-size="17" fill="#334155">2. If you study diligently every day, you _________________ (pass) the IELTS exam.</text><text x="70" y="330" font-family="sans-serif" font-size="17" fill="#334155">3. Neither John nor his friends _________________ (be) aware of the changes.</text><text x="70" y="390" font-family="sans-serif" font-size="17" fill="#334155">4. The CEO demanded that the report _________________ (submit) before noon.</text><text x="70" y="450" font-family="sans-serif" font-size="17" fill="#334155">5. I wish I _________________ (know) the truth earlier!</text><text x="70" y="520" font-family="sans-serif" font-weight="700" font-size="18" fill="#0f172a">Exercise 2: Choose the correct preposition or connector</text><line x1="70" y1="540" x2="830" y2="540" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="590" font-family="sans-serif" font-size="17" fill="#334155">6. She is extremely passionate [ about / with / for ] environmental protection.</text><text x="70" y="650" font-family="sans-serif" font-size="17" fill="#334155">7. Despite [ of the rain / the heavy rain / it was raining ], the match continued.</text><text x="70" y="710" font-family="sans-serif" font-size="17" fill="#334155">8. We arrived at the venue just [ in / on / at ] time for the opening speech.</text></svg>');
+    var defaultSvg = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200"><rect width="100%" height="100%" fill="#ffffff"/><rect x="40" y="40" width="820" height="1120" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/><text x="70" y="100" font-family="sans-serif" font-weight="900" font-size="28" fill="#0f172a">ETHITH ENGLISH TEST SHEET</text><text x="70" y="135" font-family="sans-serif" font-weight="600" font-size="16" fill="#64748b">Exercise 1: Read the sentences and fill in the missing grammar forms</text><line x1="70" y1="155" x2="830" y2="155" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="210" font-family="sans-serif" font-size="17" fill="#334155">1. By the time Sarah arrived, the train _________________ (already / leave).</text><text x="70" y="270" font-family="sans-serif" font-size="17" fill="#334155">2. If you study diligently every day, you _________________ (pass) the IELTS exam.</text><text x="70" y="330" font-family="sans-serif" font-size="17" fill="#334155">3. Neither John nor his friends _________________ (be) aware of the changes.</text><text x="70" y="390" font-family="sans-serif" font-size="17" fill="#334155">4. The CEO demanded that the report _________________ (submit) before noon.</text><text x="70" y="450" font-family="sans-serif" font-size="17" fill="#334155">5. I wish I _________________ (know) the truth earlier!</text><text x="70" y="520" font-family="sans-serif" font-weight="700" font-size="18" fill="#0f172a">Exercise 2: Choose the correct preposition or connector</text><line x1="70" y1="540" x2="830" y2="540" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="590" font-family="sans-serif" font-size="17" fill="#334155">6. She is extremely passionate [ about / with / for ] environmental protection.</text><text x="70" y="650" font-family="sans-serif" font-size="17" fill="#334155">7. Despite [ of the rain / the heavy rain / it was raining ], the match continued.</text><text x="70" y="710" font-family="sans-serif" font-size="17" fill="#334155">8. We arrived at the venue just [ in / on / at ] time for the opening speech.</text></svg>');
 
-    var elements = [];
-    var currentImg = defaultImg;
-    var pdfDoc = null;
-    var currentPdfPage = 1;
-    var totalPdfPages = 1;
-    var currentWidthPx = 1040; // Default spacious crisp width
+    // Array of pages: [ { pageNum: 1, imageUrl: '...', elements: [] }, ... ]
+    var pagesData = [
+      { pageNum: 1, imageUrl: defaultSvg, elements: [] }
+    ];
+    var currentWidthPx = 1000;
 
     m.innerHTML = '' +
-      // Unified Studio Topbar
+      // Topbar
       '<div style="height:62px;padding:0 20px;background:#0f172a;border-bottom:1px solid rgba(56,189,248,0.25);display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 4px 20px rgba(0,0,0,0.5);flex-shrink:0;z-index:50;">' +
-        // Left
         '<div style="display:flex;align-items:center;gap:12px;flex:1;max-width:440px;">' +
           '<div style="font-size:24px;line-height:1;">🎨</div>' +
           '<input type="text" id="eeVisualTitle" placeholder="Test Nomi (masalan: Unit 1 Test B2)" style="width:100%;padding:8px 14px;background:#1e293b;border:1.5px solid rgba(56,189,248,0.3);border-radius:10px;color:#fff;font-weight:800;font-size:13.5px;outline:none;" />' +
@@ -82426,18 +82428,10 @@ window.NAVIGATE_CURRICULUM = {
           '</div>' +
         '</div>' +
 
-        // Center: Upload + Pagination + Zoom Controls
         '<div style="display:flex;align-items:center;gap:10px;">' +
           '<label style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(37,99,235,0.2));color:#38bdf8;border:1.5px solid #38bdf8;padding:7px 14px;border-radius:10px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 0 12px rgba(56,189,248,0.2);">' +
             '📁 PDF / Rasm Yuklash <input type="file" id="eeVisualFileInput" accept="image/*,application/pdf,.pdf" style="display:none;" />' +
           '</label>' +
-
-          // Multi-page switcher
-          '<div id="eePdfPageControls" style="display:none;align-items:center;gap:6px;background:#1e293b;padding:4px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);">' +
-            '<button id="eePdfPrevPage" style="background:#334155;border:none;color:#fff;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:800;cursor:pointer;">◀</button>' +
-            '<span id="eePdfPageInfo" style="font-size:12px;font-weight:800;color:#38bdf8;min-width:44px;text-align:center;">1 / 1</span>' +
-            '<button id="eePdfNextPage" style="background:#334155;border:none;color:#fff;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:800;cursor:pointer;">▶</button>' +
-          '</div>' +
 
           // Zoom & Fit Controls
           '<div style="display:flex;align-items:center;gap:4px;background:#1e293b;padding:3px 6px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);">' +
@@ -82448,7 +82442,6 @@ window.NAVIGATE_CURRICULUM = {
           '</div>' +
         '</div>' +
 
-        // Right: Counter + Save + Close
         '<div style="display:flex;align-items:center;gap:12px;">' +
           '<div id="eeVisualCounter" style="font-size:12.5px;font-weight:800;color:#10b981;background:rgba(16,185,129,0.12);padding:5px 10px;border-radius:8px;border:1px solid rgba(16,185,129,0.25);">0 ta katakcha qo‘shildi</div>' +
           '<button id="eeSaveVisualBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;font-size:13.5px;cursor:pointer;box-shadow:0 4px 18px rgba(2,132,199,0.5);display:flex;align-items:center;gap:6px;">💾 Testni Saqlash</button>' +
@@ -82456,133 +82449,81 @@ window.NAVIGATE_CURRICULUM = {
         '</div>' +
       '</div>' +
 
-      // Full Height Scrollable Workspace (Unconstrained, spacious, full natural page display)
-      '<div id="eeVisualWorkspace" style="flex:1;overflow-y:scroll;overflow-x:auto;padding:28px 24px 140px 24px;display:flex;flex-direction:column;align-items:center;background:#070b14;position:relative;">' +
-        '<div id="eeVisualCanvasWrap" style="position:relative;display:inline-block;width:' + currentWidthPx + 'px;max-width:98vw;box-shadow:0 14px 60px rgba(0,0,0,0.9);border-radius:4px;background:#ffffff;transition:width 0.15s ease;">' +
-          '<img id="eeVisualImg" src="' + currentImg + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:none;" />' +
-          '<div id="eeVisualOverlay" style="position:absolute;inset:0;cursor:crosshair;z-index:20;user-select:none;"></div>' +
-        '</div>' +
-        '<div style="margin-top:20px;font-size:12.5px;color:#64748b;text-align:center;">' +
-          '💡 Sichqoncha bilan varaq ustiga to‘rtburchak chizing — tizim <b>Yangi Katakcha</b> parametrlarini ochadi.' +
+      // Continuous Multi-Page Workspace (Oxford Navigate Style)
+      '<div id="eeVisualWorkspace" style="flex:1;overflow-y:scroll;overflow-x:auto;padding:24px 20px 140px 20px;display:flex;flex-direction:column;align-items:center;background:#070b14;position:relative;">' +
+        '<div id="eePagesStreamWrap" style="display:flex;flex-direction:column;align-items:center;gap:32px;width:100%;"></div>' +
+        '<div style="margin-top:24px;font-size:12.5px;color:#64748b;text-align:center;">' +
+          '💡 Sichqoncha bilan istalgan sahifa ustiga to‘rtburchak chizing — tizim <b>Yangi Katakcha</b> parametrlarini ochadi.' +
         '</div>' +
       '</div>';
 
     modalRoot.appendChild(m);
 
-    var overlayLayer = m.querySelector('#eeVisualOverlay');
-    var canvasWrap = m.querySelector('#eeVisualCanvasWrap');
+    var streamWrap = m.querySelector('#eePagesStreamWrap');
     var fileInp = m.querySelector('#eeVisualFileInput');
-    var imgEl = m.querySelector('#eeVisualImg');
     var counterEl = m.querySelector('#eeVisualCounter');
-    var pdfPageControls = m.querySelector('#eePdfPageControls');
-    var pdfPageInfo = m.querySelector('#eePdfPageInfo');
-    var pdfPrevBtn = m.querySelector('#eePdfPrevPage');
-    var pdfNextBtn = m.querySelector('#eePdfNextPage');
 
-    // Zoom handlers
+    function getTotalElementsCount() {
+      var total = 0;
+      pagesData.forEach(function(p) { total += (p.elements || []).length; });
+      return total;
+    }
+
+    function updateCounter() {
+      counterEl.textContent = getTotalElementsCount() + " ta katakcha qo‘shildi";
+    }
+
     function applyWrapWidth(w) {
       currentWidthPx = Math.max(650, Math.min(2200, w));
-      canvasWrap.style.width = currentWidthPx + 'px';
+      streamWrap.querySelectorAll('.ee-page-box').forEach(function(box) {
+        box.style.width = currentWidthPx + 'px';
+      });
     }
 
     m.querySelector('#eeZoomInBtn').onclick = function() { applyWrapWidth(currentWidthPx + 150); };
     m.querySelector('#eeZoomOutBtn').onclick = function() { applyWrapWidth(currentWidthPx - 150); };
-    m.querySelector('#eeZoom100Btn').onclick = function() { applyWrapWidth(1040); };
+    m.querySelector('#eeZoom100Btn').onclick = function() { applyWrapWidth(1000); };
     m.querySelector('#eeFitWidthBtn').onclick = function() {
       var wsW = m.querySelector('#eeVisualWorkspace').clientWidth;
       applyWrapWidth(Math.floor(wsW * 0.94));
     };
 
-    // PDF Rendering Engine (<0.2 sec ultra-fast high DPI)
-    function renderPdfPageNumber(pageNo) {
-      if (!pdfDoc) return;
-      pdfDoc.getPage(pageNo).then(function(page) {
-        var scale = 2.0; // High DPI crystal clear resolution
-        var viewport = page.getViewport({ scale: scale });
-        var canvas = document.createElement('canvas');
-        var ctx = canvas.getContext('2d');
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
+    // Render all pages in vertical succession (Oxford Navigate layout)
+    function renderAllPages() {
+      streamWrap.innerHTML = '';
 
-        var renderTask = page.render({
-          canvasContext: ctx,
-          viewport: viewport
-        });
+      pagesData.forEach(function(p, pIdx) {
+        var pageNum = p.pageNum || (pIdx + 1);
+        var box = document.createElement('div');
+        box.className = 'ee-page-box';
+        box.setAttribute('data-page', pageNum);
+        box.style.cssText = 'position:relative;display:inline-block;width:' + currentWidthPx + 'px;max-width:98vw;box-shadow:0 14px 60px rgba(0,0,0,0.9);border-radius:10px;background:#ffffff;overflow:hidden;border:1px solid rgba(255,255,255,0.12);transition:width 0.15s ease;';
 
-        renderTask.promise.then(function() {
-          currentImg = canvas.toDataURL('image/png');
-          imgEl.src = currentImg;
-          currentPdfPage = pageNo;
-          pdfPageInfo.textContent = currentPdfPage + ' / ' + totalPdfPages;
-          pdfPageControls.style.display = 'inline-flex';
-          showToast("PDF " + pageNo + "-sahifa ochildi");
-        });
-      }).catch(function(err) {
-        console.error("PDF sahifasini chizishda xato:", err);
+        box.innerHTML = '' +
+          // Page header banner
+          '<div style="background:#0f172a;color:#fff;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;font-weight:800;border-bottom:1px solid rgba(255,255,255,0.08);">' +
+            '<span>📄 ' + pageNum + '-sahifa' + (pagesData.length > 1 ? (' (Jami ' + pagesData.length + ' ta)') : '') + '</span>' +
+            '<span class="ee-page-subcounter" style="color:#38bdf8;">' + (p.elements || []).length + ' ta topshiriq</span>' +
+          '</div>' +
+          '<div style="position:relative;width:100%;background:#ffffff;">' +
+            '<img src="' + p.imageUrl + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:none;" />' +
+            '<div class="ee-page-overlay" data-page="' + pageNum + '" style="position:absolute;inset:0;cursor:crosshair;z-index:20;user-select:none;"></div>' +
+          '</div>';
+
+        streamWrap.appendChild(box);
+
+        var overlay = box.querySelector('.ee-page-overlay');
+        attachPageOverlayDrawing(overlay, p);
+        renderPagePins(overlay, p);
       });
+
+      updateCounter();
     }
 
-    pdfPrevBtn.onclick = function() {
-      if (currentPdfPage > 1) renderPdfPageNumber(currentPdfPage - 1);
-    };
-    pdfNextBtn.onclick = function() {
-      if (currentPdfPage < totalPdfPages) renderPdfPageNumber(currentPdfPage + 1);
-    };
-
-    // File input handler: PDF or image
-    fileInp.onchange = function(e) {
-      var file = e.target.files && e.target.files[0];
-      if (!file) return;
-
-      var isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
-      if (isPdf) {
-        showToast("⚡ PDF yuklanmoqda...");
-        var reader = new FileReader();
-        reader.onload = function(evt) {
-          var typedArray = new Uint8Array(evt.target.result);
-
-          function proceedWithPdf() {
-            if (window.pdfjsLib && window.pdfjsLib.GlobalWorkerOptions) {
-              window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
-            }
-            window.pdfjsLib.getDocument({ data: typedArray }).promise.then(function(doc) {
-              pdfDoc = doc;
-              totalPdfPages = doc.numPages;
-              currentPdfPage = 1;
-              renderPdfPageNumber(1);
-            }).catch(function(err) {
-              console.error("PDF ochishda xato:", err);
-              alert("PDF ochishda xatolik yuz berdi: " + (err.message || err));
-            });
-          }
-
-          if (!window.pdfjsLib) {
-            var script = document.createElement('script');
-            script.src = 'pdf.min.js';
-            script.onload = proceedWithPdf;
-            document.head.appendChild(script);
-          } else {
-            proceedWithPdf();
-          }
-        };
-        reader.readAsArrayBuffer(file);
-      } else {
-        var imgReader = new FileReader();
-        imgReader.onload = function(evt) {
-          currentImg = evt.target.result;
-          imgEl.src = currentImg;
-          pdfPageControls.style.display = 'none';
-          pdfDoc = null;
-          showToast("Rasm yuklandi");
-        };
-        imgReader.readAsDataURL(file);
-      }
-    };
-
-    // Render interactive pinned boxes on sheet
-    function renderPins() {
-      overlayLayer.querySelectorAll('.ee-visual-pin').forEach(function(el) { el.remove(); });
-      elements.forEach(function(el, idx) {
+    // Render pins for a specific page
+    function renderPagePins(overlay, p) {
+      overlay.querySelectorAll('.ee-visual-pin').forEach(function(el) { el.remove(); });
+      (p.elements || []).forEach(function(el, idx) {
         var pin = document.createElement('div');
         pin.className = 'ee-visual-pin';
         pin.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;border:2px solid #00c0ff;background:rgba(0,192,255,0.22);border-radius:6px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:auto;cursor:pointer;box-shadow:0 0 10px rgba(0,192,255,0.45);transition:all 0.15s ease;';
@@ -82595,26 +82536,87 @@ window.NAVIGATE_CURRICULUM = {
         pin.onclick = function(e) {
           if (e.target.closest('.ee-quick-del-pin')) return;
           e.stopPropagation();
-          openKatakchaModal(false, el, idx);
+          openKatakchaModal(false, el, idx, p, overlay);
         };
 
-        overlayLayer.appendChild(pin);
+        overlay.appendChild(pin);
       });
 
-      counterEl.textContent = elements.length + " ta katakcha qo‘shildi";
+      var subCounter = overlay.closest('.ee-page-box').querySelector('.ee-page-subcounter');
+      if (subCounter) subCounter.textContent = (p.elements || []).length + " ta topshiriq";
 
-      overlayLayer.querySelectorAll('.ee-quick-del-pin').forEach(function(b) {
+      overlay.querySelectorAll('.ee-quick-del-pin').forEach(function(b) {
         b.onclick = function(e) {
           e.stopPropagation();
           var i = parseInt(b.getAttribute('data-idx'), 10);
-          elements.splice(i, 1);
-          renderPins();
+          p.elements.splice(i, 1);
+          renderPagePins(overlay, p);
+          updateCounter();
         };
       });
     }
 
-    // Exact Floating Modal matching media_1793026528352_0eeda690.png
-    function openKatakchaModal(isNew, item, existingIdx, newCoords) {
+    // Attach drawing on page overlay
+    function attachPageOverlayDrawing(overlay, p) {
+      var isDrawing = false;
+      var startX = 0, startY = 0;
+      var drawBox = document.createElement('div');
+      drawBox.style.cssText = 'position:absolute;border:2px dashed #00c0ff;background:rgba(0,192,255,0.25);box-shadow:0 0 16px rgba(0,192,255,0.5);display:none;pointer-events:none;z-index:30;border-radius:4px;';
+      overlay.appendChild(drawBox);
+
+      overlay.onmousedown = function(e) {
+        if (e.target.closest('.ee-visual-pin')) return;
+        isDrawing = true;
+        var rect = overlay.getBoundingClientRect();
+        startX = e.clientX - rect.left;
+        startY = e.clientY - rect.top;
+        drawBox.style.left = startX + 'px';
+        drawBox.style.top = startY + 'px';
+        drawBox.style.width = '0px';
+        drawBox.style.height = '0px';
+        drawBox.style.display = 'block';
+      };
+
+      window.addEventListener('mousemove', function(e) {
+        if (!isDrawing) return;
+        var rect = overlay.getBoundingClientRect();
+        var curX = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
+        var curY = Math.max(0, Math.min(rect.height, e.clientY - rect.top));
+        drawBox.style.left = Math.min(startX, curX) + 'px';
+        drawBox.style.top = Math.min(startY, curY) + 'px';
+        drawBox.style.width = Math.abs(curX - startX) + 'px';
+        drawBox.style.height = Math.abs(curY - startY) + 'px';
+      });
+
+      window.addEventListener('mouseup', function(e) {
+        if (!isDrawing) return;
+        isDrawing = false;
+        drawBox.style.display = 'none';
+
+        var rect = overlay.getBoundingClientRect();
+        var endX = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
+        var endY = Math.max(0, Math.min(rect.height, e.clientY - rect.top));
+        var wPx = Math.abs(endX - startX);
+        var hPx = Math.abs(endY - startY);
+
+        if (wPx > 10 && hPx > 8) {
+          var topPct = parseFloat(((Math.min(startY, endY) / rect.height) * 100).toFixed(2));
+          var leftPct = parseFloat(((Math.min(startX, endX) / rect.width) * 100).toFixed(2));
+          var widthPct = parseFloat(((wPx / rect.width) * 100).toFixed(2));
+          var heightPct = parseFloat(((hPx / rect.height) * 100).toFixed(2));
+
+          openKatakchaModal(true, null, null, p, overlay, {
+            top: topPct,
+            left: leftPct,
+            width: widthPct,
+            height: heightPct
+          });
+        }
+      });
+    }
+
+    // Modal matching media_1793026528352_0eeda690.png
+    function openKatakchaModal(isNew, item, existingIdx, pageObj, pageOverlay, newCoords) {
       var old = document.getElementById('eeKatakchaModal');
       if (old) old.remove();
 
@@ -82622,7 +82624,8 @@ window.NAVIGATE_CURRICULUM = {
       km.id = 'eeKatakchaModal';
       km.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:2147483647;backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:14px;';
 
-      var defaultLabel = isNew ? ((elements.length + 1).toString()) : (item.label || '');
+      var totalSoFar = getTotalElementsCount();
+      var defaultLabel = isNew ? ((totalSoFar + 1).toString()) : (item.label || '');
       var defaultCorrect = isNew ? '' : (item.correct || '');
       var defaultType = isNew ? 'fill' : (item.type || 'fill');
 
@@ -82693,22 +82696,19 @@ window.NAVIGATE_CURRICULUM = {
       };
 
       if (btnTrue) {
-        btnTrue.onclick = function() {
-          correctInp.value = 'To‘g‘ri';
-        };
+        btnTrue.onclick = function() { correctInp.value = 'To‘g‘ri'; };
       }
       if (btnFalse) {
-        btnFalse.onclick = function() {
-          correctInp.value = '';
-        };
+        btnFalse.onclick = function() { correctInp.value = ''; };
       }
 
       var delBtn = km.querySelector('#eeKatakchaDeleteBtn');
       if (delBtn) {
         delBtn.onclick = function() {
           if (existingIdx !== undefined && existingIdx !== null) {
-            elements.splice(existingIdx, 1);
-            renderPins();
+            pageObj.elements.splice(existingIdx, 1);
+            renderPagePins(pageOverlay, pageObj);
+            updateCounter();
           }
           closeKm();
         };
@@ -82720,14 +82720,15 @@ window.NAVIGATE_CURRICULUM = {
         var c = correctInp.value.trim();
 
         if (isNew) {
-          elements.push({
+          if (!pageObj.elements) pageObj.elements = [];
+          pageObj.elements.push({
             id: 'el_' + Date.now() + '_' + Math.floor(Math.random() * 100),
             top: newCoords.top,
             left: newCoords.left,
             width: newCoords.width,
             height: newCoords.height,
             type: t,
-            label: l || (elements.length + 1).toString(),
+            label: l || ((getTotalElementsCount() + 1).toString()),
             correct: c,
             points: 1
           });
@@ -82737,67 +82738,94 @@ window.NAVIGATE_CURRICULUM = {
           item.correct = c;
         }
 
-        renderPins();
+        renderPagePins(pageOverlay, pageObj);
+        updateCounter();
         closeKm();
       };
     }
 
-    // Cyan glowing dashed bounding box while dragging
-    var isDrawing = false;
-    var startX = 0, startY = 0;
-    var drawBox = document.createElement('div');
-    drawBox.style.cssText = 'position:absolute;border:2px dashed #00c0ff;background:rgba(0,192,255,0.25);box-shadow:0 0 16px rgba(0,192,255,0.5);display:none;pointer-events:none;z-index:30;border-radius:4px;';
-    overlayLayer.appendChild(drawBox);
+    // PDF / Image Upload Handler (Renders ALL pages of the PDF in ~300ms)
+    fileInp.onchange = function(e) {
+      var file = e.target.files && e.target.files[0];
+      if (!file) return;
 
-    overlayLayer.onmousedown = function(e) {
-      if (e.target.closest('.ee-visual-pin')) return;
-      isDrawing = true;
-      var rect = overlayLayer.getBoundingClientRect();
-      startX = e.clientX - rect.left;
-      startY = e.clientY - rect.top;
-      drawBox.style.left = startX + 'px';
-      drawBox.style.top = startY + 'px';
-      drawBox.style.width = '0px';
-      drawBox.style.height = '0px';
-      drawBox.style.display = 'block';
+      var isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+      if (isPdf) {
+        showToast("⚡ PDF yuklanmoqda va sahifalar tayyorlanmoqda...");
+        var reader = new FileReader();
+        reader.onload = function(evt) {
+          var typedArray = new Uint8Array(evt.target.result);
+
+          function proceedWithPdf() {
+            if (window.pdfjsLib && window.pdfjsLib.GlobalWorkerOptions) {
+              window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
+            }
+            window.pdfjsLib.getDocument({ data: typedArray }).promise.then(function(doc) {
+              var numPages = doc.numPages;
+              var loadedPages = [];
+              var renderPromises = [];
+
+              for (var i = 1; i <= numPages; i++) {
+                (function(pNum) {
+                  var pPromise = doc.getPage(pNum).then(function(page) {
+                    var scale = 2.0; // High DPI crisp text
+                    var viewport = page.getViewport({ scale: scale });
+                    var canvas = document.createElement('canvas');
+                    var ctx = canvas.getContext('2d');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    return page.render({ canvasContext: ctx, viewport: viewport }).promise.then(function() {
+                      return {
+                        pageNum: pNum,
+                        imageUrl: canvas.toDataURL('image/png'),
+                        elements: []
+                      };
+                    });
+                  });
+                  renderPromises.push(pPromise);
+                })(i);
+              }
+
+              Promise.all(renderPromises).then(function(results) {
+                // Sort pages by pageNum
+                results.sort(function(a, b) { return a.pageNum - b.pageNum; });
+                pagesData = results;
+                renderAllPages();
+                showToast("✓ PDF to‘liq " + numPages + " ta sahifasi yuklandi!");
+              }).catch(function(err) {
+                console.error("PDF sahifalarini o‘qishda xato:", err);
+                alert("PDF sahifalarini o‘qishda xatolik: " + (err.message || err));
+              });
+            }).catch(function(err) {
+              console.error("PDF ochishda xato:", err);
+              alert("PDF ochishda xatolik yuz berdi: " + (err.message || err));
+            });
+          }
+
+          if (!window.pdfjsLib) {
+            var script = document.createElement('script');
+            script.src = 'pdf.min.js';
+            script.onload = proceedWithPdf;
+            document.head.appendChild(script);
+          } else {
+            proceedWithPdf();
+          }
+        };
+        reader.readAsArrayBuffer(file);
+      } else {
+        var imgReader = new FileReader();
+        imgReader.onload = function(evt) {
+          pagesData = [
+            { pageNum: 1, imageUrl: evt.target.result, elements: [] }
+          ];
+          renderAllPages();
+          showToast("Rasm yuklandi");
+        };
+        imgReader.readAsDataURL(file);
+      }
     };
 
-    window.addEventListener('mousemove', function(e) {
-      if (!isDrawing) return;
-      var rect = overlayLayer.getBoundingClientRect();
-      var curX = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
-      var curY = Math.max(0, Math.min(rect.height, e.clientY - rect.top));
-      drawBox.style.left = Math.min(startX, curX) + 'px';
-      drawBox.style.top = Math.min(startY, curY) + 'px';
-      drawBox.style.width = Math.abs(curX - startX) + 'px';
-      drawBox.style.height = Math.abs(curY - startY) + 'px';
-    });
-
-    window.addEventListener('mouseup', function(e) {
-      if (!isDrawing) return;
-      isDrawing = false;
-      drawBox.style.display = 'none';
-
-      var rect = overlayLayer.getBoundingClientRect();
-      var endX = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
-      var endY = Math.max(0, Math.min(rect.height, e.clientY - rect.top));
-      var wPx = Math.abs(endX - startX);
-      var hPx = Math.abs(endY - startY);
-
-      if (wPx > 10 && hPx > 8) {
-        var topPct = parseFloat(((Math.min(startY, endY) / rect.height) * 100).toFixed(2));
-        var leftPct = parseFloat(((Math.min(startX, endX) / rect.width) * 100).toFixed(2));
-        var widthPct = parseFloat(((wPx / rect.width) * 100).toFixed(2));
-        var heightPct = parseFloat(((hPx / rect.height) * 100).toFixed(2));
-
-        openKatakchaModal(true, null, null, {
-          top: topPct,
-          left: leftPct,
-          width: widthPct,
-          height: heightPct
-        });
-      }
-    });
+    renderAllPages();
 
     var closeAll = function() { m.remove(); };
     m.querySelector('#eeCloseVisualModal').onclick = closeAll;
@@ -82806,7 +82834,16 @@ window.NAVIGATE_CURRICULUM = {
       var title = m.querySelector('#eeVisualTitle').value.trim();
       var attempts = parseInt(m.querySelector('#eeVisualAttempts').value, 10) || 1;
       if (!title) { alert("Iltimos, test nomini kiriting!"); return; }
-      if (elements.length === 0) { alert("Iltimos, varaq ustiga kamida 1 ta interaktiv katakcha belgilang!"); return; }
+
+      var allElements = [];
+      pagesData.forEach(function(p) {
+        (p.elements || []).forEach(function(el) {
+          el.pageNumber = p.pageNum;
+          allElements.push(el);
+        });
+      });
+
+      if (allElements.length === 0) { alert("Iltimos, varaq ustiga kamida 1 ta interaktiv katakcha belgilang!"); return; }
 
       var S = getStore();
       S.fileExplorer.tests.push({
@@ -82817,18 +82854,21 @@ window.NAVIGATE_CURRICULUM = {
         createdAt: Date.now(),
         authorName: getCurrentUser().name || 'Ustoz',
         maxAttempts: attempts,
-        imageUrl: currentImg,
-        elements: elements,
-        questions: elements.map(function(el, i) {
+        pages: pagesData, // Multi-page support!
+        imageUrl: pagesData[0].imageUrl, // Backward compatibility
+        elements: allElements, // All questions combined
+        questions: allElements.map(function(el, i) {
           return { id: el.id, q: (el.label || (i + 1)) + "-savol", correct: el.correct, points: 1 };
         })
       });
       saveStore();
       closeAll();
-      showToast("Interaktiv test saqlandi! Test ID: " + randCode);
+      showToast("✓ Interaktiv test saqlandi! Test ID: " + randCode);
       if (container) EE.renderExplorerView(container);
     };
-  };EE.openCreateTestModal = function(container, folderId) {
+  };
+
+  EE.openCreateTestModal = function(container, folderId) {
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
     var randCode = 'TST-' + Math.random().toString(36).substring(2, 6).toUpperCase() + Math.floor(Math.random() * 9 + 1);
 
@@ -83056,124 +83096,296 @@ window.NAVIGATE_CURRICULUM = {
       return;
     }
 
-    // Branch for visual overlay tests (image with transparent input boxes)
+    // Branch for visual overlay tests (1:1 Oxford Navigate Interactive Engine)
     if (test.type === 'visual_overlay') {
       var vm = document.createElement('div');
       vm.id = 'eeTakeVisualOverlay';
-      vm.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.92);backdrop-filter:blur(14px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:14px;';
+      vm.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;background:#070b14;z-index:2147483640;display:flex;flex-direction:column;overflow:hidden;margin:0;padding:0;box-sizing:border-box;color:#f8fafc;font-family:system-ui,-apple-system,sans-serif;';
 
-      var vh = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);border-radius:22px;max-width:1150px;width:100%;max-height:94vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,0.8);overflow:hidden;color:#f8fafc;">' +
-        '<div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;background:rgba(30,41,59,0.5);">' +
+      // Reconstruct pages array
+      var pagesList = [];
+      if (test.pages && test.pages.length > 0) {
+        pagesList = test.pages;
+      } else {
+        pagesList = [{
+          pageNum: 1,
+          imageUrl: test.imageUrl,
+          elements: test.elements || []
+        }];
+      }
+
+      var currentWidthPx = 1000;
+      var totalQuestions = 0;
+      pagesList.forEach(function(p) { totalQuestions += (p.elements || []).length; });
+
+      var vh = '' +
+        // Sticky Header
+        '<div style="height:62px;padding:0 20px;background:#0f172a;border-bottom:1px solid rgba(56,189,248,0.25);display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 4px 20px rgba(0,0,0,0.5);flex-shrink:0;z-index:50;">' +
           '<div style="display:flex;align-items:center;gap:12px;">' +
             '<span style="font-size:24px;">🎨</span>' +
             '<div>' +
-              '<h3 style="margin:0;font-size:17px;font-weight:900;">' + esc(test.title) + '</h3>' +
-              '<p style="margin:2px 0 0;font-size:12px;color:#94a3b8;">Mashq varaqasi ustidagi bo‘sh kataklarga to‘g‘ri javoblarni yozing.</p>' +
+              '<h3 style="margin:0;font-size:16.5px;font-weight:900;color:#f8fafc;">' + esc(test.title) + '</h3>' +
+              '<p style="margin:2px 0 0;font-size:11.5px;color:#94a3b8;">Oxford Navigate tahririda: bo‘sh joylarga yozing, tanlang yoki o‘chiring.</p>' +
             '</div>' +
           '</div>' +
-          '<div style="display:flex;align-items:center;gap:10px;">' +
-            '<span style="background:rgba(16,185,129,0.15);color:#34d399;padding:4px 10px;border-radius:8px;font-weight:900;font-size:12px;">Urinish: ' + (attemptsDone + 1) + ' / ' + maxAttempts + '</span>' +
-            '<button id="eeCloseTakeVisualTest" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
+
+          // Center Zoom
+          '<div style="display:flex;align-items:center;gap:8px;">' +
+            '<span style="background:rgba(16,185,129,0.15);color:#34d399;padding:5px 12px;border-radius:8px;font-weight:900;font-size:12px;border:1px solid rgba(16,185,129,0.3);">' +
+              'Urinish: ' + (attemptsDone + 1) + ' / ' + maxAttempts +
+            '</span>' +
+            '<div style="display:flex;align-items:center;gap:4px;background:#1e293b;padding:3px 6px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);">' +
+              '<button id="eeTakeZoomOut" style="background:#334155;border:none;color:#cbd5e1;padding:5px 9px;border-radius:6px;font-size:12px;font-weight:900;cursor:pointer;">🔍−</button>' +
+              '<button id="eeTakeZoom100" style="background:none;border:none;color:#38bdf8;padding:4px 8px;font-size:11.5px;font-weight:800;cursor:pointer;">100%</button>' +
+              '<button id="eeTakeZoomIn" style="background:#334155;border:none;color:#cbd5e1;padding:5px 9px;border-radius:6px;font-size:12px;font-weight:900;cursor:pointer;">🔍+</button>' +
+              '<button id="eeTakeFitWidth" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;padding:4px 10px;border-radius:6px;font-size:11.5px;font-weight:800;cursor:pointer;margin-left:4px;">↔️ Kenglikka moslash</button>' +
+            '</div>' +
+          '</div>' +
+
+          // Right Submit & Close
+          '<div style="display:flex;align-items:center;gap:12px;">' +
+            '<span style="font-size:12.5px;font-weight:800;color:#94a3b8;">Jami ' + totalQuestions + ' ta savol</span>' +
+            '<button id="eeSubmitTakeVisual" style="background:linear-gradient(135deg,#10b981,#059669);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;font-size:13.5px;cursor:pointer;box-shadow:0 4px 18px rgba(16,185,129,0.45);display:flex;align-items:center;gap:6px;">' +
+              '✅ Topshirish' +
+            '</button>' +
+            '<button id="eeCloseTakeVisualTest" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:18px;font-weight:900;cursor:pointer;padding:8px 12px;border-radius:10px;">✕</button>' +
           '</div>' +
         '</div>' +
-        '<div style="flex:1;overflow:auto;padding:20px;display:flex;justify-content:center;background:#020617;position:relative;">' +
-          '<div style="position:relative;display:inline-block;max-width:850px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,0.8);border-radius:12px;overflow:hidden;">' +
-            '<img src="' + test.imageUrl + '" style="width:100%;display:block;user-select:none;pointer-events:none;" />' +
-            '<div id="eeVisualTakeOverlay" style="position:absolute;inset:0;z-index:20;">';
-            (test.elements || []).forEach(function(el, idx) {
-              vh += '<input type="text" class="ee-take-input" data-idx="' + idx + '" placeholder="..." style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;background:rgba(15,23,42,0.85);border:2px solid #38bdf8;border-radius:6px;color:#fff;font-weight:800;font-size:13px;padding:2px 8px;outline:none;box-shadow:0 0 10px rgba(56,189,248,0.3);box-sizing:border-box;" />';
-            });
-      vh += '</div></div></div>' +
-        '<div style="padding:14px 24px;border-top:1px solid rgba(255,255,255,0.08);background:#0f172a;display:flex;align-items:center;justify-content:space-between;">' +
-          '<div style="font-size:12px;color:#94a3b8;">Jami ' + (test.elements || []).length + ' ta savol</div>' +
-          '<div style="display:flex;gap:10px;">' +
-            '<button id="eeCancelTakeVisual" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:9px 18px;border-radius:10px;font-weight:700;cursor:pointer;">Chiqish</button>' +
-            '<button id="eeSubmitTakeVisual" style="background:linear-gradient(135deg,#10b981,#059669);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;font-size:13.5px;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);">✅ Topshirish</button>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
+
+        // Continuous Multi-Page Stream Workspace (Unconstrained, full height, all pages in succession)
+        '<div id="eeTakeWorkspace" style="flex:1;overflow-y:scroll;overflow-x:auto;padding:24px 20px 140px 20px;display:flex;flex-direction:column;align-items:center;background:#070b14;position:relative;">' +
+          '<div id="eeTakePagesWrap" style="display:flex;flex-direction:column;align-items:center;gap:32px;width:100%;">';
+
+          pagesList.forEach(function(pg, pIdx) {
+            var pageNum = pg.pageNum || (pIdx + 1);
+            vh += '<div class="ee-take-page-box" data-page="' + pageNum + '" style="position:relative;display:inline-block;width:' + currentWidthPx + 'px;max-width:98vw;box-shadow:0 14px 60px rgba(0,0,0,0.9);border-radius:10px;background:#ffffff;overflow:hidden;border:1px solid rgba(255,255,255,0.12);transition:width 0.15s ease;">' +
+              '<div style="background:#0f172a;color:#fff;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;font-weight:800;border-bottom:1px solid rgba(255,255,255,0.08);">' +
+                '<span>📄 ' + pageNum + '-sahifa' + (pagesList.length > 1 ? (' (Jami ' + pagesList.length + ' ta)') : '') + '</span>' +
+                '<span style="color:#38bdf8;">' + (pg.elements || []).length + ' ta topshiriq</span>' +
+              '</div>' +
+              '<div style="position:relative;width:100%;background:#ffffff;">' +
+                '<img src="' + pg.imageUrl + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:none;" />' +
+                '<div class="ee-take-page-overlay" data-page="' + pageNum + '" style="position:absolute;inset:0;z-index:20;">';
+
+                (pg.elements || []).forEach(function(el, idx) {
+                  var itemType = el.type || 'fill';
+
+                  if (itemType === 'fill') {
+                    // Transparent elegant input (Oxford Navigate style)
+                    vh += '<input type="text" class="ee-take-input" data-id="' + el.id + '" data-correct="' + esc(el.correct || '') + '" ' +
+                      'placeholder="' + esc(el.placeholder || el.label || '') + '" autocomplete="off" spellcheck="false" ' +
+                      'style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;' +
+                      'box-sizing:border-box;background:rgba(255,255,255,0.55);border:1.5px solid rgba(2,132,199,0.5);border-bottom:2.5px solid #0284c7;border-radius:4px;color:#000000;font-weight:800;font-size:14px;padding:0 6px;outline:none;transition:all 0.15s ease;" ' +
+                      'onfocus="this.style.background=\'#ffffff\';this.style.borderColor=\'#0284c7\';this.style.boxShadow=\'0 0 0 3px rgba(2,132,199,0.25)\';" ' +
+                      'onblur="this.style.background=\'rgba(255,255,255,0.55)\';this.style.borderColor=\'rgba(2,132,199,0.5)\';this.style.boxShadow=\'none\';" />';
+                  } else if (itemType === 'cross') {
+                    // Strikethrough chip
+                    vh += '<div class="ee-take-chip ee-chip-cross" data-id="' + el.id + '" data-correct="' + esc(el.correct || '') + '" ' +
+                      'style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;cursor:pointer;border-radius:4px;transition:all 0.15s ease;" ' +
+                      'title="O‘chirish uchun bosing"></div>';
+                  } else if (itemType === 'choose') {
+                    // Select chip
+                    vh += '<div class="ee-take-chip ee-chip-choose" data-id="' + el.id + '" data-correct="' + esc(el.correct || '') + '" ' +
+                      'style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;cursor:pointer;border-radius:4px;transition:all 0.15s ease;" ' +
+                      'title="Tanlash uchun bosing"></div>';
+                  } else {
+                    // Default interactive box
+                    vh += '<input type="text" class="ee-take-input" data-id="' + el.id + '" data-correct="' + esc(el.correct || '') + '" ' +
+                      'placeholder="..." autocomplete="off" spellcheck="false" ' +
+                      'style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;box-sizing:border-box;background:rgba(255,255,255,0.55);border:1.5px solid #0284c7;border-radius:4px;color:#000;font-weight:800;font-size:14px;padding:0 6px;outline:none;" />';
+                  }
+                });
+
+            vh += '</div></div></div>';
+          });
+
+      vh += '</div></div>';
+
       vm.innerHTML = vh;
+      modalRoot.appendChild(vm);
+
+      var takeWrap = vm.querySelector('#eeTakePagesWrap');
+
+      // Zoom controls
+      function applyTakeWidth(w) {
+        currentWidthPx = Math.max(650, Math.min(2200, w));
+        takeWrap.querySelectorAll('.ee-take-page-box').forEach(function(b) {
+          b.style.width = currentWidthPx + 'px';
+        });
+      }
+
+      vm.querySelector('#eeTakeZoomIn').onclick = function() { applyTakeWidth(currentWidthPx + 150); };
+      vm.querySelector('#eeTakeZoomOut').onclick = function() { applyTakeWidth(currentWidthPx - 150); };
+      vm.querySelector('#eeTakeZoom100').onclick = function() { applyTakeWidth(1000); };
+      vm.querySelector('#eeTakeFitWidth').onclick = function() {
+        var wsW = vm.querySelector('#eeTakeWorkspace').clientWidth;
+        applyTakeWidth(Math.floor(wsW * 0.94));
+      };
+
+      // Cross & Choose chip interactivity
+      vm.querySelectorAll('.ee-chip-cross').forEach(function(chip) {
+        chip.onclick = function() {
+          var isCrossed = chip.getAttribute('data-selected') === 'true';
+          if (isCrossed) {
+            chip.setAttribute('data-selected', 'false');
+            chip.style.background = 'transparent';
+            chip.style.border = 'none';
+          } else {
+            chip.setAttribute('data-selected', 'true');
+            chip.style.background = 'rgba(239,68,68,0.22)';
+            chip.style.border = '2px dashed #ef4444';
+          }
+        };
+      });
+
+      vm.querySelectorAll('.ee-chip-choose').forEach(function(chip) {
+        chip.onclick = function() {
+          var isChosen = chip.getAttribute('data-selected') === 'true';
+          if (isChosen) {
+            chip.setAttribute('data-selected', 'false');
+            chip.style.background = 'transparent';
+            chip.style.border = 'none';
+            chip.style.boxShadow = 'none';
+          } else {
+            chip.setAttribute('data-selected', 'true');
+            chip.style.background = 'rgba(2,132,199,0.28)';
+            chip.style.border = '2px solid #0284c7';
+            chip.style.boxShadow = '0 0 10px rgba(2,132,199,0.4)';
+          }
+        };
+      });
 
       vm.querySelector('#eeCloseTakeVisualTest').onclick = function() {
-        if (confirm("Chiqmoqchimisiz? Natijangiz saqlanmaydi.")) vm.remove();
-      };
-      vm.querySelector('#eeCancelTakeVisual').onclick = function() {
-        if (confirm("Chiqmoqchimisiz? Natijangiz saqlanmaydi.")) vm.remove();
+        if (confirm("Testni to‘xtatmoqchimisiz? Natijangiz saqlanmaydi.")) vm.remove();
       };
 
+      // Submit test handler with instant feedback & band score
       vm.querySelector('#eeSubmitTakeVisual').onclick = function() {
         var correctCount = 0;
-        var totalElements = (test.elements || []).length;
-        var inputs = vm.querySelectorAll('.ee-take-input');
+        var totalCount = totalQuestions;
 
-        inputs.forEach(function(inp) {
-          var idx = parseInt(inp.getAttribute('data-idx'), 10);
-          var el = test.elements[idx];
-          var val = inp.value.trim().toLowerCase();
-          var exp = (el.correct || '').trim().toLowerCase();
+        // Check fill inputs
+        vm.querySelectorAll('.ee-take-input').forEach(function(inp) {
+          var userVal = inp.value.trim().toLowerCase();
+          var rawCorrect = (inp.getAttribute('data-correct') || '').trim();
+          var variants = rawCorrect.split(/\s+or\s+|\/|,|;/).map(function(s) { return s.trim().toLowerCase(); });
 
-          if (val === exp) {
+          var isCorrect = false;
+          if (userVal && variants.indexOf(userVal) !== -1) {
+            isCorrect = true;
+          }
+
+          if (isCorrect) {
             correctCount++;
-            inp.style.borderColor = '#10b981';
-            inp.style.background = 'rgba(16,185,129,0.3)';
+            inp.style.border = '2px solid #10b981';
+            inp.style.background = 'rgba(16,185,129,0.22)';
+            inp.style.color = '#047857';
+            inp.style.fontWeight = '900';
           } else {
-            inp.style.borderColor = '#ef4444';
-            inp.style.background = 'rgba(239,68,68,0.3)';
-            inp.title = "To'g'ri javob: " + el.correct;
+            inp.style.border = '2px solid #ef4444';
+            inp.style.background = 'rgba(239,68,68,0.18)';
+            inp.style.color = '#b91c1c';
+
+            // Show hint badge with correct answer
+            var hint = document.createElement('div');
+            hint.style.cssText = 'position:absolute;top:100%;left:0;background:#0f172a;color:#38bdf8;font-size:11px;font-weight:900;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.5);margin-top:2px;border:1px solid #38bdf8;';
+            hint.textContent = '✓ ' + rawCorrect;
+            inp.parentElement.appendChild(hint);
           }
         });
 
-        var pct = totalElements > 0 ? Math.round((correctCount / totalElements) * 100) : 100;
-        var prevBest = (pastSub && (pastSub.bestScore || pastSub.score)) || 0;
-        var newBest = Math.max(prevBest, pct);
+        // Check chips
+        vm.querySelectorAll('.ee-chip-choose, .ee-chip-cross').forEach(function(chip) {
+          var isSelected = chip.getAttribute('data-selected') === 'true';
+          var targetCorrect = (chip.getAttribute('data-correct') || '').toLowerCase().trim();
+          var shouldBeSelected = (targetCorrect === 'true' || targetCorrect === 'to‘g‘ri' || targetCorrect === 'ha' || targetCorrect === '1');
 
+          if (isSelected === shouldBeSelected) {
+            correctCount++;
+          }
+        });
+
+        var pct = totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 100;
+        var band = (pct >= 90) ? '9.0' : (pct >= 82) ? '8.0' : (pct >= 74) ? '7.5' : (pct >= 65) ? '7.0' : (pct >= 55) ? '6.0' : (pct >= 45) ? '5.5' : '5.0';
+
+        // Record submission in class
         (S.classes || []).forEach(function(c) {
           (c.extraHomework || []).forEach(function(hw) {
             if (hw.testId === testId) {
               if (!hw.submissions) hw.submissions = {};
+              var past = hw.submissions[user.id] || {};
+              var curCount = (past.attemptsCount || 0) + 1;
               hw.submissions[user.id] = {
                 score: pct,
-                bestScore: newBest,
-                attemptsCount: attemptsDone + 1,
+                bestScore: Math.max(pct, past.bestScore || 0),
                 correct: correctCount,
-                total: totalElements,
+                total: totalCount,
+                band: band,
+                attemptsCount: curCount,
                 completedAt: Date.now()
               };
             }
           });
         });
         saveStore();
-        setTimeout(function() {
-          alert("✅ Test natijangiz: " + pct + "%\nTo'g'ri javoblar: " + correctCount + " / " + totalElements + "\nUrinishlar: " + (attemptsDone + 1) + " / " + maxAttempts);
-          vm.remove();
-        }, 300);
-      };
 
-      modalRoot.appendChild(vm);
+        // Show celebration results modal
+        var resModal = document.createElement('div');
+        resModal.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.9);backdrop-filter:blur(10px);z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:16px;';
+        resModal.innerHTML = '<div style="background:#0f172a;border:2px solid #10b981;border-radius:20px;padding:30px;max-width:440px;width:100%;text-align:center;color:#fff;box-shadow:0 24px 70px rgba(0,0,0,0.85);">' +
+          '<div style="font-size:52px;margin-bottom:12px;">🎉</div>' +
+          '<h2 style="margin:0 0 6px;font-size:22px;font-weight:900;color:#10b981;">Test Yakunlandi!</h2>' +
+          '<p style="margin:0 0 20px;font-size:13px;color:#94a3b8;">' + esc(test.title) + '</p>' +
+          '<div style="background:#1e293b;border-radius:14px;padding:18px;margin-bottom:20px;display:flex;justify-content:space-around;border:1px solid rgba(255,255,255,0.08);">' +
+            '<div>' +
+              '<div style="font-size:28px;font-weight:900;color:#38bdf8;">' + pct + '%</div>' +
+              '<div style="font-size:11.5px;color:#94a3b8;font-weight:700;">Natija (' + correctCount + '/' + totalCount + ')</div>' +
+            '</div>' +
+            '<div style="width:1px;background:rgba(255,255,255,0.1);"></div>' +
+            '<div>' +
+              '<div style="font-size:28px;font-weight:900;color:#10b981;">Band ' + band + '</div>' +
+              '<div style="font-size:11.5px;color:#94a3b8;font-weight:700;">IELTS Bashorati</div>' +
+            '</div>' +
+          '</div>' +
+          '<div style="display:flex;gap:10px;">' +
+            '<button id="eeCloseResBtn" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#fff;padding:12px;border-radius:12px;font-weight:900;font-size:14px;cursor:pointer;">Natijalarni Ko‘rish</button>' +
+          '</div>' +
+        '</div>';
+
+        modalRoot.appendChild(resModal);
+        resModal.querySelector('#eeCloseResBtn').onclick = function() {
+          resModal.remove();
+        };
+
+        showToast("Test yakunlandi! Natija: " + pct + "% (Band " + band + ")");
+      };
       return;
     }
 
-    var m = document.createElement('div');
-    m.id = 'eeTakeTestOverlay';
-    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.9);backdrop-filter:blur(12px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;';
-
+    // Standard Multiple-Choice Test Runner
     var curQIdx = 0;
     var userAnswers = {};
+    var totalQ = (test.questions || []).length;
+
+    var m = document.createElement('div');
+    m.id = 'eeTakeTestModal';
+    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.9);backdrop-filter:blur(14px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;';
 
     function renderQuestionModal() {
-      var totalQ = (test.questions || []).length;
       var q = test.questions[curQIdx];
       var isLast = (curQIdx === totalQ - 1);
 
-      var qh = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);border-radius:24px;max-width:620px;width:100%;padding:28px;color:#f8fafc;box-shadow:0 24px 60px rgba(0,0,0,0.7);">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">' +
-          '<span style="background:rgba(56,189,248,0.15);color:#38bdf8;padding:4px 10px;border-radius:8px;font-weight:900;font-size:12px;">' + esc(test.id) + '</span>' +
-          '<div style="font-size:13px;font-weight:800;color:#94a3b8;">Savol: <b style="color:#fff;">' + (curQIdx + 1) + ' / ' + totalQ + '</b></div>' +
-          '<button id="eeCloseTakeTest" style="background:none;border:none;color:#64748b;font-size:20px;cursor:pointer;">✕</button>' +
+      var qh = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);border-radius:22px;max-width:680px;width:100%;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,0.8);color:#f8fafc;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:17px;font-weight:900;color:#f8fafc;">' + esc(test.title) + '</h3>' +
+            '<span style="font-size:12px;color:#94a3b8;">Savol ' + (curQIdx + 1) + ' / ' + totalQ + '</span>' +
+          '</div>' +
+          '<button id="eeCloseTakeTest" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
         '</div>' +
 
-        '<div style="background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:18px;margin-bottom:20px;">' +
-          '<div style="font-size:16px;font-weight:800;color:#f8fafc;line-height:1.4;">' + esc(q.q) + '</div>' +
+        '<div style="margin-bottom:22px;font-size:16px;font-weight:800;color:#fff;line-height:1.5;">' +
+          esc(q.q) +
         '</div>' +
 
         '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">';
@@ -83225,14 +83437,12 @@ window.NAVIGATE_CURRICULUM = {
           curQIdx++;
           renderQuestionModal();
         } else {
-          // Finish test
           var correctCount = 0;
           test.questions.forEach(function(item, idx) {
             if (userAnswers[idx] === item.correct) correctCount++;
           });
           var pct = Math.round((correctCount / totalQ) * 100);
 
-          // Record submission in user's class
           (S.classes || []).forEach(function(c) {
             (c.extraHomework || []).forEach(function(hw) {
               if (hw.testId === testId) {
@@ -83256,11 +83466,6 @@ window.NAVIGATE_CURRICULUM = {
     modalRoot.appendChild(m);
     renderQuestionModal();
   };
-
-  // ============================================================================
-  // 2. AUTOMATED BILLING, REVENUE ANALYTICS & SMART TIYIN/SO'M OFFSET
-  // ============================================================================
-  var activeBillingMonth = getActiveMonthKey();
 
   EE.renderBillingView = function(container) {
     if (!container) return;
@@ -84332,6 +84537,9 @@ window.NAVIGATE_CURRICULUM = {
       URL.revokeObjectURL(url);
     };
   };
+
+  EE.getStore = getStore;
+  EE.saveStore = saveStore;
 
 })(window);
 
