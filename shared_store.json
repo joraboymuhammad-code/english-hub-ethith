@@ -96,7 +96,8 @@
           "id": "tg_6772427596",
           "name": "Striker_uzb",
           "email": "Mu_striker@telegram.org",
-          "joinedAt": "2026-10-26"
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 24
         }
       ],
       "messages": [
@@ -1227,7 +1228,8 @@
           "id": "tg_6772427596",
           "name": "Striker_uzb",
           "email": "Mu_striker@telegram.org",
-          "joinedAt": "2026-10-26"
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 24
         }
       ],
       "messages": [],
@@ -1356,7 +1358,8 @@
           "id": "tg_6772427596",
           "name": "Striker_uzb",
           "email": "Mu_striker@telegram.org",
-          "joinedAt": "2026-10-26"
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 24
         }
       ],
       "messages": [
@@ -42463,5 +42466,5 @@
     "2058": 2026,
     "2059": 2026
   },
-  "updatedAt": 1792999901731
+  "updatedAt": 1792999907791
 }
