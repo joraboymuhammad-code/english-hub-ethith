@@ -2532,6 +2532,9 @@ body[data-theme="light"] .eth-test-timer-pill {
    ==================================================== */
 .eth-modal {
   position: relative !important;
+}
+.eth-modal.eth-modal-large,
+.eth-modal.eth-modal-wide {
   max-width: 95vw !important;
 }
 
@@ -9095,4 +9098,216 @@ html, body {
 
 .eth-motion-card:hover .eth-arrow-move {
   transform: translateX(5px) !important;
+}
+
+/* ====================================================
+   ULTRA-PREMIUM CYBER-GLASS AUTH MODAL (DARK MODE)
+   ==================================================== */
+#ethAuthOverlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: radial-gradient(circle at 50% 15%, rgba(30, 58, 138, 0.45), transparent 60%),
+              radial-gradient(circle at 80% 85%, rgba(76, 29, 149, 0.35), transparent 55%),
+              rgba(3, 7, 18, 0.88) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 99999999 !important;
+  padding: 20px !important;
+}
+
+#ethAuthOverlay .eth-modal,
+.eth-auth-modal {
+  max-width: 440px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  background: rgba(15, 23, 42, 0.85) !important;
+  backdrop-filter: blur(32px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.9),
+              0 0 0 1px rgba(255, 255, 255, 0.08),
+              inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+  padding: 34px 30px !important;
+  box-sizing: border-box !important;
+  animation: ethAuthModalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes ethAuthModalPop {
+  0% { opacity: 0; transform: scale(0.94) translateY(12px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.eth-auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.eth-auth-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 18px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px -6px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  margin-bottom: 14px;
+}
+
+.eth-auth-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #38bdf8, #2563eb, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+}
+
+.eth-auth-logo-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.eth-auth-logo-text span {
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: 4px;
+}
+
+.eth-auth-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f8fafc;
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+
+.eth-auth-subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+  font-weight: 500;
+}
+
+.eth-auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  background: rgba(2, 6, 23, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 5px;
+  border-radius: 16px;
+  margin-bottom: 22px;
+}
+
+.eth-auth-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+
+.eth-auth-tab:hover {
+  color: #f1f5f9;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.eth-auth-tab.active {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.35), rgba(79, 70, 229, 0.35)) !important;
+  border: 1px solid rgba(96, 165, 250, 0.45) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25) !important;
+}
+
+.eth-auth-field {
+  margin-bottom: 16px;
+}
+
+.eth-auth-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 7px;
+}
+
+.eth-auth-input {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: rgba(2, 6, 23, 0.6) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 14px !important;
+  padding: 13px 16px !important;
+  color: #f8fafc !important;
+  font-size: 14.5px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  outline: none !important;
+}
+
+.eth-auth-input::placeholder {
+  color: #64748b !important;
+}
+
+.eth-auth-input:focus {
+  background: rgba(2, 6, 23, 0.85) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2), 0 0 25px rgba(56, 189, 248, 0.12) !important;
+}
+
+.eth-auth-btn {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: linear-gradient(135deg, #2563eb, #4f46e5, #7c3aed) !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  padding: 14px 20px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 10px 24px -4px rgba(37, 99, 235, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  cursor: pointer !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  margin-top: 6px !important;
+}
+
+.eth-auth-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 30px -4px rgba(79, 70, 229, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+.eth-auth-btn:active {
+  transform: translateY(0) scale(0.99) !important;
+}
+
+.eth-auth-btn.teacher {
+  background: linear-gradient(135deg, #0284c7, #2563eb) !important;
+  box-shadow: 0 10px 24px -4px rgba(2, 132, 199, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.eth-auth-btn.admin {
+  background: linear-gradient(135deg, #dc2626, #9333ea) !important;
+  box-shadow: 0 10px 24px -4px rgba(220, 38, 38, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
 }

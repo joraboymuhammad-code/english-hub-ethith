@@ -547,80 +547,71 @@
     var defaultName = tgUser ? (tgUser.first_name + (tgUser.last_name ? (' ' + tgUser.last_name) : '')) : '';
 
     var html = '' +
-      '<div class="eth-modal" style="max-width:460px">' +
-      '  <div class="eth-modal-header">' +
-      '    <div style="display:flex;justify-content:center;margin-bottom:8px">' +
-      '      <svg width="150" height="48" viewBox="0 0 160 56"><defs><linearGradient id="mlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4e93e4"/><stop offset="1" stop-color="#154b89"/></linearGradient></defs><rect x="0" y="4" width="48" height="48" rx="13" fill="url(#mlg)"/><path d="M13 29l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="58" y="25" font-family="sans-serif" font-weight="800" font-size="24" fill="#0e325c">ETHITH</text><text x="58" y="50" font-family="sans-serif" font-weight="800" font-size="21" fill="#4e93e4">TESTS</text></svg>' +
-      '    </div>' +
-      '    <h2>Platformaga Kirish</h2>' +
-      '    <p style="color:var(--muted);font-size:13px">O‘quvchi yoki O‘qituvchi sifatida tizimga kiring</p>' +
-      '  </div>' +
-      '  <div style="background:linear-gradient(135deg,rgba(220,38,38,0.15),rgba(147,51,234,0.15));border:1px solid rgba(220,38,38,0.3);border-radius:12px;padding:9px 12px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;">' +
-      '    <div style="display:flex;align-items:center;gap:8px;">' +
-      '      <span style="font-size:18px;">🛡️</span>' +
-      '      <div>' +
-      '        <div style="font-size:12.5px;font-weight:800;color:#f8fafc;">Bosh Admin Kirish</div>' +
-      '        <div style="font-size:11px;color:#94a3b8;">Maxsus login & parol orqali</div>' +
+      '<div class="eth-modal eth-auth-modal">' +
+      '  <div class="eth-auth-brand">' +
+      '    <div class="eth-auth-logo-badge">' +
+      '      <div class="eth-auth-logo-icon">' +
+      '        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">' +
+      '          <polyline points="20 6 9 17 4 12"></polyline>' +
+      '        </svg>' +
       '      </div>' +
+      '      <div class="eth-auth-logo-text">ETHITH<span>TESTS</span></div>' +
       '    </div>' +
-      '    <button type="button" id="tabAdminToggleBtn" style="background:linear-gradient(135deg,#dc2626,#9333ea);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;box-shadow:0 2px 10px rgba(220,38,38,0.35);">Admin Kirish 🔒</button>' +
+      '    <h2 class="eth-auth-title">Platformaga Kirish</h2>' +
+      '    <p class="eth-auth-subtitle">Tizimga kirish uchun rolingizni tanlang</p>' +
       '  </div>' +
-      '  <div id="authTabsRow" class="eth-tabs" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px">' +
-      '    <button type="button" class="eth-tab active" id="tabStudentBtn" style="padding:10px;font-weight:800;border-radius:10px">🎓 O\'quvchi</button>' +
-      '    <button type="button" class="eth-tab" id="tabTeacherBtn" style="padding:10px;font-weight:800;border-radius:10px">👨‍🏫 O\'qituvchi</button>' +
+      '  <div id="authTabsRow" class="eth-auth-tabs">' +
+      '    <button type="button" class="eth-auth-tab active" id="tabStudentBtn">O‘quvchi</button>' +
+      '    <button type="button" class="eth-auth-tab" id="tabTeacherBtn">O‘qituvchi</button>' +
+      '    <button type="button" class="eth-auth-tab" id="tabAdminToggleBtn">Admin</button>' +
       '  </div>' +
-      '  <div class="eth-modal-body">' +
+      '  <div class="eth-auth-body">' +
       '    <div id="studentFormBox">' +
       '      <form id="studentAuthForm">' +
-      '        <div class="eth-form-group">' +
-      '          <label style="font-weight:700;font-size:13px">Gmail Manzili</label>' +
-      '          <input type="email" id="stEmail" placeholder="nomingiz@gmail.com" required autocomplete="email">' +
+      '        <div class="eth-auth-field">' +
+      '          <label class="eth-auth-label">Gmail Manzili</label>' +
+      '          <input type="email" id="stEmail" class="eth-auth-input" placeholder="nomingiz@gmail.com" required autocomplete="email">' +
       '        </div>' +
-      '        <div class="eth-form-group">' +
-      '          <label style="font-weight:700;font-size:13px">Ism va Familiya</label>' +
-      '          <input type="text" id="stName" placeholder="Ism va familiyangizni kiriting" value="' + esc(defaultName) + '" required autocomplete="name">' +
+      '        <div class="eth-auth-field">' +
+      '          <label class="eth-auth-label">Ism va Familiya</label>' +
+      '          <input type="text" id="stName" class="eth-auth-input" placeholder="Ism va familiyangizni kiriting" value="' + esc(defaultName) + '" required autocomplete="name">' +
       '        </div>' +
-      '        <div id="stAccountNotice" style="margin:6px 0 10px;padding:8px 12px;border-radius:10px;font-size:12px;display:none"></div>' +
-      '        <div style="margin:12px 0 6px;display:flex;flex-direction:column;gap:8px">' +
-      '          <button type="submit" id="btnStudentSubmit" class="eth-btn-primary" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:800;font-size:15px;padding:13px;border-radius:12px;border:none;cursor:pointer;width:100%;box-shadow:0 8px 20px -6px rgba(37,99,235,0.6)">🚀 O\'quvchi Sifatida Kirish</button>' +
-      '        </div>' +
+      '        <div id="stAccountNotice" style="margin:6px 0 12px;padding:9px 13px;border-radius:12px;font-size:12.5px;display:none"></div>' +
+      '        <button type="submit" id="btnStudentSubmit" class="eth-auth-btn">Akkauntga Kirish</button>' +
       '      </form>' +
       '    </div>' +
       '    <div id="teacherFormBox" style="display:none">' +
       '      <form id="teacherAuthForm">' +
-      '        <div class="eth-form-group">' +
-      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Ismi va Familiyasi</label>' +
-      '          <input type="text" id="tcName" placeholder="Masalan: Ustoz yoki Zizi Ustoz" required autocomplete="name">' +
+      '        <div class="eth-auth-field">' +
+      '          <label class="eth-auth-label">O‘qituvchi Ismi va Familiyasi</label>' +
+      '          <input type="text" id="tcName" class="eth-auth-input" placeholder="Ismingizni kiriting" required autocomplete="name">' +
       '        </div>' +
-      '        <div class="eth-form-group" style="margin-top:10px">' +
-      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Gmaili</label>' +
-      '          <input type="email" id="tcEmail" placeholder="ustoz@gmail.com" required autocomplete="email">' +
+      '        <div class="eth-auth-field">' +
+      '          <label class="eth-auth-label">O‘qituvchi Gmaili</label>' +
+      '          <input type="email" id="tcEmail" class="eth-auth-input" placeholder="ustoz@gmail.com" required autocomplete="email">' +
       '        </div>' +
-      '        <div class="eth-form-group" style="margin-top:10px">' +
-      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">O\'qituvchi Maxfiy Paroli</label>' +
-      '          <input type="password" id="tcPassword" placeholder="O\'qituvchi parolini kiriting..." required autocomplete="current-password">' +
-      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:4px;display:block">🔒 Faqat tasdiqlangan o‘qituvchi paroli bilan kirish mumkin.</small>' +
+      '        <div class="eth-auth-field">' +
+      '          <label class="eth-auth-label">O‘qituvchi Maxfiy Paroli</label>' +
+      '          <input type="password" id="tcPassword" class="eth-auth-input" placeholder="Maxfiy parolni kiriting" required autocomplete="current-password">' +
+      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:5px;display:block">🔒 Faqat tasdiqlangan o‘qituvchi paroli bilan kirish mumkin.</small>' +
       '        </div>' +
-      '        <button type="submit" class="eth-btn-primary" style="background:linear-gradient(135deg,#0284c7,#2563eb);margin-top:16px;padding:12px;font-size:15px;font-weight:800;border-radius:12px;width:100%;box-shadow:0 8px 20px -6px rgba(2,132,199,0.5)">👨‍🏫 O\'qituvchi Kabinetiga Kirish 🚀</button>' +
+      '        <button type="submit" class="eth-auth-btn teacher">O‘qituvchi Kabinetiga Kirish</button>' +
       '      </form>' +
       '    </div>' +
       '    <div id="adminFormBox" style="display:none">' +
       '      <form id="adminAuthForm">' +
-      '        <div style="background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.3);border-radius:10px;padding:8px 12px;font-size:12px;color:#fca5a5;margin-bottom:12px;">' +
+      '        <div style="background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.25);border-radius:12px;padding:10px 14px;font-size:12px;color:#fca5a5;margin-bottom:14px;line-height:1.4">' +
       '          🛡️ <b>Bosh Admin Tizimi:</b> Faqat markaz rahbari maxfiy logini va paroli orqali kiriladi.' +
       '        </div>' +
-      '        <div class="eth-form-group">' +
-      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">Admin Logini</label>' +
-      '          <input type="text" id="admLogin" placeholder="ADMIN_..." style="font-family:monospace;font-weight:800;letter-spacing:1px" required autocomplete="username">' +
+      '        <div class="eth-auth-field">' +
+      '          <label class="eth-auth-label">Admin Logini</label>' +
+      '          <input type="text" id="admLogin" class="eth-auth-input" placeholder="ADMIN_..." style="font-family:monospace;font-weight:700;letter-spacing:1px" required autocomplete="username">' +
       '        </div>' +
-      '        <div class="eth-form-group" style="margin-top:10px">' +
-      '          <label style="font-weight:700;font-size:13px;color:#f1f5f9">Admin Paroli</label>' +
-      '          <input type="password" id="admPassword" placeholder="Admin parolini kiriting..." required autocomplete="current-password">' +
+      '        <div class="eth-auth-field">' +
+      '          <label class="eth-auth-label">Admin Maxfiy Paroli</label>' +
+      '          <input type="password" id="admPassword" class="eth-auth-input" placeholder="Admin parolini kiriting" required autocomplete="current-password">' +
       '        </div>' +
-      '        <div style="display:flex;gap:8px;margin-top:16px;">' +
-      '          <button type="button" id="btnCancelAdminLogin" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;">Ortga</button>' +
-      '          <button type="submit" class="eth-btn-primary" style="flex:1;background:linear-gradient(135deg,#dc2626,#9333ea);padding:12px;font-size:15px;font-weight:800;border-radius:12px;box-shadow:0 8px 20px -6px rgba(220,38,38,0.5)">🛡️ Bosh Admin Kirish 🚀</button>' +
-      '        </div>' +
+      '        <button type="submit" class="eth-auth-btn admin">Bosh Admin Kirish</button>' +
       '      </form>' +
       '    </div>' +
       '  </div>' +
@@ -632,8 +623,6 @@
     var tabStudentBtn = overlay.querySelector('#tabStudentBtn');
     var tabTeacherBtn = overlay.querySelector('#tabTeacherBtn');
     var tabAdminToggleBtn = overlay.querySelector('#tabAdminToggleBtn');
-    var btnCancelAdminLogin = overlay.querySelector('#btnCancelAdminLogin');
-    var authTabsRow = overlay.querySelector('#authTabsRow');
     var studentFormBox = overlay.querySelector('#studentFormBox');
     var teacherFormBox = overlay.querySelector('#teacherFormBox');
     var adminFormBox = overlay.querySelector('#adminFormBox');
@@ -643,28 +632,29 @@
         studentFormBox.style.display = 'none';
         teacherFormBox.style.display = 'none';
         adminFormBox.style.display = 'block';
-        if (authTabsRow) authTabsRow.style.display = 'none';
+        if (tabAdminToggleBtn) tabAdminToggleBtn.classList.add('active');
+        if (tabStudentBtn) tabStudentBtn.classList.remove('active');
+        if (tabTeacherBtn) tabTeacherBtn.classList.remove('active');
       } else if (mode === 'teacher') {
         studentFormBox.style.display = 'none';
         teacherFormBox.style.display = 'block';
         adminFormBox.style.display = 'none';
-        if (authTabsRow) authTabsRow.style.display = 'grid';
         if (tabTeacherBtn) tabTeacherBtn.classList.add('active');
         if (tabStudentBtn) tabStudentBtn.classList.remove('active');
+        if (tabAdminToggleBtn) tabAdminToggleBtn.classList.remove('active');
       } else {
         studentFormBox.style.display = 'block';
         teacherFormBox.style.display = 'none';
         adminFormBox.style.display = 'none';
-        if (authTabsRow) authTabsRow.style.display = 'grid';
         if (tabStudentBtn) tabStudentBtn.classList.add('active');
         if (tabTeacherBtn) tabTeacherBtn.classList.remove('active');
+        if (tabAdminToggleBtn) tabAdminToggleBtn.classList.remove('active');
       }
     }
 
     if (tabStudentBtn) tabStudentBtn.onclick = function() { showMode('student'); };
     if (tabTeacherBtn) tabTeacherBtn.onclick = function() { showMode('teacher'); };
     if (tabAdminToggleBtn) tabAdminToggleBtn.onclick = function() { showMode('admin'); };
-    if (btnCancelAdminLogin) btnCancelAdminLogin.onclick = function() { showMode('student'); };
 
     // 6-Character Verification Code Generator (Letters, Numbers, Symbols)
     function generate6Code() {
@@ -862,12 +852,12 @@
           stNameInput.value = existing.name;
         }
         if (stSubmitBtn) {
-          stSubmitBtn.innerHTML = '🚀 Akkauntga Kirish (' + esc(existing.name) + ')';
+          stSubmitBtn.innerHTML = 'Akkauntga Kirish (' + esc(existing.name) + ')';
         }
       } else {
         if (stNotice) stNotice.style.display = 'none';
         if (stSubmitBtn) {
-          stSubmitBtn.innerHTML = '🚀 Akkauntga Kirish';
+          stSubmitBtn.innerHTML = 'Akkauntga Kirish';
         }
       }
     }
