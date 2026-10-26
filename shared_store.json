@@ -47838,10 +47838,5719 @@
         ],
         "page": 2073
       }
+    ],
+    "2074": [
+      {
+        "id": "p2074_ex1_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2",
+        "top": 33.5,
+        "left": 29.3,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "b",
+          "improvement",
+          "home improvement"
+        ],
+        "acceptedAnswers": [
+          "b",
+          "improvement",
+          "home improvement"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex1_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3",
+        "top": 35.6,
+        "left": 29.3,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "h",
+          "affairs",
+          "current affairs"
+        ],
+        "acceptedAnswers": [
+          "h",
+          "affairs",
+          "current affairs"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex1_4",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4",
+        "top": 37.7,
+        "left": 29.3,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "a",
+          "highlights",
+          "match highlights"
+        ],
+        "acceptedAnswers": [
+          "a",
+          "highlights",
+          "match highlights"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex1_5",
+        "type": "fill",
+        "exercise": "1",
+        "label": "5",
+        "top": 39.7,
+        "left": 29.3,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "g",
+          "chef",
+          "celebrity chef"
+        ],
+        "acceptedAnswers": [
+          "g",
+          "chef",
+          "celebrity chef"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex1_6",
+        "type": "fill",
+        "exercise": "1",
+        "label": "6",
+        "top": 41.8,
+        "left": 29.3,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "c",
+          "tips",
+          "DIY tips"
+        ],
+        "acceptedAnswers": [
+          "c",
+          "tips",
+          "DIY tips"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex1_7",
+        "type": "fill",
+        "exercise": "1",
+        "label": "7",
+        "top": 43.9,
+        "left": 29.3,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "d",
+          "analysis",
+          "in-depth news analysis"
+        ],
+        "acceptedAnswers": [
+          "d",
+          "analysis",
+          "in-depth news analysis"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex1_8",
+        "type": "fill",
+        "exercise": "1",
+        "label": "8",
+        "top": 45.9,
+        "left": 29.3,
+        "width": 4.6,
+        "height": 1.5,
+        "correct": [
+          "f",
+          "plot",
+          "gripping plot"
+        ],
+        "acceptedAnswers": [
+          "f",
+          "plot",
+          "gripping plot"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 50.7,
+        "left": 24.7,
+        "width": 13,
+        "height": 1.5,
+        "correct": [
+          "gripping plot"
+        ],
+        "acceptedAnswers": [
+          "gripping plot"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 52.6,
+        "left": 40,
+        "width": 14,
+        "height": 1.5,
+        "correct": [
+          "commercial breaks",
+          "commercial break"
+        ],
+        "acceptedAnswers": [
+          "commercial breaks",
+          "commercial break"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 54.5,
+        "left": 23.8,
+        "width": 17.9,
+        "height": 1.5,
+        "correct": [
+          "home improvement"
+        ],
+        "acceptedAnswers": [
+          "home improvement"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 56.5,
+        "left": 45.9,
+        "width": 15,
+        "height": 1.5,
+        "correct": [
+          "match highlights"
+        ],
+        "acceptedAnswers": [
+          "match highlights"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 58.4,
+        "left": 35.5,
+        "width": 17.9,
+        "height": 1.5,
+        "correct": [
+          "in-depth news analysis"
+        ],
+        "acceptedAnswers": [
+          "in-depth news analysis"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex2_7",
+        "type": "fill",
+        "exercise": "2",
+        "label": "7",
+        "top": 61.2,
+        "left": 25.1,
+        "width": 14.6,
+        "height": 1.5,
+        "correct": [
+          "current affairs"
+        ],
+        "acceptedAnswers": [
+          "current affairs"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex2_8",
+        "type": "fill",
+        "exercise": "2",
+        "label": "8",
+        "top": 63.1,
+        "left": 27,
+        "width": 14.6,
+        "height": 1.5,
+        "correct": [
+          "celebrity chef"
+        ],
+        "acceptedAnswers": [
+          "celebrity chef"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex3_2",
+        "type": "fill",
+        "exercise": "3",
+        "label": "2",
+        "top": 73.2,
+        "left": 63.8,
+        "width": 11.7,
+        "height": 1.5,
+        "correct": [
+          "survey"
+        ],
+        "acceptedAnswers": [
+          "survey"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex3_3",
+        "type": "fill",
+        "exercise": "3",
+        "label": "3",
+        "top": 75.1,
+        "left": 63.8,
+        "width": 11.7,
+        "height": 1.5,
+        "correct": [
+          "back-to-back",
+          "back to back"
+        ],
+        "acceptedAnswers": [
+          "back-to-back",
+          "back to back"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex3_4",
+        "type": "fill",
+        "exercise": "3",
+        "label": "4",
+        "top": 77,
+        "left": 63.8,
+        "width": 11.7,
+        "height": 1.5,
+        "correct": [
+          "enable"
+        ],
+        "acceptedAnswers": [
+          "enable"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex3_5",
+        "type": "fill",
+        "exercise": "3",
+        "label": "5",
+        "top": 78.9,
+        "left": 63.8,
+        "width": 11.7,
+        "height": 1.5,
+        "correct": [
+          "transform"
+        ],
+        "acceptedAnswers": [
+          "transform"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex3_6",
+        "type": "fill",
+        "exercise": "3",
+        "label": "6",
+        "top": 80.8,
+        "left": 63.8,
+        "width": 11.7,
+        "height": 1.5,
+        "correct": [
+          "indicate"
+        ],
+        "acceptedAnswers": [
+          "indicate"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex3_7",
+        "type": "fill",
+        "exercise": "3",
+        "label": "7",
+        "top": 82.7,
+        "left": 63.8,
+        "width": 11.7,
+        "height": 1.5,
+        "correct": [
+          "cookery"
+        ],
+        "acceptedAnswers": [
+          "cookery"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex3_8",
+        "type": "fill",
+        "exercise": "3",
+        "label": "8",
+        "top": 85.5,
+        "left": 63.8,
+        "width": 11.7,
+        "height": 1.5,
+        "correct": [
+          "sitcom"
+        ],
+        "acceptedAnswers": [
+          "sitcom"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex3_9",
+        "type": "fill",
+        "exercise": "3",
+        "label": "9",
+        "top": 87.4,
+        "left": 63.8,
+        "width": 11.7,
+        "height": 1.5,
+        "correct": [
+          "dialogue"
+        ],
+        "acceptedAnswers": [
+          "dialogue"
+        ],
+        "page": 2074
+      },
+      {
+        "id": "p2074_ex3_10",
+        "type": "fill",
+        "exercise": "3",
+        "label": "10",
+        "top": 90.2,
+        "left": 63.8,
+        "width": 11.7,
+        "height": 1.5,
+        "correct": [
+          "series"
+        ],
+        "acceptedAnswers": [
+          "series"
+        ],
+        "page": 2074
+      }
+    ],
+    "2075": [
+      {
+        "id": "p2075_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 21.3,
+        "left": 37.8,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "gossiping",
+          "gossip"
+        ],
+        "acceptedAnswers": [
+          "gossiping",
+          "gossip"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 28.7,
+        "left": 15.3,
+        "width": 8.1,
+        "height": 1.5,
+        "correct": [
+          "drama"
+        ],
+        "acceptedAnswers": [
+          "drama"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 35.1,
+        "left": 28.3,
+        "width": 8.8,
+        "height": 1.5,
+        "correct": [
+          "complex"
+        ],
+        "acceptedAnswers": [
+          "complex"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 37,
+        "left": 17.9,
+        "width": 8.8,
+        "height": 1.5,
+        "correct": [
+          "indicates"
+        ],
+        "acceptedAnswers": [
+          "indicates"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 45.7,
+        "left": 24.1,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "enable",
+          "enables"
+        ],
+        "acceptedAnswers": [
+          "enable",
+          "enables"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex5_2",
+        "type": "fill",
+        "exercise": "5",
+        "label": "2",
+        "top": 72.8,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "'We saw her yesterday.'",
+          "We saw her yesterday.",
+          "We saw her yesterday"
+        ],
+        "acceptedAnswers": [
+          "'We saw her yesterday.'",
+          "We saw her yesterday.",
+          "We saw her yesterday"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex5_3",
+        "type": "fill",
+        "exercise": "5",
+        "label": "3",
+        "top": 18.8,
+        "left": 53.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "'I'm going to do it later.'",
+          "I'm going to do it later.",
+          "I am going to do it later."
+        ],
+        "acceptedAnswers": [
+          "'I'm going to do it later.'",
+          "I'm going to do it later.",
+          "I am going to do it later."
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex5_4",
+        "type": "fill",
+        "exercise": "5",
+        "label": "4",
+        "top": 25.5,
+        "left": 53.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "'Are you feeling OK?'",
+          "Are you feeling OK?",
+          "Are you feeling ok?"
+        ],
+        "acceptedAnswers": [
+          "'Are you feeling OK?'",
+          "Are you feeling OK?",
+          "Are you feeling ok?"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex5_5",
+        "type": "fill",
+        "exercise": "5",
+        "label": "5",
+        "top": 32.2,
+        "left": 53.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "'I usually get up early.'",
+          "I usually get up early."
+        ],
+        "acceptedAnswers": [
+          "'I usually get up early.'",
+          "I usually get up early."
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex5_6",
+        "type": "fill",
+        "exercise": "5",
+        "label": "6",
+        "top": 38.9,
+        "left": 53.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "'I've never been there before.'",
+          "I've never been there before.",
+          "I have never been there before."
+        ],
+        "acceptedAnswers": [
+          "'I've never been there before.'",
+          "I've never been there before.",
+          "I have never been there before."
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex6_2",
+        "type": "fill",
+        "exercise": "6",
+        "label": "2",
+        "top": 60.9,
+        "left": 62.2,
+        "width": 27.7,
+        "height": 1.5,
+        "correct": [
+          "he was going away on holiday the next day",
+          "he was going away on holiday the following day",
+          "he was going away on holiday tomorrow"
+        ],
+        "acceptedAnswers": [
+          "he was going away on holiday the next day",
+          "he was going away on holiday the following day",
+          "he was going away on holiday tomorrow"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex6_3",
+        "type": "fill",
+        "exercise": "6",
+        "label": "3",
+        "top": 67.6,
+        "left": 63,
+        "width": 26.8,
+        "height": 1.5,
+        "correct": [
+          "he would help me get everything ready",
+          "he would help us get everything ready",
+          "he would help me to get everything ready"
+        ],
+        "acceptedAnswers": [
+          "he would help me get everything ready",
+          "he would help us get everything ready",
+          "he would help me to get everything ready"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex6_4",
+        "type": "fill",
+        "exercise": "6",
+        "label": "4",
+        "top": 74.3,
+        "left": 63.8,
+        "width": 26,
+        "height": 1.5,
+        "correct": [
+          "if I enjoyed travelling",
+          "whether I enjoyed travelling",
+          "if we enjoyed travelling",
+          "whether we enjoyed travelling"
+        ],
+        "acceptedAnswers": [
+          "if I enjoyed travelling",
+          "whether I enjoyed travelling",
+          "if we enjoyed travelling",
+          "whether we enjoyed travelling"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex6_5",
+        "type": "fill",
+        "exercise": "6",
+        "label": "5",
+        "top": 81,
+        "left": 64.3,
+        "width": 25.5,
+        "height": 1.5,
+        "correct": [
+          "he had been to the theatre the night before",
+          "he had been to the theatre the previous night",
+          "he went to the theatre the night before"
+        ],
+        "acceptedAnswers": [
+          "he had been to the theatre the night before",
+          "he had been to the theatre the previous night",
+          "he went to the theatre the night before"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex6_6",
+        "type": "fill",
+        "exercise": "6",
+        "label": "6",
+        "top": 87.8,
+        "left": 62.8,
+        "width": 27,
+        "height": 1.5,
+        "correct": [
+          "what my favourite flavour of ice cream was",
+          "what my favorite flavor of ice cream was"
+        ],
+        "acceptedAnswers": [
+          "what my favourite flavour of ice cream was",
+          "what my favorite flavor of ice cream was"
+        ],
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_1a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "1",
+        "group": "p2075_ex7_1",
+        "top": 68.3,
+        "left": 55,
+        "width": 23.1,
+        "height": 1.3,
+        "text": "She asked when I'd be ready.",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_1b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "1",
+        "group": "p2075_ex7_1",
+        "top": 70.1,
+        "left": 55,
+        "width": 23.1,
+        "height": 1.3,
+        "text": "She asked when I'll be ready.",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_2a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "2",
+        "group": "p2075_ex7_2",
+        "top": 71.9,
+        "left": 55,
+        "width": 27.7,
+        "height": 1.3,
+        "text": "He said he's going to buy a new house.",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_2b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "2",
+        "group": "p2075_ex7_2",
+        "top": 73.7,
+        "left": 55,
+        "width": 27.7,
+        "height": 1.3,
+        "text": "He said he was going to buy a new house.",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_3a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "3",
+        "group": "p2075_ex7_3",
+        "top": 75.5,
+        "left": 55,
+        "width": 23.1,
+        "height": 1.3,
+        "text": "She said she's never been there.",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_3b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "3",
+        "group": "p2075_ex7_3",
+        "top": 77.3,
+        "left": 55,
+        "width": 23.1,
+        "height": 1.3,
+        "text": "She said she'd never been there.",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_4a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "4",
+        "group": "p2075_ex7_4",
+        "top": 79.1,
+        "left": 55,
+        "width": 25.7,
+        "height": 1.3,
+        "text": "I asked whether you live round here.",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_4b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "4",
+        "group": "p2075_ex7_4",
+        "top": 80.9,
+        "left": 55,
+        "width": 25.7,
+        "height": 1.3,
+        "text": "I asked whether you lived round here.",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_5a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "5",
+        "group": "p2075_ex7_5",
+        "top": 82.7,
+        "left": 55,
+        "width": 21.8,
+        "height": 1.3,
+        "text": "He said he'd give me a lift.",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_5b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "5",
+        "group": "p2075_ex7_5",
+        "top": 84.6,
+        "left": 55,
+        "width": 21.8,
+        "height": 1.3,
+        "text": "He said he'll give me a lift.",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_6a",
+        "type": "choice",
+        "exercise": "7",
+        "label": "6",
+        "group": "p2075_ex7_6",
+        "top": 86.4,
+        "left": 55,
+        "width": 24.4,
+        "height": 1.3,
+        "text": "He asked me if I'd liked the show.",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2075
+      },
+      {
+        "id": "p2075_ex7_6b",
+        "type": "choice",
+        "exercise": "7",
+        "label": "6",
+        "group": "p2075_ex7_6",
+        "top": 88.2,
+        "left": 55,
+        "width": 24.4,
+        "height": 1.3,
+        "text": "He asked me if I liked the show.",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2075
+      }
+    ],
+    "2076": [
+      {
+        "id": "p2076_ex1_2a",
+        "type": "choice",
+        "exercise": "1",
+        "label": "2",
+        "group": "p2076_ex1_2",
+        "top": 36.8,
+        "left": 15.3,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "crisis",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex1_2b",
+        "type": "choice",
+        "exercise": "1",
+        "label": "2",
+        "group": "p2076_ex1_2",
+        "top": 36.8,
+        "left": 20.5,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "robbery",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex1_3a",
+        "type": "choice",
+        "exercise": "1",
+        "label": "3",
+        "group": "p2076_ex1_3",
+        "top": 39.1,
+        "left": 17.3,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "death",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex1_3b",
+        "type": "choice",
+        "exercise": "1",
+        "label": "3",
+        "group": "p2076_ex1_3",
+        "top": 39.1,
+        "left": 22.5,
+        "width": 7.2,
+        "height": 1.3,
+        "text": "campaign",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex1_4a",
+        "type": "choice",
+        "exercise": "1",
+        "label": "4",
+        "group": "p2076_ex1_4",
+        "top": 41.4,
+        "left": 16.6,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "crisis",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex1_4b",
+        "type": "choice",
+        "exercise": "1",
+        "label": "4",
+        "group": "p2076_ex1_4",
+        "top": 41.4,
+        "left": 21.8,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "robbery",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex1_5a",
+        "type": "choice",
+        "exercise": "1",
+        "label": "5",
+        "group": "p2076_ex1_5",
+        "top": 43.8,
+        "left": 14.6,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "crisis",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex1_5b",
+        "type": "choice",
+        "exercise": "1",
+        "label": "5",
+        "group": "p2076_ex1_5",
+        "top": 43.8,
+        "left": 19.9,
+        "width": 7.5,
+        "height": 1.3,
+        "text": "agreement",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex1_6a",
+        "type": "choice",
+        "exercise": "1",
+        "label": "6",
+        "group": "p2076_ex1_6",
+        "top": 46.1,
+        "left": 19.9,
+        "width": 7.2,
+        "height": 1.3,
+        "text": "campaign",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex1_6b",
+        "type": "choice",
+        "exercise": "1",
+        "label": "6",
+        "group": "p2076_ex1_6",
+        "top": 46.1,
+        "left": 27.7,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "death",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 63,
+        "left": 28.3,
+        "width": 8.8,
+        "height": 1.5,
+        "correct": [
+          "wounded"
+        ],
+        "acceptedAnswers": [
+          "wounded"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 68.6,
+        "left": 32.9,
+        "width": 8.8,
+        "height": 1.5,
+        "correct": [
+          "conflict"
+        ],
+        "acceptedAnswers": [
+          "conflict"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex2_4a",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4a",
+        "top": 72.5,
+        "left": 20.5,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "uplifting"
+        ],
+        "acceptedAnswers": [
+          "uplifting"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex2_4b",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4b",
+        "top": 72.5,
+        "left": 31.9,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "inspiring"
+        ],
+        "acceptedAnswers": [
+          "inspiring"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 76.1,
+        "left": 22.8,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "shooting"
+        ],
+        "acceptedAnswers": [
+          "shooting"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 81.8,
+        "left": 21.2,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "cure"
+        ],
+        "acceptedAnswers": [
+          "cure"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex2_7",
+        "type": "fill",
+        "exercise": "2",
+        "label": "7",
+        "top": 85.7,
+        "left": 26.4,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "suffering"
+        ],
+        "acceptedAnswers": [
+          "suffering"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex2_8",
+        "type": "fill",
+        "exercise": "2",
+        "label": "8",
+        "top": 91.4,
+        "left": 13.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "survived"
+        ],
+        "acceptedAnswers": [
+          "survived"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex2_9",
+        "type": "fill",
+        "exercise": "2",
+        "label": "9",
+        "top": 95.2,
+        "left": 33.2,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "victory"
+        ],
+        "acceptedAnswers": [
+          "victory"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex2_10",
+        "type": "fill",
+        "exercise": "2",
+        "label": "10",
+        "top": 99.1,
+        "left": 12.7,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "encouraging"
+        ],
+        "acceptedAnswers": [
+          "encouraging"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex2_11",
+        "type": "fill",
+        "exercise": "2",
+        "label": "11",
+        "top": 103,
+        "left": 13.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "disturbing"
+        ],
+        "acceptedAnswers": [
+          "disturbing"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex3_2",
+        "type": "fill",
+        "exercise": "3",
+        "label": "2",
+        "top": 44.6,
+        "left": 70,
+        "width": 8.8,
+        "height": 1.5,
+        "correct": [
+          "wounded"
+        ],
+        "acceptedAnswers": [
+          "wounded"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex3_3",
+        "type": "fill",
+        "exercise": "3",
+        "label": "3",
+        "top": 48.5,
+        "left": 55.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "suspects"
+        ],
+        "acceptedAnswers": [
+          "suspects"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex3_4",
+        "type": "fill",
+        "exercise": "3",
+        "label": "4",
+        "top": 48.5,
+        "left": 78.1,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "survived"
+        ],
+        "acceptedAnswers": [
+          "survived"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex3_5",
+        "type": "fill",
+        "exercise": "3",
+        "label": "5",
+        "top": 50.3,
+        "left": 55.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "shooting"
+        ],
+        "acceptedAnswers": [
+          "shooting"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex3_6",
+        "type": "fill",
+        "exercise": "3",
+        "label": "6",
+        "top": 69.2,
+        "left": 60.9,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "suffering"
+        ],
+        "acceptedAnswers": [
+          "suffering"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex3_7",
+        "type": "fill",
+        "exercise": "3",
+        "label": "7",
+        "top": 71,
+        "left": 79.1,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "medical breakthrough"
+        ],
+        "acceptedAnswers": [
+          "medical breakthrough"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex3_8",
+        "type": "fill",
+        "exercise": "3",
+        "label": "8",
+        "top": 74.8,
+        "left": 73.6,
+        "width": 9.1,
+        "height": 1.5,
+        "correct": [
+          "cure"
+        ],
+        "acceptedAnswers": [
+          "cure"
+        ],
+        "page": 2076
+      },
+      {
+        "id": "p2076_ex3_9",
+        "type": "fill",
+        "exercise": "3",
+        "label": "9",
+        "top": 78.7,
+        "left": 64.5,
+        "width": 11.1,
+        "height": 1.5,
+        "correct": [
+          "encouraging"
+        ],
+        "acceptedAnswers": [
+          "encouraging"
+        ],
+        "page": 2076
+      }
+    ],
+    "2077": [
+      {
+        "id": "p2077_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 36.4,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "She reminded me not to forget my key.",
+          "She reminded me not to forget my key"
+        ],
+        "acceptedAnswers": [
+          "She reminded me not to forget my key.",
+          "She reminded me not to forget my key"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 43.1,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "He blamed her for losing the race.",
+          "He blamed her for losing the race"
+        ],
+        "acceptedAnswers": [
+          "He blamed her for losing the race.",
+          "He blamed her for losing the race"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 49.8,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "I admit to being rude.",
+          "I admit being rude.",
+          "I admit to having been rude.",
+          "I admit to being rude",
+          "I admit being rude",
+          "I admit to having been rude"
+        ],
+        "acceptedAnswers": [
+          "I admit to being rude.",
+          "I admit being rude.",
+          "I admit to having been rude.",
+          "I admit to being rude",
+          "I admit being rude",
+          "I admit to having been rude"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 56.5,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "She claims to be very wealthy.",
+          "She claims to be very wealthy"
+        ],
+        "acceptedAnswers": [
+          "She claims to be very wealthy.",
+          "She claims to be very wealthy"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 63.2,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "They deny taking the money.",
+          "They deny having taken the money.",
+          "They deny taking the money",
+          "They deny having taken the money"
+        ],
+        "acceptedAnswers": [
+          "They deny taking the money.",
+          "They deny having taken the money.",
+          "They deny taking the money",
+          "They deny having taken the money"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex4_7",
+        "type": "fill",
+        "exercise": "4",
+        "label": "7",
+        "top": 69.9,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "I warned you not to say that.",
+          "I warned you not to say that"
+        ],
+        "acceptedAnswers": [
+          "I warned you not to say that.",
+          "I warned you not to say that"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex4_8",
+        "type": "fill",
+        "exercise": "4",
+        "label": "8",
+        "top": 76.7,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "He suggested going early.",
+          "He suggested that they go early.",
+          "He suggested that they went early.",
+          "He suggested going early",
+          "He suggested that they go early",
+          "He suggested that they went early"
+        ],
+        "acceptedAnswers": [
+          "He suggested going early.",
+          "He suggested that they go early.",
+          "He suggested that they went early.",
+          "He suggested going early",
+          "He suggested that they go early",
+          "He suggested that they went early"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex5_2",
+        "type": "fill",
+        "exercise": "5",
+        "label": "2",
+        "top": 82.9,
+        "left": 38.4,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "to email",
+          "to email him"
+        ],
+        "acceptedAnswers": [
+          "to email",
+          "to email him"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex5_3",
+        "type": "fill",
+        "exercise": "5",
+        "label": "3",
+        "top": 87.2,
+        "left": 41.7,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "✓",
+          "tick",
+          "correct",
+          "true"
+        ],
+        "acceptedAnswers": [
+          "✓",
+          "tick",
+          "correct",
+          "true"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex5_4",
+        "type": "fill",
+        "exercise": "5",
+        "label": "4",
+        "top": 90.6,
+        "left": 38.4,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "to him",
+          "pointed out to him"
+        ],
+        "acceptedAnswers": [
+          "to him",
+          "pointed out to him"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex5_5",
+        "type": "fill",
+        "exercise": "5",
+        "label": "5",
+        "top": 94.7,
+        "left": 41.7,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "✓",
+          "tick",
+          "correct",
+          "true"
+        ],
+        "acceptedAnswers": [
+          "✓",
+          "tick",
+          "correct",
+          "true"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex5_6",
+        "type": "fill",
+        "exercise": "5",
+        "label": "6",
+        "top": 98.9,
+        "left": 38.4,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "to go",
+          "him to go"
+        ],
+        "acceptedAnswers": [
+          "to go",
+          "him to go"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex5_7",
+        "type": "fill",
+        "exercise": "5",
+        "label": "7",
+        "top": 103,
+        "left": 38.4,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "not to go",
+          "warned him not to go"
+        ],
+        "acceptedAnswers": [
+          "not to go",
+          "warned him not to go"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex5_8",
+        "type": "fill",
+        "exercise": "5",
+        "label": "8",
+        "top": 107.1,
+        "left": 38.4,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "assured him",
+          "him"
+        ],
+        "acceptedAnswers": [
+          "assured him",
+          "him"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex6_2",
+        "type": "fill",
+        "exercise": "6",
+        "label": "2",
+        "top": 39.5,
+        "left": 55.3,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "assuring",
+          "to assure"
+        ],
+        "acceptedAnswers": [
+          "assuring",
+          "to assure"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex6_3",
+        "type": "fill",
+        "exercise": "6",
+        "label": "3",
+        "top": 41.3,
+        "left": 57,
+        "width": 9.4,
+        "height": 1.5,
+        "correct": [
+          "reminding",
+          "to remind"
+        ],
+        "acceptedAnswers": [
+          "reminding",
+          "to remind"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex6_4",
+        "type": "fill",
+        "exercise": "6",
+        "label": "4",
+        "top": 47,
+        "left": 73.6,
+        "width": 9.1,
+        "height": 1.5,
+        "correct": [
+          "adding"
+        ],
+        "acceptedAnswers": [
+          "adding"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex6_5",
+        "type": "fill",
+        "exercise": "6",
+        "label": "5",
+        "top": 52.6,
+        "left": 61.5,
+        "width": 8.8,
+        "height": 1.5,
+        "correct": [
+          "invited"
+        ],
+        "acceptedAnswers": [
+          "invited"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex6_6",
+        "type": "fill",
+        "exercise": "6",
+        "label": "6",
+        "top": 64,
+        "left": 64.1,
+        "width": 8.8,
+        "height": 1.5,
+        "correct": [
+          "praised"
+        ],
+        "acceptedAnswers": [
+          "praised"
+        ],
+        "page": 2077
+      },
+      {
+        "id": "p2077_ex6_7",
+        "type": "fill",
+        "exercise": "6",
+        "label": "7",
+        "top": 67.9,
+        "left": 59.2,
+        "width": 8.8,
+        "height": 1.5,
+        "correct": [
+          "encouraged"
+        ],
+        "acceptedAnswers": [
+          "encouraged"
+        ],
+        "page": 2077
+      }
+    ],
+    "2078": [
+      {
+        "id": "p2078_ex1_across_5",
+        "type": "fill",
+        "exercise": "1",
+        "label": "across_5",
+        "top": 72.8,
+        "left": 13,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "relevant"
+        ],
+        "acceptedAnswers": [
+          "relevant"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex1_across_6",
+        "type": "fill",
+        "exercise": "1",
+        "label": "across_6",
+        "top": 76.1,
+        "left": 13,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "commercial"
+        ],
+        "acceptedAnswers": [
+          "commercial"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex1_across_7",
+        "type": "fill",
+        "exercise": "1",
+        "label": "across_7",
+        "top": 79.5,
+        "left": 13,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "ideal"
+        ],
+        "acceptedAnswers": [
+          "ideal"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex1_across_8",
+        "type": "fill",
+        "exercise": "1",
+        "label": "across_8",
+        "top": 82.9,
+        "left": 13,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "manageable"
+        ],
+        "acceptedAnswers": [
+          "manageable"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex1_down_1",
+        "type": "fill",
+        "exercise": "1",
+        "label": "down_1",
+        "top": 89.8,
+        "left": 13,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "typical"
+        ],
+        "acceptedAnswers": [
+          "typical"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex1_down_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "down_2",
+        "top": 93.2,
+        "left": 13,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "continual"
+        ],
+        "acceptedAnswers": [
+          "continual"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex1_down_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "down_3",
+        "top": 96.5,
+        "left": 13,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "addictive"
+        ],
+        "acceptedAnswers": [
+          "addictive"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex1_down_4",
+        "type": "fill",
+        "exercise": "1",
+        "label": "down_4",
+        "top": 99.9,
+        "left": 13,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "informative"
+        ],
+        "acceptedAnswers": [
+          "informative"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 69.9,
+        "left": 25.1,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "mental",
+          "al"
+        ],
+        "acceptedAnswers": [
+          "mental",
+          "al"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 73.6,
+        "left": 23.4,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "drinkable",
+          "able"
+        ],
+        "acceptedAnswers": [
+          "drinkable",
+          "able"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 77.2,
+        "left": 26,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "reliable",
+          "able"
+        ],
+        "acceptedAnswers": [
+          "reliable",
+          "able"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 17,
+        "left": 65.8,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "selective",
+          "ive"
+        ],
+        "acceptedAnswers": [
+          "selective",
+          "ive"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 20.6,
+        "left": 65.8,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "objective",
+          "ive"
+        ],
+        "acceptedAnswers": [
+          "objective",
+          "ive"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex2_7",
+        "type": "fill",
+        "exercise": "2",
+        "label": "7",
+        "top": 24.2,
+        "left": 59.6,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "dominant",
+          "ant"
+        ],
+        "acceptedAnswers": [
+          "dominant",
+          "ant"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex2_8",
+        "type": "fill",
+        "exercise": "2",
+        "label": "8",
+        "top": 27.8,
+        "left": 58.9,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "googleable",
+          "able"
+        ],
+        "acceptedAnswers": [
+          "googleable",
+          "able"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex3_able_2",
+        "type": "fill",
+        "exercise": "3",
+        "label": "able_2",
+        "top": 47.7,
+        "left": 53.4,
+        "width": 7.5,
+        "height": 1.5,
+        "correct": [
+          "tolerable"
+        ],
+        "acceptedAnswers": [
+          "tolerable"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex3_ant_1",
+        "type": "fill",
+        "exercise": "3",
+        "label": "ant_1",
+        "top": 45.9,
+        "left": 62.5,
+        "width": 7.5,
+        "height": 1.5,
+        "correct": [
+          "distant",
+          "vacant",
+          "tolerant"
+        ],
+        "acceptedAnswers": [
+          "distant",
+          "vacant",
+          "tolerant"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex3_ant_2",
+        "type": "fill",
+        "exercise": "3",
+        "label": "ant_2",
+        "top": 47.7,
+        "left": 62.5,
+        "width": 7.5,
+        "height": 1.5,
+        "correct": [
+          "distant",
+          "vacant",
+          "tolerant"
+        ],
+        "acceptedAnswers": [
+          "distant",
+          "vacant",
+          "tolerant"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex3_ant_3",
+        "type": "fill",
+        "exercise": "3",
+        "label": "ant_3",
+        "top": 49.5,
+        "left": 62.5,
+        "width": 7.5,
+        "height": 1.5,
+        "correct": [
+          "distant",
+          "vacant",
+          "tolerant"
+        ],
+        "acceptedAnswers": [
+          "distant",
+          "vacant",
+          "tolerant"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex3_ive_1",
+        "type": "fill",
+        "exercise": "3",
+        "label": "ive_1",
+        "top": 45.9,
+        "left": 71.6,
+        "width": 7.5,
+        "height": 1.5,
+        "correct": [
+          "representative",
+          "sensitive"
+        ],
+        "acceptedAnswers": [
+          "representative",
+          "sensitive"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex3_ive_2",
+        "type": "fill",
+        "exercise": "3",
+        "label": "ive_2",
+        "top": 47.7,
+        "left": 71.6,
+        "width": 7.5,
+        "height": 1.5,
+        "correct": [
+          "representative",
+          "sensitive"
+        ],
+        "acceptedAnswers": [
+          "representative",
+          "sensitive"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex3_al_1",
+        "type": "fill",
+        "exercise": "3",
+        "label": "al_1",
+        "top": 45.9,
+        "left": 80.7,
+        "width": 7.5,
+        "height": 1.5,
+        "correct": [
+          "additional",
+          "logical",
+          "spiritual"
+        ],
+        "acceptedAnswers": [
+          "additional",
+          "logical",
+          "spiritual"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex3_al_2",
+        "type": "fill",
+        "exercise": "3",
+        "label": "al_2",
+        "top": 47.7,
+        "left": 80.7,
+        "width": 7.5,
+        "height": 1.5,
+        "correct": [
+          "additional",
+          "logical",
+          "spiritual"
+        ],
+        "acceptedAnswers": [
+          "additional",
+          "logical",
+          "spiritual"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex3_al_3",
+        "type": "fill",
+        "exercise": "3",
+        "label": "al_3",
+        "top": 49.5,
+        "left": 80.7,
+        "width": 7.5,
+        "height": 1.5,
+        "correct": [
+          "additional",
+          "logical",
+          "spiritual"
+        ],
+        "acceptedAnswers": [
+          "additional",
+          "logical",
+          "spiritual"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 71.5,
+        "left": 72.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "logical"
+        ],
+        "acceptedAnswers": [
+          "logical"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 75.4,
+        "left": 68,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "tolerant"
+        ],
+        "acceptedAnswers": [
+          "tolerant"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 79.2,
+        "left": 69.7,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "spiritual"
+        ],
+        "acceptedAnswers": [
+          "spiritual"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 83.1,
+        "left": 77.1,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "additional"
+        ],
+        "acceptedAnswers": [
+          "additional"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 87,
+        "left": 76.5,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "sensitive"
+        ],
+        "acceptedAnswers": [
+          "sensitive"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex4_7",
+        "type": "fill",
+        "exercise": "4",
+        "label": "7",
+        "top": 90.9,
+        "left": 55.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "distant"
+        ],
+        "acceptedAnswers": [
+          "distant"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex4_8",
+        "type": "fill",
+        "exercise": "4",
+        "label": "8",
+        "top": 94.7,
+        "left": 55.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "vacant"
+        ],
+        "acceptedAnswers": [
+          "vacant"
+        ],
+        "page": 2078
+      },
+      {
+        "id": "p2078_ex4_9",
+        "type": "fill",
+        "exercise": "4",
+        "label": "9",
+        "top": 98.6,
+        "left": 64.1,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "representative"
+        ],
+        "acceptedAnswers": [
+          "representative"
+        ],
+        "page": 2078
+      }
+    ],
+    "2079": [
+      {
+        "id": "p2079_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 73.6,
+        "left": 23.1,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "something",
+          "something like"
+        ],
+        "acceptedAnswers": [
+          "something",
+          "something like"
+        ],
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 80,
+        "left": 21.8,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "about",
+          "worrying about"
+        ],
+        "acceptedAnswers": [
+          "about",
+          "worrying about"
+        ],
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 85.2,
+        "left": 15,
+        "width": 13.7,
+        "height": 1.5,
+        "correct": [
+          "can't remember exactly",
+          "cannot remember exactly"
+        ],
+        "acceptedAnswers": [
+          "can't remember exactly",
+          "cannot remember exactly"
+        ],
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 89,
+        "left": 16.9,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "according",
+          "according to"
+        ],
+        "acceptedAnswers": [
+          "according",
+          "according to"
+        ],
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 92.9,
+        "left": 14.3,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "what",
+          "what I understand"
+        ],
+        "acceptedAnswers": [
+          "what",
+          "what I understand"
+        ],
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_1a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2079_ex3_1",
+        "top": 70.6,
+        "left": 55,
+        "width": 34.8,
+        "height": 1.3,
+        "text": "There is no question that the majority of the daily news is bad news.",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_1b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2079_ex3_1",
+        "top": 72.7,
+        "left": 55,
+        "width": 34.8,
+        "height": 1.3,
+        "text": "Definitely most news we hear is bad news.",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_2a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2079_ex3_2",
+        "top": 75,
+        "left": 55,
+        "width": 34.8,
+        "height": 1.3,
+        "text": "I think because we hear so much bad news we usually think that the world is really bad.",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_2b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2079_ex3_2",
+        "top": 77.6,
+        "left": 55,
+        "width": 34.8,
+        "height": 1.3,
+        "text": "Without doubt, this daily diet of negativity has an effect on how we perceive the world.",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_3a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2079_ex3_3",
+        "top": 80.4,
+        "left": 55,
+        "width": 34.8,
+        "height": 1.3,
+        "text": "Bad news sells, doesn't it?",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_3b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2079_ex3_3",
+        "top": 82.5,
+        "left": 55,
+        "width": 34.8,
+        "height": 1.3,
+        "text": "The simple fact is that bad news sells.",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_4a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2079_ex3_4",
+        "top": 84.8,
+        "left": 55,
+        "width": 34.8,
+        "height": 1.3,
+        "text": "Much of the bad news we hear does nothing other than to make us feel sad and anxious...",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_4b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2079_ex3_4",
+        "top": 87.9,
+        "left": 55,
+        "width": 34.8,
+        "height": 1.3,
+        "text": "Hearing bad news mainly just makes us feel sad and anxious about the world.",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_5a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2079_ex3_5",
+        "top": 91,
+        "left": 55,
+        "width": 34.8,
+        "height": 1.3,
+        "text": "I do think that the news providers should make more of an effort...",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_5b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2079_ex3_5",
+        "top": 94.1,
+        "left": 55,
+        "width": 34.8,
+        "height": 1.3,
+        "text": "I do think that more of an effort should be made by the news providers...",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2079
+      }
+    ],
+    "2080": [
+      {
+        "id": "p2080_ex1_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2",
+        "top": 33.5,
+        "left": 19.9,
+        "width": 3.6,
+        "height": 1.5,
+        "correct": [
+          "to"
+        ],
+        "acceptedAnswers": [
+          "to"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex1_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3",
+        "top": 35.6,
+        "left": 17.3,
+        "width": 3.6,
+        "height": 1.5,
+        "correct": [
+          "out"
+        ],
+        "acceptedAnswers": [
+          "out"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex1_4",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4",
+        "top": 37.7,
+        "left": 17.6,
+        "width": 3.6,
+        "height": 1.5,
+        "correct": [
+          "by"
+        ],
+        "acceptedAnswers": [
+          "by"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex1_5",
+        "type": "fill",
+        "exercise": "1",
+        "label": "5",
+        "top": 39.7,
+        "left": 18.6,
+        "width": 3.6,
+        "height": 1.5,
+        "correct": [
+          "to"
+        ],
+        "acceptedAnswers": [
+          "to"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex1_6",
+        "type": "fill",
+        "exercise": "1",
+        "label": "6",
+        "top": 41.8,
+        "left": 16,
+        "width": 3.6,
+        "height": 1.5,
+        "correct": [
+          "up"
+        ],
+        "acceptedAnswers": [
+          "up"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex1_7",
+        "type": "fill",
+        "exercise": "1",
+        "label": "7",
+        "top": 31.5,
+        "left": 33.9,
+        "width": 3.6,
+        "height": 1.5,
+        "correct": [
+          "for"
+        ],
+        "acceptedAnswers": [
+          "for"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex1_8",
+        "type": "fill",
+        "exercise": "1",
+        "label": "8",
+        "top": 33.5,
+        "left": 33.2,
+        "width": 3.6,
+        "height": 1.5,
+        "correct": [
+          "on"
+        ],
+        "acceptedAnswers": [
+          "on"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex1_9",
+        "type": "fill",
+        "exercise": "1",
+        "label": "9",
+        "top": 35.6,
+        "left": 33.5,
+        "width": 3.6,
+        "height": 1.5,
+        "correct": [
+          "up"
+        ],
+        "acceptedAnswers": [
+          "up"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex1_10",
+        "type": "fill",
+        "exercise": "1",
+        "label": "10",
+        "top": 37.7,
+        "left": 33.9,
+        "width": 3.6,
+        "height": 1.5,
+        "correct": [
+          "after"
+        ],
+        "acceptedAnswers": [
+          "after"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex1_11",
+        "type": "fill",
+        "exercise": "1",
+        "label": "11",
+        "top": 39.7,
+        "left": 32.9,
+        "width": 3.6,
+        "height": 1.5,
+        "correct": [
+          "off"
+        ],
+        "acceptedAnswers": [
+          "off"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex1_12",
+        "type": "fill",
+        "exercise": "1",
+        "label": "12",
+        "top": 41.8,
+        "left": 33.9,
+        "width": 3.6,
+        "height": 1.5,
+        "correct": [
+          "to"
+        ],
+        "acceptedAnswers": [
+          "to"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 51.9,
+        "left": 10.4,
+        "width": 19.5,
+        "height": 1.5,
+        "correct": [
+          "take after",
+          "take after someone"
+        ],
+        "acceptedAnswers": [
+          "take after",
+          "take after someone"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 56.8,
+        "left": 10.4,
+        "width": 19.5,
+        "height": 1.5,
+        "correct": [
+          "look to",
+          "turn to",
+          "turn to someone"
+        ],
+        "acceptedAnswers": [
+          "look to",
+          "turn to",
+          "turn to someone"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 63,
+        "left": 10.4,
+        "width": 19.5,
+        "height": 1.5,
+        "correct": [
+          "bring up",
+          "bring someone up"
+        ],
+        "acceptedAnswers": [
+          "bring up",
+          "bring someone up"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 66.6,
+        "left": 10.4,
+        "width": 19.5,
+        "height": 1.5,
+        "correct": [
+          "left out",
+          "be left out"
+        ],
+        "acceptedAnswers": [
+          "left out",
+          "be left out"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 71.5,
+        "left": 10.4,
+        "width": 19.5,
+        "height": 1.5,
+        "correct": [
+          "tell off",
+          "tell someone off"
+        ],
+        "acceptedAnswers": [
+          "tell off",
+          "tell someone off"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex3_2",
+        "type": "fill",
+        "exercise": "3",
+        "label": "2",
+        "top": 81.3,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "looks up to",
+          "looks up to him",
+          "She really looks up to her older brother.",
+          "She looks up to her older brother."
+        ],
+        "acceptedAnswers": [
+          "looks up to",
+          "looks up to him",
+          "She really looks up to her older brother.",
+          "She looks up to her older brother."
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex3_3",
+        "type": "fill",
+        "exercise": "3",
+        "label": "3",
+        "top": 86,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "cares for",
+          "cares for his elderly father",
+          "He cares for his elderly father at home."
+        ],
+        "acceptedAnswers": [
+          "cares for",
+          "cares for his elderly father",
+          "He cares for his elderly father at home."
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex3_4",
+        "type": "fill",
+        "exercise": "3",
+        "label": "4",
+        "top": 90.6,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "bring me joy",
+          "bring joy to me",
+          "they bring me joy"
+        ],
+        "acceptedAnswers": [
+          "bring me joy",
+          "bring joy to me",
+          "they bring me joy"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex3_5",
+        "type": "fill",
+        "exercise": "3",
+        "label": "5",
+        "top": 95.2,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "get on my nerves",
+          "getting on my nerves",
+          "That noise is really starting to get on my nerves."
+        ],
+        "acceptedAnswers": [
+          "get on my nerves",
+          "getting on my nerves",
+          "That noise is really starting to get on my nerves."
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex3_6",
+        "type": "fill",
+        "exercise": "3",
+        "label": "6",
+        "top": 99.9,
+        "left": 10.4,
+        "width": 36.5,
+        "height": 1.5,
+        "correct": [
+          "He is devoted to his wife.",
+          "is devoted to",
+          "is devoted to his wife"
+        ],
+        "acceptedAnswers": [
+          "He is devoted to his wife.",
+          "is devoted to",
+          "is devoted to his wife"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 65.8,
+        "left": 64.5,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "Kasia"
+        ],
+        "acceptedAnswers": [
+          "Kasia"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 68.1,
+        "left": 64.5,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "John"
+        ],
+        "acceptedAnswers": [
+          "John"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 70.5,
+        "left": 64.5,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "Millie and Sam",
+          "Millie and/or Sam",
+          "Millie",
+          "Sam"
+        ],
+        "acceptedAnswers": [
+          "Millie and Sam",
+          "Millie and/or Sam",
+          "Millie",
+          "Sam"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 72.8,
+        "left": 64.5,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "Ela"
+        ],
+        "acceptedAnswers": [
+          "Ela"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 75.1,
+        "left": 64.5,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "Justin"
+        ],
+        "acceptedAnswers": [
+          "Justin"
+        ],
+        "page": 2080
+      },
+      {
+        "id": "p2080_ex4_7",
+        "type": "fill",
+        "exercise": "4",
+        "label": "7",
+        "top": 77.4,
+        "left": 64.5,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "Mary"
+        ],
+        "acceptedAnswers": [
+          "Mary"
+        ],
+        "page": 2080
+      }
+    ],
+    "2081": [
+      {
+        "id": "p2081_ex6_2",
+        "type": "fill",
+        "exercise": "6",
+        "label": "2",
+        "top": 20.9,
+        "left": 12.4,
+        "width": 22.1,
+        "height": 1.5,
+        "correct": [
+          "hadn't decided to be a nurse",
+          "I hadn't decided to be a nurse"
+        ],
+        "acceptedAnswers": [
+          "hadn't decided to be a nurse",
+          "I hadn't decided to be a nurse"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex6_3",
+        "type": "fill",
+        "exercise": "6",
+        "label": "3",
+        "top": 24.5,
+        "left": 24.7,
+        "width": 22.1,
+        "height": 1.5,
+        "correct": [
+          "Jack wasn't going",
+          "Jack were not going",
+          "Jack weren't going"
+        ],
+        "acceptedAnswers": [
+          "Jack wasn't going",
+          "Jack were not going",
+          "Jack weren't going"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex6_4",
+        "type": "fill",
+        "exercise": "6",
+        "label": "4",
+        "top": 28.1,
+        "left": 13.3,
+        "width": 33.5,
+        "height": 1.5,
+        "correct": [
+          "didn't live in a flat I would have",
+          "didn't live in a flat, I would have",
+          "hadn't lived in a flat I would have"
+        ],
+        "acceptedAnswers": [
+          "didn't live in a flat I would have",
+          "didn't live in a flat, I would have",
+          "hadn't lived in a flat I would have"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex6_5",
+        "type": "fill",
+        "exercise": "6",
+        "label": "5",
+        "top": 33.5,
+        "left": 31.6,
+        "width": 15.3,
+        "height": 1.5,
+        "correct": [
+          "he would have got the job",
+          "he would have gotten the job"
+        ],
+        "acceptedAnswers": [
+          "he would have got the job",
+          "he would have gotten the job"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex6_6",
+        "type": "fill",
+        "exercise": "6",
+        "label": "6",
+        "top": 39.2,
+        "left": 30.3,
+        "width": 16.6,
+        "height": 1.5,
+        "correct": [
+          "he had made an effort to get to know people"
+        ],
+        "acceptedAnswers": [
+          "he had made an effort to get to know people"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex7_2",
+        "type": "fill",
+        "exercise": "7",
+        "label": "2",
+        "top": 45.1,
+        "left": 41.7,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "✓",
+          "correct",
+          "tick",
+          "true"
+        ],
+        "acceptedAnswers": [
+          "✓",
+          "correct",
+          "tick",
+          "true"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex7_3",
+        "type": "fill",
+        "exercise": "7",
+        "label": "3",
+        "top": 47.7,
+        "left": 34.5,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "not have been able",
+          "not have been able to travel",
+          "might not have been able"
+        ],
+        "acceptedAnswers": [
+          "not have been able",
+          "not have been able to travel",
+          "might not have been able"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex7_4",
+        "type": "fill",
+        "exercise": "7",
+        "label": "4",
+        "top": 50.1,
+        "left": 32.6,
+        "width": 14.3,
+        "height": 1.5,
+        "correct": [
+          "hadn't brought",
+          "hadn't brought my boots"
+        ],
+        "acceptedAnswers": [
+          "hadn't brought",
+          "hadn't brought my boots"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex7_5",
+        "type": "fill",
+        "exercise": "7",
+        "label": "5",
+        "top": 52.6,
+        "left": 41.7,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "✓",
+          "correct",
+          "tick",
+          "true"
+        ],
+        "acceptedAnswers": [
+          "✓",
+          "correct",
+          "tick",
+          "true"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex7_6",
+        "type": "fill",
+        "exercise": "7",
+        "label": "6",
+        "top": 55,
+        "left": 29.9,
+        "width": 16.9,
+        "height": 1.5,
+        "correct": [
+          "would have given",
+          "would have given you a lift"
+        ],
+        "acceptedAnswers": [
+          "would have given",
+          "would have given you a lift"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex7_7",
+        "type": "fill",
+        "exercise": "7",
+        "label": "7",
+        "top": 57.5,
+        "left": 29.9,
+        "width": 16.9,
+        "height": 1.5,
+        "correct": [
+          "hadn't introduced",
+          "hadn't introduced us"
+        ],
+        "acceptedAnswers": [
+          "hadn't introduced",
+          "hadn't introduced us"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex7_8",
+        "type": "fill",
+        "exercise": "7",
+        "label": "8",
+        "top": 59.9,
+        "left": 34.5,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "would move",
+          "we would move"
+        ],
+        "acceptedAnswers": [
+          "would move",
+          "we would move"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_1a",
+        "type": "fill",
+        "exercise": "8",
+        "label": "1a",
+        "top": 71.5,
+        "left": 20.5,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "hadn't asked"
+        ],
+        "acceptedAnswers": [
+          "hadn't asked"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_1b",
+        "type": "fill",
+        "exercise": "8",
+        "label": "1b",
+        "top": 73.3,
+        "left": 17.6,
+        "width": 12.4,
+        "height": 1.5,
+        "correct": [
+          "wouldn't have known"
+        ],
+        "acceptedAnswers": [
+          "wouldn't have known"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_2a",
+        "type": "fill",
+        "exercise": "8",
+        "label": "2a",
+        "top": 75.4,
+        "left": 20.5,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "hadn't written down"
+        ],
+        "acceptedAnswers": [
+          "hadn't written down"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_2b",
+        "type": "fill",
+        "exercise": "8",
+        "label": "2b",
+        "top": 77.2,
+        "left": 10.4,
+        "width": 9.8,
+        "height": 1.5,
+        "correct": [
+          "wouldn't have been able to"
+        ],
+        "acceptedAnswers": [
+          "wouldn't have been able to"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_3a",
+        "type": "fill",
+        "exercise": "8",
+        "label": "3a",
+        "top": 79.2,
+        "left": 16.9,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "could have known"
+        ],
+        "acceptedAnswers": [
+          "could have known"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_3b",
+        "type": "fill",
+        "exercise": "8",
+        "label": "3b",
+        "top": 81,
+        "left": 21.2,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "had been"
+        ],
+        "acceptedAnswers": [
+          "had been"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_4a",
+        "type": "fill",
+        "exercise": "8",
+        "label": "4a",
+        "top": 83.1,
+        "left": 16.9,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "hadn't been",
+          "wasn't"
+        ],
+        "acceptedAnswers": [
+          "hadn't been",
+          "wasn't"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_4b",
+        "type": "fill",
+        "exercise": "8",
+        "label": "4b",
+        "top": 83.1,
+        "left": 33.9,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "couldn't have contacted"
+        ],
+        "acceptedAnswers": [
+          "couldn't have contacted"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_5a",
+        "type": "fill",
+        "exercise": "8",
+        "label": "5a",
+        "top": 87,
+        "left": 16.9,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "could have gone"
+        ],
+        "acceptedAnswers": [
+          "could have gone"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_5b",
+        "type": "fill",
+        "exercise": "8",
+        "label": "5b",
+        "top": 88.8,
+        "left": 10.4,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "had met"
+        ],
+        "acceptedAnswers": [
+          "had met"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_6a",
+        "type": "fill",
+        "exercise": "8",
+        "label": "6a",
+        "top": 90.9,
+        "left": 14.6,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "hadn't been"
+        ],
+        "acceptedAnswers": [
+          "hadn't been"
+        ],
+        "page": 2081
+      },
+      {
+        "id": "p2081_ex8_6b",
+        "type": "fill",
+        "exercise": "8",
+        "label": "6b",
+        "top": 92.7,
+        "left": 32.6,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "wouldn't know"
+        ],
+        "acceptedAnswers": [
+          "wouldn't know"
+        ],
+        "page": 2081
+      }
+    ],
+    "2082": [
+      {
+        "id": "p2082_ex1_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2",
+        "top": 26.3,
+        "left": 17.6,
+        "width": 9.1,
+        "height": 1.5,
+        "correct": [
+          "date"
+        ],
+        "acceptedAnswers": [
+          "date"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex1_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3",
+        "top": 31.5,
+        "left": 12.4,
+        "width": 9.1,
+        "height": 1.5,
+        "correct": [
+          "mean"
+        ],
+        "acceptedAnswers": [
+          "mean"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex1_4a",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4a",
+        "top": 32.5,
+        "left": 20.8,
+        "width": 6.5,
+        "height": 1.5,
+        "correct": [
+          "career"
+        ],
+        "acceptedAnswers": [
+          "career"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex1_4b",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4b",
+        "top": 32.5,
+        "left": 28,
+        "width": 5.9,
+        "height": 1.5,
+        "correct": [
+          "path"
+        ],
+        "acceptedAnswers": [
+          "path"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex1_5a",
+        "type": "fill",
+        "exercise": "1",
+        "label": "5a",
+        "top": 37.4,
+        "left": 13.7,
+        "width": 6.5,
+        "height": 1.5,
+        "correct": [
+          "quality"
+        ],
+        "acceptedAnswers": [
+          "quality"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex1_5b",
+        "type": "fill",
+        "exercise": "1",
+        "label": "5b",
+        "top": 37.4,
+        "left": 20.8,
+        "width": 6.5,
+        "height": 1.5,
+        "correct": [
+          "time"
+        ],
+        "acceptedAnswers": [
+          "time"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex1_6",
+        "type": "fill",
+        "exercise": "1",
+        "label": "6",
+        "top": 38.9,
+        "left": 27.7,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "property"
+        ],
+        "acceptedAnswers": [
+          "property"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex1_7",
+        "type": "fill",
+        "exercise": "1",
+        "label": "7",
+        "top": 42,
+        "left": 21.5,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "pension"
+        ],
+        "acceptedAnswers": [
+          "pension"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex1_8",
+        "type": "fill",
+        "exercise": "1",
+        "label": "8",
+        "top": 45.4,
+        "left": 19.5,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "row"
+        ],
+        "acceptedAnswers": [
+          "row"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex1_9a",
+        "type": "fill",
+        "exercise": "1",
+        "label": "9a",
+        "top": 48.5,
+        "left": 26.7,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "take"
+        ],
+        "acceptedAnswers": [
+          "take"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex1_9b",
+        "type": "fill",
+        "exercise": "1",
+        "label": "9b",
+        "top": 50.3,
+        "left": 14.3,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "seriously"
+        ],
+        "acceptedAnswers": [
+          "seriously"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 65.3,
+        "left": 25.1,
+        "width": 21.8,
+        "height": 1.5,
+        "correct": [
+          "make up with someone"
+        ],
+        "acceptedAnswers": [
+          "make up with someone"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 69.2,
+        "left": 10.4,
+        "width": 15,
+        "height": 1.5,
+        "correct": [
+          "settled down with someone"
+        ],
+        "acceptedAnswers": [
+          "settled down with someone"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 72.8,
+        "left": 24.7,
+        "width": 22.1,
+        "height": 1.5,
+        "correct": [
+          "turned it down"
+        ],
+        "acceptedAnswers": [
+          "turned it down"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 77.2,
+        "left": 10.4,
+        "width": 15,
+        "height": 1.5,
+        "correct": [
+          "took it up"
+        ],
+        "acceptedAnswers": [
+          "took it up"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 81.8,
+        "left": 10.4,
+        "width": 15,
+        "height": 1.5,
+        "correct": [
+          "miss out on it"
+        ],
+        "acceptedAnswers": [
+          "miss out on it"
+        ],
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex3_2a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2082_ex3_2",
+        "top": 38.8,
+        "left": 44.9,
+        "width": 6.2,
+        "height": 1.3,
+        "text": "turn down",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex3_2b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2082_ex3_2",
+        "top": 38.8,
+        "left": 51.8,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "take up",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex3_3a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2082_ex3_3",
+        "top": 44.5,
+        "left": 41.3,
+        "width": 7.2,
+        "height": 1.3,
+        "text": "opportunity",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex3_3b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "3",
+        "group": "p2082_ex3_3",
+        "top": 44.5,
+        "left": 49.2,
+        "width": 3.6,
+        "height": 1.3,
+        "text": "time",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex3_4a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2082_ex3_4",
+        "top": 46.6,
+        "left": 48.5,
+        "width": 7.8,
+        "height": 1.3,
+        "text": "settling down",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex3_4b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "4",
+        "group": "p2082_ex3_4",
+        "top": 46.6,
+        "left": 57,
+        "width": 5.9,
+        "height": 1.3,
+        "text": "making up",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex3_5a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2082_ex3_5",
+        "top": 50.7,
+        "left": 53.4,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "work",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex3_5b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "5",
+        "group": "p2082_ex3_5",
+        "top": 50.7,
+        "left": 57.3,
+        "width": 6.8,
+        "height": 1.3,
+        "text": "career path",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex3_6a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "6",
+        "group": "p2082_ex3_6",
+        "top": 54.6,
+        "left": 51.8,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "courage",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2082
+      },
+      {
+        "id": "p2082_ex3_6b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "6",
+        "group": "p2082_ex3_6",
+        "top": 54.6,
+        "left": 57.6,
+        "width": 3.6,
+        "height": 1.3,
+        "text": "value",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2082
+      }
+    ],
+    "2083": [
+      {
+        "id": "p2083_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 14.7,
+        "left": 15.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "hadn't lost",
+          "had not lost"
+        ],
+        "acceptedAnswers": [
+          "hadn't lost",
+          "had not lost"
+        ],
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 16.5,
+        "left": 14.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "had paid"
+        ],
+        "acceptedAnswers": [
+          "had paid"
+        ],
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 18,
+        "left": 24.1,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "would come"
+        ],
+        "acceptedAnswers": [
+          "would come"
+        ],
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 19.8,
+        "left": 15.6,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "would stop"
+        ],
+        "acceptedAnswers": [
+          "would stop"
+        ],
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 21.4,
+        "left": 15.6,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "had taken"
+        ],
+        "acceptedAnswers": [
+          "had taken"
+        ],
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex4_7",
+        "type": "fill",
+        "exercise": "4",
+        "label": "7",
+        "top": 23.2,
+        "left": 15.6,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "would take"
+        ],
+        "acceptedAnswers": [
+          "would take"
+        ],
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex4_8",
+        "type": "fill",
+        "exercise": "4",
+        "label": "8",
+        "top": 25,
+        "left": 16,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "lived"
+        ],
+        "acceptedAnswers": [
+          "lived"
+        ],
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex5_2",
+        "type": "fill",
+        "exercise": "5",
+        "label": "2",
+        "top": 36.4,
+        "left": 38.7,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "could see"
+        ],
+        "acceptedAnswers": [
+          "could see"
+        ],
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex5_3",
+        "type": "fill",
+        "exercise": "5",
+        "label": "3",
+        "top": 48,
+        "left": 12.7,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "had known"
+        ],
+        "acceptedAnswers": [
+          "had known"
+        ],
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex5_4",
+        "type": "fill",
+        "exercise": "5",
+        "label": "4",
+        "top": 41.3,
+        "left": 38.1,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "wasn't",
+          "weren't"
+        ],
+        "acceptedAnswers": [
+          "wasn't",
+          "weren't"
+        ],
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex5_5",
+        "type": "fill",
+        "exercise": "5",
+        "label": "5",
+        "top": 54.4,
+        "left": 28.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "might have done"
+        ],
+        "acceptedAnswers": [
+          "might have done"
+        ],
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex6_2a",
+        "type": "choice",
+        "exercise": "6",
+        "label": "2",
+        "group": "p2083_ex6_2",
+        "top": 69.3,
+        "left": 12.7,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "wasn't",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex6_2b",
+        "type": "choice",
+        "exercise": "6",
+        "label": "2",
+        "group": "p2083_ex6_2",
+        "top": 69.3,
+        "left": 17.9,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "isn't",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex6_3a",
+        "type": "choice",
+        "exercise": "6",
+        "label": "3",
+        "group": "p2083_ex6_3",
+        "top": 71.4,
+        "left": 13,
+        "width": 4.9,
+        "height": 1.3,
+        "text": "stopped",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex6_3b",
+        "type": "choice",
+        "exercise": "6",
+        "label": "3",
+        "group": "p2083_ex6_3",
+        "top": 71.4,
+        "left": 18.6,
+        "width": 6.5,
+        "height": 1.3,
+        "text": "would stop",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex6_4a",
+        "type": "choice",
+        "exercise": "6",
+        "label": "4",
+        "group": "p2083_ex6_4",
+        "top": 73.5,
+        "left": 15.3,
+        "width": 7.8,
+        "height": 1.3,
+        "text": "had never met",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex6_4b",
+        "type": "choice",
+        "exercise": "6",
+        "label": "4",
+        "group": "p2083_ex6_4",
+        "top": 73.5,
+        "left": 23.8,
+        "width": 9.1,
+        "height": 1.3,
+        "text": "would never meet",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex6_5a",
+        "type": "choice",
+        "exercise": "6",
+        "label": "5",
+        "group": "p2083_ex6_5",
+        "top": 75.5,
+        "left": 17.6,
+        "width": 2.9,
+        "height": 1.3,
+        "text": "was",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex6_5b",
+        "type": "choice",
+        "exercise": "6",
+        "label": "5",
+        "group": "p2083_ex6_5",
+        "top": 75.5,
+        "left": 21.2,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "had been",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex6_6a",
+        "type": "choice",
+        "exercise": "6",
+        "label": "6",
+        "group": "p2083_ex6_6",
+        "top": 77.6,
+        "left": 15,
+        "width": 6.2,
+        "height": 1.3,
+        "text": "had bought",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2083
+      },
+      {
+        "id": "p2083_ex6_6b",
+        "type": "choice",
+        "exercise": "6",
+        "label": "6",
+        "group": "p2083_ex6_6",
+        "top": 77.6,
+        "left": 21.8,
+        "width": 3.9,
+        "height": 1.3,
+        "text": "bought",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2083
+      }
+    ],
+    "2084": [
+      {
+        "id": "p2084_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 66.8,
+        "left": 22.1,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "tight-fitting",
+          "tight fitting"
+        ],
+        "acceptedAnswers": [
+          "tight-fitting",
+          "tight fitting"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 71.5,
+        "left": 15.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "clean-shaven",
+          "clean shaven"
+        ],
+        "acceptedAnswers": [
+          "clean-shaven",
+          "clean shaven"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 75.4,
+        "left": 18.6,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "eco-friendly",
+          "eco friendly"
+        ],
+        "acceptedAnswers": [
+          "eco-friendly",
+          "eco friendly"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 79,
+        "left": 23.8,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "second-hand",
+          "second hand"
+        ],
+        "acceptedAnswers": [
+          "second-hand",
+          "second hand"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 82.9,
+        "left": 25.1,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "old-fashioned",
+          "old fashioned"
+        ],
+        "acceptedAnswers": [
+          "old-fashioned",
+          "old fashioned"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex2_7",
+        "type": "fill",
+        "exercise": "2",
+        "label": "7",
+        "top": 88.3,
+        "left": 15.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "run-down",
+          "run down"
+        ],
+        "acceptedAnswers": [
+          "run-down",
+          "run down"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex2_8",
+        "type": "fill",
+        "exercise": "2",
+        "label": "8",
+        "top": 92.1,
+        "left": 13.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "little-known",
+          "little known"
+        ],
+        "acceptedAnswers": [
+          "little-known",
+          "little known"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex3_2",
+        "type": "fill",
+        "exercise": "3",
+        "label": "2",
+        "top": 31.5,
+        "left": 42.6,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "minded"
+        ],
+        "acceptedAnswers": [
+          "minded"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex3_3",
+        "type": "fill",
+        "exercise": "3",
+        "label": "3",
+        "top": 37.4,
+        "left": 42,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "worthy"
+        ],
+        "acceptedAnswers": [
+          "worthy"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex3_4",
+        "type": "fill",
+        "exercise": "3",
+        "label": "4",
+        "top": 27.6,
+        "left": 58.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "headed"
+        ],
+        "acceptedAnswers": [
+          "headed"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex3_5",
+        "type": "fill",
+        "exercise": "3",
+        "label": "5",
+        "top": 35.6,
+        "left": 58.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "hearted"
+        ],
+        "acceptedAnswers": [
+          "hearted"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex4_2",
+        "type": "fill",
+        "exercise": "4",
+        "label": "2",
+        "top": 56.3,
+        "left": 48.5,
+        "width": 16.3,
+        "height": 1.5,
+        "correct": [
+          "whole-hearted",
+          "wholehearted"
+        ],
+        "acceptedAnswers": [
+          "whole-hearted",
+          "wholehearted"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex4_3",
+        "type": "fill",
+        "exercise": "4",
+        "label": "3",
+        "top": 60.9,
+        "left": 48.5,
+        "width": 16.3,
+        "height": 1.5,
+        "correct": [
+          "trustworthy"
+        ],
+        "acceptedAnswers": [
+          "trustworthy"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex4_4",
+        "type": "fill",
+        "exercise": "4",
+        "label": "4",
+        "top": 65.5,
+        "left": 48.5,
+        "width": 16.3,
+        "height": 1.5,
+        "correct": [
+          "hard-hearted",
+          "hardhearted"
+        ],
+        "acceptedAnswers": [
+          "hard-hearted",
+          "hardhearted"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex4_5",
+        "type": "fill",
+        "exercise": "4",
+        "label": "5",
+        "top": 70.2,
+        "left": 48.5,
+        "width": 16.3,
+        "height": 1.5,
+        "correct": [
+          "narrow-minded",
+          "narrowminded"
+        ],
+        "acceptedAnswers": [
+          "narrow-minded",
+          "narrowminded"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex4_6",
+        "type": "fill",
+        "exercise": "4",
+        "label": "6",
+        "top": 75.1,
+        "left": 48.5,
+        "width": 16.3,
+        "height": 1.5,
+        "correct": [
+          "level-headed",
+          "levelheaded"
+        ],
+        "acceptedAnswers": [
+          "level-headed",
+          "levelheaded"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex4_7",
+        "type": "fill",
+        "exercise": "4",
+        "label": "7",
+        "top": 78.7,
+        "left": 48.5,
+        "width": 16.3,
+        "height": 1.5,
+        "correct": [
+          "praiseworthy"
+        ],
+        "acceptedAnswers": [
+          "praiseworthy"
+        ],
+        "page": 2084
+      },
+      {
+        "id": "p2084_ex4_8",
+        "type": "fill",
+        "exercise": "4",
+        "label": "8",
+        "top": 82.3,
+        "left": 48.5,
+        "width": 16.3,
+        "height": 1.5,
+        "correct": [
+          "absent-minded",
+          "absentminded"
+        ],
+        "acceptedAnswers": [
+          "absent-minded",
+          "absentminded"
+        ],
+        "page": 2084
+      }
+    ],
+    "2085": [
+      {
+        "id": "p2085_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 27.6,
+        "left": 14.6,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "thinking"
+        ],
+        "acceptedAnswers": [
+          "thinking"
+        ],
+        "page": 2085
+      },
+      {
+        "id": "p2085_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 29.1,
+        "left": 13.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "goodness"
+        ],
+        "acceptedAnswers": [
+          "goodness"
+        ],
+        "page": 2085
+      },
+      {
+        "id": "p2085_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 25.8,
+        "left": 48.5,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "blessing"
+        ],
+        "acceptedAnswers": [
+          "blessing"
+        ],
+        "page": 2085
+      },
+      {
+        "id": "p2085_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 27.6,
+        "left": 54,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "call"
+        ],
+        "acceptedAnswers": [
+          "call"
+        ],
+        "page": 2085
+      },
+      {
+        "id": "p2085_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 29.1,
+        "left": 43.3,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "fortunate"
+        ],
+        "acceptedAnswers": [
+          "fortunate"
+        ],
+        "page": 2085
+      },
+      {
+        "id": "p2085_ex3_2",
+        "type": "fill",
+        "exercise": "3",
+        "label": "2",
+        "top": 48.5,
+        "left": 38.1,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "At the age",
+          "at the age"
+        ],
+        "acceptedAnswers": [
+          "At the age",
+          "at the age"
+        ],
+        "page": 2085
+      },
+      {
+        "id": "p2085_ex3_3",
+        "type": "fill",
+        "exercise": "3",
+        "label": "3",
+        "top": 52.6,
+        "left": 39.7,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "turned upside down"
+        ],
+        "acceptedAnswers": [
+          "turned upside down"
+        ],
+        "page": 2085
+      },
+      {
+        "id": "p2085_ex3_4",
+        "type": "fill",
+        "exercise": "3",
+        "label": "4",
+        "top": 56.5,
+        "left": 39.4,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "dropped out"
+        ],
+        "acceptedAnswers": [
+          "dropped out"
+        ],
+        "page": 2085
+      },
+      {
+        "id": "p2085_ex3_5",
+        "type": "fill",
+        "exercise": "3",
+        "label": "5",
+        "top": 58.3,
+        "left": 48.2,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "changed dramatically",
+          "turned upside down"
+        ],
+        "acceptedAnswers": [
+          "changed dramatically",
+          "turned upside down"
+        ],
+        "page": 2085
+      },
+      {
+        "id": "p2085_ex3_6",
+        "type": "fill",
+        "exercise": "3",
+        "label": "6",
+        "top": 64.3,
+        "left": 51.4,
+        "width": 11.1,
+        "height": 1.5,
+        "correct": [
+          "took an unexpected turn for the better"
+        ],
+        "acceptedAnswers": [
+          "took an unexpected turn for the better"
+        ],
+        "page": 2085
+      },
+      {
+        "id": "p2085_ex3_7",
+        "type": "fill",
+        "exercise": "3",
+        "label": "7",
+        "top": 73.3,
+        "left": 38.1,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "of all time"
+        ],
+        "acceptedAnswers": [
+          "of all time"
+        ],
+        "page": 2085
+      },
+      {
+        "id": "p2085_ex3_8",
+        "type": "fill",
+        "exercise": "3",
+        "label": "8",
+        "top": 75.4,
+        "left": 54,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "funeral"
+        ],
+        "acceptedAnswers": [
+          "funeral"
+        ],
+        "page": 2085
+      }
+    ],
+    "2086": [
+      {
+        "id": "p2086_ex1_1",
+        "type": "fill",
+        "exercise": "1",
+        "label": "1",
+        "top": 21.4,
+        "left": 24.1,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "b",
+          "hard-working",
+          "hard working"
+        ],
+        "acceptedAnswers": [
+          "b",
+          "hard-working",
+          "hard working"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex1_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2",
+        "top": 23.2,
+        "left": 24.1,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "c",
+          "impulsive"
+        ],
+        "acceptedAnswers": [
+          "c",
+          "impulsive"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex1_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3",
+        "top": 25,
+        "left": 24.1,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "a",
+          "messy"
+        ],
+        "acceptedAnswers": [
+          "a",
+          "messy"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex1_4",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4",
+        "top": 26.8,
+        "left": 24.1,
+        "width": 5.2,
+        "height": 1.5,
+        "correct": [
+          "d",
+          "grumpy"
+        ],
+        "acceptedAnswers": [
+          "d",
+          "grumpy"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex1_photo_a",
+        "type": "fill",
+        "exercise": "1",
+        "label": "photo_a",
+        "top": 43.9,
+        "left": 15.6,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "moody"
+        ],
+        "acceptedAnswers": [
+          "moody"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex1_photo_b",
+        "type": "fill",
+        "exercise": "1",
+        "label": "photo_b",
+        "top": 48.5,
+        "left": 15.6,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "lazy"
+        ],
+        "acceptedAnswers": [
+          "lazy"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex1_photo_c",
+        "type": "fill",
+        "exercise": "1",
+        "label": "photo_c",
+        "top": 43.9,
+        "left": 30.9,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "untidy"
+        ],
+        "acceptedAnswers": [
+          "untidy"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex1_photo_d",
+        "type": "fill",
+        "exercise": "1",
+        "label": "photo_d",
+        "top": 43.9,
+        "left": 47.5,
+        "width": 8.5,
+        "height": 1.5,
+        "correct": [
+          "sensible"
+        ],
+        "acceptedAnswers": [
+          "sensible"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex3_1",
+        "type": "fill",
+        "exercise": "3",
+        "label": "1",
+        "top": 75.4,
+        "left": 28.6,
+        "width": 13,
+        "height": 1.5,
+        "correct": [
+          "start work much earlier"
+        ],
+        "acceptedAnswers": [
+          "start work much earlier"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex3_2",
+        "type": "fill",
+        "exercise": "3",
+        "label": "2",
+        "top": 79.2,
+        "left": 44.6,
+        "width": 13.7,
+        "height": 1.5,
+        "correct": [
+          "other teenagers, not adults",
+          "other teenagers not adults",
+          "other teenagers"
+        ],
+        "acceptedAnswers": [
+          "other teenagers, not adults",
+          "other teenagers not adults",
+          "other teenagers"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex3_3",
+        "type": "fill",
+        "exercise": "3",
+        "label": "3",
+        "top": 82.9,
+        "left": 15.3,
+        "width": 13.7,
+        "height": 1.5,
+        "correct": [
+          "by twelve or thirteen",
+          "by 12 or 13"
+        ],
+        "acceptedAnswers": [
+          "by twelve or thirteen",
+          "by 12 or 13"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex3_4",
+        "type": "fill",
+        "exercise": "3",
+        "label": "4",
+        "top": 86.7,
+        "left": 10.4,
+        "width": 13.7,
+        "height": 1.5,
+        "correct": [
+          "being surrounded by other teenagers",
+          "surrounded by other teenagers"
+        ],
+        "acceptedAnswers": [
+          "being surrounded by other teenagers",
+          "surrounded by other teenagers"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex3_5",
+        "type": "fill",
+        "exercise": "3",
+        "label": "5",
+        "top": 90.6,
+        "left": 34.8,
+        "width": 13.7,
+        "height": 1.5,
+        "correct": [
+          "three to four hours later",
+          "3 to 4 hours later"
+        ],
+        "acceptedAnswers": [
+          "three to four hours later",
+          "3 to 4 hours later"
+        ],
+        "page": 2086
+      },
+      {
+        "id": "p2086_ex3_6",
+        "type": "fill",
+        "exercise": "3",
+        "label": "6",
+        "top": 94.5,
+        "left": 15.3,
+        "width": 13.7,
+        "height": 1.5,
+        "correct": [
+          "seeing noticeably improved exam results",
+          "noticeably improved exam results"
+        ],
+        "acceptedAnswers": [
+          "seeing noticeably improved exam results",
+          "noticeably improved exam results"
+        ],
+        "page": 2086
+      }
+    ],
+    "2087": [
+      {
+        "id": "p2087_ex1_2",
+        "type": "fill",
+        "exercise": "1",
+        "label": "2",
+        "top": 30.9,
+        "left": 11.4,
+        "width": 14.3,
+        "height": 1.5,
+        "correct": [
+          "If only I hadn't",
+          "if only I hadn't",
+          "If only I had not"
+        ],
+        "acceptedAnswers": [
+          "If only I hadn't",
+          "if only I hadn't",
+          "If only I had not"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex1_3",
+        "type": "fill",
+        "exercise": "1",
+        "label": "3",
+        "top": 37.4,
+        "left": 11.4,
+        "width": 14.3,
+        "height": 1.5,
+        "correct": [
+          "wish you wouldn't",
+          "I wish you wouldn't"
+        ],
+        "acceptedAnswers": [
+          "wish you wouldn't",
+          "I wish you wouldn't"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex1_4",
+        "type": "fill",
+        "exercise": "1",
+        "label": "4",
+        "top": 42,
+        "left": 11.4,
+        "width": 14.3,
+        "height": 1.5,
+        "correct": [
+          "wonder why",
+          "I wonder why"
+        ],
+        "acceptedAnswers": [
+          "wonder why",
+          "I wonder why"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex1_5",
+        "type": "fill",
+        "exercise": "1",
+        "label": "5",
+        "top": 45,
+        "left": 15,
+        "width": 15,
+        "height": 1.5,
+        "correct": [
+          "spoke Mandarin Chinese",
+          "spoke Mandarin"
+        ],
+        "acceptedAnswers": [
+          "spoke Mandarin Chinese",
+          "spoke Mandarin"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex1_6",
+        "type": "fill",
+        "exercise": "1",
+        "label": "6",
+        "top": 51.9,
+        "left": 22.8,
+        "width": 15,
+        "height": 1.5,
+        "correct": [
+          "if a friend hadn't introduced us",
+          "if a friend had not introduced us"
+        ],
+        "acceptedAnswers": [
+          "if a friend hadn't introduced us",
+          "if a friend had not introduced us"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex2_2",
+        "type": "fill",
+        "exercise": "2",
+        "label": "2",
+        "top": 69.9,
+        "left": 18.2,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "for"
+        ],
+        "acceptedAnswers": [
+          "for"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex2_3",
+        "type": "fill",
+        "exercise": "2",
+        "label": "3",
+        "top": 71.7,
+        "left": 18.9,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "limiting"
+        ],
+        "acceptedAnswers": [
+          "limiting"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex2_4",
+        "type": "fill",
+        "exercise": "2",
+        "label": "4",
+        "top": 73.6,
+        "left": 23.4,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "to do"
+        ],
+        "acceptedAnswers": [
+          "to do"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex2_5",
+        "type": "fill",
+        "exercise": "2",
+        "label": "5",
+        "top": 75.4,
+        "left": 23.4,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "to"
+        ],
+        "acceptedAnswers": [
+          "to"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex2_6",
+        "type": "fill",
+        "exercise": "2",
+        "label": "6",
+        "top": 78.5,
+        "left": 16.9,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "to watch"
+        ],
+        "acceptedAnswers": [
+          "to watch"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex2_7",
+        "type": "fill",
+        "exercise": "2",
+        "label": "7",
+        "top": 80.3,
+        "left": 22.5,
+        "width": 7.2,
+        "height": 1.5,
+        "correct": [
+          "to turn"
+        ],
+        "acceptedAnswers": [
+          "to turn"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_2a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "2",
+        "group": "p2087_ex4_2",
+        "top": 47.6,
+        "left": 44.3,
+        "width": 6.2,
+        "height": 1.3,
+        "text": "well-known",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_2b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "2",
+        "group": "p2087_ex4_2",
+        "top": 47.6,
+        "left": 51.1,
+        "width": 5.9,
+        "height": 1.3,
+        "text": "run-down",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_3a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "3",
+        "group": "p2087_ex4_3",
+        "top": 50.5,
+        "left": 47.5,
+        "width": 6.2,
+        "height": 1.3,
+        "text": "dominant",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_3b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "3",
+        "group": "p2087_ex4_3",
+        "top": 50.5,
+        "left": 54.4,
+        "width": 5.9,
+        "height": 1.3,
+        "text": "gripping",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_4a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "4",
+        "group": "p2087_ex4_4",
+        "top": 53.3,
+        "left": 42.6,
+        "width": 6.5,
+        "height": 1.3,
+        "text": "additional",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_4b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "4",
+        "group": "p2087_ex4_4",
+        "top": 53.3,
+        "left": 49.8,
+        "width": 5.9,
+        "height": 1.3,
+        "text": "inspiring",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_5a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "5",
+        "group": "p2087_ex4_5",
+        "top": 56.9,
+        "left": 45.9,
+        "width": 3.3,
+        "height": 1.3,
+        "text": "ideal",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_5b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "5",
+        "group": "p2087_ex4_5",
+        "top": 56.9,
+        "left": 49.8,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "uplifting",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_6a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "6",
+        "group": "p2087_ex4_6",
+        "top": 58.5,
+        "left": 39.4,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "comical",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_6b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "6",
+        "group": "p2087_ex4_6",
+        "top": 58.5,
+        "left": 45.2,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "tolerant",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_7a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "7",
+        "group": "p2087_ex4_7",
+        "top": 61.6,
+        "left": 43.9,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "typical",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_7b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "7",
+        "group": "p2087_ex4_7",
+        "top": 61.6,
+        "left": 49.2,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "vacant",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_8a",
+        "type": "choice",
+        "exercise": "4",
+        "label": "8",
+        "group": "p2087_ex4_8",
+        "top": 63.6,
+        "left": 39.4,
+        "width": 4.6,
+        "height": 1.3,
+        "text": "distant",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex4_8b",
+        "type": "choice",
+        "exercise": "4",
+        "label": "8",
+        "group": "p2087_ex4_8",
+        "top": 63.6,
+        "left": 44.6,
+        "width": 5.2,
+        "height": 1.3,
+        "text": "devoted",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex5_1",
+        "type": "fill",
+        "exercise": "5",
+        "label": "1",
+        "top": 81.3,
+        "left": 48.5,
+        "width": 41.3,
+        "height": 1.5,
+        "correct": [
+          "I didn't know who to turn to.",
+          "I didn't know who to turn to"
+        ],
+        "acceptedAnswers": [
+          "I didn't know who to turn to.",
+          "I didn't know who to turn to"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex5_2",
+        "type": "fill",
+        "exercise": "5",
+        "label": "2",
+        "top": 83.4,
+        "left": 48.5,
+        "width": 41.3,
+        "height": 1.5,
+        "correct": [
+          "What's impressive about it is that",
+          "What's impressive about it is that..."
+        ],
+        "acceptedAnswers": [
+          "What's impressive about it is that",
+          "What's impressive about it is that..."
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex5_3",
+        "type": "fill",
+        "exercise": "5",
+        "label": "3",
+        "top": 85.4,
+        "left": 48.5,
+        "width": 41.3,
+        "height": 1.5,
+        "correct": [
+          "According to the newspaper I read",
+          "According to the newspaper I read..."
+        ],
+        "acceptedAnswers": [
+          "According to the newspaper I read",
+          "According to the newspaper I read..."
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex5_4",
+        "type": "fill",
+        "exercise": "5",
+        "label": "4",
+        "top": 87.5,
+        "left": 48.5,
+        "width": 41.3,
+        "height": 1.5,
+        "correct": [
+          "I couldn't have wished for a better opportunity.",
+          "I couldn't have wished for a better opportunity"
+        ],
+        "acceptedAnswers": [
+          "I couldn't have wished for a better opportunity.",
+          "I couldn't have wished for a better opportunity"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex5_5",
+        "type": "fill",
+        "exercise": "5",
+        "label": "5",
+        "top": 89.6,
+        "left": 48.5,
+        "width": 41.3,
+        "height": 1.5,
+        "correct": [
+          "From what I understand",
+          "From what I understand..."
+        ],
+        "acceptedAnswers": [
+          "From what I understand",
+          "From what I understand..."
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex5_6",
+        "type": "fill",
+        "exercise": "5",
+        "label": "6",
+        "top": 91.6,
+        "left": 48.5,
+        "width": 41.3,
+        "height": 1.5,
+        "correct": [
+          "I kick myself about it now.",
+          "I kick myself about it now"
+        ],
+        "acceptedAnswers": [
+          "I kick myself about it now.",
+          "I kick myself about it now"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex5_c_a",
+        "type": "fill",
+        "exercise": "5",
+        "label": "c_a",
+        "top": 96.8,
+        "left": 48.5,
+        "width": 13.3,
+        "height": 1.5,
+        "correct": [
+          "3, 5",
+          "3,5",
+          "3 and 5",
+          "2, 3, 5",
+          "2,3,5"
+        ],
+        "acceptedAnswers": [
+          "3, 5",
+          "3,5",
+          "3 and 5",
+          "2, 3, 5",
+          "2,3,5"
+        ],
+        "page": 2087
+      },
+      {
+        "id": "p2087_ex5_c_b",
+        "type": "fill",
+        "exercise": "5",
+        "label": "c_b",
+        "top": 98.3,
+        "left": 48.5,
+        "width": 13.3,
+        "height": 1.5,
+        "correct": [
+          "1, 2, 4, 6",
+          "1,2,4,6",
+          "1, 4, 6",
+          "1,4,6"
+        ],
+        "acceptedAnswers": [
+          "1, 2, 4, 6",
+          "1,2,4,6",
+          "1, 4, 6",
+          "1,4,6"
+        ],
+        "page": 2087
+      }
     ]
   },
-  "workbookOverridesTs": 1793035435175,
-  "updatedAt": "2026-10-26T17:23:55.176Z",
+  "workbookOverridesTs": 1793037940215,
+  "updatedAt": "2026-10-26T18:05:40.215Z",
   "authorizedAdminChatIds": [
     6772427596,
     98124765
