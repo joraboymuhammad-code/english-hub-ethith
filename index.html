@@ -335,6 +335,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9671,10 +9673,16 @@ html, body {
   box-shadow: 0 24px 70px -15px rgba(0, 0, 0, 0.7), 0 0 50px rgba(56, 189, 248, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
   backdrop-filter: blur(28px) !important;
   -webkit-backdrop-filter: blur(28px) !important;
-  display: grid !important;
-  grid-template-columns: 1.3fr 1fr !important;
-  gap: 30px !important;
+  display: flex !important;
+  justify-content: space-between !important;
   align-items: center !important;
+  gap: 24px !important;
+  flex-wrap: wrap !important;
+}
+
+.ap-hero > div:first-of-type {
+  flex: 1 1 520px !important;
+  min-width: 280px !important;
 }
 
 .ap-hero .blob {
@@ -9725,24 +9733,32 @@ html, body {
 /* GLOWING METRIC CARDS IN HERO */
 .ap-metrics {
   display: flex !important;
-  gap: 16px !important;
+  gap: 12px !important;
   flex-direction: row !important;
+  align-items: center !important;
+  align-self: center !important;
+  flex-shrink: 0 !important;
+  height: auto !important;
 }
 .ap-metrics .ap-glass {
-  flex: 1 !important;
-  min-width: 130px !important;
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.95)) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  border-radius: 20px !important;
-  padding: 24px 20px !important;
+  flex: 0 0 auto !important;
+  width: 125px !important;
+  height: 72px !important;
+  min-height: 72px !important;
+  max-height: 72px !important;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 14px !important;
+  padding: 8px 12px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  transition: all 0.25s ease !important;
   position: relative !important;
   overflow: hidden !important;
+  box-sizing: border-box !important;
 }
 .ap-metrics .ap-glass::before {
   content: '' !important;
@@ -9750,30 +9766,31 @@ html, body {
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  height: 3px !important;
+  height: 2.5px !important;
   background: linear-gradient(90deg, #38bdf8, #818cf8, #a855f7) !important;
 }
 .ap-metrics .ap-glass:hover {
-  transform: translateY(-5px) !important;
+  transform: translateY(-2px) !important;
   border-color: rgba(56, 189, 248, 0.5) !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(56, 189, 248, 0.25) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.25) !important;
 }
 .ap-metrics .ap-curlv {
-  font-size: 42px !important;
+  font-size: 24px !important;
   font-weight: 900 !important;
   line-height: 1 !important;
-  margin-bottom: 6px !important;
+  margin-bottom: 4px !important;
   background: linear-gradient(135deg, #38bdf8, #a855f7) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 .ap-metrics .lbl {
-  font-size: 11px !important;
+  font-size: 9.5px !important;
   font-weight: 800 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.05em !important;
   color: #94a3b8 !important;
+  white-space: nowrap !important;
 }
 
 /* CYBER GROUP CARDS & OCCUPANCY METER */
@@ -9817,7 +9834,7 @@ html, body {
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.27.0200";
+window.ETHITH_BUILD_VERSION = "2026.10.27.0215";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -96001,10 +96018,13 @@ window.NAVIGATE_CURRICULUM = {
   EE.renderBillingView = function(container) {
     EE.renderFinanceUnifiedView(container, 'overview');
   };
+  window.renderBillingView = EE.renderBillingView;
 
   EE.renderStaffView = function(container) {
     EE.renderFinanceUnifiedView(container, 'teachers');
   };
+  window.renderStaffView = EE.renderStaffView;
+  window.renderFinanceUnifiedView = EE.renderFinanceUnifiedView;
 
   function fmtUZS(n) {
     return Math.round(Number(n) || 0).toLocaleString('uz-UZ') + " so'm";
@@ -99327,16 +99347,35 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         window.EthithEnterprise.renderExplorerView(v);
       }
     } else if (view.name === 'billing') {
-      if (window.EthithEnterprise && window.EthithEnterprise.renderBillingView) {
-        window.EthithEnterprise.renderBillingView(v);
+      try {
+        if (window.EthithEnterprise && typeof window.EthithEnterprise.renderBillingView === 'function') {
+          window.EthithEnterprise.renderBillingView(v);
+        } else if (window.EthithEnterprise && typeof window.EthithEnterprise.renderFinanceUnifiedView === 'function') {
+          window.EthithEnterprise.renderFinanceUnifiedView(v, 'overview');
+        } else if (typeof window.renderBillingView === 'function') {
+          window.renderBillingView(v);
+        } else if (typeof window.renderFinanceUnifiedView === 'function') {
+          window.renderFinanceUnifiedView(v, 'overview');
+        }
+      } catch (finErr) {
+        console.error("Billing render error:", finErr);
+        v.innerHTML = '<div style="padding:40px;color:#ef4444;text-align:center;"><h2>Moliya bo‘limi xatosi: ' + (finErr.message || finErr) + '</h2></div>';
       }
     } else if (view.name === 'timetable') {
       if (window.EthithEnterprise && window.EthithEnterprise.renderTimetableView) {
         window.EthithEnterprise.renderTimetableView(v);
       }
     } else if (view.name === 'staff') {
-      if (window.EthithEnterprise && window.EthithEnterprise.renderStaffView) {
-        window.EthithEnterprise.renderStaffView(v);
+      try {
+        if (window.EthithEnterprise && typeof window.EthithEnterprise.renderStaffView === 'function') {
+          window.EthithEnterprise.renderStaffView(v);
+        } else if (window.EthithEnterprise && typeof window.EthithEnterprise.renderFinanceUnifiedView === 'function') {
+          window.EthithEnterprise.renderFinanceUnifiedView(v, 'teachers');
+        } else if (typeof window.renderStaffView === 'function') {
+          window.renderStaffView(v);
+        }
+      } catch (staffErr) {
+        console.error("Staff render error:", staffErr);
       }
     } else if (view.name === 'contests') {
       if (window.EthithEnterprise && window.EthithEnterprise.renderContestsView) {
@@ -99373,13 +99412,13 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '  <button class="ap-btn pri" data-go="upper_intermediate" style="background:linear-gradient(135deg,#9333ea,#6366f1);box-shadow:0 8px 24px rgba(147,51,234,0.4);">' + ic('book') + ' Upper-Intermediate (B2) ' + ic('right') + '</button>' +
       '  <button class="ap-btn gh" data-go="ask_ai">' + ic('sparkles') + ' Ask AI Teacher</button>' +
       '</div></div>' +
-      '<div class="ap-metrics">' +
+      '<div class="ap-metrics" style="display:flex;gap:12px;align-items:center;flex-shrink:0;">' +
       ((isAdmin || isTeacher) ? (
-        '  <div class="ap-glass"><div class="ap-curlv">' + ((S.classes && S.classes.length) || 2) + '</div><span class="lbl">Guruhlar Soni</span></div>' +
-        '  <div class="ap-glass"><div class="ap-curlv">' + (((S.classes || []).reduce(function(acc, c) { return acc + (c.students || []).length; }, 0)) || 0) + '</div><span class="lbl">O‘quvchilar Soni</span></div>'
+        '  <div class="ap-glass" style="min-width:100px;max-width:130px;padding:10px 16px;border-radius:14px;"><div class="ap-curlv" style="font-size:24px;line-height:1.1;margin-bottom:2px;">' + ((S.classes && S.classes.length) || 2) + '</div><span class="lbl" style="font-size:10px;letter-spacing:0.05em;white-space:nowrap;">Guruhlar Soni</span></div>' +
+        '  <div class="ap-glass" style="min-width:100px;max-width:130px;padding:10px 16px;border-radius:14px;"><div class="ap-curlv" style="font-size:24px;line-height:1.1;margin-bottom:2px;">' + (((S.classes || []).reduce(function(acc, c) { return acc + (c.students || []).length; }, 0)) || 0) + '</div><span class="lbl" style="font-size:10px;letter-spacing:0.05em;white-space:nowrap;">O‘quvchilar Soni</span></div>'
       ) : (
-        '  <div class="ap-glass"><div class="ap-curlv">' + (user.coins || 0).toLocaleString() + '</div><span class="lbl">ETHITH Coins</span></div>' +
-        '  <div class="ap-glass"><div class="ap-curlv">' + ((S.completedQuizzes || []).length) + '</div><span class="lbl">Tugallangan Testlar</span></div>'
+        '  <div class="ap-glass" style="min-width:100px;max-width:130px;padding:10px 16px;border-radius:14px;"><div class="ap-curlv" style="font-size:24px;line-height:1.1;margin-bottom:2px;">' + (user.coins || 0).toLocaleString() + '</div><span class="lbl" style="font-size:10px;letter-spacing:0.05em;white-space:nowrap;">ETHITH Coins</span></div>' +
+        '  <div class="ap-glass" style="min-width:100px;max-width:130px;padding:10px 16px;border-radius:14px;"><div class="ap-curlv" style="font-size:24px;line-height:1.1;margin-bottom:2px;">' + ((S.completedQuizzes || []).length) + '</div><span class="lbl" style="font-size:10px;letter-spacing:0.05em;white-space:nowrap;">Tugallangan Testlar</span></div>'
       )) +
       '</div></section>';
 

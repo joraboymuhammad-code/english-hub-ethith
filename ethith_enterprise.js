@@ -1975,10 +1975,13 @@
   EE.renderBillingView = function(container) {
     EE.renderFinanceUnifiedView(container, 'overview');
   };
+  window.renderBillingView = EE.renderBillingView;
 
   EE.renderStaffView = function(container) {
     EE.renderFinanceUnifiedView(container, 'teachers');
   };
+  window.renderStaffView = EE.renderStaffView;
+  window.renderFinanceUnifiedView = EE.renderFinanceUnifiedView;
 
   function fmtUZS(n) {
     return Math.round(Number(n) || 0).toLocaleString('uz-UZ') + " so'm";
