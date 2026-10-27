@@ -111,10 +111,10 @@
               "score": "5",
               "hwDone": true,
               "hwPct": 100,
-              "hwLesson": "8.1",
-              "hwCorrect": 59,
-              "hwTotal": 59,
-              "hwCompletedAt": 1793129838015
+              "hwLesson": "10.2",
+              "hwCorrect": 39,
+              "hwTotal": 39,
+              "hwCompletedAt": 1793129841212
             }
           },
           "2026-10-09": {
@@ -1122,7 +1122,7 @@
             "assignedAt": 1792607960771
           }
         },
-        "updatedAt": 1793129838015
+        "updatedAt": 1793129841212
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1237,10 +1237,10 @@
               "score": "5",
               "hwDone": true,
               "hwPct": 100,
-              "hwLesson": "8.1",
-              "hwCorrect": 59,
-              "hwTotal": 59,
-              "hwCompletedAt": 1793129838042
+              "hwLesson": "10.2",
+              "hwCorrect": 39,
+              "hwTotal": 39,
+              "hwCompletedAt": 1793129841239
             }
           }
         },
@@ -1263,7 +1263,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793129838042
+        "updatedAt": 1793129841239
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1357,10 +1357,10 @@
               "score": "5",
               "hwDone": true,
               "hwPct": 100,
-              "hwLesson": "8.1",
-              "hwCorrect": 59,
-              "hwTotal": 59,
-              "hwCompletedAt": 1793129838070
+              "hwLesson": "10.2",
+              "hwCorrect": 39,
+              "hwTotal": 39,
+              "hwCompletedAt": 1793129841274
             }
           }
         },
@@ -1385,7 +1385,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1793129838070
+        "updatedAt": 1793129841274
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -1486,10 +1486,10 @@
               "score": "5",
               "hwDone": true,
               "hwPct": 100,
-              "hwLesson": "8.1",
-              "hwCorrect": 59,
-              "hwTotal": 59,
-              "hwCompletedAt": 1793129838094
+              "hwLesson": "10.2",
+              "hwCorrect": 39,
+              "hwTotal": 39,
+              "hwCompletedAt": 1793129841302
             }
           }
         },
@@ -1512,7 +1512,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793129838094
+        "updatedAt": 1793129841302
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -54133,5 +54133,5 @@
   "timetable": [],
   "contests": [],
   "payments": {},
-  "updatedAt": 1793129838213
+  "updatedAt": 1793129841449
 }
