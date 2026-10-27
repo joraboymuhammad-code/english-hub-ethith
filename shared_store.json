@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792429156004,
+      "created": 1792612514081,
       "students": [
         {
           "id": "std_1",
@@ -153,6 +153,25 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [],
+      "activeHomework": {
+        "dateKey": "2026-10-26",
+        "dateDisp": "26.10.2026",
+        "bookLevel": "B2",
+        "unit": 2,
+        "lessonCode": "2.2",
+        "lessonTitle": "2.2 An extraordinary escape",
+        "pages": [
+          2012,
+          2013
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792778188732,
+        "teacherName": "Instructor Muhammadyusuf"
+      },
+      "schedule": "har_kuni",
+      "customStudentNames": {
+        "std_1": "Ashurov Dilyorbek"
+      },
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -1177,25 +1196,6 @@
           }
         },
         "seededWindowV3": true
-      },
-      "customStudentNames": {
-        "std_1": "Ashurov Dilyorbek"
-      },
-      "schedule": "har_kuni",
-      "activeHomework": {
-        "dateKey": "2026-10-26",
-        "dateDisp": "26.10.2026",
-        "bookLevel": "B2",
-        "unit": 2,
-        "lessonCode": "2.2",
-        "lessonTitle": "2.2 An extraordinary escape",
-        "pages": [
-          2012,
-          2013
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792778188732,
-        "teacherName": "Instructor Muhammadyusuf"
       }
     },
     {
@@ -1296,21 +1296,7 @@
         "msg_1792042358929_8iaq2",
         "msg_1792041984917_cd4i9"
       ],
-      "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792608458469
-      },
       "schedule": "har_kuni",
-      "customStudentNames": {},
       "attendance": {
         "records": {
           "2026-09-29": {
@@ -1358,6 +1344,20 @@
           }
         },
         "updatedAt": 1792999901066
+      },
+      "customStudentNames": {},
+      "activeHomework": {
+        "dateKey": "2026-10-21",
+        "dateDisp": "21.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792608458469
       }
     },
     {
@@ -1981,6 +1981,28 @@
   ],
   "accounts": [
     {
+      "id": "tg_98124765",
+      "role": "student",
+      "name": "Muhammad Jo'raboyev",
+      "email": "mu_striker@telegram.org",
+      "coins": 101100,
+      "level": "A1",
+      "dailyMinutes": 0,
+      "updatedAt": 1792612121485
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "ADMIN_12038F1aq8syash@ethith.uz",
+      "coins": 5000,
+      "createdAt": 1792612524777,
+      "level": "C2",
+      "dailyMinutes": 0,
+      "updatedAt": 1792612121485,
+      "gifts": []
+    },
+    {
       "id": "admin_official_teacher",
       "role": "teacher",
       "name": "Ustoz",
@@ -1996,20 +2018,6 @@
       "victorySound": null
     },
     {
-      "id": "tg_98124765",
-      "role": "student",
-      "name": "Muhammad Jo'raboyev",
-      "email": "mu_striker@telegram.org",
-      "coins": 101100,
-      "avatar": null,
-      "level": "A1",
-      "dailyMinutes": 0,
-      "nameStyle": null,
-      "title": null,
-      "victorySound": null,
-      "updatedAt": 1792997212404
-    },
-    {
       "id": "admin_official_teacher",
       "role": "teacher",
       "name": "Ustoz",
@@ -2022,17 +2030,6 @@
       "title": null,
       "victorySound": null,
       "updatedAt": 1792606425762
-    },
-    {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
-      "email": "admin_12038f1aq8syash@ethith.uz",
-      "coins": 5000,
-      "gifts": [],
-      "nameStyle": null,
-      "createdAt": 1792502058827,
-      "level": "C2"
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -54274,5 +54271,5 @@
   "timetable": [],
   "contests": [],
   "payments": {},
-  "updatedAt": 1793103429797
+  "updatedAt": 1793106723317
 }
