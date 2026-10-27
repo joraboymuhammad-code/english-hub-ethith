@@ -178,6 +178,1723 @@
   ];
 
   // 12 Authentic Units from Oxford Navigate Upper-Intermediate (B2) Workbook (Pages 4..87 -> internal IDs 2004..2087)
+  
+  // Oxford Navigate Beginner (A1) Workbook Units (Pages 4..83 -> internal IDs 1004..1083)
+  WB.unitsA1 = [
+  {
+    "unit": 1,
+    "title": "Unit 1: First meetings",
+    "subtitle": "Grammar: verb be (I/you/we), question words · Vocabulary: introductions, numbers 1-10, countries",
+    "available": true,
+    "lessons": [
+      {
+        "code": "1.1",
+        "title": "1.1 Welcome to the class",
+        "desc": "Introductions & verb be (I/you)",
+        "pages": [
+          1004,
+          1005
+        ],
+        "active": true
+      },
+      {
+        "code": "1.2",
+        "title": "1.2 Where are you from?",
+        "desc": "Numbers 1-10, countries & verb be (we/you)",
+        "pages": [
+          1006,
+          1007
+        ],
+        "active": true
+      },
+      {
+        "code": "1.3",
+        "title": "1.3 The alphabet & spelling",
+        "desc": "The alphabet & question words",
+        "pages": [
+          1008,
+          1009
+        ],
+        "active": true
+      },
+      {
+        "code": "1.4",
+        "title": "1.4 Speaking and writing",
+        "desc": "Hello and goodbye, filling in a form",
+        "pages": [
+          1010,
+          1011
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 2,
+    "title": "Unit 2: Questions",
+    "subtitle": "Grammar: this/that/these/those, verb be (it/they/he/she) · Vocabulary: objects, jobs, prepositions",
+    "available": true,
+    "lessons": [
+      {
+        "code": "2.1",
+        "title": "2.1 What's this in English?",
+        "desc": "Objects, numbers 11-100, this/that/these/those",
+        "pages": [
+          1012,
+          1013
+        ],
+        "active": true
+      },
+      {
+        "code": "2.2",
+        "title": "2.2 What's your job?",
+        "desc": "Jobs & verb be (he/she/it/they)",
+        "pages": [
+          1014,
+          1015
+        ],
+        "active": true
+      },
+      {
+        "code": "2.3",
+        "title": "2.3 Where is it?",
+        "desc": "Prepositions of place & subject pronouns",
+        "pages": [
+          1016,
+          1017
+        ],
+        "active": true
+      },
+      {
+        "code": "2.4",
+        "title": "2.4 Speaking & writing",
+        "desc": "Telling the time & writing a blog",
+        "pages": [
+          1018,
+          1019
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 3,
+    "title": "Unit 3: People and possessions",
+    "subtitle": "Grammar: have got / has got, possession · Vocabulary: adjective + noun phrases, irregular plurals, family",
+    "available": true,
+    "lessons": [
+      {
+        "code": "3.1",
+        "title": "3.1 Big families",
+        "desc": "Adjective + noun phrases, irregular plurals, have got",
+        "pages": [
+          1020,
+          1021
+        ],
+        "active": true
+      },
+      {
+        "code": "3.2",
+        "title": "3.2 Have you got a car?",
+        "desc": "Opposite adjectives & have got questions",
+        "pages": [
+          1022,
+          1023
+        ],
+        "active": true
+      },
+      {
+        "code": "3.3",
+        "title": "3.3 Family members",
+        "desc": "Family vocabulary & possession ('s)",
+        "pages": [
+          1024,
+          1025
+        ],
+        "active": true
+      },
+      {
+        "code": "3.4",
+        "title": "3.4 Everyday expressions",
+        "desc": "Everyday expressions & social media message",
+        "pages": [
+          1026,
+          1027
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 4,
+    "title": "Unit 4: My life",
+    "subtitle": "Grammar: present simple (positive, negative, yes/no questions) · Vocabulary: common verbs, transport, daily activities",
+    "available": true,
+    "lessons": [
+      {
+        "code": "4.1",
+        "title": "4.1 A day in the life",
+        "desc": "Common verbs & present simple positive",
+        "pages": [
+          1028,
+          1029
+        ],
+        "active": true
+      },
+      {
+        "code": "4.2",
+        "title": "4.2 Getting around",
+        "desc": "Transport & present simple negative",
+        "pages": [
+          1030,
+          1031
+        ],
+        "active": true
+      },
+      {
+        "code": "4.3",
+        "title": "4.3 Daily routines",
+        "desc": "Daily activities & present simple questions",
+        "pages": [
+          1032,
+          1033
+        ],
+        "active": true
+      },
+      {
+        "code": "4.4",
+        "title": "4.4 In a shop & email",
+        "desc": "Speaking in a shop & writing an informal email",
+        "pages": [
+          1034,
+          1035
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 5,
+    "title": "Unit 5: Style and design",
+    "subtitle": "Grammar: adverbs of frequency, Wh- questions, present simple all forms · Vocabulary: colours and clothes, adjectives, parts of body",
+    "available": true,
+    "lessons": [
+      {
+        "code": "5.1",
+        "title": "5.1 What are you wearing?",
+        "desc": "Colours, clothes & adverbs of frequency",
+        "pages": [
+          1036,
+          1037
+        ],
+        "active": true
+      },
+      {
+        "code": "5.2",
+        "title": "5.2 Great design",
+        "desc": "Adjectives & Wh- questions",
+        "pages": [
+          1038,
+          1039
+        ],
+        "active": true
+      },
+      {
+        "code": "5.3",
+        "title": "5.3 Parts of the body",
+        "desc": "Present simple all forms & adjective modifiers",
+        "pages": [
+          1040,
+          1041
+        ],
+        "active": true
+      },
+      {
+        "code": "5.4",
+        "title": "5.4 Travel information",
+        "desc": "Travel information & making arrangements",
+        "pages": [
+          1042,
+          1043
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 6,
+    "title": "Unit 6: Places and facilities",
+    "subtitle": "Grammar: there is / there are, is there...? / are there...?, all the and each · Vocabulary: places in a town, hotel facilities, rooms and furniture",
+    "available": true,
+    "lessons": [
+      {
+        "code": "6.1",
+        "title": "6.1 In the town",
+        "desc": "Places in a town & there is / there are",
+        "pages": [
+          1044,
+          1045
+        ],
+        "active": true
+      },
+      {
+        "code": "6.2",
+        "title": "6.2 Hotel facilities",
+        "desc": "Hotel facilities & is there...? / are there...?",
+        "pages": [
+          1046,
+          1047
+        ],
+        "active": true
+      },
+      {
+        "code": "6.3",
+        "title": "6.3 Rooms and furniture",
+        "desc": "Rooms, furniture & all the and each",
+        "pages": [
+          1048,
+          1049
+        ],
+        "active": true
+      },
+      {
+        "code": "6.4",
+        "title": "6.4 Hotel reviews",
+        "desc": "Explaining problems & writing a hotel review",
+        "pages": [
+          1050,
+          1051
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 7,
+    "title": "Unit 7: Skills and interests",
+    "subtitle": "Grammar: can / can't, like + -ing · Vocabulary: skills, adverbs of manner, hobbies, like/love/hate",
+    "available": true,
+    "lessons": [
+      {
+        "code": "7.1",
+        "title": "7.1 What can you do?",
+        "desc": "Skills & can / can't",
+        "pages": [
+          1052,
+          1053
+        ],
+        "active": true
+      },
+      {
+        "code": "7.2",
+        "title": "7.2 Can you help me?",
+        "desc": "Adverbs of manner & Can you...?",
+        "pages": [
+          1054,
+          1055
+        ],
+        "active": true
+      },
+      {
+        "code": "7.3",
+        "title": "7.3 Free time and hobbies",
+        "desc": "Hobbies & like, love, hate + -ing",
+        "pages": [
+          1056,
+          1057
+        ],
+        "active": true
+      },
+      {
+        "code": "7.4",
+        "title": "7.4 Simple requests",
+        "desc": "Simple requests & social media post",
+        "pages": [
+          1058,
+          1059
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 8,
+    "title": "Unit 8: Our past",
+    "subtitle": "Grammar: verb be past simple, past simple regular verbs, object pronouns · Vocabulary: dates, was born/died, past time phrases",
+    "available": true,
+    "lessons": [
+      {
+        "code": "8.1",
+        "title": "8.1 Where were you?",
+        "desc": "Verb be past simple & dates",
+        "pages": [
+          1060,
+          1061
+        ],
+        "active": true
+      },
+      {
+        "code": "8.2",
+        "title": "8.2 Famous lives",
+        "desc": "was born/died & past simple regular verbs",
+        "pages": [
+          1062,
+          1063
+        ],
+        "active": true
+      },
+      {
+        "code": "8.3",
+        "title": "8.3 Memories",
+        "desc": "Object pronouns & past time phrases",
+        "pages": [
+          1064,
+          1065
+        ],
+        "active": true
+      },
+      {
+        "code": "8.4",
+        "title": "8.4 Special occasions",
+        "desc": "Special occasions & writing a biography",
+        "pages": [
+          1066,
+          1067
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 9,
+    "title": "Unit 9: Unusual stories",
+    "subtitle": "Grammar: past simple irregular verbs, negatives and questions, ago · Vocabulary: adjective + noun phrases, verb phrases",
+    "available": true,
+    "lessons": [
+      {
+        "code": "9.1",
+        "title": "9.1 A lucky escape",
+        "desc": "Past simple irregular verbs & adjective + noun phrases",
+        "pages": [
+          1068,
+          1069
+        ],
+        "active": true
+      },
+      {
+        "code": "9.2",
+        "title": "9.2 Did you see that?",
+        "desc": "Past simple negatives and questions & verb phrases",
+        "pages": [
+          1070,
+          1071
+        ],
+        "active": true
+      },
+      {
+        "code": "9.3",
+        "title": "9.3 Time expressions",
+        "desc": "Time phrases with ago & storytelling",
+        "pages": [
+          1072,
+          1073
+        ],
+        "active": true
+      },
+      {
+        "code": "9.4",
+        "title": "9.4 Event reviews",
+        "desc": "Talking about the weather & writing an event review",
+        "pages": [
+          1074,
+          1075
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 10,
+    "title": "Unit 10: New places, new projects",
+    "subtitle": "Grammar: going to (future), would like · Vocabulary: future time phrases, cafe food, prepositions of time",
+    "available": true,
+    "lessons": [
+      {
+        "code": "10.1",
+        "title": "10.1 Future plans",
+        "desc": "going to positive and negative & future time phrases",
+        "pages": [
+          1076,
+          1077
+        ],
+        "active": true
+      },
+      {
+        "code": "10.2",
+        "title": "10.2 Projects and plans",
+        "desc": "going to questions & prepositions of time",
+        "pages": [
+          1078,
+          1079
+        ],
+        "active": true
+      },
+      {
+        "code": "10.3",
+        "title": "10.3 In a cafe",
+        "desc": "would like & cafe food vocabulary",
+        "pages": [
+          1080,
+          1081
+        ],
+        "active": true
+      },
+      {
+        "code": "10.4",
+        "title": "10.4 Ordering and notes",
+        "desc": "Ordering food and drink, invitations and thank-you notes",
+        "pages": [
+          1082,
+          1083
+        ],
+        "active": true
+      }
+    ]
+  }
+];
+
+  // Oxford Navigate Elementary (A2) Workbook Units (Pages 4..87 -> internal IDs 3004..3087)
+  WB.unitsA2 = [
+  {
+    "unit": 1,
+    "title": "Unit 1: Your world",
+    "subtitle": "Grammar: present simple to be, possessive determiners, possessive 's · Vocabulary: countries, nationalities, family",
+    "available": true,
+    "lessons": [
+      {
+        "code": "1.1",
+        "title": "1.1 Where are you from?",
+        "desc": "Countries, nationalities & present simple to be",
+        "pages": [
+          3004,
+          3005
+        ],
+        "active": true
+      },
+      {
+        "code": "1.2",
+        "title": "1.2 Family life",
+        "desc": "Possessive determiners & possessive 's",
+        "pages": [
+          3006,
+          3007
+        ],
+        "active": true
+      },
+      {
+        "code": "1.3",
+        "title": "1.3 Vocabulary development",
+        "desc": "Regular and irregular plurals & vocabulary review",
+        "pages": [
+          3008
+        ],
+        "active": true
+      },
+      {
+        "code": "1.4",
+        "title": "1.4 Speaking and writing",
+        "desc": "Personal information & a personal profile",
+        "pages": [
+          3009
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 2,
+    "title": "Unit 2: My day",
+    "subtitle": "Grammar: present simple and adverbs of frequency, present simple negative · Vocabulary: daily activities, telling the time",
+    "available": true,
+    "lessons": [
+      {
+        "code": "2.1",
+        "title": "2.1 Daily routines",
+        "desc": "Present simple, adverbs of frequency & daily activities",
+        "pages": [
+          3010,
+          3011
+        ],
+        "active": true
+      },
+      {
+        "code": "2.2",
+        "title": "2.2 What's the time?",
+        "desc": "Present simple negative & telling the time",
+        "pages": [
+          3012,
+          3013
+        ],
+        "active": true
+      },
+      {
+        "code": "2.3",
+        "title": "2.3 Vocabulary development",
+        "desc": "Verb + preposition phrases",
+        "pages": [
+          3014
+        ],
+        "active": true
+      },
+      {
+        "code": "2.4",
+        "title": "2.4 Speaking and writing",
+        "desc": "Suggestions, arrangements & describing where you live",
+        "pages": [
+          3015
+        ],
+        "active": true
+      },
+      {
+        "code": "2.5",
+        "title": "2.5 Review & Reading",
+        "desc": "Review: Units 1 & 2, Adult education",
+        "pages": [
+          3016,
+          3017
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 3,
+    "title": "Unit 3: The world of work",
+    "subtitle": "Grammar: yes/no questions, Wh- questions · Vocabulary: jobs, work, -er suffixes",
+    "available": true,
+    "lessons": [
+      {
+        "code": "3.1",
+        "title": "3.1 Jobs and occupations",
+        "desc": "Jobs & yes/no questions",
+        "pages": [
+          3018,
+          3019
+        ],
+        "active": true
+      },
+      {
+        "code": "3.2",
+        "title": "3.2 At work",
+        "desc": "Work vocabulary & Wh- questions",
+        "pages": [
+          3020,
+          3021
+        ],
+        "active": true
+      },
+      {
+        "code": "3.3",
+        "title": "3.3 Vocabulary development",
+        "desc": "-er suffixes & vocabulary review",
+        "pages": [
+          3022
+        ],
+        "active": true
+      },
+      {
+        "code": "3.4",
+        "title": "3.4 Speaking and writing",
+        "desc": "Making requests, opening and closing an email",
+        "pages": [
+          3023
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 4,
+    "title": "Unit 4: Places and things",
+    "subtitle": "Grammar: there is/there are, articles a/an/the · Vocabulary: places in towns, rooms and furniture",
+    "available": true,
+    "lessons": [
+      {
+        "code": "4.1",
+        "title": "4.1 In the city",
+        "desc": "Places in towns and cities & there is/there are",
+        "pages": [
+          3024,
+          3025
+        ],
+        "active": true
+      },
+      {
+        "code": "4.2",
+        "title": "4.2 Rooms and spaces",
+        "desc": "Rooms, furniture & articles a/an, the, -",
+        "pages": [
+          3026,
+          3027
+        ],
+        "active": true
+      },
+      {
+        "code": "4.3",
+        "title": "4.3 Vocabulary development",
+        "desc": "Opposite adjectives & vocabulary review",
+        "pages": [
+          3028
+        ],
+        "active": true
+      },
+      {
+        "code": "4.4",
+        "title": "4.4 Speaking and writing",
+        "desc": "Giving directions & imperatives",
+        "pages": [
+          3029
+        ],
+        "active": true
+      },
+      {
+        "code": "4.5",
+        "title": "4.5 Review & Reading",
+        "desc": "The museums of Manhattan, Review: Units 3 & 4",
+        "pages": [
+          3030,
+          3031
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 5,
+    "title": "Unit 5: Clothes and shopping",
+    "subtitle": "Grammar: can/can't/could/couldn't, present continuous · Vocabulary: shopping, clothes and accessories",
+    "available": true,
+    "lessons": [
+      {
+        "code": "5.1",
+        "title": "5.1 Shopping trends",
+        "desc": "Shopping, can/can't & could/couldn't",
+        "pages": [
+          3032,
+          3033
+        ],
+        "active": true
+      },
+      {
+        "code": "5.2",
+        "title": "5.2 What are you wearing?",
+        "desc": "Clothes, accessories & present continuous",
+        "pages": [
+          3034,
+          3035
+        ],
+        "active": true
+      },
+      {
+        "code": "5.3",
+        "title": "5.3 Vocabulary development",
+        "desc": "Adjectives and adverbs",
+        "pages": [
+          3036
+        ],
+        "active": true
+      },
+      {
+        "code": "5.4",
+        "title": "5.4 Speaking and writing",
+        "desc": "In a shop & writing a product review",
+        "pages": [
+          3037
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 6,
+    "title": "Unit 6: The past",
+    "subtitle": "Grammar: was and were, past simple regular verbs · Vocabulary: time expressions, common verb collocations",
+    "available": true,
+    "lessons": [
+      {
+        "code": "6.1",
+        "title": "6.1 In the past",
+        "desc": "was and were & time expressions",
+        "pages": [
+          3038,
+          3039
+        ],
+        "active": true
+      },
+      {
+        "code": "6.2",
+        "title": "6.2 Great events",
+        "desc": "Past simple regular verbs & common verb collocations",
+        "pages": [
+          3040,
+          3041
+        ],
+        "active": true
+      },
+      {
+        "code": "6.3",
+        "title": "6.3 Vocabulary development",
+        "desc": "Adverbs of degree",
+        "pages": [
+          3042
+        ],
+        "active": true
+      },
+      {
+        "code": "6.4",
+        "title": "6.4 Speaking and writing",
+        "desc": "Showing interest as a listener, writing a tweet or text",
+        "pages": [
+          3043
+        ],
+        "active": true
+      },
+      {
+        "code": "6.5",
+        "title": "6.5 Review & Reading",
+        "desc": "A guided tour of Stratford-upon-Avon, Review: Units 5 & 6",
+        "pages": [
+          3044,
+          3045
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 7,
+    "title": "Unit 7: Health and fitness",
+    "subtitle": "Grammar: past simple irregular verbs, past simple negative · Vocabulary: healthy lifestyle, sports and fitness",
+    "available": true,
+    "lessons": [
+      {
+        "code": "7.1",
+        "title": "7.1 Staying healthy",
+        "desc": "A healthy lifestyle & past simple irregular verbs",
+        "pages": [
+          3046,
+          3047
+        ],
+        "active": true
+      },
+      {
+        "code": "7.2",
+        "title": "7.2 Sports and workouts",
+        "desc": "Sports, fitness & past simple negative",
+        "pages": [
+          3048,
+          3049
+        ],
+        "active": true
+      },
+      {
+        "code": "7.3",
+        "title": "7.3 Vocabulary development",
+        "desc": "Easily confused words",
+        "pages": [
+          3050
+        ],
+        "active": true
+      },
+      {
+        "code": "7.4",
+        "title": "7.4 Speaking and writing",
+        "desc": "Opinions, agreeing and disagreeing, writing a comment",
+        "pages": [
+          3051
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 8,
+    "title": "Unit 8: Travel and transport",
+    "subtitle": "Grammar: past simple questions, have to/don't have to/should · Vocabulary: holidays, transport, expressions with get/take/have",
+    "available": true,
+    "lessons": [
+      {
+        "code": "8.1",
+        "title": "8.1 Going places",
+        "desc": "Holidays & past simple questions",
+        "pages": [
+          3052,
+          3053
+        ],
+        "active": true
+      },
+      {
+        "code": "8.2",
+        "title": "8.2 Rules of the road",
+        "desc": "Transport, have to & should/shouldn't",
+        "pages": [
+          3054,
+          3055
+        ],
+        "active": true
+      },
+      {
+        "code": "8.3",
+        "title": "8.3 Vocabulary development",
+        "desc": "Expressions with get, take and have",
+        "pages": [
+          3056
+        ],
+        "active": true
+      },
+      {
+        "code": "8.4",
+        "title": "8.4 Speaking and writing",
+        "desc": "At the train station & writing an email about a holiday",
+        "pages": [
+          3057
+        ],
+        "active": true
+      },
+      {
+        "code": "8.5",
+        "title": "8.5 Review & Reading",
+        "desc": "The Silent Brothers, Review: Units 7 & 8",
+        "pages": [
+          3058,
+          3059
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 9,
+    "title": "Unit 9: Cooking and eating",
+    "subtitle": "Grammar: countable and uncountable nouns, much/many and quantifiers · Vocabulary: food and drink, in the kitchen",
+    "available": true,
+    "lessons": [
+      {
+        "code": "9.1",
+        "title": "9.1 Delicious recipes",
+        "desc": "Food, drink & countable/uncountable nouns",
+        "pages": [
+          3060,
+          3061
+        ],
+        "active": true
+      },
+      {
+        "code": "9.2",
+        "title": "9.2 Cooking methods",
+        "desc": "In the kitchen & much/many/quantifiers",
+        "pages": [
+          3062,
+          3063
+        ],
+        "active": true
+      },
+      {
+        "code": "9.3",
+        "title": "9.3 Vocabulary development",
+        "desc": "Saying numbers & vocabulary review",
+        "pages": [
+          3064
+        ],
+        "active": true
+      },
+      {
+        "code": "9.4",
+        "title": "9.4 Speaking and writing",
+        "desc": "In a restaurant & asking about and recommending food",
+        "pages": [
+          3065
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 10,
+    "title": "Unit 10: The world around us",
+    "subtitle": "Grammar: comparative adjectives, superlatives · Vocabulary: the weather, nature and geography",
+    "available": true,
+    "lessons": [
+      {
+        "code": "10.1",
+        "title": "10.1 Extremes of nature",
+        "desc": "The weather & comparative adjectives",
+        "pages": [
+          3066,
+          3067
+        ],
+        "active": true
+      },
+      {
+        "code": "10.2",
+        "title": "10.2 Wonderful world",
+        "desc": "Nature, geography & superlatives",
+        "pages": [
+          3068,
+          3069
+        ],
+        "active": true
+      },
+      {
+        "code": "10.3",
+        "title": "10.3 Vocabulary development",
+        "desc": "Collocations & vocabulary review",
+        "pages": [
+          3070
+        ],
+        "active": true
+      },
+      {
+        "code": "10.4",
+        "title": "10.4 Speaking and writing",
+        "desc": "Reasons, preferences & describing a place",
+        "pages": [
+          3071
+        ],
+        "active": true
+      },
+      {
+        "code": "10.5",
+        "title": "10.5 Review & Reading",
+        "desc": "A TV cookery programme, Review: Units 9 & 10",
+        "pages": [
+          3072,
+          3073
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 11,
+    "title": "Unit 11: Working together",
+    "subtitle": "Grammar: going to for plans and intentions, infinitive of purpose · Vocabulary: verb + noun collocations, technology",
+    "available": true,
+    "lessons": [
+      {
+        "code": "11.1",
+        "title": "11.1 Future intentions",
+        "desc": "Verb + noun collocations & going to",
+        "pages": [
+          3074,
+          3075
+        ],
+        "active": true
+      },
+      {
+        "code": "11.2",
+        "title": "11.2 Technology today",
+        "desc": "Technology & infinitive of purpose",
+        "pages": [
+          3076,
+          3077
+        ],
+        "active": true
+      },
+      {
+        "code": "11.3",
+        "title": "11.3 Vocabulary development",
+        "desc": "Making adjectives stronger",
+        "pages": [
+          3078
+        ],
+        "active": true
+      },
+      {
+        "code": "11.4",
+        "title": "11.4 Speaking and writing",
+        "desc": "Offering to do something & writing a notice",
+        "pages": [
+          3079
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 12,
+    "title": "Unit 12: Culture and the arts",
+    "subtitle": "Grammar: present perfect simple, present perfect and past simple · Vocabulary: verb and noun phrases, films, past participles",
+    "available": true,
+    "lessons": [
+      {
+        "code": "12.1",
+        "title": "12.1 Film and entertainment",
+        "desc": "Verb and noun phrases & present perfect simple",
+        "pages": [
+          3080,
+          3081
+        ],
+        "active": true
+      },
+      {
+        "code": "12.2",
+        "title": "12.2 Have you ever seen...?",
+        "desc": "Films & present perfect vs past simple",
+        "pages": [
+          3082,
+          3083
+        ],
+        "active": true
+      },
+      {
+        "code": "12.3",
+        "title": "12.3 Vocabulary development",
+        "desc": "Past participles & vocabulary review",
+        "pages": [
+          3084
+        ],
+        "active": true
+      },
+      {
+        "code": "12.4",
+        "title": "12.4 Speaking and writing",
+        "desc": "On the phone & writing a review",
+        "pages": [
+          3085
+        ],
+        "active": true
+      },
+      {
+        "code": "12.5",
+        "title": "12.5 Review & Reading",
+        "desc": "Les Misérables, Review: Units 11 & 12",
+        "pages": [
+          3086,
+          3087
+        ],
+        "active": true
+      }
+    ]
+  }
+];
+
+  // Oxford Navigate Pre-Intermediate (B1) Workbook Units (Pages 4..87 -> internal IDs 4004..4087)
+  WB.unitsB1Pre = [
+  {
+    "unit": 1,
+    "title": "Unit 1: Time",
+    "subtitle": "Grammar: question forms, present simple and adverbs of frequency · Vocabulary: daily life, free-time activities",
+    "available": true,
+    "lessons": [
+      {
+        "code": "1.1",
+        "title": "1.1 Making time",
+        "desc": "Daily life & question forms",
+        "pages": [
+          4004,
+          4005
+        ],
+        "active": true
+      },
+      {
+        "code": "1.2",
+        "title": "1.2 Modern life",
+        "desc": "Free-time activities & present simple",
+        "pages": [
+          4006,
+          4007
+        ],
+        "active": true
+      },
+      {
+        "code": "1.3",
+        "title": "1.3 Vocabulary development",
+        "desc": "Nouns and verbs with the same form",
+        "pages": [
+          4008
+        ],
+        "active": true
+      },
+      {
+        "code": "1.4",
+        "title": "1.4 Speaking and writing",
+        "desc": "Talking about the weather, web post about your country",
+        "pages": [
+          4009
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 2,
+    "title": "Unit 2: Inside outside",
+    "subtitle": "Grammar: present simple and present continuous, identifying relative clauses · Vocabulary: street life, household objects",
+    "available": true,
+    "lessons": [
+      {
+        "code": "2.1",
+        "title": "2.1 City streets",
+        "desc": "Street life & present simple vs continuous",
+        "pages": [
+          4010,
+          4011
+        ],
+        "active": true
+      },
+      {
+        "code": "2.2",
+        "title": "2.2 In the home",
+        "desc": "Household objects & identifying relative clauses",
+        "pages": [
+          4012,
+          4013
+        ],
+        "active": true
+      },
+      {
+        "code": "2.3",
+        "title": "2.3 Vocabulary development",
+        "desc": "Phrases with on",
+        "pages": [
+          4014
+        ],
+        "active": true
+      },
+      {
+        "code": "2.4",
+        "title": "2.4 Speaking and writing",
+        "desc": "Asking for and giving directions, text messages",
+        "pages": [
+          4015
+        ],
+        "active": true
+      },
+      {
+        "code": "2.5",
+        "title": "2.5 Review & Reading",
+        "desc": "Chemical Secret - Pollution, Review: Units 1 & 2",
+        "pages": [
+          4016,
+          4017
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 3,
+    "title": "Unit 3: Going up, going down",
+    "subtitle": "Grammar: past simple, past simple and past continuous · Vocabulary: movement, adjectives for describing feelings",
+    "available": true,
+    "lessons": [
+      {
+        "code": "3.1",
+        "title": "3.1 Going up",
+        "desc": "Movement & past simple",
+        "pages": [
+          4018,
+          4019
+        ],
+        "active": true
+      },
+      {
+        "code": "3.2",
+        "title": "3.2 What were you doing?",
+        "desc": "Feelings & past continuous",
+        "pages": [
+          4020,
+          4021
+        ],
+        "active": true
+      },
+      {
+        "code": "3.3",
+        "title": "3.3 Vocabulary development",
+        "desc": "Adverbs of manner",
+        "pages": [
+          4022
+        ],
+        "active": true
+      },
+      {
+        "code": "3.4",
+        "title": "3.4 Speaking and writing",
+        "desc": "Telling and responding to a story, email describing an event",
+        "pages": [
+          4023
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 4,
+    "title": "Unit 4: Changes and challenges",
+    "subtitle": "Grammar: verbs with -ing and to, going to and present continuous for future · Vocabulary: life stages, internet activities",
+    "available": true,
+    "lessons": [
+      {
+        "code": "4.1",
+        "title": "4.1 New challenges",
+        "desc": "Life stages & verbs with -ing and to",
+        "pages": [
+          4024,
+          4025
+        ],
+        "active": true
+      },
+      {
+        "code": "4.2",
+        "title": "4.2 Future changes",
+        "desc": "Internet activities & future forms",
+        "pages": [
+          4026,
+          4027
+        ],
+        "active": true
+      },
+      {
+        "code": "4.3",
+        "title": "4.3 Vocabulary development",
+        "desc": "Collocations with get",
+        "pages": [
+          4028
+        ],
+        "active": true
+      },
+      {
+        "code": "4.4",
+        "title": "4.4 Speaking and writing",
+        "desc": "Inviting and making arrangements, email making arrangements",
+        "pages": [
+          4029
+        ],
+        "active": true
+      },
+      {
+        "code": "4.5",
+        "title": "4.5 Review & Reading",
+        "desc": "Ecological housing, Review: Units 3 & 4",
+        "pages": [
+          4030,
+          4031
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 5,
+    "title": "Unit 5: Stuff and things",
+    "subtitle": "Grammar: articles, quantifiers · Vocabulary: adjectives for describing objects, money, suffixes",
+    "available": true,
+    "lessons": [
+      {
+        "code": "5.1",
+        "title": "5.1 Possessions",
+        "desc": "Describing objects & articles",
+        "pages": [
+          4032,
+          4033
+        ],
+        "active": true
+      },
+      {
+        "code": "5.2",
+        "title": "5.2 Money matters",
+        "desc": "Money & quantifiers",
+        "pages": [
+          4034,
+          4035
+        ],
+        "active": true
+      },
+      {
+        "code": "5.3",
+        "title": "5.3 Vocabulary development",
+        "desc": "Suffixes & vocabulary review",
+        "pages": [
+          4036
+        ],
+        "active": true
+      },
+      {
+        "code": "5.4",
+        "title": "5.4 Speaking and writing",
+        "desc": "Explaining words you don't know, returning an online product",
+        "pages": [
+          4037
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 6,
+    "title": "Unit 6: People",
+    "subtitle": "Grammar: making comparisons, present perfect simple and past simple · Vocabulary: describing character, family, adjective prefixes",
+    "available": true,
+    "lessons": [
+      {
+        "code": "6.1",
+        "title": "6.1 Family traits",
+        "desc": "Describing character & making comparisons",
+        "pages": [
+          4038,
+          4039
+        ],
+        "active": true
+      },
+      {
+        "code": "6.2",
+        "title": "6.2 Generations",
+        "desc": "Family & present perfect vs past simple",
+        "pages": [
+          4040,
+          4041
+        ],
+        "active": true
+      },
+      {
+        "code": "6.3",
+        "title": "6.3 Vocabulary development",
+        "desc": "Adjective prefixes",
+        "pages": [
+          4042
+        ],
+        "active": true
+      },
+      {
+        "code": "6.4",
+        "title": "6.4 Speaking and writing",
+        "desc": "Giving and responding to news, responding to news on social media",
+        "pages": [
+          4043
+        ],
+        "active": true
+      },
+      {
+        "code": "6.5",
+        "title": "6.5 Review & Reading",
+        "desc": "Martin Luther King - Little Rock, Review: Units 5 & 6",
+        "pages": [
+          4044,
+          4045
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 7,
+    "title": "Unit 7: Travel",
+    "subtitle": "Grammar: prediction (will, might), indefinite pronouns · Vocabulary: transport, holidays, -ed and -ing adjectives",
+    "available": true,
+    "lessons": [
+      {
+        "code": "7.1",
+        "title": "7.1 Future journeys",
+        "desc": "Transport & will / might prediction",
+        "pages": [
+          4046,
+          4047
+        ],
+        "active": true
+      },
+      {
+        "code": "7.2",
+        "title": "7.2 Travel plans",
+        "desc": "Holidays & indefinite pronouns (someone, everywhere...)",
+        "pages": [
+          4048,
+          4049
+        ],
+        "active": true
+      },
+      {
+        "code": "7.3",
+        "title": "7.3 Vocabulary development",
+        "desc": "-ed and -ing adjectives",
+        "pages": [
+          4050
+        ],
+        "active": true
+      },
+      {
+        "code": "7.4",
+        "title": "7.4 Speaking and writing",
+        "desc": "Checking into a hotel, short notes and messages",
+        "pages": [
+          4051
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 8,
+    "title": "Unit 8: Language and learning",
+    "subtitle": "Grammar: ability (can, be able to), obligation/necessity/permission (must, have to, can) · Vocabulary: skills and abilities, education",
+    "available": true,
+    "lessons": [
+      {
+        "code": "8.1",
+        "title": "8.1 Learning languages",
+        "desc": "Skills and abilities & can / be able to",
+        "pages": [
+          4052,
+          4053
+        ],
+        "active": true
+      },
+      {
+        "code": "8.2",
+        "title": "8.2 Education rules",
+        "desc": "Education & must / have to / can",
+        "pages": [
+          4054,
+          4055
+        ],
+        "active": true
+      },
+      {
+        "code": "8.3",
+        "title": "8.3 Vocabulary development",
+        "desc": "Collocations with make and do",
+        "pages": [
+          4056
+        ],
+        "active": true
+      },
+      {
+        "code": "8.4",
+        "title": "8.4 Speaking and writing",
+        "desc": "Asking for clarification, completing a form",
+        "pages": [
+          4057
+        ],
+        "active": true
+      },
+      {
+        "code": "8.5",
+        "title": "8.5 Review & Reading",
+        "desc": "Frightening experiences, Review: Units 7 & 8",
+        "pages": [
+          4058,
+          4059
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 9,
+    "title": "Unit 9: Body and mind",
+    "subtitle": "Grammar: first conditional (if + present, will/won't/might), present tenses in future clauses · Vocabulary: body and actions, health and fitness",
+    "available": true,
+    "lessons": [
+      {
+        "code": "9.1",
+        "title": "9.1 Mind over matter",
+        "desc": "Body and actions & conditional forms",
+        "pages": [
+          4060,
+          4061
+        ],
+        "active": true
+      },
+      {
+        "code": "9.2",
+        "title": "9.2 Health tips",
+        "desc": "Health, fitness & future time clauses",
+        "pages": [
+          4062,
+          4063
+        ],
+        "active": true
+      },
+      {
+        "code": "9.3",
+        "title": "9.3 Vocabulary development",
+        "desc": "Verbs and prepositions",
+        "pages": [
+          4064
+        ],
+        "active": true
+      },
+      {
+        "code": "9.4",
+        "title": "9.4 Speaking and writing",
+        "desc": "Asking for help and advice, a formal covering letter",
+        "pages": [
+          4065
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 10,
+    "title": "Unit 10: Food",
+    "subtitle": "Grammar: uses of the -ing form, the passive · Vocabulary: describing food, food containers, words with multiple meanings",
+    "available": true,
+    "lessons": [
+      {
+        "code": "10.1",
+        "title": "10.1 Eating well",
+        "desc": "Describing food & uses of the -ing form",
+        "pages": [
+          4066,
+          4067
+        ],
+        "active": true
+      },
+      {
+        "code": "10.2",
+        "title": "10.2 Food production",
+        "desc": "Food containers & the passive",
+        "pages": [
+          4068,
+          4069
+        ],
+        "active": true
+      },
+      {
+        "code": "10.3",
+        "title": "10.3 Vocabulary development",
+        "desc": "Words with more than one meaning",
+        "pages": [
+          4070
+        ],
+        "active": true
+      },
+      {
+        "code": "10.4",
+        "title": "10.4 Speaking and writing",
+        "desc": "Problems in a restaurant, a restaurant review",
+        "pages": [
+          4071
+        ],
+        "active": true
+      },
+      {
+        "code": "10.5",
+        "title": "10.5 Review & Reading",
+        "desc": "Chocolate - Making chocolate, Review: Units 9 & 10",
+        "pages": [
+          4072,
+          4073
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 11,
+    "title": "Unit 11: World",
+    "subtitle": "Grammar: second conditional (if + past, would), used to · Vocabulary: global issues, the news, phrasal verbs",
+    "available": true,
+    "lessons": [
+      {
+        "code": "11.1",
+        "title": "11.1 Global future",
+        "desc": "Global issues & second conditional",
+        "pages": [
+          4074,
+          4075
+        ],
+        "active": true
+      },
+      {
+        "code": "11.2",
+        "title": "11.2 In the news",
+        "desc": "The news & used to",
+        "pages": [
+          4076,
+          4077
+        ],
+        "active": true
+      },
+      {
+        "code": "11.3",
+        "title": "11.3 Vocabulary development",
+        "desc": "Phrasal verbs",
+        "pages": [
+          4078
+        ],
+        "active": true
+      },
+      {
+        "code": "11.4",
+        "title": "11.4 Speaking and writing",
+        "desc": "Expressing and responding to opinions, a presentation",
+        "pages": [
+          4079
+        ],
+        "active": true
+      }
+    ]
+  },
+  {
+    "unit": 12,
+    "title": "Unit 12: Work",
+    "subtitle": "Grammar: present perfect with for and since, uses of infinitive with to · Vocabulary: jobs, professions, job responsibilities",
+    "available": true,
+    "lessons": [
+      {
+        "code": "12.1",
+        "title": "12.1 Careers",
+        "desc": "Jobs, workplaces & present perfect with for/since",
+        "pages": [
+          4080,
+          4081
+        ],
+        "active": true
+      },
+      {
+        "code": "12.2",
+        "title": "12.2 At work",
+        "desc": "Job responsibilities & infinitive with to",
+        "pages": [
+          4082,
+          4083
+        ],
+        "active": true
+      },
+      {
+        "code": "12.3",
+        "title": "12.3 Vocabulary development",
+        "desc": "Phrases with in",
+        "pages": [
+          4084
+        ],
+        "active": true
+      },
+      {
+        "code": "12.4",
+        "title": "12.4 Speaking and writing",
+        "desc": "Answering interview questions, a curriculum vitae (CV)",
+        "pages": [
+          4085
+        ],
+        "active": true
+      },
+      {
+        "code": "12.5",
+        "title": "12.5 Review & Reading",
+        "desc": "Easter Island statues, Review: Units 11 & 12",
+        "pages": [
+          4086,
+          4087
+        ],
+        "active": true
+      }
+    ]
+  }
+];
+
   WB.unitsB2 = [
     {
       unit: 1,
@@ -31609,11 +33326,24 @@
   // Helper to get human-readable book page number (e.g., 2004 -> 4)
   WB.getDisplayPageNum = function(pageNum) {
     pageNum = parseInt(pageNum, 10);
-    return pageNum > 2000 ? (pageNum - 2000) : pageNum;
+    if (pageNum >= 4000) return (pageNum - 4000);
+    if (pageNum >= 3000) return (pageNum - 3000);
+    if (pageNum >= 2000) return (pageNum - 2000);
+    if (pageNum >= 1000) return (pageNum - 1000);
+    return pageNum;
+  };
+
+  WB.getBookLabel = function(pageNum) {
+    pageNum = parseInt(pageNum, 10);
+    if (pageNum >= 4000) return 'Navigate B1 Pre-Intermediate';
+    if (pageNum >= 3000) return 'Navigate A2 Elementary';
+    if (pageNum >= 2000) return 'Navigate B2 Upper-Intermediate';
+    if (pageNum >= 1000) return 'Navigate A1 Beginner';
+    return 'Navigate B1+ Intermediate';
   };
 
   WB.isUpperPage = function(pageNum) {
-    return parseInt(pageNum, 10) > 2000;
+    return parseInt(pageNum, 10) >= 2000 && parseInt(pageNum, 10) < 3000;
   };
 
   // Get active inputs for a page (with custom saved overrides & cloud store fallback)
@@ -31731,15 +33461,34 @@
   WB.getPageImage = function(pageNum) {
     pageNum = parseInt(pageNum, 10);
     var remoteHost = 'https://joraboymuhammad-code.github.io/english-hub-ethith/';
-    var basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-    var isFileProtocol = (window.location.protocol === 'file:');
-    var isLocalEthith = isFileProtocol && (window.location.pathname.toLowerCase().includes('ethith test') || window.location.pathname.toLowerCase().includes('sayt'));
+    var rawPath = (window.location && window.location.pathname) ? window.location.pathname : '';
+    var decodedPath = '';
+    try { decodedPath = decodeURIComponent(rawPath).toLowerCase(); } catch(e) { decodedPath = rawPath.toLowerCase(); }
+    var basePath = rawPath.endsWith('/') ? rawPath : rawPath.substring(0, rawPath.lastIndexOf('/') + 1);
+    var isFileProtocol = (window.location && window.location.protocol === 'file:');
+    var isLocalEthith = isFileProtocol && (decodedPath.includes('ethith') || decodedPath.includes('sayt') || decodedPath.includes('test') || rawPath.toLowerCase().includes('ethith%20test'));
     var prefix = (isFileProtocol && !isLocalEthith) ? remoteHost : basePath;
 
-    if (pageNum > 2000) {
+    if (pageNum >= 4000) {
+      // Pre-Intermediate (B1)
+      var b1PrePage = pageNum - 4000;
+      var b1PreFileNum = String(b1PrePage).padStart(3, '0');
+      return prefix + 'workbook_pre_pages/page_' + b1PreFileNum + '.jpg';
+    } else if (pageNum >= 3000) {
+      // Elementary (A2)
+      var a2Page = pageNum - 3000;
+      var a2FileNum = String(a2Page + 1).padStart(3, '0');
+      return prefix + 'workbook_elementary_pages/page_' + a2FileNum + '.jpg';
+    } else if (pageNum >= 2000) {
+      // Upper-Intermediate (B2)
       var b2Page = pageNum - 2000;
       var b2FileNum = String(b2Page + 1).padStart(3, '0');
       return prefix + 'workbook_upper_pages/page_' + b2FileNum + '.jpg';
+    } else if (pageNum >= 1000) {
+      // Beginner (A1)
+      var a1Page = pageNum - 1000;
+      var a1FileNum = String(a1Page + 1).padStart(3, '0');
+      return prefix + 'workbook_beginner_pages/page_' + a1FileNum + '.jpg';
     }
     if (pageNum === 4) return prefix + 'workbook_b1_u1_p4.jpg';
     if (pageNum === 5) return prefix + 'workbook_b1_u1_p5.jpg';
@@ -31809,6 +33558,50 @@
   };
 
   // Open Lesson Helper for Upper-Intermediate (B2)
+  
+  // Lesson Opener Helpers for A1, A2, and B1-Pre
+  WB.openLessonA1 = function(unitNum, lessonCode, pageNum) {
+    unitNum = parseInt(unitNum, 10) || 1;
+    lessonCode = lessonCode || '1.1';
+    WB._activeBook = 'a1';
+    var apView = document.getElementById('ethith-main-content') || document.querySelector('.ea-main');
+    if (window.go) {
+      window.go('beginner', { unit: unitNum, lesson: lessonCode, page: pageNum, bookLevel: 'a1' });
+    } else if (window.ethithOpenApp) {
+      window.ethithOpenApp('beginner', { unit: unitNum, lesson: lessonCode, page: pageNum, bookLevel: 'a1' });
+    } else if (apView) {
+      WB.renderLesson(apView, unitNum, lessonCode, 'a1');
+    }
+  };
+
+  WB.openLessonA2 = function(unitNum, lessonCode, pageNum) {
+    unitNum = parseInt(unitNum, 10) || 1;
+    lessonCode = lessonCode || '1.1';
+    WB._activeBook = 'a2';
+    var apView = document.getElementById('ethith-main-content') || document.querySelector('.ea-main');
+    if (window.go) {
+      window.go('elementary', { unit: unitNum, lesson: lessonCode, page: pageNum, bookLevel: 'a2' });
+    } else if (window.ethithOpenApp) {
+      window.ethithOpenApp('elementary', { unit: unitNum, lesson: lessonCode, page: pageNum, bookLevel: 'a2' });
+    } else if (apView) {
+      WB.renderLesson(apView, unitNum, lessonCode, 'a2');
+    }
+  };
+
+  WB.openLessonB1Pre = function(unitNum, lessonCode, pageNum) {
+    unitNum = parseInt(unitNum, 10) || 1;
+    lessonCode = lessonCode || '1.1';
+    WB._activeBook = 'b1_pre';
+    var apView = document.getElementById('ethith-main-content') || document.querySelector('.ea-main');
+    if (window.go) {
+      window.go('pre_intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum, bookLevel: 'b1_pre' });
+    } else if (window.ethithOpenApp) {
+      window.ethithOpenApp('pre_intermediate', { unit: unitNum, lesson: lessonCode, page: pageNum, bookLevel: 'b1_pre' });
+    } else if (apView) {
+      WB.renderLesson(apView, unitNum, lessonCode, 'b1_pre');
+    }
+  };
+
   WB.openLessonB2 = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
@@ -31833,6 +33626,40 @@
       var unitNum = parseInt(arg.unit, 10) || 1;
       var lessonCode = arg.lesson || (unitNum + '.1');
       WB.renderLesson(container, unitNum, lessonCode, 'b1');
+    }
+  };
+
+  
+  window.EthithViews.renderBeginnerView = function(container, arg) {
+    WB._activeBook = 'a1';
+    if (!arg || !arg.unit) {
+      renderUnitsCatalogA1(container);
+    } else {
+      var unitNum = parseInt(arg.unit, 10) || 1;
+      var lessonCode = arg.lesson || (unitNum + '.1');
+      WB.renderLesson(container, unitNum, lessonCode, 'a1');
+    }
+  };
+
+  window.EthithViews.renderElementaryView = function(container, arg) {
+    WB._activeBook = 'a2';
+    if (!arg || !arg.unit) {
+      renderUnitsCatalogA2(container);
+    } else {
+      var unitNum = parseInt(arg.unit, 10) || 1;
+      var lessonCode = arg.lesson || (unitNum + '.1');
+      WB.renderLesson(container, unitNum, lessonCode, 'a2');
+    }
+  };
+
+  window.EthithViews.renderPreIntermediateView = function(container, arg) {
+    WB._activeBook = 'b1_pre';
+    if (!arg || !arg.unit) {
+      renderUnitsCatalogB1Pre(container);
+    } else {
+      var unitNum = parseInt(arg.unit, 10) || 1;
+      var lessonCode = arg.lesson || (unitNum + '.1');
+      WB.renderLesson(container, unitNum, lessonCode, 'b1_pre');
     }
   };
 
@@ -32224,25 +34051,638 @@
   WB.renderUnitsCatalog = renderUnitsCatalog;
   WB.renderUnitsCatalogB2 = renderUnitsCatalogB2;
 
+  // Beginner (A1) Units Catalog View
+  WB._activeTab_a1 = WB._activeTab_a1 || 'mavzular';
+
+  function renderUnitsCatalogA1(container) {
+    var curTab = WB._activeTab_a1 || 'mavzular';
+    var units = WB.unitsA1 || [];
+
+    var h = '<div class="eth-wb-catalog" style="max-width:1100px;margin:0 auto;padding:16px 20px 60px;">' +
+      // Hero Header
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px;background:linear-gradient(135deg,rgba(16,185,129,0.14), rgba(6,78,59,0.25));border:1px solid rgba(16,185,129,0.35);padding:22px 26px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 12px 35px rgba(0,0,0,0.4);">' +
+        '<div>' +
+          '<div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#059669, #10b981);color:#fff;font-size:11px;font-weight:900;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">' +
+            '📗 Oxford Navigate A1' +
+          '</div>' +
+          '<h1 style="font-size:26px;font-weight:900;margin:0 0 6px;color:#ffffff">Beginner (A1) Darslik Dasturi</h1>' +
+          '<p style="font-size:14px;color:#cbd5e1;margin:0;max-width:680px;line-height:1.5;">' +
+            'Rasmiy mavzular, interaktiv workbook mashqlari, unit testlar va progress testlar tizimi.' +
+          '</p>' +
+        '</div>' +
+        '<div style="display:flex;gap:10px;align-items:center;">' +
+          '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:10px 18px;text-align:center;">' +
+            '<div style="font-size:20px;font-weight:900;color:#10b981;">' + units.length + '</div>' +
+            '<div style="font-size:11px;font-weight:700;color:#94a3b8;">Jami Unitlar</div>' +
+          '</div>' +
+          '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:10px 18px;text-align:center;">' +
+            '<div style="font-size:20px;font-weight:900;color:#10b981;">105</div>' +
+            '<div style="font-size:11px;font-weight:700;color:#94a3b8;">Kitob Sahifalari</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
+    h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="mavzular" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'mavzular' ? 'background:linear-gradient(135deg,#059669, #10b981);color:#fff;box-shadow:0 4px 15px rgba(16,185,129,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📚 Mavzular (' + units.length + ' Unit)' +
+      '</button>' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="unit_tests" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'unit_tests' ? 'background:linear-gradient(135deg,#059669, #10b981);color:#fff;box-shadow:0 4px 15px rgba(16,185,129,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📝 Unit Testlar' +
+      '</button>' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="progress_tests" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'progress_tests' ? 'background:linear-gradient(135deg,#059669, #10b981);color:#fff;box-shadow:0 4px 15px rgba(16,185,129,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📈 Progress Testlar' +
+      '</button>' +
+    '</div>';
+
+    // TAB 1: MAVZULAR
+    if (curTab === 'mavzular') {
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;">';
+      units.forEach(function(u) {
+        var isAvail = u.available;
+        h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid ' + (isAvail ? '#10b981' : 'var(--line)') + ';border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;box-shadow:' + (isAvail ? '0 12px 30px -10px rgba(16,185,129,0.25)' : 'none') + ';">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
+              '<span style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:#10b981;background:rgba(16,185,129,0.14);padding:3px 10px;border-radius:8px;">' +
+                'UNIT ' + u.unit +
+              '</span>' +
+              '<span style="font-size:11px;font-weight:800;color:#94a3b8;display:inline-flex;align-items:center;gap:4px;">' +
+                '📖 ' + (u.lessons ? u.lessons.length : 0) + ' mavzu' +
+              '</span>' +
+            '</div>' +
+            '<h3 style="margin:0 0 6px;font-size:17px;font-weight:900;color:var(--text);line-height:1.35;">' + u.title + '</h3>' +
+            '<p style="margin:0 0 14px;font-size:12px;color:var(--muted);line-height:1.45;">' + (u.subtitle || '') + '</p>' +
+          '</div>' +
+          '<div>' +
+            '<div style="font-size:11.5px;font-weight:800;color:#94a3b8;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em;">Darslik Mashqlari:</div>' +
+            '<div style="display:flex;flex-direction:column;gap:6px;">';
+
+        if (u.lessons && u.lessons.length > 0) {
+          u.lessons.forEach(function(les) {
+            h += '<div class="eth-wb-lesson-row" onclick="if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonA1(' + u.unit + ', \'' + les.code + '\');" ' +
+              'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);cursor:pointer;transition:all 0.15s ease;" ' +
+              'onmouseover="this.style.background=\'rgba(255,255,255,0.08)\';this.style.borderColor=\'#10b981\';" ' +
+              'onmouseout="this.style.background=\'rgba(255,255,255,0.03)\';this.style.borderColor=\'rgba(255,255,255,0.05)\';">' +
+              '<div style="min-width:0;flex:1;">' +
+                '<div style="font-size:13px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+                '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
+              '</div>' +
+              '<button type="button" onclick="event.stopPropagation();if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonA1(' + u.unit + ', \'' + les.code + '\');" ' +
+                'style="flex:none;background:linear-gradient(135deg, #059669, #10b981);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:11.5px;font-weight:900;cursor:pointer;letter-spacing:0.03em;box-shadow:0 4px 12px rgba(16,185,129,0.4);transition:transform 0.15s ease;" ' +
+                'onmouseover="this.style.transform=\'scale(1.05)\';" onmouseout="this.style.transform=\'scale(1)\';">' +
+                'Boshlash ➔' +
+              '</button>' +
+            '</div>';
+          });
+        }
+
+        h += '</div>' +
+          '</div>' +
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    // TAB 2: UNIT TESTLAR (EMPTY PLACEHOLDER STATE)
+    else if (curTab === 'unit_tests') {
+      h += '<div style="background:radial-gradient(circle at 10% 20%, rgba(16,185,129,0.14), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(16,185,129,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📝</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Unit testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'Ushbu bo‘lim hozircha bo‘sh holatda turibdi. Qaysi savollar qo‘shilishi belgilangandan so‘ng bu yerga barcha test savollari to‘liq joylashtiriladi va topshirish imkoniyati ochiladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.35);border-radius:12px;padding:6px 14px;color:#10b981;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta savol)' +
+        '</div>' +
+      '</div>';
+
+      // Empty Unit Test Slots
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">';
+      for (var uNum = 1; uNum <= units.length; uNum++) {
+        h += '<div class="ap-card" style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
+              '<span style="font-size:11px;font-weight:900;color:#10b981;background:rgba(16,185,129,0.14);padding:2px 8px;border-radius:6px;">UNIT TEST ' + uNum + '</span>' +
+              '<span style="font-size:11px;color:#64748b;font-weight:700;">Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:15px;font-weight:800;color:#e2e8f0;">' + (units[uNum - 1] ? units[uNum - 1].title : ('Unit ' + uNum + ' Test')) + '</h4>' +
+            '<p style="margin:0;font-size:11.5px;color:#94a3b8;line-height:1.4;">Grammar, vocabulary va comprehension tekshiruvi.</p>' +
+          '</div>' +
+          '<div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;">' +
+            '<span style="font-size:11px;color:#64748b;">0 savol mavjud</span>' +
+            '<button type="button" class="ea-empty-test-btn" data-type="unit" data-unit="' + uNum + '" style="background:rgba(255,255,255,0.05);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);padding:6px 12px;border-radius:8px;font-size:11px;font-weight:800;cursor:pointer;">' +
+              'Ko‘rish' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+      }
+      h += '</div>';
+    }
+
+    // TAB 3: PROGRESS TESTLAR (EMPTY PLACEHOLDER STATE)
+    else if (curTab === 'progress_tests') {
+      h += '<div style="background:radial-gradient(circle at 10% 20%, rgba(16,185,129,0.14), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(16,185,129,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📈</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Progress testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'O‘quvchilar bilimini umumiy bosqichlar bo‘yicha nazorat qiluvchi kompleks Progress testlar kutilmoqda. Savollar kiritilishi bilan ushbu bo‘lim faollashtiriladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.35);border-radius:12px;padding:6px 14px;color:#10b981;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta test)' +
+        '</div>' +
+      '</div>';
+
+      // 4 Progress Test Milestone Slots
+      var progTests = [
+        { name: 'Progress Test 1', range: 'Units 1 - 3 Nazorati', desc: 'Dastlabki 3 ta unit bo‘yicha oraliq sinov' },
+        { name: 'Progress Test 2', range: 'Units 4 - 6 Nazorati', desc: 'O‘rta bosqich bilimlarni mustahkamlash testi' },
+        { name: 'Progress Test 3', range: 'Units 7 - 9 Nazorati', desc: 'Kengaytirilgan grammatik va leksik monitoring' },
+        { name: 'Progress Test 4', range: 'Units 10 - ' + units.length + ' Nazorati', desc: 'Bosqichni yakunlovchi yakuniy progress test' }
+      ];
+
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">';
+      progTests.forEach(function(pt, idx) {
+        h += '<div class="ap-card" style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
+              '<span style="font-size:11px;font-weight:900;color:#10b981;background:rgba(16,185,129,0.14);padding:2px 8px;border-radius:6px;">BOSQICH ' + (idx + 1) + '</span>' +
+              '<span style="font-size:11px;color:#64748b;font-weight:700;">Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:16px;font-weight:800;color:#e2e8f0;">' + pt.name + '</h4>' +
+            '<div style="font-size:12px;font-weight:700;color:#10b981;margin-bottom:6px;">' + pt.range + '</div>' +
+            '<p style="margin:0;font-size:11.5px;color:#94a3b8;line-height:1.4;">' + pt.desc + '</p>' +
+          '</div>' +
+          '<div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;">' +
+            '<span style="font-size:11px;color:#64748b;">Hozircha 0 ta savol</span>' +
+            '<button type="button" class="ea-empty-test-btn" data-type="progress" data-idx="' + (idx + 1) + '" style="background:rgba(255,255,255,0.05);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);padding:6px 12px;border-radius:8px;font-size:11px;font-weight:800;cursor:pointer;">' +
+              'Ko‘rish' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    h += '</div>';
+
+    container.innerHTML = h;
+
+    // Wire Subtabs (Mavzular | Unit Testlar | Progress Testlar)
+    container.querySelectorAll('.eth-wb-subtab-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var tabKey = this.getAttribute('data-tab');
+        WB._activeTab_a1 = tabKey;
+        renderUnitsCatalogA1(container);
+      };
+    });
+
+    container.querySelectorAll('.ea-empty-test-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        if (window.EthithApp && window.EthithApp.showToast) {
+          window.EthithApp.showToast('Ushbu test bo‘limi hozircha bo‘sh. Savollar kutilmoqda.', 'info');
+        } else {
+          alert('Ushbu test bo‘limi hozircha bo‘sh. Savollar kutilmoqda.');
+        }
+      };
+    });
+  }
+
+  WB.renderUnitsCatalogA1 = renderUnitsCatalogA1;
+  
+
+  // Elementary (A2) Units Catalog View
+  WB._activeTab_a2 = WB._activeTab_a2 || 'mavzular';
+
+  function renderUnitsCatalogA2(container) {
+    var curTab = WB._activeTab_a2 || 'mavzular';
+    var units = WB.unitsA2 || [];
+
+    var h = '<div class="eth-wb-catalog" style="max-width:1100px;margin:0 auto;padding:16px 20px 60px;">' +
+      // Hero Header
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px;background:linear-gradient(135deg,rgba(2,132,199,0.14), rgba(30,58,138,0.25));border:1px solid rgba(2,132,199,0.35);padding:22px 26px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 12px 35px rgba(0,0,0,0.4);">' +
+        '<div>' +
+          '<div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#0284c7, #0ea5e9);color:#fff;font-size:11px;font-weight:900;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">' +
+            '📘 Oxford Navigate A2' +
+          '</div>' +
+          '<h1 style="font-size:26px;font-weight:900;margin:0 0 6px;color:#ffffff">Elementary (A2) Darslik Dasturi</h1>' +
+          '<p style="font-size:14px;color:#cbd5e1;margin:0;max-width:680px;line-height:1.5;">' +
+            'Rasmiy mavzular, interaktiv workbook mashqlari, unit testlar va progress testlar tizimi.' +
+          '</p>' +
+        '</div>' +
+        '<div style="display:flex;gap:10px;align-items:center;">' +
+          '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:10px 18px;text-align:center;">' +
+            '<div style="font-size:20px;font-weight:900;color:#0284c7;">' + units.length + '</div>' +
+            '<div style="font-size:11px;font-weight:700;color:#94a3b8;">Jami Unitlar</div>' +
+          '</div>' +
+          '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:10px 18px;text-align:center;">' +
+            '<div style="font-size:20px;font-weight:900;color:#10b981;">113</div>' +
+            '<div style="font-size:11px;font-weight:700;color:#94a3b8;">Kitob Sahifalari</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
+    h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="mavzular" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'mavzular' ? 'background:linear-gradient(135deg,#0284c7, #0ea5e9);color:#fff;box-shadow:0 4px 15px rgba(2,132,199,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📚 Mavzular (' + units.length + ' Unit)' +
+      '</button>' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="unit_tests" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'unit_tests' ? 'background:linear-gradient(135deg,#0284c7, #0ea5e9);color:#fff;box-shadow:0 4px 15px rgba(2,132,199,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📝 Unit Testlar' +
+      '</button>' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="progress_tests" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'progress_tests' ? 'background:linear-gradient(135deg,#0284c7, #0ea5e9);color:#fff;box-shadow:0 4px 15px rgba(2,132,199,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📈 Progress Testlar' +
+      '</button>' +
+    '</div>';
+
+    // TAB 1: MAVZULAR
+    if (curTab === 'mavzular') {
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;">';
+      units.forEach(function(u) {
+        var isAvail = u.available;
+        h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid ' + (isAvail ? '#0284c7' : 'var(--line)') + ';border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;box-shadow:' + (isAvail ? '0 12px 30px -10px rgba(2,132,199,0.25)' : 'none') + ';">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
+              '<span style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:#0284c7;background:rgba(2,132,199,0.14);padding:3px 10px;border-radius:8px;">' +
+                'UNIT ' + u.unit +
+              '</span>' +
+              '<span style="font-size:11px;font-weight:800;color:#94a3b8;display:inline-flex;align-items:center;gap:4px;">' +
+                '📖 ' + (u.lessons ? u.lessons.length : 0) + ' mavzu' +
+              '</span>' +
+            '</div>' +
+            '<h3 style="margin:0 0 6px;font-size:17px;font-weight:900;color:var(--text);line-height:1.35;">' + u.title + '</h3>' +
+            '<p style="margin:0 0 14px;font-size:12px;color:var(--muted);line-height:1.45;">' + (u.subtitle || '') + '</p>' +
+          '</div>' +
+          '<div>' +
+            '<div style="font-size:11.5px;font-weight:800;color:#94a3b8;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em;">Darslik Mashqlari:</div>' +
+            '<div style="display:flex;flex-direction:column;gap:6px;">';
+
+        if (u.lessons && u.lessons.length > 0) {
+          u.lessons.forEach(function(les) {
+            h += '<div class="eth-wb-lesson-row" onclick="if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonA2(' + u.unit + ', \'' + les.code + '\');" ' +
+              'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);cursor:pointer;transition:all 0.15s ease;" ' +
+              'onmouseover="this.style.background=\'rgba(255,255,255,0.08)\';this.style.borderColor=\'#0284c7\';" ' +
+              'onmouseout="this.style.background=\'rgba(255,255,255,0.03)\';this.style.borderColor=\'rgba(255,255,255,0.05)\';">' +
+              '<div style="min-width:0;flex:1;">' +
+                '<div style="font-size:13px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+                '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
+              '</div>' +
+              '<button type="button" onclick="event.stopPropagation();if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonA2(' + u.unit + ', \'' + les.code + '\');" ' +
+                'style="flex:none;background:linear-gradient(135deg, #0284c7, #0ea5e9);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:11.5px;font-weight:900;cursor:pointer;letter-spacing:0.03em;box-shadow:0 4px 12px rgba(2,132,199,0.4);transition:transform 0.15s ease;" ' +
+                'onmouseover="this.style.transform=\'scale(1.05)\';" onmouseout="this.style.transform=\'scale(1)\';">' +
+                'Boshlash ➔' +
+              '</button>' +
+            '</div>';
+          });
+        }
+
+        h += '</div>' +
+          '</div>' +
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    // TAB 2: UNIT TESTLAR (EMPTY PLACEHOLDER STATE)
+    else if (curTab === 'unit_tests') {
+      h += '<div style="background:radial-gradient(circle at 10% 20%, rgba(2,132,199,0.14), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(2,132,199,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📝</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Unit testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'Ushbu bo‘lim hozircha bo‘sh holatda turibdi. Qaysi savollar qo‘shilishi belgilangandan so‘ng bu yerga barcha test savollari to‘liq joylashtiriladi va topshirish imkoniyati ochiladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(2,132,199,0.14);border:1px solid rgba(2,132,199,0.35);border-radius:12px;padding:6px 14px;color:#0284c7;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta savol)' +
+        '</div>' +
+      '</div>';
+
+      // Empty Unit Test Slots
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">';
+      for (var uNum = 1; uNum <= units.length; uNum++) {
+        h += '<div class="ap-card" style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
+              '<span style="font-size:11px;font-weight:900;color:#0284c7;background:rgba(2,132,199,0.14);padding:2px 8px;border-radius:6px;">UNIT TEST ' + uNum + '</span>' +
+              '<span style="font-size:11px;color:#64748b;font-weight:700;">Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:15px;font-weight:800;color:#e2e8f0;">' + (units[uNum - 1] ? units[uNum - 1].title : ('Unit ' + uNum + ' Test')) + '</h4>' +
+            '<p style="margin:0;font-size:11.5px;color:#94a3b8;line-height:1.4;">Grammar, vocabulary va comprehension tekshiruvi.</p>' +
+          '</div>' +
+          '<div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;">' +
+            '<span style="font-size:11px;color:#64748b;">0 savol mavjud</span>' +
+            '<button type="button" class="ea-empty-test-btn" data-type="unit" data-unit="' + uNum + '" style="background:rgba(255,255,255,0.05);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);padding:6px 12px;border-radius:8px;font-size:11px;font-weight:800;cursor:pointer;">' +
+              'Ko‘rish' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+      }
+      h += '</div>';
+    }
+
+    // TAB 3: PROGRESS TESTLAR (EMPTY PLACEHOLDER STATE)
+    else if (curTab === 'progress_tests') {
+      h += '<div style="background:radial-gradient(circle at 10% 20%, rgba(2,132,199,0.14), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(2,132,199,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📈</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Progress testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'O‘quvchilar bilimini umumiy bosqichlar bo‘yicha nazorat qiluvchi kompleks Progress testlar kutilmoqda. Savollar kiritilishi bilan ushbu bo‘lim faollashtiriladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(2,132,199,0.14);border:1px solid rgba(2,132,199,0.35);border-radius:12px;padding:6px 14px;color:#0284c7;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta test)' +
+        '</div>' +
+      '</div>';
+
+      // 4 Progress Test Milestone Slots
+      var progTests = [
+        { name: 'Progress Test 1', range: 'Units 1 - 3 Nazorati', desc: 'Dastlabki 3 ta unit bo‘yicha oraliq sinov' },
+        { name: 'Progress Test 2', range: 'Units 4 - 6 Nazorati', desc: 'O‘rta bosqich bilimlarni mustahkamlash testi' },
+        { name: 'Progress Test 3', range: 'Units 7 - 9 Nazorati', desc: 'Kengaytirilgan grammatik va leksik monitoring' },
+        { name: 'Progress Test 4', range: 'Units 10 - ' + units.length + ' Nazorati', desc: 'Bosqichni yakunlovchi yakuniy progress test' }
+      ];
+
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">';
+      progTests.forEach(function(pt, idx) {
+        h += '<div class="ap-card" style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
+              '<span style="font-size:11px;font-weight:900;color:#0284c7;background:rgba(2,132,199,0.14);padding:2px 8px;border-radius:6px;">BOSQICH ' + (idx + 1) + '</span>' +
+              '<span style="font-size:11px;color:#64748b;font-weight:700;">Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:16px;font-weight:800;color:#e2e8f0;">' + pt.name + '</h4>' +
+            '<div style="font-size:12px;font-weight:700;color:#0284c7;margin-bottom:6px;">' + pt.range + '</div>' +
+            '<p style="margin:0;font-size:11.5px;color:#94a3b8;line-height:1.4;">' + pt.desc + '</p>' +
+          '</div>' +
+          '<div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;">' +
+            '<span style="font-size:11px;color:#64748b;">Hozircha 0 ta savol</span>' +
+            '<button type="button" class="ea-empty-test-btn" data-type="progress" data-idx="' + (idx + 1) + '" style="background:rgba(255,255,255,0.05);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);padding:6px 12px;border-radius:8px;font-size:11px;font-weight:800;cursor:pointer;">' +
+              'Ko‘rish' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    h += '</div>';
+
+    container.innerHTML = h;
+
+    // Wire Subtabs (Mavzular | Unit Testlar | Progress Testlar)
+    container.querySelectorAll('.eth-wb-subtab-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var tabKey = this.getAttribute('data-tab');
+        WB._activeTab_a2 = tabKey;
+        renderUnitsCatalogA2(container);
+      };
+    });
+
+    container.querySelectorAll('.ea-empty-test-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        if (window.EthithApp && window.EthithApp.showToast) {
+          window.EthithApp.showToast('Ushbu test bo‘limi hozircha bo‘sh. Savollar kutilmoqda.', 'info');
+        } else {
+          alert('Ushbu test bo‘limi hozircha bo‘sh. Savollar kutilmoqda.');
+        }
+      };
+    });
+  }
+
+  WB.renderUnitsCatalogA2 = renderUnitsCatalogA2;
+  
+
+  // Pre-Intermediate (B1-Pre) Units Catalog View
+  WB._activeTab_b1pre = WB._activeTab_b1pre || 'mavzular';
+
+  function renderUnitsCatalogB1Pre(container) {
+    var curTab = WB._activeTab_b1pre || 'mavzular';
+    var units = WB.unitsB1Pre || [];
+
+    var h = '<div class="eth-wb-catalog" style="max-width:1100px;margin:0 auto;padding:16px 20px 60px;">' +
+      // Hero Header
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px;background:linear-gradient(135deg,rgba(139,92,246,0.14), rgba(76,29,149,0.25));border:1px solid rgba(139,92,246,0.35);padding:22px 26px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 12px 35px rgba(0,0,0,0.4);">' +
+        '<div>' +
+          '<div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#7c3aed, #8b5cf6);color:#fff;font-size:11px;font-weight:900;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">' +
+            '📙 Oxford Navigate B1 Pre' +
+          '</div>' +
+          '<h1 style="font-size:26px;font-weight:900;margin:0 0 6px;color:#ffffff">Pre-Intermediate (B1) Darslik Dasturi</h1>' +
+          '<p style="font-size:14px;color:#cbd5e1;margin:0;max-width:680px;line-height:1.5;">' +
+            'Rasmiy mavzular, interaktiv workbook mashqlari, unit testlar va progress testlar tizimi.' +
+          '</p>' +
+        '</div>' +
+        '<div style="display:flex;gap:10px;align-items:center;">' +
+          '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:10px 18px;text-align:center;">' +
+            '<div style="font-size:20px;font-weight:900;color:#8b5cf6;">' + units.length + '</div>' +
+            '<div style="font-size:11px;font-weight:700;color:#94a3b8;">Jami Unitlar</div>' +
+          '</div>' +
+          '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:10px 18px;text-align:center;">' +
+            '<div style="font-size:20px;font-weight:900;color:#10b981;">112</div>' +
+            '<div style="font-size:11px;font-weight:700;color:#94a3b8;">Kitob Sahifalari</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
+    h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="mavzular" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'mavzular' ? 'background:linear-gradient(135deg,#7c3aed, #8b5cf6);color:#fff;box-shadow:0 4px 15px rgba(139,92,246,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📚 Mavzular (' + units.length + ' Unit)' +
+      '</button>' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="unit_tests" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'unit_tests' ? 'background:linear-gradient(135deg,#7c3aed, #8b5cf6);color:#fff;box-shadow:0 4px 15px rgba(139,92,246,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📝 Unit Testlar' +
+      '</button>' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="progress_tests" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'progress_tests' ? 'background:linear-gradient(135deg,#7c3aed, #8b5cf6);color:#fff;box-shadow:0 4px 15px rgba(139,92,246,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📈 Progress Testlar' +
+      '</button>' +
+    '</div>';
+
+    // TAB 1: MAVZULAR
+    if (curTab === 'mavzular') {
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;">';
+      units.forEach(function(u) {
+        var isAvail = u.available;
+        h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid ' + (isAvail ? '#8b5cf6' : 'var(--line)') + ';border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;box-shadow:' + (isAvail ? '0 12px 30px -10px rgba(139,92,246,0.25)' : 'none') + ';">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
+              '<span style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:#8b5cf6;background:rgba(139,92,246,0.14);padding:3px 10px;border-radius:8px;">' +
+                'UNIT ' + u.unit +
+              '</span>' +
+              '<span style="font-size:11px;font-weight:800;color:#94a3b8;display:inline-flex;align-items:center;gap:4px;">' +
+                '📖 ' + (u.lessons ? u.lessons.length : 0) + ' mavzu' +
+              '</span>' +
+            '</div>' +
+            '<h3 style="margin:0 0 6px;font-size:17px;font-weight:900;color:var(--text);line-height:1.35;">' + u.title + '</h3>' +
+            '<p style="margin:0 0 14px;font-size:12px;color:var(--muted);line-height:1.45;">' + (u.subtitle || '') + '</p>' +
+          '</div>' +
+          '<div>' +
+            '<div style="font-size:11.5px;font-weight:800;color:#94a3b8;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em;">Darslik Mashqlari:</div>' +
+            '<div style="display:flex;flex-direction:column;gap:6px;">';
+
+        if (u.lessons && u.lessons.length > 0) {
+          u.lessons.forEach(function(les) {
+            h += '<div class="eth-wb-lesson-row" onclick="if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB1Pre(' + u.unit + ', \'' + les.code + '\');" ' +
+              'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);cursor:pointer;transition:all 0.15s ease;" ' +
+              'onmouseover="this.style.background=\'rgba(255,255,255,0.08)\';this.style.borderColor=\'#8b5cf6\';" ' +
+              'onmouseout="this.style.background=\'rgba(255,255,255,0.03)\';this.style.borderColor=\'rgba(255,255,255,0.05)\';">' +
+              '<div style="min-width:0;flex:1;">' +
+                '<div style="font-size:13px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+                '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
+              '</div>' +
+              '<button type="button" onclick="event.stopPropagation();if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB1Pre(' + u.unit + ', \'' + les.code + '\');" ' +
+                'style="flex:none;background:linear-gradient(135deg, #7c3aed, #8b5cf6);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:11.5px;font-weight:900;cursor:pointer;letter-spacing:0.03em;box-shadow:0 4px 12px rgba(139,92,246,0.4);transition:transform 0.15s ease;" ' +
+                'onmouseover="this.style.transform=\'scale(1.05)\';" onmouseout="this.style.transform=\'scale(1)\';">' +
+                'Boshlash ➔' +
+              '</button>' +
+            '</div>';
+          });
+        }
+
+        h += '</div>' +
+          '</div>' +
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    // TAB 2: UNIT TESTLAR (EMPTY PLACEHOLDER STATE)
+    else if (curTab === 'unit_tests') {
+      h += '<div style="background:radial-gradient(circle at 10% 20%, rgba(139,92,246,0.14), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(139,92,246,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📝</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Unit testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'Ushbu bo‘lim hozircha bo‘sh holatda turibdi. Qaysi savollar qo‘shilishi belgilangandan so‘ng bu yerga barcha test savollari to‘liq joylashtiriladi va topshirish imkoniyati ochiladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.14);border:1px solid rgba(139,92,246,0.35);border-radius:12px;padding:6px 14px;color:#8b5cf6;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta savol)' +
+        '</div>' +
+      '</div>';
+
+      // Empty Unit Test Slots
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">';
+      for (var uNum = 1; uNum <= units.length; uNum++) {
+        h += '<div class="ap-card" style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
+              '<span style="font-size:11px;font-weight:900;color:#8b5cf6;background:rgba(139,92,246,0.14);padding:2px 8px;border-radius:6px;">UNIT TEST ' + uNum + '</span>' +
+              '<span style="font-size:11px;color:#64748b;font-weight:700;">Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:15px;font-weight:800;color:#e2e8f0;">' + (units[uNum - 1] ? units[uNum - 1].title : ('Unit ' + uNum + ' Test')) + '</h4>' +
+            '<p style="margin:0;font-size:11.5px;color:#94a3b8;line-height:1.4;">Grammar, vocabulary va comprehension tekshiruvi.</p>' +
+          '</div>' +
+          '<div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;">' +
+            '<span style="font-size:11px;color:#64748b;">0 savol mavjud</span>' +
+            '<button type="button" class="ea-empty-test-btn" data-type="unit" data-unit="' + uNum + '" style="background:rgba(255,255,255,0.05);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);padding:6px 12px;border-radius:8px;font-size:11px;font-weight:800;cursor:pointer;">' +
+              'Ko‘rish' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+      }
+      h += '</div>';
+    }
+
+    // TAB 3: PROGRESS TESTLAR (EMPTY PLACEHOLDER STATE)
+    else if (curTab === 'progress_tests') {
+      h += '<div style="background:radial-gradient(circle at 10% 20%, rgba(139,92,246,0.14), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(139,92,246,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📈</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Progress testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'O‘quvchilar bilimini umumiy bosqichlar bo‘yicha nazorat qiluvchi kompleks Progress testlar kutilmoqda. Savollar kiritilishi bilan ushbu bo‘lim faollashtiriladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.14);border:1px solid rgba(139,92,246,0.35);border-radius:12px;padding:6px 14px;color:#8b5cf6;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta test)' +
+        '</div>' +
+      '</div>';
+
+      // 4 Progress Test Milestone Slots
+      var progTests = [
+        { name: 'Progress Test 1', range: 'Units 1 - 3 Nazorati', desc: 'Dastlabki 3 ta unit bo‘yicha oraliq sinov' },
+        { name: 'Progress Test 2', range: 'Units 4 - 6 Nazorati', desc: 'O‘rta bosqich bilimlarni mustahkamlash testi' },
+        { name: 'Progress Test 3', range: 'Units 7 - 9 Nazorati', desc: 'Kengaytirilgan grammatik va leksik monitoring' },
+        { name: 'Progress Test 4', range: 'Units 10 - ' + units.length + ' Nazorati', desc: 'Bosqichni yakunlovchi yakuniy progress test' }
+      ];
+
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">';
+      progTests.forEach(function(pt, idx) {
+        h += '<div class="ap-card" style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
+              '<span style="font-size:11px;font-weight:900;color:#8b5cf6;background:rgba(139,92,246,0.14);padding:2px 8px;border-radius:6px;">BOSQICH ' + (idx + 1) + '</span>' +
+              '<span style="font-size:11px;color:#64748b;font-weight:700;">Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:16px;font-weight:800;color:#e2e8f0;">' + pt.name + '</h4>' +
+            '<div style="font-size:12px;font-weight:700;color:#8b5cf6;margin-bottom:6px;">' + pt.range + '</div>' +
+            '<p style="margin:0;font-size:11.5px;color:#94a3b8;line-height:1.4;">' + pt.desc + '</p>' +
+          '</div>' +
+          '<div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;">' +
+            '<span style="font-size:11px;color:#64748b;">Hozircha 0 ta savol</span>' +
+            '<button type="button" class="ea-empty-test-btn" data-type="progress" data-idx="' + (idx + 1) + '" style="background:rgba(255,255,255,0.05);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);padding:6px 12px;border-radius:8px;font-size:11px;font-weight:800;cursor:pointer;">' +
+              'Ko‘rish' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    h += '</div>';
+
+    container.innerHTML = h;
+
+    // Wire Subtabs (Mavzular | Unit Testlar | Progress Testlar)
+    container.querySelectorAll('.eth-wb-subtab-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var tabKey = this.getAttribute('data-tab');
+        WB._activeTab_b1pre = tabKey;
+        renderUnitsCatalogB1Pre(container);
+      };
+    });
+
+    container.querySelectorAll('.ea-empty-test-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        if (window.EthithApp && window.EthithApp.showToast) {
+          window.EthithApp.showToast('Ushbu test bo‘limi hozircha bo‘sh. Savollar kutilmoqda.', 'info');
+        } else {
+          alert('Ushbu test bo‘limi hozircha bo‘sh. Savollar kutilmoqda.');
+        }
+      };
+    });
+  }
+
+  WB.renderUnitsCatalogB1Pre = renderUnitsCatalogB1Pre;
+  
+
   // 2. Interactive Digital Workbook Viewer (Continuous Vertical Scroll PDF-Style + Responsive Zoom)
   function renderLesson(container, unitNum, lessonCode, bookLevel) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || (unitNum + '.1');
     bookLevel = bookLevel || (WB._currentLesson && WB._currentLesson.bookLevel) || WB._activeBook || 'b1';
     var isB2 = (bookLevel === 'b2');
+    var isA1 = (bookLevel === 'a1');
+    var isA2 = (bookLevel === 'a2');
+    var isB1Pre = (bookLevel === 'b1_pre');
     WB._activeBook = bookLevel;
 
-    var unitsList = isB2 ? WB.unitsB2 : WB.units;
+    var unitsList = WB.units;
+    if (isB2) unitsList = WB.unitsB2 || [];
+    else if (isA1) unitsList = WB.unitsA1 || [];
+    else if (isA2) unitsList = WB.unitsA2 || [];
+    else if (isB1Pre) unitsList = WB.unitsB1Pre || [];
     var unitData = unitsList.find(function(u) { return u.unit === unitNum; }) || unitsList[0];
     var lessonData = null;
     if (unitData && unitData.lessons) {
       lessonData = unitData.lessons.find(function(l) { return l.code === lessonCode; });
     }
     if (!lessonData) {
-      lessonData = { code: lessonCode, title: "Unit " + lessonCode, desc: "Interactive Workbook Pages", pages: isB2 ? [2004, 2005] : [4, 5] };
+      lessonData = { code: lessonCode, title: "Unit " + lessonCode, desc: "Interactive Workbook Pages", pages: isB2 ? [2004, 2005] : isA1 ? [1004, 1005] : isA2 ? [3004, 3005] : isB1Pre ? [4004, 4005] : [4, 5] };
     }
 
-    var rawPages = lessonData.pages || (isB2 ? [2004, 2005] : [4, 5]);
+    var rawPages = lessonData.pages || (isB2 ? [2004, 2005] : isA1 ? [1004, 1005] : isA2 ? [3004, 3005] : isB1Pre ? [4004, 4005] : [4, 5]);
     var pages = rawPages.map(function(p) { return (isB2 && p < 2000) ? (p + 2000) : p; });
     var isTeacher = isTeacherRole();
     var isEditor = isTeacher && (window._ethithWbEditorMode === true);
@@ -32265,7 +34705,7 @@
             '← Barcha Unitlar' +
           '</button>' +
           '<div>' +
-            '<div style="font-size:15px;font-weight:900;color:var(--text);">' + lessonData.title + (isB2 ? ' <span style="font-size:11px;background:#ea580c;color:#fff;padding:2px 7px;border-radius:8px;vertical-align:middle;margin-left:4px;">B2 Upper</span>' : '') + '</div>' +
+            '<div style="font-size:15px;font-weight:900;color:var(--text);">' + lessonData.title + (isB2 ? ' <span style="font-size:11px;background:#ea580c;color:#fff;padding:2px 7px;border-radius:8px;vertical-align:middle;margin-left:4px;">B2 Upper</span>' : isA1 ? ' <span style="font-size:11px;background:#10b981;color:#fff;padding:2px 7px;border-radius:8px;vertical-align:middle;margin-left:4px;">A1 Beginner</span>' : isA2 ? ' <span style="font-size:11px;background:#0284c7;color:#fff;padding:2px 7px;border-radius:8px;vertical-align:middle;margin-left:4px;">A2 Elementary</span>' : isB1Pre ? ' <span style="font-size:11px;background:#8b5cf6;color:#fff;padding:2px 7px;border-radius:8px;vertical-align:middle;margin-left:4px;">B1 Pre-Int</span>' : ' <span style="font-size:11px;background:#38bdf8;color:#000;padding:2px 7px;border-radius:8px;vertical-align:middle;margin-left:4px;">B1+ Intermediate</span>') + '</div>' +
             '<div style="font-size:11.5px;color:var(--muted);">' + lessonData.desc + ' · Uzluksiz PDF ko‘rinishi</div>' +
           '</div>' +
         '</div>' +
@@ -32413,7 +34853,7 @@
   function renderSinglePageBlock(pageNum, pageIndex, imgSrc, inputs, isEditor, curZoom) {
     curZoom = curZoom || window._ethWbZoom || 1;
     var dispP = WB.getDisplayPageNum(pageNum);
-    var bookLabel = WB.isUpperPage(pageNum) ? 'Navigate B2 Upper-Intermediate' : 'Navigate B1+';
+    var bookLabel = WB.getBookLabel ? WB.getBookLabel(pageNum) : (WB.isUpperPage(pageNum) ? 'Navigate B2 Upper-Intermediate' : 'Navigate B1+');
     var h = '<div id="ethWbPage_' + pageNum + '" class="eth-wb-page-box' + (isEditor ? ' is-editing' : '') + '" data-page="' + pageNum + '" style="--wb-zoom:' + curZoom + ';container-type:inline-size;position:relative;width:calc(100% * var(--wb-zoom, 1));max-width:calc(920px * var(--wb-zoom, 1));margin:0 auto 30px auto;box-shadow:0 10px 40px rgba(0,0,0,0.25);border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);">' +
       // Top indicator banner
       '<div style="background:#0f172a;color:#fff;padding:6px 14px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:800;">' +
@@ -32530,7 +34970,12 @@
     var backBtn = container.querySelector('#ethWbBackBtn');
     if (backBtn) {
       backBtn.addEventListener('click', function() {
-        if (window.go) window.go(isB2 ? 'upper_intermediate' : 'intermediate');
+        var targetView = 'intermediate';
+        if (isB2) targetView = 'upper_intermediate';
+        else if (isA1) targetView = 'beginner';
+        else if (isA2) targetView = 'elementary';
+        else if (isB1Pre) targetView = 'pre_intermediate';
+        if (window.go) window.go(targetView);
       });
     }
 
