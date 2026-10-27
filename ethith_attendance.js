@@ -253,8 +253,8 @@
     var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
     if (!S.teachers || S.teachers.length === 0) {
       S.teachers = [
-        { id: 'admin_official_teacher', name: 'Ustoz', email: 'admin_12038f1aq8syash@ethith.uz', subject: 'Ingliz tili (IELTS Intensive)', hourlyRate: 100000, teachingHours: 72 },
-        { id: 't_zizi', name: 'Zizi Ustoz', email: 'zizi@ethith.uz', subject: 'Ingliz tili (General B2)', hourlyRate: 85000, teachingHours: 64 }
+        { id: 'admin_official_teacher', name: 'Ustoz', email: 'teacher@ethith.uz', subject: 'Ingliz tili (IELTS Intensive)', hourlyRate: 100000, teachingHours: 72, assignedClasses: ['cls_ethith_main', 'cls_upper_intermediate'] },
+        { id: 't_zizi', name: 'Zizi Ustoz', email: 'zizi@ethith.uz', subject: 'Ingliz tili (General B2)', hourlyRate: 85000, teachingHours: 64, assignedClasses: ['cls_1792041880052', 'cls_ielts_ex'] }
       ];
     }
     return S.teachers;
@@ -318,7 +318,7 @@
   }
 
   function getAvailableClasses() {
-    var sClasses = (window.S && window.S.classes) || [];
+    var sClasses = (window.S && window.S.classes) || (window.EthithApp && window.EthithApp.state && window.EthithApp.state.classes) || [];
     if (sClasses.length === 0) {
       var u = getActiveUser();
       var defaultCls = {

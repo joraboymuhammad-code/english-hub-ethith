@@ -28,7 +28,7 @@
     }
     if (!appState.teachers || appState.teachers.length === 0) {
       appState.teachers = [
-        { id: "admin_official_teacher", name: "Ustoz", email: "admin_12038f1aq8syash@ethith.uz", phone: "+998 90 123 45 67", card: "8600 1122 3344 5566", monthlySalary: 6000000, hourlyRate: 100000, teachingHours: 72, paidThisMonth: true, assignedClasses: ["cls_ethith_main"] },
+        { id: "admin_official_teacher", name: "Ustoz", email: "teacher@ethith.uz", phone: "+998 90 123 45 67", card: "8600 1122 3344 5566", monthlySalary: 6000000, hourlyRate: 100000, teachingHours: 72, paidThisMonth: true, assignedClasses: ["cls_ethith_main", "cls_upper_intermediate"] },
         { id: "t_zizi", name: "Zizi Ustoz", email: "zizi@ethith.uz", phone: "+998 93 987 65 43", card: "9860 7788 9900 1122", monthlySalary: 5500000, hourlyRate: 85000, teachingHours: 64, paidThisMonth: false, assignedClasses: ["cls_1792041880052"] }
       ];
     }
@@ -2025,7 +2025,7 @@
     if (!S.finance.studentFees) S.finance.studentFees = {};
     if (!S.teachers || S.teachers.length === 0) {
       S.teachers = [
-        { id: 'admin_official_root', name: 'Ustoz', email: 'admin_12038f1aq8syash@ethith.uz', subject: 'Ingliz tili', hourlyRate: 100000, teachingHours: 72, monthlyBonus: 1000000, status: 'paid' },
+        { id: 'admin_official_teacher', name: 'Ustoz', email: 'teacher@ethith.uz', subject: 'Ingliz tili (IELTS Intensive)', hourlyRate: 100000, teachingHours: 72, monthlyBonus: 1000000, status: 'paid' },
         { id: 't_zizi', name: 'Zizi Ustoz', email: 'zizi@ethith.uz', subject: 'Ingliz tili', hourlyRate: 85000, teachingHours: 64, monthlyBonus: 1000000, status: 'pending' }
       ];
     }

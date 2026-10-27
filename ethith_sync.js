@@ -798,16 +798,28 @@
           return s === 'yangi o\'quvchi' || s === 'yangi foydalanuvchi' || s === 'foydalanuvchi' || s === 'user' || s === 'student' || s === 'guest';
         };
 
-        var isTeacherAcc = (u.role === 'teacher' || uEmail === 'admin_12038f1aq8syash@ethith.uz' || uId === 'admin_official_teacher');
+        var isTeacherAcc = (u.role === 'teacher' || uEmail === 'teacher@ethith.uz' || uId === 'admin_official_teacher');
         if (isTeacherAcc) {
           u.name = 'Ustoz';
           uName = 'Ustoz';
           u.id = 'admin_official_teacher';
           uId = 'admin_official_teacher';
         }
+        var isAdminAcc = (u.role === 'admin' || uEmail === 'admin_12038f1aq8syash@ethith.uz' || uId === 'admin_official_root');
+        if (isAdminAcc) {
+          u.name = 'Bosh Admin';
+          uName = 'Bosh Admin';
+          u.id = 'admin_official_root';
+          uId = 'admin_official_root';
+          u.role = 'admin';
+        }
 
         if (existingAcc) {
-          if (isTeacherAcc || existingAcc.role === 'teacher' || (existingAcc.email || '').toLowerCase().trim() === 'admin_12038f1aq8syash@ethith.uz') {
+          if (isAdminAcc || existingAcc.role === 'admin' || (existingAcc.email || '').toLowerCase().trim() === 'admin_12038f1aq8syash@ethith.uz') {
+            existingAcc.name = 'Bosh Admin';
+            existingAcc.id = 'admin_official_root';
+            existingAcc.role = 'admin';
+          } else if (isTeacherAcc || existingAcc.role === 'teacher' || (existingAcc.email || '').toLowerCase().trim() === 'teacher@ethith.uz') {
             existingAcc.name = 'Ustoz';
             existingAcc.id = 'admin_official_teacher';
             existingAcc.role = 'teacher';
@@ -1095,6 +1107,35 @@
       } catch(e) {}
     }
     return null;
+  }
+
+  function mergeTeachers(localTeachers, remoteTeachers) {
+    var changed = false;
+    if (!Array.isArray(remoteTeachers)) return changed;
+    if (!Array.isArray(localTeachers)) return changed;
+    remoteTeachers.forEach(function(rt) {
+      if (!rt || !rt.id) return;
+      var lt = localTeachers.find(function(t) { return t.id === rt.id; });
+      if (!lt) {
+        localTeachers.push(rt);
+        changed = true;
+      } else {
+        if (rt.name && lt.name !== rt.name) { lt.name = rt.name; changed = true; }
+        if (rt.subject && lt.subject !== rt.subject) { lt.subject = rt.subject; changed = true; }
+        if (rt.teachingHours && lt.teachingHours !== rt.teachingHours) { lt.teachingHours = rt.teachingHours; changed = true; }
+        if (rt.hourlyRate && lt.hourlyRate !== rt.hourlyRate) { lt.hourlyRate = rt.hourlyRate; changed = true; }
+        if (Array.isArray(rt.assignedClasses)) {
+          if (!Array.isArray(lt.assignedClasses)) lt.assignedClasses = [];
+          rt.assignedClasses.forEach(function(cid) {
+            if (lt.assignedClasses.indexOf(cid) === -1) {
+              lt.assignedClasses.push(cid);
+              changed = true;
+            }
+          });
+        }
+      }
+    });
+    return changed;
   }
 
   function mergeClasses(localClasses, remoteClasses) {
@@ -1414,9 +1455,16 @@
     var name = (acc.name || '').toLowerCase().trim();
     var id = (acc.id || '').toLowerCase().trim();
     if (!name && !email) return true;
-    if (id === 'admin_official_teacher' || email === 'admin_12038f1aq8syash@ethith.uz' || acc.role === 'teacher') {
+    if (id === 'admin_official_root' || email === 'admin_12038f1aq8syash@ethith.uz' || acc.role === 'admin') {
+      acc.name = 'Bosh Admin';
+      acc.id = 'admin_official_root';
+      acc.role = 'admin';
+      return false;
+    }
+    if (id === 'admin_official_teacher' || email === 'teacher@ethith.uz' || acc.role === 'teacher') {
       acc.name = 'Ustoz';
       acc.id = 'admin_official_teacher';
+      acc.role = 'teacher';
       return false;
     }
     var purgedList = [
@@ -1665,7 +1713,8 @@
           }
         }
         if (remoteData.centerSettings && !S.centerSettings) S.centerSettings = remoteData.centerSettings;
-        if (remoteData.teachers && (!S.teachers || S.teachers.length === 0)) S.teachers = remoteData.teachers;
+        if (!S.teachers) S.teachers = [];
+        if (remoteData.teachers) mergeTeachers(S.teachers, remoteData.teachers);
         if (remoteData.timetable && (!S.timetable || S.timetable.length === 0)) S.timetable = remoteData.timetable;
         if (remoteData.contests && (!S.contests || S.contests.length === 0)) S.contests = remoteData.contests;
         if (remoteData.payments && (!S.payments || Object.keys(S.payments).length === 0)) S.payments = remoteData.payments;
@@ -1826,14 +1875,24 @@
           }
 
           var isCurrentActive = S.user && S.user.email && S.user.email.toLowerCase().trim() === rEmail;
-          if (rAcc.role === 'teacher' || rEmail === 'admin_12038f1aq8syash@ethith.uz') {
+          if (rEmail === 'admin_12038f1aq8syash@ethith.uz' || rAcc.role === 'admin') {
+            rAcc.name = 'Bosh Admin';
+            rAcc.id = 'admin_official_root';
+            rAcc.role = 'admin';
+          } else if (rAcc.role === 'teacher' || rEmail === 'teacher@ethith.uz') {
             rAcc.name = 'Ustoz';
             rAcc.id = 'admin_official_teacher';
+            rAcc.role = 'teacher';
           }
           if (isCurrentActive) {
-            if (S.user.role === 'teacher' || rEmail === 'admin_12038f1aq8syash@ethith.uz') {
+            if (rEmail === 'admin_12038f1aq8syash@ethith.uz' || S.user.role === 'admin') {
+              S.user.name = 'Bosh Admin';
+              S.user.id = 'admin_official_root';
+              S.user.role = 'admin';
+            } else if (S.user.role === 'teacher' || rEmail === 'teacher@ethith.uz') {
               S.user.name = 'Ustoz';
               S.user.id = 'admin_official_teacher';
+              S.user.role = 'teacher';
             } else if (rAcc.name && !S.user.name) {
               S.user.name = rAcc.name;
             }
@@ -1954,6 +2013,8 @@
         });
       }
       var c1 = mergeClasses(S.classes, remote.classes || []);
+      if (!S.teachers) S.teachers = [];
+      var cTeachers = mergeTeachers(S.teachers, remote.teachers || []);
       var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
       if (window.EthithApp) {
         window.EthithApp.saveState();
@@ -2069,6 +2130,8 @@
         if (!S.quizzes) S.quizzes = [];
         var c0 = mergeQuizzes(S.quizzes, remote.quizzes || [], S.deletedQuizIds || []);
         var c1 = mergeClasses(S.classes, remote.classes || []);
+        if (!S.teachers) S.teachers = [];
+        var cTeachers = mergeTeachers(S.teachers, remote.teachers || []);
         var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
         var c3 = mergeAccounts(S.accounts || [], remote.accounts || []);
         var c4 = mergeP2PListings(S.p2pListings || [], remote.p2pListings || [], S.deletedListingIds || []);
@@ -2281,6 +2344,9 @@
     subscribeClass: subscribeClass,
     fetchRemoteStore: fetchRemoteStore,
     pushRemoteStore: pushRemoteStore,
+    pushStoreUpdate: pushRemoteStore,
+    pushLocalStore: pushRemoteStore,
+    pushStore: pushRemoteStore,
     syncInitialData: syncInitialData,
     broadcastLocal: broadcastLocal,
     saveWorkbookCloudOverrides: saveWorkbookCloudOverrides,
