@@ -3349,6 +3349,12 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
 
   EE.renderTimetableView = function(container) {
     if (!container) return;
+    if (window.EthithAttendance && typeof window.EthithAttendance.render === 'function') {
+      window.EthithAttendance.activeClassId = null;
+      window.EthithAttendance.activeTeacherId = null;
+      window.EthithAttendance.render(container);
+      return;
+    }
     var S = getStore();
     var timetable = S.timetable || [];
     var isStaff = isAdminOrTeacher();
@@ -3448,6 +3454,12 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
   // ============================================================================
   EE.renderClassesView = function(container) {
     if (!container) return;
+    if (window.EthithAttendance && typeof window.EthithAttendance.render === 'function') {
+      window.EthithAttendance.activeClassId = null;
+      window.EthithAttendance.activeTeacherId = null;
+      window.EthithAttendance.render(container);
+      return;
+    }
     var S = getStore();
     var classes = S.classes || [];
     var isStaff = isAdminOrTeacher();
