@@ -142,105 +142,72 @@
       html += '</div>';
     }
 
-    // TAB 2: UNIT TESTS (1-12) WITH TEACHER LOCK/UNLOCK CONTROLS
+    // TAB 2: UNIT TESTS (1-12) - EMPTY PLACEHOLDER STATE
     else if (_activeNavTab === 'unitTests') {
-      html += '<div style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">';
-      html += '  <div>';
-      html += '    <h3 style="margin:0 0 4px;font-size:18px;font-weight:900;color:var(--text)">📝 Rasmiy Oxford Navigate Unit Testlari (1–12)</h3>';
-      html += '    <p style="margin:0;font-size:13px;color:var(--muted)">Har bir bo\'lim bo\'yicha rasmiy imtihonlar. ' + (isTeacher ? '<b>Ustoz rejimi:</b> Siz istalgan testni qulflash yoki qulfdan chiqarishingiz mumkin.' : 'Ustozingiz qulfdan chiqargan testlarni yechishingiz mumkin.') + '</p>';
-      html += '  </div>';
-      html += '</div>';
+      html += '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(56,189,248,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📝</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Unit testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'Ushbu bo‘lim hozircha bo‘sh holatda turibdi. Qaysi savollar qo‘shilishi belgilangandan so‘ng bu yerga barcha test savollari to‘liq joylashtiriladi va topshirish imkoniyati ochiladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);border-radius:12px;padding:6px 14px;color:#38bdf8;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta savol)' +
+        '</div>' +
+      '</div>';
 
-      html += '<div class="eth-grid-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">';
-      (curLevelData.unitTests || []).forEach(function(test) {
-        var testLockKey = test.id;
-        var isLocked = Boolean(S.navigateTestLocks && S.navigateTestLocks[testLockKey]);
-
-        html += '<div class="ap-card" style="padding:20px;border-radius:18px;border:1.5px solid ' + (isLocked ? '#ef4444' : 'var(--border)') + ';display:flex;flex-direction:column;justify-content:space-between;position:relative">';
-        html += '  <div>';
-        html += '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">';
-        html += '      <span style="font-size:11px;font-weight:900;padding:3px 8px;border-radius:8px;background:' + (isLocked ? 'rgba(239,68,68,0.15)' : 'rgba(16,185,129,0.15)') + ';color:' + (isLocked ? '#ef4444' : '#10b981') + '">';
-        html +=          isLocked ? '🔒 Qulflangan' : '🔓 Ochiq (Faol)';
-        html += '      </span>';
-        html += '      <span style="font-size:12px;color:var(--muted);font-weight:700">⏱ ' + test.duration + ' daqiqa</span>';
-        html += '    </div>';
-        html += '    <h4 style="margin:0 0 6px;font-size:16px;font-weight:800;color:var(--text)">' + esc(test.title) + '</h4>';
-        html += '    <p style="margin:0 0 12px;font-size:12px;color:var(--muted)">' + esc(test.subtitle) + '</p>';
-        html += '    <div style="font-size:12px;color:var(--muted);margin-bottom:16px;display:flex;gap:12px">';
-        html += '      <span>❓ ' + (test.questions ? test.questions.length : 0) + ' ta savol</span>';
-        html += '      <span>⭐ ' + (test.totalPoints || 50) + ' ball</span>';
-        html += '    </div>';
-        html += '  </div>';
-
-        html += '  <div style="display:flex;flex-direction:column;gap:8px">';
-        if (isTeacher) {
-          html += '    <button type="button" class="ap-btn ' + (isLocked ? 'solid' : 'out') + '" style="padding:8px;font-size:12px;font-weight:800;' + (isLocked ? 'background:#10b981;color:#fff' : 'color:#ef4444;border-color:#ef4444') + '" data-toggle-test-lock="' + test.id + '">';
-          html +=        isLocked ? '🔓 Qulfdan Chiqarish (Ruxsat Berish)' : '🔒 Qulfni Yopish (Qulflash)';
-          html += '    </button>';
-        }
-
-        if (isLocked && !isTeacher) {
-          html += '    <button type="button" class="ap-btn" style="background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.3);padding:10px;font-size:13px;font-weight:800;border-radius:12px;cursor:not-allowed" data-locked-alert="true">';
-          html += '      🔒 Ustoz tomonidan qulflangan';
-          html += '    </button>';
-        } else {
-          html += '    <button type="button" class="ap-btn solid" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;padding:10px;font-size:13px;font-weight:800;border-radius:12px" data-run-nav-test="' + test.id + '" data-level="' + _activeNavLevel + '" data-test-type="unit">';
-          html += '      🚀 Testni Boshlash &rarr;';
-          html += '    </button>';
-        }
-        html += '  </div>';
-        html += '</div>';
-      });
+      html += '<div class="eth-grid-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">';
+      for (var uNum = 1; uNum <= 12; uNum++) {
+        html += '<div class="ap-card" style="padding:20px;border-radius:18px;border:1.5px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">' +
+              '<span style="font-size:11px;font-weight:900;padding:3px 8px;border-radius:8px;background:rgba(56,189,248,0.12);color:#38bdf8;text-transform:uppercase">Unit ' + uNum + ' Test</span>' +
+              '<span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.06);color:var(--muted)">🔒 Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:16px;font-weight:800;color:var(--text)">Unit ' + uNum + ' Oraliq Test</h4>' +
+            '<p style="margin:0 0 12px;font-size:12.5px;color:var(--muted)">Savollar bazasi hali kiritilmagan.</p>' +
+          '</div>' +
+          '<button type="button" class="ap-btn out" style="width:100%;padding:9px;font-size:12.5px;font-weight:800;border-radius:10px" onclick="alert(\'Ushbu test uchun hali savollar kiritilmagan. Savollarni kiritish kutilmoqda.\');">' +
+            '👁️ Ko‘rish (Bo‘sh)' +
+          '</button>' +
+        '</div>';
+      }
       html += '</div>';
     }
 
-    // TAB 3: PROGRESS TESTS (1-4)
+    // TAB 3: PROGRESS TESTS (1-4) - EMPTY PLACEHOLDER STATE
     else if (_activeNavTab === 'progressTests') {
-      html += '<div style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">';
-      html += '  <div>';
-      html += '    <h3 style="margin:0 0 4px;font-size:18px;font-weight:900;color:var(--text)">📈 Navigate Katta Bosqichli Progress Testlar (1–4)</h3>';
-      html += '    <p style="margin:0;font-size:13px;color:var(--muted)">Har 3 unit yakunida o\'quvchilar bilimini tekshiruvchi asosiy sinov imtihonlari.</p>';
-      html += '  </div>';
-      html += '</div>';
+      html += '<div style="background:radial-gradient(circle at 10% 20%, rgba(139,92,246,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(168,85,247,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📈</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Progress testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'Har 3 ta unitdan keyin o‘tiladigan yirik progress testlar bo‘limi. Savollar ro‘yxati berilgandan so‘ng bu yerda to‘liq ochiladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);border-radius:12px;padding:6px 14px;color:#c084fc;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta savol)' +
+        '</div>' +
+      '</div>';
 
-      html += '<div class="eth-grid-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px">';
-      (curLevelData.progressTests || []).forEach(function(pt) {
-        var isLocked = Boolean(S.navigateTestLocks && S.navigateTestLocks[pt.id]);
-
-        html += '<div class="ap-card" style="padding:22px;border-radius:20px;border:1.5px solid ' + (isLocked ? '#ef4444' : '#3b82f6') + ';display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(180deg, var(--card) 0%, rgba(37,99,235,0.03) 100%)">';
-        html += '  <div>';
-        html += '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">';
-        html += '      <span style="font-size:11px;font-weight:900;padding:3px 10px;border-radius:10px;background:' + (isLocked ? 'rgba(239,68,68,0.15)' : 'rgba(37,99,235,0.15)') + ';color:' + (isLocked ? '#ef4444' : '#2563eb') + '">';
-        html +=          isLocked ? '🔒 Qulflangan' : '🏆 ' + pt.units;
-        html += '      </span>';
-        html += '      <span style="font-size:12px;color:var(--muted);font-weight:700">⏱ ' + pt.duration + ' daqiqa</span>';
-        html += '    </div>';
-        html += '    <h4 style="margin:0 0 6px;font-size:17px;font-weight:900;color:var(--text)">' + esc(pt.title) + '</h4>';
-        html += '    <p style="margin:0 0 14px;font-size:12.5px;color:var(--muted)">' + esc(pt.subtitle) + '</p>';
-        html += '    <div style="font-size:12.5px;color:var(--muted);margin-bottom:18px;display:flex;gap:14px">';
-        html += '      <span>❓ ' + (pt.questions ? pt.questions.length : 0) + ' ta savol</span>';
-        html += '      <span>⭐ ' + (pt.totalPoints || 80) + ' ball</span>';
-        html += '    </div>';
-        html += '  </div>';
-
-        html += '  <div style="display:flex;flex-direction:column;gap:8px">';
-        if (isTeacher) {
-          html += '    <button type="button" class="ap-btn ' + (isLocked ? 'solid' : 'out') + '" style="padding:8px;font-size:12px;font-weight:800;' + (isLocked ? 'background:#10b981;color:#fff' : 'color:#ef4444;border-color:#ef4444') + '" data-toggle-test-lock="' + pt.id + '">';
-          html +=        isLocked ? '🔓 Qulfdan Chiqarish (Ruxsat Berish)' : '🔒 Qulfni Yopish (Qulflash)';
-          html += '    </button>';
-        }
-
-        if (isLocked && !isTeacher) {
-          html += '    <button type="button" class="ap-btn" style="background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.3);padding:11px;font-size:13.5px;font-weight:800;border-radius:12px;cursor:not-allowed" data-locked-alert="true">';
-          html += '      🔒 Ustoz tomonidan qulflangan';
-          html += '    </button>';
-        } else {
-          html += '    <button type="button" class="ap-btn solid" style="background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;padding:11px;font-size:13.5px;font-weight:800;border-radius:12px;box-shadow:0 6px 16px rgba(37,99,235,0.3)" data-run-nav-test="' + pt.id + '" data-level="' + _activeNavLevel + '" data-test-type="progress">';
-          html += '      🚀 Progress Testni Boshlash &rarr;';
-          html += '    </button>';
-        }
-        html += '  </div>';
-        html += '</div>';
+      var pTestsNav = [
+        { id: 1, units: 'Units 1–3', title: 'Progress Test 1' },
+        { id: 2, units: 'Units 4–6', title: 'Progress Test 2' },
+        { id: 3, units: 'Units 7–9', title: 'Progress Test 3' },
+        { id: 4, units: 'Units 10–12', title: 'Progress Test 4' }
+      ];
+      html += '<div class="eth-grid-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">';
+      pTestsNav.forEach(function(pt) {
+        html += '<div class="ap-card" style="padding:22px;border-radius:20px;border:1.5px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">' +
+              '<span style="font-size:11px;font-weight:900;padding:3px 10px;border-radius:10px;background:rgba(168,85,247,0.15);color:#c084fc;text-transform:uppercase">' + pt.units + '</span>' +
+              '<span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.06);color:var(--muted)">🔒 Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:17px;font-weight:900;color:var(--text)">' + pt.title + '</h4>' +
+            '<p style="margin:0 0 14px;font-size:12.5px;color:var(--muted)">Asosiy sinov progress imtihon savollari kutilmoqda.</p>' +
+          '</div>' +
+          '<button type="button" class="ap-btn out" style="width:100%;padding:9px;font-size:12.5px;font-weight:800;border-radius:10px" onclick="alert(\'Ushbu test uchun hali savollar kiritilmagan. Savollarni kiritish kutilmoqda.\');">' +
+            '👁️ Ko‘rish (Bo‘sh)' +
+          '</button>' +
+        '</div>';
       });
       html += '</div>';
     }

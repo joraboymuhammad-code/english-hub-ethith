@@ -31847,150 +31847,378 @@
     }
   };
 
-  // 1A. Intermediate (B1+) Units Catalog View
+    // 1A. Intermediate (B1+) Units Catalog View
+  WB._activeTabB1 = WB._activeTabB1 || 'mavzular';
+
   function renderUnitsCatalog(container) {
+    var curTab = WB._activeTabB1 || 'mavzular';
+
     var h = '<div class="eth-wb-catalog" style="max-width:1100px;margin:0 auto;padding:16px 20px 60px;">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:24px;background:linear-gradient(135deg,rgba(14,165,233,0.12),rgba(30,58,138,0.22));border:1px solid rgba(56,189,248,0.3);padding:22px 26px;border-radius:20px;backdrop-filter:blur(10px);">' +
+      // Hero Header
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px;background:linear-gradient(135deg,rgba(14,165,233,0.14),rgba(30,58,138,0.25));border:1px solid rgba(56,189,248,0.35);padding:22px 26px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 12px 35px rgba(0,0,0,0.4);">' +
         '<div>' +
-          '<div style="display:inline-flex;align-items:center;gap:6px;background:#0284c7;color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">' +
-            '📘 Oxford Navigate B1+ Workbook' +
+          '<div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;font-size:11px;font-weight:900;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">' +
+            '📘 Oxford Navigate B1+' +
           '</div>' +
-          '<h1 style="font-size:26px;font-weight:900;margin:0 0 6px;color:var(--text)">Intermediate (B1+) Darslik Dasturi</h1>' +
-          '<p style="font-size:14px;color:var(--muted);margin:0;max-width:680px;line-height:1.5;">' +
-            'Barcha 12 ta rasmiy Unitlar va mashqlar kitobi. PDF usulidagi uzluksiz sahifalar, turli interaktiv topshiriqlar (o‘qib yozish, chizib o‘chirish, variant tanlash, bog‘lash, joylashtirish). <b style="color:#38bdf8;">(Listening mashqlari butunlay chiqarilgan).</b>' +
+          '<h1 style="font-size:26px;font-weight:900;margin:0 0 6px;color:#ffffff">Intermediate (B1+) Darslik Dasturi</h1>' +
+          '<p style="font-size:14px;color:#cbd5e1;margin:0;max-width:680px;line-height:1.5;">' +
+            'Rasmiy mavzular, interaktiv workbook mashqlari, unit testlar va progress testlar tizimi.' +
           '</p>' +
         '</div>' +
         '<div style="display:flex;gap:10px;align-items:center;">' +
-          '<div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 18px;text-align:center;">' +
+          '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:10px 18px;text-align:center;">' +
             '<div style="font-size:20px;font-weight:900;color:#0ea5e9;">12</div>' +
-            '<div style="font-size:11px;font-weight:700;color:var(--muted);">Jami Unitlar</div>' +
+            '<div style="font-size:11px;font-weight:700;color:#94a3b8;">Jami Unitlar</div>' +
           '</div>' +
-          '<div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 18px;text-align:center;">' +
+          '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:10px 18px;text-align:center;">' +
             '<div style="font-size:20px;font-weight:900;color:#10b981;">113</div>' +
-            '<div style="font-size:11px;font-weight:700;color:var(--muted);">Kitob Sahifalari</div>' +
+            '<div style="font-size:11px;font-weight:700;color:#94a3b8;">Kitob Sahifalari</div>' +
           '</div>' +
         '</div>' +
       '</div>';
 
-    // Unit Grid (12 units)
-    h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;">';
+    // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
+    h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="mavzular" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'mavzular' ? 'background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;box-shadow:0 4px 15px rgba(2,132,199,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📚 Mavzular (12 Unit)' +
+      '</button>' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="unit_tests" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'unit_tests' ? 'background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;box-shadow:0 4px 15px rgba(2,132,199,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📝 Unit Testlar' +
+      '</button>' +
+      '<button type="button" class="eth-wb-subtab-btn" data-tab="progress_tests" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'progress_tests' ? 'background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;box-shadow:0 4px 15px rgba(2,132,199,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📈 Progress Testlar' +
+      '</button>' +
+    '</div>';
 
-    WB.units.forEach(function(u) {
-      var isAvail = u.available;
-      h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid ' + (isAvail ? '#38bdf8' : 'var(--line)') + ';border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;box-shadow:' + (isAvail ? '0 12px 30px -10px rgba(14,165,233,0.3)' : 'none') + ';">' +
-        '<div>' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
-            '<span style="font-size:12px;font-weight:800;color:' + (isAvail ? '#0284c7' : 'var(--muted)') + ';text-transform:uppercase;letter-spacing:0.04em;">UNIT ' + u.unit + '</span>' +
-            '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;background:' + (isAvail ? 'rgba(16,185,129,0.15)' : 'var(--soft)') + ';color:' + (isAvail ? '#10b981' : 'var(--muted)') + ';">' +
-              (isAvail ? '● Ochiq (Tayyor)' : '🔒 Tayyorlanmoqda') +
-            '</span>' +
-          '</div>' +
-          '<h3 style="font-size:18px;font-weight:800;margin:0 0 6px;color:var(--text);">' + u.title + '</h3>' +
-          '<p style="font-size:13px;color:var(--muted);margin:0 0 16px;line-height:1.4;">' + u.subtitle + '</p>';
-
-      if (u.lessons && u.lessons.length > 0) {
-        h += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">';
-        u.lessons.forEach(function(les) {
-          h += '<div class="eth-wb-lesson-row" data-unit="' + u.unit + '" data-lesson="' + les.code + '" ' +
-            'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\');" ' +
-            'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(14,165,233,0.08);border:1.5px solid rgba(56,189,248,0.25);cursor:pointer;transition:all 0.2s;">' +
-            '<div style="min-width:0;flex:1;">' +
-              '<div style="font-size:13.5px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
-              '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
+    // TAB 1: MAVZULAR
+    if (curTab === 'mavzular') {
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;">';
+      WB.units.forEach(function(u) {
+        var isAvail = u.available;
+        h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid ' + (isAvail ? '#38bdf8' : 'var(--line)') + ';border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;box-shadow:' + (isAvail ? '0 12px 30px -10px rgba(14,165,233,0.3)' : 'none') + ';">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
+              '<span style="font-size:12px;font-weight:800;color:' + (isAvail ? '#0284c7' : 'var(--muted)') + ';text-transform:uppercase;letter-spacing:0.04em;">UNIT ' + u.unit + '</span>' +
+              '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;background:' + (isAvail ? 'rgba(16,185,129,0.15)' : 'var(--soft)') + ';color:' + (isAvail ? '#10b981' : 'var(--muted)') + ';">' +
+                (isAvail ? '● Ochiq (Tayyor)' : '🔒 Tayyorlanmoqda') +
+              '</span>' +
             '</div>' +
-            '<button type="button" ' +
-              'onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\');" ' +
-              'style="flex:none;background:linear-gradient(135deg, #0284c7, #154b89);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(2,132,199,0.35);">' +
-              'Boshlash ➔' +
-            '</button>' +
-          '</div>';
-        });
-        h += '</div>';
-      }
+            '<h3 style="font-size:18px;font-weight:800;margin:0 0 6px;color:var(--text);">' + u.title + '</h3>' +
+            '<p style="font-size:13px;color:var(--muted);margin:0 0 16px;line-height:1.4;">' + u.subtitle + '</p>';
 
-      h += '</div>' +
-        '<div style="border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);">' +
-          '<span>Navigate B1+ Workbook</span>' +
-          '<span>' + (u.lessons ? u.lessons.length + ' ta dars' : '5 Dars') + '</span>' +
+        if (u.lessons && u.lessons.length > 0) {
+          h += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">';
+          u.lessons.forEach(function(les) {
+            h += '<div class="eth-wb-lesson-row" data-unit="' + u.unit + '" data-lesson="' + les.code + '" ' +
+              'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\');" ' +
+              'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(14,165,233,0.08);border:1.5px solid rgba(56,189,248,0.25);cursor:pointer;transition:all 0.2s;">' +
+              '<div style="min-width:0;flex:1;">' +
+                '<div style="font-size:13.5px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+                '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
+              '</div>' +
+              '<button type="button" ' +
+                'onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\');" ' +
+                'style="flex:none;background:linear-gradient(135deg, #0284c7, #154b89);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(2,132,199,0.35);">' +
+                'Boshlash ➔' +
+              '</button>' +
+            '</div>';
+          });
+          h += '</div>';
+        }
+
+        h += '</div>' +
+          '<div style="border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);">' +
+            '<span>Navigate B1+ Workbook</span>' +
+            '<span>' + (u.lessons ? u.lessons.length + ' ta dars' : '5 Dars') + '</span>' +
+          '</div>' +
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    // TAB 2: UNIT TESTLAR (EMPTY PLACEHOLDER STATE)
+    else if (curTab === 'unit_tests') {
+      h += '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(56,189,248,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📝</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Unit testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'Ushbu bo‘lim hozircha bo‘sh holatda turibdi. Qaysi savollar qo‘shilishi belgilangandan so‘ng bu yerga barcha test savollari to‘liq joylashtiriladi va topshirish imkoniyati ochiladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);border-radius:12px;padding:6px 14px;color:#38bdf8;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta savol)' +
         '</div>' +
       '</div>';
+
+      // 12 Empty Unit Test Slots
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">';
+      for (var uNum = 1; uNum <= 12; uNum++) {
+        h += '<div class="ap-card" style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
+              '<span style="font-size:11px;font-weight:900;padding:3px 9px;border-radius:8px;background:rgba(56,189,248,0.12);color:#38bdf8;text-transform:uppercase;">Unit ' + uNum + ' Test</span>' +
+              '<span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.06);color:#94a3b8;">🔒 Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:16px;font-weight:800;color:#fff;">Unit ' + uNum + ' Oraliq Test</h4>' +
+            '<p style="margin:0 0 14px;font-size:12.5px;color:#94a3b8;line-height:1.4;">Savollar bazasi hali kiritilmagan.</p>' +
+          '</div>' +
+          '<button type="button" class="ea-empty-test-btn" style="width:100%;background:rgba(255,255,255,0.05);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px;font-size:12.5px;font-weight:800;cursor:pointer;">' +
+            '👁️ Ko‘rish (Bo‘sh)' +
+          '</button>' +
+        '</div>';
+      }
+      h += '</div>';
+    }
+
+    // TAB 3: PROGRESS TESTLAR (EMPTY PLACEHOLDER STATE)
+    else if (curTab === 'progress_tests') {
+      h += '<div style="background:radial-gradient(circle at 10% 20%, rgba(139,92,246,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(168,85,247,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📈</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Progress testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'Har 3 ta unitdan keyin o‘tiladigan yirik progress testlar bo‘limi. Savollar ro‘yxati berilgandan so‘ng bu yerda to‘liq ochiladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);border-radius:12px;padding:6px 14px;color:#c084fc;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta savol)' +
+        '</div>' +
+      '</div>';
+
+      // 4 Empty Progress Test Slots
+      var pTests = [
+        { id: 1, units: 'Units 1–3', title: 'Progress Test 1' },
+        { id: 2, units: 'Units 4–6', title: 'Progress Test 2' },
+        { id: 3, units: 'Units 7–9', title: 'Progress Test 3' },
+        { id: 4, units: 'Units 10–12', title: 'Progress Test 4' }
+      ];
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">';
+      pTests.forEach(function(pt) {
+        h += '<div class="ap-card" style="background:rgba(15,23,42,0.85);border:1px solid rgba(168,85,247,0.25);border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
+              '<span style="font-size:11px;font-weight:900;padding:3px 9px;border-radius:8px;background:rgba(168,85,247,0.15);color:#c084fc;text-transform:uppercase;">' + pt.units + '</span>' +
+              '<span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.06);color:#94a3b8;">🔒 Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:17px;font-weight:800;color:#fff;">' + pt.title + '</h4>' +
+            '<p style="margin:0 0 14px;font-size:12.5px;color:#94a3b8;line-height:1.4;">Asosiy sinov progress imtihon savollari kutilmoqda.</p>' +
+          '</div>' +
+          '<button type="button" class="ea-empty-test-btn" style="width:100%;background:rgba(255,255,255,0.05);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px;font-size:12.5px;font-weight:800;cursor:pointer;">' +
+            '👁️ Ko‘rish (Bo‘sh)' +
+          '</button>' +
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    h += '</div>';
+    container.innerHTML = h;
+
+    // Attach Tab switching listeners
+    container.querySelectorAll('.eth-wb-subtab-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var tabKey = btn.getAttribute('data-tab');
+        WB._activeTabB1 = tabKey;
+        renderUnitsCatalog(container);
+      };
     });
 
-    h += '</div></div>';
-    container.innerHTML = h;
+    container.querySelectorAll('.ea-empty-test-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        if (window.EthithApp && window.EthithApp.toast) {
+          window.EthithApp.toast('Ushbu test uchun hali savollar kiritilmagan. Savollarni kiritish kutilmoqda.');
+        } else {
+          alert('Ushbu test uchun hali savollar kiritilmagan. Savollarni kiritish kutilmoqda.');
+        }
+      };
+    });
   }
 
-  // 1B. Upper-Intermediate (B2) Units Catalog View
+    // 1B. Upper-Intermediate (B2) Units Catalog View
+  WB._activeTabB2 = WB._activeTabB2 || 'mavzular';
+
   function renderUnitsCatalogB2(container) {
+    var curTab = WB._activeTabB2 || 'mavzular';
+
     var h = '<div class="eth-wb-catalog" style="max-width:1100px;margin:0 auto;padding:16px 20px 60px;">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:24px;background:linear-gradient(135deg,rgba(249,115,22,0.14),rgba(124,45,18,0.26));border:1px solid rgba(251,146,60,0.4);padding:22px 26px;border-radius:20px;backdrop-filter:blur(10px);">' +
+      // Hero Header
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px;background:linear-gradient(135deg,rgba(249,115,22,0.16),rgba(124,45,18,0.28));border:1px solid rgba(251,146,60,0.45);padding:22px 26px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 12px 35px rgba(0,0,0,0.4);">' +
         '<div>' +
-          '<div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#ea580c,#c2410c);color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">' +
-            '📙 Oxford Navigate B2 Workbook' +
+          '<div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#ea580c,#c2410c);color:#fff;font-size:11px;font-weight:900;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">' +
+            '📙 Oxford Navigate B2' +
           '</div>' +
-          '<h1 style="font-size:26px;font-weight:900;margin:0 0 6px;color:var(--text)">Upper-Intermediate (B2) Darslik Dasturi</h1>' +
-          '<p style="font-size:14px;color:var(--muted);margin:0;max-width:680px;line-height:1.5;">' +
-            'Barcha 12 ta rasmiy Upper-Intermediate (B2) Unitlar va mashqlar kitobi. Uzluksiz PDF sahifalar, kattalashtirish/kichraytirish (Zoom) va Visual Editor bilan millisekundlarda barcha akkauntlarga sinxronlanadi!' +
+          '<h1 style="font-size:26px;font-weight:900;margin:0 0 6px;color:#ffffff">Upper-Intermediate (B2) Darslik Dasturi</h1>' +
+          '<p style="font-size:14px;color:#cbd5e1;margin:0;max-width:680px;line-height:1.5;">' +
+            'Rasmiy mavzular, interaktiv workbook mashqlari, unit testlar va progress testlar tizimi.' +
           '</p>' +
         '</div>' +
         '<div style="display:flex;gap:10px;align-items:center;">' +
-          '<div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 18px;text-align:center;">' +
+          '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:10px 18px;text-align:center;">' +
             '<div style="font-size:20px;font-weight:900;color:#fb923c;">12</div>' +
-            '<div style="font-size:11px;font-weight:700;color:var(--muted);">Jami Unitlar</div>' +
+            '<div style="font-size:11px;font-weight:700;color:#94a3b8;">Jami Unitlar</div>' +
           '</div>' +
-          '<div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 18px;text-align:center;">' +
+          '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:10px 18px;text-align:center;">' +
             '<div style="font-size:20px;font-weight:900;color:#10b981;">113</div>' +
-            '<div style="font-size:11px;font-weight:700;color:var(--muted);">Kitob Sahifalari</div>' +
+            '<div style="font-size:11px;font-weight:700;color:#94a3b8;">Kitob Sahifalari</div>' +
           '</div>' +
         '</div>' +
       '</div>';
 
-    // Unit Grid (12 units)
-    h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;">';
+    // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
+    h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
+      '<button type="button" class="eth-wb-subtab-btn-b2" data-tab="mavzular" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'mavzular' ? 'background:linear-gradient(135deg,#ea580c,#c2410c);color:#fff;box-shadow:0 4px 15px rgba(234,88,12,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📙 Mavzular (12 Unit)' +
+      '</button>' +
+      '<button type="button" class="eth-wb-subtab-btn-b2" data-tab="unit_tests" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'unit_tests' ? 'background:linear-gradient(135deg,#ea580c,#c2410c);color:#fff;box-shadow:0 4px 15px rgba(234,88,12,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📝 Unit Testlar' +
+      '</button>' +
+      '<button type="button" class="eth-wb-subtab-btn-b2" data-tab="progress_tests" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
+        (curTab === 'progress_tests' ? 'background:linear-gradient(135deg,#ea580c,#c2410c);color:#fff;box-shadow:0 4px 15px rgba(234,88,12,0.4);' : 'background:transparent;color:#94a3b8;') + '">' +
+        '📈 Progress Testlar' +
+      '</button>' +
+    '</div>';
 
-    WB.unitsB2.forEach(function(u) {
-      var isAvail = u.available;
-      h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid ' + (isAvail ? '#fb923c' : 'var(--line)') + ';border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;box-shadow:' + (isAvail ? '0 12px 30px -10px rgba(249,115,22,0.28)' : 'none') + ';">' +
-        '<div>' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
-            '<span style="font-size:12px;font-weight:800;color:' + (isAvail ? '#fb923c' : 'var(--muted)') + ';text-transform:uppercase;letter-spacing:0.04em;">UNIT ' + u.unit + ' · B2</span>' +
-            '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;background:' + (isAvail ? 'rgba(16,185,129,0.15)' : 'var(--soft)') + ';color:' + (isAvail ? '#10b981' : 'var(--muted)') + ';">' +
-              (isAvail ? '● Ochiq (Tayyor)' : '🔒 Tayyorlanmoqda') +
-            '</span>' +
-          '</div>' +
-          '<h3 style="font-size:18px;font-weight:800;margin:0 0 6px;color:var(--text);">' + u.title + '</h3>' +
-          '<p style="font-size:13px;color:var(--muted);margin:0 0 16px;line-height:1.4;">' + u.subtitle + '</p>';
-
-      if (u.lessons && u.lessons.length > 0) {
-        h += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">';
-        u.lessons.forEach(function(les) {
-          h += '<div class="eth-wb-lesson-row" data-unit="' + u.unit + '" data-lesson="' + les.code + '" ' +
-            'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB2(' + u.unit + ', \'' + les.code + '\');" ' +
-            'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(249,115,22,0.08);border:1.5px solid rgba(251,146,60,0.28);cursor:pointer;transition:all 0.2s;">' +
-            '<div style="min-width:0;flex:1;">' +
-              '<div style="font-size:13.5px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
-              '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
+    // TAB 1: MAVZULAR
+    if (curTab === 'mavzular') {
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;">';
+      WB.unitsB2.forEach(function(u) {
+        var isAvail = u.available;
+        h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid ' + (isAvail ? '#fb923c' : 'var(--line)') + ';border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;box-shadow:' + (isAvail ? '0 12px 30px -10px rgba(249,115,22,0.28)' : 'none') + ';">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
+              '<span style="font-size:12px;font-weight:800;color:' + (isAvail ? '#fb923c' : 'var(--muted)') + ';text-transform:uppercase;letter-spacing:0.04em;">UNIT ' + u.unit + ' · B2</span>' +
+              '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;background:' + (isAvail ? 'rgba(16,185,129,0.15)' : 'var(--soft)') + ';color:' + (isAvail ? '#10b981' : 'var(--muted)') + ';">' +
+                (isAvail ? '● Ochiq (Tayyor)' : '🔒 Tayyorlanmoqda') +
+              '</span>' +
             '</div>' +
-            '<button type="button" ' +
-              'onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB2(' + u.unit + ', \'' + les.code + '\');" ' +
-              'style="flex:none;background:linear-gradient(135deg, #ea580c, #c2410c);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(234,88,12,0.35);">' +
-              'Boshlash ➔' +
-            '</button>' +
-          '</div>';
-        });
-        h += '</div>';
-      }
+            '<h3 style="font-size:18px;font-weight:800;margin:0 0 6px;color:var(--text);">' + u.title + '</h3>' +
+            '<p style="font-size:13px;color:var(--muted);margin:0 0 16px;line-height:1.4;">' + u.subtitle + '</p>';
 
-      h += '</div>' +
-        '<div style="border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);">' +
-          '<span>Navigate B2 Upper-Intermediate</span>' +
-          '<span>' + (u.lessons ? u.lessons.length + ' ta dars' : '5 Dars') + '</span>' +
+        if (u.lessons && u.lessons.length > 0) {
+          h += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">';
+          u.lessons.forEach(function(les) {
+            h += '<div class="eth-wb-lesson-row" data-unit="' + u.unit + '" data-lesson="' + les.code + '" ' +
+              'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB2(' + u.unit + ', \'' + les.code + '\');" ' +
+              'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(249,115,22,0.08);border:1.5px solid rgba(251,146,60,0.28);cursor:pointer;transition:all 0.2s;">' +
+              '<div style="min-width:0;flex:1;">' +
+                '<div style="font-size:13.5px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+                '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
+              '</div>' +
+              '<button type="button" ' +
+                'onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB2(' + u.unit + ', \'' + les.code + '\');" ' +
+                'style="flex:none;background:linear-gradient(135deg, #ea580c, #c2410c);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(234,88,12,0.35);">' +
+                'Boshlash ➔' +
+              '</button>' +
+            '</div>';
+          });
+          h += '</div>';
+        }
+
+        h += '</div>' +
+          '<div style="border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);">' +
+            '<span>Navigate B2 Upper-Intermediate</span>' +
+            '<span>' + (u.lessons ? u.lessons.length + ' ta dars' : '5 Dars') + '</span>' +
+          '</div>' +
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    // TAB 2: UNIT TESTLAR (EMPTY PLACEHOLDER STATE)
+    else if (curTab === 'unit_tests') {
+      h += '<div style="background:radial-gradient(circle at 10% 20%, rgba(249,115,22,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(251,146,60,0.45);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📝</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Unit testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'Ushbu bo‘lim hozircha bo‘sh holatda turibdi. Qaysi savollar qo‘shilishi belgilangandan so‘ng bu yerga barcha test savollari to‘liq joylashtiriladi va topshirish imkoniyati ochiladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(251,146,60,0.3);border-radius:12px;padding:6px 14px;color:#fb923c;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta savol)' +
         '</div>' +
       '</div>';
+
+      // 12 Empty Unit Test Slots
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">';
+      for (var uNum = 1; uNum <= 12; uNum++) {
+        h += '<div class="ap-card" style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
+              '<span style="font-size:11px;font-weight:900;padding:3px 9px;border-radius:8px;background:rgba(249,115,22,0.15);color:#fb923c;text-transform:uppercase;">Unit ' + uNum + ' Test</span>' +
+              '<span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.06);color:#94a3b8;">🔒 Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:16px;font-weight:800;color:#fff;">Unit ' + uNum + ' Oraliq Test</h4>' +
+            '<p style="margin:0 0 14px;font-size:12.5px;color:#94a3b8;line-height:1.4;">Savollar bazasi hali kiritilmagan.</p>' +
+          '</div>' +
+          '<button type="button" class="ea-empty-test-btn" style="width:100%;background:rgba(255,255,255,0.05);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px;font-size:12.5px;font-weight:800;cursor:pointer;">' +
+            '👁️ Ko‘rish (Bo‘sh)' +
+          '</button>' +
+        '</div>';
+      }
+      h += '</div>';
+    }
+
+    // TAB 3: PROGRESS TESTLAR (EMPTY PLACEHOLDER STATE)
+    else if (curTab === 'progress_tests') {
+      h += '<div style="background:radial-gradient(circle at 10% 20%, rgba(234,88,12,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(251,146,60,0.45);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
+        '<div style="font-size:48px;margin-bottom:12px;">📈</div>' +
+        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Progress testlar bo‘sh</h3>' +
+        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
+          'Har 3 ta unitdan keyin o‘tiladigan yirik progress testlar bo‘limi. Savollar ro‘yxati berilgandan so‘ng bu yerda to‘liq ochiladi.' +
+        '</p>' +
+        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(234,88,12,0.12);border:1px solid rgba(251,146,60,0.3);border-radius:12px;padding:6px 14px;color:#fb923c;font-size:12px;font-weight:700;">' +
+          '⏳ Savollar kutilmoqda (Hozircha 0 ta savol)' +
+        '</div>' +
+      '</div>';
+
+      // 4 Empty Progress Test Slots
+      var pTestsB2 = [
+        { id: 1, units: 'Units 1–3', title: 'Progress Test 1' },
+        { id: 2, units: 'Units 4–6', title: 'Progress Test 2' },
+        { id: 3, units: 'Units 7–9', title: 'Progress Test 3' },
+        { id: 4, units: 'Units 10–12', title: 'Progress Test 4' }
+      ];
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">';
+      pTestsB2.forEach(function(pt) {
+        h += '<div class="ap-card" style="background:rgba(15,23,42,0.85);border:1px solid rgba(251,146,60,0.3);border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
+              '<span style="font-size:11px;font-weight:900;padding:3px 9px;border-radius:8px;background:rgba(249,115,22,0.18);color:#fb923c;text-transform:uppercase;">' + pt.units + '</span>' +
+              '<span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.06);color:#94a3b8;">🔒 Bo‘sh</span>' +
+            '</div>' +
+            '<h4 style="margin:0 0 6px;font-size:17px;font-weight:800;color:#fff;">' + pt.title + '</h4>' +
+            '<p style="margin:0 0 14px;font-size:12.5px;color:#94a3b8;line-height:1.4;">Asosiy sinov progress imtihon savollari kutilmoqda.</p>' +
+          '</div>' +
+          '<button type="button" class="ea-empty-test-btn" style="width:100%;background:rgba(255,255,255,0.05);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px;font-size:12.5px;font-weight:800;cursor:pointer;">' +
+            '👁️ Ko‘rish (Bo‘sh)' +
+          '</button>' +
+        '</div>';
+      });
+      h += '</div>';
+    }
+
+    h += '</div>';
+    container.innerHTML = h;
+
+    // Attach Tab switching listeners
+    container.querySelectorAll('.eth-wb-subtab-btn-b2').forEach(function(btn) {
+      btn.onclick = function() {
+        var tabKey = btn.getAttribute('data-tab');
+        WB._activeTabB2 = tabKey;
+        renderUnitsCatalogB2(container);
+      };
     });
 
-    h += '</div></div>';
-    container.innerHTML = h;
+    container.querySelectorAll('.ea-empty-test-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        if (window.EthithApp && window.EthithApp.toast) {
+          window.EthithApp.toast('Ushbu test uchun hali savollar kiritilmagan. Savollarni kiritish kutilmoqda.');
+        } else {
+          alert('Ushbu test uchun hali savollar kiritilmagan. Savollarni kiritish kutilmoqda.');
+        }
+      };
+    });
   }
 
   WB.renderUnitsCatalog = renderUnitsCatalog;
