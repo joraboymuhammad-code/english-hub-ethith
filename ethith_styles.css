@@ -8766,6 +8766,37 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   background: #10b981 !important;
 }
 
+/* 6. SELECT DROPDOWNS (Tanlanadigan savollar - Ex 6a & Ex 4a) */
+.wb-select-input {
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: clamp(8px, 1.4cqw, 13px);
+  font-weight: 700;
+  border: 1.5px solid #0284c7;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #0f172a;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  padding: 0 4px;
+}
+.wb-select-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
+}
+.wb-select-input.correct {
+  border-color: #10b981 !important;
+  background-color: #ecfdf5 !important;
+  color: #065f46 !important;
+}
+.wb-select-input.incorrect {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+  color: #991b1b !important;
+}
+
 @media (max-width: 768px) {
   .eth-wb-viewer {
     padding: 8px 6px 90px !important;

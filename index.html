@@ -359,6 +359,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9132,6 +9134,37 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   background: #10b981 !important;
 }
 
+/* 6. SELECT DROPDOWNS (Tanlanadigan savollar - Ex 6a & Ex 4a) */
+.wb-select-input {
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: clamp(8px, 1.4cqw, 13px);
+  font-weight: 700;
+  border: 1.5px solid #0284c7;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #0f172a;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  padding: 0 4px;
+}
+.wb-select-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
+}
+.wb-select-input.correct {
+  border-color: #10b981 !important;
+  background-color: #ecfdf5 !important;
+  color: #065f46 !important;
+}
+.wb-select-input.incorrect {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+  color: #991b1b !important;
+}
+
 @media (max-width: 768px) {
   .eth-wb-viewer {
     padding: 8px 6px 90px !important;
@@ -9856,7 +9889,7 @@ html, body {
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.27.7300";
+window.ETHITH_BUILD_VERSION = "2026.10.28.7500";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -117110,18 +117143,31 @@ window.NAVIGATE_CURRICULUM = {
     ]
   };
 
-  // PURGE ANY OBSOLETE PRE-V14 WORKBOOK CACHE KEYS SO CALIBRATED COORDINATES ARE NEVER OVERWRITTEN
+  // PURGE ANY OBSOLETE / UNCALIBRATED WORKBOOK CACHE KEYS SO CALIBRATED COORDINATES ARE NEVER OVERWRITTEN
   try {
     var legacyKeysToRemove = [];
     for (var kIdx = 0; kIdx < localStorage.length; kIdx++) {
       var lk = localStorage.key(kIdx);
-      if (lk && lk.indexOf('ethith_wb_coords_') === 0 && (lk.indexOf('v15_') === -1 || (function(k){ var m = k.match(/_(\d+)$/); return m && parseInt(m[1],10) >= 2006 && parseInt(m[1],10) <= 2040; })(lk))) {
-        legacyKeysToRemove.push(lk);
+      if (lk && (lk.indexOf('ethith_wb_coords_') === 0 || lk.indexOf('ethith_wb_ts_') === 0)) {
+        var m = lk.match(/_(\d+)$/);
+        var pNum = m ? parseInt(m[1], 10) : 0;
+        // Purge Beginner (1004..1083) and calibrated Elementary (2006..2040)
+        if (lk.indexOf('v15_') === -1 || (pNum >= 1004 && pNum <= 1083) || (pNum >= 2006 && pNum <= 2040)) {
+          legacyKeysToRemove.push(lk);
+        }
       }
     }
     legacyKeysToRemove.forEach(function(k) {
       try { localStorage.removeItem(k); } catch(e) {}
     });
+    for (var _bp = 1004; _bp <= 1083; _bp++) {
+      try {
+        localStorage.removeItem('ethith_wb_coords_v15_' + _bp);
+        localStorage.removeItem('ethith_wb_ts_' + _bp);
+        localStorage.removeItem('ethith_wb_coords_' + _bp);
+        localStorage.removeItem('ethith_wb_ts_' + _bp);
+      } catch(e) {}
+    }
   } catch(e) {}
 
   // Helper to get human-readable book page number (e.g., 2004 -> 4)
@@ -117150,12 +117196,20 @@ window.NAVIGATE_CURRICULUM = {
   // Get active inputs for a page (with custom saved overrides & cloud store fallback)
   WB.getPageInputs = function(page) {
     page = parseInt(page, 10);
+    // Oxford Navigate Beginner (A1) 1004..1083: 100% Calibrated Oxford Master Pages
+    if (page >= 1004 && page <= 1083) {
+      try {
+        localStorage.removeItem('ethith_wb_coords_v15_' + page);
+        localStorage.removeItem('ethith_wb_ts_' + page);
+      } catch(e) {}
+      return WB.defaultInputs[page] || [];
+    }
     // Pages 2018..2031: 100% Calibrated Teacher Answer Key & pixel coordinates
-    var MASTER_CALIBRATION_TS = 1792960000000;
+    var MASTER_CALIBRATION_TS = 1799999999999;
     try {
       var saved = localStorage.getItem('ethith_wb_coords_v15_' + page);
       var hasTs = parseInt(localStorage.getItem('ethith_wb_ts_' + page) || '0', 10);
-      if ((page >= 2018 && page <= 2031) || (page >= 1004 && page <= 1083)) {
+      if (page >= 2018 && page <= 2031) {
         if (saved && hasTs > MASTER_CALIBRATION_TS) {
           var parsed = JSON.parse(saved);
           if (Array.isArray(parsed) && parsed.length > 0) return parsed;
@@ -117299,18 +117353,33 @@ window.NAVIGATE_CURRICULUM = {
 
   // Check an individual input against correct options (Case-insensitive, punctuation & contraction tolerant)
   WB.checkAnswer = function(userVal, correctRaw) {
-    function norm(str) {
+    function cleanText(str) {
       if (!str) return '';
-      var s = String(str)
+      return String(str)
         .trim()
         .toLowerCase()
-        .replace(/[\u2018\u2019\u0060\u00B4]/g, "'") // smart apostrophes
-        .replace(/\s+/g, ' '); // collapse multi-spaces
-      var stripped = s.replace(/^[.,;:!?\s]+|[.,;:!?\s]+$/g, '');
-      return stripped || s; // strip leading/trailing punctuation unless sole content
+        .replace(/[\u2018\u2019\u0060\u00B4]/g, "'")
+        .replace(/\s+/g, ' ');
     }
 
-    var u = norm(userVal);
+    function expandContractions(str) {
+      if (!str) return '';
+      return str
+        .replace(/\bcan'?t\b/gi, 'cannot')
+        .replace(/\bwon'?t\b/gi, 'will not')
+        .replace(/\bshan'?t\b/gi, 'shall not')
+        .replace(/n['’]?t\b/gi, ' not')
+        .replace(/['’]m\b/gi, ' am')
+        .replace(/['’]re\b/gi, ' are')
+        .replace(/['’]s\b/gi, ' is')
+        .replace(/['’]ve\b/gi, ' have')
+        .replace(/['’]ll\b/gi, ' will')
+        .replace(/['’]d\b/gi, ' would')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    var u = cleanText(userVal).replace(/^[.,;:!?\s]+|[.,;:!?\s]+$/g, '');
     if (!u) return false;
 
     var allowed = [];
@@ -117330,15 +117399,25 @@ window.NAVIGATE_CURRICULUM = {
     }
 
     return allowed.some(function(opt) {
-      var o = norm(opt);
+      var o = cleanText(opt).replace(/^[.,;:!?\s]+|[.,;:!?\s]+$/g, '');
       if (!o) return false;
       if (u === o) return true;
+      if (u.replace(/'/g, '') === o.replace(/'/g, '')) return true;
+      if (expandContractions(u) === expandContractions(o)) return true;
 
-      // Allow contraction match: haven't == havent == have not
-      var uNoApos = u.replace(/'/g, '');
-      var oNoApos = o.replace(/'/g, '');
-      if (uNoApos === oNoApos) return true;
+      var uPunct = u.replace(/[.,;:!?\-'"]/g, ' ').replace(/\s+/g, ' ').trim();
+      var oPunct = o.replace(/[.,;:!?\-'"]/g, ' ').replace(/\s+/g, ' ').trim();
+      if (uPunct === oPunct) return true;
+      if (expandContractions(uPunct) === expandContractions(oPunct)) return true;
 
+      // Optional parentheses in key: e.g. '(in) July' -> 'in July' or 'July'
+      if (o.indexOf('(') !== -1 && o.indexOf(')') !== -1) {
+        var withP = o.replace(/[()]/g, '').replace(/\s+/g, ' ').trim();
+        var withoutP = o.replace(/\([^)]*\)/g, '').replace(/\s+/g, ' ').trim();
+        if (u === withP || u === withoutP) return true;
+        if (uPunct === withP.replace(/[.,;:!?\-'"]/g, ' ').trim()) return true;
+        if (uPunct === withoutP.replace(/[.,;:!?\-'"]/g, ' ').trim()) return true;
+      }
       return false;
     });
   };
@@ -118606,6 +118685,9 @@ window.NAVIGATE_CURRICULUM = {
       '</div>' +
 
       '<div style="display:flex;align-items:center;gap:10px;">' +
+        '<button id="ethWbShowAnsBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:9px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.3);">' +
+          '👁️ Javoblar' +
+        '</button>' +
         '<button id="ethWbResetBtn" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:9px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;">' +
           '↻ Tozalash' +
         '</button>' +
@@ -118759,6 +118841,22 @@ window.NAVIGATE_CURRICULUM = {
           'title="So‘zni shu yerga joylashtirish">' +
             '<span class="wb-insert-text">' + (item.word || '') + '</span>' +
           '</div>' +
+          '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
+      } else if (itemType === 'select') {
+        var opts = Array.isArray(item.options) ? item.options : [];
+        var corrOpt = String(item.correct || '');
+        h += '<select class="eth-wb-input wb-select-input" ' +
+          'data-id="' + item.id + '" ' +
+          'data-page="' + pageNum + '" ' +
+          'data-type="select" ' +
+          'data-correct="' + corrOpt.replace(/"/g, '&quot;') + '" ' +
+          (isEditor ? 'disabled ' : '') +
+          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '">' +
+          '<option value="">-- Tanlang --</option>';
+        opts.forEach(function(opt) {
+          h += '<option value="' + String(opt).replace(/"/g, '&quot;') + '">' + String(opt) + '</option>';
+        });
+        h += '</select>' +
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       }
 
@@ -118933,6 +119031,13 @@ window.NAVIGATE_CURRICULUM = {
         if (slot.classList.contains('inserted')) filled++;
       });
 
+      // 6. Select inputs
+      var selectInputs = container.querySelectorAll('.wb-select-input');
+      distinctCount += selectInputs.length;
+      selectInputs.forEach(function(sel) {
+        if (sel.value) filled++;
+      });
+
       var aEl = container.querySelector('#ethWbAnsweredCount');
       var tEl = container.querySelector('#ethWbTotalCount');
       if (aEl) aEl.textContent = filled;
@@ -119061,6 +119166,19 @@ window.NAVIGATE_CURRICULUM = {
         e.stopPropagation();
         this.classList.toggle('inserted');
         this.classList.remove('correct', 'incorrect');
+        updateCount();
+      });
+    });
+
+    // 6. Select Dropdowns Interaction
+    container.querySelectorAll('.wb-select-input').forEach(function(sel) {
+      sel.addEventListener('change', function() {
+        this.classList.remove('correct', 'incorrect');
+        var wrap = this.closest('.eth-wb-item-wrap');
+        if (wrap) {
+          var hint = wrap.querySelector('.eth-wb-hint-badge');
+          if (hint) hint.style.display = 'none';
+        }
         updateCount();
       });
     });
@@ -119243,6 +119361,31 @@ window.NAVIGATE_CURRICULUM = {
           }
         });
 
+        // 6. Check Select Dropdowns across both pages
+        var selectInps = container.querySelectorAll('.wb-select-input');
+        totalQuestions += selectInps.length;
+        selectInps.forEach(function(sel) {
+          var userVal = (sel.value || '').trim();
+          var correctRaw = sel.getAttribute('data-correct') || '';
+          var isCorrect = WB.checkAnswer(userVal, correctRaw);
+          var wrap = sel.closest('.eth-wb-item-wrap');
+          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
+
+          if (isCorrect && userVal) {
+            correctCount++;
+            sel.classList.add('correct');
+            sel.classList.remove('incorrect');
+            if (hint) hint.style.display = 'none';
+          } else {
+            sel.classList.add('incorrect');
+            sel.classList.remove('correct');
+            if (hint) {
+              hint.textContent = '✓ ' + correctRaw;
+              hint.style.display = 'block';
+            }
+          }
+        });
+
         if (totalQuestions === 0) totalQuestions = 36;
 
         // Show Score Pill
@@ -119418,6 +119561,10 @@ window.NAVIGATE_CURRICULUM = {
           slot.textContent = '?';
           slot.classList.remove('correct', 'incorrect');
         });
+        container.querySelectorAll('.wb-select-input').forEach(function(sel) {
+          sel.value = '';
+          sel.classList.remove('correct', 'incorrect');
+        });
         container.querySelectorAll('.wb-insert-slot').forEach(function(slot) {
           slot.classList.remove('inserted', 'correct', 'incorrect');
         });
@@ -119428,6 +119575,85 @@ window.NAVIGATE_CURRICULUM = {
         var pill = container.querySelector('#ethWbResultPill');
         if (pill) pill.style.display = 'none';
         updateCount();
+      });
+    }
+
+    // Show / Hide Answers Button Logic (Teacher & Student study mode)
+    var showAnsBtn = container.querySelector('#ethWbShowAnsBtn');
+    if (showAnsBtn) {
+      showAnsBtn.addEventListener('click', function() {
+        var isShowing = showAnsBtn.getAttribute('data-showing') === 'true';
+        if (isShowing) {
+          showAnsBtn.setAttribute('data-showing', 'false');
+          showAnsBtn.innerHTML = '👁️ Javoblar';
+          container.querySelectorAll('.eth-wb-hint-badge').forEach(function(h) {
+            h.style.display = 'none';
+          });
+          container.querySelectorAll('.wb-fill-input').forEach(function(inp) {
+            inp.classList.remove('correct', 'incorrect');
+          });
+          container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
+            chip.classList.remove('selected', 'correct', 'incorrect', 'should-choose');
+          });
+          container.querySelectorAll('.wb-select-input').forEach(function(sel) {
+            sel.classList.remove('correct', 'incorrect');
+          });
+          container.querySelectorAll('.wb-cross-chip').forEach(function(chip) {
+            chip.classList.remove('crossed', 'correct', 'incorrect', 'should-cross');
+          });
+          container.querySelectorAll('.wb-match-slot').forEach(function(slot) {
+            slot.classList.remove('correct', 'incorrect');
+          });
+          container.querySelectorAll('.wb-insert-slot').forEach(function(slot) {
+            slot.classList.remove('inserted', 'correct', 'incorrect');
+          });
+          updateCount();
+        } else {
+          showAnsBtn.setAttribute('data-showing', 'true');
+          showAnsBtn.innerHTML = '🙈 Yashirish';
+          container.querySelectorAll('.wb-fill-input').forEach(function(inp) {
+            var rawCorr = inp.getAttribute('data-correct') || '';
+            var ans = rawCorr.split(/\s+or\s+|\s*[\/|]\s*|;/i)[0] || rawCorr;
+            ans = ans.replace(/^[\\\["\s]+|[\\\]"\s]+$/g, '');
+            inp.value = ans;
+            inp.classList.add('correct');
+            inp.classList.remove('incorrect');
+          });
+          container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
+            if (chip.getAttribute('data-correct') === 'true') {
+              chip.classList.add('selected', 'correct');
+              chip.classList.remove('incorrect', 'should-choose');
+            } else {
+              chip.classList.remove('selected', 'correct', 'should-choose');
+            }
+          });
+          container.querySelectorAll('.wb-select-input').forEach(function(sel) {
+            var rawCorr = sel.getAttribute('data-correct') || '';
+            sel.value = rawCorr;
+            sel.classList.add('correct');
+            sel.classList.remove('incorrect');
+          });
+          container.querySelectorAll('.wb-cross-chip').forEach(function(chip) {
+            if (chip.getAttribute('data-incorrect') === 'true') {
+              chip.classList.add('crossed', 'correct');
+            } else {
+              chip.classList.remove('crossed', 'correct');
+            }
+          });
+          container.querySelectorAll('.wb-match-slot').forEach(function(slot) {
+            var c = slot.getAttribute('data-correct');
+            if (c) {
+              slot.textContent = c;
+              slot.classList.add('correct');
+            }
+          });
+          container.querySelectorAll('.wb-insert-slot').forEach(function(slot) {
+            if (slot.getAttribute('data-correct') === 'true') {
+              slot.classList.add('inserted', 'correct');
+            }
+          });
+          updateCount();
+        }
       });
     }
 
