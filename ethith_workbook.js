@@ -71805,6 +71805,2403 @@
             ]
       }
 ],
+        "3074": [
+      {
+            "id": "p3074_ex1_1",
+            "type": "fill",
+            "x": 13,
+            "y": 35,
+            "w": 25,
+            "h": 2.2,
+            "correct": [
+                  "give a present to someone"
+            ]
+      },
+      {
+            "id": "p3074_ex1_2",
+            "type": "fill",
+            "x": 13,
+            "y": 38.6,
+            "w": 25,
+            "h": 2.2,
+            "correct": [
+                  "visit someone in hospital"
+            ]
+      },
+      {
+            "id": "p3074_ex1_3",
+            "type": "fill",
+            "x": 13,
+            "y": 42.2,
+            "w": 25,
+            "h": 2.2,
+            "correct": [
+                  "teach someone to drive"
+            ]
+      },
+      {
+            "id": "p3074_ex1_4",
+            "type": "fill",
+            "x": 13,
+            "y": 45.8,
+            "w": 28,
+            "h": 2.2,
+            "correct": [
+                  "help someone with their homework"
+            ]
+      },
+      {
+            "id": "p3074_ex2_2",
+            "type": "fill",
+            "x": 23,
+            "y": 73.8,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "plant a tree"
+            ]
+      },
+      {
+            "id": "p3074_ex2_3",
+            "type": "fill",
+            "x": 18,
+            "y": 77.2,
+            "w": 22,
+            "h": 2.2,
+            "correct": [
+                  "make some sandwiches"
+            ]
+      },
+      {
+            "id": "p3074_ex2_4",
+            "type": "fill",
+            "x": 27,
+            "y": 80.7,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "repair a bike"
+            ]
+      },
+      {
+            "id": "p3074_ex2_5",
+            "type": "fill",
+            "x": 24,
+            "y": 84.1,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "improve the town"
+            ]
+      },
+      {
+            "id": "p3074_ex2_6",
+            "type": "fill",
+            "x": 24,
+            "y": 87.6,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "paint the room"
+            ]
+      },
+      {
+            "id": "p3074_ex2_7",
+            "type": "fill",
+            "x": 27,
+            "y": 91,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "organize a party"
+            ]
+      },
+      {
+            "id": "p3074_ex3_1",
+            "type": "fill",
+            "x": 67,
+            "y": 59.3,
+            "w": 8,
+            "h": 2,
+            "correct": [
+                  "give"
+            ]
+      },
+      {
+            "id": "p3074_ex3_2",
+            "type": "fill",
+            "x": 80,
+            "y": 63.7,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "improve"
+            ]
+      },
+      {
+            "id": "p3074_ex3_3",
+            "type": "fill",
+            "x": 67,
+            "y": 68.2,
+            "w": 8,
+            "h": 2,
+            "correct": [
+                  "help"
+            ]
+      },
+      {
+            "id": "p3074_ex3_4",
+            "type": "fill",
+            "x": 80,
+            "y": 72.6,
+            "w": 8,
+            "h": 2,
+            "correct": [
+                  "visit"
+            ]
+      },
+      {
+            "id": "p3074_ex3_5",
+            "type": "fill",
+            "x": 67,
+            "y": 77,
+            "w": 12,
+            "h": 2,
+            "correct": [
+                  "look after"
+            ]
+      },
+      {
+            "id": "p3074_ex3_6",
+            "type": "fill",
+            "x": 80,
+            "y": 81.5,
+            "w": 8,
+            "h": 2,
+            "correct": [
+                  "make"
+            ]
+      },
+      {
+            "id": "p3074_ex3_7",
+            "type": "fill",
+            "x": 67,
+            "y": 86,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "organize"
+            ]
+      },
+      {
+            "id": "p3074_ex3_8",
+            "type": "fill",
+            "x": 80,
+            "y": 90.4,
+            "w": 8,
+            "h": 2,
+            "correct": [
+                  "teach"
+            ]
+      }
+],
+    "3075": [
+      {
+            "id": "p3075_ex4_1",
+            "type": "fill",
+            "x": 11,
+            "y": 14.5,
+            "w": 25,
+            "h": 2.2,
+            "correct": [
+                  "'re going to organize",
+                  "are going to organize"
+            ]
+      },
+      {
+            "id": "p3075_ex4_2",
+            "type": "fill",
+            "x": 11,
+            "y": 17.5,
+            "w": 22,
+            "h": 2.2,
+            "correct": [
+                  "are going to play",
+                  "'re going to play"
+            ]
+      },
+      {
+            "id": "p3075_ex4_3",
+            "type": "fill",
+            "x": 11,
+            "y": 20.5,
+            "w": 24,
+            "h": 2.2,
+            "correct": [
+                  "aren't going to sell",
+                  "are not going to sell"
+            ]
+      },
+      {
+            "id": "p3075_ex4_4",
+            "type": "fill",
+            "x": 11,
+            "y": 23.5,
+            "w": 22,
+            "h": 2.2,
+            "correct": [
+                  "'m going to ask",
+                  "am going to ask"
+            ]
+      },
+      {
+            "id": "p3075_ex4_5",
+            "type": "fill",
+            "x": 11,
+            "y": 26.5,
+            "w": 25,
+            "h": 2.2,
+            "correct": [
+                  "aren't going to have",
+                  "are not going to have"
+            ]
+      },
+      {
+            "id": "p3075_ex4_6",
+            "type": "fill",
+            "x": 11,
+            "y": 29.5,
+            "w": 22,
+            "h": 2.2,
+            "correct": [
+                  "are going to make",
+                  "'re going to make"
+            ]
+      },
+      {
+            "id": "p3075_ex4_7",
+            "type": "fill",
+            "x": 11,
+            "y": 32.5,
+            "w": 22,
+            "h": 2.2,
+            "correct": [
+                  "is going to design",
+                  "'s going to design"
+            ]
+      },
+      {
+            "id": "p3075_ex4_8",
+            "type": "fill",
+            "x": 11,
+            "y": 35.5,
+            "w": 22,
+            "h": 2.2,
+            "correct": [
+                  "isn't going to help",
+                  "is not going to help"
+            ]
+      },
+      {
+            "id": "p3075_ex4_9",
+            "type": "fill",
+            "x": 11,
+            "y": 38.5,
+            "w": 22,
+            "h": 2.2,
+            "correct": [
+                  "'m not going to do",
+                  "am not going to do"
+            ]
+      },
+      {
+            "id": "p3075_ex5_1",
+            "type": "fill",
+            "x": 11,
+            "y": 46.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "What time is the party going to start?",
+                  "What time is the party going to start"
+            ]
+      },
+      {
+            "id": "p3075_ex5_2",
+            "type": "fill",
+            "x": 11,
+            "y": 50,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "What are you going to wear for your interview?",
+                  "What are you going to wear for your interview"
+            ]
+      },
+      {
+            "id": "p3075_ex5_3",
+            "type": "fill",
+            "x": 11,
+            "y": 53.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Is Andy going to meet us at the airport?",
+                  "Is Andy going to meet us at the airport"
+            ]
+      },
+      {
+            "id": "p3075_ex5_4",
+            "type": "fill",
+            "x": 11,
+            "y": 57,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "What colour are we going to paint the bathroom?",
+                  "What colour are we going to paint the bathroom"
+            ]
+      },
+      {
+            "id": "p3075_ex5_5",
+            "type": "fill",
+            "x": 11,
+            "y": 60.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Are your children going to go to university?",
+                  "Are your children going to go to university"
+            ]
+      },
+      {
+            "id": "p3075_ex5_6",
+            "type": "fill",
+            "x": 11,
+            "y": 64,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "How is Alice going to travel to Nairobi?",
+                  "How is Alice going to travel to Nairobi"
+            ]
+      },
+      {
+            "id": "p3075_ex5_7",
+            "type": "fill",
+            "x": 11,
+            "y": 67.5,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "Are you going to learn Arabic when you move to Bahrain?",
+                  "Are you going to learn Arabic when you move to Bahrain"
+            ]
+      },
+      {
+            "id": "p3075_ex5_8",
+            "type": "fill",
+            "x": 11,
+            "y": 71,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "Is Maria going to buy the cinema tickets online?",
+                  "Is Maria going to buy the cinema tickets online"
+            ]
+      }
+],
+    "3076": [
+      {
+            "id": "p3076_ex1_1",
+            "type": "fill",
+            "x": 13,
+            "y": 25,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "website"
+            ]
+      },
+      {
+            "id": "p3076_ex1_2",
+            "type": "fill",
+            "x": 13,
+            "y": 28.5,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "smartphone"
+            ]
+      },
+      {
+            "id": "p3076_ex1_3",
+            "type": "fill",
+            "x": 13,
+            "y": 32,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "apps"
+            ]
+      },
+      {
+            "id": "p3076_ex1_4",
+            "type": "fill",
+            "x": 13,
+            "y": 35.5,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "GPS"
+            ]
+      },
+      {
+            "id": "p3076_ex1_5",
+            "type": "fill",
+            "x": 13,
+            "y": 39,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "text"
+            ]
+      },
+      {
+            "id": "p3076_ex1_6",
+            "type": "fill",
+            "x": 13,
+            "y": 42.5,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "tablets"
+            ]
+      },
+      {
+            "id": "p3076_ex2_1",
+            "type": "fill",
+            "x": 18,
+            "y": 58.2,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "website"
+            ]
+      },
+      {
+            "id": "p3076_ex2_2",
+            "type": "fill",
+            "x": 13,
+            "y": 65.5,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "smartphone"
+            ]
+      },
+      {
+            "id": "p3076_ex2_3",
+            "type": "fill",
+            "x": 13,
+            "y": 72.8,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "text"
+            ]
+      },
+      {
+            "id": "p3076_ex2_4",
+            "type": "fill",
+            "x": 13,
+            "y": 80,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "GPS"
+            ]
+      },
+      {
+            "id": "p3076_ex2_5",
+            "type": "fill",
+            "x": 13,
+            "y": 87.2,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "tablets"
+            ]
+      }
+],
+    "3077": [
+      {
+            "id": "p3077_ex4_1",
+            "type": "fill",
+            "x": 57,
+            "y": 24.8,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "to organize"
+            ]
+      },
+      {
+            "id": "p3077_ex4_2",
+            "type": "fill",
+            "x": 74,
+            "y": 26.5,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "to sell"
+            ]
+      },
+      {
+            "id": "p3077_ex4_3",
+            "type": "fill",
+            "x": 67,
+            "y": 28.1,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "to teach"
+            ]
+      },
+      {
+            "id": "p3077_ex4_4",
+            "type": "fill",
+            "x": 57,
+            "y": 33,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "to show"
+            ]
+      },
+      {
+            "id": "p3077_ex4_5",
+            "type": "fill",
+            "x": 67,
+            "y": 36.2,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "to explain"
+            ]
+      },
+      {
+            "id": "p3077_ex4_6",
+            "type": "fill",
+            "x": 57,
+            "y": 39.5,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "to look"
+            ]
+      },
+      {
+            "id": "p3077_ex4_7",
+            "type": "fill",
+            "x": 74,
+            "y": 39.5,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "to find"
+            ]
+      },
+      {
+            "id": "p3077_ex4_8",
+            "type": "fill",
+            "x": 57,
+            "y": 41.1,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "to read"
+            ]
+      },
+      {
+            "id": "p3077_ex6_2a",
+            "type": "fill",
+            "x": 23,
+            "y": 73,
+            "w": 15,
+            "h": 2.2,
+            "correct": [
+                  "'s going to get",
+                  "is going to get"
+            ]
+      },
+      {
+            "id": "p3077_ex6_2b",
+            "type": "fill",
+            "x": 50,
+            "y": 73,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "to earn"
+            ]
+      },
+      {
+            "id": "p3077_ex6_3a",
+            "type": "fill",
+            "x": 15,
+            "y": 76.5,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "are you going to buy"
+            ]
+      },
+      {
+            "id": "p3077_ex6_3b",
+            "type": "fill",
+            "x": 50,
+            "y": 76.5,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "to wear"
+            ]
+      },
+      {
+            "id": "p3077_ex6_4a",
+            "type": "fill",
+            "x": 23,
+            "y": 80,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "are going to meet",
+                  "'re going to meet"
+            ]
+      },
+      {
+            "id": "p3077_ex6_4b",
+            "type": "fill",
+            "x": 55,
+            "y": 80,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "to talk about"
+            ]
+      },
+      {
+            "id": "p3077_ex6_5a",
+            "type": "fill",
+            "x": 18,
+            "y": 83.5,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "'m going to ask",
+                  "am going to ask"
+            ]
+      },
+      {
+            "id": "p3077_ex6_5b",
+            "type": "fill",
+            "x": 50,
+            "y": 83.5,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "to lend"
+            ]
+      },
+      {
+            "id": "p3077_ex6_6a",
+            "type": "fill",
+            "x": 23,
+            "y": 87,
+            "w": 15,
+            "h": 2.2,
+            "correct": [
+                  "'s going to use",
+                  "is going to use"
+            ]
+      },
+      {
+            "id": "p3077_ex6_6b",
+            "type": "fill",
+            "x": 50,
+            "y": 87,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "to write"
+            ]
+      },
+      {
+            "id": "p3077_ex6_7a",
+            "type": "fill",
+            "x": 23,
+            "y": 90.5,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "'re going to make",
+                  "are going to make"
+            ]
+      },
+      {
+            "id": "p3077_ex6_7b",
+            "type": "fill",
+            "x": 50,
+            "y": 90.5,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "to take"
+            ]
+      }
+],
+    "3078": [
+      {
+            "id": "p3078_ex2_1",
+            "type": "fill",
+            "x": 11,
+            "y": 49.2,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "tiny"
+            ]
+      },
+      {
+            "id": "p3078_ex2_2",
+            "type": "fill",
+            "x": 27,
+            "y": 49.2,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "huge"
+            ]
+      },
+      {
+            "id": "p3078_ex2_3",
+            "type": "fill",
+            "x": 11,
+            "y": 52.3,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "delighted"
+            ]
+      },
+      {
+            "id": "p3078_ex2_4",
+            "type": "fill",
+            "x": 11,
+            "y": 53.8,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "great"
+            ]
+      },
+      {
+            "id": "p3078_ex2_5",
+            "type": "fill",
+            "x": 11,
+            "y": 57,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "crucial"
+            ]
+      },
+      {
+            "id": "p3078_ex3_1",
+            "type": "fill",
+            "x": 11,
+            "y": 70,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Janine is a very nice person.",
+                  "Janine is a very nice person"
+            ]
+      },
+      {
+            "id": "p3078_ex3_2",
+            "type": "fill",
+            "x": 11,
+            "y": 73.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "His exam results were really brilliant.",
+                  "His exam results were really brilliant"
+            ]
+      },
+      {
+            "id": "p3078_ex3_3",
+            "type": "fill",
+            "x": 11,
+            "y": 77,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Our neighbours are very unfriendly.",
+                  "Our neighbours are very unfriendly"
+            ]
+      },
+      {
+            "id": "p3078_ex3_4",
+            "type": "fill",
+            "x": 11,
+            "y": 80.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Your dog is very noisy.",
+                  "Your dog is very noisy"
+            ]
+      },
+      {
+            "id": "p3078_ex3_5",
+            "type": "fill",
+            "x": 11,
+            "y": 84,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "The singer was really terrible.",
+                  "The singer was really terrible"
+            ]
+      },
+      {
+            "id": "p3078_ex3_6",
+            "type": "fill",
+            "x": 11,
+            "y": 87.5,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "We made a really huge cake for John's birthday.",
+                  "We made a really huge cake for John's birthday"
+            ]
+      },
+      {
+            "id": "p3078_ex3_7",
+            "type": "fill",
+            "x": 11,
+            "y": 91,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "The letter wasn't very important.",
+                  "The letter wasn't very important"
+            ]
+      }
+],
+    "3079": [
+      {
+            "id": "p3079_ex1_1",
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Shall I send him a text?",
+                  "Shall I send him a text"
+            ]
+      },
+      {
+            "id": "p3079_ex1_2",
+            "type": "fill",
+            "x": 11,
+            "y": 38.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Why don't I give you a lift?",
+                  "Why don't I give you a lift"
+            ]
+      },
+      {
+            "id": "p3079_ex1_3",
+            "type": "fill",
+            "x": 11,
+            "y": 42,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "I'll help you to look for them.",
+                  "I'll help you to look for them"
+            ]
+      },
+      {
+            "id": "p3079_ex1_4",
+            "type": "fill",
+            "x": 11,
+            "y": 45.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Let me help you with it.",
+                  "Let me help you with it"
+            ]
+      },
+      {
+            "id": "p3079_ex1_5",
+            "type": "fill",
+            "x": 11,
+            "y": 49,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Would you like me to show you?",
+                  "Would you like me to show you"
+            ]
+      },
+      {
+            "id": "p3079_ex1_6",
+            "type": "fill",
+            "x": 11,
+            "y": 52.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Shall I phone for a pizza?",
+                  "Shall I phone for a pizza"
+            ]
+      }
+],
+    "3080": [
+      {
+            "id": "p3080_ex1_1",
+            "type": "fill",
+            "x": 23,
+            "y": 35,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "have been",
+                  "'ve been"
+            ]
+      },
+      {
+            "id": "p3080_ex1_2",
+            "type": "fill",
+            "x": 23,
+            "y": 38.6,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "hasn't stopped",
+                  "has not stopped"
+            ]
+      },
+      {
+            "id": "p3080_ex1_3",
+            "type": "fill",
+            "x": 23,
+            "y": 42.2,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "has sold"
+            ]
+      },
+      {
+            "id": "p3080_ex1_4",
+            "type": "fill",
+            "x": 23,
+            "y": 45.8,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "'s become",
+                  "has become"
+            ]
+      },
+      {
+            "id": "p3080_ex1_5",
+            "type": "fill",
+            "x": 23,
+            "y": 49.3,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "'s travelled",
+                  "has travelled"
+            ]
+      },
+      {
+            "id": "p3080_ex1_6",
+            "type": "fill",
+            "x": 23,
+            "y": 52.9,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "have watched"
+            ]
+      },
+      {
+            "id": "p3080_ex1_7",
+            "type": "fill",
+            "x": 23,
+            "y": 56.5,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "have built"
+            ]
+      },
+      {
+            "id": "p3080_ex1_8",
+            "type": "fill",
+            "x": 23,
+            "y": 60,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "have sung"
+            ]
+      },
+      {
+            "id": "p3080_ex1_9",
+            "type": "fill",
+            "x": 23,
+            "y": 63.6,
+            "w": 18,
+            "h": 2.2,
+            "correct": [
+                  "hasn't recorded",
+                  "has not recorded"
+            ]
+      },
+      {
+            "id": "p3080_ex1_10",
+            "type": "fill",
+            "x": 23,
+            "y": 67.2,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "has made"
+            ]
+      },
+      {
+            "id": "p3080_ex2_1a",
+            "type": "fill",
+            "x": 57,
+            "y": 22,
+            "w": 8,
+            "h": 2,
+            "correct": [
+                  "Have"
+            ]
+      },
+      {
+            "id": "p3080_ex2_1b",
+            "type": "fill",
+            "x": 74,
+            "y": 22,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "heard"
+            ]
+      },
+      {
+            "id": "p3080_ex2_1c",
+            "type": "fill",
+            "x": 88,
+            "y": 22,
+            "w": 8,
+            "h": 2,
+            "correct": [
+                  "have"
+            ]
+      },
+      {
+            "id": "p3080_ex2_2a",
+            "type": "fill",
+            "x": 57,
+            "y": 26,
+            "w": 8,
+            "h": 2,
+            "correct": [
+                  "Has"
+            ]
+      },
+      {
+            "id": "p3080_ex2_2b",
+            "type": "fill",
+            "x": 74,
+            "y": 26,
+            "w": 12,
+            "h": 2,
+            "correct": [
+                  "recorded"
+            ]
+      },
+      {
+            "id": "p3080_ex2_2c",
+            "type": "fill",
+            "x": 88,
+            "y": 26,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "hasn't"
+            ]
+      },
+      {
+            "id": "p3080_ex2_3a",
+            "type": "fill",
+            "x": 57,
+            "y": 30,
+            "w": 8,
+            "h": 2,
+            "correct": [
+                  "Has"
+            ]
+      },
+      {
+            "id": "p3080_ex2_3b",
+            "type": "fill",
+            "x": 74,
+            "y": 30,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "given"
+            ]
+      },
+      {
+            "id": "p3080_ex2_3c",
+            "type": "fill",
+            "x": 88,
+            "y": 30,
+            "w": 8,
+            "h": 2,
+            "correct": [
+                  "has"
+            ]
+      },
+      {
+            "id": "p3080_ex2_4a",
+            "type": "fill",
+            "x": 57,
+            "y": 34,
+            "w": 8,
+            "h": 2,
+            "correct": [
+                  "Have"
+            ]
+      },
+      {
+            "id": "p3080_ex2_4b",
+            "type": "fill",
+            "x": 74,
+            "y": 34,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "been"
+            ]
+      },
+      {
+            "id": "p3080_ex2_4c",
+            "type": "fill",
+            "x": 88,
+            "y": 34,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "haven't"
+            ]
+      }
+],
+    "3081": [
+      {
+            "id": "p3081_ex3_1",
+            "type": "fill",
+            "x": 11,
+            "y": 14.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "We've visited Moscow and St Petersburg.",
+                  "We've visited Moscow and St Petersburg"
+            ]
+      },
+      {
+            "id": "p3081_ex3_2",
+            "type": "fill",
+            "x": 11,
+            "y": 18,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Have you read this book?",
+                  "Have you read this book"
+            ]
+      },
+      {
+            "id": "p3081_ex3_3",
+            "type": "fill",
+            "x": 11,
+            "y": 21.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "We haven't had a holiday.",
+                  "We haven't had a holiday"
+            ]
+      },
+      {
+            "id": "p3081_ex3_4",
+            "type": "fill",
+            "x": 11,
+            "y": 25,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "All of the workers have gone home.",
+                  "All of the workers have gone home"
+            ]
+      },
+      {
+            "id": "p3081_ex3_5",
+            "type": "fill",
+            "x": 11,
+            "y": 28.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Mandy hasn't found a job.",
+                  "Mandy hasn't found a job"
+            ]
+      },
+      {
+            "id": "p3081_ex3_6",
+            "type": "fill",
+            "x": 11,
+            "y": 32,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Who has taken my bike?",
+                  "Who has taken my bike"
+            ]
+      },
+      {
+            "id": "p3081_ex3_7",
+            "type": "fill",
+            "x": 11,
+            "y": 35.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "I haven't heard the weather forecast.",
+                  "I haven't heard the weather forecast"
+            ]
+      },
+      {
+            "id": "p3081_ex3_8",
+            "type": "fill",
+            "x": 11,
+            "y": 39,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "He has washed the car.",
+                  "He has washed the car"
+            ]
+      }
+],
+    "3082": [
+      {
+            "id": "p3082_ex1_1",
+            "type": "fill",
+            "x": 11,
+            "y": 51.5,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "action films"
+            ]
+      },
+      {
+            "id": "p3082_ex1_2",
+            "type": "fill",
+            "x": 32,
+            "y": 51.5,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "romance films"
+            ]
+      },
+      {
+            "id": "p3082_ex1_3",
+            "type": "fill",
+            "x": 53,
+            "y": 51.5,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "animations"
+            ]
+      },
+      {
+            "id": "p3082_ex1_4",
+            "type": "fill",
+            "x": 74,
+            "y": 51.5,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "horror films"
+            ]
+      },
+      {
+            "id": "p3082_ex1_5",
+            "type": "fill",
+            "x": 11,
+            "y": 58.7,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "comedies"
+            ]
+      },
+      {
+            "id": "p3082_ex1_6",
+            "type": "fill",
+            "x": 32,
+            "y": 58.7,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "musicals"
+            ]
+      },
+      {
+            "id": "p3082_ex1_7",
+            "type": "fill",
+            "x": 53,
+            "y": 58.7,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "dramas"
+            ]
+      },
+      {
+            "id": "p3082_ex1_8",
+            "type": "fill",
+            "x": 74,
+            "y": 58.7,
+            "w": 18,
+            "h": 2.2,
+            "correct": [
+                  "science fiction films"
+            ]
+      },
+      {
+            "id": "p3082_ex3_1",
+            "type": "fill",
+            "x": 76,
+            "y": 70,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "favourite"
+            ]
+      },
+      {
+            "id": "p3082_ex3_2",
+            "type": "fill",
+            "x": 67,
+            "y": 73.6,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "set"
+            ]
+      },
+      {
+            "id": "p3082_ex3_3",
+            "type": "fill",
+            "x": 67,
+            "y": 77.2,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "about"
+            ]
+      },
+      {
+            "id": "p3082_ex3_4",
+            "type": "fill",
+            "x": 67,
+            "y": 80.8,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "it's",
+                  "it is"
+            ]
+      },
+      {
+            "id": "p3082_ex3_5",
+            "type": "fill",
+            "x": 67,
+            "y": 84.4,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "stars"
+            ]
+      }
+],
+    "3083": [
+      {
+            "id": "p3083_ex4_1",
+            "type": "fill",
+            "x": 11,
+            "y": 14.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "I've never had acting lessons.",
+                  "I've never had acting lessons"
+            ]
+      },
+      {
+            "id": "p3083_ex4_2",
+            "type": "fill",
+            "x": 11,
+            "y": 18,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "Have you ever walked out of a play before the end?",
+                  "Have you ever walked out of a play before the end"
+            ]
+      },
+      {
+            "id": "p3083_ex4_3",
+            "type": "fill",
+            "x": 11,
+            "y": 21.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "We've never been to a film festival.",
+                  "We've never been to a film festival"
+            ]
+      },
+      {
+            "id": "p3083_ex4_4",
+            "type": "fill",
+            "x": 11,
+            "y": 25,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Have you ever met a famous person?",
+                  "Have you ever met a famous person"
+            ]
+      },
+      {
+            "id": "p3083_ex4_5",
+            "type": "fill",
+            "x": 11,
+            "y": 28.5,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "Has anyone in your family ever been on TV?",
+                  "Has anyone in your family ever been on TV"
+            ]
+      },
+      {
+            "id": "p3083_ex4_6",
+            "type": "fill",
+            "x": 11,
+            "y": 32,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Nadia has never sung in public before.",
+                  "Nadia has never sung in public before"
+            ]
+      },
+      {
+            "id": "p3083_ex4_7",
+            "type": "fill",
+            "x": 11,
+            "y": 35.5,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "Have I ever forgotten to send you a birthday card?",
+                  "Have I ever forgotten to send you a birthday card"
+            ]
+      },
+      {
+            "id": "p3083_ex6_1",
+            "type": "select",
+            "x": 74,
+            "y": 38.9,
+            "w": 12,
+            "h": 2.2,
+            "options": [
+                  "lasted",
+                  "has lasted"
+            ],
+            "correct": "lasted"
+      },
+      {
+            "id": "p3083_ex6_2",
+            "type": "select",
+            "x": 67,
+            "y": 45.4,
+            "w": 14,
+            "h": 2.2,
+            "options": [
+                  "designed",
+                  "has designed"
+            ],
+            "correct": "designed"
+      },
+      {
+            "id": "p3083_ex6_3",
+            "type": "select",
+            "x": 74,
+            "y": 46.8,
+            "w": 12,
+            "h": 2.2,
+            "options": [
+                  "made",
+                  "has made"
+            ],
+            "correct": "made"
+      },
+      {
+            "id": "p3083_ex6_4",
+            "type": "select",
+            "x": 67,
+            "y": 50,
+            "w": 10,
+            "h": 2.2,
+            "options": [
+                  "was",
+                  "has been"
+            ],
+            "correct": "was"
+      },
+      {
+            "id": "p3083_ex6_5",
+            "type": "select",
+            "x": 74,
+            "y": 55.6,
+            "w": 16,
+            "h": 2.2,
+            "options": [
+                  "received",
+                  "have received"
+            ],
+            "correct": "have received"
+      },
+      {
+            "id": "p3083_ex6_6",
+            "type": "select",
+            "x": 67,
+            "y": 59.2,
+            "w": 12,
+            "h": 2.2,
+            "options": [
+                  "won",
+                  "has won"
+            ],
+            "correct": "won"
+      },
+      {
+            "id": "p3083_ex6_7",
+            "type": "select",
+            "x": 67,
+            "y": 62,
+            "w": 12,
+            "h": 2.2,
+            "options": [
+                  "had",
+                  "has had"
+            ],
+            "correct": "has had"
+      },
+      {
+            "id": "p3083_ex6_8",
+            "type": "select",
+            "x": 78,
+            "y": 65.7,
+            "w": 12,
+            "h": 2.2,
+            "options": [
+                  "won",
+                  "has won"
+            ],
+            "correct": "has won"
+      },
+      {
+            "id": "p3083_ex6_9",
+            "type": "select",
+            "x": 67,
+            "y": 70,
+            "w": 12,
+            "h": 2.2,
+            "options": [
+                  "became",
+                  "has become"
+            ],
+            "correct": "became"
+      },
+      {
+            "id": "p3083_ex6_10",
+            "type": "select",
+            "x": 67,
+            "y": 76.5,
+            "w": 18,
+            "h": 2.2,
+            "options": [
+                  "ever refused",
+                  "have ever refused"
+            ],
+            "correct": "have ever refused"
+      }
+],
+    "3084": [
+      {
+            "id": "p3084_ex2_1",
+            "type": "fill",
+            "x": 11,
+            "y": 45,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "you've won the Oscar for best director.",
+                  "you've won the Oscar for best director"
+            ]
+      },
+      {
+            "id": "p3084_ex2_2",
+            "type": "fill",
+            "x": 11,
+            "y": 48.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "Who's drunk my coffee?",
+                  "Who's drunk my coffee"
+            ]
+      },
+      {
+            "id": "p3084_ex2_3",
+            "type": "fill",
+            "x": 11,
+            "y": 52,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "She's met someone online.",
+                  "She's met someone online"
+            ]
+      },
+      {
+            "id": "p3084_ex2_4",
+            "type": "fill",
+            "x": 11,
+            "y": 55.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "We've begun to work.",
+                  "We've begun to work"
+            ]
+      },
+      {
+            "id": "p3084_ex2_5",
+            "type": "fill",
+            "x": 11,
+            "y": 59,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "She's been on holiday.",
+                  "She's gone on holiday.",
+                  "She's been on holiday"
+            ]
+      },
+      {
+            "id": "p3084_ex2_6",
+            "type": "fill",
+            "x": 11,
+            "y": 62.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "He's written a book.",
+                  "He's written a book"
+            ]
+      },
+      {
+            "id": "p3084_ex2_7",
+            "type": "fill",
+            "x": 11,
+            "y": 66,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "I've given Tom some money.",
+                  "I've given Tom some money"
+            ]
+      },
+      {
+            "id": "p3084_ex2_8",
+            "type": "fill",
+            "x": 11,
+            "y": 69.5,
+            "w": 35,
+            "h": 2.2,
+            "correct": [
+                  "We've been in the office all day.",
+                  "We've been in the office all day"
+            ]
+      }
+],
+    "3085": [
+      {
+            "id": "p3085_ex1_1a",
+            "type": "fill",
+            "x": 11,
+            "y": 26,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "it's",
+                  "It's"
+            ]
+      },
+      {
+            "id": "p3085_ex1_1b",
+            "type": "fill",
+            "x": 23,
+            "y": 26,
+            "w": 6,
+            "h": 2.2,
+            "correct": [
+                  "Is",
+                  "is"
+            ]
+      },
+      {
+            "id": "p3085_ex1_2",
+            "type": "fill",
+            "x": 11,
+            "y": 31,
+            "w": 18,
+            "h": 2.2,
+            "correct": [
+                  "call me back"
+            ]
+      },
+      {
+            "id": "p3085_ex1_3",
+            "type": "fill",
+            "x": 11,
+            "y": 36,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "moment"
+            ]
+      },
+      {
+            "id": "p3085_ex1_4a",
+            "type": "fill",
+            "x": 11,
+            "y": 41,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "Hang",
+                  "Hold"
+            ]
+      },
+      {
+            "id": "p3085_ex1_4b",
+            "type": "fill",
+            "x": 23,
+            "y": 41,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "just"
+            ]
+      },
+      {
+            "id": "p3085_ex1_5a",
+            "type": "fill",
+            "x": 11,
+            "y": 46,
+            "w": 6,
+            "h": 2.2,
+            "correct": [
+                  "Can"
+            ]
+      },
+      {
+            "id": "p3085_ex1_5b",
+            "type": "fill",
+            "x": 20,
+            "y": 46,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "call"
+            ]
+      },
+      {
+            "id": "p3085_ex1_6a",
+            "type": "fill",
+            "x": 11,
+            "y": 51,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "afraid"
+            ]
+      },
+      {
+            "id": "p3085_ex1_6b",
+            "type": "fill",
+            "x": 25,
+            "y": 51,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "out of"
+            ]
+      },
+      {
+            "id": "p3085_ex1_7",
+            "type": "fill",
+            "x": 11,
+            "y": 56,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "have"
+            ]
+      },
+      {
+            "id": "p3085_ex1_8",
+            "type": "fill",
+            "x": 11,
+            "y": 61,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "Could I"
+            ]
+      },
+      {
+            "id": "p3085_ex1_9",
+            "type": "fill",
+            "x": 11,
+            "y": 66,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "take"
+            ]
+      },
+      {
+            "id": "p3085_ex1_10",
+            "type": "fill",
+            "x": 11,
+            "y": 71,
+            "w": 6,
+            "h": 2.2,
+            "correct": [
+                  "on"
+            ]
+      }
+],
+    "3086": [
+      {
+            "id": "p3086_ex5_1",
+            "type": "fill",
+            "x": 74,
+            "y": 79.2,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "prison"
+            ]
+      },
+      {
+            "id": "p3086_ex5_2",
+            "type": "fill",
+            "x": 74,
+            "y": 80.8,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "bishop's",
+                  "bishop"
+            ]
+      },
+      {
+            "id": "p3086_ex5_3",
+            "type": "fill",
+            "x": 74,
+            "y": 82.3,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "open"
+            ]
+      },
+      {
+            "id": "p3086_ex5_4",
+            "type": "fill",
+            "x": 67,
+            "y": 85.4,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "kind"
+            ]
+      },
+      {
+            "id": "p3086_ex5_5",
+            "type": "fill",
+            "x": 74,
+            "y": 87,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "sister"
+            ]
+      },
+      {
+            "id": "p3086_ex5_6",
+            "type": "fill",
+            "x": 67,
+            "y": 88.5,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "afraid"
+            ]
+      },
+      {
+            "id": "p3086_ex5_7",
+            "type": "fill",
+            "x": 67,
+            "y": 90,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "dinner"
+            ]
+      },
+      {
+            "id": "p3086_ex5_8",
+            "type": "fill",
+            "x": 74,
+            "y": 91.6,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "candlesticks"
+            ]
+      }
+],
+    "3087": [
+      {
+            "id": "p3087_ex1_1",
+            "type": "fill",
+            "x": 8.8,
+            "y": 24.5,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "They're going to organize a charity race.",
+                  "They're going to organize a charity race"
+            ]
+      },
+      {
+            "id": "p3087_ex1_2",
+            "type": "fill",
+            "x": 8.8,
+            "y": 27.9,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "I'm saving money to buy a new bicycle.",
+                  "I'm saving money to buy a new bicycle"
+            ]
+      },
+      {
+            "id": "p3087_ex1_3",
+            "type": "fill",
+            "x": 8.8,
+            "y": 31.4,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "He's never used a GPS before.",
+                  "He's never used a GPS before"
+            ]
+      },
+      {
+            "id": "p3087_ex1_4",
+            "type": "fill",
+            "x": 8.8,
+            "y": 34.8,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "Is your mum going to teach you to drive?",
+                  "Is your mum going to teach you to drive"
+            ]
+      },
+      {
+            "id": "p3087_ex1_5",
+            "type": "fill",
+            "x": 8.8,
+            "y": 38.2,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "We went to a concert last night.",
+                  "We went to a concert last night"
+            ]
+      },
+      {
+            "id": "p3087_ex1_6",
+            "type": "fill",
+            "x": 8.8,
+            "y": 41.7,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "Have you ever eaten Peruvian food?",
+                  "Have you ever eaten Peruvian food"
+            ]
+      },
+      {
+            "id": "p3087_ex1_7",
+            "type": "fill",
+            "x": 8.8,
+            "y": 45.1,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "We're going to go to the hospital to visit Kim.",
+                  "We're going to go to the hospital to visit Kim"
+            ]
+      },
+      {
+            "id": "p3087_ex1_8",
+            "type": "fill",
+            "x": 8.8,
+            "y": 48.6,
+            "w": 38,
+            "h": 2.2,
+            "correct": [
+                  "You aren't going to have a lot of time tomorrow.",
+                  "You aren't going to have a lot of time tomorrow"
+            ]
+      },
+      {
+            "id": "p3087_ex3_1",
+            "type": "fill",
+            "x": 67,
+            "y": 15.5,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "after"
+            ]
+      },
+      {
+            "id": "p3087_ex3_2",
+            "type": "fill",
+            "x": 67,
+            "y": 17.2,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "garden"
+            ]
+      },
+      {
+            "id": "p3087_ex3_3",
+            "type": "fill",
+            "x": 67,
+            "y": 18.9,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "make"
+            ]
+      },
+      {
+            "id": "p3087_ex3_4",
+            "type": "fill",
+            "x": 67,
+            "y": 20.6,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "plays"
+            ]
+      },
+      {
+            "id": "p3087_ex3_5",
+            "type": "select",
+            "x": 74,
+            "y": 17.1,
+            "w": 10,
+            "h": 2.2,
+            "options": [
+                  "film",
+                  "cinema"
+            ],
+            "correct": "film"
+      },
+      {
+            "id": "p3087_ex3_6",
+            "type": "select",
+            "x": 67,
+            "y": 20.4,
+            "w": 12,
+            "h": 2.2,
+            "options": [
+                  "theatre",
+                  "play"
+            ],
+            "correct": "theatre"
+      },
+      {
+            "id": "p3087_ex4_1",
+            "type": "fill",
+            "x": 67,
+            "y": 32,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "been"
+            ]
+      },
+      {
+            "id": "p3087_ex4_2",
+            "type": "fill",
+            "x": 78,
+            "y": 33.5,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "forgotten"
+            ]
+      },
+      {
+            "id": "p3087_ex4_3",
+            "type": "fill",
+            "x": 67,
+            "y": 36.6,
+            "w": 20,
+            "h": 2.2,
+            "correct": [
+                  "a science fiction film"
+            ]
+      },
+      {
+            "id": "p3087_ex4_4",
+            "type": "fill",
+            "x": 67,
+            "y": 39.7,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "awful"
+            ]
+      },
+      {
+            "id": "p3087_ex4_5",
+            "type": "fill",
+            "x": 67,
+            "y": 42.8,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "freezing"
+            ]
+      },
+      {
+            "id": "p3087_ex4_6",
+            "type": "fill",
+            "x": 67,
+            "y": 45.9,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "really"
+            ]
+      },
+      {
+            "id": "p3087_ex4_7",
+            "type": "fill",
+            "x": 67,
+            "y": 49,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "tablet"
+            ]
+      },
+      {
+            "id": "p3087_ex4_8",
+            "type": "fill",
+            "x": 67,
+            "y": 52.1,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "app"
+            ]
+      },
+      {
+            "id": "p3087_ex4_9",
+            "type": "fill",
+            "x": 67,
+            "y": 55.2,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "Comedies",
+                  "comedies"
+            ]
+      },
+      {
+            "id": "p3087_ex5_1a",
+            "type": "fill",
+            "x": 55,
+            "y": 64,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "Shall"
+            ]
+      },
+      {
+            "id": "p3087_ex5_1b",
+            "type": "fill",
+            "x": 70,
+            "y": 64,
+            "w": 6,
+            "h": 2.2,
+            "correct": [
+                  "for"
+            ]
+      },
+      {
+            "id": "p3087_ex5_2",
+            "type": "fill",
+            "x": 55,
+            "y": 67.5,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "Would"
+            ]
+      },
+      {
+            "id": "p3087_ex5_3",
+            "type": "fill",
+            "x": 55,
+            "y": 71,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "have"
+            ]
+      },
+      {
+            "id": "p3087_ex5_4",
+            "type": "fill",
+            "x": 55,
+            "y": 74.5,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "Could"
+            ]
+      },
+      {
+            "id": "p3087_ex5_5",
+            "type": "fill",
+            "x": 55,
+            "y": 78,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "back"
+            ]
+      },
+      {
+            "id": "p3087_ex5_6",
+            "type": "fill",
+            "x": 55,
+            "y": 81.5,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "don't"
+            ]
+      },
+      {
+            "id": "p3087_ex5_7",
+            "type": "fill",
+            "x": 55,
+            "y": 85,
+            "w": 10,
+            "h": 2.2,
+            "correct": [
+                  "Hold",
+                  "Hang"
+            ]
+      },
+      {
+            "id": "p3087_ex5_8",
+            "type": "fill",
+            "x": 55,
+            "y": 88.5,
+            "w": 8,
+            "h": 2.2,
+            "correct": [
+                  "Let"
+            ]
+      }
+],
     "2004": [
     {
       "id": "p2004_ex2_2",
