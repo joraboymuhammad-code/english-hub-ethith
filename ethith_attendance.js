@@ -979,6 +979,7 @@
             '</button>' +
             '<button class="dash-add-student-btn" data-cid="' + esc(cls.id) + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;">+ O‘quvchi</button>' +
             '<button class="dash-edit-class-btn" data-cid="' + esc(cls.id) + '" style="background:rgba(255,255,255,0.06);color:#cbd5e1;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;">✏️</button>' +
+            '<button class="dash-del-class-btn" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;" title="Guruhni o‘chirish">🗑</button>' +
           '</div>' +
 
         '</div>';
@@ -1053,6 +1054,15 @@
         var cid = btn.getAttribute('data-cid');
         EA.activeClassId = cid;
         EA.render(container);
+      };
+    });
+
+    container.querySelectorAll('.dash-del-class-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        if (e) e.stopPropagation();
+        var cid = btn.getAttribute('data-cid');
+        var cname = btn.getAttribute('data-cname');
+        EA.openDeleteClassModal(cid, cname, teacher, container);
       };
     });
   };
@@ -1137,6 +1147,75 @@
   };
 
   // MODAL 2: ADD GROUP FOR SPECIFIC TEACHER
+  
+  EA.openDeleteClassModal = function(classId, className, teacher, container) {
+    var old = document.getElementById('eaDeleteClassModalOverlay');
+    if (old) old.remove();
+
+    var overlay = document.createElement('div');
+    overlay.id = 'eaDeleteClassModalOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(16px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1px solid rgba(239,68,68,0.4);border-radius:24px;width:100%;max-width:460px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,0.85);text-align:center;">' +
+      '<div style="width:60px;height:60px;border-radius:20px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#ef4444;font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">🗑️</div>' +
+      '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Guruhni O‘chirish</h3>' +
+      '<p style="margin:0 0 20px;font-size:13.5px;color:#cbd5e1;line-height:1.5;">' +
+        'Haqiqatan ham <b style="color:#f87171;">' + esc(className || 'Ushbu guruh') + '</b>ni butunlay o‘chirib tashlamoqchimisiz?<br>' +
+        '<span style="font-size:12px;color:#94a3b8;">Unga tegishli barcha davomat va baholar bazadan o‘chiriladi va bu amalni qaytarib bo‘lmaydi.</span>' +
+      '</p>' +
+      '<div style="display:flex;gap:12px;">' +
+        '<button id="eaCancelDelClassBtn" style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#cbd5e1;padding:12px;font-weight:800;font-size:13px;cursor:pointer;transition:all 0.2s;">Bekor Qilish</button>' +
+        '<button id="eaConfirmDelClassBtn" style="flex:1;background:linear-gradient(135deg,#dc2626,#ef4444);border:none;border-radius:12px;color:#fff;padding:12px;font-weight:900;font-size:13px;cursor:pointer;box-shadow:0 4px 18px rgba(239,68,68,0.45);transition:all 0.2s;">🗑 Ha, O‘chirilsin</button>' +
+      '</div>' +
+    '</div>';
+
+    document.body.appendChild(overlay);
+
+    function close() { overlay.remove(); }
+    overlay.querySelector('#eaCancelDelClassBtn').onclick = close;
+
+    overlay.querySelector('#eaConfirmDelClassBtn').onclick = function() {
+      var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+      if (S.classes && Array.isArray(S.classes)) {
+        S.classes = S.classes.filter(function(c) { return c.id !== classId; });
+      }
+
+      var teachers = getStoreTeachers();
+      teachers.forEach(function(tch) {
+        if (tch.assignedClasses && Array.isArray(tch.assignedClasses)) {
+          tch.assignedClasses = tch.assignedClasses.filter(function(cid) { return cid !== classId; });
+        }
+      });
+
+      if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
+      if (typeof window.saveState === 'function') window.saveState();
+      if (typeof window.pushRemoteStore === 'function') window.pushRemoteStore();
+      if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') window.EthithSync.pushStoreUpdate();
+
+      if (window.EthithSync && typeof window.EthithSync.publish === 'function') {
+        try {
+          window.EthithSync.publish('CLASS_DELETED', { classId: classId, className: className });
+        } catch(e) {}
+      }
+
+      close();
+
+      if (typeof window.showToast === 'function') {
+        window.showToast((className || 'Guruh') + ' muvaffaqiyatli o‘chirildi', 'success');
+      }
+
+      if (EA.activeClassId === classId) {
+        EA.activeClassId = null;
+      }
+      if (teacher && teacher.id) {
+        EA.activeTeacherId = teacher.id;
+      }
+
+      var targetContainer = container || document.getElementById('apView');
+      EA.render(targetContainer);
+    };
+  };
+
   EA.openAddGroupForTeacherModal = function(teacher) {
     var old = document.getElementById('eaAddGroupModalOverlay');
     if (old) old.remove();
@@ -1315,6 +1394,7 @@ EA.render = function(container, preserveScrollLeft) {
       '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
         '<button id="eaBtnBackToTeacherGroupsFromJ" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.3);">&larr; ' + esc(curTName) + ' Guruhlariga Qaytish</button>' +
         (isAdmin ? '<button id="eaBtnBackToAllTeachersFromJ" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;">Barcha O‘qituvchilar</button>' : '') +
+        '<button id="eaBtnDeleteClassFromJ" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Guruhni butunlay o‘chirish">🗑 Guruhni O‘chirish</button>' +
       '</div>' +
       '<div style="display:flex;align-items:center;gap:10px;">' +
         '<span style="font-size:12.5px;color:#94a3b8;">Ustoz: <b style="color:#fff;">' + esc(curTName) + '</b></span>' +
@@ -1749,6 +1829,32 @@ EA.render = function(container, preserveScrollLeft) {
   EA.attachEvents = function(container, cls) {
     var isTeacher = isTeacherRole();
     var scrollWrap = container.querySelector('.ea-table-scroll-wrap');
+
+    var backToTGroupsBtn = container.querySelector('#eaBtnBackToTeacherGroupsFromJ');
+    if (backToTGroupsBtn) {
+      backToTGroupsBtn.onclick = function() {
+        EA.activeClassId = null;
+        EA.render(container);
+      };
+    }
+    var backToAllTBtn = container.querySelector('#eaBtnBackToAllTeachersFromJ');
+    if (backToAllTBtn) {
+      backToAllTBtn.onclick = function() {
+        EA.activeTeacherId = null;
+        EA.activeClassId = null;
+        EA.render(container);
+      };
+    }
+    var delClassFromJBtn = container.querySelector('#eaBtnDeleteClassFromJ');
+    if (delClassFromJBtn) {
+      delClassFromJBtn.onclick = function() {
+        var cid = delClassFromJBtn.getAttribute('data-cid');
+        var cname = delClassFromJBtn.getAttribute('data-cname');
+        var teachers = getStoreTeachers();
+        var curT = teachers.find(function(it) { return it.id === EA.activeTeacherId; });
+        EA.openDeleteClassModal(cid, cname, curT, container);
+      };
+    }
 
     // Switch class via class cards
     container.querySelectorAll('.ea-class-card-tab').forEach(function(tab) {
