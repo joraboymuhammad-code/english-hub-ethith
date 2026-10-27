@@ -346,6 +346,8 @@
 
 
 
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -9843,7 +9845,7 @@ html, body {
 </style>
 
 <script id="ethith-core-bundle">
-window.ETHITH_BUILD_VERSION = "2026.10.27.1925";
+window.ETHITH_BUILD_VERSION = "2026.10.27.1950";
 
 /*******************************************************************************
  * Copyright (c) 2013, 2014 IBM Corp.
@@ -99553,6 +99555,11 @@ EA.render = function(container, preserveScrollLeft) {
     return u && (u.role === 'teacher' || u.role === 'admin' || u.id === 'admin_official_teacher');
   }
 
+  function isTeacher() {
+    var u = getCurrentUser();
+    return u && (u.role === 'teacher' || u.id === 'admin_official_teacher');
+  }
+
   function getActiveMonthKey() {
     var d = new Date();
     var m = String(d.getMonth() + 1).padStart(2, '0');
@@ -99596,7 +99603,7 @@ EA.render = function(container, preserveScrollLeft) {
     if (!container) return;
     var S = getStore();
     var fe = S.fileExplorer || { folders: [], tests: [] };
-    var isStaff = isAdminOrTeacher();
+    var isStaff = isTeacher();
     var selectedFolderId = null;
 
     // Ensure root folder exists
@@ -104858,7 +104865,6 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += item('pre_intermediate', ic('book'), 'Pre-Inter (B1) Tahrir');
       h += item('intermediate', ic('book'), 'Intermediate (B1+) Tahrir');
       h += item('upper_intermediate', ic('book'), 'Upper-Inter (B2) Tahrir');
-      h += item('explorer', '💻', 'Qo‘shimcha testlar');
       h += item('ask_ai', ic('sparkles'), 'Ask AI Teacher');
     } else if (isTeacher) {
       // 2. TEACHER NAVIGATION: Qo'shimcha testlar, Sinflar, Davomat, Dars jadvallari, Kitoblar, Musobaqalar
@@ -105129,6 +105135,11 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       toast("🛡️ Moliya bo‘limi faqat Admin va O‘qituvchilar uchun ochiq");
       n = 'dash';
     }
+    // Block admin from explorer (Test studio strictly for teachers to create, students to solve)
+    if (n === 'explorer' && S.user && S.user.role === 'admin') {
+      toast("ℹ️ Qo‘shimcha testlar bo‘limi faqat O‘qituvchi va O‘quvchilar uchun");
+      n = 'dash';
+    }
     if (typeof a === 'string' && a.startsWith('{')) {
       try { a = JSON.parse(a); } catch(e) {}
     }
@@ -105201,6 +105212,26 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         window.EthithViews.renderAttendanceView(v);
       } else if (window.EthithViews && window.EthithViews.renderAttendanceView) {
         window.EthithViews.renderAttendanceView(v);
+      }
+    } else if (view.name === 'billing') {
+      if (window.EthithEnterprise && window.EthithEnterprise.renderBillingView) {
+        window.EthithEnterprise.renderBillingView(v);
+      } else if (window.renderBillingView) {
+        window.renderBillingView(v);
+      }
+    } else if (view.name === 'staff') {
+      if (window.EthithEnterprise && window.EthithEnterprise.renderStaffView) {
+        window.EthithEnterprise.renderStaffView(v);
+      } else if (window.renderStaffView) {
+        window.renderStaffView(v);
+      }
+    } else if (view.name === 'contests') {
+      if (window.EthithEnterprise && window.EthithEnterprise.renderContestsView) {
+        window.EthithEnterprise.renderContestsView(v);
+      }
+    } else if (view.name === 'explorer') {
+      if (window.EthithEnterprise && window.EthithEnterprise.renderExplorerView) {
+        window.EthithEnterprise.renderExplorerView(v);
       }
     } else if (view.name === 'leaderboard') {
       window.EthithViews.renderLeaderboardView(v);

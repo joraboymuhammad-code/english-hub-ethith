@@ -159,6 +159,11 @@
     return u && (u.role === 'teacher' || u.role === 'admin' || u.id === 'admin_official_teacher');
   }
 
+  function isTeacher() {
+    var u = getCurrentUser();
+    return u && (u.role === 'teacher' || u.id === 'admin_official_teacher');
+  }
+
   function getActiveMonthKey() {
     var d = new Date();
     var m = String(d.getMonth() + 1).padStart(2, '0');
@@ -202,7 +207,7 @@
     if (!container) return;
     var S = getStore();
     var fe = S.fileExplorer || { folders: [], tests: [] };
-    var isStaff = isAdminOrTeacher();
+    var isStaff = isTeacher();
     var selectedFolderId = null;
 
     // Ensure root folder exists
