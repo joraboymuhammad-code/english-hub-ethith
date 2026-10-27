@@ -1158,7 +1158,8 @@
               "score": "2"
             },
             "usmonqulovaetiborxon@gmail.com": {
-              "status": "K"
+              "status": "",
+              "score": ""
             }
           }
         },
@@ -1179,7 +1180,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1793091270936,
+        "updatedAt": 1793091274972,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -54688,5 +54689,5 @@
       }
     }
   },
-  "updatedAt": 1793091271650
+  "updatedAt": 1793091279726
 }
