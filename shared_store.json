@@ -7,77 +7,78 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Instructor Muhammadyusuf",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792429062767,
+      "created": 1761463060596,
       "students": [
         {
           "id": "std_1",
-          "name": "Ashurov Dilyorbek Azizbek o'g'li",
+          "name": "Ashurov Dilyorbek",
           "email": "ashurov@ethith.uz",
-          "joinedAt": "2026-09-01"
+          "joinedAt": "2026-09-01",
+          "parentPhone": ""
         },
         {
           "id": "std_2",
-          "name": "Ergasheva Madina Asad qizi",
+          "name": "Ergasheva Madina",
           "email": "ergasheva@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_3",
-          "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
+          "name": "Erkinov Aslbekjon",
           "email": "erkinov@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_4",
-          "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
+          "name": "JO‘RABOYEV MUXAMMADYUSUF",
           "email": "joraboyev@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_5",
-          "name": "Jo'raboyev Javoxir Murod o'g'li",
+          "name": "Jo'raboyev Javoxir",
           "email": "javoxir@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_6",
-          "name": "Mavlonova Ruxshona Oybek qizi",
+          "name": "Mavlonova Ruxshona",
           "email": "mavlonova@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_7",
-          "name": "Muxtaraliyeva Dilora Dilshod qizi",
+          "name": "Muxtaraliyeva Dilora",
           "email": "muxtaraliyeva@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_8",
-          "name": "O'razboyev O'tkir Baxtiyor o'g'li",
+          "name": "O'razboyev O'tkir",
           "email": "orazboyev@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_9",
-          "name": "Saparova Aida Sarvar qizi",
+          "name": "Saparova Aida",
           "email": "saparova@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_10",
-          "name": "Umarov Nursulton Alisher o'g'li",
+          "name": "Umarov Nursulton",
           "email": "umarov@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_11",
-          "name": "Xolmurodova Muazzam G'ulom qizi",
+          "name": "Xolmurodova Muazzam",
           "email": "xolmurodova@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_12",
-          "name": "Kaxarova Xumora Olimjon qizi",
+          "name": "Kaxarova Xumora",
           "email": "kaxarova@ethith.uz",
           "joinedAt": "2026-09-01"
         },
@@ -93,6 +94,13 @@
           "title": null
         },
         {
+          "id": "tg_6772427596",
+          "name": "Striker_uzb",
+          "email": "Mu_striker@telegram.org",
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 24
+        },
+        {
           "id": "usmonqulovaetiborxon@gmail.com",
           "name": "Etiborxon Usmonqulova",
           "email": "usmonqulovaetiborxon@gmail.com",
@@ -102,13 +110,6 @@
           "avatar": "girl_v7_valkyrie_samurai_1",
           "nameStyle": "flame",
           "title": "👑 IELTS Qiroli"
-        },
-        {
-          "id": "tg_6772427596",
-          "name": "Striker_uzb",
-          "email": "Mu_striker@telegram.org",
-          "joinedAt": "2026-10-26",
-          "dailyMinutes": 24
         },
         {
           "id": "aleksandermike37@gmail.com",
@@ -153,7 +154,25 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [],
+      "activeHomework": {
+        "dateKey": "2026-10-26",
+        "dateDisp": "26.10.2026",
+        "bookLevel": "B2",
+        "unit": 2,
+        "lessonCode": "2.2",
+        "lessonTitle": "2.2 An extraordinary escape",
+        "pages": [
+          2012,
+          2013
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792778188732,
+        "teacherName": "Instructor Muhammadyusuf"
+      },
       "schedule": "har_kuni",
+      "customStudentNames": {
+        "std_1": "Ashurov Dilyorbek"
+      },
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -1137,6 +1156,9 @@
             "std_3": {
               "status": "Q",
               "score": "2"
+            },
+            "usmonqulovaetiborxon@gmail.com": {
+              "status": "K"
             }
           }
         },
@@ -1157,7 +1179,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792999900973,
+        "updatedAt": 1793091270936,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1175,25 +1197,9 @@
         },
         "seededWindowV3": true
       },
-      "customStudentNames": {
-        "std_1": "Ashurov Dilyorbek"
+      "customStudentPhones": {
+        "std_1": ""
       },
-      "activeHomework": {
-        "dateKey": "2026-10-26",
-        "dateDisp": "26.10.2026",
-        "bookLevel": "B2",
-        "unit": 2,
-        "lessonCode": "2.2",
-        "lessonTitle": "2.2 An extraordinary escape",
-        "pages": [
-          2012,
-          2013
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792778188732,
-        "teacherName": "Instructor Muhammadyusuf"
-      },
-      "customStudentPhones": {},
       "studentPayments": {
         "std_1": {
           "fee": 1400000,
@@ -1326,49 +1332,49 @@
       "students": [
         {
           "id": "std_1",
-          "name": "Ashurov Dilyorbek Azizbek o'g'li",
+          "name": "Ashurov Dilyorbek",
           "email": "ashurov@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_2",
-          "name": "Ergasheva Madina Asad qizi",
+          "name": "Ergasheva Madina",
           "email": "ergasheva@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_3",
-          "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
+          "name": "Erkinov Aslbekjon",
           "email": "erkinov@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_4",
-          "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
+          "name": "JO‘RABOYEV MUXAMMADYUSUF",
           "email": "joraboyev@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_5",
-          "name": "Jo'raboyev Javoxir Murod o'g'li",
+          "name": "Jo'raboyev Javoxir",
           "email": "javoxir@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_6",
-          "name": "Mavlonova Ruxshona Oybek qizi",
+          "name": "Mavlonova Ruxshona",
           "email": "mavlonova@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_7",
-          "name": "Muxtaraliyeva Dilora Dilshod qizi",
+          "name": "Muxtaraliyeva Dilora",
           "email": "muxtaraliyeva@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_8",
-          "name": "O'razboyev O'tkir Baxtiyor o'g'li",
+          "name": "O'razboyev O'tkir",
           "email": "orazboyev@ethith.uz",
           "joinedAt": "2026-09-01"
         },
@@ -1545,7 +1551,6 @@
         }
       ],
       "pinnedId": null,
-      "deletedMsgIds": [],
       "customStudentPhones": {},
       "activeHomework": {
         "dateKey": "2026-10-26",
@@ -1559,7 +1564,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedMsgIds": []
     },
     {
       "id": "cls_1793047882549",
@@ -2100,6 +2106,166 @@
   ],
   "accounts": [
     {
+      "id": "tg_98124765",
+      "role": "student",
+      "name": "Striker_uzb",
+      "email": "mu_striker@telegram.org",
+      "coins": 101100,
+      "avatar": null,
+      "level": "A1",
+      "dailyMinutes": 0,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null,
+      "updatedAt": 1792997212404
+    },
+    {
+      "id": "sardorbek@ethith.uz",
+      "name": "Sardorbek Valiyev",
+      "email": "sardorbek@ethith.uz",
+      "role": "student",
+      "coins": 150,
+      "avatar": null,
+      "level": "A1",
+      "joinedAt": 1792611123035,
+      "nameStyle": null,
+      "title": null,
+      "dailyMinutes": 0,
+      "updatedAt": 1792611123890
+    },
+    {
+      "id": "std_1",
+      "role": "student",
+      "name": "Ashurov Dilyorbek",
+      "email": "ashurov@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_2",
+      "role": "student",
+      "name": "Ergasheva Madina",
+      "email": "ergasheva@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_3",
+      "role": "student",
+      "name": "Erkinov Aslbekjon",
+      "email": "erkinov@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_4",
+      "role": "student",
+      "name": "JO‘RABOYEV MUXAMMADYUSUF",
+      "email": "joraboyev@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_5",
+      "role": "student",
+      "name": "Jo'raboyev Javoxir",
+      "email": "javoxir@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_6",
+      "role": "student",
+      "name": "Mavlonova Ruxshona",
+      "email": "mavlonova@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_7",
+      "role": "student",
+      "name": "Muxtaraliyeva Dilora",
+      "email": "muxtaraliyeva@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_8",
+      "role": "student",
+      "name": "O'razboyev O'tkir",
+      "email": "orazboyev@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_9",
+      "role": "student",
+      "name": "Saparova Aida",
+      "email": "saparova@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_10",
+      "role": "student",
+      "name": "Umarov Nursulton",
+      "email": "umarov@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_11",
+      "role": "student",
+      "name": "Xolmurodova Muazzam",
+      "email": "xolmurodova@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "std_12",
+      "role": "student",
+      "name": "Kaxarova Xumora",
+      "email": "kaxarova@ethith.uz",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1792673953881
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "ADMIN_12038F1aq8syash@ethith.uz",
+      "coins": 5000,
+      "createdAt": 1761463093502,
+      "level": "C2",
+      "dailyMinutes": 0,
+      "updatedAt": 1792612121485,
+      "gifts": []
+    },
+    {
       "id": "admin_official_teacher",
       "role": "teacher",
       "name": "Ustoz",
@@ -2119,31 +2285,6 @@
       "id": "admin_official_teacher",
       "role": "teacher",
       "name": "Ustoz",
-      "email": "admin_12038f1aq8syash@ethith.uz",
-      "coins": 5000,
-      "gifts": [],
-      "nameStyle": null,
-      "createdAt": 1792502058827,
-      "level": "C2"
-    },
-    {
-      "id": "tg_98124765",
-      "role": "student",
-      "name": "Striker_uzb",
-      "email": "mu_striker@telegram.org",
-      "coins": 101100,
-      "avatar": null,
-      "level": "A1",
-      "dailyMinutes": 0,
-      "nameStyle": null,
-      "title": null,
-      "victorySound": null,
-      "updatedAt": 1792997212404
-    },
-    {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
       "email": "teacher@ethith.uz",
       "coins": 5000,
       "avatar": null,
@@ -2153,140 +2294,6 @@
       "title": null,
       "victorySound": null,
       "updatedAt": 1792606425762
-    },
-    {
-      "id": "sardorbek@ethith.uz",
-      "name": "Sardorbek Valiyev",
-      "email": "sardorbek@ethith.uz",
-      "role": "student",
-      "coins": 150,
-      "avatar": null,
-      "level": "A1",
-      "joinedAt": 1792611123035,
-      "nameStyle": null,
-      "title": null,
-      "dailyMinutes": 0,
-      "updatedAt": 1792611123890
-    },
-    {
-      "id": "std_1",
-      "role": "student",
-      "name": "Ashurov Dilyorbek Azizbek o'g'li",
-      "email": "ashurov@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_2",
-      "role": "student",
-      "name": "Ergasheva Madina Asad qizi",
-      "email": "ergasheva@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_3",
-      "role": "student",
-      "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
-      "email": "erkinov@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_4",
-      "role": "student",
-      "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
-      "email": "joraboyev@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_5",
-      "role": "student",
-      "name": "Jo'raboyev Javoxir Murod o'g'li",
-      "email": "javoxir@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_6",
-      "role": "student",
-      "name": "Mavlonova Ruxshona Oybek qizi",
-      "email": "mavlonova@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_7",
-      "role": "student",
-      "name": "Muxtaraliyeva Dilora Dilshod qizi",
-      "email": "muxtaraliyeva@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_8",
-      "role": "student",
-      "name": "O'razboyev O'tkir Baxtiyor o'g'li",
-      "email": "orazboyev@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_9",
-      "role": "student",
-      "name": "Saparova Aida Sarvar qizi",
-      "email": "saparova@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_10",
-      "role": "student",
-      "name": "Umarov Nursulton Alisher o'g'li",
-      "email": "umarov@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_11",
-      "role": "student",
-      "name": "Xolmurodova Muazzam G'ulom qizi",
-      "email": "xolmurodova@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_12",
-      "role": "student",
-      "name": "Kaxarova Xumora Olimjon qizi",
-      "email": "kaxarova@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
     },
     {
       "id": "usmonqulovaetiborxon@gmail.com",
@@ -54390,14 +54397,13 @@
       "email": "admin_12038f1aq8syash@ethith.uz",
       "phone": "+998 90 123 45 67",
       "card": "8600 1122 3344 5566",
-      "monthlySalary": 8200000,
+      "monthlySalary": 6000000,
       "hourlyRate": 100000,
       "teachingHours": 72,
       "paidThisMonth": true,
       "assignedClasses": [
         "cls_ethith_main"
-      ],
-      "monthlyBonus": 1000000
+      ]
     },
     {
       "id": "t_zizi",
@@ -54405,14 +54411,13 @@
       "email": "zizi@ethith.uz",
       "phone": "+998 93 987 65 43",
       "card": "9860 7788 9900 1122",
-      "monthlySalary": 6440000,
+      "monthlySalary": 5500000,
       "hourlyRate": 85000,
       "teachingHours": 64,
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_1792041880052"
-      ],
-      "monthlyBonus": 1000000
+      ]
     }
   ],
   "fileExplorer": {
@@ -54421,31 +54426,25 @@
         "id": "f_root",
         "name": "Bosh Papka",
         "parentId": null,
-        "createdAt": 1793024168370
+        "createdAt": 1793090841449
       },
       {
         "id": "f_grammar",
         "name": "Grammar Mastery",
         "parentId": "f_root",
-        "createdAt": 1793024168370
+        "createdAt": 1793090841449
+      },
+      {
+        "id": "f_vocab",
+        "name": "Vocabulary Builder",
+        "parentId": "f_root",
+        "createdAt": 1793090841449
       },
       {
         "id": "f_ielts",
         "name": "IELTS Mock Tests",
         "parentId": "f_root",
-        "createdAt": 1793024168370
-      },
-      {
-        "id": "f_1793028050497",
-        "name": "Yangi Papka",
-        "parentId": "f_root",
-        "createdAt": 1793028050497
-      },
-      {
-        "id": "f_1793030124872",
-        "name": "Yangi Papka",
-        "parentId": "f_1793028050497",
-        "createdAt": 1793030124872
+        "createdAt": 1793090841449
       }
     ],
     "tests": [
@@ -54454,7 +54453,7 @@
         "title": "Unit 7: Modals of Deduction & Obligation",
         "folderId": "f_grammar",
         "authorName": "Ustoz",
-        "createdAt": 1793024168370,
+        "createdAt": 1793090841449,
         "maxAttempts": 1,
         "questions": [
           {
@@ -54504,6 +54503,56 @@
               "must",
               "can't",
               "might"
+            ],
+            "correct": 0
+          }
+        ]
+      },
+      {
+        "id": "TST-4H8R1",
+        "title": "Unit 8: Compound Adjectives & Participle Clauses",
+        "folderId": "f_vocab",
+        "authorName": "Zizi Ustoz",
+        "createdAt": 1793090841449,
+        "maxAttempts": 1,
+        "questions": [
+          {
+            "q": "A person who is relaxed and not easily upset is ______.",
+            "options": [
+              "easy-going",
+              "short-tempered",
+              "well-mannered",
+              "broad-minded"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "______ for 10 a.m. tomorrow, the conference has now been rescheduled.",
+            "options": [
+              "Scheduled",
+              "Scheduling",
+              "To schedule",
+              "Having schedule"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "Products ______ locally are often fresher and support the local economy.",
+            "options": [
+              "grown",
+              "growing",
+              "have grown",
+              "to grow"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "A person with a great knowledge from books is ______.",
+            "options": [
+              "well-educated",
+              "quick-witted",
+              "bad-tempered",
+              "open-minded"
             ],
             "correct": 0
           }
@@ -54558,8 +54607,8 @@
       "id": "cnt_kuzgi_2026",
       "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
       "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
-      "startDate": 1792937768370,
-      "endDate": 1793628968370,
+      "startDate": 1793004441449,
+      "endDate": 1793695641449,
       "prizeCoins": 1000,
       "testId": "TST-7K2M9",
       "participants": {
@@ -54567,31 +54616,31 @@
           "name": "Ashurov Dilyorbek",
           "score": 95,
           "timeSec": 140,
-          "completedAt": 1793020568370
+          "completedAt": 1793087241449
         },
         "std_2": {
           "name": "Ergasheva Madina",
           "score": 92,
           "timeSec": 165,
-          "completedAt": 1793020668370
+          "completedAt": 1793087341449
         },
         "std_4": {
           "name": "JO‘RABOYEV MUXAMMADYUSUF",
           "score": 98,
           "timeSec": 110,
-          "completedAt": 1793020768370
+          "completedAt": 1793087441449
         },
         "std_5": {
           "name": "Jo'raboyev Javoxir",
           "score": 88,
           "timeSec": 180,
-          "completedAt": 1793020868370
+          "completedAt": 1793087541449
         },
         "std_6": {
           "name": "Mavlonova Ruxshona",
           "score": 85,
           "timeSec": 190,
-          "completedAt": 1793020968370
+          "completedAt": 1793087641449
         }
       },
       "status": "active"
@@ -54602,17 +54651,17 @@
       "std_1": {
         "status": "paid",
         "baseAmount": 200000,
-        "offsetAmount": 200081,
-        "paidAmount": 200081,
-        "paidAt": 1793024274243,
-        "verifiedBy": "admin_manual"
+        "offsetAmount": 200014,
+        "paidAmount": 200014,
+        "paidAt": 1792831641449,
+        "verifiedBy": "auto_offset"
       },
       "std_2": {
         "status": "paid",
         "baseAmount": 200000,
         "offsetAmount": 200028,
         "paidAmount": 200028,
-        "paidAt": 1792851368370,
+        "paidAt": 1792918041449,
         "verifiedBy": "auto_offset"
       },
       "std_3": {
@@ -54626,7 +54675,7 @@
         "baseAmount": 200000,
         "offsetAmount": 200056,
         "paidAmount": 200056,
-        "paidAt": 1792937768370,
+        "paidAt": 1793004441449,
         "verifiedBy": "auto_offset"
       },
       "std_5": {
@@ -54635,9 +54684,9 @@
         "offsetAmount": 200070,
         "paidAmount": 200070,
         "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
-        "paidAt": 1793016968370
+        "paidAt": 1793083641449
       }
     }
   },
-  "updatedAt": 1793066472200
+  "updatedAt": 1793091271650
 }
