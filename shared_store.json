@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Ustoz",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1793122537020,
+      "created": 1792429062767,
       "students": [
         {
           "id": "std_1",
@@ -153,21 +153,7 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [],
-      "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792607960771
-      },
       "schedule": "har_kuni",
-      "customStudentNames": {},
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -1135,10 +1121,10 @@
               "score": "2",
               "hwDone": true,
               "hwPct": 0,
-              "hwLesson": "9.1",
+              "hwLesson": "10.1",
               "hwCorrect": 0,
-              "hwTotal": 45,
-              "hwCompletedAt": 1793122546787
+              "hwTotal": 30,
+              "hwCompletedAt": 1793122548198
             }
           }
         },
@@ -1160,7 +1146,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1793122546787,
+        "updatedAt": 1793122548198,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1178,7 +1164,142 @@
         },
         "seededWindowV3": true
       },
-      "customStudentPhones": {}
+      "customStudentNames": {},
+      "activeHomework": {
+        "dateKey": "2026-10-21",
+        "dateDisp": "21.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792607960771
+      },
+      "customStudentPhones": {},
+      "studentPayments": {
+        "std_1": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_2": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_3": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "usmonqulovaetiborxon@gmail.com": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_5": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_4": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "aleksandermike37@gmail.com": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_12": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_6": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_7": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_8": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_9": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "sardorbek@ethith.uz": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "muhammedjoraboyev1@gmail.com": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "tg_6772427596": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_10": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_11": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        }
+      }
     },
     {
       "id": "cls_1792041880052",
@@ -1308,10 +1429,10 @@
               "score": "2",
               "hwDone": true,
               "hwPct": 0,
-              "hwLesson": "9.1",
+              "hwLesson": "10.1",
               "hwCorrect": 0,
-              "hwTotal": 45,
-              "hwCompletedAt": 1793122546809
+              "hwTotal": 30,
+              "hwCompletedAt": 1793122548222
             }
           }
         },
@@ -1336,7 +1457,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1793122546809
+        "updatedAt": 1793122548222
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -1383,10 +1504,10 @@
               "score": "2",
               "hwDone": true,
               "hwPct": 0,
-              "hwLesson": "9.1",
+              "hwLesson": "10.1",
               "hwCorrect": 0,
-              "hwTotal": 45,
-              "hwCompletedAt": 1793122546828
+              "hwTotal": 30,
+              "hwCompletedAt": 1793122548247
             }
           }
         },
@@ -1395,7 +1516,7 @@
           "2026-10-27": "Vazifa: 8.1"
         },
         "holidays": {},
-        "updatedAt": 1793122546828,
+        "updatedAt": 1793122548247,
         "homeworks": {
           "2026-10-26": {
             "dateKey": "2026-10-26",
@@ -1485,7 +1606,6 @@
       },
       "deletedMsgIds": [],
       "messages": [],
-      "customStudentPhones": {},
       "activeHomework": {
         "dateKey": "2026-10-27",
         "dateDisp": "27.10.2026",
@@ -1589,10 +1709,10 @@
               "score": "2",
               "hwDone": true,
               "hwPct": 0,
-              "hwLesson": "9.1",
+              "hwLesson": "10.1",
               "hwCorrect": 0,
-              "hwTotal": 45,
-              "hwCompletedAt": 1793122546854
+              "hwTotal": 30,
+              "hwCompletedAt": 1793122548273
             }
           }
         },
@@ -1615,7 +1735,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793122546854
+        "updatedAt": 1793122548273
       },
       "deletedMsgIds": [],
       "customStudentNames": {},
@@ -1631,8 +1751,7 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      },
-      "customStudentPhones": {}
+      }
     },
     {
       "id": "cls_ielts_ex",
@@ -1705,10 +1824,10 @@
               "score": "2",
               "hwDone": true,
               "hwPct": 0,
-              "hwLesson": "9.1",
+              "hwLesson": "10.1",
               "hwCorrect": 0,
-              "hwTotal": 45,
-              "hwCompletedAt": 1793122546877
+              "hwTotal": 30,
+              "hwCompletedAt": 1793122548298
             }
           }
         },
@@ -1731,7 +1850,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793122546877
+        "updatedAt": 1793122548299
       },
       "deletedMsgIds": [],
       "customStudentNames": {},
@@ -1747,8 +1866,7 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      },
-      "customStudentPhones": {}
+      }
     }
   ],
   "exams": [
@@ -23311,6 +23429,344 @@
         "width": 7.5,
         "height": 1.8,
         "correct": "because"
+      }
+    ],
+    "1052": [
+      {
+        "id": "p1052_ex1a_2",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "2",
+        "top": 47.8,
+        "left": 33.4,
+        "width": 8,
+        "height": 1.8,
+        "correct": "speak"
+      },
+      {
+        "id": "p1052_ex1a_3",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "3",
+        "top": 61.2,
+        "left": 12.4,
+        "width": 8,
+        "height": 1.8,
+        "correct": "play"
+      },
+      {
+        "id": "p1052_ex1a_4",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "4",
+        "top": 61.2,
+        "left": 33.4,
+        "width": 8,
+        "height": 1.8,
+        "correct": "use"
+      },
+      {
+        "id": "p1052_ex1a_5",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "5",
+        "top": 73.2,
+        "left": 12.4,
+        "width": 12,
+        "height": 1.8,
+        "correct": "understand"
+      },
+      {
+        "id": "p1052_ex1a_6",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "6",
+        "top": 73.2,
+        "left": 33.4,
+        "width": 8,
+        "height": 1.8,
+        "correct": "paint"
+      },
+      {
+        "id": "p1052_ex1a_7",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "7",
+        "top": 85.3,
+        "left": 12.4,
+        "width": 10,
+        "height": 1.8,
+        "correct": "remember"
+      },
+      {
+        "id": "p1052_ex1a_8",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "8",
+        "top": 85.3,
+        "left": 33.4,
+        "width": 8,
+        "height": 1.8,
+        "correct": "ride"
+      },
+      {
+        "id": "p1052_ex2a_1",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "1",
+        "top": 30,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "a bike"
+      },
+      {
+        "id": "p1052_ex2a_2",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "2",
+        "top": 31.7,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "a book"
+      },
+      {
+        "id": "p1052_ex2a_3",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "3",
+        "top": 33.4,
+        "left": 60,
+        "width": 12,
+        "height": 1.8,
+        "correct": "the internet"
+      },
+      {
+        "id": "p1052_ex2a_4",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "4",
+        "top": 35.1,
+        "left": 60,
+        "width": 10,
+        "height": 1.8,
+        "correct": "television"
+      },
+      {
+        "id": "p1052_ex2a_5",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "5",
+        "top": 36.8,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "a car"
+      },
+      {
+        "id": "p1052_ex2a_6",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "6",
+        "top": 38.6,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "maths"
+      },
+      {
+        "id": "p1052_ex2a_7",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "7",
+        "top": 40.3,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "faces"
+      },
+      {
+        "id": "p1052_ex2a_8",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "8",
+        "top": 42,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "a jacket"
+      },
+      {
+        "id": "p1052_ex2b_2",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "2",
+        "top": 53.4,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "read a book"
+      },
+      {
+        "id": "p1052_ex2b_3",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "3",
+        "top": 55.1,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "use the internet"
+      },
+      {
+        "id": "p1052_ex2b_4",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "4",
+        "top": 56.8,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "watch television"
+      },
+      {
+        "id": "p1052_ex2b_5",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "5",
+        "top": 58.5,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "drive a car"
+      },
+      {
+        "id": "p1052_ex2b_6",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "6",
+        "top": 60.2,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "study maths"
+      },
+      {
+        "id": "p1052_ex2b_7",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "7",
+        "top": 62,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "remember faces"
+      },
+      {
+        "id": "p1052_ex2b_8",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "8",
+        "top": 63.7,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "wear a jacket"
+      },
+      {
+        "id": "p1052_ex3_1",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "1",
+        "top": 74.8,
+        "left": 69.2,
+        "width": 8,
+        "height": 1.8,
+        "correct": "remember"
+      },
+      {
+        "id": "p1052_ex3_2",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "2",
+        "top": 77.8,
+        "left": 66.8,
+        "width": 12,
+        "height": 1.8,
+        "correct": "understands"
+      },
+      {
+        "id": "p1052_ex3_3",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "3",
+        "top": 77.8,
+        "left": 82,
+        "width": 8,
+        "height": 1.8,
+        "correct": "paint"
+      },
+      {
+        "id": "p1052_ex3_4",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "4",
+        "top": 81,
+        "left": 65,
+        "width": 8,
+        "height": 1.8,
+        "correct": "play"
+      },
+      {
+        "id": "p1052_ex3_5",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "5",
+        "top": 84.1,
+        "left": 64.2,
+        "width": 8,
+        "height": 1.8,
+        "correct": "use"
+      },
+      {
+        "id": "p1052_ex3_6",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "6",
+        "top": 87.2,
+        "left": 68,
+        "width": 8,
+        "height": 1.8,
+        "correct": "drive"
       }
     ],
     "2004": [
@@ -55026,6 +55482,7 @@
     "86": 1792928067428,
     "87": 1792999533659,
     "1037": 1793120102340,
+    "1052": 1793125319216,
     "2004": 1792928067428,
     "2005": 1792928067428,
     "2006": 2026,
@@ -55111,7 +55568,12 @@
     "2086": 2026,
     "2087": 2026
   },
-  "centerSettings": null,
+  "centerSettings": {
+    "card": "8600 4912 7731 9024",
+    "cardHolder": "ETHITH LEARNING CENTER",
+    "baseTuition": 200000,
+    "currency": "UZS"
+  },
   "teachers": [
     {
       "id": "admin_official_teacher",
@@ -55149,11 +55611,228 @@
     }
   ],
   "fileExplorer": {
-    "folders": [],
-    "tests": []
+    "folders": [
+      {
+        "id": "f_root",
+        "name": "Bosh Papka",
+        "parentId": null,
+        "createdAt": 1793024168370
+      },
+      {
+        "id": "f_grammar",
+        "name": "Grammar Mastery",
+        "parentId": "f_root",
+        "createdAt": 1793024168370
+      },
+      {
+        "id": "f_ielts",
+        "name": "IELTS Mock Tests",
+        "parentId": "f_root",
+        "createdAt": 1793024168370
+      },
+      {
+        "id": "f_1793028050497",
+        "name": "Yangi Papka",
+        "parentId": "f_root",
+        "createdAt": 1793028050497
+      },
+      {
+        "id": "f_1793030124872",
+        "name": "Yangi Papka",
+        "parentId": "f_1793028050497",
+        "createdAt": 1793030124872
+      }
+    ],
+    "tests": [
+      {
+        "id": "TST-7K2M9",
+        "title": "Unit 7: Modals of Deduction & Obligation",
+        "folderId": "f_grammar",
+        "authorName": "Ustoz",
+        "createdAt": 1793024168370,
+        "maxAttempts": 1,
+        "questions": [
+          {
+            "q": "You ______ be exhausted after working for 14 hours straight!",
+            "options": [
+              "must",
+              "can't",
+              "might not",
+              "should"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "He ______ have stolen the money; he was with me in London that evening.",
+            "options": [
+              "must",
+              "can't",
+              "ought to",
+              "might"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Students ______ wear uniforms during official exams according to school rules.",
+            "options": [
+              "have to",
+              "might",
+              "could",
+              "would"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "You ______ tell anyone this secret; it's strictly confidential.",
+            "options": [
+              "mustn't",
+              "don't have to",
+              "needn't",
+              "may not"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "We ______ have left earlier; look at all this traffic now!",
+            "options": [
+              "should",
+              "must",
+              "can't",
+              "might"
+            ],
+            "correct": 0
+          }
+        ]
+      }
+    ]
   },
-  "timetable": [],
-  "contests": [],
-  "payments": {},
-  "updatedAt": 1793122547624
+  "timetable": [
+    {
+      "id": "tt_1",
+      "time": "08:00 - 09:30",
+      "days": "Du-Chor-Jum",
+      "teacherId": "t_zizi",
+      "teacherName": "Zizi Ustoz",
+      "classId": "cls_1792041880052",
+      "className": "Bizani gurux (B1+)",
+      "room": "Room 101 (Green Room)"
+    },
+    {
+      "id": "tt_2",
+      "time": "10:00 - 11:30",
+      "days": "Du-Chor-Jum",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "classId": "cls_ethith_main",
+      "className": "IELTS Intensive (B2)",
+      "room": "Room 102 (Blue Room)"
+    },
+    {
+      "id": "tt_3",
+      "time": "14:00 - 15:30",
+      "days": "Se-Pay-Shan",
+      "teacherId": "t_zizi",
+      "teacherName": "Zizi Ustoz",
+      "classId": "cls_1792041880052",
+      "className": "Bizani gurux (B1+)",
+      "room": "Room 101 (Green Room)"
+    },
+    {
+      "id": "tt_4",
+      "time": "16:00 - 17:30",
+      "days": "Se-Pay-Shan",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "classId": "cls_ethith_main",
+      "className": "IELTS Intensive (B2)",
+      "room": "Room 102 (Blue Room)"
+    }
+  ],
+  "contests": [
+    {
+      "id": "cnt_kuzgi_2026",
+      "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
+      "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
+      "startDate": 1792937768370,
+      "endDate": 1793628968370,
+      "prizeCoins": 1000,
+      "testId": "TST-7K2M9",
+      "participants": {
+        "std_1": {
+          "name": "Ashurov Dilyorbek",
+          "score": 95,
+          "timeSec": 140,
+          "completedAt": 1793020568370
+        },
+        "std_2": {
+          "name": "Ergasheva Madina",
+          "score": 92,
+          "timeSec": 165,
+          "completedAt": 1793020668370
+        },
+        "std_4": {
+          "name": "JO‘RABOYEV MUXAMMADYUSUF",
+          "score": 98,
+          "timeSec": 110,
+          "completedAt": 1793020768370
+        },
+        "std_5": {
+          "name": "Jo'raboyev Javoxir",
+          "score": 88,
+          "timeSec": 180,
+          "completedAt": 1793020868370
+        },
+        "std_6": {
+          "name": "Mavlonova Ruxshona",
+          "score": 85,
+          "timeSec": 190,
+          "completedAt": 1793020968370
+        }
+      },
+      "status": "active"
+    }
+  ],
+  "payments": {
+    "2026-10": {
+      "std_1": {
+        "status": "paid",
+        "baseAmount": 200000,
+        "offsetAmount": 200081,
+        "paidAmount": 200081,
+        "paidAt": 1793024274243,
+        "verifiedBy": "admin_manual"
+      },
+      "std_2": {
+        "status": "paid",
+        "baseAmount": 200000,
+        "offsetAmount": 200028,
+        "paidAmount": 200028,
+        "paidAt": 1792851368370,
+        "verifiedBy": "auto_offset"
+      },
+      "std_3": {
+        "status": "unpaid",
+        "baseAmount": 200000,
+        "offsetAmount": 200042,
+        "paidAmount": 0
+      },
+      "std_4": {
+        "status": "paid",
+        "baseAmount": 200000,
+        "offsetAmount": 200056,
+        "paidAmount": 200056,
+        "paidAt": 1792937768370,
+        "verifiedBy": "auto_offset"
+      },
+      "std_5": {
+        "status": "pending",
+        "baseAmount": 200000,
+        "offsetAmount": 200070,
+        "paidAmount": 200070,
+        "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
+        "paidAt": 1793016968370
+      }
+    }
+  },
+  "updatedAt": 1793125320064
 }
