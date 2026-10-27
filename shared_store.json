@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Ustoz",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792429062767,
+      "created": 1793121637126,
       "students": [
         {
           "id": "std_1",
@@ -153,7 +153,21 @@
       ],
       "pinnedId": null,
       "deletedMsgIds": [],
+      "activeHomework": {
+        "dateKey": "2026-10-21",
+        "dateDisp": "21.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792607960771
+      },
       "schedule": "har_kuni",
+      "customStudentNames": {},
       "attendance": {
         "records": {
           "2026-10-09": {
@@ -1120,11 +1134,11 @@
               "status": "K",
               "score": "2",
               "hwDone": true,
-              "hwPct": 5,
-              "hwLesson": "5.2",
-              "hwCorrect": 2,
-              "hwTotal": 42,
-              "hwCompletedAt": 1793119643699
+              "hwPct": 0,
+              "hwLesson": "8.1",
+              "hwCorrect": 0,
+              "hwTotal": 59,
+              "hwCompletedAt": 1793121652435
             }
           }
         },
@@ -1146,7 +1160,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1793119643699,
+        "updatedAt": 1793121652435,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1164,142 +1178,7 @@
         },
         "seededWindowV3": true
       },
-      "customStudentNames": {},
-      "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792607960771
-      },
-      "customStudentPhones": {},
-      "studentPayments": {
-        "std_1": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "std_2": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "std_3": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "usmonqulovaetiborxon@gmail.com": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "std_5": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "std_4": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "aleksandermike37@gmail.com": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "std_12": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "std_6": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "std_7": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "std_8": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "std_9": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "sardorbek@ethith.uz": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "muhammedjoraboyev1@gmail.com": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "tg_6772427596": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "std_10": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        },
-        "std_11": {
-          "fee": 1400000,
-          "paid": 1400000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-10-05"
-        }
-      }
+      "customStudentPhones": {}
     },
     {
       "id": "cls_1792041880052",
@@ -1423,6 +1302,16 @@
               "hwCorrect": 2,
               "hwTotal": 42,
               "hwCompletedAt": 1793119643738
+            },
+            "std_1": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "8.1",
+              "hwCorrect": 0,
+              "hwTotal": 59,
+              "hwCompletedAt": 1793121652459
             }
           }
         },
@@ -1447,7 +1336,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1793119643738
+        "updatedAt": 1793121652459
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -1487,13 +1376,26 @@
               "hwTotal": 36,
               "hwCompletedAt": 1792999901135
             }
+          },
+          "2026-10-27": {
+            "tg_6772427596": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "8.1",
+              "hwCorrect": 0,
+              "hwTotal": 59,
+              "hwCompletedAt": 1793121652482
+            }
           }
         },
         "lessonTypes": {
-          "2026-10-26": "Vazifa: 1.1"
+          "2026-10-26": "Vazifa: 1.1",
+          "2026-10-27": "Vazifa: 8.1"
         },
         "holidays": {},
-        "updatedAt": 1792999901135,
+        "updatedAt": 1793121652482,
         "homeworks": {
           "2026-10-26": {
             "dateKey": "2026-10-26",
@@ -1561,12 +1463,42 @@
       "customStudentNames": {},
       "attendance": {
         "records": {},
-        "lessonTypes": {},
+        "lessonTypes": {
+          "2026-10-27": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-27": {
+            "dateKey": "2026-10-27",
+            "dateDisp": "27.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        }
       },
       "deletedMsgIds": [],
-      "messages": []
+      "messages": [],
+      "customStudentPhones": {},
+      "activeHomework": {
+        "dateKey": "2026-10-27",
+        "dateDisp": "27.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_upper_intermediate",
@@ -1656,11 +1588,11 @@
               "status": "K",
               "score": "2",
               "hwDone": true,
-              "hwPct": 5,
-              "hwLesson": "5.2",
-              "hwCorrect": 2,
-              "hwTotal": 42,
-              "hwCompletedAt": 1793119643719
+              "hwPct": 0,
+              "hwLesson": "8.1",
+              "hwCorrect": 0,
+              "hwTotal": 59,
+              "hwCompletedAt": 1793121652509
             }
           }
         },
@@ -1683,7 +1615,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793119643719
+        "updatedAt": 1793121652509
       },
       "deletedMsgIds": [],
       "customStudentNames": {},
@@ -1699,7 +1631,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "customStudentPhones": {}
     },
     {
       "id": "cls_ielts_ex",
@@ -1771,11 +1704,11 @@
               "status": "K",
               "score": "2",
               "hwDone": true,
-              "hwPct": 5,
-              "hwLesson": "5.2",
-              "hwCorrect": 2,
-              "hwTotal": 42,
-              "hwCompletedAt": 1793119643760
+              "hwPct": 0,
+              "hwLesson": "8.1",
+              "hwCorrect": 0,
+              "hwTotal": 59,
+              "hwCompletedAt": 1793121652538
             }
           }
         },
@@ -1798,7 +1731,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793119643760
+        "updatedAt": 1793121652538
       },
       "deletedMsgIds": [],
       "customStudentNames": {},
@@ -1814,7 +1747,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "customStudentPhones": {}
     }
   ],
   "exams": [
@@ -55177,12 +55111,7 @@
     "2086": 2026,
     "2087": 2026
   },
-  "centerSettings": {
-    "card": "8600 4912 7731 9024",
-    "cardHolder": "ETHITH LEARNING CENTER",
-    "baseTuition": 200000,
-    "currency": "UZS"
-  },
+  "centerSettings": null,
   "teachers": [
     {
       "id": "admin_official_teacher",
@@ -55220,228 +55149,11 @@
     }
   ],
   "fileExplorer": {
-    "folders": [
-      {
-        "id": "f_root",
-        "name": "Bosh Papka",
-        "parentId": null,
-        "createdAt": 1793024168370
-      },
-      {
-        "id": "f_grammar",
-        "name": "Grammar Mastery",
-        "parentId": "f_root",
-        "createdAt": 1793024168370
-      },
-      {
-        "id": "f_ielts",
-        "name": "IELTS Mock Tests",
-        "parentId": "f_root",
-        "createdAt": 1793024168370
-      },
-      {
-        "id": "f_1793028050497",
-        "name": "Yangi Papka",
-        "parentId": "f_root",
-        "createdAt": 1793028050497
-      },
-      {
-        "id": "f_1793030124872",
-        "name": "Yangi Papka",
-        "parentId": "f_1793028050497",
-        "createdAt": 1793030124872
-      }
-    ],
-    "tests": [
-      {
-        "id": "TST-7K2M9",
-        "title": "Unit 7: Modals of Deduction & Obligation",
-        "folderId": "f_grammar",
-        "authorName": "Ustoz",
-        "createdAt": 1793024168370,
-        "maxAttempts": 1,
-        "questions": [
-          {
-            "q": "You ______ be exhausted after working for 14 hours straight!",
-            "options": [
-              "must",
-              "can't",
-              "might not",
-              "should"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "He ______ have stolen the money; he was with me in London that evening.",
-            "options": [
-              "must",
-              "can't",
-              "ought to",
-              "might"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Students ______ wear uniforms during official exams according to school rules.",
-            "options": [
-              "have to",
-              "might",
-              "could",
-              "would"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "You ______ tell anyone this secret; it's strictly confidential.",
-            "options": [
-              "mustn't",
-              "don't have to",
-              "needn't",
-              "may not"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "We ______ have left earlier; look at all this traffic now!",
-            "options": [
-              "should",
-              "must",
-              "can't",
-              "might"
-            ],
-            "correct": 0
-          }
-        ]
-      }
-    ]
+    "folders": [],
+    "tests": []
   },
-  "timetable": [
-    {
-      "id": "tt_1",
-      "time": "08:00 - 09:30",
-      "days": "Du-Chor-Jum",
-      "teacherId": "t_zizi",
-      "teacherName": "Zizi Ustoz",
-      "classId": "cls_1792041880052",
-      "className": "Bizani gurux (B1+)",
-      "room": "Room 101 (Green Room)"
-    },
-    {
-      "id": "tt_2",
-      "time": "10:00 - 11:30",
-      "days": "Du-Chor-Jum",
-      "teacherId": "admin_official_teacher",
-      "teacherName": "Ustoz",
-      "classId": "cls_ethith_main",
-      "className": "IELTS Intensive (B2)",
-      "room": "Room 102 (Blue Room)"
-    },
-    {
-      "id": "tt_3",
-      "time": "14:00 - 15:30",
-      "days": "Se-Pay-Shan",
-      "teacherId": "t_zizi",
-      "teacherName": "Zizi Ustoz",
-      "classId": "cls_1792041880052",
-      "className": "Bizani gurux (B1+)",
-      "room": "Room 101 (Green Room)"
-    },
-    {
-      "id": "tt_4",
-      "time": "16:00 - 17:30",
-      "days": "Se-Pay-Shan",
-      "teacherId": "admin_official_teacher",
-      "teacherName": "Ustoz",
-      "classId": "cls_ethith_main",
-      "className": "IELTS Intensive (B2)",
-      "room": "Room 102 (Blue Room)"
-    }
-  ],
-  "contests": [
-    {
-      "id": "cnt_kuzgi_2026",
-      "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
-      "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
-      "startDate": 1792937768370,
-      "endDate": 1793628968370,
-      "prizeCoins": 1000,
-      "testId": "TST-7K2M9",
-      "participants": {
-        "std_1": {
-          "name": "Ashurov Dilyorbek",
-          "score": 95,
-          "timeSec": 140,
-          "completedAt": 1793020568370
-        },
-        "std_2": {
-          "name": "Ergasheva Madina",
-          "score": 92,
-          "timeSec": 165,
-          "completedAt": 1793020668370
-        },
-        "std_4": {
-          "name": "JO‘RABOYEV MUXAMMADYUSUF",
-          "score": 98,
-          "timeSec": 110,
-          "completedAt": 1793020768370
-        },
-        "std_5": {
-          "name": "Jo'raboyev Javoxir",
-          "score": 88,
-          "timeSec": 180,
-          "completedAt": 1793020868370
-        },
-        "std_6": {
-          "name": "Mavlonova Ruxshona",
-          "score": 85,
-          "timeSec": 190,
-          "completedAt": 1793020968370
-        }
-      },
-      "status": "active"
-    }
-  ],
-  "payments": {
-    "2026-10": {
-      "std_1": {
-        "status": "paid",
-        "baseAmount": 200000,
-        "offsetAmount": 200081,
-        "paidAmount": 200081,
-        "paidAt": 1793024274243,
-        "verifiedBy": "admin_manual"
-      },
-      "std_2": {
-        "status": "paid",
-        "baseAmount": 200000,
-        "offsetAmount": 200028,
-        "paidAmount": 200028,
-        "paidAt": 1792851368370,
-        "verifiedBy": "auto_offset"
-      },
-      "std_3": {
-        "status": "unpaid",
-        "baseAmount": 200000,
-        "offsetAmount": 200042,
-        "paidAmount": 0
-      },
-      "std_4": {
-        "status": "paid",
-        "baseAmount": 200000,
-        "offsetAmount": 200056,
-        "paidAmount": 200056,
-        "paidAt": 1792937768370,
-        "verifiedBy": "auto_offset"
-      },
-      "std_5": {
-        "status": "pending",
-        "baseAmount": 200000,
-        "offsetAmount": 200070,
-        "paidAmount": 200070,
-        "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
-        "paidAt": 1793016968370
-      }
-    }
-  },
-  "updatedAt": 1793120103529
+  "timetable": [],
+  "contests": [],
+  "payments": {},
+  "updatedAt": 1793121653730
 }
