@@ -23009,6 +23009,224 @@
         "group": ""
       }
     ],
+    "1024": [
+      {
+        "id": "p1024_ex1a_2a",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "2a",
+        "top": 48.5,
+        "left": 11,
+        "width": 10,
+        "height": 2,
+        "correct": "brother"
+      },
+      {
+        "id": "p1024_ex1a_2b",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "2b",
+        "top": 48.5,
+        "left": 28,
+        "width": 10,
+        "height": 2,
+        "correct": "sister"
+      },
+      {
+        "id": "p1024_ex1a_3a",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "3a",
+        "top": 62.5,
+        "left": 11,
+        "width": 10,
+        "height": 2,
+        "correct": "father"
+      },
+      {
+        "id": "p1024_ex1a_3b",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "3b",
+        "top": 62.5,
+        "left": 28,
+        "width": 10,
+        "height": 2,
+        "correct": "mother"
+      },
+      {
+        "id": "p1024_ex1a_3c",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "3c",
+        "top": 64.5,
+        "left": 11,
+        "width": 12,
+        "height": 2,
+        "correct": "parents"
+      },
+      {
+        "id": "p1024_ex1a_4a",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "4a",
+        "top": 76.5,
+        "left": 11,
+        "width": 11,
+        "height": 2,
+        "correct": "husband"
+      },
+      {
+        "id": "p1024_ex1a_4b",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "4b",
+        "top": 76.5,
+        "left": 28,
+        "width": 9,
+        "height": 2,
+        "correct": "wife"
+      },
+      {
+        "id": "p1024_ex1a_5a",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "5a",
+        "top": 86.5,
+        "left": 11,
+        "width": 8,
+        "height": 2,
+        "correct": "son"
+      },
+      {
+        "id": "p1024_ex1a_5b",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "5b",
+        "top": 85.5,
+        "left": 22.1,
+        "width": 11,
+        "height": 2,
+        "correct": "daughter"
+      },
+      {
+        "id": "p1024_ex1a_5c",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "5c",
+        "top": 88.5,
+        "left": 11,
+        "width": 12,
+        "height": 2,
+        "correct": "children"
+      },
+      {
+        "id": "p1024_ex2_2",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "2",
+        "top": 80.1,
+        "left": 58,
+        "width": 12,
+        "height": 2,
+        "correct": "children"
+      },
+      {
+        "id": "p1024_ex2_3",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "3",
+        "top": 80.1,
+        "left": 74,
+        "width": 12,
+        "height": 2,
+        "correct": "daughter"
+      },
+      {
+        "id": "p1024_ex2_4",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "4",
+        "top": 81.9,
+        "left": 57,
+        "width": 8.5,
+        "height": 2,
+        "correct": "son"
+      },
+      {
+        "id": "p1024_ex2_5",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "5",
+        "top": 83.7,
+        "left": 57,
+        "width": 12,
+        "height": 2,
+        "correct": "parents"
+      },
+      {
+        "id": "p1024_ex2_6",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "6",
+        "top": 83.7,
+        "left": 79,
+        "width": 12,
+        "height": 2,
+        "correct": "brother"
+      },
+      {
+        "id": "p1024_ex2_7",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "7",
+        "top": 85.5,
+        "left": 59,
+        "width": 10,
+        "height": 2,
+        "correct": "sister"
+      },
+      {
+        "id": "p1024_ex2_8",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "8",
+        "top": 87.3,
+        "left": 72,
+        "width": 16,
+        "height": 2,
+        "correct": "grandfathers"
+      },
+      {
+        "id": "p1024_ex2_9",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "9",
+        "top": 89.1,
+        "left": 58,
+        "width": 16,
+        "height": 2,
+        "correct": "grandmothers"
+      }
+    ],
     "1037": [
       {
         "id": "p1037_ex3_across_2",
@@ -55711,6 +55929,7 @@
     "85": 1792928067428,
     "86": 1792928067428,
     "87": 1792999533659,
+    "1024": 1793125401930,
     "1037": 1793120102340,
     "1052": 1793125351106,
     "1053": 1793125381190,
@@ -56065,5 +56284,5 @@
       }
     }
   },
-  "updatedAt": 1793125382015
+  "updatedAt": 1793125402496
 }
