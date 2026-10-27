@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Ustoz",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1793115814056,
+      "created": 1793115946593,
       "students": [
         {
           "id": "std_1",
@@ -53963,5 +53963,5 @@
   "timetable": [],
   "contests": [],
   "payments": {},
-  "updatedAt": 1793115822110
+  "updatedAt": 1793115954941
 }
