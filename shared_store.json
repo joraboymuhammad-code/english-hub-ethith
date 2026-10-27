@@ -110,11 +110,11 @@
               "status": "K",
               "score": "5",
               "hwDone": true,
-              "hwPct": 92,
-              "hwLesson": "1.3",
-              "hwCorrect": 48,
-              "hwTotal": 52,
-              "hwCompletedAt": 1793129581944
+              "hwPct": 100,
+              "hwLesson": "4.3",
+              "hwCorrect": 41,
+              "hwTotal": 41,
+              "hwCompletedAt": 1793129586351
             }
           },
           "2026-10-09": {
@@ -1122,7 +1122,7 @@
             "assignedAt": 1792607960771
           }
         },
-        "updatedAt": 1793129581944
+        "updatedAt": 1793129586351
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1236,11 +1236,11 @@
               "status": "K",
               "score": "5",
               "hwDone": true,
-              "hwPct": 92,
-              "hwLesson": "1.3",
-              "hwCorrect": 48,
-              "hwTotal": 52,
-              "hwCompletedAt": 1793129581966
+              "hwPct": 100,
+              "hwLesson": "4.3",
+              "hwCorrect": 41,
+              "hwTotal": 41,
+              "hwCompletedAt": 1793129586380
             }
           }
         },
@@ -1263,7 +1263,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793129581966
+        "updatedAt": 1793129586380
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1279,7 +1279,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedMsgIds": []
     },
     {
       "id": "cls_1792041880052",
@@ -1355,11 +1356,11 @@
               "status": "K",
               "score": "5",
               "hwDone": true,
-              "hwPct": 92,
-              "hwLesson": "1.3",
-              "hwCorrect": 48,
-              "hwTotal": 52,
-              "hwCompletedAt": 1793129581990
+              "hwPct": 100,
+              "hwLesson": "4.3",
+              "hwCorrect": 41,
+              "hwTotal": 41,
+              "hwCompletedAt": 1793129586406
             }
           }
         },
@@ -1384,7 +1385,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1793129581990
+        "updatedAt": 1793129586406
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -1484,11 +1485,11 @@
               "status": "K",
               "score": "5",
               "hwDone": true,
-              "hwPct": 92,
-              "hwLesson": "1.3",
-              "hwCorrect": 48,
-              "hwTotal": 52,
-              "hwCompletedAt": 1793129582011
+              "hwPct": 100,
+              "hwLesson": "4.3",
+              "hwCorrect": 41,
+              "hwTotal": 41,
+              "hwCompletedAt": 1793129586437
             }
           }
         },
@@ -1511,7 +1512,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793129582011
+        "updatedAt": 1793129586437
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1527,7 +1528,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedMsgIds": []
     }
   ],
   "exams": [
@@ -2213,121 +2215,141 @@
       "id": "admin_official_teacher",
       "name": "Ustoz",
       "email": "teacher@ethith.uz",
-      "role": "teacher"
+      "role": "teacher",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_13",
       "name": "Anvarova Nilufar",
       "email": "anvarova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_14",
       "name": "Boboyev Jamshid",
       "email": "boboyev@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_15",
       "name": "Rustamov Shaxzod",
       "email": "rustamov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_16",
       "name": "Karimova Rayhona",
       "email": "karimova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_17",
       "name": "Toxirov Sardor",
       "email": "toxirov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_18",
       "name": "Ismoilova Zarina",
       "email": "ismoilova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_19",
       "name": "Abdullayev Bekzod",
       "email": "abdullayev@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_20",
       "name": "Qodirova Sevinch",
       "email": "qodirova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_21",
       "name": "Yoqubov Doniyor",
       "email": "yoqubov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_22",
       "name": "Nurmatova Diyora",
       "email": "nurmatova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_23",
       "name": "Mirzayev Otabek",
       "email": "mirzayev@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_24",
       "name": "Tursunov Jasur",
       "email": "tursunov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_25",
       "name": "Mahmudova Shahlo",
       "email": "mahmudova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_26",
       "name": "Sobirov Elyor",
       "email": "sobirov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_27",
       "name": "Aliyeva Gulnoza",
       "email": "aliyeva@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_28",
       "name": "Rahmatov Ilhom",
       "email": "rahmatov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_29",
       "name": "Sayfullayeva Mohira",
       "email": "sayfullayeva@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_30",
       "name": "G'aniyev Sherzod",
       "email": "ganiyev@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     },
     {
       "id": "std_31",
       "name": "Vohidova Kamola",
       "email": "vohidova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793129585127
     }
   ],
   "p2pListings": [],
@@ -54111,5 +54133,5 @@
   "timetable": [],
   "contests": [],
   "payments": {},
-  "updatedAt": 1793129582173
+  "updatedAt": 1793129586621
 }
