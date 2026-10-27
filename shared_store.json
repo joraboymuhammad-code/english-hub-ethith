@@ -54446,12 +54446,6 @@
         "name": "Yangi Papka",
         "parentId": "f_1793028050497",
         "createdAt": 1793030124872
-      },
-      {
-        "id": "f_1793066466881",
-        "name": "Yangi Papka",
-        "parentId": "f_ielts",
-        "createdAt": 1793066466881
       }
     ],
     "tests": [
@@ -54645,5 +54639,5 @@
       }
     }
   },
-  "updatedAt": 1793066467423
+  "updatedAt": 1793066472200
 }
