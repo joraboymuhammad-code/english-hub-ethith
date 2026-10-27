@@ -7,7 +7,7 @@
       "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Ustoz",
       "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1793129120448,
+      "created": 1793129252043,
       "students": [
         {
           "id": "std_1",
@@ -1123,13 +1123,13 @@
             },
             "test_u": {
               "status": "K",
-              "score": "2",
+              "score": "4",
               "hwDone": true,
-              "hwPct": 0,
+              "hwPct": 81,
               "hwLesson": "1.1",
-              "hwCorrect": 0,
+              "hwCorrect": 34,
               "hwTotal": 42,
-              "hwCompletedAt": 1793129124715
+              "hwCompletedAt": 1793129255359
             }
           },
           "2026-10-22": {
@@ -1189,7 +1189,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1793129128487,
+        "updatedAt": 1793129255359,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1352,13 +1352,13 @@
           "2026-10-21": {
             "test_u": {
               "status": "K",
-              "score": "2",
+              "score": "4",
               "hwDone": true,
-              "hwPct": 0,
+              "hwPct": 81,
               "hwLesson": "1.1",
-              "hwCorrect": 0,
+              "hwCorrect": 34,
               "hwTotal": 42,
-              "hwCompletedAt": 1793129124737
+              "hwCompletedAt": 1793129255381
             }
           },
           "2026-10-28": {
@@ -1396,7 +1396,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1793129128507
+        "updatedAt": 1793129255381
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -1438,13 +1438,13 @@
             },
             "test_u": {
               "status": "K",
-              "score": "2",
+              "score": "4",
               "hwDone": true,
-              "hwPct": 0,
+              "hwPct": 81,
               "hwLesson": "1.1",
-              "hwCorrect": 0,
+              "hwCorrect": 34,
               "hwTotal": 42,
-              "hwCompletedAt": 1793129124758
+              "hwCompletedAt": 1793129255401
             }
           },
           "2026-10-27": {
@@ -1478,7 +1478,7 @@
           "2026-10-28": "Vazifa: 9.1"
         },
         "holidays": {},
-        "updatedAt": 1793129128528,
+        "updatedAt": 1793129255401,
         "homeworks": {
           "2026-10-26": {
             "dateKey": "2026-10-26",
@@ -1562,13 +1562,13 @@
           "2026-10-27": {
             "test_u": {
               "status": "K",
-              "score": "2",
+              "score": "4",
               "hwDone": true,
-              "hwPct": 0,
+              "hwPct": 81,
               "hwLesson": "1.1",
-              "hwCorrect": 0,
+              "hwCorrect": 34,
               "hwTotal": 42,
-              "hwCompletedAt": 1793129124778
+              "hwCompletedAt": 1793129255420
             }
           },
           "2026-10-28": {
@@ -1604,7 +1604,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793129128550
+        "updatedAt": 1793129255420
       },
       "deletedMsgIds": [],
       "messages": [],
@@ -1725,13 +1725,13 @@
             },
             "test_u": {
               "status": "K",
-              "score": "2",
+              "score": "4",
               "hwDone": true,
-              "hwPct": 0,
+              "hwPct": 81,
               "hwLesson": "1.1",
-              "hwCorrect": 0,
+              "hwCorrect": 34,
               "hwTotal": 42,
-              "hwCompletedAt": 1793129124798
+              "hwCompletedAt": 1793129255440
             }
           },
           "2026-10-28": {
@@ -1767,7 +1767,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793129128573
+        "updatedAt": 1793129255440
       },
       "deletedMsgIds": [],
       "customStudentNames": {},
@@ -1870,13 +1870,13 @@
             },
             "test_u": {
               "status": "K",
-              "score": "2",
+              "score": "4",
               "hwDone": true,
-              "hwPct": 0,
+              "hwPct": 81,
               "hwLesson": "1.1",
-              "hwCorrect": 0,
+              "hwCorrect": 34,
               "hwTotal": 42,
-              "hwCompletedAt": 1793129124818
+              "hwCompletedAt": 1793129255461
             }
           },
           "2026-10-28": {
@@ -1912,7 +1912,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793129128594
+        "updatedAt": 1793129255461
       },
       "deletedMsgIds": [],
       "customStudentNames": {},
@@ -56528,5 +56528,5 @@
   "timetable": [],
   "contests": [],
   "payments": {},
-  "updatedAt": 1793129129633
+  "updatedAt": 1793129256170
 }
