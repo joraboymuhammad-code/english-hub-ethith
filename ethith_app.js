@@ -564,15 +564,28 @@
       '    <div id="studentFormBox">' +
       '      <form id="studentAuthForm">' +
       '        <div class="eth-auth-field">' +
-      '          <label class="eth-auth-label">Gmail Manzili</label>' +
-      '          <input type="email" id="stEmail" class="eth-auth-input" placeholder="nomingiz@gmail.com" required autocomplete="email">' +
-      '        </div>' +
-      '        <div class="eth-auth-field">' +
       '          <label class="eth-auth-label">Ism va Familiya</label>' +
       '          <input type="text" id="stName" class="eth-auth-input" placeholder="Ism va familiyangizni kiriting" value="' + esc(defaultName) + '" required autocomplete="name">' +
       '        </div>' +
+      '        <div class="eth-auth-field">' +
+      '          <label class="eth-auth-label">Telefon Raqamingiz</label>' +
+      '          <input type="tel" id="stPhone" class="eth-auth-input" placeholder="+998 90 123 45 67" required autocomplete="tel">' +
+      '        </div>' +
+      '        <div style="margin:10px 0 14px;">' +
+      '          <a id="btnTelegramDirectLink" href="https://t.me/ETHITH_testbot?start=auth" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#0088cc,#006699);color:#ffffff;border-radius:14px;padding:12px 16px;text-decoration:none;font-size:13px;font-weight:900;box-shadow:0 6px 18px rgba(0,136,204,0.35);border:1px solid rgba(255,255,255,0.2);transition:all 0.2s;">' +
+      '            <span>✈️ Telegram Botdan Tasdiqlash Kodini Olish</span>' +
+      '          </a>' +
+      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:6px;display:block;text-align:center;">' +
+      '            Tugmani bosing va Telegramda <b>Start</b> ni bosing — bot sizga tasdiqlash kodini yuboradi.' +
+      '          </small>' +
+      '        </div>' +
+      '        <div class="eth-auth-field" id="stCodeGroup">' +
+      '          <label class="eth-auth-label">Tasdiqlash Kodi</label>' +
+      '          <input type="text" id="stCode" class="eth-auth-input" placeholder="Masalan: 742-890 yoki K7#9M2" style="font-family:monospace;letter-spacing:2px;font-weight:800;font-size:15px;" required autocomplete="one-time-code">' +
+      '          <div id="stCodeNotice" style="font-size:11.5px;color:#34d399;margin-top:5px;display:none;"></div>' +
+      '        </div>' +
       '        <div id="stAccountNotice" style="margin:6px 0 12px;padding:9px 13px;border-radius:12px;font-size:12.5px;display:none"></div>' +
-      '        <button type="submit" id="btnStudentSubmit" class="eth-auth-btn">Akkauntga Kirish</button>' +
+      '        <button type="submit" id="btnStudentSubmit" class="eth-auth-btn">Akkauntga Kirish (Ro‘yxatdan O‘tish)</button>' +
       '      </form>' +
       '    </div>' +
       '    <div id="teacherFormBox" style="display:none">' +
@@ -816,28 +829,41 @@
       }
     }
 
-    // Student Live Email Checker & Auto-fill
-    var stEmailInput = overlay.querySelector('#stEmail');
+    // Student Live Phone Checker & Auto-fill
+    var stPhoneInput = overlay.querySelector('#stPhone');
     var stNameInput = overlay.querySelector('#stName');
     var stNotice = overlay.querySelector('#stAccountNotice');
     var stSubmitBtn = overlay.querySelector('#btnStudentSubmit');
     var stCodeGrp = overlay.querySelector('#stCodeGroup');
+    var btnTgDirectLink = overlay.querySelector('#btnTelegramDirectLink');
 
-    function checkEmailState() {
-      if (!stEmailInput) return;
-      var em = stEmailInput.value.toLowerCase().trim();
-      if (!em || !em.includes('@')) {
+    function checkPhoneState() {
+      if (!stPhoneInput) return;
+      var raw = stPhoneInput.value.replace(/[^0-9+]/g, '');
+      if (btnTgDirectLink) {
+        if (raw) {
+          btnTgDirectLink.href = 'https://t.me/ETHITH_testbot?start=auth_' + encodeURIComponent(raw);
+        } else {
+          btnTgDirectLink.href = 'https://t.me/ETHITH_testbot?start=auth';
+        }
+      }
+      var cleanPhone = raw.replace(/[^0-9]/g, '');
+      if (!cleanPhone || cleanPhone.length < 7) {
         if (stNotice) stNotice.style.display = 'none';
         return;
       }
-      var existing = (S.accounts || []).find(function(a) { return a.email && a.email.toLowerCase().trim() === em; });
+      var existing = (S.accounts || []).find(function(a) { 
+        if (!a) return false;
+        var aPh = (a.phone || '').replace(/[^0-9]/g, '');
+        return aPh && (aPh.endsWith(cleanPhone.slice(-7)) || cleanPhone.endsWith(aPh.slice(-7)));
+      });
       if (existing) {
         if (stNotice) {
           stNotice.style.display = 'block';
           stNotice.style.background = 'rgba(56, 189, 248, 0.12)';
           stNotice.style.border = '1px solid rgba(56, 189, 248, 0.4)';
           stNotice.style.color = '#38bdf8';
-          stNotice.innerHTML = '⚡ <b>Mavjud Akkaunt:</b> ' + esc(existing.name) + ' (' + (existing.coins || 0).toLocaleString() + ' Coin). Ismingizni tasdiqlang va to\'g\'ridan-to\'g\'ri kiring!';
+          stNotice.innerHTML = '⚡ <b>Mavjud Akkaunt:</b> ' + esc(existing.name) + ' (' + (existing.coins || 0).toLocaleString() + ' Coin). Kodni kiriting va to\'g\'ridan-to\'g\'ri kiring!';
         }
         if (stNameInput && !stNameInput.value) {
           stNameInput.value = existing.name;
@@ -848,14 +874,14 @@
       } else {
         if (stNotice) stNotice.style.display = 'none';
         if (stSubmitBtn) {
-          stSubmitBtn.innerHTML = 'Akkauntga Kirish';
+          stSubmitBtn.innerHTML = 'Akkauntga Kirish (Ro‘yxatdan O‘tish)';
         }
       }
     }
 
-    if (stEmailInput) {
-      stEmailInput.oninput = checkEmailState;
-      stEmailInput.onchange = checkEmailState;
+    if (stPhoneInput) {
+      stPhoneInput.oninput = checkPhoneState;
+      stPhoneInput.onchange = checkPhoneState;
     }
 
     var stCodeInput = overlay.querySelector('#stCode');
@@ -946,27 +972,41 @@
       };
     }
 
-    // Student Submit Form - Instant Login & Registration by Gmail + Name
+    // Student Submit Form - Login & Registration by Phone + Name + Telegram Code
     var stForm = overlay.querySelector('#studentAuthForm');
     if (stForm) {
       stForm.onsubmit = async function(e) {
         e.preventDefault();
         var nameInput = overlay.querySelector('#stName');
-        var emailInput = overlay.querySelector('#stEmail');
+        var phoneInput = overlay.querySelector('#stPhone');
+        var codeInput = overlay.querySelector('#stCode');
 
         var name = (nameInput ? nameInput.value : '').trim();
-        var email = (emailInput ? emailInput.value : '').trim();
+        var phone = (phoneInput ? phoneInput.value : '').trim();
+        var enteredCode = (codeInput ? codeInput.value : '').trim();
 
-        if (!email) {
-          alert("Iltimos, Gmail manzilingizni kiriting!");
-          return;
-        }
         if (!name) {
-          alert("Iltimos, ismingizni kiriting!");
+          alert("Iltimos, ism va familiyangizni kiriting!");
+          return;
+        }
+        if (!phone) {
+          alert("Iltimos, telefon raqamingizni kiriting!");
+          return;
+        }
+        if (!enteredCode) {
+          alert("Iltimos, Telegram botimizdan (@ETHITH_testbot) tasdiqlash kodini olib kiriting!");
           return;
         }
 
-        var cleanEmail = email.toLowerCase().trim();
+        var isCodeValid = await validateAuthCode(enteredCode, generatedStudentCode);
+        if (!isCodeValid) {
+          alert("❌ Tasdiqlash kodi noto‘g‘ri yoki eskirgan!\n\nIltimos, Telegram botimiz yuborgan 6 xonali kodni to‘g‘ri kiriting.");
+          return;
+        }
+
+        var cleanPhoneDigits = phone.replace(/[^0-9]/g, '');
+        var cleanEmail = (cleanPhoneDigits.length >= 7 ? ('+998' + cleanPhoneDigits.slice(-9)) : phone) + '@student.ethith';
+        var studentId = 'st_' + (cleanPhoneDigits || Date.now());
 
         try {
           localStorage.removeItem('ethith_explicit_logout');
@@ -977,7 +1017,10 @@
 
         // 1. Search existing account in memory or remote store
         var existingAcc = S.accounts.find(function(acc) {
-          return acc && acc.email && acc.email.toLowerCase().trim() === cleanEmail;
+          if (!acc) return false;
+          var aPh = (acc.phone || '').replace(/[^0-9]/g, '');
+          if (aPh && cleanPhoneDigits && (aPh.endsWith(cleanPhoneDigits.slice(-7)) || cleanPhoneDigits.endsWith(aPh.slice(-7)))) return true;
+          return acc.email && acc.email.toLowerCase().trim() === cleanEmail.toLowerCase().trim();
         });
 
         if (!existingAcc) {
@@ -987,37 +1030,36 @@
               var remoteData = await fetchRes.json();
               if (remoteData && Array.isArray(remoteData.accounts)) {
                 existingAcc = remoteData.accounts.find(function(a) {
-                  return a && a.email && a.email.toLowerCase().trim() === cleanEmail;
+                  if (!a) return false;
+                  var aPh = (a.phone || '').replace(/[^0-9]/g, '');
+                  if (aPh && cleanPhoneDigits && (aPh.endsWith(cleanPhoneDigits.slice(-7)) || cleanPhoneDigits.endsWith(aPh.slice(-7)))) return true;
+                  return a.email && a.email.toLowerCase().trim() === cleanEmail.toLowerCase().trim();
                 });
               }
             }
           } catch(err) {}
         }
 
-        var dNowObj = new Date();
-        var todayIsoStr = dNowObj.getFullYear() + '-' + String(dNowObj.getMonth() + 1).padStart(2, '0') + '-' + String(dNowObj.getDate()).padStart(2, '0');
-
-        // Registered students belong to the platform (S.accounts) and are enrolled into groups by teachers/admins or via class codes
         function autoEnrollStudentInMainClass(studentUser) {
-          // Strict single-group: do not blindly force into class 0
           return;
         }
 
-        // SCENARIO 1: Existing Account — Instant Login
+        // SCENARIO 1: Existing Student Account — Instant Login
         if (existingAcc) {
           var initCoins = existingAcc.coins !== undefined ? Number(existingAcc.coins) : 150;
-          if (cleanEmail === 'muhammedjoraboyev1@gmail.com') {
-            if (!existingAcc.name) existingAcc.name = 'Muhammadyusuf';
-          }
           if (name) {
             existingAcc.name = name;
           }
+          if (phone) {
+            existingAcc.phone = phone;
+          }
 
           S.user = {
-            id: cleanEmail,
+            id: existingAcc.id || studentId,
             role: 'student',
             name: existingAcc.name || name,
-            email: cleanEmail,
+            phone: existingAcc.phone || phone,
+            email: existingAcc.email || cleanEmail,
             dailyMinutes: existingAcc.dailyMinutes || 0,
             coins: initCoins,
             avatar: existingAcc.avatar || null,
@@ -1031,7 +1073,7 @@
           if (existingAcc.mistakes) S.mistakes = existingAcc.mistakes;
           existingAcc.updatedAt = Date.now();
 
-          var aIdx = S.accounts.findIndex(function(a) { return a && a.email && a.email.toLowerCase().trim() === cleanEmail; });
+          var aIdx = S.accounts.findIndex(function(a) { return a && (a.id === S.user.id || a.email === S.user.email); });
           if (aIdx === -1) {
             S.accounts.push(existingAcc);
           } else {
@@ -1041,11 +1083,12 @@
           try {
             localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
             var regList = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-            var rIdx = regList.findIndex(function(u) { return u && u.email && u.email.toLowerCase().trim() === cleanEmail; });
+            var rIdx = regList.findIndex(function(u) { return u && (u.id === S.user.id || u.email === S.user.email); });
             if (rIdx === -1) {
-              regList.push({ id: cleanEmail, name: S.user.name, email: cleanEmail, role: 'student', coins: initCoins, joinedAt: Date.now() });
+              regList.push({ id: S.user.id, name: S.user.name, phone: S.user.phone, email: S.user.email, role: 'student', coins: initCoins, joinedAt: Date.now() });
             } else {
               regList[rIdx].name = S.user.name;
+              regList[rIdx].phone = S.user.phone;
               regList[rIdx].coins = initCoins;
               regList[rIdx].avatar = S.user.avatar;
               regList[rIdx].title = S.user.title;
@@ -1066,9 +1109,10 @@
         // SCENARIO 2: Brand New Student Registration — Instant Registration & Login (150 bonus coins strictly)
         var newCoins = 150;
         var newAcc = {
-          id: cleanEmail,
+          id: studentId,
           role: 'student',
           name: name,
+          phone: phone,
           email: cleanEmail,
           level: 'A1',
           unlocked: { A1: 1, A2: 1, B1: 1, B2: 1, C1: 1, C2: 1 },
@@ -1085,10 +1129,11 @@
         };
         S.accounts.push(newAcc);
         S.user = {
-          id: cleanEmail,
+          id: newAcc.id,
           role: 'student',
           name: newAcc.name,
-          email: cleanEmail,
+          phone: newAcc.phone,
+          email: newAcc.email,
           dailyMinutes: 0,
           coins: newAcc.coins,
           avatar: null,
@@ -1100,11 +1145,12 @@
         try {
           localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
           var allUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-          var uIdx = allUsers.findIndex(function(u) { return u && u.email && u.email.toLowerCase().trim() === cleanEmail; });
+          var uIdx = allUsers.findIndex(function(u) { return u && (u.id === studentId || u.email === cleanEmail); });
           if (uIdx === -1) {
-            allUsers.push({ id: cleanEmail, name: name, email: cleanEmail, role: 'student', coins: newCoins, joinedAt: Date.now() });
+            allUsers.push({ id: studentId, name: name, phone: phone, email: cleanEmail, role: 'student', coins: newCoins, joinedAt: Date.now() });
           } else {
             allUsers[uIdx].name = name;
+            allUsers[uIdx].phone = phone;
             allUsers[uIdx].coins = newCoins;
           }
           localStorage.setItem('ethith_all_registered_users', JSON.stringify(allUsers));
@@ -1116,8 +1162,9 @@
           window.EthithSync.publishLive({
             type: 'USER_REGISTERED',
             user: {
-              id: cleanEmail,
+              id: studentId,
               name: newAcc.name,
+              phone: newAcc.phone,
               email: cleanEmail,
               role: 'student',
               coins: newAcc.coins || 0,

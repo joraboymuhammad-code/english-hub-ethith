@@ -766,10 +766,15 @@
           S.activeVerificationCodes[cleanCode] = window._ethithActiveVerificationCodes[cleanCode];
         }
         var stInput = document.getElementById('stCode');
-        if (stInput && !stInput.value) {
+        if (stInput) {
           stInput.value = cleanCode;
           var statusEl = document.getElementById('stCodeStatus');
           if (statusEl) statusEl.innerHTML = '<span style="color:#22c55e;font-weight:800">✅ Kod Telegramdan qabul qilindi!</span>';
+          var noticeEl = document.getElementById('stCodeNotice');
+          if (noticeEl) {
+            noticeEl.style.display = 'block';
+            noticeEl.innerHTML = '⚡ Kod Telegram botdan avtomatik qabul qilindi: <b style="font-family:monospace;letter-spacing:1px;color:#38bdf8;">' + cleanCode + '</b>';
+          }
         }
       }
     }

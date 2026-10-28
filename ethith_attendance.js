@@ -964,10 +964,16 @@
             '</div>' +
           '</div>' +
 
-          // CREDENTIALS PREVIEW
-          '<div style="background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:6px 12px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;font-size:11.5px;">' +
-            '<span style="color:#94a3b8;">Login: <b style="color:#38bdf8;font-family:monospace;">' + esc(t.login || '—') + '</b></span>' +
-            '<span style="color:#94a3b8;">Parol: <b style="color:#34d399;font-family:monospace;">' + esc(t.password || '—') + '</b></span>' +
+          // CREDENTIALS & INVITE CODE
+          '<div style="background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:8px 12px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:11.5px;">' +
+            '<div>' +
+              '<span style="color:#94a3b8;">Ustoz Kodi:</span> <b style="color:#38bdf8;font-family:monospace;letter-spacing:1px;font-size:12.5px;">' + esc(t.inviteCode || t.login || '—') + '</b>' +
+              '<button type="button" class="ea-copy-code-btn" data-code="' + esc(t.inviteCode || t.login || '') + '" title="Kodni nusxalash" style="margin-left:6px;background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:6px;padding:2px 8px;font-size:11px;font-weight:800;cursor:pointer;">📋 Nusxa olish</button>' +
+            '</div>' +
+            '<div>' +
+              '<span style="color:#94a3b8;">Login: <b style="color:#38bdf8;font-family:monospace;">' + esc(t.login || '—') + '</b></span> • ' +
+              '<span style="color:#94a3b8;">Parol: <b style="color:#34d399;font-family:monospace;">' + esc(t.password || '—') + '</b></span>' +
+            '</div>' +
           '</div>' +
 
           // Groups Pills
@@ -1017,12 +1023,19 @@
             '<h2 style="margin:0;font-size:22px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">' +
               '👨‍🏫 ' + esc(t.name) + ' — O‘quv Guruhlari va Davomat' +
             '</h2>' +
-            '<div style="font-size:12.5px;color:#94a3b8;font-weight:600;margin-top:2px;">Fan: <b style="color:#38bdf8;">' + esc(t.subject || 'Ingliz tili') + '</b> | Soatlik stavka: <b style="color:#34d399;">' + (Number(t.hourlyRate) || 100000).toLocaleString() + ' so‘m/soat</b></div>' +
+            '<div style="font-size:12.5px;color:#94a3b8;font-weight:600;margin-top:2px;">Fan: <b style="color:#38bdf8;">' + esc(t.subject || 'Ingliz tili') + '</b> | Ulush foizi: <b style="color:#34d399;">' + (t.salarySharePercent || 50) + '%</b></div>' +
           '</div>' +
         '</div>' +
-        '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(16,185,129,0.35);">' +
-          '➕ Shu Ustozga Yangi Guruh Qo‘shish' +
-        '</button>' +
+        '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
+          '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:6px 14px;display:flex;align-items:center;gap:8px;">' +
+            '<span style="color:#94a3b8;font-size:12px;font-weight:700;">Ustoz Kodi:</span>' +
+            '<b style="color:#38bdf8;font-family:monospace;font-size:13.5px;letter-spacing:1px;">' + esc(t.inviteCode || t.login || '—') + '</b>' +
+            '<button type="button" class="ea-copy-code-btn" data-code="' + esc(t.inviteCode || t.login || '') + '" title="Ustoz kodini nusxalash" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:6px;padding:3px 9px;font-size:11px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">📋 Nusxa olish</button>' +
+          '</div>' +
+          '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(16,185,129,0.35);">' +
+            '➕ Shu Ustozga Yangi Guruh Qo‘shish' +
+          '</button>' +
+        '</div>' +
       '</div>';
 
     // GROUPS OF THIS TEACHER
@@ -1054,7 +1067,10 @@
               '<span style="font-size:11px;font-weight:800;color:#94a3b8;background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:6px;">' + esc(cls.level || 'General') + '</span>' +
             '</div>' +
             '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-              '<span style="background:rgba(56,189,248,0.18);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:8px;padding:3px 9px;font-size:11px;font-weight:900;font-family:monospace;">' + esc(cls.code || 'ETH-GROUP') + '</span>' +
+              '<div style="display:flex;align-items:center;gap:6px;">' +
+                '<span style="background:rgba(56,189,248,0.18);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:8px;padding:3px 9px;font-size:11px;font-weight:900;font-family:monospace;">' + esc(cls.code || 'ETH-GROUP') + '</span>' +
+                '<button type="button" class="ea-copy-code-btn" data-code="' + esc(cls.code || '') + '" title="Guruh kodini nusxalash" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:6px;padding:2px 7px;font-size:10.5px;font-weight:800;cursor:pointer;">📋 Nusxa</button>' +
+              '</div>' +
               '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:3px 10px;font-size:11.5px;font-weight:800;">' + stCount + ' / ' + maxCap + ' ta joy</span>' +
             '</div>' +
             '<h3 style="margin:0 0 6px;font-size:18px;font-weight:900;color:#fff;">' + esc(cls.name) + '</h3>' +
@@ -1134,9 +1150,62 @@
         if (t) EA.openEditTeacherModal(t);
       };
     });
+
+    container.querySelectorAll('.ea-copy-code-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        if (e) e.stopPropagation();
+        var code = btn.getAttribute('data-code');
+        if (!code) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code);
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = code;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+        }
+        var origText = btn.innerHTML;
+        btn.innerHTML = '✅ Nusxalandi!';
+        btn.style.background = '#10b981';
+        btn.style.color = '#fff';
+        setTimeout(function() {
+          btn.innerHTML = origText;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 1800);
+      };
+    });
   };
 
   EA.attachTeacherGroupsListeners = function(container, teacher) {
+    container.querySelectorAll('.ea-copy-code-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        if (e) e.stopPropagation();
+        var code = btn.getAttribute('data-code');
+        if (!code) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code);
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = code;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+        }
+        var origText = btn.innerHTML;
+        btn.innerHTML = '✅ Nusxalandi!';
+        btn.style.background = '#10b981';
+        btn.style.color = '#fff';
+        setTimeout(function() {
+          btn.innerHTML = origText;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 1800);
+      };
+    });
     var backBtn = container.querySelector('#eaBtnBackToAllTeachers');
     if (backBtn) {
       backBtn.onclick = function() {
@@ -1526,81 +1595,207 @@
     };
   };
 
-  // MODAL 1: ADD TEACHER
+  // MODAL 1: ADD TEACHER (Admin-only auto-credentials & salary percentage)
   EA.openAddTeacherModal = function() {
     var old = document.getElementById('eaAddTeacherModalOverlay');
     if (old) old.remove();
 
+    function transliterate(str) {
+      if (!str) return 'ustoz';
+      var map = {
+        'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'yo','ж':'j','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'x','ц':'s','ч':'ch','ш':'sh','щ':'sh','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya','ў':'o','қ':'q','ғ':'g','ҳ':'h',
+        'o‘':'o','o\'':'o','g‘':'g','g\'':'g','sh':'sh','ch':'ch'
+      };
+      var s = str.toLowerCase();
+      var res = '';
+      for (var i = 0; i < s.length; i++) {
+        var two = s.substr(i, 2);
+        if (map[two]) { res += map[two]; i++; }
+        else if (map[s[i]]) { res += map[s[i]]; }
+        else { res += s[i]; }
+      }
+      return res.replace(/[^a-z0-9]/g, '');
+    }
+
+    var rndNum = Math.floor(10 + Math.random() * 89);
+
     var overlay = document.createElement('div');
     overlay.id = 'eaAddTeacherModalOverlay';
-    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(16px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(16px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;';
 
-    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1px solid rgba(56,189,248,0.35);border-radius:24px;width:100%;max-width:480px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,0.8);">' +
+    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1px solid rgba(56,189,248,0.4);border-radius:24px;width:100%;max-width:520px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,0.85);max-height:92vh;overflow-y:auto;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">' +
         '<div style="display:flex;align-items:center;gap:10px;">' +
-          '<span style="font-size:24px;">👨‍🏫</span>' +
-          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Yangi O‘qituvchi Qo‘shish</h3>' +
+          '<span style="font-size:26px;">👨‍🏫</span>' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Yangi O‘qituvchi Qo‘shish</h3>' +
+            '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">Tizim avtomatik shaxsiy login, parol va taklif kodi yaratadi</div>' +
+          '</div>' +
         '</div>' +
-        '<button id="eaCloseAddTModalBtn" style="background:transparent;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">&times;</button>' +
+        '<button id="eaCloseAddTModalBtn" style="background:transparent;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">&times;</button>' +
       '</div>' +
       '<div style="display:flex;flex-direction:column;gap:14px;">' +
         '<div>' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Ism va Familiya</label>' +
-          '<input type="text" id="eaNewTName" placeholder="masalan: Anvar Ergashev" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">O‘qituvchi Ism va Familiyasi</label>' +
+          '<input type="text" id="eaNewTName" placeholder="Masalan: Zafar Umarov" style="width:100%;padding:12px 14px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:12px;color:#fff;font-weight:700;font-size:14px;outline:none;box-sizing:border-box;" />' +
         '</div>' +
-        '<div>' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Email (Login)</label>' +
-          '<input type="email" id="eaNewTEmail" placeholder="anvar@ethith.uz" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+
+        // Auto Generated Credentials Preview Box
+        '<div style="background:rgba(15,23,42,0.8);border:1px dashed rgba(56,189,248,0.4);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;">' +
+            '<span style="font-size:11.5px;font-weight:900;color:#38bdf8;text-transform:uppercase;letter-spacing:0.5px;">🔐 Avtomatik Yaratilgan Kirish Ma‘lumotlari:</span>' +
+            '<button type="button" id="eaBtnRegenCreds" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:6px;padding:2px 8px;font-size:11px;font-weight:800;cursor:pointer;">🔄 Yangilash</button>' +
+          '</div>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">' +
+            '<div>' +
+              '<label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:4px;">Login:</label>' +
+              '<input type="text" id="eaNewTLogin" style="width:100%;padding:9px 12px;background:#0b101b;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#38bdf8;font-family:monospace;font-weight:900;font-size:13px;outline:none;box-sizing:border-box;" />' +
+            '</div>' +
+            '<div>' +
+              '<label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:4px;">Maxfiy Parol:</label>' +
+              '<input type="text" id="eaNewTPassword" style="width:100%;padding:9px 12px;background:#0b101b;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#34d399;font-family:monospace;font-weight:900;font-size:13px;outline:none;box-sizing:border-box;" />' +
+            '</div>' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:4px;">Ustoz Taklif Kodi (O‘quvchilar guruhga qo‘shilishi uchun):</label>' +
+            '<input type="text" id="eaNewTCode" style="width:100%;padding:9px 12px;background:#0b101b;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#f59e0b;font-family:monospace;font-weight:900;font-size:13.5px;letter-spacing:1px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
         '</div>' +
-        '<div>' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Fan / Mutaxassislik</label>' +
-          '<input type="text" id="eaNewTSubject" value="Ingliz tili (IELTS / General)" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+
+        // Salary Percentage & Speciality
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Oylik Ulush Foizi (%)</label>' +
+            '<input type="number" id="eaNewTSharePercent" min="0" max="100" value="50" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(16,185,129,0.3);border-radius:12px;color:#34d399;font-weight:900;font-size:15px;outline:none;box-sizing:border-box;" />' +
+            '<small style="font-size:10.5px;color:#94a3b8;margin-top:3px;display:block;">Masalan: 50, 55 yoki 30%</small>' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Fan / Mutaxassislik</label>' +
+            '<input type="text" id="eaNewTSubject" value="Ingliz tili" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
         '</div>' +
-        '<div>' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Soatlik Stavka (so‘m/dars soati)</label>' +
-          '<input type="number" id="eaNewTRate" value="100000" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#34d399;font-weight:900;font-size:14px;outline:none;box-sizing:border-box;" />' +
-        '</div>' +
+
         '<div style="display:flex;gap:10px;margin-top:10px;">' +
           '<button id="eaCancelAddTBtn" style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#cbd5e1;padding:12px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
-          '<button id="eaSaveAddTBtn" style="flex:1;background:linear-gradient(135deg,#10b981,#059669);border:none;border-radius:12px;color:#fff;padding:12px;font-weight:900;cursor:pointer;">💾 Saqlash</button>' +
+          '<button id="eaSaveAddTBtn" style="flex:1;background:linear-gradient(135deg,#10b981,#059669);border:none;border-radius:12px;color:#fff;padding:12px;font-weight:900;cursor:pointer;box-shadow:0 4px 15px rgba(16,185,129,0.35);">💾 Saqlash &amp; Qo‘shish</button>' +
         '</div>' +
       '</div>' +
     '</div>';
 
     document.body.appendChild(overlay);
 
+    var nameInput = overlay.querySelector('#eaNewTName');
+    var loginInput = overlay.querySelector('#eaNewTLogin');
+    var passInput = overlay.querySelector('#eaNewTPassword');
+    var codeInput = overlay.querySelector('#eaNewTCode');
+
+    function updateGeneratedFields() {
+      var n = nameInput.value.trim();
+      var firstName = n.split(/\s+/)[0] || 'ustoz';
+      var translit = transliterate(firstName) || 'ustoz';
+      loginInput.value = translit + rndNum;
+      passInput.value = translit + '2026';
+      codeInput.value = translit.toUpperCase() + rndNum;
+    }
+
+    updateGeneratedFields();
+    nameInput.oninput = updateGeneratedFields;
+
+    overlay.querySelector('#eaBtnRegenCreds').onclick = function() {
+      rndNum = Math.floor(10 + Math.random() * 89);
+      updateGeneratedFields();
+    };
+
     function close() { overlay.remove(); }
     overlay.querySelector('#eaCloseAddTModalBtn').onclick = close;
     overlay.querySelector('#eaCancelAddTBtn').onclick = close;
 
     overlay.querySelector('#eaSaveAddTBtn').onclick = function() {
-      var name = overlay.querySelector('#eaNewTName').value.trim();
-      var email = overlay.querySelector('#eaNewTEmail').value.trim();
+      var name = nameInput.value.trim();
+      var login = loginInput.value.trim().toLowerCase();
+      var password = passInput.value.trim();
+      var inviteCode = codeInput.value.trim().toUpperCase();
       var subject = overlay.querySelector('#eaNewTSubject').value.trim() || 'Ingliz tili';
-      var rate = Number(overlay.querySelector('#eaNewTRate').value) || 100000;
+      var sharePercent = Number(overlay.querySelector('#eaNewTSharePercent').value) || 50;
 
-      if (!name) { alert("Iltimos, o'qituvchi ismini kiriting!"); return; }
-      if (!email) email = name.toLowerCase().replace(/[^a-z0-9]/g, '') + '@ethith.uz';
+      if (!name) { alert("Iltimos, o‘qituvchi ism va familiyasini kiriting!"); return; }
+      if (!login) login = 'teacher' + Date.now().toString().slice(-4);
+      if (!password) password = login + '2026';
+      if (!inviteCode) inviteCode = login.toUpperCase();
 
       var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
       if (!S.teachers) S.teachers = getStoreTeachers();
+      if (!S.accounts) S.accounts = [];
 
+      var newId = 'teacher_' + Date.now();
       var newT = {
-        id: 'teacher_' + Date.now(),
+        id: newId,
         name: name,
-        email: email,
+        login: login,
+        password: password,
+        inviteCode: inviteCode,
+        email: login + '@ethith.uz',
         subject: subject,
-        hourlyRate: rate,
+        hourlyRate: 100000,
+        salarySharePercent: sharePercent,
         teachingHours: 0,
         monthlyBonus: 0,
-        status: 'pending'
+        status: 'active',
+        created: Date.now(),
+        assignedClasses: [],
+        classOrder: []
       };
 
       S.teachers.push(newT);
+
+      // Add to accounts for immediate authentication
+      var accIdx = S.accounts.findIndex(function(a) { return a.login === login || a.id === newId; });
+      var accObj = {
+        id: newId,
+        name: name,
+        login: login,
+        password: password,
+        email: newT.email,
+        role: 'teacher',
+        teacherId: newId,
+        subject: subject,
+        salarySharePercent: sharePercent,
+        createdAt: Date.now()
+      };
+      if (accIdx === -1) S.accounts.push(accObj);
+      else S.accounts[accIdx] = accObj;
+
+      // Personal isolated test / file explorer folder
+      if (S.fileExplorer && Array.isArray(S.fileExplorer.folders)) {
+        var tFolderId = 'f_root_' + newId;
+        if (!S.fileExplorer.folders.some(function(f) { return f.id === tFolderId; })) {
+          S.fileExplorer.folders.push({
+            id: tFolderId,
+            name: name + " (Mening Hujjatlarim)",
+            parentId: null,
+            ownerRole: 'teacher',
+            ownerId: newId,
+            isSystem: true
+          });
+        }
+      }
+
       if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
       if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') window.EthithSync.pushStoreUpdate();
+      if (window.EthithSync && typeof window.EthithSync.broadcastState === 'function') window.EthithSync.broadcastState('teacher_added');
 
       close();
+
+      alert(
+        "✅ Yangi o‘qituvchi muvaffaqiyatli qo‘shildi!\n\n" +
+        "👤 Ism: " + name + "\n" +
+        "🔑 Login: " + login + "\n" +
+        "🔒 Parol: " + password + "\n" +
+        "🏷️ Taklif Kodi: " + inviteCode + "\n" +
+        "💰 Ulush foizi: " + sharePercent + "%\n\n" +
+        "O‘qituvchi ushbu login va parol bilan tizimga kiradi."
+      );
+
       EA.render(document.getElementById('apView'));
     };
   };

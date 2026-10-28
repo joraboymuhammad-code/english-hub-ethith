@@ -8,50 +8,7 @@
       "teacherName": "Ustoz",
       "teacherEmail": "teacher@ethith.uz",
       "created": 1792429062767,
-      "students": [
-        {
-          "id": "std_1",
-          "name": "Ashurov Dilyorbek",
-          "email": "ashurov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_2",
-          "name": "Ergasheva Madina",
-          "email": "ergasheva@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_3",
-          "name": "Erkinov Aslbekjon",
-          "email": "erkinov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_4",
-          "name": "JO‘RABOYEV MUXAMMADYUSUF",
-          "email": "joraboyev@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_5",
-          "name": "Jo'raboyev Javoxir",
-          "email": "javoxir@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_6",
-          "name": "Mavlonova Ruxshona",
-          "email": "mavlonova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_7",
-          "name": "Muxtaraliyeva Dilora",
-          "email": "muxtaraliyeva@ethith.uz",
-          "joinedAt": "2026-10-20"
-        }
-      ],
+      "students": [],
       "messages": [
         {
           "id": "msg_welcome",
@@ -1112,74 +1069,7 @@
       "room": "302-xona",
       "schedule": "har_kuni",
       "maxCapacity": 18,
-      "students": [
-        {
-          "id": "std_13",
-          "name": "Anvarova Nilufar",
-          "email": "anvarova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_14",
-          "name": "Boboyev Jamshid",
-          "email": "boboyev@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_15",
-          "name": "Rustamov Shaxzod",
-          "email": "rustamov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_16",
-          "name": "Karimova Rayhona",
-          "email": "karimova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_17",
-          "name": "Toxirov Sardor",
-          "email": "toxirov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_18",
-          "name": "Ismoilova Zarina",
-          "email": "ismoilova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_19",
-          "name": "Abdullayev Bekzod",
-          "email": "abdullayev@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_20",
-          "name": "Qodirova Sevinch",
-          "email": "qodirova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_21",
-          "name": "Yoqubov Doniyor",
-          "email": "yoqubov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_22",
-          "name": "Nurmatova Diyora",
-          "email": "nurmatova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_23",
-          "name": "Mirzayev Otabek",
-          "email": "mirzayev@ethith.uz",
-          "joinedAt": "2026-10-20"
-        }
-      ],
+      "students": [],
       "messages": [],
       "attendance": {
         "records": {},
@@ -3681,176 +3571,6 @@
       "victorySound": null
     },
     {
-      "id": "tg_98124765",
-      "role": "student",
-      "name": "Striker_uzb",
-      "email": "mu_striker@telegram.org",
-      "coins": 150,
-      "avatar": null,
-      "level": "A1",
-      "dailyMinutes": 0,
-      "nameStyle": null,
-      "title": null,
-      "victorySound": null,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "sardorbek@ethith.uz",
-      "name": "Sardorbek Valiyev",
-      "email": "sardorbek@ethith.uz",
-      "role": "student",
-      "coins": 150,
-      "avatar": null,
-      "level": "A1",
-      "joinedAt": 1792611123035,
-      "nameStyle": null,
-      "title": null,
-      "dailyMinutes": 0,
-      "updatedAt": 1792611123890
-    },
-    {
-      "id": "sarvartovboyev09@gmail.com",
-      "name": "Sarvar Tovboyev",
-      "email": "sarvartovboyev09@gmail.com",
-      "role": "student",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "createdAt": 1792673102972,
-      "updatedAt": 1792673102972
-    },
-    {
-      "id": "muhammedjoraboyev1@gmail.com",
-      "name": "Muhammadyusuf",
-      "email": "muhammedjoraboyev1@gmail.com",
-      "role": "student",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "createdAt": 1792673102972,
-      "updatedAt": 1792673102972
-    },
-    {
-      "id": "std_1",
-      "role": "student",
-      "name": "Ashurov Dilyorbek",
-      "email": "ashurov@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_2",
-      "role": "student",
-      "name": "Ergasheva Madina",
-      "email": "ergasheva@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_3",
-      "role": "student",
-      "name": "Erkinov Aslbekjon",
-      "email": "erkinov@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_4",
-      "role": "student",
-      "name": "JO‘RABOYEV MUXAMMADYUSUF",
-      "email": "joraboyev@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_5",
-      "role": "student",
-      "name": "Jo'raboyev Javoxir",
-      "email": "javoxir@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_6",
-      "role": "student",
-      "name": "Mavlonova Ruxshona",
-      "email": "mavlonova@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_7",
-      "role": "student",
-      "name": "Muxtaraliyeva Dilora",
-      "email": "muxtaraliyeva@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_8",
-      "role": "student",
-      "name": "O'razboyev O'tkir",
-      "email": "orazboyev@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_9",
-      "role": "student",
-      "name": "Saparova Aida",
-      "email": "saparova@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_10",
-      "role": "student",
-      "name": "Umarov Nursulton",
-      "email": "umarov@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_11",
-      "role": "student",
-      "name": "Xolmurodova Muazzam",
-      "email": "xolmurodova@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
-      "id": "std_12",
-      "role": "student",
-      "name": "Kaxarova Xumora",
-      "email": "kaxarova@ethith.uz",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1792673953881
-    },
-    {
       "id": "admin_official_teacher",
       "name": "Ustoz",
       "email": "teacher@ethith.uz",
@@ -3866,120 +3586,6 @@
         "cls_upper_intermediate"
       ],
       "createdAt": 1793202631415
-    },
-    {
-      "id": "std_13",
-      "name": "Anvarova Nilufar",
-      "email": "anvarova@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_14",
-      "name": "Boboyev Jamshid",
-      "email": "boboyev@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_15",
-      "name": "Rustamov Shaxzod",
-      "email": "rustamov@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_16",
-      "name": "Karimova Rayhona",
-      "email": "karimova@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_17",
-      "name": "Toxirov Sardor",
-      "email": "toxirov@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_18",
-      "name": "Ismoilova Zarina",
-      "email": "ismoilova@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_19",
-      "name": "Abdullayev Bekzod",
-      "email": "abdullayev@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_20",
-      "name": "Qodirova Sevinch",
-      "email": "qodirova@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_21",
-      "name": "Yoqubov Doniyor",
-      "email": "yoqubov@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_22",
-      "name": "Nurmatova Diyora",
-      "email": "nurmatova@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_23",
-      "name": "Mirzayev Otabek",
-      "email": "mirzayev@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_24",
-      "name": "Tursunov Jasur",
-      "email": "tursunov@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_25",
-      "name": "Mahmudova Shahlo",
-      "email": "mahmudova@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_26",
-      "name": "Sobirov Elyor",
-      "email": "sobirov@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_27",
-      "name": "Aliyeva Gulnoza",
-      "email": "aliyeva@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_28",
-      "name": "Rahmatov Ilhom",
-      "email": "rahmatov@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_29",
-      "name": "Sayfullayeva Mohira",
-      "email": "sayfullayeva@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_30",
-      "name": "G'aniyev Sherzod",
-      "email": "ganiyev@ethith.uz",
-      "role": "student"
-    },
-    {
-      "id": "std_31",
-      "name": "Vohidova Kamola",
-      "email": "vohidova@ethith.uz",
-      "role": "student"
     },
     {
       "id": "t_urolov_azizbek",
@@ -55916,7 +55522,8 @@
       "login": "ustoz77",
       "password": "ustoz2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000
+      "studentMonthlyFee": 300000,
+      "inviteCode": "USTOZ77"
     },
     {
       "id": "t_urolov_azizbek",
@@ -55939,7 +55546,8 @@
       "password": "azizbek2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "AZIZBEK77"
     },
     {
       "id": "t_ravshanov_doniyor",
@@ -55966,7 +55574,8 @@
       "password": "doniyor2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "RAVSHANOV24"
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -55987,7 +55596,8 @@
       "password": "humoyun2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "QARSHIBOYEV15"
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -56008,7 +55618,8 @@
       "password": "marjona2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "MARJONA88"
     },
     {
       "id": "t_olimjonova_durdona",
@@ -56035,7 +55646,8 @@
       "password": "durdona2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "DURDONA12"
     },
     {
       "id": "t_tagaev_eldor",
@@ -56062,7 +55674,8 @@
       "password": "eldor2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "ELDOR33"
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -56085,7 +55698,8 @@
       "password": "kamola2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "KAMOLA45"
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -56108,7 +55722,8 @@
       "password": "iroda2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "IRODA19"
     },
     {
       "id": "t_aborbekov_elyor",
@@ -56137,7 +55752,8 @@
       "password": "elyor2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "ELYOR70"
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -56164,7 +55780,8 @@
       "password": "jaloliddin2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "JALOLIDDIN99"
     },
     {
       "id": "t_jumanova_pokiza",
@@ -56185,7 +55802,8 @@
       "password": "pokiza2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "POKIZA07"
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -56208,7 +55826,8 @@
       "password": "arslon2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "ARSLON64"
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -56231,7 +55850,8 @@
       "password": "sarvinoz2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "SARVINOZ82"
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -56254,7 +55874,8 @@
       "password": "sevinch2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "SEVINCH55"
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -56281,7 +55902,8 @@
       "password": "diyora2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "DIYORA21"
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -56308,7 +55930,8 @@
       "password": "farrux2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "FARRUX93"
     },
     {
       "id": "t_ahmadova_barno",
@@ -56335,7 +55958,8 @@
       "password": "barno2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "BARNO36"
     },
     {
       "id": "t_shodiyor_matematika",
@@ -56356,7 +55980,8 @@
       "password": "shodiyor2026",
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "inviteCode": "SHODIYOR50"
     }
   ],
   "fileExplorer": {
