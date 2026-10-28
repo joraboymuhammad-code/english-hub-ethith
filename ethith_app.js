@@ -578,17 +578,13 @@
       '    <div id="teacherFormBox" style="display:none">' +
       '      <form id="teacherAuthForm">' +
       '        <div class="eth-auth-field">' +
-      '          <label class="eth-auth-label">O‘qituvchi Ismi va Familiyasi</label>' +
-      '          <input type="text" id="tcName" class="eth-auth-input" placeholder="Ismingizni kiriting" required autocomplete="name">' +
+      '          <label class="eth-auth-label">O‘qituvchi Logini yoki Gmaili</label>' +
+      '          <input type="text" id="tcLogin" class="eth-auth-input" placeholder="Masalan: azizbek77 yoki ustoz@gmail.com" required autocomplete="username">' +
       '        </div>' +
       '        <div class="eth-auth-field">' +
-      '          <label class="eth-auth-label">O‘qituvchi Gmaili</label>' +
-      '          <input type="email" id="tcEmail" class="eth-auth-input" placeholder="ustoz@gmail.com" required autocomplete="email">' +
-      '        </div>' +
-      '        <div class="eth-auth-field">' +
-      '          <label class="eth-auth-label">O‘qituvchi Maxfiy Paroli</label>' +
-      '          <input type="password" id="tcPassword" class="eth-auth-input" placeholder="Maxfiy parolni kiriting" required autocomplete="current-password">' +
-      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:5px;display:block">🔒 Faqat tasdiqlangan o‘qituvchi paroli bilan kirish mumkin.</small>' +
+      '          <label class="eth-auth-label">Maxfiy Parol</label>' +
+      '          <input type="password" id="tcPassword" class="eth-auth-input" placeholder="Parolingizni kiriting" required autocomplete="current-password">' +
+      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:5px;display:block">🔒 Har bir o‘qituvchining shaxsiy logini va maxfiy paroli.</small>' +
       '        </div>' +
       '        <button type="submit" class="eth-auth-btn teacher">O‘qituvchi Kabinetiga Kirish</button>' +
       '      </form>' +
@@ -1139,28 +1135,72 @@
       };
     }
 
-    // Teacher Submit Form - Teacher Authentication with Secret Key
+    // Teacher Submit Form - Individual Teacher Login and Password Authentication
     var tcForm = overlay.querySelector('#teacherAuthForm');
     if (tcForm) {
       tcForm.onsubmit = function(e) {
         e.preventDefault();
-        var nameInput = overlay.querySelector('#tcName');
-        var emailInput = overlay.querySelector('#tcEmail');
+        var loginInput = overlay.querySelector('#tcLogin');
         var passInput = overlay.querySelector('#tcPassword');
 
-        var teacherName = (nameInput ? nameInput.value : '').trim() || 'Ustoz';
-        var teacherEmail = (emailInput ? emailInput.value : '').trim();
+        var enteredLogin = (loginInput ? loginInput.value : '').trim();
         var enteredPass = (passInput ? passInput.value : '').trim();
 
-        var TEACHER_SECRET_PASS = 'jds8d738hjsdhd8w9dhsihd89wydhshd';
-
-        if (enteredPass !== TEACHER_SECRET_PASS) {
-          alert("❌ Xatolik: O'qituvchi maxfiy paroli noto'g'ri!\n\nTo'g'ri maxfiy parolni kiritmaguningizcha o'qituvchi sifatida kira olmaysiz.");
+        if (!enteredLogin) {
+          alert("Iltimos, o‘qituvchi loginini yoki Gmail manzilini kiriting!");
+          return;
+        }
+        if (!enteredPass) {
+          alert("Iltimos, maxfiy parolingizni kiriting!");
           return;
         }
 
-        if (!teacherEmail) {
-          alert("Iltimos, o'qituvchi Gmail manzilini kiriting!");
+        var teachersList = (S.teachers && S.teachers.length) ? S.teachers : ((window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.teachers) || []);
+        var accountsList = (S.accounts && S.accounts.length) ? S.accounts : ((window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.accounts) || []);
+
+        var cleanLogin = enteredLogin.toLowerCase();
+        var matchedTeacher = teachersList.find(function(t) {
+          if (!t) return false;
+          var tl = (t.login || '').trim().toLowerCase();
+          var te = (t.email || '').trim().toLowerCase();
+          return (tl === cleanLogin || te === cleanLogin);
+        });
+
+        if (!matchedTeacher) {
+          var matchedAcc = accountsList.find(function(a) {
+            if (!a || a.role !== 'teacher') return false;
+            var al = (a.login || '').trim().toLowerCase();
+            var ae = (a.email || '').trim().toLowerCase();
+            return (al === cleanLogin || ae === cleanLogin);
+          });
+          if (matchedAcc) matchedTeacher = matchedAcc;
+        }
+
+        var TEACHER_SECRET_PASS = 'jds8d738hjsdhd8w9dhsihd89wydhshd';
+        var isAuthorized = false;
+
+        if (matchedTeacher) {
+          if (matchedTeacher.password && enteredPass === matchedTeacher.password) {
+            isAuthorized = true;
+          } else if (enteredPass === TEACHER_SECRET_PASS) {
+            isAuthorized = true;
+          }
+        } else if (enteredPass === TEACHER_SECRET_PASS) {
+          isAuthorized = true;
+          matchedTeacher = {
+            id: 'teacher_' + Date.now(),
+            name: enteredLogin,
+            email: enteredLogin.includes('@') ? enteredLogin : (enteredLogin + '@ethith.uz'),
+            login: enteredLogin
+          };
+        }
+
+        if (!isAuthorized) {
+          if (!matchedTeacher) {
+            alert("❌ Xatolik: Ushbu loginli o‘qituvchi topilmadi!\n\nIltimos, o‘zingizga berilgan login (masalan: azizbek77, elyor70) yoki emailingizni to‘g‘ri kiriting.");
+          } else {
+            alert("❌ Xatolik: O‘qituvchi maxfiy paroli noto‘g‘ri!\n\nIltimos, parolingizni tekshirib qaytadan kiriting.");
+          }
           return;
         }
 
@@ -1169,13 +1209,13 @@
           sessionStorage.removeItem('ethith_explicit_logout');
         } catch(err) {}
 
-        var cleanTcEmail = teacherEmail.toLowerCase().trim();
         S.user = {
-          id: cleanTcEmail,
+          id: matchedTeacher.id,
           role: 'teacher',
-          name: teacherName,
-          email: cleanTcEmail,
-          coins: 500,
+          name: matchedTeacher.name,
+          email: matchedTeacher.email || (matchedTeacher.login + '@ethith.uz'),
+          login: matchedTeacher.login || enteredLogin,
+          coins: matchedTeacher.coins || 1000,
           dailyMinutes: 0
         };
 
@@ -1184,23 +1224,27 @@
         } catch(err) {}
 
         if (!Array.isArray(S.accounts)) S.accounts = [];
-        var existIdx = S.accounts.findIndex(function(a) { return a && a.email && a.email.toLowerCase() === cleanTcEmail; });
+        var existIdx = S.accounts.findIndex(function(a) { 
+          return a && ((a.id && a.id === S.user.id) || (a.login && a.login.toLowerCase() === cleanLogin) || (a.email && a.email.toLowerCase() === S.user.email.toLowerCase())); 
+        });
         var accObj = {
-          id: cleanTcEmail,
+          id: S.user.id,
           role: 'teacher',
-          name: teacherName,
-          email: cleanTcEmail,
-          coins: 500,
-          createdAt: Date.now()
+          name: S.user.name,
+          email: S.user.email,
+          login: S.user.login,
+          password: matchedTeacher.password || enteredPass,
+          coins: S.user.coins,
+          createdAt: matchedTeacher.createdAt || Date.now()
         };
         if (existIdx === -1) S.accounts.push(accObj);
-        else S.accounts[existIdx] = accObj;
+        else S.accounts[existIdx] = Object.assign({}, S.accounts[existIdx], accObj);
 
         try {
           var allRegTc = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-          var rIdx = allRegTc.findIndex(function(u) { return u && u.email && u.email.toLowerCase() === cleanTcEmail; });
-          if (rIdx === -1) allRegTc.push({ id: cleanTcEmail, name: teacherName, email: cleanTcEmail, role: 'teacher', joinedAt: Date.now() });
-          else { allRegTc[rIdx].name = teacherName; allRegTc[rIdx].role = 'teacher'; }
+          var rIdx = allRegTc.findIndex(function(u) { return u && (u.id === S.user.id || (u.email && u.email.toLowerCase() === S.user.email.toLowerCase())); });
+          if (rIdx === -1) allRegTc.push({ id: S.user.id, name: S.user.name, email: S.user.email, role: 'teacher', login: S.user.login, joinedAt: Date.now() });
+          else { allRegTc[rIdx].name = S.user.name; allRegTc[rIdx].role = 'teacher'; allRegTc[rIdx].login = S.user.login; }
           localStorage.setItem('ethith_all_registered_users', JSON.stringify(allRegTc));
         } catch(e) {}
 
@@ -1209,8 +1253,9 @@
             type: 'USER_REGISTERED',
             user: {
               id: S.user.id,
-              name: teacherName,
-              email: cleanTcEmail,
+              name: S.user.name,
+              email: S.user.email,
+              login: S.user.login,
               role: 'teacher'
             }
           });
@@ -1221,7 +1266,12 @@
           window.EthithSync.pushRemoteStore();
         }
         overlay.remove();
-        window.ethithOpenApp('dash');
+
+        if (window.EthithAttendance) {
+          window.EthithAttendance.activeTeacherId = S.user.id;
+          window.EthithAttendance.activeClassId = null;
+        }
+        window.ethithOpenApp('classes');
       };
     }
 

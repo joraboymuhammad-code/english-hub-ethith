@@ -1539,6 +1539,28 @@ EA.render = function(container, preserveScrollLeft) {
     var isAdmin = isAdminRole();
     var isTeacher = isTeacherRole();
 
+    // Teacher Isolation ("alohida alohida uy kabi boshqa boshqa bo'lsin"):
+    // Non-admin teachers are strictly locked to their own teacherId and their own groups
+    if (isTeacher && !isAdmin) {
+      var curUser = getActiveUser();
+      var teachers = getStoreTeachers();
+      var matchT = teachers.find(function(t) { 
+        return t.id === curUser.id || 
+               (curUser.email && t.email && t.email.toLowerCase() === curUser.email.toLowerCase()) ||
+               (curUser.login && t.login && t.login.toLowerCase() === curUser.login.toLowerCase()); 
+      });
+      if (matchT) {
+        EA.activeTeacherId = matchT.id;
+      }
+      if (EA.activeClassId) {
+        var myClasses = getClassesForTeacher(EA.activeTeacherId);
+        var belongsToMe = myClasses.some(function(c) { return c.id === EA.activeClassId; });
+        if (!belongsToMe) {
+          EA.activeClassId = null;
+        }
+      }
+    }
+
     // 1. If Admin has not selected a teacher and not selected a class -> Show Teachers Directory (Level 1)
     if (isAdmin && !EA.activeTeacherId && !EA.activeClassId) {
       EA.renderTeachersDirectory(container);
@@ -1549,20 +1571,6 @@ EA.render = function(container, preserveScrollLeft) {
     if ((isAdmin || isTeacher) && EA.activeTeacherId && !EA.activeClassId) {
       EA.renderTeacherGroups(container, EA.activeTeacherId);
       return;
-    }
-
-    // If teacher is logged in and no activeTeacherId set yet
-    if (isTeacher && !isAdmin && !EA.activeTeacherId) {
-      var curUser = getActiveUser();
-      var teachers = getStoreTeachers();
-      var matchT = teachers.find(function(t) { return t.id === curUser.id || (curUser.email && t.email && t.email.toLowerCase() === curUser.email.toLowerCase()); }) || teachers[0];
-      if (matchT) {
-        EA.activeTeacherId = matchT.id;
-        if (!EA.activeClassId) {
-          EA.renderTeacherGroups(container, EA.activeTeacherId);
-          return;
-        }
-      }
     }
 
     var allClasses = getAvailableClasses();
