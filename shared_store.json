@@ -57606,6 +57606,167 @@
         "id": "p4004_custom_54749",
         "group": ""
       }
+    ],
+    "4086": [
+      {
+        "id": "p4086_ex1_1",
+        "type": "fill",
+        "x": 23.5,
+        "y": 24,
+        "w": 5,
+        "h": 2.2,
+        "top": 23.6,
+        "left": 23.6,
+        "width": 5,
+        "height": 2.2,
+        "correct": [
+          "c"
+        ]
+      },
+      {
+        "id": "p4086_ex1_2",
+        "type": "fill",
+        "x": 23.5,
+        "y": 25.8,
+        "w": 5,
+        "h": 2.2,
+        "top": 25.8,
+        "left": 23.5,
+        "width": 5,
+        "height": 2.2,
+        "correct": [
+          "a"
+        ]
+      },
+      {
+        "id": "p4086_ex1_3",
+        "type": "fill",
+        "x": 23.5,
+        "y": 27.5,
+        "w": 5,
+        "h": 2.2,
+        "top": 27.5,
+        "left": 23.5,
+        "width": 5,
+        "height": 2.2,
+        "correct": [
+          "b"
+        ]
+      },
+      {
+        "id": "p4086_ex3_1",
+        "type": "select",
+        "x": 21,
+        "y": 39,
+        "w": 14,
+        "h": 2.2,
+        "top": 39,
+        "left": 21,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "887"
+        ],
+        "options": [
+          "787",
+          "887"
+        ]
+      },
+      {
+        "id": "p4086_ex3_2",
+        "type": "select",
+        "x": 31,
+        "y": 41.1,
+        "w": 15,
+        "h": 2.2,
+        "top": 41.1,
+        "left": 31,
+        "width": 15,
+        "height": 2.2,
+        "correct": [
+          "trees"
+        ],
+        "options": [
+          "statues",
+          "trees"
+        ]
+      },
+      {
+        "id": "p4086_ex3_3",
+        "type": "select",
+        "x": 27,
+        "y": 42.7,
+        "w": 16,
+        "h": 2.2,
+        "top": 42.7,
+        "left": 27,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "easy"
+        ],
+        "options": [
+          "easy",
+          "difficult"
+        ]
+      },
+      {
+        "id": "p4086_ex3_4",
+        "type": "select",
+        "x": 21,
+        "y": 46,
+        "w": 24,
+        "h": 2.2,
+        "top": 46,
+        "left": 21,
+        "width": 24,
+        "height": 2.2,
+        "correct": [
+          "make statues"
+        ],
+        "options": [
+          "make statues",
+          "build houses"
+        ]
+      },
+      {
+        "id": "p4086_ex3_5",
+        "type": "select",
+        "x": 21,
+        "y": 47.7,
+        "w": 23,
+        "h": 2.2,
+        "top": 47.7,
+        "left": 21,
+        "width": 23,
+        "height": 2.2,
+        "correct": [
+          "transport"
+        ],
+        "options": [
+          "construction",
+          "transport"
+        ]
+      },
+      {
+        "id": "p4086_ex3_6",
+        "type": "select",
+        "x": 30,
+        "y": 51,
+        "w": 15,
+        "h": 2.2,
+        "top": 51,
+        "left": 30,
+        "width": 15,
+        "height": 2.2,
+        "correct": [
+          "trees"
+        ],
+        "options": [
+          "stone",
+          "trees"
+        ]
+      }
     ]
   },
   "workbookOverridesTs": {
@@ -57772,7 +57933,8 @@
     "2086": 2026,
     "2087": 2026,
     "3046": 1793188669311,
-    "4004": 1793192654749
+    "4004": 1793192654749,
+    "4086": 1793193045789
   },
   "centerSettings": {
     "card": "8600 4912 7731 9024",
@@ -58040,5 +58202,5 @@
       }
     }
   },
-  "updatedAt": 1793192655493
+  "updatedAt": 1793193046412
 }
