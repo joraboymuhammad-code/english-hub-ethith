@@ -1093,7 +1093,7 @@
         "assignedAt": 1792607960771
       },
       "customStudentPhones": {},
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "startDate": "2026-08-01",
       "level": "B1+",
       "extraHomework": [],
@@ -1111,7 +1111,7 @@
       "created": 1793113876019,
       "room": "302-xona",
       "schedule": "har_kuni",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "students": [
         {
           "id": "std_13",
@@ -1297,7 +1297,7 @@
       "schedule": "toq",
       "room": "303-xona",
       "level": "CEFR Multi-Level",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1337,7 +1337,7 @@
       "schedule": "juft",
       "room": "304-xona",
       "level": "CEFR Multi-Level",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1377,7 +1377,7 @@
       "schedule": "toq",
       "room": "305-xona",
       "level": "CEFR Multi-Level",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1417,7 +1417,7 @@
       "schedule": "juft",
       "room": "306-xona",
       "level": "CEFR Multi-Level",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1457,7 +1457,7 @@
       "schedule": "toq",
       "room": "305-xona",
       "level": "Practice English",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1497,7 +1497,7 @@
       "schedule": "toq",
       "room": "307-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1537,7 +1537,7 @@
       "schedule": "toq",
       "room": "309-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1577,7 +1577,7 @@
       "schedule": "juft",
       "room": "310-xona",
       "level": "Pre-Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1617,7 +1617,7 @@
       "schedule": "toq",
       "room": "311-xona",
       "level": "Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1657,7 +1657,7 @@
       "schedule": "juft",
       "room": "312-xona",
       "level": "Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1697,7 +1697,7 @@
       "schedule": "toq",
       "room": "311-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1737,7 +1737,7 @@
       "schedule": "juft",
       "room": "312-xona",
       "level": "Elementary",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1777,7 +1777,7 @@
       "schedule": "toq",
       "room": "313-xona",
       "level": "Pre-Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1817,7 +1817,7 @@
       "schedule": "juft",
       "room": "314-xona",
       "level": "Pre-Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1857,7 +1857,7 @@
       "schedule": "toq",
       "room": "313-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1897,7 +1897,7 @@
       "schedule": "juft",
       "room": "314-xona",
       "level": "Elementary",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1937,7 +1937,7 @@
       "schedule": "toq",
       "room": "315-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -1977,7 +1977,7 @@
       "schedule": "juft",
       "room": "301-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2017,7 +2017,7 @@
       "schedule": "toq",
       "room": "302-xona",
       "level": "Pre-Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2057,7 +2057,7 @@
       "schedule": "juft",
       "room": "303-xona",
       "level": "Pre-Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2097,7 +2097,7 @@
       "schedule": "toq",
       "room": "304-xona",
       "level": "Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2137,7 +2137,7 @@
       "schedule": "juft",
       "room": "305-xona",
       "level": "Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2177,7 +2177,7 @@
       "schedule": "toq",
       "room": "306-xona",
       "level": "Upper-Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2217,7 +2217,7 @@
       "schedule": "toq",
       "room": "304-xona",
       "level": "Pre-Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2257,7 +2257,7 @@
       "schedule": "juft",
       "room": "305-xona",
       "level": "Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2297,7 +2297,7 @@
       "schedule": "toq",
       "room": "306-xona",
       "level": "Standard English",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2337,7 +2337,7 @@
       "schedule": "juft",
       "room": "307-xona",
       "level": "Standard English",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2377,7 +2377,7 @@
       "schedule": "toq",
       "room": "306-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2417,7 +2417,7 @@
       "schedule": "toq",
       "room": "308-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2457,7 +2457,7 @@
       "schedule": "juft",
       "room": "309-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2497,7 +2497,7 @@
       "schedule": "toq",
       "room": "310-xona",
       "level": "Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2537,7 +2537,7 @@
       "schedule": "juft",
       "room": "311-xona",
       "level": "Standard English",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2577,7 +2577,7 @@
       "schedule": "toq",
       "room": "312-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2617,7 +2617,7 @@
       "schedule": "juft",
       "room": "313-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2657,7 +2657,7 @@
       "schedule": "toq",
       "room": "314-xona",
       "level": "Beginner",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2697,7 +2697,7 @@
       "schedule": "juft",
       "room": "315-xona",
       "level": "Elementary",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2737,7 +2737,7 @@
       "schedule": "toq",
       "room": "301-xona",
       "level": "Elementary",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2777,7 +2777,7 @@
       "schedule": "juft",
       "room": "302-xona",
       "level": "Elementary",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2817,7 +2817,7 @@
       "schedule": "toq",
       "room": "301-xona",
       "level": "Pre-Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2857,7 +2857,7 @@
       "schedule": "juft",
       "room": "302-xona",
       "level": "Pre-Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2897,7 +2897,7 @@
       "schedule": "toq",
       "room": "303-xona",
       "level": "Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2937,7 +2937,7 @@
       "schedule": "juft",
       "room": "304-xona",
       "level": "Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -2977,7 +2977,7 @@
       "schedule": "toq",
       "room": "303-xona",
       "level": "Elementary",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -3017,7 +3017,7 @@
       "schedule": "juft",
       "room": "304-xona",
       "level": "Elementary",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -3057,7 +3057,7 @@
       "schedule": "toq",
       "room": "305-xona",
       "level": "Elementary",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -3097,7 +3097,7 @@
       "schedule": "juft",
       "room": "306-xona",
       "level": "Pre-Intermediate",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -3137,7 +3137,7 @@
       "schedule": "toq",
       "room": "305-xona",
       "level": "Matematika",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
@@ -55904,7 +55904,7 @@
       "email": "teacher@ethith.uz",
       "phone": "+998 90 123 45 67",
       "card": "8600 1122 3344 5566",
-      "monthlySalary": 6000000,
+      "monthlySalary": 2700000,
       "hourlyRate": 100000,
       "teachingHours": 72,
       "paidThisMonth": true,
@@ -55914,7 +55914,9 @@
       ],
       "subject": "Ingliz tili (IELTS Intensive)",
       "login": "ustoz77",
-      "password": "ustoz2026"
+      "password": "ustoz2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000
     },
     {
       "id": "t_urolov_azizbek",
@@ -55934,7 +55936,10 @@
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
       "login": "azizbek77",
-      "password": "azizbek2026"
+      "password": "azizbek2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_ravshanov_doniyor",
@@ -55958,7 +55963,10 @@
         "cls_ravshanov_doniyor_cefr_4"
       ],
       "login": "doniyor24",
-      "password": "doniyor2026"
+      "password": "doniyor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -55976,7 +55984,10 @@
         "cls_qarshiboyev_humoyun_practice"
       ],
       "login": "humoyun15",
-      "password": "humoyun2026"
+      "password": "humoyun2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -55994,7 +56005,10 @@
         "cls_tovboyeva_marjona_beginner"
       ],
       "login": "marjona88",
-      "password": "marjona2026"
+      "password": "marjona2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_olimjonova_durdona",
@@ -56018,7 +56032,10 @@
         "cls_olimjonova_durdona_intermediate_2"
       ],
       "login": "durdona12",
-      "password": "durdona2026"
+      "password": "durdona2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_tagaev_eldor",
@@ -56042,7 +56059,10 @@
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
       "login": "eldor33",
-      "password": "eldor2026"
+      "password": "eldor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -56062,7 +56082,10 @@
         "cls_yaxshilikova_kamola_elementary"
       ],
       "login": "kamola45",
-      "password": "kamola2026"
+      "password": "kamola2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -56082,7 +56105,10 @@
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
       "login": "iroda19",
-      "password": "iroda2026"
+      "password": "iroda2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_aborbekov_elyor",
@@ -56108,7 +56134,10 @@
         "cls_aborbekov_elyor_upper_intermediate"
       ],
       "login": "elyor70",
-      "password": "elyor2026"
+      "password": "elyor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -56132,7 +56161,10 @@
         "cls_orinboyev_jaloliddin_standard_2"
       ],
       "login": "jaloliddin99",
-      "password": "jaloliddin2026"
+      "password": "jaloliddin2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_jumanova_pokiza",
@@ -56150,7 +56182,10 @@
         "cls_jumanova_pokiza_beginner"
       ],
       "login": "pokiza07",
-      "password": "pokiza2026"
+      "password": "pokiza2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -56170,7 +56205,10 @@
         "cls_hayrullayev_arslon_beginner_2"
       ],
       "login": "arslon64",
-      "password": "arslon2026"
+      "password": "arslon2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -56190,7 +56228,10 @@
         "cls_xudoyorova_sarvinoz_standard"
       ],
       "login": "sarvinoz82",
-      "password": "sarvinoz2026"
+      "password": "sarvinoz2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -56210,7 +56251,10 @@
         "cls_aliqulova_sevinch_beginner_2"
       ],
       "login": "sevinch55",
-      "password": "sevinch2026"
+      "password": "sevinch2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -56234,7 +56278,10 @@
         "cls_xojamqulova_diyora_elementary_3"
       ],
       "login": "diyora21",
-      "password": "diyora2026"
+      "password": "diyora2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -56258,7 +56305,10 @@
         "cls_bosimbekov_farrux_intermediate_2"
       ],
       "login": "farrux93",
-      "password": "farrux2026"
+      "password": "farrux2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_ahmadova_barno",
@@ -56282,7 +56332,10 @@
         "cls_ahmadova_barno_pre_intermediate"
       ],
       "login": "barno36",
-      "password": "barno2026"
+      "password": "barno2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     },
     {
       "id": "t_shodiyor_matematika",
@@ -56300,7 +56353,10 @@
         "cls_shodiyor_matematika_matematika"
       ],
       "login": "shodiyor50",
-      "password": "shodiyor2026"
+      "password": "shodiyor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0
     }
   ],
   "fileExplorer": {

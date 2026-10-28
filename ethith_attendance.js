@@ -906,6 +906,10 @@
     teachers.forEach(function(t) {
       var tClasses = getClassesForTeacher(t.id);
       var totalStudents = tClasses.reduce(function(acc, c) { return acc + (c.students || []).length; }, 0);
+      var sharePercent = (t.salarySharePercent !== undefined) ? Number(t.salarySharePercent) : 50;
+      var studentFee = Number(t.studentMonthlyFee) || 300000;
+      var totalTuition = totalStudents * studentFee;
+      var computedSalary = Math.round(totalTuition * (sharePercent / 100));
       var avChar = t.name ? t.name.charAt(0).toUpperCase() : 'U';
 
       h += '<div class="ea-teacher-card" data-tid="' + esc(t.id) + '" style="background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:24px;box-shadow:0 12px 35px rgba(0,0,0,0.45);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s;" onmouseover="this.style.borderColor=\'rgba(56,189,248,0.5)\'" onmouseout="this.style.borderColor=\'rgba(255,255,255,0.1)\'">' +
@@ -918,11 +922,16 @@
                 '<div style="font-size:12px;color:#38bdf8;font-weight:700;margin-top:2px;">' + esc(t.subject || 'Ingliz tili') + '</div>' +
               '</div>' +
             '</div>' +
-            '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:4px 10px;font-size:11px;font-weight:800;">Faol Ustoz</span>' +
+            '<div style="display:flex;align-items:center;gap:8px;">' +
+              '<button type="button" class="ea-btn-edit-teacher" data-tid="' + esc(t.id) + '" title="O‘qituvchini tahrirlash (Ism, Fan, Oylik ulushi %)" style="background:rgba(255,255,255,0.08);border:1px solid rgba(56,189,248,0.35);color:#38bdf8;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;">' +
+                '✏️' +
+              '</button>' +
+              '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:4px 10px;font-size:11px;font-weight:800;">Faol Ustoz</span>' +
+            '</div>' +
           '</div>' +
 
           // Stats Chips
-          '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:rgba(11,16,27,0.7);padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);margin-bottom:16px;">' +
+          '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:rgba(11,16,27,0.7);padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);margin-bottom:14px;">' +
             '<div style="text-align:center;">' +
               '<div style="font-size:10px;color:#94a3b8;font-weight:700;text-transform:uppercase;">Guruhlar</div>' +
               '<div style="font-size:15px;font-weight:900;color:#fff;margin-top:2px;">' + tClasses.length + ' ta</div>' +
@@ -937,8 +946,32 @@
             '</div>' +
           '</div>' +
 
+          // SALARY & PERCENTAGE CALCULATION BOX (Oylik foiz hisoblash bloki)
+          '<div style="background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(6,78,59,0.25));border:1px solid rgba(16,185,129,0.35);border-radius:14px;padding:12px 14px;margin-bottom:14px;">' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:#94a3b8;margin-bottom:6px;">' +
+              '<span>Tushum (' + totalStudents + ' o‘quvchi × ' + studentFee.toLocaleString() + ' so‘m):</span>' +
+              '<b style="color:#f8fafc;">' + totalTuition.toLocaleString() + ' so‘m</b>' +
+            '</div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;">' +
+              '<div style="font-size:12px;color:#38bdf8;font-weight:800;display:flex;align-items:center;gap:6px;">' +
+                '<span>Ulush foizi:</span>' +
+                '<span style="background:rgba(56,189,248,0.2);padding:2px 8px;border-radius:6px;color:#7dd3fc;border:1px solid rgba(56,189,248,0.4);font-weight:900;">' + sharePercent + '%</span>' +
+              '</div>' +
+              '<div style="text-align:right;">' +
+                '<div style="font-size:10px;color:#94a3b8;text-transform:uppercase;font-weight:700;">Ustoz Oyligi</div>' +
+                '<div style="font-size:15px;font-weight:900;color:#34d399;">💰 ' + computedSalary.toLocaleString() + ' so‘m</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+
+          // CREDENTIALS PREVIEW
+          '<div style="background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:6px 12px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;font-size:11.5px;">' +
+            '<span style="color:#94a3b8;">Login: <b style="color:#38bdf8;font-family:monospace;">' + esc(t.login || '—') + '</b></span>' +
+            '<span style="color:#94a3b8;">Parol: <b style="color:#34d399;font-family:monospace;">' + esc(t.password || '—') + '</b></span>' +
+          '</div>' +
+
           // Groups Pills
-          '<div style="margin-bottom:20px;">' +
+          '<div style="margin-bottom:18px;">' +
             '<div style="font-size:11px;color:#94a3b8;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em;">Biriktirilgan Guruhlar:</div>' +
             '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
               (tClasses.length > 0 ? tClasses.map(function(c) {
@@ -1091,6 +1124,16 @@
         if (t) EA.openAddGroupForTeacherModal(t);
       };
     });
+
+    container.querySelectorAll('.ea-btn-edit-teacher').forEach(function(btn) {
+      btn.onclick = function(e) {
+        if (e) e.stopPropagation();
+        var tid = btn.getAttribute('data-tid');
+        var teachers = getStoreTeachers();
+        var t = teachers.find(function(item) { return item.id === tid; });
+        if (t) EA.openEditTeacherModal(t);
+      };
+    });
   };
 
   EA.attachTeacherGroupsListeners = function(container, teacher) {
@@ -1102,6 +1145,16 @@
         EA.render(container);
       };
     }
+
+    container.querySelectorAll('.dash-add-student-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        if (e) e.stopPropagation();
+        var cid = btn.getAttribute('data-cid');
+        if (window.EthithEnterprise && window.EthithEnterprise.openTelegramSearchStudentModal) {
+          window.EthithEnterprise.openTelegramSearchStudentModal(cid);
+        }
+      };
+    });
 
     var addGrpBtn = container.querySelector('.ea-btn-add-group-for-t');
     if (addGrpBtn) {
@@ -1285,6 +1338,192 @@
         EA.openDeleteClassModal(cid, cname, teacher, container);
       };
     });
+  };
+
+  // MODAL 0: EDIT TEACHER & SALARY PERCENTAGE
+  EA.openEditTeacherModal = function(teacher) {
+    if (!teacher) return;
+    var old = document.getElementById('eaEditTeacherModalOverlay');
+    if (old) old.remove();
+
+    var tClasses = getClassesForTeacher(teacher.id);
+    var totalStudents = tClasses.reduce(function(acc, c) { return acc + (c.students || []).length; }, 0);
+    var curShare = (teacher.salarySharePercent !== undefined) ? Number(teacher.salarySharePercent) : 50;
+    var curFee = Number(teacher.studentMonthlyFee) || 300000;
+
+    var overlay = document.createElement('div');
+    overlay.id = 'eaEditTeacherModalOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.82);backdrop-filter:blur(18px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1px solid rgba(56,189,248,0.4);border-radius:24px;width:100%;max-width:520px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,0.85);color:#fff;font-family:inherit;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:24px;">✏️</span>' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘qituvchini Tahrirlash &amp; Maosh Foizi</h3>' +
+            '<div style="font-size:12px;color:#94a3b8;margin-top:2px;">O‘quvchilar to‘lovidan o‘qituvchiga foiz ajratish tizimi</div>' +
+          '</div>' +
+        '</div>' +
+        '<button id="eaCloseEditTModalBtn" style="background:transparent;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">&times;</button>' +
+      '</div>' +
+
+      '<div style="display:flex;flex-direction:column;gap:12px;max-height:75vh;overflow-y:auto;padding-right:4px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:5px;">O‘qituvchi Ism va Familiyasi</label>' +
+          '<input type="text" id="eaEditTName" value="' + esc(teacher.name || '') + '" style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:5px;">Fan / Yo‘nalish</label>' +
+          '<input type="text" id="eaEditTSubject" value="' + esc(teacher.subject || 'Ingliz tili') + '" style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        // SALARY PERCENTAGE & STUDENT FEE BOX
+        '<div style="background:rgba(16,185,129,0.1);border:1.5px solid rgba(16,185,129,0.4);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;">' +
+            '<span style="font-size:12.5px;font-weight:900;color:#34d399;">💰 Oylik Ulushi (% va To‘lov):</span>' +
+            '<span style="font-size:11px;color:#94a3b8;">Admin istalgan % ni belgilaydi</span>' +
+          '</div>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">' +
+            '<div>' +
+              '<label style="display:block;font-size:11px;font-weight:800;color:#cbd5e1;margin-bottom:4px;">Ustoz ulushi (%)</label>' +
+              '<div style="display:flex;align-items:center;gap:6px;">' +
+                '<input type="number" id="eaEditTSharePercent" value="' + curShare + '" min="0" max="100" style="width:100%;padding:9px 12px;background:#0f172a;border:1.5px solid rgba(56,189,248,0.5);border-radius:10px;color:#38bdf8;font-weight:900;font-size:15px;outline:none;box-sizing:border-box;" />' +
+                '<span style="font-weight:900;color:#38bdf8;font-size:16px;">%</span>' +
+              '</div>' +
+            '</div>' +
+            '<div>' +
+              '<label style="display:block;font-size:11px;font-weight:800;color:#cbd5e1;margin-bottom:4px;">1 o‘quvchi to‘lovi (so‘m)</label>' +
+              '<input type="number" id="eaEditTStudentFee" value="' + curFee + '" step="10000" style="width:100%;padding:9px 12px;background:#0f172a;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+            '</div>' +
+          '</div>' +
+
+          // LIVE REALTIME CALCULATION PREVIEW BOX
+          '<div id="eaEditTCalcPreview" style="background:rgba(0,0,0,0.35);border-radius:10px;padding:10px 12px;font-size:12px;color:#e2e8f0;line-height:1.5;">' +
+          '</div>' +
+        '</div>' +
+
+        // CREDENTIALS BOX
+        '<div style="background:rgba(56,189,248,0.08);border:1px dashed rgba(56,189,248,0.3);border-radius:14px;padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:4px;">Shaxsiy Login</label>' +
+            '<input type="text" id="eaEditTLogin" value="' + esc(teacher.login || '') + '" style="width:100%;padding:8px 12px;background:#0f172a;border:1px solid rgba(56,189,248,0.4);border-radius:10px;color:#38bdf8;font-family:monospace;font-weight:800;font-size:13px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:4px;">Maxfiy Parol</label>' +
+            '<input type="text" id="eaEditTPassword" value="' + esc(teacher.password || '') + '" style="width:100%;padding:8px 12px;background:#0f172a;border:1px solid rgba(16,185,129,0.4);border-radius:10px;color:#34d399;font-family:monospace;font-weight:800;font-size:13px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:4px;">Plastik Karta</label>' +
+            '<input type="text" id="eaEditTCard" value="' + esc(teacher.card || '8600 ...') + '" style="width:100%;padding:8px 12px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:12.5px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:4px;">Telefon Raqami</label>' +
+            '<input type="text" id="eaEditTPhone" value="' + esc(teacher.phone || '+998 90 ...') + '" style="width:100%;padding:8px 12px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:12.5px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px;">' +
+          '<button id="eaCancelEditTBtn" style="background:rgba(255,255,255,0.08);color:#cbd5e1;border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:10px 18px;font-size:13px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
+          '<button id="eaSaveEditTBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,0.4);">✓ Saqlash</button>' +
+        '</div>' +
+
+      '</div></div>';
+
+    document.body.appendChild(overlay);
+
+    var shareInp = overlay.querySelector('#eaEditTSharePercent');
+    var feeInp = overlay.querySelector('#eaEditTStudentFee');
+    var prevBox = overlay.querySelector('#eaEditTCalcPreview');
+
+    function updatePreview() {
+      var pct = Math.max(0, Math.min(100, Number(shareInp.value) || 0));
+      var fee = Math.max(0, Number(feeInp.value) || 0);
+      var totalTuition = totalStudents * fee;
+      var salary = Math.round(totalTuition * (pct / 100));
+
+      prevBox.innerHTML = '📊 <b>Hisob-kitob ko‘rsatkichi:</b><br>' +
+        '• Guruhlaridagi o‘quvchilar: <b style="color:#38bdf8;">' + totalStudents + ' nafar</b><br>' +
+        '• O‘quvchilardan tushum: <b>' + totalStudents + ' × ' + fee.toLocaleString() + ' = <span style="color:#f8fafc;">' + totalTuition.toLocaleString() + ' so‘m</span></b><br>' +
+        '• Ustozga ajratiladigan oylik (' + pct + '%): <b style="color:#10b981;font-size:14px;">' + salary.toLocaleString() + ' so‘m</b>';
+    }
+
+    shareInp.oninput = updatePreview;
+    feeInp.oninput = updatePreview;
+    updatePreview();
+
+    var close = function() { overlay.remove(); };
+    overlay.querySelector('#eaCloseEditTModalBtn').onclick = close;
+    overlay.querySelector('#eaCancelEditTBtn').onclick = close;
+
+    overlay.querySelector('#eaSaveEditTBtn').onclick = function() {
+      var newName = overlay.querySelector('#eaEditTName').value.trim();
+      var newSubject = overlay.querySelector('#eaEditTSubject').value.trim();
+      var newPct = Math.max(0, Math.min(100, Number(shareInp.value) || 50));
+      var newFee = Math.max(0, Number(feeInp.value) || 300000);
+      var newLogin = overlay.querySelector('#eaEditTLogin').value.trim();
+      var newPassword = overlay.querySelector('#eaEditTPassword').value.trim();
+      var newCard = overlay.querySelector('#eaEditTCard').value.trim();
+      var newPhone = overlay.querySelector('#eaEditTPhone').value.trim();
+
+      if (!newName) { alert("O‘qituvchi ismini kiriting!"); return; }
+
+      var calculatedSalary = Math.round((totalStudents * newFee) * (newPct / 100));
+
+      teacher.name = newName;
+      teacher.subject = newSubject;
+      teacher.salarySharePercent = newPct;
+      teacher.studentMonthlyFee = newFee;
+      teacher.monthlySalary = calculatedSalary;
+      if (newLogin) teacher.login = newLogin;
+      if (newPassword) teacher.password = newPassword;
+      if (newCard) teacher.card = newCard;
+      if (newPhone) teacher.phone = newPhone;
+
+      var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+      var storeT = (S.teachers || []).find(function(it) { return it.id === teacher.id; });
+      if (storeT) {
+        storeT.name = newName;
+        storeT.subject = newSubject;
+        storeT.salarySharePercent = newPct;
+        storeT.studentMonthlyFee = newFee;
+        storeT.monthlySalary = calculatedSalary;
+        if (newLogin) storeT.login = newLogin;
+        if (newPassword) storeT.password = newPassword;
+        if (newCard) storeT.card = newCard;
+        if (newPhone) storeT.phone = newPhone;
+      }
+
+      if (Array.isArray(S.accounts)) {
+        var acc = S.accounts.find(function(a) { return a.id === teacher.id || a.login === teacher.login; });
+        if (acc) {
+          acc.name = newName;
+          if (newLogin) acc.login = newLogin;
+          if (newPassword) acc.password = newPassword;
+        }
+      }
+
+      if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
+        window.EthithEnterprise.saveStore();
+      } else if (window.EthithApp && window.EthithApp.saveState) {
+        window.EthithApp.saveState();
+      }
+
+      if (window.EthithSync && window.EthithSync.broadcastState) {
+        window.EthithSync.broadcastState('teacher_updated');
+      }
+
+      if (window.EthithApp && window.EthithApp.toast) {
+        window.EthithApp.toast(newName + " ma'lumotlari va " + newPct + "% oylik ulushi saqlandi!");
+      }
+
+      close();
+      var c = document.getElementById('apView');
+      if (c) EA.render(c);
+    };
   };
 
   // MODAL 1: ADD TEACHER
@@ -1694,6 +1933,9 @@ EA.render = function(container, preserveScrollLeft) {
       '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">';
 
     if (isTeacher) {
+      h += '<button type="button" id="eaAddStudentToJournalBtn" style="background:linear-gradient(135deg, #10b981, #059669);color:#ffffff;border:none;border-radius:12px;padding:9px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 24px -4px rgba(16,185,129,0.5);transition:all 0.2s;">' +
+        '<span>➕ O‘quvchi Qo‘shish / Qidirish</span>' +
+      '</button>';
       h += '<button type="button" id="eaScheduleBtn" style="background:linear-gradient(135deg, rgba(56,189,248,0.22), rgba(129,140,248,0.22));backdrop-filter:blur(14px);color:#ffffff;border:1px solid rgba(56,189,248,0.5);border-radius:12px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 22px -4px rgba(56,189,248,0.35);transition:all 0.2s;">' +
         '<span>✏️ Tahrirlash (' + (cls.schedule === 'juft' ? 'Juft kunlari' : (cls.schedule === 'toq' ? 'Toq kunlari' : 'Har kungi dars')) + ')</span>' +
       '</button>';
@@ -1930,9 +2172,14 @@ EA.render = function(container, preserveScrollLeft) {
                     : '<div style="font-size:10px;font-weight:600;color:#64748b;margin-top:1px;">📈 Statistika va tahlil &rarr;</div>') +
                 '</div>' +
                 (isTeacher ?
-                  '<button type="button" class="ea-edit-student-btn" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O\'quvchi ismini tahrirlash" style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#cbd5e1;cursor:pointer;padding:4px 6px;font-size:11px;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
-                    '✏️' +
-                  '</button>' : '') +
+                  '<div style="display:flex;align-items:center;gap:4px;">' +
+                    '<button type="button" class="ea-edit-student-btn" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O‘quvchi ma\'lumotlarini tahrirlash" style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#cbd5e1;cursor:pointer;padding:4px 6px;font-size:11px;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
+                      '✏️' +
+                    '</button>' +
+                    '<button type="button" class="ea-remove-student-btn" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O‘quvchini guruhdan chiqarish" style="border:1px solid rgba(239,68,68,0.3);background:rgba(239,68,68,0.12);color:#f87171;cursor:pointer;padding:4px 6px;font-size:11px;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
+                      '🗑' +
+                    '</button>' +
+                  '</div>' : '') +
               '</div>') +
         '</td>';
 
@@ -2289,6 +2536,16 @@ EA.render = function(container, preserveScrollLeft) {
       };
     });
 
+    // Add Student to Journal button
+    var addStJBtn = container.querySelector('#eaAddStudentToJournalBtn');
+    if (addStJBtn) {
+      addStJBtn.onclick = function() {
+        if (window.EthithEnterprise && window.EthithEnterprise.openTelegramSearchStudentModal) {
+          window.EthithEnterprise.openTelegramSearchStudentModal(cls.id);
+        }
+      };
+    }
+
     // Edit Student Name (Teacher only)
     if (isTeacher) {
       container.querySelectorAll('.ea-edit-student-btn').forEach(function(btn) {
@@ -2297,6 +2554,28 @@ EA.render = function(container, preserveScrollLeft) {
           var stId = btn.dataset.stid;
           var curName = btn.dataset.stname;
           EA.openEditStudentModal(container, cls, stId, curName);
+        };
+      });
+
+      // Quick Remove / Expel Student from Group
+      container.querySelectorAll('.ea-remove-student-btn').forEach(function(btn) {
+        btn.onclick = function(e) {
+          e.stopPropagation();
+          var stId = btn.dataset.stid;
+          var stName = btn.dataset.stname;
+          if (confirm("Haqiqatan ham " + stName + "ni ushbu guruhdan chiqarib yubormoqchimisiz?")) {
+            cls.students = (cls.students || []).filter(function(s) {
+              return (s.id || s.email) !== stId;
+            });
+            persistAttendance(cls);
+            if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
+              window.EthithEnterprise.saveStore();
+            }
+            if (window.EthithApp && window.EthithApp.toast) {
+              window.EthithApp.toast(stName + " guruhdan chiqarildi!");
+            }
+            EA.render(container);
+          }
         };
       });
     }
@@ -2621,9 +2900,12 @@ EA.render = function(container, preserveScrollLeft) {
           '<input type="tel" id="eaNewStParentPhone" placeholder="+998 90 123 45 67" value="' + esc(curPhone) + '" style="width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid rgba(56,189,248,0.5);background:rgba(8,13,26,0.85);font-weight:800;font-size:14px;box-sizing:border-box;color:#ffffff;outline:none;" />' +
           '<span style="display:block;font-size:11.5px;color:#64748b;margin-top:6px;font-weight:600;">O\'quvchi kelmaganida ota-onaga avtomatik SMS xabar yuborish uchun</span>' +
         '</div>' +
-        '<div style="display:flex;gap:10px;justify-content:flex-end;">' +
-          '<button type="button" id="eaCancelEditStBtn" style="background:rgba(255,255,255,0.07);color:#cbd5e1;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
-          '<button type="button" id="eaSaveStNameBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:9px 22px;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,0.4);">Saqlash</button>' +
+        '<div style="display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:10px;">' +
+          '<button type="button" id="eaExpelStudentFromModalBtn" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.4);border-radius:12px;padding:9px 16px;font-size:12.5px;font-weight:800;cursor:pointer;">🗑 Guruhdan chiqarish</button>' +
+          '<div style="display:flex;gap:8px;">' +
+            '<button type="button" id="eaCancelEditStBtn" style="background:rgba(255,255,255,0.07);color:#cbd5e1;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+            '<button type="button" id="eaSaveStNameBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:9px 22px;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,0.4);">Saqlash</button>' +
+          '</div>' +
         '</div>' +
       '</div></div>';
 
@@ -2659,6 +2941,26 @@ EA.render = function(container, preserveScrollLeft) {
     modalRoot.querySelector('#eaEditStOverlayBg').onclick = function(e) {
       if (e.target.id === 'eaEditStOverlayBg') closeGlobalModal();
     };
+
+    var expelBtn = modalRoot.querySelector('#eaExpelStudentFromModalBtn');
+    if (expelBtn) {
+      expelBtn.onclick = function() {
+        if (confirm("Haqiqatan ham " + curName + "ni ushbu guruhdan chiqarib yubormoqchimisiz?")) {
+          cls.students = (cls.students || []).filter(function(s) {
+            return (s.id || s.email) !== stId;
+          });
+          persistAttendance(cls);
+          if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
+            window.EthithEnterprise.saveStore();
+          }
+          closeGlobalModal();
+          if (window.EthithApp && window.EthithApp.toast) {
+            window.EthithApp.toast(curName + " guruhdan chiqarildi!");
+          }
+          EA.render(container);
+        }
+      };
+    }
 
     modalRoot.querySelector('#eaSaveStNameBtn').onclick = function() {
       var n = modalRoot.querySelector('#eaNewStName').value.trim();
