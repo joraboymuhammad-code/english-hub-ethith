@@ -1,1201 +1,11 @@
 {
   "classes": [
     {
-      "id": "cls_ethith_main",
-      "name": "IELTS & General English Intensive",
-      "code": "ETH-L6S8CM",
-      "teacherId": "joraboyevmuhammad85@gmail.com",
-      "teacherName": "Ustoz",
-      "teacherEmail": "joraboyevmuhammad85@gmail.com",
-      "created": 1792612514081,
-      "students": [
-        {
-          "id": "std_1",
-          "name": "Ashurov Dilyorbek Azizbek o'g'li",
-          "email": "ashurov@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_2",
-          "name": "Ergasheva Madina Asad qizi",
-          "email": "ergasheva@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_3",
-          "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
-          "email": "erkinov@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_4",
-          "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
-          "email": "joraboyev@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_5",
-          "name": "Jo'raboyev Javoxir Murod o'g'li",
-          "email": "javoxir@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_6",
-          "name": "Mavlonova Ruxshona Oybek qizi",
-          "email": "mavlonova@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_7",
-          "name": "Muxtaraliyeva Dilora Dilshod qizi",
-          "email": "muxtaraliyeva@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_8",
-          "name": "O'razboyev O'tkir Baxtiyor o'g'li",
-          "email": "orazboyev@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_9",
-          "name": "Saparova Aida Sarvar qizi",
-          "email": "saparova@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_10",
-          "name": "Umarov Nursulton Alisher o'g'li",
-          "email": "umarov@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_11",
-          "name": "Xolmurodova Muazzam G'ulom qizi",
-          "email": "xolmurodova@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_12",
-          "name": "Kaxarova Xumora Olimjon qizi",
-          "email": "kaxarova@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "sardorbek@ethith.uz",
-          "name": "Sardorbek Valiyev",
-          "email": "sardorbek@ethith.uz",
-          "joinedAt": "2026-10-22",
-          "dailyMinutes": 0,
-          "coins": 150,
-          "avatar": null,
-          "nameStyle": null,
-          "title": null
-        },
-        {
-          "id": "tg_6772427596",
-          "name": "Striker_uzb",
-          "email": "Mu_striker@telegram.org",
-          "joinedAt": "2026-10-26",
-          "dailyMinutes": 24
-        },
-        {
-          "id": "usmonqulovaetiborxon@gmail.com",
-          "name": "Etiborxon Usmonqulova",
-          "email": "usmonqulovaetiborxon@gmail.com",
-          "joinedAt": "2026-10-23",
-          "dailyMinutes": 28,
-          "coins": 4670,
-          "avatar": "girl_v7_valkyrie_samurai_1",
-          "nameStyle": "flame",
-          "title": "👑 IELTS Qiroli"
-        },
-        {
-          "id": "aleksandermike37@gmail.com",
-          "name": "jshdj",
-          "email": "aleksandermike37@gmail.com",
-          "joinedAt": "2026-10-26",
-          "dailyMinutes": 315
-        },
-        {
-          "id": "muhammedjoraboyev1@gmail.com",
-          "name": "sklajdkas",
-          "email": "muhammedjoraboyev1@gmail.com",
-          "joinedAt": "2026-10-26",
-          "dailyMinutes": 0
-        }
-      ],
-      "messages": [
-        {
-          "id": "msg_welcome",
-          "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Ustoz Muhammadyusuf",
-          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
-          "time": "12:00",
-          "reactions": {
-            "👍": [
-              "joraboyevmuhammad85@gmail.com"
-            ]
-          }
-        },
-        {
-          "id": "msg_welcome_1",
-          "senderId": "joraboyevmuhammad85@gmail.com",
-          "senderName": "Instructor Muhammadyusuf",
-          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
-          "time": "12:00",
-          "reactions": {
-            "👍": [
-              "joraboyevmuhammad85@gmail.com"
-            ]
-          }
-        }
-      ],
-      "pinnedId": null,
-      "deletedMsgIds": [],
-      "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792607960771
-      },
-      "schedule": "har_kuni",
-      "customStudentNames": {},
-      "attendance": {
-        "records": {
-          "2026-10-28": {
-            "u1": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 100,
-              "hwLesson": "10.4",
-              "hwCorrect": 38,
-              "hwTotal": 38,
-              "hwCompletedAt": 1793129842099
-            }
-          },
-          "2026-10-09": {
-            "std_1": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.1"
-            },
-            "std_2": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            },
-            "std_3": {
-              "status": "S",
-              "score": "",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "1.1"
-            },
-            "std_4": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            },
-            "std_5": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            },
-            "std_6": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.1"
-            },
-            "std_7": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            },
-            "std_8": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            },
-            "std_9": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "1.1"
-            },
-            "std_10": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "1.1"
-            },
-            "std_11": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.1"
-            },
-            "std_12": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            }
-          },
-          "2026-10-10": {
-            "std_1": {
-              "status": "S",
-              "score": "",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "1.2"
-            },
-            "std_2": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.2"
-            },
-            "std_3": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.2"
-            },
-            "std_4": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.2"
-            },
-            "std_5": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.2"
-            },
-            "std_6": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.2"
-            },
-            "std_7": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "1.2"
-            },
-            "std_8": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "1.2"
-            },
-            "std_9": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.2"
-            },
-            "std_10": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.2"
-            },
-            "std_11": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.2"
-            },
-            "std_12": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.2"
-            }
-          },
-          "2026-10-12": {
-            "std_1": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.4"
-            },
-            "std_2": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.4"
-            },
-            "std_3": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "1.4"
-            },
-            "std_4": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "1.4"
-            },
-            "std_5": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.4"
-            },
-            "std_6": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.4"
-            },
-            "std_7": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.4"
-            },
-            "std_8": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.4"
-            },
-            "std_9": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "1.4"
-            },
-            "std_10": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.4"
-            },
-            "std_11": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "1.4"
-            },
-            "std_12": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.4"
-            }
-          },
-          "2026-10-13": {
-            "std_1": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "2.1"
-            },
-            "std_2": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "2.1"
-            },
-            "std_3": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.1"
-            },
-            "std_4": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.1"
-            },
-            "std_5": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.1"
-            },
-            "std_6": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.1"
-            },
-            "std_7": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "2.1"
-            },
-            "std_8": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.1"
-            },
-            "std_9": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "2.1"
-            },
-            "std_10": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.1"
-            },
-            "std_11": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.1"
-            },
-            "std_12": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.1"
-            }
-          },
-          "2026-10-14": {
-            "std_1": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.2"
-            },
-            "std_2": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.2"
-            },
-            "std_3": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.2"
-            },
-            "std_4": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.2"
-            },
-            "std_5": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "2.2"
-            },
-            "std_6": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.2"
-            },
-            "std_7": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "2.2"
-            },
-            "std_8": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.2"
-            },
-            "std_9": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.2"
-            },
-            "std_10": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.2"
-            },
-            "std_11": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.2"
-            },
-            "std_12": {
-              "status": "S",
-              "score": "",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "2.2"
-            }
-          },
-          "2026-10-15": {
-            "std_1": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.3"
-            },
-            "std_2": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.3"
-            },
-            "std_3": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "2.3"
-            },
-            "std_4": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.3"
-            },
-            "std_5": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "2.3"
-            },
-            "std_6": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.3"
-            },
-            "std_7": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.3"
-            },
-            "std_8": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.3"
-            },
-            "std_9": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.3"
-            },
-            "std_10": {
-              "status": "S",
-              "score": "",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "2.3"
-            },
-            "std_11": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.3"
-            },
-            "std_12": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.3"
-            }
-          },
-          "2026-10-16": {
-            "std_1": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "2.4"
-            },
-            "std_2": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.4"
-            },
-            "std_3": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "2.4"
-            },
-            "std_4": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.4"
-            },
-            "std_5": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.4"
-            },
-            "std_6": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.4"
-            },
-            "std_7": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.4"
-            },
-            "std_8": {
-              "status": "S",
-              "score": "",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "2.4"
-            },
-            "std_9": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.4"
-            },
-            "std_10": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.4"
-            },
-            "std_11": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "2.4"
-            },
-            "std_12": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "2.4"
-            }
-          },
-          "2026-10-17": {
-            "std_1": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "3.1"
-            },
-            "std_2": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "3.1"
-            },
-            "std_3": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.1"
-            },
-            "std_4": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "3.1"
-            },
-            "std_5": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.1"
-            },
-            "std_6": {
-              "status": "S",
-              "score": "",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "3.1"
-            },
-            "std_7": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.1"
-            },
-            "std_8": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.1"
-            },
-            "std_9": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "3.1"
-            },
-            "std_10": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.1"
-            },
-            "std_11": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.1"
-            },
-            "std_12": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "3.1"
-            }
-          },
-          "2026-10-19": {
-            "std_1": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.3"
-            },
-            "std_2": {
-              "status": "S",
-              "score": "",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "3.3"
-            },
-            "std_3": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.3"
-            },
-            "std_4": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.3"
-            },
-            "std_5": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "3.3"
-            },
-            "std_6": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.3"
-            },
-            "std_7": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.3"
-            },
-            "std_8": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "3.3"
-            },
-            "std_9": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "3.3"
-            },
-            "std_10": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "3.3"
-            },
-            "std_11": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "3.3"
-            },
-            "std_12": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "3.3"
-            }
-          },
-          "2026-10-20": {
-            "std_1": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            },
-            "std_2": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            },
-            "std_3": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.1"
-            },
-            "std_4": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            },
-            "std_5": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            },
-            "std_6": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "1.1"
-            },
-            "std_7": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "1.1"
-            },
-            "std_8": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.1"
-            },
-            "std_9": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            },
-            "std_10": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.1"
-            },
-            "std_11": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.1"
-            },
-            "std_12": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "1.1"
-            }
-          },
-          "2026-10-21": {
-            "std_1": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.2"
-            },
-            "std_2": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.2"
-            },
-            "std_3": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.2"
-            },
-            "std_4": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "1.2"
-            },
-            "std_5": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "1.2"
-            },
-            "std_6": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.2"
-            },
-            "std_7": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.2"
-            },
-            "std_8": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.2"
-            },
-            "std_9": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.2"
-            },
-            "std_10": {
-              "status": "Q",
-              "score": "2",
-              "hwDone": false,
-              "hwPct": 0,
-              "hwLesson": "1.2"
-            },
-            "std_11": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 94,
-              "hwLesson": "1.2"
-            },
-            "std_12": {
-              "status": "K",
-              "score": "3",
-              "hwDone": true,
-              "hwPct": 66,
-              "hwLesson": "1.2"
-            }
-          },
-          "2026-10-22": {
-            "std_5": {
-              "status": ""
-            },
-            "std_1": {
-              "status": "",
-              "score": ""
-            },
-            "std_2": {
-              "status": "",
-              "score": ""
-            }
-          }
-        },
-        "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1",
-          "2026-10-19": "Vazifa: 3.3",
-          "2026-10-21": "Vazifa: 1.1",
-          "2026-10-10": "Vazifa: 1.2",
-          "2026-10-09": "Vazifa: 1.1",
-          "2026-10-12": "Vazifa: 1.4",
-          "2026-10-13": "Vazifa: 2.1",
-          "2026-10-14": "Vazifa: 2.2",
-          "2026-10-15": "Vazifa: 2.3",
-          "2026-10-16": "Vazifa: 2.4",
-          "2026-10-17": "Vazifa: 3.1",
-          "2026-10-20": "Vazifa: 1.1",
-          "2026-10-22": "Oddiy",
-          "2026-10-23": "Oddiy"
-        },
-        "holidays": {},
-        "homeworks": {
-          "2026-10-28": {
-            "dateKey": "2026-10-28",
-            "dateDisp": "28.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
-          },
-          "2026-10-21": {
-            "dateKey": "2026-10-21",
-            "dateDisp": "21.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 1792607960771
-          }
-        },
-        "updatedAt": 1793129842099
-      }
-    },
-    {
       "id": "cls_1792041880052",
       "name": "Bizani gurux",
       "code": "ETH-QOY2Z8",
       "teacherId": "tc_oprlehyw5",
-      "teacherName": "Zizi Ustoz",
+      "teacherName": "Name",
       "teacherEmail": "strikeruzb52@gmail.com",
       "students": [
         {
@@ -1245,37 +55,6 @@
           "name": "O'razboyev O'tkir Baxtiyor o'g'li",
           "email": "orazboyev@ethith.uz",
           "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "tg_6772427596",
-          "name": "Striker_uzb",
-          "email": "Mu_striker@telegram.org",
-          "joinedAt": "2026-10-26",
-          "dailyMinutes": 24
-        },
-        {
-          "id": "std_9",
-          "name": "Saparova Aida",
-          "email": "saparova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_10",
-          "name": "Umarov Nursulton",
-          "email": "umarov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_11",
-          "name": "Xolmurodova Muazzam",
-          "email": "xolmurodova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_12",
-          "name": "Kaxarova Xumora",
-          "email": "kaxarova@ethith.uz",
-          "joinedAt": "2026-10-20"
         }
       ],
       "messages": [],
@@ -1302,23 +81,41 @@
               "status": "K"
             }
           },
-          "2026-10-28": {
-            "u1": {
+          "2026-10-22": {
+            "std_1": {
               "status": "K",
-              "score": "5",
+              "score": "2",
               "hwDone": true,
-              "hwPct": 100,
-              "hwLesson": "10.4",
-              "hwCorrect": 38,
-              "hwTotal": 38,
-              "hwCompletedAt": 1793129842154
+              "hwPct": 8,
+              "hwLesson": "1.3",
+              "hwCorrect": 3,
+              "hwTotal": 37,
+              "hwCompletedAt": 1792689503211
+            }
+          },
+          "2026-10-23": {
+            "std_1": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "2.2",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792778622895
+            }
+          },
+          "2026-10-12": {
+            "std_1": {
+              "status": "K"
             }
           }
         },
         "lessonTypes": {
           "2026-10-21": "Vazifa: 1.1",
           "2026-10-19": "Oddiy",
-          "2026-10-28": "Vazifa: 2.1"
+          "2026-10-22": "Vazifa: 1.3",
+          "2026-10-23": "Vazifa: 1.2"
         },
         "holidays": {},
         "homeworks": {
@@ -1336,7 +133,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1793129842154
+        "updatedAt": 1792778622895
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -1354,201 +151,6 @@
       }
     },
     {
-      "id": "cls_1792999428651",
-      "name": "Upper Intermediate",
-      "code": "ETH-IP91XZ",
-      "teacherId": "admin_official_teacher",
-      "teacherName": "Ustoz",
-      "teacherEmail": "ADMIN_12038F1aq8syash@ethith.uz",
-      "created": 1792999428651,
-      "schedule": "har_kuni",
-      "attendance": {
-        "records": {
-          "2026-10-26": {
-            "tg_6772427596": {
-              "status": "K",
-              "score": "2",
-              "hwDone": true,
-              "hwPct": 0,
-              "hwLesson": "1.1",
-              "hwCorrect": 0,
-              "hwTotal": 36,
-              "hwCompletedAt": 1792999901135
-            },
-            "test_u": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 81,
-              "hwLesson": "1.1",
-              "hwCorrect": 34,
-              "hwTotal": 42,
-              "hwCompletedAt": 1793129255401
-            }
-          },
-          "2026-10-27": {
-            "tg_6772427596": {
-              "status": "K",
-              "score": "2",
-              "hwDone": true,
-              "hwPct": 0,
-              "hwLesson": "10.1",
-              "hwCorrect": 0,
-              "hwTotal": 30,
-              "hwCompletedAt": 1793122548247
-            }
-          },
-          "2026-10-28": {
-            "test_u": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 100,
-              "hwLesson": "10.1",
-              "hwCorrect": 30,
-              "hwTotal": 30,
-              "hwCompletedAt": 1793129262441
-            }
-          }
-        },
-        "lessonTypes": {
-          "2026-10-26": "Vazifa: 1.1",
-          "2026-10-27": "Vazifa: 8.1",
-          "2026-10-28": "Vazifa: 9.1"
-        },
-        "holidays": {},
-        "updatedAt": 1793129262441,
-        "homeworks": {
-          "2026-10-26": {
-            "dateKey": "2026-10-26",
-            "dateDisp": "26.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
-          }
-        }
-      },
-      "customStudentNames": {},
-      "students": [
-        {
-          "id": "tg_6772427596",
-          "name": "Striker_uzb",
-          "email": "Mu_striker@telegram.org",
-          "joinedAt": "2026-10-26",
-          "dailyMinutes": 24
-        }
-      ],
-      "messages": [
-        {
-          "id": "msg_init",
-          "senderId": "admin_official_teacher",
-          "senderName": "Ustoz",
-          "text": "Welcome to our class! Here we can discuss grammar topics, collaborate on quizzes, and share answers in real-time.",
-          "time": "12:23 PM",
-          "reactions": {}
-        }
-      ],
-      "pinnedId": null,
-      "customStudentPhones": {},
-      "activeHomework": {
-        "dateKey": "2026-10-26",
-        "dateDisp": "26.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      },
-      "deletedMsgIds": []
-    },
-    {
-      "id": "cls_1793047882549",
-      "code": "ETH-SADKI5",
-      "name": "IELTS !",
-      "teacher": "Zizi Ustoz",
-      "teacherId": "t_zizi",
-      "teacherName": "Zizi Ustoz",
-      "room": "302-xona",
-      "schedule": "har_kuni",
-      "maxCapacity": 16,
-      "students": [],
-      "customStudentNames": {},
-      "attendance": {
-        "records": {
-          "2026-10-27": {
-            "test_u": {
-              "status": "K",
-              "score": "4",
-              "hwDone": true,
-              "hwPct": 81,
-              "hwLesson": "1.1",
-              "hwCorrect": 34,
-              "hwTotal": 42,
-              "hwCompletedAt": 1793129255420
-            }
-          },
-          "2026-10-28": {
-            "test_u": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 100,
-              "hwLesson": "10.1",
-              "hwCorrect": 30,
-              "hwTotal": 30,
-              "hwCompletedAt": 1793129262460
-            }
-          }
-        },
-        "lessonTypes": {
-          "2026-10-27": "Vazifa: 1.1",
-          "2026-10-28": "Vazifa: 9.1"
-        },
-        "holidays": {},
-        "homeworks": {
-          "2026-10-27": {
-            "dateKey": "2026-10-27",
-            "dateDisp": "27.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
-          }
-        },
-        "updatedAt": 1793129262460
-      },
-      "deletedMsgIds": [],
-      "messages": [],
-      "activeHomework": {
-        "dateKey": "2026-10-27",
-        "dateDisp": "27.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      }
-    },
-    {
       "id": "cls_upper_intermediate",
       "name": "Upper Intermediate",
       "code": "ETH-UPP882",
@@ -1559,242 +161,16 @@
       "created": 1793113876019,
       "room": "302-xona",
       "schedule": "har_kuni",
-      "maxCapacity": 16,
-      "students": [
-        {
-          "id": "std_13",
-          "name": "Anvarova Nilufar",
-          "email": "anvarova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_14",
-          "name": "Boboyev Jamshid",
-          "email": "boboyev@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_15",
-          "name": "Rustamov Shaxzod",
-          "email": "rustamov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_16",
-          "name": "Karimova Rayhona",
-          "email": "karimova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_17",
-          "name": "Toxirov Sardor",
-          "email": "toxirov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_18",
-          "name": "Ismoilova Zarina",
-          "email": "ismoilova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_19",
-          "name": "Abdullayev Bekzod",
-          "email": "abdullayev@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_20",
-          "name": "Qodirova Sevinch",
-          "email": "qodirova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_21",
-          "name": "Yoqubov Doniyor",
-          "email": "yoqubov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_22",
-          "name": "Nurmatova Diyora",
-          "email": "nurmatova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_23",
-          "name": "Mirzayev Otabek",
-          "email": "mirzayev@ethith.uz",
-          "joinedAt": "2026-10-20"
-        }
-      ],
+      "maxCapacity": 18,
+      "students": [],
       "messages": [],
       "attendance": {
-        "records": {
-          "2026-10-28": {
-            "u1": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 100,
-              "hwLesson": "10.4",
-              "hwCorrect": 38,
-              "hwTotal": 38,
-              "hwCompletedAt": 1793129842125
-            }
-          }
-        },
-        "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1"
-        },
+        "records": {},
+        "lessonTypes": {},
         "holidays": {},
-        "homeworks": {
-          "2026-10-28": {
-            "dateKey": "2026-10-28",
-            "dateDisp": "28.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
-          }
-        },
-        "updatedAt": 1793129842125
+        "homeworks": {}
       },
-      "deletedMsgIds": [],
-      "customStudentNames": {},
-      "activeHomework": {
-        "dateKey": "2026-10-28",
-        "dateDisp": "28.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      }
-    },
-    {
-      "id": "cls_ielts_ex",
-      "name": "IELTS !",
-      "code": "ETH-IEL991",
-      "teacherId": "t_zizi",
-      "teacherName": "Zizi Ustoz",
-      "teacher": "Zizi Ustoz",
-      "teacherEmail": "zizi@ethith.uz",
-      "created": 1793113876020,
-      "room": "204-xona",
-      "schedule": "toq",
-      "maxCapacity": 16,
-      "students": [
-        {
-          "id": "std_24",
-          "name": "Tursunov Jasur",
-          "email": "tursunov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_25",
-          "name": "Mahmudova Shahlo",
-          "email": "mahmudova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_26",
-          "name": "Sobirov Elyor",
-          "email": "sobirov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_27",
-          "name": "Aliyeva Gulnoza",
-          "email": "aliyeva@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_28",
-          "name": "Rahmatov Ilhom",
-          "email": "rahmatov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_29",
-          "name": "Sayfullayeva Mohira",
-          "email": "sayfullayeva@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_30",
-          "name": "G'aniyev Sherzod",
-          "email": "ganiyev@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_31",
-          "name": "Vohidova Kamola",
-          "email": "vohidova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        }
-      ],
-      "messages": [],
-      "attendance": {
-        "records": {
-          "2026-10-28": {
-            "u1": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 100,
-              "hwLesson": "10.1",
-              "hwCorrect": 30,
-              "hwTotal": 30,
-              "hwCompletedAt": 1793129840949
-            }
-          }
-        },
-        "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1"
-        },
-        "holidays": {},
-        "homeworks": {
-          "2026-10-28": {
-            "dateKey": "2026-10-28",
-            "dateDisp": "28.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
-          }
-        },
-        "updatedAt": 1793129840949
-      },
-      "deletedMsgIds": [],
-      "customStudentNames": {},
-      "activeHomework": {
-        "dateKey": "2026-10-28",
-        "dateDisp": "28.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      }
+      "deletedMsgIds": []
     },
     {
       "id": "cls_urolov_azizbek_intermediate_practice",
@@ -3755,6 +2131,1063 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": []
+    },
+    {
+      "id": "cls_ethith_main",
+      "name": "IELTS & General English Intensive",
+      "code": "ETH-L6S8CM",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "teacherEmail": "teacher@ethith.uz",
+      "created": 1792429062767,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Ustoz Muhammadyusuf",
+          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_welcome_1",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Instructor Muhammadyusuf",
+          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "har_kuni",
+      "attendance": {
+        "records": {
+          "2026-10-09": {
+            "std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_3": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.1"
+            },
+            "std_10": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            }
+          },
+          "2026-10-10": {
+            "std_1": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.2"
+            },
+            "std_8": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            }
+          },
+          "2026-10-12": {
+            "std_1": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.4"
+            },
+            "std_4": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.4"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.4"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.4"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
+            },
+            "std_9": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.4"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.4"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.4"
+            }
+          },
+          "2026-10-13": {
+            "std_1": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.1"
+            },
+            "std_2": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.1"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
+            },
+            "std_7": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.1"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.1"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
+            }
+          },
+          "2026-10-14": {
+            "std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
+            },
+            "std_5": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.2"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.2"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
+            },
+            "std_12": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.2"
+            }
+          },
+          "2026-10-15": {
+            "std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.3"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            },
+            "std_3": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.3"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.3"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.3"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.3"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            },
+            "std_10": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.3"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            }
+          },
+          "2026-10-16": {
+            "std_1": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.4"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.4"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.4"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.4"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            },
+            "std_8": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.4"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.4"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            }
+          },
+          "2026-10-17": {
+            "std_1": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "3.1"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.1"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.1"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_6": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "3.1"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.1"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "3.1"
+            }
+          },
+          "2026-10-19": {
+            "std_1": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_2": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "3.3"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.3"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "3.3"
+            },
+            "std_9": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "3.3"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.3"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.3"
+            }
+          },
+          "2026-10-20": {
+            "std_1": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.1"
+            },
+            "std_7": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_12": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
+            }
+          },
+          "2026-10-21": {
+            "std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.2"
+            },
+            "std_5": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_10": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.2"
+            }
+          },
+          "2026-10-22": {
+            "std_5": {
+              "status": ""
+            },
+            "std_1": {
+              "status": "",
+              "score": ""
+            },
+            "std_2": {
+              "status": "",
+              "score": ""
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-19": "Vazifa: 3.3",
+          "2026-10-21": "Vazifa: 1.1",
+          "2026-10-10": "Vazifa: 1.2",
+          "2026-10-09": "Vazifa: 1.1",
+          "2026-10-12": "Vazifa: 1.4",
+          "2026-10-13": "Vazifa: 2.1",
+          "2026-10-14": "Vazifa: 2.2",
+          "2026-10-15": "Vazifa: 2.3",
+          "2026-10-16": "Vazifa: 2.4",
+          "2026-10-17": "Vazifa: 3.1",
+          "2026-10-20": "Vazifa: 1.1",
+          "2026-10-22": "Oddiy",
+          "2026-10-23": "Oddiy"
+        },
+        "holidays": {},
+        "seededWindowV2": true,
+        "updatedAt": 1792608025450,
+        "homeworks": {
+          "2026-10-21": {
+            "dateKey": "2026-10-21",
+            "dateDisp": "21.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 1792607960771
+          }
+        },
+        "seededWindowV3": true
+      },
+      "customStudentNames": {},
+      "activeHomework": {
+        "dateKey": "2026-10-21",
+        "dateDisp": "21.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792607960771
+      },
+      "customStudentPhones": {},
+      "maxCapacity": 18,
+      "startDate": "2026-08-01",
+      "level": "B1+",
+      "extraHomework": [],
+      "teacher": "Ustoz",
+      "room": "301-xona"
     }
   ],
   "exams": [
@@ -4274,26 +3707,29 @@
   ],
   "accounts": [
     {
-      "id": "tg_98124765",
+      "id": "usmonqulovaetiborxon@gmail.com",
       "role": "student",
-      "name": "Muhammad Jo'raboyev",
-      "email": "mu_striker@telegram.org",
-      "coins": 101100,
+      "name": "Etiborxon Usmonqulova",
+      "email": "usmonqulovaetiborxon@gmail.com",
       "level": "A1",
+      "unlocked": {
+        "A1": 1,
+        "A2": 1,
+        "B1": 1,
+        "B2": 1,
+        "C1": 1,
+        "C2": 1
+      },
+      "quizScores": {},
+      "mistakes": [],
       "dailyMinutes": 0,
-      "updatedAt": 1792997212404
-    },
-    {
-      "id": "admin_official_root",
-      "role": "admin",
-      "name": "Bosh Admin",
-      "email": "ADMIN_12038F1aq8syash@ethith.uz",
-      "coins": 5000,
-      "createdAt": 1792612524777,
-      "level": "C2",
-      "dailyMinutes": 0,
-      "updatedAt": 1792612388994,
-      "gifts": []
+      "coins": 5150,
+      "avatar": "girl_v7_valkyrie_samurai_1",
+      "title": "👑 IELTS Qiroli",
+      "nameStyle": "flame",
+      "gifts": [],
+      "createdAt": 1792778756475,
+      "updatedAt": 1792780081815
     },
     {
       "id": "admin_official_teacher",
@@ -4302,13 +3738,41 @@
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
       "coins": 5000,
+      "gifts": [],
       "level": "C2",
       "dailyMinutes": 0,
-      "updatedAt": 1792612388994,
+      "updatedAt": 1792612121485,
       "avatar": null,
       "nameStyle": null,
       "title": null,
       "victorySound": null
+    },
+    {
+      "id": "admin_official_root",
+      "role": "admin",
+      "name": "Bosh Admin",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 5000,
+      "gifts": [],
+      "nameStyle": null,
+      "createdAt": 1792502058827,
+      "level": "C2",
+      "dailyMinutes": 0,
+      "updatedAt": 1792612121485
+    },
+    {
+      "id": "tg_98124765",
+      "role": "student",
+      "name": "Striker_uzb",
+      "email": "mu_striker@telegram.org",
+      "coins": 1100,
+      "avatar": null,
+      "level": "A1",
+      "dailyMinutes": 0,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null,
+      "updatedAt": 1792673956873
     },
     {
       "id": "admin_official_teacher",
@@ -4341,7 +3805,7 @@
     {
       "id": "std_1",
       "role": "student",
-      "name": "Ashurov Dilyorbek",
+      "name": "Ashurov Dilyorbek Azizbek o'g'li",
       "email": "ashurov@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -4351,7 +3815,7 @@
     {
       "id": "std_2",
       "role": "student",
-      "name": "Ergasheva Madina",
+      "name": "Ergasheva Madina Asad qizi",
       "email": "ergasheva@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -4361,7 +3825,7 @@
     {
       "id": "std_3",
       "role": "student",
-      "name": "Erkinov Aslbekjon",
+      "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
       "email": "erkinov@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -4371,7 +3835,7 @@
     {
       "id": "std_4",
       "role": "student",
-      "name": "JO‘RABOYEV MUXAMMADYUSUF",
+      "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
       "email": "joraboyev@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -4381,7 +3845,7 @@
     {
       "id": "std_5",
       "role": "student",
-      "name": "Jo'raboyev Javoxir",
+      "name": "Jo'raboyev Javoxir Murod o'g'li",
       "email": "javoxir@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -4391,7 +3855,7 @@
     {
       "id": "std_6",
       "role": "student",
-      "name": "Mavlonova Ruxshona",
+      "name": "Mavlonova Ruxshona Oybek qizi",
       "email": "mavlonova@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -4401,7 +3865,7 @@
     {
       "id": "std_7",
       "role": "student",
-      "name": "Muxtaraliyeva Dilora",
+      "name": "Muxtaraliyeva Dilora Dilshod qizi",
       "email": "muxtaraliyeva@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -4411,7 +3875,7 @@
     {
       "id": "std_8",
       "role": "student",
-      "name": "O'razboyev O'tkir",
+      "name": "O'razboyev O'tkir Baxtiyor o'g'li",
       "email": "orazboyev@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -4421,7 +3885,7 @@
     {
       "id": "std_9",
       "role": "student",
-      "name": "Saparova Aida",
+      "name": "Saparova Aida Sarvar qizi",
       "email": "saparova@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -4431,7 +3895,7 @@
     {
       "id": "std_10",
       "role": "student",
-      "name": "Umarov Nursulton",
+      "name": "Umarov Nursulton Alisher o'g'li",
       "email": "umarov@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -4441,7 +3905,7 @@
     {
       "id": "std_11",
       "role": "student",
-      "name": "Xolmurodova Muazzam",
+      "name": "Xolmurodova Muazzam G'ulom qizi",
       "email": "xolmurodova@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -4451,168 +3915,12 @@
     {
       "id": "std_12",
       "role": "student",
-      "name": "Kaxarova Xumora",
+      "name": "Kaxarova Xumora Olimjon qizi",
       "email": "kaxarova@ethith.uz",
       "coins": 150,
       "level": "B1+",
       "dailyMinutes": 0,
       "updatedAt": 1792673953881
-    },
-    {
-      "id": "usmonqulovaetiborxon@gmail.com",
-      "name": "Etiborxon Usmonqulova",
-      "email": "usmonqulovaetiborxon@gmail.com",
-      "role": "student",
-      "coins": 5150,
-      "avatar": "girl_v7_valkyrie_samurai_1",
-      "level": "A1",
-      "joinedAt": 1792778756475,
-      "nameStyle": "flame",
-      "title": "👑 IELTS Qiroli",
-      "dailyMinutes": 0,
-      "updatedAt": 1792780081815
-    },
-    {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
-      "email": "muhammedjoraboyev1@gmail.com",
-      "coins": 500,
-      "createdAt": 1793103428758,
-      "level": "B1+"
-    },
-    {
-      "id": "std_13",
-      "name": "Anvarova Nilufar",
-      "email": "anvarova@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_14",
-      "name": "Boboyev Jamshid",
-      "email": "boboyev@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_15",
-      "name": "Rustamov Shaxzod",
-      "email": "rustamov@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_16",
-      "name": "Karimova Rayhona",
-      "email": "karimova@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_17",
-      "name": "Toxirov Sardor",
-      "email": "toxirov@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_18",
-      "name": "Ismoilova Zarina",
-      "email": "ismoilova@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_19",
-      "name": "Abdullayev Bekzod",
-      "email": "abdullayev@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_20",
-      "name": "Qodirova Sevinch",
-      "email": "qodirova@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_21",
-      "name": "Yoqubov Doniyor",
-      "email": "yoqubov@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_22",
-      "name": "Nurmatova Diyora",
-      "email": "nurmatova@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_23",
-      "name": "Mirzayev Otabek",
-      "email": "mirzayev@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_24",
-      "name": "Tursunov Jasur",
-      "email": "tursunov@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_25",
-      "name": "Mahmudova Shahlo",
-      "email": "mahmudova@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_26",
-      "name": "Sobirov Elyor",
-      "email": "sobirov@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_27",
-      "name": "Aliyeva Gulnoza",
-      "email": "aliyeva@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_28",
-      "name": "Rahmatov Ilhom",
-      "email": "rahmatov@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_29",
-      "name": "Sayfullayeva Mohira",
-      "email": "sayfullayeva@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_30",
-      "name": "G'aniyev Sherzod",
-      "email": "ganiyev@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
-    },
-    {
-      "id": "std_31",
-      "name": "Vohidova Kamola",
-      "email": "vohidova@ethith.uz",
-      "role": "student",
-      "updatedAt": 1793114404453
     },
     {
       "id": "admin_official_teacher",
@@ -4629,7 +3937,7 @@
         "cls_urolov_azizbek_intermediate_practice",
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "createdAt": 1793208669771
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -5841,382 +5149,6 @@
         "width": 10,
         "height": 1.8,
         "correct": "concerned or CONCERNED"
-      }
-    ],
-    "10": [
-      {
-        "id": "p10_ex1a_1_a",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_1",
-        "text": "recognize",
-        "top": 73.5,
-        "left": 24.5,
-        "width": 7.5,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p10_ex1a_1_b",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_1",
-        "text": "remind",
-        "top": 73.5,
-        "left": 32.5,
-        "width": 6,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p10_ex1a_2_a",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_2",
-        "text": "wonder",
-        "top": 75.3,
-        "left": 18.5,
-        "width": 6.5,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p10_ex1a_2_b",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_2",
-        "text": "believe",
-        "top": 75.3,
-        "left": 26,
-        "width": 6.5,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p10_ex1a_3_a",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_3",
-        "text": "recognized",
-        "top": 78.5,
-        "left": 20.5,
-        "width": 9,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p10_ex1a_3_b",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_3",
-        "text": "realized",
-        "top": 78.5,
-        "left": 30,
-        "width": 7,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p10_ex1a_4_a",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_4",
-        "text": "expect",
-        "top": 81.8,
-        "left": 22,
-        "width": 5.5,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p10_ex1a_4_b",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_4",
-        "text": "realize",
-        "top": 81.8,
-        "left": 28.5,
-        "width": 6,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p10_ex1a_5_a",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_5",
-        "text": "wonder",
-        "top": 85,
-        "left": 18.5,
-        "width": 6.5,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p10_ex1a_5_b",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_5",
-        "text": "remember",
-        "top": 85,
-        "left": 26,
-        "width": 8,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p10_ex1a_6_a",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_6",
-        "text": "remember",
-        "top": 88.3,
-        "left": 26,
-        "width": 8,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p10_ex1a_6_b",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_6",
-        "text": "remind",
-        "top": 88.3,
-        "left": 34.5,
-        "width": 6,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p10_ex1a_7_a",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_7",
-        "text": "wonder",
-        "top": 91.5,
-        "left": 21,
-        "width": 6.5,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p10_ex1a_7_b",
-        "type": "choose",
-        "page": 10,
-        "exercise": "1a",
-        "group": "p10_1a_7",
-        "text": "expect",
-        "top": 91.5,
-        "left": 28.5,
-        "width": 5.5,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p10_ex1b_a",
-        "type": "fill",
-        "page": 10,
-        "exercise": "1b",
-        "label": "a",
-        "top": 33.2,
-        "left": 68,
-        "width": 14,
-        "height": 1.8,
-        "correct": "1, 4, 7 or 1, 7, 4 or 4, 1, 7"
-      },
-      {
-        "id": "p10_ex1b_b",
-        "type": "fill",
-        "page": 10,
-        "exercise": "1b",
-        "label": "b",
-        "top": 35,
-        "left": 68,
-        "width": 10,
-        "height": 1.8,
-        "correct": "3, 5 or 5, 3"
-      },
-      {
-        "id": "p10_ex1b_c",
-        "type": "fill",
-        "page": 10,
-        "exercise": "1b",
-        "label": "c",
-        "top": 36.9,
-        "left": 68.5,
-        "width": 10,
-        "height": 1.8,
-        "correct": "2, 6 or 6, 2"
-      },
-      {
-        "id": "p10_ex2a_b",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2a",
-        "label": "b",
-        "top": 53.9,
-        "left": 59,
-        "width": 9,
-        "height": 1.8,
-        "correct": "remember"
-      },
-      {
-        "id": "p10_ex2a_c",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2a",
-        "label": "c",
-        "top": 58.6,
-        "left": 85,
-        "width": 9,
-        "height": 1.8,
-        "correct": "expecting"
-      },
-      {
-        "id": "p10_ex2a_d",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2a",
-        "label": "d",
-        "top": 63.5,
-        "left": 57,
-        "width": 9,
-        "height": 1.8,
-        "correct": "reminded"
-      },
-      {
-        "id": "p10_ex2a_e",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2a",
-        "label": "e",
-        "top": 66.7,
-        "left": 72,
-        "width": 8,
-        "height": 1.8,
-        "correct": "believe"
-      },
-      {
-        "id": "p10_ex2a_f",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2a",
-        "label": "f",
-        "top": 70,
-        "left": 81,
-        "width": 8,
-        "height": 1.8,
-        "correct": "realize"
-      },
-      {
-        "id": "p10_ex2a_g",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2a",
-        "label": "g",
-        "top": 74.8,
-        "left": 61,
-        "width": 8,
-        "height": 1.8,
-        "correct": "wonder"
-      },
-      {
-        "id": "p10_ex2b_1",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2b",
-        "label": "1",
-        "top": 84.2,
-        "left": 58,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": "e or E"
-      },
-      {
-        "id": "p10_ex2b_2",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2b",
-        "label": "2",
-        "top": 85.9,
-        "left": 58,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": "g or G"
-      },
-      {
-        "id": "p10_ex2b_3",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2b",
-        "label": "3",
-        "top": 87.6,
-        "left": 58,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": "d or D"
-      },
-      {
-        "id": "p10_ex2b_4",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2b",
-        "label": "4",
-        "top": 84.2,
-        "left": 72,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": "a or A"
-      },
-      {
-        "id": "p10_ex2b_5",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2b",
-        "label": "5",
-        "top": 85.9,
-        "left": 72,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": "c or C"
-      },
-      {
-        "id": "p10_ex2b_6",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2b",
-        "label": "6",
-        "top": 84.1,
-        "left": 86,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": "b or B"
-      },
-      {
-        "id": "p10_ex2b_7",
-        "type": "fill",
-        "page": 10,
-        "exercise": "2b",
-        "label": "7",
-        "top": 85.9,
-        "left": 86,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": "f or F"
       }
     ],
     "12": [
@@ -25209,1616 +24141,6 @@
         "label": "New",
         "id": "p87_custom_96352",
         "group": ""
-      }
-    ],
-    "1024": [
-      {
-        "id": "p1024_ex1a_2a",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "1a",
-        "label": "2a",
-        "top": 48.5,
-        "left": 11,
-        "width": 10,
-        "height": 2,
-        "correct": "brother"
-      },
-      {
-        "id": "p1024_ex1a_2b",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "1a",
-        "label": "2b",
-        "top": 48.5,
-        "left": 28,
-        "width": 10,
-        "height": 2,
-        "correct": "sister"
-      },
-      {
-        "id": "p1024_ex1a_3a",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "1a",
-        "label": "3a",
-        "top": 62.5,
-        "left": 11,
-        "width": 10,
-        "height": 2,
-        "correct": "father"
-      },
-      {
-        "id": "p1024_ex1a_3b",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "1a",
-        "label": "3b",
-        "top": 62.5,
-        "left": 28,
-        "width": 10,
-        "height": 2,
-        "correct": "mother"
-      },
-      {
-        "id": "p1024_ex1a_3c",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "1a",
-        "label": "3c",
-        "top": 64.5,
-        "left": 11,
-        "width": 12,
-        "height": 2,
-        "correct": "parents"
-      },
-      {
-        "id": "p1024_ex1a_4a",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "1a",
-        "label": "4a",
-        "top": 76.5,
-        "left": 11,
-        "width": 11,
-        "height": 2,
-        "correct": "husband"
-      },
-      {
-        "id": "p1024_ex1a_4b",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "1a",
-        "label": "4b",
-        "top": 76.5,
-        "left": 28,
-        "width": 9,
-        "height": 2,
-        "correct": "wife"
-      },
-      {
-        "id": "p1024_ex1a_5a",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "1a",
-        "label": "5a",
-        "top": 87.1,
-        "left": 11.2,
-        "width": 8,
-        "height": 2,
-        "correct": "son"
-      },
-      {
-        "id": "p1024_ex1a_5b",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "1a",
-        "label": "5b",
-        "top": 86.8,
-        "left": 32.9,
-        "width": 11,
-        "height": 2,
-        "correct": "daughter"
-      },
-      {
-        "id": "p1024_ex1a_5c",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "1a",
-        "label": "5c",
-        "top": 86.8,
-        "left": 24.2,
-        "width": 12,
-        "height": 2,
-        "correct": "children"
-      },
-      {
-        "id": "p1024_ex2_2",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "2",
-        "label": "2",
-        "top": 80.1,
-        "left": 58,
-        "width": 12,
-        "height": 2,
-        "correct": "children"
-      },
-      {
-        "id": "p1024_ex2_3",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "2",
-        "label": "3",
-        "top": 80.1,
-        "left": 74,
-        "width": 12,
-        "height": 2,
-        "correct": "daughter"
-      },
-      {
-        "id": "p1024_ex2_4",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "2",
-        "label": "4",
-        "top": 81.9,
-        "left": 57,
-        "width": 8.5,
-        "height": 2,
-        "correct": "son"
-      },
-      {
-        "id": "p1024_ex2_5",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "2",
-        "label": "5",
-        "top": 83.7,
-        "left": 57,
-        "width": 12,
-        "height": 2,
-        "correct": "parents"
-      },
-      {
-        "id": "p1024_ex2_6",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "2",
-        "label": "6",
-        "top": 83.7,
-        "left": 79,
-        "width": 12,
-        "height": 2,
-        "correct": "brother"
-      },
-      {
-        "id": "p1024_ex2_7",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "2",
-        "label": "7",
-        "top": 85.5,
-        "left": 59,
-        "width": 10,
-        "height": 2,
-        "correct": "sister"
-      },
-      {
-        "id": "p1024_ex2_8",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "2",
-        "label": "8",
-        "top": 87.3,
-        "left": 72,
-        "width": 16,
-        "height": 2,
-        "correct": "grandfathers"
-      },
-      {
-        "id": "p1024_ex2_9",
-        "type": "fill",
-        "page": 1024,
-        "exercise": "2",
-        "label": "9",
-        "top": 89.1,
-        "left": 58,
-        "width": 16,
-        "height": 2,
-        "correct": "grandmothers"
-      }
-    ],
-    "1028": [
-      {
-        "id": "p1028_ex1_2",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "1",
-        "label": "2",
-        "top": 38.9,
-        "left": 31.5,
-        "width": 9,
-        "height": 2,
-        "correct": "has"
-      },
-      {
-        "id": "p1028_ex1_3",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "1",
-        "label": "3",
-        "top": 40.7,
-        "left": 11.7,
-        "width": 9,
-        "height": 2,
-        "correct": "like"
-      },
-      {
-        "id": "p1028_ex1_4",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "1",
-        "label": "4",
-        "top": 42.6,
-        "left": 31.3,
-        "width": 9,
-        "height": 2,
-        "correct": "lives"
-      },
-      {
-        "id": "p1028_ex1_5",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "1",
-        "label": "5",
-        "top": 44.5,
-        "left": 11.7,
-        "width": 9,
-        "height": 2,
-        "correct": "play"
-      },
-      {
-        "id": "p1028_ex1_6",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "1",
-        "label": "6",
-        "top": 46.3,
-        "left": 31.4,
-        "width": 9,
-        "height": 2,
-        "correct": "studies"
-      },
-      {
-        "id": "p1028_ex1_7",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "1",
-        "label": "7",
-        "top": 48.2,
-        "left": 12,
-        "width": 9,
-        "height": 2,
-        "correct": "teach"
-      },
-      {
-        "id": "p1028_ex1_8",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "1",
-        "label": "8",
-        "top": 50.1,
-        "left": 31.3,
-        "width": 9,
-        "height": 2,
-        "correct": "watches"
-      },
-      {
-        "id": "p1028_ex1_9",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "1",
-        "label": "9",
-        "top": 52,
-        "left": 12,
-        "width": 9,
-        "height": 2,
-        "correct": "work"
-      },
-      {
-        "id": "p1028_ex2a_2_a",
-        "type": "choose",
-        "group": "p1028_ex2a_2",
-        "text": "a work",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "2a",
-        "top": 63.8,
-        "left": 12.5,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1028_ex2a_2_b",
-        "type": "choose",
-        "group": "p1028_ex2a_2",
-        "text": "b works",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "2b",
-        "top": 63.8,
-        "left": 22.2,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1028_ex2a_3_a",
-        "type": "choose",
-        "group": "p1028_ex2a_3",
-        "text": "a study",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "3a",
-        "top": 67.2,
-        "left": 12.5,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1028_ex2a_3_b",
-        "type": "choose",
-        "group": "p1028_ex2a_3",
-        "text": "b studies",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "3b",
-        "top": 67.2,
-        "left": 22.2,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1028_ex2a_4_a",
-        "type": "choose",
-        "group": "p1028_ex2a_4",
-        "text": "a go",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "4a",
-        "top": 70.6,
-        "left": 12.5,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1028_ex2a_4_b",
-        "type": "choose",
-        "group": "p1028_ex2a_4",
-        "text": "b goes",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "4b",
-        "top": 70.6,
-        "left": 22.2,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1028_ex2a_5_a",
-        "type": "choose",
-        "group": "p1028_ex2a_5",
-        "text": "a play",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "5a",
-        "top": 74,
-        "left": 12.5,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1028_ex2a_5_b",
-        "type": "choose",
-        "group": "p1028_ex2a_5",
-        "text": "b plays",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "5b",
-        "top": 74,
-        "left": 22.2,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1028_ex2a_6_a",
-        "type": "choose",
-        "group": "p1028_ex2a_6",
-        "text": "a teach",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "6a",
-        "top": 77.4,
-        "left": 12.5,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1028_ex2a_6_b",
-        "type": "choose",
-        "group": "p1028_ex2a_6",
-        "text": "b teaches",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "6b",
-        "top": 77.4,
-        "left": 22.2,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1028_ex2a_7_a",
-        "type": "choose",
-        "group": "p1028_ex2a_7",
-        "text": "a watch",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "7a",
-        "top": 80.9,
-        "left": 12.5,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1028_ex2a_7_b",
-        "type": "choose",
-        "group": "p1028_ex2a_7",
-        "text": "b watches",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "7b",
-        "top": 80.9,
-        "left": 22.2,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1028_ex2a_8_a",
-        "type": "choose",
-        "group": "p1028_ex2a_8",
-        "text": "a read",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "8a",
-        "top": 84.3,
-        "left": 12.5,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1028_ex2a_8_b",
-        "type": "choose",
-        "group": "p1028_ex2a_8",
-        "text": "b reads",
-        "page": 1028,
-        "exercise": "2a",
-        "label": "8b",
-        "top": 84.3,
-        "left": 22.2,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1028_ex3_2",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "3",
-        "label": "2",
-        "top": 54.8,
-        "left": 76.5,
-        "width": 8.5,
-        "height": 1.8,
-        "correct": "teach"
-      },
-      {
-        "id": "p1028_ex3_3",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "3",
-        "label": "3",
-        "top": 56.3,
-        "left": 77.5,
-        "width": 8.5,
-        "height": 1.8,
-        "correct": "love"
-      },
-      {
-        "id": "p1028_ex3_4",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "3",
-        "label": "4",
-        "top": 57.8,
-        "left": 65,
-        "width": 8.5,
-        "height": 1.8,
-        "correct": "read"
-      },
-      {
-        "id": "p1028_ex3_5",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "3",
-        "label": "5",
-        "top": 60.9,
-        "left": 58.5,
-        "width": 8.5,
-        "height": 1.8,
-        "correct": "works"
-      },
-      {
-        "id": "p1028_ex3_6",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "3",
-        "label": "6",
-        "top": 62.4,
-        "left": 60.5,
-        "width": 8.5,
-        "height": 1.8,
-        "correct": "likes"
-      },
-      {
-        "id": "p1028_ex3_7",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "3",
-        "label": "7",
-        "top": 62.4,
-        "left": 81.8,
-        "width": 8.5,
-        "height": 1.8,
-        "correct": "plays"
-      },
-      {
-        "id": "p1028_ex3_8",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "3",
-        "label": "8",
-        "top": 63.9,
-        "left": 78.5,
-        "width": 8.5,
-        "height": 1.8,
-        "correct": "goes"
-      },
-      {
-        "id": "p1028_ex3_9",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "3",
-        "label": "9",
-        "top": 67,
-        "left": 68.8,
-        "width": 8.5,
-        "height": 1.8,
-        "correct": "studies"
-      },
-      {
-        "id": "p1028_ex3_10",
-        "type": "fill",
-        "page": 1028,
-        "exercise": "3",
-        "label": "10",
-        "top": 70.1,
-        "left": 57.2,
-        "width": 8.5,
-        "height": 1.8,
-        "correct": "watches"
-      }
-    ],
-    "1037": [
-      {
-        "id": "p1037_ex3_across_2",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "3",
-        "label": "Across 2",
-        "top": 20,
-        "left": 20,
-        "width": 8,
-        "height": 1.8,
-        "correct": "red"
-      },
-      {
-        "id": "p1037_ex3_across_4",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "3",
-        "label": "Across 4",
-        "top": 24,
-        "left": 20,
-        "width": 8,
-        "height": 1.8,
-        "correct": "green"
-      },
-      {
-        "id": "p1037_ex3_across_6",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "3",
-        "label": "Across 6",
-        "top": 28,
-        "left": 20,
-        "width": 8,
-        "height": 1.8,
-        "correct": "black"
-      },
-      {
-        "id": "p1037_ex3_across_7",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "3",
-        "label": "Across 7",
-        "top": 32,
-        "left": 20,
-        "width": 8,
-        "height": 1.8,
-        "correct": "white"
-      },
-      {
-        "id": "p1037_ex3_down_1",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "3",
-        "label": "Down 1",
-        "top": 20,
-        "left": 35,
-        "width": 8,
-        "height": 1.8,
-        "correct": "brown"
-      },
-      {
-        "id": "p1037_ex3_down_3",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "3",
-        "label": "Down 3",
-        "top": 24,
-        "left": 35,
-        "width": 8,
-        "height": 1.8,
-        "correct": "yellow"
-      },
-      {
-        "id": "p1037_ex3_down_4",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "3",
-        "label": "Down 4",
-        "top": 28,
-        "left": 35,
-        "width": 8,
-        "height": 1.8,
-        "correct": "grey"
-      },
-      {
-        "id": "p1037_ex3_down_5",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "3",
-        "label": "Down 5",
-        "top": 32,
-        "left": 35,
-        "width": 8,
-        "height": 1.8,
-        "correct": "blue"
-      },
-      {
-        "id": "p1037_ex4_sing",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "4",
-        "label": "Singular",
-        "top": 53,
-        "left": 9,
-        "width": 18,
-        "height": 6,
-        "correct": "a dress, a hat, a jacket, a jumper, a shirt, a skirt, a top, a T-shirt or dress, hat, jacket, jumper, shirt, skirt, top, T-shirt"
-      },
-      {
-        "id": "p1037_ex4_plur",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "4",
-        "label": "Plural",
-        "top": 53,
-        "left": 28.5,
-        "width": 18,
-        "height": 6,
-        "correct": "jeans, shoes, trousers, trainers"
-      },
-      {
-        "id": "p1037_ex5a_2_jacket",
-        "type": "choose",
-        "group": "p1037_ex5a_2",
-        "text": "jacket",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "2 jacket",
-        "top": 67.3,
-        "left": 10.5,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1037_ex5a_2_jeans",
-        "type": "choose",
-        "group": "p1037_ex5a_2",
-        "text": "jeans",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "2 jeans",
-        "top": 67.3,
-        "left": 15.5,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1037_ex5a_2_jumper",
-        "type": "choose",
-        "group": "p1037_ex5a_2",
-        "text": "jumper",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "2 jumper",
-        "top": 67.3,
-        "left": 20.5,
-        "width": 5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1037_ex5a_3_fashion",
-        "type": "choose",
-        "group": "p1037_ex5a_3",
-        "text": "fashion",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "3 fashion",
-        "top": 69,
-        "left": 10.5,
-        "width": 5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1037_ex5a_3_shirt",
-        "type": "choose",
-        "group": "p1037_ex5a_3",
-        "text": "shirt",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "3 shirt",
-        "top": 69,
-        "left": 16,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1037_ex5a_3_shoes",
-        "type": "choose",
-        "group": "p1037_ex5a_3",
-        "text": "shoes",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "3 shoes",
-        "top": 69,
-        "left": 21,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1037_ex5a_4_skirt",
-        "type": "choose",
-        "group": "p1037_ex5a_4",
-        "text": "skirt",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "4 skirt",
-        "top": 70.7,
-        "left": 10.5,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1037_ex5a_4_smart",
-        "type": "choose",
-        "group": "p1037_ex5a_4",
-        "text": "smart",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "4 smart",
-        "top": 70.7,
-        "left": 15.5,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1037_ex5a_4_tshirt",
-        "type": "choose",
-        "group": "p1037_ex5a_4",
-        "text": "T-shirt",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "4 T-shirt",
-        "top": 70.7,
-        "left": 20.5,
-        "width": 5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1037_ex5a_5_casual",
-        "type": "choose",
-        "group": "p1037_ex5a_5",
-        "text": "casual",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "5 casual",
-        "top": 72.5,
-        "left": 10.5,
-        "width": 5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1037_ex5a_5_clothes",
-        "type": "choose",
-        "group": "p1037_ex5a_5",
-        "text": "clothes",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "5 clothes",
-        "top": 72.5,
-        "left": 16,
-        "width": 5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1037_ex5a_5_dress",
-        "type": "choose",
-        "group": "p1037_ex5a_5",
-        "text": "dress",
-        "page": 1037,
-        "exercise": "5a",
-        "label": "5 dress",
-        "top": 72.5,
-        "left": 21.5,
-        "width": 4.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1037_ex6_2a",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "6",
-        "label": "2a",
-        "top": 35.4,
-        "left": 79.5,
-        "width": 10,
-        "height": 1.8,
-        "correct": "a jacket"
-      },
-      {
-        "id": "p1037_ex6_2b",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "6",
-        "label": "2b",
-        "top": 37,
-        "left": 78,
-        "width": 10,
-        "height": 1.8,
-        "correct": "a shirt"
-      },
-      {
-        "id": "p1037_ex6_3a",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "6",
-        "label": "3a",
-        "top": 59.3,
-        "left": 60.5,
-        "width": 9,
-        "height": 1.8,
-        "correct": "a dress"
-      },
-      {
-        "id": "p1037_ex6_3b",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "6",
-        "label": "3b",
-        "top": 60.9,
-        "left": 55,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": "a hat"
-      },
-      {
-        "id": "p1037_ex6_3c",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "6",
-        "label": "3c",
-        "top": 60.9,
-        "left": 65.5,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": "shoes"
-      },
-      {
-        "id": "p1037_ex6_4a",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "6",
-        "label": "4a",
-        "top": 59.3,
-        "left": 80,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": "jeans"
-      },
-      {
-        "id": "p1037_ex6_4b",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "6",
-        "label": "4b",
-        "top": 60.9,
-        "left": 75,
-        "width": 10,
-        "height": 1.8,
-        "correct": "a jumper"
-      },
-      {
-        "id": "p1037_ex7_2",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "7",
-        "label": "2",
-        "top": 76.7,
-        "left": 56,
-        "width": 6,
-        "height": 1.8,
-        "correct": "and"
-      },
-      {
-        "id": "p1037_ex7_3",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "7",
-        "label": "3",
-        "top": 78.4,
-        "left": 74.3,
-        "width": 6,
-        "height": 1.8,
-        "correct": "but"
-      },
-      {
-        "id": "p1037_ex7_4",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "7",
-        "label": "4",
-        "top": 81.7,
-        "left": 59.2,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": "and"
-      },
-      {
-        "id": "p1037_ex7_5",
-        "type": "fill",
-        "page": 1037,
-        "exercise": "7",
-        "label": "5",
-        "top": 83.4,
-        "left": 81.6,
-        "width": 7.5,
-        "height": 1.8,
-        "correct": "because"
-      }
-    ],
-    "1052": [
-      {
-        "id": "p1052_ex1a_2",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "1a",
-        "label": "2",
-        "top": 47.8,
-        "left": 33.4,
-        "width": 8,
-        "height": 1.8,
-        "correct": "speak"
-      },
-      {
-        "id": "p1052_ex1a_3",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "1a",
-        "label": "3",
-        "top": 59.8,
-        "left": 12.6,
-        "width": 8,
-        "height": 1.8,
-        "correct": "play"
-      },
-      {
-        "id": "p1052_ex1a_4",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "1a",
-        "label": "4",
-        "top": 59.8,
-        "left": 33.4,
-        "width": 8,
-        "height": 1.8,
-        "correct": "use"
-      },
-      {
-        "id": "p1052_ex1a_5",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "1a",
-        "label": "5",
-        "top": 72,
-        "left": 8.7,
-        "width": 12,
-        "height": 1.8,
-        "correct": "understand"
-      },
-      {
-        "id": "p1052_ex1a_6",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "1a",
-        "label": "6",
-        "top": 71.9,
-        "left": 33.4,
-        "width": 8,
-        "height": 1.8,
-        "correct": "paint"
-      },
-      {
-        "id": "p1052_ex1a_7",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "1a",
-        "label": "7",
-        "top": 83.9,
-        "left": 10.3,
-        "width": 10,
-        "height": 1.8,
-        "correct": "remember"
-      },
-      {
-        "id": "p1052_ex1a_8",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "1a",
-        "label": "8",
-        "top": 83.8,
-        "left": 33.3,
-        "width": 8,
-        "height": 1.8,
-        "correct": "ride"
-      },
-      {
-        "id": "p1052_ex2a_1",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2a",
-        "label": "1",
-        "top": 30,
-        "left": 60,
-        "width": 8,
-        "height": 1.8,
-        "correct": "a bike"
-      },
-      {
-        "id": "p1052_ex2a_2",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2a",
-        "label": "2",
-        "top": 31.7,
-        "left": 60,
-        "width": 8,
-        "height": 1.8,
-        "correct": "a book"
-      },
-      {
-        "id": "p1052_ex2a_3",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2a",
-        "label": "3",
-        "top": 33.4,
-        "left": 60,
-        "width": 12,
-        "height": 1.8,
-        "correct": "the internet"
-      },
-      {
-        "id": "p1052_ex2a_4",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2a",
-        "label": "4",
-        "top": 35.1,
-        "left": 60,
-        "width": 10,
-        "height": 1.8,
-        "correct": "television"
-      },
-      {
-        "id": "p1052_ex2a_5",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2a",
-        "label": "5",
-        "top": 36.8,
-        "left": 60,
-        "width": 8,
-        "height": 1.8,
-        "correct": "a car"
-      },
-      {
-        "id": "p1052_ex2a_6",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2a",
-        "label": "6",
-        "top": 38.6,
-        "left": 60,
-        "width": 8,
-        "height": 1.8,
-        "correct": "maths"
-      },
-      {
-        "id": "p1052_ex2a_7",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2a",
-        "label": "7",
-        "top": 40.3,
-        "left": 60,
-        "width": 8,
-        "height": 1.8,
-        "correct": "faces"
-      },
-      {
-        "id": "p1052_ex2a_8",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2a",
-        "label": "8",
-        "top": 42,
-        "left": 60,
-        "width": 8,
-        "height": 1.8,
-        "correct": "a jacket"
-      },
-      {
-        "id": "p1052_ex2b_2",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2b",
-        "label": "2",
-        "top": 53.4,
-        "left": 59.5,
-        "width": 15,
-        "height": 1.8,
-        "correct": "read a book"
-      },
-      {
-        "id": "p1052_ex2b_3",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2b",
-        "label": "3",
-        "top": 55.1,
-        "left": 59.5,
-        "width": 15,
-        "height": 1.8,
-        "correct": "use the internet"
-      },
-      {
-        "id": "p1052_ex2b_4",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2b",
-        "label": "4",
-        "top": 56.8,
-        "left": 59.5,
-        "width": 15,
-        "height": 1.8,
-        "correct": "watch television"
-      },
-      {
-        "id": "p1052_ex2b_5",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2b",
-        "label": "5",
-        "top": 58.5,
-        "left": 59.5,
-        "width": 15,
-        "height": 1.8,
-        "correct": "drive a car"
-      },
-      {
-        "id": "p1052_ex2b_6",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2b",
-        "label": "6",
-        "top": 60.2,
-        "left": 59.5,
-        "width": 15,
-        "height": 1.8,
-        "correct": "study maths"
-      },
-      {
-        "id": "p1052_ex2b_7",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2b",
-        "label": "7",
-        "top": 62,
-        "left": 59.5,
-        "width": 15,
-        "height": 1.8,
-        "correct": "remember faces"
-      },
-      {
-        "id": "p1052_ex2b_8",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "2b",
-        "label": "8",
-        "top": 63.7,
-        "left": 59.5,
-        "width": 15,
-        "height": 1.8,
-        "correct": "wear a jacket"
-      },
-      {
-        "id": "p1052_ex3_1",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "3",
-        "label": "1",
-        "top": 72.1,
-        "left": 80.9,
-        "width": 8,
-        "height": 1.8,
-        "correct": "remember"
-      },
-      {
-        "id": "p1052_ex3_2",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "3",
-        "label": "2",
-        "top": 73.4,
-        "left": 67.7,
-        "width": 12,
-        "height": 1.8,
-        "correct": "understands"
-      },
-      {
-        "id": "p1052_ex3_3",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "3",
-        "label": "3",
-        "top": 76.5,
-        "left": 66.3,
-        "width": 8,
-        "height": 1.8,
-        "correct": "paint"
-      },
-      {
-        "id": "p1052_ex3_4",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "3",
-        "label": "4",
-        "top": 76.7,
-        "left": 82.4,
-        "width": 8,
-        "height": 1.8,
-        "correct": "play"
-      },
-      {
-        "id": "p1052_ex3_5",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "3",
-        "label": "5",
-        "top": 82.8,
-        "left": 64.5,
-        "width": 8,
-        "height": 1.8,
-        "correct": "use"
-      },
-      {
-        "id": "p1052_ex3_6",
-        "type": "fill",
-        "page": 1052,
-        "exercise": "3",
-        "label": "6",
-        "top": 85.9,
-        "left": 68.1,
-        "width": 8,
-        "height": 1.8,
-        "correct": "drive"
-      }
-    ],
-    "1053": [
-      {
-        "id": "p1053_ex4_1_can",
-        "type": "choose",
-        "group": "p1053_ex4_1",
-        "text": "can",
-        "page": 1053,
-        "exercise": "4",
-        "label": "1 can",
-        "top": 34.3,
-        "left": 11.1,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1053_ex4_1_cant",
-        "type": "choose",
-        "group": "p1053_ex4_1",
-        "text": "can't",
-        "page": 1053,
-        "exercise": "4",
-        "label": "1 can't",
-        "top": 34.3,
-        "left": 17.6,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1053_ex4_2_can",
-        "type": "choose",
-        "group": "p1053_ex4_2",
-        "text": "can",
-        "page": 1053,
-        "exercise": "4",
-        "label": "2 can",
-        "top": 34.6,
-        "left": 31,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1053_ex4_2_cant",
-        "type": "choose",
-        "group": "p1053_ex4_2",
-        "text": "can't",
-        "page": 1053,
-        "exercise": "4",
-        "label": "2 can't",
-        "top": 34.4,
-        "left": 37.1,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1053_ex4_3_can",
-        "type": "choose",
-        "group": "p1053_ex4_3",
-        "text": "can",
-        "page": 1053,
-        "exercise": "4",
-        "label": "3 can",
-        "top": 59.1,
-        "left": 10.4,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1053_ex4_3_cant",
-        "type": "choose",
-        "group": "p1053_ex4_3",
-        "text": "can't",
-        "page": 1053,
-        "exercise": "4",
-        "label": "3 can't",
-        "top": 59.4,
-        "left": 16.7,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1053_ex4_4_can",
-        "type": "choose",
-        "group": "p1053_ex4_4",
-        "text": "can",
-        "page": 1053,
-        "exercise": "4",
-        "label": "4 can",
-        "top": 59.2,
-        "left": 32.5,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1053_ex4_4_cant",
-        "type": "choose",
-        "group": "p1053_ex4_4",
-        "text": "can't",
-        "page": 1053,
-        "exercise": "4",
-        "label": "4 can't",
-        "top": 59.1,
-        "left": 39.1,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1053_ex4_5_can",
-        "type": "choose",
-        "group": "p1053_ex4_5",
-        "text": "can",
-        "page": 1053,
-        "exercise": "4",
-        "label": "5 can",
-        "top": 84.1,
-        "left": 10.3,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1053_ex4_5_cant",
-        "type": "choose",
-        "group": "p1053_ex4_5",
-        "text": "can't",
-        "page": 1053,
-        "exercise": "4",
-        "label": "5 can't",
-        "top": 84.1,
-        "left": 16.7,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1053_ex4_6_can",
-        "type": "choose",
-        "group": "p1053_ex4_6",
-        "text": "can",
-        "page": 1053,
-        "exercise": "4",
-        "label": "6 can",
-        "top": 83.8,
-        "left": 31.2,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": false
-      },
-      {
-        "id": "p1053_ex4_6_cant",
-        "type": "choose",
-        "group": "p1053_ex4_6",
-        "text": "can't",
-        "page": 1053,
-        "exercise": "4",
-        "label": "6 can't",
-        "top": 84,
-        "left": 37.9,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": true
-      },
-      {
-        "id": "p1053_ex5_2",
-        "type": "fill",
-        "page": 1053,
-        "exercise": "5",
-        "label": "2",
-        "top": 25.8,
-        "left": 55.5,
-        "width": 14,
-        "height": 1.8,
-        "correct": "can swim"
-      },
-      {
-        "id": "p1053_ex5_3",
-        "type": "fill",
-        "page": 1053,
-        "exercise": "5",
-        "label": "3",
-        "top": 30.8,
-        "left": 68.1,
-        "width": 12,
-        "height": 1.8,
-        "correct": "can't run"
-      },
-      {
-        "id": "p1053_ex5_4",
-        "type": "fill",
-        "page": 1053,
-        "exercise": "5",
-        "label": "4",
-        "top": 39.6,
-        "left": 71.2,
-        "width": 14,
-        "height": 1.8,
-        "correct": "can go"
-      },
-      {
-        "id": "p1053_ex5_5",
-        "type": "fill",
-        "page": 1053,
-        "exercise": "5",
-        "label": "5",
-        "top": 45.1,
-        "left": 80,
-        "width": 12,
-        "height": 1.8,
-        "correct": "can see"
-      },
-      {
-        "id": "p1053_ex5_6",
-        "type": "fill",
-        "page": 1053,
-        "exercise": "5",
-        "label": "6",
-        "top": 52.5,
-        "left": 81.4,
-        "width": 12,
-        "height": 1.8,
-        "correct": "can't sing"
       }
     ],
     "2004": [
@@ -58507,7 +55829,6 @@
     "4": 1793202631415,
     "5": 1793202631415,
     "9": 1793202631415,
-    "10": 1761463225569,
     "12": 1793202631415,
     "13": 1793202631415,
     "14": 1793202631415,
@@ -58575,11 +55896,6 @@
     "85": 1793202631415,
     "86": 1793202631415,
     "87": 1793202631415,
-    "1024": 1793127597105,
-    "1028": 1793127704567,
-    "1037": 1793120102340,
-    "1052": 1793125351106,
-    "1053": 1793125381190,
     "2004": 1793202631415,
     "2005": 1793202631415,
     "2006": 1793202631415,
@@ -58678,31 +55994,20 @@
       "email": "teacher@ethith.uz",
       "phone": "+998 90 123 45 67",
       "card": "8600 1122 3344 5566",
-      "monthlySalary": 6000000,
+      "monthlySalary": 2700000,
       "hourlyRate": 100000,
       "teachingHours": 72,
       "paidThisMonth": true,
       "assignedClasses": [
-        "cls_ethith_main",
-        "cls_upper_intermediate"
+        "cls_upper_intermediate",
+        "cls_ethith_main"
       ],
-      "subject": "Ingliz tili (IELTS Intensive)"
-    },
-    {
-      "id": "t_zizi",
-      "name": "Zizi Ustoz",
-      "email": "zizi@ethith.uz",
-      "phone": "+998 93 987 65 43",
-      "card": "9860 7788 9900 1122",
-      "monthlySalary": 5500000,
-      "hourlyRate": 85000,
-      "teachingHours": 64,
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_1792041880052",
-        "cls_ielts_ex"
-      ],
-      "subject": "Ingliz tili (General B2)"
+      "subject": "Ingliz tili (IELTS Intensive)",
+      "login": "ustoz77",
+      "password": "ustoz2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "inviteCode": "USTOZ77"
     },
     {
       "id": "t_urolov_azizbek",
@@ -59169,32 +56474,25 @@
         "id": "f_root",
         "name": "Bosh Papka",
         "parentId": null,
-        "createdAt": 1793208683543
+        "createdAt": 1793208752364
       },
       {
         "id": "f_grammar",
         "name": "Grammar Mastery",
         "parentId": "f_root",
-        "createdAt": 1793208683543
+        "createdAt": 1793208752364
       },
       {
         "id": "f_vocab",
         "name": "Vocabulary Builder",
         "parentId": "f_root",
-        "createdAt": 1793208683543
+        "createdAt": 1793208752364
       },
       {
         "id": "f_ielts",
         "name": "IELTS Mock Tests",
         "parentId": "f_root",
-        "createdAt": 1793208683543
-      },
-      {
-        "id": "f_root_t_urolov_azizbek",
-        "name": "Azizbek Urolov (Shaxsiy Papka)",
-        "ownerId": "t_urolov_azizbek",
-        "parentId": null,
-        "createdAt": 1793208683543
+        "createdAt": 1793208752364
       }
     ],
     "tests": [
@@ -59203,7 +56501,7 @@
         "title": "Unit 7: Modals of Deduction & Obligation",
         "folderId": "f_grammar",
         "authorName": "Ustoz",
-        "createdAt": 1793208683543,
+        "createdAt": 1793208752364,
         "maxAttempts": 1,
         "questions": [
           {
@@ -59263,7 +56561,7 @@
         "title": "Unit 8: Compound Adjectives & Participle Clauses",
         "folderId": "f_vocab",
         "authorName": "Zizi Ustoz",
-        "createdAt": 1793208683543,
+        "createdAt": 1793208752364,
         "maxAttempts": 1,
         "questions": [
           {
@@ -59357,8 +56655,8 @@
       "id": "cnt_kuzgi_2026",
       "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
       "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
-      "startDate": 1793122283543,
-      "endDate": 1793813483543,
+      "startDate": 1793122352364,
+      "endDate": 1793813552364,
       "prizeCoins": 1000,
       "testId": "TST-7K2M9",
       "participants": {
@@ -59366,31 +56664,31 @@
           "name": "Ashurov Dilyorbek",
           "score": 95,
           "timeSec": 140,
-          "completedAt": 1793205083543
+          "completedAt": 1793205152364
         },
         "std_2": {
           "name": "Ergasheva Madina",
           "score": 92,
           "timeSec": 165,
-          "completedAt": 1793205183543
+          "completedAt": 1793205252364
         },
         "std_4": {
           "name": "JO‘RABOYEV MUXAMMADYUSUF",
           "score": 98,
           "timeSec": 110,
-          "completedAt": 1793205283543
+          "completedAt": 1793205352364
         },
         "std_5": {
           "name": "Jo'raboyev Javoxir",
           "score": 88,
           "timeSec": 180,
-          "completedAt": 1793205383543
+          "completedAt": 1793205452364
         },
         "std_6": {
           "name": "Mavlonova Ruxshona",
           "score": 85,
           "timeSec": 190,
-          "completedAt": 1793205483543
+          "completedAt": 1793205552364
         }
       },
       "status": "active"
@@ -59403,7 +56701,7 @@
         "baseAmount": 200000,
         "offsetAmount": 200014,
         "paidAmount": 200014,
-        "paidAt": 1792949483543,
+        "paidAt": 1792949552364,
         "verifiedBy": "auto_offset"
       },
       "std_2": {
@@ -59411,7 +56709,7 @@
         "baseAmount": 200000,
         "offsetAmount": 200028,
         "paidAmount": 200028,
-        "paidAt": 1793035883543,
+        "paidAt": 1793035952364,
         "verifiedBy": "auto_offset"
       },
       "std_3": {
@@ -59425,7 +56723,7 @@
         "baseAmount": 200000,
         "offsetAmount": 200056,
         "paidAmount": 200056,
-        "paidAt": 1793122283543,
+        "paidAt": 1793122352364,
         "verifiedBy": "auto_offset"
       },
       "std_5": {
@@ -59434,9 +56732,9 @@
         "offsetAmount": 200070,
         "paidAmount": 200070,
         "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
-        "paidAt": 1793201483543
+        "paidAt": 1793201552364
       }
     }
   },
-  "updatedAt": 1793208684135
+  "updatedAt": 1793208775207
 }
