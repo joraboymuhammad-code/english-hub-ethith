@@ -131225,10 +131225,214 @@
     });
   };
 
+  // Homework Lock and One-Time Submission Checker for Student
+  WB.getStudentHomeworkLockState = function(unitNum, lessonCode) {
+    var S = window.S || {};
+    var curUser = S.user || {};
+    var isStudent = curUser && curUser.role === 'student';
+    if (!isStudent) {
+      return { isStudent: false, hasActiveHw: false, isLocked: false, isCompleted: false, isAssigned: false };
+    }
+
+    var myClasses = (S.classes || []).filter(function(cls) {
+      return (cls.students || []).some(function(st) {
+        return st.id === curUser.id || st.email === curUser.email || (curUser.phone && st.phone === curUser.phone);
+      });
+    });
+
+    var activeHw = null;
+    var activeCls = null;
+    myClasses.forEach(function(cls) {
+      if (cls.activeHomework && cls.activeHomework.lessonCode) {
+        activeHw = cls.activeHomework;
+        activeCls = cls;
+      }
+    });
+
+    if (!activeHw) {
+      return { isStudent: true, hasActiveHw: false, isLocked: false, isCompleted: false, isAssigned: false };
+    }
+
+    var assignedUnit = parseInt(activeHw.unit, 10);
+    var assignedLessonCode = String(activeHw.lessonCode || '').trim();
+    var thisUnit = parseInt(unitNum, 10);
+    var thisLessonCode = String(lessonCode || '').trim();
+
+    var isThisLessonAssigned = (assignedUnit === thisUnit && assignedLessonCode === thisLessonCode);
+
+    // Check if student completed this homework
+    var isCompleted = false;
+    var submissionKey = 'ethith_hw_completed_' + (curUser.id || curUser.email || curUser.phone) + '_' + assignedLessonCode;
+    if (localStorage.getItem(submissionKey)) {
+      isCompleted = true;
+    }
+    if (activeCls && activeCls.attendance && activeCls.attendance.records) {
+      var recs = activeCls.attendance.records;
+      for (var dateKey in recs) {
+        var dObj = recs[dateKey];
+        if (dObj && dObj[curUser.id] && dObj[curUser.id].hwLesson === assignedLessonCode) {
+          isCompleted = true;
+          break;
+        }
+      }
+    }
+
+    if (isThisLessonAssigned) {
+      if (isCompleted) {
+        return {
+          isStudent: true,
+          hasActiveHw: true,
+          isLocked: true,
+          isCompleted: true,
+          isAssigned: true,
+          assignedTitle: activeHw.lessonTitle || assignedLessonCode,
+          assignedUnit: assignedUnit,
+          message: "Siz ushbu vazifani muvaffaqiyatli topshirgansiz! Natijangiz jurnalga yozilgan, qayta ishlash mumkin emas."
+        };
+      } else {
+        return {
+          isStudent: true,
+          hasActiveHw: true,
+          isLocked: false,
+          isCompleted: false,
+          isAssigned: true,
+          assignedTitle: activeHw.lessonTitle || assignedLessonCode,
+          assignedUnit: assignedUnit
+        };
+      }
+    } else {
+      return {
+        isStudent: true,
+        hasActiveHw: true,
+        isLocked: true,
+        isCompleted: false,
+        isAssigned: false,
+        assignedTitle: activeHw.lessonTitle || assignedLessonCode,
+        assignedUnit: assignedUnit,
+        message: "Ushbu dars qulflangan! Ustozingiz faqat Unit " + assignedUnit + " — " + (activeHw.lessonTitle || assignedLessonCode) + " darsini uy vazifasi qilib belgilagan."
+      };
+    }
+  };
+
+  WB.renderCatalogHomeworkBannerHtml = function() {
+    var lock = WB.getStudentHomeworkLockState(1, '1.1');
+    if (!lock.hasActiveHw) return '';
+    return '<div style="background:linear-gradient(135deg,rgba(234,179,8,0.18),rgba(202,138,4,0.28));border:1.5px solid #eab308;padding:16px 22px;border-radius:18px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 10px 25px rgba(234,179,8,0.25);">' +
+      '<div style="display:flex;align-items:center;gap:12px;">' +
+        '<div style="font-size:28px;">📌</div>' +
+        '<div>' +
+          '<div style="font-weight:900;font-size:14px;color:#fde047;text-transform:uppercase;letter-spacing:0.04em;">Ustozingiz Faol Uy Vazifasi Belgilagan:</div>' +
+          '<div style="font-size:13.5px;color:#fef9c3;font-weight:700;margin-top:2px;">Unit ' + lock.assignedUnit + ' — ' + lock.assignedTitle + '</div>' +
+          '<div style="font-size:11.5px;color:#cbd5e1;margin-top:2px;">Boshqa barcha unitlar va darslar ushbu vazifa topshirilgunga qadar vaqtincha qulflangan.</div>' +
+        '</div>' +
+      '</div>' +
+      '<div>' +
+        (lock.isCompleted ?
+          '<span style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.25);border:1.5px solid #10b981;color:#34d399;font-weight:900;font-size:12.5px;padding:6px 14px;border-radius:12px;">✅ Vazifa Topshirilgan</span>' :
+          '<span style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,0.25);border:1.5px solid #f59e0b;color:#fde047;font-weight:900;font-size:12.5px;padding:6px 14px;border-radius:12px;animation:pulse 1.5s infinite;">⏳ Topshirish Kutilmoqda</span>') +
+      '</div>' +
+    '</div>';
+  };
+
+  WB.renderCatalogLessonRowHtml = function(unitNum, les, bookLevel) {
+    var lock = WB.getStudentHomeworkLockState(unitNum, les.code);
+    var openFnName = 'openLesson';
+    var primaryColor = '#0284c7';
+    var gradient = 'linear-gradient(135deg, #0284c7, #154b89)';
+    var shadowColor = 'rgba(2,132,199,0.35)';
+
+    if (bookLevel === 'b2') {
+      openFnName = 'openLessonB2';
+      primaryColor = '#ea580c';
+      gradient = 'linear-gradient(135deg, #ea580c, #c2410c)';
+      shadowColor = 'rgba(234,88,12,0.35)';
+    } else if (bookLevel === 'a1') {
+      openFnName = 'openLessonA1';
+      primaryColor = '#059669';
+      gradient = 'linear-gradient(135deg, #059669, #10b981)';
+      shadowColor = 'rgba(16,185,129,0.35)';
+    } else if (bookLevel === 'a2') {
+      openFnName = 'openLessonA2';
+      primaryColor = '#0284c7';
+      gradient = 'linear-gradient(135deg, #0284c7, #0ea5e9)';
+      shadowColor = 'rgba(2,132,199,0.35)';
+    } else if (bookLevel === 'b1_pre') {
+      openFnName = 'openLessonB1Pre';
+      primaryColor = '#7c3aed';
+      gradient = 'linear-gradient(135deg, #7c3aed, #8b5cf6)';
+      shadowColor = 'rgba(139,92,246,0.35)';
+    }
+
+    // 1. If active homework is set and this lesson is LOCKED
+    if (lock.hasActiveHw && !lock.isAssigned) {
+      return '<div class="eth-wb-lesson-row" data-unit="' + unitNum + '" data-lesson="' + les.code + '" ' +
+        'onclick="if(window.EthithApp&&window.EthithApp.showToast){window.EthithApp.showToast(\'Ushbu dars qulflangan! Faqat belgilangan uy vazifasini ishlashingiz mumkin.\',\'warning\');}else{alert(\'Ushbu dars qulflangan!\');}" ' +
+        'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.1);opacity:0.45;filter:grayscale(0.7);cursor:not-allowed;">' +
+        '<div style="min-width:0;flex:1;">' +
+          '<div style="font-size:13.5px;font-weight:700;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+          '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">🔒 Vazifaga kiritilmagan (Qulflangan)</div>' +
+        '</div>' +
+        '<button type="button" style="flex:none;background:rgba(255,255,255,0.06);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:7px 14px;font-size:12px;font-weight:700;cursor:not-allowed;">🔒 Qulflangan</button>' +
+      '</div>';
+    }
+
+    // 2. If this lesson is the assigned homework and is ALREADY COMPLETED
+    if (lock.hasActiveHw && lock.isAssigned && lock.isCompleted) {
+      return '<div class="eth-wb-lesson-row" data-unit="' + unitNum + '" data-lesson="' + les.code + '" ' +
+        'onclick="if(window.EthithApp&&window.EthithApp.showToast){window.EthithApp.showToast(\'Siz ushbu vazifani topshirgansiz! Natijangiz saqlangan, qayta ishlash mumkin emas.\',\'info\');}else{alert(\'Siz ushbu vazifani topshirgansiz!\');}" ' +
+        'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-radius:12px;background:rgba(16,185,129,0.12);border:1.5px solid #10b981;cursor:default;box-shadow:0 0 15px rgba(16,185,129,0.2);">' +
+        '<div style="min-width:0;flex:1;">' +
+          '<div style="font-size:13.5px;font-weight:800;color:#34d399;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+          '<div style="font-size:11.5px;color:#a7f3d0;font-weight:700;">✅ Topshirildi (Natijangiz jurnalga yozildi)</div>' +
+        '</div>' +
+        '<button type="button" style="flex:none;background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12px;font-weight:900;cursor:default;">✅ Topshirilgan</button>' +
+      '</div>';
+    }
+
+    // 3. If this lesson is the assigned homework and NEEDS COMPLETION
+    if (lock.hasActiveHw && lock.isAssigned && !lock.isCompleted) {
+      return '<div class="eth-wb-lesson-row" data-unit="' + unitNum + '" data-lesson="' + les.code + '" ' +
+        'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.' + openFnName + '(' + unitNum + ', \'' + les.code + '\');" ' +
+        'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 14px;border-radius:12px;background:rgba(245,158,11,0.18);border:2px solid #f59e0b;cursor:pointer;box-shadow:0 0 25px rgba(245,158,11,0.45);">' +
+        '<div style="min-width:0;flex:1;">' +
+          '<div style="font-size:14px;font-weight:900;color:#fde047;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">⚡ ' + les.title + ' <span style="font-size:11px;background:#f59e0b;color:#000;padding:2px 6px;border-radius:6px;margin-left:4px;">VAZIFA</span></div>' +
+          '<div style="font-size:11.5px;color:#fef08a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
+        '</div>' +
+        '<button type="button" onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.' + openFnName + '(' + unitNum + ', \'' + les.code + '\');" ' +
+          'style="flex:none;background:linear-gradient(135deg, #f59e0b, #d97706);color:#000;border:none;border-radius:10px;padding:8px 18px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 0 15px rgba(245,158,11,0.6);">' +
+          '⚡ Boshlash ➔' +
+        '</button>' +
+      '</div>';
+    }
+
+    // 4. Default normal lesson
+    return '<div class="eth-wb-lesson-row" data-unit="' + unitNum + '" data-lesson="' + les.code + '" ' +
+      'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.' + openFnName + '(' + unitNum + ', \'' + les.code + '\');" ' +
+      'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,0.03);border:1.5px solid rgba(255,255,255,0.08);cursor:pointer;transition:all 0.2s;">' +
+      '<div style="min-width:0;flex:1;">' +
+        '<div style="font-size:13.5px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+        '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
+      '</div>' +
+      '<button type="button" onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.' + openFnName + '(' + unitNum + ', \'' + les.code + '\');" ' +
+        'style="flex:none;background:' + gradient + ';color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px ' + shadowColor + ';">' +
+        'Boshlash ➔' +
+      '</button>' +
+    '</div>';
+  };
+
   // Open Lesson Helper for Intermediate (B1+)
   WB.openLesson = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
+    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+    if (lockState.isLocked) {
+      if (window.EthithApp && window.EthithApp.showToast) {
+        window.EthithApp.showToast(lockState.message, 'warning');
+      } else {
+        alert(lockState.message);
+      }
+      return;
+    }
     WB._activeBook = 'b1';
     var apView = document.getElementById('apView');
     if (window.go) {
@@ -131246,6 +131450,15 @@
   WB.openLessonA1 = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
+    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+    if (lockState.isLocked) {
+      if (window.EthithApp && window.EthithApp.showToast) {
+        window.EthithApp.showToast(lockState.message, 'warning');
+      } else {
+        alert(lockState.message);
+      }
+      return;
+    }
     WB._activeBook = 'a1';
     var apView = document.getElementById('ethith-main-content') || document.querySelector('.ea-main');
     if (window.go) {
@@ -131260,6 +131473,15 @@
   WB.openLessonA2 = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
+    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+    if (lockState.isLocked) {
+      if (window.EthithApp && window.EthithApp.showToast) {
+        window.EthithApp.showToast(lockState.message, 'warning');
+      } else {
+        alert(lockState.message);
+      }
+      return;
+    }
     WB._activeBook = 'a2';
     var apView = document.getElementById('ethith-main-content') || document.querySelector('.ea-main');
     if (window.go) {
@@ -131274,6 +131496,15 @@
   WB.openLessonB1Pre = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
+    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+    if (lockState.isLocked) {
+      if (window.EthithApp && window.EthithApp.showToast) {
+        window.EthithApp.showToast(lockState.message, 'warning');
+      } else {
+        alert(lockState.message);
+      }
+      return;
+    }
     WB._activeBook = 'b1_pre';
     var apView = document.getElementById('ethith-main-content') || document.querySelector('.ea-main');
     if (window.go) {
@@ -131288,6 +131519,15 @@
   WB.openLessonB2 = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
+    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+    if (lockState.isLocked) {
+      if (window.EthithApp && window.EthithApp.showToast) {
+        window.EthithApp.showToast(lockState.message, 'warning');
+      } else {
+        alert(lockState.message);
+      }
+      return;
+    }
     WB._activeBook = 'b2';
     var apView = document.getElementById('apView');
     if (window.go) {
@@ -131387,6 +131627,9 @@
         '</div>' +
       '</div>';
 
+    // Active Homework Banner (if assigned)
+    h += WB.renderCatalogHomeworkBannerHtml();
+
     // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
     h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
       '<button type="button" class="eth-wb-subtab-btn" data-tab="mavzular" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
@@ -131422,19 +131665,7 @@
         if (u.lessons && u.lessons.length > 0) {
           h += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">';
           u.lessons.forEach(function(les) {
-            h += '<div class="eth-wb-lesson-row" data-unit="' + u.unit + '" data-lesson="' + les.code + '" ' +
-              'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\');" ' +
-              'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(14,165,233,0.08);border:1.5px solid rgba(56,189,248,0.25);cursor:pointer;transition:all 0.2s;">' +
-              '<div style="min-width:0;flex:1;">' +
-                '<div style="font-size:13.5px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
-                '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
-              '</div>' +
-              '<button type="button" ' +
-                'onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLesson(' + u.unit + ', \'' + les.code + '\');" ' +
-                'style="flex:none;background:linear-gradient(135deg, #0284c7, #154b89);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(2,132,199,0.35);">' +
-                'Boshlash ➔' +
-              '</button>' +
-            '</div>';
+            h += WB.renderCatalogLessonRowHtml(u.unit, les, 'b1');
           });
           h += '</div>';
         }
@@ -131574,6 +131805,9 @@
         '</div>' +
       '</div>';
 
+    // Active Homework Banner (if assigned)
+    h += WB.renderCatalogHomeworkBannerHtml();
+
     // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
     h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
       '<button type="button" class="eth-wb-subtab-btn-b2" data-tab="mavzular" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
@@ -131609,19 +131843,7 @@
         if (u.lessons && u.lessons.length > 0) {
           h += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">';
           u.lessons.forEach(function(les) {
-            h += '<div class="eth-wb-lesson-row" data-unit="' + u.unit + '" data-lesson="' + les.code + '" ' +
-              'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB2(' + u.unit + ', \'' + les.code + '\');" ' +
-              'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(249,115,22,0.08);border:1.5px solid rgba(251,146,60,0.28);cursor:pointer;transition:all 0.2s;">' +
-              '<div style="min-width:0;flex:1;">' +
-                '<div style="font-size:13.5px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
-                '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
-              '</div>' +
-              '<button type="button" ' +
-                'onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB2(' + u.unit + ', \'' + les.code + '\');" ' +
-                'style="flex:none;background:linear-gradient(135deg, #ea580c, #c2410c);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(234,88,12,0.35);">' +
-                'Boshlash ➔' +
-              '</button>' +
-            '</div>';
+            h += WB.renderCatalogLessonRowHtml(u.unit, les, 'b2');
           });
           h += '</div>';
         }
@@ -131781,6 +132003,9 @@
         '</div>' +
       '</div>';
 
+    // Active Homework Banner (if assigned)
+    h += WB.renderCatalogHomeworkBannerHtml();
+
     // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
     h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
       '<button type="button" class="eth-wb-subtab-btn" data-tab="mavzular" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
@@ -131821,20 +132046,7 @@
 
         if (u.lessons && u.lessons.length > 0) {
           u.lessons.forEach(function(les) {
-            h += '<div class="eth-wb-lesson-row" onclick="if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonA1(' + u.unit + ', \'' + les.code + '\');" ' +
-              'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);cursor:pointer;transition:all 0.15s ease;" ' +
-              'onmouseover="this.style.background=\'rgba(255,255,255,0.08)\';this.style.borderColor=\'#10b981\';" ' +
-              'onmouseout="this.style.background=\'rgba(255,255,255,0.03)\';this.style.borderColor=\'rgba(255,255,255,0.05)\';">' +
-              '<div style="min-width:0;flex:1;">' +
-                '<div style="font-size:13px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
-                '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
-              '</div>' +
-              '<button type="button" onclick="event.stopPropagation();if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonA1(' + u.unit + ', \'' + les.code + '\');" ' +
-                'style="flex:none;background:linear-gradient(135deg, #059669, #10b981);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:11.5px;font-weight:900;cursor:pointer;letter-spacing:0.03em;box-shadow:0 4px 12px rgba(16,185,129,0.4);transition:transform 0.15s ease;" ' +
-                'onmouseover="this.style.transform=\'scale(1.05)\';" onmouseout="this.style.transform=\'scale(1)\';">' +
-                'Boshlash ➔' +
-              '</button>' +
-            '</div>';
+            h += WB.renderCatalogLessonRowHtml(u.unit, les, 'a1');
           });
         }
 
@@ -131983,6 +132195,9 @@
         '</div>' +
       '</div>';
 
+    // Active Homework Banner (if assigned)
+    h += WB.renderCatalogHomeworkBannerHtml();
+
     // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
     h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
       '<button type="button" class="eth-wb-subtab-btn" data-tab="mavzular" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
@@ -132023,20 +132238,7 @@
 
         if (u.lessons && u.lessons.length > 0) {
           u.lessons.forEach(function(les) {
-            h += '<div class="eth-wb-lesson-row" onclick="if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonA2(' + u.unit + ', \'' + les.code + '\');" ' +
-              'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);cursor:pointer;transition:all 0.15s ease;" ' +
-              'onmouseover="this.style.background=\'rgba(255,255,255,0.08)\';this.style.borderColor=\'#0284c7\';" ' +
-              'onmouseout="this.style.background=\'rgba(255,255,255,0.03)\';this.style.borderColor=\'rgba(255,255,255,0.05)\';">' +
-              '<div style="min-width:0;flex:1;">' +
-                '<div style="font-size:13px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
-                '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
-              '</div>' +
-              '<button type="button" onclick="event.stopPropagation();if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonA2(' + u.unit + ', \'' + les.code + '\');" ' +
-                'style="flex:none;background:linear-gradient(135deg, #0284c7, #0ea5e9);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:11.5px;font-weight:900;cursor:pointer;letter-spacing:0.03em;box-shadow:0 4px 12px rgba(2,132,199,0.4);transition:transform 0.15s ease;" ' +
-                'onmouseover="this.style.transform=\'scale(1.05)\';" onmouseout="this.style.transform=\'scale(1)\';">' +
-                'Boshlash ➔' +
-              '</button>' +
-            '</div>';
+            h += WB.renderCatalogLessonRowHtml(u.unit, les, 'a2');
           });
         }
 
@@ -132185,6 +132387,9 @@
         '</div>' +
       '</div>';
 
+    // Active Homework Banner (if assigned)
+    h += WB.renderCatalogHomeworkBannerHtml();
+
     // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
     h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
       '<button type="button" class="eth-wb-subtab-btn" data-tab="mavzular" style="flex:1;min-width:140px;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;' +
@@ -132225,20 +132430,7 @@
 
         if (u.lessons && u.lessons.length > 0) {
           u.lessons.forEach(function(les) {
-            h += '<div class="eth-wb-lesson-row" onclick="if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB1Pre(' + u.unit + ', \'' + les.code + '\');" ' +
-              'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);cursor:pointer;transition:all 0.15s ease;" ' +
-              'onmouseover="this.style.background=\'rgba(255,255,255,0.08)\';this.style.borderColor=\'#8b5cf6\';" ' +
-              'onmouseout="this.style.background=\'rgba(255,255,255,0.03)\';this.style.borderColor=\'rgba(255,255,255,0.05)\';">' +
-              '<div style="min-width:0;flex:1;">' +
-                '<div style="font-size:13px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
-                '<div style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
-              '</div>' +
-              '<button type="button" onclick="event.stopPropagation();if (window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.openLessonB1Pre(' + u.unit + ', \'' + les.code + '\');" ' +
-                'style="flex:none;background:linear-gradient(135deg, #7c3aed, #8b5cf6);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:11.5px;font-weight:900;cursor:pointer;letter-spacing:0.03em;box-shadow:0 4px 12px rgba(139,92,246,0.4);transition:transform 0.15s ease;" ' +
-                'onmouseover="this.style.transform=\'scale(1.05)\';" onmouseout="this.style.transform=\'scale(1)\';">' +
-                'Boshlash ➔' +
-              '</button>' +
-            '</div>';
+            h += WB.renderCatalogLessonRowHtml(u.unit, les, 'b1_pre');
           });
         }
 
@@ -132387,6 +132579,82 @@
     var isEditor = isTeacher && (window._ethithWbEditorMode === true);
     var curZoom = window._ethWbZoom || 1;
     var curZoomPct = Math.round(curZoom * 100);
+
+    // Homework Lock and One-Time Submission Enforcement for Students
+    var S = window.S || {};
+    var curUser = (S.user) || {};
+    var isStudent = curUser && curUser.role === 'student';
+
+    if (isStudent) {
+      var myClasses = (S.classes || []).filter(function(cls) {
+        return (cls.students || []).some(function(st) {
+          return st.id === curUser.id || st.email === curUser.email || (curUser.phone && st.phone === curUser.phone);
+        });
+      });
+
+      var activeHwFound = null;
+      var activeClsFound = null;
+      myClasses.forEach(function(cls) {
+        if (cls.activeHomework && cls.activeHomework.lessonCode) {
+          activeHwFound = cls.activeHomework;
+          activeClsFound = cls;
+        }
+      });
+
+      if (activeHwFound) {
+        var assignedLessonCode = String(activeHwFound.lessonCode || '').trim();
+        var currentLessonCode = String(lessonCode || '').trim();
+        var assignedUnit = parseInt(activeHwFound.unit, 10);
+        var currentUnit = parseInt(unitNum, 10);
+
+        // Check if student is trying to open an unassigned unit/lesson
+        if (assignedLessonCode !== currentLessonCode || assignedUnit !== currentUnit) {
+          container.innerHTML = '<div style="max-width:540px;margin:50px auto;text-align:center;background:linear-gradient(145deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(239,68,68,0.45);border-radius:24px;padding:36px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.7);color:#fff;">' +
+            '<div style="font-size:52px;margin-bottom:12px;">🔒</div>' +
+            '<h2 style="font-size:22px;font-weight:900;margin:0 0 10px;color:#f87171;">Ushbu Dars Qulflangan!</h2>' +
+            '<p style="font-size:14px;color:#cbd5e1;line-height:1.5;margin:0 0 24px;">' +
+              'Ustozingiz hozirda faqat <b style="color:#38bdf8;">Unit ' + assignedUnit + ' — ' + (activeHwFound.lessonTitle || assignedLessonCode) + '</b> darsini uy vazifasi qilib belgilagan.<br>Barcha boshqa unitlar qulflangan.' +
+            '</p>' +
+            '<button onclick="window.ethithOpenApp(\'dash\')" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:12px 28px;font-size:14px;font-weight:800;cursor:pointer;">' +
+              '← Bosh sahifaga qaytish' +
+            '</button>' +
+          '</div>';
+          return;
+        }
+
+        // Check if student already submitted this homework (One-time submission only!)
+        var pastRecord = null;
+        if (activeClsFound && activeClsFound.attendance && activeClsFound.attendance.records) {
+          var recDate = activeClsFound.attendance.records[activeHwFound.dateKey];
+          if (recDate) {
+            pastRecord = recDate[curUser.id] || recDate[curUser.email];
+          }
+        }
+        var localKey = 'ethith_hw_completed_' + (curUser.id || curUser.email) + '_' + (activeHwFound.dateKey || '') + '_' + currentLessonCode;
+        var localDone = false;
+        try { localDone = !!JSON.parse(localStorage.getItem(localKey) || 'null'); } catch(e) {}
+
+        if ((pastRecord && (pastRecord.score || pastRecord.hwDone)) || localDone) {
+          var displayScore = (pastRecord && pastRecord.score) || '5';
+          var displayPct = (pastRecord && pastRecord.hwPct) || 100;
+
+          container.innerHTML = '<div style="max-width:540px;margin:50px auto;text-align:center;background:linear-gradient(145deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(16,185,129,0.45);border-radius:24px;padding:36px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.7);color:#fff;">' +
+            '<div style="font-size:52px;margin-bottom:12px;">✅</div>' +
+            '<h2 style="font-size:22px;font-weight:900;margin:0 0 10px;color:#34d399;">Siz Ushbu Vazifani Topshirgansiz!</h2>' +
+            '<div style="display:inline-block;background:rgba(16,185,129,0.18);border:1px solid rgba(52,211,153,0.4);border-radius:12px;padding:8px 20px;font-size:18px;font-weight:900;color:#34d399;margin-bottom:14px;">' +
+              'Baho: ' + displayScore + ' (' + displayPct + '%)' +
+            '</div>' +
+            '<p style="font-size:13.5px;color:#94a3b8;line-height:1.5;margin:0 0 24px;">' +
+              'Sizning javoblaringiz muvaffaqiyatli qabul qilingan va ustozingiz davomat jurnaliga kiritilgan. Tizim qoidasiga ko‘ra vazifani qayta ishlashga ruxsat berilmaydi.' +
+            '</p>' +
+            '<button onclick="window.ethithOpenApp(\'dash\')" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:12px 28px;font-size:14px;font-weight:800;cursor:pointer;">' +
+              '← Bosh sahifaga qaytish' +
+            '</button>' +
+          '</div>';
+          return;
+        }
+      }
+    }
 
     WB._currentLesson = {
       container: container,
@@ -133249,13 +133517,25 @@
           }
         }
 
+        // If student is completing assigned homework, persist completion permanently
+        if (curUser && curUser.role === 'student') {
+          try {
+            var compKey = 'ethith_hw_completed_' + (curUser.id || curUser.email) + '_' + lessonCode;
+            localStorage.setItem(compKey, JSON.stringify({ done: true, grade: autoDailyGrade, pct: pct, timestamp: Date.now() }));
+            if (window._ethithActiveHwContext && window._ethithActiveHwContext.dateKey) {
+              var compKeyDate = 'ethith_hw_completed_' + (curUser.id || curUser.email) + '_' + window._ethithActiveHwContext.dateKey + '_' + lessonCode;
+              localStorage.setItem(compKeyDate, JSON.stringify({ done: true, grade: autoDailyGrade, pct: pct, timestamp: Date.now() }));
+            }
+          } catch(e) {}
+        }
+
         // Show Interactive Result Modal Popup per User Requirement
-        WB.showResultModal(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade);
+        WB.showResultModal(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade, isStudent);
       });
     }
 
-    // Interactive Result Modal Popup (Percentage Meter, Review Mistakes, Retake)
-    WB.showResultModal = function(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade) {
+    // Interactive Result Modal Popup (Percentage Meter, Review Mistakes, Exit)
+    WB.showResultModal = function(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade, isStudentUser) {
       var existing = document.getElementById('ethWbResultModalOverlay');
       if (existing) existing.remove();
 
@@ -133264,21 +133544,21 @@
       var subtitle = "Ajoyib natija! Barakalla!";
       if (pct < 50) {
         emoji = "💪";
-        subtitle = "Yana bir bor urinib ko‘ring, albatta uddalaysiz!";
+        subtitle = "Natijangiz qayd etildi va o‘qituvchi jurnaliga baho qo‘yildi.";
       } else if (pct < 80) {
         emoji = "👍";
-        subtitle = "Yaxshi harakat! Xatolarni ko‘rib chiqing va qayta topshiring.";
+        subtitle = "Yaxshi harakat! Natijangiz davomat jurnaliga kiritildi.";
       }
 
       var ov = document.createElement('div');
       ov.id = 'ethWbResultModalOverlay';
-      ov.style.cssText = 'position:fixed;inset:0;background:rgba(5,10,24,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;animation:ethFadeIn 0.2s ease-out;';
+      ov.style.cssText = 'position:fixed;inset:0;background:rgba(5,10,24,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;animation:ethFadeIn 0.2s ease-out;';
 
       ov.innerHTML = 
         '<div id="ethWbResultModal" style="background:#0f172a;border:1.5px solid rgba(56,189,248,0.35);box-shadow:0 25px 60px -15px rgba(0,0,0,0.85), 0 0 40px rgba(14,165,233,0.25);border-radius:24px;width:100%;max-width:420px;padding:28px 24px;position:relative;text-align:center;color:#fff;animation:ethScaleIn 0.25s ease-out;">' +
           '<button id="ethWbModalCloseX" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background 0.2s;">✕</button>' +
           '<div style="font-size:44px;margin-bottom:6px;">' + emoji + '</div>' +
-          '<div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#38bdf8;margin-bottom:4px;">Workbook Natijasi</div>' +
+          '<div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#38bdf8;margin-bottom:4px;">Uy Vazifasi Natijasi</div>' +
           '<div style="font-size:48px;font-weight:900;line-height:1.1;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;">' + pct + '%</div>' +
           '<p style="font-size:13.5px;color:#94a3b8;margin:0 0 20px;line-height:1.45;">' + subtitle + '</p>' +
           
@@ -133302,27 +133582,52 @@
             '</div>' +
           '</div>' +
 
-          // Action Buttons
+          // Action Buttons - For Students: NO RETAKE ALLOWED!
           '<div style="display:flex;flex-direction:column;gap:10px;">' +
             '<button id="ethWbModalReviewBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:14px;padding:13px;font-size:14.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px -4px rgba(2,132,199,0.5);transition:opacity 0.2s;">' +
               '<span>🔍</span> Xatolarni ko‘rish' +
             '</button>' +
-            '<button id="ethWbModalRetakeBtn" style="background:rgba(255,255,255,0.06);color:#f1f5f9;border:1.5px solid rgba(255,255,255,0.15);border-radius:14px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.2s;">' +
-              '<span>↻</span> Qaytadan boshlash' +
-            '</button>' +
+            (isStudentUser ? 
+              '<button id="ethWbModalExitBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:14px;padding:13px;font-size:14.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px -4px rgba(16,185,129,0.5);">' +
+                '<span>🚪</span> Chiqish va Bosh sahifaga qaytish' +
+              '</button>'
+              :
+              '<button id="ethWbModalRetakeBtn" style="background:rgba(255,255,255,0.06);color:#f1f5f9;border:1.5px solid rgba(255,255,255,0.15);border-radius:14px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.2s;">' +
+                '<span>↻</span> Qaytadan boshlash' +
+              '</button>'
+            ) +
           '</div>' +
         '</div>';
 
       document.body.appendChild(ov);
 
+      function exitToDash() {
+        ov.remove();
+        if (typeof window.ethithOpenApp === 'function') {
+          window.ethithOpenApp('dash');
+        } else if (typeof window.go === 'function') {
+          window.go('dash');
+        }
+      }
+
       // Close button
       ov.querySelector('#ethWbModalCloseX').addEventListener('click', function() {
-        ov.remove();
+        if (isStudentUser) exitToDash();
+        else ov.remove();
       });
+
+      // Exit button for student
+      var exitBtn = ov.querySelector('#ethWbModalExitBtn');
+      if (exitBtn) {
+        exitBtn.addEventListener('click', exitToDash);
+      }
 
       // Close on backdrop click outside modal
       ov.addEventListener('click', function(e) {
-        if (e.target === ov) ov.remove();
+        if (e.target === ov) {
+          if (isStudentUser) exitToDash();
+          else ov.remove();
+        }
       });
 
       // Xatolarni ko'rish
@@ -133346,18 +133651,21 @@
         }
       });
 
-      // Qaytadan boshlash
-      ov.querySelector('#ethWbModalRetakeBtn').addEventListener('click', function() {
-        ov.remove();
-        var resetBtn = document.getElementById('ethWbResetBtn');
-        if (resetBtn) resetBtn.click();
-        var pagesWrap = document.getElementById('ethWbPagesWrap');
-        if (pagesWrap) {
-          pagesWrap.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      });
+      // Qaytadan boshlash (Faqat o'qituvchi rejimida)
+      var retakeBtn = ov.querySelector('#ethWbModalRetakeBtn');
+      if (retakeBtn) {
+        retakeBtn.addEventListener('click', function() {
+          ov.remove();
+          var resetBtn = document.getElementById('ethWbResetBtn');
+          if (resetBtn) resetBtn.click();
+          var pagesWrap = document.getElementById('ethWbPagesWrap');
+          if (pagesWrap) {
+            pagesWrap.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      }
     };
 
     // Reset Button

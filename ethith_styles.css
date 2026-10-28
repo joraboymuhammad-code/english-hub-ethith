@@ -661,20 +661,22 @@ html, body {
   50% { opacity: 0; }
 }
 
-/* Dark Mode Overrides for AI */
+/* Dark Mode Overrides for AI with Cyber Neon Personality */
 [data-theme="dark"] .ask-ai-container {
-  background: #081322 !important;
-  border-color: #1b3252 !important;
+  background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.14) 0%, #081322 75%) !important;
+  border: 1.5px solid rgba(168, 85, 247, 0.4) !important;
+  box-shadow: 0 0 35px rgba(139, 92, 246, 0.25) !important;
 }
 
 [data-theme="dark"] .ask-ai-sidebar,
 [data-theme="dark"] .ask-ai-history-panel {
-  background: #0b172a !important;
-  border-color: #1b3252 !important;
+  background: rgba(11, 23, 42, 0.85) !important;
+  border-color: rgba(139, 92, 246, 0.25) !important;
+  backdrop-filter: blur(10px);
 }
 
 [data-theme="dark"] .ask-ai-main {
-  background: #081322 !important;
+  background: transparent !important;
 }
 
 [data-theme="dark"] .ask-ai-msg.ai .ask-ai-bubble {
@@ -6702,34 +6704,34 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   }
 }
 
-/* Rank 1: Crowned Golden Champion */
+/* Rank 1: Crowned Golden Cyber Neon Champion */
 .eth-lb-card-1 {
   flex: 1;
   max-width: 320px;
   box-sizing: border-box !important;
-  background: linear-gradient(145deg, rgba(120, 53, 15, 0.35) 0%, rgba(217, 119, 6, 0.15) 100%);
-  border: 2px solid #f59e0b;
-  border-radius: 20px;
-  padding: 24px 16px;
+  background: radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.35) 0%, rgba(15, 23, 42, 0.9) 85%);
+  border: 2px solid #fbbf24;
+  border-radius: 22px;
+  padding: 26px 18px;
   text-align: center;
-  box-shadow: 0 0 30px rgba(245, 158, 11, 0.35), inset 0 0 15px rgba(254, 240, 138, 0.2);
+  box-shadow: 0 0 35px rgba(245, 158, 11, 0.6), inset 0 0 25px rgba(251, 191, 36, 0.25);
   position: relative;
   transform: translateY(-12px);
-  animation: ethChampionPulse 3s ease-in-out infinite alternate;
+  animation: ethChampionPulse 2.8s ease-in-out infinite alternate;
 }
 
 @keyframes ethChampionPulse {
-  0% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.3); transform: translateY(-12px); }
-  100% { box-shadow: 0 0 45px rgba(245, 158, 11, 0.6); transform: translateY(-16px); }
+  0% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.45), inset 0 0 15px rgba(251, 191, 36, 0.2); transform: translateY(-12px); }
+  100% { box-shadow: 0 0 50px rgba(245, 158, 11, 0.8), inset 0 0 30px rgba(251, 191, 36, 0.4); transform: translateY(-16px); }
 }
 
 .eth-crown-badge {
   position: absolute;
-  top: -24px;
+  top: -26px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 32px;
-  filter: drop-shadow(0 4px 10px rgba(245, 158, 11, 0.8));
+  font-size: 36px;
+  filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.9));
   animation: ethCrownFloat 2.4s ease-in-out infinite alternate;
 }
 
@@ -6739,44 +6741,44 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   100% { transform: translateX(-50%) translateY(0) rotate(4deg); }
 }
 
-/* Rank 2: Silver Motion */
+/* Rank 2: Electric Cyan Cyber Neon */
 .eth-lb-card-2 {
   flex: 1;
   max-width: 290px;
   box-sizing: border-box !important;
-  background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.3) 100%);
-  border: 2px solid #94a3b8;
-  border-radius: 18px;
-  padding: 20px 14px;
+  background: radial-gradient(circle at 50% 10%, rgba(6, 182, 212, 0.28) 0%, rgba(15, 23, 42, 0.9) 85%);
+  border: 2px solid #06b6d4;
+  border-radius: 20px;
+  padding: 22px 16px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(148, 163, 184, 0.3);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.45), inset 0 0 20px rgba(6, 182, 212, 0.15);
   position: relative;
   animation: ethSilverSway 3.5s ease-in-out infinite alternate;
 }
 
 @keyframes ethSilverSway {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-5px); }
+  0% { transform: translateY(0); box-shadow: 0 0 25px rgba(6, 182, 212, 0.35); }
+  100% { transform: translateY(-6px); box-shadow: 0 0 40px rgba(6, 182, 212, 0.65); }
 }
 
-/* Rank 3: Bronze Motion */
+/* Rank 3: Radiant Amber Cyber Neon */
 .eth-lb-card-3 {
   flex: 1;
   max-width: 290px;
   box-sizing: border-box !important;
-  background: linear-gradient(145deg, rgba(67, 20, 7, 0.35) 0%, rgba(120, 53, 15, 0.2) 100%);
-  border: 2px solid #d97706;
-  border-radius: 18px;
-  padding: 20px 14px;
+  background: radial-gradient(circle at 50% 10%, rgba(249, 115, 22, 0.28) 0%, rgba(15, 23, 42, 0.9) 85%);
+  border: 2px solid #f97316;
+  border-radius: 20px;
+  padding: 22px 16px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(217, 119, 6, 0.25);
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.45), inset 0 0 20px rgba(249, 115, 22, 0.15);
   position: relative;
   animation: ethBronzeSway 3.8s ease-in-out infinite alternate;
 }
 
 @keyframes ethBronzeSway {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-4px); }
+  0% { transform: translateY(0); box-shadow: 0 0 25px rgba(249, 115, 22, 0.35); }
+  100% { transform: translateY(-5px); box-shadow: 0 0 40px rgba(249, 115, 22, 0.65); }
 }
 
 /* Rank 4+ Regular Minimalist Rows */
@@ -6892,26 +6894,41 @@ body[data-theme="light"] .eth-worksheet-wrapper,
   gap: 14px;
 }
 
-/* Neat Static Pack Card */
+/* Futuristic Cyber Neon Pack Card */
 .eth-pack-card {
-  border-radius: 16px;
-  padding: 16px 14px;
+  border-radius: 20px;
+  padding: 18px 16px;
   color: #ffffff;
   position: relative;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
   cursor: pointer;
-  transform: none !important;
+  backdrop-filter: blur(12px);
 }
 
 .eth-pack-card:hover {
-  border-color: #60a5fa;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
-  transform: none !important;
+  transform: translateY(-6px) scale(1.02) !important;
+  border-color: #38bdf8;
+  box-shadow: 0 14px 35px rgba(56, 189, 248, 0.35), 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.eth-pack-card[data-rarity="legendary"]:hover {
+  border-color: #fbbf24;
+  box-shadow: 0 14px 35px rgba(245, 158, 11, 0.45), 0 0 25px rgba(251, 191, 36, 0.35);
+}
+
+.eth-pack-card[data-rarity="epic"]:hover {
+  border-color: #c084fc;
+  box-shadow: 0 14px 35px rgba(168, 85, 247, 0.45), 0 0 25px rgba(192, 132, 252, 0.3);
+}
+
+.eth-pack-card[data-rarity="rare"]:hover {
+  border-color: #34d399;
+  box-shadow: 0 14px 35px rgba(16, 185, 129, 0.45), 0 0 25px rgba(52, 211, 153, 0.3);
 }
 
 .eth-pack-badge {
@@ -9517,3 +9534,68 @@ html, body {
   transition: width 0.4s ease !important;
 }
 
+
+/* Cyber Futuristic Neon Badges for Sidebar and Menus */
+.neon-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 9px !important;
+  font-size: 14px !important;
+  margin-right: 8px !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35) !important;
+  transition: all 0.25s ease !important;
+  flex-shrink: 0 !important;
+}
+.neon-badge-cyan {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(14, 165, 233, 0.15)) !important;
+  border: 1.5px solid rgba(34, 211, 238, 0.6) !important;
+  color: #22d3ee !important;
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.5) !important;
+}
+.neon-badge-gold {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(217, 119, 6, 0.15)) !important;
+  border: 1.5px solid rgba(251, 191, 36, 0.6) !important;
+  color: #fbbf24 !important;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.55) !important;
+}
+.neon-badge-emerald {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(5, 150, 105, 0.15)) !important;
+  border: 1.5px solid rgba(52, 211, 153, 0.6) !important;
+  color: #34d399 !important;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.5) !important;
+}
+.neon-badge-purple {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(126, 34, 206, 0.15)) !important;
+  border: 1.5px solid rgba(192, 132, 252, 0.6) !important;
+  color: #c084fc !important;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.55) !important;
+}
+.neon-badge-amber {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.25), rgba(194, 65, 12, 0.15)) !important;
+  border: 1.5px solid rgba(251, 146, 60, 0.6) !important;
+  color: #fb923c !important;
+  box-shadow: 0 0 14px rgba(249, 115, 22, 0.5) !important;
+}
+.ap-item:hover .neon-badge-cyan, .ap-item.active .neon-badge-cyan {
+  transform: scale(1.12) !important;
+  box-shadow: 0 0 22px rgba(6, 182, 212, 0.85) !important;
+}
+.ap-item:hover .neon-badge-gold, .ap-item.active .neon-badge-gold {
+  transform: scale(1.12) !important;
+  box-shadow: 0 0 22px rgba(245, 158, 11, 0.9) !important;
+}
+.ap-item:hover .neon-badge-emerald, .ap-item.active .neon-badge-emerald {
+  transform: scale(1.12) !important;
+  box-shadow: 0 0 22px rgba(16, 185, 129, 0.85) !important;
+}
+.ap-item:hover .neon-badge-purple, .ap-item.active .neon-badge-purple {
+  transform: scale(1.12) !important;
+  box-shadow: 0 0 22px rgba(168, 85, 247, 0.9) !important;
+}
+.ap-item:hover .neon-badge-amber, .ap-item.active .neon-badge-amber {
+  transform: scale(1.12) !important;
+  box-shadow: 0 0 22px rgba(249, 115, 22, 0.85) !important;
+}

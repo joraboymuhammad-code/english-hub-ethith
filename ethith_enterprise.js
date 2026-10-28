@@ -23,14 +23,19 @@
 
   function getStore() {
     var appState = (window.EthithApp && window.EthithApp.state) || {};
+    if (window.ETHITH_INITIAL_STORE) {
+      if ((!appState.teachers || appState.teachers.length === 0) && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
+        appState.teachers = JSON.parse(JSON.stringify(window.ETHITH_INITIAL_STORE.teachers));
+      }
+      if ((!appState.classes || appState.classes.length === 0) && Array.isArray(window.ETHITH_INITIAL_STORE.classes)) {
+        appState.classes = JSON.parse(JSON.stringify(window.ETHITH_INITIAL_STORE.classes));
+      }
+    }
     if (!appState.centerSettings) {
       appState.centerSettings = { card: "8600 4912 7731 9024", cardHolder: "ETHITH LEARNING CENTER", baseTuition: 200000, currency: "UZS" };
     }
     if (!appState.teachers || appState.teachers.length === 0) {
-      appState.teachers = [
-        { id: "admin_official_teacher", name: "Ustoz", email: "teacher@ethith.uz", phone: "+998 90 123 45 67", card: "8600 1122 3344 5566", monthlySalary: 6000000, hourlyRate: 100000, teachingHours: 72, paidThisMonth: true, assignedClasses: ["cls_ethith_main", "cls_upper_intermediate"] },
-        { id: "t_zizi", name: "Zizi Ustoz", email: "zizi@ethith.uz", phone: "+998 93 987 65 43", card: "9860 7788 9900 1122", monthlySalary: 5500000, hourlyRate: 85000, teachingHours: 64, paidThisMonth: false, assignedClasses: ["cls_1792041880052"] }
-      ];
+      appState.teachers = (window.EA && window.EA.getStoreTeachers ? window.EA.getStoreTeachers() : []);
     }
     if (!appState.fileExplorer || !appState.fileExplorer.folders || appState.fileExplorer.folders.length === 0) {
       appState.fileExplorer = {
@@ -75,10 +80,10 @@
     }
     if (!appState.timetable || appState.timetable.length === 0) {
       appState.timetable = [
-        { id: "tt_1", time: "08:00 - 09:30", days: "Du-Chor-Jum", teacherId: "t_zizi", teacherName: "Zizi Ustoz", classId: "cls_1792041880052", className: "Bizani gurux (B1+)", room: "Room 101 (Green Room)" },
-        { id: "tt_2", time: "10:00 - 11:30", days: "Du-Chor-Jum", teacherId: "admin_official_teacher", teacherName: "Ustoz", classId: "cls_ethith_main", className: "IELTS Intensive (B2)", room: "Room 102 (Blue Room)" },
-        { id: "tt_3", time: "14:00 - 15:30", days: "Se-Pay-Shan", teacherId: "t_zizi", teacherName: "Zizi Ustoz", classId: "cls_1792041880052", className: "Bizani gurux (B1+)", room: "Room 101 (Green Room)" },
-        { id: "tt_4", time: "16:00 - 17:30", days: "Se-Pay-Shan", teacherId: "admin_official_teacher", teacherName: "Ustoz", classId: "cls_ethith_main", className: "IELTS Intensive (B2)", room: "Room 102 (Blue Room)" }
+        { id: "tt_1", time: "08:00 - 09:30", days: "Du-Chor-Jum", teacherId: "t_urolov_azizbek", teacherName: "Azizbek Urolov", classId: "cls_urolov_azizbek_upper", className: "Upper-Intermediate", room: "Room 101 (Green Room)" },
+        { id: "tt_2", time: "10:00 - 11:30", days: "Du-Chor-Jum", teacherId: "t_ravshanov_doniyor", teacherName: "Ravshanov Doniyor", classId: "cls_ravshanov_doniyor_cefr_1", className: "CEFR_1", room: "Room 102 (Blue Room)" },
+        { id: "tt_3", time: "14:00 - 15:30", days: "Se-Pay-Shan", teacherId: "t_urolov_azizbek", teacherName: "Azizbek Urolov", classId: "cls_urolov_azizbek_standard", className: "Standard", room: "Room 101 (Green Room)" },
+        { id: "tt_4", time: "16:00 - 17:30", days: "Se-Pay-Shan", teacherId: "t_ravshanov_doniyor", teacherName: "Ravshanov Doniyor", classId: "cls_ravshanov_doniyor_cefr_2", className: "CEFR_2", room: "Room 102 (Blue Room)" }
       ];
     }
     if (!appState.contests || appState.contests.length === 0) {
@@ -151,17 +156,20 @@
     if (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) {
       return window.EthithApp.state.user;
     }
-    return { id: 'admin_official_teacher', role: 'teacher', name: 'Ustoz' };
+    if (window.S && window.S.user) {
+      return window.S.user;
+    }
+    return null;
   }
 
   function isAdminOrTeacher() {
     var u = getCurrentUser();
-    return u && (u.role === 'teacher' || u.role === 'admin' || u.id === 'admin_official_teacher');
+    return u && (u.role === 'teacher' || u.role === 'admin');
   }
 
   function isTeacher() {
     var u = getCurrentUser();
-    return u && (u.role === 'teacher' || u.id === 'admin_official_teacher');
+    return u && (u.role === 'teacher');
   }
 
   function getActiveMonthKey() {
@@ -208,41 +216,115 @@
     var S = getStore();
     var fe = S.fileExplorer || { folders: [], tests: [] };
     var isStaff = isTeacher();
+    var curUser = getCurrentUser();
+    var isAdmin = curUser && (curUser.role === 'admin' || (curUser.email && curUser.email.toLowerCase().includes('admin')));
     var selectedFolderId = null;
 
-    // Ensure root folder exists
+    // Ensure system root folder exists
     if (!fe.folders.find(function(f) { return f.id === 'f_root'; })) {
       fe.folders.unshift({ id: 'f_root', name: 'Bosh Papka', parentId: null, createdAt: Date.now() });
       saveStore();
     }
 
-    var curFolder = fe.folders.find(function(f) { return f.id === currentFolderId; }) || fe.folders[0];
+    // Teacher Workspace Isolation ("alohida alohida uy kabi boshqa boshqa bo'lsin"):
+    var userRootId = 'f_root';
+    if (!isAdmin && curUser && curUser.role === 'teacher') {
+      userRootId = 'f_root_' + curUser.id;
+      var tRoot = fe.folders.find(function(f) { return f.id === userRootId; });
+      if (!tRoot) {
+        tRoot = {
+          id: userRootId,
+          name: (curUser.name || 'Ustoz') + ' (Shaxsiy Papka)',
+          ownerId: curUser.id,
+          parentId: null,
+          createdAt: Date.now()
+        };
+        fe.folders.push(tRoot);
+        saveStore();
+      }
+      if (currentFolderId === 'f_root') {
+        currentFolderId = userRootId;
+      } else {
+        var curFCheck = fe.folders.find(function(f) { return f.id === currentFolderId; });
+        if (!curFCheck || (curFCheck.ownerId && curFCheck.ownerId !== curUser.id)) {
+          currentFolderId = userRootId;
+        }
+      }
+    }
+
+    var curFolder = fe.folders.find(function(f) { return f.id === currentFolderId; }) || fe.folders.find(function(f) { return f.id === userRootId; }) || fe.folders[0];
 
     // Compute breadcrumb path
     var breadcrumbs = [];
     var fIter = curFolder;
     while (fIter) {
       breadcrumbs.unshift(fIter);
+      if (!isAdmin && fIter.id === userRootId) break;
       if (!fIter.parentId) break;
       fIter = fe.folders.find(function(f) { return f.id === fIter.parentId; });
     }
 
+    // Student's Teachers Identification
+    var myTeacherIds = [];
+    if (curUser && curUser.role === 'student') {
+      (S.classes || []).forEach(function(cls) {
+        var inClass = (cls.students || []).some(function(s) {
+          return s.id === curUser.id || s.email === curUser.email || (curUser.phone && s.phone === curUser.phone);
+        });
+        if (inClass && cls.teacherId) {
+          myTeacherIds.push(cls.teacherId);
+        }
+      });
+    }
+
     // Filter contents by current folder and search
     var subFolders = fe.folders.filter(function(f) {
-      if (f.id === 'f_root') return false;
+      if (f.id === 'f_root' || f.id === userRootId || (f.id.indexOf('f_root_') === 0 && !isAdmin)) return false;
+      if (!isAdmin && curUser && curUser.role === 'teacher') {
+        if (f.ownerId && f.ownerId !== curUser.id) return false;
+      }
+      if (curUser && curUser.role === 'student') {
+        if (myTeacherIds.length === 0) return false;
+        if (f.ownerId && !myTeacherIds.includes(f.ownerId)) return false;
+      }
       return f.parentId === curFolder.id;
     });
     var subTests = fe.tests.filter(function(t) {
-      return (t.folderId || 'f_root') === curFolder.id;
+      if (!isAdmin && curUser && curUser.role === 'teacher') {
+        var isOwner = (t.authorId === curUser.id || t.teacherId === curUser.id || t.creatorId === curUser.id);
+        if (!isOwner) return false;
+      }
+      if (curUser && curUser.role === 'student') {
+        if (myTeacherIds.length === 0) return false;
+        var belongsToMyTeacher = myTeacherIds.includes(t.authorId) || myTeacherIds.includes(t.teacherId) || myTeacherIds.includes(t.creatorId);
+        if (!belongsToMyTeacher) return false;
+      }
+      return (t.folderId || userRootId) === curFolder.id;
     });
 
     if (explorerSearchQuery.trim()) {
       var q = explorerSearchQuery.toLowerCase().trim();
       subFolders = fe.folders.filter(function(f) {
-        if (f.id === 'f_root') return false;
+        if (f.id === 'f_root' || f.id === userRootId || (f.id.indexOf('f_root_') === 0 && !isAdmin)) return false;
+        if (!isAdmin && curUser && curUser.role === 'teacher') {
+          if (f.ownerId !== curUser.id) return false;
+        }
+        if (curUser && curUser.role === 'student') {
+          if (myTeacherIds.length === 0) return false;
+          if (f.ownerId && !myTeacherIds.includes(f.ownerId)) return false;
+        }
         return f.name.toLowerCase().includes(q);
       });
       subTests = fe.tests.filter(function(t) {
+        if (!isAdmin && curUser && curUser.role === 'teacher') {
+          var isOwner = (t.authorId === curUser.id || t.teacherId === curUser.id || t.creatorId === curUser.id);
+          if (!isOwner) return false;
+        }
+        if (curUser && curUser.role === 'student') {
+          if (myTeacherIds.length === 0) return false;
+          var belongsToMyTeacher = myTeacherIds.includes(t.authorId) || myTeacherIds.includes(t.teacherId) || myTeacherIds.includes(t.creatorId);
+          if (!belongsToMyTeacher) return false;
+        }
         return (t.title && t.title.toLowerCase().includes(q)) || (t.id && t.id.toLowerCase().includes(q));
       });
     }
@@ -483,10 +565,12 @@
     if (newFolderBtn) {
       newFolderBtn.onclick = function() {
         var newFid = 'f_' + Date.now();
+        var curU = getCurrentUser();
         fe.folders.push({
           id: newFid,
           name: "Yangi Papka",
           parentId: currentFolderId,
+          ownerId: curU.id,
           createdAt: Date.now()
         });
         saveStore();
@@ -864,10 +948,12 @@
       var n = prompt("Yangi papka nomini kiriting:", "Yangi Papka");
       if (n && n.trim()) {
         var S = getStore();
+        var curU = getCurrentUser();
         S.fileExplorer.folders.push({
           id: 'f_' + Date.now(),
           name: n.trim(),
           parentId: folderId,
+          ownerId: curU.id,
           createdAt: Date.now()
         });
         saveStore();
@@ -1034,7 +1120,7 @@
         pin.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;border:2px solid #00c0ff;background:rgba(0,192,255,0.22);border-radius:6px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:auto;cursor:pointer;box-shadow:0 0 10px rgba(0,192,255,0.45);transition:all 0.15s ease;';
         pin.title = 'Tahrirlash: ' + (el.label || idx + 1) + ' (' + el.correct + ')';
 
-        var badgeLabel = (el.label ? el.label : (idx + 1)) + ': ' + esc(el.correct || el.type);
+        var badgeLabel = (el.label ? el.label : (idx + 1)) + ': ' + esc(el.correct || (el.options ? (Array.isArray(el.options) ? el.options.join('/') : el.options) : el.type));
         pin.innerHTML = '<span style="background:rgba(2,132,199,0.92);color:#fff;font-size:11px;font-weight:900;padding:2px 7px;border-radius:4px;pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:92%;">' + badgeLabel + '</span>' +
           '<button class="ee-quick-del-pin" data-idx="' + idx + '" style="position:absolute;top:-8px;right:-8px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:11px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.5);">✕</button>';
 
@@ -1069,38 +1155,45 @@
       drawBox.style.cssText = 'position:absolute;border:2px dashed #00c0ff;background:rgba(0,192,255,0.25);box-shadow:0 0 16px rgba(0,192,255,0.5);display:none;pointer-events:none;z-index:30;border-radius:4px;';
       overlay.appendChild(drawBox);
 
-      overlay.onmousedown = function(e) {
+      function onStart(e) {
         if (e.target.closest('.ee-visual-pin')) return;
+        var pt = (e.touches && e.touches[0]) ? e.touches[0] : e;
+        if (e.touches && e.touches.length > 1) return;
+        if (e.cancelable) e.preventDefault();
         isDrawing = true;
         var rect = overlay.getBoundingClientRect();
-        startX = e.clientX - rect.left;
-        startY = e.clientY - rect.top;
+        startX = pt.clientX - rect.left;
+        startY = pt.clientY - rect.top;
         drawBox.style.left = startX + 'px';
         drawBox.style.top = startY + 'px';
         drawBox.style.width = '0px';
         drawBox.style.height = '0px';
         drawBox.style.display = 'block';
-      };
+      }
 
-      window.addEventListener('mousemove', function(e) {
+      function onMove(e) {
         if (!isDrawing) return;
+        if (e.touches && e.touches.length > 1) return;
+        if (e.cancelable) e.preventDefault();
+        var pt = (e.touches && e.touches[0]) ? e.touches[0] : e;
         var rect = overlay.getBoundingClientRect();
-        var curX = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
-        var curY = Math.max(0, Math.min(rect.height, e.clientY - rect.top));
+        var curX = Math.max(0, Math.min(rect.width, pt.clientX - rect.left));
+        var curY = Math.max(0, Math.min(rect.height, pt.clientY - rect.top));
         drawBox.style.left = Math.min(startX, curX) + 'px';
         drawBox.style.top = Math.min(startY, curY) + 'px';
         drawBox.style.width = Math.abs(curX - startX) + 'px';
         drawBox.style.height = Math.abs(curY - startY) + 'px';
-      });
+      }
 
-      window.addEventListener('mouseup', function(e) {
+      function onEnd(e) {
         if (!isDrawing) return;
         isDrawing = false;
         drawBox.style.display = 'none';
 
+        var pt = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : e;
         var rect = overlay.getBoundingClientRect();
-        var endX = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
-        var endY = Math.max(0, Math.min(rect.height, e.clientY - rect.top));
+        var endX = Math.max(0, Math.min(rect.width, pt.clientX - rect.left));
+        var endY = Math.max(0, Math.min(rect.height, pt.clientY - rect.top));
         var wPx = Math.abs(endX - startX);
         var hPx = Math.abs(endY - startY);
 
@@ -1117,7 +1210,14 @@
             height: heightPct
           });
         }
-      });
+      }
+
+      overlay.addEventListener('mousedown', onStart);
+      overlay.addEventListener('touchstart', onStart, { passive: false });
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('touchmove', onMove, { passive: false });
+      window.addEventListener('mouseup', onEnd);
+      window.addEventListener('touchend', onEnd);
     }
 
     // Modal matching media_1793026528352_0eeda690.png
@@ -1133,6 +1233,7 @@
       var defaultLabel = isNew ? ((totalSoFar + 1).toString()) : (item.label || '');
       var defaultCorrect = isNew ? '' : (item.correct || '');
       var defaultType = isNew ? 'fill' : (item.type || 'fill');
+      var defaultOptions = isNew ? '' : (Array.isArray(item.options) ? item.options.join(', ') : (item.options || ''));
 
       km.innerHTML = '<div style="position:relative;width:360px;max-width:calc(100vw - 24px);background:#0f172a;border:2px solid #00c0ff;border-radius:16px;padding:18px 20px;box-shadow:0 25px 60px rgba(0,0,0,0.85);color:#f8fafc;box-sizing:border-box;">' +
         '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid #334155;padding-bottom:10px;">' +
@@ -1147,11 +1248,18 @@
           '<label style="display:block;font-size:11.5px;font-weight:800;margin-bottom:5px;color:#94a3b8;">Turi (interaction type):</label>' +
           '<select id="eeKatakchaType" style="width:100%;padding:8px 12px;border-radius:9px;border:1px solid #334155;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12.5px;outline:none;">' +
             '<option value="fill"' + (defaultType === 'fill' ? ' selected' : '') + '>Fill (O‘qib yozish)</option>' +
+            '<option value="select"' + (defaultType === 'select' ? ' selected' : '') + '>Select (Dropdown - Tanlash)</option>' +
             '<option value="cross"' + (defaultType === 'cross' ? ' selected' : '') + '>Cross (Chizib o‘chirish)</option>' +
             '<option value="choose"' + (defaultType === 'choose' ? ' selected' : '') + '>Choose (Variant tanlash)</option>' +
             '<option value="match"' + (defaultType === 'match' ? ' selected' : '') + '>Match (Harf bilan bog‘lash)</option>' +
             '<option value="insert"' + (defaultType === 'insert' ? ' selected' : '') + '>Insert (Prepozitsiya kiritish)</option>' +
           '</select>' +
+        '</div>' +
+
+        '<div id="eeKatakchaOptionsWrap" style="' + (defaultType === 'select' ? 'display:block;' : 'display:none;') + 'margin-bottom:12px;">' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;margin-bottom:5px;color:#38bdf8;">Variantlar (vergul bilan ajrating):</label>' +
+          '<input type="text" id="eeKatakchaOptions" value="' + esc(defaultOptions) + '" style="width:100%;padding:8px 12px;border-radius:9px;border:1.5px solid #0284c7;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12.5px;box-sizing:border-box;outline:none;" placeholder="masalan: Am I, I\'m not, Are you" />' +
+          '<div style="font-size:10.5px;color:#94a3b8;margin-top:4px;">O‘quvchi ochiladigan menyudan (dropdown) tanlaydi.</div>' +
         '</div>' +
 
         '<div style="margin-bottom:12px;">' +
@@ -1184,6 +1292,7 @@
       km.querySelector('#eeKatakchaCancelBtn').onclick = closeKm;
 
       var typeSel = km.querySelector('#eeKatakchaType');
+      var optionsWrap = km.querySelector('#eeKatakchaOptionsWrap');
       var correctInp = km.querySelector('#eeKatakchaCorrect');
       var labelInp = km.querySelector('#eeKatakchaLabel');
       var chooseHelper = km.querySelector('#eeKatakchaChooseHelper');
@@ -1193,9 +1302,15 @@
       typeSel.onchange = function() {
         if (typeSel.value === 'choose') {
           chooseHelper.style.display = 'flex';
+          optionsWrap.style.display = 'none';
           correctInp.placeholder = "To‘g‘ri yoki bo‘sh qoldiring";
+        } else if (typeSel.value === 'select') {
+          chooseHelper.style.display = 'none';
+          optionsWrap.style.display = 'block';
+          correctInp.placeholder = "To‘g‘ri javob (variantlardan biri)";
         } else {
           chooseHelper.style.display = 'none';
+          optionsWrap.style.display = 'none';
           correctInp.placeholder = "masalan: coast yoki a";
         }
       };
@@ -1223,10 +1338,15 @@
         var t = typeSel.value;
         var l = labelInp.value.trim();
         var c = correctInp.value.trim();
+        var rawOpts = (km.querySelector('#eeKatakchaOptions') ? km.querySelector('#eeKatakchaOptions').value : '');
+        var opts = rawOpts.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+        if (t === 'select' && opts.length > 0 && !c) {
+          c = opts[0];
+        }
 
         if (isNew) {
           if (!pageObj.elements) pageObj.elements = [];
-          pageObj.elements.push({
+          var newEl = {
             id: 'el_' + Date.now() + '_' + Math.floor(Math.random() * 100),
             top: newCoords.top,
             left: newCoords.left,
@@ -1236,11 +1356,18 @@
             label: l || ((getTotalElementsCount() + 1).toString()),
             correct: c,
             points: 1
-          });
+          };
+          if (t === 'select') newEl.options = opts;
+          pageObj.elements.push(newEl);
         } else {
           item.type = t;
           item.label = l;
           item.correct = c;
+          if (t === 'select') {
+            item.options = opts;
+          } else {
+            delete item.options;
+          }
         }
 
         renderPagePins(pageOverlay, pageObj);
@@ -1351,13 +1478,18 @@
       if (allElements.length === 0) { alert("Iltimos, varaq ustiga kamida 1 ta interaktiv katakcha belgilang!"); return; }
 
       var S = getStore();
+      var curU = getCurrentUser();
+      var defaultFid = (curU.role === 'teacher' && !isAdminOrTeacher() ? ('f_root_' + curU.id) : (curU.role === 'teacher' ? ('f_root_' + curU.id) : 'f_root'));
       S.fileExplorer.tests.push({
         id: randCode,
         title: title,
         type: 'visual_overlay',
-        folderId: folderId || 'f_root',
+        folderId: folderId || defaultFid,
         createdAt: Date.now(),
-        authorName: getCurrentUser().name || 'Ustoz',
+        authorId: curU.id,
+        teacherId: curU.id,
+        creatorId: curU.id,
+        authorName: curU.name || 'Ustoz',
         maxAttempts: attempts,
         pages: pagesData, // Multi-page support!
         imageUrl: pagesData[0].imageUrl, // Backward compatibility
@@ -1491,12 +1623,17 @@
       var title = m.querySelector('#eeNewTestTitle').value.trim();
       if (!title) { alert("Iltimos, test nomini kiriting!"); return; }
       var S = getStore();
+      var curU = getCurrentUser();
+      var defaultFid = (curU.role === 'teacher' ? ('f_root_' + curU.id) : 'f_root');
       S.fileExplorer.tests.push({
         id: randCode,
         title: title,
-        folderId: folderId || 'f_root',
+        folderId: folderId || defaultFid,
         createdAt: Date.now(),
-        authorName: getCurrentUser().name || 'Ustoz',
+        authorId: curU.id,
+        teacherId: curU.id,
+        creatorId: curU.id,
+        authorName: curU.name || 'Ustoz',
         maxAttempts: 1,
         questions: questions
       });
@@ -1577,6 +1714,21 @@
     if (!test) { alert("Test topilmadi!"); return; }
 
     var user = getCurrentUser();
+    if (user && user.role === 'student') {
+      var myTeacherIds = [];
+      (S.classes || []).forEach(function(cls) {
+        var inClass = (cls.students || []).some(function(s) {
+          return s.id === user.id || s.email === user.email || (user.phone && s.phone === user.phone);
+        });
+        if (inClass && cls.teacherId) myTeacherIds.push(cls.teacherId);
+      });
+      var isMyTeacher = myTeacherIds.includes(test.authorId) || myTeacherIds.includes(test.teacherId) || myTeacherIds.includes(test.creatorId);
+      if (!isMyTeacher) {
+        alert("🔒 Ushbu test sizning o‘qituvchingiz tomonidan biriktirilmagan. Siz faqat o‘z ustozingiz yaratgan testlarni yechishingiz mumkin!");
+        return;
+      }
+    }
+
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
 
     // Check user past submissions and allowed attempts
@@ -1683,6 +1835,20 @@
                       'box-sizing:border-box;background:rgba(255,255,255,0.55);border:1.5px solid rgba(2,132,199,0.5);border-bottom:2.5px solid #0284c7;border-radius:4px;color:#000000;font-weight:800;font-size:14px;padding:0 6px;outline:none;transition:all 0.15s ease;" ' +
                       'onfocus="this.style.background=\'#ffffff\';this.style.borderColor=\'#0284c7\';this.style.boxShadow=\'0 0 0 3px rgba(2,132,199,0.25)\';" ' +
                       'onblur="this.style.background=\'rgba(255,255,255,0.55)\';this.style.borderColor=\'rgba(2,132,199,0.5)\';this.style.boxShadow=\'none\';" />';
+                  } else if (itemType === 'select') {
+                    // Dropdown select (Oxford Navigate style)
+                    var optList = Array.isArray(el.options) ? el.options : (el.options ? String(el.options).split(',') : []);
+                    vh += '<select class="ee-take-input ee-take-select" data-id="' + el.id + '" data-correct="' + esc(el.correct || '') + '" ' +
+                      'style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;' +
+                      'box-sizing:border-box;background:#ffffff;border:1.5px solid #0284c7;border-radius:4px;color:#000000;font-weight:700;font-size:13px;padding:0 4px;outline:none;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.12);">' +
+                      '<option value="">-- Tanlang --</option>';
+                    optList.forEach(function(opt) {
+                      var trimmedOpt = (opt || '').trim();
+                      if (trimmedOpt) {
+                        vh += '<option value="' + esc(trimmedOpt) + '">' + esc(trimmedOpt) + '</option>';
+                      }
+                    });
+                    vh += '</select>';
                   } else if (itemType === 'cross') {
                     // Strikethrough chip
                     vh += '<div class="ee-take-chip ee-chip-cross" data-id="' + el.id + '" data-correct="' + esc(el.correct || '') + '" ' +
@@ -2024,10 +2190,15 @@
     if (!S.finance.expenses) S.finance.expenses = [];
     if (!S.finance.studentFees) S.finance.studentFees = {};
     if (!S.teachers || S.teachers.length === 0) {
-      S.teachers = [
-        { id: 'admin_official_teacher', name: 'Ustoz', email: 'teacher@ethith.uz', subject: 'Ingliz tili (IELTS Intensive)', hourlyRate: 100000, teachingHours: 72, monthlyBonus: 1000000, status: 'paid' },
-        { id: 't_zizi', name: 'Zizi Ustoz', email: 'zizi@ethith.uz', subject: 'Ingliz tili', hourlyRate: 85000, teachingHours: 64, monthlyBonus: 1000000, status: 'pending' }
-      ];
+      S.teachers = (window.EA && window.EA.getStoreTeachers ? window.EA.getStoreTeachers() : []);
+    }
+    if (Array.isArray(S.teachers)) {
+      S.teachers = S.teachers.filter(function(t) {
+        if (!t) return false;
+        var nm = (t.name || '').trim().toLowerCase();
+        var id = (t.id || '').trim();
+        return id !== 'admin_official_teacher' && id !== 't_zizi' && nm !== 'ustoz' && nm !== 'zizi ustoz';
+      });
     }
 
     // 2. Compute live financials
@@ -2610,9 +2781,17 @@
       var ctx = canvas.getContext('2d');
       if (_teacherDetailChartInstance) _teacherDetailChartInstance.destroy();
 
-      var tNames = (teachers || []).map(function(t) { return t.name; });
-      var tHours = (teachers || []).map(function(t) { return Number(t.teachingHours) || 0; });
-      var tEarnings = (teachers || []).map(function(t) {
+      var S = getStore();
+      var cleanTeachers = (teachers || S.teachers || []).filter(function(t) {
+        if (!t) return false;
+        var nm = (t.name || '').trim().toLowerCase();
+        var id = (t.id || '').trim().toLowerCase();
+        return id !== 'admin_official_teacher' && id !== 't_zizi' && nm !== 'ustoz' && nm !== 'zizi ustoz';
+      });
+
+      var tNames = cleanTeachers.map(function(t) { return t.name; });
+      var tHours = cleanTeachers.map(function(t) { return Number(t.teachingHours) || 0; });
+      var tEarnings = cleanTeachers.map(function(t) {
         return +(((Number(t.teachingHours) || 0) * (Number(t.hourlyRate) || 0) + (Number(t.monthlyBonus) || 0)) / 1000000).toFixed(2);
       });
 
@@ -2652,7 +2831,16 @@
             legend: { position: 'top', labels: { color: '#E2E8F0', font: { size: 11, weight: '700' } } }
           },
           scales: {
-            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#fff', font: { weight: '800' } } },
+            x: { 
+              grid: { color: 'rgba(255,255,255,0.05)' }, 
+              ticks: { 
+                color: '#fff', 
+                font: { weight: '800', size: 10 },
+                autoSkip: false,
+                maxRotation: 45,
+                minRotation: 35
+              } 
+            },
             y: {
               type: 'linear',
               display: true,
@@ -3805,6 +3993,12 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
       var classesWrap = document.querySelector('.ee-classes-wrap');
       if (classesWrap && classesWrap.parentElement) {
         EE.renderClassesView(classesWrap.parentElement);
+      }
+      if (window.EthithAttendance && window.EthithAttendance.render) {
+        var apV = document.getElementById('apView');
+        if (apV && (window._ethithCurrentView === 'classes' || window._ethithCurrentView === 'attendance')) {
+          window.EthithAttendance.render(apV);
+        }
       }
       if (window.go && window.location.hash.includes('dash')) {
         window.go('dash');

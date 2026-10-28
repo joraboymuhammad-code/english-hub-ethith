@@ -10,29 +10,7 @@
   var QUICK_EMOJIS_DEFAULT = ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '🚀', '💯', '🤝', '💡'];
   var ALL_EMOJIS = ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '🚀', '💯', '🤝', '💡', '😂', '🥳', '🤔', '😢', '🙏', '🎯', '✨', '🧠', '📚', '✍️', '🙌', '💪', '🏆', '⭐'];
 
-  var DEFAULT_CLASSES = [
-    {
-      id: 'cls_ethith_main',
-      name: 'IELTS & General English Intensive',
-      code: 'ETH-L6S8CM',
-      teacherId: 'joraboyevmuhammad85@gmail.com',
-      teacherName: 'Instructor Muhammadyusuf',
-      teacherEmail: 'joraboyevmuhammad85@gmail.com',
-      created: Date.now(),
-      students: [],
-      messages: [
-        {
-          id: 'msg_welcome_1',
-          senderId: 'joraboyevmuhammad85@gmail.com',
-          senderName: 'Instructor Muhammadyusuf',
-          text: 'Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.',
-          time: '12:00',
-          reactions: { '👍': ['joraboyevmuhammad85@gmail.com'] }
-        }
-      ],
-      pinnedId: null
-    }
-  ];
+  var DEFAULT_CLASSES = [];
 
   var PURGED_EMAILS = [
     'muhammedjoraboyev1@gmail.com', 'strikeruzb52@gmail.com', 'alisher@gmail.com',
@@ -81,7 +59,7 @@
     unlocked: { A1: 1, A2: 1, B1: 1, B2: 1, C1: 1, C2: 1 },
     mistakes: [],
     theme: 'dark',
-    classes: DEFAULT_CLASSES.slice(),
+    classes: [],
     exams: [],
     quizzes: [],
     deletedExamIds: [],
@@ -220,10 +198,8 @@
     S.accounts = dedupedAccounts;
   }
 
-  if (!S.classes || S.classes.length === 0) {
-    S.classes = DEFAULT_CLASSES.slice();
-  } else if (!S.classes.some(function(c) { return c.code === 'ETH-L6S8CM'; })) {
-    S.classes.unshift(DEFAULT_CLASSES[0]);
+  if (!Array.isArray(S.classes)) {
+    S.classes = [];
   }
 
   // Ensure aiConversations exists

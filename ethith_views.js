@@ -1381,11 +1381,10 @@
     var isTeacher = S.user && S.user.role === 'teacher';
     var userClasses = (S.classes || []).filter(function(c) {
       if (isTeacher) return true;
-      return c.students && c.students.some(function(s) { return s.id === S.user.id || s.email === S.user.email; });
+      return c.students && c.students.some(function(s) { 
+        return s.id === S.user.id || s.email === S.user.email || (S.user.phone && s.phone === S.user.phone); 
+      });
     });
-    if (!isTeacher && userClasses.length === 0 && Array.isArray(S.classes) && S.classes.length > 0) {
-      userClasses = [S.classes[0]];
-    }
 
     window._ethithRefreshClassesList = function() {
       if (!S.activeClassId && window._ethithCurrentView === 'classes') {
@@ -1396,37 +1395,54 @@
 
     if (S.activeClassId) {
       var activeCls = S.classes.find(function(c) { return c.id === S.activeClassId; });
-      if (activeCls) {
+      var isEnrolled = isTeacher || (activeCls && activeCls.students && activeCls.students.some(function(s) {
+        return s && (s.id === S.user.id || s.email === S.user.email || (S.user.phone && s.phone === S.user.phone));
+      }));
+      if (activeCls && isEnrolled) {
         renderClassDetail(container, activeCls);
         return;
+      } else {
+        S.activeClassId = null;
       }
     }
 
     var html = '' +
       '<div class="ap-sec" style="margin-top:0">' +
       '  <div>' +
-      '    <h2>' + ic('users') + ' Virtual Classrooms</h2>' +
-      '    <p>' + (isTeacher ? 'Create custom classes, monitor student performance in real-time, and collaborate via Telegram-style chat.' : 'Join a class using the 10-character code provided by your teacher.') + '</p>' +
+      '    <h2>' + ic('users') + (isTeacher ? ' O‘quv Guruhlarim' : ' Mening Guruhlarim') + '</h2>' +
+      '    <p>' + (isTeacher ? 'Guruhlar ro‘yxati, o‘quvchilar davomati va chat muloqotlari.' : 'O‘qituvchingiz guruhiga qo‘shiling va kunlik vazifalar hamda davomatda qatnashing.') + '</p>' +
       '  </div>' +
       (isTeacher ?
-        '  <button class="eth-btn-primary" id="btnCreateClass" style="width:auto;padding:10px 18px">' + ic('plus') + ' Create New Class</button>' :
-        '  <button class="eth-btn-primary" id="btnJoinClass" style="width:auto;padding:10px 18px">' + ic('right') + ' Join Class</button>') +
+        '  <button class="eth-btn-primary" id="btnCreateClass" style="width:auto;padding:10px 18px">' + ic('plus') + ' Yangi Guruh Ochish</button>' :
+        '  <button class="eth-btn-primary" id="btnJoinClass" style="width:auto;padding:10px 18px">' + ic('right') + ' Guruhga Qo‘shilish</button>') +
       '</div>';
 
     if (userClasses.length === 0) {
-      html += '<div class="ap-card ap-empty">' + ic('users') + '<h2>You are not enrolled in any class yet</h2><p>' + (isTeacher ? 'Create a new class and share its 10-character code with your students.' : 'Join a class using the code from your instructor.') + '</p></div>';
+      html += '<div class="ap-card" style="max-width:560px;margin:28px auto;padding:36px 28px;text-align:center;background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.88));border:1.5px solid rgba(56,189,248,0.35);border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,0.6);">' +
+        '<div style="width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(37,99,235,0.2));border:1px solid rgba(56,189,248,0.4);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 16px;">🏫</div>' +
+        '<h2 style="font-size:22px;font-weight:900;color:#fff;margin:0 0 8px;">Guruhga Qo‘shilish</h2>' +
+        '<p style="font-size:13.5px;color:#94a3b8;margin:0 0 24px;line-height:1.5;">' +
+          'Siz hali hech qaysi o‘quv guruhiga biriktirilmagansiz.<br>O‘qituvchingiz bergan <b>Ustoz Kodini</b> (masalan: <code style="color:#38bdf8;">AZIZBEK77</code>) yoki <b>Guruh Kodini</b> kiritib, darhol darslar va davomatga qo‘shiling!' +
+        '</p>' +
+        '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">' +
+          '<input type="text" id="directJoinClassInput" placeholder="Kodni kiriting (masalan: AZIZBEK77)" style="flex:1;min-width:220px;max-width:320px;padding:12px 16px;background:#0b101b;border:1px solid rgba(56,189,248,0.4);border-radius:12px;color:#38bdf8;font-family:monospace;font-size:15px;font-weight:900;letter-spacing:1px;text-align:center;text-transform:uppercase;outline:none;" />' +
+          '<button type="button" id="directJoinClassBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:12px 24px;font-size:14px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 18px rgba(16,185,129,0.4);">' +
+            '➕ Guruhga Qo‘shilish' +
+          '</button>' +
+        '</div>' +
+      '</div>';
     } else {
       html += '<div class="ap-grid g2">';
       userClasses.forEach(function(c) {
         html += '' +
           '<div class="ap-card" style="cursor:pointer;transition:transform 0.2s" data-cls-id="' + c.id + '">' +
           '  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">' +
-          '    <span class="ap-tag">' + (c.students ? c.students.length : 0) + ' students</span>' +
-          '    <span style="font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:4px 8px;border-radius:6px">Code: ' + c.code + '</span>' +
+          '    <span class="ap-tag">' + (c.students ? c.students.length : 0) + ' o‘quvchi</span>' +
+          '    <span style="font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:4px 8px;border-radius:6px">Kod: ' + c.code + '</span>' +
           '  </div>' +
           '  <h3 style="font-size:18px;margin-bottom:6px">' + esc(c.name) + '</h3>' +
-          '  <p style="color:var(--muted);font-size:13px;margin:0 0 14px">Teacher: ' + esc(c.teacherName || 'Teacher') + '</p>' +
-          '  <button class="ap-btn solid" style="width:100%">' + ic('msg') + ' Enter Class Chat ' + ic('right') + '</button>' +
+          '  <p style="color:var(--muted);font-size:13px;margin:0 0 14px">Ustoz: ' + esc(c.teacherName || 'O‘qituvchi') + '</p>' +
+          '  <button class="ap-btn solid" style="width:100%">' + ic('msg') + ' Guruhga Kirish ' + ic('right') + '</button>' +
           '</div>';
       });
       html += '</div>';
@@ -1456,7 +1472,152 @@
           showJoinClassModal(container);
         };
       }
+      var directJoinBtn = container.querySelector('#directJoinClassBtn');
+      var directJoinInput = container.querySelector('#directJoinClassInput');
+      if (directJoinBtn && directJoinInput) {
+        var handleDirectJoin = function() {
+          var code = directJoinInput.value.trim().toUpperCase();
+          if (!code) { alert("Iltimos, guruh yoki o‘qituvchi taklif kodini kiriting!"); return; }
+          executeJoinClassLogic(code, container);
+        };
+        directJoinBtn.onclick = handleDirectJoin;
+        directJoinInput.onkeydown = function(e) { if (e.key === 'Enter') handleDirectJoin(); };
+      }
     }
+  }
+
+  async function executeJoinClassLogic(code, container, overlay) {
+    function findClassByCodeOrTeacher(targetCode) {
+      if (!targetCode) return null;
+      var direct = S.classes.find(function(c) { 
+        return (c.code && c.code.toUpperCase() === targetCode) || (c.id && c.id.toUpperCase() === targetCode); 
+      });
+      if (direct) return { cls: direct, teacher: null };
+
+      var matchedT = (S.teachers || []).find(function(t) {
+        return (t.inviteCode && t.inviteCode.toUpperCase() === targetCode) ||
+               (t.login && t.login.toUpperCase() === targetCode) ||
+               (t.id && t.id.toUpperCase() === targetCode);
+      });
+      if (matchedT) {
+        var tClasses = (S.classes || []).filter(function(c) {
+          return c.teacherId === matchedT.id || c.teacherEmail === matchedT.email ||
+                 (matchedT.assignedClasses && matchedT.assignedClasses.indexOf(c.id) !== -1);
+        });
+        if (tClasses.length > 0) {
+          var openCls = tClasses.find(function(c) { return (c.students || []).length < (c.maxCapacity || 18); });
+          return { cls: openCls || tClasses[0], teacher: matchedT };
+        }
+      }
+      return null;
+    }
+
+    var matchResult = findClassByCodeOrTeacher(code);
+    var found = matchResult ? matchResult.cls : null;
+    var matchedTeacher = matchResult ? matchResult.teacher : null;
+
+    if (!found && window.EthithSync) {
+      var remote = await window.EthithSync.fetchRemoteStore();
+      if (remote && remote.classes) {
+        remote.classes.forEach(function(rc) {
+          if (!S.classes.some(function(c) { return c.id === rc.id || c.code === rc.code; })) {
+            S.classes.push(rc);
+          }
+        });
+        if (remote.teachers && S.teachers) {
+          remote.teachers.forEach(function(rt) {
+            if (!S.teachers.some(function(t) { return t.id === rt.id; })) {
+              S.teachers.push(rt);
+            }
+          });
+        }
+        matchResult = findClassByCodeOrTeacher(code);
+        found = matchResult ? matchResult.cls : null;
+        matchedTeacher = matchResult ? matchResult.teacher : null;
+      }
+    }
+
+    if (!found) {
+      alert("❌ Ushbu kodga mos guruh yoki o‘qituvchi topilmadi!\n\nIltimos, ustozingiz bergan kodni (masalan: AZIZBEK77 yoki guruh kodini) tekshirib qaytadan kiriting.");
+      return;
+    }
+
+    if (!found.students) found.students = [];
+    var studentId = S.user.email || S.user.phone || S.user.id;
+    var stPhone = S.user.phone || '';
+    var already = found.students.some(function(s) { 
+      return s.id === studentId || s.email === S.user.email || (stPhone && s.phone === stPhone); 
+    });
+
+    var maxCap = found.maxCapacity || 18;
+    if (!already && found.students.length >= maxCap) {
+      alert("⚠️ Kechirasiz, ushbu guruhda barcha " + maxCap + " ta o‘quvchi o‘rni to‘lgan!");
+      return;
+    }
+
+    var dNowJoin = new Date();
+    var joinDateStr = dNowJoin.getFullYear() + '-' + String(dNowJoin.getMonth() + 1).padStart(2, '0') + '-' + String(dNowJoin.getDate()).padStart(2, '0');
+
+    var studentRecord = {
+      id: studentId,
+      name: S.user.name,
+      email: S.user.email || (studentId + '@student.ethith'),
+      phone: stPhone,
+      joinedAt: joinDateStr,
+      lastActive: Date.now(),
+      dailyMinutes: S.user.dailyMinutes || 0,
+      mistakes: (S.mistakes || []).length
+    };
+
+    if (!already) {
+      found.students.push(studentRecord);
+    }
+
+    // Teacher Notification (Senga yangi o‘quvchi qo‘shildi)
+    if (!S.teacherNotifications) S.teacherNotifications = {};
+    var tId = found.teacherId;
+    if (!tId && matchedTeacher) tId = matchedTeacher.id;
+    if (!tId) {
+      var tObj = (S.teachers || []).find(function(t) { return t.email === found.teacherEmail; });
+      if (tObj) tId = tObj.id;
+    }
+    if (tId) {
+      if (!S.teacherNotifications[tId]) S.teacherNotifications[tId] = [];
+      S.teacherNotifications[tId].unshift({
+        id: 'notif_' + Date.now(),
+        title: '🔔 Yangi O‘quvchi Qo‘shildi',
+        text: (S.user.name || 'O‘quvchi') + (stPhone ? ' (' + stPhone + ')' : '') + ' sizning ' + (found.name || 'Guruhingiz') + 'ga qo‘shildi!',
+        classId: found.id,
+        className: found.name,
+        studentName: S.user.name,
+        time: Date.now(),
+        unread: true
+      });
+    }
+
+    S.activeClassId = found.id;
+    App.saveState();
+
+    if (window.EthithSync) {
+      window.EthithSync.publishLive({
+        type: 'STUDENT_JOIN',
+        classId: found.code || found.id,
+        teacherId: tId,
+        student: studentRecord
+      });
+      if (typeof window.EthithSync.broadcastLocal === 'function') {
+        window.EthithSync.broadcastLocal(S.classes, S.exams);
+      }
+      if (typeof window.EthithSync.pushStoreUpdate === 'function') {
+        window.EthithSync.pushStoreUpdate();
+      } else if (typeof window.EthithSync.pushRemoteStore === 'function') {
+        window.EthithSync.pushRemoteStore(S.classes, S.exams);
+      }
+    }
+
+    alert("🎉 Tabriklaymiz! Siz \"" + (found.name || 'Guruh') + "\"ga muvaffaqiyatli qo‘shildingiz!");
+    if (overlay && typeof overlay.remove === 'function') overlay.remove();
+    renderClassesView(container);
   }
 
   function showCreateClassModal(container) {
@@ -1583,141 +1744,11 @@
     };
     window.addEventListener('keydown', onEsc);
 
-    overlay.querySelector('#joinClassForm').onsubmit = async function(e) {
+    overlay.querySelector('#joinClassForm').onsubmit = function(e) {
       e.preventDefault();
       var code = document.getElementById('joinClsCode').value.trim().toUpperCase();
-      
-      function findClassByCodeOrTeacher(targetCode) {
-        if (!targetCode) return null;
-        var direct = S.classes.find(function(c) { 
-          return (c.code && c.code.toUpperCase() === targetCode) || (c.id && c.id.toUpperCase() === targetCode); 
-        });
-        if (direct) return { cls: direct, teacher: null };
-
-        var matchedT = (S.teachers || []).find(function(t) {
-          return (t.inviteCode && t.inviteCode.toUpperCase() === targetCode) ||
-                 (t.login && t.login.toUpperCase() === targetCode) ||
-                 (t.id && t.id.toUpperCase() === targetCode);
-        });
-        if (matchedT) {
-          var tClasses = (S.classes || []).filter(function(c) {
-            return c.teacherId === matchedT.id || c.teacherEmail === matchedT.email ||
-                   (matchedT.assignedClasses && matchedT.assignedClasses.indexOf(c.id) !== -1);
-          });
-          if (tClasses.length > 0) {
-            var openCls = tClasses.find(function(c) { return (c.students || []).length < (c.maxCapacity || 18); });
-            return { cls: openCls || tClasses[0], teacher: matchedT };
-          }
-        }
-        return null;
-      }
-
-      var matchResult = findClassByCodeOrTeacher(code);
-      var found = matchResult ? matchResult.cls : null;
-      var matchedTeacher = matchResult ? matchResult.teacher : null;
-
-      if (!found && window.EthithSync) {
-        var remote = await window.EthithSync.fetchRemoteStore();
-        if (remote && remote.classes) {
-          remote.classes.forEach(function(rc) {
-            if (!S.classes.some(function(c) { return c.id === rc.id || c.code === rc.code; })) {
-              S.classes.push(rc);
-            }
-          });
-          if (remote.teachers && S.teachers) {
-            remote.teachers.forEach(function(rt) {
-              if (!S.teachers.some(function(t) { return t.id === rt.id; })) {
-                S.teachers.push(rt);
-              }
-            });
-          }
-          matchResult = findClassByCodeOrTeacher(code);
-          found = matchResult ? matchResult.cls : null;
-          matchedTeacher = matchResult ? matchResult.teacher : null;
-        }
-      }
-
-      if (!found) {
-        alert("❌ Ushbu kodga mos guruh yoki o‘qituvchi topilmadi!\n\nIltimos, ustozingiz bergan kodni (masalan: AZIZBEK77 yoki guruh kodini) tekshirib qaytadan kiriting.");
-        return;
-      }
-
-      if (!found.students) found.students = [];
-      var studentId = S.user.email || S.user.phone || S.user.id;
-      var stPhone = S.user.phone || '';
-      var already = found.students.some(function(s) { 
-        return s.id === studentId || s.email === S.user.email || (stPhone && s.phone === stPhone); 
-      });
-
-      var maxCap = found.maxCapacity || 18;
-      if (!already && found.students.length >= maxCap) {
-        alert("⚠️ Kechirasiz, ushbu guruhda barcha " + maxCap + " ta o‘quvchi o‘rni to‘lgan!");
-        return;
-      }
-
-      var dNowJoin = new Date();
-      var joinDateStr = dNowJoin.getFullYear() + '-' + String(dNowJoin.getMonth() + 1).padStart(2, '0') + '-' + String(dNowJoin.getDate()).padStart(2, '0');
-
-      var studentRecord = {
-        id: studentId,
-        name: S.user.name,
-        email: S.user.email || (studentId + '@student.ethith'),
-        phone: stPhone,
-        joinedAt: joinDateStr,
-        lastActive: Date.now(),
-        dailyMinutes: S.user.dailyMinutes || 0,
-        mistakes: (S.mistakes || []).length
-      };
-
-      if (!already) {
-        found.students.push(studentRecord);
-      }
-
-      // Teacher Notification (Senga yangi o‘quvchi qo‘shildi)
-      if (!S.teacherNotifications) S.teacherNotifications = {};
-      var tId = found.teacherId;
-      if (!tId && matchedTeacher) tId = matchedTeacher.id;
-      if (!tId) {
-        var tObj = (S.teachers || []).find(function(t) { return t.email === found.teacherEmail; });
-        if (tObj) tId = tObj.id;
-      }
-      if (tId) {
-        if (!S.teacherNotifications[tId]) S.teacherNotifications[tId] = [];
-        S.teacherNotifications[tId].unshift({
-          id: 'notif_' + Date.now(),
-          title: '🔔 Yangi O‘quvchi Qo‘shildi',
-          text: (S.user.name || 'O‘quvchi') + (stPhone ? ' (' + stPhone + ')' : '') + ' sizning ' + (found.name || 'Guruhingiz') + 'ga qo‘shildi!',
-          classId: found.id,
-          className: found.name,
-          studentName: S.user.name,
-          time: Date.now(),
-          unread: true
-        });
-      }
-
-      S.activeClassId = found.id;
-      App.saveState();
-
-      if (window.EthithSync) {
-        window.EthithSync.publishLive({
-          type: 'STUDENT_JOIN',
-          classId: found.code || found.id,
-          teacherId: tId,
-          student: studentRecord
-        });
-        if (typeof window.EthithSync.broadcastLocal === 'function') {
-          window.EthithSync.broadcastLocal(S.classes, S.exams);
-        }
-        if (typeof window.EthithSync.pushStoreUpdate === 'function') {
-          window.EthithSync.pushStoreUpdate();
-        } else if (typeof window.EthithSync.pushRemoteStore === 'function') {
-          window.EthithSync.pushRemoteStore(S.classes, S.exams);
-        }
-      }
-
-      alert("🎉 Tabriklaymiz! Siz \"" + (found.name || 'Guruh') + "\"ga muvaffaqiyatli qo‘shildingiz!");
-      overlay.remove();
-      renderClassesView(container);
+      if (!code) return;
+      executeJoinClassLogic(code, container, overlay);
     };
   }
 
@@ -10722,7 +10753,7 @@
     var uniqueStudents = [];
 
     allAccounts.forEach(function(u) {
-      if (!u || u.role === 'teacher') return;
+      if (!u || u.role === 'teacher' || u.role === 'admin' || (u.name && u.name.toLowerCase().includes('admin'))) return;
       var rawName = (u.name || '').trim();
       var cleanName = (window.ethithCleanStudentName ? window.ethithCleanStudentName(rawName) : rawName).trim();
       var cleanEmail = (u.email || '').trim().toLowerCase();
@@ -10770,7 +10801,7 @@
     });
 
     // Ensure current active student is updated or added without duplication
-    if (S.user && S.user.role !== 'teacher') {
+    if (S.user && S.user.role !== 'teacher' && S.user.role !== 'admin') {
       var myName = (S.user.name || '').trim().toLowerCase();
       var myEmail = (S.user.email || '').trim().toLowerCase();
       var myId = (S.user.id || '').trim();

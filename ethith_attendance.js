@@ -262,12 +262,14 @@
         });
       }
     }
-    if (!S.teachers || S.teachers.length === 0) {
-      S.teachers = [
-        { id: 'admin_official_teacher', name: 'Ustoz', email: 'teacher@ethith.uz', subject: 'Ingliz tili (IELTS Intensive)', hourlyRate: 100000, teachingHours: 72, assignedClasses: ['cls_ethith_main', 'cls_upper_intermediate'] },
-        { id: 't_zizi', name: 'Zizi Ustoz', email: 'zizi@ethith.uz', subject: 'Ingliz tili (General B2)', hourlyRate: 85000, teachingHours: 64, assignedClasses: ['cls_1792041880052', 'cls_ielts_ex'] }
-      ];
-    }
+    if (!S.teachers) S.teachers = [];
+    // Strict filter: never include legacy mock "Ustoz" or "Zizi Ustoz"
+    S.teachers = S.teachers.filter(function(t) {
+      if (!t) return false;
+      var nm = (t.name || '').trim().toLowerCase();
+      var tid = (t.id || '').trim().toLowerCase();
+      return tid !== 'admin_official_teacher' && tid !== 't_zizi' && nm !== 'ustoz' && nm !== 'zizi ustoz';
+    });
     return S.teachers;
   }
 
@@ -2007,8 +2009,25 @@ EA.render = function(container, preserveScrollLeft) {
       return;
     }
 
+    // 3. For Students: If not enrolled in any class, show squeaky clean join screen!
+    var curUser = getActiveUser();
+    var isStudent = curUser && curUser.role === 'student';
+    if (isStudent) {
+      var enrolledClasses = (window.S && window.S.classes || []).filter(function(c) {
+        return c.students && c.students.some(function(st) {
+          return st.id === curUser.id || st.email === curUser.email || (curUser.phone && st.phone === curUser.phone);
+        });
+      });
+      if (enrolledClasses.length === 0) {
+        if (window.EthithViews && window.EthithViews.renderClassesView) {
+          window.EthithViews.renderClassesView(container);
+          return;
+        }
+      }
+    }
+
     var allClasses = getAvailableClasses();
-    var cls = getActiveOrFirstClass();
+    var cls = isStudent ? (enrolledClasses.find(function(c) { return c.id === EA.activeClassId; }) || enrolledClasses[0]) : getActiveOrFirstClass();
     ensureClassAttendance(cls);
 
     if (window.EthithSync && typeof window.EthithSync.subscribeClass === 'function') {
@@ -4170,7 +4189,7 @@ EA.render = function(container, preserveScrollLeft) {
     });
 
     var wordHtml = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>' + esc(st.name) + '</title></head><body style="font-family:Arial,sans-serif;color:#0f172a;padding:20px;">' +
-      '<h1 style="color:#0284c7;">QUANTUM-EDU: O\'QUVCHINING KUNLIK STATISTIKASI VA DIAGRAMMASI</h1>' +
+      '<h1 style="color:#0284c7;">ENGLISH HOUSE: O\'QUVCHINING KUNLIK STATISTIKASI VA DIAGRAMMASI</h1>' +
       '<p><b>O\'quvchi:</b> ' + esc(st.name) + ' (' + esc(st.gradeClass) + ')</p>' +
       '<p><b>Joriy Dinamika:</b> ' + (trend.isGrowing ? "O'SISHDA" : "CHO'KISHDA") + ' (' + (trend.pctChange >= 0 ? '+' : '') + trend.pctChange + '%)</p>' +
       '<p><b>Kunlik Vazifalar:</b> ' + doneTotal[0] + ' / ' + doneTotal[1] + ' ta | <b>Davomat:</b> ' + st.attendance[EA.qePeriod] + '% (' + esc(st.missedNote) + ')</p>' +
