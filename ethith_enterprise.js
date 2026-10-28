@@ -3574,7 +3574,7 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
     timetable.forEach(function(slot) {
       var cls = (S.classes || []).find(function(c) { return c.id === slot.classId; });
       var stCount = cls ? (cls.students || []).length : 0;
-      var maxCap = cls ? (cls.maxCapacity || 16) : 16;
+      var maxCap = cls ? (cls.maxCapacity || 18) : 18;
       var isFull = (stCount >= maxCap);
       var freeSlots = Math.max(0, maxCap - stCount);
 
@@ -3677,10 +3677,12 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
     // Classes Grid
     h += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;">';
     classes.forEach(function(cls) {
-      var stCount = (cls.students || []).length;
-      var maxCap = cls.maxCapacity || 16;
-      var isFull = (stCount >= maxCap);
-      var pct = Math.min(100, Math.round((stCount / maxCap) * 100));
+      var maxCap = cls.maxCapacity || 18;
+      var realCount = (cls.students || []).filter(function(s) {
+        return !s.isTester && !(s.name || '').startsWith('tester_');
+      }).length;
+      var isFull = (realCount >= maxCap);
+      var pct = Math.min(100, Math.round((realCount / maxCap) * 100));
       var barColor = isFull ? 'linear-gradient(90deg,#ef4444,#dc2626)' : (pct > 75 ? 'linear-gradient(90deg,#f59e0b,#eab308)' : 'linear-gradient(90deg,#10b981,#06b6d4)');
 
       h += '<div class="ee-class-card" style="background:rgba(15,23,42,0.88);border:1px solid ' + (isFull ? 'rgba(239,68,68,0.4)' : 'rgba(56,189,248,0.3)') + ';border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 10px 30px rgba(0,0,0,0.45);backdrop-filter:blur(20px);position:relative;">' +
@@ -3688,7 +3690,7 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
             '<span style="background:rgba(14,165,233,0.15);color:#38bdf8;font-size:11.5px;font-weight:900;padding:3px 10px;border-radius:8px;border:1px solid rgba(14,165,233,0.35);font-family:monospace;letter-spacing:0.04em;">' + esc(cls.code || 'ETH-CLASS') + '</span>' +
             '<button class="ee-quick-edit-cap-btn" data-cid="' + cls.id + '" title="Sig‘imni o‘zgartirish uchun bosing" style="background:' + (isFull ? 'rgba(239,68,68,0.18)' : 'rgba(16,185,129,0.18)') + ';color:' + (isFull ? '#f87171' : '#34d399') + ';font-size:12px;font-weight:900;padding:4px 12px;border-radius:8px;border:1px solid ' + (isFull ? 'rgba(239,68,68,0.4)' : 'rgba(16,185,129,0.4)') + ';cursor:pointer;display:inline-flex;align-items:center;gap:4px;">' +
-              '<span>' + stCount + ' / ' + maxCap + ' ta joy</span>' +
+              '<span>' + realCount + ' / ' + maxCap + ' ta joy</span>' +
               '<span style="font-size:10px;opacity:0.8;">✏️</span>' +
             '</button>' +
           '</div>' +
@@ -3761,8 +3763,11 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
           return;
         }
 
-        if ((cls.students || []).length >= (cls.maxCapacity || 16)) {
-          alert("Kechirasiz, ushbu guruh to‘lgan! Maksimal sig‘im: " + cls.maxCapacity + " ta.");
+        var testerSlotIdx = (cls.students || []).findIndex(function(s) {
+          return s.isTester || (s.name && s.name.startsWith('tester_'));
+        });
+        if (testerSlotIdx === -1 && (cls.students || []).length >= (cls.maxCapacity || 18)) {
+          alert("Kechirasiz, ushbu guruh to‘lgan! Maksimal sig‘im: " + (cls.maxCapacity || 18) + " ta.");
           return;
         }
 
@@ -3774,14 +3779,23 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
               return (s.id && s.id === curU.id) || (s.email && curU.email && s.email.toLowerCase().trim() === curU.email.toLowerCase().trim());
             });
             if (had) prevClsName = c.name;
+            var beforeLen = c.students.length;
             c.students = c.students.filter(function(s) {
               return (s.id && s.id !== curU.id) && (!s.email || !curU.email || s.email.toLowerCase().trim() !== curU.email.toLowerCase().trim());
             });
+            if (c.students.length !== beforeLen && window.ethithReplenishTesterSlots) {
+              window.ethithReplenishTesterSlots(c);
+            }
           }
         });
 
         if (!cls.students) cls.students = [];
-        cls.students.push({ id: curU.id, name: curU.name, email: curU.email, joinedAt: new Date().toISOString().split('T')[0] });
+        var stRec = { id: curU.id, name: curU.name, email: curU.email, isTester: false, joinedAt: new Date().toISOString().split('T')[0] };
+        if (testerSlotIdx !== -1) {
+          cls.students[testerSlotIdx] = stRec;
+        } else {
+          cls.students.push(stRec);
+        }
         saveStore();
         if (prevClsName) {
           showToast("Siz '" + prevClsName + "' guruhidan chiqib, '" + cls.name + "' guruhiga ulandingiz!");
@@ -3832,7 +3846,7 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
     var existing = document.getElementById('eeEditClassOverlay');
     if (existing) existing.remove();
 
-    var curCap = cls.maxCapacity || 16;
+    var curCap = cls.maxCapacity || 18;
     var curName = cls.name || '';
     var curTeacher = cls.teacherName || cls.teacher || 'Ustoz';
     var curRoom = cls.room || '302-xona';
@@ -3949,9 +3963,11 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
     m.id = 'eeTgSearchOverlay';
     m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);z-index:2147483645;display:flex;align-items:center;justify-content:center;padding:16px;';
 
-    var curCap = cls.maxCapacity || 16;
-    var curCount = (cls.students || []).length;
-    var isFull = curCount >= curCap;
+    var curCap = cls.maxCapacity || 18;
+    var realCount = (cls.students || []).filter(function(s) {
+      return !s.isTester && !(s.name || '').startsWith('tester_');
+    }).length;
+    var isFull = realCount >= curCap;
 
     m.innerHTML = '<div style="background:rgba(15,23,42,0.96);border:1px solid rgba(56,189,248,0.35);border-radius:24px;max-width:560px;width:100%;padding:24px 26px;color:#f8fafc;box-shadow:0 25px 60px rgba(0,0,0,0.7),0 0 40px rgba(56,189,248,0.15);">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
@@ -3959,7 +3975,7 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
           '<span style="font-size:22px;">🔍</span>' +
           '<div>' +
             '<h3 style="margin:0;font-size:17.5px;font-weight:900;color:#fff;">Guruhga O‘quvchi Qo‘shish & Boshqarish</h3>' +
-            '<div style="font-size:12px;color:#94a3b8;margin-top:2px;">Guruh: <b style="color:#38bdf8;">' + esc(cls.name) + '</b> • Sig‘im: <b id="eeTgModalCapText" style="color:' + (isFull ? '#f87171' : '#34d399') + ';">' + curCount + ' / ' + curCap + ' ta joy</b></div>' +
+            '<div style="font-size:12px;color:#94a3b8;margin-top:2px;">Guruh: <b style="color:#38bdf8;">' + esc(cls.name) + '</b> • O‘quvchilar: <b id="eeTgModalCapText" style="color:' + (isFull ? '#f87171' : '#34d399') + ';">' + realCount + ' / ' + curCap + ' ta joy</b></div>' +
           '</div>' +
         '</div>' +
         '<button id="eeCloseTgSearch" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;line-height:1;">✕</button>' +
@@ -3967,7 +3983,7 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
 
       // Capacity Notice if full
       '<div id="eeTgCapAlert" style="' + (isFull ? 'display:flex;' : 'display:none;') + 'align-items:center;justify-content:space-between;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:12.5px;color:#fca5a5;">' +
-        '<span>⚠️ Guruh sig‘imi to‘lgan (' + curCount + ' / ' + curCap + ').</span>' +
+        '<span>⚠️ Guruh sig‘imi to‘lgan (' + realCount + ' / ' + curCap + ').</span>' +
         '<button id="eeTgQuickBumpCapBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:11.5px;font-weight:900;cursor:pointer;">+5 Joy Qo‘shish</button>' +
       '</div>' +
 
@@ -4058,26 +4074,40 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
       // Enforce strict single group rule: remove from all other groups
       S.classes.forEach(function(other) {
         if (other.id !== cls.id && Array.isArray(other.students)) {
+          var beforeLen = other.students.length;
           other.students = other.students.filter(function(s) {
             return (s.id && s.id !== stId) && (!s.email || s.email.toLowerCase().trim() !== nEmail);
           });
+          if (other.students.length !== beforeLen && window.ethithReplenishTesterSlots) {
+            window.ethithReplenishTesterSlots(other);
+          }
         }
       });
 
-      // Add to this class
+      // Add to this class (replace tester slot if available)
       if (!cls.students) cls.students = [];
       var alreadyIn = cls.students.some(function(s) {
         return (s.id && s.id === stId) || (s.email && s.email.toLowerCase().trim() === nEmail);
       });
 
       if (!alreadyIn) {
-        cls.students.push({
+        var newSt = {
           id: stId,
           name: nName,
           email: nEmail,
-          joinedAt: new Date().toISOString().split('T')[0]
+          role: 'student',
+          joinedAt: new Date().toISOString().split('T')[0],
+          isTester: false
+        };
+        var testerIdx = cls.students.findIndex(function(s) {
+          return s.isTester || (s.name && s.name.startsWith('tester_'));
         });
-        if (cls.students.length > (cls.maxCapacity || 16)) {
+        if (testerIdx !== -1) {
+          cls.students[testerIdx] = newSt;
+        } else {
+          cls.students.push(newSt);
+        }
+        if (cls.students.length > (cls.maxCapacity || 18)) {
           cls.maxCapacity = cls.students.length;
         }
       }
@@ -4222,27 +4252,42 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
           // Strict Single Group Rule: Remove from all other groups
           S.classes.forEach(function(other) {
             if (other.id !== cls.id && Array.isArray(other.students)) {
+              var beforeLen = other.students.length;
               other.students = other.students.filter(function(s) {
                 return (s.id && s.id !== acc.id) && (!s.email || !acc.email || s.email.toLowerCase().trim() !== acc.email.toLowerCase().trim());
               });
+              if (other.students.length !== beforeLen && window.ethithReplenishTesterSlots) {
+                window.ethithReplenishTesterSlots(other);
+              }
             }
           });
 
           if (!cls.students) cls.students = [];
-          cls.students.push({
+          var newSt = {
             id: acc.id,
             name: acc.name,
             email: acc.email,
-            joinedAt: new Date().toISOString().split('T')[0]
+            role: 'student',
+            joinedAt: new Date().toISOString().split('T')[0],
+            isTester: false
+          };
+          var testerIdx = cls.students.findIndex(function(s) {
+            return s.isTester || (s.name && s.name.startsWith('tester_'));
           });
+          if (testerIdx !== -1) {
+            cls.students[testerIdx] = newSt;
+          } else {
+            cls.students.push(newSt);
+          }
 
-          if (cls.students.length > (cls.maxCapacity || 16)) {
+          if (cls.students.length > (cls.maxCapacity || 18)) {
             cls.maxCapacity = cls.students.length;
           }
 
           saveStore();
           showToast(acc.name + " '" + cls.name + "' guruhiga qo‘shildi!");
-          m.querySelector('#eeTgModalCapText').textContent = cls.students.length + ' / ' + (cls.maxCapacity || 16) + ' ta joy';
+          var realCount = cls.students.filter(function(s) { return !s.isTester && !(s.name || '').startsWith('tester_'); }).length;
+          m.querySelector('#eeTgModalCapText').textContent = realCount + ' / ' + (cls.maxCapacity || 18) + ' ta joy';
           search(inp.value);
         };
       });
@@ -4257,37 +4302,53 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
           var oldCls = (S.classes || []).find(function(c) { return c.id === oldClsId; });
           if (!acc) return;
 
-          // Remove from old class
+          // Remove from old class and replenish tester slot so it keeps 18
           if (oldCls && Array.isArray(oldCls.students)) {
             oldCls.students = oldCls.students.filter(function(s) {
               return (s.id && s.id !== acc.id) && (!s.email || !acc.email || s.email.toLowerCase().trim() !== acc.email.toLowerCase().trim());
             });
+            if (window.ethithReplenishTesterSlots) window.ethithReplenishTesterSlots(oldCls);
           }
 
           // Strict Single Group Rule: remove from any other class too
           S.classes.forEach(function(other) {
-            if (other.id !== cls.id && Array.isArray(other.students)) {
+            if (other.id !== cls.id && other.id !== oldClsId && Array.isArray(other.students)) {
+              var beforeLen = other.students.length;
               other.students = other.students.filter(function(s) {
                 return (s.id && s.id !== acc.id) && (!s.email || !acc.email || s.email.toLowerCase().trim() !== acc.email.toLowerCase().trim());
               });
+              if (other.students.length !== beforeLen && window.ethithReplenishTesterSlots) {
+                window.ethithReplenishTesterSlots(other);
+              }
             }
           });
 
           if (!cls.students) cls.students = [];
-          cls.students.push({
+          var movingSt = {
             id: acc.id,
             name: acc.name,
             email: acc.email,
-            joinedAt: new Date().toISOString().split('T')[0]
+            role: 'student',
+            joinedAt: new Date().toISOString().split('T')[0],
+            isTester: false
+          };
+          var testerIdx = cls.students.findIndex(function(s) {
+            return s.isTester || (s.name && s.name.startsWith('tester_'));
           });
+          if (testerIdx !== -1) {
+            cls.students[testerIdx] = movingSt;
+          } else {
+            cls.students.push(movingSt);
+          }
 
-          if (cls.students.length > (cls.maxCapacity || 16)) {
+          if (cls.students.length > (cls.maxCapacity || 18)) {
             cls.maxCapacity = cls.students.length;
           }
 
           saveStore();
           showToast(acc.name + " '" + (oldCls ? oldCls.name : 'avvalgi') + "' guruhidan ushbu guruhga ko‘chirildi!");
-          m.querySelector('#eeTgModalCapText').textContent = cls.students.length + ' / ' + (cls.maxCapacity || 16) + ' ta joy';
+          var realCount = cls.students.filter(function(s) { return !s.isTester && !(s.name || '').startsWith('tester_'); }).length;
+          m.querySelector('#eeTgModalCapText').textContent = realCount + ' / ' + (cls.maxCapacity || 18) + ' ta joy';
           search(inp.value);
         };
       });
@@ -4305,10 +4366,12 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
           cls.students = (cls.students || []).filter(function(s) {
             return (s.id && s.id !== accId) && (!s.email || !accEmail || s.email.toLowerCase().trim() !== accEmail.toLowerCase().trim());
           });
+          if (window.ethithReplenishTesterSlots) window.ethithReplenishTesterSlots(cls);
 
           saveStore();
           showToast(stName + " guruhdan chiqarildi!");
-          m.querySelector('#eeTgModalCapText').textContent = cls.students.length + ' / ' + (cls.maxCapacity || 16) + ' ta joy';
+          var realCount = cls.students.filter(function(s) { return !s.isTester && !(s.name || '').startsWith('tester_'); }).length;
+          m.querySelector('#eeTgModalCapText').textContent = realCount + ' / ' + (cls.maxCapacity || 18) + ' ta joy';
           search(inp.value);
         };
       });

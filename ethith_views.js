@@ -1505,7 +1505,12 @@
                  (matchedT.assignedClasses && matchedT.assignedClasses.indexOf(c.id) !== -1);
         });
         if (tClasses.length > 0) {
-          var openCls = tClasses.find(function(c) { return (c.students || []).length < (c.maxCapacity || 18); });
+          var openCls = tClasses.find(function(c) {
+            var nonTesters = (c.students || []).filter(function(s) {
+              return !s.isTester && !(s.name || '').startsWith('tester_');
+            });
+            return nonTesters.length < (c.maxCapacity || 18);
+          });
           return { cls: openCls || tClasses[0], teacher: matchedT };
         }
       }
@@ -1550,7 +1555,10 @@
     });
 
     var maxCap = found.maxCapacity || 18;
-    if (!already && found.students.length >= maxCap) {
+    var testerSlotIdx = found.students.findIndex(function(s) {
+      return s.isTester || (s.name && s.name.startsWith('tester_'));
+    });
+    if (!already && testerSlotIdx === -1 && found.students.length >= maxCap) {
       alert("⚠️ Kechirasiz, ushbu guruhda barcha " + maxCap + " ta o‘quvchi o‘rni to‘lgan!");
       return;
     }
@@ -1566,11 +1574,16 @@
       joinedAt: joinDateStr,
       lastActive: Date.now(),
       dailyMinutes: S.user.dailyMinutes || 0,
-      mistakes: (S.mistakes || []).length
+      mistakes: (S.mistakes || []).length,
+      isTester: false
     };
 
     if (!already) {
-      found.students.push(studentRecord);
+      if (testerSlotIdx !== -1) {
+        found.students[testerSlotIdx] = studentRecord;
+      } else {
+        found.students.push(studentRecord);
+      }
     }
 
     // Teacher Notification (Senga yangi o‘quvchi qo‘shildi)
