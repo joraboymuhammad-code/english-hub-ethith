@@ -251,6 +251,17 @@
 
   function getStoreTeachers() {
     var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+    if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
+      if (!S.teachers || S.teachers.length < window.ETHITH_INITIAL_STORE.teachers.length) {
+        var existingTIds = (S.teachers || []).map(function(t) { return t.id; });
+        if (!S.teachers) S.teachers = [];
+        window.ETHITH_INITIAL_STORE.teachers.forEach(function(initT) {
+          if (!existingTIds.includes(initT.id)) {
+            S.teachers.push(JSON.parse(JSON.stringify(initT)));
+          }
+        });
+      }
+    }
     if (!S.teachers || S.teachers.length === 0) {
       S.teachers = [
         { id: 'admin_official_teacher', name: 'Ustoz', email: 'teacher@ethith.uz', subject: 'Ingliz tili (IELTS Intensive)', hourlyRate: 100000, teachingHours: 72, assignedClasses: ['cls_ethith_main', 'cls_upper_intermediate'] },
@@ -267,7 +278,7 @@
     var tName = t ? t.name : '';
     var tEmail = t && t.email ? t.email.toLowerCase().trim() : '';
 
-    return sClasses.filter(function(cls) {
+    var matched = sClasses.filter(function(cls) {
       if (cls.teacherId === teacherId) return true;
       if (tEmail && cls.teacherId && cls.teacherId.toLowerCase().trim() === tEmail) return true;
       if (tEmail && cls.teacherEmail && cls.teacherEmail.toLowerCase().trim() === tEmail) return true;
@@ -280,13 +291,39 @@
           return true;
         }
       }
-      if (teacherId === 't_zizi') {
-        if (cls.id === 'cls_1792041880052' || cls.teacherId === 'tc_oprlehyw5') {
-          return true;
-        }
-      }
       return false;
     });
+
+    // Level ranking helper: lower level first, then higher level
+    function getLevelRank(name, level) {
+      var s = ((name || '') + ' ' + (level || '')).toLowerCase();
+      if (s.includes('beginner')) return 1;
+      if (s.includes('elemen')) return 2;
+      if (s.includes('pre-inter') || s.includes('pre inter') || s.includes('b1_pre')) return 3;
+      if (s.includes('upper') || s.includes('b2')) return 5;
+      if (s.includes('inter') || s.includes('b1')) return 4;
+      if (s.includes('standard')) return 6;
+      if (s.includes('practice')) return 7;
+      if (s.includes('cefr') || s.includes('ielts')) return 8;
+      if (s.includes('matematik') || s.includes('math')) return 9;
+      return 10;
+    }
+
+    // Sort by custom order if admin reordered them; otherwise by level ranking (lowest to highest)
+    var customOrder = (t && (t.classOrder || t.assignedClasses)) || [];
+    matched.sort(function(a, b) {
+      var idxA = customOrder.indexOf(a.id);
+      var idxB = customOrder.indexOf(b.id);
+      if (idxA !== -1 && idxB !== -1) {
+        return idxA - idxB;
+      }
+      var rA = getLevelRank(a.name, a.level);
+      var rB = getLevelRank(b.name, b.level);
+      if (rA !== rB) return rA - rB;
+      return (a.name || '').localeCompare(b.name || '');
+    });
+
+    return matched;
   }
 
   function isTeacherRole() {
@@ -319,6 +356,19 @@
 
   function getAvailableClasses() {
     var sClasses = (window.S && window.S.classes) || (window.EthithApp && window.EthithApp.state && window.EthithApp.state.classes) || [];
+    if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.classes)) {
+      if (sClasses.length < window.ETHITH_INITIAL_STORE.classes.length) {
+        var existingCIds = sClasses.map(function(c) { return c.id; });
+        window.ETHITH_INITIAL_STORE.classes.forEach(function(initC) {
+          if (!existingCIds.includes(initC.id)) {
+            sClasses.push(JSON.parse(JSON.stringify(initC)));
+          }
+        });
+        if (window.S) window.S.classes = sClasses;
+        if (window.EthithApp && window.EthithApp.state) window.EthithApp.state.classes = sClasses;
+        return sClasses;
+      }
+    }
     if (sClasses.length === 0) {
       var u = getActiveUser();
       var defaultCls = {
@@ -951,14 +1001,25 @@
         '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:800;cursor:pointer;">+ Birinchi Guruhni Qo‘shish</button>' +
       '</div>';
     } else {
-      h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">';
+      h += '<div style="font-size:12px;color:#38bdf8;font-weight:700;margin-bottom:16px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);border-radius:12px;padding:9px 16px;display:flex;align-items:center;gap:10px;">' +
+        '<span style="font-size:16px;">↕️</span>' +
+        '<span><b>Tartibni o‘zgartirish:</b> Istalgan guruh kartochkasini bosib turib suring (Drag &amp; Drop) — guruhlar tartibi avtomatik saqlanadi. Dastlab darajalar pastdan balandga qarab joylashtirilgan.</span>' +
+      '</div>';
+
+      h += '<div id="eaTeacherGroupsGrid" class="ea-teacher-groups-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">';
       tClasses.forEach(function(cls) {
         var stCount = (cls.students || []).length;
         var maxCap = cls.maxCapacity || 16;
         var pct = Math.min(100, Math.round((stCount / maxCap) * 100));
 
-        h += '<div class="ee-class-card" style="background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(56,189,248,0.25);border-radius:22px;padding:22px;box-shadow:0 12px 35px rgba(0,0,0,0.45);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:space-between;">' +
+        h += '<div class="ee-class-card ea-draggable-class" draggable="true" data-cid="' + esc(cls.id) + '" data-tid="' + esc(t.id) + '" style="background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(56,189,248,0.25);border-radius:22px;padding:22px;box-shadow:0 12px 35px rgba(0,0,0,0.45);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:space-between;cursor:grab;transition:transform 0.15s, box-shadow 0.15s, border-color 0.15s;">' +
           '<div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(56,189,248,0.08);border:1px dashed rgba(56,189,248,0.3);border-radius:10px;padding:5px 10px;margin-bottom:12px;user-select:none;">' +
+              '<div style="font-size:11.5px;font-weight:900;color:#38bdf8;display:flex;align-items:center;gap:6px;">' +
+                '<span style="font-size:14px;cursor:grab;">⋮⋮</span> Bosib surish (Drag &amp; Drop)' +
+              '</div>' +
+              '<span style="font-size:11px;font-weight:800;color:#94a3b8;background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:6px;">' + esc(cls.level || 'General') + '</span>' +
+            '</div>' +
             '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
               '<span style="background:rgba(56,189,248,0.18);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:8px;padding:3px 9px;font-size:11px;font-weight:900;font-family:monospace;">' + esc(cls.code || 'ETH-GROUP') + '</span>' +
               '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:3px 10px;font-size:11.5px;font-weight:800;">' + stCount + ' / ' + maxCap + ' ta joy</span>' +
@@ -1052,10 +1113,169 @@
     container.querySelectorAll('.ea-open-journal-btn').forEach(function(btn) {
       btn.onclick = function() {
         var cid = btn.getAttribute('data-cid');
+        EA.activeTeacherId = teacher.id;
         EA.activeClassId = cid;
         EA.render(container);
       };
     });
+
+    // DRAG & DROP REORDERING FOR CLASSES (Admin can drag to change class order)
+    var grid = container.querySelector('#eaTeacherGroupsGrid');
+    if (grid) {
+      var draggedEl = null;
+
+      function reorderTeacherClasses(tObj, fromCid, toCid) {
+        var tClasses = getClassesForTeacher(tObj.id);
+        var ids = tClasses.map(function(c) { return c.id; });
+        var fromIdx = ids.indexOf(fromCid);
+        var toIdx = ids.indexOf(toCid);
+        if (fromIdx === -1 || toIdx === -1 || fromIdx === toIdx) return;
+
+        var moved = ids.splice(fromIdx, 1)[0];
+        ids.splice(toIdx, 0, moved);
+
+        tObj.assignedClasses = ids.slice();
+        tObj.classOrder = ids.slice();
+
+        var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+        var storeT = (S.teachers || []).find(function(it) { return it.id === tObj.id; });
+        if (storeT) {
+          storeT.assignedClasses = ids.slice();
+          storeT.classOrder = ids.slice();
+        }
+
+        if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
+          window.EthithEnterprise.saveStore();
+        } else if (window.EthithApp && window.EthithApp.saveState) {
+          window.EthithApp.saveState();
+        }
+
+        if (window.EthithSync && window.EthithSync.broadcastState) {
+          window.EthithSync.broadcastState('teacher_classes_reordered');
+        }
+
+        if (window.EthithApp && window.EthithApp.toast) {
+          window.EthithApp.toast("Guruhlar tartibi saqlandi!");
+        }
+
+        EA.render(container);
+      }
+
+      grid.querySelectorAll('.ea-draggable-class').forEach(function(card) {
+        card.addEventListener('dragstart', function(e) {
+          draggedEl = card;
+          card.style.opacity = '0.4';
+          card.style.border = '2px dashed #38bdf8';
+          if (e.dataTransfer) {
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', card.getAttribute('data-cid'));
+          }
+        });
+
+        card.addEventListener('dragend', function() {
+          card.style.opacity = '1';
+          card.style.border = '1px solid rgba(56,189,248,0.25)';
+          grid.querySelectorAll('.ea-draggable-class').forEach(function(c) {
+            c.style.transform = '';
+            c.style.borderColor = 'rgba(56,189,248,0.25)';
+          });
+          draggedEl = null;
+        });
+
+        card.addEventListener('dragover', function(e) {
+          e.preventDefault();
+          if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
+          if (draggedEl && draggedEl !== card) {
+            card.style.borderColor = '#10b981';
+            card.style.transform = 'scale(1.02)';
+          }
+        });
+
+        card.addEventListener('dragleave', function() {
+          if (draggedEl !== card) {
+            card.style.borderColor = 'rgba(56,189,248,0.25)';
+            card.style.transform = '';
+          }
+        });
+
+        card.addEventListener('drop', function(e) {
+          e.preventDefault();
+          if (!draggedEl || draggedEl === card) return;
+
+          var fromCid = draggedEl.getAttribute('data-cid');
+          var toCid = card.getAttribute('data-cid');
+          reorderTeacherClasses(teacher, fromCid, toCid);
+        });
+
+        // Touch drag support for mobile / touchscreens
+        var touchStartX = 0;
+        var touchStartY = 0;
+        var isTouchDrag = false;
+        var touchTimer = null;
+
+        card.addEventListener('touchstart', function(e) {
+          var touch = e.touches[0];
+          touchStartX = touch.clientX;
+          touchStartY = touch.clientY;
+          touchTimer = setTimeout(function() {
+            isTouchDrag = true;
+            draggedEl = card;
+            card.style.opacity = '0.5';
+            card.style.border = '2px dashed #38bdf8';
+          }, 300);
+        }, { passive: true });
+
+        card.addEventListener('touchmove', function(e) {
+          if (!isTouchDrag) {
+            var touch = e.touches[0];
+            if (Math.abs(touch.clientX - touchStartX) > 15 || Math.abs(touch.clientY - touchStartY) > 15) {
+              clearTimeout(touchTimer);
+            }
+            return;
+          }
+          if (e.cancelable) e.preventDefault();
+          var touch = e.touches[0];
+          var targetEl = document.elementFromPoint(touch.clientX, touch.clientY);
+          var targetCard = targetEl && targetEl.closest('.ea-draggable-class');
+          grid.querySelectorAll('.ea-draggable-class').forEach(function(c) {
+            if (c === targetCard && c !== draggedEl) {
+              c.style.borderColor = '#10b981';
+              c.style.transform = 'scale(1.02)';
+            } else if (c !== draggedEl) {
+              c.style.borderColor = 'rgba(56,189,248,0.25)';
+              c.style.transform = '';
+            }
+          });
+        }, { passive: false });
+
+        card.addEventListener('touchend', function(e) {
+          clearTimeout(touchTimer);
+          if (!isTouchDrag || !draggedEl) {
+            isTouchDrag = false;
+            return;
+          }
+          isTouchDrag = false;
+          var touch = e.changedTouches[0];
+          var targetEl = document.elementFromPoint(touch.clientX, touch.clientY);
+          var targetCard = targetEl && targetEl.closest('.ea-draggable-class');
+
+          draggedEl.style.opacity = '1';
+          draggedEl.style.border = '1px solid rgba(56,189,248,0.25)';
+
+          if (targetCard && targetCard !== draggedEl) {
+            var fromCid = draggedEl.getAttribute('data-cid');
+            var toCid = targetCard.getAttribute('data-cid');
+            reorderTeacherClasses(teacher, fromCid, toCid);
+          } else {
+            grid.querySelectorAll('.ea-draggable-class').forEach(function(c) {
+              c.style.borderColor = 'rgba(56,189,248,0.25)';
+              c.style.transform = '';
+            });
+          }
+          draggedEl = null;
+        });
+      });
+    }
 
     container.querySelectorAll('.dash-del-class-btn').forEach(function(btn) {
       btn.onclick = function(e) {
@@ -1389,16 +1609,23 @@ EA.render = function(container, preserveScrollLeft) {
     h += '<div style="position:relative;z-index:2;">';
 
     // 0. HIERARCHICAL NAVIGATION BAR (BACK TO TEACHER GROUPS & ALL TEACHERS)
-    var curTName = cls.teacherName || cls.teacher || 'Ustoz';
-    h += '<div class="qe-glass-panel" style="border-radius:20px;padding:12px 18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">' +
+    var curTName = cls.teacherName || cls.teacher || (EA.activeTeacherId && (getStoreTeachers().find(function(t){ return t.id === EA.activeTeacherId; }) || {}).name) || 'Ustoz';
+    h += '<div class="qe-glass-panel" style="border-radius:20px;padding:14px 20px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;background:linear-gradient(135deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(56,189,248,0.3);box-shadow:0 8px 30px rgba(0,0,0,0.5);">' +
       '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
-        '<button id="eaBtnBackToTeacherGroupsFromJ" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.3);">&larr; ' + esc(curTName) + ' Guruhlariga Qaytish</button>' +
-        (isAdmin ? '<button id="eaBtnBackToAllTeachersFromJ" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;">Barcha O‘qituvchilar</button>' : '') +
-        '<button id="eaBtnDeleteClassFromJ" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Guruhni butunlay o‘chirish">🗑 Guruhni O‘chirish</button>' +
+        '<button id="eaBtnBackToTeacherGroupsFromJ" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.35);">&larr; ' + esc(curTName) + ' Guruhlariga Qaytish</button>' +
+        (isAdmin ? '<button id="eaBtnBackToAllTeachersFromJ" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;">Barcha O‘qituvchilar</button>' : '') +
+        '<button id="eaBtnDeleteClassFromJ" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Guruhni butunlay o‘chirish">🗑 Guruhni O‘chirish</button>' +
       '</div>' +
-      '<div style="display:flex;align-items:center;gap:10px;">' +
-        '<span style="font-size:12.5px;color:#94a3b8;">Ustoz: <b style="color:#fff;">' + esc(curTName) + '</b></span>' +
-        '<span style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:12px;padding:3px 10px;font-size:11.5px;font-weight:800;">' + students.length + ' nafar o‘quvchi</span>' +
+      '<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">' +
+        '<div style="text-align:right;">' +
+          '<h2 style="margin:0;font-size:18px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">' +
+            '<span>👨‍🏫 ' + esc(curTName) + '</span>' +
+            '<span style="color:#94a3b8;font-size:16px;">•</span>' +
+            '<span style="color:#38bdf8;background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);padding:2px 10px;border-radius:8px;">' + esc(cls.name) + '</span>' +
+          '</h2>' +
+          '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">Level: <b style="color:#34d399;">' + esc(cls.level || 'General') + '</b> | Xona: <b style="color:#cbd5e1;">' + esc(cls.room || '301-xona') + '</b></div>' +
+        '</div>' +
+        '<span style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:12px;padding:5px 12px;font-size:12px;font-weight:900;">' + students.length + ' / ' + (cls.maxCapacity || 16) + ' o‘quvchi</span>' +
       '</div>' +
     '</div>' +
     '<div style="display:none;">';

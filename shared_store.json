@@ -1189,182 +1189,1964 @@
       }
     },
     {
-      "id": "cls_1792041880052",
-      "name": "Bizani gurux",
-      "code": "ETH-QOY2Z8",
-      "teacherId": "t_zizi",
-      "teacherName": "Zizi Ustoz",
-      "teacherEmail": "zizi@ethith.uz",
-      "students": [
+      "id": "cls_urolov_azizbek_intermediate_practice",
+      "name": "Intermediate Practice",
+      "code": "ETH-9GA7X0",
+      "teacherId": "t_urolov_azizbek",
+      "teacherName": "Azizbek Urolov",
+      "teacherEmail": "azizbek.urolov@ethith.uz",
+      "teacher": "Azizbek Urolov",
+      "created": 1793200957112,
+      "students": [],
+      "messages": [
         {
-          "id": "std_8",
-          "name": "O'razboyev O'tkir",
-          "email": "orazboyev@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_9",
-          "name": "Saparova Aida",
-          "email": "saparova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_10",
-          "name": "Umarov Nursulton",
-          "email": "umarov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_11",
-          "name": "Xolmurodova Muazzam",
-          "email": "xolmurodova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_12",
-          "name": "Kaxarova Xumora",
-          "email": "kaxarova@ethith.uz",
-          "joinedAt": "2026-10-20"
+          "id": "msg_welcome_cls_urolov_azizbek_intermediate_practice",
+          "senderId": "azizbek.urolov@ethith.uz",
+          "senderName": "Azizbek Urolov",
+          "text": "Assalomu alaykum! Ushbu Intermediate Practice guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "azizbek.urolov@ethith.uz"
+            ]
+          }
         }
       ],
-      "messages": [],
       "pinnedId": null,
-      "deletedMsgIds": [
-        "msg_1792042347995_z52xw",
-        "msg_1792042342788_9894b",
-        "msg_1792042367569_7htzs",
-        "msg_1792042036562_fkm5k",
-        "msg_1792042358929_8iaq2",
-        "msg_1792041984917_cd4i9"
-      ],
-      "schedule": "har_kuni",
-      "attendance": {
-        "records": {
-          "2026-09-29": {
-            "std_1": {
-              "status": "K"
-            },
-            "std_2": {
-              "status": "K"
-            },
-            "std_3": {
-              "status": "K"
-            }
-          }
-        },
-        "lessonTypes": {
-          "2026-10-21": "Vazifa: 1.1",
-          "2026-10-19": "Oddiy"
-        },
-        "holidays": {},
-        "homeworks": {
-          "2026-10-21": {
-            "dateKey": "2026-10-21",
-            "dateDisp": "21.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 1792608458469
-          }
-        },
-        "updatedAt": 1792608489537
-      },
-      "customStudentNames": {},
-      "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792608458469
-      },
-      "customStudentPhones": {},
-      "maxCapacity": 16,
-      "startDate": "2026-08-01",
-      "level": "B1+",
-      "extraHomework": [],
-      "teacher": "Zizi Ustoz",
-      "room": "201-xona"
-    },
-    {
-      "id": "cls_ielts_ex",
-      "name": "IELTS !",
-      "code": "ETH-IEL991",
-      "teacherId": "t_zizi",
-      "teacherName": "Zizi Ustoz",
-      "teacher": "Zizi Ustoz",
-      "teacherEmail": "zizi@ethith.uz",
-      "created": 1793113876020,
-      "room": "204-xona",
+      "deletedMsgIds": [],
       "schedule": "toq",
-      "maxCapacity": 16,
-      "students": [
-        {
-          "id": "std_24",
-          "name": "Tursunov Jasur",
-          "email": "tursunov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_25",
-          "name": "Mahmudova Shahlo",
-          "email": "mahmudova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_26",
-          "name": "Sobirov Elyor",
-          "email": "sobirov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_27",
-          "name": "Aliyeva Gulnoza",
-          "email": "aliyeva@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_28",
-          "name": "Rahmatov Ilhom",
-          "email": "rahmatov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_29",
-          "name": "Sayfullayeva Mohira",
-          "email": "sayfullayeva@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_30",
-          "name": "G'aniyev Sherzod",
-          "email": "ganiyev@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_31",
-          "name": "Vohidova Kamola",
-          "email": "vohidova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        }
-      ],
-      "messages": [],
+      "room": "301-xona",
+      "level": "Intermediate",
+      "maxCapacity": 18,
       "attendance": {
         "records": {},
         "lessonTypes": {},
         "holidays": {},
         "homeworks": {}
-      }
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_urolov_azizbek_upper_intermediate_standard",
+      "name": "Upper-Intermediate Standard",
+      "code": "ETH-79EGIR",
+      "teacherId": "t_urolov_azizbek",
+      "teacherName": "Azizbek Urolov",
+      "teacherEmail": "azizbek.urolov@ethith.uz",
+      "teacher": "Azizbek Urolov",
+      "created": 1793200957113,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_urolov_azizbek_upper_intermediate_standard",
+          "senderId": "azizbek.urolov@ethith.uz",
+          "senderName": "Azizbek Urolov",
+          "text": "Assalomu alaykum! Ushbu Upper-Intermediate Standard guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "azizbek.urolov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "302-xona",
+      "level": "Upper-Intermediate",
+      "maxCapacity": 18,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1",
+      "name": "CEFR_1",
+      "code": "ETH-05MQMO",
+      "teacherId": "t_ravshanov_doniyor",
+      "teacherName": "Ravshanov Doniyor",
+      "teacherEmail": "doniyor.ravshanov@ethith.uz",
+      "teacher": "Ravshanov Doniyor",
+      "created": 1793200957212,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_ravshanov_doniyor_cefr_1",
+          "senderId": "doniyor.ravshanov@ethith.uz",
+          "senderName": "Ravshanov Doniyor",
+          "text": "Assalomu alaykum! Ushbu CEFR_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "doniyor.ravshanov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "303-xona",
+      "level": "CEFR Multi-Level",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_2",
+      "name": "CEFR_2",
+      "code": "ETH-M5O35E",
+      "teacherId": "t_ravshanov_doniyor",
+      "teacherName": "Ravshanov Doniyor",
+      "teacherEmail": "doniyor.ravshanov@ethith.uz",
+      "teacher": "Ravshanov Doniyor",
+      "created": 1793200957213,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_ravshanov_doniyor_cefr_2",
+          "senderId": "doniyor.ravshanov@ethith.uz",
+          "senderName": "Ravshanov Doniyor",
+          "text": "Assalomu alaykum! Ushbu CEFR_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "doniyor.ravshanov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "304-xona",
+      "level": "CEFR Multi-Level",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_3",
+      "name": "CEFR_3",
+      "code": "ETH-YUHR07",
+      "teacherId": "t_ravshanov_doniyor",
+      "teacherName": "Ravshanov Doniyor",
+      "teacherEmail": "doniyor.ravshanov@ethith.uz",
+      "teacher": "Ravshanov Doniyor",
+      "created": 1793200957214,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_ravshanov_doniyor_cefr_3",
+          "senderId": "doniyor.ravshanov@ethith.uz",
+          "senderName": "Ravshanov Doniyor",
+          "text": "Assalomu alaykum! Ushbu CEFR_3 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "doniyor.ravshanov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "305-xona",
+      "level": "CEFR Multi-Level",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_4",
+      "name": "CEFR_4",
+      "code": "ETH-ZR4BPC",
+      "teacherId": "t_ravshanov_doniyor",
+      "teacherName": "Ravshanov Doniyor",
+      "teacherEmail": "doniyor.ravshanov@ethith.uz",
+      "teacher": "Ravshanov Doniyor",
+      "created": 1793200957215,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_ravshanov_doniyor_cefr_4",
+          "senderId": "doniyor.ravshanov@ethith.uz",
+          "senderName": "Ravshanov Doniyor",
+          "text": "Assalomu alaykum! Ushbu CEFR_4 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "doniyor.ravshanov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "306-xona",
+      "level": "CEFR Multi-Level",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_qarshiboyev_humoyun_practice",
+      "name": "Practice",
+      "code": "ETH-BOCS6L",
+      "teacherId": "t_qarshiboyev_humoyun",
+      "teacherName": "Qarshiboyev Humoyun",
+      "teacherEmail": "humoyun.qarshiboyev@ethith.uz",
+      "teacher": "Qarshiboyev Humoyun",
+      "created": 1793200957312,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_qarshiboyev_humoyun_practice",
+          "senderId": "humoyun.qarshiboyev@ethith.uz",
+          "senderName": "Qarshiboyev Humoyun",
+          "text": "Assalomu alaykum! Ushbu Practice guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "humoyun.qarshiboyev@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "305-xona",
+      "level": "Practice English",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_tovboyeva_marjona_beginner",
+      "name": "Beginner",
+      "code": "ETH-EO2DJT",
+      "teacherId": "t_tovboyeva_marjona",
+      "teacherName": "Marjona Tovboyeva",
+      "teacherEmail": "marjona.tovboyeva@ethith.uz",
+      "teacher": "Marjona Tovboyeva",
+      "created": 1793200957412,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_tovboyeva_marjona_beginner",
+          "senderId": "marjona.tovboyeva@ethith.uz",
+          "senderName": "Marjona Tovboyeva",
+          "text": "Assalomu alaykum! Ushbu Beginner guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "marjona.tovboyeva@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "307-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_olimjonova_durdona_beginner",
+      "name": "Beginner",
+      "code": "ETH-G5NTVW",
+      "teacherId": "t_olimjonova_durdona",
+      "teacherName": "Durdona Olimjonova",
+      "teacherEmail": "durdona.olimjonova@ethith.uz",
+      "teacher": "Durdona Olimjonova",
+      "created": 1793200957512,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_olimjonova_durdona_beginner",
+          "senderId": "durdona.olimjonova@ethith.uz",
+          "senderName": "Durdona Olimjonova",
+          "text": "Assalomu alaykum! Ushbu Beginner guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "durdona.olimjonova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "309-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_olimjonova_durdona_pre_intermediate",
+      "name": "Pre-Intermediate",
+      "code": "ETH-L4JLD5",
+      "teacherId": "t_olimjonova_durdona",
+      "teacherName": "Durdona Olimjonova",
+      "teacherEmail": "durdona.olimjonova@ethith.uz",
+      "teacher": "Durdona Olimjonova",
+      "created": 1793200957513,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_olimjonova_durdona_pre_intermediate",
+          "senderId": "durdona.olimjonova@ethith.uz",
+          "senderName": "Durdona Olimjonova",
+          "text": "Assalomu alaykum! Ushbu Pre-Intermediate guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "durdona.olimjonova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "310-xona",
+      "level": "Pre-Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_olimjonova_durdona_intermediate_1",
+      "name": "Intermediate_1",
+      "code": "ETH-2QZV3B",
+      "teacherId": "t_olimjonova_durdona",
+      "teacherName": "Durdona Olimjonova",
+      "teacherEmail": "durdona.olimjonova@ethith.uz",
+      "teacher": "Durdona Olimjonova",
+      "created": 1793200957514,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_olimjonova_durdona_intermediate_1",
+          "senderId": "durdona.olimjonova@ethith.uz",
+          "senderName": "Durdona Olimjonova",
+          "text": "Assalomu alaykum! Ushbu Intermediate_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "durdona.olimjonova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "311-xona",
+      "level": "Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_olimjonova_durdona_intermediate_2",
+      "name": "Intermediate_2",
+      "code": "ETH-9C23RM",
+      "teacherId": "t_olimjonova_durdona",
+      "teacherName": "Durdona Olimjonova",
+      "teacherEmail": "durdona.olimjonova@ethith.uz",
+      "teacher": "Durdona Olimjonova",
+      "created": 1793200957515,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_olimjonova_durdona_intermediate_2",
+          "senderId": "durdona.olimjonova@ethith.uz",
+          "senderName": "Durdona Olimjonova",
+          "text": "Assalomu alaykum! Ushbu Intermediate_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "durdona.olimjonova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "312-xona",
+      "level": "Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_tagaev_eldor_beginner",
+      "name": "Beginner",
+      "code": "ETH-QKQIF3",
+      "teacherId": "t_tagaev_eldor",
+      "teacherName": "Eldor Tagaev",
+      "teacherEmail": "eldor.tagaev@ethith.uz",
+      "teacher": "Eldor Tagaev",
+      "created": 1793200957613,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_tagaev_eldor_beginner",
+          "senderId": "eldor.tagaev@ethith.uz",
+          "senderName": "Eldor Tagaev",
+          "text": "Assalomu alaykum! Ushbu Beginner guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "eldor.tagaev@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "311-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_tagaev_eldor_elementary",
+      "name": "Elementary",
+      "code": "ETH-UOH6VG",
+      "teacherId": "t_tagaev_eldor",
+      "teacherName": "Eldor Tagaev",
+      "teacherEmail": "eldor.tagaev@ethith.uz",
+      "teacher": "Eldor Tagaev",
+      "created": 1793200957614,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_tagaev_eldor_elementary",
+          "senderId": "eldor.tagaev@ethith.uz",
+          "senderName": "Eldor Tagaev",
+          "text": "Assalomu alaykum! Ushbu Elementary guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "eldor.tagaev@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "312-xona",
+      "level": "Elementary",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_tagaev_eldor_pre_intermediate_1",
+      "name": "Pre-Intermediate_1",
+      "code": "ETH-38OUYQ",
+      "teacherId": "t_tagaev_eldor",
+      "teacherName": "Eldor Tagaev",
+      "teacherEmail": "eldor.tagaev@ethith.uz",
+      "teacher": "Eldor Tagaev",
+      "created": 1793200957615,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_tagaev_eldor_pre_intermediate_1",
+          "senderId": "eldor.tagaev@ethith.uz",
+          "senderName": "Eldor Tagaev",
+          "text": "Assalomu alaykum! Ushbu Pre-Intermediate_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "eldor.tagaev@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "313-xona",
+      "level": "Pre-Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_tagaev_eldor_pre_intermediate_2",
+      "name": "Pre-Intermediate_2",
+      "code": "ETH-A8F6PL",
+      "teacherId": "t_tagaev_eldor",
+      "teacherName": "Eldor Tagaev",
+      "teacherEmail": "eldor.tagaev@ethith.uz",
+      "teacher": "Eldor Tagaev",
+      "created": 1793200957616,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_tagaev_eldor_pre_intermediate_2",
+          "senderId": "eldor.tagaev@ethith.uz",
+          "senderName": "Eldor Tagaev",
+          "text": "Assalomu alaykum! Ushbu Pre-Intermediate_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "eldor.tagaev@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "314-xona",
+      "level": "Pre-Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_yaxshilikova_kamola_beginner",
+      "name": "Beginner",
+      "code": "ETH-74T92V",
+      "teacherId": "t_yaxshilikova_kamola",
+      "teacherName": "Kamola Yaxshilikova",
+      "teacherEmail": "kamola.yaxshilikova@ethith.uz",
+      "teacher": "Kamola Yaxshilikova",
+      "created": 1793200957713,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_yaxshilikova_kamola_beginner",
+          "senderId": "kamola.yaxshilikova@ethith.uz",
+          "senderName": "Kamola Yaxshilikova",
+          "text": "Assalomu alaykum! Ushbu Beginner guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "kamola.yaxshilikova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "313-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_yaxshilikova_kamola_elementary",
+      "name": "Elementary",
+      "code": "ETH-GSDYRE",
+      "teacherId": "t_yaxshilikova_kamola",
+      "teacherName": "Kamola Yaxshilikova",
+      "teacherEmail": "kamola.yaxshilikova@ethith.uz",
+      "teacher": "Kamola Yaxshilikova",
+      "created": 1793200957714,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_yaxshilikova_kamola_elementary",
+          "senderId": "kamola.yaxshilikova@ethith.uz",
+          "senderName": "Kamola Yaxshilikova",
+          "text": "Assalomu alaykum! Ushbu Elementary guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "kamola.yaxshilikova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "314-xona",
+      "level": "Elementary",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_sherqoziyeva_iroda_beginner_1",
+      "name": "Beginner_1",
+      "code": "ETH-Y7CWX2",
+      "teacherId": "t_sherqoziyeva_iroda",
+      "teacherName": "Iroda Sherqoziyeva",
+      "teacherEmail": "iroda.sherqoziyeva@ethith.uz",
+      "teacher": "Iroda Sherqoziyeva",
+      "created": 1793200957813,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_sherqoziyeva_iroda_beginner_1",
+          "senderId": "iroda.sherqoziyeva@ethith.uz",
+          "senderName": "Iroda Sherqoziyeva",
+          "text": "Assalomu alaykum! Ushbu Beginner_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "iroda.sherqoziyeva@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "315-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_sherqoziyeva_iroda_beginner_2",
+      "name": "Beginner_2",
+      "code": "ETH-CXQJWL",
+      "teacherId": "t_sherqoziyeva_iroda",
+      "teacherName": "Iroda Sherqoziyeva",
+      "teacherEmail": "iroda.sherqoziyeva@ethith.uz",
+      "teacher": "Iroda Sherqoziyeva",
+      "created": 1793200957814,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_sherqoziyeva_iroda_beginner_2",
+          "senderId": "iroda.sherqoziyeva@ethith.uz",
+          "senderName": "Iroda Sherqoziyeva",
+          "text": "Assalomu alaykum! Ushbu Beginner_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "iroda.sherqoziyeva@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "301-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_aborbekov_elyor_pre_intermediate_1",
+      "name": "Pre-Intermediate_1",
+      "code": "ETH-WEZYNX",
+      "teacherId": "t_aborbekov_elyor",
+      "teacherName": "Elyor Aborbekov",
+      "teacherEmail": "elyor.aborbekov@ethith.uz",
+      "teacher": "Elyor Aborbekov",
+      "created": 1793200957913,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_aborbekov_elyor_pre_intermediate_1",
+          "senderId": "elyor.aborbekov@ethith.uz",
+          "senderName": "Elyor Aborbekov",
+          "text": "Assalomu alaykum! Ushbu Pre-Intermediate_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "elyor.aborbekov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "302-xona",
+      "level": "Pre-Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_aborbekov_elyor_pre_intermediate_2",
+      "name": "Pre-Intermediate_2",
+      "code": "ETH-B1E9VL",
+      "teacherId": "t_aborbekov_elyor",
+      "teacherName": "Elyor Aborbekov",
+      "teacherEmail": "elyor.aborbekov@ethith.uz",
+      "teacher": "Elyor Aborbekov",
+      "created": 1793200957914,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_aborbekov_elyor_pre_intermediate_2",
+          "senderId": "elyor.aborbekov@ethith.uz",
+          "senderName": "Elyor Aborbekov",
+          "text": "Assalomu alaykum! Ushbu Pre-Intermediate_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "elyor.aborbekov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "303-xona",
+      "level": "Pre-Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_aborbekov_elyor_intermediate_1",
+      "name": "Intermediate_1",
+      "code": "ETH-FL8WS7",
+      "teacherId": "t_aborbekov_elyor",
+      "teacherName": "Elyor Aborbekov",
+      "teacherEmail": "elyor.aborbekov@ethith.uz",
+      "teacher": "Elyor Aborbekov",
+      "created": 1793200957915,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_aborbekov_elyor_intermediate_1",
+          "senderId": "elyor.aborbekov@ethith.uz",
+          "senderName": "Elyor Aborbekov",
+          "text": "Assalomu alaykum! Ushbu Intermediate_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "elyor.aborbekov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "304-xona",
+      "level": "Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_aborbekov_elyor_intermediate_2",
+      "name": "Intermediate_2",
+      "code": "ETH-XOPGB8",
+      "teacherId": "t_aborbekov_elyor",
+      "teacherName": "Elyor Aborbekov",
+      "teacherEmail": "elyor.aborbekov@ethith.uz",
+      "teacher": "Elyor Aborbekov",
+      "created": 1793200957916,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_aborbekov_elyor_intermediate_2",
+          "senderId": "elyor.aborbekov@ethith.uz",
+          "senderName": "Elyor Aborbekov",
+          "text": "Assalomu alaykum! Ushbu Intermediate_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "elyor.aborbekov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "305-xona",
+      "level": "Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_aborbekov_elyor_upper_intermediate",
+      "name": "Upper-Intermediate",
+      "code": "ETH-LOMC6R",
+      "teacherId": "t_aborbekov_elyor",
+      "teacherName": "Elyor Aborbekov",
+      "teacherEmail": "elyor.aborbekov@ethith.uz",
+      "teacher": "Elyor Aborbekov",
+      "created": 1793200957917,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_aborbekov_elyor_upper_intermediate",
+          "senderId": "elyor.aborbekov@ethith.uz",
+          "senderName": "Elyor Aborbekov",
+          "text": "Assalomu alaykum! Ushbu Upper-Intermediate guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "elyor.aborbekov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "306-xona",
+      "level": "Upper-Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_orinboyev_jaloliddin_pre_intermediate",
+      "name": "Pre-Intermediate",
+      "code": "ETH-HP5WJD",
+      "teacherId": "t_orinboyev_jaloliddin",
+      "teacherName": "Jaloliddin O’rinboyev",
+      "teacherEmail": "jaloliddin.orinboyev@ethith.uz",
+      "teacher": "Jaloliddin O’rinboyev",
+      "created": 1793200958013,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_orinboyev_jaloliddin_pre_intermediate",
+          "senderId": "jaloliddin.orinboyev@ethith.uz",
+          "senderName": "Jaloliddin O’rinboyev",
+          "text": "Assalomu alaykum! Ushbu Pre-Intermediate guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "jaloliddin.orinboyev@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "304-xona",
+      "level": "Pre-Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_orinboyev_jaloliddin_intermediate",
+      "name": "Intermediate",
+      "code": "ETH-AG2R9K",
+      "teacherId": "t_orinboyev_jaloliddin",
+      "teacherName": "Jaloliddin O’rinboyev",
+      "teacherEmail": "jaloliddin.orinboyev@ethith.uz",
+      "teacher": "Jaloliddin O’rinboyev",
+      "created": 1793200958014,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_orinboyev_jaloliddin_intermediate",
+          "senderId": "jaloliddin.orinboyev@ethith.uz",
+          "senderName": "Jaloliddin O’rinboyev",
+          "text": "Assalomu alaykum! Ushbu Intermediate guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "jaloliddin.orinboyev@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "305-xona",
+      "level": "Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_orinboyev_jaloliddin_standard_1",
+      "name": "Standard_1",
+      "code": "ETH-G6S3C8",
+      "teacherId": "t_orinboyev_jaloliddin",
+      "teacherName": "Jaloliddin O’rinboyev",
+      "teacherEmail": "jaloliddin.orinboyev@ethith.uz",
+      "teacher": "Jaloliddin O’rinboyev",
+      "created": 1793200958015,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_orinboyev_jaloliddin_standard_1",
+          "senderId": "jaloliddin.orinboyev@ethith.uz",
+          "senderName": "Jaloliddin O’rinboyev",
+          "text": "Assalomu alaykum! Ushbu Standard_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "jaloliddin.orinboyev@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "306-xona",
+      "level": "Standard English",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_orinboyev_jaloliddin_standard_2",
+      "name": "Standard_2",
+      "code": "ETH-07JU3F",
+      "teacherId": "t_orinboyev_jaloliddin",
+      "teacherName": "Jaloliddin O’rinboyev",
+      "teacherEmail": "jaloliddin.orinboyev@ethith.uz",
+      "teacher": "Jaloliddin O’rinboyev",
+      "created": 1793200958016,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_orinboyev_jaloliddin_standard_2",
+          "senderId": "jaloliddin.orinboyev@ethith.uz",
+          "senderName": "Jaloliddin O’rinboyev",
+          "text": "Assalomu alaykum! Ushbu Standard_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "jaloliddin.orinboyev@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "307-xona",
+      "level": "Standard English",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_jumanova_pokiza_beginner",
+      "name": "Beginner",
+      "code": "ETH-VJ8YNB",
+      "teacherId": "t_jumanova_pokiza",
+      "teacherName": "Pokiza Jumanova",
+      "teacherEmail": "pokiza.jumanova@ethith.uz",
+      "teacher": "Pokiza Jumanova",
+      "created": 1793200958113,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_jumanova_pokiza_beginner",
+          "senderId": "pokiza.jumanova@ethith.uz",
+          "senderName": "Pokiza Jumanova",
+          "text": "Assalomu alaykum! Ushbu Beginner guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "pokiza.jumanova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "306-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_hayrullayev_arslon_beginner_1",
+      "name": "Beginner_1",
+      "code": "ETH-UK8ZGH",
+      "teacherId": "t_hayrullayev_arslon",
+      "teacherName": "Arslon Hayrullayev",
+      "teacherEmail": "arslon.hayrullayev@ethith.uz",
+      "teacher": "Arslon Hayrullayev",
+      "created": 1793200958213,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_hayrullayev_arslon_beginner_1",
+          "senderId": "arslon.hayrullayev@ethith.uz",
+          "senderName": "Arslon Hayrullayev",
+          "text": "Assalomu alaykum! Ushbu Beginner_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "arslon.hayrullayev@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "308-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_hayrullayev_arslon_beginner_2",
+      "name": "Beginner_2",
+      "code": "ETH-PHK5VH",
+      "teacherId": "t_hayrullayev_arslon",
+      "teacherName": "Arslon Hayrullayev",
+      "teacherEmail": "arslon.hayrullayev@ethith.uz",
+      "teacher": "Arslon Hayrullayev",
+      "created": 1793200958214,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_hayrullayev_arslon_beginner_2",
+          "senderId": "arslon.hayrullayev@ethith.uz",
+          "senderName": "Arslon Hayrullayev",
+          "text": "Assalomu alaykum! Ushbu Beginner_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "arslon.hayrullayev@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "309-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_xudoyorova_sarvinoz_intermediate",
+      "name": "Intermediate",
+      "code": "ETH-JG9E2G",
+      "teacherId": "t_xudoyorova_sarvinoz",
+      "teacherName": "Sarvinoz Xudoyorova",
+      "teacherEmail": "sarvinoz.xudoyorova@ethith.uz",
+      "teacher": "Sarvinoz Xudoyorova",
+      "created": 1793200958313,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_xudoyorova_sarvinoz_intermediate",
+          "senderId": "sarvinoz.xudoyorova@ethith.uz",
+          "senderName": "Sarvinoz Xudoyorova",
+          "text": "Assalomu alaykum! Ushbu Intermediate guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "sarvinoz.xudoyorova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "310-xona",
+      "level": "Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_xudoyorova_sarvinoz_standard",
+      "name": "Standard",
+      "code": "ETH-AQGFNA",
+      "teacherId": "t_xudoyorova_sarvinoz",
+      "teacherName": "Sarvinoz Xudoyorova",
+      "teacherEmail": "sarvinoz.xudoyorova@ethith.uz",
+      "teacher": "Sarvinoz Xudoyorova",
+      "created": 1793200958314,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_xudoyorova_sarvinoz_standard",
+          "senderId": "sarvinoz.xudoyorova@ethith.uz",
+          "senderName": "Sarvinoz Xudoyorova",
+          "text": "Assalomu alaykum! Ushbu Standard guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "sarvinoz.xudoyorova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "311-xona",
+      "level": "Standard English",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_aliqulova_sevinch_beginner_1",
+      "name": "Beginner_1",
+      "code": "ETH-OW2EV1",
+      "teacherId": "t_aliqulova_sevinch",
+      "teacherName": "Sevinch Aliqulova",
+      "teacherEmail": "sevinch.aliqulova@ethith.uz",
+      "teacher": "Sevinch Aliqulova",
+      "created": 1793200958413,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_aliqulova_sevinch_beginner_1",
+          "senderId": "sevinch.aliqulova@ethith.uz",
+          "senderName": "Sevinch Aliqulova",
+          "text": "Assalomu alaykum! Ushbu Beginner_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "sevinch.aliqulova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "312-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_aliqulova_sevinch_beginner_2",
+      "name": "Beginner_2",
+      "code": "ETH-H3NVBC",
+      "teacherId": "t_aliqulova_sevinch",
+      "teacherName": "Sevinch Aliqulova",
+      "teacherEmail": "sevinch.aliqulova@ethith.uz",
+      "teacher": "Sevinch Aliqulova",
+      "created": 1793200958414,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_aliqulova_sevinch_beginner_2",
+          "senderId": "sevinch.aliqulova@ethith.uz",
+          "senderName": "Sevinch Aliqulova",
+          "text": "Assalomu alaykum! Ushbu Beginner_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "sevinch.aliqulova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "313-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_xojamqulova_diyora_beginner",
+      "name": "Beginner",
+      "code": "ETH-ST1ODX",
+      "teacherId": "t_xojamqulova_diyora",
+      "teacherName": "Diyora Xo’jamqulova",
+      "teacherEmail": "diyora.xojamqulova@ethith.uz",
+      "teacher": "Diyora Xo’jamqulova",
+      "created": 1793200958513,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_xojamqulova_diyora_beginner",
+          "senderId": "diyora.xojamqulova@ethith.uz",
+          "senderName": "Diyora Xo’jamqulova",
+          "text": "Assalomu alaykum! Ushbu Beginner guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "diyora.xojamqulova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "314-xona",
+      "level": "Beginner",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_xojamqulova_diyora_elementary_1",
+      "name": "Elementary_1",
+      "code": "ETH-WQRVWB",
+      "teacherId": "t_xojamqulova_diyora",
+      "teacherName": "Diyora Xo’jamqulova",
+      "teacherEmail": "diyora.xojamqulova@ethith.uz",
+      "teacher": "Diyora Xo’jamqulova",
+      "created": 1793200958514,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_xojamqulova_diyora_elementary_1",
+          "senderId": "diyora.xojamqulova@ethith.uz",
+          "senderName": "Diyora Xo’jamqulova",
+          "text": "Assalomu alaykum! Ushbu Elementary_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "diyora.xojamqulova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "315-xona",
+      "level": "Elementary",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_xojamqulova_diyora_elementary_2",
+      "name": "Elementary_2",
+      "code": "ETH-TD4J9K",
+      "teacherId": "t_xojamqulova_diyora",
+      "teacherName": "Diyora Xo’jamqulova",
+      "teacherEmail": "diyora.xojamqulova@ethith.uz",
+      "teacher": "Diyora Xo’jamqulova",
+      "created": 1793200958515,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_xojamqulova_diyora_elementary_2",
+          "senderId": "diyora.xojamqulova@ethith.uz",
+          "senderName": "Diyora Xo’jamqulova",
+          "text": "Assalomu alaykum! Ushbu Elementary_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "diyora.xojamqulova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "301-xona",
+      "level": "Elementary",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_xojamqulova_diyora_elementary_3",
+      "name": "Elementary_3",
+      "code": "ETH-9SQ4NY",
+      "teacherId": "t_xojamqulova_diyora",
+      "teacherName": "Diyora Xo’jamqulova",
+      "teacherEmail": "diyora.xojamqulova@ethith.uz",
+      "teacher": "Diyora Xo’jamqulova",
+      "created": 1793200958516,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_xojamqulova_diyora_elementary_3",
+          "senderId": "diyora.xojamqulova@ethith.uz",
+          "senderName": "Diyora Xo’jamqulova",
+          "text": "Assalomu alaykum! Ushbu Elementary_3 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "diyora.xojamqulova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "302-xona",
+      "level": "Elementary",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_bosimbekov_farrux_pre_intermediate_1",
+      "name": "Pre-Intermediate_1",
+      "code": "ETH-MEWZIL",
+      "teacherId": "t_bosimbekov_farrux",
+      "teacherName": "Farrux Bosimbekov",
+      "teacherEmail": "farrux.bosimbekov@ethith.uz",
+      "teacher": "Farrux Bosimbekov",
+      "created": 1793200958613,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_bosimbekov_farrux_pre_intermediate_1",
+          "senderId": "farrux.bosimbekov@ethith.uz",
+          "senderName": "Farrux Bosimbekov",
+          "text": "Assalomu alaykum! Ushbu Pre-Intermediate_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "farrux.bosimbekov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "301-xona",
+      "level": "Pre-Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_bosimbekov_farrux_pre_intermediate_2",
+      "name": "Pre-Intermediate_2",
+      "code": "ETH-HMTEF4",
+      "teacherId": "t_bosimbekov_farrux",
+      "teacherName": "Farrux Bosimbekov",
+      "teacherEmail": "farrux.bosimbekov@ethith.uz",
+      "teacher": "Farrux Bosimbekov",
+      "created": 1793200958614,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_bosimbekov_farrux_pre_intermediate_2",
+          "senderId": "farrux.bosimbekov@ethith.uz",
+          "senderName": "Farrux Bosimbekov",
+          "text": "Assalomu alaykum! Ushbu Pre-Intermediate_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "farrux.bosimbekov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "302-xona",
+      "level": "Pre-Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_bosimbekov_farrux_intermediate_1",
+      "name": "Intermediate_1",
+      "code": "ETH-KHD0HK",
+      "teacherId": "t_bosimbekov_farrux",
+      "teacherName": "Farrux Bosimbekov",
+      "teacherEmail": "farrux.bosimbekov@ethith.uz",
+      "teacher": "Farrux Bosimbekov",
+      "created": 1793200958615,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_bosimbekov_farrux_intermediate_1",
+          "senderId": "farrux.bosimbekov@ethith.uz",
+          "senderName": "Farrux Bosimbekov",
+          "text": "Assalomu alaykum! Ushbu Intermediate_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "farrux.bosimbekov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "303-xona",
+      "level": "Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_bosimbekov_farrux_intermediate_2",
+      "name": "Intermediate_2",
+      "code": "ETH-98OFJ0",
+      "teacherId": "t_bosimbekov_farrux",
+      "teacherName": "Farrux Bosimbekov",
+      "teacherEmail": "farrux.bosimbekov@ethith.uz",
+      "teacher": "Farrux Bosimbekov",
+      "created": 1793200958616,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_bosimbekov_farrux_intermediate_2",
+          "senderId": "farrux.bosimbekov@ethith.uz",
+          "senderName": "Farrux Bosimbekov",
+          "text": "Assalomu alaykum! Ushbu Intermediate_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "farrux.bosimbekov@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "304-xona",
+      "level": "Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_ahmadova_barno_elementary_1",
+      "name": "Elementary_1",
+      "code": "ETH-L1VQSL",
+      "teacherId": "t_ahmadova_barno",
+      "teacherName": "Barno Ahmadova",
+      "teacherEmail": "barno.ahmadova@ethith.uz",
+      "teacher": "Barno Ahmadova",
+      "created": 1793200958713,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_ahmadova_barno_elementary_1",
+          "senderId": "barno.ahmadova@ethith.uz",
+          "senderName": "Barno Ahmadova",
+          "text": "Assalomu alaykum! Ushbu Elementary_1 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "barno.ahmadova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "303-xona",
+      "level": "Elementary",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_ahmadova_barno_elementary_2",
+      "name": "Elementary_2",
+      "code": "ETH-5AXA1L",
+      "teacherId": "t_ahmadova_barno",
+      "teacherName": "Barno Ahmadova",
+      "teacherEmail": "barno.ahmadova@ethith.uz",
+      "teacher": "Barno Ahmadova",
+      "created": 1793200958714,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_ahmadova_barno_elementary_2",
+          "senderId": "barno.ahmadova@ethith.uz",
+          "senderName": "Barno Ahmadova",
+          "text": "Assalomu alaykum! Ushbu Elementary_2 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "barno.ahmadova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "304-xona",
+      "level": "Elementary",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_ahmadova_barno_elementary_3",
+      "name": "Elementary_3",
+      "code": "ETH-HMTRAV",
+      "teacherId": "t_ahmadova_barno",
+      "teacherName": "Barno Ahmadova",
+      "teacherEmail": "barno.ahmadova@ethith.uz",
+      "teacher": "Barno Ahmadova",
+      "created": 1793200958715,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_ahmadova_barno_elementary_3",
+          "senderId": "barno.ahmadova@ethith.uz",
+          "senderName": "Barno Ahmadova",
+          "text": "Assalomu alaykum! Ushbu Elementary_3 guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "barno.ahmadova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "305-xona",
+      "level": "Elementary",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_ahmadova_barno_pre_intermediate",
+      "name": "Pre-Intermediate",
+      "code": "ETH-OUB5RM",
+      "teacherId": "t_ahmadova_barno",
+      "teacherName": "Barno Ahmadova",
+      "teacherEmail": "barno.ahmadova@ethith.uz",
+      "teacher": "Barno Ahmadova",
+      "created": 1793200958716,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_ahmadova_barno_pre_intermediate",
+          "senderId": "barno.ahmadova@ethith.uz",
+          "senderName": "Barno Ahmadova",
+          "text": "Assalomu alaykum! Ushbu Pre-Intermediate guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "barno.ahmadova@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "juft",
+      "room": "306-xona",
+      "level": "Pre-Intermediate",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
+    },
+    {
+      "id": "cls_shodiyor_matematika_matematika",
+      "name": "Matematika",
+      "code": "ETH-TW4BAE",
+      "teacherId": "t_shodiyor_matematika",
+      "teacherName": "Shodiyor (matematika)",
+      "teacherEmail": "shodiyor.matematika@ethith.uz",
+      "teacher": "Shodiyor (matematika)",
+      "created": 1793200958813,
+      "students": [],
+      "messages": [
+        {
+          "id": "msg_welcome_cls_shodiyor_matematika_matematika",
+          "senderId": "shodiyor.matematika@ethith.uz",
+          "senderName": "Shodiyor (matematika)",
+          "text": "Assalomu alaykum! Ushbu Matematika guruhiga xush kelibsiz.",
+          "time": "09:00",
+          "reactions": {
+            "👍": [
+              "shodiyor.matematika@ethith.uz"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "schedule": "toq",
+      "room": "305-xona",
+      "level": "Matematika",
+      "maxCapacity": 16,
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      },
+      "customStudentNames": {},
+      "customStudentPhones": {},
+      "extraHomework": []
     }
   ],
   "exams": [
@@ -53773,7 +55555,7 @@
     ]
   },
   "workbookOverridesTs": 1793037940215,
-  "updatedAt": "2026-10-26T18:05:40.215Z",
+  "updatedAt": 1793200957113,
   "authorizedAdminChatIds": [
     6772427596,
     98124765
@@ -53803,20 +55585,354 @@
       "subject": "Ingliz tili (IELTS Intensive)"
     },
     {
-      "id": "t_zizi",
-      "name": "Zizi Ustoz",
-      "email": "zizi@ethith.uz",
-      "phone": "+998 93 987 65 43",
-      "card": "9860 7788 9900 1122",
-      "monthlySalary": 5500000,
-      "hourlyRate": 85000,
-      "teachingHours": 64,
-      "paidThisMonth": false,
+      "id": "t_urolov_azizbek",
+      "name": "Azizbek Urolov",
+      "email": "azizbek.urolov@ethith.uz",
+      "subject": "Ingliz tili (Upper / Inter)",
+      "hourlyRate": 120000,
+      "teachingHours": 72,
+      "card": "8600 9184 5348 5520",
+      "paidThisMonth": true,
       "assignedClasses": [
-        "cls_1792041880052",
-        "cls_ielts_ex"
+        "cls_urolov_azizbek_intermediate_practice",
+        "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "subject": "Ingliz tili (General B2)"
+      "classOrder": [
+        "cls_urolov_azizbek_intermediate_practice",
+        "cls_urolov_azizbek_upper_intermediate_standard"
+      ]
+    },
+    {
+      "id": "t_ravshanov_doniyor",
+      "name": "Ravshanov Doniyor",
+      "email": "doniyor.ravshanov@ethith.uz",
+      "subject": "Ingliz tili (CEFR Multi-Level)",
+      "hourlyRate": 110000,
+      "teachingHours": 68,
+      "card": "8600 1737 6773 7826",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_ravshanov_doniyor_cefr_1",
+        "cls_ravshanov_doniyor_cefr_2",
+        "cls_ravshanov_doniyor_cefr_3",
+        "cls_ravshanov_doniyor_cefr_4"
+      ],
+      "classOrder": [
+        "cls_ravshanov_doniyor_cefr_1",
+        "cls_ravshanov_doniyor_cefr_2",
+        "cls_ravshanov_doniyor_cefr_3",
+        "cls_ravshanov_doniyor_cefr_4"
+      ]
+    },
+    {
+      "id": "t_qarshiboyev_humoyun",
+      "name": "Qarshiboyev Humoyun",
+      "email": "humoyun.qarshiboyev@ethith.uz",
+      "subject": "Ingliz tili (Practice English)",
+      "hourlyRate": 95000,
+      "teachingHours": 48,
+      "card": "8600 9180 1074 6310",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_qarshiboyev_humoyun_practice"
+      ],
+      "classOrder": [
+        "cls_qarshiboyev_humoyun_practice"
+      ]
+    },
+    {
+      "id": "t_tovboyeva_marjona",
+      "name": "Marjona Tovboyeva",
+      "email": "marjona.tovboyeva@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 90000,
+      "teachingHours": 48,
+      "card": "8600 7570 9747 6845",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_tovboyeva_marjona_beginner"
+      ],
+      "classOrder": [
+        "cls_tovboyeva_marjona_beginner"
+      ]
+    },
+    {
+      "id": "t_olimjonova_durdona",
+      "name": "Durdona Olimjonova",
+      "email": "durdona.olimjonova@ethith.uz",
+      "subject": "Ingliz tili (Beginner / Inter)",
+      "hourlyRate": 100000,
+      "teachingHours": 64,
+      "card": "8600 5388 3997 7659",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_olimjonova_durdona_beginner",
+        "cls_olimjonova_durdona_pre_intermediate",
+        "cls_olimjonova_durdona_intermediate_1",
+        "cls_olimjonova_durdona_intermediate_2"
+      ],
+      "classOrder": [
+        "cls_olimjonova_durdona_beginner",
+        "cls_olimjonova_durdona_pre_intermediate",
+        "cls_olimjonova_durdona_intermediate_1",
+        "cls_olimjonova_durdona_intermediate_2"
+      ]
+    },
+    {
+      "id": "t_tagaev_eldor",
+      "name": "Eldor Tagaev",
+      "email": "eldor.tagaev@ethith.uz",
+      "subject": "Ingliz tili (General English)",
+      "hourlyRate": 100000,
+      "teachingHours": 64,
+      "card": "8600 9836 2231 3521",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_tagaev_eldor_beginner",
+        "cls_tagaev_eldor_elementary",
+        "cls_tagaev_eldor_pre_intermediate_1",
+        "cls_tagaev_eldor_pre_intermediate_2"
+      ],
+      "classOrder": [
+        "cls_tagaev_eldor_beginner",
+        "cls_tagaev_eldor_elementary",
+        "cls_tagaev_eldor_pre_intermediate_1",
+        "cls_tagaev_eldor_pre_intermediate_2"
+      ]
+    },
+    {
+      "id": "t_yaxshilikova_kamola",
+      "name": "Kamola Yaxshilikova",
+      "email": "kamola.yaxshilikova@ethith.uz",
+      "subject": "Ingliz tili (Beginner / Elementary)",
+      "hourlyRate": 95000,
+      "teachingHours": 54,
+      "card": "8600 3037 8661 9611",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_yaxshilikova_kamola_beginner",
+        "cls_yaxshilikova_kamola_elementary"
+      ],
+      "classOrder": [
+        "cls_yaxshilikova_kamola_beginner",
+        "cls_yaxshilikova_kamola_elementary"
+      ]
+    },
+    {
+      "id": "t_sherqoziyeva_iroda",
+      "name": "Iroda Sherqoziyeva",
+      "email": "iroda.sherqoziyeva@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 95000,
+      "teachingHours": 54,
+      "card": "8600 8200 8823 6053",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_sherqoziyeva_iroda_beginner_1",
+        "cls_sherqoziyeva_iroda_beginner_2"
+      ],
+      "classOrder": [
+        "cls_sherqoziyeva_iroda_beginner_1",
+        "cls_sherqoziyeva_iroda_beginner_2"
+      ]
+    },
+    {
+      "id": "t_aborbekov_elyor",
+      "name": "Elyor Aborbekov",
+      "email": "elyor.aborbekov@ethith.uz",
+      "subject": "Ingliz tili (Pre / Inter / Upper)",
+      "hourlyRate": 110000,
+      "teachingHours": 72,
+      "card": "8600 4747 3927 9285",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_aborbekov_elyor_pre_intermediate_1",
+        "cls_aborbekov_elyor_pre_intermediate_2",
+        "cls_aborbekov_elyor_intermediate_1",
+        "cls_aborbekov_elyor_intermediate_2",
+        "cls_aborbekov_elyor_upper_intermediate"
+      ],
+      "classOrder": [
+        "cls_aborbekov_elyor_pre_intermediate_1",
+        "cls_aborbekov_elyor_pre_intermediate_2",
+        "cls_aborbekov_elyor_intermediate_1",
+        "cls_aborbekov_elyor_intermediate_2",
+        "cls_aborbekov_elyor_upper_intermediate"
+      ]
+    },
+    {
+      "id": "t_orinboyev_jaloliddin",
+      "name": "Jaloliddin O’rinboyev",
+      "email": "jaloliddin.orinboyev@ethith.uz",
+      "subject": "Ingliz tili (Pre / Inter / Standard)",
+      "hourlyRate": 105000,
+      "teachingHours": 64,
+      "card": "8600 3286 1441 8063",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_orinboyev_jaloliddin_pre_intermediate",
+        "cls_orinboyev_jaloliddin_intermediate",
+        "cls_orinboyev_jaloliddin_standard_1",
+        "cls_orinboyev_jaloliddin_standard_2"
+      ],
+      "classOrder": [
+        "cls_orinboyev_jaloliddin_pre_intermediate",
+        "cls_orinboyev_jaloliddin_intermediate",
+        "cls_orinboyev_jaloliddin_standard_1",
+        "cls_orinboyev_jaloliddin_standard_2"
+      ]
+    },
+    {
+      "id": "t_jumanova_pokiza",
+      "name": "Pokiza Jumanova",
+      "email": "pokiza.jumanova@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 90000,
+      "teachingHours": 48,
+      "card": "8600 4814 2290 9478",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_jumanova_pokiza_beginner"
+      ],
+      "classOrder": [
+        "cls_jumanova_pokiza_beginner"
+      ]
+    },
+    {
+      "id": "t_hayrullayev_arslon",
+      "name": "Arslon Hayrullayev",
+      "email": "arslon.hayrullayev@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 95000,
+      "teachingHours": 54,
+      "card": "8600 2983 6185 5341",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_hayrullayev_arslon_beginner_1",
+        "cls_hayrullayev_arslon_beginner_2"
+      ],
+      "classOrder": [
+        "cls_hayrullayev_arslon_beginner_1",
+        "cls_hayrullayev_arslon_beginner_2"
+      ]
+    },
+    {
+      "id": "t_xudoyorova_sarvinoz",
+      "name": "Sarvinoz Xudoyorova",
+      "email": "sarvinoz.xudoyorova@ethith.uz",
+      "subject": "Ingliz tili (Intermediate / Standard)",
+      "hourlyRate": 100000,
+      "teachingHours": 54,
+      "card": "8600 2510 8636 7287",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_xudoyorova_sarvinoz_intermediate",
+        "cls_xudoyorova_sarvinoz_standard"
+      ],
+      "classOrder": [
+        "cls_xudoyorova_sarvinoz_intermediate",
+        "cls_xudoyorova_sarvinoz_standard"
+      ]
+    },
+    {
+      "id": "t_aliqulova_sevinch",
+      "name": "Sevinch Aliqulova",
+      "email": "sevinch.aliqulova@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 95000,
+      "teachingHours": 54,
+      "card": "8600 9373 3768 6749",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_aliqulova_sevinch_beginner_1",
+        "cls_aliqulova_sevinch_beginner_2"
+      ],
+      "classOrder": [
+        "cls_aliqulova_sevinch_beginner_1",
+        "cls_aliqulova_sevinch_beginner_2"
+      ]
+    },
+    {
+      "id": "t_xojamqulova_diyora",
+      "name": "Diyora Xo’jamqulova",
+      "email": "diyora.xojamqulova@ethith.uz",
+      "subject": "Ingliz tili (Beginner / Elementary)",
+      "hourlyRate": 100000,
+      "teachingHours": 64,
+      "card": "8600 7019 8442 4863",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_xojamqulova_diyora_beginner",
+        "cls_xojamqulova_diyora_elementary_1",
+        "cls_xojamqulova_diyora_elementary_2",
+        "cls_xojamqulova_diyora_elementary_3"
+      ],
+      "classOrder": [
+        "cls_xojamqulova_diyora_beginner",
+        "cls_xojamqulova_diyora_elementary_1",
+        "cls_xojamqulova_diyora_elementary_2",
+        "cls_xojamqulova_diyora_elementary_3"
+      ]
+    },
+    {
+      "id": "t_bosimbekov_farrux",
+      "name": "Farrux Bosimbekov",
+      "email": "farrux.bosimbekov@ethith.uz",
+      "subject": "Ingliz tili (Pre-Inter / Inter)",
+      "hourlyRate": 105000,
+      "teachingHours": 64,
+      "card": "8600 7883 1652 5691",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_bosimbekov_farrux_pre_intermediate_1",
+        "cls_bosimbekov_farrux_pre_intermediate_2",
+        "cls_bosimbekov_farrux_intermediate_1",
+        "cls_bosimbekov_farrux_intermediate_2"
+      ],
+      "classOrder": [
+        "cls_bosimbekov_farrux_pre_intermediate_1",
+        "cls_bosimbekov_farrux_pre_intermediate_2",
+        "cls_bosimbekov_farrux_intermediate_1",
+        "cls_bosimbekov_farrux_intermediate_2"
+      ]
+    },
+    {
+      "id": "t_ahmadova_barno",
+      "name": "Barno Ahmadova",
+      "email": "barno.ahmadova@ethith.uz",
+      "subject": "Ingliz tili (Elementary / Pre-Inter)",
+      "hourlyRate": 100000,
+      "teachingHours": 64,
+      "card": "8600 2725 8055 2896",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_ahmadova_barno_elementary_1",
+        "cls_ahmadova_barno_elementary_2",
+        "cls_ahmadova_barno_elementary_3",
+        "cls_ahmadova_barno_pre_intermediate"
+      ],
+      "classOrder": [
+        "cls_ahmadova_barno_elementary_1",
+        "cls_ahmadova_barno_elementary_2",
+        "cls_ahmadova_barno_elementary_3",
+        "cls_ahmadova_barno_pre_intermediate"
+      ]
+    },
+    {
+      "id": "t_shodiyor_matematika",
+      "name": "Shodiyor (matematika)",
+      "email": "shodiyor.matematika@ethith.uz",
+      "subject": "Matematika",
+      "hourlyRate": 110000,
+      "teachingHours": 54,
+      "card": "8600 5419 8367 2781",
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_shodiyor_matematika_matematika"
+      ],
+      "classOrder": [
+        "cls_shodiyor_matematika_matematika"
+      ]
     }
   ],
   "fileExplorer": {
