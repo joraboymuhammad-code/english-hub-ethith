@@ -22222,8 +22222,8 @@
         "page": 1004,
         "exercise": "3",
         "label": "2",
-        "top": 87.8,
-        "left": 60.3,
+        "top": 86,
+        "left": 60.5,
         "width": 7,
         "height": 2,
         "correct": "Hi"
@@ -22246,8 +22246,8 @@
         "page": 1004,
         "exercise": "3",
         "label": "4",
-        "top": 89.3,
-        "left": 60.3,
+        "top": 87.5,
+        "left": 60.4,
         "width": 7,
         "height": 2,
         "correct": "And"
@@ -22270,8 +22270,8 @@
         "page": 1004,
         "exercise": "3",
         "label": "6",
-        "top": 90.8,
-        "left": 60.3,
+        "top": 88.9,
+        "left": 60.6,
         "width": 7,
         "height": 2,
         "correct": "No"
@@ -22306,8 +22306,8 @@
         "page": 1004,
         "exercise": "3",
         "label": "9",
-        "top": 93.9,
-        "left": 60.6,
+        "top": 92.3,
+        "left": 60.8,
         "width": 7,
         "height": 2,
         "correct": "Yes"
@@ -54066,7 +54066,7 @@
     "85": 2026,
     "86": 2026,
     "87": 2026,
-    "1004": 1793185972734,
+    "1004": 1793185979142,
     "2004": 2026,
     "2005": 2026,
     "2006": 2026,
@@ -54194,5 +54194,5 @@
   "timetable": [],
   "contests": [],
   "payments": {},
-  "updatedAt": 1793185974180
+  "updatedAt": 1793185979553
 }
