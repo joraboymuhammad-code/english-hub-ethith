@@ -59357,8 +59357,7 @@
             "there isn't"
         ],
         "correct": [
-            "there isn't",
-            "there isn't a"
+            "there isn't"
         ]
     },
     {
@@ -65374,7 +65373,7 @@
             "correct": "changing rooms"
       }
 ],
-            "3046": [
+                "3046": [
       {
             "id": "p3046_ex1_1",
             "type": "select",
@@ -65386,7 +65385,11 @@
                   "sleep",
                   "take"
             ],
-            "correct": "sleep"
+            "correct": "sleep",
+            "top": 35,
+            "left": 13,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3046_ex1_2",
@@ -65399,7 +65402,11 @@
                   "put",
                   "do"
             ],
-            "correct": "do"
+            "correct": "do",
+            "top": 36.8,
+            "left": 13,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3046_ex1_3",
@@ -65412,7 +65419,11 @@
                   "ride",
                   "drive"
             ],
-            "correct": "ride"
+            "correct": "ride",
+            "top": 38.6,
+            "left": 13,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3046_ex1_4",
@@ -65425,7 +65436,11 @@
                   "have",
                   "walk"
             ],
-            "correct": "walk"
+            "correct": "walk",
+            "top": 40.4,
+            "left": 13,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3046_ex1_5",
@@ -65438,7 +65453,11 @@
                   "go",
                   "take"
             ],
-            "correct": "take"
+            "correct": "take",
+            "top": 42.2,
+            "left": 13,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3046_ex1_6",
@@ -65451,7 +65470,11 @@
                   "eat",
                   "take"
             ],
-            "correct": "eat"
+            "correct": "eat",
+            "top": 44,
+            "left": 13,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3046_ex1_7",
@@ -65464,7 +65487,11 @@
                   "do",
                   "be"
             ],
-            "correct": "do"
+            "correct": "do",
+            "top": 45.8,
+            "left": 13,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3046_ex1_8",
@@ -65477,7 +65504,11 @@
                   "put",
                   "drink"
             ],
-            "correct": "drink"
+            "correct": "drink",
+            "top": 47.6,
+            "left": 13,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3046_ex1_9",
@@ -65490,7 +65521,11 @@
                   "see",
                   "go"
             ],
-            "correct": "go"
+            "correct": "go",
+            "top": 49.4,
+            "left": 13,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3046_ex2_a",
@@ -65502,7 +65537,11 @@
             "correct": [
                   "4",
                   "walk to work"
-            ]
+            ],
+            "top": 64,
+            "left": 14,
+            "width": 5,
+            "height": 2.2
       },
       {
             "id": "p3046_ex2_b",
@@ -65514,7 +65553,11 @@
             "correct": [
                   "7",
                   "do an hour of exercise each day"
-            ]
+            ],
+            "top": 64,
+            "left": 27,
+            "width": 5,
+            "height": 2.2
       },
       {
             "id": "p3046_ex2_c",
@@ -65527,7 +65570,11 @@
                   "5",
                   "take the stairs, not the lift",
                   "take the stairs"
-            ]
+            ],
+            "top": 64,
+            "left": 41,
+            "width": 5,
+            "height": 2.2
       },
       {
             "id": "p3046_ex2_d",
@@ -65539,7 +65586,11 @@
             "correct": [
                   "6",
                   "eat lots of fruit and vegetables"
-            ]
+            ],
+            "top": 78,
+            "left": 14,
+            "width": 5,
+            "height": 2.2
       },
       {
             "id": "p3046_ex2_e",
@@ -65552,7 +65603,11 @@
                   "3",
                   "ride a bicycle",
                   "ride a bike"
-            ]
+            ],
+            "top": 78,
+            "left": 27,
+            "width": 5,
+            "height": 2.2
       },
       {
             "id": "p3046_ex2_f",
@@ -65564,7 +65619,11 @@
             "correct": [
                   "1",
                   "sleep seven to eight hours a night"
-            ]
+            ],
+            "top": 78,
+            "left": 41,
+            "width": 5,
+            "height": 2.2
       },
       {
             "id": "p3046_ex2_g",
@@ -65576,7 +65635,11 @@
             "correct": [
                   "2",
                   "do physical jobs around the house"
-            ]
+            ],
+            "top": 91,
+            "left": 14,
+            "width": 5,
+            "height": 2.2
       },
       {
             "id": "p3046_ex2_h",
@@ -65588,7 +65651,11 @@
             "correct": [
                   "8",
                   "drink eight glasses of water a day"
-            ]
+            ],
+            "top": 91,
+            "left": 27,
+            "width": 5,
+            "height": 2.2
       },
       {
             "id": "p3046_ex3_2",
@@ -65600,7 +65667,11 @@
             "correct": [
                   "drink eight glasses of water a day",
                   "drink eight glasses of water"
-            ]
+            ],
+            "top": 47.2,
+            "left": 59,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3046_ex3_3",
@@ -65611,7 +65682,11 @@
             "h": 2.2,
             "correct": [
                   "go to the gym"
-            ]
+            ],
+            "top": 52.8,
+            "left": 74,
+            "width": 20,
+            "height": 2.2
       },
       {
             "id": "p3046_ex3_4",
@@ -65622,7 +65697,11 @@
             "h": 2.2,
             "correct": [
                   "walk to work"
-            ]
+            ],
+            "top": 58.8,
+            "left": 59,
+            "width": 15,
+            "height": 2.2
       },
       {
             "id": "p3046_ex3_5",
@@ -65634,7 +65713,11 @@
             "correct": [
                   "take the stairs, not the lift",
                   "take the stairs"
-            ]
+            ],
+            "top": 62,
+            "left": 67,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3046_ex3_6",
@@ -65646,7 +65729,11 @@
             "correct": [
                   "do physical jobs around the house",
                   "do physical jobs"
-            ]
+            ],
+            "top": 69.8,
+            "left": 71,
+            "width": 24,
+            "height": 2.2
       },
       {
             "id": "p3046_ex3_7",
@@ -65658,7 +65745,11 @@
             "correct": [
                   "sleep seven to eight hours a night",
                   "sleep seven to eight hours"
-            ]
+            ],
+            "top": 76.8,
+            "left": 59,
+            "width": 32,
+            "height": 2.2
       }
 ],
     "3047": [
@@ -65671,7 +65762,11 @@
             "h": 2.2,
             "correct": [
                   "borrowed"
-            ]
+            ],
+            "top": 21,
+            "left": 13.5,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4a_3",
@@ -65682,7 +65777,11 @@
             "h": 2.2,
             "correct": [
                   "lived"
-            ]
+            ],
+            "top": 24.2,
+            "left": 33,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4a_4",
@@ -65693,7 +65792,11 @@
             "h": 2.2,
             "correct": [
                   "played"
-            ]
+            ],
+            "top": 27.2,
+            "left": 14.5,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4a_5",
@@ -65704,7 +65807,11 @@
             "h": 2.2,
             "correct": [
                   "paid"
-            ]
+            ],
+            "top": 29.2,
+            "left": 14.5,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4a_6",
@@ -65715,7 +65822,11 @@
             "h": 2.2,
             "correct": [
                   "stopped"
-            ]
+            ],
+            "top": 31,
+            "left": 14.5,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4a_7",
@@ -65726,7 +65837,11 @@
             "h": 2.2,
             "correct": [
                   "slept"
-            ]
+            ],
+            "top": 32.8,
+            "left": 34,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4a_8",
@@ -65737,7 +65852,11 @@
             "h": 2.2,
             "correct": [
                   "spent"
-            ]
+            ],
+            "top": 36.2,
+            "left": 28,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4b_2",
@@ -65750,7 +65869,11 @@
                   "regular",
                   "irregular"
             ],
-            "correct": "regular"
+            "correct": "regular",
+            "top": 44,
+            "left": 13,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4b_3",
@@ -65763,7 +65886,11 @@
                   "regular",
                   "irregular"
             ],
-            "correct": "regular"
+            "correct": "regular",
+            "top": 45.8,
+            "left": 13,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4b_4",
@@ -65776,7 +65903,11 @@
                   "regular",
                   "irregular"
             ],
-            "correct": "regular"
+            "correct": "regular",
+            "top": 47.6,
+            "left": 13,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4b_5",
@@ -65789,7 +65920,11 @@
                   "regular",
                   "irregular"
             ],
-            "correct": "irregular"
+            "correct": "irregular",
+            "top": 42.2,
+            "left": 33,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4b_6",
@@ -65802,7 +65937,11 @@
                   "regular",
                   "irregular"
             ],
-            "correct": "regular"
+            "correct": "regular",
+            "top": 44,
+            "left": 33,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4b_7",
@@ -65815,7 +65954,11 @@
                   "regular",
                   "irregular"
             ],
-            "correct": "irregular"
+            "correct": "irregular",
+            "top": 45.8,
+            "left": 33,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3047_ex4b_8",
@@ -65828,7 +65971,11 @@
                   "regular",
                   "irregular"
             ],
-            "correct": "irregular"
+            "correct": "irregular",
+            "top": 47.6,
+            "left": 33,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3047_ex5_reg1",
@@ -65840,7 +65987,11 @@
             "correct": [
                   "believed",
                   "believe - believed"
-            ]
+            ],
+            "top": 64,
+            "left": 10,
+            "width": 18,
+            "height": 2
       },
       {
             "id": "p3047_ex5_reg2",
@@ -65852,7 +66003,11 @@
             "correct": [
                   "changed",
                   "change - changed"
-            ]
+            ],
+            "top": 66,
+            "left": 10,
+            "width": 18,
+            "height": 2
       },
       {
             "id": "p3047_ex5_reg3",
@@ -65864,7 +66019,11 @@
             "correct": [
                   "copied",
                   "copy - copied"
-            ]
+            ],
+            "top": 68,
+            "left": 10,
+            "width": 18,
+            "height": 2
       },
       {
             "id": "p3047_ex5_reg4",
@@ -65876,7 +66035,11 @@
             "correct": [
                   "liked",
                   "like - liked"
-            ]
+            ],
+            "top": 70,
+            "left": 10,
+            "width": 18,
+            "height": 2
       },
       {
             "id": "p3047_ex5_irreg1",
@@ -65888,7 +66051,11 @@
             "correct": [
                   "bought",
                   "buy - bought"
-            ]
+            ],
+            "top": 64,
+            "left": 29,
+            "width": 18,
+            "height": 2
       },
       {
             "id": "p3047_ex5_irreg2",
@@ -65900,7 +66067,11 @@
             "correct": [
                   "caught",
                   "catch - caught"
-            ]
+            ],
+            "top": 66,
+            "left": 29,
+            "width": 18,
+            "height": 2
       },
       {
             "id": "p3047_ex5_irreg3",
@@ -65912,7 +66083,11 @@
             "correct": [
                   "came",
                   "come - came"
-            ]
+            ],
+            "top": 68,
+            "left": 29,
+            "width": 18,
+            "height": 2
       },
       {
             "id": "p3047_ex5_irreg4",
@@ -65924,7 +66099,11 @@
             "correct": [
                   "drank",
                   "drink - drank"
-            ]
+            ],
+            "top": 70,
+            "left": 29,
+            "width": 18,
+            "height": 2
       },
       {
             "id": "p3047_ex6a_2",
@@ -65938,7 +66117,11 @@
                   "put",
                   "wrote"
             ],
-            "correct": "put"
+            "correct": "put",
+            "top": 78.2,
+            "left": 11,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3047_ex6a_3",
@@ -65952,7 +66135,11 @@
                   "felt",
                   "heard"
             ],
-            "correct": "heard"
+            "correct": "heard",
+            "top": 80,
+            "left": 11,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3047_ex6a_4",
@@ -65966,7 +66153,11 @@
                   "drank",
                   "sang"
             ],
-            "correct": "came"
+            "correct": "came",
+            "top": 76.5,
+            "left": 32,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3047_ex6a_5",
@@ -65980,7 +66171,11 @@
                   "flew",
                   "put"
             ],
-            "correct": "flew"
+            "correct": "flew",
+            "top": 78.2,
+            "left": 32,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3047_ex6a_6",
@@ -65994,7 +66189,11 @@
                   "ate",
                   "caught"
             ],
-            "correct": "caught"
+            "correct": "caught",
+            "top": 80,
+            "left": 32,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_2",
@@ -66005,7 +66204,11 @@
             "h": 2.2,
             "correct": [
                   "swam"
-            ]
+            ],
+            "top": 52.8,
+            "left": 72,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_3",
@@ -66016,7 +66219,11 @@
             "h": 2.2,
             "correct": [
                   "won"
-            ]
+            ],
+            "top": 54.4,
+            "left": 74,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_4",
@@ -66027,7 +66234,11 @@
             "h": 2.2,
             "correct": [
                   "left"
-            ]
+            ],
+            "top": 56,
+            "left": 73,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_5",
@@ -66038,7 +66249,11 @@
             "h": 2.2,
             "correct": [
                   "went"
-            ]
+            ],
+            "top": 60,
+            "left": 78,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_6",
@@ -66049,7 +66264,11 @@
             "h": 2.2,
             "correct": [
                   "drove"
-            ]
+            ],
+            "top": 61.6,
+            "left": 54,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_7",
@@ -66060,7 +66279,11 @@
             "h": 2.2,
             "correct": [
                   "ate"
-            ]
+            ],
+            "top": 61.6,
+            "left": 78,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_8",
@@ -66071,7 +66294,11 @@
             "h": 2.2,
             "correct": [
                   "told"
-            ]
+            ],
+            "top": 65.2,
+            "left": 69,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_9",
@@ -66082,7 +66309,11 @@
             "h": 2.2,
             "correct": [
                   "said"
-            ]
+            ],
+            "top": 66.8,
+            "left": 77,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_10",
@@ -66093,7 +66324,11 @@
             "h": 2.2,
             "correct": [
                   "thought"
-            ]
+            ],
+            "top": 70,
+            "left": 55,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_11",
@@ -66104,7 +66339,11 @@
             "h": 2.2,
             "correct": [
                   "found"
-            ]
+            ],
+            "top": 72.2,
+            "left": 55,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_12",
@@ -66115,7 +66354,11 @@
             "h": 2.2,
             "correct": [
                   "did"
-            ]
+            ],
+            "top": 76,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_13",
@@ -66126,7 +66369,11 @@
             "h": 2.2,
             "correct": [
                   "ran"
-            ]
+            ],
+            "top": 77.6,
+            "left": 71,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_14",
@@ -66137,7 +66384,11 @@
             "h": 2.2,
             "correct": [
                   "felt"
-            ]
+            ],
+            "top": 79.2,
+            "left": 79,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3047_ex7_15",
@@ -66148,7 +66399,11 @@
             "h": 2.2,
             "correct": [
                   "did"
-            ]
+            ],
+            "top": 80.8,
+            "left": 79,
+            "width": 10,
+            "height": 2.2
       }
 ],
     "3048": [
@@ -66165,7 +66420,11 @@
                   "run",
                   "ski",
                   "swim"
-            ]
+            ],
+            "top": 31,
+            "left": 11,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3048_ex1a_v2",
@@ -66180,7 +66439,11 @@
                   "run",
                   "ski",
                   "swim"
-            ]
+            ],
+            "top": 33,
+            "left": 11,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3048_ex1a_go1",
@@ -66192,7 +66455,11 @@
             "correct": [
                   "fishing",
                   "to the gym"
-            ]
+            ],
+            "top": 31,
+            "left": 21,
+            "width": 9,
+            "height": 2
       },
       {
             "id": "p3048_ex1a_go2",
@@ -66204,7 +66471,11 @@
             "correct": [
                   "to the gym",
                   "fishing"
-            ]
+            ],
+            "top": 33,
+            "left": 21,
+            "width": 9,
+            "height": 2
       },
       {
             "id": "p3048_ex1a_pl1",
@@ -66217,7 +66488,11 @@
                   "basketball",
                   "football",
                   "tennis"
-            ]
+            ],
+            "top": 31,
+            "left": 31,
+            "width": 9,
+            "height": 2
       },
       {
             "id": "p3048_ex1a_pl2",
@@ -66230,7 +66505,11 @@
                   "football",
                   "basketball",
                   "tennis"
-            ]
+            ],
+            "top": 33,
+            "left": 31,
+            "width": 9,
+            "height": 2
       },
       {
             "id": "p3048_ex1a_do1",
@@ -66242,7 +66521,11 @@
             "correct": [
                   "judo",
                   "yoga"
-            ]
+            ],
+            "top": 31,
+            "left": 41,
+            "width": 9,
+            "height": 2
       },
       {
             "id": "p3048_ex1a_do2",
@@ -66254,7 +66537,11 @@
             "correct": [
                   "yoga",
                   "judo"
-            ]
+            ],
+            "top": 33,
+            "left": 41,
+            "width": 9,
+            "height": 2
       },
       {
             "id": "p3048_ex2_1",
@@ -66265,7 +66552,11 @@
             "h": 2,
             "correct": [
                   "ski"
-            ]
+            ],
+            "top": 55,
+            "left": 14,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3048_ex2_2",
@@ -66276,7 +66567,11 @@
             "h": 2,
             "correct": [
                   "judo"
-            ]
+            ],
+            "top": 67.5,
+            "left": 14,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3048_ex2_3",
@@ -66287,7 +66582,11 @@
             "h": 2,
             "correct": [
                   "swim"
-            ]
+            ],
+            "top": 80.2,
+            "left": 14,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3048_ex2_4",
@@ -66298,7 +66597,11 @@
             "h": 2,
             "correct": [
                   "football"
-            ]
+            ],
+            "top": 92.8,
+            "left": 14,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3048_ex2_5",
@@ -66309,7 +66612,11 @@
             "h": 2,
             "correct": [
                   "fishing"
-            ]
+            ],
+            "top": 55,
+            "left": 35,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3048_ex2_6",
@@ -66320,7 +66627,11 @@
             "h": 2,
             "correct": [
                   "jog"
-            ]
+            ],
+            "top": 67.5,
+            "left": 35,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3048_ex2_7",
@@ -66332,7 +66643,11 @@
             "correct": [
                   "play tennis",
                   "tennis"
-            ]
+            ],
+            "top": 80.2,
+            "left": 35,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3048_ex2_8",
@@ -66344,7 +66659,11 @@
             "correct": [
                   "do yoga",
                   "yoga"
-            ]
+            ],
+            "top": 92.8,
+            "left": 35,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3048_ex3_1",
@@ -66355,7 +66674,11 @@
             "h": 2.2,
             "correct": [
                   "d"
-            ]
+            ],
+            "top": 44.5,
+            "left": 76,
+            "width": 4,
+            "height": 2.2
       },
       {
             "id": "p3048_ex3_2",
@@ -66366,7 +66689,11 @@
             "h": 2.2,
             "correct": [
                   "f"
-            ]
+            ],
+            "top": 47.5,
+            "left": 76,
+            "width": 4,
+            "height": 2.2
       },
       {
             "id": "p3048_ex3_3",
@@ -66377,7 +66704,11 @@
             "h": 2.2,
             "correct": [
                   "e"
-            ]
+            ],
+            "top": 50.5,
+            "left": 76,
+            "width": 4,
+            "height": 2.2
       },
       {
             "id": "p3048_ex3_4",
@@ -66388,7 +66719,11 @@
             "h": 2.2,
             "correct": [
                   "b"
-            ]
+            ],
+            "top": 54.2,
+            "left": 76,
+            "width": 4,
+            "height": 2.2
       },
       {
             "id": "p3048_ex3_5",
@@ -66399,7 +66734,11 @@
             "h": 2.2,
             "correct": [
                   "a"
-            ]
+            ],
+            "top": 57.2,
+            "left": 76,
+            "width": 4,
+            "height": 2.2
       },
       {
             "id": "p3048_ex3_6",
@@ -66410,7 +66749,11 @@
             "h": 2.2,
             "correct": [
                   "c"
-            ]
+            ],
+            "top": 60.5,
+            "left": 76,
+            "width": 4,
+            "height": 2.2
       },
       {
             "id": "p3048_ex4_1",
@@ -66424,7 +66767,11 @@
                   "to arrive",
                   "arrive"
             ],
-            "correct": "arrive"
+            "correct": "arrive",
+            "top": 71.8,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3048_ex4_2",
@@ -66438,7 +66785,11 @@
                   "not",
                   "not to"
             ],
-            "correct": "not"
+            "correct": "not",
+            "top": 75.8,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3048_ex4_3",
@@ -66452,7 +66803,11 @@
                   "didn't rain",
                   "didn't to rain"
             ],
-            "correct": "didn't rain"
+            "correct": "didn't rain",
+            "top": 78.8,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3048_ex4_4",
@@ -66466,7 +66821,11 @@
                   "went",
                   "goes"
             ],
-            "correct": "go"
+            "correct": "go",
+            "top": 82.5,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3048_ex4_5",
@@ -66480,7 +66839,11 @@
                   "did do not",
                   "didn't do"
             ],
-            "correct": "didn't do"
+            "correct": "didn't do",
+            "top": 85.8,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3048_ex4_6",
@@ -66494,7 +66857,11 @@
                   "didn't saw",
                   "saw not"
             ],
-            "correct": "didn't see"
+            "correct": "didn't see",
+            "top": 89.4,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3048_ex4_7",
@@ -66508,7 +66875,11 @@
                   "came",
                   "come"
             ],
-            "correct": "come"
+            "correct": "come",
+            "top": 92.6,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       }
 ],
     "3049": [
@@ -66522,7 +66893,11 @@
             "correct": [
                   "We didn't stay in a hotel.",
                   "We didn't stay in a hotel"
-            ]
+            ],
+            "top": 15.2,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3049_ex5_3",
@@ -66534,7 +66909,11 @@
             "correct": [
                   "The weather wasn't very good.",
                   "The weather wasn't very good"
-            ]
+            ],
+            "top": 18.6,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3049_ex5_4",
@@ -66546,7 +66925,11 @@
             "correct": [
                   "He didn't win the competition.",
                   "He didn't win the competition"
-            ]
+            ],
+            "top": 22,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3049_ex5_5",
@@ -66558,7 +66941,11 @@
             "correct": [
                   "You weren't late for work.",
                   "You weren't late for work"
-            ]
+            ],
+            "top": 25.4,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3049_ex5_6",
@@ -66570,7 +66957,11 @@
             "correct": [
                   "I didn't ski at the weekend.",
                   "I didn't ski at the weekend"
-            ]
+            ],
+            "top": 28.8,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_2a",
@@ -66581,7 +66972,11 @@
             "h": 2.2,
             "correct": [
                   "didn't go"
-            ]
+            ],
+            "top": 44,
+            "left": 14.5,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_2b",
@@ -66592,7 +66987,11 @@
             "h": 2.2,
             "correct": [
                   "went"
-            ]
+            ],
+            "top": 45.8,
+            "left": 14.5,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_3a",
@@ -66603,7 +67002,11 @@
             "h": 2.2,
             "correct": [
                   "didn't do"
-            ]
+            ],
+            "top": 50.8,
+            "left": 15,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_3b",
@@ -66614,7 +67017,11 @@
             "h": 2.2,
             "correct": [
                   "did"
-            ]
+            ],
+            "top": 52.6,
+            "left": 15,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_4a",
@@ -66625,7 +67032,11 @@
             "h": 2.2,
             "correct": [
                   "took"
-            ]
+            ],
+            "top": 57,
+            "left": 14.5,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_4b",
@@ -66636,7 +67047,11 @@
             "h": 2.2,
             "correct": [
                   "didn't take"
-            ]
+            ],
+            "top": 58.8,
+            "left": 14.5,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_5a",
@@ -66647,7 +67062,11 @@
             "h": 2.2,
             "correct": [
                   "didn't lend"
-            ]
+            ],
+            "top": 63.8,
+            "left": 15,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_5b",
@@ -66658,7 +67077,11 @@
             "h": 2.2,
             "correct": [
                   "lent"
-            ]
+            ],
+            "top": 65.6,
+            "left": 15,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_6a",
@@ -66669,7 +67092,11 @@
             "h": 2.2,
             "correct": [
                   "didn't start"
-            ]
+            ],
+            "top": 70,
+            "left": 23.5,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_6b",
@@ -66680,7 +67107,11 @@
             "h": 2.2,
             "correct": [
                   "started"
-            ]
+            ],
+            "top": 71.8,
+            "left": 14.5,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_7a",
@@ -66691,7 +67122,11 @@
             "h": 2.2,
             "correct": [
                   "played"
-            ]
+            ],
+            "top": 76.8,
+            "left": 15,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex6_7b",
@@ -66702,7 +67137,11 @@
             "h": 2.2,
             "correct": [
                   "didn't play"
-            ]
+            ],
+            "top": 78.6,
+            "left": 15,
+            "width": 13,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_2",
@@ -66713,7 +67152,11 @@
             "h": 2.2,
             "correct": [
                   "didn't live"
-            ]
+            ],
+            "top": 26.2,
+            "left": 61.5,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_3",
@@ -66724,7 +67167,11 @@
             "h": 2.2,
             "correct": [
                   "ran"
-            ]
+            ],
+            "top": 27.8,
+            "left": 61.5,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_4",
@@ -66735,7 +67182,11 @@
             "h": 2.2,
             "correct": [
                   "wanted"
-            ]
+            ],
+            "top": 31.8,
+            "left": 59.5,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_5",
@@ -66746,7 +67197,11 @@
             "h": 2.2,
             "correct": [
                   "didn't think"
-            ]
+            ],
+            "top": 33.2,
+            "left": 59.5,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_6",
@@ -66757,7 +67212,11 @@
             "h": 2.2,
             "correct": [
                   "didn't agree"
-            ]
+            ],
+            "top": 34.8,
+            "left": 69.5,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_7",
@@ -66768,7 +67227,11 @@
             "h": 2.2,
             "correct": [
                   "didn't stop"
-            ]
+            ],
+            "top": 36.3,
+            "left": 58.5,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_8",
@@ -66779,7 +67242,11 @@
             "h": 2.2,
             "correct": [
                   "began"
-            ]
+            ],
+            "top": 39.4,
+            "left": 68,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_9",
@@ -66790,7 +67257,11 @@
             "h": 2.2,
             "correct": [
                   "entered"
-            ]
+            ],
+            "top": 41,
+            "left": 70,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_10",
@@ -66801,7 +67272,11 @@
             "h": 2.2,
             "correct": [
                   "didn't win"
-            ]
+            ],
+            "top": 44.2,
+            "left": 74.5,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_11",
@@ -66812,7 +67287,11 @@
             "h": 2.2,
             "correct": [
                   "didn't want"
-            ]
+            ],
+            "top": 47.8,
+            "left": 59.5,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_12",
@@ -66823,7 +67302,11 @@
             "h": 2.2,
             "correct": [
                   "decided"
-            ]
+            ],
+            "top": 49.4,
+            "left": 58.5,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_13",
@@ -66834,7 +67317,11 @@
             "h": 2.2,
             "correct": [
                   "started"
-            ]
+            ],
+            "top": 51,
+            "left": 75,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_14",
@@ -66845,7 +67332,11 @@
             "h": 2.2,
             "correct": [
                   "opened"
-            ]
+            ],
+            "top": 54,
+            "left": 70.5,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3049_ex7_15",
@@ -66857,7 +67348,11 @@
             "correct": [
                   "didn't have",
                   "don't have"
-            ]
+            ],
+            "top": 57,
+            "left": 65.5,
+            "width": 12,
+            "height": 2.2
       }
 ],
     "3050": [
@@ -66872,7 +67367,11 @@
                   "a",
                   "b"
             ],
-            "correct": "a"
+            "correct": "a",
+            "top": 23.5,
+            "left": 12,
+            "width": 6,
+            "height": 2
       },
       {
             "id": "p3050_ex1_2",
@@ -66885,7 +67384,11 @@
                   "a",
                   "b"
             ],
-            "correct": "b"
+            "correct": "b",
+            "top": 27,
+            "left": 12,
+            "width": 6,
+            "height": 2
       },
       {
             "id": "p3050_ex1_3",
@@ -66898,7 +67401,11 @@
                   "a",
                   "b"
             ],
-            "correct": "a"
+            "correct": "a",
+            "top": 30.5,
+            "left": 12,
+            "width": 6,
+            "height": 2
       },
       {
             "id": "p3050_ex1_4",
@@ -66911,7 +67418,11 @@
                   "a",
                   "b"
             ],
-            "correct": "b"
+            "correct": "b",
+            "top": 34,
+            "left": 12,
+            "width": 6,
+            "height": 2
       },
       {
             "id": "p3050_ex1_5",
@@ -66924,7 +67435,11 @@
                   "a",
                   "b"
             ],
-            "correct": "b"
+            "correct": "b",
+            "top": 37.5,
+            "left": 12,
+            "width": 6,
+            "height": 2
       },
       {
             "id": "p3050_ex1_6",
@@ -66937,7 +67452,11 @@
                   "a",
                   "b"
             ],
-            "correct": "a"
+            "correct": "a",
+            "top": 41.5,
+            "left": 12,
+            "width": 6,
+            "height": 2
       },
       {
             "id": "p3050_ex1_7",
@@ -66950,7 +67469,11 @@
                   "a",
                   "b"
             ],
-            "correct": "b"
+            "correct": "b",
+            "top": 45,
+            "left": 12,
+            "width": 6,
+            "height": 2
       },
       {
             "id": "p3050_ex1_8",
@@ -66963,7 +67486,11 @@
                   "a",
                   "b"
             ],
-            "correct": "a"
+            "correct": "a",
+            "top": 49,
+            "left": 12,
+            "width": 6,
+            "height": 2
       },
       {
             "id": "p3050_ex1_9",
@@ -66976,7 +67503,11 @@
                   "a",
                   "b"
             ],
-            "correct": "a"
+            "correct": "a",
+            "top": 52.5,
+            "left": 12,
+            "width": 6,
+            "height": 2
       },
       {
             "id": "p3050_ex1_10",
@@ -66989,7 +67520,11 @@
                   "a",
                   "b"
             ],
-            "correct": "a"
+            "correct": "a",
+            "top": 56.5,
+            "left": 12,
+            "width": 6,
+            "height": 2
       },
       {
             "id": "p3050_ex2_1",
@@ -67000,7 +67535,11 @@
             "h": 2.2,
             "correct": [
                   "looked at"
-            ]
+            ],
+            "top": 69.2,
+            "left": 16.5,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3050_ex2_2",
@@ -67011,7 +67550,11 @@
             "h": 2.2,
             "correct": [
                   "went"
-            ]
+            ],
+            "top": 71,
+            "left": 15,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex2_3",
@@ -67022,7 +67565,11 @@
             "h": 2.2,
             "correct": [
                   "took"
-            ]
+            ],
+            "top": 74.2,
+            "left": 39.5,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex2_4",
@@ -67033,7 +67580,11 @@
             "h": 2.2,
             "correct": [
                   "lent"
-            ]
+            ],
+            "top": 75.8,
+            "left": 19.5,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex2_5",
@@ -67044,7 +67595,11 @@
             "h": 2.2,
             "correct": [
                   "borrowed"
-            ]
+            ],
+            "top": 77.4,
+            "left": 34,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex2_6",
@@ -67055,7 +67610,11 @@
             "h": 2.2,
             "correct": [
                   "see"
-            ]
+            ],
+            "top": 79.5,
+            "left": 18,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex2_7",
@@ -67066,7 +67625,11 @@
             "h": 2.2,
             "correct": [
                   "brought"
-            ]
+            ],
+            "top": 81.5,
+            "left": 23,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex2_8",
@@ -67077,7 +67640,11 @@
             "h": 2.2,
             "correct": [
                   "told"
-            ]
+            ],
+            "top": 83.5,
+            "left": 18,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex2_9",
@@ -67088,7 +67655,11 @@
             "h": 2.2,
             "correct": [
                   "listened to"
-            ]
+            ],
+            "top": 85.5,
+            "left": 26,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3050_ex2_10",
@@ -67099,7 +67670,11 @@
             "h": 2.2,
             "correct": [
                   "watched"
-            ]
+            ],
+            "top": 87.5,
+            "left": 20,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex3_1",
@@ -67110,7 +67685,11 @@
             "h": 2.2,
             "correct": [
                   "walk"
-            ]
+            ],
+            "top": 26,
+            "left": 62,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex3_2",
@@ -67121,7 +67700,11 @@
             "h": 2.2,
             "correct": [
                   "take"
-            ]
+            ],
+            "top": 27.8,
+            "left": 62,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex3_3",
@@ -67132,7 +67715,11 @@
             "h": 2.2,
             "correct": [
                   "ride"
-            ]
+            ],
+            "top": 29.5,
+            "left": 62,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex3_4",
@@ -67143,7 +67730,11 @@
             "h": 2.2,
             "correct": [
                   "do"
-            ]
+            ],
+            "top": 31.2,
+            "left": 62,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex3_5",
@@ -67154,7 +67745,11 @@
             "h": 2.2,
             "correct": [
                   "sleep"
-            ]
+            ],
+            "top": 33,
+            "left": 62,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex3_6",
@@ -67165,7 +67760,11 @@
             "h": 2.2,
             "correct": [
                   "eat"
-            ]
+            ],
+            "top": 26,
+            "left": 80,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex3_7",
@@ -67176,7 +67775,11 @@
             "h": 2.2,
             "correct": [
                   "drink"
-            ]
+            ],
+            "top": 27.8,
+            "left": 80,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex3_8",
@@ -67187,7 +67790,11 @@
             "h": 2.2,
             "correct": [
                   "go"
-            ]
+            ],
+            "top": 29.5,
+            "left": 80,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex3_9",
@@ -67198,7 +67805,11 @@
             "h": 2.2,
             "correct": [
                   "do"
-            ]
+            ],
+            "top": 31.2,
+            "left": 80,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3050_ex4_1",
@@ -67212,7 +67823,11 @@
                   "do",
                   "go"
             ],
-            "correct": "play"
+            "correct": "play",
+            "top": 47,
+            "left": 55,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3050_ex4_2",
@@ -67226,7 +67841,11 @@
                   "do",
                   "go"
             ],
-            "correct": "do"
+            "correct": "do",
+            "top": 47,
+            "left": 68,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3050_ex4_3",
@@ -67240,7 +67859,11 @@
                   "do",
                   "go"
             ],
-            "correct": "go"
+            "correct": "go",
+            "top": 47,
+            "left": 81,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3050_ex5_1",
@@ -67253,7 +67876,11 @@
                   "have",
                   "keep"
             ],
-            "correct": "have"
+            "correct": "have",
+            "top": 53.8,
+            "left": 59,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3050_ex5_2",
@@ -67266,7 +67893,11 @@
                   "win",
                   "keep"
             ],
-            "correct": "keep"
+            "correct": "keep",
+            "top": 55.6,
+            "left": 59,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3050_ex5_3",
@@ -67279,7 +67910,11 @@
                   "meet",
                   "learn"
             ],
-            "correct": "learn"
+            "correct": "learn",
+            "top": 57.3,
+            "left": 59,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3050_ex5_4",
@@ -67292,7 +67927,11 @@
                   "lose",
                   "win"
             ],
-            "correct": "lose"
+            "correct": "lose",
+            "top": 59,
+            "left": 59,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3050_ex5_5",
@@ -67305,7 +67944,11 @@
                   "meet",
                   "win"
             ],
-            "correct": "meet"
+            "correct": "meet",
+            "top": 60.8,
+            "left": 59,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3050_ex5_6",
@@ -67318,7 +67961,11 @@
                   "win",
                   "have"
             ],
-            "correct": "win"
+            "correct": "win",
+            "top": 62.5,
+            "left": 59,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3050_ex6_1",
@@ -67329,7 +67976,11 @@
             "h": 2.2,
             "correct": [
                   "take"
-            ]
+            ],
+            "top": 70,
+            "left": 68,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3050_ex6_2",
@@ -67340,7 +67991,11 @@
             "h": 2.2,
             "correct": [
                   "lend"
-            ]
+            ],
+            "top": 73,
+            "left": 74,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3050_ex6_3",
@@ -67351,7 +68006,11 @@
             "h": 2.2,
             "correct": [
                   "go"
-            ]
+            ],
+            "top": 76.5,
+            "left": 76,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3050_ex6_4",
@@ -67362,7 +68021,11 @@
             "h": 2.2,
             "correct": [
                   "watch"
-            ]
+            ],
+            "top": 79.5,
+            "left": 74,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3050_ex6_5",
@@ -67373,7 +68036,11 @@
             "h": 2.2,
             "correct": [
                   "tell"
-            ]
+            ],
+            "top": 83,
+            "left": 80,
+            "width": 9,
+            "height": 2.2
       }
 ],
     "3051": [
@@ -67387,7 +68054,11 @@
             "correct": [
                   "What's your opinion",
                   "What is your opinion"
-            ]
+            ],
+            "top": 29,
+            "left": 13,
+            "width": 15,
+            "height": 2.2
       },
       {
             "id": "p3051_ex1a_2",
@@ -67398,7 +68069,11 @@
             "h": 2.2,
             "correct": [
                   "I don't know about that"
-            ]
+            ],
+            "top": 37.8,
+            "left": 23,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3051_ex1a_3",
@@ -67410,7 +68085,11 @@
             "correct": [
                   "Yes, but",
                   "yes, but"
-            ]
+            ],
+            "top": 44,
+            "left": 19,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3051_ex1a_4",
@@ -67421,7 +68100,11 @@
             "h": 2.2,
             "correct": [
                   "I think"
-            ]
+            ],
+            "top": 49.5,
+            "left": 13,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3051_ex1a_5",
@@ -67432,7 +68115,11 @@
             "h": 2.2,
             "correct": [
                   "I agree"
-            ]
+            ],
+            "top": 55.5,
+            "left": 13,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3051_ex1b_1",
@@ -67443,7 +68130,11 @@
             "h": 2.2,
             "correct": [
                   "What do you think"
-            ]
+            ],
+            "top": 64,
+            "left": 13,
+            "width": 15,
+            "height": 2.2
       },
       {
             "id": "p3051_ex1b_2",
@@ -67454,7 +68145,11 @@
             "h": 2.2,
             "correct": [
                   "I don't agree"
-            ]
+            ],
+            "top": 69.5,
+            "left": 17,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3051_ex1b_3",
@@ -67465,7 +68160,11 @@
             "h": 2.2,
             "correct": [
                   "For me"
-            ]
+            ],
+            "top": 73,
+            "left": 24,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3051_ex1b_4",
@@ -67476,7 +68175,11 @@
             "h": 2.2,
             "correct": [
                   "I don't know about that"
-            ]
+            ],
+            "top": 76.5,
+            "left": 13,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3051_ex1b_5",
@@ -67488,7 +68191,11 @@
             "correct": [
                   "That's right",
                   "Thats right"
-            ]
+            ],
+            "top": 80,
+            "left": 13,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3051_ex2_1a",
@@ -67502,7 +68209,11 @@
                   "What do you think (of ...)?",
                   "What's your opinion (of ...)?",
                   "What's your opinion"
-            ]
+            ],
+            "top": 27,
+            "left": 67,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3051_ex2_2a",
@@ -67516,7 +68227,11 @@
                   "For me, ...",
                   "I think",
                   "I think ..."
-            ]
+            ],
+            "top": 30,
+            "left": 65,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3051_ex2_3a",
@@ -67530,7 +68245,11 @@
                   "I agree (with that).",
                   "That's right",
                   "That's right."
-            ]
+            ],
+            "top": 33,
+            "left": 62,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3051_ex2_4a",
@@ -67544,7 +68263,11 @@
                   "I don't know about that.",
                   "Yes, but",
                   "Yes, but ..."
-            ]
+            ],
+            "top": 36.5,
+            "left": 64,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3051_ex3_1",
@@ -67557,7 +68280,11 @@
                   "think",
                   "agree"
             ],
-            "correct": "agree"
+            "correct": "agree",
+            "top": 60,
+            "left": 63,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3051_ex3_2",
@@ -67570,7 +68297,11 @@
                   "too",
                   "also"
             ],
-            "correct": "also"
+            "correct": "also",
+            "top": 61.3,
+            "left": 81,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3051_ex3_3",
@@ -67583,7 +68314,11 @@
                   "true",
                   "right"
             ],
-            "correct": "right"
+            "correct": "right",
+            "top": 67.2,
+            "left": 74,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3051_ex3_4",
@@ -67596,7 +68331,11 @@
                   "too",
                   "also"
             ],
-            "correct": "also"
+            "correct": "also",
+            "top": 71.3,
+            "left": 80,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3051_ex3_5",
@@ -67609,7 +68348,11 @@
                   "know",
                   "think"
             ],
-            "correct": "know"
+            "correct": "know",
+            "top": 75.8,
+            "left": 67,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3051_ex3_6",
@@ -67622,7 +68365,11 @@
                   "agree",
                   "true"
             ],
-            "correct": "agree"
+            "correct": "agree",
+            "top": 77.2,
+            "left": 79,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3051_ex3_7",
@@ -67635,7 +68382,11 @@
                   "true",
                   "agree"
             ],
-            "correct": "true"
+            "correct": "true",
+            "top": 81.3,
+            "left": 68,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3051_ex3_8",
@@ -67648,7 +68399,11 @@
                   "too",
                   "now"
             ],
-            "correct": "too"
+            "correct": "too",
+            "top": 84,
+            "left": 66,
+            "width": 9,
+            "height": 2.2
       }
 ],
     "3052": [
@@ -67661,7 +68416,11 @@
             "h": 2.2,
             "correct": [
                   "go on a tour"
-            ]
+            ],
+            "top": 51.5,
+            "left": 11,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3052_ex1_2",
@@ -67672,7 +68431,11 @@
             "h": 2.2,
             "correct": [
                   "visit an art gallery"
-            ]
+            ],
+            "top": 65.5,
+            "left": 11,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3052_ex1_3",
@@ -67683,7 +68446,11 @@
             "h": 2.2,
             "correct": [
                   "meet local people"
-            ]
+            ],
+            "top": 79.5,
+            "left": 11,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3052_ex1_4",
@@ -67694,7 +68461,11 @@
             "h": 2.2,
             "correct": [
                   "trek in the mountains"
-            ]
+            ],
+            "top": 93.5,
+            "left": 11,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3052_ex1_5",
@@ -67705,7 +68476,11 @@
             "h": 2.2,
             "correct": [
                   "stay in a hotel"
-            ]
+            ],
+            "top": 51.5,
+            "left": 32,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3052_ex1_6",
@@ -67716,7 +68491,11 @@
             "h": 2.2,
             "correct": [
                   "go swimming"
-            ]
+            ],
+            "top": 65.5,
+            "left": 32,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3052_ex1_7",
@@ -67727,7 +68506,11 @@
             "h": 2.2,
             "correct": [
                   "go sightseeing"
-            ]
+            ],
+            "top": 79.5,
+            "left": 32,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3052_ex1_8",
@@ -67738,7 +68521,11 @@
             "h": 2.2,
             "correct": [
                   "visit a museum"
-            ]
+            ],
+            "top": 93.5,
+            "left": 32,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_1",
@@ -67751,7 +68538,11 @@
                   "stay in your own",
                   "go to another"
             ],
-            "correct": "stay in your own"
+            "correct": "stay in your own",
+            "top": 64,
+            "left": 74,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_2",
@@ -67764,7 +68555,11 @@
                   "trek",
                   "lie"
             ],
-            "correct": "lie"
+            "correct": "lie",
+            "top": 70,
+            "left": 56,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_3",
@@ -67777,7 +68572,11 @@
                   "had",
                   "went"
             ],
-            "correct": "went"
+            "correct": "went",
+            "top": 71.6,
+            "left": 67,
+            "width": 9,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_4",
@@ -67790,7 +68589,11 @@
                   "another",
                   "my own"
             ],
-            "correct": "another"
+            "correct": "another",
+            "top": 74,
+            "left": 72,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_5",
@@ -67803,7 +68606,11 @@
                   "on my own",
                   "with a group of friends"
             ],
-            "correct": "with a group of friends"
+            "correct": "with a group of friends",
+            "top": 75.8,
+            "left": 56,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_6",
@@ -67816,7 +68623,11 @@
                   "sightseeing",
                   "a tour"
             ],
-            "correct": "sightseeing"
+            "correct": "sightseeing",
+            "top": 78.6,
+            "left": 68,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_7",
@@ -67829,7 +68640,11 @@
                   "trekked",
                   "visited"
             ],
-            "correct": "visited"
+            "correct": "visited",
+            "top": 80.2,
+            "left": 59,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_8",
@@ -67842,7 +68657,11 @@
                   "stay",
                   "go"
             ],
-            "correct": "stay"
+            "correct": "stay",
+            "top": 81.8,
+            "left": 78,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_9",
@@ -67855,7 +68674,11 @@
                   "city breaks",
                   "beach holidays"
             ],
-            "correct": "beach holidays"
+            "correct": "beach holidays",
+            "top": 85,
+            "left": 56,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_10",
@@ -67868,7 +68691,11 @@
                   "an apartment",
                   "a tent"
             ],
-            "correct": "an apartment"
+            "correct": "an apartment",
+            "top": 86.6,
+            "left": 65,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_11",
@@ -67881,7 +68708,11 @@
                   "back",
                   "around"
             ],
-            "correct": "around"
+            "correct": "around",
+            "top": 91.2,
+            "left": 63,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3052_ex2_12",
@@ -67894,7 +68725,11 @@
             "options": [
                   "got",
                   "went"
-            ]
+            ],
+            "top": 91.2,
+            "left": 77,
+            "width": 8,
+            "height": 2.2
       }
 ],
     "3053": [
@@ -67908,7 +68743,11 @@
             "correct": [
                   "Did you go on your own?",
                   "Did you go on your own"
-            ]
+            ],
+            "top": 19,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex3_2",
@@ -67920,7 +68759,11 @@
             "correct": [
                   "Did they visit the Natural History Museum?",
                   "Did they visit the Natural History Museum"
-            ]
+            ],
+            "top": 23.5,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex3_3",
@@ -67932,7 +68775,11 @@
             "correct": [
                   "Did she stay in an expensive hotel?",
                   "Did she stay in an expensive hotel"
-            ]
+            ],
+            "top": 28.5,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex3_4",
@@ -67944,7 +68791,11 @@
             "correct": [
                   "Did you take photos of the local people?",
                   "Did you take photos of the local people"
-            ]
+            ],
+            "top": 33.5,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex3_5",
@@ -67956,7 +68807,11 @@
             "correct": [
                   "Did he buy a drink?",
                   "Did he buy a drink"
-            ]
+            ],
+            "top": 38,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex3_6",
@@ -67968,7 +68823,11 @@
             "correct": [
                   "Did you have a guidebook?",
                   "Did you have a guidebook"
-            ]
+            ],
+            "top": 43,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex3_7",
@@ -67980,7 +68839,11 @@
             "correct": [
                   "Did I pass the French exam?",
                   "Did I pass the French exam"
-            ]
+            ],
+            "top": 47.8,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex4_1",
@@ -67992,7 +68855,11 @@
             "correct": [
                   "Did you go on holiday last year?",
                   "Did you go on holiday last year"
-            ]
+            ],
+            "top": 55.5,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex4_2",
@@ -68004,7 +68871,11 @@
             "correct": [
                   "Did your parents have a good time in Budapest?",
                   "Did your parents have a good time in Budapest"
-            ]
+            ],
+            "top": 59,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex4_4",
@@ -68016,7 +68887,11 @@
             "correct": [
                   "How long did you spend in Gambia?",
                   "How long did you spend in Gambia"
-            ]
+            ],
+            "top": 66,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex4_6",
@@ -68028,7 +68903,11 @@
             "correct": [
                   "Did they book the plane tickets online?",
                   "Did they book the plane tickets online"
-            ]
+            ],
+            "top": 73,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex4_7",
@@ -68040,7 +68919,11 @@
             "correct": [
                   "Whereabouts in Dubai did they stay?",
                   "Whereabouts in Dubai did they stay"
-            ]
+            ],
+            "top": 76.5,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex4_8",
@@ -68052,7 +68935,11 @@
             "correct": [
                   "Who did you go with?",
                   "Who did you go with"
-            ]
+            ],
+            "top": 80,
+            "left": 13,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex6a_1",
@@ -68064,7 +68951,11 @@
             "correct": [
                   "When did you get back from your holiday?",
                   "When did you get back from your holiday"
-            ]
+            ],
+            "top": 48,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex6a_2",
@@ -68076,7 +68967,11 @@
             "correct": [
                   "Did you have a good time in the USA?",
                   "Did you have a good time in the USA"
-            ]
+            ],
+            "top": 53.5,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex6a_3",
@@ -68088,7 +68983,11 @@
             "correct": [
                   "Did John go with you?",
                   "Did John go with you"
-            ]
+            ],
+            "top": 59,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex6a_4",
@@ -68100,7 +68999,11 @@
             "correct": [
                   "What did you do?",
                   "What did you do"
-            ]
+            ],
+            "top": 64.5,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex6a_5",
@@ -68112,7 +69015,11 @@
             "correct": [
                   "How far did you drive?",
                   "How far did you drive"
-            ]
+            ],
+            "top": 70,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex6a_6",
@@ -68124,7 +69031,11 @@
             "correct": [
                   "Did you stay in hotels?",
                   "Did you stay in hotels"
-            ]
+            ],
+            "top": 75.5,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3053_ex6a_7",
@@ -68136,7 +69047,11 @@
             "correct": [
                   "What was your favourite place?",
                   "What was your favourite place"
-            ]
+            ],
+            "top": 81,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       }
 ],
     "3054": [
@@ -68151,7 +69066,11 @@
                   "c, g",
                   "g, c",
                   "c and g"
-            ]
+            ],
+            "top": 53,
+            "left": 23,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3054_ex1_2",
@@ -68164,7 +69083,11 @@
                   "a, e",
                   "e, a",
                   "a and e"
-            ]
+            ],
+            "top": 64,
+            "left": 23,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3054_ex1_3",
@@ -68177,7 +69100,11 @@
                   "b, f",
                   "f, b",
                   "b and f"
-            ]
+            ],
+            "top": 75,
+            "left": 23,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3054_ex1_4",
@@ -68190,7 +69117,11 @@
                   "d, h",
                   "h, d",
                   "d and h"
-            ]
+            ],
+            "top": 86,
+            "left": 23,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3054_ex2_1",
@@ -68204,7 +69135,11 @@
                   "the bus",
                   "public transport"
             ],
-            "correct": "public transport"
+            "correct": "public transport",
+            "top": 22,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3054_ex2_2",
@@ -68221,7 +69156,11 @@
             "correct": [
                   "on foot",
                   "by taxi"
-            ]
+            ],
+            "top": 25.5,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3054_ex2_3",
@@ -68235,7 +69174,11 @@
                   "missed",
                   "drove"
             ],
-            "correct": "missed"
+            "correct": "missed",
+            "top": 29,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3054_ex2_4",
@@ -68252,7 +69195,11 @@
             "correct": [
                   "by train",
                   "by bicycle"
-            ]
+            ],
+            "top": 32.5,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3054_ex2_5",
@@ -68266,7 +69213,11 @@
                   "a train",
                   "plane"
             ],
-            "correct": "the bus"
+            "correct": "the bus",
+            "top": 36,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3054_ex2_6",
@@ -68280,7 +69231,11 @@
                   "by bike",
                   "the bike"
             ],
-            "correct": "by bike"
+            "correct": "by bike",
+            "top": 39.5,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3054_ex2_7",
@@ -68294,7 +69249,11 @@
                   "went",
                   "got"
             ],
-            "correct": "went"
+            "correct": "went",
+            "top": 43,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3054_ex2_8",
@@ -68311,7 +69270,11 @@
             "correct": [
                   "the underground",
                   "a taxi"
-            ]
+            ],
+            "top": 46.5,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3054_ex2_9",
@@ -68325,7 +69288,11 @@
                   "car",
                   "a car"
             ],
-            "correct": "car"
+            "correct": "car",
+            "top": 50,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3054_ex2_10",
@@ -68339,7 +69306,11 @@
                   "miss",
                   "go"
             ],
-            "correct": "take"
+            "correct": "take",
+            "top": 53.5,
+            "left": 57,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3054_ex3_1",
@@ -68352,7 +69323,11 @@
                   "should",
                   "have to"
             ],
-            "correct": "should"
+            "correct": "should",
+            "top": 64,
+            "left": 67,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3054_ex3_2",
@@ -68365,7 +69340,11 @@
                   "have to",
                   "should"
             ],
-            "correct": "have to"
+            "correct": "have to",
+            "top": 69.5,
+            "left": 61,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3054_ex3_3",
@@ -68378,7 +69357,11 @@
                   "should",
                   "have to"
             ],
-            "correct": "should"
+            "correct": "should",
+            "top": 75,
+            "left": 61,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3054_ex3_4",
@@ -68391,7 +69374,11 @@
                   "don't have to",
                   "shouldn't"
             ],
-            "correct": "don't have to"
+            "correct": "don't have to",
+            "top": 80.5,
+            "left": 61,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3054_ex3_5",
@@ -68404,7 +69391,11 @@
                   "have to",
                   "should"
             ],
-            "correct": "have to"
+            "correct": "have to",
+            "top": 86,
+            "left": 61,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3054_ex3_6",
@@ -68417,7 +69408,11 @@
                   "shouldn't",
                   "don't have to"
             ],
-            "correct": "shouldn't"
+            "correct": "shouldn't",
+            "top": 91.5,
+            "left": 61,
+            "width": 16,
+            "height": 2.2
       }
 ],
     "3055": [
@@ -68431,7 +69426,11 @@
             "correct": [
                   "You should offer your seat to an old person.",
                   "You should offer your seat to an old person"
-            ]
+            ],
+            "top": 14,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex4_2",
@@ -68443,7 +69442,11 @@
             "correct": [
                   "You shouldn't eat or drink inside the bus.",
                   "You shouldn't eat or drink inside the bus"
-            ]
+            ],
+            "top": 19.5,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex4_3a",
@@ -68455,7 +69458,11 @@
             "correct": [
                   "You have to buy a ticket from the bus driver.",
                   "You have to buy a ticket from the bus driver"
-            ]
+            ],
+            "top": 24.5,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex4_3b",
@@ -68467,7 +69474,11 @@
             "correct": [
                   "You have to use the seat belts.",
                   "You have to use the seat belts"
-            ]
+            ],
+            "top": 26.5,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex4_4",
@@ -68479,7 +69490,11 @@
             "correct": [
                   "You don't have to book a seat.",
                   "You don't have to book a seat"
-            ]
+            ],
+            "top": 31,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex5_1",
@@ -68492,7 +69507,11 @@
                   "have to",
                   "don't have to"
             ],
-            "correct": "don't have to"
+            "correct": "don't have to",
+            "top": 48.5,
+            "left": 23,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3055_ex5_2",
@@ -68505,7 +69524,11 @@
                   "should",
                   "shouldn't"
             ],
-            "correct": "should"
+            "correct": "should",
+            "top": 50.2,
+            "left": 27,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3055_ex5_3",
@@ -68518,7 +69541,11 @@
                   "shouldn't",
                   "don't have to"
             ],
-            "correct": "don't have to"
+            "correct": "don't have to",
+            "top": 53.5,
+            "left": 14,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3055_ex5_4",
@@ -68531,7 +69558,11 @@
                   "should",
                   "shouldn't"
             ],
-            "correct": "should"
+            "correct": "should",
+            "top": 59.1,
+            "left": 30,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3055_ex5_5",
@@ -68544,7 +69575,11 @@
                   "should",
                   "shouldn't"
             ],
-            "correct": "should"
+            "correct": "should",
+            "top": 60.8,
+            "left": 23,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3055_ex5_6",
@@ -68557,7 +69592,11 @@
                   "have to",
                   "don't have to"
             ],
-            "correct": "don't have to"
+            "correct": "don't have to",
+            "top": 64.8,
+            "left": 13,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3055_ex5_7",
@@ -68570,7 +69609,11 @@
                   "have to",
                   "should"
             ],
-            "correct": "have to"
+            "correct": "have to",
+            "top": 66.4,
+            "left": 19,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3055_ex5_8",
@@ -68583,7 +69626,11 @@
                   "don't have to",
                   "shouldn't"
             ],
-            "correct": "shouldn't"
+            "correct": "shouldn't",
+            "top": 72,
+            "left": 28,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3055_ex6a_1",
@@ -68596,7 +69643,11 @@
                   "have to",
                   "should"
             ],
-            "correct": "have to"
+            "correct": "have to",
+            "top": 13,
+            "left": 55,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex6a_2",
@@ -68609,7 +69660,11 @@
                   "should",
                   "shouldn't"
             ],
-            "correct": "should"
+            "correct": "should",
+            "top": 15,
+            "left": 55,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex6a_3",
@@ -68622,7 +69677,11 @@
                   "shouldn't",
                   "don't have to"
             ],
-            "correct": "shouldn't"
+            "correct": "shouldn't",
+            "top": 17,
+            "left": 55,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex6a_4",
@@ -68635,7 +69694,11 @@
                   "have to",
                   "don't have to"
             ],
-            "correct": "have to"
+            "correct": "have to",
+            "top": 18.8,
+            "left": 55,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex6a_5",
@@ -68648,7 +69711,11 @@
                   "should",
                   "have to"
             ],
-            "correct": "should"
+            "correct": "should",
+            "top": 20.6,
+            "left": 55,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex6a_6",
@@ -68661,7 +69728,11 @@
                   "shouldn't",
                   "don't have to"
             ],
-            "correct": "shouldn't"
+            "correct": "shouldn't",
+            "top": 22.4,
+            "left": 55,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex6a_7",
@@ -68674,7 +69745,11 @@
                   "don't have to",
                   "shouldn't"
             ],
-            "correct": "don't have to"
+            "correct": "don't have to",
+            "top": 24.2,
+            "left": 55,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex6a_8",
@@ -68687,7 +69762,11 @@
                   "don't have to",
                   "have to"
             ],
-            "correct": "don't have to"
+            "correct": "don't have to",
+            "top": 26,
+            "left": 55,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3055_ex6a_9",
@@ -68700,7 +69779,11 @@
                   "should",
                   "have to"
             ],
-            "correct": "should"
+            "correct": "should",
+            "top": 27.8,
+            "left": 55,
+            "width": 38,
+            "height": 2.2
       }
 ],
     "3056": [
@@ -68713,7 +69796,11 @@
             "h": 2.2,
             "correct": [
                   "something to eat"
-            ]
+            ],
+            "top": 31,
+            "left": 13,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3056_ex1_2",
@@ -68724,7 +69811,11 @@
             "h": 2.2,
             "correct": [
                   "a bus"
-            ]
+            ],
+            "top": 34,
+            "left": 13,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3056_ex1_3",
@@ -68735,7 +69826,11 @@
             "h": 2.2,
             "correct": [
                   "a text message"
-            ]
+            ],
+            "top": 37,
+            "left": 13,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3056_ex1_4",
@@ -68746,7 +69841,11 @@
             "h": 2.2,
             "correct": [
                   "a taxi"
-            ]
+            ],
+            "top": 40,
+            "left": 13,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3056_ex1_5",
@@ -68757,7 +69856,11 @@
             "h": 2.2,
             "correct": [
                   "a shower"
-            ]
+            ],
+            "top": 43,
+            "left": 13,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3056_ex1_6",
@@ -68768,7 +69871,11 @@
             "h": 2.2,
             "correct": [
                   "dinner"
-            ]
+            ],
+            "top": 46,
+            "left": 13,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3056_ex1_7",
@@ -68779,7 +69886,11 @@
             "h": 2.2,
             "correct": [
                   "photos"
-            ]
+            ],
+            "top": 49,
+            "left": 13,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3056_ex1_8",
@@ -68790,7 +69901,11 @@
             "h": 2.2,
             "correct": [
                   "a long time"
-            ]
+            ],
+            "top": 52,
+            "left": 13,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3056_ex1_9",
@@ -68801,7 +69916,11 @@
             "h": 2.2,
             "correct": [
                   "a sleep"
-            ]
+            ],
+            "top": 55,
+            "left": 13,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3056_ex4_1",
@@ -68812,7 +69931,11 @@
             "h": 2.2,
             "correct": [
                   "lost"
-            ]
+            ],
+            "top": 25.5,
+            "left": 64,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3056_ex4_2",
@@ -68823,7 +69946,11 @@
             "h": 2.2,
             "correct": [
                   "tour"
-            ]
+            ],
+            "top": 27.2,
+            "left": 64,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3056_ex4_3",
@@ -68834,7 +69961,11 @@
             "h": 2.2,
             "correct": [
                   "sightseeing"
-            ]
+            ],
+            "top": 29,
+            "left": 64,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3056_ex4_4",
@@ -68845,7 +69976,11 @@
             "h": 2.2,
             "correct": [
                   "sea"
-            ]
+            ],
+            "top": 30.8,
+            "left": 64,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3056_ex4_5",
@@ -68856,7 +69991,11 @@
             "h": 2.2,
             "correct": [
                   "lie"
-            ]
+            ],
+            "top": 32.5,
+            "left": 64,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3056_ex4_6",
@@ -68867,7 +70006,11 @@
             "h": 2.2,
             "correct": [
                   "around"
-            ]
+            ],
+            "top": 34.2,
+            "left": 64,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3056_ex4_7",
@@ -68878,7 +70021,11 @@
             "h": 2.2,
             "correct": [
                   "local"
-            ]
+            ],
+            "top": 25.5,
+            "left": 80,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3056_ex4_8",
@@ -68889,7 +70036,11 @@
             "h": 2.2,
             "correct": [
                   "rent"
-            ]
+            ],
+            "top": 27.2,
+            "left": 80,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3056_ex4_9",
@@ -68900,7 +70051,11 @@
             "h": 2.2,
             "correct": [
                   "stay"
-            ]
+            ],
+            "top": 29,
+            "left": 80,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3056_ex4_10",
@@ -68911,7 +70066,11 @@
             "h": 2.2,
             "correct": [
                   "mountains"
-            ]
+            ],
+            "top": 30.8,
+            "left": 80,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3056_ex4_11",
@@ -68922,7 +70081,11 @@
             "h": 2.2,
             "correct": [
                   "museums"
-            ]
+            ],
+            "top": 32.5,
+            "left": 80,
+            "width": 12,
+            "height": 2.2
       }
 ],
     "3057": [
@@ -68935,7 +70098,11 @@
             "h": 2.2,
             "correct": [
                   "travel"
-            ]
+            ],
+            "top": 26,
+            "left": 26,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3057_ex1_2",
@@ -68946,7 +70113,11 @@
             "h": 2.2,
             "correct": [
                   "next"
-            ]
+            ],
+            "top": 28,
+            "left": 19,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3057_ex1_3",
@@ -68957,7 +70128,11 @@
             "h": 2.2,
             "correct": [
                   "cost"
-            ]
+            ],
+            "top": 30,
+            "left": 23,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3057_ex1_4",
@@ -68968,7 +70143,11 @@
             "h": 2.2,
             "correct": [
                   "single"
-            ]
+            ],
+            "top": 31.8,
+            "left": 17,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3057_ex1_5",
@@ -68979,7 +70158,11 @@
             "h": 2.2,
             "correct": [
                   "come back"
-            ]
+            ],
+            "top": 33.5,
+            "left": 29,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3057_ex1_6",
@@ -68990,7 +70173,11 @@
             "h": 2.2,
             "correct": [
                   "take"
-            ]
+            ],
+            "top": 35.2,
+            "left": 29,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3057_ex1_7",
@@ -69001,7 +70188,11 @@
             "h": 2.2,
             "correct": [
                   "platform"
-            ]
+            ],
+            "top": 37,
+            "left": 18,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3057_ex1_8",
@@ -69012,7 +70203,11 @@
             "h": 2.2,
             "correct": [
                   "help"
-            ]
+            ],
+            "top": 38.8,
+            "left": 21,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3057_ex2_2",
@@ -69023,7 +70218,11 @@
             "h": 2,
             "correct": [
                   "2"
-            ]
+            ],
+            "top": 56.5,
+            "left": 8,
+            "width": 4,
+            "height": 2
       },
       {
             "id": "p3057_ex2_3",
@@ -69034,7 +70233,11 @@
             "h": 2,
             "correct": [
                   "3"
-            ]
+            ],
+            "top": 59.5,
+            "left": 8,
+            "width": 4,
+            "height": 2
       },
       {
             "id": "p3057_ex2_4",
@@ -69045,7 +70248,11 @@
             "h": 2,
             "correct": [
                   "4"
-            ]
+            ],
+            "top": 62.5,
+            "left": 8,
+            "width": 4,
+            "height": 2
       },
       {
             "id": "p3057_ex2_5",
@@ -69056,7 +70263,11 @@
             "h": 2,
             "correct": [
                   "5"
-            ]
+            ],
+            "top": 65.5,
+            "left": 8,
+            "width": 4,
+            "height": 2
       },
       {
             "id": "p3057_ex2_6",
@@ -69067,7 +70278,11 @@
             "h": 2,
             "correct": [
                   "6"
-            ]
+            ],
+            "top": 68.5,
+            "left": 8,
+            "width": 4,
+            "height": 2
       },
       {
             "id": "p3057_ex2_7",
@@ -69078,7 +70293,11 @@
             "h": 2,
             "correct": [
                   "7"
-            ]
+            ],
+            "top": 71.5,
+            "left": 8,
+            "width": 4,
+            "height": 2
       },
       {
             "id": "p3057_ex3_1",
@@ -69091,7 +70310,11 @@
                   "so",
                   "because"
             ],
-            "correct": "so"
+            "correct": "so",
+            "top": 32.5,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3057_ex3_2",
@@ -69104,7 +70327,11 @@
                   "so",
                   "because"
             ],
-            "correct": "because"
+            "correct": "because",
+            "top": 40.8,
+            "left": 70,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3057_ex3_3",
@@ -69117,7 +70344,11 @@
                   "so",
                   "because"
             ],
-            "correct": "because"
+            "correct": "because",
+            "top": 44.2,
+            "left": 80,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3057_ex3_4",
@@ -69130,7 +70361,11 @@
                   "so",
                   "because"
             ],
-            "correct": "so"
+            "correct": "so",
+            "top": 47.4,
+            "left": 69,
+            "width": 12,
+            "height": 2.2
       }
 ],
     "3058": [
@@ -69143,7 +70378,11 @@
             "h": 2.2,
             "correct": [
                   "marry"
-            ]
+            ],
+            "top": 28,
+            "left": 42,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3058_ex1_b",
@@ -69154,7 +70393,11 @@
             "h": 2.2,
             "correct": [
                   "will"
-            ]
+            ],
+            "top": 32.5,
+            "left": 24,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3058_ex1_c",
@@ -69165,7 +70408,11 @@
             "h": 2.2,
             "correct": [
                   "silent"
-            ]
+            ],
+            "top": 34.2,
+            "left": 40,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3058_ex1_d",
@@ -69176,7 +70423,11 @@
             "h": 2.2,
             "correct": [
                   "quarrel"
-            ]
+            ],
+            "top": 36,
+            "left": 45,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3058_ex4_a",
@@ -69187,7 +70438,11 @@
             "h": 2.2,
             "correct": [
                   "Mary"
-            ]
+            ],
+            "top": 30,
+            "left": 75,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3058_ex4_b",
@@ -69200,7 +70455,11 @@
                   "Robert, John",
                   "John and Robert",
                   "Robert and John"
-            ]
+            ],
+            "top": 32.5,
+            "left": 75,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3058_ex4_c",
@@ -69211,7 +70470,11 @@
             "h": 2.2,
             "correct": [
                   "Annie"
-            ]
+            ],
+            "top": 35,
+            "left": 75,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3058_ex4_d",
@@ -69224,7 +70487,11 @@
                   "Robert, Liversage",
                   "Robert and Liversage",
                   "Liversage, Robert"
-            ]
+            ],
+            "top": 37.5,
+            "left": 75,
+            "width": 20,
+            "height": 2.2
       },
       {
             "id": "p3058_ex4_e",
@@ -69235,7 +70502,11 @@
             "h": 2.2,
             "correct": [
                   "Mary"
-            ]
+            ],
+            "top": 40,
+            "left": 75,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3058_ex4_f",
@@ -69246,7 +70517,11 @@
             "h": 2.2,
             "correct": [
                   "Annie"
-            ]
+            ],
+            "top": 42.5,
+            "left": 75,
+            "width": 14,
+            "height": 2.2
       }
 ],
     "3059": [
@@ -69260,7 +70535,11 @@
             "correct": [
                   "The train didn't leave at half past six.",
                   "The train didn't leave at half past six"
-            ]
+            ],
+            "top": 27.8,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3059_ex1_3",
@@ -69272,7 +70551,11 @@
             "correct": [
                   "They didn't take a taxi to the airport.",
                   "They didn't take a taxi to the airport"
-            ]
+            ],
+            "top": 31.2,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3059_ex1_4",
@@ -69284,7 +70567,11 @@
             "correct": [
                   "We didn't have an Indian meal last night.",
                   "We didn't have an Indian meal last night"
-            ]
+            ],
+            "top": 34.6,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3059_ex1_5",
@@ -69296,7 +70583,11 @@
             "correct": [
                   "Sally didn't get lost in Berlin.",
                   "Sally didn't get lost in Berlin"
-            ]
+            ],
+            "top": 38,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3059_ex1_6",
@@ -69308,7 +70599,11 @@
             "correct": [
                   "You didn't send me an email yesterday.",
                   "You didn't send me an email yesterday"
-            ]
+            ],
+            "top": 41.4,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3059_ex1_7",
@@ -69320,7 +70615,11 @@
             "correct": [
                   "I didn't read this book last week.",
                   "I didn't read this book last week"
-            ]
+            ],
+            "top": 44.8,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3059_ex1_8",
@@ -69332,7 +70631,11 @@
             "correct": [
                   "Sandro and Max didn't fly to Mumbai.",
                   "Sandro and Max didn't fly to Mumbai"
-            ]
+            ],
+            "top": 48.2,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3059_ex2_1",
@@ -69345,7 +70648,11 @@
                   "did you decide",
                   "you decided"
             ],
-            "correct": "did you decide"
+            "correct": "did you decide",
+            "top": 56.5,
+            "left": 14,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3059_ex2_2",
@@ -69358,7 +70665,11 @@
                   "Did you buy",
                   "Bought you"
             ],
-            "correct": "Did you buy"
+            "correct": "Did you buy",
+            "top": 62,
+            "left": 14,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3059_ex2_3",
@@ -69371,7 +70682,11 @@
                   "did",
                   "had"
             ],
-            "correct": "did"
+            "correct": "did",
+            "top": 65.5,
+            "left": 26,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex2_4",
@@ -69384,7 +70699,11 @@
                   "didn't have to",
                   "shouldn't"
             ],
-            "correct": "didn't have to"
+            "correct": "didn't have to",
+            "top": 67.2,
+            "left": 30,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3059_ex2_5",
@@ -69397,7 +70716,11 @@
                   "did",
                   "were"
             ],
-            "correct": "did"
+            "correct": "did",
+            "top": 72.8,
+            "left": 20,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex2_6",
@@ -69410,7 +70733,11 @@
                   "have to",
                   "should"
             ],
-            "correct": "have to"
+            "correct": "have to",
+            "top": 76.2,
+            "left": 34,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3059_ex2_7",
@@ -69423,7 +70750,11 @@
                   "should",
                   "have to"
             ],
-            "correct": "should"
+            "correct": "should",
+            "top": 81.8,
+            "left": 24,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3059_ex2_8",
@@ -69436,7 +70767,11 @@
                   "shouldn't",
                   "don't have to"
             ],
-            "correct": "shouldn't"
+            "correct": "shouldn't",
+            "top": 85.2,
+            "left": 20,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3059_ex3_1",
@@ -69447,7 +70782,11 @@
             "h": 2.2,
             "correct": [
                   "tell"
-            ]
+            ],
+            "top": 55,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex3_2",
@@ -69458,7 +70797,11 @@
             "h": 2.2,
             "correct": [
                   "gym"
-            ]
+            ],
+            "top": 58.5,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex3_3",
@@ -69469,7 +70812,11 @@
             "h": 2.2,
             "correct": [
                   "yoga"
-            ]
+            ],
+            "top": 62,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex3_4",
@@ -69480,7 +70827,11 @@
             "h": 2.2,
             "correct": [
                   "jog"
-            ]
+            ],
+            "top": 65.5,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex3_5",
@@ -69491,7 +70842,11 @@
             "h": 2.2,
             "correct": [
                   "borrow"
-            ]
+            ],
+            "top": 69,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex3_6",
@@ -69502,7 +70857,11 @@
             "h": 2.2,
             "correct": [
                   "jobs"
-            ]
+            ],
+            "top": 17,
+            "left": 61,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex3_7",
@@ -69513,7 +70872,11 @@
             "h": 2.2,
             "correct": [
                   "bus"
-            ]
+            ],
+            "top": 21.8,
+            "left": 74,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex3_8",
@@ -69524,7 +70887,11 @@
             "h": 2.2,
             "correct": [
                   "foot"
-            ]
+            ],
+            "top": 23.4,
+            "left": 69,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex3_9",
@@ -69535,7 +70902,11 @@
             "h": 2.2,
             "correct": [
                   "fruit"
-            ]
+            ],
+            "top": 26.5,
+            "left": 61,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex3_10",
@@ -69546,7 +70917,11 @@
             "h": 2.2,
             "correct": [
                   "drink"
-            ]
+            ],
+            "top": 28,
+            "left": 61,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex4_1",
@@ -69559,7 +70934,11 @@
                   "have",
                   "make"
             ],
-            "correct": "have"
+            "correct": "have",
+            "top": 38.6,
+            "left": 62,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex4_2",
@@ -69572,7 +70951,11 @@
                   "stay",
                   "live"
             ],
-            "correct": "stay"
+            "correct": "stay",
+            "top": 40.2,
+            "left": 78,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex4_3",
@@ -69585,7 +70968,11 @@
                   "take",
                   "bring"
             ],
-            "correct": "take"
+            "correct": "take",
+            "top": 41.8,
+            "left": 62,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex4_4",
@@ -69598,7 +70985,11 @@
                   "go",
                   "do"
             ],
-            "correct": "go"
+            "correct": "go",
+            "top": 41.8,
+            "left": 80,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex4_5",
@@ -69611,7 +71002,11 @@
                   "go",
                   "have"
             ],
-            "correct": "go"
+            "correct": "go",
+            "top": 43.4,
+            "left": 62,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex4_6",
@@ -69624,7 +71019,11 @@
                   "visit",
                   "see"
             ],
-            "correct": "visit"
+            "correct": "visit",
+            "top": 43.4,
+            "left": 78,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex4_7",
@@ -69637,7 +71036,11 @@
                   "take",
                   "make"
             ],
-            "correct": "take"
+            "correct": "take",
+            "top": 45,
+            "left": 62,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex4_8",
@@ -69650,7 +71053,11 @@
                   "have",
                   "make"
             ],
-            "correct": "have"
+            "correct": "have",
+            "top": 45,
+            "left": 80,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex4_9",
@@ -69663,7 +71070,11 @@
                   "meet",
                   "know"
             ],
-            "correct": "meet"
+            "correct": "meet",
+            "top": 46.6,
+            "left": 62,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3059_ex5_1",
@@ -69675,7 +71086,11 @@
             "correct": [
                   "your opinion",
                   "What's your opinion"
-            ]
+            ],
+            "top": 76.5,
+            "left": 69,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3059_ex5_2",
@@ -69686,7 +71101,11 @@
             "h": 2.2,
             "correct": [
                   "I think"
-            ]
+            ],
+            "top": 80,
+            "left": 69,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3059_ex5_3",
@@ -69698,7 +71117,11 @@
             "correct": [
                   "I don't know",
                   "I don't know about that"
-            ]
+            ],
+            "top": 83.5,
+            "left": 69,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3059_ex5_4",
@@ -69709,7 +71132,11 @@
             "h": 2.2,
             "correct": [
                   "Yes, but"
-            ]
+            ],
+            "top": 87,
+            "left": 69,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3059_ex5_5",
@@ -69720,7 +71147,11 @@
             "h": 2.2,
             "correct": [
                   "I agree"
-            ]
+            ],
+            "top": 90.5,
+            "left": 69,
+            "width": 12,
+            "height": 2.2
       }
 ],
     "3060": [
@@ -69733,7 +71164,11 @@
             "h": 2.2,
             "correct": [
                   "bread"
-            ]
+            ],
+            "top": 35,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_2",
@@ -69744,7 +71179,11 @@
             "h": 2.2,
             "correct": [
                   "jam"
-            ]
+            ],
+            "top": 38.6,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_3",
@@ -69755,7 +71194,11 @@
             "h": 2.2,
             "correct": [
                   "honey"
-            ]
+            ],
+            "top": 42.2,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_4",
@@ -69766,7 +71209,11 @@
             "h": 2.2,
             "correct": [
                   "yoghurt"
-            ]
+            ],
+            "top": 45.8,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_5",
@@ -69777,7 +71224,11 @@
             "h": 2.2,
             "correct": [
                   "beef"
-            ]
+            ],
+            "top": 49.3,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_6",
@@ -69788,7 +71239,11 @@
             "h": 2.2,
             "correct": [
                   "mushrooms"
-            ]
+            ],
+            "top": 52.9,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_7",
@@ -69799,7 +71254,11 @@
             "h": 2.2,
             "correct": [
                   "rice"
-            ]
+            ],
+            "top": 56.5,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_8",
@@ -69810,7 +71269,11 @@
             "h": 2.2,
             "correct": [
                   "lemonade"
-            ]
+            ],
+            "top": 60,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_9",
@@ -69821,7 +71284,11 @@
             "h": 2.2,
             "correct": [
                   "salad"
-            ]
+            ],
+            "top": 63.6,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_10",
@@ -69832,7 +71299,11 @@
             "h": 2.2,
             "correct": [
                   "olives"
-            ]
+            ],
+            "top": 67.2,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_11",
@@ -69843,7 +71314,11 @@
             "h": 2.2,
             "correct": [
                   "pasta"
-            ]
+            ],
+            "top": 70.8,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_12",
@@ -69854,7 +71329,11 @@
             "h": 2.2,
             "correct": [
                   "pears"
-            ]
+            ],
+            "top": 74.4,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_13",
@@ -69865,7 +71344,11 @@
             "h": 2.2,
             "correct": [
                   "chicken"
-            ]
+            ],
+            "top": 78,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_14",
@@ -69876,7 +71359,11 @@
             "h": 2.2,
             "correct": [
                   "sweetcorn"
-            ]
+            ],
+            "top": 81.6,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_15",
@@ -69887,7 +71374,11 @@
             "h": 2.2,
             "correct": [
                   "noodles"
-            ]
+            ],
+            "top": 85.1,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex1_16",
@@ -69898,7 +71389,11 @@
             "h": 2.2,
             "correct": [
                   "lemons"
-            ]
+            ],
+            "top": 88.6,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3060_ex2b_1",
@@ -69911,7 +71406,11 @@
                   "C",
                   "U"
             ],
-            "correct": "C"
+            "correct": "C",
+            "top": 47,
+            "left": 74,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3060_ex2b_2",
@@ -69924,7 +71423,11 @@
                   "C",
                   "U"
             ],
-            "correct": "U"
+            "correct": "U",
+            "top": 50.5,
+            "left": 74,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3060_ex2b_3",
@@ -69937,7 +71440,11 @@
                   "C",
                   "U"
             ],
-            "correct": "U"
+            "correct": "U",
+            "top": 54,
+            "left": 74,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3060_ex2b_4",
@@ -69950,7 +71457,11 @@
                   "C",
                   "U"
             ],
-            "correct": "U"
+            "correct": "U",
+            "top": 57.5,
+            "left": 74,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3060_ex2b_5",
@@ -69963,7 +71474,11 @@
                   "C",
                   "U"
             ],
-            "correct": "U"
+            "correct": "U",
+            "top": 61,
+            "left": 74,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3060_ex2b_6",
@@ -69976,7 +71491,11 @@
                   "C",
                   "U"
             ],
-            "correct": "U"
+            "correct": "U",
+            "top": 64.5,
+            "left": 74,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3060_ex2b_7",
@@ -69989,7 +71508,11 @@
                   "C",
                   "U"
             ],
-            "correct": "U"
+            "correct": "U",
+            "top": 47,
+            "left": 88,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3060_ex2b_8",
@@ -70002,7 +71525,11 @@
                   "C",
                   "U"
             ],
-            "correct": "U"
+            "correct": "U",
+            "top": 50.5,
+            "left": 88,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3060_ex2b_9",
@@ -70015,7 +71542,11 @@
                   "C",
                   "U"
             ],
-            "correct": "U"
+            "correct": "U",
+            "top": 54,
+            "left": 88,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3060_ex2b_10",
@@ -70028,7 +71559,11 @@
                   "C",
                   "U"
             ],
-            "correct": "C"
+            "correct": "C",
+            "top": 57.5,
+            "left": 88,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3060_ex2b_11",
@@ -70041,7 +71576,11 @@
                   "C",
                   "U"
             ],
-            "correct": "C"
+            "correct": "C",
+            "top": 61,
+            "left": 88,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3060_ex2b_12",
@@ -70054,7 +71593,11 @@
                   "C",
                   "U"
             ],
-            "correct": "U"
+            "correct": "U",
+            "top": 64.5,
+            "left": 88,
+            "width": 7,
+            "height": 2
       }
 ],
     "3061": [
@@ -70068,7 +71611,11 @@
             "correct": [
                   "-",
                   "no article"
-            ]
+            ],
+            "top": 13,
+            "left": 23,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex4_2",
@@ -70080,7 +71627,11 @@
             "correct": [
                   "-",
                   "no article"
-            ]
+            ],
+            "top": 13,
+            "left": 36,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex4_3",
@@ -70092,7 +71643,11 @@
             "correct": [
                   "-",
                   "no article"
-            ]
+            ],
+            "top": 14.5,
+            "left": 37,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex4_4",
@@ -70103,7 +71658,11 @@
             "h": 2,
             "correct": [
                   "an"
-            ]
+            ],
+            "top": 16,
+            "left": 20,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex4_5",
@@ -70114,7 +71673,11 @@
             "h": 2,
             "correct": [
                   "a"
-            ]
+            ],
+            "top": 16,
+            "left": 34,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex4_6",
@@ -70126,7 +71689,11 @@
             "correct": [
                   "-",
                   "no article"
-            ]
+            ],
+            "top": 21.6,
+            "left": 24,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex4_7",
@@ -70138,7 +71705,11 @@
             "correct": [
                   "-",
                   "no article"
-            ]
+            ],
+            "top": 21.6,
+            "left": 38,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex4_8",
@@ -70149,7 +71720,11 @@
             "h": 2,
             "correct": [
                   "some"
-            ]
+            ],
+            "top": 26.2,
+            "left": 25,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3061_ex4_9",
@@ -70160,7 +71735,11 @@
             "h": 2,
             "correct": [
                   "some"
-            ]
+            ],
+            "top": 27.7,
+            "left": 38,
+            "width": 7,
+            "height": 2
       },
       {
             "id": "p3061_ex4_10",
@@ -70171,7 +71750,11 @@
             "h": 2,
             "correct": [
                   "a"
-            ]
+            ],
+            "top": 29.2,
+            "left": 18,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex4_11",
@@ -70183,7 +71766,11 @@
             "correct": [
                   "-",
                   "no article"
-            ]
+            ],
+            "top": 33.2,
+            "left": 21,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex4_12",
@@ -70195,7 +71782,11 @@
             "correct": [
                   "-",
                   "no article"
-            ]
+            ],
+            "top": 33.2,
+            "left": 39,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex4_13",
@@ -70207,7 +71798,11 @@
             "correct": [
                   "-",
                   "no article"
-            ]
+            ],
+            "top": 34.8,
+            "left": 17,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex4_14",
@@ -70218,7 +71813,11 @@
             "h": 2,
             "correct": [
                   "a"
-            ]
+            ],
+            "top": 36.3,
+            "left": 34,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3061_ex5_1",
@@ -70231,7 +71830,11 @@
                   "some",
                   "any"
             ],
-            "correct": "some"
+            "correct": "some",
+            "top": 44.5,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3061_ex5_2",
@@ -70244,7 +71847,11 @@
                   "some",
                   "any"
             ],
-            "correct": "any"
+            "correct": "any",
+            "top": 46.8,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3061_ex5_3",
@@ -70257,7 +71864,11 @@
                   "some",
                   "any"
             ],
-            "correct": "some"
+            "correct": "some",
+            "top": 49,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3061_ex5_4",
@@ -70270,7 +71881,11 @@
                   "some",
                   "any"
             ],
-            "correct": "some"
+            "correct": "some",
+            "top": 51.2,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3061_ex5_5",
@@ -70283,7 +71898,11 @@
                   "some",
                   "any"
             ],
-            "correct": "any"
+            "correct": "any",
+            "top": 53.5,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3061_ex5_6",
@@ -70296,7 +71915,11 @@
                   "some",
                   "any"
             ],
-            "correct": "some"
+            "correct": "some",
+            "top": 55.8,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3061_ex5_7",
@@ -70309,7 +71932,11 @@
                   "some",
                   "any"
             ],
-            "correct": "any"
+            "correct": "any",
+            "top": 58,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3061_ex5_8",
@@ -70322,7 +71949,11 @@
                   "some",
                   "any"
             ],
-            "correct": "any"
+            "correct": "any",
+            "top": 60.2,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3061_ex6_2",
@@ -70334,7 +71965,11 @@
             "correct": [
                   "Are there any noodles?",
                   "Are there any noodles"
-            ]
+            ],
+            "top": 70,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3061_ex6_3",
@@ -70346,7 +71981,11 @@
             "correct": [
                   "We don't have any eggs.",
                   "We don't have any eggs"
-            ]
+            ],
+            "top": 73.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3061_ex6_4",
@@ -70358,7 +71997,11 @@
             "correct": [
                   "They need some bottles of water.",
                   "They need some bottles of water"
-            ]
+            ],
+            "top": 77,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3061_ex6_5",
@@ -70370,7 +72013,11 @@
             "correct": [
                   "Mark made some cakes yesterday.",
                   "Mark made some cakes yesterday"
-            ]
+            ],
+            "top": 80.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3061_ex6_6",
@@ -70382,7 +72029,11 @@
             "correct": [
                   "Is there any pasta?",
                   "Is there any pasta"
-            ]
+            ],
+            "top": 84,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3061_ex6_7",
@@ -70394,7 +72045,11 @@
             "correct": [
                   "I didn't have any breakfast this morning.",
                   "I didn't have any breakfast this morning"
-            ]
+            ],
+            "top": 87.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       }
 ],
     "3062": [
@@ -70408,7 +72063,11 @@
             "correct": [
                   "How much time do you spend cooking?",
                   "How much time do you spend cooking"
-            ]
+            ],
+            "top": 22.8,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3062_ex1_2",
@@ -70420,7 +72079,11 @@
             "correct": [
                   "How much fruit do you eat?",
                   "How much fruit do you eat"
-            ]
+            ],
+            "top": 26.2,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3062_ex1_3",
@@ -70432,7 +72095,11 @@
             "correct": [
                   "How many eggs do you buy each week?",
                   "How many eggs do you buy each week"
-            ]
+            ],
+            "top": 29.7,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3062_ex1_4",
@@ -70444,7 +72111,11 @@
             "correct": [
                   "How much fruit juice do you drink?",
                   "How much fruit juice do you drink"
-            ]
+            ],
+            "top": 33.1,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3062_ex1_5",
@@ -70456,7 +72127,11 @@
             "correct": [
                   "How many times a week do you have takeaway food?",
                   "How many times a week do you have takeaway food"
-            ]
+            ],
+            "top": 36.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3062_ex1_6",
@@ -70468,7 +72143,11 @@
             "correct": [
                   "How many calories are there in a pizza?",
                   "How many calories are there in a pizza"
-            ]
+            ],
+            "top": 40,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3062_ex1_7",
@@ -70480,7 +72159,11 @@
             "correct": [
                   "How much salt do you put on your food?",
                   "How much salt do you put on your food"
-            ]
+            ],
+            "top": 43.4,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3062_ex1_8",
@@ -70492,7 +72175,11 @@
             "correct": [
                   "How much milk is there in the fridge?",
                   "How much milk is there in the fridge"
-            ]
+            ],
+            "top": 46.8,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3062_ex2_1",
@@ -70503,7 +72190,11 @@
             "h": 2.2,
             "correct": [
                   "none"
-            ]
+            ],
+            "top": 55,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3062_ex2_2",
@@ -70516,7 +72207,11 @@
                   "not much/not many",
                   "not much",
                   "not many"
-            ]
+            ],
+            "top": 58,
+            "left": 11,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3062_ex2_3",
@@ -70527,7 +72222,11 @@
             "h": 2.2,
             "correct": [
                   "some"
-            ]
+            ],
+            "top": 61,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3062_ex2_4",
@@ -70539,7 +72238,11 @@
             "correct": [
                   "quite a lot of",
                   "quite a lot"
-            ]
+            ],
+            "top": 64,
+            "left": 11,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3062_ex2_5",
@@ -70551,7 +72254,11 @@
             "correct": [
                   "a lot of",
                   "a lot"
-            ]
+            ],
+            "top": 67,
+            "left": 11,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_1",
@@ -70564,7 +72271,11 @@
                   "a lot of",
                   "a lot"
             ],
-            "correct": "a lot of"
+            "correct": "a lot of",
+            "top": 44.5,
+            "left": 57,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_2",
@@ -70577,7 +72288,11 @@
                   "some",
                   "much"
             ],
-            "correct": "some"
+            "correct": "some",
+            "top": 46.2,
+            "left": 74,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_3",
@@ -70590,7 +72305,11 @@
                   "quite a lot of them",
                   "none"
             ],
-            "correct": "quite a lot of them"
+            "correct": "quite a lot of them",
+            "top": 52.6,
+            "left": 71,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_4",
@@ -70603,7 +72322,11 @@
                   "a lot of",
                   "many"
             ],
-            "correct": "a lot of"
+            "correct": "a lot of",
+            "top": 57.5,
+            "left": 57,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_5",
@@ -70616,7 +72339,11 @@
                   "how many",
                   "how much"
             ],
-            "correct": "how many"
+            "correct": "how many",
+            "top": 62.8,
+            "left": 57,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_6",
@@ -70629,7 +72356,11 @@
                   "not many",
                   "not much"
             ],
-            "correct": "not many"
+            "correct": "not many",
+            "top": 64.5,
+            "left": 70,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_7",
@@ -70642,7 +72373,11 @@
                   "some",
                   "any"
             ],
-            "correct": "some"
+            "correct": "some",
+            "top": 69.5,
+            "left": 57,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_8",
@@ -70655,7 +72390,11 @@
                   "many",
                   "much"
             ],
-            "correct": "much"
+            "correct": "much",
+            "top": 71.2,
+            "left": 70,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_9",
@@ -70668,7 +72407,11 @@
                   "a lot of",
                   "much"
             ],
-            "correct": "a lot of"
+            "correct": "a lot of",
+            "top": 76.2,
+            "left": 57,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_10",
@@ -70681,7 +72424,11 @@
                   "None",
                   "Not many"
             ],
-            "correct": "None"
+            "correct": "None",
+            "top": 78,
+            "left": 70,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_11",
@@ -70694,7 +72441,11 @@
                   "many",
                   "much"
             ],
-            "correct": "much"
+            "correct": "much",
+            "top": 83,
+            "left": 57,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3062_ex3_12",
@@ -70707,7 +72458,11 @@
                   "some",
                   "any"
             ],
-            "correct": "some"
+            "correct": "some",
+            "top": 84.8,
+            "left": 70,
+            "width": 12,
+            "height": 2.2
       }
 ],
     "3063": [
@@ -70720,7 +72475,11 @@
             "h": 2,
             "correct": [
                   "c"
-            ]
+            ],
+            "top": 15.5,
+            "left": 33,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3063_ex1_2",
@@ -70731,7 +72490,11 @@
             "h": 2,
             "correct": [
                   "e"
-            ]
+            ],
+            "top": 17.5,
+            "left": 33,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3063_ex1_3",
@@ -70742,7 +72505,11 @@
             "h": 2,
             "correct": [
                   "a"
-            ]
+            ],
+            "top": 19.5,
+            "left": 33,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3063_ex1_4",
@@ -70753,7 +72520,11 @@
             "h": 2,
             "correct": [
                   "g"
-            ]
+            ],
+            "top": 21.5,
+            "left": 33,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3063_ex1_5",
@@ -70764,7 +72535,11 @@
             "h": 2,
             "correct": [
                   "b"
-            ]
+            ],
+            "top": 23.5,
+            "left": 33,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3063_ex1_6",
@@ -70775,7 +72550,11 @@
             "h": 2,
             "correct": [
                   "h"
-            ]
+            ],
+            "top": 25.5,
+            "left": 33,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3063_ex1_7",
@@ -70786,7 +72565,11 @@
             "h": 2,
             "correct": [
                   "d"
-            ]
+            ],
+            "top": 27.5,
+            "left": 33,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3063_ex1_8",
@@ -70797,7 +72580,11 @@
             "h": 2,
             "correct": [
                   "f"
-            ]
+            ],
+            "top": 29.5,
+            "left": 33,
+            "width": 5,
+            "height": 2
       },
       {
             "id": "p3063_ex2_1",
@@ -70808,7 +72595,11 @@
             "h": 2.2,
             "correct": [
                   "roast"
-            ]
+            ],
+            "top": 44,
+            "left": 57,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3063_ex2_2",
@@ -70819,7 +72610,11 @@
             "h": 2.2,
             "correct": [
                   "chop"
-            ]
+            ],
+            "top": 48,
+            "left": 57,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3063_ex2_3",
@@ -70830,7 +72625,11 @@
             "h": 2.2,
             "correct": [
                   "fry"
-            ]
+            ],
+            "top": 52,
+            "left": 57,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3063_ex2_4",
@@ -70841,7 +72640,11 @@
             "h": 2.2,
             "correct": [
                   "bake"
-            ]
+            ],
+            "top": 56,
+            "left": 57,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3063_ex2_5",
@@ -70852,7 +72655,11 @@
             "h": 2.2,
             "correct": [
                   "mix"
-            ]
+            ],
+            "top": 60,
+            "left": 57,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3063_ex2_6",
@@ -70863,7 +72670,11 @@
             "h": 2.2,
             "correct": [
                   "boil"
-            ]
+            ],
+            "top": 64,
+            "left": 57,
+            "width": 10,
+            "height": 2.2
       }
 ],
     "3064": [
@@ -70876,7 +72687,11 @@
             "h": 2.2,
             "correct": [
                   "a fifth"
-            ]
+            ],
+            "top": 47.8,
+            "left": 42,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3064_ex1a_b",
@@ -70887,7 +72702,11 @@
             "h": 2.2,
             "correct": [
                   "half"
-            ]
+            ],
+            "top": 50.7,
+            "left": 42,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3064_ex1a_c",
@@ -70899,7 +72718,11 @@
             "correct": [
                   "seven thousand, four hundred and ninety-one kilometres",
                   "7,491 kilometres"
-            ]
+            ],
+            "top": 53.6,
+            "left": 42,
+            "width": 40,
+            "height": 2.2
       },
       {
             "id": "p3064_ex1a_d",
@@ -70910,7 +72733,11 @@
             "h": 2.2,
             "correct": [
                   "two hundred million"
-            ]
+            ],
+            "top": 56.5,
+            "left": 42,
+            "width": 30,
+            "height": 2.2
       },
       {
             "id": "p3064_ex1a_e",
@@ -70921,7 +72748,11 @@
             "h": 2.2,
             "correct": [
                   "eighty-seven per cent"
-            ]
+            ],
+            "top": 59.4,
+            "left": 42,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3064_ex1a_f",
@@ -70932,7 +72763,11 @@
             "h": 2.2,
             "correct": [
                   "two million, seven hundred thousand"
-            ]
+            ],
+            "top": 62.3,
+            "left": 42,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3064_ex1a_g",
@@ -70943,7 +72778,11 @@
             "h": 2.2,
             "correct": [
                   "eighteen twenty-two"
-            ]
+            ],
+            "top": 65.2,
+            "left": 42,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3064_ex1a_h",
@@ -70954,7 +72793,11 @@
             "h": 2.2,
             "correct": [
                   "the sixth of September"
-            ]
+            ],
+            "top": 68.1,
+            "left": 42,
+            "width": 30,
+            "height": 2.2
       },
       {
             "id": "p3064_ex1a_i",
@@ -70967,7 +72810,11 @@
                   "twenty twelve",
                   "two thousand and twelve",
                   "twenty twelve/two thousand and twelve"
-            ]
+            ],
+            "top": 71,
+            "left": 42,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3064_ex1a_j",
@@ -70978,7 +72825,11 @@
             "h": 2.2,
             "correct": [
                   "five point seven million"
-            ]
+            ],
+            "top": 73.9,
+            "left": 42,
+            "width": 30,
+            "height": 2.2
       },
       {
             "id": "p3064_ex1a_k",
@@ -70989,7 +72840,11 @@
             "h": 2.2,
             "correct": [
                   "thirty metres"
-            ]
+            ],
+            "top": 76.8,
+            "left": 42,
+            "width": 20,
+            "height": 2.2
       },
       {
             "id": "p3064_ex1a_l",
@@ -71000,7 +72855,11 @@
             "h": 2.2,
             "correct": [
                   "thirty degrees Celsius"
-            ]
+            ],
+            "top": 79.7,
+            "left": 42,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3064_ex2a_1",
@@ -71011,7 +72870,11 @@
             "h": 2.2,
             "correct": [
                   "the twelfth of May"
-            ]
+            ],
+            "top": 23,
+            "left": 13,
+            "width": 20,
+            "height": 2.2
       },
       {
             "id": "p3064_ex2a_2",
@@ -71022,7 +72885,11 @@
             "h": 2.2,
             "correct": [
                   "nine point seven"
-            ]
+            ],
+            "top": 25,
+            "left": 13,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3064_ex2a_3",
@@ -71033,7 +72900,11 @@
             "h": 2.2,
             "correct": [
                   "a fifth, a half, a quarter, a third"
-            ]
+            ],
+            "top": 27,
+            "left": 13,
+            "width": 28,
+            "height": 2.2
       },
       {
             "id": "p3064_ex2a_4",
@@ -71044,7 +72915,11 @@
             "h": 2.2,
             "correct": [
                   "forty metres, six centimetres"
-            ]
+            ],
+            "top": 29,
+            "left": 13,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3064_ex2a_5",
@@ -71055,7 +72930,11 @@
             "h": 2.2,
             "correct": [
                   "billion, million, thousand"
-            ]
+            ],
+            "top": 31,
+            "left": 13,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3064_ex2a_6",
@@ -71066,7 +72945,11 @@
             "h": 2.2,
             "correct": [
                   "thirty-two per cent"
-            ]
+            ],
+            "top": 33,
+            "left": 13,
+            "width": 20,
+            "height": 2.2
       },
       {
             "id": "p3064_ex2a_7",
@@ -71078,7 +72961,11 @@
             "correct": [
                   "minus ten degrees Celsius, nought/zero degrees",
                   "minus ten degrees Celsius"
-            ]
+            ],
+            "top": 35,
+            "left": 13,
+            "width": 32,
+            "height": 2.2
       }
 ],
     "3065": [
@@ -71091,7 +72978,11 @@
             "h": 2.2,
             "correct": [
                   "Italian"
-            ]
+            ],
+            "top": 22.5,
+            "left": 13,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3065_ex1_2",
@@ -71102,7 +72993,11 @@
             "h": 2.2,
             "correct": [
                   "lunch"
-            ]
+            ],
+            "top": 25,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3065_ex1_3",
@@ -71113,7 +73008,11 @@
             "h": 2.2,
             "correct": [
                   "soup"
-            ]
+            ],
+            "top": 27.5,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3065_ex1_4",
@@ -71124,7 +73023,11 @@
             "h": 2.2,
             "correct": [
                   "pasta"
-            ]
+            ],
+            "top": 30,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3065_ex1_5",
@@ -71135,7 +73038,11 @@
             "h": 2.2,
             "correct": [
                   "a starter and a main course"
-            ]
+            ],
+            "top": 32.5,
+            "left": 13,
+            "width": 28,
+            "height": 2.2
       },
       {
             "id": "p3065_ex1_6",
@@ -71146,7 +73053,11 @@
             "h": 2.2,
             "correct": [
                   "two"
-            ]
+            ],
+            "top": 35,
+            "left": 13,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3065_ex1_7",
@@ -71157,7 +73068,11 @@
             "h": 2.2,
             "correct": [
                   "water"
-            ]
+            ],
+            "top": 37.5,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3065_ex2_1",
@@ -71168,7 +73083,11 @@
             "h": 2.2,
             "correct": [
                   "Would you like"
-            ]
+            ],
+            "top": 44,
+            "left": 11,
+            "width": 20,
+            "height": 2.2
       },
       {
             "id": "p3065_ex2_2",
@@ -71179,7 +73098,11 @@
             "h": 2.2,
             "correct": [
                   "Would you like"
-            ]
+            ],
+            "top": 46.5,
+            "left": 11,
+            "width": 20,
+            "height": 2.2
       },
       {
             "id": "p3065_ex2_3",
@@ -71190,7 +73113,11 @@
             "h": 2.2,
             "correct": [
                   "Could I"
-            ]
+            ],
+            "top": 49,
+            "left": 11,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3065_ex2_4",
@@ -71201,7 +73128,11 @@
             "h": 2.2,
             "correct": [
                   "Could I"
-            ]
+            ],
+            "top": 51.5,
+            "left": 11,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3065_ex2_5",
@@ -71212,7 +73143,11 @@
             "h": 2.2,
             "correct": [
                   "Could I"
-            ]
+            ],
+            "top": 54,
+            "left": 11,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3065_ex2_6",
@@ -71223,7 +73158,11 @@
             "h": 2.2,
             "correct": [
                   "Would you like"
-            ]
+            ],
+            "top": 56.5,
+            "left": 11,
+            "width": 20,
+            "height": 2.2
       },
       {
             "id": "p3065_ex2_7",
@@ -71234,7 +73173,11 @@
             "h": 2.2,
             "correct": [
                   "Can I"
-            ]
+            ],
+            "top": 59,
+            "left": 11,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3065_ex2_8",
@@ -71245,7 +73188,11 @@
             "h": 2.2,
             "correct": [
                   "And would you like"
-            ]
+            ],
+            "top": 61.5,
+            "left": 11,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3065_ex2_9",
@@ -71256,7 +73203,11 @@
             "h": 2.2,
             "correct": [
                   "Can we"
-            ]
+            ],
+            "top": 64,
+            "left": 11,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3065_ex3_1",
@@ -71269,7 +73220,11 @@
                   "hope",
                   "wish"
             ],
-            "correct": "hope"
+            "correct": "hope",
+            "top": 32.5,
+            "left": 55,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3065_ex3_2",
@@ -71282,7 +73237,11 @@
                   "I'm looking",
                   "I look"
             ],
-            "correct": "I'm looking"
+            "correct": "I'm looking",
+            "top": 34.5,
+            "left": 67,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3065_ex3_3",
@@ -71295,7 +73254,11 @@
                   "favourite",
                   "best"
             ],
-            "correct": "favourite"
+            "correct": "favourite",
+            "top": 37,
+            "left": 55,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3065_ex3_4",
@@ -71308,7 +73271,11 @@
                   "anywhere",
                   "somewhere"
             ],
-            "correct": "anywhere"
+            "correct": "anywhere",
+            "top": 37,
+            "left": 74,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3065_ex3_5",
@@ -71321,7 +73288,11 @@
                   "a good place",
                   "anywhere"
             ],
-            "correct": "a good place"
+            "correct": "a good place",
+            "top": 40,
+            "left": 55,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3065_ex3_6",
@@ -71334,7 +73305,11 @@
                   "need",
                   "have"
             ],
-            "correct": "need"
+            "correct": "need",
+            "top": 41.5,
+            "left": 74,
+            "width": 14,
+            "height": 2.2
       }
 ],
     "3066": [
@@ -71348,7 +73323,11 @@
             "correct": [
                   "foggy, freezing, icy, snowy",
                   "freezing, icy, snowy, foggy"
-            ]
+            ],
+            "top": 33,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3066_ex1_2",
@@ -71360,7 +73339,11 @@
             "correct": [
                   "dry, sunny, warm",
                   "sunny, warm, dry"
-            ]
+            ],
+            "top": 36.5,
+            "left": 11,
+            "width": 30,
+            "height": 2.2
       },
       {
             "id": "p3066_ex1_3",
@@ -71372,7 +73355,11 @@
             "correct": [
                   "cloudy, rainy, wet, windy",
                   "rainy, wet, windy, cloudy"
-            ]
+            ],
+            "top": 40,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3066_ex2_1",
@@ -71383,7 +73370,11 @@
             "h": 2.2,
             "correct": [
                   "rained"
-            ]
+            ],
+            "top": 48,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3066_ex2_2",
@@ -71394,7 +73385,11 @@
             "h": 2.2,
             "correct": [
                   "shone"
-            ]
+            ],
+            "top": 51.5,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3066_ex2_3",
@@ -71405,7 +73400,11 @@
             "h": 2.2,
             "correct": [
                   "froze"
-            ]
+            ],
+            "top": 55,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3066_ex2_4",
@@ -71416,7 +73415,11 @@
             "h": 2.2,
             "correct": [
                   "blew"
-            ]
+            ],
+            "top": 58.5,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3066_ex2_5",
@@ -71427,7 +73430,11 @@
             "h": 2.2,
             "correct": [
                   "snowed"
-            ]
+            ],
+            "top": 62,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3066_ex3_1",
@@ -71440,7 +73447,11 @@
                   "fog",
                   "ice"
             ],
-            "correct": "ice"
+            "correct": "ice",
+            "top": 58.3,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3066_ex3_2",
@@ -71453,7 +73464,11 @@
                   "snow",
                   "thunder"
             ],
-            "correct": "snow"
+            "correct": "snow",
+            "top": 62.5,
+            "left": 56,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3066_ex3_3",
@@ -71466,7 +73481,11 @@
                   "clouds",
                   "fog"
             ],
-            "correct": "clouds"
+            "correct": "clouds",
+            "top": 69.5,
+            "left": 56,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3066_ex3_4",
@@ -71479,7 +73498,11 @@
                   "rain",
                   "storm"
             ],
-            "correct": "rain"
+            "correct": "rain",
+            "top": 73,
+            "left": 56,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3066_ex3_5",
@@ -71492,7 +73515,11 @@
                   "winds",
                   "ice"
             ],
-            "correct": "winds"
+            "correct": "winds",
+            "top": 76.5,
+            "left": 56,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3066_ex3_6",
@@ -71505,7 +73532,11 @@
                   "fog",
                   "ice"
             ],
-            "correct": "fog"
+            "correct": "fog",
+            "top": 80,
+            "left": 56,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3066_ex3_7",
@@ -71518,7 +73549,11 @@
                   "clouds",
                   "rain"
             ],
-            "correct": "rain"
+            "correct": "rain",
+            "top": 83.7,
+            "left": 64,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3066_ex3_8",
@@ -71531,7 +73566,11 @@
                   "sun",
                   "storm"
             ],
-            "correct": "sun"
+            "correct": "sun",
+            "top": 87.2,
+            "left": 56,
+            "width": 14,
+            "height": 2.2
       }
 ],
     "3067": [
@@ -71544,7 +73583,11 @@
             "h": 2.2,
             "correct": [
                   "lower"
-            ]
+            ],
+            "top": 22.8,
+            "left": 33,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex4_2",
@@ -71555,7 +73598,11 @@
             "h": 2.2,
             "correct": [
                   "bigger"
-            ]
+            ],
+            "top": 26.2,
+            "left": 33,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex4_3",
@@ -71566,7 +73613,11 @@
             "h": 2.2,
             "correct": [
                   "earlier"
-            ]
+            ],
+            "top": 29.7,
+            "left": 33,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex4_4",
@@ -71577,7 +73628,11 @@
             "h": 2.2,
             "correct": [
                   "worse"
-            ]
+            ],
+            "top": 33.1,
+            "left": 33,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex4_5",
@@ -71588,7 +73643,11 @@
             "h": 2.2,
             "correct": [
                   "more interesting"
-            ]
+            ],
+            "top": 36.5,
+            "left": 33,
+            "width": 15,
+            "height": 2.2
       },
       {
             "id": "p3067_ex4_6",
@@ -71599,7 +73658,11 @@
             "h": 2.2,
             "correct": [
                   "more expensive"
-            ]
+            ],
+            "top": 40,
+            "left": 33,
+            "width": 15,
+            "height": 2.2
       },
       {
             "id": "p3067_ex4_7",
@@ -71610,7 +73673,11 @@
             "h": 2.2,
             "correct": [
                   "taller"
-            ]
+            ],
+            "top": 43.4,
+            "left": 33,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex4_8",
@@ -71621,7 +73688,11 @@
             "h": 2.2,
             "correct": [
                   "later"
-            ]
+            ],
+            "top": 46.8,
+            "left": 33,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex4_9",
@@ -71632,7 +73703,11 @@
             "h": 2.2,
             "correct": [
                   "drier"
-            ]
+            ],
+            "top": 50.2,
+            "left": 33,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex4_10",
@@ -71643,7 +73718,11 @@
             "h": 2.2,
             "correct": [
                   "fatter"
-            ]
+            ],
+            "top": 53.6,
+            "left": 33,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex5_1",
@@ -71654,7 +73733,11 @@
             "h": 2.2,
             "correct": [
                   "higher"
-            ]
+            ],
+            "top": 22.8,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex5_2",
@@ -71665,7 +73748,11 @@
             "h": 2.2,
             "correct": [
                   "wetter"
-            ]
+            ],
+            "top": 26.2,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex5_3",
@@ -71676,7 +73763,11 @@
             "h": 2.2,
             "correct": [
                   "colder"
-            ]
+            ],
+            "top": 29.7,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex5_4",
@@ -71687,7 +73778,11 @@
             "h": 2.2,
             "correct": [
                   "lower"
-            ]
+            ],
+            "top": 33.1,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex5_5",
@@ -71698,7 +73793,11 @@
             "h": 2.2,
             "correct": [
                   "cooler"
-            ]
+            ],
+            "top": 36.5,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex5_6",
@@ -71709,7 +73808,11 @@
             "h": 2.2,
             "correct": [
                   "better"
-            ]
+            ],
+            "top": 40,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex5_7",
@@ -71720,7 +73823,11 @@
             "h": 2.2,
             "correct": [
                   "hotter"
-            ]
+            ],
+            "top": 43.4,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex5_8",
@@ -71731,7 +73838,11 @@
             "h": 2.2,
             "correct": [
                   "more comfortable"
-            ]
+            ],
+            "top": 46.8,
+            "left": 74,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3067_ex5_9",
@@ -71742,7 +73853,11 @@
             "h": 2.2,
             "correct": [
                   "sunnier"
-            ]
+            ],
+            "top": 50.2,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3067_ex6_1",
@@ -71754,7 +73869,11 @@
             "correct": [
                   "New York is older than Sydney.",
                   "New York is older than Sydney"
-            ]
+            ],
+            "top": 64,
+            "left": 57,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3067_ex6_3",
@@ -71766,7 +73885,11 @@
             "correct": [
                   "The weather is worse today than it was yesterday.",
                   "The weather is worse today than it was yesterday"
-            ]
+            ],
+            "top": 69.5,
+            "left": 57,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3067_ex6_4",
@@ -71778,7 +73901,11 @@
             "correct": [
                   "My new job is more interesting than my old job.",
                   "My new job is more interesting than my old job"
-            ]
+            ],
+            "top": 75,
+            "left": 57,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3067_ex6_5",
@@ -71790,7 +73917,11 @@
             "correct": [
                   "I think spring and autumn are nicer than summer or winter.",
                   "I think spring and autumn are nicer than summer or winter"
-            ]
+            ],
+            "top": 80.5,
+            "left": 57,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3067_ex6_6",
@@ -71802,7 +73933,11 @@
             "correct": [
                   "Karachi is bigger than Islamabad.",
                   "Karachi is bigger than Islamabad"
-            ]
+            ],
+            "top": 86,
+            "left": 57,
+            "width": 38,
+            "height": 2.2
       }
 ],
     "3068": [
@@ -71815,7 +73950,11 @@
             "h": 2.2,
             "correct": [
                   "beach"
-            ]
+            ],
+            "top": 45,
+            "left": 13,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex1_2",
@@ -71826,7 +73965,11 @@
             "h": 2.2,
             "correct": [
                   "coast"
-            ]
+            ],
+            "top": 48,
+            "left": 13,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex1_3",
@@ -71837,7 +73980,11 @@
             "h": 2.2,
             "correct": [
                   "desert"
-            ]
+            ],
+            "top": 51,
+            "left": 13,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex1_4",
@@ -71848,7 +73995,11 @@
             "h": 2.2,
             "correct": [
                   "island"
-            ]
+            ],
+            "top": 54,
+            "left": 13,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex1_5",
@@ -71859,7 +74010,11 @@
             "h": 2.2,
             "correct": [
                   "lake"
-            ]
+            ],
+            "top": 57,
+            "left": 13,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex1_6",
@@ -71870,7 +74025,11 @@
             "h": 2.2,
             "correct": [
                   "mountain"
-            ]
+            ],
+            "top": 60,
+            "left": 13,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3068_ex1_7",
@@ -71881,7 +74040,11 @@
             "h": 2.2,
             "correct": [
                   "rainforest"
-            ]
+            ],
+            "top": 63,
+            "left": 13,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3068_ex1_8",
@@ -71892,7 +74055,11 @@
             "h": 2.2,
             "correct": [
                   "river"
-            ]
+            ],
+            "top": 66,
+            "left": 13,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex1_9",
@@ -71903,7 +74070,11 @@
             "h": 2.2,
             "correct": [
                   "waterfall"
-            ]
+            ],
+            "top": 69,
+            "left": 13,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3068_ex2_1",
@@ -71916,7 +74087,11 @@
                   "islands",
                   "rivers"
             ],
-            "correct": "islands"
+            "correct": "islands",
+            "top": 34.5,
+            "left": 71,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex2_2",
@@ -71929,7 +74104,11 @@
                   "island",
                   "lake"
             ],
-            "correct": "island"
+            "correct": "island",
+            "top": 38,
+            "left": 58,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex2_3",
@@ -71942,7 +74121,11 @@
                   "mountain",
                   "waterfall"
             ],
-            "correct": "mountain"
+            "correct": "mountain",
+            "top": 38,
+            "left": 71,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3068_ex2_4",
@@ -71955,7 +74138,11 @@
                   "Lake",
                   "Coast"
             ],
-            "correct": "Lake"
+            "correct": "Lake",
+            "top": 41.5,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex2_5",
@@ -71968,7 +74155,11 @@
                   "coast",
                   "mountain"
             ],
-            "correct": "coast"
+            "correct": "coast",
+            "top": 45,
+            "left": 58,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex2_6",
@@ -71981,7 +74172,11 @@
                   "Desert",
                   "Coast"
             ],
-            "correct": "Desert"
+            "correct": "Desert",
+            "top": 45,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex2_7",
@@ -71994,7 +74189,11 @@
                   "rainforest",
                   "waterfall"
             ],
-            "correct": "rainforest"
+            "correct": "rainforest",
+            "top": 48.5,
+            "left": 58,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3068_ex2_8",
@@ -72007,7 +74206,11 @@
                   "beach",
                   "lake"
             ],
-            "correct": "beach"
+            "correct": "beach",
+            "top": 48.5,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex2_9",
@@ -72020,7 +74223,11 @@
                   "Mountain",
                   "River"
             ],
-            "correct": "River"
+            "correct": "River",
+            "top": 55.6,
+            "left": 78,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3068_ex2_10",
@@ -72033,7 +74240,11 @@
                   "waterfall",
                   "mountain"
             ],
-            "correct": "waterfall"
+            "correct": "waterfall",
+            "top": 60.8,
+            "left": 61,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3068_ex3_1",
@@ -72044,7 +74255,11 @@
             "h": 2.2,
             "correct": [
                   "north"
-            ]
+            ],
+            "top": 70,
+            "left": 74,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3068_ex3_2",
@@ -72055,7 +74270,11 @@
             "h": 2.2,
             "correct": [
                   "north-east"
-            ]
+            ],
+            "top": 72.5,
+            "left": 74,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3068_ex3_3",
@@ -72066,7 +74285,11 @@
             "h": 2.2,
             "correct": [
                   "east"
-            ]
+            ],
+            "top": 75,
+            "left": 74,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3068_ex3_4",
@@ -72077,7 +74300,11 @@
             "h": 2.2,
             "correct": [
                   "south-east"
-            ]
+            ],
+            "top": 77.5,
+            "left": 74,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3068_ex3_5",
@@ -72088,7 +74315,11 @@
             "h": 2.2,
             "correct": [
                   "south"
-            ]
+            ],
+            "top": 80,
+            "left": 74,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3068_ex3_6",
@@ -72099,7 +74330,11 @@
             "h": 2.2,
             "correct": [
                   "south-west"
-            ]
+            ],
+            "top": 82.5,
+            "left": 74,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3068_ex3_7",
@@ -72110,7 +74345,11 @@
             "h": 2.2,
             "correct": [
                   "west"
-            ]
+            ],
+            "top": 85,
+            "left": 74,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3068_ex3_8",
@@ -72121,7 +74360,11 @@
             "h": 2.2,
             "correct": [
                   "north-west"
-            ]
+            ],
+            "top": 87.5,
+            "left": 74,
+            "width": 14,
+            "height": 2.2
       }
 ],
     "3069": [
@@ -72134,7 +74377,11 @@
             "h": 2.2,
             "correct": [
                   "largest"
-            ]
+            ],
+            "top": 21.6,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3069_ex4_2",
@@ -72145,7 +74392,11 @@
             "h": 2.2,
             "correct": [
                   "busiest"
-            ]
+            ],
+            "top": 21.6,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3069_ex4_3",
@@ -72156,7 +74407,11 @@
             "h": 2.2,
             "correct": [
                   "best"
-            ]
+            ],
+            "top": 27.7,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3069_ex4_4",
@@ -72167,7 +74422,11 @@
             "h": 2.2,
             "correct": [
                   "easiest"
-            ]
+            ],
+            "top": 33.8,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3069_ex4_5",
@@ -72178,7 +74437,11 @@
             "h": 2.2,
             "correct": [
                   "warmest"
-            ]
+            ],
+            "top": 36.8,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3069_ex4_6",
@@ -72189,7 +74452,11 @@
             "h": 2.2,
             "correct": [
                   "driest"
-            ]
+            ],
+            "top": 36.8,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3069_ex4_7",
@@ -72200,7 +74467,11 @@
             "h": 2.2,
             "correct": [
                   "most famous"
-            ]
+            ],
+            "top": 42.9,
+            "left": 15,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3069_ex4_8",
@@ -72211,7 +74482,11 @@
             "h": 2.2,
             "correct": [
                   "most popular"
-            ]
+            ],
+            "top": 44.4,
+            "left": 26,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3069_ex4_9",
@@ -72222,7 +74497,11 @@
             "h": 2.2,
             "correct": [
                   "biggest"
-            ]
+            ],
+            "top": 50.5,
+            "left": 15,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3069_ex4_10",
@@ -72233,7 +74512,11 @@
             "h": 2.2,
             "correct": [
                   "cheapest"
-            ]
+            ],
+            "top": 52,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3069_ex5_1",
@@ -72245,7 +74528,11 @@
             "correct": [
                   "The Congo River is the deepest river in the world.",
                   "The Congo River is the deepest river in the world"
-            ]
+            ],
+            "top": 62.8,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3069_ex5_2",
@@ -72257,7 +74544,11 @@
             "correct": [
                   "Summer is usually the hottest time of the year.",
                   "Summer is usually the hottest time of the year"
-            ]
+            ],
+            "top": 66.2,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3069_ex5_3",
@@ -72269,7 +74560,11 @@
             "correct": [
                   "What is the oldest city in the world?",
                   "What is the oldest city in the world"
-            ]
+            ],
+            "top": 69.6,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3069_ex5_4",
@@ -72281,7 +74576,11 @@
             "correct": [
                   "Is Mount Kilimanjaro the highest mountain in Africa?",
                   "Is Mount Kilimanjaro the highest mountain in Africa"
-            ]
+            ],
+            "top": 73,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3069_ex5_5",
@@ -72293,7 +74592,11 @@
             "correct": [
                   "Which is the most interesting museum in Rome?",
                   "Which is the most interesting museum in Rome"
-            ]
+            ],
+            "top": 76.4,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3069_ex5_6",
@@ -72306,7 +74609,11 @@
                   "That's the worst hotel in the town.",
                   "That's the worst hotel in the town",
                   "Thats the worst hotel in the town"
-            ]
+            ],
+            "top": 79.8,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3069_ex6_1",
@@ -72317,7 +74624,11 @@
             "h": 2.2,
             "correct": [
                   "the coldest"
-            ]
+            ],
+            "top": 10,
+            "left": 67,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3069_ex6_2",
@@ -72328,7 +74639,11 @@
             "h": 2.2,
             "correct": [
                   "higher than"
-            ]
+            ],
+            "top": 12,
+            "left": 67,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3069_ex6_3",
@@ -72339,7 +74654,11 @@
             "h": 2.2,
             "correct": [
                   "the most beautiful"
-            ]
+            ],
+            "top": 14.5,
+            "left": 67,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3069_ex6_4",
@@ -72350,7 +74669,11 @@
             "h": 2.2,
             "correct": [
                   "the tallest"
-            ]
+            ],
+            "top": 17.5,
+            "left": 67,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3069_ex6_5",
@@ -72361,7 +74684,11 @@
             "h": 2.2,
             "correct": [
                   "worse"
-            ]
+            ],
+            "top": 20.5,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3069_ex6_6",
@@ -72372,7 +74699,11 @@
             "h": 2.2,
             "correct": [
                   "the windiest"
-            ]
+            ],
+            "top": 24,
+            "left": 67,
+            "width": 16,
+            "height": 2.2
       }
 ],
     "3070": [
@@ -72387,7 +74718,11 @@
                   "score",
                   "number"
             ],
-            "correct": "score"
+            "correct": "score",
+            "top": 22.8,
+            "left": 26,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3070_ex1_2",
@@ -72400,7 +74735,11 @@
                   "high",
                   "deep"
             ],
-            "correct": "high"
+            "correct": "high",
+            "top": 26.1,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3070_ex1_3",
@@ -72413,7 +74752,11 @@
                   "heavy",
                   "strong"
             ],
-            "correct": "heavy"
+            "correct": "heavy",
+            "top": 29.3,
+            "left": 27,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3070_ex1_4",
@@ -72426,7 +74769,11 @@
                   "mild",
                   "light"
             ],
-            "correct": "light"
+            "correct": "light",
+            "top": 32.5,
+            "left": 20,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3070_ex1_5",
@@ -72439,7 +74786,11 @@
                   "bad",
                   "freezing"
             ],
-            "correct": "bad"
+            "correct": "bad",
+            "top": 35.8,
+            "left": 20,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3070_ex1_6",
@@ -72452,7 +74803,11 @@
                   "weak",
                   "mild"
             ],
-            "correct": "mild"
+            "correct": "mild",
+            "top": 39.1,
+            "left": 22,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3070_ex3_1",
@@ -72463,7 +74818,11 @@
             "h": 2.2,
             "correct": [
                   "winds"
-            ]
+            ],
+            "top": 72.5,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3070_ex3_2",
@@ -72474,7 +74833,11 @@
             "h": 2.2,
             "correct": [
                   "sleepers"
-            ]
+            ],
+            "top": 76,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3070_ex3_3",
@@ -72485,7 +74848,11 @@
             "h": 2.2,
             "correct": [
                   "temperatures"
-            ]
+            ],
+            "top": 79.5,
+            "left": 11,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3070_ex3_4",
@@ -72496,7 +74863,11 @@
             "h": 2.2,
             "correct": [
                   "traffic"
-            ]
+            ],
+            "top": 83,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3070_ex3_5",
@@ -72507,7 +74878,11 @@
             "h": 2.2,
             "correct": [
                   "coffee"
-            ]
+            ],
+            "top": 86.5,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       }
 ],
     "3071": [
@@ -72520,7 +74895,11 @@
             "h": 2.2,
             "correct": [
                   "compass"
-            ]
+            ],
+            "top": 24.5,
+            "left": 20,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3071_ex1a_2",
@@ -72531,7 +74910,11 @@
             "h": 2.2,
             "correct": [
                   "cooking equipment"
-            ]
+            ],
+            "top": 28,
+            "left": 20,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3071_ex1a_3",
@@ -72542,7 +74925,11 @@
             "h": 2.2,
             "correct": [
                   "first aid kit"
-            ]
+            ],
+            "top": 31.5,
+            "left": 20,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3071_ex1a_4",
@@ -72553,7 +74940,11 @@
             "h": 2.2,
             "correct": [
                   "GPS"
-            ]
+            ],
+            "top": 35,
+            "left": 20,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3071_ex1a_5",
@@ -72564,7 +74955,11 @@
             "h": 2.2,
             "correct": [
                   "lighter"
-            ]
+            ],
+            "top": 38.5,
+            "left": 20,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3071_ex1a_6",
@@ -72575,7 +74970,11 @@
             "h": 2.2,
             "correct": [
                   "map"
-            ]
+            ],
+            "top": 42,
+            "left": 20,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3071_ex1a_7",
@@ -72586,7 +74985,11 @@
             "h": 2.2,
             "correct": [
                   "sleeping bag"
-            ]
+            ],
+            "top": 45.5,
+            "left": 20,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3071_ex1a_8",
@@ -72597,7 +75000,11 @@
             "h": 2.2,
             "correct": [
                   "stove"
-            ]
+            ],
+            "top": 49,
+            "left": 20,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3071_ex1a_9",
@@ -72608,7 +75015,11 @@
             "h": 2.2,
             "correct": [
                   "tent"
-            ]
+            ],
+            "top": 52.5,
+            "left": 20,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3071_ex1a_10",
@@ -72619,7 +75030,11 @@
             "h": 2.2,
             "correct": [
                   "torch"
-            ]
+            ],
+            "top": 56,
+            "left": 20,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3071_ex2_1",
@@ -72631,7 +75046,11 @@
             "correct": [
                   "I think we should take a torch.",
                   "I think we should take a torch"
-            ]
+            ],
+            "top": 72,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3071_ex2_2",
@@ -72643,7 +75062,11 @@
             "correct": [
                   "I'd prefer to take a first aid kit instead of a stove.",
                   "I'd prefer to take a first aid kit instead of a stove"
-            ]
+            ],
+            "top": 75.4,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3071_ex2_3",
@@ -72655,7 +75078,11 @@
             "correct": [
                   "The most useful things to take are the sleeping bags.",
                   "The most useful things to take are the sleeping bags"
-            ]
+            ],
+            "top": 78.8,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3071_ex2_4",
@@ -72667,7 +75094,11 @@
             "correct": [
                   "A map is more important than a lighter.",
                   "A map is more important than a lighter"
-            ]
+            ],
+            "top": 82.2,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3071_ex2_5",
@@ -72679,7 +75110,11 @@
             "correct": [
                   "Using a stove is a better idea than making a fire.",
                   "Using a stove is a better idea than making a fire"
-            ]
+            ],
+            "top": 85.6,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       }
 ],
     "3072": [
@@ -72692,7 +75127,11 @@
             "h": 2.2,
             "correct": [
                   "recipes"
-            ]
+            ],
+            "top": 26,
+            "left": 42,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3072_ex1a_2",
@@ -72703,7 +75142,11 @@
             "h": 2.2,
             "correct": [
                   "ingredients"
-            ]
+            ],
+            "top": 29.3,
+            "left": 42,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3072_ex1a_3",
@@ -72714,7 +75157,11 @@
             "h": 2.2,
             "correct": [
                   "utensils"
-            ]
+            ],
+            "top": 32.5,
+            "left": 42,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3072_ex1b_1",
@@ -72726,7 +75173,11 @@
             "correct": [
                   "to boil",
                   "boil"
-            ]
+            ],
+            "top": 41.8,
+            "left": 18,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3072_ex1b_2",
@@ -72738,7 +75189,11 @@
             "correct": [
                   "to grill",
                   "grill"
-            ]
+            ],
+            "top": 43.6,
+            "left": 18,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3072_ex1b_3",
@@ -72750,7 +75205,11 @@
             "correct": [
                   "to wash",
                   "wash"
-            ]
+            ],
+            "top": 45.3,
+            "left": 18,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3072_ex1b_4",
@@ -72761,7 +75220,11 @@
             "h": 2.2,
             "correct": [
                   "garlic"
-            ]
+            ],
+            "top": 41.8,
+            "left": 35,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3072_ex1b_5",
@@ -72772,7 +75235,11 @@
             "h": 2.2,
             "correct": [
                   "olive oil"
-            ]
+            ],
+            "top": 43.5,
+            "left": 35,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3072_ex1b_6",
@@ -72783,7 +75250,11 @@
             "h": 2.2,
             "correct": [
                   "herbs"
-            ]
+            ],
+            "top": 45.3,
+            "left": 35,
+            "width": 10,
+            "height": 2.2
       }
 ],
     "3073": [
@@ -72798,7 +75269,11 @@
                   "some",
                   "any"
             ],
-            "correct": "some"
+            "correct": "some",
+            "top": 21,
+            "left": 22,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3073_ex1_2",
@@ -72811,7 +75286,11 @@
                   "a",
                   "-"
             ],
-            "correct": "a"
+            "correct": "a",
+            "top": 27.4,
+            "left": 18,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3073_ex1_3",
@@ -72824,7 +75303,11 @@
                   "some",
                   "any"
             ],
-            "correct": "some"
+            "correct": "some",
+            "top": 27.4,
+            "left": 33,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3073_ex1_4",
@@ -72837,7 +75320,11 @@
                   "some",
                   "any"
             ],
-            "correct": "any"
+            "correct": "any",
+            "top": 30.5,
+            "left": 30,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3073_ex1_5",
@@ -72850,7 +75337,11 @@
                   "quite a lot",
                   "many"
             ],
-            "correct": "quite a lot"
+            "correct": "quite a lot",
+            "top": 33.6,
+            "left": 23,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3073_ex1_6",
@@ -72863,7 +75354,11 @@
                   "many",
                   "much"
             ],
-            "correct": "many"
+            "correct": "many",
+            "top": 35.1,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex1_7",
@@ -72876,7 +75371,11 @@
                   "lemon",
                   "lemons"
             ],
-            "correct": "lemons"
+            "correct": "lemons",
+            "top": 36.6,
+            "left": 31,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex1_8",
@@ -72889,7 +75388,11 @@
                   "any",
                   "some"
             ],
-            "correct": "any"
+            "correct": "any",
+            "top": 38.2,
+            "left": 30,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3073_ex2_1",
@@ -72900,7 +75403,11 @@
             "h": 2.2,
             "correct": [
                   "highest"
-            ]
+            ],
+            "top": 47,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex2_2",
@@ -72911,7 +75418,11 @@
             "h": 2.2,
             "correct": [
                   "most difficult"
-            ]
+            ],
+            "top": 50.5,
+            "left": 11,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3073_ex2_3",
@@ -72922,7 +75433,11 @@
             "h": 2.2,
             "correct": [
                   "smaller"
-            ]
+            ],
+            "top": 54,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex2_4",
@@ -72933,7 +75448,11 @@
             "h": 2.2,
             "correct": [
                   "fittest"
-            ]
+            ],
+            "top": 57.5,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex2_5",
@@ -72944,7 +75463,11 @@
             "h": 2.2,
             "correct": [
                   "most expensive"
-            ]
+            ],
+            "top": 61,
+            "left": 11,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3073_ex2_6",
@@ -72955,7 +75478,11 @@
             "h": 2.2,
             "correct": [
                   "cheaper"
-            ]
+            ],
+            "top": 64.5,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex2_7",
@@ -72966,7 +75493,11 @@
             "h": 2.2,
             "correct": [
                   "more dangerous"
-            ]
+            ],
+            "top": 68,
+            "left": 11,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3073_ex2_8",
@@ -72977,7 +75508,11 @@
             "h": 2.2,
             "correct": [
                   "best"
-            ]
+            ],
+            "top": 71.5,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex2_9",
@@ -72988,7 +75523,11 @@
             "h": 2.2,
             "correct": [
                   "safer"
-            ]
+            ],
+            "top": 75,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex2_10",
@@ -72999,7 +75538,11 @@
             "h": 2.2,
             "correct": [
                   "worst"
-            ]
+            ],
+            "top": 78.5,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex3_1",
@@ -73011,7 +75554,11 @@
             "correct": [
                   "a food-processor",
                   "food-processor"
-            ]
+            ],
+            "top": 15.5,
+            "left": 67,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3073_ex3_2",
@@ -73023,7 +75570,11 @@
             "correct": [
                   "a saucepan",
                   "saucepan"
-            ]
+            ],
+            "top": 17.2,
+            "left": 67,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3073_ex3_3",
@@ -73035,7 +75586,11 @@
             "correct": [
                   "a spoon",
                   "spoon"
-            ]
+            ],
+            "top": 18.9,
+            "left": 67,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3073_ex3_4",
@@ -73046,7 +75601,11 @@
             "h": 2.2,
             "correct": [
                   "roast"
-            ]
+            ],
+            "top": 20.6,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex3_5",
@@ -73057,7 +75616,11 @@
             "h": 2.2,
             "correct": [
                   "chop"
-            ]
+            ],
+            "top": 22.3,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex4_1",
@@ -73068,7 +75631,11 @@
             "h": 2.2,
             "correct": [
                   "island"
-            ]
+            ],
+            "top": 30.7,
+            "left": 64,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex4_2",
@@ -73080,7 +75647,11 @@
             "correct": [
                   "one point two million",
                   "1.2 million"
-            ]
+            ],
+            "top": 32.4,
+            "left": 62,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3073_ex4_3",
@@ -73091,7 +75662,11 @@
             "h": 2.2,
             "correct": [
                   "a tenth"
-            ]
+            ],
+            "top": 32.4,
+            "left": 78,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex4_4",
@@ -73102,7 +75677,11 @@
             "h": 2.2,
             "correct": [
                   "coast"
-            ]
+            ],
+            "top": 35.7,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3073_ex4_5",
@@ -73113,10 +75692,14 @@
             "h": 2.2,
             "correct": [
                   "mountain"
-            ]
+            ],
+            "top": 37.4,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       }
 ],
-"3074": [
+    "3074": [
       {
             "id": "p3074_ex1_1",
             "type": "fill",
@@ -73126,7 +75709,11 @@
             "h": 2.2,
             "correct": [
                   "give a present to someone"
-            ]
+            ],
+            "top": 35,
+            "left": 13,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3074_ex1_2",
@@ -73137,7 +75724,11 @@
             "h": 2.2,
             "correct": [
                   "visit someone in hospital"
-            ]
+            ],
+            "top": 38.6,
+            "left": 13,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3074_ex1_3",
@@ -73148,7 +75739,11 @@
             "h": 2.2,
             "correct": [
                   "teach someone to drive"
-            ]
+            ],
+            "top": 42.2,
+            "left": 13,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3074_ex1_4",
@@ -73159,7 +75754,11 @@
             "h": 2.2,
             "correct": [
                   "help someone with their homework"
-            ]
+            ],
+            "top": 45.8,
+            "left": 13,
+            "width": 28,
+            "height": 2.2
       },
       {
             "id": "p3074_ex2_2",
@@ -73170,7 +75769,11 @@
             "h": 2.2,
             "correct": [
                   "plant a tree"
-            ]
+            ],
+            "top": 73.8,
+            "left": 23,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3074_ex2_3",
@@ -73181,7 +75784,11 @@
             "h": 2.2,
             "correct": [
                   "make some sandwiches"
-            ]
+            ],
+            "top": 77.2,
+            "left": 18,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3074_ex2_4",
@@ -73192,7 +75799,11 @@
             "h": 2.2,
             "correct": [
                   "repair a bike"
-            ]
+            ],
+            "top": 80.7,
+            "left": 27,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3074_ex2_5",
@@ -73203,7 +75814,11 @@
             "h": 2.2,
             "correct": [
                   "improve the town"
-            ]
+            ],
+            "top": 84.1,
+            "left": 24,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3074_ex2_6",
@@ -73214,7 +75829,11 @@
             "h": 2.2,
             "correct": [
                   "paint the room"
-            ]
+            ],
+            "top": 87.6,
+            "left": 24,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3074_ex2_7",
@@ -73225,7 +75844,11 @@
             "h": 2.2,
             "correct": [
                   "organize a party"
-            ]
+            ],
+            "top": 91,
+            "left": 27,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3074_ex3_1",
@@ -73236,7 +75859,11 @@
             "h": 2,
             "correct": [
                   "give"
-            ]
+            ],
+            "top": 59.3,
+            "left": 67,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3074_ex3_2",
@@ -73247,7 +75874,11 @@
             "h": 2,
             "correct": [
                   "improve"
-            ]
+            ],
+            "top": 63.7,
+            "left": 80,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3074_ex3_3",
@@ -73258,7 +75889,11 @@
             "h": 2,
             "correct": [
                   "help"
-            ]
+            ],
+            "top": 68.2,
+            "left": 67,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3074_ex3_4",
@@ -73269,7 +75904,11 @@
             "h": 2,
             "correct": [
                   "visit"
-            ]
+            ],
+            "top": 72.6,
+            "left": 80,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3074_ex3_5",
@@ -73280,7 +75919,11 @@
             "h": 2,
             "correct": [
                   "look after"
-            ]
+            ],
+            "top": 77,
+            "left": 67,
+            "width": 12,
+            "height": 2
       },
       {
             "id": "p3074_ex3_6",
@@ -73291,7 +75934,11 @@
             "h": 2,
             "correct": [
                   "make"
-            ]
+            ],
+            "top": 81.5,
+            "left": 80,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3074_ex3_7",
@@ -73302,7 +75949,11 @@
             "h": 2,
             "correct": [
                   "organize"
-            ]
+            ],
+            "top": 86,
+            "left": 67,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3074_ex3_8",
@@ -73313,7 +75964,11 @@
             "h": 2,
             "correct": [
                   "teach"
-            ]
+            ],
+            "top": 90.4,
+            "left": 80,
+            "width": 8,
+            "height": 2
       }
 ],
     "3075": [
@@ -73327,7 +75982,11 @@
             "correct": [
                   "'re going to organize",
                   "are going to organize"
-            ]
+            ],
+            "top": 14.5,
+            "left": 11,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3075_ex4_2",
@@ -73339,7 +75998,11 @@
             "correct": [
                   "are going to play",
                   "'re going to play"
-            ]
+            ],
+            "top": 17.5,
+            "left": 11,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3075_ex4_3",
@@ -73351,7 +76014,11 @@
             "correct": [
                   "aren't going to sell",
                   "are not going to sell"
-            ]
+            ],
+            "top": 20.5,
+            "left": 11,
+            "width": 24,
+            "height": 2.2
       },
       {
             "id": "p3075_ex4_4",
@@ -73363,7 +76030,11 @@
             "correct": [
                   "'m going to ask",
                   "am going to ask"
-            ]
+            ],
+            "top": 23.5,
+            "left": 11,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3075_ex4_5",
@@ -73375,7 +76046,11 @@
             "correct": [
                   "aren't going to have",
                   "are not going to have"
-            ]
+            ],
+            "top": 26.5,
+            "left": 11,
+            "width": 25,
+            "height": 2.2
       },
       {
             "id": "p3075_ex4_6",
@@ -73387,7 +76062,11 @@
             "correct": [
                   "are going to make",
                   "'re going to make"
-            ]
+            ],
+            "top": 29.5,
+            "left": 11,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3075_ex4_7",
@@ -73399,7 +76078,11 @@
             "correct": [
                   "is going to design",
                   "'s going to design"
-            ]
+            ],
+            "top": 32.5,
+            "left": 11,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3075_ex4_8",
@@ -73411,7 +76094,11 @@
             "correct": [
                   "isn't going to help",
                   "is not going to help"
-            ]
+            ],
+            "top": 35.5,
+            "left": 11,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3075_ex4_9",
@@ -73423,7 +76110,11 @@
             "correct": [
                   "'m not going to do",
                   "am not going to do"
-            ]
+            ],
+            "top": 38.5,
+            "left": 11,
+            "width": 22,
+            "height": 2.2
       },
       {
             "id": "p3075_ex5_1",
@@ -73435,7 +76126,11 @@
             "correct": [
                   "What time is the party going to start?",
                   "What time is the party going to start"
-            ]
+            ],
+            "top": 46.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3075_ex5_2",
@@ -73447,7 +76142,11 @@
             "correct": [
                   "What are you going to wear for your interview?",
                   "What are you going to wear for your interview"
-            ]
+            ],
+            "top": 50,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3075_ex5_3",
@@ -73459,7 +76158,11 @@
             "correct": [
                   "Is Andy going to meet us at the airport?",
                   "Is Andy going to meet us at the airport"
-            ]
+            ],
+            "top": 53.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3075_ex5_4",
@@ -73471,7 +76174,11 @@
             "correct": [
                   "What colour are we going to paint the bathroom?",
                   "What colour are we going to paint the bathroom"
-            ]
+            ],
+            "top": 57,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3075_ex5_5",
@@ -73483,7 +76190,11 @@
             "correct": [
                   "Are your children going to go to university?",
                   "Are your children going to go to university"
-            ]
+            ],
+            "top": 60.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3075_ex5_6",
@@ -73495,7 +76206,11 @@
             "correct": [
                   "How is Alice going to travel to Nairobi?",
                   "How is Alice going to travel to Nairobi"
-            ]
+            ],
+            "top": 64,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3075_ex5_7",
@@ -73507,7 +76222,11 @@
             "correct": [
                   "Are you going to learn Arabic when you move to Bahrain?",
                   "Are you going to learn Arabic when you move to Bahrain"
-            ]
+            ],
+            "top": 67.5,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3075_ex5_8",
@@ -73519,7 +76238,11 @@
             "correct": [
                   "Is Maria going to buy the cinema tickets online?",
                   "Is Maria going to buy the cinema tickets online"
-            ]
+            ],
+            "top": 71,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       }
 ],
     "3076": [
@@ -73532,7 +76255,11 @@
             "h": 2.2,
             "correct": [
                   "website"
-            ]
+            ],
+            "top": 25,
+            "left": 13,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3076_ex1_2",
@@ -73543,7 +76270,11 @@
             "h": 2.2,
             "correct": [
                   "smartphone"
-            ]
+            ],
+            "top": 28.5,
+            "left": 13,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3076_ex1_3",
@@ -73554,7 +76285,11 @@
             "h": 2.2,
             "correct": [
                   "apps"
-            ]
+            ],
+            "top": 32,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3076_ex1_4",
@@ -73565,7 +76300,11 @@
             "h": 2.2,
             "correct": [
                   "GPS"
-            ]
+            ],
+            "top": 35.5,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3076_ex1_5",
@@ -73576,7 +76315,11 @@
             "h": 2.2,
             "correct": [
                   "text"
-            ]
+            ],
+            "top": 39,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3076_ex1_6",
@@ -73587,7 +76330,11 @@
             "h": 2.2,
             "correct": [
                   "tablets"
-            ]
+            ],
+            "top": 42.5,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3076_ex2_1",
@@ -73598,7 +76345,11 @@
             "h": 2.2,
             "correct": [
                   "website"
-            ]
+            ],
+            "top": 58.2,
+            "left": 18,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3076_ex2_2",
@@ -73609,7 +76360,11 @@
             "h": 2.2,
             "correct": [
                   "smartphone"
-            ]
+            ],
+            "top": 65.5,
+            "left": 13,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3076_ex2_3",
@@ -73620,7 +76375,11 @@
             "h": 2.2,
             "correct": [
                   "text"
-            ]
+            ],
+            "top": 72.8,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3076_ex2_4",
@@ -73631,7 +76390,11 @@
             "h": 2.2,
             "correct": [
                   "GPS"
-            ]
+            ],
+            "top": 80,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3076_ex2_5",
@@ -73642,7 +76405,11 @@
             "h": 2.2,
             "correct": [
                   "tablets"
-            ]
+            ],
+            "top": 87.2,
+            "left": 13,
+            "width": 10,
+            "height": 2.2
       }
 ],
     "3077": [
@@ -73655,7 +76422,11 @@
             "h": 2.2,
             "correct": [
                   "to organize"
-            ]
+            ],
+            "top": 24.8,
+            "left": 57,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3077_ex4_2",
@@ -73666,7 +76437,11 @@
             "h": 2.2,
             "correct": [
                   "to sell"
-            ]
+            ],
+            "top": 26.5,
+            "left": 74,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3077_ex4_3",
@@ -73677,7 +76452,11 @@
             "h": 2.2,
             "correct": [
                   "to teach"
-            ]
+            ],
+            "top": 28.1,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3077_ex4_4",
@@ -73688,7 +76467,11 @@
             "h": 2.2,
             "correct": [
                   "to show"
-            ]
+            ],
+            "top": 33,
+            "left": 57,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3077_ex4_5",
@@ -73699,7 +76482,11 @@
             "h": 2.2,
             "correct": [
                   "to explain"
-            ]
+            ],
+            "top": 36.2,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3077_ex4_6",
@@ -73710,7 +76497,11 @@
             "h": 2.2,
             "correct": [
                   "to look"
-            ]
+            ],
+            "top": 39.5,
+            "left": 57,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3077_ex4_7",
@@ -73721,7 +76512,11 @@
             "h": 2.2,
             "correct": [
                   "to find"
-            ]
+            ],
+            "top": 39.5,
+            "left": 74,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3077_ex4_8",
@@ -73732,7 +76527,11 @@
             "h": 2.2,
             "correct": [
                   "to read"
-            ]
+            ],
+            "top": 41.1,
+            "left": 57,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_2a",
@@ -73744,7 +76543,11 @@
             "correct": [
                   "'s going to get",
                   "is going to get"
-            ]
+            ],
+            "top": 73,
+            "left": 23,
+            "width": 15,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_2b",
@@ -73755,7 +76558,11 @@
             "h": 2.2,
             "correct": [
                   "to earn"
-            ]
+            ],
+            "top": 73,
+            "left": 50,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_3a",
@@ -73766,7 +76573,11 @@
             "h": 2.2,
             "correct": [
                   "are you going to buy"
-            ]
+            ],
+            "top": 76.5,
+            "left": 15,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_3b",
@@ -73777,7 +76588,11 @@
             "h": 2.2,
             "correct": [
                   "to wear"
-            ]
+            ],
+            "top": 76.5,
+            "left": 50,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_4a",
@@ -73789,7 +76604,11 @@
             "correct": [
                   "are going to meet",
                   "'re going to meet"
-            ]
+            ],
+            "top": 80,
+            "left": 23,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_4b",
@@ -73800,7 +76619,11 @@
             "h": 2.2,
             "correct": [
                   "to talk about"
-            ]
+            ],
+            "top": 80,
+            "left": 55,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_5a",
@@ -73812,7 +76635,11 @@
             "correct": [
                   "'m going to ask",
                   "am going to ask"
-            ]
+            ],
+            "top": 83.5,
+            "left": 18,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_5b",
@@ -73823,7 +76650,11 @@
             "h": 2.2,
             "correct": [
                   "to lend"
-            ]
+            ],
+            "top": 83.5,
+            "left": 50,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_6a",
@@ -73835,7 +76666,11 @@
             "correct": [
                   "'s going to use",
                   "is going to use"
-            ]
+            ],
+            "top": 87,
+            "left": 23,
+            "width": 15,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_6b",
@@ -73846,7 +76681,11 @@
             "h": 2.2,
             "correct": [
                   "to write"
-            ]
+            ],
+            "top": 87,
+            "left": 50,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_7a",
@@ -73858,7 +76697,11 @@
             "correct": [
                   "'re going to make",
                   "are going to make"
-            ]
+            ],
+            "top": 90.5,
+            "left": 23,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3077_ex6_7b",
@@ -73869,7 +76712,11 @@
             "h": 2.2,
             "correct": [
                   "to take"
-            ]
+            ],
+            "top": 90.5,
+            "left": 50,
+            "width": 12,
+            "height": 2.2
       }
 ],
     "3078": [
@@ -73882,7 +76729,11 @@
             "h": 2.2,
             "correct": [
                   "tiny"
-            ]
+            ],
+            "top": 49.2,
+            "left": 11,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3078_ex2_2",
@@ -73893,7 +76744,11 @@
             "h": 2.2,
             "correct": [
                   "huge"
-            ]
+            ],
+            "top": 49.2,
+            "left": 27,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3078_ex2_3",
@@ -73904,7 +76759,11 @@
             "h": 2.2,
             "correct": [
                   "delighted"
-            ]
+            ],
+            "top": 52.3,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3078_ex2_4",
@@ -73915,7 +76774,11 @@
             "h": 2.2,
             "correct": [
                   "great"
-            ]
+            ],
+            "top": 53.8,
+            "left": 11,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3078_ex2_5",
@@ -73926,7 +76789,11 @@
             "h": 2.2,
             "correct": [
                   "crucial"
-            ]
+            ],
+            "top": 57,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3078_ex3_1",
@@ -73938,7 +76805,11 @@
             "correct": [
                   "Janine is a very nice person.",
                   "Janine is a very nice person"
-            ]
+            ],
+            "top": 70,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3078_ex3_2",
@@ -73950,7 +76821,11 @@
             "correct": [
                   "His exam results were really brilliant.",
                   "His exam results were really brilliant"
-            ]
+            ],
+            "top": 73.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3078_ex3_3",
@@ -73962,7 +76837,11 @@
             "correct": [
                   "Our neighbours are very unfriendly.",
                   "Our neighbours are very unfriendly"
-            ]
+            ],
+            "top": 77,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3078_ex3_4",
@@ -73974,7 +76853,11 @@
             "correct": [
                   "Your dog is very noisy.",
                   "Your dog is very noisy"
-            ]
+            ],
+            "top": 80.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3078_ex3_5",
@@ -73986,7 +76869,11 @@
             "correct": [
                   "The singer was really terrible.",
                   "The singer was really terrible"
-            ]
+            ],
+            "top": 84,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3078_ex3_6",
@@ -73998,7 +76885,11 @@
             "correct": [
                   "We made a really huge cake for John's birthday.",
                   "We made a really huge cake for John's birthday"
-            ]
+            ],
+            "top": 87.5,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3078_ex3_7",
@@ -74010,7 +76901,243 @@
             "correct": [
                   "The letter wasn't very important.",
                   "The letter wasn't very important"
-            ]
+            ],
+            "top": 91,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
+      },
+      {
+            "id": "p3078_ex4_1",
+            "type": "fill",
+            "x": 57,
+            "y": 22,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "help"
+            ],
+            "top": 22,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex4_2",
+            "type": "fill",
+            "x": 74,
+            "y": 22,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "plant"
+            ],
+            "top": 22,
+            "left": 74,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex4_3",
+            "type": "fill",
+            "x": 57,
+            "y": 24.5,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "improve"
+            ],
+            "top": 24.5,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex4_4",
+            "type": "fill",
+            "x": 74,
+            "y": 24.5,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "repair"
+            ],
+            "top": 24.5,
+            "left": 74,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex4_5",
+            "type": "fill",
+            "x": 57,
+            "y": 27,
+            "w": 12,
+            "h": 2,
+            "correct": [
+                  "look after"
+            ],
+            "top": 27,
+            "left": 57,
+            "width": 12,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex4_6",
+            "type": "fill",
+            "x": 74,
+            "y": 27,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "teach"
+            ],
+            "top": 27,
+            "left": 74,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex4_7",
+            "type": "fill",
+            "x": 57,
+            "y": 29.5,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "make"
+            ],
+            "top": 29.5,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex4_8",
+            "type": "fill",
+            "x": 74,
+            "y": 29.5,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "teach"
+            ],
+            "top": 29.5,
+            "left": 74,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex4_9",
+            "type": "fill",
+            "x": 57,
+            "y": 32,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "organize"
+            ],
+            "top": 32,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex4_10",
+            "type": "fill",
+            "x": 74,
+            "y": 32,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "visit"
+            ],
+            "top": 32,
+            "left": 74,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex5_2",
+            "type": "fill",
+            "x": 57,
+            "y": 45,
+            "w": 14,
+            "h": 2,
+            "correct": [
+                  "a smartphone",
+                  "smartphone"
+            ],
+            "top": 45,
+            "left": 57,
+            "width": 14,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex5_3",
+            "type": "fill",
+            "x": 57,
+            "y": 47.5,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "An app",
+                  "an app",
+                  "app"
+            ],
+            "top": 47.5,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex5_4",
+            "type": "fill",
+            "x": 57,
+            "y": 50,
+            "w": 12,
+            "h": 2,
+            "correct": [
+                  "websites"
+            ],
+            "top": 50,
+            "left": 57,
+            "width": 12,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex5_5",
+            "type": "fill",
+            "x": 57,
+            "y": 52.5,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "A text",
+                  "a text",
+                  "text"
+            ],
+            "top": 52.5,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3078_ex5_6",
+            "type": "fill",
+            "x": 57,
+            "y": 55,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "A tablet",
+                  "a tablet",
+                  "tablet"
+            ],
+            "top": 55,
+            "left": 57,
+            "width": 10,
+            "height": 2
       }
 ],
     "3079": [
@@ -74024,7 +77151,11 @@
             "correct": [
                   "Shall I send him a text?",
                   "Shall I send him a text"
-            ]
+            ],
+            "top": 35,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3079_ex1_2",
@@ -74036,7 +77167,11 @@
             "correct": [
                   "Why don't I give you a lift?",
                   "Why don't I give you a lift"
-            ]
+            ],
+            "top": 38.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3079_ex1_3",
@@ -74048,7 +77183,11 @@
             "correct": [
                   "I'll help you to look for them.",
                   "I'll help you to look for them"
-            ]
+            ],
+            "top": 42,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3079_ex1_4",
@@ -74060,7 +77199,11 @@
             "correct": [
                   "Let me help you with it.",
                   "Let me help you with it"
-            ]
+            ],
+            "top": 45.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3079_ex1_5",
@@ -74072,7 +77215,11 @@
             "correct": [
                   "Would you like me to show you?",
                   "Would you like me to show you"
-            ]
+            ],
+            "top": 49,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3079_ex1_6",
@@ -74084,7 +77231,11 @@
             "correct": [
                   "Shall I phone for a pizza?",
                   "Shall I phone for a pizza"
-            ]
+            ],
+            "top": 52.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       }
 ],
     "3080": [
@@ -74098,7 +77249,11 @@
             "correct": [
                   "have been",
                   "'ve been"
-            ]
+            ],
+            "top": 35,
+            "left": 23,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3080_ex1_2",
@@ -74110,7 +77265,11 @@
             "correct": [
                   "hasn't stopped",
                   "has not stopped"
-            ]
+            ],
+            "top": 38.6,
+            "left": 23,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3080_ex1_3",
@@ -74121,7 +77280,11 @@
             "h": 2.2,
             "correct": [
                   "has sold"
-            ]
+            ],
+            "top": 42.2,
+            "left": 23,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3080_ex1_4",
@@ -74133,7 +77296,11 @@
             "correct": [
                   "'s become",
                   "has become"
-            ]
+            ],
+            "top": 45.8,
+            "left": 23,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3080_ex1_5",
@@ -74145,7 +77312,11 @@
             "correct": [
                   "'s travelled",
                   "has travelled"
-            ]
+            ],
+            "top": 49.3,
+            "left": 23,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3080_ex1_6",
@@ -74156,7 +77327,11 @@
             "h": 2.2,
             "correct": [
                   "have watched"
-            ]
+            ],
+            "top": 52.9,
+            "left": 23,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3080_ex1_7",
@@ -74167,7 +77342,11 @@
             "h": 2.2,
             "correct": [
                   "have built"
-            ]
+            ],
+            "top": 56.5,
+            "left": 23,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3080_ex1_8",
@@ -74178,7 +77357,11 @@
             "h": 2.2,
             "correct": [
                   "have sung"
-            ]
+            ],
+            "top": 60,
+            "left": 23,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3080_ex1_9",
@@ -74190,7 +77373,11 @@
             "correct": [
                   "hasn't recorded",
                   "has not recorded"
-            ]
+            ],
+            "top": 63.6,
+            "left": 23,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3080_ex1_10",
@@ -74201,7 +77388,11 @@
             "h": 2.2,
             "correct": [
                   "has made"
-            ]
+            ],
+            "top": 67.2,
+            "left": 23,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3080_ex2_1a",
@@ -74212,7 +77403,11 @@
             "h": 2,
             "correct": [
                   "Have"
-            ]
+            ],
+            "top": 22,
+            "left": 57,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3080_ex2_1b",
@@ -74223,7 +77418,11 @@
             "h": 2,
             "correct": [
                   "heard"
-            ]
+            ],
+            "top": 22,
+            "left": 74,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3080_ex2_1c",
@@ -74234,7 +77433,11 @@
             "h": 2,
             "correct": [
                   "have"
-            ]
+            ],
+            "top": 22,
+            "left": 88,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3080_ex2_2a",
@@ -74245,7 +77448,11 @@
             "h": 2,
             "correct": [
                   "Has"
-            ]
+            ],
+            "top": 26,
+            "left": 57,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3080_ex2_2b",
@@ -74256,7 +77463,11 @@
             "h": 2,
             "correct": [
                   "recorded"
-            ]
+            ],
+            "top": 26,
+            "left": 74,
+            "width": 12,
+            "height": 2
       },
       {
             "id": "p3080_ex2_2c",
@@ -74267,7 +77478,11 @@
             "h": 2,
             "correct": [
                   "hasn't"
-            ]
+            ],
+            "top": 26,
+            "left": 88,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3080_ex2_3a",
@@ -74278,7 +77493,11 @@
             "h": 2,
             "correct": [
                   "Has"
-            ]
+            ],
+            "top": 30,
+            "left": 57,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3080_ex2_3b",
@@ -74289,7 +77508,11 @@
             "h": 2,
             "correct": [
                   "given"
-            ]
+            ],
+            "top": 30,
+            "left": 74,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3080_ex2_3c",
@@ -74300,7 +77523,11 @@
             "h": 2,
             "correct": [
                   "has"
-            ]
+            ],
+            "top": 30,
+            "left": 88,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3080_ex2_4a",
@@ -74311,7 +77538,11 @@
             "h": 2,
             "correct": [
                   "Have"
-            ]
+            ],
+            "top": 34,
+            "left": 57,
+            "width": 8,
+            "height": 2
       },
       {
             "id": "p3080_ex2_4b",
@@ -74322,7 +77553,11 @@
             "h": 2,
             "correct": [
                   "been"
-            ]
+            ],
+            "top": 34,
+            "left": 74,
+            "width": 10,
+            "height": 2
       },
       {
             "id": "p3080_ex2_4c",
@@ -74333,7 +77568,11 @@
             "h": 2,
             "correct": [
                   "haven't"
-            ]
+            ],
+            "top": 34,
+            "left": 88,
+            "width": 10,
+            "height": 2
       }
 ],
     "3081": [
@@ -74347,7 +77586,11 @@
             "correct": [
                   "We've visited Moscow and St Petersburg.",
                   "We've visited Moscow and St Petersburg"
-            ]
+            ],
+            "top": 14.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3081_ex3_2",
@@ -74359,7 +77602,11 @@
             "correct": [
                   "Have you read this book?",
                   "Have you read this book"
-            ]
+            ],
+            "top": 18,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3081_ex3_3",
@@ -74371,7 +77618,11 @@
             "correct": [
                   "We haven't had a holiday.",
                   "We haven't had a holiday"
-            ]
+            ],
+            "top": 21.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3081_ex3_4",
@@ -74383,7 +77634,11 @@
             "correct": [
                   "All of the workers have gone home.",
                   "All of the workers have gone home"
-            ]
+            ],
+            "top": 25,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3081_ex3_5",
@@ -74395,7 +77650,11 @@
             "correct": [
                   "Mandy hasn't found a job.",
                   "Mandy hasn't found a job"
-            ]
+            ],
+            "top": 28.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3081_ex3_6",
@@ -74407,7 +77666,11 @@
             "correct": [
                   "Who has taken my bike?",
                   "Who has taken my bike"
-            ]
+            ],
+            "top": 32,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3081_ex3_7",
@@ -74419,7 +77682,11 @@
             "correct": [
                   "I haven't heard the weather forecast.",
                   "I haven't heard the weather forecast"
-            ]
+            ],
+            "top": 35.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3081_ex3_8",
@@ -74431,7 +77698,157 @@
             "correct": [
                   "He has washed the car.",
                   "He has washed the car"
-            ]
+            ],
+            "top": 39,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
+      },
+      {
+            "id": "p3081_ex6_1",
+            "type": "fill",
+            "x": 11,
+            "y": 55,
+            "w": 14,
+            "h": 2,
+            "correct": [
+                  "cinema",
+                  "a cinema"
+            ],
+            "top": 55,
+            "left": 11,
+            "width": 14,
+            "height": 2
+      },
+      {
+            "id": "p3081_ex6_2",
+            "type": "fill",
+            "x": 11,
+            "y": 58.5,
+            "w": 14,
+            "h": 2,
+            "correct": [
+                  "play",
+                  "a play"
+            ],
+            "top": 58.5,
+            "left": 11,
+            "width": 14,
+            "height": 2
+      },
+      {
+            "id": "p3081_ex6_3",
+            "type": "fill",
+            "x": 11,
+            "y": 62,
+            "w": 18,
+            "h": 2,
+            "correct": [
+                  "dance lesson",
+                  "a dance lesson"
+            ],
+            "top": 62,
+            "left": 11,
+            "width": 18,
+            "height": 2
+      },
+      {
+            "id": "p3081_ex6_4",
+            "type": "fill",
+            "x": 11,
+            "y": 65.5,
+            "w": 18,
+            "h": 2,
+            "correct": [
+                  "instrument",
+                  "an instrument"
+            ],
+            "top": 65.5,
+            "left": 11,
+            "width": 18,
+            "height": 2
+      },
+      {
+            "id": "p3081_ex6_5",
+            "type": "fill",
+            "x": 11,
+            "y": 69,
+            "w": 18,
+            "h": 2,
+            "correct": [
+                  "painting lesson",
+                  "a painting lesson"
+            ],
+            "top": 69,
+            "left": 11,
+            "width": 18,
+            "height": 2
+      },
+      {
+            "id": "p3081_ex6_6",
+            "type": "fill",
+            "x": 11,
+            "y": 72.5,
+            "w": 25,
+            "h": 2,
+            "correct": [
+                  "classical music concert",
+                  "a classical music concert"
+            ],
+            "top": 72.5,
+            "left": 11,
+            "width": 25,
+            "height": 2
+      },
+      {
+            "id": "p3081_ex6_7",
+            "type": "fill",
+            "x": 11,
+            "y": 76,
+            "w": 16,
+            "h": 2,
+            "correct": [
+                  "film",
+                  "a film",
+                  "movie",
+                  "a movie"
+            ],
+            "top": 76,
+            "left": 11,
+            "width": 16,
+            "height": 2
+      },
+      {
+            "id": "p3081_ex6_8",
+            "type": "fill",
+            "x": 11,
+            "y": 79.5,
+            "w": 16,
+            "h": 2,
+            "correct": [
+                  "salsa class",
+                  "a salsa class"
+            ],
+            "top": 79.5,
+            "left": 11,
+            "width": 16,
+            "height": 2
+      },
+      {
+            "id": "p3081_ex6_9",
+            "type": "fill",
+            "x": 11,
+            "y": 83,
+            "w": 16,
+            "h": 2,
+            "correct": [
+                  "art gallery",
+                  "an art gallery"
+            ],
+            "top": 83,
+            "left": 11,
+            "width": 16,
+            "height": 2
       }
 ],
     "3082": [
@@ -74444,7 +77861,11 @@
             "h": 2.2,
             "correct": [
                   "action films"
-            ]
+            ],
+            "top": 51.5,
+            "left": 11,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3082_ex1_2",
@@ -74455,7 +77876,11 @@
             "h": 2.2,
             "correct": [
                   "romance films"
-            ]
+            ],
+            "top": 51.5,
+            "left": 32,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3082_ex1_3",
@@ -74466,7 +77891,11 @@
             "h": 2.2,
             "correct": [
                   "animations"
-            ]
+            ],
+            "top": 51.5,
+            "left": 53,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3082_ex1_4",
@@ -74477,7 +77906,11 @@
             "h": 2.2,
             "correct": [
                   "horror films"
-            ]
+            ],
+            "top": 51.5,
+            "left": 74,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3082_ex1_5",
@@ -74488,7 +77921,11 @@
             "h": 2.2,
             "correct": [
                   "comedies"
-            ]
+            ],
+            "top": 58.7,
+            "left": 11,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3082_ex1_6",
@@ -74499,7 +77936,11 @@
             "h": 2.2,
             "correct": [
                   "musicals"
-            ]
+            ],
+            "top": 58.7,
+            "left": 32,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3082_ex1_7",
@@ -74510,7 +77951,11 @@
             "h": 2.2,
             "correct": [
                   "dramas"
-            ]
+            ],
+            "top": 58.7,
+            "left": 53,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3082_ex1_8",
@@ -74521,7 +77966,116 @@
             "h": 2.2,
             "correct": [
                   "science fiction films"
-            ]
+            ],
+            "top": 58.7,
+            "left": 74,
+            "width": 18,
+            "height": 2.2
+      },
+      {
+            "id": "p3082_ex2_2",
+            "type": "fill",
+            "x": 11,
+            "y": 68.2,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "horror films"
+            ],
+            "top": 68.2,
+            "left": 11,
+            "width": 16,
+            "height": 2.2
+      },
+      {
+            "id": "p3082_ex2_3",
+            "type": "fill",
+            "x": 11,
+            "y": 71.5,
+            "w": 20,
+            "h": 2.2,
+            "correct": [
+                  "science fiction films"
+            ],
+            "top": 71.5,
+            "left": 11,
+            "width": 20,
+            "height": 2.2
+      },
+      {
+            "id": "p3082_ex2_4",
+            "type": "fill",
+            "x": 11,
+            "y": 74.8,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "animations"
+            ],
+            "top": 74.8,
+            "left": 11,
+            "width": 16,
+            "height": 2.2
+      },
+      {
+            "id": "p3082_ex2_5",
+            "type": "fill",
+            "x": 11,
+            "y": 78,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "dramas"
+            ],
+            "top": 78,
+            "left": 11,
+            "width": 14,
+            "height": 2.2
+      },
+      {
+            "id": "p3082_ex2_6",
+            "type": "fill",
+            "x": 11,
+            "y": 81.3,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "comedies"
+            ],
+            "top": 81.3,
+            "left": 11,
+            "width": 14,
+            "height": 2.2
+      },
+      {
+            "id": "p3082_ex2_7",
+            "type": "fill",
+            "x": 11,
+            "y": 84.5,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "musicals"
+            ],
+            "top": 84.5,
+            "left": 11,
+            "width": 14,
+            "height": 2.2
+      },
+      {
+            "id": "p3082_ex2_8",
+            "type": "fill",
+            "x": 11,
+            "y": 87.8,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "romance films"
+            ],
+            "top": 87.8,
+            "left": 11,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3082_ex3_1",
@@ -74532,7 +78086,11 @@
             "h": 2.2,
             "correct": [
                   "favourite"
-            ]
+            ],
+            "top": 70,
+            "left": 76,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3082_ex3_2",
@@ -74543,7 +78101,11 @@
             "h": 2.2,
             "correct": [
                   "set"
-            ]
+            ],
+            "top": 73.6,
+            "left": 67,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3082_ex3_3",
@@ -74554,7 +78116,11 @@
             "h": 2.2,
             "correct": [
                   "about"
-            ]
+            ],
+            "top": 77.2,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3082_ex3_4",
@@ -74566,7 +78132,11 @@
             "correct": [
                   "it's",
                   "it is"
-            ]
+            ],
+            "top": 80.8,
+            "left": 67,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3082_ex3_5",
@@ -74577,7 +78147,11 @@
             "h": 2.2,
             "correct": [
                   "stars"
-            ]
+            ],
+            "top": 84.4,
+            "left": 67,
+            "width": 8,
+            "height": 2.2
       }
 ],
     "3083": [
@@ -74591,7 +78165,11 @@
             "correct": [
                   "I've never had acting lessons.",
                   "I've never had acting lessons"
-            ]
+            ],
+            "top": 14.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3083_ex4_2",
@@ -74603,7 +78181,11 @@
             "correct": [
                   "Have you ever walked out of a play before the end?",
                   "Have you ever walked out of a play before the end"
-            ]
+            ],
+            "top": 18,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3083_ex4_3",
@@ -74615,7 +78197,11 @@
             "correct": [
                   "We've never been to a film festival.",
                   "We've never been to a film festival"
-            ]
+            ],
+            "top": 21.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3083_ex4_4",
@@ -74627,7 +78213,11 @@
             "correct": [
                   "Have you ever met a famous person?",
                   "Have you ever met a famous person"
-            ]
+            ],
+            "top": 25,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3083_ex4_5",
@@ -74639,7 +78229,11 @@
             "correct": [
                   "Has anyone in your family ever been on TV?",
                   "Has anyone in your family ever been on TV"
-            ]
+            ],
+            "top": 28.5,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3083_ex4_6",
@@ -74651,7 +78245,11 @@
             "correct": [
                   "Nadia has never sung in public before.",
                   "Nadia has never sung in public before"
-            ]
+            ],
+            "top": 32,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3083_ex4_7",
@@ -74663,7 +78261,11 @@
             "correct": [
                   "Have I ever forgotten to send you a birthday card?",
                   "Have I ever forgotten to send you a birthday card"
-            ]
+            ],
+            "top": 35.5,
+            "left": 11,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3083_ex6_1",
@@ -74676,7 +78278,11 @@
                   "lasted",
                   "has lasted"
             ],
-            "correct": "lasted"
+            "correct": "lasted",
+            "top": 38.9,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3083_ex6_2",
@@ -74689,7 +78295,11 @@
                   "designed",
                   "has designed"
             ],
-            "correct": "designed"
+            "correct": "designed",
+            "top": 45.4,
+            "left": 67,
+            "width": 14,
+            "height": 2.2
       },
       {
             "id": "p3083_ex6_3",
@@ -74702,7 +78312,11 @@
                   "made",
                   "has made"
             ],
-            "correct": "made"
+            "correct": "made",
+            "top": 46.8,
+            "left": 74,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3083_ex6_4",
@@ -74715,7 +78329,11 @@
                   "was",
                   "has been"
             ],
-            "correct": "was"
+            "correct": "was",
+            "top": 50,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3083_ex6_5",
@@ -74728,7 +78346,11 @@
                   "received",
                   "have received"
             ],
-            "correct": "have received"
+            "correct": "have received",
+            "top": 55.6,
+            "left": 74,
+            "width": 16,
+            "height": 2.2
       },
       {
             "id": "p3083_ex6_6",
@@ -74741,7 +78363,11 @@
                   "won",
                   "has won"
             ],
-            "correct": "won"
+            "correct": "won",
+            "top": 59.2,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3083_ex6_7",
@@ -74754,7 +78380,11 @@
                   "had",
                   "has had"
             ],
-            "correct": "has had"
+            "correct": "has had",
+            "top": 62,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3083_ex6_8",
@@ -74767,7 +78397,11 @@
                   "won",
                   "has won"
             ],
-            "correct": "has won"
+            "correct": "has won",
+            "top": 65.7,
+            "left": 78,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3083_ex6_9",
@@ -74780,7 +78414,11 @@
                   "became",
                   "has become"
             ],
-            "correct": "became"
+            "correct": "became",
+            "top": 70,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3083_ex6_10",
@@ -74793,7 +78431,11 @@
                   "ever refused",
                   "have ever refused"
             ],
-            "correct": "have ever refused"
+            "correct": "have ever refused",
+            "top": 76.5,
+            "left": 67,
+            "width": 18,
+            "height": 2.2
       }
 ],
     "3084": [
@@ -74807,7 +78449,11 @@
             "correct": [
                   "you've won the Oscar for best director.",
                   "you've won the Oscar for best director"
-            ]
+            ],
+            "top": 45,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3084_ex2_2",
@@ -74819,7 +78465,11 @@
             "correct": [
                   "Who's drunk my coffee?",
                   "Who's drunk my coffee"
-            ]
+            ],
+            "top": 48.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3084_ex2_3",
@@ -74831,7 +78481,11 @@
             "correct": [
                   "She's met someone online.",
                   "She's met someone online"
-            ]
+            ],
+            "top": 52,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3084_ex2_4",
@@ -74843,7 +78497,11 @@
             "correct": [
                   "We've begun to work.",
                   "We've begun to work"
-            ]
+            ],
+            "top": 55.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3084_ex2_5",
@@ -74856,7 +78514,11 @@
                   "She's been on holiday.",
                   "She's gone on holiday.",
                   "She's been on holiday"
-            ]
+            ],
+            "top": 59,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3084_ex2_6",
@@ -74868,7 +78530,11 @@
             "correct": [
                   "He's written a book.",
                   "He's written a book"
-            ]
+            ],
+            "top": 62.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3084_ex2_7",
@@ -74880,7 +78546,11 @@
             "correct": [
                   "I've given Tom some money.",
                   "I've given Tom some money"
-            ]
+            ],
+            "top": 66,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
       },
       {
             "id": "p3084_ex2_8",
@@ -74892,7 +78562,191 @@
             "correct": [
                   "We've been in the office all day.",
                   "We've been in the office all day"
-            ]
+            ],
+            "top": 69.5,
+            "left": 11,
+            "width": 35,
+            "height": 2.2
+      },
+      {
+            "id": "p3084_ex4_1",
+            "type": "fill",
+            "x": 57,
+            "y": 35,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "been"
+            ],
+            "top": 35,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3084_ex4_2",
+            "type": "fill",
+            "x": 74,
+            "y": 35,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "began"
+            ],
+            "top": 35,
+            "left": 74,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3084_ex4_3",
+            "type": "fill",
+            "x": 57,
+            "y": 38,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "broken"
+            ],
+            "top": 38,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3084_ex4_4",
+            "type": "fill",
+            "x": 74,
+            "y": 38,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "drank"
+            ],
+            "top": 38,
+            "left": 74,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3084_ex4_5",
+            "type": "fill",
+            "x": 57,
+            "y": 41,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "driven"
+            ],
+            "top": 41,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3084_ex4_6",
+            "type": "fill",
+            "x": 74,
+            "y": 41,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "ate"
+            ],
+            "top": 41,
+            "left": 74,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3084_ex4_7",
+            "type": "fill",
+            "x": 57,
+            "y": 44,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "given"
+            ],
+            "top": 44,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3084_ex4_8",
+            "type": "fill",
+            "x": 74,
+            "y": 44,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "went"
+            ],
+            "top": 44,
+            "left": 74,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3084_ex4_9",
+            "type": "fill",
+            "x": 57,
+            "y": 47,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "grown"
+            ],
+            "top": 47,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3084_ex4_10",
+            "type": "fill",
+            "x": 74,
+            "y": 47,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "heard"
+            ],
+            "top": 47,
+            "left": 74,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3084_ex4_11",
+            "type": "fill",
+            "x": 57,
+            "y": 50,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "woken"
+            ],
+            "top": 50,
+            "left": 57,
+            "width": 10,
+            "height": 2
+      },
+      {
+            "id": "p3084_ex4_12",
+            "type": "fill",
+            "x": 74,
+            "y": 50,
+            "w": 10,
+            "h": 2,
+            "correct": [
+                  "won"
+            ],
+            "top": 50,
+            "left": 74,
+            "width": 10,
+            "height": 2
       }
 ],
     "3085": [
@@ -74906,7 +78760,11 @@
             "correct": [
                   "it's",
                   "It's"
-            ]
+            ],
+            "top": 26,
+            "left": 11,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_1b",
@@ -74918,7 +78776,11 @@
             "correct": [
                   "Is",
                   "is"
-            ]
+            ],
+            "top": 26,
+            "left": 23,
+            "width": 6,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_2",
@@ -74929,7 +78791,11 @@
             "h": 2.2,
             "correct": [
                   "call me back"
-            ]
+            ],
+            "top": 31,
+            "left": 11,
+            "width": 18,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_3",
@@ -74940,7 +78806,11 @@
             "h": 2.2,
             "correct": [
                   "moment"
-            ]
+            ],
+            "top": 36,
+            "left": 11,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_4a",
@@ -74952,7 +78822,11 @@
             "correct": [
                   "Hang",
                   "Hold"
-            ]
+            ],
+            "top": 41,
+            "left": 11,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_4b",
@@ -74963,7 +78837,11 @@
             "h": 2.2,
             "correct": [
                   "just"
-            ]
+            ],
+            "top": 41,
+            "left": 23,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_5a",
@@ -74974,7 +78852,11 @@
             "h": 2.2,
             "correct": [
                   "Can"
-            ]
+            ],
+            "top": 46,
+            "left": 11,
+            "width": 6,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_5b",
@@ -74985,7 +78867,11 @@
             "h": 2.2,
             "correct": [
                   "call"
-            ]
+            ],
+            "top": 46,
+            "left": 20,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_6a",
@@ -74996,7 +78882,11 @@
             "h": 2.2,
             "correct": [
                   "afraid"
-            ]
+            ],
+            "top": 51,
+            "left": 11,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_6b",
@@ -75007,7 +78897,11 @@
             "h": 2.2,
             "correct": [
                   "out of"
-            ]
+            ],
+            "top": 51,
+            "left": 25,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_7",
@@ -75018,7 +78912,11 @@
             "h": 2.2,
             "correct": [
                   "have"
-            ]
+            ],
+            "top": 56,
+            "left": 11,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_8",
@@ -75029,7 +78927,11 @@
             "h": 2.2,
             "correct": [
                   "Could I"
-            ]
+            ],
+            "top": 61,
+            "left": 11,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_9",
@@ -75040,7 +78942,11 @@
             "h": 2.2,
             "correct": [
                   "take"
-            ]
+            ],
+            "top": 66,
+            "left": 11,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3085_ex1_10",
@@ -75051,98 +78957,215 @@
             "h": 2.2,
             "correct": [
                   "on"
-            ]
+            ],
+            "top": 71,
+            "left": 11,
+            "width": 6,
+            "height": 2.2
       }
 ],
     "3086": [
       {
-            "id": "p3086_ex5_1",
+            "id": "p3086_ex1_1",
             "type": "fill",
-            "x": 74,
-            "y": 79.2,
-            "w": 10,
+            "x": 13,
+            "y": 49,
+            "w": 15,
             "h": 2.2,
             "correct": [
-                  "prison"
-            ]
+                  "a bishop",
+                  "bishop"
+            ],
+            "top": 49,
+            "left": 13,
+            "width": 15,
+            "height": 2.2
       },
       {
-            "id": "p3086_ex5_2",
+            "id": "p3086_ex1_2",
             "type": "fill",
-            "x": 74,
+            "x": 33,
+            "y": 49,
+            "w": 15,
+            "h": 2.2,
+            "correct": [
+                  "a candlestick",
+                  "candlestick"
+            ],
+            "top": 49,
+            "left": 33,
+            "width": 15,
+            "height": 2.2
+      },
+      {
+            "id": "p3086_ex1_3",
+            "type": "fill",
+            "x": 13,
+            "y": 71,
+            "w": 15,
+            "h": 2.2,
+            "correct": [
+                  "a prison",
+                  "prison"
+            ],
+            "top": 71,
+            "left": 13,
+            "width": 15,
+            "height": 2.2
+      },
+      {
+            "id": "p3086_ex1_4",
+            "type": "fill",
+            "x": 33,
+            "y": 71,
+            "w": 15,
+            "h": 2.2,
+            "correct": [
+                  "a prisoner",
+                  "prisoner"
+            ],
+            "top": 71,
+            "left": 33,
+            "width": 15,
+            "height": 2.2
+      },
+      {
+            "id": "p3086_ex1_5",
+            "type": "fill",
+            "x": 13,
+            "y": 92,
+            "w": 15,
+            "h": 2.2,
+            "correct": [
+                  "a plate",
+                  "plate"
+            ],
+            "top": 92,
+            "left": 13,
+            "width": 15,
+            "height": 2.2
+      },
+      {
+            "id": "p3086_ex1_6",
+            "type": "fill",
+            "x": 33,
+            "y": 92,
+            "w": 15,
+            "h": 2.2,
+            "correct": [
+                  "a fire",
+                  "fire"
+            ],
+            "top": 92,
+            "left": 33,
+            "width": 15,
+            "height": 2.2
+      },
+      {
+            "id": "p3086_ex3_2",
+            "type": "fill",
+            "x": 82,
             "y": 80.8,
             "w": 12,
             "h": 2.2,
             "correct": [
                   "bishop's",
                   "bishop"
-            ]
+            ],
+            "top": 80.8,
+            "left": 82,
+            "width": 12,
+            "height": 2.2
       },
       {
-            "id": "p3086_ex5_3",
+            "id": "p3086_ex3_3",
             "type": "fill",
-            "x": 74,
+            "x": 75,
             "y": 82.3,
-            "w": 10,
+            "w": 8,
             "h": 2.2,
             "correct": [
                   "open"
-            ]
+            ],
+            "top": 82.3,
+            "left": 75,
+            "width": 8,
+            "height": 2.2
       },
       {
-            "id": "p3086_ex5_4",
+            "id": "p3086_ex3_4",
             "type": "fill",
-            "x": 67,
-            "y": 85.4,
-            "w": 10,
+            "x": 68,
+            "y": 85,
+            "w": 8,
             "h": 2.2,
             "correct": [
                   "kind"
-            ]
+            ],
+            "top": 85,
+            "left": 68,
+            "width": 8,
+            "height": 2.2
       },
       {
-            "id": "p3086_ex5_5",
+            "id": "p3086_ex3_5",
             "type": "fill",
-            "x": 74,
-            "y": 87,
-            "w": 10,
+            "x": 81,
+            "y": 86.8,
+            "w": 7,
             "h": 2.2,
             "correct": [
                   "sister"
-            ]
+            ],
+            "top": 86.8,
+            "left": 81,
+            "width": 7,
+            "height": 2.2
       },
       {
-            "id": "p3086_ex5_6",
+            "id": "p3086_ex3_6",
             "type": "fill",
-            "x": 67,
+            "x": 58,
             "y": 88.5,
-            "w": 10,
+            "w": 7,
             "h": 2.2,
             "correct": [
                   "afraid"
-            ]
+            ],
+            "top": 88.5,
+            "left": 58,
+            "width": 7,
+            "height": 2.2
       },
       {
-            "id": "p3086_ex5_7",
+            "id": "p3086_ex3_7",
             "type": "fill",
-            "x": 67,
+            "x": 62,
             "y": 90,
-            "w": 10,
+            "w": 8,
             "h": 2.2,
             "correct": [
                   "dinner"
-            ]
+            ],
+            "top": 90,
+            "left": 62,
+            "width": 8,
+            "height": 2.2
       },
       {
-            "id": "p3086_ex5_8",
+            "id": "p3086_ex3_8",
             "type": "fill",
-            "x": 74,
-            "y": 91.6,
-            "w": 16,
+            "x": 70,
+            "y": 91.8,
+            "w": 8,
             "h": 2.2,
             "correct": [
                   "candlesticks"
-            ]
+            ],
+            "top": 91.8,
+            "left": 70,
+            "width": 8,
+            "height": 2.2
       }
 ],
     "3087": [
@@ -75156,7 +79179,11 @@
             "correct": [
                   "They're going to organize a charity race.",
                   "They're going to organize a charity race"
-            ]
+            ],
+            "top": 24.5,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3087_ex1_2",
@@ -75168,7 +79195,11 @@
             "correct": [
                   "I'm saving money to buy a new bicycle.",
                   "I'm saving money to buy a new bicycle"
-            ]
+            ],
+            "top": 27.9,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3087_ex1_3",
@@ -75180,7 +79211,11 @@
             "correct": [
                   "He's never used a GPS before.",
                   "He's never used a GPS before"
-            ]
+            ],
+            "top": 31.4,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3087_ex1_4",
@@ -75192,7 +79227,11 @@
             "correct": [
                   "Is your mum going to teach you to drive?",
                   "Is your mum going to teach you to drive"
-            ]
+            ],
+            "top": 34.8,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3087_ex1_5",
@@ -75204,7 +79243,11 @@
             "correct": [
                   "We went to a concert last night.",
                   "We went to a concert last night"
-            ]
+            ],
+            "top": 38.2,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3087_ex1_6",
@@ -75216,7 +79259,11 @@
             "correct": [
                   "Have you ever eaten Peruvian food?",
                   "Have you ever eaten Peruvian food"
-            ]
+            ],
+            "top": 41.7,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3087_ex1_7",
@@ -75228,7 +79275,11 @@
             "correct": [
                   "We're going to go to the hospital to visit Kim.",
                   "We're going to go to the hospital to visit Kim"
-            ]
+            ],
+            "top": 45.1,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
       },
       {
             "id": "p3087_ex1_8",
@@ -75240,7 +79291,150 @@
             "correct": [
                   "You aren't going to have a lot of time tomorrow.",
                   "You aren't going to have a lot of time tomorrow"
-            ]
+            ],
+            "top": 48.6,
+            "left": 8.8,
+            "width": 38,
+            "height": 2.2
+      },
+      {
+            "id": "p3087_ex2_1",
+            "type": "fill",
+            "x": 8.8,
+            "y": 55,
+            "w": 22,
+            "h": 2.2,
+            "correct": [
+                  "are going to do",
+                  "'re going to do"
+            ],
+            "top": 55,
+            "left": 8.8,
+            "width": 22,
+            "height": 2.2
+      },
+      {
+            "id": "p3087_ex2_2",
+            "type": "fill",
+            "x": 8.8,
+            "y": 58,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "to buy"
+            ],
+            "top": 58,
+            "left": 8.8,
+            "width": 12,
+            "height": 2.2
+      },
+      {
+            "id": "p3087_ex2_3",
+            "type": "fill",
+            "x": 8.8,
+            "y": 61,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "haven't had"
+            ],
+            "top": 61,
+            "left": 8.8,
+            "width": 16,
+            "height": 2.2
+      },
+      {
+            "id": "p3087_ex2_4",
+            "type": "fill",
+            "x": 8.8,
+            "y": 64,
+            "w": 22,
+            "h": 2.2,
+            "correct": [
+                  "are going to make",
+                  "'re going to make"
+            ],
+            "top": 64,
+            "left": 8.8,
+            "width": 22,
+            "height": 2.2
+      },
+      {
+            "id": "p3087_ex2_5",
+            "type": "fill",
+            "x": 8.8,
+            "y": 67,
+            "w": 20,
+            "h": 2.2,
+            "correct": [
+                  "'re going to sell",
+                  "are going to sell"
+            ],
+            "top": 67,
+            "left": 8.8,
+            "width": 20,
+            "height": 2.2
+      },
+      {
+            "id": "p3087_ex2_6",
+            "type": "fill",
+            "x": 8.8,
+            "y": 70,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "bought"
+            ],
+            "top": 70,
+            "left": 8.8,
+            "width": 12,
+            "height": 2.2
+      },
+      {
+            "id": "p3087_ex2_7",
+            "type": "fill",
+            "x": 8.8,
+            "y": 73,
+            "w": 16,
+            "h": 2.2,
+            "correct": [
+                  "Has made",
+                  "has made"
+            ],
+            "top": 73,
+            "left": 8.8,
+            "width": 16,
+            "height": 2.2
+      },
+      {
+            "id": "p3087_ex2_8",
+            "type": "fill",
+            "x": 8.8,
+            "y": 76,
+            "w": 14,
+            "h": 2.2,
+            "correct": [
+                  "borrowed"
+            ],
+            "top": 76,
+            "left": 8.8,
+            "width": 14,
+            "height": 2.2
+      },
+      {
+            "id": "p3087_ex2_9",
+            "type": "fill",
+            "x": 8.8,
+            "y": 79,
+            "w": 12,
+            "h": 2.2,
+            "correct": [
+                  "to see"
+            ],
+            "top": 79,
+            "left": 8.8,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3087_ex3_1",
@@ -75251,7 +79445,11 @@
             "h": 2.2,
             "correct": [
                   "after"
-            ]
+            ],
+            "top": 15.5,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex3_2",
@@ -75262,7 +79460,11 @@
             "h": 2.2,
             "correct": [
                   "garden"
-            ]
+            ],
+            "top": 17.2,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex3_3",
@@ -75273,7 +79475,11 @@
             "h": 2.2,
             "correct": [
                   "make"
-            ]
+            ],
+            "top": 18.9,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex3_4",
@@ -75284,7 +79490,11 @@
             "h": 2.2,
             "correct": [
                   "plays"
-            ]
+            ],
+            "top": 20.6,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex3_5",
@@ -75297,7 +79507,11 @@
                   "film",
                   "cinema"
             ],
-            "correct": "film"
+            "correct": "film",
+            "top": 17.1,
+            "left": 74,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex3_6",
@@ -75310,7 +79524,11 @@
                   "theatre",
                   "play"
             ],
-            "correct": "theatre"
+            "correct": "theatre",
+            "top": 20.4,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3087_ex4_1",
@@ -75321,7 +79539,11 @@
             "h": 2.2,
             "correct": [
                   "been"
-            ]
+            ],
+            "top": 32,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex4_2",
@@ -75332,7 +79554,11 @@
             "h": 2.2,
             "correct": [
                   "forgotten"
-            ]
+            ],
+            "top": 33.5,
+            "left": 78,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3087_ex4_3",
@@ -75343,7 +79569,11 @@
             "h": 2.2,
             "correct": [
                   "a science fiction film"
-            ]
+            ],
+            "top": 36.6,
+            "left": 67,
+            "width": 20,
+            "height": 2.2
       },
       {
             "id": "p3087_ex4_4",
@@ -75354,7 +79584,11 @@
             "h": 2.2,
             "correct": [
                   "awful"
-            ]
+            ],
+            "top": 39.7,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex4_5",
@@ -75365,7 +79599,11 @@
             "h": 2.2,
             "correct": [
                   "freezing"
-            ]
+            ],
+            "top": 42.8,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex4_6",
@@ -75376,7 +79614,11 @@
             "h": 2.2,
             "correct": [
                   "really"
-            ]
+            ],
+            "top": 45.9,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex4_7",
@@ -75387,7 +79629,11 @@
             "h": 2.2,
             "correct": [
                   "tablet"
-            ]
+            ],
+            "top": 49,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex4_8",
@@ -75398,7 +79644,11 @@
             "h": 2.2,
             "correct": [
                   "app"
-            ]
+            ],
+            "top": 52.1,
+            "left": 67,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex4_9",
@@ -75410,7 +79660,11 @@
             "correct": [
                   "Comedies",
                   "comedies"
-            ]
+            ],
+            "top": 55.2,
+            "left": 67,
+            "width": 12,
+            "height": 2.2
       },
       {
             "id": "p3087_ex5_1a",
@@ -75421,7 +79675,11 @@
             "h": 2.2,
             "correct": [
                   "Shall"
-            ]
+            ],
+            "top": 64,
+            "left": 55,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3087_ex5_1b",
@@ -75432,7 +79690,11 @@
             "h": 2.2,
             "correct": [
                   "for"
-            ]
+            ],
+            "top": 64,
+            "left": 70,
+            "width": 6,
+            "height": 2.2
       },
       {
             "id": "p3087_ex5_2",
@@ -75443,7 +79705,11 @@
             "h": 2.2,
             "correct": [
                   "Would"
-            ]
+            ],
+            "top": 67.5,
+            "left": 55,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex5_3",
@@ -75454,7 +79720,11 @@
             "h": 2.2,
             "correct": [
                   "have"
-            ]
+            ],
+            "top": 71,
+            "left": 55,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3087_ex5_4",
@@ -75465,7 +79735,11 @@
             "h": 2.2,
             "correct": [
                   "Could"
-            ]
+            ],
+            "top": 74.5,
+            "left": 55,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3087_ex5_5",
@@ -75476,7 +79750,11 @@
             "h": 2.2,
             "correct": [
                   "back"
-            ]
+            ],
+            "top": 78,
+            "left": 55,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3087_ex5_6",
@@ -75487,7 +79765,11 @@
             "h": 2.2,
             "correct": [
                   "don't"
-            ]
+            ],
+            "top": 81.5,
+            "left": 55,
+            "width": 8,
+            "height": 2.2
       },
       {
             "id": "p3087_ex5_7",
@@ -75499,7 +79781,11 @@
             "correct": [
                   "Hold",
                   "Hang"
-            ]
+            ],
+            "top": 85,
+            "left": 55,
+            "width": 10,
+            "height": 2.2
       },
       {
             "id": "p3087_ex5_8",
@@ -75510,10 +79796,14 @@
             "h": 2.2,
             "correct": [
                   "Let"
-            ]
+            ],
+            "top": 88.5,
+            "left": 55,
+            "width": 8,
+            "height": 2.2
       }
 ],
-    "2004": [
+"2004": [
     {
       "id": "p2004_ex2_2",
       "type": "fill",
@@ -108823,8 +113113,13 @@
       }
       var zIndex = isEditor ? '50' : '10';
 
+      var itemTop = item.top !== undefined ? item.top : (item.y !== undefined ? item.y : 0);
+      var itemLeft = item.left !== undefined ? item.left : (item.x !== undefined ? item.x : 0);
+      var itemWidth = item.width !== undefined ? item.width : (item.w !== undefined ? item.w : 10);
+      var itemHeight = item.height !== undefined ? item.height : (item.h !== undefined ? item.h : 2.2);
+
       h += '<div class="eth-wb-item-wrap" data-id="' + item.id + '" data-page="' + pageNum + '" data-type="' + itemType + '" data-group="' + (item.group || '') + '" ' +
-        'style="position:absolute;top:' + item.top + '%;left:' + item.left + '%;width:' + item.width + '%;height:' + item.height + '%;z-index:' + zIndex + ';">';
+        'style="position:absolute;top:' + itemTop + '%;left:' + itemLeft + '%;width:' + itemWidth + '%;height:' + itemHeight + '%;z-index:' + zIndex + ';">';
 
       if (itemType === 'fill' || itemType === 'text') {
         var rawCorr = item.correct;
@@ -108900,7 +113195,7 @@
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       } else if (itemType === 'select') {
         var opts = Array.isArray(item.options) ? item.options : [];
-        var corrOpt = String(item.correct || '');
+        var corrOpt = Array.isArray(item.correct) ? JSON.stringify(item.correct) : String(item.correct || '');
         h += '<select class="eth-wb-input wb-select-input" ' +
           'data-id="' + item.id + '" ' +
           'data-page="' + pageNum + '" ' +
