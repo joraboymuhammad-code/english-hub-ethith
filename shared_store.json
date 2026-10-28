@@ -22313,6 +22313,350 @@
         "correct": "Yes"
       }
     ],
+    "1005": [
+      {
+        "id": "p1005_ex4_2",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "4",
+        "label": "2",
+        "top": 16.7,
+        "left": 13.5,
+        "width": 6.5,
+        "height": 2,
+        "correct": "you"
+      },
+      {
+        "id": "p1005_ex4_3",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "4",
+        "label": "3",
+        "top": 18.4,
+        "left": 10.8,
+        "width": 6.5,
+        "height": 2,
+        "correct": "I"
+      },
+      {
+        "id": "p1005_ex4_4",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "4",
+        "label": "4",
+        "top": 20.1,
+        "left": 10.8,
+        "width": 6.5,
+        "height": 2,
+        "correct": "I"
+      },
+      {
+        "id": "p1005_ex4_5",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "4",
+        "label": "5",
+        "top": 21.8,
+        "left": 13.5,
+        "width": 6.5,
+        "height": 2,
+        "correct": "you"
+      },
+      {
+        "id": "p1005_ex4_6",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "4",
+        "label": "6",
+        "top": 23.5,
+        "left": 10.8,
+        "width": 6.5,
+        "height": 2,
+        "correct": "I"
+      },
+      {
+        "id": "p1005_ex5_1",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "1",
+        "top": 29.8,
+        "left": 17.5,
+        "width": 8.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am",
+          "I'm Amy"
+        ]
+      },
+      {
+        "id": "p1005_ex5_2a",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "2a",
+        "top": 31.5,
+        "left": 21.5,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1005_ex5_2b",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "2b",
+        "top": 33.2,
+        "left": 19.3,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1005_ex5_3a",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "3a",
+        "top": 35,
+        "left": 17.3,
+        "width": 14,
+        "height": 2,
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex5_3b",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "3b",
+        "top": 36.7,
+        "left": 17.5,
+        "width": 10,
+        "height": 2,
+        "correct": [
+          "I'm not",
+          "I am not"
+        ]
+      },
+      {
+        "id": "p1005_ex5_4a",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "4a",
+        "top": 38.3,
+        "left": 17.5,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1005_ex5_4b",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "4b",
+        "top": 40.1,
+        "left": 17.5,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1005_ex5_5a",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "5a",
+        "top": 41.8,
+        "left": 17.5,
+        "width": 14,
+        "height": 2,
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex5_5b",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "5b",
+        "top": 43.5,
+        "left": 17.5,
+        "width": 8.5,
+        "height": 2,
+        "correct": [
+          "I am",
+          "I'm"
+        ]
+      },
+      {
+        "id": "p1005_ex5_6a",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "6a",
+        "top": 45.2,
+        "left": 21.2,
+        "width": 14,
+        "height": 2,
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex5_6b",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "6b",
+        "top": 47,
+        "left": 19.5,
+        "width": 8.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1005_ex6_2",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "2",
+        "top": 20,
+        "left": 54.5,
+        "width": 18,
+        "height": 2.2,
+        "options": [
+          "Am I",
+          "I'm not"
+        ],
+        "correct": "I'm not"
+      },
+      {
+        "id": "p1005_ex6_3",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "3",
+        "top": 25.1,
+        "left": 54.5,
+        "width": 22,
+        "height": 2.2,
+        "options": [
+          "You aren't",
+          "Are you"
+        ],
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex6_4",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "4",
+        "top": 30.3,
+        "left": 54.5,
+        "width": 20,
+        "height": 2.2,
+        "options": [
+          "You're",
+          "Are you"
+        ],
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex6_5",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "5",
+        "top": 35.5,
+        "left": 54.5,
+        "width": 20,
+        "height": 2.2,
+        "options": [
+          "Am I",
+          "I'm here"
+        ],
+        "correct": "I'm here"
+      },
+      {
+        "id": "p1005_ex6_6",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "6",
+        "top": 40.6,
+        "left": 54.5,
+        "width": 22,
+        "height": 2.2,
+        "options": [
+          "Are you",
+          "You aren't"
+        ],
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex6_7",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "7",
+        "top": 45.8,
+        "left": 54.5,
+        "width": 18,
+        "height": 2.2,
+        "options": [
+          "I'm not",
+          "Am I"
+        ],
+        "correct": "I'm not"
+      },
+      {
+        "id": "p1005_ex6_8",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "8",
+        "top": 51,
+        "left": 54.5,
+        "width": 18,
+        "height": 2.2,
+        "options": [
+          "Are you",
+          "You're"
+        ],
+        "correct": "You're"
+      },
+      {
+        "page": 1005,
+        "type": "choose",
+        "top": 18.1,
+        "left": 79.9,
+        "width": 12.3,
+        "height": 2,
+        "correct": true,
+        "label": "New",
+        "id": "p1005_custom_19141",
+        "group": "p1005_grp_9141",
+        "text": ""
+      }
+    ],
     "2004": [
       {
         "id": "p2004_ex2_2",
@@ -54067,6 +54411,7 @@
     "86": 2026,
     "87": 2026,
     "1004": 1793185989133,
+    "1005": 1793186019141,
     "2004": 2026,
     "2005": 2026,
     "2006": 2026,
@@ -54194,5 +54539,5 @@
   "timetable": [],
   "contests": [],
   "payments": {},
-  "updatedAt": 1793185995081
+  "updatedAt": 1793186019890
 }
