@@ -22269,8 +22269,8 @@
         "page": 1004,
         "exercise": "1",
         "label": "4",
-        "top": 73,
-        "left": 65.7,
+        "top": 73.2,
+        "left": 65.8,
         "width": 14.5,
         "height": 2.2,
         "correct": "on holiday"
@@ -22281,8 +22281,8 @@
         "page": 1004,
         "exercise": "2",
         "label": "1",
-        "top": 80.1,
-        "left": 24.5,
+        "top": 81.3,
+        "left": 23.5,
         "width": 4,
         "height": 2,
         "correct": "e"
@@ -22293,8 +22293,8 @@
         "page": 1004,
         "exercise": "2",
         "label": "2",
-        "top": 81.7,
-        "left": 24.6,
+        "top": 83,
+        "left": 23.5,
         "width": 4,
         "height": 2,
         "correct": "f"
@@ -22305,8 +22305,8 @@
         "page": 1004,
         "exercise": "2",
         "label": "3",
-        "top": 83.4,
-        "left": 24.7,
+        "top": 84.7,
+        "left": 23.5,
         "width": 4,
         "height": 2,
         "correct": "h"
@@ -22317,8 +22317,8 @@
         "page": 1004,
         "exercise": "2",
         "label": "4",
-        "top": 84.9,
-        "left": 24.8,
+        "top": 86.4,
+        "left": 23.5,
         "width": 4,
         "height": 2,
         "correct": "b"
@@ -22329,8 +22329,8 @@
         "page": 1004,
         "exercise": "2",
         "label": "5",
-        "top": 86.6,
-        "left": 24.8,
+        "top": 88.1,
+        "left": 23.5,
         "width": 4,
         "height": 2,
         "correct": "g"
@@ -22341,8 +22341,8 @@
         "page": 1004,
         "exercise": "2",
         "label": "6",
-        "top": 88.4,
-        "left": 24.8,
+        "top": 89.8,
+        "left": 23.5,
         "width": 4,
         "height": 2,
         "correct": "c"
@@ -22353,8 +22353,8 @@
         "page": 1004,
         "exercise": "2",
         "label": "7",
-        "top": 90.2,
-        "left": 24.8,
+        "top": 91.5,
+        "left": 23.5,
         "width": 4,
         "height": 2,
         "correct": "a"
@@ -22365,8 +22365,8 @@
         "page": 1004,
         "exercise": "2",
         "label": "8",
-        "top": 91.9,
-        "left": 24.8,
+        "top": 93.3,
+        "left": 23.5,
         "width": 4,
         "height": 2,
         "correct": "d"
@@ -22692,8 +22692,8 @@
         "page": 1005,
         "exercise": "6a",
         "label": "2",
-        "top": 18.4,
-        "left": 54.6,
+        "top": 20,
+        "left": 54.5,
         "width": 18,
         "height": 2.2,
         "options": [
@@ -22708,7 +22708,7 @@
         "page": 1005,
         "exercise": "6a",
         "label": "3",
-        "top": 25.1,
+        "top": 22.3,
         "left": 54.5,
         "width": 22,
         "height": 2.2,
@@ -22724,8 +22724,8 @@
         "page": 1005,
         "exercise": "6a",
         "label": "4",
-        "top": 30.3,
-        "left": 54.5,
+        "top": 28.6,
+        "left": 54.4,
         "width": 20,
         "height": 2.2,
         "options": [
@@ -54552,8 +54552,8 @@
     "85": 2026,
     "86": 2026,
     "87": 2026,
-    "1004": 1793187006731,
-    "1005": 1793187066120,
+    "1004": 1793185989133,
+    "1005": 1793187093822,
     "2004": 2026,
     "2005": 2026,
     "2006": 2026,
@@ -54947,5 +54947,5 @@
       }
     }
   },
-  "updatedAt": 1793187066915
+  "updatedAt": 1793187095825
 }
