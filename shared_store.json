@@ -966,7 +966,7 @@
               "hwLesson": "1.1",
               "hwCorrect": 0,
               "hwTotal": 42,
-              "hwCompletedAt": 1793187178825
+              "hwCompletedAt": 1793187775514
             },
             "std_2": {
               "status": "K",
@@ -1077,7 +1077,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1793187178825,
+        "updatedAt": 1793187775514,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1240,7 +1240,7 @@
               "hwLesson": "1.1",
               "hwCorrect": 0,
               "hwTotal": 42,
-              "hwCompletedAt": 1793187178841
+              "hwCompletedAt": 1793187775526
             }
           }
         },
@@ -1263,7 +1263,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793187178841
+        "updatedAt": 1793187775526
       },
       "deletedMsgIds": [],
       "customStudentNames": {},
@@ -1354,7 +1354,7 @@
               "hwLesson": "1.1",
               "hwCorrect": 0,
               "hwTotal": 42,
-              "hwCompletedAt": 1793187178862
+              "hwCompletedAt": 1793187775539
             }
           }
         },
@@ -1378,7 +1378,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1793187178862
+        "updatedAt": 1793187775539
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -1476,7 +1476,7 @@
               "hwLesson": "1.1",
               "hwCorrect": 0,
               "hwTotal": 42,
-              "hwCompletedAt": 1793187178885
+              "hwCompletedAt": 1793187775552
             }
           }
         },
@@ -1499,7 +1499,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793187178885
+        "updatedAt": 1793187775552
       },
       "deletedMsgIds": [],
       "customStudentNames": {},
@@ -54935,5 +54935,5 @@
       }
     }
   },
-  "updatedAt": 1793187751690
+  "updatedAt": 1793187776294
 }
