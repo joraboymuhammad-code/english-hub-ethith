@@ -23648,6 +23648,379 @@
         "correct": "You're"
       }
     ],
+    "1006": [
+      {
+        "id": "p1006_cw_a2",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "1",
+        "label": "A2",
+        "top": 56.5,
+        "left": 16.5,
+        "width": 10,
+        "height": 2,
+        "correct": "eight"
+      },
+      {
+        "id": "p1006_cw_a5",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "1",
+        "label": "A5",
+        "top": 58.5,
+        "left": 16.5,
+        "width": 10,
+        "height": 2,
+        "correct": "seven"
+      },
+      {
+        "id": "p1006_cw_a7",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "1",
+        "label": "A7",
+        "top": 60.5,
+        "left": 16.5,
+        "width": 10,
+        "height": 2,
+        "correct": "five"
+      },
+      {
+        "id": "p1006_cw_a8",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "1",
+        "label": "A8",
+        "top": 62.5,
+        "left": 16.5,
+        "width": 10,
+        "height": 2,
+        "correct": "two"
+      },
+      {
+        "id": "p1006_cw_d1",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "1",
+        "label": "D1",
+        "top": 56.5,
+        "left": 32.5,
+        "width": 10,
+        "height": 2,
+        "correct": "ten"
+      },
+      {
+        "id": "p1006_cw_d3",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "1",
+        "label": "D3",
+        "top": 58.5,
+        "left": 32.5,
+        "width": 10,
+        "height": 2,
+        "correct": "three"
+      },
+      {
+        "id": "p1006_cw_d4",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "1",
+        "label": "D4",
+        "top": 60.5,
+        "left": 32.5,
+        "width": 10,
+        "height": 2,
+        "correct": "one"
+      },
+      {
+        "id": "p1006_cw_d6",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "1",
+        "label": "D6",
+        "top": 62.5,
+        "left": 32.5,
+        "width": 10,
+        "height": 2,
+        "correct": "nine"
+      },
+      {
+        "id": "p1006_cw_d7",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "1",
+        "label": "D7",
+        "top": 64.5,
+        "left": 32.5,
+        "width": 10,
+        "height": 2,
+        "correct": "four"
+      },
+      {
+        "id": "p1006_ex2_2",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "2",
+        "label": "2",
+        "top": 72.5,
+        "left": 26,
+        "width": 8,
+        "height": 2,
+        "correct": "six"
+      },
+      {
+        "id": "p1006_ex2_3",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "2",
+        "label": "3",
+        "top": 74.1,
+        "left": 26,
+        "width": 8,
+        "height": 2,
+        "correct": "nine"
+      },
+      {
+        "id": "p1006_ex2_4",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "2",
+        "label": "4",
+        "top": 76,
+        "left": 26,
+        "width": 8,
+        "height": 2,
+        "correct": "five"
+      },
+      {
+        "id": "p1006_ex2_5",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "2",
+        "label": "5",
+        "top": 77.7,
+        "left": 26,
+        "width": 8,
+        "height": 2,
+        "correct": "seven"
+      },
+      {
+        "id": "p1006_ex2_6",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "2",
+        "label": "6",
+        "top": 79.3,
+        "left": 26,
+        "width": 8,
+        "height": 2,
+        "correct": "ten"
+      },
+      {
+        "id": "p1006_ex2_7",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "2",
+        "label": "7",
+        "top": 81.1,
+        "left": 26,
+        "width": 8,
+        "height": 2,
+        "correct": "one"
+      },
+      {
+        "id": "p1006_ex2_8",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "2",
+        "label": "8",
+        "top": 82.8,
+        "left": 26,
+        "width": 8,
+        "height": 2,
+        "correct": "eight"
+      },
+      {
+        "id": "p1006_ex3_2",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "3",
+        "label": "2",
+        "top": 34.2,
+        "left": 68.5,
+        "width": 10.5,
+        "height": 2,
+        "correct": "Australia"
+      },
+      {
+        "id": "p1006_ex3_3",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "3",
+        "label": "3",
+        "top": 35.4,
+        "left": 85.5,
+        "width": 10.5,
+        "height": 2,
+        "correct": "China"
+      },
+      {
+        "id": "p1006_ex3_4",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "3",
+        "label": "4",
+        "top": 50.2,
+        "left": 54.5,
+        "width": 9,
+        "height": 2,
+        "correct": "Brazil"
+      },
+      {
+        "id": "p1006_ex3_5",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "3",
+        "label": "5",
+        "top": 50.2,
+        "left": 68.5,
+        "width": 10.5,
+        "height": 2,
+        "correct": "Turkey"
+      },
+      {
+        "id": "p1006_ex3_6",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "3",
+        "label": "6",
+        "top": 50.2,
+        "left": 85.5,
+        "width": 10.5,
+        "height": 2,
+        "correct": [
+          "the USA",
+          "USA",
+          "the US",
+          "US"
+        ]
+      },
+      {
+        "id": "p1006_ex3_7",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "3",
+        "label": "7",
+        "top": 66.3,
+        "left": 51,
+        "width": 9.5,
+        "height": 2,
+        "correct": "Japan"
+      },
+      {
+        "id": "p1006_ex3_8",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "3",
+        "label": "8",
+        "top": 66.3,
+        "left": 67.5,
+        "width": 10.5,
+        "height": 2,
+        "correct": "Indonesia"
+      },
+      {
+        "id": "p1006_ex3_9",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "3",
+        "label": "9",
+        "top": 66.3,
+        "left": 85,
+        "width": 10.5,
+        "height": 2,
+        "correct": "Spain"
+      },
+      {
+        "id": "p1006_ex4_s1_1",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "4a",
+        "label": "S1a",
+        "top": 82.5,
+        "left": 45,
+        "width": 16,
+        "height": 2,
+        "correct": [
+          "China",
+          "Russia",
+          "Turkey"
+        ]
+      },
+      {
+        "id": "p1006_ex4_s1_2",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "4a",
+        "label": "S1b",
+        "top": 84.5,
+        "left": 45,
+        "width": 16,
+        "height": 2,
+        "correct": [
+          "China",
+          "Russia",
+          "Turkey"
+        ]
+      },
+      {
+        "id": "p1006_ex4_s1_3",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "4a",
+        "label": "S1c",
+        "top": 86.5,
+        "left": 45,
+        "width": 16,
+        "height": 2,
+        "correct": [
+          "China",
+          "Russia",
+          "Turkey"
+        ]
+      },
+      {
+        "id": "p1006_ex4_s2_1",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "4a",
+        "label": "S2a",
+        "top": 84.5,
+        "left": 65,
+        "width": 16,
+        "height": 2,
+        "correct": [
+          "Brazil",
+          "Japan"
+        ]
+      },
+      {
+        "id": "p1006_ex4_s2_2",
+        "type": "fill",
+        "page": 1006,
+        "exercise": "4a",
+        "label": "S2b",
+        "top": 86.5,
+        "left": 65,
+        "width": 16,
+        "height": 2,
+        "correct": [
+          "Brazil",
+          "Japan"
+        ]
+      }
+    ],
     "1024": [
       {
         "id": "p1024_ex1a_2a",
@@ -58912,6 +59285,7 @@
     "87": 2026,
     "1004": 1793187750372,
     "1005": 1793187440510,
+    "1006": 1793196381451,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -59273,5 +59647,5 @@
       }
     }
   },
-  "updatedAt": 1793194838520
+  "updatedAt": 1793196382202
 }
