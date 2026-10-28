@@ -4,52 +4,137 @@
       "id": "cls_ethith_main",
       "name": "IELTS & General English Intensive",
       "code": "ETH-L6S8CM",
-      "teacherId": "admin_official_teacher",
+      "teacherId": "joraboyevmuhammad85@gmail.com",
       "teacherName": "Ustoz",
-      "teacherEmail": "teacher@ethith.uz",
+      "teacherEmail": "joraboyevmuhammad85@gmail.com",
       "created": 1792429062767,
       "students": [
         {
           "id": "std_1",
-          "name": "Ashurov Dilyorbek",
+          "name": "Ashurov Dilyorbek Azizbek o'g'li",
           "email": "ashurov@ethith.uz",
-          "joinedAt": "2026-10-20"
+          "joinedAt": "2026-09-01"
         },
         {
           "id": "std_2",
-          "name": "Ergasheva Madina",
+          "name": "Ergasheva Madina Asad qizi",
           "email": "ergasheva@ethith.uz",
-          "joinedAt": "2026-10-20"
+          "joinedAt": "2026-09-01"
         },
         {
           "id": "std_3",
-          "name": "Erkinov Aslbekjon",
+          "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
           "email": "erkinov@ethith.uz",
-          "joinedAt": "2026-10-20"
+          "joinedAt": "2026-09-01"
         },
         {
           "id": "std_4",
-          "name": "JO‘RABOYEV MUXAMMADYUSUF",
+          "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
           "email": "joraboyev@ethith.uz",
-          "joinedAt": "2026-10-20"
+          "joinedAt": "2026-09-01"
         },
         {
           "id": "std_5",
-          "name": "Jo'raboyev Javoxir",
+          "name": "Jo'raboyev Javoxir Murod o'g'li",
           "email": "javoxir@ethith.uz",
-          "joinedAt": "2026-10-20"
+          "joinedAt": "2026-09-01"
         },
         {
           "id": "std_6",
-          "name": "Mavlonova Ruxshona",
+          "name": "Mavlonova Ruxshona Oybek qizi",
           "email": "mavlonova@ethith.uz",
-          "joinedAt": "2026-10-20"
+          "joinedAt": "2026-09-01"
         },
         {
           "id": "std_7",
-          "name": "Muxtaraliyeva Dilora",
+          "name": "Muxtaraliyeva Dilora Dilshod qizi",
           "email": "muxtaraliyeva@ethith.uz",
-          "joinedAt": "2026-10-20"
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_8",
+          "name": "O'razboyev O'tkir Baxtiyor o'g'li",
+          "email": "orazboyev@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_9",
+          "name": "Saparova Aida Sarvar qizi",
+          "email": "saparova@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_10",
+          "name": "Umarov Nursulton Alisher o'g'li",
+          "email": "umarov@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_11",
+          "name": "Xolmurodova Muazzam G'ulom qizi",
+          "email": "xolmurodova@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_12",
+          "name": "Kaxarova Xumora Olimjon qizi",
+          "email": "kaxarova@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "sardorbek@ethith.uz",
+          "name": "Sardorbek Valiyev",
+          "email": "sardorbek@ethith.uz",
+          "joinedAt": "2026-10-22",
+          "dailyMinutes": 0,
+          "coins": 150,
+          "avatar": null,
+          "nameStyle": null,
+          "title": null
+        },
+        {
+          "id": "usmonqulovaetiborxon@gmail.com",
+          "name": "Etiborxon Usmonqulova",
+          "email": "usmonqulovaetiborxon@gmail.com",
+          "joinedAt": "2026-10-23",
+          "dailyMinutes": 28,
+          "coins": 4670,
+          "avatar": "girl_v7_valkyrie_samurai_1",
+          "nameStyle": "flame",
+          "title": "👑 IELTS Qiroli"
+        },
+        {
+          "id": "tg_6772427596",
+          "name": "Striker_uzb",
+          "email": "Mu_striker@telegram.org",
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 24
+        },
+        {
+          "id": "aleksandermike37@gmail.com",
+          "name": "jshdj",
+          "email": "aleksandermike37@gmail.com",
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 4
+        },
+        {
+          "id": "muhammedjoraboyev1@gmail.com",
+          "name": "sklajdkas",
+          "email": "muhammedjoraboyev1@gmail.com",
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 0
+        },
+        {
+          "id": "test_u",
+          "name": "Tester",
+          "email": "",
+          "joinedAt": "2026-10-28"
+        },
+        {
+          "id": "u1",
+          "name": "Tester",
+          "email": "",
+          "joinedAt": "2026-10-28"
         }
       ],
       "messages": [
@@ -946,10 +1031,13 @@
           "2026-10-21": {
             "std_1": {
               "status": "K",
-              "score": "4",
+              "score": "2",
               "hwDone": true,
-              "hwPct": 80,
-              "hwLesson": "1.2"
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 42,
+              "hwCompletedAt": 1793187775514
             },
             "std_2": {
               "status": "K",
@@ -1060,7 +1148,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1792608025450,
+        "updatedAt": 1793187775514,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1093,12 +1181,510 @@
         "assignedAt": 1792607960771
       },
       "customStudentPhones": {},
+      "studentPayments": {
+        "std_1": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_2": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_3": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "usmonqulovaetiborxon@gmail.com": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_5": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_4": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "aleksandermike37@gmail.com": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_12": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_6": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_7": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_8": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_9": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "sardorbek@ethith.uz": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "muhammedjoraboyev1@gmail.com": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "tg_6772427596": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_10": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_11": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        }
+      }
+    },
+    {
+      "id": "cls_1792041880052",
+      "name": "Bizani gurux",
+      "code": "ETH-QOY2Z8",
+      "teacherId": "tc_oprlehyw5",
+      "teacherName": "Zizi Ustoz",
+      "teacherEmail": "strikeruzb52@gmail.com",
+      "students": [
+        {
+          "id": "std_1",
+          "name": "Ashurov Dilyorbek Azizbek o'g'li",
+          "email": "ashurov@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_2",
+          "name": "Ergasheva Madina Asad qizi",
+          "email": "ergasheva@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_3",
+          "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
+          "email": "erkinov@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_4",
+          "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
+          "email": "joraboyev@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_5",
+          "name": "Jo'raboyev Javoxir Murod o'g'li",
+          "email": "javoxir@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_6",
+          "name": "Mavlonova Ruxshona Oybek qizi",
+          "email": "mavlonova@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_7",
+          "name": "Muxtaraliyeva Dilora Dilshod qizi",
+          "email": "muxtaraliyeva@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_8",
+          "name": "O'razboyev O'tkir Baxtiyor o'g'li",
+          "email": "orazboyev@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "tg_6772427596",
+          "name": "Striker_uzb",
+          "email": "Mu_striker@telegram.org",
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 24
+        },
+        {
+          "id": "std_9",
+          "name": "Saparova Aida",
+          "email": "saparova@ethith.uz",
+          "joinedAt": "2026-10-20"
+        },
+        {
+          "id": "std_10",
+          "name": "Umarov Nursulton",
+          "email": "umarov@ethith.uz",
+          "joinedAt": "2026-10-20"
+        },
+        {
+          "id": "std_11",
+          "name": "Xolmurodova Muazzam",
+          "email": "xolmurodova@ethith.uz",
+          "joinedAt": "2026-10-20"
+        },
+        {
+          "id": "std_12",
+          "name": "Kaxarova Xumora",
+          "email": "kaxarova@ethith.uz",
+          "joinedAt": "2026-10-20"
+        },
+        {
+          "id": "test_u",
+          "name": "Tester",
+          "email": "",
+          "joinedAt": "2026-10-28"
+        },
+        {
+          "id": "u1",
+          "name": "Tester",
+          "email": "",
+          "joinedAt": "2026-10-28"
+        }
+      ],
+      "messages": [],
+      "pinnedId": null,
+      "deletedMsgIds": [
+        "msg_1792042347995_z52xw",
+        "msg_1792042342788_9894b",
+        "msg_1792042367569_7htzs",
+        "msg_1792042036562_fkm5k",
+        "msg_1792042358929_8iaq2",
+        "msg_1792041984917_cd4i9"
+      ],
+      "schedule": "har_kuni",
+      "attendance": {
+        "records": {
+          "2026-09-29": {
+            "std_1": {
+              "status": "K"
+            },
+            "std_2": {
+              "status": "K"
+            },
+            "std_3": {
+              "status": "K"
+            }
+          },
+          "2026-10-21": {
+            "std_8": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 42,
+              "hwCompletedAt": 1793187775539
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-21": "Vazifa: 1.1",
+          "2026-10-19": "Oddiy"
+        },
+        "holidays": {},
+        "homeworks": {
+          "2026-10-21": {
+            "dateKey": "2026-10-21",
+            "dateDisp": "21.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 1792608458469
+          }
+        },
+        "updatedAt": 1793187775539
+      },
+      "customStudentNames": {},
+      "activeHomework": {
+        "dateKey": "2026-10-21",
+        "dateDisp": "21.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792608458469
+      },
+      "customStudentPhones": {}
+    },
+    {
+      "id": "cls_1792999428651",
+      "name": "Upper Intermediate",
+      "code": "ETH-IP91XZ",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "teacherEmail": "ADMIN_12038F1aq8syash@ethith.uz",
+      "created": 1792999428651,
+      "schedule": "har_kuni",
+      "attendance": {
+        "records": {
+          "2026-10-26": {
+            "tg_6772427596": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792999901135
+            },
+            "test_u": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 81,
+              "hwLesson": "1.1",
+              "hwCorrect": 34,
+              "hwTotal": 42,
+              "hwCompletedAt": 1793129255401
+            }
+          },
+          "2026-10-27": {
+            "tg_6772427596": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "10.1",
+              "hwCorrect": 0,
+              "hwTotal": 30,
+              "hwCompletedAt": 1793122548247
+            }
+          },
+          "2026-10-28": {
+            "test_u": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 100,
+              "hwLesson": "10.1",
+              "hwCorrect": 30,
+              "hwTotal": 30,
+              "hwCompletedAt": 1793129262441
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-26": "Vazifa: 1.1",
+          "2026-10-27": "Vazifa: 8.1",
+          "2026-10-28": "Vazifa: 9.1"
+        },
+        "holidays": {},
+        "updatedAt": 1793129262441,
+        "homeworks": {
+          "2026-10-26": {
+            "dateKey": "2026-10-26",
+            "dateDisp": "26.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        }
+      },
+      "customStudentNames": {},
+      "students": [
+        {
+          "id": "tg_6772427596",
+          "name": "Striker_uzb",
+          "email": "Mu_striker@telegram.org",
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 24
+        },
+        {
+          "id": "test_u",
+          "name": "Tester",
+          "email": "",
+          "joinedAt": "2026-10-28"
+        }
+      ],
+      "messages": [
+        {
+          "id": "msg_init",
+          "senderId": "admin_official_teacher",
+          "senderName": "Ustoz",
+          "text": "Welcome to our class! Here we can discuss grammar topics, collaborate on quizzes, and share answers in real-time.",
+          "time": "12:23 PM",
+          "reactions": {}
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "customStudentPhones": {},
+      "activeHomework": {
+        "dateKey": "2026-10-26",
+        "dateDisp": "26.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
+    },
+    {
+      "id": "cls_1793047882549",
+      "code": "ETH-SADKI5",
+      "name": "IELTS !",
+      "teacher": "Zizi Ustoz",
+      "teacherId": "t_zizi",
+      "teacherName": "Zizi Ustoz",
+      "room": "302-xona",
+      "schedule": "har_kuni",
       "maxCapacity": 16,
-      "startDate": "2026-08-01",
-      "level": "B1+",
-      "extraHomework": [],
-      "teacher": "Ustoz",
-      "room": "301-xona"
+      "students": [
+        {
+          "id": "test_u",
+          "name": "Tester",
+          "email": "",
+          "joinedAt": "2026-10-28"
+        }
+      ],
+      "customStudentNames": {},
+      "attendance": {
+        "records": {
+          "2026-10-27": {
+            "test_u": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 81,
+              "hwLesson": "1.1",
+              "hwCorrect": 34,
+              "hwTotal": 42,
+              "hwCompletedAt": 1793129255420
+            }
+          },
+          "2026-10-28": {
+            "test_u": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 100,
+              "hwLesson": "10.1",
+              "hwCorrect": 30,
+              "hwTotal": 30,
+              "hwCompletedAt": 1793129262460
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-27": "Vazifa: 1.1",
+          "2026-10-28": "Vazifa: 9.1"
+        },
+        "holidays": {},
+        "homeworks": {
+          "2026-10-27": {
+            "dateKey": "2026-10-27",
+            "dateDisp": "27.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793129262460
+      },
+      "deletedMsgIds": [],
+      "messages": [],
+      "activeHomework": {
+        "dateKey": "2026-10-27",
+        "dateDisp": "27.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_upper_intermediate",
@@ -1178,89 +1764,44 @@
           "name": "Mirzayev Otabek",
           "email": "mirzayev@ethith.uz",
           "joinedAt": "2026-10-20"
+        },
+        {
+          "id": "test_u",
+          "name": "Tester",
+          "email": "",
+          "joinedAt": "2026-10-28"
+        },
+        {
+          "id": "u1",
+          "name": "Tester",
+          "email": "",
+          "joinedAt": "2026-10-28"
         }
       ],
       "messages": [],
-      "attendance": {
-        "records": {},
-        "lessonTypes": {},
-        "holidays": {},
-        "homeworks": {}
-      }
-    },
-    {
-      "id": "cls_1792041880052",
-      "name": "Bizani gurux",
-      "code": "ETH-QOY2Z8",
-      "teacherId": "t_zizi",
-      "teacherName": "Zizi Ustoz",
-      "teacherEmail": "zizi@ethith.uz",
-      "students": [
-        {
-          "id": "std_8",
-          "name": "O'razboyev O'tkir",
-          "email": "orazboyev@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_9",
-          "name": "Saparova Aida",
-          "email": "saparova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_10",
-          "name": "Umarov Nursulton",
-          "email": "umarov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_11",
-          "name": "Xolmurodova Muazzam",
-          "email": "xolmurodova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_12",
-          "name": "Kaxarova Xumora",
-          "email": "kaxarova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        }
-      ],
-      "messages": [],
-      "pinnedId": null,
-      "deletedMsgIds": [
-        "msg_1792042347995_z52xw",
-        "msg_1792042342788_9894b",
-        "msg_1792042367569_7htzs",
-        "msg_1792042036562_fkm5k",
-        "msg_1792042358929_8iaq2",
-        "msg_1792041984917_cd4i9"
-      ],
-      "schedule": "har_kuni",
       "attendance": {
         "records": {
-          "2026-09-29": {
-            "std_1": {
-              "status": "K"
-            },
-            "std_2": {
-              "status": "K"
-            },
-            "std_3": {
-              "status": "K"
+          "2026-10-28": {
+            "std_13": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 42,
+              "hwCompletedAt": 1793187775526
             }
           }
         },
         "lessonTypes": {
-          "2026-10-21": "Vazifa: 1.1",
-          "2026-10-19": "Oddiy"
+          "2026-10-28": "Vazifa: 1.1"
         },
         "holidays": {},
         "homeworks": {
-          "2026-10-21": {
-            "dateKey": "2026-10-21",
-            "dateDisp": "21.10.2026",
+          "2026-10-28": {
+            "dateKey": "2026-10-28",
+            "dateDisp": "28.10.2026",
             "unit": 1,
             "lessonCode": "1.1",
             "lessonTitle": "1.1 Are you really my friend?",
@@ -1269,15 +1810,16 @@
               5
             ],
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 1792608458469
+            "assignedAt": 0
           }
         },
-        "updatedAt": 1792608489537
+        "updatedAt": 1793187775526
       },
+      "deletedMsgIds": [],
       "customStudentNames": {},
       "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
+        "dateKey": "2026-10-28",
+        "dateDisp": "28.10.2026",
         "unit": 1,
         "lessonCode": "1.1",
         "lessonTitle": "1.1 Are you really my friend?",
@@ -1286,15 +1828,8 @@
           5
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792608458469
-      },
-      "customStudentPhones": {},
-      "maxCapacity": 16,
-      "startDate": "2026-08-01",
-      "level": "B1+",
-      "extraHomework": [],
-      "teacher": "Zizi Ustoz",
-      "room": "201-xona"
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_ielts_ex",
@@ -1356,14 +1891,71 @@
           "name": "Vohidova Kamola",
           "email": "vohidova@ethith.uz",
           "joinedAt": "2026-10-20"
+        },
+        {
+          "id": "test_u",
+          "name": "Tester",
+          "email": "",
+          "joinedAt": "2026-10-28"
+        },
+        {
+          "id": "u1",
+          "name": "Tester",
+          "email": "",
+          "joinedAt": "2026-10-28"
         }
       ],
       "messages": [],
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-28": {
+            "std_24": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 42,
+              "hwCompletedAt": 1793187775552
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-28": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-28": {
+            "dateKey": "2026-10-28",
+            "dateDisp": "28.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793187775552
+      },
+      "deletedMsgIds": [],
+      "customStudentNames": {},
+      "activeHomework": {
+        "dateKey": "2026-10-28",
+        "dateDisp": "28.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     }
   ],
@@ -1879,38 +2471,66 @@
     "p2p_1792322748592_nls2",
     "p2p_1792322765334_1cj0",
     "p2p_1792387876695_p00d",
-    "p2p_1792383468123_seg5"
+    "p2p_1792383468123_seg5",
+    "p2p_1792779324856_1e9n"
   ],
   "accounts": [
     {
-      "id": "admin_official_root",
-      "role": "admin",
-      "name": "Bosh Admin",
-      "email": "admin_12038f1aq8syash@ethith.uz",
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
       "coins": 5000,
       "gifts": [],
       "level": "C2",
       "dailyMinutes": 0,
-      "updatedAt": 1792612121485,
+      "updatedAt": 1793185854362,
       "avatar": null,
       "nameStyle": null,
       "title": null,
       "victorySound": null
     },
     {
+      "id": "admin_official_root",
+      "role": "admin",
+      "name": "Bosh Admin",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 5000,
+      "gifts": [],
+      "nameStyle": null,
+      "createdAt": 1792502058827,
+      "level": "C2",
+      "dailyMinutes": 0,
+      "updatedAt": 1792612121485
+    },
+    {
       "id": "tg_98124765",
       "role": "student",
       "name": "Striker_uzb",
       "email": "mu_striker@telegram.org",
-      "coins": 150,
+      "coins": 101100,
       "avatar": null,
       "level": "A1",
       "dailyMinutes": 0,
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "updatedAt": 1792673953881
+      "updatedAt": 1792997212404
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "teacher@ethith.uz",
+      "coins": 5000,
+      "avatar": null,
+      "level": "A1",
+      "dailyMinutes": 0,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null,
+      "updatedAt": 1792606425762
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -1927,31 +2547,9 @@
       "updatedAt": 1792611123890
     },
     {
-      "id": "sarvartovboyev09@gmail.com",
-      "name": "Sarvar Tovboyev",
-      "email": "sarvartovboyev09@gmail.com",
-      "role": "student",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "createdAt": 1792673102972,
-      "updatedAt": 1792673102972
-    },
-    {
-      "id": "muhammedjoraboyev1@gmail.com",
-      "name": "Muhammadyusuf",
-      "email": "muhammedjoraboyev1@gmail.com",
-      "role": "student",
-      "coins": 150,
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "createdAt": 1792673102972,
-      "updatedAt": 1792673102972
-    },
-    {
       "id": "std_1",
       "role": "student",
-      "name": "Ashurov Dilyorbek",
+      "name": "Ashurov Dilyorbek Azizbek o'g'li",
       "email": "ashurov@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -1961,7 +2559,7 @@
     {
       "id": "std_2",
       "role": "student",
-      "name": "Ergasheva Madina",
+      "name": "Ergasheva Madina Asad qizi",
       "email": "ergasheva@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -1971,7 +2569,7 @@
     {
       "id": "std_3",
       "role": "student",
-      "name": "Erkinov Aslbekjon",
+      "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
       "email": "erkinov@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -1981,7 +2579,7 @@
     {
       "id": "std_4",
       "role": "student",
-      "name": "JO‘RABOYEV MUXAMMADYUSUF",
+      "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
       "email": "joraboyev@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -1991,7 +2589,7 @@
     {
       "id": "std_5",
       "role": "student",
-      "name": "Jo'raboyev Javoxir",
+      "name": "Jo'raboyev Javoxir Murod o'g'li",
       "email": "javoxir@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -2001,7 +2599,7 @@
     {
       "id": "std_6",
       "role": "student",
-      "name": "Mavlonova Ruxshona",
+      "name": "Mavlonova Ruxshona Oybek qizi",
       "email": "mavlonova@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -2011,7 +2609,7 @@
     {
       "id": "std_7",
       "role": "student",
-      "name": "Muxtaraliyeva Dilora",
+      "name": "Muxtaraliyeva Dilora Dilshod qizi",
       "email": "muxtaraliyeva@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -2021,7 +2619,7 @@
     {
       "id": "std_8",
       "role": "student",
-      "name": "O'razboyev O'tkir",
+      "name": "O'razboyev O'tkir Baxtiyor o'g'li",
       "email": "orazboyev@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -2031,7 +2629,7 @@
     {
       "id": "std_9",
       "role": "student",
-      "name": "Saparova Aida",
+      "name": "Saparova Aida Sarvar qizi",
       "email": "saparova@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -2041,7 +2639,7 @@
     {
       "id": "std_10",
       "role": "student",
-      "name": "Umarov Nursulton",
+      "name": "Umarov Nursulton Alisher o'g'li",
       "email": "umarov@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -2051,7 +2649,7 @@
     {
       "id": "std_11",
       "role": "student",
-      "name": "Xolmurodova Muazzam",
+      "name": "Xolmurodova Muazzam G'ulom qizi",
       "email": "xolmurodova@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -2061,7 +2659,7 @@
     {
       "id": "std_12",
       "role": "student",
-      "name": "Kaxarova Xumora",
+      "name": "Kaxarova Xumora Olimjon qizi",
       "email": "kaxarova@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -2069,124 +2667,159 @@
       "updatedAt": 1792673953881
     },
     {
+      "id": "usmonqulovaetiborxon@gmail.com",
+      "name": "Etiborxon Usmonqulova",
+      "email": "usmonqulovaetiborxon@gmail.com",
+      "role": "student",
+      "coins": 5150,
+      "avatar": "girl_v7_valkyrie_samurai_1",
+      "level": "A1",
+      "joinedAt": 1792778756475,
+      "nameStyle": "flame",
+      "title": "👑 IELTS Qiroli",
+      "dailyMinutes": 0,
+      "updatedAt": 1792780081815
+    },
+    {
       "id": "admin_official_teacher",
       "name": "Ustoz",
-      "email": "teacher@ethith.uz",
-      "role": "teacher"
+      "email": "muhammedjoraboyev1@gmail.com",
+      "role": "teacher",
+      "coins": 500,
+      "level": "B1+"
     },
     {
       "id": "std_13",
       "name": "Anvarova Nilufar",
       "email": "anvarova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_14",
       "name": "Boboyev Jamshid",
       "email": "boboyev@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_15",
       "name": "Rustamov Shaxzod",
       "email": "rustamov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_16",
       "name": "Karimova Rayhona",
       "email": "karimova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_17",
       "name": "Toxirov Sardor",
       "email": "toxirov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_18",
       "name": "Ismoilova Zarina",
       "email": "ismoilova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_19",
       "name": "Abdullayev Bekzod",
       "email": "abdullayev@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_20",
       "name": "Qodirova Sevinch",
       "email": "qodirova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_21",
       "name": "Yoqubov Doniyor",
       "email": "yoqubov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_22",
       "name": "Nurmatova Diyora",
       "email": "nurmatova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_23",
       "name": "Mirzayev Otabek",
       "email": "mirzayev@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_24",
       "name": "Tursunov Jasur",
       "email": "tursunov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_25",
       "name": "Mahmudova Shahlo",
       "email": "mahmudova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_26",
       "name": "Sobirov Elyor",
       "email": "sobirov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_27",
       "name": "Aliyeva Gulnoza",
       "email": "aliyeva@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_28",
       "name": "Rahmatov Ilhom",
       "email": "rahmatov@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_29",
       "name": "Sayfullayeva Mohira",
       "email": "sayfullayeva@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_30",
       "name": "G'aniyev Sherzod",
       "email": "ganiyev@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_31",
       "name": "Vohidova Kamola",
       "email": "vohidova@ethith.uz",
-      "role": "student"
+      "role": "student",
+      "updatedAt": 1793185854362
     }
   ],
   "p2pListings": [],
@@ -3096,6 +3729,382 @@
         "width": 10,
         "height": 1.8,
         "correct": "concerned or CONCERNED"
+      }
+    ],
+    "10": [
+      {
+        "id": "p10_ex1a_1_a",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_1",
+        "text": "recognize",
+        "top": 73.5,
+        "left": 24.5,
+        "width": 7.5,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p10_ex1a_1_b",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_1",
+        "text": "remind",
+        "top": 73.5,
+        "left": 32.5,
+        "width": 6,
+        "height": 1.6,
+        "correct": false
+      },
+      {
+        "id": "p10_ex1a_2_a",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_2",
+        "text": "wonder",
+        "top": 75.3,
+        "left": 18.5,
+        "width": 6.5,
+        "height": 1.6,
+        "correct": false
+      },
+      {
+        "id": "p10_ex1a_2_b",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_2",
+        "text": "believe",
+        "top": 75.3,
+        "left": 26,
+        "width": 6.5,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p10_ex1a_3_a",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_3",
+        "text": "recognized",
+        "top": 78.5,
+        "left": 20.5,
+        "width": 9,
+        "height": 1.6,
+        "correct": false
+      },
+      {
+        "id": "p10_ex1a_3_b",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_3",
+        "text": "realized",
+        "top": 78.5,
+        "left": 30,
+        "width": 7,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p10_ex1a_4_a",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_4",
+        "text": "expect",
+        "top": 81.8,
+        "left": 22,
+        "width": 5.5,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p10_ex1a_4_b",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_4",
+        "text": "realize",
+        "top": 81.8,
+        "left": 28.5,
+        "width": 6,
+        "height": 1.6,
+        "correct": false
+      },
+      {
+        "id": "p10_ex1a_5_a",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_5",
+        "text": "wonder",
+        "top": 85,
+        "left": 18.5,
+        "width": 6.5,
+        "height": 1.6,
+        "correct": false
+      },
+      {
+        "id": "p10_ex1a_5_b",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_5",
+        "text": "remember",
+        "top": 85,
+        "left": 26,
+        "width": 8,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p10_ex1a_6_a",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_6",
+        "text": "remember",
+        "top": 88.3,
+        "left": 26,
+        "width": 8,
+        "height": 1.6,
+        "correct": false
+      },
+      {
+        "id": "p10_ex1a_6_b",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_6",
+        "text": "remind",
+        "top": 88.3,
+        "left": 34.5,
+        "width": 6,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p10_ex1a_7_a",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_7",
+        "text": "wonder",
+        "top": 91.5,
+        "left": 21,
+        "width": 6.5,
+        "height": 1.6,
+        "correct": true
+      },
+      {
+        "id": "p10_ex1a_7_b",
+        "type": "choose",
+        "page": 10,
+        "exercise": "1a",
+        "group": "p10_1a_7",
+        "text": "expect",
+        "top": 91.5,
+        "left": 28.5,
+        "width": 5.5,
+        "height": 1.6,
+        "correct": false
+      },
+      {
+        "id": "p10_ex1b_a",
+        "type": "fill",
+        "page": 10,
+        "exercise": "1b",
+        "label": "a",
+        "top": 33.2,
+        "left": 68,
+        "width": 14,
+        "height": 1.8,
+        "correct": "1, 4, 7 or 1, 7, 4 or 4, 1, 7"
+      },
+      {
+        "id": "p10_ex1b_b",
+        "type": "fill",
+        "page": 10,
+        "exercise": "1b",
+        "label": "b",
+        "top": 35,
+        "left": 68,
+        "width": 10,
+        "height": 1.8,
+        "correct": "3, 5 or 5, 3"
+      },
+      {
+        "id": "p10_ex1b_c",
+        "type": "fill",
+        "page": 10,
+        "exercise": "1b",
+        "label": "c",
+        "top": 36.9,
+        "left": 68.5,
+        "width": 10,
+        "height": 1.8,
+        "correct": "2, 6 or 6, 2"
+      },
+      {
+        "id": "p10_ex2a_b",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2a",
+        "label": "b",
+        "top": 53.9,
+        "left": 59,
+        "width": 9,
+        "height": 1.8,
+        "correct": "remember"
+      },
+      {
+        "id": "p10_ex2a_c",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2a",
+        "label": "c",
+        "top": 58.6,
+        "left": 85,
+        "width": 9,
+        "height": 1.8,
+        "correct": "expecting"
+      },
+      {
+        "id": "p10_ex2a_d",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2a",
+        "label": "d",
+        "top": 63.5,
+        "left": 57,
+        "width": 9,
+        "height": 1.8,
+        "correct": "reminded"
+      },
+      {
+        "id": "p10_ex2a_e",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2a",
+        "label": "e",
+        "top": 66.7,
+        "left": 72,
+        "width": 8,
+        "height": 1.8,
+        "correct": "believe"
+      },
+      {
+        "id": "p10_ex2a_f",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2a",
+        "label": "f",
+        "top": 70,
+        "left": 81,
+        "width": 8,
+        "height": 1.8,
+        "correct": "realize"
+      },
+      {
+        "id": "p10_ex2a_g",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2a",
+        "label": "g",
+        "top": 74.8,
+        "left": 61,
+        "width": 8,
+        "height": 1.8,
+        "correct": "wonder"
+      },
+      {
+        "id": "p10_ex2b_1",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2b",
+        "label": "1",
+        "top": 84.2,
+        "left": 58,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "e or E"
+      },
+      {
+        "id": "p10_ex2b_2",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2b",
+        "label": "2",
+        "top": 85.9,
+        "left": 58,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "g or G"
+      },
+      {
+        "id": "p10_ex2b_3",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2b",
+        "label": "3",
+        "top": 87.6,
+        "left": 58,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "d or D"
+      },
+      {
+        "id": "p10_ex2b_4",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2b",
+        "label": "4",
+        "top": 84.2,
+        "left": 72,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "a or A"
+      },
+      {
+        "id": "p10_ex2b_5",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2b",
+        "label": "5",
+        "top": 85.9,
+        "left": 72,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "c or C"
+      },
+      {
+        "id": "p10_ex2b_6",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2b",
+        "label": "6",
+        "top": 84.1,
+        "left": 86,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "b or B"
+      },
+      {
+        "id": "p10_ex2b_7",
+        "type": "fill",
+        "page": 10,
+        "exercise": "2b",
+        "label": "7",
+        "top": 85.9,
+        "left": 86,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "f or F"
       }
     ],
     "12": [
@@ -22088,6 +23097,2165 @@
         "label": "New",
         "id": "p87_custom_96352",
         "group": ""
+      }
+    ],
+    "1004": [
+      {
+        "id": "p1004_ex1_2",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "1",
+        "label": "2",
+        "top": 52.8,
+        "left": 66.7,
+        "width": 14.5,
+        "height": 2.2,
+        "correct": "to study"
+      },
+      {
+        "id": "p1004_ex1_3",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "1",
+        "label": "3",
+        "top": 73.2,
+        "left": 24.2,
+        "width": 14.5,
+        "height": 2.2,
+        "correct": "on business"
+      },
+      {
+        "id": "p1004_ex1_4",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "1",
+        "label": "4",
+        "top": 73.2,
+        "left": 65.8,
+        "width": 14.5,
+        "height": 2.2,
+        "correct": "on holiday"
+      },
+      {
+        "id": "p1004_ex2_1",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "1",
+        "top": 81.3,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "e"
+      },
+      {
+        "id": "p1004_ex2_2",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "2",
+        "top": 83,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "f"
+      },
+      {
+        "id": "p1004_ex2_3",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "3",
+        "top": 84.7,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "h"
+      },
+      {
+        "id": "p1004_ex2_4",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "4",
+        "top": 86.4,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "b"
+      },
+      {
+        "id": "p1004_ex2_5",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "5",
+        "top": 88.1,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "g"
+      },
+      {
+        "id": "p1004_ex2_6",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "6",
+        "top": 89.8,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "c"
+      },
+      {
+        "id": "p1004_ex2_7",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "7",
+        "top": 91.5,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "a"
+      },
+      {
+        "id": "p1004_ex2_8",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "8",
+        "top": 93.3,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "d"
+      },
+      {
+        "id": "p1004_ex3_2",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "2",
+        "top": 86,
+        "left": 60.5,
+        "width": 7,
+        "height": 2,
+        "correct": "Hi"
+      },
+      {
+        "id": "p1004_ex3_3",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "3",
+        "top": 85.8,
+        "left": 76.8,
+        "width": 7.5,
+        "height": 2,
+        "correct": "Nice"
+      },
+      {
+        "id": "p1004_ex3_4",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "4",
+        "top": 87.5,
+        "left": 60.4,
+        "width": 7,
+        "height": 2,
+        "correct": "And"
+      },
+      {
+        "id": "p1004_ex3_5",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "5",
+        "top": 87.5,
+        "left": 75.2,
+        "width": 7,
+        "height": 2,
+        "correct": "you"
+      },
+      {
+        "id": "p1004_ex3_6",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "6",
+        "top": 88.9,
+        "left": 60.6,
+        "width": 7,
+        "height": 2,
+        "correct": "No"
+      },
+      {
+        "id": "p1004_ex3_7",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "7",
+        "top": 89.2,
+        "left": 82.4,
+        "width": 7.5,
+        "height": 2,
+        "correct": "study"
+      },
+      {
+        "id": "p1004_ex3_8",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "8",
+        "top": 90.4,
+        "left": 74.7,
+        "width": 8.5,
+        "height": 2,
+        "correct": "holiday"
+      },
+      {
+        "id": "p1004_ex3_9",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "9",
+        "top": 92.3,
+        "left": 60.8,
+        "width": 7,
+        "height": 2,
+        "correct": "Yes"
+      }
+    ],
+    "1005": [
+      {
+        "id": "p1005_ex4_3",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "4",
+        "label": "3",
+        "top": 18.4,
+        "left": 10.8,
+        "width": 6.5,
+        "height": 2,
+        "correct": "I"
+      },
+      {
+        "id": "p1005_ex4_4",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "4",
+        "label": "4",
+        "top": 20.1,
+        "left": 10.8,
+        "width": 6.5,
+        "height": 2,
+        "correct": "I"
+      },
+      {
+        "id": "p1005_ex4_5",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "4",
+        "label": "5",
+        "top": 21.8,
+        "left": 13.5,
+        "width": 6.5,
+        "height": 2,
+        "correct": "you"
+      },
+      {
+        "id": "p1005_ex4_6",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "4",
+        "label": "6",
+        "top": 23.5,
+        "left": 10.8,
+        "width": 6.5,
+        "height": 2,
+        "correct": "I"
+      },
+      {
+        "id": "p1005_ex5_1",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "1",
+        "top": 29.8,
+        "left": 17.5,
+        "width": 8.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am",
+          "I'm Amy"
+        ]
+      },
+      {
+        "id": "p1005_ex5_2a",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "2a",
+        "top": 31.5,
+        "left": 21.5,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1005_ex5_2b",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "2b",
+        "top": 33.2,
+        "left": 19.3,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1005_ex5_3a",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "3a",
+        "top": 35,
+        "left": 17.3,
+        "width": 14,
+        "height": 2,
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex5_3b",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "3b",
+        "top": 36.7,
+        "left": 17.5,
+        "width": 10,
+        "height": 2,
+        "correct": [
+          "I'm not",
+          "I am not"
+        ]
+      },
+      {
+        "id": "p1005_ex5_4a",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "4a",
+        "top": 38.3,
+        "left": 17.5,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1005_ex5_4b",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "4b",
+        "top": 40.1,
+        "left": 17.5,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1005_ex5_5a",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "5a",
+        "top": 41.8,
+        "left": 17.5,
+        "width": 14,
+        "height": 2,
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex5_5b",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "5b",
+        "top": 43.5,
+        "left": 17.5,
+        "width": 8.5,
+        "height": 2,
+        "correct": [
+          "I am",
+          "I'm"
+        ]
+      },
+      {
+        "id": "p1005_ex5_6a",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "6a",
+        "top": 45.2,
+        "left": 21.2,
+        "width": 14,
+        "height": 2,
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex5_6b",
+        "type": "fill",
+        "page": 1005,
+        "exercise": "5",
+        "label": "6b",
+        "top": 47,
+        "left": 19.5,
+        "width": 8.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1005_ex6_2",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "2",
+        "top": 20,
+        "left": 54.5,
+        "width": 18,
+        "height": 2.2,
+        "options": [
+          "Am I",
+          "I'm not"
+        ],
+        "correct": "I'm not"
+      },
+      {
+        "id": "p1005_ex6_3",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "3",
+        "top": 25.1,
+        "left": 54.5,
+        "width": 22,
+        "height": 2.2,
+        "options": [
+          "You aren't",
+          "Are you"
+        ],
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex6_4",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "4",
+        "top": 30.3,
+        "left": 54.5,
+        "width": 20,
+        "height": 2.2,
+        "options": [
+          "You're",
+          "Are you"
+        ],
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex6_5",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "5",
+        "top": 35.5,
+        "left": 54.5,
+        "width": 20,
+        "height": 2.2,
+        "options": [
+          "Am I",
+          "I'm here"
+        ],
+        "correct": "I'm here"
+      },
+      {
+        "id": "p1005_ex6_6",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "6",
+        "top": 40.6,
+        "left": 54.5,
+        "width": 22,
+        "height": 2.2,
+        "options": [
+          "Are you",
+          "You aren't"
+        ],
+        "correct": "Are you"
+      },
+      {
+        "id": "p1005_ex6_7",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "7",
+        "top": 45.8,
+        "left": 54.5,
+        "width": 18,
+        "height": 2.2,
+        "options": [
+          "I'm not",
+          "Am I"
+        ],
+        "correct": "I'm not"
+      },
+      {
+        "id": "p1005_ex6_8",
+        "type": "select",
+        "page": 1005,
+        "exercise": "6a",
+        "label": "8",
+        "top": 51,
+        "left": 54.5,
+        "width": 18,
+        "height": 2.2,
+        "options": [
+          "Are you",
+          "You're"
+        ],
+        "correct": "You're"
+      }
+    ],
+    "1024": [
+      {
+        "id": "p1024_ex1a_2a",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "2a",
+        "top": 48.5,
+        "left": 11,
+        "width": 10,
+        "height": 2,
+        "correct": "brother"
+      },
+      {
+        "id": "p1024_ex1a_2b",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "2b",
+        "top": 48.5,
+        "left": 28,
+        "width": 10,
+        "height": 2,
+        "correct": "sister"
+      },
+      {
+        "id": "p1024_ex1a_3a",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "3a",
+        "top": 62.5,
+        "left": 11,
+        "width": 10,
+        "height": 2,
+        "correct": "father"
+      },
+      {
+        "id": "p1024_ex1a_3b",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "3b",
+        "top": 62.5,
+        "left": 28,
+        "width": 10,
+        "height": 2,
+        "correct": "mother"
+      },
+      {
+        "id": "p1024_ex1a_3c",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "3c",
+        "top": 64.5,
+        "left": 11,
+        "width": 12,
+        "height": 2,
+        "correct": "parents"
+      },
+      {
+        "id": "p1024_ex1a_4a",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "4a",
+        "top": 76.5,
+        "left": 11,
+        "width": 11,
+        "height": 2,
+        "correct": "husband"
+      },
+      {
+        "id": "p1024_ex1a_4b",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "4b",
+        "top": 76.5,
+        "left": 28,
+        "width": 9,
+        "height": 2,
+        "correct": "wife"
+      },
+      {
+        "id": "p1024_ex1a_5a",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "5a",
+        "top": 87.1,
+        "left": 11.2,
+        "width": 8,
+        "height": 2,
+        "correct": "son"
+      },
+      {
+        "id": "p1024_ex1a_5b",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "5b",
+        "top": 86.8,
+        "left": 32.9,
+        "width": 11,
+        "height": 2,
+        "correct": "daughter"
+      },
+      {
+        "id": "p1024_ex1a_5c",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "1a",
+        "label": "5c",
+        "top": 86.8,
+        "left": 24.2,
+        "width": 12,
+        "height": 2,
+        "correct": "children"
+      },
+      {
+        "id": "p1024_ex2_2",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "2",
+        "top": 80.1,
+        "left": 58,
+        "width": 12,
+        "height": 2,
+        "correct": "children"
+      },
+      {
+        "id": "p1024_ex2_3",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "3",
+        "top": 80.1,
+        "left": 74,
+        "width": 12,
+        "height": 2,
+        "correct": "daughter"
+      },
+      {
+        "id": "p1024_ex2_4",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "4",
+        "top": 81.9,
+        "left": 57,
+        "width": 8.5,
+        "height": 2,
+        "correct": "son"
+      },
+      {
+        "id": "p1024_ex2_5",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "5",
+        "top": 83.7,
+        "left": 57,
+        "width": 12,
+        "height": 2,
+        "correct": "parents"
+      },
+      {
+        "id": "p1024_ex2_6",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "6",
+        "top": 83.7,
+        "left": 79,
+        "width": 12,
+        "height": 2,
+        "correct": "brother"
+      },
+      {
+        "id": "p1024_ex2_7",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "7",
+        "top": 85.5,
+        "left": 59,
+        "width": 10,
+        "height": 2,
+        "correct": "sister"
+      },
+      {
+        "id": "p1024_ex2_8",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "8",
+        "top": 87.3,
+        "left": 72,
+        "width": 16,
+        "height": 2,
+        "correct": "grandfathers"
+      },
+      {
+        "id": "p1024_ex2_9",
+        "type": "fill",
+        "page": 1024,
+        "exercise": "2",
+        "label": "9",
+        "top": 89.1,
+        "left": 58,
+        "width": 16,
+        "height": 2,
+        "correct": "grandmothers"
+      }
+    ],
+    "1028": [
+      {
+        "id": "p1028_ex1_2",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "1",
+        "label": "2",
+        "top": 38.9,
+        "left": 31.5,
+        "width": 9,
+        "height": 2,
+        "correct": "has"
+      },
+      {
+        "id": "p1028_ex1_3",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "1",
+        "label": "3",
+        "top": 40.7,
+        "left": 11.7,
+        "width": 9,
+        "height": 2,
+        "correct": "like"
+      },
+      {
+        "id": "p1028_ex1_4",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "1",
+        "label": "4",
+        "top": 42.6,
+        "left": 31.3,
+        "width": 9,
+        "height": 2,
+        "correct": "lives"
+      },
+      {
+        "id": "p1028_ex1_5",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "1",
+        "label": "5",
+        "top": 44.5,
+        "left": 11.7,
+        "width": 9,
+        "height": 2,
+        "correct": "play"
+      },
+      {
+        "id": "p1028_ex1_6",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "1",
+        "label": "6",
+        "top": 46.3,
+        "left": 31.4,
+        "width": 9,
+        "height": 2,
+        "correct": "studies"
+      },
+      {
+        "id": "p1028_ex1_7",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "1",
+        "label": "7",
+        "top": 48.2,
+        "left": 12,
+        "width": 9,
+        "height": 2,
+        "correct": "teach"
+      },
+      {
+        "id": "p1028_ex1_8",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "1",
+        "label": "8",
+        "top": 50.1,
+        "left": 31.3,
+        "width": 9,
+        "height": 2,
+        "correct": "watches"
+      },
+      {
+        "id": "p1028_ex1_9",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "1",
+        "label": "9",
+        "top": 52,
+        "left": 12,
+        "width": 9,
+        "height": 2,
+        "correct": "work"
+      },
+      {
+        "id": "p1028_ex2a_2_a",
+        "type": "choose",
+        "group": "p1028_ex2a_2",
+        "text": "a work",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "2a",
+        "top": 63.8,
+        "left": 12.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1028_ex2a_2_b",
+        "type": "choose",
+        "group": "p1028_ex2a_2",
+        "text": "b works",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "2b",
+        "top": 63.8,
+        "left": 22.2,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1028_ex2a_3_a",
+        "type": "choose",
+        "group": "p1028_ex2a_3",
+        "text": "a study",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "3a",
+        "top": 67.2,
+        "left": 12.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1028_ex2a_3_b",
+        "type": "choose",
+        "group": "p1028_ex2a_3",
+        "text": "b studies",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "3b",
+        "top": 67.2,
+        "left": 22.2,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1028_ex2a_4_a",
+        "type": "choose",
+        "group": "p1028_ex2a_4",
+        "text": "a go",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "4a",
+        "top": 70.6,
+        "left": 12.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1028_ex2a_4_b",
+        "type": "choose",
+        "group": "p1028_ex2a_4",
+        "text": "b goes",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "4b",
+        "top": 70.6,
+        "left": 22.2,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1028_ex2a_5_a",
+        "type": "choose",
+        "group": "p1028_ex2a_5",
+        "text": "a play",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "5a",
+        "top": 74,
+        "left": 12.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1028_ex2a_5_b",
+        "type": "choose",
+        "group": "p1028_ex2a_5",
+        "text": "b plays",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "5b",
+        "top": 74,
+        "left": 22.2,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1028_ex2a_6_a",
+        "type": "choose",
+        "group": "p1028_ex2a_6",
+        "text": "a teach",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "6a",
+        "top": 77.4,
+        "left": 12.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1028_ex2a_6_b",
+        "type": "choose",
+        "group": "p1028_ex2a_6",
+        "text": "b teaches",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "6b",
+        "top": 77.4,
+        "left": 22.2,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1028_ex2a_7_a",
+        "type": "choose",
+        "group": "p1028_ex2a_7",
+        "text": "a watch",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "7a",
+        "top": 80.9,
+        "left": 12.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1028_ex2a_7_b",
+        "type": "choose",
+        "group": "p1028_ex2a_7",
+        "text": "b watches",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "7b",
+        "top": 80.9,
+        "left": 22.2,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1028_ex2a_8_a",
+        "type": "choose",
+        "group": "p1028_ex2a_8",
+        "text": "a read",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "8a",
+        "top": 84.3,
+        "left": 12.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1028_ex2a_8_b",
+        "type": "choose",
+        "group": "p1028_ex2a_8",
+        "text": "b reads",
+        "page": 1028,
+        "exercise": "2a",
+        "label": "8b",
+        "top": 84.3,
+        "left": 22.2,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1028_ex3_2",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "3",
+        "label": "2",
+        "top": 54.8,
+        "left": 76.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "teach"
+      },
+      {
+        "id": "p1028_ex3_3",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "3",
+        "label": "3",
+        "top": 56.3,
+        "left": 77.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "love"
+      },
+      {
+        "id": "p1028_ex3_4",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "3",
+        "label": "4",
+        "top": 57.8,
+        "left": 65,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "read"
+      },
+      {
+        "id": "p1028_ex3_5",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "3",
+        "label": "5",
+        "top": 60.9,
+        "left": 58.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "works"
+      },
+      {
+        "id": "p1028_ex3_6",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "3",
+        "label": "6",
+        "top": 62.4,
+        "left": 60.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "likes"
+      },
+      {
+        "id": "p1028_ex3_7",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "3",
+        "label": "7",
+        "top": 62.4,
+        "left": 81.8,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "plays"
+      },
+      {
+        "id": "p1028_ex3_8",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "3",
+        "label": "8",
+        "top": 63.9,
+        "left": 78.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "goes"
+      },
+      {
+        "id": "p1028_ex3_9",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "3",
+        "label": "9",
+        "top": 67,
+        "left": 68.8,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "studies"
+      },
+      {
+        "id": "p1028_ex3_10",
+        "type": "fill",
+        "page": 1028,
+        "exercise": "3",
+        "label": "10",
+        "top": 70.1,
+        "left": 57.2,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "watches"
+      }
+    ],
+    "1037": [
+      {
+        "id": "p1037_ex3_across_2",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "3",
+        "label": "Across 2",
+        "top": 20,
+        "left": 20,
+        "width": 8,
+        "height": 1.8,
+        "correct": "red"
+      },
+      {
+        "id": "p1037_ex3_across_4",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "3",
+        "label": "Across 4",
+        "top": 24,
+        "left": 20,
+        "width": 8,
+        "height": 1.8,
+        "correct": "green"
+      },
+      {
+        "id": "p1037_ex3_across_6",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "3",
+        "label": "Across 6",
+        "top": 28,
+        "left": 20,
+        "width": 8,
+        "height": 1.8,
+        "correct": "black"
+      },
+      {
+        "id": "p1037_ex3_across_7",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "3",
+        "label": "Across 7",
+        "top": 32,
+        "left": 20,
+        "width": 8,
+        "height": 1.8,
+        "correct": "white"
+      },
+      {
+        "id": "p1037_ex3_down_1",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "3",
+        "label": "Down 1",
+        "top": 20,
+        "left": 35,
+        "width": 8,
+        "height": 1.8,
+        "correct": "brown"
+      },
+      {
+        "id": "p1037_ex3_down_3",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "3",
+        "label": "Down 3",
+        "top": 24,
+        "left": 35,
+        "width": 8,
+        "height": 1.8,
+        "correct": "yellow"
+      },
+      {
+        "id": "p1037_ex3_down_4",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "3",
+        "label": "Down 4",
+        "top": 28,
+        "left": 35,
+        "width": 8,
+        "height": 1.8,
+        "correct": "grey"
+      },
+      {
+        "id": "p1037_ex3_down_5",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "3",
+        "label": "Down 5",
+        "top": 32,
+        "left": 35,
+        "width": 8,
+        "height": 1.8,
+        "correct": "blue"
+      },
+      {
+        "id": "p1037_ex4_sing",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "4",
+        "label": "Singular",
+        "top": 53,
+        "left": 9,
+        "width": 18,
+        "height": 6,
+        "correct": "a dress, a hat, a jacket, a jumper, a shirt, a skirt, a top, a T-shirt or dress, hat, jacket, jumper, shirt, skirt, top, T-shirt"
+      },
+      {
+        "id": "p1037_ex4_plur",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "4",
+        "label": "Plural",
+        "top": 53,
+        "left": 28.5,
+        "width": 18,
+        "height": 6,
+        "correct": "jeans, shoes, trousers, trainers"
+      },
+      {
+        "id": "p1037_ex5a_2_jacket",
+        "type": "choose",
+        "group": "p1037_ex5a_2",
+        "text": "jacket",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "2 jacket",
+        "top": 67.3,
+        "left": 10.5,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1037_ex5a_2_jeans",
+        "type": "choose",
+        "group": "p1037_ex5a_2",
+        "text": "jeans",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "2 jeans",
+        "top": 67.3,
+        "left": 15.5,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1037_ex5a_2_jumper",
+        "type": "choose",
+        "group": "p1037_ex5a_2",
+        "text": "jumper",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "2 jumper",
+        "top": 67.3,
+        "left": 20.5,
+        "width": 5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1037_ex5a_3_fashion",
+        "type": "choose",
+        "group": "p1037_ex5a_3",
+        "text": "fashion",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "3 fashion",
+        "top": 69,
+        "left": 10.5,
+        "width": 5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1037_ex5a_3_shirt",
+        "type": "choose",
+        "group": "p1037_ex5a_3",
+        "text": "shirt",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "3 shirt",
+        "top": 69,
+        "left": 16,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1037_ex5a_3_shoes",
+        "type": "choose",
+        "group": "p1037_ex5a_3",
+        "text": "shoes",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "3 shoes",
+        "top": 69,
+        "left": 21,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1037_ex5a_4_skirt",
+        "type": "choose",
+        "group": "p1037_ex5a_4",
+        "text": "skirt",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "4 skirt",
+        "top": 70.7,
+        "left": 10.5,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1037_ex5a_4_smart",
+        "type": "choose",
+        "group": "p1037_ex5a_4",
+        "text": "smart",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "4 smart",
+        "top": 70.7,
+        "left": 15.5,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1037_ex5a_4_tshirt",
+        "type": "choose",
+        "group": "p1037_ex5a_4",
+        "text": "T-shirt",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "4 T-shirt",
+        "top": 70.7,
+        "left": 20.5,
+        "width": 5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1037_ex5a_5_casual",
+        "type": "choose",
+        "group": "p1037_ex5a_5",
+        "text": "casual",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "5 casual",
+        "top": 72.5,
+        "left": 10.5,
+        "width": 5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1037_ex5a_5_clothes",
+        "type": "choose",
+        "group": "p1037_ex5a_5",
+        "text": "clothes",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "5 clothes",
+        "top": 72.5,
+        "left": 16,
+        "width": 5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1037_ex5a_5_dress",
+        "type": "choose",
+        "group": "p1037_ex5a_5",
+        "text": "dress",
+        "page": 1037,
+        "exercise": "5a",
+        "label": "5 dress",
+        "top": 72.5,
+        "left": 21.5,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1037_ex6_2a",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "6",
+        "label": "2a",
+        "top": 35.4,
+        "left": 79.5,
+        "width": 10,
+        "height": 1.8,
+        "correct": "a jacket"
+      },
+      {
+        "id": "p1037_ex6_2b",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "6",
+        "label": "2b",
+        "top": 37,
+        "left": 78,
+        "width": 10,
+        "height": 1.8,
+        "correct": "a shirt"
+      },
+      {
+        "id": "p1037_ex6_3a",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "6",
+        "label": "3a",
+        "top": 59.3,
+        "left": 60.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "a dress"
+      },
+      {
+        "id": "p1037_ex6_3b",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "6",
+        "label": "3b",
+        "top": 60.9,
+        "left": 55,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "a hat"
+      },
+      {
+        "id": "p1037_ex6_3c",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "6",
+        "label": "3c",
+        "top": 60.9,
+        "left": 65.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "shoes"
+      },
+      {
+        "id": "p1037_ex6_4a",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "6",
+        "label": "4a",
+        "top": 59.3,
+        "left": 80,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "jeans"
+      },
+      {
+        "id": "p1037_ex6_4b",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "6",
+        "label": "4b",
+        "top": 60.9,
+        "left": 75,
+        "width": 10,
+        "height": 1.8,
+        "correct": "a jumper"
+      },
+      {
+        "id": "p1037_ex7_2",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "7",
+        "label": "2",
+        "top": 76.7,
+        "left": 56,
+        "width": 6,
+        "height": 1.8,
+        "correct": "and"
+      },
+      {
+        "id": "p1037_ex7_3",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "7",
+        "label": "3",
+        "top": 78.4,
+        "left": 74.3,
+        "width": 6,
+        "height": 1.8,
+        "correct": "but"
+      },
+      {
+        "id": "p1037_ex7_4",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "7",
+        "label": "4",
+        "top": 81.7,
+        "left": 59.2,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "and"
+      },
+      {
+        "id": "p1037_ex7_5",
+        "type": "fill",
+        "page": 1037,
+        "exercise": "7",
+        "label": "5",
+        "top": 83.4,
+        "left": 81.6,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "because"
+      }
+    ],
+    "1052": [
+      {
+        "id": "p1052_ex1a_2",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "2",
+        "top": 47.8,
+        "left": 33.4,
+        "width": 8,
+        "height": 1.8,
+        "correct": "speak"
+      },
+      {
+        "id": "p1052_ex1a_3",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "3",
+        "top": 59.8,
+        "left": 12.6,
+        "width": 8,
+        "height": 1.8,
+        "correct": "play"
+      },
+      {
+        "id": "p1052_ex1a_4",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "4",
+        "top": 59.8,
+        "left": 33.4,
+        "width": 8,
+        "height": 1.8,
+        "correct": "use"
+      },
+      {
+        "id": "p1052_ex1a_5",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "5",
+        "top": 72,
+        "left": 8.7,
+        "width": 12,
+        "height": 1.8,
+        "correct": "understand"
+      },
+      {
+        "id": "p1052_ex1a_6",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "6",
+        "top": 71.9,
+        "left": 33.4,
+        "width": 8,
+        "height": 1.8,
+        "correct": "paint"
+      },
+      {
+        "id": "p1052_ex1a_7",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "7",
+        "top": 83.9,
+        "left": 10.3,
+        "width": 10,
+        "height": 1.8,
+        "correct": "remember"
+      },
+      {
+        "id": "p1052_ex1a_8",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "1a",
+        "label": "8",
+        "top": 83.8,
+        "left": 33.3,
+        "width": 8,
+        "height": 1.8,
+        "correct": "ride"
+      },
+      {
+        "id": "p1052_ex2a_1",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "1",
+        "top": 30,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "a bike"
+      },
+      {
+        "id": "p1052_ex2a_2",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "2",
+        "top": 31.7,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "a book"
+      },
+      {
+        "id": "p1052_ex2a_3",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "3",
+        "top": 33.4,
+        "left": 60,
+        "width": 12,
+        "height": 1.8,
+        "correct": "the internet"
+      },
+      {
+        "id": "p1052_ex2a_4",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "4",
+        "top": 35.1,
+        "left": 60,
+        "width": 10,
+        "height": 1.8,
+        "correct": "television"
+      },
+      {
+        "id": "p1052_ex2a_5",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "5",
+        "top": 36.8,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "a car"
+      },
+      {
+        "id": "p1052_ex2a_6",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "6",
+        "top": 38.6,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "maths"
+      },
+      {
+        "id": "p1052_ex2a_7",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "7",
+        "top": 40.3,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "faces"
+      },
+      {
+        "id": "p1052_ex2a_8",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2a",
+        "label": "8",
+        "top": 42,
+        "left": 60,
+        "width": 8,
+        "height": 1.8,
+        "correct": "a jacket"
+      },
+      {
+        "id": "p1052_ex2b_2",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "2",
+        "top": 53.4,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "read a book"
+      },
+      {
+        "id": "p1052_ex2b_3",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "3",
+        "top": 55.1,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "use the internet"
+      },
+      {
+        "id": "p1052_ex2b_4",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "4",
+        "top": 56.8,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "watch television"
+      },
+      {
+        "id": "p1052_ex2b_5",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "5",
+        "top": 58.5,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "drive a car"
+      },
+      {
+        "id": "p1052_ex2b_6",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "6",
+        "top": 60.2,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "study maths"
+      },
+      {
+        "id": "p1052_ex2b_7",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "7",
+        "top": 62,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "remember faces"
+      },
+      {
+        "id": "p1052_ex2b_8",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "2b",
+        "label": "8",
+        "top": 63.7,
+        "left": 59.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "wear a jacket"
+      },
+      {
+        "id": "p1052_ex3_1",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "1",
+        "top": 72.1,
+        "left": 80.9,
+        "width": 8,
+        "height": 1.8,
+        "correct": "remember"
+      },
+      {
+        "id": "p1052_ex3_2",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "2",
+        "top": 73.4,
+        "left": 67.7,
+        "width": 12,
+        "height": 1.8,
+        "correct": "understands"
+      },
+      {
+        "id": "p1052_ex3_3",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "3",
+        "top": 76.5,
+        "left": 66.3,
+        "width": 8,
+        "height": 1.8,
+        "correct": "paint"
+      },
+      {
+        "id": "p1052_ex3_4",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "4",
+        "top": 76.7,
+        "left": 82.4,
+        "width": 8,
+        "height": 1.8,
+        "correct": "play"
+      },
+      {
+        "id": "p1052_ex3_5",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "5",
+        "top": 82.8,
+        "left": 64.5,
+        "width": 8,
+        "height": 1.8,
+        "correct": "use"
+      },
+      {
+        "id": "p1052_ex3_6",
+        "type": "fill",
+        "page": 1052,
+        "exercise": "3",
+        "label": "6",
+        "top": 85.9,
+        "left": 68.1,
+        "width": 8,
+        "height": 1.8,
+        "correct": "drive"
+      }
+    ],
+    "1053": [
+      {
+        "id": "p1053_ex4_1_can",
+        "type": "choose",
+        "group": "p1053_ex4_1",
+        "text": "can",
+        "page": 1053,
+        "exercise": "4",
+        "label": "1 can",
+        "top": 34.3,
+        "left": 11.1,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1053_ex4_1_cant",
+        "type": "choose",
+        "group": "p1053_ex4_1",
+        "text": "can't",
+        "page": 1053,
+        "exercise": "4",
+        "label": "1 can't",
+        "top": 34.3,
+        "left": 17.6,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1053_ex4_2_can",
+        "type": "choose",
+        "group": "p1053_ex4_2",
+        "text": "can",
+        "page": 1053,
+        "exercise": "4",
+        "label": "2 can",
+        "top": 34.6,
+        "left": 31,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1053_ex4_2_cant",
+        "type": "choose",
+        "group": "p1053_ex4_2",
+        "text": "can't",
+        "page": 1053,
+        "exercise": "4",
+        "label": "2 can't",
+        "top": 34.4,
+        "left": 37.1,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1053_ex4_3_can",
+        "type": "choose",
+        "group": "p1053_ex4_3",
+        "text": "can",
+        "page": 1053,
+        "exercise": "4",
+        "label": "3 can",
+        "top": 59.1,
+        "left": 10.4,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1053_ex4_3_cant",
+        "type": "choose",
+        "group": "p1053_ex4_3",
+        "text": "can't",
+        "page": 1053,
+        "exercise": "4",
+        "label": "3 can't",
+        "top": 59.4,
+        "left": 16.7,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1053_ex4_4_can",
+        "type": "choose",
+        "group": "p1053_ex4_4",
+        "text": "can",
+        "page": 1053,
+        "exercise": "4",
+        "label": "4 can",
+        "top": 59.2,
+        "left": 32.5,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1053_ex4_4_cant",
+        "type": "choose",
+        "group": "p1053_ex4_4",
+        "text": "can't",
+        "page": 1053,
+        "exercise": "4",
+        "label": "4 can't",
+        "top": 59.1,
+        "left": 39.1,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1053_ex4_5_can",
+        "type": "choose",
+        "group": "p1053_ex4_5",
+        "text": "can",
+        "page": 1053,
+        "exercise": "4",
+        "label": "5 can",
+        "top": 84.1,
+        "left": 10.3,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1053_ex4_5_cant",
+        "type": "choose",
+        "group": "p1053_ex4_5",
+        "text": "can't",
+        "page": 1053,
+        "exercise": "4",
+        "label": "5 can't",
+        "top": 84.1,
+        "left": 16.7,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1053_ex4_6_can",
+        "type": "choose",
+        "group": "p1053_ex4_6",
+        "text": "can",
+        "page": 1053,
+        "exercise": "4",
+        "label": "6 can",
+        "top": 83.8,
+        "left": 31.2,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": false
+      },
+      {
+        "id": "p1053_ex4_6_cant",
+        "type": "choose",
+        "group": "p1053_ex4_6",
+        "text": "can't",
+        "page": 1053,
+        "exercise": "4",
+        "label": "6 can't",
+        "top": 84,
+        "left": 37.9,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": true
+      },
+      {
+        "id": "p1053_ex5_2",
+        "type": "fill",
+        "page": 1053,
+        "exercise": "5",
+        "label": "2",
+        "top": 25.8,
+        "left": 55.5,
+        "width": 14,
+        "height": 1.8,
+        "correct": "can swim"
+      },
+      {
+        "id": "p1053_ex5_3",
+        "type": "fill",
+        "page": 1053,
+        "exercise": "5",
+        "label": "3",
+        "top": 30.8,
+        "left": 68.1,
+        "width": 12,
+        "height": 1.8,
+        "correct": "can't run"
+      },
+      {
+        "id": "p1053_ex5_4",
+        "type": "fill",
+        "page": 1053,
+        "exercise": "5",
+        "label": "4",
+        "top": 39.6,
+        "left": 71.2,
+        "width": 14,
+        "height": 1.8,
+        "correct": "can go"
+      },
+      {
+        "id": "p1053_ex5_5",
+        "type": "fill",
+        "page": 1053,
+        "exercise": "5",
+        "label": "5",
+        "top": 45.1,
+        "left": 80,
+        "width": 12,
+        "height": 1.8,
+        "correct": "can see"
+      },
+      {
+        "id": "p1053_ex5_6",
+        "type": "fill",
+        "page": 1053,
+        "exercise": "5",
+        "label": "6",
+        "top": 52.5,
+        "left": 81.4,
+        "width": 12,
+        "height": 1.8,
+        "correct": "can't sing"
       }
     ],
     "2004": [
@@ -53770,15 +56938,842 @@
         ],
         "page": 2087
       }
+    ],
+    "3046": [
+      {
+        "id": "p3046_ex1_1",
+        "type": "select",
+        "x": 13,
+        "y": 35,
+        "w": 9,
+        "h": 2.2,
+        "options": [
+          "sleep",
+          "take"
+        ],
+        "correct": "sleep"
+      },
+      {
+        "id": "p3046_ex1_2",
+        "type": "select",
+        "x": 13,
+        "y": 36.8,
+        "w": 9,
+        "h": 2.2,
+        "options": [
+          "put",
+          "do"
+        ],
+        "correct": "do"
+      },
+      {
+        "id": "p3046_ex1_3",
+        "type": "select",
+        "x": 13,
+        "y": 38.6,
+        "w": 9,
+        "h": 2.2,
+        "options": [
+          "ride",
+          "drive"
+        ],
+        "correct": "ride"
+      },
+      {
+        "id": "p3046_ex1_4",
+        "type": "select",
+        "x": 13,
+        "y": 40.4,
+        "w": 9,
+        "h": 2.2,
+        "options": [
+          "have",
+          "walk"
+        ],
+        "correct": "walk"
+      },
+      {
+        "id": "p3046_ex1_5",
+        "type": "select",
+        "x": 13,
+        "y": 42.2,
+        "w": 9,
+        "h": 2.2,
+        "options": [
+          "go",
+          "take"
+        ],
+        "correct": "take"
+      },
+      {
+        "id": "p3046_ex1_6",
+        "type": "select",
+        "x": 13,
+        "y": 44,
+        "w": 9,
+        "h": 2.2,
+        "options": [
+          "eat",
+          "take"
+        ],
+        "correct": "eat"
+      },
+      {
+        "id": "p3046_ex1_7",
+        "type": "select",
+        "x": 13,
+        "y": 45.8,
+        "w": 9,
+        "h": 2.2,
+        "options": [
+          "do",
+          "be"
+        ],
+        "correct": "do"
+      },
+      {
+        "id": "p3046_ex1_8",
+        "type": "select",
+        "x": 13,
+        "y": 47.6,
+        "w": 9,
+        "h": 2.2,
+        "options": [
+          "put",
+          "drink"
+        ],
+        "correct": "drink"
+      },
+      {
+        "id": "p3046_ex1_9",
+        "type": "select",
+        "x": 13,
+        "y": 49.4,
+        "w": 9,
+        "h": 2.2,
+        "options": [
+          "see",
+          "go"
+        ],
+        "correct": "go"
+      },
+      {
+        "id": "p3046_ex3_2",
+        "type": "fill",
+        "x": 59,
+        "y": 47.2,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "drink eight glasses of water a day",
+          "drink eight glasses of water"
+        ]
+      },
+      {
+        "id": "p3046_ex3_3",
+        "type": "fill",
+        "x": 74,
+        "y": 52.8,
+        "w": 20,
+        "h": 2.2,
+        "correct": [
+          "go to the gym"
+        ]
+      },
+      {
+        "id": "p3046_ex3_4",
+        "type": "fill",
+        "x": 59,
+        "y": 58.8,
+        "w": 15,
+        "h": 2.2,
+        "correct": [
+          "walk to work"
+        ]
+      },
+      {
+        "id": "p3046_ex3_5",
+        "type": "fill",
+        "x": 67,
+        "y": 62,
+        "w": 25,
+        "h": 2.2,
+        "correct": [
+          "take the stairs, not the lift",
+          "take the stairs"
+        ]
+      },
+      {
+        "id": "p3046_ex3_6",
+        "type": "fill",
+        "x": 71,
+        "y": 69.8,
+        "w": 24,
+        "h": 2.2,
+        "correct": [
+          "do physical jobs around the house",
+          "do physical jobs"
+        ],
+        "left": 0,
+        "top": 2.8
+      },
+      {
+        "id": "p3046_ex3_7",
+        "type": "fill",
+        "x": 59,
+        "y": 76.8,
+        "w": 32,
+        "h": 2.2,
+        "correct": [
+          "sleep seven to eight hours a night",
+          "sleep seven to eight hours"
+        ],
+        "left": 1.1,
+        "top": 4.3
+      }
+    ],
+    "4004": [
+      {
+        "id": "p4004_ex1_2",
+        "type": "fill",
+        "x": 45,
+        "y": 36.5,
+        "w": 6,
+        "h": 2.2,
+        "top": 36.5,
+        "left": 45,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "have",
+          "b"
+        ]
+      },
+      {
+        "id": "p4004_ex1_3",
+        "type": "fill",
+        "x": 45,
+        "y": 38.2,
+        "w": 6,
+        "h": 2.2,
+        "top": 38.2,
+        "left": 45,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "do",
+          "c"
+        ]
+      },
+      {
+        "id": "p4004_ex1_4",
+        "type": "fill",
+        "x": 45,
+        "y": 41.5,
+        "w": 6,
+        "h": 2.2,
+        "top": 41.5,
+        "left": 45,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "have",
+          "d"
+        ]
+      },
+      {
+        "id": "p4004_ex1_5",
+        "type": "fill",
+        "x": 45,
+        "y": 43.5,
+        "w": 6,
+        "h": 2.2,
+        "top": 43.5,
+        "left": 45,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "go",
+          "e"
+        ]
+      },
+      {
+        "id": "p4004_ex1_6",
+        "type": "fill",
+        "x": 45,
+        "y": 45.5,
+        "w": 6,
+        "h": 2.2,
+        "top": 45.5,
+        "left": 45,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "have",
+          "f"
+        ]
+      },
+      {
+        "id": "p4004_ex1_7",
+        "type": "fill",
+        "x": 45,
+        "y": 47.5,
+        "w": 6,
+        "h": 2.2,
+        "top": 47.5,
+        "left": 45,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "make",
+          "g"
+        ]
+      },
+      {
+        "id": "p4004_ex1_8",
+        "type": "fill",
+        "x": 45,
+        "y": 49.5,
+        "w": 6,
+        "h": 2.2,
+        "top": 49.5,
+        "left": 45,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "have",
+          "h"
+        ]
+      },
+      {
+        "id": "p4004_ex1_9",
+        "type": "fill",
+        "x": 45,
+        "y": 51.5,
+        "w": 6,
+        "h": 2.2,
+        "top": 51.5,
+        "left": 45,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "do",
+          "a"
+        ]
+      },
+      {
+        "id": "p4004_ex1_10",
+        "type": "fill",
+        "x": 45,
+        "y": 53.5,
+        "w": 6,
+        "h": 2.2,
+        "top": 53.5,
+        "left": 45,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "have",
+          "b"
+        ]
+      },
+      {
+        "id": "p4004_ex2_2",
+        "type": "select",
+        "x": 25,
+        "y": 56.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 56.5,
+        "left": 25,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "do"
+        ],
+        "options": [
+          "have",
+          "do",
+          "go",
+          "make"
+        ]
+      },
+      {
+        "id": "p4004_ex2_3",
+        "type": "select",
+        "x": 25,
+        "y": 59.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 59.5,
+        "left": 25,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "do"
+        ],
+        "options": [
+          "have",
+          "do",
+          "go",
+          "make"
+        ]
+      },
+      {
+        "id": "p4004_ex2_4",
+        "type": "select",
+        "x": 25,
+        "y": 62.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 62.5,
+        "left": 25,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "have"
+        ],
+        "options": [
+          "have",
+          "do",
+          "go",
+          "make"
+        ]
+      },
+      {
+        "id": "p4004_ex2_5",
+        "type": "select",
+        "x": 25,
+        "y": 65.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 65.5,
+        "left": 25,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "go"
+        ],
+        "options": [
+          "have",
+          "do",
+          "go",
+          "make"
+        ]
+      },
+      {
+        "id": "p4004_ex2_6",
+        "type": "select",
+        "x": 25,
+        "y": 68.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 68.5,
+        "left": 25,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "have"
+        ],
+        "options": [
+          "have",
+          "do",
+          "go",
+          "make"
+        ]
+      },
+      {
+        "id": "p4004_ex2_7",
+        "type": "select",
+        "x": 25,
+        "y": 71.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 71.5,
+        "left": 25,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "have"
+        ],
+        "options": [
+          "have",
+          "do",
+          "go",
+          "make"
+        ]
+      },
+      {
+        "id": "p4004_ex2_8",
+        "type": "select",
+        "x": 25,
+        "y": 74.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 74.5,
+        "left": 25,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "make"
+        ],
+        "options": [
+          "have",
+          "do",
+          "go",
+          "make"
+        ]
+      },
+      {
+        "id": "p4004_ex2_9",
+        "type": "select",
+        "x": 25,
+        "y": 77.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 77.5,
+        "left": 25,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "do"
+        ],
+        "options": [
+          "have",
+          "do",
+          "go",
+          "make"
+        ]
+      },
+      {
+        "id": "p4004_ex2_10",
+        "type": "select",
+        "x": 25,
+        "y": 80.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 80.5,
+        "left": 25,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "have"
+        ],
+        "options": [
+          "have",
+          "do",
+          "go",
+          "make"
+        ]
+      },
+      {
+        "id": "p4004_ex3_1",
+        "type": "fill",
+        "x": 58,
+        "y": 33,
+        "w": 35,
+        "h": 2.2,
+        "top": 33,
+        "left": 58,
+        "width": 35,
+        "height": 2.2,
+        "correct": [
+          "Eat healthy food",
+          "eat healthy food"
+        ]
+      },
+      {
+        "id": "p4004_ex3_2",
+        "type": "fill",
+        "x": 58,
+        "y": 41,
+        "w": 35,
+        "h": 2.2,
+        "top": 41,
+        "left": 58,
+        "width": 35,
+        "height": 2.2,
+        "correct": [
+          "go shopping",
+          "Go shopping"
+        ]
+      },
+      {
+        "id": "p4004_ex3_3",
+        "type": "fill",
+        "x": 58,
+        "y": 49,
+        "w": 35,
+        "h": 2.2,
+        "top": 49,
+        "left": 58,
+        "width": 35,
+        "height": 2.2,
+        "correct": [
+          "Do some exercise",
+          "do some exercise"
+        ]
+      },
+      {
+        "id": "p4004_ex3_4",
+        "type": "fill",
+        "x": 58,
+        "y": 57,
+        "w": 35,
+        "h": 2.2,
+        "top": 57,
+        "left": 58,
+        "width": 35,
+        "height": 2.2,
+        "correct": [
+          "stay in",
+          "Stay in"
+        ]
+      },
+      {
+        "id": "p4004_ex3_5",
+        "type": "fill",
+        "x": 58,
+        "y": 65,
+        "w": 35,
+        "h": 2.2,
+        "top": 65,
+        "left": 58,
+        "width": 35,
+        "height": 2.2,
+        "correct": [
+          "Have an early night",
+          "have an early night"
+        ]
+      },
+      {
+        "id": "p4004_ex3_6",
+        "type": "fill",
+        "x": 58,
+        "y": 73,
+        "w": 35,
+        "h": 2.2,
+        "top": 73,
+        "left": 58,
+        "width": 35,
+        "height": 2.2,
+        "correct": [
+          "go to bed late",
+          "Go to bed late"
+        ]
+      },
+      {
+        "id": "p4004_ex3_7",
+        "type": "fill",
+        "x": 58,
+        "y": 81,
+        "w": 35,
+        "h": 2.2,
+        "top": 81,
+        "left": 58,
+        "width": 35,
+        "height": 2.2,
+        "correct": [
+          "Spend time with relatives",
+          "spend time with relatives"
+        ]
+      },
+      {
+        "id": "p4004_ex3_8",
+        "type": "fill",
+        "x": 58,
+        "y": 89,
+        "w": 35,
+        "h": 2.2,
+        "top": 89,
+        "left": 58,
+        "width": 35,
+        "height": 2.2,
+        "correct": [
+          "have a good time",
+          "Have a good time"
+        ]
+      },
+      {
+        "page": 4004,
+        "type": "choice",
+        "top": 4.5,
+        "left": 54.1,
+        "width": 16.6,
+        "height": 1.7,
+        "correct": "brought",
+        "label": "New",
+        "id": "p4004_custom_24863",
+        "group": ""
+      }
     ]
   },
-  "workbookOverridesTs": 1793037940215,
-  "updatedAt": "2026-10-26T18:05:40.215Z",
-  "authorizedAdminChatIds": [
-    6772427596,
-    98124765
-  ],
-  "timestamp": 1792921840624,
+  "workbookOverridesTs": {
+    "4": 2026,
+    "5": 2026,
+    "9": 2026,
+    "10": 1761463225569,
+    "12": 2026,
+    "13": 2026,
+    "14": 2026,
+    "24": 2026,
+    "25": 2026,
+    "26": 2026,
+    "27": 2026,
+    "28": 2026,
+    "29": 2026,
+    "30": 2026,
+    "31": 2026,
+    "32": 2026,
+    "33": 2026,
+    "34": 2026,
+    "35": 2026,
+    "36": 2026,
+    "37": 2026,
+    "38": 2026,
+    "39": 2026,
+    "40": 2026,
+    "41": 2026,
+    "42": 2026,
+    "43": 2026,
+    "44": 2026,
+    "45": 2026,
+    "46": 2026,
+    "47": 2026,
+    "48": 2026,
+    "49": 2026,
+    "50": 2026,
+    "51": 2026,
+    "52": 2026,
+    "53": 2026,
+    "54": 2026,
+    "55": 2026,
+    "56": 2026,
+    "57": 2026,
+    "58": 2026,
+    "59": 2026,
+    "60": 2026,
+    "61": 2026,
+    "62": 2026,
+    "63": 2026,
+    "64": 2026,
+    "65": 2026,
+    "66": 2026,
+    "67": 2026,
+    "68": 2026,
+    "69": 2026,
+    "70": 2026,
+    "71": 2026,
+    "72": 2026,
+    "73": 2026,
+    "74": 2026,
+    "75": 2026,
+    "76": 2026,
+    "77": 2026,
+    "78": 2026,
+    "79": 2026,
+    "80": 2026,
+    "81": 2026,
+    "82": 2026,
+    "83": 2026,
+    "84": 2026,
+    "85": 2026,
+    "86": 2026,
+    "87": 2026,
+    "1004": 1793187750372,
+    "1005": 1793187440510,
+    "1024": 1793127597105,
+    "1028": 1793127704567,
+    "1037": 1793120102340,
+    "1052": 1793125351106,
+    "1053": 1793125381190,
+    "2004": 2026,
+    "2005": 2026,
+    "2006": 2026,
+    "2007": 2026,
+    "2008": 2026,
+    "2009": 2026,
+    "2010": 2026,
+    "2011": 2026,
+    "2012": 2026,
+    "2013": 2026,
+    "2014": 2026,
+    "2015": 2026,
+    "2016": 2026,
+    "2017": 2026,
+    "2018": 2026,
+    "2019": 2026,
+    "2020": 2026,
+    "2021": 2026,
+    "2022": 2026,
+    "2023": 2026,
+    "2024": 2026,
+    "2025": 2026,
+    "2026": 2026,
+    "2027": 2026,
+    "2028": 2026,
+    "2029": 2026,
+    "2030": 2026,
+    "2031": 2026,
+    "2032": 2026,
+    "2033": 2026,
+    "2034": 2026,
+    "2035": 2026,
+    "2036": 2026,
+    "2037": 2026,
+    "2038": 2026,
+    "2039": 2026,
+    "2040": 2026,
+    "2041": 2026,
+    "2042": 2026,
+    "2043": 2026,
+    "2044": 2026,
+    "2045": 2026,
+    "2046": 2026,
+    "2047": 2026,
+    "2048": 2026,
+    "2049": 2026,
+    "2050": 2026,
+    "2051": 2026,
+    "2052": 2026,
+    "2053": 2026,
+    "2054": 2026,
+    "2055": 2026,
+    "2056": 2026,
+    "2057": 2026,
+    "2058": 2026,
+    "2059": 2026,
+    "2060": 2026,
+    "2061": 2026,
+    "2062": 2026,
+    "2063": 2026,
+    "2064": 2026,
+    "2065": 2026,
+    "2066": 2026,
+    "2067": 2026,
+    "2068": 2026,
+    "2069": 2026,
+    "2070": 2026,
+    "2071": 2026,
+    "2072": 2026,
+    "2073": 2026,
+    "2074": 2026,
+    "2075": 2026,
+    "2076": 2026,
+    "2077": 2026,
+    "2078": 2026,
+    "2079": 2026,
+    "2080": 2026,
+    "2081": 2026,
+    "2082": 2026,
+    "2083": 2026,
+    "2084": 2026,
+    "2085": 2026,
+    "2086": 2026,
+    "2087": 2026,
+    "3046": 1793188669311,
+    "4004": 1793192624863
+  },
   "centerSettings": {
     "card": "8600 4912 7731 9024",
     "cardHolder": "ETHITH LEARNING CENTER",
@@ -53789,10 +57784,10 @@
     {
       "id": "admin_official_teacher",
       "name": "Ustoz",
-      "email": "teacher@ethith.uz",
+      "email": "admin_12038f1aq8syash@ethith.uz",
       "phone": "+998 90 123 45 67",
       "card": "8600 1122 3344 5566",
-      "monthlySalary": 6000000,
+      "monthlySalary": 8200000,
       "hourlyRate": 100000,
       "teachingHours": 72,
       "paidThisMonth": true,
@@ -53800,6 +57795,7 @@
         "cls_ethith_main",
         "cls_upper_intermediate"
       ],
+      "monthlyBonus": 1000000,
       "subject": "Ingliz tili (IELTS Intensive)"
     },
     {
@@ -53808,14 +57804,15 @@
       "email": "zizi@ethith.uz",
       "phone": "+998 93 987 65 43",
       "card": "9860 7788 9900 1122",
-      "monthlySalary": 5500000,
+      "monthlySalary": 6440000,
       "hourlyRate": 85000,
       "teachingHours": 64,
-      "paidThisMonth": false,
+      "paidThisMonth": true,
       "assignedClasses": [
         "cls_1792041880052",
         "cls_ielts_ex"
       ],
+      "monthlyBonus": 1000000,
       "subject": "Ingliz tili (General B2)"
     }
   ],
@@ -53825,25 +57822,31 @@
         "id": "f_root",
         "name": "Bosh Papka",
         "parentId": null,
-        "createdAt": 1792940000000
+        "createdAt": 1793024168370
       },
       {
         "id": "f_grammar",
         "name": "Grammar Mastery",
         "parentId": "f_root",
-        "createdAt": 1792940000000
-      },
-      {
-        "id": "f_vocab",
-        "name": "Vocabulary Builder",
-        "parentId": "f_root",
-        "createdAt": 1792940000000
+        "createdAt": 1793024168370
       },
       {
         "id": "f_ielts",
         "name": "IELTS Mock Tests",
         "parentId": "f_root",
-        "createdAt": 1792940000000
+        "createdAt": 1793024168370
+      },
+      {
+        "id": "f_1793028050497",
+        "name": "Yangi Papka",
+        "parentId": "f_root",
+        "createdAt": 1793028050497
+      },
+      {
+        "id": "f_1793030124872",
+        "name": "Yangi Papka",
+        "parentId": "f_1793028050497",
+        "createdAt": 1793030124872
       }
     ],
     "tests": [
@@ -53852,7 +57855,7 @@
         "title": "Unit 7: Modals of Deduction & Obligation",
         "folderId": "f_grammar",
         "authorName": "Ustoz",
-        "createdAt": 1792940000000,
+        "createdAt": 1793024168370,
         "maxAttempts": 1,
         "questions": [
           {
@@ -53902,56 +57905,6 @@
               "must",
               "can't",
               "might"
-            ],
-            "correct": 0
-          }
-        ]
-      },
-      {
-        "id": "TST-4H8R1",
-        "title": "Unit 8: Compound Adjectives & Participle Clauses",
-        "folderId": "f_vocab",
-        "authorName": "Zizi Ustoz",
-        "createdAt": 1792941000000,
-        "maxAttempts": 1,
-        "questions": [
-          {
-            "q": "A person who is relaxed and not easily upset is ______.",
-            "options": [
-              "easy-going",
-              "short-tempered",
-              "well-mannered",
-              "broad-minded"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "______ for 10 a.m. tomorrow, the conference has now been rescheduled.",
-            "options": [
-              "Scheduled",
-              "Scheduling",
-              "To schedule",
-              "Having schedule"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Products ______ locally are often fresher and support the local economy.",
-            "options": [
-              "grown",
-              "growing",
-              "have grown",
-              "to grow"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "A person with a great knowledge from books is ______.",
-            "options": [
-              "well-educated",
-              "quick-witted",
-              "bad-tempered",
-              "open-minded"
             ],
             "correct": 0
           }
@@ -54006,8 +57959,8 @@
       "id": "cnt_kuzgi_2026",
       "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
       "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
-      "startDate": 1792840000000,
-      "endDate": 1793640000000,
+      "startDate": 1792937768370,
+      "endDate": 1793628968370,
       "prizeCoins": 1000,
       "testId": "TST-7K2M9",
       "participants": {
@@ -54015,31 +57968,31 @@
           "name": "Ashurov Dilyorbek",
           "score": 95,
           "timeSec": 140,
-          "completedAt": 1792942000000
+          "completedAt": 1793020568370
         },
         "std_2": {
           "name": "Ergasheva Madina",
           "score": 92,
           "timeSec": 165,
-          "completedAt": 1792942100000
+          "completedAt": 1793020668370
         },
         "std_4": {
           "name": "JO‘RABOYEV MUXAMMADYUSUF",
           "score": 98,
           "timeSec": 110,
-          "completedAt": 1792941900000
+          "completedAt": 1793020768370
         },
         "std_5": {
           "name": "Jo'raboyev Javoxir",
           "score": 88,
           "timeSec": 180,
-          "completedAt": 1792942300000
+          "completedAt": 1793020868370
         },
         "std_6": {
           "name": "Mavlonova Ruxshona",
           "score": 85,
           "timeSec": 190,
-          "completedAt": 1792942400000
+          "completedAt": 1793020968370
         }
       },
       "status": "active"
@@ -54050,17 +58003,17 @@
       "std_1": {
         "status": "paid",
         "baseAmount": 200000,
-        "offsetAmount": 200014,
-        "paidAmount": 200014,
-        "paidAt": 1792840000000,
-        "verifiedBy": "auto_offset"
+        "offsetAmount": 200081,
+        "paidAmount": 200081,
+        "paidAt": 1793024274243,
+        "verifiedBy": "admin_manual"
       },
       "std_2": {
         "status": "paid",
         "baseAmount": 200000,
         "offsetAmount": 200028,
         "paidAmount": 200028,
-        "paidAt": 1792842000000,
+        "paidAt": 1792851368370,
         "verifiedBy": "auto_offset"
       },
       "std_3": {
@@ -54074,7 +58027,7 @@
         "baseAmount": 200000,
         "offsetAmount": 200056,
         "paidAmount": 200056,
-        "paidAt": 1792843000000,
+        "paidAt": 1792937768370,
         "verifiedBy": "auto_offset"
       },
       "std_5": {
@@ -54083,8 +58036,9 @@
         "offsetAmount": 200070,
         "paidAmount": 200070,
         "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
-        "paidAt": 1792930000000
+        "paidAt": 1793016968370
       }
     }
-  }
+  },
+  "updatedAt": 1793192625437
 }
