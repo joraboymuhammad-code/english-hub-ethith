@@ -1095,7 +1095,58 @@
         },
         "seededWindowV3": true
       },
-      "customStudentPhones": {}
+      "customStudentPhones": {},
+      "studentPayments": {
+        "std_1": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_2": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_3": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_5": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_4": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_6": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "std_7": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        }
+      }
     },
     {
       "id": "cls_upper_intermediate",
@@ -1994,9 +2045,7 @@
       "level": "C2",
       "dailyMinutes": 0,
       "updatedAt": 1792612121485,
-      "avatar": null,
       "nameStyle": null,
-      "title": null,
       "victorySound": null
     },
     {
@@ -22220,8 +22269,8 @@
         "page": 1004,
         "exercise": "1",
         "label": "4",
-        "top": 73.2,
-        "left": 65.8,
+        "top": 73,
+        "left": 65.7,
         "width": 14.5,
         "height": 2.2,
         "correct": "on holiday"
@@ -54503,7 +54552,7 @@
     "85": 2026,
     "86": 2026,
     "87": 2026,
-    "1004": 1793185989133,
+    "1004": 1793186943670,
     "1005": 1793186043045,
     "2004": 2026,
     "2005": 2026,
@@ -54590,7 +54639,12 @@
     "2086": 2026,
     "2087": 2026
   },
-  "centerSettings": null,
+  "centerSettings": {
+    "card": "8600 4912 7731 9024",
+    "cardHolder": "ETHITH LEARNING CENTER",
+    "baseTuition": 200000,
+    "currency": "UZS"
+  },
   "teachers": [
     {
       "id": "admin_official_teacher",
@@ -54626,11 +54680,272 @@
     }
   ],
   "fileExplorer": {
-    "folders": [],
-    "tests": []
+    "folders": [
+      {
+        "id": "f_root",
+        "name": "Bosh Papka",
+        "parentId": null,
+        "createdAt": 1793186120200
+      },
+      {
+        "id": "f_grammar",
+        "name": "Grammar Mastery",
+        "parentId": "f_root",
+        "createdAt": 1793186120200
+      },
+      {
+        "id": "f_vocab",
+        "name": "Vocabulary Builder",
+        "parentId": "f_root",
+        "createdAt": 1793186120200
+      },
+      {
+        "id": "f_ielts",
+        "name": "IELTS Mock Tests",
+        "parentId": "f_root",
+        "createdAt": 1793186120200
+      }
+    ],
+    "tests": [
+      {
+        "id": "TST-7K2M9",
+        "title": "Unit 7: Modals of Deduction & Obligation",
+        "folderId": "f_grammar",
+        "authorName": "Ustoz",
+        "createdAt": 1793186120200,
+        "maxAttempts": 1,
+        "questions": [
+          {
+            "q": "You ______ be exhausted after working for 14 hours straight!",
+            "options": [
+              "must",
+              "can't",
+              "might not",
+              "should"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "He ______ have stolen the money; he was with me in London that evening.",
+            "options": [
+              "must",
+              "can't",
+              "ought to",
+              "might"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Students ______ wear uniforms during official exams according to school rules.",
+            "options": [
+              "have to",
+              "might",
+              "could",
+              "would"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "You ______ tell anyone this secret; it's strictly confidential.",
+            "options": [
+              "mustn't",
+              "don't have to",
+              "needn't",
+              "may not"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "We ______ have left earlier; look at all this traffic now!",
+            "options": [
+              "should",
+              "must",
+              "can't",
+              "might"
+            ],
+            "correct": 0
+          }
+        ]
+      },
+      {
+        "id": "TST-4H8R1",
+        "title": "Unit 8: Compound Adjectives & Participle Clauses",
+        "folderId": "f_vocab",
+        "authorName": "Zizi Ustoz",
+        "createdAt": 1793186120200,
+        "maxAttempts": 1,
+        "questions": [
+          {
+            "q": "A person who is relaxed and not easily upset is ______.",
+            "options": [
+              "easy-going",
+              "short-tempered",
+              "well-mannered",
+              "broad-minded"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "______ for 10 a.m. tomorrow, the conference has now been rescheduled.",
+            "options": [
+              "Scheduled",
+              "Scheduling",
+              "To schedule",
+              "Having schedule"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "Products ______ locally are often fresher and support the local economy.",
+            "options": [
+              "grown",
+              "growing",
+              "have grown",
+              "to grow"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "A person with a great knowledge from books is ______.",
+            "options": [
+              "well-educated",
+              "quick-witted",
+              "bad-tempered",
+              "open-minded"
+            ],
+            "correct": 0
+          }
+        ]
+      }
+    ]
   },
-  "timetable": [],
-  "contests": [],
-  "payments": {},
-  "updatedAt": 1793186048184
+  "timetable": [
+    {
+      "id": "tt_1",
+      "time": "08:00 - 09:30",
+      "days": "Du-Chor-Jum",
+      "teacherId": "t_zizi",
+      "teacherName": "Zizi Ustoz",
+      "classId": "cls_1792041880052",
+      "className": "Bizani gurux (B1+)",
+      "room": "Room 101 (Green Room)"
+    },
+    {
+      "id": "tt_2",
+      "time": "10:00 - 11:30",
+      "days": "Du-Chor-Jum",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "classId": "cls_ethith_main",
+      "className": "IELTS Intensive (B2)",
+      "room": "Room 102 (Blue Room)"
+    },
+    {
+      "id": "tt_3",
+      "time": "14:00 - 15:30",
+      "days": "Se-Pay-Shan",
+      "teacherId": "t_zizi",
+      "teacherName": "Zizi Ustoz",
+      "classId": "cls_1792041880052",
+      "className": "Bizani gurux (B1+)",
+      "room": "Room 101 (Green Room)"
+    },
+    {
+      "id": "tt_4",
+      "time": "16:00 - 17:30",
+      "days": "Se-Pay-Shan",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "classId": "cls_ethith_main",
+      "className": "IELTS Intensive (B2)",
+      "room": "Room 102 (Blue Room)"
+    }
+  ],
+  "contests": [
+    {
+      "id": "cnt_kuzgi_2026",
+      "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
+      "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
+      "startDate": 1793099720200,
+      "endDate": 1793790920200,
+      "prizeCoins": 1000,
+      "testId": "TST-7K2M9",
+      "participants": {
+        "std_1": {
+          "name": "Ashurov Dilyorbek",
+          "score": 95,
+          "timeSec": 140,
+          "completedAt": 1793182520200
+        },
+        "std_2": {
+          "name": "Ergasheva Madina",
+          "score": 92,
+          "timeSec": 165,
+          "completedAt": 1793182620200
+        },
+        "std_4": {
+          "name": "JO‘RABOYEV MUXAMMADYUSUF",
+          "score": 98,
+          "timeSec": 110,
+          "completedAt": 1793182720200
+        },
+        "std_5": {
+          "name": "Jo'raboyev Javoxir",
+          "score": 88,
+          "timeSec": 180,
+          "completedAt": 1793182820200
+        },
+        "std_6": {
+          "name": "Mavlonova Ruxshona",
+          "score": 85,
+          "timeSec": 190,
+          "completedAt": 1793182920200
+        }
+      },
+      "status": "active"
+    }
+  ],
+  "payments": {
+    "2026-10": {
+      "std_1": {
+        "status": "paid",
+        "baseAmount": 200000,
+        "offsetAmount": 200014,
+        "paidAmount": 200014,
+        "paidAt": 1792926920200,
+        "verifiedBy": "auto_offset"
+      },
+      "std_2": {
+        "status": "paid",
+        "baseAmount": 200000,
+        "offsetAmount": 200028,
+        "paidAmount": 200028,
+        "paidAt": 1793013320200,
+        "verifiedBy": "auto_offset"
+      },
+      "std_3": {
+        "status": "unpaid",
+        "baseAmount": 200000,
+        "offsetAmount": 200042,
+        "paidAmount": 0
+      },
+      "std_4": {
+        "status": "paid",
+        "baseAmount": 200000,
+        "offsetAmount": 200056,
+        "paidAmount": 200056,
+        "paidAt": 1793099720200,
+        "verifiedBy": "auto_offset"
+      },
+      "std_5": {
+        "status": "pending",
+        "baseAmount": 200000,
+        "offsetAmount": 200070,
+        "paidAmount": 200070,
+        "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
+        "paidAt": 1793178920200
+      }
+    }
+  },
+  "updatedAt": 1793186944373
 }
