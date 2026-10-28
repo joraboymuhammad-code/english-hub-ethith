@@ -1579,7 +1579,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "studentPayments": {}
     },
     {
       "id": "cls_1793047882549",
@@ -62395,5 +62396,5 @@
       }
     }
   },
-  "updatedAt": 1793211175398
+  "updatedAt": 1793211216365
 }
