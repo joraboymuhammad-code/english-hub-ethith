@@ -57607,6 +57607,466 @@
         "group": ""
       }
     ],
+    "4005": [
+      {
+        "id": "p4005_ex4_1",
+        "type": "select",
+        "x": 10,
+        "y": 21.5,
+        "w": 16,
+        "h": 2.2,
+        "top": 19.4,
+        "left": 11.2,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "What time"
+        ],
+        "options": [
+          "What time",
+          "Who",
+          "Where",
+          "How much",
+          "When",
+          "How often",
+          "How many",
+          "What kind"
+        ]
+      },
+      {
+        "id": "p4005_ex4_2",
+        "type": "select",
+        "x": 10,
+        "y": 25.5,
+        "w": 16,
+        "h": 2.2,
+        "top": 22.9,
+        "left": 10.1,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "Who"
+        ],
+        "options": [
+          "What time",
+          "Who",
+          "Where",
+          "How much",
+          "When",
+          "How often",
+          "How many",
+          "What kind"
+        ]
+      },
+      {
+        "id": "p4005_ex4_3",
+        "type": "select",
+        "x": 10,
+        "y": 29.5,
+        "w": 16,
+        "h": 2.2,
+        "top": 29.5,
+        "left": 10,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "Where"
+        ],
+        "options": [
+          "What time",
+          "Who",
+          "Where",
+          "How much",
+          "When",
+          "How often",
+          "How many",
+          "What kind"
+        ]
+      },
+      {
+        "id": "p4005_ex4_4",
+        "type": "select",
+        "x": 10,
+        "y": 33.5,
+        "w": 16,
+        "h": 2.2,
+        "top": 33.5,
+        "left": 10,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "How much"
+        ],
+        "options": [
+          "What time",
+          "Who",
+          "Where",
+          "How much",
+          "When",
+          "How often",
+          "How many",
+          "What kind"
+        ]
+      },
+      {
+        "id": "p4005_ex4_5",
+        "type": "select",
+        "x": 10,
+        "y": 37.5,
+        "w": 16,
+        "h": 2.2,
+        "top": 37.5,
+        "left": 10,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "When"
+        ],
+        "options": [
+          "What time",
+          "Who",
+          "Where",
+          "How much",
+          "When",
+          "How often",
+          "How many",
+          "What kind"
+        ]
+      },
+      {
+        "id": "p4005_ex4_6",
+        "type": "select",
+        "x": 10,
+        "y": 41.5,
+        "w": 16,
+        "h": 2.2,
+        "top": 41.5,
+        "left": 10,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "How often"
+        ],
+        "options": [
+          "What time",
+          "Who",
+          "Where",
+          "How much",
+          "When",
+          "How often",
+          "How many",
+          "What kind"
+        ]
+      },
+      {
+        "id": "p4005_ex4_7",
+        "type": "select",
+        "x": 10,
+        "y": 45.5,
+        "w": 16,
+        "h": 2.2,
+        "top": 45.5,
+        "left": 10,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "How many"
+        ],
+        "options": [
+          "What time",
+          "Who",
+          "Where",
+          "How much",
+          "When",
+          "How often",
+          "How many",
+          "What kind"
+        ]
+      },
+      {
+        "id": "p4005_ex4_8",
+        "type": "select",
+        "x": 10,
+        "y": 49.5,
+        "w": 16,
+        "h": 2.2,
+        "top": 49.5,
+        "left": 10,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "What kind"
+        ],
+        "options": [
+          "What time",
+          "Who",
+          "Where",
+          "How much",
+          "When",
+          "How often",
+          "How many",
+          "What kind"
+        ]
+      },
+      {
+        "id": "p4005_ex5_1",
+        "type": "fill",
+        "x": 10,
+        "y": 56.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 56.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "When is your birthday?",
+          "When is your birthday"
+        ]
+      },
+      {
+        "id": "p4005_ex5_2",
+        "type": "fill",
+        "x": 10,
+        "y": 61.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 61.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "Who do you chat with online?",
+          "Who do you chat with online"
+        ]
+      },
+      {
+        "id": "p4005_ex5_3",
+        "type": "fill",
+        "x": 10,
+        "y": 66.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 66.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "What kind of films do you like?",
+          "What kind of films do you like"
+        ]
+      },
+      {
+        "id": "p4005_ex5_4",
+        "type": "fill",
+        "x": 10,
+        "y": 71.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 71.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "Are you busy right now?",
+          "Are you busy right now"
+        ]
+      },
+      {
+        "id": "p4005_ex5_5",
+        "type": "fill",
+        "x": 10,
+        "y": 76.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 76.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "How often do you spend time with relatives?",
+          "How often do you spend time with relatives"
+        ]
+      },
+      {
+        "id": "p4005_ex5_6",
+        "type": "fill",
+        "x": 10,
+        "y": 81.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 81.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "How many hours did you sleep last night?",
+          "How many hours did you sleep last night"
+        ]
+      },
+      {
+        "id": "p4005_ex5_7",
+        "type": "fill",
+        "x": 10,
+        "y": 86.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 86.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "Where are you from?",
+          "Where are you from"
+        ]
+      },
+      {
+        "id": "p4005_ex5_8",
+        "type": "fill",
+        "x": 10,
+        "y": 91.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 91.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "Did you go shopping yesterday?",
+          "Did you go shopping yesterday",
+          "Did you go shoppingyesterday?"
+        ]
+      },
+      {
+        "id": "p4005_ex6_1",
+        "type": "fill",
+        "x": 65,
+        "y": 23.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 23.5,
+        "left": 65,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "Are you",
+          "are you"
+        ]
+      },
+      {
+        "id": "p4005_ex6_2",
+        "type": "fill",
+        "x": 65,
+        "y": 30.5,
+        "w": 16,
+        "h": 2.2,
+        "top": 30.5,
+        "left": 65,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "Did you have",
+          "did you have"
+        ]
+      },
+      {
+        "id": "p4005_ex6_3",
+        "type": "fill",
+        "x": 65,
+        "y": 38.5,
+        "w": 20,
+        "h": 2.2,
+        "top": 38.5,
+        "left": 65,
+        "width": 20,
+        "height": 2.2,
+        "correct": [
+          "When did you start",
+          "when did you start"
+        ]
+      },
+      {
+        "id": "p4005_ex6_4",
+        "type": "fill",
+        "x": 65,
+        "y": 47.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 47.5,
+        "left": 65,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "Are you",
+          "are you"
+        ]
+      },
+      {
+        "id": "p4005_ex6_5",
+        "type": "fill",
+        "x": 65,
+        "y": 55.5,
+        "w": 18,
+        "h": 2.2,
+        "top": 55.5,
+        "left": 65,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "many did you win",
+          "How many did you win",
+          "did you win"
+        ]
+      },
+      {
+        "id": "p4005_ex6_6",
+        "type": "fill",
+        "x": 65,
+        "y": 63.5,
+        "w": 16,
+        "h": 2.2,
+        "top": 63.5,
+        "left": 65,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "do you live",
+          "Do you live"
+        ]
+      },
+      {
+        "id": "p4005_ex6_7",
+        "type": "fill",
+        "x": 65,
+        "y": 71.5,
+        "w": 18,
+        "h": 2.2,
+        "top": 71.5,
+        "left": 65,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "How did you get",
+          "how did you get"
+        ]
+      },
+      {
+        "id": "p4005_ex6_8",
+        "type": "fill",
+        "x": 65,
+        "y": 79.5,
+        "w": 16,
+        "h": 2.2,
+        "top": 79.5,
+        "left": 65,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "Do you want",
+          "do you want"
+        ]
+      }
+    ],
     "4086": [
       {
         "id": "p4086_ex1_1",
@@ -58555,6 +59015,7 @@
     "2087": 2026,
     "3046": 1793188669311,
     "4004": 1793193279609,
+    "4005": 1793193284582,
     "4086": 1793193077149,
     "4087": 1793193184959
   },
@@ -58824,5 +59285,5 @@
       }
     }
   },
-  "updatedAt": 1793193282024
+  "updatedAt": 1793193285314
 }
