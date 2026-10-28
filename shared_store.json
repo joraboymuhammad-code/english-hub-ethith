@@ -962,11 +962,11 @@
               "status": "K",
               "score": "2",
               "hwDone": true,
-              "hwPct": 2,
+              "hwPct": 0,
               "hwLesson": "1.1",
-              "hwCorrect": 1,
-              "hwTotal": 44,
-              "hwCompletedAt": 1793186033375
+              "hwCorrect": 0,
+              "hwTotal": 42,
+              "hwCompletedAt": 1793187178825
             },
             "std_2": {
               "status": "K",
@@ -1077,7 +1077,7 @@
         },
         "holidays": {},
         "seededWindowV2": true,
-        "updatedAt": 1793186033375,
+        "updatedAt": 1793187178825,
         "homeworks": {
           "2026-10-21": {
             "dateKey": "2026-10-21",
@@ -1236,11 +1236,11 @@
               "status": "K",
               "score": "2",
               "hwDone": true,
-              "hwPct": 2,
+              "hwPct": 0,
               "hwLesson": "1.1",
-              "hwCorrect": 1,
-              "hwTotal": 44,
-              "hwCompletedAt": 1793186033389
+              "hwCorrect": 0,
+              "hwTotal": 42,
+              "hwCompletedAt": 1793187178841
             }
           }
         },
@@ -1263,7 +1263,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793186033389
+        "updatedAt": 1793187178841
       },
       "deletedMsgIds": [],
       "customStudentNames": {},
@@ -1350,11 +1350,11 @@
               "status": "K",
               "score": "2",
               "hwDone": true,
-              "hwPct": 2,
+              "hwPct": 0,
               "hwLesson": "1.1",
-              "hwCorrect": 1,
-              "hwTotal": 44,
-              "hwCompletedAt": 1793186033403
+              "hwCorrect": 0,
+              "hwTotal": 42,
+              "hwCompletedAt": 1793187178862
             }
           }
         },
@@ -1378,7 +1378,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1793186033403
+        "updatedAt": 1793187178862
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -1472,11 +1472,11 @@
               "status": "K",
               "score": "2",
               "hwDone": true,
-              "hwPct": 2,
+              "hwPct": 0,
               "hwLesson": "1.1",
-              "hwCorrect": 1,
-              "hwTotal": 44,
-              "hwCompletedAt": 1793186033419
+              "hwCorrect": 0,
+              "hwTotal": 42,
+              "hwCompletedAt": 1793187178885
             }
           }
         },
@@ -1499,7 +1499,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793186033419
+        "updatedAt": 1793187178885
       },
       "deletedMsgIds": [],
       "customStudentNames": {},
@@ -22708,7 +22708,7 @@
         "page": 1005,
         "exercise": "6a",
         "label": "3",
-        "top": 22.3,
+        "top": 25.1,
         "left": 54.5,
         "width": 22,
         "height": 2.2,
@@ -22724,7 +22724,7 @@
         "page": 1005,
         "exercise": "6a",
         "label": "4",
-        "top": 25.7,
+        "top": 30.3,
         "left": 54.5,
         "width": 20,
         "height": 2.2,
@@ -22740,8 +22740,8 @@
         "page": 1005,
         "exercise": "6a",
         "label": "5",
-        "top": 29,
-        "left": 54.6,
+        "top": 35.5,
+        "left": 54.5,
         "width": 20,
         "height": 2.2,
         "options": [
@@ -22756,8 +22756,8 @@
         "page": 1005,
         "exercise": "6a",
         "label": "6",
-        "top": 32.4,
-        "left": 54.6,
+        "top": 40.6,
+        "left": 54.5,
         "width": 22,
         "height": 2.2,
         "options": [
@@ -22772,8 +22772,8 @@
         "page": 1005,
         "exercise": "6a",
         "label": "7",
-        "top": 36,
-        "left": 54.9,
+        "top": 45.8,
+        "left": 54.5,
         "width": 18,
         "height": 2.2,
         "options": [
@@ -22788,8 +22788,8 @@
         "page": 1005,
         "exercise": "6a",
         "label": "8",
-        "top": 39.8,
-        "left": 54.9,
+        "top": 51,
+        "left": 54.5,
         "width": 18,
         "height": 2.2,
         "options": [
@@ -54553,7 +54553,7 @@
     "86": 2026,
     "87": 2026,
     "1004": 1793185989133,
-    "1005": 1793187116862,
+    "1005": 1793186043045,
     "2004": 2026,
     "2005": 2026,
     "2006": 2026,
@@ -54947,5 +54947,5 @@
       }
     }
   },
-  "updatedAt": 1793187117991
+  "updatedAt": 1793187179569
 }
