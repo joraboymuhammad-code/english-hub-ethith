@@ -1,28 +1,6 @@
 {
   "classes": [
     {
-      "id": "cls_upper_intermediate",
-      "name": "Upper Intermediate",
-      "code": "ETH-UPP882",
-      "teacherId": "admin_official_teacher",
-      "teacherName": "Ustoz",
-      "teacher": "Ustoz",
-      "teacherEmail": "teacher@ethith.uz",
-      "created": 1793113876019,
-      "room": "302-xona",
-      "schedule": "har_kuni",
-      "maxCapacity": 18,
-      "students": [],
-      "messages": [],
-      "attendance": {
-        "records": {},
-        "lessonTypes": {},
-        "holidays": {},
-        "homeworks": {}
-      },
-      "deletedMsgIds": []
-    },
-    {
       "id": "cls_urolov_azizbek_intermediate_practice",
       "name": "Intermediate Practice",
       "code": "ETH-9GA7X0",
@@ -55849,7 +55827,6 @@
       "teachingHours": 72,
       "paidThisMonth": true,
       "assignedClasses": [
-        "cls_upper_intermediate",
         "cls_ethith_main"
       ],
       "subject": "Ingliz tili (IELTS Intensive)",
@@ -56586,5 +56563,5 @@
       }
     }
   },
-  "updatedAt": 1793208779938
+  "updatedAt": 1793208786606
 }
