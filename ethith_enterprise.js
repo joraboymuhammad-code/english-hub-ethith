@@ -4369,6 +4369,9 @@ EE.renderFinanceExpensesTabHtml = function(expenses) {
           if (window.ethithReplenishTesterSlots) window.ethithReplenishTesterSlots(cls);
 
           saveStore();
+          if (window.ethithBroadcastStudentExpulsion) {
+            window.ethithBroadcastStudentExpulsion(cls.id, accId, accEmail, (acc && acc.phone), stName);
+          }
           showToast(stName + " guruhdan chiqarildi!");
           var realCount = cls.students.filter(function(s) { return !s.isTester && !(s.name || '').startsWith('tester_'); }).length;
           m.querySelector('#eeTgModalCapText').textContent = realCount + ' / ' + (cls.maxCapacity || 18) + ' ta joy';

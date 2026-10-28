@@ -1770,11 +1770,31 @@
     var cls = (S.classes && S.classes.find(function(c) {
       return (clsParam && c.id === clsParam.id) || (clsParam && c.code === clsParam.code) || (c.id === S.activeClassId);
     })) || clsParam;
+
+    var isTeacher = S.user && (S.user.role === 'teacher' || S.user.role === 'admin');
+
+    // Strict enrollment guard: if a student was expelled, kick them out to classes list immediately!
+    if (cls && S.user && !isTeacher) {
+      var inThisClass = (cls.students || []).some(function(s) {
+        return (s.id && s.id === S.user.id) ||
+               (s.email && S.user.email && s.email.toLowerCase().trim() === S.user.email.toLowerCase().trim()) ||
+               (s.phone && S.user.phone && s.phone === S.user.phone);
+      });
+      if (!inThisClass) {
+        S.activeClassId = null;
+        if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+        renderClassesView(container);
+        if (window.EthithApp && window.EthithApp.toast) {
+          window.EthithApp.toast("⚠️ Siz ustoz tomonidan ushbu guruhdan chiqarilgansiz!");
+        }
+        return;
+      }
+    }
+
     if (window.EthithSync) {
       window.EthithSync.subscribeClass(cls.code || cls.id);
     }
-    var isTeacher = S.user && S.user.role === 'teacher';
-    var pinnedMsg = cls.messages.find(function(m) { return m.id === cls.pinnedId; });
+    var pinnedMsg = cls.messages ? cls.messages.find(function(m) { return m.id === cls.pinnedId; }) : null;
     var activeHw = cls.activeHomework || (window.EthithAttendance && window.EthithAttendance.getLatestClassHomework ? window.EthithAttendance.getLatestClassHomework(cls) : null) || {
       dateKey: new Date().getFullYear() + '-' + String(new Date().getMonth() + 1).padStart(2, '0') + '-' + String(new Date().getDate()).padStart(2, '0'),
       dateDisp: String(new Date().getDate()).padStart(2, '0') + '.' + String(new Date().getMonth() + 1).padStart(2, '0') + '.' + new Date().getFullYear(),

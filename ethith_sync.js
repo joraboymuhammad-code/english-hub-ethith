@@ -450,8 +450,114 @@
           var dNow = new Date();
           event.student.joinedAt = dNow.getFullYear() + '-' + String(dNow.getMonth() + 1).padStart(2, '0') + '-' + String(dNow.getDate()).padStart(2, '0');
         }
-        targetCls.students.push(event.student);
+        var testerIdx = targetCls.students.findIndex(function(s) {
+          return s.isTester || (s.name && s.name.startsWith('tester_'));
+        });
+        if (testerIdx !== -1) {
+          targetCls.students[testerIdx] = event.student;
+        } else {
+          targetCls.students.push(event.student);
+        }
         uiNeedsRefresh = true;
+      }
+    }
+
+    // E1. STUDENT EXPELLED / REMOVED (0ms Instant Live Reaction on Student's Device)
+    else if (event.type === 'STUDENT_EXPELLED' || event.type === 'STUDENT_REMOVED') {
+      var expCid = event.classId;
+      var expSid = event.studentId;
+      var expEmail = (event.studentEmail || '').toLowerCase().trim();
+      var expPhone = event.studentPhone || '';
+
+      if (classes) {
+        classes.forEach(function(c) {
+          if (c.id === expCid || c.code === expCid) {
+            if (Array.isArray(c.students)) {
+              c.students = c.students.filter(function(s) {
+                var sEmail = (s.email || '').toLowerCase().trim();
+                var sPhone = s.phone || s.parentPhone || '';
+                return (s.id !== expSid) && (!expEmail || sEmail !== expEmail) && (!expPhone || sPhone !== expPhone);
+              });
+              if (window.ethithReplenishTesterSlots) {
+                window.ethithReplenishTesterSlots(c);
+              }
+            }
+          }
+        });
+      }
+
+      var curU = S.user || {};
+      var curUid = curU.id || '';
+      var curUemail = (curU.email || '').toLowerCase().trim();
+      var curUphone = curU.phone || '';
+
+      var isMe = (expSid && curUid === expSid) ||
+                 (expEmail && curUemail && curUemail === expEmail) ||
+                 (expPhone && curUphone && curUphone === expPhone);
+
+      if (isMe) {
+        console.warn('[LiveRT] You were expelled from class:', expCid);
+        if (S.activeClassId === expCid) {
+          S.activeClassId = null;
+        }
+        if (Array.isArray(S.enrolledClasses)) {
+          S.enrolledClasses = S.enrolledClasses.filter(function(cid) { return cid !== expCid; });
+        }
+        if (window.EthithApp && typeof window.EthithApp.saveState === 'function') {
+          window.EthithApp.saveState();
+        }
+        if (window.ethithOpenApp) {
+          window.ethithOpenApp('classes');
+        } else if (window.go) {
+          window.go('classes');
+        }
+        if (window.EthithApp && typeof window.EthithApp.toast === 'function') {
+          window.EthithApp.toast("⚠️ Siz ustoz tomonidan guruhdan chiqarildingiz!");
+        } else {
+          alert("⚠️ Siz ustoz tomonidan guruhdan chiqarildingiz!");
+        }
+      } else {
+        uiNeedsRefresh = true;
+      }
+    }
+
+    // E1_B. STUDENT TRANSFERRED
+    else if (event.type === 'STUDENT_TRANSFER') {
+      var fromCls = classes ? classes.find(function(c) { return c.id === event.fromClassId; }) : null;
+      var toCls = classes ? classes.find(function(c) { return c.id === event.toClassId; }) : null;
+      var trStId = event.studentId;
+      var trStObj = event.student;
+
+      if (fromCls && Array.isArray(fromCls.students)) {
+        fromCls.students = fromCls.students.filter(function(s) {
+          return s.id !== trStId && (!trStObj || s.email !== trStObj.email);
+        });
+        if (window.ethithReplenishTesterSlots) window.ethithReplenishTesterSlots(fromCls);
+      }
+      if (toCls && trStObj) {
+        if (!toCls.students) toCls.students = [];
+        var tIdx = toCls.students.findIndex(function(s) {
+          return s.isTester || (s.name && s.name.startsWith('tester_'));
+        });
+        if (tIdx !== -1) {
+          toCls.students[tIdx] = trStObj;
+        } else if (!toCls.students.some(function(s) { return s.id === trStId; })) {
+          toCls.students.push(trStObj);
+        }
+      }
+      uiNeedsRefresh = true;
+
+      var curU = S.user || {};
+      if (curU.id === trStId || (trStObj && curU.email && curU.email === trStObj.email)) {
+        if (toCls) {
+          S.activeClassId = toCls.id;
+          if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+          if (window.ethithOpenApp) window.ethithOpenApp('classes');
+          else if (window.go) window.go('classes');
+          if (window.EthithApp && window.EthithApp.toast) {
+            window.EthithApp.toast("Siz '" + toCls.name + "' guruhiga ko‘chirildingiz!");
+          }
+        }
       }
     }
 
@@ -2364,5 +2470,16 @@
       return isMeshConnected;
     }
   };
+
+  try {
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'ethith_last_expelled_student' && e.newValue) {
+        try {
+          var ev = JSON.parse(e.newValue);
+          handleIncomingLiveEvent(ev);
+        } catch(err) {}
+      }
+    });
+  } catch(e) {}
 
 })(window);

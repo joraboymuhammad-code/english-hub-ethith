@@ -314,6 +314,14 @@
       return false;
     });
 
+    // Ensure Azizbek Urolov ONLY has the 2 specified composite groups
+    if (teacherId === 't_urolov_azizbek' || (tName && tName.toLowerCase().includes('azizbek'))) {
+      matched = matched.filter(function(cls) {
+        return cls.id === 'cls_urolov_azizbek_upper_intermediate_standard' ||
+               cls.id === 'cls_urolov_azizbek_intermediate_practice';
+      });
+    }
+
     // Level ranking helper: lower level first, then higher level
     function getLevelRank(name, level) {
       var s = ((name || '') + ' ' + (level || '')).toLowerCase();
@@ -384,7 +392,17 @@
       if (!c) return false;
       var tn = (c.teacher || c.teacherName || '').toLowerCase().trim();
       var tid = (c.teacherId || '').toLowerCase().trim();
-      return c.id !== 'cls_ethith_main' && c.id !== 'cls_upper_intermediate' && tid !== 'admin_official_teacher' && tid !== 't_zizi' && tn !== 'ustoz' && tn !== 'zizi ustoz';
+      if (c.id === 'cls_ethith_main' || c.id === 'cls_upper_intermediate' || tid === 'admin_official_teacher' || tid === 't_zizi' || tn === 'ustoz' || tn === 'zizi ustoz') {
+        return false;
+      }
+      // Purge obsolete single-discipline classes for Azizbek (keep only 2 composite groups)
+      if (c.id === 'cls_urolov_azizbek_upper' ||
+          c.id === 'cls_urolov_azizbek_standard' ||
+          c.id === 'cls_urolov_azizbek_intermediate' ||
+          c.id === 'cls_urolov_azizbek_practice') {
+        return false;
+      }
+      return true;
     });
 
     if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.classes)) {
@@ -483,6 +501,38 @@
     }
   }
   window.ethithReplenishTesterSlots = replenishTesterSlots;
+
+  function broadcastStudentExpulsion(classId, studentId, studentEmail, studentPhone, studentName) {
+    var payload = {
+      type: 'STUDENT_EXPELLED',
+      classId: classId,
+      studentId: studentId,
+      studentEmail: (studentEmail || '').toLowerCase().trim(),
+      studentPhone: studentPhone || '',
+      studentName: studentName || 'O‘quvchi',
+      timestamp: Date.now()
+    };
+    if (window.EthithSync) {
+      if (typeof window.EthithSync.handleIncomingLiveEvent === 'function') {
+        window.EthithSync.handleIncomingLiveEvent(payload);
+      }
+      if (typeof window.EthithSync.publishLive === 'function') {
+        window.EthithSync.publishLive(payload);
+      }
+      if (typeof window.EthithSync.broadcastLocal === 'function') {
+        try {
+          if (typeof BroadcastChannel !== 'undefined') {
+            var bc = new BroadcastChannel('ethith_cloud_channel');
+            bc.postMessage({ type: 'LIVE_EVENT', event: payload });
+          }
+        } catch(e) {}
+      }
+    }
+    try {
+      localStorage.setItem('ethith_last_expelled_student', JSON.stringify(payload));
+    } catch(e) {}
+  }
+  window.ethithBroadcastStudentExpulsion = broadcastStudentExpulsion;
 
   function getActiveOrFirstClass() {
     var sClasses = getAvailableClasses();
@@ -2877,6 +2927,7 @@ EA.render = function(container, preserveScrollLeft) {
           var stId = btn.dataset.stid;
           var stName = btn.dataset.stname;
           if (confirm("Haqiqatan ham " + stName + "ni ushbu guruhdan chiqarib yubormoqchimisiz?")) {
+            var stObj = (cls.students || []).find(function(s) { return (s.id || s.email) === stId; });
             cls.students = (cls.students || []).filter(function(s) {
               return (s.id || s.email) !== stId;
             });
@@ -2885,6 +2936,7 @@ EA.render = function(container, preserveScrollLeft) {
             if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
               window.EthithEnterprise.saveStore();
             }
+            broadcastStudentExpulsion(cls.id, stId, (stObj && stObj.email), (stObj && (stObj.phone || stObj.parentPhone)), stName);
             if (window.EthithApp && window.EthithApp.toast) {
               window.EthithApp.toast(stName + " guruhdan chiqarildi!");
             }
@@ -3271,6 +3323,7 @@ EA.render = function(container, preserveScrollLeft) {
     if (expelBtn) {
       expelBtn.onclick = function() {
         if (confirm("Haqiqatan ham " + curName + "ni ushbu guruhdan chiqarib yubormoqchimisiz?")) {
+          var stObj = (cls.students || []).find(function(s) { return (s.id || s.email) === stId; });
           cls.students = (cls.students || []).filter(function(s) {
             return (s.id || s.email) !== stId;
           });
@@ -3279,6 +3332,7 @@ EA.render = function(container, preserveScrollLeft) {
           if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
             window.EthithEnterprise.saveStore();
           }
+          broadcastStudentExpulsion(cls.id, stId, (stObj && stObj.email), (stObj && (stObj.phone || stObj.parentPhone)), curName);
           closeGlobalModal();
           if (window.EthithApp && window.EthithApp.toast) {
             window.EthithApp.toast(curName + " guruhdan chiqarildi!");
