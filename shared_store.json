@@ -13120,7 +13120,19 @@
           "isTester": true
         }
       ],
-      "messages": [],
+      "messages": [
+        {
+          "id": "msg_1793213675956_or1w2",
+          "timestamp": 1793213675956,
+          "senderId": "usmonqulovaetiborxon@gmail.com",
+          "senderName": "Etiborxon Usmonqulova",
+          "senderEmail": "usmonqulovaetiborxon@gmail.com",
+          "text": "salom",
+          "time": "23:54",
+          "replyTo": null,
+          "reactions": {}
+        }
+      ],
       "schedule": "har_kuni",
       "attendance": {
         "records": {},
@@ -66900,5 +66912,5 @@
       }
     }
   },
-  "updatedAt": 1793213663422
+  "updatedAt": 1793213676533
 }
