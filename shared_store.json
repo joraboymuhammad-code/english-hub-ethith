@@ -22083,6 +22083,236 @@
         "group": ""
       }
     ],
+    "1004": [
+      {
+        "id": "p1004_ex1_2",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "1",
+        "label": "2",
+        "top": 52.8,
+        "left": 66.4,
+        "width": 14.5,
+        "height": 2.2,
+        "correct": "to study"
+      },
+      {
+        "id": "p1004_ex1_3",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "1",
+        "label": "3",
+        "top": 74.9,
+        "left": 24.1,
+        "width": 14.5,
+        "height": 2.2,
+        "correct": "on business"
+      },
+      {
+        "id": "p1004_ex1_4",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "1",
+        "label": "4",
+        "top": 75,
+        "left": 66,
+        "width": 14.5,
+        "height": 2.2,
+        "correct": "on holiday"
+      },
+      {
+        "id": "p1004_ex2_1",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "1",
+        "top": 81.3,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "e"
+      },
+      {
+        "id": "p1004_ex2_2",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "2",
+        "top": 83,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "f"
+      },
+      {
+        "id": "p1004_ex2_3",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "3",
+        "top": 84.7,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "h"
+      },
+      {
+        "id": "p1004_ex2_4",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "4",
+        "top": 86.4,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "b"
+      },
+      {
+        "id": "p1004_ex2_5",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "5",
+        "top": 88.1,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "g"
+      },
+      {
+        "id": "p1004_ex2_6",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "6",
+        "top": 89.8,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "c"
+      },
+      {
+        "id": "p1004_ex2_7",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "7",
+        "top": 91.5,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "a"
+      },
+      {
+        "id": "p1004_ex2_8",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "2",
+        "label": "8",
+        "top": 93.3,
+        "left": 23.5,
+        "width": 4,
+        "height": 2,
+        "correct": "d"
+      },
+      {
+        "id": "p1004_ex3_2",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "2",
+        "top": 87.8,
+        "left": 60.3,
+        "width": 7,
+        "height": 2,
+        "correct": "Hi"
+      },
+      {
+        "id": "p1004_ex3_3",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "3",
+        "top": 87.8,
+        "left": 76.5,
+        "width": 7.5,
+        "height": 2,
+        "correct": "Nice"
+      },
+      {
+        "id": "p1004_ex3_4",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "4",
+        "top": 89.3,
+        "left": 60.3,
+        "width": 7,
+        "height": 2,
+        "correct": "And"
+      },
+      {
+        "id": "p1004_ex3_5",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "5",
+        "top": 89.3,
+        "left": 74.4,
+        "width": 7,
+        "height": 2,
+        "correct": "you"
+      },
+      {
+        "id": "p1004_ex3_6",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "6",
+        "top": 90.8,
+        "left": 60.3,
+        "width": 7,
+        "height": 2,
+        "correct": "No"
+      },
+      {
+        "id": "p1004_ex3_7",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "7",
+        "top": 90.8,
+        "left": 81.9,
+        "width": 7.5,
+        "height": 2,
+        "correct": "study"
+      },
+      {
+        "id": "p1004_ex3_8",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "8",
+        "top": 92.3,
+        "left": 74.4,
+        "width": 8.5,
+        "height": 2,
+        "correct": "holiday"
+      },
+      {
+        "id": "p1004_ex3_9",
+        "type": "fill",
+        "page": 1004,
+        "exercise": "3",
+        "label": "9",
+        "top": 93.9,
+        "left": 60.6,
+        "width": 7,
+        "height": 2,
+        "correct": "Yes"
+      }
+    ],
     "2004": [
       {
         "id": "p2004_ex2_2",
@@ -53836,6 +54066,7 @@
     "85": 2026,
     "86": 2026,
     "87": 2026,
+    "1004": 1793185968412,
     "2004": 2026,
     "2005": 2026,
     "2006": 2026,
@@ -53963,5 +54194,5 @@
   "timetable": [],
   "contests": [],
   "payments": {},
-  "updatedAt": 1793185937945
+  "updatedAt": 1793185969054
 }
