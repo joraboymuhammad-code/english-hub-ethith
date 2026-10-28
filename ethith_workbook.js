@@ -132516,12 +132516,17 @@
             '<label style="display:block;font-size:11px;font-weight:800;margin-bottom:4px;color:#94a3b8;">Turi (interaction type):</label>' +
             '<select id="ethWbModalType" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12px;">' +
               '<option value="fill">Fill (O‘qib yozish)</option>' +
+              '<option value="select">Select (Dropdown - Tanlash)</option>' +
               '<option value="cross">Cross (Chizib o‘chirish)</option>' +
               '<option value="choose">Choose (Variant tanlash)</option>' +
               '<option value="choice">Choice (Variant tanlash)</option>' +
               '<option value="match">Match (Harf bilan bog‘lash)</option>' +
               '<option value="insert">Insert (Prepozitsiya kiritish)</option>' +
             '</select>' +
+          '</div>' +
+          '<div id="ethWbModalOptionsWrap" style="display:none;margin-bottom:10px;">' +
+            '<label style="display:block;font-size:11px;font-weight:800;margin-bottom:4px;color:#94a3b8;">Variantlar (vergul bilan: Am I, I\'m not):</label>' +
+            '<input type="text" id="ethWbModalOptions" style="width:100%;padding:7px 10px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12px;box-sizing:border-box;" placeholder="masalan: Am I, I\'m not yoki 787, 887" />' +
           '</div>' +
           '<div style="margin-bottom:10px;">' +
             '<label style="display:block;font-size:11px;font-weight:800;margin-bottom:4px;color:#94a3b8;">Guruh / Belgisi (Label / Group):</label>' +
@@ -132563,8 +132568,9 @@
         '<span>📄 ' + pageIndex + '-bet (' + bookLabel + ' Page ' + dispP + ')</span>' +
         '<span style="color:#38bdf8;">' + inputs.length + ' ta interaktiv topshiriq</span>' +
       '</div>' +
+      '<div style="position:relative;width:100%;">' +
       '<img src="' + imgSrc + '" class="eth-wb-img" data-page="' + pageNum + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:' + (isEditor ? 'none' : 'auto') + ';" alt="Oxford ' + bookLabel + ' Page ' + dispP + '" />' +
-      '<div class="eth-wb-overlay-layer" data-page="' + pageNum + '" style="position:absolute;top:29px;left:0;right:0;bottom:0;' + (isEditor ? 'cursor:crosshair;' : '') + '">';
+      '<div class="eth-wb-overlay-layer" data-page="' + pageNum + '" style="position:absolute;inset:0;' + (isEditor ? 'cursor:crosshair;' : '') + '">';
 
     inputs.forEach(function(item) {
       var itemType = item.type || 'fill';
@@ -132684,7 +132690,7 @@
       h += '<div class="eth-wb-drag-box" style="display:none;position:absolute;border:2px dashed #ef4444;background:rgba(239,68,68,0.2);pointer-events:none;z-index:100;"></div>';
     }
 
-    h += '</div></div>';
+    h += '</div></div></div>';
     return h;
   }
 
@@ -133542,15 +133548,23 @@
       var t = modalType ? modalType.value : 'fill';
       var helper = modal ? modal.querySelector('#ethWbModalChooseHelper') : null;
       var lbl = modal ? modal.querySelector('#ethWbModalCorrectLabel') : null;
+      var optsWrap = modal ? modal.querySelector('#ethWbModalOptionsWrap') : null;
 
       if (t === 'choose') {
         if (lbl) lbl.textContent = "Ushbu variant to‘g‘rimi? (Variant to‘g‘riligi):";
         if (helper) helper.style.display = 'flex';
+        if (optsWrap) optsWrap.style.display = 'none';
         if (modalCorrect) modalCorrect.placeholder = "Bo‘sh = Noto‘g‘ri. 'To‘g‘ri' bosilsa = To‘g‘ri";
         updateChoosePillsHighlight();
+      } else if (t === 'select') {
+        if (lbl) lbl.textContent = "To‘g‘ri variant (yuqoridagi variantlardan biri):";
+        if (helper) helper.style.display = 'none';
+        if (optsWrap) optsWrap.style.display = 'block';
+        if (modalCorrect) modalCorrect.placeholder = "masalan: Am I yoki Spain";
       } else {
         if (lbl) lbl.textContent = 'To‘g‘ri Javob ("or" bilan variantlar):';
         if (helper) helper.style.display = 'none';
+        if (optsWrap) optsWrap.style.display = 'none';
         if (modalCorrect) modalCorrect.placeholder = "masalan: coast yoki a";
       }
     }
@@ -133597,6 +133611,10 @@
       modalType.value = itemType;
       modalLabel.value = item.label || item.group || '';
 
+      var modalOptions = modal ? modal.querySelector('#ethWbModalOptions') : null;
+      if (modalOptions) {
+        modalOptions.value = Array.isArray(item.options) ? item.options.join(', ') : '';
+      }
       if (itemType === 'choose' || itemType === 'choice') {
         var isItemTrue = (item.correct === true || item.correct === 'true' || item.isCorrect === true || item.isCorrect === 'true' || item.correct === 'To‘g‘ri' || item.correct === 'to\'g\'ri' || item.correct === 'ha' || item.correct === 'yes');
         modalCorrect.value = isItemTrue ? 'To‘g‘ri' : '';
@@ -133690,6 +133708,9 @@
         var curType = modalType.value;
         var grpVal = modalLabel.value.trim();
         var rawCorr = modalCorrect.value.trim();
+        var modalOptions = modal ? modal.querySelector('#ethWbModalOptions') : null;
+        var rawOpts = modalOptions ? modalOptions.value.trim() : '';
+        var opts = rawOpts ? rawOpts.split(',').map(function(s) { return s.trim(); }).filter(Boolean) : [];
 
         if (currentTarget.isNew) {
           var newItem = currentTarget.item;
@@ -133700,6 +133721,10 @@
             newItem.group = grpVal || ('p' + page + '_grp_' + Date.now().toString().slice(-4));
             newItem.correct = isModalValueTrue(); // Always BOOLEAN true or false
             newItem.text = grpVal;
+          } else if (curType === 'select') {
+            newItem.group = grpVal;
+            newItem.options = opts;
+            newItem.correct = [rawCorr];
           } else {
             newItem.group = grpVal;
             newItem.correct = rawCorr;
@@ -133714,6 +133739,10 @@
               exist.group = grpVal || exist.group || ('p' + page + '_grp_' + Date.now().toString().slice(-4));
               exist.correct = isModalValueTrue(); // Always BOOLEAN true or false
               if (grpVal) exist.text = grpVal;
+            } else if (curType === 'select') {
+              exist.group = grpVal;
+              exist.options = opts;
+              exist.correct = [rawCorr];
             } else {
               exist.group = grpVal;
               exist.correct = rawCorr;
@@ -133849,15 +133878,18 @@
       var dragBox = layer.querySelector('.eth-wb-drag-box');
       var isDrawing = false;
       var startX = 0, startY = 0;
-      var rect = null;
 
-      layer.addEventListener('mousedown', function(e) {
-        if (e.button === 2) return;
+      function onStart(e) {
+        var isTouch = !!e.touches;
+        if (!isTouch && e.button === 2) return;
         if (e.target.classList.contains('eth-wb-edit-handle') || e.target.classList.contains('wb-letter-btn')) return;
+        var p = isTouch ? e.touches[0] : e;
+        if (isTouch && e.touches.length > 1) return; // allow pinch zoom
+        if (e.cancelable) e.preventDefault();
         isDrawing = true;
-        rect = layer.getBoundingClientRect();
-        startX = e.clientX - rect.left;
-        startY = e.clientY - rect.top;
+        var rect = layer.getBoundingClientRect();
+        startX = p.clientX - rect.left;
+        startY = p.clientY - rect.top;
         if (dragBox) {
           dragBox.style.left = startX + 'px';
           dragBox.style.top = startY + 'px';
@@ -133865,12 +133897,17 @@
           dragBox.style.height = '0px';
           dragBox.style.display = 'block';
         }
-      });
+      }
 
-      window.addEventListener('mousemove', function(e) {
-        if (!isDrawing || !rect || !dragBox) return;
-        var curX = e.clientX - rect.left;
-        var curY = e.clientY - rect.top;
+      function onMove(e) {
+        if (!isDrawing || !dragBox) return;
+        var isTouch = !!e.touches;
+        if (isTouch && e.touches.length > 1) return;
+        if (e.cancelable) e.preventDefault();
+        var p = isTouch ? e.touches[0] : e;
+        var rect = layer.getBoundingClientRect();
+        var curX = p.clientX - rect.left;
+        var curY = p.clientY - rect.top;
         var left = Math.min(startX, curX);
         var top = Math.min(startY, curY);
         var width = Math.abs(curX - startX);
@@ -133880,16 +133917,17 @@
         dragBox.style.top = top + 'px';
         dragBox.style.width = width + 'px';
         dragBox.style.height = height + 'px';
-      });
+      }
 
-      window.addEventListener('mouseup', function(e) {
+      function onEnd(e) {
         if (!isDrawing) return;
         isDrawing = false;
         if (dragBox) dragBox.style.display = 'none';
 
-        if (!rect) return;
-        var endX = e.clientX - rect.left;
-        var endY = e.clientY - rect.top;
+        var p = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : e;
+        var rect = layer.getBoundingClientRect();
+        var endX = p.clientX - rect.left;
+        var endY = p.clientY - rect.top;
         var wPx = Math.abs(endX - startX);
         var hPx = Math.abs(endY - startY);
 
@@ -133909,10 +133947,18 @@
             correct: '',
             label: ''
           };
-          var aRect = { left: rect.left + Math.min(startX, endX), top: rect.top + Math.min(startY, endY), width: wPx, height: hPx }; openModal(true, page, newItem, aRect);
+          var aRect = { left: rect.left + Math.min(startX, endX), top: rect.top + Math.min(startY, endY), width: wPx, height: hPx };
+          openModal(true, page, newItem, aRect);
         }
-        rect = null;
-      });
+      }
+
+      layer.addEventListener('mousedown', onStart);
+      layer.addEventListener('touchstart', onStart, { passive: false });
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('touchmove', onMove, { passive: false });
+      window.addEventListener('mouseup', onEnd);
+      window.addEventListener('touchend', onEnd);
+      window.addEventListener('touchcancel', onEnd);
     });
 
     // 3. Export JSON Button
