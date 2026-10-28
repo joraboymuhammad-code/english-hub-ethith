@@ -557,13 +557,16 @@
         localStorage.setItem('ethith_wb_coords_v15_' + pNum, JSON.stringify(event.inputs));
         localStorage.setItem('ethith_wb_ts_' + pNum, evTs.toString());
       } catch(e) {}
-      if (window.ETHITH_WORKBOOK_B1) {
-        if (window.ETHITH_WORKBOOK_B1.defaultInputs) {
-          window.ETHITH_WORKBOOK_B1.defaultInputs[pNum] = event.inputs;
+      var WB = window.ETHITH_WORKBOOK_B1 || window.ETHITH_WORKBOOK;
+      if (WB) {
+        if (WB.defaultInputs) {
+          WB.defaultInputs[pNum] = event.inputs;
         }
-        window.ETHITH_WORKBOOK_B1.savePageInputs(pNum, event.inputs, /* noBroadcast */ true);
-        if (typeof window.ETHITH_WORKBOOK_B1.liveRefreshPage === 'function') {
-          window.ETHITH_WORKBOOK_B1.liveRefreshPage(pNum);
+        if (typeof WB.savePageInputs === 'function') {
+          WB.savePageInputs(pNum, event.inputs, /* noBroadcast */ true);
+        }
+        if (typeof WB.liveRefreshPage === 'function') {
+          WB.liveRefreshPage(pNum);
         }
         if (window.toast && !window._ethithWbEditorMode) {
           var dispPage = pNum > 2000 ? ('Upper-Intermediate ' + (pNum - 2000)) : pNum;

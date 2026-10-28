@@ -79803,168 +79803,160 @@
             "height": 2.2
       }
 ],
-    "4004": [
+        "4004": [
       {
-            "id": "p4004_ex1_2",
+            "id": "p4004_ex1_a",
             "type": "fill",
-            "x": 45,
-            "y": 36.5,
-            "w": 6,
+            "x": 46.5,
+            "y": 33.5,
+            "w": 5.5,
             "h": 2.2,
-            "top": 36.5,
-            "left": 45,
-            "width": 6,
+            "top": 33.5,
+            "left": 46.5,
+            "width": 5.5,
             "height": 2.2,
             "correct": [
-                  "have",
-                  "b"
+                  "6",
+                  "a",
+                  "6 a"
             ]
       },
       {
-            "id": "p4004_ex1_3",
+            "id": "p4004_ex1_b",
             "type": "fill",
-            "x": 45,
-            "y": 38.2,
-            "w": 6,
+            "x": 46.5,
+            "y": 36.4,
+            "w": 5.5,
             "h": 2.2,
-            "top": 38.2,
-            "left": 45,
-            "width": 6,
+            "top": 36.4,
+            "left": 46.5,
+            "width": 5.5,
             "height": 2.2,
             "correct": [
-                  "do",
-                  "c"
+                  "4",
+                  "b",
+                  "4 b"
             ]
       },
       {
-            "id": "p4004_ex1_4",
+            "id": "p4004_ex1_c",
             "type": "fill",
-            "x": 45,
-            "y": 41.5,
-            "w": 6,
+            "x": 46.5,
+            "y": 38.3,
+            "w": 5.5,
             "h": 2.2,
-            "top": 41.5,
-            "left": 45,
-            "width": 6,
+            "top": 38.3,
+            "left": 46.5,
+            "width": 5.5,
             "height": 2.2,
             "correct": [
-                  "have",
-                  "d"
+                  "7",
+                  "c",
+                  "7 c"
             ]
       },
       {
-            "id": "p4004_ex1_5",
+            "id": "p4004_ex1_d",
             "type": "fill",
-            "x": 45,
-            "y": 43.5,
-            "w": 6,
+            "x": 46.5,
+            "y": 41.3,
+            "w": 5.5,
             "h": 2.2,
-            "top": 43.5,
-            "left": 45,
-            "width": 6,
+            "top": 41.3,
+            "left": 46.5,
+            "width": 5.5,
             "height": 2.2,
             "correct": [
-                  "go",
-                  "e"
+                  "2",
+                  "d",
+                  "2 d"
             ]
       },
       {
-            "id": "p4004_ex1_6",
+            "id": "p4004_ex1_e",
             "type": "fill",
-            "x": 45,
-            "y": 45.5,
-            "w": 6,
+            "x": 46.5,
+            "y": 43.1,
+            "w": 5.5,
             "h": 2.2,
-            "top": 45.5,
-            "left": 45,
-            "width": 6,
+            "top": 43.1,
+            "left": 46.5,
+            "width": 5.5,
             "height": 2.2,
             "correct": [
-                  "have",
-                  "f"
+                  "5",
+                  "e",
+                  "5 e"
             ]
       },
       {
-            "id": "p4004_ex1_7",
+            "id": "p4004_ex1_f",
             "type": "fill",
-            "x": 45,
-            "y": 47.5,
-            "w": 6,
+            "x": 46.5,
+            "y": 44.8,
+            "w": 5.5,
             "h": 2.2,
-            "top": 47.5,
-            "left": 45,
-            "width": 6,
+            "top": 44.8,
+            "left": 46.5,
+            "width": 5.5,
             "height": 2.2,
             "correct": [
-                  "make",
-                  "g"
+                  "3",
+                  "f",
+                  "3 f"
             ]
       },
       {
-            "id": "p4004_ex1_8",
+            "id": "p4004_ex1_g",
             "type": "fill",
-            "x": 45,
-            "y": 49.5,
-            "w": 6,
+            "x": 46.5,
+            "y": 46.5,
+            "w": 5.5,
             "h": 2.2,
-            "top": 49.5,
-            "left": 45,
-            "width": 6,
+            "top": 46.5,
+            "left": 46.5,
+            "width": 5.5,
             "height": 2.2,
             "correct": [
-                  "have",
-                  "h"
+                  "1",
+                  "g",
+                  "1 g"
             ]
       },
       {
-            "id": "p4004_ex1_9",
+            "id": "p4004_ex1_h",
             "type": "fill",
-            "x": 45,
-            "y": 51.5,
-            "w": 6,
+            "x": 46.5,
+            "y": 48.2,
+            "w": 5.5,
             "h": 2.2,
-            "top": 51.5,
-            "left": 45,
-            "width": 6,
+            "top": 48.2,
+            "left": 46.5,
+            "width": 5.5,
             "height": 2.2,
             "correct": [
-                  "do",
-                  "a"
-            ]
-      },
-      {
-            "id": "p4004_ex1_10",
-            "type": "fill",
-            "x": 45,
-            "y": 53.5,
-            "w": 6,
-            "h": 2.2,
-            "top": 53.5,
-            "left": 45,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "have",
-                  "b"
+                  "8",
+                  "h",
+                  "8 h"
             ]
       },
       {
             "id": "p4004_ex2_2",
             "type": "select",
-            "x": 25,
-            "y": 56.5,
-            "w": 14,
+            "x": 16,
+            "y": 70,
+            "w": 6.8,
             "h": 2.2,
-            "top": 56.5,
-            "left": 25,
-            "width": 14,
+            "top": 70,
+            "left": 16,
+            "width": 6.8,
             "height": 2.2,
             "correct": [
                   "do"
             ],
             "options": [
-                  "have",
                   "do",
+                  "have",
                   "go",
                   "make"
             ]
@@ -79972,20 +79964,20 @@
       {
             "id": "p4004_ex2_3",
             "type": "select",
-            "x": 25,
-            "y": 59.5,
-            "w": 14,
+            "x": 16,
+            "y": 76.2,
+            "w": 6.8,
             "h": 2.2,
-            "top": 59.5,
-            "left": 25,
-            "width": 14,
+            "top": 76.2,
+            "left": 16,
+            "width": 6.8,
             "height": 2.2,
             "correct": [
                   "do"
             ],
             "options": [
-                  "have",
                   "do",
+                  "have",
                   "go",
                   "make"
             ]
@@ -79993,20 +79985,20 @@
       {
             "id": "p4004_ex2_4",
             "type": "select",
-            "x": 25,
-            "y": 62.5,
-            "w": 14,
+            "x": 16,
+            "y": 82.3,
+            "w": 6.8,
             "h": 2.2,
-            "top": 62.5,
-            "left": 25,
-            "width": 14,
+            "top": 82.3,
+            "left": 16,
+            "width": 6.8,
             "height": 2.2,
             "correct": [
                   "have"
             ],
             "options": [
-                  "have",
                   "do",
+                  "have",
                   "go",
                   "make"
             ]
@@ -80014,20 +80006,20 @@
       {
             "id": "p4004_ex2_5",
             "type": "select",
-            "x": 25,
-            "y": 65.5,
-            "w": 14,
+            "x": 16,
+            "y": 86.8,
+            "w": 6.8,
             "h": 2.2,
-            "top": 65.5,
-            "left": 25,
-            "width": 14,
+            "top": 86.8,
+            "left": 16,
+            "width": 6.8,
             "height": 2.2,
             "correct": [
                   "go"
             ],
             "options": [
-                  "have",
                   "do",
+                  "have",
                   "go",
                   "make"
             ]
@@ -80035,20 +80027,20 @@
       {
             "id": "p4004_ex2_6",
             "type": "select",
-            "x": 25,
-            "y": 68.5,
-            "w": 14,
+            "x": 33,
+            "y": 67.2,
+            "w": 6.8,
             "h": 2.2,
-            "top": 68.5,
-            "left": 25,
-            "width": 14,
+            "top": 67.2,
+            "left": 33,
+            "width": 6.8,
             "height": 2.2,
             "correct": [
                   "have"
             ],
             "options": [
-                  "have",
                   "do",
+                  "have",
                   "go",
                   "make"
             ]
@@ -80056,20 +80048,20 @@
       {
             "id": "p4004_ex2_7",
             "type": "select",
-            "x": 25,
-            "y": 71.5,
-            "w": 14,
+            "x": 33,
+            "y": 70,
+            "w": 6.8,
             "h": 2.2,
-            "top": 71.5,
-            "left": 25,
-            "width": 14,
+            "top": 70,
+            "left": 33,
+            "width": 6.8,
             "height": 2.2,
             "correct": [
                   "have"
             ],
             "options": [
-                  "have",
                   "do",
+                  "have",
                   "go",
                   "make"
             ]
@@ -80077,20 +80069,20 @@
       {
             "id": "p4004_ex2_8",
             "type": "select",
-            "x": 25,
-            "y": 74.5,
-            "w": 14,
+            "x": 33,
+            "y": 74.8,
+            "w": 6.8,
             "h": 2.2,
-            "top": 74.5,
-            "left": 25,
-            "width": 14,
+            "top": 74.8,
+            "left": 33,
+            "width": 6.8,
             "height": 2.2,
             "correct": [
                   "make"
             ],
             "options": [
-                  "have",
                   "do",
+                  "have",
                   "go",
                   "make"
             ]
@@ -80098,20 +80090,20 @@
       {
             "id": "p4004_ex2_9",
             "type": "select",
-            "x": 25,
-            "y": 77.5,
-            "w": 14,
+            "x": 33,
+            "y": 80.8,
+            "w": 6.8,
             "h": 2.2,
-            "top": 77.5,
-            "left": 25,
-            "width": 14,
+            "top": 80.8,
+            "left": 33,
+            "width": 6.8,
             "height": 2.2,
             "correct": [
                   "do"
             ],
             "options": [
-                  "have",
                   "do",
+                  "have",
                   "go",
                   "make"
             ]
@@ -80119,50 +80111,34 @@
       {
             "id": "p4004_ex2_10",
             "type": "select",
-            "x": 25,
-            "y": 80.5,
-            "w": 14,
+            "x": 33,
+            "y": 85.3,
+            "w": 6.8,
             "h": 2.2,
-            "top": 80.5,
-            "left": 25,
-            "width": 14,
+            "top": 85.3,
+            "left": 33,
+            "width": 6.8,
             "height": 2.2,
             "correct": [
                   "have"
             ],
             "options": [
-                  "have",
                   "do",
+                  "have",
                   "go",
                   "make"
-            ]
-      },
-      {
-            "id": "p4004_ex3_1",
-            "type": "fill",
-            "x": 58,
-            "y": 33,
-            "w": 35,
-            "h": 2.2,
-            "top": 33,
-            "left": 58,
-            "width": 35,
-            "height": 2.2,
-            "correct": [
-                  "Eat healthy food",
-                  "eat healthy food"
             ]
       },
       {
             "id": "p4004_ex3_2",
             "type": "fill",
             "x": 58,
-            "y": 41,
-            "w": 35,
+            "y": 62.4,
+            "w": 13.5,
             "h": 2.2,
-            "top": 41,
+            "top": 62.4,
             "left": 58,
-            "width": 35,
+            "width": 13.5,
             "height": 2.2,
             "correct": [
                   "go shopping",
@@ -80173,12 +80149,12 @@
             "id": "p4004_ex3_3",
             "type": "fill",
             "x": 58,
-            "y": 49,
-            "w": 35,
+            "y": 67.4,
+            "w": 15,
             "h": 2.2,
-            "top": 49,
+            "top": 67.4,
             "left": 58,
-            "width": 35,
+            "width": 15,
             "height": 2.2,
             "correct": [
                   "Do some exercise",
@@ -80188,13 +80164,13 @@
       {
             "id": "p4004_ex3_4",
             "type": "fill",
-            "x": 58,
-            "y": 57,
-            "w": 35,
+            "x": 77,
+            "y": 71.3,
+            "w": 13,
             "h": 2.2,
-            "top": 57,
-            "left": 58,
-            "width": 35,
+            "top": 71.3,
+            "left": 77,
+            "width": 13,
             "height": 2.2,
             "correct": [
                   "stay in",
@@ -80205,12 +80181,12 @@
             "id": "p4004_ex3_5",
             "type": "fill",
             "x": 58,
-            "y": 65,
-            "w": 35,
+            "y": 76.2,
+            "w": 16.5,
             "h": 2.2,
-            "top": 65,
+            "top": 76.2,
             "left": 58,
-            "width": 35,
+            "width": 16.5,
             "height": 2.2,
             "correct": [
                   "Have an early night",
@@ -80220,13 +80196,13 @@
       {
             "id": "p4004_ex3_6",
             "type": "fill",
-            "x": 58,
-            "y": 73,
-            "w": 35,
+            "x": 63.5,
+            "y": 79.8,
+            "w": 12,
             "h": 2.2,
-            "top": 73,
-            "left": 58,
-            "width": 35,
+            "top": 79.8,
+            "left": 63.5,
+            "width": 12,
             "height": 2.2,
             "correct": [
                   "go to bed late",
@@ -80237,12 +80213,12 @@
             "id": "p4004_ex3_7",
             "type": "fill",
             "x": 58,
-            "y": 81,
-            "w": 35,
+            "y": 84.6,
+            "w": 17.5,
             "h": 2.2,
-            "top": 81,
+            "top": 84.6,
             "left": 58,
-            "width": 35,
+            "width": 17.5,
             "height": 2.2,
             "correct": [
                   "Spend time with relatives",
@@ -80252,13 +80228,13 @@
       {
             "id": "p4004_ex3_8",
             "type": "fill",
-            "x": 58,
-            "y": 89,
-            "w": 35,
+            "x": 63.5,
+            "y": 88.3,
+            "w": 13,
             "h": 2.2,
-            "top": 89,
-            "left": 58,
-            "width": 35,
+            "top": 88.3,
+            "left": 63.5,
+            "width": 13,
             "height": 2.2,
             "correct": [
                   "have a good time",
@@ -80268,40 +80244,15 @@
 ],
     "4005": [
       {
-            "id": "p4005_ex4_1",
-            "type": "select",
-            "x": 10,
-            "y": 21.5,
-            "w": 16,
-            "h": 2.2,
-            "top": 21.5,
-            "left": 10,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "What time"
-            ],
-            "options": [
-                  "What time",
-                  "Who",
-                  "Where",
-                  "How much",
-                  "When",
-                  "How often",
-                  "How many",
-                  "What kind"
-            ]
-      },
-      {
             "id": "p4005_ex4_2",
             "type": "select",
-            "x": 10,
-            "y": 25.5,
-            "w": 16,
+            "x": 12.5,
+            "y": 23.5,
+            "w": 8,
             "h": 2.2,
-            "top": 25.5,
-            "left": 10,
-            "width": 16,
+            "top": 23.5,
+            "left": 12.5,
+            "width": 8,
             "height": 2.2,
             "correct": [
                   "Who"
@@ -80320,13 +80271,13 @@
       {
             "id": "p4005_ex4_3",
             "type": "select",
-            "x": 10,
-            "y": 29.5,
-            "w": 16,
+            "x": 12.5,
+            "y": 28.5,
+            "w": 8,
             "h": 2.2,
-            "top": 29.5,
-            "left": 10,
-            "width": 16,
+            "top": 28.5,
+            "left": 12.5,
+            "width": 8,
             "height": 2.2,
             "correct": [
                   "Where"
@@ -80345,13 +80296,13 @@
       {
             "id": "p4005_ex4_4",
             "type": "select",
-            "x": 10,
-            "y": 33.5,
-            "w": 16,
+            "x": 12.5,
+            "y": 31.9,
+            "w": 8,
             "h": 2.2,
-            "top": 33.5,
-            "left": 10,
-            "width": 16,
+            "top": 31.9,
+            "left": 12.5,
+            "width": 8,
             "height": 2.2,
             "correct": [
                   "How much"
@@ -80370,13 +80321,13 @@
       {
             "id": "p4005_ex4_5",
             "type": "select",
-            "x": 10,
-            "y": 37.5,
-            "w": 16,
+            "x": 12.5,
+            "y": 35.3,
+            "w": 8,
             "h": 2.2,
-            "top": 37.5,
-            "left": 10,
-            "width": 16,
+            "top": 35.3,
+            "left": 12.5,
+            "width": 8,
             "height": 2.2,
             "correct": [
                   "When"
@@ -80395,13 +80346,13 @@
       {
             "id": "p4005_ex4_6",
             "type": "select",
-            "x": 10,
-            "y": 41.5,
-            "w": 16,
+            "x": 12.5,
+            "y": 38.8,
+            "w": 8,
             "h": 2.2,
-            "top": 41.5,
-            "left": 10,
-            "width": 16,
+            "top": 38.8,
+            "left": 12.5,
+            "width": 8,
             "height": 2.2,
             "correct": [
                   "How often"
@@ -80420,13 +80371,13 @@
       {
             "id": "p4005_ex4_7",
             "type": "select",
-            "x": 10,
-            "y": 45.5,
-            "w": 16,
+            "x": 12.5,
+            "y": 42.2,
+            "w": 8,
             "h": 2.2,
-            "top": 45.5,
-            "left": 10,
-            "width": 16,
+            "top": 42.2,
+            "left": 12.5,
+            "width": 8,
             "height": 2.2,
             "correct": [
                   "How many"
@@ -80445,13 +80396,13 @@
       {
             "id": "p4005_ex4_8",
             "type": "select",
-            "x": 10,
-            "y": 49.5,
-            "w": 16,
+            "x": 12.5,
+            "y": 45.6,
+            "w": 8,
             "h": 2.2,
-            "top": 49.5,
-            "left": 10,
-            "width": 16,
+            "top": 45.6,
+            "left": 12.5,
+            "width": 8,
             "height": 2.2,
             "correct": [
                   "What kind"
@@ -80468,31 +80419,15 @@
             ]
       },
       {
-            "id": "p4005_ex5_1",
-            "type": "fill",
-            "x": 10,
-            "y": 56.5,
-            "w": 38,
-            "h": 2.2,
-            "top": 56.5,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "When is your birthday?",
-                  "When is your birthday"
-            ]
-      },
-      {
             "id": "p4005_ex5_2",
             "type": "fill",
-            "x": 10,
-            "y": 61.5,
-            "w": 38,
+            "x": 10.9,
+            "y": 62.4,
+            "w": 36,
             "h": 2.2,
-            "top": 61.5,
-            "left": 10,
-            "width": 38,
+            "top": 62.4,
+            "left": 10.9,
+            "width": 36,
             "height": 2.2,
             "correct": [
                   "Who do you chat with online?",
@@ -80502,13 +80437,13 @@
       {
             "id": "p4005_ex5_3",
             "type": "fill",
-            "x": 10,
-            "y": 66.5,
-            "w": 38,
+            "x": 10.9,
+            "y": 64.1,
+            "w": 36,
             "h": 2.2,
-            "top": 66.5,
-            "left": 10,
-            "width": 38,
+            "top": 64.1,
+            "left": 10.9,
+            "width": 36,
             "height": 2.2,
             "correct": [
                   "What kind of films do you like?",
@@ -80518,13 +80453,13 @@
       {
             "id": "p4005_ex5_4",
             "type": "fill",
-            "x": 10,
-            "y": 71.5,
-            "w": 38,
+            "x": 10.9,
+            "y": 65.8,
+            "w": 36,
             "h": 2.2,
-            "top": 71.5,
-            "left": 10,
-            "width": 38,
+            "top": 65.8,
+            "left": 10.9,
+            "width": 36,
             "height": 2.2,
             "correct": [
                   "Are you busy right now?",
@@ -80534,13 +80469,13 @@
       {
             "id": "p4005_ex5_5",
             "type": "fill",
-            "x": 10,
-            "y": 76.5,
-            "w": 38,
+            "x": 10.9,
+            "y": 67.5,
+            "w": 36,
             "h": 2.2,
-            "top": 76.5,
-            "left": 10,
-            "width": 38,
+            "top": 67.5,
+            "left": 10.9,
+            "width": 36,
             "height": 2.2,
             "correct": [
                   "How often do you spend time with relatives?",
@@ -80550,13 +80485,13 @@
       {
             "id": "p4005_ex5_6",
             "type": "fill",
-            "x": 10,
-            "y": 81.5,
-            "w": 38,
+            "x": 10.9,
+            "y": 69.2,
+            "w": 36,
             "h": 2.2,
-            "top": 81.5,
-            "left": 10,
-            "width": 38,
+            "top": 69.2,
+            "left": 10.9,
+            "width": 36,
             "height": 2.2,
             "correct": [
                   "How many hours did you sleep last night?",
@@ -80566,13 +80501,13 @@
       {
             "id": "p4005_ex5_7",
             "type": "fill",
-            "x": 10,
-            "y": 86.5,
-            "w": 38,
+            "x": 10.9,
+            "y": 70.9,
+            "w": 36,
             "h": 2.2,
-            "top": 86.5,
-            "left": 10,
-            "width": 38,
+            "top": 70.9,
+            "left": 10.9,
+            "width": 36,
             "height": 2.2,
             "correct": [
                   "Where are you from?",
@@ -80582,13 +80517,13 @@
       {
             "id": "p4005_ex5_8",
             "type": "fill",
-            "x": 10,
-            "y": 91.5,
-            "w": 38,
+            "x": 10.9,
+            "y": 72.6,
+            "w": 36,
             "h": 2.2,
-            "top": 91.5,
-            "left": 10,
-            "width": 38,
+            "top": 72.6,
+            "left": 10.9,
+            "width": 36,
             "height": 2.2,
             "correct": [
                   "Did you go shopping yesterday?",
@@ -80599,13 +80534,13 @@
       {
             "id": "p4005_ex6_1",
             "type": "fill",
-            "x": 65,
-            "y": 23.5,
-            "w": 14,
+            "x": 70,
+            "y": 45.4,
+            "w": 8.5,
             "h": 2.2,
-            "top": 23.5,
-            "left": 65,
-            "width": 14,
+            "top": 45.4,
+            "left": 70,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
                   "Are you",
@@ -80615,13 +80550,13 @@
       {
             "id": "p4005_ex6_2",
             "type": "fill",
-            "x": 65,
-            "y": 30.5,
-            "w": 16,
+            "x": 63.5,
+            "y": 48.8,
+            "w": 11.5,
             "h": 2.2,
-            "top": 30.5,
-            "left": 65,
-            "width": 16,
+            "top": 48.8,
+            "left": 63.5,
+            "width": 11.5,
             "height": 2.2,
             "correct": [
                   "Did you have",
@@ -80631,13 +80566,13 @@
       {
             "id": "p4005_ex6_3",
             "type": "fill",
-            "x": 65,
-            "y": 38.5,
-            "w": 20,
+            "x": 55.3,
+            "y": 55.3,
+            "w": 16,
             "h": 2.2,
-            "top": 38.5,
-            "left": 65,
-            "width": 20,
+            "top": 55.3,
+            "left": 55.3,
+            "width": 16,
             "height": 2.2,
             "correct": [
                   "When did you start",
@@ -80647,13 +80582,13 @@
       {
             "id": "p4005_ex6_4",
             "type": "fill",
-            "x": 65,
-            "y": 47.5,
-            "w": 14,
+            "x": 55.3,
+            "y": 58.7,
+            "w": 16,
             "h": 2.2,
-            "top": 47.5,
-            "left": 65,
-            "width": 14,
+            "top": 58.7,
+            "left": 55.3,
+            "width": 16,
             "height": 2.2,
             "correct": [
                   "Are you",
@@ -80663,30 +80598,30 @@
       {
             "id": "p4005_ex6_5",
             "type": "fill",
-            "x": 65,
-            "y": 55.5,
-            "w": 18,
+            "x": 60.5,
+            "y": 62.2,
+            "w": 13.5,
             "h": 2.2,
-            "top": 55.5,
-            "left": 65,
-            "width": 18,
+            "top": 62.2,
+            "left": 60.5,
+            "width": 13.5,
             "height": 2.2,
             "correct": [
                   "many did you win",
-                  "How many did you win",
-                  "did you win"
+                  "many did you win?",
+                  "How many did you win"
             ]
       },
       {
             "id": "p4005_ex6_6",
             "type": "fill",
-            "x": 65,
-            "y": 63.5,
-            "w": 16,
+            "x": 72,
+            "y": 67.2,
+            "w": 11,
             "h": 2.2,
-            "top": 63.5,
-            "left": 65,
-            "width": 16,
+            "top": 67.2,
+            "left": 72,
+            "width": 11,
             "height": 2.2,
             "correct": [
                   "do you live",
@@ -80696,13 +80631,13 @@
       {
             "id": "p4005_ex6_7",
             "type": "fill",
-            "x": 65,
-            "y": 71.5,
-            "w": 18,
+            "x": 62.5,
+            "y": 72.2,
+            "w": 13.5,
             "h": 2.2,
-            "top": 71.5,
-            "left": 65,
-            "width": 18,
+            "top": 72.2,
+            "left": 62.5,
+            "width": 13.5,
             "height": 2.2,
             "correct": [
                   "How did you get",
@@ -80712,13 +80647,13 @@
       {
             "id": "p4005_ex6_8",
             "type": "fill",
-            "x": 65,
-            "y": 79.5,
-            "w": 16,
+            "x": 66.5,
+            "y": 77.1,
+            "w": 12,
             "h": 2.2,
-            "top": 79.5,
-            "left": 65,
-            "width": 16,
+            "top": 77.1,
+            "left": 66.5,
+            "width": 12,
             "height": 2.2,
             "correct": [
                   "Do you want",
@@ -83854,7 +83789,7 @@
             ]
       }
 ],
-    "4018": [
+"4018": [
       {
             "id": "p4018_ex1_1",
             "type": "fill",
@@ -131079,37 +131014,22 @@
   // Get active inputs for a page (with custom saved overrides & cloud store fallback)
   WB.getPageInputs = function(page) {
     page = parseInt(page, 10);
-    // Oxford Navigate Beginner (A1) 1004..1083, Elementary (A2) 3004..3087 & Pre-Intermediate (B1) 4004..4087: 100% Calibrated Oxford Master Pages
-    if ((page >= 1004 && page <= 1083) || (page >= 3004 && page <= 3087) || (page >= 4004 && page <= 4087)) {
-      try {
-        localStorage.removeItem('ethith_wb_coords_v15_' + page);
-        localStorage.removeItem('ethith_wb_ts_' + page);
-      } catch(e) {}
-      return WB.defaultInputs[page] || [];
-    }
-    // Pages 2018..2031: 100% Calibrated Teacher Answer Key & pixel coordinates
-    var MASTER_CALIBRATION_TS = 1799999999999;
+    // 1. Check local saved teacher overrides first (never wipe out teacher's saved work!)
     try {
       var saved = localStorage.getItem('ethith_wb_coords_v15_' + page);
-      var hasTs = parseInt(localStorage.getItem('ethith_wb_ts_' + page) || '0', 10);
-      if (page >= 2018 && page <= 2031) {
-        if (saved && hasTs > MASTER_CALIBRATION_TS) {
-          var parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-        }
-        return WB.defaultInputs[page] || [];
-      }
       if (saved) {
         var parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && (parsed.length > 0 || hasTs)) {
+        if (Array.isArray(parsed) && parsed.length > 0) {
           return parsed;
         }
       }
     } catch(e) {}
+    // 2. Check cloud store overrides (synced from teacher in real-time)
     if (window.EthithSync && typeof window.EthithSync.getWorkbookCloudOverrides === 'function') {
       var cloudInps = window.EthithSync.getWorkbookCloudOverrides(page);
       if (Array.isArray(cloudInps) && cloudInps.length > 0) return cloudInps;
     }
+    // 3. Fallback to default calibrated master inputs
     return WB.defaultInputs[page] || [];
   };
 
