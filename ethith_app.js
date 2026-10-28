@@ -547,19 +547,6 @@
       '          <label class="eth-auth-label">Telefon Raqamingiz</label>' +
       '          <input type="tel" id="stPhone" class="eth-auth-input" placeholder="+998 90 123 45 67" required autocomplete="tel">' +
       '        </div>' +
-      '        <div style="margin:10px 0 14px;">' +
-      '          <a id="btnTelegramDirectLink" href="https://t.me/ETHITH_testbot?start=auth" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#0088cc,#006699);color:#ffffff;border-radius:14px;padding:12px 16px;text-decoration:none;font-size:13px;font-weight:900;box-shadow:0 6px 18px rgba(0,136,204,0.35);border:1px solid rgba(255,255,255,0.2);transition:all 0.2s;">' +
-      '            <span>✈️ Telegram Botdan Tasdiqlash Kodini Olish</span>' +
-      '          </a>' +
-      '          <small style="color:#94a3b8;font-size:11.5px;margin-top:6px;display:block;text-align:center;">' +
-      '            Tugmani bosing va Telegramda <b>Start</b> ni bosing — bot sizga tasdiqlash kodini yuboradi.' +
-      '          </small>' +
-      '        </div>' +
-      '        <div class="eth-auth-field" id="stCodeGroup">' +
-      '          <label class="eth-auth-label">Tasdiqlash Kodi</label>' +
-      '          <input type="text" id="stCode" class="eth-auth-input" placeholder="Masalan: 742-890 yoki K7#9M2" style="font-family:monospace;letter-spacing:2px;font-weight:800;font-size:15px;" required autocomplete="one-time-code">' +
-      '          <div id="stCodeNotice" style="font-size:11.5px;color:#34d399;margin-top:5px;display:none;"></div>' +
-      '        </div>' +
       '        <div id="stAccountNotice" style="margin:6px 0 12px;padding:9px 13px;border-radius:12px;font-size:12.5px;display:none"></div>' +
       '        <button type="submit" id="btnStudentSubmit" class="eth-auth-btn">Akkauntga Kirish (Ro‘yxatdan O‘tish)</button>' +
       '      </form>' +
@@ -955,11 +942,8 @@
         e.preventDefault();
         var nameInput = overlay.querySelector('#stName');
         var phoneInput = overlay.querySelector('#stPhone');
-        var codeInput = overlay.querySelector('#stCode');
-
         var name = (nameInput ? nameInput.value : '').trim();
         var phone = (phoneInput ? phoneInput.value : '').trim();
-        var enteredCode = (codeInput ? codeInput.value : '').trim();
 
         if (!name) {
           alert("Iltimos, ism va familiyangizni kiriting!");
@@ -967,16 +951,6 @@
         }
         if (!phone) {
           alert("Iltimos, telefon raqamingizni kiriting!");
-          return;
-        }
-        if (!enteredCode) {
-          alert("Iltimos, Telegram botimizdan (@ETHITH_testbot) tasdiqlash kodini olib kiriting!");
-          return;
-        }
-
-        var isCodeValid = await validateAuthCode(enteredCode, generatedStudentCode);
-        if (!isCodeValid) {
-          alert("❌ Tasdiqlash kodi noto‘g‘ri yoki eskirgan!\n\nIltimos, Telegram botimiz yuborgan 6 xonali kodni to‘g‘ri kiriting.");
           return;
         }
 
