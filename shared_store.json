@@ -61637,12 +61637,12 @@
       "card": "8600 3037 8661 9611",
       "paidThisMonth": true,
       "assignedClasses": [
-        "cls_yaxshilikova_kamola_beginner",
-        "cls_yaxshilikova_kamola_elementary"
+        "cls_yaxshilikova_kamola_elementary",
+        "cls_yaxshilikova_kamola_beginner"
       ],
       "classOrder": [
-        "cls_yaxshilikova_kamola_beginner",
-        "cls_yaxshilikova_kamola_elementary"
+        "cls_yaxshilikova_kamola_elementary",
+        "cls_yaxshilikova_kamola_beginner"
       ]
     },
     {
@@ -62086,5 +62086,5 @@
       }
     }
   },
-  "updatedAt": 1793202153447
+  "updatedAt": 1793202796289
 }
