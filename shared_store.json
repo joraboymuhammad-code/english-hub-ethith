@@ -11735,6 +11735,46 @@
             "cls_urolov_azizbek_upper_intermediate_standard_tester_10": {
               "status": "Q",
               "score": "2"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_11": {
+              "status": "K"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_12": {
+              "status": "K"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_13": {
+              "status": "K"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_14": {
+              "status": "K"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_15": {
+              "status": "K"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_16": {
+              "status": "K"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_17": {
+              "status": "Q",
+              "score": "2"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_18": {
+              "status": "K"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_2": {
+              "status": "K"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_3": {
+              "status": "K"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_4": {
+              "status": "K"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_5": {
+              "status": "K"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_6": {
+              "status": "K"
             }
           }
         },
@@ -11757,7 +11797,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793251470154
+        "updatedAt": 1793251488745
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -70903,5 +70943,5 @@
       }
     }
   },
-  "updatedAt": 1793251471430
+  "updatedAt": 1793251510139
 }
