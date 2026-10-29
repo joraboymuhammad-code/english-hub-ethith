@@ -1450,9 +1450,9 @@
   }
 
   // ====================================================
-  // ETHITH CLIENT BUILD VERSION & REAL-TIME CACHE-BUSTER
+  // ETHITH CLIENT BUILD VERSION & CACHE MANAGEMENT
   // ====================================================
-  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "2026.10.26.2230";
+  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "2026.10.29.1530";
 
   (function ensureFreshBuildOnStartup() {
     function purgeCachesAndReload(newVer) {
@@ -1475,45 +1475,60 @@
       window.location.replace(u.toString());
     }
 
-    // Startup check
-    try {
-      fetch('version.json?_t=' + Date.now(), { cache: 'no-store' })
-        .then(function(r) { return r.ok ? r.json() : null; })
-        .then(function(vData) {
-          if (vData && vData.version && vData.version !== window.ETHITH_BUILD_VERSION) {
-            console.log("⚡ Auto-updating to latest build version:", vData.version);
-            var lastRedirVer = sessionStorage.getItem('ethith_last_synced_ver');
-            if (lastRedirVer !== vData.version) {
-              sessionStorage.setItem('ethith_last_synced_ver', vData.version);
-              purgeCachesAndReload(vData.version);
-            }
-          }
-        }).catch(function() {});
-    } catch(e) {}
-
-    // Active polling for background updates every 4 seconds
-    setInterval(function() {
+    // Check version politely without annoying spam loops
+    function checkVersion() {
       try {
         fetch('version.json?_t=' + Date.now(), { cache: 'no-store' })
           .then(function(r) { return r.ok ? r.json() : null; })
           .then(function(vData) {
-            if (vData && vData.version && vData.version !== window.ETHITH_BUILD_VERSION) {
-              var banner = document.getElementById('eeAutoUpdateBanner');
-              if (!banner) {
-                banner = document.createElement('div');
-                banner.id = 'eeAutoUpdateBanner';
-                banner.style.cssText = 'position:fixed;top:18px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;padding:12px 24px;border-radius:30px;box-shadow:0 12px 35px rgba(0,0,0,0.85);z-index:2147483647;font-weight:900;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:10px;border:2px solid #38bdf8;animation:pulse 2s infinite;';
-                banner.innerHTML = '⚡ Tizim yangilandi (v' + vData.version + ')! Eng so‘nggi talqinga o‘tish uchun shu yerni bosing';
-                banner.onclick = function() {
-                  sessionStorage.setItem('ethith_last_synced_ver', vData.version);
+            if (!vData || !vData.version) return;
+            // If current page version matches latest, mark as synced and hide any banner
+            if (vData.version === window.ETHITH_BUILD_VERSION) {
+              sessionStorage.setItem('ethith_dismissed_ver', vData.version);
+              var b = document.getElementById('eeAutoUpdateBanner');
+              if (b) b.remove();
+              return;
+            }
+            // If user already dismissed this update version, do not nag them
+            if (sessionStorage.getItem('ethith_dismissed_ver') === vData.version) {
+              return;
+            }
+
+            var banner = document.getElementById('eeAutoUpdateBanner');
+            if (!banner) {
+              banner = document.createElement('div');
+              banner.id = 'eeAutoUpdateBanner';
+              banner.style.cssText = 'position:fixed;top:16px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;padding:10px 20px;border-radius:30px;box-shadow:0 12px 35px rgba(0,0,0,0.85);z-index:2147483647;font-weight:800;font-size:13px;display:flex;align-items:center;gap:12px;border:1.5px solid #38bdf8;';
+              banner.innerHTML = '<span>⚡ Tizim yangilandi (v' + vData.version + ')</span>' +
+                '<button id="eeUpdateNowBtn" style="background:#ffffff;color:#0284c7;border:none;padding:5px 12px;border-radius:15px;font-weight:900;cursor:pointer;font-size:12px;">Yangilash</button>' +
+                '<button id="eeDismissUpdateBtn" style="background:transparent;color:#93c5fd;border:none;font-weight:900;cursor:pointer;font-size:15px;padding:0 4px;" title="Yopish">✕</button>';
+
+              document.body.appendChild(banner);
+
+              var upBtn = document.getElementById('eeUpdateNowBtn');
+              if (upBtn) {
+                upBtn.onclick = function() {
+                  sessionStorage.setItem('ethith_dismissed_ver', vData.version);
+                  window.ETHITH_BUILD_VERSION = vData.version;
                   purgeCachesAndReload(vData.version);
                 };
-                document.body.appendChild(banner);
+              }
+
+              var disBtn = document.getElementById('eeDismissUpdateBtn');
+              if (disBtn) {
+                disBtn.onclick = function() {
+                  sessionStorage.setItem('ethith_dismissed_ver', vData.version);
+                  banner.remove();
+                };
               }
             }
           }).catch(function() {});
       } catch (e) {}
-    }, 4000);
+    }
+
+    // Single check on startup after 3 seconds, then poll gently every 10 minutes
+    setTimeout(checkVersion, 3000);
+    setInterval(checkVersion, 10 * 60 * 1000);
   })();
 
 })(window);

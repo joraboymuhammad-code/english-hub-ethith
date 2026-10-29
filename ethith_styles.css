@@ -9624,11 +9624,6 @@ html, body {
 }
 
 /* Luckysheet Text Input & Visibility Fixes - Prevent White on White text */
-#luckysheet,
-#luckysheet * {
-  box-sizing: content-box;
-}
-
 #luckysheet-input-box,
 #luckysheet-rich-text-editor,
 .luckysheet-cell-input,
@@ -9692,6 +9687,17 @@ html, body {
   opacity: 1 !important;
   visibility: visible !important;
   display: block;
+}
+
+/* Instantly hide and remove Luckysheet Loading Data overlay */
+#luckysheetloadingdata,
+.luckysheetLoaderGif,
+.luckysheet-cell-loading {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  z-index: -99999 !important;
 }
 
 /* Quick color bar styling */
