@@ -13,6 +13,75 @@
  */
 
 (function(window) {
+// ============================================================================
+// GLOBAL STRICT ZERO-FINANCE ENFORCEMENT ON SCRIPT LOAD
+// (Eradicates any leftover paid cache from previous sessions until admin starts live)
+// ============================================================================
+(function globalZeroFinanceEnforceImmediate() {
+  try {
+    var storageKeys = ['ethith_state', 'ETHITH_SHARED_STORE', 'ETHITH_ENTERPRISE_STORE_V4', 'ethith_attendance_store'];
+    storageKeys.forEach(function(k) {
+      try {
+        var str = localStorage.getItem(k);
+        if (str) {
+          var data = JSON.parse(str);
+          var clsArr = [];
+          if (Array.isArray(data.classes)) clsArr = data.classes;
+          else if (data.classes && typeof data.classes === 'object') clsArr = Object.values(data.classes);
+
+          clsArr.forEach(function(c) {
+            if (c && c.studentPayments) {
+              for (var sid in c.studentPayments) {
+                c.studentPayments[sid] = { fee: 300000, paid: 0, status: 'unpaid', method: '—', date: 'To‘lanmagan' };
+              }
+            }
+          });
+
+          if (data.finance) {
+            data.finance.totalRevenue = 0;
+            data.finance.totalCollected = 0;
+            data.finance.totalPaid = 0;
+            data.finance.totalExpenses = 0;
+            data.finance.netProfit = 0;
+            data.finance.studentFees = {};
+            data.finance.expenses = [];
+          }
+          localStorage.setItem(k, JSON.stringify(data));
+        }
+      } catch(e) {}
+    });
+
+    // Also reset in active memory objects
+    var memStores = [window.S, window.ETHITH_INITIAL_STORE, (window.EthithApp && window.EthithApp.state)];
+    memStores.forEach(function(st) {
+      if (!st) return;
+      var cArr = [];
+      if (Array.isArray(st.classes)) cArr = st.classes;
+      else if (st.classes && typeof st.classes === 'object') cArr = Object.values(st.classes);
+
+      cArr.forEach(function(c) {
+        if (c && c.studentPayments) {
+          for (var sid in c.studentPayments) {
+            c.studentPayments[sid] = { fee: 300000, paid: 0, status: 'unpaid', method: '—', date: 'To‘lanmagan' };
+          }
+        }
+      });
+
+      if (st.finance) {
+        st.finance.totalRevenue = 0;
+        st.finance.totalCollected = 0;
+        st.finance.totalPaid = 0;
+        st.finance.totalExpenses = 0;
+        st.finance.netProfit = 0;
+        st.finance.studentFees = {};
+        st.finance.expenses = [];
+      }
+    });
+  } catch(err) {
+    console.error('Zero finance enforce error:', err);
+  }
+})();
+
   'use strict';
 
   var EE = {};

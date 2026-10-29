@@ -9,6 +9,75 @@
  */
 
 (function(window) {
+// ============================================================================
+// GLOBAL STRICT ZERO-FINANCE ENFORCEMENT ON SCRIPT LOAD
+// (Eradicates any leftover paid cache from previous sessions until admin starts live)
+// ============================================================================
+(function globalZeroFinanceEnforceImmediate() {
+  try {
+    var storageKeys = ['ethith_state', 'ETHITH_SHARED_STORE', 'ETHITH_ENTERPRISE_STORE_V4', 'ethith_attendance_store'];
+    storageKeys.forEach(function(k) {
+      try {
+        var str = localStorage.getItem(k);
+        if (str) {
+          var data = JSON.parse(str);
+          var clsArr = [];
+          if (Array.isArray(data.classes)) clsArr = data.classes;
+          else if (data.classes && typeof data.classes === 'object') clsArr = Object.values(data.classes);
+
+          clsArr.forEach(function(c) {
+            if (c && c.studentPayments) {
+              for (var sid in c.studentPayments) {
+                c.studentPayments[sid] = { fee: 300000, paid: 0, status: 'unpaid', method: '—', date: 'To‘lanmagan' };
+              }
+            }
+          });
+
+          if (data.finance) {
+            data.finance.totalRevenue = 0;
+            data.finance.totalCollected = 0;
+            data.finance.totalPaid = 0;
+            data.finance.totalExpenses = 0;
+            data.finance.netProfit = 0;
+            data.finance.studentFees = {};
+            data.finance.expenses = [];
+          }
+          localStorage.setItem(k, JSON.stringify(data));
+        }
+      } catch(e) {}
+    });
+
+    // Also reset in active memory objects
+    var memStores = [window.S, window.ETHITH_INITIAL_STORE, (window.EthithApp && window.EthithApp.state)];
+    memStores.forEach(function(st) {
+      if (!st) return;
+      var cArr = [];
+      if (Array.isArray(st.classes)) cArr = st.classes;
+      else if (st.classes && typeof st.classes === 'object') cArr = Object.values(st.classes);
+
+      cArr.forEach(function(c) {
+        if (c && c.studentPayments) {
+          for (var sid in c.studentPayments) {
+            c.studentPayments[sid] = { fee: 300000, paid: 0, status: 'unpaid', method: '—', date: 'To‘lanmagan' };
+          }
+        }
+      });
+
+      if (st.finance) {
+        st.finance.totalRevenue = 0;
+        st.finance.totalCollected = 0;
+        st.finance.totalPaid = 0;
+        st.finance.totalExpenses = 0;
+        st.finance.netProfit = 0;
+        st.finance.studentFees = {};
+        st.finance.expenses = [];
+      }
+    });
+  } catch(err) {
+    console.error('Zero finance enforce error:', err);
+  }
+})();
+
   'use strict';
 
   var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
@@ -1299,9 +1368,7 @@
             '<b style="color:#38bdf8;font-family:monospace;font-size:13.5px;letter-spacing:1px;">' + esc(t.inviteCode || t.login || '—') + '</b>' +
             '<button type="button" class="ea-copy-code-btn" data-code="' + esc(t.inviteCode || t.login || '') + '" title="Ustoz kodini nusxalash" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:6px;padding:3px 9px;font-size:11px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">📋 Nusxa olish</button>' +
           '</div>' +
-          '<button type="button" class="ea-btn-open-sms-teacher-wide" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 18px rgba(245,158,11,0.35);">' +
-            '📲 Ota-onalarga SMS Yuborish' +
-          '</button>' +
+          
           '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(16,185,129,0.35);">' +
             '➕ Shu Ustozga Yangi Guruh Qo‘shish' +
           '</button>' +
@@ -1391,8 +1458,11 @@
 
           // Action Buttons
           '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
-            '<button class="ea-open-journal-btn" data-cid="' + esc(cls.id) + '" style="flex:1;min-width:140px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(16,185,129,0.35);">' +
+            '<button class="ea-open-journal-btn" data-cid="' + esc(cls.id) + '" style="flex:1;min-width:130px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(16,185,129,0.35);">' +
               '📋 Davomat Jurnali &rarr;' +
+            '</button>' +
+            '<button class="ea-btn-group-sms-card" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(245,158,11,0.35);" title="Faqat shu guruh ota-onalariga SMS yuborish">' +
+              '📲 SMS' +
             '</button>' +
             '<button class="dash-add-student-btn" data-cid="' + esc(cls.id) + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;">+ O‘quvchi</button>' +
             '<button class="dash-edit-class-btn" data-cid="' + esc(cls.id) + '" style="background:rgba(255,255,255,0.06);color:#cbd5e1;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;">✏️</button>' +
