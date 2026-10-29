@@ -19,7 +19,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester1_100_user",
+          "password": "tester1100use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_2",
@@ -30,7 +32,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester2_101_user",
+          "password": "tester2101use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_3",
@@ -41,7 +45,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester3_102_user",
+          "password": "tester3102use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_4",
@@ -52,7 +58,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester4_103_user",
+          "password": "tester4103use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_5",
@@ -63,7 +71,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester5_104_user",
+          "password": "tester5104use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_6",
@@ -74,7 +84,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester6_105_user",
+          "password": "tester6105use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_7",
@@ -85,7 +97,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester7_106_user",
+          "password": "tester7106use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_8",
@@ -96,7 +110,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester8_107_user",
+          "password": "tester8107use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_9",
@@ -107,7 +123,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester9_108_user",
+          "password": "tester9108use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_10",
@@ -118,7 +136,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester10_109_user",
+          "password": "tester10109use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_11",
@@ -129,7 +149,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester11_110_user",
+          "password": "tester11110use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_12",
@@ -140,7 +162,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester12_111_user",
+          "password": "tester12111use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_13",
@@ -151,7 +175,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester13_112_user",
+          "password": "tester13112use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_14",
@@ -162,7 +188,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester14_113_user",
+          "password": "tester14113use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_15",
@@ -173,7 +201,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester15_114_user",
+          "password": "tester15114use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_16",
@@ -184,7 +214,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester16_115_user",
+          "password": "tester16115use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_17",
@@ -195,7 +227,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester17_116_user",
+          "password": "tester17116use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_1_tester_18",
@@ -206,7 +240,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester18_117_user",
+          "password": "tester18117use"
         }
       ],
       "messages": [
@@ -384,7 +420,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester1_100_user",
+          "password": "tester1100use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_2",
@@ -395,7 +433,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester2_101_user",
+          "password": "tester2101use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_3",
@@ -406,7 +446,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester3_102_user",
+          "password": "tester3102use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_4",
@@ -417,7 +459,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester4_103_user",
+          "password": "tester4103use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_5",
@@ -428,7 +472,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester5_104_user",
+          "password": "tester5104use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_6",
@@ -439,7 +485,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester6_105_user",
+          "password": "tester6105use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_7",
@@ -450,7 +498,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester7_106_user",
+          "password": "tester7106use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_8",
@@ -461,7 +511,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester8_107_user",
+          "password": "tester8107use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_9",
@@ -472,7 +524,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester9_108_user",
+          "password": "tester9108use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_10",
@@ -483,7 +537,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester10_109_user",
+          "password": "tester10109use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_11",
@@ -494,7 +550,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester11_110_user",
+          "password": "tester11110use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_12",
@@ -505,7 +563,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester12_111_user",
+          "password": "tester12111use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_13",
@@ -516,7 +576,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester13_112_user",
+          "password": "tester13112use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_14",
@@ -527,7 +589,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester14_113_user",
+          "password": "tester14113use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_15",
@@ -538,7 +602,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester15_114_user",
+          "password": "tester15114use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_16",
@@ -549,7 +615,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester16_115_user",
+          "password": "tester16115use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_17",
@@ -560,7 +628,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester17_116_user",
+          "password": "tester17116use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_2_tester_18",
@@ -571,7 +641,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester18_117_user",
+          "password": "tester18117use"
         }
       ],
       "messages": [
@@ -735,7 +807,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester1_100_user",
+          "password": "tester1100use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_2",
@@ -746,7 +820,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester2_101_user",
+          "password": "tester2101use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_3",
@@ -757,7 +833,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester3_102_user",
+          "password": "tester3102use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_4",
@@ -768,7 +846,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester4_103_user",
+          "password": "tester4103use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_5",
@@ -779,7 +859,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester5_104_user",
+          "password": "tester5104use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_6",
@@ -790,7 +872,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester6_105_user",
+          "password": "tester6105use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_7",
@@ -801,7 +885,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester7_106_user",
+          "password": "tester7106use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_8",
@@ -812,7 +898,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester8_107_user",
+          "password": "tester8107use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_9",
@@ -823,7 +911,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester9_108_user",
+          "password": "tester9108use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_10",
@@ -834,7 +924,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester10_109_user",
+          "password": "tester10109use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_11",
@@ -845,7 +937,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester11_110_user",
+          "password": "tester11110use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_12",
@@ -856,7 +950,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester12_111_user",
+          "password": "tester12111use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_13",
@@ -867,7 +963,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester13_112_user",
+          "password": "tester13112use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_14",
@@ -878,7 +976,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester14_113_user",
+          "password": "tester14113use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_15",
@@ -889,7 +989,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester15_114_user",
+          "password": "tester15114use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_16",
@@ -900,7 +1002,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester16_115_user",
+          "password": "tester16115use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_17",
@@ -911,7 +1015,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester17_116_user",
+          "password": "tester17116use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_3_tester_18",
@@ -922,7 +1028,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester18_117_user",
+          "password": "tester18117use"
         }
       ],
       "messages": [
@@ -1086,7 +1194,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester1_100_user",
+          "password": "tester1100use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_2",
@@ -1097,7 +1207,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester2_101_user",
+          "password": "tester2101use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_3",
@@ -1108,7 +1220,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester3_102_user",
+          "password": "tester3102use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_4",
@@ -1119,7 +1233,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester4_103_user",
+          "password": "tester4103use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_5",
@@ -1130,7 +1246,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester5_104_user",
+          "password": "tester5104use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_6",
@@ -1141,7 +1259,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester6_105_user",
+          "password": "tester6105use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_7",
@@ -1152,7 +1272,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester7_106_user",
+          "password": "tester7106use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_8",
@@ -1163,7 +1285,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester8_107_user",
+          "password": "tester8107use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_9",
@@ -1174,7 +1298,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester9_108_user",
+          "password": "tester9108use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_10",
@@ -1185,7 +1311,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester10_109_user",
+          "password": "tester10109use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_11",
@@ -1196,7 +1324,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester11_110_user",
+          "password": "tester11110use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_12",
@@ -1207,7 +1337,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester12_111_user",
+          "password": "tester12111use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_13",
@@ -1218,7 +1350,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester13_112_user",
+          "password": "tester13112use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_14",
@@ -1229,7 +1363,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester14_113_user",
+          "password": "tester14113use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_15",
@@ -1240,7 +1376,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester15_114_user",
+          "password": "tester15114use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_16",
@@ -1251,7 +1389,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester16_115_user",
+          "password": "tester16115use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_17",
@@ -1262,7 +1402,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester17_116_user",
+          "password": "tester17116use"
         },
         {
           "id": "cls_ravshanov_doniyor_cefr_4_tester_18",
@@ -1273,7 +1415,9 @@
           "joinedAt": "2026-10-28",
           "dailyMinutes": 0,
           "coins": 0,
-          "isTester": true
+          "isTester": true,
+          "login": "tester18_117_user",
+          "password": "tester18117use"
         }
       ],
       "messages": [
@@ -76761,12 +76905,7 @@
     "4086": 1793193077149,
     "4087": 1793193184959
   },
-  "centerSettings": {
-    "card": "8600 4912 7731 9024",
-    "cardHolder": "ETHITH LEARNING CENTER",
-    "baseTuition": 200000,
-    "currency": "UZS"
-  },
+  "centerSettings": null,
   "teachers": [
     {
       "id": "t_urolov_azizbek",
@@ -77196,228 +77335,11 @@
     }
   ],
   "fileExplorer": {
-    "folders": [
-      {
-        "id": "f_root",
-        "name": "Bosh Papka",
-        "parentId": null,
-        "createdAt": 1793024168370
-      },
-      {
-        "id": "f_grammar",
-        "name": "Grammar Mastery",
-        "parentId": "f_root",
-        "createdAt": 1793024168370
-      },
-      {
-        "id": "f_ielts",
-        "name": "IELTS Mock Tests",
-        "parentId": "f_root",
-        "createdAt": 1793024168370
-      },
-      {
-        "id": "f_1793028050497",
-        "name": "Yangi Papka",
-        "parentId": "f_root",
-        "createdAt": 1793028050497
-      },
-      {
-        "id": "f_1793030124872",
-        "name": "Yangi Papka",
-        "parentId": "f_1793028050497",
-        "createdAt": 1793030124872
-      }
-    ],
-    "tests": [
-      {
-        "id": "TST-7K2M9",
-        "title": "Unit 7: Modals of Deduction & Obligation",
-        "folderId": "f_grammar",
-        "authorName": "Ustoz",
-        "createdAt": 1793024168370,
-        "maxAttempts": 1,
-        "questions": [
-          {
-            "q": "You ______ be exhausted after working for 14 hours straight!",
-            "options": [
-              "must",
-              "can't",
-              "might not",
-              "should"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "He ______ have stolen the money; he was with me in London that evening.",
-            "options": [
-              "must",
-              "can't",
-              "ought to",
-              "might"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Students ______ wear uniforms during official exams according to school rules.",
-            "options": [
-              "have to",
-              "might",
-              "could",
-              "would"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "You ______ tell anyone this secret; it's strictly confidential.",
-            "options": [
-              "mustn't",
-              "don't have to",
-              "needn't",
-              "may not"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "We ______ have left earlier; look at all this traffic now!",
-            "options": [
-              "should",
-              "must",
-              "can't",
-              "might"
-            ],
-            "correct": 0
-          }
-        ]
-      }
-    ]
+    "folders": [],
+    "tests": []
   },
-  "timetable": [
-    {
-      "id": "tt_1",
-      "time": "08:00 - 09:30",
-      "days": "Du-Chor-Jum",
-      "teacherId": "t_zizi",
-      "teacherName": "Zizi Ustoz",
-      "classId": "cls_1792041880052",
-      "className": "Bizani gurux (B1+)",
-      "room": "Room 101 (Green Room)"
-    },
-    {
-      "id": "tt_2",
-      "time": "10:00 - 11:30",
-      "days": "Du-Chor-Jum",
-      "teacherId": "admin_official_teacher",
-      "teacherName": "Ustoz",
-      "classId": "cls_ethith_main",
-      "className": "IELTS Intensive (B2)",
-      "room": "Room 102 (Blue Room)"
-    },
-    {
-      "id": "tt_3",
-      "time": "14:00 - 15:30",
-      "days": "Se-Pay-Shan",
-      "teacherId": "t_zizi",
-      "teacherName": "Zizi Ustoz",
-      "classId": "cls_1792041880052",
-      "className": "Bizani gurux (B1+)",
-      "room": "Room 101 (Green Room)"
-    },
-    {
-      "id": "tt_4",
-      "time": "16:00 - 17:30",
-      "days": "Se-Pay-Shan",
-      "teacherId": "admin_official_teacher",
-      "teacherName": "Ustoz",
-      "classId": "cls_ethith_main",
-      "className": "IELTS Intensive (B2)",
-      "room": "Room 102 (Blue Room)"
-    }
-  ],
-  "contests": [
-    {
-      "id": "cnt_kuzgi_2026",
-      "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
-      "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
-      "startDate": 1792937768370,
-      "endDate": 1793628968370,
-      "prizeCoins": 1000,
-      "testId": "TST-7K2M9",
-      "participants": {
-        "std_1": {
-          "name": "Ashurov Dilyorbek",
-          "score": 95,
-          "timeSec": 140,
-          "completedAt": 1793020568370
-        },
-        "std_2": {
-          "name": "Ergasheva Madina",
-          "score": 92,
-          "timeSec": 165,
-          "completedAt": 1793020668370
-        },
-        "std_4": {
-          "name": "JO‘RABOYEV MUXAMMADYUSUF",
-          "score": 98,
-          "timeSec": 110,
-          "completedAt": 1793020768370
-        },
-        "std_5": {
-          "name": "Jo'raboyev Javoxir",
-          "score": 88,
-          "timeSec": 180,
-          "completedAt": 1793020868370
-        },
-        "std_6": {
-          "name": "Mavlonova Ruxshona",
-          "score": 85,
-          "timeSec": 190,
-          "completedAt": 1793020968370
-        }
-      },
-      "status": "active"
-    }
-  ],
-  "payments": {
-    "2026-10": {
-      "std_1": {
-        "status": "paid",
-        "baseAmount": 200000,
-        "offsetAmount": 200081,
-        "paidAmount": 200081,
-        "paidAt": 1793024274243,
-        "verifiedBy": "admin_manual"
-      },
-      "std_2": {
-        "status": "paid",
-        "baseAmount": 200000,
-        "offsetAmount": 200028,
-        "paidAmount": 200028,
-        "paidAt": 1792851368370,
-        "verifiedBy": "auto_offset"
-      },
-      "std_3": {
-        "status": "unpaid",
-        "baseAmount": 200000,
-        "offsetAmount": 200042,
-        "paidAmount": 0
-      },
-      "std_4": {
-        "status": "paid",
-        "baseAmount": 200000,
-        "offsetAmount": 200056,
-        "paidAmount": 200056,
-        "paidAt": 1792937768370,
-        "verifiedBy": "auto_offset"
-      },
-      "std_5": {
-        "status": "pending",
-        "baseAmount": 200000,
-        "offsetAmount": 200070,
-        "paidAmount": 200070,
-        "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
-        "paidAt": 1793016968370
-      }
-    }
-  },
-  "updatedAt": 1793295086265
+  "timetable": [],
+  "contests": [],
+  "payments": {},
+  "updatedAt": 1793296419672
 }
