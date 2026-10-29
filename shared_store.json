@@ -11726,10 +11726,34 @@
       "maxCapacity": 18,
       "schedule": "toq",
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-26": {
+            "+998950079621@student.ethith": {
+              "status": "Q",
+              "score": "2"
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-29": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-29": {
+            "dateKey": "2026-10-29",
+            "dateDisp": "29.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793251437176
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -11948,7 +11972,148 @@
           }
         }
       ],
-      "pinnedId": null
+      "pinnedId": null,
+      "activeHomework": {
+        "dateKey": "2026-10-29",
+        "dateDisp": "29.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
+      "studentPayments": {
+        "+998950079621@student.ethith": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_10": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_11": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_12": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_13": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_14": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_15": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_16": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_17": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_18": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_2": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_3": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_4": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_5": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_6": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_7": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_8": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        },
+        "cls_urolov_azizbek_upper_intermediate_standard_tester_9": {
+          "fee": 1400000,
+          "paid": 1400000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-05"
+        }
+      }
     },
     {
       "id": "cls_urolov_azizbek_intermediate_practice",
@@ -12902,7 +13067,7 @@
       "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
-      "coins": 5000,
+      "coins": 1000,
       "gifts": [],
       "level": "C2",
       "dailyMinutes": 0,
@@ -70734,5 +70899,5 @@
       }
     }
   },
-  "updatedAt": 1793251168332
+  "updatedAt": 1793251437712
 }
