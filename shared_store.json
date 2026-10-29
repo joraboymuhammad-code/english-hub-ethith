@@ -11779,7 +11779,8 @@
           },
           "2026-11-02": {
             "+998950079621@student.ethith": {
-              "status": "K"
+              "status": "",
+              "score": ""
             }
           }
         },
@@ -11802,7 +11803,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793252021276
+        "updatedAt": 1793252024834
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -70948,5 +70949,5 @@
       }
     }
   },
-  "updatedAt": 1793252021922
+  "updatedAt": 1793252026379
 }
