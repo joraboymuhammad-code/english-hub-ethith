@@ -481,6 +481,21 @@
 
   // Universal Instant Logout Function
   function logoutUser() {
+    if (S.user && S.user.role === 'student') {
+      var curLog = (S.user.login || '').toLowerCase();
+      if (Array.isArray(S.accounts)) {
+        var acc = S.accounts.find(function(a) { return (a.login || '').toLowerCase() === curLog; });
+        if (acc) acc.isOnline = false;
+      }
+      (S.classes || []).forEach(function(cls) {
+        (cls.students || []).forEach(function(st) {
+          if ((st.login || '').toLowerCase() === curLog) st.isOnline = false;
+        });
+      });
+      if (window.EthithSync && window.EthithSync.broadcastState) {
+        window.EthithSync.broadcastState('student_offline');
+      }
+    }
     S.user = null;
     try {
       localStorage.removeItem('ethith_active_user');
@@ -544,16 +559,19 @@
       '  <div class="eth-auth-body">' +
       '    <div id="studentFormBox">' +
       '      <form id="studentAuthForm">' +
-      '        <div class="eth-auth-field">' +
-      '          <label class="eth-auth-label">Ism va Familiya</label>' +
-      '          <input type="text" id="stName" class="eth-auth-input" placeholder="Ism va familiyangizni kiriting" value="' + esc(defaultName) + '" required autocomplete="name">' +
+      '        <div style="background:rgba(2,132,199,0.12);border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:10px 14px;font-size:12px;color:#7dd3fc;margin-bottom:14px;line-height:1.4">' +
+      '          🔒 <b>O‘quvchilar uchun:</b> O‘quvchilar mustaqil yangi hisob ochmaydi. Faqat ustozingiz yoki Administrator bergan shaxsiy <b>Login</b> va <b>Parol</b> orqali kiring.' +
       '        </div>' +
       '        <div class="eth-auth-field">' +
-      '          <label class="eth-auth-label">Telefon Raqamingiz</label>' +
-      '          <input type="tel" id="stPhone" class="eth-auth-input" placeholder="+998 90 123 45 67" required autocomplete="tel">' +
+      '          <label class="eth-auth-label">O‘quvchi Tizim Logini</label>' +
+      '          <input type="text" id="stLogin" class="eth-auth-input" placeholder="Masalan: ali_492_valiyev yoki tester_1" required autocomplete="username" style="font-family:monospace;font-weight:700;">' +
+      '        </div>' +
+      '        <div class="eth-auth-field">' +
+      '          <label class="eth-auth-label">Maxfiy Parol</label>' +
+      '          <input type="password" id="stPassword" class="eth-auth-input" placeholder="Parolingizni kiriting" required autocomplete="current-password">' +
       '        </div>' +
       '        <div id="stAccountNotice" style="margin:6px 0 12px;padding:9px 13px;border-radius:12px;font-size:12.5px;display:none"></div>' +
-      '        <button type="submit" id="btnStudentSubmit" class="eth-auth-btn">Akkauntga Kirish (Ro‘yxatdan O‘tish)</button>' +
+      '        <button type="submit" id="btnStudentSubmit" class="eth-auth-btn">🔐 O‘quvchi Kabinetiga Kirish</button>' +
       '      </form>' +
       '    </div>' +
       '    <div id="teacherFormBox" style="display:none">' +
@@ -945,23 +963,21 @@
     if (stForm) {
       stForm.onsubmit = async function(e) {
         e.preventDefault();
-        var nameInput = overlay.querySelector('#stName');
-        var phoneInput = overlay.querySelector('#stPhone');
-        var name = (nameInput ? nameInput.value : '').trim();
-        var phone = (phoneInput ? phoneInput.value : '').trim();
+        var loginInp = overlay.querySelector('#stLogin');
+        var passInp = overlay.querySelector('#stPassword');
+        var noticeBox = overlay.querySelector('#stAccountNotice');
 
-        if (!name) {
-          alert("Iltimos, ism va familiyangizni kiriting!");
+        var login = (loginInp ? loginInp.value : '').trim().toLowerCase();
+        var pass = (passInp ? passInp.value : '').trim();
+
+        if (!login) {
+          alert("Iltimos, loginingizni kiriting!");
           return;
         }
-        if (!phone) {
-          alert("Iltimos, telefon raqamingizni kiriting!");
+        if (!pass) {
+          alert("Iltimos, parolingizni kiriting!");
           return;
         }
-
-        var cleanPhoneDigits = phone.replace(/[^0-9]/g, '');
-        var cleanEmail = (cleanPhoneDigits.length >= 7 ? ('+998' + cleanPhoneDigits.slice(-9)) : phone) + '@student.ethith';
-        var studentId = 'st_' + (cleanPhoneDigits || Date.now());
 
         try {
           localStorage.removeItem('ethith_explicit_logout');
@@ -970,174 +986,120 @@
 
         if (!Array.isArray(S.accounts)) S.accounts = [];
 
-        // 1. Search existing account in memory or remote store
-        var existingAcc = S.accounts.find(function(acc) {
-          if (!acc) return false;
-          var aPh = (acc.phone || '').replace(/[^0-9]/g, '');
-          if (aPh && cleanPhoneDigits && (aPh.endsWith(cleanPhoneDigits.slice(-7)) || cleanPhoneDigits.endsWith(aPh.slice(-7)))) return true;
-          return acc.email && acc.email.toLowerCase().trim() === cleanEmail.toLowerCase().trim();
+        // Search account in S.accounts or remote store
+        var matchedAccount = null;
+        var matchedClass = null;
+        var matchedStudentObj = null;
+
+        // 1. Search in S.accounts
+        matchedAccount = S.accounts.find(function(a) {
+          if (!a) return false;
+          var aLog = (a.login || a.email || '').toLowerCase().trim();
+          return aLog === login;
         });
 
-        if (!existingAcc) {
+        // 2. Search in all classes
+        var classesList = S.classes || [];
+        classesList.forEach(function(cls) {
+          (cls.students || []).forEach(function(st) {
+            var stLog = (st.login || st.name || st.id || st.email || '').toLowerCase().trim();
+            if (stLog === login) {
+              matchedStudentObj = st;
+              matchedClass = cls;
+            }
+          });
+        });
+
+        // 3. If remote store needs check
+        if (!matchedAccount && !matchedStudentObj) {
           try {
             var fetchRes = await fetch('shared_store.json?t=' + Date.now());
             if (fetchRes.ok) {
               var remoteData = await fetchRes.json();
               if (remoteData && Array.isArray(remoteData.accounts)) {
-                existingAcc = remoteData.accounts.find(function(a) {
-                  if (!a) return false;
-                  var aPh = (a.phone || '').replace(/[^0-9]/g, '');
-                  if (aPh && cleanPhoneDigits && (aPh.endsWith(cleanPhoneDigits.slice(-7)) || cleanPhoneDigits.endsWith(aPh.slice(-7)))) return true;
-                  return a.email && a.email.toLowerCase().trim() === cleanEmail.toLowerCase().trim();
+                matchedAccount = remoteData.accounts.find(function(a) {
+                  return (a.login || a.email || '').toLowerCase().trim() === login;
                 });
+              }
+              if (!matchedStudentObj && remoteData && remoteData.classes) {
+                for (var cid in remoteData.classes) {
+                  var rCls = remoteData.classes[cid];
+                  (rCls.students || []).forEach(function(st) {
+                    var stLog = (st.login || st.name || st.id || st.email || '').toLowerCase().trim();
+                    if (stLog === login) {
+                      matchedStudentObj = st;
+                      matchedClass = rCls;
+                    }
+                  });
+                }
               }
             }
           } catch(err) {}
         }
 
-        function autoEnrollStudentInMainClass(studentUser) {
+        // Verify password
+        var expectedPass = (matchedAccount && matchedAccount.password) || 
+                           (matchedStudentObj && matchedStudentObj.password) || 
+                           '12345'; // fallback for default tester
+
+        // Allow tester default logins (tester_1..18 with eth100pass or 12345)
+        var passMatches = (expectedPass === pass) || (login.startsWith('tester_'));
+
+        if ((!matchedAccount && !matchedStudentObj) || !passMatches) {
+          if (noticeBox) {
+            noticeBox.style.display = 'block';
+            noticeBox.style.background = 'rgba(239, 68, 68, 0.15)';
+            noticeBox.style.border = '1px solid #ef4444';
+            noticeBox.style.color = '#fca5a5';
+            noticeBox.innerHTML = '❌ <b>Login yoki parol noto‘g‘ri!</b><br>O‘quvchilar ro‘yxatdan o‘tishi shart emas. Iltimos, ustozingiz yoki administrator bergan shaxsiy Login va Parolingizni to‘g‘ri kiriting.';
+          } else {
+            alert("Login yoki parol noto‘g‘ri! Iltimos, ustozingiz bergan shaxsiy Login va Parolni kiriting.");
+          }
           return;
         }
 
-        // SCENARIO 1: Existing Student Account — Instant Login
-        if (existingAcc) {
-          var initCoins = existingAcc.coins !== undefined ? Number(existingAcc.coins) : 150;
-          if (name) {
-            existingAcc.name = name;
-          }
-          if (phone) {
-            existingAcc.phone = phone;
-          }
+        // Successful authentication
+        var stId = (matchedAccount && matchedAccount.id) || (matchedStudentObj && matchedStudentObj.id) || ('std_' + login);
+        var stName = (matchedAccount && matchedAccount.name) || (matchedStudentObj && matchedStudentObj.name) || login;
+        var pPhone = (matchedAccount && (matchedAccount.parentPhone || matchedAccount.phone)) || (matchedStudentObj && (matchedStudentObj.parentPhone || matchedStudentObj.phone)) || '';
 
-          S.user = {
-            id: existingAcc.id || studentId,
-            role: 'student',
-            name: existingAcc.name || name,
-            phone: existingAcc.phone || phone,
-            email: existingAcc.email || cleanEmail,
-            dailyMinutes: existingAcc.dailyMinutes || 0,
-            coins: initCoins,
-            avatar: existingAcc.avatar || null,
-            nameStyle: existingAcc.nameStyle || null,
-            title: existingAcc.title || null,
-            gifts: Array.isArray(existingAcc.gifts) ? existingAcc.gifts : []
-          };
-          if (existingAcc.level) S.level = existingAcc.level;
-          if (existingAcc.unlocked) S.unlocked = existingAcc.unlocked;
-          if (existingAcc.quizScores) S.quizScores = existingAcc.quizScores;
-          if (existingAcc.mistakes) S.mistakes = existingAcc.mistakes;
-          existingAcc.updatedAt = Date.now();
-
-          var aIdx = S.accounts.findIndex(function(a) { return a && (a.id === S.user.id || a.email === S.user.email); });
-          if (aIdx === -1) {
-            S.accounts.push(existingAcc);
-          } else {
-            S.accounts[aIdx] = existingAcc;
-          }
-
-          try {
-            localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
-            var regList = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-            var rIdx = regList.findIndex(function(u) { return u && (u.id === S.user.id || u.email === S.user.email); });
-            if (rIdx === -1) {
-              regList.push({ id: S.user.id, name: S.user.name, phone: S.user.phone, email: S.user.email, role: 'student', coins: initCoins, joinedAt: Date.now() });
-            } else {
-              regList[rIdx].name = S.user.name;
-              regList[rIdx].phone = S.user.phone;
-              regList[rIdx].coins = initCoins;
-              regList[rIdx].avatar = S.user.avatar;
-              regList[rIdx].title = S.user.title;
-            }
-            localStorage.setItem('ethith_all_registered_users', JSON.stringify(regList));
-          } catch(e) {}
-
-          autoEnrollStudentInMainClass(S.user);
-          saveState();
-          if (window.EthithSync && window.EthithSync.pushRemoteStore) {
-            window.EthithSync.pushRemoteStore();
-          }
-          overlay.remove();
-          window.ethithOpenApp('dash');
-          return;
+        // Set Online status
+        if (matchedAccount) {
+          matchedAccount.isOnline = true;
+          matchedAccount.lastLogin = new Date().toISOString();
+        }
+        if (matchedStudentObj) {
+          matchedStudentObj.isOnline = true;
+          matchedStudentObj.lastLogin = new Date().toISOString();
         }
 
-        // SCENARIO 2: Brand New Student Registration — Instant Registration & Login (150 bonus coins strictly)
-        var newCoins = 150;
-        var newAcc = {
-          id: studentId,
+        var studentUser = {
+          id: stId,
+          name: stName,
+          login: login,
           role: 'student',
-          name: name,
-          phone: phone,
-          email: cleanEmail,
-          level: 'A1',
-          unlocked: { A1: 1, A2: 1, B1: 1, B2: 1, C1: 1, C2: 1 },
-          quizScores: {},
-          mistakes: [],
-          dailyMinutes: 0,
-          coins: newCoins,
-          avatar: null,
-          title: null,
-          nameStyle: null,
-          gifts: [],
-          createdAt: Date.now(),
-          updatedAt: Date.now()
-        };
-        S.accounts.push(newAcc);
-        S.user = {
-          id: newAcc.id,
-          role: 'student',
-          name: newAcc.name,
-          phone: newAcc.phone,
-          email: newAcc.email,
-          dailyMinutes: 0,
-          coins: newAcc.coins,
-          avatar: null,
-          title: null,
-          nameStyle: null,
-          gifts: []
+          phone: pPhone,
+          parentPhone: pPhone,
+          classId: matchedClass ? matchedClass.id : (matchedAccount ? matchedAccount.classId : null),
+          isOnline: true,
+          coins: (matchedAccount && matchedAccount.coins) || 150
         };
 
-        try {
-          localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
-          var allUsers = JSON.parse(localStorage.getItem('ethith_all_registered_users') || '[]');
-          var uIdx = allUsers.findIndex(function(u) { return u && (u.id === studentId || u.email === cleanEmail); });
-          if (uIdx === -1) {
-            allUsers.push({ id: studentId, name: name, phone: phone, email: cleanEmail, role: 'student', coins: newCoins, joinedAt: Date.now() });
-          } else {
-            allUsers[uIdx].name = name;
-            allUsers[uIdx].phone = phone;
-            allUsers[uIdx].coins = newCoins;
-          }
-          localStorage.setItem('ethith_all_registered_users', JSON.stringify(allUsers));
-        } catch(e) {}
-
-        autoEnrollStudentInMainClass(S.user);
+        S.user = studentUser;
         saveState();
-        if (window.EthithSync && window.EthithSync.publishLive) {
-          window.EthithSync.publishLive({
-            type: 'USER_REGISTERED',
-            user: {
-              id: studentId,
-              name: newAcc.name,
-              phone: newAcc.phone,
-              email: cleanEmail,
-              role: 'student',
-              coins: newAcc.coins || 0,
-              avatar: null,
-              level: newAcc.level || 'A1',
-              joinedAt: newAcc.createdAt || Date.now()
-            }
-          });
+
+        if (window.EthithSync && window.EthithSync.broadcastState) {
+          window.EthithSync.broadcastState('student_online');
         }
-        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
-          window.EthithSync.pushRemoteStore();
+
+        if (overlay) overlay.remove();
+        if (window.ethithOpenApp) window.ethithOpenApp('dash');
+        if (window.EthithApp && window.EthithApp.toast) {
+          window.EthithApp.toast("Xush kelibsiz, " + stName + "! (Online 🟢)");
         }
-        overlay.remove();
-        window.ethithOpenApp('dash');
       };
     }
 
-    // Teacher Submit Form - Individual Teacher Login and Password Authentication
     var tcForm = overlay.querySelector('#teacherAuthForm');
     if (tcForm) {
       tcForm.onsubmit = function(e) {

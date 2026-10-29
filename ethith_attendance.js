@@ -1173,8 +1173,11 @@
     });
     h += '</div></div>';
 
+    var loginsSec = EA.renderSystemLoginsSection(null, null);
+    h += loginsSec.html;
     container.innerHTML = h;
     EA.attachTeachersDirListeners(container);
+    loginsSec.attachHandlers(container);
   };
 
   // --------------------------------------------------------------------------
@@ -1196,6 +1199,46 @@
               '👨‍🏫 ' + esc(t.name) + ' — O‘quv Guruhlari va Davomat' +
             '</h2>' +
             '<div style="font-size:12.5px;color:#94a3b8;font-weight:600;margin-top:2px;">Fan: <b style="color:#38bdf8;">' + esc(t.subject || 'Ingliz tili') + '</b> | Ulush foizi: <b style="color:#34d399;">' + (t.salarySharePercent || 50) + '%</b></div>' +
+          // TEACHER LIVE METRICS (Zero until admin marks paid)
+          '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;">' +
+            '<div style="background:rgba(15,23,42,0.8);border:1px solid rgba(56,189,248,0.3);border-radius:14px;padding:8px 16px;display:flex;align-items:center;gap:10px;">' +
+              '<span style="font-size:20px;">📚</span>' +
+              '<div>' +
+                '<div style="font-size:11px;color:#94a3b8;font-weight:700;">Guruhlarim:</div>' +
+                '<div style="font-size:15px;font-weight:900;color:#38bdf8;">' + tClasses.length + ' ta Guruh</div>' +
+              '</div>' +
+            '</div>' +
+            '<div style="background:rgba(15,23,42,0.8);border:1px solid rgba(56,189,248,0.3);border-radius:14px;padding:8px 16px;display:flex;align-items:center;gap:10px;">' +
+              '<span style="font-size:20px;">👥</span>' +
+              '<div>' +
+                '<div style="font-size:11px;color:#94a3b8;font-weight:700;">O‘quvchilarim:</div>' +
+                '<div style="font-size:15px;font-weight:900;color:#fff;">' + (function() {
+                  return tClasses.reduce(function(acc, c) { return acc + (c.students || []).length; }, 0);
+                })() + ' ta O‘quvchi</div>' +
+              '</div>' +
+            '</div>' +
+            '<div style="background:rgba(15,23,42,0.8);border:1px solid rgba(52,211,153,0.35);border-radius:14px;padding:8px 16px;display:flex;align-items:center;gap:10px;">' +
+              '<span style="font-size:20px;">💰</span>' +
+              '<div>' +
+                '<div style="font-size:11px;color:#94a3b8;font-weight:700;">Shu Oy Olingan Daromad:</div>' +
+                '<div style="font-size:15px;font-weight:900;color:#34d399;">' + (function() {
+                  var pCount = 0;
+                  tClasses.forEach(function(c) {
+                    (c.students || []).forEach(function(st) {
+                      var stId = st.id || st.email;
+                      if (c.studentPayments && c.studentPayments[stId] && c.studentPayments[stId].status === 'paid') {
+                        pCount++;
+                      }
+                    });
+                  });
+                  var share = (t.salarySharePercent !== undefined) ? Number(t.salarySharePercent) : 50;
+                  var fee = Number(t.studentMonthlyFee) || 300000;
+                  var sal = Math.round(pCount * fee * (share / 100));
+                  return sal.toLocaleString() + ' so‘m (' + pCount + ' ta to‘lagan)';
+                })() + '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
           '</div>' +
         '</div>' +
         '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
@@ -1307,8 +1350,11 @@
     }
 
     h += '</div>';
+    var loginsSec = EA.renderSystemLoginsSection(t.id, null);
+    h += loginsSec.html;
     container.innerHTML = h;
     EA.attachTeacherGroupsListeners(container, t);
+    loginsSec.attachHandlers(container);
   };
 
   // --------------------------------------------------------------------------
@@ -2563,7 +2609,7 @@ EA.render = function(container, preserveScrollLeft) {
         var pInfo = cls.studentPayments[stId] || (st.email ? cls.studentPayments[st.email.toLowerCase().trim()] : null) ||
                     S_app.finance.studentFees[stId] || (st.email ? S_app.finance.studentFees[st.email.toLowerCase().trim()] : null);
         if (!pInfo) {
-          pInfo = { fee: 300000, paid: 300000, status: 'paid', method: 'Naqd (Admin kassa)', date: '2026-10-29' };
+          pInfo = { fee: 300000, paid: 0, status: 'unpaid', method: '—', date: 'To‘lanmagan' };
           cls.studentPayments[stId] = pInfo;
           S_app.finance.studentFees[stId] = pInfo;
         }
@@ -2588,9 +2634,12 @@ EA.render = function(container, preserveScrollLeft) {
             '</span>';
         }
 
+        var isOnline = (st.isOnline === true);
+        var onlineDot = '<span class="ea-status-dot ' + (isOnline ? 'ea-status-online' : 'ea-status-offline') + '" title="' + (isOnline ? '🟢 Tizimga kirgan (Online)' : '🔴 Tizimga kirmagan (Offline)') + '"></span>';
+
         var studentNameDisplay = isPaid
-          ? '<span class="ea-st-paid-neon" style="color:#4ade80 !important;font-weight:900;text-shadow:0 0 10px rgba(74,222,128,0.9),0 0 20px rgba(74,222,128,0.6),0 0 30px rgba(74,222,128,0.35);letter-spacing:0.2px;">' + esc(stName) + '</span>'
-          : '<span style="color:#f8fafc;font-weight:700;">' + esc(stName) + '</span>';
+          ? (onlineDot + '<span class="ea-st-paid-neon" style="color:#4ade80 !important;font-weight:900;text-shadow:0 0 10px rgba(74,222,128,0.9),0 0 20px rgba(74,222,128,0.6),0 0 30px rgba(74,222,128,0.35);letter-spacing:0.2px;">' + esc(stName) + '</span>')
+          : (onlineDot + '<span style="color:#f8fafc;font-weight:700;">' + esc(stName) + '</span>');
 
         h += '<tr class="ea-journal-row" style="background:' + rowBg + ';transition:background 0.15s;">';
 
@@ -2738,6 +2787,8 @@ EA.render = function(container, preserveScrollLeft) {
       '</div>' +
     '</div>';
 
+    var loginsSec = EA.renderSystemLoginsSection(cls.teacherId, cls.id);
+    h += loginsSec.html;
     h += '</div></div>';
 
     container.innerHTML = h;
@@ -2752,6 +2803,7 @@ EA.render = function(container, preserveScrollLeft) {
     }
 
     EA.attachEvents(container, cls);
+    loginsSec.attachHandlers(container);
   };
 
   // ============================================================================
@@ -4867,5 +4919,568 @@ EA.render = function(container, preserveScrollLeft) {
     };
   };
 
+
+
+  // ============================================================================
+  // STUDENT CREDENTIALS GENERATOR & REAL ROSTER MANAGEMENT
+  // ============================================================================
+  EA.cleanUzbekAlphanumeric = function(str) {
+    if (!str) return '';
+    return str.toString().trim().toLowerCase()
+      .replace(/['`ʻʼ‘]/g, '')
+      .replace(/o‘|oʻ|o'/g, 'o')
+      .replace(/g‘|gʻ|g'/g, 'g')
+      .replace(/sh/g, 'sh')
+      .replace(/ch/g, 'ch')
+      .replace(/[^a-z0-9]/g, '');
+  };
+
+  EA.generateStudentCredentials = function(firstName, lastName, existingNum) {
+    var cleanF = EA.cleanUzbekAlphanumeric(firstName) || 'student';
+    var cleanL = EA.cleanUzbekAlphanumeric(lastName) || 'user';
+    var num = existingNum || Math.floor(100 + Math.random() * 900);
+    var login = cleanF + '_' + num + '_' + cleanL;
+    var passSuffix = cleanL.length >= 3 ? cleanL.slice(0, 3) : cleanL;
+    var password = cleanF + num + passSuffix;
+    return {
+      login: login,
+      password: password,
+      num: num
+    };
+  };
+
+  // ============================================================================
+  // STUDENT ENROLL / EDIT CREDENTIALS MODAL
+  // ============================================================================
+  EA.openStudentEnrollModal = function(targetClassId, targetStudentId) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.id = 'eaEnrollStudentOverlay';
+    overlay.style.zIndex = '99999';
+
+    var classes = getAvailableClasses();
+    var curClass = classes.find(function(c) { return c.id === targetClassId; }) || classes[0];
+    var curSt = null;
+    if (curClass && targetStudentId) {
+      curSt = (curClass.students || []).find(function(s) { return (s.id || s.email) === targetStudentId; });
+    }
+
+    var defaultFirst = '';
+    var defaultLast = '';
+    var defaultPhone = curSt ? (curSt.parentPhone || curSt.phone || '') : '';
+    var existingNum = null;
+
+    if (curSt) {
+      var nParts = (curSt.name || '').trim().split(/\s+/);
+      if (nParts.length >= 2) {
+        defaultFirst = nParts[0];
+        defaultLast = nParts.slice(1).join(' ');
+      } else {
+        defaultFirst = curSt.name || '';
+      }
+      if (curSt.login && curSt.login.includes('_')) {
+        var m = curSt.login.match(/_(\d{3,4})_/);
+        if (m) existingNum = parseInt(m[1], 10);
+      }
+    }
+
+    var creds = EA.generateStudentCredentials(defaultFirst, defaultLast, existingNum);
+    var currentLogin = (curSt && curSt.login) ? curSt.login : creds.login;
+    var currentPass = (curSt && curSt.password) ? curSt.password : creds.password;
+
+    var isEdit = !!curSt;
+
+    var html = '<div class="eth-modal" style="max-width:560px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(56,189,248,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(2,132,199,0.4);">👤</div>' +
+          '<div>' +
+            '<h2 style="margin:0;font-size:18px;font-weight:900;color:#fff;">' +
+              (isEdit ? 'O‘quvchi Ma’lumotlarini Tahrirlash' : 'Yangi O‘quvchi Ro‘yxatga Olish') +
+            '</h2>' +
+            '<p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Ism, familiya va ota-onasi telefon raqamini kiriting. Login va parol avtomatik shakllanadi.</p>' +
+          '</div>' +
+        '</div>' +
+        '<button type="button" id="eaCloseEnrollModalBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:20px;cursor:pointer;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">✕</button>' +
+      '</div>' +
+
+      '<form id="eaEnrollStudentForm">' +
+        // Class selection
+        '<div style="margin-bottom:14px;">' +
+          '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">Biriktirilgan Guruh:</label>' +
+          '<select id="eaEnrollClassSelect" style="width:100%;background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:10px 14px;color:#fff;font-size:13.5px;font-weight:700;outline:none;">';
+          classes.forEach(function(c) {
+            var sel = (curClass && curClass.id === c.id) ? 'selected' : '';
+            html += '<option value="' + esc(c.id) + '" ' + sel + '>' + esc(c.name || c.id) + ' (' + (c.teacherName || 'Ustoz') + ')</option>';
+          });
+          html += '</select>' +
+        '</div>' +
+
+        // First Name & Last Name in 2 columns
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">O‘quvchining Ismi: <span style="color:#ef4444;">*</span></label>' +
+            '<input type="text" id="eaEnrollFirstName" value="' + esc(defaultFirst) + '" placeholder="Masalan: Ali" required style="width:100%;box-sizing:border-box;background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:10px 14px;color:#fff;font-size:13.5px;font-weight:700;outline:none;">' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">Familiyasi: <span style="color:#ef4444;">*</span></label>' +
+            '<input type="text" id="eaEnrollLastName" value="' + esc(defaultLast) + '" placeholder="Masalan: Valiyev" required style="width:100%;box-sizing:border-box;background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:10px 14px;color:#fff;font-size:13.5px;font-weight:700;outline:none;">' +
+          '</div>' +
+        '</div>' +
+
+        // Parent Phone Number
+        '<div style="margin-bottom:16px;">' +
+          '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">Ota-onasining Telefon Raqami: <span style="color:#ef4444;">*</span></label>' +
+          '<input type="tel" id="eaEnrollParentPhone" value="' + esc(defaultPhone) + '" placeholder="+998 90 123 45 67" required style="width:100%;box-sizing:border-box;background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:10px 14px;color:#fff;font-size:13.5px;font-weight:700;outline:none;">' +
+          '<small style="color:#94a3b8;font-size:11px;margin-top:4px;display:block;">📞 Dars qoldirish yoki to‘lovlar bo‘yicha ota-ona bilan aloqa uchun.</small>' +
+        '</div>' +
+
+        // Auto Generated Credentials Box
+        '<div style="background:rgba(2,132,199,0.12);border:1.5px dashed rgba(56,189,248,0.45);border-radius:16px;padding:14px 18px;margin-bottom:20px;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
+            '<span style="font-size:12px;font-weight:900;color:#38bdf8;text-transform:uppercase;letter-spacing:0.5px;">⚡ Avtomatik Tizim Kirish Ma’lumotlari</span>' +
+            '<button type="button" id="eaRegenCredsBtn" title="Boshqa tasodifiy raqam/login tanlash" style="background:rgba(56,189,248,0.2);border:1px solid rgba(56,189,248,0.4);color:#38bdf8;border-radius:8px;padding:4px 9px;font-size:11.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">🎲 Yangilash</button>' +
+          '</div>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
+            '<div>' +
+              '<div style="font-size:11px;color:#94a3b8;font-weight:700;margin-bottom:4px;">Tizim Logini:</div>' +
+              '<input type="text" id="eaLiveLoginInput" value="' + esc(currentLogin) + '" style="width:100%;box-sizing:border-box;background:rgba(15,23,42,0.95);border:1px solid #38bdf8;border-radius:8px;padding:7px 10px;font-family:monospace;font-size:12.5px;font-weight:900;color:#38bdf8;outline:none;">' +
+            '</div>' +
+            '<div>' +
+              '<div style="font-size:11px;color:#94a3b8;font-weight:700;margin-bottom:4px;">Maxfiy Parol:</div>' +
+              '<input type="text" id="eaLivePassInput" value="' + esc(currentPass) + '" style="width:100%;box-sizing:border-box;background:rgba(15,23,42,0.95);border:1px solid #c084fc;border-radius:8px;padding:7px 10px;font-family:monospace;font-size:12.5px;font-weight:900;color:#c084fc;outline:none;">' +
+            '</div>' +
+          '</div>' +
+          '<div style="font-size:11px;color:#94a3b8;margin-top:8px;">🔒 O‘quvchi o‘zi alohida yangi hisob ocha olmaydi. Faqat ushbu Login va Parol orqali kiradi.</div>' +
+        '</div>' +
+
+        // Action Buttons
+        '<div style="display:flex;align-items:center;justify-content:flex-end;gap:10px;">' +
+          '<button type="button" id="eaCancelEnrollBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+          '<button type="submit" id="eaSaveEnrollBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 18px rgba(2,132,199,0.4);display:inline-flex;align-items:center;gap:6px;">💾 Saqlash va Profil Yaratish</button>' +
+        '</div>' +
+      '</form>' +
+    '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    var fnInp = overlay.querySelector('#eaEnrollFirstName');
+    var lnInp = overlay.querySelector('#eaEnrollLastName');
+    var phoneInp = overlay.querySelector('#eaEnrollParentPhone');
+    var loginInp = overlay.querySelector('#eaLiveLoginInput');
+    var passInp = overlay.querySelector('#eaLivePassInput');
+    var regenBtn = overlay.querySelector('#eaRegenCredsBtn');
+
+    var currentNum = existingNum || Math.floor(100 + Math.random() * 900);
+
+    function updateLiveCreds(forceNewNum) {
+      if (forceNewNum) {
+        currentNum = Math.floor(100 + Math.random() * 900);
+      }
+      var c = EA.generateStudentCredentials(fnInp.value, lnInp.value, currentNum);
+      loginInp.value = c.login;
+      passInp.value = c.password;
+    }
+
+    fnInp.oninput = function() { if (!isEdit || !curSt.login) updateLiveCreds(false); };
+    lnInp.oninput = function() { if (!isEdit || !curSt.login) updateLiveCreds(false); };
+    regenBtn.onclick = function() { updateLiveCreds(true); };
+
+    overlay.querySelector('#eaCloseEnrollModalBtn').onclick = function() { overlay.remove(); };
+    overlay.querySelector('#eaCancelEnrollBtn').onclick = function() { overlay.remove(); };
+
+    overlay.querySelector('#eaEnrollStudentForm').onsubmit = function(e) {
+      e.preventDefault();
+      var fn = fnInp.value.trim();
+      var ln = lnInp.value.trim();
+      var pPhone = phoneInp.value.trim();
+      var selClassId = overlay.querySelector('#eaEnrollClassSelect').value;
+      var finalLogin = loginInp.value.trim();
+      var finalPass = passInp.value.trim();
+
+      if (!fn || !ln) {
+        alert("Iltimos, o‘quvchining ismi va familiyasini kiriting!");
+        return;
+      }
+      if (!pPhone) {
+        alert("Iltimos, ota-onasining telefon raqamini kiriting!");
+        return;
+      }
+
+      var fullName = fn + ' ' + ln;
+      var chosenClass = classes.find(function(c) { return c.id === selClassId; });
+      if (!chosenClass) {
+        alert("Guruh topilmadi!");
+        return;
+      }
+
+      if (!chosenClass.students) chosenClass.students = [];
+
+      var studentObj = curSt;
+      var newStudentId = curSt ? curSt.id : ('std_' + finalLogin);
+
+      if (!studentObj) {
+        studentObj = {
+          id: newStudentId,
+          name: fullName,
+          firstName: fn,
+          lastName: ln,
+          email: finalLogin + '@student.ethith',
+          role: 'student',
+          phone: pPhone,
+          parentPhone: pPhone,
+          login: finalLogin,
+          password: finalPass,
+          joinedAt: new Date().toISOString().split('T')[0],
+          isTester: false,
+          isOnline: false,
+          coins: 150
+        };
+        chosenClass.students.push(studentObj);
+      } else {
+        studentObj.name = fullName;
+        studentObj.firstName = fn;
+        studentObj.lastName = ln;
+        studentObj.parentPhone = pPhone;
+        studentObj.phone = pPhone;
+        studentObj.login = finalLogin;
+        studentObj.password = finalPass;
+        studentObj.isTester = false;
+      }
+
+      // Also register into accounts for direct login
+      var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
+      if (!Array.isArray(S_app.accounts)) S_app.accounts = [];
+      var acc = S_app.accounts.find(function(a) { return a.id === studentObj.id || (a.login && a.login.toLowerCase() === finalLogin.toLowerCase()); });
+      if (!acc) {
+        acc = {
+          id: studentObj.id,
+          name: fullName,
+          role: 'student',
+          login: finalLogin,
+          password: finalPass,
+          phone: pPhone,
+          parentPhone: pPhone,
+          classId: chosenClass.id,
+          isOnline: false,
+          lastLogin: null
+        };
+        S_app.accounts.push(acc);
+      } else {
+        acc.name = fullName;
+        acc.login = finalLogin;
+        acc.password = finalPass;
+        acc.phone = pPhone;
+        acc.parentPhone = pPhone;
+        acc.classId = chosenClass.id;
+      }
+
+      // Default payment status: UNPAID (0 so'm until admin marks paid)
+      if (!chosenClass.studentPayments) chosenClass.studentPayments = {};
+      if (!chosenClass.studentPayments[studentObj.id]) {
+        chosenClass.studentPayments[studentObj.id] = {
+          fee: 300000,
+          paid: 0,
+          status: 'unpaid',
+          method: '—',
+          date: 'To‘lanmagan'
+        };
+      }
+
+      if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
+        window.EthithEnterprise.saveStore();
+      } else if (window.EthithApp && window.EthithApp.saveState) {
+        window.EthithApp.saveState();
+      }
+
+      if (window.EthithSync && window.EthithSync.broadcastState) {
+        window.EthithSync.broadcastState('student_roster_updated');
+      }
+
+      if (window.EthithApp && window.EthithApp.toast) {
+        window.EthithApp.toast("✅ " + fullName + " ro‘yxatga olindi! Login: " + finalLogin);
+      }
+
+      overlay.remove();
+      var container = document.getElementById('apView');
+      if (container) EA.render(container);
+    };
+  };
+
+  // ============================================================================
+  // EXCEL EXPORT OF SYSTEM LOGINS & CREDENTIALS
+  // ============================================================================
+  EA.exportLoginsToExcel = function(records, filterLabel) {
+    if (typeof XLSX === 'undefined') {
+      alert("Excel yuklash moduli yuklanmoqda, iltimos 2 soniyadan so‘ng qayta bosing.");
+      return;
+    }
+    if (!records || records.length === 0) {
+      alert("Eksport qilish uchun o‘quvchilar ro‘yxati bo‘sh!");
+      return;
+    }
+
+    var rows = records.map(function(r, idx) {
+      return {
+        "№": idx + 1,
+        "O‘quvchi Ism-Familiyasi": r.name,
+        "Guruh / Level": r.className,
+        "Ustoz": r.teacherName || "—",
+        "Ota-onasining Telefon Raqami": r.parentPhone || "Kiritilmagan",
+        "Tizim Logini": r.login || "—",
+        "Maxfiy Parol": r.password || "—",
+        "Tizimga Kirish Holati": r.isOnline ? "🟢 Online (Kirgan)" : "🔴 Kirmagan (Offline)",
+        "Oylik To‘lov Holati": r.isPaid ? "To‘langan" : "To‘lanmagan"
+      };
+    });
+
+    var ws = XLSX.utils.json_to_sheet(rows);
+    ws['!cols'] = [
+      { wch: 6 },  // №
+      { wch: 26 }, // Ism
+      { wch: 22 }, // Guruh
+      { wch: 20 }, // Ustoz
+      { wch: 24 }, // Telefon
+      { wch: 22 }, // Login
+      { wch: 18 }, // Parol
+      { wch: 22 }, // Holat
+      { wch: 16 }  // To'lov
+    ];
+
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Tizim_Loginlari");
+    var fileName = "ETHITH_Oquvchilar_Login_Parollari" + (filterLabel ? ("_" + filterLabel) : "") + ".xlsx";
+    XLSX.writeFile(wb, fileName);
+  };
+
+  // ============================================================================
+  // SYSTEM LOGINS TABLE SECTION (Placed at bottom of directory, groups & journal)
+  // ============================================================================
+  EA.renderSystemLoginsSection = function(currentTeacherId, currentClassId) {
+    var isAdmin = isAdminRole();
+    var isTeacher = isTeacherRole();
+
+    var allCls = getAvailableClasses();
+    if (isTeacher && !isAdmin) {
+      var tClasses = getClassesForTeacher(currentTeacherId || EA.activeTeacherId);
+      allCls = tClasses;
+    } else if (currentClassId) {
+      var matchC = allCls.filter(function(c) { return c.id === currentClassId; });
+      if (matchC.length > 0) allCls = matchC;
+    }
+
+    // Collect all student records across selected classes
+    var records = [];
+    var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
+    var accounts = S_app.accounts || [];
+
+    allCls.forEach(function(cls) {
+      (cls.students || []).forEach(function(st, sIdx) {
+        var stId = st.id || st.email || ('std_' + sIdx);
+        var stName = cleanStName(cls.customStudentNames[stId] || st.name || ("O'quvchi " + (sIdx + 1)));
+
+        // Match with account if available
+        var acc = accounts.find(function(a) { return a.id === stId || (st.login && a.login && a.login.toLowerCase() === st.login.toLowerCase()); });
+        var parentPhone = st.parentPhone || st.phone || (acc ? (acc.parentPhone || acc.phone) : '') || '';
+        
+        var login = st.login || (acc ? acc.login : '');
+        var pass = st.password || (acc ? acc.password : '');
+        if (!login) {
+          var nParts = stName.split(/\s+/);
+          var cGen = EA.generateStudentCredentials(nParts[0], nParts.slice(1).join(' '), 100 + sIdx);
+          login = cGen.login;
+          pass = cGen.password;
+          st.login = login;
+          st.password = pass;
+        }
+
+        var isOnline = (st.isOnline === true) || (acc && acc.isOnline === true);
+        var isPaid = (cls.studentPayments && cls.studentPayments[stId] && cls.studentPayments[stId].status === 'paid');
+
+        records.push({
+          id: stId,
+          name: stName,
+          parentPhone: parentPhone,
+          login: login,
+          password: pass,
+          isOnline: isOnline,
+          isPaid: isPaid,
+          classId: cls.id,
+          className: cls.name || cls.id,
+          teacherName: cls.teacherName || 'Ustoz',
+          isTester: !!st.isTester
+        });
+      });
+    });
+
+    var onlineCount = records.filter(function(r) { return r.isOnline; }).length;
+    var offlineCount = records.length - onlineCount;
+
+    var h = '<div class="ea-system-logins-section" style="margin-top:40px;background:linear-gradient(135deg,rgba(15,23,42,0.96),rgba(30,41,59,0.92));border:1.5px solid rgba(56,189,248,0.35);border-radius:24px;padding:26px 28px;box-shadow:0 18px 50px rgba(0,0,0,0.6),0 0 30px rgba(56,189,248,0.15);backdrop-filter:blur(24px);">' +
+      // Header & Controls Row
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:18px;">' +
+        '<div style="display:flex;align-items:center;gap:14px;">' +
+          '<div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 6px 18px rgba(99,102,241,0.35);">🔐</div>' +
+          '<div>' +
+            '<h2 style="margin:0;font-size:20px;font-weight:900;color:#fff;display:flex;align-items:center;gap:10px;">' +
+              'Tizim Loginlari (O‘quvchilar Ro‘yxati va Kirish Ma’lumotlari)' +
+            '</h2>' +
+            '<p style="margin:4px 0 0;font-size:12.5px;color:#94a3b8;font-weight:600;">' +
+              'O‘quvchilar mustaqil ro‘yxatdan o‘tmaydi — ular faqat ushbu login va parollar orqali tizimga kiradilar.' +
+            '</p>' +
+          '</div>' +
+        '</div>' +
+
+        // Stats Badges & Actions
+        '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
+          '<span style="background:rgba(34,197,94,0.18);border:1px solid #22c55e;color:#4ade80;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:900;display:inline-flex;align-items:center;gap:6px;">' +
+            '<span class="ea-status-dot ea-status-online" style="margin:0;"></span>' + onlineCount + ' ta Online' +
+          '</span>' +
+          '<span style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);color:#f87171;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:800;display:inline-flex;align-items:center;gap:6px;">' +
+            '<span class="ea-status-dot ea-status-offline" style="margin:0;"></span>' + offlineCount + ' ta Kirmagan' +
+          '</span>' +
+          '<button type="button" id="eaBtnAddNewStudentLogins" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(16,185,129,0.35);transition:all 0.2s;">' +
+            '➕ Yangi O‘quvchi Ro‘yxatga Olish' +
+          '</button>' +
+          '<button type="button" id="eaBtnExportLoginsExcel" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(2,132,199,0.35);transition:all 0.2s;">' +
+            '📥 Excel (.xlsx) Yuklab Olish' +
+          '</button>' +
+        '</div>' +
+      '</div>' +
+
+      // Filter & Search bar
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:16px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;flex:1;max-width:450px;">' +
+          '<span style="font-size:16px;">🔍</span>' +
+          '<input type="text" id="eaLoginsSearchInput" placeholder="Ism, familiya, login yoki telefon bo‘yicha qidirish..." style="flex:1;background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.35);border-radius:10px;padding:8px 14px;color:#fff;font-size:13px;outline:none;">' +
+        '</div>' +
+        '<div style="font-size:12px;color:#94a3b8;font-weight:700;">' +
+          'Jami: <b style="color:#38bdf8;">' + records.length + ' ta o‘quvchi</b>' +
+        '</div>' +
+      '</div>' +
+
+      // Table Container
+      '<div style="overflow-x:auto;border:1px solid rgba(255,255,255,0.08);border-radius:16px;background:rgba(8,13,26,0.7);">' +
+        '<table id="eaLoginsTable" style="width:100%;border-collapse:collapse;font-size:13px;text-align:left;">' +
+          '<thead>' +
+            '<tr style="background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.95));border-bottom:1px solid rgba(56,189,248,0.3);color:#94a3b8;font-size:11.5px;font-weight:900;text-transform:uppercase;letter-spacing:0.5px;">' +
+              '<th style="padding:12px 14px;text-align:center;width:45px;">№</th>' +
+              '<th style="padding:12px 14px;">O‘quvchi Ism-Familiyasi</th>' +
+              '<th style="padding:12px 14px;">Guruh / Level</th>' +
+              '<th style="padding:12px 14px;">Ota-onasi Telefoni</th>' +
+              '<th style="padding:12px 14px;">Tizim Logini</th>' +
+              '<th style="padding:12px 14px;">Maxfiy Parol</th>' +
+              '<th style="padding:12px 14px;text-align:center;">Holat</th>' +
+              '<th style="padding:12px 14px;text-align:center;">Amal</th>' +
+            '</tr>' +
+          '</thead>' +
+          '<tbody>';
+
+    if (records.length === 0) {
+      h += '<tr><td colspan="8" style="padding:36px;text-align:center;color:#94a3b8;font-weight:700;">Hozircha o‘quvchilar mavjud emas. Yuqoridagi "➕ Yangi O‘quvchi Ro‘yxatga Olish" tugmasi orqali qo‘shing.</td></tr>';
+    } else {
+      records.forEach(function(r, idx) {
+        var rowBg = idx % 2 === 0 ? 'rgba(15, 23, 42, 0.4)' : 'rgba(15, 23, 42, 0.65)';
+        var dotHtml = '<span class="ea-status-dot ' + (r.isOnline ? 'ea-status-online' : 'ea-status-offline') + '" title="' + (r.isOnline ? '🟢 Online (Tizimga kirgan)' : '🔴 Offline (Tizimga kirmagan)') + '"></span>';
+
+        var nameHtml = r.isPaid
+          ? ('<span class="ea-st-paid-neon" style="color:#4ade80 !important;font-weight:900;text-shadow:0 0 10px rgba(74,222,128,0.9),0 0 20px rgba(74,222,128,0.6);letter-spacing:0.2px;">' + esc(r.name) + '</span>')
+          : ('<span style="color:#f8fafc;font-weight:800;">' + esc(r.name) + '</span>');
+
+        var phoneDisp = r.parentPhone ? esc(r.parentPhone) : '<span style="color:#64748b;font-style:italic;">Kiritilmagan</span>';
+
+        h += '<tr class="ea-login-row" data-search="' + esc((r.name + ' ' + r.className + ' ' + r.login + ' ' + r.parentPhone).toLowerCase()) + '" style="background:' + rowBg + ';border-bottom:1px solid rgba(255,255,255,0.05);transition:background 0.15s;">' +
+          '<td style="padding:10px 14px;text-align:center;color:#94a3b8;font-weight:900;">' + (idx + 1) + '</td>' +
+          '<td style="padding:10px 14px;display:flex;align-items:center;gap:6px;">' +
+            dotHtml + nameHtml +
+          '</td>' +
+          '<td style="padding:10px 14px;color:#38bdf8;font-weight:700;">' + esc(r.className) + '</td>' +
+          '<td style="padding:10px 14px;font-family:monospace;font-weight:700;color:#cbd5e1;">' + phoneDisp + '</td>' +
+          '<td style="padding:10px 14px;">' +
+            '<span class="ea-login-code-tag">' + esc(r.login) + '</span>' +
+            '<button type="button" class="ea-copy-mini-btn ea-btn-copy-val" data-val="' + esc(r.login) + '" title="Loginni nusxalash">📋</button>' +
+          '</td>' +
+          '<td style="padding:10px 14px;">' +
+            '<span class="ea-password-code-tag">' + esc(r.password) + '</span>' +
+            '<button type="button" class="ea-copy-mini-btn ea-btn-copy-val" data-val="' + esc(r.password) + '" title="Parolni nusxalash">📋</button>' +
+          '</td>' +
+          '<td style="padding:10px 14px;text-align:center;">' +
+            (r.isOnline 
+              ? '<span style="background:rgba(34,197,94,0.18);border:1px solid #22c55e;color:#4ade80;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:900;">🟢 Online</span>' 
+              : '<span style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#f87171;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:800;">🔴 Kirmagan</span>') +
+          '</td>' +
+          '<td style="padding:10px 14px;text-align:center;">' +
+            '<button type="button" class="ea-btn-edit-student-creds" data-cid="' + esc(r.classId) + '" data-stid="' + esc(r.id) + '" title="Ma’lumotlarni tahrirlash" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.35);color:#38bdf8;border-radius:8px;padding:4px 9px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">✏️ Tahrirlash</button>' +
+          '</td>' +
+        '</tr>';
+      });
+    }
+
+    h += '</tbody></table></div></div>';
+
+    // Return the html string so it can be appended at the end of directory, groups, or journal!
+    return {
+      html: h,
+      records: records,
+      attachHandlers: function(container) {
+        // Excel export
+        var expBtn = container.querySelector('#eaBtnExportLoginsExcel');
+        if (expBtn) {
+          expBtn.onclick = function() {
+            EA.exportLoginsToExcel(records, currentClassId ? 'Guruh' : 'Barcha');
+          };
+        }
+
+        // Add new student
+        var addBtn = container.querySelector('#eaBtnAddNewStudentLogins');
+        if (addBtn) {
+          addBtn.onclick = function() {
+            EA.openStudentEnrollModal(currentClassId || (allCls[0] ? allCls[0].id : null), null);
+          };
+        }
+
+        // Edit student
+        var editBtns = container.querySelectorAll('.ea-btn-edit-student-creds');
+        editBtns.forEach(function(b) {
+          b.onclick = function(e) {
+            e.stopPropagation();
+            var cid = b.getAttribute('data-cid');
+            var stid = b.getAttribute('data-stid');
+            EA.openStudentEnrollModal(cid, stid);
+          };
+        });
+
+        // Copy button
+        var copyBtns = container.querySelectorAll('.ea-btn-copy-val');
+        copyBtns.forEach(function(b) {
+          b.onclick = function(e) {
+            e.stopPropagation();
+            var val = b.getAttribute('data-val');
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(val);
+              b.innerText = '✓';
+              setTimeout(function() { b.innerText = '📋'; }, 1200);
+            } else {
+              prompt("Nusxa oling:", val);
+            }
+          };
+        });
+
+        // Search input
+        var sInp = container.querySelector('#eaLoginsSearchInput');
+        if (sInp) {
+          sInp.oninput = function() {
+            var q = sInp.value.trim().toLowerCase();
+            var rows = container.querySelectorAll('.ea-login-row');
+            rows.forEach(function(r) {
+              var sVal = r.getAttribute('data-search') || '';
+              r.style.display = (sVal.indexOf(q) !== -1) ? '' : 'none';
+            });
+          };
+        }
+      }
+    };
+  };
 
 })(window);
