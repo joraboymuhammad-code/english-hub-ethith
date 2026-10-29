@@ -15,12 +15,19 @@
 (function(window) {
   'use strict';
 
-  var WB = window.ETHITH_WORKBOOK_B1 = window.ETHITH_WORKBOOK_B1 || {};
+  var WB = window.ETHITH_WORKBOOK_B1 = window.WB = window.ETHITH_WORKBOOK_B1 || {};
 
   // Check if current user is Teacher/Admin
   function isTeacherRole() {
+
     var u = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || (window.S && window.S.user);
-    return !!(u && (u.role === 'teacher' || u.role === 'admin')) || (window._ethithWbEditorMode === true);
+    if (!u) {
+      try {
+        var raw = localStorage.getItem('ethith_active_user') || localStorage.getItem('ethith_user');
+        if (raw) u = JSON.parse(raw);
+      } catch(e) {}
+    }
+    return !!(u && (u.role === 'teacher' || u.role === 'admin' || u.isTeacher === true)) || (window._ethithWbEditorMode === true);
   }
 
   // 12 Authentic Units from Oxford Navigate Intermediate B1+
@@ -132724,16 +132731,26 @@
       '</div>';
     }
 
-    // Interactive Instruction Badge
-    h += '<div style="margin-bottom:14px;background:rgba(14,165,233,0.1);border:1px solid rgba(56,189,248,0.3);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--text);flex-wrap:wrap;">' +
-      '<span style="font-weight:800;color:#0284c7;">🎯 Mashq qilish:</span>' +
-      '<span>✍️ <b>Yozish:</b> chiziqqa bosing</span>' +
-      '<span>✂️ <b>O‘chirish:</b> noto‘g‘ri so‘zga bosing</span>' +
-      '<span>🔘 <b>Tanlash:</b> to‘g‘ri variantga bosing</span>' +
-      '<span>🔗 <b>Bog‘lash:</b> harf katagiga bosing</span>' +
-      '<span>📍 <b>Joylashtirish:</b> so‘zlar orasiga bosing</span>' +
-      '<span style="margin-left:auto;color:#38bdf8;font-size:11.5px;font-weight:700;">🔍 Ikki barmoq bilan yoki (− / +) tugmalari orqali kitobni kattalashtiring/kichraytiring</span>' +
-    '</div>';
+    // Interactive Instruction Badge: Teacher vs Student
+    if (isTeacher) {
+      h += '<div style="margin-bottom:14px;background:rgba(16,185,129,0.12);border:1.5px solid rgba(16,185,129,0.4);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text);flex-wrap:wrap;">' +
+        '<span style="font-weight:900;color:#10b981;">👨‍🏫 Ustoz Rejimi (To‘g‘ri javoblar ko‘rsatilgan):</span>' +
+        '<span>✏️ <b>Javobni tahrirlash:</b> istalgan katakcha ustiga bosing</span>' +
+        '<span>📐 <b>Katakchalarni surish / chizish:</b> pastdagi "Visual Editor" tugmasini bosing</span>' +
+        '<span>💾 <b>Saqlash:</b> pastdagi "Saqlash (Hammaga Tarqatish)" tugmasini bosing</span>' +
+        '<span style="margin-left:auto;color:#38bdf8;font-size:11.5px;font-weight:700;">🔍 Zoom: (− / +) yoki ikki barmoq bilan</span>' +
+      '</div>';
+    } else {
+      h += '<div style="margin-bottom:14px;background:rgba(14,165,233,0.1);border:1px solid rgba(56,189,248,0.3);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--text);flex-wrap:wrap;">' +
+        '<span style="font-weight:800;color:#0284c7;">🎯 Mashq qilish:</span>' +
+        '<span>✍️ <b>Yozish:</b> chiziqqa bosing</span>' +
+        '<span>✂️ <b>O‘chirish:</b> noto‘g‘ri so‘zga bosing</span>' +
+        '<span>🔘 <b>Tanlash:</b> to‘g‘ri variantga bosing</span>' +
+        '<span>🔗 <b>Bog‘lash:</b> harf katagiga bosing</span>' +
+        '<span>📍 <b>Joylashtirish:</b> so‘zlar orasiga bosing</span>' +
+        '<span style="margin-left:auto;color:#38bdf8;font-size:11.5px;font-weight:700;">🔍 Ikki barmoq bilan yoki (− / +) tugmalari orqali kitobni kattalashtiring/kichraytiring</span>' +
+      '</div>';
+    }
 
     // Pages Display Container - VERTICAL CONTINUOUS PDF SCROLL + HORIZONTAL PAN WHEN ZOOMED
     h += '<div id="ethWbPagesWrap" style="display:block;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:12px;">';
@@ -132741,32 +132758,53 @@
     pages.forEach(function(pageNum, idx) {
       var imgSrc = WB.getPageImage(pageNum);
       var inputs = WB.getPageInputs(pageNum);
-      h += renderSinglePageBlock(pageNum, idx + 1, imgSrc, inputs, isEditor, curZoom);
+      h += renderSinglePageBlock(pageNum, idx + 1, imgSrc, inputs, isEditor, curZoom, isTeacher);
     });
 
     h += '</div>';
 
-    // Bottom Sticky Action Bar (Unified evaluation for all pages in this lesson)
-    h += '<div style="position:sticky;bottom:16px;z-index:90;margin-top:24px;background:rgba(15,23,42,0.92);backdrop-filter:blur(12px);border:1px solid rgba(56,189,248,0.4);border-radius:18px;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 14px 40px rgba(0,0,0,0.5);color:#fff;">' +
-      '<div style="display:flex;align-items:center;gap:14px;">' +
-        '<div id="ethWbScoreDisplay" style="font-size:14px;font-weight:800;display:inline-flex;align-items:center;gap:6px;">' +
-          '<span>Bajarildi: <b id="ethWbAnsweredCount" style="color:#38bdf8;">0</b> / <span id="ethWbTotalCount">0</span></span>' +
+    // Bottom Sticky Action Bar: Teachers have Save & Edit mode, Students have Solving & Checking mode
+    if (isTeacher) {
+      h += '<div style="position:sticky;bottom:16px;z-index:90;margin-top:24px;background:rgba(15,23,42,0.96);backdrop-filter:blur(14px);border:1.5px solid #10b981;border-radius:18px;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 14px 40px rgba(0,0,0,0.6);color:#fff;">' +
+        '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">' +
+          '<span style="background:linear-gradient(135deg,rgba(16,185,129,0.25),rgba(5,150,105,0.3));border:1.5px solid #10b981;color:#34d399;font-weight:900;font-size:13px;padding:6px 14px;border-radius:10px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 16px rgba(16,185,129,0.3);">' +
+            '<span>👨‍🏫</span> Ustoz Rejimi: Barcha To‘g‘ri Javoblar (Tahrirlash uchun katakchaga bosing)' +
+          '</span>' +
+          '<button id="ethWbToggleEditorBottom" style="background:rgba(56,189,248,0.15);border:1.5px solid #38bdf8;color:#38bdf8;padding:8px 16px;border-radius:10px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
+            (isEditor ? '✖ Tahrirlashni Yopish' : '✏️ Katakchalarni Ko‘chirish / Chizish') +
+          '</button>' +
+          '<button id="ethWbResetToDefaultBtn" style="background:rgba(239,68,68,0.15);border:1.5px solid #ef4444;color:#f87171;padding:8px 14px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;">' +
+            '↺ Asliga Qaytarish' +
+          '</button>' +
         '</div>' +
-        '<div id="ethWbResultPill" style="display:none;font-size:13px;font-weight:800;padding:4px 12px;border-radius:20px;background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(52,211,153,0.4);"></div>' +
-      '</div>' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<button id="ethWbBottomSaveBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:12px 28px;border-radius:14px;font-size:14px;font-weight:900;cursor:pointer;box-shadow:0 6px 24px rgba(16,185,129,0.5);display:inline-flex;align-items:center;gap:8px;letter-spacing:0.3px;">' +
+            '<span>💾</span> Saqlash (Hammaga Tarqatish)' +
+          '</button>' +
+        '</div>' +
+      '</div>';
+    } else {
+      h += '<div style="position:sticky;bottom:16px;z-index:90;margin-top:24px;background:rgba(15,23,42,0.92);backdrop-filter:blur(12px);border:1px solid rgba(56,189,248,0.4);border-radius:18px;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 14px 40px rgba(0,0,0,0.5);color:#fff;">' +
+        '<div style="display:flex;align-items:center;gap:14px;">' +
+          '<div id="ethWbScoreDisplay" style="font-size:14px;font-weight:800;display:inline-flex;align-items:center;gap:6px;">' +
+            '<span>Bajarildi: <b id="ethWbAnsweredCount" style="color:#38bdf8;">0</b> / <span id="ethWbTotalCount">0</span></span>' +
+          '</div>' +
+          '<div id="ethWbResultPill" style="display:none;font-size:13px;font-weight:800;padding:4px 12px;border-radius:20px;background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(52,211,153,0.4);"></div>' +
+        '</div>' +
 
-      '<div style="display:flex;align-items:center;gap:10px;">' +
-        '<button id="ethWbShowAnsBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:9px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.3);">' +
-          '👁️ Javoblar' +
-        '</button>' +
-        '<button id="ethWbResetBtn" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:9px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;">' +
-          '↻ Tozalash' +
-        '</button>' +
-        '<button id="ethWbCheckBtn" style="background:linear-gradient(135deg,#0284c7,#154b89);color:#fff;border:none;padding:10px 24px;border-radius:12px;font-size:14px;font-weight:900;cursor:pointer;box-shadow:0 6px 20px rgba(2,132,199,0.4);">' +
-          '✓ Tekshirish (Check Both Pages)' +
-        '</button>' +
-      '</div>' +
-    '</div>';
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<button id="ethWbShowAnsBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:9px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.3);">' +
+            '👁️ Javoblar' +
+          '</button>' +
+          '<button id="ethWbResetBtn" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:9px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;">' +
+            '↻ Tozalash' +
+          '</button>' +
+          '<button id="ethWbCheckBtn" style="background:linear-gradient(135deg,#0284c7,#154b89);color:#fff;border:none;padding:10px 24px;border-radius:12px;font-size:14px;font-weight:900;cursor:pointer;box-shadow:0 6px 20px rgba(2,132,199,0.4);">' +
+            '✓ Tekshirish (Check Both Pages)' +
+          '</button>' +
+        '</div>' +
+      '</div>';
+    }
 
     // Interactive Edit Modal for Teachers
     if (isTeacher) {
@@ -132826,15 +132864,15 @@
   }
 
   // Render a single page with multi-type interactive elements
-  function renderSinglePageBlock(pageNum, pageIndex, imgSrc, inputs, isEditor, curZoom) {
+  function renderSinglePageBlock(pageNum, pageIndex, imgSrc, inputs, isEditor, curZoom, isTeacher) {
     curZoom = curZoom || window._ethWbZoom || 1;
     var dispP = WB.getDisplayPageNum(pageNum);
     var bookLabel = WB.getBookLabel ? WB.getBookLabel(pageNum) : (WB.isUpperPage(pageNum) ? 'Navigate B2 Upper-Intermediate' : 'Navigate B1+');
-    var h = '<div id="ethWbPage_' + pageNum + '" class="eth-wb-page-box' + (isEditor ? ' is-editing' : '') + '" data-page="' + pageNum + '" style="--wb-zoom:' + curZoom + ';container-type:inline-size;position:relative;width:calc(100% * var(--wb-zoom, 1));max-width:calc(920px * var(--wb-zoom, 1));margin:0 auto 30px auto;box-shadow:0 10px 40px rgba(0,0,0,0.25);border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);">' +
+    var h = '<div id="ethWbPage_' + pageNum + '" class="eth-wb-page-box' + (isEditor ? ' is-editing' : '') + (isTeacher ? ' is-teacher-view' : '') + '" data-page="' + pageNum + '" style="--wb-zoom:' + curZoom + ';container-type:inline-size;position:relative;width:calc(100% * var(--wb-zoom, 1));max-width:calc(920px * var(--wb-zoom, 1));margin:0 auto 30px auto;box-shadow:0 10px 40px rgba(0,0,0,0.25);border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);">' +
       // Top indicator banner
       '<div style="background:#0f172a;color:#fff;padding:6px 14px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:800;">' +
         '<span>📄 ' + pageIndex + '-bet (' + bookLabel + ' Page ' + dispP + ')</span>' +
-        '<span style="color:#38bdf8;">' + inputs.length + ' ta interaktiv topshiriq</span>' +
+        '<span style="color:' + (isTeacher ? '#34d399' : '#38bdf8') + ';">' + inputs.length + ' ta interaktiv topshiriq' + (isTeacher ? ' (To‘g‘ri javoblar ko‘rsatilgan)' : '') + '</span>' +
       '</div>' +
       '<div style="position:relative;width:100%;">' +
       '<img src="' + imgSrc + '" class="eth-wb-img" data-page="' + pageNum + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:' + (isEditor ? 'none' : 'auto') + ';" alt="Oxford ' + bookLabel + ' Page ' + dispP + '" />' +
@@ -132867,80 +132905,104 @@
           corrDisplay = corrAttr;
         }
         var isSmallLetter = (item.width && item.width <= 7.0) || (corrDisplay.length <= 8 && !corrDisplay.includes(' '));
-        var inputStyle = 'width:100%;height:100%;' + 
-          (isEditor ? 'pointer-events:none;' : '') + 
-          (isSmallLetter ? 'text-align:center;font-weight:900;padding:0;font-size:13px;' : '');
 
-        h += '<input type="text" ' +
-          'class="eth-wb-input wb-fill-input' + (isSmallLetter ? ' wb-small-letter' : '') + '" ' +
-          'data-id="' + item.id + '" ' +
-          'data-page="' + pageNum + '" ' +
-          'data-type="fill" ' +
-          'data-correct="' + corrAttr.replace(/"/g, '&quot;') + '" ' +
-          (isEditor ? 'disabled ' : '') +
-          'style="' + inputStyle + '" ' +
-          'placeholder="' + (item.placeholder ? item.placeholder.replace(/"/g, '&quot;') : (isEditor && item.label ? item.label : '')) + '" autocomplete="off" spellcheck="false" />' +
-          '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
+        if (isTeacher) {
+          h += '<input type="text" ' +
+            'class="eth-wb-input wb-fill-input wb-teacher-box' + (isSmallLetter ? ' wb-small-letter' : '') + '" ' +
+            'data-id="' + item.id + '" ' +
+            'data-page="' + pageNum + '" ' +
+            'data-type="fill" ' +
+            'data-correct="' + corrAttr.replace(/"/g, '&quot;') + '" ' +
+            'value="' + corrDisplay.replace(/"/g, '&quot;') + '" ' +
+            'readonly ' +
+            'style="width:100%;height:100%;background:rgba(16,185,129,0.18);border:1.5px solid #10b981;color:#059669;font-weight:900;border-radius:6px;cursor:pointer;box-shadow:0 0 6px rgba(16,185,129,0.3);' + 
+            (isSmallLetter ? 'text-align:center;padding:0;font-size:13px;' : 'padding:2px 6px;') + '" ' +
+            'title="✏️ To‘g‘ri javob: ' + corrDisplay.replace(/"/g, '&quot;') + ' (Tahrirlash uchun bosing)" autocomplete="off" spellcheck="false" />' +
+            '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
+        } else {
+          var inputStyle = 'width:100%;height:100%;' + 
+            (isEditor ? 'pointer-events:none;' : '') + 
+            (isSmallLetter ? 'text-align:center;font-weight:900;padding:0;font-size:13px;' : '');
+
+          h += '<input type="text" ' +
+            'class="eth-wb-input wb-fill-input' + (isSmallLetter ? ' wb-small-letter' : '') + '" ' +
+            'data-id="' + item.id + '" ' +
+            'data-page="' + pageNum + '" ' +
+            'data-type="fill" ' +
+            'data-correct="' + corrAttr.replace(/"/g, '&quot;') + '" ' +
+            (isEditor ? 'disabled ' : '') +
+            'style="' + inputStyle + '" ' +
+            'placeholder="' + (item.placeholder ? item.placeholder.replace(/"/g, '&quot;') : (isEditor && item.label ? item.label : '')) + '" autocomplete="off" spellcheck="false" />' +
+            '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
+        }
       } else if (itemType === 'cross') {
-        h += '<div class="wb-cross-chip" ' +
+        var isCrossedCorrect = (item.incorrect === true || item.incorrect === 'true');
+        h += '<div class="wb-cross-chip' + (isTeacher && isCrossedCorrect ? ' crossed correct' : '') + (isTeacher ? ' wb-teacher-box' : '') + '" ' +
           'data-id="' + item.id + '" ' +
           'data-page="' + pageNum + '" ' +
           'data-type="cross" ' +
           'data-group="' + (item.group || '') + '" ' +
           'data-incorrect="' + (item.incorrect === true ? 'true' : 'false') + '" ' +
           'data-text="' + (item.text || '').replace(/"/g, '&quot;') + '" ' +
-          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
-          'title="O‘chirish uchun bosing: ' + (item.text || '') + '"></div>' +
+          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : 'cursor:pointer;') + (isTeacher && isCrossedCorrect ? 'border:1.5px solid #10b981;background:rgba(16,185,129,0.18);' : '') + '" ' +
+          'title="' + (isTeacher ? ('✏️ Tahrirlash uchun bosing: ' + (item.text || '') + (isCrossedCorrect ? ' (O‘chiriladigan so‘z)' : '')) : ('O‘chirish uchun bosing: ' + (item.text || ''))) + '"></div>' +
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       } else if (itemType === 'choose' || itemType === 'choice') {
         var isItemCorrect = (item.correct === true || item.correct === 'true' || item.isCorrect === true || item.isCorrect === 'true' || item.correct === 'To‘g‘ri' || item.correct === 'to\'g\'ri' || item.correct === 'ha' || item.correct === 'yes');
         var itemGrp = item.group || (item.exercise && item.label ? ('p' + pageNum + '_ex' + item.exercise + '_' + item.label) : '');
-        h += '<div class="wb-choose-chip" ' +
+        h += '<div class="wb-choose-chip' + (isTeacher && isItemCorrect ? ' selected correct' : '') + (isTeacher ? ' wb-teacher-box' : '') + '" ' +
           'data-id="' + item.id + '" ' +
           'data-page="' + pageNum + '" ' +
           'data-type="choose" ' +
           'data-group="' + itemGrp + '" ' +
           'data-correct="' + (isItemCorrect ? 'true' : 'false') + '" ' +
           'data-text="' + (item.text || item.label || '').replace(/"/g, '&quot;') + '" ' +
-          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
-          'title="Tanlash uchun bosing: ' + (item.text || item.label || '') + '"></div>' +
+          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : 'cursor:pointer;') + (isTeacher && isItemCorrect ? 'border:1.5px solid #10b981;background:rgba(16,185,129,0.22);' : '') + '" ' +
+          'title="' + (isTeacher ? ('✏️ Tahrirlash uchun bosing: ' + (item.text || item.label || '') + (isItemCorrect ? ' (To‘g‘ri variant)' : '')) : ('Tanlash uchun bosing: ' + (item.text || item.label || ''))) + '"></div>' +
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       } else if (itemType === 'match') {
-        h += '<div class="wb-match-slot" ' +
+        var matchCorr = (item.correct || '').toUpperCase();
+        h += '<div class="wb-match-slot' + (isTeacher && matchCorr ? ' correct' : '') + (isTeacher ? ' wb-teacher-box' : '') + '" ' +
           'data-id="' + item.id + '" ' +
           'data-page="' + pageNum + '" ' +
           'data-type="match" ' +
           'data-correct="' + (item.correct || '') + '" ' +
-          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
-          'title="Javob harfini tanlang (a-f)">?</div>' +
+          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : 'cursor:pointer;') + (isTeacher ? 'background:rgba(16,185,129,0.18);border:1.5px solid #10b981;color:#059669;font-weight:900;display:flex;align-items:center;justify-content:center;' : '') + '" ' +
+          'title="' + (isTeacher ? ('✏️ Tahrirlash uchun bosing: ' + matchCorr) : 'Javob harfini tanlang (a-f)') + '">' + (isTeacher && matchCorr ? matchCorr : '?') + '</div>' +
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       } else if (itemType === 'insert') {
-        h += '<div class="wb-insert-slot" ' +
+        var isInsCorr = (item.correct === true);
+        h += '<div class="wb-insert-slot' + (isTeacher && isInsCorr ? ' inserted correct' : '') + (isTeacher ? ' wb-teacher-box' : '') + '" ' +
           'data-id="' + item.id + '" ' +
           'data-page="' + pageNum + '" ' +
           'data-type="insert" ' +
           'data-group="' + (item.group || '') + '" ' +
           'data-word="' + (item.word || '') + '" ' +
           'data-correct="' + (item.correct === true ? 'true' : 'false') + '" ' +
-          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '" ' +
-          'title="So‘zni shu yerga joylashtirish">' +
+          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : 'cursor:pointer;') + (isTeacher && isInsCorr ? 'border:1.5px solid #10b981;background:rgba(16,185,129,0.2);' : '') + '" ' +
+          'title="' + (isTeacher ? '✏️ Tahrirlash uchun bosing' : 'So‘zni shu yerga joylashtirish') + '">' +
             '<span class="wb-insert-text">' + (item.word || '') + '</span>' +
           '</div>' +
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       } else if (itemType === 'select') {
         var opts = Array.isArray(item.options) ? item.options : [];
-        var corrOpt = Array.isArray(item.correct) ? JSON.stringify(item.correct) : String(item.correct || '');
-        h += '<select class="eth-wb-input wb-select-input" ' +
+        var corrOpt = Array.isArray(item.correct) ? (item.correct[0] || '') : String(item.correct || '');
+        h += '<select class="eth-wb-input wb-select-input' + (isTeacher ? ' correct wb-teacher-box' : '') + '" ' +
           'data-id="' + item.id + '" ' +
           'data-page="' + pageNum + '" ' +
           'data-type="select" ' +
           'data-correct="' + corrOpt.replace(/"/g, '&quot;') + '" ' +
-          (isEditor ? 'disabled ' : '') +
-          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : '') + '">' +
+          (isEditor || isTeacher ? 'disabled ' : '') +
+          'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : 'cursor:pointer;') + (isTeacher ? 'background:rgba(16,185,129,0.18);border:1.5px solid #10b981;color:#059669;font-weight:900;' : '') + '" ' +
+          'title="' + (isTeacher ? ('✏️ Tahrirlash uchun bosing: ' + corrOpt) : 'Variant tanlang') + '">' +
           '<option value="">-- Tanlang --</option>';
         opts.forEach(function(opt) {
-          h += '<option value="' + String(opt).replace(/"/g, '&quot;') + '">' + String(opt) + '</option>';
+          var isSel = isTeacher && (String(opt).trim().toLowerCase() === corrOpt.trim().toLowerCase());
+          h += '<option value="' + String(opt).replace(/"/g, '&quot;') + '"' + (isSel ? ' selected' : '') + '>' + String(opt) + '</option>';
         });
+        if (isTeacher && corrOpt && !opts.some(function(o){ return String(o).trim().toLowerCase() === corrOpt.trim().toLowerCase(); })) {
+          h += '<option value="' + corrOpt.replace(/"/g, '&quot;') + '" selected>' + corrOpt + '</option>';
+        }
         h += '</select>' +
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       }
@@ -133055,15 +133117,618 @@
       });
     });
 
-    // Toggle Editor Button (Teachers Only)
+    // Teacher mode: initialize teacher controls (modal, direct editing, visual editor, save button)
+    if (isTeacher) {
+      setupTeacherControls(container, unitNum, lessonCode, pages, isEditor, bookLevel);
+    } else {
+      // Student mode: initialize test-solving event handlers and evaluation
+      setupStudentSolvingMode(container, unitNum, lessonCode, pages, bookLevel);
+    }
+  }
+
+  // ==========================================
+  // TEACHER MODE: EDITING, MODAL & CLOUD SAVE
+  // ==========================================
+  function setupTeacherControls(container, unitNum, lessonCode, pages, isEditor, bookLevel) {
+    bookLevel = bookLevel || (WB._currentLesson && WB._currentLesson.bookLevel) || 'b1';
+
+    // 1. Setup Toggle Editor Buttons (Top & Bottom)
     var toggleBtn = container.querySelector('#ethWbToggleEditor');
-    if (toggleBtn && isTeacher) {
-      toggleBtn.addEventListener('click', function() {
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function(e) {
+        if (e) e.preventDefault();
         window._ethithWbEditorMode = !window._ethithWbEditorMode;
         renderLesson(container, unitNum, lessonCode, bookLevel);
       });
     }
 
+    var toggleBtnBottom = container.querySelector('#ethWbToggleEditorBottom');
+    if (toggleBtnBottom) {
+      toggleBtnBottom.addEventListener('click', function(e) {
+        if (e) e.preventDefault();
+        window._ethithWbEditorMode = !window._ethithWbEditorMode;
+        renderLesson(container, unitNum, lessonCode, bookLevel);
+      });
+    }
+
+    // 2. Setup Reset to Default Button
+    var resetToDefaultBtn = container.querySelector('#ethWbResetToDefaultBtn');
+    if (resetToDefaultBtn) {
+      resetToDefaultBtn.addEventListener('click', function(e) {
+        if (e) e.preventDefault();
+        if (!confirm('Haqiqatan ham ushbu dars sahifalaridagi barcha o‘zgarishlarni asliga qaytarmoqchimisiz?')) return;
+        pages.forEach(function(p) {
+          WB.resetPageInputs(p);
+        });
+        if (window.toast) window.toast('↺ Barcha katakchalar va javoblar asliga qaytarildi');
+        renderLesson(container, unitNum, lessonCode, bookLevel);
+      });
+    }
+
+    // 3. Setup Bottom Save Button (Explicit one-click save for all pages & push to cloud/mesh)
+    var bottomSaveBtn = container.querySelector('#ethWbBottomSaveBtn');
+    if (bottomSaveBtn) {
+      bottomSaveBtn.addEventListener('click', function(e) {
+        if (e) e.preventDefault();
+        bottomSaveBtn.disabled = true;
+        bottomSaveBtn.innerHTML = '<span>⏳</span> Saqlanmoqda...';
+
+        // Save each page locally & broadcast
+        pages.forEach(function(p) {
+          var inps = WB.getPageInputs(p);
+          WB.savePageInputs(p, inps);
+        });
+
+        // Sync all local overrides to cloud store immediately
+        var syncPromise = null;
+        if (window.EthithSync && typeof window.EthithSync.syncAllLocalWorkbookOverridesToCloud === 'function') {
+          syncPromise = window.EthithSync.syncAllLocalWorkbookOverridesToCloud();
+        }
+
+        Promise.resolve(syncPromise).then(function() {
+          bottomSaveBtn.disabled = false;
+          bottomSaveBtn.innerHTML = '<span>💾</span> Saqlash (Hammaga Tarqatish)';
+          if (window.toast) {
+            window.toast('✅ Barcha to‘g‘ri javoblar va tahrirlar saqlandi hamda barcha o‘quvchilarga bir zumda yetkazildi!');
+          } else {
+            alert('✅ Barcha to‘g‘ri javoblar va tahrirlar saqlandi hamda barcha o‘quvchilarga bir zumda yetkazildi!');
+          }
+        }).catch(function(err) {
+          bottomSaveBtn.disabled = false;
+          bottomSaveBtn.innerHTML = '<span>💾</span> Saqlash (Hammaga Tarqatish)';
+          if (window.toast) {
+            window.toast('✅ Barcha to‘g‘ri javoblar saqlandi!');
+          }
+        });
+      });
+    }
+
+    // 4. Setup Interactive Modal Elements & Handlers
+    var modal = container.querySelector('#ethWbInputModal');
+    var modalTitle = modal ? modal.querySelector('#ethWbModalTitle') : null;
+    var modalType = modal ? modal.querySelector('#ethWbModalType') : null;
+    var modalLabel = modal ? modal.querySelector('#ethWbModalLabel') : null;
+    var modalCorrect = modal ? modal.querySelector('#ethWbModalCorrect') : null;
+    var modalSave = modal ? modal.querySelector('#ethWbModalSaveBtn') : null;
+    var modalCancel = modal ? modal.querySelector('#ethWbModalCancelBtn') : null;
+    var modalDelete = modal ? modal.querySelector('#ethWbModalDeleteBtn') : null;
+
+    var currentTarget = null;
+
+    function isModalValueTrue() {
+      var val = (modalCorrect && modalCorrect.value ? modalCorrect.value : '').trim().toLowerCase();
+      return (val === 'to‘g‘ri' || val === 'to\'g\'ri' || val === 'togri' || val === 'to`g`ri' || val === 'true' || val === 'ha' || val === 'yes' || val === '1' || val === 'correct');
+    }
+
+    function updateChoosePillsHighlight() {
+      var isTrue = isModalValueTrue();
+      var btnTrue = modal ? modal.querySelector('#ethWbModalBtnTrue') : null;
+      var btnFalse = modal ? modal.querySelector('#ethWbModalBtnFalse') : null;
+      if (btnTrue && btnFalse) {
+        if (isTrue) {
+          btnTrue.style.background = '#10b981';
+          btnTrue.style.color = '#ffffff';
+          btnTrue.style.borderColor = '#10b981';
+          btnFalse.style.background = 'rgba(239,68,68,0.12)';
+          btnFalse.style.color = '#f87171';
+          btnFalse.style.borderColor = '#ef4444';
+        } else {
+          btnTrue.style.background = 'rgba(16,185,129,0.12)';
+          btnTrue.style.color = '#34d399';
+          btnTrue.style.borderColor = '#10b981';
+          btnFalse.style.background = '#ef4444';
+          btnFalse.style.color = '#ffffff';
+          btnFalse.style.borderColor = '#ef4444';
+        }
+      }
+    }
+
+    function updateModalUIForType() {
+      var t = modalType ? modalType.value : 'fill';
+      var helper = modal ? modal.querySelector('#ethWbModalChooseHelper') : null;
+      var lbl = modal ? modal.querySelector('#ethWbModalCorrectLabel') : null;
+      var optsWrap = modal ? modal.querySelector('#ethWbModalOptionsWrap') : null;
+
+      if (t === 'choose') {
+        if (lbl) lbl.textContent = "Ushbu variant to‘g‘rimi? (Variant to‘g‘riligi):";
+        if (helper) helper.style.display = 'flex';
+        if (optsWrap) optsWrap.style.display = 'none';
+        if (modalCorrect) modalCorrect.placeholder = "Bo‘sh = Noto‘g‘ri. 'To‘g‘ri' bosilsa = To‘g‘ri";
+        updateChoosePillsHighlight();
+      } else if (t === 'select') {
+        if (lbl) lbl.textContent = "To‘g‘ri variant (yuqoridagi variantlardan biri):";
+        if (helper) helper.style.display = 'none';
+        if (optsWrap) optsWrap.style.display = 'block';
+        if (modalCorrect) modalCorrect.placeholder = "masalan: Am I yoki Spain";
+      } else {
+        if (lbl) lbl.textContent = 'To‘g‘ri Javob ("or" bilan variantlar):';
+        if (helper) helper.style.display = 'none';
+        if (optsWrap) optsWrap.style.display = 'none';
+        if (modalCorrect) modalCorrect.placeholder = "masalan: coast yoki a";
+      }
+    }
+
+    if (modalType) {
+      modalType.addEventListener('change', updateModalUIForType);
+    }
+    if (modalCorrect) {
+      modalCorrect.addEventListener('input', function() {
+        if (modalType && modalType.value === 'choose') updateChoosePillsHighlight();
+      });
+      modalCorrect.addEventListener('focus', function() {
+        if (modalType && modalType.value === 'choose') updateChoosePillsHighlight();
+      });
+    }
+
+    var btnTrue = modal ? modal.querySelector('#ethWbModalBtnTrue') : null;
+    if (btnTrue) {
+      btnTrue.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (modalCorrect) modalCorrect.value = 'To‘g‘ri';
+        updateChoosePillsHighlight();
+      });
+    }
+
+    var btnFalse = modal ? modal.querySelector('#ethWbModalBtnFalse') : null;
+    if (btnFalse) {
+      btnFalse.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (modalCorrect) modalCorrect.value = '';
+        updateChoosePillsHighlight();
+      });
+    }
+
+    function openModal(isNew, pageNum, item, anchorRect) {
+      if (!isTeacherRole() || !modal) return;
+      currentTarget = { isNew: isNew, page: pageNum, item: item, anchorRect: anchorRect };
+      if (modalTitle) modalTitle.textContent = isNew ? '➕ Yangi Katakcha' : '✏️ Katakcha (' + (item.label || item.id) + ')';
+      var itemType = (item.type === 'choice' ? 'choose' : (item.type || 'fill'));
+      if (modalType) modalType.value = itemType;
+      if (modalLabel) modalLabel.value = item.label || item.group || '';
+
+      var modalOptions = modal.querySelector('#ethWbModalOptions');
+      if (modalOptions) {
+        modalOptions.value = Array.isArray(item.options) ? item.options.join(', ') : '';
+      }
+      if (itemType === 'choose' || itemType === 'choice') {
+        var isItemTrue = (item.correct === true || item.correct === 'true' || item.isCorrect === true || item.isCorrect === 'true' || item.correct === 'To‘g‘ri' || item.correct === 'to\'g\'ri' || item.correct === 'ha' || item.correct === 'yes');
+        if (modalCorrect) modalCorrect.value = isItemTrue ? 'To‘g‘ri' : '';
+      } else {
+        if (modalCorrect) modalCorrect.value = Array.isArray(item.correct) ? item.correct.join(' or ') : (item.correct || (item.incorrect ? 'incorrect' : ''));
+      }
+      if (modalDelete) modalDelete.style.display = isNew ? 'none' : 'block';
+      updateModalUIForType();
+
+      // Move modal to document.body so position:fixed is 100% immune to container transform/clipping
+      if (modal && modal.parentElement !== document.body) {
+        document.body.appendChild(modal);
+      }
+
+      var card = modal.querySelector('#ethWbModalCard');
+      var highlight = modal.querySelector('#ethWbModalHighlight');
+
+      if (anchorRect && typeof anchorRect.left === 'number') {
+        if (highlight) {
+          highlight.style.display = 'block';
+          highlight.style.left = Math.round(anchorRect.left) + 'px';
+          highlight.style.top = Math.round(anchorRect.top) + 'px';
+          highlight.style.width = Math.round(Math.max(14, anchorRect.width)) + 'px';
+          highlight.style.height = Math.round(Math.max(14, anchorRect.height)) + 'px';
+        }
+
+        if (card) {
+          var vw = Math.min(window.innerWidth || 9999, document.documentElement.clientWidth || 9999, (window.visualViewport ? window.visualViewport.width : 9999));
+          var vh = Math.min(window.innerHeight || 9999, document.documentElement.clientHeight || 9999, (window.visualViewport ? window.visualViewport.height : 9999));
+
+          var cardW = Math.min(310, Math.max(260, vw - 24));
+          card.style.width = cardW + 'px';
+          card.style.maxWidth = 'calc(100vw - 16px)';
+          card.style.boxSizing = 'border-box';
+
+          var targetMidX = anchorRect.left + (anchorRect.width / 2);
+          var cardX = targetMidX - (cardW / 2);
+          if (cardX + cardW > vw - 8) cardX = vw - cardW - 8;
+          if (cardX < 8) cardX = 8;
+
+          var cardH = 320;
+          var targetBottom = anchorRect.top + anchorRect.height;
+          var spaceBelow = vh - targetBottom;
+          var spaceAbove = anchorRect.top;
+          var cardY = 8;
+
+          if (spaceBelow >= cardH + 10 || spaceBelow >= spaceAbove) {
+            cardY = targetBottom + 6;
+          } else {
+            cardY = anchorRect.top - cardH - 6;
+          }
+
+          if (cardY + cardH > vh - 8) cardY = vh - cardH - 8;
+          if (cardY < 8) cardY = 8;
+
+          card.style.left = Math.round(cardX) + 'px';
+          card.style.top = Math.round(cardY) + 'px';
+        }
+      }
+
+      modal.style.display = 'block';
+      setTimeout(function() {
+        if (modalCorrect) modalCorrect.focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      if (modal) modal.style.display = 'none';
+      var highlight = modal ? modal.querySelector('#ethWbModalHighlight') : null;
+      if (highlight) highlight.style.display = 'none';
+      currentTarget = null;
+    }
+
+    if (modalCancel) modalCancel.addEventListener('click', closeModal);
+    var modalX = modal ? modal.querySelector('#ethWbModalCloseX') : null;
+    if (modalX) modalX.addEventListener('click', closeModal);
+    if (modal) {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    if (modalSave) {
+      modalSave.addEventListener('click', function() {
+        if (!currentTarget) return;
+        var page = currentTarget.page;
+        var inputs = WB.getPageInputs(page);
+        var curType = modalType ? modalType.value : 'fill';
+        var grpVal = modalLabel ? modalLabel.value.trim() : '';
+        var rawCorr = modalCorrect ? modalCorrect.value.trim() : '';
+        var modalOptions = modal.querySelector('#ethWbModalOptions');
+        var rawOpts = modalOptions ? modalOptions.value.trim() : '';
+        var opts = rawOpts ? rawOpts.split(',').map(function(s) { return s.trim(); }).filter(Boolean) : [];
+
+        if (currentTarget.isNew) {
+          var newItem = currentTarget.item;
+          newItem.id = 'p' + page + '_custom_' + Date.now().toString().slice(-5);
+          newItem.type = curType;
+          newItem.label = grpVal || 'New';
+          if (curType === 'choose') {
+            newItem.group = grpVal || ('p' + page + '_grp_' + Date.now().toString().slice(-4));
+            newItem.correct = isModalValueTrue();
+            newItem.text = grpVal;
+          } else if (curType === 'select') {
+            newItem.group = grpVal;
+            newItem.options = opts;
+            newItem.correct = [rawCorr];
+          } else {
+            newItem.group = grpVal;
+            newItem.correct = rawCorr;
+          }
+          inputs.push(newItem);
+        } else {
+          var exist = inputs.find(function(x) { return x.id === currentTarget.item.id; });
+          if (exist) {
+            exist.type = curType;
+            exist.label = grpVal || exist.label;
+            if (curType === 'choose') {
+              exist.group = grpVal || exist.group || ('p' + page + '_grp_' + Date.now().toString().slice(-4));
+              exist.correct = isModalValueTrue();
+              if (grpVal) exist.text = grpVal;
+            } else if (curType === 'select') {
+              exist.group = grpVal;
+              exist.options = opts;
+              exist.correct = [rawCorr];
+            } else {
+              exist.group = grpVal;
+              exist.correct = rawCorr;
+            }
+          }
+        }
+
+        var curScroll = window.scrollY || window.pageYOffset || 0;
+        WB.savePageInputs(page, inputs);
+        closeModal();
+        renderLesson(container, unitNum, lessonCode, bookLevel);
+        window.scrollTo(0, curScroll);
+      });
+    }
+
+    if (modalDelete) {
+      modalDelete.addEventListener('click', function() {
+        if (!currentTarget || currentTarget.isNew) return;
+        var page = currentTarget.page;
+        var inputs = WB.getPageInputs(page).filter(function(x) { return x.id !== currentTarget.item.id; });
+        var curScroll = window.scrollY || window.pageYOffset || 0;
+        WB.savePageInputs(page, inputs);
+        closeModal();
+        renderLesson(container, unitNum, lessonCode, bookLevel);
+        window.scrollTo(0, curScroll);
+      });
+    }
+
+    // 5. In Normal Teacher View: Click ANY Question Box to Edit Answer Immediately!
+    if (!isEditor) {
+      container.querySelectorAll('.eth-wb-item-wrap').forEach(function(wrap) {
+        wrap.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var p = parseInt(this.getAttribute('data-page'), 10);
+          var id = this.getAttribute('data-id');
+          var inps = WB.getPageInputs(p);
+          var item = inps.find(function(x) { return x.id === id; });
+          if (item) {
+            var aRect = this.getBoundingClientRect();
+            openModal(false, p, item, aRect);
+          }
+        });
+      });
+    }
+
+    // 6. In Visual Editor Mode: Dragging & Drawing handlers
+    if (isEditor) {
+      container.querySelectorAll('.eth-wb-edit-handle').forEach(function(handle) {
+        handle.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var id = this.getAttribute('data-id');
+          var wrap = this.closest('.eth-wb-item-wrap');
+          var page = parseInt(wrap.getAttribute('data-page'), 10);
+          var inputs = WB.getPageInputs(page);
+          var item = inputs.find(function(x) { return x.id === id; });
+          var lbl = item ? (item.label || item.id) : id;
+
+          inputs = inputs.filter(function(x) { return x.id !== id; });
+          WB.savePageInputs(page, inputs);
+          wrap.remove();
+          if (window.toast) {
+            window.toast('🗑️ "' + lbl + '" katakchasi o‘chirildi');
+          }
+        });
+
+        function startDrag(e) {
+          var isTouch = !!e.touches;
+          if (isTouch && e.touches.length > 1) return;
+          if (!isTouch && e.button === 2) return;
+          if (e.cancelable) e.preventDefault();
+          e.stopPropagation();
+
+          var point = isTouch ? e.touches[0] : e;
+          var wrap = handle.closest('.eth-wb-item-wrap');
+          var layer = wrap.closest('.eth-wb-overlay-layer');
+          var page = parseInt(wrap.getAttribute('data-page'), 10);
+          var id = handle.getAttribute('data-id');
+
+          var layerRect = layer.getBoundingClientRect();
+          var startX = point.clientX;
+          var startY = point.clientY;
+          var startLeftPct = parseFloat(wrap.style.left) || 0;
+          var startTopPct = parseFloat(wrap.style.top) || 0;
+
+          var hasMoved = false;
+          wrap.style.opacity = '0.75';
+          wrap.style.zIndex = '999';
+
+          function onMove(ev) {
+            if (ev.touches && ev.touches.length > 1) return;
+            if (ev.cancelable) ev.preventDefault();
+            var p = ev.touches ? ev.touches[0] : ev;
+            var dx = p.clientX - startX;
+            var dy = p.clientY - startY;
+            if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMoved = true;
+
+            var dxPct = (dx / layerRect.width) * 100;
+            var dyPct = (dy / layerRect.height) * 100;
+
+            var newLeft = Math.max(0, Math.min(95, startLeftPct + dxPct));
+            var newTop = Math.max(0, Math.min(98, startTopPct + dyPct));
+
+            wrap.style.left = newLeft.toFixed(1) + '%';
+            wrap.style.top = newTop.toFixed(1) + '%';
+          }
+
+          function onEnd(ev) {
+            window.removeEventListener('mousemove', onMove);
+            window.removeEventListener('mouseup', onEnd);
+            window.removeEventListener('touchmove', onMove);
+            window.removeEventListener('touchend', onEnd);
+            window.removeEventListener('touchcancel', onEnd);
+            wrap.style.opacity = '1';
+            wrap.style.zIndex = '50';
+
+            if (hasMoved) {
+              var finalLeft = parseFloat(wrap.style.left);
+              var finalTop = parseFloat(wrap.style.top);
+              var inputs = WB.getPageInputs(page);
+              var item = inputs.find(function(x) { return x.id === id; });
+              if (item) {
+                item.left = finalLeft;
+                item.top = finalTop;
+                WB.savePageInputs(page, inputs);
+              }
+            } else {
+              var inputs = WB.getPageInputs(page);
+              var item = inputs.find(function(x) { return x.id === id; });
+              if (item) { var aRect = wrap.getBoundingClientRect(); openModal(false, page, item, aRect); }
+            }
+          }
+
+          window.addEventListener('mousemove', onMove);
+          window.addEventListener('mouseup', onEnd);
+          window.addEventListener('touchmove', onMove, { passive: false });
+          window.addEventListener('touchend', onEnd);
+          window.addEventListener('touchcancel', onEnd);
+        }
+
+        handle.addEventListener('mousedown', startDrag);
+        handle.addEventListener('touchstart', startDrag, { passive: false });
+      });
+
+      container.querySelectorAll('.eth-wb-overlay-layer').forEach(function(layer) {
+        var page = parseInt(layer.getAttribute('data-page'), 10);
+        var dragBox = layer.querySelector('.eth-wb-drag-box');
+        var isDrawing = false;
+        var startX = 0, startY = 0;
+
+        function onStart(e) {
+          var isTouch = !!e.touches;
+          if (!isTouch && e.button === 2) return;
+          if (e.target.classList.contains('eth-wb-edit-handle') || e.target.classList.contains('wb-letter-btn')) return;
+          var p = isTouch ? e.touches[0] : e;
+          if (isTouch && e.touches.length > 1) return;
+          if (e.cancelable) e.preventDefault();
+          isDrawing = true;
+          var rect = layer.getBoundingClientRect();
+          startX = p.clientX - rect.left;
+          startY = p.clientY - rect.top;
+          if (dragBox) {
+            dragBox.style.left = startX + 'px';
+            dragBox.style.top = startY + 'px';
+            dragBox.style.width = '0px';
+            dragBox.style.height = '0px';
+            dragBox.style.display = 'block';
+          }
+        }
+
+        function onMove(e) {
+          if (!isDrawing || !dragBox) return;
+          var isTouch = !!e.touches;
+          if (isTouch && e.touches.length > 1) return;
+          if (e.cancelable) e.preventDefault();
+          var p = isTouch ? e.touches[0] : e;
+          var rect = layer.getBoundingClientRect();
+          var curX = p.clientX - rect.left;
+          var curY = p.clientY - rect.top;
+          var left = Math.min(startX, curX);
+          var top = Math.min(startY, curY);
+          var width = Math.abs(curX - startX);
+          var height = Math.abs(curY - startY);
+
+          dragBox.style.left = left + 'px';
+          dragBox.style.top = top + 'px';
+          dragBox.style.width = width + 'px';
+          dragBox.style.height = height + 'px';
+        }
+
+        function onEnd(e) {
+          if (!isDrawing) return;
+          isDrawing = false;
+          if (dragBox) dragBox.style.display = 'none';
+
+          var p = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : e;
+          var rect = layer.getBoundingClientRect();
+          var endX = p.clientX - rect.left;
+          var endY = p.clientY - rect.top;
+          var wPx = Math.abs(endX - startX);
+          var hPx = Math.abs(endY - startY);
+
+          if (wPx > 15 && hPx > 10) {
+            var topPct = parseFloat(((Math.min(startY, endY) / rect.height) * 100).toFixed(1));
+            var leftPct = parseFloat(((Math.min(startX, endX) / rect.width) * 100).toFixed(1));
+            var widthPct = parseFloat(((wPx / rect.width) * 100).toFixed(1));
+            var heightPct = parseFloat(((hPx / rect.height) * 100).toFixed(1));
+
+            var newItem = {
+              page: page,
+              type: 'fill',
+              top: topPct,
+              left: leftPct,
+              width: widthPct,
+              height: heightPct,
+              label: '',
+              correct: ''
+            };
+            var anchorRect = {
+              left: rect.left + Math.min(startX, endX),
+              top: rect.top + Math.min(startY, endY),
+              width: wPx,
+              height: hPx
+            };
+            openModal(true, page, newItem, anchorRect);
+          }
+        }
+
+        layer.addEventListener('mousedown', onStart);
+        layer.addEventListener('touchstart', onStart, { passive: false });
+        window.addEventListener('mousemove', onMove);
+        window.addEventListener('touchmove', onMove, { passive: false });
+        window.addEventListener('mouseup', onEnd);
+        window.addEventListener('touchend', onEnd);
+        window.addEventListener('touchcancel', onEnd);
+      });
+
+      var exportBtn = container.querySelector('#ethWbExportBtn');
+      if (exportBtn) {
+        exportBtn.addEventListener('click', function() {
+          var allPagesData = {};
+          pages.forEach(function(p) {
+            allPagesData['page' + p] = WB.getPageInputs(p);
+          });
+          var jsonStr = JSON.stringify(allPagesData, null, 2);
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(jsonStr).then(function() {
+              alert('Koordinatalar buferga nusxa olindi!');
+            }).catch(function() {
+              prompt('Koordinatalar JSON kodi:', jsonStr);
+            });
+          } else {
+            prompt('Koordinatalar JSON kodi:', jsonStr);
+          }
+        });
+      }
+
+      var saveBtn = container.querySelector('#ethWbSaveAllBtn');
+      if (saveBtn) {
+        saveBtn.addEventListener('click', function() {
+          pages.forEach(function(p) {
+            var inps = WB.getPageInputs(p);
+            WB.savePageInputs(p, inps);
+          });
+          if (window.EthithSync && typeof window.EthithSync.syncAllLocalWorkbookOverridesToCloud === 'function') {
+            window.EthithSync.syncAllLocalWorkbookOverridesToCloud();
+          }
+          if (window.toast) {
+            window.toast('☁️ Barcha tahrirlar bulutga saqlandi va barcha o‘quvchilarga bir zumda yetkazildi!');
+          } else {
+            alert('Barcha tahrirlar bulutga saqlandi va barcha o‘quvchilarga bir zumda yetkazildi!');
+          }
+        });
+      }
+
+      var resetCoordsBtn = container.querySelector('#ethWbResetCoordsBtn');
+      if (resetCoordsBtn) {
+        resetCoordsBtn.addEventListener('click', function() {
+          if (confirm('Ushbu darsning barcha koordinatalarini asl holatiga qaytarishni xohlaysizmi?')) {
+            pages.forEach(function(p) {
+              WB.resetPageInputs(p);
+            });
+            renderLesson(container, unitNum, lessonCode, bookLevel);
+          }
+        });
+      }
+    }
+  }
+
+  // ==========================================
+  // STUDENT MODE: SOLVING, EVALUATING & HOMEWORK
+  // ==========================================
+  function setupStudentSolvingMode(container, unitNum, lessonCode, pages, bookLevel) {
     // Dynamic Counter for Answered Questions across ALL pages
     function updateCount() {
       var distinctCount = 0;
@@ -133143,10 +133808,9 @@
       });
     });
 
-    // 2. Cross-out Chips Interaction (Click to strike through)
+    // 2. Cross-out Chips Interaction
     container.querySelectorAll('.wb-cross-chip').forEach(function(chip) {
       chip.addEventListener('click', function(e) {
-        if (isEditor) return;
         e.stopPropagation();
         this.classList.toggle('crossed');
         this.classList.remove('correct', 'incorrect', 'should-cross');
@@ -133159,15 +133823,13 @@
       });
     });
 
-    // 3. Choose Chips Interaction (Click to select option cleanly without spoiling answers before check)
+    // 3. Choose Chips Interaction
     container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
       chip.addEventListener('click', function(e) {
-        if (isEditor) return;
         e.stopPropagation();
         var grp = this.getAttribute('data-group');
         var wasSelected = this.classList.contains('selected');
 
-        // Deselect sibling chips in same group and hide previous hints
         if (grp) {
           container.querySelectorAll('.wb-choose-chip[data-group="' + grp + '"]').forEach(function(c) {
             c.classList.remove('selected', 'correct', 'incorrect', 'should-choose');
@@ -133189,73 +133851,93 @@
       });
     });
 
-    // 4. Match Slot Interaction (Click to open letter picker)
+    // 4. Match Slot Interaction
     var activePopover = null;
     function closePopover() {
-      if (activePopover && activePopover.parentNode) {
-        activePopover.parentNode.removeChild(activePopover);
+      if (activePopover) {
+        activePopover.remove();
+        activePopover = null;
       }
-      activePopover = null;
     }
     document.addEventListener('click', closePopover);
 
     container.querySelectorAll('.wb-match-slot').forEach(function(slot) {
       slot.addEventListener('click', function(e) {
-        if (isEditor) return;
         e.stopPropagation();
         closePopover();
 
+        var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
         var pop = document.createElement('div');
-        pop.className = 'wb-letter-popover';
-        var letters = ['a', 'b', 'c', 'd', 'e', 'f'];
+        pop.className = 'wb-letter-picker';
+        pop.style.position = 'absolute';
+        pop.style.bottom = '100%';
+        pop.style.left = '50%';
+        pop.style.transform = 'translateX(-50%)';
+        pop.style.marginBottom = '6px';
+        pop.style.background = '#0f172a';
+        pop.style.border = '2px solid #38bdf8';
+        pop.style.borderRadius = '10px';
+        pop.style.padding = '6px';
+        pop.style.display = 'flex';
+        pop.style.gap = '4px';
+        pop.style.zIndex = '99999';
+        pop.style.boxShadow = '0 10px 25px rgba(0,0,0,0.5)';
 
-        letters.forEach(function(l) {
+        letters.forEach(function(lettr) {
           var btn = document.createElement('button');
           btn.type = 'button';
           btn.className = 'wb-letter-btn';
-          btn.textContent = l;
-          btn.addEventListener('click', function(ev) {
+          btn.textContent = lettr;
+          btn.style.width = '28px';
+          btn.style.height = '28px';
+          btn.style.borderRadius = '6px';
+          btn.style.background = '#1e293b';
+          btn.style.color = '#38bdf8';
+          btn.style.border = '1px solid #334155';
+          btn.style.fontWeight = '900';
+          btn.style.fontSize = '12px';
+          btn.style.cursor = 'pointer';
+          btn.onclick = function(ev) {
             ev.stopPropagation();
-            slot.textContent = l;
+            slot.textContent = lettr;
             slot.classList.remove('correct', 'incorrect');
+            var wrap = slot.closest('.eth-wb-item-wrap');
+            if (wrap) {
+              var hint = wrap.querySelector('.eth-wb-hint-badge');
+              if (hint) hint.style.display = 'none';
+            }
             closePopover();
             updateCount();
-          });
+          };
           pop.appendChild(btn);
         });
 
-        // Clear option
-        var clr = document.createElement('button');
-        clr.type = 'button';
-        clr.className = 'wb-letter-btn';
-        clr.textContent = '✕';
-        clr.style.color = '#ef4444';
-        clr.addEventListener('click', function(ev) {
-          ev.stopPropagation();
-          slot.textContent = '?';
-          slot.classList.remove('correct', 'incorrect');
-          closePopover();
-          updateCount();
-        });
-        pop.appendChild(clr);
-
-        slot.parentNode.appendChild(pop);
+        slot.appendChild(pop);
         activePopover = pop;
       });
     });
 
-    // 5. Insert Slot Interaction (Click to place slash and insert bracketed word)
+    // 5. Insert Slots Interaction
     container.querySelectorAll('.wb-insert-slot').forEach(function(slot) {
       slot.addEventListener('click', function(e) {
-        if (isEditor) return;
         e.stopPropagation();
-        this.classList.toggle('inserted');
-        this.classList.remove('correct', 'incorrect');
+        var grp = this.getAttribute('data-group');
+        var wasInserted = this.classList.contains('inserted');
+
+        if (grp) {
+          container.querySelectorAll('.wb-insert-slot[data-group="' + grp + '"]').forEach(function(s) {
+            s.classList.remove('inserted', 'correct', 'incorrect');
+          });
+        }
+
+        if (!wasInserted) {
+          this.classList.add('inserted');
+        }
         updateCount();
       });
     });
 
-    // 6. Select Dropdowns Interaction
+    // 6. Select Inputs Interaction
     container.querySelectorAll('.wb-select-input').forEach(function(sel) {
       sel.addEventListener('change', function() {
         this.classList.remove('correct', 'incorrect');
@@ -133267,406 +133949,6 @@
         updateCount();
       });
     });
-
-    // Check Answers Button Logic (Evaluates BOTH pages simultaneously)
-    var checkBtn = container.querySelector('#ethWbCheckBtn');
-    if (checkBtn) {
-      checkBtn.addEventListener('click', function() {
-        var correctCount = 0;
-        var totalQuestions = 0;
-
-        // 1. Check Fill Inputs across both pages
-        var fillInputs = container.querySelectorAll('.wb-fill-input');
-        totalQuestions += fillInputs.length;
-        fillInputs.forEach(function(inp) {
-          var userVal = inp.value || '';
-          var correctRaw = inp.getAttribute('data-correct') || '';
-          var isCorrect = WB.checkAnswer(userVal, correctRaw);
-          var wrap = inp.closest('.eth-wb-item-wrap');
-          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
-
-          if (isCorrect) {
-            correctCount++;
-            inp.classList.add('correct');
-            inp.classList.remove('incorrect');
-            if (hint) hint.style.display = 'none';
-          } else {
-            inp.classList.add('incorrect');
-            inp.classList.remove('correct');
-            if (hint) {
-              var displayAns = correctRaw.split(/\s+or\s+/i)[0] || correctRaw;
-              hint.textContent = '✓ ' + displayAns;
-              hint.style.display = 'block';
-            }
-          }
-        });
-
-        // 2. Check Cross-out Groups across both pages
-        var crossGroups = {};
-        container.querySelectorAll('.wb-cross-chip').forEach(function(chip) {
-          var grp = chip.getAttribute('data-group');
-          if (grp) {
-            if (!crossGroups[grp]) crossGroups[grp] = [];
-            crossGroups[grp].push(chip);
-          }
-        });
-        Object.keys(crossGroups).forEach(function(grp) {
-          totalQuestions++;
-          var chips = crossGroups[grp];
-          var correctChip = null;
-          var userWrongCrossed = false;
-          var userCrossedTarget = false;
-
-          chips.forEach(function(c) {
-            var isTarget = (c.getAttribute('data-incorrect') === 'true');
-            var isCrossed = c.classList.contains('crossed');
-            if (isTarget) correctChip = c;
-            if (isCrossed && isTarget) userCrossedTarget = true;
-            if (isCrossed && !isTarget) userWrongCrossed = true;
-          });
-
-          if (userCrossedTarget && !userWrongCrossed) {
-            correctCount++;
-            if (correctChip) {
-              correctChip.classList.add('correct');
-              correctChip.classList.remove('should-cross');
-            }
-          } else {
-            chips.forEach(function(c) {
-              if (c.classList.contains('crossed') && c.getAttribute('data-incorrect') !== 'true') {
-                c.classList.add('incorrect');
-              }
-            });
-            if (correctChip) {
-              correctChip.classList.add('should-cross');
-            }
-          }
-        });
-
-        // 3. Check Choose Groups across both pages
-        var chooseGroups = {};
-        container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
-          var grp = chip.getAttribute('data-group');
-          if (grp) {
-            if (!chooseGroups[grp]) chooseGroups[grp] = [];
-            chooseGroups[grp].push(chip);
-          }
-        });
-        Object.keys(chooseGroups).forEach(function(grp) {
-          totalQuestions++;
-          var chips = chooseGroups[grp];
-          var selectedChip = null;
-          var correctChip = null;
-
-          chips.forEach(function(c) {
-            if (c.classList.contains('selected')) selectedChip = c;
-            if (c.getAttribute('data-correct') === 'true') correctChip = c;
-          });
-
-          if (selectedChip && selectedChip.getAttribute('data-correct') === 'true') {
-            correctCount++;
-            selectedChip.classList.add('correct');
-            selectedChip.classList.remove('incorrect', 'should-choose');
-            var wrap = selectedChip.closest('.eth-wb-item-wrap');
-            var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
-            if (hint) {
-              hint.innerHTML = '<span style="color:#22c55e;font-weight:900;">✓ To‘g‘ri</span>';
-              hint.style.display = 'block';
-              hint.style.background = 'rgba(6, 78, 59, 0.95)';
-              hint.style.borderColor = '#10b981';
-            }
-          } else {
-            if (selectedChip) {
-              selectedChip.classList.add('incorrect');
-              selectedChip.classList.remove('correct', 'should-choose');
-              var wrapS = selectedChip.closest('.eth-wb-item-wrap');
-              var hintS = wrapS ? wrapS.querySelector('.eth-wb-hint-badge') : null;
-              if (hintS) {
-                hintS.innerHTML = '<span style="color:#f87171;font-weight:900;">✗ Noto‘g‘ri</span>';
-                hintS.style.display = 'block';
-                hintS.style.background = 'rgba(127, 29, 29, 0.95)';
-                hintS.style.borderColor = '#ef4444';
-              }
-            }
-            if (correctChip) {
-              correctChip.classList.add('should-choose');
-              var wrapC = correctChip.closest('.eth-wb-item-wrap');
-              var hintC = wrapC ? wrapC.querySelector('.eth-wb-hint-badge') : null;
-              if (hintC) {
-                var cText = correctChip.getAttribute('data-text') || '';
-                hintC.innerHTML = '<span style="color:#22c55e;font-weight:900;">✓ To‘g‘ri javob' + (cText ? (': ' + cText) : '') + '</span>';
-                hintC.style.display = 'block';
-                hintC.style.background = 'rgba(6, 78, 59, 0.95)';
-                hintC.style.borderColor = '#10b981';
-              }
-            }
-          }
-        });
-
-        // 4. Check Match Slots across both pages
-        var matchSlots = container.querySelectorAll('.wb-match-slot');
-        totalQuestions += matchSlots.length;
-        matchSlots.forEach(function(slot) {
-          var userLetter = (slot.textContent || '').trim().toLowerCase();
-          var correctLetter = (slot.getAttribute('data-correct') || '').trim().toLowerCase();
-          var wrap = slot.closest('.eth-wb-item-wrap');
-          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
-
-          if (userLetter === correctLetter && userLetter !== '?') {
-            correctCount++;
-            slot.classList.add('correct');
-            slot.classList.remove('incorrect');
-            if (hint) hint.style.display = 'none';
-          } else {
-            slot.classList.add('incorrect');
-            slot.classList.remove('correct');
-            if (hint) {
-              hint.textContent = '✓ ' + correctLetter.toUpperCase();
-              hint.style.display = 'block';
-            }
-          }
-        });
-
-        // 5. Check Insert Slots across both pages
-        var insertSlots = container.querySelectorAll('.wb-insert-slot');
-        totalQuestions += insertSlots.length;
-        insertSlots.forEach(function(slot) {
-          var isInserted = slot.classList.contains('inserted');
-          var isCorrect = (slot.getAttribute('data-correct') === 'true');
-
-          if (isInserted && isCorrect) {
-            correctCount++;
-            slot.classList.add('correct');
-            slot.classList.remove('incorrect');
-          } else if (isInserted && !isCorrect) {
-            slot.classList.add('incorrect');
-            slot.classList.remove('correct');
-          } else {
-            slot.classList.add('incorrect');
-          }
-        });
-
-        // 6. Check Select Dropdowns across both pages
-        var selectInps = container.querySelectorAll('.wb-select-input');
-        totalQuestions += selectInps.length;
-        selectInps.forEach(function(sel) {
-          var userVal = (sel.value || '').trim();
-          var correctRaw = sel.getAttribute('data-correct') || '';
-          var isCorrect = WB.checkAnswer(userVal, correctRaw);
-          var wrap = sel.closest('.eth-wb-item-wrap');
-          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
-
-          if (isCorrect && userVal) {
-            correctCount++;
-            sel.classList.add('correct');
-            sel.classList.remove('incorrect');
-            if (hint) hint.style.display = 'none';
-          } else {
-            sel.classList.add('incorrect');
-            sel.classList.remove('correct');
-            if (hint) {
-              hint.textContent = '✓ ' + correctRaw;
-              hint.style.display = 'block';
-            }
-          }
-        });
-
-        if (totalQuestions === 0) totalQuestions = 36;
-
-        // Show Score Pill
-        var pct = Math.round((correctCount / totalQuestions) * 100);
-        var pill = container.querySelector('#ethWbResultPill');
-        if (pill) {
-          pill.style.display = 'inline-block';
-          pill.innerHTML = 'Natija: <b>' + correctCount + ' / ' + totalQuestions + ' (' + pct + '%)</b>';
-          if (pct >= 80) {
-            pill.style.background = 'rgba(16,185,129,0.2)';
-            pill.style.color = '#34d399';
-            pill.style.borderColor = 'rgba(52,211,153,0.4)';
-          } else {
-            pill.style.background = 'rgba(245,158,11,0.2)';
-            pill.style.color = '#fbbf24';
-            pill.style.borderColor = 'rgba(251,191,36,0.4)';
-          }
-        }
-
-        // Award Coins
-        var coinsToAdd = 0;
-        if (pct >= 70 && window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) {
-          coinsToAdd = Math.round(correctCount * 3);
-          window.EthithApp.state.user.coins = (window.EthithApp.state.user.coins || 0) + coinsToAdd;
-          if (window.EthithSync && window.EthithSync.syncUser) window.EthithSync.syncUser(window.EthithApp.state.user);
-          if (window.toast) window.toast('Ajoyib natija! +' + coinsToAdd + ' ETHITH Coins qo‘shildi!');
-        }
-
-        // Automatically record student homework completion & put automatic daily grade in Attendance Journal!
-        var autoDailyGrade = pct >= 86 ? 5 : (pct >= 71 ? 4 : (pct >= 55 ? 3 : 2));
-        if (window.EthithAttendance && typeof window.EthithAttendance.recordStudentHomeworkCompletion === 'function') {
-          try {
-            window.EthithAttendance.recordStudentHomeworkCompletion({
-              unit: unitNum,
-              lessonCode: lessonCode,
-              pages: pages,
-              correctCount: correctCount,
-              totalQuestions: totalQuestions,
-              pct: pct,
-              autoGrade: autoDailyGrade
-            });
-          } catch (hwErr) {
-            console.warn('Homework auto-grade error:', hwErr);
-          }
-        }
-
-        // If student is completing assigned homework, persist completion permanently
-        if (curUser && curUser.role === 'student') {
-          try {
-            var compKey = 'ethith_hw_completed_' + (curUser.id || curUser.email) + '_' + lessonCode;
-            localStorage.setItem(compKey, JSON.stringify({ done: true, grade: autoDailyGrade, pct: pct, timestamp: Date.now() }));
-            if (window._ethithActiveHwContext && window._ethithActiveHwContext.dateKey) {
-              var compKeyDate = 'ethith_hw_completed_' + (curUser.id || curUser.email) + '_' + window._ethithActiveHwContext.dateKey + '_' + lessonCode;
-              localStorage.setItem(compKeyDate, JSON.stringify({ done: true, grade: autoDailyGrade, pct: pct, timestamp: Date.now() }));
-            }
-          } catch(e) {}
-        }
-
-        // Show Interactive Result Modal Popup per User Requirement
-        WB.showResultModal(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade, isStudent);
-      });
-    }
-
-    // Interactive Result Modal Popup (Percentage Meter, Review Mistakes, Exit)
-    WB.showResultModal = function(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade, isStudentUser) {
-      var existing = document.getElementById('ethWbResultModalOverlay');
-      if (existing) existing.remove();
-
-      var title = "Natijangiz";
-      var emoji = "🎉";
-      var subtitle = "Ajoyib natija! Barakalla!";
-      if (pct < 50) {
-        emoji = "💪";
-        subtitle = "Natijangiz qayd etildi va o‘qituvchi jurnaliga baho qo‘yildi.";
-      } else if (pct < 80) {
-        emoji = "👍";
-        subtitle = "Yaxshi harakat! Natijangiz davomat jurnaliga kiritildi.";
-      }
-
-      var ov = document.createElement('div');
-      ov.id = 'ethWbResultModalOverlay';
-      ov.style.cssText = 'position:fixed;inset:0;background:rgba(5,10,24,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;animation:ethFadeIn 0.2s ease-out;';
-
-      ov.innerHTML = 
-        '<div id="ethWbResultModal" style="background:#0f172a;border:1.5px solid rgba(56,189,248,0.35);box-shadow:0 25px 60px -15px rgba(0,0,0,0.85), 0 0 40px rgba(14,165,233,0.25);border-radius:24px;width:100%;max-width:420px;padding:28px 24px;position:relative;text-align:center;color:#fff;animation:ethScaleIn 0.25s ease-out;">' +
-          '<button id="ethWbModalCloseX" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background 0.2s;">✕</button>' +
-          '<div style="font-size:44px;margin-bottom:6px;">' + emoji + '</div>' +
-          '<div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#38bdf8;margin-bottom:4px;">Uy Vazifasi Natijasi</div>' +
-          '<div style="font-size:48px;font-weight:900;line-height:1.1;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;">' + pct + '%</div>' +
-          '<p style="font-size:13.5px;color:#94a3b8;margin:0 0 20px;line-height:1.45;">' + subtitle + '</p>' +
-          
-          // 4-Stat Grid (including Auto Daily Grade in Davomat Journal)
-          '<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:8px;margin-bottom:24px;">' +
-            '<div style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:14px;padding:12px 4px;">' +
-              '<div style="font-size:20px;font-weight:900;color:#4ade80;">' + correctCount + '</div>' +
-              '<div style="font-size:10px;font-weight:700;color:#86efac;text-transform:uppercase;">To‘g‘ri</div>' +
-            '</div>' +
-            '<div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:14px;padding:12px 4px;">' +
-              '<div style="font-size:20px;font-weight:900;color:#f87171;">' + (totalQuestions - correctCount) + '</div>' +
-              '<div style="font-size:10px;font-weight:700;color:#fca5a5;text-transform:uppercase;">Xato</div>' +
-            '</div>' +
-            '<div style="background:rgba(56,189,248,0.14);border:1px solid rgba(56,189,248,0.4);border-radius:14px;padding:12px 4px;">' +
-              '<div style="font-size:20px;font-weight:900;color:#38bdf8;">' + (autoDailyGrade || (pct >= 86 ? 5 : (pct >= 71 ? 4 : (pct >= 55 ? 3 : 2)))) + '</div>' +
-              '<div style="font-size:10px;font-weight:700;color:#7dd3fc;text-transform:uppercase;">Jurnal Baho</div>' +
-            '</div>' +
-            '<div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:12px 4px;">' +
-              '<div style="font-size:20px;font-weight:900;color:#fbbf24;">+' + (coinsToAdd || 0) + '</div>' +
-              '<div style="font-size:10px;font-weight:700;color:#fde68a;text-transform:uppercase;">Coin</div>' +
-            '</div>' +
-          '</div>' +
-
-          // Action Buttons - For Students: NO RETAKE ALLOWED!
-          '<div style="display:flex;flex-direction:column;gap:10px;">' +
-            '<button id="ethWbModalReviewBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:14px;padding:13px;font-size:14.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px -4px rgba(2,132,199,0.5);transition:opacity 0.2s;">' +
-              '<span>🔍</span> Xatolarni ko‘rish' +
-            '</button>' +
-            (isStudentUser ? 
-              '<button id="ethWbModalExitBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:14px;padding:13px;font-size:14.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px -4px rgba(16,185,129,0.5);">' +
-                '<span>🚪</span> Chiqish va Bosh sahifaga qaytish' +
-              '</button>'
-              :
-              '<button id="ethWbModalRetakeBtn" style="background:rgba(255,255,255,0.06);color:#f1f5f9;border:1.5px solid rgba(255,255,255,0.15);border-radius:14px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.2s;">' +
-                '<span>↻</span> Qaytadan boshlash' +
-              '</button>'
-            ) +
-          '</div>' +
-        '</div>';
-
-      document.body.appendChild(ov);
-
-      function exitToDash() {
-        ov.remove();
-        if (typeof window.ethithOpenApp === 'function') {
-          window.ethithOpenApp('dash');
-        } else if (typeof window.go === 'function') {
-          window.go('dash');
-        }
-      }
-
-      // Close button
-      ov.querySelector('#ethWbModalCloseX').addEventListener('click', function() {
-        if (isStudentUser) exitToDash();
-        else ov.remove();
-      });
-
-      // Exit button for student
-      var exitBtn = ov.querySelector('#ethWbModalExitBtn');
-      if (exitBtn) {
-        exitBtn.addEventListener('click', exitToDash);
-      }
-
-      // Close on backdrop click outside modal
-      ov.addEventListener('click', function(e) {
-        if (e.target === ov) {
-          if (isStudentUser) exitToDash();
-          else ov.remove();
-        }
-      });
-
-      // Xatolarni ko'rish
-      ov.querySelector('#ethWbModalReviewBtn').addEventListener('click', function() {
-        ov.remove();
-        var mistakes = document.querySelectorAll('.wb-fill-input.incorrect, .wb-cross-chip.should-cross, .wb-choose-chip.should-choose, .wb-match-slot.incorrect, .wb-insert-slot.incorrect');
-        if (mistakes.length > 0) {
-          var first = mistakes[0];
-          first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          mistakes.forEach(function(el) {
-            el.style.transition = 'transform 0.3s, box-shadow 0.3s';
-            el.style.transform = 'scale(1.12)';
-            el.style.boxShadow = '0 0 20px rgba(239,68,68,0.95)';
-            setTimeout(function() {
-              el.style.transform = '';
-              el.style.boxShadow = '';
-            }, 1500);
-          });
-        } else {
-          if (window.toast) window.toast('Sizda hech qanday xato yo‘q! Barakalla!');
-        }
-      });
-
-      // Qaytadan boshlash (Faqat o'qituvchi rejimida)
-      var retakeBtn = ov.querySelector('#ethWbModalRetakeBtn');
-      if (retakeBtn) {
-        retakeBtn.addEventListener('click', function() {
-          ov.remove();
-          var resetBtn = document.getElementById('ethWbResetBtn');
-          if (resetBtn) resetBtn.click();
-          var pagesWrap = document.getElementById('ethWbPagesWrap');
-          if (pagesWrap) {
-            pagesWrap.scrollTo({ top: 0, behavior: 'smooth' });
-          } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-        });
-      }
-    };
 
     // Reset Button
     var resetBtn = container.querySelector('#ethWbResetBtn');
@@ -133703,7 +133985,7 @@
       });
     }
 
-    // Show / Hide Answers Button Logic (Teacher & Student study mode)
+    // Show / Hide Answers Button
     var showAnsBtn = container.querySelector('#ethWbShowAnsBtn');
     if (showAnsBtn) {
       showAnsBtn.addEventListener('click', function() {
@@ -133804,525 +134086,377 @@
       });
     }
 
-    // Visual Editor Setup for Teachers ONLY
-    if (isTeacher && isEditor) {
-      setupVisualEditor(container, unitNum, lessonCode, pages, bookLevel);
-    }
-  }
+    // Check Button Handler
+    var checkBtn = container.querySelector('#ethWbCheckBtn');
+    if (checkBtn) {
+      checkBtn.addEventListener('click', function() {
+        var totalQuestions = 0;
+        var correctCount = 0;
 
-  // Teacher Visual Editor Dragging & Editing Setup
-  function setupVisualEditor(container, unitNum, lessonCode, pages, bookLevel) {
-    bookLevel = bookLevel || (WB._currentLesson && WB._currentLesson.bookLevel) || 'b1';
-    var modal = container.querySelector('#ethWbInputModal');
-    var modalTitle = container.querySelector('#ethWbModalTitle');
-    var modalType = container.querySelector('#ethWbModalType');
-    var modalLabel = container.querySelector('#ethWbModalLabel');
-    var modalCorrect = container.querySelector('#ethWbModalCorrect');
-    var modalSave = container.querySelector('#ethWbModalSaveBtn');
-    var modalCancel = container.querySelector('#ethWbModalCancelBtn');
-    var modalDelete = container.querySelector('#ethWbModalDeleteBtn');
+        // 1. Check Fill Inputs
+        var fillInps = container.querySelectorAll('.wb-fill-input');
+        totalQuestions += fillInps.length;
+        fillInps.forEach(function(inp) {
+          var userVal = (inp.value || '').trim();
+          var rawCorr = inp.getAttribute('data-correct') || '';
+          var isCorrect = WB.checkAnswer(userVal, rawCorr);
+          var wrap = inp.closest('.eth-wb-item-wrap');
+          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
 
-    var currentTarget = null;
-
-    function isModalValueTrue() {
-      var val = (modalCorrect && modalCorrect.value ? modalCorrect.value : '').trim().toLowerCase();
-      return (val === 'to‘g‘ri' || val === 'to\'g\'ri' || val === 'togri' || val === 'to`g`ri' || val === 'true' || val === 'ha' || val === 'yes' || val === '1' || val === 'correct');
-    }
-
-    function updateChoosePillsHighlight() {
-      var isTrue = isModalValueTrue();
-      var btnTrue = modal ? modal.querySelector('#ethWbModalBtnTrue') : null;
-      var btnFalse = modal ? modal.querySelector('#ethWbModalBtnFalse') : null;
-      if (btnTrue && btnFalse) {
-        if (isTrue) {
-          btnTrue.style.background = '#10b981';
-          btnTrue.style.color = '#ffffff';
-          btnTrue.style.borderColor = '#10b981';
-          btnFalse.style.background = 'rgba(239,68,68,0.12)';
-          btnFalse.style.color = '#f87171';
-          btnFalse.style.borderColor = '#ef4444';
-        } else {
-          btnTrue.style.background = 'rgba(16,185,129,0.12)';
-          btnTrue.style.color = '#34d399';
-          btnTrue.style.borderColor = '#10b981';
-          btnFalse.style.background = '#ef4444';
-          btnFalse.style.color = '#ffffff';
-          btnFalse.style.borderColor = '#ef4444';
-        }
-      }
-    }
-
-    function updateModalUIForType() {
-      var t = modalType ? modalType.value : 'fill';
-      var helper = modal ? modal.querySelector('#ethWbModalChooseHelper') : null;
-      var lbl = modal ? modal.querySelector('#ethWbModalCorrectLabel') : null;
-      var optsWrap = modal ? modal.querySelector('#ethWbModalOptionsWrap') : null;
-
-      if (t === 'choose') {
-        if (lbl) lbl.textContent = "Ushbu variant to‘g‘rimi? (Variant to‘g‘riligi):";
-        if (helper) helper.style.display = 'flex';
-        if (optsWrap) optsWrap.style.display = 'none';
-        if (modalCorrect) modalCorrect.placeholder = "Bo‘sh = Noto‘g‘ri. 'To‘g‘ri' bosilsa = To‘g‘ri";
-        updateChoosePillsHighlight();
-      } else if (t === 'select') {
-        if (lbl) lbl.textContent = "To‘g‘ri variant (yuqoridagi variantlardan biri):";
-        if (helper) helper.style.display = 'none';
-        if (optsWrap) optsWrap.style.display = 'block';
-        if (modalCorrect) modalCorrect.placeholder = "masalan: Am I yoki Spain";
-      } else {
-        if (lbl) lbl.textContent = 'To‘g‘ri Javob ("or" bilan variantlar):';
-        if (helper) helper.style.display = 'none';
-        if (optsWrap) optsWrap.style.display = 'none';
-        if (modalCorrect) modalCorrect.placeholder = "masalan: coast yoki a";
-      }
-    }
-
-    if (modalType) {
-      modalType.addEventListener('change', updateModalUIForType);
-    }
-    if (modalCorrect) {
-      modalCorrect.addEventListener('input', function() {
-        if (modalType && modalType.value === 'choose') {
-          updateChoosePillsHighlight();
-        }
-      });
-      modalCorrect.addEventListener('focus', function() {
-        if (modalType && modalType.value === 'choose') {
-          updateChoosePillsHighlight();
-        }
-      });
-    }
-
-    var btnTrue = modal ? modal.querySelector('#ethWbModalBtnTrue') : null;
-    if (btnTrue) {
-      btnTrue.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (modalCorrect) modalCorrect.value = 'To‘g‘ri';
-        updateChoosePillsHighlight();
-      });
-    }
-
-    var btnFalse = modal ? modal.querySelector('#ethWbModalBtnFalse') : null;
-    if (btnFalse) {
-      btnFalse.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (modalCorrect) modalCorrect.value = '';
-        updateChoosePillsHighlight();
-      });
-    }
-
-    function openModal(isNew, pageNum, item, anchorRect) {
-      if (!isTeacherRole()) return;
-      currentTarget = { isNew: isNew, page: pageNum, item: item, anchorRect: anchorRect };
-      modalTitle.textContent = isNew ? '➕ Yangi Katakcha' : '✏️ Katakcha (' + (item.label || item.id) + ')';
-      var itemType = (item.type === 'choice' ? 'choose' : (item.type || 'fill'));
-      modalType.value = itemType;
-      modalLabel.value = item.label || item.group || '';
-
-      var modalOptions = modal ? modal.querySelector('#ethWbModalOptions') : null;
-      if (modalOptions) {
-        modalOptions.value = Array.isArray(item.options) ? item.options.join(', ') : '';
-      }
-      if (itemType === 'choose' || itemType === 'choice') {
-        var isItemTrue = (item.correct === true || item.correct === 'true' || item.isCorrect === true || item.isCorrect === 'true' || item.correct === 'To‘g‘ri' || item.correct === 'to\'g\'ri' || item.correct === 'ha' || item.correct === 'yes');
-        modalCorrect.value = isItemTrue ? 'To‘g‘ri' : '';
-      } else {
-        modalCorrect.value = Array.isArray(item.correct) ? item.correct.join(' or ') : (item.correct || (item.incorrect ? 'incorrect' : ''));
-      }
-      modalDelete.style.display = isNew ? 'none' : 'block';
-      updateModalUIForType();
-
-      // Move modal to document.body so position:fixed is 100% immune to container transform/clipping
-      if (modal && modal.parentElement !== document.body) {
-        document.body.appendChild(modal);
-      }
-
-      var card = modal.querySelector('#ethWbModalCard');
-      var highlight = modal.querySelector('#ethWbModalHighlight');
-
-      if (anchorRect && typeof anchorRect.left === 'number') {
-        if (highlight) {
-          highlight.style.display = 'block';
-          highlight.style.left = Math.round(anchorRect.left) + 'px';
-          highlight.style.top = Math.round(anchorRect.top) + 'px';
-          highlight.style.width = Math.round(Math.max(14, anchorRect.width)) + 'px';
-          highlight.style.height = Math.round(Math.max(14, anchorRect.height)) + 'px';
-        }
-
-        if (card) {
-          // Viewport width and height (cross-device safe on mobile and desktop)
-          var vw = Math.min(window.innerWidth || 9999, document.documentElement.clientWidth || 9999, (window.visualViewport ? window.visualViewport.width : 9999));
-          var vh = Math.min(window.innerHeight || 9999, document.documentElement.clientHeight || 9999, (window.visualViewport ? window.visualViewport.height : 9999));
-
-          var cardW = Math.min(310, Math.max(260, vw - 24));
-          card.style.width = cardW + 'px';
-          card.style.maxWidth = 'calc(100vw - 16px)';
-          card.style.boxSizing = 'border-box';
-
-          // Horizontal docking: Center directly on the marked box!
-          var targetMidX = anchorRect.left + (anchorRect.width / 2);
-          var cardX = targetMidX - (cardW / 2);
-          if (cardX + cardW > vw - 8) cardX = vw - cardW - 8;
-          if (cardX < 8) cardX = 8;
-
-          // Vertical docking: Directly under or directly above
-          var cardH = 320;
-          var targetBottom = anchorRect.top + anchorRect.height;
-          var spaceBelow = vh - targetBottom;
-          var spaceAbove = anchorRect.top;
-          var cardY = 8;
-
-          if (spaceBelow >= cardH + 10 || spaceBelow >= spaceAbove) {
-            cardY = targetBottom + 6;
+          if (isCorrect && userVal) {
+            correctCount++;
+            inp.classList.add('correct');
+            inp.classList.remove('incorrect');
+            if (hint) hint.style.display = 'none';
           } else {
-            cardY = anchorRect.top - cardH - 6;
+            inp.classList.add('incorrect');
+            inp.classList.remove('correct');
+            if (hint) {
+              var displayCorrect = rawCorr;
+              try {
+                var p = JSON.parse(rawCorr);
+                if (Array.isArray(p)) displayCorrect = p.join(' or ');
+              } catch(e) {}
+              hint.textContent = '✓ ' + displayCorrect;
+              hint.style.display = 'block';
+            }
           }
+        });
 
-          if (cardY + cardH > vh - 8) cardY = vh - cardH - 8;
-          if (cardY < 8) cardY = 8;
-
-          card.style.left = Math.round(cardX) + 'px';
-          card.style.top = Math.round(cardY) + 'px';
-        }
-      }
-
-      modal.style.display = 'block';
-      setTimeout(function() {
-        if (modalCorrect) modalCorrect.focus();
-      }, 50);
-    }
-
-    function closeModal() {
-      if (modal) modal.style.display = 'none';
-      var highlight = modal ? modal.querySelector('#ethWbModalHighlight') : null;
-      if (highlight) highlight.style.display = 'none';
-      currentTarget = null;
-    }
-
-    if (modalCancel) modalCancel.addEventListener('click', closeModal);
-    var modalX = modal ? modal.querySelector('#ethWbModalCloseX') : container.querySelector('#ethWbModalCloseX');
-    if (modalX) modalX.addEventListener('click', closeModal);
-    if (modal) {
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) closeModal();
-      });
-    }
-
-    if (modalSave) {
-      modalSave.addEventListener('click', function() {
-        if (!currentTarget) return;
-        var page = currentTarget.page;
-        var inputs = WB.getPageInputs(page);
-        var curType = modalType.value;
-        var grpVal = modalLabel.value.trim();
-        var rawCorr = modalCorrect.value.trim();
-        var modalOptions = modal ? modal.querySelector('#ethWbModalOptions') : null;
-        var rawOpts = modalOptions ? modalOptions.value.trim() : '';
-        var opts = rawOpts ? rawOpts.split(',').map(function(s) { return s.trim(); }).filter(Boolean) : [];
-
-        if (currentTarget.isNew) {
-          var newItem = currentTarget.item;
-          newItem.id = 'p' + page + '_custom_' + Date.now().toString().slice(-5);
-          newItem.type = curType;
-          newItem.label = grpVal || 'New';
-          if (curType === 'choose') {
-            newItem.group = grpVal || ('p' + page + '_grp_' + Date.now().toString().slice(-4));
-            newItem.correct = isModalValueTrue(); // Always BOOLEAN true or false
-            newItem.text = grpVal;
-          } else if (curType === 'select') {
-            newItem.group = grpVal;
-            newItem.options = opts;
-            newItem.correct = [rawCorr];
-          } else {
-            newItem.group = grpVal;
-            newItem.correct = rawCorr;
+        // 2. Check Cross Chips
+        var checkedCrossGroups = {};
+        var allCrossChips = container.querySelectorAll('.wb-cross-chip');
+        allCrossChips.forEach(function(chip) {
+          var grp = chip.getAttribute('data-group');
+          if (grp && !checkedCrossGroups[grp]) {
+            checkedCrossGroups[grp] = true;
+            totalQuestions++;
+            var groupChips = container.querySelectorAll('.wb-cross-chip[data-group="' + grp + '"]');
+            var groupAllCorrect = true;
+            groupChips.forEach(function(c) {
+              var isCrossed = c.classList.contains('crossed');
+              var shouldBeCrossed = (c.getAttribute('data-incorrect') === 'true');
+              if (isCrossed && shouldBeCrossed) {
+                c.classList.add('correct');
+                c.classList.remove('incorrect', 'should-cross');
+              } else if (isCrossed && !shouldBeCrossed) {
+                c.classList.add('incorrect');
+                c.classList.remove('correct');
+                groupAllCorrect = false;
+              } else if (!isCrossed && shouldBeCrossed) {
+                c.classList.add('should-cross');
+                groupAllCorrect = false;
+              } else {
+                c.classList.remove('correct', 'incorrect', 'should-cross');
+              }
+            });
+            if (groupAllCorrect) correctCount++;
           }
-          inputs.push(newItem);
-        } else {
-          var exist = inputs.find(function(x) { return x.id === currentTarget.item.id; });
-          if (exist) {
-            exist.type = curType;
-            exist.label = grpVal || exist.label;
-            if (curType === 'choose') {
-              exist.group = grpVal || exist.group || ('p' + page + '_grp_' + Date.now().toString().slice(-4));
-              exist.correct = isModalValueTrue(); // Always BOOLEAN true or false
-              if (grpVal) exist.text = grpVal;
-            } else if (curType === 'select') {
-              exist.group = grpVal;
-              exist.options = opts;
-              exist.correct = [rawCorr];
+        });
+
+        // 3. Check Choose Chips
+        var checkedChooseGroups = {};
+        var allChooseChips = container.querySelectorAll('.wb-choose-chip');
+        allChooseChips.forEach(function(chip) {
+          var grp = chip.getAttribute('data-group');
+          if (grp && !checkedChooseGroups[grp]) {
+            checkedChooseGroups[grp] = true;
+            totalQuestions++;
+            var groupChips = container.querySelectorAll('.wb-choose-chip[data-group="' + grp + '"]');
+            var selectedChip = null;
+            var correctChip = null;
+
+            groupChips.forEach(function(c) {
+              if (c.classList.contains('selected')) selectedChip = c;
+              if (c.getAttribute('data-correct') === 'true') correctChip = c;
+            });
+
+            if (selectedChip && correctChip && selectedChip === correctChip) {
+              correctCount++;
+              selectedChip.classList.add('correct');
+              selectedChip.classList.remove('incorrect');
             } else {
-              exist.group = grpVal;
-              exist.correct = rawCorr;
+              if (selectedChip) {
+                selectedChip.classList.add('incorrect');
+                selectedChip.classList.remove('correct');
+              }
+              if (correctChip) {
+                correctChip.classList.add('should-choose');
+                var wrapC = correctChip.closest('.eth-wb-item-wrap');
+                var hintC = wrapC ? wrapC.querySelector('.eth-wb-hint-badge') : null;
+                if (hintC) {
+                  var cText = correctChip.getAttribute('data-text') || '';
+                  hintC.innerHTML = '<span style="color:#22c55e;font-weight:900;">✓ To‘g‘ri javob' + (cText ? (': ' + cText) : '') + '</span>';
+                  hintC.style.display = 'block';
+                  hintC.style.background = 'rgba(6, 78, 59, 0.95)';
+                  hintC.style.borderColor = '#10b981';
+                }
+              }
             }
           }
-        }
+        });
 
-        var curScroll = window.scrollY || window.pageYOffset || 0;
-        WB.savePageInputs(page, inputs);
-        closeModal();
-        renderLesson(container, unitNum, lessonCode, bookLevel);
-        window.scrollTo(0, curScroll);
-      });
-    }
+        // 4. Check Match Slots
+        var matchSlots = container.querySelectorAll('.wb-match-slot');
+        totalQuestions += matchSlots.length;
+        matchSlots.forEach(function(slot) {
+          var userLetter = (slot.textContent || '').trim().toLowerCase();
+          var correctLetter = (slot.getAttribute('data-correct') || '').trim().toLowerCase();
+          var wrap = slot.closest('.eth-wb-item-wrap');
+          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
 
-    if (modalDelete) {
-      modalDelete.addEventListener('click', function() {
-        if (!currentTarget || currentTarget.isNew) return;
-        var page = currentTarget.page;
-        var inputs = WB.getPageInputs(page).filter(function(x) { return x.id !== currentTarget.item.id; });
-        var curScroll = window.scrollY || window.pageYOffset || 0;
-        WB.savePageInputs(page, inputs);
-        closeModal();
-        renderLesson(container, unitNum, lessonCode, bookLevel);
-        window.scrollTo(0, curScroll);
-      });
-    }
-
-    // 1. Right-Click to Delete & Mouse/Touch Drag to Move
-    container.querySelectorAll('.eth-wb-edit-handle').forEach(function(handle) {
-      // Right-Click Context Menu: Instant deletion!
-      handle.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var id = this.getAttribute('data-id');
-        var wrap = this.closest('.eth-wb-item-wrap');
-        var page = parseInt(wrap.getAttribute('data-page'), 10);
-        var inputs = WB.getPageInputs(page);
-        var item = inputs.find(function(x) { return x.id === id; });
-        var lbl = item ? (item.label || item.id) : id;
-
-        inputs = inputs.filter(function(x) { return x.id !== id; });
-        WB.savePageInputs(page, inputs);
-        wrap.remove();
-        if (window.toast) {
-          window.toast('🗑️ "' + lbl + '" katakchasi o‘chirildi');
-        }
-      });
-
-      // Mouse & Touch Drag to Move with Instant Zero-Latency Feedback
-      function startDrag(e) {
-        var isTouch = !!e.touches;
-        if (isTouch && e.touches.length > 1) return; // Allow 2-finger pinch zoom!
-        if (!isTouch && e.button === 2) return; // Right-click handled by contextmenu
-        if (e.cancelable) e.preventDefault();
-        e.stopPropagation();
-
-        var point = isTouch ? e.touches[0] : e;
-        var wrap = handle.closest('.eth-wb-item-wrap');
-        var layer = wrap.closest('.eth-wb-overlay-layer');
-        var page = parseInt(wrap.getAttribute('data-page'), 10);
-        var id = handle.getAttribute('data-id');
-
-        var layerRect = layer.getBoundingClientRect();
-        var startX = point.clientX;
-        var startY = point.clientY;
-        var startLeftPct = parseFloat(wrap.style.left) || 0;
-        var startTopPct = parseFloat(wrap.style.top) || 0;
-
-        var hasMoved = false;
-        wrap.style.opacity = '0.75';
-        wrap.style.zIndex = '999';
-
-        function onMove(ev) {
-          if (ev.touches && ev.touches.length > 1) return;
-          if (ev.cancelable) ev.preventDefault();
-          var p = ev.touches ? ev.touches[0] : ev;
-          var dx = p.clientX - startX;
-          var dy = p.clientY - startY;
-          if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMoved = true;
-
-          var dxPct = (dx / layerRect.width) * 100;
-          var dyPct = (dy / layerRect.height) * 100;
-
-          var newLeft = Math.max(0, Math.min(95, startLeftPct + dxPct));
-          var newTop = Math.max(0, Math.min(98, startTopPct + dyPct));
-
-          wrap.style.left = newLeft.toFixed(1) + '%';
-          wrap.style.top = newTop.toFixed(1) + '%';
-        }
-
-        function onEnd(ev) {
-          window.removeEventListener('mousemove', onMove);
-          window.removeEventListener('mouseup', onEnd);
-          window.removeEventListener('touchmove', onMove);
-          window.removeEventListener('touchend', onEnd);
-          window.removeEventListener('touchcancel', onEnd);
-          wrap.style.opacity = '1';
-          wrap.style.zIndex = '50';
-
-          if (hasMoved) {
-            var finalLeft = parseFloat(wrap.style.left);
-            var finalTop = parseFloat(wrap.style.top);
-            var inputs = WB.getPageInputs(page);
-            var item = inputs.find(function(x) { return x.id === id; });
-            if (item) {
-              item.left = finalLeft;
-              item.top = finalTop;
-              WB.savePageInputs(page, inputs);
-            }
+          if (userLetter === correctLetter && userLetter !== '?') {
+            correctCount++;
+            slot.classList.add('correct');
+            slot.classList.remove('incorrect');
+            if (hint) hint.style.display = 'none';
           } else {
-            // Clicked without moving: open edit modal
-            var inputs = WB.getPageInputs(page);
-            var item = inputs.find(function(x) { return x.id === id; });
-            if (item) { var aRect = wrap.getBoundingClientRect(); openModal(false, page, item, aRect); }
+            slot.classList.add('incorrect');
+            slot.classList.remove('correct');
+            if (hint) {
+              hint.textContent = '✓ ' + correctLetter.toUpperCase();
+              hint.style.display = 'block';
+            }
+          }
+        });
+
+        // 5. Check Insert Slots
+        var insertSlots = container.querySelectorAll('.wb-insert-slot');
+        totalQuestions += insertSlots.length;
+        insertSlots.forEach(function(slot) {
+          var isInserted = slot.classList.contains('inserted');
+          var isCorrect = (slot.getAttribute('data-correct') === 'true');
+
+          if (isInserted && isCorrect) {
+            correctCount++;
+            slot.classList.add('correct');
+            slot.classList.remove('incorrect');
+          } else if (isInserted && !isCorrect) {
+            slot.classList.add('incorrect');
+            slot.classList.remove('correct');
+          } else {
+            slot.classList.add('incorrect');
+          }
+        });
+
+        // 6. Check Select Dropdowns
+        var selectInps = container.querySelectorAll('.wb-select-input');
+        totalQuestions += selectInps.length;
+        selectInps.forEach(function(sel) {
+          var userVal = (sel.value || '').trim();
+          var correctRaw = sel.getAttribute('data-correct') || '';
+          var isCorrect = WB.checkAnswer(userVal, correctRaw);
+          var wrap = sel.closest('.eth-wb-item-wrap');
+          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
+
+          if (isCorrect && userVal) {
+            correctCount++;
+            sel.classList.add('correct');
+            sel.classList.remove('incorrect');
+            if (hint) hint.style.display = 'none';
+          } else {
+            sel.classList.add('incorrect');
+            sel.classList.remove('correct');
+            if (hint) {
+              hint.textContent = '✓ ' + correctRaw;
+              hint.style.display = 'block';
+            }
+          }
+        });
+
+        if (totalQuestions === 0) totalQuestions = 36;
+
+        var pct = Math.round((correctCount / totalQuestions) * 100);
+        var pill = container.querySelector('#ethWbResultPill');
+        if (pill) {
+          pill.style.display = 'inline-block';
+          pill.innerHTML = 'Natija: <b>' + correctCount + ' / ' + totalQuestions + ' (' + pct + '%)</b>';
+          if (pct >= 80) {
+            pill.style.background = 'rgba(16,185,129,0.2)';
+            pill.style.color = '#34d399';
+            pill.style.borderColor = 'rgba(52,211,153,0.4)';
+          } else {
+            pill.style.background = 'rgba(245,158,11,0.2)';
+            pill.style.color = '#fbbf24';
+            pill.style.borderColor = 'rgba(251,191,36,0.4)';
           }
         }
 
-        window.addEventListener('mousemove', onMove);
-        window.addEventListener('mouseup', onEnd);
-        window.addEventListener('touchmove', onMove, { passive: false });
-        window.addEventListener('touchend', onEnd);
-        window.addEventListener('touchcancel', onEnd);
-      }
-
-      handle.addEventListener('mousedown', startDrag);
-      handle.addEventListener('touchstart', startDrag, { passive: false });
-    });
-
-    // 2. Click & Drag on Empty Page Area to Draw New Element
-    container.querySelectorAll('.eth-wb-overlay-layer').forEach(function(layer) {
-      var page = parseInt(layer.getAttribute('data-page'), 10);
-      var dragBox = layer.querySelector('.eth-wb-drag-box');
-      var isDrawing = false;
-      var startX = 0, startY = 0;
-
-      function onStart(e) {
-        var isTouch = !!e.touches;
-        if (!isTouch && e.button === 2) return;
-        if (e.target.classList.contains('eth-wb-edit-handle') || e.target.classList.contains('wb-letter-btn')) return;
-        var p = isTouch ? e.touches[0] : e;
-        if (isTouch && e.touches.length > 1) return; // allow pinch zoom
-        if (e.cancelable) e.preventDefault();
-        isDrawing = true;
-        var rect = layer.getBoundingClientRect();
-        startX = p.clientX - rect.left;
-        startY = p.clientY - rect.top;
-        if (dragBox) {
-          dragBox.style.left = startX + 'px';
-          dragBox.style.top = startY + 'px';
-          dragBox.style.width = '0px';
-          dragBox.style.height = '0px';
-          dragBox.style.display = 'block';
+        var coinsToAdd = 0;
+        if (pct >= 70 && window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) {
+          coinsToAdd = Math.round(correctCount * 3);
+          window.EthithApp.state.user.coins = (window.EthithApp.state.user.coins || 0) + coinsToAdd;
+          if (window.EthithSync && window.EthithSync.syncUser) window.EthithSync.syncUser(window.EthithApp.state.user);
+          if (window.toast) window.toast('Ajoyib natija! +' + coinsToAdd + ' ETHITH Coins qo‘shildi!');
         }
-      }
 
-      function onMove(e) {
-        if (!isDrawing || !dragBox) return;
-        var isTouch = !!e.touches;
-        if (isTouch && e.touches.length > 1) return;
-        if (e.cancelable) e.preventDefault();
-        var p = isTouch ? e.touches[0] : e;
-        var rect = layer.getBoundingClientRect();
-        var curX = p.clientX - rect.left;
-        var curY = p.clientY - rect.top;
-        var left = Math.min(startX, curX);
-        var top = Math.min(startY, curY);
-        var width = Math.abs(curX - startX);
-        var height = Math.abs(curY - startY);
-
-        dragBox.style.left = left + 'px';
-        dragBox.style.top = top + 'px';
-        dragBox.style.width = width + 'px';
-        dragBox.style.height = height + 'px';
-      }
-
-      function onEnd(e) {
-        if (!isDrawing) return;
-        isDrawing = false;
-        if (dragBox) dragBox.style.display = 'none';
-
-        var p = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : e;
-        var rect = layer.getBoundingClientRect();
-        var endX = p.clientX - rect.left;
-        var endY = p.clientY - rect.top;
-        var wPx = Math.abs(endX - startX);
-        var hPx = Math.abs(endY - startY);
-
-        if (wPx > 15 && hPx > 10) {
-          var topPct = parseFloat(((Math.min(startY, endY) / rect.height) * 100).toFixed(1));
-          var leftPct = parseFloat(((Math.min(startX, endX) / rect.width) * 100).toFixed(1));
-          var widthPct = parseFloat(((wPx / rect.width) * 100).toFixed(1));
-          var heightPct = parseFloat(((hPx / rect.height) * 100).toFixed(1));
-
-          var newItem = {
-            page: page,
-            type: 'fill',
-            top: topPct,
-            left: leftPct,
-            width: widthPct,
-            height: heightPct,
-            correct: '',
-            label: ''
-          };
-          var aRect = { left: rect.left + Math.min(startX, endX), top: rect.top + Math.min(startY, endY), width: wPx, height: hPx };
-          openModal(true, page, newItem, aRect);
+        var autoDailyGrade = pct >= 86 ? 5 : (pct >= 71 ? 4 : (pct >= 55 ? 3 : 2));
+        if (window.EthithAttendance && typeof window.EthithAttendance.recordStudentHomeworkCompletion === 'function') {
+          try {
+            window.EthithAttendance.recordStudentHomeworkCompletion({
+              unit: unitNum,
+              lessonCode: lessonCode,
+              pages: pages,
+              correctCount: correctCount,
+              totalQuestions: totalQuestions,
+              pct: pct,
+              autoGrade: autoDailyGrade
+            });
+          } catch (hwErr) {
+            console.warn('Homework auto-grade error:', hwErr);
+          }
         }
-      }
 
-      layer.addEventListener('mousedown', onStart);
-      layer.addEventListener('touchstart', onStart, { passive: false });
-      window.addEventListener('mousemove', onMove);
-      window.addEventListener('touchmove', onMove, { passive: false });
-      window.addEventListener('mouseup', onEnd);
-      window.addEventListener('touchend', onEnd);
-      window.addEventListener('touchcancel', onEnd);
-    });
+        var S = window.S || {};
+        var curUser = S.user || {};
+        var isStudent = curUser && curUser.role === 'student';
+        if (isStudent) {
+          try {
+            var compKey = 'ethith_hw_completed_' + (curUser.id || curUser.email) + '_' + lessonCode;
+            localStorage.setItem(compKey, JSON.stringify({ done: true, grade: autoDailyGrade, pct: pct, timestamp: Date.now() }));
+            if (window._ethithActiveHwContext && window._ethithActiveHwContext.dateKey) {
+              var compKeyDate = 'ethith_hw_completed_' + (curUser.id || curUser.email) + '_' + window._ethithActiveHwContext.dateKey + '_' + lessonCode;
+              localStorage.setItem(compKeyDate, JSON.stringify({ done: true, grade: autoDailyGrade, pct: pct, timestamp: Date.now() }));
+            }
+          } catch(e) {}
+        }
 
-    // 3. Export JSON Button
-    var exportBtn = container.querySelector('#ethWbExportBtn');
-    if (exportBtn) {
-      exportBtn.addEventListener('click', function() {
-        var allPagesData = {};
-        pages.forEach(function(p) {
-          allPagesData['page' + p] = WB.getPageInputs(p);
-        });
-        var jsonStr = JSON.stringify(allPagesData, null, 2);
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(jsonStr).then(function() {
-            alert('Koordinatalar buferga nusxa olindi!');
-          }).catch(function() {
-            prompt('Koordinatalar JSON kodi:', jsonStr);
-          });
-        } else {
-          prompt('Koordinatalar JSON kodi:', jsonStr);
-        }
-      });
-    }
-
-    // 4. Save Button (Instant real-time broadcast to all connected students)
-    var saveBtn = container.querySelector('#ethWbSaveAllBtn');
-    if (saveBtn) {
-      saveBtn.addEventListener('click', function() {
-        pages.forEach(function(p) {
-          var inps = WB.getPageInputs(p);
-          WB.savePageInputs(p, inps);
-        });
-        if (window.EthithSync && typeof window.EthithSync.syncAllLocalWorkbookOverridesToCloud === 'function') {
-          window.EthithSync.syncAllLocalWorkbookOverridesToCloud();
-        }
-        if (window.toast) {
-          window.toast('☁️ Barcha tahrirlar bulutga saqlandi va barcha o‘quvchilarga bir zumda yetkazildi!');
-        } else {
-          alert('Barcha tahrirlar bulutga saqlandi va barcha o‘quvchilarga bir zumda yetkazildi!');
-        }
-      });
-    }
-
-    // 5. Reset Coords Button
-    var resetCoordsBtn = container.querySelector('#ethWbResetCoordsBtn');
-    if (resetCoordsBtn) {
-      resetCoordsBtn.addEventListener('click', function() {
-        if (confirm('Ushbu darsning barcha koordinatalarini asl holatiga qaytarishni xohlaysizmi?')) {
-          pages.forEach(function(p) {
-            WB.resetPageInputs(p);
-          });
-          renderLesson(container, unitNum, lessonCode, bookLevel);
-        }
+        WB.showResultModal(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade, isStudent);
       });
     }
   }
 
+  // Interactive Result Modal Popup (Percentage Meter, Review Mistakes, Exit)
+  WB.showResultModal = function(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade, isStudentUser) {
+    var existing = document.getElementById('ethWbResultModalOverlay');
+    if (existing) existing.remove();
+
+    var title = "Natijangiz";
+    var emoji = "🎉";
+    var subtitle = "Ajoyib natija! Barakalla!";
+    var themeColor = "#10b981";
+
+    if (pct < 60) {
+      emoji = "💪";
+      title = "Harakat qiling!";
+      subtitle = "Xatolarni ko‘rib chiqib, yana bir bor urinib ko‘ring.";
+      themeColor = "#ef4444";
+    } else if (pct < 85) {
+      emoji = "👏";
+      title = "Yaxshi Natija!";
+      subtitle = "Biroz e’tiborliroq bo‘lsangiz, a’lo bo‘ladi!";
+      themeColor = "#f59e0b";
+    }
+
+    var ov = document.createElement('div');
+    ov.id = 'ethWbResultModalOverlay';
+    ov.style.position = 'fixed';
+    ov.style.inset = '0';
+    ov.style.background = 'rgba(15, 23, 42, 0.85)';
+    ov.style.backdropFilter = 'blur(10px)';
+    ov.style.zIndex = '999999';
+    ov.style.display = 'flex';
+    ov.style.alignItems = 'center';
+    ov.style.justifyContent = 'center';
+    ov.style.padding = '16px';
+    ov.style.animation = 'ethWbFadeIn 0.3s ease-out';
+
+    ov.innerHTML = 
+      '<div style="width:100%;max-width:440px;background:linear-gradient(145deg, #1e293b, #0f172a);border:2px solid ' + themeColor + ';border-radius:24px;box-shadow:0 25px 60px rgba(0,0,0,0.8), 0 0 40px ' + themeColor + '33;padding:28px 24px;text-align:center;color:#f8fafc;position:relative;">' +
+        '<button id="ethWbModalCloseX" style="position:absolute;top:16px;right:18px;background:none;border:none;color:#94a3b8;font-size:20px;font-weight:900;cursor:pointer;line-height:1;padding:4px 8px;">✕</button>' +
+        '<div style="font-size:56px;margin-bottom:8px;line-height:1;">' + emoji + '</div>' +
+        '<h2 style="font-size:24px;font-weight:900;margin:0 0 6px;letter-spacing:-0.5px;">' + title + '</h2>' +
+        '<p style="font-size:13.5px;color:#94a3b8;margin:0 0 20px;">' + subtitle + '</p>' +
+        '<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:16px;margin-bottom:20px;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
+            '<span style="font-size:13px;font-weight:700;color:#cbd5e1;">To‘plangan Ball</span>' +
+            '<span style="font-size:18px;font-weight:900;color:' + themeColor + ';">' + correctCount + ' / ' + totalQuestions + '</span>' +
+          '</div>' +
+          '<div style="width:100%;height:14px;background:#334155;border-radius:10px;overflow:hidden;margin-bottom:12px;position:relative;">' +
+            '<div style="width:' + pct + '%;height:100%;background:linear-gradient(90deg, ' + themeColor + ', #38bdf8);border-radius:10px;transition:width 1s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 0 12px ' + themeColor + ';"></div>' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-around;font-size:13px;font-weight:800;border-top:1px solid rgba(255,255,255,0.08);padding-top:10px;">' +
+            '<div><span style="color:#94a3b8;font-size:11px;display:block;">Foiz</span><span style="color:#fff;font-size:16px;">' + pct + '%</span></div>' +
+            '<div><span style="color:#94a3b8;font-size:11px;display:block;">Kundalik Baho</span><span style="color:' + themeColor + ';font-size:16px;">' + autoDailyGrade + '</span></div>' +
+            (coinsToAdd > 0 ? ('<div><span style="color:#94a3b8;font-size:11px;display:block;">Mukofot</span><span style="color:#fbbf24;font-size:16px;">+' + coinsToAdd + ' 🪙</span></div>') : '') +
+          '</div>' +
+        '</div>' +
+        '<div style="display:flex;flex-direction:column;gap:10px;">' +
+          '<button id="ethWbModalReviewBtn" style="background:linear-gradient(135deg, #0284c7, #0369a1);color:#fff;border:none;border-radius:14px;padding:14px;font-size:14.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px rgba(2,132,199,0.35);">' +
+            '<span>🔍</span> Xatolarni Ko‘rish' +
+          '</button>' +
+          (isStudentUser ? 
+            ('<button id="ethWbModalExitBtn" style="background:linear-gradient(135deg, #10b981, #059669);color:#fff;border:none;border-radius:14px;padding:14px;font-size:14.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px rgba(16,185,129,0.35);">' +
+              '<span>🏠</span> Bosh Sahifaga Chiqish' +
+            '</button>') :
+            ('<button id="ethWbModalRetakeBtn" style="background:rgba(255,255,255,0.06);color:#f1f5f9;border:1.5px solid rgba(255,255,255,0.15);border-radius:14px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">' +
+              '<span>↻</span> Qaytadan boshlash' +
+            '</button>')
+          ) +
+        '</div>' +
+      '</div>';
+
+    document.body.appendChild(ov);
+
+    function exitToDash() {
+      ov.remove();
+      if (typeof window.ethithOpenApp === 'function') {
+        window.ethithOpenApp('dash');
+      } else if (typeof window.go === 'function') {
+        window.go('dash');
+      }
+    }
+
+    ov.querySelector('#ethWbModalCloseX').addEventListener('click', function() {
+      if (isStudentUser) exitToDash();
+      else ov.remove();
+    });
+
+    var exitBtn = ov.querySelector('#ethWbModalExitBtn');
+    if (exitBtn) exitBtn.addEventListener('click', exitToDash);
+
+    ov.addEventListener('click', function(e) {
+      if (e.target === ov) {
+        if (isStudentUser) exitToDash();
+        else ov.remove();
+      }
+    });
+
+    ov.querySelector('#ethWbModalReviewBtn').addEventListener('click', function() {
+      ov.remove();
+      var mistakes = document.querySelectorAll('.wb-fill-input.incorrect, .wb-cross-chip.should-cross, .wb-choose-chip.should-choose, .wb-match-slot.incorrect, .wb-insert-slot.incorrect');
+      if (mistakes.length > 0) {
+        var first = mistakes[0];
+        first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        mistakes.forEach(function(el) {
+          el.style.transition = 'transform 0.3s, box-shadow 0.3s';
+          el.style.transform = 'scale(1.12)';
+          el.style.boxShadow = '0 0 20px rgba(239,68,68,0.95)';
+          setTimeout(function() {
+            el.style.transform = '';
+            el.style.boxShadow = '';
+          }, 1500);
+        });
+      } else {
+        if (window.toast) window.toast('Sizda hech qanday xato yo‘q! Barakalla!');
+      }
+    });
+
+    var retakeBtn = ov.querySelector('#ethWbModalRetakeBtn');
+    if (retakeBtn) {
+      retakeBtn.addEventListener('click', function() {
+        ov.remove();
+        var resetBtn = document.getElementById('ethWbResetBtn');
+        if (resetBtn) resetBtn.click();
+        var pagesWrap = document.getElementById('ethWbPagesWrap');
+        if (pagesWrap) pagesWrap.scrollTo({ top: 0, behavior: 'smooth' });
+        else window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  };
+
+    WB.isTeacherRole = isTeacherRole;
+  window.isTeacherRole = isTeacherRole;
   WB.renderLesson = renderLesson;
   WB.renderLesson1_1 = function(container) {
     renderLesson(container, 1, '1.1', 'b1');

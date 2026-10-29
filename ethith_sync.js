@@ -1864,7 +1864,8 @@
           Object.keys(remoteData.workbookOverrides).forEach(function(k) {
             var rTs = parseInt(rTsMap[k] || '0', 10);
             var lTs = parseInt(S.workbookOverridesTs[k] || localStorage.getItem('ethith_wb_ts_' + k) || '0', 10);
-            if (!S.workbookOverrides[k] || !Array.isArray(S.workbookOverrides[k]) || (rTs > lTs)) {
+            var lSaved = localStorage.getItem('ethith_wb_coords_v15_' + k);
+            if (!lSaved || (rTs > lTs && rTs > 0)) {
               S.workbookOverrides[k] = remoteData.workbookOverrides[k];
               if (rTs > 0) S.workbookOverridesTs[k] = rTs;
             }
@@ -2093,15 +2094,18 @@
           var pNum = parseInt(pKey, 10);
           var inps = remote.workbookOverrides[pKey];
           if (Array.isArray(inps) && inps.length > 0) {
-            var remotePageTs = parseInt(remoteTsMapInit[pKey] || remote.updatedAt || '0', 10);
+            var remotePageTs = parseInt((remoteTsMapInit && remoteTsMapInit[pKey]) || '0', 10);
             var localPageTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || '0', 10);
             var localSavedInit = localStorage.getItem('ethith_wb_coords_v15_' + pNum);
-            if (localSavedInit && localPageTs > remotePageTs && remotePageTs > 0) {
+            if (localSavedInit && (localPageTs >= remotePageTs || remotePageTs === 0)) {
               try {
                 var parsedLocal = JSON.parse(localSavedInit);
                 if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
                   S.workbookOverrides[pNum] = parsedLocal;
-                  S.workbookOverridesTs[pNum] = localPageTs;
+                  S.workbookOverridesTs[pNum] = localPageTs || Date.now();
+                  if (window.ETHITH_WORKBOOK_B1 && window.ETHITH_WORKBOOK_B1.defaultInputs) {
+                    window.ETHITH_WORKBOOK_B1.defaultInputs[pNum] = parsedLocal;
+                  }
                   return;
                 }
               } catch(e) {}
@@ -2202,17 +2206,12 @@
             var pNum = parseInt(pKey, 10);
             var inps = remote.workbookOverrides[pKey];
             if (Array.isArray(inps) && inps.length > 0) {
-              var remotePageTs = parseInt(remoteTsMap[pKey] || remote.updatedAt || '0', 10);
+              var remotePageTs = parseInt((remoteTsMap && remoteTsMap[pKey]) || '0', 10);
               var localTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || '0', 10);
+              var localSaved = localStorage.getItem('ethith_wb_coords_v15_' + pNum);
 
-              if (window._ethithWbEditorMode && editWindowActive) {
-                var localSaved = localStorage.getItem('ethith_wb_coords_v15_' + pNum);
-                if (localSaved && localTs >= remotePageTs) {
-                  return;
-                }
-              }
-
-              if (localTs > remotePageTs && remotePageTs > 0 && localStorage.getItem('ethith_wb_coords_v15_' + pNum)) {
+              // If local edits exist and local is newer or remote has no timestamp, NEVER overwrite teacher's edits!
+              if (localSaved && (localTs >= remotePageTs || remotePageTs === 0 || editWindowActive)) {
                 return;
               }
 
@@ -2310,8 +2309,7 @@
 
     if (!Array.isArray(S.accounts)) S.accounts = [];
     if (S.user.role === 'teacher') {
-      S.user.name = 'Ustoz';
-      S.user.id = 'admin_official_teacher';
+      if (!S.user.name) S.user.name = 'Ustoz';
     }
     var curEmail = (S.user.email || '').toLowerCase().trim();
     var curName = (S.user.name || '').trim();
@@ -2445,10 +2443,8 @@
         }
       }
     } catch(e) {}
-    if (count > 0) {
-      console.log('[WB-Sync] Auto-syncing ' + count + ' updated workbook pages to cloud...');
-      pushRemoteStore().catch(function() {});
-    }
+    console.log('[WB-Sync] Auto-syncing ' + count + ' updated workbook pages to cloud...');
+    return pushRemoteStore();
   }
 
   window.EthithSync = {

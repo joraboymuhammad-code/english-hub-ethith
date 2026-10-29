@@ -520,13 +520,18 @@
     var html = '' +
       '<div class="eth-modal eth-auth-modal">' +
       '  <div class="eth-auth-brand">' +
-      '    <div class="eth-auth-logo-badge">' +
-      '      <div class="eth-auth-logo-icon">' +
-      '        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">' +
-      '          <polyline points="20 6 9 17 4 12"></polyline>' +
-      '        </svg>' +
-      '      </div>' +
-      '      <div class="eth-auth-logo-text">ETHITH<span>TESTS</span></div>' +
+      '    <div style="display:flex;align-items:center;justify-content:center;margin-bottom:12px;">' +
+      '      <svg class="logo" viewBox="88 255 480 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="English House - Lifetime learning" style="width:230px;max-width:85vw;height:auto;display:block;">' +
+      '        <g fill="none" stroke="#ffd91a" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt">' +
+      '          <polyline points="100,328 161,270 222,328"/>' +
+      '          <path d="M119 322 V372 H204 V322"/>' +
+      '          <path d="M150 372 V342 H172 V372"/>' +
+      '        </g>' +
+      '        <line x1="236" y1="265" x2="236" y2="378" stroke="#ffffff" stroke-width="2"/>' +
+      '        <text class="eh-title" x="246" y="302" font-size="58" textLength="310" lengthAdjust="spacingAndGlyphs" fill="#ffffff" font-family="\'Saira\', \'Arial Black\', sans-serif" font-weight="800">ENGLISH</text>' +
+      '        <text class="eh-title" x="246" y="343" font-size="58" textLength="245" lengthAdjust="spacingAndGlyphs" fill="#ffffff" font-family="\'Saira\', \'Arial Black\', sans-serif" font-weight="800">HOUSE</text>' +
+      '        <text class="eh-tagline" x="246" y="372" font-size="22" textLength="183" lengthAdjust="spacingAndGlyphs" fill="#ffd91a" font-family="\'Nunito\', Arial, sans-serif" font-weight="700">Lifetime learning</text>' +
+      '      </svg>' +
       '    </div>' +
       '    <h2 class="eth-auth-title">Platformaga Kirish</h2>' +
       '    <p class="eth-auth-subtitle">Tizimga kirish uchun rolingizni tanlang</p>' +

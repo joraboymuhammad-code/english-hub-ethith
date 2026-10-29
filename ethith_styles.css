@@ -9599,3 +9599,26 @@ html, body {
   transform: scale(1.12) !important;
   box-shadow: 0 0 22px rgba(249, 115, 22, 0.85) !important;
 }
+
+/* English House Logo Styles */
+.eh-title {
+  font-family: 'Saira', 'Arial Black', sans-serif !important;
+  font-weight: 800 !important;
+}
+.eh-tagline {
+  font-family: 'Nunito', Arial, sans-serif !important;
+  font-weight: 700 !important;
+  fill: #ffd91a !important;
+}
+
+/* Luckysheet Dark Mode & Integration Overrides */
+#luckysheet {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+.luckysheet-share-logo {
+  display: none !important;
+}
+.luckysheet-stat-area {
+  border-top: 1px solid #334155 !important;
+}
+
