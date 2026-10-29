@@ -9614,11 +9614,99 @@ html, body {
 /* Luckysheet Dark Mode & Integration Overrides */
 #luckysheet {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  color: #0f172a !important;
 }
 .luckysheet-share-logo {
   display: none !important;
 }
 .luckysheet-stat-area {
   border-top: 1px solid #334155 !important;
+}
+
+/* Luckysheet Text Input & Visibility Fixes - Prevent White on White text */
+#luckysheet,
+#luckysheet * {
+  box-sizing: content-box;
+}
+
+#luckysheet-input-box,
+#luckysheet-rich-text-editor,
+.luckysheet-cell-input,
+.luckysheet-cell-input-wrapper,
+#luckysheet-functionbox-cell,
+.luckysheet-formula-functionbox,
+#luckysheet-search-formula-input,
+#luckysheet-formula-search-c,
+.luckysheet-input-box {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  caret-color: #000000 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+  line-height: normal !important;
+}
+
+#luckysheet-rich-text-editor *,
+.luckysheet-cell-input *,
+#luckysheet-functionbox-cell * {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  caret-color: #000000 !important;
+}
+
+/* Ensure background of the active editing cell box remains solid white */
+#luckysheet-input-box {
+  background-color: #ffffff !important;
+  border-color: #2563eb !important;
+}
+
+/* Toolbar, Context menus, Dropdowns & Color pickers visibility */
+.luckysheet-cols-menu,
+.luckysheet-rows-menu,
+.luckysheet-context-menu,
+.luckysheet-toolbar-menu-item,
+.luckysheet-modal-dialog,
+.luckysheet-dropdown-menu {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+  z-index: 10005 !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important;
+}
+
+.luckysheet-cols-menu *,
+.luckysheet-rows-menu *,
+.luckysheet-context-menu *,
+.luckysheet-modal-dialog * {
+  box-sizing: border-box !important;
+}
+
+/* Color Pickers & Palettes (Fill color / Font color) */
+.luckysheet-palette,
+.luckysheet-color-picker,
+.luckysheet-spectrum-colorpicker,
+.luckysheet-toolbar-menu-color,
+.luckysheet-color-reset,
+.luckysheet-color-title,
+.luckysheet-color-table {
+  z-index: 10006 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block;
+}
+
+/* Quick color bar styling */
+.eh-color-chip {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: inline-block;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.eh-color-chip:hover {
+  transform: scale(1.18);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 

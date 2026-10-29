@@ -9975,12 +9975,100 @@ html, body {
 /* Luckysheet Dark Mode & Integration Overrides */
 #luckysheet {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  color: #0f172a !important;
 }
 .luckysheet-share-logo {
   display: none !important;
 }
 .luckysheet-stat-area {
   border-top: 1px solid #334155 !important;
+}
+
+/* Luckysheet Text Input & Visibility Fixes - Prevent White on White text */
+#luckysheet,
+#luckysheet * {
+  box-sizing: content-box;
+}
+
+#luckysheet-input-box,
+#luckysheet-rich-text-editor,
+.luckysheet-cell-input,
+.luckysheet-cell-input-wrapper,
+#luckysheet-functionbox-cell,
+.luckysheet-formula-functionbox,
+#luckysheet-search-formula-input,
+#luckysheet-formula-search-c,
+.luckysheet-input-box {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  caret-color: #000000 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+  line-height: normal !important;
+}
+
+#luckysheet-rich-text-editor *,
+.luckysheet-cell-input *,
+#luckysheet-functionbox-cell * {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  caret-color: #000000 !important;
+}
+
+/* Ensure background of the active editing cell box remains solid white */
+#luckysheet-input-box {
+  background-color: #ffffff !important;
+  border-color: #2563eb !important;
+}
+
+/* Toolbar, Context menus, Dropdowns & Color pickers visibility */
+.luckysheet-cols-menu,
+.luckysheet-rows-menu,
+.luckysheet-context-menu,
+.luckysheet-toolbar-menu-item,
+.luckysheet-modal-dialog,
+.luckysheet-dropdown-menu {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+  z-index: 10005 !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important;
+}
+
+.luckysheet-cols-menu *,
+.luckysheet-rows-menu *,
+.luckysheet-context-menu *,
+.luckysheet-modal-dialog * {
+  box-sizing: border-box !important;
+}
+
+/* Color Pickers & Palettes (Fill color / Font color) */
+.luckysheet-palette,
+.luckysheet-color-picker,
+.luckysheet-spectrum-colorpicker,
+.luckysheet-toolbar-menu-color,
+.luckysheet-color-reset,
+.luckysheet-color-title,
+.luckysheet-color-table {
+  z-index: 10006 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block;
+}
+
+/* Quick color bar styling */
+.eh-color-chip {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: inline-block;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.eh-color-chip:hover {
+  transform: scale(1.18);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 
@@ -202923,6 +203011,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 (function(){
   var App = window.EthithApp;
   var S = App.state;
+  window.S = S;
   var ic = App.ic;
   var esc = App.esc;
 
@@ -202996,7 +203085,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     if (isAdmin) {
       // 1. ADMIN NAVIGATION: Full administrative management, attendance, billing, payroll, timetable, classes, contests, workbook editors
       h += sec('Admin Boshqaruvi');
-      h += item('luckysheet', '📑', 'Luckysheet (Excel)');
+      h += item('luckysheet', '📑', 'Excel Jadval');
       h += item('attendance', '📅', 'Attendance');
       h += item('billing', '💳', 'Oylik To‘lovlar (Moliya)');
       h += item('staff', '👨‍🏫', 'O‘qituvchilar (Payroll)');
@@ -203010,8 +203099,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += item('upper_intermediate', ic('book'), 'Upper-Inter (B2) Tahrir');
       h += item('ask_ai', '<span class="neon-badge neon-badge-purple">🤖</span>', 'Ask AI Teacher');
     } else if (isTeacher) {
-      // 2. TEACHER NAVIGATION: Qo'shimcha testlar, Sinflar, Davomat, Dars jadvallari, Kitoblar, Musobaqalar
+      // 2. TEACHER NAVIGATION: Excel Jadval, Qo'shimcha testlar, Sinflar, Davomat, Dars jadvallari, Kitoblar, Musobaqalar
       h += sec('O‘qituvchi Kabineti');
+      h += item('luckysheet', '📑', 'Excel Jadval');
       h += item('explorer', '💻', 'Qo‘shimcha testlar');
       h += item('attendance', '📅', 'Attendance');
       // timetable merged into attendance
@@ -203274,8 +203364,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     }
     // Block students from financial and staff management
     if (n === 'timetable') { n = 'attendance'; }
-    if (n === 'luckysheet' && (!S.user || S.user.role !== 'admin')) {
-      toast("🛡️ Luckysheet faqat Bosh Administrator uchun ochiq");
+    // Block students from luckysheet excel (strictly for Admin and Teachers)
+    if (n === 'luckysheet' && (!S.user || (S.user.role !== 'admin' && S.user.role !== 'teacher'))) {
+      toast("🛡️ Excel Jadval faqat Administrator va O‘qituvchilar uchun ochiq");
       n = 'dash';
     }
     if ((n === 'billing' || n === 'staff') && S.user.role === 'student') {
@@ -203395,53 +203486,89 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
   
   // ==========================================
-  // LUCKYSHEET EXCEL COMPONENT (ADMIN ONLY)
+  // LUCKYSHEET EXCEL COMPONENT (ADMIN & TEACHERS)
   // ==========================================
   function rLuckysheet(container) {
+    var isAllowed = S.user && (S.user.role === 'admin' || S.user.role === 'teacher');
     var isAdmin = S.user && S.user.role === 'admin';
-    if (!isAdmin) {
-      container.innerHTML = '<div style="padding:40px;text-align:center;color:#f87171;"><h2>🛡️ Ruxsat berilmagan</h2><p>Ushbu bo‘lim faqat Bosh Administrator uchun.</p></div>';
+    if (!isAllowed) {
+      container.innerHTML = '<div style="padding:40px;text-align:center;color:#f87171;"><h2>🛡️ Ruxsat berilmagan</h2><p>Ushbu bo‘lim faqat Administrator va O‘qituvchilar uchun.</p></div>';
       return;
     }
 
-    var h = '<div class="luckysheet-view-root" style="display:flex;flex-direction:column;gap:18px;">' +
-      // Header
-      '<div style="background:linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(56,189,248,0.3);border-radius:20px;padding:20px 24px;box-shadow:0 12px 35px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;color:#fff;">' +
-        '<div style="display:flex;align-items:center;gap:14px;">' +
-          '<div style="width:48px;height:48px;border-radius:14px;background:rgba(56,189,248,0.15);border:1.5px solid #38bdf8;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 15px rgba(56,189,248,0.3);">' +
+    var roleBadge = isAdmin 
+      ? '<span style="background:rgba(16,185,129,0.2);border:1px solid #10b981;color:#34d399;font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;">🛡️ Administrator</span>'
+      : '<span style="background:rgba(56,189,248,0.2);border:1px solid #38bdf8;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;">👨‍🏫 O‘qituvchi Kabineti</span>';
+
+    var h = '<div class="luckysheet-view-root" style="display:flex;flex-direction:column;gap:12px;">' +
+      // Header & Saved Files Management
+      '<div style="background:linear-gradient(135deg,rgba(15,23,42,0.96),rgba(30,41,59,0.92));border:1.5px solid rgba(56,189,248,0.35);border-radius:18px;padding:16px 20px;box-shadow:0 12px 35px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#fff;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<div style="width:44px;height:44px;border-radius:12px;background:rgba(56,189,248,0.15);border:1.5px solid #38bdf8;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 14px rgba(56,189,248,0.3);">' +
             '📑' +
           '</div>' +
           '<div>' +
             '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
-              '<h1 style="font-size:20px;font-weight:900;margin:0;letter-spacing:-0.4px;color:#f8fafc;">Luckysheet — Administrator Excel Jadvali</h1>' +
-              '<span style="background:rgba(16,185,129,0.2);border:1px solid #10b981;color:#34d399;font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;">Faqat Bosh Admin</span>' +
+              '<h1 style="font-size:18px;font-weight:900;margin:0;letter-spacing:-0.4px;color:#f8fafc;">English House — Excel Boshqaruv Jadvali</h1>' +
+              roleBadge +
             '</div>' +
-            '<p style="font-size:12.5px;color:#94a3b8;margin:4px 0 0;">To‘liq Excel formulalari (=SUM, =AVERAGE), guruhlar, to‘lovlar, hisob-kitoblar va fayllar integratsiyasi</p>' +
+            '<p style="font-size:12px;color:#94a3b8;margin:3px 0 0;">Kataklarni bo‘yash, Excel formulalari (=SUM, =AVERAGE), to‘liq o‘lcham va avtomatik saqlash</p>' +
           '</div>' +
         '</div>' +
-        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
-          '<button id="ethLuckyNewSheetBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#f8fafc;padding:9px 16px;border-radius:10px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
-            '<span>↺</span> Yangi Bo‘sh Varaq' +
+
+        // Saved Sheets Toolbar
+        '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
+          '<div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);padding:4px 10px;border-radius:12px;">' +
+            '<span style="font-size:12px;color:#94a3b8;font-weight:700;">📁 Saqlangan:</span>' +
+            '<select id="ethLuckyDocSelect" style="background:#0f172a;color:#f8fafc;border:1px solid #38bdf8;padding:6px 12px;border-radius:8px;font-size:12.5px;font-weight:800;outline:none;cursor:pointer;min-width:140px;max-width:200px;"></select>' +
+          '</div>' +
+          '<input id="ethLuckyDocName" type="text" placeholder="Jadval nomi..." value="Mening Jadvalim" style="background:#0f172a;color:#f8fafc;border:1.5px solid #475569;padding:7px 12px;border-radius:10px;font-size:13px;font-weight:700;width:150px;outline:none;" />' +
+          '<button id="ethLuckySaveBtn" title="Jadvalni saytga saqlab qo‘yish" style="background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(2,132,199,0.35);">' +
+            '<span>💾</span> Saqlash' +
+          '</button>' +
+          '<button id="ethLuckyNewSheetBtn" title="Yangi toza bo‘sh jadval ochish" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.22);color:#f8fafc;padding:8px 14px;border-radius:10px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
+            '<span>➕</span> Yangi Bo‘sh' +
+          '</button>' +
+          '<button id="ethLuckyDeleteBtn" title="Joriy jadvalni o‘chirish" style="background:rgba(239,68,68,0.15);border:1px solid #ef4444;color:#f87171;padding:8px 12px;border-radius:10px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">' +
+            '<span>🗑️</span>' +
           '</button>' +
         '</div>' +
       '</div>' +
 
-      // Luckysheet Frame Container
-      '<div id="luckysheetWrapper" style="position:relative;width:100%;height:640px;background:#ffffff;border-radius:16px;overflow:hidden;border:2px solid #334155;box-shadow:0 14px 40px rgba(0,0,0,0.4);">' +
+      // Quick Color Palette & Tools Bar
+      '<div style="background:rgba(15,23,42,0.88);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">' +
+        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+          '<span style="font-size:12px;font-weight:800;color:#cbd5e1;display:inline-flex;align-items:center;gap:5px;">' +
+            '<span>🎨</span> Kataklarni Bo‘yash (Rang berish):' +
+          '</span>' +
+          '<button class="eh-color-chip" data-color="#fef08a" title="Sariq (Yellow)" style="background:#fef08a;"></button>' +
+          '<button class="eh-color-chip" data-color="#bbf7d0" title="Yashil (Green)" style="background:#bbf7d0;"></button>' +
+          '<button class="eh-color-chip" data-color="#bfdbfe" title="Moviy (Blue)" style="background:#bfdbfe;"></button>' +
+          '<button class="eh-color-chip" data-color="#fed7aa" title="To‘q Sariq (Orange)" style="background:#fed7aa;"></button>' +
+          '<button class="eh-color-chip" data-color="#fecaca" title="Qizil (Red)" style="background:#fecaca;"></button>' +
+          '<button class="eh-color-chip" data-color="#e9d5ff" title="Siyohrang (Purple)" style="background:#e9d5ff;"></button>' +
+          '<button class="eh-color-chip" data-color="#ffffff" title="Oq / Tozalash" style="background:#ffffff;"></button>' +
+          '<span style="height:18px;width:1px;background:#475569;margin:0 4px;"></span>' +
+          '<button id="ethLuckyBoldBtn" style="background:rgba(255,255,255,0.1);border:1px solid #475569;color:#fff;padding:3px 10px;border-radius:6px;font-weight:900;font-size:12px;cursor:pointer;">B (Qalin)</button>' +
+        '</div>' +
+        '<div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#94a3b8;">' +
+          '<span>💡 Excel kabi katakka yozing, fon rangini yuqoridan yoki toolbar orqali bo‘yang</span>' +
+        '</div>' +
+      '</div>' +
+
+      // Luckysheet Frame Container (Full height, infinite scroll feel)
+      '<div id="luckysheetWrapper" style="position:relative;width:100%;height:calc(100vh - 250px);min-height:680px;background:#ffffff;border-radius:14px;overflow:hidden;border:2px solid #334155;box-shadow:0 14px 40px rgba(0,0,0,0.45);">' +
         '<div id="luckysheet" style="margin:0px;padding:0px;position:absolute;width:100%;height:100%;left:0px;top:0px;"></div>' +
       '</div>' +
 
       // Bottom Sticky Action & Download Bar
-      '<div style="position:sticky;bottom:16px;z-index:90;margin-top:4px;background:rgba(15,23,42,0.96);backdrop-filter:blur(14px);border:1.5px solid #38bdf8;border-radius:18px;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 14px 40px rgba(0,0,0,0.6);color:#fff;">' +
+      '<div style="position:sticky;bottom:16px;z-index:90;margin-top:2px;background:rgba(15,23,42,0.96);backdrop-filter:blur(14px);border:1.5px solid #38bdf8;border-radius:18px;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 14px 40px rgba(0,0,0,0.6);color:#fff;">' +
         '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">' +
           '<span style="background:rgba(56,189,248,0.18);border:1.5px solid #38bdf8;color:#38bdf8;font-weight:900;font-size:13px;padding:6px 14px;border-radius:10px;display:inline-flex;align-items:center;gap:8px;">' +
-            '<span>📊</span> Tayyorlangan Fayllar Boshqaruvi' +
+            '<span>📊</span> Excel Fayllari (.xlsx)' +
           '</span>' +
-          '<button id="ethLuckySaveCloudBtn" style="background:linear-gradient(135deg,#0284c7,#154b89);color:#fff;border:none;padding:10px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(2,132,199,0.4);">' +
-            '<span>💾</span> Platformaga Saqlash (Cloud Sync)' +
-          '</button>' +
           '<label for="ethLuckyFileInputBottom" style="background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);color:#fff;padding:9px 16px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;">' +
-            '<span>📂</span> Excel Faylni Yuklash (Import .xlsx)' +
+            '<span>📂</span> Excel Faylni Ochish (Import .xlsx)' +
             '<input type="file" id="ethLuckyFileInputBottom" accept=".xlsx,.xls,.csv" style="display:none;" />' +
           '</label>' +
         '</div>' +
@@ -203449,7 +203576,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           '<button id="ethLuckyExportCsvBtn" style="background:rgba(245,158,11,0.18);border:1.5px solid #f59e0b;color:#fbbf24;padding:10px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
             '<span>📄</span> CSV Yuklab Olish (.csv)' +
           '</button>' +
-          '<button id="ethLuckyExportXlsxBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:12px 28px;border-radius:14px;font-size:14px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:10px;box-shadow:0 6px 24px rgba(16,185,129,0.5);letter-spacing:0.3px;">' +
+          '<button id="ethLuckyExportXlsxBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:11px 24px;border-radius:14px;font-size:13.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 24px rgba(16,185,129,0.5);letter-spacing:0.3px;">' +
             '<span>📥</span> Excel Faylini Yuklab Olish (.xlsx)' +
           '</button>' +
         '</div>' +
@@ -203458,123 +203585,73 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
     container.innerHTML = h;
 
-    initLuckysheetInstance();
+    initLuckysheetMultiDoc();
   }
 
-  function initLuckysheetInstance() {
-    var defaultData = [
-      {
-        name: "Oylik Hisobot",
-        color: "#10b981",
-        index: 0,
+  // Multi-document management and Luckysheet controller
+  function initLuckysheetMultiDoc() {
+    var STORAGE_KEY = 'eh_saved_spreadsheets_v2';
+    var ACTIVE_ID_KEY = 'eh_active_sheet_id';
+
+    function getBlankWorkbook(name) {
+      return [{
+        name: name || "Sheet1",
+        color: "",
         status: 1,
         order: 0,
-        row: 35,
-        column: 16,
-        celldata: [
-          { r: 0, c: 0, v: { v: "ENGLISH HOUSE — O‘QUV MARKAZI HISOBOTI", bg: "#0f172a", fc: "#ffd91a", bl: 1, fs: 14, ht: 0 } },
-          { r: 2, c: 0, v: { v: "№", bl: 1, bg: "#1e293b", fc: "#38bdf8", ht: 0 } },
-          { r: 2, c: 1, v: { v: "O‘qituvchi", bl: 1, bg: "#1e293b", fc: "#38bdf8", ht: 0 } },
-          { r: 2, c: 2, v: { v: "Guruhlar", bl: 1, bg: "#1e293b", fc: "#38bdf8", ht: 0 } },
-          { r: 2, c: 3, v: { v: "O‘quvchilar", bl: 1, bg: "#1e293b", fc: "#38bdf8", ht: 0 } },
-          { r: 2, c: 4, v: { v: "Oylik To‘lov (so‘m)", bl: 1, bg: "#1e293b", fc: "#38bdf8", ht: 0 } },
-          { r: 2, c: 5, v: { v: "Foiz (%)", bl: 1, bg: "#1e293b", fc: "#38bdf8", ht: 0 } },
-          { r: 2, c: 6, v: { v: "Hisoblangan Oylik (so‘m)", bl: 1, bg: "#1e293b", fc: "#38bdf8", ht: 0 } },
-
-          { r: 3, c: 0, v: { v: 1, ht: 0 } },
-          { r: 3, c: 1, v: { v: "Azizbek Urolov", bl: 1 } },
-          { r: 3, c: 2, v: { v: 4, ht: 0 } },
-          { r: 3, c: 3, v: { v: 72, ht: 0 } },
-          { r: 3, c: 4, v: { v: 300000, ct: { fa: "#,##0", t: "n" } } },
-          { r: 3, c: 5, v: { v: 50, ht: 0 } },
-          { r: 3, c: 6, v: { f: "=D4*E4*(F4/100)", v: 10800000, ct: { fa: "#,##0", t: "n" }, bl: 1, fc: "#10b981" } },
-
-          { r: 4, c: 0, v: { v: 2, ht: 0 } },
-          { r: 4, c: 1, v: { v: "Ravshanov Doniyor", bl: 1 } },
-          { r: 4, c: 2, v: { v: 4, ht: 0 } },
-          { r: 4, c: 3, v: { v: 72, ht: 0 } },
-          { r: 4, c: 4, v: { v: 300000, ct: { fa: "#,##0", t: "n" } } },
-          { r: 4, c: 5, v: { v: 50, ht: 0 } },
-          { r: 4, c: 6, v: { f: "=D5*E5*(F5/100)", v: 10800000, ct: { fa: "#,##0", t: "n" }, bl: 1, fc: "#10b981" } },
-
-          { r: 5, c: 0, v: { v: 3, ht: 0 } },
-          { r: 5, c: 1, v: { v: "Qarshiboyev Humoyun", bl: 1 } },
-          { r: 5, c: 2, v: { v: 1, ht: 0 } },
-          { r: 5, c: 3, v: { v: 18, ht: 0 } },
-          { r: 5, c: 4, v: { v: 300000, ct: { fa: "#,##0", t: "n" } } },
-          { r: 5, c: 5, v: { v: 50, ht: 0 } },
-          { r: 5, c: 6, v: { f: "=D6*E6*(F6/100)", v: 2700000, ct: { fa: "#,##0", t: "n" }, bl: 1, fc: "#10b981" } },
-
-          { r: 6, c: 0, v: { v: 4, ht: 0 } },
-          { r: 6, c: 1, v: { v: "Durdona Olimjonova", bl: 1 } },
-          { r: 6, c: 2, v: { v: 4, ht: 0 } },
-          { r: 6, c: 3, v: { v: 72, ht: 0 } },
-          { r: 6, c: 4, v: { v: 300000, ct: { fa: "#,##0", t: "n" } } },
-          { r: 6, c: 5, v: { v: 50, ht: 0 } },
-          { r: 6, c: 6, v: { f: "=D7*E7*(F7/100)", v: 10800000, ct: { fa: "#,##0", t: "n" }, bl: 1, fc: "#10b981" } },
-
-          { r: 7, c: 1, v: { v: "JAMI:", bl: 1, fc: "#ffd91a", ht: 2 } },
-          { r: 7, c: 2, v: { f: "=SUM(C4:C7)", v: 13, bl: 1, fc: "#ffd91a" } },
-          { r: 7, c: 3, v: { f: "=SUM(D4:D7)", v: 234, bl: 1, fc: "#ffd91a" } },
-          { r: 7, c: 6, v: { f: "=SUM(G4:G7)", v: 35100000, bl: 1, fc: "#ffd91a", ct: { fa: "#,##0", t: "n" } } }
-        ]
-      },
-      {
-        name: "Yangi Jadval",
-        color: "#38bdf8",
-        index: 1,
-        status: 0,
-        order: 1,
-        row: 30,
-        column: 15,
+        row: 500,
+        column: 52,
         celldata: []
-      }
-    ];
+      }];
+    }
 
-    var saved = localStorage.getItem('ethith_admin_luckysheet');
-    if (saved) {
+    function loadSavedList() {
+      var list = [];
       try {
-        var parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) defaultData = parsed;
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) list = JSON.parse(raw);
       } catch(e) {}
+      if (!Array.isArray(list) || list.length === 0) {
+        list = [{
+          id: 'sheet_default',
+          name: 'Asosiy Jadval',
+          updatedAt: new Date().toLocaleDateString('uz-UZ'),
+          data: getBlankWorkbook('Sheet1')
+        }];
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      }
+      return list;
     }
 
-    function createLuckysheetNow() {
-      if (typeof window.luckysheet !== 'undefined' && window.luckysheet.create) {
-        try {
-          window.luckysheet.destroy();
-        } catch(e) {}
-        window.luckysheet.create({
-          container: 'luckysheet',
-          title: 'English House — Boshqaruv Jadvali',
-          lang: 'en',
-          data: defaultData,
-          showinfobar: true,
-          showtoolbar: true,
-          showstatisticBar: true,
-          showsheetbar: true,
-          enableAddRow: true,
-          enableAddCol: true,
-          userInfo: '<span>🛡️ Admin</span>',
-          userMenuItem: []
-        });
-      } else {
-        // Fallback simple interactive grid while Luckysheet script loads
-        var lEl = document.getElementById('luckysheet');
-        if (lEl) {
-          lEl.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#0f172a;gap:12px;">' +
-            '<div style="font-size:36px;">⏳</div>' +
-            '<h3 style="font-weight:900;margin:0;">Luckysheet Excel Yuklanmoqda...</h3>' +
-            '<p style="color:#64748b;margin:0;">Kutib turing, Excel muhiti tayyorlanmoqda.</p>' +
-          '</div>';
-        }
-        setTimeout(createLuckysheetNow, 600);
+    function saveList(list) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      if (window.EthithApp && window.EthithApp.state) {
+        window.EthithApp.state.savedSpreadsheets = list;
+      }
+      if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+        window.EthithSync.pushRemoteStore();
       }
     }
 
-    createLuckysheetNow();
+    var list = loadSavedList();
+    var activeId = localStorage.getItem(ACTIVE_ID_KEY) || list[0].id;
+    var activeDoc = list.find(function(x) { return x.id === activeId; }) || list[0];
 
-    // Helper: Extract current workbook sheets from Luckysheet or fallback
+    var docSelect = document.getElementById('ethLuckyDocSelect');
+    var docNameInput = document.getElementById('ethLuckyDocName');
+    if (docNameInput) docNameInput.value = activeDoc.name;
+
+    function renderSelectOptions(selectedId) {
+      if (!docSelect) return;
+      var curList = loadSavedList();
+      docSelect.innerHTML = curList.map(function(item) {
+        var isSel = item.id === selectedId ? ' selected' : '';
+        return '<option value="' + item.id + '"' + isSel + '>📁 ' + esc(item.name) + '</option>';
+      }).join('');
+    }
+
+    renderSelectOptions(activeDoc.id);
+
     function getActiveWorkbookData() {
       var sheets = [];
       if (typeof window.luckysheet !== 'undefined' && window.luckysheet.getluckysheetfile) {
@@ -203583,18 +203660,242 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         } catch(e) {}
       }
       if (!Array.isArray(sheets) || sheets.length === 0) {
-        sheets = defaultData;
+        sheets = activeDoc.data || getBlankWorkbook('Sheet1');
       }
       return sheets;
     }
 
-    // 1. Export XLSX File Button
+    function renderLuckysheet(dataSheets) {
+      if (typeof window.luckysheet !== 'undefined' && window.luckysheet.create) {
+        try {
+          window.luckysheet.destroy();
+        } catch(e) {}
+
+        // Ensure 500 rows and 52 cols on all sheets
+        var cleanSheets = (dataSheets || []).map(function(sh, i) {
+          return {
+            name: sh.name || ('Sheet' + (i + 1)),
+            color: sh.color || '',
+            status: sh.status !== undefined ? sh.status : (i === 0 ? 1 : 0),
+            order: sh.order !== undefined ? sh.order : i,
+            row: Math.max(sh.row || 0, 500),
+            column: Math.max(sh.column || 0, 52),
+            celldata: Array.isArray(sh.celldata) ? sh.celldata : [],
+            config: sh.config || {}
+          };
+        });
+
+        if (cleanSheets.length === 0) {
+          cleanSheets = getBlankWorkbook('Sheet1');
+        }
+
+        window.luckysheet.create({
+          container: 'luckysheet',
+          title: 'English House — Boshqaruv Jadvali',
+          lang: 'en',
+          plugins: [],
+          data: cleanSheets,
+          showinfobar: true,
+          showtoolbar: true,
+          showstatisticBar: true,
+          showsheetbar: true,
+          enableAddRow: true,
+          enableAddCol: true,
+          autoFormatw: true,
+          userInfo: '<span style="color:#0284c7;font-weight:800;">' + ((S.user && S.user.role === 'admin') ? '🛡️ Admin' : '👨‍🏫 Ustoz') + '</span>',
+          userMenuItem: [],
+          showtoolbarConfig: {
+            undo: true,
+            redo: true,
+            paintformat: true,
+            currency: false,
+            percentage: true,
+            numberFlat: true,
+            numberAdd: true,
+            font: true,
+            fontSize: true,
+            bold: true,
+            italic: true,
+            underline: true,
+            strikeThrough: false,
+            color: true,
+            bg: true,
+            border: true,
+            mergeCell: true,
+            horizontalAlignMode: true,
+            verticalAlignMode: true,
+            textWrapMode: true,
+            textRotateMode: false,
+            image: true,
+            link: true,
+            chart: false,
+            postil: false,
+            pivotTable: false,
+            function: true,
+            frozenMode: true,
+            sortAndFilter: true,
+            conditionalFormat: true,
+            dataVerification: false,
+            splitColumn: false,
+            screenshot: false,
+            findAndReplace: true,
+            protection: false,
+            print: false
+          }
+        });
+      } else {
+        var lEl = document.getElementById('luckysheet');
+        if (lEl) {
+          lEl.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#0f172a;gap:12px;">' +
+            '<div style="font-size:36px;">⏳</div>' +
+            '<h3 style="font-weight:900;margin:0;">Luckysheet Excel Yuklanmoqda...</h3>' +
+            '<p style="color:#64748b;margin:0;">Excel muhiti tayyorlanmoqda.</p>' +
+          '</div>';
+        }
+        setTimeout(function() { renderLuckysheet(dataSheets); }, 500);
+      }
+    }
+
+    renderLuckysheet(activeDoc.data);
+
+    // Dropdown change: switch active document
+    if (docSelect) {
+      docSelect.onchange = function() {
+        var selectedId = docSelect.value;
+        var curList = loadSavedList();
+        var targetDoc = curList.find(function(x) { return x.id === selectedId; });
+        if (targetDoc) {
+          localStorage.setItem(ACTIVE_ID_KEY, targetDoc.id);
+          activeDoc = targetDoc;
+          if (docNameInput) docNameInput.value = targetDoc.name;
+          renderLuckysheet(targetDoc.data);
+          toast('📂 "' + targetDoc.name + '" jadvali ochildi');
+        }
+      };
+    }
+
+    // Save button: persists current sheet to local storage and sync
+    var btnSave = document.getElementById('ethLuckySaveBtn');
+    if (btnSave) {
+      btnSave.onclick = function() {
+        var currentData = getActiveWorkbookData();
+        var curName = (docNameInput ? docNameInput.value : activeDoc.name).trim() || 'Mening Jadvalim';
+        var curList = loadSavedList();
+        var existIdx = curList.findIndex(function(x) { return x.id === activeDoc.id; });
+        var updatedDoc = {
+          id: activeDoc.id,
+          name: curName,
+          updatedAt: new Date().toLocaleDateString('uz-UZ') + ' ' + new Date().toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' }),
+          data: currentData
+        };
+
+        if (existIdx >= 0) {
+          curList[existIdx] = updatedDoc;
+        } else {
+          curList.unshift(updatedDoc);
+        }
+
+        saveList(curList);
+        activeDoc = updatedDoc;
+        renderSelectOptions(activeDoc.id);
+        toast('💾 "' + curName + '" jadvali muvaffaqiyatli saqlandi!');
+      };
+    }
+
+    // New Sheet button: creates a fresh blank document
+    var btnNewSheet = document.getElementById('ethLuckyNewSheetBtn');
+    if (btnNewSheet) {
+      btnNewSheet.onclick = function() {
+        var curList = loadSavedList();
+        var newTitle = 'Yangi Jadval ' + (curList.length + 1);
+        var newDoc = {
+          id: 'sheet_' + Date.now(),
+          name: newTitle,
+          updatedAt: new Date().toLocaleDateString('uz-UZ'),
+          data: getBlankWorkbook('Sheet1')
+        };
+        curList.push(newDoc);
+        saveList(curList);
+        localStorage.setItem(ACTIVE_ID_KEY, newDoc.id);
+        activeDoc = newDoc;
+        if (docNameInput) docNameInput.value = newTitle;
+        renderSelectOptions(newDoc.id);
+        renderLuckysheet(newDoc.data);
+        toast('✨ Yangi toza bo‘sh jadval ochildi');
+      };
+    }
+
+    // Delete button: deletes current document
+    var btnDelete = document.getElementById('ethLuckyDeleteBtn');
+    if (btnDelete) {
+      btnDelete.onclick = function() {
+        var curList = loadSavedList();
+        if (curList.length <= 1) {
+          toast('⚠️ Oxirgi jadvalni o‘chirib bo‘lmaydi. Bo‘shatish uchun "Yangi Bo‘sh" tugmasidan foydalaning.');
+          return;
+        }
+        var curName = (docNameInput ? docNameInput.value : activeDoc.name);
+        if (!confirm('"' + curName + '" jadvalini o‘chirmoqchimisiz?')) return;
+        curList = curList.filter(function(x) { return x.id !== activeDoc.id; });
+        saveList(curList);
+        activeDoc = curList[0];
+        localStorage.setItem(ACTIVE_ID_KEY, activeDoc.id);
+        if (docNameInput) docNameInput.value = activeDoc.name;
+        renderSelectOptions(activeDoc.id);
+        renderLuckysheet(activeDoc.data);
+        toast('🗑️ Jadval o‘chirildi');
+      };
+    }
+
+    // Quick Color Chips: set cell background fill color
+    var chips = document.querySelectorAll('.eh-color-chip');
+    chips.forEach(function(chip) {
+      chip.onclick = function() {
+        var color = chip.getAttribute('data-color');
+        if (typeof window.luckysheet === 'undefined') return;
+        try {
+          if (typeof window.luckysheet.setRangeFormat === 'function') {
+            window.luckysheet.setRangeFormat('bg', color);
+          } else {
+            var range = window.luckysheet.getRange();
+            if (range && range.length > 0) {
+              var r1 = range[0].row[0], r2 = range[0].row[1];
+              var c1 = range[0].column[0], c2 = range[0].column[1];
+              for (var r = r1; r <= r2; r++) {
+                for (var c = c1; c <= c2; c++) {
+                  window.luckysheet.setCellValue(r, c, { bg: color });
+                }
+              }
+            }
+          }
+          toast('🎨 Katak rangi o‘zgartirildi');
+        } catch(e) {
+          console.warn('Set bg error', e);
+        }
+      };
+    });
+
+    // Quick Bold Button
+    var btnBold = document.getElementById('ethLuckyBoldBtn');
+    if (btnBold) {
+      btnBold.onclick = function() {
+        if (typeof window.luckysheet === 'undefined') return;
+        try {
+          if (typeof window.luckysheet.setRangeFormat === 'function') {
+            window.luckysheet.setRangeFormat('bl', 1);
+            toast('B Qalin shrift qo‘yildi');
+          }
+        } catch(e) {}
+      };
+    }
+
+    // Export XLSX File Button
     var btnExportXlsx = document.getElementById('ethLuckyExportXlsxBtn');
     if (btnExportXlsx) {
       btnExportXlsx.onclick = function() {
         try {
           if (typeof window.XLSX === 'undefined') {
-            toast('XLSX kutubxonasi mavjud emas');
+            toast('XLSX kutubxonasi yuklanmagan');
             return;
           }
           var sheets = getActiveWorkbookData();
@@ -203608,9 +203909,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
               if (c.c > maxCol) maxCol = c.c;
             });
             var wsData = [];
-            for (var r = 0; r <= Math.max(maxRow, 15); r++) {
+            for (var r = 0; r <= Math.max(maxRow, 20); r++) {
               var row = [];
-              for (var col = 0; col <= Math.max(maxCol, 10); col++) {
+              for (var col = 0; col <= Math.max(maxCol, 15); col++) {
                 row.push('');
               }
               wsData.push(row);
@@ -203628,6 +203929,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
             window.XLSX.utils.book_append_sheet(wb, ws, sh.name || ('Sheet' + (sIdx + 1)));
           });
 
+          var docName = (docNameInput ? docNameInput.value : activeDoc.name).replace(/[^a-zA-Z0-9_\-]/g, '_');
+          var fileName = (docName || 'English_House_Jadval') + '.xlsx';
+
           var wbout = window.XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
           var buf = new ArrayBuffer(wbout.length);
           var view = new Uint8Array(buf);
@@ -203636,11 +203940,11 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           var url = URL.createObjectURL(blob);
           var a = document.createElement('a');
           a.href = url;
-          a.download = 'English_House_Boshqaruv_Jadval.xlsx';
+          a.download = fileName;
           document.body.appendChild(a);
           a.click();
           setTimeout(function() { a.remove(); URL.revokeObjectURL(url); }, 500);
-          toast('✅ Excel fayli (.xlsx) kompyuteringizga yuklandi!');
+          toast('✅ Excel fayli (' + fileName + ') yuklandi!');
         } catch(err) {
           console.error('Export error:', err);
           toast('Eksportda xatolik: ' + err.message);
@@ -203648,7 +203952,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       };
     }
 
-    // 2. Export CSV File Button
+    // Export CSV File Button
     var btnExportCsv = document.getElementById('ethLuckyExportCsvBtn');
     if (btnExportCsv) {
       btnExportCsv.onclick = function() {
@@ -203680,7 +203984,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           var url = URL.createObjectURL(blob);
           var a = document.createElement('a');
           a.href = url;
-          a.download = 'English_House_Jadval.csv';
+          a.download = (activeDoc.name || 'English_House_Jadval') + '.csv';
           document.body.appendChild(a);
           a.click();
           setTimeout(function() { a.remove(); URL.revokeObjectURL(url); }, 500);
@@ -203691,30 +203995,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       };
     }
 
-    // 3. Save to Cloud / Local Storage Button
-    var btnSaveCloud = document.getElementById('ethLuckySaveCloudBtn');
-    if (btnSaveCloud) {
-      btnSaveCloud.onclick = function() {
-        var sheets = getActiveWorkbookData();
-        try {
-          localStorage.setItem('ethith_admin_luckysheet', JSON.stringify(sheets));
-          if (window.EthithApp && window.EthithApp.state) {
-            window.EthithApp.state.adminSpreadsheet = sheets;
-          }
-          if (window.S) {
-            window.S.adminSpreadsheet = sheets;
-          }
-          if (window.EthithSync && window.EthithSync.pushRemoteStore) {
-            window.EthithSync.pushRemoteStore();
-          }
-          toast('💾 Luckysheet ma’lumotlari saqlandi va sinxronlandi!');
-        } catch(e) {
-          toast('Saqlashda xatolik: ' + e.message);
-        }
-      };
-    }
-
-    // 4. File Upload (Import .xlsx) Input
+    // File Upload (Import .xlsx) Input
     var fileInput = document.getElementById('ethLuckyFileInputBottom');
     if (fileInput) {
       fileInput.onchange = function(e) {
@@ -203732,22 +204013,19 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
               var json = window.XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
               var cellData = [];
 
-              json.forEach(function(row, rIdx) {
-                row.forEach(function(val, cIdx) {
-                  if (val !== '' && val !== null && val !== undefined) {
-                    var cellObj = { v: val };
-                    if (rIdx === 0) {
-                      cellObj.bl = 1;
-                      cellObj.bg = '#1e293b';
-                      cellObj.fc = '#38bdf8';
+              for (var r = 0; r < json.length; r++) {
+                var rowArr = json[r];
+                for (var c = 0; c < rowArr.length; c++) {
+                  var rawVal = rowArr[c];
+                  if (rawVal !== '' && rawVal !== null && rawVal !== undefined) {
+                    var cellObj = { v: rawVal, m: String(rawVal) };
+                    if (typeof rawVal === 'number') {
+                      cellObj.ct = { fa: "General", t: "n" };
                     }
-                    if (typeof val === 'number') {
-                      cellObj.ct = { fa: '#,##0', t: 'n' };
-                    }
-                    cellData.push({ r: rIdx, c: cIdx, v: cellObj });
+                    cellData.push({ r: r, c: c, v: cellObj });
                   }
-                });
-              });
+                }
+              }
 
               newLuckySheets.push({
                 name: name,
@@ -203755,16 +204033,28 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
                 index: sIdx,
                 status: sIdx === 0 ? 1 : 0,
                 order: sIdx,
-                row: Math.max(json.length + 15, 30),
-                column: Math.max((json[0] ? json[0].length : 10) + 5, 15),
+                row: Math.max(json.length + 50, 500),
+                column: Math.max((json[0] ? json[0].length : 20) + 10, 52),
                 celldata: cellData
               });
             });
 
             if (newLuckySheets.length > 0) {
-              defaultData = newLuckySheets;
-              localStorage.setItem('ethith_admin_luckysheet', JSON.stringify(newLuckySheets));
-              createLuckysheetNow();
+              var importTitle = f.name.replace(/\.[^/.]+$/, "");
+              var curList = loadSavedList();
+              var importedDoc = {
+                id: 'sheet_imp_' + Date.now(),
+                name: importTitle,
+                updatedAt: new Date().toLocaleDateString('uz-UZ'),
+                data: newLuckySheets
+              };
+              curList.unshift(importedDoc);
+              saveList(curList);
+              localStorage.setItem(ACTIVE_ID_KEY, importedDoc.id);
+              activeDoc = importedDoc;
+              if (docNameInput) docNameInput.value = importTitle;
+              renderSelectOptions(importedDoc.id);
+              renderLuckysheet(newLuckySheets);
               toast('✅ Excel fayli (' + f.name + ') muvaffaqiyatli ochildi!');
             }
           } catch(err) {
@@ -203773,17 +204063,6 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           }
         };
         reader.readAsArrayBuffer(f);
-      };
-    }
-
-    // 5. New Sheet Reset Button
-    var btnNewSheet = document.getElementById('ethLuckyNewSheetBtn');
-    if (btnNewSheet) {
-      btnNewSheet.onclick = function() {
-        if (!confirm('Yangi bo‘sh jadval ochmoqchimisiz?')) return;
-        localStorage.removeItem('ethith_admin_luckysheet');
-        initLuckysheetInstance();
-        toast('↺ Yangi bo‘sh jadval ochildi');
       };
     }
   }
