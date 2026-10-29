@@ -506,71 +506,42 @@
     }
 
 
-  var DEFAULT_REAL_STUDENT_NAMES = [
-    { first: "Azizbek", last: "Karimov" },
-    { first: "Jasur", last: "Valiyev" },
-    { first: "Madina", last: "Rahimova" },
-    { first: "Sardor", last: "Olimov" },
-    { first: "Dildora", last: "Jo‘rayeva" },
-    { first: "Shohruh", last: "Yusupov" },
-    { first: "Temur", last: "Rustamov" },
-    { first: "Zuhra", last: "Aliyeva" },
-    { first: "Bobur", last: "Sobirov" },
-    { first: "Nodira", last: "Toirova" },
-    { first: "Behzod", last: "Qodirov" },
-    { first: "Malika", last: "Samadova" },
-    { first: "Farrux", last: "Ergashev" },
-    { first: "Gulnoza", last: "Mahmudova" },
-    { first: "Ulug‘bek", last: "Shukurov" },
-    { first: "Shahzoda", last: "Odilova" },
-    { first: "Dilshod", last: "Bozorov" },
-    { first: "Kamola", last: "Mirzayeva" }
-  ];
+  var DEFAULT_REAL_STUDENT_NAMES = []; // Purged: strictly pure tester slots
 
-    // Ensure every single class has exactly 18 slots with real student names & credentials (NO TESTERS)
+    // Ensure every single class has exactly 18 slots strictly named tester_1..tester_18 by default
     sClasses.forEach(function(cls) {
       cls.maxCapacity = 18;
       if (!Array.isArray(cls.students)) cls.students = [];
 
-      // Auto-clean any remaining tester names
-      cls.students.forEach(function(st, idx) {
-        if (!st.name || st.name.startsWith('tester_') || st.name.includes('tester')) {
-          var tpl = DEFAULT_REAL_STUDENT_NAMES[idx % DEFAULT_REAL_STUDENT_NAMES.length];
-          var num = 100 + idx;
-          st.name = tpl.first + ' ' + tpl.last;
-          st.firstName = tpl.first;
-          st.lastName = tpl.last;
-          st.parentPhone = '+998 90 ' + (100 + idx) + ' ' + (20 + idx) + ' ' + (30 + idx);
-          st.login = tpl.first.toLowerCase() + '_' + num + '_' + tpl.last.toLowerCase().replace(/[^a-z0-9]/g, '');
-          st.password = tpl.first.toLowerCase() + num + tpl.last.slice(0, 3).toLowerCase().replace(/[^a-z0-9]/g, '');
-          st.isTester = false;
-        }
+      // Strictly retain ONLY manually enrolled students
+      cls.students = cls.students.filter(function(st) {
+        return st && st.manuallyEnrolled === true && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
       });
 
+      var curIdx = 1;
       while (cls.students.length < 18) {
-        var i = cls.students.length;
-        var tpl = DEFAULT_REAL_STUDENT_NAMES[i % DEFAULT_REAL_STUDENT_NAMES.length];
-        var num = 100 + i;
-        var sLogin = tpl.first.toLowerCase() + '_' + num + '_' + tpl.last.toLowerCase().replace(/[^a-z0-9]/g, '');
-        var sPass = tpl.first.toLowerCase() + num + tpl.last.slice(0, 3).toLowerCase().replace(/[^a-z0-9]/g, '');
-
+        var sName = 'tester_' + curIdx;
+        while (cls.students.some(function(s) { return s.name === sName; })) {
+          curIdx++;
+          sName = 'tester_' + curIdx;
+        }
         cls.students.push({
-          id: cls.id + '_std_' + (i + 1),
-          name: tpl.first + ' ' + tpl.last,
-          firstName: tpl.first,
-          lastName: tpl.last,
-          email: sLogin + '@student.ethith',
+          id: cls.id + '_std_' + curIdx,
+          name: sName,
+          email: cls.id + '_std_' + curIdx + '@ethith.uz',
           role: 'student',
-          phone: '+998 90 ' + (100 + i) + ' ' + (20 + i) + ' ' + (30 + i),
-          parentPhone: '+998 90 ' + (100 + i) + ' ' + (20 + i) + ' ' + (30 + i),
-          login: sLogin,
-          password: sPass,
+          phone: '',
+          parentPhone: '',
+          login: '',
+          password: '',
           joinedAt: '2026-10-28',
           dailyMinutes: 0,
           coins: 0,
-          isTester: false,
-          isOnline: false
+          isTester: true,
+          isOnline: false,
+          lastLogin: null
         });
+        curIdx++;
       }
     });
 
@@ -579,113 +550,8 @@
     return sClasses;
   }
 
-  function replenishTesterSlots(c) {
-    if (!c) return;
-    if (!Array.isArray(c.students)) c.students = [];
-    var maxCap = c.maxCapacity || 18;
-    if (c.students.length < maxCap) {
-      var missing = maxCap - c.students.length;
-      var maxTesterNum = 0;
-      c.students.forEach(function(s) {
-        var m = (s.name || '').match(/tester_(\d+)/);
-        if (m) {
-          var val = parseInt(m[1], 10);
-          if (val > maxTesterNum) maxTesterNum = val;
-        }
-      });
-      for (var k = 0; k < missing; k++) {
-        var nextNum = maxTesterNum + k + 1;
-        c.students.push({
-          id: c.id + '_tester_' + nextNum,
-          name: 'tester_' + nextNum,
-          email: c.id + '_tester_' + nextNum + '@ethith.uz',
-          role: 'student',
-          phone: '',
-          isTester: true,
-          joinedAt: '2026-09-02'
-        });
-      }
-    }
-  }
-  window.ethithReplenishTesterSlots = replenishTesterSlots;
-
-  function broadcastStudentExpulsion(classId, studentId, studentEmail, studentPhone, studentName) {
-    var payload = {
-      type: 'STUDENT_EXPELLED',
-      classId: classId,
-      studentId: studentId,
-      studentEmail: (studentEmail || '').toLowerCase().trim(),
-      studentPhone: studentPhone || '',
-      studentName: studentName || 'O‘quvchi',
-      timestamp: Date.now()
-    };
-    if (window.EthithSync) {
-      if (typeof window.EthithSync.handleIncomingLiveEvent === 'function') {
-        window.EthithSync.handleIncomingLiveEvent(payload);
-      }
-      if (typeof window.EthithSync.publishLive === 'function') {
-        window.EthithSync.publishLive(payload);
-      }
-      if (typeof window.EthithSync.broadcastLocal === 'function') {
-        try {
-          if (typeof BroadcastChannel !== 'undefined') {
-            var bc = new BroadcastChannel('ethith_cloud_channel');
-            bc.postMessage({ type: 'LIVE_EVENT', event: payload });
-          }
-        } catch(e) {}
-      }
-    }
-    try {
-      localStorage.setItem('ethith_last_expelled_student', JSON.stringify(payload));
-    } catch(e) {}
-  }
-  window.ethithBroadcastStudentExpulsion = broadcastStudentExpulsion;
-
-  function getActiveOrFirstClass() {
-    var sClasses = getAvailableClasses();
-    if (EA.activeClassId) {
-      var found = sClasses.find(function(c) { return c.id === EA.activeClassId || c.code === EA.activeClassId; });
-      if (found) return found;
-    }
-    var withStudents = sClasses.find(function(c) { return c.students && c.students.length > 0; });
-    var chosen = withStudents || sClasses[0];
-    EA.activeClassId = chosen.id;
-    return chosen;
-  }
-
-  function cleanStName(name) {
-    if (!name || typeof name !== 'string') return name || '';
-    if (window.ethithCleanStudentName) return window.ethithCleanStudentName(name);
-    return name
-      .replace(/\s+[^\s]+\s+(o['‘`’]?g['‘`’]?li|qizi)\b/gi, '')
-      .replace(/\s+(o['‘`’]?g['‘`’]?li|qizi)\b/gi, '')
-      .trim();
-  }
-
   function ensureClassAttendance(cls) {
-    // STRICT ZERO FINANCE ENFORCEMENT ON INITIAL LOAD (Runs once until admin marks payment)
-    (function enforceZeroFinanceOnLoad() {
-      if (window._ethithInitialZeroFinanceResetDone) return;
-      window._ethithInitialZeroFinanceResetDone = true;
-
-      var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
-      var clsList = S_app.classes || [];
-      clsList.forEach(function(c) {
-        if (!c.studentPayments) c.studentPayments = {};
-        for (var stId in c.studentPayments) {
-          c.studentPayments[stId].status = 'unpaid';
-          c.studentPayments[stId].paid = 0;
-          c.studentPayments[stId].date = 'To‘lanmagan';
-        }
-      });
-      if (S_app.finance && S_app.finance.studentFees) {
-        for (var sf in S_app.finance.studentFees) {
-          S_app.finance.studentFees[sf].status = 'unpaid';
-          S_app.finance.studentFees[sf].paid = 0;
-        }
-      }
-    })();
-
+    if (!cls) return;
     if (!cls.attendance) cls.attendance = {};
     if (!cls.attendance.records) cls.attendance.records = {};
     if (!cls.attendance.lessonTypes) cls.attendance.lessonTypes = {};
@@ -696,29 +562,36 @@
     if (!cls.schedule) cls.schedule = 'har_kuni';
     if (!cls.students) cls.students = [];
 
-    if ((cls.id === 'cls_1_guruh' || cls.id === 'cls_ethith_main' || cls.name === '1-GURUH') && cls.students.length === 0) {
-      cls.students = EA.DEMO_STUDENTS.slice();
-    }
+    // Strictly retain ONLY manually enrolled students
+    cls.students = cls.students.filter(function(st) {
+      return st && st.manuallyEnrolled === true && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
+    });
 
-    // Purge any legacy BSB / CHSB labels and normalize any >5 scores to 5-point scale
-    Object.keys(cls.attendance.lessonTypes).forEach(function(k) {
-      var lt = cls.attendance.lessonTypes[k] || '';
-      if (lt.indexOf('BSB') !== -1 || lt.indexOf('CHSB') !== -1) {
-        cls.attendance.lessonTypes[k] = 'Oddiy';
+    var curIdx = 1;
+    while (cls.students.length < 18) {
+      var sName = 'tester_' + curIdx;
+      while (cls.students.some(function(s) { return s.name === sName; })) {
+        curIdx++;
+        sName = 'tester_' + curIdx;
       }
-    });
-    Object.keys(cls.attendance.records).forEach(function(dk) {
-      var dObj = cls.attendance.records[dk] || {};
-      Object.keys(dObj).forEach(function(sid) {
-        var r = dObj[sid];
-        if (r && r.score !== undefined && r.score !== '') {
-          var num = Number(r.score);
-          if (num > 5) {
-            r.score = num >= 28 ? '5' : (num >= 22 ? '4' : '3');
-          }
-        }
+      cls.students.push({
+        id: cls.id + '_std_' + curIdx,
+        name: sName,
+        email: cls.id + '_std_' + curIdx + '@ethith.uz',
+        role: 'student',
+        phone: '',
+        parentPhone: '',
+        login: '',
+        password: '',
+        joinedAt: '2026-10-28',
+        dailyMinutes: 0,
+        coins: 0,
+        isTester: true,
+        isOnline: false,
+        lastLogin: null
       });
-    });
+      curIdx++;
+    }
 
     // Ensure default activeHomework exists
     if (!cls.activeHomework) {
@@ -1609,9 +1482,7 @@
       btn.onclick = function(e) {
         if (e) e.stopPropagation();
         var cid = btn.getAttribute('data-cid');
-        if (window.EthithEnterprise && window.EthithEnterprise.openTelegramSearchStudentModal) {
-          window.EthithEnterprise.openTelegramSearchStudentModal(cid);
-        }
+        EA.openStudentEnrollModal(cid, null);
       };
     });
 
@@ -1662,14 +1533,6 @@
           window.EthithApp.saveState();
         }
 
-        if (window.EthithSync && window.EthithSync.broadcastState) {
-          window.EthithSync.broadcastState('teacher_classes_reordered');
-        }
-
-        if (window.EthithApp && window.EthithApp.toast) {
-          window.EthithApp.toast("Guruhlar tartibi saqlandi!");
-        }
-
         EA.render(container);
       }
 
@@ -1677,7 +1540,6 @@
         card.addEventListener('dragstart', function(e) {
           draggedEl = card;
           card.style.opacity = '0.4';
-          card.style.border = '2px dashed #38bdf8';
           if (e.dataTransfer) {
             e.dataTransfer.effectAllowed = 'move';
             e.dataTransfer.setData('text/plain', card.getAttribute('data-cid'));
@@ -2352,6 +2214,20 @@
       EA.render(document.getElementById('apView'));
     };
   };
+
+  function getActiveOrFirstClass() {
+    var allClasses = getAvailableClasses();
+    if (EA.activeClassId) {
+      var found = allClasses.find(function(c) { return c.id === EA.activeClassId; });
+      if (found) return found;
+    }
+    if (EA.activeTeacherId) {
+      var tClasses = getClassesForTeacher(EA.activeTeacherId);
+      if (tClasses && tClasses.length > 0) return tClasses[0];
+    }
+    return allClasses[0] || {};
+  }
+  EA.getActiveOrFirstClass = getActiveOrFirstClass;
 
 EA.render = function(container, preserveScrollLeft) {
     if (!container) container = document.getElementById('apView');
@@ -3191,8 +3067,7 @@ EA.render = function(container, preserveScrollLeft) {
         btn.onclick = function(e) {
           e.stopPropagation();
           var stId = btn.dataset.stid;
-          var curName = btn.dataset.stname;
-          EA.openEditStudentModal(container, cls, stId, curName);
+          EA.openStudentEnrollModal(cls.id, stId);
         };
       });
 
@@ -3530,6 +3405,10 @@ EA.render = function(container, preserveScrollLeft) {
   };
 
   EA.openEditStudentModal = function(container, cls, stId, curName) {
+    if (cls && stId) {
+      EA.openStudentEnrollModal(cls.id, stId);
+      return;
+    }
     EA.isModalOpen = true;
     var modalRoot = getGlobalModalRoot();
     if (!cls) cls = {};
@@ -5109,12 +4988,15 @@ EA.render = function(container, preserveScrollLeft) {
     var existingNum = null;
 
     if (curSt) {
-      var nParts = (curSt.name || '').trim().split(/\s+/);
-      if (nParts.length >= 2) {
-        defaultFirst = nParts[0];
-        defaultLast = nParts.slice(1).join(' ');
-      } else {
-        defaultFirst = curSt.name || '';
+      var isTesterSlot = curSt.isTester || (curSt.name && curSt.name.toLowerCase().startsWith('tester_'));
+      if (!isTesterSlot) {
+        var nParts = (curSt.name || '').trim().split(/\s+/);
+        if (nParts.length >= 2) {
+          defaultFirst = nParts[0];
+          defaultLast = nParts.slice(1).join(' ');
+        } else {
+          defaultFirst = curSt.name || '';
+        }
       }
       if (curSt.login && curSt.login.includes('_')) {
         var m = curSt.login.match(/_(\d{3,4})_/);
@@ -5123,10 +5005,10 @@ EA.render = function(container, preserveScrollLeft) {
     }
 
     var creds = EA.generateStudentCredentials(defaultFirst, defaultLast, existingNum);
-    var currentLogin = (curSt && curSt.login) ? curSt.login : creds.login;
-    var currentPass = (curSt && curSt.password) ? curSt.password : creds.password;
+    var currentLogin = (curSt && curSt.login && !curSt.isTester) ? curSt.login : creds.login;
+    var currentPass = (curSt && curSt.password && !curSt.isTester) ? curSt.password : creds.password;
 
-    var isEdit = !!curSt;
+    var isEdit = curSt && !curSt.isTester && !(curSt.name || '').toLowerCase().startsWith('tester_');
 
     var html = '<div class="eth-modal" style="max-width:560px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(56,189,248,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
@@ -5285,6 +5167,7 @@ EA.render = function(container, preserveScrollLeft) {
         studentObj.login = finalLogin;
         studentObj.password = finalPass;
         studentObj.isTester = false;
+        studentObj.manuallyEnrolled = true;
       }
 
       // Also register into accounts for direct login
@@ -5415,6 +5298,10 @@ EA.render = function(container, preserveScrollLeft) {
 
     allCls.forEach(function(cls) {
       (cls.students || []).forEach(function(st, sIdx) {
+        // Strictly exclude tester slots: only show students who have been enrolled with real name & parent phone
+        if (st.isTester === true || (st.name && st.name.toLowerCase().startsWith('tester_')) || !st.parentPhone) {
+          return;
+        }
         var stId = st.id || st.email || ('std_' + sIdx);
         var stName = cleanStName(cls.customStudentNames[stId] || st.name || ("O'quvchi " + (sIdx + 1)));
 

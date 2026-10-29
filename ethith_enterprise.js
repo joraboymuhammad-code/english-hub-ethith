@@ -30,9 +30,42 @@
           else if (data.classes && typeof data.classes === 'object') clsArr = Object.values(data.classes);
 
           clsArr.forEach(function(c) {
-            if (c && c.studentPayments) {
-              for (var sid in c.studentPayments) {
-                c.studentPayments[sid] = { fee: 300000, paid: 0, status: 'unpaid', method: '—', date: 'To‘lanmagan' };
+            if (c) {
+              if (c.studentPayments) {
+                for (var sid in c.studentPayments) {
+                  c.studentPayments[sid] = { fee: 300000, paid: 0, status: 'unpaid', method: '—', date: 'To‘lanmagan' };
+                }
+              }
+              // Reset any seeded fake students back to tester_1..tester_18
+              if (Array.isArray(c.students)) {
+                c.students = c.students.filter(function(st) {
+                  return st && st.manuallyEnrolled === true && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
+                });
+                var curIdx = 1;
+                while (c.students.length < 18) {
+                  var slotName = 'tester_' + curIdx;
+                  while (c.students.some(function(s) { return s.name === slotName; })) {
+                    curIdx++;
+                    slotName = 'tester_' + curIdx;
+                  }
+                  c.students.push({
+                    id: c.id + '_std_' + curIdx,
+                    name: slotName,
+                    email: c.id + '_std_' + curIdx + '@ethith.uz',
+                    role: 'student',
+                    phone: '',
+                    parentPhone: '',
+                    login: '',
+                    password: '',
+                    joinedAt: '2026-10-28',
+                    dailyMinutes: 0,
+                    coins: 0,
+                    isTester: true,
+                    isOnline: false,
+                    lastLogin: null
+                  });
+                  curIdx++;
+                }
               }
             }
           });
@@ -42,9 +75,15 @@
             data.finance.totalCollected = 0;
             data.finance.totalPaid = 0;
             data.finance.totalExpenses = 0;
+            data.finance.totalReceivables = 0;
             data.finance.netProfit = 0;
             data.finance.studentFees = {};
             data.finance.expenses = [];
+          }
+          if (Array.isArray(data.accounts)) {
+            data.accounts = data.accounts.filter(function(a) {
+              return a.role === 'admin' || a.role === 'teacher' || a.role === 'superadmin';
+            });
           }
           localStorage.setItem(k, JSON.stringify(data));
         }
@@ -2236,6 +2275,21 @@
   }
 
   EE.renderFinanceUnifiedView = function(container, activeTab) {
+    // GLOBAL ZERO FINANCE ENFORCE STRICT ZERO
+    var S_check = (typeof getStore === 'function' ? getStore() : null) || window.S || {};
+    var isLiveSys = (S_check.config && S_check.config.liveSystemStarted === true);
+    if (!isLiveSys) {
+      if (S_check.finance) {
+        S_check.finance.expenses = [];
+        if (S_check.finance.kpis) {
+          S_check.finance.kpis.totalRevenue = 0;
+          S_check.finance.kpis.totalTeacherPayout = 0;
+          S_check.finance.kpis.totalExpenses = 0;
+          S_check.finance.kpis.totalReceivables = 0;
+          S_check.finance.kpis.netProfit = 0;
+        }
+      }
+    }
     if (!container) return;
     var S = getStore();
     var isStaff = isAdminOrTeacher();
@@ -2247,13 +2301,7 @@
     if (!S.finance) {
       S.finance = {
         studentFees: {},
-        expenses: [
-          { id: 'e1', category: 'electricity', title: 'Elektr energiyasi (Tok — 24 ta xona, IT lab va yoritish)', amount: 14800000, icon: '⚡', color: '#F59E0B' },
-          { id: 'e2', category: 'utilities', title: 'Kommunal to‘lovlar (Suv, isitish, tozalik)', amount: 6400000, icon: '💧', color: '#38BDF8' },
-          { id: 'e3', category: 'rent', title: 'Markaz binosi ijarasi (O‘quv majmuasi)', amount: 32000000, icon: '🏢', color: '#10B981' },
-          { id: 'e4', category: 'internet', title: 'Optik Tolali Internet 2 Gbit/s & Server', amount: 4200000, icon: '🌐', color: '#818CF8' },
-          { id: 'e5', category: 'equipment', title: 'Kompyuterlar amortizatsiyasi va jihozlar', amount: 8000000, icon: '💻', color: '#EC4899' }
-        ]
+        expenses: []
       };
     }
     if (!S.finance.expenses) S.finance.expenses = [];
@@ -2295,42 +2343,45 @@
 
 // No fake sample students: strictly real classes and real zero-base payments
 
-    var totalRevenue = studentList.reduce(function(acc, s) { return acc + (s.paid || 0); }, 0);
-    var totalExpected = studentList.reduce(function(acc, s) { return acc + (s.fee || 0); }, 0);
-    var totalReceivables = Math.max(0, totalExpected - totalRevenue);
+    var isLiveStarted = (S.config && S.config.liveSystemStarted === true);
+    var totalRevenue = isLiveStarted ? studentList.reduce(function(acc, s) { return acc + (s.paid || 0); }, 0) : 0;
+    var totalExpected = isLiveStarted ? studentList.filter(function(s) { return !s.isTester && !(s.name||'').startsWith('tester_'); }).reduce(function(acc, s) { return acc + (s.fee || 0); }, 0) : 0;
+    var totalReceivables = isLiveStarted ? Math.max(0, totalExpected - totalRevenue) : 0;
 
     // Realtime Teacher Payroll: Derived directly from students who paid in each teacher's groups!
     var totalTeacherPayout = 0;
-    (S.teachers || []).forEach(function(t) {
-      var tPaidCount = 0;
-      var tShare = (t.salarySharePercent !== undefined) ? Number(t.salarySharePercent) : 50;
-      var tFee = Number(t.studentMonthlyFee) || 300000;
-      (S.classes || []).forEach(function(cls) {
-        if (cls.teacherId === t.id || (t.name && cls.teacherName && cls.teacherName.toLowerCase() === t.name.toLowerCase())) {
-          (cls.students || []).forEach(function(st) {
-            var stId = st.id || st.email;
-            if (cls.studentPayments && cls.studentPayments[stId] && cls.studentPayments[stId].status === 'paid') {
-              tPaidCount++;
-            }
-          });
-        }
+    if (isLiveStarted) {
+      (S.teachers || []).forEach(function(t) {
+        var tPaidCount = 0;
+        var tShare = (t.salarySharePercent !== undefined) ? Number(t.salarySharePercent) : 50;
+        var tFee = Number(t.studentMonthlyFee) || 300000;
+        (S.classes || []).forEach(function(cls) {
+          if (cls.teacherId === t.id || (t.name && cls.teacherName && cls.teacherName.toLowerCase() === t.name.toLowerCase())) {
+            (cls.students || []).forEach(function(st) {
+              var stId = st.id || st.email;
+              if (cls.studentPayments && cls.studentPayments[stId] && cls.studentPayments[stId].status === 'paid') {
+                tPaidCount++;
+              }
+            });
+          }
+        });
+        t.livePaidStudents = tPaidCount;
+        t.computedLiveSalary = Math.round(tPaidCount * tFee * (tShare / 100));
+        totalTeacherPayout += t.computedLiveSalary;
       });
-      t.livePaidStudents = tPaidCount;
-      t.computedLiveSalary = Math.round(tPaidCount * tFee * (tShare / 100));
-      totalTeacherPayout += t.computedLiveSalary;
-    });
+    }
 
-    var totalTeachingHours = (S.teachers || []).reduce(function(acc, t) {
+    var totalTeachingHours = isLiveStarted ? (S.teachers || []).reduce(function(acc, t) {
       return acc + (Number(t.teachingHours) || 0);
-    }, 0);
+    }, 0) : 0;
 
-    var totalExpenses = (S.finance.expenses || []).reduce(function(acc, e) {
+    var totalExpenses = isLiveStarted ? (S.finance.expenses || []).reduce(function(acc, e) {
       return acc + (Number(e.amount) || 0);
-    }, 0);
+    }, 0) : 0;
 
     var totalOutflow = totalTeacherPayout + totalExpenses;
-    var netProfit = totalRevenue - totalOutflow;
-    var profitMargin = totalRevenue > 0 ? ((netProfit / totalRevenue) * 100).toFixed(1) : '0';
+    var netProfit = isLiveStarted ? (totalRevenue - totalOutflow) : 0;
+    var profitMargin = isLiveStarted && totalRevenue > 0 ? ((netProfit / totalRevenue) * 100).toFixed(1) : '0';
 
     // Build Modern Cyber-Glass Obsidian Dark Layout
     var h = '<div class="ee-finance-wrap" style="max-width:1280px;margin:0 auto;padding:16px 20px 80px;">' +
