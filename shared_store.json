@@ -11776,6 +11776,11 @@
             "cls_urolov_azizbek_upper_intermediate_standard_tester_6": {
               "status": "K"
             }
+          },
+          "2026-11-02": {
+            "+998950079621@student.ethith": {
+              "status": "K"
+            }
           }
         },
         "lessonTypes": {
@@ -11797,7 +11802,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793251488745
+        "updatedAt": 1793252021276
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -70943,5 +70948,5 @@
       }
     }
   },
-  "updatedAt": 1793251545448
+  "updatedAt": 1793252021922
 }
