@@ -314,11 +314,13 @@
       return false;
     });
 
-    // Ensure Azizbek Urolov ONLY has the 2 specified composite groups
+    // Ensure Azizbek Urolov has his 4 distinct groups: Upper, Standard, Inter, Practice
     if (teacherId === 't_urolov_azizbek' || (tName && tName.toLowerCase().includes('azizbek'))) {
       matched = matched.filter(function(cls) {
-        return cls.id === 'cls_urolov_azizbek_upper_intermediate_standard' ||
-               cls.id === 'cls_urolov_azizbek_intermediate_practice';
+        return cls.id === 'cls_urolov_azizbek_upper' ||
+               cls.id === 'cls_urolov_azizbek_standard' ||
+               cls.id === 'cls_urolov_azizbek_intermediate' ||
+               cls.id === 'cls_urolov_azizbek_practice';
       });
     }
 
@@ -353,6 +355,10 @@
 
     return matched;
   }
+
+  EA.getStoreTeachers = getStoreTeachers;
+  EA.getAvailableClasses = getAvailableClasses;
+  EA.getClassesForTeacher = getClassesForTeacher;
 
   function isTeacherRole() {
     var u = getActiveUser();
@@ -395,11 +401,9 @@
       if (c.id === 'cls_ethith_main' || c.id === 'cls_upper_intermediate' || tid === 'admin_official_teacher' || tid === 't_zizi' || tn === 'ustoz' || tn === 'zizi ustoz') {
         return false;
       }
-      // Purge obsolete single-discipline classes for Azizbek (keep only 2 composite groups)
-      if (c.id === 'cls_urolov_azizbek_upper' ||
-          c.id === 'cls_urolov_azizbek_standard' ||
-          c.id === 'cls_urolov_azizbek_intermediate' ||
-          c.id === 'cls_urolov_azizbek_practice') {
+      // Purge obsolete composite groups for Azizbek (user confirmed 4 distinct groups)
+      if (c.id === 'cls_urolov_azizbek_upper_intermediate_standard' ||
+          c.id === 'cls_urolov_azizbek_intermediate_practice') {
         return false;
       }
       return true;
@@ -1014,6 +1018,25 @@
   // LEVEL 1: ALL TEACHERS DIRECTORY (O'QITUVCHILAR TARTIBI)
   // --------------------------------------------------------------------------
   EA.renderTeachersDirectory = function(container) {
+    var isAdmin = isAdminRole();
+    var isTeacher = isTeacherRole();
+
+    // Teacher Privacy / Isolation: Non-admin teachers NEVER see other teachers!
+    if (isTeacher && !isAdmin) {
+      var curUser = getActiveUser();
+      var allTeachers = getStoreTeachers();
+      var matchT = allTeachers.find(function(t) { 
+        return t.id === curUser.id || 
+               (curUser.email && t.email && t.email.toLowerCase() === curUser.email.toLowerCase()) ||
+               (curUser.login && t.login && t.login.toLowerCase() === curUser.login.toLowerCase()) ||
+               (curUser.name && t.name && t.name.toLowerCase() === curUser.name.toLowerCase()); 
+      }) || allTeachers[0];
+      if (matchT) {
+        EA.activeTeacherId = matchT.id;
+        return EA.renderTeacherGroups(container, matchT.id);
+      }
+    }
+
     var teachers = getStoreTeachers();
     var sClasses = getAvailableClasses();
 
