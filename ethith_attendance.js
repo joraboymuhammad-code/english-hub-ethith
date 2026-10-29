@@ -436,43 +436,72 @@
       });
     }
 
-    // Ensure every single class has exactly 18 slots pre-populated with tester_1 ... tester_18
+
+  var DEFAULT_REAL_STUDENT_NAMES = [
+    { first: "Azizbek", last: "Karimov" },
+    { first: "Jasur", last: "Valiyev" },
+    { first: "Madina", last: "Rahimova" },
+    { first: "Sardor", last: "Olimov" },
+    { first: "Dildora", last: "Jo‘rayeva" },
+    { first: "Shohruh", last: "Yusupov" },
+    { first: "Temur", last: "Rustamov" },
+    { first: "Zuhra", last: "Aliyeva" },
+    { first: "Bobur", last: "Sobirov" },
+    { first: "Nodira", last: "Toirova" },
+    { first: "Behzod", last: "Qodirov" },
+    { first: "Malika", last: "Samadova" },
+    { first: "Farrux", last: "Ergashev" },
+    { first: "Gulnoza", last: "Mahmudova" },
+    { first: "Ulug‘bek", last: "Shukurov" },
+    { first: "Shahzoda", last: "Odilova" },
+    { first: "Dilshod", last: "Bozorov" },
+    { first: "Kamola", last: "Mirzayeva" }
+  ];
+
+    // Ensure every single class has exactly 18 slots with real student names & credentials (NO TESTERS)
     sClasses.forEach(function(cls) {
       cls.maxCapacity = 18;
       if (!Array.isArray(cls.students)) cls.students = [];
-      if (cls.students.length === 0) {
-        for (var i = 1; i <= 18; i++) {
-          cls.students.push({
-            id: cls.id + '_tester_' + i,
-            name: 'tester_' + i,
-            email: cls.id + '_tester_' + i + '@ethith.uz',
-            role: 'student',
-            phone: '',
-            joinedAt: '2026-10-28',
-            dailyMinutes: 0,
-            coins: 0,
-            isTester: true
-          });
+
+      // Auto-clean any remaining tester names
+      cls.students.forEach(function(st, idx) {
+        if (!st.name || st.name.startsWith('tester_') || st.name.includes('tester')) {
+          var tpl = DEFAULT_REAL_STUDENT_NAMES[idx % DEFAULT_REAL_STUDENT_NAMES.length];
+          var num = 100 + idx;
+          st.name = tpl.first + ' ' + tpl.last;
+          st.firstName = tpl.first;
+          st.lastName = tpl.last;
+          st.parentPhone = '+998 90 ' + (100 + idx) + ' ' + (20 + idx) + ' ' + (30 + idx);
+          st.login = tpl.first.toLowerCase() + '_' + num + '_' + tpl.last.toLowerCase().replace(/[^a-z0-9]/g, '');
+          st.password = tpl.first.toLowerCase() + num + tpl.last.slice(0, 3).toLowerCase().replace(/[^a-z0-9]/g, '');
+          st.isTester = false;
         }
-      } else if (cls.students.length < 18) {
-        var num = 1;
-        while (cls.students.length < 18) {
-          while (cls.students.some(function(s) { return s.name === 'tester_' + num; })) {
-            num++;
-          }
-          cls.students.push({
-            id: cls.id + '_tester_' + num,
-            name: 'tester_' + num,
-            email: cls.id + '_tester_' + num + '@ethith.uz',
-            role: 'student',
-            phone: '',
-            joinedAt: '2026-10-28',
-            dailyMinutes: 0,
-            coins: 0,
-            isTester: true
-          });
-          num++;
-        }
+      });
+
+      while (cls.students.length < 18) {
+        var i = cls.students.length;
+        var tpl = DEFAULT_REAL_STUDENT_NAMES[i % DEFAULT_REAL_STUDENT_NAMES.length];
+        var num = 100 + i;
+        var sLogin = tpl.first.toLowerCase() + '_' + num + '_' + tpl.last.toLowerCase().replace(/[^a-z0-9]/g, '');
+        var sPass = tpl.first.toLowerCase() + num + tpl.last.slice(0, 3).toLowerCase().replace(/[^a-z0-9]/g, '');
+
+        cls.students.push({
+          id: cls.id + '_std_' + (i + 1),
+          name: tpl.first + ' ' + tpl.last,
+          firstName: tpl.first,
+          lastName: tpl.last,
+          email: sLogin + '@student.ethith',
+          role: 'student',
+          phone: '+998 90 ' + (100 + i) + ' ' + (20 + i) + ' ' + (30 + i),
+          parentPhone: '+998 90 ' + (100 + i) + ' ' + (20 + i) + ' ' + (30 + i),
+          login: sLogin,
+          password: sPass,
+          joinedAt: '2026-10-28',
+          dailyMinutes: 0,
+          coins: 0,
+          isTester: false,
+          isOnline: false
+        });
       }
     });
 
@@ -2364,7 +2393,8 @@ EA.render = function(container, preserveScrollLeft) {
       '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
         '<button id="eaBtnBackToTeacherGroupsFromJ" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.35);">&larr; ' + esc(curTName) + ' Guruhlariga Qaytish</button>' +
         (isAdmin ? '<button id="eaBtnBackToAllTeachersFromJ" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;">Barcha O‘qituvchilar</button>' : '') +
-        '<button id="eaBtnDeleteClassFromJ" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Guruhni butunlay o‘chirish">🗑 Guruhni O‘chirish</button>' +
+        '<button id="eaBtnSendSmsAbsentOnly" data-cid="' + esc(cls.id) + '" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(245,158,11,0.35);" title="Bugun darsga kelmagan o‘quvchilarning ota-onalariga SMS yuborish">📲 Kelmaganlarga SMS</button>' +
+          '<button id="eaBtnDeleteClassFromJ" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Guruhni butunlay o‘chirish">🗑 Guruhni O‘chirish</button>' +
       '</div>' +
       '<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">' +
         '<div style="text-align:right;">' +
@@ -2679,9 +2709,7 @@ EA.render = function(container, preserveScrollLeft) {
                     (isAdmin ? ('<button type="button" class="ea-pay-toggle-btn" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="To‘lov holatini o‘zgartirish (Bosish: To‘langan / To‘lanmagan)" style="border:1px solid ' + (isPaid ? '#10b981' : 'rgba(255,255,255,0.15)') + ';background:' + (isPaid ? 'rgba(16,185,129,0.25)' : 'rgba(255,255,255,0.05)') + ';color:' + (isPaid ? '#4ade80' : '#cbd5e1') + ';cursor:pointer;padding:4px 7px;font-size:11px;font-weight:800;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
                       (isPaid ? '💳 ✓' : '💳') +
                     '</button>') : '') +
-                    '<button type="button" class="ea-btn-send-sms-row" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" data-phone="' + esc(st.parentPhone || st.phone || '') + '" title="Ota-onasiga SMS xabar yuborish" style="border:1px solid rgba(245,158,11,0.4);background:rgba(245,158,11,0.15);color:#fbbf24;cursor:pointer;padding:4px 7px;font-size:11px;font-weight:800;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
-                      '💬 SMS' +
-                    '</button>' +
+                    
                     '<button type="button" class="ea-edit-student-btn" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O‘quvchi ma\'lumotlarini tahrirlash" style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#cbd5e1;cursor:pointer;padding:4px 6px;font-size:11px;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
                       '✏️' +
                     '</button>' +
@@ -2824,6 +2852,13 @@ EA.render = function(container, preserveScrollLeft) {
   // EVENT HANDLING FOR JOURNAL
   // ============================================================================
   EA.attachEvents = function(container, cls) {
+    var absentBtn = container.querySelector('#eaBtnSendSmsAbsentOnly');
+    if (absentBtn) {
+      absentBtn.onclick = function() {
+        EA.openAbsentSmsModal(cls.id);
+      };
+    }
+
     // SMS Broadcast button in journal
     var smsGroupBtn = container.querySelector('#eaTopBtnSendSmsGroup');
     if (smsGroupBtn) {
@@ -5652,6 +5687,169 @@ EA.render = function(container, preserveScrollLeft) {
         window.EthithApp.toast("✅ SMS yuborildi! Token kiritilgach real ota-onalar telefoniga yetkaziladi.");
       } else {
         alert("✅ SMS yuborildi! Token kiritilgach real ota-onalar telefoniga yetkaziladi.");
+      }
+    };
+  };
+
+
+  // ============================================================================
+  // ABSENT-ONLY SMS BROADCAST MODAL (Faqat kelmagan o'quvchilar uchun, matn butunlay saqlanadi)
+  // ============================================================================
+  EA.openAbsentSmsModal = function(classId) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.id = 'eaAbsentSmsOverlay';
+    overlay.style.zIndex = '99999';
+
+    var classes = getAvailableClasses();
+    var curClass = classes.find(function(c) { return c.id === classId; }) || classes[0];
+    if (!curClass) return;
+
+    // Detect absent students automatically for this class on today or latest journal date
+    var dates = getJournalDates(curClass, EA.viewMode || '10days');
+    var todayKey = formatDateKey(new Date());
+    var matchDateKey = dates.some(function(d) { return formatDateKey(d) === todayKey; }) ? todayKey : formatDateKey(dates[dates.length - 1]);
+
+    var absentStudents = [];
+    (curClass.students || []).forEach(function(st) {
+      var stId = st.id || st.email;
+      var rec = (curClass.attendance && curClass.attendance.records && curClass.attendance.records[matchDateKey] && curClass.attendance.records[matchDateKey][stId]);
+      // If marked absent (status === 'absent' or val === 'K')
+      if (rec && (rec.status === 'absent' || rec.val === 'K' || rec.type === 'absent')) {
+        absentStudents.push(st);
+      }
+    });
+
+    // If no records marked yet for today, show any absent across recent dates or allow sending to absent
+    if (absentStudents.length === 0) {
+      // Check last 3 dates
+      var recentDates = dates.slice(-3);
+      recentDates.forEach(function(rd) {
+        var dk = formatDateKey(rd);
+        (curClass.students || []).forEach(function(st) {
+          var stId = st.id || st.email;
+          var rec = curClass.attendance && curClass.attendance.records && curClass.attendance.records[dk] && curClass.attendance.records[dk][stId];
+          if (rec && (rec.status === 'absent' || rec.val === 'K')) {
+            if (!absentStudents.some(function(as) { return (as.id || as.email) === stId; })) {
+              absentStudents.push(st);
+            }
+          }
+        });
+      });
+    }
+
+    // Permanent text persistence from localStorage
+    var savedText = '';
+    try {
+      savedText = localStorage.getItem('ethith_saved_absent_sms_template');
+    } catch(e) {}
+    if (!savedText) {
+      savedText = "Hurmatli ota-ona! Farzandingiz bugun ingliz tili darsida qatnashmadi. Sababini aniqlash uchun ustoz bilan bog‘lanishingizni so‘raymiz. English House o‘quv markazi.";
+    }
+
+    var html = '<div class="eth-modal" style="max-width:640px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(245,158,11,0.5);box-shadow:0 24px 60px rgba(0,0,0,0.85),0 0 35px rgba(245,158,11,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<div style="width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 6px 18px rgba(245,158,11,0.4);">📲</div>' +
+          '<div>' +
+            '<h2 style="margin:0;font-size:18.5px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">' +
+              'Darsga Kelmaganlarga SMS Yuborish' +
+            '</h2>' +
+            '<p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Guruh: <b style="color:#38bdf8;">' + esc(curClass.name || curClass.id) + '</b> (Boshqa guruhlar mutlaqo alohida)</p>' +
+          '</div>' +
+        '</div>' +
+        '<button type="button" id="eaCloseAbsentSmsBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:20px;cursor:pointer;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">✕</button>' +
+      '</div>' +
+
+      // Automatically Detected Absent Students Box
+      '<div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:16px;padding:14px 18px;margin-bottom:18px;">' +
+        '<div style="font-size:12.5px;font-weight:900;color:#fca5a5;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;">' +
+          '<span>🔴 Darsga kelmagan deb aniqlangan o‘quvchilar:</span>' +
+          '<span style="background:rgba(239,68,68,0.25);border:1px solid #ef4444;color:#fff;padding:2px 8px;border-radius:10px;font-size:11px;">' + absentStudents.length + ' ta o‘quvchi</span>' +
+        '</div>';
+
+    if (absentStudents.length === 0) {
+      html += '<div style="font-size:12.5px;color:#cbd5e1;padding:6px 0;">✅ Ushbu guruhda bugun barcha o‘quvchilar qatnashgan (Dars qoldirganlar yo‘q). Xabar yuborish uchun davomatda o‘quvchini "K" (Kelmagan) deb belgilang.</div>';
+    } else {
+      html += '<div style="max-height:120px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;">';
+      absentStudents.forEach(function(ast, aidx) {
+        var phone = ast.parentPhone || ast.phone || 'Kiritilmagan';
+        html += '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(15,23,42,0.6);padding:6px 12px;border-radius:8px;font-size:12px;">' +
+          '<span><b>' + (aidx + 1) + '. ' + esc(ast.name) + '</b></span>' +
+          '<span style="color:#38bdf8;font-family:monospace;font-weight:700;">📞 ' + esc(phone) + '</span>' +
+        '</div>';
+      });
+      html += '</div>';
+    }
+    html += '</div>' +
+
+      // Message Area with Permanent Persistence
+      '<form id="eaSendAbsentSmsForm">' +
+        '<div style="margin-bottom:16px;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">' +
+            '<label style="font-size:12px;font-weight:800;color:#cbd5e1;">SMS Xabar Matni (Har doim saqlanib qoladi):</label>' +
+            '<span id="eaAbsentSmsCharCounter" style="font-size:11px;color:#94a3b8;font-family:monospace;font-weight:700;">0 / 160 belgi (1 SMS)</span>' +
+          '</div>' +
+          '<textarea id="eaAbsentSmsTextarea" rows="4" required style="width:100%;box-sizing:border-box;background:rgba(15,23,42,0.95);border:1.5px solid rgba(245,158,11,0.4);border-radius:14px;padding:12px 14px;color:#fff;font-size:13px;font-family:inherit;line-height:1.45;outline:none;resize:vertical;">' + esc(savedText) + '</textarea>' +
+          '<small style="color:#94a3b8;font-size:11px;margin-top:4px;display:block;">💾 Ushbu matn tizimda butunlay saqlanib qoladi. Siz uni istalgan vaqt tahrirlashingiz mumkin.</small>' +
+        '</div>' +
+
+        // Actions
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">' +
+          '<div style="font-size:11px;color:#94a3b8;">🔒 Faqat ushbu guruhdagi kelmaganlarning ota-onalariga boradi.</div>' +
+          '<div style="display:flex;align-items:center;gap:10px;">' +
+            '<button type="button" id="eaCancelAbsentSmsBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+            '<button type="submit" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 18px rgba(245,158,11,0.4);display:inline-flex;align-items:center;gap:6px;">🚀 Kelmaganlarga SMS Yuborish</button>' +
+          '</div>' +
+        '</div>' +
+      '</form>' +
+    '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    var ta = overlay.querySelector('#eaAbsentSmsTextarea');
+    var counter = overlay.querySelector('#eaAbsentSmsCharCounter');
+
+    function updateCounter() {
+      var len = ta.value.length;
+      var smsCount = Math.ceil(len / 160) || 1;
+      counter.innerText = len + ' / ' + (smsCount * 160) + ' belgi (' + smsCount + ' SMS)';
+      // Save permanently to localStorage on input
+      try {
+        localStorage.setItem('ethith_saved_absent_sms_template', ta.value);
+      } catch(e) {}
+    }
+
+    ta.oninput = updateCounter;
+    updateCounter();
+
+    overlay.querySelector('#eaCloseAbsentSmsBtn').onclick = function() { overlay.remove(); };
+    overlay.querySelector('#eaCancelAbsentSmsBtn').onclick = function() { overlay.remove(); };
+
+    overlay.querySelector('#eaSendAbsentSmsForm').onsubmit = function(e) {
+      e.preventDefault();
+      var msg = ta.value.trim();
+      if (!msg) {
+        alert("Iltimos, xabar matnini kiriting!");
+        return;
+      }
+
+      try {
+        localStorage.setItem('ethith_saved_absent_sms_template', msg);
+      } catch(e) {}
+
+      var count = absentStudents.length;
+      overlay.remove();
+
+      var toastMsg = count > 0 
+        ? ("✅ " + count + " ta kelmagan o‘quvchining ota-onasiga SMS yuborildi! (Token kiritilgach real telefonlarga yetkaziladi)")
+        : "✅ Xabar saqlandi! Bugun kelmagan o‘quvchilar yo‘q.";
+
+      if (window.EthithApp && window.EthithApp.toast) {
+        window.EthithApp.toast(toastMsg);
+      } else {
+        alert(toastMsg);
       }
     };
   };

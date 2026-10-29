@@ -2208,7 +2208,7 @@
         var stId = st.id || st.email || ('st_' + Math.random().toString(36).substr(2, 6));
         var feeInfo = (cls.studentPayments && cls.studentPayments[stId]) ||
                       S.finance.studentFees[stId] ||
-                      { fee: 1400000, paid: 1400000, status: 'paid', method: 'Click', date: '2026-10-05' };
+                      { fee: 300000, paid: 0, status: 'unpaid', method: '—', date: 'To‘lanmagan' };
         studentList.push({
           id: stId,
           name: st.name || ("O'quvchi " + (studentList.length + 1)),
@@ -2224,41 +2224,32 @@
       });
     });
 
-    if (studentList.length === 0) {
-      var sampleStudents = [
-        { name: 'Ashurov Dilyorbek', email: 'ashurov@ethith.uz', className: 'IELTS & General English Intensive', fee: 1400000, paid: 1400000, status: 'paid', method: 'Click' },
-        { name: 'Ergasheva Madina', email: 'ergasheva@ethith.uz', className: 'IELTS & General English Intensive', fee: 1400000, paid: 1400000, status: 'paid', method: 'Payme' },
-        { name: 'Erkinov Aslbekjon', email: 'erkinov@ethith.uz', className: 'IELTS & General English Intensive', fee: 1400000, paid: 1400000, status: 'paid', method: 'Click' },
-        { name: 'Jo‘raboyev Javoxir', email: 'joraboyev@ethith.uz', className: 'IELTS & General English Intensive', fee: 1400000, paid: 1400000, status: 'paid', method: 'Click' },
-        { name: 'Jo‘raboyev Muhammad Yusuf', email: 'yusuf@ethith.uz', className: 'IELTS & General English Intensive', fee: 1400000, paid: 1400000, status: 'paid', method: 'Click' },
-        { name: 'Sobirova Dilnoza', email: 'sobirova@ethith.uz', className: 'Bizani gurux', fee: 1400000, paid: 700000, status: 'partial', method: 'Naqd' },
-        { name: 'Qodirov Farrux', email: 'qodirov@ethith.uz', className: 'Bizani gurux', fee: 1400000, paid: 0, status: 'unpaid', method: 'Kutilmoqda' }
-      ];
-      sampleStudents.forEach(function(s, idx) {
-        studentList.push({
-          id: 'sample_st_' + idx,
-          name: s.name,
-          email: s.email,
-          className: s.className,
-          fee: s.fee,
-          paid: s.paid,
-          status: s.status,
-          method: s.method,
-          date: '2026-10-05'
-        });
-      });
-    }
+// No fake sample students: strictly real classes and real zero-base payments
 
     var totalRevenue = studentList.reduce(function(acc, s) { return acc + (s.paid || 0); }, 0);
     var totalExpected = studentList.reduce(function(acc, s) { return acc + (s.fee || 0); }, 0);
     var totalReceivables = Math.max(0, totalExpected - totalRevenue);
 
-    var totalTeacherPayout = (S.teachers || []).reduce(function(acc, t) {
-      var hours = Number(t.teachingHours) || 0;
-      var rate = Number(t.hourlyRate) || 0;
-      var bonus = Number(t.monthlyBonus) || 0;
-      return acc + (hours * rate) + bonus;
-    }, 0);
+    // Realtime Teacher Payroll: Derived directly from students who paid in each teacher's groups!
+    var totalTeacherPayout = 0;
+    (S.teachers || []).forEach(function(t) {
+      var tPaidCount = 0;
+      var tShare = (t.salarySharePercent !== undefined) ? Number(t.salarySharePercent) : 50;
+      var tFee = Number(t.studentMonthlyFee) || 300000;
+      (S.classes || []).forEach(function(cls) {
+        if (cls.teacherId === t.id || (t.name && cls.teacherName && cls.teacherName.toLowerCase() === t.name.toLowerCase())) {
+          (cls.students || []).forEach(function(st) {
+            var stId = st.id || st.email;
+            if (cls.studentPayments && cls.studentPayments[stId] && cls.studentPayments[stId].status === 'paid') {
+              tPaidCount++;
+            }
+          });
+        }
+      });
+      t.livePaidStudents = tPaidCount;
+      t.computedLiveSalary = Math.round(tPaidCount * tFee * (tShare / 100));
+      totalTeacherPayout += t.computedLiveSalary;
+    });
 
     var totalTeachingHours = (S.teachers || []).reduce(function(acc, t) {
       return acc + (Number(t.teachingHours) || 0);
