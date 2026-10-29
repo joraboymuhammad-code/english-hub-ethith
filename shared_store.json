@@ -11367,6 +11367,238 @@
       "extraHomework": []
     },
     {
+      "id": "cls_1792041880052",
+      "name": "Bizani gurux",
+      "code": "ETH-QOY2Z8",
+      "teacherId": "tc_oprlehyw5",
+      "teacherName": "Name",
+      "teacherEmail": "strikeruzb52@gmail.com",
+      "students": [
+        {
+          "id": "std_1",
+          "name": "Ashurov Dilyorbek Azizbek o'g'li",
+          "email": "ashurov@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_2",
+          "name": "Ergasheva Madina Asad qizi",
+          "email": "ergasheva@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_3",
+          "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
+          "email": "erkinov@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_4",
+          "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
+          "email": "joraboyev@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_5",
+          "name": "Jo'raboyev Javoxir Murod o'g'li",
+          "email": "javoxir@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_6",
+          "name": "Mavlonova Ruxshona Oybek qizi",
+          "email": "mavlonova@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_7",
+          "name": "Muxtaraliyeva Dilora Dilshod qizi",
+          "email": "muxtaraliyeva@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_8",
+          "name": "O'razboyev O'tkir Baxtiyor o'g'li",
+          "email": "orazboyev@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "tg_6772427596",
+          "name": "Striker_uzb",
+          "email": "Mu_striker@telegram.org",
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 28
+        },
+        {
+          "id": "std_9",
+          "name": "Saparova Aida",
+          "email": "saparova@ethith.uz",
+          "joinedAt": "2026-10-20"
+        },
+        {
+          "id": "std_10",
+          "name": "Umarov Nursulton",
+          "email": "umarov@ethith.uz",
+          "joinedAt": "2026-10-20"
+        },
+        {
+          "id": "std_11",
+          "name": "Xolmurodova Muazzam",
+          "email": "xolmurodova@ethith.uz",
+          "joinedAt": "2026-10-20"
+        },
+        {
+          "id": "std_12",
+          "name": "Kaxarova Xumora",
+          "email": "kaxarova@ethith.uz",
+          "joinedAt": "2026-10-20"
+        },
+        {
+          "id": "cls_1792041880052_tester_1",
+          "name": "tester_1",
+          "email": "cls_1792041880052_tester_1@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true
+        },
+        {
+          "id": "cls_1792041880052_tester_2",
+          "name": "tester_2",
+          "email": "cls_1792041880052_tester_2@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true
+        },
+        {
+          "id": "cls_1792041880052_tester_3",
+          "name": "tester_3",
+          "email": "cls_1792041880052_tester_3@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true
+        },
+        {
+          "id": "cls_1792041880052_tester_4",
+          "name": "tester_4",
+          "email": "cls_1792041880052_tester_4@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true
+        },
+        {
+          "id": "cls_1792041880052_tester_5",
+          "name": "tester_5",
+          "email": "cls_1792041880052_tester_5@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true
+        }
+      ],
+      "messages": [],
+      "pinnedId": null,
+      "deletedMsgIds": [
+        "msg_1792042347995_z52xw",
+        "msg_1792042342788_9894b",
+        "msg_1792042367569_7htzs",
+        "msg_1792042036562_fkm5k",
+        "msg_1792042358929_8iaq2",
+        "msg_1792041984917_cd4i9"
+      ],
+      "schedule": "har_kuni",
+      "attendance": {
+        "records": {
+          "2026-09-29": {
+            "std_1": {
+              "status": "K"
+            },
+            "std_2": {
+              "status": "K"
+            },
+            "std_3": {
+              "status": "K"
+            }
+          },
+          "2026-10-28": {
+            "u1": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 100,
+              "hwLesson": "10.4",
+              "hwCorrect": 38,
+              "hwTotal": 38,
+              "hwCompletedAt": 1793129842154
+            }
+          },
+          "2026-10-21": {
+            "tg_6772427596": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792999901066
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-21": "Vazifa: 1.1",
+          "2026-10-19": "Oddiy",
+          "2026-10-28": "Vazifa: 2.1"
+        },
+        "holidays": {},
+        "homeworks": {
+          "2026-10-21": {
+            "dateKey": "2026-10-21",
+            "dateDisp": "21.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 1792608458469
+          }
+        },
+        "updatedAt": 1793129842154
+      },
+      "customStudentNames": {},
+      "activeHomework": {
+        "dateKey": "2026-10-21",
+        "dateDisp": "21.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792608458469
+      },
+      "customStudentPhones": {},
+      "maxCapacity": 18
+    },
+    {
       "id": "cls_urolov_azizbek_upper",
       "name": "Upper",
       "code": "ETH-AZUP01",
@@ -12257,237 +12489,6 @@
       ],
       "deletedMsgIds": [],
       "messages": []
-    },
-    {
-      "id": "cls_1792041880052",
-      "name": "Bizani gurux",
-      "code": "ETH-QOY2Z8",
-      "teacherId": "tc_oprlehyw5",
-      "teacherName": "Name",
-      "teacherEmail": "strikeruzb52@gmail.com",
-      "students": [
-        {
-          "id": "std_1",
-          "name": "Ashurov Dilyorbek Azizbek o'g'li",
-          "email": "ashurov@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_2",
-          "name": "Ergasheva Madina Asad qizi",
-          "email": "ergasheva@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_3",
-          "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
-          "email": "erkinov@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_4",
-          "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
-          "email": "joraboyev@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_5",
-          "name": "Jo'raboyev Javoxir Murod o'g'li",
-          "email": "javoxir@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_6",
-          "name": "Mavlonova Ruxshona Oybek qizi",
-          "email": "mavlonova@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_7",
-          "name": "Muxtaraliyeva Dilora Dilshod qizi",
-          "email": "muxtaraliyeva@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "std_8",
-          "name": "O'razboyev O'tkir Baxtiyor o'g'li",
-          "email": "orazboyev@ethith.uz",
-          "joinedAt": "2026-09-01"
-        },
-        {
-          "id": "tg_6772427596",
-          "name": "Striker_uzb",
-          "email": "Mu_striker@telegram.org",
-          "joinedAt": "2026-10-26",
-          "dailyMinutes": 28
-        },
-        {
-          "id": "std_9",
-          "name": "Saparova Aida",
-          "email": "saparova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_10",
-          "name": "Umarov Nursulton",
-          "email": "umarov@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_11",
-          "name": "Xolmurodova Muazzam",
-          "email": "xolmurodova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "std_12",
-          "name": "Kaxarova Xumora",
-          "email": "kaxarova@ethith.uz",
-          "joinedAt": "2026-10-20"
-        },
-        {
-          "id": "cls_1792041880052_tester_1",
-          "name": "tester_1",
-          "email": "cls_1792041880052_tester_1@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true
-        },
-        {
-          "id": "cls_1792041880052_tester_2",
-          "name": "tester_2",
-          "email": "cls_1792041880052_tester_2@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true
-        },
-        {
-          "id": "cls_1792041880052_tester_3",
-          "name": "tester_3",
-          "email": "cls_1792041880052_tester_3@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true
-        },
-        {
-          "id": "cls_1792041880052_tester_4",
-          "name": "tester_4",
-          "email": "cls_1792041880052_tester_4@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true
-        },
-        {
-          "id": "cls_1792041880052_tester_5",
-          "name": "tester_5",
-          "email": "cls_1792041880052_tester_5@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true
-        }
-      ],
-      "messages": [],
-      "pinnedId": null,
-      "deletedMsgIds": [
-        "msg_1792042347995_z52xw",
-        "msg_1792042342788_9894b",
-        "msg_1792042367569_7htzs",
-        "msg_1792042036562_fkm5k",
-        "msg_1792042358929_8iaq2",
-        "msg_1792041984917_cd4i9"
-      ],
-      "schedule": "har_kuni",
-      "attendance": {
-        "records": {
-          "2026-09-29": {
-            "std_1": {
-              "status": "K"
-            },
-            "std_2": {
-              "status": "K"
-            },
-            "std_3": {
-              "status": "K"
-            }
-          },
-          "2026-10-28": {
-            "u1": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 100,
-              "hwLesson": "10.4",
-              "hwCorrect": 38,
-              "hwTotal": 38,
-              "hwCompletedAt": 1793129842154
-            }
-          },
-          "2026-10-21": {
-            "tg_6772427596": {
-              "status": "K",
-              "score": "2",
-              "hwDone": true,
-              "hwPct": 0,
-              "hwLesson": "1.1",
-              "hwCorrect": 0,
-              "hwTotal": 36,
-              "hwCompletedAt": 1792999901066
-            }
-          }
-        },
-        "lessonTypes": {
-          "2026-10-21": "Vazifa: 1.1",
-          "2026-10-19": "Oddiy",
-          "2026-10-28": "Vazifa: 2.1"
-        },
-        "holidays": {},
-        "homeworks": {
-          "2026-10-21": {
-            "dateKey": "2026-10-21",
-            "dateDisp": "21.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 1792608458469
-          }
-        },
-        "updatedAt": 1793129842154
-      },
-      "customStudentNames": {},
-      "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792608458469
-      },
-      "maxCapacity": 18
     },
     {
       "id": "cls_ethith_main",
@@ -15263,41 +15264,47 @@
   ],
   "accounts": [
     {
-      "id": "tg_98124765",
-      "role": "student",
-      "name": "Muhammad Jo'raboyev",
-      "email": "mu_striker@telegram.org",
-      "coins": 101340,
-      "level": "A1",
-      "dailyMinutes": 0,
-      "updatedAt": 1792997212404
-    },
-    {
-      "id": "admin_official_root",
-      "role": "admin",
-      "name": "Bosh Admin",
-      "email": "ADMIN_12038F1aq8syash@ethith.uz",
-      "coins": 5000,
-      "createdAt": 1792612524777,
-      "level": "C2",
-      "dailyMinutes": 0,
-      "updatedAt": 1792612388994,
-      "gifts": []
-    },
-    {
       "id": "admin_official_teacher",
       "role": "teacher",
       "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
       "coins": 5000,
+      "gifts": [],
       "level": "C2",
       "dailyMinutes": 0,
-      "updatedAt": 1792612388994,
+      "updatedAt": 1793215174438,
       "avatar": null,
       "nameStyle": null,
       "title": null,
       "victorySound": null
+    },
+    {
+      "id": "admin_official_root",
+      "role": "admin",
+      "name": "Bosh Admin",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 5000,
+      "gifts": [],
+      "nameStyle": null,
+      "createdAt": 1792502058827,
+      "level": "C2",
+      "dailyMinutes": 0,
+      "updatedAt": 1792612388994
+    },
+    {
+      "id": "tg_98124765",
+      "role": "student",
+      "name": "Striker_uzb",
+      "email": "mu_striker@telegram.org",
+      "coins": 101340,
+      "avatar": null,
+      "level": "A1",
+      "dailyMinutes": 28,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null,
+      "updatedAt": 1793260926584
     },
     {
       "id": "admin_official_teacher",
@@ -15330,7 +15337,7 @@
     {
       "id": "std_1",
       "role": "student",
-      "name": "Ashurov Dilyorbek",
+      "name": "Ashurov Dilyorbek Azizbek o'g'li",
       "email": "ashurov@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15340,7 +15347,7 @@
     {
       "id": "std_2",
       "role": "student",
-      "name": "Ergasheva Madina",
+      "name": "Ergasheva Madina Asad qizi",
       "email": "ergasheva@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15350,7 +15357,7 @@
     {
       "id": "std_3",
       "role": "student",
-      "name": "Erkinov Aslbekjon",
+      "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
       "email": "erkinov@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15360,7 +15367,7 @@
     {
       "id": "std_4",
       "role": "student",
-      "name": "JO‘RABOYEV MUXAMMADYUSUF",
+      "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
       "email": "joraboyev@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15370,7 +15377,7 @@
     {
       "id": "std_5",
       "role": "student",
-      "name": "Jo'raboyev Javoxir",
+      "name": "Jo'raboyev Javoxir Murod o'g'li",
       "email": "javoxir@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15380,7 +15387,7 @@
     {
       "id": "std_6",
       "role": "student",
-      "name": "Mavlonova Ruxshona",
+      "name": "Mavlonova Ruxshona Oybek qizi",
       "email": "mavlonova@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15390,7 +15397,7 @@
     {
       "id": "std_7",
       "role": "student",
-      "name": "Muxtaraliyeva Dilora",
+      "name": "Muxtaraliyeva Dilora Dilshod qizi",
       "email": "muxtaraliyeva@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15400,7 +15407,7 @@
     {
       "id": "std_8",
       "role": "student",
-      "name": "O'razboyev O'tkir",
+      "name": "O'razboyev O'tkir Baxtiyor o'g'li",
       "email": "orazboyev@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15410,7 +15417,7 @@
     {
       "id": "std_9",
       "role": "student",
-      "name": "Saparova Aida",
+      "name": "Saparova Aida Sarvar qizi",
       "email": "saparova@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15420,7 +15427,7 @@
     {
       "id": "std_10",
       "role": "student",
-      "name": "Umarov Nursulton",
+      "name": "Umarov Nursulton Alisher o'g'li",
       "email": "umarov@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15430,7 +15437,7 @@
     {
       "id": "std_11",
       "role": "student",
-      "name": "Xolmurodova Muazzam",
+      "name": "Xolmurodova Muazzam G'ulom qizi",
       "email": "xolmurodova@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15440,7 +15447,7 @@
     {
       "id": "std_12",
       "role": "student",
-      "name": "Kaxarova Xumora",
+      "name": "Kaxarova Xumora Olimjon qizi",
       "email": "kaxarova@ethith.uz",
       "coins": 150,
       "level": "B1+",
@@ -15463,11 +15470,10 @@
     },
     {
       "id": "admin_official_teacher",
-      "role": "teacher",
       "name": "Ustoz",
       "email": "muhammedjoraboyev1@gmail.com",
+      "role": "teacher",
       "coins": 500,
-      "createdAt": 1793103428758,
       "level": "B1+"
     },
     {
@@ -15475,152 +15481,150 @@
       "name": "Anvarova Nilufar",
       "email": "anvarova@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_14",
       "name": "Boboyev Jamshid",
       "email": "boboyev@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_15",
       "name": "Rustamov Shaxzod",
       "email": "rustamov@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_16",
       "name": "Karimova Rayhona",
       "email": "karimova@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_17",
       "name": "Toxirov Sardor",
       "email": "toxirov@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_18",
       "name": "Ismoilova Zarina",
       "email": "ismoilova@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_19",
       "name": "Abdullayev Bekzod",
       "email": "abdullayev@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_20",
       "name": "Qodirova Sevinch",
       "email": "qodirova@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_21",
       "name": "Yoqubov Doniyor",
       "email": "yoqubov@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_22",
       "name": "Nurmatova Diyora",
       "email": "nurmatova@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_23",
       "name": "Mirzayev Otabek",
       "email": "mirzayev@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_24",
       "name": "Tursunov Jasur",
       "email": "tursunov@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_25",
       "name": "Mahmudova Shahlo",
       "email": "mahmudova@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_26",
       "name": "Sobirov Elyor",
       "email": "sobirov@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_27",
       "name": "Aliyeva Gulnoza",
       "email": "aliyeva@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_28",
       "name": "Rahmatov Ilhom",
       "email": "rahmatov@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_29",
       "name": "Sayfullayeva Mohira",
       "email": "sayfullayeva@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_30",
       "name": "G'aniyev Sherzod",
       "email": "ganiyev@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "std_31",
       "name": "Vohidova Kamola",
       "email": "vohidova@ethith.uz",
       "role": "student",
-      "updatedAt": 1793114404453
+      "updatedAt": 1793185854362
     },
     {
       "id": "admin_official_teacher",
       "name": "Ustoz",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
-      "password": "azizbek2026",
       "role": "teacher",
       "coins": 1000,
-      "hourlyRate": 120000,
-      "subject": "Ingliz tili (Upper / Inter)",
-      "teachingHours": 72,
-      "assignedClasses": [
-        "cls_urolov_azizbek_intermediate_practice",
-        "cls_urolov_azizbek_upper_intermediate_standard"
-      ],
-      "createdAt": 1793208669771,
-      "level": "C2",
-      "gifts": []
+      "level": "C2"
+    },
+    {
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
+      "email": "elyor.aborbekov@ethith.uz",
+      "login": "elyor70",
+      "role": "teacher",
+      "coins": 1000
     },
     {
       "id": "admin_official_teacher",
@@ -15639,7 +15643,7 @@
         "cls_ravshanov_doniyor_cefr_3",
         "cls_ravshanov_doniyor_cefr_4"
       ],
-      "createdAt": 1793278421878
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -15742,26 +15746,6 @@
       "assignedClasses": [
         "cls_sherqoziyeva_iroda_beginner_1",
         "cls_sherqoziyeva_iroda_beginner_2"
-      ],
-      "createdAt": 1793202631415
-    },
-    {
-      "id": "admin_official_teacher",
-      "name": "Ustoz",
-      "email": "elyor.aborbekov@ethith.uz",
-      "login": "elyor70",
-      "password": "elyor2026",
-      "role": "teacher",
-      "coins": 1000,
-      "hourlyRate": 110000,
-      "subject": "Ingliz tili (Pre / Inter / Upper)",
-      "teachingHours": 72,
-      "assignedClasses": [
-        "cls_aborbekov_elyor_pre_intermediate_1",
-        "cls_aborbekov_elyor_pre_intermediate_2",
-        "cls_aborbekov_elyor_intermediate_1",
-        "cls_aborbekov_elyor_intermediate_2",
-        "cls_aborbekov_elyor_upper_intermediate"
       ],
       "createdAt": 1793202631415
     },
@@ -15938,29 +15922,15 @@
     },
     {
       "id": "st_998950079621",
-      "role": "student",
       "name": "Etiborxon Usmonqulova",
       "phone": "+998 95 007 96 21",
       "email": "+998950079621@student.ethith",
-      "level": "A1",
-      "unlocked": {
-        "A1": 1,
-        "A2": 1,
-        "B1": 1,
-        "B2": 1,
-        "C1": 1,
-        "C2": 1
-      },
-      "quizScores": {},
-      "mistakes": [],
-      "dailyMinutes": 0,
+      "role": "student",
       "coins": 5150,
       "avatar": "girl_v7_valkyrie_samurai_1",
-      "title": "👑 IELTS Qiroli",
-      "nameStyle": "flame",
-      "gifts": [],
-      "createdAt": 1793215171236,
-      "updatedAt": 1793215171236
+      "level": "A1",
+      "joinedAt": 1793215171236,
+      "title": "👑 IELTS Qiroli"
     }
   ],
   "p2pListings": [],
@@ -36468,6 +36438,18 @@
         "width": 7,
         "height": 2,
         "correct": "Yes"
+      },
+      {
+        "page": 1004,
+        "type": "fill",
+        "top": 27.7,
+        "left": 63.2,
+        "width": 8.3,
+        "height": 3,
+        "correct": "",
+        "label": "New",
+        "id": "p1004_custom_12025",
+        "group": ""
       }
     ],
     "1005": [
@@ -70453,6 +70435,817 @@
         "page": 2087
       }
     ],
+    "3004": [
+      {
+        "id": "p3004_ex1a_2",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "1a",
+        "label": "2",
+        "top": 62.4,
+        "left": 12.5,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Mexico (Edited & Saved)"
+      },
+      {
+        "id": "p3004_ex1a_3",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "1a",
+        "label": "3",
+        "top": 64.4,
+        "left": 12.5,
+        "width": 15,
+        "height": 1.9,
+        "correct": "the UK - British"
+      },
+      {
+        "id": "p3004_ex1a_4",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "1a",
+        "label": "4",
+        "top": 66.4,
+        "left": 12.5,
+        "width": 15,
+        "height": 1.9,
+        "correct": "France - French"
+      },
+      {
+        "id": "p3004_ex1a_5",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "1a",
+        "label": "5",
+        "top": 68.4,
+        "left": 12.5,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Italy - Italian"
+      },
+      {
+        "id": "p3004_ex1a_6",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "1a",
+        "label": "6",
+        "top": 70.4,
+        "left": 12.5,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Poland - Polish"
+      },
+      {
+        "id": "p3004_ex1a_7",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "1a",
+        "label": "7",
+        "top": 60.4,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Greece - Greek"
+      },
+      {
+        "id": "p3004_ex1a_8",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "1a",
+        "label": "8",
+        "top": 62.4,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Turkey - Turkish"
+      },
+      {
+        "id": "p3004_ex1a_9",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "1a",
+        "label": "9",
+        "top": 64.4,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "the UAE - Emirati"
+      },
+      {
+        "id": "p3004_ex1a_10",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "1a",
+        "label": "10",
+        "top": 66.4,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Pakistan - Pakistani"
+      },
+      {
+        "id": "p3004_ex1a_11",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "1a",
+        "label": "11",
+        "top": 68.4,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "China - Chinese"
+      },
+      {
+        "id": "p3004_ex1a_12",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "1a",
+        "label": "12",
+        "top": 70.4,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Vietnam - Vietnamese"
+      },
+      {
+        "id": "p3004_ex2_2",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "2",
+        "label": "2",
+        "top": 84,
+        "left": 12.5,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Spanish"
+      },
+      {
+        "id": "p3004_ex2_3",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "2",
+        "label": "3",
+        "top": 86,
+        "left": 12.5,
+        "width": 15,
+        "height": 1.9,
+        "correct": "English"
+      },
+      {
+        "id": "p3004_ex2_4",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "2",
+        "label": "4",
+        "top": 88,
+        "left": 12.5,
+        "width": 15,
+        "height": 1.9,
+        "correct": "French"
+      },
+      {
+        "id": "p3004_ex2_5",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "2",
+        "label": "5",
+        "top": 90,
+        "left": 12.5,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Italian"
+      },
+      {
+        "id": "p3004_ex2_6",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "2",
+        "label": "6",
+        "top": 92,
+        "left": 12.5,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Polish"
+      },
+      {
+        "id": "p3004_ex2_7",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "2",
+        "label": "7",
+        "top": 82,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Greek"
+      },
+      {
+        "id": "p3004_ex2_8",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "2",
+        "label": "8",
+        "top": 84,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Turkish"
+      },
+      {
+        "id": "p3004_ex2_9",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "2",
+        "label": "9",
+        "top": 86,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Arabic"
+      },
+      {
+        "id": "p3004_ex2_10",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "2",
+        "label": "10",
+        "top": 88,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Urdu"
+      },
+      {
+        "id": "p3004_ex2_11",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "2",
+        "label": "11",
+        "top": 90,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Chinese"
+      },
+      {
+        "id": "p3004_ex2_12",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "2",
+        "label": "12",
+        "top": 92,
+        "left": 33,
+        "width": 15,
+        "height": 1.9,
+        "correct": "Vietnamese"
+      },
+      {
+        "id": "p3004_ex4_2",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "4",
+        "label": "2",
+        "top": 72.3,
+        "left": 61.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "Chinese"
+      },
+      {
+        "id": "p3004_ex4_3",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "4",
+        "label": "3",
+        "top": 74.2,
+        "left": 57.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": [
+          "Chinese",
+          "English"
+        ]
+      },
+      {
+        "id": "p3004_ex4_4",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "4",
+        "label": "4",
+        "top": 74.2,
+        "left": 69.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": [
+          "English",
+          "Chinese"
+        ]
+      },
+      {
+        "id": "p3004_ex4_5",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "4",
+        "label": "5",
+        "top": 78.8,
+        "left": 67.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "Senegal"
+      },
+      {
+        "id": "p3004_ex4_6",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "4",
+        "label": "6",
+        "top": 80.7,
+        "left": 71,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "French"
+      },
+      {
+        "id": "p3004_ex4_7",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "4",
+        "label": "7",
+        "top": 82.5,
+        "left": 58,
+        "width": 9.5,
+        "height": 1.8,
+        "correct": "Senegalese"
+      },
+      {
+        "id": "p3004_ex4_8",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "4",
+        "label": "8",
+        "top": 87.2,
+        "left": 63.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "country"
+      },
+      {
+        "id": "p3004_ex4_9",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "4",
+        "label": "9",
+        "top": 89.1,
+        "left": 57.5,
+        "width": 6.5,
+        "height": 1.8,
+        "correct": "city"
+      },
+      {
+        "id": "p3004_ex4_10",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "4",
+        "label": "10",
+        "top": 90.9,
+        "left": 64.5,
+        "width": 9.5,
+        "height": 1.8,
+        "correct": "nationality"
+      },
+      {
+        "id": "p3004_ex4_11",
+        "type": "fill",
+        "page": 3004,
+        "exercise": "4",
+        "label": "11",
+        "top": 92.7,
+        "left": 72.5,
+        "width": 8,
+        "height": 1.8,
+        "correct": "language"
+      }
+    ],
+    "3005": [
+      {
+        "id": "p3005_ex5_2",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "5",
+        "label": "2",
+        "top": 15.6,
+        "left": 13.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": [
+          "'m",
+          "am"
+        ]
+      },
+      {
+        "id": "p3005_ex5_3",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "5",
+        "label": "3",
+        "top": 17.6,
+        "left": 21,
+        "width": 7,
+        "height": 1.8,
+        "correct": [
+          "isn't",
+          "is not"
+        ]
+      },
+      {
+        "id": "p3005_ex5_4",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "5",
+        "label": "4",
+        "top": 19.5,
+        "left": 28.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": [
+          "are",
+          "'re"
+        ]
+      },
+      {
+        "id": "p3005_ex5_5",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "5",
+        "label": "5",
+        "top": 21.4,
+        "left": 17.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": [
+          "isn't",
+          "is not"
+        ]
+      },
+      {
+        "id": "p3005_ex5_6",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "5",
+        "label": "6",
+        "top": 23.3,
+        "left": 32.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": [
+          "is",
+          "'s"
+        ]
+      },
+      {
+        "id": "p3005_ex5_7",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "5",
+        "label": "7",
+        "top": 25.1,
+        "left": 15.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": [
+          "'re",
+          "are"
+        ]
+      },
+      {
+        "id": "p3005_ex5_8",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "5",
+        "label": "8",
+        "top": 27,
+        "left": 15,
+        "width": 7,
+        "height": 1.8,
+        "correct": [
+          "aren't",
+          "are not"
+        ]
+      },
+      {
+        "id": "p3005_ex6_2a",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "2a",
+        "top": 32.8,
+        "left": 34.5,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Is Mary a student?"
+      },
+      {
+        "id": "p3005_ex6_2b",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "2b",
+        "top": 32.8,
+        "left": 51.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "No, she isn't."
+      },
+      {
+        "id": "p3005_ex6_3a",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "3a",
+        "top": 34.6,
+        "left": 34.5,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Are Lily and Sergei married?"
+      },
+      {
+        "id": "p3005_ex6_3b",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "3b",
+        "top": 34.6,
+        "left": 51.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "Yes, they are."
+      },
+      {
+        "id": "p3005_ex6_4a",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "4a",
+        "top": 36.5,
+        "left": 34.5,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Is your house near a supermarket?"
+      },
+      {
+        "id": "p3005_ex6_4b",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "4b",
+        "top": 36.5,
+        "left": 51.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "Yes, it is."
+      },
+      {
+        "id": "p3005_ex6_5a",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "5a",
+        "top": 38.4,
+        "left": 34.5,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Are the children at school?"
+      },
+      {
+        "id": "p3005_ex6_5b",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "5b",
+        "top": 38.4,
+        "left": 51.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "No, they aren't."
+      },
+      {
+        "id": "p3005_ex6_6a",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "6a",
+        "top": 40.2,
+        "left": 34.5,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Are you and Tony Irish?"
+      },
+      {
+        "id": "p3005_ex6_6b",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "6b",
+        "top": 40.2,
+        "left": 51.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "No, we aren't."
+      },
+      {
+        "id": "p3005_ex6_7a",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "7a",
+        "top": 42.1,
+        "left": 34.5,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Is Naila's husband from Iraq?"
+      },
+      {
+        "id": "p3005_ex6_7b",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "7b",
+        "top": 42.1,
+        "left": 51.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "Yes, he is."
+      },
+      {
+        "id": "p3005_ex6_8a",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "8a",
+        "top": 44,
+        "left": 34.5,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Are we late?"
+      },
+      {
+        "id": "p3005_ex6_8b",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "8b",
+        "top": 44,
+        "left": 51.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "Yes, you are."
+      },
+      {
+        "id": "p3005_ex6_9a",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "9a",
+        "top": 45.9,
+        "left": 34.5,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Are you our new teacher?"
+      },
+      {
+        "id": "p3005_ex6_9b",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "6",
+        "label": "9b",
+        "top": 45.9,
+        "left": 51.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "No, I'm not."
+      },
+      {
+        "id": "p3005_ex7a_2",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "7a",
+        "label": "2",
+        "top": 64.2,
+        "left": 24.5,
+        "width": 34,
+        "height": 1.8,
+        "correct": "Are you French?"
+      },
+      {
+        "id": "p3005_ex7a_3",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "7a",
+        "label": "3",
+        "top": 67.9,
+        "left": 8,
+        "width": 50.5,
+        "height": 1.8,
+        "correct": "What's your nationality?"
+      },
+      {
+        "id": "p3005_ex7a_4",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "7a",
+        "label": "4",
+        "top": 73.4,
+        "left": 8,
+        "width": 50.5,
+        "height": 1.8,
+        "correct": "Where is your home?"
+      },
+      {
+        "id": "p3005_ex7a_5",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "7a",
+        "label": "5",
+        "top": 76.2,
+        "left": 8,
+        "width": 50.5,
+        "height": 1.8,
+        "correct": "Are your neighbours French-Canadian?"
+      },
+      {
+        "id": "p3005_ex7a_6",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "7a",
+        "label": "6",
+        "top": 79.9,
+        "left": 8,
+        "width": 50.5,
+        "height": 1.8,
+        "correct": "Are you married?"
+      },
+      {
+        "id": "p3005_ex7a_7",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "7a",
+        "label": "7",
+        "top": 83.5,
+        "left": 8,
+        "width": 50.5,
+        "height": 1.8,
+        "correct": "Are you a teacher?"
+      },
+      {
+        "id": "p3005_ex8_3",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "8",
+        "label": "3",
+        "top": 50.1,
+        "left": 78,
+        "width": 12,
+        "height": 1.8,
+        "correct": "are Japanese"
+      },
+      {
+        "id": "p3005_ex8_4",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "8",
+        "label": "4",
+        "top": 62,
+        "left": 71.5,
+        "width": 10,
+        "height": 1.8,
+        "correct": "is German"
+      },
+      {
+        "id": "p3005_ex8_5",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "8",
+        "label": "5",
+        "top": 73.9,
+        "left": 73,
+        "width": 10,
+        "height": 1.8,
+        "correct": "is Italian"
+      },
+      {
+        "id": "p3005_ex8_6",
+        "type": "fill",
+        "page": 3005,
+        "exercise": "8",
+        "label": "6",
+        "top": 85.8,
+        "left": 74.5,
+        "width": 12,
+        "height": 1.8,
+        "correct": "are South Korean"
+      }
+    ],
     "3046": [
       {
         "id": "p3046_ex1_1",
@@ -72424,7 +73217,7 @@
     "85": 1793202631415,
     "86": 1793202631415,
     "87": 1793202631415,
-    "1004": 1793187750372,
+    "1004": 1793285512026,
     "1005": 1793197377677,
     "1006": 1793196392475,
     "1024": 1793127597105,
@@ -72516,13 +73309,20 @@
     "2085": 1793202631415,
     "2086": 1793202631415,
     "2087": 1793202631415,
+    "3004": 1793281513097,
+    "3005": 1793281513098,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
     "4087": 1793193184959
   },
-  "centerSettings": null,
+  "centerSettings": {
+    "card": "8600 4912 7731 9024",
+    "cardHolder": "ETHITH LEARNING CENTER",
+    "baseTuition": 200000,
+    "currency": "UZS"
+  },
   "teachers": [
     {
       "id": "t_urolov_azizbek",
@@ -72534,25 +73334,21 @@
       "card": "8600 9184 5348 5520",
       "paidThisMonth": true,
       "assignedClasses": [
-        "cls_urolov_azizbek_upper",
-        "cls_urolov_azizbek_standard",
-        "cls_urolov_azizbek_intermediate",
-        "cls_urolov_azizbek_practice",
         "cls_urolov_azizbek_intermediate_practice",
-        "cls_urolov_azizbek_upper_intermediate_standard"
-      ],
-      "classOrder": [
+        "cls_urolov_azizbek_upper_intermediate_standard",
         "cls_urolov_azizbek_upper",
         "cls_urolov_azizbek_standard",
         "cls_urolov_azizbek_intermediate",
         "cls_urolov_azizbek_practice"
       ],
+      "classOrder": [
+        "cls_urolov_azizbek_intermediate_practice",
+        "cls_urolov_azizbek_upper_intermediate_standard"
+      ],
+      "inviteCode": "AZIZBEK77",
       "login": "azizbek77",
       "password": "azizbek2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "AZIZBEK77"
+      "salarySharePercent": 50
     },
     {
       "id": "t_ravshanov_doniyor",
@@ -72575,12 +73371,10 @@
         "cls_ravshanov_doniyor_cefr_3",
         "cls_ravshanov_doniyor_cefr_4"
       ],
+      "inviteCode": "RAVSHANOV24",
       "login": "doniyor24",
       "password": "doniyor2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "RAVSHANOV24"
+      "salarySharePercent": 50
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -72597,12 +73391,10 @@
       "classOrder": [
         "cls_qarshiboyev_humoyun_practice"
       ],
+      "inviteCode": "QARSHIBOYEV15",
       "login": "humoyun15",
       "password": "humoyun2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "QARSHIBOYEV15"
+      "salarySharePercent": 50
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -72619,12 +73411,10 @@
       "classOrder": [
         "cls_tovboyeva_marjona_beginner"
       ],
+      "inviteCode": "MARJONA88",
       "login": "marjona88",
       "password": "marjona2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "MARJONA88"
+      "salarySharePercent": 50
     },
     {
       "id": "t_olimjonova_durdona",
@@ -72647,12 +73437,10 @@
         "cls_olimjonova_durdona_intermediate_1",
         "cls_olimjonova_durdona_intermediate_2"
       ],
+      "inviteCode": "DURDONA12",
       "login": "durdona12",
       "password": "durdona2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "DURDONA12"
+      "salarySharePercent": 50
     },
     {
       "id": "t_tagaev_eldor",
@@ -72675,12 +73463,10 @@
         "cls_tagaev_eldor_pre_intermediate_1",
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
+      "inviteCode": "ELDOR33",
       "login": "eldor33",
       "password": "eldor2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "ELDOR33"
+      "salarySharePercent": 50
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -72699,12 +73485,10 @@
         "cls_yaxshilikova_kamola_beginner",
         "cls_yaxshilikova_kamola_elementary"
       ],
+      "inviteCode": "KAMOLA45",
       "login": "kamola45",
       "password": "kamola2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "KAMOLA45"
+      "salarySharePercent": 50
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -72723,12 +73507,10 @@
         "cls_sherqoziyeva_iroda_beginner_1",
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
+      "inviteCode": "IRODA19",
       "login": "iroda19",
       "password": "iroda2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "IRODA19"
+      "salarySharePercent": 50
     },
     {
       "id": "t_aborbekov_elyor",
@@ -72753,12 +73535,10 @@
         "cls_aborbekov_elyor_intermediate_2",
         "cls_aborbekov_elyor_upper_intermediate"
       ],
+      "inviteCode": "ELYOR70",
       "login": "elyor70",
       "password": "elyor2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "ELYOR70"
+      "salarySharePercent": 50
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -72781,12 +73561,10 @@
         "cls_orinboyev_jaloliddin_standard_1",
         "cls_orinboyev_jaloliddin_standard_2"
       ],
+      "inviteCode": "JALOLIDDIN99",
       "login": "jaloliddin99",
       "password": "jaloliddin2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "JALOLIDDIN99"
+      "salarySharePercent": 50
     },
     {
       "id": "t_jumanova_pokiza",
@@ -72803,12 +73581,10 @@
       "classOrder": [
         "cls_jumanova_pokiza_beginner"
       ],
+      "inviteCode": "POKIZA07",
       "login": "pokiza07",
       "password": "pokiza2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "POKIZA07"
+      "salarySharePercent": 50
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -72827,12 +73603,10 @@
         "cls_hayrullayev_arslon_beginner_1",
         "cls_hayrullayev_arslon_beginner_2"
       ],
+      "inviteCode": "ARSLON64",
       "login": "arslon64",
       "password": "arslon2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "ARSLON64"
+      "salarySharePercent": 50
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -72851,12 +73625,10 @@
         "cls_xudoyorova_sarvinoz_intermediate",
         "cls_xudoyorova_sarvinoz_standard"
       ],
+      "inviteCode": "SARVINOZ82",
       "login": "sarvinoz82",
       "password": "sarvinoz2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "SARVINOZ82"
+      "salarySharePercent": 50
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -72875,12 +73647,10 @@
         "cls_aliqulova_sevinch_beginner_1",
         "cls_aliqulova_sevinch_beginner_2"
       ],
+      "inviteCode": "SEVINCH55",
       "login": "sevinch55",
       "password": "sevinch2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "SEVINCH55"
+      "salarySharePercent": 50
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -72903,12 +73673,10 @@
         "cls_xojamqulova_diyora_elementary_2",
         "cls_xojamqulova_diyora_elementary_3"
       ],
+      "inviteCode": "DIYORA21",
       "login": "diyora21",
       "password": "diyora2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "DIYORA21"
+      "salarySharePercent": 50
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -72931,12 +73699,10 @@
         "cls_bosimbekov_farrux_intermediate_1",
         "cls_bosimbekov_farrux_intermediate_2"
       ],
+      "inviteCode": "FARRUX93",
       "login": "farrux93",
       "password": "farrux2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "FARRUX93"
+      "salarySharePercent": 50
     },
     {
       "id": "t_ahmadova_barno",
@@ -72959,12 +73725,10 @@
         "cls_ahmadova_barno_elementary_3",
         "cls_ahmadova_barno_pre_intermediate"
       ],
+      "inviteCode": "BARNO36",
       "login": "barno36",
       "password": "barno2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "BARNO36"
+      "salarySharePercent": 50
     },
     {
       "id": "t_shodiyor_matematika",
@@ -72981,20 +73745,235 @@
       "classOrder": [
         "cls_shodiyor_matematika_matematika"
       ],
+      "inviteCode": "SHODIYOR50",
       "login": "shodiyor50",
       "password": "shodiyor2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "SHODIYOR50"
+      "salarySharePercent": 50
     }
   ],
   "fileExplorer": {
-    "folders": [],
-    "tests": []
+    "folders": [
+      {
+        "id": "f_root",
+        "name": "Bosh Papka",
+        "parentId": null,
+        "createdAt": 1793024168370
+      },
+      {
+        "id": "f_grammar",
+        "name": "Grammar Mastery",
+        "parentId": "f_root",
+        "createdAt": 1793024168370
+      },
+      {
+        "id": "f_ielts",
+        "name": "IELTS Mock Tests",
+        "parentId": "f_root",
+        "createdAt": 1793024168370
+      },
+      {
+        "id": "f_1793028050497",
+        "name": "Yangi Papka",
+        "parentId": "f_root",
+        "createdAt": 1793028050497
+      },
+      {
+        "id": "f_1793030124872",
+        "name": "Yangi Papka",
+        "parentId": "f_1793028050497",
+        "createdAt": 1793030124872
+      }
+    ],
+    "tests": [
+      {
+        "id": "TST-7K2M9",
+        "title": "Unit 7: Modals of Deduction & Obligation",
+        "folderId": "f_grammar",
+        "authorName": "Ustoz",
+        "createdAt": 1793024168370,
+        "maxAttempts": 1,
+        "questions": [
+          {
+            "q": "You ______ be exhausted after working for 14 hours straight!",
+            "options": [
+              "must",
+              "can't",
+              "might not",
+              "should"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "He ______ have stolen the money; he was with me in London that evening.",
+            "options": [
+              "must",
+              "can't",
+              "ought to",
+              "might"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Students ______ wear uniforms during official exams according to school rules.",
+            "options": [
+              "have to",
+              "might",
+              "could",
+              "would"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "You ______ tell anyone this secret; it's strictly confidential.",
+            "options": [
+              "mustn't",
+              "don't have to",
+              "needn't",
+              "may not"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "We ______ have left earlier; look at all this traffic now!",
+            "options": [
+              "should",
+              "must",
+              "can't",
+              "might"
+            ],
+            "correct": 0
+          }
+        ]
+      }
+    ]
   },
-  "timetable": [],
-  "contests": [],
-  "payments": {},
-  "updatedAt": 1793285496921
+  "timetable": [
+    {
+      "id": "tt_1",
+      "time": "08:00 - 09:30",
+      "days": "Du-Chor-Jum",
+      "teacherId": "t_zizi",
+      "teacherName": "Zizi Ustoz",
+      "classId": "cls_1792041880052",
+      "className": "Bizani gurux (B1+)",
+      "room": "Room 101 (Green Room)"
+    },
+    {
+      "id": "tt_2",
+      "time": "10:00 - 11:30",
+      "days": "Du-Chor-Jum",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "classId": "cls_ethith_main",
+      "className": "IELTS Intensive (B2)",
+      "room": "Room 102 (Blue Room)"
+    },
+    {
+      "id": "tt_3",
+      "time": "14:00 - 15:30",
+      "days": "Se-Pay-Shan",
+      "teacherId": "t_zizi",
+      "teacherName": "Zizi Ustoz",
+      "classId": "cls_1792041880052",
+      "className": "Bizani gurux (B1+)",
+      "room": "Room 101 (Green Room)"
+    },
+    {
+      "id": "tt_4",
+      "time": "16:00 - 17:30",
+      "days": "Se-Pay-Shan",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "classId": "cls_ethith_main",
+      "className": "IELTS Intensive (B2)",
+      "room": "Room 102 (Blue Room)"
+    }
+  ],
+  "contests": [
+    {
+      "id": "cnt_kuzgi_2026",
+      "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
+      "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
+      "startDate": 1792937768370,
+      "endDate": 1793628968370,
+      "prizeCoins": 1000,
+      "testId": "TST-7K2M9",
+      "participants": {
+        "std_1": {
+          "name": "Ashurov Dilyorbek",
+          "score": 95,
+          "timeSec": 140,
+          "completedAt": 1793020568370
+        },
+        "std_2": {
+          "name": "Ergasheva Madina",
+          "score": 92,
+          "timeSec": 165,
+          "completedAt": 1793020668370
+        },
+        "std_4": {
+          "name": "JO‘RABOYEV MUXAMMADYUSUF",
+          "score": 98,
+          "timeSec": 110,
+          "completedAt": 1793020768370
+        },
+        "std_5": {
+          "name": "Jo'raboyev Javoxir",
+          "score": 88,
+          "timeSec": 180,
+          "completedAt": 1793020868370
+        },
+        "std_6": {
+          "name": "Mavlonova Ruxshona",
+          "score": 85,
+          "timeSec": 190,
+          "completedAt": 1793020968370
+        }
+      },
+      "status": "active"
+    }
+  ],
+  "payments": {
+    "2026-10": {
+      "std_1": {
+        "status": "paid",
+        "baseAmount": 200000,
+        "offsetAmount": 200081,
+        "paidAmount": 200081,
+        "paidAt": 1793024274243,
+        "verifiedBy": "admin_manual"
+      },
+      "std_2": {
+        "status": "paid",
+        "baseAmount": 200000,
+        "offsetAmount": 200028,
+        "paidAmount": 200028,
+        "paidAt": 1792851368370,
+        "verifiedBy": "auto_offset"
+      },
+      "std_3": {
+        "status": "unpaid",
+        "baseAmount": 200000,
+        "offsetAmount": 200042,
+        "paidAmount": 0
+      },
+      "std_4": {
+        "status": "paid",
+        "baseAmount": 200000,
+        "offsetAmount": 200056,
+        "paidAmount": 200056,
+        "paidAt": 1792937768370,
+        "verifiedBy": "auto_offset"
+      },
+      "std_5": {
+        "status": "pending",
+        "baseAmount": 200000,
+        "offsetAmount": 200070,
+        "paidAmount": 200070,
+        "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
+        "paidAt": 1793016968370
+      }
+    }
+  },
+  "updatedAt": 1793285512770
 }
