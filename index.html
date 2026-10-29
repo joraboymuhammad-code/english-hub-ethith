@@ -193592,6 +193592,42 @@ window.NAVIGATE_CURRICULUM = {
     return day + '.' + month + '.' + year;
   }
 
+  function cleanStName(name) {
+    if (!name) return '';
+    var s = String(name);
+    s = s.replace(/^[✓✗]?\s*(to‘langan|to'langan|to‘lanmagan|to'lanmagan|to'landi|to‘landi)\s*[-:]?\s*/gi, '');
+    s = s.replace(/^[🔴🟢⚫🔵🟡]\s*/g, '');
+    return s.trim();
+  }
+  EA.cleanStName = cleanStName;
+
+  function replenishTesterSlots(cls) {
+    if (!cls || !cls.students) return;
+    var max = cls.maxCapacity || 18;
+    for (var i = 1; i <= max; i++) {
+      var slotId = 'std_tester_' + i;
+      var slotName = 'tester_' + i;
+      var exists = cls.students.some(function(s) { return s.id === slotId || (s.name && s.name.toLowerCase() === slotName); });
+      if (!exists && cls.students.length < max) {
+        cls.students.push({
+          id: slotId,
+          name: slotName,
+          joinedAt: '2026-09-02'
+        });
+      }
+    }
+  }
+  EA.replenishTesterSlots = replenishTesterSlots;
+
+  function broadcastStudentExpulsion(clsId, stId, email, phone, name) {
+    try {
+      if (window.EthithSync && typeof window.EthithSync.publish === 'function') {
+        window.EthithSync.publish('student_expelled', { classId: clsId, studentId: stId, email: email, phone: phone, name: name });
+      }
+    } catch(e) {}
+  }
+  EA.broadcastStudentExpulsion = broadcastStudentExpulsion;
+
   function formatIsoToDisplay(isoStr) {
     if (!isoStr) return '02.09.2026';
     var parts = String(isoStr).split('-');
@@ -194284,11 +194320,16 @@ window.NAVIGATE_CURRICULUM = {
     }
 
     container.querySelectorAll('.ea-open-journal-btn').forEach(function(btn) {
-      btn.onclick = function() {
+      btn.onclick = function(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
         var cid = btn.getAttribute('data-cid');
         EA.activeTeacherId = teacher.id;
         EA.activeClassId = cid;
-        EA.render(container);
+        var targetContainer = document.getElementById('apView') || container;
+        EA.render(targetContainer);
       };
     });
 
