@@ -18188,6 +18188,19 @@
   ],
   "accounts": [
     {
+      "id": "admin_official_root",
+      "role": "admin",
+      "name": "Bosh Admin",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 5000,
+      "gifts": [],
+      "avatar": null,
+      "title": null,
+      "nameStyle": null,
+      "createdAt": 1793303574839,
+      "level": "C2"
+    },
+    {
       "id": "admin_official_teacher",
       "role": "teacher",
       "name": "Ustoz",
@@ -18202,19 +18215,6 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null
-    },
-    {
-      "id": "admin_official_root",
-      "role": "admin",
-      "name": "Bosh Admin",
-      "email": "admin_12038f1aq8syash@ethith.uz",
-      "coins": 5000,
-      "gifts": [],
-      "nameStyle": null,
-      "createdAt": 1792502058827,
-      "level": "C2",
-      "dailyMinutes": 0,
-      "updatedAt": 1792612388994
     },
     {
       "id": "tg_98124765",
@@ -76259,9 +76259,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "AZIZBEK77",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "AZIZBEK77"
     },
     {
       "id": "t_ravshanov_doniyor",
@@ -76289,9 +76287,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "RAVSHANOV24",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "RAVSHANOV24"
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -76313,9 +76309,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "QARSHIBOYEV15",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "QARSHIBOYEV15"
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -76337,9 +76331,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "MARJONA88",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "MARJONA88"
     },
     {
       "id": "t_olimjonova_durdona",
@@ -76367,9 +76359,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "DURDONA12",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "DURDONA12"
     },
     {
       "id": "t_tagaev_eldor",
@@ -76397,9 +76387,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "ELDOR33",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "ELDOR33"
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -76423,9 +76411,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "KAMOLA45",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "KAMOLA45"
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -76449,9 +76435,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "IRODA19",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "IRODA19"
     },
     {
       "id": "t_aborbekov_elyor",
@@ -76481,9 +76465,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "ELYOR70",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "ELYOR70"
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -76511,9 +76493,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "JALOLIDDIN99",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "JALOLIDDIN99"
     },
     {
       "id": "t_jumanova_pokiza",
@@ -76535,9 +76515,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "POKIZA07",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "POKIZA07"
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -76561,9 +76539,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "ARSLON64",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "ARSLON64"
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -76587,9 +76563,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "SARVINOZ82",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "SARVINOZ82"
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -76613,9 +76587,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "SEVINCH55",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "SEVINCH55"
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -76643,9 +76615,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "DIYORA21",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "DIYORA21"
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -76673,9 +76643,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "FARRUX93",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "FARRUX93"
     },
     {
       "id": "t_ahmadova_barno",
@@ -76703,9 +76671,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "BARNO36",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "BARNO36"
     },
     {
       "id": "t_shodiyor_matematika",
@@ -76727,9 +76693,7 @@
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "SHODIYOR50",
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "inviteCode": "SHODIYOR50"
     }
   ],
   "fileExplorer": {
@@ -76739,5 +76703,5 @@
   "timetable": [],
   "contests": [],
   "payments": {},
-  "updatedAt": 1793303478891
+  "updatedAt": 1793303579059
 }
