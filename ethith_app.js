@@ -542,10 +542,10 @@
       '          <path d="M119 322 V372 H204 V322"/>' +
       '          <path d="M150 372 V342 H172 V372"/>' +
       '        </g>' +
-      '        <line x1="236" y1="265" x2="236" y2="378" stroke="#ffffff" stroke-width="2"/>' +
-      '        <text class="eh-title" x="246" y="302" font-size="58" textLength="310" lengthAdjust="spacingAndGlyphs" fill="#ffffff" font-family="\'Saira\', \'Arial Black\', sans-serif" font-weight="800">ENGLISH</text>' +
-      '        <text class="eh-title" x="246" y="343" font-size="58" textLength="245" lengthAdjust="spacingAndGlyphs" fill="#ffffff" font-family="\'Saira\', \'Arial Black\', sans-serif" font-weight="800">HOUSE</text>' +
-      '        <text class="eh-tagline" x="246" y="372" font-size="22" textLength="183" lengthAdjust="spacingAndGlyphs" fill="#ffd91a" font-family="\'Nunito\', Arial, sans-serif" font-weight="700">Lifetime learning</text>' +
+      '        <line x1="236" y1="262" x2="236" y2="380" stroke="#ffffff" stroke-width="2"/>' +
+      '        <text class="eh-title" x="246" y="300" font-size="58" textLength="310" lengthAdjust="spacingAndGlyphs" fill="#ffffff" font-family="\'Saira\', \'Arial Black\', sans-serif" font-weight="800">ENGLISH</text>' +
+      '        <text class="eh-title" x="246" y="348" font-size="58" textLength="245" lengthAdjust="spacingAndGlyphs" fill="#ffffff" font-family="\'Saira\', \'Arial Black\', sans-serif" font-weight="800">HOUSE</text>' +
+      '        <text class="eh-tagline" x="246" y="375" font-size="22" textLength="183" lengthAdjust="spacingAndGlyphs" fill="#ffd91a" font-family="\'Nunito\', Arial, sans-serif" font-weight="700">Lifetime learning</text>' +
       '      </svg>' +
       '    </div>' +
       '    <h2 class="eth-auth-title">Platformaga Kirish</h2>' +
