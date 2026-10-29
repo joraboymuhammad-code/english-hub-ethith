@@ -11731,6 +11731,10 @@
             "+998950079621@student.ethith": {
               "status": "Q",
               "score": "2"
+            },
+            "cls_urolov_azizbek_upper_intermediate_standard_tester_10": {
+              "status": "Q",
+              "score": "2"
             }
           }
         },
@@ -11753,7 +11757,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793251437176
+        "updatedAt": 1793251470154
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -70899,5 +70903,5 @@
       }
     }
   },
-  "updatedAt": 1793251437712
+  "updatedAt": 1793251471430
 }
