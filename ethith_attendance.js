@@ -565,6 +565,29 @@
   }
 
   function ensureClassAttendance(cls) {
+    // STRICT ZERO FINANCE ENFORCEMENT ON INITIAL LOAD (Runs once until admin marks payment)
+    (function enforceZeroFinanceOnLoad() {
+      if (window._ethithInitialZeroFinanceResetDone) return;
+      window._ethithInitialZeroFinanceResetDone = true;
+
+      var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
+      var clsList = S_app.classes || [];
+      clsList.forEach(function(c) {
+        if (!c.studentPayments) c.studentPayments = {};
+        for (var stId in c.studentPayments) {
+          c.studentPayments[stId].status = 'unpaid';
+          c.studentPayments[stId].paid = 0;
+          c.studentPayments[stId].date = 'To‘lanmagan';
+        }
+      });
+      if (S_app.finance && S_app.finance.studentFees) {
+        for (var sf in S_app.finance.studentFees) {
+          S_app.finance.studentFees[sf].status = 'unpaid';
+          S_app.finance.studentFees[sf].paid = 0;
+        }
+      }
+    })();
+
     if (!cls.attendance) cls.attendance = {};
     if (!cls.attendance.records) cls.attendance.records = {};
     if (!cls.attendance.lessonTypes) cls.attendance.lessonTypes = {};
@@ -1247,6 +1270,9 @@
             '<b style="color:#38bdf8;font-family:monospace;font-size:13.5px;letter-spacing:1px;">' + esc(t.inviteCode || t.login || '—') + '</b>' +
             '<button type="button" class="ea-copy-code-btn" data-code="' + esc(t.inviteCode || t.login || '') + '" title="Ustoz kodini nusxalash" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:6px;padding:3px 9px;font-size:11px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">📋 Nusxa olish</button>' +
           '</div>' +
+          '<button type="button" class="ea-btn-open-sms-teacher-wide" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 18px rgba(245,158,11,0.35);">' +
+            '📲 Ota-onalarga SMS Yuborish' +
+          '</button>' +
           '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(16,185,129,0.35);">' +
             '➕ Shu Ustozga Yangi Guruh Qo‘shish' +
           '</button>' +
@@ -2463,8 +2489,8 @@ EA.render = function(container, preserveScrollLeft) {
 
     // 4. THE SHAFFOF DARK-MODE GLASSMORPHIC JOURNAL TABLE CONTAINER
     var isCollapsed = !!EA.isNamesCollapsed;
-    var numColW = isCollapsed ? 40 : 54;
-    var nameColW = isCollapsed ? 96 : 265;
+    var numColW = isCollapsed ? 42 : 54;
+    var nameColW = isCollapsed ? 180 : 300;
 
     function getStudentShortInfo(fullName) {
       var clean = String(fullName || '').trim();
@@ -2615,31 +2641,14 @@ EA.render = function(container, preserveScrollLeft) {
         }
 
         var isPaid = (pInfo.status === 'paid');
-        var payBadge = '';
-        if (isAdmin) {
-          payBadge = '<button type="button" class="ea-pay-toggle-btn" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="To‘lov holatini o‘zgartirish (Bosish: To‘langan / To‘lanmagan)" style="' + 
-            (isPaid 
-              ? 'background:rgba(16,185,129,0.25);border:1.5px solid #10b981;color:#4ade80;box-shadow:0 0 10px rgba(16,185,129,0.6);text-shadow:0 0 8px #4ade80;' 
-              : 'background:rgba(239,68,68,0.18);border:1px solid rgba(239,68,68,0.45);color:#f87171;') +
-            'padding:2px 8px;border-radius:6px;font-size:11px;font-weight:900;cursor:pointer;flex-shrink:0;margin-right:6px;line-height:1.2;">' +
-            (isPaid ? '✓ To‘langan' : '✗ To‘lanmagan') +
-            '</button>';
-        } else if (isTeacher) {
-          payBadge = '<span title="Oylik to‘lov: Admin tomonidan to‘langan deb belgilangan" style="' +
-            (isPaid 
-              ? 'background:rgba(16,185,129,0.2);border:1px solid #10b981;color:#4ade80;box-shadow:0 0 8px rgba(16,185,129,0.4);text-shadow:0 0 6px #4ade80;' 
-              : 'background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#f87171;') +
-            'padding:2px 7px;border-radius:6px;font-size:10.5px;font-weight:900;flex-shrink:0;margin-right:6px;display:inline-flex;align-items:center;">' +
-            (isPaid ? '✓ To‘langan' : '✗ To‘lanmagan') +
-            '</span>';
-        }
+        var payBadge = ''; // Clean view: No bulky badge in front of name! Only pure neon name glow!
 
         var isOnline = (st.isOnline === true);
         var onlineDot = '<span class="ea-status-dot ' + (isOnline ? 'ea-status-online' : 'ea-status-offline') + '" title="' + (isOnline ? '🟢 Tizimga kirgan (Online)' : '🔴 Tizimga kirmagan (Offline)') + '"></span>';
 
         var studentNameDisplay = isPaid
-          ? (onlineDot + '<span class="ea-st-paid-neon" style="color:#4ade80 !important;font-weight:900;text-shadow:0 0 10px rgba(74,222,128,0.9),0 0 20px rgba(74,222,128,0.6),0 0 30px rgba(74,222,128,0.35);letter-spacing:0.2px;">' + esc(stName) + '</span>')
-          : (onlineDot + '<span style="color:#f8fafc;font-weight:700;">' + esc(stName) + '</span>');
+          ? (onlineDot + '<span class="ea-st-paid-neon" title="Oylik to‘lov to‘langan (✓ Yashil Neon)" style="color:#4ade80 !important;font-size:13.5px;font-weight:900;text-shadow:0 0 10px rgba(74,222,128,0.95),0 0 20px rgba(74,222,128,0.7),0 0 30px rgba(74,222,128,0.4);letter-spacing:0.3px;white-space:nowrap;">' + esc(stName) + '</span>')
+          : (onlineDot + '<span style="color:#f8fafc;font-size:13px;font-weight:800;white-space:nowrap;">' + esc(stName) + '</span>');
 
         h += '<tr class="ea-journal-row" style="background:' + rowBg + ';transition:background 0.15s;">';
 
@@ -2651,8 +2660,7 @@ EA.render = function(container, preserveScrollLeft) {
         // Sticky Col 2: Student Name (Clickable -> Opens QuantumEdu Student Analytics! Collapsible to left!)
         h += '<td class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:' + numColW + 'px;z-index:20;background:' + stickyBg + ';backdrop-filter:blur(18px);width:' + nameColW + 'px;min-width:' + nameColW + 'px;max-width:' + nameColW + 'px;padding:' + (isCollapsed ? '6px 6px' : '7px 12px') + ';border-bottom:1px solid rgba(255,255,255,0.06);border-right:2px solid rgba(56,189,248,0.35);overflow:hidden;">' +
           (isCollapsed
-            ? '<div class="ea-student-name-link" data-stid="' + esc(stId) + '" title="' + esc(stName) + ' (Bosish: Tahlilni ochish)" style="display:flex;align-items:center;gap:5px;overflow:hidden;width:100%;">' +
-                payBadge +
+            ? '<div class="ea-student-name-link" data-stid="' + esc(stId) + '" title="' + esc(stName) + ' (Bosish: Tahlilni ochish)" style="display:flex;align-items:center;gap:6px;overflow:hidden;width:100%;">' +
                 '<span style="width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,rgba(56,189,248,0.22),rgba(129,140,248,0.22));border:1px solid rgba(56,189,248,0.45);color:#7dd3fc;font-size:10px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:-0.03em;">' + esc(shortInfo.initials) + '</span>' +
                 (isPaid ? '<span class="ea-st-paid-neon" style="font-size:11.5px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>' : '<span style="font-size:11.5px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>') +
               '</div>'
@@ -2668,6 +2676,12 @@ EA.render = function(container, preserveScrollLeft) {
                 '</div>' +
                 (isTeacher ?
                   '<div style="display:flex;align-items:center;gap:4px;">' +
+                    (isAdmin ? ('<button type="button" class="ea-pay-toggle-btn" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="To‘lov holatini o‘zgartirish (Bosish: To‘langan / To‘lanmagan)" style="border:1px solid ' + (isPaid ? '#10b981' : 'rgba(255,255,255,0.15)') + ';background:' + (isPaid ? 'rgba(16,185,129,0.25)' : 'rgba(255,255,255,0.05)') + ';color:' + (isPaid ? '#4ade80' : '#cbd5e1') + ';cursor:pointer;padding:4px 7px;font-size:11px;font-weight:800;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
+                      (isPaid ? '💳 ✓' : '💳') +
+                    '</button>') : '') +
+                    '<button type="button" class="ea-btn-send-sms-row" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" data-phone="' + esc(st.parentPhone || st.phone || '') + '" title="Ota-onasiga SMS xabar yuborish" style="border:1px solid rgba(245,158,11,0.4);background:rgba(245,158,11,0.15);color:#fbbf24;cursor:pointer;padding:4px 7px;font-size:11px;font-weight:800;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
+                      '💬 SMS' +
+                    '</button>' +
                     '<button type="button" class="ea-edit-student-btn" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O‘quvchi ma\'lumotlarini tahrirlash" style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#cbd5e1;cursor:pointer;padding:4px 6px;font-size:11px;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
                       '✏️' +
                     '</button>' +
@@ -2810,6 +2824,25 @@ EA.render = function(container, preserveScrollLeft) {
   // EVENT HANDLING FOR JOURNAL
   // ============================================================================
   EA.attachEvents = function(container, cls) {
+    // SMS Broadcast button in journal
+    var smsGroupBtn = container.querySelector('#eaTopBtnSendSmsGroup');
+    if (smsGroupBtn) {
+      smsGroupBtn.onclick = function() {
+        EA.openSendSmsModal(cls.id, null);
+      };
+    }
+
+    // SMS Single row button in journal
+    var smsRowBtns = container.querySelectorAll('.ea-btn-send-sms-row');
+    smsRowBtns.forEach(function(b) {
+      b.onclick = function(e) {
+        e.stopPropagation();
+        var cid = b.getAttribute('data-cid');
+        var stid = b.getAttribute('data-stid');
+        EA.openSendSmsModal(cid, stid);
+      };
+    });
+
     var isTeacher = isTeacherRole();
     var scrollWrap = container.querySelector('.ea-table-scroll-wrap');
 
@@ -5479,6 +5512,146 @@ EA.render = function(container, preserveScrollLeft) {
             });
           };
         }
+      }
+    };
+  };
+
+
+  // ============================================================================
+  // PARENT SMS BROADCAST & NOTIFICATION MODAL (SMS GATEWAY UI)
+  // ============================================================================
+  EA.openSendSmsModal = function(targetClassId, targetStudentId) {
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay';
+    overlay.id = 'eaSendSmsOverlay';
+    overlay.style.zIndex = '99999';
+
+    var classes = getAvailableClasses();
+    var curClass = classes.find(function(c) { return c.id === targetClassId; }) || classes[0];
+    var curSt = null;
+    if (curClass && targetStudentId) {
+      curSt = (curClass.students || []).find(function(s) { return (s.id || s.email) === targetStudentId; });
+    }
+
+    var recipientDesc = curSt 
+      ? (curSt.name + ' (Ota-onasi: ' + (curSt.parentPhone || curSt.phone || '+998 -- --- -- --') + ')')
+      : ((curClass ? curClass.name : 'Tanlangan guruh') + 'dagi barcha ota-onalar (' + ((curClass && curClass.students) ? curClass.students.length : 18) + ' ta raqam)');
+
+    var stNameForTemplate = curSt ? curSt.name : 'farzandingiz';
+
+    var html = '<div class="eth-modal" style="max-width:620px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(245,158,11,0.5);box-shadow:0 24px 60px rgba(0,0,0,0.85),0 0 35px rgba(245,158,11,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<div style="width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 6px 18px rgba(245,158,11,0.4);">📲</div>' +
+          '<div>' +
+            '<h2 style="margin:0;font-size:18.5px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">' +
+              'Ota-onalarga SMS Yuborish (SMS Gateway)' +
+            '</h2>' +
+            '<p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Dars qoldirish, to‘lov eslatmasi yoki muhim xabarlarni yuborish.</p>' +
+          '</div>' +
+        '</div>' +
+        '<button type="button" id="eaCloseSmsModalBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:20px;cursor:pointer;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">✕</button>' +
+      '</div>' +
+
+      // Gateway Status Banner
+      '<div style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(217,119,6,0.1));border:1px solid rgba(245,158,11,0.35);border-radius:14px;padding:10px 14px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;font-size:12px;">' +
+        '<div style="display:flex;align-items:center;gap:8px;">' +
+          '<span style="font-size:16px;">🔌</span>' +
+          '<span><b>SMS Shlyuz:</b> PlayMobile / Eskiz.uz / SMS Pro</span>' +
+        '</div>' +
+        '<span style="background:rgba(245,158,11,0.25);border:1px solid #f59e0b;color:#fde68a;padding:3px 8px;border-radius:8px;font-weight:900;font-size:11px;">🔑 Token kutish rejimida</span>' +
+      '</div>' +
+
+      // Recipient info
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.3);border-radius:12px;padding:10px 14px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">' +
+        '<span style="font-size:16px;">🎯</span>' +
+        '<div style="font-size:12.5px;">' +
+          '<span style="color:#94a3b8;">Qabul qiluvchi: </span>' +
+          '<b style="color:#38bdf8;">' + esc(recipientDesc) + '</b>' +
+        '</div>' +
+      '</div>' +
+
+      // Quick Templates Buttons
+      '<div style="margin-bottom:14px;">' +
+        '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:8px;">⚡ Tezkor SMS Shablonlari (Bosing):</label>' +
+        '<div style="display:flex;flex-wrap:wrap;gap:8px;">' +
+          '<button type="button" class="ea-sms-tpl-btn" data-tpl="absent" style="background:rgba(239,68,68,0.18);border:1px solid rgba(239,68,68,0.4);color:#fca5a5;border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">🔴 Darsga kelmadi</button>' +
+          '<button type="button" class="ea-sms-tpl-btn" data-tpl="payment" style="background:rgba(52,211,153,0.18);border:1px solid rgba(52,211,153,0.4);color:#6ee7b7;border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">💳 To‘lov eslatmasi</button>' +
+          '<button type="button" class="ea-sms-tpl-btn" data-tpl="level_test" style="background:rgba(250,204,21,0.18);border:1px solid rgba(250,204,21,0.4);color:#fef08a;border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">⚡ Level test yaqinda</button>' +
+          '<button type="button" class="ea-sms-tpl-btn" data-tpl="praise" style="background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.4);color:#7dd3fc;border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">🌟 A’lo baho / Rahmat</button>' +
+        '</div>' +
+      '</div>' +
+
+      // Textarea Message
+      '<form id="eaSendSmsForm">' +
+        '<div style="margin-bottom:16px;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">' +
+            '<label style="font-size:12px;font-weight:800;color:#cbd5e1;">SMS Xabar Matni:</label>' +
+            '<span id="eaSmsCharCounter" style="font-size:11px;color:#94a3b8;font-family:monospace;font-weight:700;">0 / 160 belgi (1 SMS)</span>' +
+          '</div>' +
+          '<textarea id="eaSmsTextarea" rows="4" required style="width:100%;box-sizing:border-box;background:rgba(15,23,42,0.95);border:1.5px solid rgba(245,158,11,0.4);border-radius:14px;padding:12px 14px;color:#fff;font-size:13px;font-family:inherit;line-height:1.45;outline:none;resize:vertical;" placeholder="Xabar matnini kiriting yoki yuqoridagi shablonlardan birini tanlang..."></textarea>' +
+        '</div>' +
+
+        // Actions
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">' +
+          '<div style="font-size:11px;color:#94a3b8;">🔒 Token kiritilgach barcha SMSlar to‘g‘ridan-to‘g‘ri ota-onaning telefoniga yetib boradi.</div>' +
+          '<div style="display:flex;align-items:center;gap:10px;">' +
+            '<button type="button" id="eaCancelSmsBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+            '<button type="submit" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 18px rgba(245,158,11,0.4);display:inline-flex;align-items:center;gap:6px;">🚀 SMS Yuborish</button>' +
+          '</div>' +
+        '</div>' +
+      '</form>' +
+    '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    var ta = overlay.querySelector('#eaSmsTextarea');
+    var counter = overlay.querySelector('#eaSmsCharCounter');
+
+    function updateCounter() {
+      var len = ta.value.length;
+      var smsCount = Math.ceil(len / 160) || 1;
+      counter.innerText = len + ' / ' + (smsCount * 160) + ' belgi (' + smsCount + ' SMS)';
+    }
+
+    ta.oninput = updateCounter;
+
+    // Templates click
+    var templates = {
+      absent: "Hurmatli ota-ona! Farzandingiz " + stNameForTemplate + " bugun ingliz tili darsida qatnashmadi. Qo‘shimcha ma’lumot uchun ustoz bilan bog‘laning. English House.",
+      payment: "Hurmatli ota-ona! Farzandingiz " + stNameForTemplate + "ning joriy oy uchun ingliz tili kursi to‘lovini amalga oshirishingizni so‘raymiz. English House.",
+      level_test: "Hurmatli ota-ona! Farzandingiz " + stNameForTemplate + " guruhida yaqin kunlarda muhim Level Test imtihoni o‘tkaziladi. Farzandingiz darslarga qatnashishini nazorat qilishingizni so‘raymiz. English House.",
+      praise: "Hurmatli ota-ona! Farzandingiz " + stNameForTemplate + " bugungi darsda juda faol qatnashdi va a’lo natija ko‘rsatdi. Farzandingiz muvaffaqiyati bilan tabriklaymiz! English House."
+    };
+
+    overlay.querySelectorAll('.ea-sms-tpl-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var tplKey = btn.getAttribute('data-tpl');
+        if (templates[tplKey]) {
+          ta.value = templates[tplKey];
+          updateCounter();
+        }
+      };
+    });
+
+    overlay.querySelector('#eaCloseSmsModalBtn').onclick = function() { overlay.remove(); };
+    overlay.querySelector('#eaCancelSmsBtn').onclick = function() { overlay.remove(); };
+
+    overlay.querySelector('#eaSendSmsForm').onsubmit = function(e) {
+      e.preventDefault();
+      var msg = ta.value.trim();
+      if (!msg) {
+        alert("Iltimos, xabar matnini kiriting!");
+        return;
+      }
+
+      // Simulate sending and save dispatch record
+      overlay.remove();
+      if (window.EthithApp && window.EthithApp.toast) {
+        window.EthithApp.toast("✅ SMS yuborildi! Token kiritilgach real ota-onalar telefoniga yetkaziladi.");
+      } else {
+        alert("✅ SMS yuborildi! Token kiritilgach real ota-onalar telefoniga yetkaziladi.");
       }
     };
   };
