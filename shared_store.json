@@ -1,6 +1,1174 @@
 {
   "classes": [
     {
+      "id": "cls_ethith_main",
+      "name": "IELTS & General English Intensive",
+      "code": "ETH-L6S8CM",
+      "teacherId": "joraboyevmuhammad85@gmail.com",
+      "teacherName": "Instructor Muhammadyusuf",
+      "teacherEmail": "joraboyevmuhammad85@gmail.com",
+      "created": 1792609541611,
+      "students": [
+        {
+          "id": "std_1",
+          "name": "Ashurov Dilyorbek Azizbek o'g'li",
+          "email": "ashurov@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_2",
+          "name": "Ergasheva Madina Asad qizi",
+          "email": "ergasheva@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_3",
+          "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
+          "email": "erkinov@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_4",
+          "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
+          "email": "joraboyev@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_5",
+          "name": "Jo'raboyev Javoxir Murod o'g'li",
+          "email": "javoxir@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_6",
+          "name": "Mavlonova Ruxshona Oybek qizi",
+          "email": "mavlonova@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_7",
+          "name": "Muxtaraliyeva Dilora Dilshod qizi",
+          "email": "muxtaraliyeva@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_8",
+          "name": "O'razboyev O'tkir Baxtiyor o'g'li",
+          "email": "orazboyev@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_9",
+          "name": "Saparova Aida Sarvar qizi",
+          "email": "saparova@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_10",
+          "name": "Umarov Nursulton Alisher o'g'li",
+          "email": "umarov@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_11",
+          "name": "Xolmurodova Muazzam G'ulom qizi",
+          "email": "xolmurodova@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "std_12",
+          "name": "Kaxarova Xumora Olimjon qizi",
+          "email": "kaxarova@ethith.uz",
+          "joinedAt": "2026-09-01"
+        },
+        {
+          "id": "sardorbek@ethith.uz",
+          "name": "Sardorbek Valiyev",
+          "email": "sardorbek@ethith.uz",
+          "joinedAt": "2026-10-22",
+          "dailyMinutes": 0,
+          "coins": 150,
+          "avatar": null,
+          "nameStyle": null,
+          "title": null
+        },
+        {
+          "id": "tg_6772427596",
+          "name": "Striker_uzb",
+          "email": "Mu_striker@telegram.org",
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 28
+        }
+      ],
+      "messages": [
+        {
+          "id": "msg_welcome",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Ustoz Muhammadyusuf",
+          "text": "Assalomu alaykum! Ushbu sinfda barcha savollaringizni berishingiz va vazifalarni muhokama qilishingiz mumkin.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        },
+        {
+          "id": "msg_welcome_1",
+          "senderId": "joraboyevmuhammad85@gmail.com",
+          "senderName": "Instructor Muhammadyusuf",
+          "text": "Welcome to the official ETHITH Class! Here you can ask questions, discuss lessons, and collaborate on assignments in real time.",
+          "time": "12:00",
+          "reactions": {
+            "👍": [
+              "joraboyevmuhammad85@gmail.com"
+            ]
+          }
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
+      "activeHomework": {
+        "dateKey": "2026-10-21",
+        "dateDisp": "21.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792607960771
+      },
+      "schedule": "har_kuni",
+      "customStudentNames": {
+        "std_1": "Ashurov Dilyorbek"
+      },
+      "attendance": {
+        "records": {
+          "2026-10-09": {
+            "std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_3": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.1"
+            },
+            "std_10": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            }
+          },
+          "2026-10-10": {
+            "std_1": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.2"
+            },
+            "std_8": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            }
+          },
+          "2026-10-12": {
+            "std_1": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.4"
+            },
+            "std_4": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.4"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.4"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.4"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
+            },
+            "std_9": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.4"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.4"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.4"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.4"
+            }
+          },
+          "2026-10-13": {
+            "std_1": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.1"
+            },
+            "std_2": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.1"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
+            },
+            "std_7": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.1"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.1"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.1"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.1"
+            }
+          },
+          "2026-10-14": {
+            "std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
+            },
+            "std_5": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.2"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.2"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.2"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.2"
+            },
+            "std_12": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.2"
+            }
+          },
+          "2026-10-15": {
+            "std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.3"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            },
+            "std_3": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.3"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.3"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.3"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.3"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            },
+            "std_10": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.3"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.3"
+            }
+          },
+          "2026-10-16": {
+            "std_1": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.4"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "2.4"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.4"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.4"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            },
+            "std_8": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "2.4"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "2.4"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "2.4"
+            }
+          },
+          "2026-10-17": {
+            "std_1": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "3.1"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.1"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.1"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_6": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "3.1"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.1"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.1"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "3.1"
+            }
+          },
+          "2026-10-19": {
+            "std_1": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_2": {
+              "status": "S",
+              "score": "",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "3.3"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.3"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "3.3"
+            },
+            "std_9": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "3.3"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.3"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "3.3"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "3.3"
+            }
+          },
+          "2026-10-20": {
+            "std_1": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_5": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.1"
+            },
+            "std_7": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_10": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.1"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.1"
+            },
+            "std_12": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.1"
+            }
+          },
+          "2026-10-21": {
+            "std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_2": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_3": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_4": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.2"
+            },
+            "std_5": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
+            },
+            "std_6": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_7": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_8": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "1.2"
+            },
+            "std_9": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_10": {
+              "status": "Q",
+              "score": "2",
+              "hwDone": false,
+              "hwPct": 0,
+              "hwLesson": "1.2"
+            },
+            "std_11": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 94,
+              "hwLesson": "1.2"
+            },
+            "std_12": {
+              "status": "K",
+              "score": "3",
+              "hwDone": true,
+              "hwPct": 66,
+              "hwLesson": "1.2"
+            },
+            "tg_6772427596": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792999900973
+            }
+          },
+          "2026-10-22": {
+            "std_5": {
+              "status": ""
+            },
+            "std_1": {
+              "status": "",
+              "score": ""
+            },
+            "std_2": {
+              "status": "",
+              "score": ""
+            }
+          },
+          "2026-10-26": {
+            "std_1": {
+              "status": "Q",
+              "score": "2"
+            },
+            "std_2": {
+              "status": "Q",
+              "score": "2"
+            },
+            "std_3": {
+              "status": "Q",
+              "score": "2"
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-19": "Oddiy",
+          "2026-10-21": "Vazifa: 1.1",
+          "2026-10-10": "Vazifa: 1.2",
+          "2026-10-09": "Vazifa: 1.1",
+          "2026-10-12": "Vazifa: 1.4",
+          "2026-10-13": "Vazifa: 2.1",
+          "2026-10-14": "Vazifa: 2.2",
+          "2026-10-15": "Vazifa: 2.3",
+          "2026-10-16": "Vazifa: 2.4",
+          "2026-10-17": "Vazifa: 3.1",
+          "2026-10-20": "Vazifa: 1.1",
+          "2026-10-22": "Oddiy",
+          "2026-10-23": "Oddiy"
+        },
+        "holidays": {},
+        "seededWindowV2": true,
+        "updatedAt": 1792999900973,
+        "homeworks": {
+          "2026-10-21": {
+            "dateKey": "2026-10-21",
+            "dateDisp": "21.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 1792607960771
+          }
+        },
+        "seededWindowV3": true
+      },
+      "customStudentPhones": {}
+    },
+    {
       "id": "cls_1792041880052",
       "name": "Bizani gurux",
       "code": "ETH-QOY2Z8",
@@ -10,49 +1178,49 @@
       "students": [
         {
           "id": "std_1",
-          "name": "Ashurov Dilyorbek",
+          "name": "Ashurov Dilyorbek Azizbek o'g'li",
           "email": "ashurov@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_2",
-          "name": "Ergasheva Madina",
+          "name": "Ergasheva Madina Asad qizi",
           "email": "ergasheva@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_3",
-          "name": "Erkinov Aslbekjon",
+          "name": "Erkinov Aslbekjon Kamoliddin o'g'li",
           "email": "erkinov@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_4",
-          "name": "JO‘RABOYEV MUXAMMADYUSUF",
+          "name": "JO‘RABOYEV MUXAMMADYUSUF OSTONOQUL O‘G‘LI",
           "email": "joraboyev@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_5",
-          "name": "Jo'raboyev Javoxir",
+          "name": "Jo'raboyev Javoxir Murod o'g'li",
           "email": "javoxir@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_6",
-          "name": "Mavlonova Ruxshona",
+          "name": "Mavlonova Ruxshona Oybek qizi",
           "email": "mavlonova@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_7",
-          "name": "Muxtaraliyeva Dilora",
+          "name": "Muxtaraliyeva Dilora Dilshod qizi",
           "email": "muxtaraliyeva@ethith.uz",
           "joinedAt": "2026-09-01"
         },
         {
           "id": "std_8",
-          "name": "O'razboyev O'tkir",
+          "name": "O'razboyev O'tkir Baxtiyor o'g'li",
           "email": "orazboyev@ethith.uz",
           "joinedAt": "2026-09-01"
         },
@@ -61,7 +1229,7 @@
           "name": "Striker_uzb",
           "email": "Mu_striker@telegram.org",
           "joinedAt": "2026-10-26",
-          "dailyMinutes": 24
+          "dailyMinutes": 28
         },
         {
           "id": "std_9",
@@ -216,8 +1384,89 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 1792608458469
       },
+      "customStudentPhones": {}
+    },
+    {
+      "id": "cls_1792999428651",
+      "name": "Upper Intermediate",
+      "code": "ETH-IP91XZ",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "teacherEmail": "ADMIN_12038F1aq8syash@ethith.uz",
+      "created": 1792999428651,
+      "schedule": "har_kuni",
+      "attendance": {
+        "records": {
+          "2026-10-26": {
+            "tg_6772427596": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792999901135
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-26": "Vazifa: 1.1"
+        },
+        "holidays": {},
+        "updatedAt": 1792999901135,
+        "homeworks": {
+          "2026-10-26": {
+            "dateKey": "2026-10-26",
+            "dateDisp": "26.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        }
+      },
+      "customStudentNames": {},
+      "students": [
+        {
+          "id": "tg_6772427596",
+          "name": "Striker_uzb",
+          "email": "Mu_striker@telegram.org",
+          "joinedAt": "2026-10-26",
+          "dailyMinutes": 28
+        }
+      ],
+      "messages": [
+        {
+          "id": "msg_init",
+          "senderId": "admin_official_teacher",
+          "senderName": "Ustoz",
+          "text": "Welcome to our class! Here we can discuss grammar topics, collaborate on quizzes, and share answers in real-time.",
+          "time": "12:23 PM",
+          "reactions": {}
+        }
+      ],
+      "pinnedId": null,
+      "deletedMsgIds": [],
       "customStudentPhones": {},
-      "maxCapacity": 18
+      "activeHomework": {
+        "dateKey": "2026-10-26",
+        "dateDisp": "26.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1",
@@ -12952,18 +14201,60 @@
   ],
   "accounts": [
     {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "admin@ethith.uz",
+      "createdAt": 1792429101989,
+      "coins": 1000,
+      "gifts": [],
+      "level": "C2",
+      "dailyMinutes": 0,
+      "updatedAt": 1793215174438,
+      "avatar": null,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null
+    },
+    {
+      "id": "admin_official_root",
+      "role": "admin",
+      "name": "Bosh Admin",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 5000,
+      "gifts": [],
+      "nameStyle": null,
+      "createdAt": 1792502058827,
+      "level": "C2",
+      "dailyMinutes": 0,
+      "updatedAt": 1792612121485
+    },
+    {
       "id": "tg_98124765",
       "role": "student",
       "name": "Striker_uzb",
       "email": "mu_striker@telegram.org",
-      "coins": 101100,
+      "coins": 101340,
+      "level": "A1",
+      "dailyMinutes": 28,
+      "nameStyle": null,
+      "victorySound": null,
+      "updatedAt": 1793260926584,
+      "gifts": []
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "teacher@ethith.uz",
+      "coins": 5000,
       "avatar": null,
       "level": "A1",
       "dailyMinutes": 0,
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "updatedAt": 1792997212404
+      "updatedAt": 1792606425762
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -13098,48 +14389,6 @@
       "level": "B1+",
       "dailyMinutes": 0,
       "updatedAt": 1792673953881
-    },
-    {
-      "id": "admin_official_root",
-      "role": "admin",
-      "name": "Bosh Admin",
-      "email": "ADMIN_12038F1aq8syash@ethith.uz",
-      "coins": 5000,
-      "createdAt": 1761463093502,
-      "level": "C2",
-      "dailyMinutes": 0,
-      "updatedAt": 1792612121485,
-      "gifts": []
-    },
-    {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
-      "email": "admin@ethith.uz",
-      "createdAt": 1792429101989,
-      "coins": 1000,
-      "gifts": [],
-      "level": "C2",
-      "dailyMinutes": 0,
-      "updatedAt": 1793215174438,
-      "avatar": null,
-      "nameStyle": null,
-      "title": null,
-      "victorySound": null
-    },
-    {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
-      "email": "teacher@ethith.uz",
-      "coins": 5000,
-      "avatar": null,
-      "level": "A1",
-      "dailyMinutes": 0,
-      "nameStyle": null,
-      "title": null,
-      "victorySound": null,
-      "updatedAt": 1792606425762
     },
     {
       "id": "usmonqulovaetiborxon@gmail.com",
@@ -70208,12 +71457,7 @@
     "4086": 1793193077149,
     "4087": 1793193184959
   },
-  "centerSettings": {
-    "card": "8600 4912 7731 9024",
-    "cardHolder": "ETHITH LEARNING CENTER",
-    "baseTuition": 200000,
-    "currency": "UZS"
-  },
+  "centerSettings": null,
   "teachers": [
     {
       "id": "t_urolov_azizbek",
@@ -70675,279 +71919,11 @@
     }
   ],
   "fileExplorer": {
-    "folders": [
-      {
-        "id": "f_root",
-        "name": "Bosh Papka",
-        "parentId": null,
-        "createdAt": 1793090841449
-      },
-      {
-        "id": "f_grammar",
-        "name": "Grammar Mastery",
-        "parentId": "f_root",
-        "createdAt": 1793090841449
-      },
-      {
-        "id": "f_vocab",
-        "name": "Vocabulary Builder",
-        "parentId": "f_root",
-        "createdAt": 1793090841449
-      },
-      {
-        "id": "f_ielts",
-        "name": "IELTS Mock Tests",
-        "parentId": "f_root",
-        "createdAt": 1793090841449
-      },
-      {
-        "id": "f_root_t_urolov_azizbek",
-        "name": "Azizbek Urolov (Shaxsiy Papka)",
-        "ownerId": "t_urolov_azizbek",
-        "parentId": null,
-        "createdAt": 1793251166430
-      }
-    ],
-    "tests": [
-      {
-        "id": "TST-7K2M9",
-        "title": "Unit 7: Modals of Deduction & Obligation",
-        "folderId": "f_grammar",
-        "authorName": "Ustoz",
-        "createdAt": 1793090841449,
-        "maxAttempts": 1,
-        "questions": [
-          {
-            "q": "You ______ be exhausted after working for 14 hours straight!",
-            "options": [
-              "must",
-              "can't",
-              "might not",
-              "should"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "He ______ have stolen the money; he was with me in London that evening.",
-            "options": [
-              "must",
-              "can't",
-              "ought to",
-              "might"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Students ______ wear uniforms during official exams according to school rules.",
-            "options": [
-              "have to",
-              "might",
-              "could",
-              "would"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "You ______ tell anyone this secret; it's strictly confidential.",
-            "options": [
-              "mustn't",
-              "don't have to",
-              "needn't",
-              "may not"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "We ______ have left earlier; look at all this traffic now!",
-            "options": [
-              "should",
-              "must",
-              "can't",
-              "might"
-            ],
-            "correct": 0
-          }
-        ]
-      },
-      {
-        "id": "TST-4H8R1",
-        "title": "Unit 8: Compound Adjectives & Participle Clauses",
-        "folderId": "f_vocab",
-        "authorName": "Zizi Ustoz",
-        "createdAt": 1793090841449,
-        "maxAttempts": 1,
-        "questions": [
-          {
-            "q": "A person who is relaxed and not easily upset is ______.",
-            "options": [
-              "easy-going",
-              "short-tempered",
-              "well-mannered",
-              "broad-minded"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "______ for 10 a.m. tomorrow, the conference has now been rescheduled.",
-            "options": [
-              "Scheduled",
-              "Scheduling",
-              "To schedule",
-              "Having schedule"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Products ______ locally are often fresher and support the local economy.",
-            "options": [
-              "grown",
-              "growing",
-              "have grown",
-              "to grow"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "A person with a great knowledge from books is ______.",
-            "options": [
-              "well-educated",
-              "quick-witted",
-              "bad-tempered",
-              "open-minded"
-            ],
-            "correct": 0
-          }
-        ]
-      }
-    ]
+    "folders": [],
+    "tests": []
   },
-  "timetable": [
-    {
-      "id": "tt_1",
-      "time": "08:00 - 09:30",
-      "days": "Du-Chor-Jum",
-      "teacherId": "t_zizi",
-      "teacherName": "Zizi Ustoz",
-      "classId": "cls_1792041880052",
-      "className": "Bizani gurux (B1+)",
-      "room": "Room 101 (Green Room)"
-    },
-    {
-      "id": "tt_2",
-      "time": "10:00 - 11:30",
-      "days": "Du-Chor-Jum",
-      "teacherId": "admin_official_teacher",
-      "teacherName": "Ustoz",
-      "classId": "cls_ethith_main",
-      "className": "IELTS Intensive (B2)",
-      "room": "Room 102 (Blue Room)"
-    },
-    {
-      "id": "tt_3",
-      "time": "14:00 - 15:30",
-      "days": "Se-Pay-Shan",
-      "teacherId": "t_zizi",
-      "teacherName": "Zizi Ustoz",
-      "classId": "cls_1792041880052",
-      "className": "Bizani gurux (B1+)",
-      "room": "Room 101 (Green Room)"
-    },
-    {
-      "id": "tt_4",
-      "time": "16:00 - 17:30",
-      "days": "Se-Pay-Shan",
-      "teacherId": "admin_official_teacher",
-      "teacherName": "Ustoz",
-      "classId": "cls_ethith_main",
-      "className": "IELTS Intensive (B2)",
-      "room": "Room 102 (Blue Room)"
-    }
-  ],
-  "contests": [
-    {
-      "id": "cnt_kuzgi_2026",
-      "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
-      "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
-      "startDate": 1793004441449,
-      "endDate": 1793695641449,
-      "prizeCoins": 1000,
-      "testId": "TST-7K2M9",
-      "participants": {
-        "std_1": {
-          "name": "Ashurov Dilyorbek",
-          "score": 95,
-          "timeSec": 140,
-          "completedAt": 1793087241449
-        },
-        "std_2": {
-          "name": "Ergasheva Madina",
-          "score": 92,
-          "timeSec": 165,
-          "completedAt": 1793087341449
-        },
-        "std_4": {
-          "name": "JO‘RABOYEV MUXAMMADYUSUF",
-          "score": 98,
-          "timeSec": 110,
-          "completedAt": 1793087441449
-        },
-        "std_5": {
-          "name": "Jo'raboyev Javoxir",
-          "score": 88,
-          "timeSec": 180,
-          "completedAt": 1793087541449
-        },
-        "std_6": {
-          "name": "Mavlonova Ruxshona",
-          "score": 85,
-          "timeSec": 190,
-          "completedAt": 1793087641449
-        }
-      },
-      "status": "active"
-    }
-  ],
-  "payments": {
-    "2026-10": {
-      "std_1": {
-        "status": "paid",
-        "baseAmount": 200000,
-        "offsetAmount": 200014,
-        "paidAmount": 200014,
-        "paidAt": 1792831641449,
-        "verifiedBy": "auto_offset"
-      },
-      "std_2": {
-        "status": "paid",
-        "baseAmount": 200000,
-        "offsetAmount": 200028,
-        "paidAmount": 200028,
-        "paidAt": 1792918041449,
-        "verifiedBy": "auto_offset"
-      },
-      "std_3": {
-        "status": "unpaid",
-        "baseAmount": 200000,
-        "offsetAmount": 200042,
-        "paidAmount": 0
-      },
-      "std_4": {
-        "status": "paid",
-        "baseAmount": 200000,
-        "offsetAmount": 200056,
-        "paidAmount": 200056,
-        "paidAt": 1793004441449,
-        "verifiedBy": "auto_offset"
-      },
-      "std_5": {
-        "status": "pending",
-        "baseAmount": 200000,
-        "offsetAmount": 200070,
-        "paidAmount": 200070,
-        "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
-        "paidAt": 1793083641449
-      }
-    }
-  },
-  "updatedAt": 1793252026379
+  "timetable": [],
+  "contests": [],
+  "payments": {},
+  "updatedAt": 1793260927407
 }
