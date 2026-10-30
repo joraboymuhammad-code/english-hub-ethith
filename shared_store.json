@@ -54979,8 +54979,8 @@
         "page": 1062,
         "exercise": "3",
         "label": "2",
-        "top": 87.5,
-        "left": 18,
+        "top": 59.5,
+        "left": 68.4,
         "width": 22,
         "height": 1.8,
         "correct": "died in 1976"
@@ -54991,8 +54991,8 @@
         "page": 1062,
         "exercise": "3",
         "label": "3",
-        "top": 90,
-        "left": 18,
+        "top": 62.9,
+        "left": 73.7,
         "width": 22,
         "height": 1.8,
         "correct": "was born in 1451"
@@ -55003,8 +55003,8 @@
         "page": 1062,
         "exercise": "3",
         "label": "4",
-        "top": 92.5,
-        "left": 18,
+        "top": 66.1,
+        "left": 67.3,
         "width": 22,
         "height": 1.8,
         "correct": "died in 1642"
@@ -55015,8 +55015,8 @@
         "page": 1062,
         "exercise": "3",
         "label": "5",
-        "top": 85,
-        "left": 55,
+        "top": 69.4,
+        "left": 68.9,
         "width": 22,
         "height": 1.8,
         "correct": "was born in 1899"
@@ -55027,8 +55027,8 @@
         "page": 1062,
         "exercise": "3",
         "label": "6",
-        "top": 87.5,
-        "left": 55,
+        "top": 73.1,
+        "left": 70.9,
         "width": 22,
         "height": 1.8,
         "correct": "died in 1796"
@@ -55039,8 +55039,8 @@
         "page": 1062,
         "exercise": "3",
         "label": "7",
-        "top": 90,
-        "left": 55,
+        "top": 76.3,
+        "left": 71.7,
         "width": 22,
         "height": 1.8,
         "correct": "was born in 1564"
@@ -89560,7 +89560,7 @@
     "1059": 1793375627614,
     "1060": 1793377088342,
     "1061": 1793377088344,
-    "1062": 1793377158307,
+    "1062": 1793377174072,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -90393,5 +90393,5 @@
       }
     }
   },
-  "updatedAt": 1793377160171
+  "updatedAt": 1793377174096
 }
