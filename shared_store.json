@@ -57376,6 +57376,176 @@
         "correct": "his new life"
       }
     ],
+    "1071": [
+      {
+        "id": "p1071_ex4a_2",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "4a",
+        "label": "2",
+        "top": 31.3,
+        "left": 29.8,
+        "width": 10,
+        "height": 2.1,
+        "correct": "sleep"
+      },
+      {
+        "id": "p1071_ex4a_3",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "4a",
+        "label": "3",
+        "top": 25.5,
+        "left": 24,
+        "width": 10,
+        "height": 2.1,
+        "correct": "meet"
+      },
+      {
+        "id": "p1071_ex4a_4",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "4a",
+        "label": "4",
+        "top": 46.7,
+        "left": 30.1,
+        "width": 10,
+        "height": 2.1,
+        "correct": "miss"
+      },
+      {
+        "id": "p1071_ex4a_5",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "4a",
+        "label": "5",
+        "top": 22,
+        "left": 55,
+        "width": 10,
+        "height": 2.1,
+        "correct": "fall"
+      },
+      {
+        "id": "p1071_ex4a_6",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "4a",
+        "label": "6",
+        "top": 25.5,
+        "left": 55,
+        "width": 10,
+        "height": 2.1,
+        "correct": "have"
+      },
+      {
+        "id": "p1071_ex4a_7",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "4a",
+        "label": "7",
+        "top": 29,
+        "left": 55,
+        "width": 10,
+        "height": 2.1,
+        "correct": "forget"
+      },
+      {
+        "id": "p1071_ex4a_8",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "4a",
+        "label": "8",
+        "top": 32.5,
+        "left": 55,
+        "width": 10,
+        "height": 2.1,
+        "correct": "feel"
+      },
+      {
+        "id": "p1071_ex5_2",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "5",
+        "label": "2",
+        "top": 52,
+        "left": 20,
+        "width": 25,
+        "height": 2.1,
+        "correct": "felt sick"
+      },
+      {
+        "id": "p1071_ex5_3",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "5",
+        "label": "3",
+        "top": 56.5,
+        "left": 20,
+        "width": 25,
+        "height": 2.1,
+        "correct": "missed my train"
+      },
+      {
+        "id": "p1071_ex5_4",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "5",
+        "label": "4",
+        "top": 61,
+        "left": 20,
+        "width": 25,
+        "height": 2.1,
+        "correct": "forgot the time"
+      },
+      {
+        "id": "p1071_ex5_5",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "5",
+        "label": "5",
+        "top": 65.5,
+        "left": 20,
+        "width": 25,
+        "height": 2.1,
+        "correct": "went to the doctor"
+      },
+      {
+        "id": "p1071_ex5_6",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "5",
+        "label": "6",
+        "top": 70,
+        "left": 20,
+        "width": 25,
+        "height": 2.1,
+        "correct": "slept badly"
+      },
+      {
+        "id": "p1071_ex5_7",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "5",
+        "label": "7",
+        "top": 74.5,
+        "left": 20,
+        "width": 25,
+        "height": 2.1,
+        "correct": "had a headache"
+      },
+      {
+        "id": "p1071_ex5_8",
+        "type": "fill",
+        "page": 1071,
+        "exercise": "5",
+        "label": "8",
+        "top": 79,
+        "left": 20,
+        "width": 25,
+        "height": 2.1,
+        "correct": "fell in the shower"
+      }
+    ],
     "2004": [
       {
         "id": "p2004_ex2_2",
@@ -91886,6 +92056,7 @@
     "1067": 1793377968133,
     "1068": 1793378325267,
     "1069": 1793378325268,
+    "1071": 1793378366226,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -92718,5 +92889,5 @@
       }
     }
   },
-  "updatedAt": 1793378339740
+  "updatedAt": 1793378367296
 }
