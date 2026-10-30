@@ -24109,6 +24109,23 @@
           "lastLogin": null
         },
         {
+          "id": "std_mixswdasd_804_selixasdasd",
+          "name": "Mixswdasd Selixasdasd",
+          "firstName": "Mixswdasd",
+          "lastName": "Selixasdasd",
+          "email": "mixswdasd_804_selixasdasd@student.ethith",
+          "role": "student",
+          "phone": "zsxcxzc",
+          "parentPhone": "zsxcxzc",
+          "login": "mixswdasd_804_selixasdasd",
+          "password": "mixswdasd804sel",
+          "joinedAt": "2026-10-30",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_1793380468126_std_1",
           "name": "tester_1",
           "email": "cls_1793380468126_std_1@ethith.uz",
@@ -24363,26 +24380,11 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
-        },
-        {
-          "id": "cls_1793380468126_std_17",
-          "name": "tester_17",
-          "email": "cls_1793380468126_std_17@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
         }
       ],
       "customStudentNames": {
-        "std_mix_416_selix": "Mix Selix"
+        "std_mix_416_selix": "Mix Selix",
+        "std_mixswdasd_804_selixasdasd": "Mixswdasd Selixasdasd"
       },
       "attendance": {
         "records": {},
@@ -24406,7 +24408,9 @@
           }
         }
       },
-      "customStudentPhones": {},
+      "customStudentPhones": {
+        "std_mixswdasd_804_selixasdasd": "zsxcxzc"
+      },
       "activeHomework": {
         "dateKey": "2026-10-30",
         "dateDisp": "30.10.2026",
@@ -24548,6 +24552,13 @@
           "date": "To‘lanmagan"
         },
         "std_mix_416_selix": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_mixswdasd_804_selixasdasd": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -25776,6 +25787,30 @@
       "createdAt": 1793380453528,
       "coins": 1000,
       "gifts": []
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null
+    },
+    {
+      "id": "std_mixswdasd_804_selixasdasd",
+      "name": "Mixswdasd Selixasdasd",
+      "role": "student",
+      "login": "mixswdasd_804_selixasdasd",
+      "password": "mixswdasd804sel",
+      "phone": "zsxcxzc",
+      "parentPhone": "zsxcxzc",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -102893,5 +102928,5 @@
       }
     }
   },
-  "updatedAt": 1793385395369
+  "updatedAt": 1793385404791
 }
