@@ -44415,8 +44415,8 @@
         "page": 1022,
         "exercise": "1",
         "label": "3",
-        "top": 74.7,
-        "left": 12.8,
+        "top": 72.8,
+        "left": 13,
         "width": 34,
         "height": 2,
         "correct": "We haven't got nice neighbours."
@@ -44427,8 +44427,8 @@
         "page": 1022,
         "exercise": "1",
         "label": "4",
-        "top": 78.1,
-        "left": 12.8,
+        "top": 76.5,
+        "left": 13.2,
         "width": 34,
         "height": 2,
         "correct": "Ali hasn't got a mobile phone."
@@ -44439,8 +44439,8 @@
         "page": 1022,
         "exercise": "1",
         "label": "5",
-        "top": 81.6,
-        "left": 12.8,
+        "top": 79.9,
+        "left": 13.2,
         "width": 34,
         "height": 2,
         "correct": "Yola and Paul haven't got a new TV."
@@ -44451,8 +44451,8 @@
         "page": 1022,
         "exercise": "1",
         "label": "6",
-        "top": 85,
-        "left": 12.8,
+        "top": 83.2,
+        "left": 13.5,
         "width": 34,
         "height": 2,
         "correct": "My village hasn't got a hospital."
@@ -81118,7 +81118,7 @@
     "1019": 1793370678789,
     "1020": 1793370896636,
     "1021": 1793370896636,
-    "1022": 1793370977307,
+    "1022": 1793370983355,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -81958,5 +81958,5 @@
       }
     }
   },
-  "updatedAt": 1793370977570
+  "updatedAt": 1793370994743
 }
