@@ -45402,8 +45402,8 @@
         "page": 1025,
         "exercise": "6a",
         "label": "2",
-        "top": 61.5,
-        "left": 55,
+        "top": 59,
+        "left": 55.2,
         "width": 40,
         "height": 2,
         "correct": "Susie's got three children."
@@ -45414,8 +45414,8 @@
         "page": 1025,
         "exercise": "6a",
         "label": "3",
-        "top": 64.5,
-        "left": 55,
+        "top": 60.7,
+        "left": 55.2,
         "width": 40,
         "height": 2,
         "correct": "My mother's car is new."
@@ -45426,8 +45426,8 @@
         "page": 1025,
         "exercise": "6a",
         "label": "4",
-        "top": 67.5,
-        "left": 55,
+        "top": 62.5,
+        "left": 55.2,
         "width": 40,
         "height": 2,
         "correct": "Rick's children are on holiday."
@@ -45438,8 +45438,8 @@
         "page": 1025,
         "exercise": "6a",
         "label": "5",
-        "top": 70.5,
-        "left": 55,
+        "top": 64.4,
+        "left": 55.1,
         "width": 40,
         "height": 2,
         "correct": "Our son's an engineer."
@@ -45450,8 +45450,8 @@
         "page": 1025,
         "exercise": "6a",
         "label": "6",
-        "top": 73.5,
-        "left": 55,
+        "top": 66.2,
+        "left": 55.2,
         "width": 40,
         "height": 2,
         "correct": "His wife's got a good job."
@@ -81685,8 +81685,8 @@
     "1021": 1793370896636,
     "1022": 1793371160969,
     "1023": 1793371160969,
-    "1024": 1793371320673,
-    "1025": 1793371358479,
+    "1024": 1793371374470,
+    "1025": 1793371374471,
     "1028": 1793127704567,
     "1037": 1793120102340,
     "1042": 1793370793069,
@@ -82525,5 +82525,5 @@
       }
     }
   },
-  "updatedAt": 1793371359523
+  "updatedAt": 1793371376908
 }
