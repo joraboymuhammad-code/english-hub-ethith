@@ -54091,6 +54091,200 @@
         "group": ""
       }
     ],
+    "1036": [
+      {
+        "id": "p1036_ex1a_2",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "1a",
+        "label": "2",
+        "top": 37.3,
+        "left": 12.9,
+        "width": 33,
+        "height": 2,
+        "correct": "We always play tennis on Saturdays. or We always play tennis on Saturdays"
+      },
+      {
+        "id": "p1036_ex1a_3",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "1a",
+        "label": "3",
+        "top": 40.7,
+        "left": 13,
+        "width": 33,
+        "height": 2,
+        "correct": "My wife doesn't often go clothes shopping. or My wife doesn't often go clothes shopping"
+      },
+      {
+        "id": "p1036_ex1a_4",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "1a",
+        "label": "4",
+        "top": 44,
+        "left": 13.2,
+        "width": 33,
+        "height": 2,
+        "correct": "I sometimes have a bath in the evening. or I sometimes have a bath in the evening"
+      },
+      {
+        "id": "p1036_ex1a_5",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "1a",
+        "label": "5",
+        "top": 47.5,
+        "left": 13.2,
+        "width": 33,
+        "height": 2,
+        "correct": "It is never cold in my house. or It is never cold in my house"
+      },
+      {
+        "id": "p1036_ex1a_6",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "1a",
+        "label": "6",
+        "top": 50.8,
+        "left": 13.2,
+        "width": 33,
+        "height": 2,
+        "correct": "I don't usually buy shoes online. or I don't usually buy shoes online"
+      },
+      {
+        "id": "p1036_ex2_2",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "2",
+        "label": "2",
+        "top": 34.6,
+        "left": 79.4,
+        "width": 14,
+        "height": 1.8,
+        "correct": "usually wears"
+      },
+      {
+        "id": "p1036_ex2_3",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "2",
+        "label": "3",
+        "top": 36.6,
+        "left": 60.4,
+        "width": 15,
+        "height": 1.8,
+        "correct": "never wears"
+      },
+      {
+        "id": "p1036_ex2_4",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "2",
+        "label": "4",
+        "top": 38.1,
+        "left": 60.6,
+        "width": 15,
+        "height": 1.8,
+        "correct": "sometimes wears"
+      },
+      {
+        "id": "p1036_ex2_5",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "2",
+        "label": "5",
+        "top": 43.1,
+        "left": 60.4,
+        "width": 15,
+        "height": 1.8,
+        "correct": "often buys"
+      },
+      {
+        "id": "p1036_ex2_6",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "2",
+        "label": "6",
+        "top": 45.1,
+        "left": 69.7,
+        "width": 15,
+        "height": 1.8,
+        "correct": "is always or 's always"
+      },
+      {
+        "id": "p1036_ex2_7",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "2",
+        "label": "7",
+        "top": 60.9,
+        "left": 61.1,
+        "width": 15,
+        "height": 1.8,
+        "correct": "usually wear"
+      },
+      {
+        "id": "p1036_ex2_8",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "2",
+        "label": "8",
+        "top": 64.3,
+        "left": 60.8,
+        "width": 15,
+        "height": 1.8,
+        "correct": "often wear"
+      },
+      {
+        "id": "p1036_ex2_9",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "2",
+        "label": "9",
+        "top": 66,
+        "left": 73.1,
+        "width": 15,
+        "height": 1.8,
+        "correct": "sometimes wear"
+      },
+      {
+        "id": "p1036_ex2_10",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "2",
+        "label": "10",
+        "top": 67.6,
+        "left": 73.1,
+        "width": 15,
+        "height": 1.8,
+        "correct": "always wear"
+      },
+      {
+        "id": "p1036_ex2_11",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "2",
+        "label": "11",
+        "top": 69.3,
+        "left": 82.8,
+        "width": 15,
+        "height": 1.8,
+        "correct": "never buy"
+      },
+      {
+        "id": "p1036_ex2_12",
+        "type": "fill",
+        "page": 1036,
+        "exercise": "2",
+        "label": "12",
+        "top": 72.6,
+        "left": 67.4,
+        "width": 15,
+        "height": 1.8,
+        "correct": "are always or 're always"
+      }
+    ],
     "1037": [
       {
         "id": "p1037_ex3_across_2",
@@ -70507,8 +70701,8 @@
         "type": "fill",
         "exercise": "1",
         "label": "2a",
-        "top": 60.5,
-        "left": 18.5,
+        "top": 62.2,
+        "left": 15.6,
         "width": 5.5,
         "height": 1.5,
         "correct": [
@@ -70524,8 +70718,8 @@
         "type": "fill",
         "exercise": "1",
         "label": "2b",
-        "top": 64.6,
-        "left": 18.5,
+        "top": 66.3,
+        "left": 15.6,
         "width": 5.5,
         "height": 1.5,
         "correct": [
@@ -91355,6 +91549,7 @@
     "1031": 1793372607652,
     "1032": 1793372280354,
     "1033": 1793372280354,
+    "1036": 1793373028723,
     "1037": 1793120102340,
     "1042": 1793370793069,
     "1043": 1793370793070,
@@ -91408,7 +91603,7 @@
     "2043": 1793368367432,
     "2044": 1793368367433,
     "2045": 1793368474442,
-    "2046": 1793373022411,
+    "2046": 1793373029718,
     "2047": 1793366825095,
     "2048": 1793366825095,
     "2049": 1793366825095,
@@ -92152,5 +92347,5 @@
       }
     }
   },
-  "updatedAt": 1793373022999
+  "updatedAt": 1793373030351
 }
