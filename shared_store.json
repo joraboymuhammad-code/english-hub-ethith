@@ -44885,8 +44885,8 @@
         "page": 1023,
         "exercise": "6",
         "label": "3",
-        "top": 77,
-        "left": 55,
+        "top": 73.6,
+        "left": 63.6,
         "width": 38,
         "height": 2,
         "correct": "an expensive car"
@@ -44897,8 +44897,8 @@
         "page": 1023,
         "exercise": "6",
         "label": "4",
-        "top": 80,
-        "left": 55,
+        "top": 75,
+        "left": 68.1,
         "width": 38,
         "height": 2,
         "correct": "a rich man"
@@ -44909,8 +44909,8 @@
         "page": 1023,
         "exercise": "6",
         "label": "5",
-        "top": 83,
-        "left": 55,
+        "top": 76.9,
+        "left": 62.2,
         "width": 38,
         "height": 2,
         "correct": "a big city"
@@ -44921,8 +44921,8 @@
         "page": 1023,
         "exercise": "6",
         "label": "6",
-        "top": 86,
-        "left": 55,
+        "top": 78.4,
+        "left": 68.3,
         "width": 38,
         "height": 2,
         "correct": "a young woman"
@@ -44933,8 +44933,8 @@
         "page": 1023,
         "exercise": "6",
         "label": "7",
-        "top": 89,
-        "left": 55,
+        "top": 79.8,
+        "left": 65.9,
         "width": 38,
         "height": 2,
         "correct": "a good person"
@@ -81397,7 +81397,7 @@
     "1020": 1793370896636,
     "1021": 1793370896636,
     "1022": 1793370983355,
-    "1023": 1793371040110,
+    "1023": 1793371057134,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -82237,5 +82237,5 @@
       }
     }
   },
-  "updatedAt": 1793371041045
+  "updatedAt": 1793371057141
 }
