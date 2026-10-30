@@ -58565,6 +58565,188 @@
         "correct": true
       }
     ],
+    "1078": [
+      {
+        "id": "p1078_ex1a_2",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "1a",
+        "label": "2",
+        "top": 22,
+        "left": 24,
+        "width": 12,
+        "height": 1.8,
+        "correct": "abroad"
+      },
+      {
+        "id": "p1078_ex1a_3",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "1a",
+        "label": "3",
+        "top": 25,
+        "left": 24,
+        "width": 12,
+        "height": 1.8,
+        "correct": "a baby"
+      },
+      {
+        "id": "p1078_ex1a_4",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "1a",
+        "label": "4",
+        "top": 22,
+        "left": 55,
+        "width": 12,
+        "height": 1.8,
+        "correct": "university"
+      },
+      {
+        "id": "p1078_ex1a_5",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "1a",
+        "label": "5",
+        "top": 25,
+        "left": 55,
+        "width": 12,
+        "height": 1.8,
+        "correct": "a car"
+      },
+      {
+        "id": "p1078_ex1a_6",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "1a",
+        "label": "6",
+        "top": 28,
+        "left": 55,
+        "width": 12,
+        "height": 1.8,
+        "correct": "English"
+      },
+      {
+        "id": "p1078_ex1b_2",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "1b",
+        "label": "2",
+        "top": 38,
+        "left": 20,
+        "width": 18,
+        "height": 1.8,
+        "correct": "move abroad"
+      },
+      {
+        "id": "p1078_ex1b_3",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "1b",
+        "label": "3",
+        "top": 41,
+        "left": 20,
+        "width": 18,
+        "height": 1.8,
+        "correct": "have a baby"
+      },
+      {
+        "id": "p1078_ex1b_4",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "1b",
+        "label": "4",
+        "top": 44,
+        "left": 20,
+        "width": 18,
+        "height": 1.8,
+        "correct": "finish university"
+      },
+      {
+        "id": "p1078_ex1b_5",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "1b",
+        "label": "5",
+        "top": 47,
+        "left": 20,
+        "width": 18,
+        "height": 1.8,
+        "correct": "buy a car"
+      },
+      {
+        "id": "p1078_ex1b_6",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "1b",
+        "label": "6",
+        "top": 50,
+        "left": 20,
+        "width": 18,
+        "height": 1.8,
+        "correct": "learn English"
+      },
+      {
+        "id": "p1078_ex2_2",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "2",
+        "label": "2",
+        "top": 62,
+        "left": 16,
+        "width": 35,
+        "height": 1.8,
+        "correct": "going to finish school."
+      },
+      {
+        "id": "p1078_ex2_3",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "2",
+        "label": "3",
+        "top": 66,
+        "left": 16,
+        "width": 35,
+        "height": 1.8,
+        "correct": "I'm probably not going to move abroad."
+      },
+      {
+        "id": "p1078_ex2_4",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "2",
+        "label": "4",
+        "top": 70,
+        "left": 16,
+        "width": 35,
+        "height": 1.8,
+        "correct": "I'm probably going to buy a house."
+      },
+      {
+        "id": "p1078_ex2_5",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "2",
+        "label": "5",
+        "top": 74,
+        "left": 16,
+        "width": 35,
+        "height": 1.8,
+        "correct": "I'm not going to change jobs."
+      },
+      {
+        "id": "p1078_ex2_6",
+        "type": "fill",
+        "page": 1078,
+        "exercise": "2",
+        "label": "6",
+        "top": 78,
+        "left": 16,
+        "width": 35,
+        "height": 1.8,
+        "correct": "I'm probably going to have a baby."
+      }
+    ],
     "1079": [
       {
         "id": "p1079_ex3a_2",
@@ -58632,8 +58814,8 @@
         "page": 1079,
         "exercise": "3c",
         "label": "2",
-        "top": 22,
-        "left": 55,
+        "top": 52.2,
+        "left": 8.7,
         "width": 6,
         "height": 1.8,
         "correct": "a"
@@ -58644,8 +58826,8 @@
         "page": 1079,
         "exercise": "3c",
         "label": "3",
-        "top": 25.5,
-        "left": 55,
+        "top": 50.4,
+        "left": 27.4,
         "width": 6,
         "height": 1.8,
         "correct": "e"
@@ -58656,8 +58838,8 @@
         "page": 1079,
         "exercise": "3c",
         "label": "4",
-        "top": 29,
-        "left": 55,
+        "top": 52.4,
+        "left": 28,
         "width": 6,
         "height": 1.8,
         "correct": "d"
@@ -58668,8 +58850,8 @@
         "page": 1079,
         "exercise": "3c",
         "label": "5",
-        "top": 32.5,
-        "left": 55,
+        "top": 50.4,
+        "left": 46.1,
         "width": 6,
         "height": 1.8,
         "correct": "b"
@@ -58680,8 +58862,8 @@
         "page": 1079,
         "exercise": "3c",
         "label": "6",
-        "top": 36,
-        "left": 55,
+        "top": 52.2,
+        "left": 45.6,
         "width": 6,
         "height": 1.8,
         "correct": "f"
@@ -58829,6 +59011,200 @@
         "width": 8,
         "height": 1.8,
         "correct": "in"
+      }
+    ],
+    "1081": [
+      {
+        "id": "p1081_ex4_1",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "4",
+        "label": "1",
+        "top": 26.2,
+        "left": 7,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Would you like"
+      },
+      {
+        "id": "p1081_ex4_2",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "4",
+        "label": "2",
+        "top": 25,
+        "left": 32.6,
+        "width": 12,
+        "height": 1.8,
+        "correct": "I'd like"
+      },
+      {
+        "id": "p1081_ex4_3",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "4",
+        "label": "3",
+        "top": 45.2,
+        "left": 9.6,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Would you like"
+      },
+      {
+        "id": "p1081_ex4_4",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "4",
+        "label": "4",
+        "top": 44.3,
+        "left": 33.8,
+        "width": 12,
+        "height": 1.8,
+        "correct": "I'd like"
+      },
+      {
+        "id": "p1081_ex4_5",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "4",
+        "label": "5",
+        "top": 36,
+        "left": 24,
+        "width": 12,
+        "height": 1.8,
+        "correct": "I'd like"
+      },
+      {
+        "id": "p1081_ex4_6",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "4",
+        "label": "6",
+        "top": 39.5,
+        "left": 24,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Would you like"
+      },
+      {
+        "id": "p1081_ex4_7",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "4",
+        "label": "7",
+        "top": 43,
+        "left": 24,
+        "width": 12,
+        "height": 1.8,
+        "correct": "I'd like"
+      },
+      {
+        "id": "p1081_ex4_8",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "4",
+        "label": "8",
+        "top": 46.5,
+        "left": 24,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Would you like"
+      },
+      {
+        "id": "p1081_ex5_1",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "5",
+        "label": "1",
+        "top": 59,
+        "left": 20,
+        "width": 10,
+        "height": 1.8,
+        "correct": "'d like"
+      },
+      {
+        "id": "p1081_ex5_2",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "5",
+        "label": "2",
+        "top": 62.5,
+        "left": 20,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Would you like to"
+      },
+      {
+        "id": "p1081_ex5_3",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "5",
+        "label": "3",
+        "top": 66,
+        "left": 20,
+        "width": 12,
+        "height": 1.8,
+        "correct": "'d like to"
+      },
+      {
+        "id": "p1081_ex5_4",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "5",
+        "label": "4",
+        "top": 69.5,
+        "left": 20,
+        "width": 10,
+        "height": 1.8,
+        "correct": "'d like"
+      },
+      {
+        "id": "p1081_ex5_5",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "5",
+        "label": "5",
+        "top": 73,
+        "left": 20,
+        "width": 10,
+        "height": 1.8,
+        "correct": "'d like"
+      },
+      {
+        "id": "p1081_ex5_6",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "5",
+        "label": "6",
+        "top": 76.5,
+        "left": 20,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Would you like"
+      },
+      {
+        "id": "p1081_ex5_7",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "5",
+        "label": "7",
+        "top": 80,
+        "left": 20,
+        "width": 16,
+        "height": 1.8,
+        "correct": "Would you like to"
+      },
+      {
+        "id": "p1081_ex5_8",
+        "type": "fill",
+        "page": 1081,
+        "exercise": "5",
+        "label": "8",
+        "top": 83.5,
+        "left": 20,
+        "width": 10,
+        "height": 1.8,
+        "correct": "'d like"
       }
     ],
     "2004": [
@@ -93347,7 +93723,9 @@
     "1073": 1793378763845,
     "1074": 1793379024656,
     "1075": 1793379024657,
-    "1079": 1793379112869,
+    "1078": 1793379138558,
+    "1079": 1793379138559,
+    "1081": 1793379180022,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -94180,5 +94558,5 @@
       }
     }
   },
-  "updatedAt": 1793379123341
+  "updatedAt": 1793379182413
 }
