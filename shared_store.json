@@ -57023,8 +57023,8 @@
         "page": 1068,
         "exercise": "3",
         "label": "2",
-        "top": 25,
-        "left": 65,
+        "top": 55.6,
+        "left": 69.2,
         "width": 10,
         "height": 2.1,
         "correct": "was"
@@ -57035,8 +57035,8 @@
         "page": 1068,
         "exercise": "3",
         "label": "3",
-        "top": 28,
-        "left": 65,
+        "top": 58.7,
+        "left": 56.9,
         "width": 10,
         "height": 2.1,
         "correct": "left"
@@ -57047,8 +57047,8 @@
         "page": 1068,
         "exercise": "3",
         "label": "4",
-        "top": 31,
-        "left": 65,
+        "top": 60,
+        "left": 73.4,
         "width": 10,
         "height": 2.1,
         "correct": "went"
@@ -57059,8 +57059,8 @@
         "page": 1068,
         "exercise": "3",
         "label": "5",
-        "top": 34,
-        "left": 65,
+        "top": 61.7,
+        "left": 58.5,
         "width": 10,
         "height": 2.1,
         "correct": "were"
@@ -57071,8 +57071,8 @@
         "page": 1068,
         "exercise": "3",
         "label": "6",
-        "top": 37,
-        "left": 65,
+        "top": 63.4,
+        "left": 57,
         "width": 10,
         "height": 2.1,
         "correct": "saw"
@@ -57083,8 +57083,8 @@
         "page": 1068,
         "exercise": "3",
         "label": "7",
-        "top": 40,
-        "left": 65,
+        "top": 65.3,
+        "left": 67.9,
         "width": 10,
         "height": 2.1,
         "correct": "met"
@@ -57095,8 +57095,8 @@
         "page": 1068,
         "exercise": "3",
         "label": "8",
-        "top": 43,
-        "left": 65,
+        "top": 67.3,
+        "left": 78.9,
         "width": 10,
         "height": 2.1,
         "correct": "fell"
@@ -91884,7 +91884,7 @@
     "1065": 1793377648411,
     "1066": 1793377968132,
     "1067": 1793377968133,
-    "1068": 1793378252694,
+    "1068": 1793378270621,
     "1069": 1793378246498,
     "2004": 1793374693102,
     "2005": 1793374693102,
@@ -92718,5 +92718,5 @@
       }
     }
   },
-  "updatedAt": 1793378254681
+  "updatedAt": 1793378272465
 }
