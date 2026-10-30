@@ -58364,8 +58364,8 @@
         "page": 1074,
         "exercise": "2a",
         "label": "5a",
-        "top": 66,
-        "left": 16,
+        "top": 80.3,
+        "left": 13.9,
         "width": 25,
         "height": 2.1,
         "correct": "It was hot and sunny."
@@ -58388,8 +58388,8 @@
         "page": 1074,
         "exercise": "4",
         "label": "2",
-        "top": 79,
-        "left": 20,
+        "top": 93.1,
+        "left": 30,
         "width": 6,
         "height": 2.1,
         "correct": "c"
@@ -58400,8 +58400,8 @@
         "page": 1074,
         "exercise": "4",
         "label": "3",
-        "top": 82,
-        "left": 20,
+        "top": 95.7,
+        "left": 41.8,
         "width": 6,
         "height": 2.1,
         "correct": "h"
@@ -58412,8 +58412,8 @@
         "page": 1074,
         "exercise": "4",
         "label": "4",
-        "top": 85,
-        "left": 20,
+        "top": 92.7,
+        "left": 41.6,
         "width": 6,
         "height": 2.1,
         "correct": "e"
@@ -58424,8 +58424,8 @@
         "page": 1074,
         "exercise": "4",
         "label": "5",
-        "top": 76,
-        "left": 50,
+        "top": 97.4,
+        "left": 63.4,
         "width": 6,
         "height": 2.1,
         "correct": "a"
@@ -58436,8 +58436,8 @@
         "page": 1074,
         "exercise": "4",
         "label": "6",
-        "top": 79,
-        "left": 50,
+        "top": 93.2,
+        "left": 49.6,
         "width": 6,
         "height": 2.1,
         "correct": "g"
@@ -58448,8 +58448,8 @@
         "page": 1074,
         "exercise": "4",
         "label": "7",
-        "top": 82,
-        "left": 50,
+        "top": 91.5,
+        "left": 57.1,
         "width": 6,
         "height": 2.1,
         "correct": "b"
@@ -58460,8 +58460,8 @@
         "page": 1074,
         "exercise": "4",
         "label": "8",
-        "top": 85,
-        "left": 50,
+        "top": 94.9,
+        "left": 52.6,
         "width": 6,
         "height": 2.1,
         "correct": "d"
@@ -93079,7 +93079,7 @@
     "1071": 1793378610581,
     "1072": 1793378763844,
     "1073": 1793378763845,
-    "1074": 1793378864136,
+    "1074": 1793378880128,
     "1075": 1793378839098,
     "2004": 1793374693102,
     "2005": 1793374693102,
@@ -93913,5 +93913,5 @@
       }
     }
   },
-  "updatedAt": 1793378865239
+  "updatedAt": 1793378882886
 }
