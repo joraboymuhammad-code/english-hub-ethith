@@ -51510,25 +51510,13 @@
         "correct": "All the"
       },
       {
-        "id": "p1051_ex5_1",
-        "type": "fill",
-        "page": 1051,
-        "exercise": "5",
-        "label": "1",
-        "top": 22.1,
-        "left": 57.6,
-        "width": 10,
-        "height": 1.8,
-        "correct": "dress"
-      },
-      {
         "id": "p1051_ex5_2",
         "type": "fill",
         "page": 1051,
         "exercise": "5",
         "label": "2",
-        "top": 25.1,
-        "left": 75,
+        "top": 24,
+        "left": 52.7,
         "width": 10,
         "height": 1.8,
         "correct": "jacket"
@@ -51539,8 +51527,8 @@
         "page": 1051,
         "exercise": "5",
         "label": "3",
-        "top": 26.8,
-        "left": 75,
+        "top": 25.4,
+        "left": 59.6,
         "width": 12,
         "height": 1.8,
         "correct": "interesting"
@@ -51551,8 +51539,8 @@
         "page": 1051,
         "exercise": "5",
         "label": "4",
-        "top": 28.5,
-        "left": 75,
+        "top": 27.6,
+        "left": 56.8,
         "width": 10,
         "height": 1.8,
         "correct": "park"
@@ -51563,8 +51551,8 @@
         "page": 1051,
         "exercise": "5",
         "label": "5",
-        "top": 30.2,
-        "left": 75,
+        "top": 29.2,
+        "left": 67,
         "width": 10,
         "height": 1.8,
         "correct": "red"
@@ -51575,8 +51563,8 @@
         "page": 1051,
         "exercise": "5",
         "label": "6",
-        "top": 31.9,
-        "left": 75,
+        "top": 31.3,
+        "left": 52.1,
         "width": 10,
         "height": 1.8,
         "correct": "hotel"
@@ -51587,8 +51575,8 @@
         "page": 1051,
         "exercise": "5",
         "label": "7",
-        "top": 33.6,
-        "left": 75,
+        "top": 32.6,
+        "left": 61.7,
         "width": 10,
         "height": 1.8,
         "correct": "gym"
@@ -51599,8 +51587,8 @@
         "page": 1051,
         "exercise": "5",
         "label": "8",
-        "top": 35.3,
-        "left": 75,
+        "top": 34.4,
+        "left": 55.9,
         "width": 10,
         "height": 1.8,
         "correct": "lift"
@@ -88055,7 +88043,7 @@
     "1046": 1793375829698,
     "1047": 1793375829699,
     "1050": 1793375984253,
-    "1051": 1793376008983,
+    "1051": 1793376028230,
     "1052": 1793125351106,
     "1053": 1793125381190,
     "1054": 1793371802105,
@@ -88896,5 +88884,5 @@
       }
     }
   },
-  "updatedAt": 1793376011808
+  "updatedAt": 1793376029894
 }
