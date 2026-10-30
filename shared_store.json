@@ -45600,8 +45600,8 @@
         "page": 1026,
         "exercise": "2",
         "label": "2",
-        "top": 31,
-        "left": 69,
+        "top": 31.7,
+        "left": 74.8,
         "width": 26.5,
         "height": 2,
         "correct": "and they've got an expensive car"
@@ -45612,8 +45612,8 @@
         "page": 1026,
         "exercise": "2",
         "label": "3",
-        "top": 36,
-        "left": 66,
+        "top": 35,
+        "left": 68.7,
         "width": 29.5,
         "height": 2,
         "correct": "but I haven't got a dog"
@@ -45624,8 +45624,8 @@
         "page": 1026,
         "exercise": "2",
         "label": "4",
-        "top": 41,
-        "left": 70,
+        "top": 38.7,
+        "left": 76.1,
         "width": 25.5,
         "height": 2,
         "correct": "but they aren't our friends"
@@ -45636,8 +45636,8 @@
         "page": 1026,
         "exercise": "2",
         "label": "5",
-        "top": 45,
-        "left": 68,
+        "top": 42.1,
+        "left": 69.3,
         "width": 27.5,
         "height": 2,
         "correct": "and she's got two daughters"
@@ -45648,8 +45648,8 @@
         "page": 1026,
         "exercise": "2",
         "label": "6",
-        "top": 49,
-        "left": 70,
+        "top": 45.6,
+        "left": 75.6,
         "width": 25.5,
         "height": 2,
         "correct": "but he's very happy"
@@ -45672,8 +45672,8 @@
         "page": 1026,
         "exercise": "3",
         "label": "2",
-        "top": 58.5,
-        "left": 56,
+        "top": 69,
+        "left": 62.2,
         "width": 4.5,
         "height": 2,
         "correct": "c"
@@ -81957,7 +81957,7 @@
     "1023": 1793371160969,
     "1024": 1793371374470,
     "1025": 1793371374471,
-    "1026": 1793371412346,
+    "1026": 1793371444007,
     "1028": 1793127704567,
     "1037": 1793120102340,
     "1042": 1793370793069,
@@ -82796,5 +82796,5 @@
       }
     }
   },
-  "updatedAt": 1793371416567
+  "updatedAt": 1793371446786
 }
