@@ -57407,8 +57407,8 @@
         "page": 1071,
         "exercise": "4a",
         "label": "4",
-        "top": 46.7,
-        "left": 30.1,
+        "top": 47,
+        "left": 30.2,
         "width": 10,
         "height": 2.1,
         "correct": "miss"
@@ -57419,8 +57419,8 @@
         "page": 1071,
         "exercise": "4a",
         "label": "5",
-        "top": 22,
-        "left": 55,
+        "top": 64.7,
+        "left": 9.9,
         "width": 10,
         "height": 2.1,
         "correct": "fall"
@@ -57431,8 +57431,8 @@
         "page": 1071,
         "exercise": "4a",
         "label": "6",
-        "top": 25.5,
-        "left": 55,
+        "top": 64.6,
+        "left": 30.6,
         "width": 10,
         "height": 2.1,
         "correct": "have"
@@ -57443,8 +57443,8 @@
         "page": 1071,
         "exercise": "4a",
         "label": "7",
-        "top": 29,
-        "left": 55,
+        "top": 82.5,
+        "left": 10.7,
         "width": 10,
         "height": 2.1,
         "correct": "forget"
@@ -57455,8 +57455,8 @@
         "page": 1071,
         "exercise": "4a",
         "label": "8",
-        "top": 32.5,
-        "left": 55,
+        "top": 82.5,
+        "left": 30.4,
         "width": 10,
         "height": 2.1,
         "correct": "feel"
@@ -57539,8 +57539,8 @@
         "page": 1071,
         "exercise": "5",
         "label": "8",
-        "top": 79,
-        "left": 20,
+        "top": 48.6,
+        "left": 56.2,
         "width": 25,
         "height": 2.1,
         "correct": "fell in the shower"
@@ -92056,7 +92056,7 @@
     "1067": 1793377968133,
     "1068": 1793378325267,
     "1069": 1793378325268,
-    "1071": 1793378394170,
+    "1071": 1793378408497,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -92889,5 +92889,5 @@
       }
     }
   },
-  "updatedAt": 1793378394524
+  "updatedAt": 1793378414427
 }
