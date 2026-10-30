@@ -50973,8 +50973,8 @@
         "page": 1048,
         "exercise": "1a",
         "label": "5",
-        "top": 31.8,
-        "left": 35,
+        "top": 30.9,
+        "left": 33.8,
         "width": 12,
         "height": 1.8,
         "correct": "dining area"
@@ -50985,8 +50985,8 @@
         "page": 1048,
         "exercise": "1a",
         "label": "6",
-        "top": 33.5,
-        "left": 35,
+        "top": 32.3,
+        "left": 34.6,
         "width": 10,
         "height": 1.8,
         "correct": "balcony"
@@ -50997,8 +50997,8 @@
         "page": 1048,
         "exercise": "1a",
         "label": "7",
-        "top": 35.2,
-        "left": 35,
+        "top": 33.9,
+        "left": 36.1,
         "width": 10,
         "height": 1.8,
         "correct": "garden"
@@ -51021,8 +51021,8 @@
         "page": 1048,
         "exercise": "2",
         "label": "2",
-        "top": 50,
-        "left": 30,
+        "top": 49.7,
+        "left": 28.9,
         "width": 8,
         "height": 1.8,
         "correct": "TV"
@@ -51033,8 +51033,8 @@
         "page": 1048,
         "exercise": "2",
         "label": "3",
-        "top": 65,
-        "left": 10,
+        "top": 51.3,
+        "left": 26.6,
         "width": 10,
         "height": 1.8,
         "correct": "shower"
@@ -51045,8 +51045,8 @@
         "page": 1048,
         "exercise": "2",
         "label": "4",
-        "top": 65,
-        "left": 30,
+        "top": 52.7,
+        "left": 29.3,
         "width": 8,
         "height": 1.8,
         "correct": "sofa"
@@ -51057,8 +51057,8 @@
         "page": 1048,
         "exercise": "2",
         "label": "5",
-        "top": 80,
-        "left": 10,
+        "top": 54.2,
+        "left": 28,
         "width": 10,
         "height": 1.8,
         "correct": "fridge"
@@ -51069,8 +51069,8 @@
         "page": 1048,
         "exercise": "2",
         "label": "6",
-        "top": 80,
-        "left": 30,
+        "top": 56.2,
+        "left": 29.5,
         "width": 8,
         "height": 1.8,
         "correct": "bed"
@@ -51081,8 +51081,8 @@
         "page": 1048,
         "exercise": "2",
         "label": "7",
-        "top": 88,
-        "left": 10,
+        "top": 57.8,
+        "left": 27,
         "width": 8,
         "height": 1.8,
         "correct": "chair"
@@ -51093,8 +51093,8 @@
         "page": 1048,
         "exercise": "2",
         "label": "8",
-        "top": 88,
-        "left": 30,
+        "top": 59.8,
+        "left": 28.6,
         "width": 8,
         "height": 1.8,
         "correct": "table"
@@ -51357,8 +51357,8 @@
         "page": 1048,
         "exercise": "4",
         "label": "8",
-        "top": 77.5,
-        "left": 55,
+        "top": 78.2,
+        "left": 55.3,
         "width": 8,
         "height": 1.8,
         "correct": "all the"
@@ -88452,7 +88452,7 @@
     "1045": 1793372833172,
     "1046": 1793375829698,
     "1047": 1793376051753,
-    "1048": 1793376248138,
+    "1048": 1793376301279,
     "1050": 1793376102394,
     "1051": 1793376063539,
     "1052": 1793125351106,
@@ -89295,5 +89295,5 @@
       }
     }
   },
-  "updatedAt": 1793376248783
+  "updatedAt": 1793376307767
 }
