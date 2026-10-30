@@ -322,9 +322,21 @@
     var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
     if (!S.teachers) S.teachers = [];
 
+    var deletedTeacherIds = S.deletedTeacherIds || [];
+    try {
+      var lsDel = JSON.parse(localStorage.getItem('ethith_deleted_teacher_ids') || '[]');
+      if (Array.isArray(lsDel)) {
+        lsDel.forEach(function(did) { if (deletedTeacherIds.indexOf(did) === -1) deletedTeacherIds.push(did); });
+      }
+    } catch(e) {}
+    S.deletedTeacherIds = deletedTeacherIds;
+
+    // Filter out deleted teachers from S.teachers
+    S.teachers = S.teachers.filter(function(t) { return t && deletedTeacherIds.indexOf(t.id) === -1; });
+
     if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
       window.ETHITH_INITIAL_STORE.teachers.forEach(function(initT) {
-        if (!initT) return;
+        if (!initT || deletedTeacherIds.indexOf(initT.id) !== -1) return;
         var existing = S.teachers.find(function(t) { return t.id === initT.id; });
         if (!existing) {
           S.teachers.push(JSON.parse(JSON.stringify(initT)));
@@ -1284,6 +1296,8 @@
           '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(16,185,129,0.35);">' +
             '➕ Shu Ustozga Yangi Guruh Qo‘shish' +
           '</button>' +
+          '<button type="button" class="ea-btn-edit-current-teacher" data-tid="' + esc(t.id) + '" title="O‘qituvchi ma’lumotlarini tahrirlash" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">✏️ Tahrirlash</button>' +
+          '<button type="button" class="ea-btn-delete-current-teacher" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" title="O‘qituvchini tizimdan butunlay o‘chirish" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.35);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ O‘qituvchini O‘chirish</button>' +
         '</div>' +
       '</div>';
 
@@ -1538,6 +1552,20 @@
     if (addGrpBtn) {
       addGrpBtn.onclick = function() {
         EA.openAddGroupForTeacherModal(teacher);
+      };
+    }
+
+    var editCurTBtn = container.querySelector('.ea-btn-edit-current-teacher');
+    if (editCurTBtn) {
+      editCurTBtn.onclick = function() {
+        EA.openEditTeacherModal(teacher);
+      };
+    }
+
+    var delCurTBtn = container.querySelector('.ea-btn-delete-current-teacher');
+    if (delCurTBtn) {
+      delCurTBtn.onclick = function() {
+        EA.deleteTeacher(teacher.id, teacher.name, container);
       };
     }
 
@@ -1924,9 +1952,18 @@
     if (!Array.isArray(S.deletedTeacherIds)) S.deletedTeacherIds = [];
     if (S.deletedTeacherIds.indexOf(tid) === -1) S.deletedTeacherIds.push(tid);
 
+    try {
+      var lsDel = JSON.parse(localStorage.getItem('ethith_deleted_teacher_ids') || '[]');
+      if (Array.isArray(lsDel) && lsDel.indexOf(tid) === -1) lsDel.push(tid);
+      localStorage.setItem('ethith_deleted_teacher_ids', JSON.stringify(lsDel));
+    } catch(e) {}
+
     // 1. Remove from teachers
     if (Array.isArray(S.teachers)) {
       S.teachers = S.teachers.filter(function(t) { return t.id !== tid; });
+    }
+    if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
+      window.ETHITH_INITIAL_STORE.teachers = window.ETHITH_INITIAL_STORE.teachers.filter(function(t) { return t.id !== tid; });
     }
     // 2. Remove teacher login account from accounts
     if (Array.isArray(S.accounts)) {
@@ -2453,11 +2490,15 @@ EA.render = function(container, preserveScrollLeft) {
     var students = (cls.students || []).slice();
 
     students.sort(function(a, b) {
+      var aTester = a.isTester || (a.name && a.name.toLowerCase().startsWith('tester_'));
+      var bTester = b.isTester || (b.name && b.name.toLowerCase().startsWith('tester_'));
+      if (!aTester && bTester) return -1;
+      if (aTester && !bTester) return 1;
       var idA = a.id || a.email || '';
       var idB = b.id || b.email || '';
       var nA = cleanStName(cls.customStudentNames[idA] || a.name || '').toLowerCase();
       var nB = cleanStName(cls.customStudentNames[idB] || b.name || '').toLowerCase();
-      return nA.localeCompare(nB);
+      return nA.localeCompare(nB, undefined, { numeric: true });
     });
 
     var schedLabels = {
@@ -2481,8 +2522,10 @@ EA.render = function(container, preserveScrollLeft) {
       '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
         '<button id="eaBtnBackToTeacherGroupsFromJ" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.35);">&larr; ' + esc(curTName) + ' Guruhlariga Qaytish</button>' +
         (isAdmin ? '<button id="eaBtnBackToAllTeachersFromJ" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;">Barcha O‘qituvchilar</button>' : '') +
+        '<button id="eaBtnAddStudentFromJ" data-cid="' + esc(cls.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(16,185,129,0.35);" title="Shu guruhga yangi o‘quvchi qo‘shish">➕ O‘quvchi Qo‘shish</button>' +
         '<button id="eaBtnSendSmsAbsentOnly" data-cid="' + esc(cls.id) + '" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(245,158,11,0.35);" title="Bugun darsga kelmagan o‘quvchilarning ota-onalariga SMS yuborish">📲 Kelmaganlarga SMS</button>' +
-          '<button id="eaBtnDeleteClassFromJ" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Guruhni butunlay o‘chirish">🗑 Guruhni O‘chirish</button>' +
+        '<button id="eaBtnDeleteClassFromJ" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Guruhni butunlay o‘chirish">🗑 Guruhni O‘chirish</button>' +
+        '<button id="eaBtnDeleteTeacherFromJ" data-tid="' + esc(cls.teacherId || EA.activeTeacherId || '') + '" data-tname="' + esc(curTName) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Ushbu o‘qituvchini butunlay o‘chirish">🗑 O‘qituvchini O‘chirish</button>' +
       '</div>' +
       '<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">' +
         '<div style="text-align:right;">' +
@@ -2992,6 +3035,23 @@ EA.render = function(container, preserveScrollLeft) {
         var teachers = getStoreTeachers();
         var curT = teachers.find(function(it) { return it.id === EA.activeTeacherId; });
         EA.openDeleteClassModal(cid, cname, curT, container);
+      };
+    }
+
+    var addStudentFromJBtn = container.querySelector('#eaBtnAddStudentFromJ');
+    if (addStudentFromJBtn) {
+      addStudentFromJBtn.onclick = function() {
+        var cid = addStudentFromJBtn.getAttribute('data-cid');
+        EA.openStudentEnrollModal(cid, null);
+      };
+    }
+
+    var delTeacherFromJBtn = container.querySelector('#eaBtnDeleteTeacherFromJ');
+    if (delTeacherFromJBtn) {
+      delTeacherFromJBtn.onclick = function() {
+        var tid = delTeacherFromJBtn.getAttribute('data-tid') || EA.activeTeacherId;
+        var tname = delTeacherFromJBtn.getAttribute('data-tname');
+        EA.deleteTeacher(tid, tname, container);
       };
     }
 
@@ -5411,9 +5471,35 @@ EA.render = function(container, preserveScrollLeft) {
         window.EthithApp.toast("✅ " + fullName + " ro‘yxatga olindi! Login: " + finalLogin);
       }
 
+      if (window.ETHITH_INITIAL_STORE) {
+        if (Array.isArray(window.ETHITH_INITIAL_STORE.classes)) {
+          var initCls = window.ETHITH_INITIAL_STORE.classes.find(function(c) { return c.id === chosenClass.id; });
+          if (initCls) {
+            initCls.students = JSON.parse(JSON.stringify(chosenClass.students));
+            initCls.customStudentNames = Object.assign({}, chosenClass.customStudentNames);
+            initCls.customStudentPhones = Object.assign({}, chosenClass.customStudentPhones);
+          } else {
+            window.ETHITH_INITIAL_STORE.classes.push(JSON.parse(JSON.stringify(chosenClass)));
+          }
+        }
+        if (Array.isArray(window.ETHITH_INITIAL_STORE.accounts)) {
+          var initAcc = window.ETHITH_INITIAL_STORE.accounts.find(function(a) { return a.id === studentObj.id || (a.login && a.login.toLowerCase() === finalLogin.toLowerCase()); });
+          if (!initAcc) {
+            window.ETHITH_INITIAL_STORE.accounts.push(JSON.parse(JSON.stringify(acc)));
+          } else {
+            initAcc.name = fullName;
+            initAcc.login = finalLogin;
+            initAcc.password = finalPass;
+          }
+        }
+      }
+
       overlay.remove();
       var container = document.getElementById('apView');
-      if (container) EA.render(container);
+      if (container) {
+        EA.activeClassId = chosenClass.id;
+        EA.render(container);
+      }
     };
   };
 
