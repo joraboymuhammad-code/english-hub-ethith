@@ -1114,45 +1114,75 @@
       { pageNum: 1, imageUrl: defaultSvg, elements: [] }
     ];
     var currentWidthPx = 1000;
+    var activeTool = 'draw'; // 'draw' | 'lasso'
+    var selectedPinKeys = new Set(); // set of "pIndex_elIndex"
+    var uploadedAudio = null; // { url, name, size, limit }
 
     m.innerHTML = '' +
       // Topbar
-      '<div style="height:62px;padding:0 20px;background:#0f172a;border-bottom:1px solid rgba(56,189,248,0.25);display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 4px 20px rgba(0,0,0,0.5);flex-shrink:0;z-index:50;">' +
-        '<div style="display:flex;align-items:center;gap:12px;flex:1;max-width:440px;">' +
-          '<div style="font-size:24px;line-height:1;">🎨</div>' +
-          '<input type="text" id="eeVisualTitle" placeholder="Test Nomi (masalan: Unit 1 Test B2)" style="width:100%;padding:8px 14px;background:#1e293b;border:1.5px solid rgba(56,189,248,0.3);border-radius:10px;color:#fff;font-weight:800;font-size:13.5px;outline:none;" />' +
-          '<div style="display:flex;align-items:center;gap:5px;flex-shrink:0;">' +
-            '<span style="font-size:11.5px;color:#94a3b8;font-weight:700;">Urinish:</span>' +
-            '<input type="number" id="eeVisualAttempts" min="1" max="50" value="1" style="width:52px;padding:6px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-weight:900;font-size:12px;text-align:center;outline:none;" title="O‘quvchi necha marta ishlay oladi" />' +
+      '<div style="height:64px;padding:0 16px;background:#0f172a;border-bottom:1px solid rgba(56,189,248,0.25);display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 4px 20px rgba(0,0,0,0.5);flex-shrink:0;z-index:50;flex-wrap:wrap;">' +
+        '<div style="display:flex;align-items:center;gap:10px;max-width:320px;flex:1;">' +
+          '<div style="font-size:22px;line-height:1;">🎨</div>' +
+          '<input type="text" id="eeVisualTitle" placeholder="Test Nomi (masalan: Unit 1 Test B2)" style="width:100%;padding:7px 12px;background:#1e293b;border:1.5px solid rgba(56,189,248,0.3);border-radius:10px;color:#fff;font-weight:800;font-size:13px;outline:none;" />' +
+          '<div style="display:flex;align-items:center;gap:4px;flex-shrink:0;">' +
+            '<span style="font-size:11px;color:#94a3b8;font-weight:700;">Urinish:</span>' +
+            '<input type="number" id="eeVisualAttempts" min="1" max="50" value="1" style="width:46px;padding:5px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-weight:900;font-size:12px;text-align:center;outline:none;" title="O‘quvchi necha marta ishlay oladi" />' +
           '</div>' +
         '</div>' +
 
-        '<div style="display:flex;align-items:center;gap:10px;">' +
-          '<label style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(37,99,235,0.2));color:#38bdf8;border:1.5px solid #38bdf8;padding:7px 14px;border-radius:10px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 0 12px rgba(56,189,248,0.2);">' +
+        // Center Tools & Audio
+        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+          // Tool Toggle: Draw vs Lasso Selection
+          '<div style="display:flex;align-items:center;gap:2px;background:#1e293b;padding:3px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);">' +
+            '<button id="eeToolDrawBtn" style="background:#0284c7;border:none;color:#fff;padding:5px 10px;border-radius:7px;font-size:11.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:4px;" title="Katakcha chizish rejimi">✏️ Chizish</button>' +
+            '<button id="eeToolLassoBtn" style="background:transparent;border:none;color:#94a3b8;padding:5px 10px;border-radius:7px;font-size:11.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:4px;" title="Sichqoncha bilan to‘rtburchak tortib belgilash (Lasso)">📐 Lasso Tanlash</button>' +
+          '</div>' +
+
+          // Audio Upload (Max 25MB)
+          '<label id="eeAudioUploadBtn" style="background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(147,51,234,0.2));color:#c084fc;border:1.5px solid #a855f7;padding:6px 12px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 0 10px rgba(168,85,247,0.2);" title="Maksimal 25 MB audio fayl">' +
+            '🎧 Listening Yuklash (Maks 25MB) <input type="file" id="eeAudioFileInput" accept="audio/*" style="display:none;" />' +
+          '</label>' +
+
+          // Audio Limit (Necha marta eshita oladi)
+          '<div style="display:flex;align-items:center;gap:4px;background:#1e293b;padding:4px 8px;border-radius:10px;border:1px solid rgba(168,85,247,0.4);" title="O‘quvchi ushbu audioni necha marta eshita olishini belgilash">' +
+            '<span style="font-size:11px;color:#c084fc;font-weight:800;">Limit:</span>' +
+            '<input type="number" id="eeAudioLimitInp" min="1" max="10" value="2" style="width:42px;padding:3px;background:#0f172a;border:1px solid rgba(168,85,247,0.5);border-radius:6px;color:#fff;font-weight:900;font-size:12px;text-align:center;outline:none;" />' +
+            '<span style="font-size:10.5px;color:#94a3b8;">marta</span>' +
+          '</div>' +
+
+          // Audio status pill
+          '<div id="eeAudioStatusPill" style="display:none;align-items:center;gap:6px;background:rgba(16,185,129,0.18);border:1px solid #10b981;color:#10b981;padding:4px 10px;border-radius:8px;font-size:11.5px;font-weight:800;">' +
+            '<span id="eeAudioStatusText">Audio yuklandi</span>' +
+            '<button id="eeRemoveAudioBtn" style="background:none;border:none;color:#ef4444;font-size:14px;cursor:pointer;line-height:1;font-weight:900;" title="Audioni o‘chirish">✕</button>' +
+          '</div>' +
+
+          '<label style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(37,99,235,0.2));color:#38bdf8;border:1.5px solid #38bdf8;padding:6px 12px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
             '📁 PDF / Rasm Yuklash <input type="file" id="eeVisualFileInput" accept="image/*,application/pdf,.pdf" style="display:none;" />' +
           '</label>' +
 
-          // Zoom & Fit Controls
-          '<div style="display:flex;align-items:center;gap:4px;background:#1e293b;padding:3px 6px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);">' +
-            '<button id="eeZoomOutBtn" style="background:#334155;border:none;color:#cbd5e1;padding:5px 9px;border-radius:6px;font-size:12px;font-weight:900;cursor:pointer;" title="Kichiklashtirish">🔍−</button>' +
-            '<button id="eeZoom100Btn" style="background:none;border:none;color:#38bdf8;padding:4px 8px;font-size:11.5px;font-weight:800;cursor:pointer;" title="Asl o‘lcham (100%)">100%</button>' +
-            '<button id="eeZoomInBtn" style="background:#334155;border:none;color:#cbd5e1;padding:5px 9px;border-radius:6px;font-size:12px;font-weight:900;cursor:pointer;" title="Kattalashtirish">🔍+</button>' +
-            '<button id="eeFitWidthBtn" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;padding:4px 10px;border-radius:6px;font-size:11.5px;font-weight:800;cursor:pointer;margin-left:4px;" title="Ekranga to‘liq moslash">↔️ Kenglikka moslash</button>' +
+          // Zoom Controls
+          '<div style="display:flex;align-items:center;gap:3px;background:#1e293b;padding:3px 6px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);">' +
+            '<button id="eeZoomOutBtn" style="background:#334155;border:none;color:#cbd5e1;padding:4px 8px;border-radius:6px;font-size:11.5px;font-weight:900;cursor:pointer;">🔍−</button>' +
+            '<button id="eeZoom100Btn" style="background:none;border:none;color:#38bdf8;padding:4px 6px;font-size:11px;font-weight:800;cursor:pointer;">100%</button>' +
+            '<button id="eeZoomInBtn" style="background:#334155;border:none;color:#cbd5e1;padding:4px 8px;border-radius:6px;font-size:11.5px;font-weight:900;cursor:pointer;">🔍+</button>' +
+            '<button id="eeFitWidthBtn" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:800;cursor:pointer;">↔️ Moslash</button>' +
           '</div>' +
         '</div>' +
 
-        '<div style="display:flex;align-items:center;gap:12px;">' +
-          '<div id="eeVisualCounter" style="font-size:12.5px;font-weight:800;color:#10b981;background:rgba(16,185,129,0.12);padding:5px 10px;border-radius:8px;border:1px solid rgba(16,185,129,0.25);">0 ta katakcha qo‘shildi</div>' +
-          '<button id="eeSaveVisualBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;font-size:13.5px;cursor:pointer;box-shadow:0 4px 18px rgba(2,132,199,0.5);display:flex;align-items:center;gap:6px;">💾 Testni Saqlash</button>' +
-          '<button id="eeCloseVisualModal" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:18px;font-weight:900;cursor:pointer;padding:8px 12px;border-radius:10px;" title="Chiqish">✕</button>' +
+        // Right Action Buttons
+        '<div style="display:flex;align-items:center;gap:8px;">' +
+          '<button id="eeDelSelectedBtn" style="display:none;background:rgba(239,68,68,0.2);border:1px solid #ef4444;color:#ef4444;padding:7px 12px;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;">🗑️ Tanlanganlarni o‘chirish (0)</button>' +
+          '<div id="eeVisualCounter" style="font-size:12px;font-weight:800;color:#10b981;background:rgba(16,185,129,0.12);padding:5px 10px;border-radius:8px;border:1px solid rgba(16,185,129,0.25);">0 ta katakcha</div>' +
+          '<button id="eeSaveVisualBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#fff;padding:8px 20px;border-radius:10px;font-weight:900;font-size:13px;cursor:pointer;box-shadow:0 4px 18px rgba(2,132,199,0.5);">💾 Testni Saqlash</button>' +
+          '<button id="eeCloseVisualModal" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:18px;font-weight:900;cursor:pointer;padding:6px 10px;border-radius:10px;">✕</button>' +
         '</div>' +
       '</div>' +
 
-      // Continuous Multi-Page Workspace (Oxford Navigate Style)
+      // Continuous Multi-Page Workspace
       '<div id="eeVisualWorkspace" style="flex:1;overflow-y:scroll;overflow-x:auto;padding:24px 20px 140px 20px;display:flex;flex-direction:column;align-items:center;background:#070b14;position:relative;">' +
         '<div id="eePagesStreamWrap" style="display:flex;flex-direction:column;align-items:center;gap:32px;width:100%;"></div>' +
-        '<div style="margin-top:24px;font-size:12.5px;color:#64748b;text-align:center;">' +
-          '💡 Sichqoncha bilan istalgan sahifa ustiga to‘rtburchak chizing — tizim <b>Yangi Katakcha</b> parametrlarini ochadi.' +
+        '<div style="margin-top:20px;font-size:12.5px;color:#94a3b8;text-align:center;">' +
+          '💡 <b>Katakcha Chizish:</b> Sichqoncha chap tugmasini bosib to‘rtburchak chizing. | <b>Lasso Tanlash:</b> Yuqoridagi "Lasso Tanlash"ni bosing yoki <b>Shift</b> / <b>O‘ng tugma</b> bilan tortib bir nechta katakchani birga belgilang va baravar suring!' +
         '</div>' +
       '</div>';
 
@@ -1161,6 +1191,101 @@
     var streamWrap = m.querySelector('#eePagesStreamWrap');
     var fileInp = m.querySelector('#eeVisualFileInput');
     var counterEl = m.querySelector('#eeVisualCounter');
+    var delSelectedBtn = m.querySelector('#eeDelSelectedBtn');
+    var toolDrawBtn = m.querySelector('#eeToolDrawBtn');
+    var toolLassoBtn = m.querySelector('#eeToolLassoBtn');
+    var audioInp = m.querySelector('#eeAudioFileInput');
+    var audioLimitInp = m.querySelector('#eeAudioLimitInp');
+    var audioStatusPill = m.querySelector('#eeAudioStatusPill');
+    var audioStatusText = m.querySelector('#eeAudioStatusText');
+    var removeAudioBtn = m.querySelector('#eeRemoveAudioBtn');
+
+    // Tool toggle logic
+    function setTool(t) {
+      activeTool = t;
+      if (t === 'draw') {
+        toolDrawBtn.style.background = '#0284c7';
+        toolDrawBtn.style.color = '#fff';
+        toolLassoBtn.style.background = 'transparent';
+        toolLassoBtn.style.color = '#94a3b8';
+      } else {
+        toolLassoBtn.style.background = '#0284c7';
+        toolLassoBtn.style.color = '#fff';
+        toolDrawBtn.style.background = 'transparent';
+        toolDrawBtn.style.color = '#94a3b8';
+      }
+    }
+    toolDrawBtn.onclick = function() { setTool('draw'); };
+    toolLassoBtn.onclick = function() { setTool('lasso'); };
+
+    // Audio Upload Handler (Strict max 25MB validation)
+    audioInp.onchange = function(e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      var maxBytes = 25 * 1024 * 1024; // 25 MB
+      if (f.size > maxBytes) {
+        alert("⚠️ Audio fayl hajmi 25 MB dan oshmasligi kerak! \nSiz yuklamoqchi bo‘lgan fayl: " + (f.size / (1024 * 1024)).toFixed(1) + " MB.");
+        audioInp.value = '';
+        return;
+      }
+      var r = new FileReader();
+      r.onload = function(ev) {
+        uploadedAudio = {
+          url: ev.target.result,
+          name: f.name,
+          size: f.size,
+          limit: parseInt(audioLimitInp.value, 10) || 2
+        };
+        audioStatusText.textContent = "🎧 " + f.name.substring(0, 16) + "... (" + (f.size / (1024*1024)).toFixed(1) + "MB) ✓";
+        audioStatusPill.style.display = 'inline-flex';
+        showToast("✓ Listening audio yuklandi (Maks 25MB qabul qilindi)");
+      };
+      r.readAsDataURL(f);
+    };
+
+    removeAudioBtn.onclick = function() {
+      uploadedAudio = null;
+      audioInp.value = '';
+      audioStatusPill.style.display = 'none';
+      showToast("Audio o‘chirildi");
+    };
+
+    function updateSelectionVisuals() {
+      m.querySelectorAll('.ee-visual-pin').forEach(function(pin) {
+        var key = pin.getAttribute('data-pin-key');
+        if (key && selectedPinKeys.has(key)) {
+          pin.style.outline = '3px solid #38bdf8';
+          pin.style.boxShadow = '0 0 16px rgba(56,189,248,0.95), inset 0 0 10px rgba(56,189,248,0.5)';
+          pin.style.background = 'rgba(56,189,248,0.35)';
+        } else {
+          pin.style.outline = 'none';
+          pin.style.boxShadow = '0 0 10px rgba(0,192,255,0.45)';
+          pin.style.background = 'rgba(0,192,255,0.22)';
+        }
+      });
+      if (selectedPinKeys.size > 0) {
+        delSelectedBtn.style.display = 'inline-block';
+        delSelectedBtn.textContent = '🗑️ Tanlanganlarni o‘chirish (' + selectedPinKeys.size + ')';
+      } else {
+        delSelectedBtn.style.display = 'none';
+      }
+    }
+
+    delSelectedBtn.onclick = function() {
+      if (selectedPinKeys.size === 0) return;
+      if (confirm(selectedPinKeys.size + " ta tanlangan katakchani o‘chirishni tasdiqlaysizmi?")) {
+        pagesData.forEach(function(p, pIdx) {
+          p.elements = (p.elements || []).filter(function(el, elIdx) {
+            var k = pIdx + '_' + elIdx;
+            return !selectedPinKeys.has(k);
+          });
+        });
+        selectedPinKeys.clear();
+        renderAllPages();
+        updateCounter();
+        showToast("Tanlangan katakchalar o‘chirildi");
+      }
+    };
 
     function getTotalElementsCount() {
       var total = 0;
@@ -1169,7 +1294,7 @@
     }
 
     function updateCounter() {
-      counterEl.textContent = getTotalElementsCount() + " ta katakcha qo‘shildi";
+      counterEl.textContent = getTotalElementsCount() + " ta katakcha";
     }
 
     function applyWrapWidth(w) {
@@ -1187,54 +1312,101 @@
       applyWrapWidth(Math.floor(wsW * 0.94));
     };
 
-    // Render all pages in vertical succession (Oxford Navigate layout)
     function renderAllPages() {
       streamWrap.innerHTML = '';
-
       pagesData.forEach(function(p, pIdx) {
-        var pageNum = p.pageNum || (pIdx + 1);
-        var box = document.createElement('div');
-        box.className = 'ee-page-box';
-        box.setAttribute('data-page', pageNum);
-        box.style.cssText = 'position:relative;display:inline-block;width:' + currentWidthPx + 'px;max-width:98vw;box-shadow:0 14px 60px rgba(0,0,0,0.9);border-radius:10px;background:#ffffff;overflow:hidden;border:1px solid rgba(255,255,255,0.12);transition:width 0.15s ease;';
+        var pageBox = document.createElement('div');
+        pageBox.className = 'ee-page-box';
+        pageBox.setAttribute('data-page-idx', pIdx);
+        pageBox.style.cssText = 'position:relative;width:' + currentWidthPx + 'px;background:#ffffff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.7);overflow:hidden;border:1px solid rgba(255,255,255,0.15);user-select:none;';
 
-        box.innerHTML = '' +
-          // Page header banner
-          '<div style="background:#0f172a;color:#fff;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;font-weight:800;border-bottom:1px solid rgba(255,255,255,0.08);">' +
-            '<span>📄 ' + pageNum + '-sahifa' + (pagesData.length > 1 ? (' (Jami ' + pagesData.length + ' ta)') : '') + '</span>' +
-            '<span class="ee-page-subcounter" style="color:#38bdf8;">' + (p.elements || []).length + ' ta topshiriq</span>' +
+        var pageHead = document.createElement('div');
+        pageHead.style.cssText = 'background:#1e293b;padding:8px 16px;border-bottom:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:space-between;color:#94a3b8;font-size:12px;font-weight:800;';
+        pageHead.innerHTML = '<div style="display:flex;align-items:center;gap:8px;">' +
+            '<span style="background:#0284c7;color:#fff;padding:2px 8px;border-radius:6px;">Sahifa ' + p.pageNum + '</span>' +
+            '<span class="ee-page-subcounter">' + (p.elements || []).length + ' ta topshiriq</span>' +
           '</div>' +
-          '<div style="position:relative;width:100%;background:#ffffff;">' +
-            '<img src="' + p.imageUrl + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:none;" />' +
-            '<div class="ee-page-overlay" data-page="' + pageNum + '" style="position:absolute;inset:0;cursor:crosshair;z-index:20;user-select:none;"></div>' +
-          '</div>';
+          (pagesData.length > 1 ? '<button class="ee-del-page-btn" data-idx="' + pIdx + '" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);color:#ef4444;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:800;cursor:pointer;">Sahifani o‘chirish</button>' : '');
 
-        streamWrap.appendChild(box);
+        var pageBody = document.createElement('div');
+        pageBody.style.cssText = 'position:relative;width:100%;line-height:0;';
 
-        var overlay = box.querySelector('.ee-page-overlay');
-        attachPageOverlayDrawing(overlay, p);
-        renderPagePins(overlay, p);
+        var img = document.createElement('img');
+        img.src = p.imageUrl;
+        img.style.cssText = 'width:100%;display:block;pointer-events:none;';
+
+        var overlay = document.createElement('div');
+        overlay.className = 'ee-page-overlay';
+        overlay.setAttribute('data-page-idx', pIdx);
+        overlay.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;touch-action:none;';
+
+        // Marquee selection rectangle element
+        var marqueeBox = document.createElement('div');
+        marqueeBox.className = 'ee-marquee-box';
+        marqueeBox.style.cssText = 'position:absolute;display:none;border:2px solid #38bdf8;background:rgba(56,189,248,0.25);box-shadow:0 0 16px rgba(56,189,248,0.5);pointer-events:none;z-index:100;border-radius:4px;';
+        overlay.appendChild(marqueeBox);
+
+        // Drawing creation rectangle element
+        var drawBox = document.createElement('div');
+        drawBox.className = 'ee-draw-box';
+        drawBox.style.cssText = 'position:absolute;display:none;border:2px dashed #00c0ff;background:rgba(0,192,255,0.25);box-shadow:0 0 16px rgba(0,192,255,0.5);pointer-events:none;z-index:90;border-radius:4px;';
+        overlay.appendChild(drawBox);
+
+        pageBody.appendChild(img);
+        pageBody.appendChild(overlay);
+        pageBox.appendChild(pageHead);
+        pageBox.appendChild(pageBody);
+        streamWrap.appendChild(pageBox);
+
+        renderPagePins(overlay, p, pIdx);
+        attachPageOverlayEvents(overlay, p, pIdx, marqueeBox, drawBox);
       });
 
-      updateCounter();
+      streamWrap.querySelectorAll('.ee-del-page-btn').forEach(function(btn) {
+        btn.onclick = function() {
+          var idx = parseInt(btn.getAttribute('data-idx'), 10);
+          if (confirm((idx + 1) + "-sahifani o‘chirmoqchimisiz?")) {
+            pagesData.splice(idx, 1);
+            pagesData.forEach(function(pg, i) { pg.pageNum = i + 1; });
+            selectedPinKeys.clear();
+            renderAllPages();
+            updateCounter();
+          }
+        };
+      });
+
+      updateSelectionVisuals();
     }
 
-    // Render pins for a specific page
-    function renderPagePins(overlay, p) {
+    function renderPagePins(overlay, p, pIdx) {
       overlay.querySelectorAll('.ee-visual-pin').forEach(function(el) { el.remove(); });
       (p.elements || []).forEach(function(el, idx) {
+        var pinKey = pIdx + '_' + idx;
         var pin = document.createElement('div');
         pin.className = 'ee-visual-pin';
-        pin.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;border:2px solid #00c0ff;background:rgba(0,192,255,0.22);border-radius:6px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:auto;cursor:pointer;box-shadow:0 0 10px rgba(0,192,255,0.45);transition:all 0.15s ease;';
-        pin.title = 'Tahrirlash: ' + (el.label || idx + 1) + ' (' + el.correct + ')';
+        pin.setAttribute('data-pin-key', pinKey);
+        pin.setAttribute('data-idx', idx);
+        pin.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;border:2px solid #00c0ff;background:rgba(0,192,255,0.22);border-radius:6px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:auto;cursor:move;box-shadow:0 0 10px rgba(0,192,255,0.45);transition:outline 0.15s ease;z-index:20;';
+        pin.title = 'Tahrirlash yoki surish: ' + (el.label || idx + 1);
 
         var badgeLabel = (el.label ? el.label : (idx + 1)) + ': ' + esc(el.correct || (el.options ? (Array.isArray(el.options) ? el.options.join('/') : el.options) : el.type));
         pin.innerHTML = '<span style="background:rgba(2,132,199,0.92);color:#fff;font-size:11px;font-weight:900;padding:2px 7px;border-radius:4px;pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:92%;">' + badgeLabel + '</span>' +
           '<button class="ee-quick-del-pin" data-idx="' + idx + '" style="position:absolute;top:-8px;right:-8px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:11px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.5);">✕</button>';
 
+        // Dragging & Moving Pins (Individual OR Multi-Drag if part of selected pins!)
+        attachPinDrag(pin, el, idx, p, pIdx, overlay);
+
+        // Click to edit (if not dragged)
         pin.onclick = function(e) {
           if (e.target.closest('.ee-quick-del-pin')) return;
+          if (pin._wasDragged) { pin._wasDragged = false; return; }
           e.stopPropagation();
+          if (e.shiftKey || activeTool === 'lasso') {
+            if (selectedPinKeys.has(pinKey)) selectedPinKeys.delete(pinKey);
+            else selectedPinKeys.add(pinKey);
+            updateSelectionVisuals();
+            return;
+          }
           openKatakchaModal(false, el, idx, p, overlay);
         };
 
@@ -1249,54 +1421,208 @@
           e.stopPropagation();
           var i = parseInt(b.getAttribute('data-idx'), 10);
           p.elements.splice(i, 1);
-          renderPagePins(overlay, p);
+          selectedPinKeys.delete(pIdx + '_' + i);
+          renderPagePins(overlay, p, pIdx);
           updateCounter();
         };
       });
     }
 
-    // Attach drawing on page overlay
-    function attachPageOverlayDrawing(overlay, p) {
-      var isDrawing = false;
+    // Drag pin handler supporting UNISON GROUP DRAG of all selected pins
+    function attachPinDrag(pin, el, idx, p, pIdx, overlay) {
+      var pinKey = pIdx + '_' + idx;
+
+      pin.addEventListener('mousedown', function(e) {
+        if (e.target.closest('.ee-quick-del-pin')) return;
+        if (e.button === 2) return; // Right click reserved
+        var isTouch = !!e.touches;
+        var pt = isTouch ? e.touches[0] : e;
+        e.stopPropagation();
+
+        if (!selectedPinKeys.has(pinKey) && !e.shiftKey) {
+          selectedPinKeys.clear();
+          selectedPinKeys.add(pinKey);
+          updateSelectionVisuals();
+        }
+
+        var startX = pt.clientX;
+        var startY = pt.clientY;
+        var rect = overlay.getBoundingClientRect();
+        var moved = false;
+
+        // Record start positions of all currently selected pins on this page
+        var draggedGroup = [];
+        selectedPinKeys.forEach(function(k) {
+          var parts = k.split('_');
+          var pgI = parseInt(parts[0], 10);
+          var elI = parseInt(parts[1], 10);
+          if (pgI === pIdx && p.elements[elI]) {
+            var itemEl = p.elements[elI];
+            var domPin = overlay.querySelector('.ee-visual-pin[data-pin-key="' + k + '"]');
+            if (domPin) {
+              draggedGroup.push({
+                element: itemEl,
+                dom: domPin,
+                startLeft: itemEl.left,
+                startTop: itemEl.top
+              });
+            }
+          }
+        });
+
+        function onPinMove(ev) {
+          var pPt = ev.touches ? ev.touches[0] : ev;
+          var dx = pPt.clientX - startX;
+          var dy = pPt.clientY - startY;
+          if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+            moved = true;
+            pin._wasDragged = true;
+          }
+
+          var dxPct = (dx / rect.width) * 100;
+          var dyPct = (dy / rect.height) * 100;
+
+          draggedGroup.forEach(function(item) {
+            var nL = Math.max(0, Math.min(95, item.startLeft + dxPct));
+            var nT = Math.max(0, Math.min(98, item.startTop + dyPct));
+            item.dom.style.left = nL.toFixed(2) + '%';
+            item.dom.style.top = nT.toFixed(2) + '%';
+          });
+        }
+
+        function onPinUp(ev) {
+          window.removeEventListener('mousemove', onPinMove);
+          window.removeEventListener('mouseup', onPinUp);
+          window.removeEventListener('touchmove', onPinMove);
+          window.removeEventListener('touchend', onPinUp);
+
+          if (moved) {
+            var pPt = (ev.changedTouches && ev.changedTouches[0]) ? ev.changedTouches[0] : ev;
+            var dx = pPt.clientX - startX;
+            var dy = pPt.clientY - startY;
+            var dxPct = (dx / rect.width) * 100;
+            var dyPct = (dy / rect.height) * 100;
+
+            draggedGroup.forEach(function(item) {
+              item.element.left = parseFloat(Math.max(0, Math.min(95, item.startLeft + dxPct)).toFixed(2));
+              item.element.top = parseFloat(Math.max(0, Math.min(98, item.startTop + dyPct)).toFixed(2));
+            });
+            showToast("✓ " + draggedGroup.length + " ta katakcha yangi joyga ko‘chirildi");
+          }
+        }
+
+        window.addEventListener('mousemove', onPinMove);
+        window.addEventListener('mouseup', onPinUp);
+        window.addEventListener('touchmove', onPinMove);
+        window.addEventListener('touchend', onPinUp);
+      });
+    }
+
+    // Overlay Drawing & Lasso Marquee Handlers
+    function attachPageOverlayEvents(overlay, p, pIdx, marqueeBox, drawBox) {
+      var isOperating = false;
+      var isLassoMode = false;
       var startX = 0, startY = 0;
-      var drawBox = document.createElement('div');
-      drawBox.style.cssText = 'position:absolute;border:2px dashed #00c0ff;background:rgba(0,192,255,0.25);box-shadow:0 0 16px rgba(0,192,255,0.5);display:none;pointer-events:none;z-index:30;border-radius:4px;';
-      overlay.appendChild(drawBox);
+
+      overlay.addEventListener('contextmenu', function(e) {
+        if (!e.target.closest('.ee-visual-pin')) {
+          e.preventDefault(); // allow right-click drag lasso
+        }
+      });
 
       function onStart(e) {
         if (e.target.closest('.ee-visual-pin')) return;
-        var pt = (e.touches && e.touches[0]) ? e.touches[0] : e;
-        if (e.touches && e.touches.length > 1) return;
+        var isTouch = !!e.touches;
+        if (isTouch && e.touches.length > 1) return;
+        var pt = isTouch ? e.touches[0] : e;
         if (e.cancelable) e.preventDefault();
-        isDrawing = true;
+
         var rect = overlay.getBoundingClientRect();
         startX = pt.clientX - rect.left;
         startY = pt.clientY - rect.top;
-        drawBox.style.left = startX + 'px';
-        drawBox.style.top = startY + 'px';
-        drawBox.style.width = '0px';
-        drawBox.style.height = '0px';
-        drawBox.style.display = 'block';
+        isOperating = true;
+
+        // Lasso triggered if: tool is 'lasso', or e.button === 2 (right-click), or e.shiftKey
+        isLassoMode = (activeTool === 'lasso' || e.button === 2 || e.shiftKey);
+
+        if (isLassoMode) {
+          if (!e.ctrlKey && !e.shiftKey) {
+            selectedPinKeys.clear();
+            updateSelectionVisuals();
+          }
+          marqueeBox.style.left = startX + 'px';
+          marqueeBox.style.top = startY + 'px';
+          marqueeBox.style.width = '0px';
+          marqueeBox.style.height = '0px';
+          marqueeBox.style.display = 'block';
+        } else {
+          drawBox.style.left = startX + 'px';
+          drawBox.style.top = startY + 'px';
+          drawBox.style.width = '0px';
+          drawBox.style.height = '0px';
+          drawBox.style.display = 'block';
+        }
       }
 
       function onMove(e) {
-        if (!isDrawing) return;
-        if (e.touches && e.touches.length > 1) return;
+        if (!isOperating) return;
+        var isTouch = !!e.touches;
+        if (isTouch && e.touches.length > 1) return;
         if (e.cancelable) e.preventDefault();
-        var pt = (e.touches && e.touches[0]) ? e.touches[0] : e;
+        var pt = isTouch ? e.touches[0] : e;
         var rect = overlay.getBoundingClientRect();
         var curX = Math.max(0, Math.min(rect.width, pt.clientX - rect.left));
         var curY = Math.max(0, Math.min(rect.height, pt.clientY - rect.top));
-        drawBox.style.left = Math.min(startX, curX) + 'px';
-        drawBox.style.top = Math.min(startY, curY) + 'px';
-        drawBox.style.width = Math.abs(curX - startX) + 'px';
-        drawBox.style.height = Math.abs(curY - startY) + 'px';
+        var left = Math.min(startX, curX);
+        var top = Math.min(startY, curY);
+        var width = Math.abs(curX - startX);
+        var height = Math.abs(curY - startY);
+
+        if (isLassoMode) {
+          marqueeBox.style.left = left + 'px';
+          marqueeBox.style.top = top + 'px';
+          marqueeBox.style.width = width + 'px';
+          marqueeBox.style.height = height + 'px';
+
+          // Real-time highlight pins whose center is within marquee rectangle
+          var mLeftPct = (left / rect.width) * 100;
+          var mTopPct = (top / rect.height) * 100;
+          var mRightPct = ((left + width) / rect.width) * 100;
+          var mBottomPct = ((top + height) / rect.height) * 100;
+
+          (p.elements || []).forEach(function(el, elIdx) {
+            var cX = el.left + (el.width / 2);
+            var cY = el.top + (el.height / 2);
+            var k = pIdx + '_' + elIdx;
+            if (cX >= mLeftPct && cX <= mRightPct && cY >= mTopPct && cY <= mBottomPct) {
+              selectedPinKeys.add(k);
+            } else if (!e.ctrlKey) {
+              selectedPinKeys.delete(k);
+            }
+          });
+          updateSelectionVisuals();
+        } else {
+          drawBox.style.left = left + 'px';
+          drawBox.style.top = top + 'px';
+          drawBox.style.width = width + 'px';
+          drawBox.style.height = height + 'px';
+        }
       }
 
       function onEnd(e) {
-        if (!isDrawing) return;
-        isDrawing = false;
+        if (!isOperating) return;
+        isOperating = false;
+        var wasLasso = isLassoMode;
+        marqueeBox.style.display = 'none';
         drawBox.style.display = 'none';
+
+        if (wasLasso) {
+          updateSelectionVisuals();
+          if (selectedPinKeys.size > 0) {
+            showToast("✓ " + selectedPinKeys.size + " ta katakcha belgilandi. Istalgan birini sudrab hammasini ko‘chirishingiz mumkin!");
+          }
+          return;
+        }
 
         var pt = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : e;
         var rect = overlay.getBoundingClientRect();
@@ -1311,268 +1637,181 @@
           var widthPct = parseFloat(((wPx / rect.width) * 100).toFixed(2));
           var heightPct = parseFloat(((hPx / rect.height) * 100).toFixed(2));
 
-          openKatakchaModal(true, null, null, p, overlay, {
+          openKatakchaModal(true, {
+            id: 'inp_' + Date.now() + '_' + Math.floor(Math.random() * 999),
+            type: 'fill',
             top: topPct,
             left: leftPct,
             width: widthPct,
-            height: heightPct
-          });
+            height: heightPct,
+            correct: '',
+            label: '' + ((p.elements || []).length + 1)
+          }, null, p, overlay, pIdx);
         }
       }
 
       overlay.addEventListener('mousedown', onStart);
-      overlay.addEventListener('touchstart', onStart, { passive: false });
       window.addEventListener('mousemove', onMove);
-      window.addEventListener('touchmove', onMove, { passive: false });
       window.addEventListener('mouseup', onEnd);
+      overlay.addEventListener('touchstart', onStart, { passive: false });
+      window.addEventListener('touchmove', onMove, { passive: false });
       window.addEventListener('touchend', onEnd);
     }
 
-    // Modal matching media_1793026528352_0eeda690.png
-    function openKatakchaModal(isNew, item, existingIdx, pageObj, pageOverlay, newCoords) {
-      var old = document.getElementById('eeKatakchaModal');
-      if (old) old.remove();
+    // Modal to define Katakcha type and answer
+    function openKatakchaModal(isNew, elData, editIdx, p, overlay, pIdx) {
+      var om = document.createElement('div');
+      om.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(10px);z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:16px;font-family:system-ui,-apple-system,sans-serif;';
 
-      var km = document.createElement('div');
-      km.id = 'eeKatakchaModal';
-      km.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:2147483647;backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:14px;';
-
-      var totalSoFar = getTotalElementsCount();
-      var defaultLabel = isNew ? ((totalSoFar + 1).toString()) : (item.label || '');
-      var defaultCorrect = isNew ? '' : (item.correct || '');
-      var defaultType = isNew ? 'fill' : (item.type || 'fill');
-      var defaultOptions = isNew ? '' : (Array.isArray(item.options) ? item.options.join(', ') : (item.options || ''));
-
-      km.innerHTML = '<div style="position:relative;width:360px;max-width:calc(100vw - 24px);background:#0f172a;border:2px solid #00c0ff;border-radius:16px;padding:18px 20px;box-shadow:0 25px 60px rgba(0,0,0,0.85);color:#f8fafc;box-sizing:border-box;">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid #334155;padding-bottom:10px;">' +
-          '<div style="display:flex;align-items:center;gap:8px;">' +
-            '<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#00c0ff;box-shadow:0 0 10px #00c0ff;"></span>' +
-            '<h3 style="font-size:15px;font-weight:900;margin:0;color:#00c0ff;">' + (isNew ? '• ➕ Yangi Katakcha' : '• ✏️ Katakchani Tahrirlash') + '</h3>' +
+      om.innerHTML = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);border-radius:20px;max-width:540px;width:100%;padding:26px;box-shadow:0 24px 60px rgba(0,0,0,0.8);color:#f8fafc;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
+          '<div style="display:flex;align-items:center;gap:10px;">' +
+            '<span style="font-size:22px;">🎯</span>' +
+            '<h3 style="margin:0;font-size:17px;font-weight:900;">' + (isNew ? 'Yangi Katakcha Qo‘shish' : 'Katakchani Tahrirlash') + '</h3>' +
           '</div>' +
-          '<button id="eeKatakchaCloseX" style="background:transparent;border:none;color:#94a3b8;font-size:18px;font-weight:900;cursor:pointer;padding:2px 6px;line-height:1;">✕</button>' +
+          '<button id="eeCloseKatakchaModal" style="background:none;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">✕</button>' +
         '</div>' +
 
-        '<div style="margin-bottom:12px;">' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;margin-bottom:5px;color:#94a3b8;">Turi (interaction type):</label>' +
-          '<select id="eeKatakchaType" style="width:100%;padding:8px 12px;border-radius:9px;border:1px solid #334155;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12.5px;outline:none;">' +
-            '<option value="fill"' + (defaultType === 'fill' ? ' selected' : '') + '>Fill (O‘qib yozish)</option>' +
-            '<option value="select"' + (defaultType === 'select' ? ' selected' : '') + '>Select (Dropdown - Tanlash)</option>' +
-            '<option value="cross"' + (defaultType === 'cross' ? ' selected' : '') + '>Cross (Chizib o‘chirish)</option>' +
-            '<option value="choose"' + (defaultType === 'choose' ? ' selected' : '') + '>Choose (Variant tanlash)</option>' +
-            '<option value="match"' + (defaultType === 'match' ? ' selected' : '') + '>Match (Harf bilan bog‘lash)</option>' +
-            '<option value="insert"' + (defaultType === 'insert' ? ' selected' : '') + '>Insert (Prepozitsiya kiritish)</option>' +
-          '</select>' +
-        '</div>' +
+        '<div style="display:flex;flex-direction:column;gap:14px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Topshiriq Turi:</label>' +
+            '<select id="eeKatakchaType" style="width:100%;padding:10px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;outline:none;">' +
+              '<option value="fill"' + (elData.type === 'fill' ? ' selected' : '') + '>✍️ O‘qib yoziladigan (Fill in blanks / Text Input)</option>' +
+              '<option value="choose"' + (elData.type === 'choose' ? ' selected' : '') + '>🔘 Tanlanadigan (Variantni bosish)</option>' +
+              '<option value="cross"' + (elData.type === 'cross' ? ' selected' : '') + '>❌ O‘chiriladigan (Strikethrough / Chiqitga chiqarish)</option>' +
+              '<option value="match"' + (elData.type === 'match' ? ' selected' : '') + '>🔗 Bog‘lanadigan (Letter match badge A-H)</option>' +
+            '</select>' +
+          '</div>' +
 
-        '<div id="eeKatakchaOptionsWrap" style="' + (defaultType === 'select' ? 'display:block;' : 'display:none;') + 'margin-bottom:12px;">' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;margin-bottom:5px;color:#38bdf8;">Variantlar (vergul bilan ajrating):</label>' +
-          '<input type="text" id="eeKatakchaOptions" value="' + esc(defaultOptions) + '" style="width:100%;padding:8px 12px;border-radius:9px;border:1.5px solid #0284c7;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12.5px;box-sizing:border-box;outline:none;" placeholder="masalan: Am I, I\'m not, Are you" />' +
-          '<div style="font-size:10.5px;color:#94a3b8;margin-top:4px;">O‘quvchi ochiladigan menyudan (dropdown) tanlaydi.</div>' +
-        '</div>' +
+          '<div style="display:flex;gap:10px;">' +
+            '<div style="flex:1;">' +
+              '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Savol Raqami / Label:</label>' +
+              '<input type="text" id="eeKatakchaLabel" value="' + esc(elData.label || '') + '" placeholder="1, 2, 3a..." style="width:100%;padding:10px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;outline:none;box-sizing:border-box;" />' +
+            '</div>' +
+            '<div style="flex:2;">' +
+              '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">To‘g‘ri Javob (Key):</label>' +
+              '<input type="text" id="eeKatakchaCorrect" value="' + esc(elData.correct || '') + '" placeholder="Masalan: is watching / ' + esc("has seen") + '" style="width:100%;padding:10px;background:#1e293b;border:1px solid #10b981;border-radius:10px;color:#10b981;font-weight:900;outline:none;box-sizing:border-box;" />' +
+            '</div>' +
+          '</div>' +
 
-        '<div style="margin-bottom:12px;">' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;margin-bottom:5px;color:#94a3b8;">Guruh / Belgisi (Label / Group):</label>' +
-          '<input type="text" id="eeKatakchaLabel" value="' + esc(defaultLabel) + '" style="width:100%;padding:8px 12px;border-radius:9px;border:1px solid #334155;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12.5px;box-sizing:border-box;outline:none;" placeholder="masalan: 2 yoki 3a" />' +
-        '</div>' +
-
-        '<div style="margin-bottom:16px;">' +
-          '<label id="eeKatakchaCorrectLabel" style="display:block;font-size:11.5px;font-weight:800;margin-bottom:5px;color:#94a3b8;">To‘g‘ri Javob ("or" bilan variantlar):</label>' +
-          '<input type="text" id="eeKatakchaCorrect" value="' + esc(defaultCorrect) + '" style="width:100%;padding:8px 12px;border-radius:9px;border:1px solid #334155;background:#1e293b;color:#f8fafc;font-weight:700;font-size:12.5px;box-sizing:border-box;outline:none;" placeholder="masalan: coast yoki a" />' +
-          '<div id="eeKatakchaChooseHelper" style="' + (defaultType === 'choose' ? 'display:flex;' : 'display:none;') + 'margin-top:8px;gap:8px;">' +
-            '<button type="button" id="eeKatakchaBtnTrue" style="flex:1;background:rgba(16,185,129,0.15);border:1.5px solid #10b981;color:#34d399;border-radius:8px;padding:7px;font-size:11.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;">✓ To‘g‘ri variant</button>' +
-            '<button type="button" id="eeKatakchaBtnFalse" style="flex:1;background:rgba(239,68,68,0.15);border:1.5px solid #ef4444;color:#f87171;border-radius:8px;padding:7px;font-size:11.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;">✕ Noto‘g‘ri variant</button>' +
+          '<div id="eeKatakchaOptionsWrap" style="' + (elData.type === 'choose' ? 'display:block;' : 'display:none;') + '">' +
+            '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Variantlar (slash / bilan ajrating):</label>' +
+            '<input type="text" id="eeKatakchaOptions" value="' + esc(Array.isArray(elData.options) ? elData.options.join('/') : (elData.options || '')) + '" placeholder="Masalan: at / on / in" style="width:100%;padding:10px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;outline:none;box-sizing:border-box;" />' +
           '</div>' +
         '</div>' +
 
-        '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">' +
-          (!isNew ? '<button type="button" id="eeKatakchaDeleteBtn" style="background:rgba(239,68,68,0.15);border:1.5px solid #ef4444;color:#f87171;padding:8px 14px;border-radius:9px;font-weight:800;font-size:12.5px;cursor:pointer;">🗑 O‘chirish</button>' : '<div></div>') +
-          '<div style="display:flex;gap:10px;margin-left:auto;">' +
-            '<button type="button" id="eeKatakchaCancelBtn" style="background:#334155;border:none;color:#cbd5e1;padding:8px 16px;border-radius:9px;font-weight:800;font-size:12.5px;cursor:pointer;">Bekor qilish</button>' +
-            '<button type="button" id="eeKatakchaSaveBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#ffffff;padding:8px 20px;border-radius:9px;font-weight:900;font-size:13px;cursor:pointer;box-shadow:0 4px 14px rgba(2,132,199,0.5);">Saqlash</button>' +
-          '</div>' +
+        '<div style="display:flex;justify-content:flex-end;gap:10px;margin-top:24px;">' +
+          '<button id="eeCancelKatakcha" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:9px 18px;border-radius:10px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+          '<button id="eeSaveKatakcha" style="background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;cursor:pointer;">Katakchani Saqlash</button>' +
         '</div>' +
       '</div>';
 
-      modalRoot.appendChild(km);
+      modalRoot.appendChild(om);
 
-      var closeKm = function() { km.remove(); };
-      km.querySelector('#eeKatakchaCloseX').onclick = closeKm;
-      km.querySelector('#eeKatakchaCancelBtn').onclick = closeKm;
-
-      var typeSel = km.querySelector('#eeKatakchaType');
-      var optionsWrap = km.querySelector('#eeKatakchaOptionsWrap');
-      var correctInp = km.querySelector('#eeKatakchaCorrect');
-      var labelInp = km.querySelector('#eeKatakchaLabel');
-      var chooseHelper = km.querySelector('#eeKatakchaChooseHelper');
-      var btnTrue = km.querySelector('#eeKatakchaBtnTrue');
-      var btnFalse = km.querySelector('#eeKatakchaBtnFalse');
-
+      var typeSel = om.querySelector('#eeKatakchaType');
+      var optWrap = om.querySelector('#eeKatakchaOptionsWrap');
       typeSel.onchange = function() {
-        if (typeSel.value === 'choose') {
-          chooseHelper.style.display = 'flex';
-          optionsWrap.style.display = 'none';
-          correctInp.placeholder = "To‘g‘ri yoki bo‘sh qoldiring";
-        } else if (typeSel.value === 'select') {
-          chooseHelper.style.display = 'none';
-          optionsWrap.style.display = 'block';
-          correctInp.placeholder = "To‘g‘ri javob (variantlardan biri)";
-        } else {
-          chooseHelper.style.display = 'none';
-          optionsWrap.style.display = 'none';
-          correctInp.placeholder = "masalan: coast yoki a";
-        }
+        optWrap.style.display = (typeSel.value === 'choose') ? 'block' : 'none';
       };
 
-      if (btnTrue) {
-        btnTrue.onclick = function() { correctInp.value = 'To‘g‘ri'; };
-      }
-      if (btnFalse) {
-        btnFalse.onclick = function() { correctInp.value = ''; };
-      }
+      om.querySelector('#eeCloseKatakchaModal').onclick = om.querySelector('#eeCancelKatakcha').onclick = function() {
+        om.remove();
+      };
 
-      var delBtn = km.querySelector('#eeKatakchaDeleteBtn');
-      if (delBtn) {
-        delBtn.onclick = function() {
-          if (existingIdx !== undefined && existingIdx !== null) {
-            pageObj.elements.splice(existingIdx, 1);
-            renderPagePins(pageOverlay, pageObj);
-            updateCounter();
-          }
-          closeKm();
-        };
-      }
-
-      km.querySelector('#eeKatakchaSaveBtn').onclick = function() {
-        var t = typeSel.value;
-        var l = labelInp.value.trim();
-        var c = correctInp.value.trim();
-        var rawOpts = (km.querySelector('#eeKatakchaOptions') ? km.querySelector('#eeKatakchaOptions').value : '');
-        var opts = rawOpts.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
-        if (t === 'select' && opts.length > 0 && !c) {
-          c = opts[0];
+      om.querySelector('#eeSaveKatakcha').onclick = function() {
+        var correctVal = om.querySelector('#eeKatakchaCorrect').value.trim();
+        var labelVal = om.querySelector('#eeKatakchaLabel').value.trim() || ((p.elements || []).length + 1);
+        var tVal = typeSel.value;
+        var opts = [];
+        if (tVal === 'choose') {
+          opts = om.querySelector('#eeKatakchaOptions').value.split('/').map(function(s) { return s.trim(); }).filter(Boolean);
         }
+
+        elData.type = tVal;
+        elData.correct = correctVal;
+        elData.label = labelVal;
+        if (opts.length > 0) elData.options = opts;
 
         if (isNew) {
-          if (!pageObj.elements) pageObj.elements = [];
-          var newEl = {
-            id: 'el_' + Date.now() + '_' + Math.floor(Math.random() * 100),
-            top: newCoords.top,
-            left: newCoords.left,
-            width: newCoords.width,
-            height: newCoords.height,
-            type: t,
-            label: l || ((getTotalElementsCount() + 1).toString()),
-            correct: c,
-            points: 1
-          };
-          if (t === 'select') newEl.options = opts;
-          pageObj.elements.push(newEl);
+          p.elements.push(elData);
         } else {
-          item.type = t;
-          item.label = l;
-          item.correct = c;
-          if (t === 'select') {
-            item.options = opts;
-          } else {
-            delete item.options;
-          }
+          p.elements[editIdx] = elData;
         }
 
-        renderPagePins(pageOverlay, pageObj);
+        om.remove();
+        renderPagePins(overlay, p, pIdx);
         updateCounter();
-        closeKm();
       };
     }
 
-    // PDF / Image Upload Handler (Renders ALL pages of the PDF in ~300ms)
+    // PDF / Image Upload Handler
     fileInp.onchange = function(e) {
       var file = e.target.files && e.target.files[0];
       if (!file) return;
 
-      var isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
-      if (isPdf) {
-        showToast("⚡ PDF yuklanmoqda va sahifalar tayyorlanmoqda...");
-        var reader = new FileReader();
-        reader.onload = function(evt) {
-          var typedArray = new Uint8Array(evt.target.result);
-
-          function proceedWithPdf() {
-            if (window.pdfjsLib && window.pdfjsLib.GlobalWorkerOptions) {
-              window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
-            }
-            window.pdfjsLib.getDocument({ data: typedArray }).promise.then(function(doc) {
-              var numPages = doc.numPages;
-              var loadedPages = [];
-              var renderPromises = [];
-
+      if (file.type === 'application/pdf' || file.name.endsWith('.pdf')) {
+        var fr = new FileReader();
+        fr.onload = function(ev) {
+          var typedarray = new Uint8Array(ev.target.result);
+          if (window.pdfjsLib) {
+            window.pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
+              pagesData = [];
+              var numPages = pdf.numPages;
+              var loaded = 0;
               for (var i = 1; i <= numPages; i++) {
-                (function(pNum) {
-                  var pPromise = doc.getPage(pNum).then(function(page) {
-                    var scale = 2.0; // High DPI crisp text
-                    var viewport = page.getViewport({ scale: scale });
+                (function(pageNumber) {
+                  pdf.getPage(pageNumber).then(function(page) {
+                    var viewport = page.getViewport({ scale: 2 });
                     var canvas = document.createElement('canvas');
-                    var ctx = canvas.getContext('2d');
                     canvas.width = viewport.width;
                     canvas.height = viewport.height;
-                    return page.render({ canvasContext: ctx, viewport: viewport }).promise.then(function() {
-                      return {
-                        pageNum: pNum,
-                        imageUrl: canvas.toDataURL('image/png'),
-                        elements: []
-                      };
+                    var ctx = canvas.getContext('2d');
+                    page.render({ canvasContext: ctx, viewport: viewport }).promise.then(function() {
+                      var dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+                      pagesData[pageNumber - 1] = { pageNum: pageNumber, imageUrl: dataUrl, elements: [] };
+                      loaded++;
+                      if (loaded === numPages) {
+                        renderAllPages();
+                        updateCounter();
+                        showToast("PDF yuklandi: " + numPages + " ta sahifa tayyor!");
+                      }
                     });
                   });
-                  renderPromises.push(pPromise);
                 })(i);
               }
-
-              Promise.all(renderPromises).then(function(results) {
-                // Sort pages by pageNum
-                results.sort(function(a, b) { return a.pageNum - b.pageNum; });
-                pagesData = results;
-                renderAllPages();
-                showToast("✓ PDF to‘liq " + numPages + " ta sahifasi yuklandi!");
-              }).catch(function(err) {
-                console.error("PDF sahifalarini o‘qishda xato:", err);
-                alert("PDF sahifalarini o‘qishda xatolik: " + (err.message || err));
-              });
             }).catch(function(err) {
-              console.error("PDF ochishda xato:", err);
-              alert("PDF ochishda xatolik yuz berdi: " + (err.message || err));
+              alert("PDF faylni yuklashda xatolik: " + err.message);
             });
-          }
-
-          if (!window.pdfjsLib) {
-            var script = document.createElement('script');
-            script.src = 'pdf.min.js';
-            script.onload = proceedWithPdf;
-            document.head.appendChild(script);
           } else {
-            proceedWithPdf();
+            alert("PDF kutubxonasi topilmadi. Iltimos rasm shaklida yuklang.");
           }
         };
-        reader.readAsArrayBuffer(file);
+        fr.readAsArrayBuffer(file);
       } else {
-        var imgReader = new FileReader();
-        imgReader.onload = function(evt) {
-          pagesData = [
-            { pageNum: 1, imageUrl: evt.target.result, elements: [] }
-          ];
+        var frImg = new FileReader();
+        frImg.onload = function(ev) {
+          pagesData = [{ pageNum: 1, imageUrl: ev.target.result, elements: [] }];
           renderAllPages();
-          showToast("Rasm yuklandi");
+          updateCounter();
+          showToast("Rasm muvaffaqiyatli yuklandi!");
         };
-        imgReader.readAsDataURL(file);
+        frImg.readAsDataURL(file);
       }
     };
 
-    renderAllPages();
-
-    var closeAll = function() { m.remove(); };
+    function closeAll() {
+      m.remove();
+    }
     m.querySelector('#eeCloseVisualModal').onclick = closeAll;
 
+    renderAllPages();
+    updateCounter();
+
+    // Save Test Handler
     m.querySelector('#eeSaveVisualBtn').onclick = function() {
       var title = m.querySelector('#eeVisualTitle').value.trim();
       var attempts = parseInt(m.querySelector('#eeVisualAttempts').value, 10) || 1;
+      var audioLimit = parseInt(m.querySelector('#eeAudioLimitInp').value, 10) || 2;
       if (!title) { alert("Iltimos, test nomini kiriting!"); return; }
 
       var allElements = [];
@@ -1588,7 +1827,8 @@
       var S = getStore();
       var curU = getCurrentUser();
       var defaultFid = (curU.role === 'teacher' && !isAdminOrTeacher() ? ('f_root_' + curU.id) : (curU.role === 'teacher' ? ('f_root_' + curU.id) : 'f_root'));
-      S.fileExplorer.tests.push({
+      
+      var newTest = {
         id: randCode,
         title: title,
         type: 'visual_overlay',
@@ -1599,16 +1839,21 @@
         creatorId: curU.id,
         authorName: curU.name || 'Ustoz',
         maxAttempts: attempts,
-        pages: pagesData, // Multi-page support!
-        imageUrl: pagesData[0].imageUrl, // Backward compatibility
-        elements: allElements, // All questions combined
+        pages: pagesData,
+        imageUrl: pagesData[0].imageUrl,
+        elements: allElements,
+        audioUrl: uploadedAudio ? uploadedAudio.url : null,
+        audioName: uploadedAudio ? uploadedAudio.name : null,
+        audioLimit: audioLimit,
         questions: allElements.map(function(el, i) {
           return { id: el.id, q: (el.label || (i + 1)) + "-savol", correct: el.correct, points: 1 };
         })
-      });
+      };
+
+      S.fileExplorer.tests.push(newTest);
       saveStore();
       closeAll();
-      showToast("✓ Interaktiv test saqlandi! Test ID: " + randCode);
+      showToast("✓ Interaktiv listening test saqlandi! Test ID: " + randCode);
       if (container) EE.renderExplorerView(container);
     };
   };
@@ -1621,6 +1866,8 @@
     m.id = 'eeCreateTestOverlay';
     m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(10px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;';
     
+    var uploadedAudio = null;
+
     m.innerHTML = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.3);border-radius:20px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;padding:26px;color:#f8fafc;box-shadow:0 20px 50px rgba(0,0,0,0.6);">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">' +
         '<div style="display:flex;align-items:center;gap:10px;">' +
@@ -1635,14 +1882,31 @@
         '<input type="text" id="eeNewTestTitle" placeholder="Masalan: Unit 7 Modals of Deduction..." style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;" />' +
       '</div>' +
 
-      '<div style="display:flex;gap:12px;margin-bottom:16px;">' +
-        '<div style="flex:1;">' +
-          '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Unikal Test ID (Avtomatik):</label>' +
+      '<div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;">' +
+        '<div style="flex:1;min-width:140px;">' +
+          '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Test ID:</label>' +
           '<input type="text" id="eeNewTestId" value="' + randCode + '" readonly style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:10px;color:#38bdf8;font-weight:900;box-sizing:border-box;outline:none;" />' +
         '</div>' +
-        '<div style="flex:1;">' +
-          '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Urinishlar soni:</label>' +
-          '<input type="text" value="1 martalik (Qat‘iy)" readonly style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#94a3b8;font-weight:700;box-sizing:border-box;outline:none;" />' +
+        '<div style="flex:1;min-width:140px;">' +
+          '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">🎧 Tinglash Limiti:</label>' +
+          '<input type="number" id="eeStandardAudioLimit" min="1" max="10" value="2" style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(168,85,247,0.4);border-radius:10px;color:#c084fc;font-weight:900;box-sizing:border-box;outline:none;" />' +
+        '</div>' +
+      '</div>' +
+
+      // Audio Upload Bar
+      '<div style="background:#1e293b;border:1px dashed rgba(168,85,247,0.4);border-radius:12px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">' +
+        '<div style="display:flex;align-items:center;gap:8px;">' +
+          '<span style="font-size:20px;">🎧</span>' +
+          '<div>' +
+            '<div style="font-size:12.5px;font-weight:800;color:#f8fafc;">Listening Audio Biriktirish (Ixtiyoriy)</div>' +
+            '<div style="font-size:11px;color:#94a3b8;">Maksimal hajm: 25 MB</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="display:flex;align-items:center;gap:8px;">' +
+          '<span id="eeStdAudioLabel" style="display:none;font-size:11px;color:#10b981;font-weight:800;">Audio yuklandi ✓</span>' +
+          '<label style="background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(147,51,234,0.2));color:#c084fc;border:1.5px solid #a855f7;padding:6px 14px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;">' +
+            'Audio Tanlash <input type="file" id="eeStdAudioInput" accept="audio/*" style="display:none;" />' +
+          '</label>' +
         '</div>' +
       '</div>' +
 
@@ -1662,80 +1926,115 @@
 
     modalRoot.appendChild(m);
 
-    var questions = [
-      { q: "You ______ be very proud of your outstanding test results!", options: ["must", "can't", "might not", "should"], correct: 0 }
-    ];
+    var stdAudioInp = m.querySelector('#eeStdAudioInput');
+    var stdAudioLabel = m.querySelector('#eeStdAudioLabel');
+    stdAudioInp.onchange = function(e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      if (f.size > 25 * 1024 * 1024) {
+        alert("Audio fayl hajmi 25 MB dan oshmasligi kerak!");
+        stdAudioInp.value = '';
+        return;
+      }
+      var fr = new FileReader();
+      fr.onload = function(ev) {
+        uploadedAudio = { url: ev.target.result, name: f.name, size: f.size };
+        stdAudioLabel.textContent = "🎧 " + f.name.substring(0, 15) + "... (" + (f.size/(1024*1024)).toFixed(1) + "MB) ✓";
+        stdAudioLabel.style.display = 'inline';
+      };
+      fr.readAsDataURL(f);
+    };
+
+    var qList = [];
+    var qContainer = m.querySelector('#eeQuestionsContainer');
 
     function renderQuestions() {
-      var qc = m.querySelector('#eeQuestionsContainer');
-      var qh = '';
-      questions.forEach(function(item, qIdx) {
-        qh += '<div style="background:#1e293b;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px;">' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
-            '<span style="font-size:12px;font-weight:800;color:#94a3b8;">' + (qIdx + 1) + '-savol:</span>' +
-            (questions.length > 1 ? '<button type="button" class="ee-del-q-btn" data-qidx="' + qIdx + '" style="background:none;border:none;color:#ef4444;font-size:12px;cursor:pointer;">O‘chirish</button>' : '') +
+      qContainer.innerHTML = '';
+      if (qList.length === 0) {
+        qContainer.innerHTML = '<div style="font-size:12.5px;color:#64748b;text-align:center;padding:20px;background:#1e293b;border-radius:10px;">Hali savol qo‘shilmadi. "+ Savol qo‘shish" tugmasini bosing.</div>';
+        return;
+      }
+      qList.forEach(function(q, idx) {
+        var card = document.createElement('div');
+        card.style.cssText = 'background:#1e293b;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;';
+        card.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;">' +
+            '<span style="font-size:12.5px;font-weight:900;color:#38bdf8;">' + (idx + 1) + '-Savol</span>' +
+            '<button type="button" class="ee-del-q-btn" data-idx="' + idx + '" style="background:none;border:none;color:#ef4444;font-size:14px;font-weight:900;cursor:pointer;">✕</button>' +
           '</div>' +
-          '<input type="text" class="ee-q-text" data-qidx="' + qIdx + '" value="' + esc(item.q) + '" placeholder="Savol matnini kiriting..." style="width:100%;padding:8px 12px;background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#fff;font-size:13px;box-sizing:border-box;margin-bottom:8px;outline:none;" />' +
-          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">';
-          (item.options || []).forEach(function(opt, oIdx) {
-            var isCorr = (item.correct === oIdx);
-            qh += '<div style="display:flex;align-items:center;gap:6px;background:' + (isCorr ? 'rgba(16,185,129,0.15)' : '#0f172a') + ';border:1px solid ' + (isCorr ? '#10b981' : 'rgba(255,255,255,0.08)') + ';border-radius:8px;padding:4px 8px;">' +
-              '<input type="radio" name="corr_' + qIdx + '" ' + (isCorr ? 'checked' : '') + ' class="ee-opt-radio" data-qidx="' + qIdx + '" data-oidx="' + oIdx + '" style="cursor:pointer;" />' +
-              '<input type="text" value="' + esc(opt) + '" class="ee-opt-text" data-qidx="' + qIdx + '" data-oidx="' + oIdx + '" placeholder="Variant ' + (oIdx + 1) + '" style="flex:1;background:none;border:none;color:#fff;font-size:12px;outline:none;" />' +
-            '</div>';
-          });
-        qh += '</div></div>';
+          '<input type="text" class="ee-q-text" data-idx="' + idx + '" value="' + esc(q.q || '') + '" placeholder="Savol matni..." style="width:100%;padding:8px 12px;background:#0f172a;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;" />' +
+          '<div style="display:flex;gap:8px;">' +
+            '<input type="text" class="ee-q-opt" data-idx="' + idx + '" data-opt="0" value="' + esc(q.options[0] || '') + '" placeholder="A varianti" style="flex:1;padding:6px 10px;background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#fff;font-size:12px;box-sizing:border-box;" />' +
+            '<input type="text" class="ee-q-opt" data-idx="' + idx + '" data-opt="1" value="' + esc(q.options[1] || '') + '" placeholder="B varianti" style="flex:1;padding:6px 10px;background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#fff;font-size:12px;box-sizing:border-box;" />' +
+            '<input type="text" class="ee-q-opt" data-idx="' + idx + '" data-opt="2" value="' + esc(q.options[2] || '') + '" placeholder="C varianti" style="flex:1;padding:6px 10px;background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#fff;font-size:12px;box-sizing:border-box;" />' +
+            '<input type="text" class="ee-q-opt" data-idx="' + idx + '" data-opt="3" value="' + esc(q.options[3] || '') + '" placeholder="D varianti" style="flex:1;padding:6px 10px;background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#fff;font-size:12px;box-sizing:border-box;" />' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;gap:10px;">' +
+            '<span style="font-size:11.5px;color:#94a3b8;font-weight:700;">To‘g‘ri javob indeksi (0=A, 1=B, 2=C, 3=D):</span>' +
+            '<input type="number" class="ee-q-correct" data-idx="' + idx + '" min="0" max="3" value="' + (q.correct !== undefined ? q.correct : 0) + '" style="width:48px;padding:4px 8px;background:#0f172a;border:1px solid #10b981;border-radius:6px;color:#10b981;font-weight:900;text-align:center;" />' +
+          '</div>';
+        qContainer.appendChild(card);
       });
-      qc.innerHTML = qh;
 
-      // Bind dynamic question inputs
-      qc.querySelectorAll('.ee-q-text').forEach(function(inp) {
-        inp.oninput = function() { questions[parseInt(inp.getAttribute('data-qidx'), 10)].q = inp.value; };
+      qContainer.querySelectorAll('.ee-del-q-btn').forEach(function(b) {
+        b.onclick = function() {
+          var i = parseInt(b.getAttribute('data-idx'), 10);
+          qList.splice(i, 1);
+          renderQuestions();
+        };
       });
-      qc.querySelectorAll('.ee-opt-text').forEach(function(inp) {
+
+      qContainer.querySelectorAll('.ee-q-text').forEach(function(inp) {
         inp.oninput = function() {
-          var qI = parseInt(inp.getAttribute('data-qidx'), 10);
-          var oI = parseInt(inp.getAttribute('data-oidx'), 10);
-          questions[qI].options[oI] = inp.value;
+          var i = parseInt(inp.getAttribute('data-idx'), 10);
+          qList[i].q = inp.value;
         };
       });
-      qc.querySelectorAll('.ee-opt-radio').forEach(function(radio) {
-        radio.onchange = function() {
-          var qI = parseInt(radio.getAttribute('data-qidx'), 10);
-          var oI = parseInt(radio.getAttribute('data-oidx'), 10);
-          questions[qI].correct = oI;
-          renderQuestions();
+
+      qContainer.querySelectorAll('.ee-q-opt').forEach(function(inp) {
+        inp.oninput = function() {
+          var i = parseInt(inp.getAttribute('data-idx'), 10);
+          var o = parseInt(inp.getAttribute('data-opt'), 10);
+          qList[i].options[o] = inp.value;
         };
       });
-      qc.querySelectorAll('.ee-del-q-btn').forEach(function(btn) {
-        btn.onclick = function() {
-          var qI = parseInt(btn.getAttribute('data-qidx'), 10);
-          questions.splice(qI, 1);
-          renderQuestions();
+
+      qContainer.querySelectorAll('.ee-q-correct').forEach(function(inp) {
+        inp.oninput = function() {
+          var i = parseInt(inp.getAttribute('data-idx'), 10);
+          qList[i].correct = parseInt(inp.value, 10) || 0;
         };
       });
     }
 
-    renderQuestions();
-
     m.querySelector('#eeAddQBtn').onclick = function() {
-      questions.push({ q: "", options: ["Variant 1", "Variant 2", "Variant 3", "Variant 4"], correct: 0 });
+      qList.push({
+        id: 'q_' + Date.now() + '_' + Math.floor(Math.random() * 999),
+        q: '',
+        options: ['', '', '', ''],
+        correct: 0,
+        points: 1
+      });
       renderQuestions();
     };
 
-    var close = function() { m.remove(); };
-    m.querySelector('#eeCloseTestModal').onclick = close;
-    m.querySelector('#eeCancelTestBtn').onclick = close;
+    m.querySelector('#eeCloseTestModal').onclick = m.querySelector('#eeCancelTestBtn').onclick = function() {
+      m.remove();
+    };
 
     m.querySelector('#eeSaveTestBtn').onclick = function() {
       var title = m.querySelector('#eeNewTestTitle').value.trim();
+      var audioLimit = parseInt(m.querySelector('#eeStandardAudioLimit').value, 10) || 2;
       if (!title) { alert("Iltimos, test nomini kiriting!"); return; }
+      if (qList.length === 0) { alert("Iltimos, kamida 1 ta savol qo‘shing!"); return; }
+
       var S = getStore();
       var curU = getCurrentUser();
-      var defaultFid = (curU.role === 'teacher' ? ('f_root_' + curU.id) : 'f_root');
+      var defaultFid = (curU.role === 'teacher' && !isAdminOrTeacher() ? ('f_root_' + curU.id) : (curU.role === 'teacher' ? ('f_root_' + curU.id) : 'f_root'));
+
       S.fileExplorer.tests.push({
         id: randCode,
         title: title,
+        type: 'standard_quiz',
         folderId: folderId || defaultFid,
         createdAt: Date.now(),
         authorId: curU.id,
@@ -1743,85 +2042,29 @@
         creatorId: curU.id,
         authorName: curU.name || 'Ustoz',
         maxAttempts: 1,
-        questions: questions
+        questions: qList,
+        audioUrl: uploadedAudio ? uploadedAudio.url : null,
+        audioName: uploadedAudio ? uploadedAudio.name : null,
+        audioLimit: audioLimit
       });
+
       saveStore();
-      close();
-      showToast("Yangi test muvaffaqiyatli saqlandi! Test ID: " + randCode);
+      m.remove();
+      showToast("✓ Test muvaffaqiyatli saqlandi! Test ID: " + randCode);
       if (container) EE.renderExplorerView(container);
     };
+
+    renderQuestions();
   };
 
-  // Assign Homework Modal
-  EE.openAssignHomeworkModal = function(testId) {
-    var S = getStore();
-    var test = S.fileExplorer.tests.find(function(t) { return t.id === testId; });
-    if (!test) return;
-
-    var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
-    var m = document.createElement('div');
-    m.id = 'eeAssignHwOverlay';
-    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(10px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;';
-
-    var clsOpts = (S.classes || []).map(function(c) {
-      return '<option value="' + c.id + '">' + esc(c.name) + ' (' + (c.students || []).length + ' ta o‘quvchi)</option>';
-    }).join('');
-
-    m.innerHTML = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.3);border-radius:20px;max-width:480px;width:100%;padding:24px;color:#f8fafc;box-shadow:0 20px 50px rgba(0,0,0,0.6);">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">' +
-        '<h3 style="margin:0;font-size:17px;font-weight:900;">📤 Testni Guruhga Vazifa Qilib Yuborish</h3>' +
-        '<button id="eeCloseAssignBtn" style="background:none;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">✕</button>' +
-      '</div>' +
-      '<div style="font-size:13px;color:#94a3b8;margin-bottom:14px;">Tanlangan test: <b style="color:#38bdf8;">' + esc(test.title) + '</b> (' + esc(test.id) + ')</div>' +
-      '<div style="margin-bottom:16px;">' +
-        '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Sinf / Guruhni tanlang:</label>' +
-        '<select id="eeTargetClassSelect" style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:700;outline:none;">' +
-          clsOpts +
-        '</select>' +
-      '</div>' +
-      '<div style="margin-bottom:16px;">' +
-        '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Urinishlar soni (necha marta topshirish mumkin):</label>' +
-        '<div style="display:flex;align-items:center;gap:10px;">' +
-          '<input type="number" id="eeHwMaxAttempts" min="1" max="50" value="1" style="width:80px;padding:9px 12px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;font-size:14px;text-align:center;" />' +
-          '<span style="font-size:12px;color:#94a3b8;">marta ishlashga ruxsat berish (masalan 1, 2, 3...)</span>' +
-        '</div>' +
-      '</div>' +
-      '<div style="display:flex;justify-content:flex-end;gap:10px;">' +
-        '<button id="eeCancelAssignBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:8px 16px;border-radius:10px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
-        '<button id="eeConfirmAssignBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#fff;padding:8px 20px;border-radius:10px;font-weight:800;cursor:pointer;">Yuborish</button>' +
-      '</div>' +
-    '</div>';
-
-    modalRoot.appendChild(m);
-    var close = function() { m.remove(); };
-    m.querySelector('#eeCloseAssignBtn').onclick = close;
-    m.querySelector('#eeCancelAssignBtn').onclick = close;
-
-    m.querySelector('#eeConfirmAssignBtn').onclick = function() {
-      var selClsId = m.querySelector('#eeTargetClassSelect').value;
-      var targetCls = S.classes.find(function(c) { return c.id === selClsId; });
-      if (!targetCls) return;
-      if (!targetCls.extraHomework) targetCls.extraHomework = [];
-      targetCls.extraHomework.push({
-        testId: test.id,
-        title: test.title,
-        assignedAt: Date.now(),
-        maxAttempts: 1,
-        submissions: {}
-      });
-      saveStore();
-      close();
-      showToast("Test '" + targetCls.name + "' guruhiga muvaffaqiyatli yuborildi!");
-    };
-  };
-
-  // Student Test Solver (Strict 1-attempt)
   EE.openTakeTestModal = function(testId) {
     var S = getStore();
     var test = (S.fileExplorer.tests || []).find(function(t) { return t.id === testId; });
     if (!test) { alert("Test topilmadi!"); return; }
 
     var user = getCurrentUser();
+    var isStaff = (user && (user.role === 'teacher' || user.role === 'admin'));
+
     if (user && user.role === 'student') {
       var myTeacherIds = [];
       (S.classes || []).forEach(function(cls) {
@@ -1856,9 +2099,147 @@
     var maxAttempts = (hwMatch && hwMatch.maxAttempts) || test.maxAttempts || 1;
     var attemptsDone = (pastSub && pastSub.attemptsCount) || (pastSub ? 1 : 0);
 
-    if (attemptsDone >= maxAttempts && user.role !== 'teacher' && user.role !== 'admin') {
-      alert("⚠️ Ushbu topshiriq uchun berilgan barcha " + maxAttempts + " ta urinishdan foydalangansiz!\n\nEng yuqori natijangiz: " + (pastSub.bestScore || pastSub.score) + "%.");
+    if (attemptsDone >= maxAttempts && !isStaff) {
+      alert("⚠️ Ushbu topshiriq uchun berilgan barcha " + maxAttempts + " ta urinishdan foydalangansiz! \nEng yuqori natijangiz: " + (pastSub.bestScore || pastSub.score) + "%.");
       return;
+    }
+
+    // Audio Listening Tracker: per-user per-test listen count stored in localStorage
+    var audioListenStorageKey = 'ethith_listen_' + test.id + '_' + (user ? user.id : 'anon');
+    var audioListenCount = parseInt(localStorage.getItem(audioListenStorageKey) || '0', 10);
+    var audioLimit = test.audioLimit || 2;
+
+    // Helper to generate Listening Audio Player HTML bar
+    function createListeningBannerHtml() {
+      if (!test.audioUrl) return '';
+      var remListens = Math.max(0, audioLimit - audioListenCount);
+      var trackName = test.audioName || 'IELTS / Oxford Listening Audio';
+
+      return '<div id="eeAudioPlayerBanner" style="background:linear-gradient(135deg,#1e1b4b,#0f172a);border-bottom:1.5px solid #818cf8;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;box-shadow:0 6px 20px rgba(0,0,0,0.5);position:sticky;top:0;z-index:45;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<div style="font-size:26px;">🎧</div>' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;gap:8px;">' +
+              '<span style="background:rgba(129,140,248,0.2);color:#c7d2fe;font-size:11px;font-weight:900;padding:2px 8px;border-radius:6px;border:1px solid rgba(129,140,248,0.4);text-transform:uppercase;">LISTENING AUDIO</span>' +
+              '<h4 style="margin:0;font-size:14.5px;font-weight:900;color:#fff;">' + esc(trackName) + '</h4>' +
+            '</div>' +
+            '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">' +
+              (isStaff ? '👑 Ustoz rejimi: to‘liq audio boshqaruvi va erkin pauza' : '⚠️ Qat‘iy qoida: audio boshlangach to‘xtatib (pauza) bo‘lmaydi. Oxirigacha tinglang!') +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="display:flex;align-items:center;gap:14px;">' +
+          '<div style="background:rgba(0,0,0,0.4);padding:6px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);text-align:center;">' +
+            '<span style="font-size:11px;color:#94a3b8;font-weight:700;">Tinglash Limiti: </span>' +
+            '<span id="eeAudioCountBadge" style="font-size:13px;font-weight:900;color:#38bdf8;">' + (isStaff ? 'Cheksiz' : (audioListenCount + ' / ' + audioLimit + ' marta')) + '</span>' +
+          '</div>' +
+
+          (isStaff ? 
+            // Teacher gets standard audio player with play/pause/seek controls
+            '<audio id="eeTakeAudioEl" src="' + test.audioUrl + '" controls style="height:36px;outline:none;border-radius:8px;"></audio>' :
+            // Student gets strict continuous non-stop audio with NO pause button!
+            '<div style="display:flex;align-items:center;gap:10px;">' +
+              '<audio id="eeTakeAudioEl" src="' + test.audioUrl + '" preload="auto" style="display:none;"></audio>' +
+              '<button id="eeStudentAudioPlayBtn" ' + (remListens <= 0 ? 'disabled style="background:#334155;color:#64748b;border:none;padding:10px 20px;border-radius:10px;font-weight:900;font-size:13px;cursor:not-allowed;"' : 'style="background:linear-gradient(135deg,#6366f1,#4f46e5);border:none;color:#fff;padding:10px 22px;border-radius:10px;font-weight:900;font-size:13px;cursor:pointer;box-shadow:0 4px 16px rgba(99,102,241,0.5);display:flex;align-items:center;gap:6px;"') + '>' +
+                (remListens <= 0 ? '🔒 Tinglash limiti tugadi (' + audioLimit + ' marta)' : '▶️ Tinglashni Boshlash (Qoldi: ' + remListens + ' ta)') +
+              '</button>' +
+              '<div id="eeAudioProgressBox" style="display:none;align-items:center;gap:8px;background:rgba(0,0,0,0.3);padding:6px 12px;border-radius:8px;">' +
+                '<span style="font-size:11.5px;color:#a5b4fc;font-weight:800;" id="eeAudioCurTime">00:00</span>' +
+                '<div style="width:120px;height:6px;background:#334155;border-radius:3px;overflow:hidden;pointer-events:none;">' +
+                  '<div id="eeAudioProgressBar" style="width:0%;height:100%;background:linear-gradient(90deg,#6366f1,#38bdf8);transition:width 0.2s ease;"></div>' +
+                '</div>' +
+                '<span style="font-size:11.5px;color:#94a3b8;font-weight:800;" id="eeAudioDuration">00:00</span>' +
+              '</div>' +
+            '</div>'
+          ) +
+        '</div>' +
+      '</div>';
+    }
+
+    function setupListeningAudioEvents(parentModal) {
+      if (!test.audioUrl) return;
+      var audio = parentModal.querySelector('#eeTakeAudioEl');
+      if (!audio) return;
+
+      if (!isStaff) {
+        var playBtn = parentModal.querySelector('#eeStudentAudioPlayBtn');
+        var progressBox = parentModal.querySelector('#eeAudioProgressBox');
+        var bar = parentModal.querySelector('#eeAudioProgressBar');
+        var curTimeEl = parentModal.querySelector('#eeAudioCurTime');
+        var durEl = parentModal.querySelector('#eeAudioDuration');
+        var badge = parentModal.querySelector('#eeAudioCountBadge');
+
+        function fmt(s) {
+          s = Math.floor(s || 0);
+          var m = Math.floor(s / 60);
+          var sec = s % 60;
+          return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+        }
+
+        audio.addEventListener('loadedmetadata', function() {
+          if (durEl) durEl.textContent = fmt(audio.duration);
+        });
+
+        audio.addEventListener('timeupdate', function() {
+          if (audio.duration) {
+            var pct = (audio.currentTime / audio.duration) * 100;
+            if (bar) bar.style.width = pct + '%';
+            if (curTimeEl) curTimeEl.textContent = fmt(audio.currentTime);
+          }
+        });
+
+        // Strict non-stop playback: intercept pause attempt from students!
+        audio.addEventListener('pause', function() {
+          if (!audio.ended && audio.currentTime > 0) {
+            audio.play(); // immediately resume, NO pause allowed for students!
+          }
+        });
+
+        playBtn.onclick = function() {
+          var rem = Math.max(0, audioLimit - audioListenCount);
+          if (rem <= 0) {
+            alert("⚠️ Siz ushbu audioni eshitish uchun berilgan barcha " + audioLimit + " ta imkoniyatdan to‘liq foydalangansiz!");
+            return;
+          }
+
+          // Start playing
+          audio.play().then(function() {
+            playBtn.disabled = true;
+            playBtn.style.background = '#334155';
+            playBtn.style.cursor = 'not-allowed';
+            playBtn.style.boxShadow = 'none';
+            playBtn.innerHTML = '🔊 Audio tinglanmoqda... (Pauza taqiqlangan)';
+            if (progressBox) progressBox.style.display = 'flex';
+          }).catch(function(err) {
+            alert("Audioni qo‘yishda xatolik yuz berdi: " + err.message);
+          });
+        };
+
+        // When audio ends: increment listen counter
+        audio.addEventListener('ended', function() {
+          audioListenCount++;
+          localStorage.setItem(audioListenStorageKey, audioListenCount.toString());
+          var rem = Math.max(0, audioLimit - audioListenCount);
+          if (badge) badge.textContent = audioListenCount + ' / ' + audioLimit + ' marta';
+
+          if (rem > 0) {
+            playBtn.disabled = false;
+            playBtn.style.background = 'linear-gradient(135deg,#6366f1,#4f46e5)';
+            playBtn.style.cursor = 'pointer';
+            playBtn.style.boxShadow = '0 4px 16px rgba(99,102,241,0.5)';
+            playBtn.innerHTML = '▶️ Qayta tinglash (Qoldi: ' + rem + ' ta)';
+            showToast("✓ Audio yakunlandi. Sizda yana " + rem + " ta tinglash imkoniyati qoldi.");
+          } else {
+            playBtn.disabled = true;
+            playBtn.style.background = '#334155';
+            playBtn.style.cursor = 'not-allowed';
+            playBtn.style.boxShadow = 'none';
+            playBtn.innerHTML = '🔒 Barcha tinglash imkoniyatlari tugadi (' + audioLimit + ' marta)';
+            showToast("⚠️ Barcha tinglash imkoniyatlaringiz tugadi!");
+          }
+        });
+      }
     }
 
     // Branch for visual overlay tests (1:1 Oxford Navigate Interactive Engine)
@@ -1910,85 +2291,61 @@
           // Right Submit & Close
           '<div style="display:flex;align-items:center;gap:12px;">' +
             '<span style="font-size:12.5px;font-weight:800;color:#94a3b8;">Jami ' + totalQuestions + ' ta savol</span>' +
-            '<button id="eeSubmitTakeVisual" style="background:linear-gradient(135deg,#10b981,#059669);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;font-size:13.5px;cursor:pointer;box-shadow:0 4px 18px rgba(16,185,129,0.45);display:flex;align-items:center;gap:6px;">' +
-              '✅ Topshirish' +
-            '</button>' +
+            '<button id="eeSubmitTakeVisual" style="background:linear-gradient(135deg,#10b981,#059669);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;font-size:13.5px;cursor:pointer;box-shadow:0 4px 18px rgba(16,185,129,0.45);display:flex;align-items:center;gap:6px;">✓ Testni Yakunlash</button>' +
             '<button id="eeCloseTakeVisualTest" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:18px;font-weight:900;cursor:pointer;padding:8px 12px;border-radius:10px;">✕</button>' +
           '</div>' +
         '</div>' +
 
-        // Continuous Multi-Page Stream Workspace (Unconstrained, full height, all pages in succession)
-        '<div id="eeTakeWorkspace" style="flex:1;overflow-y:scroll;overflow-x:auto;padding:24px 20px 140px 20px;display:flex;flex-direction:column;align-items:center;background:#070b14;position:relative;">' +
-          '<div id="eeTakePagesWrap" style="display:flex;flex-direction:column;align-items:center;gap:32px;width:100%;">';
+        // Listening Audio Player Banner
+        createListeningBannerHtml() +
 
-          pagesList.forEach(function(pg, pIdx) {
-            var pageNum = pg.pageNum || (pIdx + 1);
-            vh += '<div class="ee-take-page-box" data-page="' + pageNum + '" style="position:relative;display:inline-block;width:' + currentWidthPx + 'px;max-width:98vw;box-shadow:0 14px 60px rgba(0,0,0,0.9);border-radius:10px;background:#ffffff;overflow:hidden;border:1px solid rgba(255,255,255,0.12);transition:width 0.15s ease;">' +
-              '<div style="background:#0f172a;color:#fff;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;font-weight:800;border-bottom:1px solid rgba(255,255,255,0.08);">' +
-                '<span>📄 ' + pageNum + '-sahifa' + (pagesList.length > 1 ? (' (Jami ' + pagesList.length + ' ta)') : '') + '</span>' +
-                '<span style="color:#38bdf8;">' + (pg.elements || []).length + ' ta topshiriq</span>' +
-              '</div>' +
-              '<div style="position:relative;width:100%;background:#ffffff;">' +
-                '<img src="' + pg.imageUrl + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:none;" />' +
-                '<div class="ee-take-page-overlay" data-page="' + pageNum + '" style="position:absolute;inset:0;z-index:20;">';
-
-                (pg.elements || []).forEach(function(el, idx) {
-                  var itemType = el.type || 'fill';
-
-                  if (itemType === 'fill') {
-                    // Transparent elegant input (Oxford Navigate style)
-                    vh += '<input type="text" class="ee-take-input" data-id="' + el.id + '" data-correct="' + esc(el.correct || '') + '" ' +
-                      'placeholder="' + esc(el.placeholder || el.label || '') + '" autocomplete="off" spellcheck="false" ' +
-                      'style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;' +
-                      'box-sizing:border-box;background:rgba(255,255,255,0.55);border:1.5px solid rgba(2,132,199,0.5);border-bottom:2.5px solid #0284c7;border-radius:4px;color:#000000;font-weight:800;font-size:14px;padding:0 6px;outline:none;transition:all 0.15s ease;" ' +
-                      'onfocus="this.style.background=\'#ffffff\';this.style.borderColor=\'#0284c7\';this.style.boxShadow=\'0 0 0 3px rgba(2,132,199,0.25)\';" ' +
-                      'onblur="this.style.background=\'rgba(255,255,255,0.55)\';this.style.borderColor=\'rgba(2,132,199,0.5)\';this.style.boxShadow=\'none\';" />';
-                  } else if (itemType === 'select') {
-                    // Dropdown select (Oxford Navigate style)
-                    var optList = Array.isArray(el.options) ? el.options : (el.options ? String(el.options).split(',') : []);
-                    vh += '<select class="ee-take-input ee-take-select" data-id="' + el.id + '" data-correct="' + esc(el.correct || '') + '" ' +
-                      'style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;' +
-                      'box-sizing:border-box;background:#ffffff;border:1.5px solid #0284c7;border-radius:4px;color:#000000;font-weight:700;font-size:13px;padding:0 4px;outline:none;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.12);">' +
-                      '<option value="">-- Tanlang --</option>';
-                    optList.forEach(function(opt) {
-                      var trimmedOpt = (opt || '').trim();
-                      if (trimmedOpt) {
-                        vh += '<option value="' + esc(trimmedOpt) + '">' + esc(trimmedOpt) + '</option>';
-                      }
-                    });
-                    vh += '</select>';
-                  } else if (itemType === 'cross') {
-                    // Strikethrough chip
-                    vh += '<div class="ee-take-chip ee-chip-cross" data-id="' + el.id + '" data-correct="' + esc(el.correct || '') + '" ' +
-                      'style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;cursor:pointer;border-radius:4px;transition:all 0.15s ease;" ' +
-                      'title="O‘chirish uchun bosing"></div>';
-                  } else if (itemType === 'choose') {
-                    // Select chip
-                    vh += '<div class="ee-take-chip ee-chip-choose" data-id="' + el.id + '" data-correct="' + esc(el.correct || '') + '" ' +
-                      'style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;cursor:pointer;border-radius:4px;transition:all 0.15s ease;" ' +
-                      'title="Tanlash uchun bosing"></div>';
-                  } else {
-                    // Default interactive box
-                    vh += '<input type="text" class="ee-take-input" data-id="' + el.id + '" data-correct="' + esc(el.correct || '') + '" ' +
-                      'placeholder="..." autocomplete="off" spellcheck="false" ' +
-                      'style="position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;box-sizing:border-box;background:rgba(255,255,255,0.55);border:1.5px solid #0284c7;border-radius:4px;color:#000;font-weight:800;font-size:14px;padding:0 6px;outline:none;" />';
-                  }
-                });
-
-            vh += '</div></div></div>';
-          });
-
-      vh += '</div></div>';
+        // Multi-Page Viewer
+        '<div id="eeTakeWorkspace" style="flex:1;overflow-y:scroll;overflow-x:auto;padding:24px 20px 140px 20px;display:flex;flex-direction:column;align-items:center;background:#070b14;">' +
+          '<div id="eeTakePagesWrap" style="display:flex;flex-direction:column;align-items:center;gap:36px;width:100%;"></div>' +
+        '</div>';
 
       vm.innerHTML = vh;
       modalRoot.appendChild(vm);
 
-      var takeWrap = vm.querySelector('#eeTakePagesWrap');
+      setupListeningAudioEvents(vm);
 
-      // Zoom controls
+      var takePagesWrap = vm.querySelector('#eeTakePagesWrap');
+
+      pagesList.forEach(function(p) {
+        var pBox = document.createElement('div');
+        pBox.className = 'ee-take-page-box';
+        pBox.style.cssText = 'position:relative;width:' + currentWidthPx + 'px;background:#ffffff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.8);overflow:hidden;border:1px solid rgba(255,255,255,0.12);line-height:0;';
+
+        var pImg = document.createElement('img');
+        pImg.src = p.imageUrl;
+        pImg.style.cssText = 'width:100%;display:block;pointer-events:none;';
+
+        var pOverlay = document.createElement('div');
+        pOverlay.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:auto;';
+
+        (p.elements || []).forEach(function(el, i) {
+          var w = document.createElement('div');
+          w.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;display:flex;align-items:center;justify-content:center;box-sizing:border-box;z-index:20;';
+
+          if (el.type === 'choose') {
+            w.innerHTML = '<span class="ee-chip-choose" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" data-selected="false" style="cursor:pointer;padding:2px 8px;border-radius:6px;font-size:13px;font-weight:800;color:#0284c7;user-select:none;transition:all 0.15s ease;">' + esc(el.label || el.correct || 'Tanlash') + '</span>';
+          } else if (el.type === 'cross') {
+            w.innerHTML = '<span class="ee-chip-cross" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" data-selected="false" style="cursor:pointer;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:800;color:#ef4444;user-select:none;transition:all 0.15s ease;">' + esc(el.label || el.correct || 'O‘chirish') + '</span>';
+          } else {
+            w.innerHTML = '<input type="text" class="ee-take-input" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" placeholder="' + esc(el.label || '') + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width:100%;height:100%;background:rgba(255,255,255,0.92);border:1.5px solid #0284c7;border-radius:5px;padding:2px 6px;font-size:13.5px;font-weight:700;color:#0f172a;outline:none;box-sizing:border-box;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.15);" />';
+          }
+
+          pOverlay.appendChild(w);
+        });
+
+        pBox.appendChild(pImg);
+        pBox.appendChild(pOverlay);
+        takePagesWrap.appendChild(pBox);
+      });
+
       function applyTakeWidth(w) {
         currentWidthPx = Math.max(650, Math.min(2200, w));
-        takeWrap.querySelectorAll('.ee-take-page-box').forEach(function(b) {
+        takePagesWrap.querySelectorAll('.ee-take-page-box').forEach(function(b) {
           b.style.width = currentWidthPx + 'px';
         });
       }
@@ -2001,7 +2358,7 @@
         applyTakeWidth(Math.floor(wsW * 0.94));
       };
 
-      // Cross & Choose chip interactivity
+      // Interactivity for choose and cross chips
       vm.querySelectorAll('.ee-chip-cross').forEach(function(chip) {
         chip.onclick = function() {
           var isCrossed = chip.getAttribute('data-selected') === 'true';
@@ -2064,57 +2421,63 @@
             inp.style.border = '2px solid #ef4444';
             inp.style.background = 'rgba(239,68,68,0.18)';
             inp.style.color = '#b91c1c';
-
-            // Show hint badge with correct answer
-            var hint = document.createElement('div');
-            hint.style.cssText = 'position:absolute;top:100%;left:0;background:#0f172a;color:#38bdf8;font-size:11px;font-weight:900;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.5);margin-top:2px;border:1px solid #38bdf8;';
-            hint.textContent = '✓ ' + rawCorrect;
-            inp.parentElement.appendChild(hint);
+            inp.title = 'To‘g‘ri javob: ' + rawCorrect;
           }
         });
 
-        // Check chips
-        vm.querySelectorAll('.ee-chip-choose, .ee-chip-cross').forEach(function(chip) {
-          var isSelected = chip.getAttribute('data-selected') === 'true';
-          var targetCorrect = (chip.getAttribute('data-correct') || '').toLowerCase().trim();
-          var shouldBeSelected = (targetCorrect === 'true' || targetCorrect === 'to‘g‘ri' || targetCorrect === 'ha' || targetCorrect === '1');
-
-          if (isSelected === shouldBeSelected) {
+        // Check choose chips
+        vm.querySelectorAll('.ee-chip-choose').forEach(function(chip) {
+          var isChosen = chip.getAttribute('data-selected') === 'true';
+          var rawCorrect = (chip.getAttribute('data-correct') || '').trim().toLowerCase();
+          if (isChosen && (rawCorrect === 'true' || rawCorrect === '1' || rawCorrect === 'correct')) {
             correctCount++;
+            chip.style.background = 'rgba(16,185,129,0.3)';
+            chip.style.border = '2px solid #10b981';
+          } else if (isChosen) {
+            chip.style.background = 'rgba(239,68,68,0.3)';
+            chip.style.border = '2px solid #ef4444';
           }
         });
 
-        var pct = totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 100;
-        var band = (pct >= 90) ? '9.0' : (pct >= 82) ? '8.0' : (pct >= 74) ? '7.5' : (pct >= 65) ? '7.0' : (pct >= 55) ? '6.0' : (pct >= 45) ? '5.5' : '5.0';
-
-        // Record submission in class
-        (S.classes || []).forEach(function(c) {
-          (c.extraHomework || []).forEach(function(hw) {
-            if (hw.testId === testId) {
-              if (!hw.submissions) hw.submissions = {};
-              var past = hw.submissions[user.id] || {};
-              var curCount = (past.attemptsCount || 0) + 1;
-              hw.submissions[user.id] = {
-                score: pct,
-                bestScore: Math.max(pct, past.bestScore || 0),
-                correct: correctCount,
-                total: totalCount,
-                band: band,
-                attemptsCount: curCount,
-                completedAt: Date.now()
-              };
-            }
-          });
+        // Check cross chips
+        vm.querySelectorAll('.ee-chip-cross').forEach(function(chip) {
+          var isCrossed = chip.getAttribute('data-selected') === 'true';
+          var rawCorrect = (chip.getAttribute('data-correct') || '').trim().toLowerCase();
+          if (isCrossed && (rawCorrect === 'true' || rawCorrect === 'cross' || rawCorrect === 'incorrect')) {
+            correctCount++;
+            chip.style.background = 'rgba(16,185,129,0.3)';
+            chip.style.border = '2px solid #10b981';
+          }
         });
-        saveStore();
 
-        // Show celebration results modal
+        var pct = totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 0;
+        var band = (pct >= 90) ? 9.0 : (pct >= 80) ? 8.0 : (pct >= 70) ? 7.0 : (pct >= 60) ? 6.0 : (pct >= 50) ? 5.5 : 4.5;
+
+        // Save submission
+        if (hwMatch && user) {
+          hwMatch.submissions = hwMatch.submissions || {};
+          var prev = hwMatch.submissions[user.id];
+          var newCount = (prev ? (prev.attemptsCount || 1) : 0) + 1;
+          var best = prev ? Math.max(prev.bestScore || prev.score || 0, pct) : pct;
+          hwMatch.submissions[user.id] = {
+            userId: user.id,
+            userName: user.name,
+            score: pct,
+            bestScore: best,
+            band: band,
+            submittedAt: Date.now(),
+            attemptsCount: newCount
+          };
+          saveStore();
+        }
+
+        // Result Dialog
         var resModal = document.createElement('div');
-        resModal.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.9);backdrop-filter:blur(10px);z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:16px;';
-        resModal.innerHTML = '<div style="background:#0f172a;border:2px solid #10b981;border-radius:20px;padding:30px;max-width:440px;width:100%;text-align:center;color:#fff;box-shadow:0 24px 70px rgba(0,0,0,0.85);">' +
-          '<div style="font-size:52px;margin-bottom:12px;">🎉</div>' +
-          '<h2 style="margin:0 0 6px;font-size:22px;font-weight:900;color:#10b981;">Test Yakunlandi!</h2>' +
-          '<p style="margin:0 0 20px;font-size:13px;color:#94a3b8;">' + esc(test.title) + '</p>' +
+        resModal.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(10px);z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:16px;font-family:system-ui,-apple-system,sans-serif;';
+        resModal.innerHTML = '<div style="background:#0f172a;border:1.5px solid #10b981;border-radius:22px;max-width:440px;width:100%;padding:28px;text-align:center;color:#fff;box-shadow:0 20px 60px rgba(0,0,0,0.8);">' +
+          '<div style="font-size:44px;margin-bottom:12px;">🎉</div>' +
+          '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;">Test Yakunlandi!</h3>' +
+          '<p style="color:#94a3b8;font-size:13px;margin:0 0 20px;">Natijalaringiz tizimga qayd etildi.</p>' +
           '<div style="background:#1e293b;border-radius:14px;padding:18px;margin-bottom:20px;display:flex;justify-content:space-around;border:1px solid rgba(255,255,255,0.08);">' +
             '<div>' +
               '<div style="font-size:28px;font-weight:900;color:#38bdf8;">' + pct + '%</div>' +
@@ -2148,7 +2511,7 @@
 
     var m = document.createElement('div');
     m.id = 'eeTakeTestModal';
-    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.9);backdrop-filter:blur(14px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;';
+    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.9);backdrop-filter:blur(14px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;flex-direction:column;';
 
     function renderQuestionModal() {
       var q = test.questions[curQIdx];
@@ -2163,38 +2526,42 @@
           '<button id="eeCloseTakeTest" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
         '</div>' +
 
-        '<div style="margin-bottom:22px;font-size:16px;font-weight:800;color:#fff;line-height:1.5;">' +
+        createListeningBannerHtml() +
+
+        '<div style="margin:20px 0 22px;font-size:16px;font-weight:800;color:#fff;line-height:1.5;">' +
           esc(q.q) +
         '</div>' +
 
         '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">';
         (q.options || []).forEach(function(opt, oIdx) {
           var isSel = (userAnswers[curQIdx] === oIdx);
-          qh += '<button class="ee-ans-option" data-oidx="' + oIdx + '" style="background:' + (isSel ? 'linear-gradient(135deg,rgba(2,132,199,0.35),rgba(37,99,235,0.35))' : 'rgba(30,41,59,0.5)') + ';border:1.5px solid ' + (isSel ? '#38bdf8' : 'rgba(255,255,255,0.1)') + ';border-radius:14px;padding:14px 18px;text-align:left;color:#fff;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:12px;transition:all 0.15s ease;">' +
-            '<span style="width:24px;height:24px;border-radius:50%;border:1.5px solid ' + (isSel ? '#38bdf8' : '#64748b') + ';background:' + (isSel ? '#38bdf8' : 'transparent') + ';display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:' + (isSel ? '#0f172a' : '#94a3b8') + ';">' + String.fromCharCode(65 + oIdx) + '</span>' +
+          qh += '<button class="ee-opt-btn" data-opt="' + oIdx + '" style="background:' + (isSel ? 'rgba(56,189,248,0.2)' : '#1e293b') + ';border:1.5px solid ' + (isSel ? '#38bdf8' : 'rgba(255,255,255,0.1)') + ';color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:700;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;transition:all 0.15s ease;">' +
+            '<span style="width:24px;height:24px;border-radius:50%;background:' + (isSel ? '#38bdf8' : 'rgba(255,255,255,0.1)') + ';color:' + (isSel ? '#0f172a' : '#94a3b8') + ';font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;">' + String.fromCharCode(65 + oIdx) + '</span>' +
             '<span>' + esc(opt) + '</span>' +
           '</button>';
         });
       qh += '</div>' +
 
         '<div style="display:flex;justify-content:space-between;align-items:center;">' +
-          (curQIdx > 0 ? '<button id="eePrevQBtn" style="background:rgba(255,255,255,0.08);border:none;color:#cbd5e1;padding:10px 18px;border-radius:12px;font-weight:800;cursor:pointer;">← Oldingi</button>' : '<div></div>') +
-          '<button id="eeNextQBtn" style="background:linear-gradient(135deg,#10b981,#059669);border:none;color:#fff;padding:10px 24px;border-radius:12px;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);">' +
-            (isLast ? '✅ Testni Yakunlash' : 'Keyingi →') +
+          (curQIdx > 0 ? '<button id="eePrevQBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:10px 18px;border-radius:10px;font-weight:700;cursor:pointer;">← Oldingi</button>' : '<div></div>') +
+          '<button id="eeNextQBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#fff;padding:10px 24px;border-radius:10px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 14px rgba(2,132,199,0.4);">' +
+            (isLast ? 'Testni Yakunlash ✓' : 'Keyingi →') +
           '</button>' +
         '</div>' +
       '</div>';
 
       m.innerHTML = qh;
 
+      setupListeningAudioEvents(m);
+
       m.querySelector('#eeCloseTakeTest').onclick = function() {
         if (confirm("Testni to‘xtatmoqchimisiz? Natijangiz saqlanmaydi.")) m.remove();
       };
 
-      m.querySelectorAll('.ee-ans-option').forEach(function(btn) {
+      m.querySelectorAll('.ee-opt-btn').forEach(function(btn) {
         btn.onclick = function() {
-          var oI = parseInt(btn.getAttribute('data-oidx'), 10);
-          userAnswers[curQIdx] = oI;
+          var o = parseInt(btn.getAttribute('data-opt'), 10);
+          userAnswers[curQIdx] = o;
           renderQuestionModal();
         };
       });
@@ -2202,54 +2569,56 @@
       var prevBtn = m.querySelector('#eePrevQBtn');
       if (prevBtn) {
         prevBtn.onclick = function() {
-          curQIdx--;
-          renderQuestionModal();
+          if (curQIdx > 0) {
+            curQIdx--;
+            renderQuestionModal();
+          }
         };
       }
 
       m.querySelector('#eeNextQBtn').onclick = function() {
         if (userAnswers[curQIdx] === undefined) {
-          alert("Iltimos, javob variantlaridan birini tanlang!");
+          alert("Iltimos, avval variantlardan birini tanlang!");
           return;
         }
         if (!isLast) {
           curQIdx++;
           renderQuestionModal();
         } else {
-          var correctCount = 0;
-          test.questions.forEach(function(item, idx) {
-            if (userAnswers[idx] === item.correct) correctCount++;
+          // Submit
+          var correct = 0;
+          test.questions.forEach(function(quest, qi) {
+            if (userAnswers[qi] === quest.correct) correct++;
           });
-          var pct = Math.round((correctCount / totalQ) * 100);
+          var pct = totalQ > 0 ? Math.round((correct / totalQ) * 100) : 0;
+          var band = (pct >= 90) ? 9.0 : (pct >= 80) ? 8.0 : (pct >= 70) ? 7.0 : (pct >= 60) ? 6.0 : (pct >= 50) ? 5.5 : 4.5;
 
-          (S.classes || []).forEach(function(c) {
-            (c.extraHomework || []).forEach(function(hw) {
-              if (hw.testId === testId) {
-                if (!hw.submissions) hw.submissions = {};
-                hw.submissions[user.id] = {
-                  score: pct,
-                  correct: correctCount,
-                  total: totalQ,
-                  completedAt: Date.now()
-                };
-              }
-            });
-          });
-          saveStore();
+          if (hwMatch && user) {
+            hwMatch.submissions = hwMatch.submissions || {};
+            var prev = hwMatch.submissions[user.id];
+            var newCount = (prev ? (prev.attemptsCount || 1) : 0) + 1;
+            var best = prev ? Math.max(prev.bestScore || prev.score || 0, pct) : pct;
+            hwMatch.submissions[user.id] = {
+              userId: user.id,
+              userName: user.name,
+              score: pct,
+              bestScore: best,
+              band: band,
+              submittedAt: Date.now(),
+              attemptsCount: newCount
+            };
+            saveStore();
+          }
+
           m.remove();
-          showToast("Test yakunlandi! Natijangiz: " + pct + "% (" + correctCount + "/" + totalQ + ")");
+          alert("🎉 Test yakunlandi! Natija: " + pct + "%\nTo‘g‘ri javoblar: " + correct + " / " + totalQ + "\nIELTS Band: " + band);
         }
       };
     }
 
-    modalRoot.appendChild(m);
     renderQuestionModal();
+    modalRoot.appendChild(m);
   };
-
-  // ============================================================================
-  // UNIFIED ETHITH FINANCE, STUDENT PAYMENTS & TEACHER PAYROLL ENGINE
-  // Adapted from APEX EDU, 100% Obsidian Cyber-Glass Dark Mode
-  // ============================================================================
 
   EE.renderBillingView = function(container) {
     EE.renderFinanceUnifiedView(container, 'overview');
