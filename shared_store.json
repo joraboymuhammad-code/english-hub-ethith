@@ -46533,13 +46533,8 @@
         "left": 12,
         "width": 36,
         "height": 2,
-        "correct": [
-          "I'm not from China.",
-          "I am not from China.",
-          "'m not from China.",
-          "I'm not from China",
-          "'m not from China"
-        ]
+        "correct": "'m not from China. or I am not from China. or 'm not from China. or I'm not from China or 'm not from China",
+        "group": "2"
       },
       {
         "id": "p1007_ex6_3",
@@ -56625,8 +56620,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "4b",
-        "top": 46.2,
-        "left": 78.1,
+        "top": 42.6,
+        "left": 82.8,
         "width": 9.8,
         "height": 1.5,
         "correct": "further",
@@ -56637,8 +56632,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "5a",
-        "top": 50.3,
-        "left": 68.4,
+        "top": 45.9,
+        "left": 68,
         "width": 9.8,
         "height": 1.5,
         "correct": "besides",
@@ -82833,7 +82828,7 @@
     "1004": 1793366841110,
     "1005": 1793366841110,
     "1006": 1793366946894,
-    "1007": 1793367039185,
+    "1007": 1793367057762,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -82863,7 +82858,7 @@
     "2025": 1793366852142,
     "2026": 1793367016175,
     "2027": 1793367016175,
-    "2028": 1793367055573,
+    "2028": 1793367062157,
     "2029": 1793366712396,
     "2030": 1793366712396,
     "2031": 1793366712396,
@@ -83625,5 +83620,5 @@
       }
     }
   },
-  "updatedAt": 1793367056450
+  "updatedAt": 1793367062182
 }
