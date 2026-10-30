@@ -60808,8 +60808,8 @@
         "exercise": "4",
         "label": "4",
         "text": "He lives on the shore of",
-        "top": 30.9,
-        "left": 9.4,
+        "top": 32.5,
+        "left": 10.7,
         "width": 11.7,
         "height": 1.4,
         "isCorrect": true,
@@ -60821,8 +60821,8 @@
         "exercise": "4",
         "label": "5",
         "text": "Life is full of",
-        "top": 34,
-        "left": 9.4,
+        "top": 35.6,
+        "left": 10.5,
         "width": 6.8,
         "height": 1.4,
         "isCorrect": true,
@@ -60834,8 +60834,8 @@
         "exercise": "4",
         "label": "5",
         "text": "Life is full of the",
-        "top": 34,
-        "left": 18.8,
+        "top": 35.8,
+        "left": 27.6,
         "width": 8.3,
         "height": 1.4,
         "isCorrect": false,
@@ -83711,7 +83711,7 @@
     "2036": 1793367702711,
     "2037": 1793367776628,
     "2038": 1793367866018,
-    "2039": 1793367879740,
+    "2039": 1793367884696,
     "2040": 1793366712397,
     "2041": 1793366712397,
     "2042": 1793366712397,
@@ -84462,5 +84462,5 @@
       }
     }
   },
-  "updatedAt": 1793367880909
+  "updatedAt": 1793367884884
 }
