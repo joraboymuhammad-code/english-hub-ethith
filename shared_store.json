@@ -45459,23 +45459,6 @@
     ],
     "1026": [
       {
-        "id": "p1026_ex1a_1",
-        "type": "select",
-        "page": 1026,
-        "exercise": "1a",
-        "label": "1",
-        "top": 27.1,
-        "left": 11.8,
-        "width": 4.5,
-        "height": 2,
-        "correct": "c",
-        "options": [
-          "a",
-          "b",
-          "c"
-        ]
-      },
-      {
         "id": "p1026_ex1a_2",
         "type": "select",
         "page": 1026,
@@ -45713,6 +45696,80 @@
         "width": 4.5,
         "height": 2,
         "correct": "a"
+      }
+    ],
+    "1027": [
+      {
+        "id": "p1027_ex1_1",
+        "type": "fill",
+        "page": 1027,
+        "exercise": "1",
+        "label": "1",
+        "top": 46.4,
+        "left": 13.7,
+        "width": 14,
+        "height": 2.1,
+        "correct": "collection"
+      },
+      {
+        "id": "p1027_ex1_2",
+        "type": "fill",
+        "page": 1027,
+        "exercise": "1",
+        "label": "2",
+        "top": 68.5,
+        "left": 13.1,
+        "width": 14,
+        "height": 2.1,
+        "correct": "collector"
+      },
+      {
+        "id": "p1027_ex1_3",
+        "type": "fill",
+        "page": 1027,
+        "exercise": "1",
+        "label": "3",
+        "top": 91.2,
+        "left": 13.1,
+        "width": 14,
+        "height": 2.1,
+        "correct": "collect"
+      },
+      {
+        "id": "p1027_ex2_A",
+        "type": "fill",
+        "page": 1027,
+        "exercise": "2",
+        "label": "A",
+        "top": 50,
+        "left": 82,
+        "width": 5,
+        "height": 2.5,
+        "correct": "2"
+      },
+      {
+        "id": "p1027_ex2_B",
+        "type": "fill",
+        "page": 1027,
+        "exercise": "2",
+        "label": "B",
+        "top": 75,
+        "left": 82,
+        "width": 5,
+        "height": 2.5,
+        "correct": "3"
+      },
+      {
+        "id": "p1027_ex2_C",
+        "type": "fill",
+        "page": 1027,
+        "exercise": "2",
+        "label": "C",
+        "top": 50,
+        "left": 52,
+        "width": 5,
+        "height": 2.5,
+        "correct": "1"
       }
     ],
     "1028": [
@@ -81945,7 +82002,8 @@
     "1023": 1793371160969,
     "1024": 1793371374470,
     "1025": 1793371374471,
-    "1026": 1793371484117,
+    "1026": 1793371493374,
+    "1027": 1793371506436,
     "1028": 1793127704567,
     "1037": 1793120102340,
     "1042": 1793370793069,
@@ -82784,5 +82842,5 @@
       }
     }
   },
-  "updatedAt": 1793371486244
+  "updatedAt": 1793371508123
 }
