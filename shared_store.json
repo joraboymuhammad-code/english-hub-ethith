@@ -46380,25 +46380,13 @@
         "correct": "a book"
       },
       {
-        "id": "p1029_ex7_1",
-        "type": "fill",
-        "page": 1029,
-        "exercise": "7",
-        "label": "1",
-        "top": 14.6,
-        "left": 66.9,
-        "width": 10,
-        "height": 1.8,
-        "correct": "like"
-      },
-      {
         "id": "p1029_ex7_2",
         "type": "fill",
         "page": 1029,
         "exercise": "7",
         "label": "2",
-        "top": 16.3,
-        "left": 67.2,
+        "top": 14.9,
+        "left": 67,
         "width": 10,
         "height": 1.8,
         "correct": "watch"
@@ -46409,8 +46397,8 @@
         "page": 1029,
         "exercise": "7",
         "label": "3",
-        "top": 18.3,
-        "left": 68,
+        "top": 16.7,
+        "left": 67.7,
         "width": 10,
         "height": 1.8,
         "correct": "read"
@@ -46421,8 +46409,8 @@
         "page": 1029,
         "exercise": "7",
         "label": "4",
-        "top": 20,
-        "left": 66.2,
+        "top": 18.4,
+        "left": 66.6,
         "width": 10,
         "height": 1.8,
         "correct": "live"
@@ -46433,8 +46421,8 @@
         "page": 1029,
         "exercise": "7",
         "label": "5",
-        "top": 23.3,
-        "left": 67.6,
+        "top": 21.7,
+        "left": 66.9,
         "width": 10,
         "height": 1.8,
         "correct": "teach"
@@ -46445,8 +46433,8 @@
         "page": 1029,
         "exercise": "7",
         "label": "6",
-        "top": 26.6,
-        "left": 62.3,
+        "top": 24.8,
+        "left": 60.9,
         "width": 10,
         "height": 1.8,
         "correct": "work"
@@ -46457,8 +46445,8 @@
         "page": 1029,
         "exercise": "7",
         "label": "7",
-        "top": 28.3,
-        "left": 64.5,
+        "top": 26.7,
+        "left": 64.6,
         "width": 10,
         "height": 1.8,
         "correct": "study"
@@ -46469,8 +46457,8 @@
         "page": 1029,
         "exercise": "7",
         "label": "8",
-        "top": 30,
-        "left": 57.3,
+        "top": 28.3,
+        "left": 56.5,
         "width": 10,
         "height": 1.8,
         "correct": "go"
@@ -46488,25 +46476,13 @@
         "correct": "play"
       },
       {
-        "id": "p1029_ex8_1",
-        "type": "fill",
-        "page": 1029,
-        "exercise": "8",
-        "label": "1",
-        "top": 45.6,
-        "left": 60.5,
-        "width": 9,
-        "height": 1.8,
-        "correct": "likes"
-      },
-      {
         "id": "p1029_ex8_2",
         "type": "fill",
         "page": 1029,
         "exercise": "8",
         "label": "2",
-        "top": 45.6,
-        "left": 78.8,
+        "top": 44.3,
+        "left": 79.1,
         "width": 9,
         "height": 1.8,
         "correct": "plays"
@@ -46517,7 +46493,7 @@
         "page": 1029,
         "exercise": "8",
         "label": "3",
-        "top": 47.4,
+        "top": 45.9,
         "left": 74.2,
         "width": 9,
         "height": 1.8,
@@ -46529,7 +46505,7 @@
         "page": 1029,
         "exercise": "8",
         "label": "4",
-        "top": 50.8,
+        "top": 49.3,
         "left": 60.2,
         "width": 9,
         "height": 1.8,
@@ -46541,8 +46517,8 @@
         "page": 1029,
         "exercise": "8",
         "label": "5",
-        "top": 52.5,
-        "left": 62,
+        "top": 51.2,
+        "left": 62.1,
         "width": 9,
         "height": 1.8,
         "correct": "live"
@@ -46553,8 +46529,8 @@
         "page": 1029,
         "exercise": "8",
         "label": "6",
-        "top": 54.3,
-        "left": 59.5,
+        "top": 53.1,
+        "left": 59.9,
         "width": 9,
         "height": 1.8,
         "correct": "goes"
@@ -46565,8 +46541,8 @@
         "page": 1029,
         "exercise": "8",
         "label": "7",
-        "top": 56,
-        "left": 73.2,
+        "top": 54.8,
+        "left": 73.6,
         "width": 9,
         "height": 1.8,
         "correct": "love"
@@ -46577,8 +46553,8 @@
         "page": 1029,
         "exercise": "8",
         "label": "8",
-        "top": 57.8,
-        "left": 71.5,
+        "top": 56.4,
+        "left": 71.8,
         "width": 9,
         "height": 1.8,
         "correct": "go"
@@ -46589,8 +46565,8 @@
         "page": 1029,
         "exercise": "8",
         "label": "9",
-        "top": 59.5,
-        "left": 70.2,
+        "top": 57.9,
+        "left": 70.6,
         "width": 9,
         "height": 1.8,
         "correct": "play"
@@ -82426,8 +82402,8 @@
     "1025": 1793371374471,
     "1026": 1793371528067,
     "1027": 1793371528067,
-    "1028": 1793371602582,
-    "1029": 1793371642784,
+    "1028": 1793371683456,
+    "1029": 1793371683456,
     "1037": 1793120102340,
     "1042": 1793370793069,
     "1043": 1793370793070,
@@ -83265,5 +83241,5 @@
       }
     }
   },
-  "updatedAt": 1793371643370
+  "updatedAt": 1793371686164
 }
