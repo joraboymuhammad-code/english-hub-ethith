@@ -25746,6 +25746,18 @@
       "createdAt": 1793380453528,
       "coins": 1000,
       "gifts": []
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -102863,5 +102875,5 @@
       }
     }
   },
-  "updatedAt": 1793384153971
+  "updatedAt": 1793384157717
 }
