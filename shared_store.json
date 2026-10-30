@@ -59020,8 +59020,8 @@
         "page": 1080,
         "exercise": "1",
         "label": "2",
-        "top": 22,
-        "left": 16,
+        "top": 28.7,
+        "left": 24.1,
         "width": 14,
         "height": 1.8,
         "correct": "croissant"
@@ -59032,8 +59032,8 @@
         "page": 1080,
         "exercise": "1",
         "label": "3",
-        "top": 25,
-        "left": 16,
+        "top": 31.4,
+        "left": 24.2,
         "width": 14,
         "height": 1.8,
         "correct": "salad"
@@ -59044,8 +59044,8 @@
         "page": 1080,
         "exercise": "1",
         "label": "4",
-        "top": 28,
-        "left": 16,
+        "top": 33.3,
+        "left": 24.2,
         "width": 14,
         "height": 1.8,
         "correct": "sandwich"
@@ -59056,8 +59056,8 @@
         "page": 1080,
         "exercise": "1",
         "label": "5",
-        "top": 31,
-        "left": 16,
+        "top": 35.8,
+        "left": 21.6,
         "width": 14,
         "height": 1.8,
         "correct": "doughnut"
@@ -59068,8 +59068,8 @@
         "page": 1080,
         "exercise": "1",
         "label": "6",
-        "top": 34,
-        "left": 16,
+        "top": 38.9,
+        "left": 20.8,
         "width": 14,
         "height": 1.8,
         "correct": "tea"
@@ -59080,8 +59080,8 @@
         "page": 1080,
         "exercise": "1",
         "label": "7",
-        "top": 22,
-        "left": 45,
+        "top": 40.7,
+        "left": 21.1,
         "width": 14,
         "height": 1.8,
         "correct": "apple juice"
@@ -59092,8 +59092,8 @@
         "page": 1080,
         "exercise": "1",
         "label": "8",
-        "top": 25,
-        "left": 45,
+        "top": 43.9,
+        "left": 19.4,
         "width": 14,
         "height": 1.8,
         "correct": "biscuit"
@@ -59140,8 +59140,8 @@
         "page": 1080,
         "exercise": "1",
         "label": "Mystery",
-        "top": 61,
-        "left": 24.8,
+        "top": 54.6,
+        "left": 26.9,
         "width": 16,
         "height": 1.8,
         "correct": "orange juice"
@@ -93919,8 +93919,8 @@
     "1075": 1793379024657,
     "1078": 1793379138558,
     "1079": 1793379138559,
-    "1080": 1793379333573,
-    "1081": 1793379226912,
+    "1080": 1793379357301,
+    "1081": 1793379357302,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -94753,5 +94753,5 @@
       }
     }
   },
-  "updatedAt": 1793379334102
+  "updatedAt": 1793379361248
 }
