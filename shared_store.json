@@ -44535,8 +44535,8 @@
         "page": 1022,
         "exercise": "2b",
         "label": "c1",
-        "top": 43.6,
-        "left": 63.5,
+        "top": 42,
+        "left": 62.5,
         "width": 7.5,
         "height": 2,
         "correct": "hasn't"
@@ -44547,8 +44547,8 @@
         "page": 1022,
         "exercise": "2b",
         "label": "c2",
-        "top": 43.6,
-        "left": 74,
+        "top": 41.6,
+        "left": 73.6,
         "width": 4.5,
         "height": 2,
         "correct": "'s"
@@ -44559,8 +44559,8 @@
         "page": 1022,
         "exercise": "2b",
         "label": "d1",
-        "top": 45.4,
-        "left": 64.5,
+        "top": 43.7,
+        "left": 63.2,
         "width": 6.5,
         "height": 2,
         "correct": "have"
@@ -44571,7 +44571,7 @@
         "page": 1022,
         "exercise": "2b",
         "label": "d2",
-        "top": 45.4,
+        "top": 43.3,
         "left": 74.5,
         "width": 4.5,
         "height": 2,
@@ -44583,8 +44583,8 @@
         "page": 1022,
         "exercise": "2b",
         "label": "e1",
-        "top": 47.1,
-        "left": 66.5,
+        "top": 45.1,
+        "left": 63.3,
         "width": 7.5,
         "height": 2,
         "correct": "haven't"
@@ -44595,8 +44595,8 @@
         "page": 1022,
         "exercise": "2b",
         "label": "e2",
-        "top": 47.1,
-        "left": 76.5,
+        "top": 45.3,
+        "left": 75.2,
         "width": 4.5,
         "height": 2,
         "correct": "'ve"
@@ -44607,8 +44607,8 @@
         "page": 1022,
         "exercise": "2b",
         "label": "f",
-        "top": 48.8,
-        "left": 62.5,
+        "top": 47,
+        "left": 61.3,
         "width": 7.5,
         "height": 2,
         "correct": "haven't"
@@ -81130,7 +81130,7 @@
     "1019": 1793370678789,
     "1020": 1793370896636,
     "1021": 1793370896636,
-    "1022": 1793370947639,
+    "1022": 1793370959746,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -81970,5 +81970,5 @@
       }
     }
   },
-  "updatedAt": 1793370947989
+  "updatedAt": 1793370961703
 }
