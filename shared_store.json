@@ -25746,6 +25746,18 @@
       "createdAt": 1793380453528,
       "coins": 1000,
       "gifts": []
+    },
+    {
+      "id": "std_qwdsadsa_159_dsadsad",
+      "name": "qwdsadsa dsadsad",
+      "role": "student",
+      "login": "qwdsadsa_159_dsadsad",
+      "password": "qwdsadsa159dsa",
+      "phone": "asdasd",
+      "parentPhone": "asdasd",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -102863,5 +102875,5 @@
       }
     }
   },
-  "updatedAt": 1793383794157
+  "updatedAt": 1793383808218
 }
