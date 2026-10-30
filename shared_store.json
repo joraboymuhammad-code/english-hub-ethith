@@ -24083,8 +24083,8 @@
       "code": "ETH-6KJT5Q",
       "name": "zsczxc",
       "teacher": "Muhammadyusuf",
-      "teacherId": "teacher_1793380078590",
-      "teacherName": "Muhammadyusuf",
+      "teacherId": "",
+      "teacherName": "Biriktirilmagan",
       "room": "302-xona",
       "schedule": "har_kuni",
       "maxCapacity": 18,
@@ -25078,7 +25078,9 @@
   "deletedQuizIds": [
     "quiz_main_blitz"
   ],
-  "deletedTeacherIds": [],
+  "deletedTeacherIds": [
+    "teacher_1793380078590"
+  ],
   "deletedListingIds": [
     "p2p_1792322748592_nls2",
     "p2p_1792322765334_1cj0",
@@ -25440,7 +25442,8 @@
       "login": "azizbek77",
       "role": "teacher",
       "coins": 1000,
-      "level": "C2"
+      "level": "C2",
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25448,7 +25451,8 @@
       "email": "elyor.aborbekov@ethith.uz",
       "login": "elyor70",
       "role": "teacher",
-      "coins": 1000
+      "coins": 1000,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25467,7 +25471,8 @@
         "cls_ravshanov_doniyor_cefr_3",
         "cls_ravshanov_doniyor_cefr_4"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25483,7 +25488,8 @@
       "assignedClasses": [
         "cls_qarshiboyev_humoyun_practice"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25499,7 +25505,8 @@
       "assignedClasses": [
         "cls_tovboyeva_marjona_beginner"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25518,7 +25525,8 @@
         "cls_olimjonova_durdona_intermediate_1",
         "cls_olimjonova_durdona_intermediate_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25537,7 +25545,8 @@
         "cls_tagaev_eldor_pre_intermediate_1",
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25554,7 +25563,8 @@
         "cls_yaxshilikova_kamola_beginner",
         "cls_yaxshilikova_kamola_elementary"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25571,7 +25581,8 @@
         "cls_sherqoziyeva_iroda_beginner_1",
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25590,7 +25601,8 @@
         "cls_orinboyev_jaloliddin_standard_1",
         "cls_orinboyev_jaloliddin_standard_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25606,7 +25618,8 @@
       "assignedClasses": [
         "cls_jumanova_pokiza_beginner"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25623,7 +25636,8 @@
         "cls_hayrullayev_arslon_beginner_1",
         "cls_hayrullayev_arslon_beginner_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25640,7 +25654,8 @@
         "cls_xudoyorova_sarvinoz_intermediate",
         "cls_xudoyorova_sarvinoz_standard"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25657,7 +25672,8 @@
         "cls_aliqulova_sevinch_beginner_1",
         "cls_aliqulova_sevinch_beginner_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -25676,7 +25692,8 @@
         "cls_xojamqulova_diyora_elementary_2",
         "cls_xojamqulova_diyora_elementary_3"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014533
     },
     {
       "id": "admin_official_teacher",
@@ -25695,7 +25712,8 @@
         "cls_bosimbekov_farrux_intermediate_1",
         "cls_bosimbekov_farrux_intermediate_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014533
     },
     {
       "id": "admin_official_teacher",
@@ -25714,7 +25732,8 @@
         "cls_ahmadova_barno_elementary_3",
         "cls_ahmadova_barno_pre_intermediate"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014533
     },
     {
       "id": "admin_official_teacher",
@@ -25730,7 +25749,8 @@
       "assignedClasses": [
         "cls_shodiyor_matematika_matematika"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793392014533
     },
     {
       "id": "st_998901239988",
@@ -25757,16 +25777,17 @@
       "title": "👑 IELTS Qiroli"
     },
     {
-      "id": "admin_official_teacher",
-      "name": "Ustoz",
-      "login": "muhammadyusuf38",
-      "password": "muhammadyusuf2026",
-      "email": "muhammadyusuf38@ethith.uz",
-      "role": "teacher",
-      "teacherId": "teacher_1793380078590",
-      "subject": "Ingliz tili",
-      "salarySharePercent": 55,
-      "createdAt": 1793380078590
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793392017773
     }
   ],
   "p2pListings": [],
@@ -102590,23 +102611,6 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0
-    },
-    {
-      "id": "teacher_1793380078590",
-      "name": "Muhammadyusuf",
-      "login": "muhammadyusuf38",
-      "password": "muhammadyusuf2026",
-      "inviteCode": "MUHAMMADYUSUF38",
-      "email": "muhammadyusuf38@ethith.uz",
-      "subject": "Ingliz tili",
-      "hourlyRate": 100000,
-      "salarySharePercent": 55,
-      "teachingHours": 0,
-      "monthlyBonus": 0,
-      "status": "active",
-      "created": 1793380078590,
-      "assignedClasses": [],
-      "classOrder": []
     }
   ],
   "fileExplorer": {
@@ -102841,5 +102845,5 @@
       }
     }
   },
-  "updatedAt": 1793392009920
+  "updatedAt": 1793392021049
 }
