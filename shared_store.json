@@ -46447,6 +46447,316 @@
         ]
       }
     ],
+    "1007": [
+      {
+        "id": "p1007_ex5_2",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "5",
+        "label": "2",
+        "top": 30.9,
+        "left": 37.6,
+        "width": 9,
+        "height": 2,
+        "correct": [
+          "We're",
+          "We are"
+        ]
+      },
+      {
+        "id": "p1007_ex5_3",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "5",
+        "label": "3",
+        "top": 32.4,
+        "left": 70,
+        "width": 9,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1007_ex5_4",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "5",
+        "label": "4",
+        "top": 52.8,
+        "left": 10,
+        "width": 9,
+        "height": 2,
+        "correct": [
+          "We're",
+          "We are"
+        ]
+      },
+      {
+        "id": "p1007_ex5_5",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "5",
+        "label": "5",
+        "top": 52.8,
+        "left": 40,
+        "width": 9,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1007_ex5_6",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "5",
+        "label": "6",
+        "top": 52.8,
+        "left": 70,
+        "width": 9,
+        "height": 2,
+        "correct": [
+          "We're",
+          "We are"
+        ]
+      },
+      {
+        "id": "p1007_ex6_2",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "6a",
+        "label": "2",
+        "top": 63.5,
+        "left": 10.8,
+        "width": 36,
+        "height": 2,
+        "correct": [
+          "I'm not from China.",
+          "I am not from China.",
+          "'m not from China.",
+          "I'm not from China",
+          "'m not from China"
+        ]
+      },
+      {
+        "id": "p1007_ex6_3",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "6a",
+        "label": "3",
+        "top": 66.9,
+        "left": 10.8,
+        "width": 36,
+        "height": 2,
+        "correct": [
+          "We aren't here on business.",
+          "We're not here on business.",
+          "aren't here on business.",
+          "We aren't here on business"
+        ]
+      },
+      {
+        "id": "p1007_ex6_4",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "6a",
+        "label": "4",
+        "top": 70.6,
+        "left": 10.8,
+        "width": 36,
+        "height": 2,
+        "correct": [
+          "I'm not Amy.",
+          "I am not Amy.",
+          "'m not Amy.",
+          "I'm not Amy"
+        ]
+      },
+      {
+        "id": "p1007_ex6_5",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "6a",
+        "label": "5",
+        "top": 73.8,
+        "left": 10.8,
+        "width": 36,
+        "height": 2,
+        "correct": [
+          "You aren't here on holiday.",
+          "You're not here on holiday.",
+          "aren't here on holiday.",
+          "You aren't here on holiday"
+        ]
+      },
+      {
+        "id": "p1007_ex6_6",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "6a",
+        "label": "6",
+        "top": 77.2,
+        "left": 10.8,
+        "width": 36,
+        "height": 2,
+        "correct": [
+          "We aren't from New York.",
+          "We're not from New York.",
+          "aren't from New York.",
+          "We aren't from New York"
+        ]
+      },
+      {
+        "id": "p1007_ex6_7",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "6a",
+        "label": "7",
+        "top": 80.6,
+        "left": 10.8,
+        "width": 36,
+        "height": 2,
+        "correct": [
+          "You aren't from Spain.",
+          "You're not from Spain.",
+          "aren't from Spain.",
+          "You aren't from Spain"
+        ]
+      },
+      {
+        "id": "p1007_ex7_2",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "7",
+        "label": "2",
+        "top": 61.8,
+        "left": 63,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1007_ex7_3",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "7",
+        "label": "3",
+        "top": 62.8,
+        "left": 66,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1007_ex7_4",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "7",
+        "label": "4",
+        "top": 64.5,
+        "left": 75,
+        "width": 12,
+        "height": 2,
+        "correct": "are you"
+      },
+      {
+        "id": "p1007_ex7_5",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "7",
+        "label": "5",
+        "top": 67.6,
+        "left": 58,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1007_ex7_6",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "7",
+        "label": "6",
+        "top": 70.6,
+        "left": 58,
+        "width": 7.5,
+        "height": 2,
+        "correct": [
+          "I'm",
+          "I am"
+        ]
+      },
+      {
+        "id": "p1007_ex7_7",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "7",
+        "label": "7",
+        "top": 72.1,
+        "left": 57,
+        "width": 12,
+        "height": 2,
+        "correct": "Are you"
+      },
+      {
+        "id": "p1007_ex7_8",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "7",
+        "label": "8",
+        "top": 73.8,
+        "left": 68,
+        "width": 12,
+        "height": 2,
+        "correct": [
+          "we aren't",
+          "we are not",
+          "we're not"
+        ]
+      },
+      {
+        "id": "p1007_ex7_9",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "7",
+        "label": "9",
+        "top": 73.8,
+        "left": 85,
+        "width": 8.5,
+        "height": 2,
+        "correct": [
+          "We're",
+          "We are"
+        ]
+      },
+      {
+        "id": "p1007_ex8",
+        "type": "fill",
+        "page": 1007,
+        "exercise": "8",
+        "label": "8",
+        "top": 83.5,
+        "left": 55,
+        "width": 40,
+        "height": 4.5,
+        "correct": [
+          "My name is Marisol. I'm from Seville in Spain. Javier and I are on holiday in Turkey. We are in a hotel in Istanbul.",
+          "I'm, Spain, Javier, I, Turkey, We, Istanbul"
+        ]
+      }
+    ],
     "1024": [
       {
         "id": "p1024_ex1a_2a",
@@ -55954,8 +56264,8 @@
         "group": "b2_p27_7_6",
         "text": "burgled",
         "label": "6b",
-        "top": 62.8,
-        "left": 68.7,
+        "top": 60.2,
+        "left": 66.1,
         "width": 6.8,
         "height": 1.5,
         "correct": true,
@@ -55982,8 +56292,8 @@
         "group": "b2_p27_7_7",
         "text": "Have",
         "label": "7b",
-        "top": 66.4,
-        "left": 52.7,
+        "top": 63.4,
+        "left": 51.7,
         "width": 4.6,
         "height": 1.5,
         "correct": false,
@@ -82523,6 +82833,7 @@
     "1004": 1793366841110,
     "1005": 1793366841110,
     "1006": 1793366946894,
+    "1007": 1793366997687,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -82551,7 +82862,7 @@
     "2024": 1793366852141,
     "2025": 1793366852142,
     "2026": 1793366950201,
-    "2027": 1793366993544,
+    "2027": 1793366996769,
     "2028": 1793366712396,
     "2029": 1793366712396,
     "2030": 1793366712396,
@@ -83314,5 +83625,5 @@
       }
     }
   },
-  "updatedAt": 1793366994703
+  "updatedAt": 1793366998626
 }
