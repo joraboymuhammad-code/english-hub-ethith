@@ -43912,6 +43912,212 @@
         "correct": "at twelve oh five"
       }
     ],
+    "1020": [
+      {
+        "id": "p1020_ex1_2",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "1",
+        "label": "2",
+        "top": 53.4,
+        "left": 42,
+        "width": 8.5,
+        "height": 2.1,
+        "correct": "waiter"
+      },
+      {
+        "id": "p1020_ex1_3",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "1",
+        "label": "3",
+        "top": 72.5,
+        "left": 13,
+        "width": 7.5,
+        "height": 2.1,
+        "correct": "funny"
+      },
+      {
+        "id": "p1020_ex1_4",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "1",
+        "label": "4",
+        "top": 72.5,
+        "left": 40,
+        "width": 6.8,
+        "height": 2.1,
+        "correct": "dog"
+      },
+      {
+        "id": "p1020_ex1_5",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "1",
+        "label": "5",
+        "top": 91.7,
+        "left": 13,
+        "width": 7,
+        "height": 2.1,
+        "correct": "hard"
+      },
+      {
+        "id": "p1020_ex1_6",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "1",
+        "label": "6",
+        "top": 91.7,
+        "left": 41,
+        "width": 7.2,
+        "height": 2.1,
+        "correct": "book"
+      },
+      {
+        "id": "p1020_ex2_2",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "2",
+        "label": "2",
+        "top": 37.3,
+        "left": 56.7,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "Ireland is a friendly country."
+      },
+      {
+        "id": "p1020_ex2_3",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "2",
+        "label": "3",
+        "top": 40.7,
+        "left": 56.7,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "Judith Polgar is a clever woman."
+      },
+      {
+        "id": "p1020_ex2_4",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "2",
+        "label": "4",
+        "top": 44.2,
+        "left": 56.8,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "Noma's a great restaurant."
+      },
+      {
+        "id": "p1020_ex2_5",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "2",
+        "label": "5",
+        "top": 49.5,
+        "left": 56.5,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "Prague is a lovely city."
+      },
+      {
+        "id": "p1020_ex2_6",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "2",
+        "label": "6",
+        "top": 52.9,
+        "left": 56.5,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "Jonah Hill is a funny man."
+      },
+      {
+        "id": "p1020_ex3a_2",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "3a",
+        "label": "2",
+        "top": 62.9,
+        "left": 56.5,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "They're clever children."
+      },
+      {
+        "id": "p1020_ex3a_3",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "3a",
+        "label": "3",
+        "top": 66.3,
+        "left": 56.5,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "They're old men."
+      },
+      {
+        "id": "p1020_ex3a_4",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "3a",
+        "label": "4",
+        "top": 69.8,
+        "left": 56.5,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "They're friendly neighbours."
+      },
+      {
+        "id": "p1020_ex3a_5",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "3a",
+        "label": "5",
+        "top": 73.2,
+        "left": 56.5,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "They're funny women."
+      },
+      {
+        "id": "p1020_ex3a_6",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "3a",
+        "label": "6",
+        "top": 76.6,
+        "left": 56.5,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "They're interesting houses."
+      },
+      {
+        "id": "p1020_ex3a_7",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "3a",
+        "label": "7",
+        "top": 80.1,
+        "left": 56.5,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "They're lovely people."
+      },
+      {
+        "id": "p1020_ex3a_8",
+        "type": "fill",
+        "page": 1020,
+        "exercise": "3a",
+        "label": "8",
+        "top": 83.5,
+        "left": 56.5,
+        "width": 38.5,
+        "height": 2.1,
+        "correct": "They're great books."
+      }
+    ],
     "1024": [
       {
         "id": "p1024_ex1a_2a",
@@ -80354,6 +80560,7 @@
     "1017": 1793370490122,
     "1018": 1793370678788,
     "1019": 1793370678789,
+    "1020": 1793370809444,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -81193,5 +81400,5 @@
       }
     }
   },
-  "updatedAt": 1793370798992
+  "updatedAt": 1793370812281
 }
