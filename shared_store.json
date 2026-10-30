@@ -56126,25 +56126,13 @@
         "correct": "them"
       },
       {
-        "id": "p1067_ex5_1",
-        "type": "fill",
-        "page": 1067,
-        "exercise": "5",
-        "label": "1",
-        "top": 15,
-        "left": 60,
-        "width": 25,
-        "height": 2.1,
-        "correct": "drive a car"
-      },
-      {
         "id": "p1067_ex5_2",
         "type": "fill",
         "page": 1067,
         "exercise": "5",
         "label": "2",
-        "top": 18,
-        "left": 60,
+        "top": 32.3,
+        "left": 55.9,
         "width": 25,
         "height": 2.1,
         "correct": "remember dates"
@@ -56155,8 +56143,8 @@
         "page": 1067,
         "exercise": "5",
         "label": "3",
-        "top": 32.8,
-        "left": 54.7,
+        "top": 34.5,
+        "left": 65.9,
         "width": 25,
         "height": 2.1,
         "correct": "speak French"
@@ -56167,8 +56155,8 @@
         "page": 1067,
         "exercise": "5",
         "label": "4",
-        "top": 34.5,
-        "left": 64.6,
+        "top": 36.5,
+        "left": 73.5,
         "width": 25,
         "height": 2.1,
         "correct": "play the piano"
@@ -90872,7 +90860,7 @@
     "1063": 1793377285048,
     "1064": 1793377648410,
     "1065": 1793377648411,
-    "1067": 1793377804848,
+    "1067": 1793377820078,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -91705,5 +91693,5 @@
       }
     }
   },
-  "updatedAt": 1793377812584
+  "updatedAt": 1793377823546
 }
