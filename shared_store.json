@@ -50870,18 +50870,6 @@
         "correct": "Is there a swimming pool in the hotel? or Is there a swimming pool in the hotel"
       },
       {
-        "id": "p1047_ex5c_1",
-        "type": "fill",
-        "page": 1047,
-        "exercise": "5c",
-        "label": "1",
-        "top": 26.9,
-        "left": 55.4,
-        "width": 14,
-        "height": 1.8,
-        "correct": "Yes, there is. or Yes, there is"
-      },
-      {
         "id": "p1047_ex5c_2",
         "type": "fill",
         "page": 1047,
@@ -87245,7 +87233,7 @@
     "1044": 1793372801124,
     "1045": 1793372833172,
     "1046": 1793375645517,
-    "1047": 1793375808090,
+    "1047": 1793375808824,
     "1052": 1793125351106,
     "1053": 1793125381190,
     "1054": 1793371802105,
@@ -88086,5 +88074,5 @@
       }
     }
   },
-  "updatedAt": 1793375808565
+  "updatedAt": 1793375820344
 }
