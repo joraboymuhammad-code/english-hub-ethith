@@ -24390,11 +24390,9 @@
         "records": {},
         "lessonTypes": {
           "2026-10-30": "Vazifa: 1.1",
-          "2026-10-29": "Dam olish"
+          "2026-10-29": "Oddiy"
         },
-        "holidays": {
-          "2026-10-29": true
-        },
+        "holidays": {},
         "homeworks": {
           "2026-10-30": {
             "dateKey": "2026-10-30",
@@ -24410,7 +24408,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793385612398
+        "updatedAt": 1793385613311
       },
       "customStudentPhones": {
         "std_mixswdasd_804_selixasdasd": "zsxcxzc"
@@ -102934,5 +102932,5 @@
       }
     }
   },
-  "updatedAt": 1793385612976
+  "updatedAt": 1793385619086
 }
