@@ -58177,6 +58177,104 @@
         "correct": "excuse"
       }
     ],
+    "1075": [
+      {
+        "id": "p1075_ex1_1",
+        "type": "fill",
+        "page": 1075,
+        "exercise": "1",
+        "label": "1",
+        "top": 22,
+        "left": 16,
+        "width": 60,
+        "height": 2.5,
+        "correct": "He could remember each word of the 12,000 books he read. or each word of the 12,000 books"
+      },
+      {
+        "id": "p1075_ex2_1_a",
+        "type": "choose",
+        "group": "p1075_ex2_1",
+        "text": "a Rain Man tells the story of Kim Peek's life.",
+        "page": 1075,
+        "exercise": "2",
+        "label": "1a",
+        "top": 40,
+        "left": 16,
+        "width": 45,
+        "height": 2.1,
+        "correct": false
+      },
+      {
+        "id": "p1075_ex2_1_b",
+        "type": "choose",
+        "group": "p1075_ex2_1",
+        "text": "b Kim Peek loved the film Rain Man.",
+        "page": 1075,
+        "exercise": "2",
+        "label": "1b",
+        "top": 43,
+        "left": 16,
+        "width": 45,
+        "height": 2.1,
+        "correct": false
+      },
+      {
+        "id": "p1075_ex2_1_c",
+        "type": "choose",
+        "group": "p1075_ex2_1",
+        "text": "c The main character in Rain Man was based on Kim Peek.",
+        "page": 1075,
+        "exercise": "2",
+        "label": "1c",
+        "top": 46,
+        "left": 16,
+        "width": 48,
+        "height": 2.1,
+        "correct": true
+      },
+      {
+        "id": "p1075_ex2_2_a",
+        "type": "choose",
+        "group": "p1075_ex2_2",
+        "text": "a He could play the piano very well.",
+        "page": 1075,
+        "exercise": "2",
+        "label": "2a",
+        "top": 71.5,
+        "left": 3.8,
+        "width": 45,
+        "height": 2.1,
+        "correct": false
+      },
+      {
+        "id": "p1075_ex2_2_b",
+        "type": "choose",
+        "group": "p1075_ex2_2",
+        "text": "b He couldn't remember pieces of music.",
+        "page": 1075,
+        "exercise": "2",
+        "label": "2b",
+        "top": 73.9,
+        "left": 5.9,
+        "width": 45,
+        "height": 2.1,
+        "correct": false
+      },
+      {
+        "id": "p1075_ex2_2_c",
+        "type": "choose",
+        "group": "p1075_ex2_2",
+        "text": "c He could remember any piece of music he heard.",
+        "page": 1075,
+        "exercise": "2",
+        "label": "2c",
+        "top": 75.1,
+        "left": 5.8,
+        "width": 48,
+        "height": 2.1,
+        "correct": true
+      }
+    ],
     "2004": [
       {
         "id": "p2004_ex2_2",
@@ -92691,6 +92789,7 @@
     "1071": 1793378610581,
     "1072": 1793378763844,
     "1073": 1793378763845,
+    "1075": 1793378792628,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -93523,5 +93622,5 @@
       }
     }
   },
-  "updatedAt": 1793378774167
+  "updatedAt": 1793378797969
 }
