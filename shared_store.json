@@ -48495,8 +48495,8 @@
         "page": 1039,
         "exercise": "3a",
         "label": "6 What",
-        "top": 23.2,
-        "left": 10.8,
+        "top": 22.5,
+        "left": 11.3,
         "width": 4.5,
         "height": 1.8,
         "correct": true
@@ -48509,8 +48509,8 @@
         "page": 1039,
         "exercise": "3a",
         "label": "6 When",
-        "top": 23.2,
-        "left": 15.8,
+        "top": 22.1,
+        "left": 16.3,
         "width": 4.5,
         "height": 1.8,
         "correct": false
@@ -48523,8 +48523,8 @@
         "page": 1039,
         "exercise": "3a",
         "label": "6 Why",
-        "top": 23.2,
-        "left": 21,
+        "top": 22.2,
+        "left": 21.4,
         "width": 3.5,
         "height": 1.8,
         "correct": false
@@ -48537,8 +48537,8 @@
         "page": 1039,
         "exercise": "3a",
         "label": "7 What",
-        "top": 24.9,
-        "left": 10.8,
+        "top": 24.1,
+        "left": 10.9,
         "width": 4.5,
         "height": 1.8,
         "correct": false
@@ -48551,8 +48551,8 @@
         "page": 1039,
         "exercise": "3a",
         "label": "7 Where",
-        "top": 24.9,
-        "left": 15.8,
+        "top": 24,
+        "left": 16.2,
         "width": 4.5,
         "height": 1.8,
         "correct": false
@@ -48565,8 +48565,8 @@
         "page": 1039,
         "exercise": "3a",
         "label": "7 Why",
-        "top": 24.9,
-        "left": 21,
+        "top": 24.1,
+        "left": 21.5,
         "width": 3.5,
         "height": 1.8,
         "correct": true
@@ -48579,8 +48579,8 @@
         "page": 1039,
         "exercise": "3a",
         "label": "8 What",
-        "top": 26.7,
-        "left": 10.8,
+        "top": 25.7,
+        "left": 10.9,
         "width": 4.5,
         "height": 1.8,
         "correct": false
@@ -48593,8 +48593,8 @@
         "page": 1039,
         "exercise": "3a",
         "label": "8 When",
-        "top": 26.7,
-        "left": 15.8,
+        "top": 25.7,
+        "left": 16.2,
         "width": 4.5,
         "height": 1.8,
         "correct": true
@@ -48607,8 +48607,8 @@
         "page": 1039,
         "exercise": "3a",
         "label": "8 Where",
-        "top": 26.7,
-        "left": 21,
+        "top": 25.4,
+        "left": 21.1,
         "width": 4.5,
         "height": 1.8,
         "correct": false
@@ -48698,25 +48698,13 @@
         "correct": "5"
       },
       {
-        "id": "p1039_ex4a_1",
-        "type": "fill",
-        "page": 1039,
-        "exercise": "4a",
-        "label": "1",
-        "top": 48,
-        "left": 20,
-        "width": 7,
-        "height": 1.8,
-        "correct": "are"
-      },
-      {
         "id": "p1039_ex4a_2",
         "type": "fill",
         "page": 1039,
         "exercise": "4a",
         "label": "2",
-        "top": 49.7,
-        "left": 20,
+        "top": 48.7,
+        "left": 15.3,
         "width": 7,
         "height": 1.8,
         "correct": "do"
@@ -48727,8 +48715,8 @@
         "page": 1039,
         "exercise": "4a",
         "label": "3",
-        "top": 51.4,
-        "left": 20,
+        "top": 50.3,
+        "left": 15.3,
         "width": 7,
         "height": 1.8,
         "correct": "does"
@@ -48739,8 +48727,8 @@
         "page": 1039,
         "exercise": "4a",
         "label": "4",
-        "top": 53.1,
-        "left": 20,
+        "top": 52.1,
+        "left": 15.5,
         "width": 7,
         "height": 1.8,
         "correct": "is"
@@ -48751,8 +48739,8 @@
         "page": 1039,
         "exercise": "4a",
         "label": "5",
-        "top": 54.8,
-        "left": 20,
+        "top": 53.7,
+        "left": 15.8,
         "width": 7,
         "height": 1.8,
         "correct": "do"
@@ -48763,8 +48751,8 @@
         "page": 1039,
         "exercise": "4a",
         "label": "6",
-        "top": 56.5,
-        "left": 20,
+        "top": 55.2,
+        "left": 15.9,
         "width": 7,
         "height": 1.8,
         "correct": "are"
@@ -48775,8 +48763,8 @@
         "page": 1039,
         "exercise": "4a",
         "label": "7",
-        "top": 58.2,
-        "left": 20,
+        "top": 57,
+        "left": 16,
         "width": 7,
         "height": 1.8,
         "correct": "does"
@@ -48787,8 +48775,8 @@
         "page": 1039,
         "exercise": "4a",
         "label": "8",
-        "top": 59.9,
-        "left": 20,
+        "top": 58.6,
+        "left": 15.8,
         "width": 7,
         "height": 1.8,
         "correct": "is"
@@ -48799,8 +48787,8 @@
         "page": 1039,
         "exercise": "5a",
         "label": "2",
-        "top": 62.1,
-        "left": 56.8,
+        "top": 61.1,
+        "left": 57.6,
         "width": 15,
         "height": 1.8,
         "correct": "Where is"
@@ -48811,8 +48799,8 @@
         "page": 1039,
         "exercise": "5a",
         "label": "3",
-        "top": 65.6,
-        "left": 56.8,
+        "top": 64.1,
+        "left": 57,
         "width": 15,
         "height": 1.8,
         "correct": "Where does"
@@ -48823,8 +48811,8 @@
         "page": 1039,
         "exercise": "5a",
         "label": "4",
-        "top": 69,
-        "left": 56.8,
+        "top": 67.8,
+        "left": 57.6,
         "width": 15,
         "height": 1.8,
         "correct": "Why does"
@@ -48835,8 +48823,8 @@
         "page": 1039,
         "exercise": "5a",
         "label": "5",
-        "top": 72.4,
-        "left": 56.8,
+        "top": 71.1,
+        "left": 57.9,
         "width": 15,
         "height": 1.8,
         "correct": "What do"
@@ -48847,8 +48835,8 @@
         "page": 1039,
         "exercise": "5a",
         "label": "6",
-        "top": 77.4,
-        "left": 56.8,
+        "top": 76,
+        "left": 57.9,
         "width": 15,
         "height": 1.8,
         "correct": "Where do"
@@ -48859,8 +48847,8 @@
         "page": 1039,
         "exercise": "5a",
         "label": "7",
-        "top": 80.9,
-        "left": 56.8,
+        "top": 79.4,
+        "left": 58.2,
         "width": 15,
         "height": 1.8,
         "correct": "When is"
@@ -48871,8 +48859,8 @@
         "page": 1039,
         "exercise": "5a",
         "label": "8",
-        "top": 84.3,
-        "left": 56.8,
+        "top": 83.3,
+        "left": 58.3,
         "width": 15,
         "height": 1.8,
         "correct": "Why is"
@@ -86266,8 +86254,8 @@
     "1033": 1793372280354,
     "1036": 1793373069264,
     "1037": 1793373069264,
-    "1038": 1793373407333,
-    "1039": 1793373434365,
+    "1038": 1793373487011,
+    "1039": 1793373487011,
     "1040": 1793373285030,
     "1041": 1793373285031,
     "1042": 1793370793069,
@@ -87112,5 +87100,5 @@
       }
     }
   },
-  "updatedAt": 1793373434429
+  "updatedAt": 1793373507122
 }
