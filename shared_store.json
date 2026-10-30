@@ -24077,6 +24077,25 @@
           "date": "To‘lanmagan"
         }
       }
+    },
+    {
+      "id": "cls_1793380468126",
+      "code": "ETH-6KJT5Q",
+      "name": "zsczxc",
+      "teacher": "Muhammadyusuf",
+      "teacherId": "teacher_1793380078590",
+      "teacherName": "Muhammadyusuf",
+      "room": "302-xona",
+      "schedule": "har_kuni",
+      "maxCapacity": 16,
+      "students": [],
+      "customStudentNames": {},
+      "attendance": {
+        "records": {},
+        "lessonTypes": {},
+        "holidays": {},
+        "homeworks": {}
+      }
     }
   ],
   "exams": [
@@ -101651,5 +101670,5 @@
   "timetable": [],
   "contests": [],
   "payments": {},
-  "updatedAt": 1793380454331
+  "updatedAt": 1793380468686
 }
