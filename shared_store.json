@@ -57220,8 +57220,8 @@
         "page": 1047,
         "exercise": "3",
         "label": "1",
-        "top": 5.3,
-        "left": 62,
+        "top": 63.9,
+        "left": 58.5,
         "width": 8,
         "height": 1.8,
         "correct": "lifts"
@@ -57232,8 +57232,8 @@
         "page": 1047,
         "exercise": "3",
         "label": "2",
-        "top": 5.7,
-        "left": 85.1,
+        "top": 64.3,
+        "left": 81.6,
         "width": 8,
         "height": 1.8,
         "correct": "bath"
@@ -57244,8 +57244,8 @@
         "page": 1047,
         "exercise": "3",
         "label": "3",
-        "top": 7.3,
-        "left": 83,
+        "top": 65.9,
+        "left": 79.5,
         "width": 8,
         "height": 1.8,
         "correct": "towels"
@@ -57256,8 +57256,8 @@
         "page": 1047,
         "exercise": "3",
         "label": "4",
-        "top": 8.8,
-        "left": 83.5,
+        "top": 67.4,
+        "left": 80,
         "width": 8,
         "height": 1.8,
         "correct": "safe"
@@ -57268,8 +57268,8 @@
         "page": 1047,
         "exercise": "3",
         "label": "5",
-        "top": 11.9,
-        "left": 60.6,
+        "top": 70.5,
+        "left": 57.1,
         "width": 12,
         "height": 1.8,
         "correct": "refreshments"
@@ -57280,8 +57280,8 @@
         "page": 1047,
         "exercise": "3",
         "label": "6",
-        "top": 13.4,
-        "left": 68.2,
+        "top": 72,
+        "left": 64.7,
         "width": 8,
         "height": 1.8,
         "correct": "Wi-fi"
@@ -57292,8 +57292,8 @@
         "page": 1047,
         "exercise": "3",
         "label": "7",
-        "top": 15,
-        "left": 61.1,
+        "top": 73.6,
+        "left": 57.6,
         "width": 14,
         "height": 1.8,
         "correct": "air conditioning"
@@ -57304,8 +57304,8 @@
         "page": 1047,
         "exercise": "3",
         "label": "8",
-        "top": 16.5,
-        "left": 63.4,
+        "top": 75.1,
+        "left": 59.9,
         "width": 8,
         "height": 1.8,
         "correct": "iron"
@@ -57316,8 +57316,8 @@
         "page": 1047,
         "exercise": "3",
         "label": "9",
-        "top": 19.6,
-        "left": 76.1,
+        "top": 78.2,
+        "left": 72.6,
         "width": 8,
         "height": 1.8,
         "correct": "gym"
@@ -57328,8 +57328,8 @@
         "page": 1047,
         "exercise": "3",
         "label": "10",
-        "top": 22.6,
-        "left": 64.5,
+        "top": 81.2,
+        "left": 61,
         "width": 10,
         "height": 1.8,
         "correct": "car park or carpark"
@@ -58177,18 +58177,6 @@
         "width": 10,
         "height": 1.8,
         "correct": "lift"
-      },
-      {
-        "id": "p1051_ex6_1",
-        "type": "fill",
-        "page": 1051,
-        "exercise": "6",
-        "label": "1",
-        "top": 42.2,
-        "left": 74.1,
-        "width": 8,
-        "height": 1.8,
-        "correct": "leg"
       },
       {
         "id": "p1051_ex6_2",
@@ -94626,9 +94614,9 @@
     "1044": 1793372801124,
     "1045": 1793372833172,
     "1046": 1793375876615,
-    "1047": 1793376087256,
+    "1047": 1793376092711,
     "1050": 1793376030834,
-    "1051": 1793376087024,
+    "1051": 1793376091326,
     "1052": 1793125351106,
     "1053": 1793125381190,
     "1054": 1793371802105,
@@ -95423,5 +95411,5 @@
       }
     }
   },
-  "updatedAt": 1793376089922
+  "updatedAt": 1793376093853
 }
