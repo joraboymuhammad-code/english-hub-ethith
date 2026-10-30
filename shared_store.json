@@ -50810,18 +50810,6 @@
         "correct": "any"
       },
       {
-        "id": "p1047_ex5b_1",
-        "type": "fill",
-        "page": 1047,
-        "exercise": "5b",
-        "label": "1",
-        "top": 45.8,
-        "left": 22.3,
-        "width": 34,
-        "height": 1.8,
-        "correct": "Is there a restaurant in the hotel? or Is there a restaurant in the hotel"
-      },
-      {
         "id": "p1047_ex5b_2",
         "type": "fill",
         "page": 1047,
@@ -50875,8 +50863,8 @@
         "page": 1047,
         "exercise": "5b",
         "label": "6",
-        "top": 64.8,
-        "left": 13,
+        "top": 23.5,
+        "left": 55.8,
         "width": 34,
         "height": 1.8,
         "correct": "Is there a swimming pool in the hotel? or Is there a swimming pool in the hotel"
@@ -87257,7 +87245,7 @@
     "1044": 1793372801124,
     "1045": 1793372833172,
     "1046": 1793375645517,
-    "1047": 1793375738470,
+    "1047": 1793375744936,
     "1052": 1793125351106,
     "1053": 1793125381190,
     "1054": 1793371802105,
@@ -88098,5 +88086,5 @@
       }
     }
   },
-  "updatedAt": 1793375741047
+  "updatedAt": 1793375748916
 }
