@@ -25758,6 +25758,18 @@
       "classId": "cls_1793380468126",
       "isOnline": false,
       "lastLogin": null
+    },
+    {
+      "id": "std_asdasd_203_asdasdasd",
+      "name": "asdasd asdasdasd",
+      "role": "student",
+      "login": "asdasd_203_asdasdasd",
+      "password": "asdasd203asd",
+      "phone": "+998 90 199 10 91",
+      "parentPhone": "+998 90 199 10 91",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -102875,5 +102887,5 @@
       }
     }
   },
-  "updatedAt": 1793383808218
+  "updatedAt": 1793383841135
 }
