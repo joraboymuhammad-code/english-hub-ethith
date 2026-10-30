@@ -25757,6 +25757,18 @@
       "classId": "cls_1793380468126",
       "isOnline": false,
       "lastLogin": null
+    },
+    {
+      "id": "std_sdf_990_sdf",
+      "name": "sdf sdf",
+      "role": "student",
+      "login": "sdf_990_sdf",
+      "password": "sdf990sdf",
+      "phone": "sdfsd",
+      "parentPhone": "sdfsd",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -102874,5 +102886,5 @@
       }
     }
   },
-  "updatedAt": 1793382614532
+  "updatedAt": 1793382626586
 }
