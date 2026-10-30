@@ -47932,6 +47932,248 @@
         "correct": "can't sing"
       }
     ],
+    "1054": [
+      {
+        "id": "p1054_ex1a_2",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "1a",
+        "label": "2",
+        "top": 26.8,
+        "left": 12.5,
+        "width": 34,
+        "height": 1.8,
+        "correct": "Can your daughter read? or Can your daughter read"
+      },
+      {
+        "id": "p1054_ex1a_3",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "1a",
+        "label": "3",
+        "top": 30.4,
+        "left": 12.6,
+        "width": 34,
+        "height": 1.8,
+        "correct": "Can Adam paint a picture? or Can Adam paint a picture"
+      },
+      {
+        "id": "p1054_ex1a_4",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "1a",
+        "label": "4",
+        "top": 33.7,
+        "left": 12.5,
+        "width": 34,
+        "height": 1.8,
+        "correct": "Can your friends play the guitar? or Can your friends play the guitar"
+      },
+      {
+        "id": "p1054_ex1a_5",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "1a",
+        "label": "5",
+        "top": 37.1,
+        "left": 12.5,
+        "width": 34,
+        "height": 1.8,
+        "correct": "Can your grandparents use a computer? or Can your grandparents use a computer"
+      },
+      {
+        "id": "p1054_ex1a_6",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "1a",
+        "label": "6",
+        "top": 40.6,
+        "left": 12.5,
+        "width": 34,
+        "height": 1.8,
+        "correct": "Can you and your sister sing? or Can you and your sister sing"
+      },
+      {
+        "id": "p1054_ex1b_1",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "1b",
+        "label": "1",
+        "top": 47,
+        "left": 14,
+        "width": 10,
+        "height": 1.8,
+        "correct": "I can"
+      },
+      {
+        "id": "p1054_ex1b_2",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "1b",
+        "label": "2",
+        "top": 49.5,
+        "left": 14,
+        "width": 10,
+        "height": 1.8,
+        "correct": "she can"
+      },
+      {
+        "id": "p1054_ex1b_3",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "1b",
+        "label": "3",
+        "top": 52,
+        "left": 14,
+        "width": 10,
+        "height": 1.8,
+        "correct": "he can't"
+      },
+      {
+        "id": "p1054_ex1b_4",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "1b",
+        "label": "4",
+        "top": 54.5,
+        "left": 14,
+        "width": 10,
+        "height": 1.8,
+        "correct": "they can't"
+      },
+      {
+        "id": "p1054_ex1b_5",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "1b",
+        "label": "5",
+        "top": 57,
+        "left": 14,
+        "width": 10,
+        "height": 1.8,
+        "correct": "they can"
+      },
+      {
+        "id": "p1054_ex1b_6",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "1b",
+        "label": "6",
+        "top": 59.5,
+        "left": 14,
+        "width": 10,
+        "height": 1.8,
+        "correct": "we can't"
+      },
+      {
+        "id": "p1054_ex3_1",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "3",
+        "label": "1",
+        "top": 23,
+        "left": 63,
+        "width": 15,
+        "height": 1.8,
+        "correct": "can you speak"
+      },
+      {
+        "id": "p1054_ex3_2",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "3",
+        "label": "2",
+        "top": 26,
+        "left": 63,
+        "width": 10,
+        "height": 1.8,
+        "correct": "I can"
+      },
+      {
+        "id": "p1054_ex3_3",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "3",
+        "label": "3",
+        "top": 29,
+        "left": 63,
+        "width": 15,
+        "height": 1.8,
+        "correct": "Can you speak"
+      },
+      {
+        "id": "p1054_ex3_4",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "3",
+        "label": "4",
+        "top": 32,
+        "left": 63,
+        "width": 10,
+        "height": 1.8,
+        "correct": "I can't"
+      },
+      {
+        "id": "p1054_ex3_5",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "3",
+        "label": "5",
+        "top": 35,
+        "left": 63,
+        "width": 12,
+        "height": 1.8,
+        "correct": "can learn"
+      },
+      {
+        "id": "p1054_ex3_6",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "3",
+        "label": "6",
+        "top": 38,
+        "left": 63,
+        "width": 15,
+        "height": 1.8,
+        "correct": "can you teach"
+      },
+      {
+        "id": "p1054_ex3_7",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "3",
+        "label": "7",
+        "top": 41,
+        "left": 63,
+        "width": 10,
+        "height": 1.8,
+        "correct": "I can"
+      },
+      {
+        "id": "p1054_ex3_8",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "3",
+        "label": "8",
+        "top": 44,
+        "left": 63,
+        "width": 15,
+        "height": 1.8,
+        "correct": "Can you use"
+      },
+      {
+        "id": "p1054_ex3_9",
+        "type": "fill",
+        "page": 1054,
+        "exercise": "3",
+        "label": "9",
+        "top": 47,
+        "left": 63,
+        "width": 10,
+        "height": 1.8,
+        "correct": "I can"
+      }
+    ],
     "2004": [
       {
         "id": "p2004_ex2_2",
@@ -82409,6 +82651,7 @@
     "1043": 1793370793070,
     "1052": 1793125351106,
     "1053": 1793125381190,
+    "1054": 1793371721129,
     "2004": 1793366825091,
     "2005": 1793366825091,
     "2006": 1793366825091,
@@ -83241,5 +83484,5 @@
       }
     }
   },
-  "updatedAt": 1793371686164
+  "updatedAt": 1793371723183
 }
