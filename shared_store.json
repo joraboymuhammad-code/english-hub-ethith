@@ -44221,8 +44221,8 @@
         "page": 1021,
         "exercise": "5a",
         "label": "2",
-        "top": 73.8,
-        "left": 24,
+        "top": 71.8,
+        "left": 23.1,
         "width": 22,
         "height": 2,
         "correct": "They've got a car."
@@ -44233,8 +44233,8 @@
         "page": 1021,
         "exercise": "5a",
         "label": "3",
-        "top": 75.5,
-        "left": 18.5,
+        "top": 73.6,
+        "left": 21.4,
         "width": 27.5,
         "height": 2,
         "correct": "We've got a dog and a cat."
@@ -44245,8 +44245,8 @@
         "page": 1021,
         "exercise": "5a",
         "label": "4",
-        "top": 77.2,
-        "left": 18.5,
+        "top": 75.6,
+        "left": 21.6,
         "width": 27.5,
         "height": 2,
         "correct": "She's got a phone and a tablet."
@@ -44257,8 +44257,8 @@
         "page": 1021,
         "exercise": "5a",
         "label": "5",
-        "top": 78.9,
-        "left": 24.5,
+        "top": 76.9,
+        "left": 23.4,
         "width": 21.5,
         "height": 2,
         "correct": "It's got a gym."
@@ -44269,8 +44269,8 @@
         "page": 1021,
         "exercise": "5a",
         "label": "6",
-        "top": 80.6,
-        "left": 14.5,
+        "top": 78.7,
+        "left": 23.3,
         "width": 21.5,
         "height": 2,
         "correct": "I've got a bike."
@@ -80838,8 +80838,8 @@
     "1017": 1793370490122,
     "1018": 1793370678788,
     "1019": 1793370678789,
-    "1020": 1793370849486,
-    "1021": 1793370882341,
+    "1020": 1793370896636,
+    "1021": 1793370896636,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -81679,5 +81679,5 @@
       }
     }
   },
-  "updatedAt": 1793370883233
+  "updatedAt": 1793370899425
 }
