@@ -57467,8 +57467,8 @@
         "page": 1070,
         "exercise": "2a",
         "label": "2",
-        "top": 54.3,
-        "left": 16,
+        "top": 61,
+        "left": 13.1,
         "width": 35,
         "height": 2.1,
         "correct": "Did Galuh work yesterday?"
@@ -57479,8 +57479,8 @@
         "page": 1070,
         "exercise": "2a",
         "label": "3",
-        "top": 55.5,
-        "left": 16,
+        "top": 64.5,
+        "left": 12.8,
         "width": 35,
         "height": 2.1,
         "correct": "Did your friends walk to the theatre?"
@@ -57491,8 +57491,8 @@
         "page": 1070,
         "exercise": "2a",
         "label": "4",
-        "top": 59,
-        "left": 16,
+        "top": 67.9,
+        "left": 12.6,
         "width": 35,
         "height": 2.1,
         "correct": "Did Coline come to your party?"
@@ -57503,8 +57503,8 @@
         "page": 1070,
         "exercise": "2a",
         "label": "5",
-        "top": 62.5,
-        "left": 16,
+        "top": 71.3,
+        "left": 12.4,
         "width": 35,
         "height": 2.1,
         "correct": "Did you fall in love at university?"
@@ -57587,8 +57587,8 @@
         "page": 1070,
         "exercise": "3",
         "label": "3",
-        "top": 80,
-        "left": 16,
+        "top": 79.3,
+        "left": 52.4,
         "width": 30,
         "height": 2.1,
         "correct": "How did you get there?"
@@ -92323,7 +92323,7 @@
     "1067": 1793377968133,
     "1068": 1793378325267,
     "1069": 1793378325268,
-    "1070": 1793378546148,
+    "1070": 1793378564504,
     "1071": 1793378485001,
     "2004": 1793374693102,
     "2005": 1793374693102,
@@ -93157,5 +93157,5 @@
       }
     }
   },
-  "updatedAt": 1793378547188
+  "updatedAt": 1793378564565
 }
