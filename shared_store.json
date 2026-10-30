@@ -56167,8 +56167,8 @@
         "page": 1067,
         "exercise": "5",
         "label": "4",
-        "top": 24,
-        "left": 60,
+        "top": 34.5,
+        "left": 64.6,
         "width": 25,
         "height": 2.1,
         "correct": "play the piano"
@@ -56179,23 +56179,11 @@
         "page": 1067,
         "exercise": "5",
         "label": "5",
-        "top": 27,
-        "left": 60,
+        "top": 38.2,
+        "left": 73.8,
         "width": 25,
         "height": 2.1,
         "correct": "paint a picture"
-      },
-      {
-        "id": "p1067_ex6_1",
-        "type": "fill",
-        "page": 1067,
-        "exercise": "6",
-        "label": "1",
-        "top": 34,
-        "left": 60,
-        "width": 35,
-        "height": 2.1,
-        "correct": "Erik is a good painter."
       },
       {
         "id": "p1067_ex6_2",
@@ -56203,8 +56191,8 @@
         "page": 1067,
         "exercise": "6",
         "label": "2",
-        "top": 37.5,
-        "left": 60,
+        "top": 49.6,
+        "left": 55,
         "width": 35,
         "height": 2.1,
         "correct": "Helena and Leo are fast typists."
@@ -56215,8 +56203,8 @@
         "page": 1067,
         "exercise": "6",
         "label": "3",
-        "top": 41,
-        "left": 60,
+        "top": 52.6,
+        "left": 55.4,
         "width": 35,
         "height": 2.1,
         "correct": "Tommy can write slowly."
@@ -90884,7 +90872,7 @@
     "1063": 1793377285048,
     "1064": 1793377648410,
     "1065": 1793377648411,
-    "1067": 1793377791712,
+    "1067": 1793377802443,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -91717,5 +91705,5 @@
       }
     }
   },
-  "updatedAt": 1793377792213
+  "updatedAt": 1793377803668
 }
