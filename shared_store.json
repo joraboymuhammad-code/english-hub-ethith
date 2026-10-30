@@ -56054,25 +56054,13 @@
         "correct": "painting"
       },
       {
-        "id": "p1067_ex3_1",
-        "type": "fill",
-        "page": 1067,
-        "exercise": "3",
-        "label": "1",
-        "top": 54,
-        "left": 16,
-        "width": 35,
-        "height": 2.1,
-        "correct": "We lived in a village."
-      },
-      {
         "id": "p1067_ex3_2",
         "type": "fill",
         "page": 1067,
         "exercise": "3",
         "label": "2",
-        "top": 57.5,
-        "left": 16,
+        "top": 66.2,
+        "left": 11.2,
         "width": 35,
         "height": 2.1,
         "correct": "Catrin studied languages at university."
@@ -56083,8 +56071,8 @@
         "page": 1067,
         "exercise": "3",
         "label": "3",
-        "top": 61,
-        "left": 16,
+        "top": 69.8,
+        "left": 11.4,
         "width": 35,
         "height": 2.1,
         "correct": "Was it a good hotel?"
@@ -56095,8 +56083,8 @@
         "page": 1067,
         "exercise": "3",
         "label": "4",
-        "top": 64.5,
-        "left": 16,
+        "top": 73.1,
+        "left": 11.4,
         "width": 35,
         "height": 2.1,
         "correct": "Were those trousers expensive?"
@@ -56107,8 +56095,8 @@
         "page": 1067,
         "exercise": "3",
         "label": "5",
-        "top": 68,
-        "left": 16,
+        "top": 76.6,
+        "left": 11.6,
         "width": 35,
         "height": 2.1,
         "correct": "My partner started work early."
@@ -90932,7 +90920,7 @@
     "1063": 1793377285048,
     "1064": 1793377648410,
     "1065": 1793377648411,
-    "1067": 1793377711904,
+    "1067": 1793377731359,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -91765,5 +91753,5 @@
       }
     }
   },
-  "updatedAt": 1793377720529
+  "updatedAt": 1793377732015
 }
