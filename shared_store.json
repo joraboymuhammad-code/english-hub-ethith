@@ -55058,6 +55058,248 @@
         "correct": "died in 1928"
       }
     ],
+    "1063": [
+      {
+        "id": "p1063_ex4_2",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "4",
+        "label": "2",
+        "top": 25.8,
+        "left": 24,
+        "width": 12,
+        "height": 1.8,
+        "correct": "walked"
+      },
+      {
+        "id": "p1063_ex4_3",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "4",
+        "label": "3",
+        "top": 28.5,
+        "left": 24,
+        "width": 12,
+        "height": 1.8,
+        "correct": "played"
+      },
+      {
+        "id": "p1063_ex4_4",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "4",
+        "label": "4",
+        "top": 31.2,
+        "left": 24,
+        "width": 12,
+        "height": 1.8,
+        "correct": "watched"
+      },
+      {
+        "id": "p1063_ex4_5",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "4",
+        "label": "5",
+        "top": 33.9,
+        "left": 24,
+        "width": 12,
+        "height": 1.8,
+        "correct": "finished"
+      },
+      {
+        "id": "p1063_ex4_6",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "4",
+        "label": "6",
+        "top": 36.6,
+        "left": 24,
+        "width": 12,
+        "height": 1.8,
+        "correct": "worked"
+      },
+      {
+        "id": "p1063_ex4_7",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "4",
+        "label": "7",
+        "top": 39.3,
+        "left": 24,
+        "width": 12,
+        "height": 1.8,
+        "correct": "travelled or traveled"
+      },
+      {
+        "id": "p1063_ex4_8",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "4",
+        "label": "8",
+        "top": 42,
+        "left": 24,
+        "width": 12,
+        "height": 1.8,
+        "correct": "studied"
+      },
+      {
+        "id": "p1063_ex5_1",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "5",
+        "label": "1",
+        "top": 22.4,
+        "left": 69.8,
+        "width": 12,
+        "height": 1.8,
+        "correct": "lived"
+      },
+      {
+        "id": "p1063_ex5_2",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "5",
+        "label": "2",
+        "top": 28.4,
+        "left": 52.7,
+        "width": 12,
+        "height": 1.8,
+        "correct": "studied"
+      },
+      {
+        "id": "p1063_ex5_3",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "5",
+        "label": "3",
+        "top": 31.2,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "loved"
+      },
+      {
+        "id": "p1063_ex5_4",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "5",
+        "label": "4",
+        "top": 33.9,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "visited"
+      },
+      {
+        "id": "p1063_ex5_5",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "5",
+        "label": "5",
+        "top": 36.6,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "showed"
+      },
+      {
+        "id": "p1063_ex5_6",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "5",
+        "label": "6",
+        "top": 39.3,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "helped"
+      },
+      {
+        "id": "p1063_ex5_7",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "5",
+        "label": "7",
+        "top": 42,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "talked"
+      },
+      {
+        "id": "p1063_ex5_8",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "5",
+        "label": "8",
+        "top": 44.7,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "died"
+      },
+      {
+        "id": "p1063_ex6a_1",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "6a",
+        "label": "1",
+        "top": 72,
+        "left": 16,
+        "width": 15,
+        "height": 1.8,
+        "correct": "started"
+      },
+      {
+        "id": "p1063_ex6a_2",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "6a",
+        "label": "2",
+        "top": 74.8,
+        "left": 16,
+        "width": 15,
+        "height": 1.8,
+        "correct": "hated"
+      },
+      {
+        "id": "p1063_ex6a_3",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "6a",
+        "label": "3",
+        "top": 77.6,
+        "left": 16,
+        "width": 15,
+        "height": 1.8,
+        "correct": "visited"
+      },
+      {
+        "id": "p1063_ex6a_4",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "6a",
+        "label": "4",
+        "top": 80.4,
+        "left": 16,
+        "width": 15,
+        "height": 1.8,
+        "correct": "painted"
+      },
+      {
+        "id": "p1063_ex6a_5",
+        "type": "fill",
+        "page": 1063,
+        "exercise": "6a",
+        "label": "5",
+        "top": 83.2,
+        "left": 16,
+        "width": 15,
+        "height": 1.8,
+        "correct": "wanted"
+      }
+    ],
     "2004": [
       {
         "id": "p2004_ex2_2",
@@ -89561,6 +89803,7 @@
     "1060": 1793377088342,
     "1061": 1793377088344,
     "1062": 1793377197581,
+    "1063": 1793377219236,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -90393,5 +90636,5 @@
       }
     }
   },
-  "updatedAt": 1793377206043
+  "updatedAt": 1793377219275
 }
