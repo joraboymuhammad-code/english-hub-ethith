@@ -58280,8 +58280,8 @@
         "page": 1074,
         "exercise": "2a",
         "label": "2q",
-        "top": 42,
-        "left": 16,
+        "top": 63.5,
+        "left": 12.3,
         "width": 35,
         "height": 2.1,
         "correct": "What was the weather like yesterday?"
@@ -58292,8 +58292,8 @@
         "page": 1074,
         "exercise": "2a",
         "label": "2a",
-        "top": 45,
-        "left": 16,
+        "top": 65,
+        "left": 14.6,
         "width": 25,
         "height": 2.1,
         "correct": "It was cloudy, but warm."
@@ -58304,8 +58304,8 @@
         "page": 1074,
         "exercise": "2a",
         "label": "3q",
-        "top": 49,
-        "left": 16,
+        "top": 68.4,
+        "left": 12.3,
         "width": 35,
         "height": 2.1,
         "correct": "What's the weather like now?"
@@ -58316,8 +58316,8 @@
         "page": 1074,
         "exercise": "2a",
         "label": "3a",
-        "top": 52,
-        "left": 16,
+        "top": 70.2,
+        "left": 14.1,
         "width": 25,
         "height": 2.1,
         "correct": "It's very snowy."
@@ -58376,8 +58376,8 @@
         "page": 1074,
         "exercise": "4",
         "label": "1",
-        "top": 93.8,
-        "left": 23.5,
+        "top": 59.5,
+        "left": 78.4,
         "width": 6,
         "height": 2.1,
         "correct": "f"
@@ -93079,7 +93079,7 @@
     "1071": 1793378610581,
     "1072": 1793378763844,
     "1073": 1793378763845,
-    "1074": 1793378920029,
+    "1074": 1793378950123,
     "1075": 1793378839098,
     "2004": 1793374693102,
     "2005": 1793374693102,
@@ -93913,5 +93913,5 @@
       }
     }
   },
-  "updatedAt": 1793378920558
+  "updatedAt": 1793378951975
 }
