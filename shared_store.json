@@ -50875,8 +50875,8 @@
         "page": 1047,
         "exercise": "5c",
         "label": "1",
-        "top": 28.5,
-        "left": 55,
+        "top": 26.9,
+        "left": 55.4,
         "width": 14,
         "height": 1.8,
         "correct": "Yes, there is. or Yes, there is"
@@ -50923,8 +50923,8 @@
         "page": 1047,
         "exercise": "5c",
         "label": "5",
-        "top": 81,
-        "left": 55,
+        "top": 35,
+        "left": 55.5,
         "width": 14,
         "height": 1.8,
         "correct": "Yes, there is. or Yes, there is"
@@ -50935,8 +50935,8 @@
         "page": 1047,
         "exercise": "5c",
         "label": "6",
-        "top": 83.5,
-        "left": 55,
+        "top": 37.1,
+        "left": 55.4,
         "width": 14,
         "height": 1.8,
         "correct": "No, there isn't. or No, there isn't"
@@ -87245,7 +87245,7 @@
     "1044": 1793372801124,
     "1045": 1793372833172,
     "1046": 1793375645517,
-    "1047": 1793375800130,
+    "1047": 1793375808090,
     "1052": 1793125351106,
     "1053": 1793125381190,
     "1054": 1793371802105,
@@ -88086,5 +88086,5 @@
       }
     }
   },
-  "updatedAt": 1793375801017
+  "updatedAt": 1793375808565
 }
