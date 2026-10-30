@@ -51788,6 +51788,200 @@
         "correct": "like using"
       }
     ],
+    "1057": [
+      {
+        "id": "p1057_ex5_1",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "5",
+        "label": "1",
+        "top": 47.1,
+        "left": 15.3,
+        "width": 18,
+        "height": 1.8,
+        "correct": "do you like running"
+      },
+      {
+        "id": "p1057_ex5_2",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "5",
+        "label": "2",
+        "top": 52.6,
+        "left": 0.9,
+        "width": 14,
+        "height": 1.8,
+        "correct": "like walking"
+      },
+      {
+        "id": "p1057_ex5_3",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "5",
+        "label": "3",
+        "top": 52.2,
+        "left": 18.7,
+        "width": 18,
+        "height": 1.8,
+        "correct": "doesn't like running"
+      },
+      {
+        "id": "p1057_ex5_4a",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "5",
+        "label": "4a",
+        "top": 79.3,
+        "left": 10,
+        "width": 6,
+        "height": 1.8,
+        "correct": "Does"
+      },
+      {
+        "id": "p1057_ex5_4b",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "5",
+        "label": "4b",
+        "top": 79.3,
+        "left": 20,
+        "width": 16,
+        "height": 1.8,
+        "correct": "like playing tennis"
+      },
+      {
+        "id": "p1057_ex5_5",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "5",
+        "label": "5",
+        "top": 81.5,
+        "left": 15,
+        "width": 15,
+        "height": 1.8,
+        "correct": "likes watching"
+      },
+      {
+        "id": "p1057_ex5_6",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "5",
+        "label": "6",
+        "top": 82.8,
+        "left": 13.8,
+        "width": 15,
+        "height": 1.8,
+        "correct": "Do you like playing"
+      },
+      {
+        "id": "p1057_ex5_7",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "5",
+        "label": "7",
+        "top": 84.5,
+        "left": 15,
+        "width": 16,
+        "height": 1.8,
+        "correct": "don't like running"
+      },
+      {
+        "id": "p1057_ex7_1",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "7",
+        "label": "1",
+        "top": 65.9,
+        "left": 69.1,
+        "width": 15,
+        "height": 1.8,
+        "correct": "loves going out"
+      },
+      {
+        "id": "p1057_ex7_2",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "7",
+        "label": "2",
+        "top": 67.4,
+        "left": 57.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "likes watching"
+      },
+      {
+        "id": "p1057_ex7_3",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "7",
+        "label": "3",
+        "top": 70.5,
+        "left": 63.1,
+        "width": 18,
+        "height": 1.8,
+        "correct": "doesn't like reading"
+      },
+      {
+        "id": "p1057_ex7_4",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "7",
+        "label": "4",
+        "top": 72.5,
+        "left": 64.9,
+        "width": 14,
+        "height": 1.8,
+        "correct": "hates cooking"
+      },
+      {
+        "id": "p1057_ex7_5",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "7",
+        "label": "5",
+        "top": 75.6,
+        "left": 54.8,
+        "width": 15,
+        "height": 1.8,
+        "correct": "love travelling"
+      },
+      {
+        "id": "p1057_ex7_6",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "7",
+        "label": "6",
+        "top": 78.7,
+        "left": 54.8,
+        "width": 15,
+        "height": 1.8,
+        "correct": "like working"
+      },
+      {
+        "id": "p1057_ex7_7",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "7",
+        "label": "7",
+        "top": 80.2,
+        "left": 54.8,
+        "width": 18,
+        "height": 1.8,
+        "correct": "don't like shopping"
+      },
+      {
+        "id": "p1057_ex7_8",
+        "type": "fill",
+        "page": 1057,
+        "exercise": "7",
+        "label": "8",
+        "top": 82.5,
+        "left": 54.8,
+        "width": 15,
+        "height": 1.8,
+        "correct": "hate playing"
+      }
+    ],
     "1058": [
       {
         "id": "p1058_ex1a_2",
@@ -86535,6 +86729,7 @@
     "1054": 1793371802105,
     "1055": 1793371802105,
     "1056": 1793374994940,
+    "1057": 1793375019372,
     "1058": 1793372411941,
     "1059": 1793372411941,
     "2004": 1793374693102,
@@ -87369,5 +87564,5 @@
       }
     }
   },
-  "updatedAt": 1793375004185
+  "updatedAt": 1793375020292
 }
