@@ -59068,8 +59068,8 @@
         "page": 1081,
         "exercise": "4",
         "label": "5",
-        "top": 64.2,
-        "left": 6,
+        "top": 63.6,
+        "left": 10.7,
         "width": 12,
         "height": 1.8,
         "correct": "I'd like"
@@ -59080,8 +59080,8 @@
         "page": 1081,
         "exercise": "4",
         "label": "6",
-        "top": 63.7,
-        "left": 37,
+        "top": 64.2,
+        "left": 32.8,
         "width": 16,
         "height": 1.8,
         "correct": "Would you like"
@@ -59092,8 +59092,8 @@
         "page": 1081,
         "exercise": "4",
         "label": "7",
-        "top": 82.1,
-        "left": 5.8,
+        "top": 82.5,
+        "left": 9.8,
         "width": 12,
         "height": 1.8,
         "correct": "I'd like"
@@ -59104,8 +59104,8 @@
         "page": 1081,
         "exercise": "4",
         "label": "8",
-        "top": 84,
-        "left": 33.5,
+        "top": 82.8,
+        "left": 31.1,
         "width": 16,
         "height": 1.8,
         "correct": "Would you like"
@@ -59152,8 +59152,8 @@
         "page": 1081,
         "exercise": "5",
         "label": "4",
-        "top": 69.5,
-        "left": 20,
+        "top": 23.3,
+        "left": 61.1,
         "width": 10,
         "height": 1.8,
         "correct": "'d like"
@@ -59164,8 +59164,8 @@
         "page": 1081,
         "exercise": "5",
         "label": "5",
-        "top": 73,
-        "left": 20,
+        "top": 26.4,
+        "left": 62.7,
         "width": 10,
         "height": 1.8,
         "correct": "'d like"
@@ -59176,8 +59176,8 @@
         "page": 1081,
         "exercise": "5",
         "label": "6",
-        "top": 76.5,
-        "left": 20,
+        "top": 28.3,
+        "left": 56.9,
         "width": 16,
         "height": 1.8,
         "correct": "Would you like"
@@ -59188,8 +59188,8 @@
         "page": 1081,
         "exercise": "5",
         "label": "7",
-        "top": 80,
-        "left": 20,
+        "top": 31.8,
+        "left": 57.3,
         "width": 16,
         "height": 1.8,
         "correct": "Would you like to"
@@ -59200,8 +59200,8 @@
         "page": 1081,
         "exercise": "5",
         "label": "8",
-        "top": 83.5,
-        "left": 20,
+        "top": 34.9,
+        "left": 68.4,
         "width": 10,
         "height": 1.8,
         "correct": "'d like"
@@ -93725,7 +93725,7 @@
     "1075": 1793379024657,
     "1078": 1793379138558,
     "1079": 1793379138559,
-    "1081": 1793379204798,
+    "1081": 1793379222325,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -94558,5 +94558,5 @@
       }
     }
   },
-  "updatedAt": 1793379205489
+  "updatedAt": 1793379222352
 }
