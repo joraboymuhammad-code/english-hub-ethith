@@ -50410,6 +50410,236 @@
         "correct": "There's"
       }
     ],
+    "1046": [
+      {
+        "id": "p1046_ex1a_1",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "1a",
+        "label": "1",
+        "top": 32.8,
+        "left": 10.5,
+        "width": 14,
+        "height": 1.8,
+        "correct": "air conditioning"
+      },
+      {
+        "id": "p1046_ex1a_2",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "1a",
+        "label": "2",
+        "top": 32.6,
+        "left": 31.3,
+        "width": 8,
+        "height": 1.8,
+        "correct": "lift"
+      },
+      {
+        "id": "p1046_ex1a_3",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "1a",
+        "label": "3",
+        "top": 50,
+        "left": 10,
+        "width": 12,
+        "height": 1.8,
+        "correct": "refreshments"
+      },
+      {
+        "id": "p1046_ex1a_4",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "1a",
+        "label": "4",
+        "top": 50,
+        "left": 30,
+        "width": 8,
+        "height": 1.8,
+        "correct": "gym"
+      },
+      {
+        "id": "p1046_ex1a_5",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "1a",
+        "label": "5",
+        "top": 65,
+        "left": 10,
+        "width": 8,
+        "height": 1.8,
+        "correct": "Wi-fi"
+      },
+      {
+        "id": "p1046_ex1a_6",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "1a",
+        "label": "6",
+        "top": 65,
+        "left": 30,
+        "width": 10,
+        "height": 1.8,
+        "correct": "car park or carpark"
+      },
+      {
+        "id": "p1046_ex1a_7",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "1a",
+        "label": "7",
+        "top": 80,
+        "left": 10,
+        "width": 8,
+        "height": 1.8,
+        "correct": "iron"
+      },
+      {
+        "id": "p1046_ex1a_8",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "1a",
+        "label": "8",
+        "top": 80,
+        "left": 30,
+        "width": 8,
+        "height": 1.8,
+        "correct": "safe"
+      },
+      {
+        "id": "p1046_ex1a_9",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "1a",
+        "label": "9",
+        "top": 88,
+        "left": 10,
+        "width": 8,
+        "height": 1.8,
+        "correct": "towels"
+      },
+      {
+        "id": "p1046_ex1a_10",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "1a",
+        "label": "10",
+        "top": 88,
+        "left": 30,
+        "width": 8,
+        "height": 1.8,
+        "correct": "bath"
+      },
+      {
+        "id": "p1046_ex2_2",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "2",
+        "label": "2",
+        "top": 21.3,
+        "left": 74,
+        "width": 15,
+        "height": 1.8,
+        "correct": "air conditioning"
+      },
+      {
+        "id": "p1046_ex2_3",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "2",
+        "label": "3",
+        "top": 23.1,
+        "left": 85.3,
+        "width": 8,
+        "height": 1.8,
+        "correct": "Wi-fi"
+      },
+      {
+        "id": "p1046_ex2_4",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "2",
+        "label": "4",
+        "top": 24.8,
+        "left": 82,
+        "width": 8,
+        "height": 1.8,
+        "correct": "safe"
+      },
+      {
+        "id": "p1046_ex2_5",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "2",
+        "label": "5",
+        "top": 26.5,
+        "left": 75,
+        "width": 14,
+        "height": 1.8,
+        "correct": "refreshments"
+      },
+      {
+        "id": "p1046_ex2_6",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "2",
+        "label": "6",
+        "top": 29.8,
+        "left": 85.4,
+        "width": 9,
+        "height": 1.8,
+        "correct": "car park or carpark"
+      },
+      {
+        "id": "p1046_ex2_7",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "2",
+        "label": "7",
+        "top": 31.5,
+        "left": 79.2,
+        "width": 8,
+        "height": 1.8,
+        "correct": "iron"
+      },
+      {
+        "id": "p1046_ex2_8",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "2",
+        "label": "8",
+        "top": 33.2,
+        "left": 63,
+        "width": 8,
+        "height": 1.8,
+        "correct": "gym"
+      },
+      {
+        "id": "p1046_ex2_9",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "2",
+        "label": "9",
+        "top": 36.5,
+        "left": 65.1,
+        "width": 8,
+        "height": 1.8,
+        "correct": "bath"
+      },
+      {
+        "id": "p1046_ex2_10",
+        "type": "fill",
+        "page": 1046,
+        "exercise": "2",
+        "label": "10",
+        "top": 39.7,
+        "left": 63,
+        "width": 8,
+        "height": 1.8,
+        "correct": "lift"
+      }
+    ],
     "1052": [
       {
         "id": "p1052_ex1a_2",
@@ -86712,6 +86942,7 @@
     "1043": 1793370793070,
     "1044": 1793372801124,
     "1045": 1793372833172,
+    "1046": 1793375590939,
     "1052": 1793125351106,
     "1053": 1793125381190,
     "1054": 1793371802105,
@@ -87552,5 +87783,5 @@
       }
     }
   },
-  "updatedAt": 1793375255020
+  "updatedAt": 1793375592110
 }
