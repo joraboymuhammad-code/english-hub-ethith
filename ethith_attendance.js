@@ -447,13 +447,21 @@
   }
 
   function getWorkbookUnitsList(bookLevel) {
-    if (bookLevel === 'B2') {
-      if (window.ETHITH_WORKBOOK_B1 && Array.isArray(window.ETHITH_WORKBOOK_B1.unitsB2)) {
-        return window.ETHITH_WORKBOOK_B1.unitsB2;
-      }
+    var wb = window.ETHITH_WORKBOOK_B1 || window.WB || {};
+    if (bookLevel === 'A1' || bookLevel === 'Beginner') {
+      if (Array.isArray(wb.unitsA1) && wb.unitsA1.length > 0) return wb.unitsA1;
     }
-    if (window.ETHITH_WORKBOOK_B1 && Array.isArray(window.ETHITH_WORKBOOK_B1.units)) {
-      return window.ETHITH_WORKBOOK_B1.units;
+    if (bookLevel === 'A2' || bookLevel === 'Elementary') {
+      if (Array.isArray(wb.unitsA2) && wb.unitsA2.length > 0) return wb.unitsA2;
+    }
+    if (bookLevel === 'B1' || bookLevel === 'Pre-Intermediate') {
+      if (Array.isArray(wb.unitsB1Pre) && wb.unitsB1Pre.length > 0) return wb.unitsB1Pre;
+    }
+    if (bookLevel === 'B2' || bookLevel === 'Upper-Intermediate') {
+      if (Array.isArray(wb.unitsB2) && wb.unitsB2.length > 0) return wb.unitsB2;
+    }
+    if (Array.isArray(wb.units) && wb.units.length > 0) {
+      return wb.units;
     }
     return [
       {
@@ -1066,6 +1074,20 @@
   EA.renderTeachersDirectory = function(container) {
     var curUser = getActiveUser();
     var isStudent = curUser && curUser.role === 'student';
+
+    // Strict Student Lockdown: Student MUST NEVER see other teachers or directory!
+    if (isStudent) {
+      var enrolledClasses = (window.S && window.S.classes || []).filter(function(c) {
+        return c.students && c.students.some(function(st) {
+          return st.id === curUser.id || st.email === curUser.email || (curUser.phone && st.phone === curUser.phone);
+        });
+      });
+      if (enrolledClasses.length > 0) {
+        EA.activeClassId = enrolledClasses[0].id;
+      }
+      return EA.render(container);
+    }
+
     var isAdmin = isAdminRole() && !isStudent;
     var isTeacher = isTeacherRole() && !isStudent;
 
@@ -1231,6 +1253,22 @@
   // LEVEL 2: TEACHER GROUPS VIEW (USTOZNING GURUHLARI)
   // --------------------------------------------------------------------------
   EA.renderTeacherGroups = function(container, teacherId) {
+    var curUser = getActiveUser();
+    var isStudent = curUser && curUser.role === 'student';
+
+    // Strict Student Lockdown: Student MUST NEVER see teacher groups view!
+    if (isStudent) {
+      var enrolledClasses = (window.S && window.S.classes || []).filter(function(c) {
+        return c.students && c.students.some(function(st) {
+          return st.id === curUser.id || st.email === curUser.email || (curUser.phone && st.phone === curUser.phone);
+        });
+      });
+      if (enrolledClasses.length > 0) {
+        EA.activeClassId = enrolledClasses[0].id;
+      }
+      return EA.render(container);
+    }
+
     var teachers = getStoreTeachers();
     var t = teachers.find(function(item) { return item.id === teacherId; }) || teachers[0];
     var tClasses = getClassesForTeacher(t.id);
@@ -2540,38 +2578,44 @@ EA.render = function(container, preserveScrollLeft) {
         '</div>' +
         '<span style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);color:#7dd3fc;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:800;">🔒 Faqat ko‘rish (Read-only)</span>' +
       '</div>';
-    } +
-      '<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">' +
-        '<div style="text-align:right;">' +
-          '<h2 style="margin:0;font-size:18px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">' +
-            '<span>👨‍🏫 ' + esc(curTName) + '</span>' +
-            '<span style="color:#94a3b8;font-size:16px;">•</span>' +
-            '<span style="color:#38bdf8;background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);padding:2px 10px;border-radius:8px;">' + esc(cls.name) + '</span>' +
-          '</h2>' +
-          '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">Level: <b style="color:#34d399;">' + esc(cls.level || 'General') + '</b> | Xona: <b style="color:#cbd5e1;">' + esc(cls.room || '301-xona') + '</b></div>' +
-        '</div>' +
-        '<span style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:12px;padding:5px 12px;font-size:12px;font-weight:900;">' + students.length + ' / ' + (cls.maxCapacity || 18) + ' o‘quvchi</span>' +
+    }
+
+    h += '<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">' +
+      '<div style="text-align:right;">' +
+        '<h2 style="margin:0;font-size:18px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">' +
+          '<span>👨‍🏫 ' + esc(curTName) + '</span>' +
+          '<span style="color:#94a3b8;font-size:16px;">•</span>' +
+          '<span style="color:#38bdf8;background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);padding:2px 10px;border-radius:8px;">' + esc(cls.name) + '</span>' +
+        '</h2>' +
+        '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">Level: <b style="color:#34d399;">' + esc(cls.level || 'General') + '</b> | Xona: <b style="color:#cbd5e1;">' + esc(cls.room || '301-xona') + '</b></div>' +
       '</div>' +
+      '<span style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:12px;padding:5px 12px;font-size:12px;font-weight:900;">' + students.length + ' / ' + (cls.maxCapacity || 18) + ' o‘quvchi</span>' +
     '</div>' +
-    '<div style="display:none;">';
+    '</div>'; // Close qe-glass-panel cleanly!
 
-    allClasses.forEach(function(c) {
-      var isAct = (c.id === cls.id);
-      var stCount = (c.students && c.students.length) ? c.students.length : ((c.id === 'cls_1_guruh' || c.id === 'cls_ethith_main') ? EA.DEMO_STUDENTS.length : 0);
-      h += '<div class="ea-class-card-tab" data-clsid="' + esc(c.id) + '" style="' +
-        'cursor:pointer;min-width:210px;padding:10px 14px;border-radius:14px;transition:all 0.2s;backdrop-filter:blur(16px);' +
-        'border:1.5px solid ' + (isAct ? '#38bdf8' : 'rgba(255,255,255,0.12)') + ';' +
-        'background:' + (isAct ? 'linear-gradient(135deg, rgba(56,189,248,0.22), rgba(129,140,248,0.12))' : 'rgba(15,23,42,0.55)') + ';' +
-        'box-shadow:' + (isAct ? '0 0 22px -4px rgba(56,189,248,0.4), inset 0 1px 0 rgba(255,255,255,0.2)' : 'none') + ';">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px;">' +
-          '<b style="font-size:13.5px;color:' + (isAct ? '#ffffff' : '#cbd5e1') + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(c.name || 'Sinf') + '</b>' +
-          '<span style="font-size:10.5px;font-weight:800;padding:2px 7px;border-radius:999px;background:' + (isAct ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.07)') + ';color:' + (isAct ? '#7dd3fc' : '#94a3b8') + ';border:1px solid ' + (isAct ? 'rgba(56,189,248,0.4)' : 'transparent') + ';">' + stCount + ' o\'quvchi</span>' +
-        '</div>' +
-        '<div style="font-size:11px;color:#94a3b8;">Kod: <b style="color:#38bdf8;font-family:monospace;">' + esc(c.code || '') + '</b></div>' +
-      '</div>';
-    });
-
-    h += '</div></div>';
+    // IMPORTANT: For Students, STRICTLY ZERO OTHER CLASS CARDS!
+    // For Teachers, show only THAT TEACHER'S GROUPS tabs!
+    if (!isStudent) {
+      var teacherGroups = getClassesForTeacher(cls.teacherId || EA.activeTeacherId);
+      if (teacherGroups.length > 1) {
+        h += '<div style="display:flex;align-items:center;gap:10px;overflow-x:auto;padding-bottom:10px;margin-bottom:14px;">';
+        teacherGroups.forEach(function(c) {
+          var isAct = (c.id === cls.id);
+          var stCount = (c.students && c.students.length) ? c.students.length : 0;
+          h += '<div class="ea-class-card-tab" data-clsid="' + esc(c.id) + '" style="' +
+            'cursor:pointer;min-width:180px;padding:8px 14px;border-radius:14px;transition:all 0.2s;backdrop-filter:blur(16px);' +
+            'border:1.5px solid ' + (isAct ? '#38bdf8' : 'rgba(255,255,255,0.12)') + ';' +
+            'background:' + (isAct ? 'linear-gradient(135deg, rgba(56,189,248,0.22), rgba(129,140,248,0.12))' : 'rgba(15,23,42,0.55)') + ';' +
+            'box-shadow:' + (isAct ? '0 0 22px -4px rgba(56,189,248,0.4), inset 0 1px 0 rgba(255,255,255,0.2)' : 'none') + ';">' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px;">' +
+              '<b style="font-size:13px;color:' + (isAct ? '#ffffff' : '#cbd5e1') + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(c.name || 'Guruh') + '</b>' +
+              '<span style="font-size:10px;font-weight:800;padding:2px 6px;border-radius:999px;background:' + (isAct ? 'rgba(56,189,248,0.25)' : 'rgba(255,255,255,0.07)') + ';color:' + (isAct ? '#7dd3fc' : '#94a3b8') + ';">' + stCount + ' o‘quvchi</span>' +
+            '</div>' +
+          '</div>';
+        });
+        h += '</div>';
+      }
+    }
 
     // 1. ACTIVE HOMEWORK & AUTO-GRADING BANNER (For every class!)
     if (activeHw) {
@@ -3116,16 +3160,37 @@ EA.render = function(container, preserveScrollLeft) {
           unit: hw.unit,
           lessonCode: hw.lessonCode
         };
-        var firstPg = (hw.pages && hw.pages[0]) || (hw.bookLevel === 'B2' ? 2004 : 4);
-        if (hw.bookLevel === 'B2' || firstPg > 2000) {
-          if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.openLessonB2 === 'function') {
-            window.ETHITH_WORKBOOK_B1.openLessonB2(hw.unit, hw.lessonCode, firstPg);
+        var bLevel = hw.bookLevel || 'B1+';
+        var firstPg = (hw.pages && hw.pages[0]) || 4;
+        var wbObj = window.ETHITH_WORKBOOK_B1 || window.WB;
+
+        if (bLevel === 'A1' || bLevel === 'Beginner') {
+          if (wbObj && typeof wbObj.openLessonA1 === 'function') {
+            wbObj.openLessonA1(hw.unit, hw.lessonCode, firstPg);
+          } else if (typeof window.go === 'function') {
+            window.go('beginner', { unit: hw.unit, lesson: hw.lessonCode });
+          }
+        } else if (bLevel === 'A2' || bLevel === 'Elementary') {
+          if (wbObj && typeof wbObj.openLessonA2 === 'function') {
+            wbObj.openLessonA2(hw.unit, hw.lessonCode, firstPg);
+          } else if (typeof window.go === 'function') {
+            window.go('elementary', { unit: hw.unit, lesson: hw.lessonCode });
+          }
+        } else if (bLevel === 'B1' || bLevel === 'Pre-Intermediate') {
+          if (wbObj && typeof wbObj.openLessonB1Pre === 'function') {
+            wbObj.openLessonB1Pre(hw.unit, hw.lessonCode, firstPg);
+          } else if (typeof window.go === 'function') {
+            window.go('pre_intermediate', { unit: hw.unit, lesson: hw.lessonCode });
+          }
+        } else if (bLevel === 'B2' || bLevel === 'Upper-Intermediate' || firstPg > 2000) {
+          if (wbObj && typeof wbObj.openLessonB2 === 'function') {
+            wbObj.openLessonB2(hw.unit, hw.lessonCode, firstPg);
           } else if (typeof window.go === 'function') {
             window.go('upper_intermediate', { unit: hw.unit, lesson: hw.lessonCode });
           }
         } else {
-          if (window.ETHITH_WORKBOOK_B1 && typeof window.ETHITH_WORKBOOK_B1.openLesson === 'function') {
-            window.ETHITH_WORKBOOK_B1.openLesson(hw.unit, hw.lessonCode, firstPg);
+          if (wbObj && typeof wbObj.openLesson === 'function') {
+            wbObj.openLesson(hw.unit, hw.lessonCode, firstPg);
           } else if (typeof window.go === 'function') {
             window.go('intermediate', { unit: hw.unit, lesson: hw.lessonCode });
           }
@@ -3426,10 +3491,28 @@ EA.render = function(container, preserveScrollLeft) {
       if (S_store.fileExplorer) S_store.fileExplorer.tests = allTests;
     }
 
-    var testOptsHtml = '';
-    allTests.forEach(function(t) {
-      testOptsHtml += '<option value="' + esc(t.id) + '" ' + (curHw.testId === t.id ? 'selected' : '') + '>' + esc(t.title) + ' (' + (t.questions || []).length + ' ta savol)' + (t.audioUrl ? ' 🎧 Audio' : '') + '</option>';
+    var curUser = getActiveUser();
+    var curTName = (cls.teacherName || cls.teacher || (curUser && curUser.name) || '').toLowerCase().trim();
+    var curTId = (cls.teacherId || (curUser && curUser.id) || '').toLowerCase().trim();
+
+    // STRICT TEACHER ISOLATION: Each teacher sees strictly THEIR OWN tests!
+    var myTests = allTests.filter(function(t) {
+      if (!t) return false;
+      var tAuthor = (t.authorName || t.author || '').toLowerCase().trim();
+      var tId = (t.teacherId || t.authorId || '').toLowerCase().trim();
+      if (isAdmin) return true; // Admin can see all
+      return (tId && (tId === curTId || tId.indexOf(curTId) !== -1)) ||
+             (tAuthor && curTName && (tAuthor === curTName || tAuthor.indexOf(curTName) !== -1 || curTName.indexOf(tAuthor) !== -1));
     });
+
+    var testOptsHtml = '';
+    if (myTests.length === 0) {
+      testOptsHtml = '<option value="">— Hozircha sizning shaxsiy testingiz yo‘q (Quiz Studio orqali test qo‘shing) —</option>';
+    } else {
+      myTests.forEach(function(t) {
+        testOptsHtml += '<option value="' + esc(t.id) + '" ' + (curHw.testId === t.id ? 'selected' : '') + '>' + esc(t.title) + ' (' + (t.questions || []).length + ' ta savol)' + (t.audioUrl ? ' 🎧 Audio' : '') + '</option>';
+      });
+    }
 
     function buildUnitOptions(bLevel, activeUnitNum) {
       var uList = getWorkbookUnitsList(bLevel);
@@ -3478,8 +3561,11 @@ EA.render = function(container, preserveScrollLeft) {
             '<div>' +
               '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📖 Kitob darajasi (Workbook):</label>' +
               '<select id="eaHwBookLevelSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(168,85,247,0.5);background:rgba(8,13,26,0.9);color:#c084fc;font-weight:800;font-size:13.5px;outline:none;">' +
+                '<option value="A1" ' + ((curHw.bookLevel || '') === 'A1' ? 'selected' : '') + '>📗 Beginner (A1) Workbook</option>' +
+                '<option value="A2" ' + ((curHw.bookLevel || '') === 'A2' ? 'selected' : '') + '>📙 Elementary (A2) Workbook</option>' +
+                '<option value="B1" ' + ((curHw.bookLevel || '') === 'B1' ? 'selected' : '') + '>📘 Pre-Intermediate (B1) Workbook</option>' +
                 '<option value="B1+" ' + ((curHw.bookLevel || 'B1+') === 'B1+' ? 'selected' : '') + '>📘 Intermediate (B1+) Workbook</option>' +
-                '<option value="B2" ' + (curHw.bookLevel === 'B2' ? 'selected' : '') + '>📕 Upper-Intermediate (B2) Workbook</option>' +
+                '<option value="B2" ' + ((curHw.bookLevel || '') === 'B2' ? 'selected' : '') + '>📕 Upper-Intermediate (B2) Workbook</option>' +
               '</select>' +
             '</div>' +
             '<div>' +
