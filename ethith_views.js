@@ -1378,13 +1378,31 @@
   // ==========================================
   function renderClassesView(container) {
     window._ethithCurrentView = 'classes';
-    var isTeacher = S.user && S.user.role === 'teacher';
-    var userClasses = (S.classes || []).filter(function(c) {
-      if (isTeacher) return true;
-      return c.students && c.students.some(function(s) { 
-        return s.id === S.user.id || s.email === S.user.email || (S.user.phone && s.phone === S.user.phone); 
+    var isTeacher = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
+    var isAdmin = S.user && (S.user.role === 'admin' || (S.user.email && S.user.email.toLowerCase().includes('admin')));
+    var isStudent = S.user && S.user.role === 'student';
+
+    var userClasses = [];
+    if (isAdmin) {
+      userClasses = S.classes || [];
+    } else if (isTeacher) {
+      var tName = (S.user.name || '').toLowerCase().trim();
+      var tId = (S.user.id || '').toLowerCase().trim();
+      userClasses = (S.classes || []).filter(function(c) {
+        var cTId = (c.teacherId || '').toLowerCase().trim();
+        var cTName = (c.teacherName || c.teacher || '').toLowerCase().trim();
+        return (cTId && cTId === tId) || (cTName && cTName === tName);
       });
-    });
+    } else if (isStudent) {
+      userClasses = (S.classes || []).filter(function(c) {
+        if (S.user.classId && c.id === S.user.classId) return true;
+        return c.students && c.students.some(function(s) { 
+          if (s.isTester) return false;
+          return (s.login && S.user.login && s.login.toLowerCase() === S.user.login.toLowerCase()) ||
+                 (s.id && S.user.id && s.id === S.user.id);
+        });
+      });
+    }
 
     window._ethithRefreshClassesList = function() {
       if (!S.activeClassId && window._ethithCurrentView === 'classes') {

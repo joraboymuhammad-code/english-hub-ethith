@@ -1242,11 +1242,11 @@
     });
     h += '</div></div>';
 
-    var loginsSec = EA.renderSystemLoginsSection(null, null);
-    h += loginsSec.html;
+    var loginsSec = (!isStudent && (isAdmin || isTeacher)) ? EA.renderSystemLoginsSection(null, null) : null;
+    if (loginsSec) h += loginsSec.html;
     container.innerHTML = h;
     EA.attachTeachersDirListeners(container);
-    loginsSec.attachHandlers(container);
+    if (loginsSec && typeof loginsSec.attachHandlers === 'function') loginsSec.attachHandlers(container);
   };
 
   // --------------------------------------------------------------------------
@@ -1441,11 +1441,11 @@
     }
 
     h += '</div>';
-    var loginsSec = EA.renderSystemLoginsSection(t.id, null);
-    h += loginsSec.html;
+    var loginsSec = (!isStudent && (isAdmin || isTeacher)) ? EA.renderSystemLoginsSection(t.id, null) : null;
+    if (loginsSec) h += loginsSec.html;
     container.innerHTML = h;
     EA.attachTeacherGroupsListeners(container, t);
-    loginsSec.attachHandlers(container);
+    if (loginsSec && typeof loginsSec.attachHandlers === 'function') loginsSec.attachHandlers(container);
   };
 
   // --------------------------------------------------------------------------
@@ -3023,8 +3023,11 @@ EA.render = function(container, preserveScrollLeft) {
       '</div>' +
     '</div>';
 
-    var loginsSec = EA.renderSystemLoginsSection(cls.teacherId, cls.id);
-    h += loginsSec.html;
+    var loginsSec = null;
+    if (!isStudent && (isAdmin || isTeacher)) {
+      loginsSec = EA.renderSystemLoginsSection(cls.teacherId, cls.id);
+      h += loginsSec.html;
+    }
     h += '</div></div>';
 
     container.innerHTML = h;
@@ -3039,7 +3042,9 @@ EA.render = function(container, preserveScrollLeft) {
     }
 
     EA.attachEvents(container, cls);
-    loginsSec.attachHandlers(container);
+    if (loginsSec && typeof loginsSec.attachHandlers === 'function') {
+      loginsSec.attachHandlers(container);
+    }
   };
 
   // ============================================================================
@@ -3218,15 +3223,17 @@ EA.render = function(container, preserveScrollLeft) {
 
     // Top "📚 Uy vazifasi belgilash" Modal
     var assignHwBtn = container.querySelector('#eaAssignHomeworkBtn');
-    if (assignHwBtn && isTeacher) {
+    if (assignHwBtn) {
       assignHwBtn.onclick = function(e) {
+        e.preventDefault();
         e.stopPropagation();
         EA.openHomeworkAssignModal(container, cls);
       };
     }
     var assignHwBtn2 = container.querySelector('#eaAssignHomeworkBtn2');
-    if (assignHwBtn2 && isTeacher) {
+    if (assignHwBtn2) {
       assignHwBtn2.onclick = function(e) {
+        e.preventDefault();
         e.stopPropagation();
         EA.openHomeworkAssignModal(container, cls);
       };
@@ -3444,6 +3451,9 @@ EA.render = function(container, preserveScrollLeft) {
   EA.openHomeworkAssignModal = function(container, cls, defaultDateKey, onDoneCallback) {
     EA.isModalOpen = true;
     var modalRoot = getGlobalModalRoot();
+    var curUser = getActiveUser();
+    var isAdmin = isAdminRole();
+    var isTeacher = isTeacherRole();
 
     var dates = getJournalDates(cls, 'window').filter(function(d) { return d.getDay() !== 0; });
     var todayKey = formatDateKey(new Date());
@@ -3501,7 +3511,7 @@ EA.render = function(container, preserveScrollLeft) {
       var tAuthor = (t.authorName || t.author || '').toLowerCase().trim();
       var tId = (t.teacherId || t.authorId || '').toLowerCase().trim();
       if (isAdmin) return true; // Admin can see all
-      return (tId && (tId === curTId || tId.indexOf(curTId) !== -1)) ||
+      return (curTId && tId && (tId === curTId || tId.indexOf(curTId) !== -1)) ||
              (tAuthor && curTName && (tAuthor === curTName || tAuthor.indexOf(curTName) !== -1 || curTName.indexOf(tAuthor) !== -1));
     });
 
@@ -5794,8 +5804,14 @@ EA.render = function(container, preserveScrollLeft) {
   // SYSTEM LOGINS TABLE SECTION (Placed at bottom of directory, groups & journal)
   // ============================================================================
   EA.renderSystemLoginsSection = function(currentTeacherId, currentClassId) {
-    var isAdmin = isAdminRole();
-    var isTeacher = isTeacherRole();
+    var curUser = getActiveUser();
+    var isStudent = curUser && curUser.role === 'student';
+    var isAdmin = isAdminRole() && !isStudent;
+    var isTeacher = isTeacherRole() && !isStudent;
+
+    if (isStudent || (!isAdmin && !isTeacher)) {
+      return { html: '', attachHandlers: function(){} };
+    }
 
     var allCls = getAvailableClasses();
     if (isTeacher && !isAdmin) {
@@ -6327,3 +6343,21 @@ EA.render = function(container, preserveScrollLeft) {
   };
 
 })(window);
+
+
+  // Global robust click delegate for homework assignment buttons
+  if (!window._eaHwDelegateAttached) {
+    window._eaHwDelegateAttached = true;
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('#eaAssignHomeworkBtn, #eaAssignHomeworkBtn2');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        var apView = document.getElementById('apView');
+        var curCls = (EA.getActiveOrFirstClass ? EA.getActiveOrFirstClass() : null) || (window.S && window.S.classes && window.S.classes[0]);
+        if (curCls) {
+          EA.openHomeworkAssignModal(apView, curCls);
+        }
+      }
+    });
+  }
