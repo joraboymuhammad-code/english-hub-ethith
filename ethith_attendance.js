@@ -1128,6 +1128,9 @@
               '<button type="button" class="ea-btn-edit-teacher" data-tid="' + esc(t.id) + '" title="O‘qituvchini tahrirlash (Ism, Fan, Oylik ulushi %)" style="background:rgba(255,255,255,0.08);border:1px solid rgba(56,189,248,0.35);color:#38bdf8;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;">' +
                 '✏️' +
               '</button>' +
+              '<button type="button" class="ea-btn-delete-teacher" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" title="O‘qituvchini tizimdan o‘chirish" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#f87171;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;">' +
+                '🗑️' +
+              '</button>' +
               '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:4px 10px;font-size:11px;font-weight:800;">Faol Ustoz</span>' +
             '</div>' +
           '</div>' +
@@ -1437,6 +1440,15 @@
         var teachers = getStoreTeachers();
         var t = teachers.find(function(item) { return item.id === tid; });
         if (t) EA.openEditTeacherModal(t);
+      };
+    });
+
+    container.querySelectorAll('.ea-btn-delete-teacher').forEach(function(btn) {
+      btn.onclick = function(e) {
+        if (e) e.stopPropagation();
+        var tid = btn.getAttribute('data-tid');
+        var tname = btn.getAttribute('data-tname');
+        EA.deleteTeacher(tid, tname, container);
       };
     });
 
@@ -1788,9 +1800,12 @@
           '</div>' +
         '</div>' +
 
-        '<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px;">' +
-          '<button id="eaCancelEditTBtn" style="background:rgba(255,255,255,0.08);color:#cbd5e1;border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:10px 18px;font-size:13px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
-          '<button id="eaSaveEditTBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,0.4);">✓ Saqlash</button>' +
+        '<div style="display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:12px;">' +
+          '<button type="button" id="eaDeleteTeacherFromModalBtn" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.4);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ O‘chirish</button>' +
+          '<div style="display:flex;gap:10px;">' +
+            '<button id="eaCancelEditTBtn" style="background:rgba(255,255,255,0.08);color:#cbd5e1;border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:10px 18px;font-size:13px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
+            '<button id="eaSaveEditTBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,0.4);">✓ Saqlash</button>' +
+          '</div>' +
         '</div>' +
 
       '</div></div>';
@@ -1820,6 +1835,13 @@
     var close = function() { overlay.remove(); };
     overlay.querySelector('#eaCloseEditTModalBtn').onclick = close;
     overlay.querySelector('#eaCancelEditTBtn').onclick = close;
+    var delFromModal = overlay.querySelector('#eaDeleteTeacherFromModalBtn');
+    if (delFromModal) {
+      delFromModal.onclick = function() {
+        close();
+        EA.deleteTeacher(teacher.id, teacher.name);
+      };
+    }
 
     overlay.querySelector('#eaSaveEditTBtn').onclick = function() {
       var newName = overlay.querySelector('#eaEditTName').value.trim();
@@ -1886,6 +1908,85 @@
       var c = document.getElementById('apView');
       if (c) EA.render(c);
     };
+  };
+
+  // TEACHER DELETION METHOD (Admin only)
+  EA.deleteTeacher = function(tid, tName, container) {
+    if (!tid) return;
+    var teachers = getStoreTeachers();
+    var tObj = teachers.find(function(item) { return item.id === tid; });
+    var nameToDisplay = tName || (tObj ? tObj.name : 'O‘qituvchi');
+    if (!confirm("Haqiqatan ham \"" + nameToDisplay + "\" o‘qituvchisini tizimdan butunlay o‘chirmoqchimisiz?\n\n• O‘qituvchi va uning tizim profili o‘chiriladi\n• Guruhlar saqlanadi va o‘qituvchisiz (bo‘sh) holatga o‘tkaziladi")) {
+      return;
+    }
+
+    var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+    if (!Array.isArray(S.deletedTeacherIds)) S.deletedTeacherIds = [];
+    if (S.deletedTeacherIds.indexOf(tid) === -1) S.deletedTeacherIds.push(tid);
+
+    // 1. Remove from teachers
+    if (Array.isArray(S.teachers)) {
+      S.teachers = S.teachers.filter(function(t) { return t.id !== tid; });
+    }
+    // 2. Remove teacher login account from accounts
+    if (Array.isArray(S.accounts)) {
+      S.accounts = S.accounts.filter(function(a) {
+        if (a.id === tid) return false;
+        if (tObj && tObj.login && a.login && a.login.toLowerCase() === tObj.login.toLowerCase()) return false;
+        return true;
+      });
+    }
+    // 3. Unbind classes from this teacher
+    if (Array.isArray(S.classes)) {
+      S.classes.forEach(function(cls) {
+        if (cls.teacherId === tid || (tObj && cls.teacherName === tObj.name)) {
+          cls.teacherId = '';
+          cls.teacherName = 'Biriktirilmagan';
+        }
+      });
+    }
+
+    // 4. Also sync with EthithEnterprise store if available
+    if (window.EthithEnterprise && window.EthithEnterprise.getStore) {
+      var entStore = window.EthithEnterprise.getStore();
+      if (entStore) {
+        if (!Array.isArray(entStore.deletedTeacherIds)) entStore.deletedTeacherIds = [];
+        if (entStore.deletedTeacherIds.indexOf(tid) === -1) entStore.deletedTeacherIds.push(tid);
+        if (Array.isArray(entStore.teachers)) entStore.teachers = entStore.teachers.filter(function(t) { return t.id !== tid; });
+        if (Array.isArray(entStore.accounts)) {
+          entStore.accounts = entStore.accounts.filter(function(a) {
+            if (a.id === tid) return false;
+            if (tObj && tObj.login && a.login && a.login.toLowerCase() === tObj.login.toLowerCase()) return false;
+            return true;
+          });
+        }
+      }
+    }
+
+    // 5. Persist
+    if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
+      window.EthithEnterprise.saveStore();
+    } else if (window.EthithApp && window.EthithApp.saveState) {
+      window.EthithApp.saveState();
+    }
+
+    // 6. Broadcast sync event
+    if (window.EthithSync && window.EthithSync.broadcastState) {
+      window.EthithSync.broadcastState('teacher_deleted');
+    }
+
+    // 7. Toast notification
+    if (window.EthithApp && window.EthithApp.toast) {
+      window.EthithApp.toast("🗑️ " + nameToDisplay + " tizimdan muvaffaqiyatli o‘chirildi!");
+    }
+
+    // 8. Re-render UI
+    var targetContainer = container || document.getElementById('apView');
+    if (targetContainer) {
+      EA.activeTeacherId = null;
+      EA.activeClassId = null;
+      EA.render(targetContainer);
+    }
   };
 
   // MODAL 1: ADD TEACHER (Admin-only auto-credentials & salary percentage)
@@ -5178,10 +5279,11 @@ EA.render = function(container, preserveScrollLeft) {
 
       if (!chosenClass.students) chosenClass.students = [];
 
+      var isTesterSlot = curSt && (curSt.isTester || (curSt.name && curSt.name.toLowerCase().startsWith('tester_')));
       var studentObj = curSt;
-      var newStudentId = curSt ? curSt.id : ('std_' + finalLogin);
+      var newStudentId = (curSt && !isTesterSlot) ? curSt.id : ('std_' + finalLogin);
 
-      if (!studentObj) {
+      if (!studentObj || isTesterSlot) {
         studentObj = {
           id: newStudentId,
           name: fullName,
@@ -5195,10 +5297,31 @@ EA.render = function(container, preserveScrollLeft) {
           password: finalPass,
           joinedAt: new Date().toISOString().split('T')[0],
           isTester: false,
+          manuallyEnrolled: true,
           isOnline: false,
           coins: 150
         };
-        chosenClass.students.push(studentObj);
+
+        // If target was a specific tester slot in chosenClass, replace it at that exact slot
+        var targetTesterIdx = -1;
+        if (curSt) {
+          targetTesterIdx = chosenClass.students.indexOf(curSt);
+          if (targetTesterIdx === -1) {
+            targetTesterIdx = chosenClass.students.findIndex(function(s) { return s.id === curSt.id; });
+          }
+        }
+        // If not found or new enrollment, find the first available tester slot in chosenClass
+        if (targetTesterIdx === -1) {
+          targetTesterIdx = chosenClass.students.findIndex(function(s) {
+            return s && (s.isTester === true || (s.name && s.name.toLowerCase().startsWith('tester_')));
+          });
+        }
+
+        if (targetTesterIdx !== -1) {
+          chosenClass.students[targetTesterIdx] = studentObj;
+        } else {
+          chosenClass.students.push(studentObj);
+        }
       } else {
         studentObj.name = fullName;
         studentObj.firstName = fn;
@@ -5210,6 +5333,13 @@ EA.render = function(container, preserveScrollLeft) {
         studentObj.isTester = false;
         studentObj.manuallyEnrolled = true;
       }
+
+      if (!chosenClass.customStudentNames) chosenClass.customStudentNames = {};
+      chosenClass.customStudentNames[studentObj.id] = fullName;
+      if (!chosenClass.customStudentPhones) chosenClass.customStudentPhones = {};
+      chosenClass.customStudentPhones[studentObj.id] = pPhone;
+
+      ensureClassAttendance(chosenClass);
 
       // Also register into accounts for direct login
       var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
@@ -5236,6 +5366,23 @@ EA.render = function(container, preserveScrollLeft) {
         acc.phone = pPhone;
         acc.parentPhone = pPhone;
         acc.classId = chosenClass.id;
+      }
+
+      if (window.EthithEnterprise && window.EthithEnterprise.getStore) {
+        var entStore = window.EthithEnterprise.getStore();
+        if (entStore && Array.isArray(entStore.accounts)) {
+          var entAcc = entStore.accounts.find(function(a) { return a.id === studentObj.id || (a.login && a.login.toLowerCase() === finalLogin.toLowerCase()); });
+          if (!entAcc) {
+            entStore.accounts.push(acc);
+          } else {
+            entAcc.name = fullName;
+            entAcc.login = finalLogin;
+            entAcc.password = finalPass;
+            entAcc.phone = pPhone;
+            entAcc.parentPhone = pPhone;
+            entAcc.classId = chosenClass.id;
+          }
+        }
       }
 
       // Default payment status: UNPAID (0 so'm until admin marks paid)

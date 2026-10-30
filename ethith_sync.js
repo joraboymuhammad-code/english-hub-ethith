@@ -1223,12 +1223,21 @@
     return null;
   }
 
-  function mergeTeachers(localTeachers, remoteTeachers) {
+  function mergeTeachers(localTeachers, remoteTeachers, deletedTeacherIds) {
     var changed = false;
+    var dIds = deletedTeacherIds || (window.S && window.S.deletedTeacherIds) || [];
     if (!Array.isArray(remoteTeachers)) return changed;
     if (!Array.isArray(localTeachers)) return changed;
+
+    for (var i = localTeachers.length - 1; i >= 0; i--) {
+      if (localTeachers[i] && dIds.indexOf(localTeachers[i].id) !== -1) {
+        localTeachers.splice(i, 1);
+        changed = true;
+      }
+    }
+
     remoteTeachers.forEach(function(rt) {
-      if (!rt || !rt.id) return;
+      if (!rt || !rt.id || dIds.indexOf(rt.id) !== -1) return;
       var lt = localTeachers.find(function(t) { return t.id === rt.id; });
       if (!lt) {
         localTeachers.push(rt);
@@ -1569,16 +1578,24 @@
     var name = (acc.name || '').toLowerCase().trim();
     var id = (acc.id || '').toLowerCase().trim();
     if (!name && !email) return true;
-    if (id === 'admin_official_root' || email === 'admin_12038f1aq8syash@ethith.uz' || acc.role === 'admin') {
+    if (id === 'admin_official_root' || email === 'admin_12038f1aq8syash@ethith.uz') {
       acc.name = 'Bosh Admin';
       acc.id = 'admin_official_root';
       acc.role = 'admin';
       return false;
     }
-    if (id === 'admin_official_teacher' || email === 'teacher@ethith.uz' || acc.role === 'teacher') {
+    if (id === 'admin_official_teacher' || email === 'teacher@ethith.uz') {
       acc.name = 'Ustoz';
       acc.id = 'admin_official_teacher';
       acc.role = 'teacher';
+      return false;
+    }
+    // Retain individual teachers
+    if (id.startsWith('t_') || acc.role === 'teacher') {
+      return false;
+    }
+    // Retain registered students
+    if (acc.role === 'student' || id.startsWith('std_')) {
       return false;
     }
     var purgedList = [
@@ -1827,8 +1844,12 @@
           }
         }
         if (remoteData.centerSettings && !S.centerSettings) S.centerSettings = remoteData.centerSettings;
+        if (remoteData.deletedTeacherIds && Array.isArray(remoteData.deletedTeacherIds)) {
+          if (!S.deletedTeacherIds) S.deletedTeacherIds = [];
+          remoteData.deletedTeacherIds.forEach(function(id) { if (S.deletedTeacherIds.indexOf(id) === -1) S.deletedTeacherIds.push(id); });
+        }
         if (!S.teachers) S.teachers = [];
-        if (remoteData.teachers) mergeTeachers(S.teachers, remoteData.teachers);
+        if (remoteData.teachers) mergeTeachers(S.teachers, remoteData.teachers, S.deletedTeacherIds || []);
         if (remoteData.timetable && (!S.timetable || S.timetable.length === 0)) S.timetable = remoteData.timetable;
         if (remoteData.contests && (!S.contests || S.contests.length === 0)) S.contests = remoteData.contests;
         if (remoteData.payments && (!S.payments || Object.keys(S.payments).length === 0)) S.payments = remoteData.payments;
@@ -1898,19 +1919,26 @@
         });
         S.accounts = cleanAccounts;
 
+        var dtIds = S.deletedTeacherIds || [];
+        var cleanTeachers = (S.teachers || []).filter(function(t) {
+          return dtIds.indexOf(t.id) === -1;
+        });
+        S.teachers = cleanTeachers;
+
         var contentObj = {
           classes: cleanClasses,
           exams: cleanExams,
           quizzes: cleanQuizzes,
           deletedExamIds: dIds,
           deletedQuizIds: dqIds,
+          deletedTeacherIds: dtIds,
           deletedListingIds: S.deletedListingIds || [],
           accounts: cleanAccounts,
           p2pListings: S.p2pListings || [],
           workbookOverrides: S.workbookOverrides || {},
           workbookOverridesTs: S.workbookOverridesTs || {},
           centerSettings: S.centerSettings || null,
-          teachers: S.teachers || [],
+          teachers: cleanTeachers,
           fileExplorer: S.fileExplorer || { folders: [], tests: [] },
           timetable: S.timetable || [],
           contests: S.contests || [],
@@ -2131,8 +2159,12 @@
         });
       }
       var c1 = mergeClasses(S.classes, remote.classes || []);
+      if (remote.deletedTeacherIds && Array.isArray(remote.deletedTeacherIds)) {
+        if (!S.deletedTeacherIds) S.deletedTeacherIds = [];
+        remote.deletedTeacherIds.forEach(function(id) { if (S.deletedTeacherIds.indexOf(id) === -1) S.deletedTeacherIds.push(id); });
+      }
       if (!S.teachers) S.teachers = [];
-      var cTeachers = mergeTeachers(S.teachers, remote.teachers || []);
+      var cTeachers = mergeTeachers(S.teachers, remote.teachers || [], S.deletedTeacherIds || []);
       var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
       if (window.EthithApp) {
         window.EthithApp.saveState();
@@ -2243,8 +2275,12 @@
         if (!S.quizzes) S.quizzes = [];
         var c0 = mergeQuizzes(S.quizzes, remote.quizzes || [], S.deletedQuizIds || []);
         var c1 = mergeClasses(S.classes, remote.classes || []);
+        if (remote.deletedTeacherIds && Array.isArray(remote.deletedTeacherIds)) {
+          if (!S.deletedTeacherIds) S.deletedTeacherIds = [];
+          remote.deletedTeacherIds.forEach(function(id) { if (S.deletedTeacherIds.indexOf(id) === -1) S.deletedTeacherIds.push(id); });
+        }
         if (!S.teachers) S.teachers = [];
-        var cTeachers = mergeTeachers(S.teachers, remote.teachers || []);
+        var cTeachers = mergeTeachers(S.teachers, remote.teachers || [], S.deletedTeacherIds || []);
         var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
         var c3 = mergeAccounts(S.accounts || [], remote.accounts || []);
         var c4 = mergeP2PListings(S.p2pListings || [], remote.p2pListings || [], S.deletedListingIds || []);

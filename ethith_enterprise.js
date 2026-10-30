@@ -3568,6 +3568,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
                   '</td>' +
                   '<td style="padding:14px;text-align:right;">' +
                     '<button class="ee-fin-edit-teacher-btn" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" data-thours="' + hours + '" data-trate="' + rate + '" data-tshare="' + share + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">⚙️ Tahrir</button>' +
+                    '<button class="ee-fin-del-teacher-btn" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.35);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;margin-left:6px;" title="O‘qituvchini o‘chirish">🗑️ O‘chirish</button>' +
                   '</td>' +
                 '</tr>';
               }).join('') +
@@ -3691,6 +3692,16 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       btn.onclick = function() {
         var tid = btn.getAttribute('data-tid');
         EE.openEditTeacherPayrollModal(container, S, tid);
+      };
+    });
+
+    // Teacher Delete Button (🗑️ O‘chirish)
+    container.querySelectorAll('.ee-fin-del-teacher-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        if (e) e.stopPropagation();
+        var tid = btn.getAttribute('data-tid');
+        var tname = btn.getAttribute('data-tname');
+        EE.deleteTeacher(container, S, tid, tname);
       };
     });
 
@@ -3943,6 +3954,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       '</div>' +
 
       '<div style="display:flex;gap:12px;margin-top:24px;">' +
+        '<button id="eeDeleteTeacherModalBtn" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.4);border-radius:12px;padding:12px 16px;font-weight:900;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ O‘chirish</button>' +
         '<button id="eeCancelTeacherModal" style="flex:1;background:rgba(255,255,255,0.08);color:#94a3b8;border:none;border-radius:12px;padding:12px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
         '<button id="eeSaveTeacherModal" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:12px;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 4px 15px rgba(2,132,199,0.4);">💾 Saqlash</button>' +
       '</div>' +
@@ -3952,6 +3964,14 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     var close = function() { m.remove(); };
     m.querySelector('#eeCloseTeacherModal').onclick = close;
     m.querySelector('#eeCancelTeacherModal').onclick = close;
+
+    var delBtn = m.querySelector('#eeDeleteTeacherModalBtn');
+    if (delBtn) {
+      delBtn.onclick = function() {
+        close();
+        EE.deleteTeacher(container, S, t.id, t.name);
+      };
+    }
 
     m.querySelector('#eeSaveTeacherModal').onclick = function() {
       var nName = m.querySelector('#eeEditTName').value.trim();
@@ -3970,6 +3990,50 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       close();
       EE.renderFinanceUnifiedView(container, 'teachers');
     };
+  };
+
+  // DELETE TEACHER METHOD
+  EE.deleteTeacher = function(container, S, tid, tName) {
+    if (!tid) return;
+    var tObj = (S.teachers || []).find(function(x) { return x.id === tid; });
+    var nameToDisplay = tName || (tObj ? tObj.name : 'O‘qituvchi');
+    if (!confirm("Haqiqatan ham \"" + nameToDisplay + "\" o‘qituvchisini tizimdan butunlay o‘chirmoqchimisiz?\n\n• O‘qituvchi va uning tizim profili o‘chiriladi\n• Guruhlar saqlanadi va o‘qituvchisiz (bo‘sh) holatga o‘tkaziladi")) {
+      return;
+    }
+
+    if (!Array.isArray(S.deletedTeacherIds)) S.deletedTeacherIds = [];
+    if (S.deletedTeacherIds.indexOf(tid) === -1) S.deletedTeacherIds.push(tid);
+
+    // 1. Remove from teachers
+    S.teachers = (S.teachers || []).filter(function(x) { return x.id !== tid; });
+
+    // 2. Remove teacher login from accounts
+    if (Array.isArray(S.accounts)) {
+      S.accounts = S.accounts.filter(function(a) {
+        if (a.id === tid) return false;
+        if (tObj && tObj.login && a.login && a.login.toLowerCase() === tObj.login.toLowerCase()) return false;
+        return true;
+      });
+    }
+
+    // 3. Unbind classes
+    if (Array.isArray(S.classes)) {
+      S.classes.forEach(function(cls) {
+        if (cls.teacherId === tid || (tObj && cls.teacherName === tObj.name)) {
+          cls.teacherId = '';
+          cls.teacherName = 'Biriktirilmagan';
+        }
+      });
+    }
+
+    // 4. Save and broadcast
+    saveStore();
+    if (window.EthithSync && window.EthithSync.broadcastState) {
+      window.EthithSync.broadcastState('teacher_deleted');
+    }
+
+    showToast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi!");
+    EE.renderFinanceUnifiedView(container, 'teachers');
   };
 
   // --------------------------------------------------------------------------
