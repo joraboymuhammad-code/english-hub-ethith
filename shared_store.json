@@ -46017,8 +46017,8 @@
         "page": 1028,
         "exercise": "2a",
         "label": "7a",
-        "top": 80.9,
-        "left": 12.5,
+        "top": 79.9,
+        "left": 12.8,
         "width": 7.5,
         "height": 1.8,
         "correct": true
@@ -46031,8 +46031,8 @@
         "page": 1028,
         "exercise": "2a",
         "label": "7b",
-        "top": 80.9,
-        "left": 22.2,
+        "top": 80,
+        "left": 22.4,
         "width": 7.5,
         "height": 1.8,
         "correct": false
@@ -46045,8 +46045,8 @@
         "page": 1028,
         "exercise": "2a",
         "label": "8a",
-        "top": 84.3,
-        "left": 12.5,
+        "top": 83.3,
+        "left": 12.7,
         "width": 7.5,
         "height": 1.8,
         "correct": false
@@ -46059,8 +46059,8 @@
         "page": 1028,
         "exercise": "2a",
         "label": "8b",
-        "top": 84.3,
-        "left": 22.2,
+        "top": 83.3,
+        "left": 22.5,
         "width": 7.5,
         "height": 1.8,
         "correct": true
@@ -46071,8 +46071,8 @@
         "page": 1028,
         "exercise": "3",
         "label": "2",
-        "top": 54.8,
-        "left": 76.5,
+        "top": 53.4,
+        "left": 76.9,
         "width": 8.5,
         "height": 1.8,
         "correct": "teach"
@@ -46083,8 +46083,8 @@
         "page": 1028,
         "exercise": "3",
         "label": "3",
-        "top": 56.3,
-        "left": 77.5,
+        "top": 54.8,
+        "left": 77.3,
         "width": 8.5,
         "height": 1.8,
         "correct": "love"
@@ -46095,8 +46095,8 @@
         "page": 1028,
         "exercise": "3",
         "label": "4",
-        "top": 57.8,
-        "left": 65,
+        "top": 56.5,
+        "left": 65.3,
         "width": 8.5,
         "height": 1.8,
         "correct": "read"
@@ -46107,8 +46107,8 @@
         "page": 1028,
         "exercise": "3",
         "label": "5",
-        "top": 60.9,
-        "left": 58.5,
+        "top": 59.6,
+        "left": 58.9,
         "width": 8.5,
         "height": 1.8,
         "correct": "works"
@@ -46119,8 +46119,8 @@
         "page": 1028,
         "exercise": "3",
         "label": "6",
-        "top": 62.4,
-        "left": 60.5,
+        "top": 61.3,
+        "left": 61,
         "width": 8.5,
         "height": 1.8,
         "correct": "likes"
@@ -82004,7 +82004,7 @@
     "1025": 1793371374471,
     "1026": 1793371528067,
     "1027": 1793371528067,
-    "1028": 1793371576478,
+    "1028": 1793371596694,
     "1037": 1793120102340,
     "1042": 1793370793069,
     "1043": 1793370793070,
@@ -82842,5 +82842,5 @@
       }
     }
   },
-  "updatedAt": 1793371577656
+  "updatedAt": 1793371597220
 }
