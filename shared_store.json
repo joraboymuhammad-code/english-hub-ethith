@@ -25274,7 +25274,8 @@
       "teacherId": "teacher_1793380078590",
       "subject": "Ingliz tili",
       "salarySharePercent": 55,
-      "createdAt": 1793380078590
+      "createdAt": 1793380453528,
+      "coins": 1000
     }
   ],
   "p2pListings": [],
@@ -101650,5 +101651,5 @@
   "timetable": [],
   "contests": [],
   "payments": {},
-  "updatedAt": 1793380283642
+  "updatedAt": 1793380454331
 }
