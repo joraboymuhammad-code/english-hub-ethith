@@ -24542,7 +24542,9 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
-      }
+      },
+      "deletedMsgIds": [],
+      "messages": []
     }
   ],
   "exams": [
@@ -25745,15 +25747,16 @@
     },
     {
       "id": "cls_1793380468126_std_1",
-      "name": "zxc zxc",
+      "name": "xczczxc zczxczxc",
       "role": "student",
-      "login": "zxc_425_zxc",
-      "password": "zxc425zxc",
-      "phone": "zxc",
-      "parentPhone": "zxc",
+      "login": "xczczxc_677_zczxczxc",
+      "password": "xczczxc677zcz",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
       "classId": "cls_1793380468126",
       "isOnline": false,
-      "lastLogin": null
+      "lastLogin": null,
+      "updatedAt": 1793380495620
     }
   ],
   "p2pListings": [],
@@ -102395,5 +102398,5 @@
       }
     }
   },
-  "updatedAt": 1793380480537
+  "updatedAt": 1793380504338
 }
