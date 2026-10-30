@@ -2507,7 +2507,8 @@
     // Standard Multiple-Choice Test Runner
     var curQIdx = 0;
     var userAnswers = {};
-    var totalQ = (test.questions || []).length;
+    var maxQ = (hwMatch && hwMatch.maxQuestions) || test.maxQuestions || (test.questions || []).length;
+    var totalQ = Math.min(maxQ, (test.questions || []).length);
 
     var m = document.createElement('div');
     m.id = 'eeTakeTestModal';
@@ -2592,6 +2593,12 @@
           });
           var pct = totalQ > 0 ? Math.round((correct / totalQ) * 100) : 0;
           var band = (pct >= 90) ? 9.0 : (pct >= 80) ? 8.0 : (pct >= 70) ? 7.0 : (pct >= 60) ? 6.0 : (pct >= 50) ? 5.5 : 4.5;
+          var autoGrade = (pct >= 85) ? 5 : (pct >= 70) ? 4 : (pct >= 55) ? 3 : 2;
+
+          // Record per-user attempt in localStorage to strictly enforce attempt limit
+          var userAttemptKey = 'ethith_test_att_' + test.id + '_' + (user ? user.id : 'anon');
+          var userDoneCount = parseInt(localStorage.getItem(userAttemptKey) || '0', 10) + 1;
+          localStorage.setItem(userAttemptKey, String(userDoneCount));
 
           if (hwMatch && user) {
             hwMatch.submissions = hwMatch.submissions || {};
@@ -2604,14 +2611,87 @@
               score: pct,
               bestScore: best,
               band: band,
+              grade: autoGrade,
               submittedAt: Date.now(),
-              attemptsCount: newCount
+              attemptsCount: newCount,
+              userAnswers: userAnswers
             };
             saveStore();
           }
 
+          // Real-time record into class attendance records!
+          if (window.EA && typeof window.EA.recordStudentHomeworkCompletion === 'function') {
+            window.EA.recordStudentHomeworkCompletion({
+              pct: pct,
+              autoGrade: autoGrade,
+              lessonCode: test.title || 'Shaxsiy Test',
+              correctCount: correct,
+              totalQuestions: totalQ
+            });
+          }
+
           m.remove();
-          alert("🎉 Test yakunlandi! Natija: " + pct + "%\nTo‘g‘ri javoblar: " + correct + " / " + totalQ + "\nIELTS Band: " + band);
+
+          // Open Detailed Question Analysis & Review Modal
+          var reviewOverlay = document.createElement('div');
+          reviewOverlay.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(14px);z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:20px;';
+
+          var revHtml = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1.5px solid rgba(56,189,248,0.4);border-radius:24px;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 25px 70px rgba(0,0,0,0.8);color:#fff;">' +
+            '<div style="padding:22px 26px;border-bottom:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:space-between;">' +
+              '<div>' +
+                '<h3 style="margin:0;font-size:20px;font-weight:900;color:#fff;">📊 Test Natijasi va Savollar Tahlili</h3>' +
+                '<div style="font-size:12.5px;color:#94a3b8;margin-top:3px;">' + esc(test.title) + ' • Natija: <b style="color:' + (pct >= 70 ? '#34d399' : '#fb7185') + ';">' + pct + '% (Baho: ' + autoGrade + ')</b></div>' +
+              '</div>' +
+              '<button id="eeCloseReviewBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:20px;width:34px;height:34px;border-radius:10px;cursor:pointer;">✕</button>' +
+            '</div>' +
+
+            '<div style="padding:20px 26px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:14px;">';
+
+          test.questions.forEach(function(quest, qi) {
+            var userChoice = userAnswers[qi];
+            var isCorrect = userChoice === quest.correct;
+            revHtml += '<div style="background:rgba(15,23,42,0.8);border:1px solid ' + (isCorrect ? 'rgba(52,211,153,0.4)' : 'rgba(244,63,94,0.4)') + ';border-radius:16px;padding:16px;">' +
+              '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
+                '<span style="font-size:12px;font-weight:900;color:#38bdf8;">' + (qi + 1) + '-savol:</span>' +
+                '<span style="font-size:12px;font-weight:800;padding:2px 8px;border-radius:6px;background:' + (isCorrect ? 'rgba(16,185,129,0.2)' : 'rgba(244,63,94,0.2)') + ';color:' + (isCorrect ? '#34d399' : '#fb7185') + ';">' + (isCorrect ? '✓ To‘g‘ri' : '✗ Noto‘g‘ri') + '</span>' +
+              '</div>' +
+              '<div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:10px;">' + esc(quest.q) + '</div>' +
+              '<div style="display:flex;flex-direction:column;gap:6px;">';
+
+            (quest.options || []).forEach(function(opt, oi) {
+              var optBorder = 'rgba(255,255,255,0.08)';
+              var optBg = 'rgba(255,255,255,0.03)';
+              var optColor = '#cbd5e1';
+              if (oi === quest.correct) {
+                optBorder = 'rgba(52,211,153,0.6)';
+                optBg = 'rgba(16,185,129,0.18)';
+                optColor = '#34d399';
+              } else if (oi === userChoice && !isCorrect) {
+                optBorder = 'rgba(244,63,94,0.6)';
+                optBg = 'rgba(244,63,94,0.18)';
+                optColor = '#fb7185';
+              }
+              revHtml += '<div style="padding:8px 12px;border-radius:10px;font-size:13px;font-weight:700;border:1px solid ' + optBorder + ';background:' + optBg + ';color:' + optColor + ';">' +
+                (oi === quest.correct ? '✅ ' : (oi === userChoice ? '❌ ' : '⚪ ')) + esc(opt) +
+              '</div>';
+            });
+
+            revHtml += '</div></div>';
+          });
+
+          revHtml += '</div>' +
+            '<div style="padding:16px 26px;border-top:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:space-between;">' +
+              '<div style="font-size:12px;color:#94a3b8;">Urinish: <b style="color:#38bdf8;">' + userDoneCount + ' / ' + maxAttempts + ' ta</b>' + (userDoneCount >= maxAttempts ? ' <span style="color:#f87171;">(Maksimal urinishlar tugadi)</span>' : '') + '</div>' +
+              '<button id="eeDoneReviewBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;cursor:pointer;">Tushunarli / Yopish</button>' +
+            '</div>' +
+          '</div>';
+
+          reviewOverlay.innerHTML = revHtml;
+          document.body.appendChild(reviewOverlay);
+
+          function closeRev() { reviewOverlay.remove(); }
+          reviewOverlay.querySelector('#eeCloseReviewBtn').onclick = closeRev;
+          reviewOverlay.querySelector('#eeDoneReviewBtn').onclick = closeRev;
         }
       };
     }

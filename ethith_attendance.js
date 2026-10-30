@@ -1064,8 +1064,10 @@
   // LEVEL 1: ALL TEACHERS DIRECTORY (O'QITUVCHILAR TARTIBI)
   // --------------------------------------------------------------------------
   EA.renderTeachersDirectory = function(container) {
-    var isAdmin = isAdminRole();
-    var isTeacher = isTeacherRole();
+    var curUser = getActiveUser();
+    var isStudent = curUser && curUser.role === 'student';
+    var isAdmin = isAdminRole() && !isStudent;
+    var isTeacher = isTeacherRole() && !isStudent;
 
     // Teacher Privacy / Isolation: Non-admin teachers NEVER see other teachers!
     if (isTeacher && !isAdmin) {
@@ -2518,15 +2520,27 @@ EA.render = function(container, preserveScrollLeft) {
 
     // 0. HIERARCHICAL NAVIGATION BAR (BACK TO TEACHER GROUPS & ALL TEACHERS)
     var curTName = cls.teacherName || cls.teacher || (EA.activeTeacherId && (getStoreTeachers().find(function(t){ return t.id === EA.activeTeacherId; }) || {}).name) || 'Ustoz';
-    h += '<div class="qe-glass-panel" style="border-radius:20px;padding:14px 20px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;background:linear-gradient(135deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(56,189,248,0.3);box-shadow:0 8px 30px rgba(0,0,0,0.5);">' +
-      '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
+    h += '<div class="qe-glass-panel" style="border-radius:20px;padding:14px 20px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;background:linear-gradient(135deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(56,189,248,0.3);box-shadow:0 8px 30px rgba(0,0,0,0.5);">';
+
+    if (!isStudent) {
+      h += '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
         '<button id="eaBtnBackToTeacherGroupsFromJ" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.35);">&larr; ' + esc(curTName) + ' Guruhlariga Qaytish</button>' +
         (isAdmin ? '<button id="eaBtnBackToAllTeachersFromJ" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;">Barcha O‘qituvchilar</button>' : '') +
         '<button id="eaBtnAddStudentFromJ" data-cid="' + esc(cls.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(16,185,129,0.35);" title="Shu guruhga yangi o‘quvchi qo‘shish">➕ O‘quvchi Qo‘shish</button>' +
         '<button id="eaBtnSendSmsAbsentOnly" data-cid="' + esc(cls.id) + '" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(245,158,11,0.35);" title="Bugun darsga kelmagan o‘quvchilarning ota-onalariga SMS yuborish">📲 Kelmaganlarga SMS</button>' +
         '<button id="eaBtnDeleteClassFromJ" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Guruhni butunlay o‘chirish">🗑 Guruhni O‘chirish</button>' +
         '<button id="eaBtnDeleteTeacherFromJ" data-tid="' + esc(cls.teacherId || EA.activeTeacherId || '') + '" data-tname="' + esc(curTName) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Ushbu o‘qituvchini butunlay o‘chirish">🗑 O‘qituvchini O‘chirish</button>' +
-      '</div>' +
+      '</div>';
+    } else {
+      h += '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">' +
+        '<div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 14px rgba(2,132,199,0.35);">👨‍🎓</div>' +
+        '<div>' +
+          '<div style="font-size:15px;font-weight:900;color:#fff;">' + esc(curUser.name || "O‘quvchi") + '</div>' +
+          '<div style="font-size:11.5px;color:#94a3b8;">Ustozingiz: <b style="color:#38bdf8;">' + esc(curTName) + '</b> • Guruh: <b style="color:#34d399;">' + esc(cls.name) + '</b></div>' +
+        '</div>' +
+        '<span style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);color:#7dd3fc;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:800;">🔒 Faqat ko‘rish (Read-only)</span>' +
+      '</div>';
+    } +
       '<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">' +
         '<div style="text-align:right;">' +
           '<h2 style="margin:0;font-size:18px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">' +
@@ -2572,9 +2586,14 @@ EA.render = function(container, preserveScrollLeft) {
             '<div style="font-size:14px;font-weight:800;color:#ffffff;margin-top:3px;">Intermediate (B1+) · Unit ' + esc(activeHw.unit) + ' — ' + esc(activeHw.lessonTitle || activeHw.lessonCode) + (activeHw.pages ? ' <span style="color:#7dd3fc;font-size:12.5px;">(Workbook ' + activeHw.pages.join('–') + '-betlar)</span>' : '') + '</div>' +
           '</div>' +
         '</div>' +
-        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
-          '<button type="button" id="eaOpenActiveHwBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:none;border-radius:10px;padding:8px 15px;font-size:12.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.35);">🚀 Topshiriqni Ochish / Bajarish &rarr;</button>' +
-        '</div>' +
+        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">';
+      if (isTeacher) {
+        h += '<button type="button" id="eaAssignHomeworkBtn2" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#ffffff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(139,92,246,0.35);" title="Yangi vazifa yoki test belgilash">⚙️ Topshiriqni Belgilash</button>' +
+             '<button type="button" id="eaOpenActiveHwBtn" style="background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.45);color:#38bdf8;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;">👁️ Ko‘rib chiqish</button>';
+      } else {
+        h += '<button type="button" id="eaOpenActiveHwBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:none;border-radius:10px;padding:9px 18px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);">🚀 Topshiriqni Ochish (Bajarish) &rarr;</button>';
+      }
+      h += '</div>' +
       '</div>';
     }
 
@@ -3076,8 +3095,19 @@ EA.render = function(container, preserveScrollLeft) {
     // Open active homework lesson directly
     var openActiveHwBtn = container.querySelector('#eaOpenActiveHwBtn');
     if (openActiveHwBtn && cls.activeHomework) {
-      openActiveHwBtn.onclick = function() {
+      openActiveHwBtn.onclick = function(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
         var hw = cls.activeHomework;
+
+        // If homework is an assigned test from teacher
+        if (hw.type === 'test' || hw.testId) {
+          if (window.EthithEnterprise && typeof window.EthithEnterprise.openTakeTestModal === 'function') {
+            window.EthithEnterprise.openTakeTestModal(hw.testId);
+            return;
+          }
+        }
+
+        // Standard Workbook homework
         window._ethithActiveHwContext = {
           classId: cls.id,
           classCode: cls.code,
@@ -3129,6 +3159,13 @@ EA.render = function(container, preserveScrollLeft) {
         EA.openHomeworkAssignModal(container, cls);
       };
     }
+    var assignHwBtn2 = container.querySelector('#eaAssignHomeworkBtn2');
+    if (assignHwBtn2 && isTeacher) {
+      assignHwBtn2.onclick = function(e) {
+        e.stopPropagation();
+        EA.openHomeworkAssignModal(container, cls);
+      };
+    }
 
     // Date Options (⋮ button) Modal
     container.querySelectorAll('.ea-date-opts-btn').forEach(function(btn) {
@@ -3171,8 +3208,8 @@ EA.render = function(container, preserveScrollLeft) {
       });
     }
 
-    // Davomat Box (D) Click - Cycle through Yashil K -> Qizil K -> Sariq S -> Empty
-    if (isTeacher) {
+    // Davomat Box (D) Click - Cycle through Yashil K -> Qizil K -> Sariq S -> Empty (STRICTLY TEACHER/ADMIN ONLY)
+    if (isTeacher && !isStudent) {
       container.querySelectorAll('.ea-status-box.is-clickable').forEach(function(box) {
         box.onclick = function() {
           var dKey = box.dataset.date;
@@ -3342,23 +3379,56 @@ EA.render = function(container, preserveScrollLeft) {
   EA.openHomeworkAssignModal = function(container, cls, defaultDateKey, onDoneCallback) {
     EA.isModalOpen = true;
     var modalRoot = getGlobalModalRoot();
-    ensureClassAttendance(cls);
 
     var dates = getJournalDates(cls, 'window').filter(function(d) { return d.getDay() !== 0; });
     var todayKey = formatDateKey(new Date());
     var selectedDateKey = defaultDateKey || (cls.activeHomework && cls.activeHomework.dateKey) || todayKey;
 
     var curHw = (cls.attendance.homeworks && cls.attendance.homeworks[selectedDateKey]) || cls.activeHomework || { bookLevel: 'B1+', unit: 1, lessonCode: '1.1', note: '' };
-    var selBookLevel = curHw.bookLevel || 'B1+';
-    var units = getWorkbookUnitsList(selBookLevel);
-    var selUnitNum = parseInt(curHw.unit, 10) || 1;
-    var selLessonCode = curHw.lessonCode || '1.1';
+    var currentType = curHw.type || 'workbook';
 
     var dateOptsHtml = '';
     dates.forEach(function(dt) {
       var dk = formatDateKey(dt);
       var dd = formatDisplayDate(dt);
       dateOptsHtml += '<option value="' + dk + '" data-disp="' + dd + '" ' + (dk === selectedDateKey ? 'selected' : '') + '>' + dd + (dk === todayKey ? ' (Bugun)' : '') + '</option>';
+    });
+
+    // Available personal tests
+    var S_store = (window.EthithEnterprise && window.EthithEnterprise.getStore ? window.EthithEnterprise.getStore() : null) || window.S || {};
+    var allTests = (S_store.fileExplorer && Array.isArray(S_store.fileExplorer.tests)) ? S_store.fileExplorer.tests : [];
+    if (allTests.length === 0) {
+      allTests = [
+        {
+          id: "TST-7K2M9",
+          title: "Unit 7: Modals of Deduction & Obligation",
+          maxAttempts: 1,
+          questions: [
+            { q: "You ______ be exhausted after working for 14 hours straight!", options: ["must", "can't", "might not", "should"], correct: 0 },
+            { q: "He ______ have stolen the money; he was with me in London that evening.", options: ["must", "can't", "ought to", "might"], correct: 1 },
+            { q: "Students ______ wear uniforms during official exams according to school rules.", options: ["have to", "might", "could", "would"], correct: 0 },
+            { q: "You ______ tell anyone this secret; it's strictly confidential.", options: ["mustn't", "don't have to", "needn't", "may not"], correct: 0 },
+            { q: "We ______ have left earlier; look at all this traffic now!", options: ["should", "must", "can't", "might"], correct: 0 }
+          ]
+        },
+        {
+          id: "TST-4H8R1",
+          title: "Unit 8: Compound Adjectives & Participle Clauses",
+          maxAttempts: 1,
+          questions: [
+            { q: "A person who is relaxed and not easily upset is ______.", options: ["easy-going", "short-tempered", "well-mannered", "broad-minded"], correct: 0 },
+            { q: "______ for 10 a.m. tomorrow, the conference has now been rescheduled.", options: ["Scheduled", "Scheduling", "To schedule", "Having schedule"], correct: 0 },
+            { q: "Products ______ locally are often fresher and support the local economy.", options: ["grown", "growing", "have grown", "to grow"], correct: 0 },
+            { q: "A person with a great knowledge from books is ______.", options: ["well-educated", "quick-witted", "bad-tempered", "open-minded"], correct: 0 }
+          ]
+        }
+      ];
+      if (S_store.fileExplorer) S_store.fileExplorer.tests = allTests;
+    }
+
+    var testOptsHtml = '';
+    allTests.forEach(function(t) {
+      testOptsHtml += '<option value="' + esc(t.id) + '" ' + (curHw.testId === t.id ? 'selected' : '') + '>' + esc(t.title) + ' (' + (t.questions || []).length + ' ta savol)' + (t.audioUrl ? ' 🎧 Audio' : '') + '</option>';
     });
 
     function buildUnitOptions(bLevel, activeUnitNum) {
@@ -3382,53 +3452,109 @@ EA.render = function(container, preserveScrollLeft) {
       return html;
     }
 
-    var mHtml = '<div id="eaHwOverlayBg" style="position:fixed;inset:0;background:rgba(2,6,23,0.76);backdrop-filter:blur(10px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;">' +
-      '<div style="background:rgba(15,23,42,0.95);backdrop-filter:blur(24px);border:1.5px solid rgba(139,92,246,0.5);border-radius:24px;max-width:520px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.8),0 0 35px rgba(139,92,246,0.22);color:#f8fafc;font-family:inherit;">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">' +
-          '<h3 style="margin:0;font-size:19px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">📚 Uy Vazifasi Belgilash (' + esc(cls.name) + ')</h3>' +
+    var mHtml = '<div id="eaHwOverlayBg" style="position:fixed;inset:0;background:rgba(2,6,23,0.78);backdrop-filter:blur(12px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;">' +
+      '<div style="background:linear-gradient(145deg,rgba(15,23,42,0.98),rgba(30,41,59,0.95));backdrop-filter:blur(24px);border:1.5px solid rgba(139,92,246,0.5);border-radius:24px;max-width:540px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.8),0 0 35px rgba(139,92,246,0.25);color:#f8fafc;font-family:inherit;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:12px;">' +
+          '<h3 style="margin:0;font-size:19px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">⚙️ Topshiriq Belgilash (' + esc(cls.name) + ')</h3>' +
           '<button type="button" id="eaCloseHwModal" style="border:none;background:rgba(255,255,255,0.08);width:32px;height:32px;border-radius:10px;font-size:16px;cursor:pointer;color:#cbd5e1;">✕</button>' +
         '</div>' +
-        '<p style="font-size:12.5px;color:#94a3b8;margin:0 0 18px;line-height:1.5;">' +
-          'Intermediate (B1+) yoki Upper-Intermediate (B2) darsligidan topshiriq tanlang. Vazifa shu zahoti guruh chatining tepasida chiqadi va o\'quvchi uni bajarganda tizim avtomatik ravishda tekshirib, kunlik bahosini (<b>5, 4, 3, 2</b>) Davomat jurnaliga qo\'yadi!' +
-        '</p>' +
-        '<div style="display:flex;flex-direction:column;gap:13px;margin-bottom:22px;">' +
+
+        // Tab selection: Workbook vs Personal Test
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;">' +
+          '<button type="button" id="eaTabWorkbookBtn" style="padding:10px 14px;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer;border:1.5px solid ' + (currentType !== 'test' ? '#8b5cf6' : 'rgba(255,255,255,0.12)') + ';background:' + (currentType !== 'test' ? 'rgba(139,92,246,0.25)' : 'rgba(15,23,42,0.6)') + ';color:#fff;">📘 Oxford Workbook</button>' +
+          '<button type="button" id="eaTabTestBtn" style="padding:10px 14px;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer;border:1.5px solid ' + (currentType === 'test' ? '#38bdf8' : 'rgba(255,255,255,0.12)') + ';background:' + (currentType === 'test' ? 'rgba(56,189,248,0.25)' : 'rgba(15,23,42,0.6)') + ';color:#fff;">📝 Shaxsiy Qo‘shimcha Test</button>' +
+        '</div>' +
+
+        '<div style="display:flex;flex-direction:column;gap:13px;margin-bottom:20px;">' +
           '<div>' +
             '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📅 Qaysi sanaga belgilansin:</label>' +
             '<select id="eaHwDateSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.16);background:rgba(8,13,26,0.9);color:#fff;font-weight:800;font-size:13.5px;outline:none;">' +
               dateOptsHtml +
             '</select>' +
           '</div>' +
-          '<div>' +
-            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📖 Kitob darajasi (Workbook):</label>' +
-            '<select id="eaHwBookLevelSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(168,85,247,0.5);background:rgba(8,13,26,0.9);color:#c084fc;font-weight:800;font-size:13.5px;outline:none;">' +
-              '<option value="B1+" ' + (selBookLevel === 'B1+' ? 'selected' : '') + '>📘 Intermediate (B1+) Workbook</option>' +
-              '<option value="B2" ' + (selBookLevel === 'B2' ? 'selected' : '') + '>📕 Upper-Intermediate (B2) Workbook</option>' +
-            '</select>' +
+
+          // WORKBOOK CONTROLS WRAPPER
+          '<div id="eaHwWorkbookControls" style="' + (currentType === 'test' ? 'display:none;' : 'display:flex;flex-direction:column;gap:13px;') + '">' +
+            '<div>' +
+              '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📖 Kitob darajasi (Workbook):</label>' +
+              '<select id="eaHwBookLevelSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(168,85,247,0.5);background:rgba(8,13,26,0.9);color:#c084fc;font-weight:800;font-size:13.5px;outline:none;">' +
+                '<option value="B1+" ' + ((curHw.bookLevel || 'B1+') === 'B1+' ? 'selected' : '') + '>📘 Intermediate (B1+) Workbook</option>' +
+                '<option value="B2" ' + (curHw.bookLevel === 'B2' ? 'selected' : '') + '>📕 Upper-Intermediate (B2) Workbook</option>' +
+              '</select>' +
+            '</div>' +
+            '<div>' +
+              '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📘 Bo‘lim (Unit 1–12):</label>' +
+              '<select id="eaHwUnitSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(56,189,248,0.45);background:rgba(8,13,26,0.9);color:#38bdf8;font-weight:800;font-size:13.5px;outline:none;">' +
+                buildUnitOptions(curHw.bookLevel || 'B1+', parseInt(curHw.unit, 10) || 1) +
+              '</select>' +
+            '</div>' +
+            '<div>' +
+              '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📝 Topshiriq / Workbook Darsi:</label>' +
+              '<select id="eaHwLessonSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(16,185,129,0.45);background:rgba(8,13,26,0.9);color:#34d399;font-weight:800;font-size:13.5px;outline:none;">' +
+                buildLessonOptions(curHw.bookLevel || 'B1+', parseInt(curHw.unit, 10) || 1, curHw.lessonCode || '1.1') +
+              '</select>' +
+            '</div>' +
           '</div>' +
-          '<div>' +
-            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📘 Bo\'lim (Unit 1–12):</label>' +
-            '<select id="eaHwUnitSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(56,189,248,0.45);background:rgba(8,13,26,0.9);color:#38bdf8;font-weight:800;font-size:13.5px;outline:none;">' +
-              buildUnitOptions(selBookLevel, selUnitNum) +
-            '</select>' +
+
+          // PERSONAL TEST CONTROLS WRAPPER
+          '<div id="eaHwTestControls" style="' + (currentType !== 'test' ? 'display:none;' : 'display:flex;flex-direction:column;gap:13px;') + '">' +
+            '<div>' +
+              '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📝 Shaxsiy Testni Tanlang:</label>' +
+              '<select id="eaHwTestSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(56,189,248,0.5);background:rgba(8,13,26,0.9);color:#38bdf8;font-weight:800;font-size:13.5px;outline:none;">' +
+                testOptsHtml +
+              '</select>' +
+            '</div>' +
+            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">' +
+              '<div>' +
+                '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">Maksimal Urinish (marta):</label>' +
+                '<input type="number" id="eaHwMaxAttempts" value="' + (curHw.maxAttempts || 1) + '" min="1" max="10" style="width:100%;box-sizing:border-box;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.16);background:rgba(8,13,26,0.9);color:#fff;font-weight:900;outline:none;" />' +
+              '</div>' +
+              '<div>' +
+                '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">Nechta Savol Berilsin:</label>' +
+                '<input type="number" id="eaHwMaxQuestions" value="' + (curHw.maxQuestions || 5) + '" min="1" max="50" style="width:100%;box-sizing:border-box;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.16);background:rgba(8,13,26,0.9);color:#fff;font-weight:900;outline:none;" />' +
+              '</div>' +
+            '</div>' +
           '</div>' +
+
           '<div>' +
-            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📝 Topshiriq / Workbook Darsi:</label>' +
-            '<select id="eaHwLessonSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(16,185,129,0.45);background:rgba(8,13,26,0.9);color:#34d399;font-weight:800;font-size:13.5px;outline:none;">' +
-              buildLessonOptions(selBookLevel, selUnitNum, selLessonCode) +
-            '</select>' +
-          '</div>' +
-          '<div>' +
-            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">💬 O\'quvchilarga izoh (ixtiyoriy):</label>' +
-            '<input type="text" id="eaHwNoteInput" value="' + esc(curHw.note || "Workbook mashqlarini bajarib Tekshirish tugmasini bosing — baho avtomatik qo'yiladi.") + '" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.16);background:rgba(8,13,26,0.9);color:#fff;font-size:13px;box-sizing:border-box;outline:none;" />' +
+            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">💬 O‘quvchilarga Qo‘shimcha Izoh:</label>' +
+            '<input type="text" id="eaHwNoteInput" value="' + esc(curHw.note || "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.") + '" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.16);background:rgba(8,13,26,0.9);color:#fff;font-size:13px;box-sizing:border-box;outline:none;" />' +
           '</div>' +
         '</div>' +
+
         '<div style="display:flex;gap:10px;justify-content:flex-end;">' +
           '<button type="button" id="eaCancelHwBtn" style="background:rgba(255,255,255,0.07);color:#cbd5e1;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
-          '<button type="button" id="eaSaveHwBtn" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(139,92,246,0.45);">✅ Vazifani Belgilash va Yuborish</button>' +
+          '<button type="button" id="eaSaveHwBtn" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(139,92,246,0.45);">✅ Topshiriqni Belgilash va Yuborish</button>' +
         '</div>' +
       '</div></div>';
 
     modalRoot.innerHTML = mHtml;
+
+    var selectedMode = currentType;
+    var tabWb = modalRoot.querySelector('#eaTabWorkbookBtn');
+    var tabTest = modalRoot.querySelector('#eaTabTestBtn');
+    var wbControls = modalRoot.querySelector('#eaHwWorkbookControls');
+    var testControls = modalRoot.querySelector('#eaHwTestControls');
+
+    tabWb.onclick = function() {
+      selectedMode = 'workbook';
+      tabWb.style.borderColor = '#8b5cf6';
+      tabWb.style.background = 'rgba(139,92,246,0.25)';
+      tabTest.style.borderColor = 'rgba(255,255,255,0.12)';
+      tabTest.style.background = 'rgba(15,23,42,0.6)';
+      wbControls.style.display = 'flex';
+      testControls.style.display = 'none';
+    };
+
+    tabTest.onclick = function() {
+      selectedMode = 'test';
+      tabTest.style.borderColor = '#38bdf8';
+      tabTest.style.background = 'rgba(56,189,248,0.25)';
+      tabWb.style.borderColor = 'rgba(255,255,255,0.12)';
+      tabWb.style.background = 'rgba(15,23,42,0.6)';
+      wbControls.style.display = 'none';
+      testControls.style.display = 'flex';
+    };
 
     var bookLvlSel = modalRoot.querySelector('#eaHwBookLevelSelect');
     var unitSel = modalRoot.querySelector('#eaHwUnitSelect');
@@ -3456,32 +3582,57 @@ EA.render = function(container, preserveScrollLeft) {
       var dateSel = modalRoot.querySelector('#eaHwDateSelect');
       var dKey = dateSel.value;
       var dDisp = (dateSel.options[dateSel.selectedIndex] && dateSel.options[dateSel.selectedIndex].dataset.disp) || dKey;
-      var bLvl = bookLvlSel.value || 'B1+';
-      var uNum = parseInt(unitSel.value, 10) || 1;
-      var lCode = lesSel.value || (uNum + '.1');
       var noteVal = modalRoot.querySelector('#eaHwNoteInput').value.trim();
+      var hwObj = null;
 
-      var uList = getWorkbookUnitsList(bLvl);
-      var uObj = uList.find(function(x) { return x.unit === uNum; }) || uList[0];
-      var lObj = (uObj.lessons || []).find(function(l) { return l.code === lCode; }) || { code: lCode, title: lCode, pages: [bLvl === 'B2' ? 2004 : 4] };
+      if (selectedMode === 'test') {
+        var testId = modalRoot.querySelector('#eaHwTestSelect').value;
+        var chosenTest = allTests.find(function(t) { return t.id === testId; }) || allTests[0];
+        var maxAtt = parseInt(modalRoot.querySelector('#eaHwMaxAttempts').value, 10) || 1;
+        var maxQ = parseInt(modalRoot.querySelector('#eaHwMaxQuestions').value, 10) || (chosenTest.questions || []).length;
 
-      var hwObj = {
-        dateKey: dKey,
-        dateDisp: dDisp,
-        bookLevel: bLvl,
-        unit: uNum,
-        lessonCode: lCode,
-        lessonTitle: lObj.title,
-        pages: lObj.pages || [],
-        note: noteVal,
-        assignedAt: Date.now(),
-        teacherName: cls.teacherName || 'Ustoz'
-      };
+        hwObj = {
+          type: 'test',
+          testId: chosenTest.id,
+          title: chosenTest.title,
+          questionCount: Math.min(maxQ, (chosenTest.questions || []).length),
+          maxQuestions: maxQ,
+          maxAttempts: maxAtt,
+          dateKey: dKey,
+          dateDisp: dDisp,
+          note: noteVal,
+          assignedAt: Date.now(),
+          teacherName: cls.teacherName || 'Ustoz'
+        };
+        cls.attendance.lessonTypes[dKey] = 'Test: ' + chosenTest.title;
+      } else {
+        var bLvl = bookLvlSel.value || 'B1+';
+        var uNum = parseInt(unitSel.value, 10) || 1;
+        var lCode = lesSel.value || (uNum + '.1');
+
+        var uList = getWorkbookUnitsList(bLvl);
+        var uObj = uList.find(function(x) { return x.unit === uNum; }) || uList[0];
+        var lObj = (uObj.lessons || []).find(function(l) { return l.code === lCode; }) || { code: lCode, title: lCode, pages: [bLvl === 'B2' ? 2004 : 4] };
+
+        hwObj = {
+          type: 'workbook',
+          dateKey: dKey,
+          dateDisp: dDisp,
+          bookLevel: bLvl,
+          unit: uNum,
+          lessonCode: lCode,
+          lessonTitle: lObj.title,
+          pages: lObj.pages || [],
+          note: noteVal,
+          assignedAt: Date.now(),
+          teacherName: cls.teacherName || 'Ustoz'
+        };
+        cls.attendance.lessonTypes[dKey] = 'Vazifa (' + bLvl + '): ' + lCode;
+      }
 
       if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
       cls.attendance.homeworks[dKey] = hwObj;
       cls.activeHomework = hwObj;
-      cls.attendance.lessonTypes[dKey] = 'Vazifa (' + bLvl + '): ' + lCode;
       delete cls.attendance.holidays[dKey];
 
       persistAttendance(cls);
@@ -3495,9 +3646,6 @@ EA.render = function(container, preserveScrollLeft) {
     };
   };
 
-  // ============================================================================
-  // PERSISTENT DARK-GLASS MODALS (NO BSB / CHSB)
-  // ============================================================================
   EA.openScheduleModal = function(container, cls) {
     EA.isModalOpen = true;
     var modalRoot = getGlobalModalRoot();
