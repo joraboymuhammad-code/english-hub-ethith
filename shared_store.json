@@ -46598,12 +46598,8 @@
         "left": 13.7,
         "width": 36,
         "height": 2,
-        "correct": [
-          "You aren't from Spain.",
-          "You're not from Spain.",
-          "aren't from Spain.",
-          "You aren't from Spain"
-        ]
+        "correct": "aren't from Spain. or You're not from Spain. or aren't from Spain. or You aren't from Spain",
+        "group": "7"
       },
       {
         "id": "p1007_ex7_2",
@@ -56459,8 +56455,8 @@
         "group": "b2_p28_2_4",
         "text": "quite",
         "label": "4a",
-        "top": 86.5,
-        "left": 21.2,
+        "top": 85.5,
+        "left": 23.6,
         "width": 4.9,
         "height": 1.5,
         "correct": false,
@@ -56473,8 +56469,8 @@
         "group": "b2_p28_2_4",
         "text": "quiet",
         "label": "4b",
-        "top": 86.5,
-        "left": 27.3,
+        "top": 85.6,
+        "left": 29.2,
         "width": 5.2,
         "height": 1.5,
         "correct": true,
@@ -56487,8 +56483,8 @@
         "group": "b2_p28_2_5",
         "text": "adviced",
         "label": "5a",
-        "top": 88.3,
-        "left": 20.8,
+        "top": 87.1,
+        "left": 21.2,
         "width": 7.5,
         "height": 1.5,
         "correct": false,
@@ -56501,8 +56497,8 @@
         "group": "b2_p28_2_5",
         "text": "advised",
         "label": "5b",
-        "top": 88.3,
-        "left": 29.3,
+        "top": 87.3,
+        "left": 29.4,
         "width": 7.5,
         "height": 1.5,
         "correct": true,
@@ -82811,8 +82807,8 @@
     "87": 1793366712394,
     "1004": 1793366841110,
     "1005": 1793366841110,
-    "1006": 1793366946894,
-    "1007": 1793367085156,
+    "1006": 1793367094517,
+    "1007": 1793367094541,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -82842,7 +82838,7 @@
     "2025": 1793366852142,
     "2026": 1793367016175,
     "2027": 1793367016175,
-    "2028": 1793367088901,
+    "2028": 1793367095269,
     "2029": 1793366712396,
     "2030": 1793366712396,
     "2031": 1793366712396,
@@ -83604,5 +83600,5 @@
       }
     }
   },
-  "updatedAt": 1793367090705
+  "updatedAt": 1793367095470
 }
