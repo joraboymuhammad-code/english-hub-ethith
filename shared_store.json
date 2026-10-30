@@ -51738,42 +51738,6 @@
         "width": 14,
         "height": 1.8,
         "correct": "likes listening"
-      },
-      {
-        "id": "p1056_ex4a_6",
-        "type": "fill",
-        "page": 1056,
-        "exercise": "4a",
-        "label": "6",
-        "top": 98,
-        "left": 34.6,
-        "width": 14,
-        "height": 1.8,
-        "correct": "likes watching"
-      },
-      {
-        "id": "p1056_ex4a_7",
-        "type": "fill",
-        "page": 1056,
-        "exercise": "4a",
-        "label": "7",
-        "top": 95,
-        "left": 55,
-        "width": 14,
-        "height": 1.8,
-        "correct": "likes shopping"
-      },
-      {
-        "id": "p1056_ex4a_8",
-        "type": "fill",
-        "page": 1056,
-        "exercise": "4a",
-        "label": "8",
-        "top": 95,
-        "left": 74.8,
-        "width": 14,
-        "height": 1.8,
-        "correct": "like using"
       }
     ],
     "1057": [
@@ -52004,6 +51968,18 @@
         "correct": "likes shoping",
         "id": "p1057_custom_50876",
         "group": "7"
+      },
+      {
+        "page": 1057,
+        "type": "fill",
+        "top": 44.5,
+        "left": 35.1,
+        "width": 9.2,
+        "height": 1.1,
+        "label": "8",
+        "correct": "like using",
+        "id": "p1057_custom_68734",
+        "group": "8"
       }
     ],
     "1058": [
@@ -86752,8 +86728,8 @@
     "1053": 1793125381190,
     "1054": 1793371802105,
     "1055": 1793371802105,
-    "1056": 1793375113150,
-    "1057": 1793375150876,
+    "1056": 1793375171433,
+    "1057": 1793375168734,
     "1058": 1793372411941,
     "1059": 1793372411941,
     "2004": 1793374693102,
@@ -87588,5 +87564,5 @@
       }
     }
   },
-  "updatedAt": 1793375154606
+  "updatedAt": 1793375171455
 }
