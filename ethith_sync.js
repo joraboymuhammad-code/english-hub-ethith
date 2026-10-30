@@ -439,8 +439,35 @@
       }
     }
 
-    // E. STUDENT JOINED
-    else if (event.type === 'STUDENT_JOIN' && targetCls && event.student) {
+    // E. STUDENT JOINED / ENROLLED
+    else if ((event.type === 'STUDENT_JOIN' || event.type === 'STUDENT_ENROLLED') && targetCls && event.student) {
+      if (!targetCls.students) targetCls.students = [];
+      var sExists = targetCls.students.some(function(s) {
+        return (s.email && s.email === event.student.email) || (s.id && s.id === event.student.id) || (event.student.login && s.login && s.login.toLowerCase() === event.student.login.toLowerCase());
+      });
+      if (!sExists) {
+        if (!event.student.joinedAt) {
+          var dNow = new Date();
+          event.student.joinedAt = dNow.getFullYear() + '-' + String(dNow.getMonth() + 1).padStart(2, '0') + '-' + String(dNow.getDate()).padStart(2, '0');
+        }
+        var testerIdx = targetCls.students.findIndex(function(s) {
+          return s.isTester || (s.name && s.name.startsWith('tester_'));
+        });
+        if (testerIdx !== -1) {
+          targetCls.students[testerIdx] = event.student;
+        } else {
+          targetCls.students.unshift(event.student);
+        }
+        // Auto-register student account
+        if (event.account && Array.isArray(S.accounts)) {
+          var accExists = S.accounts.some(function(a) { return a.id === event.account.id || (a.login && event.account.login && a.login.toLowerCase() === event.account.login.toLowerCase()); });
+          if (!accExists) S.accounts.push(event.account);
+        }
+        uiNeedsRefresh = true;
+        if (window.EA && typeof window.EA.render === 'function' && document.getElementById('apView')) {
+          window.EA.render(document.getElementById('apView'));
+        }
+      }
       if (!targetCls.students) targetCls.students = [];
       var sExists = targetCls.students.some(function(s) {
         return (s.email && s.email === event.student.email) || (s.id && s.id === event.student.id);
@@ -1314,7 +1341,11 @@
           var exists = localCls.students.find(function(s) {
             return (s.email && s.email === rStudent.email) || (s.id && s.id === rStudent.id);
           });
+          var isTester = rStudent.isTester || (rStudent.name && rStudent.name.toLowerCase().startsWith('tester_'));
           if (!exists) {
+            if (isTester && localCls.students.length >= 18) {
+              return; // Do NOT add extra tester slots if class is already full
+            }
             localCls.students.push(rStudent);
             changed = true;
           } else {

@@ -5331,6 +5331,7 @@ EA.render = function(container, preserveScrollLeft) {
       }
 
       var fullName = fn + ' ' + ln;
+      var classes = getAvailableClasses();
       var chosenClass = classes.find(function(c) { return c.id === selClassId; });
       if (!chosenClass) {
         alert("Guruh topilmadi!");
@@ -5343,55 +5344,42 @@ EA.render = function(container, preserveScrollLeft) {
       var studentObj = curSt;
       var newStudentId = (curSt && !isTesterSlot) ? curSt.id : ('std_' + finalLogin);
 
-      if (!studentObj || isTesterSlot) {
-        studentObj = {
-          id: newStudentId,
-          name: fullName,
-          firstName: fn,
-          lastName: ln,
-          email: finalLogin + '@student.ethith',
-          role: 'student',
-          phone: pPhone,
-          parentPhone: pPhone,
-          login: finalLogin,
-          password: finalPass,
-          joinedAt: new Date().toISOString().split('T')[0],
-          isTester: false,
-          manuallyEnrolled: true,
-          isOnline: false,
-          coins: 150
-        };
+      studentObj = {
+        id: newStudentId,
+        name: fullName,
+        firstName: fn,
+        lastName: ln,
+        email: finalLogin + '@student.ethith',
+        role: 'student',
+        phone: pPhone,
+        parentPhone: pPhone,
+        login: finalLogin,
+        password: finalPass,
+        joinedAt: new Date().toISOString().split('T')[0],
+        isTester: false,
+        manuallyEnrolled: true,
+        isOnline: false,
+        coins: 150
+      };
 
-        // If target was a specific tester slot in chosenClass, replace it at that exact slot
-        var targetTesterIdx = -1;
-        if (curSt) {
-          targetTesterIdx = chosenClass.students.indexOf(curSt);
-          if (targetTesterIdx === -1) {
-            targetTesterIdx = chosenClass.students.findIndex(function(s) { return s.id === curSt.id; });
-          }
-        }
-        // If not found or new enrollment, find the first available tester slot in chosenClass
+      // Replace target tester or first tester slot, or put at front
+      var targetTesterIdx = -1;
+      if (curSt) {
+        targetTesterIdx = chosenClass.students.indexOf(curSt);
         if (targetTesterIdx === -1) {
-          targetTesterIdx = chosenClass.students.findIndex(function(s) {
-            return s && (s.isTester === true || (s.name && s.name.toLowerCase().startsWith('tester_')));
-          });
+          targetTesterIdx = chosenClass.students.findIndex(function(s) { return s.id === curSt.id; });
         }
+      }
+      if (targetTesterIdx === -1) {
+        targetTesterIdx = chosenClass.students.findIndex(function(s) {
+          return s && (s.isTester === true || (s.name && s.name.toLowerCase().startsWith('tester_')));
+        });
+      }
 
-        if (targetTesterIdx !== -1) {
-          chosenClass.students[targetTesterIdx] = studentObj;
-        } else {
-          chosenClass.students.push(studentObj);
-        }
+      if (targetTesterIdx !== -1) {
+        chosenClass.students[targetTesterIdx] = studentObj;
       } else {
-        studentObj.name = fullName;
-        studentObj.firstName = fn;
-        studentObj.lastName = ln;
-        studentObj.parentPhone = pPhone;
-        studentObj.phone = pPhone;
-        studentObj.login = finalLogin;
-        studentObj.password = finalPass;
-        studentObj.isTester = false;
-        studentObj.manuallyEnrolled = true;
+        chosenClass.students.unshift(studentObj);
       }
 
       if (!chosenClass.customStudentNames) chosenClass.customStudentNames = {};
@@ -5399,53 +5387,6 @@ EA.render = function(container, preserveScrollLeft) {
       if (!chosenClass.customStudentPhones) chosenClass.customStudentPhones = {};
       chosenClass.customStudentPhones[studentObj.id] = pPhone;
 
-      ensureClassAttendance(chosenClass);
-
-      // Also register into accounts for direct login
-      var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
-      if (!Array.isArray(S_app.accounts)) S_app.accounts = [];
-      var acc = S_app.accounts.find(function(a) { return a.id === studentObj.id || (a.login && a.login.toLowerCase() === finalLogin.toLowerCase()); });
-      if (!acc) {
-        acc = {
-          id: studentObj.id,
-          name: fullName,
-          role: 'student',
-          login: finalLogin,
-          password: finalPass,
-          phone: pPhone,
-          parentPhone: pPhone,
-          classId: chosenClass.id,
-          isOnline: false,
-          lastLogin: null
-        };
-        S_app.accounts.push(acc);
-      } else {
-        acc.name = fullName;
-        acc.login = finalLogin;
-        acc.password = finalPass;
-        acc.phone = pPhone;
-        acc.parentPhone = pPhone;
-        acc.classId = chosenClass.id;
-      }
-
-      if (window.EthithEnterprise && window.EthithEnterprise.getStore) {
-        var entStore = window.EthithEnterprise.getStore();
-        if (entStore && Array.isArray(entStore.accounts)) {
-          var entAcc = entStore.accounts.find(function(a) { return a.id === studentObj.id || (a.login && a.login.toLowerCase() === finalLogin.toLowerCase()); });
-          if (!entAcc) {
-            entStore.accounts.push(acc);
-          } else {
-            entAcc.name = fullName;
-            entAcc.login = finalLogin;
-            entAcc.password = finalPass;
-            entAcc.phone = pPhone;
-            entAcc.parentPhone = pPhone;
-            entAcc.classId = chosenClass.id;
-          }
-        }
-      }
-
-      // Default payment status: UNPAID (0 so'm until admin marks paid)
       if (!chosenClass.studentPayments) chosenClass.studentPayments = {};
       if (!chosenClass.studentPayments[studentObj.id]) {
         chosenClass.studentPayments[studentObj.id] = {
@@ -5457,41 +5398,107 @@ EA.render = function(container, preserveScrollLeft) {
         };
       }
 
-      if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
-        window.EthithEnterprise.saveStore();
-      } else if (window.EthithApp && window.EthithApp.saveState) {
-        window.EthithApp.saveState();
+      ensureClassAttendance(chosenClass);
+
+      // Account object
+      var acc = {
+        id: studentObj.id,
+        name: fullName,
+        role: 'student',
+        login: finalLogin,
+        password: finalPass,
+        phone: pPhone,
+        parentPhone: pPhone,
+        classId: chosenClass.id,
+        isOnline: false,
+        lastLogin: null
+      };
+
+      // 1. Synchronize to all in-memory class sources
+      var allClsSources = [
+        window.S && window.S.classes,
+        window.EthithApp && window.EthithApp.state && window.EthithApp.state.classes,
+        window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.classes,
+        window.EthithEnterprise && window.EthithEnterprise.getStore && window.EthithEnterprise.getStore().classes
+      ];
+      allClsSources.forEach(function(arr) {
+        if (!Array.isArray(arr)) return;
+        var f = arr.find(function(c) { return c && c.id === chosenClass.id; });
+        if (f) {
+          f.students = JSON.parse(JSON.stringify(chosenClass.students));
+          f.customStudentNames = Object.assign({}, chosenClass.customStudentNames);
+          f.customStudentPhones = Object.assign({}, chosenClass.customStudentPhones);
+          f.studentPayments = Object.assign({}, f.studentPayments || {}, chosenClass.studentPayments);
+        } else {
+          arr.push(JSON.parse(JSON.stringify(chosenClass)));
+        }
+      });
+
+      // 2. Synchronize to all in-memory account sources
+      var allAccSources = [
+        window.S && window.S.accounts,
+        window.EthithApp && window.EthithApp.state && window.EthithApp.state.accounts,
+        window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.accounts,
+        window.EthithEnterprise && window.EthithEnterprise.getStore && window.EthithEnterprise.getStore().accounts
+      ];
+      allAccSources.forEach(function(arr) {
+        if (!Array.isArray(arr)) return;
+        var f = arr.find(function(a) { return a && (a.id === studentObj.id || (a.login && a.login.toLowerCase() === finalLogin.toLowerCase())); });
+        if (f) {
+          f.name = fullName;
+          f.login = finalLogin;
+          f.password = finalPass;
+          f.phone = pPhone;
+          f.parentPhone = pPhone;
+          f.classId = chosenClass.id;
+        } else {
+          arr.push(JSON.parse(JSON.stringify(acc)));
+        }
+      });
+
+      // 3. Instant LocalStorage persistence
+      try {
+        if (window.EthithApp && window.EthithApp.state) {
+          localStorage.setItem('ethith_v2_state', JSON.stringify(window.EthithApp.state));
+        }
+        if (window.EthithEnterprise && window.EthithEnterprise.getStore) {
+          localStorage.setItem('ethith_enterprise_store', JSON.stringify(window.EthithEnterprise.getStore()));
+        }
+      } catch(e) {}
+
+      // 4. Real-time Multi-Broker MQTT WebSockets Mesh Broadcast
+      if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+        window.EthithSync.publishLive({
+          type: 'STUDENT_JOIN',
+          classId: chosenClass.id,
+          student: studentObj,
+          account: acc
+        });
+        window.EthithSync.publishLive({
+          type: 'STUDENT_ENROLLED',
+          classId: chosenClass.id,
+          student: studentObj,
+          account: acc
+        });
       }
 
-      if (window.EthithSync && window.EthithSync.broadcastState) {
-        window.EthithSync.broadcastState('student_roster_updated');
+      // 5. Cross-tab BroadcastChannel Relays
+      try {
+        if (typeof BroadcastChannel !== 'undefined') {
+          if (!window._ethithChannel) window._ethithChannel = new BroadcastChannel('ethith_sync');
+          window._ethithChannel.postMessage({ type: 'sync' });
+          if (!window._eeChannel) window._eeChannel = new BroadcastChannel('ethith_cloud_channel');
+          window._eeChannel.postMessage({ type: 'ENTERPRISE_SYNC', state: window.EthithEnterprise.getStore ? window.EthithEnterprise.getStore() : null });
+        }
+      } catch(e) {}
+
+      // 6. Instant Server / GitHub Persistence (shared_store.json)
+      if (window.EthithSync && typeof window.EthithSync.pushRemoteStore === 'function') {
+        window.EthithSync.pushRemoteStore();
       }
 
       if (window.EthithApp && window.EthithApp.toast) {
-        window.EthithApp.toast("✅ " + fullName + " ro‘yxatga olindi! Login: " + finalLogin);
-      }
-
-      if (window.ETHITH_INITIAL_STORE) {
-        if (Array.isArray(window.ETHITH_INITIAL_STORE.classes)) {
-          var initCls = window.ETHITH_INITIAL_STORE.classes.find(function(c) { return c.id === chosenClass.id; });
-          if (initCls) {
-            initCls.students = JSON.parse(JSON.stringify(chosenClass.students));
-            initCls.customStudentNames = Object.assign({}, chosenClass.customStudentNames);
-            initCls.customStudentPhones = Object.assign({}, chosenClass.customStudentPhones);
-          } else {
-            window.ETHITH_INITIAL_STORE.classes.push(JSON.parse(JSON.stringify(chosenClass)));
-          }
-        }
-        if (Array.isArray(window.ETHITH_INITIAL_STORE.accounts)) {
-          var initAcc = window.ETHITH_INITIAL_STORE.accounts.find(function(a) { return a.id === studentObj.id || (a.login && a.login.toLowerCase() === finalLogin.toLowerCase()); });
-          if (!initAcc) {
-            window.ETHITH_INITIAL_STORE.accounts.push(JSON.parse(JSON.stringify(acc)));
-          } else {
-            initAcc.name = fullName;
-            initAcc.login = finalLogin;
-            initAcc.password = finalPass;
-          }
-        }
+        window.EthithApp.toast("✅ " + fullName + " ro‘yxatga olindi! Serverga sinxronlandi.");
       }
 
       overlay.remove();
