@@ -57575,8 +57575,8 @@
         "page": 1070,
         "exercise": "3",
         "label": "2",
-        "top": 83.6,
-        "left": 16,
+        "top": 76.6,
+        "left": 52.4,
         "width": 30,
         "height": 2.1,
         "correct": "Where did you stay?"
@@ -57599,8 +57599,8 @@
         "page": 1070,
         "exercise": "3",
         "label": "4",
-        "top": 84,
-        "left": 16,
+        "top": 83,
+        "left": 51.4,
         "width": 30,
         "height": 2.1,
         "correct": "When did you go?"
@@ -57611,8 +57611,8 @@
         "page": 1070,
         "exercise": "3",
         "label": "5",
-        "top": 88,
-        "left": 16,
+        "top": 85.9,
+        "left": 53.8,
         "width": 30,
         "height": 2.1,
         "correct": "Who did you go with?"
@@ -57623,8 +57623,8 @@
         "page": 1070,
         "exercise": "3",
         "label": "6",
-        "top": 92,
-        "left": 16,
+        "top": 89.8,
+        "left": 59.6,
         "width": 30,
         "height": 2.1,
         "correct": "What did you think of it?"
@@ -92323,7 +92323,7 @@
     "1067": 1793377968133,
     "1068": 1793378325267,
     "1069": 1793378325268,
-    "1070": 1793378564504,
+    "1070": 1793378575232,
     "1071": 1793378485001,
     "2004": 1793374693102,
     "2005": 1793374693102,
@@ -93157,5 +93157,5 @@
       }
     }
   },
-  "updatedAt": 1793378564565
+  "updatedAt": 1793378576881
 }
