@@ -57395,8 +57395,8 @@
         "page": 1071,
         "exercise": "4a",
         "label": "3",
-        "top": 25.5,
-        "left": 24,
+        "top": 47.8,
+        "left": 10.5,
         "width": 10,
         "height": 2.1,
         "correct": "meet"
@@ -57467,8 +57467,8 @@
         "page": 1071,
         "exercise": "5",
         "label": "2",
-        "top": 52,
-        "left": 20,
+        "top": 35.2,
+        "left": 56.8,
         "width": 25,
         "height": 2.1,
         "correct": "felt sick"
@@ -57479,8 +57479,8 @@
         "page": 1071,
         "exercise": "5",
         "label": "3",
-        "top": 56.5,
-        "left": 20,
+        "top": 38.6,
+        "left": 56.1,
         "width": 25,
         "height": 2.1,
         "correct": "missed my train"
@@ -57491,8 +57491,8 @@
         "page": 1071,
         "exercise": "5",
         "label": "4",
-        "top": 61,
-        "left": 20,
+        "top": 40.3,
+        "left": 56.2,
         "width": 25,
         "height": 2.1,
         "correct": "forgot the time"
@@ -57503,8 +57503,8 @@
         "page": 1071,
         "exercise": "5",
         "label": "5",
-        "top": 65.5,
-        "left": 20,
+        "top": 41.8,
+        "left": 56.3,
         "width": 25,
         "height": 2.1,
         "correct": "went to the doctor"
@@ -57515,8 +57515,8 @@
         "page": 1071,
         "exercise": "5",
         "label": "6",
-        "top": 70,
-        "left": 20,
+        "top": 43.5,
+        "left": 56.6,
         "width": 25,
         "height": 2.1,
         "correct": "slept badly"
@@ -57527,8 +57527,8 @@
         "page": 1071,
         "exercise": "5",
         "label": "7",
-        "top": 74.5,
-        "left": 20,
+        "top": 46.8,
+        "left": 55.7,
         "width": 25,
         "height": 2.1,
         "correct": "had a headache"
@@ -92056,7 +92056,7 @@
     "1067": 1793377968133,
     "1068": 1793378325267,
     "1069": 1793378325268,
-    "1071": 1793378366226,
+    "1071": 1793378394170,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -92889,5 +92889,5 @@
       }
     }
   },
-  "updatedAt": 1793378367296
+  "updatedAt": 1793378394524
 }
