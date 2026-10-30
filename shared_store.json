@@ -43857,8 +43857,8 @@
         "page": 1019,
         "exercise": "9",
         "label": "2",
-        "top": 74.5,
-        "left": 59.2,
+        "top": 73.2,
+        "left": 59.9,
         "width": 19,
         "height": 2,
         "correct": "from nine thirty to eleven"
@@ -43869,8 +43869,8 @@
         "page": 1019,
         "exercise": "9",
         "label": "3",
-        "top": 79.2,
-        "left": 59.2,
+        "top": 75.1,
+        "left": 57.2,
         "width": 19,
         "height": 2,
         "correct": "at three thirty"
@@ -43881,8 +43881,8 @@
         "page": 1019,
         "exercise": "9",
         "label": "4",
-        "top": 82.8,
-        "left": 59.2,
+        "top": 78.3,
+        "left": 59.7,
         "width": 19,
         "height": 2,
         "correct": "from six fifteen to seven forty-five"
@@ -43893,8 +43893,8 @@
         "page": 1019,
         "exercise": "9",
         "label": "5",
-        "top": 87.5,
-        "left": 59.2,
+        "top": 81.3,
+        "left": 60.5,
         "width": 19,
         "height": 2,
         "correct": "four twenty-five"
@@ -80000,7 +80000,7 @@
     "1016": 1793370490121,
     "1017": 1793370490122,
     "1018": 1793370570689,
-    "1019": 1793370646685,
+    "1019": 1793370659145,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -80838,5 +80838,5 @@
       }
     }
   },
-  "updatedAt": 1793370646844
+  "updatedAt": 1793370660060
 }
