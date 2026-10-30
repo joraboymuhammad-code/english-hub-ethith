@@ -44015,8 +44015,8 @@
         "page": 1020,
         "exercise": "2",
         "label": "5",
-        "top": 49.5,
-        "left": 56.5,
+        "top": 47.5,
+        "left": 57.2,
         "width": 38.5,
         "height": 2.1,
         "correct": "Prague is a lovely city."
@@ -44027,8 +44027,8 @@
         "page": 1020,
         "exercise": "2",
         "label": "6",
-        "top": 52.9,
-        "left": 56.5,
+        "top": 51.1,
+        "left": 57.2,
         "width": 38.5,
         "height": 2.1,
         "correct": "Jonah Hill is a funny man."
@@ -44039,8 +44039,8 @@
         "page": 1020,
         "exercise": "3a",
         "label": "2",
-        "top": 62.9,
-        "left": 56.5,
+        "top": 61,
+        "left": 57.2,
         "width": 38.5,
         "height": 2.1,
         "correct": "They're clever children."
@@ -44051,8 +44051,8 @@
         "page": 1020,
         "exercise": "3a",
         "label": "3",
-        "top": 66.3,
-        "left": 56.5,
+        "top": 64.5,
+        "left": 57.2,
         "width": 38.5,
         "height": 2.1,
         "correct": "They're old men."
@@ -44063,8 +44063,8 @@
         "page": 1020,
         "exercise": "3a",
         "label": "4",
-        "top": 69.8,
-        "left": 56.5,
+        "top": 67.9,
+        "left": 57.3,
         "width": 38.5,
         "height": 2.1,
         "correct": "They're friendly neighbours."
@@ -44075,8 +44075,8 @@
         "page": 1020,
         "exercise": "3a",
         "label": "5",
-        "top": 73.2,
-        "left": 56.5,
+        "top": 71.5,
+        "left": 57.5,
         "width": 38.5,
         "height": 2.1,
         "correct": "They're funny women."
@@ -44087,8 +44087,8 @@
         "page": 1020,
         "exercise": "3a",
         "label": "6",
-        "top": 76.6,
-        "left": 56.5,
+        "top": 74.6,
+        "left": 57.5,
         "width": 38.5,
         "height": 2.1,
         "correct": "They're interesting houses."
@@ -80560,7 +80560,7 @@
     "1017": 1793370490122,
     "1018": 1793370678788,
     "1019": 1793370678789,
-    "1020": 1793370809444,
+    "1020": 1793370827878,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -81400,5 +81400,5 @@
       }
     }
   },
-  "updatedAt": 1793370812281
+  "updatedAt": 1793370828068
 }
