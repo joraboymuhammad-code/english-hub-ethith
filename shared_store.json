@@ -43394,6 +43394,524 @@
         "correct": "he's"
       }
     ],
+    "1019": [
+      {
+        "id": "p1019_ex1_2",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "1",
+        "label": "2",
+        "top": 25.1,
+        "left": 10.9,
+        "width": 7.5,
+        "height": 2,
+        "correct": "Are"
+      },
+      {
+        "id": "p1019_ex1_3",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "1",
+        "label": "3",
+        "top": 26.8,
+        "left": 13.7,
+        "width": 6.5,
+        "height": 2,
+        "correct": "isn't"
+      },
+      {
+        "id": "p1019_ex1_4",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "1",
+        "label": "4",
+        "top": 28.5,
+        "left": 14.7,
+        "width": 6.5,
+        "height": 2,
+        "correct": "'m"
+      },
+      {
+        "id": "p1019_ex1_5",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "1",
+        "label": "5",
+        "top": 30.2,
+        "left": 11,
+        "width": 7.5,
+        "height": 2,
+        "correct": "Is"
+      },
+      {
+        "id": "p1019_ex1_6",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "1",
+        "label": "6",
+        "top": 31.9,
+        "left": 13.7,
+        "width": 6.8,
+        "height": 2,
+        "correct": "aren't"
+      },
+      {
+        "id": "p1019_ex2_2",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "2",
+        "label": "2",
+        "top": 46.2,
+        "left": 13.8,
+        "width": 6.5,
+        "height": 2,
+        "correct": "Where"
+      },
+      {
+        "id": "p1019_ex2_3",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "2",
+        "label": "3",
+        "top": 49.8,
+        "left": 13.8,
+        "width": 6.5,
+        "height": 2,
+        "correct": "How"
+      },
+      {
+        "id": "p1019_ex2_4",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "2",
+        "label": "4",
+        "top": 53.3,
+        "left": 13.8,
+        "width": 6.5,
+        "height": 2,
+        "correct": "Who"
+      },
+      {
+        "id": "p1019_ex2_5",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "2",
+        "label": "5",
+        "top": 56.8,
+        "left": 13.8,
+        "width": 6.5,
+        "height": 2,
+        "correct": "What"
+      },
+      {
+        "id": "p1019_ex3_2",
+        "type": "select",
+        "page": 1019,
+        "exercise": "3",
+        "label": "2",
+        "top": 66.8,
+        "left": 17.5,
+        "width": 5.5,
+        "height": 2,
+        "correct": "that",
+        "options": [
+          "that",
+          "those"
+        ]
+      },
+      {
+        "id": "p1019_ex3_3",
+        "type": "select",
+        "page": 1019,
+        "exercise": "3",
+        "label": "3",
+        "top": 72,
+        "left": 15.5,
+        "width": 7.5,
+        "height": 2,
+        "correct": "They're",
+        "options": [
+          "It's",
+          "They're"
+        ]
+      },
+      {
+        "id": "p1019_ex3_4",
+        "type": "select",
+        "page": 1019,
+        "exercise": "3",
+        "label": "4",
+        "top": 73.8,
+        "left": 17.5,
+        "width": 5.5,
+        "height": 2,
+        "correct": "this",
+        "options": [
+          "this",
+          "these"
+        ]
+      },
+      {
+        "id": "p1019_ex3_5",
+        "type": "select",
+        "page": 1019,
+        "exercise": "3",
+        "label": "5",
+        "top": 77.2,
+        "left": 20.8,
+        "width": 5.5,
+        "height": 2,
+        "correct": "those",
+        "options": [
+          "that",
+          "those"
+        ]
+      },
+      {
+        "id": "p1019_ex4_2",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "4",
+        "label": "2",
+        "top": 85.3,
+        "left": 33,
+        "width": 14.5,
+        "height": 2,
+        "correct": "They're friends."
+      },
+      {
+        "id": "p1019_ex4_3",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "4",
+        "label": "3",
+        "top": 87.1,
+        "left": 33,
+        "width": 14.5,
+        "height": 2,
+        "correct": "It's in Indonesia."
+      },
+      {
+        "id": "p1019_ex4_4",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "4",
+        "label": "4",
+        "top": 88.9,
+        "left": 33,
+        "width": 14.5,
+        "height": 2,
+        "correct": "She's from Australia."
+      },
+      {
+        "id": "p1019_ex4_5",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "4",
+        "label": "5",
+        "top": 90.7,
+        "left": 33,
+        "width": 14.5,
+        "height": 2,
+        "correct": "You're late."
+      },
+      {
+        "id": "p1019_ex5_2",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "5",
+        "label": "2",
+        "top": 23.3,
+        "left": 58.7,
+        "width": 10,
+        "height": 2,
+        "correct": "thirty-six"
+      },
+      {
+        "id": "p1019_ex5_3",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "5",
+        "label": "3",
+        "top": 26.5,
+        "left": 59.5,
+        "width": 10,
+        "height": 2,
+        "correct": "nineteen"
+      },
+      {
+        "id": "p1019_ex5_4",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "5",
+        "label": "4",
+        "top": 23,
+        "left": 79.5,
+        "width": 10,
+        "height": 2,
+        "correct": "fifty-eight"
+      },
+      {
+        "id": "p1019_ex5_5",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "5",
+        "label": "5",
+        "top": 24.8,
+        "left": 79.5,
+        "width": 10,
+        "height": 2,
+        "correct": "forty"
+      },
+      {
+        "id": "p1019_ex5_6",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "5",
+        "label": "6",
+        "top": 26.5,
+        "left": 79.5,
+        "width": 10,
+        "height": 2,
+        "correct": "one hundred"
+      },
+      {
+        "id": "p1019_ex6_2",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "6",
+        "label": "2",
+        "top": 32.8,
+        "left": 56.5,
+        "width": 10.5,
+        "height": 2,
+        "correct": "engineer"
+      },
+      {
+        "id": "p1019_ex6_3",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "6",
+        "label": "3",
+        "top": 34.6,
+        "left": 56.5,
+        "width": 8.5,
+        "height": 2,
+        "correct": "nurse"
+      },
+      {
+        "id": "p1019_ex6_4",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "6",
+        "label": "4",
+        "top": 31,
+        "left": 77,
+        "width": 12.5,
+        "height": 2,
+        "correct": "shop assistant"
+      },
+      {
+        "id": "p1019_ex6_5",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "6",
+        "label": "5",
+        "top": 32.8,
+        "left": 77,
+        "width": 11.5,
+        "height": 2,
+        "correct": "taxi driver"
+      },
+      {
+        "id": "p1019_ex6_6",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "6",
+        "label": "6",
+        "top": 34.6,
+        "left": 77,
+        "width": 9.5,
+        "height": 2,
+        "correct": "teacher"
+      },
+      {
+        "id": "p1019_ex7_2",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "7",
+        "label": "2",
+        "top": 46.5,
+        "left": 66.5,
+        "width": 7.5,
+        "height": 2,
+        "correct": "a key"
+      },
+      {
+        "id": "p1019_ex7_3",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "7",
+        "label": "3",
+        "top": 46.5,
+        "left": 76.5,
+        "width": 7.5,
+        "height": 2,
+        "correct": "a pen"
+      },
+      {
+        "id": "p1019_ex7_4",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "7",
+        "label": "4",
+        "top": 46.5,
+        "left": 86.5,
+        "width": 7.5,
+        "height": 2,
+        "correct": "a wallet"
+      },
+      {
+        "id": "p1019_ex8_2",
+        "type": "select",
+        "page": 1019,
+        "exercise": "8",
+        "label": "2",
+        "top": 53.5,
+        "left": 73.5,
+        "width": 5.5,
+        "height": 2,
+        "correct": "near",
+        "options": [
+          "on",
+          "near"
+        ]
+      },
+      {
+        "id": "p1019_ex8_3",
+        "type": "select",
+        "page": 1019,
+        "exercise": "8",
+        "label": "3",
+        "top": 55.2,
+        "left": 79.5,
+        "width": 4.5,
+        "height": 2,
+        "correct": "on",
+        "options": [
+          "next to",
+          "on"
+        ]
+      },
+      {
+        "id": "p1019_ex8_4",
+        "type": "select",
+        "page": 1019,
+        "exercise": "8",
+        "label": "4",
+        "top": 57,
+        "left": 76,
+        "width": 5.5,
+        "height": 2,
+        "correct": "near",
+        "options": [
+          "near",
+          "in"
+        ]
+      },
+      {
+        "id": "p1019_ex8_5",
+        "type": "select",
+        "page": 1019,
+        "exercise": "8",
+        "label": "5",
+        "top": 58.7,
+        "left": 69.5,
+        "width": 4.5,
+        "height": 2,
+        "correct": "in",
+        "options": [
+          "on",
+          "in"
+        ]
+      },
+      {
+        "id": "p1019_ex8_6",
+        "type": "select",
+        "page": 1019,
+        "exercise": "8",
+        "label": "6",
+        "top": 60.5,
+        "left": 66.5,
+        "width": 4.5,
+        "height": 2,
+        "correct": "in",
+        "options": [
+          "on",
+          "in"
+        ]
+      },
+      {
+        "id": "p1019_ex9_2",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "9",
+        "label": "2",
+        "top": 74.5,
+        "left": 59.2,
+        "width": 19,
+        "height": 2,
+        "correct": "from nine thirty to eleven"
+      },
+      {
+        "id": "p1019_ex9_3",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "9",
+        "label": "3",
+        "top": 79.2,
+        "left": 59.2,
+        "width": 19,
+        "height": 2,
+        "correct": "at three thirty"
+      },
+      {
+        "id": "p1019_ex9_4",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "9",
+        "label": "4",
+        "top": 82.8,
+        "left": 59.2,
+        "width": 19,
+        "height": 2,
+        "correct": "from six fifteen to seven forty-five"
+      },
+      {
+        "id": "p1019_ex9_5",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "9",
+        "label": "5",
+        "top": 87.5,
+        "left": 59.2,
+        "width": 19,
+        "height": 2,
+        "correct": "four twenty-five"
+      },
+      {
+        "id": "p1019_ex9_6",
+        "type": "fill",
+        "page": 1019,
+        "exercise": "9",
+        "label": "6",
+        "top": 91,
+        "left": 59.2,
+        "width": 19,
+        "height": 2,
+        "correct": "at twelve oh five"
+      }
+    ],
     "1024": [
       {
         "id": "p1024_ex1a_2a",
@@ -79482,6 +80000,7 @@
     "1016": 1793370490121,
     "1017": 1793370490122,
     "1018": 1793370570689,
+    "1019": 1793370585008,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -80319,5 +80838,5 @@
       }
     }
   },
-  "updatedAt": 1793370572473
+  "updatedAt": 1793370585840
 }
