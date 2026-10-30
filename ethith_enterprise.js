@@ -2901,9 +2901,24 @@
       });
 
       var tNames = cleanTeachers.map(function(t) { return t.name; });
-      var tHours = cleanTeachers.map(function(t) { return Number(t.teachingHours) || 0; });
+      var isLiveStarted = (S.config && S.config.liveSystemStarted === true);
+      var tHours = cleanTeachers.map(function(t) { return isLiveStarted ? (Number(t.teachingHours) || 0) : 0; });
       var tEarnings = cleanTeachers.map(function(t) {
-        return +(((Number(t.teachingHours) || 0) * (Number(t.hourlyRate) || 0) + (Number(t.monthlyBonus) || 0)) / 1000000).toFixed(2);
+        if (!isLiveStarted) return 0;
+        var paidCount = 0;
+        var share = (t.salarySharePercent !== undefined) ? Number(t.salarySharePercent) : 50;
+        var fee = Number(t.studentMonthlyFee) || 300000;
+        (S.classes || []).forEach(function(cls) {
+          if (cls.teacherId === t.id || (t.name && cls.teacherName && cls.teacherName.toLowerCase() === t.name.toLowerCase())) {
+            (cls.students || []).forEach(function(st) {
+              var stId = st.id || st.email;
+              if (cls.studentPayments && cls.studentPayments[stId] && cls.studentPayments[stId].status === 'paid') {
+                paidCount++;
+              }
+            });
+          }
+        });
+        return +((paidCount * fee * (share / 100)) / 1000000).toFixed(2);
       });
 
       _teacherDetailChartInstance = new window.Chart(ctx, {
@@ -3090,13 +3105,16 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
   // TAB 3: TEACHERS & PAYROLL TABLE HTML
   // --------------------------------------------------------------------------
   EE.renderFinanceTeachersTabHtml = function(teachers) {
+    var S = getStore();
+    var isLiveStarted = (S.config && S.config.liveSystemStarted === true);
+
     var h = '<div style="display:flex;flex-direction:column;gap:20px;">' +
       
       // TEACHER COMPARATIVE ANALYTICS & RADAR
       '<div style="display:grid;grid-template-columns:1.6fr 1fr;gap:20px;">' +
         '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.3);border-radius:20px;padding:22px;backdrop-filter:blur(20px);box-shadow:0 10px 30px rgba(0,0,0,0.4);">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">' +
-            '<h3 style="margin:0;font-size:16px;font-weight:900;color:#fff;">📊 Ustozlar O‘tilgan Dars Soatlari va Maosh Solishtirmasi</h3>' +
+            '<h3 style="margin:0;font-size:16px;font-weight:900;color:#fff;">📊 Ustozlar O‘tilgan Dars Soatlari va Maosh Solishtiruvi</h3>' +
             '<span style="font-size:11px;color:#38bdf8;font-weight:800;">Real vaqt hisobi</span>' +
           '</div>' +
           '<div style="position:relative;height:240px;width:100%;">' +
@@ -3119,8 +3137,8 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:24px;backdrop-filter:blur(20px);box-shadow:0 10px 30px rgba(0,0,0,0.4);">' +
         '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;">' +
           '<div>' +
-            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘qituvchilar Shtati va Soatlik Dars Maoshi (Payroll)</h3>' +
-            '<p style="margin:4px 0 0;font-size:12.5px;color:#94a3b8;">Har bir o‘tilgan dars soati, soatlik stavka va oylik hisob-kitoblar.</p>' +
+            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘qituvchilar Shtati va Ulush Maoshi (Payroll)</h3>' +
+            '<p style="margin:4px 0 0;font-size:12.5px;color:#94a3b8;">Haqiqiy to‘lovlar asosida: har bir o‘quvchining to‘lagan pulidan ustoz ulushi ajratiladi.</p>' +
           '</div>' +
           '<button id="eeBtnAddTeacher" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;">+ O‘qituvchi Qo‘shish</button>' +
         '</div>' +
@@ -3132,20 +3150,34 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
                 '<th style="padding:12px 14px;">O‘qituvchi</th>' +
                 '<th style="padding:12px 14px;">Mutaxassislik</th>' +
                 '<th style="padding:12px 14px;">O‘tilgan Dars Soati</th>' +
-                '<th style="padding:12px 14px;">Soatlik Stavka</th>' +
-                '<th style="padding:12px 14px;">Oylik Bonus</th>' +
-                '<th style="padding:12px 14px;">Jami Hisoblangan Maosh</th>' +
+                '<th style="padding:12px 14px;">Soatlik Dars Haqi</th>' +
+                '<th style="padding:12px 14px;">Ulush Foizi</th>' +
+                '<th style="padding:12px 14px;">Joriy Oyda Hisoblangan Maosh</th>' +
                 '<th style="padding:12px 14px;">Holat</th>' +
                 '<th style="padding:12px 14px;text-align:right;">Amal</th>' +
               '</tr>' +
             '</thead>' +
             '<tbody>' +
               teachers.map(function(t) {
-                var hours = Number(t.teachingHours) || 0;
-                var rate = Number(t.hourlyRate) || 0;
-                var bonus = Number(t.monthlyBonus) || 0;
-                var total = (hours * rate) + bonus;
-                var isPaid = t.status === 'paid';
+                var hours = isLiveStarted ? (Number(t.teachingHours) || 0) : 0;
+                var rate = Number(t.hourlyRate) || 100000;
+                var share = (t.salarySharePercent !== undefined) ? Number(t.salarySharePercent) : 50;
+                
+                // Real-time calculation strictly based on students marked paid by admin
+                var paidStudentsCount = 0;
+                (S.classes || []).forEach(function(cls) {
+                  if (cls.teacherId === t.id || (t.name && cls.teacherName && cls.teacherName.toLowerCase() === t.name.toLowerCase())) {
+                    (cls.students || []).forEach(function(st) {
+                      var stId = st.id || st.email;
+                      if (cls.studentPayments && cls.studentPayments[stId] && cls.studentPayments[stId].status === 'paid') {
+                        paidStudentsCount++;
+                      }
+                    });
+                  }
+                });
+                var tFee = Number(t.studentMonthlyFee) || 300000;
+                var total = isLiveStarted ? Math.round(paidStudentsCount * tFee * (share / 100)) : 0;
+                var isPaid = isLiveStarted && (t.status === 'paid' || t.paidThisMonth === true);
 
                 return '<tr style="border-bottom:1px solid rgba(255,255,255,0.06);transition:background 0.15s;" onmouseover="this.style.background=\'rgba(255,255,255,0.02)\'" onmouseout="this.style.background=\'transparent\'">' +
                   '<td style="padding:14px;">' +
@@ -3158,15 +3190,15 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
                   '<td style="padding:14px;font-size:13px;color:#cbd5e1;font-weight:700;">' + esc(t.subject || 'Ingliz tili') + '</td>' +
                   '<td style="padding:14px;"><span style="background:rgba(56,189,248,0.15);color:#38bdf8;padding:4px 10px;border-radius:8px;font-size:12.5px;font-weight:900;">' + hours + ' soat</span></td>' +
                   '<td style="padding:14px;font-size:13px;color:#fff;font-weight:800;">' + fmtUZS(rate) + ' <span style="font-size:11px;color:#94a3b8;">/ soat</span></td>' +
-                  '<td style="padding:14px;font-size:13px;color:#c084fc;font-weight:800;">' + fmtUZS(bonus) + '</td>' +
-                  '<td style="padding:14px;font-size:14px;color:#34d399;font-weight:900;">' + fmtUZS(total) + '</td>' +
+                  '<td style="padding:14px;font-size:13px;color:#c084fc;font-weight:900;">' + share + '%</td>' +
+                  '<td style="padding:14px;font-size:14px;color:#34d399;font-weight:900;">' + (total > 0 ? (fmtUZS(total) + ' <span style="font-size:11px;color:#94a3b8;">(' + paidStudentsCount + ' ta to‘lagan)</span>') : '0 so‘m') + '</td>' +
                   '<td style="padding:14px;">' +
                     '<span style="padding:4px 10px;border-radius:8px;font-size:11.5px;font-weight:900;' + (isPaid ? 'background:rgba(16,185,129,0.2);color:#10b981;' : 'background:rgba(245,158,11,0.2);color:#f59e0b;') + '">' +
                       (isPaid ? '✓ To‘langan' : '⏳ Kutilmoqda') +
                     '</span>' +
                   '</td>' +
                   '<td style="padding:14px;text-align:right;">' +
-                    '<button class="ee-fin-edit-teacher-btn" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" data-thours="' + hours + '" data-trate="' + rate + '" data-tbonus="' + bonus + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">⚙️ Tahrir</button>' +
+                    '<button class="ee-fin-edit-teacher-btn" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" data-thours="' + hours + '" data-trate="' + rate + '" data-tshare="' + share + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;">⚙️ Tahrir</button>' +
                   '</td>' +
                 '</tr>';
               }).join('') +
@@ -3178,7 +3210,8 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
 
     return h;
   };
-EE.renderFinanceExpensesTabHtml = function(expenses) {
+
+  EE.renderFinanceExpensesTabHtml = function(expenses) {
     var h = '<div style="background:rgba(15,23,42,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.4);">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px;">' +
         '<div>' +
