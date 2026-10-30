@@ -54816,6 +54816,248 @@
         "correct": "18th July"
       }
     ],
+    "1062": [
+      {
+        "id": "p1062_ex1a_2",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "1a",
+        "label": "2",
+        "top": 34,
+        "left": 45,
+        "width": 22,
+        "height": 1.8,
+        "correct": "Joan of Arc"
+      },
+      {
+        "id": "p1062_ex1a_3",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "1a",
+        "label": "3",
+        "top": 37.5,
+        "left": 45,
+        "width": 22,
+        "height": 1.8,
+        "correct": "Mahatma Gandhi"
+      },
+      {
+        "id": "p1062_ex1a_4",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "1a",
+        "label": "4",
+        "top": 41,
+        "left": 45,
+        "width": 22,
+        "height": 1.8,
+        "correct": "Helen Keller"
+      },
+      {
+        "id": "p1062_ex1a_5",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "1a",
+        "label": "5",
+        "top": 44.5,
+        "left": 45,
+        "width": 22,
+        "height": 1.8,
+        "correct": "Genghis Khan"
+      },
+      {
+        "id": "p1062_ex1a_6",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "1a",
+        "label": "6",
+        "top": 48,
+        "left": 45,
+        "width": 22,
+        "height": 1.8,
+        "correct": "Jane Austen"
+      },
+      {
+        "id": "p1062_ex2_2",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "2",
+        "label": "2",
+        "top": 27.1,
+        "left": 55.4,
+        "width": 68,
+        "height": 1.9,
+        "correct": "Pocahontas was born in 1595 and she died in 1617."
+      },
+      {
+        "id": "p1062_ex2_3",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "2",
+        "label": "3",
+        "top": 61.5,
+        "left": 12,
+        "width": 68,
+        "height": 1.9,
+        "correct": "Marco Polo was born in 1254 and he died in 1325."
+      },
+      {
+        "id": "p1062_ex2_4",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "2",
+        "label": "4",
+        "top": 65,
+        "left": 12,
+        "width": 68,
+        "height": 1.9,
+        "correct": "Anne Frank was born in 1929 and she died in 1945."
+      },
+      {
+        "id": "p1062_ex2_5",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "2",
+        "label": "5",
+        "top": 68.5,
+        "left": 12,
+        "width": 68,
+        "height": 1.9,
+        "correct": "Albert Einstein was born in 1879 and he died in 1955."
+      },
+      {
+        "id": "p1062_ex2_6",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "2",
+        "label": "6",
+        "top": 72,
+        "left": 12,
+        "width": 68,
+        "height": 1.9,
+        "correct": "Edith Piaf was born in 1915 and she died in 1963."
+      },
+      {
+        "id": "p1062_ex2_7",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "2",
+        "label": "7",
+        "top": 75.5,
+        "left": 12,
+        "width": 68,
+        "height": 1.9,
+        "correct": "Charles Darwin was born in 1809 and he died in 1882."
+      },
+      {
+        "id": "p1062_ex2_8",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "2",
+        "label": "8",
+        "top": 79,
+        "left": 12,
+        "width": 68,
+        "height": 1.9,
+        "correct": "Rosa Parks was born in 1913 and she died in 2005."
+      },
+      {
+        "id": "p1062_ex3_1",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "3",
+        "label": "1",
+        "top": 85,
+        "left": 18,
+        "width": 22,
+        "height": 1.8,
+        "correct": "was born in 1265"
+      },
+      {
+        "id": "p1062_ex3_2",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "3",
+        "label": "2",
+        "top": 87.5,
+        "left": 18,
+        "width": 22,
+        "height": 1.8,
+        "correct": "died in 1976"
+      },
+      {
+        "id": "p1062_ex3_3",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "3",
+        "label": "3",
+        "top": 90,
+        "left": 18,
+        "width": 22,
+        "height": 1.8,
+        "correct": "was born in 1451"
+      },
+      {
+        "id": "p1062_ex3_4",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "3",
+        "label": "4",
+        "top": 92.5,
+        "left": 18,
+        "width": 22,
+        "height": 1.8,
+        "correct": "died in 1642"
+      },
+      {
+        "id": "p1062_ex3_5",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "3",
+        "label": "5",
+        "top": 85,
+        "left": 55,
+        "width": 22,
+        "height": 1.8,
+        "correct": "was born in 1899"
+      },
+      {
+        "id": "p1062_ex3_6",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "3",
+        "label": "6",
+        "top": 87.5,
+        "left": 55,
+        "width": 22,
+        "height": 1.8,
+        "correct": "died in 1796"
+      },
+      {
+        "id": "p1062_ex3_7",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "3",
+        "label": "7",
+        "top": 90,
+        "left": 55,
+        "width": 22,
+        "height": 1.8,
+        "correct": "was born in 1564"
+      },
+      {
+        "id": "p1062_ex3_8",
+        "type": "fill",
+        "page": 1062,
+        "exercise": "3",
+        "label": "8",
+        "top": 92.5,
+        "left": 55,
+        "width": 22,
+        "height": 1.8,
+        "correct": "died in 1928"
+      }
+    ],
     "2004": [
       {
         "id": "p2004_ex2_2",
@@ -89318,6 +89560,7 @@
     "1059": 1793375627614,
     "1060": 1793377088342,
     "1061": 1793377088344,
+    "1062": 1793377116626,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -90150,5 +90393,5 @@
       }
     }
   },
-  "updatedAt": 1793377098883
+  "updatedAt": 1793377119564
 }
