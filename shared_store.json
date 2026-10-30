@@ -25770,6 +25770,18 @@
       "classId": "cls_1793380468126",
       "isOnline": false,
       "lastLogin": null
+    },
+    {
+      "id": "std_mix_943_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_943_selix",
+      "password": "mix943sel",
+      "phone": "3891738213",
+      "parentPhone": "3891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -102887,5 +102899,5 @@
       }
     }
   },
-  "updatedAt": 1793383841135
+  "updatedAt": 1793384076475
 }
