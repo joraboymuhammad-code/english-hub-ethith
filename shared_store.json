@@ -44403,7 +44403,7 @@
         "page": 1022,
         "exercise": "1",
         "label": "2",
-        "top": 71.2,
+        "top": 69.4,
         "left": 12.8,
         "width": 34,
         "height": 2,
@@ -44614,25 +44614,13 @@
         "correct": "haven't"
       },
       {
-        "id": "p1022_ex2c_1",
-        "type": "fill",
-        "page": 1022,
-        "exercise": "2c",
-        "label": "1",
-        "top": 54.8,
-        "left": 56.5,
-        "width": 4,
-        "height": 2,
-        "correct": "d"
-      },
-      {
         "id": "p1022_ex2c_2",
         "type": "fill",
         "page": 1022,
         "exercise": "2c",
         "label": "2",
-        "top": 54.8,
-        "left": 63.5,
+        "top": 55,
+        "left": 56.9,
         "width": 4,
         "height": 2,
         "correct": "e"
@@ -44643,8 +44631,8 @@
         "page": 1022,
         "exercise": "2c",
         "label": "3",
-        "top": 54.8,
-        "left": 70.5,
+        "top": 53.2,
+        "left": 70.9,
         "width": 4,
         "height": 2,
         "correct": "b"
@@ -44655,8 +44643,8 @@
         "page": 1022,
         "exercise": "2c",
         "label": "4",
-        "top": 54.8,
-        "left": 77.5,
+        "top": 55.1,
+        "left": 71,
         "width": 4,
         "height": 2,
         "correct": "f"
@@ -44667,8 +44655,8 @@
         "page": 1022,
         "exercise": "2c",
         "label": "5",
-        "top": 54.8,
-        "left": 84.5,
+        "top": 53.2,
+        "left": 85,
         "width": 4,
         "height": 2,
         "correct": "c"
@@ -44679,8 +44667,8 @@
         "page": 1022,
         "exercise": "2c",
         "label": "6",
-        "top": 54.8,
-        "left": 91.5,
+        "top": 55,
+        "left": 85.4,
         "width": 4,
         "height": 2,
         "correct": "a"
@@ -81130,7 +81118,7 @@
     "1019": 1793370678789,
     "1020": 1793370896636,
     "1021": 1793370896636,
-    "1022": 1793370959746,
+    "1022": 1793370977307,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -81970,5 +81958,5 @@
       }
     }
   },
-  "updatedAt": 1793370961703
+  "updatedAt": 1793370977570
 }
