@@ -55802,8 +55802,8 @@
         "type": "fill",
         "exercise": "6",
         "label": "7",
-        "top": 43.3,
-        "left": 34.5,
+        "top": 40,
+        "left": 50.8,
         "width": 26.7,
         "height": 1.5,
         "correct": "got someone to redecorate the whole house last year",
@@ -55814,8 +55814,8 @@
         "type": "fill",
         "exercise": "6",
         "label": "8",
-        "top": 45.4,
-        "left": 29.9,
+        "top": 42,
+        "left": 45.4,
         "width": 26.7,
         "height": 1.5,
         "correct": "had someone make her wedding dress",
@@ -82551,7 +82551,7 @@
     "2024": 1793366852141,
     "2025": 1793366852142,
     "2026": 1793366950201,
-    "2027": 1793366979768,
+    "2027": 1793366984012,
     "2028": 1793366712396,
     "2029": 1793366712396,
     "2030": 1793366712396,
@@ -83314,5 +83314,5 @@
       }
     }
   },
-  "updatedAt": 1793366981497
+  "updatedAt": 1793366985285
 }
