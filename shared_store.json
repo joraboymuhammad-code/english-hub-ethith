@@ -43943,8 +43943,8 @@
         "page": 1020,
         "exercise": "1",
         "label": "4",
-        "top": 72.5,
-        "left": 40,
+        "top": 70.6,
+        "left": 38.5,
         "width": 6.8,
         "height": 2.1,
         "correct": "dog"
@@ -43955,8 +43955,8 @@
         "page": 1020,
         "exercise": "1",
         "label": "5",
-        "top": 91.7,
-        "left": 13,
+        "top": 89.9,
+        "left": 13.9,
         "width": 7,
         "height": 2.1,
         "correct": "hard"
@@ -43967,8 +43967,8 @@
         "page": 1020,
         "exercise": "1",
         "label": "6",
-        "top": 91.7,
-        "left": 41,
+        "top": 89.8,
+        "left": 38.5,
         "width": 7.2,
         "height": 2.1,
         "correct": "book"
@@ -44116,6 +44116,284 @@
         "width": 38.5,
         "height": 2.1,
         "correct": "They're great books."
+      }
+    ],
+    "1021": [
+      {
+        "id": "p1021_ex4_2",
+        "type": "select",
+        "page": 1021,
+        "exercise": "4",
+        "label": "2",
+        "top": 15.2,
+        "left": 14.1,
+        "width": 10.5,
+        "height": 2,
+        "correct": "'ve got",
+        "options": [
+          "'s got",
+          "'ve got"
+        ]
+      },
+      {
+        "id": "p1021_ex4_3",
+        "type": "select",
+        "page": 1021,
+        "exercise": "4",
+        "label": "3",
+        "top": 17.4,
+        "left": 13.6,
+        "width": 10.5,
+        "height": 2,
+        "correct": "'s got",
+        "options": [
+          "'s got",
+          "'ve got"
+        ]
+      },
+      {
+        "id": "p1021_ex4_4",
+        "type": "select",
+        "page": 1021,
+        "exercise": "4",
+        "label": "4",
+        "top": 18.8,
+        "left": 16.2,
+        "width": 10.5,
+        "height": 2,
+        "correct": "'s got",
+        "options": [
+          "'s got",
+          "'ve got"
+        ]
+      },
+      {
+        "id": "p1021_ex4_5",
+        "type": "select",
+        "page": 1021,
+        "exercise": "4",
+        "label": "5",
+        "top": 21.9,
+        "left": 13.8,
+        "width": 10.5,
+        "height": 2,
+        "correct": "'ve got",
+        "options": [
+          "'s got",
+          "'ve got"
+        ]
+      },
+      {
+        "id": "p1021_ex4_6",
+        "type": "select",
+        "page": 1021,
+        "exercise": "4",
+        "label": "6",
+        "top": 23.6,
+        "left": 15.2,
+        "width": 10.5,
+        "height": 2,
+        "correct": "'s got",
+        "options": [
+          "'s got",
+          "'ve got"
+        ]
+      },
+      {
+        "id": "p1021_ex4_7",
+        "type": "select",
+        "page": 1021,
+        "exercise": "4",
+        "label": "7",
+        "top": 25.3,
+        "left": 15.2,
+        "width": 10.5,
+        "height": 2,
+        "correct": "'ve got",
+        "options": [
+          "'s got",
+          "'ve got"
+        ]
+      },
+      {
+        "id": "p1021_ex5a_2",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "5a",
+        "label": "2",
+        "top": 73.8,
+        "left": 24,
+        "width": 22,
+        "height": 2,
+        "correct": "They've got a car."
+      },
+      {
+        "id": "p1021_ex5a_3",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "5a",
+        "label": "3",
+        "top": 75.5,
+        "left": 18.5,
+        "width": 27.5,
+        "height": 2,
+        "correct": "We've got a dog and a cat."
+      },
+      {
+        "id": "p1021_ex5a_4",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "5a",
+        "label": "4",
+        "top": 77.2,
+        "left": 18.5,
+        "width": 27.5,
+        "height": 2,
+        "correct": "She's got a phone and a tablet."
+      },
+      {
+        "id": "p1021_ex5a_5",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "5a",
+        "label": "5",
+        "top": 78.9,
+        "left": 24.5,
+        "width": 21.5,
+        "height": 2,
+        "correct": "It's got a gym."
+      },
+      {
+        "id": "p1021_ex5a_6",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "5a",
+        "label": "6",
+        "top": 80.6,
+        "left": 14.5,
+        "width": 21.5,
+        "height": 2,
+        "correct": "I've got a bike."
+      },
+      {
+        "id": "p1021_ex6_2",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "6",
+        "label": "2",
+        "top": 18,
+        "left": 63.5,
+        "width": 8,
+        "height": 2,
+        "correct": "'s got"
+      },
+      {
+        "id": "p1021_ex6_3",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "6",
+        "label": "3",
+        "top": 19.7,
+        "left": 59.5,
+        "width": 8,
+        "height": 2,
+        "correct": "'ve got"
+      },
+      {
+        "id": "p1021_ex6_4",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "6",
+        "label": "4",
+        "top": 21.4,
+        "left": 56.5,
+        "width": 8,
+        "height": 2,
+        "correct": "'ve got"
+      },
+      {
+        "id": "p1021_ex6_5",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "6",
+        "label": "5",
+        "top": 23.1,
+        "left": 69.5,
+        "width": 8,
+        "height": 2,
+        "correct": "'s got"
+      },
+      {
+        "id": "p1021_ex6_6",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "6",
+        "label": "6",
+        "top": 24.8,
+        "left": 60.5,
+        "width": 8,
+        "height": 2,
+        "correct": "'ve got"
+      },
+      {
+        "id": "p1021_ex7_2",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "7",
+        "label": "2",
+        "top": 38,
+        "left": 65.5,
+        "width": 8,
+        "height": 2,
+        "correct": "'s got"
+      },
+      {
+        "id": "p1021_ex7_3",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "7",
+        "label": "3",
+        "top": 41.1,
+        "left": 62.5,
+        "width": 8,
+        "height": 2,
+        "correct": "'ve got"
+      },
+      {
+        "id": "p1021_ex7_4",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "7",
+        "label": "4",
+        "top": 44.2,
+        "left": 74,
+        "width": 8,
+        "height": 2,
+        "correct": "'s got"
+      },
+      {
+        "id": "p1021_ex7_5",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "7",
+        "label": "5",
+        "top": 45.7,
+        "left": 64,
+        "width": 8,
+        "height": 2,
+        "correct": "'s got"
+      },
+      {
+        "id": "p1021_ex7_6",
+        "type": "fill",
+        "page": 1021,
+        "exercise": "7",
+        "label": "6",
+        "top": 48.8,
+        "left": 62,
+        "width": 8,
+        "height": 2,
+        "correct": "'ve got"
       }
     ],
     "1024": [
@@ -80560,7 +80838,8 @@
     "1017": 1793370490122,
     "1018": 1793370678788,
     "1019": 1793370678789,
-    "1020": 1793370838672,
+    "1020": 1793370849486,
+    "1021": 1793370856277,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -81400,5 +81679,5 @@
       }
     }
   },
-  "updatedAt": 1793370841887
+  "updatedAt": 1793370856911
 }
