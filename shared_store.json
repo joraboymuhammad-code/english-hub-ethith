@@ -46572,6 +46572,260 @@
         "correct": "play"
       }
     ],
+    "1032": [
+      {
+        "id": "p1032_ex1a_2",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "1a",
+        "label": "2",
+        "top": 39.3,
+        "left": 32.7,
+        "width": 12,
+        "height": 1.8,
+        "correct": "get dressed"
+      },
+      {
+        "id": "p1032_ex1a_3",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "1a",
+        "label": "3",
+        "top": 54.5,
+        "left": 12.6,
+        "width": 12,
+        "height": 1.8,
+        "correct": "check emails"
+      },
+      {
+        "id": "p1032_ex1a_4",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "1a",
+        "label": "4",
+        "top": 54.6,
+        "left": 32.7,
+        "width": 12,
+        "height": 1.8,
+        "correct": "have breakfast"
+      },
+      {
+        "id": "p1032_ex1a_5",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "1a",
+        "label": "5",
+        "top": 70,
+        "left": 12.7,
+        "width": 12,
+        "height": 1.8,
+        "correct": "start work"
+      },
+      {
+        "id": "p1032_ex1a_6",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "1a",
+        "label": "6",
+        "top": 70,
+        "left": 32.8,
+        "width": 12,
+        "height": 1.8,
+        "correct": "get home"
+      },
+      {
+        "id": "p1032_ex1a_7",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "1a",
+        "label": "7",
+        "top": 85.3,
+        "left": 12.3,
+        "width": 12,
+        "height": 1.8,
+        "correct": "have dinner"
+      },
+      {
+        "id": "p1032_ex1a_8",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "1a",
+        "label": "8",
+        "top": 85.4,
+        "left": 33.3,
+        "width": 12,
+        "height": 1.8,
+        "correct": "go to bed"
+      },
+      {
+        "id": "p1032_ex2_2",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "2",
+        "label": "2",
+        "top": 49.6,
+        "left": 63,
+        "width": 12,
+        "height": 1.8,
+        "correct": "start work"
+      },
+      {
+        "id": "p1032_ex2_3",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "2",
+        "label": "3",
+        "top": 51.2,
+        "left": 66.5,
+        "width": 12,
+        "height": 1.8,
+        "correct": "get dressed"
+      },
+      {
+        "id": "p1032_ex2_4",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "2",
+        "label": "4",
+        "top": 52.7,
+        "left": 56,
+        "width": 12,
+        "height": 1.8,
+        "correct": "have breakfast"
+      },
+      {
+        "id": "p1032_ex2_5",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "2",
+        "label": "5",
+        "top": 57.3,
+        "left": 70.5,
+        "width": 12,
+        "height": 1.8,
+        "correct": "check emails"
+      },
+      {
+        "id": "p1032_ex2_6",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "2",
+        "label": "6",
+        "top": 60.4,
+        "left": 64.5,
+        "width": 12,
+        "height": 1.8,
+        "correct": "get home"
+      },
+      {
+        "id": "p1032_ex2_7",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "2",
+        "label": "7",
+        "top": 62,
+        "left": 56,
+        "width": 12,
+        "height": 1.8,
+        "correct": "have dinner"
+      },
+      {
+        "id": "p1032_ex2_8",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "2",
+        "label": "8",
+        "top": 65,
+        "left": 60,
+        "width": 12,
+        "height": 1.8,
+        "correct": "go to bed"
+      },
+      {
+        "id": "p1032_ex3_1",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "3",
+        "label": "1",
+        "top": 74,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "Thursday"
+      },
+      {
+        "id": "p1032_ex3_2",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "3",
+        "label": "2",
+        "top": 76,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "Saturday"
+      },
+      {
+        "id": "p1032_ex3_3",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "3",
+        "label": "3",
+        "top": 78,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "Friday"
+      },
+      {
+        "id": "p1032_ex3_4",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "3",
+        "label": "4",
+        "top": 80,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "Monday"
+      },
+      {
+        "id": "p1032_ex3_5",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "3",
+        "label": "5",
+        "top": 82,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "Tuesday"
+      },
+      {
+        "id": "p1032_ex3_6",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "3",
+        "label": "6",
+        "top": 84,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "Wednesday"
+      },
+      {
+        "id": "p1032_ex3_7",
+        "type": "fill",
+        "page": 1032,
+        "exercise": "3",
+        "label": "7",
+        "top": 86,
+        "left": 65,
+        "width": 12,
+        "height": 1.8,
+        "correct": "Sunday"
+      }
+    ],
     "1037": [
       {
         "id": "p1037_ex3_across_2",
@@ -82984,6 +83238,7 @@
     "1027": 1793371528067,
     "1028": 1793371683456,
     "1029": 1793371683456,
+    "1032": 1793371830100,
     "1037": 1793120102340,
     "1042": 1793370793069,
     "1043": 1793370793070,
@@ -83823,5 +84078,5 @@
       }
     }
   },
-  "updatedAt": 1793371815374
+  "updatedAt": 1793371831880
 }
