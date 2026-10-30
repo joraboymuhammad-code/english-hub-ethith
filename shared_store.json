@@ -47994,25 +47994,13 @@
         "correct": "Can you and your sister sing? or Can you and your sister sing"
       },
       {
-        "id": "p1054_ex1b_1",
-        "type": "fill",
-        "page": 1054,
-        "exercise": "1b",
-        "label": "1",
-        "top": 47,
-        "left": 14,
-        "width": 10,
-        "height": 1.8,
-        "correct": "I can"
-      },
-      {
         "id": "p1054_ex1b_2",
         "type": "fill",
         "page": 1054,
         "exercise": "1b",
         "label": "2",
-        "top": 49.5,
-        "left": 14,
+        "top": 47.3,
+        "left": 15.6,
         "width": 10,
         "height": 1.8,
         "correct": "she can"
@@ -48023,8 +48011,8 @@
         "page": 1054,
         "exercise": "1b",
         "label": "3",
-        "top": 52,
-        "left": 14,
+        "top": 49,
+        "left": 15.5,
         "width": 10,
         "height": 1.8,
         "correct": "he can't"
@@ -48035,8 +48023,8 @@
         "page": 1054,
         "exercise": "1b",
         "label": "4",
-        "top": 54.5,
-        "left": 14,
+        "top": 51,
+        "left": 15.7,
         "width": 10,
         "height": 1.8,
         "correct": "they can't"
@@ -48047,8 +48035,8 @@
         "page": 1054,
         "exercise": "1b",
         "label": "5",
-        "top": 57,
-        "left": 14,
+        "top": 52.7,
+        "left": 15.9,
         "width": 10,
         "height": 1.8,
         "correct": "they can"
@@ -48059,23 +48047,11 @@
         "page": 1054,
         "exercise": "1b",
         "label": "6",
-        "top": 59.5,
-        "left": 14,
+        "top": 54.6,
+        "left": 15.9,
         "width": 10,
         "height": 1.8,
         "correct": "we can't"
-      },
-      {
-        "id": "p1054_ex3_1",
-        "type": "fill",
-        "page": 1054,
-        "exercise": "3",
-        "label": "1",
-        "top": 17.8,
-        "left": 64.1,
-        "width": 15,
-        "height": 1.8,
-        "correct": "can you speak"
       },
       {
         "id": "p1054_ex3_2",
@@ -48131,8 +48107,8 @@
         "page": 1054,
         "exercise": "3",
         "label": "6",
-        "top": 38,
-        "left": 63,
+        "top": 33.7,
+        "left": 64.6,
         "width": 15,
         "height": 1.8,
         "correct": "can you teach"
@@ -48143,8 +48119,8 @@
         "page": 1054,
         "exercise": "3",
         "label": "7",
-        "top": 41,
-        "left": 63,
+        "top": 36.8,
+        "left": 66.4,
         "width": 10,
         "height": 1.8,
         "correct": "I can"
@@ -48155,8 +48131,8 @@
         "page": 1054,
         "exercise": "3",
         "label": "8",
-        "top": 44,
-        "left": 63,
+        "top": 41.1,
+        "left": 64.7,
         "width": 15,
         "height": 1.8,
         "correct": "Can you use"
@@ -48167,8 +48143,8 @@
         "page": 1054,
         "exercise": "3",
         "label": "9",
-        "top": 47,
-        "left": 63,
+        "top": 42.9,
+        "left": 66.1,
         "width": 10,
         "height": 1.8,
         "correct": "I can"
@@ -82651,7 +82627,7 @@
     "1043": 1793370793070,
     "1052": 1793125351106,
     "1053": 1793125381190,
-    "1054": 1793371737665,
+    "1054": 1793371757859,
     "2004": 1793366825091,
     "2005": 1793366825091,
     "2006": 1793366825091,
@@ -83484,5 +83460,5 @@
       }
     }
   },
-  "updatedAt": 1793371738800
+  "updatedAt": 1793371760057
 }
