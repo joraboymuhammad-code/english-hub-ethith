@@ -95332,6 +95332,13 @@
         "ownerId": "t_urolov_azizbek",
         "parentId": null,
         "createdAt": 1793208683543
+      },
+      {
+        "id": "f_root_admin_official_teacher",
+        "name": "Ustoz (Shaxsiy Papka)",
+        "ownerId": "admin_official_teacher",
+        "parentId": null,
+        "createdAt": 1793379976562
       }
     ],
     "tests": [
@@ -95575,5 +95582,5 @@
       }
     }
   },
-  "updatedAt": 1793379959104
+  "updatedAt": 1793379977151
 }
