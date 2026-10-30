@@ -51558,6 +51558,260 @@
         "correct": false
       }
     ],
+    "1056": [
+      {
+        "id": "p1056_ex1_2",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "1",
+        "label": "2",
+        "top": 31.6,
+        "left": 33.8,
+        "width": 16,
+        "height": 1.8,
+        "correct": "go to the cinema"
+      },
+      {
+        "id": "p1056_ex1_3",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "1",
+        "label": "3",
+        "top": 33.7,
+        "left": 34.8,
+        "width": 10,
+        "height": 1.8,
+        "correct": "travel"
+      },
+      {
+        "id": "p1056_ex1_4",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "1",
+        "label": "4",
+        "top": 36.6,
+        "left": 20,
+        "width": 10,
+        "height": 1.8,
+        "correct": "cook"
+      },
+      {
+        "id": "p1056_ex1_5",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "1",
+        "label": "5",
+        "top": 38.3,
+        "left": 20,
+        "width": 18,
+        "height": 1.8,
+        "correct": "go out with friends"
+      },
+      {
+        "id": "p1056_ex1_6",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "1",
+        "label": "6",
+        "top": 40,
+        "left": 20,
+        "width": 12,
+        "height": 1.8,
+        "correct": "play sport"
+      },
+      {
+        "id": "p1056_ex1_7",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "1",
+        "label": "7",
+        "top": 41.7,
+        "left": 20,
+        "width": 8,
+        "height": 1.8,
+        "correct": "read"
+      },
+      {
+        "id": "p1056_ex2_1",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "2",
+        "label": "1",
+        "top": 55,
+        "left": 10,
+        "width": 18,
+        "height": 1.8,
+        "correct": "work in the garden"
+      },
+      {
+        "id": "p1056_ex2_2",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "2",
+        "label": "2",
+        "top": 55,
+        "left": 30,
+        "width": 16,
+        "height": 1.8,
+        "correct": "play video games"
+      },
+      {
+        "id": "p1056_ex2_3",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "2",
+        "label": "3",
+        "top": 70,
+        "left": 10,
+        "width": 15,
+        "height": 1.8,
+        "correct": "go on Facebook"
+      },
+      {
+        "id": "p1056_ex2_4",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "2",
+        "label": "4",
+        "top": 70,
+        "left": 30,
+        "width": 12,
+        "height": 1.8,
+        "correct": "watch TV"
+      },
+      {
+        "id": "p1056_ex2_5",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "2",
+        "label": "5",
+        "top": 85,
+        "left": 10,
+        "width": 14,
+        "height": 1.8,
+        "correct": "shop online"
+      },
+      {
+        "id": "p1056_ex2_6",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "2",
+        "label": "6",
+        "top": 85,
+        "left": 30,
+        "width": 15,
+        "height": 1.8,
+        "correct": "listen to music"
+      },
+      {
+        "id": "p1056_ex2_7",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "2",
+        "label": "7",
+        "top": 92,
+        "left": 20,
+        "width": 14,
+        "height": 1.8,
+        "correct": "take photos"
+      },
+      {
+        "id": "p1056_ex4a_1",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "4a",
+        "label": "1",
+        "top": 62.7,
+        "left": 55,
+        "width": 14,
+        "height": 1.8,
+        "correct": "like playing"
+      },
+      {
+        "id": "p1056_ex4a_2",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "4a",
+        "label": "2",
+        "top": 62.7,
+        "left": 74.8,
+        "width": 14,
+        "height": 1.8,
+        "correct": "likes taking"
+      },
+      {
+        "id": "p1056_ex4a_3",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "4a",
+        "label": "3",
+        "top": 75,
+        "left": 55,
+        "width": 14,
+        "height": 1.8,
+        "correct": "like riding"
+      },
+      {
+        "id": "p1056_ex4a_4",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "4a",
+        "label": "4",
+        "top": 75,
+        "left": 74.8,
+        "width": 14,
+        "height": 1.8,
+        "correct": "likes listening"
+      },
+      {
+        "id": "p1056_ex4a_5",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "4a",
+        "label": "5",
+        "top": 88,
+        "left": 55,
+        "width": 14,
+        "height": 1.8,
+        "correct": "like going"
+      },
+      {
+        "id": "p1056_ex4a_6",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "4a",
+        "label": "6",
+        "top": 88,
+        "left": 74.8,
+        "width": 14,
+        "height": 1.8,
+        "correct": "likes watching"
+      },
+      {
+        "id": "p1056_ex4a_7",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "4a",
+        "label": "7",
+        "top": 95,
+        "left": 55,
+        "width": 14,
+        "height": 1.8,
+        "correct": "likes shopping"
+      },
+      {
+        "id": "p1056_ex4a_8",
+        "type": "fill",
+        "page": 1056,
+        "exercise": "4a",
+        "label": "8",
+        "top": 95,
+        "left": 74.8,
+        "width": 14,
+        "height": 1.8,
+        "correct": "like using"
+      }
+    ],
     "1058": [
       {
         "id": "p1058_ex1a_2",
@@ -86304,6 +86558,7 @@
     "1053": 1793125381190,
     "1054": 1793371802105,
     "1055": 1793371802105,
+    "1056": 1793374935281,
     "1058": 1793372411941,
     "1059": 1793372411941,
     "2004": 1793374693102,
@@ -87138,5 +87393,5 @@
       }
     }
   },
-  "updatedAt": 1793374896766
+  "updatedAt": 1793374937574
 }
