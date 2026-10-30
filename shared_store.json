@@ -57813,6 +57813,176 @@
         "correct": "fell in the shower"
       }
     ],
+    "1072": [
+      {
+        "id": "p1072_ex1_2",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "1",
+        "label": "2",
+        "top": 22,
+        "left": 16,
+        "width": 35,
+        "height": 2.2,
+        "correct": "We saw a film three days ago."
+      },
+      {
+        "id": "p1072_ex1_3",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "1",
+        "label": "3",
+        "top": 26,
+        "left": 16,
+        "width": 35,
+        "height": 2.2,
+        "correct": "You got a text message five minutes ago."
+      },
+      {
+        "id": "p1072_ex1_4",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "1",
+        "label": "4",
+        "top": 33.7,
+        "left": 12.4,
+        "width": 35,
+        "height": 2.2,
+        "correct": "I wrote an email two hours ago."
+      },
+      {
+        "id": "p1072_ex1_5",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "1",
+        "label": "5",
+        "top": 37.4,
+        "left": 11.6,
+        "width": 35,
+        "height": 2.2,
+        "correct": "Susie sold her car six months ago."
+      },
+      {
+        "id": "p1072_ex1_6",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "1",
+        "label": "6",
+        "top": 40.9,
+        "left": 12.3,
+        "width": 35,
+        "height": 2.2,
+        "correct": "They went on holiday a year ago."
+      },
+      {
+        "id": "p1072_ex2a_2",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "2a",
+        "label": "2",
+        "top": 50,
+        "left": 20,
+        "width": 18,
+        "height": 2.1,
+        "correct": "four hours ago"
+      },
+      {
+        "id": "p1072_ex2a_3",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "2a",
+        "label": "3",
+        "top": 53,
+        "left": 20,
+        "width": 18,
+        "height": 2.1,
+        "correct": "two days ago"
+      },
+      {
+        "id": "p1072_ex2a_4",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "2a",
+        "label": "4",
+        "top": 56,
+        "left": 20,
+        "width": 18,
+        "height": 2.1,
+        "correct": "a week ago"
+      },
+      {
+        "id": "p1072_ex2a_5",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "2a",
+        "label": "5",
+        "top": 59,
+        "left": 20,
+        "width": 18,
+        "height": 2.1,
+        "correct": "three months ago"
+      },
+      {
+        "id": "p1072_ex2a_6",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "2a",
+        "label": "6",
+        "top": 62,
+        "left": 20,
+        "width": 18,
+        "height": 2.1,
+        "correct": "a year ago"
+      },
+      {
+        "id": "p1072_ex3_1a",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "3",
+        "label": "1a",
+        "top": 72,
+        "left": 20,
+        "width": 30,
+        "height": 2.1,
+        "correct": "When did you last leave a tip?"
+      },
+      {
+        "id": "p1072_ex3_1b",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "3",
+        "label": "1b",
+        "top": 75,
+        "left": 20,
+        "width": 25,
+        "height": 2.1,
+        "correct": "How much did you leave?"
+      },
+      {
+        "id": "p1072_ex3_2a",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "3",
+        "label": "2a",
+        "top": 79,
+        "left": 20,
+        "width": 30,
+        "height": 2.1,
+        "correct": "When did you last get a present?"
+      },
+      {
+        "id": "p1072_ex3_2b",
+        "type": "fill",
+        "page": 1072,
+        "exercise": "3",
+        "label": "2b",
+        "top": 82,
+        "left": 20,
+        "width": 25,
+        "height": 2.1,
+        "correct": "Who did you get it from?"
+      }
+    ],
     "2004": [
       {
         "id": "p2004_ex2_2",
@@ -92325,6 +92495,7 @@
     "1069": 1793378325268,
     "1070": 1793378610580,
     "1071": 1793378610581,
+    "1072": 1793378628763,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -93157,5 +93328,5 @@
       }
     }
   },
-  "updatedAt": 1793378617224
+  "updatedAt": 1793378629174
 }
