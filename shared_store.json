@@ -25746,42 +25746,6 @@
       "createdAt": 1793380453528,
       "coins": 1000,
       "gifts": []
-    },
-    {
-      "id": "std_qwdsadsa_159_dsadsad",
-      "name": "qwdsadsa dsadsad",
-      "role": "student",
-      "login": "qwdsadsa_159_dsadsad",
-      "password": "qwdsadsa159dsa",
-      "phone": "asdasd",
-      "parentPhone": "asdasd",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null
-    },
-    {
-      "id": "std_asdasd_203_asdasdasd",
-      "name": "asdasd asdasdasd",
-      "role": "student",
-      "login": "asdasd_203_asdasdasd",
-      "password": "asdasd203asd",
-      "phone": "+998 90 199 10 91",
-      "parentPhone": "+998 90 199 10 91",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null
-    },
-    {
-      "id": "std_mix_943_selix",
-      "name": "Mix Selix",
-      "role": "student",
-      "login": "mix_943_selix",
-      "password": "mix943sel",
-      "phone": "3891738213",
-      "parentPhone": "3891738213",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -102899,5 +102863,5 @@
       }
     }
   },
-  "updatedAt": 1793384076475
+  "updatedAt": 1793384145088
 }
