@@ -514,10 +514,18 @@
       },
       {
         "code": "7.4",
-        "title": "7.4 Simple requests",
+        "title": "7.4 Speaking and writing",
         "desc": "Simple requests & social media post",
         "pages": [
-          1058,
+          1058
+        ],
+        "active": true
+      },
+      {
+        "code": "7.5",
+        "title": "7.5 Reading for pleasure",
+        "desc": "Last Chance short story",
+        "pages": [
           1059
         ],
         "active": true
@@ -42494,273 +42502,735 @@
     }
   ],
   "1058": [
-    {
-      "id": "p1058_ex1a_2",
-      "type": "fill",
-      "page": 1058,
-      "exercise": "1a",
-      "label": "2",
-      "top": 25.1,
-      "left": 12.5,
-      "width": 8,
-      "height": 1.8,
-      "correct": "Can I"
-    },
-    {
-      "id": "p1058_ex1a_3",
-      "type": "fill",
-      "page": 1058,
-      "exercise": "1a",
-      "label": "3",
-      "top": 26.8,
-      "left": 12.5,
-      "width": 9,
-      "height": 1.8,
-      "correct": "Can you"
-    },
-    {
-      "id": "p1058_ex1a_4",
-      "type": "fill",
-      "page": 1058,
-      "exercise": "1a",
-      "label": "4",
-      "top": 28.5,
-      "left": 12.5,
-      "width": 8,
-      "height": 1.8,
-      "correct": "Can I"
-    },
-    {
-      "id": "p1058_ex1a_5",
-      "type": "fill",
-      "page": 1058,
-      "exercise": "1a",
-      "label": "5",
-      "top": 30.2,
-      "left": 12.5,
-      "width": 9,
-      "height": 1.8,
-      "correct": "Can you"
-    },
-    {
-      "id": "p1058_ex1a_6",
-      "type": "fill",
-      "page": 1058,
-      "exercise": "1a",
-      "label": "6",
-      "top": 31.9,
-      "left": 12.5,
-      "width": 9,
-      "height": 1.8,
-      "correct": "Can you"
-    },
-    {
-      "id": "p1058_ex1c_1",
-      "type": "match",
-      "page": 1058,
-      "exercise": "1c",
-      "label": "1",
-      "top": 43.3,
-      "left": 23,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "c"
-    },
-    {
-      "id": "p1058_ex1c_2",
-      "type": "match",
-      "page": 1058,
-      "exercise": "1c",
-      "label": "2",
-      "top": 45,
-      "left": 17,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "b"
-    },
-    {
-      "id": "p1058_ex1c_3",
-      "type": "match",
-      "page": 1058,
-      "exercise": "1c",
-      "label": "3",
-      "top": 46.7,
-      "left": 17,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "f"
-    },
-    {
-      "id": "p1058_ex1c_4",
-      "type": "match",
-      "page": 1058,
-      "exercise": "1c",
-      "label": "4",
-      "top": 48.4,
-      "left": 18.8,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "a"
-    },
-    {
-      "id": "p1058_ex1c_5",
-      "type": "match",
-      "page": 1058,
-      "exercise": "1c",
-      "label": "5",
-      "top": 50.1,
-      "left": 15.2,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "d"
-    },
-    {
-      "id": "p1058_ex1c_6",
-      "type": "match",
-      "page": 1058,
-      "exercise": "1c",
-      "label": "6",
-      "top": 51.8,
-      "left": 15.2,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "e"
-    },
-    {
-      "id": "p1058_ex3_1",
-      "type": "match",
-      "page": 1058,
-      "exercise": "3",
-      "label": "1",
-      "top": 58,
-      "left": 84,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "b"
-    },
-    {
-      "id": "p1058_ex3_2",
-      "type": "match",
-      "page": 1058,
-      "exercise": "3",
-      "label": "2",
-      "top": 59.4,
-      "left": 72.8,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "e"
-    },
-    {
-      "id": "p1058_ex3_3",
-      "type": "match",
-      "page": 1058,
-      "exercise": "3",
-      "label": "3",
-      "top": 60.9,
-      "left": 67.8,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "a"
-    },
-    {
-      "id": "p1058_ex3_4",
-      "type": "match",
-      "page": 1058,
-      "exercise": "3",
-      "label": "4",
-      "top": 62.6,
-      "left": 72.2,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "c"
-    },
-    {
-      "id": "p1058_ex3_5",
-      "type": "match",
-      "page": 1058,
-      "exercise": "3",
-      "label": "5",
-      "top": 64,
-      "left": 65,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "f"
-    },
-    {
-      "id": "p1058_ex3_6",
-      "type": "match",
-      "page": 1058,
-      "exercise": "3",
-      "label": "6",
-      "top": 65.5,
-      "left": 65,
-      "width": 3.5,
-      "height": 1.8,
-      "correct": "c"
-    }
-  ],
+  {
+    "id": "p1058_ex1a_2_cani",
+    "type": "choose",
+    "exercise": "1a",
+    "group": "p1058_1a_2",
+    "label": "2a",
+    "top": 24.1,
+    "left": 12.8,
+    "width": 3.5,
+    "height": 1.5,
+    "text": "Can I",
+    "correct": true,
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1a_2_canyou",
+    "type": "choose",
+    "exercise": "1a",
+    "group": "p1058_1a_2",
+    "label": "2b",
+    "top": 24.1,
+    "left": 17.6,
+    "width": 5.3,
+    "height": 1.5,
+    "text": "Can you",
+    "correct": false,
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1a_3_cani",
+    "type": "choose",
+    "exercise": "1a",
+    "group": "p1058_1a_3",
+    "label": "3a",
+    "top": 25.8,
+    "left": 20.6,
+    "width": 3.5,
+    "height": 1.5,
+    "text": "Can I",
+    "correct": false,
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1a_3_canyou",
+    "type": "choose",
+    "exercise": "1a",
+    "group": "p1058_1a_3",
+    "label": "3b",
+    "top": 25.8,
+    "left": 25.5,
+    "width": 5.3,
+    "height": 1.5,
+    "text": "Can you",
+    "correct": true,
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1a_4_cani",
+    "type": "choose",
+    "exercise": "1a",
+    "group": "p1058_1a_4",
+    "label": "4a",
+    "top": 27.5,
+    "left": 12.8,
+    "width": 3.5,
+    "height": 1.5,
+    "text": "Can I",
+    "correct": true,
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1a_4_canyou",
+    "type": "choose",
+    "exercise": "1a",
+    "group": "p1058_1a_4",
+    "label": "4b",
+    "top": 27.5,
+    "left": 17.6,
+    "width": 5.3,
+    "height": 1.5,
+    "text": "Can you",
+    "correct": false,
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1a_5_cani",
+    "type": "choose",
+    "exercise": "1a",
+    "group": "p1058_1a_5",
+    "label": "5a",
+    "top": 29.3,
+    "left": 20.6,
+    "width": 3.5,
+    "height": 1.5,
+    "text": "Can I",
+    "correct": false,
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1a_5_canyou",
+    "type": "choose",
+    "exercise": "1a",
+    "group": "p1058_1a_5",
+    "label": "5b",
+    "top": 29.3,
+    "left": 25.5,
+    "width": 5.3,
+    "height": 1.5,
+    "text": "Can you",
+    "correct": true,
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1a_6_cani",
+    "type": "choose",
+    "exercise": "1a",
+    "group": "p1058_1a_6",
+    "label": "6a",
+    "top": 31,
+    "left": 20.6,
+    "width": 3.5,
+    "height": 1.5,
+    "text": "Can I",
+    "correct": false,
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1a_6_canyou",
+    "type": "choose",
+    "exercise": "1a",
+    "group": "p1058_1a_6",
+    "label": "6b",
+    "top": 31,
+    "left": 25.5,
+    "width": 5.3,
+    "height": 1.5,
+    "text": "Can you",
+    "correct": true,
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1b_b",
+    "type": "fill",
+    "exercise": "1b",
+    "label": "b",
+    "top": 42.4,
+    "left": 23.3,
+    "width": 7.4,
+    "height": 1.8,
+    "correct": [
+      "you are",
+      "you are."
+    ],
+    "acceptedAnswers": [
+      "you are",
+      "you are."
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1b_c",
+    "type": "fill",
+    "exercise": "1b",
+    "label": "c",
+    "top": 44.1,
+    "left": 17.4,
+    "width": 7.3,
+    "height": 1.8,
+    "correct": [
+      "it's",
+      "it is"
+    ],
+    "acceptedAnswers": [
+      "it's",
+      "it is"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1b_d",
+    "type": "fill",
+    "exercise": "1b",
+    "label": "d",
+    "top": 45.8,
+    "left": 17.4,
+    "width": 7.3,
+    "height": 1.8,
+    "correct": [
+      "I'm",
+      "i'm",
+      "I am"
+    ],
+    "acceptedAnswers": [
+      "I'm",
+      "i'm",
+      "I am"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1b_e",
+    "type": "fill",
+    "exercise": "1b",
+    "label": "e",
+    "top": 47.5,
+    "left": 19.1,
+    "width": 6.6,
+    "height": 1.8,
+    "correct": [
+      "that way"
+    ],
+    "acceptedAnswers": [
+      "that way"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1b_f",
+    "type": "fill",
+    "exercise": "1b",
+    "label": "f",
+    "top": 49.2,
+    "left": 15.6,
+    "width": 7.4,
+    "height": 1.8,
+    "correct": [
+      "of course"
+    ],
+    "acceptedAnswers": [
+      "of course"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1c_1",
+    "type": "fill",
+    "exercise": "1c",
+    "label": "1",
+    "top": 55,
+    "left": 13,
+    "width": 4,
+    "height": 1.8,
+    "correct": [
+      "c"
+    ],
+    "acceptedAnswers": [
+      "c"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1c_2",
+    "type": "fill",
+    "exercise": "1c",
+    "label": "2",
+    "top": 55,
+    "left": 18,
+    "width": 4,
+    "height": 1.8,
+    "correct": [
+      "b"
+    ],
+    "acceptedAnswers": [
+      "b"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1c_3",
+    "type": "fill",
+    "exercise": "1c",
+    "label": "3",
+    "top": 55,
+    "left": 23,
+    "width": 4,
+    "height": 1.8,
+    "correct": [
+      "d",
+      "f"
+    ],
+    "acceptedAnswers": [
+      "d",
+      "f"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1c_4",
+    "type": "fill",
+    "exercise": "1c",
+    "label": "4",
+    "top": 55,
+    "left": 28,
+    "width": 4,
+    "height": 1.8,
+    "correct": [
+      "a"
+    ],
+    "acceptedAnswers": [
+      "a"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1c_5",
+    "type": "fill",
+    "exercise": "1c",
+    "label": "5",
+    "top": 55,
+    "left": 33,
+    "width": 4,
+    "height": 1.8,
+    "correct": [
+      "d",
+      "e"
+    ],
+    "acceptedAnswers": [
+      "d",
+      "e"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex1c_6",
+    "type": "fill",
+    "exercise": "1c",
+    "label": "6",
+    "top": 55,
+    "left": 38,
+    "width": 4,
+    "height": 1.8,
+    "correct": [
+      "e",
+      "f"
+    ],
+    "acceptedAnswers": [
+      "e",
+      "f"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex2_b",
+    "type": "fill",
+    "exercise": "2",
+    "label": "b",
+    "top": 29.1,
+    "left": 57,
+    "width": 33,
+    "height": 1.8,
+    "correct": [
+      "I can speak English well.",
+      "I can speak English well"
+    ],
+    "acceptedAnswers": [
+      "I can speak English well.",
+      "I can speak English well"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex2_c",
+    "type": "fill",
+    "exercise": "2",
+    "label": "c",
+    "top": 32.7,
+    "left": 57,
+    "width": 33,
+    "height": 1.8,
+    "correct": [
+      "She helps me take amazing photos.",
+      "She helps me take amazing photos"
+    ],
+    "acceptedAnswers": [
+      "She helps me take amazing photos.",
+      "She helps me take amazing photos"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex2_d",
+    "type": "fill",
+    "exercise": "2",
+    "label": "d",
+    "top": 36.3,
+    "left": 57,
+    "width": 33,
+    "height": 1.8,
+    "correct": [
+      "I often paint the flowers in my garden.",
+      "I often paint the flowers in my garden"
+    ],
+    "acceptedAnswers": [
+      "I often paint the flowers in my garden.",
+      "I often paint the flowers in my garden"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex2_e",
+    "type": "fill",
+    "exercise": "2",
+    "label": "e",
+    "top": 39.9,
+    "left": 57,
+    "width": 33,
+    "height": 1.8,
+    "correct": [
+      "We always have a lot of guests from abroad.",
+      "We always have a lot of guests from abroad"
+    ],
+    "acceptedAnswers": [
+      "We always have a lot of guests from abroad.",
+      "We always have a lot of guests from abroad"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex2_f",
+    "type": "fill",
+    "exercise": "2",
+    "label": "f",
+    "top": 43.5,
+    "left": 57,
+    "width": 33,
+    "height": 1.8,
+    "correct": [
+      "I paint badly.",
+      "I paint badly"
+    ],
+    "acceptedAnswers": [
+      "I paint badly.",
+      "I paint badly"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex3_2",
+    "type": "fill",
+    "exercise": "3",
+    "label": "2",
+    "top": 56.4,
+    "left": 69.4,
+    "width": 4.5,
+    "height": 1.8,
+    "correct": [
+      "e"
+    ],
+    "acceptedAnswers": [
+      "e"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex3_3",
+    "type": "fill",
+    "exercise": "3",
+    "label": "3",
+    "top": 58.1,
+    "left": 63.3,
+    "width": 4.5,
+    "height": 1.8,
+    "correct": [
+      "a"
+    ],
+    "acceptedAnswers": [
+      "a"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex3_4",
+    "type": "fill",
+    "exercise": "3",
+    "label": "4",
+    "top": 61.4,
+    "left": 56.9,
+    "width": 4.5,
+    "height": 1.8,
+    "correct": [
+      "c"
+    ],
+    "acceptedAnswers": [
+      "c"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex3_5",
+    "type": "fill",
+    "exercise": "3",
+    "label": "5",
+    "top": 61.4,
+    "left": 68.3,
+    "width": 4.5,
+    "height": 1.8,
+    "correct": [
+      "f"
+    ],
+    "acceptedAnswers": [
+      "f"
+    ],
+    "page": 1058
+  },
+  {
+    "id": "p1058_ex3_6",
+    "type": "fill",
+    "exercise": "3",
+    "label": "6",
+    "top": 63.2,
+    "left": 65.2,
+    "width": 4.5,
+    "height": 1.8,
+    "correct": [
+      "d"
+    ],
+    "acceptedAnswers": [
+      "d"
+    ],
+    "page": 1058
+  }
+],
   "1059": [
-    {
-      "id": "p1059_ex1a_1",
-      "type": "fill",
-      "page": 1059,
-      "exercise": "1a",
-      "label": "1",
-      "top": 24.7,
-      "left": 12,
-      "width": 25,
-      "height": 1.8,
-      "correct": "He's a cameraman. or He is a cameraman. or He's a cameraman or cameraman"
-    },
-    {
-      "id": "p1059_ex1a_2",
-      "type": "fill",
-      "page": 1059,
-      "exercise": "1a",
-      "label": "2",
-      "top": 26.4,
-      "left": 12,
-      "width": 18,
-      "height": 1.8,
-      "correct": "No, he isn't. or No, he isn't"
-    },
-    {
-      "id": "p1059_ex1a_3",
-      "type": "fill",
-      "page": 1059,
-      "exercise": "1a",
-      "label": "3",
-      "top": 28.1,
-      "left": 12,
-      "width": 22,
-      "height": 1.8,
-      "correct": "To film a volcano. or To film a volcano"
-    },
-    {
-      "id": "p1059_ex1b",
-      "type": "fill",
-      "page": 1059,
-      "exercise": "1b",
-      "label": "words",
-      "top": 35,
-      "left": 12,
-      "width": 32,
-      "height": 3.5,
-      "correct": "camera, fire, rock, smoke or camera, fire, rock, and smoke"
-    },
-    {
-      "id": "p1059_ex2",
-      "type": "fill",
-      "page": 1059,
-      "exercise": "2",
-      "label": "reason",
-      "top": 48,
-      "left": 12,
-      "width": 34,
-      "height": 3.5,
-      "correct": "Because there's a woman with a broken leg. or Because there's a woman with a broken leg"
-    }
-  ],
+  {
+    "id": "p1059_ex1a_1",
+    "type": "fill",
+    "exercise": "1a",
+    "label": "1",
+    "top": 24,
+    "left": 24.5,
+    "width": 22,
+    "height": 1.8,
+    "correct": [
+      "He's a cameraman.",
+      "He is a cameraman.",
+      "He's a cameraman",
+      "He is a cameraman",
+      "cameraman"
+    ],
+    "acceptedAnswers": [
+      "He's a cameraman.",
+      "He is a cameraman.",
+      "He's a cameraman",
+      "He is a cameraman",
+      "cameraman"
+    ],
+    "page": 1059
+  },
+  {
+    "id": "p1059_ex1a_2",
+    "type": "fill",
+    "exercise": "1a",
+    "label": "2",
+    "top": 25.7,
+    "left": 36.5,
+    "width": 10,
+    "height": 1.8,
+    "correct": [
+      "No, he isn't.",
+      "No, he isn't",
+      "No",
+      "No, he is not.",
+      "No, he is not"
+    ],
+    "acceptedAnswers": [
+      "No, he isn't.",
+      "No, he isn't",
+      "No",
+      "No, he is not.",
+      "No, he is not"
+    ],
+    "page": 1059
+  },
+  {
+    "id": "p1059_ex1a_3",
+    "type": "fill",
+    "exercise": "1a",
+    "label": "3",
+    "top": 27.4,
+    "left": 31.5,
+    "width": 15,
+    "height": 1.8,
+    "correct": [
+      "To film a volcano.",
+      "To film a volcano",
+      "film a volcano",
+      "To film the volcano"
+    ],
+    "acceptedAnswers": [
+      "To film a volcano.",
+      "To film a volcano",
+      "film a volcano",
+      "To film the volcano"
+    ],
+    "page": 1059
+  },
+  {
+    "id": "p1059_ex1b_camera",
+    "type": "choose",
+    "exercise": "1b",
+    "label": "camera",
+    "top": 40.7,
+    "left": 9.6,
+    "width": 5,
+    "height": 1.8,
+    "text": "camera",
+    "correct": true,
+    "page": 1059
+  },
+  {
+    "id": "p1059_ex1b_fire",
+    "type": "choose",
+    "exercise": "1b",
+    "label": "fire",
+    "top": 40.7,
+    "left": 15.6,
+    "width": 3,
+    "height": 1.8,
+    "text": "fire",
+    "correct": true,
+    "page": 1059
+  },
+  {
+    "id": "p1059_ex1b_laptop",
+    "type": "choose",
+    "exercise": "1b",
+    "label": "laptop",
+    "top": 40.7,
+    "left": 19.1,
+    "width": 4.5,
+    "height": 1.8,
+    "text": "laptop",
+    "correct": false,
+    "page": 1059
+  },
+  {
+    "id": "p1059_ex1b_plane",
+    "type": "choose",
+    "exercise": "1b",
+    "label": "plane",
+    "top": 40.7,
+    "left": 24.5,
+    "width": 4,
+    "height": 1.8,
+    "text": "plane",
+    "correct": false,
+    "page": 1059
+  },
+  {
+    "id": "p1059_ex1b_rock",
+    "type": "choose",
+    "exercise": "1b",
+    "label": "rock",
+    "top": 40.7,
+    "left": 29.3,
+    "width": 3.5,
+    "height": 1.8,
+    "text": "rock",
+    "correct": true,
+    "page": 1059
+  },
+  {
+    "id": "p1059_ex1b_smoke",
+    "type": "choose",
+    "exercise": "1b",
+    "label": "smoke",
+    "top": 40.7,
+    "left": 33.4,
+    "width": 4.5,
+    "height": 1.8,
+    "text": "smoke",
+    "correct": true,
+    "page": 1059
+  },
+  {
+    "id": "p1059_ex2",
+    "type": "fill",
+    "exercise": "2",
+    "label": "2",
+    "top": 48,
+    "left": 8.9,
+    "width": 38,
+    "height": 2.2,
+    "correct": [
+      "He hears a woman calling for help",
+      "He hears a woman",
+      "To help a woman",
+      "Because there's a woman with a broken leg",
+      "Because there is a woman with a broken leg",
+      "He wants to help Jenny",
+      "to help Jenny",
+      "to help her"
+    ],
+    "acceptedAnswers": [
+      "He hears a woman calling for help",
+      "He hears a woman",
+      "To help a woman",
+      "Because there's a woman with a broken leg",
+      "Because there is a woman with a broken leg",
+      "He wants to help Jenny",
+      "to help Jenny",
+      "to help her"
+    ],
+    "page": 1059
+  },
+  {
+    "id": "p1059_ex3",
+    "type": "fill",
+    "exercise": "3",
+    "label": "3",
+    "top": 53,
+    "left": 8.9,
+    "width": 38,
+    "height": 3.5,
+    "correct": [
+      "He helps her down the volcano",
+      "He helps Jenny",
+      "Jenny",
+      "He helps her"
+    ],
+    "acceptedAnswers": [
+      "He helps her down the volcano",
+      "He helps Jenny",
+      "Jenny",
+      "He helps her"
+    ],
+    "page": 1059
+  }
+],
   "1060": [
     {
       "id": "p1060_ex1_2_was",
@@ -164466,6 +164936,11 @@
           '<button id="ethWbToggleEditorBottom" style="background:rgba(56,189,248,0.15);border:1.5px solid #38bdf8;color:#38bdf8;padding:8px 16px;border-radius:10px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
             (isEditor ? '✖ Tahrirlashni Yopish' : '✏️ Katakchalarni Ko‘chirish / Chizish') +
           '</button>' +
+          (isEditor ? (
+            '<button id="ethWbQuickPrevPageBtn" style="background:rgba(56,189,248,0.15);border:1px solid #38bdf8;color:#38bdf8;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;" title="Belgilangan katakchalarni oldingi sahifaga o\'tkazish">⬅ Oldingi sahifaga</button>' +
+            '<button id="ethWbQuickNextPageBtn" style="background:rgba(56,189,248,0.15);border:1px solid #38bdf8;color:#38bdf8;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;" title="Belgilangan katakchalarni keyingi sahifaga o\'tkazish">Keyingi sahifaga ➡</button>' +
+            '<button id="ethWbQuickCustomPageBtn" style="background:rgba(168,85,247,0.15);border:1px solid #a855f7;color:#c084fc;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;" title="Istalgan sahifaga o\'tkazish">📑 Sahifaga ko\'chirish...</button>'
+          ) : '') +
           '<button id="ethWbResetToDefaultBtn" style="background:rgba(239,68,68,0.15);border:1.5px solid #ef4444;color:#f87171;padding:8px 14px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;">' +
             '↺ Asliga Qaytarish' +
           '</button>' +
@@ -164510,6 +164985,14 @@
               '<h3 id="ethWbModalTitle" style="font-size:14px;font-weight:900;margin:0;color:#38bdf8;">Katakcha Sozlamalari</h3>' +
             '</div>' +
             '<button id="ethWbModalCloseX" style="background:transparent;border:none;color:#94a3b8;font-size:16px;font-weight:900;cursor:pointer;padding:2px 6px;line-height:1;">✕</button>' +
+          '</div>' +
+          '<div style="margin-bottom:10px;background:rgba(56,189,248,0.08);padding:8px;border-radius:10px;border:1px solid rgba(56,189,248,0.2);">' +
+            '<label style="display:block;font-size:11px;font-weight:800;margin-bottom:4px;color:#38bdf8;">📄 Sahifa raqami (istalgan sahifaga o\'tkazish):</label>' +
+            '<div style="display:flex;gap:6px;align-items:center;">' +
+              '<button type="button" id="ethWbModalPrevPageBtn" style="padding:6px 12px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#38bdf8;font-weight:900;cursor:pointer;font-size:13px;" title="Oldingi sahifaga o\'tkazish">←</button>' +
+              '<input type="number" id="ethWbModalPage" style="flex:1;padding:7px 10px;border-radius:8px;border:1.5px solid #38bdf8;background:#1e293b;color:#38bdf8;font-weight:900;font-size:13px;text-align:center;box-sizing:border-box;" />' +
+              '<button type="button" id="ethWbModalNextPageBtn" style="padding:6px 12px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#38bdf8;font-weight:900;cursor:pointer;font-size:13px;" title="Keyingi sahifaga o\'tkazish">→</button>' +
+            '</div>' +
           '</div>' +
           '<div style="margin-bottom:10px;">' +
             '<label style="display:block;font-size:11px;font-weight:800;margin-bottom:4px;color:#94a3b8;">Turi (interaction type):</label>' +
@@ -164836,6 +165319,65 @@
       });
     }
 
+    // Quick Page Move Buttons handler
+    function moveSelectedItemsToPage(targetPageNum) {
+      targetPageNum = parseInt(targetPageNum, 10);
+      if (!targetPageNum) return;
+      if (selectedItemIds.size === 0) {
+        if (window.toast) window.toast('Iltimos, avval ko\'chirmoqchi bo\'lgan katakchalarni belgilang!');
+        else alert('Iltimos, avval ko\'chirmoqchi bo\'lgan katakchalarni belgilang!');
+        return;
+      }
+      var movedCount = 0;
+      var targetInputs = WB.getPageInputs(targetPageNum);
+
+      pages.forEach(function(p) {
+        if (p === targetPageNum) return;
+        var pInps = WB.getPageInputs(p);
+        var remaining = [];
+        pInps.forEach(function(it) {
+          if (selectedItemIds.has(it.id)) {
+            it.page = targetPageNum;
+            targetInputs.push(it);
+            movedCount++;
+          } else {
+            remaining.push(it);
+          }
+        });
+        WB.savePageInputs(p, remaining);
+      });
+
+      WB.savePageInputs(targetPageNum, targetInputs);
+      selectedItemIds.clear();
+      renderLesson(container, unitNum, lessonCode, bookLevel);
+      if (window.toast) window.toast('✨ ' + movedCount + ' ta katakcha ' + targetPageNum + '-sahifaga muvaffaqiyatli ko\'chirildi!');
+    }
+
+    var qPrev = container.querySelector('#ethWbQuickPrevPageBtn');
+    if (qPrev) {
+      qPrev.addEventListener('click', function(e) {
+        if (e) e.preventDefault();
+        var curP = pages[0] || 1;
+        moveSelectedItemsToPage(curP - 1);
+      });
+    }
+    var qNext = container.querySelector('#ethWbQuickNextPageBtn');
+    if (qNext) {
+      qNext.addEventListener('click', function(e) {
+        if (e) e.preventDefault();
+        var curP = pages[pages.length - 1] || pages[0] || 1;
+        moveSelectedItemsToPage(curP + 1);
+      });
+    }
+    var qCustom = container.querySelector('#ethWbQuickCustomPageBtn');
+    if (qCustom) {
+      qCustom.addEventListener('click', function(e) {
+        if (e) e.preventDefault();
+        var ask = prompt('Qaysi sahifaga ko\'chirmoqchisiz? (Masalan: 1059 yoki 2027):', (pages[0] || ''));
+        if (ask) moveSelectedItemsToPage(ask);
+      });
+    }
+
     var toggleBtnBottom = container.querySelector('#ethWbToggleEditorBottom');
     if (toggleBtnBottom) {
       toggleBtnBottom.addEventListener('click', function(e) {
@@ -164999,6 +165541,22 @@
       var itemType = (item.type === 'choice' ? 'choose' : (item.type || 'fill'));
       if (modalType) modalType.value = itemType;
       if (modalLabel) modalLabel.value = item.label || item.group || '';
+      var modalPage = modal.querySelector('#ethWbModalPage');
+      if (modalPage) modalPage.value = pageNum;
+      var prevPageBtn = modal.querySelector('#ethWbModalPrevPageBtn');
+      var nextPageBtn = modal.querySelector('#ethWbModalNextPageBtn');
+      if (prevPageBtn) {
+        prevPageBtn.onclick = function(e) {
+          if (e) e.preventDefault();
+          if (modalPage) modalPage.value = Math.max(1, parseInt(modalPage.value, 10) - 1);
+        };
+      }
+      if (nextPageBtn) {
+        nextPageBtn.onclick = function(e) {
+          if (e) e.preventDefault();
+          if (modalPage) modalPage.value = (parseInt(modalPage.value, 10) || 1) + 1;
+        };
+      }
 
       var modalOptions = modal.querySelector('#ethWbModalOptions');
       if (modalOptions) {
@@ -165137,6 +165695,42 @@
         }
 
         var curScroll = window.scrollY || window.pageYOffset || 0;
+        var modalPageEl = modal.querySelector('#ethWbModalPage');
+        var targetPage = modalPageEl ? parseInt(modalPageEl.value, 10) : page;
+        if (!targetPage) targetPage = page;
+
+        if (!currentTarget.isNew && targetPage !== page) {
+          // Transfer existing item to targetPage!
+          inputs = inputs.filter(function(x) { return x.id !== currentTarget.item.id; });
+          WB.savePageInputs(page, inputs);
+
+          var targetInputs = WB.getPageInputs(targetPage);
+          var movedItem = Object.assign({}, currentTarget.item);
+          movedItem.page = targetPage;
+          movedItem.type = curType;
+          movedItem.label = grpVal || movedItem.label;
+          if (curType === 'choose') {
+            movedItem.group = grpVal || ('p' + targetPage + '_grp_' + Date.now().toString().slice(-4));
+            movedItem.correct = isModalValueTrue();
+            if (grpVal) movedItem.text = grpVal;
+          } else if (curType === 'select') {
+            movedItem.group = grpVal;
+            movedItem.options = opts;
+            movedItem.correct = [rawCorr];
+          } else {
+            movedItem.group = grpVal;
+            movedItem.correct = rawCorr;
+          }
+          targetInputs.push(movedItem);
+          WB.savePageInputs(targetPage, targetInputs);
+
+          closeModal();
+          renderLesson(container, unitNum, lessonCode, bookLevel);
+          window.scrollTo(0, curScroll);
+          if (window.toast) window.toast('✨ Katakcha ' + targetPage + '-sahifaga o\'tkazildi!');
+          return;
+        }
+
         WB.savePageInputs(page, inputs);
         closeModal();
         renderLesson(container, unitNum, lessonCode, bookLevel);
@@ -165326,6 +165920,53 @@
             });
 
             if (hasMoved) {
+              // Check if dropped onto another page wrapper!
+              var dropPoint = (ev && ev.changedTouches && ev.changedTouches[0]) ? ev.changedTouches[0] : ((ev && ev.touches && ev.touches[0]) ? ev.touches[0] : ev);
+              var clientX = dropPoint ? dropPoint.clientX : startX;
+              var clientY = dropPoint ? dropPoint.clientY : startY;
+
+              var allPageWraps = Array.from(container.querySelectorAll('.eth-wb-page-wrap'));
+              var targetWrap = null;
+              for (var pi = 0; pi < allPageWraps.length; pi++) {
+                var pr = allPageWraps[pi].getBoundingClientRect();
+                if (clientX >= pr.left && clientX <= pr.right && clientY >= pr.top && clientY <= pr.bottom) {
+                  targetWrap = allPageWraps[pi];
+                  break;
+                }
+              }
+
+              if (targetWrap) {
+                var targetPageNum = parseInt(targetWrap.getAttribute('data-page'), 10);
+                if (targetPageNum && targetPageNum !== page) {
+                  var targetLayer = targetWrap.querySelector('.eth-wb-overlay-layer') || targetWrap;
+                  var targetRect = targetLayer.getBoundingClientRect();
+
+                  var srcInputs = WB.getPageInputs(page);
+                  var tgtInputs = WB.getPageInputs(targetPageNum);
+
+                  draggedItems.forEach(function(di) {
+                    var newLeftPct = Math.max(1, Math.min(94, ((clientX - targetRect.left) / targetRect.width) * 100));
+                    var newTopPct = Math.max(1, Math.min(96, ((clientY - targetRect.top) / targetRect.height) * 100));
+
+                    srcInputs = srcInputs.filter(function(x) { return x.id !== di.id; });
+                    var itData = di.data || {};
+                    itData.page = targetPageNum;
+                    itData.left = Math.round(newLeftPct * 10) / 10;
+                    itData.top = Math.round(newTopPct * 10) / 10;
+                    tgtInputs.push(itData);
+                  });
+
+                  WB.savePageInputs(page, srcInputs);
+                  WB.savePageInputs(targetPageNum, tgtInputs);
+                  selectedItemIds.clear();
+                  renderLesson(container, unitNum, lessonCode, bookLevel);
+                  if (window.toast) {
+                    window.toast('✨ ' + draggedItems.length + ' ta katakcha ' + targetPageNum + '-sahifaga o\'tkazildi!');
+                  }
+                  return;
+                }
+              }
+
               var inputs = WB.getPageInputs(page);
               draggedItems.forEach(function(di) {
                 var fL = parseFloat(di.el.style.left);
