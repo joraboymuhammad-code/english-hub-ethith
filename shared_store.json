@@ -60769,8 +60769,8 @@
         "exercise": "4",
         "label": "3",
         "text": "While he was living in Italy, he met a beautiful young woman.",
-        "top": 22.9,
-        "left": 9.4,
+        "top": 23.1,
+        "left": 10.6,
         "width": 24.4,
         "height": 1.4,
         "isCorrect": true,
@@ -60782,8 +60782,8 @@
         "exercise": "4",
         "label": "3",
         "text": "While he was living in Italy, he met the beautiful young woman.",
-        "top": 25.5,
-        "left": 9.4,
+        "top": 26.2,
+        "left": 10.6,
         "width": 22.5,
         "height": 1.4,
         "isCorrect": false,
@@ -83711,7 +83711,7 @@
     "2036": 1793367702711,
     "2037": 1793367776628,
     "2038": 1793367866018,
-    "2039": 1793367872694,
+    "2039": 1793367877028,
     "2040": 1793366712397,
     "2041": 1793366712397,
     "2042": 1793366712397,
@@ -84462,5 +84462,5 @@
       }
     }
   },
-  "updatedAt": 1793367873601
+  "updatedAt": 1793367877284
 }
