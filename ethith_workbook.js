@@ -42508,10 +42508,10 @@
     "exercise": "1a",
     "group": "p1058_1a_2",
     "label": "2a",
-    "top": 24.1,
+    "top": 24.3,
     "left": 12.8,
-    "width": 3.5,
-    "height": 1.5,
+    "width": 4.2,
+    "height": 1.6,
     "text": "Can I",
     "correct": true,
     "page": 1058
@@ -42522,10 +42522,10 @@
     "exercise": "1a",
     "group": "p1058_1a_2",
     "label": "2b",
-    "top": 24.1,
-    "left": 17.6,
-    "width": 5.3,
-    "height": 1.5,
+    "top": 24.3,
+    "left": 18.5,
+    "width": 5.8,
+    "height": 1.6,
     "text": "Can you",
     "correct": false,
     "page": 1058
@@ -42536,10 +42536,10 @@
     "exercise": "1a",
     "group": "p1058_1a_3",
     "label": "3a",
-    "top": 25.8,
+    "top": 26,
     "left": 20.6,
-    "width": 3.5,
-    "height": 1.5,
+    "width": 4.2,
+    "height": 1.6,
     "text": "Can I",
     "correct": false,
     "page": 1058
@@ -42550,10 +42550,10 @@
     "exercise": "1a",
     "group": "p1058_1a_3",
     "label": "3b",
-    "top": 25.8,
-    "left": 25.5,
-    "width": 5.3,
-    "height": 1.5,
+    "top": 26,
+    "left": 26.2,
+    "width": 5.8,
+    "height": 1.6,
     "text": "Can you",
     "correct": true,
     "page": 1058
@@ -42564,10 +42564,10 @@
     "exercise": "1a",
     "group": "p1058_1a_4",
     "label": "4a",
-    "top": 27.5,
+    "top": 27.7,
     "left": 12.8,
-    "width": 3.5,
-    "height": 1.5,
+    "width": 4.2,
+    "height": 1.6,
     "text": "Can I",
     "correct": true,
     "page": 1058
@@ -42578,10 +42578,10 @@
     "exercise": "1a",
     "group": "p1058_1a_4",
     "label": "4b",
-    "top": 27.5,
-    "left": 17.6,
-    "width": 5.3,
-    "height": 1.5,
+    "top": 27.7,
+    "left": 18.5,
+    "width": 5.8,
+    "height": 1.6,
     "text": "Can you",
     "correct": false,
     "page": 1058
@@ -42592,10 +42592,10 @@
     "exercise": "1a",
     "group": "p1058_1a_5",
     "label": "5a",
-    "top": 29.3,
+    "top": 29.4,
     "left": 20.6,
-    "width": 3.5,
-    "height": 1.5,
+    "width": 4.2,
+    "height": 1.6,
     "text": "Can I",
     "correct": false,
     "page": 1058
@@ -42606,10 +42606,10 @@
     "exercise": "1a",
     "group": "p1058_1a_5",
     "label": "5b",
-    "top": 29.3,
-    "left": 25.5,
-    "width": 5.3,
-    "height": 1.5,
+    "top": 29.4,
+    "left": 26.2,
+    "width": 5.8,
+    "height": 1.6,
     "text": "Can you",
     "correct": true,
     "page": 1058
@@ -42620,10 +42620,10 @@
     "exercise": "1a",
     "group": "p1058_1a_6",
     "label": "6a",
-    "top": 31,
+    "top": 31.1,
     "left": 20.6,
-    "width": 3.5,
-    "height": 1.5,
+    "width": 4.2,
+    "height": 1.6,
     "text": "Can I",
     "correct": false,
     "page": 1058
@@ -42634,10 +42634,10 @@
     "exercise": "1a",
     "group": "p1058_1a_6",
     "label": "6b",
-    "top": 31,
-    "left": 25.5,
-    "width": 5.3,
-    "height": 1.5,
+    "top": 31.1,
+    "left": 26.2,
+    "width": 5.8,
+    "height": 1.6,
     "text": "Can you",
     "correct": true,
     "page": 1058
@@ -42648,8 +42648,8 @@
     "exercise": "1b",
     "label": "b",
     "top": 42.4,
-    "left": 23.3,
-    "width": 7.4,
+    "left": 23.5,
+    "width": 8,
     "height": 1.8,
     "correct": [
       "you are",
@@ -42667,8 +42667,8 @@
     "exercise": "1b",
     "label": "c",
     "top": 44.1,
-    "left": 17.4,
-    "width": 7.3,
+    "left": 17.5,
+    "width": 7,
     "height": 1.8,
     "correct": [
       "it's",
@@ -42686,8 +42686,8 @@
     "exercise": "1b",
     "label": "d",
     "top": 45.8,
-    "left": 17.4,
-    "width": 7.3,
+    "left": 17.5,
+    "width": 7,
     "height": 1.8,
     "correct": [
       "I'm",
@@ -42706,9 +42706,9 @@
     "type": "fill",
     "exercise": "1b",
     "label": "e",
-    "top": 47.5,
-    "left": 19.1,
-    "width": 6.6,
+    "top": 47.6,
+    "left": 19,
+    "width": 7,
     "height": 1.8,
     "correct": [
       "that way"
@@ -42723,32 +42723,15 @@
     "type": "fill",
     "exercise": "1b",
     "label": "f",
-    "top": 49.2,
-    "left": 15.6,
-    "width": 7.4,
+    "top": 49.3,
+    "left": 15.8,
+    "width": 7,
     "height": 1.8,
     "correct": [
       "of course"
     ],
     "acceptedAnswers": [
       "of course"
-    ],
-    "page": 1058
-  },
-  {
-    "id": "p1058_ex1c_1",
-    "type": "fill",
-    "exercise": "1c",
-    "label": "1",
-    "top": 55,
-    "left": 13,
-    "width": 4,
-    "height": 1.8,
-    "correct": [
-      "c"
-    ],
-    "acceptedAnswers": [
-      "c"
     ],
     "page": 1058
   },
@@ -42757,9 +42740,9 @@
     "type": "fill",
     "exercise": "1c",
     "label": "2",
-    "top": 55,
-    "left": 18,
-    "width": 4,
+    "top": 57.2,
+    "left": 12.5,
+    "width": 3.5,
     "height": 1.8,
     "correct": [
       "b"
@@ -42774,17 +42757,17 @@
     "type": "fill",
     "exercise": "1c",
     "label": "3",
-    "top": 55,
-    "left": 23,
-    "width": 4,
+    "top": 55.5,
+    "left": 27,
+    "width": 3.5,
     "height": 1.8,
     "correct": [
-      "d",
-      "f"
+      "f",
+      "d"
     ],
     "acceptedAnswers": [
-      "d",
-      "f"
+      "f",
+      "d"
     ],
     "page": 1058
   },
@@ -42793,9 +42776,9 @@
     "type": "fill",
     "exercise": "1c",
     "label": "4",
-    "top": 55,
-    "left": 28,
-    "width": 4,
+    "top": 57.2,
+    "left": 27,
+    "width": 3.5,
     "height": 1.8,
     "correct": [
       "a"
@@ -42810,9 +42793,9 @@
     "type": "fill",
     "exercise": "1c",
     "label": "5",
-    "top": 55,
-    "left": 33,
-    "width": 4,
+    "top": 55.5,
+    "left": 41.5,
+    "width": 3.5,
     "height": 1.8,
     "correct": [
       "d",
@@ -42829,9 +42812,9 @@
     "type": "fill",
     "exercise": "1c",
     "label": "6",
-    "top": 55,
-    "left": 38,
-    "width": 4,
+    "top": 57.2,
+    "left": 41.5,
+    "width": 3.5,
     "height": 1.8,
     "correct": [
       "e",
@@ -42848,9 +42831,9 @@
     "type": "fill",
     "exercise": "2",
     "label": "b",
-    "top": 29.1,
+    "top": 29.5,
     "left": 57,
-    "width": 33,
+    "width": 36,
     "height": 1.8,
     "correct": [
       "I can speak English well.",
@@ -42867,9 +42850,9 @@
     "type": "fill",
     "exercise": "2",
     "label": "c",
-    "top": 32.7,
+    "top": 32.9,
     "left": 57,
-    "width": 33,
+    "width": 36,
     "height": 1.8,
     "correct": [
       "She helps me take amazing photos.",
@@ -42888,7 +42871,7 @@
     "label": "d",
     "top": 36.3,
     "left": 57,
-    "width": 33,
+    "width": 36,
     "height": 1.8,
     "correct": [
       "I often paint the flowers in my garden.",
@@ -42905,9 +42888,9 @@
     "type": "fill",
     "exercise": "2",
     "label": "e",
-    "top": 39.9,
+    "top": 39.7,
     "left": 57,
-    "width": 33,
+    "width": 36,
     "height": 1.8,
     "correct": [
       "We always have a lot of guests from abroad.",
@@ -42924,9 +42907,9 @@
     "type": "fill",
     "exercise": "2",
     "label": "f",
-    "top": 43.5,
+    "top": 43.2,
     "left": 57,
-    "width": 33,
+    "width": 36,
     "height": 1.8,
     "correct": [
       "I paint badly.",
@@ -42943,8 +42926,8 @@
     "type": "fill",
     "exercise": "3",
     "label": "2",
-    "top": 56.4,
-    "left": 69.4,
+    "top": 57.2,
+    "left": 84.5,
     "width": 4.5,
     "height": 1.8,
     "correct": [
@@ -42960,8 +42943,8 @@
     "type": "fill",
     "exercise": "3",
     "label": "3",
-    "top": 58.1,
-    "left": 63.3,
+    "top": 58.6,
+    "left": 71.5,
     "width": 4.5,
     "height": 1.8,
     "correct": [
@@ -42977,8 +42960,8 @@
     "type": "fill",
     "exercise": "3",
     "label": "4",
-    "top": 61.4,
-    "left": 56.9,
+    "top": 60.1,
+    "left": 68.5,
     "width": 4.5,
     "height": 1.8,
     "correct": [
@@ -42994,8 +42977,8 @@
     "type": "fill",
     "exercise": "3",
     "label": "5",
-    "top": 61.4,
-    "left": 68.3,
+    "top": 61.8,
+    "left": 70,
     "width": 4.5,
     "height": 1.8,
     "correct": [
@@ -43012,7 +42995,7 @@
     "exercise": "3",
     "label": "6",
     "top": 63.2,
-    "left": 65.2,
+    "left": 63.5,
     "width": 4.5,
     "height": 1.8,
     "correct": [
@@ -43030,7 +43013,7 @@
     "type": "fill",
     "exercise": "1a",
     "label": "1",
-    "top": 24,
+    "top": 23.9,
     "left": 24.5,
     "width": 22,
     "height": 1.8,
@@ -43055,7 +43038,7 @@
     "type": "fill",
     "exercise": "1a",
     "label": "2",
-    "top": 25.7,
+    "top": 25.6,
     "left": 36.5,
     "width": 10,
     "height": 1.8,
@@ -43080,7 +43063,7 @@
     "type": "fill",
     "exercise": "1a",
     "label": "3",
-    "top": 27.4,
+    "top": 27.3,
     "left": 31.5,
     "width": 15,
     "height": 1.8,
@@ -43103,10 +43086,10 @@
     "type": "choose",
     "exercise": "1b",
     "label": "camera",
-    "top": 40.7,
-    "left": 9.6,
-    "width": 5,
-    "height": 1.8,
+    "top": 41,
+    "left": 9.5,
+    "width": 4.8,
+    "height": 1.6,
     "text": "camera",
     "correct": true,
     "page": 1059
@@ -43116,10 +43099,10 @@
     "type": "choose",
     "exercise": "1b",
     "label": "fire",
-    "top": 40.7,
-    "left": 15.6,
-    "width": 3,
-    "height": 1.8,
+    "top": 41,
+    "left": 15.2,
+    "width": 2.8,
+    "height": 1.6,
     "text": "fire",
     "correct": true,
     "page": 1059
@@ -43129,10 +43112,10 @@
     "type": "choose",
     "exercise": "1b",
     "label": "laptop",
-    "top": 40.7,
-    "left": 19.1,
+    "top": 41,
+    "left": 18.8,
     "width": 4.5,
-    "height": 1.8,
+    "height": 1.6,
     "text": "laptop",
     "correct": false,
     "page": 1059
@@ -43142,10 +43125,10 @@
     "type": "choose",
     "exercise": "1b",
     "label": "plane",
-    "top": 40.7,
-    "left": 24.5,
+    "top": 41,
+    "left": 24.2,
     "width": 4,
-    "height": 1.8,
+    "height": 1.6,
     "text": "plane",
     "correct": false,
     "page": 1059
@@ -43155,10 +43138,10 @@
     "type": "choose",
     "exercise": "1b",
     "label": "rock",
-    "top": 40.7,
-    "left": 29.3,
+    "top": 41,
+    "left": 29,
     "width": 3.5,
-    "height": 1.8,
+    "height": 1.6,
     "text": "rock",
     "correct": true,
     "page": 1059
@@ -43168,10 +43151,10 @@
     "type": "choose",
     "exercise": "1b",
     "label": "smoke",
-    "top": 40.7,
-    "left": 33.4,
+    "top": 41,
+    "left": 33.2,
     "width": 4.5,
-    "height": 1.8,
+    "height": 1.6,
     "text": "smoke",
     "correct": true,
     "page": 1059
@@ -43181,10 +43164,10 @@
     "type": "fill",
     "exercise": "2",
     "label": "2",
-    "top": 48,
-    "left": 8.9,
+    "top": 49.3,
+    "left": 8.8,
     "width": 38,
-    "height": 2.2,
+    "height": 1.8,
     "correct": [
       "He hears a woman calling for help",
       "He hears a woman",
@@ -43212,10 +43195,10 @@
     "type": "fill",
     "exercise": "3",
     "label": "3",
-    "top": 53,
-    "left": 8.9,
+    "top": 53.8,
+    "left": 8.8,
     "width": 38,
-    "height": 3.5,
+    "height": 1.8,
     "correct": [
       "He helps her down the volcano",
       "He helps Jenny",
@@ -163184,13 +163167,21 @@
 
   WB.getPageInputs = function(page) {
     page = parseInt(page, 10);
-    // 1. Check local saved teacher overrides first (NEVER wipe out teacher's saved work! Checks v15 and v16)
+    // 1. Check local saved teacher overrides (v25 priority)
     try {
-      var saved = localStorage.getItem('ethith_wb_coords_v15_' + page) || localStorage.getItem('ethith_wb_coords_v16_' + page);
+      var saved = localStorage.getItem('ethith_wb_coords_v25_' + page) || localStorage.getItem('ethith_wb_coords_v16_' + page) || localStorage.getItem('ethith_wb_coords_v15_' + page);
       if (saved) {
         var parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
+          // If page 1058 or 1059 had the old incomplete cached items (e.g. 5 or 17 items), discard them and use calibrated master!
+          if ((page === 1058 && parsed.length < 25) || (page === 1059 && parsed.length < 10)) {
+            localStorage.removeItem('ethith_wb_coords_v25_' + page);
+            localStorage.removeItem('ethith_wb_coords_v16_' + page);
+            localStorage.removeItem('ethith_wb_coords_v15_' + page);
+            localStorage.removeItem('ethith_wb_coords_' + page);
+          } else {
+            return parsed;
+          }
         }
       }
     } catch(e) {}
@@ -163207,7 +163198,7 @@
     page = parseInt(page, 10);
     window._lastTeacherEditTime = Date.now();
     try {
-      localStorage.setItem('ethith_wb_coords_v16_' + page, JSON.stringify(inputs));
+      localStorage.setItem('ethith_wb_coords_v25_' + page, JSON.stringify(inputs));
       localStorage.setItem('ethith_wb_ts_' + page, Date.now().toString());
     } catch(e) {}
 
@@ -164921,6 +164912,7 @@
     pages.forEach(function(pageNum, idx) {
       var imgSrc = WB.getPageImage(pageNum);
       var inputs = WB.getPageInputs(pageNum);
+      h += '<style>.eth-wb-page-wrap, .eth-wb-overlay-layer { overflow: visible !important; }</style>';
       h += renderSinglePageBlock(pageNum, idx + 1, imgSrc, inputs, isEditor, curZoom, isTeacher);
     });
 
@@ -165900,11 +165892,30 @@
             var dyPct = (dy / layerRect.height) * 100;
 
             draggedItems.forEach(function(di) {
-              var nL = Math.max(0, Math.min(95, di.startLeft + dxPct));
-              var nT = Math.max(0, Math.min(98, di.startTop + dyPct));
+              // FREE MOVEMENT: No clamping to 0% so elements can move across page borders smoothly!
+              var nL = di.startLeft + dxPct;
+              var nT = di.startTop + dyPct;
               di.el.style.left = nL.toFixed(1) + '%';
               di.el.style.top = nT.toFixed(1) + '%';
             });
+
+            // Real-time hover indicator on target page
+            var allPageWraps = Array.from(document.querySelectorAll('.eth-wb-page-wrap'));
+            allPageWraps.forEach(function(pw) { pw.style.boxShadow = ''; });
+            var curHoverWrap = null;
+            for (var pi = 0; pi < allPageWraps.length; pi++) {
+              var pr = allPageWraps[pi].getBoundingClientRect();
+              if (p.clientX >= pr.left && p.clientX <= pr.right && p.clientY >= pr.top && p.clientY <= pr.bottom) {
+                curHoverWrap = allPageWraps[pi];
+                break;
+              }
+            }
+            if (curHoverWrap) {
+              var hPage = parseInt(curHoverWrap.getAttribute('data-page'), 10);
+              if (hPage !== page) {
+                curHoverWrap.style.boxShadow = '0 0 25px rgba(56,189,248,0.9), inset 0 0 20px rgba(56,189,248,0.2)';
+              }
+            }
           }
 
           function onEnd(ev) {
@@ -165919,6 +165930,9 @@
               di.el.style.zIndex = '50';
             });
 
+            // Reset all page wrap hover shadows
+            var allWrapsToClear = Array.from(document.querySelectorAll('.eth-wb-page-wrap'));
+            allWrapsToClear.forEach(function(pw) { pw.style.boxShadow = ''; });
             if (hasMoved) {
               // Check if dropped onto another page wrapper!
               var dropPoint = (ev && ev.changedTouches && ev.changedTouches[0]) ? ev.changedTouches[0] : ((ev && ev.touches && ev.touches[0]) ? ev.touches[0] : ev);
