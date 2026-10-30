@@ -55300,6 +55300,212 @@
         "correct": "wanted"
       }
     ],
+    "1065": [
+      {
+        "id": "p1065_ex4a_2",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "4a",
+        "label": "2",
+        "top": 14.5,
+        "left": 9.5,
+        "width": 30,
+        "height": 2.2,
+        "correct": "She hates it."
+      },
+      {
+        "id": "p1065_ex4a_3",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "4a",
+        "label": "3",
+        "top": 25.5,
+        "left": 16,
+        "width": 30,
+        "height": 2.2,
+        "correct": "He helped us."
+      },
+      {
+        "id": "p1065_ex4a_4",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "4a",
+        "label": "4",
+        "top": 29,
+        "left": 16,
+        "width": 30,
+        "height": 2.2,
+        "correct": "We love it."
+      },
+      {
+        "id": "p1065_ex4a_5",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "4a",
+        "label": "5",
+        "top": 32.5,
+        "left": 16,
+        "width": 30,
+        "height": 2.2,
+        "correct": "They waited for us."
+      },
+      {
+        "id": "p1065_ex4a_6",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "4a",
+        "label": "6",
+        "top": 21.1,
+        "left": 11.9,
+        "width": 30,
+        "height": 2.2,
+        "correct": "You called us."
+      },
+      {
+        "id": "p1065_ex5_2",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "5",
+        "label": "2",
+        "top": 52,
+        "left": 16,
+        "width": 15,
+        "height": 2.1,
+        "correct": "last year"
+      },
+      {
+        "id": "p1065_ex5_3",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "5",
+        "label": "3",
+        "top": 55,
+        "left": 16,
+        "width": 15,
+        "height": 2.1,
+        "correct": "last night"
+      },
+      {
+        "id": "p1065_ex5_4",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "5",
+        "label": "4",
+        "top": 52,
+        "left": 55,
+        "width": 15,
+        "height": 2.1,
+        "correct": "on Saturday"
+      },
+      {
+        "id": "p1065_ex5_5",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "5",
+        "label": "5",
+        "top": 55,
+        "left": 55,
+        "width": 15,
+        "height": 2.1,
+        "correct": "this morning"
+      },
+      {
+        "id": "p1065_ex5_6",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "5",
+        "label": "6",
+        "top": 58,
+        "left": 55,
+        "width": 15,
+        "height": 2.1,
+        "correct": "in June"
+      },
+      {
+        "id": "p1065_ex6a_1",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "6a",
+        "label": "1",
+        "top": 68,
+        "left": 20,
+        "width": 10,
+        "height": 2.1,
+        "correct": "last"
+      },
+      {
+        "id": "p1065_ex6a_2",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "6a",
+        "label": "2",
+        "top": 71,
+        "left": 20,
+        "width": 10,
+        "height": 2.1,
+        "correct": "in"
+      },
+      {
+        "id": "p1065_ex6a_3",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "6a",
+        "label": "3",
+        "top": 74,
+        "left": 20,
+        "width": 10,
+        "height": 2.1,
+        "correct": "on"
+      },
+      {
+        "id": "p1065_ex6a_4",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "6a",
+        "label": "4",
+        "top": 77,
+        "left": 20,
+        "width": 10,
+        "height": 2.1,
+        "correct": "Last"
+      },
+      {
+        "id": "p1065_ex6a_5",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "6a",
+        "label": "5",
+        "top": 80,
+        "left": 20,
+        "width": 10,
+        "height": 2.1,
+        "correct": "yesterday"
+      },
+      {
+        "id": "p1065_ex6a_6",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "6a",
+        "label": "6",
+        "top": 83,
+        "left": 20,
+        "width": 10,
+        "height": 2.1,
+        "correct": "last"
+      },
+      {
+        "id": "p1065_ex6a_7",
+        "type": "fill",
+        "page": 1065,
+        "exercise": "6a",
+        "label": "7",
+        "top": 86,
+        "left": 20,
+        "width": 10,
+        "height": 2.1,
+        "correct": "this"
+      }
+    ],
     "2004": [
       {
         "id": "p2004_ex2_2",
@@ -89804,6 +90010,7 @@
     "1061": 1793377088344,
     "1062": 1793377285047,
     "1063": 1793377285048,
+    "1065": 1793377317853,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -90636,5 +90843,5 @@
       }
     }
   },
-  "updatedAt": 1793377291518
+  "updatedAt": 1793377318003
 }
