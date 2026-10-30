@@ -55994,25 +55994,13 @@
         "correct": "Can you sing"
       },
       {
-        "id": "p1067_ex2_1",
-        "type": "fill",
-        "page": 1067,
-        "exercise": "2",
-        "label": "1",
-        "top": 34,
-        "left": 16,
-        "width": 14,
-        "height": 2.1,
-        "correct": "reading"
-      },
-      {
         "id": "p1067_ex2_2",
         "type": "fill",
         "page": 1067,
         "exercise": "2",
         "label": "2",
-        "top": 37,
-        "left": 16,
+        "top": 49.8,
+        "left": 15.6,
         "width": 14,
         "height": 2.1,
         "correct": "shopping"
@@ -56023,8 +56011,8 @@
         "page": 1067,
         "exercise": "2",
         "label": "3",
-        "top": 40,
-        "left": 16,
+        "top": 53.3,
+        "left": 16.1,
         "width": 14,
         "height": 2.1,
         "correct": "taking"
@@ -56035,8 +56023,8 @@
         "page": 1067,
         "exercise": "2",
         "label": "4",
-        "top": 43,
-        "left": 16,
+        "top": 54.6,
+        "left": 22.7,
         "width": 14,
         "height": 2.1,
         "correct": "dancing"
@@ -56047,8 +56035,8 @@
         "page": 1067,
         "exercise": "2",
         "label": "5",
-        "top": 46,
-        "left": 16,
+        "top": 56.3,
+        "left": 16.7,
         "width": 14,
         "height": 2.1,
         "correct": "painting"
@@ -90920,7 +90908,7 @@
     "1063": 1793377285048,
     "1064": 1793377648410,
     "1065": 1793377648411,
-    "1067": 1793377737560,
+    "1067": 1793377750734,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -91753,5 +91741,5 @@
       }
     }
   },
-  "updatedAt": 1793377740775
+  "updatedAt": 1793377752590
 }
