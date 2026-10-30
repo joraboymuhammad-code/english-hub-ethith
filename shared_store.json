@@ -50839,8 +50839,8 @@
         "page": 1047,
         "exercise": "5b",
         "label": "3",
-        "top": 56.7,
-        "left": 13,
+        "top": 18.1,
+        "left": 55.9,
         "width": 34,
         "height": 1.8,
         "correct": "Is there any air conditioning in the rooms? or Is there any air conditioning in the rooms"
@@ -50851,8 +50851,8 @@
         "page": 1047,
         "exercise": "5b",
         "label": "4",
-        "top": 59.4,
-        "left": 13,
+        "top": 19.6,
+        "left": 55.9,
         "width": 34,
         "height": 1.8,
         "correct": "Are there any refreshments in the rooms? or Are there any refreshments in the rooms"
@@ -50863,8 +50863,8 @@
         "page": 1047,
         "exercise": "5b",
         "label": "5",
-        "top": 62.1,
-        "left": 13,
+        "top": 21.7,
+        "left": 55.8,
         "width": 34,
         "height": 1.8,
         "correct": "Is there free Wi-fi in the hotel? or Is there free Wi-fi in the hotel"
@@ -87257,7 +87257,7 @@
     "1044": 1793372801124,
     "1045": 1793372833172,
     "1046": 1793375645517,
-    "1047": 1793375725782,
+    "1047": 1793375738470,
     "1052": 1793125351106,
     "1053": 1793125381190,
     "1054": 1793371802105,
@@ -88098,5 +88098,5 @@
       }
     }
   },
-  "updatedAt": 1793375730975
+  "updatedAt": 1793375741047
 }
