@@ -44761,25 +44761,13 @@
         "correct": "e"
       },
       {
-        "id": "p1023_ex5a_1",
-        "type": "fill",
-        "page": 1023,
-        "exercise": "5a",
-        "label": "1",
-        "top": 44.5,
-        "left": 25,
-        "width": 13,
-        "height": 2,
-        "correct": "happy"
-      },
-      {
         "id": "p1023_ex5a_2",
         "type": "fill",
         "page": 1023,
         "exercise": "5a",
         "label": "2",
-        "top": 47.5,
-        "left": 25,
+        "top": 60.7,
+        "left": 29.6,
         "width": 13,
         "height": 2,
         "correct": "cold"
@@ -44790,8 +44778,8 @@
         "page": 1023,
         "exercise": "5a",
         "label": "3",
-        "top": 50.5,
-        "left": 25,
+        "top": 82.7,
+        "left": 10.3,
         "width": 13,
         "height": 2,
         "correct": "old"
@@ -44802,8 +44790,8 @@
         "page": 1023,
         "exercise": "5a",
         "label": "4",
-        "top": 53.5,
-        "left": 25,
+        "top": 83,
+        "left": 30.1,
         "width": 13,
         "height": 2,
         "correct": "big"
@@ -44814,8 +44802,8 @@
         "page": 1023,
         "exercise": "5a",
         "label": "5",
-        "top": 56.5,
-        "left": 25,
+        "top": 27.9,
+        "left": 53.4,
         "width": 13,
         "height": 2,
         "correct": "new"
@@ -44826,8 +44814,8 @@
         "page": 1023,
         "exercise": "5a",
         "label": "6",
-        "top": 59.5,
-        "left": 25,
+        "top": 28.4,
+        "left": 76.5,
         "width": 13,
         "height": 2,
         "correct": "expensive"
@@ -44838,8 +44826,8 @@
         "page": 1023,
         "exercise": "5a",
         "label": "7",
-        "top": 62.5,
-        "left": 25,
+        "top": 52.6,
+        "left": 52.6,
         "width": 13,
         "height": 2,
         "correct": "good"
@@ -44850,8 +44838,8 @@
         "page": 1023,
         "exercise": "5a",
         "label": "8",
-        "top": 65.4,
-        "left": 25.2,
+        "top": 52.5,
+        "left": 73.1,
         "width": 13,
         "height": 2,
         "correct": "rich"
@@ -81385,8 +81373,8 @@
     "1019": 1793370678789,
     "1020": 1793370896636,
     "1021": 1793370896636,
-    "1022": 1793371062966,
-    "1023": 1793371109875,
+    "1022": 1793371159561,
+    "1023": 1793371159561,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -82226,5 +82214,5 @@
       }
     }
   },
-  "updatedAt": 1793371113702
+  "updatedAt": 1793371160633
 }
