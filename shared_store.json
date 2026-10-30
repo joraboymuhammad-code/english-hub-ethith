@@ -43191,8 +43191,8 @@
         "page": 1018,
         "exercise": "2a",
         "label": "8",
-        "top": 80.6,
-        "left": 24.5,
+        "top": 79.4,
+        "left": 23.2,
         "width": 10.5,
         "height": 2,
         "correct": "the next class",
@@ -43207,8 +43207,8 @@
         "page": 1018,
         "exercise": "3",
         "label": "2",
-        "top": 55.6,
-        "left": 77,
+        "top": 54,
+        "left": 77.8,
         "width": 16,
         "height": 2,
         "correct": "I'm not a student."
@@ -43219,8 +43219,8 @@
         "page": 1018,
         "exercise": "3",
         "label": "3",
-        "top": 57.3,
-        "left": 77,
+        "top": 55.8,
+        "left": 77.5,
         "width": 16,
         "height": 2,
         "correct": "He's from Indonesia."
@@ -43231,8 +43231,8 @@
         "page": 1018,
         "exercise": "3",
         "label": "4",
-        "top": 59,
-        "left": 77,
+        "top": 58,
+        "left": 77.5,
         "width": 16,
         "height": 2,
         "correct": "We're here to study."
@@ -43243,8 +43243,8 @@
         "page": 1018,
         "exercise": "3",
         "label": "5",
-        "top": 60.8,
-        "left": 77,
+        "top": 59.6,
+        "left": 77.5,
         "width": 16,
         "height": 2,
         "correct": "He isn't on business."
@@ -79481,7 +79481,7 @@
     "1015": 1793370336969,
     "1016": 1793370490121,
     "1017": 1793370490122,
-    "1018": 1793370523969,
+    "1018": 1793370539577,
     "1024": 1793127597105,
     "1028": 1793127704567,
     "1037": 1793120102340,
@@ -80319,5 +80319,5 @@
       }
     }
   },
-  "updatedAt": 1793370525751
+  "updatedAt": 1793370540235
 }
