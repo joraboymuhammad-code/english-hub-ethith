@@ -46193,8 +46193,8 @@
         "page": 1029,
         "exercise": "5",
         "label": "3",
-        "top": 17.2,
-        "left": 25.2,
+        "top": 16.8,
+        "left": 7.2,
         "width": 3.5,
         "height": 1.8,
         "correct": "f"
@@ -46205,8 +46205,8 @@
         "page": 1029,
         "exercise": "5",
         "label": "4",
-        "top": 18.8,
-        "left": 25.3,
+        "top": 18.7,
+        "left": 7.7,
         "width": 3.5,
         "height": 1.8,
         "correct": "a"
@@ -46217,8 +46217,8 @@
         "page": 1029,
         "exercise": "5",
         "label": "5",
-        "top": 21.6,
-        "left": 24.5,
+        "top": 20.5,
+        "left": 7.9,
         "width": 3.5,
         "height": 1.8,
         "correct": "g"
@@ -46229,8 +46229,8 @@
         "page": 1029,
         "exercise": "5",
         "label": "6",
-        "top": 23.3,
-        "left": 24.5,
+        "top": 22.8,
+        "left": 7.9,
         "width": 3.5,
         "height": 1.8,
         "correct": "c"
@@ -46241,8 +46241,8 @@
         "page": 1029,
         "exercise": "5",
         "label": "7",
-        "top": 25,
-        "left": 24.5,
+        "top": 24.5,
+        "left": 7.9,
         "width": 3.5,
         "height": 1.8,
         "correct": "i"
@@ -46253,8 +46253,8 @@
         "page": 1029,
         "exercise": "5",
         "label": "8",
-        "top": 26.7,
-        "left": 24.5,
+        "top": 25.9,
+        "left": 7.9,
         "width": 3.5,
         "height": 1.8,
         "correct": "e"
@@ -46265,8 +46265,8 @@
         "page": 1029,
         "exercise": "5",
         "label": "9",
-        "top": 28.4,
-        "left": 24.5,
+        "top": 27.4,
+        "left": 7.7,
         "width": 3.5,
         "height": 1.8,
         "correct": "b"
@@ -46385,8 +46385,8 @@
         "page": 1029,
         "exercise": "7",
         "label": "1",
-        "top": 14.9,
-        "left": 67,
+        "top": 14.6,
+        "left": 66.9,
         "width": 10,
         "height": 1.8,
         "correct": "like"
@@ -46397,8 +46397,8 @@
         "page": 1029,
         "exercise": "7",
         "label": "2",
-        "top": 16.6,
-        "left": 67,
+        "top": 16.3,
+        "left": 67.2,
         "width": 10,
         "height": 1.8,
         "correct": "watch"
@@ -46481,8 +46481,8 @@
         "page": 1029,
         "exercise": "7",
         "label": "9",
-        "top": 31.7,
-        "left": 64.5,
+        "top": 30.5,
+        "left": 64.6,
         "width": 10,
         "height": 1.8,
         "correct": "play"
@@ -82427,7 +82427,7 @@
     "1026": 1793371528067,
     "1027": 1793371528067,
     "1028": 1793371602582,
-    "1029": 1793371615730,
+    "1029": 1793371642784,
     "1037": 1793120102340,
     "1042": 1793370793069,
     "1043": 1793370793070,
@@ -83265,5 +83265,5 @@
       }
     }
   },
-  "updatedAt": 1793371617555
+  "updatedAt": 1793371643370
 }
