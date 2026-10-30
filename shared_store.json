@@ -57376,6 +57376,272 @@
         "correct": "his new life"
       }
     ],
+    "1070": [
+      {
+        "id": "p1070_ex1_2",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "1",
+        "label": "2",
+        "top": 20,
+        "left": 16,
+        "width": 45,
+        "height": 2.2,
+        "correct": "didn't study science."
+      },
+      {
+        "id": "p1070_ex1_3",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "1",
+        "label": "3",
+        "top": 24,
+        "left": 16,
+        "width": 45,
+        "height": 2.2,
+        "correct": "didn't get home late."
+      },
+      {
+        "id": "p1070_ex1_4",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "1",
+        "label": "4",
+        "top": 28,
+        "left": 16,
+        "width": 45,
+        "height": 2.2,
+        "correct": "didn't watch the football."
+      },
+      {
+        "id": "p1070_ex1_5",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "1",
+        "label": "5",
+        "top": 32,
+        "left": 16,
+        "width": 45,
+        "height": 2.2,
+        "correct": "didn't meet his girlfriend."
+      },
+      {
+        "id": "p1070_ex1_6",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "1",
+        "label": "6",
+        "top": 42.7,
+        "left": 13.8,
+        "width": 45,
+        "height": 2.2,
+        "correct": "didn't visit friends."
+      },
+      {
+        "id": "p1070_ex1_7",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "1",
+        "label": "7",
+        "top": 46.4,
+        "left": 14.5,
+        "width": 45,
+        "height": 2.2,
+        "correct": "didn't have dinner at home."
+      },
+      {
+        "id": "p1070_ex1_8",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "1",
+        "label": "8",
+        "top": 51,
+        "left": 16.4,
+        "width": 45,
+        "height": 2.2,
+        "correct": "didn't paint the bedroom."
+      },
+      {
+        "id": "p1070_ex2a_2",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "2a",
+        "label": "2",
+        "top": 54.3,
+        "left": 16,
+        "width": 35,
+        "height": 2.1,
+        "correct": "Did Galuh work yesterday?"
+      },
+      {
+        "id": "p1070_ex2a_3",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "2a",
+        "label": "3",
+        "top": 55.5,
+        "left": 16,
+        "width": 35,
+        "height": 2.1,
+        "correct": "Did your friends walk to the theatre?"
+      },
+      {
+        "id": "p1070_ex2a_4",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "2a",
+        "label": "4",
+        "top": 59,
+        "left": 16,
+        "width": 35,
+        "height": 2.1,
+        "correct": "Did Coline come to your party?"
+      },
+      {
+        "id": "p1070_ex2a_5",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "2a",
+        "label": "5",
+        "top": 62.5,
+        "left": 16,
+        "width": 35,
+        "height": 2.1,
+        "correct": "Did you fall in love at university?"
+      },
+      {
+        "id": "p1070_ex2a_6",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "2a",
+        "label": "6",
+        "top": 66,
+        "left": 16,
+        "width": 35,
+        "height": 2.1,
+        "correct": "Did the film finish late?"
+      },
+      {
+        "id": "p1070_ex2b_2",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "2b",
+        "label": "2",
+        "top": 52,
+        "left": 55,
+        "width": 10,
+        "height": 2.1,
+        "correct": "didn't"
+      },
+      {
+        "id": "p1070_ex2b_3",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "2b",
+        "label": "3",
+        "top": 55.5,
+        "left": 55,
+        "width": 10,
+        "height": 2.1,
+        "correct": "didn't"
+      },
+      {
+        "id": "p1070_ex2b_4",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "2b",
+        "label": "4",
+        "top": 59,
+        "left": 55,
+        "width": 10,
+        "height": 2.1,
+        "correct": "did"
+      },
+      {
+        "id": "p1070_ex2b_5",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "2b",
+        "label": "5",
+        "top": 62.5,
+        "left": 55,
+        "width": 10,
+        "height": 2.1,
+        "correct": "didn't"
+      },
+      {
+        "id": "p1070_ex2b_6",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "2b",
+        "label": "6",
+        "top": 66,
+        "left": 55,
+        "width": 10,
+        "height": 2.1,
+        "correct": "did"
+      },
+      {
+        "id": "p1070_ex3_2",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "3",
+        "label": "2",
+        "top": 76,
+        "left": 16,
+        "width": 30,
+        "height": 2.1,
+        "correct": "Where did you stay?"
+      },
+      {
+        "id": "p1070_ex3_3",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "3",
+        "label": "3",
+        "top": 80,
+        "left": 16,
+        "width": 30,
+        "height": 2.1,
+        "correct": "How did you get there?"
+      },
+      {
+        "id": "p1070_ex3_4",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "3",
+        "label": "4",
+        "top": 84,
+        "left": 16,
+        "width": 30,
+        "height": 2.1,
+        "correct": "When did you go?"
+      },
+      {
+        "id": "p1070_ex3_5",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "3",
+        "label": "5",
+        "top": 88,
+        "left": 16,
+        "width": 30,
+        "height": 2.1,
+        "correct": "Who did you go with?"
+      },
+      {
+        "id": "p1070_ex3_6",
+        "type": "fill",
+        "page": 1070,
+        "exercise": "3",
+        "label": "6",
+        "top": 92,
+        "left": 16,
+        "width": 30,
+        "height": 2.1,
+        "correct": "What did you think of it?"
+      }
+    ],
     "1071": [
       {
         "id": "p1071_ex4a_2",
@@ -92056,6 +92322,7 @@
     "1067": 1793377968133,
     "1068": 1793378325267,
     "1069": 1793378325268,
+    "1070": 1793378435401,
     "1071": 1793378408497,
     "2004": 1793374693102,
     "2005": 1793374693102,
@@ -92889,5 +93156,5 @@
       }
     }
   },
-  "updatedAt": 1793378414427
+  "updatedAt": 1793378436210
 }
