@@ -54343,8 +54343,8 @@
         "page": 1061,
         "exercise": "9",
         "label": "1",
-        "top": 58,
-        "left": 18,
+        "top": 73.3,
+        "left": 18.4,
         "width": 26,
         "height": 1.8,
         "correct": "eighteen seventy-six"
@@ -54355,8 +54355,8 @@
         "page": 1061,
         "exercise": "9",
         "label": "2",
-        "top": 60.5,
-        "left": 18,
+        "top": 75.3,
+        "left": 18.2,
         "width": 26,
         "height": 1.8,
         "correct": "twenty forty"
@@ -54367,8 +54367,8 @@
         "page": 1061,
         "exercise": "9",
         "label": "3",
-        "top": 63,
-        "left": 18,
+        "top": 77,
+        "left": 18.7,
         "width": 26,
         "height": 1.8,
         "correct": "nineteen fifty-seven"
@@ -54379,8 +54379,8 @@
         "page": 1061,
         "exercise": "9",
         "label": "4",
-        "top": 65.5,
-        "left": 18,
+        "top": 78.5,
+        "left": 18.5,
         "width": 26,
         "height": 1.8,
         "correct": "two thousand and four"
@@ -54391,8 +54391,8 @@
         "page": 1061,
         "exercise": "9",
         "label": "5",
-        "top": 68,
-        "left": 18,
+        "top": 80.1,
+        "left": 18.7,
         "width": 26,
         "height": 1.8,
         "correct": "eleven sixty-four"
@@ -54403,8 +54403,8 @@
         "page": 1061,
         "exercise": "9",
         "label": "6",
-        "top": 70.5,
-        "left": 18,
+        "top": 81.8,
+        "left": 18.7,
         "width": 26,
         "height": 1.8,
         "correct": "twenty eighteen"
@@ -88970,7 +88970,7 @@
     "1057": 1793375247126,
     "1058": 1793375606729,
     "1059": 1793375627614,
-    "1061": 1793377025298,
+    "1061": 1793377044789,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -89803,5 +89803,5 @@
       }
     }
   },
-  "updatedAt": 1793377028560
+  "updatedAt": 1793377051804
 }
