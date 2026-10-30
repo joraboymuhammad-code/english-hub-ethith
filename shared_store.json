@@ -24390,42 +24390,48 @@
       "attendance": {
         "records": {},
         "lessonTypes": {
-          "2026-10-30": "Vazifa: 1.1",
+          "2026-10-30": "Vazifa (A2): 6.5",
           "2026-10-29": "Oddiy"
         },
         "holidays": {},
         "homeworks": {
           "2026-10-30": {
+            "type": "workbook",
             "dateKey": "2026-10-30",
             "dateDisp": "30.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
+            "bookLevel": "A2",
+            "unit": 6,
+            "lessonCode": "6.5",
+            "lessonTitle": "6.5 Review & Reading",
             "pages": [
-              4,
-              5
+              3044,
+              3045
             ],
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
+            "assignedAt": 1793391969587,
+            "teacherName": "Muhammadyusuf"
           }
         },
-        "updatedAt": 1793387718406
+        "updatedAt": 1793391969587
       },
       "customStudentPhones": {
         "std_mixswdasd_804_selixasdasd": "zsxcxzc"
       },
       "activeHomework": {
+        "type": "workbook",
         "dateKey": "2026-10-30",
         "dateDisp": "30.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
+        "bookLevel": "A2",
+        "unit": 6,
+        "lessonCode": "6.5",
+        "lessonTitle": "6.5 Review & Reading",
         "pages": [
-          4,
-          5
+          3044,
+          3045
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
+        "assignedAt": 1793391969587,
+        "teacherName": "Muhammadyusuf"
       },
       "studentPayments": {
         "cls_1793380468126_std_1": {
@@ -25802,6 +25808,19 @@
       "title": null,
       "nameStyle": null,
       "createdAt": 1793387490277
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793391962295
     }
   ],
   "p2pListings": [],
@@ -102926,5 +102945,5 @@
       }
     }
   },
-  "updatedAt": 1793391957258
+  "updatedAt": 1793391970178
 }
