@@ -55427,8 +55427,8 @@
         "page": 1065,
         "exercise": "6a",
         "label": "1",
-        "top": 68,
-        "left": 20,
+        "top": 29.8,
+        "left": 79,
         "width": 10,
         "height": 2.1,
         "correct": "last"
@@ -55439,8 +55439,8 @@
         "page": 1065,
         "exercise": "6a",
         "label": "2",
-        "top": 71,
-        "left": 20,
+        "top": 32.3,
+        "left": 62.5,
         "width": 10,
         "height": 2.1,
         "correct": "in"
@@ -55451,8 +55451,8 @@
         "page": 1065,
         "exercise": "6a",
         "label": "3",
-        "top": 74,
-        "left": 20,
+        "top": 33.6,
+        "left": 61.4,
         "width": 10,
         "height": 2.1,
         "correct": "on"
@@ -55463,8 +55463,8 @@
         "page": 1065,
         "exercise": "6a",
         "label": "4",
-        "top": 77,
-        "left": 20,
+        "top": 37,
+        "left": 52.6,
         "width": 10,
         "height": 2.1,
         "correct": "Last"
@@ -55475,8 +55475,8 @@
         "page": 1065,
         "exercise": "6a",
         "label": "5",
-        "top": 80,
-        "left": 20,
+        "top": 40.7,
+        "left": 77,
         "width": 10,
         "height": 2.1,
         "correct": "yesterday"
@@ -55487,8 +55487,8 @@
         "page": 1065,
         "exercise": "6a",
         "label": "6",
-        "top": 83,
-        "left": 20,
+        "top": 43.4,
+        "left": 53.9,
         "width": 10,
         "height": 2.1,
         "correct": "last"
@@ -55499,8 +55499,8 @@
         "page": 1065,
         "exercise": "6a",
         "label": "7",
-        "top": 86,
-        "left": 20,
+        "top": 43.5,
+        "left": 75.9,
         "width": 10,
         "height": 2.1,
         "correct": "this"
@@ -90010,7 +90010,7 @@
     "1061": 1793377088344,
     "1062": 1793377285047,
     "1063": 1793377285048,
-    "1065": 1793377343478,
+    "1065": 1793377376503,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -90843,5 +90843,5 @@
       }
     }
   },
-  "updatedAt": 1793377356375
+  "updatedAt": 1793377379852
 }
