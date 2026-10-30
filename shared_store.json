@@ -45457,6 +45457,276 @@
         "correct": "His wife's got a good job."
       }
     ],
+    "1026": [
+      {
+        "id": "p1026_ex1a_1",
+        "type": "select",
+        "page": 1026,
+        "exercise": "1a",
+        "label": "1",
+        "top": 27.1,
+        "left": 11.8,
+        "width": 4.5,
+        "height": 2,
+        "correct": "c",
+        "options": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "p1026_ex1a_2",
+        "type": "select",
+        "page": 1026,
+        "exercise": "1a",
+        "label": "2",
+        "top": 32.6,
+        "left": 11.8,
+        "width": 4.5,
+        "height": 2,
+        "correct": "b",
+        "options": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "p1026_ex1a_3",
+        "type": "select",
+        "page": 1026,
+        "exercise": "1a",
+        "label": "3",
+        "top": 46.5,
+        "left": 12,
+        "width": 4.5,
+        "height": 2,
+        "correct": "a",
+        "options": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "p1026_ex1a_4",
+        "type": "select",
+        "page": 1026,
+        "exercise": "1a",
+        "label": "4",
+        "top": 57,
+        "left": 12,
+        "width": 4.5,
+        "height": 2,
+        "correct": "c",
+        "options": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "p1026_ex1a_5",
+        "type": "select",
+        "page": 1026,
+        "exercise": "1a",
+        "label": "5",
+        "top": 66.5,
+        "left": 12,
+        "width": 4.5,
+        "height": 2,
+        "correct": "a",
+        "options": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "p1026_ex1a_6",
+        "type": "select",
+        "page": 1026,
+        "exercise": "1a",
+        "label": "6",
+        "top": 76,
+        "left": 12,
+        "width": 4.5,
+        "height": 2,
+        "correct": "b",
+        "options": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "p1026_ex1a_7",
+        "type": "select",
+        "page": 1026,
+        "exercise": "1a",
+        "label": "7",
+        "top": 85.5,
+        "left": 12,
+        "width": 4.5,
+        "height": 2,
+        "correct": "c",
+        "options": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "p1026_ex1a_8",
+        "type": "select",
+        "page": 1026,
+        "exercise": "1a",
+        "label": "8",
+        "top": 94.5,
+        "left": 12,
+        "width": 4.5,
+        "height": 2,
+        "correct": "b",
+        "options": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "p1026_ex2_2",
+        "type": "fill",
+        "page": 1026,
+        "exercise": "2",
+        "label": "2",
+        "top": 31,
+        "left": 69,
+        "width": 26.5,
+        "height": 2,
+        "correct": "and they've got an expensive car"
+      },
+      {
+        "id": "p1026_ex2_3",
+        "type": "fill",
+        "page": 1026,
+        "exercise": "2",
+        "label": "3",
+        "top": 36,
+        "left": 66,
+        "width": 29.5,
+        "height": 2,
+        "correct": "but I haven't got a dog"
+      },
+      {
+        "id": "p1026_ex2_4",
+        "type": "fill",
+        "page": 1026,
+        "exercise": "2",
+        "label": "4",
+        "top": 41,
+        "left": 70,
+        "width": 25.5,
+        "height": 2,
+        "correct": "but they aren't our friends"
+      },
+      {
+        "id": "p1026_ex2_5",
+        "type": "fill",
+        "page": 1026,
+        "exercise": "2",
+        "label": "5",
+        "top": 45,
+        "left": 68,
+        "width": 27.5,
+        "height": 2,
+        "correct": "and she's got two daughters"
+      },
+      {
+        "id": "p1026_ex2_6",
+        "type": "fill",
+        "page": 1026,
+        "exercise": "2",
+        "label": "6",
+        "top": 49,
+        "left": 70,
+        "width": 25.5,
+        "height": 2,
+        "correct": "but he's very happy"
+      },
+      {
+        "id": "p1026_ex3_1",
+        "type": "fill",
+        "page": 1026,
+        "exercise": "3",
+        "label": "1",
+        "top": 56.5,
+        "left": 56,
+        "width": 4.5,
+        "height": 2,
+        "correct": "b"
+      },
+      {
+        "id": "p1026_ex3_2",
+        "type": "fill",
+        "page": 1026,
+        "exercise": "3",
+        "label": "2",
+        "top": 58.5,
+        "left": 56,
+        "width": 4.5,
+        "height": 2,
+        "correct": "c"
+      },
+      {
+        "id": "p1026_ex3_3",
+        "type": "fill",
+        "page": 1026,
+        "exercise": "3",
+        "label": "3",
+        "top": 60.5,
+        "left": 56,
+        "width": 4.5,
+        "height": 2,
+        "correct": "d"
+      },
+      {
+        "id": "p1026_ex3_4",
+        "type": "fill",
+        "page": 1026,
+        "exercise": "3",
+        "label": "4",
+        "top": 62.5,
+        "left": 56,
+        "width": 4.5,
+        "height": 2,
+        "correct": "f"
+      },
+      {
+        "id": "p1026_ex3_5",
+        "type": "fill",
+        "page": 1026,
+        "exercise": "3",
+        "label": "5",
+        "top": 64.5,
+        "left": 56,
+        "width": 4.5,
+        "height": 2,
+        "correct": "e"
+      },
+      {
+        "id": "p1026_ex3_6",
+        "type": "fill",
+        "page": 1026,
+        "exercise": "3",
+        "label": "6",
+        "top": 66.5,
+        "left": 56,
+        "width": 4.5,
+        "height": 2,
+        "correct": "a"
+      }
+    ],
     "1028": [
       {
         "id": "p1028_ex1_2",
@@ -81687,6 +81957,7 @@
     "1023": 1793371160969,
     "1024": 1793371374470,
     "1025": 1793371374471,
+    "1026": 1793371399610,
     "1028": 1793127704567,
     "1037": 1793120102340,
     "1042": 1793370793069,
@@ -82525,5 +82796,5 @@
       }
     }
   },
-  "updatedAt": 1793371376908
+  "updatedAt": 1793371400925
 }
