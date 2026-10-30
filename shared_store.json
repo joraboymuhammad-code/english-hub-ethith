@@ -57383,8 +57383,8 @@
         "page": 1070,
         "exercise": "1",
         "label": "2",
-        "top": 20,
-        "left": 16,
+        "top": 29.1,
+        "left": 15.5,
         "width": 45,
         "height": 2.2,
         "correct": "didn't study science."
@@ -57395,8 +57395,8 @@
         "page": 1070,
         "exercise": "1",
         "label": "3",
-        "top": 24,
-        "left": 16,
+        "top": 32.6,
+        "left": 15.2,
         "width": 45,
         "height": 2.2,
         "correct": "didn't get home late."
@@ -57407,8 +57407,8 @@
         "page": 1070,
         "exercise": "1",
         "label": "4",
-        "top": 28,
-        "left": 16,
+        "top": 36.2,
+        "left": 14.8,
         "width": 45,
         "height": 2.2,
         "correct": "didn't watch the football."
@@ -57419,8 +57419,8 @@
         "page": 1070,
         "exercise": "1",
         "label": "5",
-        "top": 32,
-        "left": 16,
+        "top": 39.2,
+        "left": 15,
         "width": 45,
         "height": 2.2,
         "correct": "didn't meet his girlfriend."
@@ -92322,7 +92322,7 @@
     "1067": 1793377968133,
     "1068": 1793378325267,
     "1069": 1793378325268,
-    "1070": 1793378435401,
+    "1070": 1793378444481,
     "1071": 1793378408497,
     "2004": 1793374693102,
     "2005": 1793374693102,
@@ -93156,5 +93156,5 @@
       }
     }
   },
-  "updatedAt": 1793378436210
+  "updatedAt": 1793378446952
 }
