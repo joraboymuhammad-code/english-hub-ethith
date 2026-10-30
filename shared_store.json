@@ -54823,8 +54823,8 @@
         "page": 1062,
         "exercise": "1a",
         "label": "2",
-        "top": 34,
-        "left": 45,
+        "top": 34.4,
+        "left": 29.2,
         "width": 22,
         "height": 1.8,
         "correct": "Joan of Arc"
@@ -54835,8 +54835,8 @@
         "page": 1062,
         "exercise": "1a",
         "label": "3",
-        "top": 37.5,
-        "left": 45,
+        "top": 37.6,
+        "left": 34,
         "width": 22,
         "height": 1.8,
         "correct": "Mahatma Gandhi"
@@ -54847,8 +54847,8 @@
         "page": 1062,
         "exercise": "1a",
         "label": "4",
-        "top": 41,
-        "left": 45,
+        "top": 40.2,
+        "left": 31.5,
         "width": 22,
         "height": 1.8,
         "correct": "Helen Keller"
@@ -54859,8 +54859,8 @@
         "page": 1062,
         "exercise": "1a",
         "label": "5",
-        "top": 44.5,
-        "left": 45,
+        "top": 43.4,
+        "left": 30.6,
         "width": 22,
         "height": 1.8,
         "correct": "Genghis Khan"
@@ -54871,8 +54871,8 @@
         "page": 1062,
         "exercise": "1a",
         "label": "6",
-        "top": 48,
-        "left": 45,
+        "top": 47.1,
+        "left": 25.1,
         "width": 22,
         "height": 1.8,
         "correct": "Jane Austen"
@@ -54895,8 +54895,8 @@
         "page": 1062,
         "exercise": "2",
         "label": "3",
-        "top": 61.5,
-        "left": 12,
+        "top": 30.8,
+        "left": 55.4,
         "width": 68,
         "height": 1.9,
         "correct": "Marco Polo was born in 1254 and he died in 1325."
@@ -54907,8 +54907,8 @@
         "page": 1062,
         "exercise": "2",
         "label": "4",
-        "top": 65,
-        "left": 12,
+        "top": 33.8,
+        "left": 56.7,
         "width": 68,
         "height": 1.9,
         "correct": "Anne Frank was born in 1929 and she died in 1945."
@@ -54919,8 +54919,8 @@
         "page": 1062,
         "exercise": "2",
         "label": "5",
-        "top": 68.5,
-        "left": 12,
+        "top": 37.6,
+        "left": 56.7,
         "width": 68,
         "height": 1.9,
         "correct": "Albert Einstein was born in 1879 and he died in 1955."
@@ -54931,8 +54931,8 @@
         "page": 1062,
         "exercise": "2",
         "label": "6",
-        "top": 72,
-        "left": 12,
+        "top": 41.6,
+        "left": 55.8,
         "width": 68,
         "height": 1.9,
         "correct": "Edith Piaf was born in 1915 and she died in 1963."
@@ -54943,8 +54943,8 @@
         "page": 1062,
         "exercise": "2",
         "label": "7",
-        "top": 75.5,
-        "left": 12,
+        "top": 44.4,
+        "left": 55.8,
         "width": 68,
         "height": 1.9,
         "correct": "Charles Darwin was born in 1809 and he died in 1882."
@@ -89560,7 +89560,7 @@
     "1059": 1793375627614,
     "1060": 1793377088342,
     "1061": 1793377088344,
-    "1062": 1793377116626,
+    "1062": 1793377146301,
     "2004": 1793374693102,
     "2005": 1793374693102,
     "2006": 1793374693102,
@@ -90393,5 +90393,5 @@
       }
     }
   },
-  "updatedAt": 1793377119564
+  "updatedAt": 1793377147930
 }
