@@ -24090,6 +24090,24 @@
       "maxCapacity": 18,
       "students": [
         {
+          "id": "std_mixswdasd_804_selixasdasd",
+          "name": "Mixswdasd Selixasdasd",
+          "firstName": "Mixswdasd",
+          "lastName": "Selixasdasd",
+          "email": "mixswdasd_804_selixasdasd@student.ethith",
+          "role": "student",
+          "phone": "zsxcxzc",
+          "parentPhone": "zsxcxzc",
+          "login": "mixswdasd_804_selixasdasd",
+          "password": "mixswdasd804sel",
+          "joinedAt": "2026-10-30",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150,
+          "dailyMinutes": 63
+        },
+        {
           "id": "std_mix_416_selix",
           "name": "Mix Selix",
           "firstName": "Mix",
@@ -24107,24 +24125,6 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "lastLogin": null
-        },
-        {
-          "id": "std_mixswdasd_804_selixasdasd",
-          "name": "Mixswdasd Selixasdasd",
-          "firstName": "Mixswdasd",
-          "lastName": "Selixasdasd",
-          "email": "mixswdasd_804_selixasdasd@student.ethith",
-          "role": "student",
-          "phone": "zsxcxzc",
-          "parentPhone": "zsxcxzc",
-          "login": "mixswdasd_804_selixasdasd",
-          "password": "mixswdasd804sel",
-          "joinedAt": "2026-10-30",
-          "isTester": false,
-          "manuallyEnrolled": true,
-          "isOnline": false,
-          "coins": 150,
-          "dailyMinutes": 63
         },
         {
           "id": "cls_1793380468126_std_1",
@@ -24414,9 +24414,7 @@
         },
         "updatedAt": 1793391969587
       },
-      "customStudentPhones": {
-        "std_mixswdasd_804_selixasdasd": "zsxcxzc"
-      },
+      "customStudentPhones": {},
       "activeHomework": {
         "type": "workbook",
         "dateKey": "2026-10-30",
@@ -24561,13 +24559,6 @@
           "date": "To‘lanmagan"
         },
         "std_mix_416_selix": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_mixswdasd_804_selixasdasd": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -25449,8 +25440,7 @@
       "login": "azizbek77",
       "role": "teacher",
       "coins": 1000,
-      "level": "C2",
-      "updatedAt": 1793385143114
+      "level": "C2"
     },
     {
       "id": "admin_official_teacher",
@@ -25458,8 +25448,7 @@
       "email": "elyor.aborbekov@ethith.uz",
       "login": "elyor70",
       "role": "teacher",
-      "coins": 1000,
-      "updatedAt": 1793385143115
+      "coins": 1000
     },
     {
       "id": "admin_official_teacher",
@@ -25478,8 +25467,7 @@
         "cls_ravshanov_doniyor_cefr_3",
         "cls_ravshanov_doniyor_cefr_4"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143114
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25495,8 +25483,7 @@
       "assignedClasses": [
         "cls_qarshiboyev_humoyun_practice"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143114
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25512,8 +25499,7 @@
       "assignedClasses": [
         "cls_tovboyeva_marjona_beginner"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143114
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25532,8 +25518,7 @@
         "cls_olimjonova_durdona_intermediate_1",
         "cls_olimjonova_durdona_intermediate_2"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143114
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25552,8 +25537,7 @@
         "cls_tagaev_eldor_pre_intermediate_1",
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143114
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25570,8 +25554,7 @@
         "cls_yaxshilikova_kamola_beginner",
         "cls_yaxshilikova_kamola_elementary"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143114
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25588,8 +25571,7 @@
         "cls_sherqoziyeva_iroda_beginner_1",
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143115
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25608,8 +25590,7 @@
         "cls_orinboyev_jaloliddin_standard_1",
         "cls_orinboyev_jaloliddin_standard_2"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143115
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25625,8 +25606,7 @@
       "assignedClasses": [
         "cls_jumanova_pokiza_beginner"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143115
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25643,8 +25623,7 @@
         "cls_hayrullayev_arslon_beginner_1",
         "cls_hayrullayev_arslon_beginner_2"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143115
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25661,8 +25640,7 @@
         "cls_xudoyorova_sarvinoz_intermediate",
         "cls_xudoyorova_sarvinoz_standard"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143115
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25679,8 +25657,7 @@
         "cls_aliqulova_sevinch_beginner_1",
         "cls_aliqulova_sevinch_beginner_2"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143115
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25699,8 +25676,7 @@
         "cls_xojamqulova_diyora_elementary_2",
         "cls_xojamqulova_diyora_elementary_3"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143115
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25719,8 +25695,7 @@
         "cls_bosimbekov_farrux_intermediate_1",
         "cls_bosimbekov_farrux_intermediate_2"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143115
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25739,8 +25714,7 @@
         "cls_ahmadova_barno_elementary_3",
         "cls_ahmadova_barno_pre_intermediate"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143115
+      "createdAt": 1793202631415
     },
     {
       "id": "admin_official_teacher",
@@ -25756,8 +25730,7 @@
       "assignedClasses": [
         "cls_shodiyor_matematika_matematika"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793385143115
+      "createdAt": 1793202631415
     },
     {
       "id": "st_998901239988",
@@ -25793,34 +25766,7 @@
       "teacherId": "teacher_1793380078590",
       "subject": "Ingliz tili",
       "salarySharePercent": 55,
-      "createdAt": 1793380453528,
-      "coins": 1000,
-      "gifts": []
-    },
-    {
-      "id": "std_mixswdasd_804_selixasdasd",
-      "role": "student",
-      "name": "Mixswdasd Selixasdasd",
-      "email": "mixswdasd.selixasdasd@ethith.uz",
-      "coins": 150,
-      "gifts": [],
-      "avatar": null,
-      "title": null,
-      "nameStyle": null,
-      "createdAt": 1793387490277
-    },
-    {
-      "id": "std_mix_416_selix",
-      "name": "Mix Selix",
-      "role": "student",
-      "login": "mix_416_selix",
-      "password": "mix416sel",
-      "phone": "91`23891738213",
-      "parentPhone": "91`23891738213",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null,
-      "updatedAt": 1793391962295
+      "createdAt": 1793380078590
     }
   ],
   "p2pListings": [],
@@ -101937,77 +101883,77 @@
     ]
   },
   "workbookOverridesTs": {
-    "4": 1793391955386,
-    "5": 1793391955386,
-    "9": 1793391955386,
+    "4": 1793392007945,
+    "5": 1793392007945,
+    "9": 1793392007945,
     "10": 1761463225569,
-    "12": 1793391955386,
-    "13": 1793391955386,
-    "14": 1793391955386,
-    "24": 1793391955386,
-    "25": 1793391955386,
-    "26": 1793391955386,
-    "27": 1793391955386,
-    "28": 1793391955386,
-    "29": 1793391955386,
-    "30": 1793391955386,
-    "31": 1793391955386,
-    "32": 1793391955386,
-    "33": 1793391955386,
-    "34": 1793391955386,
-    "35": 1793391955386,
-    "36": 1793391955386,
-    "37": 1793391955387,
-    "38": 1793391955387,
-    "39": 1793391955387,
-    "40": 1793391955387,
-    "41": 1793391955387,
-    "42": 1793391955387,
-    "43": 1793391955387,
-    "44": 1793391955387,
-    "45": 1793391955387,
-    "46": 1793391955387,
-    "47": 1793391955387,
-    "48": 1793391955387,
-    "49": 1793391955387,
-    "50": 1793391955387,
-    "51": 1793391955387,
-    "52": 1793391955387,
-    "53": 1793391955387,
-    "54": 1793391955387,
-    "55": 1793391955387,
-    "56": 1793391955387,
-    "57": 1793391955387,
-    "58": 1793391955387,
-    "59": 1793391955387,
-    "60": 1793391955387,
-    "61": 1793391955387,
-    "62": 1793391955387,
-    "63": 1793391955387,
-    "64": 1793391955387,
-    "65": 1793391955387,
-    "66": 1793391955387,
-    "67": 1793391955387,
-    "68": 1793391955387,
-    "69": 1793391955387,
-    "70": 1793391955387,
-    "71": 1793391955387,
-    "72": 1793391955387,
-    "73": 1793391955387,
-    "74": 1793391955387,
-    "75": 1793391955387,
-    "76": 1793391955387,
-    "77": 1793391955387,
-    "78": 1793391955387,
-    "79": 1793391955387,
-    "80": 1793391955387,
-    "81": 1793391955388,
-    "82": 1793391955388,
-    "83": 1793391955388,
-    "84": 1793391955388,
-    "85": 1793391955388,
-    "86": 1793391955388,
-    "87": 1793391955388,
+    "12": 1793392007945,
+    "13": 1793392007948,
+    "14": 1793392007948,
+    "24": 1793392007948,
+    "25": 1793392007948,
+    "26": 1793392007948,
+    "27": 1793392007948,
+    "28": 1793392007948,
+    "29": 1793392007948,
+    "30": 1793392007948,
+    "31": 1793392007948,
+    "32": 1793392007948,
+    "33": 1793392007948,
+    "34": 1793392007948,
+    "35": 1793392007948,
+    "36": 1793392007948,
+    "37": 1793392007948,
+    "38": 1793392007948,
+    "39": 1793392007949,
+    "40": 1793392007949,
+    "41": 1793392007949,
+    "42": 1793392007949,
+    "43": 1793392007949,
+    "44": 1793392007949,
+    "45": 1793392007949,
+    "46": 1793392007949,
+    "47": 1793392007949,
+    "48": 1793392007949,
+    "49": 1793392007949,
+    "50": 1793392007950,
+    "51": 1793392007950,
+    "52": 1793392007950,
+    "53": 1793392007950,
+    "54": 1793392007950,
+    "55": 1793392007950,
+    "56": 1793392007950,
+    "57": 1793392007950,
+    "58": 1793392007950,
+    "59": 1793392007950,
+    "60": 1793392007951,
+    "61": 1793392007951,
+    "62": 1793392007951,
+    "63": 1793392007951,
+    "64": 1793392007951,
+    "65": 1793392007951,
+    "66": 1793392007951,
+    "67": 1793392007951,
+    "68": 1793392007951,
+    "69": 1793392007951,
+    "70": 1793392007951,
+    "71": 1793392007951,
+    "72": 1793392007951,
+    "73": 1793392007951,
+    "74": 1793392007951,
+    "75": 1793392007951,
+    "76": 1793392007951,
+    "77": 1793392007951,
+    "78": 1793392007951,
+    "79": 1793392007951,
+    "80": 1793392007951,
+    "81": 1793392007951,
+    "82": 1793392007951,
+    "83": 1793392007951,
+    "84": 1793392007951,
+    "85": 1793392007952,
+    "86": 1793392007952,
+    "87": 1793392007954,
     "1004": 1793378724610,
     "1005": 1793366841110,
     "1006": 1793367060705,
@@ -102060,8 +102006,8 @@
     "1055": 1793376836290,
     "1056": 1793375247125,
     "1057": 1793375247126,
-    "1058": 1793391955388,
-    "1059": 1793391955388,
+    "1058": 1793392007955,
+    "1059": 1793392007956,
     "1060": 1793377088342,
     "1061": 1793377088344,
     "1062": 1793377285047,
@@ -102084,90 +102030,90 @@
     "1081": 1793379403811,
     "1082": 1793379581404,
     "1083": 1793379581412,
-    "2004": 1793391955388,
-    "2005": 1793391955388,
-    "2006": 1793391955388,
-    "2007": 1793391955388,
-    "2008": 1793391955388,
-    "2009": 1793391955388,
-    "2010": 1793391955388,
-    "2011": 1793391955388,
-    "2012": 1793391955388,
-    "2013": 1793391955388,
-    "2014": 1793391955388,
-    "2015": 1793391955389,
-    "2016": 1793391955389,
-    "2017": 1793391955389,
-    "2018": 1793391955389,
-    "2019": 1793391955389,
-    "2020": 1793391955389,
-    "2021": 1793391955389,
-    "2022": 1793391955389,
-    "2023": 1793391955389,
-    "2024": 1793391955389,
-    "2025": 1793391955389,
-    "2026": 1793391955389,
-    "2027": 1793391955389,
-    "2028": 1793391955389,
-    "2029": 1793391955389,
-    "2030": 1793391955389,
-    "2031": 1793391955389,
-    "2032": 1793391955389,
-    "2033": 1793391955389,
-    "2034": 1793391955389,
-    "2035": 1793391955389,
-    "2036": 1793391955389,
-    "2037": 1793391955389,
-    "2038": 1793391955389,
-    "2039": 1793391955389,
-    "2040": 1793391955389,
-    "2041": 1793391955389,
-    "2042": 1793391955389,
-    "2043": 1793391955389,
-    "2044": 1793391955389,
-    "2045": 1793391955390,
-    "2046": 1793391955390,
-    "2047": 1793391955390,
-    "2048": 1793391955390,
-    "2049": 1793391955390,
-    "2050": 1793391955390,
-    "2051": 1793391955390,
-    "2052": 1793391955390,
-    "2053": 1793391955390,
-    "2054": 1793391955390,
-    "2055": 1793391955390,
-    "2056": 1793391955390,
-    "2057": 1793391955390,
-    "2058": 1793391955390,
-    "2059": 1793391955390,
-    "2060": 1793391955390,
-    "2061": 1793391955390,
-    "2062": 1793391955390,
-    "2063": 1793391955390,
-    "2064": 1793391955391,
-    "2065": 1793391955391,
-    "2066": 1793391955391,
-    "2067": 1793391955391,
-    "2068": 1793391955391,
-    "2069": 1793391955391,
-    "2070": 1793391955391,
-    "2071": 1793391955391,
-    "2072": 1793391955391,
-    "2073": 1793391955391,
-    "2074": 1793391955391,
-    "2075": 1793391955391,
-    "2076": 1793391955391,
-    "2077": 1793391955391,
-    "2078": 1793391955391,
-    "2079": 1793391955391,
-    "2080": 1793391955391,
-    "2081": 1793391955391,
-    "2082": 1793391955391,
-    "2083": 1793391955391,
-    "2084": 1793391955391,
-    "2085": 1793391955391,
-    "2086": 1793391955391,
-    "2087": 1793391955391,
+    "2004": 1793392007956,
+    "2005": 1793392007956,
+    "2006": 1793392007956,
+    "2007": 1793392007956,
+    "2008": 1793392007956,
+    "2009": 1793392007956,
+    "2010": 1793392007956,
+    "2011": 1793392007956,
+    "2012": 1793392007956,
+    "2013": 1793392007956,
+    "2014": 1793392007956,
+    "2015": 1793392007959,
+    "2016": 1793392007959,
+    "2017": 1793392007961,
+    "2018": 1793392007961,
+    "2019": 1793392007961,
+    "2020": 1793392007962,
+    "2021": 1793392007962,
+    "2022": 1793392007962,
+    "2023": 1793392007962,
+    "2024": 1793392007962,
+    "2025": 1793392007965,
+    "2026": 1793392007965,
+    "2027": 1793392007965,
+    "2028": 1793392007967,
+    "2029": 1793392007967,
+    "2030": 1793392007968,
+    "2031": 1793392007968,
+    "2032": 1793392007968,
+    "2033": 1793392007968,
+    "2034": 1793392007968,
+    "2035": 1793392007969,
+    "2036": 1793392007969,
+    "2037": 1793392007970,
+    "2038": 1793392007970,
+    "2039": 1793392007970,
+    "2040": 1793392007970,
+    "2041": 1793392007970,
+    "2042": 1793392007971,
+    "2043": 1793392007971,
+    "2044": 1793392007971,
+    "2045": 1793392007971,
+    "2046": 1793392007972,
+    "2047": 1793392007973,
+    "2048": 1793392007973,
+    "2049": 1793392007973,
+    "2050": 1793392007973,
+    "2051": 1793392007973,
+    "2052": 1793392007973,
+    "2053": 1793392007973,
+    "2054": 1793392007973,
+    "2055": 1793392007973,
+    "2056": 1793392007973,
+    "2057": 1793392007973,
+    "2058": 1793392007973,
+    "2059": 1793392007976,
+    "2060": 1793392007976,
+    "2061": 1793392007976,
+    "2062": 1793392007976,
+    "2063": 1793392007976,
+    "2064": 1793392007976,
+    "2065": 1793392007976,
+    "2066": 1793392007976,
+    "2067": 1793392007977,
+    "2068": 1793392007977,
+    "2069": 1793392007977,
+    "2070": 1793392007977,
+    "2071": 1793392007977,
+    "2072": 1793392007977,
+    "2073": 1793392007977,
+    "2074": 1793392007977,
+    "2075": 1793392007977,
+    "2076": 1793392007978,
+    "2077": 1793392007978,
+    "2078": 1793392007978,
+    "2079": 1793392007979,
+    "2080": 1793392007979,
+    "2081": 1793392007980,
+    "2082": 1793392007980,
+    "2083": 1793392007980,
+    "2084": 1793392007980,
+    "2085": 1793392007980,
+    "2086": 1793392007980,
+    "2087": 1793392007980,
     "3004": 1793281513097,
     "3005": 1793281513098,
     "3046": 1793188669311,
@@ -102669,39 +102615,39 @@
         "id": "f_root",
         "name": "Bosh Papka",
         "parentId": null,
-        "createdAt": 1793380480007
+        "createdAt": 1793024168370
       },
       {
         "id": "f_grammar",
         "name": "Grammar Mastery",
         "parentId": "f_root",
-        "createdAt": 1793380480007
-      },
-      {
-        "id": "f_vocab",
-        "name": "Vocabulary Builder",
-        "parentId": "f_root",
-        "createdAt": 1793380480007
+        "createdAt": 1793024168370
       },
       {
         "id": "f_ielts",
         "name": "IELTS Mock Tests",
         "parentId": "f_root",
-        "createdAt": 1793380480007
+        "createdAt": 1793024168370
+      },
+      {
+        "id": "f_1793028050497",
+        "name": "Yangi Papka",
+        "parentId": "f_root",
+        "createdAt": 1793028050497
+      },
+      {
+        "id": "f_1793030124872",
+        "name": "Yangi Papka",
+        "parentId": "f_1793028050497",
+        "createdAt": 1793030124872
       },
       {
         "id": "f_root_teacher_1793380078590",
-        "name": "Muhammadyusuf (Shaxsiy Papka)",
+        "name": "Muhammadyusuf (Mening Hujjatlarim)",
+        "parentId": null,
+        "ownerRole": "teacher",
         "ownerId": "teacher_1793380078590",
-        "parentId": null,
-        "createdAt": 1793382593755
-      },
-      {
-        "id": "f_root_admin_official_teacher",
-        "name": "Ustoz (Shaxsiy Papka)",
-        "ownerId": "admin_official_teacher",
-        "parentId": null,
-        "createdAt": 1793387687196
+        "isSystem": true
       }
     ],
     "tests": [
@@ -102710,7 +102656,7 @@
         "title": "Unit 7: Modals of Deduction & Obligation",
         "folderId": "f_grammar",
         "authorName": "Ustoz",
-        "createdAt": 1793380480007,
+        "createdAt": 1793024168370,
         "maxAttempts": 1,
         "questions": [
           {
@@ -102764,56 +102710,6 @@
             "correct": 0
           }
         ]
-      },
-      {
-        "id": "TST-4H8R1",
-        "title": "Unit 8: Compound Adjectives & Participle Clauses",
-        "folderId": "f_vocab",
-        "authorName": "Zizi Ustoz",
-        "createdAt": 1793380480007,
-        "maxAttempts": 1,
-        "questions": [
-          {
-            "q": "A person who is relaxed and not easily upset is ______.",
-            "options": [
-              "easy-going",
-              "short-tempered",
-              "well-mannered",
-              "broad-minded"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "______ for 10 a.m. tomorrow, the conference has now been rescheduled.",
-            "options": [
-              "Scheduled",
-              "Scheduling",
-              "To schedule",
-              "Having schedule"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Products ______ locally are often fresher and support the local economy.",
-            "options": [
-              "grown",
-              "growing",
-              "have grown",
-              "to grow"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "A person with a great knowledge from books is ______.",
-            "options": [
-              "well-educated",
-              "quick-witted",
-              "bad-tempered",
-              "open-minded"
-            ],
-            "correct": 0
-          }
-        ]
       }
     ]
   },
@@ -102822,40 +102718,40 @@
       "id": "tt_1",
       "time": "08:00 - 09:30",
       "days": "Du-Chor-Jum",
-      "teacherId": "t_urolov_azizbek",
-      "teacherName": "Azizbek Urolov",
-      "classId": "cls_urolov_azizbek_upper",
-      "className": "Upper-Intermediate",
+      "teacherId": "t_zizi",
+      "teacherName": "Zizi Ustoz",
+      "classId": "cls_1792041880052",
+      "className": "Bizani gurux (B1+)",
       "room": "Room 101 (Green Room)"
     },
     {
       "id": "tt_2",
       "time": "10:00 - 11:30",
       "days": "Du-Chor-Jum",
-      "teacherId": "t_ravshanov_doniyor",
-      "teacherName": "Ravshanov Doniyor",
-      "classId": "cls_ravshanov_doniyor_cefr_1",
-      "className": "CEFR_1",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "classId": "cls_ethith_main",
+      "className": "IELTS Intensive (B2)",
       "room": "Room 102 (Blue Room)"
     },
     {
       "id": "tt_3",
       "time": "14:00 - 15:30",
       "days": "Se-Pay-Shan",
-      "teacherId": "t_urolov_azizbek",
-      "teacherName": "Azizbek Urolov",
-      "classId": "cls_urolov_azizbek_standard",
-      "className": "Standard",
+      "teacherId": "t_zizi",
+      "teacherName": "Zizi Ustoz",
+      "classId": "cls_1792041880052",
+      "className": "Bizani gurux (B1+)",
       "room": "Room 101 (Green Room)"
     },
     {
       "id": "tt_4",
       "time": "16:00 - 17:30",
       "days": "Se-Pay-Shan",
-      "teacherId": "t_ravshanov_doniyor",
-      "teacherName": "Ravshanov Doniyor",
-      "classId": "cls_ravshanov_doniyor_cefr_2",
-      "className": "CEFR_2",
+      "teacherId": "admin_official_teacher",
+      "teacherName": "Ustoz",
+      "classId": "cls_ethith_main",
+      "className": "IELTS Intensive (B2)",
       "room": "Room 102 (Blue Room)"
     }
   ],
@@ -102864,8 +102760,8 @@
       "id": "cnt_kuzgi_2026",
       "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
       "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
-      "startDate": 1793294080007,
-      "endDate": 1793985280007,
+      "startDate": 1792937768370,
+      "endDate": 1793628968370,
       "prizeCoins": 1000,
       "testId": "TST-7K2M9",
       "participants": {
@@ -102873,31 +102769,31 @@
           "name": "Ashurov Dilyorbek",
           "score": 95,
           "timeSec": 140,
-          "completedAt": 1793376880007
+          "completedAt": 1793020568370
         },
         "std_2": {
           "name": "Ergasheva Madina",
           "score": 92,
           "timeSec": 165,
-          "completedAt": 1793376980007
+          "completedAt": 1793020668370
         },
         "std_4": {
           "name": "JO‘RABOYEV MUXAMMADYUSUF",
           "score": 98,
           "timeSec": 110,
-          "completedAt": 1793377080007
+          "completedAt": 1793020768370
         },
         "std_5": {
           "name": "Jo'raboyev Javoxir",
           "score": 88,
           "timeSec": 180,
-          "completedAt": 1793377180007
+          "completedAt": 1793020868370
         },
         "std_6": {
           "name": "Mavlonova Ruxshona",
           "score": 85,
           "timeSec": 190,
-          "completedAt": 1793377280007
+          "completedAt": 1793020968370
         }
       },
       "status": "active"
@@ -102908,17 +102804,17 @@
       "std_1": {
         "status": "paid",
         "baseAmount": 200000,
-        "offsetAmount": 200014,
-        "paidAmount": 200014,
-        "paidAt": 1793121280007,
-        "verifiedBy": "auto_offset"
+        "offsetAmount": 200081,
+        "paidAmount": 200081,
+        "paidAt": 1793024274243,
+        "verifiedBy": "admin_manual"
       },
       "std_2": {
         "status": "paid",
         "baseAmount": 200000,
         "offsetAmount": 200028,
         "paidAmount": 200028,
-        "paidAt": 1793207680007,
+        "paidAt": 1792851368370,
         "verifiedBy": "auto_offset"
       },
       "std_3": {
@@ -102932,7 +102828,7 @@
         "baseAmount": 200000,
         "offsetAmount": 200056,
         "paidAmount": 200056,
-        "paidAt": 1793294080007,
+        "paidAt": 1792937768370,
         "verifiedBy": "auto_offset"
       },
       "std_5": {
@@ -102941,9 +102837,9 @@
         "offsetAmount": 200070,
         "paidAmount": 200070,
         "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
-        "paidAt": 1793373280007
+        "paidAt": 1793016968370
       }
     }
   },
-  "updatedAt": 1793391970178
+  "updatedAt": 1793392009920
 }
