@@ -24706,10 +24706,10 @@
         },
         "std_mix_416_selix": {
           "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
+          "paid": 300000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-10-31"
         },
         "std_mixswdasd_804_selixasdasd": {
           "fee": 300000,
@@ -26033,6 +26033,19 @@
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
       "updatedAt": 1793431308524
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793450240112
     }
   ],
   "p2pListings": [],
@@ -123841,7 +123854,9 @@
       "status": "active",
       "created": 1793431051291,
       "assignedClasses": [],
-      "classOrder": []
+      "classOrder": [],
+      "livePaidStudents": 1,
+      "computedLiveSalary": 150000
     }
   ],
   "fileExplorer": {
@@ -124084,5 +124099,5 @@
       }
     }
   },
-  "updatedAt": 1793450235269
+  "updatedAt": 1793450284082
 }
