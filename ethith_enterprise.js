@@ -150,13 +150,16 @@
       var tSavedMap = JSON.parse(localStorage.getItem('ethith_teacher_settings') || '{}');
       if (Array.isArray(appState.teachers)) {
         appState.teachers.forEach(function(t) {
-          if (tSavedMap[t.id]) {
-            if (tSavedMap[t.id].salarySharePercent !== undefined) t.salarySharePercent = tSavedMap[t.id].salarySharePercent;
+          if (t && tSavedMap[t.id]) {
+            if (tSavedMap[t.id].salarySharePercent !== undefined) t.salarySharePercent = Number(tSavedMap[t.id].salarySharePercent);
+            if (tSavedMap[t.id].studentMonthlyFee !== undefined) t.studentMonthlyFee = Number(tSavedMap[t.id].studentMonthlyFee);
+            if (tSavedMap[t.id].name) t.name = tSavedMap[t.id].name;
+            if (tSavedMap[t.id].subject) t.subject = tSavedMap[t.id].subject;
             if (tSavedMap[t.id].teachingHours !== undefined) t.teachingHours = tSavedMap[t.id].teachingHours;
             if (tSavedMap[t.id].hourlyRate !== undefined) t.hourlyRate = tSavedMap[t.id].hourlyRate;
             if (tSavedMap[t.id].unpaidMonths !== undefined) t.unpaidMonths = tSavedMap[t.id].unpaidMonths;
             if (tSavedMap[t.id].paidThisMonth !== undefined) t.paidThisMonth = tSavedMap[t.id].paidThisMonth;
-          } else {
+          } else if (t) {
             if (t.paidThisMonth === undefined) t.paidThisMonth = false;
             if (t.unpaidMonths === undefined) t.unpaidMonths = 0;
             if (t.salarySharePercent === undefined) t.salarySharePercent = 50;
@@ -5814,11 +5817,13 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(10px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;';
 
     var tests = (S.fileExplorer && S.fileExplorer.tests) || [];
+    var contestQuestions = [];
+    var currentMode = 'create'; // 'create' or 'select'
 
     function buildOptions(selectedId) {
       var curTests = ((getStore().fileExplorer && getStore().fileExplorer.tests) || []);
       if (curTests.length === 0) {
-        return '<option value="">(Hali testlar yaratilmagan — quyidagi tugmani bosing)</option>';
+        return '<option value="">(Hali oldingi testlar mavjud emas — quyida savollar tuzing)</option>';
       }
       return curTests.map(function(t) {
         var isSel = (t.id === selectedId) ? ' selected' : '';
@@ -5826,38 +5831,93 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       }).join('');
     }
 
-    m.innerHTML = '<div style="background:#0f172a;border:1px solid rgba(245,158,11,0.4);border-radius:22px;max-width:620px;width:100%;max-height:90vh;overflow-y:auto;padding:26px;color:#f8fafc;box-shadow:0 24px 60px rgba(0,0,0,0.8);">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">' +
+    m.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1.5px solid rgba(245,158,11,0.5);border-radius:24px;max-width:680px;width:100%;max-height:92vh;overflow-y:auto;padding:26px;color:#f8fafc;box-shadow:0 25px 70px rgba(0,0,0,0.85);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
         '<div style="display:flex;align-items:center;gap:10px;">' +
-          '<span style="font-size:24px;">🏆</span>' +
-          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fcd34d;">Yangi Musobaqa E‘lon Qilish</h3>' +
+          '<span style="font-size:26px;">🏆</span>' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fcd34d;">Yangi Musobaqa E‘lon Qilish &amp; Test Tuzish</h3>' +
+            '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">O‘qituvchi tomonidan test tuziladi va Top-5 o‘quvchiga avtomatik 1,000 Coin beriladi</div>' +
+          '</div>' +
         '</div>' +
-        '<button id="eeCloseContestModal" style="background:none;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">✕</button>' +
+        '<button id="eeCloseContestModal" style="background:transparent;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
       '</div>' +
 
       '<div style="margin-bottom:14px;">' +
         '<label style="display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-bottom:6px;">Musobaqa Nomi:</label>' +
-        '<input type="text" id="eeContestTitleInp" placeholder="Masalan: Haftalik IELTS Challenge & Grammar Battle..." style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;" />' +
+        '<input type="text" id="eeContestTitleInp" placeholder="Masalan: Haftalik IELTS Challenge &amp; Grammar Battle..." style="width:100%;padding:10px 14px;background:#0f172a;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;" />' +
       '</div>' +
 
       '<div style="margin-bottom:14px;">' +
         '<label style="display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-bottom:6px;">Tavsif va Qoidalar:</label>' +
-        '<textarea id="eeContestDescInp" rows="2" placeholder="Barcha guruh o‘quvchilari uchun test. Top-5 o‘rin olgan o‘quvchilarga 1000 coindan boshlab sovrin beriladi!" style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:13px;box-sizing:border-box;outline:none;resize:vertical;"></textarea>' +
+        '<textarea id="eeContestDescInp" rows="2" placeholder="Barcha guruh o‘quvchilari uchun test. Top-5 o‘rin olgan o‘quvchilarga 1000 coindan boshlab sovrin beriladi!" style="width:100%;padding:10px 14px;background:#0f172a;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-size:12.5px;box-sizing:border-box;outline:none;resize:vertical;"></textarea>' +
       '</div>' +
 
-      '<div style="margin-bottom:16px;">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">' +
-          '<label style="font-size:12px;font-weight:800;color:#38bdf8;">Musobaqa Testi (Quiz):</label>' +
-          '<button type="button" id="eeContestCreateQuizBtn" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid #38bdf8;padding:4px 10px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">➕ Yangi Quiz Test Yaratish</button>' +
+      // Mode Switcher: Inline Question Builder OR Select Existing
+      '<div style="margin-bottom:14px;">' +
+        '<label style="display:block;font-size:12px;font-weight:800;color:#38bdf8;margin-bottom:8px;">Musobaqa Testi (Quiz Tanlovi yoki Tuzish):</label>' +
+        '<div style="display:flex;gap:8px;background:#0f172a;padding:4px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);">' +
+          '<button type="button" id="eeModeCreateBtn" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">⚡ Yangi Test Savollarini Tuzish</button>' +
+          '<button type="button" id="eeModeSelectBtn" style="flex:1;background:transparent;color:#94a3b8;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">📁 Mavjud Testlardan Tanlash</button>' +
         '</div>' +
-        '<select id="eeContestTestSelect" style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:10px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;cursor:pointer;">' +
+      '</div>' +
+
+      // Section 1: Inline Quiz Question Builder (Active by default)
+      '<div id="eeContestCreateSection" style="background:rgba(56,189,248,0.06);border:1.5px solid rgba(56,189,248,0.3);border-radius:16px;padding:16px;margin-bottom:16px;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
+          '<span style="font-size:13px;font-weight:900;color:#38bdf8;">📝 Quiz Savol Konstruktori</span>' +
+          '<button type="button" id="eeOpenWaygroundBtn" style="background:rgba(245,158,11,0.15);color:#f59e0b;border:1px solid #f59e0b;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:800;cursor:pointer;">🎨 Katta Quiz Studio (Wayground)</button>' +
+        '</div>' +
+
+        '<div style="margin-bottom:10px;">' +
+          '<input type="text" id="eeInlineQText" placeholder="Savol matnini kiriting (masalan: Which tense expresses completed actions?)..." style="width:100%;padding:9px 12px;background:#0f172a;border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-size:13px;font-weight:700;box-sizing:border-box;outline:none;" />' +
+        '</div>' +
+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">' +
+          '<div style="display:flex;align-items:center;gap:6px;background:#0f172a;padding:4px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);">' +
+            '<input type="radio" name="eeInlineCorrect" value="0" id="eeRad0" checked style="cursor:pointer;" />' +
+            '<label for="eeRad0" style="font-weight:900;color:#38bdf8;font-size:12px;cursor:pointer;">A:</label>' +
+            '<input type="text" id="eeInlineOpt0" placeholder="A varianti..." style="background:transparent;border:none;color:#fff;font-size:12px;outline:none;width:100%;" />' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;gap:6px;background:#0f172a;padding:4px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);">' +
+            '<input type="radio" name="eeInlineCorrect" value="1" id="eeRad1" style="cursor:pointer;" />' +
+            '<label for="eeRad1" style="font-weight:900;color:#38bdf8;font-size:12px;cursor:pointer;">B:</label>' +
+            '<input type="text" id="eeInlineOpt1" placeholder="B varianti..." style="background:transparent;border:none;color:#fff;font-size:12px;outline:none;width:100%;" />' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;gap:6px;background:#0f172a;padding:4px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);">' +
+            '<input type="radio" name="eeInlineCorrect" value="2" id="eeRad2" style="cursor:pointer;" />' +
+            '<label for="eeRad2" style="font-weight:900;color:#38bdf8;font-size:12px;cursor:pointer;">C:</label>' +
+            '<input type="text" id="eeInlineOpt2" placeholder="C varianti..." style="background:transparent;border:none;color:#fff;font-size:12px;outline:none;width:100%;" />' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;gap:6px;background:#0f172a;padding:4px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);">' +
+            '<input type="radio" name="eeInlineCorrect" value="3" id="eeRad3" style="cursor:pointer;" />' +
+            '<label for="eeRad3" style="font-weight:900;color:#38bdf8;font-size:12px;cursor:pointer;">D:</label>' +
+            '<input type="text" id="eeInlineOpt3" placeholder="D varianti..." style="background:transparent;border:none;color:#fff;font-size:12px;outline:none;width:100%;" />' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="display:flex;justify-content:space-between;align-items:center;">' +
+          '<span style="font-size:11px;color:#94a3b8;">* To‘g‘ri javob oldidagi aylanani (radio) belgilang</span>' +
+          '<button type="button" id="eeInlineAddQBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 3px 12px rgba(16,185,129,0.35);">➕ Savolni Qo‘shish</button>' +
+        '</div>' +
+
+        // Added questions list box
+        '<div id="eeInlineAddedQuestionsBox" style="margin-top:12px;border-top:1px dashed rgba(255,255,255,0.1);padding-top:10px;display:flex;flex-direction:column;gap:8px;">' +
+          '<div style="font-size:11.5px;color:#64748b;text-align:center;">Hali savollar kiritilmadi. Yuqoridagi formadan savol qo‘shing.</div>' +
+        '</div>' +
+      '</div>' +
+
+      // Section 2: Select Existing Test (Initially Hidden)
+      '<div id="eeContestSelectSection" style="display:none;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px;margin-bottom:16px;">' +
+        '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">Mavjud Testlar Ro‘yxatidan Tanlang:</label>' +
+        '<select id="eeContestTestSelect" style="width:100%;padding:10px 14px;background:#0f172a;border:1px solid rgba(56,189,248,0.3);border-radius:10px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;cursor:pointer;">' +
           buildOptions() +
         '</select>' +
       '</div>' +
 
       '<div style="margin-bottom:16px;">' +
         '<label style="display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-bottom:6px;">Davomiyligi (Muddati):</label>' +
-        '<select id="eeContestDurationSelect" style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;cursor:pointer;">' +
+        '<select id="eeContestDurationSelect" style="width:100%;padding:10px 14px;background:#0f172a;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;cursor:pointer;">' +
           '<option value="3">3 kun</option>' +
           '<option value="7" selected>7 kun (1 hafta)</option>' +
           '<option value="14">14 kun (2 hafta)</option>' +
@@ -5884,12 +5944,105 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
 
     modalRoot.appendChild(m);
 
+    // Switch between Create and Select modes
+    var btnModeCreate = m.querySelector('#eeModeCreateBtn');
+    var btnModeSelect = m.querySelector('#eeModeSelectBtn');
+    var secCreate = m.querySelector('#eeContestCreateSection');
+    var secSelect = m.querySelector('#eeContestSelectSection');
+
+    btnModeCreate.onclick = function() {
+      currentMode = 'create';
+      btnModeCreate.style.background = 'linear-gradient(135deg,#0284c7,#2563eb)';
+      btnModeCreate.style.color = '#fff';
+      btnModeSelect.style.background = 'transparent';
+      btnModeSelect.style.color = '#94a3b8';
+      secCreate.style.display = 'block';
+      secSelect.style.display = 'none';
+    };
+
+    btnModeSelect.onclick = function() {
+      currentMode = 'select';
+      btnModeSelect.style.background = 'linear-gradient(135deg,#0284c7,#2563eb)';
+      btnModeSelect.style.color = '#fff';
+      btnModeCreate.style.background = 'transparent';
+      btnModeCreate.style.color = '#94a3b8';
+      secCreate.style.display = 'none';
+      secSelect.style.display = 'block';
+    };
+
+    // Render Added Questions in Inline List
+    var addedBox = m.querySelector('#eeInlineAddedQuestionsBox');
+    function renderInlineQuestionsList() {
+      if (contestQuestions.length === 0) {
+        addedBox.innerHTML = '<div style="font-size:11.5px;color:#64748b;text-align:center;">Hali savollar kiritilmadi. Yuqoridagi formadan savol qo‘shing.</div>';
+        return;
+      }
+      var h = '<div style="font-size:12px;font-weight:900;color:#34d399;margin-bottom:4px;">Kiritilgan savollar (' + contestQuestions.length + ' ta):</div>';
+      contestQuestions.forEach(function(q, i) {
+        var optLetter = String.fromCharCode(65 + (q.correct || 0));
+        var optText = q.options[q.correct || 0] || '';
+        h += '<div style="background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;">' +
+          '<div style="font-size:12px;color:#e2e8f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;">' +
+            '<b>' + (i + 1) + '.</b> ' + esc(q.q) + ' <span style="color:#10b981;font-weight:800;">[' + optLetter + ': ' + esc(optText) + ']</span>' +
+          '</div>' +
+          '<button type="button" class="ee-del-inline-q" data-qidx="' + i + '" style="background:none;border:none;color:#ef4444;font-size:13px;font-weight:900;cursor:pointer;">🗑️</button>' +
+        '</div>';
+      });
+      addedBox.innerHTML = h;
+
+      addedBox.querySelectorAll('.ee-del-inline-q').forEach(function(btn) {
+        btn.onclick = function() {
+          var qi = parseInt(btn.getAttribute('data-qidx'), 10);
+          contestQuestions.splice(qi, 1);
+          renderInlineQuestionsList();
+        };
+      });
+    }
+
+    // Add inline question click handler
+    m.querySelector('#eeInlineAddQBtn').onclick = function() {
+      var qText = m.querySelector('#eeInlineQText').value.trim();
+      var opt0 = m.querySelector('#eeInlineOpt0').value.trim();
+      var opt1 = m.querySelector('#eeInlineOpt1').value.trim();
+      var opt2 = m.querySelector('#eeInlineOpt2').value.trim();
+      var opt3 = m.querySelector('#eeInlineOpt3').value.trim();
+      var rad = m.querySelector('input[name="eeInlineCorrect"]:checked');
+      var correctIdx = rad ? parseInt(rad.value, 10) : 0;
+
+      if (!qText) { alert("Iltimos, savol matnini kiriting!"); return; }
+      if (!opt0 || !opt1) { alert("Kamida A va B variantlarini kiriting!"); return; }
+
+      var opts = [opt0, opt1];
+      if (opt2) opts.push(opt2); else opts.push('—');
+      if (opt3) opts.push(opt3); else opts.push('—');
+
+      contestQuestions.push({
+        id: 'q_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+        q: qText,
+        options: opts,
+        correct: correctIdx
+      });
+
+      // Clear input fields for next question
+      m.querySelector('#eeInlineQText').value = '';
+      m.querySelector('#eeInlineOpt0').value = '';
+      m.querySelector('#eeInlineOpt1').value = '';
+      m.querySelector('#eeInlineOpt2').value = '';
+      m.querySelector('#eeInlineOpt3').value = '';
+      m.querySelector('#eeInlineQText').focus();
+
+      renderInlineQuestionsList();
+      showToast("✓ " + contestQuestions.length + "-savol qo‘shildi!");
+    };
+
+    // Wayground Studio button launcher
     var sel = m.querySelector('#eeContestTestSelect');
-    m.querySelector('#eeContestCreateQuizBtn').onclick = function() {
+    m.querySelector('#eeOpenWaygroundBtn').onclick = function() {
       EE.openCreateTestModal(null, null, function(newTest) {
         sel.innerHTML = buildOptions(newTest.id);
         sel.value = newTest.id;
-        showToast("✓ Yaratilgan yangi test tanlandi!");
+        btnModeSelect.click();
+        showToast("✓ Quiz Studio orqali test biriktirildi!");
       });
     };
 
@@ -5899,20 +6052,49 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     m.querySelector('#eePublishContestBtn').onclick = function() {
       var title = m.querySelector('#eeContestTitleInp').value.trim();
       var desc = m.querySelector('#eeContestDescInp').value.trim();
-      var testId = sel.value;
       var days = parseInt(m.querySelector('#eeContestDurationSelect').value, 10) || 7;
+      var targetTestId = null;
 
       if (!title) { alert("Iltimos, musobaqa nomini kiriting!"); return; }
-      if (!testId) { alert("Iltimos, musobaqa uchun quiz test tanlang yoki yangi test yarating!"); return; }
 
       var S_cur = getStore();
+      if (!S_cur.fileExplorer) S_cur.fileExplorer = { tests: [], folders: [] };
+      if (!Array.isArray(S_cur.fileExplorer.tests)) S_cur.fileExplorer.tests = [];
+
+      if (currentMode === 'create') {
+        if (contestQuestions.length === 0) {
+          alert("Iltimos, musobaqa uchun kamida 1 ta savol tuzing yoki 'Mavjud Testlardan Tanlash' bo‘limidan test tanlang!");
+          return;
+        }
+        var curUser = getCurrentUser();
+        targetTestId = 'tst_' + Date.now();
+        var newTestObj = {
+          id: targetTestId,
+          title: title + ' (Quiz)',
+          type: 'standard_quiz',
+          folderId: 'f_root',
+          createdAt: Date.now(),
+          authorId: (curUser && curUser.id) || 'staff',
+          authorName: (curUser && curUser.name) || 'Ustoz',
+          maxAttempts: 1,
+          questions: contestQuestions
+        };
+        S_cur.fileExplorer.tests.push(newTestObj);
+      } else {
+        targetTestId = sel.value;
+        if (!targetTestId) {
+          alert("Iltimos, ro‘yxatdan test tanlang!");
+          return;
+        }
+      }
+
       if (!Array.isArray(S_cur.contests)) S_cur.contests = [];
 
       var newC = {
         id: 'cnt_' + Date.now(),
         title: title,
         desc: desc || "Top-5 eng yuqori natija qayd etgan o‘quvchilarga avtomatik Coin sovrinlari taqdim etiladi.",
-        testId: testId,
+        testId: targetTestId,
         startDate: Date.now(),
         endDate: Date.now() + (days * 86400000),
         participants: {},
@@ -5923,7 +6105,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       S_cur.contests.push(newC);
       saveStore();
       m.remove();
-      showToast("🎉 Yangi musobaqa muvaffaqiyatli e‘lon qilindi!");
+      showToast("🎉 Yangi musobaqa va uning quiz testi muvaffaqiyatli e‘lon qilindi!");
       if (container) EE.renderContestsView(container);
     };
   };

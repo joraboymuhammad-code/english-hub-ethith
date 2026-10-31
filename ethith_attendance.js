@@ -612,15 +612,30 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         if (!existing) {
           S.teachers.push(JSON.parse(JSON.stringify(initT)));
         } else {
-          // ALWAYS synchronize login, password, inviteCode, salarySharePercent, subject!
-          if (initT.inviteCode) existing.inviteCode = initT.inviteCode;
-          if (initT.login) existing.login = initT.login;
-          if (initT.password) existing.password = initT.password;
-          if (initT.salarySharePercent) existing.salarySharePercent = initT.salarySharePercent;
-          if (initT.subject) existing.subject = initT.subject;
+          // Synchronize credentials if missing, but NEVER overwrite user-saved salarySharePercent!
+          if (initT.inviteCode && !existing.inviteCode) existing.inviteCode = initT.inviteCode;
+          if (initT.login && !existing.login) existing.login = initT.login;
+          if (initT.password && !existing.password) existing.password = initT.password;
+          if (existing.salarySharePercent === undefined && initT.salarySharePercent !== undefined) existing.salarySharePercent = initT.salarySharePercent;
+          if (initT.subject && !existing.subject) existing.subject = initT.subject;
         }
       });
     }
+
+    // Overlay user-saved teacher settings from localStorage
+    try {
+      var tSettings = JSON.parse(localStorage.getItem('ethith_teacher_settings') || '{}');
+      S.teachers.forEach(function(t) {
+        if (t && tSettings[t.id]) {
+          if (tSettings[t.id].salarySharePercent !== undefined) {
+            t.salarySharePercent = Number(tSettings[t.id].salarySharePercent);
+          }
+          if (tSettings[t.id].studentMonthlyFee !== undefined) {
+            t.studentMonthlyFee = Number(tSettings[t.id].studentMonthlyFee);
+          }
+        }
+      });
+    } catch(e) {}
 
     // Strict filter: never include legacy mock "Ustoz" or "Zizi Ustoz"
     S.teachers = S.teachers.filter(function(t) {
@@ -2224,6 +2239,45 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         if (newPassword) storeT.password = newPassword;
         if (newCard) storeT.card = newCard;
         if (newPhone) storeT.phone = newPhone;
+      }
+
+      // 1. Save permanently to ethith_teacher_settings in localStorage so it never reverts
+      try {
+        var tSettingsMap = JSON.parse(localStorage.getItem('ethith_teacher_settings') || '{}');
+        if (!tSettingsMap[teacher.id]) tSettingsMap[teacher.id] = {};
+        tSettingsMap[teacher.id].salarySharePercent = newPct;
+        tSettingsMap[teacher.id].studentMonthlyFee = newFee;
+        tSettingsMap[teacher.id].name = newName;
+        tSettingsMap[teacher.id].subject = newSubject;
+        tSettingsMap[teacher.id].monthlySalary = calculatedSalary;
+        localStorage.setItem('ethith_teacher_settings', JSON.stringify(tSettingsMap));
+      } catch(e) {}
+
+      // 2. Update ETHITH_INITIAL_STORE in memory so re-renders won't reset it
+      if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
+        var initTMatch = window.ETHITH_INITIAL_STORE.teachers.find(function(it) { return it.id === teacher.id; });
+        if (initTMatch) {
+          initTMatch.name = newName;
+          initTMatch.subject = newSubject;
+          initTMatch.salarySharePercent = newPct;
+          initTMatch.studentMonthlyFee = newFee;
+          initTMatch.monthlySalary = calculatedSalary;
+        }
+      }
+
+      // 3. Update Enterprise memory store
+      if (window.EthithEnterprise && typeof window.EthithEnterprise.getStore === 'function') {
+        var eeSt = window.EthithEnterprise.getStore();
+        if (eeSt && Array.isArray(eeSt.teachers)) {
+          var eeT = eeSt.teachers.find(function(it) { return it.id === teacher.id; });
+          if (eeT) {
+            eeT.name = newName;
+            eeT.subject = newSubject;
+            eeT.salarySharePercent = newPct;
+            eeT.studentMonthlyFee = newFee;
+            eeT.monthlySalary = calculatedSalary;
+          }
+        }
       }
 
       if (Array.isArray(S.accounts)) {
