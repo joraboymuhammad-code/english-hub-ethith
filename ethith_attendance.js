@@ -1,3 +1,150 @@
+
+  // ============================================================================
+  // INFOBIP SMS GATEWAY & STUDENT MANAGEMENT EXTENSION
+  // ============================================================================
+  EA.INFOBIP_API_KEY = 'b2cd5f0b3779029fe4da0257852e9d29-b74258d1-ae6f-4c2d-a97d-7b33faf5fac2';
+
+  function normalizePhoneForSms(rawPhone) {
+    if (!rawPhone) return '';
+    var digits = String(rawPhone).replace(/\D/g, '');
+    if (digits.length === 9) digits = '998' + digits;
+    if (digits.startsWith('8') && digits.length === 10) digits = '998' + digits.slice(1);
+    return digits;
+  }
+  EA.normalizePhoneForSms = normalizePhoneForSms;
+
+  EA.sendInfobipSms = async function(recipients, messageText) {
+    var validDestinations = [];
+    (recipients || []).forEach(function(r) {
+      var p = normalizePhoneForSms(r.phone);
+      if (p && p.length >= 9) {
+        if (!validDestinations.some(function(vd) { return vd.to === p; })) {
+          validDestinations.push({ to: p, name: r.name || 'Ota-ona' });
+        }
+      }
+    });
+
+    if (validDestinations.length === 0) {
+      return { success: false, error: "Yaroqli telefon raqamlari topilmadi! Iltimos, o‘quvchilar profilida telefon raqami borligini tekshiring." };
+    }
+
+    var payload = {
+      messages: validDestinations.map(function(d) {
+        return {
+          from: 'ETHITH',
+          destinations: [{ to: d.to }],
+          text: messageText
+        };
+      })
+    };
+
+    try {
+      var res = await fetch('https://api.infobip.com/sms/2/text/advanced', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'App ' + EA.INFOBIP_API_KEY,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+      var data = await res.json().catch(function() { return {}; });
+      if (res.ok) {
+        return { success: true, count: validDestinations.length, data: data };
+      } else {
+        var errDetail = (data && data.requestError && data.requestError.serviceException && data.requestError.serviceException.text) || 
+                        (data && data.message) || res.statusText || 'SMS yuborishda xatolik yuz berdi';
+        return { success: false, error: errDetail, data: data };
+      }
+    } catch(err) {
+      return { success: false, error: err.message };
+    }
+  };
+
+  EA.deleteStudentCompletely = function(classId, studentId, studentName, onDone) {
+    var stName = studentName || "Ushbu o‘quvchi";
+    var confirmMsg = "Haqiqatan ham \"" + stName + "\"ni tizimdan va guruhdan butunlay o‘chirmoqchimisiz?\n\nUning login, parol va barcha shaxsiy ma'lumotlari butunlay o‘chiriladi.";
+    if (!confirm(confirmMsg)) return;
+
+    var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
+    var allClasses = getAvailableClasses();
+    var cls = allClasses.find(function(c) { return c.id === classId; });
+
+    if (cls && Array.isArray(cls.students)) {
+      var sIdx = cls.students.findIndex(function(s) {
+        return (s.id && s.id === studentId) || (s.email && s.email === studentId) || (s.login && s.login === studentId);
+      });
+
+      if (sIdx !== -1) {
+        var nextSlotNum = sIdx + 1;
+        var cleanTester = {
+          id: 'cls_' + cls.id + '_std_' + nextSlotNum + '_' + Date.now().toString(36).substr(-4),
+          name: 'tester_' + nextSlotNum,
+          email: 'tester_' + nextSlotNum + '_' + Date.now().toString(36).substr(-4) + '@ethith.uz',
+          role: 'student',
+          phone: '',
+          parentPhone: '',
+          login: '',
+          password: '',
+          joinedAt: new Date().toISOString().split('T')[0],
+          dailyMinutes: 0,
+          coins: 0,
+          isTester: true,
+          isOnline: false,
+          lastLogin: null
+        };
+        cls.students[sIdx] = cleanTester;
+      }
+
+      if (cls.customStudentNames) {
+        delete cls.customStudentNames[studentId];
+      }
+      if (cls.studentPayments) {
+        delete cls.studentPayments[studentId];
+      }
+
+      persistAttendance(cls);
+    }
+
+    // Purge from accounts list
+    if (Array.isArray(S_app.accounts)) {
+      S_app.accounts = S_app.accounts.filter(function(a) {
+        return (a.id !== studentId) && (a.login !== studentId) && (a.email !== studentId);
+      });
+    }
+
+    if (S_app.finance && S_app.finance.studentFees) {
+      delete S_app.finance.studentFees[studentId];
+    }
+
+    if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
+      window.EthithEnterprise.saveStore();
+    } else if (window.EthithApp && window.EthithApp.saveState) {
+      window.EthithApp.saveState();
+    }
+
+    if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') {
+      window.EthithSync.pushStoreUpdate();
+    }
+    if (window.EthithSync && typeof window.EthithSync.broadcastState === 'function') {
+      window.EthithSync.broadcastState('student_deleted');
+    }
+
+    var toastMsg = stName + " tizimdan muvaffaqiyatli o‘chirildi! 🗑️";
+    if (window.EthithApp && window.EthithApp.toast) {
+      window.EthithApp.toast(toastMsg);
+    } else {
+      alert(toastMsg);
+    }
+
+    if (typeof onDone === 'function') {
+      onDone();
+    } else {
+      var apView = document.getElementById('apView');
+      if (apView) EA.render(apView);
+    }
+  };
+
 /**
  * ETHITH ATTENDANCE (DAVOMAT), HOMEWORK AUTO-GRADER & QUANTUM-EDU ANALYTICS
  * - Shaffof Dark-Mode Glassmorphic Attendance & Automatic Grading Journal (No BSB/CHSB)
@@ -3398,22 +3545,7 @@ EA.render = function(container, preserveScrollLeft) {
           e.stopPropagation();
           var stId = btn.dataset.stid;
           var stName = btn.dataset.stname;
-          if (confirm("Haqiqatan ham " + stName + "ni ushbu guruhdan chiqarib yubormoqchimisiz?")) {
-            var stObj = (cls.students || []).find(function(s) { return (s.id || s.email) === stId; });
-            cls.students = (cls.students || []).filter(function(s) {
-              return (s.id || s.email) !== stId;
-            });
-            replenishTesterSlots(cls);
-            persistAttendance(cls);
-            if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
-              window.EthithEnterprise.saveStore();
-            }
-            broadcastStudentExpulsion(cls.id, stId, (stObj && stObj.email), (stObj && (stObj.phone || stObj.parentPhone)), stName);
-            if (window.EthithApp && window.EthithApp.toast) {
-              window.EthithApp.toast(stName + " guruhdan chiqarildi!");
-            }
-            EA.render(container);
-          }
+          EA.deleteStudentCompletely(cls.id, stId, stName);
         };
       });
     }
@@ -5556,6 +5688,14 @@ EA.render = function(container, preserveScrollLeft) {
     overlay.querySelector('#eaCloseEnrollModalBtn').onclick = function() { overlay.remove(); };
     overlay.querySelector('#eaCancelEnrollBtn').onclick = function() { overlay.remove(); };
 
+    var mDelBtn = overlay.querySelector('#eaModalDeleteStudentBtn');
+    if (mDelBtn && curSt) {
+      mDelBtn.onclick = function() {
+        overlay.remove();
+        EA.deleteStudentCompletely(classId, curSt.id, curSt.name);
+      };
+    }
+
     overlay.querySelector('#eaEnrollStudentForm').onsubmit = function(e) {
       e.preventDefault();
       var fn = fnInp.value.trim();
@@ -5968,6 +6108,7 @@ EA.render = function(container, preserveScrollLeft) {
           '</td>' +
           '<td style="padding:10px 14px;text-align:center;">' +
             '<button type="button" class="ea-btn-edit-student-creds" data-cid="' + esc(r.classId) + '" data-stid="' + esc(r.id) + '" title="Ma’lumotlarni tahrirlash" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.35);color:#38bdf8;border-radius:8px;padding:4px 9px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">✏️ Tahrirlash</button>' +
+            '<button type="button" class="ea-btn-delete-student-creds" data-cid="' + esc(r.classId) + '" data-stid="' + esc(r.id) + '" data-stname="' + esc(r.name) + '" title="O‘quvchini tizimdan butunlay o‘chirish" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#f87171;border-radius:8px;padding:4px 9px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;margin-left:6px;">🗑️ O‘chirish</button>' +
           '</td>' +
         '</tr>';
       });
@@ -6004,6 +6145,18 @@ EA.render = function(container, preserveScrollLeft) {
             var cid = b.getAttribute('data-cid');
             var stid = b.getAttribute('data-stid');
             EA.openStudentEnrollModal(cid, stid);
+          };
+        });
+
+        // Delete student from logins table
+        var delBtns = container.querySelectorAll('.ea-btn-delete-student-creds');
+        delBtns.forEach(function(b) {
+          b.onclick = function(e) {
+            e.stopPropagation();
+            var cid = b.getAttribute('data-cid');
+            var stid = b.getAttribute('data-stid');
+            var stname = b.getAttribute('data-stname');
+            EA.deleteStudentCompletely(cid, stid, stname);
           };
         });
 
@@ -6080,9 +6233,9 @@ EA.render = function(container, preserveScrollLeft) {
       '<div style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(217,119,6,0.1));border:1px solid rgba(245,158,11,0.35);border-radius:14px;padding:10px 14px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;font-size:12px;">' +
         '<div style="display:flex;align-items:center;gap:8px;">' +
           '<span style="font-size:16px;">🔌</span>' +
-          '<span><b>SMS Shlyuz:</b> PlayMobile / Eskiz.uz / SMS Pro</span>' +
+          '<span><b>SMS Shlyuz:</b> Infobip Global SMS Gateway</span>' +
         '</div>' +
-        '<span style="background:rgba(245,158,11,0.25);border:1px solid #f59e0b;color:#fde68a;padding:3px 8px;border-radius:8px;font-weight:900;font-size:11px;">🔑 Token kutish rejimida</span>' +
+        '<span style="background:rgba(16,185,129,0.2);border:1px solid #10b981;color:#6ee7b7;padding:3px 8px;border-radius:8px;font-weight:900;font-size:11px;">🟢 Infobip API Faol & Bog‘langan</span>' +
       '</div>' +
 
       // Recipient info
@@ -6117,7 +6270,7 @@ EA.render = function(container, preserveScrollLeft) {
 
         // Actions
         '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">' +
-          '<div style="font-size:11px;color:#94a3b8;">🔒 Token kiritilgach barcha SMSlar to‘g‘ridan-to‘g‘ri ota-onaning telefoniga yetib boradi.</div>' +
+          '<div style="font-size:11px;color:#94a3b8;">🔒 Infobip orqali SMS to‘g‘ridan-to‘g‘ri ota-onaning telefoniga yetib boradi.</div>' +
           '<div style="display:flex;align-items:center;gap:10px;">' +
             '<button type="button" id="eaCancelSmsBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
             '<button type="submit" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 18px rgba(245,158,11,0.4);display:inline-flex;align-items:center;gap:6px;">🚀 SMS Yuborish</button>' +
@@ -6315,7 +6468,7 @@ EA.render = function(container, preserveScrollLeft) {
     overlay.querySelector('#eaCloseAbsentSmsBtn').onclick = function() { overlay.remove(); };
     overlay.querySelector('#eaCancelAbsentSmsBtn').onclick = function() { overlay.remove(); };
 
-    overlay.querySelector('#eaSendAbsentSmsForm').onsubmit = function(e) {
+    overlay.querySelector('#eaSendAbsentSmsForm').onsubmit = async function(e) {
       e.preventDefault();
       var msg = ta.value.trim();
       if (!msg) {
@@ -6327,17 +6480,53 @@ EA.render = function(container, preserveScrollLeft) {
         localStorage.setItem('ethith_saved_absent_sms_template', msg);
       } catch(e) {}
 
-      var count = absentStudents.length;
-      overlay.remove();
+      var targets = absentStudents.slice();
+      if (targets.length === 0) {
+        // If no one is marked absent yet, offer to send to all registered students in the group
+        var registeredStudents = (curClass.students || []).filter(function(st) {
+          return !st.isTester && (st.parentPhone || st.phone);
+        });
+        if (registeredStudents.length > 0) {
+          if (confirm("Bugun hech kim kelmagan deb belgilanmagan. Xabarni ushbu guruhdagi barcha " + registeredStudents.length + " ta o‘quvchining ota-onasiga yuborasizmi?")) {
+            targets = registeredStudents;
+          } else {
+            return;
+          }
+        } else {
+          alert("Ushbu guruhda telefon raqami kiritilgan o‘quvchilar topilmadi!");
+          return;
+        }
+      }
 
-      var toastMsg = count > 0 
-        ? ("✅ " + count + " ta kelmagan o‘quvchining ota-onasiga SMS yuborildi! (Token kiritilgach real telefonlarga yetkaziladi)")
-        : "✅ Xabar saqlandi! Bugun kelmagan o‘quvchilar yo‘q.";
+      var recipients = targets.map(function(ast) {
+        return {
+          name: ast.name,
+          phone: ast.parentPhone || ast.phone
+        };
+      });
 
-      if (window.EthithApp && window.EthithApp.toast) {
-        window.EthithApp.toast(toastMsg);
+      var sBtn = overlay.querySelector('button[type="submit"]');
+      if (sBtn) {
+        sBtn.disabled = true;
+        sBtn.innerHTML = '⏳ Infobip orqali SMS yuborilmoqda...';
+      }
+
+      var res = await EA.sendInfobipSms(recipients, msg);
+      if (sBtn) {
+        sBtn.disabled = false;
+        sBtn.innerHTML = '🚀 Kelmaganlarga SMS Yuborish';
+      }
+
+      if (res.success) {
+        overlay.remove();
+        var toastMsg = "✅ " + res.count + " ta ota-onaga SMS Infobip orqali muvaffaqiyatli yuborildi!";
+        if (window.EthithApp && window.EthithApp.toast) {
+          window.EthithApp.toast(toastMsg);
+        } else {
+          alert(toastMsg);
+        }
       } else {
-        alert(toastMsg);
+        alert("⚠️ SMS yuborishda xatolik yuz berdi:\n" + (res.error || "Noma'lum xatolik"));
       }
     };
   };
