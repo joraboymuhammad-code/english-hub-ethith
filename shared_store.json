@@ -25775,6 +25775,31 @@
       "level": "A1",
       "joinedAt": 1793215171236,
       "title": "👑 IELTS Qiroli"
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793431046959
+    },
+    {
+      "id": "teacher_1793431051291",
+      "name": "Muhammadyusuf",
+      "login": "muhammadyusuf11",
+      "password": "muhammadyusuf2026",
+      "email": "muhammadyusuf11@ethith.uz",
+      "role": "teacher",
+      "teacherId": "teacher_1793431051291",
+      "subject": "Ingliz tili",
+      "salarySharePercent": 50,
+      "createdAt": 1793431051291
     }
   ],
   "p2pListings": [],
@@ -103914,6 +103939,23 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0
+    },
+    {
+      "id": "teacher_1793431051291",
+      "name": "Muhammadyusuf",
+      "login": "muhammadyusuf11",
+      "password": "muhammadyusuf2026",
+      "inviteCode": "MUHAMMADYUSUF11",
+      "email": "muhammadyusuf11@ethith.uz",
+      "subject": "Ingliz tili",
+      "hourlyRate": 100000,
+      "salarySharePercent": 50,
+      "teachingHours": 0,
+      "monthlyBonus": 0,
+      "status": "active",
+      "created": 1793431051291,
+      "assignedClasses": [],
+      "classOrder": []
     }
   ],
   "fileExplorer": {
@@ -103954,6 +103996,14 @@
         "parentId": null,
         "ownerRole": "teacher",
         "ownerId": "teacher_1793380078590",
+        "isSystem": true
+      },
+      {
+        "id": "f_root_teacher_1793431051291",
+        "name": "Muhammadyusuf (Mening Hujjatlarim)",
+        "parentId": null,
+        "ownerRole": "teacher",
+        "ownerId": "teacher_1793431051291",
         "isSystem": true
       }
     ],
@@ -104148,5 +104198,5 @@
       }
     }
   },
-  "updatedAt": 1793431042643
+  "updatedAt": 1793431053069
 }
