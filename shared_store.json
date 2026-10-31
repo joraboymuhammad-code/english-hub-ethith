@@ -103478,8 +103478,8 @@
         "page": 3033,
         "exercise": "4",
         "label": "5a",
-        "top": 27.5,
-        "left": 55,
+        "top": 26.5,
+        "left": 51.9,
         "width": 10,
         "height": 1.9,
         "correct": "Could"
@@ -103490,8 +103490,8 @@
         "page": 3033,
         "exercise": "4",
         "label": "5b",
-        "top": 27.5,
-        "left": 68.5,
+        "top": 26.3,
+        "left": 67.1,
         "width": 9,
         "height": 1.9,
         "correct": "couldn't"
@@ -103502,8 +103502,8 @@
         "page": 3033,
         "exercise": "4",
         "label": "6a",
-        "top": 32.5,
-        "left": 55,
+        "top": 31.3,
+        "left": 51.8,
         "width": 10,
         "height": 1.9,
         "correct": "Could"
@@ -103514,8 +103514,8 @@
         "page": 3033,
         "exercise": "4",
         "label": "6b",
-        "top": 32.5,
-        "left": 68.5,
+        "top": 31.6,
+        "left": 67.1,
         "width": 8,
         "height": 1.9,
         "correct": "could"
@@ -103526,8 +103526,8 @@
         "page": 3033,
         "exercise": "5",
         "label": "2",
-        "top": 42.5,
-        "left": 55,
+        "top": 41.1,
+        "left": 55.8,
         "width": 36.5,
         "height": 1.9,
         "correct": "Could people spend euros in 1995?"
@@ -103538,8 +103538,8 @@
         "page": 3033,
         "exercise": "5",
         "label": "3",
-        "top": 49,
-        "left": 57,
+        "top": 46.5,
+        "left": 57.3,
         "width": 34.5,
         "height": 1.9,
         "correct": "Yes, I can."
@@ -105837,7 +105837,7 @@
     "3030": 1793432724238,
     "3031": 1793432724239,
     "3032": 1793432778248,
-    "3033": 1793432791763,
+    "3033": 1793432801033,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -106601,5 +106601,5 @@
       }
     }
   },
-  "updatedAt": 1793432792390
+  "updatedAt": 1793432807079
 }
