@@ -25680,6 +25680,18 @@
       "isOnline": false,
       "lastLogin": null,
       "updatedAt": 1793475214247
+    },
+    {
+      "id": "teacher_1793475825095",
+      "name": "Azizbek Urolov",
+      "login": "azizbek55",
+      "password": "azizbek2026",
+      "email": "azizbek55@ethith.uz",
+      "role": "teacher",
+      "teacherId": "teacher_1793475825095",
+      "subject": "Ingliz tili",
+      "salarySharePercent": 55,
+      "createdAt": 1793475825095
     }
   ],
   "p2pListings": [],
@@ -123510,27 +123522,24 @@
       "unpaidMonths": 0
     },
     {
-      "id": "tc_oprlehyw5",
-      "name": "Zizi Ustoz",
-      "email": "strikeruzb52@gmail.com",
-      "login": "zizi24",
-      "password": "zizi2026",
-      "inviteCode": "ZIZI24",
-      "phone": "+998 93 987 65 43",
-      "card": "9860 7788 9900 1122",
-      "monthlySalary": 5500000,
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "hourlyRate": 85000,
-      "teachingHours": 64,
+      "id": "teacher_1793475825095",
+      "name": "Azizbek Urolov",
+      "login": "azizbek55",
+      "password": "azizbek2026",
+      "inviteCode": "AZIZBEK55",
+      "email": "azizbek55@ethith.uz",
+      "subject": "Ingliz tili",
+      "hourlyRate": 100000,
+      "salarySharePercent": 55,
+      "teachingHours": 0,
+      "monthlyBonus": 0,
+      "status": "active",
+      "created": 1793475825095,
+      "assignedClasses": [],
+      "classOrder": [],
       "paidThisMonth": false,
-      "subject": "Ingliz tili (Intermediate)",
-      "assignedClasses": [
-        "cls_1792041880052"
-      ],
-      "classOrder": [
-        "cls_1792041880052"
-      ]
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     }
   ],
   "fileExplorer": {
@@ -123579,6 +123588,14 @@
         "parentId": null,
         "ownerRole": "teacher",
         "ownerId": "teacher_1793431051291",
+        "isSystem": true
+      },
+      {
+        "id": "f_root_teacher_1793475825095",
+        "name": "Azizbek Urolov (Mening Hujjatlarim)",
+        "parentId": null,
+        "ownerRole": "teacher",
+        "ownerId": "teacher_1793475825095",
         "isSystem": true
       }
     ],
@@ -123730,5 +123747,5 @@
       }
     }
   },
-  "updatedAt": 1793475753289
+  "updatedAt": 1793475826933
 }
