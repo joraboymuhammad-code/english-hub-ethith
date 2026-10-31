@@ -142,49 +142,123 @@
       html += '</div>';
     }
 
-    // TAB 2: UNIT TESTS (1-12) - EMPTY PLACEHOLDER STATE
+    // TAB 2: UNIT TESTS (1-12) - TEACHER PDF VISUAL BUILDER & OXFORD TESTS
     else if (_activeNavTab === 'unitTests') {
-      html += '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(56,189,248,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
-        '<div style="font-size:48px;margin-bottom:12px;">📝</div>' +
-        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Unit testlar bo‘sh</h3>' +
-        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
-          'Ushbu bo‘lim hozircha bo‘sh holatda turibdi. Qaysi savollar qo‘shilishi belgilangandan so‘ng bu yerga barcha test savollari to‘liq joylashtiriladi va topshirish imkoniyati ochiladi.' +
-        '</p>' +
-        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);border-radius:12px;padding:6px 14px;color:#38bdf8;font-size:12px;font-weight:700;">' +
-          '⏳ Savollar kutilmoqda (Hozircha 0 ta savol)' +
+      var isTeacher = (S.user && (S.user.role === 'teacher' || S.user.role === 'admin'));
+      var customTests = S.customCurriculumTests || {};
+      var levelTitle = (_activeNavLevel === 'intermediate') ? 'B1+ Intermediate' : 'B2 Upper-Intermediate';
+
+      html += '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(56,189,248,0.35);border-radius:22px;padding:26px 28px;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">' +
+        '<div style="display:flex;align-items:center;gap:14px;">' +
+          '<div style="width:52px;height:52px;border-radius:14px;background:rgba(56,189,248,0.15);border:1.5px solid #38bdf8;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 0 16px rgba(56,189,248,0.3);">' +
+            '📝' +
+          '</div>' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+              '<h3 style="margin:0;font-size:19px;font-weight:900;color:#fff;">Oxford Navigate Unit Testlari (1–12)</h3>' +
+              '<span style="background:rgba(56,189,248,0.15);color:#38bdf8;font-size:11.5px;font-weight:800;padding:2px 10px;border-radius:10px;border:1px solid rgba(56,189,248,0.3);">' + levelTitle + '</span>' +
+            '</div>' +
+            '<p style="margin:4px 0 0;font-size:12.5px;color:#94a3b8;">Har bir unit bo‘yicha oraliq testlar. O‘qituvchi o‘z PDF testini yuklab, shaffof interaktiv katakchalar qo‘shishi mumkin.</p>' +
+          '</div>' +
         '</div>' +
+        (isTeacher ? '<div style="font-size:12px;color:#34d399;font-weight:800;background:rgba(16,185,129,0.12);padding:7px 14px;border-radius:10px;border:1px solid rgba(16,185,129,0.25);">👑 Ustoz / Admin boshqaruvi: istalgan Unitga PDF test yuklab tahrirlashingiz mumkin</div>' : '') +
       '</div>';
 
-      html += '<div class="eth-grid-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">';
+      html += '<div class="eth-grid-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px">';
       for (var uNum = 1; uNum <= 12; uNum++) {
-        html += '<div class="ap-card" style="padding:20px;border-radius:18px;border:1.5px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;">' +
-          '<div>' +
-            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">' +
-              '<span style="font-size:11px;font-weight:900;padding:3px 8px;border-radius:8px;background:rgba(56,189,248,0.12);color:#38bdf8;text-transform:uppercase">Unit ' + uNum + ' Test</span>' +
-              '<span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.06);color:var(--muted)">🔒 Bo‘sh</span>' +
-            '</div>' +
-            '<h4 style="margin:0 0 6px;font-size:16px;font-weight:800;color:var(--text)">Unit ' + uNum + ' Oraliq Test</h4>' +
-            '<p style="margin:0 0 12px;font-size:12.5px;color:var(--muted)">Savollar bazasi hali kiritilmagan.</p>' +
+        var testKey = _activeNavLevel + '_unit_' + uNum;
+        var customT = customTests[testKey];
+        var stdT = (curLevelData.unitTests && curLevelData.unitTests[uNum - 1]);
+        var userScore = (S.user && S.user.curriculumTestResults && S.user.curriculumTestResults[testKey]);
+
+        html += '<div class="ap-card" style="padding:22px;border-radius:20px;border:1.5px solid ' + (customT ? 'rgba(56,189,248,0.45)' : 'rgba(255,255,255,0.08)') + ';background:rgba(15,23,42,0.85);backdrop-filter:blur(16px);display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 10px 30px rgba(0,0,0,0.4);position:relative;overflow:hidden;">';
+        
+        if (customT) {
+          html += '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0284c7,#38bdf8);"></div>';
+        }
+
+        html += '<div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">' +
+            '<span style="font-size:11px;font-weight:900;padding:3px 10px;border-radius:8px;background:rgba(56,189,248,0.15);color:#38bdf8;text-transform:uppercase">Unit ' + uNum + ' Test</span>' +
+            (customT ? 
+              '<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:8px;background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);">📄 PDF Test (' + (customT.pages ? customT.pages.length : 1) + ' bet)</span>' :
+              '<span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;background:rgba(255,255,255,0.06);color:#94a3b8;">Standart</span>'
+            ) +
           '</div>' +
-          '<button type="button" class="ap-btn out" style="width:100%;padding:9px;font-size:12.5px;font-weight:800;border-radius:10px" onclick="alert(\'Ushbu test uchun hali savollar kiritilmagan. Savollarni kiritish kutilmoqda.\');">' +
-            '👁️ Ko‘rish (Bo‘sh)' +
-          '</button>' +
-        '</div>';
+
+          '<h4 style="margin:0 0 6px;font-size:16px;font-weight:900;color:#fff;">' + (customT ? esc(customT.title) : (stdT ? esc(stdT.title) : ('Unit ' + uNum + ' Test'))) + '</h4>' +
+          '<p style="margin:0 0 14px;font-size:12px;color:#94a3b8;line-height:1.5;">' +
+            (customT ? 
+              ('🎯 <b>' + (customT.elements ? customT.elements.length : 0) + ' ta savol</b> | Muallif: ' + esc(customT.authorName || 'Ustoz') + (customT.audioUrl ? ' | 🎧 Listening mavjud' : '')) :
+              (stdT ? ('📘 Standart Oxford testi (' + (stdT.questions ? stdT.questions.length : 12) + ' ta savol)') : 'Savollar yuklanishi mumkin')
+            ) +
+          '</p>';
+
+        if (userScore) {
+          html += '<div style="margin-bottom:12px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:6px 12px;display:flex;align-items:center;justify-content:space-between;font-size:12px;">' +
+            '<span style="color:#34d399;font-weight:700;">Natijangiz:</span>' +
+            '<span style="color:#34d399;font-weight:900;">' + userScore.scorePct + '% (' + (userScore.correctCount || 0) + '/' + (userScore.total || 0) + ')</span>' +
+          '</div>';
+        }
+
+        html += '</div>';
+
+        // Action Buttons
+        html += '<div style="display:flex;flex-direction:column;gap:8px;margin-top:14px;border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;">';
+        
+        if (customT) {
+          html += '<button type="button" class="ee-run-curriculum-test-btn" data-key="' + testKey + '" style="width:100%;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.4);">' +
+            '<span>▶️</span> Testni Ishlash (PDF)' +
+          '</button>';
+
+          if (isTeacher) {
+            html += '<div style="display:flex;gap:6px;">' +
+              '<button type="button" class="ee-edit-curriculum-test-btn" data-level="' + _activeNavLevel + '" data-type="unit" data-num="' + uNum + '" style="flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:7px 10px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;">' +
+                '<span>✏️</span> PDF Tahrirlovchi' +
+              '</button>' +
+              '<button type="button" class="ee-del-curriculum-test-btn" data-key="' + testKey + '" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);color:#f87171;padding:7px 12px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;" title="Ushbu PDF testni o‘chirish">' +
+                '🗑️' +
+              '</button>' +
+            '</div>';
+          }
+        } else {
+          if (stdT) {
+            html += '<button type="button" class="ap-btn solid" style="width:100%;padding:9px;font-size:12.5px;font-weight:800;border-radius:10px;background:#2563eb;color:#fff;" data-run-nav-test="' + stdT.id + '" data-level="' + _activeNavLevel + '" data-test-type="unit">' +
+              '▶️ Standart Testni Ishlash' +
+            '</button>';
+          }
+          if (isTeacher) {
+            html += '<button type="button" class="ee-add-curriculum-pdf-btn" data-level="' + _activeNavLevel + '" data-type="unit" data-num="' + uNum + '" style="width:100%;background:rgba(56,189,248,0.15);border:1.5px dashed #38bdf8;color:#38bdf8;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">' +
+              '<span>📤</span> PDF Test Yuklash & Tahrirlash' +
+            '</button>';
+          }
+        }
+
+        html += '</div></div>';
       }
       html += '</div>';
     }
 
-    // TAB 3: PROGRESS TESTS (1-4) - EMPTY PLACEHOLDER STATE
+    // TAB 3: PROGRESS TESTS (1-4) - TEACHER PDF VISUAL BUILDER & OXFORD TESTS
     else if (_activeNavTab === 'progressTests') {
-      html += '<div style="background:radial-gradient(circle at 10% 20%, rgba(139,92,246,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1px dashed rgba(168,85,247,0.35);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
-        '<div style="font-size:48px;margin-bottom:12px;">📈</div>' +
-        '<h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#fff;">Hozircha Progress testlar bo‘sh</h3>' +
-        '<p style="margin:0 auto;max-width:540px;font-size:13.5px;color:#94a3b8;line-height:1.6;">' +
-          'Har 3 ta unitdan keyin o‘tiladigan yirik progress testlar bo‘limi. Savollar ro‘yxati berilgandan so‘ng bu yerda to‘liq ochiladi.' +
-        '</p>' +
-        '<div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);border-radius:12px;padding:6px 14px;color:#c084fc;font-size:12px;font-weight:700;">' +
-          '⏳ Savollar kutilmoqda (Hozircha 0 ta savol)' +
+      var isTeacher = (S.user && (S.user.role === 'teacher' || S.user.role === 'admin'));
+      var customTests = S.customCurriculumTests || {};
+      var levelTitle = (_activeNavLevel === 'intermediate') ? 'B1+ Intermediate' : 'B2 Upper-Intermediate';
+
+      html += '<div style="background:radial-gradient(circle at 10% 20%, rgba(139,92,246,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(168,85,247,0.35);border-radius:22px;padding:26px 28px;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">' +
+        '<div style="display:flex;align-items:center;gap:14px;">' +
+          '<div style="width:52px;height:52px;border-radius:14px;background:rgba(168,85,247,0.15);border:1.5px solid #a855f7;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 0 16px rgba(168,85,247,0.3);">' +
+            '📈' +
+          '</div>' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+              '<h3 style="margin:0;font-size:19px;font-weight:900;color:#fff;">Oxford Navigate Progress Testlari (1–4)</h3>' +
+              '<span style="background:rgba(168,85,247,0.15);color:#c084fc;font-size:11.5px;font-weight:800;padding:2px 10px;border-radius:10px;border:1px solid rgba(168,85,247,0.3);">' + levelTitle + '</span>' +
+            '</div>' +
+            '<p style="margin:4px 0 0;font-size:12.5px;color:#94a3b8;">Har 3 ta unitdan keyin o‘tiladigan yirik oraliq progress imtihonlari. O‘qituvchi o‘z PDF testini yuklashi va tahrirlashi mumkin.</p>' +
+          '</div>' +
         '</div>' +
+        (isTeacher ? '<div style="font-size:12px;color:#c084fc;font-weight:800;background:rgba(168,85,247,0.12);padding:7px 14px;border-radius:10px;border:1px solid rgba(168,85,247,0.25);">👑 Ustoz / Admin boshqaruvi: istalgan Progress Testga PDF yuklab tahrirlashingiz mumkin</div>' : '') +
       '</div>';
 
       var pTestsNav = [
@@ -193,21 +267,78 @@
         { id: 3, units: 'Units 7–9', title: 'Progress Test 3' },
         { id: 4, units: 'Units 10–12', title: 'Progress Test 4' }
       ];
-      html += '<div class="eth-grid-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">';
+
+      html += '<div class="eth-grid-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px">';
       pTestsNav.forEach(function(pt) {
-        html += '<div class="ap-card" style="padding:22px;border-radius:20px;border:1.5px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;">' +
-          '<div>' +
-            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">' +
-              '<span style="font-size:11px;font-weight:900;padding:3px 10px;border-radius:10px;background:rgba(168,85,247,0.15);color:#c084fc;text-transform:uppercase">' + pt.units + '</span>' +
-              '<span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.06);color:var(--muted)">🔒 Bo‘sh</span>' +
-            '</div>' +
-            '<h4 style="margin:0 0 6px;font-size:17px;font-weight:900;color:var(--text)">' + pt.title + '</h4>' +
-            '<p style="margin:0 0 14px;font-size:12.5px;color:var(--muted)">Asosiy sinov progress imtihon savollari kutilmoqda.</p>' +
+        var testKey = _activeNavLevel + '_progress_' + pt.id;
+        var customPT = customTests[testKey];
+        var stdPT = (curLevelData.progressTests && curLevelData.progressTests[pt.id - 1]);
+        var userScore = (S.user && S.user.curriculumTestResults && S.user.curriculumTestResults[testKey]);
+
+        html += '<div class="ap-card" style="padding:22px;border-radius:20px;border:1.5px solid ' + (customPT ? 'rgba(168,85,247,0.45)' : 'rgba(255,255,255,0.08)') + ';background:rgba(15,23,42,0.85);backdrop-filter:blur(16px);display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 10px 30px rgba(0,0,0,0.4);position:relative;overflow:hidden;">';
+        
+        if (customPT) {
+          html += '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8b5cf6,#a855f7);"></div>';
+        }
+
+        html += '<div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">' +
+            '<span style="font-size:11px;font-weight:900;padding:3px 10px;border-radius:8px;background:rgba(168,85,247,0.15);color:#c084fc;text-transform:uppercase">' + pt.units + '</span>' +
+            (customPT ? 
+              '<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:8px;background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);">📄 PDF Test (' + (customPT.pages ? customPT.pages.length : 1) + ' bet)</span>' :
+              '<span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;background:rgba(255,255,255,0.06);color:#94a3b8;">Standart</span>'
+            ) +
           '</div>' +
-          '<button type="button" class="ap-btn out" style="width:100%;padding:9px;font-size:12.5px;font-weight:800;border-radius:10px" onclick="alert(\'Ushbu test uchun hali savollar kiritilmagan. Savollarni kiritish kutilmoqda.\');">' +
-            '👁️ Ko‘rish (Bo‘sh)' +
-          '</button>' +
-        '</div>';
+
+          '<h4 style="margin:0 0 6px;font-size:17px;font-weight:900;color:#fff;">' + (customPT ? esc(customPT.title) : (stdPT ? esc(stdPT.title) : pt.title)) + '</h4>' +
+          '<p style="margin:0 0 14px;font-size:12px;color:#94a3b8;line-height:1.5;">' +
+            (customPT ? 
+              ('🎯 <b>' + (customPT.elements ? customPT.elements.length : 0) + ' ta savol</b> | Muallif: ' + esc(customPT.authorName || 'Ustoz') + (customPT.audioUrl ? ' | 🎧 Listening mavjud' : '')) :
+              (stdPT ? ('📈 Standart Oxford Progress testi (' + (stdPT.questions ? stdPT.questions.length : 20) + ' ta savol)') : 'Savollar yuklanishi mumkin')
+            ) +
+          '</p>';
+
+        if (userScore) {
+          html += '<div style="margin-bottom:12px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:6px 12px;display:flex;align-items:center;justify-content:space-between;font-size:12px;">' +
+            '<span style="color:#34d399;font-weight:700;">Natijangiz:</span>' +
+            '<span style="color:#34d399;font-weight:900;">' + userScore.scorePct + '% (' + (userScore.correctCount || 0) + '/' + (userScore.total || 0) + ')</span>' +
+          '</div>';
+        }
+
+        html += '</div>';
+
+        // Action Buttons
+        html += '<div style="display:flex;flex-direction:column;gap:8px;margin-top:14px;border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;">';
+        
+        if (customPT) {
+          html += '<button type="button" class="ee-run-curriculum-test-btn" data-key="' + testKey + '" style="width:100%;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;border:none;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(124,58,237,0.4);">' +
+            '<span>▶️</span> Testni Ishlash (PDF)' +
+          '</button>';
+
+          if (isTeacher) {
+            html += '<div style="display:flex;gap:6px;">' +
+              '<button type="button" class="ee-edit-curriculum-test-btn" data-level="' + _activeNavLevel + '" data-type="progress" data-num="' + pt.id + '" style="flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;padding:7px 10px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;">' +
+                '<span>✏️</span> PDF Tahrirlovchi' +
+              '</button>' +
+              '<button type="button" class="ee-del-curriculum-test-btn" data-key="' + testKey + '" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);color:#f87171;padding:7px 12px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;" title="Ushbu PDF testni o‘chirish">' +
+                '🗑️' +
+              '</button>' +
+            '</div>';
+          }
+        } else {
+          if (stdPT) {
+            html += '<button type="button" class="ap-btn solid" style="width:100%;padding:9px;font-size:12.5px;font-weight:800;border-radius:10px;background:#7c3aed;color:#fff;" data-run-nav-test="' + stdPT.id + '" data-level="' + _activeNavLevel + '" data-test-type="progress">' +
+              '▶️ Standart Testni Ishlash' +
+            '</button>';
+          }
+          if (isTeacher) {
+            html += '<button type="button" class="ee-add-curriculum-pdf-btn" data-level="' + _activeNavLevel + '" data-type="progress" data-num="' + pt.id + '" style="width:100%;background:rgba(168,85,247,0.15);border:1.5px dashed #a855f7;color:#c084fc;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">' +
+              '<span>📤</span> PDF Test Yuklash & Tahrirlash' +
+            '</button>';
+          }
+        }
+
+        html += '</div></div>';
       });
       html += '</div>';
     }
@@ -330,6 +461,53 @@
           runExam(found, container);
         } else {
           alert("Test topilmadi.");
+        }
+      };
+    });
+
+    // Run Curriculum Visual PDF Test (Student / Teacher)
+    container.querySelectorAll('.ee-run-curriculum-test-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var key = btn.getAttribute('data-key');
+        var customTests = S.customCurriculumTests || {};
+        var tObj = customTests[key];
+        if (tObj && window.EE && typeof window.EE.openTakeTestModal === 'function') {
+          window.EE.openTakeTestModal(tObj);
+        } else {
+          alert("Visual test ma‘lumotlari topilmadi.");
+        }
+      };
+    });
+
+    // Add / Edit Curriculum Visual PDF Test (Teacher / Admin)
+    container.querySelectorAll('.ee-add-curriculum-pdf-btn, .ee-edit-curriculum-test-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var lvl = btn.getAttribute('data-level');
+        var type = btn.getAttribute('data-type');
+        var num = parseInt(btn.getAttribute('data-num'), 10);
+        if (window.EE && typeof window.EE.openCurriculumVisualTestBuilder === 'function') {
+          window.EE.openCurriculumVisualTestBuilder(lvl, type, num, function() {
+            renderNavigateView(container, _activeNavLevel, _activeNavTab);
+          });
+        } else {
+          alert("Visual Test tahrirlovchisi yuklanmadi.");
+        }
+      };
+    });
+
+    // Delete Curriculum Visual PDF Test (Teacher / Admin)
+    container.querySelectorAll('.ee-del-curriculum-test-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var key = btn.getAttribute('data-key');
+        if (confirm("Ushbu PDF testni rostdan ham o‘chirmoqchimisiz?")) {
+          if (S.customCurriculumTests) {
+            delete S.customCurriculumTests[key];
+            try {
+              localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(S.customCurriculumTests));
+            } catch(e) {}
+            if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+            renderNavigateView(container, _activeNavLevel, _activeNavTab);
+          }
         }
       };
     });

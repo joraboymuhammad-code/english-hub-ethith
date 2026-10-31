@@ -230,6 +230,16 @@
         appState.classes = window.EthithAttendance.classes;
       }
     }
+    if (!appState.customCurriculumTests) {
+      appState.customCurriculumTests = {};
+      try {
+        var localC = localStorage.getItem('ethith_custom_curriculum_tests');
+        if (localC) appState.customCurriculumTests = JSON.parse(localC);
+      } catch(e) {}
+      if (window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.customCurriculumTests) {
+        Object.assign(appState.customCurriculumTests, window.ETHITH_INITIAL_STORE.customCurriculumTests);
+      }
+    }
     return appState;
   }
 
@@ -237,6 +247,9 @@
     var st = getStore();
     try {
       localStorage.setItem('ethith_enterprise_store', JSON.stringify(st));
+      if (st.customCurriculumTests) {
+        localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(st.customCurriculumTests));
+      }
     } catch(e) {}
 
     // 1. In-memory & LocalStorage instant update (0.01ms - 0.05ms)
@@ -244,6 +257,7 @@
       if (st.finance) window.EthithApp.state.finance = st.finance;
       if (st.teachers) window.EthithApp.state.teachers = st.teachers;
       if (st.classes) window.EthithApp.state.classes = st.classes;
+      if (st.customCurriculumTests) window.EthithApp.state.customCurriculumTests = st.customCurriculumTests;
       if (typeof window.EthithApp.saveState === 'function') {
         window.EthithApp.saveState();
       }
@@ -1109,9 +1123,9 @@
   // ============================================================================
   // VISUAL OVERLAY INTERACTIVE TEST BUILDER (Rasm / PDF ustida shaffof tahrirlash)
   // ============================================================================
-  EE.openVisualTestBuilderModal = function(container, folderId) {
+  EE.openVisualTestBuilderModal = function(container, folderId, prefillTest, curriculumContext) {
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
-    var randCode = 'TST-' + Math.random().toString(36).substring(2, 6).toUpperCase() + Math.floor(Math.random() * 9 + 1);
+    var randCode = (prefillTest && prefillTest.id) ? prefillTest.id : ('TST-' + Math.random().toString(36).substring(2, 6).toUpperCase() + Math.floor(Math.random() * 9 + 1));
 
     var m = document.createElement('div');
     m.id = 'eeVisualBuilderOverlay';
@@ -1120,23 +1134,30 @@
     var defaultSvg = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200"><rect width="100%" height="100%" fill="#ffffff"/><rect x="40" y="40" width="820" height="1120" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/><text x="70" y="100" font-family="sans-serif" font-weight="900" font-size="28" fill="#0f172a">ETHITH ENGLISH TEST SHEET</text><text x="70" y="135" font-family="sans-serif" font-weight="600" font-size="16" fill="#64748b">Exercise 1: Read the sentences and fill in the missing grammar forms</text><line x1="70" y1="155" x2="830" y2="155" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="210" font-family="sans-serif" font-size="17" fill="#334155">1. By the time Sarah arrived, the train _________________ (already / leave).</text><text x="70" y="270" font-family="sans-serif" font-size="17" fill="#334155">2. If you study diligently every day, you _________________ (pass) the IELTS exam.</text><text x="70" y="330" font-family="sans-serif" font-size="17" fill="#334155">3. Neither John nor his friends _________________ (be) aware of the changes.</text><text x="70" y="390" font-family="sans-serif" font-size="17" fill="#334155">4. The CEO demanded that the report _________________ (submit) before noon.</text><text x="70" y="450" font-family="sans-serif" font-size="17" fill="#334155">5. I wish I _________________ (know) the truth earlier!</text><text x="70" y="520" font-family="sans-serif" font-weight="700" font-size="18" fill="#0f172a">Exercise 2: Choose the correct preposition or connector</text><line x1="70" y1="540" x2="830" y2="540" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="590" font-family="sans-serif" font-size="17" fill="#334155">6. She is extremely passionate [ about / with / for ] environmental protection.</text><text x="70" y="650" font-family="sans-serif" font-size="17" fill="#334155">7. Despite [ of the rain / the heavy rain / it was raining ], the match continued.</text><text x="70" y="710" font-family="sans-serif" font-size="17" fill="#334155">8. We arrived at the venue just [ in / on / at ] time for the opening speech.</text></svg>');
 
     // Array of pages: [ { pageNum: 1, imageUrl: '...', elements: [] }, ... ]
-    var pagesData = [
-      { pageNum: 1, imageUrl: defaultSvg, elements: [] }
-    ];
-    var currentWidthPx = 1000;
+    var pagesData = (prefillTest && prefillTest.pages && prefillTest.pages.length > 0) ?
+      JSON.parse(JSON.stringify(prefillTest.pages)) :
+      [ { pageNum: 1, imageUrl: defaultSvg, elements: [] } ];
+
+    var currentWidthPx = Math.min(1000, Math.max(760, Math.floor((window.innerWidth || 1000) * 0.94)));
     var activeTool = 'draw'; // 'draw' | 'lasso'
     var selectedPinKeys = new Set(); // set of "pIndex_elIndex"
-    var uploadedAudio = null; // { url, name, size, limit }
+    var uploadedAudio = (prefillTest && prefillTest.audioUrl) ?
+      { url: prefillTest.audioUrl, name: prefillTest.audioName || 'audio.mp3', size: 0, limit: prefillTest.audioLimit || 2 } :
+      null;
+
+    var prefillTitle = (curriculumContext && curriculumContext.title) || (prefillTest ? prefillTest.title : '');
+    var prefillAttempts = (prefillTest && prefillTest.maxAttempts) || 1;
 
     m.innerHTML = '' +
       // Topbar
       '<div style="height:64px;padding:0 16px;background:#0f172a;border-bottom:1px solid rgba(56,189,248,0.25);display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 4px 20px rgba(0,0,0,0.5);flex-shrink:0;z-index:50;flex-wrap:wrap;">' +
-        '<div style="display:flex;align-items:center;gap:10px;max-width:320px;flex:1;">' +
+        '<div style="display:flex;align-items:center;gap:10px;max-width:380px;flex:1;">' +
           '<div style="font-size:22px;line-height:1;">🎨</div>' +
-          '<input type="text" id="eeVisualTitle" placeholder="Test Nomi (masalan: Unit 1 Test B2)" style="width:100%;padding:7px 12px;background:#1e293b;border:1.5px solid rgba(56,189,248,0.3);border-radius:10px;color:#fff;font-weight:800;font-size:13px;outline:none;" />' +
+          '<input type="text" id="eeVisualTitle" placeholder="Test Nomi (masalan: Unit 1 Test B2)" value="' + esc(prefillTitle) + '" style="width:100%;padding:7px 12px;background:#1e293b;border:1.5px solid rgba(56,189,248,0.3);border-radius:10px;color:#fff;font-weight:800;font-size:13px;outline:none;" />' +
+          (curriculumContext ? '<span style="background:rgba(56,189,248,0.18);border:1px solid #38bdf8;padding:4px 8px;border-radius:8px;font-size:10.5px;font-weight:900;color:#38bdf8;white-space:nowrap;">Oxford</span>' : '') +
           '<div style="display:flex;align-items:center;gap:4px;flex-shrink:0;">' +
             '<span style="font-size:11px;color:#94a3b8;font-weight:700;">Urinish:</span>' +
-            '<input type="number" id="eeVisualAttempts" min="1" max="50" value="1" style="width:46px;padding:5px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-weight:900;font-size:12px;text-align:center;outline:none;" title="O‘quvchi necha marta ishlay oladi" />' +
+            '<input type="number" id="eeVisualAttempts" min="1" max="50" value="' + prefillAttempts + '" style="width:46px;padding:5px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-weight:900;font-size:12px;text-align:center;outline:none;" title="O‘quvchi necha marta ishlay oladi" />' +
           '</div>' +
         '</div>' +
 
@@ -1836,6 +1857,48 @@
 
       var S = getStore();
       var curU = getCurrentUser();
+
+      if (curriculumContext) {
+        var newCurTest = {
+          id: curriculumContext.testKey,
+          title: title,
+          type: 'visual_overlay',
+          isCurriculum: true,
+          isPublic: true,
+          level: curriculumContext.level,
+          testType: curriculumContext.testType,
+          unitOrProgressNum: curriculumContext.num,
+          createdAt: Date.now(),
+          authorId: curU ? curU.id : 'admin',
+          teacherId: curU ? curU.id : 'admin',
+          creatorId: curU ? curU.id : 'admin',
+          authorName: curU ? (curU.name || 'Ustoz') : 'Ustoz',
+          maxAttempts: attempts,
+          pages: pagesData,
+          imageUrl: (pagesData[0] && pagesData[0].imageUrl) ? pagesData[0].imageUrl : null,
+          elements: allElements,
+          audioUrl: uploadedAudio ? uploadedAudio.url : null,
+          audioName: uploadedAudio ? uploadedAudio.name : null,
+          audioLimit: audioLimit,
+          questions: allElements.map(function(el, i) {
+            return { id: el.id, q: (el.label || (i + 1)) + "-savol", correct: el.correct, points: 1 };
+          })
+        };
+
+        S.customCurriculumTests = S.customCurriculumTests || {};
+        S.customCurriculumTests[curriculumContext.testKey] = newCurTest;
+        try {
+          localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(S.customCurriculumTests));
+        } catch(e) {}
+        saveStore();
+        closeAll();
+        showToast("✓ " + title + " muvaffaqiyatli saqlandi!");
+        if (typeof curriculumContext.onSaved === 'function') {
+          curriculumContext.onSaved(newCurTest);
+        }
+        return;
+      }
+
       var defaultFid = (curU.role === 'teacher' && !isAdminOrTeacher() ? ('f_root_' + curU.id) : (curU.role === 'teacher' ? ('f_root_' + curU.id) : 'f_root'));
       
       var newTest = {
@@ -1866,6 +1929,28 @@
       showToast("✓ Interaktiv listening test saqlandi! Test ID: " + randCode);
       if (container) EE.renderExplorerView(container);
     };
+  };
+
+  // Dedicated Oxford Navigate Unit Test & Progress Test Visual PDF Builder
+  EE.openCurriculumVisualTestBuilder = function(level, testType, num, onSaved) {
+    var S = getStore();
+    var testKey = level + '_' + testType + '_' + num;
+    var existingTest = (S.customCurriculumTests && S.customCurriculumTests[testKey]) || null;
+    var levelLabel = (level === 'intermediate') ? 'B1+ Intermediate' : 'B2 Upper-Intermediate';
+    var defTitle = (testType === 'unit') ?
+      ('Unit ' + num + ' Test (' + levelLabel + ')') :
+      ('Progress Test ' + num + ': Units ' + (num === 1 ? '1–3' : num === 2 ? '4–6' : num === 3 ? '7–9' : '10–12') + ' (' + levelLabel + ')');
+
+    var curriculumContext = {
+      level: level,
+      testType: testType,
+      num: num,
+      testKey: testKey,
+      title: defTitle,
+      onSaved: onSaved
+    };
+
+    EE.openVisualTestBuilderModal(null, null, existingTest, curriculumContext);
   };
 
   EE.openCreateTestModal = function(container, folderId) {
@@ -2067,15 +2152,21 @@
     renderQuestions();
   };
 
-  EE.openTakeTestModal = function(testId) {
+  EE.openTakeTestModal = function(testIdOrObj) {
     var S = getStore();
-    var test = (S.fileExplorer.tests || []).find(function(t) { return t.id === testId; });
+    var test = null;
+    if (typeof testIdOrObj === 'object' && testIdOrObj !== null) {
+      test = testIdOrObj;
+    } else {
+      test = (S.fileExplorer.tests || []).find(function(t) { return t.id === testIdOrObj; }) ||
+             ((S.customCurriculumTests || {})[testIdOrObj]);
+    }
     if (!test) { alert("Test topilmadi!"); return; }
 
     var user = getCurrentUser();
     var isStaff = (user && (user.role === 'teacher' || user.role === 'admin'));
 
-    if (user && user.role === 'student') {
+    if (user && user.role === 'student' && !test.isCurriculum && !test.isPublic) {
       var myTeacherIds = [];
       (S.classes || []).forEach(function(cls) {
         var inClass = (cls.students || []).some(function(s) {
@@ -2324,7 +2415,7 @@
       pagesList.forEach(function(p) {
         var pBox = document.createElement('div');
         pBox.className = 'ee-take-page-box';
-        pBox.style.cssText = 'position:relative;width:' + currentWidthPx + 'px;background:#ffffff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.8);overflow:hidden;border:1px solid rgba(255,255,255,0.12);line-height:0;';
+        pBox.style.cssText = 'position:relative;width:' + currentWidthPx + 'px;max-width:98%;margin:0 auto;background:#ffffff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.8);overflow:hidden;border:1px solid rgba(255,255,255,0.12);line-height:0;';
 
         var pImg = document.createElement('img');
         pImg.src = p.imageUrl;
@@ -2341,6 +2432,10 @@
             w.innerHTML = '<span class="ee-chip-choose" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" data-selected="false" style="cursor:pointer;padding:2px 8px;border-radius:6px;font-size:13px;font-weight:800;color:#0284c7;user-select:none;transition:all 0.15s ease;">' + esc(el.label || el.correct || 'Tanlash') + '</span>';
           } else if (el.type === 'cross') {
             w.innerHTML = '<span class="ee-chip-cross" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" data-selected="false" style="cursor:pointer;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:800;color:#ef4444;user-select:none;transition:all 0.15s ease;">' + esc(el.label || el.correct || 'O‘chirish') + '</span>';
+          } else if (Array.isArray(el.options) && el.options.length > 0) {
+            var optHtml = '<option value="">-- Tanlang --</option>';
+            el.options.forEach(function(o) { optHtml += '<option value="' + esc(o) + '">' + esc(o) + '</option>'; });
+            w.innerHTML = '<select class="ee-take-input ee-take-select" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" style="width:100%;height:100%;background:rgba(255,255,255,0.95);border:1.5px solid #0284c7;border-radius:5px;padding:1px 4px;font-size:12px;font-weight:800;color:#0f172a;outline:none;box-sizing:border-box;cursor:pointer;">' + optHtml + '</select>';
           } else {
             w.innerHTML = '<input type="text" class="ee-take-input" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" placeholder="' + esc(el.label || '') + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width:100%;height:100%;background:rgba(255,255,255,0.92);border:1.5px solid #0284c7;border-radius:5px;padding:2px 6px;font-size:13.5px;font-weight:700;color:#0f172a;outline:none;box-sizing:border-box;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.15);" />';
           }
@@ -2354,11 +2449,14 @@
       });
 
       function applyTakeWidth(w) {
-        currentWidthPx = Math.max(650, Math.min(2200, w));
+        currentWidthPx = Math.max(500, Math.min(2200, w));
         takePagesWrap.querySelectorAll('.ee-take-page-box').forEach(function(b) {
           b.style.width = currentWidthPx + 'px';
         });
       }
+
+      var initFitW = Math.min(1000, Math.max(680, Math.floor((window.innerWidth || 1000) * 0.94)));
+      applyTakeWidth(initFitW);
 
       vm.querySelector('#eeTakeZoomIn').onclick = function() { applyTakeWidth(currentWidthPx + 150); };
       vm.querySelector('#eeTakeZoomOut').onclick = function() { applyTakeWidth(currentWidthPx - 150); };
@@ -2478,6 +2576,23 @@
             submittedAt: Date.now(),
             attemptsCount: newCount
           };
+          saveStore();
+        }
+
+        // Save Curriculum Test Result for student / user
+        if (user && (test.isCurriculum || test.id.includes('unit') || test.id.includes('progress'))) {
+          user.curriculumTestResults = user.curriculumTestResults || {};
+          user.curriculumTestResults[test.id] = {
+            scorePct: pct,
+            correctCount: correctCount,
+            total: totalCount,
+            band: band,
+            date: Date.now()
+          };
+          if (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) {
+            window.EthithApp.state.user.curriculumTestResults = user.curriculumTestResults;
+            if (typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
+          }
           saveStore();
         }
 
