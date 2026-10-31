@@ -19223,6 +19223,19 @@
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
       "updatedAt": 1793431308524
+    },
+    {
+      "id": "std_mixswdasd_804_selixasdasd",
+      "name": "Mixswdasd Selixasdasd",
+      "role": "student",
+      "login": "mixswdasd_804_selixasdasd",
+      "password": "mixswdasd804sel",
+      "phone": "+998950079621",
+      "parentPhone": "+998950079621",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793434960822
     }
   ],
   "p2pListings": [],
@@ -111459,8 +111472,8 @@
         "correct": [
           "go sightseeing"
         ],
-        "top": 79.5,
-        "left": 32,
+        "top": 77.1,
+        "left": 33.3,
         "width": 18,
         "height": 2.2
       },
@@ -113670,7 +113683,7 @@
     "3049": 1793433871906,
     "3050": 1793436815993,
     "3051": 1793436771760,
-    "3052": 1793436926842,
+    "3052": 1793437036946,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -114433,5 +114446,5 @@
       }
     }
   },
-  "updatedAt": 1793437017084
+  "updatedAt": 1793437037631
 }
