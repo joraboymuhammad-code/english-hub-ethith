@@ -109904,8 +109904,8 @@
           "didn't do"
         ],
         "correct": "didn't do",
-        "top": 85.8,
-        "left": 57,
+        "top": 84.8,
+        "left": 57.4,
         "width": 35,
         "height": 2.2
       },
@@ -109922,8 +109922,8 @@
           "saw not"
         ],
         "correct": "didn't see",
-        "top": 89.4,
-        "left": 57,
+        "top": 88.5,
+        "left": 57.2,
         "width": 35,
         "height": 2.2
       },
@@ -109940,9 +109940,482 @@
           "come"
         ],
         "correct": "come",
-        "top": 92.6,
-        "left": 57,
+        "top": 92.1,
+        "left": 57.5,
         "width": 35,
+        "height": 2.2
+      }
+    ],
+    "3049": [
+      {
+        "id": "p3049_ex5_2",
+        "type": "fill",
+        "x": 11,
+        "y": 15.2,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "We didn't stay in a hotel.",
+          "We didn't stay in a hotel"
+        ],
+        "top": 14.3,
+        "left": 11.2,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex5_3",
+        "type": "fill",
+        "x": 11,
+        "y": 18.6,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "The weather wasn't very good.",
+          "The weather wasn't very good"
+        ],
+        "top": 17.3,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex5_4",
+        "type": "fill",
+        "x": 11,
+        "y": 22,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "He didn't win the competition.",
+          "He didn't win the competition"
+        ],
+        "top": 20.8,
+        "left": 11.1,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex5_5",
+        "type": "fill",
+        "x": 11,
+        "y": 25.4,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "You weren't late for work.",
+          "You weren't late for work"
+        ],
+        "top": 24.1,
+        "left": 11.3,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex5_6",
+        "type": "fill",
+        "x": 11,
+        "y": 28.8,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "I didn't ski at the weekend.",
+          "I didn't ski at the weekend"
+        ],
+        "top": 27.9,
+        "left": 11.1,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_2a",
+        "type": "fill",
+        "x": 14.5,
+        "y": 44,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "didn't go"
+        ],
+        "top": 44,
+        "left": 14.5,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_2b",
+        "type": "fill",
+        "x": 14.5,
+        "y": 45.8,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "went"
+        ],
+        "top": 45.8,
+        "left": 14.5,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_3a",
+        "type": "fill",
+        "x": 15,
+        "y": 50.8,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "didn't do"
+        ],
+        "top": 50.8,
+        "left": 15,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_3b",
+        "type": "fill",
+        "x": 15,
+        "y": 52.6,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "did"
+        ],
+        "top": 52.6,
+        "left": 15,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_4a",
+        "type": "fill",
+        "x": 14.5,
+        "y": 57,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "took"
+        ],
+        "top": 57,
+        "left": 14.5,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_4b",
+        "type": "fill",
+        "x": 14.5,
+        "y": 58.8,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "didn't take"
+        ],
+        "top": 58.8,
+        "left": 14.5,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_5a",
+        "type": "fill",
+        "x": 15,
+        "y": 63.8,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "didn't lend"
+        ],
+        "top": 63.8,
+        "left": 15,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_5b",
+        "type": "fill",
+        "x": 15,
+        "y": 65.6,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "lent"
+        ],
+        "top": 65.6,
+        "left": 15,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_6a",
+        "type": "fill",
+        "x": 23.5,
+        "y": 70,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "didn't start"
+        ],
+        "top": 70,
+        "left": 23.5,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_6b",
+        "type": "fill",
+        "x": 14.5,
+        "y": 71.8,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "started"
+        ],
+        "top": 71.8,
+        "left": 14.5,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_7a",
+        "type": "fill",
+        "x": 15,
+        "y": 76.8,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "played"
+        ],
+        "top": 76.8,
+        "left": 15,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex6_7b",
+        "type": "fill",
+        "x": 15,
+        "y": 78.6,
+        "w": 13,
+        "h": 2.2,
+        "correct": [
+          "didn't play"
+        ],
+        "top": 78.6,
+        "left": 15,
+        "width": 13,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_2",
+        "type": "fill",
+        "x": 61.5,
+        "y": 26.2,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "didn't live"
+        ],
+        "top": 26.2,
+        "left": 61.5,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_3",
+        "type": "fill",
+        "x": 61.5,
+        "y": 27.8,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "ran"
+        ],
+        "top": 27.8,
+        "left": 61.5,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_4",
+        "type": "fill",
+        "x": 59.5,
+        "y": 31.8,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "wanted"
+        ],
+        "top": 31.8,
+        "left": 59.5,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_5",
+        "type": "fill",
+        "x": 59.5,
+        "y": 33.2,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "didn't think"
+        ],
+        "top": 33.2,
+        "left": 59.5,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_6",
+        "type": "fill",
+        "x": 69.5,
+        "y": 34.8,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "didn't agree"
+        ],
+        "top": 34.8,
+        "left": 69.5,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_7",
+        "type": "fill",
+        "x": 58.5,
+        "y": 36.3,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "didn't stop"
+        ],
+        "top": 36.3,
+        "left": 58.5,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_8",
+        "type": "fill",
+        "x": 68,
+        "y": 39.4,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "began"
+        ],
+        "top": 39.4,
+        "left": 68,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_9",
+        "type": "fill",
+        "x": 70,
+        "y": 41,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "entered"
+        ],
+        "top": 41,
+        "left": 70,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_10",
+        "type": "fill",
+        "x": 74.5,
+        "y": 44.2,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "didn't win"
+        ],
+        "top": 44.2,
+        "left": 74.5,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_11",
+        "type": "fill",
+        "x": 59.5,
+        "y": 47.8,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "didn't want"
+        ],
+        "top": 47.8,
+        "left": 59.5,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_12",
+        "type": "fill",
+        "x": 58.5,
+        "y": 49.4,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "decided"
+        ],
+        "top": 49.4,
+        "left": 58.5,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_13",
+        "type": "fill",
+        "x": 75,
+        "y": 51,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "started"
+        ],
+        "top": 51,
+        "left": 75,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_14",
+        "type": "fill",
+        "x": 70.5,
+        "y": 54,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "opened"
+        ],
+        "top": 54,
+        "left": 70.5,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3049_ex7_15",
+        "type": "fill",
+        "x": 65.5,
+        "y": 57,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "didn't have",
+          "don't have"
+        ],
+        "top": 57,
+        "left": 65.5,
+        "width": 12,
         "height": 2.2
       }
     ],
@@ -111928,7 +112401,8 @@
     "3045": 1793433620155,
     "3046": 1793433722009,
     "3047": 1793433722010,
-    "3048": 1793433820054,
+    "3048": 1793433823549,
+    "3049": 1793433832408,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -112691,5 +113165,5 @@
       }
     }
   },
-  "updatedAt": 1793433821018
+  "updatedAt": 1793433833225
 }
