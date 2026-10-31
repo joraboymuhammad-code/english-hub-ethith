@@ -24391,8 +24391,8 @@
         "records": {
           "2026-10-27": {
             "std_mix_416_selix": {
-              "status": "Q",
-              "score": "2"
+              "status": "",
+              "score": ""
             }
           }
         },
@@ -24420,7 +24420,7 @@
             "teacherName": "Muhammadyusuf"
           }
         },
-        "updatedAt": 1793434221734
+        "updatedAt": 1793434223118
       },
       "customStudentPhones": {},
       "activeHomework": {
@@ -120359,5 +120359,5 @@
       }
     }
   },
-  "updatedAt": 1793434221890
+  "updatedAt": 1793434226186
 }
