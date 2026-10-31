@@ -24083,7 +24083,7 @@
       "code": "ETH-6KJT5Q",
       "name": "zsczxc",
       "teacher": "Muhammadyusuf",
-      "teacherId": "",
+      "teacherId": "teacher_1793380078590",
       "teacherName": "Biriktirilmagan",
       "room": "302-xona",
       "schedule": "har_kuni",
@@ -25775,19 +25775,6 @@
       "level": "A1",
       "joinedAt": 1793215171236,
       "title": "👑 IELTS Qiroli"
-    },
-    {
-      "id": "std_mix_416_selix",
-      "name": "Mix Selix",
-      "role": "student",
-      "login": "mix_416_selix",
-      "password": "mix416sel",
-      "phone": "91`23891738213",
-      "parentPhone": "91`23891738213",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null,
-      "updatedAt": 1793392017773
     }
   ],
   "p2pListings": [],
@@ -102845,5 +102832,5 @@
       }
     }
   },
-  "updatedAt": 1793392021049
+  "updatedAt": 1793424118610
 }
