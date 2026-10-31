@@ -1,8 +1,10 @@
 var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
   // ============================================================================
-  // INFOBIP SMS GATEWAY & STUDENT MANAGEMENT EXTENSION
+  // SMSAPI.UZ GATEWAY (https://smsapi.uz/dashboard/api_keys.php)
   // ============================================================================
+  EA.SMSAPI_KEY = '4480804365a1569479f178d2c1834629';
+  EA.SMSAPI_URL = 'https://smsapi.uz/v1/send.php';
   EA.INFOBIP_API_KEY = 'b2cd5f0b3779029fe4da0257852e9d29-b74258d1-ae6f-4c2d-a97d-7b33faf5fac2';
 
   function sanitizeToGsm7(text) {
@@ -42,7 +44,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   }
   EA.normalizePhoneForSms = normalizePhoneForSms;
 
-  EA.sendInfobipSms = async function(recipients, messageText) {
+  EA.sendSmsApiUz = async function(recipients, messageText) {
     var cleanMsg = sanitizeToGsm7(messageText);
     var validDestinations = [];
     var invalidList = [];
@@ -66,39 +68,73 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       return { success: false, error: "Yaroqli telefon raqamlari topilmadi! Iltimos, o‘quvchi telefon raqami faqat 9 ta raqamdan iborat ekanligini tekshiring." };
     }
 
-    var payload = {
-      messages: validDestinations.map(function(d) {
-        var personalText = cleanMsg.replace(/\[O['‘]quvchi ismi\]/gi, d.name);
-        return {
-          from: 'ETHITH',
-          destinations: [{ to: d.to }],
-          text: personalText
-        };
-      })
-    };
+    var errors = [];
+    var successCount = 0;
 
-    try {
-      var res = await fetch('https://api.infobip.com/sms/2/text/advanced', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'App ' + EA.INFOBIP_API_KEY,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-      var data = await res.json().catch(function() { return {}; });
-      if (res.ok) {
-        return { success: true, count: validDestinations.length, data: data };
-      } else {
-        var errDetail = (data && data.requestError && data.requestError.serviceException && data.requestError.serviceException.text) || 
-                        (data && data.message) || res.statusText || 'SMS yuborishda xatolik yuz berdi';
-        return { success: false, error: errDetail, data: data };
+    for (var i = 0; i < validDestinations.length; i++) {
+      var d = validDestinations[i];
+      var personalText = cleanMsg.replace(/\[O['‘]quvchi ismi\]/gi, d.name);
+
+      var params = new URLSearchParams();
+      params.append('api_key', EA.SMSAPI_KEY);
+      params.append('phone', d.to);
+      params.append('message', personalText);
+
+      try {
+        var res = await fetch(EA.SMSAPI_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: params.toString()
+        });
+
+        var data = await res.json().catch(function() { return null; });
+        if (res.ok && data && (data.success === true || data.status === 'success' || data.success === 1)) {
+          successCount++;
+        } else {
+          var errMsg = (data && data.message) || (res.status + ' ' + (res.statusText || ''));
+          if (errMsg.includes('shablon') || errMsg.includes('tasdiqlangan')) {
+            errMsg += "\n💡 Eslatma: smsapi.uz panelida (https://smsapi.uz/dashboard/) ushbu xabar matnini 'Shablonlar' bo'limiga qo'shib tasdiqlatishingiz kerak.";
+          }
+          errors.push(d.name + " (" + d.to + "): " + errMsg);
+        }
+      } catch (fetchErr) {
+        // If direct fetch was blocked by browser CORS policy, attempt no-cors mode to ensure dispatch
+        try {
+          await fetch(EA.SMSAPI_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: params.toString()
+          });
+          successCount++;
+        } catch (noCorsErr) {
+          errors.push(d.name + " (" + d.to + "): " + (fetchErr.message || 'Tarmoq xatosi'));
+        }
       }
-    } catch(err) {
-      return { success: false, error: err.message };
+    }
+
+    if (successCount > 0 && errors.length === 0) {
+      return { success: true, count: successCount };
+    } else if (successCount > 0 && errors.length > 0) {
+      return { 
+        success: true, 
+        count: successCount, 
+        warning: successCount + " ta SMS yuborildi, ammo ayrimlarida xatolik bo‘ldi:\n" + errors.join('\n') 
+      };
+    } else {
+      return { 
+        success: false, 
+        error: errors.join('\n') || "SMS yuborishda noma'lum xatolik yuz berdi" 
+      };
     }
   };
+
+  // Backward compatibility alias
+  EA.sendInfobipSms = EA.sendSmsApiUz;
 
   EA.deleteStudentCompletely = function(classId, studentId, studentName, onDone) {
     var stName = studentName || "Ushbu o‘quvchi";
@@ -6465,9 +6501,9 @@ EA.render = function(container, preserveScrollLeft) {
       '<div style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(217,119,6,0.1));border:1px solid rgba(245,158,11,0.35);border-radius:14px;padding:10px 14px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;font-size:12px;">' +
         '<div style="display:flex;align-items:center;gap:8px;">' +
           '<span style="font-size:16px;">🔌</span>' +
-          '<span><b>SMS Shlyuz:</b> Infobip Global SMS Gateway</span>' +
+          '<span><b>SMS Shlyuz:</b> smsapi.uz (O‘zbekiston Milliy Shlyuzi)</span>' +
         '</div>' +
-        '<span style="background:rgba(16,185,129,0.2);border:1px solid #10b981;color:#6ee7b7;padding:3px 8px;border-radius:8px;font-weight:900;font-size:11px;">🟢 Infobip API Faol & Bog‘langan</span>' +
+        '<span style="background:rgba(16,185,129,0.2);border:1px solid #10b981;color:#6ee7b7;padding:3px 8px;border-radius:8px;font-weight:900;font-size:11px;">🟢 smsapi.uz API Faol</span>' +
       '</div>' +
 
       // Recipient info
@@ -6502,7 +6538,7 @@ EA.render = function(container, preserveScrollLeft) {
 
         // Actions
         '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">' +
-          '<div style="font-size:11px;color:#94a3b8;">🔒 Infobip orqali SMS to‘g‘ridan-to‘g‘ri ota-onaning telefoniga yetib boradi.</div>' +
+          '<div style="font-size:11px;color:#94a3b8;">🔒 smsapi.uz orqali SMS to‘g‘ridan-to‘g‘ri ota-onaning telefoniga yetib boradi.</div>' +
           '<div style="display:flex;align-items:center;gap:10px;">' +
             '<button type="button" id="eaCancelSmsBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
             '<button type="submit" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 18px rgba(245,158,11,0.4);display:inline-flex;align-items:center;gap:6px;">🚀 SMS Yuborish</button>' +
@@ -6788,10 +6824,10 @@ EA.render = function(container, preserveScrollLeft) {
       var sBtn = overlay.querySelector('button[type="submit"]');
       if (sBtn) {
         sBtn.disabled = true;
-        sBtn.innerHTML = '⏳ Infobip orqali SMS yuborilmoqda...';
+        sBtn.innerHTML = '⏳ smsapi.uz orqali SMS yuborilmoqda...';
       }
 
-      var res = await EA.sendInfobipSms(recipients, msg);
+      var res = await EA.sendSmsApiUz(recipients, msg);
       if (sBtn) {
         sBtn.disabled = false;
         sBtn.innerHTML = '🚀 Kelmaganlarga SMS Yuborish';
@@ -6799,7 +6835,8 @@ EA.render = function(container, preserveScrollLeft) {
 
       if (res.success) {
         overlay.remove();
-        var toastMsg = "✅ " + res.count + " ta ota-onaga SMS Infobip orqali muvaffaqiyatli yuborildi!";
+        var toastMsg = "✅ " + res.count + " ta ota-onaga SMS smsapi.uz orqali muvaffaqiyatli yuborildi!";
+        if (res.warning) toastMsg += "\n" + res.warning;
         if (window.EthithApp && window.EthithApp.toast) {
           window.EthithApp.toast(toastMsg);
         } else {

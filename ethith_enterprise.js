@@ -5274,7 +5274,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
           '<button id="eeExportLevelDoc" style="background:#0284c7;color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">📄 Word (.doc)</button>' +
         '</div>' +
         '<div style="display:flex;gap:10px;flex-wrap:wrap;">' +
-          (isTeacher ? '<button id="eeSendFailedSmsBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(245,158,11,0.35);" title="Imtihondan yiqilgan o‘quvchilarning ota-onalariga Infobip orqali avtomatik SMS yuborish">📱 Yiqilganlarga SMS Yuborish</button>' : '') +
+          (isTeacher ? '<button id="eeSendFailedSmsBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(245,158,11,0.35);" title="Imtihondan yiqilgan o‘quvchilarning ota-onalariga smsapi.uz orqali avtomatik SMS yuborish">📱 Yiqilganlarga SMS Yuborish</button>' : '') +
           (isTeacher ? '<button id="eeDropFailedStudentsBtn" style="background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(239,68,68,0.4);">⚠️ Yiqilgan o‘quvchilarni guruhdan chiqarish</button>' : '') +
         '</div>' +
       '</div>' +
@@ -5426,7 +5426,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       };
     });
 
-    // Automatic SMS to Failed Students via Infobip API
+    // Automatic SMS to Failed Students via smsapi.uz API
     var sendFailedSmsBtn = m.querySelector('#eeSendFailedSmsBtn');
     if (sendFailedSmsBtn) {
       sendFailedSmsBtn.onclick = async function() {
@@ -5449,7 +5449,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
           return;
         }
 
-        var confirmText = "Jami " + failedList.length + " nafar yiqilgan o‘quvchining ota-onalariga Infobip orqali avtomatik SMS xabar yuborilsinmi?\n\n" +
+        var confirmText = "Jami " + failedList.length + " nafar yiqilgan o‘quvchining ota-onalariga smsapi.uz orqali avtomatik SMS xabar yuborilsinmi?\n\n" +
           "Xabar namunasi:\n" +
           "\"Hurmatli ota-ona! Farzandingiz ETHITH o'quv markazida " + (cls.name || 'guruh') + " bo'yicha 3 oylik Level Test imtihonidan o'ta olmadi. Iltimos, o'qituvchi bilan bog'laning.\"";
 
@@ -5458,7 +5458,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
         sendFailedSmsBtn.disabled = true;
         sendFailedSmsBtn.innerHTML = '⏳ SMS yuborilmoqda...';
 
-        var sendFn = (window.EA && window.EA.sendInfobipSms) || (window.EthithAttendance && window.EthithAttendance.sendInfobipSms);
+        var sendFn = (window.EA && window.EA.sendSmsApiUz) || (window.EA && window.EA.sendInfobipSms) || (window.EthithAttendance && window.EthithAttendance.sendSmsApiUz);
         if (typeof sendFn !== 'function') {
           alert("SMS yuborish moduli yuklanmagan!");
           sendFailedSmsBtn.disabled = false;
@@ -5470,7 +5470,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
         try {
           var res = await sendFn(failedList, defaultMsg);
           if (res && res.success) {
-            alert("✓ Muvaffaqiyatli! " + res.count + " nafar yiqilgan o‘quvchining ota-onasiga Infobip orqali SMS xabar yuborildi!");
+            alert("✓ Muvaffaqiyatli! " + res.count + " nafar yiqilgan o‘quvchining ota-onasiga smsapi.uz orqali SMS xabar yuborildi!");
           } else {
             alert("SMS yuborishda xatolik: " + ((res && res.error) || 'Noma‘lum xato'));
           }
