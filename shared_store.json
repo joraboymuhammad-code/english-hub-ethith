@@ -24388,7 +24388,14 @@
         "std_mixswdasd_804_selixasdasd": "Mixswdasd Selixasdasd"
       },
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-27": {
+            "std_mix_416_selix": {
+              "status": "Q",
+              "score": "2"
+            }
+          }
+        },
         "lessonTypes": {
           "2026-10-30": "Vazifa (A2): 6.5",
           "2026-10-29": "Oddiy",
@@ -24413,7 +24420,7 @@
             "teacherName": "Muhammadyusuf"
           }
         },
-        "updatedAt": 1793432579812
+        "updatedAt": 1793434221734
       },
       "customStudentPhones": {},
       "activeHomework": {
@@ -120352,5 +120359,5 @@
       }
     }
   },
-  "updatedAt": 1793434209426
+  "updatedAt": 1793434221890
 }
