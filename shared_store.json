@@ -104143,6 +104143,438 @@
         ]
       }
     ],
+    "3035": [
+      {
+        "id": "p3035_ex4_2",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "4",
+        "label": "2",
+        "top": 15.7,
+        "left": 10.9,
+        "width": 36.5,
+        "height": 1.9,
+        "correct": "Are you drinking my coffee?"
+      },
+      {
+        "id": "p3035_ex4_3",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "4",
+        "label": "3",
+        "top": 19.5,
+        "left": 11,
+        "width": 36.5,
+        "height": 1.9,
+        "correct": "He isn't listening to the teacher."
+      },
+      {
+        "id": "p3035_ex4_4",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "4",
+        "label": "4",
+        "top": 23,
+        "left": 11,
+        "width": 36.5,
+        "height": 1.9,
+        "correct": "Is Ellie doing her homework?"
+      },
+      {
+        "id": "p3035_ex4_5",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "4",
+        "label": "5",
+        "top": 26.5,
+        "left": 11,
+        "width": 36.5,
+        "height": 1.9,
+        "correct": "I'm not enjoying this film."
+      },
+      {
+        "id": "p3035_ex4_6",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "4",
+        "label": "6",
+        "top": 30,
+        "left": 11,
+        "width": 36.5,
+        "height": 1.9,
+        "correct": "It isn't snowing today, but it's cold."
+      },
+      {
+        "id": "p3035_ex4_7",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "4",
+        "label": "7",
+        "top": 33.5,
+        "left": 11,
+        "width": 36.5,
+        "height": 1.9,
+        "correct": "Why are those people standing there?"
+      },
+      {
+        "id": "p3035_ex4_8",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "4",
+        "label": "8",
+        "top": 37,
+        "left": 11,
+        "width": 36.5,
+        "height": 1.9,
+        "correct": "We aren't working today."
+      },
+      {
+        "id": "p3035_ex5_2a",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "2a",
+        "top": 54.3,
+        "left": 15.1,
+        "width": 9,
+        "height": 1.9,
+        "correct": "works"
+      },
+      {
+        "id": "p3035_ex5_2b",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "2b",
+        "top": 57.8,
+        "left": 35,
+        "width": 9,
+        "height": 1.9,
+        "correct": [
+          "'s relaxing",
+          "is relaxing"
+        ]
+      },
+      {
+        "id": "p3035_ex5_3a",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "3a",
+        "top": 61.2,
+        "left": 15,
+        "width": 9.5,
+        "height": 1.9,
+        "correct": "doesn't have"
+      },
+      {
+        "id": "p3035_ex5_3b",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "3b",
+        "top": 63,
+        "left": 20,
+        "width": 9,
+        "height": 1.9,
+        "correct": [
+          "'s buying",
+          "is buying"
+        ]
+      },
+      {
+        "id": "p3035_ex5_4a",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "4a",
+        "top": 64.8,
+        "left": 13.5,
+        "width": 9.5,
+        "height": 1.9,
+        "correct": [
+          "'re leaving",
+          "are leaving"
+        ]
+      },
+      {
+        "id": "p3035_ex5_4b",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "4b",
+        "top": 64.8,
+        "left": 34.5,
+        "width": 7.5,
+        "height": 1.9,
+        "correct": [
+          "'s",
+          "is"
+        ]
+      },
+      {
+        "id": "p3035_ex5_5a",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "5a",
+        "top": 68.3,
+        "left": 14.5,
+        "width": 9,
+        "height": 1.9,
+        "correct": [
+          "'re waiting",
+          "are waiting"
+        ]
+      },
+      {
+        "id": "p3035_ex5_5b",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "5b",
+        "top": 68.3,
+        "left": 35.5,
+        "width": 7.5,
+        "height": 1.9,
+        "correct": "opens"
+      },
+      {
+        "id": "p3035_ex5_6a",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "6a",
+        "top": 71.8,
+        "left": 17.5,
+        "width": 6,
+        "height": 1.9,
+        "correct": "are"
+      },
+      {
+        "id": "p3035_ex5_6b",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "6b",
+        "top": 71.8,
+        "left": 26.5,
+        "width": 7,
+        "height": 1.9,
+        "correct": "going"
+      },
+      {
+        "id": "p3035_ex5_6c",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "6c",
+        "top": 73.6,
+        "left": 22,
+        "width": 6,
+        "height": 1.9,
+        "correct": "want"
+      },
+      {
+        "id": "p3035_ex5_7a",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "7a",
+        "top": 77.2,
+        "left": 34.5,
+        "width": 9,
+        "height": 1.9,
+        "correct": [
+          "'s returning",
+          "is returning"
+        ]
+      },
+      {
+        "id": "p3035_ex5_7b",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "7b",
+        "top": 79,
+        "left": 34.5,
+        "width": 9,
+        "height": 1.9,
+        "correct": "doesn't like"
+      },
+      {
+        "id": "p3035_ex5_8a",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "8a",
+        "top": 82.5,
+        "left": 13.5,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": [
+          "'s raining",
+          "is raining"
+        ]
+      },
+      {
+        "id": "p3035_ex5_8b",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "5",
+        "label": "8b",
+        "top": 84.3,
+        "left": 23.5,
+        "width": 7.5,
+        "height": 1.9,
+        "correct": "carry"
+      },
+      {
+        "id": "p3035_ex6_3",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "6",
+        "label": "3",
+        "top": 78,
+        "left": 61.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": "are helping"
+      },
+      {
+        "id": "p3035_ex6_4",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "6",
+        "label": "4",
+        "top": 79.8,
+        "left": 61.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": [
+          "✓",
+          "tick",
+          "correct",
+          "wear"
+        ]
+      },
+      {
+        "id": "p3035_ex6_5",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "6",
+        "label": "5",
+        "top": 81.6,
+        "left": 61.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": [
+          "✓",
+          "tick",
+          "correct",
+          "paint"
+        ]
+      },
+      {
+        "id": "p3035_ex6_6",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "6",
+        "label": "6",
+        "top": 83.4,
+        "left": 61.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": "is wearing"
+      },
+      {
+        "id": "p3035_ex6_7",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "6",
+        "label": "7",
+        "top": 74.4,
+        "left": 82.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": "is checking"
+      },
+      {
+        "id": "p3035_ex6_8",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "6",
+        "label": "8",
+        "top": 76.2,
+        "left": 82.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": [
+          "✓",
+          "tick",
+          "correct",
+          "enjoys"
+        ]
+      },
+      {
+        "id": "p3035_ex6_9",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "6",
+        "label": "9",
+        "top": 78,
+        "left": 82.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": [
+          "✓",
+          "tick",
+          "correct",
+          "is"
+        ]
+      },
+      {
+        "id": "p3035_ex6_10",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "6",
+        "label": "10",
+        "top": 79.8,
+        "left": 82.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": [
+          "✓",
+          "tick",
+          "correct",
+          "needs"
+        ]
+      },
+      {
+        "id": "p3035_ex6_11",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "6",
+        "label": "11",
+        "top": 81.6,
+        "left": 82.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": "are coming"
+      },
+      {
+        "id": "p3035_ex6_12",
+        "type": "fill",
+        "page": 3035,
+        "exercise": "6",
+        "label": "12",
+        "top": 83.4,
+        "left": 82.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": "are cooking"
+      }
+    ],
     "3046": [
       {
         "id": "p3046_ex1_1",
@@ -106305,6 +106737,7 @@
     "3032": 1793432839210,
     "3033": 1793432839211,
     "3034": 1793432921690,
+    "3035": 1793432928686,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -107068,5 +107501,5 @@
       }
     }
   },
-  "updatedAt": 1793432921989
+  "updatedAt": 1793432929120
 }
