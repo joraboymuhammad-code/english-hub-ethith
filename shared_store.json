@@ -108322,8 +108322,8 @@
         "page": 3045,
         "exercise": "3",
         "label": "1b",
-        "top": 29.5,
-        "left": 83.5,
+        "top": 29.7,
+        "left": 56.7,
         "width": 8.5,
         "height": 1.8,
         "correct": "sales"
@@ -108334,8 +108334,8 @@
         "page": 3045,
         "exercise": "3",
         "label": "2a",
-        "top": 32.5,
-        "left": 69.5,
+        "top": 31.5,
+        "left": 68.6,
         "width": 8.5,
         "height": 1.8,
         "correct": "really"
@@ -108346,8 +108346,8 @@
         "page": 3045,
         "exercise": "3",
         "label": "2b",
-        "top": 34.3,
-        "left": 66.5,
+        "top": 33.4,
+        "left": 64.9,
         "width": 7.5,
         "height": 1.8,
         "correct": "blue"
@@ -108358,8 +108358,8 @@
         "page": 3045,
         "exercise": "3",
         "label": "3a",
-        "top": 36.1,
-        "left": 73,
+        "top": 34.7,
+        "left": 73.5,
         "width": 8.5,
         "height": 1.8,
         "correct": "shoes"
@@ -108370,8 +108370,8 @@
         "page": 3045,
         "exercise": "3",
         "label": "3b",
-        "top": 39.5,
-        "left": 63.5,
+        "top": 38.1,
+        "left": 62.6,
         "width": 8.5,
         "height": 1.8,
         "correct": "return"
@@ -108382,8 +108382,8 @@
         "page": 3045,
         "exercise": "3",
         "label": "4a",
-        "top": 41.3,
-        "left": 64,
+        "top": 40.1,
+        "left": 63.2,
         "width": 8.5,
         "height": 1.8,
         "correct": "top"
@@ -108394,8 +108394,8 @@
         "page": 3045,
         "exercise": "3",
         "label": "4b",
-        "top": 44.5,
-        "left": 60.5,
+        "top": 43.1,
+        "left": 62,
         "width": 8.5,
         "height": 1.8,
         "correct": "discount"
@@ -108406,8 +108406,8 @@
         "page": 3045,
         "exercise": "3",
         "label": "5a",
-        "top": 46.3,
-        "left": 71,
+        "top": 44.7,
+        "left": 67.6,
         "width": 6.5,
         "height": 1.8,
         "correct": "bit"
@@ -108418,7 +108418,7 @@
         "page": 3045,
         "exercise": "3",
         "label": "5b",
-        "top": 48,
+        "top": 46.3,
         "left": 74,
         "width": 8.5,
         "height": 1.8,
@@ -108430,8 +108430,8 @@
         "page": 3045,
         "exercise": "3",
         "label": "6a",
-        "top": 49.8,
-        "left": 62.5,
+        "top": 48.1,
+        "left": 62.8,
         "width": 8.5,
         "height": 1.8,
         "correct": [
@@ -108445,8 +108445,8 @@
         "page": 3045,
         "exercise": "3",
         "label": "6b",
-        "top": 54.5,
-        "left": 60.5,
+        "top": 52.9,
+        "left": 59.4,
         "width": 8.5,
         "height": 1.8,
         "correct": "glasses"
@@ -110784,7 +110784,7 @@
     "3042": 1793433480516,
     "3043": 1793433537379,
     "3044": 1793433557261,
-    "3045": 1793433571621,
+    "3045": 1793433591280,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -111548,5 +111548,5 @@
       }
     }
   },
-  "updatedAt": 1793433577174
+  "updatedAt": 1793433592293
 }
