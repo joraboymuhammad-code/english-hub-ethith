@@ -320,11 +320,26 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_ravshanov_doniyor_cefr_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246024
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: Unit 7: Modals of Deduction & Obligation"
+        },
         "holidays": {},
         "homeworks": {},
-        "updatedAt": 1793213299615
+        "updatedAt": 1793458246024
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -919,10 +934,40 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_ravshanov_doniyor_cefr_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246043
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246043
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1056,6 +1101,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -1378,9 +1436,23 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-31": {
+            "cls_ravshanov_doniyor_cefr_3_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246060
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-29": "Vazifa: 1.1"
+          "2026-10-29": "Vazifa: 1.1",
+          "2026-10-31": "Vazifa: Unit 7: Modals of Deduction & Obligation"
         },
         "holidays": {},
         "homeworks": {
@@ -1397,7 +1469,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793458246060
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1866,10 +1939,40 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_ravshanov_doniyor_cefr_4_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246078
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246078
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -2003,6 +2106,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -2325,10 +2441,40 @@
       "level": "Practice English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_qarshiboyev_humoyun_practice_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246095
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246095
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -2462,6 +2608,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -2784,10 +2943,40 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_tovboyeva_marjona_beginner_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246112
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246112
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -2921,6 +3110,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -3243,9 +3445,23 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-31": {
+            "cls_olimjonova_durdona_beginner_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246127
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1"
+          "2026-10-28": "Vazifa: 1.1",
+          "2026-10-31": "Vazifa: Unit 7: Modals of Deduction & Obligation"
         },
         "holidays": {},
         "homeworks": {
@@ -3262,7 +3478,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793458246127
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -3731,10 +3948,40 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_olimjonova_durdona_pre_intermediate_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246143
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246143
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -3868,6 +4115,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -4190,9 +4450,23 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-31": {
+            "cls_olimjonova_durdona_intermediate_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246160
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1"
+          "2026-10-28": "Vazifa: 1.1",
+          "2026-10-31": "Vazifa: Unit 7: Modals of Deduction & Obligation"
         },
         "holidays": {},
         "homeworks": {
@@ -4210,7 +4484,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793213300749
+        "updatedAt": 1793458246160
       },
       "customStudentNames": {
         "cls_olimjonova_durdona_intermediate_1_tester_10": "Malika Karimova"
@@ -4681,10 +4955,40 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_olimjonova_durdona_intermediate_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246176
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246176
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -4818,6 +5122,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -5140,10 +5457,40 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_tagaev_eldor_beginner_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246192
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246192
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -5277,6 +5624,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -5599,10 +5959,40 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_tagaev_eldor_elementary_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246209
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246209
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -5736,6 +6126,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -6058,10 +6461,40 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_tagaev_eldor_pre_intermediate_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246225
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246225
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -6195,6 +6628,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -6517,10 +6963,40 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_tagaev_eldor_pre_intermediate_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246242
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246242
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -6654,6 +7130,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -6976,10 +7465,40 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_yaxshilikova_kamola_beginner_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246257
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246257
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -7113,6 +7632,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -7435,10 +7967,40 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_yaxshilikova_kamola_elementary_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246274
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246274
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -7572,6 +8134,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -7894,10 +8469,40 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_sherqoziyeva_iroda_beginner_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246289
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246289
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -8031,6 +8636,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -8353,10 +8971,40 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_sherqoziyeva_iroda_beginner_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246304
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246304
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -8490,6 +9138,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -8812,10 +9473,40 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_aborbekov_elyor_pre_intermediate_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246320
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246320
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -8949,6 +9640,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -9271,10 +9975,40 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_aborbekov_elyor_pre_intermediate_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246337
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246337
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -9408,6 +10142,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -9730,10 +10477,40 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_aborbekov_elyor_intermediate_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246354
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246354
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -9867,6 +10644,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -10189,10 +10979,40 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_aborbekov_elyor_intermediate_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246370
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246370
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -10326,6 +11146,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -10648,10 +11481,40 @@
       "level": "Upper-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_aborbekov_elyor_upper_intermediate_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246386
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246386
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -10785,6 +11648,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -11107,10 +11983,40 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_orinboyev_jaloliddin_pre_intermediate_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246403
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246403
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -11244,6 +12150,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -11566,10 +12485,40 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_orinboyev_jaloliddin_intermediate_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246420
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246420
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -11703,6 +12652,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -12025,10 +12987,40 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_orinboyev_jaloliddin_standard_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246436
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246436
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -12162,6 +13154,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -12484,10 +13489,40 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_orinboyev_jaloliddin_standard_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246454
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246454
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -12621,6 +13656,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -12943,10 +13991,40 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_jumanova_pokiza_beginner_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246470
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246470
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -13080,6 +14158,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -13402,10 +14493,40 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_hayrullayev_arslon_beginner_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246487
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246487
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -13539,6 +14660,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -13861,10 +14995,40 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_hayrullayev_arslon_beginner_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246504
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246504
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -13998,6 +15162,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -14320,9 +15497,23 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-31": {
+            "cls_xudoyorova_sarvinoz_intermediate_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246520
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1"
+          "2026-10-28": "Vazifa: 1.1",
+          "2026-10-31": "Vazifa: Unit 7: Modals of Deduction & Obligation"
         },
         "holidays": {},
         "homeworks": {
@@ -14339,7 +15530,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793458246520
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -14808,10 +16000,40 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_xudoyorova_sarvinoz_standard_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246538
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246538
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -14945,6 +16167,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -15267,10 +16502,40 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_aliqulova_sevinch_beginner_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246555
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246555
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -15404,6 +16669,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -15726,10 +17004,40 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_aliqulova_sevinch_beginner_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246573
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246573
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -15863,6 +17171,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -16185,10 +17506,40 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_xojamqulova_diyora_beginner_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246590
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246590
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -16322,6 +17673,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -16644,10 +18008,40 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_xojamqulova_diyora_elementary_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246608
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246608
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -16781,6 +18175,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -17103,10 +18510,40 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_xojamqulova_diyora_elementary_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246626
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246626
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -17240,6 +18677,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -17562,10 +19012,40 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_xojamqulova_diyora_elementary_3_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246643
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246643
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -17699,6 +19179,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -18021,9 +19514,23 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-31": {
+            "cls_bosimbekov_farrux_pre_intermediate_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246660
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-29": "Vazifa: 1.1"
+          "2026-10-29": "Vazifa: 1.1",
+          "2026-10-31": "Vazifa: Unit 7: Modals of Deduction & Obligation"
         },
         "holidays": {},
         "homeworks": {
@@ -18040,7 +19547,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793458246660
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -18509,10 +20017,40 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_bosimbekov_farrux_pre_intermediate_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246678
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246678
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -18646,6 +20184,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -18968,10 +20519,40 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_bosimbekov_farrux_intermediate_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246696
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246696
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -19105,6 +20686,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -19427,10 +21021,40 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_bosimbekov_farrux_intermediate_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246714
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246714
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -19564,6 +21188,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -19886,10 +21523,40 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_ahmadova_barno_elementary_1_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246732
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246732
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -20023,6 +21690,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -20345,10 +22025,40 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_ahmadova_barno_elementary_2_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246750
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246750
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -20482,6 +22192,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -20804,10 +22527,40 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_ahmadova_barno_elementary_3_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246769
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246769
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -20941,6 +22694,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -21263,10 +23029,40 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_ahmadova_barno_pre_intermediate_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246789
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246789
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -21400,6 +23196,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -21722,10 +23531,40 @@
       "level": "Matematika",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_shodiyor_matematika_matematika_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246807
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246807
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -21859,6 +23698,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -22205,12 +24057,25 @@
               "hwTotal": 36,
               "hwCompletedAt": 1792999901066
             }
+          },
+          "2026-10-31": {
+            "cls_1792041880052_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246825
+            }
           }
         },
         "lessonTypes": {
           "2026-10-21": "Vazifa: 1.1",
           "2026-10-19": "Oddiy",
-          "2026-10-28": "Vazifa: 2.1"
+          "2026-10-28": "Vazifa: 2.1",
+          "2026-10-31": "Vazifa: Unit 7: Modals of Deduction & Obligation"
         },
         "holidays": {},
         "homeworks": {
@@ -22228,7 +24093,7 @@
             "assignedAt": 1792608458469
           }
         },
-        "updatedAt": 1793129842154
+        "updatedAt": 1793458246825
       },
       "customStudentNames": {},
       "activeHomework": {
@@ -22261,9 +24126,23 @@
       "maxCapacity": 18,
       "schedule": "toq",
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-31": {
+            "cls_urolov_azizbek_upper_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246843
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-30": "Vazifa: 1.1"
+          "2026-10-30": "Vazifa: 1.1",
+          "2026-10-31": "Vazifa: Unit 7: Modals of Deduction & Obligation"
         },
         "holidays": {},
         "homeworks": {
@@ -22280,7 +24159,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793458246843
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -22733,10 +24613,40 @@
       "maxCapacity": 18,
       "schedule": "juft",
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_urolov_azizbek_standard_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246861
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246861
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -23161,6 +25071,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -23176,9 +25099,23 @@
       "maxCapacity": 18,
       "schedule": "toq",
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-31": {
+            "cls_urolov_azizbek_intermediate_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246880
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-29": "Vazifa: 1.1"
+          "2026-10-29": "Vazifa: 1.1",
+          "2026-10-31": "Vazifa: Unit 7: Modals of Deduction & Obligation"
         },
         "holidays": {},
         "homeworks": {
@@ -23195,7 +25132,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793458246880
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -23774,10 +25712,40 @@
       "maxCapacity": 18,
       "schedule": "juft",
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-10-31": {
+            "cls_urolov_azizbek_practice_std_1": {
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246900
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-31": "Vazifa: 1.1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-10-31": {
+            "dateKey": "2026-10-31",
+            "dateDisp": "31.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793458246900
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -24202,6 +26170,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-31",
+        "dateDisp": "31.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -24527,15 +26508,22 @@
           },
           "2026-10-31": {
             "std_mixswdasd_804_selixasdasd": {
-              "status": "Q",
-              "score": "2"
+              "status": "K",
+              "score": "4",
+              "hwDone": true,
+              "hwPct": 80,
+              "hwLesson": "Unit 7: Modals of Deduction & Obligation",
+              "hwCorrect": 4,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793458246919
             }
           }
         },
         "lessonTypes": {
           "2026-10-30": "Vazifa (A2): 6.5",
           "2026-10-29": "Oddiy",
-          "2026-11-03": "Oddiy"
+          "2026-11-03": "Oddiy",
+          "2026-10-31": "Vazifa: Unit 7: Modals of Deduction & Obligation"
         },
         "holidays": {},
         "homeworks": {
@@ -24556,7 +26544,7 @@
             "teacherName": "Muhammadyusuf"
           }
         },
-        "updatedAt": 1793434263989
+        "updatedAt": 1793458246919
       },
       "customStudentPhones": {
         "std_mixswdasd_804_selixasdasd": "+998950079621"
@@ -124128,5 +126116,5 @@
       }
     }
   },
-  "updatedAt": 1793458425978
+  "updatedAt": 1793458487073
 }
