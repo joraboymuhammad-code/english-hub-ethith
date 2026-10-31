@@ -5731,7 +5731,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
         }
 
         var defaultMsg = "Hurmatli ota-ona! Farzandingiz level test imtihonidan o'ta olmadi. Sababini bilish uchun ustoz bilan bog'laning. English House o'quv markazi.";
-        var confirmText = "Jami " + failedList.length + " nafar yiqilgan o‘quvchining ota-onalariga 3 ta SMS Shlyuzi (smsapi.uz + Telefon Gateway) orqali avtomatik SMS xabar yuborilsinmi?\n\n" +
+        var confirmText = "Jami " + failedList.length + " nafar yiqilgan o‘quvchining ota-onalariga rasmiy smsapi.uz shlyuzi orqali SMS xabar yuborilsinmi?\n\n" +
           "Xabar matni (" + defaultMsg.length + " belgi, 1 SMS):\n" +
           "\"" + defaultMsg + "\"";
 

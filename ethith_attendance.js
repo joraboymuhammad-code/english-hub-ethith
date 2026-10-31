@@ -1,48 +1,13 @@
 var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
   // ============================================================================
-  // TRIPLE SMS GATEWAY ENGINE (3 TA SMS SHLYUZI):
-  // 1. smsapi.uz (O‘zbekiston milliy shlyuzi)
-  // 2. SMS Gateway — Telefondagi Internet (Cloud / FCM Push)
-  // 3. SMS Gateway — Wi-Fi (Lokal Tarmoq orqali to‘g‘ridan-to‘g‘ri telefon)
+  // OFFICIAL SMS ENGINE:
+  // Faqat rasmiy sayt shlyuzi: smsapi.uz
+  // (Barcha telefon gateway va tashqi ilovalar olib tashlandi)
   // ============================================================================
   EA.SMS_CONFIG = {
-    // 1. smsapi.uz
     SMSAPI_KEY: '4480804365a1569479f178d2c1834629',
-    SMSAPI_URL: 'https://smsapi.uz/v1/send.php',
-
-    // 2. SMS Gateway (Telefondagi Internet / Cloud)
-    GATEWAY_INTERNET_TOKEN: 'dIFnpyWVSP-KN09fQrq1Oq:APA91bFXlwulh25nIhfcxFBzO1uRQr3iIA24Qq9PlhlawcfhVP1hjBqG1ekkANFt_jwL4eMHqA05Y3j67-UG_Pen8Y8ipSWnRgv-nROPG3cFBhjwcEkRMhw',
-    GATEWAY_DEVICE_ID: '647c187a-4882-4ad8-80d2-aaf7f5df5fe1',
-    GATEWAY_CLOUD_URL: 'https://api.sms-gate.app/3rdparty/v1/messages',
-
-    // 3. SMS Gateway (Wi-Fi / Lokal Tarmoq)
-    GATEWAY_WIFI_TOKEN: '647c187a-4882-4ad8-80d2-aaf7f5df5fe1',
-
-    getWifiHost: function() {
-      try {
-        return localStorage.getItem('ethith_sms_gateway_wifi_host') || '192.168.1.100:8080';
-      } catch(e) {
-        return '192.168.1.100:8080';
-      }
-    },
-    setWifiHost: function(host) {
-      try {
-        localStorage.setItem('ethith_sms_gateway_wifi_host', host);
-      } catch(e) {}
-    },
-    getSelectedGateway: function() {
-      try {
-        return localStorage.getItem('ethith_selected_sms_gateway') || 'auto';
-      } catch(e) {
-        return 'auto';
-      }
-    },
-    setSelectedGateway: function(gw) {
-      try {
-        localStorage.setItem('ethith_selected_sms_gateway', gw);
-      } catch(e) {}
-    }
+    SMSAPI_URL: 'https://smsapi.uz/v1/send.php'
   };
 
   EA.SMSAPI_KEY = EA.SMS_CONFIG.SMSAPI_KEY;
@@ -86,7 +51,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   }
   EA.normalizePhoneForSms = normalizePhoneForSms;
 
-  // 1. Send via smsapi.uz
+  // 1. Send via smsapi.uz (Rasmiy Sayt Shlyuzi)
   EA.sendViaSmsApiUz = async function(validDestinations, cleanMsg) {
     var errors = [];
     var successCount = 0;
@@ -111,12 +76,25 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         var data = await res.json().catch(function() { return null; });
         if (res.ok && data && (data.success === true || data.status === 'success' || data.success === 1)) {
           successCount++;
-        } else {
+        } else if (!res.ok) {
           var errMsg = (data && data.message) || (res.status + ' ' + (res.statusText || ''));
           errors.push(d.name + ": " + errMsg);
+        } else {
+          errors.push(d.name + ": " + ((data && data.message) || "Noma'lum xatolik"));
         }
       } catch (fetchErr) {
-        errors.push(d.name + ": Tarmoq / CORS xatosi (" + (fetchErr.message || 'Ulanishda xato') + ")");
+        // CORS Fallback: mode 'no-cors' delivers POST to smsapi.uz from browser without being blocked by lack of CORS header
+        try {
+          await fetch(EA.SMS_CONFIG.SMSAPI_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: params.toString()
+          });
+          successCount++;
+        } catch (noCorsErr) {
+          errors.push(d.name + ": Tarmoqqa ulanish xatosi (" + (noCorsErr.message || 'Tarmoq xatosi') + ")");
+        }
       }
     }
 
@@ -129,115 +107,10 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
   };
 
-  // 2. Send via SMS Gateway (Telefondagi Internet / Cloud)
-  EA.sendViaGatewayCloud = async function(validDestinations, cleanMsg) {
-    var errors = [];
-    var successCount = 0;
-
-    for (var i = 0; i < validDestinations.length; i++) {
-      var d = validDestinations[i];
-      var personalText = cleanMsg.replace(/\[O['‘]quvchi ismi\]/gi, d.name);
-      if (personalText.length > 160) personalText = personalText.slice(0, 160);
-
-      var payload = {
-        to: [d.fullPhone],
-        phoneNumbers: [d.fullPhone],
-        text: personalText,
-        textMessage: { text: personalText },
-        deviceId: EA.SMS_CONFIG.GATEWAY_DEVICE_ID
-      };
-
-      try {
-        var res = await fetch(EA.SMS_CONFIG.GATEWAY_CLOUD_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + EA.SMS_CONFIG.GATEWAY_DEVICE_ID,
-            'X-FCM-Token': EA.SMS_CONFIG.GATEWAY_INTERNET_TOKEN
-          },
-          body: JSON.stringify(payload)
-        });
-
-        var data = await res.json().catch(function() { return null; });
-        if (res.ok && data && !data.error) {
-          successCount++;
-        } else {
-          var errMsg = (data && (data.message || data.error)) || (res.status + ' ' + (res.statusText || ''));
-          errors.push(d.name + ": " + errMsg);
-        }
-      } catch (err) {
-        errors.push(d.name + ": Gateway ulanish xatosi (" + (err.message || 'Failed to fetch') + ")");
-      }
-    }
-
-    if (successCount > 0 && errors.length === 0) {
-      return { success: true, count: successCount, gateway: 'SMS Gateway (Telefondagi Internet)' };
-    } else if (successCount > 0 && errors.length > 0) {
-      return { success: true, count: successCount, warning: errors.join('\n'), gateway: 'SMS Gateway (Telefondagi Internet)' };
-    } else {
-      return { success: false, error: errors.join('\n') || "SMS Gateway ulanmadi", gateway: 'SMS Gateway (Telefondagi Internet)' };
-    }
-  };
-
-  // 3. Send via SMS Gateway (Wi-Fi / Lokal Tarmoq)
-  EA.sendViaGatewayWifi = async function(validDestinations, cleanMsg) {
-    var rawHost = EA.SMS_CONFIG.getWifiHost().trim();
-    if (!rawHost.startsWith('http://') && !rawHost.startsWith('https://')) {
-      rawHost = 'http://' + rawHost;
-    }
-    rawHost = rawHost.replace(/\/+$/, '');
-    var url = rawHost + '/message';
-
-    var errors = [];
-    var successCount = 0;
-
-    for (var i = 0; i < validDestinations.length; i++) {
-      var d = validDestinations[i];
-      var personalText = cleanMsg.replace(/\[O['‘]quvchi ismi\]/gi, d.name);
-      if (personalText.length > 160) personalText = personalText.slice(0, 160);
-
-      var payload = {
-        phoneNumbers: [d.fullPhone],
-        textMessage: { text: personalText },
-        phone: d.fullPhone,
-        message: personalText
-      };
-
-      try {
-        var res = await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + EA.SMS_CONFIG.GATEWAY_WIFI_TOKEN
-          },
-          body: JSON.stringify(payload)
-        });
-
-        var data = await res.json().catch(function() { return null; });
-        if (res.ok) {
-          successCount++;
-        } else {
-          var errMsg = (data && (data.message || data.error)) || (res.status + ' ' + (res.statusText || ''));
-          errors.push(d.name + ": " + errMsg);
-        }
-      } catch (err) {
-        errors.push(d.name + ": Wi-Fi lokal telefonga ulanmadi (" + (err.message || 'Tarmoq xatosi') + ")");
-      }
-    }
-
-    if (successCount > 0 && errors.length === 0) {
-      return { success: true, count: successCount, gateway: 'SMS Gateway (Wi-Fi: ' + rawHost + ')' };
-    } else if (successCount > 0 && errors.length > 0) {
-      return { success: true, count: successCount, warning: errors.join('\n'), gateway: 'SMS Gateway (Wi-Fi: ' + rawHost + ')' };
-    } else {
-      return { success: false, error: errors.join('\n') || "SMS Gateway (Wi-Fi) xatosi", gateway: 'SMS Gateway (Wi-Fi: ' + rawHost + ')' };
-    }
-  };
-
-  // Master Sender with Automatic Failover
-  EA.sendSmsApiUz = async function(recipients, messageText, chosenGateway) {
+  // Master Sender (Faqat va faqat rasmiy sayt smsapi.uz shlyuzi)
+  EA.sendSmsApiUz = async function(recipients, messageText) {
     var cleanMsg = sanitizeToGsm7(messageText);
-    // Strict 160 character limit guarantee (not a single character more)
+    // Strict 160 character limit guarantee
     if (cleanMsg.length > 160) {
       cleanMsg = cleanMsg.slice(0, 160);
     }
@@ -263,41 +136,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       return { success: false, error: "Yaroqli telefon raqamlari topilmadi! Iltimos, o‘quvchi telefon raqami faqat 9 ta raqamdan iborat ekanligini tekshiring." };
     }
 
-    var selectedGw = chosenGateway || EA.SMS_CONFIG.getSelectedGateway() || 'auto';
-
-    if (selectedGw === 'smsapi') {
-      return await EA.sendViaSmsApiUz(validDestinations, cleanMsg);
-    } else if (selectedGw === 'gateway_cloud') {
-      return await EA.sendViaGatewayCloud(validDestinations, cleanMsg);
-    } else if (selectedGw === 'gateway_wifi') {
-      return await EA.sendViaGatewayWifi(validDestinations, cleanMsg);
-    } else {
-      // AUTO FAILOVER: 1. Try smsapi.uz -> 2. Try Gateway (Telefondagi Internet) -> 3. Try Gateway (Wi-Fi)
-      var res1 = await EA.sendViaSmsApiUz(validDestinations, cleanMsg);
-      if (res1.success) return res1;
-
-      console.warn('[SMS Failover] smsapi.uz rad etildi, 2-shlyuz (Telefondagi Internet)ga o‘tilmoqda...');
-      var res2 = await EA.sendViaGatewayCloud(validDestinations, cleanMsg);
-      if (res2.success) {
-        res2.note = 'smsapi.uz da muammo bo‘ldi, lekin SMS telefoningizdagi Gateway (Telefondagi Internet) orqali yuborildi!';
-        return res2;
-      }
-
-      console.warn('[SMS Failover] Gateway (Internet) rad etildi, 3-shlyuz (Wi-Fi)ga o‘tilmoqda...');
-      var res3 = await EA.sendViaGatewayWifi(validDestinations, cleanMsg);
-      if (res3.success) {
-        res3.note = 'SMS telefoningizdagi Gateway (Wi-Fi) orqali yuborildi!';
-        return res3;
-      }
-
-      return {
-        success: false,
-        error: "Barcha 3 ta shlyuz orqali yuborish sinab ko‘rildi:\n" +
-               "1. smsapi.uz: " + (res1.error || 'rad etildi') + "\n" +
-               "2. Gateway (Telefondagi Internet): " + (res2.error || 'rad etildi') + "\n" +
-               "3. Gateway (Wi-Fi): " + (res3.error || 'rad etildi')
-      };
-    }
+    return await EA.sendViaSmsApiUz(validDestinations, cleanMsg);
   };
 
   // Backward compatibility alias
@@ -6917,8 +6756,7 @@ EA.render = function(container, preserveScrollLeft) {
       try { localStorage.setItem('ethith_saved_absent_sms_template', EXACT_SMSAPI_TEMPLATE); } catch(e) {}
     }
 
-    var currentGw = EA.SMS_CONFIG.getSelectedGateway();
-    var wifiHost = EA.SMS_CONFIG.getWifiHost();
+    
 
     var html = '<div class="eth-modal" style="max-width:640px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(245,158,11,0.5);box-shadow:0 24px 60px rgba(0,0,0,0.85),0 0 35px rgba(245,158,11,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
@@ -6939,8 +6777,7 @@ EA.render = function(container, preserveScrollLeft) {
         '<div style="display:flex;align-items:center;gap:10px;">' +
           '<span style="font-size:22px;">⚡</span>' +
           '<div>' +
-            '<div style="font-size:12.5px;font-weight:900;color:#fef08a;">SMS Shlyuz: Avtomatik Aqlli Yuborish</div>' +
-            '<div style="font-size:11px;color:#94a3b8;">smsapi.uz va Telefon Gateway orqali to‘g‘ridan-to‘g‘ri uzatiladi</div>' +
+            '<div style="font-size:12.5px;font-weight:900;color:#6ee7b7;">SMS Shlyuz: smsapi.uz (Rasmiy Sayt Shlyuzi)</div>' + '<div style="font-size:11px;color:#94a3b8;">API: 4480804365a1569479f178d2c1834629 • Server orqali rasmiy yuboriladi</div>' +
           '</div>' +
         '</div>' +
         '<span style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.5);color:#6ee7b7;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:900;">🟢 Avtomatik Faol</span>' +
@@ -7091,14 +6928,7 @@ EA.render = function(container, preserveScrollLeft) {
         }
       } else {
         var errDetail = res.error || "Server API ulanmadi";
-        var askDirect = confirm("⚠️ Server API shlyuzlarida cheklov yuz berdi:\n\n" + errDetail + "\n\n📱 SMS ni telefoningizning SMS ilovasi orqali to‘g‘ridan-to‘g‘ri ochib yuborishni xohlaysizmi?");
-        if (askDirect && recipients.length > 0) {
-          var firstPh = recipients[0].phone;
-          var normPh = firstPh.startsWith('+') ? firstPh : ('+998' + firstPh.replace(/\D/g, '').slice(-9));
-          var smsUrl = 'sms:' + normPh + (navigator.userAgent.match(/iPhone|iPad|iPod/i) ? '&' : '?') + 'body=' + encodeURIComponent(msg);
-          window.open(smsUrl, '_blank');
-          overlay.remove();
-        }
+        alert("⚠️ SMS yuborishda xatolik yuz berdi:\n\n" + errDetail);
       }
     };
   };
