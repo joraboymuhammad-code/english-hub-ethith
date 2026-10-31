@@ -107052,6 +107052,483 @@
         "correct": "visited a relative"
       }
     ],
+    "3042": [
+      {
+        "id": "p3042_ex1_2",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "1",
+        "label": "2",
+        "top": 26.7,
+        "left": 11.8,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "It's quite common to see tourists in my town."
+      },
+      {
+        "id": "p3042_ex1_3",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "1",
+        "label": "3",
+        "top": 30.3,
+        "left": 13,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "The palace that we visited was really interesting."
+      },
+      {
+        "id": "p3042_ex1_4",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "1",
+        "label": "4",
+        "top": 34.5,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "The tour guide's talk was a bit boring."
+      },
+      {
+        "id": "p3042_ex1_5",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "1",
+        "label": "5",
+        "top": 38,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "The people in the hotel were very unfriendly."
+      },
+      {
+        "id": "p3042_ex1_6",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "1",
+        "label": "6",
+        "top": 41.5,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "The seats on the bus were a bit uncomfortable."
+      },
+      {
+        "id": "p3042_ex1_7",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "1",
+        "label": "7",
+        "top": 45,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "It's really cold here in winter."
+      },
+      {
+        "id": "p3042_ex1_8",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "1",
+        "label": "8",
+        "top": 48.5,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "It's quite expensive to have a holiday in England."
+      },
+      {
+        "id": "p3042_ex2_2",
+        "type": "select",
+        "page": 3042,
+        "exercise": "2",
+        "label": "2",
+        "top": 57,
+        "left": 20,
+        "width": 14,
+        "height": 1.8,
+        "options": [
+          "a bit",
+          "quite"
+        ],
+        "correct": "quite"
+      },
+      {
+        "id": "p3042_ex2_3",
+        "type": "select",
+        "page": 3042,
+        "exercise": "2",
+        "label": "3",
+        "top": 60.5,
+        "left": 24,
+        "width": 14,
+        "height": 1.8,
+        "options": [
+          "really",
+          "a bit"
+        ],
+        "correct": "really"
+      },
+      {
+        "id": "p3042_ex2_4",
+        "type": "select",
+        "page": 3042,
+        "exercise": "2",
+        "label": "4",
+        "top": 62.3,
+        "left": 42,
+        "width": 12,
+        "height": 1.8,
+        "options": [
+          "a bit",
+          "very"
+        ],
+        "correct": "very"
+      },
+      {
+        "id": "p3042_ex2_5",
+        "type": "select",
+        "page": 3042,
+        "exercise": "2",
+        "label": "5",
+        "top": 65.8,
+        "left": 38,
+        "width": 12,
+        "height": 1.8,
+        "options": [
+          "a bit",
+          "quite"
+        ],
+        "correct": "quite"
+      },
+      {
+        "id": "p3042_ex2_6",
+        "type": "select",
+        "page": 3042,
+        "exercise": "2",
+        "label": "6",
+        "top": 67.6,
+        "left": 25.5,
+        "width": 14,
+        "height": 1.8,
+        "options": [
+          "very",
+          "quite"
+        ],
+        "correct": "very"
+      },
+      {
+        "id": "p3042_ex2_7",
+        "type": "select",
+        "page": 3042,
+        "exercise": "2",
+        "label": "7",
+        "top": 69.4,
+        "left": 16,
+        "width": 12,
+        "height": 1.8,
+        "options": [
+          "really",
+          "a bit"
+        ],
+        "correct": "really"
+      },
+      {
+        "id": "p3042_ex2_8",
+        "type": "select",
+        "page": 3042,
+        "exercise": "2",
+        "label": "8",
+        "top": 71.2,
+        "left": 22,
+        "width": 14,
+        "height": 1.8,
+        "options": [
+          "a bit",
+          "really"
+        ],
+        "correct": "a bit"
+      },
+      {
+        "id": "p3042_ex3a_1",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "3a",
+        "label": "1",
+        "top": 80,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "He's a bit unfriendly."
+      },
+      {
+        "id": "p3042_ex3a_2",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "3a",
+        "label": "2",
+        "top": 82,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "Those bags are quite cheap."
+      },
+      {
+        "id": "p3042_ex3a_3",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "3a",
+        "label": "3",
+        "top": 84,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "She's really friendly."
+      },
+      {
+        "id": "p3042_ex3a_4",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "3a",
+        "label": "4",
+        "top": 86,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "This is a very interesting article."
+      },
+      {
+        "id": "p3042_ex4_in1",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "4",
+        "label": "1974",
+        "top": 35,
+        "left": 55,
+        "width": 12,
+        "height": 1.8,
+        "correct": "1974"
+      },
+      {
+        "id": "p3042_ex4_in2",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "4",
+        "label": "2011",
+        "top": 37.5,
+        "left": 55,
+        "width": 12,
+        "height": 1.8,
+        "correct": "2011"
+      },
+      {
+        "id": "p3042_ex4_in3",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "4",
+        "label": "the summer",
+        "top": 40,
+        "left": 55,
+        "width": 12,
+        "height": 1.8,
+        "correct": "the summer"
+      },
+      {
+        "id": "p3042_ex4_l1",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "4",
+        "label": "night",
+        "top": 32.5,
+        "left": 68,
+        "width": 12,
+        "height": 1.8,
+        "correct": "night"
+      },
+      {
+        "id": "p3042_ex4_l2",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "4",
+        "label": "week",
+        "top": 35,
+        "left": 68,
+        "width": 12,
+        "height": 1.8,
+        "correct": "week"
+      },
+      {
+        "id": "p3042_ex4_l3",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "4",
+        "label": "year",
+        "top": 37.5,
+        "left": 68,
+        "width": 12,
+        "height": 1.8,
+        "correct": "year"
+      },
+      {
+        "id": "p3042_ex4_a1",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "4",
+        "label": "a long time",
+        "top": 32.5,
+        "left": 81,
+        "width": 12,
+        "height": 1.8,
+        "correct": "a long time"
+      },
+      {
+        "id": "p3042_ex4_a2",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "4",
+        "label": "three months",
+        "top": 35,
+        "left": 81,
+        "width": 12,
+        "height": 1.8,
+        "correct": "three months"
+      },
+      {
+        "id": "p3042_ex4_a3",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "4",
+        "label": "two weeks",
+        "top": 37.5,
+        "left": 81,
+        "width": 12,
+        "height": 1.8,
+        "correct": "two weeks"
+      },
+      {
+        "id": "p3042_ex5_2",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "5",
+        "label": "2",
+        "top": 53.5,
+        "left": 60.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "house"
+      },
+      {
+        "id": "p3042_ex5_3",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "5",
+        "label": "3",
+        "top": 55.3,
+        "left": 60.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "a letter"
+      },
+      {
+        "id": "p3042_ex5_4",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "5",
+        "label": "4",
+        "top": 57.1,
+        "left": 62,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "a meal"
+      },
+      {
+        "id": "p3042_ex5_5",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "5",
+        "label": "5",
+        "top": 58.9,
+        "left": 62,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "an email"
+      },
+      {
+        "id": "p3042_ex5_6",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "5",
+        "label": "6",
+        "top": 60.7,
+        "left": 63.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "someone"
+      },
+      {
+        "id": "p3042_ex5_7",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "5",
+        "label": "7",
+        "top": 62.5,
+        "left": 60.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "a relative"
+      },
+      {
+        "id": "p3042_ex5_8",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "5",
+        "label": "8",
+        "top": 64.3,
+        "left": 60.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "a long time"
+      },
+      {
+        "id": "p3042_ex6_1",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "6",
+        "label": "1",
+        "top": 75,
+        "left": 60,
+        "width": 33,
+        "height": 1.8,
+        "correct": [
+          "It's very expensive.",
+          "It's really boring."
+        ]
+      },
+      {
+        "id": "p3042_ex6_2",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "6",
+        "label": "2",
+        "top": 77,
+        "left": 60,
+        "width": 33,
+        "height": 1.8,
+        "correct": "It's quite hot."
+      },
+      {
+        "id": "p3042_ex6_3",
+        "type": "fill",
+        "page": 3042,
+        "exercise": "6",
+        "label": "3",
+        "top": 79,
+        "left": 60,
+        "width": 33,
+        "height": 1.8,
+        "correct": "It's a bit cold."
+      }
+    ],
     "3046": [
       {
         "id": "p3046_ex1_1",
@@ -109221,6 +109698,7 @@
     "3039": 1793433305362,
     "3040": 1793433405405,
     "3041": 1793433405405,
+    "3042": 1793433422389,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -109984,5 +110462,5 @@
       }
     }
   },
-  "updatedAt": 1793433410318
+  "updatedAt": 1793433422516
 }
