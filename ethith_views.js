@@ -7532,8 +7532,9 @@
   function showWaygroundStudioModal(opts) {
     opts = opts || {};
     var isExamImport = Boolean(opts.isExamImport);
+    var isContest = Boolean(opts.isContest);
     var addedQuestions = opts.existingQuestions ? JSON.parse(JSON.stringify(opts.existingQuestions)) : [];
-    var quizTitle = opts.title || ('English Quiz Battle #' + (S.quizzes ? S.quizzes.length + 1 : 1));
+    var quizTitle = opts.title || (isContest ? 'Haftalik Onlayn Musobaqa' : ('English Quiz Battle #' + (S.quizzes ? S.quizzes.length + 1 : 1)));
     var quizCode = opts.code || generateRichExamCode('QZ');
 
     // Studio state
@@ -7598,7 +7599,7 @@
       html += '      <span>➕ Add question (Savol qo\'shish)</span>';
       html += '    </button>';
       html += '    <button id="btnWgSaveAllFinal" class="wayground-btn-save">';
-      html += '      <span>💾 Saqlash va Yakunlash</span>';
+      html += '      <span>💾 ' + (isContest ? 'Musobaqani Saqlash' : 'Saqlash va Yakunlash') + '</span>';
       html += '    </button>';
       html += '  </div>';
       html += '</header>';
@@ -7609,16 +7610,18 @@
       // Modern Glassmorphic Sub-bar (Title & Code)
       html += '  <div class="wayground-subbar">';
       html += '    <div class="flex-1 w-full flex items-center gap-2.5">';
-      html += '      <span class="wayground-label-amber">🎯 <span>Quiz Nomi:</span></span>';
-      html += '      <input id="wgQuizTitleInput" type="text" value="' + esc(quizTitle) + '" placeholder="Quiz mavzusi yoki nomini kiriting..." class="flex-1 wayground-subbar-input" />';
+      html += '      <span class="wayground-label-amber">' + (isContest ? '🏆' : '🎯') + ' <span>' + (isContest ? 'Musobaqa Nomi:' : 'Quiz Nomi:') + '</span></span>';
+      html += '      <input id="wgQuizTitleInput" type="text" value="' + esc(quizTitle) + '" placeholder="' + (isContest ? 'Onlayn musobaqa (turnir) nomini kiriting...' : 'Quiz mavzusi yoki nomini kiriting...') + '" class="flex-1 wayground-subbar-input" />';
       html += '    </div>';
-      html += '    <div class="flex items-center gap-2">';
-      html += '      <span class="wayground-label-cyan">🔑 <span>Maxsus Kod:</span></span>';
-      html += '      <input id="wgQuizCodeInput" type="text" value="' + esc(quizCode) + '" class="w-36 wayground-subbar-input wayground-subbar-code text-center uppercase" />';
-      html += '      <button id="btnWgRegenCode" class="wayground-regen-btn group" title="Yangi kod generatsiya qilish">';
-      html += '        <svg class="w-4 h-4 text-cyan-300 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>';
-      html += '      </button>';
-      html += '    </div>';
+      if (!isContest) {
+        html += '    <div class="flex items-center gap-2">';
+        html += '      <span class="wayground-label-cyan">🔑 <span>Maxsus Kod:</span></span>';
+        html += '      <input id="wgQuizCodeInput" type="text" value="' + esc(quizCode) + '" class="w-36 wayground-subbar-input wayground-subbar-code text-center uppercase" />';
+        html += '      <button id="btnWgRegenCode" class="wayground-regen-btn group" title="Yangi kod generatsiya qilish">';
+        html += '        <svg class="w-4 h-4 text-cyan-300 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>';
+        html += '      </button>';
+        html += '    </div>';
+      }
       html += '  </div>';
 
       // Large Question Input Box (1:1 with Wayground aspect-ratio canvas)

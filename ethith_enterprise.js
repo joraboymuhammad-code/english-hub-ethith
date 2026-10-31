@@ -5812,9 +5812,16 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
   };
 
   EE.openNewContestModal = function(container) {
+    var curUser = getCurrentUser() || {};
+    var isTeacher = (curUser.role === 'teacher') || (curUser.email === 'joraboyevmuhammad85@gmail.com');
+    if (!isTeacher) {
+      alert("Faqat o‘qituvchilar yangi musobaqa (turnir) yaratishi mumkin!");
+      return;
+    }
+
     if (window.EthithViews && typeof window.EthithViews.showWaygroundStudioModal === 'function') {
       window.EthithViews.showWaygroundStudioModal({
-        title: 'IELTS & Grammar Musobaqasi',
+        title: 'Haftalik Onlayn Musobaqa',
         isContest: true,
         onSave: function(addedQuestions, meta) {
           if (!addedQuestions || addedQuestions.length === 0) {
@@ -5827,9 +5834,9 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
           if (!Array.isArray(S_cur.fileExplorer.tests)) S_cur.fileExplorer.tests = [];
           if (!Array.isArray(S_cur.contests)) S_cur.contests = [];
 
-          var curUser = getCurrentUser();
+          var u = getCurrentUser() || {};
           var testId = 'tst_' + Date.now();
-          var contestTitle = (meta && meta.title ? meta.title.trim() : '') || 'Haftalik IELTS & Grammar Musobaqasi';
+          var contestTitle = (meta && meta.title ? meta.title.trim() : '') || 'Haftalik Onlayn Musobaqa';
           var contestCode = (meta && meta.code ? meta.code.trim().toUpperCase() : '') || ('QZ-' + Math.random().toString(36).substr(2, 6).toUpperCase());
 
           var newTest = {
@@ -5839,8 +5846,9 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
             type: 'standard_quiz',
             folderId: 'f_root',
             createdAt: Date.now(),
-            authorId: (curUser && curUser.id) || 'staff',
-            authorName: (curUser && curUser.name) || 'Ustoz',
+            authorId: u.id || 'teacher',
+            authorName: u.name || 'Ustoz',
+            authorEmail: u.email || '',
             maxAttempts: 1,
             questions: addedQuestions
           };
@@ -5852,6 +5860,9 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
             code: contestCode,
             desc: "Barcha guruhlar o‘rtasida onlayn musobaqa! Top-5 eng yuqori natija qayd etgan o‘quvchilarga 1,000 coindan boshlab sovrinlar beriladi.",
             testId: testId,
+            authorId: u.id || 'teacher',
+            authorName: u.name || 'Ustoz',
+            authorEmail: u.email || '',
             startDate: Date.now(),
             endDate: Date.now() + (7 * 86400000), // 7 kun
             participants: {},
@@ -5861,14 +5872,14 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
 
           S_cur.contests.push(newC);
           saveStore();
-          showToast("🎉 Yangi musobaqa va uning quiz testi muvaffaqiyatli e‘lon qilindi!");
+          showToast("🎉 Yangi musobaqa va uning savollari muvaffaqiyatli saqlandi!");
           if (container && typeof EE.renderContestsView === 'function') {
             EE.renderContestsView(container);
           }
         }
       });
     } else {
-      alert("Quiz studio tizimi yuklanmadi, iltimos sahifani yangilang!");
+      alert("Onlayn musobaqa studio tizimi yuklanmadi, iltimos sahifani yangilang!");
     }
   };
 
@@ -5876,7 +5887,9 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     if (!container) return;
     var S = getStore();
     var contests = S.contests || [];
-    var isStaff = isAdminOrTeacher();
+    var curUser = getCurrentUser() || (S.user || {});
+    var isTeacher = (curUser.role === 'teacher') || (curUser.email === 'joraboyevmuhammad85@gmail.com');
+    var isAdmin = (curUser.role === 'admin') || (curUser.role === 'superadmin');
 
     var h = '<div class="ee-contests-wrap" style="max-width:1200px;margin:0 auto;padding:16px 20px 80px;">' +
       '<div style="background:linear-gradient(135deg,rgba(15,23,42,0.9),rgba(30,41,59,0.85));border:1px solid rgba(245,158,11,0.25);border-radius:20px;padding:22px 26px;margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.35);backdrop-filter:blur(16px);">' +
@@ -5886,9 +5899,9 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
               '<span style="font-size:26px;">🏆</span>' +
               '<h2 style="margin:0;font-size:22px;font-weight:900;color:#f8fafc;">Onlayn Musobaqalar va Turnirlar</h2>' +
             '</div>' +
-            '<p style="margin:6px 0 0;font-size:13.5px;color:#94a3b8;">Ustozlar tuzgan quiz testlar orqali musobaqalar. Top-5 g‘olibga 1000 coindan boshlab avtomatik taqsimlanadi.</p>' +
+            '<p style="margin:6px 0 0;font-size:13.5px;color:#94a3b8;">Ustozlar tuzgan onlayn musobaqalar. Top-5 g‘olibga 1000 coindan boshlab avtomatik taqsimlanadi.</p>' +
           '</div>' +
-          (isStaff ? '<button id="eeNewContestBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:11px 22px;font-size:13.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(245,158,11,0.4);"><span>➕</span> Yangi Musobaqa E‘lon Qilish</button>' : '') +
+          (isTeacher ? '<button id="eeNewContestBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:11px 22px;font-size:13.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(245,158,11,0.4);"><span>➕</span> Yangi Musobaqa E‘lon Qilish</button>' : '') +
         '</div>' +
       '</div>';
 
@@ -5896,8 +5909,10 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       h += '<div style="background:rgba(15,23,42,0.7);border:1.5px dashed rgba(245,158,11,0.3);border-radius:20px;padding:48px 24px;text-align:center;color:#94a3b8;">' +
         '<div style="font-size:42px;margin-bottom:12px;">🏆</div>' +
         '<h3 style="margin:0 0 8px;font-size:18px;font-weight:900;color:#fff;">Hozirda faol musobaqalar mavjud emas</h3>' +
-        '<p style="margin:0 0 20px;font-size:13px;color:#94a3b8;max-width:500px;margin-left:auto;margin-right:auto;">O‘qituvchi yoki administrator yangi quiz test tuzib ushbu bo‘limda musobaqa e‘lon qilishi mumkin.</p>' +
-        (isStaff ? '<button id="eeNewContestBtnEmpty" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 20px;font-size:13px;font-weight:900;cursor:pointer;">+ Birinchi Musobaqani E‘lon Qilish</button>' : '') +
+        '<p style="margin:0 0 20px;font-size:13px;color:#94a3b8;max-width:500px;margin-left:auto;margin-right:auto;">' +
+          (isTeacher ? 'Yangi onlayn musobaqa tuzib ushbu bo‘limda e‘lon qilishingiz mumkin.' : 'Ustozlar tez orada yangi onlayn turnir e‘lon qilishadi.') +
+        '</p>' +
+        (isTeacher ? '<button id="eeNewContestBtnEmpty" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 20px;font-size:13px;font-weight:900;cursor:pointer;">+ Birinchi Musobaqani E‘lon Qilish</button>' : '') +
       '</div>';
     } else {
       contests.forEach(function(c) {
@@ -5908,25 +5923,46 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
 
         var prizeTiers = [1000, 900, 800, 700, 600];
 
+        // Calculate Remaining Days & Hours
+        var now = Date.now();
+        var end = c.endDate || (c.startDate + 7 * 86400000);
+        var diffMs = Math.max(0, end - now);
+        var daysLeft = Math.floor(diffMs / 86400000);
+        var hoursLeft = Math.floor((diffMs % 86400000) / 3600000);
+        var timeLeftBadge = (diffMs <= 0) ?
+          '<span style="background:rgba(239,68,68,0.2);color:#f87171;border:1px solid #ef4444;padding:4px 10px;border-radius:8px;font-weight:900;font-size:11.5px;">🔴 Yakunlangan</span>' :
+          ('<span style="background:rgba(56,189,248,0.18);color:#38bdf8;border:1px solid #38bdf8;padding:4px 10px;border-radius:8px;font-weight:900;font-size:11.5px;">⏳ ' + (daysLeft > 0 ? (daysLeft + ' kun qoldi') : (hoursLeft + ' soat qoldi')) + '</span>');
+
+        // Teacher privacy check: only the teacher who created this tournament can see & edit questions/answers!
+        var isMyContest = isTeacher && (
+          (c.authorId && curUser.id && c.authorId === curUser.id) ||
+          (c.authorEmail && curUser.email && c.authorEmail.toLowerCase() === curUser.email.toLowerCase()) ||
+          (c.authorName && curUser.name && c.authorName.toLowerCase() === curUser.name.toLowerCase())
+        );
+
         h += '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(245,158,11,0.3);border-radius:20px;padding:24px;margin-bottom:20px;box-shadow:0 8px 30px rgba(0,0,0,0.3);">' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">' +
+          '<div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px;">' +
             '<div>' +
-              '<h3 style="margin:0;font-size:19px;font-weight:900;color:#fcd34d;">' + esc(c.title) + '</h3>' +
-              '<div style="font-size:11.5px;color:#94a3b8;margin-top:3px;">ID: ' + esc(c.id) + (c.testId ? (' • Test: ' + esc(c.testId)) : '') + '</div>' +
+              '<h3 style="margin:0 0 6px;font-size:20px;font-weight:900;color:#fcd34d;">' + esc(c.title) + '</h3>' +
+              '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+                '<span style="background:rgba(168,85,247,0.18);color:#c084fc;border:1px solid rgba(168,85,247,0.4);padding:4px 10px;border-radius:8px;font-weight:800;font-size:11.5px;">👨‍🏫 Ustoz: ' + esc(c.authorName || 'Ustoz') + '</span>' +
+                '<span style="background:rgba(245,158,11,0.18);color:#fbbf24;border:1px solid rgba(245,158,11,0.4);padding:4px 10px;border-radius:8px;font-weight:900;font-size:11.5px;">🎁 Sovrin: 1,000 Coin</span>' +
+                timeLeftBadge +
+              '</div>' +
             '</div>' +
-            '<div style="display:flex;align-items:center;gap:8px;">' +
-              '<span style="background:rgba(245,158,11,0.15);color:#f59e0b;padding:4px 12px;border-radius:8px;font-weight:900;font-size:12px;">🎁 Top-5 Sovrinli (1,000 Coin)</span>' +
-              (isStaff ? '<button class="ee-delete-contest-btn" data-cid="' + c.id + '" title="Musobaqani o‘chirish" style="background:rgba(239,68,68,0.15);border:1px solid #ef4444;color:#f87171;border-radius:8px;padding:4px 8px;font-size:12px;cursor:pointer;">🗑️</button>' : '') +
+
+            '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+              (isMyContest ? '<button class="ee-edit-my-contest-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.35);">👁️ Savollar &amp; Javoblarni Ko‘rish / Tahrirlash</button>' : '') +
+              (isAdmin ? '<button class="ee-distribute-coins-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:900;cursor:pointer;">' + (c.coinsDistributed ? '✓ Coinlar Berilgan' : '🎁 Top-5 ga Coin Berish') + '</button>' : '') +
+              ((isAdmin || isMyContest) ? '<button class="ee-delete-contest-btn" data-cid="' + c.id + '" title="Musobaqani o‘chirish" style="background:rgba(239,68,68,0.15);border:1px solid #ef4444;color:#f87171;border-radius:8px;padding:7px 10px;font-size:12px;cursor:pointer;">🗑️</button>' : '') +
             '</div>' +
           '</div>' +
+
           '<p style="font-size:13.5px;color:#94a3b8;margin:0 0 16px;">' + esc(c.desc) + '</p>' +
 
           '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">' +
             '<div style="font-size:14px;font-weight:800;color:#fff;">🥇 Top-50 Reyting Jadvali (' + parts.length + ' nafar topshirdi):</div>' +
-            '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
-              '<button class="ee-participate-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(2,132,199,0.35);">🚀 Musobaqaga Kirish</button>' +
-              (isStaff ? '<button class="ee-distribute-coins-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.35);">' + (c.coinsDistributed ? '✓ Coinlar Berilgan' : '🎁 Top-5 ga Coin Berish') + '</button>' : '') +
-            '</div>' +
+            '<button class="ee-participate-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:9px 20px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);display:inline-flex;align-items:center;gap:6px;">🚀 Musobaqada Qatnashish</button>' +
           '</div>' +
 
           '<div style="background:rgba(30,41,59,0.5);border-radius:14px;overflow-x:auto;">' +
@@ -5969,7 +6005,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     h += '</div>';
     container.innerHTML = h;
 
-    // Distribute coins button
+    // Distribute coins button (Admin only)
     container.querySelectorAll('.ee-distribute-coins-btn').forEach(function(b) {
       b.onclick = function() {
         var cid = b.getAttribute('data-cid');
@@ -5980,7 +6016,38 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       };
     });
 
-    // Delete contest button
+    // Edit My Contest (Questions & Secret Answers only for the creator teacher!)
+    container.querySelectorAll('.ee-edit-my-contest-btn').forEach(function(b) {
+      b.onclick = function() {
+        var cid = b.getAttribute('data-cid');
+        var c = contests.find(function(x) { return x.id === cid; });
+        if (!c) return;
+
+        var S_live = getStore();
+        var tObj = (S_live.fileExplorer && S_live.fileExplorer.tests) ? S_live.fileExplorer.tests.find(function(t) { return t.id === c.testId; }) : null;
+        var existingQ = tObj ? tObj.questions : [];
+
+        if (window.EthithViews && typeof window.EthithViews.showWaygroundStudioModal === 'function') {
+          window.EthithViews.showWaygroundStudioModal({
+            title: c.title,
+            isContest: true,
+            existingQuestions: existingQ,
+            onSave: function(updatedQ, meta) {
+              if (tObj) tObj.questions = updatedQ;
+              if (meta && meta.title) {
+                c.title = meta.title;
+                if (tObj) tObj.title = meta.title;
+              }
+              saveStore();
+              showToast("✓ Musobaqa savollari va to‘g‘ri javoblari saqlandi!");
+              EE.renderContestsView(container);
+            }
+          });
+        }
+      };
+    });
+
+    // Delete contest button (Admin or author teacher)
     container.querySelectorAll('.ee-delete-contest-btn').forEach(function(b) {
       b.onclick = function() {
         var cid = b.getAttribute('data-cid');
@@ -6004,7 +6071,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       };
     });
 
-    // Create contest buttons
+    // Create contest buttons (Teacher only)
     container.querySelectorAll('#eeNewContestBtn, #eeNewContestBtnEmpty').forEach(function(btn) {
       btn.onclick = function() {
         EE.openNewContestModal(container);
