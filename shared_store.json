@@ -111795,22 +111795,6 @@
         "height": 2.2
       },
       {
-        "id": "p3053_ex4_1",
-        "type": "fill",
-        "x": 13,
-        "y": 55.5,
-        "w": 35,
-        "h": 2.2,
-        "correct": [
-          "Did you go on holiday last year?",
-          "Did you go on holiday last year"
-        ],
-        "top": 55.5,
-        "left": 13,
-        "width": 35,
-        "height": 2.2
-      },
-      {
         "id": "p3053_ex4_2",
         "type": "fill",
         "x": 13,
@@ -111821,8 +111805,8 @@
           "Did your parents have a good time in Budapest?",
           "Did your parents have a good time in Budapest"
         ],
-        "top": 59,
-        "left": 13,
+        "top": 56,
+        "left": 11.3,
         "width": 35,
         "height": 2.2
       },
@@ -111837,8 +111821,8 @@
           "How long did you spend in Gambia?",
           "How long did you spend in Gambia"
         ],
-        "top": 66,
-        "left": 13,
+        "top": 59.3,
+        "left": 11.6,
         "width": 35,
         "height": 2.2
       },
@@ -113990,7 +113974,7 @@
     "3050": 1793436815993,
     "3051": 1793436771760,
     "3052": 1793437072431,
-    "3053": 1793437128249,
+    "3053": 1793437138408,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -114753,5 +114737,5 @@
       }
     }
   },
-  "updatedAt": 1793437132969
+  "updatedAt": 1793437138660
 }
