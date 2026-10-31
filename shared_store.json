@@ -18767,7 +18767,8 @@
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
       "createdAt": 1793202631415,
-      "level": "C2"
+      "level": "C2",
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18786,7 +18787,8 @@
         "cls_ravshanov_doniyor_cefr_3",
         "cls_ravshanov_doniyor_cefr_4"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18802,7 +18804,8 @@
       "assignedClasses": [
         "cls_qarshiboyev_humoyun_practice"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18818,7 +18821,8 @@
       "assignedClasses": [
         "cls_tovboyeva_marjona_beginner"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18837,7 +18841,8 @@
         "cls_olimjonova_durdona_intermediate_1",
         "cls_olimjonova_durdona_intermediate_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18856,7 +18861,8 @@
         "cls_tagaev_eldor_pre_intermediate_1",
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18873,7 +18879,8 @@
         "cls_yaxshilikova_kamola_beginner",
         "cls_yaxshilikova_kamola_elementary"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18890,7 +18897,8 @@
         "cls_sherqoziyeva_iroda_beginner_1",
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18910,7 +18918,8 @@
         "cls_aborbekov_elyor_intermediate_2",
         "cls_aborbekov_elyor_upper_intermediate"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18929,7 +18938,8 @@
         "cls_orinboyev_jaloliddin_standard_1",
         "cls_orinboyev_jaloliddin_standard_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18945,7 +18955,8 @@
       "assignedClasses": [
         "cls_jumanova_pokiza_beginner"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18962,7 +18973,8 @@
         "cls_hayrullayev_arslon_beginner_1",
         "cls_hayrullayev_arslon_beginner_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18979,7 +18991,8 @@
         "cls_xudoyorova_sarvinoz_intermediate",
         "cls_xudoyorova_sarvinoz_standard"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -18996,7 +19009,8 @@
         "cls_aliqulova_sevinch_beginner_1",
         "cls_aliqulova_sevinch_beginner_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -19015,7 +19029,8 @@
         "cls_xojamqulova_diyora_elementary_2",
         "cls_xojamqulova_diyora_elementary_3"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -19034,7 +19049,8 @@
         "cls_bosimbekov_farrux_intermediate_1",
         "cls_bosimbekov_farrux_intermediate_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -19053,7 +19069,8 @@
         "cls_ahmadova_barno_elementary_3",
         "cls_ahmadova_barno_pre_intermediate"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "admin_official_teacher",
@@ -19069,7 +19086,8 @@
       "assignedClasses": [
         "cls_shodiyor_matematika_matematika"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793428206565
     },
     {
       "id": "usmonqulovaetiborxon@gmail.com",
@@ -19132,6 +19150,19 @@
       "level": "A1",
       "joinedAt": 1793215171236,
       "title": "👑 IELTS Qiroli"
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793428209888
     }
   ],
   "p2pListings": [],
@@ -41523,18 +41554,6 @@
           "0090 508 99200437",
           "009050899200437"
         ]
-      },
-      {
-        "page": 1010,
-        "type": "fill",
-        "top": 64.6,
-        "left": 72.1,
-        "width": 9,
-        "height": 1.7,
-        "label": "la",
-        "correct": "Akkaya",
-        "id": "p1010_custom_46997",
-        "group": "la"
       }
     ],
     "1011": [
@@ -95325,7 +95344,7 @@
     "1007": 1793367060705,
     "1008": 1793368052791,
     "1009": 1793368052792,
-    "1010": 1793367906543,
+    "1010": 1793428318662,
     "1011": 1793367906543,
     "1012": 1793370242528,
     "1013": 1793370242529,
@@ -96244,5 +96263,5 @@
       }
     }
   },
-  "updatedAt": 1793428204636
+  "updatedAt": 1793428319493
 }
