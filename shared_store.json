@@ -111657,8 +111657,8 @@
           "a tent"
         ],
         "correct": "an apartment",
-        "top": 86.4,
-        "left": 81.1,
+        "top": 86.1,
+        "left": 80.8,
         "width": 16,
         "height": 2.2
       },
@@ -111694,6 +111694,328 @@
         "top": 89.8,
         "left": 77,
         "width": 8,
+        "height": 2.2
+      }
+    ],
+    "3053": [
+      {
+        "id": "p3053_ex3_1",
+        "type": "fill",
+        "x": 13,
+        "y": 19,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did you go on your own?",
+          "Did you go on your own"
+        ],
+        "top": 17.4,
+        "left": 13.9,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex3_2",
+        "type": "fill",
+        "x": 13,
+        "y": 23.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did they visit the Natural History Museum?",
+          "Did they visit the Natural History Museum"
+        ],
+        "top": 23.5,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex3_3",
+        "type": "fill",
+        "x": 13,
+        "y": 28.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did she stay in an expensive hotel?",
+          "Did she stay in an expensive hotel"
+        ],
+        "top": 28.5,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex3_4",
+        "type": "fill",
+        "x": 13,
+        "y": 33.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did you take photos of the local people?",
+          "Did you take photos of the local people"
+        ],
+        "top": 33.5,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex3_5",
+        "type": "fill",
+        "x": 13,
+        "y": 38,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did he buy a drink?",
+          "Did he buy a drink"
+        ],
+        "top": 38,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex3_6",
+        "type": "fill",
+        "x": 13,
+        "y": 43,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did you have a guidebook?",
+          "Did you have a guidebook"
+        ],
+        "top": 43,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex3_7",
+        "type": "fill",
+        "x": 13,
+        "y": 47.8,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did I pass the French exam?",
+          "Did I pass the French exam"
+        ],
+        "top": 47.8,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex4_1",
+        "type": "fill",
+        "x": 13,
+        "y": 55.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did you go on holiday last year?",
+          "Did you go on holiday last year"
+        ],
+        "top": 55.5,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex4_2",
+        "type": "fill",
+        "x": 13,
+        "y": 59,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did your parents have a good time in Budapest?",
+          "Did your parents have a good time in Budapest"
+        ],
+        "top": 59,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex4_4",
+        "type": "fill",
+        "x": 13,
+        "y": 66,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "How long did you spend in Gambia?",
+          "How long did you spend in Gambia"
+        ],
+        "top": 66,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex4_6",
+        "type": "fill",
+        "x": 13,
+        "y": 73,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did they book the plane tickets online?",
+          "Did they book the plane tickets online"
+        ],
+        "top": 73,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex4_7",
+        "type": "fill",
+        "x": 13,
+        "y": 76.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Whereabouts in Dubai did they stay?",
+          "Whereabouts in Dubai did they stay"
+        ],
+        "top": 76.5,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex4_8",
+        "type": "fill",
+        "x": 13,
+        "y": 80,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Who did you go with?",
+          "Who did you go with"
+        ],
+        "top": 80,
+        "left": 13,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex6a_1",
+        "type": "fill",
+        "x": 57,
+        "y": 48,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "When did you get back from your holiday?",
+          "When did you get back from your holiday"
+        ],
+        "top": 48,
+        "left": 57,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex6a_2",
+        "type": "fill",
+        "x": 57,
+        "y": 53.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did you have a good time in the USA?",
+          "Did you have a good time in the USA"
+        ],
+        "top": 53.5,
+        "left": 57,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex6a_3",
+        "type": "fill",
+        "x": 57,
+        "y": 59,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did John go with you?",
+          "Did John go with you"
+        ],
+        "top": 59,
+        "left": 57,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex6a_4",
+        "type": "fill",
+        "x": 57,
+        "y": 64.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "What did you do?",
+          "What did you do"
+        ],
+        "top": 64.5,
+        "left": 57,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex6a_5",
+        "type": "fill",
+        "x": 57,
+        "y": 70,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "How far did you drive?",
+          "How far did you drive"
+        ],
+        "top": 70,
+        "left": 57,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex6a_6",
+        "type": "fill",
+        "x": 57,
+        "y": 75.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Did you stay in hotels?",
+          "Did you stay in hotels"
+        ],
+        "top": 75.5,
+        "left": 57,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3053_ex6a_7",
+        "type": "fill",
+        "x": 57,
+        "y": 81,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "What was your favourite place?",
+          "What was your favourite place"
+        ],
+        "top": 81,
+        "left": 57,
+        "width": 35,
         "height": 2.2
       }
     ],
@@ -113683,7 +114005,8 @@
     "3049": 1793433871906,
     "3050": 1793436815993,
     "3051": 1793436771760,
-    "3052": 1793437071075,
+    "3052": 1793437072431,
+    "3053": 1793437076151,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -114446,5 +114769,5 @@
       }
     }
   },
-  "updatedAt": 1793437071202
+  "updatedAt": 1793437076501
 }
