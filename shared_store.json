@@ -26034,6 +26034,19 @@
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
       "updatedAt": 1793431308524
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793472289850
     }
   ],
   "p2pListings": [],
@@ -124093,5 +124106,5 @@
       }
     }
   },
-  "updatedAt": 1793472281932
+  "updatedAt": 1793472335854
 }
