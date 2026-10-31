@@ -1488,9 +1488,13 @@
       } catch (e) {}
     }
 
-    // Single check on startup after 3 seconds, then poll gently every 10 minutes
-    setTimeout(checkVersion, 3000);
-    setInterval(checkVersion, 10 * 60 * 1000);
+    // Fast responsive version checker: on startup, on window focus, and polled every 15 seconds
+    setTimeout(checkVersion, 2000);
+    setInterval(checkVersion, 15 * 1000);
+    window.addEventListener('focus', checkVersion);
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'visible') checkVersion();
+    });
   })();
 
 })(window);

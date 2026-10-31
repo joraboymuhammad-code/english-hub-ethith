@@ -5172,6 +5172,14 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
   // 7. 3-MONTH LEVEL TEST MILESTONE & AUTO-DROP ASSESSMENT MODAL
   // ============================================================================
   EE.openLevelTestModal = function(cls, dateKey) {
+    if (!cls) {
+      if (window.EthithAttendance && typeof window.EthithAttendance.getActiveOrFirstClass === 'function') {
+        cls = window.EthithAttendance.getActiveOrFirstClass();
+      }
+      if (!cls && window.S && Array.isArray(window.S.classes)) {
+        cls = window.S.classes[0];
+      }
+    }
     if (!cls) return;
     var S = getStore();
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
