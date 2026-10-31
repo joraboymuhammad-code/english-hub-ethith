@@ -123851,7 +123851,7 @@
       "email": "muhammadyusuf11@ethith.uz",
       "subject": "Ingliz tili",
       "hourlyRate": 100000,
-      "salarySharePercent": 50,
+      "salarySharePercent": 69,
       "teachingHours": 0,
       "monthlyBonus": 0,
       "status": "active",
@@ -123859,7 +123859,11 @@
       "assignedClasses": [],
       "classOrder": [],
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 3726000,
+      "card": "8600 ...",
+      "phone": "+998 90 ..."
     }
   ],
   "fileExplorer": {
@@ -124102,5 +124106,5 @@
       }
     }
   },
-  "updatedAt": 1793455867166
+  "updatedAt": 1793455882234
 }
