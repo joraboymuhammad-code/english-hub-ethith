@@ -24104,7 +24104,8 @@
           "isTester": false,
           "manuallyEnrolled": true,
           "isOnline": false,
-          "coins": 150
+          "coins": 150,
+          "dailyMinutes": 63
         },
         {
           "id": "std_mix_416_selix",
@@ -24392,6 +24393,9 @@
             "std_mix_416_selix": {
               "status": "",
               "score": ""
+            },
+            "std_mixswdasd_804_selixasdasd": {
+              "status": "K"
             }
           }
         },
@@ -24419,7 +24423,7 @@
             "teacherName": "Muhammadyusuf"
           }
         },
-        "updatedAt": 1793434223118
+        "updatedAt": 1793434258870
       },
       "customStudentPhones": {
         "std_mixswdasd_804_selixasdasd": "+998950079621"
@@ -120372,5 +120376,5 @@
       }
     }
   },
-  "updatedAt": 1793434251900
+  "updatedAt": 1793434259478
 }
