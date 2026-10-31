@@ -24398,6 +24398,12 @@
               "status": "",
               "score": ""
             }
+          },
+          "2026-10-31": {
+            "std_mixswdasd_804_selixasdasd": {
+              "status": "Q",
+              "score": "2"
+            }
           }
         },
         "lessonTypes": {
@@ -24424,7 +24430,7 @@
             "teacherName": "Muhammadyusuf"
           }
         },
-        "updatedAt": 1793434261996
+        "updatedAt": 1793434263989
       },
       "customStudentPhones": {
         "std_mixswdasd_804_selixasdasd": "+998950079621"
@@ -120377,5 +120383,5 @@
       }
     }
   },
-  "updatedAt": 1793434263078
+  "updatedAt": 1793434266845
 }
