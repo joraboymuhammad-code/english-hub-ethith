@@ -1,10 +1,52 @@
 var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
   // ============================================================================
-  // SMSAPI.UZ GATEWAY (https://smsapi.uz/dashboard/api_keys.php)
+  // TRIPLE SMS GATEWAY ENGINE (3 TA SMS SHLYUZI):
+  // 1. smsapi.uz (O‘zbekiston milliy shlyuzi)
+  // 2. SMS Gateway — Telefondagi Internet (Cloud / FCM Push)
+  // 3. SMS Gateway — Wi-Fi (Lokal Tarmoq orqali to‘g‘ridan-to‘g‘ri telefon)
   // ============================================================================
-  EA.SMSAPI_KEY = '4480804365a1569479f178d2c1834629';
-  EA.SMSAPI_URL = 'https://smsapi.uz/v1/send.php';
+  EA.SMS_CONFIG = {
+    // 1. smsapi.uz
+    SMSAPI_KEY: '4480804365a1569479f178d2c1834629',
+    SMSAPI_URL: 'https://smsapi.uz/v1/send.php',
+
+    // 2. SMS Gateway (Telefondagi Internet / Cloud)
+    GATEWAY_INTERNET_TOKEN: 'dIFnpyWVSP-KN09fQrq1Oq:APA91bFXlwulh25nIhfcxFBzO1uRQr3iIA24Qq9PlhlawcfhVP1hjBqG1ekkANFt_jwL4eMHqA05Y3j67-UG_Pen8Y8ipSWnRgv-nROPG3cFBhjwcEkRMhw',
+    GATEWAY_DEVICE_ID: '647c187a-4882-4ad8-80d2-aaf7f5df5fe1',
+    GATEWAY_CLOUD_URL: 'https://api.sms-gate.app/3rdparty/v1/messages',
+
+    // 3. SMS Gateway (Wi-Fi / Lokal Tarmoq)
+    GATEWAY_WIFI_TOKEN: '647c187a-4882-4ad8-80d2-aaf7f5df5fe1',
+
+    getWifiHost: function() {
+      try {
+        return localStorage.getItem('ethith_sms_gateway_wifi_host') || '192.168.1.100:8080';
+      } catch(e) {
+        return '192.168.1.100:8080';
+      }
+    },
+    setWifiHost: function(host) {
+      try {
+        localStorage.setItem('ethith_sms_gateway_wifi_host', host);
+      } catch(e) {}
+    },
+    getSelectedGateway: function() {
+      try {
+        return localStorage.getItem('ethith_selected_sms_gateway') || 'auto';
+      } catch(e) {
+        return 'auto';
+      }
+    },
+    setSelectedGateway: function(gw) {
+      try {
+        localStorage.setItem('ethith_selected_sms_gateway', gw);
+      } catch(e) {}
+    }
+  };
+
+  EA.SMSAPI_KEY = EA.SMS_CONFIG.SMSAPI_KEY;
+  EA.SMSAPI_URL = EA.SMS_CONFIG.SMSAPI_URL;
   EA.INFOBIP_API_KEY = 'b2cd5f0b3779029fe4da0257852e9d29-b74258d1-ae6f-4c2d-a97d-7b33faf5fac2';
 
   function sanitizeToGsm7(text) {
@@ -44,7 +86,186 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   }
   EA.normalizePhoneForSms = normalizePhoneForSms;
 
-  EA.sendSmsApiUz = async function(recipients, messageText) {
+  // 1. Send via smsapi.uz
+  EA.sendViaSmsApiUz = async function(validDestinations, cleanMsg) {
+    var errors = [];
+    var successCount = 0;
+
+    for (var i = 0; i < validDestinations.length; i++) {
+      var d = validDestinations[i];
+      var personalText = cleanMsg.replace(/\[O['‘]quvchi ismi\]/gi, d.name);
+      if (personalText.length > 160) personalText = personalText.slice(0, 160);
+
+      var params = new URLSearchParams();
+      params.append('api_key', EA.SMS_CONFIG.SMSAPI_KEY);
+      params.append('phone', d.to);
+      params.append('message', personalText);
+
+      try {
+        var res = await fetch(EA.SMS_CONFIG.SMSAPI_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString()
+        });
+
+        var data = await res.json().catch(function() { return null; });
+        if (res.ok && data && (data.success === true || data.status === 'success' || data.success === 1)) {
+          successCount++;
+        } else {
+          var errMsg = (data && data.message) || (res.status + ' ' + (res.statusText || ''));
+          errors.push(d.name + ": " + errMsg);
+        }
+      } catch (fetchErr) {
+        try {
+          await fetch(EA.SMS_CONFIG.SMSAPI_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: params.toString()
+          });
+          successCount++;
+        } catch (noCorsErr) {
+          errors.push(d.name + ": " + (fetchErr.message || 'Tarmoq xatosi'));
+        }
+      }
+    }
+
+    if (successCount > 0 && errors.length === 0) {
+      return { success: true, count: successCount, gateway: 'smsapi.uz' };
+    } else if (successCount > 0 && errors.length > 0) {
+      return { success: true, count: successCount, warning: errors.join('\n'), gateway: 'smsapi.uz' };
+    } else {
+      return { success: false, error: errors.join('\n') || "smsapi.uz xatosi", gateway: 'smsapi.uz' };
+    }
+  };
+
+  // 2. Send via SMS Gateway (Telefondagi Internet / Cloud)
+  EA.sendViaGatewayCloud = async function(validDestinations, cleanMsg) {
+    var errors = [];
+    var successCount = 0;
+
+    for (var i = 0; i < validDestinations.length; i++) {
+      var d = validDestinations[i];
+      var personalText = cleanMsg.replace(/\[O['‘]quvchi ismi\]/gi, d.name);
+      if (personalText.length > 160) personalText = personalText.slice(0, 160);
+
+      var payload = {
+        phoneNumbers: [d.fullPhone],
+        textMessage: { text: personalText },
+        deviceId: EA.SMS_CONFIG.GATEWAY_DEVICE_ID,
+        phone: d.fullPhone,
+        message: personalText
+      };
+
+      try {
+        var res = await fetch(EA.SMS_CONFIG.GATEWAY_CLOUD_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + EA.SMS_CONFIG.GATEWAY_DEVICE_ID,
+            'X-FCM-Token': EA.SMS_CONFIG.GATEWAY_INTERNET_TOKEN
+          },
+          body: JSON.stringify(payload)
+        });
+
+        var data = await res.json().catch(function() { return null; });
+        if (res.ok && data) {
+          successCount++;
+        } else {
+          var errMsg = (data && (data.message || data.error)) || (res.status + ' ' + (res.statusText || ''));
+          errors.push(d.name + ": " + errMsg);
+        }
+      } catch (err) {
+        try {
+          await fetch(EA.SMS_CONFIG.GATEWAY_CLOUD_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          successCount++;
+        } catch (err2) {
+          errors.push(d.name + ": " + err.message);
+        }
+      }
+    }
+
+    if (successCount > 0 && errors.length === 0) {
+      return { success: true, count: successCount, gateway: 'SMS Gateway (Telefondagi Internet)' };
+    } else if (successCount > 0 && errors.length > 0) {
+      return { success: true, count: successCount, warning: errors.join('\n'), gateway: 'SMS Gateway (Telefondagi Internet)' };
+    } else {
+      return { success: false, error: errors.join('\n') || "SMS Gateway (Internet) xatosi", gateway: 'SMS Gateway (Telefondagi Internet)' };
+    }
+  };
+
+  // 3. Send via SMS Gateway (Wi-Fi / Lokal Tarmoq)
+  EA.sendViaGatewayWifi = async function(validDestinations, cleanMsg) {
+    var rawHost = EA.SMS_CONFIG.getWifiHost().trim();
+    if (!rawHost.startsWith('http://') && !rawHost.startsWith('https://')) {
+      rawHost = 'http://' + rawHost;
+    }
+    rawHost = rawHost.replace(/\/+$/, '');
+    var url = rawHost + '/message';
+
+    var errors = [];
+    var successCount = 0;
+
+    for (var i = 0; i < validDestinations.length; i++) {
+      var d = validDestinations[i];
+      var personalText = cleanMsg.replace(/\[O['‘]quvchi ismi\]/gi, d.name);
+      if (personalText.length > 160) personalText = personalText.slice(0, 160);
+
+      var payload = {
+        phoneNumbers: [d.fullPhone],
+        textMessage: { text: personalText },
+        phone: d.fullPhone,
+        message: personalText
+      };
+
+      try {
+        var res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + EA.SMS_CONFIG.GATEWAY_WIFI_TOKEN
+          },
+          body: JSON.stringify(payload)
+        });
+
+        var data = await res.json().catch(function() { return null; });
+        if (res.ok) {
+          successCount++;
+        } else {
+          var errMsg = (data && (data.message || data.error)) || (res.status + ' ' + (res.statusText || ''));
+          errors.push(d.name + ": " + errMsg);
+        }
+      } catch (err) {
+        try {
+          await fetch(url, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          successCount++;
+        } catch (err2) {
+          errors.push(d.name + ": " + (err.message || 'Wi-Fi orqali telefonga ulanib bo‘lmadi'));
+        }
+      }
+    }
+
+    if (successCount > 0 && errors.length === 0) {
+      return { success: true, count: successCount, gateway: 'SMS Gateway (Wi-Fi: ' + rawHost + ')' };
+    } else if (successCount > 0 && errors.length > 0) {
+      return { success: true, count: successCount, warning: errors.join('\n'), gateway: 'SMS Gateway (Wi-Fi: ' + rawHost + ')' };
+    } else {
+      return { success: false, error: errors.join('\n') || "SMS Gateway (Wi-Fi) xatosi", gateway: 'SMS Gateway (Wi-Fi: ' + rawHost + ')' };
+    }
+  };
+
+  // Master Sender with Automatic Failover
+  EA.sendSmsApiUz = async function(recipients, messageText, chosenGateway) {
     var cleanMsg = sanitizeToGsm7(messageText);
     // Strict 160 character limit guarantee (not a single character more)
     if (cleanMsg.length > 160) {
@@ -57,7 +278,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       var v = validateUzbekPhone(r.phone);
       if (v.valid) {
         if (!validDestinations.some(function(vd) { return vd.to === v.to; })) {
-          validDestinations.push({ to: v.to, name: r.name || 'Ota-ona' });
+          validDestinations.push({ to: v.to, fullPhone: v.fullPhone, name: r.name || 'Ota-ona' });
         }
       } else {
         invalidList.push((r.name || 'O‘quvchi') + ': ' + v.error);
@@ -72,70 +293,39 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       return { success: false, error: "Yaroqli telefon raqamlari topilmadi! Iltimos, o‘quvchi telefon raqami faqat 9 ta raqamdan iborat ekanligini tekshiring." };
     }
 
-    var errors = [];
-    var successCount = 0;
+    var selectedGw = chosenGateway || EA.SMS_CONFIG.getSelectedGateway() || 'auto';
 
-    for (var i = 0; i < validDestinations.length; i++) {
-      var d = validDestinations[i];
-      var personalText = cleanMsg.replace(/\[O['‘]quvchi ismi\]/gi, d.name);
-      if (personalText.length > 160) {
-        personalText = personalText.slice(0, 160);
-      }
-
-      var params = new URLSearchParams();
-      params.append('api_key', EA.SMSAPI_KEY);
-      params.append('phone', d.to);
-      params.append('message', personalText);
-
-      try {
-        var res = await fetch(EA.SMSAPI_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: params.toString()
-        });
-
-        var data = await res.json().catch(function() { return null; });
-        if (res.ok && data && (data.success === true || data.status === 'success' || data.success === 1)) {
-          successCount++;
-        } else {
-          var errMsg = (data && data.message) || (res.status + ' ' + (res.statusText || ''));
-          if (errMsg.includes('shablon') || errMsg.includes('tasdiqlangan')) {
-            errMsg += "\n💡 Eslatma: smsapi.uz panelida (https://smsapi.uz/dashboard/templates.php) ushbu xabar matnini 'Shablonlar' bo'limiga qo'shib tasdiqlatishingiz kerak.";
-          }
-          errors.push(d.name + " (" + d.to + "): " + errMsg);
-        }
-      } catch (fetchErr) {
-        // If direct fetch was blocked by browser CORS policy, attempt no-cors mode to ensure dispatch
-        try {
-          await fetch(EA.SMSAPI_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: params.toString()
-          });
-          successCount++;
-        } catch (noCorsErr) {
-          errors.push(d.name + " (" + d.to + "): " + (fetchErr.message || 'Tarmoq xatosi'));
-        }
-      }
-    }
-
-    if (successCount > 0 && errors.length === 0) {
-      return { success: true, count: successCount };
-    } else if (successCount > 0 && errors.length > 0) {
-      return { 
-        success: true, 
-        count: successCount, 
-        warning: successCount + " ta SMS yuborildi, ammo ayrimlarida xatolik bo‘ldi:\n" + errors.join('\n') 
-      };
+    if (selectedGw === 'smsapi') {
+      return await EA.sendViaSmsApiUz(validDestinations, cleanMsg);
+    } else if (selectedGw === 'gateway_cloud') {
+      return await EA.sendViaGatewayCloud(validDestinations, cleanMsg);
+    } else if (selectedGw === 'gateway_wifi') {
+      return await EA.sendViaGatewayWifi(validDestinations, cleanMsg);
     } else {
-      return { 
-        success: false, 
-        error: errors.join('\n') || "SMS yuborishda noma'lum xatolik yuz berdi" 
+      // AUTO FAILOVER: 1. Try smsapi.uz -> 2. Try Gateway (Telefondagi Internet) -> 3. Try Gateway (Wi-Fi)
+      var res1 = await EA.sendViaSmsApiUz(validDestinations, cleanMsg);
+      if (res1.success) return res1;
+
+      console.warn('[SMS Failover] smsapi.uz rad etildi, 2-shlyuz (Telefondagi Internet)ga o‘tilmoqda...');
+      var res2 = await EA.sendViaGatewayCloud(validDestinations, cleanMsg);
+      if (res2.success) {
+        res2.note = 'smsapi.uz da muammo bo‘ldi, lekin SMS telefoningizdagi Gateway (Telefondagi Internet) orqali yuborildi!';
+        return res2;
+      }
+
+      console.warn('[SMS Failover] Gateway (Internet) rad etildi, 3-shlyuz (Wi-Fi)ga o‘tilmoqda...');
+      var res3 = await EA.sendViaGatewayWifi(validDestinations, cleanMsg);
+      if (res3.success) {
+        res3.note = 'SMS telefoningizdagi Gateway (Wi-Fi) orqali yuborildi!';
+        return res3;
+      }
+
+      return {
+        success: false,
+        error: "Barcha 3 ta shlyuz orqali yuborish sinab ko‘rildi:\n" +
+               "1. smsapi.uz: " + (res1.error || 'rad etildi') + "\n" +
+               "2. Gateway (Telefondagi Internet): " + (res2.error || 'rad etildi') + "\n" +
+               "3. Gateway (Wi-Fi): " + (res3.error || 'rad etildi')
       };
     }
   };
@@ -3324,7 +3514,7 @@ EA.render = function(container, preserveScrollLeft) {
     var absentBtn = container.querySelector('#eaBtnSendSmsAbsentOnly');
     if (absentBtn) {
       absentBtn.onclick = function() {
-        EA.openAbsentSmsModal(cls.id);
+        EA.openAbsentSmsModal(cls);
       };
     }
 
@@ -3689,7 +3879,7 @@ EA.render = function(container, preserveScrollLeft) {
     var smsBtn = container.querySelector('#eaSendAbsentSmsBtn');
     if (smsBtn) {
       smsBtn.onclick = function() {
-        EA.openAbsentSmsModal(container, cls);
+        EA.openAbsentSmsModal(cls);
       };
     }
 
@@ -6620,21 +6810,32 @@ EA.render = function(container, preserveScrollLeft) {
     var classes = getAvailableClasses();
     var curClass = null;
 
-    if (arg1 && typeof arg1 === 'object' && arg1.students) {
-      curClass = arg1;
-    } else if (arg2 && typeof arg2 === 'object' && arg2.students) {
-      curClass = arg2;
-    } else if (typeof arg1 === 'string') {
-      curClass = classes.find(function(c) { return c && (c.id === arg1 || c.code === arg1); });
+    function matchClass(target) {
+      if (!target) return null;
+      if (typeof target === 'object') {
+        if (target.id) {
+          var byId = classes.find(function(c) { return c && (c.id === target.id || c.name === target.id); });
+          if (byId) return byId;
+        }
+        if (target.name) {
+          var byName = classes.find(function(c) { return c && (c.name === target.name || c.id === target.name); });
+          if (byName) return byName;
+        }
+        if (target.students && target.attendance) return target;
+      } else if (typeof target === 'string') {
+        var byStr = classes.find(function(c) { return c && (c.id === target || c.name === target || c.code === target); });
+        if (byStr) return byStr;
+      }
+      return null;
     }
 
-    if (!curClass) {
-      if (EA.activeClassId) {
-        curClass = classes.find(function(c) { return c && c.id === EA.activeClassId; });
-      }
-      if (!curClass && typeof getActiveOrFirstClass === 'function') {
-        curClass = getActiveOrFirstClass();
-      }
+    curClass = matchClass(arg1) || matchClass(arg2);
+
+    if (!curClass && EA.activeClassId) {
+      curClass = matchClass(EA.activeClassId);
+    }
+    if (!curClass && typeof getActiveOrFirstClass === 'function') {
+      curClass = getActiveOrFirstClass();
     }
     if (!curClass) curClass = classes[0];
     if (!curClass) return;
@@ -6647,26 +6848,40 @@ EA.render = function(container, preserveScrollLeft) {
     var dates = getJournalDates(curClass, EA.viewMode || 'window');
     var todayKey = formatDateKey(new Date());
 
-    // Find date with absent records, prioritizing todayKey or date with 'Q'
+    // 1. Check if today has absents
     var matchDateKey = todayKey;
-    for (var di = dates.length - 1; di >= 0; di--) {
-      var dk = formatDateKey(dates[di]);
-      var rMap = curClass.attendance.records[dk] || {};
-      for (var sid in rMap) {
-        var r = rMap[sid];
-        if (r && (r.status === 'Q' || r.status === 'absent' || r.status === 'q' || r.val === 'Q')) {
-          matchDateKey = dk;
-          break;
-        }
+    var foundAbsents = false;
+    var rMapToday = (curClass.attendance && curClass.attendance.records && curClass.attendance.records[todayKey]) || {};
+    for (var sid in rMapToday) {
+      var r = rMapToday[sid];
+      if (r && (r.status === 'Q' || r.status === 'absent' || r.status === 'q' || r.val === 'Q')) {
+        foundAbsents = true;
+        break;
       }
-      if (matchDateKey !== todayKey) break;
+    }
+
+    // 2. If no absents today, search backwards through journal dates for latest date with Q
+    if (!foundAbsents) {
+      for (var di = dates.length - 1; di >= 0; di--) {
+        var dk = formatDateKey(dates[di]);
+        var rMap = (curClass.attendance && curClass.attendance.records && curClass.attendance.records[dk]) || {};
+        for (var sid2 in rMap) {
+          var r2 = rMap[sid2];
+          if (r2 && (r2.status === 'Q' || r2.status === 'absent' || r2.status === 'q' || r2.val === 'Q')) {
+            matchDateKey = dk;
+            foundAbsents = true;
+            break;
+          }
+        }
+        if (foundAbsents) break;
+      }
     }
 
     // Collect absent students for matchDateKey
     var absentStudents = [];
     (curClass.students || []).forEach(function(st, sIdx) {
       var stId = st.id || st.email || ('std_' + sIdx);
-      var rMap = curClass.attendance.records[matchDateKey] || {};
+      var rMap = (curClass.attendance && curClass.attendance.records && curClass.attendance.records[matchDateKey]) || {};
       var rec = rMap[stId] || (st.id && rMap[st.id]) || (st.login && rMap[st.login]) || (st.name && rMap[st.name]);
       if (rec && (rec.status === 'Q' || rec.status === 'absent' || rec.status === 'q' || rec.val === 'Q')) {
         absentStudents.push(st);
@@ -6701,6 +6916,9 @@ EA.render = function(container, preserveScrollLeft) {
       try { localStorage.setItem('ethith_saved_absent_sms_template', EXACT_SMSAPI_TEMPLATE); } catch(e) {}
     }
 
+    var currentGw = EA.SMS_CONFIG.getSelectedGateway();
+    var wifiHost = EA.SMS_CONFIG.getWifiHost();
+
     var html = '<div class="eth-modal" style="max-width:640px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(245,158,11,0.5);box-shadow:0 24px 60px rgba(0,0,0,0.85),0 0 35px rgba(245,158,11,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
@@ -6709,20 +6927,36 @@ EA.render = function(container, preserveScrollLeft) {
             '<h2 style="margin:0;font-size:18.5px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">' +
               'Darsga Kelmaganlarga SMS Yuborish' +
             '</h2>' +
-            '<p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Guruh: <b style="color:#38bdf8;">' + esc(curClass.name || curClass.id) + '</b> • Ustoz: <b style="color:#fff;">' + esc(curClass.teacherName || curClass.teacher || 'Ustoz') + '</b></p>' +
+            '<p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Guruh: <b style="color:#38bdf8;">' + esc(curClass.name || curClass.id) + '</b> • Ustoz: <b style="color:#fff;">' + esc(curClass.teacherName || curClass.teacher || 'Ustoz') + '</b> • Sana: <b style="color:#f59e0b;">' + esc(matchDateKey) + '</b></p>' +
           '</div>' +
         '</div>' +
         '<button type="button" id="eaCloseAbsentSmsBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:20px;cursor:pointer;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">✕</button>' +
-      '</div>' +
+      '</div>';
 
-      // Gateway Status Banner with explicit API Key confirmation
-      '<div style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(217,119,6,0.1));border:1px solid rgba(245,158,11,0.35);border-radius:14px;padding:10px 14px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;">' +
-        '<div style="display:flex;align-items:center;gap:8px;">' +
-          '<span style="font-size:16px;">🔌</span>' +
-          '<span><b>SMS Shlyuz:</b> smsapi.uz (O‘zbekiston)</span>' +
+    // Gateway Status Banner with explicit Triple Gateway Selector
+    html += '<div style="background:rgba(15,23,42,0.85);border:1.5px solid rgba(245,158,11,0.4);border-radius:14px;padding:12px 14px;margin-bottom:16px;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px;">' +
+          '<span style="font-size:12px;font-weight:900;color:#fef08a;display:flex;align-items:center;gap:6px;">📡 Faol SMS Shlyuzini Tanlang:</span>' +
+          '<span style="font-size:11px;color:#94a3b8;">(Biri ishlamasa avtomatik boshqasiga o‘tadi)</span>' +
         '</div>' +
-        '<span style="background:rgba(16,185,129,0.2);border:1px solid #10b981;color:#6ee7b7;padding:3px 8px;border-radius:8px;font-weight:900;font-size:11px;font-family:monospace;">🟢 API Kalit: ' + EA.SMSAPI_KEY + '</span>' +
-      '</div>' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:6px;margin-bottom:10px;">' +
+          '<button type="button" class="ea-gw-select-btn" data-gw="auto" style="background:' + (currentGw === 'auto' ? '#f59e0b' : 'rgba(255,255,255,0.06)') + ';color:' + (currentGw === 'auto' ? '#000' : '#fff') + ';border:1px solid rgba(245,158,11,0.4);border-radius:8px;padding:7px 6px;font-size:11px;font-weight:900;cursor:pointer;">🔄 Avtomatik (Hammasi)</button>' +
+          '<button type="button" class="ea-gw-select-btn" data-gw="smsapi" style="background:' + (currentGw === 'smsapi' ? '#10b981' : 'rgba(255,255,255,0.06)') + ';color:#fff;border:1px solid rgba(16,185,129,0.4);border-radius:8px;padding:7px 6px;font-size:11px;font-weight:900;cursor:pointer;">1. smsapi.uz</button>' +
+          '<button type="button" class="ea-gw-select-btn" data-gw="gateway_cloud" style="background:' + (currentGw === 'gateway_cloud' ? '#38bdf8' : 'rgba(255,255,255,0.06)') + ';color:' + (currentGw === 'gateway_cloud' ? '#000' : '#fff') + ';border:1px solid rgba(56,189,248,0.4);border-radius:8px;padding:7px 6px;font-size:11px;font-weight:900;cursor:pointer;">2. Telefon Internet</button>' +
+          '<button type="button" class="ea-gw-select-btn" data-gw="gateway_wifi" style="background:' + (currentGw === 'gateway_wifi' ? '#a855f7' : 'rgba(255,255,255,0.06)') + ';color:#fff;border:1px solid rgba(168,85,247,0.4);border-radius:8px;padding:7px 6px;font-size:11px;font-weight:900;cursor:pointer;">3. Telefon Wi-Fi</button>' +
+        '</div>' +
+
+        '<div id="eaWifiHostBox" style="display:' + (currentGw === 'gateway_wifi' ? 'flex' : 'none') + ';align-items:center;justify-content:space-between;background:rgba(0,0,0,0.3);border:1px solid rgba(168,85,247,0.3);border-radius:8px;padding:6px 10px;margin-bottom:8px;font-size:11.5px;gap:8px;">' +
+          '<span style="color:#c084fc;">📶 Telefon Wi-Fi IP:</span>' +
+          '<input type="text" id="eaWifiHostInput" value="' + esc(wifiHost) + '" placeholder="192.168.1.100:8080" style="background:#0b1222;border:1px solid rgba(168,85,247,0.5);border-radius:6px;color:#fff;padding:4px 8px;font-size:11.5px;font-family:monospace;width:160px;outline:none;" />' +
+        '</div>' +
+
+        '<div style="font-size:10.5px;color:#94a3b8;font-family:monospace;display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(255,255,255,0.08);padding-top:6px;">' +
+          '<div>🟢 <b>1. smsapi.uz:</b> <span style="color:#6ee7b7;">4480804365a1569479f178d2c1834629</span></div>' +
+          '<div>🟢 <b>2. Telefon Internet (FCM):</b> <span style="color:#7dd3fc;">dIFnpyWVSP...APA91b</span></div>' +
+          '<div>🟢 <b>3. Telefon Wi-Fi (Lokal):</b> <span style="color:#c084fc;">647c187a-4882-4ad8-80d2-aaf7f5df5fe1</span></div>' +
+        '</div>' +
+      '</div>';
 
       // Automatically Detected Absent Students Box
       '<div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:16px;padding:14px 18px;margin-bottom:18px;">' +
@@ -6815,6 +7049,34 @@ EA.render = function(container, preserveScrollLeft) {
     overlay.querySelector('#eaCloseAbsentSmsBtn').onclick = function() { overlay.remove(); };
     overlay.querySelector('#eaCancelAbsentSmsBtn').onclick = function() { overlay.remove(); };
 
+    // Triple Gateway selector button events
+    overlay.querySelectorAll('.ea-gw-select-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var gw = btn.getAttribute('data-gw');
+        EA.SMS_CONFIG.setSelectedGateway(gw);
+        overlay.querySelectorAll('.ea-gw-select-btn').forEach(function(b) {
+          b.style.background = 'rgba(255,255,255,0.06)';
+          b.style.color = '#fff';
+        });
+        if (gw === 'auto') { btn.style.background = '#f59e0b'; btn.style.color = '#000'; }
+        else if (gw === 'smsapi') { btn.style.background = '#10b981'; btn.style.color = '#fff'; }
+        else if (gw === 'gateway_cloud') { btn.style.background = '#38bdf8'; btn.style.color = '#000'; }
+        else if (gw === 'gateway_wifi') { btn.style.background = '#a855f7'; btn.style.color = '#fff'; }
+
+        var wifiBox = overlay.querySelector('#eaWifiHostBox');
+        if (wifiBox) {
+          wifiBox.style.display = (gw === 'gateway_wifi' ? 'flex' : 'none');
+        }
+      };
+    });
+
+    var wifiInput = overlay.querySelector('#eaWifiHostInput');
+    if (wifiInput) {
+      wifiInput.oninput = function() {
+        EA.SMS_CONFIG.setWifiHost(wifiInput.value.trim());
+      };
+    }
+
     overlay.querySelector('#eaSendAbsentSmsForm').onsubmit = async function(e) {
       e.preventDefault();
       var msg = ta.value.trim();
@@ -6845,13 +7107,14 @@ EA.render = function(container, preserveScrollLeft) {
         return;
       }
 
+      var activeGw = EA.SMS_CONFIG.getSelectedGateway();
       var sBtn = overlay.querySelector('button[type="submit"]');
       if (sBtn) {
         sBtn.disabled = true;
-        sBtn.innerHTML = '⏳ smsapi.uz orqali SMS yuborilmoqda...';
+        sBtn.innerHTML = '⏳ SMS yuborilmoqda (3 ta shlyuz tekshiruvi)...';
       }
 
-      var res = await EA.sendSmsApiUz(recipients, msg);
+      var res = await EA.sendSmsApiUz(recipients, msg, activeGw);
       if (sBtn) {
         sBtn.disabled = false;
         sBtn.innerHTML = '🚀 Kelmaganlarga SMS Yuborish';
@@ -6859,15 +7122,16 @@ EA.render = function(container, preserveScrollLeft) {
 
       if (res.success) {
         overlay.remove();
-        var toastMsg = "✅ " + res.count + " ta ota-onaga SMS smsapi.uz orqali muvaffaqiyatli yuborildi!";
-        if (res.warning) toastMsg += "\n" + res.warning;
+        var toastMsg = "✅ " + res.count + " ta ota-onaga SMS (" + (res.gateway || 'SMS Shlyuz') + ") orqali muvaffaqiyatli yuborildi!";
+        if (res.note) toastMsg += "\nℹ️ " + res.note;
+        if (res.warning) toastMsg += "\n⚠️ " + res.warning;
         if (window.EthithApp && window.EthithApp.toast) {
           window.EthithApp.toast(toastMsg);
         } else {
           alert(toastMsg);
         }
       } else {
-        alert("⚠️ SMS yuborishda xatolik yuz berdi:\n" + (res.error || "Noma'lum xatolik"));
+        alert("⚠️ SMS yuborishda xatolik yuz berdi:\n\n" + (res.error || "Noma'lum xatolik"));
       }
     };
   };

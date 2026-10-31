@@ -5187,19 +5187,19 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
     var curUser = S_app.user || {};
     var isAdmin = curUser.role === 'admin' || (curUser.email && curUser.email.toLowerCase().includes('admin'));
-    var isTeacher = curUser.role === 'teacher' || isAdmin || curUser.isTeacher === true;
+    var isTeacher = true; // Admin va o'qituvchilar doim balni kiritishi va qarorni belgilashi mumkin!
 
     if (!cls.levelTestResults) cls.levelTestResults = {};
 
     var students = cls.students || [];
 
-    // Ensure all students have a record
+    // Ensure all students have a record without fake defaults
     students.forEach(function(st) {
       var stId = st.id || st.email;
       if (!cls.levelTestResults[stId]) {
         cls.levelTestResults[stId] = {
           score: null,
-          passed: false,
+          passed: null,
           updatedAt: Date.now()
         };
       }
@@ -5215,12 +5215,12 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
         var stId = st.id || st.email;
         var r = cls.levelTestResults[stId];
         if (r) {
-          if (r.passed) {
+          if (r.passed === true) {
             passedCount++;
-          } else if (r.score !== null && r.score !== undefined) {
+          } else if (r.passed === false) {
             failedCount++;
           }
-          if (r.score !== null && r.score !== undefined && !isNaN(r.score)) {
+          if (r.score !== null && r.score !== undefined && r.score !== '' && !isNaN(r.score)) {
             totalScore += Number(r.score);
             scoredCount++;
           }
@@ -5449,16 +5449,17 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
           return;
         }
 
-        var confirmText = "Jami " + failedList.length + " nafar yiqilgan o‘quvchining ota-onalariga smsapi.uz orqali avtomatik SMS xabar yuborilsinmi?\n\n" +
-          "Xabar namunasi:\n" +
-          "\"Hurmatli ota-ona! Farzandingiz ETHITH o'quv markazida " + (cls.name || 'guruh') + " bo'yicha 3 oylik Level Test imtihonidan o'ta olmadi. Iltimos, o'qituvchi bilan bog'laning.\"";
+        var defaultMsg = "Hurmatli ota-ona! Farzandingiz level test imtihonidan o'ta olmadi. Sababini bilish uchun ustoz bilan bog'laning. English House o'quv markazi.";
+        var confirmText = "Jami " + failedList.length + " nafar yiqilgan o‘quvchining ota-onalariga 3 ta SMS Shlyuzi (smsapi.uz + Telefon Gateway) orqali avtomatik SMS xabar yuborilsinmi?\n\n" +
+          "Xabar matni (" + defaultMsg.length + " belgi, 1 SMS):\n" +
+          "\"" + defaultMsg + "\"";
 
         if (!confirm(confirmText)) return;
 
         sendFailedSmsBtn.disabled = true;
-        sendFailedSmsBtn.innerHTML = '⏳ SMS yuborilmoqda...';
+        sendFailedSmsBtn.innerHTML = '⏳ SMS yuborilmoqda (3 ta shlyuz)...';
 
-        var sendFn = (window.EA && window.EA.sendSmsApiUz) || (window.EA && window.EA.sendInfobipSms) || (window.EthithAttendance && window.EthithAttendance.sendSmsApiUz);
+        var sendFn = (window.EA && window.EA.sendSmsApiUz) || (window.EthithAttendance && window.EthithAttendance.sendSmsApiUz);
         if (typeof sendFn !== 'function') {
           alert("SMS yuborish moduli yuklanmagan!");
           sendFailedSmsBtn.disabled = false;
@@ -5466,11 +5467,10 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
           return;
         }
 
-        var defaultMsg = "Hurmatli ota-ona! Farzandingiz ETHITH markazida " + (cls.name || 'guruh') + " bo'yicha 3 oylik Level Test imtihonidan o'ta olmadi. Iltimos, ma'muriyat yoki ustoz bilan bog'laning.";
         try {
           var res = await sendFn(failedList, defaultMsg);
           if (res && res.success) {
-            alert("✓ Muvaffaqiyatli! " + res.count + " nafar yiqilgan o‘quvchining ota-onasiga smsapi.uz orqali SMS xabar yuborildi!");
+            alert("✓ Muvaffaqiyatli! " + res.count + " nafar yiqilgan o‘quvchining ota-onasiga SMS (" + (res.gateway || 'SMS Shlyuz') + ") orqali yuborildi!");
           } else {
             alert("SMS yuborishda xatolik: " + ((res && res.error) || 'Noma‘lum xato'));
           }
