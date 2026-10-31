@@ -22848,23 +22848,23 @@
       "levelTestResults": {
         "cls_urolov_azizbek_upper_std_1": {
           "score": null,
-          "passed": true,
-          "updatedAt": 1793458088931
+          "passed": false,
+          "updatedAt": 1793458100333
         },
         "cls_urolov_azizbek_upper_std_2": {
           "score": null,
-          "passed": true,
-          "updatedAt": 1793458089652
+          "passed": false,
+          "updatedAt": 1793458099570
         },
         "cls_urolov_azizbek_upper_std_3": {
           "score": null,
-          "passed": true,
-          "updatedAt": 1793458090164
+          "passed": false,
+          "updatedAt": 1793458098968
         },
         "cls_urolov_azizbek_upper_std_4": {
-          "score": 100,
-          "passed": true,
-          "updatedAt": 1793458095944
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793458098232
         },
         "cls_urolov_azizbek_upper_std_5": {
           "score": null,
@@ -124346,5 +124346,5 @@
       }
     }
   },
-  "updatedAt": 1793458096116
+  "updatedAt": 1793458101343
 }
