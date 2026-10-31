@@ -3331,7 +3331,17 @@
             },
             scales: {
               x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8', font: { size: 10 } } },
-              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8', callback: function(v) { return v + ' mln'; } } }
+              y: { 
+                min: 0,
+                max: 20,
+                grid: { color: 'rgba(255,255,255,0.05)' }, 
+                ticks: { 
+                  stepSize: 2,
+                  color: '#94A3B8', 
+                  font: { weight: '700', size: 10.5 },
+                  callback: function(v) { return v + ' mln'; } 
+                } 
+              }
             }
           }
         });
@@ -3353,7 +3363,17 @@
             plugins: { legend: { position: 'top', labels: { color: '#E2E8F0', usePointStyle: true, boxWidth: 8 } } },
             scales: {
               x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8' } },
-              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8', callback: function(v) { return v + ' mln'; } } }
+              y: { 
+                min: 0,
+                max: 20,
+                grid: { color: 'rgba(255,255,255,0.05)' }, 
+                ticks: { 
+                  stepSize: 2,
+                  color: '#94A3B8', 
+                  font: { weight: '700', size: 10.5 },
+                  callback: function(v) { return v + ' mln'; } 
+                } 
+              }
             }
           }
         });
@@ -3597,10 +3617,12 @@
               display: true,
               position: 'left',
               min: 0,
+              max: 20,
               grid: { color: 'rgba(255,255,255,0.05)' },
               ticks: { 
+                stepSize: 2,
                 color: '#10B981', 
-                font: { weight: '700' },
+                font: { weight: '800', size: 11 },
                 callback: function(v) { return v + ' mln'; } 
               }
             },
@@ -3609,8 +3631,10 @@
               display: true,
               position: 'right',
               min: 0,
+              max: 100,
               grid: { drawOnChartArea: false },
               ticks: { 
+                stepSize: 20,
                 color: '#38BDF8', 
                 font: { weight: '700' },
                 callback: function(v) { return v + ' soat'; } 
