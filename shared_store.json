@@ -26033,6 +26033,19 @@
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
       "updatedAt": 1793431308524
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793455687765
     }
   ],
   "p2pListings": [],
@@ -123374,16 +123387,16 @@
       "card": "8600 9184 5348 5520",
       "paidThisMonth": true,
       "assignedClasses": [
-        "cls_urolov_azizbek_intermediate_practice",
-        "cls_urolov_azizbek_upper_intermediate_standard",
         "cls_urolov_azizbek_upper",
-        "cls_urolov_azizbek_standard",
         "cls_urolov_azizbek_intermediate",
+        "cls_urolov_azizbek_standard",
         "cls_urolov_azizbek_practice"
       ],
       "classOrder": [
-        "cls_urolov_azizbek_intermediate_practice",
-        "cls_urolov_azizbek_upper_intermediate_standard"
+        "cls_urolov_azizbek_upper",
+        "cls_urolov_azizbek_intermediate",
+        "cls_urolov_azizbek_standard",
+        "cls_urolov_azizbek_practice"
       ],
       "inviteCode": "AZIZBEK77",
       "login": "azizbek77",
@@ -124086,5 +124099,5 @@
       }
     }
   },
-  "updatedAt": 1793455680510
+  "updatedAt": 1793455735479
 }
