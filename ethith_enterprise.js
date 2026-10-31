@@ -3610,16 +3610,17 @@
   };
 EE.renderFinanceStudentsTabHtml = function(studentList) {
     var h = '<div style="background:rgba(15,23,42,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.4);">' +
-      // Toolbar
+      // Toolbar with Search, Filters and Cyber-Neon Global Tariff Button
       '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px;">' +
         '<div style="display:flex;align-items:center;gap:10px;flex:1;min-width:240px;">' +
           '<input type="text" id="eeFinStudentSearchInp" placeholder="Ism, Gmail yoki guruh bo‘yicha qidiring..." style="width:100%;padding:11px 16px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;" />' +
         '</div>' +
-        '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
+        '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">' +
           '<button class="ee-fin-st-filter-btn active" data-filter="all" style="background:#0284c7;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;">Barchasi</button>' +
           '<button class="ee-fin-st-filter-btn" data-filter="paid" style="background:rgba(16,185,129,0.18);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;">✓ To‘laganlar</button>' +
           '<button class="ee-fin-st-filter-btn" data-filter="partial" style="background:rgba(245,158,11,0.18);color:#fbbf24;border:1px solid rgba(245,158,11,0.4);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;">? Chala to‘laganlar</button>' +
           '<button class="ee-fin-st-filter-btn" data-filter="unpaid" style="background:rgba(239,68,68,0.18);color:#f87171;border:1px solid rgba(239,68,68,0.4);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;">✗ Qarzdorlar</button>' +
+          '<button id="eeBtnSetGlobalTariff" title="Barcha o‘quvchilar uchun bir xil narx belgilash" style="background:linear-gradient(135deg,rgba(56,189,248,0.22),rgba(14,165,233,0.35));color:#38bdf8;border:1.5px solid #38bdf8;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 0 15px rgba(56,189,248,0.3);margin-left:6px;">⚡ Hamma Uchun Tarif Belgilash</button>' +
         '</div>' +
       '</div>' +
 
@@ -3627,21 +3628,21 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       '<div style="overflow-x:auto;">' +
         '<table style="width:100%;border-collapse:collapse;font-size:13px;text-align:left;">' +
           '<thead>' +
-            '<tr style="background:rgba(30,41,59,0.85);color:#94a3b8;font-size:11.5px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.08);">' +
-              '<th style="padding:12px 14px;">O‘quvchi</th>' +
-              '<th style="padding:12px 14px;">Guruh</th>' +
-              '<th style="padding:12px 14px;">Oylik Tarif</th>' +
-              '<th style="padding:12px 14px;">To‘langan</th>' +
-              '<th style="padding:12px 14px;">Qoldiq</th>' +
-              '<th style="padding:12px 14px;text-align:center;">Holat</th>' +
-              '<th style="padding:12px 14px;">Usul / Sana</th>' +
-              '<th style="padding:12px 14px;text-align:right;">Amallar</th>' +
+            '<tr style="background:rgba(30,41,59,0.85);color:#94a3b8;font-size:11.5px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.08);white-space:nowrap;">' +
+              '<th style="padding:12px 14px;white-space:nowrap;">O‘quvchi</th>' +
+              '<th style="padding:12px 14px;white-space:nowrap;">Guruh</th>' +
+              '<th style="padding:12px 14px;white-space:nowrap;">Oylik Tarif</th>' +
+              '<th style="padding:12px 14px;white-space:nowrap;">To‘langan</th>' +
+              '<th style="padding:12px 14px;white-space:nowrap;">Qoldiq</th>' +
+              '<th style="padding:12px 14px;text-align:center;white-space:nowrap;">Holat</th>' +
+              '<th style="padding:12px 14px;white-space:nowrap;">Usul / Sana</th>' +
+              '<th style="padding:12px 14px;text-align:right;white-space:nowrap;">Amallar</th>' +
             '</tr>' +
           '</thead>' +
           '<tbody id="eeFinStudentTableBody">';
 
           studentList.forEach(function(s, idx) {
-            var fee = s.fee || 1400000;
+            var fee = s.fee || 300000;
             var paid = s.paid || 0;
             var debt = Math.max(0, fee - paid);
             var isPaid = s.status === 'paid' || paid >= fee;
@@ -3649,33 +3650,33 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
 
             var statusBadge = '';
             if (isPaid) {
-              statusBadge = '<span style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.5);padding:3px 10px;border-radius:8px;font-size:11.5px;font-weight:900;">✓ Bergan</span>';
+              statusBadge = '<span style="display:inline-flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap;background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.5);padding:4px 12px;border-radius:10px;font-size:12px;font-weight:900;">✓ To‘langan</span>';
             } else if (isPartial) {
-              statusBadge = '<span style="background:rgba(245,158,11,0.2);color:#fbbf24;border:1px solid rgba(245,158,11,0.5);padding:3px 10px;border-radius:8px;font-size:11.5px;font-weight:900;">? Chala</span>';
+              statusBadge = '<span style="display:inline-flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap;background:rgba(245,158,11,0.2);color:#fbbf24;border:1px solid rgba(245,158,11,0.5);padding:4px 12px;border-radius:10px;font-size:12px;font-weight:900;">? Qisman</span>';
             } else {
-              statusBadge = '<span style="background:rgba(239,68,68,0.2);color:#f87171;border:1px solid rgba(239,68,68,0.5);padding:3px 10px;border-radius:8px;font-size:11.5px;font-weight:900;">✗ Bermagan</span>';
+              statusBadge = '<span style="display:inline-flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap;background:rgba(239,68,68,0.2);color:#f87171;border:1px solid rgba(239,68,68,0.5);padding:4px 12px;border-radius:10px;font-size:12px;font-weight:900;"><span>✗</span> <span>Bermagan</span></span>';
             }
 
-            h += '<tr class="ee-fin-st-row" data-status="' + s.status + '" style="border-bottom:1px solid rgba(255,255,255,0.06);background:' + (idx % 2 === 0 ? 'rgba(15,23,42,0.3)' : 'rgba(30,41,59,0.3)') + ';">' +
-              '<td style="padding:12px 14px;">' +
+            h += '<tr class="ee-fin-st-row" data-status="' + s.status + '" style="border-bottom:1px solid rgba(255,255,255,0.06);background:' + (idx % 2 === 0 ? 'rgba(15,23,42,0.3)' : 'rgba(30,41,59,0.3)') + ';white-space:nowrap;">' +
+              '<td style="padding:12px 14px;white-space:nowrap;">' +
                 '<div style="display:flex;align-items:center;gap:10px;">' +
-                  '<span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:12px;">' + esc((s.name || 'O').charAt(0).toUpperCase()) + '</span>' +
+                  '<span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">' + esc((s.name || 'O').charAt(0).toUpperCase()) + '</span>' +
                   '<div>' +
-                    '<div style="font-weight:800;color:#f8fafc;">' + esc(s.name) + '</div>' +
-                    '<div style="font-size:11px;color:#94a3b8;">' + esc(s.email || s.phone) + '</div>' +
+                    '<div style="font-weight:800;color:#f8fafc;white-space:nowrap;">' + esc(s.name) + '</div>' +
+                    '<div style="font-size:11px;color:#94a3b8;white-space:nowrap;">' + esc(s.email || s.phone) + '</div>' +
                   '</div>' +
                 '</div>' +
               '</td>' +
-              '<td style="padding:12px 14px;"><span style="background:rgba(56,189,248,0.12);color:#38bdf8;padding:3px 8px;border-radius:6px;font-size:11.5px;font-weight:700;">' + esc(s.className) + '</span></td>' +
-              '<td style="padding:12px 14px;font-weight:800;color:#e2e8f0;font-family:monospace;">' + fmtUZS(fee) + '</td>' +
-              '<td style="padding:12px 14px;font-weight:900;color:#34d399;font-family:monospace;">' + fmtUZS(paid) + '</td>' +
-              '<td style="padding:12px 14px;font-weight:900;color:' + (debt > 0 ? '#ff4d4d' : '#94a3b8') + ';font-family:monospace;">' + (debt > 0 ? fmtUZS(debt) : '—') + '</td>' +
-              '<td style="padding:12px 14px;text-align:center;">' + statusBadge + '</td>' +
-              '<td style="padding:12px 14px;"><div style="font-weight:700;color:#cbd5e1;">' + esc(s.method) + '</div><div style="font-size:11px;color:#94a3b8;">' + esc(s.date) + '</div></td>' +
-              '<td style="padding:12px 14px;text-align:right;">' +
-                '<div style="display:inline-flex;gap:6px;">' +
-                  '<button class="ee-fin-st-pay-btn" data-stid="' + esc(s.id) + '" data-stname="' + esc(s.name) + '" data-stfee="' + fee + '" data-stpaid="' + paid + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:8px;padding:6px 10px;font-size:11.5px;font-weight:800;cursor:pointer;">💵 To‘lov</button>' +
-                  '<button class="ee-fin-st-edit-fee-btn" data-stid="' + esc(s.id) + '" data-stname="' + esc(s.name) + '" data-stfee="' + fee + '" title="Oylik tarifni o‘zgartirish" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:8px;padding:6px 10px;font-size:11.5px;font-weight:800;cursor:pointer;">✏️ Tarif</button>' +
+              '<td style="padding:12px 14px;white-space:nowrap;"><span style="background:rgba(56,189,248,0.12);color:#38bdf8;padding:3px 8px;border-radius:6px;font-size:11.5px;font-weight:700;white-space:nowrap;">' + esc(s.className) + '</span></td>' +
+              '<td style="padding:12px 14px;font-weight:800;color:#e2e8f0;font-family:monospace;white-space:nowrap;">' + fmtUZS(fee) + '</td>' +
+              '<td style="padding:12px 14px;font-weight:900;color:#34d399;font-family:monospace;white-space:nowrap;">' + fmtUZS(paid) + '</td>' +
+              '<td style="padding:12px 14px;font-weight:900;color:' + (debt > 0 ? '#ff4d4d' : '#94a3b8') + ';font-family:monospace;white-space:nowrap;">' + (debt > 0 ? fmtUZS(debt) : '—') + '</td>' +
+              '<td style="padding:12px 14px;text-align:center;white-space:nowrap;">' + statusBadge + '</td>' +
+              '<td style="padding:12px 14px;white-space:nowrap;"><div style="font-weight:700;color:#cbd5e1;white-space:nowrap;">' + esc(s.method) + '</div><div style="font-size:11px;color:#94a3b8;white-space:nowrap;">' + esc(s.date) + '</div></td>' +
+              '<td style="padding:12px 14px;text-align:right;white-space:nowrap;">' +
+                '<div style="display:inline-flex;gap:6px;white-space:nowrap;">' +
+                  '<button class="ee-fin-st-pay-btn" data-stid="' + esc(s.id) + '" data-stname="' + esc(s.name) + '" data-stfee="' + fee + '" data-stpaid="' + paid + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;white-space:nowrap;">💵 To‘lov</button>' +
+                  '<button class="ee-fin-st-edit-fee-btn" data-stid="' + esc(s.id) + '" data-stname="' + esc(s.name) + '" data-stclassname="' + esc(s.className) + '" data-stfee="' + fee + '" title="Oylik tarifni o‘zgartirish" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:800;cursor:pointer;white-space:nowrap;">✏️ Tarif</button>' +
                 '</div>' +
               '</td>' +
             '</tr>';
@@ -3910,25 +3911,29 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       };
     });
 
-    // Student Edit Fee Button (✏️ Tarif)
+    // Student Edit Fee Button (✏️ Tarif) - Opens Cyber-Neon Modal
     container.querySelectorAll('.ee-fin-st-edit-fee-btn').forEach(function(btn) {
       btn.onclick = function() {
         var stId = btn.getAttribute('data-stid');
         var stName = btn.getAttribute('data-stname');
-        var fee = btn.getAttribute('data-stfee');
-        var newFee = prompt(stName + " uchun oylik to‘lov tarifini kiriting (so‘m):", fee || 1400000);
-        if (newFee === null) return;
-        var feeAmt = parseInt(String(newFee).replace(/\s+/g, ''), 10) || 1400000;
-
-        if (!S.finance.studentFees[stId]) S.finance.studentFees[stId] = {};
-        S.finance.studentFees[stId].fee = feeAmt;
-        if (S.finance.studentFees[stId].paid === undefined) S.finance.studentFees[stId].paid = feeAmt;
-
-        saveStore();
-        showToast(stName + " tarifi " + fmtUZS(feeAmt) + " qilib belgilandi!");
-        EE.renderFinanceUnifiedView(container, 'students');
+        var stClassName = btn.getAttribute('data-stclassname');
+        var fee = parseInt(btn.getAttribute('data-stfee'), 10) || 300000;
+        EE.openCyberNeonTariffModal(container, S, {
+          id: stId,
+          name: stName,
+          className: stClassName,
+          fee: fee
+        });
       };
     });
+
+    // Global Tariff Button (Toolbar)
+    var globalTariffBtn = container.querySelector('#eeBtnSetGlobalTariff');
+    if (globalTariffBtn) {
+      globalTariffBtn.onclick = function() {
+        EE.openCyberNeonTariffModal(container, S, null);
+      };
+    }
 
     // Teacher Edit Button (⚙️ Tahrir)
     container.querySelectorAll('.ee-fin-edit-teacher-btn').forEach(function(btn) {
@@ -4376,6 +4381,157 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     showToast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi!");
     EE.renderFinanceUnifiedView(container, 'teachers');
   };
+
+  // --------------------------------------------------------------------------
+  // MODAL: CYBER-NEON OYLIK TARIF BELGILASH
+  // (Yakka o'quvchi yoki barcha o'quvchilar uchun bir marta bosish bilan o'rnatish)
+  // --------------------------------------------------------------------------
+  EE.openCyberNeonTariffModal = function(container, S, targetStudent) {
+    var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
+    var existing = document.getElementById('eeCyberNeonTariffOverlay');
+    if (existing) existing.remove();
+
+    var currentFee = targetStudent ? (targetStudent.fee || 300000) : (S.finance.defaultFee || 300000);
+
+    var m = document.createElement('div');
+    m.id = 'eeCyberNeonTariffOverlay';
+    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(24px);z-index:2147483645;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    m.innerHTML = '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.2), transparent 45%), radial-gradient(circle at 90% 80%, rgba(16,185,129,0.18), transparent 45%), linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.94));border:1.5px solid rgba(56,189,248,0.55);box-shadow:0 0 45px rgba(56,189,248,0.35), 0 25px 70px rgba(0,0,0,0.85);border-radius:24px;max-width:480px;width:100%;padding:26px 28px;color:#f8fafc;position:relative;overflow:hidden;">' +
+      // Glowing accent line
+      '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0284c7,#38bdf8,#10b981,#34d399);box-shadow:0 0 14px rgba(56,189,248,0.8);"></div>' +
+      
+      // Header
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<div style="width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#0284c7,#10b981);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 22px rgba(56,189,248,0.45);flex-shrink:0;">⚡</div>' +
+          '<div>' +
+            '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+              '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.3px;">Oylik Tarifni Belgilash</h3>' +
+              '<span style="background:rgba(56,189,248,0.2);color:#38bdf8;border:1px solid #38bdf8;font-size:10px;font-weight:900;padding:2px 7px;border-radius:12px;text-transform:uppercase;letter-spacing:0.5px;box-shadow:0 0 10px rgba(56,189,248,0.4);">CYBER-NEON</span>' +
+            '</div>' +
+            '<div style="font-size:12px;color:#94a3b8;margin-top:2px;">' +
+              (targetStudent ? ('O‘quvchi: <b style="color:#38bdf8;">' + esc(targetStudent.name) + '</b>' + (targetStudent.className ? (' (' + esc(targetStudent.className) + ')') : '')) : 'Butun markaz o‘quvchilari uchun umumiy oylik tarif') +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<button id="eeCloseTariffModal" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#94a3b8;font-size:18px;cursor:pointer;border-radius:10px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;">✕</button>' +
+      '</div>' +
+
+      // Form body
+      '<div style="display:flex;flex-direction:column;gap:16px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#38bdf8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Oylik To‘lov Miqdori (so‘mda):</label>' +
+          '<div style="position:relative;">' +
+            '<input type="number" id="eeCyberTariffInput" value="' + currentFee + '" step="10000" style="width:100%;padding:14px 16px;background:#0f172a;border:2px solid #38bdf8;border-radius:14px;color:#38bdf8;font-weight:900;font-size:22px;outline:none;box-sizing:border-box;box-shadow:0 0 20px rgba(56,189,248,0.25);font-family:monospace;" />' +
+            '<span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:11.5px;font-weight:900;color:#94a3b8;pointer-events:none;background:rgba(15,23,42,0.85);padding:3px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);">SO‘M / OY</span>' +
+          '</div>' +
+          '<div id="eeCyberTariffFormatted" style="font-size:13.5px;font-weight:800;color:#34d399;margin-top:6px;font-family:monospace;">' + fmtUZS(currentFee) + '</div>' +
+        '</div>' +
+
+        // Quick Preset Chips
+        '<div>' +
+          '<div style="font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Tezkor Tanlov (Ommabop narxlar):</div>' +
+          '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
+            [200000, 250000, 300000, 350000, 400000, 500000].map(function(amt) {
+              return '<button type="button" class="ee-cyber-chip" data-amt="' + amt + '" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;font-family:monospace;transition:all 0.15s;">' + (amt / 1000) + ' ming</button>';
+            }).join('') +
+          '</div>' +
+        '</div>' +
+
+        // Action Buttons
+        '<div style="display:flex;flex-direction:column;gap:10px;margin-top:6px;">' +
+          (targetStudent ? (
+            '<button id="eeSaveSingleTariffBtn" style="background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;border:none;border-radius:12px;padding:12px 18px;font-size:13.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 18px rgba(2,132,199,0.35);transition:all 0.2s;">' +
+              '<span>💾</span> Faqat "' + esc(targetStudent.name) + '" Uchun Saqlash' +
+            '</button>'
+          ) : '') +
+          '<button id="eeSaveGlobalTariffBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:13px 18px;font-size:14px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 0 25px rgba(16,185,129,0.45);transition:all 0.2s;">' +
+            '<span>⚡</span> Hamma Uchun Belgilash (Barcha O‘quvchilarga)' +
+          '</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    modalRoot.appendChild(m);
+    var close = function() { m.remove(); };
+    m.querySelector('#eeCloseTariffModal').onclick = close;
+
+    var inp = m.querySelector('#eeCyberTariffInput');
+    var fmtLabel = m.querySelector('#eeCyberTariffFormatted');
+
+    inp.oninput = function() {
+      var val = parseInt(inp.value, 10) || 0;
+      fmtLabel.innerText = fmtUZS(val);
+    };
+
+    m.querySelectorAll('.ee-cyber-chip').forEach(function(chip) {
+      chip.onclick = function() {
+        inp.value = chip.getAttribute('data-amt');
+        inp.dispatchEvent(new Event('input'));
+      };
+    });
+
+    var singleBtn = m.querySelector('#eeSaveSingleTariffBtn');
+    if (singleBtn && targetStudent) {
+      singleBtn.onclick = function() {
+        var val = parseInt(inp.value, 10);
+        if (!val || val <= 0) { alert("Iltimos, haqiqiy summa kiriting!"); return; }
+
+        if (!S.finance.studentFees) S.finance.studentFees = {};
+        if (!S.finance.studentFees[targetStudent.id]) S.finance.studentFees[targetStudent.id] = {};
+        S.finance.studentFees[targetStudent.id].fee = val;
+
+        (S.classes || []).forEach(function(cls) {
+          if (!cls.studentPayments) cls.studentPayments = {};
+          if (cls.studentPayments[targetStudent.id]) {
+            cls.studentPayments[targetStudent.id].fee = val;
+          }
+        });
+
+        saveStore();
+        close();
+        showToast(targetStudent.name + " uchun oylik tarif " + fmtUZS(val) + " qilib belgilandi!");
+        EE.renderFinanceUnifiedView(container, 'students');
+      };
+    }
+
+    m.querySelector('#eeSaveGlobalTariffBtn').onclick = function() {
+      var val = parseInt(inp.value, 10);
+      if (!val || val <= 0) { alert("Iltimos, haqiqiy summa kiriting!"); return; }
+
+      if (!S.finance.studentFees) S.finance.studentFees = {};
+      S.finance.defaultFee = val;
+      var count = 0;
+
+      (S.classes || []).forEach(function(cls) {
+        if (!cls.studentPayments) cls.studentPayments = {};
+        (cls.students || []).forEach(function(st) {
+          var sid = st.id || st.email;
+          if (sid) {
+            count++;
+            if (!cls.studentPayments[sid]) {
+              cls.studentPayments[sid] = { fee: val, paid: 0, status: 'unpaid' };
+            } else {
+              cls.studentPayments[sid].fee = val;
+            }
+
+            if (!S.finance.studentFees[sid]) {
+              S.finance.studentFees[sid] = { fee: val, paid: 0, status: 'unpaid' };
+            } else {
+              S.finance.studentFees[sid].fee = val;
+            }
+          }
+        });
+      });
+
+      saveStore();
+      close();
+      showToast("⚡ Barcha (" + count + " ta) o‘quvchilar uchun oylik tarif " + fmtUZS(val) + " qilib belgilandi!");
+      EE.renderFinanceUnifiedView(container, 'students');
+    };
+  };
+
 
   // --------------------------------------------------------------------------
   // MODAL: ADD EXPENSE
