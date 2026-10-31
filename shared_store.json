@@ -103550,8 +103550,8 @@
         "page": 3033,
         "exercise": "5",
         "label": "4",
-        "top": 53.5,
-        "left": 55,
+        "top": 51.7,
+        "left": 55.5,
         "width": 36.5,
         "height": 1.9,
         "correct": "You couldn't use the internet in 1975."
@@ -103562,8 +103562,8 @@
         "page": 3033,
         "exercise": "5",
         "label": "5",
-        "top": 58,
-        "left": 55,
+        "top": 55.1,
+        "left": 55.4,
         "width": 36.5,
         "height": 1.9,
         "correct": "You can't swim in the sea - it's dangerous."
@@ -103574,8 +103574,8 @@
         "page": 3033,
         "exercise": "5",
         "label": "6",
-        "top": 62.5,
-        "left": 55,
+        "top": 58.3,
+        "left": 55.5,
         "width": 36.5,
         "height": 1.9,
         "correct": "People can buy most things online now."
@@ -105837,7 +105837,7 @@
     "3030": 1793432724238,
     "3031": 1793432724239,
     "3032": 1793432778248,
-    "3033": 1793432801033,
+    "3033": 1793432813635,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -106601,5 +106601,5 @@
       }
     }
   },
-  "updatedAt": 1793432807079
+  "updatedAt": 1793432813830
 }
