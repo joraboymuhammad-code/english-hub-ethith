@@ -107606,8 +107606,8 @@
         "page": 3043,
         "exercise": "2a",
         "label": "4",
-        "top": 50.6,
-        "left": 28,
+        "top": 49.3,
+        "left": 27.7,
         "width": 14.5,
         "height": 1.8,
         "options": [
@@ -107623,8 +107623,8 @@
         "page": 3043,
         "exercise": "2a",
         "label": "5",
-        "top": 52.4,
-        "left": 28,
+        "top": 51.1,
+        "left": 27.8,
         "width": 14.5,
         "height": 1.8,
         "options": [
@@ -107640,8 +107640,8 @@
         "page": 3043,
         "exercise": "2a",
         "label": "6",
-        "top": 54.2,
-        "left": 28,
+        "top": 52.9,
+        "left": 27.8,
         "width": 14.5,
         "height": 1.8,
         "options": [
@@ -107657,8 +107657,8 @@
         "page": 3043,
         "exercise": "2a",
         "label": "7",
-        "top": 56,
-        "left": 28,
+        "top": 54.5,
+        "left": 27.7,
         "width": 14.5,
         "height": 1.8,
         "options": [
@@ -107674,8 +107674,8 @@
         "page": 3043,
         "exercise": "2a",
         "label": "8",
-        "top": 57.8,
-        "left": 28,
+        "top": 56.5,
+        "left": 27.7,
         "width": 14.5,
         "height": 1.8,
         "options": [
@@ -107691,8 +107691,8 @@
         "page": 3043,
         "exercise": "2a",
         "label": "9",
-        "top": 59.6,
-        "left": 28,
+        "top": 58.5,
+        "left": 27.6,
         "width": 14.5,
         "height": 1.8,
         "options": [
@@ -107820,8 +107820,8 @@
         "page": 3043,
         "exercise": "4a",
         "label": "1",
-        "top": 51,
-        "left": 55,
+        "top": 50.7,
+        "left": 55.2,
         "width": 36.5,
         "height": 1.8,
         "correct": "I want to go to Istanbul in April. Does anyone know a good hotel there?"
@@ -110057,7 +110057,7 @@
     "3040": 1793433405405,
     "3041": 1793433405405,
     "3042": 1793433480516,
-    "3043": 1793433510116,
+    "3043": 1793433523524,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -110821,5 +110821,5 @@
       }
     }
   },
-  "updatedAt": 1793433511547
+  "updatedAt": 1793433524101
 }
