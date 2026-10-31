@@ -104866,8 +104866,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "hoodie",
-        "top": 66.3,
-        "left": 54.9,
+        "top": 64.7,
+        "left": 54.8,
         "width": 14,
         "height": 1.8,
         "correct": "hoodie"
@@ -104878,8 +104878,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "jacket",
-        "top": 69,
-        "left": 55,
+        "top": 66.7,
+        "left": 54.8,
         "width": 14,
         "height": 1.8,
         "correct": "jacket"
@@ -104890,8 +104890,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "jeans",
-        "top": 71,
-        "left": 55,
+        "top": 68.8,
+        "left": 54.8,
         "width": 14,
         "height": 1.8,
         "correct": "jeans"
@@ -104902,8 +104902,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "skirt",
-        "top": 73,
-        "left": 55,
+        "top": 70.6,
+        "left": 55.1,
         "width": 14,
         "height": 1.8,
         "correct": "skirt"
@@ -104914,8 +104914,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "suit",
-        "top": 75,
-        "left": 55,
+        "top": 72.5,
+        "left": 54.9,
         "width": 14,
         "height": 1.8,
         "correct": "suit"
@@ -104965,8 +104965,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "gloves",
-        "top": 65,
-        "left": 75,
+        "top": 62.8,
+        "left": 80.9,
         "width": 14,
         "height": 1.8,
         "correct": "gloves"
@@ -104977,8 +104977,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "hat",
-        "top": 67,
-        "left": 75,
+        "top": 64.6,
+        "left": 74.9,
         "width": 14,
         "height": 1.8,
         "correct": "hat"
@@ -104989,8 +104989,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "jewellery",
-        "top": 69,
-        "left": 75,
+        "top": 64.3,
+        "left": 88.1,
         "width": 14,
         "height": 1.8,
         "correct": "jewellery"
@@ -105001,8 +105001,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "scarf",
-        "top": 71,
-        "left": 75,
+        "top": 66.8,
+        "left": 74.1,
         "width": 14,
         "height": 1.8,
         "correct": "scarf"
@@ -105013,8 +105013,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "shoes",
-        "top": 73,
-        "left": 75,
+        "top": 66.3,
+        "left": 88.5,
         "width": 14,
         "height": 1.8,
         "correct": "shoes"
@@ -105025,8 +105025,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "socks",
-        "top": 75,
-        "left": 75,
+        "top": 69.1,
+        "left": 74.5,
         "width": 14,
         "height": 1.8,
         "correct": "socks"
@@ -107363,7 +107363,7 @@
     "3033": 1793432813635,
     "3034": 1793432999510,
     "3035": 1793432999512,
-    "3036": 1793433057167,
+    "3036": 1793433075543,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -108127,5 +108127,5 @@
       }
     }
   },
-  "updatedAt": 1793433058030
+  "updatedAt": 1793433076866
 }
