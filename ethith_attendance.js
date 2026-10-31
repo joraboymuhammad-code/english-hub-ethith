@@ -607,6 +607,10 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         lsDel.forEach(function(did) { if (deletedTeacherIds.indexOf(did) === -1) deletedTeacherIds.push(did); });
       }
     } catch(e) {}
+    // Never allow official head teacher to be suppressed by stale localStorage deleted ids
+    if (deletedTeacherIds.indexOf('admin_official_teacher') !== -1) {
+      deletedTeacherIds = deletedTeacherIds.filter(function(id) { return id !== 'admin_official_teacher'; });
+    }
     S.deletedTeacherIds = deletedTeacherIds;
 
     // Filter out deleted teachers from S.teachers
@@ -1443,15 +1447,16 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       var studentFee = Number(t.studentMonthlyFee) || 300000;
       var totalTuition = paidStudents * studentFee;
       var computedSalary = Math.round(totalTuition * (sharePercent / 100));
-      var avChar = t.name ? t.name.charAt(0).toUpperCase() : 'U';
+      var isRootAdminTeacher = (t.id === 'admin_official_teacher');
+      var avChar = isRootAdminTeacher ? '👑' : (t.name ? t.name.charAt(0).toUpperCase() : 'U');
 
-      h += '<div class="ea-teacher-card" data-tid="' + esc(t.id) + '" style="background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:24px;box-shadow:0 12px 35px rgba(0,0,0,0.45);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s;" onmouseover="this.style.borderColor=\'rgba(56,189,248,0.5)\'" onmouseout="this.style.borderColor=\'rgba(255,255,255,0.1)\'">' +
+      h += '<div class="ea-teacher-card" data-tid="' + esc(t.id) + '" style="background:linear-gradient(145deg,rgba(15,23,42,0.92),rgba(30,41,59,0.85));border:1px solid ' + (isRootAdminTeacher ? 'rgba(245,158,11,0.45)' : 'rgba(255,255,255,0.1)') + ';border-radius:22px;padding:24px;box-shadow:0 12px 35px rgba(0,0,0,0.45);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s;" onmouseover="this.style.borderColor=\'rgba(56,189,248,0.5)\'" onmouseout="this.style.borderColor=\'' + (isRootAdminTeacher ? 'rgba(245,158,11,0.45)' : 'rgba(255,255,255,0.1)') + '\'">' +
         '<div>' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">' +
             '<div style="display:flex;align-items:center;gap:14px;">' +
-              '<div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;box-shadow:0 6px 18px rgba(2,132,199,0.35);">' + avChar + '</div>' +
+              '<div style="width:48px;height:48px;border-radius:14px;background:' + (isRootAdminTeacher ? 'linear-gradient(135deg,#f59e0b,#d97706)' : 'linear-gradient(135deg,#0284c7,#2563eb)') + ';color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;box-shadow:0 6px 18px ' + (isRootAdminTeacher ? 'rgba(245,158,11,0.4)' : 'rgba(2,132,199,0.35)') + ';">' + avChar + '</div>' +
               '<div>' +
-                '<h3 style="margin:0;font-size:17px;font-weight:900;color:#fff;">' + esc(t.name) + '</h3>' +
+                '<h3 style="margin:0;font-size:17px;font-weight:900;color:#fff;">' + esc(t.name) + (isRootAdminTeacher ? ' <span style="font-size:11.5px;color:#fbbf24;font-weight:800;">(Bosh Admin / Rahbariyat)</span>' : '') + '</h3>' +
                 '<div style="font-size:12px;color:#38bdf8;font-weight:700;margin-top:2px;">' + esc(t.subject || 'Ingliz tili') + '</div>' +
               '</div>' +
             '</div>' +
@@ -1462,7 +1467,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
               '<button type="button" class="ea-btn-delete-teacher" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" title="O‘qituvchini tizimdan o‘chirish" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#f87171;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:all 0.15s;">' +
                 '🗑️' +
               '</button>' +
-              '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:4px 10px;font-size:11px;font-weight:800;">Faol Ustoz</span>' +
+              (isRootAdminTeacher ? '<span style="background:rgba(245,158,11,0.18);color:#fbbf24;border:1px solid rgba(245,158,11,0.4);border-radius:10px;padding:4px 10px;font-size:11px;font-weight:800;">👑 Rahbariyat</span>' : '<span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:4px 10px;font-size:11px;font-weight:800;">Faol Ustoz</span>') +
             '</div>' +
           '</div>' +
 
