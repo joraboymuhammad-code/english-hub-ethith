@@ -112359,8 +112359,8 @@
           "You have to buy a ticket from the bus driver.",
           "You have to buy a ticket from the bus driver"
         ],
-        "top": 23.1,
-        "left": 11.2,
+        "top": 22.4,
+        "left": 11.7,
         "width": 38,
         "height": 2.2
       },
@@ -112375,8 +112375,8 @@
           "You have to use the seat belts.",
           "You have to use the seat belts"
         ],
-        "top": 26,
-        "left": 11.1,
+        "top": 24.8,
+        "left": 11.4,
         "width": 38,
         "height": 2.2
       },
@@ -112391,8 +112391,8 @@
           "You don't have to book a seat.",
           "You don't have to book a seat"
         ],
-        "top": 31,
-        "left": 11,
+        "top": 29.7,
+        "left": 11.8,
         "width": 38,
         "height": 2.2
       },
@@ -114675,7 +114675,7 @@
     "3052": 1793437159234,
     "3053": 1793437159235,
     "3054": 1793437295819,
-    "3055": 1793437308928,
+    "3055": 1793437317540,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -115438,5 +115438,5 @@
       }
     }
   },
-  "updatedAt": 1793437312388
+  "updatedAt": 1793437317844
 }
