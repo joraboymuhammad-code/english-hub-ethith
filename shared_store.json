@@ -103183,6 +103183,500 @@
         "correct": "return"
       }
     ],
+    "3033": [
+      {
+        "id": "p3033_ex3_1c",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "1c",
+        "top": 27.2,
+        "left": 18,
+        "width": 9,
+        "height": 1.9,
+        "correct": "can buy"
+      },
+      {
+        "id": "p3033_ex3_1d",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "1d",
+        "top": 29,
+        "left": 33.5,
+        "width": 9,
+        "height": 1.9,
+        "correct": "can't use"
+      },
+      {
+        "id": "p3033_ex3_2a",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "2a",
+        "top": 32.7,
+        "left": 17.5,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "can get"
+      },
+      {
+        "id": "p3033_ex3_2b",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "2b",
+        "top": 34.5,
+        "left": 33,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "can go"
+      },
+      {
+        "id": "p3033_ex3_2c",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "2c",
+        "top": 37,
+        "left": 23,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "could get"
+      },
+      {
+        "id": "p3033_ex3_2d",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "2d",
+        "top": 38.8,
+        "left": 21,
+        "width": 9.5,
+        "height": 1.9,
+        "correct": "couldn't take"
+      },
+      {
+        "id": "p3033_ex3_3a",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "3a",
+        "top": 42.5,
+        "left": 23,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "could get"
+      },
+      {
+        "id": "p3033_ex3_3b",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "3b",
+        "top": 44.3,
+        "left": 30.5,
+        "width": 10,
+        "height": 1.9,
+        "correct": "couldn't shop"
+      },
+      {
+        "id": "p3033_ex3_3c",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "3c",
+        "top": 47,
+        "left": 12,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "can't do"
+      },
+      {
+        "id": "p3033_ex3_3d",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "3d",
+        "top": 48.8,
+        "left": 24.5,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "can find"
+      },
+      {
+        "id": "p3033_ex3_4a",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "4a",
+        "top": 52.5,
+        "left": 14.5,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "could have"
+      },
+      {
+        "id": "p3033_ex3_4b",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "4b",
+        "top": 54.3,
+        "left": 12,
+        "width": 9.5,
+        "height": 1.9,
+        "correct": "couldn't watch"
+      },
+      {
+        "id": "p3033_ex3_4c",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "4c",
+        "top": 57,
+        "left": 18,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "can enjoy"
+      },
+      {
+        "id": "p3033_ex3_4d",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "4d",
+        "top": 59.8,
+        "left": 21.5,
+        "width": 10,
+        "height": 1.9,
+        "correct": "can't remember"
+      },
+      {
+        "id": "p3033_ex3_5a",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "5a",
+        "top": 63.5,
+        "left": 25,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "could eat"
+      },
+      {
+        "id": "p3033_ex3_5b",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "5b",
+        "top": 66.2,
+        "left": 12,
+        "width": 9.5,
+        "height": 1.9,
+        "correct": "couldn't buy"
+      },
+      {
+        "id": "p3033_ex3_5c",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "5c",
+        "top": 72.5,
+        "left": 25.5,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "can't go"
+      },
+      {
+        "id": "p3033_ex3_5d",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "3",
+        "label": "5d",
+        "top": 74.2,
+        "left": 23.5,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "can visit"
+      },
+      {
+        "id": "p3033_ex4_2a",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "4",
+        "label": "2a",
+        "top": 11,
+        "left": 52.8,
+        "width": 10,
+        "height": 1.9,
+        "correct": "Can"
+      },
+      {
+        "id": "p3033_ex4_2b",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "4",
+        "label": "2b",
+        "top": 11.1,
+        "left": 65.3,
+        "width": 8,
+        "height": 1.9,
+        "correct": "can"
+      },
+      {
+        "id": "p3033_ex4_3a",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "4",
+        "label": "3a",
+        "top": 16.2,
+        "left": 52.4,
+        "width": 10,
+        "height": 1.9,
+        "correct": "Can"
+      },
+      {
+        "id": "p3033_ex4_3b",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "4",
+        "label": "3b",
+        "top": 15.3,
+        "left": 64.8,
+        "width": 8,
+        "height": 1.9,
+        "correct": "can"
+      },
+      {
+        "id": "p3033_ex4_4a",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "4",
+        "label": "4a",
+        "top": 21,
+        "left": 52.9,
+        "width": 10,
+        "height": 1.9,
+        "correct": "Can"
+      },
+      {
+        "id": "p3033_ex4_4b",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "4",
+        "label": "4b",
+        "top": 21.3,
+        "left": 66.1,
+        "width": 8,
+        "height": 1.9,
+        "correct": "can't"
+      },
+      {
+        "id": "p3033_ex4_5a",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "4",
+        "label": "5a",
+        "top": 27.5,
+        "left": 55,
+        "width": 10,
+        "height": 1.9,
+        "correct": "Could"
+      },
+      {
+        "id": "p3033_ex4_5b",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "4",
+        "label": "5b",
+        "top": 27.5,
+        "left": 68.5,
+        "width": 9,
+        "height": 1.9,
+        "correct": "couldn't"
+      },
+      {
+        "id": "p3033_ex4_6a",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "4",
+        "label": "6a",
+        "top": 32.5,
+        "left": 55,
+        "width": 10,
+        "height": 1.9,
+        "correct": "Could"
+      },
+      {
+        "id": "p3033_ex4_6b",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "4",
+        "label": "6b",
+        "top": 32.5,
+        "left": 68.5,
+        "width": 8,
+        "height": 1.9,
+        "correct": "could"
+      },
+      {
+        "id": "p3033_ex5_2",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "5",
+        "label": "2",
+        "top": 42.5,
+        "left": 55,
+        "width": 36.5,
+        "height": 1.9,
+        "correct": "Could people spend euros in 1995?"
+      },
+      {
+        "id": "p3033_ex5_3",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "5",
+        "label": "3",
+        "top": 49,
+        "left": 57,
+        "width": 34.5,
+        "height": 1.9,
+        "correct": "Yes, I can."
+      },
+      {
+        "id": "p3033_ex5_4",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "5",
+        "label": "4",
+        "top": 53.5,
+        "left": 55,
+        "width": 36.5,
+        "height": 1.9,
+        "correct": "You couldn't use the internet in 1975."
+      },
+      {
+        "id": "p3033_ex5_5",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "5",
+        "label": "5",
+        "top": 58,
+        "left": 55,
+        "width": 36.5,
+        "height": 1.9,
+        "correct": "You can't swim in the sea - it's dangerous."
+      },
+      {
+        "id": "p3033_ex5_6",
+        "type": "fill",
+        "page": 3033,
+        "exercise": "5",
+        "label": "6",
+        "top": 62.5,
+        "left": 55,
+        "width": 36.5,
+        "height": 1.9,
+        "correct": "People can buy most things online now."
+      },
+      {
+        "id": "p3033_ex6a_1b",
+        "type": "select",
+        "page": 3033,
+        "exercise": "6a",
+        "label": "1b",
+        "top": 71,
+        "left": 84,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "U"
+      },
+      {
+        "id": "p3033_ex6a_2a",
+        "type": "select",
+        "page": 3033,
+        "exercise": "6a",
+        "label": "2a",
+        "top": 73,
+        "left": 81,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "U"
+      },
+      {
+        "id": "p3033_ex6a_2b",
+        "type": "select",
+        "page": 3033,
+        "exercise": "6a",
+        "label": "2b",
+        "top": 74.8,
+        "left": 65,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "S"
+      },
+      {
+        "id": "p3033_ex6a_3a",
+        "type": "select",
+        "page": 3033,
+        "exercise": "6a",
+        "label": "3a",
+        "top": 76.6,
+        "left": 78,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "S"
+      },
+      {
+        "id": "p3033_ex6a_3b",
+        "type": "select",
+        "page": 3033,
+        "exercise": "6a",
+        "label": "3b",
+        "top": 78.4,
+        "left": 80,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "U"
+      },
+      {
+        "id": "p3033_ex6a_3c",
+        "type": "select",
+        "page": 3033,
+        "exercise": "6a",
+        "label": "3c",
+        "top": 80.2,
+        "left": 80,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "S"
+      }
+    ],
     "3046": [
       {
         "id": "p3046_ex1_1",
@@ -105343,6 +105837,7 @@
     "3030": 1793432724238,
     "3031": 1793432724239,
     "3032": 1793432778248,
+    "3033": 1793432791763,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -106106,5 +106601,5 @@
       }
     }
   },
-  "updatedAt": 1793432780539
+  "updatedAt": 1793432792390
 }
