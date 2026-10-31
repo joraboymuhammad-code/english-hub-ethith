@@ -106326,6 +106326,492 @@
         "correct": "last night"
       }
     ],
+    "3040": [
+      {
+        "id": "p3040_ex1_2",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "1",
+        "label": "2",
+        "top": 25,
+        "left": 17.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "closed"
+      },
+      {
+        "id": "p3040_ex1_3",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "1",
+        "label": "3",
+        "top": 26.8,
+        "left": 17.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "collected"
+      },
+      {
+        "id": "p3040_ex1_4",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "1",
+        "label": "4",
+        "top": 28.6,
+        "left": 17.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "copied"
+      },
+      {
+        "id": "p3040_ex1_5",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "1",
+        "label": "5",
+        "top": 30.4,
+        "left": 17.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "earned"
+      },
+      {
+        "id": "p3040_ex1_6",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "1",
+        "label": "6",
+        "top": 32.2,
+        "left": 17.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "enjoyed"
+      },
+      {
+        "id": "p3040_ex1_7",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "1",
+        "label": "7",
+        "top": 23.2,
+        "left": 37.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "looked"
+      },
+      {
+        "id": "p3040_ex1_8",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "1",
+        "label": "8",
+        "top": 25,
+        "left": 37.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "loved"
+      },
+      {
+        "id": "p3040_ex1_9",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "1",
+        "label": "9",
+        "top": 26.8,
+        "left": 37.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "played"
+      },
+      {
+        "id": "p3040_ex1_10",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "1",
+        "label": "10",
+        "top": 28.6,
+        "left": 37.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "relaxed"
+      },
+      {
+        "id": "p3040_ex1_11",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "1",
+        "label": "11",
+        "top": 30.4,
+        "left": 37.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "returned"
+      },
+      {
+        "id": "p3040_ex1_12",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "1",
+        "label": "12",
+        "top": 32.2,
+        "left": 37.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "tried"
+      },
+      {
+        "id": "p3040_ex2_2",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "2",
+        "top": 68.2,
+        "left": 12,
+        "width": 9,
+        "height": 1.8,
+        "correct": "visited"
+      },
+      {
+        "id": "p3040_ex2_3",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "3",
+        "top": 68.2,
+        "left": 33.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "waited"
+      },
+      {
+        "id": "p3040_ex2_4",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "4",
+        "top": 71.8,
+        "left": 12,
+        "width": 9,
+        "height": 1.8,
+        "correct": "opened"
+      },
+      {
+        "id": "p3040_ex2_5",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "5",
+        "top": 73.6,
+        "left": 22,
+        "width": 9,
+        "height": 1.8,
+        "correct": "needed"
+      },
+      {
+        "id": "p3040_ex2_6",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "6",
+        "top": 75.4,
+        "left": 26.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "studied"
+      },
+      {
+        "id": "p3040_ex2_7",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "7",
+        "top": 77.2,
+        "left": 32.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "worked"
+      },
+      {
+        "id": "p3040_ex2_8",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "8",
+        "top": 80.8,
+        "left": 27.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "arrived"
+      },
+      {
+        "id": "p3040_ex2_9",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "9",
+        "top": 84.4,
+        "left": 14,
+        "width": 9,
+        "height": 1.8,
+        "correct": "noticed"
+      },
+      {
+        "id": "p3040_ex2_10",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "10",
+        "top": 86.2,
+        "left": 18,
+        "width": 9,
+        "height": 1.8,
+        "correct": "used"
+      },
+      {
+        "id": "p3040_ex2_11",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "11",
+        "top": 88,
+        "left": 14,
+        "width": 9,
+        "height": 1.8,
+        "correct": "decided"
+      },
+      {
+        "id": "p3040_ex2_12",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "12",
+        "top": 89.8,
+        "left": 32.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "talked"
+      },
+      {
+        "id": "p3040_ex2_13",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "2",
+        "label": "13",
+        "top": 91.6,
+        "left": 34,
+        "width": 9,
+        "height": 1.8,
+        "correct": "liked"
+      },
+      {
+        "id": "p3040_ex3_2",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "3",
+        "label": "2",
+        "top": 24.8,
+        "left": 78.8,
+        "width": 10,
+        "height": 1.8,
+        "correct": "believed"
+      },
+      {
+        "id": "p3040_ex3_3",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "3",
+        "label": "3",
+        "top": 29.7,
+        "left": 58.9,
+        "width": 10,
+        "height": 1.8,
+        "correct": "listened"
+      },
+      {
+        "id": "p3040_ex3_4",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "3",
+        "label": "4",
+        "top": 34.5,
+        "left": 60.5,
+        "width": 10,
+        "height": 1.8,
+        "correct": "started"
+      },
+      {
+        "id": "p3040_ex3_5",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "3",
+        "label": "5",
+        "top": 38,
+        "left": 60,
+        "width": 10,
+        "height": 1.8,
+        "correct": "carried"
+      },
+      {
+        "id": "p3040_ex3_6",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "3",
+        "label": "6",
+        "top": 41.5,
+        "left": 75,
+        "width": 10,
+        "height": 1.8,
+        "correct": "retired"
+      },
+      {
+        "id": "p3040_ex3_7",
+        "type": "fill",
+        "page": 3040,
+        "exercise": "3",
+        "label": "7",
+        "top": 46.5,
+        "left": 69.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "paid"
+      },
+      {
+        "id": "p3040_ex4a_2",
+        "type": "select",
+        "page": 3040,
+        "exercise": "4a",
+        "label": "2",
+        "top": 56.5,
+        "left": 60.5,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "called",
+          "looked",
+          "thanked"
+        ],
+        "correct": "called"
+      },
+      {
+        "id": "p3040_ex4a_3",
+        "type": "select",
+        "page": 3040,
+        "exercise": "4a",
+        "label": "3",
+        "top": 58.3,
+        "left": 60.5,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "collected",
+          "finished",
+          "included"
+        ],
+        "correct": "finished"
+      },
+      {
+        "id": "p3040_ex4a_4",
+        "type": "select",
+        "page": 3040,
+        "exercise": "4a",
+        "label": "4",
+        "top": 60.1,
+        "left": 60.5,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "worked",
+          "liked",
+          "posted"
+        ],
+        "correct": "posted"
+      },
+      {
+        "id": "p3040_ex4a_5",
+        "type": "select",
+        "page": 3040,
+        "exercise": "4a",
+        "label": "5",
+        "top": 61.9,
+        "left": 60.5,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "believed",
+          "noticed",
+          "prepared"
+        ],
+        "correct": "noticed"
+      },
+      {
+        "id": "p3040_ex4a_6",
+        "type": "select",
+        "page": 3040,
+        "exercise": "4a",
+        "label": "6",
+        "top": 63.7,
+        "left": 60.5,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "wanted",
+          "needed",
+          "used"
+        ],
+        "correct": "used"
+      },
+      {
+        "id": "p3040_ex4a_7",
+        "type": "select",
+        "page": 3040,
+        "exercise": "4a",
+        "label": "7",
+        "top": 65.5,
+        "left": 60.5,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "waited",
+          "received",
+          "moved"
+        ],
+        "correct": "waited"
+      },
+      {
+        "id": "p3040_ex4a_8",
+        "type": "select",
+        "page": 3040,
+        "exercise": "4a",
+        "label": "8",
+        "top": 67.3,
+        "left": 60.5,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "responded",
+          "watched",
+          "shouted"
+        ],
+        "correct": "watched"
+      },
+      {
+        "id": "p3040_ex4a_9",
+        "type": "select",
+        "page": 3040,
+        "exercise": "4a",
+        "label": "9",
+        "top": 69.1,
+        "left": 60.5,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "noticed",
+          "practised",
+          "turned"
+        ],
+        "correct": "turned"
+      }
+    ],
     "3046": [
       {
         "id": "p3046_ex1_1",
@@ -108493,6 +108979,7 @@
     "3037": 1793433179292,
     "3038": 1793433305361,
     "3039": 1793433305362,
+    "3040": 1793433322348,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -109256,5 +109743,5 @@
       }
     }
   },
-  "updatedAt": 1793433311378
+  "updatedAt": 1793433323281
 }
