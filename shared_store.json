@@ -107887,6 +107887,182 @@
         "correct": "1"
       }
     ],
+    "3044": [
+      {
+        "id": "p3044_ex1_2",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "1",
+        "label": "2",
+        "top": 34.1,
+        "left": 35.2,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "plays"
+      },
+      {
+        "id": "p3044_ex1_3",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "1",
+        "label": "3",
+        "top": 37.5,
+        "left": 17.8,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "films"
+      },
+      {
+        "id": "p3044_ex1_4",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "1",
+        "label": "4",
+        "top": 40.5,
+        "left": 24.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "town"
+      },
+      {
+        "id": "p3044_ex1_5",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "1",
+        "label": "5",
+        "top": 42.2,
+        "left": 32.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "1616"
+      },
+      {
+        "id": "p3044_ex2_2",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "2",
+        "label": "2",
+        "top": 26,
+        "left": 68,
+        "width": 25,
+        "height": 1.8,
+        "correct": "Royal Shakespeare Theatre"
+      },
+      {
+        "id": "p3044_ex2_3",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "2",
+        "label": "3",
+        "top": 29.5,
+        "left": 68,
+        "width": 25,
+        "height": 1.8,
+        "correct": [
+          "the Grammar School",
+          "Grammar School"
+        ]
+      },
+      {
+        "id": "p3044_ex2_4",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "2",
+        "label": "4",
+        "top": 34.5,
+        "left": 68,
+        "width": 25,
+        "height": 1.8,
+        "correct": "Bancroft Gardens"
+      },
+      {
+        "id": "p3044_ex2_5",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "2",
+        "label": "5",
+        "top": 39.5,
+        "left": 68,
+        "width": 25,
+        "height": 1.8,
+        "correct": "tourist information centre"
+      },
+      {
+        "id": "p3044_ex2_6",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "2",
+        "label": "6",
+        "top": 43.5,
+        "left": 68,
+        "width": 25,
+        "height": 1.8,
+        "correct": "Nash's House"
+      },
+      {
+        "id": "p3044_ex4_2",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "4",
+        "label": "2",
+        "top": 62.5,
+        "left": 74,
+        "width": 15,
+        "height": 1.8,
+        "correct": "Shakespeare's birthplace"
+      },
+      {
+        "id": "p3044_ex4_3",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "4",
+        "label": "3",
+        "top": 65.5,
+        "left": 68.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "Nash's House"
+      },
+      {
+        "id": "p3044_ex4_4",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "4",
+        "label": "4",
+        "top": 72.5,
+        "left": 67,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": [
+          "Grammar School",
+          "the Grammar School"
+        ]
+      },
+      {
+        "id": "p3044_ex4_5",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "4",
+        "label": "5",
+        "top": 83.5,
+        "left": 70,
+        "width": 15,
+        "height": 1.8,
+        "correct": "Royal Shakespeare Theatre"
+      },
+      {
+        "id": "p3044_ex4_6",
+        "type": "fill",
+        "page": 3044,
+        "exercise": "4",
+        "label": "6",
+        "top": 86.5,
+        "left": 75.5,
+        "width": 14,
+        "height": 1.8,
+        "correct": "Bancroft Gardens"
+      }
+    ],
     "3046": [
       {
         "id": "p3046_ex1_1",
@@ -110058,6 +110234,7 @@
     "3041": 1793433405405,
     "3042": 1793433480516,
     "3043": 1793433537379,
+    "3044": 1793433544917,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -110821,5 +110998,5 @@
       }
     }
   },
-  "updatedAt": 1793433538213
+  "updatedAt": 1793433546108
 }
