@@ -1,3 +1,4 @@
+var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
   // ============================================================================
   // INFOBIP SMS GATEWAY & STUDENT MANAGEMENT EXTENSION
@@ -6546,6 +6547,24 @@ EA.render = function(container, preserveScrollLeft) {
         var curCls = (EA.getActiveOrFirstClass ? EA.getActiveOrFirstClass() : null) || (window.S && window.S.classes && window.S.classes[0]);
         if (curCls) {
           EA.openHomeworkAssignModal(apView, curCls);
+        }
+      }
+    });
+  }
+
+
+  // Robust global click delegate for ALL "Yangi O'qituvchi Qo'shish" buttons
+  if (!window._eaAddTeacherDelegateAttached) {
+    window._eaAddTeacherDelegateAttached = true;
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('#eaBtnAddTeacherGlobal, .dash-add-teacher-global-btn');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (window.EthithAttendance && typeof window.EthithAttendance.openAddTeacherModal === 'function') {
+          window.EthithAttendance.openAddTeacherModal();
+        } else if (window.EA && typeof window.EA.openAddTeacherModal === 'function') {
+          window.EA.openAddTeacherModal();
         }
       }
     });
