@@ -111387,6 +111387,317 @@
         "height": 2.2
       }
     ],
+    "3052": [
+      {
+        "id": "p3052_ex1_2",
+        "type": "fill",
+        "x": 11,
+        "y": 65.5,
+        "w": 18,
+        "h": 2.2,
+        "correct": [
+          "visit an art gallery"
+        ],
+        "top": 65.5,
+        "left": 11,
+        "width": 18,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex1_3",
+        "type": "fill",
+        "x": 11,
+        "y": 79.5,
+        "w": 18,
+        "h": 2.2,
+        "correct": [
+          "meet local people"
+        ],
+        "top": 79.5,
+        "left": 11,
+        "width": 18,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex1_4",
+        "type": "fill",
+        "x": 11,
+        "y": 93.5,
+        "w": 18,
+        "h": 2.2,
+        "correct": [
+          "trek in the mountains"
+        ],
+        "top": 93.5,
+        "left": 11,
+        "width": 18,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex1_5",
+        "type": "fill",
+        "x": 32,
+        "y": 51.5,
+        "w": 18,
+        "h": 2.2,
+        "correct": [
+          "stay in a hotel"
+        ],
+        "top": 51.5,
+        "left": 32,
+        "width": 18,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex1_6",
+        "type": "fill",
+        "x": 32,
+        "y": 65.5,
+        "w": 18,
+        "h": 2.2,
+        "correct": [
+          "go swimming"
+        ],
+        "top": 65.5,
+        "left": 32,
+        "width": 18,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex1_7",
+        "type": "fill",
+        "x": 32,
+        "y": 79.5,
+        "w": 18,
+        "h": 2.2,
+        "correct": [
+          "go sightseeing"
+        ],
+        "top": 79.5,
+        "left": 32,
+        "width": 18,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex1_8",
+        "type": "fill",
+        "x": 32,
+        "y": 93.5,
+        "w": 18,
+        "h": 2.2,
+        "correct": [
+          "visit a museum"
+        ],
+        "top": 93.5,
+        "left": 32,
+        "width": 18,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_1",
+        "type": "select",
+        "x": 74,
+        "y": 64,
+        "w": 16,
+        "h": 2.2,
+        "options": [
+          "stay in your own",
+          "go to another"
+        ],
+        "correct": "stay in your own",
+        "top": 64,
+        "left": 74,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_2",
+        "type": "select",
+        "x": 56,
+        "y": 70,
+        "w": 10,
+        "h": 2.2,
+        "options": [
+          "trek",
+          "lie"
+        ],
+        "correct": "lie",
+        "top": 70,
+        "left": 56,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_3",
+        "type": "select",
+        "x": 67,
+        "y": 71.6,
+        "w": 9,
+        "h": 2.2,
+        "options": [
+          "had",
+          "went"
+        ],
+        "correct": "went",
+        "top": 71.6,
+        "left": 67,
+        "width": 9,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_4",
+        "type": "select",
+        "x": 72,
+        "y": 74,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "another",
+          "my own"
+        ],
+        "correct": "another",
+        "top": 74,
+        "left": 72,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_5",
+        "type": "select",
+        "x": 56,
+        "y": 75.8,
+        "w": 22,
+        "h": 2.2,
+        "options": [
+          "on my own",
+          "with a group of friends"
+        ],
+        "correct": "with a group of friends",
+        "top": 75.8,
+        "left": 56,
+        "width": 22,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_6",
+        "type": "select",
+        "x": 68,
+        "y": 78.6,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "sightseeing",
+          "a tour"
+        ],
+        "correct": "sightseeing",
+        "top": 78.6,
+        "left": 68,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_7",
+        "type": "select",
+        "x": 59,
+        "y": 80.2,
+        "w": 10,
+        "h": 2.2,
+        "options": [
+          "trekked",
+          "visited"
+        ],
+        "correct": "visited",
+        "top": 80.2,
+        "left": 59,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_8",
+        "type": "select",
+        "x": 78,
+        "y": 81.8,
+        "w": 10,
+        "h": 2.2,
+        "options": [
+          "stay",
+          "go"
+        ],
+        "correct": "stay",
+        "top": 81.8,
+        "left": 78,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_9",
+        "type": "select",
+        "x": 56,
+        "y": 85,
+        "w": 18,
+        "h": 2.2,
+        "options": [
+          "city breaks",
+          "beach holidays"
+        ],
+        "correct": "beach holidays",
+        "top": 85,
+        "left": 56,
+        "width": 18,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_10",
+        "type": "select",
+        "x": 65,
+        "y": 86.6,
+        "w": 16,
+        "h": 2.2,
+        "options": [
+          "an apartment",
+          "a tent"
+        ],
+        "correct": "an apartment",
+        "top": 86.6,
+        "left": 65,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_11",
+        "type": "select",
+        "x": 63,
+        "y": 91.2,
+        "w": 10,
+        "h": 2.2,
+        "options": [
+          "back",
+          "around"
+        ],
+        "correct": "around",
+        "top": 91.2,
+        "left": 63,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3052_ex2_12",
+        "type": "select",
+        "x": 77,
+        "y": 91.2,
+        "w": 8,
+        "h": 2.2,
+        "correct": "got",
+        "options": [
+          "got",
+          "went"
+        ],
+        "top": 91.2,
+        "left": 77,
+        "width": 8,
+        "height": 2.2
+      }
+    ],
     "4004": [
       {
         "id": "p4004_ex1_2",
@@ -113373,6 +113684,7 @@
     "3049": 1793433871906,
     "3050": 1793436815993,
     "3051": 1793436771760,
+    "3052": 1793436882242,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -114135,5 +114447,5 @@
       }
     }
   },
-  "updatedAt": 1793436819331
+  "updatedAt": 1793436882684
 }
