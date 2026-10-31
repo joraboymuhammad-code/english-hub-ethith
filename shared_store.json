@@ -26033,6 +26033,19 @@
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
       "updatedAt": 1793431308524
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793455902613
     }
   ],
   "p2pListings": [],
@@ -123702,7 +123715,7 @@
       "email": "sevinch.aliqulova@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 95000,
-      "teachingHours": 54,
+      "teachingHours": 55,
       "card": "8600 9373 3768 6749",
       "paidThisMonth": true,
       "assignedClasses": [
@@ -123718,7 +123731,9 @@
       "password": "sevinch2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "monthlyBonus": 1000000,
+      "monthlySalary": 6225000
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -124093,5 +124108,5 @@
       }
     }
   },
-  "updatedAt": 1793455897494
+  "updatedAt": 1793456129209
 }
