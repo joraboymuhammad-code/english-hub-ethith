@@ -103238,8 +103238,8 @@
         "page": 3033,
         "exercise": "3",
         "label": "2c",
-        "top": 37,
-        "left": 23,
+        "top": 36,
+        "left": 23.2,
         "width": 8.5,
         "height": 1.9,
         "correct": "could get"
@@ -103250,8 +103250,8 @@
         "page": 3033,
         "exercise": "3",
         "label": "2d",
-        "top": 38.8,
-        "left": 21,
+        "top": 37.5,
+        "left": 20.6,
         "width": 9.5,
         "height": 1.9,
         "correct": "couldn't take"
@@ -103262,8 +103262,8 @@
         "page": 3033,
         "exercise": "3",
         "label": "3a",
-        "top": 42.5,
-        "left": 23,
+        "top": 41.5,
+        "left": 22.3,
         "width": 8.5,
         "height": 1.9,
         "correct": "could get"
@@ -103274,8 +103274,8 @@
         "page": 3033,
         "exercise": "3",
         "label": "3b",
-        "top": 44.3,
-        "left": 30.5,
+        "top": 43,
+        "left": 28.2,
         "width": 10,
         "height": 1.9,
         "correct": "couldn't shop"
@@ -103286,8 +103286,8 @@
         "page": 3033,
         "exercise": "3",
         "label": "3c",
-        "top": 47,
-        "left": 12,
+        "top": 46.1,
+        "left": 11,
         "width": 8.5,
         "height": 1.9,
         "correct": "can't do"
@@ -103298,8 +103298,8 @@
         "page": 3033,
         "exercise": "3",
         "label": "3d",
-        "top": 48.8,
-        "left": 24.5,
+        "top": 47.3,
+        "left": 24.1,
         "width": 8.5,
         "height": 1.9,
         "correct": "can find"
@@ -103310,8 +103310,8 @@
         "page": 3033,
         "exercise": "3",
         "label": "4a",
-        "top": 52.5,
-        "left": 14.5,
+        "top": 51.1,
+        "left": 13.6,
         "width": 8.5,
         "height": 1.9,
         "correct": "could have"
@@ -103322,8 +103322,8 @@
         "page": 3033,
         "exercise": "3",
         "label": "4b",
-        "top": 54.3,
-        "left": 12,
+        "top": 53.2,
+        "left": 11,
         "width": 9.5,
         "height": 1.9,
         "correct": "couldn't watch"
@@ -103334,7 +103334,7 @@
         "page": 3033,
         "exercise": "3",
         "label": "4c",
-        "top": 57,
+        "top": 55.7,
         "left": 18,
         "width": 8.5,
         "height": 1.9,
@@ -103346,8 +103346,8 @@
         "page": 3033,
         "exercise": "3",
         "label": "4d",
-        "top": 59.8,
-        "left": 21.5,
+        "top": 58.8,
+        "left": 20,
         "width": 10,
         "height": 1.9,
         "correct": "can't remember"
@@ -105837,7 +105837,7 @@
     "3030": 1793432724238,
     "3031": 1793432724239,
     "3032": 1793432778248,
-    "3033": 1793432819467,
+    "3033": 1793432831585,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -106601,5 +106601,5 @@
       }
     }
   },
-  "updatedAt": 1793432820003
+  "updatedAt": 1793432832003
 }
