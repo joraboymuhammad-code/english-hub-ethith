@@ -107119,8 +107119,8 @@
         "page": 3042,
         "exercise": "1",
         "label": "7",
-        "top": 45,
-        "left": 11,
+        "top": 44.1,
+        "left": 12.5,
         "width": 38.5,
         "height": 1.8,
         "correct": "It's really cold here in winter."
@@ -107131,8 +107131,8 @@
         "page": 3042,
         "exercise": "1",
         "label": "8",
-        "top": 48.5,
-        "left": 11,
+        "top": 47.9,
+        "left": 12.5,
         "width": 38.5,
         "height": 1.8,
         "correct": "It's quite expensive to have a holiday in England."
@@ -107303,7 +107303,7 @@
         "page": 3042,
         "exercise": "4",
         "label": "1974",
-        "top": 35,
+        "top": 34,
         "left": 55,
         "width": 12,
         "height": 1.8,
@@ -107315,8 +107315,8 @@
         "page": 3042,
         "exercise": "4",
         "label": "2011",
-        "top": 37.5,
-        "left": 55,
+        "top": 36.2,
+        "left": 55.2,
         "width": 12,
         "height": 1.8,
         "correct": "2011"
@@ -107327,7 +107327,7 @@
         "page": 3042,
         "exercise": "4",
         "label": "the summer",
-        "top": 40,
+        "top": 38.3,
         "left": 55,
         "width": 12,
         "height": 1.8,
@@ -107411,8 +107411,8 @@
         "page": 3042,
         "exercise": "5",
         "label": "2",
-        "top": 53.5,
-        "left": 60.5,
+        "top": 51.9,
+        "left": 61.3,
         "width": 14.5,
         "height": 1.8,
         "correct": "house"
@@ -107423,8 +107423,8 @@
         "page": 3042,
         "exercise": "5",
         "label": "3",
-        "top": 55.3,
-        "left": 60.5,
+        "top": 54,
+        "left": 60.8,
         "width": 14.5,
         "height": 1.8,
         "correct": "a letter"
@@ -109698,7 +109698,7 @@
     "3039": 1793433305362,
     "3040": 1793433405405,
     "3041": 1793433405405,
-    "3042": 1793433431805,
+    "3042": 1793433446144,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -110462,5 +110462,5 @@
       }
     }
   },
-  "updatedAt": 1793433434072
+  "updatedAt": 1793433446700
 }
