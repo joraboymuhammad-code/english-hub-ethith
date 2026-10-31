@@ -105339,8 +105339,8 @@
         "page": 3037,
         "exercise": "1",
         "label": "2_7",
-        "top": 54.3,
-        "left": 26.5,
+        "top": 51.6,
+        "left": 25.8,
         "width": 14,
         "height": 1.8,
         "correct": "changing rooms"
@@ -105351,8 +105351,8 @@
         "page": 3037,
         "exercise": "2a",
         "label": "1",
-        "top": 68,
-        "left": 19.5,
+        "top": 66.4,
+        "left": 19.2,
         "width": 28,
         "height": 1.8,
         "correct": "What kind do you want?"
@@ -105363,8 +105363,8 @@
         "page": 3037,
         "exercise": "2a",
         "label": "2",
-        "top": 71.5,
-        "left": 11,
+        "top": 69.8,
+        "left": 11.5,
         "width": 36.5,
         "height": 1.8,
         "correct": "That's £4.50, please."
@@ -105375,8 +105375,8 @@
         "page": 3037,
         "exercise": "2a",
         "label": "3",
-        "top": 75,
-        "left": 20,
+        "top": 72.6,
+        "left": 20.7,
         "width": 27.5,
         "height": 1.8,
         "correct": "Would you like a bag?"
@@ -105387,8 +105387,8 @@
         "page": 3037,
         "exercise": "2a",
         "label": "4",
-        "top": 78.5,
-        "left": 11,
+        "top": 75.6,
+        "left": 11.7,
         "width": 36.5,
         "height": 1.8,
         "correct": "And would you like your receipt in the bag?"
@@ -105447,7 +105447,7 @@
         "page": 3037,
         "exercise": "4",
         "label": "1",
-        "top": 58,
+        "top": 56,
         "left": 57.5,
         "width": 34,
         "height": 1.8,
@@ -105459,7 +105459,7 @@
         "page": 3037,
         "exercise": "4",
         "label": "2",
-        "top": 64,
+        "top": 62.7,
         "left": 57.5,
         "width": 34,
         "height": 1.8,
@@ -105471,8 +105471,8 @@
         "page": 3037,
         "exercise": "4",
         "label": "3",
-        "top": 72,
-        "left": 57.5,
+        "top": 69.5,
+        "left": 57.6,
         "width": 34,
         "height": 1.8,
         "correct": "Jake's a good driver: he drives slowly, carefully and not too fast."
@@ -107642,7 +107642,7 @@
     "3034": 1793432999510,
     "3035": 1793432999512,
     "3036": 1793433131577,
-    "3037": 1793433164712,
+    "3037": 1793433177796,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -108406,5 +108406,5 @@
       }
     }
   },
-  "updatedAt": 1793433164742
+  "updatedAt": 1793433178970
 }
