@@ -107223,8 +107223,8 @@
         "page": 3042,
         "exercise": "2",
         "label": "7",
-        "top": 69.4,
-        "left": 16,
+        "top": 68.1,
+        "left": 14.9,
         "width": 12,
         "height": 1.8,
         "options": [
@@ -107239,8 +107239,8 @@
         "page": 3042,
         "exercise": "2",
         "label": "8",
-        "top": 71.2,
-        "left": 22,
+        "top": 69.1,
+        "left": 19.1,
         "width": 14,
         "height": 1.8,
         "options": [
@@ -107255,8 +107255,8 @@
         "page": 3042,
         "exercise": "3a",
         "label": "1",
-        "top": 80,
-        "left": 11,
+        "top": 79,
+        "left": 11.2,
         "width": 38.5,
         "height": 1.8,
         "correct": "He's a bit unfriendly."
@@ -107267,8 +107267,8 @@
         "page": 3042,
         "exercise": "3a",
         "label": "2",
-        "top": 82,
-        "left": 11,
+        "top": 81.1,
+        "left": 10.7,
         "width": 38.5,
         "height": 1.8,
         "correct": "Those bags are quite cheap."
@@ -107495,8 +107495,8 @@
         "page": 3042,
         "exercise": "6",
         "label": "1",
-        "top": 75,
-        "left": 60,
+        "top": 73.5,
+        "left": 59.8,
         "width": 33,
         "height": 1.8,
         "correct": [
@@ -107510,8 +107510,8 @@
         "page": 3042,
         "exercise": "6",
         "label": "2",
-        "top": 77,
-        "left": 60,
+        "top": 75.4,
+        "left": 59.6,
         "width": 33,
         "height": 1.8,
         "correct": "It's quite hot."
@@ -107522,8 +107522,8 @@
         "page": 3042,
         "exercise": "6",
         "label": "3",
-        "top": 79,
-        "left": 60,
+        "top": 77.4,
+        "left": 59.2,
         "width": 33,
         "height": 1.8,
         "correct": "It's a bit cold."
@@ -109698,7 +109698,7 @@
     "3039": 1793433305362,
     "3040": 1793433405405,
     "3041": 1793433405405,
-    "3042": 1793433459284,
+    "3042": 1793433471708,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -110462,5 +110462,5 @@
       }
     }
   },
-  "updatedAt": 1793433459501
+  "updatedAt": 1793433473233
 }
