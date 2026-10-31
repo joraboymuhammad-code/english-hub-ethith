@@ -19223,19 +19223,6 @@
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
       "updatedAt": 1793431308524
-    },
-    {
-      "id": "std_mixswdasd_804_selixasdasd",
-      "name": "Mixswdasd Selixasdasd",
-      "role": "student",
-      "login": "mixswdasd_804_selixasdasd",
-      "password": "mixswdasd804sel",
-      "phone": "+998950079621",
-      "parentPhone": "+998950079621",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null,
-      "updatedAt": 1793434960822
     }
   ],
   "p2pListings": [],
@@ -114446,5 +114433,5 @@
       }
     }
   },
-  "updatedAt": 1793436927487
+  "updatedAt": 1793437005904
 }
