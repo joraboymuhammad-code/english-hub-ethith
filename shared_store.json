@@ -102426,8 +102426,8 @@
         "page": 3031,
         "exercise": "1",
         "label": "6",
-        "top": 32.3,
-        "left": 37,
+        "top": 30.5,
+        "left": 37.4,
         "width": 6,
         "height": 1.9,
         "options": [
@@ -102448,8 +102448,8 @@
         "page": 3031,
         "exercise": "1",
         "label": "7",
-        "top": 34.1,
-        "left": 40,
+        "top": 32.1,
+        "left": 40.1,
         "width": 6,
         "height": 1.9,
         "options": [
@@ -102470,8 +102470,8 @@
         "page": 3031,
         "exercise": "1",
         "label": "8",
-        "top": 35.9,
-        "left": 30.5,
+        "top": 33.7,
+        "left": 30.9,
         "width": 6,
         "height": 1.9,
         "options": [
@@ -102670,8 +102670,8 @@
         "page": 3031,
         "exercise": "3",
         "label": "2",
-        "top": 25.8,
-        "left": 74,
+        "top": 24.5,
+        "left": 75.9,
         "width": 11,
         "height": 1.9,
         "correct": "company"
@@ -102682,8 +102682,8 @@
         "page": 3031,
         "exercise": "3",
         "label": "3",
-        "top": 27.5,
-        "left": 59,
+        "top": 25.9,
+        "left": 60.1,
         "width": 11,
         "height": 1.9,
         "correct": "full-time"
@@ -102694,8 +102694,8 @@
         "page": 3031,
         "exercise": "3",
         "label": "4",
-        "top": 29.3,
-        "left": 78.5,
+        "top": 28,
+        "left": 79.5,
         "width": 11,
         "height": 1.9,
         "correct": "well paid"
@@ -102706,8 +102706,8 @@
         "page": 3031,
         "exercise": "3",
         "label": "5",
-        "top": 31,
-        "left": 55,
+        "top": 28.9,
+        "left": 57.9,
         "width": 11,
         "height": 1.9,
         "correct": "colleagues"
@@ -102718,8 +102718,8 @@
         "page": 3031,
         "exercise": "3",
         "label": "6",
-        "top": 32.8,
-        "left": 51.5,
+        "top": 31.2,
+        "left": 51.6,
         "width": 11,
         "height": 1.9,
         "correct": "office"
@@ -102730,8 +102730,8 @@
         "page": 3031,
         "exercise": "3",
         "label": "7",
-        "top": 34.5,
-        "left": 78.5,
+        "top": 32,
+        "left": 81.6,
         "width": 11,
         "height": 1.9,
         "correct": "hospital"
@@ -102742,8 +102742,8 @@
         "page": 3031,
         "exercise": "3",
         "label": "8",
-        "top": 36.3,
-        "left": 77,
+        "top": 34.2,
+        "left": 78.6,
         "width": 11,
         "height": 1.9,
         "correct": "salary"
@@ -105087,7 +105087,7 @@
     "3028": 1793432574282,
     "3029": 1793432607964,
     "3030": 1793432643901,
-    "3031": 1793432655143,
+    "3031": 1793432669367,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -105851,5 +105851,5 @@
       }
     }
   },
-  "updatedAt": 1793432655805
+  "updatedAt": 1793432670631
 }
