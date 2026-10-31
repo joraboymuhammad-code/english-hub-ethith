@@ -108017,7 +108017,7 @@
         "page": 3044,
         "exercise": "4",
         "label": "3",
-        "top": 65.5,
+        "top": 64.1,
         "left": 68.5,
         "width": 14.5,
         "height": 1.8,
@@ -108029,8 +108029,8 @@
         "page": 3044,
         "exercise": "4",
         "label": "4",
-        "top": 72.5,
-        "left": 67,
+        "top": 71.4,
+        "left": 67.2,
         "width": 14.5,
         "height": 1.8,
         "correct": [
@@ -108044,8 +108044,8 @@
         "page": 3044,
         "exercise": "4",
         "label": "5",
-        "top": 83.5,
-        "left": 70,
+        "top": 82.2,
+        "left": 70.7,
         "width": 15,
         "height": 1.8,
         "correct": "Royal Shakespeare Theatre"
@@ -108056,11 +108056,560 @@
         "page": 3044,
         "exercise": "4",
         "label": "6",
-        "top": 86.5,
-        "left": 75.5,
+        "top": 85.1,
+        "left": 75.3,
         "width": 14,
         "height": 1.8,
         "correct": "Bancroft Gardens"
+      }
+    ],
+    "3045": [
+      {
+        "id": "p3045_g_ex1_2",
+        "type": "select",
+        "page": 3045,
+        "exercise": "1",
+        "label": "2",
+        "top": 25.3,
+        "left": 10.4,
+        "width": 12,
+        "height": 1.8,
+        "options": [
+          "Could",
+          "Can"
+        ],
+        "correct": "Could"
+      },
+      {
+        "id": "p3045_g_ex1_3",
+        "type": "select",
+        "page": 3045,
+        "exercise": "1",
+        "label": "3",
+        "top": 27.1,
+        "left": 17.8,
+        "width": 12,
+        "height": 1.8,
+        "options": [
+          "couldn't",
+          "can't"
+        ],
+        "correct": "couldn't"
+      },
+      {
+        "id": "p3045_g_ex1_4",
+        "type": "select",
+        "page": 3045,
+        "exercise": "1",
+        "label": "4",
+        "top": 30.2,
+        "left": 33.8,
+        "width": 12,
+        "height": 1.8,
+        "options": [
+          "takes",
+          "'s taking"
+        ],
+        "correct": "'s taking"
+      },
+      {
+        "id": "p3045_g_ex1_5",
+        "type": "select",
+        "page": 3045,
+        "exercise": "1",
+        "label": "5",
+        "top": 33.6,
+        "left": 26.8,
+        "width": 14,
+        "height": 1.8,
+        "options": [
+          "'m working",
+          "work"
+        ],
+        "correct": "'m working"
+      },
+      {
+        "id": "p3045_g_ex1_6",
+        "type": "select",
+        "page": 3045,
+        "exercise": "1",
+        "label": "6",
+        "top": 35,
+        "left": 12,
+        "width": 12,
+        "height": 1.8,
+        "options": [
+          "can",
+          "could"
+        ],
+        "correct": "can"
+      },
+      {
+        "id": "p3045_g_ex1_7",
+        "type": "select",
+        "page": 3045,
+        "exercise": "1",
+        "label": "7",
+        "top": 38,
+        "left": 13,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "don't usually pay",
+          "'m not usually paying"
+        ],
+        "correct": "don't usually pay"
+      },
+      {
+        "id": "p3045_g_ex1_8",
+        "type": "select",
+        "page": 3045,
+        "exercise": "1",
+        "label": "8",
+        "top": 42.5,
+        "left": 23.5,
+        "width": 16,
+        "height": 1.8,
+        "options": [
+          "does he cook",
+          "is he cooking"
+        ],
+        "correct": "is he cooking"
+      },
+      {
+        "id": "p3045_g_ex1_9",
+        "type": "select",
+        "page": 3045,
+        "exercise": "1",
+        "label": "9",
+        "top": 44.3,
+        "left": 33,
+        "width": 10,
+        "height": 1.8,
+        "options": [
+          "go",
+          "to go"
+        ],
+        "correct": "go"
+      },
+      {
+        "id": "p3045_g_ex1_10",
+        "type": "select",
+        "page": 3045,
+        "exercise": "1",
+        "label": "10",
+        "top": 47.5,
+        "left": 19.5,
+        "width": 18,
+        "height": 1.8,
+        "options": [
+          "don't like",
+          "aren't liking"
+        ],
+        "correct": "don't like"
+      },
+      {
+        "id": "p3045_g_ex2_2",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "2",
+        "label": "2",
+        "top": 61,
+        "left": 32.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "weren't"
+      },
+      {
+        "id": "p3045_g_ex2_3",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "2",
+        "label": "3",
+        "top": 64.5,
+        "left": 11,
+        "width": 9,
+        "height": 1.8,
+        "correct": "used"
+      },
+      {
+        "id": "p3045_g_ex2_4",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "2",
+        "label": "4",
+        "top": 67,
+        "left": 11,
+        "width": 9,
+        "height": 1.8,
+        "correct": "were"
+      },
+      {
+        "id": "p3045_g_ex2_5",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "2",
+        "label": "5",
+        "top": 74,
+        "left": 30.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "was"
+      },
+      {
+        "id": "p3045_g_ex2_6",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "2",
+        "label": "6",
+        "top": 76,
+        "left": 34,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "walked"
+      },
+      {
+        "id": "p3045_g_ex2_7",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "2",
+        "label": "7",
+        "top": 77.5,
+        "left": 32.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "looked"
+      },
+      {
+        "id": "p3045_g_ex2_8",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "2",
+        "label": "8",
+        "top": 80.5,
+        "left": 22,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "chatted"
+      },
+      {
+        "id": "p3045_g_ex2_9",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "2",
+        "label": "9",
+        "top": 82.2,
+        "left": 32,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "played"
+      },
+      {
+        "id": "p3045_g_ex2_10",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "2",
+        "label": "10",
+        "top": 86,
+        "left": 11,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "Were"
+      },
+      {
+        "id": "p3045_v_ex3_1b",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "3",
+        "label": "1b",
+        "top": 29.5,
+        "left": 83.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "sales"
+      },
+      {
+        "id": "p3045_v_ex3_2a",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "3",
+        "label": "2a",
+        "top": 32.5,
+        "left": 69.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "really"
+      },
+      {
+        "id": "p3045_v_ex3_2b",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "3",
+        "label": "2b",
+        "top": 34.3,
+        "left": 66.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "blue"
+      },
+      {
+        "id": "p3045_v_ex3_3a",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "3",
+        "label": "3a",
+        "top": 36.1,
+        "left": 73,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "shoes"
+      },
+      {
+        "id": "p3045_v_ex3_3b",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "3",
+        "label": "3b",
+        "top": 39.5,
+        "left": 63.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "return"
+      },
+      {
+        "id": "p3045_v_ex3_4a",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "3",
+        "label": "4a",
+        "top": 41.3,
+        "left": 64,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "top"
+      },
+      {
+        "id": "p3045_v_ex3_4b",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "3",
+        "label": "4b",
+        "top": 44.5,
+        "left": 60.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "discount"
+      },
+      {
+        "id": "p3045_v_ex3_5a",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "3",
+        "label": "5a",
+        "top": 46.3,
+        "left": 71,
+        "width": 6.5,
+        "height": 1.8,
+        "correct": "bit"
+      },
+      {
+        "id": "p3045_v_ex3_5b",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "3",
+        "label": "5b",
+        "top": 48,
+        "left": 74,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "gloves"
+      },
+      {
+        "id": "p3045_v_ex3_6a",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "3",
+        "label": "6a",
+        "top": 49.8,
+        "left": 62.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": [
+          "baker's",
+          "bakers"
+        ]
+      },
+      {
+        "id": "p3045_v_ex3_6b",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "3",
+        "label": "6b",
+        "top": 54.5,
+        "left": 60.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "glasses"
+      },
+      {
+        "id": "p3045_v_ex4_2",
+        "type": "select",
+        "page": 3045,
+        "exercise": "4",
+        "label": "2",
+        "top": 60.5,
+        "left": 61.5,
+        "width": 17,
+        "height": 1.8,
+        "options": [
+          "wait the bus",
+          "wait for the bus"
+        ],
+        "correct": "wait for the bus"
+      },
+      {
+        "id": "p3045_v_ex4_3",
+        "type": "select",
+        "page": 3045,
+        "exercise": "4",
+        "label": "3",
+        "top": 62.3,
+        "left": 64,
+        "width": 17,
+        "height": 1.8,
+        "options": [
+          "long time ago",
+          "a long time ago"
+        ],
+        "correct": "a long time ago"
+      },
+      {
+        "id": "p3045_v_ex4_4",
+        "type": "select",
+        "page": 3045,
+        "exercise": "4",
+        "label": "4",
+        "top": 64.1,
+        "left": 63.5,
+        "width": 14,
+        "height": 1.8,
+        "options": [
+          "a bit nice",
+          "very nice"
+        ],
+        "correct": "very nice"
+      },
+      {
+        "id": "p3045_v_ex4_5",
+        "type": "select",
+        "page": 3045,
+        "exercise": "4",
+        "label": "5",
+        "top": 65.9,
+        "left": 65.5,
+        "width": 12,
+        "height": 1.8,
+        "options": [
+          "very hard",
+          "hardly"
+        ],
+        "correct": "very hard"
+      },
+      {
+        "id": "p3045_v_ex4_6",
+        "type": "select",
+        "page": 3045,
+        "exercise": "4",
+        "label": "6",
+        "top": 67.7,
+        "left": 61.5,
+        "width": 16,
+        "height": 1.8,
+        "options": [
+          "dangerous",
+          "dangerously"
+        ],
+        "correct": "dangerously"
+      },
+      {
+        "id": "p3045_v_ex4_7",
+        "type": "select",
+        "page": 3045,
+        "exercise": "4",
+        "label": "7",
+        "top": 69.5,
+        "left": 60.5,
+        "width": 11,
+        "height": 1.8,
+        "options": [
+          "post",
+          "enter"
+        ],
+        "correct": "post"
+      },
+      {
+        "id": "p3045_v_ex4_8",
+        "type": "select",
+        "page": 3045,
+        "exercise": "4",
+        "label": "8",
+        "top": 71.3,
+        "left": 71.5,
+        "width": 10,
+        "height": 1.8,
+        "options": [
+          "last",
+          "in"
+        ],
+        "correct": "in"
+      },
+      {
+        "id": "p3045_s_ex5_2",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "5",
+        "label": "2",
+        "top": 84.8,
+        "left": 66.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "looking"
+      },
+      {
+        "id": "p3045_s_ex5_3",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "5",
+        "label": "3",
+        "top": 86.6,
+        "left": 68,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "need"
+      },
+      {
+        "id": "p3045_s_ex5_4",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "5",
+        "label": "4",
+        "top": 88.4,
+        "left": 65.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "try"
+      },
+      {
+        "id": "p3045_s_ex5_5",
+        "type": "fill",
+        "page": 3045,
+        "exercise": "5",
+        "label": "5",
+        "top": 92,
+        "left": 71,
+        "width": 14,
+        "height": 1.8,
+        "correct": "changing rooms"
       }
     ],
     "3046": [
@@ -110234,7 +110783,8 @@
     "3041": 1793433405405,
     "3042": 1793433480516,
     "3043": 1793433537379,
-    "3044": 1793433551811,
+    "3044": 1793433557261,
+    "3045": 1793433564837,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -110998,5 +111548,5 @@
       }
     }
   },
-  "updatedAt": 1793433552389
+  "updatedAt": 1793433565657
 }
