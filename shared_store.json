@@ -102922,11 +102922,265 @@
         "page": 3031,
         "exercise": "5",
         "label": "9",
-        "top": 93.3,
-        "left": 54.5,
+        "top": 90.8,
+        "left": 54.4,
         "width": 14,
         "height": 1.9,
         "correct": "turn right"
+      }
+    ],
+    "3032": [
+      {
+        "id": "p3032_ex1_4ac",
+        "type": "fill",
+        "page": 3032,
+        "exercise": "1",
+        "label": "4ac",
+        "top": 38.5,
+        "left": 9.2,
+        "width": 16,
+        "height": 1.9,
+        "correct": "centre"
+      },
+      {
+        "id": "p3032_ex1_5ac",
+        "type": "fill",
+        "page": 3032,
+        "exercise": "1",
+        "label": "5ac",
+        "top": 38.5,
+        "left": 28,
+        "width": 13.5,
+        "height": 1.9,
+        "correct": "spend"
+      },
+      {
+        "id": "p3032_ex1_7ac",
+        "type": "fill",
+        "page": 3032,
+        "exercise": "1",
+        "label": "7ac",
+        "top": 44.3,
+        "left": 15.2,
+        "width": 13.5,
+        "height": 1.9,
+        "correct": "online"
+      },
+      {
+        "id": "p3032_ex1_8ac",
+        "type": "fill",
+        "page": 3032,
+        "exercise": "1",
+        "label": "8ac",
+        "top": 44.8,
+        "left": 38.9,
+        "width": 11,
+        "height": 1.9,
+        "correct": "cash"
+      },
+      {
+        "id": "p3032_ex1_9ac",
+        "type": "fill",
+        "page": 3032,
+        "exercise": "1",
+        "label": "9ac",
+        "top": 51.2,
+        "left": 23.7,
+        "width": 18,
+        "height": 1.9,
+        "correct": "magazine"
+      },
+      {
+        "id": "p3032_ex1_2dn",
+        "type": "fill",
+        "page": 3032,
+        "exercise": "1",
+        "label": "2dn",
+        "top": 46.7,
+        "left": 63.4,
+        "width": 14,
+        "height": 1.9,
+        "correct": "return"
+      },
+      {
+        "id": "p3032_ex1_3dn",
+        "type": "fill",
+        "page": 3032,
+        "exercise": "1",
+        "label": "3dn",
+        "top": 49.9,
+        "left": 74.8,
+        "width": 14,
+        "height": 1.9,
+        "correct": "meat"
+      },
+      {
+        "id": "p3032_ex1_5dn",
+        "type": "fill",
+        "page": 3032,
+        "exercise": "1",
+        "label": "5dn",
+        "top": 53.3,
+        "left": 74,
+        "width": 14,
+        "height": 1.9,
+        "correct": "sales"
+      },
+      {
+        "id": "p3032_ex1_6dn",
+        "type": "fill",
+        "page": 3032,
+        "exercise": "1",
+        "label": "6dn",
+        "top": 55.1,
+        "left": 64,
+        "width": 14,
+        "height": 1.9,
+        "correct": "discount"
+      },
+      {
+        "id": "p3032_ex2_2",
+        "type": "select",
+        "page": 3032,
+        "exercise": "2",
+        "label": "2",
+        "top": 72.5,
+        "left": 49,
+        "width": 11,
+        "height": 1.9,
+        "options": [
+          "newsagent's",
+          "butcher's"
+        ],
+        "correct": "butcher's"
+      },
+      {
+        "id": "p3032_ex2_3",
+        "type": "select",
+        "page": 3032,
+        "exercise": "2",
+        "label": "3",
+        "top": 74.2,
+        "left": 41.5,
+        "width": 11,
+        "height": 1.9,
+        "options": [
+          "newsagent's",
+          "discount"
+        ],
+        "correct": "newsagent's"
+      },
+      {
+        "id": "p3032_ex2_4",
+        "type": "select",
+        "page": 3032,
+        "exercise": "2",
+        "label": "4",
+        "top": 75.9,
+        "left": 32.5,
+        "width": 10,
+        "height": 1.9,
+        "options": [
+          "baker's",
+          "shopping centre"
+        ],
+        "correct": "baker's"
+      },
+      {
+        "id": "p3032_ex2_5",
+        "type": "select",
+        "page": 3032,
+        "exercise": "2",
+        "label": "5",
+        "top": 77.6,
+        "left": 14,
+        "width": 12,
+        "height": 1.9,
+        "options": [
+          "spend",
+          "cash"
+        ],
+        "correct": "spend"
+      },
+      {
+        "id": "p3032_ex2_6",
+        "type": "select",
+        "page": 3032,
+        "exercise": "2",
+        "label": "6",
+        "top": 77.6,
+        "left": 46.5,
+        "width": 14,
+        "height": 1.9,
+        "options": [
+          "sales",
+          "shopping centres"
+        ],
+        "correct": "shopping centres"
+      },
+      {
+        "id": "p3032_ex2_7",
+        "type": "select",
+        "page": 3032,
+        "exercise": "2",
+        "label": "7",
+        "top": 81.3,
+        "left": 39.5,
+        "width": 10,
+        "height": 1.9,
+        "options": [
+          "centres",
+          "online"
+        ],
+        "correct": "online"
+      },
+      {
+        "id": "p3032_ex2_8",
+        "type": "select",
+        "page": 3032,
+        "exercise": "2",
+        "label": "8",
+        "top": 88,
+        "left": 12.5,
+        "width": 14,
+        "height": 1.9,
+        "options": [
+          "cash",
+          "discounts"
+        ],
+        "correct": "discounts"
+      },
+      {
+        "id": "p3032_ex2_9",
+        "type": "select",
+        "page": 3032,
+        "exercise": "2",
+        "label": "9",
+        "top": 89.8,
+        "left": 39,
+        "width": 12,
+        "height": 1.9,
+        "options": [
+          "sales",
+          "discounts"
+        ],
+        "correct": "sales"
+      },
+      {
+        "id": "p3032_ex2_10",
+        "type": "select",
+        "page": 3032,
+        "exercise": "2",
+        "label": "10",
+        "top": 91.5,
+        "left": 21,
+        "width": 12,
+        "height": 1.9,
+        "options": [
+          "return",
+          "spend"
+        ],
+        "correct": "return"
       }
     ],
     "3046": [
@@ -105086,8 +105340,9 @@
     "3027": 1793432509242,
     "3028": 1793432574282,
     "3029": 1793432607964,
-    "3030": 1793432643901,
-    "3031": 1793432720846,
+    "3030": 1793432724238,
+    "3031": 1793432724239,
+    "3032": 1793432745282,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -105851,5 +106106,5 @@
       }
     }
   },
-  "updatedAt": 1793432721915
+  "updatedAt": 1793432747199
 }
