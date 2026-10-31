@@ -103677,6 +103677,472 @@
         "correct": "S"
       }
     ],
+    "3034": [
+      {
+        "id": "p3034_ex1a_dress",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "dress",
+        "top": 22.7,
+        "left": 19.5,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "14"
+      },
+      {
+        "id": "p3034_ex1a_glasses",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "glasses",
+        "top": 24.6,
+        "left": 19.5,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "12"
+      },
+      {
+        "id": "p3034_ex1a_gloves",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "gloves",
+        "top": 26.4,
+        "left": 19.7,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "9"
+      },
+      {
+        "id": "p3034_ex1a_hat",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "hat",
+        "top": 29,
+        "left": 19,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "1"
+      },
+      {
+        "id": "p3034_ex1a_hoodie",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "hoodie",
+        "top": 30.6,
+        "left": 19,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "6"
+      },
+      {
+        "id": "p3034_ex1a_jacket",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "jacket",
+        "top": 32.2,
+        "left": 19,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "8"
+      },
+      {
+        "id": "p3034_ex1a_jeans",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "jeans",
+        "top": 22.6,
+        "left": 33,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "10"
+      },
+      {
+        "id": "p3034_ex1a_jewellery",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "jewellery",
+        "top": 24.2,
+        "left": 33,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "15"
+      },
+      {
+        "id": "p3034_ex1a_scarf",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "scarf",
+        "top": 25.8,
+        "left": 33,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "7"
+      },
+      {
+        "id": "p3034_ex1a_shoes",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "shoes",
+        "top": 27.4,
+        "left": 33,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "16"
+      },
+      {
+        "id": "p3034_ex1a_shorts",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "shorts",
+        "top": 29,
+        "left": 33,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "20"
+      },
+      {
+        "id": "p3034_ex1a_skirt",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "skirt",
+        "top": 30.6,
+        "left": 33,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "18"
+      },
+      {
+        "id": "p3034_ex1a_socks",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "socks",
+        "top": 32.2,
+        "left": 33,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "21"
+      },
+      {
+        "id": "p3034_ex1a_suit",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "suit",
+        "top": 22.6,
+        "left": 47,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "3"
+      },
+      {
+        "id": "p3034_ex1a_tie",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "tie",
+        "top": 24.2,
+        "left": 47,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "2"
+      },
+      {
+        "id": "p3034_ex1a_top",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "top",
+        "top": 25.8,
+        "left": 47,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "17"
+      },
+      {
+        "id": "p3034_ex1a_trainers",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "trainers",
+        "top": 27.4,
+        "left": 47,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "11"
+      },
+      {
+        "id": "p3034_ex1a_trousers",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "trousers",
+        "top": 29,
+        "left": 47,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "4"
+      },
+      {
+        "id": "p3034_ex1a_tshirt",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "tshirt",
+        "top": 30.6,
+        "left": 47,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "19"
+      },
+      {
+        "id": "p3034_ex1a_umbrella",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "1a",
+        "label": "umbrella",
+        "top": 32.2,
+        "left": 47,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "5"
+      },
+      {
+        "id": "p3034_ex2_2",
+        "type": "select",
+        "page": 3034,
+        "exercise": "2",
+        "label": "2",
+        "top": 24.2,
+        "left": 74,
+        "width": 14,
+        "height": 1.9,
+        "options": [
+          "jeans",
+          "jewellery",
+          "scarves"
+        ],
+        "correct": "jewellery"
+      },
+      {
+        "id": "p3034_ex2_3",
+        "type": "select",
+        "page": 3034,
+        "exercise": "2",
+        "label": "3",
+        "top": 26,
+        "left": 61.5,
+        "width": 12,
+        "height": 1.9,
+        "options": [
+          "glasses",
+          "ties",
+          "trainers"
+        ],
+        "correct": "glasses"
+      },
+      {
+        "id": "p3034_ex2_4",
+        "type": "select",
+        "page": 3034,
+        "exercise": "2",
+        "label": "4",
+        "top": 27.8,
+        "left": 81.5,
+        "width": 10,
+        "height": 1.9,
+        "options": [
+          "sock",
+          "hoodie",
+          "suit"
+        ],
+        "correct": "suit"
+      },
+      {
+        "id": "p3034_ex2_5",
+        "type": "select",
+        "page": 3034,
+        "exercise": "2",
+        "label": "5",
+        "top": 32.2,
+        "left": 75,
+        "width": 10,
+        "height": 1.9,
+        "options": [
+          "T-shirt",
+          "coat",
+          "gloves"
+        ],
+        "correct": "gloves"
+      },
+      {
+        "id": "p3034_ex2_6",
+        "type": "select",
+        "page": 3034,
+        "exercise": "2",
+        "label": "6",
+        "top": 34,
+        "left": 84.5,
+        "width": 8.5,
+        "height": 1.9,
+        "options": [
+          "hands",
+          "feet",
+          "neck"
+        ],
+        "correct": "neck"
+      },
+      {
+        "id": "p3034_ex2_7",
+        "type": "select",
+        "page": 3034,
+        "exercise": "2",
+        "label": "7",
+        "top": 35.8,
+        "left": 86.5,
+        "width": 8.5,
+        "height": 1.9,
+        "options": [
+          "hats",
+          "shoes",
+          "tops"
+        ],
+        "correct": "shoes"
+      },
+      {
+        "id": "p3034_ex2_8",
+        "type": "select",
+        "page": 3034,
+        "exercise": "2",
+        "label": "8",
+        "top": 38.8,
+        "left": 64,
+        "width": 10,
+        "height": 1.9,
+        "options": [
+          "coat",
+          "glasses",
+          "shorts"
+        ],
+        "correct": "coat"
+      },
+      {
+        "id": "p3034_ex3_2",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "3",
+        "label": "2",
+        "top": 56,
+        "left": 74,
+        "width": 10,
+        "height": 1.9,
+        "correct": [
+          "'s working",
+          "is working"
+        ]
+      },
+      {
+        "id": "p3034_ex3_3",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "3",
+        "label": "3",
+        "top": 57.8,
+        "left": 77,
+        "width": 10,
+        "height": 1.9,
+        "correct": [
+          "'s wearing",
+          "is wearing"
+        ]
+      },
+      {
+        "id": "p3034_ex3_4",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "3",
+        "label": "4",
+        "top": 62.5,
+        "left": 59.5,
+        "width": 9,
+        "height": 1.9,
+        "correct": [
+          "'m making",
+          "am making"
+        ]
+      },
+      {
+        "id": "p3034_ex3_5",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "3",
+        "label": "5",
+        "top": 66,
+        "left": 64.5,
+        "width": 10,
+        "height": 1.9,
+        "correct": [
+          "'re swimming",
+          "are swimming"
+        ]
+      },
+      {
+        "id": "p3034_ex3_6",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "3",
+        "label": "6",
+        "top": 69.5,
+        "left": 74,
+        "width": 10,
+        "height": 1.9,
+        "correct": [
+          "'re having",
+          "are having"
+        ]
+      },
+      {
+        "id": "p3034_ex3_7",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "3",
+        "label": "7",
+        "top": 71.3,
+        "left": 72,
+        "width": 10,
+        "height": 1.9,
+        "correct": [
+          "'re driving",
+          "are driving"
+        ]
+      },
+      {
+        "id": "p3034_ex3_8",
+        "type": "fill",
+        "page": 3034,
+        "exercise": "3",
+        "label": "8",
+        "top": 73.1,
+        "left": 79.5,
+        "width": 9,
+        "height": 1.9,
+        "correct": [
+          "'s raining",
+          "is raining"
+        ]
+      }
+    ],
     "3046": [
       {
         "id": "p3046_ex1_1",
@@ -105838,6 +106304,7 @@
     "3031": 1793432724239,
     "3032": 1793432839210,
     "3033": 1793432839211,
+    "3034": 1793432860304,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -106601,5 +107068,5 @@
       }
     }
   },
-  "updatedAt": 1793432848952
+  "updatedAt": 1793432860804
 }
