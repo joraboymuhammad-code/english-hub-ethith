@@ -24594,7 +24594,99 @@
         }
       },
       "deletedMsgIds": [],
-      "messages": []
+      "messages": [],
+      "levelTestResults": {
+        "std_mixswdasd_804_selixasdasd": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "std_mix_416_selix": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_1": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_2": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_3": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_4": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_5": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_6": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_7": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_8": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_9": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_10": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_11": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_12": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_13": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_14": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_15": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        },
+        "cls_1793380468126_std_16": {
+          "score": null,
+          "passed": false,
+          "updatedAt": 1793434963608
+        }
+      }
     }
   ],
   "exams": [
@@ -25815,6 +25907,19 @@
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
       "updatedAt": 1793431308524
+    },
+    {
+      "id": "std_mixswdasd_804_selixasdasd",
+      "name": "Mixswdasd Selixasdasd",
+      "role": "student",
+      "login": "mixswdasd_804_selixasdasd",
+      "password": "mixswdasd804sel",
+      "phone": "+998950079621",
+      "parentPhone": "+998950079621",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793434960822
     }
   ],
   "p2pListings": [],
@@ -120371,5 +120476,5 @@
       }
     }
   },
-  "updatedAt": 1793434955795
+  "updatedAt": 1793434965541
 }
