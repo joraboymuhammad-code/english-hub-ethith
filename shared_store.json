@@ -93654,8 +93654,8 @@
         "page": 3006,
         "exercise": "3",
         "label": "6",
-        "top": 89.5,
-        "left": 39.5,
+        "top": 87.7,
+        "left": 40.4,
         "width": 7,
         "height": 1.8,
         "correct": "its"
@@ -93666,11 +93666,416 @@
         "page": 3006,
         "exercise": "3",
         "label": "7",
-        "top": 93.1,
-        "left": 11.5,
+        "top": 90.6,
+        "left": 11.4,
         "width": 8,
         "height": 1.8,
         "correct": "her"
+      }
+    ],
+    "3007": [
+      {
+        "id": "p3007_ex6_2",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "6",
+        "label": "2",
+        "top": 26.1,
+        "left": 25.9,
+        "width": 22.5,
+        "height": 1.8,
+        "correct": [
+          "wife and husband",
+          "husband and wife"
+        ]
+      },
+      {
+        "id": "p3007_ex6_3",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "6",
+        "label": "3",
+        "top": 28,
+        "left": 25.9,
+        "width": 22.5,
+        "height": 1.8,
+        "correct": [
+          "granddaughter and grandfather",
+          "grandfather and granddaughter"
+        ]
+      },
+      {
+        "id": "p3007_ex6_4",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "6",
+        "label": "4",
+        "top": 31.6,
+        "left": 25.5,
+        "width": 22.5,
+        "height": 1.8,
+        "correct": [
+          "uncle and nephew",
+          "nephew and uncle"
+        ]
+      },
+      {
+        "id": "p3007_ex6_5",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "6",
+        "label": "5",
+        "top": 33.4,
+        "left": 25.5,
+        "width": 22.5,
+        "height": 1.8,
+        "correct": [
+          "father and daughter",
+          "parent and child",
+          "daughter and father"
+        ]
+      },
+      {
+        "id": "p3007_ex6_6",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "6",
+        "label": "6",
+        "top": 35.2,
+        "left": 25.5,
+        "width": 22.5,
+        "height": 1.8,
+        "correct": "brothers"
+      },
+      {
+        "id": "p3007_ex6_7",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "6",
+        "label": "7",
+        "top": 37,
+        "left": 25.5,
+        "width": 22.5,
+        "height": 1.8,
+        "correct": [
+          "sister-in-law and brother-in-law",
+          "brother-in-law and sister-in-law"
+        ]
+      },
+      {
+        "id": "p3007_ex7_2",
+        "type": "select",
+        "page": 3007,
+        "exercise": "7",
+        "label": "2",
+        "top": 48,
+        "left": 24.5,
+        "width": 5.5,
+        "height": 1.8,
+        "options": [
+          "-",
+          "P"
+        ],
+        "correct": "-"
+      },
+      {
+        "id": "p3007_ex7_3",
+        "type": "select",
+        "page": 3007,
+        "exercise": "7",
+        "label": "3",
+        "top": 49.8,
+        "left": 33,
+        "width": 5.5,
+        "height": 1.8,
+        "options": [
+          "-",
+          "P"
+        ],
+        "correct": "P"
+      },
+      {
+        "id": "p3007_ex7_4",
+        "type": "select",
+        "page": 3007,
+        "exercise": "7",
+        "label": "4",
+        "top": 51.6,
+        "left": 26.5,
+        "width": 5.5,
+        "height": 1.8,
+        "options": [
+          "-",
+          "P"
+        ],
+        "correct": "-"
+      },
+      {
+        "id": "p3007_ex7_5",
+        "type": "select",
+        "page": 3007,
+        "exercise": "7",
+        "label": "5",
+        "top": 53.4,
+        "left": 34.5,
+        "width": 5.5,
+        "height": 1.8,
+        "options": [
+          "-",
+          "P"
+        ],
+        "correct": "-"
+      },
+      {
+        "id": "p3007_ex7_6",
+        "type": "select",
+        "page": 3007,
+        "exercise": "7",
+        "label": "6",
+        "top": 55.2,
+        "left": 34.5,
+        "width": 5.5,
+        "height": 1.8,
+        "options": [
+          "-",
+          "P"
+        ],
+        "correct": "P"
+      },
+      {
+        "id": "p3007_ex7_7",
+        "type": "select",
+        "page": 3007,
+        "exercise": "7",
+        "label": "7",
+        "top": 57,
+        "left": 28.5,
+        "width": 5.5,
+        "height": 1.8,
+        "options": [
+          "-",
+          "P"
+        ],
+        "correct": "-"
+      },
+      {
+        "id": "p3007_ex7_8",
+        "type": "select",
+        "page": 3007,
+        "exercise": "7",
+        "label": "8",
+        "top": 58.8,
+        "left": 28.5,
+        "width": 5.5,
+        "height": 1.8,
+        "options": [
+          "-",
+          "P"
+        ],
+        "correct": "P"
+      },
+      {
+        "id": "p3007_ex8_2",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "8",
+        "label": "2",
+        "top": 66.4,
+        "left": 23.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "Maria's"
+      },
+      {
+        "id": "p3007_ex8_3",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "8",
+        "label": "3",
+        "top": 69.5,
+        "left": 17.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "Isabel's"
+      },
+      {
+        "id": "p3007_ex8_4",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "8",
+        "label": "4",
+        "top": 71.3,
+        "left": 16.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": "son's"
+      },
+      {
+        "id": "p3007_ex8_5",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "8",
+        "label": "5",
+        "top": 73.1,
+        "left": 24.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": "grandfather's"
+      },
+      {
+        "id": "p3007_ex8_6",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "8",
+        "label": "6",
+        "top": 76.2,
+        "left": 17.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": [
+          "mother's",
+          "mum's"
+        ]
+      },
+      {
+        "id": "p3007_ex8_7",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "8",
+        "label": "7",
+        "top": 79.9,
+        "left": 10.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "Sancho's"
+      },
+      {
+        "id": "p3007_ex9a_1b",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "9a",
+        "label": "1b",
+        "top": 16.5,
+        "left": 78.5,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": [
+          "Our",
+          "our"
+        ]
+      },
+      {
+        "id": "p3007_ex9a_2a",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "9a",
+        "label": "2a",
+        "top": 19.8,
+        "left": 75.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": "They're"
+      },
+      {
+        "id": "p3007_ex9a_2b",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "9a",
+        "label": "2b",
+        "top": 21.6,
+        "left": 55,
+        "width": 7,
+        "height": 1.8,
+        "correct": "Their"
+      },
+      {
+        "id": "p3007_ex9a_3a",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "9a",
+        "label": "3a",
+        "top": 23.4,
+        "left": 73,
+        "width": 6.5,
+        "height": 1.8,
+        "correct": "He's"
+      },
+      {
+        "id": "p3007_ex9a_3b",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "9a",
+        "label": "3b",
+        "top": 25.2,
+        "left": 60.5,
+        "width": 6.5,
+        "height": 1.8,
+        "correct": "His"
+      },
+      {
+        "id": "p3007_ex9a_4a",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "9a",
+        "label": "4a",
+        "top": 27,
+        "left": 55.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "You're"
+      },
+      {
+        "id": "p3007_ex9a_4b",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "9a",
+        "label": "4b",
+        "top": 27,
+        "left": 82.5,
+        "width": 6.5,
+        "height": 1.8,
+        "correct": "your"
+      },
+      {
+        "id": "p3007_ex9a_5a",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "9a",
+        "label": "5a",
+        "top": 29.8,
+        "left": 60,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "'s"
+      },
+      {
+        "id": "p3007_ex9a_5b",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "9a",
+        "label": "5b",
+        "top": 29.8,
+        "left": 86.5,
+        "width": 4.5,
+        "height": 1.8,
+        "correct": "'s"
+      },
+      {
+        "id": "p3007_ex10a",
+        "type": "fill",
+        "page": 3007,
+        "exercise": "10a",
+        "label": "10a",
+        "top": 43.1,
+        "left": 69.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": [
+          "3, 4",
+          "3 and 4",
+          "3",
+          "4"
+        ]
       }
     ],
     "3046": [
@@ -95806,7 +96211,8 @@
     "2087": 1793428202812,
     "3004": 1793428564174,
     "3005": 1793428564175,
-    "3006": 1793428675940,
+    "3006": 1793428679596,
+    "3007": 1793428686315,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -96570,5 +96976,5 @@
       }
     }
   },
-  "updatedAt": 1793428677360
+  "updatedAt": 1793428687841
 }
