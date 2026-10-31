@@ -105916,6 +105916,416 @@
         "correct": "S"
       }
     ],
+    "3039": [
+      {
+        "id": "p3039_ex5a_1b",
+        "type": "select",
+        "page": 3039,
+        "exercise": "5a",
+        "label": "1b",
+        "top": 20.4,
+        "left": 20.9,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "S"
+      },
+      {
+        "id": "p3039_ex5a_2a",
+        "type": "select",
+        "page": 3039,
+        "exercise": "5a",
+        "label": "2a",
+        "top": 22.2,
+        "left": 36.6,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "U"
+      },
+      {
+        "id": "p3039_ex5a_2b",
+        "type": "select",
+        "page": 3039,
+        "exercise": "5a",
+        "label": "2b",
+        "top": 25.6,
+        "left": 28.5,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "U"
+      },
+      {
+        "id": "p3039_ex5a_3a",
+        "type": "select",
+        "page": 3039,
+        "exercise": "5a",
+        "label": "3a",
+        "top": 27.4,
+        "left": 31,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "U"
+      },
+      {
+        "id": "p3039_ex5a_3b",
+        "type": "select",
+        "page": 3039,
+        "exercise": "5a",
+        "label": "3b",
+        "top": 29.2,
+        "left": 24.5,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "U"
+      },
+      {
+        "id": "p3039_ex5a_4a",
+        "type": "select",
+        "page": 3039,
+        "exercise": "5a",
+        "label": "4a",
+        "top": 31,
+        "left": 41.5,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "U"
+      },
+      {
+        "id": "p3039_ex5a_4b",
+        "type": "select",
+        "page": 3039,
+        "exercise": "5a",
+        "label": "4b",
+        "top": 32.8,
+        "left": 22.5,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "S"
+      },
+      {
+        "id": "p3039_ex5a_5a",
+        "type": "select",
+        "page": 3039,
+        "exercise": "5a",
+        "label": "5a",
+        "top": 34.6,
+        "left": 28,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "U"
+      },
+      {
+        "id": "p3039_ex5a_5b",
+        "type": "select",
+        "page": 3039,
+        "exercise": "5a",
+        "label": "5b",
+        "top": 36.4,
+        "left": 25.5,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "S",
+          "U"
+        ],
+        "correct": "U"
+      },
+      {
+        "id": "p3039_ex6_2",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "6",
+        "label": "2",
+        "top": 54,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "The last London Olympics were in 2012."
+      },
+      {
+        "id": "p3039_ex6_3",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "6",
+        "label": "3",
+        "top": 58,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "There was an important football match last night."
+      },
+      {
+        "id": "p3039_ex6_4",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "6",
+        "label": "4",
+        "top": 62,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "We were in Spain last year."
+      },
+      {
+        "id": "p3039_ex6_5",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "6",
+        "label": "5",
+        "top": 66,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "I was very tired this morning."
+      },
+      {
+        "id": "p3039_ex6_6",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "6",
+        "label": "6",
+        "top": 70,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "Albert Einstein was born in the nineteenth century."
+      },
+      {
+        "id": "p3039_ex6_7",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "6",
+        "label": "7",
+        "top": 74,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "There was a staff meeting a few days ago."
+      },
+      {
+        "id": "p3039_ex6_8",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "6",
+        "label": "8",
+        "top": 78,
+        "left": 11,
+        "width": 38.5,
+        "height": 1.8,
+        "correct": "She was in hospital two months ago."
+      },
+      {
+        "id": "p3039_ex7_2",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "7",
+        "label": "2",
+        "top": 14.4,
+        "left": 59.2,
+        "width": 34,
+        "height": 1.8,
+        "correct": "I was very tired this morning."
+      },
+      {
+        "id": "p3039_ex7_3",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "7",
+        "label": "3",
+        "top": 16.4,
+        "left": 59.3,
+        "width": 34,
+        "height": 1.8,
+        "correct": "There was an important football match last night."
+      },
+      {
+        "id": "p3039_ex7_4",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "7",
+        "label": "4",
+        "top": 18.1,
+        "left": 59.3,
+        "width": 34,
+        "height": 1.8,
+        "correct": "There was a staff meeting a few days ago."
+      },
+      {
+        "id": "p3039_ex7_5",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "7",
+        "label": "5",
+        "top": 19.8,
+        "left": 59.2,
+        "width": 34,
+        "height": 1.8,
+        "correct": "She was in hospital two months ago."
+      },
+      {
+        "id": "p3039_ex7_6",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "7",
+        "label": "6",
+        "top": 21.7,
+        "left": 59.3,
+        "width": 34,
+        "height": 1.8,
+        "correct": "We were in Spain last year."
+      },
+      {
+        "id": "p3039_ex7_7",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "7",
+        "label": "7",
+        "top": 23.3,
+        "left": 59.3,
+        "width": 34,
+        "height": 1.8,
+        "correct": "The last London Olympics were in 2012."
+      },
+      {
+        "id": "p3039_ex7_8",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "7",
+        "label": "8",
+        "top": 25.3,
+        "left": 59.2,
+        "width": 34,
+        "height": 1.8,
+        "correct": "Albert Einstein was born in the nineteenth century."
+      },
+      {
+        "id": "p3039_ex8_2",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "8",
+        "label": "2",
+        "top": 49.5,
+        "left": 79.5,
+        "width": 10,
+        "height": 1.8,
+        "correct": "last month"
+      },
+      {
+        "id": "p3039_ex8_3",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "8",
+        "label": "3",
+        "top": 55.5,
+        "left": 58.5,
+        "width": 10,
+        "height": 1.8,
+        "correct": "Two years ago"
+      },
+      {
+        "id": "p3039_ex8_4",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "8",
+        "label": "4",
+        "top": 57.3,
+        "left": 69.5,
+        "width": 10,
+        "height": 1.8,
+        "correct": "in the 19th century"
+      },
+      {
+        "id": "p3039_ex8_5",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "8",
+        "label": "5",
+        "top": 61,
+        "left": 58.5,
+        "width": 10,
+        "height": 1.8,
+        "correct": "a long time ago"
+      },
+      {
+        "id": "p3039_ex8_6",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "8",
+        "label": "6",
+        "top": 62.8,
+        "left": 63.5,
+        "width": 10,
+        "height": 1.8,
+        "correct": "Last year"
+      },
+      {
+        "id": "p3039_ex8_7",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "8",
+        "label": "7",
+        "top": 64.6,
+        "left": 78.5,
+        "width": 9,
+        "height": 1.8,
+        "correct": "in 1935"
+      },
+      {
+        "id": "p3039_ex8_8",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "8",
+        "label": "8",
+        "top": 69.8,
+        "left": 58.5,
+        "width": 10,
+        "height": 1.8,
+        "correct": "in the summer"
+      },
+      {
+        "id": "p3039_ex8_9",
+        "type": "fill",
+        "page": 3039,
+        "exercise": "8",
+        "label": "9",
+        "top": 71.6,
+        "left": 68.5,
+        "width": 10,
+        "height": 1.8,
+        "correct": "last night"
+      }
+    ],
     "3046": [
       {
         "id": "p3046_ex1_1",
@@ -108082,6 +108492,7 @@
     "3036": 1793433131577,
     "3037": 1793433179292,
     "3038": 1793433239289,
+    "3039": 1793433254009,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -108845,5 +109256,5 @@
       }
     }
   },
-  "updatedAt": 1793433239759
+  "updatedAt": 1793433254384
 }
