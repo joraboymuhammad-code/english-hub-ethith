@@ -123817,7 +123817,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 10800000,
+      "monthlySalary": 11880000,
       "phone": "+998 90 ..."
     },
     {
@@ -124106,5 +124106,5 @@
       }
     }
   },
-  "updatedAt": 1793455882234
+  "updatedAt": 1793455890664
 }
