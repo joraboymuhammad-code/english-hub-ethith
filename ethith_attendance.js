@@ -166,6 +166,13 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       });
 
       if (sIdx !== -1) {
+        if (window.EthithUndo && typeof window.EthithUndo.record === 'function') {
+          window.EthithUndo.record({
+            type: 'delete_student',
+            cid: cls.id,
+            student: JSON.parse(JSON.stringify(cls.students[sIdx]))
+          });
+        }
         var nextSlotNum = sIdx + 1;
         var cleanTester = {
           id: 'cls_' + cls.id + '_std_' + nextSlotNum + '_' + Date.now().toString(36).substr(-4),
@@ -1558,7 +1565,12 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
 
     var teachers = getStoreTeachers();
-    var t = teachers.find(function(item) { return item.id === teacherId; }) || teachers[0];
+    var t = teachers.find(function(item) { return item && item.id === teacherId; });
+    if (!t) {
+      EA.activeTeacherId = null;
+      EA.activeClassId = null;
+      return EA.renderTeachersDirectory(container);
+    }
     var tClasses = getClassesForTeacher(t.id);
     var isAdmin = isAdminRole() && !isStudent;
     var isTeacher = isTeacherRole() && !isStudent;
@@ -2216,6 +2228,15 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
       if (!newName) { alert("O‘qituvchi ismini kiriting!"); return; }
 
+      // Record snapshot to Ctrl+Z Undo
+      if (window.EthithUndo && typeof window.EthithUndo.record === 'function') {
+        window.EthithUndo.record({
+          type: 'edit_teacher',
+          tid: teacher.id,
+          oldData: JSON.parse(JSON.stringify(teacher))
+        });
+      }
+
       var calculatedSalary = Math.round((totalStudents * newFee) * (newPct / 100));
 
       teacher.name = newName;
@@ -2316,11 +2337,39 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     var teachers = getStoreTeachers();
     var tObj = teachers.find(function(item) { return item.id === tid; });
     var nameToDisplay = tName || (tObj ? tObj.name : 'O‘qituvchi');
-    if (!confirm("Haqiqatan ham \"" + nameToDisplay + "\" o‘qituvchisini tizimdan butunlay o‘chirmoqchimisiz?\n\n• O‘qituvchi va uning tizim profili o‘chiriladi\n• Guruhlar saqlanadi va o‘qituvchisiz (bo‘sh) holatga o‘tkaziladi")) {
+    if (!confirm("Haqiqatan ham \"" + nameToDisplay + "\" o‘qituvchisini tizimdan butunlay o‘chirmoqchimisiz?\n\n• O‘qituvchi va uning tizim profili o‘chiriladi\n• Guruhlar saqlanadi va o‘qituvchisiz (bo‘sh) holatga o‘tkaziladi\n• Adashib o‘chirilsa Ctrl+Z orqali darhol qaytarish mumkin")) {
       return;
     }
 
     var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+
+    // 0. Record snapshot for Ctrl+Z Undo functionality
+    if (window.EthithUndo && typeof window.EthithUndo.record === 'function') {
+      var teacherBackup = tObj ? JSON.parse(JSON.stringify(tObj)) : { id: tid, name: nameToDisplay };
+      var affectedClasses = [];
+      if (Array.isArray(S.classes)) {
+        S.classes.forEach(function(cls) {
+          if (cls.teacherId === tid) {
+            affectedClasses.push({ id: cls.id, name: cls.name });
+          }
+        });
+      }
+      var affectedAccounts = [];
+      if (Array.isArray(S.accounts)) {
+        S.accounts.forEach(function(acc) {
+          if (acc.id === tid || acc.teacherId === tid) {
+            affectedAccounts.push(JSON.parse(JSON.stringify(acc)));
+          }
+        });
+      }
+      window.EthithUndo.record({
+        type: 'delete_teacher',
+        teacher: teacherBackup,
+        classes: affectedClasses,
+        accounts: affectedAccounts
+      });
+    }
+
     if (!Array.isArray(S.deletedTeacherIds)) S.deletedTeacherIds = [];
     if (S.deletedTeacherIds.indexOf(tid) === -1) S.deletedTeacherIds.push(tid);
 
@@ -2330,25 +2379,23 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       localStorage.setItem('ethith_deleted_teacher_ids', JSON.stringify(lsDel));
     } catch(e) {}
 
-    // 1. Remove from teachers
+    // 1. Remove from teachers strictly by ID
     if (Array.isArray(S.teachers)) {
       S.teachers = S.teachers.filter(function(t) { return t.id !== tid; });
     }
     if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
       window.ETHITH_INITIAL_STORE.teachers = window.ETHITH_INITIAL_STORE.teachers.filter(function(t) { return t.id !== tid; });
     }
-    // 2. Remove teacher login account from accounts
+    // 2. Remove teacher login account from accounts strictly by teacher ID
     if (Array.isArray(S.accounts)) {
       S.accounts = S.accounts.filter(function(a) {
-        if (a.id === tid) return false;
-        if (tObj && tObj.login && a.login && a.login.toLowerCase() === tObj.login.toLowerCase()) return false;
-        return true;
+        return a.id !== tid && a.teacherId !== tid;
       });
     }
-    // 3. Unbind classes from this teacher
+    // 3. Unbind classes from this teacher strictly by ID (never loose name matching!)
     if (Array.isArray(S.classes)) {
       S.classes.forEach(function(cls) {
-        if (cls.teacherId === tid || (tObj && cls.teacherName === tObj.name)) {
+        if (cls.teacherId === tid) {
           cls.teacherId = '';
           cls.teacherName = 'Biriktirilmagan';
         }
@@ -2364,9 +2411,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         if (Array.isArray(entStore.teachers)) entStore.teachers = entStore.teachers.filter(function(t) { return t.id !== tid; });
         if (Array.isArray(entStore.accounts)) {
           entStore.accounts = entStore.accounts.filter(function(a) {
-            if (a.id === tid) return false;
-            if (tObj && tObj.login && a.login && a.login.toLowerCase() === tObj.login.toLowerCase()) return false;
-            return true;
+            return a.id !== tid && a.teacherId !== tid;
           });
         }
       }
@@ -2379,14 +2424,16 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       window.EthithApp.saveState();
     }
 
-    // 6. Broadcast sync event
+    // 6. Broadcast sync event in real-time
     if (window.EthithSync && window.EthithSync.broadcastState) {
-      window.EthithSync.broadcastState('teacher_deleted');
+      window.EthithSync.broadcastState('teacher_deleted', { tid: tid });
     }
 
-    // 7. Toast notification
+    // 7. Toast notification with undo prompt
     if (window.EthithApp && window.EthithApp.toast) {
-      window.EthithApp.toast("🗑️ " + nameToDisplay + " tizimdan muvaffaqiyatli o‘chirildi!");
+      window.EthithApp.toast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi! (Bekor qilish: Ctrl+Z)");
+    } else if (typeof window.showToast === 'function') {
+      window.showToast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi! (Bekor qilish: Ctrl+Z)", 'info');
     }
 
     // 8. Re-render UI
@@ -2550,6 +2597,24 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       };
 
       S.teachers.push(newT);
+      if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
+        window.ETHITH_INITIAL_STORE.teachers.push(JSON.parse(JSON.stringify(newT)));
+      }
+      if (window.EthithEnterprise && window.EthithEnterprise.getStore) {
+        var entStore = window.EthithEnterprise.getStore();
+        if (entStore && Array.isArray(entStore.teachers)) {
+          if (!entStore.teachers.some(function(t) { return t.id === newId; })) {
+            entStore.teachers.push(JSON.parse(JSON.stringify(newT)));
+          }
+        }
+      }
+      if (window.EthithUndo && typeof window.EthithUndo.record === 'function') {
+        window.EthithUndo.record({
+          type: 'add_teacher',
+          tid: newId,
+          teacherName: name
+        });
+      }
 
       // Add to accounts for immediate authentication
       var accIdx = S.accounts.findIndex(function(a) { return a.login === login || a.id === newId; });
@@ -2633,6 +2698,18 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
     overlay.querySelector('#eaConfirmDelClassBtn').onclick = function() {
       var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+
+      // Record snapshot to Ctrl+Z Undo
+      if (window.EthithUndo && typeof window.EthithUndo.record === 'function') {
+        var clsMatch = (S.classes || []).find(function(c) { return c.id === classId; });
+        if (clsMatch) {
+          window.EthithUndo.record({
+            type: 'delete_class',
+            cls: JSON.parse(JSON.stringify(clsMatch))
+          });
+        }
+      }
+
       if (S.classes && Array.isArray(S.classes)) {
         S.classes = S.classes.filter(function(c) { return c.id !== classId; });
       }

@@ -605,6 +605,23 @@
       }
     }
 
+    // E3. STATE MUTATION & UNDO (Instant Real-time Sync Across Connected Clients)
+    else if (event.type === 'STATE_MUTATION' || event.type === 'UNDO_MUTATION') {
+      if (typeof fetchRemoteStore === 'function') {
+        fetchRemoteStore().then(function() {
+          var apView = document.getElementById('apView');
+          if (apView && window.EA && typeof window.EA.render === 'function') {
+            var prevScrollY = window.scrollY || window.pageYOffset || 0;
+            window.EA.render(apView);
+            window.scrollTo(0, prevScrollY);
+          }
+          if (window._ethithRefreshCurrentView) {
+            try { window._ethithRefreshCurrentView(); } catch(e) {}
+          }
+        });
+      }
+    }
+
     // F. CLASS CREATED
     else if (event.type === 'CLASS_CREATED' && event.classData) {
       var cExists = classes.some(function(c) {
@@ -2516,6 +2533,27 @@
 
   window.EthithSync = {
     broadcastUserState: broadcastUserState,
+    broadcastState: function(mutationType, extraData) {
+      var payload = {
+        type: 'STATE_MUTATION',
+        mutationType: mutationType,
+        extra: extraData || {},
+        from: myClientId,
+        ts: Date.now()
+      };
+      if (typeof publishLive === 'function') {
+        publishLive(payload);
+      }
+      if (typeof pushRemoteStore === 'function') {
+        pushRemoteStore();
+      }
+      try {
+        if (typeof BroadcastChannel !== 'undefined') {
+          if (!window._eeChannel) window._eeChannel = new BroadcastChannel('ethith_cloud_channel');
+          window._eeChannel.postMessage(payload);
+        }
+      } catch(e) {}
+    },
     publishLive: publishLive,
     handleIncomingLiveEvent: handleIncomingLiveEvent,
     subscribeClass: subscribeClass,

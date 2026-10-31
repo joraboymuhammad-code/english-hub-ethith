@@ -12,6 +12,199 @@
 
   var DEFAULT_CLASSES = [];
 
+  // ==========================================================================
+  // ETHITH GLOBAL CTRL+Z UNDO SYSTEM (OXIRGI 5 TA AMALNI REAL-TIME QAYTARISH)
+  // ==========================================================================
+  var MAX_UNDO_ACTIONS = 5;
+  var undoStack = [];
+
+  function recordUndoAction(action) {
+    if (!action || !action.type) return;
+    action.timestamp = Date.now();
+    undoStack.unshift(action);
+    if (undoStack.length > MAX_UNDO_ACTIONS) {
+      undoStack.pop();
+    }
+  }
+
+  function executeUndo() {
+    if (undoStack.length === 0) {
+      var msgEmpty = "ℹ️ Qaytarish uchun oxirgi amallar topilmadi (Ctrl+Z)";
+      if (window.EthithApp && window.EthithApp.toast) window.EthithApp.toast(msgEmpty);
+      else if (typeof window.showToast === 'function') window.showToast(msgEmpty, 'info');
+      return;
+    }
+
+    var action = undoStack.shift();
+    var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+    var restoredTitle = '';
+
+    if (action.type === 'delete_teacher') {
+      var t = action.teacher;
+      if (t && t.id) {
+        if (!Array.isArray(S.teachers)) S.teachers = [];
+        if (!S.teachers.some(function(it) { return it.id === t.id; })) {
+          S.teachers.push(t);
+        }
+        if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
+          if (!window.ETHITH_INITIAL_STORE.teachers.some(function(it) { return it.id === t.id; })) {
+            window.ETHITH_INITIAL_STORE.teachers.push(JSON.parse(JSON.stringify(t)));
+          }
+        }
+        if (window.EthithEnterprise && window.EthithEnterprise.getStore) {
+          var entSt = window.EthithEnterprise.getStore();
+          if (entSt && Array.isArray(entSt.teachers)) {
+            if (!entSt.teachers.some(function(it) { return it.id === t.id; })) {
+              entSt.teachers.push(JSON.parse(JSON.stringify(t)));
+            }
+          }
+        }
+        // Remove from deletedTeacherIds
+        if (Array.isArray(S.deletedTeacherIds)) {
+          S.deletedTeacherIds = S.deletedTeacherIds.filter(function(x) { return x !== t.id; });
+        }
+        try {
+          var lsDel = JSON.parse(localStorage.getItem('ethith_deleted_teacher_ids') || '[]');
+          if (Array.isArray(lsDel)) {
+            lsDel = lsDel.filter(function(x) { return x !== t.id; });
+            localStorage.setItem('ethith_deleted_teacher_ids', JSON.stringify(lsDel));
+          }
+        } catch(e) {}
+
+        // Restore re-linked classes
+        if (Array.isArray(action.classes) && Array.isArray(S.classes)) {
+          action.classes.forEach(function(clsSnap) {
+            var realCls = S.classes.find(function(c) { return c.id === clsSnap.id; });
+            if (realCls) {
+              realCls.teacherId = t.id;
+              realCls.teacherName = t.name;
+            }
+          });
+        }
+
+        // Restore teacher accounts
+        if (Array.isArray(action.accounts) && Array.isArray(S.accounts)) {
+          action.accounts.forEach(function(acc) {
+            if (!S.accounts.some(function(a) { return a.id === acc.id || (a.login && acc.login && a.login.toLowerCase() === acc.login.toLowerCase()); })) {
+              S.accounts.push(acc);
+            }
+          });
+        }
+
+        restoredTitle = '"' + t.name + '" o‘qituvchisi qaytarildi';
+      }
+    } else if (action.type === 'edit_teacher') {
+      var oldT = action.oldData;
+      if (oldT && oldT.id && Array.isArray(S.teachers)) {
+        var tIdx = S.teachers.findIndex(function(it) { return it.id === oldT.id; });
+        if (tIdx !== -1) S.teachers[tIdx] = oldT;
+        if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
+          var initIdx = window.ETHITH_INITIAL_STORE.teachers.findIndex(function(it) { return it.id === oldT.id; });
+          if (initIdx !== -1) window.ETHITH_INITIAL_STORE.teachers[initIdx] = JSON.parse(JSON.stringify(oldT));
+        }
+        restoredTitle = 'O‘qituvchi ma’lumotlari qaytarildi';
+      }
+    } else if (action.type === 'add_teacher') {
+      var removeTid = action.tid;
+      if (removeTid && Array.isArray(S.teachers)) {
+        S.teachers = S.teachers.filter(function(it) { return it.id !== removeTid; });
+        if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
+          window.ETHITH_INITIAL_STORE.teachers = window.ETHITH_INITIAL_STORE.teachers.filter(function(it) { return it.id !== removeTid; });
+        }
+        if (Array.isArray(S.accounts)) {
+          S.accounts = S.accounts.filter(function(a) { return a.id !== removeTid && a.teacherId !== removeTid; });
+        }
+        restoredTitle = 'Qo‘shilgan o‘qituvchi bekor qilindi';
+      }
+    } else if (action.type === 'delete_class') {
+      var clsObj = action.cls;
+      if (clsObj && clsObj.id && Array.isArray(S.classes)) {
+        if (!S.classes.some(function(c) { return c.id === clsObj.id; })) {
+          S.classes.push(clsObj);
+        }
+        restoredTitle = '"' + (clsObj.name || 'Guruh') + '" guruhi qaytarildi';
+      }
+    } else if (action.type === 'delete_test') {
+      var tKey = action.testKey;
+      var testData = action.testObj;
+      if (testData) {
+        if (!S.customCurriculumTests) S.customCurriculumTests = {};
+        if (tKey) S.customCurriculumTests[tKey] = testData;
+        if (!Array.isArray(S.allCurriculumTests)) S.allCurriculumTests = [];
+        if (!S.allCurriculumTests.some(function(x) { return x.id === testData.id || x.testKey === tKey; })) {
+          S.allCurriculumTests.push(testData);
+        }
+        try {
+          localStorage.setItem('ethith_all_curriculum_tests', JSON.stringify(S.allCurriculumTests));
+          localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(S.customCurriculumTests));
+        } catch(e) {}
+        restoredTitle = 'Test muvaffaqiyatli qaytarildi';
+      }
+    } else if (action.type === 'delete_student') {
+      var stData = action.student;
+      var classId = action.cid;
+      if (stData && classId && Array.isArray(S.classes)) {
+        var clsMatch = S.classes.find(function(c) { return c.id === classId; });
+        if (clsMatch) {
+          if (!Array.isArray(clsMatch.students)) clsMatch.students = [];
+          if (!clsMatch.students.some(function(s) { return s.id === stData.id; })) {
+            clsMatch.students.push(stData);
+          }
+        }
+        restoredTitle = '"' + (stData.name || 'O‘quvchi') + '" qaytarildi';
+      }
+    }
+
+    // Persist immediately everywhere
+    if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
+      window.EthithEnterprise.saveStore();
+    } else if (window.EthithApp && window.EthithApp.saveState) {
+      window.EthithApp.saveState();
+    }
+
+    // Real-time broadcast so every connected client reflects immediately
+    if (window.EthithSync && typeof window.EthithSync.broadcastState === 'function') {
+      window.EthithSync.broadcastState('undo_action', { actionType: action.type, desc: restoredTitle });
+    }
+
+    // Toast notification
+    var toastText = "↩️ Oxirgi amal bekor qilindi (Ctrl+Z): " + (restoredTitle || "Tiklandi");
+    if (window.EthithApp && window.EthithApp.toast) {
+      window.EthithApp.toast(toastText);
+    } else if (typeof window.showToast === 'function') {
+      window.showToast(toastText, 'info');
+    }
+
+    // Re-render UI with scroll preservation
+    var prevY = window.scrollY || window.pageYOffset || 0;
+    var apView = document.getElementById('apView');
+    if (apView && window.EA && typeof window.EA.render === 'function') {
+      window.EA.render(apView);
+    }
+    if (window._ethithRefreshCurrentView) {
+      try { window._ethithRefreshCurrentView(); } catch(e) {}
+    }
+    window.scrollTo(0, prevY);
+  }
+
+  // Global Keydown listener for Ctrl+Z (or Cmd+Z)
+  window.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'z' || e.key === 'Z') && !e.shiftKey) {
+      var activeEl = document.activeElement;
+      if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable)) {
+        return; // Allow native text undo inside inputs
+      }
+      e.preventDefault();
+      executeUndo();
+    }
+  });
+
+  window.EthithUndo = {
+    record: recordUndoAction,
+    undo: executeUndo,
+    getStack: function() { return undoStack; }
+  };
+
   var PURGED_EMAILS = [
     'muhammedjoraboyev1@gmail.com', 'strikeruzb52@gmail.com', 'alisher@gmail.com',
     'nasibaorazaliyev@gmail.com', 'joraboymuhammad@gmail.com', 'aleksandermike37@gmail.com',

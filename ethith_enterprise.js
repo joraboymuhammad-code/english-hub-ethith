@@ -4676,29 +4676,54 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     if (!tid) return;
     var tObj = (S.teachers || []).find(function(x) { return x.id === tid; });
     var nameToDisplay = tName || (tObj ? tObj.name : 'O‘qituvchi');
-    if (!confirm("Haqiqatan ham \"" + nameToDisplay + "\" o‘qituvchisini tizimdan butunlay o‘chirmoqchimisiz?\n\n• O‘qituvchi va uning tizim profili o‘chiriladi\n• Guruhlar saqlanadi va o‘qituvchisiz (bo‘sh) holatga o‘tkaziladi")) {
+    if (!confirm("Haqiqatan ham \"" + nameToDisplay + "\" o‘qituvchisini tizimdan butunlay o‘chirmoqchimisiz?\n\n• O‘qituvchi va uning tizim profili o‘chiriladi\n• Guruhlar saqlanadi va o‘qituvchisiz (bo‘sh) holatga o‘tkaziladi\n• Adashib o‘chirilsa Ctrl+Z orqali darhol qaytarish mumkin")) {
       return;
+    }
+
+    // Record snapshot to Ctrl+Z Undo
+    if (window.EthithUndo && typeof window.EthithUndo.record === 'function') {
+      var teacherBackup = tObj ? JSON.parse(JSON.stringify(tObj)) : { id: tid, name: nameToDisplay };
+      var affectedClasses = [];
+      if (Array.isArray(S.classes)) {
+        S.classes.forEach(function(cls) {
+          if (cls.teacherId === tid) {
+            affectedClasses.push({ id: cls.id, name: cls.name });
+          }
+        });
+      }
+      var affectedAccounts = [];
+      if (Array.isArray(S.accounts)) {
+        S.accounts.forEach(function(acc) {
+          if (acc.id === tid || acc.teacherId === tid) {
+            affectedAccounts.push(JSON.parse(JSON.stringify(acc)));
+          }
+        });
+      }
+      window.EthithUndo.record({
+        type: 'delete_teacher',
+        teacher: teacherBackup,
+        classes: affectedClasses,
+        accounts: affectedAccounts
+      });
     }
 
     if (!Array.isArray(S.deletedTeacherIds)) S.deletedTeacherIds = [];
     if (S.deletedTeacherIds.indexOf(tid) === -1) S.deletedTeacherIds.push(tid);
 
-    // 1. Remove from teachers
+    // 1. Remove from teachers strictly by ID
     S.teachers = (S.teachers || []).filter(function(x) { return x.id !== tid; });
 
-    // 2. Remove teacher login from accounts
+    // 2. Remove teacher login from accounts strictly by teacher ID
     if (Array.isArray(S.accounts)) {
       S.accounts = S.accounts.filter(function(a) {
-        if (a.id === tid) return false;
-        if (tObj && tObj.login && a.login && a.login.toLowerCase() === tObj.login.toLowerCase()) return false;
-        return true;
+        return a.id !== tid && a.teacherId !== tid;
       });
     }
 
-    // 3. Unbind classes
+    // 3. Unbind classes strictly by ID (never loose name matching!)
     if (Array.isArray(S.classes)) {
       S.classes.forEach(function(cls) {
-        if (cls.teacherId === tid || (tObj && cls.teacherName === tObj.name)) {
+        if (cls.teacherId === tid) {
           cls.teacherId = '';
           cls.teacherName = 'Biriktirilmagan';
         }
@@ -4708,10 +4733,10 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     // 4. Save and broadcast
     saveStore();
     if (window.EthithSync && window.EthithSync.broadcastState) {
-      window.EthithSync.broadcastState('teacher_deleted');
+      window.EthithSync.broadcastState('teacher_deleted', { tid: tid });
     }
 
-    showToast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi!");
+    showToast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi! (Bekor qilish: Ctrl+Z)");
     EE.renderFinanceUnifiedView(container, 'teachers');
   };
 

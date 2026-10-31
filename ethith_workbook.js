@@ -163810,6 +163810,33 @@
 
   WB.deleteCurriculumTest = function(tid) {
     var S = (window.EthithApp && window.EthithApp.state) || {};
+
+    // 0. Record snapshot to Ctrl+Z Undo
+    if (window.EthithUndo && typeof window.EthithUndo.record === 'function') {
+      var existingObj = null;
+      var existingKey = tid;
+      if (S.customCurriculumTests) {
+        Object.keys(S.customCurriculumTests).forEach(function(k) {
+          var item = S.customCurriculumTests[k];
+          if (k === tid || (item && (item.id === tid || item.testKey === tid))) {
+            existingObj = JSON.parse(JSON.stringify(item));
+            existingKey = k;
+          }
+        });
+      }
+      if (!existingObj && Array.isArray(S.allCurriculumTests)) {
+        var found = S.allCurriculumTests.find(function(t) { return t && (t.id === tid || t.testKey === tid); });
+        if (found) existingObj = JSON.parse(JSON.stringify(found));
+      }
+      if (existingObj) {
+        window.EthithUndo.record({
+          type: 'delete_test',
+          testKey: existingKey,
+          testObj: existingObj
+        });
+      }
+    }
+
     // 1. Remove from allCurriculumTests
     if (Array.isArray(S.allCurriculumTests)) {
       S.allCurriculumTests = S.allCurriculumTests.filter(function(t) {
@@ -163838,6 +163865,11 @@
       localStorage.setItem('ethith_enterprise_state', JSON.stringify(S));
     } catch(e) {}
     if (window.EthithApp && window.EthithApp.saveState) window.EthithApp.saveState();
+
+    // 5. Broadcast to all connected clients in real-time
+    if (window.EthithSync && typeof window.EthithSync.broadcastState === 'function') {
+      window.EthithSync.broadcastState('test_deleted', { tid: tid });
+    }
   };
 
   // 1. MAIN CATALOG VIEW (Clean Cards Portal)
