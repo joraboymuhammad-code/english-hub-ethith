@@ -22848,8 +22848,8 @@
       "levelTestResults": {
         "cls_urolov_azizbek_upper_std_1": {
           "score": null,
-          "passed": true,
-          "updatedAt": 1793458070776
+          "passed": false,
+          "updatedAt": 1793458083860
         },
         "cls_urolov_azizbek_upper_std_2": {
           "score": null,
@@ -124346,5 +124346,5 @@
       }
     }
   },
-  "updatedAt": 1793458071329
+  "updatedAt": 1793458084710
 }
