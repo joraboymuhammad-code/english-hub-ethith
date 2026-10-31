@@ -104579,7 +104579,7 @@
         "exercise": "1",
         "label": "3",
         "top": 61.6,
-        "left": 13,
+        "left": 12.2,
         "width": 36.5,
         "height": 1.9,
         "correct": "Peter and Jan work hard every day."
@@ -104590,8 +104590,8 @@
         "page": 3036,
         "exercise": "1",
         "label": "4",
-        "top": 66.8,
-        "left": 11,
+        "top": 65.1,
+        "left": 12.6,
         "width": 36.5,
         "height": 1.9,
         "correct": "I always drive carefully."
@@ -104602,8 +104602,8 @@
         "page": 3036,
         "exercise": "1",
         "label": "5",
-        "top": 70.3,
-        "left": 11,
+        "top": 68.1,
+        "left": 12.6,
         "width": 36.5,
         "height": 1.9,
         "correct": "Why do the trains always arrive late?"
@@ -104614,8 +104614,8 @@
         "page": 3036,
         "exercise": "1",
         "label": "6",
-        "top": 73.8,
-        "left": 11,
+        "top": 71.8,
+        "left": 13,
         "width": 36.5,
         "height": 1.9,
         "correct": "Please play quietly."
@@ -104626,8 +104626,8 @@
         "page": 3036,
         "exercise": "1",
         "label": "7",
-        "top": 77.3,
-        "left": 11,
+        "top": 75.5,
+        "left": 13,
         "width": 36.5,
         "height": 1.9,
         "correct": "My sister cooks well."
@@ -104854,8 +104854,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "dress",
-        "top": 65,
-        "left": 55,
+        "top": 62.5,
+        "left": 59.7,
         "width": 14,
         "height": 1.8,
         "correct": "dress"
@@ -104866,8 +104866,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "hoodie",
-        "top": 67,
-        "left": 55,
+        "top": 66.3,
+        "left": 54.9,
         "width": 14,
         "height": 1.8,
         "correct": "hoodie"
@@ -107363,7 +107363,7 @@
     "3033": 1793432813635,
     "3034": 1793432999510,
     "3035": 1793432999512,
-    "3036": 1793433040742,
+    "3036": 1793433057167,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -108127,5 +108127,5 @@
       }
     }
   },
-  "updatedAt": 1793433042923
+  "updatedAt": 1793433058030
 }
