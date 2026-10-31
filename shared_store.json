@@ -108816,6 +108816,660 @@
         "top": 4.3
       }
     ],
+    "3047": [
+      {
+        "id": "p3047_ex4a_2",
+        "type": "fill",
+        "x": 13.5,
+        "y": 21,
+        "w": 9,
+        "h": 2.2,
+        "correct": [
+          "borrowed"
+        ],
+        "top": 19.5,
+        "left": 13.2,
+        "width": 9,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4a_3",
+        "type": "fill",
+        "x": 33,
+        "y": 24.2,
+        "w": 9,
+        "h": 2.2,
+        "correct": [
+          "lived"
+        ],
+        "top": 22.6,
+        "left": 34.1,
+        "width": 9,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4a_4",
+        "type": "fill",
+        "x": 14.5,
+        "y": 27.2,
+        "w": 9,
+        "h": 2.2,
+        "correct": [
+          "played"
+        ],
+        "top": 26,
+        "left": 14.1,
+        "width": 9,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4a_5",
+        "type": "fill",
+        "x": 14.5,
+        "y": 29.2,
+        "w": 9,
+        "h": 2.2,
+        "correct": [
+          "paid"
+        ],
+        "top": 27.8,
+        "left": 14.5,
+        "width": 9,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4a_6",
+        "type": "fill",
+        "x": 14.5,
+        "y": 31,
+        "w": 9,
+        "h": 2.2,
+        "correct": [
+          "stopped"
+        ],
+        "top": 29.5,
+        "left": 14.1,
+        "width": 9,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4a_7",
+        "type": "fill",
+        "x": 34,
+        "y": 32.8,
+        "w": 9,
+        "h": 2.2,
+        "correct": [
+          "slept"
+        ],
+        "top": 31.1,
+        "left": 33.9,
+        "width": 9,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4a_8",
+        "type": "fill",
+        "x": 28,
+        "y": 36.2,
+        "w": 9,
+        "h": 2.2,
+        "correct": [
+          "spent"
+        ],
+        "top": 34.3,
+        "left": 28.7,
+        "width": 9,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4b_2",
+        "type": "select",
+        "x": 13,
+        "y": 44,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "regular",
+          "irregular"
+        ],
+        "correct": "regular",
+        "top": 42.3,
+        "left": 10.9,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4b_3",
+        "type": "select",
+        "x": 13,
+        "y": 45.8,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "regular",
+          "irregular"
+        ],
+        "correct": "regular",
+        "top": 45.8,
+        "left": 13,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4b_4",
+        "type": "select",
+        "x": 13,
+        "y": 47.6,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "regular",
+          "irregular"
+        ],
+        "correct": "regular",
+        "top": 47.6,
+        "left": 13,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4b_5",
+        "type": "select",
+        "x": 33,
+        "y": 42.2,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "regular",
+          "irregular"
+        ],
+        "correct": "irregular",
+        "top": 42.2,
+        "left": 33,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4b_6",
+        "type": "select",
+        "x": 33,
+        "y": 44,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "regular",
+          "irregular"
+        ],
+        "correct": "regular",
+        "top": 44,
+        "left": 33,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4b_7",
+        "type": "select",
+        "x": 33,
+        "y": 45.8,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "regular",
+          "irregular"
+        ],
+        "correct": "irregular",
+        "top": 45.8,
+        "left": 33,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex4b_8",
+        "type": "select",
+        "x": 33,
+        "y": 47.6,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "regular",
+          "irregular"
+        ],
+        "correct": "irregular",
+        "top": 47.6,
+        "left": 33,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex5_reg1",
+        "type": "fill",
+        "x": 10,
+        "y": 64,
+        "w": 18,
+        "h": 2,
+        "correct": [
+          "believed",
+          "believe - believed"
+        ],
+        "top": 64,
+        "left": 10,
+        "width": 18,
+        "height": 2
+      },
+      {
+        "id": "p3047_ex5_reg2",
+        "type": "fill",
+        "x": 10,
+        "y": 66,
+        "w": 18,
+        "h": 2,
+        "correct": [
+          "changed",
+          "change - changed"
+        ],
+        "top": 66,
+        "left": 10,
+        "width": 18,
+        "height": 2
+      },
+      {
+        "id": "p3047_ex5_reg3",
+        "type": "fill",
+        "x": 10,
+        "y": 68,
+        "w": 18,
+        "h": 2,
+        "correct": [
+          "copied",
+          "copy - copied"
+        ],
+        "top": 68,
+        "left": 10,
+        "width": 18,
+        "height": 2
+      },
+      {
+        "id": "p3047_ex5_reg4",
+        "type": "fill",
+        "x": 10,
+        "y": 70,
+        "w": 18,
+        "h": 2,
+        "correct": [
+          "liked",
+          "like - liked"
+        ],
+        "top": 70,
+        "left": 10,
+        "width": 18,
+        "height": 2
+      },
+      {
+        "id": "p3047_ex5_irreg1",
+        "type": "fill",
+        "x": 29,
+        "y": 64,
+        "w": 18,
+        "h": 2,
+        "correct": [
+          "bought",
+          "buy - bought"
+        ],
+        "top": 64,
+        "left": 29,
+        "width": 18,
+        "height": 2
+      },
+      {
+        "id": "p3047_ex5_irreg2",
+        "type": "fill",
+        "x": 29,
+        "y": 66,
+        "w": 18,
+        "h": 2,
+        "correct": [
+          "caught",
+          "catch - caught"
+        ],
+        "top": 66,
+        "left": 29,
+        "width": 18,
+        "height": 2
+      },
+      {
+        "id": "p3047_ex5_irreg3",
+        "type": "fill",
+        "x": 29,
+        "y": 68,
+        "w": 18,
+        "h": 2,
+        "correct": [
+          "came",
+          "come - came"
+        ],
+        "top": 68,
+        "left": 29,
+        "width": 18,
+        "height": 2
+      },
+      {
+        "id": "p3047_ex5_irreg4",
+        "type": "fill",
+        "x": 29,
+        "y": 70,
+        "w": 18,
+        "h": 2,
+        "correct": [
+          "drank",
+          "drink - drank"
+        ],
+        "top": 70,
+        "left": 29,
+        "width": 18,
+        "height": 2
+      },
+      {
+        "id": "p3047_ex6a_2",
+        "type": "select",
+        "x": 11,
+        "y": 78.2,
+        "w": 16,
+        "h": 2.2,
+        "options": [
+          "chose",
+          "put",
+          "wrote"
+        ],
+        "correct": "put",
+        "top": 78.2,
+        "left": 11,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex6a_3",
+        "type": "select",
+        "x": 11,
+        "y": 80,
+        "w": 16,
+        "h": 2.2,
+        "options": [
+          "said",
+          "felt",
+          "heard"
+        ],
+        "correct": "heard",
+        "top": 80,
+        "left": 11,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex6a_4",
+        "type": "select",
+        "x": 32,
+        "y": 76.5,
+        "w": 16,
+        "h": 2.2,
+        "options": [
+          "came",
+          "drank",
+          "sang"
+        ],
+        "correct": "came",
+        "top": 76.5,
+        "left": 32,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex6a_5",
+        "type": "select",
+        "x": 32,
+        "y": 78.2,
+        "w": 16,
+        "h": 2.2,
+        "options": [
+          "took",
+          "flew",
+          "put"
+        ],
+        "correct": "flew",
+        "top": 78.2,
+        "left": 32,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex6a_6",
+        "type": "select",
+        "x": 32,
+        "y": 80,
+        "w": 16,
+        "h": 2.2,
+        "options": [
+          "made",
+          "ate",
+          "caught"
+        ],
+        "correct": "caught",
+        "top": 80,
+        "left": 32,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_2",
+        "type": "fill",
+        "x": 72,
+        "y": 52.8,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "swam"
+        ],
+        "top": 52.8,
+        "left": 72,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_3",
+        "type": "fill",
+        "x": 74,
+        "y": 54.4,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "won"
+        ],
+        "top": 54.4,
+        "left": 74,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_4",
+        "type": "fill",
+        "x": 73,
+        "y": 56,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "left"
+        ],
+        "top": 56,
+        "left": 73,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_5",
+        "type": "fill",
+        "x": 78,
+        "y": 60,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "went"
+        ],
+        "top": 60,
+        "left": 78,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_6",
+        "type": "fill",
+        "x": 54,
+        "y": 61.6,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "drove"
+        ],
+        "top": 61.6,
+        "left": 54,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_7",
+        "type": "fill",
+        "x": 78,
+        "y": 61.6,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "ate"
+        ],
+        "top": 61.6,
+        "left": 78,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_8",
+        "type": "fill",
+        "x": 69,
+        "y": 65.2,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "told"
+        ],
+        "top": 65.2,
+        "left": 69,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_9",
+        "type": "fill",
+        "x": 77,
+        "y": 66.8,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "said"
+        ],
+        "top": 66.8,
+        "left": 77,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_10",
+        "type": "fill",
+        "x": 55,
+        "y": 70,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "thought"
+        ],
+        "top": 70,
+        "left": 55,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_11",
+        "type": "fill",
+        "x": 55,
+        "y": 72.2,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "found"
+        ],
+        "top": 72.2,
+        "left": 55,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_12",
+        "type": "fill",
+        "x": 67,
+        "y": 76,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "did"
+        ],
+        "top": 76,
+        "left": 67,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_13",
+        "type": "fill",
+        "x": 71,
+        "y": 77.6,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "ran"
+        ],
+        "top": 77.6,
+        "left": 71,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_14",
+        "type": "fill",
+        "x": 79,
+        "y": 79.2,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "felt"
+        ],
+        "top": 79.2,
+        "left": 79,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3047_ex7_15",
+        "type": "fill",
+        "x": 79,
+        "y": 80.8,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "did"
+        ],
+        "top": 80.8,
+        "left": 79,
+        "width": 10,
+        "height": 2.2
+      }
+    ],
     "4004": [
       {
         "id": "p4004_ex1_2",
@@ -110797,6 +111451,7 @@
     "3044": 1793433620154,
     "3045": 1793433620155,
     "3046": 1793433670945,
+    "3047": 1793433687142,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -111559,5 +112214,5 @@
       }
     }
   },
-  "updatedAt": 1793433674769
+  "updatedAt": 1793433688547
 }
