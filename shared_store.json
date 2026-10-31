@@ -106079,8 +106079,8 @@
         "page": 3039,
         "exercise": "6",
         "label": "3",
-        "top": 58,
-        "left": 11,
+        "top": 56.9,
+        "left": 11.5,
         "width": 38.5,
         "height": 1.8,
         "correct": "There was an important football match last night."
@@ -106091,8 +106091,8 @@
         "page": 3039,
         "exercise": "6",
         "label": "4",
-        "top": 62,
-        "left": 11,
+        "top": 60.6,
+        "left": 11.5,
         "width": 38.5,
         "height": 1.8,
         "correct": "We were in Spain last year."
@@ -106103,8 +106103,8 @@
         "page": 3039,
         "exercise": "6",
         "label": "5",
-        "top": 66,
-        "left": 11,
+        "top": 64.1,
+        "left": 11.4,
         "width": 38.5,
         "height": 1.8,
         "correct": "I was very tired this morning."
@@ -106115,8 +106115,8 @@
         "page": 3039,
         "exercise": "6",
         "label": "6",
-        "top": 70,
-        "left": 11,
+        "top": 67.9,
+        "left": 10.7,
         "width": 38.5,
         "height": 1.8,
         "correct": "Albert Einstein was born in the nineteenth century."
@@ -106127,8 +106127,8 @@
         "page": 3039,
         "exercise": "6",
         "label": "7",
-        "top": 74,
-        "left": 11,
+        "top": 71.2,
+        "left": 11.1,
         "width": 38.5,
         "height": 1.8,
         "correct": "There was a staff meeting a few days ago."
@@ -106259,8 +106259,8 @@
         "page": 3039,
         "exercise": "8",
         "label": "4",
-        "top": 57.3,
-        "left": 69.5,
+        "top": 55.7,
+        "left": 70.5,
         "width": 10,
         "height": 1.8,
         "correct": "in the 19th century"
@@ -106271,8 +106271,8 @@
         "page": 3039,
         "exercise": "8",
         "label": "5",
-        "top": 61,
-        "left": 58.5,
+        "top": 59.4,
+        "left": 58.2,
         "width": 10,
         "height": 1.8,
         "correct": "a long time ago"
@@ -106283,8 +106283,8 @@
         "page": 3039,
         "exercise": "8",
         "label": "6",
-        "top": 62.8,
-        "left": 63.5,
+        "top": 60.9,
+        "left": 62.8,
         "width": 10,
         "height": 1.8,
         "correct": "Last year"
@@ -106295,8 +106295,8 @@
         "page": 3039,
         "exercise": "8",
         "label": "7",
-        "top": 64.6,
-        "left": 78.5,
+        "top": 63,
+        "left": 77.6,
         "width": 9,
         "height": 1.8,
         "correct": "in 1935"
@@ -106307,8 +106307,8 @@
         "page": 3039,
         "exercise": "8",
         "label": "8",
-        "top": 69.8,
-        "left": 58.5,
+        "top": 68,
+        "left": 58,
         "width": 10,
         "height": 1.8,
         "correct": "in the summer"
@@ -106319,8 +106319,8 @@
         "page": 3039,
         "exercise": "8",
         "label": "9",
-        "top": 71.6,
-        "left": 68.5,
+        "top": 70.1,
+        "left": 68.1,
         "width": 10,
         "height": 1.8,
         "correct": "last night"
@@ -108492,7 +108492,7 @@
     "3036": 1793433131577,
     "3037": 1793433179292,
     "3038": 1793433239289,
-    "3039": 1793433273463,
+    "3039": 1793433292032,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -109256,5 +109256,5 @@
       }
     }
   },
-  "updatedAt": 1793433274661
+  "updatedAt": 1793433293286
 }
