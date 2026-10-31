@@ -107143,8 +107143,8 @@
         "page": 3042,
         "exercise": "2",
         "label": "2",
-        "top": 57,
-        "left": 20,
+        "top": 56,
+        "left": 21.4,
         "width": 14,
         "height": 1.8,
         "options": [
@@ -107159,8 +107159,8 @@
         "page": 3042,
         "exercise": "2",
         "label": "3",
-        "top": 60.5,
-        "left": 24,
+        "top": 59.5,
+        "left": 23.9,
         "width": 14,
         "height": 1.8,
         "options": [
@@ -107175,8 +107175,8 @@
         "page": 3042,
         "exercise": "2",
         "label": "4",
-        "top": 62.3,
-        "left": 42,
+        "top": 61,
+        "left": 41.6,
         "width": 12,
         "height": 1.8,
         "options": [
@@ -107191,8 +107191,8 @@
         "page": 3042,
         "exercise": "2",
         "label": "5",
-        "top": 65.8,
-        "left": 38,
+        "top": 64.2,
+        "left": 36.7,
         "width": 12,
         "height": 1.8,
         "options": [
@@ -107207,8 +107207,8 @@
         "page": 3042,
         "exercise": "2",
         "label": "6",
-        "top": 67.6,
-        "left": 25.5,
+        "top": 66.1,
+        "left": 26.5,
         "width": 14,
         "height": 1.8,
         "options": [
@@ -107435,8 +107435,8 @@
         "page": 3042,
         "exercise": "5",
         "label": "4",
-        "top": 57.1,
-        "left": 62,
+        "top": 55.5,
+        "left": 62.8,
         "width": 14.5,
         "height": 1.8,
         "correct": "a meal"
@@ -107447,8 +107447,8 @@
         "page": 3042,
         "exercise": "5",
         "label": "5",
-        "top": 58.9,
-        "left": 62,
+        "top": 57.4,
+        "left": 62.7,
         "width": 14.5,
         "height": 1.8,
         "correct": "an email"
@@ -107459,8 +107459,8 @@
         "page": 3042,
         "exercise": "5",
         "label": "6",
-        "top": 60.7,
-        "left": 63.5,
+        "top": 59.2,
+        "left": 63,
         "width": 14.5,
         "height": 1.8,
         "correct": "someone"
@@ -107471,8 +107471,8 @@
         "page": 3042,
         "exercise": "5",
         "label": "7",
-        "top": 62.5,
-        "left": 60.5,
+        "top": 61.1,
+        "left": 60.4,
         "width": 14.5,
         "height": 1.8,
         "correct": "a relative"
@@ -107483,8 +107483,8 @@
         "page": 3042,
         "exercise": "5",
         "label": "8",
-        "top": 64.3,
-        "left": 60.5,
+        "top": 62.7,
+        "left": 60.1,
         "width": 14.5,
         "height": 1.8,
         "correct": "a long time"
@@ -109698,7 +109698,7 @@
     "3039": 1793433305362,
     "3040": 1793433405405,
     "3041": 1793433405405,
-    "3042": 1793433446144,
+    "3042": 1793433459284,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -110462,5 +110462,5 @@
       }
     }
   },
-  "updatedAt": 1793433446700
+  "updatedAt": 1793433459501
 }
