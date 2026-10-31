@@ -1560,7 +1560,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     var teachers = getStoreTeachers();
     var t = teachers.find(function(item) { return item.id === teacherId; }) || teachers[0];
     var tClasses = getClassesForTeacher(t.id);
-    var isAdmin = isAdminRole();
+    var isAdmin = isAdminRole() && !isStudent;
+    var isTeacher = isTeacherRole() && !isStudent;
 
     var h = '<div class="ea-teacher-groups-wrap" style="max-width:1240px;margin:0 auto;padding:16px 20px 80px;">' +
       // BREADCRUMB & HEADER
@@ -2786,19 +2787,21 @@ EA.render = function(container, preserveScrollLeft) {
     ensureStylesInjected();
     window._ethithCurrentView = 'attendance';
 
-    var isAdmin = isAdminRole();
-    var isTeacher = isTeacherRole();
+    var curUser = getActiveUser();
+    var isStudent = curUser && curUser.role === 'student';
+    var isAdmin = isAdminRole() && !isStudent;
+    var isTeacher = isTeacherRole() && !isStudent;
 
     // Teacher Isolation ("alohida alohida uy kabi boshqa boshqa bo'lsin"):
     // Non-admin teachers are strictly locked to their own teacherId and their own groups
     if (isTeacher && !isAdmin) {
-      var curUser = getActiveUser();
       var teachers = getStoreTeachers();
       var matchT = teachers.find(function(t) { 
-        return t.id === curUser.id || 
+        return (t.id && curUser.id && t.id === curUser.id) || 
                (curUser.email && t.email && t.email.toLowerCase() === curUser.email.toLowerCase()) ||
-               (curUser.login && t.login && t.login.toLowerCase() === curUser.login.toLowerCase()); 
-      });
+               (curUser.login && t.login && t.login.toLowerCase() === curUser.login.toLowerCase()) ||
+               (curUser.name && t.name && t.name.toLowerCase() === curUser.name.toLowerCase()); 
+      }) || teachers[0];
       if (matchT) {
         EA.activeTeacherId = matchT.id;
       }
@@ -2824,8 +2827,6 @@ EA.render = function(container, preserveScrollLeft) {
     }
 
     // 3. For Students: STRICT PRIVACY & PERSONAL JOURNAL ONLY (Faqat o'zining guruhi va davomati!)
-    var curUser = getActiveUser();
-    var isStudent = curUser && curUser.role === 'student';
     var enrolledClasses = [];
     if (isStudent) {
       var allCls = getAvailableClasses();
@@ -2833,7 +2834,7 @@ EA.render = function(container, preserveScrollLeft) {
         if (!c) return false;
         if (curUser.classId && c.id === curUser.classId) return true;
         return Array.isArray(c.students) && c.students.some(function(st) {
-          if (!st || st.isTester) return false;
+          if (!st) return false;
           return (st.id && curUser.id && st.id === curUser.id) ||
                  (st.login && curUser.login && st.login.toLowerCase() === curUser.login.toLowerCase()) ||
                  (st.email && curUser.email && st.email.toLowerCase() === curUser.email.toLowerCase()) ||
@@ -2848,7 +2849,34 @@ EA.render = function(container, preserveScrollLeft) {
 
     var allClasses = getAvailableClasses();
     var cls = isStudent ? (enrolledClasses.find(function(c) { return c.id === EA.activeClassId; }) || enrolledClasses[0]) : getActiveOrFirstClass();
+    if (!cls || !cls.id) {
+      cls = (allClasses && allClasses[0]) || {
+        id: 'cls_default_student',
+        name: 'Ingliz tili guruhi',
+        teacherName: 'Ustoz',
+        students: []
+      };
+    }
     ensureClassAttendance(cls);
+
+    // Make sure student user is present in cls.students
+    if (isStudent && curUser) {
+      if (!Array.isArray(cls.students)) cls.students = [];
+      var alreadyIn = cls.students.some(function(s) {
+        return (curUser.id && s.id === curUser.id) || (curUser.login && s.login && s.login.toLowerCase() === curUser.login.toLowerCase());
+      });
+      if (!alreadyIn) {
+        cls.students.unshift({
+          id: curUser.id || ('std_' + (curUser.login || 'me')),
+          name: curUser.name || 'O‘quvchi',
+          login: curUser.login || '',
+          email: curUser.email || '',
+          role: 'student',
+          manuallyEnrolled: true,
+          coins: curUser.coins || 150
+        });
+      }
+    }
 
     if (window.EthithSync && typeof window.EthithSync.subscribeClass === 'function') {
       window.EthithSync.subscribeClass(cls.code || cls.id);
@@ -2928,6 +2956,7 @@ EA.render = function(container, preserveScrollLeft) {
       '</div>' +
       '<span style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:12px;padding:5px 12px;font-size:12px;font-weight:900;">' + students.length + ' / ' + (cls.maxCapacity || 18) + ' o‘quvchi</span>' +
       (function() {
+        if (isStudent) return '';
         var tId = cls.teacherId || EA.activeTeacherId;
         var S_cur = (window.EthithEnterprise && window.EthithEnterprise.getStore ? window.EthithEnterprise.getStore() : null) || window.S || {};
         var tObj = (S_cur.teachers || []).find(function(t) { return t.id === tId || (t.name && cls.teacherName && t.name.toLowerCase() === cls.teacherName.toLowerCase()); });
