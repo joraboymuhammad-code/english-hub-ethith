@@ -18512,10 +18512,10 @@
       "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
-      "coins": 5000,
-      "level": "C2",
+      "coins": 100000,
+      "level": "B1+",
       "dailyMinutes": 0,
-      "updatedAt": 1792612388994,
+      "updatedAt": 1793465483616,
       "avatar": null,
       "nameStyle": null,
       "title": null,
@@ -116724,6 +116724,13 @@
         "name": "IELTS Mock Tests",
         "parentId": "f_root",
         "createdAt": 1793103482475
+      },
+      {
+        "id": "f_root_t_urolov_azizbek",
+        "name": "Azizbek Urolov (Shaxsiy Papka)",
+        "ownerId": "t_urolov_azizbek",
+        "parentId": null,
+        "createdAt": 1793465627342
       }
     ],
     "tests": [
@@ -116924,5 +116931,5 @@
       }
     }
   },
-  "updatedAt": 1793465480153
+  "updatedAt": 1793465628029
 }
