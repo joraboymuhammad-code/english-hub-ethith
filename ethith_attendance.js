@@ -6570,7 +6570,7 @@ EA.render = function(container, preserveScrollLeft) {
 
     // Templates click
     var templates = {
-      absent: "Hurmatli ota-ona! Farzandingiz " + stNameForTemplate + " bugun ingliz tili darsida qatnashmadi. Qo‘shimcha ma’lumot uchun ustoz bilan bog‘laning. English House.",
+      absent: "Hurmatli ota-ona! Farzandingiz bugun darsga qatnashmadi. Sababini bilish uchun ustoz bilan bog'laning. English House o'quv markazi.",
       payment: "Hurmatli ota-ona! Farzandingiz " + stNameForTemplate + "ning joriy oy uchun ingliz tili kursi to‘lovini amalga oshirishingizni so‘raymiz. English House.",
       level_test: "Hurmatli ota-ona! Farzandingiz " + stNameForTemplate + " guruhida yaqin kunlarda muhim Level Test imtihoni o‘tkaziladi. Farzandingiz darslarga qatnashishini nazorat qilishingizni so‘raymiz. English House.",
       praise: "Hurmatli ota-ona! Farzandingiz " + stNameForTemplate + " bugungi darsda juda faol qatnashdi va a’lo natija ko‘rsatdi. Farzandingiz muvaffaqiyati bilan tabriklaymiz! English House."
@@ -6691,12 +6691,14 @@ EA.render = function(container, preserveScrollLeft) {
     }
 
     // Permanent text persistence from localStorage (strictly <= 160 chars)
+    var EXACT_SMSAPI_TEMPLATE = "Hurmatli ota-ona! Farzandingiz bugun darsga qatnashmadi. Sababini bilish uchun ustoz bilan bog'laning. English House o'quv markazi.";
     var savedText = '';
     try {
       savedText = localStorage.getItem('ethith_saved_absent_sms_template');
     } catch(e) {}
-    if (!savedText || savedText.length > 160) {
-      savedText = "Hurmatli ota-ona! Farzandingiz bugun darsga qatnashmadi. Sababini bilish uchun ustoz bilan bog'laning. English House.";
+    if (!savedText || savedText.length > 160 || savedText !== EXACT_SMSAPI_TEMPLATE) {
+      savedText = EXACT_SMSAPI_TEMPLATE;
+      try { localStorage.setItem('ethith_saved_absent_sms_template', EXACT_SMSAPI_TEMPLATE); } catch(e) {}
     }
 
     var html = '<div class="eth-modal" style="max-width:640px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(245,158,11,0.5);box-shadow:0 24px 60px rgba(0,0,0,0.85),0 0 35px rgba(245,158,11,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
