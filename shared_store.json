@@ -22253,7 +22253,7 @@
       "name": "Upper",
       "code": "ETH-AZUP01",
       "level": "Upper-Intermediate",
-      "teacherId": "t_urolov_azizbek",
+      "teacherId": "",
       "teacher": "Azizbek Urolov",
       "teacherName": "Azizbek Urolov",
       "teacherEmail": "azizbek.urolov@ethith.uz",
@@ -22725,7 +22725,7 @@
       "name": "Standard",
       "code": "ETH-AZST02",
       "level": "Standard",
-      "teacherId": "t_urolov_azizbek",
+      "teacherId": "",
       "teacher": "Azizbek Urolov",
       "teacherName": "Azizbek Urolov",
       "teacherEmail": "azizbek.urolov@ethith.uz",
@@ -23168,7 +23168,7 @@
       "name": "Inter",
       "code": "ETH-AZIN03",
       "level": "Intermediate",
-      "teacherId": "t_urolov_azizbek",
+      "teacherId": "",
       "teacher": "Azizbek Urolov",
       "teacherName": "Azizbek Urolov",
       "teacherEmail": "azizbek.urolov@ethith.uz",
@@ -23766,7 +23766,7 @@
       "name": "Practice",
       "code": "ETH-AZPR04",
       "level": "Practice",
-      "teacherId": "t_urolov_azizbek",
+      "teacherId": "",
       "teacher": "Azizbek Urolov",
       "teacherName": "Azizbek Urolov",
       "teacherEmail": "azizbek.urolov@ethith.uz",
@@ -25324,7 +25324,8 @@
     "quiz_main_blitz"
   ],
   "deletedTeacherIds": [
-    "teacher_1793380078590"
+    "teacher_1793380078590",
+    "t_urolov_azizbek"
   ],
   "deletedListingIds": [
     "p2p_1792322748592_nls2",
@@ -25683,17 +25684,6 @@
     {
       "id": "admin_official_teacher",
       "name": "Ustoz",
-      "email": "azizbek.urolov@ethith.uz",
-      "login": "azizbek77",
-      "role": "teacher",
-      "coins": 1000,
-      "level": "C2",
-      "updatedAt": 1793392014532,
-      "password": "azizbek2026"
-    },
-    {
-      "id": "admin_official_teacher",
-      "name": "Ustoz",
       "email": "elyor.aborbekov@ethith.uz",
       "login": "elyor70",
       "role": "teacher",
@@ -26034,6 +26024,36 @@
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
       "updatedAt": 1793431308524
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793472951140
+    },
+    {
+      "id": "t_urolov_azizbek",
+      "name": "Azizbek Urolov",
+      "email": "azizbek.urolov@ethith.uz",
+      "login": "azizbek77",
+      "password": "azizbek2026",
+      "role": "teacher",
+      "coins": 1000,
+      "hourlyRate": 120000,
+      "subject": "Ingliz tili (Upper / Inter)",
+      "teachingHours": 72,
+      "assignedClasses": [
+        "cls_urolov_azizbek_intermediate_practice",
+        "cls_urolov_azizbek_upper_intermediate_standard"
+      ],
+      "createdAt": 1793202631415
     }
   ],
   "p2pListings": [],
@@ -123366,38 +123386,6 @@
   },
   "teachers": [
     {
-      "id": "t_urolov_azizbek",
-      "name": "Azizbek Urolov",
-      "email": "azizbek.urolov@ethith.uz",
-      "subject": "Ingliz tili (Upper / Inter)",
-      "hourlyRate": 120000,
-      "teachingHours": 0,
-      "card": "8600 9184 5348 5520",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_urolov_azizbek_upper",
-        "cls_urolov_azizbek_standard",
-        "cls_urolov_azizbek_intermediate",
-        "cls_urolov_azizbek_practice"
-      ],
-      "classOrder": [
-        "cls_urolov_azizbek_upper",
-        "cls_urolov_azizbek_standard",
-        "cls_urolov_azizbek_intermediate",
-        "cls_urolov_azizbek_practice"
-      ],
-      "inviteCode": "AZIZBEK77",
-      "login": "azizbek77",
-      "password": "azizbek2026",
-      "salarySharePercent": 55,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "studentMonthlyFee": 300000,
-      "phone": "+998 90 ..."
-    },
-    {
       "id": "t_ravshanov_doniyor",
       "name": "Ravshanov Doniyor",
       "email": "doniyor.ravshanov@ethith.uz",
@@ -124093,5 +124081,5 @@
       }
     }
   },
-  "updatedAt": 1793472933361
+  "updatedAt": 1793473049911
 }
