@@ -68,12 +68,21 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     if (!confirm(confirmMsg)) return;
 
     var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
-    var allClasses = getAvailableClasses();
-    var cls = allClasses.find(function(c) { return c.id === classId; });
+    var allClasses = (typeof getAvailableClasses === 'function') ? getAvailableClasses() : (S_app.classes || []);
+    var cls = allClasses.find(function(c) { return c && c.id === classId; });
+
+    // Fallback: search all classes if cls was not found by classId
+    if (!cls && studentId) {
+      cls = allClasses.find(function(c) {
+        return c && Array.isArray(c.students) && c.students.some(function(s) {
+          return (s.id && s.id === studentId) || (s.email && s.email === studentId) || (s.login && s.login === studentId) || (s.name && s.name === stName);
+        });
+      });
+    }
 
     if (cls && Array.isArray(cls.students)) {
       var sIdx = cls.students.findIndex(function(s) {
-        return (s.id && s.id === studentId) || (s.email && s.email === studentId) || (s.login && s.login === studentId);
+        return (s.id && s.id === studentId) || (s.email && s.email === studentId) || (s.login && s.login === studentId) || (s.name && s.name === stName);
       });
 
       if (sIdx !== -1) {
@@ -99,18 +108,52 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
       if (cls.customStudentNames) {
         delete cls.customStudentNames[studentId];
+        if (sIdx !== -1 && cls.students[sIdx]) delete cls.customStudentNames[cls.students[sIdx].id];
+      }
+      if (cls.customStudentPhones) {
+        delete cls.customStudentPhones[studentId];
+        if (sIdx !== -1 && cls.students[sIdx]) delete cls.customStudentPhones[cls.students[sIdx].id];
       }
       if (cls.studentPayments) {
         delete cls.studentPayments[studentId];
       }
 
-      persistAttendance(cls);
+      if (typeof persistAttendance === 'function') persistAttendance(cls);
     }
+
+    // Purge from all other classes students array just in case
+    allClasses.forEach(function(c) {
+      if (c && Array.isArray(c.students)) {
+        c.students.forEach(function(s, idx) {
+          if (s && ((s.id && s.id === studentId) || (s.login && s.login === studentId) || (s.name && s.name === stName))) {
+            var sNum = idx + 1;
+            c.students[idx] = {
+              id: 'cls_' + c.id + '_std_' + sNum + '_' + Date.now().toString(36).substr(-4),
+              name: 'tester_' + sNum,
+              email: 'tester_' + sNum + '@ethith.uz',
+              role: 'student',
+              phone: '',
+              parentPhone: '',
+              login: '',
+              password: '',
+              joinedAt: new Date().toISOString().split('T')[0],
+              dailyMinutes: 0,
+              coins: 0,
+              isTester: true,
+              isOnline: false,
+              lastLogin: null
+            };
+          }
+        });
+      }
+    });
 
     // Purge from accounts list
     if (Array.isArray(S_app.accounts)) {
       S_app.accounts = S_app.accounts.filter(function(a) {
-        return (a.id !== studentId) && (a.login !== studentId) && (a.email !== studentId);
+        if (!a) return false;
+        var match = (a.id === studentId) || (a.login === studentId) || (a.email === studentId) || (stName && a.name === stName);
+        return !match;
       });
     }
 
@@ -131,7 +174,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       window.EthithSync.broadcastState('student_deleted');
     }
 
-    var toastMsg = stName + " tizimdan muvaffaqiyatli o‘chirildi! 🗑️";
+    var toastMsg = stName + " tizimdan muvaffaqiyatli o‘chirildi!";
     if (window.EthithApp && window.EthithApp.toast) {
       window.EthithApp.toast(toastMsg);
     } else {
@@ -141,8 +184,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     if (typeof onDone === 'function') {
       onDone();
     } else {
-      var apView = document.getElementById('apView');
-      if (apView) EA.render(apView);
+      var apView = document.getElementById('apView') || document.getElementById('viewContainer');
+      if (apView && EA.render) EA.render(apView);
     }
   };
 
@@ -2640,20 +2683,26 @@ EA.render = function(container, preserveScrollLeft) {
       return;
     }
 
-    // 3. For Students: If not enrolled in any class, show squeaky clean join screen!
+    // 3. For Students: STRICT PRIVACY & PERSONAL JOURNAL ONLY (Faqat o'zining guruhi va davomati!)
     var curUser = getActiveUser();
-    var isStudent = curUser && curUser.role === 'student';
+    var isStudent = curUser && (curUser.role === 'student' || (!isAdmin && !isTeacher));
+    var enrolledClasses = [];
     if (isStudent) {
-      var enrolledClasses = (window.S && window.S.classes || []).filter(function(c) {
-        return c.students && c.students.some(function(st) {
-          return st.id === curUser.id || st.email === curUser.email || (curUser.phone && st.phone === curUser.phone);
+      var allCls = getAvailableClasses();
+      enrolledClasses = allCls.filter(function(c) {
+        if (!c) return false;
+        if (curUser.classId && c.id === curUser.classId) return true;
+        return Array.isArray(c.students) && c.students.some(function(st) {
+          if (!st || st.isTester) return false;
+          return (st.id && curUser.id && st.id === curUser.id) ||
+                 (st.login && curUser.login && st.login.toLowerCase() === curUser.login.toLowerCase()) ||
+                 (st.email && curUser.email && st.email.toLowerCase() === curUser.email.toLowerCase()) ||
+                 (curUser.phone && st.phone && st.phone === curUser.phone) ||
+                 (curUser.name && st.name && st.name.toLowerCase() === curUser.name.toLowerCase());
         });
       });
       if (enrolledClasses.length === 0) {
-        if (window.EthithViews && window.EthithViews.renderClassesView) {
-          window.EthithViews.renderClassesView(container);
-          return;
-        }
+        enrolledClasses = [allCls[0] || {}];
       }
     }
 
@@ -3582,6 +3631,9 @@ EA.render = function(container, preserveScrollLeft) {
   // MODAL: ASSIGN HOMEWORK ("📚 Uy vazifasi belgilash")
   // ============================================================================
   EA.openHomeworkAssignModal = function(container, cls, defaultDateKey, onDoneCallback) {
+    if (!cls) cls = (typeof getActiveOrFirstClass === 'function' ? getActiveOrFirstClass() : null) || (getAvailableClasses()[0]);
+    if (!cls) return;
+    if (typeof ensureClassAttendance === 'function') ensureClassAttendance(cls);
     EA.isModalOpen = true;
     var modalRoot = getGlobalModalRoot();
     var curUser = getActiveUser();
@@ -3592,7 +3644,7 @@ EA.render = function(container, preserveScrollLeft) {
     var todayKey = formatDateKey(new Date());
     var selectedDateKey = defaultDateKey || (cls.activeHomework && cls.activeHomework.dateKey) || todayKey;
 
-    var curHw = (cls.attendance.homeworks && cls.attendance.homeworks[selectedDateKey]) || cls.activeHomework || { bookLevel: 'B1+', unit: 1, lessonCode: '1.1', note: '' };
+    var curHw = (cls.attendance && cls.attendance.homeworks && cls.attendance.homeworks[selectedDateKey]) || cls.activeHomework || { bookLevel: 'B1+', unit: 1, lessonCode: '1.1', note: '' };
     var currentType = curHw.type || 'workbook';
 
     var dateOptsHtml = '';
@@ -5555,26 +5607,80 @@ EA.render = function(container, preserveScrollLeft) {
     overlay.style.zIndex = '99999';
 
     var classes = getAvailableClasses();
-    var curClass = classes.find(function(c) { return c.id === targetClassId; }) || classes[0];
+    var curClass = classes.find(function(c) { return c && c.id === targetClassId; });
     var curSt = null;
-    if (curClass && targetStudentId) {
-      curSt = (curClass.students || []).find(function(s) { return (s.id || s.email) === targetStudentId; });
+
+    if (targetStudentId) {
+      // 1. Check in target class if provided
+      if (curClass && Array.isArray(curClass.students)) {
+        curSt = curClass.students.find(function(s) {
+          if (!s) return false;
+          return s.id === targetStudentId || s.login === targetStudentId || s.email === targetStudentId || s.name === targetStudentId;
+        });
+      }
+      // 2. Search across ALL classes
+      if (!curSt) {
+        for (var ci = 0; ci < classes.length; ci++) {
+          var fSt = (classes[ci].students || []).find(function(s) {
+            if (!s) return false;
+            return s.id === targetStudentId || s.login === targetStudentId || s.email === targetStudentId || s.name === targetStudentId;
+          });
+          if (fSt) {
+            curSt = fSt;
+            curClass = classes[ci];
+            break;
+          }
+        }
+      }
+      // 3. Search in S.accounts
+      if (!curSt) {
+        var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
+        var acc = (S_app.accounts || []).find(function(a) {
+          if (!a) return false;
+          return a.id === targetStudentId || a.login === targetStudentId || a.email === targetStudentId || a.name === targetStudentId;
+        });
+        if (acc) {
+          if (acc.classId) {
+            var mCls = classes.find(function(c) { return c && c.id === acc.classId; });
+            if (mCls) curClass = mCls;
+          }
+          curSt = {
+            id: acc.id || ('std_' + acc.login),
+            name: acc.name,
+            role: 'student',
+            login: acc.login,
+            password: acc.password,
+            phone: acc.phone || acc.parentPhone || '',
+            parentPhone: acc.parentPhone || acc.phone || '',
+            isTester: false,
+            manuallyEnrolled: true
+          };
+        }
+      }
     }
+    if (!curClass) curClass = classes[0];
 
     var defaultFirst = '';
     var defaultLast = '';
-    var defaultPhone = curSt ? (curSt.parentPhone || curSt.phone || '') : '';
+    var defaultPhone = curSt ? (curSt.parentPhone || curSt.phone || (curClass && curClass.customStudentPhones && curClass.customStudentPhones[curSt.id]) || '') : '';
     var existingNum = null;
 
+    var isEdit = !!curSt && !curSt.isTester && !(curSt.name || '').toLowerCase().startsWith('tester_');
+
     if (curSt) {
-      var isTesterSlot = curSt.isTester || (curSt.name && curSt.name.toLowerCase().startsWith('tester_'));
-      if (!isTesterSlot) {
-        var nParts = (curSt.name || '').trim().split(/\s+/);
-        if (nParts.length >= 2) {
-          defaultFirst = nParts[0];
-          defaultLast = nParts.slice(1).join(' ');
+      if (isEdit) {
+        if (curSt.firstName && curSt.lastName) {
+          defaultFirst = curSt.firstName;
+          defaultLast = curSt.lastName;
         } else {
-          defaultFirst = curSt.name || '';
+          var nParts = (curSt.name || '').trim().split(/\s+/);
+          if (nParts.length >= 2) {
+            defaultFirst = nParts[0];
+            defaultLast = nParts.slice(1).join(' ');
+          } else {
+            defaultFirst = curSt.name || '';
+            defaultLast = '';
+          }
         }
       }
       if (curSt.login && curSt.login.includes('_')) {
@@ -5587,15 +5693,13 @@ EA.render = function(container, preserveScrollLeft) {
     var currentLogin = (curSt && curSt.login && !curSt.isTester) ? curSt.login : creds.login;
     var currentPass = (curSt && curSt.password && !curSt.isTester) ? curSt.password : creds.password;
 
-    var isEdit = curSt && !curSt.isTester && !(curSt.name || '').toLowerCase().startsWith('tester_');
-
     var html = '<div class="eth-modal" style="max-width:560px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(56,189,248,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
-          '<div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(2,132,199,0.4);">👤</div>' +
+          '<div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(2,132,199,0.4);">' + (isEdit ? '✏️' : '🎓') + '</div>' +
           '<div>' +
             '<h2 style="margin:0;font-size:18px;font-weight:900;color:#fff;">' +
-              (isEdit ? 'O‘quvchi Ma’lumotlarini Tahrirlash' : 'Yangi O‘quvchi Ro‘yxatga Olish') +
+              (isEdit ? '✏️ O‘quvchi Ma‘lumotlarini Tahrirlash' : 'Yangi O‘quvchi Ro‘yxatga Olish') +
             '</h2>' +
             '<p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Ism, familiya va ota-onasi telefon raqamini kiriting. Login va parol avtomatik shakllanadi.</p>' +
           '</div>' +
@@ -5637,7 +5741,7 @@ EA.render = function(container, preserveScrollLeft) {
         // Auto Generated Credentials Box
         '<div style="background:rgba(2,132,199,0.12);border:1.5px dashed rgba(56,189,248,0.45);border-radius:16px;padding:14px 18px;margin-bottom:20px;">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
-            '<span style="font-size:12px;font-weight:900;color:#38bdf8;text-transform:uppercase;letter-spacing:0.5px;">⚡ Avtomatik Tizim Kirish Ma’lumotlari</span>' +
+            '<span style="font-size:12px;font-weight:900;color:#38bdf8;text-transform:uppercase;letter-spacing:0.5px;">⚡ Avtomatik Tizim Kirish Ma‘lumotlari</span>' +
             '<button type="button" id="eaRegenCredsBtn" title="Boshqa tasodifiy raqam/login tanlash" style="background:rgba(56,189,248,0.2);border:1px solid rgba(56,189,248,0.4);color:#38bdf8;border-radius:8px;padding:4px 9px;font-size:11.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">🎲 Yangilash</button>' +
           '</div>' +
           '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
@@ -5654,9 +5758,16 @@ EA.render = function(container, preserveScrollLeft) {
         '</div>' +
 
         // Action Buttons
-        '<div style="display:flex;align-items:center;justify-content:flex-end;gap:10px;">' +
-          '<button type="button" id="eaCancelEnrollBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
-          '<button type="submit" id="eaSaveEnrollBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 18px rgba(2,132,199,0.4);display:inline-flex;align-items:center;gap:6px;">💾 Saqlash va Profil Yaratish</button>' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;">' +
+          (isEdit 
+            ? '<button type="button" id="eaModalDeleteStudentBtn" style="background:rgba(239,68,68,0.18);border:1px solid rgba(239,68,68,0.45);color:#f87171;border-radius:12px;padding:10px 16px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ O‘quvchini O‘chirish</button>' 
+            : '<div></div>') +
+          '<div style="display:flex;align-items:center;gap:10px;">' +
+            '<button type="button" id="eaCancelEnrollBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+            '<button type="submit" id="eaSaveEnrollBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 18px rgba(2,132,199,0.4);display:inline-flex;align-items:center;gap:6px;">' +
+              (isEdit ? '💾 O‘zgarishlarni Saqlash' : '💾 Saqlash va Profil Yaratish') +
+            '</button>' +
+          '</div>' +
         '</div>' +
       '</form>' +
     '</div>';
@@ -5682,8 +5793,8 @@ EA.render = function(container, preserveScrollLeft) {
       passInp.value = c.password;
     }
 
-    fnInp.oninput = function() { if (!isEdit || !curSt.login) updateLiveCreds(false); };
-    lnInp.oninput = function() { if (!isEdit || !curSt.login) updateLiveCreds(false); };
+    fnInp.oninput = function() { if (!isEdit || !curSt || !curSt.login) updateLiveCreds(false); };
+    lnInp.oninput = function() { if (!isEdit || !curSt || !curSt.login) updateLiveCreds(false); };
     regenBtn.onclick = function() { updateLiveCreds(true); };
 
     overlay.querySelector('#eaCloseEnrollModalBtn').onclick = function() { overlay.remove(); };
@@ -5693,7 +5804,7 @@ EA.render = function(container, preserveScrollLeft) {
     if (mDelBtn && curSt) {
       mDelBtn.onclick = function() {
         overlay.remove();
-        EA.deleteStudentCompletely(classId, curSt.id, curSt.name);
+        EA.deleteStudentCompletely(curClass ? curClass.id : null, curSt.id || curSt.login, curSt.name);
       };
     }
 
@@ -5717,7 +5828,7 @@ EA.render = function(container, preserveScrollLeft) {
 
       var fullName = fn + ' ' + ln;
       var classes = getAvailableClasses();
-      var chosenClass = classes.find(function(c) { return c.id === selClassId; });
+      var chosenClass = classes.find(function(c) { return c && c.id === selClassId; }) || curClass;
       if (!chosenClass) {
         alert("Guruh topilmadi!");
         return;
@@ -5725,12 +5836,9 @@ EA.render = function(container, preserveScrollLeft) {
 
       if (!chosenClass.students) chosenClass.students = [];
 
-      var isTesterSlot = curSt && (curSt.isTester || (curSt.name && curSt.name.toLowerCase().startsWith('tester_')));
-      var studentObj = curSt;
-      var newStudentId = (curSt && !isTesterSlot) ? curSt.id : ('std_' + finalLogin);
-
-      studentObj = {
-        id: newStudentId,
+      var studentId = (curSt && isEdit) ? curSt.id : ('std_' + finalLogin);
+      var studentObj = {
+        id: studentId,
         name: fullName,
         firstName: fn,
         lastName: ln,
@@ -5740,29 +5848,56 @@ EA.render = function(container, preserveScrollLeft) {
         parentPhone: pPhone,
         login: finalLogin,
         password: finalPass,
-        joinedAt: new Date().toISOString().split('T')[0],
+        joinedAt: (curSt && curSt.joinedAt) ? curSt.joinedAt : new Date().toISOString().split('T')[0],
         isTester: false,
         manuallyEnrolled: true,
-        isOnline: false,
-        coins: 150
+        isOnline: (curSt && curSt.isOnline) || false,
+        coins: (curSt && curSt.coins) || 150
       };
 
-      // Replace target tester or first tester slot, or put at front
-      var targetTesterIdx = -1;
-      if (curSt) {
-        targetTesterIdx = chosenClass.students.indexOf(curSt);
-        if (targetTesterIdx === -1) {
-          targetTesterIdx = chosenClass.students.findIndex(function(s) { return s.id === curSt.id; });
+      // If transferring from another class
+      if (curClass && curClass.id !== chosenClass.id && curSt) {
+        var oldIdx = (curClass.students || []).findIndex(function(s) {
+          return s && ((s.id && s.id === curSt.id) || (s.login && s.login === curSt.login));
+        });
+        if (oldIdx !== -1) {
+          var cleanTester = {
+            id: 'cls_' + curClass.id + '_std_' + (oldIdx + 1) + '_' + Date.now().toString(36).substr(-4),
+            name: 'tester_' + (oldIdx + 1),
+            email: 'tester_' + (oldIdx + 1) + '@ethith.uz',
+            role: 'student',
+            phone: '',
+            parentPhone: '',
+            login: '',
+            password: '',
+            joinedAt: new Date().toISOString().split('T')[0],
+            dailyMinutes: 0,
+            coins: 0,
+            isTester: true,
+            isOnline: false,
+            lastLogin: null
+          };
+          curClass.students[oldIdx] = cleanTester;
+          if (curClass.customStudentNames) delete curClass.customStudentNames[curSt.id];
+          if (curClass.customStudentPhones) delete curClass.customStudentPhones[curSt.id];
+          if (typeof persistAttendance === 'function') persistAttendance(curClass);
         }
       }
-      if (targetTesterIdx === -1) {
-        targetTesterIdx = chosenClass.students.findIndex(function(s) {
+
+      // Update in chosen class
+      var targetIdx = chosenClass.students.findIndex(function(s) {
+        return s && ((s.id && s.id === studentId) || (s.login && s.login === finalLogin) || (curSt && s.id === curSt.id));
+      });
+
+      if (targetIdx === -1) {
+        // Find first tester slot to replace
+        targetIdx = chosenClass.students.findIndex(function(s) {
           return s && (s.isTester === true || (s.name && s.name.toLowerCase().startsWith('tester_')));
         });
       }
 
-      if (targetTesterIdx !== -1) {
-        chosenClass.students[targetTesterIdx] = studentObj;
+      if (targetIdx !== -1) {
+        chosenClass.students[targetIdx] = studentObj;
       } else {
         chosenClass.students.unshift(studentObj);
       }
@@ -5783,9 +5918,8 @@ EA.render = function(container, preserveScrollLeft) {
         };
       }
 
-      ensureClassAttendance(chosenClass);
+      if (typeof ensureClassAttendance === 'function') ensureClassAttendance(chosenClass);
 
-      // Account object
       var acc = {
         id: studentObj.id,
         name: fullName,
@@ -5795,11 +5929,11 @@ EA.render = function(container, preserveScrollLeft) {
         phone: pPhone,
         parentPhone: pPhone,
         classId: chosenClass.id,
-        isOnline: false,
+        isOnline: studentObj.isOnline,
         lastLogin: null
       };
 
-      // 1. Synchronize to all in-memory class sources
+      // Synchronize in-memory class sources
       var allClsSources = [
         window.S && window.S.classes,
         window.EthithApp && window.EthithApp.state && window.EthithApp.state.classes,
@@ -5819,7 +5953,7 @@ EA.render = function(container, preserveScrollLeft) {
         }
       });
 
-      // 2. Synchronize to all in-memory account sources
+      // Synchronize in-memory account sources
       var allAccSources = [
         window.S && window.S.accounts,
         window.EthithApp && window.EthithApp.state && window.EthithApp.state.accounts,
@@ -5828,8 +5962,11 @@ EA.render = function(container, preserveScrollLeft) {
       ];
       allAccSources.forEach(function(arr) {
         if (!Array.isArray(arr)) return;
-        var f = arr.find(function(a) { return a && (a.id === studentObj.id || (a.login && a.login.toLowerCase() === finalLogin.toLowerCase())); });
+        var f = arr.find(function(a) { 
+          return a && (a.id === studentObj.id || (a.login && a.login.toLowerCase() === finalLogin.toLowerCase()) || (curSt && (a.id === curSt.id || (a.login && a.login === curSt.login)))); 
+        });
         if (f) {
+          f.id = studentObj.id;
           f.name = fullName;
           f.login = finalLogin;
           f.password = finalPass;
@@ -5841,7 +5978,6 @@ EA.render = function(container, preserveScrollLeft) {
         }
       });
 
-      // 3. Instant LocalStorage persistence
       try {
         if (window.EthithApp && window.EthithApp.state) {
           localStorage.setItem('ethith_v2_state', JSON.stringify(window.EthithApp.state));
@@ -5851,7 +5987,6 @@ EA.render = function(container, preserveScrollLeft) {
         }
       } catch(e) {}
 
-      // 4. Real-time Multi-Broker MQTT WebSockets Mesh Broadcast
       if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
         window.EthithSync.publishLive({
           type: 'STUDENT_JOIN',
@@ -5867,27 +6002,19 @@ EA.render = function(container, preserveScrollLeft) {
         });
       }
 
-      // 5. Cross-tab BroadcastChannel Relays
-      try {
-        if (typeof BroadcastChannel !== 'undefined') {
-          if (!window._ethithChannel) window._ethithChannel = new BroadcastChannel('ethith_sync');
-          window._ethithChannel.postMessage({ type: 'sync' });
-          if (!window._eeChannel) window._eeChannel = new BroadcastChannel('ethith_cloud_channel');
-          window._eeChannel.postMessage({ type: 'ENTERPRISE_SYNC', state: window.EthithEnterprise.getStore ? window.EthithEnterprise.getStore() : null });
-        }
-      } catch(e) {}
-
-      // 6. Instant Server / GitHub Persistence (shared_store.json)
       if (window.EthithSync && typeof window.EthithSync.pushRemoteStore === 'function') {
         window.EthithSync.pushRemoteStore();
       }
 
+      var msg = isEdit ? (fullName + " ma‘lumotlari muvaffaqiyatli saqlandi! ✓") : ("✓ " + fullName + " ro‘yxatga olindi! Serverga sinxronlandi.");
       if (window.EthithApp && window.EthithApp.toast) {
-        window.EthithApp.toast("✅ " + fullName + " ro‘yxatga olindi! Serverga sinxronlandi.");
+        window.EthithApp.toast(msg);
+      } else {
+        alert(msg);
       }
 
       overlay.remove();
-      var container = document.getElementById('apView');
+      var container = document.getElementById('apView') || document.getElementById('viewContainer');
       if (container) {
         EA.activeClassId = chosenClass.id;
         EA.render(container);
@@ -5895,7 +6022,7 @@ EA.render = function(container, preserveScrollLeft) {
     };
   };
 
-  // ============================================================================
+// ============================================================================
   // EXCEL EXPORT OF SYSTEM LOGINS & CREDENTIALS
   // ============================================================================
   EA.exportLoginsToExcel = function(records, filterLabel) {
