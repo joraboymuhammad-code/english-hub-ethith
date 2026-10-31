@@ -123387,15 +123387,15 @@
       "card": "8600 9184 5348 5520",
       "paidThisMonth": true,
       "assignedClasses": [
+        "cls_urolov_azizbek_upper",
         "cls_urolov_azizbek_standard",
         "cls_urolov_azizbek_intermediate",
-        "cls_urolov_azizbek_upper",
         "cls_urolov_azizbek_practice"
       ],
       "classOrder": [
+        "cls_urolov_azizbek_upper",
         "cls_urolov_azizbek_standard",
         "cls_urolov_azizbek_intermediate",
-        "cls_urolov_azizbek_upper",
         "cls_urolov_azizbek_practice"
       ],
       "inviteCode": "AZIZBEK77",
@@ -124099,5 +124099,5 @@
       }
     }
   },
-  "updatedAt": 1793455740394
+  "updatedAt": 1793455747169
 }
