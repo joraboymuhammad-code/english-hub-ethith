@@ -106501,8 +106501,8 @@
         "page": 3040,
         "exercise": "2",
         "label": "5",
-        "top": 73.6,
-        "left": 22,
+        "top": 71.6,
+        "left": 22.1,
         "width": 9,
         "height": 1.8,
         "correct": "needed"
@@ -106513,7 +106513,7 @@
         "page": 3040,
         "exercise": "2",
         "label": "6",
-        "top": 75.4,
+        "top": 73.6,
         "left": 26.5,
         "width": 9,
         "height": 1.8,
@@ -106525,7 +106525,7 @@
         "page": 3040,
         "exercise": "2",
         "label": "7",
-        "top": 77.2,
+        "top": 75.9,
         "left": 32.5,
         "width": 9,
         "height": 1.8,
@@ -106537,8 +106537,8 @@
         "page": 3040,
         "exercise": "2",
         "label": "8",
-        "top": 80.8,
-        "left": 27.5,
+        "top": 78.8,
+        "left": 27.1,
         "width": 9,
         "height": 1.8,
         "correct": "arrived"
@@ -106549,8 +106549,8 @@
         "page": 3040,
         "exercise": "2",
         "label": "9",
-        "top": 84.4,
-        "left": 14,
+        "top": 82.1,
+        "left": 13.7,
         "width": 9,
         "height": 1.8,
         "correct": "noticed"
@@ -106561,8 +106561,8 @@
         "page": 3040,
         "exercise": "2",
         "label": "10",
-        "top": 86.2,
-        "left": 18,
+        "top": 83.3,
+        "left": 16.9,
         "width": 9,
         "height": 1.8,
         "correct": "used"
@@ -106573,8 +106573,8 @@
         "page": 3040,
         "exercise": "2",
         "label": "11",
-        "top": 88,
-        "left": 14,
+        "top": 85.1,
+        "left": 13.6,
         "width": 9,
         "height": 1.8,
         "correct": "decided"
@@ -106585,8 +106585,8 @@
         "page": 3040,
         "exercise": "2",
         "label": "12",
-        "top": 89.8,
-        "left": 32.5,
+        "top": 86.6,
+        "left": 31.6,
         "width": 9,
         "height": 1.8,
         "correct": "talked"
@@ -106597,8 +106597,8 @@
         "page": 3040,
         "exercise": "2",
         "label": "13",
-        "top": 91.6,
-        "left": 34,
+        "top": 88.5,
+        "left": 34.5,
         "width": 9,
         "height": 1.8,
         "correct": "liked"
@@ -106810,6 +106810,246 @@
           "turned"
         ],
         "correct": "turned"
+      }
+    ],
+    "3041": [
+      {
+        "id": "p3041_ex5_2",
+        "type": "select",
+        "page": 3041,
+        "exercise": "5",
+        "label": "2",
+        "top": 15.1,
+        "left": 17.6,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "e"
+      },
+      {
+        "id": "p3041_ex5_3",
+        "type": "select",
+        "page": 3041,
+        "exercise": "5",
+        "label": "3",
+        "top": 17.8,
+        "left": 24,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "d"
+      },
+      {
+        "id": "p3041_ex5_4",
+        "type": "select",
+        "page": 3041,
+        "exercise": "5",
+        "label": "4",
+        "top": 19.6,
+        "left": 24,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "f"
+      },
+      {
+        "id": "p3041_ex5_5",
+        "type": "select",
+        "page": 3041,
+        "exercise": "5",
+        "label": "5",
+        "top": 21.4,
+        "left": 24,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "h"
+      },
+      {
+        "id": "p3041_ex5_6",
+        "type": "select",
+        "page": 3041,
+        "exercise": "5",
+        "label": "6",
+        "top": 23.2,
+        "left": 24,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "c"
+      },
+      {
+        "id": "p3041_ex5_7",
+        "type": "select",
+        "page": 3041,
+        "exercise": "5",
+        "label": "7",
+        "top": 25,
+        "left": 24,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "b"
+      },
+      {
+        "id": "p3041_ex5_8",
+        "type": "select",
+        "page": 3041,
+        "exercise": "5",
+        "label": "8",
+        "top": 26.8,
+        "left": 24,
+        "width": 6,
+        "height": 1.8,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "a"
+      },
+      {
+        "id": "p3041_ex6_2",
+        "type": "fill",
+        "page": 3041,
+        "exercise": "6",
+        "label": "2",
+        "top": 40,
+        "left": 11,
+        "width": 17.5,
+        "height": 1.8,
+        "correct": "waited for a long time"
+      },
+      {
+        "id": "p3041_ex6_3",
+        "type": "fill",
+        "page": 3041,
+        "exercise": "6",
+        "label": "3",
+        "top": 44,
+        "left": 37.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "prepared a meal"
+      },
+      {
+        "id": "p3041_ex6_4",
+        "type": "fill",
+        "page": 3041,
+        "exercise": "6",
+        "label": "4",
+        "top": 49.5,
+        "left": 16.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "entered a competition"
+      },
+      {
+        "id": "p3041_ex6_5",
+        "type": "fill",
+        "page": 3041,
+        "exercise": "6",
+        "label": "5",
+        "top": 55,
+        "left": 20.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "received an email"
+      },
+      {
+        "id": "p3041_ex6_6",
+        "type": "fill",
+        "page": 3041,
+        "exercise": "6",
+        "label": "6",
+        "top": 62.5,
+        "left": 34,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "shouted at someone"
+      },
+      {
+        "id": "p3041_ex6_7",
+        "type": "fill",
+        "page": 3041,
+        "exercise": "6",
+        "label": "7",
+        "top": 71.5,
+        "left": 37.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "posted a letter"
+      },
+      {
+        "id": "p3041_ex6_8",
+        "type": "fill",
+        "page": 3041,
+        "exercise": "6",
+        "label": "8",
+        "top": 75.5,
+        "left": 31,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "visited a relative"
       }
     ],
     "3046": [
@@ -108979,7 +109219,8 @@
     "3037": 1793433179292,
     "3038": 1793433305361,
     "3039": 1793433305362,
-    "3040": 1793433350176,
+    "3040": 1793433366697,
+    "3041": 1793433370809,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -109743,5 +109984,5 @@
       }
     }
   },
-  "updatedAt": 1793433353331
+  "updatedAt": 1793433370869
 }
