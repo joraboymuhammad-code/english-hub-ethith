@@ -22858,13 +22858,13 @@
         },
         "cls_urolov_azizbek_upper_std_3": {
           "score": null,
-          "passed": null,
-          "updatedAt": 1793458068444
+          "passed": true,
+          "updatedAt": 1793458090164
         },
         "cls_urolov_azizbek_upper_std_4": {
-          "score": null,
-          "passed": null,
-          "updatedAt": 1793458068444
+          "score": 100,
+          "passed": true,
+          "updatedAt": 1793458095944
         },
         "cls_urolov_azizbek_upper_std_5": {
           "score": null,
@@ -124346,5 +124346,5 @@
       }
     }
   },
-  "updatedAt": 1793458089893
+  "updatedAt": 1793458096116
 }
