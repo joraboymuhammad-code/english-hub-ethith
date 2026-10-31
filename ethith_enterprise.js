@@ -213,36 +213,22 @@
         { id: "tt_4", time: "16:00 - 17:30", days: "Se-Pay-Shan", teacherId: "t_ravshanov_doniyor", teacherName: "Ravshanov Doniyor", classId: "cls_ravshanov_doniyor_cefr_2", className: "CEFR_2", room: "Room 102 (Blue Room)" }
       ];
     }
-    if (!appState.contests || appState.contests.length === 0) {
-      appState.contests = [
-        {
-          id: "cnt_kuzgi_2026",
-          title: "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
-          desc: "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
-          startDate: Date.now() - 86400000,
-          endDate: Date.now() + 86400000 * 7,
-          prizeCoins: 1000,
-          testId: "TST-7K2M9",
-          participants: {
-            "std_1": { name: "Ashurov Dilyorbek", score: 95, timeSec: 140, completedAt: Date.now() - 3600000 },
-            "std_2": { name: "Ergasheva Madina", score: 92, timeSec: 165, completedAt: Date.now() - 3500000 },
-            "std_4": { name: "JO‘RABOYEV MUXAMMADYUSUF", score: 98, timeSec: 110, completedAt: Date.now() - 3400000 },
-            "std_5": { name: "Jo'raboyev Javoxir", score: 88, timeSec: 180, completedAt: Date.now() - 3300000 },
-            "std_6": { name: "Mavlonova Ruxshona", score: 85, timeSec: 190, completedAt: Date.now() - 3200000 }
-          },
-          status: "active"
-        }
-      ];
+    if (!appState.contests) {
+      appState.contests = [];
     }
+    // Clean any legacy mock contests
+    appState.contests = (appState.contests || []).filter(function(c) {
+      return c && c.id !== 'cnt_kuzgi_2026';
+    });
     if (!appState.payments) appState.payments = {};
-    if (!appState.payments['2026-10']) {
-      appState.payments['2026-10'] = {
-        "std_1": { status: "paid", baseAmount: 200000, offsetAmount: 200014, paidAmount: 200014, paidAt: Date.now() - 86400000 * 3, verifiedBy: "auto_offset" },
-        "std_2": { status: "paid", baseAmount: 200000, offsetAmount: 200028, paidAmount: 200028, paidAt: Date.now() - 86400000 * 2, verifiedBy: "auto_offset" },
-        "std_3": { status: "unpaid", baseAmount: 200000, offsetAmount: 200042, paidAmount: 0 },
-        "std_4": { status: "paid", baseAmount: 200000, offsetAmount: 200056, paidAmount: 200056, paidAt: Date.now() - 86400000, verifiedBy: "auto_offset" },
-        "std_5": { status: "pending", baseAmount: 200000, offsetAmount: 200070, paidAmount: 200070, receiptUrl: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>", paidAt: Date.now() - 7200000 }
-      };
+    if (Array.isArray(appState.teachers)) {
+      appState.teachers.forEach(function(t) {
+        if (!t) return;
+        t.teachingHours = 0;
+        t.monthlySalary = 0;
+        t.paidThisMonth = false;
+        t.unpaidMonths = 0;
+      });
     }
     if (!appState.classes || appState.classes.length === 0) {
       if (window.EthithAttendance && window.EthithAttendance.classes && window.EthithAttendance.classes.length > 0) {
@@ -1972,7 +1958,7 @@
     EE.openVisualTestBuilderModal(null, null, existingTest, curriculumContext);
   };
 
-  EE.openCreateTestModal = function(container, folderId) {
+  EE.openCreateTestModal = function(container, folderId, onSaved) {
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
     var randCode = 'TST-' + Math.random().toString(36).substring(2, 6).toUpperCase() + Math.floor(Math.random() * 9 + 1);
 
@@ -2145,7 +2131,7 @@
       var curU = getCurrentUser();
       var defaultFid = (curU.role === 'teacher' && !isAdminOrTeacher() ? ('f_root_' + curU.id) : (curU.role === 'teacher' ? ('f_root_' + curU.id) : 'f_root'));
 
-      S.fileExplorer.tests.push({
+      var newTest = {
         id: randCode,
         title: title,
         type: 'standard_quiz',
@@ -2160,18 +2146,24 @@
         audioUrl: uploadedAudio ? uploadedAudio.url : null,
         audioName: uploadedAudio ? uploadedAudio.name : null,
         audioLimit: audioLimit
-      });
+      };
+
+      if (!S.fileExplorer) S.fileExplorer = { tests: [], folders: [] };
+      if (!Array.isArray(S.fileExplorer.tests)) S.fileExplorer.tests = [];
+      S.fileExplorer.tests.push(newTest);
 
       saveStore();
       m.remove();
       showToast("✓ Test muvaffaqiyatli saqlandi! Test ID: " + randCode);
-      if (container) EE.renderExplorerView(container);
+      if (typeof onSaved === 'function') onSaved(newTest);
+      if (container && typeof EE.renderExplorerView === 'function') EE.renderExplorerView(container);
     };
 
     renderQuestions();
   };
 
-  EE.openTakeTestModal = function(testIdOrObj) {
+  EE.openTakeTestModal = function(testIdOrObj, contestId) {
+    window._contestTestStartTime = Date.now();
     var S = getStore();
     var test = null;
     if (typeof testIdOrObj === 'object' && testIdOrObj !== null) {
@@ -2643,6 +2635,28 @@
           resModal.remove();
         };
 
+        // Record participant in contest if attached
+        var S_c = getStore();
+        (S_c.contests || []).forEach(function(c) {
+          if ((contestId && c.id === contestId) || (test && c.testId === test.id)) {
+            if (!c.participants) c.participants = {};
+            var pId = (user && user.id) ? user.id : ((user && user.email) ? user.email : ('std_' + Date.now()));
+            var pName = (user && user.name) ? user.name : 'O‘quvchi';
+            var timeTaken = Math.max(15, Math.round((Date.now() - (window._contestTestStartTime || Date.now())) / 1000));
+            var prevRec = c.participants[pId];
+            if (!prevRec || pct > prevRec.score || (pct === prevRec.score && timeTaken < prevRec.timeSec)) {
+              c.participants[pId] = {
+                id: pId,
+                name: pName,
+                score: pct,
+                timeSec: timeTaken,
+                completedAt: Date.now()
+              };
+              saveStore();
+            }
+          }
+        });
+
         showToast("Test yakunlandi! Natija: " + pct + "% (Band " + band + ")");
       };
       return;
@@ -2762,6 +2776,28 @@
             };
             saveStore();
           }
+
+          // Real-time record into contest participants
+          var S_c2 = getStore();
+          (S_c2.contests || []).forEach(function(c) {
+            if ((contestId && c.id === contestId) || (test && c.testId === test.id)) {
+              if (!c.participants) c.participants = {};
+              var pId = (user && user.id) ? user.id : ((user && user.email) ? user.email : ('std_' + Date.now()));
+              var pName = (user && user.name) ? user.name : 'O‘quvchi';
+              var timeTaken = Math.max(15, Math.round((Date.now() - (window._contestTestStartTime || Date.now())) / 1000));
+              var prevRec = c.participants[pId];
+              if (!prevRec || pct > prevRec.score || (pct === prevRec.score && timeTaken < prevRec.timeSec)) {
+                c.participants[pId] = {
+                  id: pId,
+                  name: pName,
+                  score: pct,
+                  timeSec: timeTaken,
+                  completedAt: Date.now()
+                };
+                saveStore();
+              }
+            }
+          });
 
           // Real-time record into class attendance records!
           if (window.EA && typeof window.EA.recordStudentHomeworkCompletion === 'function') {
@@ -3620,9 +3656,10 @@
               max: 20,
               grid: { color: 'rgba(255,255,255,0.05)' },
               ticks: { 
+                autoSkip: false,
                 stepSize: 2,
                 color: '#10B981', 
-                font: { weight: '800', size: 11 },
+                font: { weight: '800', size: 10 },
                 callback: function(v) { return v + ' mln'; } 
               }
             },
@@ -5737,6 +5774,160 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
   // ============================================================================
   // 6. ONLINE CONTESTS & TOURNAMENTS (Top-10 Coin Rewards)
   // ============================================================================
+  EE.distributeContestPrizes = function(c) {
+    if (!c) return;
+    var S = getStore();
+    var parts = Object.values(c.participants || {}).sort(function(a, b) {
+      if (b.score !== a.score) return b.score - a.score;
+      return (a.timeSec || 999) - (b.timeSec || 999);
+    });
+
+    if (parts.length === 0) {
+      alert("Musobaqada hali ishtirokchilar mavjud emas!");
+      return;
+    }
+
+    var coinTiers = [1000, 900, 800, 700, 600];
+    var awarded = 0;
+    for (var i = 0; i < Math.min(parts.length, 5); i++) {
+      var p = parts[i];
+      var amount = coinTiers[i] || 600;
+      var acc = (S.accounts || []).find(function(a) {
+        return a.id === p.id || a.email === p.id || (p.name && a.name && a.name.toLowerCase() === p.name.toLowerCase());
+      });
+      if (acc) {
+        acc.coins = (acc.coins || 0) + amount;
+        awarded++;
+      }
+    }
+
+    c.coinsDistributed = true;
+    saveStore();
+    showToast("🎉 Top-5 g‘olibga jami sovrin Coinlari taqsimlandi! (1: 1000, 2: 900, 3: 800, 4: 700, 5: 600)");
+  };
+
+  EE.openNewContestModal = function(container) {
+    var S = getStore();
+    var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
+    var m = document.createElement('div');
+    m.id = 'eeNewContestOverlay';
+    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(10px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    var tests = (S.fileExplorer && S.fileExplorer.tests) || [];
+
+    function buildOptions(selectedId) {
+      var curTests = ((getStore().fileExplorer && getStore().fileExplorer.tests) || []);
+      if (curTests.length === 0) {
+        return '<option value="">(Hali testlar yaratilmagan — quyidagi tugmani bosing)</option>';
+      }
+      return curTests.map(function(t) {
+        var isSel = (t.id === selectedId) ? ' selected' : '';
+        return '<option value="' + esc(t.id) + '"' + isSel + '>' + esc(t.title || t.id) + ' (' + ((t.questions && t.questions.length) || 0) + ' savol)</option>';
+      }).join('');
+    }
+
+    m.innerHTML = '<div style="background:#0f172a;border:1px solid rgba(245,158,11,0.4);border-radius:22px;max-width:620px;width:100%;max-height:90vh;overflow-y:auto;padding:26px;color:#f8fafc;box-shadow:0 24px 60px rgba(0,0,0,0.8);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:24px;">🏆</span>' +
+          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fcd34d;">Yangi Musobaqa E‘lon Qilish</h3>' +
+        '</div>' +
+        '<button id="eeCloseContestModal" style="background:none;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">✕</button>' +
+      '</div>' +
+
+      '<div style="margin-bottom:14px;">' +
+        '<label style="display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-bottom:6px;">Musobaqa Nomi:</label>' +
+        '<input type="text" id="eeContestTitleInp" placeholder="Masalan: Haftalik IELTS Challenge & Grammar Battle..." style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;" />' +
+      '</div>' +
+
+      '<div style="margin-bottom:14px;">' +
+        '<label style="display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-bottom:6px;">Tavsif va Qoidalar:</label>' +
+        '<textarea id="eeContestDescInp" rows="2" placeholder="Barcha guruh o‘quvchilari uchun test. Top-5 o‘rin olgan o‘quvchilarga 1000 coindan boshlab sovrin beriladi!" style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:13px;box-sizing:border-box;outline:none;resize:vertical;"></textarea>' +
+      '</div>' +
+
+      '<div style="margin-bottom:16px;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">' +
+          '<label style="font-size:12px;font-weight:800;color:#38bdf8;">Musobaqa Testi (Quiz):</label>' +
+          '<button type="button" id="eeContestCreateQuizBtn" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid #38bdf8;padding:4px 10px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">➕ Yangi Quiz Test Yaratish</button>' +
+        '</div>' +
+        '<select id="eeContestTestSelect" style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:10px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;cursor:pointer;">' +
+          buildOptions() +
+        '</select>' +
+      '</div>' +
+
+      '<div style="margin-bottom:16px;">' +
+        '<label style="display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-bottom:6px;">Davomiyligi (Muddati):</label>' +
+        '<select id="eeContestDurationSelect" style="width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;cursor:pointer;">' +
+          '<option value="3">3 kun</option>' +
+          '<option value="7" selected>7 kun (1 hafta)</option>' +
+          '<option value="14">14 kun (2 hafta)</option>' +
+          '<option value="30">30 kun (1 oy)</option>' +
+        '</select>' +
+      '</div>' +
+
+      '<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:14px;padding:12px 16px;margin-bottom:18px;">' +
+        '<div style="font-size:12px;font-weight:900;color:#fcd34d;margin-bottom:6px;">🎁 Top-5 G‘oliblar Mukofot Fondi:</div>' +
+        '<div style="display:flex;gap:10px;flex-wrap:wrap;font-size:11.5px;color:#cbd5e1;font-weight:700;">' +
+          '<span>🥇 1-o‘rin: <b style="color:#fcd34d;">1,000 Coin</b></span>' +
+          '<span>🥈 2-o‘rin: <b style="color:#e2e8f0;">900 Coin</b></span>' +
+          '<span>🥉 3-o‘rin: <b style="color:#fdba74;">800 Coin</b></span>' +
+          '<span>4-o‘rin: <b style="color:#38bdf8;">700 Coin</b></span>' +
+          '<span>5-o‘rin: <b style="color:#a78bfa;">600 Coin</b></span>' +
+        '</div>' +
+      '</div>' +
+
+      '<div style="display:flex;justify-content:flex-end;gap:10px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.1);">' +
+        '<button type="button" id="eeCancelContestBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:10px 18px;border-radius:10px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+        '<button type="button" id="eePublishContestBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);border:none;color:#fff;padding:10px 24px;border-radius:10px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(245,158,11,0.4);">🚀 Musobaqani E‘lon Qilish</button>' +
+      '</div>' +
+    '</div>';
+
+    modalRoot.appendChild(m);
+
+    var sel = m.querySelector('#eeContestTestSelect');
+    m.querySelector('#eeContestCreateQuizBtn').onclick = function() {
+      EE.openCreateTestModal(null, null, function(newTest) {
+        sel.innerHTML = buildOptions(newTest.id);
+        sel.value = newTest.id;
+        showToast("✓ Yaratilgan yangi test tanlandi!");
+      });
+    };
+
+    m.querySelector('#eeCloseContestModal').onclick = function() { m.remove(); };
+    m.querySelector('#eeCancelContestBtn').onclick = function() { m.remove(); };
+
+    m.querySelector('#eePublishContestBtn').onclick = function() {
+      var title = m.querySelector('#eeContestTitleInp').value.trim();
+      var desc = m.querySelector('#eeContestDescInp').value.trim();
+      var testId = sel.value;
+      var days = parseInt(m.querySelector('#eeContestDurationSelect').value, 10) || 7;
+
+      if (!title) { alert("Iltimos, musobaqa nomini kiriting!"); return; }
+      if (!testId) { alert("Iltimos, musobaqa uchun quiz test tanlang yoki yangi test yarating!"); return; }
+
+      var S_cur = getStore();
+      if (!Array.isArray(S_cur.contests)) S_cur.contests = [];
+
+      var newC = {
+        id: 'cnt_' + Date.now(),
+        title: title,
+        desc: desc || "Top-5 eng yuqori natija qayd etgan o‘quvchilarga avtomatik Coin sovrinlari taqdim etiladi.",
+        testId: testId,
+        startDate: Date.now(),
+        endDate: Date.now() + (days * 86400000),
+        participants: {},
+        status: 'active',
+        coinsDistributed: false
+      };
+
+      S_cur.contests.push(newC);
+      saveStore();
+      m.remove();
+      showToast("🎉 Yangi musobaqa muvaffaqiyatli e‘lon qilindi!");
+      if (container) EE.renderContestsView(container);
+    };
+  };
+
   EE.renderContestsView = function(container) {
     if (!container) return;
     var S = getStore();
@@ -5751,58 +5942,86 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
               '<span style="font-size:26px;">🏆</span>' +
               '<h2 style="margin:0;font-size:22px;font-weight:900;color:#f8fafc;">Onlayn Musobaqalar va Turnirlar</h2>' +
             '</div>' +
-            '<p style="margin:6px 0 0;font-size:13.5px;color:#94a3b8;">Top-10 o‘quvchiga avtomatik Coin sovrinlarini beruvchi test musobaqalari.</p>' +
+            '<p style="margin:6px 0 0;font-size:13.5px;color:#94a3b8;">Ustozlar tuzgan quiz testlar orqali musobaqalar. Top-5 g‘olibga 1000 coindan boshlab avtomatik taqsimlanadi.</p>' +
           '</div>' +
-          (isStaff ? '<button id="eeNewContestBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 20px;font-size:13.5px;font-weight:800;cursor:pointer;">+ Yangi Musobaqa E‘lon Qilish</button>' : '') +
+          (isStaff ? '<button id="eeNewContestBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:11px 22px;font-size:13.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(245,158,11,0.4);"><span>➕</span> Yangi Musobaqa E‘lon Qilish</button>' : '') +
         '</div>' +
       '</div>';
 
-    // Contests List
-    contests.forEach(function(c) {
-      var parts = Object.values(c.participants || {}).sort(function(a, b) {
-        if (b.score !== a.score) return b.score - a.score;
-        return (a.timeSec || 999) - (b.timeSec || 999);
-      });
+    if (contests.length === 0) {
+      h += '<div style="background:rgba(15,23,42,0.7);border:1.5px dashed rgba(245,158,11,0.3);border-radius:20px;padding:48px 24px;text-align:center;color:#94a3b8;">' +
+        '<div style="font-size:42px;margin-bottom:12px;">🏆</div>' +
+        '<h3 style="margin:0 0 8px;font-size:18px;font-weight:900;color:#fff;">Hozirda faol musobaqalar mavjud emas</h3>' +
+        '<p style="margin:0 0 20px;font-size:13px;color:#94a3b8;max-width:500px;margin-left:auto;margin-right:auto;">O‘qituvchi yoki administrator yangi quiz test tuzib ushbu bo‘limda musobaqa e‘lon qilishi mumkin.</p>' +
+        (isStaff ? '<button id="eeNewContestBtnEmpty" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 20px;font-size:13px;font-weight:900;cursor:pointer;">+ Birinchi Musobaqani E‘lon Qilish</button>' : '') +
+      '</div>';
+    } else {
+      contests.forEach(function(c) {
+        var parts = Object.values(c.participants || {}).sort(function(a, b) {
+          if (b.score !== a.score) return b.score - a.score;
+          return (a.timeSec || 999) - (b.timeSec || 999);
+        });
 
-      h += '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(245,158,11,0.3);border-radius:20px;padding:24px;margin-bottom:20px;box-shadow:0 8px 30px rgba(0,0,0,0.3);">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">' +
-          '<h3 style="margin:0;font-size:19px;font-weight:900;color:#fcd34d;">' + esc(c.title) + '</h3>' +
-          '<span style="background:rgba(245,158,11,0.15);color:#f59e0b;padding:4px 12px;border-radius:8px;font-weight:900;font-size:12px;">🎁 Sovrin: ' + (c.prizeCoins || 1000) + ' Coin</span>' +
-        '</div>' +
-        '<p style="font-size:13.5px;color:#94a3b8;margin:0 0 16px;">' + esc(c.desc) + '</p>' +
+        var prizeTiers = [1000, 900, 800, 700, 600];
 
-        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-          '<div style="font-size:14px;font-weight:800;color:#fff;">🥇 Top-10 Reyting Jadvali (' + parts.length + ' ishtirokchi):</div>' +
-          '<div style="display:flex;gap:8px;">' +
-            '<button class="ee-participate-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:800;cursor:pointer;">🚀 Musobaqaga Kirish</button>' +
-            (isStaff ? '<button class="ee-distribute-coins-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:800;cursor:pointer;">🎁 Top-10 ga Coin berish</button>' : '') +
+        h += '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(245,158,11,0.3);border-radius:20px;padding:24px;margin-bottom:20px;box-shadow:0 8px 30px rgba(0,0,0,0.3);">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">' +
+            '<div>' +
+              '<h3 style="margin:0;font-size:19px;font-weight:900;color:#fcd34d;">' + esc(c.title) + '</h3>' +
+              '<div style="font-size:11.5px;color:#94a3b8;margin-top:3px;">ID: ' + esc(c.id) + (c.testId ? (' • Test: ' + esc(c.testId)) : '') + '</div>' +
+            '</div>' +
+            '<div style="display:flex;align-items:center;gap:8px;">' +
+              '<span style="background:rgba(245,158,11,0.15);color:#f59e0b;padding:4px 12px;border-radius:8px;font-weight:900;font-size:12px;">🎁 Top-5 Sovrinli (1,000 Coin)</span>' +
+              (isStaff ? '<button class="ee-delete-contest-btn" data-cid="' + c.id + '" title="Musobaqani o‘chirish" style="background:rgba(239,68,68,0.15);border:1px solid #ef4444;color:#f87171;border-radius:8px;padding:4px 8px;font-size:12px;cursor:pointer;">🗑️</button>' : '') +
+            '</div>' +
           '</div>' +
-        '</div>' +
+          '<p style="font-size:13.5px;color:#94a3b8;margin:0 0 16px;">' + esc(c.desc) + '</p>' +
 
-        '<div style="background:rgba(30,41,59,0.5);border-radius:14px;overflow:hidden;">' +
-          '<table style="width:100%;border-collapse:collapse;font-size:12.5px;text-align:left;">' +
-            '<thead>' +
-              '<tr style="background:rgba(0,0,0,0.25);color:#94a3b8;font-size:11px;text-transform:uppercase;">' +
-                '<th style="padding:10px 14px;">O‘rin</th>' +
-                '<th style="padding:10px 14px;">O‘quvchi</th>' +
-                '<th style="padding:10px 14px;">Ball</th>' +
-                '<th style="padding:10px 14px;">Vaqt</th>' +
-                '<th style="padding:10px 14px;">Sovrin</th>' +
-              '</tr>' +
-            '</thead>' +
-            '<tbody>';
-            parts.slice(0, 10).forEach(function(p, idx) {
+          '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">' +
+            '<div style="font-size:14px;font-weight:800;color:#fff;">🥇 Top-50 Reyting Jadvali (' + parts.length + ' nafar topshirdi):</div>' +
+            '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+              '<button class="ee-participate-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(2,132,199,0.35);">🚀 Musobaqaga Kirish</button>' +
+              (isStaff ? '<button class="ee-distribute-coins-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.35);">' + (c.coinsDistributed ? '✓ Coinlar Berilgan' : '🎁 Top-5 ga Coin Berish') + '</button>' : '') +
+            '</div>' +
+          '</div>' +
+
+          '<div style="background:rgba(30,41,59,0.5);border-radius:14px;overflow-x:auto;">' +
+            '<table style="width:100%;border-collapse:collapse;font-size:12.5px;text-align:left;">' +
+              '<thead>' +
+                '<tr style="background:rgba(0,0,0,0.25);color:#94a3b8;font-size:11px;text-transform:uppercase;white-space:nowrap;">' +
+                  '<th style="padding:10px 14px;width:70px;">O‘rin</th>' +
+                  '<th style="padding:10px 14px;">O‘quvchi</th>' +
+                  '<th style="padding:10px 14px;">Natija (Ball)</th>' +
+                  '<th style="padding:10px 14px;">Vaqt</th>' +
+                  '<th style="padding:10px 14px;text-align:right;">Sovrin</th>' +
+                '</tr>' +
+              '</thead>' +
+              '<tbody>';
+
+          if (parts.length === 0) {
+            h += '<tr style="border-top:1px solid rgba(255,255,255,0.05);">' +
+              '<td colspan="5" style="padding:22px;text-align:center;color:#94a3b8;font-weight:700;">Hozircha hech kim test topshirmadi. Birinchi bo‘lib topshiring va 1,000 Coin yutib oling!</td>' +
+            '</tr>';
+          } else {
+            parts.slice(0, 50).forEach(function(p, idx) {
               var medal = (idx === 0 ? '🥇 1' : (idx === 1 ? '🥈 2' : (idx === 2 ? '🥉 3' : (idx + 1))));
+              var coinText = (idx < 5) ? ('+' + prizeTiers[idx] + ' 🪙') : '—';
+              var colorCoin = (idx < 5) ? '#f59e0b' : '#64748b';
+
               h += '<tr style="border-top:1px solid rgba(255,255,255,0.05);">' +
                 '<td style="padding:10px 14px;font-weight:900;color:' + (idx < 3 ? '#fcd34d' : '#fff') + ';">' + medal + '</td>' +
                 '<td style="padding:10px 14px;font-weight:800;color:#fff;">' + esc(p.name) + '</td>' +
                 '<td style="padding:10px 14px;color:#34d399;font-weight:900;">' + p.score + '%</td>' +
                 '<td style="padding:10px 14px;color:#94a3b8;">' + (p.timeSec || '—') + 's</td>' +
-                '<td style="padding:10px 14px;color:#f59e0b;font-weight:800;">+' + (c.prizeCoins || 1000) + ' 🪙</td>' +
+                '<td style="padding:10px 14px;color:' + colorCoin + ';font-weight:900;text-align:right;">' + coinText + '</td>' +
               '</tr>';
             });
-      h += '</tbody></table></div></div>';
-    });
+          }
+
+          h += '</tbody></table></div></div>';
+      });
+    }
+
     h += '</div>';
     container.innerHTML = h;
 
@@ -5812,16 +6031,21 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
         var cid = b.getAttribute('data-cid');
         var c = contests.find(function(x) { return x.id === cid; });
         if (!c) return;
-        var parts = Object.values(c.participants || {}).sort(function(a, b) { return b.score - a.score; });
-        var winners = parts.slice(0, 10);
-        winners.forEach(function(w) {
-          var acc = (S.accounts || []).find(function(a) { return a.name === w.name; });
-          if (acc) {
-            acc.coins = (acc.coins || 0) + (c.prizeCoins || 1000);
-          }
-        });
+        EE.distributeContestPrizes(c);
+        EE.renderContestsView(container);
+      };
+    });
+
+    // Delete contest button
+    container.querySelectorAll('.ee-delete-contest-btn').forEach(function(b) {
+      b.onclick = function() {
+        var cid = b.getAttribute('data-cid');
+        if (!confirm("Haqiqatan ham ushbu musobaqani o‘chirmoqchimisiz?")) return;
+        var S_del = getStore();
+        S_del.contests = (S_del.contests || []).filter(function(x) { return x.id !== cid; });
         saveStore();
-        showToast("Top-" + winners.length + " nafar g‘olibga " + (c.prizeCoins || 1000) + " tadan Coin taqsimlandi!");
+        showToast("Musobaqa o‘chirildi!");
+        EE.renderContestsView(container);
       };
     });
 
@@ -5831,33 +6055,17 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
         var cid = b.getAttribute('data-cid');
         var c = contests.find(function(x) { return x.id === cid; });
         if (!c) return;
-        EE.openTakeTestModal(c.testId || 'TST-7K2M9');
+        if (!c.testId) { alert("Ushbu musobaqaga test biriktirilmagan!"); return; }
+        EE.openTakeTestModal(c.testId, c.id);
       };
     });
 
-    // Create contest
-    var newCBtn = container.querySelector('#eeNewContestBtn');
-    if (newCBtn) {
-      newCBtn.onclick = function() {
-        var t = prompt("Musobaqa nomi:", "Haftalik IELTS Challenge");
-        if (!t) return;
-        var coins = parseInt(prompt("Top-10 ga sovrin (Coin):", "1000"), 10) || 1000;
-        contests.push({
-          id: 'cnt_' + Date.now(),
-          title: t.trim(),
-          desc: "Barcha o‘quvchilar uchun umumiy sinov. Eng yuqori ball to‘plagan 10 nafar o‘quvchi sovrin oladi.",
-          startDate: Date.now(),
-          endDate: Date.now() + 86400000 * 7,
-          prizeCoins: coins,
-          testId: 'TST-7K2M9',
-          participants: {},
-          status: 'active'
-        });
-        saveStore();
-        showToast("Yangi musobaqa e‘lon qilindi!");
-        EE.renderContestsView(container);
+    // Create contest buttons
+    container.querySelectorAll('#eeNewContestBtn, #eeNewContestBtnEmpty').forEach(function(btn) {
+      btn.onclick = function() {
+        EE.openNewContestModal(container);
       };
-    }
+    });
   };
 
   // ============================================================================
