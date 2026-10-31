@@ -24096,16 +24096,15 @@
           "lastName": "Selixasdasd",
           "email": "mixswdasd_804_selixasdasd@student.ethith",
           "role": "student",
-          "phone": "zsxcxzc",
-          "parentPhone": "zsxcxzc",
+          "phone": "+998950079621",
+          "parentPhone": "+998950079621",
           "login": "mixswdasd_804_selixasdasd",
           "password": "mixswdasd804sel",
           "joinedAt": "2026-10-30",
           "isTester": false,
           "manuallyEnrolled": true,
           "isOnline": false,
-          "coins": 150,
-          "dailyMinutes": 63
+          "coins": 150
         },
         {
           "id": "std_mix_416_selix",
@@ -24422,7 +24421,9 @@
         },
         "updatedAt": 1793434223118
       },
-      "customStudentPhones": {},
+      "customStudentPhones": {
+        "std_mixswdasd_804_selixasdasd": "+998950079621"
+      },
       "activeHomework": {
         "type": "workbook",
         "dateKey": "2026-10-30",
@@ -25803,6 +25804,18 @@
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
       "updatedAt": 1793431308524
+    },
+    {
+      "id": "std_mixswdasd_804_selixasdasd",
+      "name": "Mixswdasd Selixasdasd",
+      "role": "student",
+      "login": "mixswdasd_804_selixasdasd",
+      "password": "mixswdasd804sel",
+      "phone": "+998950079621",
+      "parentPhone": "+998950079621",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -120359,5 +120372,5 @@
       }
     }
   },
-  "updatedAt": 1793434234038
+  "updatedAt": 1793434251900
 }
