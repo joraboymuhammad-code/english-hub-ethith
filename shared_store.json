@@ -104566,8 +104566,8 @@
         "page": 3036,
         "exercise": "1",
         "label": "2",
-        "top": 59.8,
-        "left": 11,
+        "top": 58.3,
+        "left": 12,
         "width": 36.5,
         "height": 1.9,
         "correct": "Sylvia can't see clearly without her glasses."
@@ -104578,8 +104578,8 @@
         "page": 3036,
         "exercise": "1",
         "label": "3",
-        "top": 63.3,
-        "left": 11,
+        "top": 61.6,
+        "left": 13,
         "width": 36.5,
         "height": 1.9,
         "correct": "Peter and Jan work hard every day."
@@ -104770,8 +104770,8 @@
         "page": 3036,
         "exercise": "3",
         "label": "5",
-        "top": 36.4,
-        "left": 86,
+        "top": 34.7,
+        "left": 86.4,
         "width": 9,
         "height": 1.8,
         "correct": [
@@ -104785,8 +104785,8 @@
         "page": 3036,
         "exercise": "3",
         "label": "6",
-        "top": 38.2,
-        "left": 86,
+        "top": 37,
+        "left": 86.5,
         "width": 9,
         "height": 1.8,
         "correct": [
@@ -104800,8 +104800,8 @@
         "page": 3036,
         "exercise": "3",
         "label": "7",
-        "top": 41.5,
-        "left": 86,
+        "top": 39.3,
+        "left": 86.5,
         "width": 9,
         "height": 1.8,
         "correct": "return"
@@ -104812,8 +104812,8 @@
         "page": 3036,
         "exercise": "3",
         "label": "8",
-        "top": 44.5,
-        "left": 86,
+        "top": 42.9,
+        "left": 86.9,
         "width": 9,
         "height": 1.8,
         "correct": [
@@ -104827,8 +104827,8 @@
         "page": 3036,
         "exercise": "3",
         "label": "9",
-        "top": 46.3,
-        "left": 86,
+        "top": 44.7,
+        "left": 87,
         "width": 9,
         "height": 1.8,
         "correct": [
@@ -104842,8 +104842,8 @@
         "page": 3036,
         "exercise": "3",
         "label": "10",
-        "top": 48.8,
-        "left": 86,
+        "top": 47.7,
+        "left": 86.9,
         "width": 9,
         "height": 1.8,
         "correct": "a discount"
@@ -107363,7 +107363,7 @@
     "3033": 1793432813635,
     "3034": 1793432999510,
     "3035": 1793432999512,
-    "3036": 1793433028628,
+    "3036": 1793433040742,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -108127,5 +108127,5 @@
       }
     }
   },
-  "updatedAt": 1793433030031
+  "updatedAt": 1793433042923
 }
