@@ -102308,8 +102308,8 @@
         "page": 3030,
         "exercise": "3",
         "label": "4",
-        "top": 63.8,
-        "left": 59.5,
+        "top": 62.5,
+        "left": 60,
         "width": 30.5,
         "height": 1.9,
         "correct": [
@@ -102324,11 +102324,609 @@
         "page": 3030,
         "exercise": "3",
         "label": "5",
-        "top": 67.2,
-        "left": 76.5,
+        "top": 65.8,
+        "left": 75.7,
         "width": 14,
         "height": 1.9,
         "correct": "the USA"
+      }
+    ],
+    "3031": [
+      {
+        "id": "p3031_g_ex1_2",
+        "type": "select",
+        "page": 3031,
+        "exercise": "1",
+        "label": "2",
+        "top": 23.5,
+        "left": 30.4,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "a"
+      },
+      {
+        "id": "p3031_g_ex1_3",
+        "type": "select",
+        "page": 3031,
+        "exercise": "1",
+        "label": "3",
+        "top": 25.5,
+        "left": 24.1,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "h"
+      },
+      {
+        "id": "p3031_g_ex1_4",
+        "type": "select",
+        "page": 3031,
+        "exercise": "1",
+        "label": "4",
+        "top": 26.7,
+        "left": 36.7,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "d"
+      },
+      {
+        "id": "p3031_g_ex1_5",
+        "type": "select",
+        "page": 3031,
+        "exercise": "1",
+        "label": "5",
+        "top": 28.6,
+        "left": 33.3,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "b"
+      },
+      {
+        "id": "p3031_g_ex1_6",
+        "type": "select",
+        "page": 3031,
+        "exercise": "1",
+        "label": "6",
+        "top": 32.3,
+        "left": 37,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "f"
+      },
+      {
+        "id": "p3031_g_ex1_7",
+        "type": "select",
+        "page": 3031,
+        "exercise": "1",
+        "label": "7",
+        "top": 34.1,
+        "left": 40,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "c"
+      },
+      {
+        "id": "p3031_g_ex1_8",
+        "type": "select",
+        "page": 3031,
+        "exercise": "1",
+        "label": "8",
+        "top": 35.9,
+        "left": 30.5,
+        "width": 6,
+        "height": 1.9,
+        "options": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "correct": "g"
+      },
+      {
+        "id": "p3031_g_ex2_2",
+        "type": "select",
+        "page": 3031,
+        "exercise": "2",
+        "label": "2",
+        "top": 59.8,
+        "left": 16.5,
+        "width": 10,
+        "height": 1.9,
+        "options": [
+          "the",
+          "-"
+        ],
+        "correct": "the"
+      },
+      {
+        "id": "p3031_g_ex2_3",
+        "type": "select",
+        "page": 3031,
+        "exercise": "2",
+        "label": "3",
+        "top": 63.3,
+        "left": 21,
+        "width": 10,
+        "height": 1.9,
+        "options": [
+          "the",
+          "an"
+        ],
+        "correct": "an"
+      },
+      {
+        "id": "p3031_g_ex2_4",
+        "type": "select",
+        "page": 3031,
+        "exercise": "2",
+        "label": "4",
+        "top": 63.3,
+        "left": 35.5,
+        "width": 9,
+        "height": 1.9,
+        "options": [
+          "the",
+          "a"
+        ],
+        "correct": "the"
+      },
+      {
+        "id": "p3031_g_ex2_5",
+        "type": "select",
+        "page": 3031,
+        "exercise": "2",
+        "label": "5",
+        "top": 65,
+        "left": 18,
+        "width": 9,
+        "height": 1.9,
+        "options": [
+          "a",
+          "-"
+        ],
+        "correct": "a"
+      },
+      {
+        "id": "p3031_g_ex2_6",
+        "type": "select",
+        "page": 3031,
+        "exercise": "2",
+        "label": "6",
+        "top": 66.8,
+        "left": 15,
+        "width": 9,
+        "height": 1.9,
+        "options": [
+          "-",
+          "a"
+        ],
+        "correct": "a"
+      },
+      {
+        "id": "p3031_g_ex2_7",
+        "type": "select",
+        "page": 3031,
+        "exercise": "2",
+        "label": "7",
+        "top": 70.3,
+        "left": 24.5,
+        "width": 16,
+        "height": 1.9,
+        "options": [
+          "there are",
+          "there is"
+        ],
+        "correct": "there are"
+      },
+      {
+        "id": "p3031_g_ex2_8",
+        "type": "select",
+        "page": 3031,
+        "exercise": "2",
+        "label": "8",
+        "top": 72,
+        "left": 26.5,
+        "width": 16,
+        "height": 1.9,
+        "options": [
+          "there aren't",
+          "there are"
+        ],
+        "correct": "there aren't"
+      },
+      {
+        "id": "p3031_g_ex2_9",
+        "type": "select",
+        "page": 3031,
+        "exercise": "2",
+        "label": "9",
+        "top": 73.8,
+        "left": 24.5,
+        "width": 16,
+        "height": 1.9,
+        "options": [
+          "there aren't",
+          "there isn't"
+        ],
+        "correct": [
+          "there isn't"
+        ]
+      },
+      {
+        "id": "p3031_g_ex2_10",
+        "type": "select",
+        "page": 3031,
+        "exercise": "2",
+        "label": "10",
+        "top": 77.3,
+        "left": 30.5,
+        "width": 10,
+        "height": 1.9,
+        "options": [
+          "the",
+          "-"
+        ],
+        "correct": "-"
+      },
+      {
+        "id": "p3031_g_ex2_11",
+        "type": "select",
+        "page": 3031,
+        "exercise": "2",
+        "label": "11",
+        "top": 80.8,
+        "left": 11.5,
+        "width": 16,
+        "height": 1.9,
+        "options": [
+          "there's",
+          "there are"
+        ],
+        "correct": "there's"
+      },
+      {
+        "id": "p3031_g_ex2_12",
+        "type": "select",
+        "page": 3031,
+        "exercise": "2",
+        "label": "12",
+        "top": 82.5,
+        "left": 16.5,
+        "width": 10,
+        "height": 1.9,
+        "options": [
+          "the",
+          "-"
+        ],
+        "correct": "-"
+      },
+      {
+        "id": "p3031_v_ex3_2",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "3",
+        "label": "2",
+        "top": 25.8,
+        "left": 74,
+        "width": 11,
+        "height": 1.9,
+        "correct": "company"
+      },
+      {
+        "id": "p3031_v_ex3_3",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "3",
+        "label": "3",
+        "top": 27.5,
+        "left": 59,
+        "width": 11,
+        "height": 1.9,
+        "correct": "full-time"
+      },
+      {
+        "id": "p3031_v_ex3_4",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "3",
+        "label": "4",
+        "top": 29.3,
+        "left": 78.5,
+        "width": 11,
+        "height": 1.9,
+        "correct": "well paid"
+      },
+      {
+        "id": "p3031_v_ex3_5",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "3",
+        "label": "5",
+        "top": 31,
+        "left": 55,
+        "width": 11,
+        "height": 1.9,
+        "correct": "colleagues"
+      },
+      {
+        "id": "p3031_v_ex3_6",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "3",
+        "label": "6",
+        "top": 32.8,
+        "left": 51.5,
+        "width": 11,
+        "height": 1.9,
+        "correct": "office"
+      },
+      {
+        "id": "p3031_v_ex3_7",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "3",
+        "label": "7",
+        "top": 34.5,
+        "left": 78.5,
+        "width": 11,
+        "height": 1.9,
+        "correct": "hospital"
+      },
+      {
+        "id": "p3031_v_ex3_8",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "3",
+        "label": "8",
+        "top": 36.3,
+        "left": 77,
+        "width": 11,
+        "height": 1.9,
+        "correct": "salary"
+      },
+      {
+        "id": "p3031_v_ex4_2",
+        "type": "select",
+        "page": 3031,
+        "exercise": "4",
+        "label": "2",
+        "top": 46.5,
+        "left": 63.5,
+        "width": 14,
+        "height": 1.9,
+        "options": [
+          "a road",
+          "a theatre",
+          "a library",
+          "a hotel"
+        ],
+        "correct": "a library"
+      },
+      {
+        "id": "p3031_v_ex4_3",
+        "type": "select",
+        "page": 3031,
+        "exercise": "4",
+        "label": "3",
+        "top": 50,
+        "left": 71.5,
+        "width": 14,
+        "height": 1.9,
+        "options": [
+          "a bathroom",
+          "a toilet",
+          "a garage",
+          "a kitchen"
+        ],
+        "correct": "a kitchen"
+      },
+      {
+        "id": "p3031_v_ex4_4",
+        "type": "select",
+        "page": 3031,
+        "exercise": "4",
+        "label": "4",
+        "top": 53.6,
+        "left": 54,
+        "width": 12,
+        "height": 1.9,
+        "options": [
+          "between",
+          "under",
+          "next to",
+          "behind"
+        ],
+        "correct": "under"
+      },
+      {
+        "id": "p3031_v_ex4_5",
+        "type": "select",
+        "page": 3031,
+        "exercise": "4",
+        "label": "5",
+        "top": 57.2,
+        "left": 66.5,
+        "width": 14,
+        "height": 1.9,
+        "options": [
+          "a cooker",
+          "a dishwasher",
+          "a shower",
+          "a desk"
+        ],
+        "correct": "a shower"
+      },
+      {
+        "id": "p3031_s_ex5_1",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "5",
+        "label": "1",
+        "top": 72,
+        "left": 65.5,
+        "width": 14,
+        "height": 1.9,
+        "correct": "at the end of"
+      },
+      {
+        "id": "p3031_s_ex5_2",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "5",
+        "label": "2",
+        "top": 73.8,
+        "left": 53.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": "Could I"
+      },
+      {
+        "id": "p3031_s_ex5_3",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "5",
+        "label": "3",
+        "top": 75.6,
+        "left": 53.5,
+        "width": 14,
+        "height": 1.9,
+        "correct": "That's fine"
+      },
+      {
+        "id": "p3031_s_ex5_4",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "5",
+        "label": "4",
+        "top": 79.1,
+        "left": 59.5,
+        "width": 14,
+        "height": 1.9,
+        "correct": "where's"
+      },
+      {
+        "id": "p3031_s_ex5_5",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "5",
+        "label": "5",
+        "top": 82.6,
+        "left": 53.5,
+        "width": 13,
+        "height": 1.9,
+        "correct": "go past"
+      },
+      {
+        "id": "p3031_s_ex5_6",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "5",
+        "label": "6",
+        "top": 84.4,
+        "left": 55,
+        "width": 11,
+        "height": 1.9,
+        "correct": "the right"
+      },
+      {
+        "id": "p3031_s_ex5_7",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "5",
+        "label": "7",
+        "top": 86.2,
+        "left": 53.5,
+        "width": 13,
+        "height": 1.9,
+        "correct": "Can you"
+      },
+      {
+        "id": "p3031_s_ex5_8",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "5",
+        "label": "8",
+        "top": 89.7,
+        "left": 70,
+        "width": 14,
+        "height": 1.9,
+        "correct": "near here"
+      },
+      {
+        "id": "p3031_s_ex5_9",
+        "type": "fill",
+        "page": 3031,
+        "exercise": "5",
+        "label": "9",
+        "top": 93.3,
+        "left": 54.5,
+        "width": 14,
+        "height": 1.9,
+        "correct": "turn right"
       }
     ],
     "3046": [
@@ -104488,7 +105086,8 @@
     "3027": 1793432509242,
     "3028": 1793432574282,
     "3029": 1793432607964,
-    "3030": 1793432640854,
+    "3030": 1793432643901,
+    "3031": 1793432655143,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -105252,5 +105851,5 @@
       }
     }
   },
-  "updatedAt": 1793432641504
+  "updatedAt": 1793432655805
 }
