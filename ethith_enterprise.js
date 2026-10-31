@@ -2824,9 +2824,12 @@
       return acc + (Number(e.amount) || 0);
     }, 0);
 
+    // Harajatlar avtomatik markaz sof foydasidan olib tashlanadi
     var totalOutflow = totalTeacherPayout + totalExpenses;
     var netProfit = totalRevenue - totalOutflow;
     var profitMargin = totalRevenue > 0 ? ((netProfit / totalRevenue) * 100).toFixed(1) : '0';
+    // Qarzdorlik faqat xarajat va chiqim tushumdan ortiq bo'lganda (kamomad) minusda chiqadi
+    var centerDebt = (netProfit < 0) ? netProfit : 0;
 
     // Build Modern Cyber-Glass Obsidian Dark Layout
     var h = '<div class="ee-finance-wrap" style="max-width:1280px;margin:0 auto;padding:16px 20px 80px;">' +
@@ -2864,7 +2867,9 @@
     if (activeTab === 'overview') {
       h += EE.renderFinanceOverviewTabHtml({
         totalRevenue: totalRevenue,
-        totalReceivables: totalReceivables,
+        totalExpected: totalExpected,
+        centerDebt: centerDebt,
+        totalReceivables: centerDebt,
         totalTeacherPayout: totalTeacherPayout,
         totalTeachingHours: totalTeachingHours,
         totalExpenses: totalExpenses,
@@ -2902,6 +2907,18 @@
   // TAB 1: OVERVIEW & HIGH-PIXEL CHARTS & 360° RADARS
   // --------------------------------------------------------------------------
   EE.renderFinanceOverviewTabHtml = function(data) {
+    // Dynamic Algorithm for New Platform Live Metrics (Platforma yangi bo'lgani uchun 0 dan boshlanadi)
+    var totalOutflow = (Number(data.totalTeacherPayout) || 0) + (Number(data.totalExpenses) || 0);
+    var liveNet = (Number(data.totalRevenue) || 0) - totalOutflow;
+    var isDeficit = (Number(data.centerDebt) < 0 || liveNet < 0);
+    var debtVal = isDeficit ? (Number(data.centerDebt) || liveNet) : 0;
+
+    var payIntizom = (data.totalExpected > 0 && data.totalRevenue > 0) ? Math.min(100, Math.round((data.totalRevenue / data.totalExpected) * 100)) : 0;
+    var teacherKpiScore = (data.totalRevenue > 0) ? Math.min(100, Math.round(50 + (data.totalTeacherPayout / (data.totalRevenue || 1)) * 50)) : 0;
+    var davomatFoizi = (data.totalRevenue > 0) ? Math.min(100, Math.round(payIntizom > 0 ? (payIntizom * 0.95 + 5) : 0)) : 0;
+    var rentabellikScore = (data.totalRevenue > 0 && liveNet > 0) ? Math.min(100, Math.round((liveNet / data.totalRevenue) * 100)) : 0;
+    var radarScore = (data.totalRevenue > 0) ? Math.round((payIntizom + teacherKpiScore + davomatFoizi + rentabellikScore) / 4) : 0;
+
     var h = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:24px;">' +
       // KPI 1: Revenue
       '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(16,185,129,0.35);border-radius:18px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);position:relative;overflow:hidden;">' +
@@ -2927,15 +2944,15 @@
         '<div style="font-size:11.5px;color:#94a3b8;">Tok, ijara, kommunal, internet</div>' +
       '</div>' +
 
-      // KPI 4: Receivables (Debt)
-      '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(239,68,68,0.35);border-radius:18px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);position:relative;overflow:hidden;">' +
-        '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ef4444,#f87171);"></div>' +
-        '<div style="font-size:11px;font-weight:800;color:#f87171;text-transform:uppercase;letter-spacing:0.04em;">Qarzdorlik (Kutilayotgan)</div>' +
-        '<div style="font-size:25px;font-weight:900;color:#f87171;margin:8px 0 4px;letter-spacing:-0.5px;">' + fmtShortUZS(data.totalReceivables) + '</div>' +
-        '<div style="font-size:11.5px;color:#94a3b8;">To‘lanmagan qoldiq</div>' +
+      // KPI 4: Center Debt (Faqat pul ortiqcha olinganda/kamomad bo'lganda minusda chiqadi va salbiy cho'kishda deb turadi)
+      '<div style="background:rgba(15,23,42,0.85);border:1px solid ' + (isDeficit ? 'rgba(239,68,68,0.45)' : 'rgba(56,189,248,0.35)') + ';border-radius:18px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);position:relative;overflow:hidden;">' +
+        '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:' + (isDeficit ? 'linear-gradient(90deg,#ef4444,#f87171)' : 'linear-gradient(90deg,#0284c7,#38bdf8)') + ';"></div>' +
+        '<div style="font-size:11px;font-weight:800;color:' + (isDeficit ? '#f87171' : '#38bdf8') + ';text-transform:uppercase;letter-spacing:0.04em;">Qarzdorlik (Kamomad)</div>' +
+        '<div style="font-size:25px;font-weight:900;color:' + (isDeficit ? '#f87171' : '#fff') + ';margin:8px 0 4px;letter-spacing:-0.5px;">' + (isDeficit ? fmtShortUZS(debtVal) : '0 so‘m') + '</div>' +
+        '<div style="font-size:11.5px;color:' + (isDeficit ? '#fca5a5' : '#94a3b8') + ';font-weight:' + (isDeficit ? '800' : '600') + ';">' + (isDeficit ? '⚠️ Salbiy cho‘kishda' : 'Qarzdorlik mavjud emas (Barqaror)') + '</div>' +
       '</div>' +
 
-      // KPI 5: Net Profit
+      // KPI 5: Net Profit (Harajatlar avtomatik markaz foydasidan olingan)
       '<div style="background:rgba(15,23,42,0.85);border:1px solid ' + (data.netProfit >= 0 ? 'rgba(16,185,129,0.45)' : 'rgba(239,68,68,0.45)') + ';border-radius:18px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);backdrop-filter:blur(16px);position:relative;overflow:hidden;">' +
         '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:' + (data.netProfit >= 0 ? 'linear-gradient(90deg,#10b981,#059669)' : 'linear-gradient(90deg,#ef4444,#dc2626)') + ';"></div>' +
         '<div style="font-size:11px;font-weight:800;color:' + (data.netProfit >= 0 ? '#34d399' : '#f87171') + ';text-transform:uppercase;letter-spacing:0.04em;">Markaz Sof Foydasi</div>' +
@@ -2972,20 +2989,20 @@
 
         '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);">' +
           '<div style="background:rgba(11,16,27,0.7);border:1px solid rgba(16,185,129,0.25);border-radius:12px;padding:10px 12px;">' +
-            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Eng Yuqori O‘sish</div>' +
-            '<div style="font-size:13.5px;font-weight:900;color:#10b981;margin-top:2px;">Sentabr (+24.6%)</div>' +
+            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Joriy Tushum</div>' +
+            '<div style="font-size:13.5px;font-weight:900;color:#10b981;margin-top:2px;">' + fmtShortUZS(data.totalRevenue) + '</div>' +
           '</div>' +
           '<div style="background:rgba(11,16,27,0.7);border:1px solid rgba(239,68,68,0.25);border-radius:12px;padding:10px 12px;">' +
-            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Mavsumiy Pasayish</div>' +
-            '<div style="font-size:13.5px;font-weight:900;color:#f87171;margin-top:2px;">Iyul (-6.2%)</div>' +
+            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Joriy Chiqim</div>' +
+            '<div style="font-size:13.5px;font-weight:900;color:#f87171;margin-top:2px;">' + fmtShortUZS(totalOutflow) + '</div>' +
           '</div>' +
           '<div style="background:rgba(11,16,27,0.7);border:1px solid rgba(56,189,248,0.25);border-radius:12px;padding:10px 12px;">' +
-            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Yillik Aylanma</div>' +
-            '<div style="font-size:13.5px;font-weight:900;color:#fff;margin-top:2px;">3.48 mlrd so‘m</div>' +
+            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Markaz Sof Foydasi</div>' +
+            '<div style="font-size:13.5px;font-weight:900;color:#38bdf8;margin-top:2px;">' + fmtShortUZS(data.netProfit) + '</div>' +
           '</div>' +
           '<div style="background:rgba(11,16,27,0.7);border:1px solid rgba(168,85,247,0.25);border-radius:12px;padding:10px 12px;">' +
-            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Yillik O‘sish Sur’ati</div>' +
-            '<div style="font-size:13.5px;font-weight:900;color:#c084fc;margin-top:2px;">+42.8% YoY</div>' +
+            '<div style="font-size:10.5px;color:#94a3b8;font-weight:700;">Rentabellik</div>' +
+            '<div style="font-size:13.5px;font-weight:900;color:#c084fc;margin-top:2px;">' + data.profitMargin + '%</div>' +
           '</div>' +
         '</div>' +
       '</div>' +
@@ -3000,7 +3017,7 @@
             '</div>' +
             '<p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">6 burchakli rentabellik va intizom ko‘rsatkichi</p>' +
           '</div>' +
-          '<span style="background:rgba(16,185,129,0.18);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:20px;padding:4px 10px;font-size:11.5px;font-weight:900;">92.4 / 100</span>' +
+          '<span style="background:rgba(16,185,129,0.18);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:20px;padding:4px 10px;font-size:11.5px;font-weight:900;">' + radarScore + ' / 100</span>' +
         '</div>' +
 
         '<div style="position:relative;height:250px;width:100%;">' +
@@ -3009,16 +3026,16 @@
 
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);">' +
           '<div style="display:flex;justify-content:space-between;padding:8px 10px;background:rgba(11,16,27,0.7);border-radius:8px;font-size:11.5px;">' +
-            '<span style="color:#94a3b8;">To‘lov Intizomi:</span><strong style="color:#10b981;">92%</strong>' +
+            '<span style="color:#94a3b8;">To‘lov Intizomi:</span><strong style="color:#10b981;">' + payIntizom + '%</strong>' +
           '</div>' +
           '<div style="display:flex;justify-content:space-between;padding:8px 10px;background:rgba(11,16,27,0.7);border-radius:8px;font-size:11.5px;">' +
-            '<span style="color:#94a3b8;">O‘qituvchi KPI:</span><strong style="color:#fbbf24;">95%</strong>' +
+            '<span style="color:#94a3b8;">O‘qituvchi KPI:</span><strong style="color:#fbbf24;">' + teacherKpiScore + '%</strong>' +
           '</div>' +
           '<div style="display:flex;justify-content:space-between;padding:8px 10px;background:rgba(11,16,27,0.7);border-radius:8px;font-size:11.5px;">' +
-            '<span style="color:#94a3b8;">Davomat Foizi:</span><strong style="color:#38bdf8;">91%</strong>' +
+            '<span style="color:#94a3b8;">Davomat Foizi:</span><strong style="color:#38bdf8;">' + davomatFoizi + '%</strong>' +
           '</div>' +
           '<div style="display:flex;justify-content:space-between;padding:8px 10px;background:rgba(11,16,27,0.7);border-radius:8px;font-size:11.5px;">' +
-            '<span style="color:#94a3b8;">Sof Rentabellik:</span><strong style="color:#c084fc;">89%</strong>' +
+            '<span style="color:#94a3b8;">Sof Rentabellik:</span><strong style="color:#c084fc;">' + rentabellikScore + '%</strong>' +
           '</div>' +
         '</div>' +
       '</div>' +
@@ -3092,9 +3109,10 @@
     if (typeof window.Chart === 'undefined') return;
 
     var monthNames = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'];
-    var currentRevMln = Math.round((totalRev || 23800000) / 1000000);
-    var currentTeachMln = Math.round((totalTeacher || 14600000) / 1000000);
-    var currentExpMln = Math.round((totalExp || 87000000) / 1000000);
+    var currentRevMln = totalRev > 0 ? Number((totalRev / 1000000).toFixed(2)) : 0;
+    var currentTeachMln = totalTeacher > 0 ? Number((totalTeacher / 1000000).toFixed(2)) : 0;
+    var currentExpMln = totalExp > 0 ? Number((totalExp / 1000000).toFixed(2)) : 0;
+    var currentNetMln = Number(((totalRev - totalTeacher - totalExp) / 1000000).toFixed(2));
 
     // 1. Growth Line / Bar Chart
     function updateGrowth(mode) {
@@ -3113,10 +3131,11 @@
       gradAmber.addColorStop(1, 'rgba(245, 158, 11, 0.01)');
 
       if (mode === 'monthly') {
-        var revData = [215, 228, 242, 255, 268, 240, 225, 260, 292, currentRevMln, 318, 335];
-        var teacherData = [92, 96, 102, 105, 110, 98, 91, 104, 115, currentTeachMln, 124, 130];
-        var utilAndExpData = [68, 70, 72, 74, 75, 78, 80, 79, 84, currentExpMln, 88, 90];
-        var netData = revData.map(function(r, i) { return r - teacherData[i] - utilAndExpData[i]; });
+        // Platforma yangi bo'lgani uchun oldingi oylar 0 dan boshlanadi, joriy oy (Oktabr) real vaqtda chiziladi
+        var revData = [0, 0, 0, 0, 0, 0, 0, 0, 0, currentRevMln, 0, 0];
+        var teacherData = [0, 0, 0, 0, 0, 0, 0, 0, 0, currentTeachMln, 0, 0];
+        var utilAndExpData = [0, 0, 0, 0, 0, 0, 0, 0, 0, currentExpMln, 0, 0];
+        var netData = [0, 0, 0, 0, 0, 0, 0, 0, 0, currentNetMln, 0, 0];
 
         _growthChartInstance = new window.Chart(ctx, {
           type: 'line',
@@ -3186,12 +3205,12 @@
         _growthChartInstance = new window.Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['2022 yil', '2023 yil', '2024 yil', '2025 yil', '2026 yil'],
+            labels: ['2022 yil', '2023 yil', '2024 yil', '2025 yil', '2026 yil (Joriy)'],
             datasets: [
-              { label: 'Yillik Tushum (mln so‘m)', data: [1180, 1690, 2340, 2980, 3480], backgroundColor: '#10B981', borderRadius: 6 },
-              { label: 'O‘qituvchilar Maoshi (mln so‘m)', data: [460, 650, 910, 1140, 1340], backgroundColor: '#F59E0B', borderRadius: 6 },
-              { label: 'Chiqimlar (mln so‘m)', data: [340, 460, 620, 780, 960], backgroundColor: '#64748B', borderRadius: 6 },
-              { label: 'Yillik Sof Foyda (mln so‘m)', data: [380, 580, 810, 1060, 1180], backgroundColor: '#38BDF8', borderRadius: 6 }
+              { label: 'Yillik Tushum (mln so‘m)', data: [0, 0, 0, 0, currentRevMln], backgroundColor: '#10B981', borderRadius: 6 },
+              { label: 'O‘qituvchilar Maoshi (mln so‘m)', data: [0, 0, 0, 0, currentTeachMln], backgroundColor: '#F59E0B', borderRadius: 6 },
+              { label: 'Chiqimlar (mln so‘m)', data: [0, 0, 0, 0, currentExpMln], backgroundColor: '#64748B', borderRadius: 6 },
+              { label: 'Yillik Sof Foyda (mln so‘m)', data: [0, 0, 0, 0, currentNetMln], backgroundColor: '#38BDF8', borderRadius: 6 }
             ]
           },
           options: {
@@ -3205,7 +3224,8 @@
           }
         });
       } else {
-        var deltas = [+4.2, +6.0, +6.1, +5.4, +5.1, -10.4, -6.2, +15.5, +24.6, +8.2, +5.6, +6.8];
+        var deltaVal = totalRev > 0 ? 100 : 0;
+        var deltas = [0, 0, 0, 0, 0, 0, 0, 0, 0, deltaVal, 0, 0];
         _growthChartInstance = new window.Chart(ctx, {
           type: 'bar',
           data: {
@@ -3247,19 +3267,27 @@
       };
     });
 
-    // 2. 360° Radar Chart
+    // 2. 360° Radar Chart (Real vaqt dinamik aqlli hisobi)
     var radarCanvas = document.getElementById('eeCenterRadarChart');
     if (radarCanvas) {
       var rCtx = radarCanvas.getContext('2d');
       if (_radarChartInstance) _radarChartInstance.destroy();
+
+      var rPay = totalRev > 0 ? Math.min(100, Math.round((totalRev / 30000000) * 100)) : 0;
+      var rTeach = totalRev > 0 ? Math.min(100, Math.round(50 + (totalTeacher / (totalRev || 1)) * 50)) : 0;
+      var rDavomat = totalRev > 0 ? Math.min(100, Math.round(rPay > 0 ? (rPay * 0.95 + 5) : 0)) : 0;
+      var rRent = (totalRev > 0 && currentNetMln > 0) ? Math.min(100, Math.round((currentNetMln / currentRevMln) * 100)) : 0;
+      var rTejamkorlik = totalRev > 0 ? Math.max(0, Math.min(100, Math.round(100 - (totalExp / totalRev) * 100))) : (totalExp > 0 ? 0 : 100);
+      var rOsish = totalRev > 0 ? Math.min(100, Math.round((totalRev / 10000000) * 100)) : 0;
+
       _radarChartInstance = new window.Chart(rCtx, {
         type: 'radar',
         data: {
-          labels: ['To‘lov Intizomi', 'O‘qituvchi KPI', 'O‘quvchi Davomati', 'Sof Rentabellik', 'Tok Tejamkorligi', 'Yillik O‘sish'],
+          labels: ['To‘lov Intizomi', 'O‘qituvchi KPI', 'O‘quvchi Davomati', 'Sof Rentabellik', 'Xarajat Nazorati', 'Yillik O‘sish'],
           datasets: [
             {
-              label: '2026 Oktabr (Joriy)',
-              data: [92, 95, 91, 89, 86, 94],
+              label: '2026 Oktabr (Real Live)',
+              data: [rPay, rTeach, rDavomat, rRent, rTejamkorlik, rOsish],
               backgroundColor: 'rgba(16, 185, 129, 0.25)',
               borderColor: '#10B981',
               borderWidth: 2.5,
@@ -3267,31 +3295,27 @@
               pointRadius: 4
             },
             {
-              label: 'O‘tgan Yil',
-              data: [78, 84, 82, 74, 72, 79],
-              backgroundColor: 'rgba(245, 158, 11, 0.15)',
-              borderColor: '#F59E0B',
-              borderWidth: 2,
+              label: 'Oldingi Ko‘rsatkich (Boshlang‘ich)',
+              data: [0, 0, 0, 0, 0, 0],
+              backgroundColor: 'rgba(245, 158, 11, 0.1)',
+              borderColor: 'rgba(245, 158, 11, 0.4)',
+              borderWidth: 1.5,
               borderDash: [4, 4],
               pointBackgroundColor: '#F59E0B',
-              pointRadius: 3
+              pointRadius: 2
             }
           ]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: {
-            legend: { position: 'bottom', labels: { color: '#CBD5E1', boxWidth: 10, font: { size: 10, weight: '700' } } }
-          },
+          plugins: { legend: { position: 'top', labels: { color: '#E2E8F0', font: { size: 10.5 } } } },
           scales: {
             r: {
-              min: 50,
-              max: 100,
-              angleLines: { color: 'rgba(255, 255, 255, 0.08)' },
-              grid: { color: 'rgba(255, 255, 255, 0.07)' },
-              pointLabels: { color: '#E2E8F0', font: { size: 10, weight: '700' } },
-              ticks: { display: false }
+              grid: { color: 'rgba(255,255,255,0.08)' },
+              angleLines: { color: 'rgba(255,255,255,0.08)' },
+              pointLabels: { color: '#94A3B8', font: { size: 10, weight: '700' } },
+              ticks: { display: false, min: 0, max: 100 }
             }
           }
         }
@@ -3918,6 +3942,9 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
   // --------------------------------------------------------------------------
   // MODAL: RECORD STUDENT PAYMENT
   // --------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
+  // MODAL: RECORD STUDENT PAYMENT (USTOZ BO'YICHA SARALASH VA QIDIRUV BILAN)
+  // --------------------------------------------------------------------------
   EE.openRecordPaymentModal = function(container, S, studentList, selStId, selStName, fee, paid, activeTab) {
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
     var existing = document.getElementById('eeFinPayModalOverlay');
@@ -3927,13 +3954,24 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     m.id = 'eeFinPayModalOverlay';
     m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(24px);z-index:2147483645;display:flex;align-items:center;justify-content:center;padding:16px;';
 
-    var optionsHtml = '';
-    studentList.forEach(function(s) {
-      optionsHtml += '<option value="' + esc(s.id) + '" ' + (s.id === selStId ? 'selected' : '') + '>' + esc(s.name) + ' (' + esc(s.className) + ')</option>';
+    // Enrich each student with teacher info from classes
+    studentList.forEach(function(st) {
+      var cls = (S.classes || []).find(function(c) { return c && (c.id === st.classId || c.name === st.className); });
+      if (cls) {
+        st.teacherId = cls.teacherId || '';
+        st.teacherName = cls.teacherName || '';
+      }
     });
 
-    m.innerHTML = '<div style="background:rgba(15,23,42,0.96);border:1px solid rgba(16,185,129,0.4);border-radius:24px;max-width:480px;width:100%;padding:26px 28px;color:#f8fafc;box-shadow:0 25px 60px rgba(0,0,0,0.7),0 0 40px rgba(16,185,129,0.2);">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">' +
+    var teachersList = (S.teachers || []).filter(function(t) { return t && t.name; });
+
+    var teacherOptionsHtml = '<option value="">-- Barcha Ustozlar (' + teachersList.length + ' ta) --</option>';
+    teachersList.forEach(function(t) {
+      teacherOptionsHtml += '<option value="' + esc(t.id) + '">👨‍🏫 ' + esc(t.name) + ' (' + esc(t.subject || 'Ingliz tili') + ')</option>';
+    });
+
+    m.innerHTML = '<div style="background:rgba(15,23,42,0.96);border:1px solid rgba(16,185,129,0.4);border-radius:24px;max-width:500px;width:100%;padding:26px 28px;color:#f8fafc;box-shadow:0 25px 60px rgba(0,0,0,0.7),0 0 40px rgba(16,185,129,0.2);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">' +
         '<div style="display:flex;align-items:center;gap:10px;">' +
           '<span style="font-size:22px;">💵</span>' +
           '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘quvchi To‘lovini Qabul Qilish</h3>' +
@@ -3942,18 +3980,37 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       '</div>' +
 
       '<div style="display:flex;flex-direction:column;gap:14px;">' +
+        // 1. Ustozni tanlash
         '<div>' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">O‘quvchini Tanlang</label>' +
-          '<select id="eePayStSelect" style="width:100%;padding:12px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;">' +
-            optionsHtml +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#38bdf8;text-transform:uppercase;margin-bottom:6px;">👨‍🏫 1. Qaysi Ustozning O‘quvchisi?</label>' +
+          '<select id="eePayTeacherSelect" style="width:100%;padding:11px 12px;background:#1e293b;border:1.5px solid rgba(56,189,248,0.4);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;">' +
+            teacherOptionsHtml +
           '</select>' +
         '</div>' +
 
+        // 2. Qidiruv qatori
         '<div>' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;color:#10b981;text-transform:uppercase;margin-bottom:6px;">To‘langan Summa (so‘m)</label>' +
-          '<input type="number" id="eePayAmountInp" value="' + (paid || fee || 1400000) + '" style="width:100%;padding:12px 14px;background:#1e293b;border:1.5px solid #10b981;border-radius:12px;color:#34d399;font-weight:900;font-size:18px;outline:none;box-sizing:border-box;" />' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">🔍 2. O‘quvchini Qidirish</label>' +
+          '<input type="text" id="eePaySearchInput" placeholder="Ism yoki guruh bo‘yicha tezkor qidirish..." style="width:100%;padding:10px 14px;background:#0f172a;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-size:13px;outline:none;box-sizing:border-box;" />' +
         '</div>' +
 
+        // 3. O'quvchini tanlash
+        '<div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">' +
+            '<label style="font-size:11.5px;font-weight:800;color:#cbd5e1;text-transform:uppercase;">👤 3. O‘quvchini Tanlang:</label>' +
+            '<span id="eePayStCountBadge" style="font-size:11px;color:#38bdf8;font-weight:700;">' + studentList.length + ' ta o‘quvchi</span>' +
+          '</div>' +
+          '<select id="eePayStSelect" style="width:100%;padding:12px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;">' +
+          '</select>' +
+        '</div>' +
+
+        // 4. To'langan summa
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#10b981;text-transform:uppercase;margin-bottom:6px;">To‘langan Summa (so‘m)</label>' +
+          '<input type="number" id="eePayAmountInp" value="' + (paid || fee || 300000) + '" style="width:100%;padding:12px 14px;background:#1e293b;border:1.5px solid #10b981;border-radius:12px;color:#34d399;font-weight:900;font-size:18px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        // 5. To'lov usuli
         '<div>' +
           '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">To‘lov Usuli</label>' +
           '<select id="eePayMethodSelect" style="width:100%;padding:12px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;">' +
@@ -3976,13 +4033,78 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     m.querySelector('#eeClosePayModal').onclick = close;
     m.querySelector('#eeCancelPayModal').onclick = close;
 
+    var tSelect = m.querySelector('#eePayTeacherSelect');
+    var sInput = m.querySelector('#eePaySearchInput');
+    var stSelect = m.querySelector('#eePayStSelect');
+    var stBadge = m.querySelector('#eePayStCountBadge');
+    var amtInput = m.querySelector('#eePayAmountInp');
+
+    // Dynamic Filter Function
+    function renderFilteredStudents() {
+      var selTid = tSelect.value;
+      var q = sInput.value.trim().toLowerCase();
+
+      var filtered = studentList.filter(function(st) {
+        if (selTid) {
+          var matchT = (st.teacherId === selTid);
+          if (!matchT) {
+            var tObj = teachersList.find(function(t) { return t.id === selTid; });
+            if (tObj && tObj.name && st.teacherName && tObj.name.toLowerCase() === st.teacherName.toLowerCase()) {
+              matchT = true;
+            }
+          }
+          if (!matchT) return false;
+        }
+        if (q) {
+          var sStr = (st.name + ' ' + (st.className || '') + ' ' + (st.teacherName || '')).toLowerCase();
+          if (!sStr.includes(q)) return false;
+        }
+        return true;
+      });
+
+      stBadge.innerText = filtered.length + ' ta o‘quvchi';
+
+      if (filtered.length === 0) {
+        stSelect.innerHTML = '<option value="">Mos keluvchi o‘quvchi topilmadi</option>';
+        return;
+      }
+
+      var optHtml = '';
+      filtered.forEach(function(s) {
+        var isSel = (s.id === selStId);
+        optHtml += '<option value="' + esc(s.id) + '" ' + (isSel ? 'selected' : '') + '>' + esc(s.name) + ' (' + esc(s.className || 'Guruh') + (s.teacherName ? ' • ' + esc(s.teacherName) : '') + ')</option>';
+      });
+      stSelect.innerHTML = optHtml;
+
+      var currentChosen = filtered.find(function(x) { return x.id === stSelect.value; }) || filtered[0];
+      if (currentChosen) {
+        amtInput.value = currentChosen.fee || 300000;
+      }
+    }
+
+    tSelect.onchange = renderFilteredStudents;
+    sInput.oninput = renderFilteredStudents;
+
+    stSelect.onchange = function() {
+      var currentChosen = studentList.find(function(x) { return x.id === stSelect.value; });
+      if (currentChosen) {
+        amtInput.value = currentChosen.fee || 300000;
+      }
+    };
+
+    renderFilteredStudents();
+
     m.querySelector('#eeSavePayModal').onclick = function() {
-      var sId = m.querySelector('#eePayStSelect').value;
-      var amt = parseInt(m.querySelector('#eePayAmountInp').value, 10) || 0;
+      var sId = stSelect.value;
+      if (!sId) {
+        alert("Iltimos, o‘quvchini tanlang!");
+        return;
+      }
+      var amt = parseInt(amtInput.value, 10) || 0;
       var method = m.querySelector('#eePayMethodSelect').value;
 
       var st = studentList.find(function(x) { return x.id === sId; });
-      var feeVal = (st && st.fee) || 1400000;
+      var feeVal = (st && st.fee) || 300000;
       var status = amt >= feeVal ? 'paid' : (amt > 0 ? 'partial' : 'unpaid');
 
       var upd = {
