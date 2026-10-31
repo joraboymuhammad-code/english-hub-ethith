@@ -3274,7 +3274,10 @@ EA.render = function(container, preserveScrollLeft) {
       };
     });
 
+    var curUser = getActiveUser();
+    var isAdmin = isAdminRole();
     var isTeacher = isTeacherRole();
+    var isStudent = curUser && curUser.role === 'student';
     var scrollWrap = container.querySelector('.ea-table-scroll-wrap');
 
     var backToTGroupsBtn = container.querySelector('#eaBtnBackToTeacherGroupsFromJ');

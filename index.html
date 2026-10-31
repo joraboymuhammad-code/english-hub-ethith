@@ -228659,7 +228659,10 @@ EA.render = function(container, preserveScrollLeft) {
       };
     });
 
+    var curUser = getActiveUser();
+    var isAdmin = isAdminRole();
     var isTeacher = isTeacherRole();
+    var isStudent = curUser && curUser.role === 'student';
     var scrollWrap = container.querySelector('.ea-table-scroll-wrap');
 
     var backToTGroupsBtn = container.querySelector('#eaBtnBackToTeacherGroupsFromJ');
@@ -237284,92 +237287,143 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     var S = getStore();
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
 
-    var m = document.createElement('div');
-    m.id = 'eeLevelTestOverlay';
-    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(12px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;';
+    var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
+    var curUser = S_app.user || {};
+    var isAdmin = curUser.role === 'admin' || (curUser.email && curUser.email.toLowerCase().includes('admin'));
+    var isTeacher = curUser.role === 'teacher' || isAdmin || curUser.isTeacher === true;
 
-    // Mock/seed Level Test scores for all students in class if not yet recorded
+    if (!cls.levelTestResults) cls.levelTestResults = {};
+
     var students = cls.students || [];
-    var records = {};
-    students.forEach(function(st, idx) {
+
+    // Ensure all students have a record
+    students.forEach(function(st) {
       var stId = st.id || st.email;
-      // Deterministic realistic test score (e.g. between 55% and 98%)
-      var score = (idx === 2 || idx === 7) ? 58 : (72 + (idx * 3) % 25);
-      var passed = (score >= 70);
-      records[stId] = {
-        name: st.name || stId,
-        score: score,
-        passed: passed
-      };
+      if (!cls.levelTestResults[stId]) {
+        cls.levelTestResults[stId] = {
+          score: null,
+          passed: false,
+          updatedAt: Date.now()
+        };
+      }
     });
 
-    var passedCount = Object.values(records).filter(function(r) { return r.passed; }).length;
-    var failedCount = Object.values(records).filter(function(r) { return !r.passed; }).length;
+    function getStats() {
+      var passedCount = 0;
+      var failedCount = 0;
+      var totalScore = 0;
+      var scoredCount = 0;
 
-    var mHtml = '<div style="background:#0f172a;border:2px solid #10b981;border-radius:24px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;padding:28px;color:#f8fafc;box-shadow:0 24px 60px rgba(0,0,0,0.7);">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">' +
+      students.forEach(function(st) {
+        var stId = st.id || st.email;
+        var r = cls.levelTestResults[stId];
+        if (r) {
+          if (r.passed) {
+            passedCount++;
+          } else if (r.score !== null && r.score !== undefined) {
+            failedCount++;
+          }
+          if (r.score !== null && r.score !== undefined && !isNaN(r.score)) {
+            totalScore += Number(r.score);
+            scoredCount++;
+          }
+        }
+      });
+
+      var avgScore = scoredCount > 0 ? Math.round(totalScore / scoredCount) : 0;
+      return { passedCount: passedCount, failedCount: failedCount, avgScore: avgScore };
+    }
+
+    var stats = getStats();
+
+    var m = document.createElement('div');
+    m.id = 'eeLevelTestOverlay';
+    m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    var mHtml = '<div style="background:linear-gradient(145deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:2px solid #10b981;border-radius:24px;max-width:800px;width:100%;max-height:92vh;overflow-y:auto;padding:28px 30px;color:#f8fafc;box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(16,185,129,0.25);">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
-          '<span style="font-size:28px;">🟢</span>' +
+          '<div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(16,185,129,0.4);">🎯</div>' +
           '<div>' +
             '<h3 style="margin:0;font-size:20px;font-weight:900;color:#34d399;">3 Oylik Level Test Imtihoni & Saralash</h3>' +
-            '<div style="font-size:12.5px;color:#94a3b8;">Guruh: <b style="color:#fff;">' + esc(cls.name) + '</b> • O‘tish bali: <b>70%</b></div>' +
+            '<div style="font-size:12.5px;color:#94a3b8;margin-top:2px;">Guruh: <b style="color:#fff;">' + esc(cls.name) + '</b> • O‘tish bali: <b style="color:#38bdf8;">70%</b>' +
+              (isTeacher ? ' <span style="background:rgba(56,189,248,0.18);color:#38bdf8;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;margin-left:6px;">⚡ Tahrirlash Faol (Real-vaqt)</span>' : '') +
+            '</div>' +
           '</div>' +
         '</div>' +
-        '<button id="eeCloseLevelTestModal" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
+        '<button id="eeCloseLevelTestModal" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:20px;cursor:pointer;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">✕</button>' +
       '</div>' +
 
-      // Top Stats
-      '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:18px;">' +
-        '<div style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:14px;padding:12px;text-align:center;">' +
-          '<div style="font-size:11px;font-weight:800;color:#6ee7b7;text-transform:uppercase;">Keyingi Levelga O‘tganlar</div>' +
-          '<div style="font-size:22px;font-weight:900;color:#34d399;margin-top:2px;">' + passedCount + ' ta</div>' +
+      // Top Stats Cards
+      '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px;">' +
+        '<div style="background:rgba(16,185,129,0.12);border:1.5px solid rgba(16,185,129,0.35);border-radius:16px;padding:14px;text-align:center;">' +
+          '<div style="font-size:11px;font-weight:800;color:#6ee7b7;text-transform:uppercase;letter-spacing:0.5px;">Keyingi Levelga O‘tganlar</div>' +
+          '<div id="eeLevelPassedCount" style="font-size:26px;font-weight:900;color:#34d399;margin-top:4px;">' + stats.passedCount + ' ta</div>' +
         '</div>' +
-        '<div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:14px;padding:12px;text-align:center;">' +
-          '<div style="font-size:11px;font-weight:800;color:#fca5a5;text-transform:uppercase;">Yiqilganlar (Qoladi)</div>' +
-          '<div style="font-size:22px;font-weight:900;color:#f87171;margin-top:2px;">' + failedCount + ' ta</div>' +
+        '<div style="background:rgba(239,68,68,0.12);border:1.5px solid rgba(239,68,68,0.35);border-radius:16px;padding:14px;text-align:center;">' +
+          '<div style="font-size:11px;font-weight:800;color:#fca5a5;text-transform:uppercase;letter-spacing:0.5px;">Yiqilganlar (Qoladi)</div>' +
+          '<div id="eeLevelFailedCount" style="font-size:26px;font-weight:900;color:#f87171;margin-top:4px;">' + stats.failedCount + ' ta</div>' +
         '</div>' +
-        '<div style="background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.3);border-radius:14px;padding:12px;text-align:center;">' +
-          '<div style="font-size:11px;font-weight:800;color:#7dd3fc;text-transform:uppercase;">O‘rtacha Natija</div>' +
-          '<div style="font-size:22px;font-weight:900;color:#38bdf8;margin-top:2px;">78%</div>' +
+        '<div style="background:rgba(56,189,248,0.12);border:1.5px solid rgba(56,189,248,0.35);border-radius:16px;padding:14px;text-align:center;">' +
+          '<div style="font-size:11px;font-weight:800;color:#7dd3fc;text-transform:uppercase;letter-spacing:0.5px;">O‘rtacha Natija</div>' +
+          '<div id="eeLevelAvgScore" style="font-size:26px;font-weight:900;color:#38bdf8;margin-top:4px;">' + stats.avgScore + '%</div>' +
         '</div>' +
       '</div>' +
 
       // Action toolbar
-      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">' +
-        '<div style="display:flex;gap:8px;">' +
-          '<button id="eeExportLevelXlsx" style="background:#059669;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;">📊 Excel (.xlsx)</button>' +
-          '<button id="eeExportLevelDoc" style="background:#0284c7;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;">📄 Word (.doc)</button>' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px;">' +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+          '<button id="eeExportLevelXlsx" style="background:#059669;color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">📊 Excel (.xlsx)</button>' +
+          '<button id="eeExportLevelDoc" style="background:#0284c7;color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">📄 Word (.doc)</button>' +
         '</div>' +
-        '<button id="eeDropFailedStudentsBtn" style="background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(239,68,68,0.4);">' +
-          '⚠️ Yiqilgan o‘quvchilarni guruhdan chiqarish' +
-        '</button>' +
+        '<div style="display:flex;gap:10px;flex-wrap:wrap;">' +
+          (isTeacher ? '<button id="eeSendFailedSmsBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(245,158,11,0.35);" title="Imtihondan yiqilgan o‘quvchilarning ota-onalariga Infobip orqali avtomatik SMS yuborish">📱 Yiqilganlarga SMS Yuborish</button>' : '') +
+          (isTeacher ? '<button id="eeDropFailedStudentsBtn" style="background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(239,68,68,0.4);">⚠️ Yiqilgan o‘quvchilarni guruhdan chiqarish</button>' : '') +
+        '</div>' +
       '</div>' +
 
-      // Table
-      '<div style="background:#1e293b;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">' +
+      // Table Container
+      '<div style="background:#1e293b;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">' +
         '<table style="width:100%;border-collapse:collapse;font-size:13px;text-align:left;">' +
           '<thead>' +
-            '<tr style="background:rgba(0,0,0,0.3);color:#94a3b8;font-size:11px;text-transform:uppercase;">' +
-              '<th style="padding:10px 14px;">#</th>' +
-              '<th style="padding:10px 14px;">O‘quvchi</th>' +
-              '<th style="padding:10px 14px;">Imtihon Bali</th>' +
-              '<th style="padding:10px 14px;">Qaror</th>' +
+            '<tr style="background:rgba(15,23,42,0.85);color:#94a3b8;font-size:11.5px;font-weight:900;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid rgba(255,255,255,0.08);">' +
+              '<th style="padding:12px 14px;width:40px;text-align:center;">#</th>' +
+              '<th style="padding:12px 14px;">O‘quvchi</th>' +
+              '<th style="padding:12px 14px;width:150px;text-align:center;">Imtihon Bali</th>' +
+              '<th style="padding:12px 14px;width:210px;text-align:center;">Qaror</th>' +
             '</tr>' +
           '</thead>' +
           '<tbody>';
 
           students.forEach(function(st, idx) {
             var stId = st.id || st.email;
-            var r = records[stId] || { score: 75, passed: true };
-            mHtml += '<tr style="border-top:1px solid rgba(255,255,255,0.05);background:' + (r.passed ? 'transparent' : 'rgba(239,68,68,0.06)') + ';">' +
-              '<td style="padding:10px 14px;color:#94a3b8;">' + (idx + 1) + '</td>' +
-              '<td style="padding:10px 14px;font-weight:800;color:#fff;">' + esc(st.name || stId) + '</td>' +
-              '<td style="padding:10px 14px;font-weight:900;color:' + (r.passed ? '#34d399' : '#f87171') + ';">' + r.score + '%</td>' +
-              '<td style="padding:10px 14px;">' +
-                (r.passed 
-                  ? '<span style="background:rgba(16,185,129,0.15);color:#34d399;padding:3px 8px;border-radius:6px;font-weight:800;font-size:11px;">✅ Keyingi Levelga O‘tdi</span>'
-                  : '<span style="background:rgba(239,68,68,0.15);color:#f87171;padding:3px 8px;border-radius:6px;font-weight:800;font-size:11px;">❌ Yiqildi</span>') +
-              '</td>' +
+            var r = cls.levelTestResults[stId] || { score: null, passed: false };
+            var stName = (cls.customStudentNames && cls.customStudentNames[stId]) || st.name || stId;
+
+            mHtml += '<tr class="ee-level-row" data-stid="' + esc(stId) + '" style="border-top:1px solid rgba(255,255,255,0.05);background:' + (r.passed ? 'transparent' : 'rgba(239,68,68,0.04)') + ';">' +
+              '<td style="padding:11px 14px;color:#94a3b8;font-weight:800;text-align:center;">' + (idx + 1) + '</td>' +
+              '<td style="padding:11px 14px;font-weight:800;color:#fff;">' + esc(stName) + '</td>' +
+              '<td style="padding:11px 14px;text-align:center;">';
+                if (isTeacher) {
+                  mHtml += '<div style="display:inline-flex;align-items:center;gap:6px;">' +
+                    '<input type="number" min="0" max="100" class="ee-level-score-input" data-stid="' + esc(stId) + '" value="' + (r.score !== null && r.score !== undefined ? esc(r.score) : '') + '" placeholder="0-100" style="width:70px;padding:6px 8px;background:rgba(8,13,26,0.95);border:1.5px solid ' + (r.passed ? '#10b981' : (r.score !== null ? '#ef4444' : 'rgba(255,255,255,0.2)')) + ';border-radius:8px;color:#fff;font-weight:900;font-size:14px;text-align:center;outline:none;" />' +
+                    '<span style="font-weight:900;color:#94a3b8;font-size:13px;">%</span>' +
+                  '</div>';
+                } else {
+                  mHtml += '<span style="font-weight:900;font-size:14px;color:' + (r.passed ? '#34d399' : (r.score !== null ? '#f87171' : '#94a3b8')) + ';">' + (r.score !== null && r.score !== undefined ? (r.score + '%') : '—') + '</span>';
+                }
+              mHtml += '</td>' +
+              '<td style="padding:11px 14px;text-align:center;">';
+                if (isTeacher) {
+                  mHtml += '<button type="button" class="ee-level-toggle-decision-btn" data-stid="' + esc(stId) + '" style="background:' + (r.passed ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)') + ';border:1.5px solid ' + (r.passed ? '#10b981' : '#ef4444') + ';color:' + (r.passed ? '#4ade80' : '#fca5a5') + ';padding:5px 14px;border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all 0.15s;" title="Bosish: Qarorni o\'zgartirish">' +
+                    (r.passed ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi (Qoladi)') +
+                  '</button>';
+                } else {
+                  mHtml += '<span style="background:' + (r.passed ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)') + ';color:' + (r.passed ? '#34d399' : '#f87171') + ';padding:4px 10px;border-radius:8px;font-weight:800;font-size:11.5px;">' +
+                    (r.passed ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi') +
+                  '</span>';
+                }
+              mHtml += '</td>' +
             '</tr>';
           });
 
@@ -237379,21 +237433,179 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
 
     m.querySelector('#eeCloseLevelTestModal').onclick = function() { m.remove(); };
 
-    // Drop failed students
-    m.querySelector('#eeDropFailedStudentsBtn').onclick = function() {
-      if (confirm("Rostdan ham 70% dan past ball olgan " + failedCount + " ta o‘quvchini ushbu guruhdan chiqarib yubormoqchimisiz?")) {
-        cls.students = cls.students.filter(function(st) {
-          var stId = st.id || st.email;
-          return records[stId] && records[stId].passed;
+    function persistLevelTestResults() {
+      if (typeof saveStore === 'function') saveStore();
+      if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
+      try {
+        localStorage.setItem('ethith_enterprise_store', JSON.stringify(getStore()));
+      } catch(e) {}
+      if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+        window.EthithSync.publishLive({
+          type: 'LEVEL_TEST_UPDATE',
+          classId: cls.id,
+          results: cls.levelTestResults
         });
-        saveStore();
-        showToast("Yiqilgan o‘quvchilar guruhdan chiqarildi!");
-        m.remove();
-        if (window.EthithAttendance && typeof window.EthithAttendance.render === 'function') {
-          window.EthithAttendance.render();
-        }
       }
-    };
+      if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') {
+        window.EthithSync.pushStoreUpdate();
+      }
+    }
+
+    function refreshStatsUI() {
+      var s = getStats();
+      var pEl = m.querySelector('#eeLevelPassedCount');
+      var fEl = m.querySelector('#eeLevelFailedCount');
+      var aEl = m.querySelector('#eeLevelAvgScore');
+      if (pEl) pEl.textContent = s.passedCount + ' ta';
+      if (fEl) fEl.textContent = s.failedCount + ' ta';
+      if (aEl) aEl.textContent = s.avgScore + '%';
+    }
+
+    // Attach Score Input listeners
+    m.querySelectorAll('.ee-level-score-input').forEach(function(inp) {
+      function updateScore() {
+        var stId = inp.dataset.stid;
+        var val = inp.value.trim();
+        var num = val === '' ? null : Math.max(0, Math.min(100, parseInt(val, 10)));
+        if (!cls.levelTestResults[stId]) cls.levelTestResults[stId] = {};
+        cls.levelTestResults[stId].score = num;
+
+        // Auto determine pass if score entered
+        if (num !== null) {
+          cls.levelTestResults[stId].passed = (num >= 70);
+        } else {
+          cls.levelTestResults[stId].passed = false;
+        }
+        cls.levelTestResults[stId].updatedAt = Date.now();
+
+        // Update UI of matching row
+        inp.style.borderColor = cls.levelTestResults[stId].passed ? '#10b981' : (num !== null ? '#ef4444' : 'rgba(255,255,255,0.2)');
+        var row = inp.closest('.ee-level-row');
+        if (row) {
+          row.style.background = cls.levelTestResults[stId].passed ? 'transparent' : 'rgba(239,68,68,0.04)';
+          var btn = row.querySelector('.ee-level-toggle-decision-btn');
+          if (btn) {
+            var p = cls.levelTestResults[stId].passed;
+            btn.style.background = p ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)';
+            btn.style.borderColor = p ? '#10b981' : '#ef4444';
+            btn.style.color = p ? '#4ade80' : '#fca5a5';
+            btn.innerHTML = p ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi (Qoladi)';
+          }
+        }
+
+        refreshStatsUI();
+        persistLevelTestResults();
+      }
+
+      inp.oninput = updateScore;
+      inp.onchange = updateScore;
+    });
+
+    // Attach Decision Toggle listeners
+    m.querySelectorAll('.ee-level-toggle-decision-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var stId = btn.dataset.stid;
+        if (!cls.levelTestResults[stId]) cls.levelTestResults[stId] = { score: null, passed: false };
+        cls.levelTestResults[stId].passed = !cls.levelTestResults[stId].passed;
+        cls.levelTestResults[stId].updatedAt = Date.now();
+
+        var p = cls.levelTestResults[stId].passed;
+        btn.style.background = p ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)';
+        btn.style.borderColor = p ? '#10b981' : '#ef4444';
+        btn.style.color = p ? '#4ade80' : '#fca5a5';
+        btn.innerHTML = p ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi (Qoladi)';
+
+        var row = btn.closest('.ee-level-row');
+        if (row) {
+          row.style.background = p ? 'transparent' : 'rgba(239,68,68,0.04)';
+          var inp = row.querySelector('.ee-level-score-input');
+          if (inp) {
+            inp.style.borderColor = p ? '#10b981' : (inp.value ? '#ef4444' : 'rgba(255,255,255,0.2)');
+          }
+        }
+
+        refreshStatsUI();
+        persistLevelTestResults();
+      };
+    });
+
+    // Automatic SMS to Failed Students via Infobip API
+    var sendFailedSmsBtn = m.querySelector('#eeSendFailedSmsBtn');
+    if (sendFailedSmsBtn) {
+      sendFailedSmsBtn.onclick = async function() {
+        var failedList = [];
+        students.forEach(function(st) {
+          var stId = st.id || st.email;
+          var r = cls.levelTestResults[stId];
+          if (r && !r.passed) {
+            var phone = (cls.customStudentPhones && cls.customStudentPhones[stId]) || st.parentPhone || st.phone || '';
+            var name = (cls.customStudentNames && cls.customStudentNames[stId]) || st.name || stId;
+            var sc = (r.score !== null && r.score !== undefined) ? (r.score + '%') : 'yetarli bo‘lmagan';
+            if (phone) {
+              failedList.push({ phone: phone, name: name, score: sc, id: stId });
+            }
+          }
+        });
+
+        if (failedList.length === 0) {
+          alert("Guruhda yiqilgan o‘quvchilar yo‘q yoki ularning telefon raqami kiritilmagan!");
+          return;
+        }
+
+        var confirmText = "Jami " + failedList.length + " nafar yiqilgan o‘quvchining ota-onalariga Infobip orqali avtomatik SMS xabar yuborilsinmi?\n\n" +
+          "Xabar namunasi:\n" +
+          "\"Hurmatli ota-ona! Farzandingiz ETHITH o'quv markazida " + (cls.name || 'guruh') + " bo'yicha 3 oylik Level Test imtihonidan o'ta olmadi. Iltimos, o'qituvchi bilan bog'laning.\"";
+
+        if (!confirm(confirmText)) return;
+
+        sendFailedSmsBtn.disabled = true;
+        sendFailedSmsBtn.innerHTML = '⏳ SMS yuborilmoqda...';
+
+        var sendFn = (window.EA && window.EA.sendInfobipSms) || (window.EthithAttendance && window.EthithAttendance.sendInfobipSms);
+        if (typeof sendFn !== 'function') {
+          alert("SMS yuborish moduli yuklanmagan!");
+          sendFailedSmsBtn.disabled = false;
+          sendFailedSmsBtn.innerHTML = '📱 Yiqilganlarga SMS Yuborish';
+          return;
+        }
+
+        var defaultMsg = "Hurmatli ota-ona! Farzandingiz ETHITH markazida " + (cls.name || 'guruh') + " bo'yicha 3 oylik Level Test imtihonidan o'ta olmadi. Iltimos, ma'muriyat yoki ustoz bilan bog'laning.";
+        try {
+          var res = await sendFn(failedList, defaultMsg);
+          if (res && res.success) {
+            alert("✓ Muvaffaqiyatli! " + res.count + " nafar yiqilgan o‘quvchining ota-onasiga Infobip orqali SMS xabar yuborildi!");
+          } else {
+            alert("SMS yuborishda xatolik: " + ((res && res.error) || 'Noma‘lum xato'));
+          }
+        } catch(err) {
+          alert("SMS yuborishda xatolik yuz berdi: " + err.message);
+        }
+
+        sendFailedSmsBtn.disabled = false;
+        sendFailedSmsBtn.innerHTML = '📱 Yiqilganlarga SMS Yuborish';
+      };
+    }
+
+    // Drop failed students
+    var dropBtn = m.querySelector('#eeDropFailedStudentsBtn');
+    if (dropBtn) {
+      dropBtn.onclick = function() {
+        var curStats = getStats();
+        if (confirm("Rostdan ham imtihondan o'ta olmagan " + curStats.failedCount + " ta o‘quvchini ushbu guruhdan chiqarib yubormoqchimisiz?")) {
+          cls.students = cls.students.filter(function(st) {
+            var stId = st.id || st.email;
+            var r = cls.levelTestResults[stId];
+            return r && r.passed;
+          });
+          persistLevelTestResults();
+          showToast("Yiqilgan o‘quvchilar guruhdan chiqarildi!");
+          m.remove();
+          if (window.EthithAttendance && typeof window.EthithAttendance.render === 'function') {
+            window.EthithAttendance.render();
+          }
+        }
+      };
+    }
 
     // Excel Export
     m.querySelector('#eeExportLevelXlsx').onclick = function() {
@@ -237401,8 +237613,9 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       var data = [["#", "O'quvchi", "Level Test Bali", "Qaror"]];
       students.forEach(function(st, idx) {
         var stId = st.id || st.email;
-        var r = records[stId] || { score: 75, passed: true };
-        data.push([idx + 1, st.name || stId, r.score + "%", r.passed ? "Keyingi Levelga o'tdi" : "Yiqildi"]);
+        var r = cls.levelTestResults[stId] || { score: null, passed: false };
+        var stName = (cls.customStudentNames && cls.customStudentNames[stId]) || st.name || stId;
+        data.push([idx + 1, stName, (r.score !== null ? (r.score + "%") : "Kiritilmagan"), r.passed ? "Keyingi Levelga o'tdi" : "Yiqildi"]);
       });
       var ws = window.XLSX.utils.aoa_to_sheet(data);
       var wb = window.XLSX.utils.book_new();
@@ -237419,8 +237632,9 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
           '<tr style="background:#f1f5f9;"><th>#</th><th>O‘quvchi</th><th>Ball</th><th>Holat</th></tr>';
       students.forEach(function(st, idx) {
         var stId = st.id || st.email;
-        var r = records[stId] || { score: 75, passed: true };
-        docHtml += '<tr><td>' + (idx + 1) + '</td><td>' + esc(st.name || stId) + '</td><td>' + r.score + '%</td><td>' + (r.passed ? "O'tdi" : "Yiqildi") + '</td></tr>';
+        var r = cls.levelTestResults[stId] || { score: null, passed: false };
+        var stName = (cls.customStudentNames && cls.customStudentNames[stId]) || st.name || stId;
+        docHtml += '<tr><td>' + (idx + 1) + '</td><td>' + esc(stName) + '</td><td>' + (r.score !== null ? (r.score + '%') : '—') + '</td><td>' + (r.passed ? "Keyingi Levelga o'tdi" : "Yiqildi") + '</td></tr>';
       });
       docHtml += '</table></body></html>';
 
@@ -237434,7 +237648,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     };
   };
 
-  EE.getStore = getStore;
+EE.getStore = getStore;
   EE.saveStore = saveStore;
 
 })(window);
