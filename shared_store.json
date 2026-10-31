@@ -107059,8 +107059,8 @@
         "page": 3042,
         "exercise": "1",
         "label": "2",
-        "top": 26.7,
-        "left": 11.8,
+        "top": 26.6,
+        "left": 12.5,
         "width": 38.5,
         "height": 1.8,
         "correct": "It's quite common to see tourists in my town."
@@ -107083,8 +107083,8 @@
         "page": 3042,
         "exercise": "1",
         "label": "4",
-        "top": 34.5,
-        "left": 11,
+        "top": 33.5,
+        "left": 12.7,
         "width": 38.5,
         "height": 1.8,
         "correct": "The tour guide's talk was a bit boring."
@@ -107095,8 +107095,8 @@
         "page": 3042,
         "exercise": "1",
         "label": "5",
-        "top": 38,
-        "left": 11,
+        "top": 37.2,
+        "left": 12.9,
         "width": 38.5,
         "height": 1.8,
         "correct": "The people in the hotel were very unfriendly."
@@ -107107,8 +107107,8 @@
         "page": 3042,
         "exercise": "1",
         "label": "6",
-        "top": 41.5,
-        "left": 11,
+        "top": 40.5,
+        "left": 12.7,
         "width": 38.5,
         "height": 1.8,
         "correct": "The seats on the bus were a bit uncomfortable."
@@ -109698,7 +109698,7 @@
     "3039": 1793433305362,
     "3040": 1793433405405,
     "3041": 1793433405405,
-    "3042": 1793433422389,
+    "3042": 1793433431805,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -110462,5 +110462,5 @@
       }
     }
   },
-  "updatedAt": 1793433422516
+  "updatedAt": 1793433434072
 }
