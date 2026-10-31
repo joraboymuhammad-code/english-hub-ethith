@@ -107529,6 +107529,364 @@
         "correct": "It's a bit cold."
       }
     ],
+    "3043": [
+      {
+        "id": "p3043_ex1_1",
+        "type": "fill",
+        "page": 3043,
+        "exercise": "1",
+        "label": "1",
+        "top": 24.5,
+        "left": 9.8,
+        "width": 11.5,
+        "height": 1.8,
+        "correct": "bad news"
+      },
+      {
+        "id": "p3043_ex1_2",
+        "type": "fill",
+        "page": 3043,
+        "exercise": "1",
+        "label": "2",
+        "top": 24.2,
+        "left": 23.3,
+        "width": 11.5,
+        "height": 1.8,
+        "correct": "interesting news"
+      },
+      {
+        "id": "p3043_ex1_3",
+        "type": "fill",
+        "page": 3043,
+        "exercise": "1",
+        "label": "3",
+        "top": 24.5,
+        "left": 36.6,
+        "width": 11.5,
+        "height": 1.8,
+        "correct": "good news"
+      },
+      {
+        "id": "p3043_ex2a_2",
+        "type": "select",
+        "page": 3043,
+        "exercise": "2a",
+        "label": "2",
+        "top": 47,
+        "left": 28,
+        "width": 14.5,
+        "height": 1.8,
+        "options": [
+          "good news",
+          "bad news",
+          "interesting news"
+        ],
+        "correct": "bad news"
+      },
+      {
+        "id": "p3043_ex2a_3",
+        "type": "select",
+        "page": 3043,
+        "exercise": "2a",
+        "label": "3",
+        "top": 48.8,
+        "left": 28,
+        "width": 14.5,
+        "height": 1.8,
+        "options": [
+          "good news",
+          "bad news",
+          "interesting news"
+        ],
+        "correct": "interesting news"
+      },
+      {
+        "id": "p3043_ex2a_4",
+        "type": "select",
+        "page": 3043,
+        "exercise": "2a",
+        "label": "4",
+        "top": 50.6,
+        "left": 28,
+        "width": 14.5,
+        "height": 1.8,
+        "options": [
+          "good news",
+          "bad news",
+          "interesting news"
+        ],
+        "correct": "good news"
+      },
+      {
+        "id": "p3043_ex2a_5",
+        "type": "select",
+        "page": 3043,
+        "exercise": "2a",
+        "label": "5",
+        "top": 52.4,
+        "left": 28,
+        "width": 14.5,
+        "height": 1.8,
+        "options": [
+          "good news",
+          "bad news",
+          "interesting news"
+        ],
+        "correct": "bad news"
+      },
+      {
+        "id": "p3043_ex2a_6",
+        "type": "select",
+        "page": 3043,
+        "exercise": "2a",
+        "label": "6",
+        "top": 54.2,
+        "left": 28,
+        "width": 14.5,
+        "height": 1.8,
+        "options": [
+          "good news",
+          "bad news",
+          "interesting news"
+        ],
+        "correct": "interesting news"
+      },
+      {
+        "id": "p3043_ex2a_7",
+        "type": "select",
+        "page": 3043,
+        "exercise": "2a",
+        "label": "7",
+        "top": 56,
+        "left": 28,
+        "width": 14.5,
+        "height": 1.8,
+        "options": [
+          "good news",
+          "bad news",
+          "interesting news"
+        ],
+        "correct": "bad news"
+      },
+      {
+        "id": "p3043_ex2a_8",
+        "type": "select",
+        "page": 3043,
+        "exercise": "2a",
+        "label": "8",
+        "top": 57.8,
+        "left": 28,
+        "width": 14.5,
+        "height": 1.8,
+        "options": [
+          "good news",
+          "bad news",
+          "interesting news"
+        ],
+        "correct": "good news"
+      },
+      {
+        "id": "p3043_ex2a_9",
+        "type": "select",
+        "page": 3043,
+        "exercise": "2a",
+        "label": "9",
+        "top": 59.6,
+        "left": 28,
+        "width": 14.5,
+        "height": 1.8,
+        "options": [
+          "good news",
+          "bad news",
+          "interesting news"
+        ],
+        "correct": "bad news"
+      },
+      {
+        "id": "p3043_ex3a_2",
+        "type": "select",
+        "page": 3043,
+        "exercise": "3a",
+        "label": "2",
+        "top": 73,
+        "left": 12,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "That's great!",
+          "That's awful!"
+        ],
+        "correct": "That's great!"
+      },
+      {
+        "id": "p3043_ex3a_3",
+        "type": "select",
+        "page": 3043,
+        "exercise": "3a",
+        "label": "3",
+        "top": 78.4,
+        "left": 12,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "Really?",
+          "That's amazing!"
+        ],
+        "correct": "Really?"
+      },
+      {
+        "id": "p3043_ex3a_4",
+        "type": "select",
+        "page": 3043,
+        "exercise": "3a",
+        "label": "4",
+        "top": 81.8,
+        "left": 12,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "That's amazing!",
+          "Poor you!"
+        ],
+        "correct": "Poor you!"
+      },
+      {
+        "id": "p3043_ex3a_5",
+        "type": "select",
+        "page": 3043,
+        "exercise": "3a",
+        "label": "5",
+        "top": 19,
+        "left": 58.2,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "Oh no!",
+          "That's brilliant!"
+        ],
+        "correct": "Oh no!"
+      },
+      {
+        "id": "p3043_ex3a_6",
+        "type": "select",
+        "page": 3043,
+        "exercise": "3a",
+        "label": "6",
+        "top": 25.5,
+        "left": 56.5,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "What a nightmare!",
+          "Really?"
+        ],
+        "correct": "What a nightmare!"
+      },
+      {
+        "id": "p3043_ex3a_7",
+        "type": "select",
+        "page": 3043,
+        "exercise": "3a",
+        "label": "7",
+        "top": 29,
+        "left": 56.5,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "That's terrible!",
+          "That's amazing!"
+        ],
+        "correct": "That's amazing!"
+      },
+      {
+        "id": "p3043_ex3a_8",
+        "type": "select",
+        "page": 3043,
+        "exercise": "3a",
+        "label": "8",
+        "top": 34,
+        "left": 56.5,
+        "width": 22,
+        "height": 1.8,
+        "options": [
+          "That's brilliant!",
+          "That's awful!"
+        ],
+        "correct": "That's awful!"
+      },
+      {
+        "id": "p3043_ex4a_1",
+        "type": "fill",
+        "page": 3043,
+        "exercise": "4a",
+        "label": "1",
+        "top": 51,
+        "left": 55,
+        "width": 36.5,
+        "height": 1.8,
+        "correct": "I want to go to Istanbul in April. Does anyone know a good hotel there?"
+      },
+      {
+        "id": "p3043_ex4a_2",
+        "type": "fill",
+        "page": 3043,
+        "exercise": "4a",
+        "label": "2",
+        "top": 58,
+        "left": 55,
+        "width": 36.5,
+        "height": 1.8,
+        "correct": "I'm watching a great programme about famous singers. Is anyone else watching it?"
+      },
+      {
+        "id": "p3043_ex4a_3",
+        "type": "fill",
+        "page": 3043,
+        "exercise": "4a",
+        "label": "3",
+        "top": 64,
+        "left": 55,
+        "width": 36.5,
+        "height": 1.8,
+        "correct": "I've just waited an hour for the bus! It was so boring!"
+      },
+      {
+        "id": "p3043_ex4b_a",
+        "type": "fill",
+        "page": 3043,
+        "exercise": "4b",
+        "label": "a",
+        "top": 72,
+        "left": 74,
+        "width": 6,
+        "height": 1.8,
+        "correct": "2"
+      },
+      {
+        "id": "p3043_ex4b_b",
+        "type": "fill",
+        "page": 3043,
+        "exercise": "4b",
+        "label": "b",
+        "top": 76,
+        "left": 89,
+        "width": 6,
+        "height": 1.8,
+        "correct": "3"
+      },
+      {
+        "id": "p3043_ex4b_c",
+        "type": "fill",
+        "page": 3043,
+        "exercise": "4b",
+        "label": "c",
+        "top": 80,
+        "left": 70,
+        "width": 6,
+        "height": 1.8,
+        "correct": "1"
+      }
+    ],
     "3046": [
       {
         "id": "p3046_ex1_1",
@@ -109699,6 +110057,7 @@
     "3040": 1793433405405,
     "3041": 1793433405405,
     "3042": 1793433480516,
+    "3043": 1793433497410,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -110462,5 +110821,5 @@
       }
     }
   },
-  "updatedAt": 1793433485745
+  "updatedAt": 1793433498735
 }
