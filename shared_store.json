@@ -102229,6 +102229,108 @@
         "correct": "Don't forget"
       }
     ],
+    "3030": [
+      {
+        "id": "p3030_ex1_2",
+        "type": "fill",
+        "page": 3030,
+        "exercise": "1",
+        "label": "2",
+        "top": 40.3,
+        "left": 29.7,
+        "width": 14,
+        "height": 1.9,
+        "correct": "a painting"
+      },
+      {
+        "id": "p3030_ex1_3",
+        "type": "fill",
+        "page": 3030,
+        "exercise": "1",
+        "label": "3",
+        "top": 40.4,
+        "left": 46.4,
+        "width": 14,
+        "height": 1.9,
+        "correct": "an exhibition"
+      },
+      {
+        "id": "p3030_ex1_4",
+        "type": "fill",
+        "page": 3030,
+        "exercise": "1",
+        "label": "4",
+        "top": 40,
+        "left": 63.8,
+        "width": 14,
+        "height": 1.9,
+        "correct": "a theatre"
+      },
+      {
+        "id": "p3030_ex1_5",
+        "type": "fill",
+        "page": 3030,
+        "exercise": "1",
+        "label": "5",
+        "top": 40.2,
+        "left": 80.2,
+        "width": 14,
+        "height": 1.9,
+        "correct": "a statue"
+      },
+      {
+        "id": "p3030_ex3_2",
+        "type": "fill",
+        "page": 3030,
+        "exercise": "3",
+        "label": "2",
+        "top": 54.4,
+        "left": 70.7,
+        "width": 20,
+        "height": 1.9,
+        "correct": "statues"
+      },
+      {
+        "id": "p3030_ex3_3",
+        "type": "fill",
+        "page": 3030,
+        "exercise": "3",
+        "label": "3",
+        "top": 59.5,
+        "left": 66,
+        "width": 24,
+        "height": 1.9,
+        "correct": "Museum of the City of New York"
+      },
+      {
+        "id": "p3030_ex3_4",
+        "type": "fill",
+        "page": 3030,
+        "exercise": "3",
+        "label": "4",
+        "top": 63.8,
+        "left": 59.5,
+        "width": 30.5,
+        "height": 1.9,
+        "correct": [
+          "Museum of Modern Art (MoMA)",
+          "Museum of Modern Art",
+          "MoMA"
+        ]
+      },
+      {
+        "id": "p3030_ex3_5",
+        "type": "fill",
+        "page": 3030,
+        "exercise": "3",
+        "label": "5",
+        "top": 67.2,
+        "left": 76.5,
+        "width": 14,
+        "height": 1.9,
+        "correct": "the USA"
+      }
+    ],
     "3046": [
       {
         "id": "p3046_ex1_1",
@@ -104386,6 +104488,7 @@
     "3027": 1793432509242,
     "3028": 1793432574282,
     "3029": 1793432607964,
+    "3030": 1793432620727,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -105149,5 +105252,5 @@
       }
     }
   },
-  "updatedAt": 1793432608968
+  "updatedAt": 1793432623018
 }
