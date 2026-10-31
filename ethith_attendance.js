@@ -116,17 +116,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           errors.push(d.name + ": " + errMsg);
         }
       } catch (fetchErr) {
-        try {
-          await fetch(EA.SMS_CONFIG.SMSAPI_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: params.toString()
-          });
-          successCount++;
-        } catch (noCorsErr) {
-          errors.push(d.name + ": " + (fetchErr.message || 'Tarmoq xatosi'));
-        }
+        errors.push(d.name + ": Tarmoq / CORS xatosi (" + (fetchErr.message || 'Ulanishda xato') + ")");
       }
     }
 
@@ -135,7 +125,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     } else if (successCount > 0 && errors.length > 0) {
       return { success: true, count: successCount, warning: errors.join('\n'), gateway: 'smsapi.uz' };
     } else {
-      return { success: false, error: errors.join('\n') || "smsapi.uz xatosi", gateway: 'smsapi.uz' };
+      return { success: false, error: errors.join('\n') || "smsapi.uz rad etildi", gateway: 'smsapi.uz' };
     }
   };
 
@@ -150,11 +140,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       if (personalText.length > 160) personalText = personalText.slice(0, 160);
 
       var payload = {
+        to: [d.fullPhone],
         phoneNumbers: [d.fullPhone],
+        text: personalText,
         textMessage: { text: personalText },
-        deviceId: EA.SMS_CONFIG.GATEWAY_DEVICE_ID,
-        phone: d.fullPhone,
-        message: personalText
+        deviceId: EA.SMS_CONFIG.GATEWAY_DEVICE_ID
       };
 
       try {
@@ -169,24 +159,14 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         });
 
         var data = await res.json().catch(function() { return null; });
-        if (res.ok && data) {
+        if (res.ok && data && !data.error) {
           successCount++;
         } else {
           var errMsg = (data && (data.message || data.error)) || (res.status + ' ' + (res.statusText || ''));
           errors.push(d.name + ": " + errMsg);
         }
       } catch (err) {
-        try {
-          await fetch(EA.SMS_CONFIG.GATEWAY_CLOUD_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-          successCount++;
-        } catch (err2) {
-          errors.push(d.name + ": " + err.message);
-        }
+        errors.push(d.name + ": Gateway ulanish xatosi (" + (err.message || 'Failed to fetch') + ")");
       }
     }
 
@@ -195,7 +175,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     } else if (successCount > 0 && errors.length > 0) {
       return { success: true, count: successCount, warning: errors.join('\n'), gateway: 'SMS Gateway (Telefondagi Internet)' };
     } else {
-      return { success: false, error: errors.join('\n') || "SMS Gateway (Internet) xatosi", gateway: 'SMS Gateway (Telefondagi Internet)' };
+      return { success: false, error: errors.join('\n') || "SMS Gateway ulanmadi", gateway: 'SMS Gateway (Telefondagi Internet)' };
     }
   };
 
@@ -241,17 +221,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           errors.push(d.name + ": " + errMsg);
         }
       } catch (err) {
-        try {
-          await fetch(url, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-          successCount++;
-        } catch (err2) {
-          errors.push(d.name + ": " + (err.message || 'Wi-Fi orqali telefonga ulanib bo‘lmadi'));
-        }
+        errors.push(d.name + ": Wi-Fi lokal telefonga ulanmadi (" + (err.message || 'Tarmoq xatosi') + ")");
       }
     }
 
@@ -1766,24 +1736,28 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
                 })() + ' ta O‘quvchi</div>' +
               '</div>' +
             '</div>' +
-            '<div style="background:rgba(15,23,42,0.8);border:1px solid rgba(52,211,153,0.35);border-radius:14px;padding:8px 16px;display:flex;align-items:center;gap:10px;">' +
-              '<span style="font-size:20px;">💰</span>' +
+            '<div style="background:rgba(15,23,42,0.85);border:1.5px solid rgba(52,211,153,0.4);border-radius:14px;padding:10px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 18px rgba(16,185,129,0.25);">' +
+              '<span style="font-size:24px;">💰</span>' +
               '<div>' +
-                '<div style="font-size:11px;color:#94a3b8;font-weight:700;">Shu Oy Olingan Daromad:</div>' +
-                '<div style="font-size:15px;font-weight:900;color:#34d399;">' + (function() {
+                '<div style="font-size:11px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">Sizning Maoshingiz (Real-vaqt):</div>' +
+                '<div style="font-size:16px;font-weight:900;color:#34d399;">' + (function() {
                   var pCount = 0;
+                  var tCollected = 0;
+                  var S_cur = (window.EthithEnterprise && window.EthithEnterprise.getStore ? window.EthithEnterprise.getStore() : null) || window.S || {};
                   tClasses.forEach(function(c) {
                     (c.students || []).forEach(function(st) {
                       var stId = st.id || st.email;
-                      if (c.studentPayments && c.studentPayments[stId] && c.studentPayments[stId].status === 'paid') {
+                      var pInfo = (c.studentPayments && c.studentPayments[stId]) || (S_cur.finance && S_cur.finance.studentFees && S_cur.finance.studentFees[stId]);
+                      if (pInfo && (pInfo.status === 'paid' || Number(pInfo.paid) > 0)) {
                         pCount++;
+                        var paidSum = Number(pInfo.paid) || Number(t.studentMonthlyFee) || 300000;
+                        tCollected += paidSum;
                       }
                     });
                   });
                   var share = (t.salarySharePercent !== undefined) ? Number(t.salarySharePercent) : 50;
-                  var fee = Number(t.studentMonthlyFee) || 300000;
-                  var sal = Math.round(pCount * fee * (share / 100));
-                  return sal.toLocaleString() + ' so‘m (' + pCount + ' ta to‘lagan)';
+                  var sal = Math.round(tCollected * (share / 100));
+                  return sal.toLocaleString('uz-UZ') + ' so‘m <span style="font-size:11.5px;color:#94a3b8;font-weight:700;">(' + pCount + ' ta to‘lagan, ' + share + '%)</span>';
                 })() + '</div>' +
               '</div>' +
             '</div>' +
@@ -3060,6 +3034,33 @@ EA.render = function(container, preserveScrollLeft) {
         '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">Level: <b style="color:#34d399;">' + esc(cls.level || 'General') + '</b> | Xona: <b style="color:#cbd5e1;">' + esc(cls.room || '301-xona') + '</b></div>' +
       '</div>' +
       '<span style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:12px;padding:5px 12px;font-size:12px;font-weight:900;">' + students.length + ' / ' + (cls.maxCapacity || 18) + ' o‘quvchi</span>' +
+      (function() {
+        var tId = cls.teacherId || EA.activeTeacherId;
+        var S_cur = (window.EthithEnterprise && window.EthithEnterprise.getStore ? window.EthithEnterprise.getStore() : null) || window.S || {};
+        var tObj = (S_cur.teachers || []).find(function(t) { return t.id === tId || (t.name && cls.teacherName && t.name.toLowerCase() === cls.teacherName.toLowerCase()); });
+        var share = (tObj && tObj.salarySharePercent !== undefined) ? Number(tObj.salarySharePercent) : 50;
+        var pCount = 0;
+        var tCollected = 0;
+        var tClasses = (typeof getClassesForTeacher === 'function') ? getClassesForTeacher(tId) : [cls];
+        tClasses.forEach(function(c) {
+          (c.students || []).forEach(function(st) {
+            var stId = st.id || st.email;
+            var pInfo = (c.studentPayments && c.studentPayments[stId]) || (S_cur.finance && S_cur.finance.studentFees && S_cur.finance.studentFees[stId]);
+            if (pInfo && (pInfo.status === 'paid' || Number(pInfo.paid) > 0)) {
+              pCount++;
+              tCollected += (Number(pInfo.paid) || 300000);
+            }
+          });
+        });
+        var sal = Math.round(tCollected * (share / 100));
+        return '<div style="background:rgba(16,185,129,0.18);border:1.5px solid rgba(16,185,129,0.45);border-radius:12px;padding:5px 12px;display:flex;align-items:center;gap:8px;box-shadow:0 0 15px rgba(16,185,129,0.25);">' +
+          '<span style="font-size:16px;">💰</span>' +
+          '<div style="text-align:left;">' +
+            '<div style="font-size:9.5px;color:#a7f3d0;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">Ustoz Maoshi (' + share + '%):</div>' +
+            '<div style="font-size:13px;font-weight:900;color:#34d399;">' + sal.toLocaleString('uz-UZ') + ' so‘m <span style="font-size:10.5px;color:#94a3b8;font-weight:700;">(' + pCount + ' ta to‘lagan)</span></div>' +
+          '</div>' +
+        '</div>';
+      })() +
     '</div>' +
     '</div>'; // Close qe-glass-panel cleanly!
 
@@ -6933,30 +6934,17 @@ EA.render = function(container, preserveScrollLeft) {
         '<button type="button" id="eaCloseAbsentSmsBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:20px;cursor:pointer;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">✕</button>' +
       '</div>';
 
-    // Gateway Status Banner with explicit Triple Gateway Selector
-    html += '<div style="background:rgba(15,23,42,0.85);border:1.5px solid rgba(245,158,11,0.4);border-radius:14px;padding:12px 14px;margin-bottom:16px;">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px;">' +
-          '<span style="font-size:12px;font-weight:900;color:#fef08a;display:flex;align-items:center;gap:6px;">📡 Faol SMS Shlyuzini Tanlang:</span>' +
-          '<span style="font-size:11px;color:#94a3b8;">(Biri ishlamasa avtomatik boshqasiga o‘tadi)</span>' +
+    // Automatic Seamless SMS Gateway Banner (100% Avtomatik, shlyuz tanlash talab etilmaydi)
+    html += '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(245,158,11,0.35);border-radius:14px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:22px;">⚡</span>' +
+          '<div>' +
+            '<div style="font-size:12.5px;font-weight:900;color:#fef08a;">SMS Shlyuz: Avtomatik Aqlli Yuborish</div>' +
+            '<div style="font-size:11px;color:#94a3b8;">smsapi.uz va Telefon Gateway orqali to‘g‘ridan-to‘g‘ri uzatiladi</div>' +
+          '</div>' +
         '</div>' +
-        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:6px;margin-bottom:10px;">' +
-          '<button type="button" class="ea-gw-select-btn" data-gw="auto" style="background:' + (currentGw === 'auto' ? '#f59e0b' : 'rgba(255,255,255,0.06)') + ';color:' + (currentGw === 'auto' ? '#000' : '#fff') + ';border:1px solid rgba(245,158,11,0.4);border-radius:8px;padding:7px 6px;font-size:11px;font-weight:900;cursor:pointer;">🔄 Avtomatik (Hammasi)</button>' +
-          '<button type="button" class="ea-gw-select-btn" data-gw="smsapi" style="background:' + (currentGw === 'smsapi' ? '#10b981' : 'rgba(255,255,255,0.06)') + ';color:#fff;border:1px solid rgba(16,185,129,0.4);border-radius:8px;padding:7px 6px;font-size:11px;font-weight:900;cursor:pointer;">1. smsapi.uz</button>' +
-          '<button type="button" class="ea-gw-select-btn" data-gw="gateway_cloud" style="background:' + (currentGw === 'gateway_cloud' ? '#38bdf8' : 'rgba(255,255,255,0.06)') + ';color:' + (currentGw === 'gateway_cloud' ? '#000' : '#fff') + ';border:1px solid rgba(56,189,248,0.4);border-radius:8px;padding:7px 6px;font-size:11px;font-weight:900;cursor:pointer;">2. Telefon Internet</button>' +
-          '<button type="button" class="ea-gw-select-btn" data-gw="gateway_wifi" style="background:' + (currentGw === 'gateway_wifi' ? '#a855f7' : 'rgba(255,255,255,0.06)') + ';color:#fff;border:1px solid rgba(168,85,247,0.4);border-radius:8px;padding:7px 6px;font-size:11px;font-weight:900;cursor:pointer;">3. Telefon Wi-Fi</button>' +
-        '</div>' +
-
-        '<div id="eaWifiHostBox" style="display:' + (currentGw === 'gateway_wifi' ? 'flex' : 'none') + ';align-items:center;justify-content:space-between;background:rgba(0,0,0,0.3);border:1px solid rgba(168,85,247,0.3);border-radius:8px;padding:6px 10px;margin-bottom:8px;font-size:11.5px;gap:8px;">' +
-          '<span style="color:#c084fc;">📶 Telefon Wi-Fi IP:</span>' +
-          '<input type="text" id="eaWifiHostInput" value="' + esc(wifiHost) + '" placeholder="192.168.1.100:8080" style="background:#0b1222;border:1px solid rgba(168,85,247,0.5);border-radius:6px;color:#fff;padding:4px 8px;font-size:11.5px;font-family:monospace;width:160px;outline:none;" />' +
-        '</div>' +
-
-        '<div style="font-size:10.5px;color:#94a3b8;font-family:monospace;display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(255,255,255,0.08);padding-top:6px;">' +
-          '<div>🟢 <b>1. smsapi.uz:</b> <span style="color:#6ee7b7;">4480804365a1569479f178d2c1834629</span></div>' +
-          '<div>🟢 <b>2. Telefon Internet (FCM):</b> <span style="color:#7dd3fc;">dIFnpyWVSP...APA91b</span></div>' +
-          '<div>🟢 <b>3. Telefon Wi-Fi (Lokal):</b> <span style="color:#c084fc;">647c187a-4882-4ad8-80d2-aaf7f5df5fe1</span></div>' +
-        '</div>' +
-      '</div>';
+        '<span style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.5);color:#6ee7b7;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:900;">🟢 Avtomatik Faol</span>' +
+      '</div>' +
 
       // Automatically Detected Absent Students Box
       '<div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:16px;padding:14px 18px;margin-bottom:18px;">' +
@@ -7049,34 +7037,6 @@ EA.render = function(container, preserveScrollLeft) {
     overlay.querySelector('#eaCloseAbsentSmsBtn').onclick = function() { overlay.remove(); };
     overlay.querySelector('#eaCancelAbsentSmsBtn').onclick = function() { overlay.remove(); };
 
-    // Triple Gateway selector button events
-    overlay.querySelectorAll('.ea-gw-select-btn').forEach(function(btn) {
-      btn.onclick = function() {
-        var gw = btn.getAttribute('data-gw');
-        EA.SMS_CONFIG.setSelectedGateway(gw);
-        overlay.querySelectorAll('.ea-gw-select-btn').forEach(function(b) {
-          b.style.background = 'rgba(255,255,255,0.06)';
-          b.style.color = '#fff';
-        });
-        if (gw === 'auto') { btn.style.background = '#f59e0b'; btn.style.color = '#000'; }
-        else if (gw === 'smsapi') { btn.style.background = '#10b981'; btn.style.color = '#fff'; }
-        else if (gw === 'gateway_cloud') { btn.style.background = '#38bdf8'; btn.style.color = '#000'; }
-        else if (gw === 'gateway_wifi') { btn.style.background = '#a855f7'; btn.style.color = '#fff'; }
-
-        var wifiBox = overlay.querySelector('#eaWifiHostBox');
-        if (wifiBox) {
-          wifiBox.style.display = (gw === 'gateway_wifi' ? 'flex' : 'none');
-        }
-      };
-    });
-
-    var wifiInput = overlay.querySelector('#eaWifiHostInput');
-    if (wifiInput) {
-      wifiInput.oninput = function() {
-        EA.SMS_CONFIG.setWifiHost(wifiInput.value.trim());
-      };
-    }
-
     overlay.querySelector('#eaSendAbsentSmsForm').onsubmit = async function(e) {
       e.preventDefault();
       var msg = ta.value.trim();
@@ -7107,14 +7067,13 @@ EA.render = function(container, preserveScrollLeft) {
         return;
       }
 
-      var activeGw = EA.SMS_CONFIG.getSelectedGateway();
       var sBtn = overlay.querySelector('button[type="submit"]');
       if (sBtn) {
         sBtn.disabled = true;
-        sBtn.innerHTML = '⏳ SMS yuborilmoqda (3 ta shlyuz tekshiruvi)...';
+        sBtn.innerHTML = '⏳ SMS yuborilmoqda (Avtomatik Shlyuz)...';
       }
 
-      var res = await EA.sendSmsApiUz(recipients, msg, activeGw);
+      var res = await EA.sendSmsApiUz(recipients, msg, 'auto');
       if (sBtn) {
         sBtn.disabled = false;
         sBtn.innerHTML = '🚀 Kelmaganlarga SMS Yuborish';
@@ -7131,7 +7090,15 @@ EA.render = function(container, preserveScrollLeft) {
           alert(toastMsg);
         }
       } else {
-        alert("⚠️ SMS yuborishda xatolik yuz berdi:\n\n" + (res.error || "Noma'lum xatolik"));
+        var errDetail = res.error || "Server API ulanmadi";
+        var askDirect = confirm("⚠️ Server API shlyuzlarida cheklov yuz berdi:\n\n" + errDetail + "\n\n📱 SMS ni telefoningizning SMS ilovasi orqali to‘g‘ridan-to‘g‘ri ochib yuborishni xohlaysizmi?");
+        if (askDirect && recipients.length > 0) {
+          var firstPh = recipients[0].phone;
+          var normPh = firstPh.startsWith('+') ? firstPh : ('+998' + firstPh.replace(/\D/g, '').slice(-9));
+          var smsUrl = 'sms:' + normPh + (navigator.userAgent.match(/iPhone|iPad|iPod/i) ? '&' : '?') + 'body=' + encodeURIComponent(msg);
+          window.open(smsUrl, '_blank');
+          overlay.remove();
+        }
       }
     };
   };

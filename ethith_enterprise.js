@@ -234,15 +234,25 @@
   }
 
   function saveStore() {
+    var st = getStore();
+    try {
+      localStorage.setItem('ethith_enterprise_store', JSON.stringify(st));
+    } catch(e) {}
+
     // 1. In-memory & LocalStorage instant update (0.01ms - 0.05ms)
-    if (window.EthithApp && typeof window.EthithApp.saveState === 'function') {
-      window.EthithApp.saveState();
+    if (window.EthithApp && window.EthithApp.state) {
+      if (st.finance) window.EthithApp.state.finance = st.finance;
+      if (st.teachers) window.EthithApp.state.teachers = st.teachers;
+      if (st.classes) window.EthithApp.state.classes = st.classes;
+      if (typeof window.EthithApp.saveState === 'function') {
+        window.EthithApp.saveState();
+      }
     }
     // 2. Cross-tab real-time BroadcastChannel relay (0.1ms)
     try {
       if (typeof BroadcastChannel !== 'undefined') {
         if (!window._eeChannel) window._eeChannel = new BroadcastChannel('ethith_cloud_channel');
-        window._eeChannel.postMessage({ type: 'ENTERPRISE_SYNC', state: getStore() });
+        window._eeChannel.postMessage({ type: 'ENTERPRISE_SYNC', state: st });
       }
     } catch(e) {}
     // 3. Asynchronous non-blocking background GitHub persistence via token
@@ -2716,29 +2726,16 @@
   }
 
   function fmtShortUZS(n) {
-    var val = Math.abs(Number(n) || 0);
-    if (val >= 1000000000) return (val / 1000000000).toFixed(2) + " mlrd";
-    if (val >= 1000000) return (val / 1000000).toFixed(1) + " mln";
-    if (val >= 1000) return (val / 1000).toFixed(0) + " ming";
-    return val.toLocaleString('uz-UZ');
+    var num = Number(n) || 0;
+    var val = Math.abs(num);
+    var sign = num < 0 ? '-' : '';
+    if (val >= 1000000000) return sign + (val / 1000000000).toFixed(2) + " mlrd so‘m";
+    if (val >= 1000000) return sign + (val / 1000000).toFixed(1) + " mln so‘m";
+    if (val >= 1000) return sign + (val / 1000).toFixed(0) + " ming so‘m";
+    return sign + val.toLocaleString('uz-UZ') + " so‘m";
   }
 
   EE.renderFinanceUnifiedView = function(container, activeTab) {
-    // GLOBAL ZERO FINANCE ENFORCE STRICT ZERO
-    var S_check = (typeof getStore === 'function' ? getStore() : null) || window.S || {};
-    var isLiveSys = (S_check.config && S_check.config.liveSystemStarted === true);
-    if (!isLiveSys) {
-      if (S_check.finance) {
-        S_check.finance.expenses = [];
-        if (S_check.finance.kpis) {
-          S_check.finance.kpis.totalRevenue = 0;
-          S_check.finance.kpis.totalTeacherPayout = 0;
-          S_check.finance.kpis.totalExpenses = 0;
-          S_check.finance.kpis.totalReceivables = 0;
-          S_check.finance.kpis.netProfit = 0;
-        }
-      }
-    }
     if (!container) return;
     var S = getStore();
     var isStaff = isAdminOrTeacher();
@@ -2767,7 +2764,7 @@
       });
     }
 
-    // 2. Compute live financials
+    // 2. Compute live financials in 100% Real-Time
     var studentList = [];
     (S.classes || []).forEach(function(cls) {
       (cls.students || []).forEach(function(st) {
@@ -2781,7 +2778,7 @@
           email: st.email || (stId + '@ethith.uz'),
           classId: cls.id,
           className: cls.name,
-          fee: Number(feeInfo.fee) || 1400000,
+          fee: Number(feeInfo.fee) || 300000,
           paid: Number(feeInfo.paid) || 0,
           status: feeInfo.status || (feeInfo.paid >= feeInfo.fee ? 'paid' : (feeInfo.paid > 0 ? 'partial' : 'unpaid')),
           method: feeInfo.method || 'Click',
@@ -2790,47 +2787,46 @@
       });
     });
 
-// No fake sample students: strictly real classes and real zero-base payments
-
-    var isLiveStarted = (S.config && S.config.liveSystemStarted === true);
-    var totalRevenue = isLiveStarted ? studentList.reduce(function(acc, s) { return acc + (s.paid || 0); }, 0) : 0;
-    var totalExpected = isLiveStarted ? studentList.filter(function(s) { return !s.isTester && !(s.name||'').startsWith('tester_'); }).reduce(function(acc, s) { return acc + (s.fee || 0); }, 0) : 0;
-    var totalReceivables = isLiveStarted ? Math.max(0, totalExpected - totalRevenue) : 0;
+    var totalRevenue = studentList.reduce(function(acc, s) { return acc + (Number(s.paid) || 0); }, 0);
+    var totalExpected = studentList.reduce(function(acc, s) { return acc + (Number(s.fee) || 0); }, 0);
+    var totalReceivables = Math.max(0, totalExpected - totalRevenue);
 
     // Realtime Teacher Payroll: Derived directly from students who paid in each teacher's groups!
     var totalTeacherPayout = 0;
-    if (isLiveStarted) {
-      (S.teachers || []).forEach(function(t) {
-        var tPaidCount = 0;
-        var tShare = (t.salarySharePercent !== undefined) ? Number(t.salarySharePercent) : 50;
-        var tFee = Number(t.studentMonthlyFee) || 300000;
-        (S.classes || []).forEach(function(cls) {
-          if (cls.teacherId === t.id || (t.name && cls.teacherName && cls.teacherName.toLowerCase() === t.name.toLowerCase())) {
-            (cls.students || []).forEach(function(st) {
-              var stId = st.id || st.email;
-              if (cls.studentPayments && cls.studentPayments[stId] && cls.studentPayments[stId].status === 'paid') {
-                tPaidCount++;
-              }
-            });
-          }
-        });
-        t.livePaidStudents = tPaidCount;
-        t.computedLiveSalary = Math.round(tPaidCount * tFee * (tShare / 100));
-        totalTeacherPayout += t.computedLiveSalary;
+    (S.teachers || []).forEach(function(t) {
+      var tPaidCount = 0;
+      var tCollectedSum = 0;
+      var tShare = (t.salarySharePercent !== undefined) ? Number(t.salarySharePercent) : 50;
+      var tFee = Number(t.studentMonthlyFee) || 300000;
+      (S.classes || []).forEach(function(cls) {
+        if (cls.teacherId === t.id || (t.name && cls.teacherName && cls.teacherName.toLowerCase() === t.name.toLowerCase())) {
+          (cls.students || []).forEach(function(st) {
+            var stId = st.id || st.email;
+            var p = (cls.studentPayments && cls.studentPayments[stId]) || (S.finance.studentFees && S.finance.studentFees[stId]);
+            if (p && (p.status === 'paid' || Number(p.paid) > 0)) {
+              tPaidCount++;
+              var actualPaid = Number(p.paid) || tFee;
+              tCollectedSum += actualPaid;
+            }
+          });
+        }
       });
-    }
+      t.livePaidStudents = tPaidCount;
+      t.computedLiveSalary = Math.round(tCollectedSum * (tShare / 100));
+      totalTeacherPayout += t.computedLiveSalary;
+    });
 
-    var totalTeachingHours = isLiveStarted ? (S.teachers || []).reduce(function(acc, t) {
+    var totalTeachingHours = (S.teachers || []).reduce(function(acc, t) {
       return acc + (Number(t.teachingHours) || 0);
-    }, 0) : 0;
+    }, 0);
 
-    var totalExpenses = isLiveStarted ? (S.finance.expenses || []).reduce(function(acc, e) {
+    var totalExpenses = (S.finance.expenses || []).reduce(function(acc, e) {
       return acc + (Number(e.amount) || 0);
-    }, 0) : 0;
+    }, 0);
 
     var totalOutflow = totalTeacherPayout + totalExpenses;
-    var netProfit = isLiveStarted ? (totalRevenue - totalOutflow) : 0;
-    var profitMargin = isLiveStarted && totalRevenue > 0 ? ((netProfit / totalRevenue) * 100).toFixed(1) : '0';
+    var netProfit = totalRevenue - totalOutflow;
+    var profitMargin = totalRevenue > 0 ? ((netProfit / totalRevenue) * 100).toFixed(1) : '0';
 
     // Build Modern Cyber-Glass Obsidian Dark Layout
     var h = '<div class="ee-finance-wrap" style="max-width:1280px;margin:0 auto;padding:16px 20px 80px;">' +
@@ -3555,7 +3551,6 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
   // --------------------------------------------------------------------------
   EE.renderFinanceTeachersTabHtml = function(teachers) {
     var S = getStore();
-    var isLiveStarted = (S.config && S.config.liveSystemStarted === true);
 
     var h = '<div style="display:flex;flex-direction:column;gap:20px;">' +
       
@@ -3608,25 +3603,29 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
             '</thead>' +
             '<tbody>' +
               teachers.map(function(t) {
-                var hours = isLiveStarted ? (Number(t.teachingHours) || 0) : 0;
+                var hours = Number(t.teachingHours) || 0;
                 var rate = Number(t.hourlyRate) || 100000;
                 var share = (t.salarySharePercent !== undefined) ? Number(t.salarySharePercent) : 50;
                 
                 // Real-time calculation strictly based on students marked paid by admin
                 var paidStudentsCount = 0;
+                var tCollectedSum = 0;
+                var tFee = Number(t.studentMonthlyFee) || 300000;
                 (S.classes || []).forEach(function(cls) {
                   if (cls.teacherId === t.id || (t.name && cls.teacherName && cls.teacherName.toLowerCase() === t.name.toLowerCase())) {
                     (cls.students || []).forEach(function(st) {
                       var stId = st.id || st.email;
-                      if (cls.studentPayments && cls.studentPayments[stId] && cls.studentPayments[stId].status === 'paid') {
+                      var p = (cls.studentPayments && cls.studentPayments[stId]) || (S.finance.studentFees && S.finance.studentFees[stId]);
+                      if (p && (p.status === 'paid' || Number(p.paid) > 0)) {
                         paidStudentsCount++;
+                        var actualPaid = Number(p.paid) || tFee;
+                        tCollectedSum += actualPaid;
                       }
                     });
                   }
                 });
-                var tFee = Number(t.studentMonthlyFee) || 300000;
-                var total = isLiveStarted ? Math.round(paidStudentsCount * tFee * (share / 100)) : 0;
-                var isPaid = isLiveStarted && (t.status === 'paid' || t.paidThisMonth === true);
+                var total = Math.round(tCollectedSum * (share / 100));
+                var isPaid = (t.status === 'paid' || t.paidThisMonth === true);
 
                 return '<tr style="border-bottom:1px solid rgba(255,255,255,0.06);transition:background 0.15s;" onmouseover="this.style.background=\'rgba(255,255,255,0.02)\'" onmouseout="this.style.background=\'transparent\'">' +
                   '<td style="padding:14px;">' +
@@ -3662,34 +3661,59 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
   };
 
   EE.renderFinanceExpensesTabHtml = function(expenses) {
+    if (!Array.isArray(expenses)) expenses = [];
+    var totalExp = expenses.reduce(function(acc, x) { return acc + (Number(x.amount) || 0); }, 0);
+
     var h = '<div style="background:rgba(15,23,42,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.4);">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;">' +
         '<div>' +
-          '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘quv Markazi Operatsion Xarajatlari</h3>' +
-          '<div style="font-size:12.5px;color:#94a3b8;margin-top:2px;">Tok, ijara, kommunal, internet va boshqa moddiy xarajatlar.</div>' +
+          '<h3 style="margin:0;font-size:19px;font-weight:900;color:#fff;display:flex;align-items:center;gap:10px;">' +
+            '<span>💸 Markaz Xarajatlari Boshqaruvi</span>' +
+            '<span style="background:rgba(239,68,68,0.2);border:1px solid rgba(239,68,68,0.4);color:#fca5a5;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:800;">Jami: ' + fmtUZS(totalExp) + '</span>' +
+          '</h3>' +
+          '<div style="font-size:12.5px;color:#94a3b8;margin-top:4px;">Tok, ijara, kommunal, internet va boshqa moddiy xarajatlar real vaqtda saqlanadi.</div>' +
         '</div>' +
-        '<button id="eeBtnAddExpenseInner" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:900;cursor:pointer;">+ Yangi Xarajat</button>' +
-      '</div>' +
+        '<button id="eeBtnAddExpenseInner" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;padding:10px 20px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(239,68,68,0.4);display:inline-flex;align-items:center;gap:6px;">+ Yangi Xarajat Kiritish</button>' +
+      '</div>';
 
-      '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;">';
-
+    if (expenses.length === 0) {
+      h += '<div style="background:rgba(15,23,42,0.6);border:1.5px dashed rgba(255,255,255,0.12);border-radius:18px;padding:40px 20px;text-align:center;color:#94a3b8;">' +
+        '<div style="font-size:36px;margin-bottom:10px;">🧾</div>' +
+        '<div style="font-size:15px;font-weight:800;color:#fff;">Hozircha xarajatlar kiritilmagan</div>' +
+        '<div style="font-size:12px;margin-top:4px;">Yuqoridagi "+ Yangi Xarajat Kiritish" tugmasini bosib birinchi xarajatni kiriting.</div>' +
+      '</div>';
+    } else {
+      h += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;">';
       expenses.forEach(function(e) {
-        h += '<div style="background:#1e293b;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;">' +
-          '<div style="display:flex;align-items:center;gap:12px;">' +
-            '<span style="font-size:24px;width:40px;height:40px;background:rgba(255,255,255,0.06);border-radius:10px;display:flex;align-items:center;justify-content:center;">' + (e.icon || '💸') + '</span>' +
-            '<div>' +
-              '<div style="font-size:13.5px;font-weight:800;color:#fff;">' + esc(e.title) + '</div>' +
-              '<div style="font-size:11px;color:#94a3b8;text-transform:uppercase;">' + esc(e.category) + '</div>' +
+        var eDate = e.date || 'Bugun';
+        var eTime = e.time || '17:00';
+        var catName = e.category || 'Operatsion';
+        h += '<div style="background:linear-gradient(145deg,rgba(30,41,59,0.9),rgba(15,23,42,0.95));border:1.5px solid rgba(239,68,68,0.3);border-radius:16px;padding:16px 18px;box-shadow:0 8px 24px rgba(0,0,0,0.5);display:flex;flex-direction:column;justify-content:space-between;gap:12px;transition:all 0.2s;">' +
+          '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;">' +
+            '<div style="display:flex;align-items:center;gap:10px;">' +
+              '<span style="font-size:24px;width:42px;height:42px;background:rgba(239,68,68,0.14);border:1px solid rgba(239,68,68,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;">' + (e.icon || '💸') + '</span>' +
+              '<div>' +
+                '<div style="font-size:14px;font-weight:900;color:#fff;line-height:1.2;">' + esc(e.title) + '</div>' +
+                '<div style="font-size:11px;color:#94a3b8;font-weight:700;margin-top:3px;text-transform:uppercase;letter-spacing:0.5px;">' + esc(catName) + '</div>' +
+              '</div>' +
             '</div>' +
+            '<button class="ee-fin-del-exp-btn" data-eid="' + esc(e.id) + '" title="Xarajatni o‘chirish" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#f87171;border-radius:8px;padding:4px 8px;font-size:11px;cursor:pointer;font-weight:800;">🗑️</button>' +
           '</div>' +
-          '<div style="text-align:right;">' +
-            '<div style="font-size:15px;font-weight:900;color:#fca5a5;font-family:monospace;">' + fmtUZS(e.amount) + '</div>' +
-            '<button class="ee-fin-del-exp-btn" data-eid="' + esc(e.id) + '" style="background:none;border:none;color:#ef4444;font-size:11px;cursor:pointer;padding:2px 4px;margin-top:4px;">O‘chirish</button>' +
+          '<div style="display:flex;align-items:flex-end;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.08);padding-top:10px;margin-top:2px;">' +
+            '<div>' +
+              '<div style="font-size:10px;color:#94a3b8;font-weight:700;text-transform:uppercase;">Xarajat Summasi:</div>' +
+              '<div style="font-size:18px;font-weight:900;color:#f87171;font-family:monospace;letter-spacing:-0.5px;">' + fmtUZS(e.amount) + '</div>' +
+            '</div>' +
+            '<div style="text-align:right;font-size:11px;color:#cbd5e1;font-weight:700;font-family:monospace;background:rgba(0,0,0,0.3);padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);">' +
+              '📅 ' + esc(eDate) + '<br>⏰ ' + esc(eTime) +
+            '</div>' +
           '</div>' +
         '</div>';
       });
+      h += '</div>';
+    }
 
-      h += '</div></div>';
+    h += '</div>';
     return h;
   };
 
@@ -3743,7 +3767,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
         var stName = btn.getAttribute('data-stname') || (studentList[0] ? studentList[0].name : '');
         var fee = btn.getAttribute('data-stfee') || (studentList[0] ? studentList[0].fee : 1400000);
         var paid = btn.getAttribute('data-stpaid') || 0;
-        EE.openRecordPaymentModal(container, S, studentList, stId, stName, fee, paid);
+        EE.openRecordPaymentModal(container, S, studentList, stId, stName, fee, paid, activeTab);
       };
     });
 
@@ -3832,7 +3856,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     // Add Expense Buttons
     container.querySelectorAll('#eeBtnOpenExpModal, #eeBtnAddExpenseInner').forEach(function(btn) {
       btn.onclick = function() {
-        EE.openAddExpenseModal(container, S);
+        EE.openAddExpenseModal(container, S, activeTab);
       };
     });
 
@@ -3894,7 +3918,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
   // --------------------------------------------------------------------------
   // MODAL: RECORD STUDENT PAYMENT
   // --------------------------------------------------------------------------
-  EE.openRecordPaymentModal = function(container, S, studentList, selStId, selStName, fee, paid) {
+  EE.openRecordPaymentModal = function(container, S, studentList, selStId, selStName, fee, paid, activeTab) {
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
     var existing = document.getElementById('eeFinPayModalOverlay');
     if (existing) existing.remove();
@@ -3983,7 +4007,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       saveStore();
       showToast((st ? st.name : 'O‘quvchi') + " to‘lovi (" + fmtUZS(amt) + ") muvaffaqiyatli qabul qilindi!");
       close();
-      EE.renderFinanceUnifiedView(container, 'students');
+      EE.renderFinanceUnifiedView(container, activeTab || 'overview');
     };
   };
 
@@ -4119,19 +4143,23 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
   // --------------------------------------------------------------------------
   // MODAL: ADD EXPENSE
   // --------------------------------------------------------------------------
-  EE.openAddExpenseModal = function(container, S) {
+  EE.openAddExpenseModal = function(container, S, activeTab) {
     var modalRoot = document.getElementById('eaGlobalModalRoot') || document.body;
     var existing = document.getElementById('eeFinExpModalOverlay');
     if (existing) existing.remove();
+
+    var now = new Date();
+    var curDateStr = now.toISOString().split('T')[0];
+    var curTimeStr = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
 
     var m = document.createElement('div');
     m.id = 'eeFinExpModalOverlay';
     m.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(24px);z-index:2147483645;display:flex;align-items:center;justify-content:center;padding:16px;';
 
-    m.innerHTML = '<div style="background:rgba(15,23,42,0.96);border:1px solid rgba(239,68,68,0.4);border-radius:24px;max-width:480px;width:100%;padding:26px 28px;color:#f8fafc;box-shadow:0 25px 60px rgba(0,0,0,0.7),0 0 40px rgba(239,68,68,0.2);">' +
+    m.innerHTML = '<div style="background:rgba(15,23,42,0.96);border:1.5px solid rgba(239,68,68,0.4);border-radius:24px;max-width:480px;width:100%;padding:26px 28px;color:#f8fafc;box-shadow:0 25px 60px rgba(0,0,0,0.7),0 0 40px rgba(239,68,68,0.25);">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">' +
         '<div style="display:flex;align-items:center;gap:10px;">' +
-          '<span style="font-size:22px;">💸</span>' +
+          '<span style="font-size:24px;">💸</span>' +
           '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Yangi Operatsion Xarajat Kiritish</h3>' +
         '</div>' +
         '<button id="eeCloseExpModal" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
@@ -4139,26 +4167,37 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
 
       '<div style="display:flex;flex-direction:column;gap:14px;">' +
         '<div>' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Xarajat Nomi</label>' +
-          '<input type="text" id="eeExpTitleInp" placeholder="masalan: Qoshimcha proyektor tamiri" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Nega Qilingan? (Xarajat sababi / nomi)</label>' +
+          '<input type="text" id="eeExpTitleInp" placeholder="masalan: 3-bino oylik ijarasi yoki proyektor lampasi" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
         '</div>' +
 
         '<div>' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;color:#ef4444;text-transform:uppercase;margin-bottom:6px;">Xarajat Summasi (so‘m)</label>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#ef4444;text-transform:uppercase;margin-bottom:6px;">Qancha? (Xarajat summasi - so‘mda)</label>' +
           '<input type="number" id="eeExpAmountInp" placeholder="1500000" style="width:100%;padding:12px 14px;background:#1e293b;border:1.5px solid #ef4444;border-radius:12px;color:#fca5a5;font-weight:900;font-size:17px;outline:none;box-sizing:border-box;" />' +
         '</div>' +
 
         '<div>' +
           '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Kategoriya</label>' +
           '<select id="eeExpCatSelect" style="width:100%;padding:12px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;">' +
+            '<option value="rent">🏢 Bino Ijarasi</option>' +
             '<option value="electricity">⚡ Elektr Energiyasi (Tok)</option>' +
             '<option value="utilities">💧 Kommunal (Suv, isitish, chiqindi)</option>' +
-            '<option value="rent">🏢 Bino Ijarasi</option>' +
             '<option value="internet">🌐 Internet &amp; LMS Server</option>' +
             '<option value="equipment">💻 Jihozlar va Tamir</option>' +
             '<option value="marketing">📣 Marketing &amp; Reklama</option>' +
             '<option value="other">🛠️ Xo‘jalik va Boshqalar</option>' +
           '</select>' +
+        '</div>' +
+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#38bdf8;text-transform:uppercase;margin-bottom:6px;">📅 Qachon? (Sana)</label>' +
+            '<input type="date" id="eeExpDateInp" value="' + curDateStr + '" style="width:100%;padding:10px 12px;background:#1e293b;border:1px solid rgba(56,189,248,0.35);border-radius:12px;color:#fff;font-weight:700;font-size:13px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#c084fc;text-transform:uppercase;margin-bottom:6px;">⏰ Qaysi soatda?</label>' +
+            '<input type="time" id="eeExpTimeInp" value="' + curTimeStr + '" style="width:100%;padding:10px 12px;background:#1e293b;border:1px solid rgba(168,85,247,0.35);border-radius:12px;color:#fff;font-weight:700;font-size:13px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
         '</div>' +
       '</div>' +
 
@@ -4177,23 +4216,28 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       var title = m.querySelector('#eeExpTitleInp').value.trim();
       var amt = parseInt(m.querySelector('#eeExpAmountInp').value, 10) || 0;
       var cat = m.querySelector('#eeExpCatSelect').value;
+      var dVal = m.querySelector('#eeExpDateInp').value || curDateStr;
+      var tVal = m.querySelector('#eeExpTimeInp').value || curTimeStr;
 
-      if (!title || amt <= 0) { alert("Xarajat nomi va summasini to‘g‘ri kiriting!"); return; }
+      if (!title || amt <= 0) { alert("Iltimos, xarajat sababi (nomi) va summasini to‘g‘ri kiriting!"); return; }
 
-      var icons = { electricity: '⚡', utilities: '💧', rent: '🏢', internet: '🌐', equipment: '💻', marketing: '📣', other: '🛠️' };
+      var icons = { rent: '🏢', electricity: '⚡', utilities: '💧', internet: '🌐', equipment: '💻', marketing: '📣', other: '🛠️' };
 
-      S.finance.expenses.push({
+      S.finance.expenses.unshift({
         id: 'e_' + Date.now(),
         category: cat,
         title: title,
         amount: amt,
-        icon: icons[cat] || '💸'
+        icon: icons[cat] || '💸',
+        date: dVal,
+        time: tVal,
+        createdAt: Date.now()
       });
 
       saveStore();
       showToast("Xarajat (" + fmtUZS(amt) + ") muvaffaqiyatli saqlandi!");
       close();
-      EE.renderFinanceUnifiedView(container, 'expenses');
+      EE.renderFinanceUnifiedView(container, activeTab || 'expenses');
     };
   };
 
