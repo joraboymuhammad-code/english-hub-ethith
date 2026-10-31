@@ -5,36 +5,74 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   // ============================================================================
   EA.INFOBIP_API_KEY = 'b2cd5f0b3779029fe4da0257852e9d29-b74258d1-ae6f-4c2d-a97d-7b33faf5fac2';
 
+  function sanitizeToGsm7(text) {
+    if (!text) return '';
+    return text
+      .replace(/[‘’`´]/g, "'")
+      .replace(/[“”]/g, '"')
+      .replace(/[ʻʼ]/g, "'")
+      .replace(/[–—]/g, '-')
+      .replace(/[«»]/g, '"')
+      .trim();
+  }
+  EA.sanitizeToGsm7 = sanitizeToGsm7;
+
+  function validateUzbekPhone(raw) {
+    if (!raw) return { valid: false, error: "Telefon raqami kiritilmagan!" };
+    var clean = String(raw).trim();
+    if (clean.startsWith('+998')) clean = clean.slice(4).trim();
+    else if (clean.startsWith('998')) clean = clean.slice(3).trim();
+
+    if (/[a-zA-Zа-яА-ЯёЁ_]/.test(clean)) {
+      return { valid: false, error: "Telefon raqamida harf yoki maxsus belgilar bo‘lishi taqiqlanadi! Faqat 9 ta raqam kiriting." };
+    }
+
+    var digits = clean.replace(/\D/g, '');
+    if (digits.length !== 9) {
+      return { valid: false, error: "Telefon raqami noto‘g‘ri! +998 dan keyin aynan 9 ta raqam bo‘lishi shart (Masalan: 90 123 45 67). Siz kiritdingiz: " + digits.length + " ta raqam." };
+    }
+
+    return { valid: true, cleanDigits: digits, fullPhone: '+998' + digits, to: '998' + digits };
+  }
+  EA.validateUzbekPhone = validateUzbekPhone;
+
   function normalizePhoneForSms(rawPhone) {
-    if (!rawPhone) return '';
-    var digits = String(rawPhone).replace(/\D/g, '');
-    if (digits.length === 9) digits = '998' + digits;
-    if (digits.startsWith('8') && digits.length === 10) digits = '998' + digits.slice(1);
-    return digits;
+    var v = validateUzbekPhone(rawPhone);
+    return v.valid ? v.to : '';
   }
   EA.normalizePhoneForSms = normalizePhoneForSms;
 
   EA.sendInfobipSms = async function(recipients, messageText) {
+    var cleanMsg = sanitizeToGsm7(messageText);
     var validDestinations = [];
+    var invalidList = [];
+
     (recipients || []).forEach(function(r) {
-      var p = normalizePhoneForSms(r.phone);
-      if (p && p.length >= 9) {
-        if (!validDestinations.some(function(vd) { return vd.to === p; })) {
-          validDestinations.push({ to: p, name: r.name || 'Ota-ona' });
+      var v = validateUzbekPhone(r.phone);
+      if (v.valid) {
+        if (!validDestinations.some(function(vd) { return vd.to === v.to; })) {
+          validDestinations.push({ to: v.to, name: r.name || 'Ota-ona' });
         }
+      } else {
+        invalidList.push((r.name || 'O‘quvchi') + ': ' + v.error);
       }
     });
 
+    if (invalidList.length > 0) {
+      return { success: false, error: "Xatolik! Quyidagi o‘quvchilar telefon raqami yaroqsiz:\n" + invalidList.join('\n') };
+    }
+
     if (validDestinations.length === 0) {
-      return { success: false, error: "Yaroqli telefon raqamlari topilmadi! Iltimos, o‘quvchilar profilida telefon raqami borligini tekshiring." };
+      return { success: false, error: "Yaroqli telefon raqamlari topilmadi! Iltimos, o‘quvchi telefon raqami faqat 9 ta raqamdan iborat ekanligini tekshiring." };
     }
 
     var payload = {
       messages: validDestinations.map(function(d) {
+        var personalText = cleanMsg.replace(/\[O['‘]quvchi ismi\]/gi, d.name);
         return {
           from: 'ETHITH',
           destinations: [{ to: d.to }],
-          text: messageText
+          text: personalText
         };
       })
     };
@@ -2766,7 +2804,7 @@ EA.render = function(container, preserveScrollLeft) {
         '<button id="eaBtnAddStudentFromJ" data-cid="' + esc(cls.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(16,185,129,0.35);" title="Shu guruhga yangi o‘quvchi qo‘shish">➕ O‘quvchi Qo‘shish</button>' +
         '<button id="eaBtnSendSmsAbsentOnly" data-cid="' + esc(cls.id) + '" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(245,158,11,0.35);" title="Bugun darsga kelmagan o‘quvchilarning ota-onalariga SMS yuborish">📲 Kelmaganlarga SMS</button>' +
         '<button id="eaBtnDeleteClassFromJ" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Guruhni butunlay o‘chirish">🗑 Guruhni O‘chirish</button>' +
-        '<button id="eaBtnDeleteTeacherFromJ" data-tid="' + esc(cls.teacherId || EA.activeTeacherId || '') + '" data-tname="' + esc(curTName) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Ushbu o‘qituvchini butunlay o‘chirish">🗑 O‘qituvchini O‘chirish</button>' +
+
       '</div>';
     } else {
       h += '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">' +
@@ -5741,11 +5779,14 @@ EA.render = function(container, preserveScrollLeft) {
           '</div>' +
         '</div>' +
 
-        // Parent Phone Number
+        // Parent Phone Number with fixed locked +998 prefix
         '<div style="margin-bottom:16px;">' +
           '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">Ota-onasining Telefon Raqami: <span style="color:#ef4444;">*</span></label>' +
-          '<input type="tel" id="eaEnrollParentPhone" value="' + esc(defaultPhone) + '" placeholder="+998 90 123 45 67" required style="width:100%;box-sizing:border-box;background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:10px 14px;color:#fff;font-size:13.5px;font-weight:700;outline:none;">' +
-          '<small style="color:#94a3b8;font-size:11px;margin-top:4px;display:block;">📞 Dars qoldirish yoki to‘lovlar bo‘yicha ota-ona bilan aloqa uchun.</small>' +
+          '<div style="display:flex;align-items:center;background:rgba(15,23,42,0.95);border:1.5px solid rgba(56,189,248,0.4);border-radius:12px;overflow:hidden;">' +
+            '<span style="background:rgba(56,189,248,0.18);border-right:1px solid rgba(56,189,248,0.3);color:#38bdf8;font-weight:900;font-size:14px;padding:10px 14px;user-select:none;font-family:monospace;">+998</span>' +
+            '<input type="tel" id="eaEnrollParentPhone" maxlength="9" value="' + esc(defaultPhone.replace(/\D/g, '').slice(-9)) + '" placeholder="901234567" required style="flex:1;background:transparent;border:none;padding:10px 14px;color:#fff;font-size:14px;font-weight:900;letter-spacing:1px;outline:none;" />' +
+          '</div>' +
+          '<small style="color:#94a3b8;font-size:11.5px;margin-top:5px;display:block;">📞 +998 avtomatik belgilangan. Faqat qolgan 9 ta raqamni kiriting (harflar qabul qilinmaydi).</small>' +
         '</div>' +
 
         // Auto Generated Credentials Box
@@ -5806,6 +5847,11 @@ EA.render = function(container, preserveScrollLeft) {
     var fnInp = overlay.querySelector('#eaEnrollFirstName');
     var lnInp = overlay.querySelector('#eaEnrollLastName');
     var phoneInp = overlay.querySelector('#eaEnrollParentPhone');
+    if (phoneInp) {
+      phoneInp.oninput = function() {
+        this.value = this.value.replace(/\D/g, '').slice(0, 9);
+      };
+    }
     var loginInp = overlay.querySelector('#eaLiveLoginInput');
     var passInp = overlay.querySelector('#eaLivePassInput');
     var regenBtn = overlay.querySelector('#eaRegenCredsBtn');
@@ -6607,7 +6653,7 @@ EA.render = function(container, preserveScrollLeft) {
       savedText = localStorage.getItem('ethith_saved_absent_sms_template');
     } catch(e) {}
     if (!savedText) {
-      savedText = "Hurmatli ota-ona! Farzandingiz bugun ingliz tili darsida qatnashmadi. Sababini aniqlash uchun ustoz bilan bog‘lanishingizni so‘raymiz. English House o‘quv markazi.";
+      savedText = "Hurmatli ota-ona! Farzandingiz bugun darsda qatnashmadi. Sababini bilish uchun ustoz bilan bog'laning. English House markazi.";
     }
 
     var html = '<div class="eth-modal" style="max-width:640px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(245,158,11,0.5);box-shadow:0 24px 60px rgba(0,0,0,0.85),0 0 35px rgba(245,158,11,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
@@ -6641,8 +6687,10 @@ EA.render = function(container, preserveScrollLeft) {
         html += '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(15,23,42,0.7);border:1px solid rgba(239,68,68,0.25);padding:8px 12px;border-radius:10px;font-size:12.5px;flex-wrap:wrap;gap:8px;">' +
           '<span><b>' + (aidx + 1) + '. ' + esc(ast.name) + '</b></span>' +
           '<div style="display:flex;align-items:center;gap:6px;">' +
-            '<span style="font-size:11px;color:#94a3b8;font-weight:700;">Tel:</span>' +
-            '<input type="tel" class="ea-live-absent-phone" data-stid="' + esc(sid) + '" value="' + esc(phone) + '" placeholder="+998 90 123 45 67" style="width:145px;background:#0b1222;border:1px solid rgba(245,158,11,0.4);color:#fff;border-radius:8px;padding:4px 8px;font-size:12px;font-weight:700;outline:none;" />' +
+            '<div style="display:flex;align-items:center;background:#0b1222;border:1px solid rgba(245,158,11,0.4);border-radius:8px;overflow:hidden;">' +
+              '<span style="background:rgba(245,158,11,0.2);border-right:1px solid rgba(245,158,11,0.3);color:#fbbf24;font-weight:900;font-size:11.5px;padding:4px 7px;user-select:none;font-family:monospace;">+998</span>' +
+              '<input type="tel" class="ea-live-absent-phone" data-stid="' + esc(sid) + '" maxlength="9" value="' + esc(phone.replace(/\D/g, '').slice(-9)) + '" placeholder="901234567" style="width:90px;background:transparent;border:none;color:#fff;padding:4px 6px;font-size:12px;font-weight:900;letter-spacing:0.5px;outline:none;" />' +
+            '</div>' +
           '</div>' +
         '</div>';
       });
@@ -6691,13 +6739,18 @@ EA.render = function(container, preserveScrollLeft) {
     updateCounter();
 
     overlay.querySelectorAll('.ea-live-absent-phone').forEach(function(inp) {
+      inp.oninput = function() {
+        this.value = this.value.replace(/\D/g, '').slice(0, 9);
+      };
       inp.onchange = function() {
         var sid = inp.getAttribute('data-stid');
-        curClass.customStudentPhones[sid] = inp.value.trim();
+        var val9 = inp.value.replace(/\D/g, '');
+        var fullPh = val9 ? ('+998' + val9) : '';
+        curClass.customStudentPhones[sid] = fullPh;
         var ast = absentStudents.find(function(a) { return (a.id || a.email) === sid; });
         if (ast) {
-          ast.parentPhone = inp.value.trim();
-          ast.phone = inp.value.trim();
+          ast.parentPhone = fullPh;
+          ast.phone = fullPh;
         }
       };
     });
