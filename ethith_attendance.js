@@ -634,7 +634,9 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
   function isTeacherRole() {
     var u = getActiveUser();
-    return u && (u.role === 'teacher' || u.role === 'admin' || u.isTeacher === true);
+    if (!u) return true;
+    if (u.role === 'student') return false;
+    return true;
   }
 
   function getWorkbookUnitsList(bookLevel) {
@@ -2685,7 +2687,7 @@ EA.render = function(container, preserveScrollLeft) {
 
     // 3. For Students: STRICT PRIVACY & PERSONAL JOURNAL ONLY (Faqat o'zining guruhi va davomati!)
     var curUser = getActiveUser();
-    var isStudent = curUser && (curUser.role === 'student' || (!isAdmin && !isTeacher));
+    var isStudent = curUser && curUser.role === 'student';
     var enrolledClasses = [];
     if (isStudent) {
       var allCls = getAvailableClasses();
@@ -3096,19 +3098,9 @@ EA.render = function(container, preserveScrollLeft) {
                     : '<div style="font-size:10px;font-weight:600;color:#64748b;margin-top:1px;">📈 Statistika va tahlil &rarr;</div>') +
                 '</div>' +
                 (isTeacher ?
-                  '<div style="display:flex;align-items:center;gap:4px;">' +
-                    (isAdmin ? ('<button type="button" class="ea-pay-toggle-btn" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="To‘lov holatini o‘zgartirish (Bosish: To‘langan / To‘lanmagan)" style="border:1px solid ' + (isPaid ? '#10b981' : 'rgba(255,255,255,0.15)') + ';background:' + (isPaid ? 'rgba(16,185,129,0.25)' : 'rgba(255,255,255,0.05)') + ';color:' + (isPaid ? '#4ade80' : '#cbd5e1') + ';cursor:pointer;padding:4px 7px;font-size:11px;font-weight:800;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
-                      (isPaid ? '💳 ✓' : '💳') +
-                    '</button>') : '') +
-                    
-                    '<button type="button" class="ea-edit-student-btn" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O‘quvchi ma\'lumotlarini tahrirlash" style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#cbd5e1;cursor:pointer;padding:4px 6px;font-size:11px;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
-                      '✏️' +
-                    '</button>' +
-                    '<button type="button" class="ea-transfer-student-btn" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O‘quvchini boshqa guruhga ko‘chirish" style="border:1px solid rgba(56,189,248,0.3);background:rgba(56,189,248,0.12);color:#38bdf8;cursor:pointer;padding:4px 6px;font-size:11px;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
-                      '🔄' +
-                    '</button>' +
-                    '<button type="button" class="ea-remove-student-btn" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O‘quvchini guruhdan chiqarish" style="border:1px solid rgba(239,68,68,0.3);background:rgba(239,68,68,0.12);color:#f87171;cursor:pointer;padding:4px 6px;font-size:11px;line-height:1;border-radius:6px;flex-shrink:0;transition:all 0.15s;">' +
-                      '🗑' +
+                  '<div style="display:flex;align-items:center;">' +
+                    '<button type="button" class="ea-edit-student-btn" data-cid="' + esc(cls.id) + '" data-stid="' + esc(stId) + '" data-stname="' + esc(stName) + '" title="O‘quvchini tahrirlash va boshqaruv" style="border:1.5px solid rgba(56,189,248,0.35);background:rgba(56,189,248,0.12);color:#38bdf8;cursor:pointer;padding:5px 9px;font-size:11.5px;font-weight:800;line-height:1;border-radius:8px;flex-shrink:0;transition:all 0.15s;display:inline-flex;align-items:center;gap:4px;">' +
+                      '✏️ Tahrirlash' +
                     '</button>' +
                   '</div>' : '') +
               '</div>') +
@@ -3480,36 +3472,42 @@ EA.render = function(container, preserveScrollLeft) {
       });
     }
 
-    // Davomat Box (D) Click - Cycle through Yashil K -> Qizil K -> Sariq S -> Empty (STRICTLY TEACHER/ADMIN ONLY)
-    if (isTeacher && !isStudent) {
-      container.querySelectorAll('.ea-status-box.is-clickable').forEach(function(box) {
-        box.onclick = function() {
-          var dKey = box.dataset.date;
-          var stId = box.dataset.stid;
-          var cur = box.dataset.cur;
+    // Davomat Box (D) Click - Cycle through Yashil K -> Qizil K -> Sariq S -> Empty
+    // Direct handler & Container delegation for 100% reliable clicks
+    container.querySelectorAll('.ea-status-box').forEach(function(box) {
+      box.onclick = function(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
+        var curUser = getActiveUser();
+        var isStudent = curUser && curUser.role === 'student';
+        if (isStudent) return; // Student cannot mark
 
-          var next = '';
-          if (!cur || cur === '') next = 'K';
-          else if (cur === 'K' || cur === 'present') next = 'Q';
-          else if (cur === 'Q' || cur === 'absent') next = 'S';
-          else next = '';
+        var dKey = box.getAttribute('data-date') || box.dataset.date;
+        var stId = box.getAttribute('data-stid') || box.dataset.stid;
+        var cur = box.getAttribute('data-cur') || box.dataset.cur || '';
 
-          if (!cls.attendance.records[dKey]) cls.attendance.records[dKey] = {};
-          if (!cls.attendance.records[dKey][stId]) cls.attendance.records[dKey][stId] = {};
-          cls.attendance.records[dKey][stId].status = next;
+        var next = '';
+        if (!cur || cur === '') next = 'K';
+        else if (cur === 'K' || cur === 'present') next = 'Q';
+        else if (cur === 'Q' || cur === 'absent') next = 'S';
+        else next = '';
 
-          // If marked absent ('Q') and student hasn't completed homework, set automatic 2
-          if (next === 'Q' && !cls.attendance.records[dKey][stId].hwDone) {
-            cls.attendance.records[dKey][stId].score = '2';
-          } else if (next === 'S' && !cls.attendance.records[dKey][stId].hwDone) {
-            cls.attendance.records[dKey][stId].score = '';
-          }
+        if (!cls.attendance.records) cls.attendance.records = {};
+        if (!cls.attendance.records[dKey]) cls.attendance.records[dKey] = {};
+        if (!cls.attendance.records[dKey][stId]) cls.attendance.records[dKey][stId] = {};
+        cls.attendance.records[dKey][stId].status = next;
 
-          persistAttendance(cls);
-          EA.render(container, scrollWrap ? scrollWrap.scrollLeft : 0);
-        };
-      });
-    }
+        // If marked absent ('Q') and student hasn't completed homework, set automatic 2
+        if (next === 'Q' && !cls.attendance.records[dKey][stId].hwDone) {
+          cls.attendance.records[dKey][stId].score = '2';
+        } else if (next === 'S' && !cls.attendance.records[dKey][stId].hwDone) {
+          cls.attendance.records[dKey][stId].score = '';
+        }
+
+        persistAttendance(cls);
+        var sLeft = scrollWrap ? scrollWrap.scrollLeft : 0;
+        EA.render(container, sLeft);
+      };
+    });
 
     // Toggle Student Names Column Collapse / Expand (Left shrink/expand)
     var toggleNamesHeaderBox = container.querySelector('#eaToggleNamesHeaderBox');
@@ -5696,6 +5694,12 @@ EA.render = function(container, preserveScrollLeft) {
     var currentLogin = (curSt && curSt.login && !curSt.isTester) ? curSt.login : creds.login;
     var currentPass = (curSt && curSt.password && !curSt.isTester) ? curSt.password : creds.password;
 
+    var S_app_state = window.S || (window.EthithApp && window.EthithApp.state) || {};
+    var stIdLookup = curSt ? (curSt.id || curSt.email || curSt.login) : null;
+    var initPayRec = (curClass && curClass.studentPayments && stIdLookup && curClass.studentPayments[stIdLookup]) ||
+                     (S_app_state.finance && S_app_state.finance.studentFees && stIdLookup && S_app_state.finance.studentFees[stIdLookup]) || {};
+    var isStudentPaid = (initPayRec.status === 'paid');
+
     var html = '<div class="eth-modal" style="max-width:560px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(56,189,248,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
@@ -5760,6 +5764,24 @@ EA.render = function(container, preserveScrollLeft) {
           '<div style="font-size:11px;color:#94a3b8;margin-top:8px;">🔒 O‘quvchi o‘zi alohida yangi hisob ocha olmaydi. Faqat ushbu Login va Parol orqali kiradi.</div>' +
         '</div>' +
 
+        // Extra Student Controls (All in One: Payment, SMS, Stats)
+        (isEdit ?
+          '<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:14px 18px;margin-bottom:18px;">' +
+            '<div style="font-size:12px;font-weight:900;color:#cbd5e1;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;">⚙️ Boshqaruv & Sozlamalar</div>' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">' +
+              '<div style="display:flex;align-items:center;gap:10px;">' +
+                '<span style="font-size:12.5px;color:#94a3b8;font-weight:700;">To‘lov:</span>' +
+                '<button type="button" id="eaModalTogglePayBtn" style="border:1.5px solid ' + (isStudentPaid ? '#10b981' : 'rgba(255,255,255,0.2)') + ';background:' + (isStudentPaid ? 'rgba(16,185,129,0.22)' : 'rgba(255,255,255,0.06)') + ';color:' + (isStudentPaid ? '#4ade80' : '#cbd5e1') + ';padding:6px 14px;border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
+                  (isStudentPaid ? '💳 ✓ To‘langan (Yashil Neon)' : '💳 To‘lanmagan (Qarz)') +
+                '</button>' +
+              '</div>' +
+              '<div style="display:flex;align-items:center;gap:8px;">' +
+                '<button type="button" id="eaModalSendSmsBtn" style="background:rgba(250,204,21,0.18);border:1px solid rgba(250,204,21,0.4);color:#fef08a;border-radius:10px;padding:7px 12px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:5px;">📱 SMS Yuborish</button>' +
+                '<button type="button" id="eaModalOpenStatsBtn" style="background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.4);color:#7dd3fc;border-radius:10px;padding:7px 12px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:5px;">📈 Tahlil</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' : '') +
+
         // Action Buttons
         '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;">' +
           (isEdit 
@@ -5808,6 +5830,35 @@ EA.render = function(container, preserveScrollLeft) {
       mDelBtn.onclick = function() {
         overlay.remove();
         EA.deleteStudentCompletely(curClass ? curClass.id : null, curSt.id || curSt.login, curSt.name);
+      };
+    }
+
+    var mPayBtn = overlay.querySelector('#eaModalTogglePayBtn');
+    if (mPayBtn) {
+      mPayBtn.onclick = function() {
+        isStudentPaid = !isStudentPaid;
+        mPayBtn.style.borderColor = isStudentPaid ? '#10b981' : 'rgba(255,255,255,0.2)';
+        mPayBtn.style.background = isStudentPaid ? 'rgba(16,185,129,0.22)' : 'rgba(255,255,255,0.06)';
+        mPayBtn.style.color = isStudentPaid ? '#4ade80' : '#cbd5e1';
+        mPayBtn.innerHTML = isStudentPaid ? '💳 ✓ To‘langan (Yashil Neon)' : '💳 To‘lanmagan (Qarz)';
+      };
+    }
+
+    var mSmsBtn = overlay.querySelector('#eaModalSendSmsBtn');
+    if (mSmsBtn && curSt) {
+      mSmsBtn.onclick = function() {
+        overlay.remove();
+        EA.openSendSmsModal(curClass ? curClass.id : null, curSt.id || curSt.login);
+      };
+    }
+
+    var mStatsBtn = overlay.querySelector('#eaModalOpenStatsBtn');
+    if (mStatsBtn && curSt) {
+      mStatsBtn.onclick = function() {
+        overlay.remove();
+        EA.activeStudentId = curSt.id || curSt.login;
+        var container = document.getElementById('apView') || document.getElementById('viewContainer');
+        if (container) EA.render(container);
       };
     }
 
@@ -5911,14 +5962,15 @@ EA.render = function(container, preserveScrollLeft) {
       chosenClass.customStudentPhones[studentObj.id] = pPhone;
 
       if (!chosenClass.studentPayments) chosenClass.studentPayments = {};
-      if (!chosenClass.studentPayments[studentObj.id]) {
-        chosenClass.studentPayments[studentObj.id] = {
-          fee: 300000,
-          paid: 0,
-          status: 'unpaid',
-          method: '—',
-          date: 'To‘lanmagan'
-        };
+      chosenClass.studentPayments[studentObj.id] = {
+        fee: 300000,
+        paid: isStudentPaid ? 300000 : 0,
+        status: isStudentPaid ? 'paid' : 'unpaid',
+        method: isStudentPaid ? 'Online/Naqd' : '—',
+        date: isStudentPaid ? new Date().toLocaleDateString('uz-UZ') : 'To‘lanmagan'
+      };
+      if (S_app_state.finance && S_app_state.finance.studentFees) {
+        S_app_state.finance.studentFees[studentObj.id] = chosenClass.studentPayments[studentObj.id];
       }
 
       if (typeof ensureClassAttendance === 'function') ensureClassAttendance(chosenClass);
