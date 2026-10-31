@@ -24395,7 +24395,8 @@
               "score": ""
             },
             "std_mixswdasd_804_selixasdasd": {
-              "status": "K"
+              "status": "",
+              "score": ""
             }
           }
         },
@@ -24423,7 +24424,7 @@
             "teacherName": "Muhammadyusuf"
           }
         },
-        "updatedAt": 1793434258870
+        "updatedAt": 1793434261996
       },
       "customStudentPhones": {
         "std_mixswdasd_804_selixasdasd": "+998950079621"
@@ -120376,5 +120377,5 @@
       }
     }
   },
-  "updatedAt": 1793434259478
+  "updatedAt": 1793434263078
 }
