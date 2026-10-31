@@ -104867,7 +104867,7 @@
         "exercise": "4",
         "label": "hoodie",
         "top": 64.7,
-        "left": 54.8,
+        "left": 50.7,
         "width": 14,
         "height": 1.8,
         "correct": "hoodie"
@@ -104878,8 +104878,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "jacket",
-        "top": 66.7,
-        "left": 54.8,
+        "top": 64.5,
+        "left": 64,
         "width": 14,
         "height": 1.8,
         "correct": "jacket"
@@ -104890,8 +104890,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "jeans",
-        "top": 68.8,
-        "left": 54.8,
+        "top": 66.6,
+        "left": 50.4,
         "width": 14,
         "height": 1.8,
         "correct": "jeans"
@@ -104902,8 +104902,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "skirt",
-        "top": 70.6,
-        "left": 55.1,
+        "top": 66.6,
+        "left": 64,
         "width": 14,
         "height": 1.8,
         "correct": "skirt"
@@ -104914,8 +104914,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "suit",
-        "top": 72.5,
-        "left": 54.9,
+        "top": 68.5,
+        "left": 50.1,
         "width": 14,
         "height": 1.8,
         "correct": "suit"
@@ -104926,8 +104926,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "top",
-        "top": 77,
-        "left": 55,
+        "top": 68.4,
+        "left": 64.7,
         "width": 14,
         "height": 1.8,
         "correct": "top"
@@ -104938,8 +104938,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "trousers",
-        "top": 79,
-        "left": 55,
+        "top": 70.7,
+        "left": 50.2,
         "width": 14,
         "height": 1.8,
         "correct": "trousers"
@@ -104950,8 +104950,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "T-shirt",
-        "top": 81,
-        "left": 55,
+        "top": 70.7,
+        "left": 64.8,
         "width": 14,
         "height": 1.8,
         "correct": [
@@ -105037,8 +105037,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "tie",
-        "top": 77,
-        "left": 75,
+        "top": 68.4,
+        "left": 88.7,
         "width": 14,
         "height": 1.8,
         "correct": "tie"
@@ -105049,8 +105049,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "trainers",
-        "top": 79,
-        "left": 75,
+        "top": 70.7,
+        "left": 74.6,
         "width": 14,
         "height": 1.8,
         "correct": "trainers"
@@ -105061,8 +105061,8 @@
         "page": 3036,
         "exercise": "4",
         "label": "umbrella",
-        "top": 81,
-        "left": 75,
+        "top": 70.6,
+        "left": 89.2,
         "width": 14,
         "height": 1.8,
         "correct": "umbrella"
@@ -107363,7 +107363,7 @@
     "3033": 1793432813635,
     "3034": 1793432999510,
     "3035": 1793432999512,
-    "3036": 1793433075543,
+    "3036": 1793433095757,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -108127,5 +108127,5 @@
       }
     }
   },
-  "updatedAt": 1793433076866
+  "updatedAt": 1793433095771
 }
