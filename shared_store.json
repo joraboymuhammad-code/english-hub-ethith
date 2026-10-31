@@ -107708,8 +107708,8 @@
         "page": 3043,
         "exercise": "3a",
         "label": "2",
-        "top": 73,
-        "left": 12,
+        "top": 72.7,
+        "left": 13.7,
         "width": 22,
         "height": 1.8,
         "options": [
@@ -107724,8 +107724,8 @@
         "page": 3043,
         "exercise": "3a",
         "label": "3",
-        "top": 78.4,
-        "left": 12,
+        "top": 77.8,
+        "left": 11.9,
         "width": 22,
         "height": 1.8,
         "options": [
@@ -107740,8 +107740,8 @@
         "page": 3043,
         "exercise": "3a",
         "label": "4",
-        "top": 81.8,
-        "left": 12,
+        "top": 81.2,
+        "left": 11.8,
         "width": 22,
         "height": 1.8,
         "options": [
@@ -107844,8 +107844,8 @@
         "page": 3043,
         "exercise": "4a",
         "label": "3",
-        "top": 64,
-        "left": 55,
+        "top": 62.7,
+        "left": 55.1,
         "width": 36.5,
         "height": 1.8,
         "correct": "I've just waited an hour for the bus! It was so boring!"
@@ -107856,8 +107856,8 @@
         "page": 3043,
         "exercise": "4b",
         "label": "a",
-        "top": 72,
-        "left": 74,
+        "top": 71,
+        "left": 73.2,
         "width": 6,
         "height": 1.8,
         "correct": "2"
@@ -107868,8 +107868,8 @@
         "page": 3043,
         "exercise": "4b",
         "label": "b",
-        "top": 76,
-        "left": 89,
+        "top": 74.4,
+        "left": 89.2,
         "width": 6,
         "height": 1.8,
         "correct": "3"
@@ -107880,8 +107880,8 @@
         "page": 3043,
         "exercise": "4b",
         "label": "c",
-        "top": 80,
-        "left": 70,
+        "top": 78.6,
+        "left": 68.8,
         "width": 6,
         "height": 1.8,
         "correct": "1"
@@ -110057,7 +110057,7 @@
     "3040": 1793433405405,
     "3041": 1793433405405,
     "3042": 1793433480516,
-    "3043": 1793433523524,
+    "3043": 1793433537379,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -110821,5 +110821,5 @@
       }
     }
   },
-  "updatedAt": 1793433524101
+  "updatedAt": 1793433538213
 }
