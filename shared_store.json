@@ -107268,7 +107268,7 @@
         "exercise": "3a",
         "label": "2",
         "top": 81.1,
-        "left": 10.7,
+        "left": 11.2,
         "width": 38.5,
         "height": 1.8,
         "correct": "Those bags are quite cheap."
@@ -107279,8 +107279,8 @@
         "page": 3042,
         "exercise": "3a",
         "label": "3",
-        "top": 84,
-        "left": 11,
+        "top": 83.1,
+        "left": 11.2,
         "width": 38.5,
         "height": 1.8,
         "correct": "She's really friendly."
@@ -107291,8 +107291,8 @@
         "page": 3042,
         "exercise": "3a",
         "label": "4",
-        "top": 86,
-        "left": 11,
+        "top": 84.8,
+        "left": 11.5,
         "width": 38.5,
         "height": 1.8,
         "correct": "This is a very interesting article."
@@ -109698,7 +109698,7 @@
     "3039": 1793433305362,
     "3040": 1793433405405,
     "3041": 1793433405405,
-    "3042": 1793433471708,
+    "3042": 1793433480516,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -110462,5 +110462,5 @@
       }
     }
   },
-  "updatedAt": 1793433473233
+  "updatedAt": 1793433485745
 }
