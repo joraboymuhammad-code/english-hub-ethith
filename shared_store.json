@@ -94078,6 +94078,323 @@
         ]
       }
     ],
+    "3008": [
+      {
+        "id": "p3008_ex1_2",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "1",
+        "label": "2",
+        "top": 40.6,
+        "left": 30,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "bookshelves"
+      },
+      {
+        "id": "p3008_ex1_3",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "1",
+        "label": "3",
+        "top": 43.8,
+        "left": 29.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "boxes of chocolates"
+      },
+      {
+        "id": "p3008_ex1_4",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "1",
+        "label": "4",
+        "top": 45.6,
+        "left": 29.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "brushes"
+      },
+      {
+        "id": "p3008_ex1_5",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "1",
+        "label": "5",
+        "top": 47.4,
+        "left": 29.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "football pitches"
+      },
+      {
+        "id": "p3008_ex1_6",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "1",
+        "label": "6",
+        "top": 49.2,
+        "left": 29.5,
+        "width": 14.5,
+        "height": 1.8,
+        "correct": "buses"
+      },
+      {
+        "id": "p3008_ex2_2",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "2",
+        "label": "2",
+        "top": 69.5,
+        "left": 34,
+        "width": 10.5,
+        "height": 1.8,
+        "correct": "presidents"
+      },
+      {
+        "id": "p3008_ex2_3",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "2",
+        "label": "3",
+        "top": 73.1,
+        "left": 33,
+        "width": 12.5,
+        "height": 1.8,
+        "correct": [
+          "neighbours",
+          "neighbors"
+        ]
+      },
+      {
+        "id": "p3008_ex2_4",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "2",
+        "label": "4",
+        "top": 75.8,
+        "left": 38.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": "classes"
+      },
+      {
+        "id": "p3008_ex2_5a",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "2",
+        "label": "5a",
+        "top": 79.5,
+        "left": 13.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": "children"
+      },
+      {
+        "id": "p3008_ex2_5b",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "2",
+        "label": "5b",
+        "top": 79.5,
+        "left": 41.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": "adults"
+      },
+      {
+        "id": "p3008_ex2_6",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "2",
+        "label": "6",
+        "top": 83.1,
+        "left": 24.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": "babies"
+      },
+      {
+        "id": "p3008_ex2_7a",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "2",
+        "label": "7a",
+        "top": 84.9,
+        "left": 31.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "men"
+      },
+      {
+        "id": "p3008_ex2_7b",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "2",
+        "label": "7b",
+        "top": 85.8,
+        "left": 21,
+        "width": 5.5,
+        "height": 1.8,
+        "correct": "women"
+      },
+      {
+        "id": "p3008_ex2_8",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "2",
+        "label": "8",
+        "top": 89.5,
+        "left": 13.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": "people"
+      },
+      {
+        "id": "p3008_ex2_9a",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "2",
+        "label": "9a",
+        "top": 92.2,
+        "left": 28.5,
+        "width": 7.5,
+        "height": 1.8,
+        "correct": "cars"
+      },
+      {
+        "id": "p3008_ex2_9b",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "2",
+        "label": "9b",
+        "top": 93.1,
+        "left": 13.5,
+        "width": 7,
+        "height": 1.8,
+        "correct": "roads"
+      },
+      {
+        "id": "p3008_ex4_2",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "4",
+        "label": "2",
+        "top": 64,
+        "left": 55.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "wife"
+      },
+      {
+        "id": "p3008_ex4_3",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "4",
+        "label": "3",
+        "top": 66.8,
+        "left": 75.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "grandfather"
+      },
+      {
+        "id": "p3008_ex4_4",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "4",
+        "label": "4",
+        "top": 69.5,
+        "left": 55.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "granddaughter"
+      },
+      {
+        "id": "p3008_ex4_5",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "4",
+        "label": "5",
+        "top": 71.3,
+        "left": 75.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "son"
+      },
+      {
+        "id": "p3008_ex4_6",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "4",
+        "label": "6",
+        "top": 74,
+        "left": 55.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "sister"
+      },
+      {
+        "id": "p3008_ex4_7",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "4",
+        "label": "7",
+        "top": 76.8,
+        "left": 75.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "uncle"
+      },
+      {
+        "id": "p3008_ex4_8",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "4",
+        "label": "8",
+        "top": 79.5,
+        "left": 55.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "niece"
+      },
+      {
+        "id": "p3008_ex4_9",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "4",
+        "label": "9",
+        "top": 82.2,
+        "left": 55.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "sister-in-law"
+      },
+      {
+        "id": "p3008_ex4_10",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "4",
+        "label": "10",
+        "top": 84.9,
+        "left": 75.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "half-brother"
+      },
+      {
+        "id": "p3008_ex4_11",
+        "type": "fill",
+        "page": 3008,
+        "exercise": "4",
+        "label": "11",
+        "top": 86.8,
+        "left": 75.5,
+        "width": 15,
+        "height": 1.8,
+        "correct": "step-brother"
+      }
+    ],
     "3046": [
       {
         "id": "p3046_ex1_1",
@@ -96213,6 +96530,7 @@
     "3005": 1793428564175,
     "3006": 1793428765968,
     "3007": 1793428765968,
+    "3008": 1793428782757,
     "3046": 1793188669311,
     "4004": 1793194833944,
     "4005": 1793193357159,
@@ -96976,5 +97294,5 @@
       }
     }
   },
-  "updatedAt": 1793428771009
+  "updatedAt": 1793428783658
 }
