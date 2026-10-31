@@ -22704,6 +22704,132 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_1": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_2": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_3": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_4": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_5": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_6": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_7": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_8": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_9": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_10": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_11": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_12": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_13": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_14": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_15": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_16": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_17": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_18": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
         }
       },
       "activeHomework": {
@@ -22718,6 +22844,98 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
+      },
+      "levelTestResults": {
+        "cls_urolov_azizbek_upper_std_1": {
+          "score": null,
+          "passed": true,
+          "updatedAt": 1793458070776
+        },
+        "cls_urolov_azizbek_upper_std_2": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_3": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_4": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_5": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_6": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_7": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_8": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_9": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_10": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_11": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_12": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_13": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_14": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_15": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_16": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_17": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        },
+        "cls_urolov_azizbek_upper_std_18": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793458068444
+        }
       }
     },
     {
@@ -26033,6 +26251,19 @@
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
       "updatedAt": 1793431308524
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793457562659
     }
   ],
   "p2pListings": [],
@@ -123390,7 +123621,8 @@
       "password": "azizbek2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_ravshanov_doniyor",
@@ -123418,7 +123650,8 @@
       "password": "doniyor2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -123440,7 +123673,8 @@
       "password": "humoyun2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -123462,7 +123696,8 @@
       "password": "marjona2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_olimjonova_durdona",
@@ -123490,7 +123725,8 @@
       "password": "durdona2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_tagaev_eldor",
@@ -123518,7 +123754,8 @@
       "password": "eldor2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -123542,7 +123779,8 @@
       "password": "kamola2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -123566,7 +123804,8 @@
       "password": "iroda2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_aborbekov_elyor",
@@ -123596,7 +123835,8 @@
       "password": "elyor2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -123624,7 +123864,8 @@
       "password": "jaloliddin2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_jumanova_pokiza",
@@ -123646,7 +123887,8 @@
       "password": "pokiza2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -123670,7 +123912,8 @@
       "password": "arslon2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -123694,7 +123937,8 @@
       "password": "sarvinoz2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -123720,7 +123964,8 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "monthlyBonus": 1000000,
-      "monthlySalary": 6225000
+      "monthlySalary": 6225000,
+      "unpaidMonths": 0
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -123748,7 +123993,8 @@
       "password": "diyora2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -123776,7 +124022,8 @@
       "password": "farrux2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "t_ahmadova_barno",
@@ -123807,7 +124054,8 @@
       "computedLiveSalary": 0,
       "studentMonthlyFee": 300000,
       "monthlySalary": 11880000,
-      "phone": "+998 90 ..."
+      "phone": "+998 90 ...",
+      "unpaidMonths": 0
     },
     {
       "id": "t_shodiyor_matematika",
@@ -123829,7 +124077,8 @@
       "password": "shodiyor2026",
       "salarySharePercent": 50,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0
     },
     {
       "id": "teacher_1793431051291",
@@ -123852,7 +124101,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 3726000,
       "card": "8600 ...",
-      "phone": "+998 90 ..."
+      "phone": "+998 90 ...",
+      "paidThisMonth": false,
+      "unpaidMonths": 0
     }
   ],
   "fileExplorer": {
@@ -124095,5 +124346,5 @@
       }
     }
   },
-  "updatedAt": 1793457541560
+  "updatedAt": 1793458071329
 }
