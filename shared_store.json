@@ -26033,6 +26033,19 @@
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
       "updatedAt": 1793431308524
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793465235801
     }
   ],
   "p2pListings": [],
@@ -123370,9 +123383,9 @@
       "email": "azizbek.urolov@ethith.uz",
       "subject": "Ingliz tili (Upper / Inter)",
       "hourlyRate": 120000,
-      "teachingHours": 72,
+      "teachingHours": 0,
       "card": "8600 9184 5348 5520",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_urolov_azizbek_upper",
         "cls_urolov_azizbek_standard",
@@ -123391,7 +123404,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_ravshanov_doniyor",
@@ -123399,9 +123413,9 @@
       "email": "doniyor.ravshanov@ethith.uz",
       "subject": "Ingliz tili (CEFR Multi-Level)",
       "hourlyRate": 110000,
-      "teachingHours": 68,
+      "teachingHours": 0,
       "card": "8600 1737 6773 7826",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_ravshanov_doniyor_cefr_1",
         "cls_ravshanov_doniyor_cefr_2",
@@ -123420,7 +123434,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -123428,9 +123443,9 @@
       "email": "humoyun.qarshiboyev@ethith.uz",
       "subject": "Ingliz tili (Practice English)",
       "hourlyRate": 95000,
-      "teachingHours": 48,
+      "teachingHours": 0,
       "card": "8600 9180 1074 6310",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_qarshiboyev_humoyun_practice"
       ],
@@ -123443,7 +123458,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -123451,9 +123467,9 @@
       "email": "marjona.tovboyeva@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 90000,
-      "teachingHours": 48,
+      "teachingHours": 0,
       "card": "8600 7570 9747 6845",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_tovboyeva_marjona_beginner"
       ],
@@ -123466,7 +123482,10 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "phone": "+998 90 ..."
     },
     {
       "id": "t_olimjonova_durdona",
@@ -123474,9 +123493,9 @@
       "email": "durdona.olimjonova@ethith.uz",
       "subject": "Ingliz tili (Beginner / Inter)",
       "hourlyRate": 100000,
-      "teachingHours": 64,
+      "teachingHours": 0,
       "card": "8600 5388 3997 7659",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_olimjonova_durdona_beginner",
         "cls_olimjonova_durdona_pre_intermediate",
@@ -123495,7 +123514,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_tagaev_eldor",
@@ -123503,9 +123523,9 @@
       "email": "eldor.tagaev@ethith.uz",
       "subject": "Ingliz tili (General English)",
       "hourlyRate": 100000,
-      "teachingHours": 64,
+      "teachingHours": 0,
       "card": "8600 9836 2231 3521",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_tagaev_eldor_beginner",
         "cls_tagaev_eldor_elementary",
@@ -123524,7 +123544,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -123532,9 +123553,9 @@
       "email": "kamola.yaxshilikova@ethith.uz",
       "subject": "Ingliz tili (Beginner / Elementary)",
       "hourlyRate": 95000,
-      "teachingHours": 54,
+      "teachingHours": 0,
       "card": "8600 3037 8661 9611",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_yaxshilikova_kamola_beginner",
         "cls_yaxshilikova_kamola_elementary"
@@ -123549,7 +123570,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -123557,9 +123579,9 @@
       "email": "iroda.sherqoziyeva@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 95000,
-      "teachingHours": 54,
+      "teachingHours": 0,
       "card": "8600 8200 8823 6053",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_sherqoziyeva_iroda_beginner_1",
         "cls_sherqoziyeva_iroda_beginner_2"
@@ -123574,7 +123596,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_aborbekov_elyor",
@@ -123582,9 +123605,9 @@
       "email": "elyor.aborbekov@ethith.uz",
       "subject": "Ingliz tili (Pre / Inter / Upper)",
       "hourlyRate": 110000,
-      "teachingHours": 72,
+      "teachingHours": 0,
       "card": "8600 4747 3927 9285",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_aborbekov_elyor_pre_intermediate_1",
         "cls_aborbekov_elyor_pre_intermediate_2",
@@ -123605,7 +123628,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -123613,9 +123637,9 @@
       "email": "jaloliddin.orinboyev@ethith.uz",
       "subject": "Ingliz tili (Pre / Inter / Standard)",
       "hourlyRate": 105000,
-      "teachingHours": 64,
+      "teachingHours": 0,
       "card": "8600 3286 1441 8063",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_orinboyev_jaloliddin_pre_intermediate",
         "cls_orinboyev_jaloliddin_intermediate",
@@ -123634,7 +123658,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_jumanova_pokiza",
@@ -123642,9 +123667,9 @@
       "email": "pokiza.jumanova@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 90000,
-      "teachingHours": 48,
+      "teachingHours": 0,
       "card": "8600 4814 2290 9478",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_jumanova_pokiza_beginner"
       ],
@@ -123657,7 +123682,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -123665,9 +123691,9 @@
       "email": "arslon.hayrullayev@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 95000,
-      "teachingHours": 54,
+      "teachingHours": 0,
       "card": "8600 2983 6185 5341",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_hayrullayev_arslon_beginner_1",
         "cls_hayrullayev_arslon_beginner_2"
@@ -123682,7 +123708,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -123690,9 +123717,9 @@
       "email": "sarvinoz.xudoyorova@ethith.uz",
       "subject": "Ingliz tili (Intermediate / Standard)",
       "hourlyRate": 100000,
-      "teachingHours": 54,
+      "teachingHours": 0,
       "card": "8600 2510 8636 7287",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_xudoyorova_sarvinoz_intermediate",
         "cls_xudoyorova_sarvinoz_standard"
@@ -123707,7 +123734,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -123715,9 +123743,9 @@
       "email": "sevinch.aliqulova@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 95000,
-      "teachingHours": 54,
+      "teachingHours": 0,
       "card": "8600 9373 3768 6749",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_aliqulova_sevinch_beginner_1",
         "cls_aliqulova_sevinch_beginner_2"
@@ -123733,7 +123761,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "monthlyBonus": 1000000,
-      "monthlySalary": 6225000,
+      "monthlySalary": 0,
       "unpaidMonths": 0
     },
     {
@@ -123742,9 +123770,9 @@
       "email": "diyora.xojamqulova@ethith.uz",
       "subject": "Ingliz tili (Beginner / Elementary)",
       "hourlyRate": 100000,
-      "teachingHours": 64,
+      "teachingHours": 0,
       "card": "8600 7019 8442 4863",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_xojamqulova_diyora_beginner",
         "cls_xojamqulova_diyora_elementary_1",
@@ -123763,7 +123791,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -123771,9 +123800,9 @@
       "email": "farrux.bosimbekov@ethith.uz",
       "subject": "Ingliz tili (Pre-Inter / Inter)",
       "hourlyRate": 105000,
-      "teachingHours": 64,
+      "teachingHours": 0,
       "card": "8600 7883 1652 5691",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_bosimbekov_farrux_pre_intermediate_1",
         "cls_bosimbekov_farrux_pre_intermediate_2",
@@ -123792,7 +123821,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_ahmadova_barno",
@@ -123800,9 +123830,9 @@
       "email": "barno.ahmadova@ethith.uz",
       "subject": "Ingliz tili (Elementary / Pre-Inter)",
       "hourlyRate": 100000,
-      "teachingHours": 64,
+      "teachingHours": 0,
       "card": "8600 2725 8055 2896",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_ahmadova_barno_elementary_1",
         "cls_ahmadova_barno_elementary_2",
@@ -123822,7 +123852,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 11880000,
+      "monthlySalary": 0,
       "phone": "+998 90 ...",
       "unpaidMonths": 0
     },
@@ -123832,9 +123862,9 @@
       "email": "shodiyor.matematika@ethith.uz",
       "subject": "Matematika",
       "hourlyRate": 110000,
-      "teachingHours": 54,
+      "teachingHours": 0,
       "card": "8600 5419 8367 2781",
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_shodiyor_matematika_matematika"
       ],
@@ -123847,7 +123877,8 @@
       "salarySharePercent": 50,
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "teacher_1793431051291",
@@ -123868,7 +123899,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "studentMonthlyFee": 300000,
-      "monthlySalary": 3726000,
+      "monthlySalary": 0,
       "card": "8600 ...",
       "phone": "+998 90 ...",
       "paidThisMonth": false,
@@ -124029,50 +124060,7 @@
       "room": "Room 102 (Blue Room)"
     }
   ],
-  "contests": [
-    {
-      "id": "cnt_kuzgi_2026",
-      "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
-      "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
-      "startDate": 1792937768370,
-      "endDate": 1793628968370,
-      "prizeCoins": 1000,
-      "testId": "TST-7K2M9",
-      "participants": {
-        "std_1": {
-          "name": "Ashurov Dilyorbek",
-          "score": 95,
-          "timeSec": 140,
-          "completedAt": 1793020568370
-        },
-        "std_2": {
-          "name": "Ergasheva Madina",
-          "score": 92,
-          "timeSec": 165,
-          "completedAt": 1793020668370
-        },
-        "std_4": {
-          "name": "JO‘RABOYEV MUXAMMADYUSUF",
-          "score": 98,
-          "timeSec": 110,
-          "completedAt": 1793020768370
-        },
-        "std_5": {
-          "name": "Jo'raboyev Javoxir",
-          "score": 88,
-          "timeSec": 180,
-          "completedAt": 1793020868370
-        },
-        "std_6": {
-          "name": "Mavlonova Ruxshona",
-          "score": 85,
-          "timeSec": 190,
-          "completedAt": 1793020968370
-        }
-      },
-      "status": "active"
-    }
-  ],
+  "contests": [],
   "payments": {
     "2026-10": {
       "std_1": {
@@ -124115,5 +124103,5 @@
       }
     }
   },
-  "updatedAt": 1793465230509
+  "updatedAt": 1793465251263
 }
