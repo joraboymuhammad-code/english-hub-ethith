@@ -46,6 +46,10 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
   EA.sendSmsApiUz = async function(recipients, messageText) {
     var cleanMsg = sanitizeToGsm7(messageText);
+    // Strict 160 character limit guarantee (not a single character more)
+    if (cleanMsg.length > 160) {
+      cleanMsg = cleanMsg.slice(0, 160);
+    }
     var validDestinations = [];
     var invalidList = [];
 
@@ -74,6 +78,9 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     for (var i = 0; i < validDestinations.length; i++) {
       var d = validDestinations[i];
       var personalText = cleanMsg.replace(/\[O['‘]quvchi ismi\]/gi, d.name);
+      if (personalText.length > 160) {
+        personalText = personalText.slice(0, 160);
+      }
 
       var params = new URLSearchParams();
       params.append('api_key', EA.SMSAPI_KEY);
@@ -95,7 +102,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         } else {
           var errMsg = (data && data.message) || (res.status + ' ' + (res.statusText || ''));
           if (errMsg.includes('shablon') || errMsg.includes('tasdiqlangan')) {
-            errMsg += "\n💡 Eslatma: smsapi.uz panelida (https://smsapi.uz/dashboard/) ushbu xabar matnini 'Shablonlar' bo'limiga qo'shib tasdiqlatishingiz kerak.";
+            errMsg += "\n💡 Eslatma: smsapi.uz panelida (https://smsapi.uz/dashboard/templates.php) ushbu xabar matnini 'Shablonlar' bo'limiga qo'shib tasdiqlatishingiz kerak.";
           }
           errors.push(d.name + " (" + d.to + "): " + errMsg);
         }
@@ -6683,13 +6690,13 @@ EA.render = function(container, preserveScrollLeft) {
       });
     }
 
-    // Permanent text persistence from localStorage
+    // Permanent text persistence from localStorage (strictly <= 160 chars)
     var savedText = '';
     try {
       savedText = localStorage.getItem('ethith_saved_absent_sms_template');
     } catch(e) {}
-    if (!savedText) {
-      savedText = "Hurmatli ota-ona! Farzandingiz bugun darsda qatnashmadi. Sababini bilish uchun ustoz bilan bog'laning. English House markazi.";
+    if (!savedText || savedText.length > 160) {
+      savedText = "Hurmatli ota-ona! Farzandingiz bugun darsga qatnashmadi. Sababini bilish uchun ustoz bilan bog'laning. English House.";
     }
 
     var html = '<div class="eth-modal" style="max-width:640px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(245,158,11,0.5);box-shadow:0 24px 60px rgba(0,0,0,0.85),0 0 35px rgba(245,158,11,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
@@ -6704,6 +6711,15 @@ EA.render = function(container, preserveScrollLeft) {
           '</div>' +
         '</div>' +
         '<button type="button" id="eaCloseAbsentSmsBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:20px;cursor:pointer;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">✕</button>' +
+      '</div>' +
+
+      // Gateway Status Banner with explicit API Key confirmation
+      '<div style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(217,119,6,0.1));border:1px solid rgba(245,158,11,0.35);border-radius:14px;padding:10px 14px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;">' +
+        '<div style="display:flex;align-items:center;gap:8px;">' +
+          '<span style="font-size:16px;">🔌</span>' +
+          '<span><b>SMS Shlyuz:</b> smsapi.uz (O‘zbekiston)</span>' +
+        '</div>' +
+        '<span style="background:rgba(16,185,129,0.2);border:1px solid #10b981;color:#6ee7b7;padding:3px 8px;border-radius:8px;font-weight:900;font-size:11px;font-family:monospace;">🟢 API Kalit: ' + EA.SMSAPI_KEY + '</span>' +
       '</div>' +
 
       // Automatically Detected Absent Students Box
@@ -6741,8 +6757,8 @@ EA.render = function(container, preserveScrollLeft) {
             '<label style="font-size:12px;font-weight:800;color:#cbd5e1;">SMS Xabar Matni (Har doim saqlanib qoladi):</label>' +
             '<span id="eaAbsentSmsCharCounter" style="font-size:11px;color:#94a3b8;font-family:monospace;font-weight:700;">0 / 160 belgi (1 SMS)</span>' +
           '</div>' +
-          '<textarea id="eaAbsentSmsTextarea" rows="4" required style="width:100%;box-sizing:border-box;background:rgba(15,23,42,0.95);border:1.5px solid rgba(245,158,11,0.4);border-radius:14px;padding:12px 14px;color:#fff;font-size:13px;font-family:inherit;line-height:1.45;outline:none;resize:vertical;">' + esc(savedText) + '</textarea>' +
-          '<small style="color:#94a3b8;font-size:11px;margin-top:4px;display:block;">💾 Ushbu matn tizimda butunlay saqlanib qoladi. Siz uni istalgan vaqt tahrirlashingiz mumkin.</small>' +
+          '<textarea id="eaAbsentSmsTextarea" rows="4" maxlength="160" required style="width:100%;box-sizing:border-box;background:rgba(15,23,42,0.95);border:1.5px solid rgba(245,158,11,0.4);border-radius:14px;padding:12px 14px;color:#fff;font-size:13px;font-family:inherit;line-height:1.45;outline:none;resize:vertical;">' + esc(savedText) + '</textarea>' +
+          '<small style="color:#94a3b8;font-size:11px;margin-top:4px;display:block;">💾 Qat‘iy qoida: Xabar matni 160 belgidan bitta harf yoki nuqta ham oshmaydi (1 SMS limit).</small>' +
         '</div>' +
 
         // Actions
@@ -6763,9 +6779,12 @@ EA.render = function(container, preserveScrollLeft) {
     var counter = overlay.querySelector('#eaAbsentSmsCharCounter');
 
     function updateCounter() {
+      if (ta.value.length > 160) {
+        ta.value = ta.value.slice(0, 160);
+      }
       var len = ta.value.length;
-      var smsCount = Math.ceil(len / 160) || 1;
-      counter.innerText = len + ' / ' + (smsCount * 160) + ' belgi (' + smsCount + ' SMS)';
+      var rem = 160 - len;
+      counter.innerHTML = '<b style="color:' + (len >= 160 ? '#f59e0b' : '#38bdf8') + '">' + len + '</b> / 160 belgi (qoldi: ' + rem + ', 1 SMS)';
       try {
         localStorage.setItem('ethith_saved_absent_sms_template', ta.value);
       } catch(e) {}
@@ -6798,6 +6817,9 @@ EA.render = function(container, preserveScrollLeft) {
       e.preventDefault();
       var msg = ta.value.trim();
       if (!msg) return;
+      if (msg.length > 160) {
+        msg = msg.slice(0, 160);
+      }
 
       if (absentStudents.length === 0) {
         alert("Darsga kelmagan deb belgilangan o'quvchilar yo'q!");
