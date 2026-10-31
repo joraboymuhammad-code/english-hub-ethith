@@ -117428,23 +117428,7 @@
       "room": "Room 102 (Blue Room)"
     }
   ],
-  "contests": [
-    {
-      "id": "cnt_1793469838525",
-      "title": "Haftalik Onlayn Musobaqa",
-      "code": "QZ-Q3E#AHE",
-      "desc": "Barcha guruhlar o‘rtasida onlayn musobaqa! Top-5 eng yuqori natija qayd etgan o‘quvchilarga 1,000 coindan boshlab sovrinlar beriladi.",
-      "testId": "tst_1793469838525",
-      "authorId": "admin_official_teacher",
-      "authorName": "Ustoz",
-      "authorEmail": "azizbek.urolov@ethith.uz",
-      "startDate": 1793469838525,
-      "endDate": 1794074638525,
-      "participants": {},
-      "status": "active",
-      "coinsDistributed": false
-    }
-  ],
+  "contests": [],
   "payments": {
     "2026-10": {
       "std_1": {
@@ -117487,5 +117471,5 @@
       }
     }
   },
-  "updatedAt": 1793469839133
+  "updatedAt": 1793469896698
 }
