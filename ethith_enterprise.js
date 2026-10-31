@@ -248,6 +248,13 @@
         Object.assign(appState.customCurriculumTests, window.ETHITH_INITIAL_STORE.customCurriculumTests);
       }
     }
+    if (!appState.allCurriculumTests) {
+      appState.allCurriculumTests = [];
+      try {
+        var localAllC = localStorage.getItem('ethith_all_curriculum_tests');
+        if (localAllC) appState.allCurriculumTests = JSON.parse(localAllC);
+      } catch(e) {}
+    }
     return appState;
   }
 
@@ -257,6 +264,9 @@
       localStorage.setItem('ethith_enterprise_store', JSON.stringify(st));
       if (st.customCurriculumTests) {
         localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(st.customCurriculumTests));
+      }
+      if (st.allCurriculumTests) {
+        localStorage.setItem('ethith_all_curriculum_tests', JSON.stringify(st.allCurriculumTests));
       }
     } catch(e) {}
 
@@ -1867,8 +1877,17 @@
       var curU = getCurrentUser();
 
       if (curriculumContext) {
+        var tMatchCur = (S.teachers || []).find(function(t) {
+          return (t.id && curU && t.id === curU.id) ||
+                 (t.email && curU && t.email && curU.email && t.email.toLowerCase() === curU.email.toLowerCase()) ||
+                 (t.login && curU && t.login && curU.login && t.login.toLowerCase() === curU.login.toLowerCase());
+        });
+        var realAuthorNameCur = (tMatchCur && tMatchCur.name) ? tMatchCur.name : (curU ? (curU.name || 'Ustoz') : 'Ustoz');
+        var testCode = (prefillTest && prefillTest.id && prefillTest.id !== curriculumContext.testKey) ? prefillTest.id : ('TST-' + curriculumContext.testKey.toUpperCase() + '-' + Math.floor(Math.random() * 900 + 100));
+
         var newCurTest = {
-          id: curriculumContext.testKey,
+          id: testCode,
+          testKey: curriculumContext.testKey,
           title: title,
           type: 'visual_overlay',
           isCurriculum: true,
@@ -1876,11 +1895,11 @@
           level: curriculumContext.level,
           testType: curriculumContext.testType,
           unitOrProgressNum: curriculumContext.num,
-          createdAt: Date.now(),
+          createdAt: (prefillTest && prefillTest.createdAt) ? prefillTest.createdAt : Date.now(),
           authorId: curU ? curU.id : 'admin',
           teacherId: curU ? curU.id : 'admin',
           creatorId: curU ? curU.id : 'admin',
-          authorName: curU ? (curU.name || 'Ustoz') : 'Ustoz',
+          authorName: realAuthorNameCur,
           maxAttempts: attempts,
           pages: pagesData,
           imageUrl: (pagesData[0] && pagesData[0].imageUrl) ? pagesData[0].imageUrl : null,
@@ -1895,8 +1914,16 @@
 
         S.customCurriculumTests = S.customCurriculumTests || {};
         S.customCurriculumTests[curriculumContext.testKey] = newCurTest;
+        S.customCurriculumTests[testCode] = newCurTest;
+
+        S.allCurriculumTests = S.allCurriculumTests || [];
+        var exIdx = S.allCurriculumTests.findIndex(function(t) { return t.id === testCode || (t.testKey === curriculumContext.testKey && t.authorId === (curU ? curU.id : 'admin')); });
+        if (exIdx !== -1) S.allCurriculumTests[exIdx] = newCurTest;
+        else S.allCurriculumTests.push(newCurTest);
+
         try {
           localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(S.customCurriculumTests));
+          localStorage.setItem('ethith_all_curriculum_tests', JSON.stringify(S.allCurriculumTests));
         } catch(e) {}
         saveStore();
         closeAll();
@@ -1940,13 +1967,20 @@
   };
 
   // Dedicated Oxford Navigate Unit Test & Progress Test Visual PDF Builder
-  EE.openCurriculumVisualTestBuilder = function(level, testType, num, onSaved) {
+  EE.openCurriculumVisualTestBuilder = function(level, testType, num, onSaved, existingTestObj) {
     var S = getStore();
     var testKey = level + '_' + testType + '_' + num;
-    var existingTest = (S.customCurriculumTests && S.customCurriculumTests[testKey]) || null;
-    var levelLabel = (level === 'intermediate') ? 'B1+ Intermediate' : 'B2 Upper-Intermediate';
+    var existingTest = existingTestObj || (S.customCurriculumTests && S.customCurriculumTests[testKey]) || null;
+    if (!existingTest && S.allCurriculumTests) {
+      existingTest = S.allCurriculumTests.find(function(t) { return t.testKey === testKey || (t.level === level && t.testType === testType && t.unitOrProgressNum == num); });
+    }
+    var levelLabel = (level === 'intermediate' || level === 'b1') ? 'B1+ Intermediate' :
+                     (level === 'upper_intermediate' || level === 'b2') ? 'B2 Upper-Intermediate' :
+                     (level === 'beginner' || level === 'a1') ? 'A1 Beginner' :
+                     (level === 'elementary' || level === 'a2') ? 'A2 Elementary' :
+                     (level === 'pre_intermediate' || level === 'b1_pre') ? 'B1 Pre-Intermediate' : level;
     var defTitle = (testType === 'unit') ?
-      ('Unit ' + num + ' Test (' + levelLabel + ')') :
+      ('Unit ' + num + ' Oraliq Test (' + levelLabel + ')') :
       ('Progress Test ' + num + ': Units ' + (num === 1 ? '1–3' : num === 2 ? '4–6' : num === 3 ? '7–9' : '10–12') + ' (' + levelLabel + ')');
 
     var curriculumContext = {
@@ -1954,7 +1988,7 @@
       testType: testType,
       num: num,
       testKey: testKey,
-      title: defTitle,
+      title: (existingTest && existingTest.title) || defTitle,
       onSaved: onSaved
     };
 
@@ -2173,7 +2207,8 @@
       test = testIdOrObj;
     } else {
       test = (S.fileExplorer.tests || []).find(function(t) { return t.id === testIdOrObj; }) ||
-             ((S.customCurriculumTests || {})[testIdOrObj]);
+             ((S.customCurriculumTests || {})[testIdOrObj]) ||
+             ((S.allCurriculumTests || []).find(function(t) { return t.id === testIdOrObj; }));
     }
     if (!test) { alert("Test topilmadi!"); return; }
 
@@ -5847,7 +5882,14 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
             folderId: 'f_root',
             createdAt: Date.now(),
             authorId: u.id || 'teacher',
-            authorName: u.name || 'Ustoz',
+            authorName: (function(){
+              var tA = (S_cur.teachers || []).find(function(t) {
+                return (t.id && u.id && t.id === u.id) ||
+                       (t.email && u.email && t.email.toLowerCase() === u.email.toLowerCase()) ||
+                       (t.login && u.login && t.login.toLowerCase() === u.login.toLowerCase());
+              });
+              return (tA && tA.name) ? tA.name : ((u.name && u.name.toLowerCase() !== 'ustoz') ? u.name : 'Azizbek Urolov');
+            })(),
             authorEmail: u.email || '',
             maxAttempts: 1,
             questions: addedQuestions
@@ -5861,7 +5903,14 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
             desc: "Barcha guruhlar o‘rtasida onlayn musobaqa! Top-5 eng yuqori natija qayd etgan o‘quvchilarga 1,000 coindan boshlab sovrinlar beriladi.",
             testId: testId,
             authorId: u.id || 'teacher',
-            authorName: u.name || 'Ustoz',
+            authorName: (function(){
+              var tA = (S_cur.teachers || []).find(function(t) {
+                return (t.id && u.id && t.id === u.id) ||
+                       (t.email && u.email && t.email.toLowerCase() === u.email.toLowerCase()) ||
+                       (t.login && u.login && t.login.toLowerCase() === u.login.toLowerCase());
+              });
+              return (tA && tA.name) ? tA.name : ((u.name && u.name.toLowerCase() !== 'ustoz') ? u.name : 'Azizbek Urolov');
+            })(),
             authorEmail: u.email || '',
             startDate: Date.now(),
             endDate: Date.now() + (7 * 86400000), // 7 kun
@@ -5940,12 +5989,25 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
           (c.authorName && curUser.name && c.authorName.toLowerCase() === curUser.name.toLowerCase())
         );
 
+        var authorDisplayName = (c.authorName && c.authorName !== 'Ustoz') ? c.authorName : 'Azizbek Urolov';
+        var tMatch = (S.teachers || []).find(function(t) {
+          return (t.id && c.authorId && t.id === c.authorId) ||
+                 (t.email && c.authorEmail && t.email.toLowerCase() === c.authorEmail.toLowerCase()) ||
+                 (t.login && c.authorId && t.login.toLowerCase() === c.authorId.toLowerCase());
+        });
+        if (tMatch && tMatch.name) authorDisplayName = tMatch.name;
+        else if ((!authorDisplayName || authorDisplayName === 'Ustoz') && curUser && curUser.name && curUser.name !== 'Ustoz' && isMyContest) {
+          authorDisplayName = curUser.name;
+        } else if (!authorDisplayName || authorDisplayName === 'Ustoz') {
+          authorDisplayName = 'Azizbek Urolov';
+        }
+
         h += '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(245,158,11,0.3);border-radius:20px;padding:24px;margin-bottom:20px;box-shadow:0 8px 30px rgba(0,0,0,0.3);">' +
           '<div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px;">' +
             '<div>' +
               '<h3 style="margin:0 0 6px;font-size:20px;font-weight:900;color:#fcd34d;">' + esc(c.title) + '</h3>' +
               '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
-                '<span style="background:rgba(168,85,247,0.18);color:#c084fc;border:1px solid rgba(168,85,247,0.4);padding:4px 10px;border-radius:8px;font-weight:800;font-size:11.5px;">👨‍🏫 Ustoz: ' + esc(c.authorName || 'Ustoz') + '</span>' +
+                '<span style="background:rgba(168,85,247,0.18);color:#c084fc;border:1px solid rgba(168,85,247,0.4);padding:4px 10px;border-radius:8px;font-weight:800;font-size:11.5px;">👨‍🏫 Ustoz: ' + esc(authorDisplayName) + '</span>' +
                 '<span style="background:rgba(245,158,11,0.18);color:#fbbf24;border:1px solid rgba(245,158,11,0.4);padding:4px 10px;border-radius:8px;font-weight:900;font-size:11.5px;">🎁 Sovrin: 1,000 Coin</span>' +
                 timeLeftBadge +
               '</div>' +

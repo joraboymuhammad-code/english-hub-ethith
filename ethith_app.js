@@ -22,6 +22,9 @@
 
   function isPurgedAccount(acc) {
     if (!acc) return true;
+    if (acc.role === 'teacher' || (acc.id && String(acc.id).startsWith('t_')) || acc.id === 'admin_official_teacher') {
+      return false;
+    }
     if (acc.telegramId || (acc.id && (String(acc.id).startsWith('tg_') || String(acc.id).startsWith('usr_')))) {
       return false;
     }
@@ -141,7 +144,32 @@
       curName = 'Bosh Admin';
     } else if (S.user.role === 'teacher') {
       S.user.role = 'teacher';
-      if (!S.user.name) S.user.name = 'Ustoz';
+      var tList = (S.teachers && S.teachers.length) ? S.teachers : ((window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.teachers) || []);
+      var matchT = tList.find(function(t) {
+        if (!t) return false;
+        var tid = (t.id || '').toLowerCase().trim();
+        var tem = (t.email || '').toLowerCase().trim();
+        var tlg = (t.login || '').toLowerCase().trim();
+        var uid = (S.user.id || '').toLowerCase().trim();
+        var uem = (S.user.email || '').toLowerCase().trim();
+        var ulg = (S.user.login || '').toLowerCase().trim();
+        return (tid && uid && tid === uid) || (tem && uem && tem === uem) || (tlg && ulg && tlg === ulg);
+      });
+      if (matchT && matchT.name) {
+        S.user.name = matchT.name;
+        if (matchT.login && !S.user.login) S.user.login = matchT.login;
+        if (matchT.email && !S.user.email) S.user.email = matchT.email;
+      } else {
+        var azizFallback = tList.find(function(t) { return (t.id && t.id.indexOf('urolov') !== -1) || (t.name && t.name.indexOf('Urolov') !== -1); }) || tList[0];
+        if (azizFallback && (!S.user.name || S.user.name.toLowerCase() === 'ustoz')) {
+          S.user.name = azizFallback.name;
+          S.user.id = azizFallback.id;
+          if (azizFallback.login) S.user.login = azizFallback.login;
+          if (azizFallback.email) S.user.email = azizFallback.email;
+        } else if (!S.user.name) {
+          S.user.name = 'Azizbek Urolov';
+        }
+      }
     }
     var isMuhammadUser = (curEmail === 'muhammedjoraboyev1@gmail.com' || curName.toLowerCase().indexOf('muhammadyusuf') !== -1) && S.user.role !== 'teacher';
     
@@ -418,7 +446,32 @@
         S.user.email = 'ADMIN_12038F1aq8syash@ethith.uz';
       } else if (S.user.role === 'teacher') {
         S.user.role = 'teacher';
-        if (!S.user.name) S.user.name = 'Ustoz';
+        var tList2 = (S.teachers && S.teachers.length) ? S.teachers : ((window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.teachers) || []);
+        var matchT2 = tList2.find(function(t) {
+          if (!t) return false;
+          var tid = (t.id || '').toLowerCase().trim();
+          var tem = (t.email || '').toLowerCase().trim();
+          var tlg = (t.login || '').toLowerCase().trim();
+          var uid = (S.user.id || '').toLowerCase().trim();
+          var uem = (S.user.email || '').toLowerCase().trim();
+          var ulg = (S.user.login || '').toLowerCase().trim();
+          return (tid && uid && tid === uid) || (tem && uem && tem === uem) || (tlg && ulg && tlg === ulg);
+        });
+        if (matchT2 && matchT2.name) {
+          S.user.name = matchT2.name;
+          if (matchT2.login && !S.user.login) S.user.login = matchT2.login;
+          if (matchT2.email && !S.user.email) S.user.email = matchT2.email;
+        } else {
+          var azizFallback2 = tList2.find(function(t) { return (t.id && t.id.indexOf('urolov') !== -1) || (t.name && t.name.indexOf('Urolov') !== -1); }) || tList2[0];
+          if (azizFallback2 && (!S.user.name || S.user.name.toLowerCase() === 'ustoz')) {
+            S.user.name = azizFallback2.name;
+            S.user.id = azizFallback2.id;
+            if (azizFallback2.login) S.user.login = azizFallback2.login;
+            if (azizFallback2.email) S.user.email = azizFallback2.email;
+          } else if (!S.user.name) {
+            S.user.name = 'Azizbek Urolov';
+          }
+        }
       }
       try {
         localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
