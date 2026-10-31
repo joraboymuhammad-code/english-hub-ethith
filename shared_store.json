@@ -25095,11 +25095,11 @@
       "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
-      "coins": 5000,
+      "coins": 1000,
       "gifts": [],
       "level": "C2",
       "dailyMinutes": 0,
-      "updatedAt": 1793385143115,
+      "updatedAt": 1793392014533,
       "avatar": null,
       "nameStyle": null,
       "title": null,
@@ -25775,6 +25775,19 @@
       "level": "A1",
       "joinedAt": 1793215171236,
       "title": "👑 IELTS Qiroli"
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793392017773
     }
   ],
   "p2pListings": [],
@@ -102832,5 +102845,5 @@
       }
     }
   },
-  "updatedAt": 1793424118610
+  "updatedAt": 1793424188792
 }
