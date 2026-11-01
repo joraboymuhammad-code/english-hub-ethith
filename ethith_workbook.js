@@ -80263,7 +80263,7 @@
             "height": 2.2
       }
 ],
-                                    "4004": [
+                                        "4004": [
       {
             "id": "p4004_ex1_2",
             "type": "fill",
@@ -83882,10 +83882,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "freezing",
-                  "Freezing"
+                  "on holiday",
+                  "holiday"
             ],
-            "answer": "freezing"
+            "answer": "on holiday"
       },
       {
             "id": "p4014_ex1_2",
@@ -83899,12 +83899,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "huge",
-                  "enormous",
-                  "Huge",
-                  "Enormous"
+                  "on business",
+                  "business"
             ],
-            "answer": "huge"
+            "answer": "on business"
       },
       {
             "id": "p4014_ex1_3",
@@ -83918,10 +83916,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "exhausted",
-                  "Exhausted"
+                  "on public transport",
+                  "public transport"
             ],
-            "answer": "exhausted"
+            "answer": "on public transport"
       },
       {
             "id": "p4014_ex1_4",
@@ -83935,10 +83933,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "tiny",
-                  "Tiny"
+                  "on the internet",
+                  "internet"
             ],
-            "answer": "tiny"
+            "answer": "on the internet"
       },
       {
             "id": "p4014_ex1_5",
@@ -83952,10 +83950,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "boiling",
-                  "Boiling"
+                  "on TV",
+                  "TV"
             ],
-            "answer": "boiling"
+            "answer": "on TV"
       },
       {
             "id": "p4014_ex1_6",
@@ -83969,10 +83967,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "fascinating",
-                  "Fascinating"
+                  "on time",
+                  "time"
             ],
-            "answer": "fascinating"
+            "answer": "on time"
       },
       {
             "id": "p4014_ex2_1",
@@ -83986,10 +83984,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "absolutely",
-                  "Absolutely"
+                  "on holiday",
+                  "holiday"
             ],
-            "answer": "absolutely"
+            "answer": "on holiday"
       },
       {
             "id": "p4014_ex2_2",
@@ -84003,10 +84001,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "very",
-                  "Very"
+                  "on the way",
+                  "the way"
             ],
-            "answer": "very"
+            "answer": "on the way"
       },
       {
             "id": "p4014_ex2_3",
@@ -84020,10 +84018,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "absolutely",
-                  "Absolutely"
+                  "on the left",
+                  "the left"
             ],
-            "answer": "absolutely"
+            "answer": "on the left"
       },
       {
             "id": "p4014_ex2_4",
@@ -84037,10 +84035,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "very",
-                  "Very"
+                  "on business",
+                  "business"
             ],
-            "answer": "very"
+            "answer": "on business"
       },
       {
             "id": "p4014_ex2_5",
@@ -84054,10 +84052,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "absolutely",
-                  "Absolutely"
+                  "on TV",
+                  "TV"
             ],
-            "answer": "absolutely"
+            "answer": "on TV"
       },
       {
             "id": "p4014_ex2_6",
@@ -84071,10 +84069,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "very",
-                  "Very"
+                  "on time",
+                  "time"
             ],
-            "answer": "very"
+            "answer": "on time"
       },
       {
             "id": "p4014_ex3_1",
@@ -84088,10 +84086,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "tiny",
-                  "Tiny"
+                  "on the internet",
+                  "internet"
             ],
-            "answer": "tiny"
+            "answer": "on the internet"
       },
       {
             "id": "p4014_ex3_2",
@@ -84105,10 +84103,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "freezing",
-                  "Freezing"
+                  "on the way",
+                  "the way"
             ],
-            "answer": "freezing"
+            "answer": "on the way"
       },
       {
             "id": "p4014_ex3_3",
@@ -84122,10 +84120,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "boiling",
-                  "Boiling"
+                  "on the left",
+                  "the left"
             ],
-            "answer": "boiling"
+            "answer": "on the left"
       },
       {
             "id": "p4014_ex3_4",
@@ -84139,10 +84137,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "exhausted",
-                  "Exhausted"
+                  "on TV",
+                  "TV"
             ],
-            "answer": "exhausted"
+            "answer": "on TV"
       },
       {
             "id": "p4014_ex3_5",
@@ -84156,10 +84154,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "fascinating",
-                  "Fascinating"
+                  "on public transport",
+                  "public transport"
             ],
-            "answer": "fascinating"
+            "answer": "on public transport"
       },
       {
             "id": "p4014_ex3_6",
@@ -84173,12 +84171,10 @@
             "w": 9.5,
             "h": 1.8,
             "correct": [
-                  "huge",
-                  "enormous",
-                  "Huge",
-                  "Enormous"
+                  "on time",
+                  "time"
             ],
-            "answer": "huge"
+            "answer": "on time"
       }
 ],
     "4015": [
@@ -157383,30 +157379,37 @@
 
   WB.getPageInputs = function(page) {
     page = parseInt(page, 10);
-    // Auto-clean stale localStorage overrides for Pre-Intermediate (4004..4087)
+    // Auto-clean stale localStorage overrides & state cache for Pre-Intermediate (4004..4087)
     if (page >= 4004 && page <= 4087) {
       try {
+        localStorage.removeItem('ethith_wb_coords_v28_' + page);
         localStorage.removeItem('ethith_wb_coords_v25_' + page);
         localStorage.removeItem('ethith_wb_coords_v16_' + page);
         localStorage.removeItem('ethith_wb_coords_v15_' + page);
         localStorage.removeItem('ethith_wb_coords_' + page);
+        if (window.EthithApp && window.EthithApp.state && window.EthithApp.state.workbookOverrides) {
+          delete window.EthithApp.state.workbookOverrides[page];
+        }
       } catch(e) {}
     }
-    // 1. Check local saved teacher overrides (v28 priority)
+    // 1. Authoritative calibrated master inputs (ALWAYS FIRST!)
+    if (WB.defaultInputs && Array.isArray(WB.defaultInputs[page]) && WB.defaultInputs[page].length > 0) {
+      return WB.defaultInputs[page];
+    }
+    // 2. Check local saved teacher overrides (v29 priority)
     try {
-      var saved = localStorage.getItem('ethith_wb_coords_v28_' + page);
+      var saved = localStorage.getItem('ethith_wb_coords_v29_' + page);
       if (saved) {
         var parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       }
     } catch(e) {}
-    // 2. Check cloud store overrides (synced from teacher in real-time)
+    // 3. Fallback to cloud store overrides
     if (window.EthithSync && typeof window.EthithSync.getWorkbookCloudOverrides === 'function') {
       var cloudInps = window.EthithSync.getWorkbookCloudOverrides(page);
       if (Array.isArray(cloudInps) && cloudInps.length > 0) return cloudInps;
     }
-    // 3. Fallback to default calibrated master inputs
-    return WB.defaultInputs[page] || [];
+    return [];
   };
 
   WB.savePageInputs = function(page, inputs, noBroadcast) {
