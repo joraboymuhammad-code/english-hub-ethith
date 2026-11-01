@@ -120228,23 +120228,6 @@
         "height": 2.2
       },
       {
-        "id": "p3083_ex6_1",
-        "type": "select",
-        "x": 74,
-        "y": 38.9,
-        "w": 12,
-        "h": 2.2,
-        "options": [
-          "lasted",
-          "has lasted"
-        ],
-        "correct": "lasted",
-        "top": 38.7,
-        "left": 82.1,
-        "width": 12,
-        "height": 2.2
-      },
-      {
         "id": "p3083_ex6_2",
         "type": "select",
         "x": 67,
@@ -120256,8 +120239,8 @@
           "has designed"
         ],
         "correct": "designed",
-        "top": 45.4,
-        "left": 67,
+        "top": 44,
+        "left": 64.9,
         "width": 14,
         "height": 2.2
       },
@@ -120273,8 +120256,8 @@
           "has made"
         ],
         "correct": "made",
-        "top": 46.8,
-        "left": 74,
+        "top": 46.5,
+        "left": 72,
         "width": 12,
         "height": 2.2
       },
@@ -120290,8 +120273,8 @@
           "has been"
         ],
         "correct": "was",
-        "top": 50,
-        "left": 67,
+        "top": 48.6,
+        "left": 78.3,
         "width": 10,
         "height": 2.2
       },
@@ -120307,8 +120290,8 @@
           "have received"
         ],
         "correct": "have received",
-        "top": 55.6,
-        "left": 74,
+        "top": 54.6,
+        "left": 69.1,
         "width": 16,
         "height": 2.2
       },
@@ -120324,8 +120307,8 @@
           "has won"
         ],
         "correct": "won",
-        "top": 59.2,
-        "left": 67,
+        "top": 58.2,
+        "left": 67.1,
         "width": 12,
         "height": 2.2
       },
@@ -120341,8 +120324,8 @@
           "has had"
         ],
         "correct": "has had",
-        "top": 62,
-        "left": 67,
+        "top": 61.4,
+        "left": 58.5,
         "width": 12,
         "height": 2.2
       },
@@ -120358,8 +120341,8 @@
           "has won"
         ],
         "correct": "has won",
-        "top": 65.7,
-        "left": 78,
+        "top": 65,
+        "left": 81.5,
         "width": 12,
         "height": 2.2
       },
@@ -120375,8 +120358,8 @@
           "has become"
         ],
         "correct": "became",
-        "top": 70,
-        "left": 67,
+        "top": 68.3,
+        "left": 70.4,
         "width": 12,
         "height": 2.2
       },
@@ -120392,8 +120375,8 @@
           "have ever refused"
         ],
         "correct": "have ever refused",
-        "top": 76.5,
-        "left": 67,
+        "top": 75.1,
+        "left": 70.4,
         "width": 18,
         "height": 2.2
       }
@@ -122413,8 +122396,8 @@
     "3079": 1793517219541,
     "3080": 1793517363598,
     "3081": 1793517363598,
-    "3082": 1793517440719,
-    "3083": 1793517465687,
+    "3082": 1793517485546,
+    "3083": 1793517485546,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -123124,5 +123107,5 @@
       }
     }
   },
-  "updatedAt": 1793517465842
+  "updatedAt": 1793517487652
 }
