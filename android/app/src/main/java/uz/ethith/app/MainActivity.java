@@ -54,9 +54,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(rootLayout);
 
         configureWebView();
-        webView.loadUrl(APP_URL);
+        loadFreshUrl();
 
-        swipeRefresh.setOnRefreshListener(() -> webView.reload());
+        swipeRefresh.setOnRefreshListener(() -> loadFreshUrl());
+    }
+
+    private void loadFreshUrl() {
+        if (webView != null) {
+            webView.clearCache(true);
+            webView.loadUrl(APP_URL + "?v=" + System.currentTimeMillis());
+        }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -67,13 +74,14 @@ public class MainActivity extends AppCompatActivity {
         settings.setDatabaseEnabled(true);
         settings.setAllowFileAccess(true);
         settings.setAllowContentAccess(true);
-        settings.setUseWideViewPort(true);
-        settings.setLoadWithOverviewMode(true);
-        settings.setSupportZoom(true);
+        settings.setUseWideViewPort(false);
+        settings.setLoadWithOverviewMode(false);
+        settings.setSupportZoom(false);
         settings.setBuiltInZoomControls(false);
         settings.setDisplayZoomControls(false);
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         settings.setMediaPlaybackRequiresUserGesture(false);
+        settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
 
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webView.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);

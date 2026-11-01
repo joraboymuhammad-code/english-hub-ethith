@@ -26279,10 +26279,10 @@
       "page": 1004,
       "exercise": "1",
       "label": "2",
-      "top": 54.7,
-      "left": 66.5,
-      "width": 14.5,
-      "height": 2.2,
+      "top": 53.2,
+      "left": 65.5,
+      "width": 13,
+      "height": 1.6,
       "correct": "to study"
     },
     {
@@ -26291,10 +26291,10 @@
       "page": 1004,
       "exercise": "1",
       "label": "3",
-      "top": 74.9,
-      "left": 24.1,
-      "width": 14.5,
-      "height": 2.2,
+      "top": 74.6,
+      "left": 23.5,
+      "width": 13,
+      "height": 1.6,
       "correct": "on business"
     },
     {
@@ -26303,10 +26303,10 @@
       "page": 1004,
       "exercise": "1",
       "label": "4",
-      "top": 75,
-      "left": 66,
-      "width": 14.5,
-      "height": 2.2,
+      "top": 74.6,
+      "left": 65.5,
+      "width": 13,
+      "height": 1.6,
       "correct": "on holiday"
     },
     {
@@ -26411,10 +26411,10 @@
       "page": 1004,
       "exercise": "3",
       "label": "2",
-      "top": 87.8,
-      "left": 60.3,
-      "width": 7,
-      "height": 2,
+      "top": 86.7,
+      "left": 61.1,
+      "width": 7.2,
+      "height": 1.4,
       "correct": "Hi"
     },
     {
@@ -26423,10 +26423,10 @@
       "page": 1004,
       "exercise": "3",
       "label": "3",
-      "top": 87.8,
-      "left": 76.5,
-      "width": 7.5,
-      "height": 2,
+      "top": 86.7,
+      "left": 76.7,
+      "width": 6.8,
+      "height": 1.4,
       "correct": "Nice"
     },
     {
@@ -26435,10 +26435,10 @@
       "page": 1004,
       "exercise": "3",
       "label": "4",
-      "top": 89.3,
-      "left": 60.3,
-      "width": 7,
-      "height": 2,
+      "top": 88.2,
+      "left": 61.1,
+      "width": 7.2,
+      "height": 1.4,
       "correct": "And"
     },
     {
@@ -26447,10 +26447,10 @@
       "page": 1004,
       "exercise": "3",
       "label": "5",
-      "top": 89.3,
-      "left": 74.4,
-      "width": 7,
-      "height": 2,
+      "top": 88.2,
+      "left": 75.2,
+      "width": 6.9,
+      "height": 1.4,
       "correct": "you"
     },
     {
@@ -26459,10 +26459,10 @@
       "page": 1004,
       "exercise": "3",
       "label": "6",
-      "top": 90.8,
-      "left": 60.3,
-      "width": 7,
-      "height": 2,
+      "top": 89.8,
+      "left": 61.1,
+      "width": 7.2,
+      "height": 1.4,
       "correct": "No"
     },
     {
@@ -26471,10 +26471,10 @@
       "page": 1004,
       "exercise": "3",
       "label": "7",
-      "top": 90.8,
-      "left": 81.9,
-      "width": 7.5,
-      "height": 2,
+      "top": 89.8,
+      "left": 82.4,
+      "width": 7.1,
+      "height": 1.4,
       "correct": "study"
     },
     {
@@ -26483,10 +26483,10 @@
       "page": 1004,
       "exercise": "3",
       "label": "8",
-      "top": 92.3,
-      "left": 74.4,
-      "width": 8.5,
-      "height": 2,
+      "top": 91.3,
+      "left": 74.8,
+      "width": 7.4,
+      "height": 1.4,
       "correct": "holiday"
     },
     {
@@ -26495,10 +26495,10 @@
       "page": 1004,
       "exercise": "3",
       "label": "9",
-      "top": 93.9,
-      "left": 60.6,
-      "width": 7,
-      "height": 2,
+      "top": 92.9,
+      "left": 61.3,
+      "width": 7.1,
+      "height": 1.4,
       "correct": "Yes"
     }
   ],
