@@ -123638,6 +123638,238 @@
         ]
       }
     ],
+    "4084": [
+      {
+        "id": "p4084_ex1_1",
+        "type": "fill",
+        "x": 15,
+        "y": 62,
+        "w": 18,
+        "h": 2.2,
+        "top": 64.9,
+        "left": 29,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "in charge of",
+          "in charge"
+        ]
+      },
+      {
+        "id": "p4084_ex1_2",
+        "type": "fill",
+        "x": 15,
+        "y": 66,
+        "w": 18,
+        "h": 2.2,
+        "top": 68.2,
+        "left": 26.5,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "in a hurry",
+          "a hurry"
+        ]
+      },
+      {
+        "id": "p4084_ex1_3",
+        "type": "fill",
+        "x": 15,
+        "y": 70,
+        "w": 18,
+        "h": 2.2,
+        "top": 71.6,
+        "left": 24.7,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "in trouble",
+          "trouble"
+        ]
+      },
+      {
+        "id": "p4084_ex1_4",
+        "type": "fill",
+        "x": 15,
+        "y": 74,
+        "w": 18,
+        "h": 2.2,
+        "top": 74,
+        "left": 15,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "in love",
+          "love"
+        ]
+      },
+      {
+        "id": "p4084_ex1_5",
+        "type": "fill",
+        "x": 15,
+        "y": 78,
+        "w": 18,
+        "h": 2.2,
+        "top": 78,
+        "left": 15,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "in public",
+          "public"
+        ]
+      },
+      {
+        "id": "p4084_ex2_2",
+        "type": "fill",
+        "x": 56,
+        "y": 39,
+        "w": 12,
+        "h": 2.2,
+        "top": 38.4,
+        "left": 55.8,
+        "width": 12,
+        "height": 2.2,
+        "correct": [
+          "manager"
+        ]
+      },
+      {
+        "id": "p4084_ex2_3",
+        "type": "fill",
+        "x": 56,
+        "y": 46,
+        "w": 12,
+        "h": 2.2,
+        "top": 45,
+        "left": 56,
+        "width": 12,
+        "height": 2.2,
+        "correct": [
+          "researcher"
+        ]
+      },
+      {
+        "id": "p4084_ex2_4",
+        "type": "fill",
+        "x": 69,
+        "y": 35,
+        "w": 12,
+        "h": 2.2,
+        "top": 33.4,
+        "left": 68.1,
+        "width": 12,
+        "height": 2.2,
+        "correct": [
+          "engineer"
+        ]
+      },
+      {
+        "id": "p4084_ex2_5",
+        "type": "fill",
+        "x": 69,
+        "y": 42,
+        "w": 12,
+        "h": 2.2,
+        "top": 41.6,
+        "left": 68.7,
+        "width": 12,
+        "height": 2.2,
+        "correct": [
+          "scientist"
+        ]
+      },
+      {
+        "id": "p4084_ex3_1",
+        "type": "fill",
+        "x": 65,
+        "y": 77,
+        "w": 16,
+        "h": 2.2,
+        "top": 77,
+        "left": 65,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "in detail"
+        ]
+      },
+      {
+        "id": "p4084_ex3_2",
+        "type": "fill",
+        "x": 85,
+        "y": 77,
+        "w": 12,
+        "h": 2.2,
+        "top": 77,
+        "left": 85,
+        "width": 12,
+        "height": 2.2,
+        "correct": [
+          "in fact"
+        ]
+      },
+      {
+        "id": "p4084_ex3_3",
+        "type": "fill",
+        "x": 58,
+        "y": 82,
+        "w": 14,
+        "h": 2.2,
+        "top": 82,
+        "left": 58,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "in ten minutes"
+        ]
+      },
+      {
+        "id": "p4084_ex3_4",
+        "type": "fill",
+        "x": 80,
+        "y": 82,
+        "w": 16,
+        "h": 2.2,
+        "top": 82,
+        "left": 80,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "in the middle"
+        ]
+      },
+      {
+        "id": "p4084_ex3_5",
+        "type": "fill",
+        "x": 58,
+        "y": 86.8,
+        "w": 14,
+        "h": 2.2,
+        "top": 86.8,
+        "left": 58,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "in nursing"
+        ]
+      },
+      {
+        "id": "p4084_ex3_6",
+        "type": "fill",
+        "x": 80,
+        "y": 86.8,
+        "w": 14,
+        "h": 2.2,
+        "top": 86.8,
+        "left": 80,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "in sales"
+        ]
+      }
+    ],
     "4085": [
       {
         "id": "p4085_ex1_1",
@@ -125007,6 +125239,7 @@
     "4007": 1793549222748,
     "4008": 1793549222748,
     "4009": 1793549222748,
+    "4084": 1793549298508,
     "4085": 1793549271710,
     "4086": 1793549242631,
     "4087": 1793549242632
@@ -126008,5 +126241,5 @@
       }
     }
   },
-  "updatedAt": 1793549273227
+  "updatedAt": 1793549299315
 }
