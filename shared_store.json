@@ -116337,6 +116337,433 @@
         "height": 2.2
       }
     ],
+    "3068": [
+      {
+        "id": "p3068_ex1_1",
+        "type": "fill",
+        "x": 13,
+        "y": 45,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "beach"
+        ],
+        "top": 45,
+        "left": 13,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex1_2",
+        "type": "fill",
+        "x": 13,
+        "y": 48,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "coast"
+        ],
+        "top": 48,
+        "left": 13,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex1_3",
+        "type": "fill",
+        "x": 13,
+        "y": 51,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "desert"
+        ],
+        "top": 51,
+        "left": 13,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex1_4",
+        "type": "fill",
+        "x": 13,
+        "y": 54,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "island"
+        ],
+        "top": 54,
+        "left": 13,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex1_5",
+        "type": "fill",
+        "x": 13,
+        "y": 57,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "lake"
+        ],
+        "top": 57,
+        "left": 13,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex1_6",
+        "type": "fill",
+        "x": 13,
+        "y": 60,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "mountain"
+        ],
+        "top": 60,
+        "left": 13,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex1_7",
+        "type": "fill",
+        "x": 13,
+        "y": 63,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "rainforest"
+        ],
+        "top": 63,
+        "left": 13,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex1_8",
+        "type": "fill",
+        "x": 13,
+        "y": 66,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "river"
+        ],
+        "top": 66,
+        "left": 13,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex1_9",
+        "type": "fill",
+        "x": 13,
+        "y": 69,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "waterfall"
+        ],
+        "top": 69,
+        "left": 13,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex2_1",
+        "type": "select",
+        "x": 71,
+        "y": 34.5,
+        "w": 12,
+        "h": 2.2,
+        "options": [
+          "islands",
+          "rivers"
+        ],
+        "correct": "islands",
+        "top": 23.4,
+        "left": 66.3,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex2_2",
+        "type": "select",
+        "x": 58,
+        "y": 38,
+        "w": 12,
+        "h": 2.2,
+        "options": [
+          "island",
+          "lake"
+        ],
+        "correct": "island",
+        "top": 38,
+        "left": 58,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex2_3",
+        "type": "select",
+        "x": 71,
+        "y": 38,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "mountain",
+          "waterfall"
+        ],
+        "correct": "mountain",
+        "top": 38,
+        "left": 71,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex2_4",
+        "type": "select",
+        "x": 67,
+        "y": 41.5,
+        "w": 12,
+        "h": 2.2,
+        "options": [
+          "Lake",
+          "Coast"
+        ],
+        "correct": "Lake",
+        "top": 41.5,
+        "left": 67,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex2_5",
+        "type": "select",
+        "x": 58,
+        "y": 45,
+        "w": 12,
+        "h": 2.2,
+        "options": [
+          "coast",
+          "mountain"
+        ],
+        "correct": "coast",
+        "top": 45,
+        "left": 58,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex2_6",
+        "type": "select",
+        "x": 74,
+        "y": 45,
+        "w": 12,
+        "h": 2.2,
+        "options": [
+          "Desert",
+          "Coast"
+        ],
+        "correct": "Desert",
+        "top": 45,
+        "left": 74,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex2_7",
+        "type": "select",
+        "x": 58,
+        "y": 48.5,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "rainforest",
+          "waterfall"
+        ],
+        "correct": "rainforest",
+        "top": 48.5,
+        "left": 58,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex2_8",
+        "type": "select",
+        "x": 74,
+        "y": 48.5,
+        "w": 12,
+        "h": 2.2,
+        "options": [
+          "beach",
+          "lake"
+        ],
+        "correct": "beach",
+        "top": 48.5,
+        "left": 74,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex2_9",
+        "type": "select",
+        "x": 78,
+        "y": 55.6,
+        "w": 12,
+        "h": 2.2,
+        "options": [
+          "Mountain",
+          "River"
+        ],
+        "correct": "River",
+        "top": 55.6,
+        "left": 78,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex2_10",
+        "type": "select",
+        "x": 61,
+        "y": 60.8,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "waterfall",
+          "mountain"
+        ],
+        "correct": "waterfall",
+        "top": 60.8,
+        "left": 61,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex3_1",
+        "type": "fill",
+        "x": 74,
+        "y": 70,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "north"
+        ],
+        "top": 70,
+        "left": 74,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex3_2",
+        "type": "fill",
+        "x": 74,
+        "y": 72.5,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "north-east"
+        ],
+        "top": 72.5,
+        "left": 74,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex3_3",
+        "type": "fill",
+        "x": 74,
+        "y": 75,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "east"
+        ],
+        "top": 75,
+        "left": 74,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex3_4",
+        "type": "fill",
+        "x": 74,
+        "y": 77.5,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "south-east"
+        ],
+        "top": 77.5,
+        "left": 74,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex3_5",
+        "type": "fill",
+        "x": 74,
+        "y": 80,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "south"
+        ],
+        "top": 80,
+        "left": 74,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex3_6",
+        "type": "fill",
+        "x": 74,
+        "y": 82.5,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "south-west"
+        ],
+        "top": 82.5,
+        "left": 74,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex3_7",
+        "type": "fill",
+        "x": 74,
+        "y": 85,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "west"
+        ],
+        "top": 85,
+        "left": 74,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3068_ex3_8",
+        "type": "fill",
+        "x": 74,
+        "y": 87.5,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "north-west"
+        ],
+        "top": 87.5,
+        "left": 74,
+        "width": 14,
+        "height": 2.2
+      }
+    ],
     "4004": [
       {
         "id": "p4004_ex1_2",
@@ -118338,6 +118765,7 @@
     "3065": 1793515698497,
     "3066": 1793515895423,
     "3067": 1793515895423,
+    "3068": 1793515908532,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -119047,5 +119475,5 @@
       }
     }
   },
-  "updatedAt": 1793515896472
+  "updatedAt": 1793515911218
 }
