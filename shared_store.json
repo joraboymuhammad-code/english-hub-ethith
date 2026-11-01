@@ -25508,11 +25508,11 @@
       "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
-      "coins": 5000,
+      "coins": 100000,
       "gifts": [],
-      "level": "C2",
+      "level": "B1+",
       "dailyMinutes": 0,
-      "updatedAt": 1793542021616,
+      "updatedAt": 1793542854102,
       "avatar": null,
       "nameStyle": null,
       "title": null,
@@ -26180,8 +26180,8 @@
       "title": "👑 IELTS Qiroli"
     },
     {
-      "id": "teacher_1793431051291",
-      "name": "Muhammadyusuf",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "login": "muhammadyusuf11",
       "password": "muhammadyusuf2026",
       "email": "muhammadyusuf11@ethith.uz",
@@ -26193,8 +26193,8 @@
       "updatedAt": 1793431308524
     },
     {
-      "id": "t_urolov_azizbek",
-      "name": "Azizbek Urolov",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "password": "azizbek2026",
@@ -124574,5 +124574,5 @@
       }
     }
   },
-  "updatedAt": 1793542505244
+  "updatedAt": 1793542854206
 }
