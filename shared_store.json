@@ -118339,22 +118339,6 @@
         "height": 2.2
       },
       {
-        "id": "p3075_ex5_1",
-        "type": "fill",
-        "x": 11,
-        "y": 46.5,
-        "w": 35,
-        "h": 2.2,
-        "correct": [
-          "What time is the party going to start?",
-          "What time is the party going to start"
-        ],
-        "top": 46.5,
-        "left": 11,
-        "width": 35,
-        "height": 2.2
-      },
-      {
         "id": "p3075_ex5_2",
         "type": "fill",
         "x": 11,
@@ -118365,8 +118349,8 @@
           "What are you going to wear for your interview?",
           "What are you going to wear for your interview"
         ],
-        "top": 50,
-        "left": 11,
+        "top": 48.7,
+        "left": 11.7,
         "width": 35,
         "height": 2.2
       },
@@ -120475,7 +120459,7 @@
     "3072": 1793516778335,
     "3073": 1793516778336,
     "3074": 1793516865351,
-    "3075": 1793516936030,
+    "3075": 1793516952387,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -121185,5 +121169,5 @@
       }
     }
   },
-  "updatedAt": 1793516940572
+  "updatedAt": 1793516955270
 }
