@@ -18704,7 +18704,7 @@
       "name": "Ustoz",
       "email": "teacher@ethith.uz",
       "role": "teacher",
-      "updatedAt": 1793475000326,
+      "updatedAt": 1793506104337,
       "coins": 100000,
       "level": "C2",
       "dailyMinutes": 0
@@ -116283,8 +116283,8 @@
           "The weather is worse today than it was yesterday.",
           "The weather is worse today than it was yesterday"
         ],
-        "top": 44.6,
-        "left": 55.7,
+        "top": 47.8,
+        "left": 56.2,
         "width": 38,
         "height": 2.2
       },
@@ -116299,8 +116299,8 @@
           "My new job is more interesting than my old job.",
           "My new job is more interesting than my old job"
         ],
-        "top": 48.3,
-        "left": 56,
+        "top": 51.5,
+        "left": 55.8,
         "width": 38,
         "height": 2.2
       },
@@ -116315,8 +116315,8 @@
           "I think spring and autumn are nicer than summer or winter.",
           "I think spring and autumn are nicer than summer or winter"
         ],
-        "top": 51.3,
-        "left": 56.2,
+        "top": 54.9,
+        "left": 55.7,
         "width": 38,
         "height": 2.2
       },
@@ -118336,8 +118336,8 @@
     "3062": 1793506681641,
     "3063": 1793506773020,
     "3065": 1793515698497,
-    "3066": 1793515763449,
-    "3067": 1793515878989,
+    "3066": 1793515895423,
+    "3067": 1793515895423,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -119047,5 +119047,5 @@
       }
     }
   },
-  "updatedAt": 1793515880579
+  "updatedAt": 1793515896472
 }
