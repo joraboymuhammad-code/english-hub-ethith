@@ -80263,7 +80263,7 @@
             "height": 2.2
       }
 ],
-                                            "4004": [
+                                                "4004": [
       {
             "id": "p4004_ex1_2",
             "type": "fill",
@@ -82364,91 +82364,6 @@
 ],
     "4010": [
       {
-            "id": "p4010_ex1_2",
-            "type": "fill",
-            "top": 36.7,
-            "left": 17,
-            "width": 10.5,
-            "height": 1.9,
-            "x": 17,
-            "y": 36.7,
-            "w": 10.5,
-            "h": 1.9,
-            "correct": [
-                  "crowded",
-                  "Crowded"
-            ],
-            "answer": "crowded"
-      },
-      {
-            "id": "p4010_ex1_3",
-            "type": "fill",
-            "top": 40.4,
-            "left": 23.5,
-            "width": 8.5,
-            "height": 1.9,
-            "x": 23.5,
-            "y": 40.4,
-            "w": 8.5,
-            "h": 1.9,
-            "correct": [
-                  "lively",
-                  "Lively"
-            ],
-            "answer": "lively"
-      },
-      {
-            "id": "p4010_ex1_4",
-            "type": "fill",
-            "top": 42.7,
-            "left": 30.5,
-            "width": 7,
-            "height": 1.9,
-            "x": 30.5,
-            "y": 42.7,
-            "w": 7,
-            "h": 1.9,
-            "correct": [
-                  "safe",
-                  "Safe"
-            ],
-            "answer": "safe"
-      },
-      {
-            "id": "p4010_ex1_5",
-            "type": "fill",
-            "top": 45.6,
-            "left": 18,
-            "width": 7.5,
-            "height": 1.9,
-            "x": 18,
-            "y": 45.6,
-            "w": 7.5,
-            "h": 1.9,
-            "correct": [
-                  "dirty",
-                  "Dirty"
-            ],
-            "answer": "dirty"
-      },
-      {
-            "id": "p4010_ex1_6",
-            "type": "fill",
-            "top": 47.9,
-            "left": 23,
-            "width": 7,
-            "height": 1.9,
-            "x": 23,
-            "y": 47.9,
-            "w": 7,
-            "h": 1.9,
-            "correct": [
-                  "dull",
-                  "Dull"
-            ],
-            "answer": "dull"
-      },
-      {
             "id": "p4010_ex2_2",
             "type": "fill",
             "top": 72.3,
@@ -82750,6 +82665,231 @@
                   "Street cleaners"
             ],
             "answer": "street cleaners"
+      },
+      {
+            "id": "p4010_ex1_2_opt1",
+            "type": "choose",
+            "group": "p4010_ex1_2",
+            "text": "crowded",
+            "correct": true,
+            "top": 36.6,
+            "left": 16.5,
+            "width": 4.8,
+            "height": 1.9,
+            "x": 16.5,
+            "y": 36.6,
+            "w": 4.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_2_opt2",
+            "type": "choose",
+            "group": "p4010_ex1_2",
+            "text": "dull",
+            "correct": false,
+            "top": 36.6,
+            "left": 22,
+            "width": 3.2,
+            "height": 1.9,
+            "x": 22,
+            "y": 36.6,
+            "w": 3.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_2_opt3",
+            "type": "choose",
+            "group": "p4010_ex1_2",
+            "text": "safe",
+            "correct": false,
+            "top": 36.6,
+            "left": 26,
+            "width": 3.2,
+            "height": 1.9,
+            "x": 26,
+            "y": 36.6,
+            "w": 3.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_3_opt1",
+            "type": "choose",
+            "group": "p4010_ex1_3",
+            "text": "dirty",
+            "correct": false,
+            "top": 40.3,
+            "left": 14.5,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 14.5,
+            "y": 40.3,
+            "w": 3.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_3_opt2",
+            "type": "choose",
+            "group": "p4010_ex1_3",
+            "text": "dull",
+            "correct": false,
+            "top": 40.3,
+            "left": 18.8,
+            "width": 3.2,
+            "height": 1.9,
+            "x": 18.8,
+            "y": 40.3,
+            "w": 3.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_3_opt3",
+            "type": "choose",
+            "group": "p4010_ex1_3",
+            "text": "lively",
+            "correct": true,
+            "top": 40.3,
+            "left": 22.8,
+            "width": 4,
+            "height": 1.9,
+            "x": 22.8,
+            "y": 40.3,
+            "w": 4,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_4_opt1",
+            "type": "choose",
+            "group": "p4010_ex1_4",
+            "text": "crowded",
+            "correct": false,
+            "top": 42.6,
+            "left": 17.5,
+            "width": 5.2,
+            "height": 1.9,
+            "x": 17.5,
+            "y": 42.6,
+            "w": 5.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_4_opt2",
+            "type": "choose",
+            "group": "p4010_ex1_4",
+            "text": "huge",
+            "correct": false,
+            "top": 42.6,
+            "left": 23.5,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 23.5,
+            "y": 42.6,
+            "w": 3.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_4_opt3",
+            "type": "choose",
+            "group": "p4010_ex1_4",
+            "text": "safe",
+            "correct": true,
+            "top": 42.6,
+            "left": 27.8,
+            "width": 3.2,
+            "height": 1.9,
+            "x": 27.8,
+            "y": 42.6,
+            "w": 3.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_5_opt1",
+            "type": "choose",
+            "group": "p4010_ex1_5",
+            "text": "dirty",
+            "correct": true,
+            "top": 45.5,
+            "left": 17.5,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 17.5,
+            "y": 45.5,
+            "w": 3.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_5_opt2",
+            "type": "choose",
+            "group": "p4010_ex1_5",
+            "text": "huge",
+            "correct": false,
+            "top": 45.5,
+            "left": 21.8,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 21.8,
+            "y": 45.5,
+            "w": 3.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_5_opt3",
+            "type": "choose",
+            "group": "p4010_ex1_5",
+            "text": "lively",
+            "correct": false,
+            "top": 45.5,
+            "left": 26,
+            "width": 3.8,
+            "height": 1.9,
+            "x": 26,
+            "y": 45.5,
+            "w": 3.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_6_opt1",
+            "type": "choose",
+            "group": "p4010_ex1_6",
+            "text": "crowded",
+            "correct": false,
+            "top": 47.8,
+            "left": 15,
+            "width": 5.2,
+            "height": 1.9,
+            "x": 15,
+            "y": 47.8,
+            "w": 5.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_6_opt2",
+            "type": "choose",
+            "group": "p4010_ex1_6",
+            "text": "dull",
+            "correct": true,
+            "top": 47.8,
+            "left": 21,
+            "width": 3.2,
+            "height": 1.9,
+            "x": 21,
+            "y": 47.8,
+            "w": 3.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4010_ex1_6_opt3",
+            "type": "choose",
+            "group": "p4010_ex1_6",
+            "text": "lively",
+            "correct": false,
+            "top": 47.8,
+            "left": 25,
+            "width": 3.8,
+            "height": 1.9,
+            "x": 25,
+            "y": 47.8,
+            "w": 3.8,
+            "h": 1.9
       }
 ],
     "4011": [
@@ -82878,264 +83018,6 @@
                   "celebrating"
             ],
             "answer": "'re celebrating"
-      },
-      {
-            "id": "p4011_ex6_1b",
-            "type": "fill",
-            "top": 55.4,
-            "left": 22,
-            "width": 9.5,
-            "height": 1.9,
-            "x": 22,
-            "y": 55.4,
-            "w": 9.5,
-            "h": 1.9,
-            "correct": [
-                  "Do you want",
-                  "do you want"
-            ],
-            "answer": "Do you want"
-      },
-      {
-            "id": "p4011_ex6_2a",
-            "type": "fill",
-            "top": 59.3,
-            "left": 23,
-            "width": 11,
-            "height": 1.9,
-            "x": 23,
-            "y": 59.3,
-            "w": 11,
-            "h": 1.9,
-            "correct": [
-                  "Are you listening",
-                  "are you listening"
-            ],
-            "answer": "Are you listening"
-      },
-      {
-            "id": "p4011_ex6_2b",
-            "type": "fill",
-            "top": 62.2,
-            "left": 16.5,
-            "width": 6.5,
-            "height": 1.9,
-            "x": 16.5,
-            "y": 62.2,
-            "w": 6.5,
-            "h": 1.9,
-            "correct": [
-                  "like",
-                  "Like"
-            ],
-            "answer": "like"
-      },
-      {
-            "id": "p4011_ex6_3a",
-            "type": "fill",
-            "top": 64.1,
-            "left": 19.5,
-            "width": 8.5,
-            "height": 1.9,
-            "x": 19.5,
-            "y": 64.1,
-            "w": 8.5,
-            "h": 1.9,
-            "correct": [
-                  "do you do",
-                  "Do you do"
-            ],
-            "answer": "do you do"
-      },
-      {
-            "id": "p4011_ex6_3b",
-            "type": "fill",
-            "top": 66,
-            "left": 17.5,
-            "width": 5.5,
-            "height": 1.9,
-            "x": 17.5,
-            "y": 66,
-            "w": 5.5,
-            "h": 1.9,
-            "correct": [
-                  "go",
-                  "Go"
-            ],
-            "answer": "go"
-      },
-      {
-            "id": "p4011_ex6_4a",
-            "type": "fill",
-            "top": 67.9,
-            "left": 22.5,
-            "width": 13,
-            "height": 1.9,
-            "x": 22.5,
-            "y": 67.9,
-            "w": 13,
-            "h": 1.9,
-            "correct": [
-                  "does the market open",
-                  "Does the market open"
-            ],
-            "answer": "does the market open"
-      },
-      {
-            "id": "p4011_ex6_4b",
-            "type": "fill",
-            "top": 70.8,
-            "left": 14.5,
-            "width": 8.5,
-            "height": 1.9,
-            "x": 14.5,
-            "y": 70.8,
-            "w": 8.5,
-            "h": 1.9,
-            "correct": [
-                  "don't know",
-                  "dont know",
-                  "do not know"
-            ],
-            "answer": "don't know"
-      },
-      {
-            "id": "p4011_ex6_5a",
-            "type": "fill",
-            "top": 72.8,
-            "left": 24.5,
-            "width": 10.5,
-            "height": 1.9,
-            "x": 24.5,
-            "y": 72.8,
-            "w": 10.5,
-            "h": 1.9,
-            "correct": [
-                  "Is your partner",
-                  "is your partner"
-            ],
-            "answer": "Is your partner"
-      },
-      {
-            "id": "p4011_ex6_5b",
-            "type": "fill",
-            "top": 74.7,
-            "left": 17.5,
-            "width": 9.5,
-            "height": 1.9,
-            "x": 17.5,
-            "y": 74.7,
-            "w": 9.5,
-            "h": 1.9,
-            "correct": [
-                  "doesn't work",
-                  "doesnt work",
-                  "does not work"
-            ],
-            "answer": "doesn't work"
-      },
-      {
-            "id": "p4011_ex6_6a",
-            "type": "fill",
-            "top": 76.6,
-            "left": 21.5,
-            "width": 10.5,
-            "height": 1.9,
-            "x": 21.5,
-            "y": 76.6,
-            "w": 10.5,
-            "h": 1.9,
-            "correct": [
-                  "Are you having",
-                  "are you having"
-            ],
-            "answer": "Are you having"
-      },
-      {
-            "id": "p4011_ex6_6b",
-            "type": "fill",
-            "top": 78.5,
-            "left": 21,
-            "width": 8.5,
-            "height": 1.9,
-            "x": 21,
-            "y": 78.5,
-            "w": 8.5,
-            "h": 1.9,
-            "correct": [
-                  "'m having",
-                  "am having"
-            ],
-            "answer": "'m having"
-      },
-      {
-            "id": "p4011_ex6_7a",
-            "type": "fill",
-            "top": 80.4,
-            "left": 18,
-            "width": 8,
-            "height": 1.9,
-            "x": 18,
-            "y": 80.4,
-            "w": 8,
-            "h": 1.9,
-            "correct": [
-                  "Do I need",
-                  "do I need"
-            ],
-            "answer": "Do I need"
-      },
-      {
-            "id": "p4011_ex6_7b",
-            "type": "fill",
-            "top": 82.4,
-            "left": 25,
-            "width": 9,
-            "height": 1.9,
-            "x": 25,
-            "y": 82.4,
-            "w": 9,
-            "h": 1.9,
-            "correct": [
-                  "isn't raining",
-                  "isnt raining",
-                  "is not raining"
-            ],
-            "answer": "isn't raining"
-      },
-      {
-            "id": "p4011_ex6_8a",
-            "type": "fill",
-            "top": 84.3,
-            "left": 17.5,
-            "width": 12,
-            "height": 1.9,
-            "x": 17.5,
-            "y": 84.3,
-            "w": 12,
-            "h": 1.9,
-            "correct": [
-                  "Is our team winning",
-                  "is our team winning"
-            ],
-            "answer": "Is our team winning"
-      },
-      {
-            "id": "p4011_ex6_8b",
-            "type": "fill",
-            "top": 86.2,
-            "left": 24,
-            "width": 8.5,
-            "height": 1.9,
-            "x": 24,
-            "y": 86.2,
-            "w": 8.5,
-            "h": 1.9,
-            "correct": [
-                  "'re playing",
-                  "are playing"
-            ],
-            "answer": "'re playing"
       },
       {
             "id": "p4011_ex7_2",
@@ -83419,94 +83301,459 @@
                   "spend"
             ],
             "answer": "are spending"
+      },
+      {
+            "id": "p4011_ex6_1b_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_1b",
+            "text": "Do you want",
+            "correct": true,
+            "top": 55.4,
+            "left": 21.5,
+            "width": 8,
+            "height": 1.9,
+            "x": 21.5,
+            "y": 55.4,
+            "w": 8,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_1b_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_1b",
+            "text": "Are you wanting",
+            "correct": false,
+            "top": 55.4,
+            "left": 30.5,
+            "width": 10.5,
+            "height": 1.9,
+            "x": 30.5,
+            "y": 55.4,
+            "w": 10.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_2a_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_2a",
+            "text": "Do you listen",
+            "correct": false,
+            "top": 59.3,
+            "left": 12.5,
+            "width": 9,
+            "height": 1.9,
+            "x": 12.5,
+            "y": 59.3,
+            "w": 9,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_2a_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_2a",
+            "text": "Are you listening",
+            "correct": true,
+            "top": 59.3,
+            "left": 22.5,
+            "width": 11,
+            "height": 1.9,
+            "x": 22.5,
+            "y": 59.3,
+            "w": 11,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_2b_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_2b",
+            "text": "like",
+            "correct": true,
+            "top": 62.2,
+            "left": 16.5,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 16.5,
+            "y": 62.2,
+            "w": 3.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_2b_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_2b",
+            "text": "'m liking",
+            "correct": false,
+            "top": 62.2,
+            "left": 20.8,
+            "width": 6.2,
+            "height": 1.9,
+            "x": 20.8,
+            "y": 62.2,
+            "w": 6.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_3a_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_3a",
+            "text": "do you do",
+            "correct": true,
+            "top": 64.1,
+            "left": 19.5,
+            "width": 7,
+            "height": 1.9,
+            "x": 19.5,
+            "y": 64.1,
+            "w": 7,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_3a_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_3a",
+            "text": "are you doing",
+            "correct": false,
+            "top": 64.1,
+            "left": 27.5,
+            "width": 9,
+            "height": 1.9,
+            "x": 27.5,
+            "y": 64.1,
+            "w": 9,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_3b_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_3b",
+            "text": "go",
+            "correct": true,
+            "top": 66,
+            "left": 17.5,
+            "width": 2.8,
+            "height": 1.9,
+            "x": 17.5,
+            "y": 66,
+            "w": 2.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_3b_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_3b",
+            "text": "'m going",
+            "correct": false,
+            "top": 66,
+            "left": 21,
+            "width": 6,
+            "height": 1.9,
+            "x": 21,
+            "y": 66,
+            "w": 6,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_4a_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_4a",
+            "text": "does the market open",
+            "correct": true,
+            "top": 67.9,
+            "left": 22,
+            "width": 14.5,
+            "height": 1.9,
+            "x": 22,
+            "y": 67.9,
+            "w": 14.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_4a_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_4a",
+            "text": "is the market opening",
+            "correct": false,
+            "top": 67.9,
+            "left": 37.5,
+            "width": 15,
+            "height": 1.9,
+            "x": 37.5,
+            "y": 67.9,
+            "w": 15,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_4b_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_4b",
+            "text": "don't know",
+            "correct": true,
+            "top": 70.8,
+            "left": 14,
+            "width": 7.5,
+            "height": 1.9,
+            "x": 14,
+            "y": 70.8,
+            "w": 7.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_4b_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_4b",
+            "text": "'m not knowing",
+            "correct": false,
+            "top": 70.8,
+            "left": 22.5,
+            "width": 10.5,
+            "height": 1.9,
+            "x": 22.5,
+            "y": 70.8,
+            "w": 10.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_5a_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_5a",
+            "text": "Does your partner",
+            "correct": false,
+            "top": 72.8,
+            "left": 12.5,
+            "width": 11.5,
+            "height": 1.9,
+            "x": 12.5,
+            "y": 72.8,
+            "w": 11.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_5a_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_5a",
+            "text": "Is your partner",
+            "correct": true,
+            "top": 72.8,
+            "left": 25,
+            "width": 10.5,
+            "height": 1.9,
+            "x": 25,
+            "y": 72.8,
+            "w": 10.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_5b_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_5b",
+            "text": "doesn't work",
+            "correct": true,
+            "top": 74.7,
+            "left": 17,
+            "width": 9,
+            "height": 1.9,
+            "x": 17,
+            "y": 74.7,
+            "w": 9,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_5b_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_5b",
+            "text": "isn't working",
+            "correct": false,
+            "top": 74.7,
+            "left": 27,
+            "width": 9.5,
+            "height": 1.9,
+            "x": 27,
+            "y": 74.7,
+            "w": 9.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_6a_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_6a",
+            "text": "Do you have",
+            "correct": false,
+            "top": 76.6,
+            "left": 12.5,
+            "width": 8.5,
+            "height": 1.9,
+            "x": 12.5,
+            "y": 76.6,
+            "w": 8.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_6a_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_6a",
+            "text": "Are you having",
+            "correct": true,
+            "top": 76.6,
+            "left": 22,
+            "width": 9.5,
+            "height": 1.9,
+            "x": 22,
+            "y": 76.6,
+            "w": 9.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_6b_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_6b",
+            "text": "have",
+            "correct": false,
+            "top": 78.5,
+            "left": 16.5,
+            "width": 4,
+            "height": 1.9,
+            "x": 16.5,
+            "y": 78.5,
+            "w": 4,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_6b_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_6b",
+            "text": "'m having",
+            "correct": true,
+            "top": 78.5,
+            "left": 21.5,
+            "width": 7,
+            "height": 1.9,
+            "x": 21.5,
+            "y": 78.5,
+            "w": 7,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_7a_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_7a",
+            "text": "Do I need",
+            "correct": true,
+            "top": 80.4,
+            "left": 12.5,
+            "width": 7,
+            "height": 1.9,
+            "x": 12.5,
+            "y": 80.4,
+            "w": 7,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_7a_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_7a",
+            "text": "Am I needing",
+            "correct": false,
+            "top": 80.4,
+            "left": 20.5,
+            "width": 9,
+            "height": 1.9,
+            "x": 20.5,
+            "y": 80.4,
+            "w": 9,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_7b_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_7b",
+            "text": "doesn't rain",
+            "correct": false,
+            "top": 82.4,
+            "left": 16.5,
+            "width": 8.5,
+            "height": 1.9,
+            "x": 16.5,
+            "y": 82.4,
+            "w": 8.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_7b_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_7b",
+            "text": "isn't raining",
+            "correct": true,
+            "top": 82.4,
+            "left": 26,
+            "width": 8.5,
+            "height": 1.9,
+            "x": 26,
+            "y": 82.4,
+            "w": 8.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_8a_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_8a",
+            "text": "Is our team winning",
+            "correct": true,
+            "top": 84.3,
+            "left": 12.5,
+            "width": 13,
+            "height": 1.9,
+            "x": 12.5,
+            "y": 84.3,
+            "w": 13,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_8a_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_8a",
+            "text": "Does our team win",
+            "correct": false,
+            "top": 84.3,
+            "left": 26.5,
+            "width": 13,
+            "height": 1.9,
+            "x": 26.5,
+            "y": 84.3,
+            "w": 13,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_8b_opt1",
+            "type": "choose",
+            "group": "p4011_ex6_8b",
+            "text": "play",
+            "correct": false,
+            "top": 86.2,
+            "left": 18.5,
+            "width": 4,
+            "height": 1.9,
+            "x": 18.5,
+            "y": 86.2,
+            "w": 4,
+            "h": 1.9
+      },
+      {
+            "id": "p4011_ex6_8b_opt2",
+            "type": "choose",
+            "group": "p4011_ex6_8b",
+            "text": "'re playing",
+            "correct": true,
+            "top": 86.2,
+            "left": 23.5,
+            "width": 8,
+            "height": 1.9,
+            "x": 23.5,
+            "y": 86.2,
+            "w": 8,
+            "h": 1.9
       }
 ],
     "4012": [
-      {
-            "id": "p4012_ex1_2",
-            "type": "fill",
-            "top": 66,
-            "left": 11.5,
-            "width": 8.5,
-            "height": 1.9,
-            "x": 11.5,
-            "y": 66,
-            "w": 8.5,
-            "h": 1.9,
-            "correct": [
-                  "where",
-                  "Where"
-            ],
-            "answer": "where"
-      },
-      {
-            "id": "p4012_ex1_3",
-            "type": "fill",
-            "top": 68,
-            "left": 11.5,
-            "width": 8.5,
-            "height": 1.9,
-            "x": 11.5,
-            "y": 68,
-            "w": 8.5,
-            "h": 1.9,
-            "correct": [
-                  "where",
-                  "Where"
-            ],
-            "answer": "where"
-      },
-      {
-            "id": "p4012_ex1_4",
-            "type": "fill",
-            "top": 73,
-            "left": 26.5,
-            "width": 6.5,
-            "height": 1.9,
-            "x": 26.5,
-            "y": 73,
-            "w": 6.5,
-            "h": 1.9,
-            "correct": [
-                  "that",
-                  "That"
-            ],
-            "answer": "that"
-      },
-      {
-            "id": "p4012_ex1_5",
-            "type": "fill",
-            "top": 74.8,
-            "left": 31,
-            "width": 6.5,
-            "height": 1.9,
-            "x": 31,
-            "y": 74.8,
-            "w": 6.5,
-            "h": 1.9,
-            "correct": [
-                  "who",
-                  "Who"
-            ],
-            "answer": "who"
-      },
-      {
-            "id": "p4012_ex1_6",
-            "type": "fill",
-            "top": 76.6,
-            "left": 42,
-            "width": 7,
-            "height": 1.9,
-            "x": 42,
-            "y": 76.6,
-            "w": 7,
-            "h": 1.9,
-            "correct": [
-                  "which",
-                  "Which"
-            ],
-            "answer": "which"
-      },
       {
             "id": "p4012_ex2a_2_pron",
             "type": "fill",
@@ -83851,6 +84098,231 @@
                   "where we do our shopping"
             ],
             "answer": "where we do our shopping."
+      },
+      {
+            "id": "p4012_ex1_2_opt1",
+            "type": "choose",
+            "group": "p4012_ex1_2",
+            "text": "where",
+            "correct": true,
+            "top": 66,
+            "left": 11.5,
+            "width": 4.8,
+            "height": 1.9,
+            "x": 11.5,
+            "y": 66,
+            "w": 4.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_2_opt2",
+            "type": "choose",
+            "group": "p4012_ex1_2",
+            "text": "which",
+            "correct": false,
+            "top": 66,
+            "left": 17,
+            "width": 4.2,
+            "height": 1.9,
+            "x": 17,
+            "y": 66,
+            "w": 4.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_2_opt3",
+            "type": "choose",
+            "group": "p4012_ex1_2",
+            "text": "who",
+            "correct": false,
+            "top": 66,
+            "left": 22,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 22,
+            "y": 66,
+            "w": 3.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_3_opt1",
+            "type": "choose",
+            "group": "p4012_ex1_3",
+            "text": "where",
+            "correct": true,
+            "top": 68,
+            "left": 11.5,
+            "width": 4.8,
+            "height": 1.9,
+            "x": 11.5,
+            "y": 68,
+            "w": 4.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_3_opt2",
+            "type": "choose",
+            "group": "p4012_ex1_3",
+            "text": "which",
+            "correct": false,
+            "top": 68,
+            "left": 17,
+            "width": 4.2,
+            "height": 1.9,
+            "x": 17,
+            "y": 68,
+            "w": 4.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_3_opt3",
+            "type": "choose",
+            "group": "p4012_ex1_3",
+            "text": "who",
+            "correct": false,
+            "top": 68,
+            "left": 22,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 22,
+            "y": 68,
+            "w": 3.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_4_opt1",
+            "type": "choose",
+            "group": "p4012_ex1_4",
+            "text": "that",
+            "correct": true,
+            "top": 73,
+            "left": 27,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 27,
+            "y": 73,
+            "w": 3.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_4_opt2",
+            "type": "choose",
+            "group": "p4012_ex1_4",
+            "text": "where",
+            "correct": false,
+            "top": 73,
+            "left": 31.5,
+            "width": 4.8,
+            "height": 1.9,
+            "x": 31.5,
+            "y": 73,
+            "w": 4.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_4_opt3",
+            "type": "choose",
+            "group": "p4012_ex1_4",
+            "text": "who",
+            "correct": false,
+            "top": 73,
+            "left": 37,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 37,
+            "y": 73,
+            "w": 3.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_5_opt1",
+            "type": "choose",
+            "group": "p4012_ex1_5",
+            "text": "where",
+            "correct": false,
+            "top": 74.8,
+            "left": 27,
+            "width": 4.8,
+            "height": 1.9,
+            "x": 27,
+            "y": 74.8,
+            "w": 4.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_5_opt2",
+            "type": "choose",
+            "group": "p4012_ex1_5",
+            "text": "which",
+            "correct": false,
+            "top": 74.8,
+            "left": 32.5,
+            "width": 4.2,
+            "height": 1.9,
+            "x": 32.5,
+            "y": 74.8,
+            "w": 4.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_5_opt3",
+            "type": "choose",
+            "group": "p4012_ex1_5",
+            "text": "who",
+            "correct": true,
+            "top": 74.8,
+            "left": 37.5,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 37.5,
+            "y": 74.8,
+            "w": 3.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_6_opt1",
+            "type": "choose",
+            "group": "p4012_ex1_6",
+            "text": "where",
+            "correct": false,
+            "top": 76.6,
+            "left": 39,
+            "width": 4.8,
+            "height": 1.9,
+            "x": 39,
+            "y": 76.6,
+            "w": 4.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_6_opt2",
+            "type": "choose",
+            "group": "p4012_ex1_6",
+            "text": "which",
+            "correct": true,
+            "top": 76.6,
+            "left": 44.5,
+            "width": 4.2,
+            "height": 1.9,
+            "x": 44.5,
+            "y": 76.6,
+            "w": 4.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4012_ex1_6_opt3",
+            "type": "choose",
+            "group": "p4012_ex1_6",
+            "text": "who",
+            "correct": false,
+            "top": 76.6,
+            "left": 49.5,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 49.5,
+            "y": 76.6,
+            "w": 3.5,
+            "h": 1.9
       }
 ],
     "4013": [
@@ -84667,126 +85139,6 @@
             "answer": "a lot"
       },
       {
-            "id": "p4015_ex2_2",
-            "type": "fill",
-            "top": 65.1,
-            "left": 16.5,
-            "width": 6.5,
-            "height": 1.9,
-            "x": 16.5,
-            "y": 65.1,
-            "w": 6.5,
-            "h": 1.9,
-            "correct": [
-                  "on",
-                  "On"
-            ],
-            "answer": "on"
-      },
-      {
-            "id": "p4015_ex2_3",
-            "type": "fill",
-            "top": 67,
-            "left": 14,
-            "width": 6.5,
-            "height": 1.9,
-            "x": 14,
-            "y": 67,
-            "w": 6.5,
-            "h": 1.9,
-            "correct": [
-                  "far",
-                  "Far"
-            ],
-            "answer": "far"
-      },
-      {
-            "id": "p4015_ex2_4",
-            "type": "fill",
-            "top": 68.8,
-            "left": 31.5,
-            "width": 7.5,
-            "height": 1.9,
-            "x": 31.5,
-            "y": 68.8,
-            "w": 7.5,
-            "h": 1.9,
-            "correct": [
-                  "walk",
-                  "Walk"
-            ],
-            "answer": "walk"
-      },
-      {
-            "id": "p4015_ex2_5",
-            "type": "fill",
-            "top": 73.8,
-            "left": 29,
-            "width": 7,
-            "height": 1.9,
-            "x": 29,
-            "y": 73.8,
-            "w": 7,
-            "h": 1.9,
-            "correct": [
-                  "turn",
-                  "Turn"
-            ],
-            "answer": "turn"
-      },
-      {
-            "id": "p4015_ex2_6",
-            "type": "fill",
-            "top": 75.5,
-            "left": 19.5,
-            "width": 7.5,
-            "height": 1.9,
-            "x": 19.5,
-            "y": 75.5,
-            "w": 7.5,
-            "h": 1.9,
-            "correct": [
-                  "stairs",
-                  "Stairs"
-            ],
-            "answer": "stairs"
-      },
-      {
-            "id": "p4015_ex2_7",
-            "type": "fill",
-            "top": 75.5,
-            "left": 36,
-            "width": 6.5,
-            "height": 1.9,
-            "x": 36,
-            "y": 75.5,
-            "w": 6.5,
-            "h": 1.9,
-            "correct": [
-                  "see",
-                  "See"
-            ],
-            "answer": "see"
-      },
-      {
-            "id": "p4015_ex2_8",
-            "type": "fill",
-            "top": 78.5,
-            "left": 16.5,
-            "width": 6.5,
-            "height": 1.9,
-            "x": 16.5,
-            "y": 78.5,
-            "w": 6.5,
-            "h": 1.9,
-            "correct": [
-                  "it's",
-                  "It's",
-                  "is"
-            ],
-            "answer": "it's"
-      },
-      {
             "id": "p4015_ex4_2",
             "type": "fill",
             "top": 63.6,
@@ -84911,27 +85263,219 @@
                   "Thx"
             ],
             "answer": "Thnx"
+      },
+      {
+            "id": "p4015_ex2_2_opt1",
+            "type": "choose",
+            "group": "p4015_ex2_2",
+            "text": "on",
+            "correct": true,
+            "top": 65.1,
+            "left": 16.5,
+            "width": 2.8,
+            "height": 1.9,
+            "x": 16.5,
+            "y": 65.1,
+            "w": 2.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_2_opt2",
+            "type": "choose",
+            "group": "p4015_ex2_2",
+            "text": "in",
+            "correct": false,
+            "top": 65.1,
+            "left": 20,
+            "width": 2.5,
+            "height": 1.9,
+            "x": 20,
+            "y": 65.1,
+            "w": 2.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_3_opt1",
+            "type": "choose",
+            "group": "p4015_ex2_3",
+            "text": "far",
+            "correct": true,
+            "top": 67,
+            "left": 14,
+            "width": 3,
+            "height": 1.9,
+            "x": 14,
+            "y": 67,
+            "w": 3,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_3_opt2",
+            "type": "choose",
+            "group": "p4015_ex2_3",
+            "text": "further",
+            "correct": false,
+            "top": 67,
+            "left": 17.5,
+            "width": 5.5,
+            "height": 1.9,
+            "x": 17.5,
+            "y": 67,
+            "w": 5.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_4_opt1",
+            "type": "choose",
+            "group": "p4015_ex2_4",
+            "text": "walk",
+            "correct": true,
+            "top": 68.8,
+            "left": 31.5,
+            "width": 4.2,
+            "height": 1.9,
+            "x": 31.5,
+            "y": 68.8,
+            "w": 4.2,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_4_opt2",
+            "type": "choose",
+            "group": "p4015_ex2_4",
+            "text": "walking",
+            "correct": false,
+            "top": 68.8,
+            "left": 36.5,
+            "width": 6,
+            "height": 1.9,
+            "x": 36.5,
+            "y": 68.8,
+            "w": 6,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_5_opt1",
+            "type": "choose",
+            "group": "p4015_ex2_5",
+            "text": "take",
+            "correct": false,
+            "top": 73.8,
+            "left": 29,
+            "width": 3.8,
+            "height": 1.9,
+            "x": 29,
+            "y": 73.8,
+            "w": 3.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_5_opt2",
+            "type": "choose",
+            "group": "p4015_ex2_5",
+            "text": "turn",
+            "correct": true,
+            "top": 73.8,
+            "left": 33.5,
+            "width": 3.8,
+            "height": 1.9,
+            "x": 33.5,
+            "y": 73.8,
+            "w": 3.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_6_opt1",
+            "type": "choose",
+            "group": "p4015_ex2_6",
+            "text": "stair",
+            "correct": false,
+            "top": 75.5,
+            "left": 19.5,
+            "width": 4,
+            "height": 1.9,
+            "x": 19.5,
+            "y": 75.5,
+            "w": 4,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_6_opt2",
+            "type": "choose",
+            "group": "p4015_ex2_6",
+            "text": "stairs",
+            "correct": true,
+            "top": 75.5,
+            "left": 24,
+            "width": 4.5,
+            "height": 1.9,
+            "x": 24,
+            "y": 75.5,
+            "w": 4.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_7_opt1",
+            "type": "choose",
+            "group": "p4015_ex2_7",
+            "text": "see",
+            "correct": true,
+            "top": 75.5,
+            "left": 36,
+            "width": 3.5,
+            "height": 1.9,
+            "x": 36,
+            "y": 75.5,
+            "w": 3.5,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_7_opt2",
+            "type": "choose",
+            "group": "p4015_ex2_7",
+            "text": "watch",
+            "correct": false,
+            "top": 75.5,
+            "left": 40,
+            "width": 4.8,
+            "height": 1.9,
+            "x": 40,
+            "y": 75.5,
+            "w": 4.8,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_8_opt1",
+            "type": "choose",
+            "group": "p4015_ex2_8",
+            "text": "it's",
+            "correct": true,
+            "top": 78.5,
+            "left": 16.5,
+            "width": 3,
+            "height": 1.9,
+            "x": 16.5,
+            "y": 78.5,
+            "w": 3,
+            "h": 1.9
+      },
+      {
+            "id": "p4015_ex2_8_opt2",
+            "type": "choose",
+            "group": "p4015_ex2_8",
+            "text": "there's",
+            "correct": false,
+            "top": 78.5,
+            "left": 20,
+            "width": 5.5,
+            "height": 1.9,
+            "x": 20,
+            "y": 78.5,
+            "w": 5.5,
+            "h": 1.9
       }
 ],
     "4016": [
-      {
-            "id": "p4016_ex1_1",
-            "type": "fill",
-            "top": 58.5,
-            "left": 26.5,
-            "width": 14,
-            "height": 2.1,
-            "x": 26.5,
-            "y": 58.5,
-            "w": 14,
-            "h": 2.1,
-            "correct": [
-                  "3",
-                  "water pollution",
-                  "3 water pollution"
-            ],
-            "answer": "water pollution"
-      },
       {
             "id": "p4016_ex3_1",
             "type": "fill",
@@ -85033,6 +85577,66 @@
                   "seven"
             ],
             "answer": "7"
+      },
+      {
+            "id": "p4016_ex1_opt1",
+            "type": "choose",
+            "group": "p4016_ex1",
+            "text": "1 air pollution",
+            "correct": false,
+            "top": 58.5,
+            "left": 10.5,
+            "width": 12,
+            "height": 2,
+            "x": 10.5,
+            "y": 58.5,
+            "w": 12,
+            "h": 2
+      },
+      {
+            "id": "p4016_ex1_opt2",
+            "type": "choose",
+            "group": "p4016_ex1",
+            "text": "2 noise pollution",
+            "correct": false,
+            "top": 60.5,
+            "left": 10.5,
+            "width": 13,
+            "height": 2,
+            "x": 10.5,
+            "y": 60.5,
+            "w": 13,
+            "h": 2
+      },
+      {
+            "id": "p4016_ex1_opt3",
+            "type": "choose",
+            "group": "p4016_ex1",
+            "text": "3 water pollution",
+            "correct": true,
+            "top": 58.5,
+            "left": 26.5,
+            "width": 13.5,
+            "height": 2,
+            "x": 26.5,
+            "y": 58.5,
+            "w": 13.5,
+            "h": 2
+      },
+      {
+            "id": "p4016_ex1_opt4",
+            "type": "choose",
+            "group": "p4016_ex1",
+            "text": "4 land pollution",
+            "correct": false,
+            "top": 60.5,
+            "left": 26.5,
+            "width": 13,
+            "height": 2,
+            "x": 26.5,
+            "y": 60.5,
+            "w": 13,
+            "h": 2
       }
 ],
     "4017": [
@@ -85122,142 +85726,6 @@
                   "Often"
             ],
             "answer": "often"
-      },
-      {
-            "id": "p4017_ex2_1",
-            "type": "fill",
-            "top": 46.8,
-            "left": 20,
-            "width": 10.5,
-            "height": 1.8,
-            "x": 20,
-            "y": 46.8,
-            "w": 10.5,
-            "h": 1.8,
-            "correct": [
-                  "Are you making",
-                  "are you making"
-            ],
-            "answer": "Are you making"
-      },
-      {
-            "id": "p4017_ex2_2",
-            "type": "fill",
-            "top": 48.5,
-            "left": 23.5,
-            "width": 6.5,
-            "height": 1.8,
-            "x": 23.5,
-            "y": 48.5,
-            "w": 6.5,
-            "h": 1.8,
-            "correct": [
-                  "want",
-                  "Want"
-            ],
-            "answer": "want"
-      },
-      {
-            "id": "p4017_ex2_3",
-            "type": "fill",
-            "top": 52,
-            "left": 25,
-            "width": 6.5,
-            "height": 1.8,
-            "x": 25,
-            "y": 52,
-            "w": 6.5,
-            "h": 1.8,
-            "correct": [
-                  "leaves",
-                  "Leaves"
-            ],
-            "answer": "leaves"
-      },
-      {
-            "id": "p4017_ex2_4",
-            "type": "fill",
-            "top": 53.7,
-            "left": 41.5,
-            "width": 5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 53.7,
-            "w": 5,
-            "h": 1.8,
-            "correct": [
-                  "don't arrive",
-                  "dont arrive"
-            ],
-            "answer": "don't arrive"
-      },
-      {
-            "id": "p4017_ex2_5",
-            "type": "fill",
-            "top": 55.4,
-            "left": 38.5,
-            "width": 6,
-            "height": 1.8,
-            "x": 38.5,
-            "y": 55.4,
-            "w": 6,
-            "h": 1.8,
-            "correct": [
-                  "lasts",
-                  "Lasts"
-            ],
-            "answer": "lasts"
-      },
-      {
-            "id": "p4017_ex2_6",
-            "type": "fill",
-            "top": 57.1,
-            "left": 31,
-            "width": 9,
-            "height": 1.8,
-            "x": 31,
-            "y": 57.1,
-            "w": 9,
-            "h": 1.8,
-            "correct": [
-                  "are offering",
-                  "'re offering"
-            ],
-            "answer": "are offering"
-      },
-      {
-            "id": "p4017_ex2_7",
-            "type": "fill",
-            "top": 58.8,
-            "left": 42,
-            "width": 4.5,
-            "height": 1.8,
-            "x": 42,
-            "y": 58.8,
-            "w": 4.5,
-            "h": 1.8,
-            "correct": [
-                  "are doing",
-                  "'re doing"
-            ],
-            "answer": "are doing"
-      },
-      {
-            "id": "p4017_ex2_8",
-            "type": "fill",
-            "top": 60.5,
-            "left": 38.5,
-            "width": 7.5,
-            "height": 1.8,
-            "x": 38.5,
-            "y": 60.5,
-            "w": 7.5,
-            "h": 1.8,
-            "correct": [
-                  "are looking",
-                  "'re looking"
-            ],
-            "answer": "are looking"
       },
       {
             "id": "p4017_ex3_2",
@@ -85618,6 +86086,246 @@
                   "I am really"
             ],
             "answer": "I'm really"
+      },
+      {
+            "id": "p4017_ex2_1_opt1",
+            "type": "choose",
+            "group": "p4017_ex2_1",
+            "text": "Do you make",
+            "correct": false,
+            "top": 46.8,
+            "left": 10.5,
+            "width": 9,
+            "height": 1.8,
+            "x": 10.5,
+            "y": 46.8,
+            "w": 9,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_1_opt2",
+            "type": "choose",
+            "group": "p4017_ex2_1",
+            "text": "Are you making",
+            "correct": true,
+            "top": 46.8,
+            "left": 20,
+            "width": 10.5,
+            "height": 1.8,
+            "x": 20,
+            "y": 46.8,
+            "w": 10.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_2_opt1",
+            "type": "choose",
+            "group": "p4017_ex2_2",
+            "text": "want",
+            "correct": true,
+            "top": 48.5,
+            "left": 23.5,
+            "width": 4.5,
+            "height": 1.8,
+            "x": 23.5,
+            "y": 48.5,
+            "w": 4.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_2_opt2",
+            "type": "choose",
+            "group": "p4017_ex2_2",
+            "text": "are wanting",
+            "correct": false,
+            "top": 48.5,
+            "left": 29,
+            "width": 9,
+            "height": 1.8,
+            "x": 29,
+            "y": 48.5,
+            "w": 9,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_3_opt1",
+            "type": "choose",
+            "group": "p4017_ex2_3",
+            "text": "leaves",
+            "correct": true,
+            "top": 52,
+            "left": 25,
+            "width": 5,
+            "height": 1.8,
+            "x": 25,
+            "y": 52,
+            "w": 5,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_3_opt2",
+            "type": "choose",
+            "group": "p4017_ex2_3",
+            "text": "is leaving",
+            "correct": false,
+            "top": 52,
+            "left": 31,
+            "width": 7,
+            "height": 1.8,
+            "x": 31,
+            "y": 52,
+            "w": 7,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_4_opt1",
+            "type": "choose",
+            "group": "p4017_ex2_4",
+            "text": "don't arrive",
+            "correct": true,
+            "top": 52,
+            "left": 41.5,
+            "width": 5.5,
+            "height": 1.8,
+            "x": 41.5,
+            "y": 52,
+            "w": 5.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_4_opt2",
+            "type": "choose",
+            "group": "p4017_ex2_4",
+            "text": "aren't arriving",
+            "correct": false,
+            "top": 53.7,
+            "left": 26,
+            "width": 9.5,
+            "height": 1.8,
+            "x": 26,
+            "y": 53.7,
+            "w": 9.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_5_opt1",
+            "type": "choose",
+            "group": "p4017_ex2_5",
+            "text": "lasts",
+            "correct": true,
+            "top": 55.4,
+            "left": 38.5,
+            "width": 4.5,
+            "height": 1.8,
+            "x": 38.5,
+            "y": 55.4,
+            "w": 4.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_5_opt2",
+            "type": "choose",
+            "group": "p4017_ex2_5",
+            "text": "is lasting",
+            "correct": false,
+            "top": 57.1,
+            "left": 22,
+            "width": 7,
+            "height": 1.8,
+            "x": 22,
+            "y": 57.1,
+            "w": 7,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_6_opt1",
+            "type": "choose",
+            "group": "p4017_ex2_6",
+            "text": "offer",
+            "correct": false,
+            "top": 57.1,
+            "left": 31,
+            "width": 4,
+            "height": 1.8,
+            "x": 31,
+            "y": 57.1,
+            "w": 4,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_6_opt2",
+            "type": "choose",
+            "group": "p4017_ex2_6",
+            "text": "are offering",
+            "correct": true,
+            "top": 57.1,
+            "left": 36,
+            "width": 9,
+            "height": 1.8,
+            "x": 36,
+            "y": 57.1,
+            "w": 9,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_7_opt1",
+            "type": "choose",
+            "group": "p4017_ex2_7",
+            "text": "do",
+            "correct": false,
+            "top": 58.8,
+            "left": 42,
+            "width": 2.8,
+            "height": 1.8,
+            "x": 42,
+            "y": 58.8,
+            "w": 2.8,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_7_opt2",
+            "type": "choose",
+            "group": "p4017_ex2_7",
+            "text": "are doing",
+            "correct": true,
+            "top": 60.5,
+            "left": 22,
+            "width": 7,
+            "height": 1.8,
+            "x": 22,
+            "y": 60.5,
+            "w": 7,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_8_opt1",
+            "type": "choose",
+            "group": "p4017_ex2_8",
+            "text": "look",
+            "correct": false,
+            "top": 60.5,
+            "left": 38.5,
+            "width": 3.8,
+            "height": 1.8,
+            "x": 38.5,
+            "y": 60.5,
+            "w": 3.8,
+            "h": 1.8
+      },
+      {
+            "id": "p4017_ex2_8_opt2",
+            "type": "choose",
+            "group": "p4017_ex2_8",
+            "text": "are looking",
+            "correct": true,
+            "top": 60.5,
+            "left": 43,
+            "width": 4.5,
+            "height": 1.8,
+            "x": 43,
+            "y": 60.5,
+            "w": 4.5,
+            "h": 1.8
       }
 ],
     "4018": [
@@ -85641,12 +86349,12 @@
       {
             "id": "p4018_ex1_3",
             "type": "fill",
-            "top": 39.8,
+            "top": 40,
             "left": 41.5,
             "width": 9.5,
             "height": 1.8,
             "x": 41.5,
-            "y": 39.8,
+            "y": 40,
             "w": 9.5,
             "h": 1.8,
             "correct": [
@@ -85658,12 +86366,12 @@
       {
             "id": "p4018_ex1_4",
             "type": "fill",
-            "top": 41.5,
+            "top": 41.9,
             "left": 41.5,
             "width": 9.5,
             "height": 1.8,
             "x": 41.5,
-            "y": 41.5,
+            "y": 41.9,
             "w": 9.5,
             "h": 1.8,
             "correct": [
@@ -85676,12 +86384,12 @@
       {
             "id": "p4018_ex1_5",
             "type": "fill",
-            "top": 43.2,
+            "top": 43.8,
             "left": 41.5,
             "width": 9.5,
             "height": 1.8,
             "x": 41.5,
-            "y": 43.2,
+            "y": 43.8,
             "w": 9.5,
             "h": 1.8,
             "correct": [
@@ -85693,12 +86401,12 @@
       {
             "id": "p4018_ex1_6",
             "type": "fill",
-            "top": 44.9,
+            "top": 45.7,
             "left": 41.5,
             "width": 9.5,
             "height": 1.8,
             "x": 41.5,
-            "y": 44.9,
+            "y": 45.7,
             "w": 9.5,
             "h": 1.8,
             "correct": [
@@ -85710,12 +86418,12 @@
       {
             "id": "p4018_ex1_7",
             "type": "fill",
-            "top": 46.6,
+            "top": 47.6,
             "left": 41.5,
             "width": 9.5,
             "height": 1.8,
             "x": 41.5,
-            "y": 46.6,
+            "y": 47.6,
             "w": 9.5,
             "h": 1.8,
             "correct": [
@@ -85727,12 +86435,12 @@
       {
             "id": "p4018_ex1_8",
             "type": "fill",
-            "top": 48.3,
+            "top": 49.5,
             "left": 41.5,
             "width": 9.5,
             "height": 1.8,
             "x": 41.5,
-            "y": 48.3,
+            "y": 49.5,
             "w": 9.5,
             "h": 1.8,
             "correct": [
@@ -85744,12 +86452,12 @@
       {
             "id": "p4018_ex1_9",
             "type": "fill",
-            "top": 51.6,
+            "top": 51.4,
             "left": 41.5,
             "width": 9.5,
             "height": 1.8,
             "x": 41.5,
-            "y": 51.6,
+            "y": 51.4,
             "w": 9.5,
             "h": 1.8,
             "correct": [
@@ -85759,152 +86467,331 @@
             "answer": "jump"
       },
       {
-            "id": "p4018_ex2_1",
-            "type": "fill",
-            "top": 58.9,
-            "left": 12.5,
-            "width": 6,
+            "id": "p4018_ex2_2_opt1",
+            "type": "choose",
+            "group": "p4018_ex2_2",
+            "text": "backwards",
+            "correct": false,
+            "top": 61.2,
+            "left": 14.5,
+            "width": 6.8,
             "height": 1.8,
-            "x": 12.5,
-            "y": 58.9,
-            "w": 6,
-            "h": 1.8,
-            "correct": [
-                  "over",
-                  "Over"
-            ],
-            "answer": "over"
+            "x": 14.5,
+            "y": 61.2,
+            "w": 6.8,
+            "h": 1.8
       },
       {
-            "id": "p4018_ex2_2",
-            "type": "fill",
-            "top": 62.2,
-            "left": 12.5,
-            "width": 6,
+            "id": "p4018_ex2_2_opt2",
+            "type": "choose",
+            "group": "p4018_ex2_2",
+            "text": "forward",
+            "correct": false,
+            "top": 61.2,
+            "left": 22,
+            "width": 5.5,
             "height": 1.8,
-            "x": 12.5,
-            "y": 62.2,
-            "w": 6,
-            "h": 1.8,
-            "correct": [
-                  "towards",
-                  "Towards"
-            ],
-            "answer": "towards"
+            "x": 22,
+            "y": 61.2,
+            "w": 5.5,
+            "h": 1.8
       },
       {
-            "id": "p4018_ex2_3",
-            "type": "fill",
-            "top": 65.5,
-            "left": 12.5,
-            "width": 6,
+            "id": "p4018_ex2_2_opt3",
+            "type": "choose",
+            "group": "p4018_ex2_2",
+            "text": "towards",
+            "correct": true,
+            "top": 61.2,
+            "left": 28.5,
+            "width": 5.5,
             "height": 1.8,
-            "x": 12.5,
-            "y": 65.5,
-            "w": 6,
-            "h": 1.8,
-            "correct": [
-                  "out of",
-                  "Out of"
-            ],
-            "answer": "out of"
+            "x": 28.5,
+            "y": 61.2,
+            "w": 5.5,
+            "h": 1.8
       },
       {
-            "id": "p4018_ex2_4",
-            "type": "fill",
-            "top": 68.8,
-            "left": 12.5,
-            "width": 6,
+            "id": "p4018_ex2_3_opt1",
+            "type": "choose",
+            "group": "p4018_ex2_3",
+            "text": "out of",
+            "correct": true,
+            "top": 64.9,
+            "left": 17.5,
+            "width": 4.8,
             "height": 1.8,
-            "x": 12.5,
-            "y": 68.8,
-            "w": 6,
-            "h": 1.8,
-            "correct": [
-                  "round and round",
-                  "round"
-            ],
-            "answer": "round and round"
+            "x": 17.5,
+            "y": 64.9,
+            "w": 4.8,
+            "h": 1.8
       },
       {
-            "id": "p4018_ex2_5",
-            "type": "fill",
-            "top": 72.1,
-            "left": 12.5,
-            "width": 6,
+            "id": "p4018_ex2_3_opt2",
+            "type": "choose",
+            "group": "p4018_ex2_3",
+            "text": "over",
+            "correct": false,
+            "top": 64.9,
+            "left": 23,
+            "width": 3.5,
             "height": 1.8,
-            "x": 12.5,
-            "y": 72.1,
-            "w": 6,
-            "h": 1.8,
-            "correct": [
-                  "through",
-                  "Through"
-            ],
-            "answer": "through"
+            "x": 23,
+            "y": 64.9,
+            "w": 3.5,
+            "h": 1.8
       },
       {
-            "id": "p4018_ex2_6",
-            "type": "fill",
-            "top": 75.4,
-            "left": 12.5,
-            "width": 6,
+            "id": "p4018_ex2_3_opt3",
+            "type": "choose",
+            "group": "p4018_ex2_3",
+            "text": "through",
+            "correct": false,
+            "top": 64.9,
+            "left": 27.5,
+            "width": 5.5,
             "height": 1.8,
-            "x": 12.5,
-            "y": 75.4,
-            "w": 6,
-            "h": 1.8,
-            "correct": [
-                  "backwards",
-                  "Backwards"
-            ],
-            "answer": "backwards"
+            "x": 27.5,
+            "y": 64.9,
+            "w": 5.5,
+            "h": 1.8
       },
       {
-            "id": "p4018_ex2_7",
-            "type": "fill",
-            "top": 78.7,
-            "left": 12.5,
-            "width": 6,
+            "id": "p4018_ex2_4_opt1",
+            "type": "choose",
+            "group": "p4018_ex2_4",
+            "text": "along",
+            "correct": false,
+            "top": 68,
+            "left": 16.5,
+            "width": 4,
             "height": 1.8,
-            "x": 12.5,
-            "y": 78.7,
-            "w": 6,
-            "h": 1.8,
-            "correct": [
-                  "round and round",
-                  "round"
-            ],
-            "answer": "round and round"
+            "x": 16.5,
+            "y": 68,
+            "w": 4,
+            "h": 1.8
       },
       {
-            "id": "p4018_ex2_8",
-            "type": "fill",
-            "top": 82,
-            "left": 12.5,
+            "id": "p4018_ex2_4_opt2",
+            "type": "choose",
+            "group": "p4018_ex2_4",
+            "text": "into",
+            "correct": false,
+            "top": 68,
+            "left": 21,
+            "width": 3.2,
+            "height": 1.8,
+            "x": 21,
+            "y": 68,
+            "w": 3.2,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_4_opt3",
+            "type": "choose",
+            "group": "p4018_ex2_4",
+            "text": "round and round",
+            "correct": true,
+            "top": 68,
+            "left": 25,
+            "width": 11.5,
+            "height": 1.8,
+            "x": 25,
+            "y": 68,
+            "w": 11.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_5_opt1",
+            "type": "choose",
+            "group": "p4018_ex2_5",
+            "text": "forward",
+            "correct": false,
+            "top": 71,
+            "left": 22.5,
+            "width": 5.5,
+            "height": 1.8,
+            "x": 22.5,
+            "y": 71,
+            "w": 5.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_5_opt2",
+            "type": "choose",
+            "group": "p4018_ex2_5",
+            "text": "out of",
+            "correct": false,
+            "top": 71,
+            "left": 28.5,
+            "width": 4.8,
+            "height": 1.8,
+            "x": 28.5,
+            "y": 71,
+            "w": 4.8,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_5_opt3",
+            "type": "choose",
+            "group": "p4018_ex2_5",
+            "text": "through",
+            "correct": true,
+            "top": 71,
+            "left": 34,
+            "width": 5.5,
+            "height": 1.8,
+            "x": 34,
+            "y": 71,
+            "w": 5.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_6_opt1",
+            "type": "choose",
+            "group": "p4018_ex2_6",
+            "text": "backwards",
+            "correct": true,
+            "top": 75.8,
+            "left": 9.5,
+            "width": 7.2,
+            "height": 1.8,
+            "x": 9.5,
+            "y": 75.8,
+            "w": 7.2,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_6_opt2",
+            "type": "choose",
+            "group": "p4018_ex2_6",
+            "text": "forwards",
+            "correct": false,
+            "top": 75.8,
+            "left": 17.5,
+            "width": 6.2,
+            "height": 1.8,
+            "x": 17.5,
+            "y": 75.8,
+            "w": 6.2,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_6_opt3",
+            "type": "choose",
+            "group": "p4018_ex2_6",
+            "text": "towards",
+            "correct": false,
+            "top": 75.8,
+            "left": 24.5,
             "width": 6,
             "height": 1.8,
-            "x": 12.5,
-            "y": 82,
+            "x": 24.5,
+            "y": 75.8,
             "w": 6,
-            "h": 1.8,
-            "correct": [
-                  "along",
-                  "Along"
-            ],
-            "answer": "along"
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_7_opt1",
+            "type": "choose",
+            "group": "p4018_ex2_7",
+            "text": "into",
+            "correct": false,
+            "top": 78.8,
+            "left": 41.5,
+            "width": 3.5,
+            "height": 1.8,
+            "x": 41.5,
+            "y": 78.8,
+            "w": 3.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_7_opt2",
+            "type": "choose",
+            "group": "p4018_ex2_7",
+            "text": "round and round",
+            "correct": true,
+            "top": 80.6,
+            "left": 9.5,
+            "width": 11.5,
+            "height": 1.8,
+            "x": 9.5,
+            "y": 80.6,
+            "w": 11.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_7_opt3",
+            "type": "choose",
+            "group": "p4018_ex2_7",
+            "text": "out of",
+            "correct": false,
+            "top": 80.6,
+            "left": 22,
+            "width": 4.8,
+            "height": 1.8,
+            "x": 22,
+            "y": 80.6,
+            "w": 4.8,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_8_opt1",
+            "type": "choose",
+            "group": "p4018_ex2_8",
+            "text": "along",
+            "correct": true,
+            "top": 83.2,
+            "left": 32,
+            "width": 4.2,
+            "height": 1.8,
+            "x": 32,
+            "y": 83.2,
+            "w": 4.2,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_8_opt2",
+            "type": "choose",
+            "group": "p4018_ex2_8",
+            "text": "into",
+            "correct": false,
+            "top": 83.2,
+            "left": 37,
+            "width": 3.5,
+            "height": 1.8,
+            "x": 37,
+            "y": 83.2,
+            "w": 3.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4018_ex2_8_opt3",
+            "type": "choose",
+            "group": "p4018_ex2_8",
+            "text": "through",
+            "correct": false,
+            "top": 83.2,
+            "left": 41.5,
+            "width": 5.5,
+            "height": 1.8,
+            "x": 41.5,
+            "y": 83.2,
+            "w": 5.5,
+            "h": 1.8
       },
       {
             "id": "p4018_ex3_2",
             "type": "fill",
-            "top": 35.8,
-            "left": 60.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 60.5,
-            "y": 35.8,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 47.1,
+            "left": 75,
+            "width": 15,
+            "height": 1.9,
+            "x": 75,
+            "y": 47.1,
+            "w": 15,
+            "h": 1.9,
             "correct": [
                   "along",
                   "Along"
@@ -85914,14 +86801,14 @@
       {
             "id": "p4018_ex3_3",
             "type": "fill",
-            "top": 37.8,
-            "left": 60.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 60.5,
-            "y": 37.8,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 49.6,
+            "left": 56.5,
+            "width": 15,
+            "height": 1.9,
+            "x": 56.5,
+            "y": 49.6,
+            "w": 15,
+            "h": 1.9,
             "correct": [
                   "through",
                   "Through"
@@ -85931,31 +86818,32 @@
       {
             "id": "p4018_ex3_4",
             "type": "fill",
-            "top": 41.2,
-            "left": 60.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 60.5,
-            "y": 41.2,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 53,
+            "left": 56.5,
+            "width": 15,
+            "height": 1.9,
+            "x": 56.5,
+            "y": 53,
+            "w": 15,
+            "h": 1.9,
             "correct": [
-                  "towards",
-                  "Towards"
+                  "forward",
+                  "Forward",
+                  "towards"
             ],
-            "answer": "towards"
+            "answer": "forward"
       },
       {
             "id": "p4018_ex3_5",
             "type": "fill",
-            "top": 45.4,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 45.4,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 56.5,
+            "left": 70,
+            "width": 15,
+            "height": 1.9,
+            "x": 70,
+            "y": 56.5,
+            "w": 15,
+            "h": 1.9,
             "correct": [
                   "out of",
                   "Out of"
@@ -85965,31 +86853,32 @@
       {
             "id": "p4018_ex3_6",
             "type": "fill",
-            "top": 48.8,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 48.8,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 58,
+            "left": 76,
+            "width": 15,
+            "height": 1.9,
+            "x": 76,
+            "y": 58,
+            "w": 15,
+            "h": 1.9,
             "correct": [
-                  "over",
-                  "Over"
+                  "backwards",
+                  "Backwards",
+                  "backward"
             ],
-            "answer": "over"
+            "answer": "backwards"
       },
       {
             "id": "p4018_ex3_7",
             "type": "fill",
-            "top": 51.2,
-            "left": 65.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 65.5,
-            "y": 51.2,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 59.7,
+            "left": 67.5,
+            "width": 15,
+            "height": 1.9,
+            "x": 67.5,
+            "y": 59.7,
+            "w": 15,
+            "h": 1.9,
             "correct": [
                   "over",
                   "Over"
@@ -85999,85 +86888,171 @@
       {
             "id": "p4018_ex3_8",
             "type": "fill",
-            "top": 54.4,
-            "left": 65.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 65.5,
-            "y": 54.4,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 61.4,
+            "left": 76,
+            "width": 15,
+            "height": 1.9,
+            "x": 76,
+            "y": 61.4,
+            "w": 15,
+            "h": 1.9,
             "correct": [
-                  "backwards",
-                  "Backwards"
+                  "towards",
+                  "Towards"
             ],
-            "answer": "backwards"
+            "answer": "towards"
       }
 ],
     "4019": [
       {
             "id": "p4019_ex4_2",
             "type": "fill",
-            "top": 24.3,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 24.3,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 27.2,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 27.2,
+            "w": 37,
+            "h": 1.9,
             "correct": [
-                  "grew up",
-                  "Grew up"
+                  "The sun rose two hours ago.",
+                  "The sun rose two hours ago",
+                  "rose two hours ago"
             ],
-            "answer": "grew up"
+            "answer": "The sun rose two hours ago."
       },
       {
             "id": "p4019_ex4_3",
             "type": "fill",
-            "top": 27.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 27.7,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 31,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 31,
+            "w": 37,
+            "h": 1.9,
             "correct": [
-                  "learned",
-                  "learnt",
-                  "Learned",
-                  "Learnt"
+                  "Did you go on holiday in the summer?",
+                  "Did you go on holiday in the summer"
             ],
-            "answer": "learned"
+            "answer": "Did you go on holiday in the summer?"
       },
       {
             "id": "p4019_ex4_4",
             "type": "fill",
-            "top": 31,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 31,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 35.8,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 35.8,
+            "w": 37,
+            "h": 1.9,
             "correct": [
-                  "left",
-                  "Left"
+                  "We had a family meal the day before yesterday.",
+                  "We had a family meal the day before yesterday"
             ],
-            "answer": "left"
+            "answer": "We had a family meal the day before yesterday."
       },
       {
             "id": "p4019_ex4_5",
             "type": "fill",
-            "top": 34.4,
-            "left": 81.5,
-            "width": 9.5,
+            "top": 39.6,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 39.6,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "I didn't climb trees when I was young.",
+                  "I didn't climb trees when I was young",
+                  "didn't climb trees when I was young"
+            ],
+            "answer": "I didn't climb trees when I was young."
+      },
+      {
+            "id": "p4019_ex4_6",
+            "type": "fill",
+            "top": 43.4,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 43.4,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "My friends went clubbing three days ago.",
+                  "My friends went clubbing three days ago"
+            ],
+            "answer": "My friends went clubbing three days ago."
+      },
+      {
+            "id": "p4019_ex4_7",
+            "type": "fill",
+            "top": 47.2,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 47.2,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "Did you spend time with relatives the other day?",
+                  "Did you spend time with relatives the other day"
+            ],
+            "answer": "Did you spend time with relatives the other day?"
+      },
+      {
+            "id": "p4019_ex4_8",
+            "type": "fill",
+            "top": 51,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 51,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "We didn't do housework on Tuesday.",
+                  "We didn't do housework on Tuesday",
+                  "We didn't do housework last Tuesday."
+            ],
+            "answer": "We didn't do housework on Tuesday."
+      },
+      {
+            "id": "p4019_ex6_2",
+            "type": "fill",
+            "top": 35.1,
+            "left": 67.5,
+            "width": 7,
             "height": 1.8,
-            "x": 81.5,
-            "y": 34.4,
-            "w": 9.5,
+            "x": 67.5,
+            "y": 35.1,
+            "w": 7,
+            "h": 1.8,
+            "correct": [
+                  "took off",
+                  "Took off"
+            ],
+            "answer": "took off"
+      },
+      {
+            "id": "p4019_ex6_3",
+            "type": "fill",
+            "top": 36.8,
+            "left": 79.5,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 79.5,
+            "y": 36.8,
+            "w": 7.5,
             "h": 1.8,
             "correct": [
                   "flew",
@@ -86086,83 +87061,14 @@
             "answer": "flew"
       },
       {
-            "id": "p4019_ex4_6",
+            "id": "p4019_ex6_4",
             "type": "fill",
-            "top": 37.8,
-            "left": 81.5,
+            "top": 40.2,
+            "left": 62,
             "width": 9.5,
             "height": 1.8,
-            "x": 81.5,
-            "y": 37.8,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "travelled",
-                  "traveled",
-                  "Travelled"
-            ],
-            "answer": "travelled"
-      },
-      {
-            "id": "p4019_ex4_7",
-            "type": "fill",
-            "top": 41.2,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 41.2,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "saw",
-                  "Saw"
-            ],
-            "answer": "saw"
-      },
-      {
-            "id": "p4019_ex4_8",
-            "type": "fill",
-            "top": 44.5,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 44.5,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "went",
-                  "Went"
-            ],
-            "answer": "went"
-      },
-      {
-            "id": "p4019_ex4_9",
-            "type": "fill",
-            "top": 47.9,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 47.9,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "reached",
-                  "Reached"
-            ],
-            "answer": "reached"
-      },
-      {
-            "id": "p4019_ex4_10",
-            "type": "fill",
-            "top": 51.3,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 51.3,
+            "x": 62,
+            "y": 40.2,
             "w": 9.5,
             "h": 1.8,
             "correct": [
@@ -86172,444 +87078,49 @@
             "answer": "parachuted"
       },
       {
-            "id": "p4019_ex4_11",
+            "id": "p4019_ex6_5",
             "type": "fill",
-            "top": 54.7,
-            "left": 81.5,
-            "width": 9.5,
+            "top": 41.9,
+            "left": 69.5,
+            "width": 8.5,
             "height": 1.8,
-            "x": 81.5,
-            "y": 54.7,
-            "w": 9.5,
+            "x": 69.5,
+            "y": 41.9,
+            "w": 8.5,
             "h": 1.8,
             "correct": [
-                  "landed",
-                  "Landed"
+                  "didn't land",
+                  "did not land"
             ],
-            "answer": "landed"
+            "answer": "didn't land"
       },
       {
-            "id": "p4019_ex4_12",
+            "id": "p4019_ex6_6",
             "type": "fill",
-            "top": 58,
-            "left": 81.5,
-            "width": 9.5,
+            "top": 43.6,
+            "left": 66.5,
+            "width": 7.5,
             "height": 1.8,
-            "x": 81.5,
-            "y": 58,
-            "w": 9.5,
+            "x": 66.5,
+            "y": 43.6,
+            "w": 7.5,
             "h": 1.8,
             "correct": [
-                  "became",
-                  "Became"
+                  "finished",
+                  "Finished"
             ],
-            "answer": "became"
+            "answer": "finished"
       },
       {
-            "id": "p4019_ex4_13",
+            "id": "p4019_ex6_7",
             "type": "fill",
-            "top": 61.4,
-            "left": 81.5,
-            "width": 9.5,
+            "top": 46.8,
+            "left": 55,
+            "width": 8.5,
             "height": 1.8,
-            "x": 81.5,
-            "y": 61.4,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "died",
-                  "Died"
-            ],
-            "answer": "died"
-      },
-      {
-            "id": "p4019_ex5_2",
-            "type": "fill",
-            "top": 64,
-            "left": 11.5,
-            "width": 36,
-            "height": 1.8,
-            "x": 11.5,
-            "y": 64,
-            "w": 36,
-            "h": 1.8,
-            "correct": [
-                  "He didn't travel around the moon.",
-                  "He did not travel around the moon."
-            ],
-            "answer": "He didn't travel around the moon."
-      },
-      {
-            "id": "p4019_ex5_3",
-            "type": "fill",
-            "top": 70,
-            "left": 11.5,
-            "width": 36,
-            "height": 1.8,
-            "x": 11.5,
-            "y": 70,
-            "w": 36,
-            "h": 1.8,
-            "correct": [
-                  "He didn't visit other planets.",
-                  "He did not visit other planets."
-            ],
-            "answer": "He didn't visit other planets."
-      },
-      {
-            "id": "p4019_ex5_4",
-            "type": "fill",
-            "top": 76,
-            "left": 11.5,
-            "width": 36,
-            "height": 1.8,
-            "x": 11.5,
-            "y": 76,
-            "w": 36,
-            "h": 1.8,
-            "correct": [
-                  "He didn't walk in space.",
-                  "He did not walk in space."
-            ],
-            "answer": "He didn't walk in space."
-      },
-      {
-            "id": "p4019_ex5_5",
-            "type": "fill",
-            "top": 82,
-            "left": 11.5,
-            "width": 36,
-            "height": 1.8,
-            "x": 11.5,
-            "y": 82,
-            "w": 36,
-            "h": 1.8,
-            "correct": [
-                  "He didn't return to space again.",
-                  "He did not return to space again."
-            ],
-            "answer": "He didn't return to space again."
-      }
-],
-    "4020": [
-      {
-            "id": "p4020_ex1_1",
-            "type": "fill",
-            "top": 34.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 34.2,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "b",
-                  "B"
-            ],
-            "answer": "b"
-      },
-      {
-            "id": "p4020_ex1_2",
-            "type": "fill",
-            "top": 37.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 37.5,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "a",
-                  "A"
-            ],
-            "answer": "a"
-      },
-      {
-            "id": "p4020_ex1_3",
-            "type": "fill",
-            "top": 40.9,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 40.9,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "c",
-                  "C"
-            ],
-            "answer": "c"
-      },
-      {
-            "id": "p4020_ex1_4",
-            "type": "fill",
-            "top": 44.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 44.2,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "a",
-                  "A"
-            ],
-            "answer": "a"
-      },
-      {
-            "id": "p4020_ex1_5",
-            "type": "fill",
-            "top": 47.4,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 47.4,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "b",
-                  "B"
-            ],
-            "answer": "b"
-      },
-      {
-            "id": "p4020_ex1_6",
-            "type": "fill",
-            "top": 50.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 50.7,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "c",
-                  "C"
-            ],
-            "answer": "c"
-      },
-      {
-            "id": "p4020_ex2_1",
-            "type": "fill",
-            "top": 67,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 67,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "was walking",
-                  "were walking"
-            ],
-            "answer": "was walking"
-      },
-      {
-            "id": "p4020_ex2_2",
-            "type": "fill",
-            "top": 71,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 71,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "started",
-                  "Started"
-            ],
-            "answer": "started"
-      },
-      {
-            "id": "p4020_ex2_3",
-            "type": "fill",
-            "top": 75,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 75,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "was shining",
-                  "shone"
-            ],
-            "answer": "was shining"
-      },
-      {
-            "id": "p4020_ex2_4",
-            "type": "fill",
-            "top": 79,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 79,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "decided",
-                  "Decided"
-            ],
-            "answer": "decided"
-      }
-],
-    "4021": [
-      {
-            "id": "p4021_ex3_1",
-            "type": "fill",
-            "top": 15.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 15.7,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "were playing",
-                  "'re playing"
-            ],
-            "answer": "were playing"
-      },
-      {
-            "id": "p4021_ex3_2",
-            "type": "fill",
-            "top": 17.4,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 17.4,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "was having",
-                  "'s having"
-            ],
-            "answer": "was having"
-      },
-      {
-            "id": "p4021_ex3_3",
-            "type": "fill",
-            "top": 20.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 20.7,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "was sleeping",
-                  "'s sleeping"
-            ],
-            "answer": "was sleeping"
-      },
-      {
-            "id": "p4021_ex3_4",
-            "type": "fill",
-            "top": 24,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 24,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "were chatting",
-                  "'re chatting"
-            ],
-            "answer": "were chatting"
-      },
-      {
-            "id": "p4021_ex3_5",
-            "type": "fill",
-            "top": 27.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 27.2,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "was driving",
-                  "'s driving"
-            ],
-            "answer": "was driving"
-      },
-      {
-            "id": "p4021_ex3_6",
-            "type": "fill",
-            "top": 30.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 30.5,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "were watching",
-                  "'re watching"
-            ],
-            "answer": "were watching"
-      },
-      {
-            "id": "p4021_ex4_1",
-            "type": "fill",
-            "top": 45,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 45,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "broke",
-                  "Broke"
-            ],
-            "answer": "broke"
-      },
-      {
-            "id": "p4021_ex4_2",
-            "type": "fill",
-            "top": 51,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 51,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "was skiing",
-                  "were skiing"
-            ],
-            "answer": "was skiing"
-      },
-      {
-            "id": "p4021_ex4_3",
-            "type": "fill",
-            "top": 57,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 57,
-            "w": 9.5,
+            "x": 55,
+            "y": 46.8,
+            "w": 8.5,
             "h": 1.8,
             "correct": [
                   "saw",
@@ -86618,115 +87129,840 @@
             "answer": "saw"
       },
       {
-            "id": "p4021_ex4_4",
+            "id": "p4019_ex6_8",
             "type": "fill",
-            "top": 63,
-            "left": 81.5,
-            "width": 9.5,
+            "top": 48.4,
+            "left": 55,
+            "width": 8.5,
             "height": 1.8,
-            "x": 81.5,
-            "y": 63,
-            "w": 9.5,
+            "x": 55,
+            "y": 48.4,
+            "w": 8.5,
             "h": 1.8,
             "correct": [
-                  "was walking",
-                  "walked"
+                  "were",
+                  "Were"
             ],
-            "answer": "was walking"
+            "answer": "were"
+      },
+      {
+            "id": "p4019_ex6_9",
+            "type": "fill",
+            "top": 50.1,
+            "left": 65.5,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 65.5,
+            "y": 50.1,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "returned",
+                  "Returned"
+            ],
+            "answer": "returned"
+      },
+      {
+            "id": "p4019_ex6_10",
+            "type": "fill",
+            "top": 51.8,
+            "left": 58.5,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 58.5,
+            "y": 51.8,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "didn't retire",
+                  "did not retire"
+            ],
+            "answer": "didn't retire"
+      },
+      {
+            "id": "p4019_ex6_11",
+            "type": "fill",
+            "top": 53.5,
+            "left": 58.5,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 58.5,
+            "y": 53.5,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "travelled",
+                  "traveled"
+            ],
+            "answer": "travelled"
+      },
+      {
+            "id": "p4019_ex6_12",
+            "type": "fill",
+            "top": 55.2,
+            "left": 73,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 73,
+            "y": 55.2,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "worked",
+                  "Worked"
+            ],
+            "answer": "worked"
+      },
+      {
+            "id": "p4019_ex6_13",
+            "type": "fill",
+            "top": 58.6,
+            "left": 79.5,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 79.5,
+            "y": 58.6,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "helped",
+                  "Helped"
+            ],
+            "answer": "helped"
+      },
+      {
+            "id": "p4019_ex6_14",
+            "type": "fill",
+            "top": 60.3,
+            "left": 70,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 70,
+            "y": 60.3,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "crashed",
+                  "Crashed"
+            ],
+            "answer": "crashed"
+      },
+      {
+            "id": "p4019_ex6_15",
+            "type": "fill",
+            "top": 62,
+            "left": 70,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 70,
+            "y": 62,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "died",
+                  "Died"
+            ],
+            "answer": "died"
+      }
+],
+    "4020": [
+      {
+            "id": "p4020_ex1a_2",
+            "type": "fill",
+            "top": 34.6,
+            "left": 23.5,
+            "width": 7,
+            "height": 1.9,
+            "x": 23.5,
+            "y": 34.6,
+            "w": 7,
+            "h": 1.9,
+            "correct": [
+                  "angry",
+                  "Angry"
+            ],
+            "answer": "angry"
+      },
+      {
+            "id": "p4020_ex1a_3",
+            "type": "fill",
+            "top": 37.5,
+            "left": 14.5,
+            "width": 8.5,
+            "height": 1.9,
+            "x": 14.5,
+            "y": 37.5,
+            "w": 8.5,
+            "h": 1.9,
+            "correct": [
+                  "embarrassed",
+                  "Embarrassed"
+            ],
+            "answer": "embarrassed"
+      },
+      {
+            "id": "p4020_ex1a_4",
+            "type": "fill",
+            "top": 39.5,
+            "left": 16.5,
+            "width": 8.5,
+            "height": 1.9,
+            "x": 16.5,
+            "y": 39.5,
+            "w": 8.5,
+            "h": 1.9,
+            "correct": [
+                  "guilty",
+                  "Guilty"
+            ],
+            "answer": "guilty"
+      },
+      {
+            "id": "p4020_ex1a_5",
+            "type": "fill",
+            "top": 41.5,
+            "left": 17.5,
+            "width": 8.5,
+            "height": 1.9,
+            "x": 17.5,
+            "y": 41.5,
+            "w": 8.5,
+            "h": 1.9,
+            "correct": [
+                  "nervous",
+                  "Nervous"
+            ],
+            "answer": "nervous"
+      },
+      {
+            "id": "p4020_ex1a_6",
+            "type": "fill",
+            "top": 44.4,
+            "left": 21.5,
+            "width": 7.5,
+            "height": 1.9,
+            "x": 21.5,
+            "y": 44.4,
+            "w": 7.5,
+            "h": 1.9,
+            "correct": [
+                  "disappointed",
+                  "Disappointed"
+            ],
+            "answer": "disappointed"
+      },
+      {
+            "id": "p4020_ex1a_7",
+            "type": "fill",
+            "top": 47.3,
+            "left": 20.5,
+            "width": 7.5,
+            "height": 1.9,
+            "x": 20.5,
+            "y": 47.3,
+            "w": 7.5,
+            "h": 1.9,
+            "correct": [
+                  "confused",
+                  "Confused"
+            ],
+            "answer": "confused"
+      },
+      {
+            "id": "p4020_ex1a_8",
+            "type": "fill",
+            "top": 50.8,
+            "left": 16.5,
+            "width": 7,
+            "height": 1.9,
+            "x": 16.5,
+            "y": 50.8,
+            "w": 7,
+            "h": 1.9,
+            "correct": [
+                  "calm",
+                  "Calm"
+            ],
+            "answer": "calm"
+      },
+      {
+            "id": "p4020_ex1a_9",
+            "type": "fill",
+            "top": 52.8,
+            "left": 16.5,
+            "width": 7.5,
+            "height": 1.9,
+            "x": 16.5,
+            "y": 52.8,
+            "w": 7.5,
+            "h": 1.9,
+            "correct": [
+                  "lonely",
+                  "Lonely"
+            ],
+            "answer": "lonely"
+      },
+      {
+            "id": "p4020_ex1a_10",
+            "type": "fill",
+            "top": 54.8,
+            "left": 18,
+            "width": 8,
+            "height": 1.9,
+            "x": 18,
+            "y": 54.8,
+            "w": 8,
+            "h": 1.9,
+            "correct": [
+                  "anxious",
+                  "Anxious"
+            ],
+            "answer": "anxious"
+      },
+      {
+            "id": "p4020_ex1a_11",
+            "type": "fill",
+            "top": 57.7,
+            "left": 15.5,
+            "width": 7.5,
+            "height": 1.9,
+            "x": 15.5,
+            "y": 57.7,
+            "w": 7.5,
+            "h": 1.9,
+            "correct": [
+                  "pleased",
+                  "Pleased"
+            ],
+            "answer": "pleased"
+      },
+      {
+            "id": "p4020_ex2b",
+            "type": "fill",
+            "top": 82.3,
+            "left": 74,
+            "width": 18,
+            "height": 2,
+            "x": 74,
+            "y": 82.3,
+            "w": 18,
+            "h": 2,
+            "correct": [
+                  "in a good mood",
+                  "In a good mood",
+                  "good mood"
+            ],
+            "answer": "in a good mood"
+      }
+],
+    "4021": [
+      {
+            "id": "p4021_ex3_2",
+            "type": "fill",
+            "top": 17.7,
+            "left": 19.5,
+            "width": 15,
+            "height": 1.8,
+            "x": 19.5,
+            "y": 17.7,
+            "w": 15,
+            "h": 1.8,
+            "correct": [
+                  "were sleeping",
+                  "Were sleeping"
+            ],
+            "answer": "were sleeping"
+      },
+      {
+            "id": "p4021_ex3_3",
+            "type": "fill",
+            "top": 22.4,
+            "left": 10.5,
+            "width": 15,
+            "height": 1.8,
+            "x": 10.5,
+            "y": 22.4,
+            "w": 15,
+            "h": 1.8,
+            "correct": [
+                  "wasn't working",
+                  "was not working"
+            ],
+            "answer": "wasn't working"
+      },
+      {
+            "id": "p4021_ex3_4_were",
+            "type": "fill",
+            "top": 24.3,
+            "left": 14.5,
+            "width": 8,
+            "height": 1.8,
+            "x": 14.5,
+            "y": 24.3,
+            "w": 8,
+            "h": 1.8,
+            "correct": [
+                  "were",
+                  "Were"
+            ],
+            "answer": "were"
+      },
+      {
+            "id": "p4021_ex3_4_talk",
+            "type": "fill",
+            "top": 24.3,
+            "left": 25.5,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 25.5,
+            "y": 24.3,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "talking",
+                  "Talking"
+            ],
+            "answer": "talking"
+      },
+      {
+            "id": "p4021_ex3_5",
+            "type": "fill",
+            "top": 27.5,
+            "left": 14.5,
+            "width": 15,
+            "height": 1.8,
+            "x": 14.5,
+            "y": 27.5,
+            "w": 15,
+            "h": 1.8,
+            "correct": [
+                  "was driving",
+                  "Was driving"
+            ],
+            "answer": "was driving"
+      },
+      {
+            "id": "p4021_ex3_6",
+            "type": "fill",
+            "top": 30.7,
+            "left": 14.5,
+            "width": 14,
+            "height": 1.8,
+            "x": 14.5,
+            "y": 30.7,
+            "w": 14,
+            "h": 1.8,
+            "correct": [
+                  "weren't watching",
+                  "were not watching"
+            ],
+            "answer": "weren't watching"
+      },
+      {
+            "id": "p4021_ex3_7",
+            "type": "fill",
+            "top": 34,
+            "left": 12.5,
+            "width": 14,
+            "height": 1.8,
+            "x": 12.5,
+            "y": 34,
+            "w": 14,
+            "h": 1.8,
+            "correct": [
+                  "was living",
+                  "Was living"
+            ],
+            "answer": "was living"
+      },
+      {
+            "id": "p4021_ex3_8",
+            "type": "fill",
+            "top": 37.3,
+            "left": 14.5,
+            "width": 14,
+            "height": 1.8,
+            "x": 14.5,
+            "y": 37.3,
+            "w": 14,
+            "h": 1.8,
+            "correct": [
+                  "were dancing",
+                  "Were dancing"
+            ],
+            "answer": "were dancing"
+      },
+      {
+            "id": "p4021_ex4_2",
+            "type": "fill",
+            "top": 50.5,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 50.5,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "We were studying in the library when the fire started.",
+                  "We were studying in the library when the fire started"
+            ],
+            "answer": "We were studying in the library when the fire started."
+      },
+      {
+            "id": "p4021_ex4_3",
+            "type": "fill",
+            "top": 54,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 54,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "My partner broke his leg when he was playing football.",
+                  "My partner broke his leg when he was playing football"
+            ],
+            "answer": "My partner broke his leg when he was playing football."
+      },
+      {
+            "id": "p4021_ex4_4",
+            "type": "fill",
+            "top": 57.5,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 57.5,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "A thief took my bag when I was sitting in the park.",
+                  "A thief took my bag when I was sitting in the park"
+            ],
+            "answer": "A thief took my bag when I was sitting in the park."
+      },
+      {
+            "id": "p4021_ex4_5",
+            "type": "fill",
+            "top": 61,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 61,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "You were coming out of the supermarket when I saw you.",
+                  "You were coming out of the supermarket when I saw you"
+            ],
+            "answer": "You were coming out of the supermarket when I saw you."
+      },
+      {
+            "id": "p4021_ex4_6",
+            "type": "fill",
+            "top": 64.5,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 64.5,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "My friends were waiting outside the cinema when I arrived.",
+                  "My friends were waiting outside the cinema when I arrived"
+            ],
+            "answer": "My friends were waiting outside the cinema when I arrived."
+      },
+      {
+            "id": "p4021_ex5_2",
+            "type": "fill",
+            "top": 69.5,
+            "left": 23.5,
+            "width": 8.5,
+            "height": 1.8,
+            "x": 23.5,
+            "y": 69.5,
+            "w": 8.5,
+            "h": 1.8,
+            "correct": [
+                  "was doing",
+                  "Was doing"
+            ],
+            "answer": "was doing"
+      },
+      {
+            "id": "p4021_ex5_3",
+            "type": "fill",
+            "top": 71.2,
+            "left": 12,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 12,
+            "y": 71.2,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "thought",
+                  "Thought"
+            ],
+            "answer": "thought"
+      },
+      {
+            "id": "p4021_ex5_4",
+            "type": "fill",
+            "top": 71.2,
+            "left": 45.5,
+            "width": 8.5,
+            "height": 1.8,
+            "x": 45.5,
+            "y": 71.2,
+            "w": 8.5,
+            "h": 1.8,
+            "correct": [
+                  "didn't try",
+                  "did not try"
+            ],
+            "answer": "didn't try"
+      },
+      {
+            "id": "p4021_ex5_5",
+            "type": "fill",
+            "top": 72.9,
+            "left": 41.5,
+            "width": 8,
+            "height": 1.8,
+            "x": 41.5,
+            "y": 72.9,
+            "w": 8,
+            "h": 1.8,
+            "correct": [
+                  "asked",
+                  "Asked"
+            ],
+            "answer": "asked"
+      },
+      {
+            "id": "p4021_ex5_6",
+            "type": "fill",
+            "top": 76.2,
+            "left": 14.5,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 14.5,
+            "y": 76.2,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "was sitting",
+                  "Was sitting"
+            ],
+            "answer": "was sitting"
+      },
+      {
+            "id": "p4021_ex5_7",
+            "type": "fill",
+            "top": 76.2,
+            "left": 35,
+            "width": 8,
+            "height": 1.8,
+            "x": 35,
+            "y": 76.2,
+            "w": 8,
+            "h": 1.8,
+            "correct": [
+                  "filled",
+                  "Filled"
+            ],
+            "answer": "filled"
+      },
+      {
+            "id": "p4021_ex5_8",
+            "type": "fill",
+            "top": 77.9,
+            "left": 34,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 34,
+            "y": 77.9,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "rose",
+                  "Rose"
+            ],
+            "answer": "rose"
+      },
+      {
+            "id": "p4021_ex5_9",
+            "type": "fill",
+            "top": 81.3,
+            "left": 16,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 16,
+            "y": 81.3,
+            "w": 7.5,
+            "h": 1.8,
+            "correct": [
+                  "went",
+                  "Went",
+                  "was going"
+            ],
+            "answer": "went"
+      },
+      {
+            "id": "p4021_ex5_10",
+            "type": "fill",
+            "top": 83,
+            "left": 15,
+            "width": 8.5,
+            "height": 1.8,
+            "x": 15,
+            "y": 83,
+            "w": 8.5,
+            "h": 1.8,
+            "correct": [
+                  "came down",
+                  "Came down"
+            ],
+            "answer": "came down"
       }
 ],
     "4022": [
       {
-            "id": "p4022_ex1_1",
-            "type": "fill",
-            "top": 76.9,
-            "left": 11.5,
-            "width": 36,
-            "height": 1.8,
-            "x": 11.5,
-            "y": 76.9,
-            "w": 36,
-            "h": 1.8,
-            "correct": [
-                  "They play tennis badly."
-            ],
-            "answer": "They play tennis badly."
-      },
-      {
             "id": "p4022_ex1_2",
             "type": "fill",
-            "top": 80.2,
-            "left": 11.5,
-            "width": 36,
-            "height": 1.8,
-            "x": 11.5,
-            "y": 80.2,
-            "w": 36,
-            "h": 1.8,
+            "top": 46.1,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 46.1,
+            "w": 37,
+            "h": 1.9,
             "correct": [
-                  "He reads slowly."
+                  "He reads slowly.",
+                  "He reads slowly"
             ],
             "answer": "He reads slowly."
       },
       {
             "id": "p4022_ex1_3",
             "type": "fill",
-            "top": 83.6,
-            "left": 11.5,
-            "width": 36,
-            "height": 1.8,
-            "x": 11.5,
-            "y": 83.6,
-            "w": 36,
-            "h": 1.8,
+            "top": 49.5,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 49.5,
+            "w": 37,
+            "h": 1.9,
             "correct": [
-                  "We eat healthily."
+                  "We eat healthily.",
+                  "We eat healthily"
             ],
             "answer": "We eat healthily."
       },
       {
             "id": "p4022_ex1_4",
             "type": "fill",
-            "top": 86.9,
-            "left": 11.5,
-            "width": 36,
-            "height": 1.8,
-            "x": 11.5,
-            "y": 86.9,
-            "w": 36,
-            "h": 1.8,
+            "top": 53,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 53,
+            "w": 37,
+            "h": 1.9,
             "correct": [
-                  "My mother walks fast."
+                  "My mother walks fast.",
+                  "My mother walks fast"
             ],
             "answer": "My mother walks fast."
       },
       {
             "id": "p4022_ex1_5",
             "type": "fill",
-            "top": 90.3,
-            "left": 11.5,
-            "width": 36,
-            "height": 1.8,
-            "x": 11.5,
-            "y": 90.3,
-            "w": 36,
-            "h": 1.8,
+            "top": 56.5,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 56.5,
+            "w": 37,
+            "h": 1.9,
             "correct": [
-                  "She speaks English well."
+                  "I drive carefully.",
+                  "I drive carefully"
             ],
-            "answer": "She speaks English well."
+            "answer": "I drive carefully."
       },
       {
-            "id": "p4022_ex2_1",
+            "id": "p4022_ex1_6",
             "type": "fill",
-            "top": 23,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 23,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 60,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 60,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "You cook well.",
+                  "You cook well"
+            ],
+            "answer": "You cook well."
+      },
+      {
+            "id": "p4022_ex1_7",
+            "type": "fill",
+            "top": 63.5,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 63.5,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "My partner works hard.",
+                  "My partner works hard"
+            ],
+            "answer": "My partner works hard."
+      },
+      {
+            "id": "p4022_ex1_8",
+            "type": "fill",
+            "top": 67,
+            "left": 10.5,
+            "width": 37,
+            "height": 1.9,
+            "x": 10.5,
+            "y": 67,
+            "w": 37,
+            "h": 1.9,
+            "correct": [
+                  "My brother dresses smartly.",
+                  "My brother dresses smartly"
+            ],
+            "answer": "My brother dresses smartly."
+      },
+      {
+            "id": "p4022_ex2_2",
+            "type": "fill",
+            "top": 80.5,
+            "left": 21.5,
+            "width": 7.5,
+            "height": 1.9,
+            "x": 21.5,
+            "y": 80.5,
+            "w": 7.5,
+            "h": 1.9,
             "correct": [
                   "quietly",
                   "Quietly"
@@ -86734,33 +87970,85 @@
             "answer": "quietly"
       },
       {
-            "id": "p4022_ex2_2",
-            "type": "fill",
-            "top": 28,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 28,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "dangerously",
-                  "Dangerously"
-            ],
-            "answer": "dangerously"
-      },
-      {
             "id": "p4022_ex2_3",
             "type": "fill",
-            "top": 33,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 33,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 82.3,
+            "left": 37.5,
+            "width": 8,
+            "height": 1.9,
+            "x": 37.5,
+            "y": 82.3,
+            "w": 8,
+            "h": 1.9,
+            "correct": [
+                  "easily",
+                  "Easily"
+            ],
+            "answer": "easily"
+      },
+      {
+            "id": "p4022_ex2_4",
+            "type": "fill",
+            "top": 84,
+            "left": 37.5,
+            "width": 8,
+            "height": 1.9,
+            "x": 37.5,
+            "y": 84,
+            "w": 8,
+            "h": 1.9,
+            "correct": [
+                  "beautifully",
+                  "Beautifully"
+            ],
+            "answer": "beautifully"
+      },
+      {
+            "id": "p4022_ex2_5",
+            "type": "fill",
+            "top": 87.5,
+            "left": 23.5,
+            "width": 7.5,
+            "height": 1.9,
+            "x": 23.5,
+            "y": 87.5,
+            "w": 7.5,
+            "h": 1.9,
+            "correct": [
+                  "fluently",
+                  "Fluently"
+            ],
+            "answer": "fluently"
+      },
+      {
+            "id": "p4022_ex2_6",
+            "type": "fill",
+            "top": 89.2,
+            "left": 16.5,
+            "width": 7.5,
+            "height": 1.9,
+            "x": 16.5,
+            "y": 89.2,
+            "w": 7.5,
+            "h": 1.9,
+            "correct": [
+                  "quickly",
+                  "Quickly",
+                  "fast"
+            ],
+            "answer": "quickly"
+      },
+      {
+            "id": "p4022_ex2_7",
+            "type": "fill",
+            "top": 91,
+            "left": 20.5,
+            "width": 7.5,
+            "height": 1.9,
+            "x": 20.5,
+            "y": 91,
+            "w": 7.5,
+            "h": 1.9,
             "correct": [
                   "politely",
                   "Politely"
@@ -86768,176 +88056,559 @@
             "answer": "politely"
       },
       {
-            "id": "p4022_ex2_4",
+            "id": "p4022_ex3_1",
             "type": "fill",
-            "top": 38,
-            "left": 81.5,
-            "width": 9.5,
+            "top": 27.5,
+            "left": 56.5,
+            "width": 14,
             "height": 1.8,
-            "x": 81.5,
-            "y": 38,
-            "w": 9.5,
+            "x": 56.5,
+            "y": 27.5,
+            "w": 14,
             "h": 1.8,
             "correct": [
-                  "patiently",
-                  "Patiently"
+                  "going up",
+                  "Going up"
             ],
-            "answer": "patiently"
+            "answer": "going up"
+      },
+      {
+            "id": "p4022_ex3_2",
+            "type": "fill",
+            "top": 27.5,
+            "left": 75.5,
+            "width": 14,
+            "height": 1.8,
+            "x": 75.5,
+            "y": 27.5,
+            "w": 14,
+            "h": 1.8,
+            "correct": [
+                  "going down",
+                  "Going down"
+            ],
+            "answer": "going down"
+      },
+      {
+            "id": "p4022_ex4_3",
+            "type": "fill",
+            "top": 53.5,
+            "left": 56.5,
+            "width": 14,
+            "height": 1.8,
+            "x": 56.5,
+            "y": 53.5,
+            "w": 14,
+            "h": 1.8,
+            "correct": [
+                  "pleased",
+                  "Pleased"
+            ],
+            "answer": "pleased"
+      },
+      {
+            "id": "p4022_ex4_2",
+            "type": "fill",
+            "top": 49.5,
+            "left": 75.5,
+            "width": 16,
+            "height": 1.8,
+            "x": 75.5,
+            "y": 49.5,
+            "w": 16,
+            "h": 1.8,
+            "correct": [
+                  "anxious",
+                  "embarrassed",
+                  "scared"
+            ],
+            "answer": "anxious"
+      },
+      {
+            "id": "p4022_ex4_4",
+            "type": "fill",
+            "top": 54.5,
+            "left": 75.5,
+            "width": 16,
+            "height": 1.8,
+            "x": 75.5,
+            "y": 54.5,
+            "w": 16,
+            "h": 1.8,
+            "correct": [
+                  "disappointed",
+                  "Disappointed"
+            ],
+            "answer": "disappointed"
+      },
+      {
+            "id": "p4022_ex4_5",
+            "type": "fill",
+            "top": 59.5,
+            "left": 75.5,
+            "width": 16,
+            "height": 1.8,
+            "x": 75.5,
+            "y": 59.5,
+            "w": 16,
+            "h": 1.8,
+            "correct": [
+                  "lonely",
+                  "Lonely"
+            ],
+            "answer": "lonely"
+      },
+      {
+            "id": "p4022_ex4_6",
+            "type": "fill",
+            "top": 62.8,
+            "left": 75.5,
+            "width": 16,
+            "height": 1.8,
+            "x": 75.5,
+            "y": 62.8,
+            "w": 16,
+            "h": 1.8,
+            "correct": [
+                  "scared",
+                  "embarrassed",
+                  "stressed"
+            ],
+            "answer": "scared"
+      },
+      {
+            "id": "p4022_ex5_2",
+            "type": "fill",
+            "top": 74,
+            "left": 56.5,
+            "width": 14,
+            "height": 1.8,
+            "x": 56.5,
+            "y": 74,
+            "w": 14,
+            "h": 1.8,
+            "correct": [
+                  "nice",
+                  "Nice"
+            ],
+            "answer": "nice"
+      },
+      {
+            "id": "p4022_ex5_3",
+            "type": "fill",
+            "top": 76.8,
+            "left": 75.5,
+            "width": 16,
+            "height": 1.8,
+            "x": 75.5,
+            "y": 76.8,
+            "w": 16,
+            "h": 1.8,
+            "correct": [
+                  "easily",
+                  "Easily"
+            ],
+            "answer": "easily"
+      },
+      {
+            "id": "p4022_ex5_4",
+            "type": "fill",
+            "top": 78.5,
+            "left": 56.5,
+            "width": 14,
+            "height": 1.8,
+            "x": 56.5,
+            "y": 78.5,
+            "w": 14,
+            "h": 1.8,
+            "correct": [
+                  "fast",
+                  "Fast"
+            ],
+            "answer": "fast"
+      },
+      {
+            "id": "p4022_ex5_5",
+            "type": "fill",
+            "top": 80.2,
+            "left": 75.5,
+            "width": 16,
+            "height": 1.8,
+            "x": 75.5,
+            "y": 80.2,
+            "w": 16,
+            "h": 1.8,
+            "correct": [
+                  "politely",
+                  "Politely"
+            ],
+            "answer": "politely"
       }
 ],
     "4023": [
       {
-            "id": "p4023_ex1_1",
+            "id": "p4023_ex1a_2",
             "type": "fill",
-            "top": 28,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 28,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 66.8,
+            "left": 13.5,
+            "width": 14.5,
+            "height": 1.9,
+            "x": 13.5,
+            "y": 66.8,
+            "w": 14.5,
+            "h": 1.9,
             "correct": [
-                  "fell",
-                  "Fell"
+                  "anyway",
+                  "Anyway"
             ],
-            "answer": "fell"
+            "answer": "anyway"
       },
       {
-            "id": "p4023_ex1_2",
+            "id": "p4023_ex1a_3",
             "type": "fill",
-            "top": 32,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 32,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 71.3,
+            "left": 12,
+            "width": 14.5,
+            "height": 1.9,
+            "x": 12,
+            "y": 71.3,
+            "w": 14.5,
+            "h": 1.9,
             "correct": [
-                  "climbed",
-                  "Climbed"
+                  "what happened",
+                  "what happened?",
+                  "What happened?"
             ],
-            "answer": "climbed"
+            "answer": "what happened?"
       },
       {
-            "id": "p4023_ex1_3",
+            "id": "p4023_ex1a_4",
             "type": "fill",
-            "top": 36,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 36,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 73.2,
+            "left": 26.5,
+            "width": 15,
+            "height": 1.9,
+            "x": 26.5,
+            "y": 73.2,
+            "w": 15,
+            "h": 1.9,
             "correct": [
-                  "landed",
-                  "Landed"
+                  "I was so angry",
+                  "i was so angry"
             ],
-            "answer": "landed"
+            "answer": "I was so angry"
       },
       {
-            "id": "p4023_ex1_4",
+            "id": "p4023_ex1a_5",
             "type": "fill",
-            "top": 40,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 40,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 83,
+            "left": 20.5,
+            "width": 16.5,
+            "height": 1.9,
+            "x": 20.5,
+            "y": 83,
+            "w": 16.5,
+            "h": 1.9,
             "correct": [
-                  "jumped",
-                  "Jumped"
+                  "it was all OK in the end",
+                  "it was all ok in the end"
             ],
-            "answer": "jumped"
+            "answer": "it was all OK in the end"
       },
       {
-            "id": "p4023_ex1_5",
+            "id": "p4023_ex1a_6",
             "type": "fill",
-            "top": 44,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 41.5,
-            "y": 44,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 19.3,
+            "left": 55.5,
+            "width": 15,
+            "height": 1.9,
+            "x": 55.5,
+            "y": 19.3,
+            "w": 15,
+            "h": 1.9,
             "correct": [
-                  "dived",
-                  "Dived"
+                  "A funny thing happened",
+                  "a funny thing happened"
             ],
-            "answer": "dived"
+            "answer": "A funny thing happened"
       },
       {
-            "id": "p4023_ex2_1",
+            "id": "p4023_ex1a_7",
             "type": "fill",
-            "top": 28,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 28,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 25.8,
+            "left": 58,
+            "width": 15,
+            "height": 1.9,
+            "x": 58,
+            "y": 25.8,
+            "w": 15,
+            "h": 1.9,
             "correct": [
-                  "was walking",
-                  "walked"
+                  "what happened",
+                  "what happened?",
+                  "What happened?"
             ],
-            "answer": "was walking"
+            "answer": "what happened?"
       },
       {
-            "id": "p4023_ex2_2",
+            "id": "p4023_ex1a_8",
             "type": "fill",
-            "top": 34,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 34,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 29.3,
+            "left": 56.5,
+            "width": 14.5,
+            "height": 1.9,
+            "x": 56.5,
+            "y": 29.3,
+            "w": 14.5,
+            "h": 1.9,
             "correct": [
-                  "met",
-                  "Met"
+                  "You're joking",
+                  "you're joking",
+                  "You're joking!"
             ],
-            "answer": "met"
+            "answer": "You're joking!"
       },
       {
-            "id": "p4023_ex2_3",
+            "id": "p4023_ex1a_9",
             "type": "fill",
-            "top": 40,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 1.8,
-            "x": 81.5,
-            "y": 40,
-            "w": 9.5,
-            "h": 1.8,
+            "top": 41.5,
+            "left": 72.5,
+            "width": 15,
+            "height": 1.9,
+            "x": 72.5,
+            "y": 41.5,
+            "w": 15,
+            "h": 1.9,
             "correct": [
-                  "was waiting",
-                  "waited"
+                  "we were so pleased",
+                  "we were so pleased!"
             ],
-            "answer": "was waiting"
+            "answer": "we were so pleased!"
       },
       {
-            "id": "p4023_ex2_4",
-            "type": "fill",
-            "top": 46,
-            "left": 81.5,
-            "width": 9.5,
+            "id": "p4023_ex2_2_opt1",
+            "type": "choose",
+            "group": "p4023_ex2_2",
+            "text": "after a few minutes",
+            "correct": true,
+            "top": 65.5,
+            "left": 74,
+            "width": 13,
             "height": 1.8,
-            "x": 81.5,
-            "y": 46,
-            "w": 9.5,
-            "h": 1.8,
-            "correct": [
-                  "arrived",
-                  "Arrived"
-            ],
-            "answer": "arrived"
+            "x": 74,
+            "y": 65.5,
+            "w": 13,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_2_opt2",
+            "type": "choose",
+            "group": "p4023_ex2_2",
+            "text": "then",
+            "correct": false,
+            "top": 67.2,
+            "left": 55,
+            "width": 4,
+            "height": 1.8,
+            "x": 55,
+            "y": 67.2,
+            "w": 4,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_2_opt3",
+            "type": "choose",
+            "group": "p4023_ex2_2",
+            "text": "when",
+            "correct": false,
+            "top": 67.2,
+            "left": 59.5,
+            "width": 4.8,
+            "height": 1.8,
+            "x": 59.5,
+            "y": 67.2,
+            "w": 4.8,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_3_opt1",
+            "type": "choose",
+            "group": "p4023_ex2_3",
+            "text": "Suddenly",
+            "correct": true,
+            "top": 68.8,
+            "left": 61.5,
+            "width": 6.8,
+            "height": 1.8,
+            "x": 61.5,
+            "y": 68.8,
+            "w": 6.8,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_3_opt2",
+            "type": "choose",
+            "group": "p4023_ex2_3",
+            "text": "To begin with",
+            "correct": false,
+            "top": 68.8,
+            "left": 69.5,
+            "width": 9,
+            "height": 1.8,
+            "x": 69.5,
+            "y": 68.8,
+            "w": 9,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_3_opt3",
+            "type": "choose",
+            "group": "p4023_ex2_3",
+            "text": "While",
+            "correct": false,
+            "top": 68.8,
+            "left": 79.5,
+            "width": 4.5,
+            "height": 1.8,
+            "x": 79.5,
+            "y": 68.8,
+            "w": 4.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_4_opt1",
+            "type": "choose",
+            "group": "p4023_ex2_4",
+            "text": "At first",
+            "correct": true,
+            "top": 72.3,
+            "left": 83.5,
+            "width": 5.5,
+            "height": 1.8,
+            "x": 83.5,
+            "y": 72.3,
+            "w": 5.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_4_opt2",
+            "type": "choose",
+            "group": "p4023_ex2_4",
+            "text": "But after",
+            "correct": false,
+            "top": 73.9,
+            "left": 55,
+            "width": 6.5,
+            "height": 1.8,
+            "x": 55,
+            "y": 73.9,
+            "w": 6.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_4_opt3",
+            "type": "choose",
+            "group": "p4023_ex2_4",
+            "text": "Half an hour later",
+            "correct": false,
+            "top": 73.9,
+            "left": 62.5,
+            "width": 12,
+            "height": 1.8,
+            "x": 62.5,
+            "y": 73.9,
+            "w": 12,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_5_opt1",
+            "type": "choose",
+            "group": "p4023_ex2_5",
+            "text": "at last",
+            "correct": false,
+            "top": 75.6,
+            "left": 56,
+            "width": 4.5,
+            "height": 1.8,
+            "x": 56,
+            "y": 75.6,
+            "w": 4.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_5_opt2",
+            "type": "choose",
+            "group": "p4023_ex2_5",
+            "text": "but then",
+            "correct": true,
+            "top": 75.6,
+            "left": 61.5,
+            "width": 6,
+            "height": 1.8,
+            "x": 61.5,
+            "y": 75.6,
+            "w": 6,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_5_opt3",
+            "type": "choose",
+            "group": "p4023_ex2_5",
+            "text": "next",
+            "correct": false,
+            "top": 75.6,
+            "left": 68.5,
+            "width": 4,
+            "height": 1.8,
+            "x": 68.5,
+            "y": 75.6,
+            "w": 4,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_6_opt1",
+            "type": "choose",
+            "group": "p4023_ex2_6",
+            "text": "At first",
+            "correct": false,
+            "top": 77.2,
+            "left": 79.5,
+            "width": 5.5,
+            "height": 1.8,
+            "x": 79.5,
+            "y": 77.2,
+            "w": 5.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_6_opt2",
+            "type": "choose",
+            "group": "p4023_ex2_6",
+            "text": "When",
+            "correct": false,
+            "top": 77.2,
+            "left": 86,
+            "width": 4.5,
+            "height": 1.8,
+            "x": 86,
+            "y": 77.2,
+            "w": 4.5,
+            "h": 1.8
+      },
+      {
+            "id": "p4023_ex2_6_opt3",
+            "type": "choose",
+            "group": "p4023_ex2_6",
+            "text": "In the end",
+            "correct": true,
+            "top": 79,
+            "left": 55,
+            "width": 7,
+            "height": 1.8,
+            "x": 55,
+            "y": 79,
+            "w": 7,
+            "h": 1.8
       }
 ],
     "4024": [
