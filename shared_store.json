@@ -120876,6 +120876,210 @@
         "height": 2.2
       }
     ],
+    "3086": [
+      {
+        "id": "p3086_ex1_1",
+        "type": "fill",
+        "x": 13,
+        "y": 49,
+        "w": 15,
+        "h": 2.2,
+        "correct": [
+          "a bishop",
+          "bishop"
+        ],
+        "top": 47.5,
+        "left": 13.2,
+        "width": 15,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex1_2",
+        "type": "fill",
+        "x": 33,
+        "y": 49,
+        "w": 15,
+        "h": 2.2,
+        "correct": [
+          "a candlestick",
+          "candlestick"
+        ],
+        "top": 47.4,
+        "left": 33.7,
+        "width": 15,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex1_3",
+        "type": "fill",
+        "x": 13,
+        "y": 71,
+        "w": 15,
+        "h": 2.2,
+        "correct": [
+          "a prison",
+          "prison"
+        ],
+        "top": 71,
+        "left": 13,
+        "width": 15,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex1_4",
+        "type": "fill",
+        "x": 33,
+        "y": 71,
+        "w": 15,
+        "h": 2.2,
+        "correct": [
+          "a prisoner",
+          "prisoner"
+        ],
+        "top": 71,
+        "left": 33,
+        "width": 15,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex1_5",
+        "type": "fill",
+        "x": 13,
+        "y": 92,
+        "w": 15,
+        "h": 2.2,
+        "correct": [
+          "a plate",
+          "plate"
+        ],
+        "top": 92,
+        "left": 13,
+        "width": 15,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex1_6",
+        "type": "fill",
+        "x": 33,
+        "y": 92,
+        "w": 15,
+        "h": 2.2,
+        "correct": [
+          "a fire",
+          "fire"
+        ],
+        "top": 92,
+        "left": 33,
+        "width": 15,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex3_2",
+        "type": "fill",
+        "x": 82,
+        "y": 80.8,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "bishop's",
+          "bishop"
+        ],
+        "top": 80.8,
+        "left": 82,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex3_3",
+        "type": "fill",
+        "x": 75,
+        "y": 82.3,
+        "w": 8,
+        "h": 2.2,
+        "correct": [
+          "open"
+        ],
+        "top": 82.3,
+        "left": 75,
+        "width": 8,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex3_4",
+        "type": "fill",
+        "x": 68,
+        "y": 85,
+        "w": 8,
+        "h": 2.2,
+        "correct": [
+          "kind"
+        ],
+        "top": 85,
+        "left": 68,
+        "width": 8,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex3_5",
+        "type": "fill",
+        "x": 81,
+        "y": 86.8,
+        "w": 7,
+        "h": 2.2,
+        "correct": [
+          "sister"
+        ],
+        "top": 86.8,
+        "left": 81,
+        "width": 7,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex3_6",
+        "type": "fill",
+        "x": 58,
+        "y": 88.5,
+        "w": 7,
+        "h": 2.2,
+        "correct": [
+          "afraid"
+        ],
+        "top": 88.5,
+        "left": 58,
+        "width": 7,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex3_7",
+        "type": "fill",
+        "x": 62,
+        "y": 90,
+        "w": 8,
+        "h": 2.2,
+        "correct": [
+          "dinner"
+        ],
+        "top": 90,
+        "left": 62,
+        "width": 8,
+        "height": 2.2
+      },
+      {
+        "id": "p3086_ex3_8",
+        "type": "fill",
+        "x": 70,
+        "y": 91.8,
+        "w": 8,
+        "h": 2.2,
+        "correct": [
+          "candlesticks"
+        ],
+        "top": 91.8,
+        "left": 70,
+        "width": 8,
+        "height": 2.2
+      }
+    ],
     "4004": [
       {
         "id": "p4004_ex1_2",
@@ -122895,6 +123099,7 @@
     "3083": 1793517485546,
     "3084": 1793517558753,
     "3085": 1793517649908,
+    "3086": 1793517673481,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -123604,5 +123809,5 @@
       }
     }
   },
-  "updatedAt": 1793517656690
+  "updatedAt": 1793517675055
 }
