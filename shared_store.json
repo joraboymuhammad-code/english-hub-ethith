@@ -123638,6 +123638,326 @@
         ]
       }
     ],
+    "4080": [
+      {
+        "id": "p4080_ex1_1",
+        "type": "fill",
+        "x": 13,
+        "y": 35,
+        "w": 14,
+        "h": 2.2,
+        "top": 35,
+        "left": 13,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "open-plan office",
+          "open plan"
+        ]
+      },
+      {
+        "id": "p4080_ex1_2",
+        "type": "fill",
+        "x": 28,
+        "y": 35,
+        "w": 14,
+        "h": 2.2,
+        "top": 35,
+        "left": 28,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "meeting room"
+        ]
+      },
+      {
+        "id": "p4080_ex1_3",
+        "type": "fill",
+        "x": 43,
+        "y": 35,
+        "w": 14,
+        "h": 2.2,
+        "top": 35,
+        "left": 43,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "break room"
+        ]
+      },
+      {
+        "id": "p4080_ex1_4",
+        "type": "fill",
+        "x": 13,
+        "y": 45,
+        "w": 14,
+        "h": 2.2,
+        "top": 45,
+        "left": 13,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "colleague",
+          "colleagues"
+        ]
+      },
+      {
+        "id": "p4080_ex1_5",
+        "type": "fill",
+        "x": 28,
+        "y": 45,
+        "w": 14,
+        "h": 2.2,
+        "top": 44.4,
+        "left": 27.8,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "desk"
+        ]
+      },
+      {
+        "id": "p4080_ex1_6",
+        "type": "fill",
+        "x": 43,
+        "y": 45,
+        "w": 14,
+        "h": 2.2,
+        "top": 44.2,
+        "left": 44.9,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "stationery"
+        ]
+      },
+      {
+        "id": "p4080_ex2_1",
+        "type": "fill",
+        "x": 15,
+        "y": 60,
+        "w": 16,
+        "h": 2.2,
+        "top": 60,
+        "left": 15,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "challenging"
+        ]
+      },
+      {
+        "id": "p4080_ex2_2",
+        "type": "fill",
+        "x": 15,
+        "y": 66,
+        "w": 16,
+        "h": 2.2,
+        "top": 66,
+        "left": 15,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "rewarding"
+        ]
+      },
+      {
+        "id": "p4080_ex2_3",
+        "type": "fill",
+        "x": 15,
+        "y": 72,
+        "w": 16,
+        "h": 2.2,
+        "top": 72,
+        "left": 15,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "stressful"
+        ]
+      },
+      {
+        "id": "p4080_ex2_4",
+        "type": "fill",
+        "x": 15,
+        "y": 78,
+        "w": 16,
+        "h": 2.2,
+        "top": 78,
+        "left": 15,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "repetitive"
+        ]
+      },
+      {
+        "id": "p4080_ex2_5",
+        "type": "fill",
+        "x": 15,
+        "y": 84,
+        "w": 16,
+        "h": 2.2,
+        "top": 84,
+        "left": 15,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "flexible"
+        ]
+      },
+      {
+        "id": "p4080_ex3_1",
+        "type": "fill",
+        "x": 66,
+        "y": 29.5,
+        "w": 6,
+        "h": 2.2,
+        "top": 29.5,
+        "left": 66,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "d"
+        ]
+      },
+      {
+        "id": "p4080_ex3_2",
+        "type": "fill",
+        "x": 66,
+        "y": 31.3,
+        "w": 6,
+        "h": 2.2,
+        "top": 31.3,
+        "left": 66,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "a"
+        ]
+      },
+      {
+        "id": "p4080_ex3_3",
+        "type": "fill",
+        "x": 66,
+        "y": 34.5,
+        "w": 6,
+        "h": 2.2,
+        "top": 34.5,
+        "left": 66,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "e"
+        ]
+      },
+      {
+        "id": "p4080_ex3_4",
+        "type": "fill",
+        "x": 66,
+        "y": 36.2,
+        "w": 6,
+        "h": 2.2,
+        "top": 36.2,
+        "left": 66,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "b"
+        ]
+      },
+      {
+        "id": "p4080_ex3_5",
+        "type": "fill",
+        "x": 66,
+        "y": 37.9,
+        "w": 6,
+        "h": 2.2,
+        "top": 37.9,
+        "left": 66,
+        "width": 6,
+        "height": 2.2,
+        "correct": [
+          "c"
+        ]
+      },
+      {
+        "id": "p4080_ex4_1",
+        "type": "fill",
+        "x": 67,
+        "y": 56,
+        "w": 14,
+        "h": 2.2,
+        "top": 56,
+        "left": 67,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "scientists"
+        ]
+      },
+      {
+        "id": "p4080_ex4_2",
+        "type": "fill",
+        "x": 67,
+        "y": 60.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 59.4,
+        "left": 67.1,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "laboratory",
+          "lab"
+        ]
+      },
+      {
+        "id": "p4080_ex4_3",
+        "type": "fill",
+        "x": 67,
+        "y": 65,
+        "w": 14,
+        "h": 2.2,
+        "top": 65,
+        "left": 67,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "colleagues"
+        ]
+      },
+      {
+        "id": "p4080_ex4_4",
+        "type": "fill",
+        "x": 67,
+        "y": 69.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 69.5,
+        "left": 67,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "desk"
+        ]
+      },
+      {
+        "id": "p4080_ex4_5",
+        "type": "fill",
+        "x": 67,
+        "y": 74,
+        "w": 14,
+        "h": 2.2,
+        "top": 74,
+        "left": 67,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "meeting room"
+        ]
+      }
+    ],
     "4082": [
       {
         "id": "p4082_ex1_1",
@@ -125643,6 +125963,7 @@
     "4007": 1793549222748,
     "4008": 1793549222748,
     "4009": 1793549222748,
+    "4080": 1793549661679,
     "4082": 1793549634945,
     "4083": 1793549634945,
     "4084": 1793549330827,
@@ -126647,5 +126968,5 @@
       }
     }
   },
-  "updatedAt": 1793549637444
+  "updatedAt": 1793549662774
 }
