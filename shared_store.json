@@ -122920,8 +122920,8 @@
         "y": 60,
         "w": 22,
         "h": 2.2,
-        "top": 81,
-        "left": 70.9,
+        "top": 75,
+        "left": 57.7,
         "width": 22,
         "height": 2.2,
         "correct": [
@@ -122936,13 +122936,231 @@
         "y": 68,
         "w": 16,
         "h": 2.2,
-        "top": 85.6,
-        "left": 58,
+        "top": 77.7,
+        "left": 77.1,
         "width": 16,
         "height": 2.2,
         "correct": [
           "occasionally",
           "occasionally go"
+        ]
+      }
+    ],
+    "4007": [
+      {
+        "id": "p4007_ex4_1",
+        "type": "fill",
+        "x": 13,
+        "y": 24,
+        "w": 25,
+        "h": 2.2,
+        "top": 24.8,
+        "left": 10.3,
+        "width": 25,
+        "height": 2.2,
+        "correct": [
+          "go camping",
+          "Go camping"
+        ]
+      },
+      {
+        "id": "p4007_ex4_2",
+        "type": "fill",
+        "x": 37,
+        "y": 24,
+        "w": 25,
+        "h": 2.2,
+        "top": 24,
+        "left": 37,
+        "width": 25,
+        "height": 2.2,
+        "correct": [
+          "do karate",
+          "Do karate"
+        ]
+      },
+      {
+        "id": "p4007_ex4_3",
+        "type": "fill",
+        "x": 13,
+        "y": 38,
+        "w": 25,
+        "h": 2.2,
+        "top": 38,
+        "left": 13,
+        "width": 25,
+        "height": 2.2,
+        "correct": [
+          "play chess",
+          "Play chess"
+        ]
+      },
+      {
+        "id": "p4007_ex4_4",
+        "type": "fill",
+        "x": 37,
+        "y": 38,
+        "w": 25,
+        "h": 2.2,
+        "top": 38,
+        "left": 37,
+        "width": 25,
+        "height": 2.2,
+        "correct": [
+          "go clubbing",
+          "Go clubbing"
+        ]
+      },
+      {
+        "id": "p4007_ex4_5",
+        "type": "fill",
+        "x": 13,
+        "y": 52,
+        "w": 25,
+        "h": 2.2,
+        "top": 52,
+        "left": 13,
+        "width": 25,
+        "height": 2.2,
+        "correct": [
+          "do aerobics",
+          "Do aerobics"
+        ]
+      },
+      {
+        "id": "p4007_ex4_6",
+        "type": "fill",
+        "x": 37,
+        "y": 52,
+        "w": 25,
+        "h": 2.2,
+        "top": 52,
+        "left": 37,
+        "width": 25,
+        "height": 2.2,
+        "correct": [
+          "play board games",
+          "Play board games"
+        ]
+      },
+      {
+        "id": "p4007_ex5_1",
+        "type": "select",
+        "x": 58,
+        "y": 21.5,
+        "w": 36,
+        "h": 2.2,
+        "top": 21.5,
+        "left": 58,
+        "width": 36,
+        "height": 2.2,
+        "correct": [
+          "every year"
+        ],
+        "options": [
+          "every year",
+          "once or twice a week",
+          "always"
+        ]
+      },
+      {
+        "id": "p4007_ex5_2",
+        "type": "select",
+        "x": 58,
+        "y": 30.5,
+        "w": 36,
+        "h": 2.2,
+        "top": 30.5,
+        "left": 58,
+        "width": 36,
+        "height": 2.2,
+        "correct": [
+          "never"
+        ],
+        "options": [
+          "never",
+          "most days",
+          "once a month"
+        ]
+      },
+      {
+        "id": "p4007_ex5_3",
+        "type": "select",
+        "x": 58,
+        "y": 39.5,
+        "w": 36,
+        "h": 2.2,
+        "top": 39.5,
+        "left": 58,
+        "width": 36,
+        "height": 2.2,
+        "correct": [
+          "all the time"
+        ],
+        "options": [
+          "all the time",
+          "usually",
+          "rarely"
+        ]
+      },
+      {
+        "id": "p4007_ex5_4",
+        "type": "select",
+        "x": 58,
+        "y": 48.5,
+        "w": 36,
+        "h": 2.2,
+        "top": 48.5,
+        "left": 58,
+        "width": 36,
+        "height": 2.2,
+        "correct": [
+          "always"
+        ],
+        "options": [
+          "always",
+          "every now and then",
+          "most weekends"
+        ]
+      },
+      {
+        "id": "p4007_ex5_5",
+        "type": "select",
+        "x": 58,
+        "y": 57.5,
+        "w": 36,
+        "h": 2.2,
+        "top": 57.5,
+        "left": 58,
+        "width": 36,
+        "height": 2.2,
+        "correct": [
+          "sometimes"
+        ],
+        "options": [
+          "sometimes",
+          "every Saturday",
+          "twice a year"
+        ]
+      },
+      {
+        "id": "p4007_ex5_6",
+        "type": "select",
+        "x": 58,
+        "y": 66.5,
+        "w": 36,
+        "h": 2.2,
+        "top": 66.5,
+        "left": 58,
+        "width": 36,
+        "height": 2.2,
+        "correct": [
+          "hardly ever"
+        ],
+        "options": [
+          "hardly ever",
+          "three times a day",
+          "on Sundays"
         ]
       }
     ],
@@ -124046,7 +124264,8 @@
     "3087": 1793517957036,
     "4004": 1793545997852,
     "4005": 1793545997853,
-    "4006": 1793546054222,
+    "4006": 1793546058854,
+    "4007": 1793546067444,
     "4086": 1793193077149,
     "4087": 1793193184959
   },
@@ -125047,5 +125266,5 @@
       }
     }
   },
-  "updatedAt": 1793546054621
+  "updatedAt": 1793546075471
 }
