@@ -118882,21 +118882,6 @@
     ],
     "3078": [
       {
-        "id": "p3078_ex2_1",
-        "type": "fill",
-        "x": 11,
-        "y": 49.2,
-        "w": 10,
-        "h": 2.2,
-        "correct": [
-          "tiny"
-        ],
-        "top": 49.2,
-        "left": 11,
-        "width": 10,
-        "height": 2.2
-      },
-      {
         "id": "p3078_ex2_2",
         "type": "fill",
         "x": 27,
@@ -118921,8 +118906,8 @@
         "correct": [
           "delighted"
         ],
-        "top": 52.3,
-        "left": 11,
+        "top": 61.5,
+        "left": 11.8,
         "width": 12,
         "height": 2.2
       },
@@ -118936,8 +118921,8 @@
         "correct": [
           "great"
         ],
-        "top": 53.8,
-        "left": 11,
+        "top": 57.4,
+        "left": 32.7,
         "width": 10,
         "height": 2.2
       },
@@ -118967,8 +118952,8 @@
           "Janine is a very nice person.",
           "Janine is a very nice person"
         ],
-        "top": 70,
-        "left": 11,
+        "top": 66.1,
+        "left": 15,
         "width": 35,
         "height": 2.2
       },
@@ -118983,8 +118968,8 @@
           "His exam results were really brilliant.",
           "His exam results were really brilliant"
         ],
-        "top": 73.5,
-        "left": 11,
+        "top": 68.6,
+        "left": 16.2,
         "width": 35,
         "height": 2.2
       },
@@ -118999,8 +118984,8 @@
           "Our neighbours are very unfriendly.",
           "Our neighbours are very unfriendly"
         ],
-        "top": 77,
-        "left": 11,
+        "top": 75.5,
+        "left": 13.1,
         "width": 35,
         "height": 2.2
       },
@@ -119063,8 +119048,8 @@
           "The letter wasn't very important.",
           "The letter wasn't very important"
         ],
-        "top": 91,
-        "left": 11,
+        "top": 89.4,
+        "left": 13.2,
         "width": 35,
         "height": 2.2
       },
@@ -121297,7 +121282,7 @@
     "3075": 1793516970339,
     "3076": 1793517084178,
     "3077": 1793517084178,
-    "3078": 1793517163833,
+    "3078": 1793517178937,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -122007,5 +121992,5 @@
       }
     }
   },
-  "updatedAt": 1793517164196
+  "updatedAt": 1793517180065
 }
