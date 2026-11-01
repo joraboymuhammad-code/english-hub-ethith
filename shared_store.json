@@ -115799,8 +115799,8 @@
           "foggy, freezing, icy, snowy",
           "freezing, icy, snowy, foggy"
         ],
-        "top": 31.3,
-        "left": 13.2,
+        "top": 53.4,
+        "left": 12,
         "width": 35,
         "height": 2.2
       },
@@ -115815,8 +115815,8 @@
           "dry, sunny, warm",
           "sunny, warm, dry"
         ],
-        "top": 36.5,
-        "left": 11,
+        "top": 72.1,
+        "left": 12.3,
         "width": 30,
         "height": 2.2
       },
@@ -115831,8 +115831,8 @@
           "cloudy, rainy, wet, windy",
           "rainy, wet, windy, cloudy"
         ],
-        "top": 40,
-        "left": 11,
+        "top": 91.1,
+        "left": 11.4,
         "width": 35,
         "height": 2.2
       },
@@ -115891,8 +115891,8 @@
         "correct": [
           "snowed"
         ],
-        "top": 62,
-        "left": 13,
+        "top": 41.7,
+        "left": 67.2,
         "width": 10,
         "height": 2.2
       },
@@ -116013,6 +116013,358 @@
         "top": 85.3,
         "left": 81.5,
         "width": 14,
+        "height": 2.2
+      }
+    ],
+    "3067": [
+      {
+        "id": "p3067_ex4_2",
+        "type": "fill",
+        "x": 33,
+        "y": 26.2,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "bigger"
+        ],
+        "top": 14.5,
+        "left": 18.9,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex4_3",
+        "type": "fill",
+        "x": 33,
+        "y": 29.7,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "earlier"
+        ],
+        "top": 16.2,
+        "left": 18.9,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex4_4",
+        "type": "fill",
+        "x": 33,
+        "y": 33.1,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "worse"
+        ],
+        "top": 33.1,
+        "left": 33,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex4_5",
+        "type": "fill",
+        "x": 33,
+        "y": 36.5,
+        "w": 15,
+        "h": 2.2,
+        "correct": [
+          "more interesting"
+        ],
+        "top": 36.5,
+        "left": 33,
+        "width": 15,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex4_6",
+        "type": "fill",
+        "x": 33,
+        "y": 40,
+        "w": 15,
+        "h": 2.2,
+        "correct": [
+          "more expensive"
+        ],
+        "top": 40,
+        "left": 33,
+        "width": 15,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex4_7",
+        "type": "fill",
+        "x": 33,
+        "y": 43.4,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "taller"
+        ],
+        "top": 43.4,
+        "left": 33,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex4_8",
+        "type": "fill",
+        "x": 33,
+        "y": 46.8,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "later"
+        ],
+        "top": 46.8,
+        "left": 33,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex4_9",
+        "type": "fill",
+        "x": 33,
+        "y": 50.2,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "drier"
+        ],
+        "top": 50.2,
+        "left": 33,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex4_10",
+        "type": "fill",
+        "x": 33,
+        "y": 53.6,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "fatter"
+        ],
+        "top": 53.6,
+        "left": 33,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex5_1",
+        "type": "fill",
+        "x": 74,
+        "y": 22.8,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "higher"
+        ],
+        "top": 22.8,
+        "left": 74,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex5_2",
+        "type": "fill",
+        "x": 74,
+        "y": 26.2,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "wetter"
+        ],
+        "top": 26.2,
+        "left": 74,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex5_3",
+        "type": "fill",
+        "x": 74,
+        "y": 29.7,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "colder"
+        ],
+        "top": 29.7,
+        "left": 74,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex5_4",
+        "type": "fill",
+        "x": 74,
+        "y": 33.1,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "lower"
+        ],
+        "top": 33.1,
+        "left": 74,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex5_5",
+        "type": "fill",
+        "x": 74,
+        "y": 36.5,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "cooler"
+        ],
+        "top": 36.5,
+        "left": 74,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex5_6",
+        "type": "fill",
+        "x": 74,
+        "y": 40,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "better"
+        ],
+        "top": 40,
+        "left": 74,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex5_7",
+        "type": "fill",
+        "x": 74,
+        "y": 43.4,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "hotter"
+        ],
+        "top": 43.4,
+        "left": 74,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex5_8",
+        "type": "fill",
+        "x": 74,
+        "y": 46.8,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "more comfortable"
+        ],
+        "top": 46.8,
+        "left": 74,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex5_9",
+        "type": "fill",
+        "x": 74,
+        "y": 50.2,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "sunnier"
+        ],
+        "top": 50.2,
+        "left": 74,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex6_1",
+        "type": "fill",
+        "x": 57,
+        "y": 64,
+        "w": 38,
+        "h": 2.2,
+        "correct": [
+          "New York is older than Sydney.",
+          "New York is older than Sydney"
+        ],
+        "top": 64,
+        "left": 57,
+        "width": 38,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex6_3",
+        "type": "fill",
+        "x": 57,
+        "y": 69.5,
+        "w": 38,
+        "h": 2.2,
+        "correct": [
+          "The weather is worse today than it was yesterday.",
+          "The weather is worse today than it was yesterday"
+        ],
+        "top": 69.5,
+        "left": 57,
+        "width": 38,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex6_4",
+        "type": "fill",
+        "x": 57,
+        "y": 75,
+        "w": 38,
+        "h": 2.2,
+        "correct": [
+          "My new job is more interesting than my old job.",
+          "My new job is more interesting than my old job"
+        ],
+        "top": 75,
+        "left": 57,
+        "width": 38,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex6_5",
+        "type": "fill",
+        "x": 57,
+        "y": 80.5,
+        "w": 38,
+        "h": 2.2,
+        "correct": [
+          "I think spring and autumn are nicer than summer or winter.",
+          "I think spring and autumn are nicer than summer or winter"
+        ],
+        "top": 80.5,
+        "left": 57,
+        "width": 38,
+        "height": 2.2
+      },
+      {
+        "id": "p3067_ex6_6",
+        "type": "fill",
+        "x": 57,
+        "y": 86,
+        "w": 38,
+        "h": 2.2,
+        "correct": [
+          "Karachi is bigger than Islamabad.",
+          "Karachi is bigger than Islamabad"
+        ],
+        "top": 86,
+        "left": 57,
+        "width": 38,
         "height": 2.2
       }
     ],
@@ -118015,7 +118367,8 @@
     "3062": 1793506681641,
     "3063": 1793506773020,
     "3065": 1793515698497,
-    "3066": 1793515752337,
+    "3066": 1793515763449,
+    "3067": 1793515772345,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -118725,5 +119078,5 @@
       }
     }
   },
-  "updatedAt": 1793515753679
+  "updatedAt": 1793515774559
 }
