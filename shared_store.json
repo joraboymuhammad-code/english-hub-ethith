@@ -117592,8 +117592,8 @@
           "many"
         ],
         "correct": "quite a lot",
-        "top": 33.6,
-        "left": 23,
+        "top": 32.8,
+        "left": 20.8,
         "width": 16,
         "height": 2.2
       },
@@ -117609,8 +117609,8 @@
           "much"
         ],
         "correct": "many",
-        "top": 35.1,
-        "left": 11,
+        "top": 34.8,
+        "left": 10.9,
         "width": 12,
         "height": 2.2
       },
@@ -117626,8 +117626,8 @@
           "lemons"
         ],
         "correct": "lemons",
-        "top": 36.6,
-        "left": 31,
+        "top": 35.9,
+        "left": 31.9,
         "width": 12,
         "height": 2.2
       },
@@ -117643,24 +117643,9 @@
           "some"
         ],
         "correct": "any",
-        "top": 38.2,
-        "left": 30,
+        "top": 38.1,
+        "left": 26.9,
         "width": 10,
-        "height": 2.2
-      },
-      {
-        "id": "p3073_ex2_1",
-        "type": "fill",
-        "x": 11,
-        "y": 47,
-        "w": 12,
-        "h": 2.2,
-        "correct": [
-          "highest"
-        ],
-        "top": 47,
-        "left": 11,
-        "width": 12,
         "height": 2.2
       },
       {
@@ -117673,8 +117658,8 @@
         "correct": [
           "most difficult"
         ],
-        "top": 50.5,
-        "left": 11,
+        "top": 49.3,
+        "left": 26.9,
         "width": 16,
         "height": 2.2
       },
@@ -117688,8 +117673,8 @@
         "correct": [
           "smaller"
         ],
-        "top": 54,
-        "left": 11,
+        "top": 51.7,
+        "left": 9.1,
         "width": 12,
         "height": 2.2
       },
@@ -117703,8 +117688,8 @@
         "correct": [
           "fittest"
         ],
-        "top": 57.5,
-        "left": 11,
+        "top": 54.7,
+        "left": 9.8,
         "width": 12,
         "height": 2.2
       },
@@ -117718,8 +117703,8 @@
         "correct": [
           "most expensive"
         ],
-        "top": 61,
-        "left": 11,
+        "top": 58.8,
+        "left": 12.9,
         "width": 16,
         "height": 2.2
       },
@@ -117733,8 +117718,8 @@
         "correct": [
           "cheaper"
         ],
-        "top": 64.5,
-        "left": 11,
+        "top": 61.7,
+        "left": 16,
         "width": 12,
         "height": 2.2
       },
@@ -117748,8 +117733,8 @@
         "correct": [
           "more dangerous"
         ],
-        "top": 68,
-        "left": 11,
+        "top": 65.6,
+        "left": 14.4,
         "width": 16,
         "height": 2.2
       },
@@ -117763,8 +117748,8 @@
         "correct": [
           "best"
         ],
-        "top": 71.5,
-        "left": 11,
+        "top": 67.6,
+        "left": 15.8,
         "width": 12,
         "height": 2.2
       },
@@ -117778,8 +117763,8 @@
         "correct": [
           "safer"
         ],
-        "top": 75,
-        "left": 11,
+        "top": 68.5,
+        "left": 34.9,
         "width": 12,
         "height": 2.2
       },
@@ -117793,8 +117778,8 @@
         "correct": [
           "worst"
         ],
-        "top": 78.5,
-        "left": 11,
+        "top": 71.7,
+        "left": 23.3,
         "width": 12,
         "height": 2.2
       },
@@ -119959,7 +119944,7 @@
     "3070": 1793516201989,
     "3071": 1793516265566,
     "3072": 1793516343325,
-    "3073": 1793516358195,
+    "3073": 1793516382321,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -120669,5 +120654,5 @@
       }
     }
   },
-  "updatedAt": 1793516358837
+  "updatedAt": 1793516389333
 }
