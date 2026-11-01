@@ -116627,21 +116627,6 @@
         "height": 2.2
       },
       {
-        "id": "p3068_ex3_1",
-        "type": "fill",
-        "x": 74,
-        "y": 70,
-        "w": 10,
-        "h": 2.2,
-        "correct": [
-          "north"
-        ],
-        "top": 69.8,
-        "left": 69.3,
-        "width": 10,
-        "height": 2.2
-      },
-      {
         "id": "p3068_ex3_2",
         "type": "fill",
         "x": 74,
@@ -116651,8 +116636,8 @@
         "correct": [
           "north-east"
         ],
-        "top": 74.7,
-        "left": 84.9,
+        "top": 75,
+        "left": 83.4,
         "width": 14,
         "height": 2.2
       },
@@ -116681,8 +116666,8 @@
         "correct": [
           "south-east"
         ],
-        "top": 77.5,
-        "left": 74,
+        "top": 88.1,
+        "left": 82.6,
         "width": 14,
         "height": 2.2
       },
@@ -116696,8 +116681,8 @@
         "correct": [
           "south"
         ],
-        "top": 80,
-        "left": 74,
+        "top": 91.8,
+        "left": 69.8,
         "width": 10,
         "height": 2.2
       },
@@ -116711,8 +116696,8 @@
         "correct": [
           "south-west"
         ],
-        "top": 82.5,
-        "left": 74,
+        "top": 88,
+        "left": 55.4,
         "width": 14,
         "height": 2.2
       },
@@ -116726,8 +116711,8 @@
         "correct": [
           "west"
         ],
-        "top": 85,
-        "left": 74,
+        "top": 81.9,
+        "left": 52.5,
         "width": 10,
         "height": 2.2
       },
@@ -116744,6 +116729,330 @@
         "top": 75.1,
         "left": 55.6,
         "width": 14,
+        "height": 2.2
+      }
+    ],
+    "3069": [
+      {
+        "id": "p3069_ex4_2",
+        "type": "fill",
+        "x": 23,
+        "y": 21.6,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "busiest"
+        ],
+        "top": 20.3,
+        "left": 25.2,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex4_3",
+        "type": "fill",
+        "x": 23,
+        "y": 27.7,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "best"
+        ],
+        "top": 26.4,
+        "left": 16.2,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex4_4",
+        "type": "fill",
+        "x": 23,
+        "y": 33.8,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "easiest"
+        ],
+        "top": 33.8,
+        "left": 23,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex4_5",
+        "type": "fill",
+        "x": 11,
+        "y": 36.8,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "warmest"
+        ],
+        "top": 36.8,
+        "left": 11,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex4_6",
+        "type": "fill",
+        "x": 23,
+        "y": 36.8,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "driest"
+        ],
+        "top": 36.8,
+        "left": 23,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex4_7",
+        "type": "fill",
+        "x": 15,
+        "y": 42.9,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "most famous"
+        ],
+        "top": 42.9,
+        "left": 15,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex4_8",
+        "type": "fill",
+        "x": 26,
+        "y": 44.4,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "most popular"
+        ],
+        "top": 44.4,
+        "left": 26,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex4_9",
+        "type": "fill",
+        "x": 15,
+        "y": 50.5,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "biggest"
+        ],
+        "top": 50.5,
+        "left": 15,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex4_10",
+        "type": "fill",
+        "x": 23,
+        "y": 52,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "cheapest"
+        ],
+        "top": 52,
+        "left": 23,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex5_1",
+        "type": "fill",
+        "x": 11,
+        "y": 62.8,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "The Congo River is the deepest river in the world.",
+          "The Congo River is the deepest river in the world"
+        ],
+        "top": 62.8,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex5_2",
+        "type": "fill",
+        "x": 11,
+        "y": 66.2,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Summer is usually the hottest time of the year.",
+          "Summer is usually the hottest time of the year"
+        ],
+        "top": 66.2,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex5_3",
+        "type": "fill",
+        "x": 11,
+        "y": 69.6,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "What is the oldest city in the world?",
+          "What is the oldest city in the world"
+        ],
+        "top": 69.6,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex5_4",
+        "type": "fill",
+        "x": 11,
+        "y": 73,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Is Mount Kilimanjaro the highest mountain in Africa?",
+          "Is Mount Kilimanjaro the highest mountain in Africa"
+        ],
+        "top": 73,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex5_5",
+        "type": "fill",
+        "x": 11,
+        "y": 76.4,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Which is the most interesting museum in Rome?",
+          "Which is the most interesting museum in Rome"
+        ],
+        "top": 76.4,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex5_6",
+        "type": "fill",
+        "x": 11,
+        "y": 79.8,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "That's the worst hotel in the town.",
+          "That's the worst hotel in the town",
+          "Thats the worst hotel in the town"
+        ],
+        "top": 79.8,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex6_1",
+        "type": "fill",
+        "x": 67,
+        "y": 10,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "the coldest"
+        ],
+        "top": 10,
+        "left": 67,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex6_2",
+        "type": "fill",
+        "x": 67,
+        "y": 12,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "higher than"
+        ],
+        "top": 12,
+        "left": 67,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex6_3",
+        "type": "fill",
+        "x": 67,
+        "y": 14.5,
+        "w": 22,
+        "h": 2.2,
+        "correct": [
+          "the most beautiful"
+        ],
+        "top": 14.5,
+        "left": 67,
+        "width": 22,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex6_4",
+        "type": "fill",
+        "x": 67,
+        "y": 17.5,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "the tallest"
+        ],
+        "top": 17.5,
+        "left": 67,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex6_5",
+        "type": "fill",
+        "x": 67,
+        "y": 20.5,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "worse"
+        ],
+        "top": 20.5,
+        "left": 67,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3069_ex6_6",
+        "type": "fill",
+        "x": 67,
+        "y": 24,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "the windiest"
+        ],
+        "top": 24,
+        "left": 67,
+        "width": 16,
         "height": 2.2
       }
     ],
@@ -118748,7 +119057,8 @@
     "3065": 1793515698497,
     "3066": 1793515895423,
     "3067": 1793515895423,
-    "3068": 1793516077475,
+    "3068": 1793516087498,
+    "3069": 1793516098066,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -119458,5 +119768,5 @@
       }
     }
   },
-  "updatedAt": 1793516078564
+  "updatedAt": 1793516099323
 }
