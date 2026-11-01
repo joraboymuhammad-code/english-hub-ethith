@@ -117936,6 +117936,263 @@
         "height": 2.2
       }
     ],
+    "3074": [
+      {
+        "id": "p3074_ex1_1",
+        "type": "fill",
+        "x": 13,
+        "y": 35,
+        "w": 25,
+        "h": 2.2,
+        "correct": [
+          "give a present to someone"
+        ],
+        "top": 35,
+        "left": 13,
+        "width": 25,
+        "height": 2.2
+      },
+      {
+        "id": "p3074_ex1_2",
+        "type": "fill",
+        "x": 13,
+        "y": 38.6,
+        "w": 25,
+        "h": 2.2,
+        "correct": [
+          "visit someone in hospital"
+        ],
+        "top": 38.6,
+        "left": 13,
+        "width": 25,
+        "height": 2.2
+      },
+      {
+        "id": "p3074_ex1_3",
+        "type": "fill",
+        "x": 13,
+        "y": 42.2,
+        "w": 25,
+        "h": 2.2,
+        "correct": [
+          "teach someone to drive"
+        ],
+        "top": 42.2,
+        "left": 13,
+        "width": 25,
+        "height": 2.2
+      },
+      {
+        "id": "p3074_ex1_4",
+        "type": "fill",
+        "x": 13,
+        "y": 45.8,
+        "w": 28,
+        "h": 2.2,
+        "correct": [
+          "help someone with their homework"
+        ],
+        "top": 45.8,
+        "left": 13,
+        "width": 28,
+        "height": 2.2
+      },
+      {
+        "id": "p3074_ex2_2",
+        "type": "fill",
+        "x": 23,
+        "y": 73.8,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "plant a tree"
+        ],
+        "top": 73.8,
+        "left": 23,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3074_ex2_3",
+        "type": "fill",
+        "x": 18,
+        "y": 77.2,
+        "w": 22,
+        "h": 2.2,
+        "correct": [
+          "make some sandwiches"
+        ],
+        "top": 77.2,
+        "left": 18,
+        "width": 22,
+        "height": 2.2
+      },
+      {
+        "id": "p3074_ex2_4",
+        "type": "fill",
+        "x": 27,
+        "y": 80.7,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "repair a bike"
+        ],
+        "top": 80.7,
+        "left": 27,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3074_ex2_5",
+        "type": "fill",
+        "x": 24,
+        "y": 84.1,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "improve the town"
+        ],
+        "top": 84.1,
+        "left": 24,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3074_ex2_6",
+        "type": "fill",
+        "x": 24,
+        "y": 87.6,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "paint the room"
+        ],
+        "top": 87.6,
+        "left": 24,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3074_ex2_7",
+        "type": "fill",
+        "x": 27,
+        "y": 91,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "organize a party"
+        ],
+        "top": 91,
+        "left": 27,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3074_ex3_2",
+        "type": "fill",
+        "x": 80,
+        "y": 63.7,
+        "w": 10,
+        "h": 2,
+        "correct": [
+          "improve"
+        ],
+        "top": 62.9,
+        "left": 76.2,
+        "width": 10,
+        "height": 2
+      },
+      {
+        "id": "p3074_ex3_3",
+        "type": "fill",
+        "x": 67,
+        "y": 68.2,
+        "w": 8,
+        "h": 2,
+        "correct": [
+          "help"
+        ],
+        "top": 67,
+        "left": 68.4,
+        "width": 8,
+        "height": 2
+      },
+      {
+        "id": "p3074_ex3_4",
+        "type": "fill",
+        "x": 80,
+        "y": 72.6,
+        "w": 8,
+        "h": 2,
+        "correct": [
+          "visit"
+        ],
+        "top": 72.6,
+        "left": 80,
+        "width": 8,
+        "height": 2
+      },
+      {
+        "id": "p3074_ex3_5",
+        "type": "fill",
+        "x": 67,
+        "y": 77,
+        "w": 12,
+        "h": 2,
+        "correct": [
+          "look after"
+        ],
+        "top": 77,
+        "left": 67,
+        "width": 12,
+        "height": 2
+      },
+      {
+        "id": "p3074_ex3_6",
+        "type": "fill",
+        "x": 80,
+        "y": 81.5,
+        "w": 8,
+        "h": 2,
+        "correct": [
+          "make"
+        ],
+        "top": 81.5,
+        "left": 80,
+        "width": 8,
+        "height": 2
+      },
+      {
+        "id": "p3074_ex3_7",
+        "type": "fill",
+        "x": 67,
+        "y": 86,
+        "w": 10,
+        "h": 2,
+        "correct": [
+          "organize"
+        ],
+        "top": 86,
+        "left": 67,
+        "width": 10,
+        "height": 2
+      },
+      {
+        "id": "p3074_ex3_8",
+        "type": "fill",
+        "x": 80,
+        "y": 90.4,
+        "w": 8,
+        "h": 2,
+        "correct": [
+          "teach"
+        ],
+        "top": 90.4,
+        "left": 80,
+        "width": 8,
+        "height": 2
+      }
+    ],
     "4004": [
       {
         "id": "p4004_ex1_2",
@@ -119943,6 +120200,7 @@
     "3071": 1793516265566,
     "3072": 1793516778335,
     "3073": 1793516778336,
+    "3074": 1793516801425,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -120652,5 +120910,5 @@
       }
     }
   },
-  "updatedAt": 1793516786824
+  "updatedAt": 1793516801443
 }
