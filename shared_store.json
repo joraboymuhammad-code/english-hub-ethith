@@ -123583,35 +123583,6 @@
   },
   "teachers": [
     {
-      "id": "t_urolov_azizbek",
-      "name": "Azizbek Urolov",
-      "email": "azizbek.urolov@ethith.uz",
-      "subject": "Ingliz tili (Upper / Inter)",
-      "hourlyRate": 120000,
-      "teachingHours": 0,
-      "card": "8600 9184 5348 5520",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_urolov_azizbek_upper",
-        "cls_urolov_azizbek_standard",
-        "cls_urolov_azizbek_intermediate",
-        "cls_urolov_azizbek_practice"
-      ],
-      "classOrder": [
-        "cls_urolov_azizbek_upper",
-        "cls_urolov_azizbek_standard",
-        "cls_urolov_azizbek_intermediate",
-        "cls_urolov_azizbek_practice"
-      ],
-      "login": "azizbek77",
-      "password": "azizbek2026",
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "AZIZBEK77",
-      "unpaidMonths": 0
-    },
-    {
       "id": "t_ravshanov_doniyor",
       "name": "Ravshanov Doniyor",
       "email": "doniyor.ravshanov@ethith.uz",
@@ -123632,13 +123603,14 @@
         "cls_ravshanov_doniyor_cefr_3",
         "cls_ravshanov_doniyor_cefr_4"
       ],
+      "inviteCode": "RAVSHANOV24",
       "login": "doniyor24",
       "password": "doniyor2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "RAVSHANOV24",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -123655,13 +123627,14 @@
       "classOrder": [
         "cls_qarshiboyev_humoyun_practice"
       ],
+      "inviteCode": "QARSHIBOYEV15",
       "login": "humoyun15",
       "password": "humoyun2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "QARSHIBOYEV15",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -123678,13 +123651,16 @@
       "classOrder": [
         "cls_tovboyeva_marjona_beginner"
       ],
+      "inviteCode": "MARJONA88",
       "login": "marjona88",
       "password": "marjona2026",
       "salarySharePercent": 50,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "MARJONA88",
-      "unpaidMonths": 0
+      "phone": "+998 90 ..."
     },
     {
       "id": "t_olimjonova_durdona",
@@ -123707,13 +123683,14 @@
         "cls_olimjonova_durdona_intermediate_1",
         "cls_olimjonova_durdona_intermediate_2"
       ],
+      "inviteCode": "DURDONA12",
       "login": "durdona12",
       "password": "durdona2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "DURDONA12",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_tagaev_eldor",
@@ -123736,13 +123713,14 @@
         "cls_tagaev_eldor_pre_intermediate_1",
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
+      "inviteCode": "ELDOR33",
       "login": "eldor33",
       "password": "eldor2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "ELDOR33",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -123761,13 +123739,14 @@
         "cls_yaxshilikova_kamola_beginner",
         "cls_yaxshilikova_kamola_elementary"
       ],
+      "inviteCode": "KAMOLA45",
       "login": "kamola45",
       "password": "kamola2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "KAMOLA45",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -123786,13 +123765,14 @@
         "cls_sherqoziyeva_iroda_beginner_1",
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
+      "inviteCode": "IRODA19",
       "login": "iroda19",
       "password": "iroda2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "IRODA19",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_aborbekov_elyor",
@@ -123817,13 +123797,14 @@
         "cls_aborbekov_elyor_intermediate_2",
         "cls_aborbekov_elyor_upper_intermediate"
       ],
+      "inviteCode": "ELYOR70",
       "login": "elyor70",
       "password": "elyor2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "ELYOR70",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -123846,13 +123827,14 @@
         "cls_orinboyev_jaloliddin_standard_1",
         "cls_orinboyev_jaloliddin_standard_2"
       ],
+      "inviteCode": "JALOLIDDIN99",
       "login": "jaloliddin99",
       "password": "jaloliddin2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "JALOLIDDIN99",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_jumanova_pokiza",
@@ -123869,13 +123851,14 @@
       "classOrder": [
         "cls_jumanova_pokiza_beginner"
       ],
+      "inviteCode": "POKIZA07",
       "login": "pokiza07",
       "password": "pokiza2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "POKIZA07",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -123894,13 +123877,14 @@
         "cls_hayrullayev_arslon_beginner_1",
         "cls_hayrullayev_arslon_beginner_2"
       ],
+      "inviteCode": "ARSLON64",
       "login": "arslon64",
       "password": "arslon2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "ARSLON64",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -123919,13 +123903,14 @@
         "cls_xudoyorova_sarvinoz_intermediate",
         "cls_xudoyorova_sarvinoz_standard"
       ],
+      "inviteCode": "SARVINOZ82",
       "login": "sarvinoz82",
       "password": "sarvinoz2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "SARVINOZ82",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -123944,12 +123929,14 @@
         "cls_aliqulova_sevinch_beginner_1",
         "cls_aliqulova_sevinch_beginner_2"
       ],
+      "inviteCode": "SEVINCH55",
       "login": "sevinch55",
       "password": "sevinch2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "monthlyBonus": 1000000,
       "monthlySalary": 0,
-      "inviteCode": "SEVINCH55",
       "unpaidMonths": 0
     },
     {
@@ -123973,13 +123960,14 @@
         "cls_xojamqulova_diyora_elementary_2",
         "cls_xojamqulova_diyora_elementary_3"
       ],
+      "inviteCode": "DIYORA21",
       "login": "diyora21",
       "password": "diyora2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "DIYORA21",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -124002,13 +123990,14 @@
         "cls_bosimbekov_farrux_intermediate_1",
         "cls_bosimbekov_farrux_intermediate_2"
       ],
+      "inviteCode": "FARRUX93",
       "login": "farrux93",
       "password": "farrux2026",
       "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "inviteCode": "FARRUX93",
-      "unpaidMonths": 0
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
     },
     {
       "id": "t_ahmadova_barno",
@@ -124031,12 +124020,15 @@
         "cls_ahmadova_barno_elementary_3",
         "cls_ahmadova_barno_pre_intermediate"
       ],
+      "inviteCode": "BARNO36",
       "login": "barno36",
       "password": "barno2026",
       "salarySharePercent": 50,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "BARNO36",
+      "phone": "+998 90 ...",
       "unpaidMonths": 0
     },
     {
@@ -124054,12 +124046,42 @@
       "classOrder": [
         "cls_shodiyor_matematika_matematika"
       ],
+      "inviteCode": "SHODIYOR50",
       "login": "shodiyor50",
       "password": "shodiyor2026",
       "salarySharePercent": 50,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0,
+      "unpaidMonths": 0,
+      "monthlySalary": 0
+    },
+    {
+      "id": "t_urolov_azizbek",
+      "name": "Azizbek Urolov",
+      "email": "azizbek.urolov@ethith.uz",
+      "subject": "Ingliz tili (Upper / Inter)",
+      "hourlyRate": 120000,
+      "teachingHours": 0,
+      "card": "8600 9184 5348 5520",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_urolov_azizbek_upper",
+        "cls_urolov_azizbek_standard",
+        "cls_urolov_azizbek_intermediate",
+        "cls_urolov_azizbek_practice"
+      ],
+      "classOrder": [
+        "cls_urolov_azizbek_upper",
+        "cls_urolov_azizbek_standard",
+        "cls_urolov_azizbek_intermediate",
+        "cls_urolov_azizbek_practice"
+      ],
+      "login": "azizbek77",
+      "password": "azizbek2026",
+      "salarySharePercent": 55,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "SHODIYOR50",
+      "inviteCode": "AZIZBEK77",
       "unpaidMonths": 0
     },
     {
@@ -124552,5 +124574,5 @@
       }
     }
   },
-  "updatedAt": 1793544595535
+  "updatedAt": 1793544676650
 }
