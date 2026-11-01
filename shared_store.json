@@ -123738,8 +123738,8 @@
         "y": 60,
         "w": 16,
         "h": 2.2,
-        "top": 60,
-        "left": 15,
+        "top": 72.7,
+        "left": 19.8,
         "width": 16,
         "height": 2.2,
         "correct": [
@@ -123753,8 +123753,8 @@
         "y": 66,
         "w": 16,
         "h": 2.2,
-        "top": 66,
-        "left": 15,
+        "top": 75.3,
+        "left": 13.7,
         "width": 16,
         "height": 2.2,
         "correct": [
@@ -123940,6 +123940,232 @@
         "height": 2.2,
         "correct": [
           "meeting room"
+        ]
+      }
+    ],
+    "4081": [
+      {
+        "id": "p4081_ex5a_2",
+        "type": "fill",
+        "x": 10,
+        "y": 23,
+        "w": 38,
+        "h": 2.2,
+        "top": 21.6,
+        "left": 11.2,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "Those children have studied English since last year.",
+          "Those children have studied English since last year"
+        ]
+      },
+      {
+        "id": "p4081_ex5a_3",
+        "type": "fill",
+        "x": 10,
+        "y": 26.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 25,
+        "left": 11.1,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "My wife has liked the same music since she was a student.",
+          "My wife has liked the same music since she was a student"
+        ]
+      },
+      {
+        "id": "p4081_ex5a_4",
+        "type": "fill",
+        "x": 10,
+        "y": 30,
+        "w": 38,
+        "h": 2.2,
+        "top": 28.5,
+        "left": 11.3,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "My parents have been married for 30 years.",
+          "My parents have been married for 30 years"
+        ]
+      },
+      {
+        "id": "p4081_ex5a_5",
+        "type": "fill",
+        "x": 10,
+        "y": 33.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 33.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "John has worked as a teacher since he left university.",
+          "John has worked as a teacher since he left university"
+        ]
+      },
+      {
+        "id": "p4081_ex6_1",
+        "type": "fill",
+        "x": 10,
+        "y": 58.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 58.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "How long have you had your current job? I've had it for seven years.",
+          "I've had it for seven years"
+        ]
+      },
+      {
+        "id": "p4081_ex6_2",
+        "type": "fill",
+        "x": 10,
+        "y": 63.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 63.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "How long has your sister lived abroad? She's lived abroad for three months.",
+          "She's lived abroad for three months"
+        ]
+      },
+      {
+        "id": "p4081_ex6_3",
+        "type": "fill",
+        "x": 10,
+        "y": 68.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 68.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "How long have your parents worked in engineering? They have worked in engineering since they were young.",
+          "since they were young"
+        ]
+      },
+      {
+        "id": "p4081_ex6_4",
+        "type": "fill",
+        "x": 10,
+        "y": 73.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 73.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "How long have you known your best friend? I've known him for ages.",
+          "I've known him for ages"
+        ]
+      },
+      {
+        "id": "p4081_ex6_5",
+        "type": "fill",
+        "x": 10,
+        "y": 78.5,
+        "w": 38,
+        "h": 2.2,
+        "top": 78.5,
+        "left": 10,
+        "width": 38,
+        "height": 2.2,
+        "correct": [
+          "How long has your partner been a software developer? He's been one since he left university.",
+          "since he left university"
+        ]
+      },
+      {
+        "id": "p4081_ex7_1",
+        "type": "fill",
+        "x": 55,
+        "y": 52,
+        "w": 16,
+        "h": 2.2,
+        "top": 52,
+        "left": 55,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "has loved science since",
+          "has loved"
+        ]
+      },
+      {
+        "id": "p4081_ex7_2",
+        "type": "fill",
+        "x": 55,
+        "y": 57,
+        "w": 16,
+        "h": 2.2,
+        "top": 57,
+        "left": 55,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "has been",
+          "'s been"
+        ]
+      },
+      {
+        "id": "p4081_ex7_3",
+        "type": "fill",
+        "x": 55,
+        "y": 62,
+        "w": 16,
+        "h": 2.2,
+        "top": 62,
+        "left": 55,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "hasn't been able to",
+          "has not been able to"
+        ]
+      },
+      {
+        "id": "p4081_ex7_4",
+        "type": "fill",
+        "x": 55,
+        "y": 67,
+        "w": 16,
+        "h": 2.2,
+        "top": 67,
+        "left": 55,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "has used",
+          "has been using"
+        ]
+      },
+      {
+        "id": "p4081_ex7_5",
+        "type": "fill",
+        "x": 55,
+        "y": 74,
+        "w": 16,
+        "h": 2.2,
+        "top": 74,
+        "left": 55,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "has written",
+          "wrote"
         ]
       }
     ],
@@ -125948,7 +126174,8 @@
     "4007": 1793549222748,
     "4008": 1793549222748,
     "4009": 1793549222748,
-    "4080": 1793549685386,
+    "4080": 1793549689267,
+    "4081": 1793549700868,
     "4082": 1793549634945,
     "4083": 1793549634945,
     "4084": 1793549330827,
@@ -126953,5 +127180,5 @@
       }
     }
   },
-  "updatedAt": 1793549687385
+  "updatedAt": 1793549704043
 }
