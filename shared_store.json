@@ -119241,22 +119241,6 @@
     ],
     "3079": [
       {
-        "id": "p3079_ex1_1",
-        "type": "fill",
-        "x": 11,
-        "y": 35,
-        "w": 35,
-        "h": 2.2,
-        "correct": [
-          "Shall I send him a text?",
-          "Shall I send him a text"
-        ],
-        "top": 22.4,
-        "left": 11.8,
-        "width": 35,
-        "height": 2.2
-      },
-      {
         "id": "p3079_ex1_2",
         "type": "fill",
         "x": 11,
@@ -119315,8 +119299,8 @@
           "Would you like me to show you?",
           "Would you like me to show you"
         ],
-        "top": 49,
-        "left": 11,
+        "top": 37.2,
+        "left": 12.3,
         "width": 35,
         "height": 2.2
       },
@@ -119331,8 +119315,8 @@
           "Shall I phone for a pizza?",
           "Shall I phone for a pizza"
         ],
-        "top": 52.5,
-        "left": 11,
+        "top": 40.2,
+        "left": 12.4,
         "width": 35,
         "height": 2.2
       }
@@ -121349,7 +121333,7 @@
     "3076": 1793517084178,
     "3077": 1793517084178,
     "3078": 1793517191008,
-    "3079": 1793517211198,
+    "3079": 1793517219541,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -122059,5 +122043,5 @@
       }
     }
   },
-  "updatedAt": 1793517213732
+  "updatedAt": 1793517229357
 }
