@@ -118942,38 +118942,6 @@
         "height": 2.2
       },
       {
-        "id": "p3078_ex3_1",
-        "type": "fill",
-        "x": 11,
-        "y": 70,
-        "w": 35,
-        "h": 2.2,
-        "correct": [
-          "Janine is a very nice person.",
-          "Janine is a very nice person"
-        ],
-        "top": 66.1,
-        "left": 15,
-        "width": 35,
-        "height": 2.2
-      },
-      {
-        "id": "p3078_ex3_2",
-        "type": "fill",
-        "x": 11,
-        "y": 73.5,
-        "w": 35,
-        "h": 2.2,
-        "correct": [
-          "His exam results were really brilliant.",
-          "His exam results were really brilliant"
-        ],
-        "top": 68.6,
-        "left": 16.2,
-        "width": 35,
-        "height": 2.2
-      },
-      {
         "id": "p3078_ex3_3",
         "type": "fill",
         "x": 11,
@@ -119000,8 +118968,8 @@
           "Your dog is very noisy.",
           "Your dog is very noisy"
         ],
-        "top": 80.5,
-        "left": 11,
+        "top": 79.3,
+        "left": 13.2,
         "width": 35,
         "height": 2.2
       },
@@ -119016,8 +118984,8 @@
           "The singer was really terrible.",
           "The singer was really terrible"
         ],
-        "top": 84,
-        "left": 11,
+        "top": 82.7,
+        "left": 13.3,
         "width": 35,
         "height": 2.2
       },
@@ -119032,8 +119000,8 @@
           "We made a really huge cake for John's birthday.",
           "We made a really huge cake for John's birthday"
         ],
-        "top": 87.5,
-        "left": 11,
+        "top": 86,
+        "left": 13.1,
         "width": 38,
         "height": 2.2
       },
@@ -121282,7 +121250,7 @@
     "3075": 1793516970339,
     "3076": 1793517084178,
     "3077": 1793517084178,
-    "3078": 1793517178937,
+    "3078": 1793517191008,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -121992,5 +121960,5 @@
       }
     }
   },
-  "updatedAt": 1793517180065
+  "updatedAt": 1793517197055
 }
