@@ -80263,1707 +80263,2263 @@
             "height": 2.2
       }
 ],
-        "4004": [
-    {
-      "id": "p4004_ex1_2",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "1",
-      "label": "2",
-      "top": 36.4,
-      "left": 28,
-      "width": 4.5,
-      "height": 2,
-      "correct": [
-        "d",
-        "D"
-      ]
-    },
-    {
-      "id": "p4004_ex1_3",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "1",
-      "label": "3",
-      "top": 38.3,
-      "left": 28,
-      "width": 4.5,
-      "height": 2,
-      "correct": [
-        "f",
-        "F"
-      ]
-    },
-    {
-      "id": "p4004_ex1_4",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "1",
-      "label": "4",
-      "top": 41.3,
-      "left": 28,
-      "width": 4.5,
-      "height": 2,
-      "correct": [
-        "b",
-        "B"
-      ]
-    },
-    {
-      "id": "p4004_ex1_5",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "1",
-      "label": "5",
-      "top": 43.1,
-      "left": 28,
-      "width": 4.5,
-      "height": 2,
-      "correct": [
-        "h",
-        "H"
-      ]
-    },
-    {
-      "id": "p4004_ex1_6",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "1",
-      "label": "6",
-      "top": 44.8,
-      "left": 28,
-      "width": 4.5,
-      "height": 2,
-      "correct": [
-        "a",
-        "A"
-      ]
-    },
-    {
-      "id": "p4004_ex1_7",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "1",
-      "label": "7",
-      "top": 46.5,
-      "left": 28,
-      "width": 4.5,
-      "height": 2,
-      "correct": [
-        "c",
-        "C"
-      ]
-    },
-    {
-      "id": "p4004_ex1_8",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "1",
-      "label": "8",
-      "top": 48.2,
-      "left": 28,
-      "width": 4.5,
-      "height": 2,
-      "correct": [
-        "e",
-        "E"
-      ]
-    },
-    {
-      "id": "p4004_ex2_2",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "2",
-      "label": "2",
-      "top": 67.2,
-      "left": 14.5,
-      "width": 8.5,
-      "height": 2,
-      "correct": [
-        "do",
-        "Do"
-      ]
-    },
-    {
-      "id": "p4004_ex2_3",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "2",
-      "label": "3",
-      "top": 73.5,
-      "left": 14.5,
-      "width": 8.5,
-      "height": 2,
-      "correct": [
-        "do",
-        "Do"
-      ]
-    },
-    {
-      "id": "p4004_ex2_4",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "2",
-      "label": "4",
-      "top": 79.5,
-      "left": 14.5,
-      "width": 8.5,
-      "height": 2,
-      "correct": [
-        "have",
-        "Have"
-      ]
-    },
-    {
-      "id": "p4004_ex2_5",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "2",
-      "label": "5",
-      "top": 85.5,
-      "left": 14.5,
-      "width": 8.5,
-      "height": 2,
-      "correct": [
-        "go",
-        "Go"
-      ]
-    },
-    {
-      "id": "p4004_ex2_6",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "2",
-      "label": "6",
-      "top": 67.2,
-      "left": 32.5,
-      "width": 8.5,
-      "height": 2,
-      "correct": [
-        "have",
-        "Have"
-      ]
-    },
-    {
-      "id": "p4004_ex2_7",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "2",
-      "label": "7",
-      "top": 73.5,
-      "left": 32.5,
-      "width": 8.5,
-      "height": 2,
-      "correct": [
-        "have",
-        "Have"
-      ]
-    },
-    {
-      "id": "p4004_ex2_8",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "2",
-      "label": "8",
-      "top": 79.5,
-      "left": 32.5,
-      "width": 8.5,
-      "height": 2,
-      "correct": [
-        "make",
-        "Make"
-      ]
-    },
-    {
-      "id": "p4004_ex2_9",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "2",
-      "label": "9",
-      "top": 85.5,
-      "left": 32.5,
-      "width": 8.5,
-      "height": 2,
-      "correct": [
-        "do",
-        "Do"
-      ]
-    },
-    {
-      "id": "p4004_ex2_10",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "2",
-      "label": "10",
-      "top": 89.5,
-      "left": 32.5,
-      "width": 8.5,
-      "height": 2,
-      "correct": [
-        "have",
-        "Have"
-      ]
-    },
-    {
-      "id": "p4004_ex3_2",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "3",
-      "label": "2",
-      "top": 62.4,
-      "left": 56.5,
-      "width": 14.5,
-      "height": 2,
-      "correct": [
-        "go shopping",
-        "shop",
-        "Go shopping"
-      ]
-    },
-    {
-      "id": "p4004_ex3_3",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "3",
-      "label": "3",
-      "top": 67.4,
-      "left": 56,
-      "width": 16.5,
-      "height": 2,
-      "correct": [
-        "Do some exercise",
-        "do some exercise",
-        "Exercise"
-      ]
-    },
-    {
-      "id": "p4004_ex3_4",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "3",
-      "label": "4",
-      "top": 71.3,
-      "left": 63.5,
-      "width": 13.5,
-      "height": 2,
-      "correct": [
-        "stay in",
-        "Stay in"
-      ]
-    },
-    {
-      "id": "p4004_ex3_5",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "3",
-      "label": "5",
-      "top": 76.2,
-      "left": 56,
-      "width": 16.5,
-      "height": 2,
-      "correct": [
-        "Have an early night",
-        "have an early night"
-      ]
-    },
-    {
-      "id": "p4004_ex3_6",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "3",
-      "label": "6",
-      "top": 79.8,
-      "left": 60.5,
-      "width": 14.5,
-      "height": 2,
-      "correct": [
-        "go to bed late",
-        "Go to bed late"
-      ]
-    },
-    {
-      "id": "p4004_ex3_7",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "3",
-      "label": "7",
-      "top": 84.6,
-      "left": 56,
-      "width": 18,
-      "height": 2,
-      "correct": [
-        "Spend time with relatives",
-        "spend time with relatives",
-        "Spend time with relatives and friends"
-      ]
-    },
-    {
-      "id": "p4004_ex3_8",
-      "type": "fill",
-      "page": 4004,
-      "exercise": "3",
-      "label": "8",
-      "top": 88.3,
-      "left": 61.5,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "have a good time",
-        "Have a good time"
-      ]
-    }
-  ],
-  "4005": [
-    {
-      "id": "p4005_ex4_2",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "4a",
-      "label": "2",
-      "top": 23.5,
-      "left": 12.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "Who",
-        "who"
-      ]
-    },
-    {
-      "id": "p4005_ex4_3",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "4a",
-      "label": "3",
-      "top": 28.5,
-      "left": 12.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "Where",
-        "where"
-      ]
-    },
-    {
-      "id": "p4005_ex4_4",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "4a",
-      "label": "4",
-      "top": 31.9,
-      "left": 12.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "How much",
-        "how much"
-      ]
-    },
-    {
-      "id": "p4005_ex4_5",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "4a",
-      "label": "5",
-      "top": 35.3,
-      "left": 12.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "When",
-        "when",
-        "What time",
-        "what time"
-      ]
-    },
-    {
-      "id": "p4005_ex4_6",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "4a",
-      "label": "6",
-      "top": 38.8,
-      "left": 12.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "How often",
-        "how often"
-      ]
-    },
-    {
-      "id": "p4005_ex4_7",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "4a",
-      "label": "7",
-      "top": 42.2,
-      "left": 12.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "How many",
-        "how many"
-      ]
-    },
-    {
-      "id": "p4005_ex4_8",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "4a",
-      "label": "8",
-      "top": 45.6,
-      "left": 12.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "What kind",
-        "what kind"
-      ]
-    },
-    {
-      "id": "p4005_ex5_2",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "5a",
-      "label": "2",
-      "top": 62.4,
-      "left": 29,
-      "width": 19,
-      "height": 1.8,
-      "correct": [
-        "Who do you chat with online?",
-        "do",
-        "Who do you chat with online"
-      ]
-    },
-    {
-      "id": "p4005_ex5_3",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "5a",
-      "label": "3",
-      "top": 64.5,
-      "left": 29,
-      "width": 19,
-      "height": 1.8,
-      "correct": [
-        "What kind of films do you like?",
-        "of",
-        "What kind of films do you like"
-      ]
-    },
-    {
-      "id": "p4005_ex5_4",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "5a",
-      "label": "4",
-      "top": 66.5,
-      "left": 29,
-      "width": 19,
-      "height": 1.8,
-      "correct": [
-        "Are you busy right now?",
-        "you",
-        "Are you busy right now"
-      ]
-    },
-    {
-      "id": "p4005_ex5_5",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "5a",
-      "label": "5",
-      "top": 68.5,
-      "left": 29,
-      "width": 19,
-      "height": 1.8,
-      "correct": [
-        "How often do you spend time with relatives?",
-        "often",
-        "How often do you spend time with relatives"
-      ]
-    },
-    {
-      "id": "p4005_ex5_6",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "5a",
-      "label": "6",
-      "top": 70.5,
-      "left": 29,
-      "width": 19,
-      "height": 1.8,
-      "correct": [
-        "How many hours did you sleep last night?",
-        "hours",
-        "How many hours did you sleep last night"
-      ]
-    },
-    {
-      "id": "p4005_ex5_7",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "5a",
-      "label": "7",
-      "top": 72.5,
-      "left": 29,
-      "width": 19,
-      "height": 1.8,
-      "correct": [
-        "Where are you from?",
-        "are",
-        "Where are you from"
-      ]
-    },
-    {
-      "id": "p4005_ex5_8",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "5a",
-      "label": "8",
-      "top": 74.5,
-      "left": 29,
-      "width": 19,
-      "height": 1.8,
-      "correct": [
-        "Did you go shopping yesterday?",
-        "did",
-        "Did you go shopping yesterday"
-      ]
-    },
-    {
-      "id": "p4005_ex6_2",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "6",
-      "label": "2",
-      "top": 48.8,
-      "left": 63.5,
-      "width": 11.5,
-      "height": 2,
-      "correct": [
-        "Did you have",
-        "did you have"
-      ]
-    },
-    {
-      "id": "p4005_ex6_3",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "6",
-      "label": "3",
-      "top": 55.3,
-      "left": 55.3,
-      "width": 16,
-      "height": 2,
-      "correct": [
-        "When did you start",
-        "when did you start"
-      ]
-    },
-    {
-      "id": "p4005_ex6_4",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "6",
-      "label": "4",
-      "top": 58.7,
-      "left": 55.3,
-      "width": 16,
-      "height": 2,
-      "correct": [
-        "Were you",
-        "were you",
-        "Are you",
-        "are you"
-      ]
-    },
-    {
-      "id": "p4005_ex6_5",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "6",
-      "label": "5",
-      "top": 62.2,
-      "left": 60.5,
-      "width": 13.5,
-      "height": 2,
-      "correct": [
-        "many did you win",
-        "did you win",
-        "many did you win?",
-        "How many did you win"
-      ]
-    },
-    {
-      "id": "p4005_ex6_6",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "6",
-      "label": "6",
-      "top": 67.2,
-      "left": 72,
-      "width": 11,
-      "height": 2,
-      "correct": [
-        "do you live",
-        "Do you live"
-      ]
-    },
-    {
-      "id": "p4005_ex6_7",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "6",
-      "label": "7",
-      "top": 72.2,
-      "left": 62.5,
-      "width": 13.5,
-      "height": 2,
-      "correct": [
-        "How did you get",
-        "how did you get"
-      ]
-    },
-    {
-      "id": "p4005_ex6_8",
-      "type": "fill",
-      "page": 4005,
-      "exercise": "6",
-      "label": "8",
-      "top": 77.1,
-      "left": 66.5,
-      "width": 12,
-      "height": 2,
-      "correct": [
-        "Do you want",
-        "do you want"
-      ]
-    }
-  ],
-  "4006": [
-    {
-      "id": "p4006_ex1a_2",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "1a",
-      "label": "2",
-      "top": 31.2,
-      "left": 11,
-      "width": 37,
-      "height": 2,
-      "correct": [
-        "My girlfriend goes running every now and then.",
-        "My girlfriend goes running every now and then",
-        "Every now and then my girlfriend goes running.",
-        "Every now and then my girlfriend goes running"
-      ]
-    },
-    {
-      "id": "p4006_ex1a_3",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "1a",
-      "label": "3",
-      "top": 35.8,
-      "left": 11,
-      "width": 37,
-      "height": 2,
-      "correct": [
-        "We don't usually go camping in the summer.",
-        "We don't usually go camping in the summer",
-        "We do not usually go camping in the summer.",
-        "We do not usually go camping in the summer"
-      ]
-    },
-    {
-      "id": "p4006_ex1a_4",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "1a",
-      "label": "4",
-      "top": 40.5,
-      "left": 11,
-      "width": 37,
-      "height": 2,
-      "correct": [
-        "My best friend does aerobics once or twice a week.",
-        "My best friend does aerobics once or twice a week"
-      ]
-    },
-    {
-      "id": "p4006_ex1a_5",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "1a",
-      "label": "5",
-      "top": 45.2,
-      "left": 11,
-      "width": 37,
-      "height": 2,
-      "correct": [
-        "I hardly ever play computer games.",
-        "I hardly ever play computer games"
-      ]
-    },
-    {
-      "id": "p4006_ex1a_6",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "1a",
-      "label": "6",
-      "top": 49.8,
-      "left": 11,
-      "width": 37,
-      "height": 2,
-      "correct": [
-        "My family don't often make future plans.",
-        "My family don't often make future plans",
-        "My family doesn't often make future plans.",
-        "My family doesn't often make future plans"
-      ]
-    },
-    {
-      "id": "p4006_ex2_2",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "2",
-      "label": "2",
-      "top": 63.8,
-      "left": 16,
-      "width": 18,
-      "height": 2,
-      "correct": [
-        "rarely have a lie-in",
-        "rarely have a lie in",
-        "rarely"
-      ]
-    },
-    {
-      "id": "p4006_ex2_3",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "2",
-      "label": "3",
-      "top": 71,
-      "left": 11,
-      "width": 23,
-      "height": 2,
-      "correct": [
-        "Most days my sister goes on Facebook",
-        "My sister goes on Facebook most days",
-        "goes on Facebook most days"
-      ]
-    },
-    {
-      "id": "p4006_ex2_4",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "2",
-      "label": "4",
-      "top": 78.5,
-      "left": 19,
-      "width": 20,
-      "height": 2,
-      "correct": [
-        "go on holiday once or twice a year",
-        "go on holiday once or twice a year."
-      ]
-    },
-    {
-      "id": "p4006_ex2_5",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "2",
-      "label": "5",
-      "top": 86,
-      "left": 11,
-      "width": 20,
-      "height": 2,
-      "correct": [
-        "Every now and then we go clubbing",
-        "We go clubbing every now and then",
-        "go clubbing every now and then"
-      ]
-    },
-    {
-      "id": "p4006_ex3_2",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "3",
-      "label": "2",
-      "top": 60.5,
-      "left": 74,
-      "width": 15,
-      "height": 2,
-      "correct": [
-        "is never",
-        "never is",
-        "never"
-      ]
-    },
-    {
-      "id": "p4006_ex3_3",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "3",
-      "label": "3",
-      "top": 63.5,
-      "left": 74,
-      "width": 15,
-      "height": 2,
-      "correct": [
-        "always eat healthily",
-        "always eat"
-      ]
-    },
-    {
-      "id": "p4006_ex3_4",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "3",
-      "label": "4",
-      "top": 69.5,
-      "left": 58,
-      "width": 15,
-      "height": 2,
-      "correct": [
-        "nearly always go",
-        "nearly always"
-      ]
-    },
-    {
-      "id": "p4006_ex3_5",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "3",
-      "label": "5",
-      "top": 75.5,
-      "left": 58,
-      "width": 16,
-      "height": 2,
-      "correct": [
-        "sometimes watch videos",
-        "sometimes watch"
-      ]
-    },
-    {
-      "id": "p4006_ex3_6",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "3",
-      "label": "6",
-      "top": 80.5,
-      "left": 75,
-      "width": 15,
-      "height": 2,
-      "correct": [
-        "occasionally spend time with relatives",
-        "occasionally",
-        "spend time with relatives"
-      ]
-    },
-    {
-      "id": "p4006_ex3_7",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "3",
-      "label": "7",
-      "top": 84.5,
-      "left": 71,
-      "width": 15,
-      "height": 2,
-      "correct": [
-        "often chat with friends online",
-        "often chat",
-        "chat with friends online"
-      ]
-    },
-    {
-      "id": "p4006_ex3_8",
-      "type": "fill",
-      "page": 4006,
-      "exercise": "3",
-      "label": "8",
-      "top": 89.5,
-      "left": 58,
-      "width": 15,
-      "height": 2,
-      "correct": [
-        "are usually",
-        "usually are",
-        "usually"
-      ]
-    }
-  ],
-  "4007": [
-    {
-      "id": "p4007_ex4_2",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "4",
-      "label": "2",
-      "top": 42.5,
-      "left": 31,
-      "width": 13,
-      "height": 2,
-      "correct": [
-        "go on Facebook",
-        "Go on Facebook",
-        "on Facebook"
-      ]
-    },
-    {
-      "id": "p4007_ex4_3",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "4",
-      "label": "3",
-      "top": 56.5,
-      "left": 11,
-      "width": 13,
-      "height": 2,
-      "correct": [
-        "go clubbing",
-        "Go clubbing",
-        "clubbing"
-      ]
-    },
-    {
-      "id": "p4007_ex4_4",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "4",
-      "label": "4",
-      "top": 56.5,
-      "left": 31,
-      "width": 13,
-      "height": 2,
-      "correct": [
-        "do aerobics",
-        "Do aerobics",
-        "go to the gym"
-      ]
-    },
-    {
-      "id": "p4007_ex4_5",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "4",
-      "label": "5",
-      "top": 70.5,
-      "left": 11,
-      "width": 13,
-      "height": 2,
-      "correct": [
-        "go to the gym",
-        "Go to the gym"
-      ]
-    },
-    {
-      "id": "p4007_ex4_6",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "4",
-      "label": "6",
-      "top": 70.5,
-      "left": 31,
-      "width": 13,
-      "height": 2,
-      "correct": [
-        "play cards",
-        "Play cards",
-        "cards"
-      ]
-    },
-    {
-      "id": "p4007_ex4_7",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "4",
-      "label": "7",
-      "top": 84.5,
-      "left": 11,
-      "width": 13,
-      "height": 2,
-      "correct": [
-        "do yoga",
-        "Do yoga",
-        "yoga"
-      ]
-    },
-    {
-      "id": "p4007_ex4_8",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "4",
-      "label": "8",
-      "top": 84.5,
-      "left": 31,
-      "width": 13,
-      "height": 2,
-      "correct": [
-        "go camping",
-        "Go camping",
-        "camping"
-      ]
-    },
-    {
-      "id": "p4007_ex5_2",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "5",
-      "label": "2",
-      "top": 24.5,
-      "left": 59.5,
-      "width": 33,
-      "height": 2,
-      "correct": [
-        "swimming",
-        "Swimming"
-      ]
-    },
-    {
-      "id": "p4007_ex5_3",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "5",
-      "label": "3",
-      "top": 29.5,
-      "left": 59.5,
-      "width": 33,
-      "height": 2,
-      "correct": [
-        "golf",
-        "Golf"
-      ]
-    },
-    {
-      "id": "p4007_ex5_4",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "5",
-      "label": "4",
-      "top": 33.5,
-      "left": 59.5,
-      "width": 33,
-      "height": 2,
-      "correct": [
-        "basketball",
-        "Basketball"
-      ]
-    },
-    {
-      "id": "p4007_ex5_5",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "5",
-      "label": "5",
-      "top": 38.5,
-      "left": 59.5,
-      "width": 33,
-      "height": 2,
-      "correct": [
-        "karate",
-        "Karate"
-      ]
-    },
-    {
-      "id": "p4007_ex5_6",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "5",
-      "label": "6",
-      "top": 42.5,
-      "left": 59.5,
-      "width": 33,
-      "height": 2,
-      "correct": [
-        "exercise",
-        "Exercise"
-      ]
-    },
-    {
-      "id": "p4007_ex6_2",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "6",
-      "label": "2",
-      "top": 60.5,
-      "left": 57,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "go swimming",
-        "swim",
-        "Go swimming"
-      ]
-    },
-    {
-      "id": "p4007_ex6_3",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "6",
-      "label": "3",
-      "top": 64.5,
-      "left": 57,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "do exercise",
-        "Do exercise",
-        "exercise"
-      ]
-    },
-    {
-      "id": "p4007_ex6_4",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "6",
-      "label": "4",
-      "top": 68.5,
-      "left": 57,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "play golf",
-        "Play golf",
-        "golf"
-      ]
-    },
-    {
-      "id": "p4007_ex6_5",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "6",
-      "label": "5",
-      "top": 73.5,
-      "left": 57,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "go for a walk",
-        "Go for a walk",
-        "walk"
-      ]
-    },
-    {
-      "id": "p4007_ex6_6",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "6",
-      "label": "6",
-      "top": 76.5,
-      "left": 59.5,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "go running",
-        "run",
-        "Go running"
-      ]
-    },
-    {
-      "id": "p4007_ex6_7",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "6",
-      "label": "7",
-      "top": 81.5,
-      "left": 70,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "play football",
-        "football",
-        "Play football"
-      ]
-    },
-    {
-      "id": "p4007_ex6_8",
-      "type": "fill",
-      "page": 4007,
-      "exercise": "6",
-      "label": "8",
-      "top": 85.5,
-      "left": 73,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "go out for a meal",
-        "for a meal",
-        "have a meal"
-      ]
-    }
-  ],
-  "4008": [
-    {
-      "id": "p4008_ex1_2a",
-      "type": "fill",
-      "page": 4008,
-      "exercise": "1",
-      "label": "2a",
-      "top": 34,
-      "left": 39.5,
-      "width": 9,
-      "height": 2,
-      "correct": [
-        "experience",
-        "Experience"
-      ]
-    },
-    {
-      "id": "p4008_ex1_2b",
-      "type": "fill",
-      "page": 4008,
-      "exercise": "1",
-      "label": "2b",
-      "top": 36.5,
-      "left": 16,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "experience",
-        "Experience"
-      ]
-    },
-    {
-      "id": "p4008_ex1_3a",
-      "type": "fill",
-      "page": 4008,
-      "exercise": "1",
-      "label": "3a",
-      "top": 41.5,
-      "left": 24.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "plan",
-        "Plan"
-      ]
-    },
-    {
-      "id": "p4008_ex1_3b",
-      "type": "fill",
-      "page": 4008,
-      "exercise": "1",
-      "label": "3b",
-      "top": 44,
-      "left": 18,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "plan",
-        "Plan"
-      ]
-    },
-    {
-      "id": "p4008_ex1_4a",
-      "type": "fill",
-      "page": 4008,
-      "exercise": "1",
-      "label": "4a",
-      "top": 48.8,
-      "left": 33,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "dream",
-        "Dream"
-      ]
-    },
-    {
-      "id": "p4008_ex1_4b",
-      "type": "fill",
-      "page": 4008,
-      "exercise": "1",
-      "label": "4b",
-      "top": 51.5,
-      "left": 18,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "dream",
-        "Dream"
-      ]
-    },
-    {
-      "id": "p4008_ex1_5a",
-      "type": "fill",
-      "page": 4008,
-      "exercise": "1",
-      "label": "5a",
-      "top": 56.5,
-      "left": 42.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "text",
-        "Text"
-      ]
-    },
-    {
-      "id": "p4008_ex1_5b",
-      "type": "fill",
-      "page": 4008,
-      "exercise": "1",
-      "label": "5b",
-      "top": 59,
-      "left": 18,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "text",
-        "Text"
-      ]
-    }
-  ],
-  "4009": [
-    {
-      "id": "p4009_ex1_2",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "1",
-      "label": "2",
-      "top": 32.5,
-      "left": 29.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "showers",
-        "Showers"
-      ]
-    },
-    {
-      "id": "p4009_ex1_3",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "1",
-      "label": "3",
-      "top": 36,
-      "left": 23.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "mild",
-        "Mild"
-      ]
-    },
-    {
-      "id": "p4009_ex1_4",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "1",
-      "label": "4",
-      "top": 39.5,
-      "left": 27.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "pleasant",
-        "Pleasant"
-      ]
-    },
-    {
-      "id": "p4009_ex1_5",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "1",
-      "label": "5",
-      "top": 43.5,
-      "left": 28.5,
-      "width": 8,
-      "height": 2,
-      "correct": [
-        "humid",
-        "Humid"
-      ]
-    },
-    {
-      "id": "p4009_ex1_6",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "1",
-      "label": "6",
-      "top": 47,
-      "left": 27.5,
-      "width": 10,
-      "height": 2,
-      "correct": [
-        "thunderstorm",
-        "Thunderstorm"
-      ]
-    },
-    {
-      "id": "p4009_ex2_5",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "2",
-      "label": "5",
-      "top": 26.5,
-      "left": 56,
-      "width": 33,
-      "height": 2,
-      "correct": [
-        "don't mind doing housework",
-        "do not mind doing housework",
-        "I don't mind doing housework.",
-        "I don't mind doing housework"
-      ]
-    },
-    {
-      "id": "p4009_ex2_6",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "2",
-      "label": "6",
-      "top": 34,
-      "left": 56,
-      "width": 33,
-      "height": 2,
-      "correct": [
-        "'m not keen on thunderstorms",
-        "am not keen on thunderstorms",
-        "I'm not keen on thunderstorms.",
-        "I am not keen on thunderstorms"
-      ]
-    },
-    {
-      "id": "p4009_ex2_7",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "2",
-      "label": "7",
-      "top": 41.5,
-      "left": 56,
-      "width": 33,
-      "height": 2,
-      "correct": [
-        "quite like going camping",
-        "I quite like going camping.",
-        "I quite like going camping"
-      ]
-    },
-    {
-      "id": "p4009_ex2_8",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "2",
-      "label": "8",
-      "top": 48.5,
-      "left": 56,
-      "width": 33,
-      "height": 2,
-      "correct": [
-        "prefer football to golf",
-        "I prefer football to golf.",
-        "I prefer football to golf"
-      ]
-    },
-    {
-      "id": "p4009_ex2_9",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "2",
-      "label": "9",
-      "top": 56,
-      "left": 56,
-      "width": 33,
-      "height": 2,
-      "correct": [
-        "'m interested in doing karate",
-        "am interested in doing karate",
-        "I'm interested in doing karate.",
-        "I am interested in doing karate"
-      ]
-    },
-    {
-      "id": "p4009_ex5_1",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "5",
-      "label": "1",
-      "top": 76.5,
-      "left": 65,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "because",
-        "as"
-      ]
-    },
-    {
-      "id": "p4009_ex5_2",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "5",
-      "label": "2",
-      "top": 81.5,
-      "left": 65,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "so",
-        "therefore"
-      ]
-    },
-    {
-      "id": "p4009_ex5_3",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "5",
-      "label": "3",
-      "top": 86.5,
-      "left": 65,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "although",
-        "even though"
-      ]
-    },
-    {
-      "id": "p4009_ex5_4",
-      "type": "fill",
-      "page": 4009,
-      "exercise": "5",
-      "label": "4",
-      "top": 91.5,
-      "left": 65,
-      "width": 14,
-      "height": 2,
-      "correct": [
-        "but",
-        "however"
-      ]
-    }
-  ],
-  "4010": [
+                "4004": [
+      {
+            "id": "p4004_ex1_1",
+            "type": "fill",
+            "x": 27.5,
+            "y": 33.3,
+            "w": 4,
+            "h": 2,
+            "top": 33.3,
+            "left": 27.5,
+            "width": 4,
+            "height": 2,
+            "correct": [
+                  "g",
+                  "G",
+                  "1",
+                  "go on a trip"
+            ]
+      },
+      {
+            "id": "p4004_ex1_2",
+            "type": "fill",
+            "x": 27.5,
+            "y": 36.4,
+            "w": 4,
+            "h": 2,
+            "top": 36.4,
+            "left": 27.5,
+            "width": 4,
+            "height": 2,
+            "correct": [
+                  "d",
+                  "D",
+                  "2",
+                  "have fun"
+            ]
+      },
+      {
+            "id": "p4004_ex1_3",
+            "type": "fill",
+            "x": 27.5,
+            "y": 38.3,
+            "w": 4,
+            "h": 2,
+            "top": 38.3,
+            "left": 27.5,
+            "width": 4,
+            "height": 2,
+            "correct": [
+                  "f",
+                  "F",
+                  "3",
+                  "stay in"
+            ]
+      },
+      {
+            "id": "p4004_ex1_4",
+            "type": "fill",
+            "x": 27.5,
+            "y": 41.3,
+            "w": 4,
+            "h": 2,
+            "top": 41.3,
+            "left": 27.5,
+            "width": 4,
+            "height": 2,
+            "correct": [
+                  "b",
+                  "B",
+                  "4",
+                  "do some work"
+            ]
+      },
+      {
+            "id": "p4004_ex1_5",
+            "type": "fill",
+            "x": 27.5,
+            "y": 43.1,
+            "w": 4,
+            "h": 2,
+            "top": 43.1,
+            "left": 27.5,
+            "width": 4,
+            "height": 2,
+            "correct": [
+                  "e",
+                  "E",
+                  "5",
+                  "make a to-do list"
+            ]
+      },
+      {
+            "id": "p4004_ex1_6",
+            "type": "fill",
+            "x": 27.5,
+            "y": 44.8,
+            "w": 4,
+            "h": 2,
+            "top": 44.8,
+            "left": 27.5,
+            "width": 4,
+            "height": 2,
+            "correct": [
+                  "a",
+                  "A",
+                  "6",
+                  "spend time with relatives"
+            ]
+      },
+      {
+            "id": "p4004_ex1_7",
+            "type": "fill",
+            "x": 27.5,
+            "y": 46.5,
+            "w": 4,
+            "h": 2,
+            "top": 46.5,
+            "left": 27.5,
+            "width": 4,
+            "height": 2,
+            "correct": [
+                  "c",
+                  "C",
+                  "7",
+                  "eat healthy food"
+            ]
+      },
+      {
+            "id": "p4004_ex1_8",
+            "type": "fill",
+            "x": 27.5,
+            "y": 48.2,
+            "w": 4,
+            "h": 2,
+            "top": 48.2,
+            "left": 27.5,
+            "width": 4,
+            "height": 2,
+            "correct": [
+                  "h",
+                  "H",
+                  "8",
+                  "chat with friends online"
+            ]
+      },
+      {
+            "id": "p4004_ex2_2",
+            "type": "fill",
+            "x": 14.5,
+            "y": 67.2,
+            "w": 8.5,
+            "h": 2,
+            "top": 67.2,
+            "left": 14.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "do",
+                  "Do"
+            ]
+      },
+      {
+            "id": "p4004_ex2_3",
+            "type": "fill",
+            "x": 14.5,
+            "y": 73.5,
+            "w": 8.5,
+            "h": 2,
+            "top": 73.5,
+            "left": 14.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "do",
+                  "Do"
+            ]
+      },
+      {
+            "id": "p4004_ex2_4",
+            "type": "fill",
+            "x": 14.5,
+            "y": 79.5,
+            "w": 8.5,
+            "h": 2,
+            "top": 79.5,
+            "left": 14.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "have",
+                  "Have"
+            ]
+      },
+      {
+            "id": "p4004_ex2_5",
+            "type": "fill",
+            "x": 14.5,
+            "y": 85.5,
+            "w": 8.5,
+            "h": 2,
+            "top": 85.5,
+            "left": 14.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "go",
+                  "Go"
+            ]
+      },
+      {
+            "id": "p4004_ex2_6",
+            "type": "fill",
+            "x": 32.5,
+            "y": 67.2,
+            "w": 8.5,
+            "h": 2,
+            "top": 67.2,
+            "left": 32.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "have",
+                  "Have"
+            ]
+      },
+      {
+            "id": "p4004_ex2_7",
+            "type": "fill",
+            "x": 32.5,
+            "y": 73.5,
+            "w": 8.5,
+            "h": 2,
+            "top": 73.5,
+            "left": 32.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "have",
+                  "Have"
+            ]
+      },
+      {
+            "id": "p4004_ex2_8",
+            "type": "fill",
+            "x": 32.5,
+            "y": 79.5,
+            "w": 8.5,
+            "h": 2,
+            "top": 79.5,
+            "left": 32.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "make",
+                  "Make"
+            ]
+      },
+      {
+            "id": "p4004_ex2_9",
+            "type": "fill",
+            "x": 32.5,
+            "y": 85.5,
+            "w": 8.5,
+            "h": 2,
+            "top": 85.5,
+            "left": 32.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "do",
+                  "Do"
+            ]
+      },
+      {
+            "id": "p4004_ex2_10",
+            "type": "fill",
+            "x": 32.5,
+            "y": 89.5,
+            "w": 8.5,
+            "h": 2,
+            "top": 89.5,
+            "left": 32.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "have",
+                  "Have"
+            ]
+      },
+      {
+            "id": "p4004_ex3_2",
+            "type": "fill",
+            "x": 56.5,
+            "y": 62.4,
+            "w": 15,
+            "h": 2,
+            "top": 62.4,
+            "left": 56.5,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "go shopping",
+                  "Go shopping",
+                  "shop"
+            ]
+      },
+      {
+            "id": "p4004_ex3_3",
+            "type": "fill",
+            "x": 56,
+            "y": 67.4,
+            "w": 16.5,
+            "h": 2,
+            "top": 67.4,
+            "left": 56,
+            "width": 16.5,
+            "height": 2,
+            "correct": [
+                  "Do some exercise",
+                  "do some exercise",
+                  "exercise"
+            ]
+      },
+      {
+            "id": "p4004_ex3_4",
+            "type": "fill",
+            "x": 63.5,
+            "y": 71.3,
+            "w": 14,
+            "h": 2,
+            "top": 71.3,
+            "left": 63.5,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "stay in",
+                  "Stay in"
+            ]
+      },
+      {
+            "id": "p4004_ex3_5",
+            "type": "fill",
+            "x": 56,
+            "y": 76.2,
+            "w": 17.5,
+            "h": 2,
+            "top": 76.2,
+            "left": 56,
+            "width": 17.5,
+            "height": 2,
+            "correct": [
+                  "Have an early night",
+                  "have an early night"
+            ]
+      },
+      {
+            "id": "p4004_ex3_6",
+            "type": "fill",
+            "x": 60.5,
+            "y": 79.8,
+            "w": 15,
+            "h": 2,
+            "top": 79.8,
+            "left": 60.5,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "go to bed late",
+                  "Go to bed late"
+            ]
+      },
+      {
+            "id": "p4004_ex3_7",
+            "type": "fill",
+            "x": 56,
+            "y": 84.6,
+            "w": 20,
+            "h": 2,
+            "top": 84.6,
+            "left": 56,
+            "width": 20,
+            "height": 2,
+            "correct": [
+                  "Spend time with relatives",
+                  "spend time with relatives"
+            ]
+      },
+      {
+            "id": "p4004_ex3_8",
+            "type": "fill",
+            "x": 61.5,
+            "y": 88.3,
+            "w": 15,
+            "h": 2,
+            "top": 88.3,
+            "left": 61.5,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "have a good time",
+                  "Have a good time"
+            ]
+      }
+],
+    "4005": [
+      {
+            "id": "p4005_ex4_2",
+            "type": "fill",
+            "x": 12.5,
+            "y": 23.5,
+            "w": 8.5,
+            "h": 2,
+            "top": 23.5,
+            "left": 12.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "Who",
+                  "who"
+            ]
+      },
+      {
+            "id": "p4005_ex4_3",
+            "type": "fill",
+            "x": 12.5,
+            "y": 28.5,
+            "w": 8.5,
+            "h": 2,
+            "top": 28.5,
+            "left": 12.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "Where",
+                  "where"
+            ]
+      },
+      {
+            "id": "p4005_ex4_4",
+            "type": "fill",
+            "x": 12.5,
+            "y": 31.9,
+            "w": 10,
+            "h": 2,
+            "top": 31.9,
+            "left": 12.5,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "How much",
+                  "how much"
+            ]
+      },
+      {
+            "id": "p4005_ex4_5",
+            "type": "fill",
+            "x": 12.5,
+            "y": 35.3,
+            "w": 8.5,
+            "h": 2,
+            "top": 35.3,
+            "left": 12.5,
+            "width": 8.5,
+            "height": 2,
+            "correct": [
+                  "When",
+                  "when",
+                  "What time",
+                  "what time"
+            ]
+      },
+      {
+            "id": "p4005_ex4_6",
+            "type": "fill",
+            "x": 12.5,
+            "y": 38.8,
+            "w": 10,
+            "h": 2,
+            "top": 38.8,
+            "left": 12.5,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "How often",
+                  "how often"
+            ]
+      },
+      {
+            "id": "p4005_ex4_7",
+            "type": "fill",
+            "x": 12.5,
+            "y": 42.2,
+            "w": 10,
+            "h": 2,
+            "top": 42.2,
+            "left": 12.5,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "How many",
+                  "how many"
+            ]
+      },
+      {
+            "id": "p4005_ex4_8",
+            "type": "fill",
+            "x": 12.5,
+            "y": 45.6,
+            "w": 10,
+            "h": 2,
+            "top": 45.6,
+            "left": 12.5,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "What kind",
+                  "what kind"
+            ]
+      },
+      {
+            "id": "p4005_ex5_2",
+            "type": "fill",
+            "x": 29,
+            "y": 62.4,
+            "w": 20,
+            "h": 2,
+            "top": 62.4,
+            "left": 29,
+            "width": 20,
+            "height": 2,
+            "correct": [
+                  "do",
+                  "Who do you chat with online?",
+                  "Who do you chat with online"
+            ]
+      },
+      {
+            "id": "p4005_ex5_3",
+            "type": "fill",
+            "x": 29,
+            "y": 64.5,
+            "w": 20,
+            "h": 2,
+            "top": 64.5,
+            "left": 29,
+            "width": 20,
+            "height": 2,
+            "correct": [
+                  "of",
+                  "What kind of films do you like?",
+                  "What kind of films do you like"
+            ]
+      },
+      {
+            "id": "p4005_ex5_4",
+            "type": "fill",
+            "x": 29,
+            "y": 66.5,
+            "w": 20,
+            "h": 2,
+            "top": 66.5,
+            "left": 29,
+            "width": 20,
+            "height": 2,
+            "correct": [
+                  "you",
+                  "Are you busy right now?",
+                  "Are you busy right now"
+            ]
+      },
+      {
+            "id": "p4005_ex5_5",
+            "type": "fill",
+            "x": 29,
+            "y": 68.5,
+            "w": 20,
+            "h": 2,
+            "top": 68.5,
+            "left": 29,
+            "width": 20,
+            "height": 2,
+            "correct": [
+                  "often",
+                  "How often do you spend time with relatives?",
+                  "How often do you spend time with relatives"
+            ]
+      },
+      {
+            "id": "p4005_ex5_6",
+            "type": "fill",
+            "x": 29,
+            "y": 70.5,
+            "w": 20,
+            "h": 2,
+            "top": 70.5,
+            "left": 29,
+            "width": 20,
+            "height": 2,
+            "correct": [
+                  "hours",
+                  "How many hours did you sleep last night?",
+                  "How many hours did you sleep last night"
+            ]
+      },
+      {
+            "id": "p4005_ex5_7",
+            "type": "fill",
+            "x": 29,
+            "y": 72.5,
+            "w": 20,
+            "h": 2,
+            "top": 72.5,
+            "left": 29,
+            "width": 20,
+            "height": 2,
+            "correct": [
+                  "are",
+                  "Where are you from?",
+                  "Where are you from"
+            ]
+      },
+      {
+            "id": "p4005_ex5_8",
+            "type": "fill",
+            "x": 29,
+            "y": 74.5,
+            "w": 20,
+            "h": 2,
+            "top": 74.5,
+            "left": 29,
+            "width": 20,
+            "height": 2,
+            "correct": [
+                  "did",
+                  "Did you go shopping yesterday?",
+                  "Did you go shopping yesterday"
+            ]
+      },
+      {
+            "id": "p4005_ex6_2",
+            "type": "fill",
+            "x": 63.5,
+            "y": 48.8,
+            "w": 12.5,
+            "h": 2,
+            "top": 48.8,
+            "left": 63.5,
+            "width": 12.5,
+            "height": 2,
+            "correct": [
+                  "Did you have",
+                  "did you have"
+            ]
+      },
+      {
+            "id": "p4005_ex6_3",
+            "type": "fill",
+            "x": 55.3,
+            "y": 55.3,
+            "w": 17,
+            "h": 2,
+            "top": 55.3,
+            "left": 55.3,
+            "width": 17,
+            "height": 2,
+            "correct": [
+                  "When did you start",
+                  "when did you start"
+            ]
+      },
+      {
+            "id": "p4005_ex6_4",
+            "type": "fill",
+            "x": 55.3,
+            "y": 58.7,
+            "w": 14,
+            "h": 2,
+            "top": 58.7,
+            "left": 55.3,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "Were you",
+                  "were you",
+                  "Are you",
+                  "are you"
+            ]
+      },
+      {
+            "id": "p4005_ex6_5",
+            "type": "fill",
+            "x": 60.5,
+            "y": 62.2,
+            "w": 16,
+            "h": 2,
+            "top": 62.2,
+            "left": 60.5,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "many did you win",
+                  "did you win",
+                  "How many did you win",
+                  "many did you win?"
+            ]
+      },
+      {
+            "id": "p4005_ex6_6",
+            "type": "fill",
+            "x": 72,
+            "y": 67.2,
+            "w": 12,
+            "h": 2,
+            "top": 67.2,
+            "left": 72,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "do you live",
+                  "Do you live"
+            ]
+      },
+      {
+            "id": "p4005_ex6_7",
+            "type": "fill",
+            "x": 62.5,
+            "y": 72.2,
+            "w": 14.5,
+            "h": 2,
+            "top": 72.2,
+            "left": 62.5,
+            "width": 14.5,
+            "height": 2,
+            "correct": [
+                  "How did you get",
+                  "how did you get"
+            ]
+      },
+      {
+            "id": "p4005_ex6_8",
+            "type": "fill",
+            "x": 66.5,
+            "y": 77.1,
+            "w": 13,
+            "h": 2,
+            "top": 77.1,
+            "left": 66.5,
+            "width": 13,
+            "height": 2,
+            "correct": [
+                  "Do you want",
+                  "do you want"
+            ]
+      }
+],
+    "4006": [
+      {
+            "id": "p4006_ex1_2",
+            "type": "fill",
+            "x": 11,
+            "y": 28.5,
+            "w": 36,
+            "h": 2,
+            "top": 28.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "My girlfriend goes running every now and then.",
+                  "My girlfriend goes running every now and then"
+            ]
+      },
+      {
+            "id": "p4006_ex1_3",
+            "type": "fill",
+            "x": 11,
+            "y": 31.8,
+            "w": 36,
+            "h": 2,
+            "top": 31.8,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "We don't usually go camping in the summer.",
+                  "We do not usually go camping in the summer.",
+                  "We don't usually go camping in the summer"
+            ]
+      },
+      {
+            "id": "p4006_ex1_4",
+            "type": "fill",
+            "x": 11,
+            "y": 35.1,
+            "w": 36,
+            "h": 2,
+            "top": 35.1,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "My best friend does aerobics once or twice a week.",
+                  "My best friend does aerobics once or twice a week"
+            ]
+      },
+      {
+            "id": "p4006_ex1_5",
+            "type": "fill",
+            "x": 11,
+            "y": 38.4,
+            "w": 36,
+            "h": 2,
+            "top": 38.4,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "I hardly ever play computer games.",
+                  "I hardly ever play computer games"
+            ]
+      },
+      {
+            "id": "p4006_ex1_6",
+            "type": "fill",
+            "x": 11,
+            "y": 41.7,
+            "w": 36,
+            "h": 2,
+            "top": 41.7,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "My family don't often make future plans.",
+                  "My family does not often make future plans.",
+                  "My family don't often make future plans"
+            ]
+      },
+      {
+            "id": "p4006_ex2_2",
+            "type": "fill",
+            "x": 11,
+            "y": 56.5,
+            "w": 36,
+            "h": 2,
+            "top": 56.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "rarely have a lie-in",
+                  "rarely has a lie-in",
+                  "I rarely have a lie-in"
+            ]
+      },
+      {
+            "id": "p4006_ex2_3",
+            "type": "fill",
+            "x": 11,
+            "y": 60.5,
+            "w": 36,
+            "h": 2,
+            "top": 60.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "Most days my sister goes on Facebook",
+                  "goes on Facebook most days",
+                  "My sister goes on Facebook most days"
+            ]
+      },
+      {
+            "id": "p4006_ex2_4",
+            "type": "fill",
+            "x": 11,
+            "y": 64.5,
+            "w": 36,
+            "h": 2,
+            "top": 64.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "go on holiday once or twice a year",
+                  "goes on holiday once or twice a year",
+                  "We go on holiday once or twice a year"
+            ]
+      },
+      {
+            "id": "p4006_ex2_5",
+            "type": "fill",
+            "x": 11,
+            "y": 68.5,
+            "w": 36,
+            "h": 2,
+            "top": 68.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "Every now and then we go clubbing",
+                  "We go clubbing every now and then",
+                  "go clubbing every now and then"
+            ]
+      },
+      {
+            "id": "p4006_ex3_1",
+            "type": "fill",
+            "x": 58.5,
+            "y": 23.5,
+            "w": 18,
+            "h": 2,
+            "top": 23.5,
+            "left": 58.5,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "hardly ever have",
+                  "hardly ever"
+            ]
+      },
+      {
+            "id": "p4006_ex3_2",
+            "type": "fill",
+            "x": 58.5,
+            "y": 27.5,
+            "w": 12,
+            "h": 2,
+            "top": 27.5,
+            "left": 58.5,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "is never",
+                  "never"
+            ]
+      },
+      {
+            "id": "p4006_ex3_3",
+            "type": "fill",
+            "x": 58.5,
+            "y": 31.5,
+            "w": 18,
+            "h": 2,
+            "top": 31.5,
+            "left": 58.5,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "always eat healthily",
+                  "always eat"
+            ]
+      },
+      {
+            "id": "p4006_ex3_4",
+            "type": "fill",
+            "x": 58.5,
+            "y": 35.5,
+            "w": 18,
+            "h": 2,
+            "top": 35.5,
+            "left": 58.5,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "nearly always go",
+                  "nearly always"
+            ]
+      },
+      {
+            "id": "p4006_ex3_5",
+            "type": "fill",
+            "x": 58.5,
+            "y": 39.5,
+            "w": 18,
+            "h": 2,
+            "top": 39.5,
+            "left": 58.5,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "sometimes watch videos",
+                  "sometimes watch",
+                  "sometimes"
+            ]
+      },
+      {
+            "id": "p4006_ex3_6",
+            "type": "fill",
+            "x": 58.5,
+            "y": 43.5,
+            "w": 22,
+            "h": 2,
+            "top": 43.5,
+            "left": 58.5,
+            "width": 22,
+            "height": 2,
+            "correct": [
+                  "occasionally spend time with relatives",
+                  "occasionally spend time",
+                  "occasionally"
+            ]
+      },
+      {
+            "id": "p4006_ex3_7",
+            "type": "fill",
+            "x": 58.5,
+            "y": 47.5,
+            "w": 22,
+            "h": 2,
+            "top": 47.5,
+            "left": 58.5,
+            "width": 22,
+            "height": 2,
+            "correct": [
+                  "often chat with friends online",
+                  "often chat",
+                  "often"
+            ]
+      },
+      {
+            "id": "p4006_ex3_8",
+            "type": "fill",
+            "x": 58.5,
+            "y": 51.5,
+            "w": 14,
+            "h": 2,
+            "top": 51.5,
+            "left": 58.5,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "are usually",
+                  "usually"
+            ]
+      }
+],
+    "4007": [
+      {
+            "id": "p4007_ex4_1",
+            "type": "fill",
+            "x": 11,
+            "y": 42.5,
+            "w": 15,
+            "h": 2,
+            "top": 42.5,
+            "left": 11,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "play basketball",
+                  "Play basketball",
+                  "basketball"
+            ]
+      },
+      {
+            "id": "p4007_ex4_2",
+            "type": "fill",
+            "x": 31,
+            "y": 42.5,
+            "w": 15,
+            "h": 2,
+            "top": 42.5,
+            "left": 31,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "go on Facebook",
+                  "Go on Facebook",
+                  "Facebook"
+            ]
+      },
+      {
+            "id": "p4007_ex4_3",
+            "type": "fill",
+            "x": 11,
+            "y": 56.5,
+            "w": 15,
+            "h": 2,
+            "top": 56.5,
+            "left": 11,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "go clubbing",
+                  "Go clubbing",
+                  "clubbing"
+            ]
+      },
+      {
+            "id": "p4007_ex4_4",
+            "type": "fill",
+            "x": 31,
+            "y": 56.5,
+            "w": 15,
+            "h": 2,
+            "top": 56.5,
+            "left": 31,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "do aerobics",
+                  "Do aerobics",
+                  "aerobics"
+            ]
+      },
+      {
+            "id": "p4007_ex4_5",
+            "type": "fill",
+            "x": 11,
+            "y": 70.5,
+            "w": 15,
+            "h": 2,
+            "top": 70.5,
+            "left": 11,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "go to the gym",
+                  "Go to the gym",
+                  "gym"
+            ]
+      },
+      {
+            "id": "p4007_ex4_6",
+            "type": "fill",
+            "x": 31,
+            "y": 70.5,
+            "w": 15,
+            "h": 2,
+            "top": 70.5,
+            "left": 31,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "play cards",
+                  "Play cards",
+                  "cards"
+            ]
+      },
+      {
+            "id": "p4007_ex4_7",
+            "type": "fill",
+            "x": 11,
+            "y": 84.5,
+            "w": 15,
+            "h": 2,
+            "top": 84.5,
+            "left": 11,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "do yoga",
+                  "Do yoga",
+                  "yoga"
+            ]
+      },
+      {
+            "id": "p4007_ex4_8",
+            "type": "fill",
+            "x": 31,
+            "y": 84.5,
+            "w": 15,
+            "h": 2,
+            "top": 84.5,
+            "left": 31,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "go camping",
+                  "Go camping",
+                  "camping"
+            ]
+      },
+      {
+            "id": "p4007_ex5_2",
+            "type": "fill",
+            "x": 59.5,
+            "y": 24.5,
+            "w": 15,
+            "h": 2,
+            "top": 24.5,
+            "left": 59.5,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "swimming",
+                  "Swimming"
+            ]
+      },
+      {
+            "id": "p4007_ex5_3",
+            "type": "fill",
+            "x": 59.5,
+            "y": 29.5,
+            "w": 15,
+            "h": 2,
+            "top": 29.5,
+            "left": 59.5,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "golf",
+                  "Golf"
+            ]
+      },
+      {
+            "id": "p4007_ex5_4",
+            "type": "fill",
+            "x": 59.5,
+            "y": 33.5,
+            "w": 15,
+            "h": 2,
+            "top": 33.5,
+            "left": 59.5,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "basketball",
+                  "Basketball"
+            ]
+      },
+      {
+            "id": "p4007_ex5_5",
+            "type": "fill",
+            "x": 59.5,
+            "y": 38.5,
+            "w": 15,
+            "h": 2,
+            "top": 38.5,
+            "left": 59.5,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "karate",
+                  "Karate"
+            ]
+      },
+      {
+            "id": "p4007_ex5_6",
+            "type": "fill",
+            "x": 59.5,
+            "y": 42.5,
+            "w": 15,
+            "h": 2,
+            "top": 42.5,
+            "left": 59.5,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "exercise",
+                  "Exercise"
+            ]
+      },
+      {
+            "id": "p4007_ex6_2",
+            "type": "fill",
+            "x": 57,
+            "y": 60.5,
+            "w": 16,
+            "h": 2,
+            "top": 60.5,
+            "left": 57,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "go swimming",
+                  "swim",
+                  "Go swimming"
+            ]
+      },
+      {
+            "id": "p4007_ex6_3",
+            "type": "fill",
+            "x": 57,
+            "y": 64.5,
+            "w": 16,
+            "h": 2,
+            "top": 64.5,
+            "left": 57,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "do exercise",
+                  "Do exercise",
+                  "exercise"
+            ]
+      },
+      {
+            "id": "p4007_ex6_4",
+            "type": "fill",
+            "x": 57,
+            "y": 68.5,
+            "w": 16,
+            "h": 2,
+            "top": 68.5,
+            "left": 57,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "play golf",
+                  "Play golf",
+                  "golf"
+            ]
+      },
+      {
+            "id": "p4007_ex6_5",
+            "type": "fill",
+            "x": 57,
+            "y": 73.5,
+            "w": 16,
+            "h": 2,
+            "top": 73.5,
+            "left": 57,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "go for a walk",
+                  "Go for a walk",
+                  "walk"
+            ]
+      },
+      {
+            "id": "p4007_ex6_6",
+            "type": "fill",
+            "x": 59.5,
+            "y": 76.5,
+            "w": 16,
+            "h": 2,
+            "top": 76.5,
+            "left": 59.5,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "go running",
+                  "run",
+                  "Go running"
+            ]
+      },
+      {
+            "id": "p4007_ex6_7",
+            "type": "fill",
+            "x": 70,
+            "y": 81.5,
+            "w": 16,
+            "h": 2,
+            "top": 81.5,
+            "left": 70,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "play football",
+                  "football",
+                  "Play football"
+            ]
+      },
+      {
+            "id": "p4007_ex6_8",
+            "type": "fill",
+            "x": 73,
+            "y": 85.5,
+            "w": 16,
+            "h": 2,
+            "top": 85.5,
+            "left": 73,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "go for a meal",
+                  "for a meal",
+                  "go out for a meal",
+                  "have a meal"
+            ]
+      }
+],
+    "4008": [
+      {
+            "id": "p4008_ex1_2a",
+            "type": "fill",
+            "x": 39.5,
+            "y": 34,
+            "w": 10,
+            "h": 2,
+            "top": 34,
+            "left": 39.5,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "experience",
+                  "Experience"
+            ]
+      },
+      {
+            "id": "p4008_ex1_2b",
+            "type": "fill",
+            "x": 16,
+            "y": 36.5,
+            "w": 10,
+            "h": 2,
+            "top": 36.5,
+            "left": 16,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "experience",
+                  "Experience"
+            ]
+      },
+      {
+            "id": "p4008_ex1_3a",
+            "type": "fill",
+            "x": 24.5,
+            "y": 41.5,
+            "w": 10,
+            "h": 2,
+            "top": 41.5,
+            "left": 24.5,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "plan",
+                  "Plan"
+            ]
+      },
+      {
+            "id": "p4008_ex1_3b",
+            "type": "fill",
+            "x": 18,
+            "y": 44,
+            "w": 10,
+            "h": 2,
+            "top": 44,
+            "left": 18,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "plan",
+                  "Plan"
+            ]
+      },
+      {
+            "id": "p4008_ex1_4a",
+            "type": "fill",
+            "x": 33,
+            "y": 48.8,
+            "w": 10,
+            "h": 2,
+            "top": 48.8,
+            "left": 33,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "dream",
+                  "Dream"
+            ]
+      },
+      {
+            "id": "p4008_ex1_4b",
+            "type": "fill",
+            "x": 18,
+            "y": 51.5,
+            "w": 10,
+            "h": 2,
+            "top": 51.5,
+            "left": 18,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "dream",
+                  "Dream"
+            ]
+      },
+      {
+            "id": "p4008_ex1_5a",
+            "type": "fill",
+            "x": 42.5,
+            "y": 56.5,
+            "w": 10,
+            "h": 2,
+            "top": 56.5,
+            "left": 42.5,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "text",
+                  "Text"
+            ]
+      },
+      {
+            "id": "p4008_ex1_5b",
+            "type": "fill",
+            "x": 18,
+            "y": 59,
+            "w": 10,
+            "h": 2,
+            "top": 59,
+            "left": 18,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "text",
+                  "Text"
+            ]
+      },
+      {
+            "id": "p4008_ex1_6a",
+            "type": "fill",
+            "x": 35,
+            "y": 63.5,
+            "w": 10,
+            "h": 2,
+            "top": 63.5,
+            "left": 35,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "promise",
+                  "Promise"
+            ]
+      },
+      {
+            "id": "p4008_ex1_6b",
+            "type": "fill",
+            "x": 18,
+            "y": 66,
+            "w": 10,
+            "h": 2,
+            "top": 66,
+            "left": 18,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "promise",
+                  "Promise"
+            ]
+      },
+      {
+            "id": "p4008_ex1_7a",
+            "type": "fill",
+            "x": 30,
+            "y": 71,
+            "w": 10,
+            "h": 2,
+            "top": 71,
+            "left": 30,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "posts",
+                  "post",
+                  "Posts"
+            ]
+      },
+      {
+            "id": "p4008_ex1_7b",
+            "type": "fill",
+            "x": 18,
+            "y": 73.5,
+            "w": 10,
+            "h": 2,
+            "top": 73.5,
+            "left": 18,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "post",
+                  "Post"
+            ]
+      },
+      {
+            "id": "p4008_ex2_1",
+            "type": "fill",
+            "x": 58,
+            "y": 33.5,
+            "w": 12,
+            "h": 2,
+            "top": 33.5,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "texts",
+                  "Texts"
+            ]
+      },
+      {
+            "id": "p4008_ex2_2",
+            "type": "fill",
+            "x": 74,
+            "y": 37,
+            "w": 14,
+            "h": 2,
+            "top": 37,
+            "left": 74,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "photographs",
+                  "Photographs"
+            ]
+      },
+      {
+            "id": "p4008_ex2_3",
+            "type": "fill",
+            "x": 58,
+            "y": 40.5,
+            "w": 12,
+            "h": 2,
+            "top": 40.5,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "plan",
+                  "Plan"
+            ]
+      },
+      {
+            "id": "p4008_ex2_4",
+            "type": "fill",
+            "x": 58,
+            "y": 44,
+            "w": 14,
+            "h": 2,
+            "top": 44,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "experience",
+                  "Experience"
+            ]
+      },
+      {
+            "id": "p4008_ex2_5",
+            "type": "fill",
+            "x": 58,
+            "y": 47.5,
+            "w": 14,
+            "h": 2,
+            "top": 47.5,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "photograph",
+                  "Photograph"
+            ]
+      },
+      {
+            "id": "p4008_ex2_6",
+            "type": "fill",
+            "x": 58,
+            "y": 51,
+            "w": 12,
+            "h": 2,
+            "top": 51,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "post",
+                  "Post"
+            ]
+      },
+      {
+            "id": "p4008_ex2_7",
+            "type": "fill",
+            "x": 58,
+            "y": 54.5,
+            "w": 12,
+            "h": 2,
+            "top": 54.5,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "dream",
+                  "Dream"
+            ]
+      },
+      {
+            "id": "p4008_ex3_1",
+            "type": "fill",
+            "x": 58,
+            "y": 68,
+            "w": 10,
+            "h": 2,
+            "top": 68,
+            "left": 58,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "go",
+                  "Go"
+            ]
+      },
+      {
+            "id": "p4008_ex3_2",
+            "type": "fill",
+            "x": 58,
+            "y": 71.5,
+            "w": 10,
+            "h": 2,
+            "top": 71.5,
+            "left": 58,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "play",
+                  "Play"
+            ]
+      },
+      {
+            "id": "p4008_ex3_3",
+            "type": "fill",
+            "x": 58,
+            "y": 75,
+            "w": 10,
+            "h": 2,
+            "top": 75,
+            "left": 58,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "do",
+                  "Do"
+            ]
+      },
+      {
+            "id": "p4008_ex3_4",
+            "type": "fill",
+            "x": 75,
+            "y": 68,
+            "w": 10,
+            "h": 2,
+            "top": 68,
+            "left": 75,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "have",
+                  "Have"
+            ]
+      },
+      {
+            "id": "p4008_ex3_5",
+            "type": "fill",
+            "x": 75,
+            "y": 71.5,
+            "w": 10,
+            "h": 2,
+            "top": 71.5,
+            "left": 75,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "take",
+                  "Take"
+            ]
+      },
+      {
+            "id": "p4008_ex3_6",
+            "type": "fill",
+            "x": 75,
+            "y": 75,
+            "w": 10,
+            "h": 2,
+            "top": 75,
+            "left": 75,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "make",
+                  "Make"
+            ]
+      }
+],
+    "4009": [
+      {
+            "id": "p4009_ex1_2",
+            "type": "fill",
+            "x": 29.5,
+            "y": 32.5,
+            "w": 10,
+            "h": 2,
+            "top": 32.5,
+            "left": 29.5,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "showers",
+                  "Showers"
+            ]
+      },
+      {
+            "id": "p4009_ex1_3",
+            "type": "fill",
+            "x": 23.5,
+            "y": 36,
+            "w": 10,
+            "h": 2,
+            "top": 36,
+            "left": 23.5,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "mild",
+                  "Mild"
+            ]
+      },
+      {
+            "id": "p4009_ex1_4",
+            "type": "fill",
+            "x": 27.5,
+            "y": 39.5,
+            "w": 10,
+            "h": 2,
+            "top": 39.5,
+            "left": 27.5,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "pleasant",
+                  "Pleasant"
+            ]
+      },
+      {
+            "id": "p4009_ex1_5",
+            "type": "fill",
+            "x": 28.5,
+            "y": 43.5,
+            "w": 10,
+            "h": 2,
+            "top": 43.5,
+            "left": 28.5,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "humid",
+                  "Humid"
+            ]
+      },
+      {
+            "id": "p4009_ex1_6",
+            "type": "fill",
+            "x": 27.5,
+            "y": 47,
+            "w": 12,
+            "h": 2,
+            "top": 47,
+            "left": 27.5,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "thunderstorm",
+                  "Thunderstorm"
+            ]
+      },
+      {
+            "id": "p4009_ex2_2",
+            "type": "fill",
+            "x": 11,
+            "y": 62.5,
+            "w": 36,
+            "h": 2,
+            "top": 62.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "I can't stand the winter.",
+                  "I cannot stand the winter.",
+                  "can't stand the winter",
+                  "cannot stand the winter"
+            ]
+      },
+      {
+            "id": "p4009_ex2_3",
+            "type": "fill",
+            "x": 11,
+            "y": 66.5,
+            "w": 36,
+            "h": 2,
+            "top": 66.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "I'm really into yoga.",
+                  "I am really into yoga.",
+                  "into yoga",
+                  "really into yoga"
+            ]
+      },
+      {
+            "id": "p4009_ex2_4",
+            "type": "fill",
+            "x": 11,
+            "y": 70.5,
+            "w": 36,
+            "h": 2,
+            "top": 70.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "My favourite sport is basketball.",
+                  "My favorite sport is basketball.",
+                  "favourite sport is basketball"
+            ]
+      },
+      {
+            "id": "p4009_ex2_5",
+            "type": "fill",
+            "x": 11,
+            "y": 74.5,
+            "w": 36,
+            "h": 2,
+            "top": 74.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "I don't mind doing housework.",
+                  "I do not mind doing housework.",
+                  "don't mind doing housework"
+            ]
+      },
+      {
+            "id": "p4009_ex2_6",
+            "type": "fill",
+            "x": 11,
+            "y": 78.5,
+            "w": 36,
+            "h": 2,
+            "top": 78.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "I'm not keen on thunderstorms.",
+                  "I am not keen on thunderstorms.",
+                  "not keen on thunderstorms"
+            ]
+      },
+      {
+            "id": "p4009_ex2_7",
+            "type": "fill",
+            "x": 11,
+            "y": 82.5,
+            "w": 36,
+            "h": 2,
+            "top": 82.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "I quite like going camping.",
+                  "quite like going camping"
+            ]
+      },
+      {
+            "id": "p4009_ex2_8",
+            "type": "fill",
+            "x": 11,
+            "y": 86.5,
+            "w": 36,
+            "h": 2,
+            "top": 86.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "I prefer football to golf.",
+                  "prefer football to golf"
+            ]
+      },
+      {
+            "id": "p4009_ex2_9",
+            "type": "fill",
+            "x": 11,
+            "y": 90.5,
+            "w": 36,
+            "h": 2,
+            "top": 90.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "I'm really interested in doing karate.",
+                  "I'm interested in doing karate.",
+                  "interested in doing karate"
+            ]
+      },
+      {
+            "id": "p4009_ex3_1",
+            "type": "select",
+            "x": 58,
+            "y": 65,
+            "w": 9,
+            "h": 2.2,
+            "top": 65,
+            "left": 58,
+            "width": 9,
+            "height": 2.2,
+            "correct": [
+                  "but"
+            ],
+            "options": [
+                  "and",
+                  "but",
+                  "so"
+            ]
+      },
+      {
+            "id": "p4009_ex3_2",
+            "type": "select",
+            "x": 58,
+            "y": 70.5,
+            "w": 9,
+            "h": 2.2,
+            "top": 70.5,
+            "left": 58,
+            "width": 9,
+            "height": 2.2,
+            "correct": [
+                  "but"
+            ],
+            "options": [
+                  "and",
+                  "but",
+                  "so"
+            ]
+      },
+      {
+            "id": "p4009_ex3_3",
+            "type": "select",
+            "x": 58,
+            "y": 75.5,
+            "w": 9,
+            "h": 2.2,
+            "top": 75.5,
+            "left": 58,
+            "width": 9,
+            "height": 2.2,
+            "correct": [
+                  "and"
+            ],
+            "options": [
+                  "and",
+                  "but",
+                  "so"
+            ]
+      },
+      {
+            "id": "p4009_ex3_4",
+            "type": "select",
+            "x": 58,
+            "y": 80.5,
+            "w": 9,
+            "h": 2.2,
+            "top": 80.5,
+            "left": 58,
+            "width": 9,
+            "height": 2.2,
+            "correct": [
+                  "and"
+            ],
+            "options": [
+                  "and",
+                  "but",
+                  "so"
+            ]
+      },
+      {
+            "id": "p4009_ex3_5",
+            "type": "select",
+            "x": 58,
+            "y": 85.5,
+            "w": 9,
+            "h": 2.2,
+            "top": 85.5,
+            "left": 58,
+            "width": 9,
+            "height": 2.2,
+            "correct": [
+                  "so"
+            ],
+            "options": [
+                  "and",
+                  "but",
+                  "so"
+            ]
+      },
+      {
+            "id": "p4009_ex3_6",
+            "type": "select",
+            "x": 58,
+            "y": 90.5,
+            "w": 9,
+            "h": 2.2,
+            "top": 90.5,
+            "left": 58,
+            "width": 9,
+            "height": 2.2,
+            "correct": [
+                  "and"
+            ],
+            "options": [
+                  "and",
+                  "but",
+                  "so"
+            ]
+      }
+],
+    "4010": [
       {
             "id": "p4010_ex1_1",
             "type": "fill",
-            "x": 35,
-            "y": 33.3,
-            "w": 18,
-            "h": 2.2,
-            "top": 33.3,
-            "left": 35,
-            "width": 18,
-            "height": 2.2,
+            "x": 28,
+            "y": 25.5,
+            "w": 10,
+            "h": 2,
+            "top": 25.5,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "pedestrian area",
-                  "pedestrian"
+                  "huge",
+                  "Huge"
             ]
       },
       {
             "id": "p4010_ex1_2",
             "type": "fill",
-            "x": 35,
-            "y": 36.5,
+            "x": 28,
+            "y": 28.5,
+            "w": 10,
+            "h": 2,
+            "top": 28.5,
+            "left": 28,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "crowded",
+                  "Crowded"
+            ]
+      },
+      {
+            "id": "p4010_ex1_3",
+            "type": "fill",
+            "x": 28,
+            "y": 31.5,
+            "w": 10,
+            "h": 2,
+            "top": 31.5,
+            "left": 28,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "lively",
+                  "Lively"
+            ]
+      },
+      {
+            "id": "p4010_ex1_4",
+            "type": "fill",
+            "x": 42,
+            "y": 25.5,
+            "w": 10,
+            "h": 2,
+            "top": 25.5,
+            "left": 42,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "safe",
+                  "Safe"
+            ]
+      },
+      {
+            "id": "p4010_ex1_5",
+            "type": "fill",
+            "x": 42,
+            "y": 28.5,
+            "w": 10,
+            "h": 2,
+            "top": 28.5,
+            "left": 42,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "dirty",
+                  "Dirty"
+            ]
+      },
+      {
+            "id": "p4010_ex1_6",
+            "type": "fill",
+            "x": 42,
+            "y": 31.5,
+            "w": 10,
+            "h": 2,
+            "top": 31.5,
+            "left": 42,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "dull",
+                  "Dull"
+            ]
+      },
+      {
+            "id": "p4010_ex2_1",
+            "type": "fill",
+            "x": 11,
+            "y": 47,
             "w": 18,
-            "h": 2.2,
-            "top": 36.5,
-            "left": 35,
+            "h": 2,
+            "top": 47,
+            "left": 11,
             "width": 18,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "street cleaner",
                   "cleaner"
             ]
       },
       {
-            "id": "p4010_ex1_3",
-            "type": "fill",
-            "x": 35,
-            "y": 39.7,
-            "w": 18,
-            "h": 2.2,
-            "top": 39.7,
-            "left": 35,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "cycle lane",
-                  "cycle"
-            ]
-      },
-      {
-            "id": "p4010_ex1_4",
-            "type": "fill",
-            "x": 35,
-            "y": 42.9,
-            "w": 18,
-            "h": 2.2,
-            "top": 42.9,
-            "left": 35,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "pavement artist",
-                  "pavement"
-            ]
-      },
-      {
-            "id": "p4010_ex1_5",
-            "type": "fill",
-            "x": 35,
-            "y": 46.1,
-            "w": 18,
-            "h": 2.2,
-            "top": 46.1,
-            "left": 35,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "traffic lights",
-                  "traffic"
-            ]
-      },
-      {
-            "id": "p4010_ex2_1",
-            "type": "fill",
-            "x": 13,
-            "y": 53,
-            "w": 20,
-            "h": 2.2,
-            "top": 53,
-            "left": 13,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "stall",
-                  "market stall"
-            ]
-      },
-      {
             "id": "p4010_ex2_2",
             "type": "fill",
-            "x": 13,
-            "y": 60,
-            "w": 20,
-            "h": 2.2,
-            "top": 60,
-            "left": 13,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 50.5,
+            "w": 18,
+            "h": 2,
+            "top": 50.5,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "busker",
-                  "street musician"
+                  "pedestrian area",
+                  "pedestrian"
             ]
       },
       {
             "id": "p4010_ex2_3",
             "type": "fill",
-            "x": 13,
-            "y": 67,
-            "w": 20,
-            "h": 2.2,
-            "top": 67,
-            "left": 13,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 54,
+            "w": 18,
+            "h": 2,
+            "top": 54,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
                   "souvenir seller",
                   "seller"
@@ -81972,364 +82528,839 @@
       {
             "id": "p4010_ex2_4",
             "type": "fill",
-            "x": 13,
-            "y": 74,
-            "w": 20,
-            "h": 2.2,
-            "top": 74,
-            "left": 13,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 57.5,
+            "w": 18,
+            "h": 2,
+            "top": 57.5,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "rubbish",
-                  "litter"
+                  "market place",
+                  "marketplace",
+                  "market"
             ]
       },
       {
             "id": "p4010_ex2_5",
             "type": "fill",
-            "x": 13,
-            "y": 81,
-            "w": 20,
-            "h": 2.2,
-            "top": 81,
-            "left": 13,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 61,
+            "w": 18,
+            "h": 2,
+            "top": 61,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "bench",
-                  "seat"
+                  "pavement artist",
+                  "pavement"
+            ]
+      },
+      {
+            "id": "p4010_ex2_6",
+            "type": "fill",
+            "x": 11,
+            "y": 64.5,
+            "w": 18,
+            "h": 2,
+            "top": 64.5,
+            "left": 11,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "parking space",
+                  "parking"
+            ]
+      },
+      {
+            "id": "p4010_ex2_7",
+            "type": "fill",
+            "x": 11,
+            "y": 68,
+            "w": 18,
+            "h": 2,
+            "top": 68,
+            "left": 11,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "street performer",
+                  "performer"
             ]
       },
       {
             "id": "p4010_ex3_1",
             "type": "fill",
-            "x": 65,
-            "y": 33,
-            "w": 16,
-            "h": 2.2,
-            "top": 33,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 58,
+            "y": 38,
+            "w": 14,
+            "h": 2,
+            "top": 38,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "graffiti",
-                  "graffiti artist"
+                  "lively",
+                  "Lively"
             ]
       },
       {
             "id": "p4010_ex3_2",
             "type": "fill",
-            "x": 65,
+            "x": 58,
             "y": 42,
             "w": 16,
-            "h": 2.2,
+            "h": 2,
             "top": 42,
-            "left": 65,
+            "left": 58,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "living statue",
-                  "statue"
+                  "pedestrian area",
+                  "pedestrian"
             ]
       },
       {
             "id": "p4010_ex3_3",
             "type": "fill",
-            "x": 65,
-            "y": 51,
-            "w": 16,
-            "h": 2.2,
-            "top": 51,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 58,
+            "y": 46,
+            "w": 15,
+            "h": 2,
+            "top": 46,
+            "left": 58,
+            "width": 15,
+            "height": 2,
             "correct": [
-                  "shopper",
-                  "shoppers"
+                  "market place",
+                  "marketplace",
+                  "market"
             ]
       },
       {
             "id": "p4010_ex3_4",
             "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 16,
-            "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 58,
+            "y": 50,
+            "w": 12,
+            "h": 2,
+            "top": 50,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "cyclist",
-                  "cyclists"
+                  "stalls",
+                  "Stalls",
+                  "market stalls"
+            ]
+      },
+      {
+            "id": "p4010_ex3_5",
+            "type": "fill",
+            "x": 58,
+            "y": 54,
+            "w": 16,
+            "h": 2,
+            "top": 54,
+            "left": 58,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "street performers",
+                  "performers"
+            ]
+      },
+      {
+            "id": "p4010_ex3_6",
+            "type": "fill",
+            "x": 58,
+            "y": 58,
+            "w": 16,
+            "h": 2,
+            "top": 58,
+            "left": 58,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "souvenir sellers",
+                  "sellers"
+            ]
+      },
+      {
+            "id": "p4010_ex3_7",
+            "type": "fill",
+            "x": 58,
+            "y": 62,
+            "w": 12,
+            "h": 2,
+            "top": 62,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "huge",
+                  "Huge"
+            ]
+      },
+      {
+            "id": "p4010_ex3_8",
+            "type": "fill",
+            "x": 58,
+            "y": 66,
+            "w": 12,
+            "h": 2,
+            "top": 66,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "crowded",
+                  "Crowded"
+            ]
+      },
+      {
+            "id": "p4010_ex3_9",
+            "type": "fill",
+            "x": 58,
+            "y": 70,
+            "w": 12,
+            "h": 2,
+            "top": 70,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "safe",
+                  "Safe"
+            ]
+      },
+      {
+            "id": "p4010_ex3_10",
+            "type": "fill",
+            "x": 58,
+            "y": 74,
+            "w": 12,
+            "h": 2,
+            "top": 74,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "dirty",
+                  "Dirty"
+            ]
+      },
+      {
+            "id": "p4010_ex3_11",
+            "type": "fill",
+            "x": 58,
+            "y": 78,
+            "w": 12,
+            "h": 2,
+            "top": 78,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "rubbish",
+                  "Rubbish",
+                  "litter"
+            ]
+      },
+      {
+            "id": "p4010_ex3_12",
+            "type": "fill",
+            "x": 58,
+            "y": 82,
+            "w": 16,
+            "h": 2,
+            "top": 82,
+            "left": 58,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "street cleaners",
+                  "cleaners"
             ]
       }
 ],
     "4011": [
       {
-            "id": "p4011_ex4_1",
+            "id": "p4011_ex5a_1",
             "type": "fill",
-            "x": 15,
-            "y": 23,
-            "w": 20,
-            "h": 2.2,
-            "top": 23,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "'m celebrating",
-                  "am celebrating",
-                  "is celebrating"
-            ]
-      },
-      {
-            "id": "p4011_ex4_2",
-            "type": "fill",
-            "x": 15,
-            "y": 28,
-            "w": 20,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 24,
+            "w": 16,
+            "h": 2,
+            "top": 24,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "'re having",
                   "are having"
             ]
       },
       {
-            "id": "p4011_ex4_3",
+            "id": "p4011_ex5a_2",
             "type": "fill",
-            "x": 15,
-            "y": 33,
-            "w": 20,
-            "h": 2.2,
-            "top": 33,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "isn't talking",
-                  "is not talking"
-            ]
-      },
-      {
-            "id": "p4011_ex4_4",
-            "type": "fill",
-            "x": 15,
-            "y": 38,
-            "w": 20,
-            "h": 2.2,
-            "top": 38,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "'re waiting",
-                  "are waiting"
-            ]
-      },
-      {
-            "id": "p4011_ex4_5",
-            "type": "fill",
-            "x": 15,
-            "y": 43,
-            "w": 20,
-            "h": 2.2,
-            "top": 43,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 27.5,
+            "w": 16,
+            "h": 2,
+            "top": 27.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "'s running",
                   "is running"
             ]
       },
       {
-            "id": "p4011_ex4_6",
+            "id": "p4011_ex5a_3",
             "type": "fill",
-            "x": 15,
-            "y": 48,
-            "w": 20,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 31,
+            "w": 18,
+            "h": 2,
+            "top": 31,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "'m not feeling",
-                  "am not feeling"
+                  "'m not watching",
+                  "am not watching"
             ]
       },
       {
-            "id": "p4011_ex4_7",
+            "id": "p4011_ex5a_4",
             "type": "fill",
-            "x": 15,
-            "y": 53,
-            "w": 20,
-            "h": 2.2,
-            "top": 53,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 34.5,
+            "w": 16,
+            "h": 2,
+            "top": 34.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "'re doing",
-                  "are doing"
+                  "'s waiting",
+                  "is waiting"
             ]
       },
       {
-            "id": "p4011_ex5_1",
-            "type": "select",
-            "x": 58,
-            "y": 22,
-            "w": 28,
-            "h": 2.2,
-            "top": 22,
-            "left": 58,
-            "width": 28,
-            "height": 2.2,
+            "id": "p4011_ex5a_5",
+            "type": "fill",
+            "x": 11,
+            "y": 38,
+            "w": 16,
+            "h": 2,
+            "top": 38,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "walks"
-            ],
-            "options": [
-                  "walks",
-                  "is walking"
+                  "'m doing",
+                  "am doing"
             ]
       },
       {
-            "id": "p4011_ex5_2",
-            "type": "select",
-            "x": 58,
-            "y": 28,
-            "w": 28,
-            "h": 2.2,
-            "top": 28,
-            "left": 58,
-            "width": 28,
-            "height": 2.2,
+            "id": "p4011_ex5a_6",
+            "type": "fill",
+            "x": 11,
+            "y": 41.5,
+            "w": 18,
+            "h": 2,
+            "top": 41.5,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "are taking"
-            ],
-            "options": [
-                  "takes",
-                  "are taking"
+                  "aren't talking",
+                  "are not talking"
             ]
       },
       {
-            "id": "p4011_ex5_3",
-            "type": "select",
-            "x": 58,
-            "y": 34,
-            "w": 28,
-            "h": 2.2,
-            "top": 34,
-            "left": 58,
-            "width": 28,
-            "height": 2.2,
+            "id": "p4011_ex5a_7",
+            "type": "fill",
+            "x": 11,
+            "y": 45,
+            "w": 18,
+            "h": 2,
+            "top": 45,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "don't know"
-            ],
-            "options": [
+                  "isn't feeling",
+                  "is not feeling"
+            ]
+      },
+      {
+            "id": "p4011_ex5a_8",
+            "type": "fill",
+            "x": 11,
+            "y": 48.5,
+            "w": 18,
+            "h": 2,
+            "top": 48.5,
+            "left": 11,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "'re celebrating",
+                  "are celebrating"
+            ]
+      },
+      {
+            "id": "p4011_ex6_1a",
+            "type": "fill",
+            "x": 11,
+            "y": 60.5,
+            "w": 15,
+            "h": 2,
+            "top": 60.5,
+            "left": 11,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "are you doing",
+                  "Are you doing"
+            ]
+      },
+      {
+            "id": "p4011_ex6_1b",
+            "type": "fill",
+            "x": 32,
+            "y": 60.5,
+            "w": 14,
+            "h": 2,
+            "top": 60.5,
+            "left": 32,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "Do you want",
+                  "do you want"
+            ]
+      },
+      {
+            "id": "p4011_ex6_2a",
+            "type": "fill",
+            "x": 11,
+            "y": 65,
+            "w": 15,
+            "h": 2,
+            "top": 65,
+            "left": 11,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "Are you listening",
+                  "are you listening"
+            ]
+      },
+      {
+            "id": "p4011_ex6_2b",
+            "type": "fill",
+            "x": 32,
+            "y": 65,
+            "w": 12,
+            "h": 2,
+            "top": 65,
+            "left": 32,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "like",
+                  "Like"
+            ]
+      },
+      {
+            "id": "p4011_ex6_3a",
+            "type": "fill",
+            "x": 11,
+            "y": 69.5,
+            "w": 14,
+            "h": 2,
+            "top": 69.5,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "do you do",
+                  "Do you do"
+            ]
+      },
+      {
+            "id": "p4011_ex6_3b",
+            "type": "fill",
+            "x": 32,
+            "y": 69.5,
+            "w": 12,
+            "h": 2,
+            "top": 69.5,
+            "left": 32,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "go",
+                  "Go"
+            ]
+      },
+      {
+            "id": "p4011_ex6_4a",
+            "type": "fill",
+            "x": 11,
+            "y": 74,
+            "w": 18,
+            "h": 2,
+            "top": 74,
+            "left": 11,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "does the market open",
+                  "does the market open?"
+            ]
+      },
+      {
+            "id": "p4011_ex6_4b",
+            "type": "fill",
+            "x": 32,
+            "y": 74,
+            "w": 14,
+            "h": 2,
+            "top": 74,
+            "left": 32,
+            "width": 14,
+            "height": 2,
+            "correct": [
                   "don't know",
-                  "aren't knowing"
+                  "do not know"
             ]
       },
       {
-            "id": "p4011_ex5_4",
-            "type": "select",
-            "x": 58,
-            "y": 40,
-            "w": 28,
-            "h": 2.2,
-            "top": 40,
-            "left": 58,
-            "width": 28,
-            "height": 2.2,
+            "id": "p4011_ex6_5a",
+            "type": "fill",
+            "x": 11,
+            "y": 78.5,
+            "w": 16,
+            "h": 2,
+            "top": 78.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "is sitting"
-            ],
-            "options": [
-                  "sits",
-                  "is sitting"
+                  "Is your partner",
+                  "is your partner"
             ]
       },
       {
-            "id": "p4011_ex5_5",
-            "type": "select",
-            "x": 58,
-            "y": 46,
-            "w": 28,
-            "h": 2.2,
-            "top": 46,
-            "left": 58,
-            "width": 28,
-            "height": 2.2,
+            "id": "p4011_ex6_5b",
+            "type": "fill",
+            "x": 32,
+            "y": 78.5,
+            "w": 14,
+            "h": 2,
+            "top": 78.5,
+            "left": 32,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "is looking"
-            ],
-            "options": [
-                  "looks",
-                  "is looking"
+                  "doesn't work",
+                  "does not work"
             ]
       },
       {
-            "id": "p4011_ex5_6",
-            "type": "select",
+            "id": "p4011_ex6_6a",
+            "type": "fill",
+            "x": 11,
+            "y": 83,
+            "w": 15,
+            "h": 2,
+            "top": 83,
+            "left": 11,
+            "width": 15,
+            "height": 2,
+            "correct": [
+                  "Are you having",
+                  "are you having"
+            ]
+      },
+      {
+            "id": "p4011_ex6_6b",
+            "type": "fill",
+            "x": 32,
+            "y": 83,
+            "w": 14,
+            "h": 2,
+            "top": 83,
+            "left": 32,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "'m having",
+                  "am having"
+            ]
+      },
+      {
+            "id": "p4011_ex6_7a",
+            "type": "fill",
+            "x": 11,
+            "y": 87.5,
+            "w": 14,
+            "h": 2,
+            "top": 87.5,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "Do I need",
+                  "do I need"
+            ]
+      },
+      {
+            "id": "p4011_ex6_7b",
+            "type": "fill",
+            "x": 32,
+            "y": 87.5,
+            "w": 14,
+            "h": 2,
+            "top": 87.5,
+            "left": 32,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "isn't raining",
+                  "is not raining"
+            ]
+      },
+      {
+            "id": "p4011_ex6_8a",
+            "type": "fill",
+            "x": 11,
+            "y": 92,
+            "w": 16,
+            "h": 2,
+            "top": 92,
+            "left": 11,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "Is our team winning",
+                  "is our team winning"
+            ]
+      },
+      {
+            "id": "p4011_ex6_8b",
+            "type": "fill",
+            "x": 32,
+            "y": 92,
+            "w": 14,
+            "h": 2,
+            "top": 92,
+            "left": 32,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "'re playing",
+                  "are playing"
+            ]
+      },
+      {
+            "id": "p4011_ex7_1",
+            "type": "fill",
+            "x": 58,
+            "y": 48,
+            "w": 10,
+            "h": 2,
+            "top": 48,
+            "left": 58,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "starts",
+                  "Starts"
+            ]
+      },
+      {
+            "id": "p4011_ex7_2",
+            "type": "fill",
+            "x": 75,
+            "y": 48,
+            "w": 10,
+            "h": 2,
+            "top": 48,
+            "left": 75,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "finishes",
+                  "Finishes"
+            ]
+      },
+      {
+            "id": "p4011_ex7_3",
+            "type": "fill",
             "x": 58,
             "y": 52,
-            "w": 28,
-            "h": 2.2,
+            "w": 10,
+            "h": 2,
             "top": 52,
             "left": 58,
-            "width": 28,
-            "height": 2.2,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "does"
-            ],
-            "options": [
-                  "does",
-                  "is doing"
+                  "has",
+                  "Has"
             ]
       },
       {
-            "id": "p4011_ex5_7",
-            "type": "select",
+            "id": "p4011_ex7_4",
+            "type": "fill",
+            "x": 75,
+            "y": 52,
+            "w": 10,
+            "h": 2,
+            "top": 52,
+            "left": 75,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "gets",
+                  "Gets"
+            ]
+      },
+      {
+            "id": "p4011_ex7_5",
+            "type": "fill",
             "x": 58,
-            "y": 58,
-            "w": 28,
-            "h": 2.2,
-            "top": 58,
+            "y": 56,
+            "w": 14,
+            "h": 2,
+            "top": 56,
             "left": 58,
-            "width": 28,
-            "height": 2.2,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "smells"
-            ],
-            "options": [
-                  "smells",
-                  "is smelling"
+                  "are sitting",
+                  "'re sitting"
             ]
       },
       {
-            "id": "p4011_ex5_8",
-            "type": "select",
+            "id": "p4011_ex7_6",
+            "type": "fill",
+            "x": 75,
+            "y": 56,
+            "w": 14,
+            "h": 2,
+            "top": 56,
+            "left": 75,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "are watching",
+                  "'re watching"
+            ]
+      },
+      {
+            "id": "p4011_ex7_7",
+            "type": "fill",
+            "x": 58,
+            "y": 60,
+            "w": 12,
+            "h": 2,
+            "top": 60,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "is buying",
+                  "'s buying"
+            ]
+      },
+      {
+            "id": "p4011_ex7_8",
+            "type": "fill",
+            "x": 75,
+            "y": 60,
+            "w": 12,
+            "h": 2,
+            "top": 60,
+            "left": 75,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "is looking",
+                  "'s looking"
+            ]
+      },
+      {
+            "id": "p4011_ex7_9",
+            "type": "fill",
             "x": 58,
             "y": 64,
-            "w": 28,
-            "h": 2.2,
+            "w": 10,
+            "h": 2,
             "top": 64,
             "left": 58,
-            "width": 28,
-            "height": 2.2,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "prefer"
-            ],
-            "options": [
-                  "prefer",
-                  "am preferring"
+                  "wants",
+                  "Wants"
+            ]
+      },
+      {
+            "id": "p4011_ex7_10",
+            "type": "fill",
+            "x": 75,
+            "y": 64,
+            "w": 10,
+            "h": 2,
+            "top": 64,
+            "left": 75,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "like",
+                  "Like"
+            ]
+      },
+      {
+            "id": "p4011_ex7_11",
+            "type": "fill",
+            "x": 58,
+            "y": 68,
+            "w": 14,
+            "h": 2,
+            "top": 68,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "is becoming",
+                  "'s becoming"
+            ]
+      },
+      {
+            "id": "p4011_ex7_12",
+            "type": "fill",
+            "x": 75,
+            "y": 68,
+            "w": 14,
+            "h": 2,
+            "top": 68,
+            "left": 75,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "are spending",
+                  "'re spending"
             ]
       }
 ],
@@ -82337,153 +83368,139 @@
       {
             "id": "p4012_ex1_1",
             "type": "select",
-            "x": 15,
-            "y": 26,
-            "w": 18,
+            "x": 25,
+            "y": 24,
+            "w": 9,
             "h": 2.2,
-            "top": 26,
-            "left": 15,
-            "width": 18,
+            "top": 24,
+            "left": 25,
+            "width": 9,
             "height": 2.2,
             "correct": [
-                  "who"
+                  "that"
             ],
             "options": [
+                  "that",
+                  "where",
                   "who",
-                  "which",
-                  "where"
+                  "which"
             ]
       },
       {
             "id": "p4012_ex1_2",
             "type": "select",
-            "x": 15,
-            "y": 32,
-            "w": 18,
+            "x": 25,
+            "y": 27.5,
+            "w": 9,
             "h": 2.2,
-            "top": 32,
-            "left": 15,
-            "width": 18,
+            "top": 27.5,
+            "left": 25,
+            "width": 9,
             "height": 2.2,
             "correct": [
-                  "which"
+                  "where"
             ],
             "options": [
+                  "that",
+                  "where",
                   "who",
-                  "which",
-                  "where"
+                  "which"
             ]
       },
       {
             "id": "p4012_ex1_3",
             "type": "select",
-            "x": 15,
-            "y": 38,
-            "w": 18,
+            "x": 25,
+            "y": 31,
+            "w": 9,
             "h": 2.2,
-            "top": 38,
-            "left": 15,
-            "width": 18,
+            "top": 31,
+            "left": 25,
+            "width": 9,
             "height": 2.2,
             "correct": [
                   "where"
             ],
             "options": [
+                  "that",
+                  "where",
                   "who",
-                  "which",
-                  "where"
+                  "which"
             ]
       },
       {
             "id": "p4012_ex1_4",
             "type": "select",
-            "x": 15,
-            "y": 44,
-            "w": 18,
+            "x": 25,
+            "y": 34.5,
+            "w": 9,
             "h": 2.2,
-            "top": 44,
-            "left": 15,
-            "width": 18,
+            "top": 34.5,
+            "left": 25,
+            "width": 9,
             "height": 2.2,
             "correct": [
-                  "which"
+                  "that"
             ],
             "options": [
+                  "that",
+                  "where",
                   "who",
-                  "which",
-                  "where"
+                  "which"
             ]
       },
       {
             "id": "p4012_ex1_5",
             "type": "select",
-            "x": 15,
-            "y": 50,
-            "w": 18,
+            "x": 25,
+            "y": 38,
+            "w": 9,
             "h": 2.2,
-            "top": 50,
-            "left": 15,
-            "width": 18,
+            "top": 38,
+            "left": 25,
+            "width": 9,
             "height": 2.2,
             "correct": [
                   "who"
             ],
             "options": [
+                  "that",
+                  "where",
                   "who",
-                  "which",
-                  "where"
+                  "which"
             ]
       },
       {
             "id": "p4012_ex1_6",
             "type": "select",
-            "x": 15,
-            "y": 56,
-            "w": 18,
+            "x": 25,
+            "y": 41.5,
+            "w": 9,
             "h": 2.2,
-            "top": 56,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "where"
-            ],
-            "options": [
-                  "who",
-                  "which",
-                  "where"
-            ]
-      },
-      {
-            "id": "p4012_ex1_7",
-            "type": "select",
-            "x": 15,
-            "y": 62,
-            "w": 18,
-            "h": 2.2,
-            "top": 62,
-            "left": 15,
-            "width": 18,
+            "top": 41.5,
+            "left": 25,
+            "width": 9,
             "height": 2.2,
             "correct": [
                   "which"
             ],
             "options": [
+                  "that",
+                  "where",
                   "who",
-                  "which",
-                  "where"
+                  "which"
             ]
       },
       {
             "id": "p4012_ex2_1a",
             "type": "select",
-            "x": 60,
-            "y": 27,
-            "w": 10,
+            "x": 11,
+            "y": 52,
+            "w": 8.5,
             "h": 2.2,
-            "top": 27,
-            "left": 60,
-            "width": 10,
+            "top": 52,
+            "left": 11,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
                   "who"
@@ -82491,20 +83508,21 @@
             "options": [
                   "who",
                   "which",
-                  "where"
+                  "where",
+                  "that"
             ]
       },
       {
             "id": "p4012_ex2_1b",
             "type": "fill",
-            "x": 78,
-            "y": 27,
-            "w": 15,
-            "h": 2.2,
-            "top": 27,
-            "left": 78,
-            "width": 15,
-            "height": 2.2,
+            "x": 26,
+            "y": 52,
+            "w": 14,
+            "h": 2,
+            "top": 52,
+            "left": 26,
+            "width": 14,
+            "height": 2,
             "correct": [
                   "neighbour",
                   "a neighbour"
@@ -82513,13 +83531,13 @@
       {
             "id": "p4012_ex2_2a",
             "type": "select",
-            "x": 60,
-            "y": 34,
-            "w": 10,
+            "x": 11,
+            "y": 56.5,
+            "w": 8.5,
             "h": 2.2,
-            "top": 34,
-            "left": 60,
-            "width": 10,
+            "top": 56.5,
+            "left": 11,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
                   "where"
@@ -82527,143 +83545,36 @@
             "options": [
                   "who",
                   "which",
-                  "where"
+                  "where",
+                  "that"
             ]
       },
       {
             "id": "p4012_ex2_2b",
             "type": "fill",
-            "x": 78,
-            "y": 34,
-            "w": 15,
-            "h": 2.2,
-            "top": 34,
-            "left": 78,
-            "width": 15,
-            "height": 2.2,
-            "correct": [
-                  "kitchen",
-                  "a kitchen"
-            ]
-      },
-      {
-            "id": "p4012_ex2_3a",
-            "type": "select",
-            "x": 60,
-            "y": 41,
-            "w": 10,
-            "h": 2.2,
-            "top": 41,
-            "left": 60,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "which"
-            ],
-            "options": [
-                  "who",
-                  "which",
-                  "where"
-            ]
-      },
-      {
-            "id": "p4012_ex2_3b",
-            "type": "fill",
-            "x": 78,
-            "y": 41,
-            "w": 15,
-            "h": 2.2,
-            "top": 41,
-            "left": 78,
-            "width": 15,
-            "height": 2.2,
-            "correct": [
-                  "ball",
-                  "a ball"
-            ]
-      },
-      {
-            "id": "p4012_ex2_4a",
-            "type": "select",
-            "x": 60,
-            "y": 48,
-            "w": 10,
-            "h": 2.2,
-            "top": 48,
-            "left": 60,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "who"
-            ],
-            "options": [
-                  "who",
-                  "which",
-                  "where"
-            ]
-      },
-      {
-            "id": "p4012_ex2_4b",
-            "type": "fill",
-            "x": 78,
-            "y": 48,
-            "w": 15,
-            "h": 2.2,
-            "top": 48,
-            "left": 78,
-            "width": 15,
-            "height": 2.2,
-            "correct": [
-                  "dentist",
-                  "a dentist"
-            ]
-      },
-      {
-            "id": "p4012_ex2_5a",
-            "type": "select",
-            "x": 60,
-            "y": 55,
-            "w": 10,
-            "h": 2.2,
-            "top": 55,
-            "left": 60,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "where"
-            ],
-            "options": [
-                  "who",
-                  "which",
-                  "where"
-            ]
-      },
-      {
-            "id": "p4012_ex2_5b",
-            "type": "fill",
-            "x": 78,
-            "y": 55,
-            "w": 15,
-            "h": 2.2,
-            "top": 55,
-            "left": 78,
-            "width": 15,
-            "height": 2.2,
+            "x": 26,
+            "y": 56.5,
+            "w": 14,
+            "h": 2,
+            "top": 56.5,
+            "left": 26,
+            "width": 14,
+            "height": 2,
             "correct": [
                   "garage",
                   "a garage"
             ]
       },
       {
-            "id": "p4012_ex2_6a",
+            "id": "p4012_ex2_3a",
             "type": "select",
-            "x": 60,
-            "y": 62,
-            "w": 10,
+            "x": 11,
+            "y": 61,
+            "w": 8.5,
             "h": 2.2,
-            "top": 62,
-            "left": 60,
-            "width": 10,
+            "top": 61,
+            "left": 11,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
                   "which"
@@ -82671,35 +83582,73 @@
             "options": [
                   "who",
                   "which",
-                  "where"
+                  "where",
+                  "that"
             ]
       },
       {
-            "id": "p4012_ex2_6b",
+            "id": "p4012_ex2_3b",
             "type": "fill",
-            "x": 78,
-            "y": 62,
-            "w": 15,
-            "h": 2.2,
-            "top": 62,
-            "left": 78,
-            "width": 15,
-            "height": 2.2,
+            "x": 26,
+            "y": 61,
+            "w": 14,
+            "h": 2,
+            "top": 61,
+            "left": 26,
+            "width": 14,
+            "height": 2,
             "correct": [
                   "picture",
                   "a picture"
             ]
       },
       {
-            "id": "p4012_ex2_7a",
+            "id": "p4012_ex2_4a",
             "type": "select",
-            "x": 60,
-            "y": 69,
-            "w": 10,
+            "x": 11,
+            "y": 65.5,
+            "w": 8.5,
             "h": 2.2,
-            "top": 69,
-            "left": 60,
-            "width": 10,
+            "top": 65.5,
+            "left": 11,
+            "width": 8.5,
+            "height": 2.2,
+            "correct": [
+                  "which"
+            ],
+            "options": [
+                  "who",
+                  "which",
+                  "where",
+                  "that"
+            ]
+      },
+      {
+            "id": "p4012_ex2_4b",
+            "type": "fill",
+            "x": 26,
+            "y": 65.5,
+            "w": 14,
+            "h": 2,
+            "top": 65.5,
+            "left": 26,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "DVD",
+                  "a DVD"
+            ]
+      },
+      {
+            "id": "p4012_ex2_5a",
+            "type": "select",
+            "x": 11,
+            "y": 70,
+            "w": 8.5,
+            "h": 2.2,
+            "top": 70,
+            "left": 11,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
                   "who"
@@ -82707,35 +83656,36 @@
             "options": [
                   "who",
                   "which",
-                  "where"
+                  "where",
+                  "that"
             ]
       },
       {
-            "id": "p4012_ex2_7b",
+            "id": "p4012_ex2_5b",
             "type": "fill",
-            "x": 78,
-            "y": 69,
-            "w": 15,
-            "h": 2.2,
-            "top": 69,
-            "left": 78,
-            "width": 15,
-            "height": 2.2,
+            "x": 26,
+            "y": 70,
+            "w": 14,
+            "h": 2,
+            "top": 70,
+            "left": 26,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "police officer",
-                  "a police officer"
+                  "dentist",
+                  "a dentist"
             ]
       },
       {
-            "id": "p4012_ex2_8a",
+            "id": "p4012_ex2_6a",
             "type": "select",
-            "x": 60,
-            "y": 76,
-            "w": 10,
+            "x": 11,
+            "y": 74.5,
+            "w": 8.5,
             "h": 2.2,
-            "top": 76,
-            "left": 60,
-            "width": 10,
+            "top": 74.5,
+            "left": 11,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
                   "which"
@@ -82743,23 +83693,210 @@
             "options": [
                   "who",
                   "which",
+                  "where",
+                  "that"
+            ]
+      },
+      {
+            "id": "p4012_ex2_6b",
+            "type": "fill",
+            "x": 26,
+            "y": 74.5,
+            "w": 14,
+            "h": 2,
+            "top": 74.5,
+            "left": 26,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "ball",
+                  "a ball"
+            ]
+      },
+      {
+            "id": "p4012_ex2_7a",
+            "type": "select",
+            "x": 11,
+            "y": 79,
+            "w": 8.5,
+            "h": 2.2,
+            "top": 79,
+            "left": 11,
+            "width": 8.5,
+            "height": 2.2,
+            "correct": [
                   "where"
+            ],
+            "options": [
+                  "who",
+                  "which",
+                  "where",
+                  "that"
+            ]
+      },
+      {
+            "id": "p4012_ex2_7b",
+            "type": "fill",
+            "x": 26,
+            "y": 79,
+            "w": 14,
+            "h": 2,
+            "top": 79,
+            "left": 26,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "kitchen",
+                  "a kitchen"
+            ]
+      },
+      {
+            "id": "p4012_ex2_8a",
+            "type": "select",
+            "x": 11,
+            "y": 83.5,
+            "w": 8.5,
+            "h": 2.2,
+            "top": 83.5,
+            "left": 11,
+            "width": 8.5,
+            "height": 2.2,
+            "correct": [
+                  "who"
+            ],
+            "options": [
+                  "who",
+                  "which",
+                  "where",
+                  "that"
             ]
       },
       {
             "id": "p4012_ex2_8b",
             "type": "fill",
-            "x": 78,
-            "y": 76,
-            "w": 15,
-            "h": 2.2,
-            "top": 76,
-            "left": 78,
-            "width": 15,
-            "height": 2.2,
+            "x": 26,
+            "y": 83.5,
+            "w": 14,
+            "h": 2,
+            "top": 83.5,
+            "left": 26,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "DVD",
-                  "a DVD"
+                  "police officer",
+                  "a police officer"
+            ]
+      },
+      {
+            "id": "p4012_ex3_1",
+            "type": "fill",
+            "x": 58,
+            "y": 52,
+            "w": 36,
+            "h": 2,
+            "top": 52,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "which I wear to go running.",
+                  "which I wear to go running"
+            ]
+      },
+      {
+            "id": "p4012_ex3_2",
+            "type": "fill",
+            "x": 58,
+            "y": 57,
+            "w": 36,
+            "h": 2,
+            "top": 57,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "which I use for work.",
+                  "which I use for work"
+            ]
+      },
+      {
+            "id": "p4012_ex3_3",
+            "type": "fill",
+            "x": 58,
+            "y": 62,
+            "w": 36,
+            "h": 2,
+            "top": 62,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "who repairs my car.",
+                  "who repairs my car"
+            ]
+      },
+      {
+            "id": "p4012_ex3_4",
+            "type": "fill",
+            "x": 58,
+            "y": 67,
+            "w": 36,
+            "h": 2,
+            "top": 67,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "where my grandfather always sits.",
+                  "where my grandfather always sits"
+            ]
+      },
+      {
+            "id": "p4012_ex3_5",
+            "type": "fill",
+            "x": 58,
+            "y": 72,
+            "w": 36,
+            "h": 2,
+            "top": 72,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "who cuts my hair.",
+                  "who cuts my hair"
+            ]
+      },
+      {
+            "id": "p4012_ex3_6",
+            "type": "fill",
+            "x": 58,
+            "y": 77,
+            "w": 36,
+            "h": 2,
+            "top": 77,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "which goes to the city centre.",
+                  "which goes to the city centre"
+            ]
+      },
+      {
+            "id": "p4012_ex3_7",
+            "type": "fill",
+            "x": 58,
+            "y": 82,
+            "w": 36,
+            "h": 2,
+            "top": 82,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "where we do our shopping.",
+                  "where we do our shopping"
             ]
       }
 ],
@@ -82767,218 +83904,321 @@
       {
             "id": "p4013_ex5_1",
             "type": "fill",
-            "x": 20,
-            "y": 24,
-            "w": 22,
-            "h": 2.2,
-            "top": 24,
-            "left": 20,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 32,
+            "w": 16,
+            "h": 2,
+            "top": 32,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "washing machine",
-                  "washing"
+                  "dishwasher",
+                  "Dishwasher"
             ]
       },
       {
             "id": "p4013_ex5_2",
             "type": "fill",
-            "x": 20,
-            "y": 31,
-            "w": 22,
-            "h": 2.2,
-            "top": 31,
-            "left": 20,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 36,
+            "w": 18,
+            "h": 2,
+            "top": 36,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "rubbish bin",
-                  "bin"
+                  "dustpan and brush",
+                  "dustpan & brush"
             ]
       },
       {
             "id": "p4013_ex5_3",
             "type": "fill",
-            "x": 20,
-            "y": 38,
-            "w": 22,
-            "h": 2.2,
-            "top": 38,
-            "left": 20,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 16,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "bookcase",
-                  "book case"
+                  "wash basin",
+                  "washbasin"
             ]
       },
       {
             "id": "p4013_ex5_4",
             "type": "fill",
-            "x": 20,
-            "y": 45,
-            "w": 22,
-            "h": 2.2,
-            "top": 45,
-            "left": 20,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "light switch",
-                  "switch"
-            ]
-      },
-      {
-            "id": "p4013_ex5_5",
-            "type": "fill",
-            "x": 20,
-            "y": 52,
-            "w": 22,
-            "h": 2.2,
-            "top": 52,
-            "left": 20,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "air conditioning",
-                  "air condition"
-            ]
-      },
-      {
-            "id": "p4013_ex5_6",
-            "type": "fill",
-            "x": 20,
-            "y": 59,
-            "w": 22,
-            "h": 2.2,
-            "top": 59,
-            "left": 20,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "armchair",
-                  "arm chair"
-            ]
-      },
-      {
-            "id": "p4013_ex5_7",
-            "type": "fill",
-            "x": 20,
-            "y": 66,
-            "w": 22,
-            "h": 2.2,
-            "top": 66,
-            "left": 20,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 44,
+            "w": 18,
+            "h": 2,
+            "top": 44,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
                   "microwave oven",
                   "microwave"
             ]
       },
       {
+            "id": "p4013_ex5_5",
+            "type": "fill",
+            "x": 11,
+            "y": 48,
+            "w": 16,
+            "h": 2,
+            "top": 48,
+            "left": 11,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "satellite TV",
+                  "satellite tv"
+            ]
+      },
+      {
+            "id": "p4013_ex5_6",
+            "type": "fill",
+            "x": 11,
+            "y": 52,
+            "w": 18,
+            "h": 2,
+            "top": 52,
+            "left": 11,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "chest of drawers",
+                  "drawers"
+            ]
+      },
+      {
+            "id": "p4013_ex6_1",
+            "type": "fill",
+            "x": 11,
+            "y": 68,
+            "w": 14,
+            "h": 2,
+            "top": 68,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "carpet",
+                  "Carpet"
+            ]
+      },
+      {
+            "id": "p4013_ex6_2",
+            "type": "fill",
+            "x": 28,
+            "y": 68,
+            "w": 14,
+            "h": 2,
+            "top": 68,
+            "left": 28,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "cooker",
+                  "Cooker"
+            ]
+      },
+      {
+            "id": "p4013_ex6_3",
+            "type": "fill",
+            "x": 11,
+            "y": 72,
+            "w": 14,
+            "h": 2,
+            "top": 72,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "wardrobe",
+                  "Wardrobe"
+            ]
+      },
+      {
+            "id": "p4013_ex6_4",
+            "type": "fill",
+            "x": 28,
+            "y": 72,
+            "w": 14,
+            "h": 2,
+            "top": 72,
+            "left": 28,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "sheet",
+                  "Sheet"
+            ]
+      },
+      {
+            "id": "p4013_ex6_5",
+            "type": "fill",
+            "x": 11,
+            "y": 76,
+            "w": 14,
+            "h": 2,
+            "top": 76,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "duvet",
+                  "Duvet"
+            ]
+      },
+      {
+            "id": "p4013_ex6_6",
+            "type": "fill",
+            "x": 28,
+            "y": 76,
+            "w": 14,
+            "h": 2,
+            "top": 76,
+            "left": 28,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "towel",
+                  "Towel"
+            ]
+      },
+      {
+            "id": "p4013_ex6_7",
+            "type": "fill",
+            "x": 11,
+            "y": 80,
+            "w": 14,
+            "h": 2,
+            "top": 80,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "cloth",
+                  "Cloth"
+            ]
+      },
+      {
+            "id": "p4013_ex6_8",
+            "type": "fill",
+            "x": 28,
+            "y": 80,
+            "w": 14,
+            "h": 2,
+            "top": 80,
+            "left": 28,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "mirror",
+                  "Mirror"
+            ]
+      },
+      {
             "id": "p4013_ex7_1",
             "type": "fill",
-            "x": 65,
-            "y": 20,
-            "w": 22,
-            "h": 2.2,
-            "top": 20,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 58,
+            "y": 64,
+            "w": 15,
+            "h": 2,
+            "top": 64,
+            "left": 58,
+            "width": 15,
+            "height": 2,
             "correct": [
-                  "washing machine"
+                  "mirror",
+                  "Mirror"
             ]
       },
       {
             "id": "p4013_ex7_2",
             "type": "fill",
-            "x": 65,
-            "y": 27,
-            "w": 22,
-            "h": 2.2,
-            "top": 27,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 58,
+            "y": 68.5,
+            "w": 15,
+            "h": 2,
+            "top": 68.5,
+            "left": 58,
+            "width": 15,
+            "height": 2,
             "correct": [
-                  "rubbish bin"
+                  "carpet",
+                  "Carpet"
             ]
       },
       {
             "id": "p4013_ex7_3",
             "type": "fill",
-            "x": 65,
-            "y": 34,
-            "w": 22,
-            "h": 2.2,
-            "top": 34,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 58,
+            "y": 73,
+            "w": 15,
+            "h": 2,
+            "top": 73,
+            "left": 58,
+            "width": 15,
+            "height": 2,
             "correct": [
-                  "bookcase"
+                  "towel",
+                  "Towel"
             ]
       },
       {
             "id": "p4013_ex7_4",
             "type": "fill",
-            "x": 65,
-            "y": 41,
-            "w": 22,
-            "h": 2.2,
-            "top": 41,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 58,
+            "y": 77.5,
+            "w": 15,
+            "h": 2,
+            "top": 77.5,
+            "left": 58,
+            "width": 15,
+            "height": 2,
             "correct": [
-                  "light switch"
+                  "wardrobe",
+                  "Wardrobe"
             ]
       },
       {
             "id": "p4013_ex7_5",
             "type": "fill",
-            "x": 65,
-            "y": 48,
-            "w": 22,
-            "h": 2.2,
-            "top": 48,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 58,
+            "y": 82,
+            "w": 18,
+            "h": 2,
+            "top": 82,
+            "left": 58,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "air conditioning"
+                  "dustpan and brush",
+                  "dustpan & brush"
             ]
       },
       {
             "id": "p4013_ex7_6",
             "type": "fill",
-            "x": 65,
-            "y": 55,
-            "w": 22,
-            "h": 2.2,
-            "top": 55,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 58,
+            "y": 86.5,
+            "w": 15,
+            "h": 2,
+            "top": 86.5,
+            "left": 58,
+            "width": 15,
+            "height": 2,
             "correct": [
-                  "armchair"
-            ]
-      },
-      {
-            "id": "p4013_ex7_7",
-            "type": "fill",
-            "x": 65,
-            "y": 62,
-            "w": 22,
-            "h": 2.2,
-            "top": 62,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "microwave oven"
+                  "dishwasher",
+                  "Dishwasher"
             ]
       }
 ],
@@ -82986,14 +84226,14 @@
       {
             "id": "p4014_ex1_1",
             "type": "fill",
-            "x": 25,
-            "y": 29,
-            "w": 22,
-            "h": 2.2,
-            "top": 29,
-            "left": 25,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 32,
+            "w": 18,
+            "h": 2,
+            "top": 32,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
                   "on the internet",
                   "the internet"
@@ -83002,14 +84242,14 @@
       {
             "id": "p4014_ex1_2",
             "type": "fill",
-            "x": 25,
-            "y": 35,
-            "w": 22,
-            "h": 2.2,
-            "top": 35,
-            "left": 25,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 36,
+            "w": 16,
+            "h": 2,
+            "top": 36,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "on the way",
                   "the way"
@@ -83018,14 +84258,14 @@
       {
             "id": "p4014_ex1_3",
             "type": "fill",
-            "x": 25,
-            "y": 41,
-            "w": 22,
-            "h": 2.2,
-            "top": 41,
-            "left": 25,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 16,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "on the left",
                   "the left"
@@ -83034,14 +84274,14 @@
       {
             "id": "p4014_ex1_4",
             "type": "fill",
-            "x": 25,
-            "y": 47,
-            "w": 22,
-            "h": 2.2,
-            "top": 47,
-            "left": 25,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 44,
+            "w": 16,
+            "h": 2,
+            "top": 44,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "on holiday",
                   "holiday"
@@ -83050,30 +84290,31 @@
       {
             "id": "p4014_ex1_5",
             "type": "fill",
-            "x": 25,
-            "y": 53,
-            "w": 22,
-            "h": 2.2,
-            "top": 53,
-            "left": 25,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 48,
+            "w": 14,
+            "h": 2,
+            "top": 48,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
                   "on TV",
-                  "TV"
+                  "TV",
+                  "on tv"
             ]
       },
       {
             "id": "p4014_ex1_6",
             "type": "fill",
-            "x": 25,
-            "y": 59,
-            "w": 22,
-            "h": 2.2,
-            "top": 59,
-            "left": 25,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 52,
+            "w": 14,
+            "h": 2,
+            "top": 52,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
                   "on time",
                   "time"
@@ -83082,14 +84323,14 @@
       {
             "id": "p4014_ex1_7",
             "type": "fill",
-            "x": 25,
-            "y": 65,
-            "w": 22,
-            "h": 2.2,
-            "top": 65,
-            "left": 25,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 56,
+            "w": 16,
+            "h": 2,
+            "top": 56,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "on business",
                   "business"
@@ -83098,14 +84339,14 @@
       {
             "id": "p4014_ex1_8",
             "type": "fill",
-            "x": 25,
-            "y": 71,
-            "w": 22,
-            "h": 2.2,
-            "top": 71,
-            "left": 25,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 60,
+            "w": 20,
+            "h": 2,
+            "top": 60,
+            "left": 11,
+            "width": 20,
+            "height": 2,
             "correct": [
                   "on public transport",
                   "public transport"
@@ -83114,95 +84355,226 @@
       {
             "id": "p4014_ex2_1",
             "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 20,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 58,
+            "y": 32,
+            "w": 16,
+            "h": 2,
+            "top": 32,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "pedestrian area",
-                  "pedestrian"
+                  "on business",
+                  "business"
             ]
       },
       {
             "id": "p4014_ex2_2",
             "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 20,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 58,
+            "y": 36.5,
+            "w": 16,
+            "h": 2,
+            "top": 36.5,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "cycle lane",
-                  "cycle"
+                  "on holiday",
+                  "holiday"
             ]
       },
       {
             "id": "p4014_ex2_3",
             "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 20,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 58,
+            "y": 41,
+            "w": 14,
+            "h": 2,
+            "top": 41,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "busker",
-                  "buskers"
+                  "on TV",
+                  "TV",
+                  "on tv"
             ]
       },
       {
             "id": "p4014_ex2_4",
             "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 20,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 58,
+            "y": 45.5,
+            "w": 14,
+            "h": 2,
+            "top": 45.5,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "washing machine"
+                  "on time",
+                  "time"
             ]
       },
       {
             "id": "p4014_ex2_5",
             "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 20,
-            "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 58,
+            "y": 50,
+            "w": 16,
+            "h": 2,
+            "top": 50,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "microwave oven",
-                  "microwave"
+                  "on the way",
+                  "the way"
             ]
       },
       {
             "id": "p4014_ex2_6",
             "type": "fill",
-            "x": 65,
-            "y": 68,
-            "w": 20,
-            "h": 2.2,
-            "top": 68,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 58,
+            "y": 54.5,
+            "w": 18,
+            "h": 2,
+            "top": 54.5,
+            "left": 58,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "bookcase"
+                  "on the internet",
+                  "the internet"
+            ]
+      },
+      {
+            "id": "p4014_ex2_7",
+            "type": "fill",
+            "x": 58,
+            "y": 59,
+            "w": 20,
+            "h": 2,
+            "top": 59,
+            "left": 58,
+            "width": 20,
+            "height": 2,
+            "correct": [
+                  "on public transport",
+                  "public transport"
+            ]
+      },
+      {
+            "id": "p4014_ex2_8",
+            "type": "fill",
+            "x": 58,
+            "y": 63.5,
+            "w": 16,
+            "h": 2,
+            "top": 63.5,
+            "left": 58,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "on the left",
+                  "the left"
+            ]
+      },
+      {
+            "id": "p4014_ex3_1",
+            "type": "fill",
+            "x": 58,
+            "y": 76,
+            "w": 14,
+            "h": 2,
+            "top": 76,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "crowded",
+                  "Crowded"
+            ]
+      },
+      {
+            "id": "p4014_ex3_2",
+            "type": "fill",
+            "x": 58,
+            "y": 80,
+            "w": 14,
+            "h": 2,
+            "top": 80,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "safe",
+                  "Safe"
+            ]
+      },
+      {
+            "id": "p4014_ex3_3",
+            "type": "fill",
+            "x": 58,
+            "y": 84,
+            "w": 18,
+            "h": 2,
+            "top": 84,
+            "left": 58,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "pavement artist",
+                  "pavement"
+            ]
+      },
+      {
+            "id": "p4014_ex3_4",
+            "type": "fill",
+            "x": 58,
+            "y": 88,
+            "w": 18,
+            "h": 2,
+            "top": 88,
+            "left": 58,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "street performer",
+                  "performer"
+            ]
+      },
+      {
+            "id": "p4014_ex3_5",
+            "type": "fill",
+            "x": 58,
+            "y": 92,
+            "w": 16,
+            "h": 2,
+            "top": 92,
+            "left": 58,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "marketplace",
+                  "market place"
+            ]
+      },
+      {
+            "id": "p4014_ex3_6",
+            "type": "fill",
+            "x": 58,
+            "y": 96,
+            "w": 14,
+            "h": 2,
+            "top": 96,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "statue",
+                  "living statue"
             ]
       }
 ],
@@ -83210,250 +84582,327 @@
       {
             "id": "p4015_ex1a_1",
             "type": "fill",
-            "x": 10,
-            "y": 23,
+            "x": 45,
+            "y": 28,
             "w": 5,
-            "h": 2.2,
-            "top": 23,
-            "left": 10,
+            "h": 2,
+            "top": 28,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "3"
+                  "1",
+                  "one"
             ]
       },
       {
             "id": "p4015_ex1a_2",
             "type": "fill",
-            "x": 10,
-            "y": 27,
+            "x": 45,
+            "y": 31.5,
             "w": 5,
-            "h": 2.2,
-            "top": 27,
-            "left": 10,
+            "h": 2,
+            "top": 31.5,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "7"
+                  "2",
+                  "two"
             ]
       },
       {
             "id": "p4015_ex1a_3",
             "type": "fill",
-            "x": 10,
-            "y": 31,
+            "x": 45,
+            "y": 35,
             "w": 5,
-            "h": 2.2,
-            "top": 31,
-            "left": 10,
+            "h": 2,
+            "top": 35,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "1"
+                  "3",
+                  "three"
             ]
       },
       {
             "id": "p4015_ex1a_4",
             "type": "fill",
-            "x": 10,
-            "y": 35,
+            "x": 45,
+            "y": 38.5,
             "w": 5,
-            "h": 2.2,
-            "top": 35,
-            "left": 10,
+            "h": 2,
+            "top": 38.5,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "4"
+                  "4",
+                  "four"
             ]
       },
       {
             "id": "p4015_ex1a_5",
             "type": "fill",
-            "x": 10,
-            "y": 39,
+            "x": 45,
+            "y": 42,
             "w": 5,
-            "h": 2.2,
-            "top": 39,
-            "left": 10,
+            "h": 2,
+            "top": 42,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "6"
+                  "5",
+                  "five"
             ]
       },
       {
             "id": "p4015_ex1a_6",
             "type": "fill",
-            "x": 10,
-            "y": 43,
+            "x": 45,
+            "y": 45.5,
             "w": 5,
-            "h": 2.2,
-            "top": 43,
-            "left": 10,
+            "h": 2,
+            "top": 45.5,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "2"
+                  "6",
+                  "six"
             ]
       },
       {
             "id": "p4015_ex1a_7",
             "type": "fill",
-            "x": 10,
-            "y": 47,
+            "x": 45,
+            "y": 49,
             "w": 5,
-            "h": 2.2,
-            "top": 47,
-            "left": 10,
+            "h": 2,
+            "top": 49,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "5"
+                  "7",
+                  "seven"
             ]
       },
       {
             "id": "p4015_ex2_1",
             "type": "fill",
-            "x": 20,
-            "y": 58,
-            "w": 20,
-            "h": 2.2,
-            "top": 58,
-            "left": 20,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 62,
+            "w": 14,
+            "h": 2,
+            "top": 62,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "straight on",
-                  "go straight on"
+                  "'m looking",
+                  "am looking",
+                  "looking"
             ]
       },
       {
             "id": "p4015_ex2_2",
             "type": "fill",
-            "x": 20,
-            "y": 64,
-            "w": 20,
-            "h": 2.2,
-            "top": 64,
-            "left": 20,
-            "width": 20,
-            "height": 2.2,
+            "x": 28,
+            "y": 62,
+            "w": 10,
+            "h": 2,
+            "top": 62,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "turn left",
-                  "take the left"
+                  "on",
+                  "On"
             ]
       },
       {
             "id": "p4015_ex2_3",
             "type": "fill",
-            "x": 20,
-            "y": 70,
-            "w": 20,
-            "h": 2.2,
-            "top": 70,
-            "left": 20,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 66.5,
+            "w": 10,
+            "h": 2,
+            "top": 66.5,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "on the corner",
-                  "corner"
+                  "far",
+                  "Far"
             ]
       },
       {
             "id": "p4015_ex2_4",
             "type": "fill",
-            "x": 20,
-            "y": 76,
-            "w": 20,
-            "h": 2.2,
-            "top": 76,
-            "left": 20,
-            "width": 20,
-            "height": 2.2,
+            "x": 28,
+            "y": 66.5,
+            "w": 10,
+            "h": 2,
+            "top": 66.5,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "cross the road",
-                  "cross"
+                  "walk",
+                  "Walk"
             ]
       },
       {
             "id": "p4015_ex2_5",
             "type": "fill",
-            "x": 20,
-            "y": 82,
-            "w": 20,
-            "h": 2.2,
-            "top": 82,
-            "left": 20,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 71,
+            "w": 10,
+            "h": 2,
+            "top": 71,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "opposite",
-                  "next to"
+                  "turn",
+                  "Turn"
             ]
       },
       {
-            "id": "p4015_ex3_1",
+            "id": "p4015_ex2_6",
             "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 20,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 28,
+            "y": 71,
+            "w": 10,
+            "h": 2,
+            "top": 71,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "convenient",
-                  "peaceful"
+                  "stairs",
+                  "Stairs"
             ]
       },
       {
-            "id": "p4015_ex3_2",
+            "id": "p4015_ex2_7",
             "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 20,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 75.5,
+            "w": 10,
+            "h": 2,
+            "top": 75.5,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "crowded",
-                  "noisy"
+                  "see",
+                  "See"
             ]
       },
       {
-            "id": "p4015_ex3_3",
+            "id": "p4015_ex2_8",
             "type": "fill",
-            "x": 65,
-            "y": 46,
-            "w": 20,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 28,
+            "y": 75.5,
+            "w": 10,
+            "h": 2,
+            "top": 75.5,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "modern",
-                  "historic"
+                  "it's",
+                  "is",
+                  "It is"
             ]
       },
       {
-            "id": "p4015_ex3_4",
+            "id": "p4015_ex5_1",
             "type": "fill",
-            "x": 65,
-            "y": 54,
-            "w": 20,
-            "h": 2.2,
-            "top": 54,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 58,
+            "y": 75,
+            "w": 12,
+            "h": 2,
+            "top": 75,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "lively",
-                  "exciting"
+                  "Pls",
+                  "pls",
+                  "please"
+            ]
+      },
+      {
+            "id": "p4015_ex5_2",
+            "type": "fill",
+            "x": 58,
+            "y": 79,
+            "w": 12,
+            "h": 2,
+            "top": 79,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "CU",
+                  "cu",
+                  "see you"
+            ]
+      },
+      {
+            "id": "p4015_ex5_3",
+            "type": "fill",
+            "x": 58,
+            "y": 83,
+            "w": 12,
+            "h": 2,
+            "top": 83,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "Sry",
+                  "sry",
+                  "sorry"
+            ]
+      },
+      {
+            "id": "p4015_ex5_4",
+            "type": "fill",
+            "x": 58,
+            "y": 87,
+            "w": 12,
+            "h": 2,
+            "top": 87,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "asap",
+                  "ASAP"
+            ]
+      },
+      {
+            "id": "p4015_ex5_5",
+            "type": "fill",
+            "x": 58,
+            "y": 91,
+            "w": 12,
+            "h": 2,
+            "top": 91,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "Thnx",
+                  "thnx",
+                  "thanks"
             ]
       }
 ],
@@ -83461,136 +84910,101 @@
       {
             "id": "p4016_ex1_1",
             "type": "select",
-            "x": 15,
+            "x": 25,
             "y": 30,
-            "w": 25,
+            "w": 16,
             "h": 2.2,
             "top": 30,
-            "left": 15,
-            "width": 25,
+            "left": 25,
+            "width": 16,
             "height": 2.2,
             "correct": [
-                  "river pollution"
+                  "water pollution"
             ],
             "options": [
+                  "water pollution",
                   "air pollution",
-                  "river pollution",
-                  "noise pollution"
+                  "land pollution"
             ]
       },
       {
             "id": "p4016_ex1_2",
-            "type": "select",
-            "x": 15,
-            "y": 38,
-            "w": 25,
-            "h": 2.2,
-            "top": 38,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 58,
+            "y": 48,
+            "w": 36,
+            "h": 2,
+            "top": 48,
+            "left": 58,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "chemicals"
-            ],
-            "options": [
-                  "smoke",
-                  "chemicals",
-                  "rubbish"
+                  "John does experiments to find out the effects of the waste products on rats and writes a report.",
+                  "experiments on rats"
             ]
       },
       {
             "id": "p4016_ex1_3",
-            "type": "select",
-            "x": 15,
-            "y": 46,
-            "w": 25,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 58,
+            "y": 56,
+            "w": 36,
+            "h": 2,
+            "top": 56,
+            "left": 58,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "dangerous"
-            ],
-            "options": [
-                  "safe",
-                  "dangerous",
-                  "clean"
+                  "David Wilson reads the report.",
+                  "reads the report"
             ]
       },
       {
-            "id": "p4016_ex2_1",
+            "id": "p4016_ex1_4",
             "type": "fill",
-            "x": 65,
-            "y": 65,
-            "w": 6,
-            "h": 2.2,
-            "top": 65,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
+            "x": 58,
+            "y": 64,
+            "w": 36,
+            "h": 2,
+            "top": 64,
+            "left": 58,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "1"
+                  "John arrives in David Wilson's office.",
+                  "arrives in office"
             ]
       },
       {
-            "id": "p4016_ex2_2",
+            "id": "p4016_ex1_5",
             "type": "fill",
-            "x": 65,
-            "y": 71,
-            "w": 6,
-            "h": 2.2,
-            "top": 71,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
+            "x": 58,
+            "y": 72,
+            "w": 36,
+            "h": 2,
+            "top": 72,
+            "left": 58,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "4"
+                  "Wilson says he doesn't like the conclusions in the report.",
+                  "doesn't like the conclusions"
             ]
       },
       {
-            "id": "p4016_ex2_3",
+            "id": "p4016_ex1_6",
             "type": "fill",
-            "x": 65,
-            "y": 77,
-            "w": 6,
-            "h": 2.2,
-            "top": 77,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
+            "x": 58,
+            "y": 80,
+            "w": 36,
+            "h": 2,
+            "top": 80,
+            "left": 58,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "2"
-            ]
-      },
-      {
-            "id": "p4016_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 83,
-            "w": 6,
-            "h": 2.2,
-            "top": 83,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "5"
-            ]
-      },
-      {
-            "id": "p4016_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 89,
-            "w": 6,
-            "h": 2.2,
-            "top": 89,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "3"
+                  "Wilson says he doesn't want to build new machines to clean up",
+                  "build new machines"
             ]
       }
 ],
@@ -83598,14 +85012,14 @@
       {
             "id": "p4017_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 24,
-            "w": 12,
-            "h": 2.2,
-            "top": 24,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 10,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
                   "are",
                   "Are"
@@ -83614,45 +85028,47 @@
       {
             "id": "p4017_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 28,
-            "w": 12,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 28.5,
+            "w": 10,
+            "h": 2,
+            "top": 28.5,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
                   "who",
-                  "that"
+                  "that",
+                  "Who"
             ]
       },
       {
             "id": "p4017_ex1_3",
             "type": "fill",
-            "x": 15,
+            "x": 11,
             "y": 32,
-            "w": 12,
-            "h": 2.2,
+            "w": 10,
+            "h": 2,
             "top": 32,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "where"
+                  "where",
+                  "Where"
             ]
       },
       {
             "id": "p4017_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 36,
-            "w": 12,
-            "h": 2.2,
-            "top": 36,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 35.5,
+            "w": 10,
+            "h": 2,
+            "top": 35.5,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
                   "did",
                   "Did"
@@ -83661,30 +85077,31 @@
       {
             "id": "p4017_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 40,
-            "w": 12,
-            "h": 2.2,
-            "top": 40,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 39,
+            "w": 10,
+            "h": 2,
+            "top": 39,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
                   "which",
-                  "that"
+                  "that",
+                  "Which"
             ]
       },
       {
             "id": "p4017_ex1_6",
             "type": "fill",
-            "x": 15,
-            "y": 44,
-            "w": 12,
-            "h": 2.2,
-            "top": 44,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 42.5,
+            "w": 10,
+            "h": 2,
+            "top": 42.5,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
                   "do",
                   "Do"
@@ -83693,30 +85110,31 @@
       {
             "id": "p4017_ex1_7",
             "type": "fill",
-            "x": 15,
-            "y": 48,
-            "w": 12,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 46,
+            "w": 10,
+            "h": 2,
+            "top": 46,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
                   "is",
-                  "'s"
+                  "'s",
+                  "Is"
             ]
       },
       {
             "id": "p4017_ex1_8",
             "type": "fill",
-            "x": 15,
-            "y": 52,
-            "w": 12,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 49.5,
+            "w": 10,
+            "h": 2,
+            "top": 49.5,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
                   "does",
                   "Does"
@@ -83725,46 +85143,47 @@
       {
             "id": "p4017_ex2_1",
             "type": "fill",
-            "x": 15,
-            "y": 60,
-            "w": 20,
-            "h": 2.2,
-            "top": 60,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 62,
+            "w": 16,
+            "h": 2,
+            "top": 62,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "'m reading",
-                  "am reading"
+                  "am reading",
+                  "read"
             ]
       },
       {
             "id": "p4017_ex2_2",
             "type": "fill",
-            "x": 15,
-            "y": 65,
-            "w": 20,
-            "h": 2.2,
-            "top": 65,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 66.5,
+            "w": 14,
+            "h": 2,
+            "top": 66.5,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
                   "takes",
-                  "take"
+                  "Takes"
             ]
       },
       {
             "id": "p4017_ex2_3",
             "type": "fill",
-            "x": 15,
-            "y": 70,
-            "w": 20,
-            "h": 2.2,
-            "top": 70,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 71,
+            "w": 16,
+            "h": 2,
+            "top": 71,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "'s working",
                   "is working"
@@ -83773,30 +85192,31 @@
       {
             "id": "p4017_ex2_4",
             "type": "fill",
-            "x": 15,
-            "y": 75,
-            "w": 20,
-            "h": 2.2,
-            "top": 75,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 75.5,
+            "w": 16,
+            "h": 2,
+            "top": 75.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "do you go",
+                  "Do you go",
                   "go"
             ]
       },
       {
             "id": "p4017_ex2_5",
             "type": "fill",
-            "x": 15,
+            "x": 11,
             "y": 80,
-            "w": 20,
-            "h": 2.2,
+            "w": 18,
+            "h": 2,
             "top": 80,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
                   "don't understand",
                   "do not understand"
@@ -83805,14 +85225,14 @@
       {
             "id": "p4017_ex2_6",
             "type": "fill",
-            "x": 15,
-            "y": 85,
-            "w": 20,
-            "h": 2.2,
-            "top": 85,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 84.5,
+            "w": 16,
+            "h": 2,
+            "top": 84.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "is singing",
                   "'s singing"
@@ -83821,14 +85241,14 @@
       {
             "id": "p4017_ex3_1",
             "type": "fill",
-            "x": 65,
+            "x": 58,
             "y": 25,
-            "w": 18,
-            "h": 2.2,
+            "w": 16,
+            "h": 2,
             "top": 25,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "pedestrian area",
                   "pedestrian"
@@ -83837,14 +85257,14 @@
       {
             "id": "p4017_ex3_2",
             "type": "fill",
-            "x": 65,
-            "y": 32,
-            "w": 18,
-            "h": 2.2,
-            "top": 32,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 58,
+            "y": 29.5,
+            "w": 12,
+            "h": 2,
+            "top": 29.5,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
                   "damp",
                   "mild"
@@ -83853,14 +85273,14 @@
       {
             "id": "p4017_ex3_3",
             "type": "fill",
-            "x": 65,
-            "y": 39,
-            "w": 18,
-            "h": 2.2,
-            "top": 39,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 58,
+            "y": 34,
+            "w": 12,
+            "h": 2,
+            "top": 34,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
                   "showers",
                   "rain"
@@ -83869,14 +85289,14 @@
       {
             "id": "p4017_ex3_4",
             "type": "fill",
-            "x": 65,
-            "y": 46,
-            "w": 18,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 58,
+            "y": 38.5,
+            "w": 14,
+            "h": 2,
+            "top": 38.5,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
                   "on the way",
                   "the way"
@@ -83885,30 +85305,31 @@
       {
             "id": "p4017_ex3_5",
             "type": "fill",
-            "x": 65,
-            "y": 53,
-            "w": 18,
-            "h": 2.2,
-            "top": 53,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 58,
+            "y": 43,
+            "w": 12,
+            "h": 2,
+            "top": 43,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
                   "on TV",
-                  "TV"
+                  "TV",
+                  "on tv"
             ]
       },
       {
             "id": "p4017_ex3_6",
             "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 18,
-            "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 58,
+            "y": 47.5,
+            "w": 15,
+            "h": 2,
+            "top": 47.5,
+            "left": 58,
+            "width": 15,
+            "height": 2,
             "correct": [
                   "rubbish bin",
                   "bin"
@@ -83917,14 +85338,14 @@
       {
             "id": "p4017_ex3_7",
             "type": "fill",
-            "x": 65,
-            "y": 67,
-            "w": 18,
-            "h": 2.2,
-            "top": 67,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 58,
+            "y": 52,
+            "w": 14,
+            "h": 2,
+            "top": 52,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
                   "light switch",
                   "switch"
@@ -83933,444 +85354,422 @@
       {
             "id": "p4017_ex3_8",
             "type": "fill",
-            "x": 65,
-            "y": 74,
-            "w": 18,
-            "h": 2.2,
-            "top": 74,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 58,
+            "y": 56.5,
+            "w": 16,
+            "h": 2,
+            "top": 56.5,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "have a lie-in",
                   "lie-in"
             ]
       }
 ],
-"4018": [
+    "4018": [
       {
             "id": "p4018_ex1_1",
             "type": "fill",
-            "x": 13,
-            "y": 36.5,
+            "x": 11,
+            "y": 27,
             "w": 12,
-            "h": 2.2,
-            "top": 36.5,
-            "left": 13,
+            "h": 2,
+            "top": 27,
+            "left": 11,
             "width": 12,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "fall"
+                  "fall",
+                  "Fall"
             ]
       },
       {
             "id": "p4018_ex1_2",
             "type": "fill",
-            "x": 33,
-            "y": 36.5,
+            "x": 26,
+            "y": 27,
             "w": 12,
-            "h": 2.2,
-            "top": 36.5,
-            "left": 33,
+            "h": 2,
+            "top": 27,
+            "left": 26,
             "width": 12,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "rise"
+                  "rise",
+                  "Rise"
             ]
       },
       {
             "id": "p4018_ex1_3",
             "type": "fill",
-            "x": 13,
-            "y": 42.5,
+            "x": 41,
+            "y": 27,
             "w": 12,
-            "h": 2.2,
-            "top": 42.5,
-            "left": 13,
+            "h": 2,
+            "top": 27,
+            "left": 41,
             "width": 12,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "land"
+                  "land",
+                  "Land"
             ]
       },
       {
             "id": "p4018_ex1_4",
             "type": "fill",
-            "x": 33,
-            "y": 42.5,
-            "w": 12,
-            "h": 2.2,
-            "top": 42.5,
-            "left": 33,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 31,
+            "w": 14,
+            "h": 2,
+            "top": 31,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
                   "take off",
+                  "Take off",
                   "take-off"
             ]
       },
       {
             "id": "p4018_ex1_5",
             "type": "fill",
-            "x": 13,
-            "y": 48.5,
+            "x": 26,
+            "y": 31,
             "w": 12,
-            "h": 2.2,
-            "top": 48.5,
-            "left": 13,
+            "h": 2,
+            "top": 31,
+            "left": 26,
             "width": 12,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "climb"
+                  "climb",
+                  "Climb"
             ]
       },
       {
             "id": "p4018_ex1_6",
             "type": "fill",
-            "x": 33,
-            "y": 48.5,
+            "x": 41,
+            "y": 31,
             "w": 12,
-            "h": 2.2,
-            "top": 48.5,
-            "left": 33,
+            "h": 2,
+            "top": 31,
+            "left": 41,
             "width": 12,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "drop"
+                  "drop",
+                  "Drop"
             ]
       },
       {
             "id": "p4018_ex1_7",
             "type": "fill",
-            "x": 13,
-            "y": 54.5,
+            "x": 11,
+            "y": 35,
             "w": 12,
-            "h": 2.2,
-            "top": 54.5,
-            "left": 13,
+            "h": 2,
+            "top": 35,
+            "left": 11,
             "width": 12,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "lift"
+                  "lift",
+                  "Lift"
             ]
       },
       {
             "id": "p4018_ex1_8",
             "type": "fill",
-            "x": 33,
-            "y": 54.5,
+            "x": 26,
+            "y": 35,
             "w": 12,
-            "h": 2.2,
-            "top": 54.5,
-            "left": 33,
+            "h": 2,
+            "top": 35,
+            "left": 26,
             "width": 12,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "dive"
+                  "dive",
+                  "Dive"
             ]
       },
       {
             "id": "p4018_ex1_9",
             "type": "fill",
-            "x": 23,
-            "y": 60.5,
+            "x": 41,
+            "y": 35,
             "w": 12,
-            "h": 2.2,
-            "top": 60.5,
-            "left": 23,
+            "h": 2,
+            "top": 35,
+            "left": 41,
             "width": 12,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "jump"
+                  "jump",
+                  "Jump"
             ]
       },
       {
             "id": "p4018_ex2_1",
             "type": "fill",
-            "x": 13,
-            "y": 63,
+            "x": 11,
+            "y": 52,
             "w": 14,
-            "h": 2.2,
-            "top": 63,
-            "left": 13,
+            "h": 2,
+            "top": 52,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "through"
+                  "through",
+                  "Through"
             ]
       },
       {
             "id": "p4018_ex2_2",
             "type": "fill",
-            "x": 33,
-            "y": 63,
+            "x": 26,
+            "y": 52,
             "w": 14,
-            "h": 2.2,
-            "top": 63,
-            "left": 33,
+            "h": 2,
+            "top": 52,
+            "left": 26,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "towards"
+                  "towards",
+                  "Towards"
             ]
       },
       {
             "id": "p4018_ex2_3",
             "type": "fill",
-            "x": 13,
-            "y": 70,
+            "x": 41,
+            "y": 52,
             "w": 14,
-            "h": 2.2,
-            "top": 70,
-            "left": 13,
+            "h": 2,
+            "top": 52,
+            "left": 41,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "out of"
+                  "out of",
+                  "Out of"
             ]
       },
       {
             "id": "p4018_ex2_4",
             "type": "fill",
-            "x": 33,
-            "y": 70,
+            "x": 11,
+            "y": 56,
             "w": 14,
-            "h": 2.2,
-            "top": 70,
-            "left": 33,
+            "h": 2,
+            "top": 56,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "along"
+                  "along",
+                  "Along"
             ]
       },
       {
             "id": "p4018_ex2_5",
             "type": "fill",
-            "x": 13,
-            "y": 77,
+            "x": 26,
+            "y": 56,
             "w": 14,
-            "h": 2.2,
-            "top": 77,
-            "left": 13,
+            "h": 2,
+            "top": 56,
+            "left": 26,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "over"
+                  "over",
+                  "Over"
             ]
       },
       {
             "id": "p4018_ex2_6",
             "type": "fill",
-            "x": 33,
-            "y": 77,
-            "w": 14,
-            "h": 2.2,
-            "top": 77,
-            "left": 33,
-            "width": 14,
-            "height": 2.2,
+            "x": 41,
+            "y": 56,
+            "w": 16,
+            "h": 2,
+            "top": 56,
+            "left": 41,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "backwards"
+                  "backwards",
+                  "Backwards"
             ]
       },
       {
             "id": "p4018_ex2_7",
             "type": "fill",
-            "x": 13,
-            "y": 84,
-            "w": 14,
-            "h": 2.2,
-            "top": 84,
-            "left": 13,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 60,
+            "w": 20,
+            "h": 2,
+            "top": 60,
+            "left": 11,
+            "width": 20,
+            "height": 2,
             "correct": [
                   "round and round",
-                  "round"
+                  "Round and round"
             ]
       },
       {
             "id": "p4018_ex2_8",
             "type": "fill",
             "x": 33,
-            "y": 84,
+            "y": 60,
             "w": 14,
-            "h": 2.2,
-            "top": 84,
+            "h": 2,
+            "top": 60,
             "left": 33,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "into"
+                  "into",
+                  "Into"
             ]
       },
       {
             "id": "p4018_ex3_1",
-            "type": "select",
+            "type": "fill",
             "x": 58,
-            "y": 33,
-            "w": 22,
-            "h": 2.2,
-            "top": 33,
+            "y": 48,
+            "w": 12,
+            "h": 2,
+            "top": 48,
             "left": 58,
-            "width": 22,
-            "height": 2.2,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "into"
-            ],
-            "options": [
                   "into",
-                  "out of",
-                  "along",
-                  "through"
+                  "Into"
             ]
       },
       {
             "id": "p4018_ex3_2",
-            "type": "select",
+            "type": "fill",
             "x": 58,
-            "y": 41,
-            "w": 22,
-            "h": 2.2,
-            "top": 41,
+            "y": 52.5,
+            "w": 12,
+            "h": 2,
+            "top": 52.5,
             "left": 58,
-            "width": 22,
-            "height": 2.2,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "along"
-            ],
-            "options": [
                   "along",
-                  "towards",
-                  "over",
-                  "into"
+                  "Along"
             ]
       },
       {
             "id": "p4018_ex3_3",
-            "type": "select",
+            "type": "fill",
             "x": 58,
-            "y": 49,
-            "w": 22,
-            "h": 2.2,
-            "top": 49,
+            "y": 57,
+            "w": 14,
+            "h": 2,
+            "top": 57,
             "left": 58,
-            "width": 22,
-            "height": 2.2,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "through"
-            ],
-            "options": [
                   "through",
-                  "over",
-                  "out of",
-                  "along"
+                  "Through"
             ]
       },
       {
             "id": "p4018_ex3_4",
-            "type": "select",
+            "type": "fill",
             "x": 58,
-            "y": 57,
-            "w": 22,
-            "h": 2.2,
-            "top": 57,
+            "y": 61.5,
+            "w": 14,
+            "h": 2,
+            "top": 61.5,
             "left": 58,
-            "width": 22,
-            "height": 2.2,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "forward"
-            ],
-            "options": [
                   "forward",
-                  "backwards",
                   "towards",
-                  "along"
+                  "Forward",
+                  "Towards"
             ]
       },
       {
             "id": "p4018_ex3_5",
-            "type": "select",
+            "type": "fill",
             "x": 58,
-            "y": 65,
-            "w": 22,
-            "h": 2.2,
-            "top": 65,
+            "y": 66,
+            "w": 12,
+            "h": 2,
+            "top": 66,
             "left": 58,
-            "width": 22,
-            "height": 2.2,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "out of"
-            ],
-            "options": [
                   "out of",
-                  "into",
-                  "through",
-                  "over"
+                  "Out of"
             ]
       },
       {
             "id": "p4018_ex3_6",
-            "type": "select",
+            "type": "fill",
             "x": 58,
-            "y": 73,
-            "w": 22,
-            "h": 2.2,
-            "top": 73,
+            "y": 70.5,
+            "w": 14,
+            "h": 2,
+            "top": 70.5,
             "left": 58,
-            "width": 22,
-            "height": 2.2,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "backwards"
-            ],
-            "options": [
                   "backwards",
-                  "forward",
-                  "towards",
-                  "over"
+                  "Backwards"
             ]
       },
       {
             "id": "p4018_ex3_7",
-            "type": "select",
+            "type": "fill",
             "x": 58,
-            "y": 81,
-            "w": 22,
-            "h": 2.2,
-            "top": 81,
+            "y": 75,
+            "w": 12,
+            "h": 2,
+            "top": 75,
             "left": 58,
-            "width": 22,
-            "height": 2.2,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "over"
-            ],
-            "options": [
                   "over",
-                  "through",
-                  "along",
-                  "into"
+                  "Over"
             ]
       },
       {
             "id": "p4018_ex3_8",
-            "type": "select",
+            "type": "fill",
             "x": 58,
-            "y": 89,
-            "w": 22,
-            "h": 2.2,
-            "top": 89,
+            "y": 79.5,
+            "w": 14,
+            "h": 2,
+            "top": 79.5,
             "left": 58,
-            "width": 22,
-            "height": 2.2,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "towards"
-            ],
-            "options": [
                   "towards",
-                  "backwards",
-                  "out of",
-                  "into"
+                  "Towards"
             ]
       }
 ],
@@ -84378,46 +85777,46 @@
       {
             "id": "p4019_ex4_1",
             "type": "fill",
-            "x": 10,
-            "y": 24,
-            "w": 38,
-            "h": 2.2,
-            "top": 24,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 36,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "The plane from Madrid landed at 22.40 last night.",
-                  "The plane from Madrid landed at 22.40 last night"
+                  "landed at 22.40 last night"
             ]
       },
       {
             "id": "p4019_ex4_2",
             "type": "fill",
-            "x": 10,
-            "y": 31,
-            "w": 38,
-            "h": 2.2,
-            "top": 31,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 29,
+            "w": 36,
+            "h": 2,
+            "top": 29,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "The sun rose two hours ago.",
-                  "The sun rose two hours ago"
+                  "rose two hours ago"
             ]
       },
       {
             "id": "p4019_ex4_3",
             "type": "fill",
-            "x": 10,
-            "y": 38,
-            "w": 38,
-            "h": 2.2,
-            "top": 38,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 33,
+            "w": 36,
+            "h": 2,
+            "top": 33,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "Did you go on holiday in the summer?",
                   "Did you go on holiday in the summer"
@@ -84426,63 +85825,63 @@
       {
             "id": "p4019_ex4_4",
             "type": "fill",
-            "x": 10,
-            "y": 45,
-            "w": 38,
-            "h": 2.2,
-            "top": 45,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 37,
+            "w": 36,
+            "h": 2,
+            "top": 37,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "We had a family meal the day before yesterday.",
-                  "We had a family meal the day before yesterday"
+                  "had a family meal the day before yesterday"
             ]
       },
       {
             "id": "p4019_ex4_5",
             "type": "fill",
-            "x": 10,
-            "y": 52,
-            "w": 38,
-            "h": 2.2,
-            "top": 52,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 41,
+            "w": 36,
+            "h": 2,
+            "top": 41,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "I didn't climb trees when I was young.",
-                  "I didn't climb trees when I was young",
-                  "1 didn't climb trees when I was young."
+                  "I did not climb trees when I was young.",
+                  "didn't climb trees"
             ]
       },
       {
             "id": "p4019_ex4_6",
             "type": "fill",
-            "x": 10,
-            "y": 59,
-            "w": 38,
-            "h": 2.2,
-            "top": 59,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 45,
+            "w": 36,
+            "h": 2,
+            "top": 45,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "My friends went clubbing three days ago.",
-                  "My friends went clubbing three days ago"
+                  "went clubbing three days ago"
             ]
       },
       {
             "id": "p4019_ex4_7",
             "type": "fill",
-            "x": 10,
-            "y": 66,
-            "w": 38,
-            "h": 2.2,
-            "top": 66,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 49,
+            "w": 36,
+            "h": 2,
+            "top": 49,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "Did you spend time with relatives the other day?",
                   "Did you spend time with relatives the other day"
@@ -84491,357 +85890,437 @@
       {
             "id": "p4019_ex4_8",
             "type": "fill",
-            "x": 10,
-            "y": 73,
-            "w": 38,
-            "h": 2.2,
-            "top": 73,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "We stayed in on Saturday night.",
-                  "We stayed in on Saturday night"
-            ]
-      },
-      {
-            "id": "p4019_ex5_1",
-            "type": "fill",
-            "x": 65,
-            "y": 23,
-            "w": 16,
-            "h": 2.2,
-            "top": 23,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "fell"
-            ]
-      },
-      {
-            "id": "p4019_ex5_2",
-            "type": "fill",
-            "x": 65,
-            "y": 29,
-            "w": 16,
-            "h": 2.2,
-            "top": 29,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "flew"
-            ]
-      },
-      {
-            "id": "p4019_ex5_3",
-            "type": "fill",
-            "x": 65,
-            "y": 35,
-            "w": 16,
-            "h": 2.2,
-            "top": 35,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "opened"
-            ]
-      },
-      {
-            "id": "p4019_ex5_4",
-            "type": "fill",
-            "x": 65,
-            "y": 41,
-            "w": 16,
-            "h": 2.2,
-            "top": 41,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "landed"
-            ]
-      },
-      {
-            "id": "p4019_ex5_5",
-            "type": "fill",
-            "x": 65,
-            "y": 47,
-            "w": 16,
-            "h": 2.2,
-            "top": 47,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "broke"
-            ]
-      },
-      {
-            "id": "p4019_ex5_6",
-            "type": "fill",
-            "x": 65,
+            "x": 11,
             "y": 53,
-            "w": 16,
-            "h": 2.2,
+            "w": 36,
+            "h": 2,
             "top": 53,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "took"
+                  "We didn't do housework on Tuesday.",
+                  "We didn't do housework last Tuesday.",
+                  "didn't do housework on Tuesday"
             ]
       },
       {
-            "id": "p4019_ex5_7",
+            "id": "p4019_ex6_1",
             "type": "fill",
-            "x": 65,
-            "y": 59,
-            "w": 16,
-            "h": 2.2,
-            "top": 59,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 58,
+            "y": 28,
+            "w": 12,
+            "h": 2,
+            "top": 28,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "went"
+                  "became",
+                  "Became"
             ]
       },
       {
-            "id": "p4019_ex5_8",
+            "id": "p4019_ex6_2",
             "type": "fill",
-            "x": 65,
-            "y": 65,
-            "w": 16,
-            "h": 2.2,
-            "top": 65,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 75,
+            "y": 28,
+            "w": 14,
+            "h": 2,
+            "top": 28,
+            "left": 75,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "became"
+                  "took off",
+                  "Took off"
+            ]
+      },
+      {
+            "id": "p4019_ex6_3",
+            "type": "fill",
+            "x": 58,
+            "y": 32.5,
+            "w": 12,
+            "h": 2,
+            "top": 32.5,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "flew",
+                  "Flew"
+            ]
+      },
+      {
+            "id": "p4019_ex6_4",
+            "type": "fill",
+            "x": 75,
+            "y": 32.5,
+            "w": 16,
+            "h": 2,
+            "top": 32.5,
+            "left": 75,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "parachuted",
+                  "Parachuted"
+            ]
+      },
+      {
+            "id": "p4019_ex6_5",
+            "type": "fill",
+            "x": 58,
+            "y": 37,
+            "w": 16,
+            "h": 2,
+            "top": 37,
+            "left": 58,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "didn't land",
+                  "did not land"
+            ]
+      },
+      {
+            "id": "p4019_ex6_6",
+            "type": "fill",
+            "x": 75,
+            "y": 37,
+            "w": 14,
+            "h": 2,
+            "top": 37,
+            "left": 75,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "finished",
+                  "Finished"
+            ]
+      },
+      {
+            "id": "p4019_ex6_7",
+            "type": "fill",
+            "x": 58,
+            "y": 41.5,
+            "w": 10,
+            "h": 2,
+            "top": 41.5,
+            "left": 58,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "saw",
+                  "Saw"
+            ]
+      },
+      {
+            "id": "p4019_ex6_8",
+            "type": "fill",
+            "x": 75,
+            "y": 41.5,
+            "w": 10,
+            "h": 2,
+            "top": 41.5,
+            "left": 75,
+            "width": 10,
+            "height": 2,
+            "correct": [
+                  "were",
+                  "Were"
+            ]
+      },
+      {
+            "id": "p4019_ex6_9",
+            "type": "fill",
+            "x": 58,
+            "y": 46,
+            "w": 14,
+            "h": 2,
+            "top": 46,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "returned",
+                  "Returned"
+            ]
+      },
+      {
+            "id": "p4019_ex6_10",
+            "type": "fill",
+            "x": 75,
+            "y": 46,
+            "w": 16,
+            "h": 2,
+            "top": 46,
+            "left": 75,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "didn't retire",
+                  "did not retire"
+            ]
+      },
+      {
+            "id": "p4019_ex6_11",
+            "type": "fill",
+            "x": 58,
+            "y": 50.5,
+            "w": 14,
+            "h": 2,
+            "top": 50.5,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "travelled",
+                  "traveled",
+                  "Travelled"
+            ]
+      },
+      {
+            "id": "p4019_ex6_12",
+            "type": "fill",
+            "x": 75,
+            "y": 50.5,
+            "w": 12,
+            "h": 2,
+            "top": 50.5,
+            "left": 75,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "worked",
+                  "Worked"
+            ]
+      },
+      {
+            "id": "p4019_ex6_13",
+            "type": "fill",
+            "x": 58,
+            "y": 55,
+            "w": 12,
+            "h": 2,
+            "top": 55,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "helped",
+                  "Helped"
+            ]
+      },
+      {
+            "id": "p4019_ex6_14",
+            "type": "fill",
+            "x": 75,
+            "y": 55,
+            "w": 12,
+            "h": 2,
+            "top": 55,
+            "left": 75,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "crashed",
+                  "Crashed"
+            ]
+      },
+      {
+            "id": "p4019_ex6_15",
+            "type": "fill",
+            "x": 66,
+            "y": 59.5,
+            "w": 12,
+            "h": 2,
+            "top": 59.5,
+            "left": 66,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "died",
+                  "Died"
             ]
       }
 ],
     "4020": [
       {
             "id": "p4020_ex1a_1",
-            "type": "select",
-            "x": 25,
-            "y": 28,
-            "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 25,
-            "width": 16,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "worried"
-            ],
-            "options": [
-                  "worried",
-                  "calm",
-                  "nervous",
-                  "annoyed",
-                  "frightened",
-                  "confident"
+                  "excited",
+                  "Excited"
             ]
       },
       {
             "id": "p4020_ex1a_2",
-            "type": "select",
-            "x": 25,
-            "y": 34,
-            "w": 16,
-            "h": 2.2,
-            "top": 34,
-            "left": 25,
-            "width": 16,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "frightened"
-            ],
-            "options": [
-                  "worried",
-                  "calm",
-                  "nervous",
-                  "annoyed",
-                  "frightened",
-                  "confident"
+                  "angry",
+                  "Angry"
             ]
       },
       {
             "id": "p4020_ex1a_3",
-            "type": "select",
-            "x": 25,
-            "y": 40,
+            "type": "fill",
+            "x": 11,
+            "y": 34.5,
             "w": 16,
-            "h": 2.2,
-            "top": 40,
-            "left": 25,
+            "h": 2,
+            "top": 34.5,
+            "left": 11,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "calm"
-            ],
-            "options": [
-                  "worried",
-                  "calm",
-                  "nervous",
-                  "annoyed",
-                  "frightened",
-                  "confident"
+                  "embarrassed",
+                  "Embarrassed"
             ]
       },
       {
             "id": "p4020_ex1a_4",
-            "type": "select",
-            "x": 25,
-            "y": 46,
-            "w": 16,
-            "h": 2.2,
-            "top": 46,
-            "left": 25,
-            "width": 16,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 34.5,
+            "w": 14,
+            "h": 2,
+            "top": 34.5,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "nervous"
-            ],
-            "options": [
-                  "worried",
-                  "calm",
-                  "nervous",
-                  "annoyed",
-                  "frightened",
-                  "confident"
+                  "guilty",
+                  "Guilty"
             ]
       },
       {
             "id": "p4020_ex1a_5",
-            "type": "select",
-            "x": 25,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 25,
-            "width": 16,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 39,
+            "w": 14,
+            "h": 2,
+            "top": 39,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "confident"
-            ],
-            "options": [
-                  "worried",
-                  "calm",
                   "nervous",
-                  "annoyed",
-                  "frightened",
-                  "confident"
+                  "Nervous"
             ]
       },
       {
             "id": "p4020_ex1a_6",
-            "type": "select",
-            "x": 25,
-            "y": 58,
+            "type": "fill",
+            "x": 28,
+            "y": 39,
             "w": 16,
-            "h": 2.2,
-            "top": 58,
-            "left": 25,
+            "h": 2,
+            "top": 39,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "annoyed"
-            ],
-            "options": [
-                  "worried",
+                  "disappointed",
+                  "Disappointed"
+            ]
+      },
+      {
+            "id": "p4020_ex1a_7",
+            "type": "fill",
+            "x": 11,
+            "y": 43.5,
+            "w": 14,
+            "h": 2,
+            "top": 43.5,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "confused",
+                  "Confused"
+            ]
+      },
+      {
+            "id": "p4020_ex1a_8",
+            "type": "fill",
+            "x": 28,
+            "y": 43.5,
+            "w": 12,
+            "h": 2,
+            "top": 43.5,
+            "left": 28,
+            "width": 12,
+            "height": 2,
+            "correct": [
                   "calm",
-                  "nervous",
-                  "annoyed",
-                  "frightened",
-                  "confident"
+                  "Calm"
             ]
       },
       {
-            "id": "p4020_ex2_1",
+            "id": "p4020_ex1a_9",
             "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 18,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 11,
+            "y": 48,
+            "w": 14,
+            "h": 2,
+            "top": 48,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "upset",
-                  "sad"
+                  "lonely",
+                  "Lonely"
             ]
       },
       {
-            "id": "p4020_ex2_2",
+            "id": "p4020_ex1a_10",
             "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 18,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 28,
+            "y": 48,
+            "w": 14,
+            "h": 2,
+            "top": 48,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "exhausted",
-                  "tired"
+                  "anxious",
+                  "Anxious"
             ]
       },
       {
-            "id": "p4020_ex2_3",
+            "id": "p4020_ex1a_11",
             "type": "fill",
-            "x": 65,
-            "y": 46,
-            "w": 18,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 11,
+            "y": 52.5,
+            "w": 14,
+            "h": 2,
+            "top": 52.5,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "surprised",
-                  "shocked"
-            ]
-      },
-      {
-            "id": "p4020_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 54,
-            "w": 18,
-            "h": 2.2,
-            "top": 54,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "excited",
-                  "thrilled"
-            ]
-      },
-      {
-            "id": "p4020_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 62,
-            "w": 18,
-            "h": 2.2,
-            "top": 62,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "terrified",
-                  "scared"
+                  "pleased",
+                  "Pleased"
             ]
       }
 ],
@@ -84849,256 +86328,225 @@
       {
             "id": "p4021_ex3_1",
             "type": "fill",
-            "x": 13,
-            "y": 20,
-            "w": 20,
-            "h": 2.2,
-            "top": 20,
-            "left": 13,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 16,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "was having",
-                  "having"
+                  "was raining",
+                  "rained"
             ]
       },
       {
             "id": "p4021_ex3_2",
             "type": "fill",
-            "x": 13,
-            "y": 26,
-            "w": 20,
-            "h": 2.2,
-            "top": 26,
-            "left": 13,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 29,
+            "w": 16,
+            "h": 2,
+            "top": 29,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "stopped",
-                  "was stopping"
+                  "were sleeping",
+                  "slept"
             ]
       },
       {
             "id": "p4021_ex3_3",
             "type": "fill",
-            "x": 13,
-            "y": 32,
-            "w": 20,
-            "h": 2.2,
-            "top": 32,
-            "left": 13,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 33,
+            "w": 18,
+            "h": 2,
+            "top": 33,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "was waiting",
-                  "waited"
+                  "wasn't working",
+                  "was not working"
             ]
       },
       {
             "id": "p4021_ex3_4",
             "type": "fill",
-            "x": 13,
-            "y": 38,
-            "w": 20,
-            "h": 2.2,
-            "top": 38,
-            "left": 13,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 37,
+            "w": 18,
+            "h": 2,
+            "top": 37,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "heard",
-                  "was hearing"
+                  "were talking",
+                  "were you talking"
             ]
       },
       {
             "id": "p4021_ex3_5",
             "type": "fill",
-            "x": 13,
-            "y": 44,
-            "w": 20,
-            "h": 2.2,
-            "top": 44,
-            "left": 13,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 41,
+            "w": 16,
+            "h": 2,
+            "top": 41,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "rang",
-                  "was ringing"
+                  "was driving",
+                  "drove"
             ]
       },
       {
             "id": "p4021_ex3_6",
             "type": "fill",
-            "x": 13,
-            "y": 50,
-            "w": 20,
-            "h": 2.2,
-            "top": 50,
-            "left": 13,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 45,
+            "w": 18,
+            "h": 2,
+            "top": 45,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "were going",
-                  "went"
+                  "weren't watching",
+                  "were not watching"
             ]
       },
       {
-            "id": "p4021_ex4_1",
-            "type": "select",
-            "x": 13,
-            "y": 58,
-            "w": 24,
-            "h": 2.2,
-            "top": 58,
-            "left": 13,
-            "width": 24,
-            "height": 2.2,
+            "id": "p4021_ex3_7",
+            "type": "fill",
+            "x": 11,
+            "y": 49,
+            "w": 16,
+            "h": 2,
+            "top": 49,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "was shining"
-            ],
-            "options": [
-                  "shone",
-                  "was shining"
+                  "was living",
+                  "lived"
             ]
       },
       {
-            "id": "p4021_ex4_2",
-            "type": "select",
-            "x": 13,
-            "y": 64,
-            "w": 24,
-            "h": 2.2,
-            "top": 64,
-            "left": 13,
-            "width": 24,
-            "height": 2.2,
+            "id": "p4021_ex3_8",
+            "type": "fill",
+            "x": 11,
+            "y": 53,
+            "w": 16,
+            "h": 2,
+            "top": 53,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "were walking"
-            ],
-            "options": [
-                  "walked",
-                  "were walking"
-            ]
-      },
-      {
-            "id": "p4021_ex4_3",
-            "type": "select",
-            "x": 13,
-            "y": 70,
-            "w": 24,
-            "h": 2.2,
-            "top": 70,
-            "left": 13,
-            "width": 24,
-            "height": 2.2,
-            "correct": [
-                  "heard"
-            ],
-            "options": [
-                  "heard",
-                  "were hearing"
-            ]
-      },
-      {
-            "id": "p4021_ex4_4",
-            "type": "select",
-            "x": 13,
-            "y": 76,
-            "w": 24,
-            "h": 2.2,
-            "top": 76,
-            "left": 13,
-            "width": 24,
-            "height": 2.2,
-            "correct": [
-                  "saw"
-            ],
-            "options": [
-                  "saw",
-                  "was seeing"
-            ]
-      },
-      {
-            "id": "p4021_ex4_5",
-            "type": "select",
-            "x": 13,
-            "y": 82,
-            "w": 24,
-            "h": 2.2,
-            "top": 82,
-            "left": 13,
-            "width": 24,
-            "height": 2.2,
-            "correct": [
-                  "was climbing"
-            ],
-            "options": [
-                  "climbed",
-                  "was climbing"
+                  "were dancing",
+                  "danced"
             ]
       },
       {
             "id": "p4021_ex5_1",
             "type": "fill",
-            "x": 65,
-            "y": 23,
-            "w": 25,
-            "h": 2.2,
-            "top": 23,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
+            "x": 58,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "What were you doing",
-                  "were you doing"
+                  "saw",
+                  "Saw"
             ]
       },
       {
             "id": "p4021_ex5_2",
             "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 25,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
+            "x": 58,
+            "y": 40,
+            "w": 16,
+            "h": 2,
+            "top": 40,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Who was driving",
-                  "was driving"
+                  "was doing",
+                  "did"
             ]
       },
       {
             "id": "p4021_ex5_3",
             "type": "fill",
-            "x": 65,
-            "y": 37,
-            "w": 25,
-            "h": 2.2,
-            "top": 37,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
+            "x": 58,
+            "y": 45,
+            "w": 14,
+            "h": 2,
+            "top": 45,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "Where were you going",
-                  "were you going"
+                  "thought",
+                  "Thought"
             ]
       },
       {
             "id": "p4021_ex5_4",
             "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 25,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
+            "x": 58,
+            "y": 50,
+            "w": 16,
+            "h": 2,
+            "top": 50,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Did it rain",
-                  "Was it raining"
+                  "was sitting",
+                  "sat"
+            ]
+      },
+      {
+            "id": "p4021_ex5_5",
+            "type": "fill",
+            "x": 58,
+            "y": 55,
+            "w": 12,
+            "h": 2,
+            "top": 55,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "filled",
+                  "Filled"
+            ]
+      },
+      {
+            "id": "p4021_ex5_6",
+            "type": "fill",
+            "x": 58,
+            "y": 60,
+            "w": 12,
+            "h": 2,
+            "top": 60,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "rose",
+                  "Rose"
             ]
       }
 ],
@@ -85106,388 +86554,420 @@
       {
             "id": "p4022_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 45,
-            "w": 35,
-            "h": 2.2,
-            "top": 45,
-            "left": 15,
-            "width": 35,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 36,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "They play tennis badly.",
-                  "They play tennis badly"
+                  "play tennis badly"
             ]
       },
       {
             "id": "p4022_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 52,
-            "w": 35,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
-            "width": 35,
-            "height": 2.2,
+            "x": 11,
+            "y": 29,
+            "w": 36,
+            "h": 2,
+            "top": 29,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "He drives dangerously.",
-                  "He drives dangerously"
+                  "He reads slowly.",
+                  "reads slowly"
             ]
       },
       {
             "id": "p4022_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 59,
-            "w": 35,
-            "h": 2.2,
-            "top": 59,
-            "left": 15,
-            "width": 35,
-            "height": 2.2,
+            "x": 11,
+            "y": 33,
+            "w": 36,
+            "h": 2,
+            "top": 33,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "She speaks English fluently.",
-                  "She speaks English fluently"
+                  "We eat healthily.",
+                  "eat healthily"
             ]
       },
       {
             "id": "p4022_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 66,
-            "w": 35,
-            "h": 2.2,
-            "top": 66,
-            "left": 15,
-            "width": 35,
-            "height": 2.2,
+            "x": 11,
+            "y": 37,
+            "w": 36,
+            "h": 2,
+            "top": 37,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "He works hard.",
-                  "He works hard"
+                  "My mother walks fast.",
+                  "walks fast"
             ]
       },
       {
             "id": "p4022_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 73,
-            "w": 35,
-            "h": 2.2,
-            "top": 73,
-            "left": 15,
-            "width": 35,
-            "height": 2.2,
+            "x": 11,
+            "y": 41,
+            "w": 36,
+            "h": 2,
+            "top": 41,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "She dances beautifully.",
-                  "She dances beautifully"
+                  "I drive carefully.",
+                  "drive carefully"
             ]
       },
       {
             "id": "p4022_ex1_6",
             "type": "fill",
-            "x": 15,
-            "y": 80,
-            "w": 35,
-            "h": 2.2,
-            "top": 80,
-            "left": 15,
-            "width": 35,
-            "height": 2.2,
+            "x": 11,
+            "y": 45,
+            "w": 36,
+            "h": 2,
+            "top": 45,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "They ran quickly.",
-                  "They ran quickly"
+                  "You cook well.",
+                  "cook well"
+            ]
+      },
+      {
+            "id": "p4022_ex1_7",
+            "type": "fill",
+            "x": 11,
+            "y": 49,
+            "w": 36,
+            "h": 2,
+            "top": 49,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "My partner works hard.",
+                  "works hard"
+            ]
+      },
+      {
+            "id": "p4022_ex1_8",
+            "type": "fill",
+            "x": 11,
+            "y": 53,
+            "w": 36,
+            "h": 2,
+            "top": 53,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "My brother dresses smartly.",
+                  "dresses smartly"
             ]
       },
       {
             "id": "p4022_ex2_1",
             "type": "fill",
-            "x": 65,
-            "y": 28,
+            "x": 58,
+            "y": 25,
             "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
+            "h": 2,
+            "top": 25,
+            "left": 58,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "calmly"
+                  "regularly",
+                  "Regularly"
             ]
       },
       {
             "id": "p4022_ex2_2",
             "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 16,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 58,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "nervously"
+                  "quietly",
+                  "Quietly"
             ]
       },
       {
             "id": "p4022_ex2_3",
             "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 16,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 58,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "confidently"
+                  "easily",
+                  "Easily"
             ]
       },
       {
             "id": "p4022_ex2_4",
             "type": "fill",
-            "x": 65,
-            "y": 52,
+            "x": 58,
+            "y": 40,
             "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
+            "h": 2,
+            "top": 40,
+            "left": 58,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "loudly"
+                  "beautifully",
+                  "Beautifully"
             ]
       },
       {
             "id": "p4022_ex2_5",
             "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 16,
-            "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 58,
+            "y": 45,
+            "w": 14,
+            "h": 2,
+            "top": 45,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "slowly"
+                  "fluently",
+                  "Fluently"
             ]
       },
       {
             "id": "p4022_ex2_6",
             "type": "fill",
-            "x": 65,
-            "y": 68,
-            "w": 16,
-            "h": 2.2,
-            "top": 68,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 58,
+            "y": 50,
+            "w": 14,
+            "h": 2,
+            "top": 50,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "quietly"
+                  "quickly",
+                  "Quickly"
+            ]
+      },
+      {
+            "id": "p4022_ex2_7",
+            "type": "fill",
+            "x": 58,
+            "y": 55,
+            "w": 14,
+            "h": 2,
+            "top": 55,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "politely",
+                  "Politely"
             ]
       }
 ],
     "4023": [
       {
-            "id": "p4023_ex1_1",
-            "type": "select",
-            "x": 25,
-            "y": 28,
-            "w": 18,
-            "h": 2.2,
-            "top": 28,
-            "left": 25,
-            "width": 18,
-            "height": 2.2,
+            "id": "p4023_ex1a_1",
+            "type": "fill",
+            "x": 11,
+            "y": 26,
+            "w": 24,
+            "h": 2,
+            "top": 26,
+            "left": 11,
+            "width": 24,
+            "height": 2,
             "correct": [
-                  "did you"
-            ],
-            "options": [
-                  "did you",
-                  "really",
-                  "what happened",
-                  "oh no",
-                  "that sounds",
-                  "you must be kidding"
+                  "We had a bad experience",
+                  "bad experience"
             ]
       },
       {
-            "id": "p4023_ex1_2",
-            "type": "select",
-            "x": 25,
-            "y": 34,
-            "w": 18,
-            "h": 2.2,
-            "top": 34,
-            "left": 25,
-            "width": 18,
-            "height": 2.2,
+            "id": "p4023_ex1a_2",
+            "type": "fill",
+            "x": 11,
+            "y": 31,
+            "w": 16,
+            "h": 2,
+            "top": 31,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "what happened"
-            ],
-            "options": [
-                  "did you",
-                  "really",
-                  "what happened",
-                  "oh no",
-                  "that sounds",
-                  "you must be kidding"
+                  "Anyway",
+                  "anyway"
             ]
       },
       {
-            "id": "p4023_ex1_3",
-            "type": "select",
-            "x": 25,
-            "y": 40,
-            "w": 18,
-            "h": 2.2,
-            "top": 40,
-            "left": 25,
-            "width": 18,
-            "height": 2.2,
+            "id": "p4023_ex1a_3",
+            "type": "fill",
+            "x": 11,
+            "y": 36,
+            "w": 16,
+            "h": 2,
+            "top": 36,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
+                  "Oh no",
                   "oh no"
-            ],
-            "options": [
-                  "did you",
-                  "really",
-                  "what happened",
-                  "oh no",
-                  "that sounds",
-                  "you must be kidding"
             ]
       },
       {
-            "id": "p4023_ex1_4",
-            "type": "select",
-            "x": 25,
+            "id": "p4023_ex1a_4",
+            "type": "fill",
+            "x": 11,
+            "y": 41,
+            "w": 22,
+            "h": 2,
+            "top": 41,
+            "left": 11,
+            "width": 22,
+            "height": 2,
+            "correct": [
+                  "I was so angry",
+                  "was so angry"
+            ]
+      },
+      {
+            "id": "p4023_ex1a_5",
+            "type": "fill",
+            "x": 11,
             "y": 46,
-            "w": 18,
-            "h": 2.2,
+            "w": 26,
+            "h": 2,
             "top": 46,
-            "left": 25,
-            "width": 18,
-            "height": 2.2,
+            "left": 11,
+            "width": 26,
+            "height": 2,
             "correct": [
-                  "that sounds"
-            ],
-            "options": [
-                  "did you",
-                  "really",
-                  "what happened",
-                  "oh no",
-                  "that sounds",
-                  "you must be kidding"
-            ]
-      },
-      {
-            "id": "p4023_ex1_5",
-            "type": "select",
-            "x": 25,
-            "y": 52,
-            "w": 18,
-            "h": 2.2,
-            "top": 52,
-            "left": 25,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "you must be kidding"
-            ],
-            "options": [
-                  "did you",
-                  "really",
-                  "what happened",
-                  "oh no",
-                  "that sounds",
-                  "you must be kidding"
+                  "It was all OK in the end",
+                  "all OK in the end",
+                  "It was all 0K in the end"
             ]
       },
       {
             "id": "p4023_ex2_1",
-            "type": "select",
-            "x": 65,
-            "y": 30,
-            "w": 14,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
+            "type": "fill",
+            "x": 58,
+            "y": 40,
+            "w": 22,
+            "h": 2,
+            "top": 40,
+            "left": 58,
+            "width": 22,
+            "height": 2,
             "correct": [
-                  "When"
-            ],
-            "options": [
-                  "When",
-                  "While",
-                  "Suddenly",
-                  "As soon as"
+                  "A short time later",
+                  "a short time later"
             ]
       },
       {
             "id": "p4023_ex2_2",
-            "type": "select",
-            "x": 65,
-            "y": 38,
+            "type": "fill",
+            "x": 58,
+            "y": 46,
             "w": 14,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
+            "h": 2,
+            "top": 46,
+            "left": 58,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "While"
-            ],
-            "options": [
-                  "When",
-                  "While",
-                  "Suddenly",
-                  "As soon as"
+                  "when",
+                  "When"
             ]
       },
       {
             "id": "p4023_ex2_3",
-            "type": "select",
-            "x": 65,
-            "y": 46,
-            "w": 14,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
+            "type": "fill",
+            "x": 58,
+            "y": 52,
+            "w": 16,
+            "h": 2,
+            "top": 52,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Suddenly"
-            ],
-            "options": [
-                  "When",
-                  "While",
                   "Suddenly",
-                  "As soon as"
+                  "suddenly"
             ]
       },
       {
             "id": "p4023_ex2_4",
-            "type": "select",
-            "x": 65,
-            "y": 54,
-            "w": 14,
-            "h": 2.2,
-            "top": 54,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
+            "type": "fill",
+            "x": 58,
+            "y": 58,
+            "w": 16,
+            "h": 2,
+            "top": 58,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "As soon as"
-            ],
-            "options": [
-                  "When",
-                  "While",
-                  "Suddenly",
-                  "As soon as"
+                  "At first",
+                  "at first"
+            ]
+      },
+      {
+            "id": "p4023_ex2_5",
+            "type": "fill",
+            "x": 58,
+            "y": 64,
+            "w": 18,
+            "h": 2,
+            "top": 64,
+            "left": 58,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "but then",
+                  "But then"
+            ]
+      },
+      {
+            "id": "p4023_ex2_6",
+            "type": "fill",
+            "x": 58,
+            "y": 70,
+            "w": 16,
+            "h": 2,
+            "top": 70,
+            "left": 58,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "In the end",
+                  "in the end"
             ]
       }
 ],
@@ -85495,189 +86975,274 @@
       {
             "id": "p4024_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 36,
-            "w": 18,
-            "h": 2.2,
-            "top": 36,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 22,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 22,
+            "height": 2,
             "correct": [
-                  "give up",
-                  "gave up"
+                  "in my mid-twenties",
+                  "mid-twenties"
             ]
       },
       {
             "id": "p4024_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 42,
+            "x": 11,
+            "y": 29.5,
             "w": 18,
-            "h": 2.2,
-            "top": 42,
-            "left": 15,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
             "width": 18,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "change career",
-                  "change"
+                  "middle-aged",
+                  "middle aged"
             ]
       },
       {
             "id": "p4024_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 48,
-            "w": 18,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "x": 11,
+            "y": 34,
+            "w": 24,
+            "h": 2,
+            "top": 34,
+            "left": 11,
+            "width": 24,
+            "height": 2,
             "correct": [
-                  "take up",
-                  "took up"
+                  "in her early twenties",
+                  "early twenties"
             ]
       },
       {
             "id": "p4024_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 54,
-            "w": 18,
-            "h": 2.2,
-            "top": 54,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "apply for",
-                  "applied for"
-            ]
-      },
-      {
-            "id": "p4024_ex2_1",
-            "type": "fill",
-            "x": 15,
-            "y": 62,
-            "w": 18,
-            "h": 2.2,
-            "top": 62,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "retire",
-                  "retired"
-            ]
-      },
-      {
-            "id": "p4024_ex2_2",
-            "type": "fill",
-            "x": 15,
-            "y": 68,
-            "w": 18,
-            "h": 2.2,
-            "top": 68,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "work long hours",
-                  "work"
-            ]
-      },
-      {
-            "id": "p4024_ex2_3",
-            "type": "fill",
-            "x": 15,
-            "y": 74,
-            "w": 18,
-            "h": 2.2,
-            "top": 74,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "start a business",
-                  "start"
-            ]
-      },
-      {
-            "id": "p4024_ex2_4",
-            "type": "fill",
-            "x": 15,
-            "y": 80,
-            "w": 18,
-            "h": 2.2,
-            "top": 80,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "go back to education",
-                  "go back"
-            ]
-      },
-      {
-            "id": "p4024_ex4_1",
-            "type": "fill",
-            "x": 65,
-            "y": 33,
+            "x": 11,
+            "y": 38.5,
             "w": 16,
-            "h": 2.2,
-            "top": 33,
-            "left": 65,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "successful"
+                  "elderly",
+                  "Elderly"
             ]
       },
       {
-            "id": "p4024_ex4_2",
+            "id": "p4024_ex1_5",
             "type": "fill",
-            "x": 65,
-            "y": 41,
-            "w": 16,
-            "h": 2.2,
-            "top": 41,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 43,
+            "w": 24,
+            "h": 2,
+            "top": 43,
+            "left": 11,
+            "width": 24,
+            "height": 2,
             "correct": [
-                  "opportunity"
+                  "in her late twenties",
+                  "late twenties"
             ]
       },
       {
-            "id": "p4024_ex4_3",
+            "id": "p4024_ex1_6",
             "type": "fill",
-            "x": 65,
-            "y": 49,
-            "w": 16,
-            "h": 2.2,
-            "top": 49,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 47.5,
+            "w": 18,
+            "h": 2,
+            "top": 47.5,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "challenge"
+                  "in her sixties",
+                  "sixties"
             ]
       },
       {
-            "id": "p4024_ex4_4",
+            "id": "p4024_ex1_7",
             "type": "fill",
-            "x": 65,
-            "y": 57,
-            "w": 16,
-            "h": 2.2,
-            "top": 57,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 52,
+            "w": 20,
+            "h": 2,
+            "top": 52,
+            "left": 11,
+            "width": 20,
+            "height": 2,
             "correct": [
-                  "experience"
+                  "about thirty-five",
+                  "thirty-five",
+                  "35"
+            ]
+      },
+      {
+            "id": "p4024_ex1_8",
+            "type": "fill",
+            "x": 11,
+            "y": 56.5,
+            "w": 16,
+            "h": 2,
+            "top": 56.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "a child",
+                  "child"
+            ]
+      },
+      {
+            "id": "p4024_ex1_9",
+            "type": "fill",
+            "x": 11,
+            "y": 61,
+            "w": 18,
+            "h": 2,
+            "top": 61,
+            "left": 11,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "a teenager",
+                  "teenager"
+            ]
+      },
+      {
+            "id": "p4024_ex3_1",
+            "type": "fill",
+            "x": 58,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "took up",
+                  "Took up"
+            ]
+      },
+      {
+            "id": "p4024_ex3_2",
+            "type": "fill",
+            "x": 58,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "left",
+                  "Left"
+            ]
+      },
+      {
+            "id": "p4024_ex3_3",
+            "type": "fill",
+            "x": 58,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "decided",
+                  "Decided"
+            ]
+      },
+      {
+            "id": "p4024_ex3_4",
+            "type": "fill",
+            "x": 58,
+            "y": 45,
+            "w": 12,
+            "h": 2,
+            "top": 45,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "went",
+                  "Went"
+            ]
+      },
+      {
+            "id": "p4024_ex3_5",
+            "type": "fill",
+            "x": 58,
+            "y": 50,
+            "w": 14,
+            "h": 2,
+            "top": 50,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "started",
+                  "Started"
+            ]
+      },
+      {
+            "id": "p4024_ex3_6",
+            "type": "fill",
+            "x": 58,
+            "y": 55,
+            "w": 12,
+            "h": 2,
+            "top": 55,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "got",
+                  "Got"
+            ]
+      },
+      {
+            "id": "p4024_ex3_7",
+            "type": "fill",
+            "x": 58,
+            "y": 60,
+            "w": 12,
+            "h": 2,
+            "top": 60,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "had",
+                  "Had"
+            ]
+      },
+      {
+            "id": "p4024_ex3_8",
+            "type": "fill",
+            "x": 58,
+            "y": 65,
+            "w": 14,
+            "h": 2,
+            "top": 65,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "retired",
+                  "Retired"
             ]
       }
 ],
@@ -85685,195 +87250,225 @@
       {
             "id": "p4025_ex5_1",
             "type": "fill",
-            "x": 10,
-            "y": 20,
-            "w": 38,
-            "h": 2.2,
-            "top": 20,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 36,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "Do you enjoy working in a team?",
-                  "Do you enjoy working in a team"
+                  "When did you learn to drive?",
+                  "learn to drive"
             ]
       },
       {
             "id": "p4025_ex5_2",
             "type": "fill",
-            "x": 10,
-            "y": 26,
-            "w": 38,
-            "h": 2.2,
-            "top": 26,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 29.5,
+            "w": 36,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "Are you planning to change your job?",
-                  "Are you planning to change your job"
+                  "What did you decide to wear?",
+                  "decide to wear"
             ]
       },
       {
             "id": "p4025_ex5_3",
             "type": "fill",
-            "x": 10,
-            "y": 32,
-            "w": 38,
-            "h": 2.2,
-            "top": 32,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 34,
+            "w": 36,
+            "h": 2,
+            "top": 34,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "Do you hope to retire early?",
-                  "Do you hope to retire early"
+                  "Who did you want to win?",
+                  "want to win"
             ]
       },
       {
             "id": "p4025_ex5_4",
             "type": "fill",
-            "x": 10,
-            "y": 38,
-            "w": 38,
-            "h": 2.2,
-            "top": 38,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 38.5,
+            "w": 36,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "Do you mind working at weekends?",
-                  "Do you mind working at weekends"
+                  "How much did you plan to spend?",
+                  "plan to spend"
             ]
       },
       {
             "id": "p4025_ex5_5",
             "type": "fill",
-            "x": 10,
-            "y": 44,
-            "w": 38,
-            "h": 2.2,
-            "top": 44,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 43,
+            "w": 36,
+            "h": 2,
+            "top": 43,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "Did you decide to go to university?",
-                  "Did you decide to go to university"
+                  "Where would you like to go?",
+                  "would you like to go"
             ]
       },
       {
-            "id": "p4025_ex6_1",
-            "type": "select",
-            "x": 10,
-            "y": 52,
-            "w": 25,
-            "h": 2.2,
-            "top": 52,
-            "left": 10,
-            "width": 25,
-            "height": 2.2,
+            "id": "p4025_ex5_6",
+            "type": "fill",
+            "x": 11,
+            "y": 47.5,
+            "w": 36,
+            "h": 2,
+            "top": 47.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "living"
-            ],
-            "options": [
+                  "Why did you need to stop?",
+                  "need to stop"
+            ]
+      },
+      {
+            "id": "p4025_ex7_1",
+            "type": "fill",
+            "x": 58,
+            "y": 25,
+            "w": 14,
+            "h": 2,
+            "top": 25,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "to play",
+                  "play"
+            ]
+      },
+      {
+            "id": "p4025_ex7_2",
+            "type": "fill",
+            "x": 75,
+            "y": 25,
+            "w": 14,
+            "h": 2,
+            "top": 25,
+            "left": 75,
+            "width": 14,
+            "height": 2,
+            "correct": [
                   "living",
-                  "to live"
+                  "live"
             ]
       },
       {
-            "id": "p4025_ex6_2",
-            "type": "select",
-            "x": 10,
-            "y": 58,
-            "w": 25,
-            "h": 2.2,
-            "top": 58,
-            "left": 10,
-            "width": 25,
-            "height": 2.2,
+            "id": "p4025_ex7_3",
+            "type": "fill",
+            "x": 58,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "to study"
-            ],
-            "options": [
-                  "studying",
-                  "to study"
+                  "to retire",
+                  "retire"
             ]
       },
       {
-            "id": "p4025_ex6_3",
-            "type": "select",
-            "x": 10,
-            "y": 64,
-            "w": 25,
-            "h": 2.2,
-            "top": 64,
-            "left": 10,
-            "width": 25,
-            "height": 2.2,
+            "id": "p4025_ex7_4",
+            "type": "fill",
+            "x": 75,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 75,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "meeting"
-            ],
-            "options": [
-                  "meeting",
-                  "to meet"
+                  "playing",
+                  "play"
             ]
       },
       {
-            "id": "p4025_ex6_4",
-            "type": "select",
-            "x": 10,
-            "y": 70,
-            "w": 25,
-            "h": 2.2,
-            "top": 70,
-            "left": 10,
-            "width": 25,
-            "height": 2.2,
+            "id": "p4025_ex7_5",
+            "type": "fill",
+            "x": 58,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "to find"
-            ],
-            "options": [
-                  "finding",
-                  "to find"
+                  "going",
+                  "go"
             ]
       },
       {
-            "id": "p4025_ex6_5",
-            "type": "select",
-            "x": 10,
-            "y": 76,
-            "w": 25,
-            "h": 2.2,
-            "top": 76,
-            "left": 10,
-            "width": 25,
-            "height": 2.2,
+            "id": "p4025_ex7_6",
+            "type": "fill",
+            "x": 75,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 75,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "working"
-            ],
-            "options": [
-                  "working",
-                  "to work"
+                  "to move",
+                  "move"
             ]
       },
       {
-            "id": "p4025_ex6_6",
-            "type": "select",
-            "x": 10,
-            "y": 82,
-            "w": 25,
-            "h": 2.2,
-            "top": 82,
-            "left": 10,
-            "width": 25,
-            "height": 2.2,
+            "id": "p4025_ex7_7",
+            "type": "fill",
+            "x": 58,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "to learn"
-            ],
-            "options": [
-                  "learning",
-                  "to learn"
+                  "doing",
+                  "do"
+            ]
+      },
+      {
+            "id": "p4025_ex7_8",
+            "type": "fill",
+            "x": 75,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 75,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "raining",
+                  "rain"
             ]
       }
 ],
@@ -85881,14 +87476,14 @@
       {
             "id": "p4026_ex1_1",
             "type": "fill",
-            "x": 35,
-            "y": 28,
+            "x": 11,
+            "y": 25,
             "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 35,
+            "h": 2,
+            "top": 25,
+            "left": 11,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "go online",
                   "online"
@@ -85897,14 +87492,14 @@
       {
             "id": "p4026_ex1_2",
             "type": "fill",
-            "x": 35,
-            "y": 34,
+            "x": 28,
+            "y": 25,
             "w": 16,
-            "h": 2.2,
-            "top": 34,
-            "left": 35,
+            "h": 2,
+            "top": 25,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "do research",
                   "research"
@@ -85913,307 +87508,383 @@
       {
             "id": "p4026_ex1_3",
             "type": "fill",
-            "x": 35,
-            "y": 40,
-            "w": 16,
-            "h": 2.2,
-            "top": 40,
-            "left": 35,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "shop online",
-                  "shop"
+                  "blog",
+                  "Blog"
             ]
       },
       {
             "id": "p4026_ex1_4",
             "type": "fill",
-            "x": 35,
-            "y": 46,
+            "x": 28,
+            "y": 30,
             "w": 16,
-            "h": 2.2,
-            "top": 46,
-            "left": 35,
+            "h": 2,
+            "top": 30,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "log on",
-                  "log in"
-            ]
-      },
-      {
-            "id": "p4026_ex1_5",
-            "type": "fill",
-            "x": 35,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 35,
-            "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "chat online",
                   "chat"
             ]
       },
       {
+            "id": "p4026_ex1_5",
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "tweet",
+                  "Tweet"
+            ]
+      },
+      {
             "id": "p4026_ex1_6",
             "type": "fill",
-            "x": 35,
-            "y": 58,
+            "x": 28,
+            "y": 35,
             "w": 16,
-            "h": 2.2,
-            "top": 58,
-            "left": 35,
+            "h": 2,
+            "top": 35,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "blog",
-                  "write a blog"
+                  "shop online",
+                  "shop"
             ]
       },
       {
-            "id": "p4026_ex2_1",
+            "id": "p4026_ex1_7",
             "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 18,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "download music",
-                  "download"
+                  "log on",
+                  "log in"
             ]
       },
       {
-            "id": "p4026_ex2_2",
+            "id": "p4026_ex1_8",
             "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 18,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 28,
+            "y": 40,
+            "w": 20,
+            "h": 2,
+            "top": 40,
+            "left": 28,
+            "width": 20,
+            "height": 2,
             "correct": [
-                  "upload photos",
-                  "upload"
+                  "use social media",
+                  "social media"
             ]
       },
       {
-            "id": "p4026_ex2_3",
+            "id": "p4026_ex2a_1",
             "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 18,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 58,
+            "y": 25,
+            "w": 16,
+            "h": 2,
+            "top": 25,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "social media",
-                  "social"
+                  "text friends",
+                  "text"
             ]
       },
       {
-            "id": "p4026_ex2_4",
+            "id": "p4026_ex2a_2",
             "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 18,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 58,
+            "y": 30,
+            "w": 20,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 20,
+            "height": 2,
             "correct": [
-                  "search engine",
-                  "search"
+                  "deal with emails",
+                  "emails"
+            ]
+      },
+      {
+            "id": "p4026_ex2a_3",
+            "type": "fill",
+            "x": 58,
+            "y": 35,
+            "w": 18,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "read the news",
+                  "news"
+            ]
+      },
+      {
+            "id": "p4026_ex2a_4",
+            "type": "fill",
+            "x": 58,
+            "y": 40,
+            "w": 22,
+            "h": 2,
+            "top": 40,
+            "left": 58,
+            "width": 22,
+            "height": 2,
+            "correct": [
+                  "do online banking",
+                  "banking"
+            ]
+      },
+      {
+            "id": "p4026_ex2a_5",
+            "type": "fill",
+            "x": 58,
+            "y": 45,
+            "w": 26,
+            "h": 2,
+            "top": 45,
+            "left": 58,
+            "width": 26,
+            "height": 2,
+            "correct": [
+                  "update your Facebook page",
+                  "update Facebook",
+                  "update facebook"
             ]
       }
 ],
     "4027": [
       {
-            "id": "p4027_ex3_1",
-            "type": "fill",
-            "x": 10,
-            "y": 20,
-            "w": 38,
-            "h": 2.2,
-            "top": 20,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "He's going to buy a computer.",
-                  "He is going to buy a computer"
-            ]
-      },
-      {
-            "id": "p4027_ex3_2",
-            "type": "fill",
-            "x": 10,
-            "y": 27,
-            "w": 38,
-            "h": 2.2,
-            "top": 27,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "They're going to play tennis.",
-                  "They are going to play tennis"
-            ]
-      },
-      {
-            "id": "p4027_ex3_3",
-            "type": "fill",
-            "x": 10,
-            "y": 34,
-            "w": 38,
-            "h": 2.2,
-            "top": 34,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "She's going to fall over.",
-                  "She is going to fall"
-            ]
-      },
-      {
-            "id": "p4027_ex3_4",
-            "type": "fill",
-            "x": 10,
-            "y": 41,
-            "w": 38,
-            "h": 2.2,
-            "top": 41,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "It's going to rain.",
-                  "It is going to rain"
-            ]
-      },
-      {
-            "id": "p4027_ex3_5",
-            "type": "fill",
-            "x": 10,
-            "y": 48,
-            "w": 38,
-            "h": 2.2,
-            "top": 48,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "They're going to catch a bus.",
-                  "They are going to get a bus"
-            ]
-      },
-      {
-            "id": "p4027_ex3_6",
-            "type": "fill",
-            "x": 10,
-            "y": 55,
-            "w": 38,
-            "h": 2.2,
-            "top": 55,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "He's going to miss the train.",
-                  "He is going to miss the train"
-            ]
-      },
-      {
             "id": "p4027_ex4_1",
             "type": "fill",
-            "x": 65,
-            "y": 23,
-            "w": 20,
-            "h": 2.2,
-            "top": 23,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 36,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "'m meeting",
-                  "am meeting"
+                  "He's going to jump.",
+                  "He is going to jump.",
+                  "going to jump"
             ]
       },
       {
             "id": "p4027_ex4_2",
             "type": "fill",
-            "x": 65,
-            "y": 31,
-            "w": 20,
-            "h": 2.2,
-            "top": 31,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 36,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "'s having",
-                  "is having"
+                  "They're going to do the shopping.",
+                  "They are going to do the shopping.",
+                  "going to do the shopping"
             ]
       },
       {
             "id": "p4027_ex4_3",
             "type": "fill",
-            "x": 65,
-            "y": 39,
-            "w": 20,
-            "h": 2.2,
-            "top": 39,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 36,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "'re flying",
-                  "are flying"
+                  "She's going to have a baby.",
+                  "She is going to have a baby.",
+                  "going to have a baby"
             ]
       },
       {
             "id": "p4027_ex4_4",
             "type": "fill",
-            "x": 65,
-            "y": 47,
-            "w": 20,
-            "h": 2.2,
-            "top": 47,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 36,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "isn't coming",
-                  "is not coming"
+                  "He's going to get married.",
+                  "He is going to get married.",
+                  "going to get married"
             ]
       },
       {
             "id": "p4027_ex4_5",
             "type": "fill",
-            "x": 65,
-            "y": 55,
-            "w": 20,
-            "h": 2.2,
-            "top": 55,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 45,
+            "w": 36,
+            "h": 2,
+            "top": 45,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
+                  "They're going to play tennis.",
+                  "They are going to play tennis.",
+                  "going to play tennis"
+            ]
+      },
+      {
+            "id": "p4027_ex4_6",
+            "type": "fill",
+            "x": 11,
+            "y": 50,
+            "w": 36,
+            "h": 2,
+            "top": 50,
+            "left": 11,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "It's going to take off.",
+                  "It is going to take off.",
+                  "going to take off"
+            ]
+      },
+      {
+            "id": "p4027_ex5_1",
+            "type": "fill",
+            "x": 58,
+            "y": 30,
+            "w": 18,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "'m going to check",
+                  "am going to check",
+                  "going to check"
+            ]
+      },
+      {
+            "id": "p4027_ex5_2",
+            "type": "fill",
+            "x": 58,
+            "y": 36,
+            "w": 18,
+            "h": 2,
+            "top": 36,
+            "left": 58,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "'m going to update",
+                  "am going to update",
+                  "going to update"
+            ]
+      },
+      {
+            "id": "p4027_ex5_3",
+            "type": "fill",
+            "x": 58,
+            "y": 42,
+            "w": 16,
+            "h": 2,
+            "top": 42,
+            "left": 58,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "are coming",
+                  "'re coming"
+            ]
+      },
+      {
+            "id": "p4027_ex5_4",
+            "type": "fill",
+            "x": 58,
+            "y": 48,
+            "w": 14,
+            "h": 2,
+            "top": 48,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "having",
                   "'re having",
                   "are having"
+            ]
+      },
+      {
+            "id": "p4027_ex5_5",
+            "type": "fill",
+            "x": 58,
+            "y": 54,
+            "w": 18,
+            "h": 2,
+            "top": 54,
+            "left": 58,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "is going to land",
+                  "'s going to land",
+                  "going to land"
+            ]
+      },
+      {
+            "id": "p4027_ex5_6",
+            "type": "fill",
+            "x": 58,
+            "y": 60,
+            "w": 14,
+            "h": 2,
+            "top": 60,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "working",
+                  "'s working",
+                  "is working"
             ]
       }
 ],
@@ -86221,14 +87892,14 @@
       {
             "id": "p4028_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 28,
-            "w": 22,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 16,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "get married",
                   "married"
@@ -86237,161 +87908,240 @@
       {
             "id": "p4028_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 35,
-            "w": 22,
-            "h": 2.2,
-            "top": 35,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 29.5,
+            "w": 18,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "get a job",
-                  "a job"
+                  "get some shoes",
+                  "shoes"
             ]
       },
       {
             "id": "p4028_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 42,
-            "w": 22,
-            "h": 2.2,
-            "top": 42,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 34,
+            "w": 20,
+            "h": 2,
+            "top": 34,
+            "left": 11,
+            "width": 20,
+            "height": 2,
             "correct": [
-                  "get cold",
-                  "cold"
+                  "get a phone call",
+                  "phone call"
             ]
       },
       {
             "id": "p4028_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 49,
-            "w": 22,
-            "h": 2.2,
-            "top": 49,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "get a phone call",
-                  "a phone call"
-            ]
-      },
-      {
-            "id": "p4028_ex1_5",
-            "type": "fill",
-            "x": 15,
-            "y": 56,
-            "w": 22,
-            "h": 2.2,
-            "top": 56,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 38.5,
+            "w": 16,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "get home",
                   "home"
             ]
       },
       {
+            "id": "p4028_ex1_5",
+            "type": "fill",
+            "x": 11,
+            "y": 43,
+            "w": 16,
+            "h": 2,
+            "top": 43,
+            "left": 11,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "get a job",
+                  "a job",
+                  "job"
+            ]
+      },
+      {
             "id": "p4028_ex1_6",
             "type": "fill",
-            "x": 15,
-            "y": 63,
-            "w": 22,
-            "h": 2.2,
-            "top": 63,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 47.5,
+            "w": 18,
+            "h": 2,
+            "top": 47.5,
+            "left": 11,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "get some pizzas",
+                  "pizzas"
+            ]
+      },
+      {
+            "id": "p4028_ex1_7",
+            "type": "fill",
+            "x": 11,
+            "y": 52,
+            "w": 16,
+            "h": 2,
+            "top": 52,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "get bored",
                   "bored"
             ]
       },
       {
-            "id": "p4028_ex2_1",
+            "id": "p4028_ex1_8",
             "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 20,
+            "x": 11,
+            "y": 56.5,
+            "w": 16,
+            "h": 2,
+            "top": 56.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "get cold",
+                  "cold"
+            ]
+      },
+      {
+            "id": "p4028_ex2_1",
+            "type": "select",
+            "x": 58,
+            "y": 25,
+            "w": 14,
             "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 20,
+            "top": 25,
+            "left": 58,
+            "width": 14,
             "height": 2.2,
             "correct": [
-                  "take up",
-                  "took up"
+                  "buy"
+            ],
+            "options": [
+                  "receive",
+                  "buy",
+                  "become",
+                  "arrive"
             ]
       },
       {
             "id": "p4028_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 20,
+            "type": "select",
+            "x": 58,
+            "y": 31,
+            "w": 14,
             "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 20,
+            "top": 31,
+            "left": 58,
+            "width": 14,
             "height": 2.2,
             "correct": [
-                  "give up",
-                  "gave up"
+                  "receive"
+            ],
+            "options": [
+                  "receive",
+                  "buy",
+                  "become",
+                  "arrive"
             ]
       },
       {
             "id": "p4028_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 20,
+            "type": "select",
+            "x": 58,
+            "y": 37,
+            "w": 14,
             "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 20,
+            "top": 37,
+            "left": 58,
+            "width": 14,
             "height": 2.2,
             "correct": [
-                  "apply for",
-                  "applied for"
+                  "arrive"
+            ],
+            "options": [
+                  "receive",
+                  "buy",
+                  "become",
+                  "arrive"
             ]
       },
       {
             "id": "p4028_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 20,
+            "type": "select",
+            "x": 58,
+            "y": 43,
+            "w": 14,
             "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 20,
+            "top": 43,
+            "left": 58,
+            "width": 14,
             "height": 2.2,
             "correct": [
-                  "log on",
-                  "logged on"
+                  "receive"
+            ],
+            "options": [
+                  "receive",
+                  "buy",
+                  "become",
+                  "arrive"
             ]
       },
       {
             "id": "p4028_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 20,
+            "type": "select",
+            "x": 58,
+            "y": 49,
+            "w": 14,
             "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 20,
+            "top": 49,
+            "left": 58,
+            "width": 14,
             "height": 2.2,
             "correct": [
-                  "do research",
-                  "research"
+                  "buy"
+            ],
+            "options": [
+                  "receive",
+                  "buy",
+                  "become",
+                  "arrive"
+            ]
+      },
+      {
+            "id": "p4028_ex2_6",
+            "type": "select",
+            "x": 58,
+            "y": 55,
+            "w": 14,
+            "h": 2.2,
+            "top": 55,
+            "left": 58,
+            "width": 14,
+            "height": 2.2,
+            "correct": [
+                  "arrive"
+            ],
+            "options": [
+                  "receive",
+                  "buy",
+                  "become",
+                  "arrive"
             ]
       }
 ],
@@ -86399,253 +88149,274 @@
       {
             "id": "p4029_ex1_1",
             "type": "fill",
-            "x": 10,
-            "y": 24,
+            "x": 45,
+            "y": 25,
             "w": 5,
-            "h": 2.2,
-            "top": 24,
-            "left": 10,
+            "h": 2,
+            "top": 25,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "4"
+                  "1",
+                  "one"
             ]
       },
       {
             "id": "p4029_ex1_2",
             "type": "fill",
-            "x": 10,
-            "y": 28,
+            "x": 45,
+            "y": 28.5,
             "w": 5,
-            "h": 2.2,
-            "top": 28,
-            "left": 10,
+            "h": 2,
+            "top": 28.5,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "1"
+                  "2",
+                  "two"
             ]
       },
       {
             "id": "p4029_ex1_3",
             "type": "fill",
-            "x": 10,
+            "x": 45,
             "y": 32,
             "w": 5,
-            "h": 2.2,
+            "h": 2,
             "top": 32,
-            "left": 10,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "7"
+                  "3",
+                  "three"
             ]
       },
       {
             "id": "p4029_ex1_4",
             "type": "fill",
-            "x": 10,
-            "y": 36,
+            "x": 45,
+            "y": 35.5,
             "w": 5,
-            "h": 2.2,
-            "top": 36,
-            "left": 10,
+            "h": 2,
+            "top": 35.5,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "5"
+                  "4",
+                  "four"
             ]
       },
       {
             "id": "p4029_ex1_5",
             "type": "fill",
-            "x": 10,
-            "y": 40,
+            "x": 45,
+            "y": 39,
             "w": 5,
-            "h": 2.2,
-            "top": 40,
-            "left": 10,
+            "h": 2,
+            "top": 39,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "2"
+                  "5",
+                  "five"
             ]
       },
       {
             "id": "p4029_ex1_6",
             "type": "fill",
-            "x": 10,
-            "y": 44,
+            "x": 45,
+            "y": 42.5,
             "w": 5,
-            "h": 2.2,
-            "top": 44,
-            "left": 10,
+            "h": 2,
+            "top": 42.5,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "8"
+                  "6",
+                  "six"
             ]
       },
       {
             "id": "p4029_ex1_7",
             "type": "fill",
-            "x": 10,
-            "y": 48,
+            "x": 45,
+            "y": 46,
             "w": 5,
-            "h": 2.2,
-            "top": 48,
-            "left": 10,
+            "h": 2,
+            "top": 46,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "3"
+                  "7",
+                  "seven"
             ]
       },
       {
             "id": "p4029_ex1_8",
             "type": "fill",
-            "x": 10,
-            "y": 52,
+            "x": 45,
+            "y": 49.5,
             "w": 5,
-            "h": 2.2,
-            "top": 52,
-            "left": 10,
+            "h": 2,
+            "top": 49.5,
+            "left": 45,
             "width": 5,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "6"
+                  "8",
+                  "eight"
             ]
       },
       {
             "id": "p4029_ex2_1",
-            "type": "select",
-            "x": 25,
+            "type": "fill",
+            "x": 11,
             "y": 62,
-            "w": 25,
-            "h": 2.2,
+            "w": 16,
+            "h": 2,
             "top": 62,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Are you free"
-            ],
-            "options": [
                   "Are you free",
-                  "Do you want to",
-                  "I'd love to",
-                  "Where shall we meet"
+                  "free"
             ]
       },
       {
             "id": "p4029_ex2_2",
-            "type": "select",
-            "x": 25,
-            "y": 68,
-            "w": 25,
-            "h": 2.2,
-            "top": 68,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 62,
+            "w": 18,
+            "h": 2,
+            "top": 62,
+            "left": 28,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "Do you want to"
-            ],
-            "options": [
-                  "Are you free",
-                  "Do you want to",
-                  "I'd love to",
-                  "Where shall we meet"
+                  "Would you like",
+                  "would you like"
             ]
       },
       {
             "id": "p4029_ex2_3",
-            "type": "select",
-            "x": 25,
-            "y": 74,
-            "w": 25,
-            "h": 2.2,
-            "top": 74,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 66.5,
+            "w": 18,
+            "h": 2,
+            "top": 66.5,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "I'd love to"
-            ],
-            "options": [
-                  "Are you free",
-                  "Do you want to",
-                  "I'd love to",
-                  "Where shall we meet"
+                  "I can't make it",
+                  "can't make it",
+                  "cannot make it"
             ]
       },
       {
             "id": "p4029_ex2_4",
-            "type": "select",
-            "x": 25,
+            "type": "fill",
+            "x": 28,
+            "y": 66.5,
+            "w": 16,
+            "h": 2,
+            "top": 66.5,
+            "left": 28,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "How about",
+                  "how about"
+            ]
+      },
+      {
+            "id": "p4029_ex2_5",
+            "type": "fill",
+            "x": 11,
+            "y": 71,
+            "w": 14,
+            "h": 2,
+            "top": 71,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "be great",
+                  "'d be great"
+            ]
+      },
+      {
+            "id": "p4029_ex2_6",
+            "type": "fill",
+            "x": 28,
+            "y": 71,
+            "w": 16,
+            "h": 2,
+            "top": 71,
+            "left": 28,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "We could try",
+                  "could try"
+            ]
+      },
+      {
+            "id": "p4029_ex2_7",
+            "type": "fill",
+            "x": 11,
+            "y": 75.5,
+            "w": 14,
+            "h": 2,
+            "top": 75.5,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "I'd like",
+                  "would like"
+            ]
+      },
+      {
+            "id": "p4029_ex2_8",
+            "type": "fill",
+            "x": 28,
+            "y": 75.5,
+            "w": 14,
+            "h": 2,
+            "top": 75.5,
+            "left": 28,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "any good",
+                  "good"
+            ]
+      },
+      {
+            "id": "p4029_ex2_9",
+            "type": "fill",
+            "x": 11,
             "y": 80,
-            "w": 25,
-            "h": 2.2,
+            "w": 18,
+            "h": 2,
             "top": 80,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "Where shall we meet"
-            ],
-            "options": [
-                  "Are you free",
-                  "Do you want to",
-                  "I'd love to",
-                  "Where shall we meet"
-            ]
-      },
-      {
-            "id": "p4029_ex3_1",
-            "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 20,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "inviting you",
-                  "invite you"
-            ]
-      },
-      {
-            "id": "p4029_ex3_2",
-            "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 20,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "Let me know",
-                  "Let us know"
-            ]
-      },
-      {
-            "id": "p4029_ex3_3",
-            "type": "fill",
-            "x": 65,
-            "y": 46,
-            "w": 20,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "Hope you can come",
-                  "Hope you can make it"
+                  "Sounds perfect",
+                  "perfect"
             ]
       }
 ],
@@ -86653,141 +88424,65 @@
       {
             "id": "p4030_ex1_1",
             "type": "fill",
-            "x": 13,
-            "y": 28,
+            "x": 11,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 13,
+            "h": 2,
+            "top": 30,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "glass"
+                  "bricks",
+                  "Bricks"
             ]
       },
       {
             "id": "p4030_ex1_2",
             "type": "fill",
-            "x": 33,
-            "y": 28,
+            "x": 28,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 33,
+            "h": 2,
+            "top": 30,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "bricks"
+                  "wood",
+                  "Wood"
             ]
       },
       {
             "id": "p4030_ex1_3",
             "type": "fill",
-            "x": 13,
+            "x": 11,
             "y": 36,
             "w": 14,
-            "h": 2.2,
+            "h": 2,
             "top": 36,
-            "left": 13,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "metal"
+                  "plastic",
+                  "Plastic"
             ]
       },
       {
             "id": "p4030_ex1_4",
             "type": "fill",
-            "x": 33,
+            "x": 28,
             "y": 36,
             "w": 14,
-            "h": 2.2,
+            "h": 2,
             "top": 36,
-            "left": 33,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "concrete"
-            ]
-      },
-      {
-            "id": "p4030_ex4_1",
-            "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "Shanghai",
-                  "China"
-            ]
-      },
-      {
-            "id": "p4030_ex4_2",
-            "type": "fill",
-            "x": 65,
-            "y": 35,
-            "w": 16,
-            "h": 2.2,
-            "top": 35,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "3D printer",
-                  "printer"
-            ]
-      },
-      {
-            "id": "p4030_ex4_3",
-            "type": "fill",
-            "x": 65,
-            "y": 42,
-            "w": 16,
-            "h": 2.2,
-            "top": 42,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "recycle",
-                  "recycled"
-            ]
-      },
-      {
-            "id": "p4030_ex4_4",
-            "type": "fill",
-            "x": 65,
-            "y": 49,
-            "w": 16,
-            "h": 2.2,
-            "top": 49,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "cheap",
-                  "cheaper"
-            ]
-      },
-      {
-            "id": "p4030_ex4_5",
-            "type": "fill",
-            "x": 65,
-            "y": 56,
-            "w": 16,
-            "h": 2.2,
-            "top": 56,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "fast",
-                  "quicker"
+                  "metal",
+                  "Metal"
             ]
       }
 ],
@@ -86795,29 +88490,30 @@
       {
             "id": "p4031_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 23,
-            "w": 14,
-            "h": 2.2,
-            "top": 23,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "landed"
+                  "landed",
+                  "Landed"
             ]
       },
       {
             "id": "p4031_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 29.5,
+            "w": 16,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "was sitting",
                   "sat"
@@ -86826,30 +88522,30 @@
       {
             "id": "p4031_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 33,
+            "x": 11,
+            "y": 34,
             "w": 14,
-            "h": 2.2,
-            "top": 33,
-            "left": 15,
+            "h": 2,
+            "top": 34,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "rang",
-                  "was ringing"
+                  "Rang"
             ]
       },
       {
             "id": "p4031_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 38,
-            "w": 14,
-            "h": 2.2,
-            "top": 38,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 38.5,
+            "w": 18,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
                   "'m going to buy",
                   "am going to buy"
@@ -86858,14 +88554,14 @@
       {
             "id": "p4031_ex1_5",
             "type": "fill",
-            "x": 15,
+            "x": 11,
             "y": 43,
-            "w": 14,
-            "h": 2.2,
+            "w": 18,
+            "h": 2,
             "top": 43,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
                   "decided to go",
                   "decided"
@@ -86874,456 +88570,468 @@
       {
             "id": "p4031_ex1_6",
             "type": "fill",
-            "x": 15,
-            "y": 48,
-            "w": 14,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 47.5,
+            "w": 16,
+            "h": 2,
+            "top": 47.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "enjoy living",
-                  "living"
-            ]
-      },
-      {
-            "id": "p4031_ex1_7",
-            "type": "fill",
-            "x": 15,
-            "y": 53,
-            "w": 14,
-            "h": 2.2,
-            "top": 53,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "'re meeting",
-                  "are meeting"
-            ]
-      },
-      {
-            "id": "p4031_ex1_8",
-            "type": "fill",
-            "x": 15,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "broke"
+                  "stopped raining",
+                  "stopped"
             ]
       },
       {
             "id": "p4031_ex2_1",
             "type": "fill",
-            "x": 15,
-            "y": 66,
-            "w": 12,
-            "h": 2.2,
-            "top": 66,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 58,
+            "y": 25,
+            "w": 14,
+            "h": 2,
+            "top": 25,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "into"
+                  "towards",
+                  "Towards"
             ]
       },
       {
             "id": "p4031_ex2_2",
             "type": "fill",
-            "x": 15,
-            "y": 71,
-            "w": 12,
-            "h": 2.2,
-            "top": 71,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 58,
+            "y": 29.5,
+            "w": 14,
+            "h": 2,
+            "top": 29.5,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "through"
+                  "anxious",
+                  "Anxious",
+                  "nervous"
             ]
       },
       {
             "id": "p4031_ex2_3",
             "type": "fill",
-            "x": 15,
-            "y": 76,
-            "w": 12,
-            "h": 2.2,
-            "top": 76,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 58,
+            "y": 34,
+            "w": 14,
+            "h": 2,
+            "top": 34,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "over"
+                  "fluently",
+                  "Fluently"
             ]
       },
       {
             "id": "p4031_ex2_4",
             "type": "fill",
-            "x": 15,
-            "y": 81,
-            "w": 12,
-            "h": 2.2,
-            "top": 81,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 58,
+            "y": 38.5,
+            "w": 16,
+            "h": 2,
+            "top": 38.5,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "along"
+                  "middle-aged",
+                  "middle aged"
             ]
       },
       {
             "id": "p4031_ex2_5",
             "type": "fill",
-            "x": 15,
-            "y": 86,
-            "w": 12,
-            "h": 2.2,
-            "top": 86,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 58,
+            "y": 43,
+            "w": 14,
+            "h": 2,
+            "top": 43,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "out of"
+                  "get a job",
+                  "get job"
             ]
       },
       {
-            "id": "p4031_ex3_1",
+            "id": "p4031_ex2_6",
             "type": "fill",
-            "x": 65,
-            "y": 23,
+            "x": 58,
+            "y": 47.5,
             "w": 16,
-            "h": 2.2,
-            "top": 23,
-            "left": 65,
+            "h": 2,
+            "top": 47.5,
+            "left": 58,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "calmly"
-            ]
-      },
-      {
-            "id": "p4031_ex3_2",
-            "type": "fill",
-            "x": 65,
-            "y": 29,
-            "w": 16,
-            "h": 2.2,
-            "top": 29,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "fluently"
-            ]
-      },
-      {
-            "id": "p4031_ex3_3",
-            "type": "fill",
-            "x": 65,
-            "y": 35,
-            "w": 16,
-            "h": 2.2,
-            "top": 35,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "retire"
-            ]
-      },
-      {
-            "id": "p4031_ex3_4",
-            "type": "fill",
-            "x": 65,
-            "y": 41,
-            "w": 16,
-            "h": 2.2,
-            "top": 41,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "apply for"
-            ]
-      },
-      {
-            "id": "p4031_ex3_5",
-            "type": "fill",
-            "x": 65,
-            "y": 47,
-            "w": 16,
-            "h": 2.2,
-            "top": 47,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "blog"
-            ]
-      },
-      {
-            "id": "p4031_ex3_6",
-            "type": "fill",
-            "x": 65,
-            "y": 53,
-            "w": 16,
-            "h": 2.2,
-            "top": 53,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "get bored"
-            ]
-      },
-      {
-            "id": "p4031_ex3_7",
-            "type": "fill",
-            "x": 65,
-            "y": 59,
-            "w": 16,
-            "h": 2.2,
-            "top": 59,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "get married"
-            ]
-      },
-      {
-            "id": "p4031_ex3_8",
-            "type": "fill",
-            "x": 65,
-            "y": 65,
-            "w": 16,
-            "h": 2.2,
-            "top": 65,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "give up"
+                  "social media",
+                  "online"
             ]
       }
 ],
-    "4032": [
+"4032": [
       {
             "id": "p4032_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 35.5,
+            "x": 11,
+            "y": 25,
             "w": 14,
-            "h": 2.2,
-            "top": 35.5,
-            "left": 15,
+            "h": 2,
+            "top": 25,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "metal"
+                  "metal",
+                  "Metal"
             ]
       },
       {
             "id": "p4032_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 41.5,
+            "x": 28,
+            "y": 25,
             "w": 14,
-            "h": 2.2,
-            "top": 41.5,
-            "left": 15,
+            "h": 2,
+            "top": 25,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "useful"
+                  "useful",
+                  "Useful"
             ]
       },
       {
             "id": "p4032_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 47.5,
-            "w": 14,
-            "h": 2.2,
-            "top": 47.5,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 29.5,
+            "w": 16,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "comfortable"
+                  "comfortable",
+                  "Comfortable"
             ]
       },
       {
             "id": "p4032_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 53.5,
-            "w": 14,
-            "h": 2.2,
-            "top": 53.5,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 29.5,
+            "w": 12,
+            "h": 2,
+            "top": 29.5,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "thin"
+                  "thin",
+                  "Thin"
             ]
       },
       {
             "id": "p4032_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 59.5,
-            "w": 14,
-            "h": 2.2,
-            "top": 59.5,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 34,
+            "w": 12,
+            "h": 2,
+            "top": 34,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "gold"
+                  "gold",
+                  "Gold"
             ]
       },
       {
             "id": "p4032_ex1_6",
             "type": "fill",
-            "x": 15,
-            "y": 65.5,
+            "x": 28,
+            "y": 34,
             "w": 14,
-            "h": 2.2,
-            "top": 65.5,
-            "left": 15,
+            "h": 2,
+            "top": 34,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "special"
+                  "special",
+                  "Special"
             ]
       },
       {
             "id": "p4032_ex2_1",
             "type": "fill",
-            "x": 65,
-            "y": 33,
-            "w": 14,
-            "h": 2.2,
-            "top": 33,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 48,
+            "w": 12,
+            "h": 2,
+            "top": 48,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
                   "gold",
-                  "yold"
+                  "Gold"
             ]
       },
       {
             "id": "p4032_ex2_2",
             "type": "fill",
-            "x": 65,
-            "y": 39,
-            "w": 14,
-            "h": 2.2,
-            "top": 39,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 48,
+            "w": 12,
+            "h": 2,
+            "top": 48,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "light"
+                  "light",
+                  "Light"
             ]
       },
       {
             "id": "p4032_ex2_3",
             "type": "fill",
-            "x": 65,
-            "y": 45,
+            "x": 11,
+            "y": 52.5,
             "w": 14,
-            "h": 2.2,
-            "top": 45,
-            "left": 65,
+            "h": 2,
+            "top": 52.5,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "amazing"
+                  "amazing",
+                  "Amazing"
             ]
       },
       {
             "id": "p4032_ex2_4",
             "type": "fill",
-            "x": 65,
-            "y": 51,
+            "x": 28,
+            "y": 52.5,
             "w": 14,
-            "h": 2.2,
-            "top": 51,
-            "left": 65,
+            "h": 2,
+            "top": 52.5,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "leather"
+                  "leather",
+                  "Leather"
             ]
       },
       {
             "id": "p4032_ex2_5",
             "type": "fill",
-            "x": 65,
+            "x": 11,
             "y": 57,
             "w": 14,
-            "h": 2.2,
+            "h": 2,
             "top": 57,
-            "left": 65,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "special"
+                  "special",
+                  "Special"
             ]
       },
       {
             "id": "p4032_ex2_6",
             "type": "fill",
-            "x": 65,
-            "y": 63,
+            "x": 28,
+            "y": 57,
             "w": 14,
-            "h": 2.2,
-            "top": 63,
-            "left": 65,
+            "h": 2,
+            "top": 57,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "useful"
+                  "useful",
+                  "Useful"
             ]
       },
       {
             "id": "p4032_ex2_7",
             "type": "fill",
-            "x": 65,
-            "y": 69,
+            "x": 11,
+            "y": 61.5,
             "w": 14,
-            "h": 2.2,
-            "top": 69,
-            "left": 65,
+            "h": 2,
+            "top": 61.5,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "valuable"
+                  "valuable",
+                  "Valuable"
             ]
       },
       {
             "id": "p4032_ex2_8",
             "type": "fill",
-            "x": 65,
-            "y": 75,
+            "x": 28,
+            "y": 61.5,
             "w": 14,
-            "h": 2.2,
-            "top": 75,
-            "left": 65,
+            "h": 2,
+            "top": 61.5,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "ordinary"
+                  "ordinary",
+                  "Ordinary"
+            ]
+      },
+      {
+            "id": "p4032_ex3_1",
+            "type": "fill",
+            "x": 58,
+            "y": 48,
+            "w": 14,
+            "h": 2,
+            "top": 48,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "amazing",
+                  "Amazing"
+            ]
+      },
+      {
+            "id": "p4032_ex3_2",
+            "type": "fill",
+            "x": 75,
+            "y": 48,
+            "w": 12,
+            "h": 2,
+            "top": 48,
+            "left": 75,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "heavy",
+                  "Heavy"
+            ]
+      },
+      {
+            "id": "p4032_ex3_3",
+            "type": "fill",
+            "x": 58,
+            "y": 53,
+            "w": 14,
+            "h": 2,
+            "top": 53,
+            "left": 58,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "antique",
+                  "Antique"
+            ]
+      },
+      {
+            "id": "p4032_ex3_4",
+            "type": "fill",
+            "x": 75,
+            "y": 53,
+            "w": 12,
+            "h": 2,
+            "top": 53,
+            "left": 75,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "tiny",
+                  "Tiny"
+            ]
+      },
+      {
+            "id": "p4032_ex3_5",
+            "type": "fill",
+            "x": 58,
+            "y": 58,
+            "w": 16,
+            "h": 2,
+            "top": 58,
+            "left": 58,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "brand new",
+                  "brand-new"
+            ]
+      },
+      {
+            "id": "p4032_ex3_6",
+            "type": "fill",
+            "x": 75,
+            "y": 58,
+            "w": 12,
+            "h": 2,
+            "top": 58,
+            "left": 75,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "thin",
+                  "Thin"
+            ]
+      },
+      {
+            "id": "p4032_ex3_7",
+            "type": "fill",
+            "x": 58,
+            "y": 63,
+            "w": 12,
+            "h": 2,
+            "top": 63,
+            "left": 58,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "large",
+                  "Large"
+            ]
+      },
+      {
+            "id": "p4032_ex3_8",
+            "type": "fill",
+            "x": 75,
+            "y": 63,
+            "w": 16,
+            "h": 2,
+            "top": 63,
+            "left": 75,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "comfortable",
+                  "Comfortable"
             ]
       }
 ],
@@ -87331,97 +89039,13 @@
       {
             "id": "p4033_ex5_1",
             "type": "select",
-            "x": 15,
-            "y": 23,
-            "w": 10,
+            "x": 11,
+            "y": 25,
+            "w": 8,
             "h": 2.2,
-            "top": 23,
-            "left": 15,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "a"
-            ],
-            "options": [
-                  "a",
-                  "an",
-                  "the",
-                  "X"
-            ]
-      },
-      {
-            "id": "p4033_ex5_2",
-            "type": "select",
-            "x": 15,
-            "y": 28,
-            "w": 10,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "the"
-            ],
-            "options": [
-                  "a",
-                  "an",
-                  "the",
-                  "X"
-            ]
-      },
-      {
-            "id": "p4033_ex5_3",
-            "type": "select",
-            "x": 15,
-            "y": 33,
-            "w": 10,
-            "h": 2.2,
-            "top": 33,
-            "left": 15,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "the"
-            ],
-            "options": [
-                  "a",
-                  "an",
-                  "the",
-                  "X"
-            ]
-      },
-      {
-            "id": "p4033_ex5_4",
-            "type": "select",
-            "x": 15,
-            "y": 38,
-            "w": 10,
-            "h": 2.2,
-            "top": 38,
-            "left": 15,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "a"
-            ],
-            "options": [
-                  "a",
-                  "an",
-                  "the",
-                  "X"
-            ]
-      },
-      {
-            "id": "p4033_ex5_5",
-            "type": "select",
-            "x": 15,
-            "y": 43,
-            "w": 10,
-            "h": 2.2,
-            "top": 43,
-            "left": 15,
-            "width": 10,
+            "top": 25,
+            "left": 11,
+            "width": 8,
             "height": 2.2,
             "correct": [
                   "an"
@@ -87429,299 +89053,218 @@
             "options": [
                   "a",
                   "an",
-                  "the",
-                  "X"
+                  "the"
+            ]
+      },
+      {
+            "id": "p4033_ex5_2",
+            "type": "select",
+            "x": 25,
+            "y": 25,
+            "w": 8,
+            "h": 2.2,
+            "top": 25,
+            "left": 25,
+            "width": 8,
+            "height": 2.2,
+            "correct": [
+                  "the"
+            ],
+            "options": [
+                  "a",
+                  "an",
+                  "the"
+            ]
+      },
+      {
+            "id": "p4033_ex5_3",
+            "type": "select",
+            "x": 11,
+            "y": 30,
+            "w": 8,
+            "h": 2.2,
+            "top": 30,
+            "left": 11,
+            "width": 8,
+            "height": 2.2,
+            "correct": [
+                  "the"
+            ],
+            "options": [
+                  "a",
+                  "an",
+                  "the"
+            ]
+      },
+      {
+            "id": "p4033_ex5_4",
+            "type": "select",
+            "x": 25,
+            "y": 30,
+            "w": 8,
+            "h": 2.2,
+            "top": 30,
+            "left": 25,
+            "width": 8,
+            "height": 2.2,
+            "correct": [
+                  "a"
+            ],
+            "options": [
+                  "a",
+                  "an",
+                  "the"
+            ]
+      },
+      {
+            "id": "p4033_ex5_5",
+            "type": "select",
+            "x": 11,
+            "y": 35,
+            "w": 8,
+            "h": 2.2,
+            "top": 35,
+            "left": 11,
+            "width": 8,
+            "height": 2.2,
+            "correct": [
+                  "an"
+            ],
+            "options": [
+                  "a",
+                  "an",
+                  "the"
             ]
       },
       {
             "id": "p4033_ex5_6",
             "type": "select",
-            "x": 15,
-            "y": 48,
-            "w": 10,
+            "x": 25,
+            "y": 35,
+            "w": 8,
             "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 10,
+            "top": 35,
+            "left": 25,
+            "width": 8,
             "height": 2.2,
             "correct": [
-                  "The"
+                  "the"
             ],
             "options": [
                   "a",
                   "an",
-                  "the",
-                  "The",
-                  "X"
+                  "the"
             ]
       },
       {
-            "id": "p4033_ex6_1",
-            "type": "select",
-            "x": 58,
-            "y": 23,
-            "w": 16,
-            "h": 2.2,
-            "top": 23,
-            "left": 58,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "the planets"
-            ],
-            "options": [
-                  "the planets",
-                  "planets"
-            ]
-      },
-      {
-            "id": "p4033_ex6_2",
-            "type": "select",
-            "x": 58,
-            "y": 29,
-            "w": 16,
-            "h": 2.2,
-            "top": 29,
-            "left": 58,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "a time capsule"
-            ],
-            "options": [
-                  "a time capsule",
-                  "time capsule"
-            ]
-      },
-      {
-            "id": "p4033_ex6_3",
-            "type": "select",
+            "id": "p4033_ex7_1",
+            "type": "fill",
             "x": 58,
             "y": 35,
-            "w": 16,
-            "h": 2.2,
+            "w": 10,
+            "h": 2,
             "top": 35,
             "left": 58,
-            "width": 16,
-            "height": 2.2,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "life"
-            ],
-            "options": [
-                  "the life",
-                  "life"
+                  "the",
+                  "The"
             ]
       },
       {
-            "id": "p4033_ex6_4",
-            "type": "select",
-            "x": 58,
-            "y": 41,
-            "w": 16,
-            "h": 2.2,
-            "top": 41,
-            "left": 58,
-            "width": 16,
-            "height": 2.2,
+            "id": "p4033_ex7_2",
+            "type": "fill",
+            "x": 75,
+            "y": 35,
+            "w": 10,
+            "h": 2,
+            "top": 35,
+            "left": 75,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "music"
-            ],
-            "options": [
-                  "the music",
-                  "music"
+                  "the",
+                  "The"
             ]
       },
       {
-            "id": "p4033_ex6_5",
-            "type": "select",
+            "id": "p4033_ex7_3",
+            "type": "fill",
             "x": 58,
-            "y": 47,
-            "w": 16,
-            "h": 2.2,
-            "top": 47,
+            "y": 42,
+            "w": 10,
+            "h": 2,
+            "top": 42,
             "left": 58,
-            "width": 16,
-            "height": 2.2,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "birds"
-            ],
-            "options": [
-                  "the birds",
-                  "birds"
+                  "the",
+                  "The"
             ]
       },
       {
-            "id": "p4033_ex6_6",
-            "type": "select",
-            "x": 58,
-            "y": 53,
-            "w": 16,
-            "h": 2.2,
-            "top": 53,
-            "left": 58,
-            "width": 16,
-            "height": 2.2,
+            "id": "p4033_ex7_4",
+            "type": "fill",
+            "x": 75,
+            "y": 42,
+            "w": 10,
+            "h": 2,
+            "top": 42,
+            "left": 75,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "the pictures"
-            ],
-            "options": [
-                  "the pictures",
-                  "pictures"
-            ]
-      },
-      {
-            "id": "p4033_ex6_7",
-            "type": "select",
-            "x": 58,
-            "y": 59,
-            "w": 16,
-            "h": 2.2,
-            "top": 59,
-            "left": 58,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "the music"
-            ],
-            "options": [
-                  "the music",
-                  "music"
+                  "the",
+                  "The"
             ]
       }
 ],
     "4034": [
       {
-            "id": "p4034_ex1_1",
-            "type": "fill",
-            "x": 15,
-            "y": 27,
-            "w": 14,
-            "h": 2.2,
-            "top": 27,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "coin",
-                  "cash"
-            ]
-      },
-      {
-            "id": "p4034_ex1_2",
-            "type": "fill",
-            "x": 15,
-            "y": 32,
-            "w": 14,
-            "h": 2.2,
-            "top": 32,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "note"
-            ]
-      },
-      {
-            "id": "p4034_ex1_3",
-            "type": "fill",
-            "x": 15,
-            "y": 37,
-            "w": 14,
-            "h": 2.2,
-            "top": 37,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "bill"
-            ]
-      },
-      {
-            "id": "p4034_ex1_4",
-            "type": "fill",
-            "x": 15,
-            "y": 42,
-            "w": 14,
-            "h": 2.2,
-            "top": 42,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "purse"
-            ]
-      },
-      {
-            "id": "p4034_ex1_5",
-            "type": "fill",
-            "x": 15,
-            "y": 47,
-            "w": 14,
-            "h": 2.2,
-            "top": 47,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "credit card"
-            ]
-      },
-      {
-            "id": "p4034_ex1_6",
-            "type": "fill",
-            "x": 15,
-            "y": 52,
-            "w": 14,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "wallet"
-            ]
-      },
-      {
             "id": "p4034_ex2_1",
             "type": "fill",
-            "x": 65,
-            "y": 23,
-            "w": 16,
-            "h": 2.2,
-            "top": 23,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "cash"
+                  "cash",
+                  "Cash"
             ]
       },
       {
             "id": "p4034_ex2_2",
             "type": "fill",
-            "x": 65,
-            "y": 29,
-            "w": 16,
-            "h": 2.2,
-            "top": 29,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "change"
+                  "change",
+                  "Change"
             ]
       },
       {
             "id": "p4034_ex2_3",
             "type": "fill",
-            "x": 65,
+            "x": 11,
             "y": 35,
-            "w": 16,
-            "h": 2.2,
+            "w": 18,
+            "h": 2,
             "top": 35,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
                   "bank account",
                   "account"
@@ -87730,14 +89273,14 @@
       {
             "id": "p4034_ex2_4",
             "type": "fill",
-            "x": 65,
-            "y": 41,
-            "w": 16,
-            "h": 2.2,
-            "top": 41,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
                   "in debt",
                   "debt"
@@ -87746,434 +89289,420 @@
       {
             "id": "p4034_ex2_5",
             "type": "fill",
-            "x": 65,
-            "y": 47,
-            "w": 16,
-            "h": 2.2,
-            "top": 47,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "amount"
+                  "amount",
+                  "Amount"
             ]
       },
       {
             "id": "p4034_ex2_6",
             "type": "fill",
-            "x": 65,
-            "y": 53,
-            "w": 16,
-            "h": 2.2,
-            "top": 53,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "balance"
+                  "balance",
+                  "Balance"
             ]
       },
       {
             "id": "p4034_ex2_7",
             "type": "fill",
-            "x": 65,
-            "y": 59,
-            "w": 16,
-            "h": 2.2,
-            "top": 59,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 45,
+            "w": 12,
+            "h": 2,
+            "top": 45,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "rent"
+                  "rent",
+                  "Rent"
             ]
       },
       {
             "id": "p4034_ex3_1",
             "type": "fill",
-            "x": 65,
-            "y": 68,
-            "w": 14,
-            "h": 2.2,
-            "top": 68,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
+            "x": 58,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "owe"
+                  "owe",
+                  "Owe"
             ]
       },
       {
             "id": "p4034_ex3_2",
             "type": "fill",
-            "x": 65,
-            "y": 73,
+            "x": 75,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 73,
-            "left": 65,
+            "h": 2,
+            "top": 30,
+            "left": 75,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "afford"
+                  "afford",
+                  "Afford"
             ]
       },
       {
             "id": "p4034_ex3_3",
             "type": "fill",
-            "x": 65,
-            "y": 78,
-            "w": 14,
-            "h": 2.2,
-            "top": 78,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
+            "x": 58,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "lends"
+                  "lends",
+                  "Lends"
             ]
       },
       {
             "id": "p4034_ex3_4",
             "type": "fill",
-            "x": 65,
-            "y": 83,
-            "w": 14,
-            "h": 2.2,
-            "top": 83,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
+            "x": 75,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 75,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "spend"
+                  "spend",
+                  "Spend"
             ]
       },
       {
             "id": "p4034_ex3_5",
             "type": "fill",
-            "x": 65,
-            "y": 88,
+            "x": 58,
+            "y": 40,
             "w": 14,
-            "h": 2.2,
-            "top": 88,
-            "left": 65,
+            "h": 2,
+            "top": 40,
+            "left": 58,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "borrows"
+                  "borrows",
+                  "Borrows"
             ]
       },
       {
             "id": "p4034_ex3_6",
             "type": "fill",
-            "x": 65,
-            "y": 93,
+            "x": 75,
+            "y": 40,
             "w": 14,
-            "h": 2.2,
-            "top": 93,
-            "left": 65,
+            "h": 2,
+            "top": 40,
+            "left": 75,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "pay for"
+                  "pay for",
+                  "pay"
+            ]
+      },
+      {
+            "id": "p4034_ex3_7",
+            "type": "fill",
+            "x": 66,
+            "y": 45,
+            "w": 14,
+            "h": 2,
+            "top": 45,
+            "left": 66,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "save up",
+                  "save"
             ]
       }
 ],
     "4035": [
       {
             "id": "p4035_ex4_1",
-            "type": "select",
-            "x": 15,
-            "y": 22,
-            "w": 18,
-            "h": 2.2,
-            "top": 22,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 25,
+            "w": 14,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "some"
-            ],
-            "options": [
                   "some",
-                  "any",
-                  "much",
-                  "many"
+                  "Some"
             ]
       },
       {
             "id": "p4035_ex4_2",
-            "type": "select",
-            "x": 15,
-            "y": 28,
-            "w": 18,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 25,
+            "w": 16,
+            "h": 2,
+            "top": 25,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "a lot of"
-            ],
-            "options": [
                   "a lot of",
-                  "much",
-                  "many",
-                  "few"
+                  "lots of"
             ]
       },
       {
             "id": "p4035_ex4_3",
-            "type": "select",
-            "x": 15,
-            "y": 34,
-            "w": 18,
-            "h": 2.2,
-            "top": 34,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "much"
-            ],
-            "options": [
                   "much",
-                  "many",
-                  "few",
-                  "little"
+                  "Much"
             ]
       },
       {
             "id": "p4035_ex4_4",
-            "type": "select",
-            "x": 15,
-            "y": 40,
-            "w": 18,
-            "h": 2.2,
-            "top": 40,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "few"
-            ],
-            "options": [
                   "few",
-                  "little",
-                  "much",
-                  "many"
+                  "Few",
+                  "a few"
             ]
       },
       {
             "id": "p4035_ex4_5",
-            "type": "select",
-            "x": 15,
-            "y": 46,
-            "w": 18,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "many"
-            ],
-            "options": [
                   "many",
-                  "much",
-                  "little",
-                  "few"
+                  "Many"
             ]
       },
       {
             "id": "p4035_ex4_6",
-            "type": "select",
-            "x": 15,
-            "y": 52,
-            "w": 18,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "any"
-            ],
-            "options": [
                   "any",
-                  "some",
-                  "much",
-                  "many"
+                  "Any"
             ]
       },
       {
             "id": "p4035_ex4_7",
-            "type": "select",
-            "x": 15,
-            "y": 58,
-            "w": 18,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 40,
+            "w": 12,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "much"
-            ],
-            "options": [
                   "much",
-                  "many",
-                  "few",
-                  "little"
+                  "Much"
             ]
       },
       {
             "id": "p4035_ex4_8",
-            "type": "select",
-            "x": 15,
-            "y": 64,
-            "w": 18,
-            "h": 2.2,
-            "top": 64,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "enough"
-            ],
-            "options": [
                   "enough",
-                  "too",
-                  "too much",
-                  "too many"
+                  "Enough"
             ]
       },
       {
             "id": "p4035_ex5_1",
             "type": "fill",
-            "x": 65,
-            "y": 23,
-            "w": 22,
-            "h": 2.2,
-            "top": 23,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 58,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "a few days",
-                  "a few"
+                  "enough",
+                  "Enough"
             ]
       },
       {
             "id": "p4035_ex5_2",
             "type": "fill",
-            "x": 65,
+            "x": 75,
             "y": 30,
-            "w": 22,
-            "h": 2.2,
+            "w": 12,
+            "h": 2,
             "top": 30,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "left": 75,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "too much shopping",
-                  "too much"
+                  "any",
+                  "Any"
             ]
       },
       {
             "id": "p4035_ex5_3",
             "type": "fill",
-            "x": 65,
-            "y": 37,
-            "w": 22,
-            "h": 2.2,
-            "top": 37,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 58,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "a little Portuguese",
-                  "a little"
+                  "a few",
+                  "few"
             ]
       },
       {
             "id": "p4035_ex5_4",
             "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 22,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 75,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 75,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "some friends",
-                  "some"
+                  "much",
+                  "Much"
             ]
       },
       {
             "id": "p4035_ex5_5",
             "type": "fill",
-            "x": 65,
-            "y": 51,
-            "w": 22,
-            "h": 2.2,
-            "top": 51,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 58,
+            "y": 40,
+            "w": 12,
+            "h": 2,
+            "top": 40,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "too many biscuits",
-                  "too many"
+                  "some",
+                  "Some"
             ]
       },
       {
             "id": "p4035_ex5_6",
             "type": "fill",
-            "x": 65,
-            "y": 58,
-            "w": 22,
-            "h": 2.2,
-            "top": 58,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 75,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 75,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "lots of things",
-                  "lots of"
+                  "lots of",
+                  "a lot of"
             ]
       },
       {
             "id": "p4035_ex5_7",
             "type": "fill",
-            "x": 65,
-            "y": 65,
-            "w": 22,
-            "h": 2.2,
-            "top": 65,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 58,
+            "y": 45,
+            "w": 14,
+            "h": 2,
+            "top": 45,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "any petrol",
-                  "any"
+                  "too much",
+                  "Too much"
             ]
       },
       {
             "id": "p4035_ex5_8",
             "type": "fill",
-            "x": 65,
-            "y": 72,
-            "w": 22,
-            "h": 2.2,
-            "top": 72,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 75,
+            "y": 45,
+            "w": 12,
+            "h": 2,
+            "top": 45,
+            "left": 75,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "enough food",
-                  "enough"
+                  "many",
+                  "Many"
             ]
       }
 ],
@@ -88181,457 +89710,227 @@
       {
             "id": "p4036_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 28,
+            "x": 11,
+            "y": 30,
             "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
+            "h": 2,
+            "top": 30,
+            "left": 11,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "digital"
+                  "information",
+                  "Information"
             ]
       },
       {
             "id": "p4036_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 34,
+            "x": 28,
+            "y": 30,
             "w": 16,
-            "h": 2.2,
-            "top": 34,
-            "left": 15,
+            "h": 2,
+            "top": 30,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "arrangements"
+                  "valuable",
+                  "Valuable"
             ]
       },
       {
             "id": "p4036_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 40,
+            "x": 11,
+            "y": 35,
             "w": 16,
-            "h": 2.2,
-            "top": 40,
-            "left": 15,
+            "h": 2,
+            "top": 35,
+            "left": 11,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "enjoyable"
+                  "useful",
+                  "Useful"
             ]
       },
       {
             "id": "p4036_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 46,
+            "x": 28,
+            "y": 35,
             "w": 16,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
+            "h": 2,
+            "top": 35,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "buyer"
+                  "useless",
+                  "Useless"
             ]
       },
       {
             "id": "p4036_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 52,
+            "x": 11,
+            "y": 40,
             "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
+            "h": 2,
+            "top": 40,
+            "left": 11,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "stressful"
+                  "comfortable",
+                  "Comfortable"
             ]
       },
       {
             "id": "p4036_ex1_6",
             "type": "fill",
-            "x": 15,
-            "y": 58,
+            "x": 28,
+            "y": 40,
             "w": 16,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
+            "h": 2,
+            "top": 40,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "normal"
-            ]
-      },
-      {
-            "id": "p4036_ex1_7",
-            "type": "fill",
-            "x": 15,
-            "y": 64,
-            "w": 16,
-            "h": 2.2,
-            "top": 64,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "equipment"
-            ]
-      },
-      {
-            "id": "p4036_ex1_8",
-            "type": "fill",
-            "x": 15,
-            "y": 70,
-            "w": 16,
-            "h": 2.2,
-            "top": 70,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "disappointment"
-            ]
-      },
-      {
-            "id": "p4036_ex1_9",
-            "type": "fill",
-            "x": 15,
-            "y": 76,
-            "w": 16,
-            "h": 2.2,
-            "top": 76,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "comfortable"
-            ]
-      },
-      {
-            "id": "p4036_ex1_10",
-            "type": "fill",
-            "x": 15,
-            "y": 82,
-            "w": 16,
-            "h": 2.2,
-            "top": 82,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "information"
-            ]
-      },
-      {
-            "id": "p4036_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "decision"
-            ]
-      },
-      {
-            "id": "p4036_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 35,
-            "w": 16,
-            "h": 2.2,
-            "top": 35,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "possessions"
-            ]
-      },
-      {
-            "id": "p4036_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 42,
-            "w": 16,
-            "h": 2.2,
-            "top": 42,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "essential"
-            ]
-      },
-      {
-            "id": "p4036_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 49,
-            "w": 16,
-            "h": 2.2,
-            "top": 49,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "useful"
-            ]
-      },
-      {
-            "id": "p4036_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 56,
-            "w": 16,
-            "h": 2.2,
-            "top": 56,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "beautiful"
-            ]
-      },
-      {
-            "id": "p4036_ex2_6",
-            "type": "fill",
-            "x": 65,
-            "y": 63,
-            "w": 16,
-            "h": 2.2,
-            "top": 63,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "fashionable"
-            ]
-      },
-      {
-            "id": "p4036_ex2_7",
-            "type": "fill",
-            "x": 65,
-            "y": 70,
-            "w": 16,
-            "h": 2.2,
-            "top": 70,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "suitable"
+                  "fashionable",
+                  "Fashionable"
             ]
       }
 ],
     "4037": [
       {
-            "id": "p4037_ex1a_1",
+            "id": "p4037_ex1_1",
             "type": "fill",
-            "x": 10,
-            "y": 24,
-            "w": 5,
-            "h": 2.2,
-            "top": 24,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "5"
+                  "the",
+                  "The"
             ]
       },
       {
-            "id": "p4037_ex1a_2",
+            "id": "p4037_ex1_2",
             "type": "fill",
-            "x": 10,
-            "y": 29,
-            "w": 5,
-            "h": 2.2,
-            "top": 29,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "1"
+                  "a",
+                  "A"
             ]
       },
       {
-            "id": "p4037_ex1a_3",
+            "id": "p4037_ex1_3",
             "type": "fill",
-            "x": 10,
-            "y": 34,
-            "w": 5,
-            "h": 2.2,
-            "top": 34,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "8"
+                  "some",
+                  "Some"
             ]
       },
       {
-            "id": "p4037_ex1a_4",
+            "id": "p4037_ex1_4",
             "type": "fill",
-            "x": 10,
-            "y": 39,
-            "w": 5,
-            "h": 2.2,
-            "top": 39,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "3"
-            ]
-      },
-      {
-            "id": "p4037_ex1a_5",
-            "type": "fill",
-            "x": 10,
-            "y": 44,
-            "w": 5,
-            "h": 2.2,
-            "top": 44,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "7"
-            ]
-      },
-      {
-            "id": "p4037_ex1a_6",
-            "type": "fill",
-            "x": 10,
-            "y": 49,
-            "w": 5,
-            "h": 2.2,
-            "top": 49,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "2"
-            ]
-      },
-      {
-            "id": "p4037_ex1a_7",
-            "type": "fill",
-            "x": 10,
-            "y": 54,
-            "w": 5,
-            "h": 2.2,
-            "top": 54,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "9"
-            ]
-      },
-      {
-            "id": "p4037_ex1a_8",
-            "type": "fill",
-            "x": 10,
-            "y": 59,
-            "w": 5,
-            "h": 2.2,
-            "top": 59,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "4"
-            ]
-      },
-      {
-            "id": "p4037_ex1a_9",
-            "type": "fill",
-            "x": 10,
-            "y": 64,
-            "w": 5,
-            "h": 2.2,
-            "top": 64,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "6"
+                  "any",
+                  "Any"
             ]
       },
       {
             "id": "p4037_ex2_1",
             "type": "fill",
-            "x": 65,
+            "x": 58,
             "y": 30,
-            "w": 22,
-            "h": 2.2,
+            "w": 14,
+            "h": 2,
             "top": 30,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "It's a kind of",
-                  "a kind of"
+                  "leather",
+                  "Leather"
             ]
       },
       {
             "id": "p4037_ex2_2",
             "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 22,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 75,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 75,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "It's made of",
-                  "made of"
+                  "valuable",
+                  "Valuable"
             ]
       },
       {
             "id": "p4037_ex2_3",
             "type": "fill",
-            "x": 65,
-            "y": 46,
-            "w": 22,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 58,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "You use it to",
-                  "use it to"
+                  "rent",
+                  "Rent"
             ]
       },
       {
             "id": "p4037_ex2_4",
             "type": "fill",
-            "x": 65,
-            "y": 54,
-            "w": 22,
-            "h": 2.2,
-            "top": 54,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 75,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 75,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "It looks like",
-                  "looks like"
+                  "in debt",
+                  "debt"
             ]
       }
 ],
@@ -88639,374 +89938,645 @@
       {
             "id": "p4038_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 36,
-            "w": 16,
-            "h": 2.2,
-            "top": 36,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 14,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "confident"
+                  "sociable",
+                  "Sociable"
             ]
       },
       {
             "id": "p4038_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 43,
-            "w": 16,
-            "h": 2.2,
-            "top": 43,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "cheerful"
+                  "smart",
+                  "Smart"
             ]
       },
       {
             "id": "p4038_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 50,
-            "w": 16,
-            "h": 2.2,
-            "top": 50,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 29.5,
+            "w": 12,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "easy-going",
-                  "easy going"
+                  "clever",
+                  "Clever"
             ]
       },
       {
             "id": "p4038_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 57,
-            "w": 16,
-            "h": 2.2,
-            "top": 57,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 29.5,
+            "w": 12,
+            "h": 2,
+            "top": 29.5,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "ambitious"
+                  "lazy",
+                  "Lazy"
             ]
       },
       {
             "id": "p4038_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 64,
-            "w": 16,
-            "h": 2.2,
-            "top": 64,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 34,
+            "w": 14,
+            "h": 2,
+            "top": 34,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "sociable"
+                  "untidy",
+                  "Untidy"
             ]
       },
       {
             "id": "p4038_ex1_6",
             "type": "fill",
-            "x": 15,
-            "y": 71,
+            "x": 28,
+            "y": 34,
+            "w": 14,
+            "h": 2,
+            "top": 34,
+            "left": 28,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "confident",
+                  "Confident"
+            ]
+      },
+      {
+            "id": "p4038_ex1_7",
+            "type": "fill",
+            "x": 11,
+            "y": 38.5,
+            "w": 12,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "quiet",
+                  "Quiet"
+            ]
+      },
+      {
+            "id": "p4038_ex1_8",
+            "type": "fill",
+            "x": 28,
+            "y": 38.5,
+            "w": 12,
+            "h": 2,
+            "top": 38.5,
+            "left": 28,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "honest",
+                  "Honest"
+            ]
+      },
+      {
+            "id": "p4038_ex2_1",
+            "type": "fill",
+            "x": 11,
+            "y": 52,
+            "w": 12,
+            "h": 2,
+            "top": 52,
+            "left": 11,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "clever",
+                  "Clever"
+            ]
+      },
+      {
+            "id": "p4038_ex2_2",
+            "type": "fill",
+            "x": 28,
+            "y": 52,
+            "w": 12,
+            "h": 2,
+            "top": 52,
+            "left": 28,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "shy",
+                  "Shy"
+            ]
+      },
+      {
+            "id": "p4038_ex2_3",
+            "type": "fill",
+            "x": 11,
+            "y": 56.5,
+            "w": 14,
+            "h": 2,
+            "top": 56.5,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "patient",
+                  "Patient"
+            ]
+      },
+      {
+            "id": "p4038_ex2_4",
+            "type": "fill",
+            "x": 28,
+            "y": 56.5,
             "w": 16,
-            "h": 2.2,
-            "top": 71,
-            "left": 15,
+            "h": 2,
+            "top": 56.5,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
+            "correct": [
+                  "unsociable",
+                  "Unsociable"
+            ]
+      },
+      {
+            "id": "p4038_ex2_5",
+            "type": "fill",
+            "x": 11,
+            "y": 61,
+            "w": 12,
+            "h": 2,
+            "top": 61,
+            "left": 11,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "stupid",
+                  "Stupid"
+            ]
+      },
+      {
+            "id": "p4038_ex2_6",
+            "type": "fill",
+            "x": 28,
+            "y": 61,
+            "w": 18,
+            "h": 2,
+            "top": 61,
+            "left": 28,
+            "width": 18,
+            "height": 2,
             "correct": [
                   "hard-working",
                   "hard working"
             ]
       },
       {
-            "id": "p4038_ex2_1",
+            "id": "p4038_ex2_7",
             "type": "fill",
-            "x": 65,
-            "y": 32,
-            "w": 16,
-            "h": 2.2,
-            "top": 32,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 65.5,
+            "w": 12,
+            "h": 2,
+            "top": 65.5,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "shy"
+                  "tidy",
+                  "Tidy"
             ]
       },
       {
-            "id": "p4038_ex2_2",
+            "id": "p4038_ex2_8",
             "type": "fill",
-            "x": 65,
+            "x": 28,
+            "y": 65.5,
+            "w": 14,
+            "h": 2,
+            "top": 65.5,
+            "left": 28,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "creative",
+                  "Creative"
+            ]
+      },
+      {
+            "id": "p4038_ex4_1",
+            "type": "fill",
+            "x": 58,
+            "y": 25,
+            "w": 16,
+            "h": 2,
+            "top": 25,
+            "left": 58,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "worse, worst",
+                  "worse",
+                  "worst"
+            ]
+      },
+      {
+            "id": "p4038_ex4_2",
+            "type": "fill",
+            "x": 58,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "better, best",
+                  "better",
+                  "best"
+            ]
+      },
+      {
+            "id": "p4038_ex4_3",
+            "type": "fill",
+            "x": 58,
+            "y": 35,
+            "w": 24,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 24,
+            "height": 2,
+            "correct": [
+                  "more honest, most honest",
+                  "more honest"
+            ]
+      },
+      {
+            "id": "p4038_ex4_4",
+            "type": "fill",
+            "x": 58,
             "y": 40,
-            "w": 16,
-            "h": 2.2,
+            "w": 18,
+            "h": 2,
             "top": 40,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "left": 58,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "lazy"
+                  "lazier, laziest",
+                  "lazier"
             ]
       },
       {
-            "id": "p4038_ex2_3",
+            "id": "p4038_ex4_5",
             "type": "fill",
-            "x": 65,
-            "y": 48,
+            "x": 58,
+            "y": 45,
             "w": 16,
-            "h": 2.2,
-            "top": 48,
-            "left": 65,
+            "h": 2,
+            "top": 45,
+            "left": 58,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "miserable"
+                  "older, oldest",
+                  "older"
             ]
       },
       {
-            "id": "p4038_ex2_4",
+            "id": "p4038_ex4_6",
             "type": "fill",
-            "x": 65,
-            "y": 56,
-            "w": 16,
-            "h": 2.2,
-            "top": 56,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 58,
+            "y": 50,
+            "w": 20,
+            "h": 2,
+            "top": 50,
+            "left": 58,
+            "width": 20,
+            "height": 2,
             "correct": [
-                  "quiet"
+                  "smarter, smartest",
+                  "smarter"
             ]
       },
       {
-            "id": "p4038_ex2_5",
+            "id": "p4038_ex4_7",
             "type": "fill",
-            "x": 65,
-            "y": 64,
-            "w": 16,
-            "h": 2.2,
-            "top": 64,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 58,
+            "y": 55,
+            "w": 26,
+            "h": 2,
+            "top": 55,
+            "left": 58,
+            "width": 26,
+            "height": 2,
             "correct": [
-                  "nervous"
+                  "more sociable, most sociable",
+                  "more sociable"
+            ]
+      },
+      {
+            "id": "p4038_ex4_8",
+            "type": "fill",
+            "x": 58,
+            "y": 60,
+            "w": 18,
+            "h": 2,
+            "top": 60,
+            "left": 58,
+            "width": 18,
+            "height": 2,
+            "correct": [
+                  "tidier, tidiest",
+                  "tidier"
             ]
       }
 ],
     "4039": [
       {
-            "id": "p4039_ex3_1",
+            "id": "p4039_ex5_1",
             "type": "fill",
-            "x": 30,
-            "y": 24,
-            "w": 14,
-            "h": 2.2,
-            "top": 24,
-            "left": 30,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 36,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "quieter"
+                  "Fruit is healthier than chocolate.",
+                  "healthier than chocolate"
             ]
       },
       {
-            "id": "p4039_ex3_2",
+            "id": "p4039_ex5_2",
             "type": "fill",
-            "x": 50,
-            "y": 24,
-            "w": 14,
-            "h": 2.2,
-            "top": 24,
-            "left": 50,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 29.5,
+            "w": 36,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "the quietest",
-                  "quietest"
+                  "Rugs are smaller than carpets.",
+                  "smaller than carpets"
             ]
       },
       {
-            "id": "p4039_ex3_3",
+            "id": "p4039_ex5_3",
             "type": "fill",
-            "x": 30,
-            "y": 30,
-            "w": 14,
-            "h": 2.2,
-            "top": 30,
-            "left": 30,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 34,
+            "w": 36,
+            "h": 2,
+            "top": 34,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "more sociable"
+                  "Monday is the worst day of the week.",
+                  "worst day of the week"
             ]
       },
       {
-            "id": "p4039_ex3_4",
+            "id": "p4039_ex5_4",
             "type": "fill",
-            "x": 50,
-            "y": 30,
-            "w": 14,
-            "h": 2.2,
-            "top": 30,
-            "left": 50,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 38.5,
+            "w": 36,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "the most sociable",
-                  "most sociable"
+                  "Gold is more expensive than plastic.",
+                  "more expensive than plastic"
             ]
       },
       {
-            "id": "p4039_ex3_5",
+            "id": "p4039_ex5_5",
             "type": "fill",
-            "x": 30,
-            "y": 36,
-            "w": 14,
-            "h": 2.2,
-            "top": 36,
-            "left": 30,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 43,
+            "w": 36,
+            "h": 2,
+            "top": 43,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "happier"
+                  "I think skiing is the most exciting sport.",
+                  "most exciting sport"
             ]
       },
       {
-            "id": "p4039_ex3_6",
+            "id": "p4039_ex5_6",
             "type": "fill",
-            "x": 50,
-            "y": 36,
-            "w": 14,
-            "h": 2.2,
-            "top": 36,
-            "left": 50,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 47.5,
+            "w": 36,
+            "h": 2,
+            "top": 47.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "the happiest",
-                  "happiest"
+                  "They say flying is the safest way to travel.",
+                  "safest way to travel"
             ]
       },
       {
-            "id": "p4039_ex3_7",
+            "id": "p4039_ex5_7",
             "type": "fill",
-            "x": 30,
-            "y": 42,
-            "w": 14,
-            "h": 2.2,
-            "top": 42,
-            "left": 30,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "better"
-            ]
-      },
-      {
-            "id": "p4039_ex3_8",
-            "type": "fill",
-            "x": 50,
-            "y": 42,
-            "w": 14,
-            "h": 2.2,
-            "top": 42,
-            "left": 50,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "the best",
-                  "best"
-            ]
-      },
-      {
-            "id": "p4039_ex4_1",
-            "type": "fill",
-            "x": 15,
+            "x": 11,
             "y": 52,
-            "w": 35,
-            "h": 2.2,
+            "w": 36,
+            "h": 2,
             "top": 52,
-            "left": 15,
-            "width": 35,
-            "height": 2.2,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "more ambitious than",
-                  "more ambitious"
+                  "Your English is better than mine.",
+                  "better than mine"
             ]
       },
       {
-            "id": "p4039_ex4_2",
+            "id": "p4039_ex5_8",
             "type": "fill",
-            "x": 15,
-            "y": 59,
-            "w": 35,
-            "h": 2.2,
-            "top": 59,
-            "left": 15,
-            "width": 35,
-            "height": 2.2,
+            "x": 11,
+            "y": 56.5,
+            "w": 36,
+            "h": 2,
+            "top": 56.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "not as tall as",
-                  "isn't as tall as"
+                  "My hometown is the liveliest place I know.",
+                  "liveliest place I know"
             ]
       },
       {
-            "id": "p4039_ex4_3",
+            "id": "p4039_ex6_1",
             "type": "fill",
-            "x": 15,
-            "y": 66,
-            "w": 35,
-            "h": 2.2,
-            "top": 66,
-            "left": 15,
-            "width": 35,
-            "height": 2.2,
+            "x": 58,
+            "y": 25,
+            "w": 36,
+            "h": 2,
+            "top": 25,
+            "left": 58,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "the most generous",
-                  "most generous"
+                  "isn't as difficult as Chinese.",
+                  "is not as difficult as Chinese."
             ]
       },
       {
-            "id": "p4039_ex4_4",
+            "id": "p4039_ex6_2",
             "type": "fill",
-            "x": 15,
-            "y": 73,
-            "w": 35,
-            "h": 2.2,
-            "top": 73,
-            "left": 15,
-            "width": 35,
-            "height": 2.2,
+            "x": 58,
+            "y": 30,
+            "w": 36,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "less confident than",
-                  "less confident"
+                  "isn't as wet as yesterday.",
+                  "is not as wet as yesterday."
             ]
       },
       {
-            "id": "p4039_ex4_5",
+            "id": "p4039_ex6_3",
             "type": "fill",
-            "x": 15,
-            "y": 80,
-            "w": 35,
-            "h": 2.2,
-            "top": 80,
-            "left": 15,
-            "width": 35,
-            "height": 2.2,
+            "x": 58,
+            "y": 35,
+            "w": 36,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "as cheerful as",
-                  "cheerful as"
+                  "isn't as thin as a sheet.",
+                  "is not as thin as a sheet."
+            ]
+      },
+      {
+            "id": "p4039_ex6_4",
+            "type": "fill",
+            "x": 58,
+            "y": 40,
+            "w": 36,
+            "h": 2,
+            "top": 40,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "isn't as hard-working as me.",
+                  "is not as hard-working as me."
+            ]
+      },
+      {
+            "id": "p4039_ex6_5",
+            "type": "fill",
+            "x": 58,
+            "y": 45,
+            "w": 36,
+            "h": 2,
+            "top": 45,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "isn't as dark as mine.",
+                  "is not as dark as mine."
+            ]
+      },
+      {
+            "id": "p4039_ex6_6",
+            "type": "fill",
+            "x": 58,
+            "y": 50,
+            "w": 36,
+            "h": 2,
+            "top": 50,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "not as old as my wife.",
+                  "isn't as old as my wife."
+            ]
+      },
+      {
+            "id": "p4039_ex6_7",
+            "type": "fill",
+            "x": 58,
+            "y": 55,
+            "w": 36,
+            "h": 2,
+            "top": 55,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "isn't as big as yours.",
+                  "is not as big as yours."
+            ]
+      },
+      {
+            "id": "p4039_ex6_8",
+            "type": "fill",
+            "x": 58,
+            "y": 60,
+            "w": 36,
+            "h": 2,
+            "top": 60,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "aren't as dangerous as motorbikes.",
+                  "are not as dangerous as motorbikes."
             ]
       }
 ],
@@ -89014,364 +90584,227 @@
       {
             "id": "p4040_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 28,
+            "x": 11,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "uncle",
+                  "Uncle"
+            ]
+      },
+      {
+            "id": "p4040_ex1_2",
+            "type": "fill",
+            "x": 28,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
+            "h": 2,
+            "top": 30,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
+            "correct": [
+                  "cousin",
+                  "Cousin"
+            ]
+      },
+      {
+            "id": "p4040_ex1_3",
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 18,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
                   "brother-in-law",
                   "brother in law"
             ]
       },
       {
-            "id": "p4040_ex1_2",
-            "type": "fill",
-            "x": 15,
-            "y": 34,
-            "w": 14,
-            "h": 2.2,
-            "top": 34,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "niece"
-            ]
-      },
-      {
-            "id": "p4040_ex1_3",
-            "type": "fill",
-            "x": 15,
-            "y": 40,
-            "w": 14,
-            "h": 2.2,
-            "top": 40,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "nephew"
-            ]
-      },
-      {
             "id": "p4040_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 46,
+            "x": 28,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "niece",
+                  "Niece"
+            ]
+      },
+      {
+            "id": "p4040_ex1_5",
+            "type": "fill",
+            "x": 11,
+            "y": 40,
             "w": 14,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
+            "h": 2,
+            "top": 40,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
+            "correct": [
+                  "nephew",
+                  "Nephew"
+            ]
+      },
+      {
+            "id": "p4040_ex1_6",
+            "type": "fill",
+            "x": 28,
+            "y": 40,
+            "w": 16,
+            "h": 2,
+            "top": 40,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "stepmother",
                   "step-mother"
             ]
       },
       {
-            "id": "p4040_ex1_5",
+            "id": "p4040_ex1_7",
             "type": "fill",
-            "x": 15,
-            "y": 52,
-            "w": 14,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "cousin"
-            ]
-      },
-      {
-            "id": "p4040_ex1_6",
-            "type": "fill",
-            "x": 15,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "grandson"
-            ]
-      },
-      {
-            "id": "p4040_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 28,
+            "x": 11,
+            "y": 45,
             "w": 18,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
+            "h": 2,
+            "top": 45,
+            "left": 11,
             "width": 18,
-            "height": 2.2,
+            "height": 2,
+            "correct": [
+                  "grandparents",
+                  "grand parents"
+            ]
+      },
+      {
+            "id": "p4040_ex1_8",
+            "type": "fill",
+            "x": 28,
+            "y": 45,
+            "w": 16,
+            "h": 2,
+            "top": 45,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "only child",
                   "an only child"
-            ]
-      },
-      {
-            "id": "p4040_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 18,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "single parent"
-            ]
-      },
-      {
-            "id": "p4040_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 18,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "extended family"
-            ]
-      },
-      {
-            "id": "p4040_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 18,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "twin sister",
-                  "twins"
             ]
       }
 ],
     "4041": [
       {
             "id": "p4041_ex3_1",
-            "type": "select",
-            "x": 15,
-            "y": 24,
-            "w": 25,
-            "h": 2.2,
-            "top": 24,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 25,
+            "w": 14,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "'ve lived"
-            ],
-            "options": [
-                  "'ve lived",
-                  "lived"
+                  "have been",
+                  "'ve been"
             ]
       },
       {
             "id": "p4041_ex3_2",
-            "type": "select",
-            "x": 15,
-            "y": 30,
-            "w": 25,
-            "h": 2.2,
-            "top": 30,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "moved"
-            ],
-            "options": [
-                  "'ve moved",
-                  "moved"
+                  "went",
+                  "Went"
             ]
       },
       {
             "id": "p4041_ex3_3",
-            "type": "select",
-            "x": 15,
-            "y": 36,
-            "w": 25,
-            "h": 2.2,
-            "top": 36,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Have you ever visited"
-            ],
-            "options": [
-                  "Have you ever visited",
-                  "Did you ever visit"
+                  "have met",
+                  "'ve met"
             ]
       },
       {
             "id": "p4041_ex3_4",
-            "type": "select",
-            "x": 15,
-            "y": 42,
-            "w": 25,
-            "h": 2.2,
-            "top": 42,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "went"
-            ],
-            "options": [
-                  "have been",
-                  "went"
+                  "met",
+                  "Met"
             ]
       },
       {
             "id": "p4041_ex3_5",
-            "type": "select",
-            "x": 15,
-            "y": 48,
-            "w": 25,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "has had"
-            ],
-            "options": [
-                  "has had",
-                  "had"
+                  "has lived",
+                  "'s lived"
             ]
       },
       {
             "id": "p4041_ex3_6",
-            "type": "select",
-            "x": 15,
-            "y": 54,
-            "w": 25,
-            "h": 2.2,
-            "top": 54,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "bought"
-            ],
-            "options": [
-                  "has bought",
-                  "bought"
-            ]
-      },
-      {
-            "id": "p4041_ex4_1",
             "type": "fill",
-            "x": 65,
-            "y": 24,
-            "w": 18,
-            "h": 2.2,
-            "top": 24,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "has worked",
-                  "'s worked"
-            ]
-      },
-      {
-            "id": "p4041_ex4_2",
-            "type": "fill",
-            "x": 65,
-            "y": 31,
-            "w": 18,
-            "h": 2.2,
-            "top": 31,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "started"
-            ]
-      },
-      {
-            "id": "p4041_ex4_3",
-            "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 18,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "has travelled",
-                  "has traveled"
-            ]
-      },
-      {
-            "id": "p4041_ex4_4",
-            "type": "fill",
-            "x": 65,
-            "y": 45,
-            "w": 18,
-            "h": 2.2,
-            "top": 45,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "visited"
-            ]
-      },
-      {
-            "id": "p4041_ex4_5",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 18,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "hasn't seen",
-                  "has not seen"
-            ]
-      },
-      {
-            "id": "p4041_ex4_6",
-            "type": "fill",
-            "x": 65,
-            "y": 59,
-            "w": 18,
-            "h": 2.2,
-            "top": 59,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "lost"
+                  "lived",
+                  "Lived"
             ]
       }
 ],
@@ -89379,441 +90812,197 @@
       {
             "id": "p4042_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "unhappy"
+                  "impatient",
+                  "Impatient"
             ]
       },
       {
             "id": "p4042_ex1_2",
             "type": "fill",
-            "x": 35,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "impatient"
+                  "dishonest",
+                  "Dishonest"
             ]
       },
       {
             "id": "p4042_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 34,
-            "w": 14,
-            "h": 2.2,
-            "top": 34,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "unfriendly"
+                  "untidy",
+                  "Untidy"
             ]
       },
       {
             "id": "p4042_ex1_4",
             "type": "fill",
-            "x": 35,
-            "y": 34,
-            "w": 14,
-            "h": 2.2,
-            "top": 34,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "dishonest"
-            ]
-      },
-      {
-            "id": "p4042_ex1_5",
-            "type": "fill",
-            "x": 15,
-            "y": 40,
-            "w": 14,
-            "h": 2.2,
-            "top": 40,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "unkind"
-            ]
-      },
-      {
-            "id": "p4042_ex1_6",
-            "type": "fill",
-            "x": 35,
-            "y": 40,
-            "w": 14,
-            "h": 2.2,
-            "top": 40,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "polite"
-            ]
-      },
-      {
-            "id": "p4042_ex1_7",
-            "type": "fill",
-            "x": 15,
-            "y": 46,
-            "w": 14,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "untidy"
-            ]
-      },
-      {
-            "id": "p4042_ex1_8",
-            "type": "fill",
-            "x": 35,
-            "y": 46,
-            "w": 14,
-            "h": 2.2,
-            "top": 46,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "impossible"
-            ]
-      },
-      {
-            "id": "p4042_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 28,
+            "x": 28,
+            "y": 35,
             "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
+            "h": 2,
+            "top": 35,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "ambitious"
-            ]
-      },
-      {
-            "id": "p4042_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 16,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "cheerful"
-            ]
-      },
-      {
-            "id": "p4042_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 16,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "nephew"
-            ]
-      },
-      {
-            "id": "p4042_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "niece"
-            ]
-      },
-      {
-            "id": "p4042_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 16,
-            "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "patient"
+                  "unsociable",
+                  "Unsociable"
             ]
       }
 ],
     "4043": [
       {
             "id": "p4043_ex1_1",
-            "type": "select",
-            "x": 25,
-            "y": 26,
-            "w": 28,
-            "h": 2.2,
-            "top": 26,
-            "left": 25,
-            "width": 28,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Oh no!"
-            ],
-            "options": [
-                  "Congratulations!",
-                  "Well done!",
-                  "Oh no!"
+                  "pleased to meet you",
+                  "pleased to meet"
             ]
       },
       {
             "id": "p4043_ex1_2",
-            "type": "select",
-            "x": 25,
-            "y": 33,
-            "w": 28,
-            "h": 2.2,
-            "top": 33,
-            "left": 25,
-            "width": 28,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "Great news!"
-            ],
-            "options": [
-                  "I am sorry to hear that.",
-                  "What a shame!",
-                  "Great news!"
+                  "good to see you",
+                  "good to see"
             ]
       },
       {
             "id": "p4043_ex1_3",
-            "type": "select",
-            "x": 25,
-            "y": 40,
-            "w": 28,
-            "h": 2.2,
-            "top": 40,
-            "left": 25,
-            "width": 28,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Never mind."
-            ],
-            "options": [
-                  "That sounds exciting!",
-                  "How wonderful!",
-                  "Never mind."
+                  "how are things",
+                  "how are you"
             ]
       },
       {
             "id": "p4043_ex1_4",
-            "type": "select",
-            "x": 25,
-            "y": 47,
-            "w": 28,
-            "h": 2.2,
-            "top": 47,
-            "left": 25,
-            "width": 28,
-            "height": 2.2,
-            "correct": [
-                  "Fantastic!"
-            ],
-            "options": [
-                  "How awful!",
-                  "Poor you!",
-                  "Fantastic!"
-            ]
-      },
-      {
-            "id": "p4043_ex2_1",
             "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 20,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Congratulations",
-                  "Congrats"
-            ]
-      },
-      {
-            "id": "p4043_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 20,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "Good luck"
-            ]
-      },
-      {
-            "id": "p4043_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 46,
-            "w": 20,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "Get well soon"
-            ]
-      },
-      {
-            "id": "p4043_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 54,
-            "w": 20,
-            "h": 2.2,
-            "top": 54,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "Happy birthday"
+                  "not bad thanks",
+                  "fine thanks"
             ]
       }
 ],
     "4044": [
       {
             "id": "p4044_ex1_1",
-            "type": "select",
-            "x": 15,
+            "type": "fill",
+            "x": 11,
             "y": 30,
-            "w": 25,
-            "h": 2.2,
+            "w": 14,
+            "h": 2,
             "top": 30,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "civil rights"
-            ],
-            "options": [
-                  "civil rights",
-                  "pollution",
-                  "space travel"
+                  "India",
+                  "india"
             ]
       },
       {
             "id": "p4044_ex1_2",
-            "type": "select",
-            "x": 15,
-            "y": 38,
-            "w": 25,
-            "h": 2.2,
-            "top": 38,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "nine students"
-            ],
-            "options": [
-                  "nine students",
-                  "three teachers",
-                  "one policeman"
+                  "train",
+                  "Train"
             ]
       },
       {
-            "id": "p4044_ex2_1",
+            "id": "p4044_ex1_3",
             "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 6,
-            "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "1"
+                  "Australia",
+                  "australia"
             ]
       },
       {
-            "id": "p4044_ex2_2",
+            "id": "p4044_ex1_4",
             "type": "fill",
-            "x": 65,
-            "y": 67,
-            "w": 6,
-            "h": 2.2,
-            "top": 67,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "3"
-            ]
-      },
-      {
-            "id": "p4044_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 74,
-            "w": 6,
-            "h": 2.2,
-            "top": 74,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "2"
-            ]
-      },
-      {
-            "id": "p4044_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 81,
-            "w": 6,
-            "h": 2.2,
-            "top": 81,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "4"
+                  "Google Earth",
+                  "google earth"
             ]
       }
 ],
@@ -89821,303 +91010,97 @@
       {
             "id": "p4045_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 23,
-            "w": 12,
-            "h": 2.2,
-            "top": 23,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 14,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "the"
+                  "better than",
+                  "better"
             ]
       },
       {
             "id": "p4045_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 28,
-            "w": 12,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "more"
+                  "most expensive",
+                  "the most expensive"
             ]
       },
       {
             "id": "p4045_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 33,
-            "w": 12,
-            "h": 2.2,
-            "top": 33,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "as"
-            ]
-      },
-      {
-            "id": "p4045_ex1_4",
-            "type": "fill",
-            "x": 15,
-            "y": 38,
-            "w": 12,
-            "h": 2.2,
-            "top": 38,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "a"
-            ]
-      },
-      {
-            "id": "p4045_ex1_5",
-            "type": "fill",
-            "x": 15,
-            "y": 43,
-            "w": 12,
-            "h": 2.2,
-            "top": 43,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "much"
-            ]
-      },
-      {
-            "id": "p4045_ex1_6",
-            "type": "fill",
-            "x": 15,
-            "y": 48,
-            "w": 12,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "most"
-            ]
-      },
-      {
-            "id": "p4045_ex1_7",
-            "type": "fill",
-            "x": 15,
-            "y": 53,
-            "w": 12,
-            "h": 2.2,
-            "top": 53,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "many"
-            ]
-      },
-      {
-            "id": "p4045_ex1_8",
-            "type": "fill",
-            "x": 15,
-            "y": 58,
-            "w": 12,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "enough"
+                  "as easy as",
+                  "not as easy as"
             ]
       },
       {
             "id": "p4045_ex2_1",
             "type": "fill",
-            "x": 15,
-            "y": 66,
-            "w": 18,
-            "h": 2.2,
-            "top": 66,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "x": 58,
+            "y": 25,
+            "w": 14,
+            "h": 2,
+            "top": 25,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "have seen",
-                  "'ve seen"
+                  "hard-working",
+                  "hard working"
             ]
       },
       {
             "id": "p4045_ex2_2",
             "type": "fill",
-            "x": 15,
-            "y": 72,
-            "w": 18,
-            "h": 2.2,
-            "top": 72,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "x": 58,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "bought"
+                  "brother-in-law",
+                  "brother in law"
             ]
       },
       {
             "id": "p4045_ex2_3",
             "type": "fill",
-            "x": 15,
-            "y": 78,
-            "w": 18,
-            "h": 2.2,
-            "top": 78,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "has been",
-                  "'s been"
-            ]
-      },
-      {
-            "id": "p4045_ex2_4",
-            "type": "fill",
-            "x": 15,
-            "y": 84,
-            "w": 18,
-            "h": 2.2,
-            "top": 84,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "did you arrive"
-            ]
-      },
-      {
-            "id": "p4045_ex3_1",
-            "type": "fill",
-            "x": 65,
-            "y": 23,
-            "w": 16,
-            "h": 2.2,
-            "top": 23,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "metal"
-            ]
-      },
-      {
-            "id": "p4045_ex3_2",
-            "type": "fill",
-            "x": 65,
-            "y": 29,
-            "w": 16,
-            "h": 2.2,
-            "top": 29,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "leather"
-            ]
-      },
-      {
-            "id": "p4045_ex3_3",
-            "type": "fill",
-            "x": 65,
+            "x": 58,
             "y": 35,
-            "w": 16,
-            "h": 2.2,
+            "w": 12,
+            "h": 2,
             "top": 35,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "cash"
-            ]
-      },
-      {
-            "id": "p4045_ex3_4",
-            "type": "fill",
-            "x": 65,
-            "y": 41,
-            "w": 16,
-            "h": 2.2,
-            "top": 41,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "change"
-            ]
-      },
-      {
-            "id": "p4045_ex3_5",
-            "type": "fill",
-            "x": 65,
-            "y": 47,
-            "w": 16,
-            "h": 2.2,
-            "top": 47,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "lend"
-            ]
-      },
-      {
-            "id": "p4045_ex3_6",
-            "type": "fill",
-            "x": 65,
-            "y": 53,
-            "w": 16,
-            "h": 2.2,
-            "top": 53,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "borrow"
-            ]
-      },
-      {
-            "id": "p4045_ex3_7",
-            "type": "fill",
-            "x": 65,
-            "y": 59,
-            "w": 16,
-            "h": 2.2,
-            "top": 59,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "ambitious"
-            ]
-      },
-      {
-            "id": "p4045_ex3_8",
-            "type": "fill",
-            "x": 65,
-            "y": 65,
-            "w": 16,
-            "h": 2.2,
-            "top": 65,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "cheerful"
+                  "valuable",
+                  "Valuable"
             ]
       }
 ],
@@ -90125,229 +91108,241 @@
       {
             "id": "p4046_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 33,
+            "x": 11,
+            "y": 25,
             "w": 14,
-            "h": 2.2,
-            "top": 33,
-            "left": 15,
+            "h": 2,
+            "top": 25,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "greener",
-                  "green"
+                  "Greener"
             ]
       },
       {
             "id": "p4046_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 38,
+            "x": 28,
+            "y": 25,
             "w": 14,
-            "h": 2.2,
-            "top": 38,
-            "left": 15,
+            "h": 2,
+            "top": 25,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "pollution"
+                  "pollution",
+                  "Pollution"
             ]
       },
       {
             "id": "p4046_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 43,
+            "x": 11,
+            "y": 29.5,
             "w": 14,
-            "h": 2.2,
-            "top": 43,
-            "left": 15,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "crowded"
+                  "crowded",
+                  "Crowded"
             ]
       },
       {
             "id": "p4046_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 48,
-            "w": 14,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 29.5,
+            "w": 12,
+            "h": 2,
+            "top": 29.5,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "fuel"
+                  "fuel",
+                  "Fuel"
             ]
       },
       {
             "id": "p4046_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 53,
+            "x": 11,
+            "y": 34,
             "w": 14,
-            "h": 2.2,
-            "top": 53,
-            "left": 15,
+            "h": 2,
+            "top": 34,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "reliable"
+                  "reliable",
+                  "Reliable"
             ]
       },
       {
             "id": "p4046_ex1_6",
             "type": "fill",
-            "x": 15,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 34,
+            "w": 16,
+            "h": 2,
+            "top": 34,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "convenient"
+                  "convenient",
+                  "Convenient"
             ]
       },
       {
             "id": "p4046_ex1_7",
             "type": "fill",
-            "x": 15,
-            "y": 63,
-            "w": 14,
-            "h": 2.2,
-            "top": 63,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 38.5,
+            "w": 12,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "fare"
+                  "fare",
+                  "Fare"
             ]
       },
       {
             "id": "p4046_ex2_1",
             "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 20,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 58,
+            "y": 25,
+            "w": 16,
+            "h": 2,
+            "top": 25,
+            "left": 58,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "traffic jams",
-                  "traffic jam"
+                  "jams"
             ]
       },
       {
             "id": "p4046_ex2_2",
             "type": "fill",
-            "x": 65,
-            "y": 37,
-            "w": 20,
-            "h": 2.2,
-            "top": 37,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 75,
+            "y": 25,
+            "w": 16,
+            "h": 2,
+            "top": 25,
+            "left": 75,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "main roads",
-                  "main road"
+                  "roads"
             ]
       },
       {
             "id": "p4046_ex2_3",
             "type": "fill",
-            "x": 65,
-            "y": 44,
+            "x": 58,
+            "y": 30,
             "w": 20,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
+            "h": 2,
+            "top": 30,
+            "left": 58,
             "width": 20,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "public transport"
+                  "public transport",
+                  "transport"
             ]
       },
       {
             "id": "p4046_ex2_4",
             "type": "fill",
-            "x": 65,
-            "y": 51,
-            "w": 20,
-            "h": 2.2,
-            "top": 51,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 75,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 75,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "convenient"
+                  "convenient",
+                  "Convenient"
             ]
       },
       {
             "id": "p4046_ex2_5",
             "type": "fill",
-            "x": 65,
-            "y": 58,
-            "w": 20,
-            "h": 2.2,
-            "top": 58,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 58,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "fare"
+                  "fare",
+                  "Fare"
             ]
       },
       {
             "id": "p4046_ex2_6",
             "type": "fill",
-            "x": 65,
-            "y": 65,
-            "w": 20,
-            "h": 2.2,
-            "top": 65,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 75,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 75,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "reliable"
+                  "reliable",
+                  "Reliable"
             ]
       },
       {
             "id": "p4046_ex2_7",
             "type": "fill",
-            "x": 65,
-            "y": 72,
-            "w": 20,
-            "h": 2.2,
-            "top": 72,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 58,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "crowded"
+                  "crowded",
+                  "Crowded"
             ]
       },
       {
             "id": "p4046_ex2_8",
             "type": "fill",
-            "x": 65,
-            "y": 79,
-            "w": 20,
-            "h": 2.2,
-            "top": 79,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 75,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 75,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "greener"
+                  "greener",
+                  "Greener"
             ]
       }
 ],
@@ -90355,14 +91350,14 @@
       {
             "id": "p4047_ex4_1",
             "type": "fill",
-            "x": 15,
-            "y": 22,
+            "x": 11,
+            "y": 25,
             "w": 14,
-            "h": 2.2,
-            "top": 22,
-            "left": 15,
+            "h": 2,
+            "top": 25,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "'ll be",
                   "will be"
@@ -90371,14 +91366,14 @@
       {
             "id": "p4047_ex4_2",
             "type": "fill",
-            "x": 15,
-            "y": 28,
+            "x": 28,
+            "y": 25,
             "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
+            "h": 2,
+            "top": 25,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "'ll pass",
                   "will pass"
@@ -90387,14 +91382,14 @@
       {
             "id": "p4047_ex4_3",
             "type": "fill",
-            "x": 15,
-            "y": 34,
+            "x": 11,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 34,
-            "left": 15,
+            "h": 2,
+            "top": 30,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "'ll have",
                   "will have"
@@ -90403,14 +91398,14 @@
       {
             "id": "p4047_ex4_4",
             "type": "fill",
-            "x": 15,
-            "y": 40,
+            "x": 28,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 40,
-            "left": 15,
+            "h": 2,
+            "top": 30,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "'ll park",
                   "will park"
@@ -90419,14 +91414,14 @@
       {
             "id": "p4047_ex4_5",
             "type": "fill",
-            "x": 15,
-            "y": 46,
+            "x": 11,
+            "y": 35,
             "w": 14,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
+            "h": 2,
+            "top": 35,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "'ll rain",
                   "will rain"
@@ -90435,184 +91430,121 @@
       {
             "id": "p4047_ex4_6",
             "type": "fill",
-            "x": 15,
-            "y": 52,
+            "x": 28,
+            "y": 35,
             "w": 14,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
+            "h": 2,
+            "top": 35,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "'ll win",
                   "will win"
             ]
       },
       {
-            "id": "p4047_ex5_1",
+            "id": "p4047_ex6_1",
             "type": "select",
             "x": 58,
-            "y": 22,
-            "w": 14,
+            "y": 30,
+            "w": 10,
             "h": 2.2,
-            "top": 22,
+            "top": 30,
             "left": 58,
-            "width": 14,
+            "width": 10,
             "height": 2.2,
             "correct": [
                   "'ll"
             ],
             "options": [
                   "'ll",
+                  "will",
                   "might",
-                  "might not",
                   "won't"
             ]
       },
       {
-            "id": "p4047_ex5_2",
+            "id": "p4047_ex6_2",
             "type": "select",
             "x": 58,
-            "y": 28,
-            "w": 14,
+            "y": 36,
+            "w": 10,
             "h": 2.2,
-            "top": 28,
+            "top": 36,
             "left": 58,
-            "width": 14,
+            "width": 10,
+            "height": 2.2,
+            "correct": [
+                  "won't"
+            ],
+            "options": [
+                  "'ll",
+                  "will",
+                  "might",
+                  "won't"
+            ]
+      },
+      {
+            "id": "p4047_ex6_3",
+            "type": "select",
+            "x": 58,
+            "y": 42,
+            "w": 10,
+            "h": 2.2,
+            "top": 42,
+            "left": 58,
+            "width": 10,
             "height": 2.2,
             "correct": [
                   "might"
             ],
             "options": [
                   "'ll",
+                  "will",
                   "might",
-                  "might not",
                   "won't"
             ]
       },
       {
-            "id": "p4047_ex5_3",
+            "id": "p4047_ex6_4",
             "type": "select",
             "x": 58,
-            "y": 34,
-            "w": 14,
+            "y": 48,
+            "w": 10,
             "h": 2.2,
-            "top": 34,
+            "top": 48,
             "left": 58,
-            "width": 14,
+            "width": 10,
             "height": 2.2,
             "correct": [
-                  "might not"
+                  "will"
             ],
             "options": [
                   "'ll",
+                  "will",
                   "might",
-                  "might not",
                   "won't"
             ]
       },
       {
-            "id": "p4047_ex5_4",
+            "id": "p4047_ex6_5",
             "type": "select",
             "x": 58,
-            "y": 40,
-            "w": 14,
+            "y": 54,
+            "w": 10,
             "h": 2.2,
-            "top": 40,
+            "top": 54,
             "left": 58,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "won't"
-            ],
-            "options": [
-                  "'ll",
-                  "might",
-                  "might not",
-                  "won't"
-            ]
-      },
-      {
-            "id": "p4047_ex5_5",
-            "type": "select",
-            "x": 58,
-            "y": 46,
-            "w": 14,
-            "h": 2.2,
-            "top": 46,
-            "left": 58,
-            "width": 14,
+            "width": 10,
             "height": 2.2,
             "correct": [
                   "might"
             ],
             "options": [
                   "'ll",
+                  "will",
                   "might",
-                  "might not",
-                  "won't"
-            ]
-      },
-      {
-            "id": "p4047_ex5_6",
-            "type": "select",
-            "x": 58,
-            "y": 52,
-            "w": 14,
-            "h": 2.2,
-            "top": 52,
-            "left": 58,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "might"
-            ],
-            "options": [
-                  "'ll",
-                  "might",
-                  "might not",
-                  "won't"
-            ]
-      },
-      {
-            "id": "p4047_ex5_7",
-            "type": "select",
-            "x": 58,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 58,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "won't"
-            ],
-            "options": [
-                  "'ll",
-                  "might",
-                  "might not",
-                  "won't"
-            ]
-      },
-      {
-            "id": "p4047_ex5_8",
-            "type": "select",
-            "x": 58,
-            "y": 64,
-            "w": 14,
-            "h": 2.2,
-            "top": 64,
-            "left": 58,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "might not"
-            ],
-            "options": [
-                  "'ll",
-                  "might",
-                  "might not",
                   "won't"
             ]
       }
@@ -90621,202 +91553,97 @@
       {
             "id": "p4048_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 27,
-            "w": 16,
-            "h": 2.2,
-            "top": 27,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "flight"
+                  "terminal",
+                  "Terminal"
             ]
       },
       {
             "id": "p4048_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 33,
-            "w": 16,
-            "h": 2.2,
-            "top": 33,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "accommodation"
+                  "gate",
+                  "Gate"
             ]
       },
       {
             "id": "p4048_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 39,
-            "w": 16,
-            "h": 2.2,
-            "top": 39,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "souvenir"
+                  "check-in",
+                  "check in"
             ]
       },
       {
             "id": "p4048_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 45,
-            "w": 16,
-            "h": 2.2,
-            "top": 45,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 18,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "insurance"
+                  "boarding pass",
+                  "pass"
             ]
       },
       {
             "id": "p4048_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 51,
-            "w": 16,
-            "h": 2.2,
-            "top": 51,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "guidebook",
-                  "guide book"
+                  "luggage",
+                  "Luggage"
             ]
       },
       {
             "id": "p4048_ex1_6",
             "type": "fill",
-            "x": 15,
-            "y": 57,
-            "w": 16,
-            "h": 2.2,
-            "top": 57,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 40,
+            "w": 20,
+            "h": 2,
+            "top": 40,
+            "left": 28,
+            "width": 20,
+            "height": 2,
             "correct": [
-                  "luggage"
-            ]
-      },
-      {
-            "id": "p4048_ex1_7",
-            "type": "fill",
-            "x": 15,
-            "y": 63,
-            "w": 16,
-            "h": 2.2,
-            "top": 63,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "resort"
-            ]
-      },
-      {
-            "id": "p4048_ex1_8",
-            "type": "fill",
-            "x": 15,
-            "y": 69,
-            "w": 16,
-            "h": 2.2,
-            "top": 69,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "belongings"
-            ]
-      },
-      {
-            "id": "p4048_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 18,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "book a flight",
-                  "book"
-            ]
-      },
-      {
-            "id": "p4048_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 18,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "pack luggage",
-                  "pack your bags"
-            ]
-      },
-      {
-            "id": "p4048_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 18,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "buy souvenirs",
-                  "buy"
-            ]
-      },
-      {
-            "id": "p4048_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 18,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "hire a car",
-                  "hire"
-            ]
-      },
-      {
-            "id": "p4048_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 18,
-            "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "stay in a resort",
-                  "stay"
+                  "passport control",
+                  "control"
             ]
       }
 ],
@@ -90824,955 +91651,484 @@
       {
             "id": "p4049_ex3_1",
             "type": "select",
-            "x": 15,
-            "y": 24,
-            "w": 18,
+            "x": 11,
+            "y": 30,
+            "w": 14,
             "h": 2.2,
-            "top": 24,
-            "left": 15,
-            "width": 18,
+            "top": 30,
+            "left": 11,
+            "width": 14,
             "height": 2.2,
             "correct": [
-                  "somewhere"
+                  "must"
             ],
             "options": [
-                  "somewhere",
-                  "anywhere",
-                  "nowhere",
-                  "everywhere"
+                  "must",
+                  "mustn't",
+                  "have to",
+                  "don't have to",
+                  "should"
             ]
       },
       {
             "id": "p4049_ex3_2",
             "type": "select",
-            "x": 15,
+            "x": 28,
             "y": 30,
-            "w": 18,
+            "w": 14,
             "h": 2.2,
             "top": 30,
-            "left": 15,
-            "width": 18,
+            "left": 28,
+            "width": 14,
             "height": 2.2,
             "correct": [
-                  "someone"
+                  "have to"
             ],
             "options": [
-                  "someone",
-                  "anyone",
-                  "no one",
-                  "everyone"
+                  "must",
+                  "mustn't",
+                  "have to",
+                  "don't have to",
+                  "should"
             ]
       },
       {
             "id": "p4049_ex3_3",
             "type": "select",
-            "x": 15,
+            "x": 11,
             "y": 36,
-            "w": 18,
+            "w": 16,
             "h": 2.2,
             "top": 36,
-            "left": 15,
-            "width": 18,
+            "left": 11,
+            "width": 16,
             "height": 2.2,
             "correct": [
-                  "anything"
+                  "don't have to"
             ],
             "options": [
-                  "something",
-                  "anything",
-                  "nothing",
-                  "everything"
+                  "must",
+                  "mustn't",
+                  "have to",
+                  "don't have to",
+                  "should"
             ]
       },
       {
             "id": "p4049_ex3_4",
             "type": "select",
-            "x": 15,
-            "y": 42,
-            "w": 18,
+            "x": 28,
+            "y": 36,
+            "w": 14,
             "h": 2.2,
-            "top": 42,
-            "left": 15,
-            "width": 18,
+            "top": 36,
+            "left": 28,
+            "width": 14,
             "height": 2.2,
             "correct": [
-                  "nowhere"
+                  "should"
             ],
             "options": [
-                  "somewhere",
-                  "anywhere",
-                  "nowhere",
-                  "everywhere"
-            ]
-      },
-      {
-            "id": "p4049_ex3_5",
-            "type": "select",
-            "x": 15,
-            "y": 48,
-            "w": 18,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "everyone"
-            ],
-            "options": [
-                  "someone",
-                  "anyone",
-                  "no one",
-                  "everyone"
-            ]
-      },
-      {
-            "id": "p4049_ex3_6",
-            "type": "select",
-            "x": 15,
-            "y": 54,
-            "w": 18,
-            "h": 2.2,
-            "top": 54,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "nothing"
-            ],
-            "options": [
-                  "something",
-                  "anything",
-                  "nothing",
-                  "everything"
-            ]
-      },
-      {
-            "id": "p4049_ex3_7",
-            "type": "select",
-            "x": 15,
-            "y": 60,
-            "w": 18,
-            "h": 2.2,
-            "top": 60,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "anywhere"
-            ],
-            "options": [
-                  "somewhere",
-                  "anywhere",
-                  "nowhere",
-                  "everywhere"
-            ]
-      },
-      {
-            "id": "p4049_ex3_8",
-            "type": "select",
-            "x": 15,
-            "y": 66,
-            "w": 18,
-            "h": 2.2,
-            "top": 66,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "something"
-            ],
-            "options": [
-                  "something",
-                  "anything",
-                  "nothing",
-                  "everything"
-            ]
-      },
-      {
-            "id": "p4049_ex4_1",
-            "type": "fill",
-            "x": 65,
-            "y": 24,
-            "w": 16,
-            "h": 2.2,
-            "top": 24,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "everywhere"
-            ]
-      },
-      {
-            "id": "p4049_ex4_2",
-            "type": "fill",
-            "x": 65,
-            "y": 31,
-            "w": 16,
-            "h": 2.2,
-            "top": 31,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "anyone",
-                  "anybody"
-            ]
-      },
-      {
-            "id": "p4049_ex4_3",
-            "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 16,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "somewhere"
-            ]
-      },
-      {
-            "id": "p4049_ex4_4",
-            "type": "fill",
-            "x": 65,
-            "y": 45,
-            "w": 16,
-            "h": 2.2,
-            "top": 45,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "everything"
-            ]
-      },
-      {
-            "id": "p4049_ex4_5",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "nothing"
+                  "must",
+                  "mustn't",
+                  "have to",
+                  "don't have to",
+                  "should"
             ]
       }
 ],
     "4050": [
       {
             "id": "p4050_ex1_1",
-            "type": "select",
-            "x": 15,
-            "y": 28,
-            "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "tiring"
-            ],
-            "options": [
-                  "tired",
-                  "tiring"
+                  "miss a flight",
+                  "miss flight"
             ]
       },
       {
             "id": "p4050_ex1_2",
-            "type": "select",
-            "x": 15,
-            "y": 34,
-            "w": 16,
-            "h": 2.2,
-            "top": 34,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "excited"
-            ],
-            "options": [
-                  "excited",
-                  "exciting"
+                  "book a hotel",
+                  "book hotel"
             ]
       },
       {
             "id": "p4050_ex1_3",
-            "type": "select",
-            "x": 15,
-            "y": 40,
-            "w": 16,
-            "h": 2.2,
-            "top": 40,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "frightening"
-            ],
-            "options": [
-                  "frightened",
-                  "frightening"
+                  "catch a train",
+                  "catch train"
             ]
       },
       {
             "id": "p4050_ex1_4",
-            "type": "select",
-            "x": 15,
-            "y": 46,
-            "w": 16,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "annoyed"
-            ],
-            "options": [
-                  "annoyed",
-                  "annoying"
-            ]
-      },
-      {
-            "id": "p4050_ex1_5",
-            "type": "select",
-            "x": 15,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "bored"
-            ],
-            "options": [
-                  "bored",
-                  "boring"
-            ]
-      },
-      {
-            "id": "p4050_ex1_6",
-            "type": "select",
-            "x": 15,
-            "y": 58,
-            "w": 16,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "interesting"
-            ],
-            "options": [
-                  "interested",
-                  "interesting"
-            ]
-      },
-      {
-            "id": "p4050_ex3_1",
             "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "amazed"
-            ]
-      },
-      {
-            "id": "p4050_ex3_2",
-            "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 16,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "amazing"
-            ]
-      },
-      {
-            "id": "p4050_ex3_3",
-            "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 16,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "disappointed"
-            ]
-      },
-      {
-            "id": "p4050_ex3_4",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "disappointing"
-            ]
-      },
-      {
-            "id": "p4050_ex3_5",
-            "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 16,
-            "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "surprised"
+                  "hire a car",
+                  "hire car"
             ]
       }
 ],
     "4051": [
       {
-            "id": "p4051_ex1a_1",
+            "id": "p4051_ex1_1",
             "type": "fill",
-            "x": 10,
-            "y": 23,
-            "w": 5,
-            "h": 2.2,
-            "top": 23,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "3"
-            ]
-      },
-      {
-            "id": "p4051_ex1a_2",
-            "type": "fill",
-            "x": 10,
-            "y": 28,
-            "w": 5,
-            "h": 2.2,
-            "top": 28,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "7"
-            ]
-      },
-      {
-            "id": "p4051_ex1a_3",
-            "type": "fill",
-            "x": 10,
-            "y": 33,
-            "w": 5,
-            "h": 2.2,
-            "top": 33,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "1"
-            ]
-      },
-      {
-            "id": "p4051_ex1a_4",
-            "type": "fill",
-            "x": 10,
-            "y": 38,
-            "w": 5,
-            "h": 2.2,
-            "top": 38,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "11"
-            ]
-      },
-      {
-            "id": "p4051_ex1a_5",
-            "type": "fill",
-            "x": 10,
-            "y": 43,
-            "w": 5,
-            "h": 2.2,
-            "top": 43,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "5"
-            ]
-      },
-      {
-            "id": "p4051_ex1a_6",
-            "type": "fill",
-            "x": 10,
-            "y": 48,
-            "w": 5,
-            "h": 2.2,
-            "top": 48,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "9"
-            ]
-      },
-      {
-            "id": "p4051_ex1a_7",
-            "type": "fill",
-            "x": 10,
-            "y": 53,
-            "w": 5,
-            "h": 2.2,
-            "top": 53,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "2"
-            ]
-      },
-      {
-            "id": "p4051_ex1a_8",
-            "type": "fill",
-            "x": 10,
-            "y": 58,
-            "w": 5,
-            "h": 2.2,
-            "top": 58,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "6"
-            ]
-      },
-      {
-            "id": "p4051_ex2_1",
-            "type": "fill",
-            "x": 65,
+            "x": 11,
             "y": 30,
-            "w": 20,
-            "h": 2.2,
+            "w": 12,
+            "h": 2,
             "top": 30,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "reservation",
-                  "booking"
+                  "'ll",
+                  "will"
             ]
       },
       {
-            "id": "p4051_ex2_2",
+            "id": "p4051_ex1_2",
             "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 20,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "double room",
-                  "room"
+                  "might",
+                  "Might"
             ]
       },
       {
-            "id": "p4051_ex2_3",
+            "id": "p4051_ex1_3",
             "type": "fill",
-            "x": 65,
-            "y": 46,
-            "w": 20,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "breakfast included",
-                  "breakfast"
+                  "must",
+                  "Must"
             ]
       },
       {
-            "id": "p4051_ex2_4",
+            "id": "p4051_ex1_4",
             "type": "fill",
-            "x": 65,
-            "y": 54,
-            "w": 20,
-            "h": 2.2,
-            "top": 54,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "wifi password",
-                  "password"
+                  "should",
+                  "Should"
             ]
       }
 ],
     "4052": [
       {
             "id": "p4052_ex1_1",
-            "type": "select",
-            "x": 15,
-            "y": 33,
+            "type": "fill",
+            "x": 11,
+            "y": 25,
             "w": 14,
-            "h": 2.2,
-            "top": 33,
-            "left": 15,
+            "h": 2,
+            "top": 25,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "can't"
-            ],
-            "options": [
-                  "can",
-                  "can't",
-                  "could",
-                  "couldn't"
+                  "amazed",
+                  "amazing",
+                  "Amazed"
             ]
       },
       {
             "id": "p4052_ex1_2",
-            "type": "select",
-            "x": 15,
-            "y": 38,
-            "w": 14,
-            "h": 2.2,
-            "top": 38,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "Can"
-            ],
-            "options": [
-                  "Can",
-                  "Can't",
-                  "Could",
-                  "Couldn't"
+                  "bored",
+                  "boring",
+                  "Bored"
             ]
       },
       {
             "id": "p4052_ex1_3",
-            "type": "select",
-            "x": 15,
-            "y": 43,
-            "w": 14,
-            "h": 2.2,
-            "top": 43,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 29.5,
+            "w": 16,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "can"
-            ],
-            "options": [
-                  "can",
-                  "can't",
-                  "could",
-                  "couldn't"
+                  "disappointed",
+                  "disappointing"
             ]
       },
       {
             "id": "p4052_ex1_4",
-            "type": "select",
-            "x": 15,
-            "y": 48,
+            "type": "fill",
+            "x": 28,
+            "y": 29.5,
             "w": 14,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
+            "h": 2,
+            "top": 29.5,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "can"
-            ],
-            "options": [
-                  "can",
-                  "can't",
-                  "could",
-                  "couldn't"
+                  "excited",
+                  "exciting"
             ]
       },
       {
             "id": "p4052_ex1_5",
-            "type": "select",
-            "x": 15,
-            "y": 53,
+            "type": "fill",
+            "x": 11,
+            "y": 34,
             "w": 14,
-            "h": 2.2,
-            "top": 53,
-            "left": 15,
+            "h": 2,
+            "top": 34,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "Can"
-            ],
-            "options": [
-                  "Can",
-                  "Can't",
-                  "Could",
-                  "Couldn't"
+                  "frightened",
+                  "frightening"
             ]
       },
       {
-            "id": "p4052_ex2_1",
+            "id": "p4052_ex1_6",
             "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 18,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 28,
+            "y": 34,
+            "w": 14,
+            "h": 2,
+            "top": 34,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "remember names",
-                  "remember"
+                  "surprised",
+                  "surprising"
             ]
       },
       {
-            "id": "p4052_ex2_2",
+            "id": "p4052_ex1_7",
             "type": "fill",
-            "x": 65,
-            "y": 37,
-            "w": 18,
-            "h": 2.2,
-            "top": 37,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 11,
+            "y": 38.5,
+            "w": 12,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "speak languages",
-                  "speak"
+                  "worried",
+                  "worrying"
             ]
       },
       {
-            "id": "p4052_ex2_3",
+            "id": "p4052_ex1_8",
             "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 18,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 28,
+            "y": 38.5,
+            "w": 14,
+            "h": 2,
+            "top": 38.5,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "play musical instrument",
-                  "play"
+                  "annoyed",
+                  "annoying"
             ]
       },
       {
-            "id": "p4052_ex2_4",
+            "id": "p4052_ex1_9",
             "type": "fill",
-            "x": 65,
-            "y": 51,
-            "w": 18,
-            "h": 2.2,
-            "top": 51,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 11,
+            "y": 43,
+            "w": 14,
+            "h": 2,
+            "top": 43,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "solve puzzles",
-                  "solve"
+                  "confused",
+                  "confusing"
             ]
       },
       {
-            "id": "p4052_ex2_5",
+            "id": "p4052_ex1_10",
             "type": "fill",
-            "x": 65,
-            "y": 58,
-            "w": 18,
-            "h": 2.2,
-            "top": 58,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "x": 28,
+            "y": 43,
+            "w": 16,
+            "h": 2,
+            "top": 43,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "drive a car",
-                  "drive"
+                  "embarrassed",
+                  "embarrassing"
+            ]
+      },
+      {
+            "id": "p4052_ex1_11",
+            "type": "fill",
+            "x": 11,
+            "y": 47.5,
+            "w": 16,
+            "h": 2,
+            "top": 47.5,
+            "left": 11,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "fascinated",
+                  "fascinating"
+            ]
+      },
+      {
+            "id": "p4052_ex1_12",
+            "type": "fill",
+            "x": 28,
+            "y": 47.5,
+            "w": 14,
+            "h": 2,
+            "top": 47.5,
+            "left": 28,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "relaxed",
+                  "relaxing"
             ]
       }
 ],
     "4053": [
       {
-            "id": "p4053_ex3_1",
+            "id": "p4053_ex1a_1",
             "type": "fill",
-            "x": 15,
-            "y": 24,
-            "w": 18,
-            "h": 2.2,
-            "top": 24,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 36,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "be able to",
-                  "can"
+                  "My sister isn't able to walk",
+                  "is not able to walk",
+                  "can't walk"
             ]
       },
       {
-            "id": "p4053_ex3_2",
+            "id": "p4053_ex1a_2",
             "type": "fill",
-            "x": 15,
+            "x": 11,
             "y": 30,
-            "w": 18,
-            "h": 2.2,
+            "w": 36,
+            "h": 2,
             "top": 30,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "couldn't",
-                  "could not"
+                  "I can play the piano",
+                  "am able to play the piano"
             ]
       },
       {
-            "id": "p4053_ex3_3",
+            "id": "p4053_ex1a_3",
             "type": "fill",
-            "x": 15,
-            "y": 36,
-            "w": 18,
-            "h": 2.2,
-            "top": 36,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 36,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "was able to",
-                  "could"
+                  "Could you swim when you were five?",
+                  "were you able to swim"
             ]
       },
       {
-            "id": "p4053_ex3_4",
+            "id": "p4053_ex1a_4",
             "type": "fill",
-            "x": 15,
-            "y": 42,
-            "w": 18,
-            "h": 2.2,
-            "top": 42,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 36,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "will be able to",
-                  "'ll be able to"
-            ]
-      },
-      {
-            "id": "p4053_ex3_5",
-            "type": "fill",
-            "x": 15,
-            "y": 48,
-            "w": 18,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "can",
-                  "is able to"
-            ]
-      },
-      {
-            "id": "p4053_ex3_6",
-            "type": "fill",
-            "x": 15,
-            "y": 54,
-            "w": 18,
-            "h": 2.2,
-            "top": 54,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "haven't been able to",
-                  "have not been able to"
-            ]
-      },
-      {
-            "id": "p4053_ex4_1",
-            "type": "fill",
-            "x": 65,
-            "y": 24,
-            "w": 25,
-            "h": 2.2,
-            "top": 24,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "Could you swim",
-                  "Were you able to swim"
-            ]
-      },
-      {
-            "id": "p4053_ex4_2",
-            "type": "fill",
-            "x": 65,
-            "y": 31,
-            "w": 25,
-            "h": 2.2,
-            "top": 31,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "Will you be able to come",
-                  "Can you come"
-            ]
-      },
-      {
-            "id": "p4053_ex4_3",
-            "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 25,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "Have you been able to find",
-                  "Did you find"
+                  "We won't be able to come to the party",
+                  "will not be able to come"
             ]
       }
 ],
@@ -91780,687 +92136,279 @@
       {
             "id": "p4054_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 36,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "history"
+                  "Could we check in, please?",
+                  "Could we check in please"
             ]
       },
       {
             "id": "p4054_ex1_2",
             "type": "fill",
-            "x": 35,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 36,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "geography"
+                  "What was the name again, please?",
+                  "What was the name again please"
             ]
       },
       {
             "id": "p4054_ex1_3",
             "type": "fill",
-            "x": 15,
+            "x": 11,
             "y": 35,
-            "w": 14,
-            "h": 2.2,
+            "w": 36,
+            "h": 2,
             "top": 35,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "science"
+                  "Is Wi-Fi available in the room?",
+                  "Is Wi-Fi available"
             ]
       },
       {
             "id": "p4054_ex1_4",
             "type": "fill",
-            "x": 35,
-            "y": 35,
-            "w": 14,
-            "h": 2.2,
-            "top": 35,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 36,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "maths",
-                  "mathematics"
+                  "Is there a charge for it?",
+                  "Is there a charge"
             ]
       },
       {
             "id": "p4054_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 42,
-            "w": 14,
-            "h": 2.2,
-            "top": 42,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 45,
+            "w": 36,
+            "h": 2,
+            "top": 45,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "literature",
-                  "english literature"
-            ]
-      },
-      {
-            "id": "p4054_ex1_6",
-            "type": "fill",
-            "x": 35,
-            "y": 42,
-            "w": 14,
-            "h": 2.2,
-            "top": 42,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "art"
-            ]
-      },
-      {
-            "id": "p4054_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "pass an exam",
-                  "pass"
-            ]
-      },
-      {
-            "id": "p4054_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 16,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "fail an exam",
-                  "fail"
-            ]
-      },
-      {
-            "id": "p4054_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 16,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "revise for an exam",
-                  "revise"
-            ]
-      },
-      {
-            "id": "p4054_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "take an exam",
-                  "take"
+                  "I'll get someone to help you with your luggage.",
+                  "help with your luggage"
             ]
       }
 ],
     "4055": [
       {
-            "id": "p4055_ex3_1",
-            "type": "select",
-            "x": 15,
-            "y": 24,
-            "w": 20,
-            "h": 2.2,
-            "top": 24,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "have to"
-            ],
-            "options": [
-                  "have to",
-                  "must",
-                  "don't have to",
-                  "mustn’t"
-            ]
-      },
-      {
-            "id": "p4055_ex3_2",
-            "type": "select",
-            "x": 15,
+            "id": "p4055_ex1_1",
+            "type": "fill",
+            "x": 11,
             "y": 30,
-            "w": 20,
-            "h": 2.2,
+            "w": 16,
+            "h": 2,
             "top": 30,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "don't have to"
-            ],
-            "options": [
-                  "have to",
-                  "must",
-                  "don't have to",
-                  "mustn’t"
+                  "reservation",
+                  "Reservation"
             ]
       },
       {
-            "id": "p4055_ex3_3",
-            "type": "select",
-            "x": 15,
-            "y": 36,
-            "w": 20,
-            "h": 2.2,
-            "top": 36,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "mustn’t"
-            ],
-            "options": [
-                  "have to",
-                  "must",
-                  "don't have to",
-                  "mustn’t"
-            ]
-      },
-      {
-            "id": "p4055_ex3_4",
-            "type": "select",
-            "x": 15,
-            "y": 42,
-            "w": 20,
-            "h": 2.2,
-            "top": 42,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "should"
-            ],
-            "options": [
-                  "should",
-                  "shouldn't",
-                  "have to",
-                  "must"
-            ]
-      },
-      {
-            "id": "p4055_ex3_5",
-            "type": "select",
-            "x": 15,
-            "y": 48,
-            "w": 20,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "shouldn't"
-            ],
-            "options": [
-                  "should",
-                  "shouldn't",
-                  "have to",
-                  "must"
-            ]
-      },
-      {
-            "id": "p4055_ex3_6",
-            "type": "select",
-            "x": 15,
-            "y": 54,
-            "w": 20,
-            "h": 2.2,
-            "top": 54,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "had to"
-            ],
-            "options": [
-                  "had to",
-                  "have to",
-                  "must",
-                  "should"
-            ]
-      },
-      {
-            "id": "p4055_ex4_1",
+            "id": "p4055_ex1_2",
             "type": "fill",
-            "x": 65,
-            "y": 24,
-            "w": 22,
-            "h": 2.2,
-            "top": 24,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "You must arrive on time.",
-                  "must arrive on time"
+                  "check-out",
+                  "check out"
             ]
       },
       {
-            "id": "p4055_ex4_2",
+            "id": "p4055_ex1_3",
             "type": "fill",
-            "x": 65,
-            "y": 31,
-            "w": 22,
-            "h": 2.2,
-            "top": 31,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "You mustn’t use mobile phones.",
-                  "must not use phones"
+                  "reception",
+                  "Reception"
             ]
       },
       {
-            "id": "p4055_ex4_3",
+            "id": "p4055_ex1_4",
             "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 22,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "You have to wear a uniform.",
-                  "have to wear uniform"
-            ]
-      },
-      {
-            "id": "p4055_ex4_4",
-            "type": "fill",
-            "x": 65,
-            "y": 45,
-            "w": 22,
-            "h": 2.2,
-            "top": 45,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "You don't have to stay after class.",
-                  "don't have to stay"
+                  "key card",
+                  "keycard"
             ]
       }
 ],
     "4056": [
       {
             "id": "p4056_ex1_1",
-            "type": "select",
-            "x": 15,
-            "y": 28,
+            "type": "fill",
+            "x": 11,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
+            "h": 2,
+            "top": 30,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "make"
-            ],
-            "options": [
-                  "make",
-                  "do"
+                  "degree",
+                  "Degree"
             ]
       },
       {
             "id": "p4056_ex1_2",
-            "type": "select",
-            "x": 15,
-            "y": 34,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 34,
-            "left": 15,
+            "h": 2,
+            "top": 30,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "do"
-            ],
-            "options": [
-                  "make",
-                  "do"
+                  "course",
+                  "Course"
             ]
       },
       {
             "id": "p4056_ex1_3",
-            "type": "select",
-            "x": 15,
-            "y": 40,
-            "w": 14,
-            "h": 2.2,
-            "top": 40,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "make"
-            ],
-            "options": [
-                  "make",
-                  "do"
+                  "qualification",
+                  "Qualification"
             ]
       },
       {
             "id": "p4056_ex1_4",
-            "type": "select",
-            "x": 15,
-            "y": 46,
-            "w": 14,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "do"
-            ],
-            "options": [
-                  "make",
-                  "do"
-            ]
-      },
-      {
-            "id": "p4056_ex1_5",
-            "type": "select",
-            "x": 15,
-            "y": 52,
-            "w": 14,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "make"
-            ],
-            "options": [
-                  "make",
-                  "do"
-            ]
-      },
-      {
-            "id": "p4056_ex1_6",
-            "type": "select",
-            "x": 15,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "make"
-            ],
-            "options": [
-                  "make",
-                  "do"
-            ]
-      },
-      {
-            "id": "p4056_ex1_7",
-            "type": "select",
-            "x": 15,
-            "y": 64,
-            "w": 14,
-            "h": 2.2,
-            "top": 64,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "do"
-            ],
-            "options": [
-                  "make",
-                  "do"
-            ]
-      },
-      {
-            "id": "p4056_ex2_1",
             "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 18,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "make a decision"
-            ]
-      },
-      {
-            "id": "p4056_ex2_2",
-            "type": "fill",
-            "x": 65,
+            "x": 28,
             "y": 35,
-            "w": 18,
-            "h": 2.2,
+            "w": 14,
+            "h": 2,
             "top": 35,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "do homework"
-            ]
-      },
-      {
-            "id": "p4056_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 42,
-            "w": 18,
-            "h": 2.2,
-            "top": 42,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "make a mistake"
-            ]
-      },
-      {
-            "id": "p4056_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 49,
-            "w": 18,
-            "h": 2.2,
-            "top": 49,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "do exercise"
-            ]
-      },
-      {
-            "id": "p4056_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 56,
-            "w": 18,
-            "h": 2.2,
-            "top": 56,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "make friends"
-            ]
-      },
-      {
-            "id": "p4056_ex2_6",
-            "type": "fill",
-            "x": 65,
-            "y": 63,
-            "w": 18,
-            "h": 2.2,
-            "top": 63,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "do your best"
+                  "skills",
+                  "Skills"
             ]
       }
 ],
     "4057": [
       {
             "id": "p4057_ex1_1",
-            "type": "select",
-            "x": 25,
-            "y": 26,
-            "w": 25,
-            "h": 2.2,
-            "top": 26,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Could you repeat that?"
-            ],
-            "options": [
-                  "Could you repeat that?",
-                  "What do you mean?",
-                  "Can you speak up?",
-                  "I understand"
+                  "I was wondering if",
+                  "wondering if"
             ]
       },
       {
             "id": "p4057_ex1_2",
-            "type": "select",
-            "x": 25,
-            "y": 33,
-            "w": 25,
-            "h": 2.2,
-            "top": 33,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "What do you mean?"
-            ],
-            "options": [
-                  "Could you repeat that?",
-                  "What do you mean?",
-                  "Can you speak up?",
-                  "I understand"
+                  "Would you mind",
+                  "would you mind"
             ]
       },
       {
             "id": "p4057_ex1_3",
-            "type": "select",
-            "x": 25,
-            "y": 40,
-            "w": 25,
-            "h": 2.2,
-            "top": 40,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Can you speak up?"
-            ],
-            "options": [
-                  "Could you repeat that?",
-                  "What do you mean?",
-                  "Can you speak up?",
-                  "I understand"
+                  "Could you possibly",
+                  "could you possibly"
             ]
       },
       {
-            "id": "p4057_ex2_1",
+            "id": "p4057_ex1_4",
             "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 20,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "apologise for",
-                  "apologize for"
-            ]
-      },
-      {
-            "id": "p4057_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 20,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "due to illness",
-                  "because of"
-            ]
-      },
-      {
-            "id": "p4057_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 46,
-            "w": 20,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "hand in the essay",
-                  "hand in"
+                  "Not at all",
+                  "not at all"
             ]
       }
 ],
@@ -92468,140 +92416,65 @@
       {
             "id": "p4058_ex1_1",
             "type": "fill",
-            "x": 13,
-            "y": 28,
+            "x": 11,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 13,
+            "h": 2,
+            "top": 30,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "roundabout"
+                  "brain",
+                  "Brain"
             ]
       },
       {
             "id": "p4058_ex1_2",
             "type": "fill",
-            "x": 33,
-            "y": 28,
+            "x": 28,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 33,
+            "h": 2,
+            "top": 30,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "snow"
+                  "memory",
+                  "Memory"
             ]
       },
       {
             "id": "p4058_ex1_3",
             "type": "fill",
-            "x": 13,
-            "y": 36,
+            "x": 11,
+            "y": 35,
             "w": 14,
-            "h": 2.2,
-            "top": 36,
-            "left": 13,
+            "h": 2,
+            "top": 35,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "fire"
+                  "learning",
+                  "Learning"
             ]
       },
       {
             "id": "p4058_ex1_4",
             "type": "fill",
-            "x": 33,
-            "y": 36,
-            "w": 14,
-            "h": 2.2,
-            "top": 36,
-            "left": 33,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "landing"
-            ]
-      },
-      {
-            "id": "p4058_ex1_5",
-            "type": "fill",
-            "x": 23,
-            "y": 44,
-            "w": 14,
-            "h": 2.2,
-            "top": 44,
-            "left": 23,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "passengers"
-            ]
-      },
-      {
-            "id": "p4058_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "turbulence",
-                  "flight"
-            ]
-      },
-      {
-            "id": "p4058_ex2_2",
-            "type": "fill",
-            "x": 65,
+            "x": 28,
             "y": 35,
-            "w": 16,
-            "h": 2.2,
+            "w": 14,
+            "h": 2,
             "top": 35,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "car crash",
-                  "accident"
-            ]
-      },
-      {
-            "id": "p4058_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 42,
-            "w": 16,
-            "h": 2.2,
-            "top": 42,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "lift stopped",
-                  "stuck in lift"
-            ]
-      },
-      {
-            "id": "p4058_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 49,
-            "w": 16,
-            "h": 2.2,
-            "top": 49,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "lost passport",
-                  "lost bag"
+                  "language",
+                  "Language"
             ]
       }
 ],
@@ -92609,324 +92482,65 @@
       {
             "id": "p4059_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 23,
+            "x": 11,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 23,
-            "left": 15,
+            "h": 2,
+            "top": 30,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "will",
-                  "'ll"
+                  "able to",
+                  "be able to"
             ]
       },
       {
             "id": "p4059_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "might",
-                  "may"
+                  "could",
+                  "Could"
             ]
       },
       {
             "id": "p4059_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 33,
-            "w": 14,
-            "h": 2.2,
-            "top": 33,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "won't",
-                  "will not"
+                  "can",
+                  "Can"
             ]
       },
       {
             "id": "p4059_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 38,
-            "w": 14,
-            "h": 2.2,
-            "top": 38,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "could",
-                  "can"
-            ]
-      },
-      {
-            "id": "p4059_ex1_5",
-            "type": "fill",
-            "x": 15,
-            "y": 43,
-            "w": 14,
-            "h": 2.2,
-            "top": 43,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "have to",
-                  "must"
-            ]
-      },
-      {
-            "id": "p4059_ex1_6",
-            "type": "fill",
-            "x": 15,
-            "y": 48,
-            "w": 14,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "don't have to"
-            ]
-      },
-      {
-            "id": "p4059_ex1_7",
-            "type": "fill",
-            "x": 15,
-            "y": 53,
-            "w": 14,
-            "h": 2.2,
-            "top": 53,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "mustn’t",
-                  "must not"
-            ]
-      },
-      {
-            "id": "p4059_ex1_8",
-            "type": "fill",
-            "x": 15,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "should"
-            ]
-      },
-      {
-            "id": "p4059_ex2_1",
-            "type": "fill",
-            "x": 15,
-            "y": 66,
-            "w": 14,
-            "h": 2.2,
-            "top": 66,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "somewhere"
-            ]
-      },
-      {
-            "id": "p4059_ex2_2",
-            "type": "fill",
-            "x": 15,
-            "y": 71,
-            "w": 14,
-            "h": 2.2,
-            "top": 71,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "anyone",
-                  "anybody"
-            ]
-      },
-      {
-            "id": "p4059_ex2_3",
-            "type": "fill",
-            "x": 15,
-            "y": 76,
-            "w": 14,
-            "h": 2.2,
-            "top": 76,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "nothing"
-            ]
-      },
-      {
-            "id": "p4059_ex2_4",
-            "type": "fill",
-            "x": 15,
-            "y": 81,
-            "w": 14,
-            "h": 2.2,
-            "top": 81,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "everywhere"
-            ]
-      },
-      {
-            "id": "p4059_ex2_5",
-            "type": "fill",
-            "x": 15,
-            "y": 86,
-            "w": 14,
-            "h": 2.2,
-            "top": 86,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "someone",
-                  "somebody"
-            ]
-      },
-      {
-            "id": "p4059_ex3_1",
-            "type": "fill",
-            "x": 65,
-            "y": 23,
-            "w": 16,
-            "h": 2.2,
-            "top": 23,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "fuel"
-            ]
-      },
-      {
-            "id": "p4059_ex3_2",
-            "type": "fill",
-            "x": 65,
-            "y": 29,
-            "w": 16,
-            "h": 2.2,
-            "top": 29,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "traffic jam"
-            ]
-      },
-      {
-            "id": "p4059_ex3_3",
-            "type": "fill",
-            "x": 65,
+            "x": 28,
             "y": 35,
-            "w": 16,
-            "h": 2.2,
+            "w": 14,
+            "h": 2,
             "top": 35,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "accommodation"
-            ]
-      },
-      {
-            "id": "p4059_ex3_4",
-            "type": "fill",
-            "x": 65,
-            "y": 41,
-            "w": 16,
-            "h": 2.2,
-            "top": 41,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "souvenir"
-            ]
-      },
-      {
-            "id": "p4059_ex3_5",
-            "type": "fill",
-            "x": 65,
-            "y": 47,
-            "w": 16,
-            "h": 2.2,
-            "top": 47,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "frightened"
-            ]
-      },
-      {
-            "id": "p4059_ex3_6",
-            "type": "fill",
-            "x": 65,
-            "y": 53,
-            "w": 16,
-            "h": 2.2,
-            "top": 53,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "exciting"
-            ]
-      },
-      {
-            "id": "p4059_ex3_7",
-            "type": "fill",
-            "x": 65,
-            "y": 59,
-            "w": 16,
-            "h": 2.2,
-            "top": 59,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "history"
-            ]
-      },
-      {
-            "id": "p4059_ex3_8",
-            "type": "fill",
-            "x": 65,
-            "y": 65,
-            "w": 16,
-            "h": 2.2,
-            "top": 65,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "science"
+                  "might",
+                  "Might"
             ]
       }
 ],
@@ -92934,242 +92548,258 @@
       {
             "id": "p4060_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 33,
+            "x": 11,
+            "y": 25,
             "w": 14,
-            "h": 2.2,
-            "top": 33,
-            "left": 15,
+            "h": 2,
+            "top": 25,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "forehead",
-                  "rehea d"
+                  "Forehead"
             ]
       },
       {
             "id": "p4060_ex1_2",
             "type": "fill",
-            "x": 35,
-            "y": 33,
-            "w": 14,
-            "h": 2.2,
-            "top": 33,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "cheek"
+                  "cheek",
+                  "Cheek"
             ]
       },
       {
             "id": "p4060_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 39,
-            "w": 14,
-            "h": 2.2,
-            "top": 39,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 29.5,
+            "w": 12,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "chin"
+                  "chin",
+                  "Chin"
             ]
       },
       {
             "id": "p4060_ex1_4",
             "type": "fill",
-            "x": 35,
-            "y": 39,
-            "w": 14,
-            "h": 2.2,
-            "top": 39,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 29.5,
+            "w": 12,
+            "h": 2,
+            "top": 29.5,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "chest"
+                  "chest",
+                  "Chest"
             ]
       },
       {
             "id": "p4060_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 45,
-            "w": 14,
-            "h": 2.2,
-            "top": 45,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 34,
+            "w": 10,
+            "h": 2,
+            "top": 34,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "lip"
+                  "lip",
+                  "Lip",
+                  "lips"
             ]
       },
       {
             "id": "p4060_ex1_6",
             "type": "fill",
-            "x": 35,
-            "y": 45,
+            "x": 28,
+            "y": 34,
             "w": 14,
-            "h": 2.2,
-            "top": 45,
-            "left": 35,
+            "h": 2,
+            "top": 34,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "shoulder"
+                  "shoulder",
+                  "Shoulder"
             ]
       },
       {
             "id": "p4060_ex1_7",
             "type": "fill",
-            "x": 15,
-            "y": 51,
-            "w": 14,
-            "h": 2.2,
-            "top": 51,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 38.5,
+            "w": 12,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "elbow"
+                  "elbow",
+                  "Elbow"
             ]
       },
       {
             "id": "p4060_ex1_8",
             "type": "fill",
-            "x": 35,
-            "y": 51,
-            "w": 14,
-            "h": 2.2,
-            "top": 51,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 38.5,
+            "w": 12,
+            "h": 2,
+            "top": 38.5,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "thumb"
+                  "thumb",
+                  "Thumb"
             ]
       },
       {
             "id": "p4060_ex2_1",
             "type": "fill",
-            "x": 15,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 58,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "fist"
+                  "fist",
+                  "Fist"
             ]
       },
       {
             "id": "p4060_ex2_2",
             "type": "fill",
-            "x": 35,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 75,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 75,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "touch"
+                  "touch",
+                  "Touch"
             ]
       },
       {
             "id": "p4060_ex2_3",
             "type": "fill",
-            "x": 15,
-            "y": 65,
-            "w": 14,
-            "h": 2.2,
-            "top": 65,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 58,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "shake"
+                  "shake",
+                  "Shake"
             ]
       },
       {
             "id": "p4060_ex2_4",
             "type": "fill",
-            "x": 35,
-            "y": 65,
-            "w": 14,
-            "h": 2.2,
-            "top": 65,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 75,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 75,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "cheek"
+                  "cheek",
+                  "Cheek"
             ]
       },
       {
             "id": "p4060_ex2_5",
             "type": "fill",
-            "x": 15,
-            "y": 72,
-            "w": 14,
-            "h": 2.2,
-            "top": 72,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 58,
+            "y": 35,
+            "w": 10,
+            "h": 2,
+            "top": 35,
+            "left": 58,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "hug"
+                  "hug",
+                  "Hug"
             ]
       },
       {
             "id": "p4060_ex2_6",
             "type": "fill",
-            "x": 35,
-            "y": 72,
-            "w": 14,
-            "h": 2.2,
-            "top": 72,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 75,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 75,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "elbows"
+                  "elbows",
+                  "Elbows"
             ]
       },
       {
             "id": "p4060_ex2_7",
             "type": "fill",
-            "x": 15,
-            "y": 79,
-            "w": 14,
-            "h": 2.2,
-            "top": 79,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 58,
+            "y": 40,
+            "w": 10,
+            "h": 2,
+            "top": 40,
+            "left": 58,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "nod"
+                  "nod",
+                  "Nod"
             ]
       },
       {
             "id": "p4060_ex2_8",
             "type": "fill",
-            "x": 35,
-            "y": 79,
-            "w": 14,
-            "h": 2.2,
-            "top": 79,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 75,
+            "y": 40,
+            "w": 12,
+            "h": 2,
+            "top": 40,
+            "left": 75,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "smile"
+                  "smile",
+                  "Smile"
             ]
       }
 ],
@@ -93177,29 +92807,30 @@
       {
             "id": "p4061_ex4_1a",
             "type": "fill",
-            "x": 10,
-            "y": 22,
+            "x": 11,
+            "y": 25,
             "w": 12,
-            "h": 2.2,
-            "top": 22,
-            "left": 10,
+            "h": 2,
+            "top": 25,
+            "left": 11,
             "width": 12,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "tell"
+                  "tell",
+                  "Tell"
             ]
       },
       {
             "id": "p4061_ex4_1b",
             "type": "fill",
-            "x": 25,
-            "y": 22,
+            "x": 28,
+            "y": 25,
             "w": 14,
-            "h": 2.2,
-            "top": 22,
-            "left": 25,
+            "h": 2,
+            "top": 25,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "won't say",
                   "will not say"
@@ -93208,14 +92839,14 @@
       {
             "id": "p4061_ex4_2a",
             "type": "fill",
-            "x": 10,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 10,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
                   "'ll call",
                   "will call"
@@ -93224,29 +92855,30 @@
       {
             "id": "p4061_ex4_2b",
             "type": "fill",
-            "x": 25,
-            "y": 28,
-            "w": 12,
-            "h": 2.2,
-            "top": 28,
-            "left": 25,
-            "width": 12,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 10,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "get"
+                  "get",
+                  "Get"
             ]
       },
       {
             "id": "p4061_ex4_3a",
             "type": "fill",
-            "x": 10,
-            "y": 34,
-            "w": 16,
-            "h": 2.2,
-            "top": 34,
-            "left": 10,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
                   "Will you come",
                   "will you come"
@@ -93255,29 +92887,30 @@
       {
             "id": "p4061_ex4_3b",
             "type": "fill",
-            "x": 25,
-            "y": 34,
+            "x": 28,
+            "y": 35,
             "w": 12,
-            "h": 2.2,
-            "top": 34,
-            "left": 25,
+            "h": 2,
+            "top": 35,
+            "left": 28,
             "width": 12,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "invite"
+                  "invite",
+                  "Invite"
             ]
       },
       {
             "id": "p4061_ex4_4a",
             "type": "fill",
-            "x": 10,
+            "x": 11,
             "y": 40,
-            "w": 14,
-            "h": 2.2,
+            "w": 16,
+            "h": 2,
             "top": 40,
-            "left": 10,
-            "width": 14,
-            "height": 2.2,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
                   "don't get up",
                   "do not get up"
@@ -93286,157 +92919,17 @@
       {
             "id": "p4061_ex4_4b",
             "type": "fill",
-            "x": 25,
+            "x": 28,
             "y": 40,
             "w": 14,
-            "h": 2.2,
+            "h": 2,
             "top": 40,
-            "left": 25,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "won't have",
                   "will not have"
-            ]
-      },
-      {
-            "id": "p4061_ex4_5a",
-            "type": "fill",
-            "x": 10,
-            "y": 46,
-            "w": 14,
-            "h": 2.2,
-            "top": 46,
-            "left": 10,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "might get",
-                  "will get"
-            ]
-      },
-      {
-            "id": "p4061_ex4_5b",
-            "type": "fill",
-            "x": 25,
-            "y": 46,
-            "w": 12,
-            "h": 2.2,
-            "top": 46,
-            "left": 25,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "finish"
-            ]
-      },
-      {
-            "id": "p4061_ex5_1",
-            "type": "fill",
-            "x": 65,
-            "y": 22,
-            "w": 14,
-            "h": 2.2,
-            "top": 22,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "'ll learn",
-                  "will learn"
-            ]
-      },
-      {
-            "id": "p4061_ex5_2",
-            "type": "fill",
-            "x": 65,
-            "y": 29,
-            "w": 14,
-            "h": 2.2,
-            "top": 29,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "travel"
-            ]
-      },
-      {
-            "id": "p4061_ex5_3",
-            "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 14,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "'ll spend",
-                  "will spend"
-            ]
-      },
-      {
-            "id": "p4061_ex5_4",
-            "type": "fill",
-            "x": 65,
-            "y": 43,
-            "w": 14,
-            "h": 2.2,
-            "top": 43,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "work"
-            ]
-      },
-      {
-            "id": "p4061_ex5_5",
-            "type": "fill",
-            "x": 65,
-            "y": 50,
-            "w": 14,
-            "h": 2.2,
-            "top": 50,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "'ll have to",
-                  "will have to"
-            ]
-      },
-      {
-            "id": "p4061_ex5_6",
-            "type": "fill",
-            "x": 65,
-            "y": 57,
-            "w": 14,
-            "h": 2.2,
-            "top": 57,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "find"
-            ]
-      },
-      {
-            "id": "p4061_ex5_7",
-            "type": "fill",
-            "x": 65,
-            "y": 64,
-            "w": 14,
-            "h": 2.2,
-            "top": 64,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "will be",
-                  "'ll be"
             ]
       }
 ],
@@ -93444,616 +92937,229 @@
       {
             "id": "p4062_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "Weightlifting"
+                  "relax",
+                  "Relax"
             ]
       },
       {
             "id": "p4062_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 34,
-            "w": 14,
-            "h": 2.2,
-            "top": 34,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "viruses"
+                  "cancer",
+                  "Cancer"
             ]
       },
       {
             "id": "p4062_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 40,
+            "x": 11,
+            "y": 35,
             "w": 14,
-            "h": 2.2,
-            "top": 40,
-            "left": 15,
+            "h": 2,
+            "top": 35,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "active"
+                  "illnesses",
+                  "illness"
             ]
       },
       {
             "id": "p4062_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 46,
-            "w": 14,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "cancer"
+                  "diet",
+                  "Diet"
             ]
       },
       {
             "id": "p4062_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 52,
-            "w": 14,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 16,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "diet"
+                  "natural food",
+                  "food"
             ]
       },
       {
             "id": "p4062_ex1_6",
             "type": "fill",
-            "x": 15,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 40,
+            "w": 12,
+            "h": 2,
+            "top": 40,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "diseases"
-            ]
-      },
-      {
-            "id": "p4062_ex1_7",
-            "type": "fill",
-            "x": 15,
-            "y": 64,
-            "w": 14,
-            "h": 2.2,
-            "top": 64,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "stress"
-            ]
-      },
-      {
-            "id": "p4062_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 24,
-            "w": 16,
-            "h": 2.2,
-            "top": 24,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "relax"
-            ]
-      },
-      {
-            "id": "p4062_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 31,
-            "w": 16,
-            "h": 2.2,
-            "top": 31,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "junk food"
-            ]
-      },
-      {
-            "id": "p4062_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 16,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "depressed"
-            ]
-      },
-      {
-            "id": "p4062_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 45,
-            "w": 16,
-            "h": 2.2,
-            "top": 45,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "gentle exercise",
-                  "exercise"
-            ]
-      },
-      {
-            "id": "p4062_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "illnesses"
-            ]
-      },
-      {
-            "id": "p4062_ex2_6",
-            "type": "fill",
-            "x": 65,
-            "y": 59,
-            "w": 16,
-            "h": 2.2,
-            "top": 59,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "Fitness"
-            ]
-      },
-      {
-            "id": "p4062_ex2_7",
-            "type": "fill",
-            "x": 65,
-            "y": 66,
-            "w": 16,
-            "h": 2.2,
-            "top": 66,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "natural food"
-            ]
-      },
-      {
-            "id": "p4062_ex2_8",
-            "type": "fill",
-            "x": 65,
-            "y": 73,
-            "w": 16,
-            "h": 2.2,
-            "top": 73,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "Cycling"
+                  "active",
+                  "Active"
             ]
       }
 ],
     "4063": [
       {
-            "id": "p4063_ex5_1",
-            "type": "select",
-            "x": 15,
-            "y": 24,
-            "w": 20,
-            "h": 2.2,
-            "top": 24,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "gets"
-            ],
-            "options": [
-                  "gets",
-                  "will get"
-            ]
-      },
-      {
-            "id": "p4063_ex5_2",
-            "type": "select",
-            "x": 15,
+            "id": "p4063_ex1_1",
+            "type": "fill",
+            "x": 11,
             "y": 30,
-            "w": 20,
-            "h": 2.2,
+            "w": 14,
+            "h": 2,
             "top": 30,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "'ll tell"
-            ],
-            "options": [
-                  "'ll tell",
-                  "tell"
+                  "exercising",
+                  "Exercising"
             ]
       },
       {
-            "id": "p4063_ex5_3",
-            "type": "select",
-            "x": 15,
-            "y": 36,
-            "w": 20,
-            "h": 2.2,
-            "top": 36,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "arrives"
-            ],
-            "options": [
-                  "arrives",
-                  "will arrive"
-            ]
-      },
-      {
-            "id": "p4063_ex5_4",
-            "type": "select",
-            "x": 15,
-            "y": 42,
-            "w": 20,
-            "h": 2.2,
-            "top": 42,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "finish"
-            ],
-            "options": [
-                  "finish",
-                  "will finish"
-            ]
-      },
-      {
-            "id": "p4063_ex5_5",
-            "type": "select",
-            "x": 15,
-            "y": 48,
-            "w": 20,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "'ll go"
-            ],
-            "options": [
-                  "'ll go",
-                  "go"
-            ]
-      },
-      {
-            "id": "p4063_ex5_6",
-            "type": "select",
-            "x": 15,
-            "y": 54,
-            "w": 20,
-            "h": 2.2,
-            "top": 54,
-            "left": 15,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "leaves"
-            ],
-            "options": [
-                  "leaves",
-                  "will leave"
-            ]
-      },
-      {
-            "id": "p4063_ex6_1",
+            "id": "p4063_ex1_2",
             "type": "fill",
-            "x": 65,
-            "y": 24,
-            "w": 22,
-            "h": 2.2,
-            "top": 24,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "as soon as I get home",
-                  "as soon as I get"
+                  "smoking",
+                  "Smoking"
             ]
       },
       {
-            "id": "p4063_ex6_2",
+            "id": "p4063_ex1_3",
             "type": "fill",
-            "x": 65,
-            "y": 32,
-            "w": 22,
-            "h": 2.2,
-            "top": 32,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "before we leave",
-                  "before leaving"
+                  "eating",
+                  "Eating"
             ]
       },
       {
-            "id": "p4063_ex6_3",
+            "id": "p4063_ex1_4",
             "type": "fill",
-            "x": 65,
-            "y": 40,
-            "w": 22,
-            "h": 2.2,
-            "top": 40,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "when you finish",
-                  "when you are ready"
-            ]
-      },
-      {
-            "id": "p4063_ex6_4",
-            "type": "fill",
-            "x": 65,
-            "y": 48,
-            "w": 22,
-            "h": 2.2,
-            "top": 48,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "after they arrive",
-                  "after arriving"
+                  "living",
+                  "Living"
             ]
       }
 ],
     "4064": [
       {
             "id": "p4064_ex1_1",
-            "type": "select",
-            "x": 15,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 30,
+            "w": 10,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "for"
-            ],
-            "options": [
-                  "for",
-                  "about",
                   "to",
-                  "in",
-                  "on"
+                  "To"
             ]
       },
       {
             "id": "p4064_ex1_2",
-            "type": "select",
-            "x": 15,
-            "y": 34,
-            "w": 14,
-            "h": 2.2,
-            "top": 34,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
+            "w": 10,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "about"
-            ],
-            "options": [
-                  "for",
-                  "about",
-                  "to",
                   "in",
-                  "on"
+                  "In"
             ]
       },
       {
             "id": "p4064_ex1_3",
-            "type": "select",
-            "x": 15,
-            "y": 40,
-            "w": 14,
-            "h": 2.2,
-            "top": 40,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 10,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "to"
-            ],
-            "options": [
-                  "for",
-                  "about",
-                  "to",
-                  "in",
-                  "on"
+                  "of",
+                  "Of"
             ]
       },
       {
             "id": "p4064_ex1_4",
-            "type": "select",
-            "x": 15,
-            "y": 46,
-            "w": 14,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 35,
+            "w": 10,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "in"
-            ],
-            "options": [
                   "for",
-                  "about",
-                  "to",
-                  "in",
-                  "on"
-            ]
-      },
-      {
-            "id": "p4064_ex1_5",
-            "type": "select",
-            "x": 15,
-            "y": 52,
-            "w": 14,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "on"
-            ],
-            "options": [
-                  "for",
-                  "about",
-                  "to",
-                  "in",
-                  "on"
-            ]
-      },
-      {
-            "id": "p4064_ex1_6",
-            "type": "select",
-            "x": 15,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "about"
-            ],
-            "options": [
-                  "for",
-                  "about",
-                  "to",
-                  "in",
-                  "on"
-            ]
-      },
-      {
-            "id": "p4064_ex4_1",
-            "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "wait for"
-            ]
-      },
-      {
-            "id": "p4064_ex4_2",
-            "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 16,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "worry about"
-            ]
-      },
-      {
-            "id": "p4064_ex4_3",
-            "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 16,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "listen to"
-            ]
-      },
-      {
-            "id": "p4064_ex4_4",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "believe in"
-            ]
-      },
-      {
-            "id": "p4064_ex4_5",
-            "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 16,
-            "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "depend on"
+                  "For"
             ]
       }
 ],
@@ -94061,184 +93167,81 @@
       {
             "id": "p4065_ex1_1",
             "type": "fill",
-            "x": 10,
-            "y": 24,
-            "w": 5,
-            "h": 2.2,
-            "top": 24,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 24,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 24,
+            "height": 2,
             "correct": [
-                  "1"
+                  "Have you got anything",
+                  "got anything"
             ]
       },
       {
             "id": "p4065_ex1_2",
             "type": "fill",
-            "x": 10,
-            "y": 29,
-            "w": 5,
-            "h": 2.2,
-            "top": 29,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 22,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 22,
+            "height": 2,
             "correct": [
-                  "5"
+                  "I think you should",
+                  "think you should"
             ]
       },
       {
             "id": "p4065_ex1_3",
             "type": "fill",
-            "x": 10,
-            "y": 34,
-            "w": 5,
-            "h": 2.2,
-            "top": 34,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 18,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "3"
+                  "you could try",
+                  "could try"
             ]
       },
       {
             "id": "p4065_ex1_4",
             "type": "fill",
-            "x": 10,
-            "y": 39,
-            "w": 5,
-            "h": 2.2,
-            "top": 39,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 20,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 20,
+            "height": 2,
             "correct": [
-                  "7"
+                  "It's a good idea",
+                  "good idea"
             ]
       },
       {
             "id": "p4065_ex1_5",
             "type": "fill",
-            "x": 10,
-            "y": 44,
-            "w": 5,
-            "h": 2.2,
-            "top": 44,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 45,
+            "w": 16,
+            "h": 2,
+            "top": 45,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "2"
-            ]
-      },
-      {
-            "id": "p4065_ex1_6",
-            "type": "fill",
-            "x": 10,
-            "y": 49,
-            "w": 5,
-            "h": 2.2,
-            "top": 49,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "6"
-            ]
-      },
-      {
-            "id": "p4065_ex1_7",
-            "type": "fill",
-            "x": 10,
-            "y": 54,
-            "w": 5,
-            "h": 2.2,
-            "top": 54,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "4"
-            ]
-      },
-      {
-            "id": "p4065_ex1_8",
-            "type": "fill",
-            "x": 10,
-            "y": 59,
-            "w": 5,
-            "h": 2.2,
-            "top": 59,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "8"
-            ]
-      },
-      {
-            "id": "p4065_ex2_1",
-            "type": "select",
-            "x": 65,
-            "y": 30,
-            "w": 22,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "You should"
-            ],
-            "options": [
-                  "You should",
-                  "Why don’t you",
-                  "You ought to",
-                  "If I were you"
-            ]
-      },
-      {
-            "id": "p4065_ex2_2",
-            "type": "select",
-            "x": 65,
-            "y": 38,
-            "w": 22,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "Why don’t you"
-            ],
-            "options": [
-                  "You should",
-                  "Why don’t you",
-                  "You ought to",
-                  "If I were you"
-            ]
-      },
-      {
-            "id": "p4065_ex2_3",
-            "type": "select",
-            "x": 65,
-            "y": 46,
-            "w": 22,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "If I were you"
-            ],
-            "options": [
-                  "You should",
-                  "Why don’t you",
-                  "You ought to",
-                  "If I were you"
+                  "You mustn't",
+                  "must not"
             ]
       }
 ],
@@ -94246,342 +93249,195 @@
       {
             "id": "p4066_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 33,
-            "w": 14,
-            "h": 2.2,
-            "top": 33,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "sweet"
+                  "plain",
+                  "Plain"
             ]
       },
       {
             "id": "p4066_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 39,
-            "w": 14,
-            "h": 2.2,
-            "top": 39,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "salty"
+                  "boiled",
+                  "Boiled"
             ]
       },
       {
             "id": "p4066_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 45,
-            "w": 14,
-            "h": 2.2,
-            "top": 45,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "spicy",
-                  "hot"
+                  "baked",
+                  "Baked"
             ]
       },
       {
             "id": "p4066_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 51,
-            "w": 14,
-            "h": 2.2,
-            "top": 51,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "sour",
-                  "bitter"
+                  "snack",
+                  "Snack"
             ]
       },
       {
             "id": "p4066_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 57,
-            "w": 14,
-            "h": 2.2,
-            "top": 57,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 10,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "fresh"
+                  "hot",
+                  "Hot"
             ]
       },
       {
             "id": "p4066_ex1_6",
             "type": "fill",
-            "x": 15,
-            "y": 63,
-            "w": 14,
-            "h": 2.2,
-            "top": 63,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 10,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "frozen"
+                  "mild",
+                  "Mild"
             ]
       },
       {
-            "id": "p4066_ex2_1",
+            "id": "p4066_ex1_7",
             "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 16,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 12,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "boiled"
+                  "sweet",
+                  "Sweet"
             ]
       },
       {
-            "id": "p4066_ex2_2",
+            "id": "p4066_ex1_8",
             "type": "fill",
-            "x": 65,
-            "y": 37,
-            "w": 16,
-            "h": 2.2,
-            "top": 37,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 40,
+            "w": 12,
+            "h": 2,
+            "top": 40,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "fried"
-            ]
-      },
-      {
-            "id": "p4066_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 16,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "baked"
-            ]
-      },
-      {
-            "id": "p4066_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 51,
-            "w": 16,
-            "h": 2.2,
-            "top": 51,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "roasted"
-            ]
-      },
-      {
-            "id": "p4066_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 58,
-            "w": 16,
-            "h": 2.2,
-            "top": 58,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "grilled"
+                  "sour",
+                  "Sour"
             ]
       }
 ],
     "4067": [
       {
-            "id": "p4067_ex4_1",
+            "id": "p4067_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 23,
-            "w": 25,
-            "h": 2.2,
-            "top": 23,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "used to eat",
-                  "used to"
+                  "is made",
+                  "made"
             ]
       },
       {
-            "id": "p4067_ex4_2",
+            "id": "p4067_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 29,
-            "w": 25,
-            "h": 2.2,
-            "top": 29,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "didn't use to like",
-                  "did not use to like"
+                  "are grown",
+                  "grown"
             ]
       },
       {
-            "id": "p4067_ex4_3",
+            "id": "p4067_ex1_3",
             "type": "fill",
-            "x": 15,
+            "x": 11,
             "y": 35,
-            "w": 25,
-            "h": 2.2,
+            "w": 16,
+            "h": 2,
             "top": 35,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Did you use to cook",
-                  "use to cook"
+                  "is served",
+                  "served"
             ]
       },
       {
-            "id": "p4067_ex4_4",
+            "id": "p4067_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 41,
-            "w": 25,
-            "h": 2.2,
-            "top": 41,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "used to have",
-                  "used to drink"
-            ]
-      },
-      {
-            "id": "p4067_ex4_5",
-            "type": "fill",
-            "x": 15,
-            "y": 47,
-            "w": 25,
-            "h": 2.2,
-            "top": 47,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "didn't use to eat",
-                  "did not use to eat"
-            ]
-      },
-      {
-            "id": "p4067_ex4_6",
-            "type": "fill",
-            "x": 15,
-            "y": 53,
-            "w": 25,
-            "h": 2.2,
-            "top": 53,
-            "left": 15,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "used to go",
-                  "used to buy"
-            ]
-      },
-      {
-            "id": "p4067_ex5_1",
-            "type": "select",
-            "x": 65,
-            "y": 24,
-            "w": 22,
-            "h": 2.2,
-            "top": 24,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "used to eat"
-            ],
-            "options": [
-                  "used to eat",
-                  "eat"
-            ]
-      },
-      {
-            "id": "p4067_ex5_2",
-            "type": "select",
-            "x": 65,
-            "y": 31,
-            "w": 22,
-            "h": 2.2,
-            "top": 31,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "cooks"
-            ],
-            "options": [
-                  "used to cook",
-                  "cooks"
-            ]
-      },
-      {
-            "id": "p4067_ex5_3",
-            "type": "select",
-            "x": 65,
-            "y": 38,
-            "w": 22,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "didn't use to like"
-            ],
-            "options": [
-                  "didn't use to like",
-                  "doesn't like"
-            ]
-      },
-      {
-            "id": "p4067_ex5_4",
-            "type": "select",
-            "x": 65,
-            "y": 45,
-            "w": 22,
-            "h": 2.2,
-            "top": 45,
-            "left": 65,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "eats"
-            ],
-            "options": [
-                  "used to eat",
-                  "eats"
+                  "are picked",
+                  "picked"
             ]
       }
 ],
@@ -94589,647 +93445,343 @@
       {
             "id": "p4068_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "bottle"
+                  "bottle",
+                  "Bottle"
             ]
       },
       {
             "id": "p4068_ex1_2",
             "type": "fill",
-            "x": 35,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 25,
+            "w": 10,
+            "h": 2,
+            "top": 25,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "can"
+                  "can",
+                  "Can"
             ]
       },
       {
             "id": "p4068_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 35,
-            "w": 14,
-            "h": 2.2,
-            "top": 35,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 10,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "jar"
+                  "tube",
+                  "Tube"
             ]
       },
       {
             "id": "p4068_ex1_4",
             "type": "fill",
-            "x": 35,
-            "y": 35,
-            "w": 14,
-            "h": 2.2,
-            "top": 35,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 10,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "packet"
+                  "tin",
+                  "Tin"
             ]
       },
       {
             "id": "p4068_ex1_5",
             "type": "fill",
-            "x": 15,
-            "y": 42,
-            "w": 14,
-            "h": 2.2,
-            "top": 42,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 10,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "tin"
+                  "box",
+                  "Box"
             ]
       },
       {
             "id": "p4068_ex1_6",
             "type": "fill",
-            "x": 35,
-            "y": 42,
-            "w": 14,
-            "h": 2.2,
-            "top": 42,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "carton"
+                  "carton",
+                  "Carton"
             ]
       },
       {
             "id": "p4068_ex1_7",
             "type": "fill",
-            "x": 15,
-            "y": 49,
-            "w": 14,
-            "h": 2.2,
-            "top": 49,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 10,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "box"
+                  "jar",
+                  "Jar"
             ]
       },
       {
             "id": "p4068_ex1_8",
             "type": "fill",
-            "x": 35,
-            "y": 49,
-            "w": 14,
-            "h": 2.2,
-            "top": 49,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 40,
+            "w": 12,
+            "h": 2,
+            "top": 40,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "bag"
-            ]
-      },
-      {
-            "id": "p4068_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 18,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "tins of soup",
-                  "tins"
-            ]
-      },
-      {
-            "id": "p4068_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 18,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "packets of crisps",
-                  "packets"
-            ]
-      },
-      {
-            "id": "p4068_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 18,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "cartons of juice",
-                  "cartons"
-            ]
-      },
-      {
-            "id": "p4068_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 18,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "jars of jam",
-                  "jars"
+                  "packet",
+                  "Packet"
             ]
       }
 ],
     "4069": [
       {
-            "id": "p4069_ex3_1",
-            "type": "select",
-            "x": 15,
-            "y": 24,
-            "w": 22,
-            "h": 2.2,
-            "top": 24,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "is produced"
-            ],
-            "options": [
-                  "is produced",
-                  "produces"
-            ]
-      },
-      {
-            "id": "p4069_ex3_2",
-            "type": "select",
-            "x": 15,
+            "id": "p4069_ex1_1",
+            "type": "fill",
+            "x": 11,
             "y": 30,
-            "w": 22,
-            "h": 2.2,
+            "w": 16,
+            "h": 2,
             "top": 30,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "are grown"
-            ],
-            "options": [
-                  "are grown",
-                  "grow"
-            ]
-      },
-      {
-            "id": "p4069_ex3_3",
-            "type": "select",
-            "x": 15,
-            "y": 36,
-            "w": 22,
-            "h": 2.2,
-            "top": 36,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "was invented"
-            ],
-            "options": [
                   "was invented",
                   "invented"
             ]
       },
       {
-            "id": "p4069_ex3_4",
-            "type": "select",
-            "x": 15,
-            "y": 42,
-            "w": 22,
-            "h": 2.2,
-            "top": 42,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "were made"
-            ],
-            "options": [
-                  "were made",
-                  "made"
-            ]
-      },
-      {
-            "id": "p4069_ex3_5",
-            "type": "select",
-            "x": 15,
-            "y": 48,
-            "w": 22,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "is sold"
-            ],
-            "options": [
-                  "is sold",
-                  "sells"
-            ]
-      },
-      {
-            "id": "p4069_ex3_6",
-            "type": "select",
-            "x": 15,
-            "y": 54,
-            "w": 22,
-            "h": 2.2,
-            "top": 54,
-            "left": 15,
-            "width": 22,
-            "height": 2.2,
-            "correct": [
-                  "was built"
-            ],
-            "options": [
-                  "was built",
-                  "built"
-            ]
-      },
-      {
-            "id": "p4069_ex4_1",
+            "id": "p4069_ex1_2",
             "type": "fill",
-            "x": 65,
-            "y": 24,
-            "w": 28,
-            "h": 2.2,
-            "top": 24,
-            "left": 65,
-            "width": 28,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Coffee is grown in Brazil.",
-                  "is grown in Brazil"
+                  "were produced",
+                  "produced"
             ]
       },
       {
-            "id": "p4069_ex4_2",
+            "id": "p4069_ex1_3",
             "type": "fill",
-            "x": 65,
-            "y": 32,
-            "w": 28,
-            "h": 2.2,
-            "top": 32,
-            "left": 65,
-            "width": 28,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "The book was written in 1950.",
-                  "was written in 1950"
+                  "was opened",
+                  "opened"
             ]
       },
       {
-            "id": "p4069_ex4_3",
+            "id": "p4069_ex1_4",
             "type": "fill",
-            "x": 65,
-            "y": 40,
-            "w": 28,
-            "h": 2.2,
-            "top": 40,
-            "left": 65,
-            "width": 28,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Thousands of cars are produced every day.",
-                  "are produced every day"
-            ]
-      },
-      {
-            "id": "p4069_ex4_4",
-            "type": "fill",
-            "x": 65,
-            "y": 48,
-            "w": 28,
-            "h": 2.2,
-            "top": 48,
-            "left": 65,
-            "width": 28,
-            "height": 2.2,
-            "correct": [
-                  "The pyramids were built by Egyptians.",
-                  "were built by Egyptians"
+                  "were sold",
+                  "sold"
             ]
       }
 ],
     "4070": [
       {
             "id": "p4070_ex1_1",
-            "type": "select",
-            "x": 15,
-            "y": 28,
-            "w": 10,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 10,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "a"
-            ],
-            "options": [
-                  "a",
-                  "b"
+                  "fast food",
+                  "fast-food"
             ]
       },
       {
             "id": "p4070_ex1_2",
-            "type": "select",
-            "x": 15,
-            "y": 34,
-            "w": 10,
-            "h": 2.2,
-            "top": 34,
-            "left": 15,
-            "width": 10,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "b"
-            ],
-            "options": [
-                  "a",
-                  "b"
+                  "junk food",
+                  "junk"
             ]
       },
       {
             "id": "p4070_ex1_3",
-            "type": "select",
-            "x": 15,
-            "y": 40,
-            "w": 10,
-            "h": 2.2,
-            "top": 40,
-            "left": 15,
-            "width": 10,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "a"
-            ],
-            "options": [
-                  "a",
-                  "b"
+                  "dinner party",
+                  "party"
             ]
       },
       {
             "id": "p4070_ex1_4",
-            "type": "select",
-            "x": 15,
-            "y": 46,
-            "w": 10,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "b"
-            ],
-            "options": [
-                  "a",
-                  "b"
-            ]
-      },
-      {
-            "id": "p4070_ex1_5",
-            "type": "select",
-            "x": 15,
-            "y": 52,
-            "w": 10,
-            "h": 2.2,
-            "top": 52,
-            "left": 15,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "a"
-            ],
-            "options": [
-                  "a",
-                  "b"
-            ]
-      },
-      {
-            "id": "p4070_ex2_1",
             "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "sweet"
-            ]
-      },
-      {
-            "id": "p4070_ex2_2",
-            "type": "fill",
-            "x": 65,
+            "x": 28,
             "y": 35,
-            "w": 16,
-            "h": 2.2,
+            "w": 14,
+            "h": 2,
             "top": 35,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "spicy"
-            ]
-      },
-      {
-            "id": "p4070_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 42,
-            "w": 16,
-            "h": 2.2,
-            "top": 42,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "bottle"
-            ]
-      },
-      {
-            "id": "p4070_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 49,
-            "w": 16,
-            "h": 2.2,
-            "top": 49,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "carton"
-            ]
-      },
-      {
-            "id": "p4070_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 56,
-            "w": 16,
-            "h": 2.2,
-            "top": 56,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "boiled"
+                  "cookery book",
+                  "cookbook"
             ]
       }
 ],
     "4071": [
       {
             "id": "p4071_ex1_1",
-            "type": "select",
-            "x": 25,
-            "y": 26,
-            "w": 25,
-            "h": 2.2,
-            "top": 26,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "Excuse me, this soup is cold."
-            ],
-            "options": [
-                  "Excuse me, this soup is cold.",
-                  "Could I have the bill?",
-                  "Everything is fine"
+                  "location",
+                  "Location"
             ]
       },
       {
             "id": "p4071_ex1_2",
-            "type": "select",
-            "x": 25,
-            "y": 33,
-            "w": 25,
-            "h": 2.2,
-            "top": 33,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "I didn't order this."
-            ],
-            "options": [
-                  "I didn't order this.",
-                  "Thank you",
-                  "It was delicious"
+                  "atmosphere",
+                  "Atmosphere"
             ]
       },
       {
             "id": "p4071_ex1_3",
-            "type": "select",
-            "x": 25,
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 14,
+            "height": 2,
+            "correct": [
+                  "service",
+                  "Service"
+            ]
+      },
+      {
+            "id": "p4071_ex1_4",
+            "type": "fill",
+            "x": 28,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "food",
+                  "Food"
+            ]
+      },
+      {
+            "id": "p4071_ex1_5",
+            "type": "fill",
+            "x": 11,
             "y": 40,
-            "w": 25,
-            "h": 2.2,
+            "w": 20,
+            "h": 2,
             "top": 40,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "Could we have some water?"
-            ],
-            "options": [
-                  "Could we have some water?",
-                  "Goodbye",
-                  "See you soon"
-            ]
-      },
-      {
-            "id": "p4071_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 20,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
+            "left": 11,
             "width": 20,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "friendly service",
-                  "service"
-            ]
-      },
-      {
-            "id": "p4071_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 20,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "reasonable prices",
-                  "prices"
-            ]
-      },
-      {
-            "id": "p4071_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 46,
-            "w": 20,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 20,
-            "height": 2.2,
-            "correct": [
-                  "delicious food",
-                  "food"
+                  "value for money",
+                  "value"
             ]
       }
 ],
@@ -95237,122 +93789,65 @@
       {
             "id": "p4072_ex1_1",
             "type": "fill",
-            "x": 15,
+            "x": 11,
             "y": 30,
-            "w": 16,
-            "h": 2.2,
+            "w": 12,
+            "h": 2,
             "top": 30,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "cocoa beans",
-                  "beans"
+                  "banana",
+                  "Banana"
             ]
       },
       {
             "id": "p4072_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 38,
-            "w": 16,
-            "h": 2.2,
-            "top": 38,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "ferment"
+                  "colour",
+                  "color"
             ]
       },
       {
             "id": "p4072_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 46,
-            "w": 16,
-            "h": 2.2,
-            "top": 46,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "roast"
+                  "boxes",
+                  "Boxes"
             ]
       },
       {
             "id": "p4072_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 54,
-            "w": 16,
-            "h": 2.2,
-            "top": 54,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "grind"
-            ]
-      },
-      {
-            "id": "p4072_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 6,
-            "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "1"
-            ]
-      },
-      {
-            "id": "p4072_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 67,
-            "w": 6,
-            "h": 2.2,
-            "top": 67,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "3"
-            ]
-      },
-      {
-            "id": "p4072_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 74,
-            "w": 6,
-            "h": 2.2,
-            "top": 74,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "2"
-            ]
-      },
-      {
-            "id": "p4072_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 81,
-            "w": 6,
-            "h": 2.2,
-            "top": 81,
-            "left": 65,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "4"
+                  "factories",
+                  "factory"
             ]
       }
 ],
@@ -95360,1519 +93855,473 @@
       {
             "id": "p4073_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 23,
-            "w": 14,
-            "h": 2.2,
-            "top": 23,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "will call",
-                  "'ll call"
+                  "forehead",
+                  "Forehead"
             ]
       },
       {
             "id": "p4073_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 28,
-            "w": 14,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "get"
+                  "throat",
+                  "Throat"
             ]
       },
       {
             "id": "p4073_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 33,
+            "x": 11,
+            "y": 35,
             "w": 14,
-            "h": 2.2,
-            "top": 33,
-            "left": 15,
+            "h": 2,
+            "top": 35,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "used to"
+                  "is served",
+                  "served"
             ]
       },
       {
             "id": "p4073_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 38,
-            "w": 14,
-            "h": 2.2,
-            "top": 38,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "didn't use to"
-            ]
-      },
-      {
-            "id": "p4073_ex1_5",
-            "type": "fill",
-            "x": 15,
-            "y": 43,
-            "w": 14,
-            "h": 2.2,
-            "top": 43,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "is produced"
-            ]
-      },
-      {
-            "id": "p4073_ex1_6",
-            "type": "fill",
-            "x": 15,
-            "y": 48,
-            "w": 14,
-            "h": 2.2,
-            "top": 48,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "was built"
-            ]
-      },
-      {
-            "id": "p4073_ex1_7",
-            "type": "fill",
-            "x": 15,
-            "y": 53,
-            "w": 14,
-            "h": 2.2,
-            "top": 53,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "as soon as"
-            ]
-      },
-      {
-            "id": "p4073_ex1_8",
-            "type": "fill",
-            "x": 15,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "before"
-            ]
-      },
-      {
-            "id": "p4073_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 23,
-            "w": 16,
-            "h": 2.2,
-            "top": 23,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "forehead"
-            ]
-      },
-      {
-            "id": "p4073_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 29,
-            "w": 16,
-            "h": 2.2,
-            "top": 29,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "shoulder"
-            ]
-      },
-      {
-            "id": "p4073_ex2_3",
-            "type": "fill",
-            "x": 65,
+            "x": 28,
             "y": 35,
-            "w": 16,
-            "h": 2.2,
+            "w": 14,
+            "h": 2,
             "top": 35,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "fist"
-            ]
-      },
-      {
-            "id": "p4073_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 41,
-            "w": 16,
-            "h": 2.2,
-            "top": 41,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "shake"
-            ]
-      },
-      {
-            "id": "p4073_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 47,
-            "w": 16,
-            "h": 2.2,
-            "top": 47,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "spicy"
-            ]
-      },
-      {
-            "id": "p4073_ex2_6",
-            "type": "fill",
-            "x": 65,
-            "y": 53,
-            "w": 16,
-            "h": 2.2,
-            "top": 53,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "boiled"
-            ]
-      },
-      {
-            "id": "p4073_ex2_7",
-            "type": "fill",
-            "x": 65,
-            "y": 59,
-            "w": 16,
-            "h": 2.2,
-            "top": 59,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "bottle"
-            ]
-      },
-      {
-            "id": "p4073_ex2_8",
-            "type": "fill",
-            "x": 65,
-            "y": 65,
-            "w": 16,
-            "h": 2.2,
-            "top": 65,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "packet"
+                  "was made",
+                  "made"
             ]
       }
 ],
-        "4074": [
+    "4074": [
       {
             "id": "p4074_ex1_1",
             "type": "fill",
-            "x": 45,
-            "y": 33.3,
-            "w": 5,
-            "h": 2.2,
-            "top": 33.3,
-            "left": 45,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 14,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "c",
-                  "global"
+                  "factory",
+                  "Factory"
             ]
       },
       {
             "id": "p4074_ex1_2",
             "type": "fill",
-            "x": 45,
-            "y": 36.5,
-            "w": 5,
-            "h": 2.2,
-            "top": 36.5,
-            "left": 45,
-            "width": 5,
-            "height": 2.2,
+            "x": 28,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "e",
-                  "environment"
+                  "create",
+                  "Create"
             ]
       },
       {
             "id": "p4074_ex1_3",
             "type": "fill",
-            "x": 45,
-            "y": 39.7,
-            "w": 5,
-            "h": 2.2,
-            "top": 39.7,
-            "left": 45,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 29.5,
+            "w": 12,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "a",
-                  "figures",
-                  "facts"
+                  "global",
+                  "Global"
             ]
       },
       {
             "id": "p4074_ex1_4",
             "type": "fill",
-            "x": 45,
-            "y": 43,
-            "w": 5,
-            "h": 2.2,
-            "top": 43,
-            "left": 45,
-            "width": 5,
-            "height": 2.2,
+            "x": 28,
+            "y": 29.5,
+            "w": 14,
+            "h": 2,
+            "top": 29.5,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "g",
-                  "factories"
+                  "figures",
+                  "Figures"
             ]
       },
       {
             "id": "p4074_ex1_5",
             "type": "fill",
-            "x": 45,
-            "y": 46.3,
-            "w": 5,
-            "h": 2.2,
-            "top": 46.3,
-            "left": 45,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 34,
+            "w": 16,
+            "h": 2,
+            "top": 34,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "b",
-                  "warming"
+                  "happiness",
+                  "Happiness"
             ]
       },
       {
             "id": "p4074_ex1_6",
             "type": "fill",
-            "x": 45,
-            "y": 49.5,
-            "w": 5,
-            "h": 2.2,
-            "top": 49.5,
-            "left": 45,
-            "width": 5,
-            "height": 2.2,
+            "x": 28,
+            "y": 34,
+            "w": 10,
+            "h": 2,
+            "top": 34,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "d",
-                  "health"
+                  "cure",
+                  "Cure"
             ]
       },
       {
             "id": "p4074_ex1_7",
             "type": "fill",
-            "x": 45,
-            "y": 51.2,
-            "w": 5,
-            "h": 2.2,
-            "top": 51.2,
-            "left": 45,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 38.5,
+            "w": 12,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "h",
-                  "hunger"
+                  "crisis",
+                  "Crisis"
             ]
       },
       {
             "id": "p4074_ex1_8",
             "type": "fill",
-            "x": 45,
-            "y": 54.5,
-            "w": 5,
-            "h": 2.2,
-            "top": 54.5,
-            "left": 45,
-            "width": 5,
-            "height": 2.2,
+            "x": 28,
+            "y": 38.5,
+            "w": 12,
+            "h": 2,
+            "top": 38.5,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "f",
-                  "situation",
-                  "financial"
+                  "spread",
+                  "Spread"
             ]
       },
       {
             "id": "p4074_ex1_9",
             "type": "fill",
-            "x": 45,
-            "y": 57.8,
-            "w": 5,
-            "h": 2.2,
-            "top": 57.8,
-            "left": 45,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 43,
+            "w": 12,
+            "h": 2,
+            "top": 43,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "i",
-                  "unemployment"
-            ]
-      },
-      {
-            "id": "p4074_ex2_1",
-            "type": "select",
-            "x": 82,
-            "y": 29.5,
-            "w": 14,
-            "h": 2.2,
-            "top": 29.5,
-            "left": 82,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "factories"
-            ],
-            "options": [
-                  "factories",
-                  "figures"
-            ]
-      },
-      {
-            "id": "p4074_ex2_2",
-            "type": "select",
-            "x": 82,
-            "y": 31.3,
-            "w": 14,
-            "h": 2.2,
-            "top": 31.3,
-            "left": 82,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "create"
-            ],
-            "options": [
-                  "create",
-                  "destroy"
-            ]
-      },
-      {
-            "id": "p4074_ex2_3",
-            "type": "select",
-            "x": 82,
-            "y": 34.5,
-            "w": 14,
-            "h": 2.2,
-            "top": 34.5,
-            "left": 82,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "global"
-            ],
-            "options": [
-                  "global",
-                  "local"
-            ]
-      },
-      {
-            "id": "p4074_ex2_4",
-            "type": "select",
-            "x": 82,
-            "y": 37.8,
-            "w": 14,
-            "h": 2.2,
-            "top": 37.8,
-            "left": 82,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "figures"
-            ],
-            "options": [
-                  "figures",
-                  "letters"
-            ]
-      },
-      {
-            "id": "p4074_ex2_5",
-            "type": "select",
-            "x": 82,
-            "y": 41,
-            "w": 14,
-            "h": 2.2,
-            "top": 41,
-            "left": 82,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "happiness"
-            ],
-            "options": [
-                  "happiness",
-                  "hunger"
-            ]
-      },
-      {
-            "id": "p4074_ex2_6",
-            "type": "select",
-            "x": 82,
-            "y": 42.7,
-            "w": 14,
-            "h": 2.2,
-            "top": 42.7,
-            "left": 82,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "cure"
-            ],
-            "options": [
-                  "cure",
-                  "spread"
-            ]
-      },
-      {
-            "id": "p4074_ex2_7",
-            "type": "select",
-            "x": 82,
-            "y": 46,
-            "w": 14,
-            "h": 2.2,
-            "top": 46,
-            "left": 82,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "crisis"
-            ],
-            "options": [
-                  "crisis",
-                  "celebration"
-            ]
-      },
-      {
-            "id": "p4074_ex2_8",
-            "type": "select",
-            "x": 82,
-            "y": 49.2,
-            "w": 14,
-            "h": 2.2,
-            "top": 49.2,
-            "left": 82,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "spread"
-            ],
-            "options": [
-                  "spread",
-                  "cure"
-            ]
-      },
-      {
-            "id": "p4074_ex2_9",
-            "type": "select",
-            "x": 82,
-            "y": 50.9,
-            "w": 14,
-            "h": 2.2,
-            "top": 50.9,
-            "left": 82,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "hunger"
-            ],
-            "options": [
                   "hunger",
-                  "health"
-            ]
-      },
-      {
-            "id": "p4074_ex3_1",
-            "type": "fill",
-            "x": 65,
-            "y": 62,
-            "w": 14,
-            "h": 2.2,
-            "top": 62,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "global"
-            ]
-      },
-      {
-            "id": "p4074_ex3_2",
-            "type": "fill",
-            "x": 65,
-            "y": 67,
-            "w": 14,
-            "h": 2.2,
-            "top": 67,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "environment"
-            ]
-      },
-      {
-            "id": "p4074_ex3_3",
-            "type": "fill",
-            "x": 65,
-            "y": 72,
-            "w": 14,
-            "h": 2.2,
-            "top": 72,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "facts",
-                  "figures"
-            ]
-      },
-      {
-            "id": "p4074_ex3_4",
-            "type": "fill",
-            "x": 65,
-            "y": 77,
-            "w": 14,
-            "h": 2.2,
-            "top": 77,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "factories"
-            ]
-      },
-      {
-            "id": "p4074_ex3_5",
-            "type": "fill",
-            "x": 65,
-            "y": 82,
-            "w": 14,
-            "h": 2.2,
-            "top": 82,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "warming"
-            ]
-      },
-      {
-            "id": "p4074_ex3_6",
-            "type": "fill",
-            "x": 65,
-            "y": 87,
-            "w": 14,
-            "h": 2.2,
-            "top": 87,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "health"
-            ]
-      },
-      {
-            "id": "p4074_ex3_7",
-            "type": "fill",
-            "x": 65,
-            "y": 92,
-            "w": 14,
-            "h": 2.2,
-            "top": 92,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "hunger"
+                  "Hunger"
             ]
       }
 ],
     "4075": [
       {
-            "id": "p4075_ex4a_1",
+            "id": "p4075_ex1_1",
             "type": "fill",
-            "x": 10,
-            "y": 17.5,
-            "w": 38,
-            "h": 2.2,
-            "top": 17.5,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 36,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "If I had a car, I would drive to work.",
-                  "If I had a car I would drive to work"
+                  "would drive to work"
             ]
       },
       {
-            "id": "p4075_ex4a_2",
+            "id": "p4075_ex1_2",
             "type": "fill",
-            "x": 10,
-            "y": 20.8,
-            "w": 38,
-            "h": 2.2,
-            "top": 20.8,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 29.5,
+            "w": 36,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "I wouldn't be happy if I lost my job.",
-                  "I would not be happy if I lost my job"
+                  "wouldn't be happy"
             ]
       },
       {
-            "id": "p4075_ex4a_3",
+            "id": "p4075_ex1_3",
             "type": "fill",
-            "x": 10,
-            "y": 24.8,
-            "w": 38,
-            "h": 2.2,
-            "top": 24.8,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 34,
+            "w": 36,
+            "h": 2,
+            "top": 34,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "What would you do if you could go back in time?",
-                  "What would you do if you could go back in time"
+                  "could go back in time"
             ]
       },
       {
-            "id": "p4075_ex4a_4",
+            "id": "p4075_ex1_4",
             "type": "fill",
-            "x": 10,
-            "y": 29.2,
-            "w": 38,
-            "h": 2.2,
-            "top": 29.2,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 38.5,
+            "w": 36,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "If she knew his phone number, she'd call him.",
-                  "If she knew his number she would call him"
+                  "she would call him"
             ]
       },
       {
-            "id": "p4075_ex4a_5",
+            "id": "p4075_ex1_5",
             "type": "fill",
-            "x": 10,
-            "y": 32.6,
-            "w": 38,
-            "h": 2.2,
-            "top": 32.6,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 43,
+            "w": 36,
+            "h": 2,
+            "top": 43,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "Where would you live if you had the choice?",
-                  "Where would you live if you had the choice"
+                  "had the choice"
             ]
       },
       {
-            "id": "p4075_ex4a_6",
+            "id": "p4075_ex1_6",
             "type": "fill",
-            "x": 10,
-            "y": 36.1,
-            "w": 38,
-            "h": 2.2,
-            "top": 36.1,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 47.5,
+            "w": 36,
+            "h": 2,
+            "top": 47.5,
+            "left": 11,
+            "width": 36,
+            "height": 2,
             "correct": [
                   "You'd feel better if you did some exercise.",
-                  "You would feel better if you did some exercise"
-            ]
-      },
-      {
-            "id": "p4075_ex5_1a",
-            "type": "fill",
-            "x": 15,
-            "y": 65,
-            "w": 12,
-            "h": 2.2,
-            "top": 65,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "worked"
-            ]
-      },
-      {
-            "id": "p4075_ex5_1b",
-            "type": "fill",
-            "x": 32,
-            "y": 65,
-            "w": 14,
-            "h": 2.2,
-            "top": 65,
-            "left": 32,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "would have",
-                  "'d have"
-            ]
-      },
-      {
-            "id": "p4075_ex5_2a",
-            "type": "fill",
-            "x": 15,
-            "y": 68.2,
-            "w": 14,
-            "h": 2.2,
-            "top": 68.2,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "wouldn't leave",
-                  "would not leave"
-            ]
-      },
-      {
-            "id": "p4075_ex5_2b",
-            "type": "fill",
-            "x": 32,
-            "y": 68.2,
-            "w": 12,
-            "h": 2.2,
-            "top": 68.2,
-            "left": 32,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "wasn't",
-                  "weren’t",
-                  "were not"
-            ]
-      },
-      {
-            "id": "p4075_ex5_3a",
-            "type": "fill",
-            "x": 15,
-            "y": 71.4,
-            "w": 14,
-            "h": 2.2,
-            "top": 71.4,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "would go"
-            ]
-      },
-      {
-            "id": "p4075_ex5_3b",
-            "type": "fill",
-            "x": 32,
-            "y": 71.4,
-            "w": 12,
-            "h": 2.2,
-            "top": 71.4,
-            "left": 32,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "had"
-            ]
-      },
-      {
-            "id": "p4075_ex5_4a",
-            "type": "fill",
-            "x": 15,
-            "y": 74.7,
-            "w": 14,
-            "h": 2.2,
-            "top": 74.7,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "wouldn't be",
-                  "would not be"
-            ]
-      },
-      {
-            "id": "p4075_ex5_4b",
-            "type": "fill",
-            "x": 32,
-            "y": 74.7,
-            "w": 12,
-            "h": 2.2,
-            "top": 74.7,
-            "left": 32,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "didn't get up",
-                  "did not get up"
-            ]
-      },
-      {
-            "id": "p4075_ex5_5a",
-            "type": "fill",
-            "x": 15,
-            "y": 78,
-            "w": 12,
-            "h": 2.2,
-            "top": 78,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "'d have",
-                  "would have"
-            ]
-      },
-      {
-            "id": "p4075_ex5_5b",
-            "type": "fill",
-            "x": 32,
-            "y": 78,
-            "w": 12,
-            "h": 2.2,
-            "top": 78,
-            "left": 32,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "lived"
-            ]
-      },
-      {
-            "id": "p4075_ex5_6a",
-            "type": "fill",
-            "x": 15,
-            "y": 81.2,
-            "w": 12,
-            "h": 2.2,
-            "top": 81.2,
-            "left": 15,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "didn't rain"
-            ]
-      },
-      {
-            "id": "p4075_ex5_6b",
-            "type": "fill",
-            "x": 32,
-            "y": 81.2,
-            "w": 14,
-            "h": 2.2,
-            "top": 81.2,
-            "left": 32,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "wouldn't grow"
-            ]
-      },
-      {
-            "id": "p4075_ex6_1",
-            "type": "fill",
-            "x": 65,
-            "y": 23,
-            "w": 14,
-            "h": 2.2,
-            "top": 23,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "happen"
-            ]
-      },
-      {
-            "id": "p4075_ex6_2",
-            "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 14,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "would be",
-                  "'d be"
-            ]
-      },
-      {
-            "id": "p4075_ex6_3",
-            "type": "fill",
-            "x": 65,
-            "y": 37,
-            "w": 14,
-            "h": 2.2,
-            "top": 37,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "became"
-            ]
-      },
-      {
-            "id": "p4075_ex6_4",
-            "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 14,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "wouldn't need"
-            ]
-      },
-      {
-            "id": "p4075_ex6_5",
-            "type": "fill",
-            "x": 65,
-            "y": 51,
-            "w": 14,
-            "h": 2.2,
-            "top": 51,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "would go"
-            ]
-      },
-      {
-            "id": "p4075_ex6_6",
-            "type": "fill",
-            "x": 65,
-            "y": 58,
-            "w": 14,
-            "h": 2.2,
-            "top": 58,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "didn't eat"
+                  "You would feel better"
             ]
       }
 ],
     "4076": [
       {
-            "id": "p4076_ex1a_1",
+            "id": "p4076_ex1_1",
             "type": "fill",
-            "x": 10,
-            "y": 25.5,
-            "w": 38,
-            "h": 2.2,
-            "top": 25.5,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 16,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "My brother used to work in a bank.",
-                  "My brother used to work a bank"
+                  "hurricane",
+                  "Hurricane"
             ]
       },
       {
-            "id": "p4076_ex1a_2",
+            "id": "p4076_ex1_2",
             "type": "fill",
-            "x": 10,
-            "y": 29,
-            "w": 38,
-            "h": 2.2,
-            "top": 29,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 28,
+            "y": 25,
+            "w": 16,
+            "h": 2,
+            "top": 25,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "We didn't use to have a garden.",
-                  "We did not use to have a garden"
+                  "forest fire",
+                  "fire"
             ]
       },
       {
-            "id": "p4076_ex1a_3",
+            "id": "p4076_ex1_3",
             "type": "fill",
-            "x": 10,
-            "y": 32.5,
-            "w": 38,
-            "h": 2.2,
-            "top": 32.5,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "My parents used to live in a flat.",
-                  "My parents used to live in a flat"
+                  "earthquake",
+                  "quake"
             ]
       },
       {
-            "id": "p4076_ex1a_4",
+            "id": "p4076_ex1_4",
             "type": "fill",
-            "x": 10,
-            "y": 36,
-            "w": 38,
-            "h": 2.2,
-            "top": 36,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "Did you use to have long hair?",
-                  "Did you use to have long hair"
-            ]
-      },
-      {
-            "id": "p4076_ex1a_5",
-            "type": "fill",
-            "x": 10,
-            "y": 39.5,
-            "w": 38,
-            "h": 2.2,
-            "top": 39.5,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "I didn't use to drink coffee.",
-                  "I did not use to drink coffee"
-            ]
-      },
-      {
-            "id": "p4076_ex1a_6",
-            "type": "fill",
-            "x": 10,
-            "y": 43,
-            "w": 38,
-            "h": 2.2,
-            "top": 43,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "Did your boyfriend use to have a motorbike?",
-                  "Did your boyfriend use to have a motorbike"
-            ]
-      },
-      {
-            "id": "p4076_ex1a_7",
-            "type": "fill",
-            "x": 10,
-            "y": 46.5,
-            "w": 38,
-            "h": 2.2,
-            "top": 46.5,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "I used to wear glasses.",
-                  "I used to wear glasses"
+                  "flood",
+                  "Flood"
             ]
       },
       {
             "id": "p4076_ex2_1",
-            "type": "select",
-            "x": 45,
-            "y": 65,
-            "w": 6,
-            "h": 2.2,
-            "top": 65,
-            "left": 45,
-            "width": 6,
-            "height": 2.2,
+            "type": "fill",
+            "x": 58,
+            "y": 25,
+            "w": 24,
+            "h": 2,
+            "top": 25,
+            "left": 58,
+            "width": 24,
+            "height": 2,
             "correct": [
-                  "V"
-            ],
-            "options": [
-                  "V",
-                  "X"
+                  "used to work in a bank",
+                  "used to work"
             ]
       },
       {
             "id": "p4076_ex2_2",
-            "type": "select",
-            "x": 45,
-            "y": 68.2,
-            "w": 6,
-            "h": 2.2,
-            "top": 68.2,
-            "left": 45,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "X"
-            ],
-            "options": [
-                  "V",
-                  "X"
-            ]
-      },
-      {
-            "id": "p4076_ex2_3",
-            "type": "select",
-            "x": 45,
-            "y": 74.7,
-            "w": 6,
-            "h": 2.2,
-            "top": 74.7,
-            "left": 45,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "X"
-            ],
-            "options": [
-                  "V",
-                  "X"
-            ]
-      },
-      {
-            "id": "p4076_ex2_4",
-            "type": "select",
-            "x": 45,
-            "y": 79.7,
-            "w": 6,
-            "h": 2.2,
-            "top": 79.7,
-            "left": 45,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "V"
-            ],
-            "options": [
-                  "V",
-                  "X"
-            ]
-      },
-      {
-            "id": "p4076_ex2_5",
-            "type": "select",
-            "x": 45,
-            "y": 83.1,
-            "w": 6,
-            "h": 2.2,
-            "top": 83.1,
-            "left": 45,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "X"
-            ],
-            "options": [
-                  "V",
-                  "X"
-            ]
-      },
-      {
-            "id": "p4076_ex2_6",
-            "type": "select",
-            "x": 45,
-            "y": 86.6,
-            "w": 6,
-            "h": 2.2,
-            "top": 86.6,
-            "left": 45,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "X"
-            ],
-            "options": [
-                  "V",
-                  "X"
-            ]
-      },
-      {
-            "id": "p4076_ex2_7",
-            "type": "select",
-            "x": 45,
-            "y": 91.5,
-            "w": 6,
-            "h": 2.2,
-            "top": 91.5,
-            "left": 45,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "X"
-            ],
-            "options": [
-                  "V",
-                  "X"
-            ]
-      },
-      {
-            "id": "p4076_ex3_1",
             "type": "fill",
-            "x": 65,
-            "y": 26.6,
+            "x": 58,
+            "y": 30,
             "w": 22,
-            "h": 2.2,
-            "top": 26.6,
-            "left": 65,
+            "h": 2,
+            "top": 30,
+            "left": 58,
             "width": 22,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "Did you use to watch"
-            ]
-      },
-      {
-            "id": "p4076_ex3_2",
-            "type": "fill",
-            "x": 65,
-            "y": 32.5,
-            "w": 18,
-            "h": 2.2,
-            "top": 32.5,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "used to buy"
-            ]
-      },
-      {
-            "id": "p4076_ex3_3",
-            "type": "fill",
-            "x": 65,
-            "y": 38.5,
-            "w": 18,
-            "h": 2.2,
-            "top": 38.5,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "used to read"
-            ]
-      },
-      {
-            "id": "p4076_ex3_4",
-            "type": "fill",
-            "x": 65,
-            "y": 44.5,
-            "w": 18,
-            "h": 2.2,
-            "top": 44.5,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "didn't use to be"
-            ]
-      },
-      {
-            "id": "p4076_ex3_5",
-            "type": "fill",
-            "x": 65,
-            "y": 50.5,
-            "w": 18,
-            "h": 2.2,
-            "top": 50.5,
-            "left": 65,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "used to wait"
+                  "used to live in London",
+                  "used to live"
             ]
       }
 ],
     "4077": [
       {
-            "id": "p4077_ex4_1",
+            "id": "p4077_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 27,
-            "w": 14,
-            "h": 2.2,
-            "top": 27,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "hurricane"
-            ]
-      },
-      {
-            "id": "p4077_ex4_2",
-            "type": "fill",
-            "x": 35,
-            "y": 27,
-            "w": 14,
-            "h": 2.2,
-            "top": 27,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "earthquake"
-            ]
-      },
-      {
-            "id": "p4077_ex4_3",
-            "type": "fill",
-            "x": 15,
-            "y": 34,
-            "w": 14,
-            "h": 2.2,
-            "top": 34,
-            "left": 15,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "flood"
-            ]
-      },
-      {
-            "id": "p4077_ex4_4",
-            "type": "fill",
-            "x": 35,
-            "y": 34,
-            "w": 14,
-            "h": 2.2,
-            "top": 34,
-            "left": 35,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "forest fire"
-            ]
-      },
-      {
-            "id": "p4077_ex4_5",
-            "type": "fill",
-            "x": 25,
-            "y": 41,
-            "w": 14,
-            "h": 2.2,
-            "top": 41,
-            "left": 25,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "tsunami"
-            ]
-      },
-      {
-            "id": "p4077_ex5_1",
-            "type": "fill",
-            "x": 65,
-            "y": 26,
+            "x": 11,
+            "y": 30,
             "w": 16,
-            "h": 2.2,
-            "top": 26,
-            "left": 65,
+            "h": 2,
+            "top": 30,
+            "left": 11,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "articles",
-                  "article"
+                  "did you use to",
+                  "used to"
             ]
       },
       {
-            "id": "p4077_ex5_2",
+            "id": "p4077_ex1_2",
             "type": "fill",
-            "x": 65,
-            "y": 33,
-            "w": 16,
-            "h": 2.2,
-            "top": 33,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 18,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "crash"
+                  "didn't use to",
+                  "did not use to"
             ]
       },
       {
-            "id": "p4077_ex5_3",
+            "id": "p4077_ex1_3",
             "type": "fill",
-            "x": 65,
-            "y": 40,
-            "w": 16,
-            "h": 2.2,
-            "top": 40,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "journalists",
-                  "journalist"
+                  "used to play",
+                  "played"
             ]
       },
       {
-            "id": "p4077_ex5_4",
+            "id": "p4077_ex1_4",
             "type": "fill",
-            "x": 65,
-            "y": 47,
+            "x": 28,
+            "y": 35,
             "w": 16,
-            "h": 2.2,
-            "top": 47,
-            "left": 65,
+            "h": 2,
+            "top": 35,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "natural disaster"
-            ]
-      },
-      {
-            "id": "p4077_ex5_5",
-            "type": "fill",
-            "x": 65,
-            "y": 54,
-            "w": 16,
-            "h": 2.2,
-            "top": 54,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "reach"
+                  "used to have",
+                  "had"
             ]
       }
 ],
@@ -96880,285 +94329,131 @@
       {
             "id": "p4078_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 28,
+            "x": 11,
+            "y": 30,
             "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 15,
+            "h": 2,
+            "top": 30,
+            "left": 11,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "look after",
-                  "cared for"
+                  "technology",
+                  "Technology"
             ]
       },
       {
             "id": "p4078_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 35,
-            "w": 16,
-            "h": 2.2,
-            "top": 35,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "find out",
-                  "discovered"
+                  "economic",
+                  "Economic"
             ]
       },
       {
             "id": "p4078_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 42,
-            "w": 16,
-            "h": 2.2,
-            "top": 42,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "give up",
-                  "stopped"
+                  "facts",
+                  "Facts"
             ]
       },
       {
             "id": "p4078_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 49,
-            "w": 16,
-            "h": 2.2,
-            "top": 49,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "turn into",
-                  "become"
-            ]
-      },
-      {
-            "id": "p4078_ex1_5",
-            "type": "fill",
-            "x": 15,
-            "y": 56,
-            "w": 16,
-            "h": 2.2,
-            "top": 56,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "break down",
-                  "stopped working"
-            ]
-      },
-      {
-            "id": "p4078_ex1_6",
-            "type": "fill",
-            "x": 15,
-            "y": 63,
-            "w": 16,
-            "h": 2.2,
-            "top": 63,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "put on",
-                  "wore"
-            ]
-      },
-      {
-            "id": "p4078_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "global"
-            ]
-      },
-      {
-            "id": "p4078_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 36,
-            "w": 16,
-            "h": 2.2,
-            "top": 36,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "environment"
-            ]
-      },
-      {
-            "id": "p4078_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 44,
-            "w": 16,
-            "h": 2.2,
-            "top": 44,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "hurricane"
-            ]
-      },
-      {
-            "id": "p4078_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "flood"
-            ]
-      },
-      {
-            "id": "p4078_ex2_5",
-            "type": "fill",
-            "x": 65,
-            "y": 60,
-            "w": 16,
-            "h": 2.2,
-            "top": 60,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "journalist"
+                  "farming",
+                  "Farming"
             ]
       }
 ],
     "4079": [
       {
             "id": "p4079_ex1_1",
-            "type": "select",
-            "x": 25,
-            "y": 26,
-            "w": 25,
-            "h": 2.2,
-            "top": 26,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "In my opinion,"
-            ],
-            "options": [
-                  "In my opinion,",
-                  "I agree with you",
-                  "I disagree",
-                  "That is true"
+                  "In my opinion",
+                  "in my opinion"
             ]
       },
       {
             "id": "p4079_ex1_2",
-            "type": "select",
-            "x": 25,
-            "y": 33,
-            "w": 25,
-            "h": 2.2,
-            "top": 33,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 28,
+            "y": 30,
+            "w": 12,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "I agree with you"
-            ],
-            "options": [
-                  "In my opinion,",
-                  "I agree with you",
-                  "I disagree",
-                  "That is true"
+                  "Personally",
+                  "personally"
             ]
       },
       {
             "id": "p4079_ex1_3",
-            "type": "select",
-            "x": 25,
-            "y": 40,
-            "w": 25,
-            "h": 2.2,
-            "top": 40,
-            "left": 25,
-            "width": 25,
-            "height": 2.2,
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 12,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "I disagree"
-            ],
-            "options": [
-                  "In my opinion,",
-                  "I agree with you",
+                  "I agree",
+                  "agree"
+            ]
+      },
+      {
+            "id": "p4079_ex1_4",
+            "type": "fill",
+            "x": 28,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 14,
+            "height": 2,
+            "correct": [
                   "I disagree",
-                  "That is true"
-            ]
-      },
-      {
-            "id": "p4079_ex2_1",
-            "type": "fill",
-            "x": 65,
-            "y": 30,
-            "w": 16,
-            "h": 2.2,
-            "top": 30,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "Firstly",
-                  "First of all"
-            ]
-      },
-      {
-            "id": "p4079_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 16,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "Secondly",
-                  "Furthermore"
-            ]
-      },
-      {
-            "id": "p4079_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 46,
-            "w": 16,
-            "h": 2.2,
-            "top": 46,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "In conclusion",
-                  "Finally"
+                  "disagree"
             ]
       }
 ],
@@ -97166,979 +94461,457 @@
       {
             "id": "p4080_ex1_1",
             "type": "fill",
-            "x": 13,
-            "y": 35,
-            "w": 14,
-            "h": 2.2,
-            "top": 35,
-            "left": 13,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 25,
+            "w": 16,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "open-plan office",
-                  "open plan"
+                  "construction",
+                  "Construction"
             ]
       },
       {
             "id": "p4080_ex1_2",
             "type": "fill",
             "x": 28,
-            "y": 35,
-            "w": 14,
-            "h": 2.2,
-            "top": 35,
+            "y": 25,
+            "w": 18,
+            "h": 2,
+            "top": 25,
             "left": 28,
-            "width": 14,
-            "height": 2.2,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "meeting room"
+                  "building site",
+                  "site"
             ]
       },
       {
             "id": "p4080_ex1_3",
             "type": "fill",
-            "x": 43,
-            "y": 35,
-            "w": 14,
-            "h": 2.2,
-            "top": 35,
-            "left": 43,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 29.5,
+            "w": 12,
+            "h": 2,
+            "top": 29.5,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "break room"
+                  "judge",
+                  "Judge"
             ]
       },
       {
             "id": "p4080_ex1_4",
             "type": "fill",
-            "x": 13,
-            "y": 45,
-            "w": 14,
-            "h": 2.2,
-            "top": 45,
-            "left": 13,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 29.5,
+            "w": 10,
+            "h": 2,
+            "top": 29.5,
+            "left": 28,
+            "width": 10,
+            "height": 2,
             "correct": [
-                  "colleague",
-                  "colleagues"
+                  "law",
+                  "Law"
             ]
       },
       {
             "id": "p4080_ex1_5",
             "type": "fill",
-            "x": 28,
-            "y": 45,
-            "w": 14,
-            "h": 2.2,
-            "top": 45,
-            "left": 28,
-            "width": 14,
-            "height": 2.2,
+            "x": 11,
+            "y": 34,
+            "w": 12,
+            "h": 2,
+            "top": 34,
+            "left": 11,
+            "width": 12,
+            "height": 2,
             "correct": [
-                  "desk"
+                  "nurse",
+                  "Nurse"
             ]
       },
       {
             "id": "p4080_ex1_6",
             "type": "fill",
-            "x": 43,
-            "y": 45,
+            "x": 28,
+            "y": 34,
             "w": 14,
-            "h": 2.2,
-            "top": 45,
-            "left": 43,
+            "h": 2,
+            "top": 34,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "stationery"
+                  "hospital",
+                  "Hospital"
             ]
       },
       {
-            "id": "p4080_ex2_1",
+            "id": "p4080_ex1_7",
             "type": "fill",
-            "x": 15,
-            "y": 60,
+            "x": 11,
+            "y": 38.5,
+            "w": 20,
+            "h": 2,
+            "top": 38.5,
+            "left": 11,
+            "width": 20,
+            "height": 2,
+            "correct": [
+                  "personal assistant",
+                  "PA"
+            ]
+      },
+      {
+            "id": "p4080_ex1_8",
+            "type": "fill",
+            "x": 28,
+            "y": 38.5,
+            "w": 12,
+            "h": 2,
+            "top": 38.5,
+            "left": 28,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "office",
+                  "Office"
+            ]
+      },
+      {
+            "id": "p4080_ex1_9",
+            "type": "fill",
+            "x": 11,
+            "y": 43,
+            "w": 20,
+            "h": 2,
+            "top": 43,
+            "left": 11,
+            "width": 20,
+            "height": 2,
+            "correct": [
+                  "medical research",
+                  "research"
+            ]
+      },
+      {
+            "id": "p4080_ex1_10",
+            "type": "fill",
+            "x": 28,
+            "y": 43,
             "w": 16,
-            "h": 2.2,
-            "top": 60,
-            "left": 15,
+            "h": 2,
+            "top": 43,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "challenging"
-            ]
-      },
-      {
-            "id": "p4080_ex2_2",
-            "type": "fill",
-            "x": 15,
-            "y": 66,
-            "w": 16,
-            "h": 2.2,
-            "top": 66,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "rewarding"
-            ]
-      },
-      {
-            "id": "p4080_ex2_3",
-            "type": "fill",
-            "x": 15,
-            "y": 72,
-            "w": 16,
-            "h": 2.2,
-            "top": 72,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "stressful"
-            ]
-      },
-      {
-            "id": "p4080_ex2_4",
-            "type": "fill",
-            "x": 15,
-            "y": 78,
-            "w": 16,
-            "h": 2.2,
-            "top": 78,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "repetitive"
-            ]
-      },
-      {
-            "id": "p4080_ex2_5",
-            "type": "fill",
-            "x": 15,
-            "y": 84,
-            "w": 16,
-            "h": 2.2,
-            "top": 84,
-            "left": 15,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "flexible"
-            ]
-      },
-      {
-            "id": "p4080_ex3_1",
-            "type": "fill",
-            "x": 66,
-            "y": 29.5,
-            "w": 6,
-            "h": 2.2,
-            "top": 29.5,
-            "left": 66,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "d"
-            ]
-      },
-      {
-            "id": "p4080_ex3_2",
-            "type": "fill",
-            "x": 66,
-            "y": 31.3,
-            "w": 6,
-            "h": 2.2,
-            "top": 31.3,
-            "left": 66,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "a"
-            ]
-      },
-      {
-            "id": "p4080_ex3_3",
-            "type": "fill",
-            "x": 66,
-            "y": 34.5,
-            "w": 6,
-            "h": 2.2,
-            "top": 34.5,
-            "left": 66,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "e"
-            ]
-      },
-      {
-            "id": "p4080_ex3_4",
-            "type": "fill",
-            "x": 66,
-            "y": 36.2,
-            "w": 6,
-            "h": 2.2,
-            "top": 36.2,
-            "left": 66,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "b"
-            ]
-      },
-      {
-            "id": "p4080_ex3_5",
-            "type": "fill",
-            "x": 66,
-            "y": 37.9,
-            "w": 6,
-            "h": 2.2,
-            "top": 37.9,
-            "left": 66,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "c"
-            ]
-      },
-      {
-            "id": "p4080_ex4_1",
-            "type": "fill",
-            "x": 67,
-            "y": 56,
-            "w": 14,
-            "h": 2.2,
-            "top": 56,
-            "left": 67,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "scientists"
-            ]
-      },
-      {
-            "id": "p4080_ex4_2",
-            "type": "fill",
-            "x": 67,
-            "y": 60.5,
-            "w": 14,
-            "h": 2.2,
-            "top": 60.5,
-            "left": 67,
-            "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
                   "laboratory",
                   "lab"
-            ]
-      },
-      {
-            "id": "p4080_ex4_3",
-            "type": "fill",
-            "x": 67,
-            "y": 65,
-            "w": 14,
-            "h": 2.2,
-            "top": 65,
-            "left": 67,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "colleagues"
-            ]
-      },
-      {
-            "id": "p4080_ex4_4",
-            "type": "fill",
-            "x": 67,
-            "y": 69.5,
-            "w": 14,
-            "h": 2.2,
-            "top": 69.5,
-            "left": 67,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "desk"
-            ]
-      },
-      {
-            "id": "p4080_ex4_5",
-            "type": "fill",
-            "x": 67,
-            "y": 74,
-            "w": 14,
-            "h": 2.2,
-            "top": 74,
-            "left": 67,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "meeting room"
             ]
       }
 ],
     "4081": [
       {
-            "id": "p4081_ex5a_2",
-            "type": "fill",
-            "x": 10,
-            "y": 23,
-            "w": 38,
+            "id": "p4081_ex1_1",
+            "type": "select",
+            "x": 11,
+            "y": 25,
+            "w": 8.5,
             "h": 2.2,
-            "top": 23,
-            "left": 10,
-            "width": 38,
+            "top": 25,
+            "left": 11,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
-                  "Those children have studied English since last year.",
-                  "Those children have studied English since last year"
+                  "for"
+            ],
+            "options": [
+                  "for",
+                  "since"
             ]
       },
       {
-            "id": "p4081_ex5a_3",
-            "type": "fill",
-            "x": 10,
-            "y": 26.5,
-            "w": 38,
+            "id": "p4081_ex1_2",
+            "type": "select",
+            "x": 25,
+            "y": 25,
+            "w": 8.5,
             "h": 2.2,
-            "top": 26.5,
-            "left": 10,
-            "width": 38,
+            "top": 25,
+            "left": 25,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
-                  "My wife has liked the same music since she was a student.",
-                  "My wife has liked the same music since she was a student"
+                  "since"
+            ],
+            "options": [
+                  "for",
+                  "since"
             ]
       },
       {
-            "id": "p4081_ex5a_4",
-            "type": "fill",
-            "x": 10,
+            "id": "p4081_ex1_3",
+            "type": "select",
+            "x": 11,
             "y": 30,
-            "w": 38,
+            "w": 8.5,
             "h": 2.2,
             "top": 30,
-            "left": 10,
-            "width": 38,
+            "left": 11,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
-                  "My parents have been married for 30 years.",
-                  "My parents have been married for 30 years"
+                  "since"
+            ],
+            "options": [
+                  "for",
+                  "since"
             ]
       },
       {
-            "id": "p4081_ex5a_5",
-            "type": "fill",
-            "x": 10,
-            "y": 33.5,
-            "w": 38,
+            "id": "p4081_ex1_4",
+            "type": "select",
+            "x": 25,
+            "y": 30,
+            "w": 8.5,
             "h": 2.2,
-            "top": 33.5,
-            "left": 10,
-            "width": 38,
+            "top": 30,
+            "left": 25,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
-                  "John has worked as a teacher since he left university.",
-                  "John has worked as a teacher since he left university"
+                  "for"
+            ],
+            "options": [
+                  "for",
+                  "since"
             ]
       },
       {
-            "id": "p4081_ex6_1",
-            "type": "fill",
-            "x": 10,
-            "y": 58.5,
-            "w": 38,
+            "id": "p4081_ex1_5",
+            "type": "select",
+            "x": 11,
+            "y": 35,
+            "w": 8.5,
             "h": 2.2,
-            "top": 58.5,
-            "left": 10,
-            "width": 38,
+            "top": 35,
+            "left": 11,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
-                  "How long have you had your current job? I've had it for seven years.",
-                  "I've had it for seven years"
+                  "since"
+            ],
+            "options": [
+                  "for",
+                  "since"
             ]
       },
       {
-            "id": "p4081_ex6_2",
-            "type": "fill",
-            "x": 10,
-            "y": 63.5,
-            "w": 38,
+            "id": "p4081_ex1_6",
+            "type": "select",
+            "x": 25,
+            "y": 35,
+            "w": 8.5,
             "h": 2.2,
-            "top": 63.5,
-            "left": 10,
-            "width": 38,
+            "top": 35,
+            "left": 25,
+            "width": 8.5,
             "height": 2.2,
             "correct": [
-                  "How long has your sister lived abroad? She's lived abroad for three months.",
-                  "She's lived abroad for three months"
+                  "for"
+            ],
+            "options": [
+                  "for",
+                  "since"
             ]
       },
       {
-            "id": "p4081_ex6_3",
+            "id": "p4081_ex2_1",
             "type": "fill",
-            "x": 10,
-            "y": 68.5,
-            "w": 38,
-            "h": 2.2,
-            "top": 68.5,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
+            "x": 58,
+            "y": 25,
+            "w": 36,
+            "h": 2,
+            "top": 25,
+            "left": 58,
+            "width": 36,
+            "height": 2,
             "correct": [
-                  "How long have your parents worked in engineering? They have worked in engineering since they were young.",
+                  "I've had my current job for seven years.",
+                  "for seven years"
+            ]
+      },
+      {
+            "id": "p4081_ex2_2",
+            "type": "fill",
+            "x": 58,
+            "y": 31,
+            "w": 36,
+            "h": 2,
+            "top": 31,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "She's lived abroad for three months.",
+                  "for three months"
+            ]
+      },
+      {
+            "id": "p4081_ex2_3",
+            "type": "fill",
+            "x": 58,
+            "y": 37,
+            "w": 36,
+            "h": 2,
+            "top": 37,
+            "left": 58,
+            "width": 36,
+            "height": 2,
+            "correct": [
+                  "They've worked in engineering since they were young.",
                   "since they were young"
-            ]
-      },
-      {
-            "id": "p4081_ex6_4",
-            "type": "fill",
-            "x": 10,
-            "y": 73.5,
-            "w": 38,
-            "h": 2.2,
-            "top": 73.5,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "How long have you known your best friend? I've known him for ages.",
-                  "I've known him for ages"
-            ]
-      },
-      {
-            "id": "p4081_ex6_5",
-            "type": "fill",
-            "x": 10,
-            "y": 78.5,
-            "w": 38,
-            "h": 2.2,
-            "top": 78.5,
-            "left": 10,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "How long has your partner been a software developer? He's been one since he left university.",
-                  "since he left university"
-            ]
-      },
-      {
-            "id": "p4081_ex7_1",
-            "type": "fill",
-            "x": 55,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 55,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "has loved science since",
-                  "has loved"
-            ]
-      },
-      {
-            "id": "p4081_ex7_2",
-            "type": "fill",
-            "x": 55,
-            "y": 57,
-            "w": 16,
-            "h": 2.2,
-            "top": 57,
-            "left": 55,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "has been",
-                  "'s been"
-            ]
-      },
-      {
-            "id": "p4081_ex7_3",
-            "type": "fill",
-            "x": 55,
-            "y": 62,
-            "w": 16,
-            "h": 2.2,
-            "top": 62,
-            "left": 55,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "hasn't been able to",
-                  "has not been able to"
-            ]
-      },
-      {
-            "id": "p4081_ex7_4",
-            "type": "fill",
-            "x": 55,
-            "y": 67,
-            "w": 16,
-            "h": 2.2,
-            "top": 67,
-            "left": 55,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "has used",
-                  "has been using"
-            ]
-      },
-      {
-            "id": "p4081_ex7_5",
-            "type": "fill",
-            "x": 55,
-            "y": 74,
-            "w": 16,
-            "h": 2.2,
-            "top": 74,
-            "left": 55,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "has written",
-                  "wrote"
             ]
       }
 ],
     "4082": [
       {
             "id": "p4082_ex1_1",
-            "type": "select",
-            "x": 25,
-            "y": 23,
-            "w": 18,
-            "h": 2.2,
-            "top": 23,
-            "left": 25,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "answer"
-            ],
-            "options": [
-                  "answer",
-                  "talk",
-                  "speak"
-            ]
-      },
-      {
-            "id": "p4082_ex1_2",
-            "type": "select",
-            "x": 25,
-            "y": 24.6,
-            "w": 18,
-            "h": 2.2,
-            "top": 24.6,
-            "left": 25,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "run"
-            ],
-            "options": [
-                  "run",
-                  "manage",
-                  "work"
-            ]
-      },
-      {
-            "id": "p4082_ex1_3",
-            "type": "select",
-            "x": 25,
-            "y": 26.3,
-            "w": 18,
-            "h": 2.2,
-            "top": 26.3,
-            "left": 25,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "give"
-            ],
-            "options": [
-                  "give",
-                  "make",
-                  "do"
-            ]
-      },
-      {
-            "id": "p4082_ex1_4",
-            "type": "select",
-            "x": 25,
-            "y": 28.1,
-            "w": 18,
-            "h": 2.2,
-            "top": 28.1,
-            "left": 25,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "attend"
-            ],
-            "options": [
-                  "attend",
-                  "go",
-                  "visit"
-            ]
-      },
-      {
-            "id": "p4082_ex2_1",
             "type": "fill",
-            "x": 65,
-            "y": 23,
+            "x": 11,
+            "y": 30,
             "w": 16,
-            "h": 2.2,
-            "top": 23,
-            "left": 65,
+            "h": 2,
+            "top": 30,
+            "left": 11,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "team"
-            ]
-      },
-      {
-            "id": "p4082_ex2_2",
-            "type": "fill",
-            "x": 65,
-            "y": 28,
-            "w": 16,
-            "h": 2.2,
-            "top": 28,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "staff"
-            ]
-      },
-      {
-            "id": "p4082_ex2_3",
-            "type": "fill",
-            "x": 65,
-            "y": 33,
-            "w": 16,
-            "h": 2.2,
-            "top": 33,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "paperwork"
-            ]
-      },
-      {
-            "id": "p4082_ex2_4",
-            "type": "fill",
-            "x": 65,
-            "y": 38,
-            "w": 16,
-            "h": 2.2,
-            "top": 38,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
+                  "deal with clients",
                   "clients"
             ]
       },
       {
-            "id": "p4082_ex2_5",
+            "id": "p4082_ex1_2",
             "type": "fill",
-            "x": 65,
-            "y": 43,
+            "x": 28,
+            "y": 30,
             "w": 16,
-            "h": 2.2,
-            "top": 43,
-            "left": 65,
+            "h": 2,
+            "top": 30,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
+                  "answer enquiries",
+                  "enquiries"
+            ]
+      },
+      {
+            "id": "p4082_ex1_3",
+            "type": "fill",
+            "x": 11,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 16,
+            "height": 2,
+            "correct": [
+                  "attend meetings",
                   "meetings"
             ]
       },
       {
-            "id": "p4082_ex3_1",
+            "id": "p4082_ex1_4",
             "type": "fill",
-            "x": 65,
-            "y": 68,
-            "w": 14,
-            "h": 2.2,
-            "top": 68,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 16,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "recruit"
-            ]
-      },
-      {
-            "id": "p4082_ex3_2",
-            "type": "fill",
-            "x": 65,
-            "y": 73,
-            "w": 14,
-            "h": 2.2,
-            "top": 73,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "manages"
-            ]
-      },
-      {
-            "id": "p4082_ex3_3",
-            "type": "fill",
-            "x": 65,
-            "y": 77,
-            "w": 14,
-            "h": 2.2,
-            "top": 77,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "deals with"
-            ]
-      },
-      {
-            "id": "p4082_ex3_4",
-            "type": "fill",
-            "x": 65,
-            "y": 81,
-            "w": 14,
-            "h": 2.2,
-            "top": 81,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "organize",
-                  "organise"
-            ]
-      },
-      {
-            "id": "p4082_ex3_5",
-            "type": "fill",
-            "x": 65,
-            "y": 85,
-            "w": 14,
-            "h": 2.2,
-            "top": 85,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "attends"
+                  "manage staff",
+                  "staff"
             ]
       }
 ],
     "4083": [
       {
-            "id": "p4083_ex4_2",
+            "id": "p4083_ex1_1",
             "type": "fill",
-            "x": 60,
-            "y": 16,
-            "w": 6,
-            "h": 2.2,
-            "top": 16,
-            "left": 60,
-            "width": 6,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 18,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "c"
+                  "have been working",
+                  "'ve been working"
             ]
       },
       {
-            "id": "p4083_ex4_3",
+            "id": "p4083_ex1_2",
             "type": "fill",
-            "x": 60,
-            "y": 17.6,
-            "w": 6,
-            "h": 2.2,
-            "top": 17.6,
-            "left": 60,
-            "width": 6,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 18,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "a"
+                  "has been studying",
+                  "'s been studying"
             ]
       },
       {
-            "id": "p4083_ex4_4",
+            "id": "p4083_ex1_3",
             "type": "fill",
-            "x": 60,
-            "y": 19.3,
-            "w": 6,
-            "h": 2.2,
-            "top": 19.3,
-            "left": 60,
-            "width": 6,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 18,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "d"
+                  "have been living",
+                  "'ve been living"
             ]
       },
       {
-            "id": "p4083_ex4_5",
+            "id": "p4083_ex1_4",
             "type": "fill",
-            "x": 60,
-            "y": 21.1,
-            "w": 6,
-            "h": 2.2,
-            "top": 21.1,
-            "left": 60,
-            "width": 6,
-            "height": 2.2,
+            "x": 28,
+            "y": 35,
+            "w": 18,
+            "h": 2,
+            "top": 35,
+            "left": 28,
+            "width": 18,
+            "height": 2,
             "correct": [
-                  "b"
-            ]
-      },
-      {
-            "id": "p4083_ex5a_2",
-            "type": "fill",
-            "x": 30,
-            "y": 44.8,
-            "w": 16,
-            "h": 2.2,
-            "top": 44.8,
-            "left": 30,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "to celebrate",
-                  "celebrate"
-            ]
-      },
-      {
-            "id": "p4083_ex5a_3",
-            "type": "fill",
-            "x": 25,
-            "y": 48,
-            "w": 16,
-            "h": 2.2,
-            "top": 48,
-            "left": 25,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "to remember",
-                  "remember"
-            ]
-      },
-      {
-            "id": "p4083_ex5a_4",
-            "type": "fill",
-            "x": 35,
-            "y": 51.3,
-            "w": 16,
-            "h": 2.2,
-            "top": 51.3,
-            "left": 35,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "not to tell",
-                  "to keep"
-            ]
-      },
-      {
-            "id": "p4083_ex5a_5",
-            "type": "fill",
-            "x": 20,
-            "y": 53,
-            "w": 16,
-            "h": 2.2,
-            "top": 53,
-            "left": 20,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "to make",
-                  "make"
-            ]
-      },
-      {
-            "id": "p4083_ex6_1",
-            "type": "fill",
-            "x": 65,
-            "y": 52,
-            "w": 14,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "to have"
-            ]
-      },
-      {
-            "id": "p4083_ex6_2",
-            "type": "fill",
-            "x": 65,
-            "y": 57,
-            "w": 14,
-            "h": 2.2,
-            "top": 57,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "to attend"
-            ]
-      },
-      {
-            "id": "p4083_ex6_3",
-            "type": "fill",
-            "x": 65,
-            "y": 62,
-            "w": 14,
-            "h": 2.2,
-            "top": 62,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "to open"
-            ]
-      },
-      {
-            "id": "p4083_ex6_4",
-            "type": "fill",
-            "x": 65,
-            "y": 65.5,
-            "w": 14,
-            "h": 2.2,
-            "top": 65.5,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "to call"
-            ]
-      },
-      {
-            "id": "p4083_ex6_5",
-            "type": "fill",
-            "x": 65,
-            "y": 70,
-            "w": 14,
-            "h": 2.2,
-            "top": 70,
-            "left": 65,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "to go"
+                  "has been waiting",
+                  "'s been waiting"
             ]
       }
 ],
@@ -98146,246 +94919,65 @@
       {
             "id": "p4084_ex1_1",
             "type": "fill",
-            "x": 15,
-            "y": 62,
-            "w": 18,
-            "h": 2.2,
-            "top": 62,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "in charge of",
-                  "in charge"
+                  "in detail",
+                  "detail"
             ]
       },
       {
             "id": "p4084_ex1_2",
             "type": "fill",
-            "x": 15,
-            "y": 66,
-            "w": 18,
-            "h": 2.2,
-            "top": 66,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 16,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 16,
+            "height": 2,
             "correct": [
-                  "in a hurry",
-                  "a hurry"
+                  "in common",
+                  "common"
             ]
       },
       {
             "id": "p4084_ex1_3",
             "type": "fill",
-            "x": 15,
-            "y": 70,
+            "x": 11,
+            "y": 35,
             "w": 18,
-            "h": 2.2,
-            "top": 70,
-            "left": 15,
+            "h": 2,
+            "top": 35,
+            "left": 11,
             "width": 18,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "in trouble",
-                  "trouble"
+                  "in ten minutes",
+                  "ten minutes"
             ]
       },
       {
             "id": "p4084_ex1_4",
             "type": "fill",
-            "x": 15,
-            "y": 74,
-            "w": 18,
-            "h": 2.2,
-            "top": 74,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "in love",
-                  "love"
-            ]
-      },
-      {
-            "id": "p4084_ex1_5",
-            "type": "fill",
-            "x": 15,
-            "y": 78,
-            "w": 18,
-            "h": 2.2,
-            "top": 78,
-            "left": 15,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "in public",
-                  "public"
-            ]
-      },
-      {
-            "id": "p4084_ex2_1",
-            "type": "fill",
-            "x": 56,
-            "y": 33,
-            "w": 12,
-            "h": 2.2,
-            "top": 33,
-            "left": 56,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "administrator"
-            ]
-      },
-      {
-            "id": "p4084_ex2_2",
-            "type": "fill",
-            "x": 56,
-            "y": 39,
-            "w": 12,
-            "h": 2.2,
-            "top": 39,
-            "left": 56,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "manager"
-            ]
-      },
-      {
-            "id": "p4084_ex2_3",
-            "type": "fill",
-            "x": 56,
-            "y": 46,
-            "w": 12,
-            "h": 2.2,
-            "top": 46,
-            "left": 56,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "researcher"
-            ]
-      },
-      {
-            "id": "p4084_ex2_4",
-            "type": "fill",
-            "x": 69,
+            "x": 28,
             "y": 35,
-            "w": 12,
-            "h": 2.2,
+            "w": 14,
+            "h": 2,
             "top": 35,
-            "left": 69,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "engineer"
-            ]
-      },
-      {
-            "id": "p4084_ex2_5",
-            "type": "fill",
-            "x": 69,
-            "y": 42,
-            "w": 12,
-            "h": 2.2,
-            "top": 42,
-            "left": 69,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "scientist"
-            ]
-      },
-      {
-            "id": "p4084_ex3_1",
-            "type": "fill",
-            "x": 65,
-            "y": 77,
-            "w": 16,
-            "h": 2.2,
-            "top": 77,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "in detail"
-            ]
-      },
-      {
-            "id": "p4084_ex3_2",
-            "type": "fill",
-            "x": 85,
-            "y": 77,
-            "w": 12,
-            "h": 2.2,
-            "top": 77,
-            "left": 85,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "in fact"
-            ]
-      },
-      {
-            "id": "p4084_ex3_3",
-            "type": "fill",
-            "x": 58,
-            "y": 82,
-            "w": 14,
-            "h": 2.2,
-            "top": 82,
-            "left": 58,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "in ten minutes"
-            ]
-      },
-      {
-            "id": "p4084_ex3_4",
-            "type": "fill",
-            "x": 80,
-            "y": 82,
-            "w": 16,
-            "h": 2.2,
-            "top": 82,
-            "left": 80,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "in the middle"
-            ]
-      },
-      {
-            "id": "p4084_ex3_5",
-            "type": "fill",
-            "x": 58,
-            "y": 86.8,
-            "w": 14,
-            "h": 2.2,
-            "top": 86.8,
-            "left": 58,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "in nursing"
-            ]
-      },
-      {
-            "id": "p4084_ex3_6",
-            "type": "fill",
-            "x": 80,
-            "y": 86.8,
-            "w": 14,
-            "h": 2.2,
-            "top": 86.8,
-            "left": 80,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "in sales"
+                  "in a suit",
+                  "a suit"
             ]
       }
 ],
@@ -98393,264 +94985,65 @@
       {
             "id": "p4085_ex1_1",
             "type": "fill",
-            "x": 10,
-            "y": 23,
-            "w": 5,
-            "h": 2.2,
-            "top": 23,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "c"
+                  "training",
+                  "Training"
             ]
       },
       {
             "id": "p4085_ex1_2",
             "type": "fill",
-            "x": 10,
-            "y": 25,
-            "w": 5,
-            "h": 2.2,
-            "top": 25,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "e"
+                  "developed",
+                  "Developed"
             ]
       },
       {
             "id": "p4085_ex1_3",
             "type": "fill",
-            "x": 10,
-            "y": 28,
-            "w": 5,
-            "h": 2.2,
-            "top": 28,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "h"
+                  "attended",
+                  "Attended"
             ]
       },
       {
             "id": "p4085_ex1_4",
             "type": "fill",
-            "x": 10,
-            "y": 31,
-            "w": 5,
-            "h": 2.2,
-            "top": 31,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "a"
-            ]
-      },
-      {
-            "id": "p4085_ex1_5",
-            "type": "fill",
-            "x": 10,
-            "y": 34.6,
-            "w": 5,
-            "h": 2.2,
-            "top": 34.6,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "g"
-            ]
-      },
-      {
-            "id": "p4085_ex1_6",
-            "type": "fill",
-            "x": 10,
-            "y": 36.3,
-            "w": 5,
-            "h": 2.2,
-            "top": 36.3,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "d"
-            ]
-      },
-      {
-            "id": "p4085_ex1_7",
-            "type": "fill",
-            "x": 10,
-            "y": 38,
-            "w": 5,
-            "h": 2.2,
-            "top": 38,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "b"
-            ]
-      },
-      {
-            "id": "p4085_ex1_8",
-            "type": "fill",
-            "x": 10,
-            "y": 41.2,
-            "w": 5,
-            "h": 2.2,
-            "top": 41.2,
-            "left": 10,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "f"
-            ]
-      },
-      {
-            "id": "p4085_ex2_1",
-            "type": "fill",
-            "x": 17,
-            "y": 56.5,
+            "x": 28,
+            "y": 35,
             "w": 14,
-            "h": 2.2,
-            "top": 56.5,
-            "left": 17,
+            "h": 2,
+            "top": 35,
+            "left": 28,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "managed",
-                  "managed staff"
-            ]
-      },
-      {
-            "id": "p4085_ex2_2",
-            "type": "fill",
-            "x": 21,
-            "y": 58.6,
-            "w": 14,
-            "h": 2.2,
-            "top": 58.6,
-            "left": 21,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "training",
-                  "gave training"
-            ]
-      },
-      {
-            "id": "p4085_ex2_3",
-            "type": "fill",
-            "x": 17,
-            "y": 62.8,
-            "w": 14,
-            "h": 2.2,
-            "top": 62.8,
-            "left": 17,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "attended",
-                  "attended meetings"
-            ]
-      },
-      {
-            "id": "p4085_ex2_4",
-            "type": "fill",
-            "x": 33,
-            "y": 66.4,
-            "w": 16,
-            "h": 2.2,
-            "top": 66.4,
-            "left": 33,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "presentations"
-            ]
-      },
-      {
-            "id": "p4085_ex3a_1",
-            "type": "fill",
-            "x": 65,
-            "y": 61.4,
-            "w": 25,
-            "h": 2.2,
-            "top": 61.4,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "I've got a university degree in",
-                  "I've got a degree"
-            ]
-      },
-      {
-            "id": "p4085_ex3a_2",
-            "type": "fill",
-            "x": 65,
-            "y": 68,
-            "w": 25,
-            "h": 2.2,
-            "top": 68,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "I'm currently working for",
-                  "I'm working for"
-            ]
-      },
-      {
-            "id": "p4085_ex3a_3",
-            "type": "fill",
-            "x": 65,
-            "y": 74,
-            "w": 25,
-            "h": 2.2,
-            "top": 74,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "I'd really like to get into",
-                  "I want to get into"
-            ]
-      },
-      {
-            "id": "p4085_ex3a_4",
-            "type": "fill",
-            "x": 65,
-            "y": 78,
-            "w": 25,
-            "h": 2.2,
-            "top": 78,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "I'm good at",
-                  "I am good at"
-            ]
-      },
-      {
-            "id": "p4085_ex3a_5",
-            "type": "fill",
-            "x": 65,
-            "y": 82,
-            "w": 25,
-            "h": 2.2,
-            "top": 82,
-            "left": 65,
-            "width": 25,
-            "height": 2.2,
-            "correct": [
-                  "I find it hard to",
-                  "I find it difficult to"
+                  "assisted",
+                  "Assisted"
             ]
       }
 ],
@@ -98658,781 +95051,179 @@
       {
             "id": "p4086_ex1_1",
             "type": "fill",
-            "x": 23.5,
-            "y": 24,
-            "w": 5,
-            "h": 2.2,
-            "top": 24,
-            "left": 23.5,
-            "width": 5,
-            "height": 2.2,
+            "x": 11,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "c"
+                  "career",
+                  "Career"
             ]
       },
       {
             "id": "p4086_ex1_2",
             "type": "fill",
-            "x": 23.5,
-            "y": 25.8,
-            "w": 5,
-            "h": 2.2,
-            "top": 25.8,
-            "left": 23.5,
-            "width": 5,
-            "height": 2.2,
+            "x": 28,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 28,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "a"
+                  "success",
+                  "Success"
             ]
       },
       {
             "id": "p4086_ex1_3",
             "type": "fill",
-            "x": 23.5,
-            "y": 27.5,
-            "w": 5,
-            "h": 2.2,
-            "top": 27.5,
-            "left": 23.5,
-            "width": 5,
-            "height": 2.2,
-            "correct": [
-                  "b"
-            ]
-      },
-      {
-            "id": "p4086_ex3_1",
-            "type": "select",
-            "x": 21,
-            "y": 39,
+            "x": 11,
+            "y": 35,
             "w": 14,
-            "h": 2.2,
-            "top": 39,
-            "left": 21,
+            "h": 2,
+            "top": 35,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "887"
-            ],
-            "options": [
-                  "787",
-                  "887"
+                  "goals",
+                  "Goals"
             ]
       },
       {
-            "id": "p4086_ex3_2",
-            "type": "select",
-            "x": 31,
-            "y": 41.1,
-            "w": 15,
-            "h": 2.2,
-            "top": 41.1,
-            "left": 31,
-            "width": 15,
-            "height": 2.2,
-            "correct": [
-                  "trees"
-            ],
-            "options": [
-                  "statues",
-                  "trees"
-            ]
-      },
-      {
-            "id": "p4086_ex3_3",
-            "type": "select",
-            "x": 27,
-            "y": 42.7,
+            "id": "p4086_ex1_4",
+            "type": "fill",
+            "x": 28,
+            "y": 35,
             "w": 16,
-            "h": 2.2,
-            "top": 42.7,
-            "left": 27,
+            "h": 2,
+            "top": 35,
+            "left": 28,
             "width": 16,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "easy"
-            ],
-            "options": [
-                  "easy",
-                  "difficult"
-            ]
-      },
-      {
-            "id": "p4086_ex3_4",
-            "type": "select",
-            "x": 21,
-            "y": 46,
-            "w": 24,
-            "h": 2.2,
-            "top": 46,
-            "left": 21,
-            "width": 24,
-            "height": 2.2,
-            "correct": [
-                  "make statues"
-            ],
-            "options": [
-                  "make statues",
-                  "build houses"
-            ]
-      },
-      {
-            "id": "p4086_ex3_5",
-            "type": "select",
-            "x": 21,
-            "y": 47.7,
-            "w": 23,
-            "h": 2.2,
-            "top": 47.7,
-            "left": 21,
-            "width": 23,
-            "height": 2.2,
-            "correct": [
-                  "transport"
-            ],
-            "options": [
-                  "construction",
-                  "transport"
-            ]
-      },
-      {
-            "id": "p4086_ex3_6",
-            "type": "select",
-            "x": 30,
-            "y": 51,
-            "w": 15,
-            "h": 2.2,
-            "top": 51,
-            "left": 30,
-            "width": 15,
-            "height": 2.2,
-            "correct": [
-                  "trees"
-            ],
-            "options": [
-                  "stone",
-                  "trees"
+                  "motivation",
+                  "Motivation"
             ]
       }
 ],
     "4087": [
       {
+            "id": "p4087_ex1_1",
+            "type": "fill",
+            "x": 11,
+            "y": 25,
+            "w": 12,
+            "h": 2,
+            "top": 25,
+            "left": 11,
+            "width": 12,
+            "height": 2,
+            "correct": [
+                  "used to",
+                  "used"
+            ]
+      },
+      {
             "id": "p4087_ex1_2",
             "type": "fill",
-            "x": 13,
-            "y": 29.3,
+            "x": 11,
+            "y": 30,
             "w": 14,
-            "h": 2.2,
-            "top": 29.3,
-            "left": 13,
+            "h": 2,
+            "top": 30,
+            "left": 11,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "looked after"
+                  "would go",
+                  "would"
             ]
       },
       {
             "id": "p4087_ex1_3",
             "type": "fill",
-            "x": 18,
-            "y": 32.5,
-            "w": 10,
-            "h": 2.2,
-            "top": 32.5,
-            "left": 18,
-            "width": 10,
-            "height": 2.2,
+            "x": 11,
+            "y": 35,
+            "w": 14,
+            "h": 2,
+            "top": 35,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "phone"
+                  "since 2015",
+                  "since"
             ]
       },
       {
             "id": "p4087_ex1_4",
             "type": "fill",
-            "x": 13,
-            "y": 35.8,
-            "w": 12,
-            "h": 2.2,
-            "top": 35.8,
-            "left": 13,
-            "width": 12,
-            "height": 2.2,
+            "x": 11,
+            "y": 40,
+            "w": 14,
+            "h": 2,
+            "top": 40,
+            "left": 11,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "have had"
-            ]
-      },
-      {
-            "id": "p4087_ex1_5",
-            "type": "fill",
-            "x": 22,
-            "y": 37.5,
-            "w": 10,
-            "h": 2.2,
-            "top": 37.5,
-            "left": 22,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "to stop"
-            ]
-      },
-      {
-            "id": "p4087_ex1_6",
-            "type": "fill",
-            "x": 12,
-            "y": 40.8,
-            "w": 12,
-            "h": 2.2,
-            "top": 40.8,
-            "left": 12,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "would buy",
-                  "'d buy"
+                  "for five years",
+                  "for"
             ]
       },
       {
             "id": "p4087_ex2_1",
             "type": "fill",
-            "x": 26,
-            "y": 46.7,
-            "w": 6,
-            "h": 2.2,
-            "top": 46.7,
-            "left": 26,
-            "width": 6,
-            "height": 2.2,
+            "x": 58,
+            "y": 25,
+            "w": 14,
+            "h": 2,
+            "top": 25,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "if"
+                  "factory",
+                  "Factory"
             ]
       },
       {
             "id": "p4087_ex2_2",
             "type": "fill",
-            "x": 29,
-            "y": 48.2,
-            "w": 8,
-            "h": 2.2,
-            "top": 48.2,
-            "left": 29,
-            "width": 8,
-            "height": 2.2,
+            "x": 58,
+            "y": 30,
+            "w": 14,
+            "h": 2,
+            "top": 30,
+            "left": 58,
+            "width": 14,
+            "height": 2,
             "correct": [
-                  "would",
-                  "'d"
+                  "laboratory",
+                  "lab"
             ]
       },
       {
             "id": "p4087_ex2_3",
             "type": "fill",
-            "x": 15,
-            "y": 51.3,
-            "w": 6,
-            "h": 2.2,
-            "top": 51.3,
-            "left": 15,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "use"
-            ]
-      },
-      {
-            "id": "p4087_ex2_4",
-            "type": "fill",
-            "x": 34,
-            "y": 52.8,
-            "w": 6,
-            "h": 2.2,
-            "top": 52.8,
-            "left": 34,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "used"
-            ]
-      },
-      {
-            "id": "p4087_ex2_5",
-            "type": "fill",
-            "x": 36,
-            "y": 55.9,
-            "w": 6,
-            "h": 2.2,
-            "top": 55.9,
-            "left": 36,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "since"
-            ]
-      },
-      {
-            "id": "p4087_ex2_6",
-            "type": "fill",
-            "x": 31,
-            "y": 57.5,
-            "w": 6,
-            "h": 2.2,
-            "top": 57.5,
-            "left": 31,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "have"
-            ]
-      },
-      {
-            "id": "p4087_ex2_7",
-            "type": "fill",
-            "x": 35,
-            "y": 59,
-            "w": 6,
-            "h": 2.2,
-            "top": 59,
-            "left": 35,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "to"
-            ]
-      },
-      {
-            "id": "p4087_ex2_8",
-            "type": "fill",
-            "x": 37,
-            "y": 62,
-            "w": 6,
-            "h": 2.2,
-            "top": 62,
-            "left": 37,
-            "width": 6,
-            "height": 2.2,
-            "correct": [
-                  "not"
-            ]
-      },
-      {
-            "id": "p4087_ex3_1",
-            "type": "fill",
-            "x": 38,
-            "y": 77.7,
-            "w": 12,
-            "h": 2.2,
-            "top": 77.7,
-            "left": 38,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "journalist"
-            ]
-      },
-      {
-            "id": "p4087_ex3_2",
-            "type": "fill",
-            "x": 25,
-            "y": 79.5,
-            "w": 10,
-            "h": 2.2,
-            "top": 79.5,
-            "left": 25,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "reach"
-            ]
-      },
-      {
-            "id": "p4087_ex3_3",
-            "type": "fill",
-            "x": 42,
-            "y": 81.2,
-            "w": 10,
-            "h": 2.2,
-            "top": 81.2,
-            "left": 42,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "cure"
-            ]
-      },
-      {
-            "id": "p4087_ex3_4",
-            "type": "fill",
-            "x": 45,
-            "y": 84.5,
-            "w": 10,
-            "h": 2.2,
-            "top": 84.5,
-            "left": 45,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "report"
-            ]
-      },
-      {
-            "id": "p4087_ex3_5",
-            "type": "fill",
-            "x": 32,
-            "y": 87.7,
-            "w": 10,
-            "h": 2.2,
-            "top": 87.7,
-            "left": 32,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "recruit"
-            ]
-      },
-      {
-            "id": "p4087_ex3_6",
-            "type": "fill",
-            "x": 42,
-            "y": 89.4,
-            "w": 10,
-            "h": 2.2,
-            "top": 89.4,
-            "left": 42,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "judge"
-            ]
-      },
-      {
-            "id": "p4087_ex4_1",
-            "type": "fill",
-            "x": 63,
-            "y": 21.5,
+            "x": 58,
+            "y": 35,
             "w": 14,
-            "h": 2.2,
-            "top": 21.5,
-            "left": 63,
+            "h": 2,
+            "top": 35,
+            "left": 58,
             "width": 14,
-            "height": 2.2,
+            "height": 2,
             "correct": [
-                  "unemployment"
-            ]
-      },
-      {
-            "id": "p4087_ex4_2",
-            "type": "fill",
-            "x": 64,
-            "y": 23,
-            "w": 12,
-            "h": 2.2,
-            "top": 23,
-            "left": 64,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "Advances"
-            ]
-      },
-      {
-            "id": "p4087_ex4_3",
-            "type": "fill",
-            "x": 74,
-            "y": 28.6,
-            "w": 14,
-            "h": 2.2,
-            "top": 28.6,
-            "left": 74,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "construction"
-            ]
-      },
-      {
-            "id": "p4087_ex4_4",
-            "type": "fill",
-            "x": 55,
-            "y": 32.9,
-            "w": 18,
-            "h": 2.2,
-            "top": 32.9,
-            "left": 55,
-            "width": 18,
-            "height": 2.2,
-            "correct": [
-                  "software developers",
-                  "developers"
-            ]
-      },
-      {
-            "id": "p4087_ex4_5",
-            "type": "fill",
-            "x": 62,
-            "y": 34.3,
-            "w": 12,
-            "h": 2.2,
-            "top": 34.3,
-            "left": 62,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "health care",
-                  "health"
-            ]
-      },
-      {
-            "id": "p4087_ex4_6",
-            "type": "fill",
-            "x": 74,
-            "y": 35.6,
-            "w": 10,
-            "h": 2.2,
-            "top": 35.6,
-            "left": 74,
-            "width": 10,
-            "height": 2.2,
-            "correct": [
-                  "nurses"
-            ]
-      },
-      {
-            "id": "p4087_ex4_7",
-            "type": "fill",
-            "x": 62,
-            "y": 39.9,
-            "w": 14,
-            "h": 2.2,
-            "top": 39.9,
-            "left": 62,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "administration"
-            ]
-      },
-      {
-            "id": "p4087_ex4_8",
-            "type": "fill",
-            "x": 77,
-            "y": 41.3,
-            "w": 12,
-            "h": 2.2,
-            "top": 41.3,
-            "left": 77,
-            "width": 12,
-            "height": 2.2,
-            "correct": [
-                  "paperwork"
-            ]
-      },
-      {
-            "id": "p4087_ex5_1",
-            "type": "select",
-            "x": 63,
-            "y": 46.8,
-            "w": 14,
-            "h": 2.2,
-            "top": 46.8,
-            "left": 63,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "grow up"
-            ],
-            "options": [
-                  "grow up",
-                  "set up"
-            ]
-      },
-      {
-            "id": "p4087_ex5_2",
-            "type": "select",
-            "x": 65,
-            "y": 48.8,
-            "w": 16,
-            "h": 2.2,
-            "top": 48.8,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "in charge of"
-            ],
-            "options": [
-                  "in the middle of",
-                  "in charge of"
-            ]
-      },
-      {
-            "id": "p4087_ex5_3",
-            "type": "select",
-            "x": 65,
-            "y": 52,
-            "w": 16,
-            "h": 2.2,
-            "top": 52,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "in common"
-            ],
-            "options": [
-                  "in trouble",
-                  "in common"
-            ]
-      },
-      {
-            "id": "p4087_ex5_4",
-            "type": "select",
-            "x": 65,
-            "y": 55.3,
-            "w": 16,
-            "h": 2.2,
-            "top": 55.3,
-            "left": 65,
-            "width": 16,
-            "height": 2.2,
-            "correct": [
-                  "carry on"
-            ],
-            "options": [
-                  "put down",
-                  "carry on"
-            ]
-      },
-      {
-            "id": "p4087_ex5_5",
-            "type": "select",
-            "x": 70,
-            "y": 58.5,
-            "w": 14,
-            "h": 2.2,
-            "top": 58.5,
-            "left": 70,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "in a mess"
-            ],
-            "options": [
-                  "in detail",
-                  "in a mess"
-            ]
-      },
-      {
-            "id": "p4087_ex5_6",
-            "type": "select",
-            "x": 63,
-            "y": 61.8,
-            "w": 14,
-            "h": 2.2,
-            "top": 61.8,
-            "left": 63,
-            "width": 14,
-            "height": 2.2,
-            "correct": [
-                  "find out"
-            ],
-            "options": [
-                  "find out",
-                  "put on"
-            ]
-      },
-      {
-            "id": "p4087_ex6_1",
-            "type": "fill",
-            "x": 53,
-            "y": 73.9,
-            "w": 38,
-            "h": 2.2,
-            "top": 73.9,
-            "left": 53,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "I'm sorry, but I don't really agree.",
-                  "I'm sorry, but I don't really agree"
-            ]
-      },
-      {
-            "id": "p4087_ex6_2",
-            "type": "fill",
-            "x": 53,
-            "y": 77.2,
-            "w": 38,
-            "h": 2.2,
-            "top": 77.2,
-            "left": 53,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "I'm currently working for an IT company.",
-                  "I'm currently working for an IT company"
-            ]
-      },
-      {
-            "id": "p4087_ex6_3",
-            "type": "fill",
-            "x": 53,
-            "y": 80.8,
-            "w": 38,
-            "h": 2.2,
-            "top": 80.8,
-            "left": 53,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "I'd really like to get into sales.",
-                  "I'd really like to get into sales"
-            ]
-      },
-      {
-            "id": "p4087_ex6_4",
-            "type": "fill",
-            "x": 53,
-            "y": 84.3,
-            "w": 38,
-            "h": 2.2,
-            "top": 84.3,
-            "left": 53,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "In my opinion, world hunger should not exist.",
-                  "In my opinion world hunger should not exist"
-            ]
-      },
-      {
-            "id": "p4087_ex6_5",
-            "type": "fill",
-            "x": 53,
-            "y": 87.8,
-            "w": 38,
-            "h": 2.2,
-            "top": 87.8,
-            "left": 53,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "I don't have strong views on the media.",
-                  "I don't have strong views on the media"
-            ]
-      },
-      {
-            "id": "p4087_ex6_6",
-            "type": "fill",
-            "x": 53,
-            "y": 91.2,
-            "w": 38,
-            "h": 2.2,
-            "top": 91.2,
-            "left": 53,
-            "width": 38,
-            "height": 2.2,
-            "correct": [
-                  "I find it hard to work in a team.",
-                  "I find it hard to work in a team"
+                  "building site",
+                  "site"
             ]
       }
 ],
