@@ -120383,22 +120383,6 @@
     ],
     "3084": [
       {
-        "id": "p3084_ex2_1",
-        "type": "fill",
-        "x": 11,
-        "y": 45,
-        "w": 35,
-        "h": 2.2,
-        "correct": [
-          "you've won the Oscar for best director.",
-          "you've won the Oscar for best director"
-        ],
-        "top": 45,
-        "left": 11,
-        "width": 35,
-        "height": 2.2
-      },
-      {
         "id": "p3084_ex2_2",
         "type": "fill",
         "x": 11,
@@ -120409,8 +120393,8 @@
           "Who's drunk my coffee?",
           "Who's drunk my coffee"
         ],
-        "top": 48.5,
-        "left": 11,
+        "top": 50.1,
+        "left": 13.3,
         "width": 35,
         "height": 2.2
       },
@@ -120425,8 +120409,8 @@
           "She's met someone online.",
           "She's met someone online"
         ],
-        "top": 52,
-        "left": 11,
+        "top": 53.6,
+        "left": 13.1,
         "width": 35,
         "height": 2.2
       },
@@ -120441,8 +120425,8 @@
           "We've begun to work.",
           "We've begun to work"
         ],
-        "top": 55.5,
-        "left": 11,
+        "top": 57.3,
+        "left": 13.1,
         "width": 35,
         "height": 2.2
       },
@@ -122709,7 +122693,7 @@
     "3081": 1793517363598,
     "3082": 1793517485546,
     "3083": 1793517485546,
-    "3084": 1793517504514,
+    "3084": 1793517515946,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -123419,5 +123403,5 @@
       }
     }
   },
-  "updatedAt": 1793517505167
+  "updatedAt": 1793517522316
 }
