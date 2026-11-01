@@ -118588,6 +118588,298 @@
         "height": 2.2
       }
     ],
+    "3077": [
+      {
+        "id": "p3077_ex4_2",
+        "type": "fill",
+        "x": 74,
+        "y": 26.5,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "to sell"
+        ],
+        "top": 25,
+        "left": 76.9,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex4_3",
+        "type": "fill",
+        "x": 67,
+        "y": 28.1,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "to teach"
+        ],
+        "top": 27,
+        "left": 67.1,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex4_4",
+        "type": "fill",
+        "x": 57,
+        "y": 33,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "to show"
+        ],
+        "top": 31.6,
+        "left": 58,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex4_5",
+        "type": "fill",
+        "x": 67,
+        "y": 36.2,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "to explain"
+        ],
+        "top": 34.9,
+        "left": 65.4,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex4_6",
+        "type": "fill",
+        "x": 57,
+        "y": 39.5,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "to look"
+        ],
+        "top": 38.1,
+        "left": 57.2,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex4_7",
+        "type": "fill",
+        "x": 74,
+        "y": 39.5,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "to find"
+        ],
+        "top": 36.6,
+        "left": 81.6,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex4_8",
+        "type": "fill",
+        "x": 57,
+        "y": 41.1,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "to read"
+        ],
+        "top": 39.8,
+        "left": 49.2,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_2a",
+        "type": "fill",
+        "x": 23,
+        "y": 73,
+        "w": 15,
+        "h": 2.2,
+        "correct": [
+          "'s going to get",
+          "is going to get"
+        ],
+        "top": 73,
+        "left": 23,
+        "width": 15,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_2b",
+        "type": "fill",
+        "x": 50,
+        "y": 73,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "to earn"
+        ],
+        "top": 73,
+        "left": 50,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_3a",
+        "type": "fill",
+        "x": 15,
+        "y": 76.5,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "are you going to buy"
+        ],
+        "top": 76.5,
+        "left": 15,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_3b",
+        "type": "fill",
+        "x": 50,
+        "y": 76.5,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "to wear"
+        ],
+        "top": 76.5,
+        "left": 50,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_4a",
+        "type": "fill",
+        "x": 23,
+        "y": 80,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "are going to meet",
+          "'re going to meet"
+        ],
+        "top": 80,
+        "left": 23,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_4b",
+        "type": "fill",
+        "x": 55,
+        "y": 80,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "to talk about"
+        ],
+        "top": 80,
+        "left": 55,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_5a",
+        "type": "fill",
+        "x": 18,
+        "y": 83.5,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "'m going to ask",
+          "am going to ask"
+        ],
+        "top": 83.5,
+        "left": 18,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_5b",
+        "type": "fill",
+        "x": 50,
+        "y": 83.5,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "to lend"
+        ],
+        "top": 83.5,
+        "left": 50,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_6a",
+        "type": "fill",
+        "x": 23,
+        "y": 87,
+        "w": 15,
+        "h": 2.2,
+        "correct": [
+          "'s going to use",
+          "is going to use"
+        ],
+        "top": 87,
+        "left": 23,
+        "width": 15,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_6b",
+        "type": "fill",
+        "x": 50,
+        "y": 87,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "to write"
+        ],
+        "top": 87,
+        "left": 50,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_7a",
+        "type": "fill",
+        "x": 23,
+        "y": 90.5,
+        "w": 16,
+        "h": 2.2,
+        "correct": [
+          "'re going to make",
+          "are going to make"
+        ],
+        "top": 90.5,
+        "left": 23,
+        "width": 16,
+        "height": 2.2
+      },
+      {
+        "id": "p3077_ex6_7b",
+        "type": "fill",
+        "x": 50,
+        "y": 90.5,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "to take"
+        ],
+        "top": 90.5,
+        "left": 50,
+        "width": 12,
+        "height": 2.2
+      }
+    ],
     "4004": [
       {
         "id": "p4004_ex1_2",
@@ -120598,6 +120890,7 @@
     "3074": 1793516970339,
     "3075": 1793516970339,
     "3076": 1793517017795,
+    "3077": 1793517033488,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -121307,5 +121600,5 @@
       }
     }
   },
-  "updatedAt": 1793517023340
+  "updatedAt": 1793517040622
 }
