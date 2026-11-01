@@ -123638,6 +123638,271 @@
         ]
       }
     ],
+    "4085": [
+      {
+        "id": "p4085_ex1_1",
+        "type": "fill",
+        "x": 10,
+        "y": 23,
+        "w": 5,
+        "h": 2.2,
+        "top": 23,
+        "left": 10,
+        "width": 5,
+        "height": 2.2,
+        "correct": [
+          "c"
+        ]
+      },
+      {
+        "id": "p4085_ex1_2",
+        "type": "fill",
+        "x": 10,
+        "y": 25,
+        "w": 5,
+        "h": 2.2,
+        "top": 25,
+        "left": 10,
+        "width": 5,
+        "height": 2.2,
+        "correct": [
+          "e"
+        ]
+      },
+      {
+        "id": "p4085_ex1_3",
+        "type": "fill",
+        "x": 10,
+        "y": 28,
+        "w": 5,
+        "h": 2.2,
+        "top": 28,
+        "left": 10,
+        "width": 5,
+        "height": 2.2,
+        "correct": [
+          "h"
+        ]
+      },
+      {
+        "id": "p4085_ex1_4",
+        "type": "fill",
+        "x": 10,
+        "y": 31,
+        "w": 5,
+        "h": 2.2,
+        "top": 31,
+        "left": 10,
+        "width": 5,
+        "height": 2.2,
+        "correct": [
+          "a"
+        ]
+      },
+      {
+        "id": "p4085_ex1_5",
+        "type": "fill",
+        "x": 10,
+        "y": 34.6,
+        "w": 5,
+        "h": 2.2,
+        "top": 34.6,
+        "left": 10,
+        "width": 5,
+        "height": 2.2,
+        "correct": [
+          "g"
+        ]
+      },
+      {
+        "id": "p4085_ex1_6",
+        "type": "fill",
+        "x": 10,
+        "y": 36.3,
+        "w": 5,
+        "h": 2.2,
+        "top": 36.3,
+        "left": 10,
+        "width": 5,
+        "height": 2.2,
+        "correct": [
+          "d"
+        ]
+      },
+      {
+        "id": "p4085_ex1_7",
+        "type": "fill",
+        "x": 10,
+        "y": 38,
+        "w": 5,
+        "h": 2.2,
+        "top": 38,
+        "left": 10,
+        "width": 5,
+        "height": 2.2,
+        "correct": [
+          "b"
+        ]
+      },
+      {
+        "id": "p4085_ex1_8",
+        "type": "fill",
+        "x": 10,
+        "y": 41.2,
+        "w": 5,
+        "h": 2.2,
+        "top": 41.2,
+        "left": 10,
+        "width": 5,
+        "height": 2.2,
+        "correct": [
+          "f"
+        ]
+      },
+      {
+        "id": "p4085_ex2_1",
+        "type": "fill",
+        "x": 17,
+        "y": 56.5,
+        "w": 14,
+        "h": 2.2,
+        "top": 56.5,
+        "left": 17,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "managed",
+          "managed staff"
+        ]
+      },
+      {
+        "id": "p4085_ex2_2",
+        "type": "fill",
+        "x": 21,
+        "y": 58.6,
+        "w": 14,
+        "h": 2.2,
+        "top": 58.6,
+        "left": 21,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "training",
+          "gave training"
+        ]
+      },
+      {
+        "id": "p4085_ex2_3",
+        "type": "fill",
+        "x": 17,
+        "y": 62.8,
+        "w": 14,
+        "h": 2.2,
+        "top": 62.8,
+        "left": 17,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "attended",
+          "attended meetings"
+        ]
+      },
+      {
+        "id": "p4085_ex2_4",
+        "type": "fill",
+        "x": 33,
+        "y": 66.4,
+        "w": 16,
+        "h": 2.2,
+        "top": 66.4,
+        "left": 33,
+        "width": 16,
+        "height": 2.2,
+        "correct": [
+          "presentations"
+        ]
+      },
+      {
+        "id": "p4085_ex3a_1",
+        "type": "fill",
+        "x": 65,
+        "y": 61.4,
+        "w": 25,
+        "h": 2.2,
+        "top": 61.4,
+        "left": 65,
+        "width": 25,
+        "height": 2.2,
+        "correct": [
+          "I've got a university degree in",
+          "I've got a degree"
+        ]
+      },
+      {
+        "id": "p4085_ex3a_2",
+        "type": "fill",
+        "x": 65,
+        "y": 68,
+        "w": 25,
+        "h": 2.2,
+        "top": 73.1,
+        "left": 57.8,
+        "width": 25,
+        "height": 2.2,
+        "correct": [
+          "I'm currently working for",
+          "I'm working for"
+        ]
+      },
+      {
+        "id": "p4085_ex3a_3",
+        "type": "fill",
+        "x": 65,
+        "y": 74,
+        "w": 25,
+        "h": 2.2,
+        "top": 76.9,
+        "left": 66.7,
+        "width": 25,
+        "height": 2.2,
+        "correct": [
+          "I'd really like to get into",
+          "I want to get into"
+        ]
+      },
+      {
+        "id": "p4085_ex3a_4",
+        "type": "fill",
+        "x": 65,
+        "y": 78,
+        "w": 25,
+        "h": 2.2,
+        "top": 79.6,
+        "left": 66.1,
+        "width": 25,
+        "height": 2.2,
+        "correct": [
+          "I'm good at",
+          "I am good at"
+        ]
+      },
+      {
+        "id": "p4085_ex3a_5",
+        "type": "fill",
+        "x": 65,
+        "y": 82,
+        "w": 25,
+        "h": 2.2,
+        "top": 81.2,
+        "left": 73.8,
+        "width": 25,
+        "height": 2.2,
+        "correct": [
+          "I find it hard to",
+          "I find it difficult to"
+        ]
+      }
+    ],
     "4086": [
       {
         "id": "p4086_ex1_1",
@@ -123710,8 +123975,8 @@
         "y": 41.1,
         "w": 15,
         "h": 2.2,
-        "top": 40.8,
-        "left": 37.3,
+        "top": 41.1,
+        "left": 38.2,
         "width": 15,
         "height": 2.2,
         "correct": [
@@ -123729,8 +123994,8 @@
         "y": 42.7,
         "w": 16,
         "h": 2.2,
-        "top": 42.5,
-        "left": 35.3,
+        "top": 42.7,
+        "left": 35.8,
         "width": 16,
         "height": 2.2,
         "correct": [
@@ -123749,7 +124014,7 @@
         "w": 24,
         "h": 2.2,
         "top": 45.8,
-        "left": 24.4,
+        "left": 23.7,
         "width": 24,
         "height": 2.2,
         "correct": [
@@ -124742,8 +125007,9 @@
     "4007": 1793549222748,
     "4008": 1793549222748,
     "4009": 1793549222748,
-    "4086": 1793549231583,
-    "4087": 1793193184959
+    "4085": 1793549259223,
+    "4086": 1793549242631,
+    "4087": 1793549242632
   },
   "centerSettings": {
     "card": "8600 4912 7731 9024",
@@ -125742,5 +126008,5 @@
       }
     }
   },
-  "updatedAt": 1793549231684
+  "updatedAt": 1793549259321
 }
