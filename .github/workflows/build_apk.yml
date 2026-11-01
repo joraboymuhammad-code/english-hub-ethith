@@ -35,21 +35,23 @@ jobs:
       - name: Generate Release Keystore
         working-directory: ./android
         run: |
-          keytool -genkeypair -v -keystore release.keystore -alias ethith -keyalg RSA -keysize 2048 -validity 10000 -storepass ethith2026 -keypass ethith2026 -dname "CN=ETHITH Education, OU=Education, O=ETHITH, L=Tashkent, C=UZ"
+          keytool -genkeypair -v -keystore release.keystore -alias ethith -keyalg RSA -keysize 2048 -validity 10000 -storepass ethith2026 -keypass ethith2026 -dname "CN=English House by ETHITH, OU=Education, O=ETHITH, L=Tashkent, C=UZ"
 
       - name: Build APK and AAB
         working-directory: ./android
         run: |
           gradle assembleRelease bundleRelease --stacktrace
           mkdir -p output
-          cp app/build/outputs/apk/release/app-release.apk output/ETHITH-Education.apk
-          cp app/build/outputs/bundle/release/app-release.aab output/ETHITH-Education.aab
+          cp app/build/outputs/apk/release/app-release.apk output/English-House-by-ETHITH.apk
+          cp app/build/outputs/bundle/release/app-release.aab output/English-House-by-ETHITH.aab
+          cp output/English-House-by-ETHITH.apk output/ETHITH-Education.apk
+          cp output/English-House-by-ETHITH.aab output/ETHITH-Education.aab
           ls -lh output/
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ethith-app-release
+          name: english-house-release
           path: android/output/*
 
       - name: Publish GitHub Release with APK & AAB
@@ -57,17 +59,18 @@ jobs:
         if: success()
         with:
           tag_name: apk-latest
-          name: "ETHITH Education Android App (APK & AAB Bundle)"
+          name: "English House by ETHITH — Android App (APK & AAB)"
           body: |
-            ### 📱 ETHITH Education — Android Rasmiy Ilovasi (APK & Google Play AAB)
+            ### 📱 English House by ETHITH — Rasmiy Android Ilovasi
             
-            Ushbu ilova real-vaqtda rasmiy sayt bilan ishlaydi va har qanday o'zgarishlar ilovaning o'zida bir zumda aks etadi.
+            Ushbu ilovaga **English House** rasmiy oltin emblemasi o'rnatilgan va ilova nomi **English House by ETHITH** deb nomlangan.
 
-            - **To‘g‘ridan-to‘g‘ri o‘rnatish uchun APK**: [ETHITH-Education.apk](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/ETHITH-Education.apk)
-            - **Google Play Console uchun AAB**: [ETHITH-Education.aab](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/ETHITH-Education.aab)
-            - **Versiya**: 2.0.0 (Kod: 2026)
-            - **Platforma**: Android 5.0+ (Lollipop va undan yuqori)
+            - **To‘g‘ridan-to‘g‘ri o‘rnatish uchun APK**: [English-House-by-ETHITH.apk](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/English-House-by-ETHITH.apk)
+            - **Google Play Console uchun AAB**: [English-House-by-ETHITH.aab](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/English-House-by-ETHITH.aab)
+            - **Doimiy yangilanish**: Saytga kiritilgan har bir o'zgarish ilovada avtomatik aks etadi.
           files: |
+            android/output/English-House-by-ETHITH.apk
+            android/output/English-House-by-ETHITH.aab
             android/output/ETHITH-Education.apk
             android/output/ETHITH-Education.aab
         env:

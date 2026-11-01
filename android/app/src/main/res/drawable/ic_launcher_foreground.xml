@@ -1,0 +1,29 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group>
+        <!-- English House Golden Roof -->
+        <path
+            android:pathData="M28,52 L54,28 L80,52"
+            android:strokeColor="#FFD91A"
+            android:strokeWidth="5"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <!-- English House Walls -->
+        <path
+            android:pathData="M35,50 L35,74 L73,74 L73,50"
+            android:strokeColor="#FFD91A"
+            android:strokeWidth="5"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <!-- English House Doorway -->
+        <path
+            android:pathData="M48,74 L48,61 L60,61 L60,74"
+            android:strokeColor="#FFD91A"
+            android:strokeWidth="5"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+    </group>
+</vector>
