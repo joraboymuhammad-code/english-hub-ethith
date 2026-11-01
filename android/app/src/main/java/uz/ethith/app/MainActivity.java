@@ -59,6 +59,29 @@ public class MainActivity extends AppCompatActivity {
         swipeRefresh.setOnRefreshListener(() -> loadFreshUrl());
     }
 
+    public class WebAppInterface {
+        @android.webkit.JavascriptInterface
+        public void reloadFresh() {
+            runOnUiThread(() -> loadFreshUrl());
+        }
+
+        @android.webkit.JavascriptInterface
+        public boolean isAndroidApp() {
+            return true;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (webView != null) {
+            webView.evaluateJavascript(
+                "if (typeof window.checkEthithVersionNow === 'function') { window.checkEthithVersionNow(true); }",
+                null
+            );
+        }
+    }
+
     private void loadFreshUrl() {
         if (webView != null) {
             webView.clearCache(true);
@@ -82,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         settings.setMediaPlaybackRequiresUserGesture(false);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+
+        webView.addJavascriptInterface(new WebAppInterface(), "AndroidBridge");
 
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webView.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);

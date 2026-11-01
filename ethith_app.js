@@ -1660,7 +1660,7 @@
   // ====================================================
   // ETHITH CLIENT BUILD VERSION & CACHE MANAGEMENT
   // ====================================================
-  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "2026.10.29.1530";
+  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.01.0065";
 
   (function ensureFreshBuildOnStartup() {
     function purgeCachesAndReload(newVer) {
@@ -1677,28 +1677,58 @@
         }
       } catch (e) {}
 
+      // If running inside Android APK with Native Bridge
+      if (window.AndroidBridge && typeof window.AndroidBridge.reloadFresh === 'function') {
+        try {
+          window.AndroidBridge.reloadFresh();
+          return;
+        } catch (e) {
+          console.warn('AndroidBridge reload failed, falling back to window.location', e);
+        }
+      }
+
       var u = new URL(window.location.href);
       u.searchParams.set('_v', newVer || Date.now());
       u.searchParams.set('_t', Date.now());
       window.location.replace(u.toString());
+      setTimeout(function() {
+        window.location.reload(true);
+      }, 500);
     }
 
-    // Check version politely without annoying spam loops
-    function checkVersion() {
+    window.purgeCachesAndReload = purgeCachesAndReload;
+
+    // Check version politely and reliably
+    function checkVersion(force) {
       try {
-        fetch('version.json?_t=' + Date.now(), { cache: 'no-store' })
+        var base = (window.location.origin && window.location.origin !== 'null') ? window.location.origin : '';
+        var path = window.location.pathname ? window.location.pathname.replace(/\/[^\/]*$/, '/') : '/';
+        var verUrl = base + path + 'version.json?_t=' + Date.now();
+
+        fetch(verUrl, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache'
+          }
+        })
           .then(function(r) { return r.ok ? r.json() : null; })
           .then(function(vData) {
             if (!vData || !vData.version) return;
+
+            var currentVer = String(window.ETHITH_BUILD_VERSION || '').trim();
+            var remoteVer = String(vData.version).trim();
+
             // If current page version matches latest, mark as synced and hide any banner
-            if (vData.version === window.ETHITH_BUILD_VERSION) {
-              sessionStorage.setItem('ethith_dismissed_ver', vData.version);
+            if (remoteVer === currentVer) {
+              sessionStorage.setItem('ethith_dismissed_ver', remoteVer);
               var b = document.getElementById('eeAutoUpdateBanner');
               if (b) b.remove();
               return;
             }
-            // If user already dismissed this update version, do not nag them
-            if (sessionStorage.getItem('ethith_dismissed_ver') === vData.version) {
+
+            // If user already dismissed this specific update version and not forced, do not nag them
+            if (!force && sessionStorage.getItem('ethith_dismissed_ver') === remoteVer) {
               return;
             }
 
@@ -1706,41 +1736,98 @@
             if (!banner) {
               banner = document.createElement('div');
               banner.id = 'eeAutoUpdateBanner';
-              banner.style.cssText = 'position:fixed;top:16px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;padding:10px 20px;border-radius:30px;box-shadow:0 12px 35px rgba(0,0,0,0.85);z-index:2147483647;font-weight:800;font-size:13px;display:flex;align-items:center;gap:12px;border:1.5px solid #38bdf8;';
-              banner.innerHTML = '<span>⚡ Tizim yangilandi (v' + vData.version + ')</span>' +
-                '<button id="eeUpdateNowBtn" style="background:#ffffff;color:#0284c7;border:none;padding:5px 12px;border-radius:15px;font-weight:900;cursor:pointer;font-size:12px;">Yangilash</button>' +
-                '<button id="eeDismissUpdateBtn" style="background:transparent;color:#93c5fd;border:none;font-weight:900;cursor:pointer;font-size:15px;padding:0 4px;" title="Yopish">✕</button>';
+              banner.style.cssText = [
+                'position: fixed',
+                'bottom: 24px',
+                'left: 50%',
+                'transform: translateX(-50%)',
+                'width: calc(100% - 32px)',
+                'max-width: 440px',
+                'background: linear-gradient(135deg, #0284c7 0%, #1e40af 100%)',
+                'color: #ffffff',
+                'padding: 12px 18px',
+                'border-radius: 20px',
+                'box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 0 1.5px rgba(56, 189, 248, 0.75)',
+                'z-index: 2147483647',
+                'display: flex',
+                'align-items: center',
+                'justify-content: space-between',
+                'gap: 12px',
+                'backdrop-filter: blur(12px)',
+                'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                'animation: eeBannerSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
+              ].join(';');
+
+              var displayVer = remoteVer.startsWith('v') ? remoteVer : 'v' + remoteVer;
+
+              banner.innerHTML =
+                '<div style="display:flex;align-items:center;gap:10px;min-width:0;">' +
+                  '<div style="width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">⚡</div>' +
+                  '<div style="min-width:0;">' +
+                    '<div style="font-weight:900;font-size:13px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Yangi versiya chiqdi!</div>' +
+                    '<div style="font-size:11px;opacity:0.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + displayVer + ' tayyor</div>' +
+                  '</div>' +
+                '</div>' +
+                '<div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">' +
+                  '<button id="eeUpdateNowBtn" style="background:#ffffff;color:#0369a1;border:none;padding:7px 14px;border-radius:12px;font-weight:900;cursor:pointer;font-size:12px;box-shadow:0 4px 12px rgba(0,0,0,0.25);transition:transform 0.1s;">Yangilash</button>' +
+                  '<button id="eeDismissUpdateBtn" style="background:rgba(255,255,255,0.15);color:#ffffff;border:none;border-radius:10px;width:28px;height:28px;font-weight:900;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;padding:0;" title="Yopish">✕</button>' +
+                '</div>';
 
               document.body.appendChild(banner);
 
               var upBtn = document.getElementById('eeUpdateNowBtn');
               if (upBtn) {
                 upBtn.onclick = function() {
-                  sessionStorage.setItem('ethith_dismissed_ver', vData.version);
-                  window.ETHITH_BUILD_VERSION = vData.version;
-                  purgeCachesAndReload(vData.version);
+                  upBtn.disabled = true;
+                  upBtn.innerText = 'Yuklanmoqda...';
+                  upBtn.style.opacity = '0.7';
+                  sessionStorage.setItem('ethith_dismissed_ver', remoteVer);
+                  window.ETHITH_BUILD_VERSION = remoteVer;
+                  setTimeout(function() {
+                    purgeCachesAndReload(remoteVer);
+                  }, 150);
                 };
               }
 
               var disBtn = document.getElementById('eeDismissUpdateBtn');
               if (disBtn) {
                 disBtn.onclick = function() {
-                  sessionStorage.setItem('ethith_dismissed_ver', vData.version);
+                  sessionStorage.setItem('ethith_dismissed_ver', remoteVer);
                   banner.remove();
                 };
               }
             }
-          }).catch(function() {});
-      } catch (e) {}
+          }).catch(function(err) {
+            console.warn('ETHITH version check error:', err);
+          });
+      } catch (e) {
+        console.warn('ETHITH version check exception:', e);
+      }
     }
 
-    // Fast responsive version checker: on startup, on window focus, and polled every 15 seconds
-    setTimeout(checkVersion, 2000);
-    setInterval(checkVersion, 15 * 1000);
-    window.addEventListener('focus', checkVersion);
+    // Expose globally so Android Activity, console, or buttons can trigger it anytime
+    window.checkEthithVersionNow = checkVersion;
+
+    // Keyframes for smooth entrance
+    try {
+      if (!document.getElementById('eeBannerKeyframes')) {
+        var styleEl = document.createElement('style');
+        styleEl.id = 'eeBannerKeyframes';
+        styleEl.textContent = '@keyframes eeBannerSlideUp { from { transform: translate(-50%, 40px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }';
+        document.head.appendChild(styleEl);
+      }
+    } catch (e) {}
+
+    // Polling triggers: immediate on startup, on focus, on resume, and every 8 seconds
+    setTimeout(function() { checkVersion(true); }, 800);
+    setTimeout(function() { checkVersion(); }, 3000);
+    setInterval(function() { checkVersion(); }, 8 * 1000);
+
+    window.addEventListener('focus', function() { checkVersion(true); });
     document.addEventListener('visibilitychange', function() {
-      if (document.visibilityState === 'visible') checkVersion();
+      if (document.visibilityState === 'visible') checkVersion(true);
     });
+    window.addEventListener('online', function() { checkVersion(true); });
   })();
 
 })(window);
