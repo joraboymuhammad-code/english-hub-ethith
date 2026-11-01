@@ -116869,22 +116869,6 @@
         "height": 2.2
       },
       {
-        "id": "p3069_ex5_1",
-        "type": "fill",
-        "x": 11,
-        "y": 62.8,
-        "w": 35,
-        "h": 2.2,
-        "correct": [
-          "The Congo River is the deepest river in the world.",
-          "The Congo River is the deepest river in the world"
-        ],
-        "top": 64.8,
-        "left": 13,
-        "width": 35,
-        "height": 2.2
-      },
-      {
         "id": "p3069_ex5_2",
         "type": "fill",
         "x": 11,
@@ -116895,8 +116879,8 @@
           "Summer is usually the hottest time of the year.",
           "Summer is usually the hottest time of the year"
         ],
-        "top": 68.2,
-        "left": 13.2,
+        "top": 64.8,
+        "left": 13.3,
         "width": 35,
         "height": 2.2
       },
@@ -116911,8 +116895,8 @@
           "What is the oldest city in the world?",
           "What is the oldest city in the world"
         ],
-        "top": 71.8,
-        "left": 13.4,
+        "top": 68.9,
+        "left": 13.3,
         "width": 35,
         "height": 2.2
       },
@@ -116927,8 +116911,8 @@
           "Is Mount Kilimanjaro the highest mountain in Africa?",
           "Is Mount Kilimanjaro the highest mountain in Africa"
         ],
-        "top": 75.4,
-        "left": 13.2,
+        "top": 72,
+        "left": 13.5,
         "width": 35,
         "height": 2.2
       },
@@ -116943,8 +116927,8 @@
           "Which is the most interesting museum in Rome?",
           "Which is the most interesting museum in Rome"
         ],
-        "top": 78.6,
-        "left": 13.1,
+        "top": 75.5,
+        "left": 13.5,
         "width": 35,
         "height": 2.2
       },
@@ -119058,7 +119042,7 @@
     "3066": 1793515895423,
     "3067": 1793515895423,
     "3068": 1793516087498,
-    "3069": 1793516127221,
+    "3069": 1793516149365,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -119768,5 +119752,5 @@
       }
     }
   },
-  "updatedAt": 1793516135752
+  "updatedAt": 1793516149560
 }
