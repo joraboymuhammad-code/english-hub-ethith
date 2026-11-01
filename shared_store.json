@@ -121082,22 +121082,6 @@
     ],
     "3087": [
       {
-        "id": "p3087_ex1_1",
-        "type": "fill",
-        "x": 8.8,
-        "y": 24.5,
-        "w": 38,
-        "h": 2.2,
-        "correct": [
-          "They're going to organize a charity race.",
-          "They're going to organize a charity race"
-        ],
-        "top": 24.5,
-        "left": 8.8,
-        "width": 38,
-        "height": 2.2
-      },
-      {
         "id": "p3087_ex1_2",
         "type": "fill",
         "x": 8.8,
@@ -121108,8 +121092,8 @@
           "I'm saving money to buy a new bicycle.",
           "I'm saving money to buy a new bicycle"
         ],
-        "top": 27.9,
-        "left": 8.8,
+        "top": 26.6,
+        "left": 11.1,
         "width": 38,
         "height": 2.2
       },
@@ -121124,8 +121108,8 @@
           "He's never used a GPS before.",
           "He's never used a GPS before"
         ],
-        "top": 31.4,
-        "left": 8.8,
+        "top": 30.4,
+        "left": 11.5,
         "width": 38,
         "height": 2.2
       },
@@ -121140,8 +121124,8 @@
           "Is your mum going to teach you to drive?",
           "Is your mum going to teach you to drive"
         ],
-        "top": 34.8,
-        "left": 8.8,
+        "top": 33.7,
+        "left": 11.5,
         "width": 38,
         "height": 2.2
       },
@@ -121156,8 +121140,8 @@
           "We went to a concert last night.",
           "We went to a concert last night"
         ],
-        "top": 38.2,
-        "left": 8.8,
+        "top": 36.9,
+        "left": 11.3,
         "width": 38,
         "height": 2.2
       },
@@ -121204,8 +121188,8 @@
           "You aren't going to have a lot of time tomorrow.",
           "You aren't going to have a lot of time tomorrow"
         ],
-        "top": 48.6,
-        "left": 8.8,
+        "top": 47.3,
+        "left": 10.8,
         "width": 38,
         "height": 2.2
       },
@@ -123720,7 +123704,7 @@
     "3084": 1793517558753,
     "3085": 1793517649908,
     "3086": 1793517696907,
-    "3087": 1793517726697,
+    "3087": 1793517744827,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -124430,5 +124414,5 @@
       }
     }
   },
-  "updatedAt": 1793517728739
+  "updatedAt": 1793517745136
 }
