@@ -123404,6 +123404,274 @@
         ]
       }
     ],
+    "4009": [
+      {
+        "id": "p4009_ex1_1",
+        "type": "select",
+        "x": 25,
+        "y": 28,
+        "w": 18,
+        "h": 2.2,
+        "top": 28,
+        "left": 25,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "damp"
+        ],
+        "options": [
+          "damp",
+          "humid",
+          "mild",
+          "pleasant",
+          "showers",
+          "thunderstorm"
+        ]
+      },
+      {
+        "id": "p4009_ex1_2",
+        "type": "select",
+        "x": 25,
+        "y": 33,
+        "w": 18,
+        "h": 2.2,
+        "top": 50.2,
+        "left": 8.1,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "showers"
+        ],
+        "options": [
+          "damp",
+          "humid",
+          "mild",
+          "pleasant",
+          "showers",
+          "thunderstorm"
+        ]
+      },
+      {
+        "id": "p4009_ex1_3",
+        "type": "select",
+        "x": 25,
+        "y": 38,
+        "w": 18,
+        "h": 2.2,
+        "top": 53.6,
+        "left": 15.8,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "pleasant"
+        ],
+        "options": [
+          "damp",
+          "humid",
+          "mild",
+          "pleasant",
+          "showers",
+          "thunderstorm"
+        ]
+      },
+      {
+        "id": "p4009_ex1_4",
+        "type": "select",
+        "x": 25,
+        "y": 43,
+        "w": 18,
+        "h": 2.2,
+        "top": 56.2,
+        "left": 10.7,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "humid"
+        ],
+        "options": [
+          "damp",
+          "humid",
+          "mild",
+          "pleasant",
+          "showers",
+          "thunderstorm"
+        ]
+      },
+      {
+        "id": "p4009_ex1_5",
+        "type": "select",
+        "x": 25,
+        "y": 48,
+        "w": 18,
+        "h": 2.2,
+        "top": 55.3,
+        "left": 34.6,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "thunderstorm"
+        ],
+        "options": [
+          "damp",
+          "humid",
+          "mild",
+          "pleasant",
+          "showers",
+          "thunderstorm"
+        ]
+      },
+      {
+        "id": "p4009_ex1_6",
+        "type": "select",
+        "x": 25,
+        "y": 53,
+        "w": 18,
+        "h": 2.2,
+        "top": 60.1,
+        "left": 33.8,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "mild"
+        ],
+        "options": [
+          "damp",
+          "humid",
+          "mild",
+          "pleasant",
+          "showers",
+          "thunderstorm"
+        ]
+      },
+      {
+        "id": "p4009_ex2_1",
+        "type": "fill",
+        "x": 13,
+        "y": 67,
+        "w": 18,
+        "h": 2.2,
+        "top": 67,
+        "left": 13,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "freezing",
+          "cold"
+        ]
+      },
+      {
+        "id": "p4009_ex2_2",
+        "type": "fill",
+        "x": 33,
+        "y": 67,
+        "w": 18,
+        "h": 2.2,
+        "top": 67,
+        "left": 33,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "boiling",
+          "hot"
+        ]
+      },
+      {
+        "id": "p4009_ex2_3",
+        "type": "fill",
+        "x": 13,
+        "y": 76,
+        "w": 18,
+        "h": 2.2,
+        "top": 76,
+        "left": 13,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "windy",
+          "breezy"
+        ]
+      },
+      {
+        "id": "p4009_ex2_4",
+        "type": "fill",
+        "x": 33,
+        "y": 76,
+        "w": 18,
+        "h": 2.2,
+        "top": 76,
+        "left": 33,
+        "width": 18,
+        "height": 2.2,
+        "correct": [
+          "sunny",
+          "bright"
+        ]
+      },
+      {
+        "id": "p4009_ex5_1",
+        "type": "fill",
+        "x": 65,
+        "y": 35,
+        "w": 14,
+        "h": 2.2,
+        "top": 35,
+        "left": 65,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "because",
+          "as"
+        ]
+      },
+      {
+        "id": "p4009_ex5_2",
+        "type": "fill",
+        "x": 65,
+        "y": 42,
+        "w": 14,
+        "h": 2.2,
+        "top": 42,
+        "left": 65,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "so",
+          "therefore"
+        ]
+      },
+      {
+        "id": "p4009_ex5_3",
+        "type": "fill",
+        "x": 65,
+        "y": 49,
+        "w": 14,
+        "h": 2.2,
+        "top": 49,
+        "left": 65,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "although",
+          "even though"
+        ]
+      },
+      {
+        "id": "p4009_ex5_4",
+        "type": "fill",
+        "x": 65,
+        "y": 56,
+        "w": 14,
+        "h": 2.2,
+        "top": 56,
+        "left": 65,
+        "width": 14,
+        "height": 2.2,
+        "correct": [
+          "but",
+          "however"
+        ]
+      }
+    ],
     "4086": [
       {
         "id": "p4086_ex1_1",
@@ -124507,6 +124775,7 @@
     "4006": 1793546143117,
     "4007": 1793546201875,
     "4008": 1793546257396,
+    "4009": 1793546359801,
     "4086": 1793193077149,
     "4087": 1793193184959
   },
@@ -125507,5 +125776,5 @@
       }
     }
   },
-  "updatedAt": 1793546262450
+  "updatedAt": 1793546360385
 }
