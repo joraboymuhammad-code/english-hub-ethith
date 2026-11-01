@@ -5900,11 +5900,40 @@ EA.render = function(container, preserveScrollLeft) {
       .replace(/[^a-z0-9]/g, '');
   };
 
-  EA.generateStudentCredentials = function(firstName, lastName, existingNum) {
+  EA.generateStudentCredentials = function(firstName, lastName, existingNum, currentStudentId) {
     var cleanF = EA.cleanUzbekAlphanumeric(firstName) || 'student';
     var cleanL = EA.cleanUzbekAlphanumeric(lastName) || 'user';
+    var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
+    var allClasses = (typeof getAvailableClasses === 'function') ? getAvailableClasses() : (S_app.classes || []);
+
+    // Gather set of all existing used logins across platform to guarantee 100% uniqueness
+    var usedLogins = new Set();
+    if (Array.isArray(S_app.accounts)) {
+      S_app.accounts.forEach(function(a) {
+        if (a && a.login && (!currentStudentId || (a.id !== currentStudentId && a.studentId !== currentStudentId))) {
+          usedLogins.add(a.login.toLowerCase().trim());
+        }
+      });
+    }
+    allClasses.forEach(function(cls) {
+      if (cls && Array.isArray(cls.students)) {
+        cls.students.forEach(function(s) {
+          if (s && s.login && (!currentStudentId || (s.id !== currentStudentId))) {
+            usedLogins.add(s.login.toLowerCase().trim());
+          }
+        });
+      }
+    });
+
     var num = existingNum || Math.floor(100 + Math.random() * 900);
     var login = cleanF + '_' + num + '_' + cleanL;
+    var attempts = 0;
+    while (usedLogins.has(login.toLowerCase().trim()) && attempts < 2000) {
+      num = Math.floor(100 + Math.random() * 9000);
+      login = cleanF + '_' + num + '_' + cleanL;
+      attempts++;
+    }
+
     var passSuffix = cleanL.length >= 3 ? cleanL.slice(0, 3) : cleanL;
     var password = cleanF + num + passSuffix;
     return {

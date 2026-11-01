@@ -14056,19 +14056,19 @@
     if (uRole === 'admin' || uRole === 'administrator' || uRole === 'teacher') return;
     var overlay = document.createElement('div');
     overlay.className = 'eth-pack-modal-overlay animate-fade-in';
-    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:999999;padding:16px;';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:999999;padding:12px;overflow-y:auto;-webkit-overflow-scrolling:touch;';
 
-    var myEmail = (S.user && S.user.email) ? S.user.email : 'Hisobga kirilmagan';
+    var myLogin = (S.user && (S.user.login || S.user.id || S.user.email)) ? (S.user.login || S.user.id) : 'Hisobga kirilmagan';
     var coinSvg = '<svg width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;display:inline-block"><circle cx="12" cy="12" r="10" fill="#f59e0b"/><circle cx="12" cy="12" r="7.5" stroke="#fbbf24" stroke-width="1.5"/><text x="12" y="15.5" font-size="11" font-weight="900" fill="#78350f" text-anchor="middle">¢</text></svg>';
     var bigCoinSvg = '<svg width="28" height="28" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#f59e0b"/><circle cx="12" cy="12" r="7.5" stroke="#fbbf24" stroke-width="1.5"/><text x="12" y="15.5" font-size="11" font-weight="900" fill="#78350f" text-anchor="middle">¢</text></svg>';
 
     var html = '' +
-      '<div style="background:#0f172a;border:1.5px solid #f59e0b;border-radius:24px;padding:28px 24px;max-width:520px;width:100%;color:#ffffff !important;box-shadow:0 25px 60px rgba(0,0,0,0.85);position:relative;animation:popIn 0.25s ease">' +
-      '  <button type="button" id="btnCloseBuyCoinsModal" style="position:absolute;top:16px;right:18px;background:none;border:none;font-size:24px;color:#94a3b8;cursor:pointer;line-height:1">&times;</button>' +
-      '  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">' +
+      '<div style="background:#0f172a;border:1.5px solid #f59e0b;border-radius:22px;padding:22px 18px;max-width:480px;width:100%;max-height:calc(100dvh - 28px);overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;margin:auto;color:#ffffff !important;box-shadow:0 25px 60px rgba(0,0,0,0.95);position:relative;animation:popIn 0.25s ease">' +
+      '  <button type="button" id="btnCloseBuyCoinsModal" style="position:sticky;top:0;float:right;margin-right:-4px;margin-top:-4px;background:#1e293b;border:2px solid #f59e0b;width:38px;height:38px;min-width:38px;min-height:38px;border-radius:50%;color:#ffffff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;cursor:pointer;line-height:1;z-index:1000;box-shadow:0 4px 15px rgba(0,0,0,0.7);transition:all 0.15s ease;" title="Yopish">✕</button>' +
+      '  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;clear:both">' +
       '    <div style="width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#f59e0b,#b45309);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(245,158,11,0.4)">' + bigCoinSvg + '</div>' +
       '    <div>' +
-      '      <h3 style="margin:0;font-size:20px;font-weight:900;color:#fde047">Rasmiy ETHITH Coin Xaridi</h3>' +
+      '      <h3 style="margin:0;font-size:19px;font-weight:900;color:#fde047">Rasmiy ETHITH Coin Xaridi</h3>' +
       '      <span style="font-size:12px;color:#38bdf8;font-weight:800;display:inline-flex;align-items:center;gap:4px">🛡️ 100% Rasmiy & Xavfsiz Xizmat</span>' +
       '    </div>' +
       '  </div>' +
@@ -14111,10 +14111,10 @@
       '    </div>' +
       '  </div>' +
       '  <div style="font-size:12.5px;color:#cbd5e1 !important;margin-bottom:18px;text-align:center;line-height:1.5;font-weight:600">' +
-      '    Sizning emailingiz: <b style="color:#fbbf24;font-size:13px;background:rgba(245,158,11,0.15);padding:2px 8px;border-radius:6px;border:1px solid rgba(245,158,11,0.3)">' + esc(myEmail) + '</b><br>' +
-      '    Adminga ushbu emailingizni yozsangiz, bot orqali darhol hisobingizga coinlar o\'tkaziladi.' +
+      '    Sizning tizim ID (Login): <b style="color:#fbbf24;font-size:13.5px;background:rgba(245,158,11,0.2);padding:3px 10px;border-radius:8px;border:1px solid rgba(245,158,11,0.4);letter-spacing:0.5px">' + esc(myLogin) + '</b><br>' +
+      '    Adminga ushbu Loginingizni (ID) yozsangiz, bot orqali darhol hisobingizga coinlar o\'tkaziladi.' +
       '  </div>' +
-      '  <a href="https://t.me/Mu_striker?text=' + encodeURIComponent("Assalomu alaykum, ETHITH Coin sotib olmoqchiman. Mening emailim: " + myEmail) + '" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 20px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#ffffff !important;border-radius:16px;font-size:15px;font-weight:900;text-decoration:none;box-shadow:0 10px 25px rgba(2,132,199,0.4);box-sizing:border-box;text-align:center">' +
+      '  <a href="https://t.me/Mu_striker?text=' + encodeURIComponent("Assalomu alaykum, ETHITH Coin sotib olmoqchiman. Mening tizim ID (Login): " + myLogin) + '" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 20px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#ffffff !important;border-radius:16px;font-size:15px;font-weight:900;text-decoration:none;box-shadow:0 10px 25px rgba(2,132,199,0.4);box-sizing:border-box;text-align:center">' +
       '    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>' +
       '    Coin olish uchun adminga murojaat qiling' +
       '  </a>' +
@@ -14123,7 +14123,16 @@
     overlay.innerHTML = html;
     document.body.appendChild(overlay);
 
-    overlay.querySelector('#btnCloseBuyCoinsModal').onclick = function() { overlay.remove(); };
+    overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+    var btnClose = overlay.querySelector('#btnCloseBuyCoinsModal');
+    if (btnClose) btnClose.onclick = function() { overlay.remove(); };
+    var onEsc = function(e) {
+      if (e.key === 'Escape') {
+        overlay.remove();
+        window.removeEventListener('keydown', onEsc);
+      }
+    };
+    window.addEventListener('keydown', onEsc);
   }
   window.showBuyCoinsModal = showBuyCoinsModal;
 

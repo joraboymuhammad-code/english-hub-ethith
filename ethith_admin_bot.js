@@ -137,8 +137,18 @@ async function fetchLiveStoreFromGitHub() {
     const res = await fetch(url, { headers, cache: 'no-store' });
     if (res.ok) {
       const data = await res.json();
-      if (data && data.content) {
-        const jsonStr = Buffer.from(data.content, 'base64').toString('utf8');
+      let b64 = data.content;
+      if (data.sha && (!b64 || data.encoding === 'none')) {
+        try {
+          const blobRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/git/blobs/${data.sha}`, { headers, cache: 'no-store' });
+          if (blobRes.ok) {
+            const blobData = await blobRes.json();
+            b64 = blobData.content;
+          }
+        } catch(e) {}
+      }
+      if (b64) {
+        const jsonStr = Buffer.from(b64.replace(/\s/g, ''), 'base64').toString('utf8');
         const parsed = unifyAccountsAndStudents(JSON.parse(jsonStr));
         parsed._githubSha = data.sha;
         try {
@@ -162,8 +172,8 @@ async function fetchLiveStoreFromGitHub() {
 }
 
 // Atomic GitHub Push with 409 Conflict Retry & Account Balance Preservation
-async function updateStudentCoinsOnGitHub(targetEmail, targetName, amountToAdd, isAbsoluteSet = false) {
-  const cleanEmail = targetEmail.toLowerCase().trim();
+async function updateStudentCoinsOnGitHub(targetIdentifier, targetName, amountToAdd, isAbsoluteSet = false) {
+  const cleanId = (targetIdentifier || '').toLowerCase().trim();
   const headers = {
     'Authorization': `token ${GH_TOKEN}`,
     'User-Agent': 'ETHITH-AdminBot-Live',
@@ -183,7 +193,19 @@ async function updateStudentCoinsOnGitHub(targetEmail, targetName, amountToAdd, 
       if (getRes.ok) {
         const getData = await getRes.json();
         sha = getData.sha;
-        store = unifyAccountsAndStudents(JSON.parse(Buffer.from(getData.content, 'base64').toString('utf8')));
+        let b64 = getData.content;
+        if (getData.sha && (!b64 || getData.encoding === 'none')) {
+          try {
+            const bRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/git/blobs/${getData.sha}`, { headers, cache: 'no-store' });
+            if (bRes.ok) {
+              const bData = await bRes.json();
+              b64 = bData.content;
+            }
+          } catch(e) {}
+        }
+        if (b64) {
+          store = unifyAccountsAndStudents(JSON.parse(Buffer.from(b64.replace(/\s/g, ''), 'base64').toString('utf8')));
+        }
       } else if (fs.existsSync(STORE_FILE)) {
         store = unifyAccountsAndStudents(JSON.parse(fs.readFileSync(STORE_FILE, 'utf8')));
       }
@@ -191,7 +213,18 @@ async function updateStudentCoinsOnGitHub(targetEmail, targetName, amountToAdd, 
       if (!Array.isArray(store.accounts)) store.accounts = [];
       store.authorizedAdminChatIds = authorizedAdmins;
 
-      let acc = store.accounts.find(a => a && a.email && a.email.toLowerCase().trim() === cleanEmail);
+      // Find account by login, id, or email
+      let acc = store.accounts.find(a => {
+        if (!a) return false;
+        const aLog = (a.login || a.id || '').toLowerCase().trim();
+        const aEm = (a.email || '').toLowerCase().trim();
+        return aLog === cleanId || aEm === cleanId;
+      });
+
+      if (!acc && targetName) {
+        acc = store.accounts.find(a => a && a.name && a.name.toLowerCase().trim() === targetName.toLowerCase().trim());
+      }
+
       const now = Date.now();
 
       if (acc) {
@@ -201,11 +234,13 @@ async function updateStudentCoinsOnGitHub(targetEmail, targetName, amountToAdd, 
         }
         acc.updatedAt = now;
       } else {
-        const safeName = (targetName && !targetName.includes("Yangi")) ? targetName : (cleanEmail.split('@')[0] || "O'quvchi");
+        const safeName = (targetName && !targetName.includes("Yangi")) ? targetName : cleanId;
+        const isEmail = cleanId.includes('@');
         acc = {
-          id: cleanEmail,
+          id: cleanId,
+          login: isEmail ? cleanId.split('@')[0] : cleanId,
           name: safeName,
-          email: cleanEmail,
+          email: isEmail ? cleanId : (cleanId + '@ethith.uz'),
           role: 'student',
           coins: amountToAdd,
           level: 'B1+',
@@ -222,9 +257,10 @@ async function updateStudentCoinsOnGitHub(targetEmail, targetName, amountToAdd, 
           if (cls && Array.isArray(cls.students)) {
             cls.students.forEach(st => {
               if (!st) return;
-              const stEm = (st.email || st.id || '').toLowerCase().trim();
+              const stLog = (st.login || st.id || '').toLowerCase().trim();
+              const stEm = (st.email || '').toLowerCase().trim();
               const stNm = (st.name || '').toLowerCase().trim();
-              if (stEm === cleanEmail || (acc.name && stNm === acc.name.toLowerCase().trim())) {
+              if (stLog === cleanId || stEm === cleanId || (acc && (stLog === (acc.login||'').toLowerCase() || stEm === (acc.email||'').toLowerCase() || (acc.name && stNm === acc.name.toLowerCase())))) {
                 st.coins = acc.coins;
                 st.updatedAt = now;
               }
@@ -247,7 +283,7 @@ async function updateStudentCoinsOnGitHub(targetEmail, targetName, amountToAdd, 
         method: 'PUT',
         headers,
         body: JSON.stringify({
-          message: `Admin Coin Bot: +${amountToAdd} Coin to ${cleanEmail} (Total: ${acc.coins})`,
+          message: `Admin Coin Bot: +${amountToAdd} Coin to ${acc.login || cleanId} (Total: ${acc.coins})`,
           content: contentBase64,
           sha: sha || undefined
         })
@@ -349,11 +385,12 @@ function getMainMenuKeyboard() {
 }
 
 // Helper: Show confirmation prompt for coin transfer
-async function promptCoinConfirmation(chatId, targetEmail, targetName, currentCoins, amount, existingMsgId = null) {
+async function promptCoinConfirmation(chatId, targetIdentifier, targetName, currentCoins, amount, existingMsgId = null) {
   const newTotal = (Number(currentCoins) || 0) + amount;
   adminStates[chatId] = {
     step: 'confirm',
-    targetEmail: targetEmail,
+    targetIdentifier: targetIdentifier,
+    targetEmail: targetIdentifier,
     targetName: targetName,
     amount: amount,
     newTotal: newTotal
@@ -372,7 +409,7 @@ async function promptCoinConfirmation(chatId, targetEmail, targetName, currentCo
 
   const text = `❓ <b>O'tkazmani tasdiqlaysizmi?</b>\n\n` +
                `👤 Qabul qiluvchi: <b>${targetName}</b>\n` +
-               `📧 Gmail: <code>${targetEmail}</code>\n` +
+               `🔑 Login (ID): <code>${targetIdentifier}</code>\n` +
                `💰 Hozirgi Balans: <b>${(Number(currentCoins) || 0).toLocaleString()} Coin</b>\n` +
                `➕ Qo'shilayotgan Coin: <b>+${amount.toLocaleString()} Coin</b>\n` +
                `🚀 Yangi Balans: <b>${newTotal.toLocaleString()} Coin</b>\n\n` +
@@ -397,10 +434,11 @@ async function promptCoinConfirmation(chatId, targetEmail, targetName, currentCo
 }
 
 // Helper: Send preset coin buttons for a selected user
-async function sendPresetAmountMenu(chatId, targetEmail, targetName, currentCoins) {
+async function sendPresetAmountMenu(chatId, targetIdentifier, targetName, currentCoins) {
   adminStates[chatId] = {
     step: 'waiting_amount',
-    targetEmail: targetEmail,
+    targetIdentifier: targetIdentifier,
+    targetEmail: targetIdentifier,
     targetName: targetName,
     currentCoins: Number(currentCoins) || 0
   };
@@ -429,7 +467,7 @@ async function sendPresetAmountMenu(chatId, targetEmail, targetName, currentCoin
   await tgCall('sendMessage', {
     chat_id: chatId,
     text: `👤 <b>O'quvchi:</b> <b>${targetName}</b>\n` +
-          `📧 Gmail: <code>${targetEmail}</code>\n` +
+          `🔑 Login (ID): <code>${targetIdentifier}</code>\n` +
           `💰 GitHub'dagi Joriy Balans: <b>${(Number(currentCoins) || 0).toLocaleString()} Coin</b>\n\n` +
           `Quyidagi tezkor tugmalardan birini bosing yoki xabarda istalgan miqdorni son bilan yozing (masalan: <code>2500</code>):`,
     parse_mode: 'HTML',
@@ -444,14 +482,15 @@ async function performStudentSearch(chatId, queryText) {
   const accounts = (store.accounts || []).filter(a => a && a.role !== 'teacher');
   const matches = accounts.filter(a => {
     const name = (a.name || '').toLowerCase();
+    const login = (a.login || a.id || '').toLowerCase();
     const email = (a.email || '').toLowerCase();
-    return name.includes(q) || email.includes(q);
+    return name.includes(q) || login.includes(q) || email.includes(q);
   });
 
   if (matches.length === 0) {
     await tgCall('sendMessage', {
       chat_id: chatId,
-      text: `❌ <b>"${queryText}" bo'yicha o'quvchi topilmadi.</b>\n\nAgar yangi Gmail manziliga coin o'tkazmoqchi bo'lsangiz, to'liq Gmail manzilini yozing (masalan: <code>user@gmail.com</code>).`,
+      text: `❌ <b>"${queryText}" bo'yicha o'quvchi topilmadi.</b>\n\nFoydalanuvchining <b>Login (ID)</b> yoki ismini yozing (masalan: <code>abror_421</code> yoki <code>std_123</code>).`,
       parse_mode: 'HTML',
       reply_markup: {
         inline_keyboard: [
@@ -471,24 +510,24 @@ async function performStudentSearch(chatId, queryText) {
   });
 
   for (const acc of matches.slice(0, 6)) {
-    const email = acc.email;
+    const loginId = acc.login || acc.id || acc.email;
     const coins = (Number(acc.coins) || 0).toLocaleString();
     const card = `👤 <b>${acc.name}</b>\n` +
-                 `📧 Gmail: <code>${email}</code>\n` +
+                 `🔑 Login (ID): <code>${loginId}</code>\n` +
                  `💰 Balans: <b>${coins} Coin</b>\n` +
                  `🎓 Daraja: <b>${acc.level || 'B1+'}</b>`;
 
     const quickButtons = {
       inline_keyboard: [
         [
-          { text: '🪙 +500', callback_data: `quick_send:${email}:500` },
-          { text: '🪙 +1,000', callback_data: `quick_send:${email}:1000` },
-          { text: '🪙 +5,000', callback_data: `quick_send:${email}:5000` }
+          { text: '🪙 +500', callback_data: `quick_send:${loginId}:500` },
+          { text: '🪙 +1,000', callback_data: `quick_send:${loginId}:1000` },
+          { text: '🪙 +5,000', callback_data: `quick_send:${loginId}:5000` }
         ],
         [
-          { text: '🪙 +10,000', callback_data: `quick_send:${email}:10000` },
-          { text: '🪙 +50,000', callback_data: `quick_send:${email}:50000` },
-          { text: '✏️ Boshqa miqdor', callback_data: `send_to:${email}` }
+          { text: '🪙 +10,000', callback_data: `quick_send:${loginId}:10000` },
+          { text: '🪙 +50,000', callback_data: `quick_send:${loginId}:50000` },
+          { text: '✏️ Boshqa miqdor', callback_data: `send_to:${loginId}` }
         ]
       ]
     };
@@ -599,7 +638,7 @@ async function handleMessage(msg) {
     await tgCall('sendMessage', {
       chat_id: chatId,
       text: '🔍 <b>O\'quvchini Qidirish:</b>\n\n' +
-            'O\'quvchining <b>ismi</b> yoki <b>Gmail manzilini</b> yozing (masalan: <code>Sardorbek</code>, <code>Ashurov</code> yoki <code>sarvar...</code>):',
+            'O\'quvchining <b>Login (ID)</b> yoki <b>ismini</b> yozing (masalan: <code>abror_421</code>, <code>Sardorbek</code> yoki <code>std_...</code>):',
       parse_mode: 'HTML',
       reply_markup: {
         keyboard: [[{ text: '❌ Bekor qilish' }]],
@@ -613,7 +652,7 @@ async function handleMessage(msg) {
     adminStates[chatId] = { step: 'waiting_email' };
     await tgCall('sendMessage', {
       chat_id: chatId,
-      text: '📧 <b>Qaysi o\'quvchiga coin o\'tkazmoqchisiz?</b>\n\nFoydalanuvchining <b>Gmail manzilini</b> kiriting (masalan: <code>sarvartovboyev09@gmail.com</code>):',
+      text: '🔑 <b>Qaysi o\'quvchiga coin o\'tkazmoqchisiz?</b>\n\nFoydalanuvchining <b>Login (ID)</b> yoki ismini yozing (masalan: <code>abror_421_karimov</code> yoki <code>nodirbek</code>):',
       parse_mode: 'HTML',
       reply_markup: {
         keyboard: [[{ text: '❌ Bekor qilish' }]],
@@ -643,15 +682,13 @@ async function handleMessage(msg) {
 
     accounts.slice(0, 12).forEach((acc, i) => {
       const medal = i === 0 ? '🥇' : (i === 1 ? '🥈' : (i === 2 ? '🥉' : `${i + 1}.`));
-      const email = acc.email || 'Email yo\'q';
+      const loginId = acc.login || acc.id || acc.email || 'ID yo\'q';
       const coins = (Number(acc.coins) || 0).toLocaleString();
-      topText += `${medal} <b>${acc.name || "O'quvchi"}</b> — <b>${coins} Coin</b>\n   📧 <code>${email}</code>\n\n`;
-      if (email.includes('@')) {
-        inlineButtons.push([{
-          text: `🪙 ${acc.name} (${coins}) ga coin berish`,
-          callback_data: `send_to:${email}`
-        }]);
-      }
+      topText += `${medal} <b>${acc.name || "O'quvchi"}</b> — <b>${coins} Coin</b>\n   🔑 ID: <code>${loginId}</code>\n\n`;
+      inlineButtons.push([{
+        text: `🪙 ${acc.name} (${coins}) ga coin berish`,
+        callback_data: `send_to:${loginId}`
+      }]);
     });
 
     await tgCall('sendMessage', {
@@ -680,15 +717,13 @@ async function handleMessage(msg) {
     const inlineButtons = [];
 
     accounts.slice(0, 15).forEach((acc, i) => {
-      const email = acc.email || 'Email yo\'q';
+      const loginId = acc.login || acc.id || acc.email || 'ID yo\'q';
       const coins = (Number(acc.coins) || 0).toLocaleString();
-      listText += `${i + 1}. 👤 <b>${acc.name || "O'quvchi"}</b>\n   📧 <code>${email}</code>\n   💰 <b>${coins} Coin</b> | 🎓 ${acc.level || 'B1+'}\n\n`;
-      if (email.includes('@')) {
-        inlineButtons.push([{
-          text: `🪙 ${acc.name || email} ga coin berish`,
-          callback_data: `send_to:${email}`
-        }]);
-      }
+      listText += `${i + 1}. 👤 <b>${acc.name || "O'quvchi"}</b>\n   🔑 ID: <code>${loginId}</code>\n   💰 <b>${coins} Coin</b> | 🎓 ${acc.level || 'B1+'}\n\n`;
+      inlineButtons.push([{
+        text: `🪙 ${acc.name || loginId} ga coin berish`,
+        callback_data: `send_to:${loginId}`
+      }]);
     });
 
     await tgCall('sendMessage', {
@@ -700,25 +735,30 @@ async function handleMessage(msg) {
     return;
   }
 
-  // 3. SMART DIRECT INPUT: Check if user typed "email@gmail.com 5000" or "email@gmail.com" in ANY state!
-  const emailMatch = text.match(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/);
-  if (emailMatch) {
-    const cleanEmail = emailMatch[1].toLowerCase().trim();
-    const remainder = text.replace(emailMatch[0], '').replace(/[^0-9]/g, '').trim();
-    const store = await fetchLiveStoreFromGitHub();
-    const userAcc = (store.accounts || []).find(a => a && a.email && a.email.toLowerCase().trim() === cleanEmail);
-    const userName = (userAcc && userAcc.name && !userAcc.name.includes("Yangi")) ? userAcc.name : (cleanEmail.split('@')[0] || "O'quvchi");
-    const curCoins = userAcc ? (Number(userAcc.coins) || 0) : 0;
+  // 3. SMART DIRECT INPUT: Check if user typed "login 5000" or direct login/email
+  const tokens = text.split(/\s+/);
+  const potentialAmount = tokens.length > 1 ? parseInt(tokens[tokens.length - 1], 10) : NaN;
+  const potentialQuery = !isNaN(potentialAmount) && potentialAmount > 0 ? tokens.slice(0, -1).join(' ') : text;
 
-    if (remainder.length > 0) {
-      const directAmt = parseInt(remainder, 10);
-      if (directAmt > 0) {
-        await promptCoinConfirmation(chatId, cleanEmail, userName, curCoins, directAmt);
-        return;
-      }
+  const store = await fetchLiveStoreFromGitHub();
+  const matchedAcc = (store.accounts || []).find(a => {
+    if (!a) return false;
+    const aLog = (a.login || a.id || '').toLowerCase().trim();
+    const aEm = (a.email || '').toLowerCase().trim();
+    const qClean = potentialQuery.toLowerCase().trim();
+    return aLog === qClean || aEm === qClean;
+  });
+
+  if (matchedAcc) {
+    const loginId = matchedAcc.login || matchedAcc.id || matchedAcc.email;
+    const userName = matchedAcc.name || loginId;
+    const curCoins = Number(matchedAcc.coins) || 0;
+
+    if (!isNaN(potentialAmount) && potentialAmount > 0) {
+      await promptCoinConfirmation(chatId, loginId, userName, curCoins, potentialAmount);
+      return;
     }
-
-    await sendPresetAmountMenu(chatId, cleanEmail, userName, curCoins);
+    await sendPresetAmountMenu(chatId, loginId, userName, curCoins);
     return;
   }
 
@@ -728,7 +768,7 @@ async function handleMessage(msg) {
   if (state.step === 'waiting_amount') {
     const num = parseInt(text.replace(/[^0-9]/g, ''), 10);
     if (!isNaN(num) && num > 0) {
-      await promptCoinConfirmation(chatId, state.targetEmail, state.targetName, state.currentCoins || 0, num);
+      await promptCoinConfirmation(chatId, state.targetIdentifier || state.targetEmail, state.targetName, state.currentCoins || 0, num);
       return;
     }
   }
@@ -753,7 +793,7 @@ async function handleCallbackQuery(cb) {
     await tgCall('answerCallbackQuery', { callback_query_id: cb.id });
     await tgCall('sendMessage', {
       chat_id: chatId,
-      text: '🔍 O\'quvchining ismi yoki Gmail manzilini yozing:',
+      text: '🔍 O\'quvchining ismi yoki Login (ID) sini yozing:',
       reply_markup: {
         keyboard: [[{ text: '❌ Bekor qilish' }]],
         resize_keyboard: true
@@ -769,41 +809,52 @@ async function handleCallbackQuery(cb) {
   }
 
   if (data.startsWith('send_to:')) {
-    const email = data.split('send_to:')[1];
+    const targetId = data.split('send_to:')[1];
     await tgCall('answerCallbackQuery', { callback_query_id: cb.id });
     const store = await fetchLiveStoreFromGitHub();
-    const userAcc = (store.accounts || []).find(a => a && a.email && a.email.toLowerCase().trim() === email.toLowerCase().trim());
-    const userName = userAcc ? userAcc.name : email;
+    const userAcc = (store.accounts || []).find(a => {
+      if (!a) return false;
+      const aLog = (a.login || a.id || '').toLowerCase().trim();
+      const aEm = (a.email || '').toLowerCase().trim();
+      return aLog === targetId.toLowerCase().trim() || aEm === targetId.toLowerCase().trim();
+    });
+    const userName = userAcc ? userAcc.name : targetId;
     const curCoins = userAcc ? (Number(userAcc.coins) || 0) : 0;
 
-    await sendPresetAmountMenu(chatId, email, userName, curCoins);
+    await sendPresetAmountMenu(chatId, targetId, userName, curCoins);
     return;
   }
 
   if (data.startsWith('quick_send:')) {
     const parts = data.split(':');
-    const email = parts[1];
+    const targetId = parts[1];
     const amount = parseInt(parts[2], 10);
 
     await tgCall('answerCallbackQuery', { callback_query_id: cb.id });
     const store = await fetchLiveStoreFromGitHub();
-    const userAcc = (store.accounts || []).find(a => a && a.email && a.email.toLowerCase().trim() === email.toLowerCase().trim());
-    const userName = userAcc ? userAcc.name : email;
+    const userAcc = (store.accounts || []).find(a => {
+      if (!a) return false;
+      const aLog = (a.login || a.id || '').toLowerCase().trim();
+      const aEm = (a.email || '').toLowerCase().trim();
+      return aLog === targetId.toLowerCase().trim() || aEm === targetId.toLowerCase().trim();
+    });
+    const userName = userAcc ? userAcc.name : targetId;
     const curCoins = userAcc ? (Number(userAcc.coins) || 0) : 0;
 
-    await promptCoinConfirmation(chatId, email, userName, curCoins, amount);
+    await promptCoinConfirmation(chatId, targetId, userName, curCoins, amount);
     return;
   }
 
   if (data.startsWith('preset_amt:')) {
     const amount = parseInt(data.split('preset_amt:')[1], 10);
     const state = adminStates[chatId];
-    if (!state || !state.targetEmail) {
-      await tgCall('answerCallbackQuery', { callback_query_id: cb.id, text: 'Iltimos, Gmail manzilini qaytadan tanlang' });
+    if (!state || (!state.targetIdentifier && !state.targetEmail)) {
+      await tgCall('answerCallbackQuery', { callback_query_id: cb.id, text: 'Iltimos, o\'quvchini qaytadan tanlang' });
       return;
     }
+    const targetId = state.targetIdentifier || state.targetEmail;
     await tgCall('answerCallbackQuery', { callback_query_id: cb.id });
-    await promptCoinConfirmation(chatId, state.targetEmail, state.targetName, state.currentCoins || 0, amount, cb.message.message_id);
+    await promptCoinConfirmation(chatId, targetId, state.targetName, state.currentCoins || 0, amount, cb.message.message_id);
     return;
   }
 
@@ -836,7 +887,7 @@ async function handleCallbackQuery(cb) {
       return;
     }
 
-    const targetEmail = state.targetEmail;
+    const targetId = state.targetIdentifier || state.targetEmail;
     const targetName = state.targetName;
     const amount = state.amount;
 
@@ -845,18 +896,21 @@ async function handleCallbackQuery(cb) {
     await tgCall('answerCallbackQuery', { callback_query_id: cb.id, text: 'GitHub bazasiga yozilmoqda...' });
 
     // 1. Atomically update GitHub shared_store.json + local store
-    const res = await updateStudentCoinsOnGitHub(targetEmail, targetName, amount, false);
-    const acc = res.account || { name: targetName, email: targetEmail, coins: state.newTotal };
+    const res = await updateStudentCoinsOnGitHub(targetId, targetName, amount, false);
+    const acc = res.account || { name: targetName, login: targetId, email: targetId, coins: state.newTotal };
 
     // 2. Broadcast via Dual MQTT Brokers (HiveMQ + EMQX) to web & Mini App clients
     const mqttPayload = {
       type: 'USER_COINS_UPDATE',
       eventId: 'ev_admin_coin_' + Date.now(),
-      targetEmail: targetEmail,
+      targetLogin: acc.login || targetId,
+      targetEmail: acc.email || targetId,
       addedCoins: amount,
       newBalance: acc.coins,
       user: {
-        email: targetEmail,
+        login: acc.login || targetId,
+        id: acc.id || targetId,
+        email: acc.email,
         name: acc.name,
         coins: acc.coins,
         updatedAt: Date.now()
@@ -869,7 +923,7 @@ async function handleCallbackQuery(cb) {
       message_id: cb.message.message_id,
       text: `🎉 <b>Coin Muvaffaqiyatli O'tkazildi (GitHub + Live Sync)!</b>\n\n` +
             `👤 O'quvchi: <b>${acc.name}</b>\n` +
-            `📧 Gmail: <code>${targetEmail}</code>\n` +
+            `🔑 Login (ID): <code>${acc.login || targetId}</code>\n` +
             `➕ O'tkazilgan: <b>+${amount.toLocaleString()} Coin</b>\n` +
             `💰 Yangi Balans: <b>${Number(acc.coins).toLocaleString()} Coin</b>\n` +
             `☁️ GitHub Baza: <b>${res.ok ? 'Saqlandi ✅' : 'Sinxronlandi ⚡'}</b>\n\n` +
@@ -879,7 +933,7 @@ async function handleCallbackQuery(cb) {
 
     await tgCall('sendMessage', {
       chat_id: chatId,
-      text: 'Yana boshqa amal bajarish uchun quyidagi menyudan foydalaning yoki Gmail yozing:',
+      text: 'Yana boshqa amal bajarish uchun quyidagi menyudan foydalaning yoki Login (ID) yozing:',
       reply_markup: getMainMenuKeyboard()
     });
   }
