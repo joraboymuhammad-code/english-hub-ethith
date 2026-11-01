@@ -18453,7 +18453,7 @@
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793547146347,
+      "updatedAt": 1793547146355,
       "level": "C2",
       "dailyMinutes": 0
     },
@@ -19147,7 +19147,8 @@
       "parentPhone": "91`23891738213",
       "classId": "cls_1793380468126",
       "isOnline": false,
-      "lastLogin": null
+      "lastLogin": null,
+      "updatedAt": 1793547767037
     }
   ],
   "p2pListings": [],
@@ -71843,32 +71844,6 @@
   },
   "teachers": [
     {
-      "id": "admin_official_teacher",
-      "name": "Ustoz",
-      "roleTitle": "Bosh Admin / Rahbariyat",
-      "email": "ustoz77@ethith.uz",
-      "phone": "+998 90 123 45 67",
-      "card": "8600 1122 3344 5566",
-      "login": "ustoz77",
-      "password": "ustoz2026",
-      "inviteCode": "USTOZ77",
-      "subject": "Ingliz tili (IELTS Intensive)",
-      "monthlySalary": 6000000,
-      "salarySharePercent": 50,
-      "studentMonthlyFee": 300000,
-      "hourlyRate": 100000,
-      "teachingHours": 72,
-      "paidThisMonth": true,
-      "assignedClasses": [
-        "cls_ethith_main",
-        "cls_upper_intermediate"
-      ],
-      "classOrder": [
-        "cls_ethith_main",
-        "cls_upper_intermediate"
-      ]
-    },
-    {
       "id": "t_urolov_azizbek",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
@@ -72369,6 +72344,32 @@
       "monthlySalary": 0
     },
     {
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
+      "roleTitle": "Bosh Admin / Rahbariyat",
+      "email": "ustoz77@ethith.uz",
+      "phone": "+998 90 123 45 67",
+      "card": "8600 1122 3344 5566",
+      "login": "ustoz77",
+      "password": "ustoz2026",
+      "inviteCode": "USTOZ77",
+      "subject": "Ingliz tili (IELTS Intensive)",
+      "monthlySalary": 6000000,
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "hourlyRate": 100000,
+      "teachingHours": 72,
+      "paidThisMonth": true,
+      "assignedClasses": [
+        "cls_ethith_main",
+        "cls_upper_intermediate"
+      ],
+      "classOrder": [
+        "cls_ethith_main",
+        "cls_upper_intermediate"
+      ]
+    },
+    {
       "id": "tc_oprlehyw5",
       "name": "Zizi Ustoz",
       "email": "strikeruzb52@gmail.com",
@@ -72804,5 +72805,5 @@
       }
     }
   },
-  "updatedAt": 1793547146419
+  "updatedAt": 1793547767095
 }
