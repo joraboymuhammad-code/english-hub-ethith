@@ -18871,7 +18871,7 @@
       "email": "teacher@ethith.uz",
       "role": "teacher",
       "updatedAt": 1793547146355,
-      "coins": 5000,
+      "coins": 100000,
       "level": "C2",
       "dailyMinutes": 0
     },
@@ -20092,8 +20092,8 @@
         "page": 5,
         "exercise": "6",
         "label": "4",
-        "top": 70.1,
-        "left": 10.5,
+        "top": 69.7,
+        "left": 11.2,
         "width": 10,
         "height": 1.9,
         "correct": "have or HAVE"
@@ -20104,8 +20104,8 @@
         "page": 5,
         "exercise": "6",
         "label": "5",
-        "top": 72,
-        "left": 39.8,
+        "top": 71.4,
+        "left": 39.9,
         "width": 10,
         "height": 1.9,
         "correct": "make or MAKE"
@@ -20130,8 +20130,8 @@
         "exercise": "7b",
         "group": "7.1",
         "text": "vowel",
-        "top": 57.7,
-        "left": 78.3,
+        "top": 57.8,
+        "left": 78,
         "width": 5.4,
         "height": 1.6,
         "correct": false
@@ -20143,8 +20143,8 @@
         "exercise": "7b",
         "group": "7.2",
         "text": "consonant",
-        "top": 59.8,
-        "left": 81.1,
+        "top": 59.3,
+        "left": 82.8,
         "width": 7.2,
         "height": 1.6,
         "correct": false
@@ -124423,7 +124423,7 @@
   },
   "workbookOverridesTs": {
     "4": 1793547137430,
-    "5": 1793547137432,
+    "5": 1793547893743,
     "9": 1793547137432,
     "10": 1761463225569,
     "12": 1793547137433,
@@ -125742,5 +125742,5 @@
       }
     }
   },
-  "updatedAt": 1793547849765
+  "updatedAt": 1793547900147
 }
