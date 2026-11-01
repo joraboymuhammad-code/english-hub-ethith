@@ -116944,8 +116944,8 @@
           "That's the worst hotel in the town",
           "Thats the worst hotel in the town"
         ],
-        "top": 82.1,
-        "left": 13.1,
+        "top": 78.9,
+        "left": 13.4,
         "width": 35,
         "height": 2.2
       },
@@ -117037,6 +117037,185 @@
         "top": 24,
         "left": 67,
         "width": 16,
+        "height": 2.2
+      }
+    ],
+    "3070": [
+      {
+        "id": "p3070_ex1_1",
+        "type": "select",
+        "x": 26,
+        "y": 22.8,
+        "w": 10,
+        "h": 2.2,
+        "options": [
+          "score",
+          "number"
+        ],
+        "correct": "score",
+        "top": 21.8,
+        "left": 24.6,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3070_ex1_2",
+        "type": "select",
+        "x": 13,
+        "y": 26.1,
+        "w": 10,
+        "h": 2.2,
+        "options": [
+          "high",
+          "deep"
+        ],
+        "correct": "high",
+        "top": 25.1,
+        "left": 13.3,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3070_ex1_3",
+        "type": "select",
+        "x": 27,
+        "y": 29.3,
+        "w": 10,
+        "h": 2.2,
+        "options": [
+          "heavy",
+          "strong"
+        ],
+        "correct": "heavy",
+        "top": 28.2,
+        "left": 35.2,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3070_ex1_4",
+        "type": "select",
+        "x": 20,
+        "y": 32.5,
+        "w": 10,
+        "h": 2.2,
+        "options": [
+          "mild",
+          "light"
+        ],
+        "correct": "light",
+        "top": 31.2,
+        "left": 20.2,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3070_ex1_5",
+        "type": "select",
+        "x": 20,
+        "y": 35.8,
+        "w": 12,
+        "h": 2.2,
+        "options": [
+          "bad",
+          "freezing"
+        ],
+        "correct": "bad",
+        "top": 34.7,
+        "left": 21.2,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3070_ex1_6",
+        "type": "select",
+        "x": 22,
+        "y": 39.1,
+        "w": 10,
+        "h": 2.2,
+        "options": [
+          "weak",
+          "mild"
+        ],
+        "correct": "mild",
+        "top": 38.5,
+        "left": 26,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3070_ex3_1",
+        "type": "fill",
+        "x": 11,
+        "y": 72.5,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "winds"
+        ],
+        "top": 72.5,
+        "left": 11,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3070_ex3_2",
+        "type": "fill",
+        "x": 11,
+        "y": 76,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "sleepers"
+        ],
+        "top": 76,
+        "left": 11,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3070_ex3_3",
+        "type": "fill",
+        "x": 11,
+        "y": 79.5,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "temperatures"
+        ],
+        "top": 79.5,
+        "left": 11,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3070_ex3_4",
+        "type": "fill",
+        "x": 11,
+        "y": 83,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "traffic"
+        ],
+        "top": 83,
+        "left": 11,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3070_ex3_5",
+        "type": "fill",
+        "x": 11,
+        "y": 86.5,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "coffee"
+        ],
+        "top": 86.5,
+        "left": 11,
+        "width": 12,
         "height": 2.2
       }
     ],
@@ -119041,8 +119220,9 @@
     "3065": 1793515698497,
     "3066": 1793515895423,
     "3067": 1793515895423,
-    "3068": 1793516087498,
-    "3069": 1793516149365,
+    "3068": 1793516155559,
+    "3069": 1793516155560,
+    "3070": 1793516170791,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -119752,5 +119932,5 @@
       }
     }
   },
-  "updatedAt": 1793516149560
+  "updatedAt": 1793516171921
 }
