@@ -161,11 +161,26 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
 
     if (cls && Array.isArray(cls.students)) {
+      if (!Array.isArray(cls.deletedStudentIds)) cls.deletedStudentIds = [];
+      if (studentId && cls.deletedStudentIds.indexOf(studentId) === -1) cls.deletedStudentIds.push(studentId);
+      if (stName && cls.deletedStudentIds.indexOf(stName) === -1) cls.deletedStudentIds.push(stName);
+
+      if (!Array.isArray(S_app.deletedStudentIds)) S_app.deletedStudentIds = [];
+      if (studentId && S_app.deletedStudentIds.indexOf(studentId) === -1) S_app.deletedStudentIds.push(studentId);
+
       var sIdx = cls.students.findIndex(function(s) {
         return (s.id && s.id === studentId) || (s.email && s.email === studentId) || (s.login && s.login === studentId) || (s.name && s.name === stName);
       });
 
       if (sIdx !== -1) {
+        var existingSt = cls.students[sIdx];
+        if (existingSt) {
+          if (existingSt.id && cls.deletedStudentIds.indexOf(existingSt.id) === -1) cls.deletedStudentIds.push(existingSt.id);
+          if (existingSt.email && cls.deletedStudentIds.indexOf(existingSt.email) === -1) cls.deletedStudentIds.push(existingSt.email);
+          if (existingSt.login && cls.deletedStudentIds.indexOf(existingSt.login) === -1) cls.deletedStudentIds.push(existingSt.login);
+          if (existingSt.name && cls.deletedStudentIds.indexOf(existingSt.name) === -1) cls.deletedStudentIds.push(existingSt.name);
+          if (existingSt.id && S_app.deletedStudentIds.indexOf(existingSt.id) === -1) S_app.deletedStudentIds.push(existingSt.id);
+        }
         if (window.EthithUndo && typeof window.EthithUndo.record === 'function') {
           window.EthithUndo.record({
             type: 'delete_student',
@@ -256,6 +271,9 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
     if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') {
       window.EthithSync.pushStoreUpdate();
+    }
+    if (window.EthithSync && typeof window.EthithSync.pushRemoteStore === 'function') {
+      window.EthithSync.pushRemoteStore();
     }
     if (window.EthithSync && typeof window.EthithSync.broadcastState === 'function') {
       window.EthithSync.broadcastState('student_deleted');
@@ -607,9 +625,13 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         lsDel.forEach(function(did) { if (deletedTeacherIds.indexOf(did) === -1) deletedTeacherIds.push(did); });
       }
     } catch(e) {}
-    // Never allow official head teacher to be suppressed by stale localStorage deleted ids
-    if (deletedTeacherIds.indexOf('admin_official_teacher') !== -1) {
-      deletedTeacherIds = deletedTeacherIds.filter(function(id) { return id !== 'admin_official_teacher'; });
+    // Never allow official teachers (Ustoz, Azizbek Urolov) to be suppressed by stale localStorage deleted ids
+    var cleanDel = deletedTeacherIds.filter(function(id) {
+      return id !== 'admin_official_teacher' && id !== 't_urolov_azizbek' && id !== 'ustoz77' && id !== 'azizbek77';
+    });
+    if (cleanDel.length !== deletedTeacherIds.length) {
+      deletedTeacherIds = cleanDel;
+      try { localStorage.setItem('ethith_deleted_teacher_ids', JSON.stringify(deletedTeacherIds)); } catch(e) {}
     }
     S.deletedTeacherIds = deletedTeacherIds;
 
@@ -2429,9 +2451,12 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       window.EthithApp.saveState();
     }
 
-    // 6. Broadcast sync event in real-time
+    // 6. Broadcast sync event in real-time & push to GitHub server
     if (window.EthithSync && window.EthithSync.broadcastState) {
       window.EthithSync.broadcastState('teacher_deleted', { tid: tid });
+    }
+    if (window.EthithSync && typeof window.EthithSync.pushRemoteStore === 'function') {
+      window.EthithSync.pushRemoteStore();
     }
 
     // 7. Toast notification with undo prompt
@@ -2653,8 +2678,20 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         }
       }
 
+      if (Array.isArray(S.deletedTeacherIds)) {
+        S.deletedTeacherIds = S.deletedTeacherIds.filter(function(id) { return id !== newId && id !== login; });
+      }
+      try {
+        var lsDel = JSON.parse(localStorage.getItem('ethith_deleted_teacher_ids') || '[]');
+        if (Array.isArray(lsDel)) {
+          lsDel = lsDel.filter(function(id) { return id !== newId && id !== login; });
+          localStorage.setItem('ethith_deleted_teacher_ids', JSON.stringify(lsDel));
+        }
+      } catch(e) {}
+
       if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
       if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') window.EthithSync.pushStoreUpdate();
+      if (window.EthithSync && typeof window.EthithSync.pushRemoteStore === 'function') window.EthithSync.pushRemoteStore();
       if (window.EthithSync && typeof window.EthithSync.broadcastState === 'function') window.EthithSync.broadcastState('teacher_added');
 
       close();
@@ -6223,6 +6260,18 @@ EA.render = function(container, preserveScrollLeft) {
           if (curClass.customStudentPhones) delete curClass.customStudentPhones[curSt.id];
           if (typeof persistAttendance === 'function') persistAttendance(curClass);
         }
+      }
+
+      // Clean from deletedStudentIds if previously deleted
+      if (Array.isArray(chosenClass.deletedStudentIds)) {
+        chosenClass.deletedStudentIds = chosenClass.deletedStudentIds.filter(function(id) {
+          return id !== studentId && id !== finalLogin && id !== fullName && (!curSt || id !== curSt.id);
+        });
+      }
+      if (S_app_state && Array.isArray(S_app_state.deletedStudentIds)) {
+        S_app_state.deletedStudentIds = S_app_state.deletedStudentIds.filter(function(id) {
+          return id !== studentId && id !== finalLogin && id !== fullName && (!curSt || id !== curSt.id);
+        });
       }
 
       // Update in chosen class

@@ -442,6 +442,16 @@
     // E. STUDENT JOINED / ENROLLED
     else if ((event.type === 'STUDENT_JOIN' || event.type === 'STUDENT_ENROLLED') && targetCls && event.student) {
       if (!targetCls.students) targetCls.students = [];
+      if (Array.isArray(targetCls.deletedStudentIds)) {
+        targetCls.deletedStudentIds = targetCls.deletedStudentIds.filter(function(id) {
+          return id !== event.student.id && id !== event.student.email && id !== event.student.login && id !== event.student.name;
+        });
+      }
+      if (Array.isArray(S.deletedStudentIds)) {
+        S.deletedStudentIds = S.deletedStudentIds.filter(function(id) {
+          return id !== event.student.id && id !== event.student.email && id !== event.student.login && id !== event.student.name;
+        });
+      }
       var sExists = targetCls.students.some(function(s) {
         return (s.email && s.email === event.student.email) || (s.id && s.id === event.student.id) || (event.student.login && s.login && s.login.toLowerCase() === event.student.login.toLowerCase());
       });
@@ -468,25 +478,6 @@
           window.EA.render(document.getElementById('apView'));
         }
       }
-      if (!targetCls.students) targetCls.students = [];
-      var sExists = targetCls.students.some(function(s) {
-        return (s.email && s.email === event.student.email) || (s.id && s.id === event.student.id);
-      });
-      if (!sExists) {
-        if (!event.student.joinedAt) {
-          var dNow = new Date();
-          event.student.joinedAt = dNow.getFullYear() + '-' + String(dNow.getMonth() + 1).padStart(2, '0') + '-' + String(dNow.getDate()).padStart(2, '0');
-        }
-        var testerIdx = targetCls.students.findIndex(function(s) {
-          return s.isTester || (s.name && s.name.startsWith('tester_'));
-        });
-        if (testerIdx !== -1) {
-          targetCls.students[testerIdx] = event.student;
-        } else {
-          targetCls.students.push(event.student);
-        }
-        uiNeedsRefresh = true;
-      }
     }
 
     // E1. STUDENT EXPELLED / REMOVED (0ms Instant Live Reaction on Student's Device)
@@ -499,6 +490,9 @@
       if (classes) {
         classes.forEach(function(c) {
           if (c.id === expCid || c.code === expCid) {
+            if (!c.deletedStudentIds) c.deletedStudentIds = [];
+            if (expSid && c.deletedStudentIds.indexOf(expSid) === -1) c.deletedStudentIds.push(expSid);
+            if (expEmail && c.deletedStudentIds.indexOf(expEmail) === -1) c.deletedStudentIds.push(expEmail);
             if (Array.isArray(c.students)) {
               c.students = c.students.filter(function(s) {
                 var sEmail = (s.email || '').toLowerCase().trim();
@@ -512,6 +506,8 @@
           }
         });
       }
+      if (!S.deletedStudentIds) S.deletedStudentIds = [];
+      if (expSid && S.deletedStudentIds.indexOf(expSid) === -1) S.deletedStudentIds.push(expSid);
 
       var curU = S.user || {};
       var curUid = curU.id || '';
@@ -1249,14 +1245,32 @@
         headers: {
           'Authorization': 'token ' + token,
           'Accept': 'application/vnd.github.v3+json',
-                  },
+        },
         cache: 'no-store'
       });
       if (res.ok) {
         var data = await res.json();
         _lastKnownSha = data.sha;
-        var rawJson = decodeUtf8Base64(data.content);
-        return JSON.parse(rawJson);
+        var b64 = data.content;
+        if (data.sha && (!b64 || data.encoding === 'none')) {
+          try {
+            var blobRes = await fetch('https://api.github.com/repos/joraboymuhammad-code/english-hub-ethith/git/blobs/' + data.sha, {
+              headers: {
+                'Authorization': 'token ' + token,
+                'Accept': 'application/vnd.github.v3+json'
+              },
+              cache: 'no-store'
+            });
+            if (blobRes.ok) {
+              var blobData = await blobRes.json();
+              b64 = blobData.content;
+            }
+          } catch(eBlob) {}
+        }
+        if (b64) {
+          var rawJson = decodeUtf8Base64(b64);
+          return JSON.parse(rawJson);
+        }
       }
     } catch(err) {
       try {
@@ -1272,6 +1286,11 @@
     var dIds = deletedTeacherIds || (window.S && window.S.deletedTeacherIds) || [];
     if (!Array.isArray(remoteTeachers)) return changed;
     if (!Array.isArray(localTeachers)) return changed;
+
+    // Safety: Azizbek Urolov and Ustoz (head teacher) should NEVER be purged
+    dIds = dIds.filter(function(id) {
+      return id !== 't_urolov_azizbek' && id !== 'admin_official_teacher' && id !== 'azizbek77' && id !== 'ustoz77';
+    });
 
     for (var i = localTeachers.length - 1; i >= 0; i--) {
       if (localTeachers[i] && dIds.indexOf(localTeachers[i].id) !== -1) {
@@ -1291,6 +1310,9 @@
         if (rt.subject && lt.subject !== rt.subject) { lt.subject = rt.subject; changed = true; }
         if (rt.teachingHours && lt.teachingHours !== rt.teachingHours) { lt.teachingHours = rt.teachingHours; changed = true; }
         if (rt.hourlyRate && lt.hourlyRate !== rt.hourlyRate) { lt.hourlyRate = rt.hourlyRate; changed = true; }
+        if (rt.login && lt.login !== rt.login) { lt.login = rt.login; changed = true; }
+        if (rt.password && lt.password !== rt.password) { lt.password = rt.password; changed = true; }
+        if (rt.inviteCode && lt.inviteCode !== rt.inviteCode) { lt.inviteCode = rt.inviteCode; changed = true; }
         if (Array.isArray(rt.assignedClasses)) {
           if (!Array.isArray(lt.assignedClasses)) lt.assignedClasses = [];
           rt.assignedClasses.forEach(function(cid) {
@@ -1308,6 +1330,8 @@
   function mergeClasses(localClasses, remoteClasses) {
     var changed = false;
     if (!Array.isArray(remoteClasses)) return changed;
+
+    var globalDelStIds = (window.S && Array.isArray(window.S.deletedStudentIds)) ? window.S.deletedStudentIds : [];
 
     remoteClasses.forEach(function(rc) {
       var localCls = localClasses.find(function(c) { return c.id === rc.id || c.code === rc.code; });
@@ -1351,12 +1375,47 @@
         if (localCls.messages.length !== lenBefore) changed = true;
       }
 
+      // Sync Deleted Student IDs
+      if (!localCls.deletedStudentIds) localCls.deletedStudentIds = [];
+      if (rc.deletedStudentIds && Array.isArray(rc.deletedStudentIds)) {
+        rc.deletedStudentIds.forEach(function(dId) {
+          if (localCls.deletedStudentIds.indexOf(dId) === -1) {
+            localCls.deletedStudentIds.push(dId);
+            changed = true;
+          }
+        });
+      }
+
+      // Purge any deleted students from localCls.students
+      var allDels = (localCls.deletedStudentIds || []).concat(globalDelStIds);
+      if (allDels.length > 0 && localCls.students) {
+        var lenBeforeSt = localCls.students.length;
+        localCls.students = localCls.students.filter(function(st) {
+          if (!st) return false;
+          var isDel = (st.id && allDels.indexOf(st.id) !== -1) ||
+                      (st.email && allDels.indexOf(st.email) !== -1) ||
+                      (st.login && allDels.indexOf(st.login) !== -1) ||
+                      (st.name && allDels.indexOf(st.name) !== -1);
+          return !isDel;
+        });
+        if (localCls.students.length !== lenBeforeSt) changed = true;
+      }
+
       // Sync Students
       if (!localCls.students) localCls.students = [];
       if (rc.students && Array.isArray(rc.students)) {
         rc.students.forEach(function(rStudent) {
+          if (!rStudent) return;
+          var isDel = (rStudent.id && allDels.indexOf(rStudent.id) !== -1) ||
+                      (rStudent.email && allDels.indexOf(rStudent.email) !== -1) ||
+                      (rStudent.login && allDels.indexOf(rStudent.login) !== -1) ||
+                      (rStudent.name && allDels.indexOf(rStudent.name) !== -1);
+          if (isDel) return;
+
           var exists = localCls.students.find(function(s) {
-            return (s.email && s.email === rStudent.email) || (s.id && s.id === rStudent.id);
+            return (s.email && s.email === rStudent.email) ||
+                   (s.id && s.id === rStudent.id) ||
+                   (s.login && rStudent.login && s.login.toLowerCase() === rStudent.login.toLowerCase());
           });
           var isTester = rStudent.isTester || (rStudent.name && rStudent.name.toLowerCase().startsWith('tester_'));
           if (!exists) {
@@ -1370,6 +1429,10 @@
               exists.lastActive = rStudent.lastActive || exists.lastActive;
               exists.dailyMinutes = Math.max(exists.dailyMinutes || 0, rStudent.dailyMinutes || 0);
               exists.mistakes = rStudent.mistakes !== undefined ? rStudent.mistakes : exists.mistakes;
+              changed = true;
+            }
+            if (rStudent.name && !rStudent.name.toLowerCase().startsWith('tester_') && (exists.name || '').toLowerCase().startsWith('tester_')) {
+              Object.assign(exists, rStudent);
               changed = true;
             }
           }
@@ -1845,9 +1908,27 @@
         if (getRes.ok) {
           var fileData = await getRes.json();
           sha = fileData.sha;
+          var b64Content = fileData.content;
+          if (fileData.sha && (!b64Content || fileData.encoding === 'none')) {
+            try {
+              var bRes = await fetch('https://api.github.com/repos/joraboymuhammad-code/english-hub-ethith/git/blobs/' + fileData.sha, {
+                headers: {
+                  'Authorization': 'token ' + token,
+                  'Accept': 'application/vnd.github.v3+json'
+                },
+                cache: 'no-store'
+              });
+              if (bRes.ok) {
+                var bData = await bRes.json();
+                b64Content = bData.content;
+              }
+            } catch(eBlob) {}
+          }
           try {
-            var rawJson = decodeUtf8Base64(fileData.content);
-            remoteData = JSON.parse(rawJson);
+            if (b64Content) {
+              var rawJson = decodeUtf8Base64(b64Content);
+              remoteData = JSON.parse(rawJson);
+            }
           } catch(e) {}
         }
 
@@ -1862,6 +1943,13 @@
           if (!S.deletedQuizIds) S.deletedQuizIds = [];
           remoteData.deletedQuizIds.forEach(function(id) {
             if (S.deletedQuizIds.indexOf(id) === -1) S.deletedQuizIds.push(id);
+          });
+        }
+
+        if (remoteData.deletedStudentIds && Array.isArray(remoteData.deletedStudentIds)) {
+          if (!S.deletedStudentIds) S.deletedStudentIds = [];
+          remoteData.deletedStudentIds.forEach(function(id) {
+            if (S.deletedStudentIds.indexOf(id) === -1) S.deletedStudentIds.push(id);
           });
         }
         if (!S.quizzes) S.quizzes = [];
@@ -1941,11 +2029,23 @@
           });
         }
 
+        var globalDels = (S.deletedStudentIds || []);
         var cleanClasses = JSON.parse(JSON.stringify(S.classes));
         cleanClasses.forEach(function(c) {
           if (c.deletedMsgIds && Array.isArray(c.deletedMsgIds) && c.messages) {
             c.messages = c.messages.filter(function(m) {
               return c.deletedMsgIds.indexOf(m.id) === -1;
+            });
+          }
+          var allClsDels = (c.deletedStudentIds || []).concat(globalDels);
+          if (allClsDels.length > 0 && Array.isArray(c.students)) {
+            c.students = c.students.filter(function(st) {
+              if (!st) return false;
+              var isDel = (st.id && allClsDels.indexOf(st.id) !== -1) ||
+                          (st.email && allClsDels.indexOf(st.email) !== -1) ||
+                          (st.login && allClsDels.indexOf(st.login) !== -1) ||
+                          (st.name && allClsDels.indexOf(st.name) !== -1);
+              return !isDel;
             });
           }
         });
@@ -1967,7 +2067,10 @@
         });
         S.accounts = cleanAccounts;
 
-        var dtIds = S.deletedTeacherIds || [];
+        var dtIds = (S.deletedTeacherIds || []).filter(function(id) {
+          return id !== 'admin_official_teacher' && id !== 't_urolov_azizbek' && id !== 'ustoz77' && id !== 'azizbek77';
+        });
+        S.deletedTeacherIds = dtIds;
         var cleanTeachers = (S.teachers || []).filter(function(t) {
           return dtIds.indexOf(t.id) === -1;
         });
@@ -1980,6 +2083,7 @@
           deletedExamIds: dIds,
           deletedQuizIds: dqIds,
           deletedTeacherIds: dtIds,
+          deletedStudentIds: S.deletedStudentIds || [],
           deletedListingIds: S.deletedListingIds || [],
           accounts: cleanAccounts,
           p2pListings: S.p2pListings || [],
@@ -2207,6 +2311,10 @@
         });
       }
       var c1 = mergeClasses(S.classes, remote.classes || []);
+      if (remote.deletedStudentIds && Array.isArray(remote.deletedStudentIds)) {
+        if (!S.deletedStudentIds) S.deletedStudentIds = [];
+        remote.deletedStudentIds.forEach(function(id) { if (S.deletedStudentIds.indexOf(id) === -1) S.deletedStudentIds.push(id); });
+      }
       if (remote.deletedTeacherIds && Array.isArray(remote.deletedTeacherIds)) {
         if (!S.deletedTeacherIds) S.deletedTeacherIds = [];
         remote.deletedTeacherIds.forEach(function(id) { if (S.deletedTeacherIds.indexOf(id) === -1) S.deletedTeacherIds.push(id); });
@@ -2323,6 +2431,10 @@
         if (!S.quizzes) S.quizzes = [];
         var c0 = mergeQuizzes(S.quizzes, remote.quizzes || [], S.deletedQuizIds || []);
         var c1 = mergeClasses(S.classes, remote.classes || []);
+        if (remote.deletedStudentIds && Array.isArray(remote.deletedStudentIds)) {
+          if (!S.deletedStudentIds) S.deletedStudentIds = [];
+          remote.deletedStudentIds.forEach(function(id) { if (S.deletedStudentIds.indexOf(id) === -1) S.deletedStudentIds.push(id); });
+        }
         if (remote.deletedTeacherIds && Array.isArray(remote.deletedTeacherIds)) {
           if (!S.deletedTeacherIds) S.deletedTeacherIds = [];
           remote.deletedTeacherIds.forEach(function(id) { if (S.deletedTeacherIds.indexOf(id) === -1) S.deletedTeacherIds.push(id); });
@@ -2332,7 +2444,7 @@
         var c2 = mergeExams(S.exams, remote.exams || [], S.deletedExamIds || []);
         var c3 = mergeAccounts(S.accounts || [], remote.accounts || []);
         var c4 = mergeP2PListings(S.p2pListings || [], remote.p2pListings || [], S.deletedListingIds || []);
-        if (c0 || c1 || c2 || c3 || c4) {
+        if (c0 || c1 || c2 || c3 || c4 || cTeachers || wbChanged) {
           window.EthithApp.saveState();
           if (!window._ethithIsTestInProgress) {
             if (document.getElementById('tgMsgBox') && window._ethithRefreshCurrentClass) {
