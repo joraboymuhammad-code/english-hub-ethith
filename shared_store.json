@@ -71188,8 +71188,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "3",
-        "top": 47.7,
-        "left": 12.1,
+        "top": 47.3,
+        "left": 12.2,
         "width": 7.5,
         "height": 2,
         "correct": "forget",
@@ -71224,8 +71224,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "6",
-        "top": 63.5,
-        "left": 18.9,
+        "top": 60.8,
+        "left": 29.9,
         "width": 5.2,
         "height": 1.5,
         "correct": "photograph",
@@ -71236,8 +71236,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "7",
-        "top": 64.9,
-        "left": 15,
+        "top": 62.5,
+        "left": 33.2,
         "width": 5.2,
         "height": 1.5,
         "correct": "not to photograph",
@@ -71260,8 +71260,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "9",
-        "top": 76.4,
-        "left": 12.1,
+        "top": 76.1,
+        "left": 11.6,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -71391,8 +71391,8 @@
         "type": "fill",
         "exercise": "7",
         "label": "3",
-        "top": 47.7,
-        "left": 12.1,
+        "top": 50,
+        "left": 55.5,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -126004,7 +126004,7 @@
     "2032": 1793549977279,
     "2033": 1793549977279,
     "2034": 1793550162140,
-    "2035": 1793550201660,
+    "2035": 1793550230885,
     "2036": 1793549222745,
     "2037": 1793549222745,
     "2038": 1793549222746,
@@ -127152,5 +127152,5 @@
       }
     }
   },
-  "updatedAt": 1793550203669
+  "updatedAt": 1793550231295
 }
