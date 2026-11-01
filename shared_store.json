@@ -115787,6 +115787,250 @@
         "height": 2.2
       }
     ],
+    "3066": [
+      {
+        "id": "p3066_ex1_1",
+        "type": "fill",
+        "x": 11,
+        "y": 33,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "foggy, freezing, icy, snowy",
+          "freezing, icy, snowy, foggy"
+        ],
+        "top": 33,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex1_2",
+        "type": "fill",
+        "x": 11,
+        "y": 36.5,
+        "w": 30,
+        "h": 2.2,
+        "correct": [
+          "dry, sunny, warm",
+          "sunny, warm, dry"
+        ],
+        "top": 36.5,
+        "left": 11,
+        "width": 30,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex1_3",
+        "type": "fill",
+        "x": 11,
+        "y": 40,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "cloudy, rainy, wet, windy",
+          "rainy, wet, windy, cloudy"
+        ],
+        "top": 40,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex2_1",
+        "type": "fill",
+        "x": 13,
+        "y": 48,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "rained"
+        ],
+        "top": 48,
+        "left": 13,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex2_2",
+        "type": "fill",
+        "x": 13,
+        "y": 51.5,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "shone"
+        ],
+        "top": 51.5,
+        "left": 13,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex2_3",
+        "type": "fill",
+        "x": 13,
+        "y": 55,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "froze"
+        ],
+        "top": 55,
+        "left": 13,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex2_4",
+        "type": "fill",
+        "x": 13,
+        "y": 58.5,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "blew"
+        ],
+        "top": 58.5,
+        "left": 13,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex2_5",
+        "type": "fill",
+        "x": 13,
+        "y": 62,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "snowed"
+        ],
+        "top": 62,
+        "left": 13,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex3_2",
+        "type": "select",
+        "x": 56,
+        "y": 62.5,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "snow",
+          "thunder"
+        ],
+        "correct": "snow",
+        "top": 61.4,
+        "left": 56.8,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex3_3",
+        "type": "select",
+        "x": 56,
+        "y": 69.5,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "clouds",
+          "fog"
+        ],
+        "correct": "clouds",
+        "top": 69.4,
+        "left": 59.5,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex3_4",
+        "type": "select",
+        "x": 56,
+        "y": 73,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "rain",
+          "storm"
+        ],
+        "correct": "rain",
+        "top": 74.4,
+        "left": 67.9,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex3_5",
+        "type": "select",
+        "x": 56,
+        "y": 76.5,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "winds",
+          "ice"
+        ],
+        "correct": "winds",
+        "top": 77.4,
+        "left": 62.8,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex3_6",
+        "type": "select",
+        "x": 56,
+        "y": 80,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "fog",
+          "ice"
+        ],
+        "correct": "fog",
+        "top": 80,
+        "left": 56,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex3_7",
+        "type": "select",
+        "x": 64,
+        "y": 83.7,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "clouds",
+          "rain"
+        ],
+        "correct": "rain",
+        "top": 83.7,
+        "left": 64,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex3_8",
+        "type": "select",
+        "x": 56,
+        "y": 87.2,
+        "w": 14,
+        "h": 2.2,
+        "options": [
+          "sun",
+          "storm"
+        ],
+        "correct": "sun",
+        "top": 87.2,
+        "left": 56,
+        "width": 14,
+        "height": 2.2
+      }
+    ],
     "4004": [
       {
         "id": "p4004_ex1_2",
@@ -117786,6 +118030,7 @@
     "3062": 1793506681641,
     "3063": 1793506773020,
     "3065": 1793515698497,
+    "3066": 1793515720767,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -118495,5 +118740,5 @@
       }
     }
   },
-  "updatedAt": 1793515700507
+  "updatedAt": 1793515721314
 }
