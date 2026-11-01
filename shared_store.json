@@ -116273,22 +116273,6 @@
         "height": 2.2
       },
       {
-        "id": "p3067_ex6_1",
-        "type": "fill",
-        "x": 57,
-        "y": 64,
-        "w": 38,
-        "h": 2.2,
-        "correct": [
-          "New York is older than Sydney.",
-          "New York is older than Sydney"
-        ],
-        "top": 40.2,
-        "left": 53.8,
-        "width": 38,
-        "height": 2.2
-      },
-      {
         "id": "p3067_ex6_3",
         "type": "fill",
         "x": 57,
@@ -116331,8 +116315,8 @@
           "I think spring and autumn are nicer than summer or winter.",
           "I think spring and autumn are nicer than summer or winter"
         ],
-        "top": 80.5,
-        "left": 57,
+        "top": 51.3,
+        "left": 56.2,
         "width": 38,
         "height": 2.2
       },
@@ -116347,8 +116331,8 @@
           "Karachi is bigger than Islamabad.",
           "Karachi is bigger than Islamabad"
         ],
-        "top": 86,
-        "left": 57,
+        "top": 58.4,
+        "left": 56,
         "width": 38,
         "height": 2.2
       }
@@ -118353,7 +118337,7 @@
     "3063": 1793506773020,
     "3065": 1793515698497,
     "3066": 1793515763449,
-    "3067": 1793515862697,
+    "3067": 1793515878989,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -119063,5 +119047,5 @@
       }
     }
   },
-  "updatedAt": 1793515864942
+  "updatedAt": 1793515880579
 }
