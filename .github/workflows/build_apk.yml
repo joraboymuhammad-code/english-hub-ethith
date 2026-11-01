@@ -32,11 +32,6 @@ jobs:
         with:
           gradle-version: '8.4'
 
-      - name: Generate Release Keystore
-        working-directory: ./android
-        run: |
-          keytool -genkeypair -v -keystore release.keystore -alias ethith -keyalg RSA -keysize 2048 -validity 10000 -storepass ethith2026 -keypass ethith2026 -dname "CN=English House by ETHITH, OU=Education, O=ETHITH, L=Tashkent, C=UZ"
-
       - name: Build APK and AAB
         working-directory: ./android
         run: |

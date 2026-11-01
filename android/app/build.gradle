@@ -8,9 +8,9 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('../release.keystore')
+            storeFile file('ethith_release.jks')
             storePassword 'ethith2026'
-            keyAlias 'ethith'
+            keyAlias 'ethith_key'
             keyPassword 'ethith2026'
         }
     }
@@ -19,8 +19,8 @@ android {
         applicationId 'uz.ethith.app'
         minSdk 24
         targetSdk 34
-        versionCode 2027
-        versionName '2.0.1'
+        versionCode 2028
+        versionName '2.0.2'
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
