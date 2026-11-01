@@ -330,7 +330,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 24
+      "learningDays": 24,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_2",
@@ -662,7 +663,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 15
+      "learningDays": 15,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_3",
@@ -994,7 +996,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 20
+      "learningDays": 20,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_4",
@@ -1326,7 +1329,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 15
+      "learningDays": 15,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_qarshiboyev_humoyun_practice",
@@ -1658,7 +1662,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 20
+      "learningDays": 20,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_tovboyeva_marjona_beginner",
@@ -1990,7 +1995,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 25
+      "learningDays": 25,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_olimjonova_durdona_beginner",
@@ -2322,7 +2328,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 2
+      "learningDays": 2,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_olimjonova_durdona_pre_intermediate",
@@ -2654,7 +2661,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 7
+      "learningDays": 7,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_1",
@@ -2986,7 +2994,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 12
+      "learningDays": 12,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_2",
@@ -3318,7 +3327,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 17
+      "learningDays": 17,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_tagaev_eldor_beginner",
@@ -3650,7 +3660,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 22
+      "learningDays": 22,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_tagaev_eldor_elementary",
@@ -3982,7 +3993,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 27
+      "learningDays": 27,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_1",
@@ -4314,7 +4326,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 4
+      "learningDays": 4,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_2",
@@ -4646,7 +4659,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 9
+      "learningDays": 9,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_yaxshilikova_kamola_beginner",
@@ -4978,7 +4992,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 14
+      "learningDays": 14,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_yaxshilikova_kamola_elementary",
@@ -5310,7 +5325,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 19
+      "learningDays": 19,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_1",
@@ -5642,7 +5658,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 24
+      "learningDays": 24,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_2",
@@ -5974,7 +5991,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 1
+      "learningDays": 1,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_1",
@@ -6306,7 +6324,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 6
+      "learningDays": 6,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_2",
@@ -6638,7 +6657,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 11
+      "learningDays": 11,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_1",
@@ -6970,7 +6990,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 16
+      "learningDays": 16,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_2",
@@ -7302,7 +7323,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 21
+      "learningDays": 21,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aborbekov_elyor_upper_intermediate",
@@ -7634,7 +7656,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 26
+      "learningDays": 26,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_orinboyev_jaloliddin_pre_intermediate",
@@ -7966,7 +7989,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 3
+      "learningDays": 3,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_orinboyev_jaloliddin_intermediate",
@@ -8298,7 +8322,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 8
+      "learningDays": 8,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_1",
@@ -8630,7 +8655,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 13
+      "learningDays": 13,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_2",
@@ -8962,7 +8988,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 18
+      "learningDays": 18,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_jumanova_pokiza_beginner",
@@ -9294,7 +9321,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 23
+      "learningDays": 23,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_1",
@@ -9626,7 +9654,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 0
+      "learningDays": 0,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_2",
@@ -9958,7 +9987,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 5
+      "learningDays": 5,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xudoyorova_sarvinoz_intermediate",
@@ -10290,7 +10320,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 10
+      "learningDays": 10,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xudoyorova_sarvinoz_standard",
@@ -10622,7 +10653,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 15
+      "learningDays": 15,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_1",
@@ -10954,7 +10986,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 20
+      "learningDays": 20,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_2",
@@ -11286,7 +11319,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 25
+      "learningDays": 25,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xojamqulova_diyora_beginner",
@@ -11618,7 +11652,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 2
+      "learningDays": 2,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_1",
@@ -11950,7 +11985,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 7
+      "learningDays": 7,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_2",
@@ -12282,7 +12318,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 12
+      "learningDays": 12,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_3",
@@ -12614,7 +12651,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 17
+      "learningDays": 17,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_1",
@@ -12946,7 +12984,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 22
+      "learningDays": 22,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_2",
@@ -13278,7 +13317,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 27
+      "learningDays": 27,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_1",
@@ -13610,7 +13650,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 4
+      "learningDays": 4,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_2",
@@ -13942,7 +13983,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 9
+      "learningDays": 9,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ahmadova_barno_elementary_1",
@@ -14274,7 +14316,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 14
+      "learningDays": 14,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ahmadova_barno_elementary_2",
@@ -14606,7 +14649,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 19
+      "learningDays": 19,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ahmadova_barno_elementary_3",
@@ -14938,7 +14982,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 24
+      "learningDays": 24,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ahmadova_barno_pre_intermediate",
@@ -15270,7 +15315,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 1
+      "learningDays": 1,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_shodiyor_matematika_matematika",
@@ -15602,7 +15648,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 6
+      "learningDays": 6,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_urolov_azizbek_upper",
@@ -15916,7 +15963,10 @@
       ],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 11
+      "learningDays": 11,
+      "deletedMsgIds": [],
+      "messages": [],
+      "deletedStudentIds": []
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -16230,7 +16280,10 @@
       ],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 16
+      "learningDays": 16,
+      "deletedMsgIds": [],
+      "messages": [],
+      "deletedStudentIds": []
     },
     {
       "id": "cls_urolov_azizbek_intermediate",
@@ -16544,7 +16597,10 @@
       ],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 21
+      "learningDays": 21,
+      "deletedMsgIds": [],
+      "messages": [],
+      "deletedStudentIds": []
     },
     {
       "id": "cls_urolov_azizbek_practice",
@@ -16858,7 +16914,10 @@
       ],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 26
+      "learningDays": 26,
+      "deletedMsgIds": [],
+      "messages": [],
+      "deletedStudentIds": []
     },
     {
       "id": "cls_1792041880052",
@@ -17246,7 +17305,8 @@
       "customStudentPhones": {},
       "maxCapacity": 18,
       "studentPayments": {},
-      "teacher": "Zizi Ustoz"
+      "teacher": "Zizi Ustoz",
+      "deletedStudentIds": []
     },
     {
       "id": "cls_1793380468126",
@@ -17728,7 +17788,8 @@
         }
       },
       "deletedMsgIds": [],
-      "messages": []
+      "messages": [],
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ethith_main",
@@ -17782,7 +17843,9 @@
         "holidays": {},
         "homeworks": {}
       },
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedMsgIds": [],
+      "deletedStudentIds": []
     },
     {
       "id": "cls_upper_intermediate",
@@ -17836,7 +17899,9 @@
         "holidays": {},
         "homeworks": {}
       },
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedMsgIds": [],
+      "deletedStudentIds": []
     }
   ],
   "exams": [
@@ -18347,6 +18412,8 @@
   "deletedQuizIds": [
     "quiz_main_blitz"
   ],
+  "deletedTeacherIds": [],
+  "deletedStudentIds": [],
   "deletedListingIds": [
     "p2p_1792322748592_nls2",
     "p2p_1792322765334_1cj0",
@@ -18371,13 +18438,13 @@
       "victorySound": null
     },
     {
-      "id": "t_urolov_azizbek",
-      "name": "Azizbek Urolov",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "password": "azizbek2026",
       "role": "teacher",
-      "coins": 1000,
+      "coins": 5000,
       "hourlyRate": 120000,
       "subject": "Ingliz tili (Upper / Inter)",
       "teachingHours": 72,
@@ -18385,11 +18452,14 @@
         "cls_urolov_azizbek_intermediate_practice",
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146347,
+      "level": "C2",
+      "dailyMinutes": 0
     },
     {
-      "id": "t_ravshanov_doniyor",
-      "name": "Ravshanov Doniyor",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "doniyor.ravshanov@ethith.uz",
       "login": "doniyor24",
       "password": "doniyor2026",
@@ -18404,11 +18474,12 @@
         "cls_ravshanov_doniyor_cefr_3",
         "cls_ravshanov_doniyor_cefr_4"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146347
     },
     {
-      "id": "t_qarshiboyev_humoyun",
-      "name": "Qarshiboyev Humoyun",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "humoyun.qarshiboyev@ethith.uz",
       "login": "humoyun15",
       "password": "humoyun2026",
@@ -18420,11 +18491,12 @@
       "assignedClasses": [
         "cls_qarshiboyev_humoyun_practice"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146347
     },
     {
-      "id": "t_tovboyeva_marjona",
-      "name": "Marjona Tovboyeva",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "marjona.tovboyeva@ethith.uz",
       "login": "marjona88",
       "password": "marjona2026",
@@ -18436,11 +18508,12 @@
       "assignedClasses": [
         "cls_tovboyeva_marjona_beginner"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146347
     },
     {
-      "id": "t_olimjonova_durdona",
-      "name": "Durdona Olimjonova",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "durdona.olimjonova@ethith.uz",
       "login": "durdona12",
       "password": "durdona2026",
@@ -18455,11 +18528,12 @@
         "cls_olimjonova_durdona_intermediate_1",
         "cls_olimjonova_durdona_intermediate_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_tagaev_eldor",
-      "name": "Eldor Tagaev",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "eldor.tagaev@ethith.uz",
       "login": "eldor33",
       "password": "eldor2026",
@@ -18474,11 +18548,12 @@
         "cls_tagaev_eldor_pre_intermediate_1",
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_yaxshilikova_kamola",
-      "name": "Kamola Yaxshilikova",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "kamola.yaxshilikova@ethith.uz",
       "login": "kamola45",
       "password": "kamola2026",
@@ -18491,11 +18566,12 @@
         "cls_yaxshilikova_kamola_beginner",
         "cls_yaxshilikova_kamola_elementary"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_sherqoziyeva_iroda",
-      "name": "Iroda Sherqoziyeva",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "iroda.sherqoziyeva@ethith.uz",
       "login": "iroda19",
       "password": "iroda2026",
@@ -18508,11 +18584,12 @@
         "cls_sherqoziyeva_iroda_beginner_1",
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_aborbekov_elyor",
-      "name": "Elyor Aborbekov",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "elyor.aborbekov@ethith.uz",
       "login": "elyor70",
       "password": "elyor2026",
@@ -18528,11 +18605,12 @@
         "cls_aborbekov_elyor_intermediate_2",
         "cls_aborbekov_elyor_upper_intermediate"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_orinboyev_jaloliddin",
-      "name": "Jaloliddin O’rinboyev",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "jaloliddin.orinboyev@ethith.uz",
       "login": "jaloliddin99",
       "password": "jaloliddin2026",
@@ -18547,11 +18625,12 @@
         "cls_orinboyev_jaloliddin_standard_1",
         "cls_orinboyev_jaloliddin_standard_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_jumanova_pokiza",
-      "name": "Pokiza Jumanova",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "pokiza.jumanova@ethith.uz",
       "login": "pokiza07",
       "password": "pokiza2026",
@@ -18563,11 +18642,12 @@
       "assignedClasses": [
         "cls_jumanova_pokiza_beginner"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_hayrullayev_arslon",
-      "name": "Arslon Hayrullayev",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "arslon.hayrullayev@ethith.uz",
       "login": "arslon64",
       "password": "arslon2026",
@@ -18580,11 +18660,12 @@
         "cls_hayrullayev_arslon_beginner_1",
         "cls_hayrullayev_arslon_beginner_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_xudoyorova_sarvinoz",
-      "name": "Sarvinoz Xudoyorova",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "sarvinoz.xudoyorova@ethith.uz",
       "login": "sarvinoz82",
       "password": "sarvinoz2026",
@@ -18597,11 +18678,12 @@
         "cls_xudoyorova_sarvinoz_intermediate",
         "cls_xudoyorova_sarvinoz_standard"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_aliqulova_sevinch",
-      "name": "Sevinch Aliqulova",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "sevinch.aliqulova@ethith.uz",
       "login": "sevinch55",
       "password": "sevinch2026",
@@ -18614,11 +18696,12 @@
         "cls_aliqulova_sevinch_beginner_1",
         "cls_aliqulova_sevinch_beginner_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_xojamqulova_diyora",
-      "name": "Diyora Xo’jamqulova",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "diyora.xojamqulova@ethith.uz",
       "login": "diyora21",
       "password": "diyora2026",
@@ -18633,11 +18716,12 @@
         "cls_xojamqulova_diyora_elementary_2",
         "cls_xojamqulova_diyora_elementary_3"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_bosimbekov_farrux",
-      "name": "Farrux Bosimbekov",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "farrux.bosimbekov@ethith.uz",
       "login": "farrux93",
       "password": "farrux2026",
@@ -18652,11 +18736,12 @@
         "cls_bosimbekov_farrux_intermediate_1",
         "cls_bosimbekov_farrux_intermediate_2"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_ahmadova_barno",
-      "name": "Barno Ahmadova",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "barno.ahmadova@ethith.uz",
       "login": "barno36",
       "password": "barno2026",
@@ -18671,11 +18756,12 @@
         "cls_ahmadova_barno_elementary_3",
         "cls_ahmadova_barno_pre_intermediate"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
-      "id": "t_shodiyor_matematika",
-      "name": "Shodiyor (matematika)",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "shodiyor.matematika@ethith.uz",
       "login": "shodiyor50",
       "password": "shodiyor2026",
@@ -18687,7 +18773,8 @@
       "assignedClasses": [
         "cls_shodiyor_matematika_matematika"
       ],
-      "createdAt": 1793202631415
+      "createdAt": 1793202631415,
+      "updatedAt": 1793547146348
     },
     {
       "id": "admin_official_teacher",
@@ -19027,6 +19114,30 @@
       "title": "👑 IELTS Qiroli"
     },
     {
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
+      "login": "zizi24",
+      "password": "zizi2026",
+      "email": "strikeruzb52@gmail.com",
+      "role": "teacher",
+      "teacherId": "tc_oprlehyw5",
+      "subject": "Ingliz tili (Intermediate)",
+      "salarySharePercent": 50,
+      "updatedAt": 1793547146355
+    },
+    {
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
+      "login": "muhammadyusuf11",
+      "password": "muhammadyusuf2026",
+      "email": "muhammadyusuf11@ethith.uz",
+      "role": "teacher",
+      "teacherId": "teacher_1793380078590",
+      "subject": "Ingliz tili",
+      "salarySharePercent": 69,
+      "updatedAt": 1793547146355
+    },
+    {
       "id": "std_mix_416_selix",
       "name": "Mix Selix",
       "role": "student",
@@ -19037,28 +19148,6 @@
       "classId": "cls_1793380468126",
       "isOnline": false,
       "lastLogin": null
-    },
-    {
-      "id": "tc_oprlehyw5",
-      "name": "Zizi Ustoz",
-      "login": "zizi24",
-      "password": "zizi2026",
-      "email": "strikeruzb52@gmail.com",
-      "role": "teacher",
-      "teacherId": "tc_oprlehyw5",
-      "subject": "Ingliz tili (Intermediate)",
-      "salarySharePercent": 50
-    },
-    {
-      "id": "teacher_1793380078590",
-      "name": "Muhammadyusuf",
-      "login": "muhammadyusuf11",
-      "password": "muhammadyusuf2026",
-      "email": "muhammadyusuf11@ethith.uz",
-      "role": "teacher",
-      "teacherId": "teacher_1793380078590",
-      "subject": "Ingliz tili",
-      "salarySharePercent": 69
     }
   ],
   "p2pListings": [],
@@ -71587,13 +71676,165 @@
       }
     ]
   },
-  "workbookOverridesTs": 1793546506347,
-  "updatedAt": "2026-10-30T16:30:27.698Z",
-  "authorizedAdminChatIds": [
-    6772427596,
-    98124765
-  ],
-  "timestamp": 1792921840624,
+  "workbookOverridesTs": {
+    "4": 1793547137430,
+    "5": 1793547137432,
+    "9": 1793547137432,
+    "12": 1793547137433,
+    "13": 1793547137433,
+    "14": 1793547137434,
+    "24": 1793547137435,
+    "25": 1793547137435,
+    "26": 1793547137436,
+    "27": 1793547137437,
+    "28": 1793547137438,
+    "29": 1793547137439,
+    "30": 1793547137440,
+    "31": 1793547137441,
+    "32": 1793547137441,
+    "33": 1793547137441,
+    "34": 1793547137442,
+    "35": 1793547137442,
+    "36": 1793547137443,
+    "37": 1793547137444,
+    "38": 1793547137444,
+    "39": 1793547137444,
+    "40": 1793547137445,
+    "41": 1793547137445,
+    "42": 1793547137446,
+    "43": 1793547137446,
+    "44": 1793547137446,
+    "45": 1793547137447,
+    "46": 1793547137447,
+    "47": 1793547137448,
+    "48": 1793547137448,
+    "49": 1793547137448,
+    "50": 1793547137449,
+    "51": 1793547137450,
+    "52": 1793547137450,
+    "53": 1793547137450,
+    "54": 1793547137451,
+    "55": 1793547137451,
+    "56": 1793547137452,
+    "57": 1793547137453,
+    "58": 1793547137453,
+    "59": 1793547137453,
+    "60": 1793547137454,
+    "61": 1793547137455,
+    "62": 1793547137456,
+    "63": 1793547137456,
+    "64": 1793547137457,
+    "65": 1793547137458,
+    "66": 1793547137458,
+    "67": 1793547137459,
+    "68": 1793547137459,
+    "69": 1793547137460,
+    "70": 1793547137461,
+    "71": 1793547137461,
+    "72": 1793547137462,
+    "73": 1793547137462,
+    "74": 1793547137463,
+    "75": 1793547137464,
+    "76": 1793547137464,
+    "77": 1793547137465,
+    "78": 1793547137465,
+    "79": 1793547137466,
+    "80": 1793547137466,
+    "81": 1793547137467,
+    "82": 1793547137468,
+    "83": 1793547137468,
+    "84": 1793547137469,
+    "85": 1793547137469,
+    "86": 1793547137470,
+    "87": 1793547137470,
+    "1004": 1793547137471,
+    "1058": 1793547137471,
+    "1059": 1793547137472,
+    "2004": 1793547137472,
+    "2005": 1793547137473,
+    "2006": 1793547137473,
+    "2007": 1793547137474,
+    "2008": 1793547137474,
+    "2009": 1793547137475,
+    "2010": 1793547137476,
+    "2011": 1793547137476,
+    "2012": 1793547137477,
+    "2013": 1793547137477,
+    "2014": 1793547137478,
+    "2015": 1793547137478,
+    "2016": 1793547137478,
+    "2017": 1793547137479,
+    "2018": 1793547137480,
+    "2019": 1793547137481,
+    "2020": 1793547137482,
+    "2021": 1793547137483,
+    "2022": 1793547137484,
+    "2023": 1793547137484,
+    "2024": 1793547137485,
+    "2025": 1793547137485,
+    "2026": 1793547137486,
+    "2027": 1793547137487,
+    "2028": 1793547137487,
+    "2029": 1793547137488,
+    "2030": 1793547137489,
+    "2031": 1793547137490,
+    "2032": 1793547137490,
+    "2033": 1793547137490,
+    "2034": 1793547137491,
+    "2035": 1793547137492,
+    "2036": 1793547137492,
+    "2037": 1793547137493,
+    "2038": 1793547137493,
+    "2039": 1793547137494,
+    "2040": 1793547137494,
+    "2041": 1793547137495,
+    "2042": 1793547137495,
+    "2043": 1793547137496,
+    "2044": 1793547137496,
+    "2045": 1793547137497,
+    "2046": 1793547137497,
+    "2047": 1793547137498,
+    "2048": 1793547137498,
+    "2049": 1793547137499,
+    "2050": 1793547137499,
+    "2051": 1793547137500,
+    "2052": 1793547137501,
+    "2053": 1793547137502,
+    "2054": 1793547137502,
+    "2055": 1793547137503,
+    "2056": 1793547137504,
+    "2057": 1793547137504,
+    "2058": 1793547137505,
+    "2059": 1793547137506,
+    "2060": 1793547137507,
+    "2061": 1793547137508,
+    "2062": 1793547137509,
+    "2063": 1793547137509,
+    "2064": 1793547137510,
+    "2065": 1793547137510,
+    "2066": 1793547137511,
+    "2067": 1793547137512,
+    "2068": 1793547137513,
+    "2069": 1793547137514,
+    "2070": 1793547137514,
+    "2071": 1793547137515,
+    "2072": 1793547137516,
+    "2073": 1793547137517,
+    "2074": 1793547137517,
+    "2075": 1793547137518,
+    "2076": 1793547137518,
+    "2077": 1793547137519,
+    "2078": 1793547137519,
+    "2079": 1793547137520,
+    "2080": 1793547137520,
+    "2081": 1793547137521,
+    "2082": 1793547137522,
+    "2083": 1793547137522,
+    "2084": 1793547137523,
+    "2085": 1793547137523,
+    "2086": 1793547137524,
+    "2087": 1793547137524
+  },
   "centerSettings": {
     "card": "8600 4912 7731 9024",
     "cardHolder": "ETHITH LEARNING CENTER",
@@ -72563,24 +72804,5 @@
       }
     }
   },
-  "finance": {
-    "totalCollected": 0,
-    "totalRevenue": 0,
-    "totalPaid": 0,
-    "totalExpenses": 0,
-    "totalReceivables": 0,
-    "netProfit": 0,
-    "studentFees": {},
-    "expenses": [],
-    "revenues": [],
-    "kpis": {
-      "totalRevenue": 0,
-      "totalTeacherPayout": 0,
-      "totalExpenses": 0,
-      "totalReceivables": 0,
-      "netProfit": 0
-    }
-  },
-  "deletedTeacherIds": [],
-  "customCurriculumTests": {}
+  "updatedAt": 1793547146419
 }
