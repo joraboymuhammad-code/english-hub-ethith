@@ -80263,7 +80263,7 @@
             "height": 2.2
       }
 ],
-                    "4004": [
+                            "4004": [
       {
             "id": "p4004_ex1_2",
             "type": "fill",
@@ -80277,7 +80277,8 @@
             "correct": [
                   "d",
                   "D"
-            ]
+            ],
+            "answer": "d"
       },
       {
             "id": "p4004_ex1_3",
@@ -80292,7 +80293,8 @@
             "correct": [
                   "f",
                   "F"
-            ]
+            ],
+            "answer": "f"
       },
       {
             "id": "p4004_ex1_4",
@@ -80307,7 +80309,8 @@
             "correct": [
                   "b",
                   "B"
-            ]
+            ],
+            "answer": "b"
       },
       {
             "id": "p4004_ex1_5",
@@ -80322,7 +80325,8 @@
             "correct": [
                   "h",
                   "H"
-            ]
+            ],
+            "answer": "h"
       },
       {
             "id": "p4004_ex1_6",
@@ -80337,7 +80341,8 @@
             "correct": [
                   "a",
                   "A"
-            ]
+            ],
+            "answer": "a"
       },
       {
             "id": "p4004_ex1_7",
@@ -80352,7 +80357,8 @@
             "correct": [
                   "c",
                   "C"
-            ]
+            ],
+            "answer": "c"
       },
       {
             "id": "p4004_ex1_8",
@@ -80367,7 +80373,8 @@
             "correct": [
                   "e",
                   "E"
-            ]
+            ],
+            "answer": "e"
       },
       {
             "id": "p4004_ex2_2",
@@ -80382,7 +80389,8 @@
             "correct": [
                   "do",
                   "Do"
-            ]
+            ],
+            "answer": "do"
       },
       {
             "id": "p4004_ex2_3",
@@ -80397,7 +80405,8 @@
             "correct": [
                   "do",
                   "Do"
-            ]
+            ],
+            "answer": "do"
       },
       {
             "id": "p4004_ex2_4",
@@ -80412,7 +80421,8 @@
             "correct": [
                   "have",
                   "Have"
-            ]
+            ],
+            "answer": "have"
       },
       {
             "id": "p4004_ex2_5",
@@ -80427,7 +80437,8 @@
             "correct": [
                   "go",
                   "Go"
-            ]
+            ],
+            "answer": "go"
       },
       {
             "id": "p4004_ex2_6",
@@ -80442,7 +80453,8 @@
             "correct": [
                   "have",
                   "Have"
-            ]
+            ],
+            "answer": "have"
       },
       {
             "id": "p4004_ex2_7",
@@ -80457,7 +80469,8 @@
             "correct": [
                   "have",
                   "Have"
-            ]
+            ],
+            "answer": "have"
       },
       {
             "id": "p4004_ex2_8",
@@ -80472,7 +80485,8 @@
             "correct": [
                   "make",
                   "Make"
-            ]
+            ],
+            "answer": "make"
       },
       {
             "id": "p4004_ex2_9",
@@ -80487,7 +80501,8 @@
             "correct": [
                   "do",
                   "Do"
-            ]
+            ],
+            "answer": "do"
       },
       {
             "id": "p4004_ex2_10",
@@ -80502,7 +80517,8 @@
             "correct": [
                   "have",
                   "Have"
-            ]
+            ],
+            "answer": "have"
       },
       {
             "id": "p4004_ex3_2",
@@ -80518,7 +80534,8 @@
                   "go shopping",
                   "shop",
                   "Go shopping"
-            ]
+            ],
+            "answer": "go shopping"
       },
       {
             "id": "p4004_ex3_3",
@@ -80534,7 +80551,8 @@
                   "Do some exercise",
                   "do some exercise",
                   "Exercise"
-            ]
+            ],
+            "answer": "Do some exercise"
       },
       {
             "id": "p4004_ex3_4",
@@ -80549,7 +80567,8 @@
             "correct": [
                   "stay in",
                   "Stay in"
-            ]
+            ],
+            "answer": "stay in"
       },
       {
             "id": "p4004_ex3_5",
@@ -80564,7 +80583,8 @@
             "correct": [
                   "Have an early night",
                   "have an early night"
-            ]
+            ],
+            "answer": "Have an early night"
       },
       {
             "id": "p4004_ex3_6",
@@ -80579,7 +80599,8 @@
             "correct": [
                   "go to bed late",
                   "Go to bed late"
-            ]
+            ],
+            "answer": "go to bed late"
       },
       {
             "id": "p4004_ex3_7",
@@ -80595,7 +80616,8 @@
                   "Spend time with relatives",
                   "spend time with relatives",
                   "Spend time with relatives and friends"
-            ]
+            ],
+            "answer": "Spend time with relatives"
       },
       {
             "id": "p4004_ex3_8",
@@ -80610,7 +80632,8 @@
             "correct": [
                   "have a good time",
                   "Have a good time"
-            ]
+            ],
+            "answer": "have a good time"
       }
 ],
     "4005": [
@@ -80627,7 +80650,8 @@
             "correct": [
                   "Who",
                   "who"
-            ]
+            ],
+            "answer": "Who"
       },
       {
             "id": "p4005_ex4_3",
@@ -80642,7 +80666,8 @@
             "correct": [
                   "Where",
                   "where"
-            ]
+            ],
+            "answer": "Where"
       },
       {
             "id": "p4005_ex4_4",
@@ -80657,7 +80682,8 @@
             "correct": [
                   "How much",
                   "how much"
-            ]
+            ],
+            "answer": "How much"
       },
       {
             "id": "p4005_ex4_5",
@@ -80674,7 +80700,8 @@
                   "when",
                   "What time",
                   "what time"
-            ]
+            ],
+            "answer": "When"
       },
       {
             "id": "p4005_ex4_6",
@@ -80689,7 +80716,8 @@
             "correct": [
                   "How often",
                   "how often"
-            ]
+            ],
+            "answer": "How often"
       },
       {
             "id": "p4005_ex4_7",
@@ -80704,7 +80732,8 @@
             "correct": [
                   "How many",
                   "how many"
-            ]
+            ],
+            "answer": "How many"
       },
       {
             "id": "p4005_ex4_8",
@@ -80719,7 +80748,8 @@
             "correct": [
                   "What kind",
                   "what kind"
-            ]
+            ],
+            "answer": "What kind"
       },
       {
             "id": "p4005_ex5_2",
@@ -80735,7 +80765,8 @@
                   "Who do you chat with online?",
                   "do",
                   "Who do you chat with online"
-            ]
+            ],
+            "answer": "Who do you chat with online?"
       },
       {
             "id": "p4005_ex5_3",
@@ -80751,7 +80782,8 @@
                   "What kind of films do you like?",
                   "of",
                   "What kind of films do you like"
-            ]
+            ],
+            "answer": "What kind of films do you like?"
       },
       {
             "id": "p4005_ex5_4",
@@ -80767,7 +80799,8 @@
                   "Are you busy right now?",
                   "you",
                   "Are you busy right now"
-            ]
+            ],
+            "answer": "Are you busy right now?"
       },
       {
             "id": "p4005_ex5_5",
@@ -80783,7 +80816,8 @@
                   "How often do you spend time with relatives?",
                   "often",
                   "How often do you spend time with relatives"
-            ]
+            ],
+            "answer": "How often do you spend time with relatives?"
       },
       {
             "id": "p4005_ex5_6",
@@ -80799,7 +80833,8 @@
                   "How many hours did you sleep last night?",
                   "hours",
                   "How many hours did you sleep last night"
-            ]
+            ],
+            "answer": "How many hours did you sleep last night?"
       },
       {
             "id": "p4005_ex5_7",
@@ -80815,7 +80850,8 @@
                   "Where are you from?",
                   "are",
                   "Where are you from"
-            ]
+            ],
+            "answer": "Where are you from?"
       },
       {
             "id": "p4005_ex5_8",
@@ -80831,7 +80867,8 @@
                   "Did you go shopping yesterday?",
                   "did",
                   "Did you go shopping yesterday"
-            ]
+            ],
+            "answer": "Did you go shopping yesterday?"
       },
       {
             "id": "p4005_ex6_2",
@@ -80846,7 +80883,8 @@
             "correct": [
                   "Did you have",
                   "did you have"
-            ]
+            ],
+            "answer": "Did you have"
       },
       {
             "id": "p4005_ex6_3",
@@ -80861,7 +80899,8 @@
             "correct": [
                   "When did you start",
                   "when did you start"
-            ]
+            ],
+            "answer": "When did you start"
       },
       {
             "id": "p4005_ex6_4",
@@ -80878,7 +80917,8 @@
                   "were you",
                   "Are you",
                   "are you"
-            ]
+            ],
+            "answer": "Were you"
       },
       {
             "id": "p4005_ex6_5",
@@ -80895,7 +80935,8 @@
                   "did you win",
                   "many did you win?",
                   "How many did you win"
-            ]
+            ],
+            "answer": "many did you win"
       },
       {
             "id": "p4005_ex6_6",
@@ -80910,7 +80951,8 @@
             "correct": [
                   "do you live",
                   "Do you live"
-            ]
+            ],
+            "answer": "do you live"
       },
       {
             "id": "p4005_ex6_7",
@@ -80925,7 +80967,8 @@
             "correct": [
                   "How did you get",
                   "how did you get"
-            ]
+            ],
+            "answer": "How did you get"
       },
       {
             "id": "p4005_ex6_8",
@@ -80940,7 +80983,8 @@
             "correct": [
                   "Do you want",
                   "do you want"
-            ]
+            ],
+            "answer": "Do you want"
       }
 ],
     "4006": [
@@ -80959,7 +81003,8 @@
                   "My girlfriend goes running every now and then",
                   "Every now and then my girlfriend goes running.",
                   "Every now and then my girlfriend goes running"
-            ]
+            ],
+            "answer": "My girlfriend goes running every now and then."
       },
       {
             "id": "p4006_ex1a_3",
@@ -80976,7 +81021,8 @@
                   "We don't usually go camping in the summer",
                   "We do not usually go camping in the summer.",
                   "We do not usually go camping in the summer"
-            ]
+            ],
+            "answer": "We don't usually go camping in the summer."
       },
       {
             "id": "p4006_ex1a_4",
@@ -80991,7 +81037,8 @@
             "correct": [
                   "My best friend does aerobics once or twice a week.",
                   "My best friend does aerobics once or twice a week"
-            ]
+            ],
+            "answer": "My best friend does aerobics once or twice a week."
       },
       {
             "id": "p4006_ex1a_5",
@@ -81006,7 +81053,8 @@
             "correct": [
                   "I hardly ever play computer games.",
                   "I hardly ever play computer games"
-            ]
+            ],
+            "answer": "I hardly ever play computer games."
       },
       {
             "id": "p4006_ex1a_6",
@@ -81023,7 +81071,8 @@
                   "My family don't often make future plans",
                   "My family doesn't often make future plans.",
                   "My family doesn't often make future plans"
-            ]
+            ],
+            "answer": "My family don't often make future plans."
       },
       {
             "id": "p4006_ex2_2",
@@ -81039,7 +81088,8 @@
                   "rarely have a lie-in",
                   "rarely have a lie in",
                   "rarely"
-            ]
+            ],
+            "answer": "rarely have a lie-in"
       },
       {
             "id": "p4006_ex2_3",
@@ -81055,7 +81105,8 @@
                   "Most days my sister goes on Facebook",
                   "My sister goes on Facebook most days",
                   "goes on Facebook most days"
-            ]
+            ],
+            "answer": "Most days my sister goes on Facebook"
       },
       {
             "id": "p4006_ex2_4",
@@ -81070,7 +81121,8 @@
             "correct": [
                   "go on holiday once or twice a year",
                   "go on holiday once or twice a year."
-            ]
+            ],
+            "answer": "go on holiday once or twice a year"
       },
       {
             "id": "p4006_ex2_5",
@@ -81086,7 +81138,8 @@
                   "Every now and then we go clubbing",
                   "We go clubbing every now and then",
                   "go clubbing every now and then"
-            ]
+            ],
+            "answer": "Every now and then we go clubbing"
       },
       {
             "id": "p4006_ex3_2",
@@ -81102,7 +81155,8 @@
                   "is never",
                   "never is",
                   "never"
-            ]
+            ],
+            "answer": "is never"
       },
       {
             "id": "p4006_ex3_3",
@@ -81117,7 +81171,8 @@
             "correct": [
                   "always eat healthily",
                   "always eat"
-            ]
+            ],
+            "answer": "always eat healthily"
       },
       {
             "id": "p4006_ex3_4",
@@ -81132,7 +81187,8 @@
             "correct": [
                   "nearly always go",
                   "nearly always"
-            ]
+            ],
+            "answer": "nearly always go"
       },
       {
             "id": "p4006_ex3_5",
@@ -81147,7 +81203,8 @@
             "correct": [
                   "sometimes watch videos",
                   "sometimes watch"
-            ]
+            ],
+            "answer": "sometimes watch videos"
       },
       {
             "id": "p4006_ex3_6",
@@ -81163,7 +81220,8 @@
                   "occasionally spend time with relatives",
                   "occasionally",
                   "spend time with relatives"
-            ]
+            ],
+            "answer": "occasionally spend time with relatives"
       },
       {
             "id": "p4006_ex3_7",
@@ -81179,7 +81237,8 @@
                   "often chat with friends online",
                   "often chat",
                   "chat with friends online"
-            ]
+            ],
+            "answer": "often chat with friends online"
       },
       {
             "id": "p4006_ex3_8",
@@ -81195,7 +81254,8 @@
                   "are usually",
                   "usually are",
                   "usually"
-            ]
+            ],
+            "answer": "are usually"
       }
 ],
     "4007": [
@@ -81213,7 +81273,8 @@
                   "go on Facebook",
                   "Go on Facebook",
                   "on Facebook"
-            ]
+            ],
+            "answer": "go on Facebook"
       },
       {
             "id": "p4007_ex4_3",
@@ -81229,7 +81290,8 @@
                   "go clubbing",
                   "Go clubbing",
                   "clubbing"
-            ]
+            ],
+            "answer": "go clubbing"
       },
       {
             "id": "p4007_ex4_4",
@@ -81245,7 +81307,8 @@
                   "do aerobics",
                   "Do aerobics",
                   "go to the gym"
-            ]
+            ],
+            "answer": "do aerobics"
       },
       {
             "id": "p4007_ex4_5",
@@ -81260,7 +81323,8 @@
             "correct": [
                   "go to the gym",
                   "Go to the gym"
-            ]
+            ],
+            "answer": "go to the gym"
       },
       {
             "id": "p4007_ex4_6",
@@ -81276,7 +81340,8 @@
                   "play cards",
                   "Play cards",
                   "cards"
-            ]
+            ],
+            "answer": "play cards"
       },
       {
             "id": "p4007_ex4_7",
@@ -81292,7 +81357,8 @@
                   "do yoga",
                   "Do yoga",
                   "yoga"
-            ]
+            ],
+            "answer": "do yoga"
       },
       {
             "id": "p4007_ex4_8",
@@ -81308,7 +81374,8 @@
                   "go camping",
                   "Go camping",
                   "camping"
-            ]
+            ],
+            "answer": "go camping"
       },
       {
             "id": "p4007_ex5_2",
@@ -81323,7 +81390,8 @@
             "correct": [
                   "swimming",
                   "Swimming"
-            ]
+            ],
+            "answer": "swimming"
       },
       {
             "id": "p4007_ex5_3",
@@ -81338,7 +81406,8 @@
             "correct": [
                   "golf",
                   "Golf"
-            ]
+            ],
+            "answer": "golf"
       },
       {
             "id": "p4007_ex5_4",
@@ -81353,7 +81422,8 @@
             "correct": [
                   "basketball",
                   "Basketball"
-            ]
+            ],
+            "answer": "basketball"
       },
       {
             "id": "p4007_ex5_5",
@@ -81368,7 +81438,8 @@
             "correct": [
                   "karate",
                   "Karate"
-            ]
+            ],
+            "answer": "karate"
       },
       {
             "id": "p4007_ex5_6",
@@ -81383,7 +81454,8 @@
             "correct": [
                   "exercise",
                   "Exercise"
-            ]
+            ],
+            "answer": "exercise"
       },
       {
             "id": "p4007_ex6_2",
@@ -81399,7 +81471,8 @@
                   "go swimming",
                   "swim",
                   "Go swimming"
-            ]
+            ],
+            "answer": "go swimming"
       },
       {
             "id": "p4007_ex6_3",
@@ -81415,7 +81488,8 @@
                   "do exercise",
                   "Do exercise",
                   "exercise"
-            ]
+            ],
+            "answer": "do exercise"
       },
       {
             "id": "p4007_ex6_4",
@@ -81431,7 +81505,8 @@
                   "play golf",
                   "Play golf",
                   "golf"
-            ]
+            ],
+            "answer": "play golf"
       },
       {
             "id": "p4007_ex6_5",
@@ -81447,7 +81522,8 @@
                   "go for a walk",
                   "Go for a walk",
                   "walk"
-            ]
+            ],
+            "answer": "go for a walk"
       },
       {
             "id": "p4007_ex6_6",
@@ -81463,7 +81539,8 @@
                   "go running",
                   "run",
                   "Go running"
-            ]
+            ],
+            "answer": "go running"
       },
       {
             "id": "p4007_ex6_7",
@@ -81479,7 +81556,8 @@
                   "play football",
                   "football",
                   "Play football"
-            ]
+            ],
+            "answer": "play football"
       },
       {
             "id": "p4007_ex6_8",
@@ -81495,7 +81573,8 @@
                   "go out for a meal",
                   "for a meal",
                   "have a meal"
-            ]
+            ],
+            "answer": "go out for a meal"
       }
 ],
     "4008": [
@@ -81513,7 +81592,8 @@
             "correct": [
                   "experience",
                   "Experience"
-            ]
+            ],
+            "answer": "experience"
       },
       {
             "id": "p4008_ex1_2b",
@@ -81529,7 +81609,8 @@
             "correct": [
                   "experience",
                   "Experience"
-            ]
+            ],
+            "answer": "experience"
       },
       {
             "id": "p4008_ex1_3a",
@@ -81545,7 +81626,8 @@
             "correct": [
                   "plan",
                   "Plan"
-            ]
+            ],
+            "answer": "plan"
       },
       {
             "id": "p4008_ex1_3b",
@@ -81561,7 +81643,8 @@
             "correct": [
                   "plan",
                   "Plan"
-            ]
+            ],
+            "answer": "plan"
       },
       {
             "id": "p4008_ex1_4a",
@@ -81577,7 +81660,8 @@
             "correct": [
                   "dream",
                   "Dream"
-            ]
+            ],
+            "answer": "dream"
       },
       {
             "id": "p4008_ex1_4b",
@@ -81593,7 +81677,8 @@
             "correct": [
                   "dream",
                   "Dream"
-            ]
+            ],
+            "answer": "dream"
       },
       {
             "id": "p4008_ex1_5a",
@@ -81609,7 +81694,8 @@
             "correct": [
                   "text",
                   "Text"
-            ]
+            ],
+            "answer": "text"
       },
       {
             "id": "p4008_ex1_5b",
@@ -81625,7 +81711,8 @@
             "correct": [
                   "text",
                   "Text"
-            ]
+            ],
+            "answer": "text"
       },
       {
             "id": "p4008_ex1_6a",
@@ -81641,7 +81728,8 @@
             "correct": [
                   "promise",
                   "Promise"
-            ]
+            ],
+            "answer": "promise"
       },
       {
             "id": "p4008_ex1_6b",
@@ -81657,7 +81745,8 @@
             "correct": [
                   "promise",
                   "Promise"
-            ]
+            ],
+            "answer": "promise"
       },
       {
             "id": "p4008_ex1_7a",
@@ -81674,7 +81763,8 @@
                   "posts",
                   "post",
                   "Posts"
-            ]
+            ],
+            "answer": "posts"
       },
       {
             "id": "p4008_ex1_7b",
@@ -81690,7 +81780,8 @@
             "correct": [
                   "post",
                   "Post"
-            ]
+            ],
+            "answer": "post"
       },
       {
             "id": "p4008_ex2_1",
@@ -81706,7 +81797,8 @@
             "correct": [
                   "texts",
                   "Texts"
-            ]
+            ],
+            "answer": "texts"
       },
       {
             "id": "p4008_ex2_2",
@@ -81722,7 +81814,8 @@
             "correct": [
                   "photographs",
                   "Photographs"
-            ]
+            ],
+            "answer": "photographs"
       },
       {
             "id": "p4008_ex2_3",
@@ -81738,7 +81831,8 @@
             "correct": [
                   "plan",
                   "Plan"
-            ]
+            ],
+            "answer": "plan"
       },
       {
             "id": "p4008_ex2_4",
@@ -81754,7 +81848,8 @@
             "correct": [
                   "experience",
                   "Experience"
-            ]
+            ],
+            "answer": "experience"
       },
       {
             "id": "p4008_ex2_5",
@@ -81770,7 +81865,8 @@
             "correct": [
                   "photograph",
                   "Photograph"
-            ]
+            ],
+            "answer": "photograph"
       },
       {
             "id": "p4008_ex2_6",
@@ -81786,7 +81882,8 @@
             "correct": [
                   "post",
                   "Post"
-            ]
+            ],
+            "answer": "post"
       },
       {
             "id": "p4008_ex2_7",
@@ -81802,7 +81899,8 @@
             "correct": [
                   "dream",
                   "Dream"
-            ]
+            ],
+            "answer": "dream"
       },
       {
             "id": "p4008_ex3_1",
@@ -81818,7 +81916,8 @@
             "correct": [
                   "go",
                   "Go"
-            ]
+            ],
+            "answer": "go"
       },
       {
             "id": "p4008_ex3_2",
@@ -81834,7 +81933,8 @@
             "correct": [
                   "play",
                   "Play"
-            ]
+            ],
+            "answer": "play"
       },
       {
             "id": "p4008_ex3_3",
@@ -81850,7 +81950,8 @@
             "correct": [
                   "do",
                   "Do"
-            ]
+            ],
+            "answer": "do"
       },
       {
             "id": "p4008_ex3_4",
@@ -81866,7 +81967,8 @@
             "correct": [
                   "have",
                   "Have"
-            ]
+            ],
+            "answer": "have"
       },
       {
             "id": "p4008_ex3_5",
@@ -81882,7 +81984,8 @@
             "correct": [
                   "take",
                   "Take"
-            ]
+            ],
+            "answer": "take"
       },
       {
             "id": "p4008_ex3_6",
@@ -81898,7 +82001,8 @@
             "correct": [
                   "make",
                   "Make"
-            ]
+            ],
+            "answer": "make"
       }
 ],
     "4009": [
@@ -81916,7 +82020,8 @@
             "correct": [
                   "showers",
                   "Showers"
-            ]
+            ],
+            "answer": "showers"
       },
       {
             "id": "p4009_ex1_3",
@@ -81932,7 +82037,8 @@
             "correct": [
                   "mild",
                   "Mild"
-            ]
+            ],
+            "answer": "mild"
       },
       {
             "id": "p4009_ex1_4",
@@ -81948,7 +82054,8 @@
             "correct": [
                   "pleasant",
                   "Pleasant"
-            ]
+            ],
+            "answer": "pleasant"
       },
       {
             "id": "p4009_ex1_5",
@@ -81964,7 +82071,8 @@
             "correct": [
                   "humid",
                   "Humid"
-            ]
+            ],
+            "answer": "humid"
       },
       {
             "id": "p4009_ex1_6",
@@ -81980,7 +82088,8 @@
             "correct": [
                   "thunderstorm",
                   "Thunderstorm"
-            ]
+            ],
+            "answer": "thunderstorm"
       },
       {
             "id": "p4009_ex2_2",
@@ -81998,7 +82107,8 @@
                   "I cannot stand the winter.",
                   "can't stand the winter",
                   "cannot stand the winter"
-            ]
+            ],
+            "answer": "I can't stand the winter."
       },
       {
             "id": "p4009_ex2_3",
@@ -82016,7 +82126,8 @@
                   "I am really into yoga.",
                   "into yoga",
                   "really into yoga"
-            ]
+            ],
+            "answer": "I'm really into yoga."
       },
       {
             "id": "p4009_ex2_4",
@@ -82033,7 +82144,8 @@
                   "My favourite sport is basketball.",
                   "My favorite sport is basketball.",
                   "favourite sport is basketball"
-            ]
+            ],
+            "answer": "My favourite sport is basketball."
       },
       {
             "id": "p4009_ex2_5",
@@ -82050,7 +82162,8 @@
                   "I don't mind doing housework.",
                   "I do not mind doing housework.",
                   "don't mind doing housework"
-            ]
+            ],
+            "answer": "I don't mind doing housework."
       },
       {
             "id": "p4009_ex2_6",
@@ -82067,7 +82180,8 @@
                   "I'm not keen on thunderstorms.",
                   "I am not keen on thunderstorms.",
                   "not keen on thunderstorms"
-            ]
+            ],
+            "answer": "I'm not keen on thunderstorms."
       },
       {
             "id": "p4009_ex2_7",
@@ -82083,7 +82197,8 @@
             "correct": [
                   "I quite like going camping.",
                   "quite like going camping"
-            ]
+            ],
+            "answer": "I quite like going camping."
       },
       {
             "id": "p4009_ex2_8",
@@ -82099,7 +82214,8 @@
             "correct": [
                   "I prefer football to golf.",
                   "prefer football to golf"
-            ]
+            ],
+            "answer": "I prefer football to golf."
       },
       {
             "id": "p4009_ex2_9",
@@ -82116,7 +82232,8 @@
                   "I'm really interested in doing karate.",
                   "I'm interested in doing karate.",
                   "interested in doing karate"
-            ]
+            ],
+            "answer": "I'm really interested in doing karate."
       },
       {
             "id": "p4009_ex3_1",
@@ -82136,7 +82253,8 @@
                   "and",
                   "but",
                   "so"
-            ]
+            ],
+            "answer": "but"
       },
       {
             "id": "p4009_ex3_2",
@@ -82156,7 +82274,8 @@
                   "and",
                   "but",
                   "so"
-            ]
+            ],
+            "answer": "but"
       },
       {
             "id": "p4009_ex3_3",
@@ -82176,7 +82295,8 @@
                   "and",
                   "but",
                   "so"
-            ]
+            ],
+            "answer": "and"
       },
       {
             "id": "p4009_ex3_4",
@@ -82196,7 +82316,8 @@
                   "and",
                   "but",
                   "so"
-            ]
+            ],
+            "answer": "and"
       },
       {
             "id": "p4009_ex3_5",
@@ -82216,7 +82337,8 @@
                   "and",
                   "but",
                   "so"
-            ]
+            ],
+            "answer": "so"
       },
       {
             "id": "p4009_ex3_6",
@@ -82236,21 +82358,22 @@
                   "and",
                   "but",
                   "so"
-            ]
+            ],
+            "answer": "and"
       }
 ],
     "4010": [
       {
             "id": "p4010_ex1_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 34.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 34.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 33.2,
+            "left": 30,
+            "width": 8,
+            "height": 1.8,
+            "x": 30,
+            "y": 33.2,
+            "w": 8,
+            "h": 1.8,
             "correct": [
                   "huge",
                   "Huge"
@@ -82259,14 +82382,14 @@
       {
             "id": "p4010_ex1_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 36.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 36.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 36.4,
+            "left": 19.5,
+            "width": 9,
+            "height": 1.8,
+            "x": 19.5,
+            "y": 36.4,
+            "w": 9,
+            "h": 1.8,
             "correct": [
                   "crowded",
                   "Crowded"
@@ -82275,14 +82398,14 @@
       {
             "id": "p4010_ex1_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 38.8,
-            "w": 9.5,
-            "h": 2,
-            "top": 38.8,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 39.7,
+            "left": 24.5,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 24.5,
+            "y": 39.7,
+            "w": 7.5,
+            "h": 1.8,
             "correct": [
                   "lively",
                   "Lively"
@@ -82291,14 +82414,14 @@
       {
             "id": "p4010_ex1_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 41,
-            "w": 9.5,
-            "h": 2,
-            "top": 41,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 41.4,
+            "left": 30.5,
+            "width": 6.5,
+            "height": 1.8,
+            "x": 30.5,
+            "y": 41.4,
+            "w": 6.5,
+            "h": 1.8,
             "correct": [
                   "safe",
                   "Safe"
@@ -82307,14 +82430,14 @@
       {
             "id": "p4010_ex1_5",
             "type": "fill",
-            "x": 41.5,
-            "y": 43.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 43.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 44.6,
+            "left": 18.5,
+            "width": 6.5,
+            "height": 1.8,
+            "x": 18.5,
+            "y": 44.6,
+            "w": 6.5,
+            "h": 1.8,
             "correct": [
                   "dirty",
                   "Dirty"
@@ -82323,14 +82446,14 @@
       {
             "id": "p4010_ex1_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 45.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 45.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 46.3,
+            "left": 21,
+            "width": 6,
+            "height": 1.8,
+            "x": 21,
+            "y": 46.3,
+            "w": 6,
+            "h": 1.8,
             "correct": [
                   "dull",
                   "Dull"
@@ -82339,14 +82462,14 @@
       {
             "id": "p4010_ex2_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 52.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 52.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 68.6,
+            "left": 38,
+            "width": 12,
+            "height": 1.8,
+            "x": 38,
+            "y": 68.6,
+            "w": 12,
+            "h": 1.8,
             "correct": [
                   "street cleaner",
                   "cleaner"
@@ -82355,14 +82478,14 @@
       {
             "id": "p4010_ex2_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 57.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 57.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 70.3,
+            "left": 35.5,
+            "width": 14,
+            "height": 1.8,
+            "x": 35.5,
+            "y": 70.3,
+            "w": 14,
+            "h": 1.8,
             "correct": [
                   "pedestrian area",
                   "pedestrian"
@@ -82371,14 +82494,14 @@
       {
             "id": "p4010_ex2_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 63.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 63.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 72.1,
+            "left": 37.5,
+            "width": 12,
+            "height": 1.8,
+            "x": 37.5,
+            "y": 72.1,
+            "w": 12,
+            "h": 1.8,
             "correct": [
                   "souvenir seller",
                   "seller"
@@ -82387,14 +82510,14 @@
       {
             "id": "p4010_ex2_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 68.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 68.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 75.3,
+            "left": 37.5,
+            "width": 12,
+            "height": 1.8,
+            "x": 37.5,
+            "y": 75.3,
+            "w": 12,
+            "h": 1.8,
             "correct": [
                   "market place",
                   "marketplace",
@@ -82404,14 +82527,14 @@
       {
             "id": "p4010_ex2_5",
             "type": "fill",
-            "x": 41.5,
-            "y": 74.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 74.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 77.1,
+            "left": 37.5,
+            "width": 12,
+            "height": 1.8,
+            "x": 37.5,
+            "y": 77.1,
+            "w": 12,
+            "h": 1.8,
             "correct": [
                   "pavement artist",
                   "pavement"
@@ -82420,14 +82543,14 @@
       {
             "id": "p4010_ex2_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 79.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 79.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 80.3,
+            "left": 37.5,
+            "width": 12,
+            "height": 1.8,
+            "x": 37.5,
+            "y": 80.3,
+            "w": 12,
+            "h": 1.8,
             "correct": [
                   "parking space",
                   "parking"
@@ -82436,14 +82559,14 @@
       {
             "id": "p4010_ex2_7",
             "type": "fill",
-            "x": 41.5,
-            "y": 85.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 85.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 82,
+            "left": 37.5,
+            "width": 12,
+            "height": 1.8,
+            "x": 37.5,
+            "y": 82,
+            "w": 12,
+            "h": 1.8,
             "correct": [
                   "street performer",
                   "performer"
@@ -82452,14 +82575,14 @@
       {
             "id": "p4010_ex3_1",
             "type": "fill",
-            "x": 81.5,
-            "y": 30.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 30.6,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 46,
+            "left": 67,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 67,
+            "y": 46,
+            "w": 7.5,
+            "h": 1.8,
             "correct": [
                   "lively",
                   "Lively"
@@ -82468,14 +82591,14 @@
       {
             "id": "p4010_ex3_2",
             "type": "fill",
-            "x": 81.5,
-            "y": 35.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 35.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 47.5,
+            "left": 77,
+            "width": 13,
+            "height": 1.8,
+            "x": 77,
+            "y": 47.5,
+            "w": 13,
+            "h": 1.8,
             "correct": [
                   "pedestrian area",
                   "pedestrian"
@@ -82484,14 +82607,14 @@
       {
             "id": "p4010_ex3_3",
             "type": "fill",
-            "x": 81.5,
-            "y": 40.8,
-            "w": 9.5,
-            "h": 2,
-            "top": 40.8,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 50.4,
+            "left": 78,
+            "width": 12,
+            "height": 1.8,
+            "x": 78,
+            "y": 50.4,
+            "w": 12,
+            "h": 1.8,
             "correct": [
                   "market place",
                   "marketplace",
@@ -82501,14 +82624,14 @@
       {
             "id": "p4010_ex3_4",
             "type": "fill",
-            "x": 81.5,
-            "y": 45.9,
-            "w": 9.5,
-            "h": 2,
-            "top": 45.9,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 53.2,
+            "left": 62.5,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 62.5,
+            "y": 53.2,
+            "w": 7.5,
+            "h": 1.8,
             "correct": [
                   "stalls",
                   "Stalls",
@@ -82518,14 +82641,14 @@
       {
             "id": "p4010_ex3_5",
             "type": "fill",
-            "x": 81.5,
-            "y": 51.1,
-            "w": 9.5,
-            "h": 2,
-            "top": 51.1,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 54.6,
+            "left": 72,
+            "width": 15,
+            "height": 1.8,
+            "x": 72,
+            "y": 54.6,
+            "w": 15,
+            "h": 1.8,
             "correct": [
                   "street performers",
                   "performers"
@@ -82534,14 +82657,14 @@
       {
             "id": "p4010_ex3_6",
             "type": "fill",
-            "x": 81.5,
-            "y": 56.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 56.2,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 57.4,
+            "left": 72,
+            "width": 15,
+            "height": 1.8,
+            "x": 72,
+            "y": 57.4,
+            "w": 15,
+            "h": 1.8,
             "correct": [
                   "souvenir sellers",
                   "sellers"
@@ -82550,14 +82673,14 @@
       {
             "id": "p4010_ex3_7",
             "type": "fill",
-            "x": 81.5,
-            "y": 61.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 61.3,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 60.2,
+            "left": 66.5,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 66.5,
+            "y": 60.2,
+            "w": 7.5,
+            "h": 1.8,
             "correct": [
                   "huge",
                   "Huge"
@@ -82566,14 +82689,14 @@
       {
             "id": "p4010_ex3_8",
             "type": "fill",
-            "x": 81.5,
-            "y": 66.4,
-            "w": 9.5,
-            "h": 2,
-            "top": 66.4,
+            "top": 61.6,
             "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "width": 8,
+            "height": 1.8,
+            "x": 81.5,
+            "y": 61.6,
+            "w": 8,
+            "h": 1.8,
             "correct": [
                   "crowded",
                   "Crowded"
@@ -82582,14 +82705,14 @@
       {
             "id": "p4010_ex3_9",
             "type": "fill",
-            "x": 81.5,
-            "y": 71.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 71.5,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 63,
+            "left": 67,
+            "width": 8,
+            "height": 1.8,
+            "x": 67,
+            "y": 63,
+            "w": 8,
+            "h": 1.8,
             "correct": [
                   "safe",
                   "Safe"
@@ -82598,14 +82721,14 @@
       {
             "id": "p4010_ex3_10",
             "type": "fill",
-            "x": 81.5,
-            "y": 76.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 76.6,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 65.9,
+            "left": 62,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 62,
+            "y": 65.9,
+            "w": 7.5,
+            "h": 1.8,
             "correct": [
                   "dirty",
                   "Dirty"
@@ -82614,14 +82737,14 @@
       {
             "id": "p4010_ex3_11",
             "type": "fill",
-            "x": 81.5,
-            "y": 81.8,
-            "w": 9.5,
-            "h": 2,
-            "top": 81.8,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 65.9,
+            "left": 83.5,
+            "width": 7.5,
+            "height": 1.8,
+            "x": 83.5,
+            "y": 65.9,
+            "w": 7.5,
+            "h": 1.8,
             "correct": [
                   "rubbish",
                   "Rubbish",
@@ -82631,14 +82754,14 @@
       {
             "id": "p4010_ex3_12",
             "type": "fill",
-            "x": 81.5,
-            "y": 86.9,
-            "w": 9.5,
-            "h": 2,
-            "top": 86.9,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "top": 68.7,
+            "left": 59.5,
+            "width": 14,
+            "height": 1.8,
+            "x": 59.5,
+            "y": 68.7,
+            "w": 14,
+            "h": 1.8,
             "correct": [
                   "street cleaners",
                   "cleaners"
@@ -82649,14 +82772,14 @@
       {
             "id": "p4011_ex6_1a",
             "type": "fill",
-            "x": 81.5,
-            "y": 33.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 33.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 51.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 51.4,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "are you doing",
                   "Are you doing"
@@ -82665,14 +82788,14 @@
       {
             "id": "p4011_ex6_1b",
             "type": "fill",
-            "x": 81.5,
-            "y": 33.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 33.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 68,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 68,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "Do you want",
                   "do you want"
@@ -82681,14 +82804,14 @@
       {
             "id": "p4011_ex6_2a",
             "type": "fill",
-            "x": 81.5,
-            "y": 33.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 33.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 72.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 72.4,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "Are you listening",
                   "are you listening"
@@ -82698,13 +82821,13 @@
             "id": "p4011_ex6_2b",
             "type": "fill",
             "x": 81.5,
-            "y": 33.7,
+            "y": 78.6,
             "w": 9.5,
-            "h": 2,
-            "top": 33.7,
+            "h": 1.9,
+            "top": 78.6,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "like",
                   "Like"
@@ -82714,13 +82837,13 @@
             "id": "p4011_ex6_3a",
             "type": "fill",
             "x": 81.5,
-            "y": 33.7,
+            "y": 81.6,
             "w": 9.5,
-            "h": 2,
-            "top": 33.7,
+            "h": 1.9,
+            "top": 81.6,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "do you do",
                   "Do you do"
@@ -82730,13 +82853,13 @@
             "id": "p4011_ex6_3b",
             "type": "fill",
             "x": 81.5,
-            "y": 33.7,
+            "y": 84.5,
             "w": 9.5,
-            "h": 2,
-            "top": 33.7,
+            "h": 1.9,
+            "top": 84.5,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "go",
                   "Go"
@@ -82745,14 +82868,14 @@
       {
             "id": "p4011_ex6_4a",
             "type": "fill",
-            "x": 55.5,
-            "y": 33.7,
-            "w": 35,
-            "h": 2,
-            "top": 33.7,
-            "left": 55.5,
-            "width": 35,
-            "height": 2,
+            "x": 74,
+            "y": 55.6,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 55.6,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "does the market open",
                   "does the market open?"
@@ -82762,13 +82885,13 @@
             "id": "p4011_ex6_4b",
             "type": "fill",
             "x": 81.5,
-            "y": 33.7,
+            "y": 59.2,
             "w": 9.5,
-            "h": 2,
-            "top": 33.7,
+            "h": 1.9,
+            "top": 59.2,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "don't know",
                   "do not know"
@@ -82777,14 +82900,14 @@
       {
             "id": "p4011_ex6_5a",
             "type": "fill",
-            "x": 81.5,
-            "y": 33.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 33.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 62.8,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 62.8,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "Is your partner",
                   "is your partner"
@@ -82793,14 +82916,14 @@
       {
             "id": "p4011_ex6_5b",
             "type": "fill",
-            "x": 81.5,
-            "y": 33.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 33.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 66.5,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 66.5,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "doesn't work",
                   "does not work"
@@ -82809,14 +82932,14 @@
       {
             "id": "p4011_ex6_6a",
             "type": "fill",
-            "x": 81.5,
-            "y": 33.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 33.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 70.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 70.1,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "Are you having",
                   "are you having"
@@ -82826,13 +82949,13 @@
             "id": "p4011_ex6_6b",
             "type": "fill",
             "x": 81.5,
-            "y": 33.7,
+            "y": 73.8,
             "w": 9.5,
-            "h": 2,
-            "top": 33.7,
+            "h": 1.9,
+            "top": 73.8,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "'m having",
                   "am having"
@@ -82842,13 +82965,13 @@
             "id": "p4011_ex6_7a",
             "type": "fill",
             "x": 81.5,
-            "y": 33.7,
+            "y": 77.4,
             "w": 9.5,
-            "h": 2,
-            "top": 33.7,
+            "h": 1.9,
+            "top": 77.4,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Do I need",
                   "do I need"
@@ -82857,14 +82980,14 @@
       {
             "id": "p4011_ex6_7b",
             "type": "fill",
-            "x": 81.5,
-            "y": 33.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 33.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 81.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 81.1,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "isn't raining",
                   "is not raining"
@@ -82873,14 +82996,14 @@
       {
             "id": "p4011_ex6_8a",
             "type": "fill",
-            "x": 55.5,
-            "y": 33.7,
-            "w": 35,
-            "h": 2,
-            "top": 33.7,
-            "left": 55.5,
-            "width": 35,
-            "height": 2,
+            "x": 74,
+            "y": 84.7,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 84.7,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "Is our team winning",
                   "is our team winning"
@@ -82889,14 +83012,14 @@
       {
             "id": "p4011_ex6_8b",
             "type": "fill",
-            "x": 81.5,
-            "y": 33.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 33.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 88.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 88.4,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "'re playing",
                   "are playing"
@@ -82905,14 +83028,14 @@
       {
             "id": "p4011_ex7_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 37.3,
+            "x": 81.5,
+            "y": 12,
             "w": 9.5,
-            "h": 2,
-            "top": 37.3,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 12,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "starts",
                   "Starts"
@@ -82921,14 +83044,14 @@
       {
             "id": "p4011_ex7_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 37,
+            "x": 81.5,
+            "y": 15.4,
             "w": 9.5,
-            "h": 2,
-            "top": 37,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 15.4,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "finishes",
                   "Finishes"
@@ -82937,14 +83060,14 @@
       {
             "id": "p4011_ex7_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 36.8,
+            "x": 81.5,
+            "y": 14,
             "w": 9.5,
-            "h": 2,
-            "top": 36.8,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 14,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "has",
                   "Has"
@@ -82953,14 +83076,14 @@
       {
             "id": "p4011_ex7_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 36.6,
+            "x": 81.5,
+            "y": 15.3,
             "w": 9.5,
-            "h": 2,
-            "top": 36.6,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 15.3,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "gets",
                   "Gets"
@@ -82969,14 +83092,14 @@
       {
             "id": "p4011_ex7_5",
             "type": "fill",
-            "x": 41.5,
-            "y": 36.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 36.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 16.5,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 16.5,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "are sitting",
                   "'re sitting"
@@ -82985,14 +83108,14 @@
       {
             "id": "p4011_ex7_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 36.1,
-            "w": 9.5,
-            "h": 2,
-            "top": 36.1,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 17.8,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 17.8,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "are watching",
                   "'re watching"
@@ -83001,14 +83124,14 @@
       {
             "id": "p4011_ex7_7",
             "type": "fill",
-            "x": 41.5,
-            "y": 35.9,
+            "x": 81.5,
+            "y": 19,
             "w": 9.5,
-            "h": 2,
-            "top": 35.9,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 19,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "is buying",
                   "'s buying"
@@ -83017,14 +83140,14 @@
       {
             "id": "p4011_ex7_8",
             "type": "fill",
-            "x": 41.5,
-            "y": 35.6,
+            "x": 81.5,
+            "y": 20.3,
             "w": 9.5,
-            "h": 2,
-            "top": 35.6,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 20.3,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "is looking",
                   "'s looking"
@@ -83033,14 +83156,14 @@
       {
             "id": "p4011_ex7_9",
             "type": "fill",
-            "x": 41.5,
-            "y": 35.4,
+            "x": 81.5,
+            "y": 21.5,
             "w": 9.5,
-            "h": 2,
-            "top": 35.4,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 21.5,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "wants",
                   "Wants"
@@ -83049,14 +83172,14 @@
       {
             "id": "p4011_ex7_10",
             "type": "fill",
-            "x": 41.5,
-            "y": 35.2,
+            "x": 81.5,
+            "y": 22.8,
             "w": 9.5,
-            "h": 2,
-            "top": 35.2,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 22.8,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "like",
                   "Like"
@@ -83065,14 +83188,14 @@
       {
             "id": "p4011_ex7_11",
             "type": "fill",
-            "x": 41.5,
-            "y": 34.9,
-            "w": 9.5,
-            "h": 2,
-            "top": 34.9,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 24,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 24,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "is becoming",
                   "'s becoming"
@@ -83081,14 +83204,14 @@
       {
             "id": "p4011_ex7_12",
             "type": "fill",
-            "x": 41.5,
-            "y": 34.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 34.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 25.3,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 25.3,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "are spending",
                   "'re spending"
@@ -83098,13 +83221,13 @@
             "id": "p4011_ex5a_1",
             "type": "fill",
             "x": 81.5,
-            "y": 30.3,
+            "y": 30.7,
             "w": 9.5,
-            "h": 2,
-            "top": 30.3,
+            "h": 1.9,
+            "top": 30.7,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "'re having",
                   "are having"
@@ -83114,13 +83237,13 @@
             "id": "p4011_ex5a_2",
             "type": "fill",
             "x": 81.5,
-            "y": 30.1,
+            "y": 32.1,
             "w": 9.5,
-            "h": 2,
-            "top": 30.1,
+            "h": 1.9,
+            "top": 32.1,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "'s running",
                   "is running"
@@ -83129,14 +83252,14 @@
       {
             "id": "p4011_ex5a_3",
             "type": "fill",
-            "x": 81.5,
-            "y": 30,
-            "w": 9.5,
-            "h": 2,
-            "top": 30,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 34,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 34,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "'m not watching",
                   "am not watching"
@@ -83146,13 +83269,13 @@
             "id": "p4011_ex5a_4",
             "type": "fill",
             "x": 81.5,
-            "y": 29.9,
+            "y": 35.9,
             "w": 9.5,
-            "h": 2,
-            "top": 29.9,
+            "h": 1.9,
+            "top": 35.9,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "'s waiting",
                   "is waiting"
@@ -83162,13 +83285,13 @@
             "id": "p4011_ex5a_5",
             "type": "fill",
             "x": 81.5,
-            "y": 29.7,
+            "y": 37.8,
             "w": 9.5,
-            "h": 2,
-            "top": 29.7,
+            "h": 1.9,
+            "top": 37.8,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "'m doing",
                   "am doing"
@@ -83177,14 +83300,14 @@
       {
             "id": "p4011_ex5a_6",
             "type": "fill",
-            "x": 81.5,
-            "y": 29.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 29.6,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 39.6,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 39.6,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "aren't talking",
                   "are not talking"
@@ -83193,14 +83316,14 @@
       {
             "id": "p4011_ex5a_7",
             "type": "fill",
-            "x": 81.5,
-            "y": 29.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 29.5,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 41.5,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 41.5,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "isn't feeling",
                   "is not feeling"
@@ -83209,14 +83332,14 @@
       {
             "id": "p4011_ex5a_8",
             "type": "fill",
-            "x": 81.5,
-            "y": 29.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 29.3,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 43.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 43.4,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "'re celebrating",
                   "are celebrating"
@@ -83227,14 +83350,14 @@
       {
             "id": "p4012_ex1_1",
             "type": "select",
-            "x": 25,
-            "y": 24,
+            "x": 26,
+            "y": 64.9,
             "w": 12,
-            "h": 2,
-            "top": 24,
-            "left": 25,
+            "h": 1.9,
+            "top": 64.9,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "that"
             ],
@@ -83248,14 +83371,14 @@
       {
             "id": "p4012_ex1_2",
             "type": "select",
-            "x": 25,
-            "y": 29.5,
+            "x": 26,
+            "y": 66.4,
             "w": 12,
-            "h": 2,
-            "top": 29.5,
-            "left": 25,
+            "h": 1.9,
+            "top": 66.4,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "where"
             ],
@@ -83269,14 +83392,14 @@
       {
             "id": "p4012_ex1_3",
             "type": "select",
-            "x": 25,
-            "y": 35,
+            "x": 26,
+            "y": 34.4,
             "w": 12,
-            "h": 2,
-            "top": 35,
-            "left": 25,
+            "h": 1.9,
+            "top": 34.4,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "where"
             ],
@@ -83290,14 +83413,14 @@
       {
             "id": "p4012_ex1_4",
             "type": "select",
-            "x": 25,
-            "y": 40.5,
+            "x": 26,
+            "y": 39.6,
             "w": 12,
-            "h": 2,
-            "top": 40.5,
-            "left": 25,
+            "h": 1.9,
+            "top": 39.6,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "that"
             ],
@@ -83311,14 +83434,14 @@
       {
             "id": "p4012_ex1_5",
             "type": "select",
-            "x": 25,
-            "y": 46,
+            "x": 26,
+            "y": 44.8,
             "w": 12,
-            "h": 2,
-            "top": 46,
-            "left": 25,
+            "h": 1.9,
+            "top": 44.8,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "who"
             ],
@@ -83332,14 +83455,14 @@
       {
             "id": "p4012_ex1_6",
             "type": "select",
-            "x": 25,
-            "y": 51.5,
+            "x": 26,
+            "y": 50,
             "w": 12,
-            "h": 2,
-            "top": 51.5,
-            "left": 25,
+            "h": 1.9,
+            "top": 50,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "which"
             ],
@@ -83353,14 +83476,14 @@
       {
             "id": "p4012_ex2_1a",
             "type": "select",
-            "x": 25,
-            "y": 58,
+            "x": 26,
+            "y": 64.9,
             "w": 12,
-            "h": 2,
-            "top": 58,
-            "left": 25,
+            "h": 1.9,
+            "top": 64.9,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "who"
             ],
@@ -83375,13 +83498,13 @@
             "id": "p4012_ex2_1b",
             "type": "fill",
             "x": 41.5,
-            "y": 60.1,
+            "y": 66.4,
             "w": 9.5,
-            "h": 2,
-            "top": 60.1,
+            "h": 1.9,
+            "top": 66.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "neighbour",
                   "a neighbour"
@@ -83390,14 +83513,14 @@
       {
             "id": "p4012_ex2_2a",
             "type": "select",
-            "x": 25,
-            "y": 62.3,
+            "x": 26,
+            "y": 60.5,
             "w": 12,
-            "h": 2,
-            "top": 62.3,
-            "left": 25,
+            "h": 1.9,
+            "top": 60.5,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "where"
             ],
@@ -83412,13 +83535,13 @@
             "id": "p4012_ex2_2b",
             "type": "fill",
             "x": 41.5,
-            "y": 64.4,
+            "y": 62.8,
             "w": 9.5,
-            "h": 2,
-            "top": 64.4,
+            "h": 1.9,
+            "top": 62.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "garage",
                   "a garage"
@@ -83427,14 +83550,14 @@
       {
             "id": "p4012_ex2_3a",
             "type": "select",
-            "x": 25,
-            "y": 66.5,
+            "x": 26,
+            "y": 65,
             "w": 12,
-            "h": 2,
-            "top": 66.5,
-            "left": 25,
+            "h": 1.9,
+            "top": 65,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "which"
             ],
@@ -83449,13 +83572,13 @@
             "id": "p4012_ex2_3b",
             "type": "fill",
             "x": 41.5,
-            "y": 68.6,
+            "y": 67.3,
             "w": 9.5,
-            "h": 2,
-            "top": 68.6,
+            "h": 1.9,
+            "top": 67.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "picture",
                   "a picture"
@@ -83464,14 +83587,14 @@
       {
             "id": "p4012_ex2_4a",
             "type": "select",
-            "x": 25,
-            "y": 70.8,
+            "x": 26,
+            "y": 69.5,
             "w": 12,
-            "h": 2,
-            "top": 70.8,
-            "left": 25,
+            "h": 1.9,
+            "top": 69.5,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "which"
             ],
@@ -83486,13 +83609,13 @@
             "id": "p4012_ex2_4b",
             "type": "fill",
             "x": 41.5,
-            "y": 72.9,
+            "y": 71.8,
             "w": 9.5,
-            "h": 2,
-            "top": 72.9,
+            "h": 1.9,
+            "top": 71.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "DVD",
                   "a DVD"
@@ -83501,14 +83624,14 @@
       {
             "id": "p4012_ex2_5a",
             "type": "select",
-            "x": 25,
-            "y": 75,
+            "x": 26,
+            "y": 74,
             "w": 12,
-            "h": 2,
-            "top": 75,
-            "left": 25,
+            "h": 1.9,
+            "top": 74,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "who"
             ],
@@ -83523,13 +83646,13 @@
             "id": "p4012_ex2_5b",
             "type": "fill",
             "x": 41.5,
-            "y": 77.1,
+            "y": 76.3,
             "w": 9.5,
-            "h": 2,
-            "top": 77.1,
+            "h": 1.9,
+            "top": 76.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "dentist",
                   "a dentist"
@@ -83538,14 +83661,14 @@
       {
             "id": "p4012_ex2_6a",
             "type": "select",
-            "x": 25,
-            "y": 79.3,
+            "x": 26,
+            "y": 78.5,
             "w": 12,
-            "h": 2,
-            "top": 79.3,
-            "left": 25,
+            "h": 1.9,
+            "top": 78.5,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "which"
             ],
@@ -83560,13 +83683,13 @@
             "id": "p4012_ex2_6b",
             "type": "fill",
             "x": 41.5,
-            "y": 81.4,
+            "y": 80.8,
             "w": 9.5,
-            "h": 2,
-            "top": 81.4,
+            "h": 1.9,
+            "top": 80.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "ball",
                   "a ball"
@@ -83575,14 +83698,14 @@
       {
             "id": "p4012_ex2_7a",
             "type": "select",
-            "x": 25,
-            "y": 83.5,
+            "x": 26,
+            "y": 83,
             "w": 12,
-            "h": 2,
-            "top": 83.5,
-            "left": 25,
+            "h": 1.9,
+            "top": 83,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "where"
             ],
@@ -83597,13 +83720,13 @@
             "id": "p4012_ex2_7b",
             "type": "fill",
             "x": 41.5,
-            "y": 85.6,
+            "y": 85.3,
             "w": 9.5,
-            "h": 2,
-            "top": 85.6,
+            "h": 1.9,
+            "top": 85.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "kitchen",
                   "a kitchen"
@@ -83612,14 +83735,14 @@
       {
             "id": "p4012_ex2_8a",
             "type": "select",
-            "x": 25,
-            "y": 87.8,
+            "x": 26,
+            "y": 87.5,
             "w": 12,
-            "h": 2,
-            "top": 87.8,
-            "left": 25,
+            "h": 1.9,
+            "top": 87.5,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "who"
             ],
@@ -83633,14 +83756,14 @@
       {
             "id": "p4012_ex2_8b",
             "type": "fill",
-            "x": 41.5,
-            "y": 89.9,
-            "w": 9.5,
-            "h": 2,
-            "top": 89.9,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 89.8,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 89.8,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "police officer",
                   "a police officer"
@@ -83650,13 +83773,13 @@
             "id": "p4012_ex3_1",
             "type": "fill",
             "x": 55.5,
-            "y": 52.1,
+            "y": 54.1,
             "w": 35,
-            "h": 2,
-            "top": 52.1,
+            "h": 1.9,
+            "top": 54.1,
             "left": 55.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "which I wear to go running.",
                   "which I wear to go running"
@@ -83668,11 +83791,11 @@
             "x": 55.5,
             "y": 57.6,
             "w": 35,
-            "h": 2,
+            "h": 1.9,
             "top": 57.6,
             "left": 55.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "which I use for work.",
                   "which I use for work"
@@ -83681,14 +83804,14 @@
       {
             "id": "p4012_ex3_3",
             "type": "fill",
-            "x": 55.5,
-            "y": 63.1,
-            "w": 35,
-            "h": 2,
-            "top": 63.1,
-            "left": 55.5,
-            "width": 35,
-            "height": 2,
+            "x": 74,
+            "y": 59.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 59.4,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "who repairs my car.",
                   "who repairs my car"
@@ -83698,13 +83821,13 @@
             "id": "p4012_ex3_4",
             "type": "fill",
             "x": 55.5,
-            "y": 68.6,
+            "y": 64.5,
             "w": 35,
-            "h": 2,
-            "top": 68.6,
+            "h": 1.9,
+            "top": 64.5,
             "left": 55.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "where my grandfather always sits.",
                   "where my grandfather always sits"
@@ -83713,14 +83836,14 @@
       {
             "id": "p4012_ex3_5",
             "type": "fill",
-            "x": 81.5,
-            "y": 74.1,
-            "w": 9.5,
-            "h": 2,
-            "top": 74.1,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 66.3,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 66.3,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "who cuts my hair.",
                   "who cuts my hair"
@@ -83730,13 +83853,13 @@
             "id": "p4012_ex3_6",
             "type": "fill",
             "x": 55.5,
-            "y": 79.6,
+            "y": 71.3,
             "w": 35,
-            "h": 2,
-            "top": 79.6,
+            "h": 1.9,
+            "top": 71.3,
             "left": 55.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "which goes to the city centre.",
                   "which goes to the city centre"
@@ -83746,13 +83869,13 @@
             "id": "p4012_ex3_7",
             "type": "fill",
             "x": 55.5,
-            "y": 85.1,
+            "y": 74.8,
             "w": 35,
-            "h": 2,
-            "top": 85.1,
+            "h": 1.9,
+            "top": 74.8,
             "left": 55.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "where we do our shopping.",
                   "where we do our shopping"
@@ -83764,13 +83887,13 @@
             "id": "p4013_ex5_1",
             "type": "fill",
             "x": 41.5,
-            "y": 15.2,
+            "y": 24.8,
             "w": 9.5,
-            "h": 2,
-            "top": 15.2,
+            "h": 1.9,
+            "top": 24.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "dishwasher",
                   "Dishwasher"
@@ -83779,14 +83902,14 @@
       {
             "id": "p4013_ex5_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 16.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 16.6,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 17.7,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 17.7,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "dustpan and brush",
                   "dustpan & brush"
@@ -83796,13 +83919,13 @@
             "id": "p4013_ex5_3",
             "type": "fill",
             "x": 41.5,
-            "y": 17.9,
+            "y": 20.2,
             "w": 9.5,
-            "h": 2,
-            "top": 17.9,
+            "h": 1.9,
+            "top": 20.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "wash basin",
                   "washbasin"
@@ -83811,14 +83934,14 @@
       {
             "id": "p4013_ex5_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 19.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 19.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 22.7,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 22.7,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "microwave oven",
                   "microwave"
@@ -83827,14 +83950,14 @@
       {
             "id": "p4013_ex5_5",
             "type": "fill",
-            "x": 41.5,
-            "y": 20.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 20.6,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 25.2,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 25.2,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "satellite TV",
                   "satellite tv"
@@ -83843,14 +83966,14 @@
       {
             "id": "p4013_ex5_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 21.9,
-            "w": 9.5,
-            "h": 2,
-            "top": 21.9,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 27.7,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 27.7,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "chest of drawers",
                   "drawers"
@@ -83862,11 +83985,11 @@
             "x": 81.5,
             "y": 26.7,
             "w": 9.5,
-            "h": 2,
+            "h": 1.9,
             "top": 26.7,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "carpet",
                   "Carpet"
@@ -83876,13 +83999,13 @@
             "id": "p4013_ex6_2",
             "type": "fill",
             "x": 81.5,
-            "y": 32.2,
+            "y": 31.9,
             "w": 9.5,
-            "h": 2,
-            "top": 32.2,
+            "h": 1.9,
+            "top": 31.9,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "cooker",
                   "Cooker"
@@ -83892,13 +84015,13 @@
             "id": "p4013_ex6_3",
             "type": "fill",
             "x": 81.5,
-            "y": 37.7,
+            "y": 37.1,
             "w": 9.5,
-            "h": 2,
-            "top": 37.7,
+            "h": 1.9,
+            "top": 37.1,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "wardrobe",
                   "Wardrobe"
@@ -83908,13 +84031,13 @@
             "id": "p4013_ex6_4",
             "type": "fill",
             "x": 81.5,
-            "y": 43.2,
+            "y": 42.3,
             "w": 9.5,
-            "h": 2,
-            "top": 43.2,
+            "h": 1.9,
+            "top": 42.3,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "sheet",
                   "Sheet"
@@ -83924,13 +84047,13 @@
             "id": "p4013_ex6_5",
             "type": "fill",
             "x": 81.5,
-            "y": 48.7,
+            "y": 47.5,
             "w": 9.5,
-            "h": 2,
-            "top": 48.7,
+            "h": 1.9,
+            "top": 47.5,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "duvet",
                   "Duvet"
@@ -83940,13 +84063,13 @@
             "id": "p4013_ex6_6",
             "type": "fill",
             "x": 81.5,
-            "y": 54.2,
+            "y": 52.7,
             "w": 9.5,
-            "h": 2,
-            "top": 54.2,
+            "h": 1.9,
+            "top": 52.7,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "towel",
                   "Towel"
@@ -83956,13 +84079,13 @@
             "id": "p4013_ex6_7",
             "type": "fill",
             "x": 81.5,
-            "y": 59.7,
+            "y": 57.9,
             "w": 9.5,
-            "h": 2,
-            "top": 59.7,
+            "h": 1.9,
+            "top": 57.9,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "cloth",
                   "Cloth"
@@ -83972,13 +84095,13 @@
             "id": "p4013_ex6_8",
             "type": "fill",
             "x": 81.5,
-            "y": 65.2,
+            "y": 63.1,
             "w": 9.5,
-            "h": 2,
-            "top": 65.2,
+            "h": 1.9,
+            "top": 63.1,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "mirror",
                   "Mirror"
@@ -83988,13 +84111,13 @@
             "id": "p4013_ex7_1",
             "type": "fill",
             "x": 81.5,
-            "y": 30,
+            "y": 12,
             "w": 9.5,
-            "h": 2,
-            "top": 30,
+            "h": 1.9,
+            "top": 12,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "mirror",
                   "Mirror"
@@ -84004,13 +84127,13 @@
             "id": "p4013_ex7_2",
             "type": "fill",
             "x": 81.5,
-            "y": 34.3,
+            "y": 13.7,
             "w": 9.5,
-            "h": 2,
-            "top": 34.3,
+            "h": 1.9,
+            "top": 13.7,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "carpet",
                   "Carpet"
@@ -84020,13 +84143,13 @@
             "id": "p4013_ex7_3",
             "type": "fill",
             "x": 81.5,
-            "y": 38.7,
+            "y": 16.5,
             "w": 9.5,
-            "h": 2,
-            "top": 38.7,
+            "h": 1.9,
+            "top": 16.5,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "towel",
                   "Towel"
@@ -84036,13 +84159,13 @@
             "id": "p4013_ex7_4",
             "type": "fill",
             "x": 81.5,
-            "y": 43,
+            "y": 19,
             "w": 9.5,
-            "h": 2,
-            "top": 43,
+            "h": 1.9,
+            "top": 19,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "wardrobe",
                   "Wardrobe"
@@ -84051,14 +84174,14 @@
       {
             "id": "p4013_ex7_5",
             "type": "fill",
-            "x": 81.5,
-            "y": 47.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 47.3,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 21.5,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 21.5,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "dustpan and brush",
                   "dustpan & brush"
@@ -84068,13 +84191,13 @@
             "id": "p4013_ex7_6",
             "type": "fill",
             "x": 81.5,
-            "y": 51.7,
+            "y": 24,
             "w": 9.5,
-            "h": 2,
-            "top": 51.7,
+            "h": 1.9,
+            "top": 24,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "dishwasher",
                   "Dishwasher"
@@ -84085,14 +84208,14 @@
       {
             "id": "p4014_ex1_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 24,
-            "w": 9.5,
-            "h": 2,
-            "top": 24,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 29.2,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 29.2,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "on the internet",
                   "the internet"
@@ -84102,13 +84225,13 @@
             "id": "p4014_ex1_2",
             "type": "fill",
             "x": 41.5,
-            "y": 26.1,
+            "y": 30.9,
             "w": 9.5,
-            "h": 2,
-            "top": 26.1,
+            "h": 1.9,
+            "top": 30.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "on the way",
                   "the way"
@@ -84117,14 +84240,14 @@
       {
             "id": "p4014_ex1_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 28.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 28.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 32.7,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 32.7,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "on the left",
                   "the left"
@@ -84134,13 +84257,13 @@
             "id": "p4014_ex1_4",
             "type": "fill",
             "x": 41.5,
-            "y": 30.3,
+            "y": 34.4,
             "w": 9.5,
-            "h": 2,
-            "top": 30.3,
+            "h": 1.9,
+            "top": 34.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "on holiday",
                   "holiday"
@@ -84150,13 +84273,13 @@
             "id": "p4014_ex1_5",
             "type": "fill",
             "x": 41.5,
-            "y": 32.4,
+            "y": 36.1,
             "w": 9.5,
-            "h": 2,
-            "top": 32.4,
+            "h": 1.9,
+            "top": 36.1,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "on TV",
                   "TV",
@@ -84167,13 +84290,13 @@
             "id": "p4014_ex1_6",
             "type": "fill",
             "x": 41.5,
-            "y": 34.5,
+            "y": 37.8,
             "w": 9.5,
-            "h": 2,
-            "top": 34.5,
+            "h": 1.9,
+            "top": 37.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "on time",
                   "time"
@@ -84182,14 +84305,14 @@
       {
             "id": "p4014_ex1_7",
             "type": "fill",
-            "x": 41.5,
-            "y": 36.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 36.6,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 39.5,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 39.5,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "on business",
                   "business"
@@ -84198,14 +84321,14 @@
       {
             "id": "p4014_ex1_8",
             "type": "fill",
-            "x": 11.5,
-            "y": 38.7,
-            "w": 35,
-            "h": 2,
-            "top": 38.7,
-            "left": 11.5,
-            "width": 35,
-            "height": 2,
+            "x": 34,
+            "y": 38.3,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 38.3,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "on public transport",
                   "public transport"
@@ -84214,14 +84337,14 @@
       {
             "id": "p4014_ex2_1",
             "type": "fill",
-            "x": 41.5,
+            "x": 34,
             "y": 45.3,
-            "w": 9.5,
-            "h": 2,
+            "w": 14.5,
+            "h": 1.9,
             "top": 45.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "on business",
                   "business"
@@ -84231,13 +84354,13 @@
             "id": "p4014_ex2_2",
             "type": "fill",
             "x": 41.5,
-            "y": 48.4,
+            "y": 48.3,
             "w": 9.5,
-            "h": 2,
-            "top": 48.4,
+            "h": 1.9,
+            "top": 48.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "on holiday",
                   "holiday"
@@ -84247,13 +84370,13 @@
             "id": "p4014_ex2_3",
             "type": "fill",
             "x": 41.5,
-            "y": 51.4,
+            "y": 51.3,
             "w": 9.5,
-            "h": 2,
-            "top": 51.4,
+            "h": 1.9,
+            "top": 51.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "on TV",
                   "TV",
@@ -84264,13 +84387,13 @@
             "id": "p4014_ex2_4",
             "type": "fill",
             "x": 41.5,
-            "y": 54.5,
+            "y": 54.3,
             "w": 9.5,
-            "h": 2,
-            "top": 54.5,
+            "h": 1.9,
+            "top": 54.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "on time",
                   "time"
@@ -84280,13 +84403,13 @@
             "id": "p4014_ex2_5",
             "type": "fill",
             "x": 41.5,
-            "y": 57.5,
+            "y": 57.3,
             "w": 9.5,
-            "h": 2,
-            "top": 57.5,
+            "h": 1.9,
+            "top": 57.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "on the way",
                   "the way"
@@ -84295,14 +84418,14 @@
       {
             "id": "p4014_ex2_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 60.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 60.6,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 60.3,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 60.3,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "on the internet",
                   "the internet"
@@ -84311,14 +84434,14 @@
       {
             "id": "p4014_ex2_7",
             "type": "fill",
-            "x": 11.5,
-            "y": 63.7,
-            "w": 35,
-            "h": 2,
-            "top": 63.7,
-            "left": 11.5,
-            "width": 35,
-            "height": 2,
+            "x": 34,
+            "y": 63.3,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 63.3,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "on public transport",
                   "public transport"
@@ -84327,14 +84450,14 @@
       {
             "id": "p4014_ex2_8",
             "type": "fill",
-            "x": 41.5,
-            "y": 66.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 66.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 66.3,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 66.3,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "on the left",
                   "the left"
@@ -84344,13 +84467,13 @@
             "id": "p4014_ex3_1",
             "type": "fill",
             "x": 41.5,
-            "y": 74.3,
+            "y": 83.9,
             "w": 9.5,
-            "h": 2,
-            "top": 74.3,
+            "h": 1.9,
+            "top": 83.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "crowded",
                   "Crowded"
@@ -84360,13 +84483,13 @@
             "id": "p4014_ex3_2",
             "type": "fill",
             "x": 41.5,
-            "y": 77.2,
+            "y": 83.9,
             "w": 9.5,
-            "h": 2,
-            "top": 77.2,
+            "h": 1.9,
+            "top": 83.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "safe",
                   "Safe"
@@ -84375,14 +84498,14 @@
       {
             "id": "p4014_ex3_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 80.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 80.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 83.9,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 83.9,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "pavement artist",
                   "pavement"
@@ -84391,14 +84514,14 @@
       {
             "id": "p4014_ex3_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 83.1,
-            "w": 9.5,
-            "h": 2,
-            "top": 83.1,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 88.8,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 88.8,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "street performer",
                   "performer"
@@ -84407,14 +84530,14 @@
       {
             "id": "p4014_ex3_5",
             "type": "fill",
-            "x": 41.5,
-            "y": 86.1,
-            "w": 9.5,
-            "h": 2,
-            "top": 86.1,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 91.9,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 91.9,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "marketplace",
                   "market place"
@@ -84424,13 +84547,13 @@
             "id": "p4014_ex3_6",
             "type": "fill",
             "x": 41.5,
-            "y": 89,
+            "y": 92,
             "w": 9.5,
-            "h": 2,
-            "top": 89,
+            "h": 1.9,
+            "top": 92,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "statue",
                   "living statue"
@@ -84444,11 +84567,11 @@
             "x": 41.5,
             "y": 43.3,
             "w": 9.5,
-            "h": 2,
+            "h": 1.9,
             "top": 43.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "'m looking",
                   "am looking",
@@ -84459,13 +84582,13 @@
             "id": "p4015_ex2_2",
             "type": "fill",
             "x": 41.5,
-            "y": 48.8,
+            "y": 48.5,
             "w": 9.5,
-            "h": 2,
-            "top": 48.8,
+            "h": 1.9,
+            "top": 48.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "on",
                   "On"
@@ -84475,13 +84598,13 @@
             "id": "p4015_ex2_3",
             "type": "fill",
             "x": 41.5,
-            "y": 54.3,
+            "y": 53.7,
             "w": 9.5,
-            "h": 2,
-            "top": 54.3,
+            "h": 1.9,
+            "top": 53.7,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "far",
                   "Far"
@@ -84491,13 +84614,13 @@
             "id": "p4015_ex2_4",
             "type": "fill",
             "x": 41.5,
-            "y": 59.8,
+            "y": 58.9,
             "w": 9.5,
-            "h": 2,
-            "top": 59.8,
+            "h": 1.9,
+            "top": 58.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "walk",
                   "Walk"
@@ -84507,13 +84630,13 @@
             "id": "p4015_ex2_5",
             "type": "fill",
             "x": 41.5,
-            "y": 65.3,
+            "y": 64.1,
             "w": 9.5,
-            "h": 2,
-            "top": 65.3,
+            "h": 1.9,
+            "top": 64.1,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "turn",
                   "Turn"
@@ -84523,13 +84646,13 @@
             "id": "p4015_ex2_6",
             "type": "fill",
             "x": 41.5,
-            "y": 70.8,
+            "y": 69.3,
             "w": 9.5,
-            "h": 2,
-            "top": 70.8,
+            "h": 1.9,
+            "top": 69.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "stairs",
                   "Stairs"
@@ -84539,13 +84662,13 @@
             "id": "p4015_ex2_7",
             "type": "fill",
             "x": 41.5,
-            "y": 76.3,
+            "y": 74.5,
             "w": 9.5,
-            "h": 2,
-            "top": 76.3,
+            "h": 1.9,
+            "top": 74.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "see",
                   "See"
@@ -84555,13 +84678,13 @@
             "id": "p4015_ex2_8",
             "type": "fill",
             "x": 41.5,
-            "y": 81.8,
+            "y": 79.7,
             "w": 9.5,
-            "h": 2,
-            "top": 81.8,
+            "h": 1.9,
+            "top": 79.7,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "it's",
                   "is",
@@ -84572,13 +84695,13 @@
             "id": "p4015_ex5_1",
             "type": "fill",
             "x": 41.5,
-            "y": 58,
+            "y": 56,
             "w": 9.5,
-            "h": 2,
-            "top": 58,
+            "h": 1.9,
+            "top": 56,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Pls",
                   "pls",
@@ -84589,13 +84712,13 @@
             "id": "p4015_ex5_2",
             "type": "fill",
             "x": 41.5,
-            "y": 63.5,
+            "y": 61.2,
             "w": 9.5,
-            "h": 2,
-            "top": 63.5,
+            "h": 1.9,
+            "top": 61.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "CU",
                   "cu",
@@ -84606,13 +84729,13 @@
             "id": "p4015_ex5_3",
             "type": "fill",
             "x": 41.5,
-            "y": 69,
+            "y": 66.4,
             "w": 9.5,
-            "h": 2,
-            "top": 69,
+            "h": 1.9,
+            "top": 66.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Sry",
                   "sry",
@@ -84623,13 +84746,13 @@
             "id": "p4015_ex5_4",
             "type": "fill",
             "x": 41.5,
-            "y": 74.5,
+            "y": 71.6,
             "w": 9.5,
-            "h": 2,
-            "top": 74.5,
+            "h": 1.9,
+            "top": 71.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "asap",
                   "ASAP"
@@ -84639,13 +84762,13 @@
             "id": "p4015_ex5_5",
             "type": "fill",
             "x": 41.5,
-            "y": 80,
+            "y": 76.8,
             "w": 9.5,
-            "h": 2,
-            "top": 80,
+            "h": 1.9,
+            "top": 76.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Thnx",
                   "thnx",
@@ -84656,13 +84779,13 @@
             "id": "p4015_ex1a_1",
             "type": "fill",
             "x": 81.5,
-            "y": 30,
+            "y": 29.9,
             "w": 9.5,
-            "h": 2,
-            "top": 30,
+            "h": 1.9,
+            "top": 29.9,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "1",
                   "one"
@@ -84672,13 +84795,13 @@
             "id": "p4015_ex1a_2",
             "type": "fill",
             "x": 81.5,
-            "y": 33.7,
+            "y": 52.5,
             "w": 9.5,
-            "h": 2,
-            "top": 33.7,
+            "h": 1.9,
+            "top": 52.5,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "2",
                   "two"
@@ -84688,13 +84811,13 @@
             "id": "p4015_ex1a_3",
             "type": "fill",
             "x": 81.5,
-            "y": 37.4,
+            "y": 53.9,
             "w": 9.5,
-            "h": 2,
-            "top": 37.4,
+            "h": 1.9,
+            "top": 53.9,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "3",
                   "three"
@@ -84704,13 +84827,13 @@
             "id": "p4015_ex1a_4",
             "type": "fill",
             "x": 81.5,
-            "y": 41.1,
+            "y": 63.7,
             "w": 9.5,
-            "h": 2,
-            "top": 41.1,
+            "h": 1.9,
+            "top": 63.7,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "4",
                   "four"
@@ -84720,13 +84843,13 @@
             "id": "p4015_ex1a_5",
             "type": "fill",
             "x": 81.5,
-            "y": 44.9,
+            "y": 67.1,
             "w": 9.5,
-            "h": 2,
-            "top": 44.9,
+            "h": 1.9,
+            "top": 67.1,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "5",
                   "five"
@@ -84736,13 +84859,13 @@
             "id": "p4015_ex1a_6",
             "type": "fill",
             "x": 81.5,
-            "y": 48.6,
+            "y": 67.1,
             "w": 9.5,
-            "h": 2,
-            "top": 48.6,
+            "h": 1.9,
+            "top": 67.1,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "6",
                   "six"
@@ -84752,13 +84875,13 @@
             "id": "p4015_ex1a_7",
             "type": "fill",
             "x": 81.5,
-            "y": 52.3,
+            "y": 68.4,
             "w": 9.5,
-            "h": 2,
-            "top": 52.3,
+            "h": 1.9,
+            "top": 68.4,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "7",
                   "seven"
@@ -84769,14 +84892,14 @@
       {
             "id": "p4016_ex1_1",
             "type": "select",
-            "x": 25,
-            "y": 24,
+            "x": 26,
+            "y": 58.2,
             "w": 12,
-            "h": 2,
-            "top": 24,
-            "left": 25,
+            "h": 1.9,
+            "top": 58.2,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "water pollution"
             ],
@@ -84790,13 +84913,13 @@
             "id": "p4016_ex1_2",
             "type": "fill",
             "x": 11.5,
-            "y": 29.5,
+            "y": 59.8,
             "w": 35,
-            "h": 2,
-            "top": 29.5,
+            "h": 1.9,
+            "top": 59.8,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "John does experiments to find out the effects of the waste products on rats and writes a report.",
                   "experiments on rats"
@@ -84806,13 +84929,13 @@
             "id": "p4016_ex1_3",
             "type": "fill",
             "x": 11.5,
-            "y": 35,
+            "y": 61.5,
             "w": 35,
-            "h": 2,
-            "top": 35,
+            "h": 1.9,
+            "top": 61.5,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "David Wilson reads the report.",
                   "reads the report"
@@ -84822,13 +84945,13 @@
             "id": "p4016_ex1_4",
             "type": "fill",
             "x": 11.5,
-            "y": 40.5,
+            "y": 61.5,
             "w": 35,
-            "h": 2,
-            "top": 40.5,
+            "h": 1.9,
+            "top": 61.5,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "John arrives in David Wilson's office.",
                   "arrives in office"
@@ -84838,13 +84961,13 @@
             "id": "p4016_ex1_5",
             "type": "fill",
             "x": 11.5,
-            "y": 46,
+            "y": 46.4,
             "w": 35,
-            "h": 2,
-            "top": 46,
+            "h": 1.9,
+            "top": 46.4,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Wilson says he doesn't like the conclusions in the report.",
                   "doesn't like the conclusions"
@@ -84854,13 +84977,13 @@
             "id": "p4016_ex1_6",
             "type": "fill",
             "x": 11.5,
-            "y": 51.5,
+            "y": 51.6,
             "w": 35,
-            "h": 2,
-            "top": 51.5,
+            "h": 1.9,
+            "top": 51.6,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Wilson says he doesn't want to build new machines to clean up",
                   "build new machines"
@@ -84872,13 +84995,13 @@
             "id": "p4017_ex1_1",
             "type": "fill",
             "x": 41.5,
-            "y": 24,
+            "y": 22.9,
             "w": 9.5,
-            "h": 2,
-            "top": 24,
+            "h": 1.9,
+            "top": 22.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "are",
                   "Are"
@@ -84888,13 +85011,13 @@
             "id": "p4017_ex1_2",
             "type": "fill",
             "x": 41.5,
-            "y": 23.6,
+            "y": 26.1,
             "w": 9.5,
-            "h": 2,
-            "top": 23.6,
+            "h": 1.9,
+            "top": 26.1,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "who",
                   "that",
@@ -84905,13 +85028,13 @@
             "id": "p4017_ex1_3",
             "type": "fill",
             "x": 41.5,
-            "y": 23.3,
+            "y": 27.7,
             "w": 9.5,
-            "h": 2,
-            "top": 23.3,
+            "h": 1.9,
+            "top": 27.7,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "where",
                   "Where"
@@ -84921,13 +85044,13 @@
             "id": "p4017_ex1_4",
             "type": "fill",
             "x": 41.5,
-            "y": 23,
+            "y": 29.6,
             "w": 9.5,
-            "h": 2,
-            "top": 23,
+            "h": 1.9,
+            "top": 29.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "did",
                   "Did"
@@ -84937,13 +85060,13 @@
             "id": "p4017_ex1_5",
             "type": "fill",
             "x": 41.5,
-            "y": 22.7,
+            "y": 31.5,
             "w": 9.5,
-            "h": 2,
-            "top": 22.7,
+            "h": 1.9,
+            "top": 31.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "which",
                   "that",
@@ -84954,13 +85077,13 @@
             "id": "p4017_ex1_6",
             "type": "fill",
             "x": 41.5,
-            "y": 22.4,
+            "y": 33.3,
             "w": 9.5,
-            "h": 2,
-            "top": 22.4,
+            "h": 1.9,
+            "top": 33.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "do",
                   "Do"
@@ -84970,13 +85093,13 @@
             "id": "p4017_ex1_7",
             "type": "fill",
             "x": 41.5,
-            "y": 22,
+            "y": 35.2,
             "w": 9.5,
-            "h": 2,
-            "top": 22,
+            "h": 1.9,
+            "top": 35.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "is",
                   "'s",
@@ -84987,13 +85110,13 @@
             "id": "p4017_ex1_8",
             "type": "fill",
             "x": 41.5,
-            "y": 21.7,
+            "y": 37.1,
             "w": 9.5,
-            "h": 2,
-            "top": 21.7,
+            "h": 1.9,
+            "top": 37.1,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "does",
                   "Does"
@@ -85003,13 +85126,13 @@
             "id": "p4017_ex2_1",
             "type": "fill",
             "x": 41.5,
-            "y": 29.1,
+            "y": 27.8,
             "w": 9.5,
-            "h": 2,
-            "top": 29.1,
+            "h": 1.9,
+            "top": 27.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "'m reading",
                   "am reading",
@@ -85020,13 +85143,13 @@
             "id": "p4017_ex2_2",
             "type": "fill",
             "x": 41.5,
-            "y": 28.7,
+            "y": 29.6,
             "w": 9.5,
-            "h": 2,
-            "top": 28.7,
+            "h": 1.9,
+            "top": 29.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "takes",
                   "Takes"
@@ -85036,13 +85159,13 @@
             "id": "p4017_ex2_3",
             "type": "fill",
             "x": 41.5,
-            "y": 28.2,
+            "y": 32.9,
             "w": 9.5,
-            "h": 2,
-            "top": 28.2,
+            "h": 1.9,
+            "top": 32.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "'s working",
                   "is working"
@@ -85052,13 +85175,13 @@
             "id": "p4017_ex2_4",
             "type": "fill",
             "x": 41.5,
-            "y": 27.7,
+            "y": 36.6,
             "w": 9.5,
-            "h": 2,
-            "top": 27.7,
+            "h": 1.9,
+            "top": 36.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "do you go",
                   "Do you go",
@@ -85068,14 +85191,14 @@
       {
             "id": "p4017_ex2_5",
             "type": "fill",
-            "x": 41.5,
-            "y": 27.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 27.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 39.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 39.1,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "don't understand",
                   "do not understand"
@@ -85085,13 +85208,13 @@
             "id": "p4017_ex2_6",
             "type": "fill",
             "x": 41.5,
-            "y": 26.8,
+            "y": 41.6,
             "w": 9.5,
-            "h": 2,
-            "top": 26.8,
+            "h": 1.9,
+            "top": 41.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "is singing",
                   "'s singing"
@@ -85100,14 +85223,14 @@
       {
             "id": "p4017_ex3_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 30.8,
-            "w": 9.5,
-            "h": 2,
-            "top": 30.8,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 29.6,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 29.6,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "pedestrian area",
                   "pedestrian"
@@ -85117,13 +85240,13 @@
             "id": "p4017_ex3_2",
             "type": "fill",
             "x": 41.5,
-            "y": 30.5,
+            "y": 32.9,
             "w": 9.5,
-            "h": 2,
-            "top": 30.5,
+            "h": 1.9,
+            "top": 32.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "damp",
                   "mild"
@@ -85133,13 +85256,13 @@
             "id": "p4017_ex3_3",
             "type": "fill",
             "x": 41.5,
-            "y": 30.2,
+            "y": 34.6,
             "w": 9.5,
-            "h": 2,
-            "top": 30.2,
+            "h": 1.9,
+            "top": 34.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "showers",
                   "rain"
@@ -85149,13 +85272,13 @@
             "id": "p4017_ex3_4",
             "type": "fill",
             "x": 41.5,
-            "y": 29.8,
+            "y": 36.5,
             "w": 9.5,
-            "h": 2,
-            "top": 29.8,
+            "h": 1.9,
+            "top": 36.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "on the way",
                   "the way"
@@ -85165,13 +85288,13 @@
             "id": "p4017_ex3_5",
             "type": "fill",
             "x": 41.5,
-            "y": 29.5,
+            "y": 38.3,
             "w": 9.5,
-            "h": 2,
-            "top": 29.5,
+            "h": 1.9,
+            "top": 38.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "on TV",
                   "TV",
@@ -85181,14 +85304,14 @@
       {
             "id": "p4017_ex3_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 29.1,
-            "w": 9.5,
-            "h": 2,
-            "top": 29.1,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 40.2,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 40.2,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "rubbish bin",
                   "bin"
@@ -85197,14 +85320,14 @@
       {
             "id": "p4017_ex3_7",
             "type": "fill",
-            "x": 41.5,
-            "y": 28.8,
-            "w": 9.5,
-            "h": 2,
-            "top": 28.8,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 42.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 42.1,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "light switch",
                   "switch"
@@ -85213,14 +85336,14 @@
       {
             "id": "p4017_ex3_8",
             "type": "fill",
-            "x": 41.5,
-            "y": 28.4,
-            "w": 9.5,
-            "h": 2,
-            "top": 28.4,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 44,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 44,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "have a lie-in",
                   "lie-in"
@@ -86010,13 +86133,13 @@
             "id": "p4020_ex1a_1",
             "type": "fill",
             "x": 41.5,
-            "y": 30,
+            "y": 34.2,
             "w": 9.5,
-            "h": 2,
-            "top": 30,
+            "h": 1.9,
+            "top": 34.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "excited",
                   "Excited"
@@ -86026,13 +86149,13 @@
             "id": "p4020_ex1a_2",
             "type": "fill",
             "x": 41.5,
-            "y": 32.4,
+            "y": 37.5,
             "w": 9.5,
-            "h": 2,
-            "top": 32.4,
+            "h": 1.9,
+            "top": 37.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "angry",
                   "Angry"
@@ -86041,14 +86164,14 @@
       {
             "id": "p4020_ex1a_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 34.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 34.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 39.2,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 39.2,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "embarrassed",
                   "Embarrassed"
@@ -86058,13 +86181,13 @@
             "id": "p4020_ex1a_4",
             "type": "fill",
             "x": 41.5,
-            "y": 37.1,
+            "y": 40.9,
             "w": 9.5,
-            "h": 2,
-            "top": 37.1,
+            "h": 1.9,
+            "top": 40.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "guilty",
                   "Guilty"
@@ -86074,13 +86197,13 @@
             "id": "p4020_ex1a_5",
             "type": "fill",
             "x": 41.5,
-            "y": 39.5,
+            "y": 44.2,
             "w": 9.5,
-            "h": 2,
-            "top": 39.5,
+            "h": 1.9,
+            "top": 44.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "nervous",
                   "Nervous"
@@ -86089,14 +86212,14 @@
       {
             "id": "p4020_ex1a_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 41.8,
-            "w": 9.5,
-            "h": 2,
-            "top": 41.8,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 47.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 47.4,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "disappointed",
                   "Disappointed"
@@ -86106,13 +86229,13 @@
             "id": "p4020_ex1a_7",
             "type": "fill",
             "x": 41.5,
-            "y": 44.2,
+            "y": 50.7,
             "w": 9.5,
-            "h": 2,
-            "top": 44.2,
+            "h": 1.9,
+            "top": 50.7,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "confused",
                   "Confused"
@@ -86122,13 +86245,13 @@
             "id": "p4020_ex1a_8",
             "type": "fill",
             "x": 41.5,
-            "y": 46.5,
+            "y": 52.4,
             "w": 9.5,
-            "h": 2,
-            "top": 46.5,
+            "h": 1.9,
+            "top": 52.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "calm",
                   "Calm"
@@ -86138,13 +86261,13 @@
             "id": "p4020_ex1a_9",
             "type": "fill",
             "x": 41.5,
-            "y": 48.9,
+            "y": 54.1,
             "w": 9.5,
-            "h": 2,
-            "top": 48.9,
+            "h": 1.9,
+            "top": 54.1,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "lonely",
                   "Lonely"
@@ -86154,13 +86277,13 @@
             "id": "p4020_ex1a_10",
             "type": "fill",
             "x": 41.5,
-            "y": 51.3,
+            "y": 57.4,
             "w": 9.5,
-            "h": 2,
-            "top": 51.3,
+            "h": 1.9,
+            "top": 57.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "anxious",
                   "Anxious"
@@ -86170,13 +86293,13 @@
             "id": "p4020_ex1a_11",
             "type": "fill",
             "x": 41.5,
-            "y": 53.6,
+            "y": 83.6,
             "w": 9.5,
-            "h": 2,
-            "top": 53.6,
+            "h": 1.9,
+            "top": 83.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "pleased",
                   "Pleased"
@@ -86187,14 +86310,14 @@
       {
             "id": "p4021_ex3_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 15.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 15.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 15.7,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 15.7,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "was raining",
                   "rained"
@@ -86203,14 +86326,14 @@
       {
             "id": "p4021_ex3_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 15.1,
-            "w": 9.5,
-            "h": 2,
-            "top": 15.1,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 17.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 17.4,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "were sleeping",
                   "slept"
@@ -86219,14 +86342,14 @@
       {
             "id": "p4021_ex3_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 15,
-            "w": 9.5,
-            "h": 2,
-            "top": 15,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 19,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 19,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "wasn't working",
                   "was not working"
@@ -86235,14 +86358,14 @@
       {
             "id": "p4021_ex3_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 14.9,
-            "w": 9.5,
-            "h": 2,
-            "top": 14.9,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 20.9,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 20.9,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "were talking",
                   "were you talking"
@@ -86251,14 +86374,14 @@
       {
             "id": "p4021_ex3_5",
             "type": "fill",
-            "x": 41.5,
-            "y": 14.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 14.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 22.7,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 22.7,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "was driving",
                   "drove"
@@ -86267,14 +86390,14 @@
       {
             "id": "p4021_ex3_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 14.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 14.6,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 24.6,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 24.6,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "weren't watching",
                   "were not watching"
@@ -86284,13 +86407,13 @@
             "id": "p4021_ex3_7",
             "type": "fill",
             "x": 41.5,
-            "y": 14.5,
+            "y": 26.5,
             "w": 9.5,
-            "h": 2,
-            "top": 14.5,
+            "h": 1.9,
+            "top": 26.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "was living",
                   "lived"
@@ -86299,14 +86422,14 @@
       {
             "id": "p4021_ex3_8",
             "type": "fill",
-            "x": 41.5,
-            "y": 14.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 14.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 28.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 28.4,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "were dancing",
                   "danced"
@@ -86315,14 +86438,14 @@
       {
             "id": "p4021_ex5_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 30.2,
+            "x": 81.5,
+            "y": 12,
             "w": 9.5,
-            "h": 2,
-            "top": 30.2,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 12,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "saw",
                   "Saw"
@@ -86331,14 +86454,14 @@
       {
             "id": "p4021_ex5_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 30,
+            "x": 81.5,
+            "y": 16.7,
             "w": 9.5,
-            "h": 2,
-            "top": 30,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 16.7,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "was doing",
                   "did"
@@ -86347,14 +86470,14 @@
       {
             "id": "p4021_ex5_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 29.8,
+            "x": 81.5,
+            "y": 21.9,
             "w": 9.5,
-            "h": 2,
-            "top": 29.8,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 21.9,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "thought",
                   "Thought"
@@ -86363,14 +86486,14 @@
       {
             "id": "p4021_ex5_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 29.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 29.6,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 27.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 27.1,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "was sitting",
                   "sat"
@@ -86379,14 +86502,14 @@
       {
             "id": "p4021_ex5_5",
             "type": "fill",
-            "x": 41.5,
-            "y": 29.4,
+            "x": 81.5,
+            "y": 32.3,
             "w": 9.5,
-            "h": 2,
-            "top": 29.4,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 32.3,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "filled",
                   "Filled"
@@ -86395,14 +86518,14 @@
       {
             "id": "p4021_ex5_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 29.2,
+            "x": 81.5,
+            "y": 37.5,
             "w": 9.5,
-            "h": 2,
-            "top": 29.2,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 37.5,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "rose",
                   "Rose"
@@ -86414,13 +86537,13 @@
             "id": "p4022_ex1_1",
             "type": "fill",
             "x": 11.5,
-            "y": 24,
+            "y": 43.2,
             "w": 35,
-            "h": 2,
-            "top": 24,
+            "h": 1.9,
+            "top": 43.2,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "They play tennis badly.",
                   "play tennis badly"
@@ -86429,14 +86552,14 @@
       {
             "id": "p4022_ex1_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 29.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 29.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 45,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 45,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "He reads slowly.",
                   "reads slowly"
@@ -86445,14 +86568,14 @@
       {
             "id": "p4022_ex1_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 35,
-            "w": 9.5,
-            "h": 2,
-            "top": 35,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 48.5,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 48.5,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "We eat healthily.",
                   "eat healthily"
@@ -86462,13 +86585,13 @@
             "id": "p4022_ex1_4",
             "type": "fill",
             "x": 11.5,
-            "y": 40.5,
+            "y": 53.5,
             "w": 35,
-            "h": 2,
-            "top": 40.5,
+            "h": 1.9,
+            "top": 53.5,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "My mother walks fast.",
                   "walks fast"
@@ -86477,14 +86600,14 @@
       {
             "id": "p4022_ex1_5",
             "type": "fill",
-            "x": 41.5,
-            "y": 46,
-            "w": 9.5,
-            "h": 2,
-            "top": 46,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 55.3,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 55.3,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "I drive carefully.",
                   "drive carefully"
@@ -86493,14 +86616,14 @@
       {
             "id": "p4022_ex1_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 51.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 51.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 58.8,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 58.8,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "You cook well.",
                   "cook well"
@@ -86510,13 +86633,13 @@
             "id": "p4022_ex1_7",
             "type": "fill",
             "x": 11.5,
-            "y": 57,
+            "y": 63.8,
             "w": 35,
-            "h": 2,
-            "top": 57,
+            "h": 1.9,
+            "top": 63.8,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "My partner works hard.",
                   "works hard"
@@ -86526,13 +86649,13 @@
             "id": "p4022_ex1_8",
             "type": "fill",
             "x": 11.5,
-            "y": 62.5,
+            "y": 67.3,
             "w": 35,
-            "h": 2,
-            "top": 62.5,
+            "h": 1.9,
+            "top": 67.3,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "My brother dresses smartly.",
                   "dresses smartly"
@@ -86542,13 +86665,13 @@
             "id": "p4022_ex2_1",
             "type": "fill",
             "x": 41.5,
-            "y": 73.2,
+            "y": 76.9,
             "w": 9.5,
-            "h": 2,
-            "top": 73.2,
+            "h": 1.9,
+            "top": 76.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "regularly",
                   "Regularly"
@@ -86558,13 +86681,13 @@
             "id": "p4022_ex2_2",
             "type": "fill",
             "x": 41.5,
-            "y": 75.9,
+            "y": 80.2,
             "w": 9.5,
-            "h": 2,
-            "top": 75.9,
+            "h": 1.9,
+            "top": 80.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "quietly",
                   "Quietly"
@@ -86574,13 +86697,13 @@
             "id": "p4022_ex2_3",
             "type": "fill",
             "x": 41.5,
-            "y": 78.6,
+            "y": 81.9,
             "w": 9.5,
-            "h": 2,
-            "top": 78.6,
+            "h": 1.9,
+            "top": 81.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "easily",
                   "Easily"
@@ -86589,14 +86712,14 @@
       {
             "id": "p4022_ex2_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 81.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 81.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 83.6,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 83.6,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "beautifully",
                   "Beautifully"
@@ -86606,13 +86729,13 @@
             "id": "p4022_ex2_5",
             "type": "fill",
             "x": 41.5,
-            "y": 83.9,
+            "y": 85.3,
             "w": 9.5,
-            "h": 2,
-            "top": 83.9,
+            "h": 1.9,
+            "top": 85.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "fluently",
                   "Fluently"
@@ -86622,13 +86745,13 @@
             "id": "p4022_ex2_6",
             "type": "fill",
             "x": 41.5,
-            "y": 86.6,
+            "y": 88.6,
             "w": 9.5,
-            "h": 2,
-            "top": 86.6,
+            "h": 1.9,
+            "top": 88.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "quickly",
                   "Quickly"
@@ -86638,13 +86761,13 @@
             "id": "p4022_ex2_7",
             "type": "fill",
             "x": 41.5,
-            "y": 89.3,
+            "y": 90.3,
             "w": 9.5,
-            "h": 2,
-            "top": 89.3,
+            "h": 1.9,
+            "top": 90.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "politely",
                   "Politely"
@@ -86655,14 +86778,14 @@
       {
             "id": "p4023_ex2_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 30,
-            "w": 9.5,
-            "h": 2,
-            "top": 30,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 28,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 28,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "A short time later",
                   "a short time later"
@@ -86672,13 +86795,13 @@
             "id": "p4023_ex2_2",
             "type": "fill",
             "x": 41.5,
-            "y": 34.3,
+            "y": 32.3,
             "w": 9.5,
-            "h": 2,
-            "top": 34.3,
+            "h": 1.9,
+            "top": 32.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "when",
                   "When"
@@ -86688,13 +86811,13 @@
             "id": "p4023_ex2_3",
             "type": "fill",
             "x": 41.5,
-            "y": 38.7,
+            "y": 36.7,
             "w": 9.5,
-            "h": 2,
-            "top": 38.7,
+            "h": 1.9,
+            "top": 36.7,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Suddenly",
                   "suddenly"
@@ -86704,13 +86827,13 @@
             "id": "p4023_ex2_4",
             "type": "fill",
             "x": 41.5,
-            "y": 43,
+            "y": 41,
             "w": 9.5,
-            "h": 2,
-            "top": 43,
+            "h": 1.9,
+            "top": 41,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "At first",
                   "at first"
@@ -86720,13 +86843,13 @@
             "id": "p4023_ex2_5",
             "type": "fill",
             "x": 41.5,
-            "y": 47.3,
+            "y": 45.3,
             "w": 9.5,
-            "h": 2,
-            "top": 47.3,
+            "h": 1.9,
+            "top": 45.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "but then",
                   "But then"
@@ -86736,13 +86859,13 @@
             "id": "p4023_ex2_6",
             "type": "fill",
             "x": 41.5,
-            "y": 51.7,
+            "y": 49.7,
             "w": 9.5,
-            "h": 2,
-            "top": 51.7,
+            "h": 1.9,
+            "top": 49.7,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "In the end",
                   "in the end"
@@ -86752,13 +86875,13 @@
             "id": "p4023_ex1a_1",
             "type": "fill",
             "x": 55.5,
-            "y": 58,
+            "y": 45.7,
             "w": 35,
-            "h": 2,
-            "top": 58,
+            "h": 1.9,
+            "top": 45.7,
             "left": 55.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "We had a bad experience",
                   "bad experience"
@@ -86768,13 +86891,13 @@
             "id": "p4023_ex1a_2",
             "type": "fill",
             "x": 81.5,
-            "y": 63.5,
+            "y": 75.3,
             "w": 9.5,
-            "h": 2,
-            "top": 63.5,
+            "h": 1.9,
+            "top": 75.3,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Anyway",
                   "anyway"
@@ -86784,13 +86907,13 @@
             "id": "p4023_ex1a_3",
             "type": "fill",
             "x": 81.5,
-            "y": 69,
+            "y": 38.4,
             "w": 9.5,
-            "h": 2,
-            "top": 69,
+            "h": 1.9,
+            "top": 38.4,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Oh no",
                   "oh no"
@@ -86799,14 +86922,14 @@
       {
             "id": "p4023_ex1a_4",
             "type": "fill",
-            "x": 81.5,
-            "y": 74.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 74.5,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 43.6,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 43.6,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "I was so angry",
                   "was so angry"
@@ -86816,13 +86939,13 @@
             "id": "p4023_ex1a_5",
             "type": "fill",
             "x": 55.5,
-            "y": 80,
+            "y": 50.4,
             "w": 35,
-            "h": 2,
-            "top": 80,
+            "h": 1.9,
+            "top": 50.4,
             "left": 55.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "It was all OK in the end",
                   "all OK in the end",
@@ -86834,14 +86957,14 @@
       {
             "id": "p4024_ex1_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 34.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 34.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 39.3,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 39.3,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "in my mid-twenties",
                   "mid-twenties"
@@ -86850,14 +86973,14 @@
       {
             "id": "p4024_ex1_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 36.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 36.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 41,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 41,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "middle-aged",
                   "middle aged"
@@ -86867,13 +86990,13 @@
             "id": "p4024_ex1_3",
             "type": "fill",
             "x": 11.5,
-            "y": 38.7,
+            "y": 44.3,
             "w": 35,
-            "h": 2,
-            "top": 38.7,
+            "h": 1.9,
+            "top": 44.3,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "in her early twenties",
                   "early twenties"
@@ -86883,13 +87006,13 @@
             "id": "p4024_ex1_4",
             "type": "fill",
             "x": 41.5,
-            "y": 41,
+            "y": 44.4,
             "w": 9.5,
-            "h": 2,
-            "top": 41,
+            "h": 1.9,
+            "top": 44.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "elderly",
                   "Elderly"
@@ -86898,14 +87021,14 @@
       {
             "id": "p4024_ex1_5",
             "type": "fill",
-            "x": 11.5,
-            "y": 43.2,
-            "w": 35,
-            "h": 2,
-            "top": 43.2,
-            "left": 11.5,
-            "width": 35,
-            "height": 2,
+            "x": 34,
+            "y": 46.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 46.1,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "in her late twenties",
                   "late twenties"
@@ -86914,14 +87037,14 @@
       {
             "id": "p4024_ex1_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 45.4,
-            "w": 9.5,
-            "h": 2,
-            "top": 45.4,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 47.8,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 47.8,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "in her sixties",
                   "sixties"
@@ -86930,14 +87053,14 @@
       {
             "id": "p4024_ex1_7",
             "type": "fill",
-            "x": 41.5,
-            "y": 47.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 47.6,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 49.6,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 49.6,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "about thirty-five",
                   "thirty-five",
@@ -86948,13 +87071,13 @@
             "id": "p4024_ex1_8",
             "type": "fill",
             "x": 41.5,
-            "y": 49.8,
+            "y": 51.3,
             "w": 9.5,
-            "h": 2,
-            "top": 49.8,
+            "h": 1.9,
+            "top": 51.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "a child",
                   "child"
@@ -86964,13 +87087,13 @@
             "id": "p4024_ex1_9",
             "type": "fill",
             "x": 41.5,
-            "y": 52.1,
+            "y": 53,
             "w": 9.5,
-            "h": 2,
-            "top": 52.1,
+            "h": 1.9,
+            "top": 53,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "a teenager",
                   "teenager"
@@ -86980,13 +87103,13 @@
             "id": "p4024_ex3_1",
             "type": "fill",
             "x": 41.5,
-            "y": 75.5,
+            "y": 77.7,
             "w": 9.5,
-            "h": 2,
-            "top": 75.5,
+            "h": 1.9,
+            "top": 77.7,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "took up",
                   "Took up"
@@ -86996,13 +87119,13 @@
             "id": "p4024_ex3_2",
             "type": "fill",
             "x": 41.5,
-            "y": 77.6,
+            "y": 79.4,
             "w": 9.5,
-            "h": 2,
-            "top": 77.6,
+            "h": 1.9,
+            "top": 79.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "left",
                   "Left"
@@ -87012,13 +87135,13 @@
             "id": "p4024_ex3_3",
             "type": "fill",
             "x": 41.5,
-            "y": 79.6,
+            "y": 81.1,
             "w": 9.5,
-            "h": 2,
-            "top": 79.6,
+            "h": 1.9,
+            "top": 81.1,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "decided",
                   "Decided"
@@ -87028,13 +87151,13 @@
             "id": "p4024_ex3_4",
             "type": "fill",
             "x": 41.5,
-            "y": 81.7,
+            "y": 82.9,
             "w": 9.5,
-            "h": 2,
-            "top": 81.7,
+            "h": 1.9,
+            "top": 82.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "went",
                   "Went"
@@ -87044,13 +87167,13 @@
             "id": "p4024_ex3_5",
             "type": "fill",
             "x": 41.5,
-            "y": 83.8,
+            "y": 84.6,
             "w": 9.5,
-            "h": 2,
-            "top": 83.8,
+            "h": 1.9,
+            "top": 84.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "started",
                   "Started"
@@ -87060,13 +87183,13 @@
             "id": "p4024_ex3_6",
             "type": "fill",
             "x": 41.5,
-            "y": 85.8,
+            "y": 86.3,
             "w": 9.5,
-            "h": 2,
-            "top": 85.8,
+            "h": 1.9,
+            "top": 86.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "got",
                   "Got"
@@ -87078,11 +87201,11 @@
             "x": 41.5,
             "y": 87.9,
             "w": 9.5,
-            "h": 2,
+            "h": 1.9,
             "top": 87.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "had",
                   "Had"
@@ -87094,11 +87217,11 @@
             "x": 41.5,
             "y": 89.9,
             "w": 9.5,
-            "h": 2,
+            "h": 1.9,
             "top": 89.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "retired",
                   "Retired"
@@ -87110,13 +87233,13 @@
             "id": "p4025_ex5_1",
             "type": "fill",
             "x": 11.5,
-            "y": 15.2,
+            "y": 15.7,
             "w": 35,
-            "h": 2,
-            "top": 15.2,
+            "h": 1.9,
+            "top": 15.7,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "When did you learn to drive?",
                   "learn to drive"
@@ -87126,13 +87249,13 @@
             "id": "p4025_ex5_2",
             "type": "fill",
             "x": 11.5,
-            "y": 20.4,
+            "y": 19.1,
             "w": 35,
-            "h": 2,
-            "top": 20.4,
+            "h": 1.9,
+            "top": 19.1,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "What did you decide to wear?",
                   "decide to wear"
@@ -87142,13 +87265,13 @@
             "id": "p4025_ex5_3",
             "type": "fill",
             "x": 11.5,
-            "y": 25.6,
+            "y": 22.6,
             "w": 35,
-            "h": 2,
-            "top": 25.6,
+            "h": 1.9,
+            "top": 22.6,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Who did you want to win?",
                   "want to win"
@@ -87158,13 +87281,13 @@
             "id": "p4025_ex5_4",
             "type": "fill",
             "x": 11.5,
-            "y": 30.8,
+            "y": 26,
             "w": 35,
-            "h": 2,
-            "top": 30.8,
+            "h": 1.9,
+            "top": 26,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "How much did you plan to spend?",
                   "plan to spend"
@@ -87174,13 +87297,13 @@
             "id": "p4025_ex5_5",
             "type": "fill",
             "x": 11.5,
-            "y": 36,
+            "y": 29.4,
             "w": 35,
-            "h": 2,
-            "top": 36,
+            "h": 1.9,
+            "top": 29.4,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Where would you like to go?",
                   "would you like to go"
@@ -87190,13 +87313,13 @@
             "id": "p4025_ex5_6",
             "type": "fill",
             "x": 11.5,
-            "y": 41.2,
+            "y": 32.9,
             "w": 35,
-            "h": 2,
-            "top": 41.2,
+            "h": 1.9,
+            "top": 32.9,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "Why did you need to stop?",
                   "need to stop"
@@ -87206,13 +87329,13 @@
             "id": "p4025_ex7_1",
             "type": "fill",
             "x": 41.5,
-            "y": 50.9,
+            "y": 49.8,
             "w": 9.5,
-            "h": 2,
-            "top": 50.9,
+            "h": 1.9,
+            "top": 49.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "to play",
                   "play"
@@ -87222,13 +87345,13 @@
             "id": "p4025_ex7_2",
             "type": "fill",
             "x": 41.5,
-            "y": 50.6,
+            "y": 51.6,
             "w": 9.5,
-            "h": 2,
-            "top": 50.6,
+            "h": 1.9,
+            "top": 51.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "living",
                   "live"
@@ -87238,13 +87361,13 @@
             "id": "p4025_ex7_3",
             "type": "fill",
             "x": 41.5,
-            "y": 50.2,
+            "y": 53.3,
             "w": 9.5,
-            "h": 2,
-            "top": 50.2,
+            "h": 1.9,
+            "top": 53.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "to retire",
                   "retire"
@@ -87254,13 +87377,13 @@
             "id": "p4025_ex7_4",
             "type": "fill",
             "x": 41.5,
-            "y": 49.9,
+            "y": 56.5,
             "w": 9.5,
-            "h": 2,
-            "top": 49.9,
+            "h": 1.9,
+            "top": 56.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "playing",
                   "play"
@@ -87270,13 +87393,13 @@
             "id": "p4025_ex7_5",
             "type": "fill",
             "x": 41.5,
-            "y": 49.6,
+            "y": 58.4,
             "w": 9.5,
-            "h": 2,
-            "top": 49.6,
+            "h": 1.9,
+            "top": 58.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "going",
                   "go"
@@ -87286,13 +87409,13 @@
             "id": "p4025_ex7_6",
             "type": "fill",
             "x": 41.5,
-            "y": 49.3,
+            "y": 60.3,
             "w": 9.5,
-            "h": 2,
-            "top": 49.3,
+            "h": 1.9,
+            "top": 60.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "to move",
                   "move"
@@ -87302,13 +87425,13 @@
             "id": "p4025_ex7_7",
             "type": "fill",
             "x": 41.5,
-            "y": 48.9,
+            "y": 62.1,
             "w": 9.5,
-            "h": 2,
-            "top": 48.9,
+            "h": 1.9,
+            "top": 62.1,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "doing",
                   "do"
@@ -87318,13 +87441,13 @@
             "id": "p4025_ex7_8",
             "type": "fill",
             "x": 41.5,
-            "y": 48.6,
+            "y": 64,
             "w": 9.5,
-            "h": 2,
-            "top": 48.6,
+            "h": 1.9,
+            "top": 64,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "raining",
                   "rain"
@@ -87336,13 +87459,13 @@
             "id": "p4026_ex1_1",
             "type": "fill",
             "x": 41.5,
-            "y": 24,
+            "y": 27.3,
             "w": 9.5,
-            "h": 2,
-            "top": 24,
+            "h": 1.9,
+            "top": 27.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "go online",
                   "online"
@@ -87351,14 +87474,14 @@
       {
             "id": "p4026_ex1_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 29.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 29.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 29.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 29.1,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "do research",
                   "research"
@@ -87368,13 +87491,13 @@
             "id": "p4026_ex1_3",
             "type": "fill",
             "x": 41.5,
-            "y": 35,
+            "y": 30.8,
             "w": 9.5,
-            "h": 2,
-            "top": 35,
+            "h": 1.9,
+            "top": 30.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "blog",
                   "Blog"
@@ -87383,14 +87506,14 @@
       {
             "id": "p4026_ex1_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 40.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 40.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 34.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 34.1,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "chat online",
                   "chat"
@@ -87400,13 +87523,13 @@
             "id": "p4026_ex1_5",
             "type": "fill",
             "x": 41.5,
-            "y": 46,
+            "y": 37.4,
             "w": 9.5,
-            "h": 2,
-            "top": 46,
+            "h": 1.9,
+            "top": 37.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "tweet",
                   "Tweet"
@@ -87415,14 +87538,14 @@
       {
             "id": "p4026_ex1_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 51.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 51.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 40.7,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 40.7,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "shop online",
                   "shop"
@@ -87432,13 +87555,13 @@
             "id": "p4026_ex1_7",
             "type": "fill",
             "x": 41.5,
-            "y": 57,
+            "y": 42.4,
             "w": 9.5,
-            "h": 2,
-            "top": 57,
+            "h": 1.9,
+            "top": 42.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "log on",
                   "log in"
@@ -87447,14 +87570,14 @@
       {
             "id": "p4026_ex1_8",
             "type": "fill",
-            "x": 41.5,
-            "y": 62.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 62.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 44.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 44.1,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "use social media",
                   "social media"
@@ -87463,14 +87586,14 @@
       {
             "id": "p4026_ex2a_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 58,
-            "w": 9.5,
-            "h": 2,
-            "top": 58,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 55.8,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 55.8,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "text friends",
                   "text"
@@ -87479,14 +87602,14 @@
       {
             "id": "p4026_ex2a_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 63.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 63.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 60,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 60,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "deal with emails",
                   "emails"
@@ -87495,14 +87618,14 @@
       {
             "id": "p4026_ex2a_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 69,
-            "w": 9.5,
-            "h": 2,
-            "top": 69,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 67.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 67.1,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "read the news",
                   "news"
@@ -87511,14 +87634,14 @@
       {
             "id": "p4026_ex2a_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 74.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 74.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 69.9,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 69.9,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "do online banking",
                   "banking"
@@ -87527,14 +87650,14 @@
       {
             "id": "p4026_ex2a_5",
             "type": "fill",
-            "x": 11.5,
-            "y": 80,
+            "x": 55.5,
+            "y": 50.4,
             "w": 35,
-            "h": 2,
-            "top": 80,
-            "left": 11.5,
+            "h": 1.9,
+            "top": 50.4,
+            "left": 55.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "update your Facebook page",
                   "update Facebook",
@@ -87546,14 +87669,14 @@
       {
             "id": "p4027_ex4_1",
             "type": "fill",
-            "x": 11.5,
-            "y": 15.2,
-            "w": 35,
-            "h": 2,
-            "top": 15.2,
-            "left": 11.5,
-            "width": 35,
-            "height": 2,
+            "x": 34,
+            "y": 45,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 45,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "He's going to jump.",
                   "He is going to jump.",
@@ -87564,13 +87687,13 @@
             "id": "p4027_ex4_2",
             "type": "fill",
             "x": 11.5,
-            "y": 20,
+            "y": 21.5,
             "w": 35,
-            "h": 2,
-            "top": 20,
+            "h": 1.9,
+            "top": 21.5,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "They're going to do the shopping.",
                   "They are going to do the shopping.",
@@ -87581,13 +87704,13 @@
             "id": "p4027_ex4_3",
             "type": "fill",
             "x": 11.5,
-            "y": 24.7,
+            "y": 26.1,
             "w": 35,
-            "h": 2,
-            "top": 24.7,
+            "h": 1.9,
+            "top": 26.1,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "She's going to have a baby.",
                   "She is going to have a baby.",
@@ -87598,13 +87721,13 @@
             "id": "p4027_ex4_4",
             "type": "fill",
             "x": 11.5,
-            "y": 29.4,
+            "y": 30.7,
             "w": 35,
-            "h": 2,
-            "top": 29.4,
+            "h": 1.9,
+            "top": 30.7,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "He's going to get married.",
                   "He is going to get married.",
@@ -87615,13 +87738,13 @@
             "id": "p4027_ex4_5",
             "type": "fill",
             "x": 11.5,
-            "y": 34.1,
+            "y": 35.4,
             "w": 35,
-            "h": 2,
-            "top": 34.1,
+            "h": 1.9,
+            "top": 35.4,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "They're going to play tennis.",
                   "They are going to play tennis.",
@@ -87632,13 +87755,13 @@
             "id": "p4027_ex4_6",
             "type": "fill",
             "x": 11.5,
-            "y": 38.8,
+            "y": 40,
             "w": 35,
-            "h": 2,
-            "top": 38.8,
+            "h": 1.9,
+            "top": 40,
             "left": 11.5,
             "width": 35,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "It's going to take off.",
                   "It is going to take off.",
@@ -87648,14 +87771,14 @@
       {
             "id": "p4027_ex5_1",
             "type": "fill",
-            "x": 81.5,
-            "y": 49.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 49.6,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 48.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 48.4,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "'m going to check",
                   "am going to check",
@@ -87665,14 +87788,14 @@
       {
             "id": "p4027_ex5_2",
             "type": "fill",
-            "x": 81.5,
-            "y": 49.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 49.2,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 52.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 52.1,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "'m going to update",
                   "am going to update",
@@ -87683,13 +87806,13 @@
             "id": "p4027_ex5_3",
             "type": "fill",
             "x": 81.5,
-            "y": 48.7,
+            "y": 54.6,
             "w": 9.5,
-            "h": 2,
-            "top": 48.7,
+            "h": 1.9,
+            "top": 54.6,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "are coming",
                   "'re coming"
@@ -87699,13 +87822,13 @@
             "id": "p4027_ex5_4",
             "type": "fill",
             "x": 81.5,
-            "y": 48.2,
+            "y": 57.1,
             "w": 9.5,
-            "h": 2,
-            "top": 48.2,
+            "h": 1.9,
+            "top": 57.1,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "having",
                   "'re having",
@@ -87715,14 +87838,14 @@
       {
             "id": "p4027_ex5_5",
             "type": "fill",
-            "x": 81.5,
-            "y": 47.8,
-            "w": 9.5,
-            "h": 2,
-            "top": 47.8,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 59.6,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 59.6,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "is going to land",
                   "'s going to land",
@@ -87733,13 +87856,13 @@
             "id": "p4027_ex5_6",
             "type": "fill",
             "x": 81.5,
-            "y": 47.3,
+            "y": 62.1,
             "w": 9.5,
-            "h": 2,
-            "top": 47.3,
+            "h": 1.9,
+            "top": 62.1,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "working",
                   "'s working",
@@ -87751,14 +87874,14 @@
       {
             "id": "p4028_ex1_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 24,
-            "w": 9.5,
-            "h": 2,
-            "top": 24,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 40.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 40.4,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "get married",
                   "married"
@@ -87767,14 +87890,14 @@
       {
             "id": "p4028_ex1_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 29,
-            "w": 9.5,
-            "h": 2,
-            "top": 29,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 43.6,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 43.6,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "get some shoes",
                   "shoes"
@@ -87783,14 +87906,14 @@
       {
             "id": "p4028_ex1_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 34.1,
-            "w": 9.5,
-            "h": 2,
-            "top": 34.1,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 46.9,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 46.9,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "get a phone call",
                   "phone call"
@@ -87800,13 +87923,13 @@
             "id": "p4028_ex1_4",
             "type": "fill",
             "x": 41.5,
-            "y": 39.2,
+            "y": 50.2,
             "w": 9.5,
-            "h": 2,
-            "top": 39.2,
+            "h": 1.9,
+            "top": 50.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "get home",
                   "home"
@@ -87816,13 +87939,13 @@
             "id": "p4028_ex1_5",
             "type": "fill",
             "x": 41.5,
-            "y": 44.2,
+            "y": 53.4,
             "w": 9.5,
-            "h": 2,
-            "top": 44.2,
+            "h": 1.9,
+            "top": 53.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "get a job",
                   "a job",
@@ -87832,14 +87955,14 @@
       {
             "id": "p4028_ex1_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 49.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 49.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 56.7,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 56.7,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "get some pizzas",
                   "pizzas"
@@ -87849,13 +87972,13 @@
             "id": "p4028_ex1_7",
             "type": "fill",
             "x": 41.5,
-            "y": 54.4,
+            "y": 61.6,
             "w": 9.5,
-            "h": 2,
-            "top": 54.4,
+            "h": 1.9,
+            "top": 61.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "get bored",
                   "bored"
@@ -87865,13 +87988,13 @@
             "id": "p4028_ex1_8",
             "type": "fill",
             "x": 41.5,
-            "y": 59.4,
+            "y": 59,
             "w": 9.5,
-            "h": 2,
-            "top": 59.4,
+            "h": 1.9,
+            "top": 59,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "get cold",
                   "cold"
@@ -87880,14 +88003,14 @@
       {
             "id": "p4028_ex2_1",
             "type": "select",
-            "x": 25,
+            "x": 26,
             "y": 69,
             "w": 12,
-            "h": 2,
+            "h": 1.9,
             "top": 69,
-            "left": 25,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "buy"
             ],
@@ -87901,14 +88024,14 @@
       {
             "id": "p4028_ex2_2",
             "type": "select",
-            "x": 25,
+            "x": 26,
             "y": 72.8,
             "w": 12,
-            "h": 2,
+            "h": 1.9,
             "top": 72.8,
-            "left": 25,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "receive"
             ],
@@ -87922,14 +88045,14 @@
       {
             "id": "p4028_ex2_3",
             "type": "select",
-            "x": 25,
+            "x": 26,
             "y": 76.7,
             "w": 12,
-            "h": 2,
+            "h": 1.9,
             "top": 76.7,
-            "left": 25,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "arrive"
             ],
@@ -87943,14 +88066,14 @@
       {
             "id": "p4028_ex2_4",
             "type": "select",
-            "x": 25,
+            "x": 26,
             "y": 80.5,
             "w": 12,
-            "h": 2,
+            "h": 1.9,
             "top": 80.5,
-            "left": 25,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "receive"
             ],
@@ -87964,14 +88087,14 @@
       {
             "id": "p4028_ex2_5",
             "type": "select",
-            "x": 25,
+            "x": 26,
             "y": 84.3,
             "w": 12,
-            "h": 2,
+            "h": 1.9,
             "top": 84.3,
-            "left": 25,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "buy"
             ],
@@ -87985,14 +88108,14 @@
       {
             "id": "p4028_ex2_6",
             "type": "select",
-            "x": 25,
+            "x": 26,
             "y": 88.2,
             "w": 12,
-            "h": 2,
+            "h": 1.9,
             "top": 88.2,
-            "left": 25,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "arrive"
             ],
@@ -88009,13 +88132,13 @@
             "id": "p4029_ex1_1",
             "type": "fill",
             "x": 41.5,
-            "y": 30,
+            "y": 28,
             "w": 9.5,
-            "h": 2,
-            "top": 30,
+            "h": 1.9,
+            "top": 28,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "1",
                   "one"
@@ -88025,13 +88148,13 @@
             "id": "p4029_ex1_2",
             "type": "fill",
             "x": 41.5,
-            "y": 33.3,
+            "y": 31.3,
             "w": 9.5,
-            "h": 2,
-            "top": 33.3,
+            "h": 1.9,
+            "top": 31.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "2",
                   "two"
@@ -88041,13 +88164,13 @@
             "id": "p4029_ex1_3",
             "type": "fill",
             "x": 41.5,
-            "y": 36.5,
+            "y": 34.5,
             "w": 9.5,
-            "h": 2,
-            "top": 36.5,
+            "h": 1.9,
+            "top": 34.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "3",
                   "three"
@@ -88057,13 +88180,13 @@
             "id": "p4029_ex1_4",
             "type": "fill",
             "x": 41.5,
-            "y": 39.8,
+            "y": 37.8,
             "w": 9.5,
-            "h": 2,
-            "top": 39.8,
+            "h": 1.9,
+            "top": 37.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "4",
                   "four"
@@ -88073,13 +88196,13 @@
             "id": "p4029_ex1_5",
             "type": "fill",
             "x": 41.5,
-            "y": 43,
+            "y": 41,
             "w": 9.5,
-            "h": 2,
-            "top": 43,
+            "h": 1.9,
+            "top": 41,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "5",
                   "five"
@@ -88089,13 +88212,13 @@
             "id": "p4029_ex1_6",
             "type": "fill",
             "x": 41.5,
-            "y": 46.3,
+            "y": 44.3,
             "w": 9.5,
-            "h": 2,
-            "top": 46.3,
+            "h": 1.9,
+            "top": 44.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "6",
                   "six"
@@ -88105,13 +88228,13 @@
             "id": "p4029_ex1_7",
             "type": "fill",
             "x": 41.5,
-            "y": 49.5,
+            "y": 47.5,
             "w": 9.5,
-            "h": 2,
-            "top": 49.5,
+            "h": 1.9,
+            "top": 47.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "7",
                   "seven"
@@ -88121,13 +88244,13 @@
             "id": "p4029_ex1_8",
             "type": "fill",
             "x": 41.5,
-            "y": 52.8,
+            "y": 50.8,
             "w": 9.5,
-            "h": 2,
-            "top": 52.8,
+            "h": 1.9,
+            "top": 50.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "8",
                   "eight"
@@ -88136,14 +88259,14 @@
       {
             "id": "p4029_ex2_1",
             "type": "fill",
-            "x": 81.5,
-            "y": 65.4,
-            "w": 9.5,
-            "h": 2,
-            "top": 65.4,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 79.8,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 79.8,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "Are you free",
                   "free"
@@ -88152,14 +88275,14 @@
       {
             "id": "p4029_ex2_2",
             "type": "fill",
-            "x": 81.5,
-            "y": 65.1,
-            "w": 9.5,
-            "h": 2,
-            "top": 65.1,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 81.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 81.4,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "Would you like",
                   "would you like"
@@ -88168,14 +88291,14 @@
       {
             "id": "p4029_ex2_3",
             "type": "fill",
-            "x": 81.5,
-            "y": 64.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 64.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 83.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 83.1,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "I can't make it",
                   "can't make it",
@@ -88185,14 +88308,14 @@
       {
             "id": "p4029_ex2_4",
             "type": "fill",
-            "x": 81.5,
-            "y": 64.4,
+            "x": 41.5,
+            "y": 84.8,
             "w": 9.5,
-            "h": 2,
-            "top": 64.4,
-            "left": 81.5,
+            "h": 1.9,
+            "top": 84.8,
+            "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "How about",
                   "how about"
@@ -88201,14 +88324,14 @@
       {
             "id": "p4029_ex2_5",
             "type": "fill",
-            "x": 81.5,
-            "y": 64,
+            "x": 41.5,
+            "y": 86.4,
             "w": 9.5,
-            "h": 2,
-            "top": 64,
-            "left": 81.5,
+            "h": 1.9,
+            "top": 86.4,
+            "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "be great",
                   "'d be great"
@@ -88217,14 +88340,14 @@
       {
             "id": "p4029_ex2_6",
             "type": "fill",
-            "x": 81.5,
-            "y": 63.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 63.7,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 88.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 88.1,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "We could try",
                   "could try"
@@ -88233,14 +88356,14 @@
       {
             "id": "p4029_ex2_7",
             "type": "fill",
-            "x": 81.5,
-            "y": 63.3,
+            "x": 41.5,
+            "y": 89.8,
             "w": 9.5,
-            "h": 2,
-            "top": 63.3,
-            "left": 81.5,
+            "h": 1.9,
+            "top": 89.8,
+            "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "I'd like",
                   "would like"
@@ -88249,14 +88372,14 @@
       {
             "id": "p4029_ex2_8",
             "type": "fill",
-            "x": 81.5,
-            "y": 63,
+            "x": 41.5,
+            "y": 91.4,
             "w": 9.5,
-            "h": 2,
-            "top": 63,
-            "left": 81.5,
+            "h": 1.9,
+            "top": 91.4,
+            "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "any good",
                   "good"
@@ -88265,14 +88388,14 @@
       {
             "id": "p4029_ex2_9",
             "type": "fill",
-            "x": 81.5,
-            "y": 62.6,
-            "w": 9.5,
-            "h": 2,
-            "top": 62.6,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 92,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 92,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "Sounds perfect",
                   "perfect"
@@ -88284,13 +88407,13 @@
             "id": "p4030_ex1_1",
             "type": "fill",
             "x": 41.5,
-            "y": 30,
+            "y": 64.1,
             "w": 9.5,
-            "h": 2,
-            "top": 30,
+            "h": 1.9,
+            "top": 64.1,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "bricks",
                   "Bricks"
@@ -88300,13 +88423,13 @@
             "id": "p4030_ex1_2",
             "type": "fill",
             "x": 41.5,
-            "y": 35.5,
+            "y": 68.4,
             "w": 9.5,
-            "h": 2,
-            "top": 35.5,
+            "h": 1.9,
+            "top": 68.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "wood",
                   "Wood"
@@ -88316,13 +88439,13 @@
             "id": "p4030_ex1_3",
             "type": "fill",
             "x": 41.5,
-            "y": 41,
+            "y": 38.4,
             "w": 9.5,
-            "h": 2,
-            "top": 41,
+            "h": 1.9,
+            "top": 38.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "plastic",
                   "Plastic"
@@ -88332,13 +88455,13 @@
             "id": "p4030_ex1_4",
             "type": "fill",
             "x": 41.5,
-            "y": 46.5,
+            "y": 43.6,
             "w": 9.5,
-            "h": 2,
-            "top": 46.5,
+            "h": 1.9,
+            "top": 43.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "metal",
                   "Metal"
@@ -88350,13 +88473,13 @@
             "id": "p4031_ex1_1",
             "type": "fill",
             "x": 41.5,
-            "y": 24,
+            "y": 22.9,
             "w": 9.5,
-            "h": 2,
-            "top": 24,
+            "h": 1.9,
+            "top": 22.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "landed",
                   "Landed"
@@ -88365,14 +88488,14 @@
       {
             "id": "p4031_ex1_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 23.5,
-            "w": 9.5,
-            "h": 2,
-            "top": 23.5,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 24.6,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 24.6,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "was sitting",
                   "sat"
@@ -88382,13 +88505,13 @@
             "id": "p4031_ex1_3",
             "type": "fill",
             "x": 41.5,
-            "y": 23.1,
+            "y": 26.3,
             "w": 9.5,
-            "h": 2,
-            "top": 23.1,
+            "h": 1.9,
+            "top": 26.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "rang",
                   "Rang"
@@ -88397,14 +88520,14 @@
       {
             "id": "p4031_ex1_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 22.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 22.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 31.5,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 31.5,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "'m going to buy",
                   "am going to buy"
@@ -88413,14 +88536,14 @@
       {
             "id": "p4031_ex1_5",
             "type": "fill",
-            "x": 41.5,
-            "y": 22.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 22.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 34,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 34,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "decided to go",
                   "decided"
@@ -88429,14 +88552,14 @@
       {
             "id": "p4031_ex1_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 21.8,
-            "w": 9.5,
-            "h": 2,
-            "top": 21.8,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 36.5,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 36.5,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "stopped raining",
                   "stopped"
@@ -88446,13 +88569,13 @@
             "id": "p4031_ex2_1",
             "type": "fill",
             "x": 41.5,
-            "y": 27.6,
+            "y": 26.3,
             "w": 9.5,
-            "h": 2,
-            "top": 27.6,
+            "h": 1.9,
+            "top": 26.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "towards",
                   "Towards"
@@ -88462,13 +88585,13 @@
             "id": "p4031_ex2_2",
             "type": "fill",
             "x": 41.5,
-            "y": 27.1,
+            "y": 28.1,
             "w": 9.5,
-            "h": 2,
-            "top": 27.1,
+            "h": 1.9,
+            "top": 28.1,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "anxious",
                   "Anxious",
@@ -88479,13 +88602,13 @@
             "id": "p4031_ex2_3",
             "type": "fill",
             "x": 41.5,
-            "y": 26.7,
+            "y": 29.8,
             "w": 9.5,
-            "h": 2,
-            "top": 26.7,
+            "h": 1.9,
+            "top": 29.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "fluently",
                   "Fluently"
@@ -88494,14 +88617,14 @@
       {
             "id": "p4031_ex2_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 26.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 26.2,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 35.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 35.1,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "middle-aged",
                   "middle aged"
@@ -88511,13 +88634,13 @@
             "id": "p4031_ex2_5",
             "type": "fill",
             "x": 41.5,
-            "y": 25.8,
+            "y": 37.6,
             "w": 9.5,
-            "h": 2,
-            "top": 25.8,
+            "h": 1.9,
+            "top": 37.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "get a job",
                   "get job"
@@ -88526,14 +88649,14 @@
       {
             "id": "p4031_ex2_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 25.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 25.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 40.1,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 40.1,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "social media",
                   "online"
@@ -88545,13 +88668,13 @@
             "id": "p4032_ex1_1",
             "type": "fill",
             "x": 41.5,
-            "y": 36.4,
+            "y": 35.3,
             "w": 9.5,
-            "h": 2,
-            "top": 36.4,
+            "h": 1.9,
+            "top": 35.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "metal",
                   "Metal"
@@ -88561,13 +88684,13 @@
             "id": "p4032_ex1_2",
             "type": "fill",
             "x": 41.5,
-            "y": 37.8,
+            "y": 37,
             "w": 9.5,
-            "h": 2,
-            "top": 37.8,
+            "h": 1.9,
+            "top": 37,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "useful",
                   "Useful"
@@ -88576,14 +88699,14 @@
       {
             "id": "p4032_ex1_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 39.3,
-            "w": 9.5,
-            "h": 2,
-            "top": 39.3,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 38.7,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 38.7,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "comfortable",
                   "Comfortable"
@@ -88593,13 +88716,13 @@
             "id": "p4032_ex1_4",
             "type": "fill",
             "x": 41.5,
-            "y": 40.8,
+            "y": 40.4,
             "w": 9.5,
-            "h": 2,
-            "top": 40.8,
+            "h": 1.9,
+            "top": 40.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "thin",
                   "Thin"
@@ -88611,11 +88734,11 @@
             "x": 41.5,
             "y": 42.2,
             "w": 9.5,
-            "h": 2,
+            "h": 1.9,
             "top": 42.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "gold",
                   "Gold"
@@ -88625,13 +88748,13 @@
             "id": "p4032_ex1_6",
             "type": "fill",
             "x": 41.5,
-            "y": 43.7,
+            "y": 43.9,
             "w": 9.5,
-            "h": 2,
-            "top": 43.7,
+            "h": 1.9,
+            "top": 43.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "special",
                   "Special"
@@ -88641,13 +88764,13 @@
             "id": "p4032_ex2_1",
             "type": "fill",
             "x": 41.5,
-            "y": 49.6,
+            "y": 53.2,
             "w": 9.5,
-            "h": 2,
-            "top": 49.6,
+            "h": 1.9,
+            "top": 53.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "gold",
                   "Gold"
@@ -88659,11 +88782,11 @@
             "x": 41.5,
             "y": 54.9,
             "w": 9.5,
-            "h": 2,
+            "h": 1.9,
             "top": 54.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "light",
                   "Light"
@@ -88673,13 +88796,13 @@
             "id": "p4032_ex2_3",
             "type": "fill",
             "x": 41.5,
-            "y": 60.2,
+            "y": 56.6,
             "w": 9.5,
-            "h": 2,
-            "top": 60.2,
+            "h": 1.9,
+            "top": 56.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "amazing",
                   "Amazing"
@@ -88689,13 +88812,13 @@
             "id": "p4032_ex2_4",
             "type": "fill",
             "x": 41.5,
-            "y": 65.5,
+            "y": 58.4,
             "w": 9.5,
-            "h": 2,
-            "top": 65.5,
+            "h": 1.9,
+            "top": 58.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "leather",
                   "Leather"
@@ -88705,13 +88828,13 @@
             "id": "p4032_ex2_5",
             "type": "fill",
             "x": 41.5,
-            "y": 70.8,
+            "y": 60.1,
             "w": 9.5,
-            "h": 2,
-            "top": 70.8,
+            "h": 1.9,
+            "top": 60.1,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "special",
                   "Special"
@@ -88721,13 +88844,13 @@
             "id": "p4032_ex2_6",
             "type": "fill",
             "x": 41.5,
-            "y": 76.1,
+            "y": 61.8,
             "w": 9.5,
-            "h": 2,
-            "top": 76.1,
+            "h": 1.9,
+            "top": 61.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "useful",
                   "Useful"
@@ -88737,13 +88860,13 @@
             "id": "p4032_ex2_7",
             "type": "fill",
             "x": 41.5,
-            "y": 81.4,
+            "y": 63.5,
             "w": 9.5,
-            "h": 2,
-            "top": 81.4,
+            "h": 1.9,
+            "top": 63.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "valuable",
                   "Valuable"
@@ -88753,13 +88876,13 @@
             "id": "p4032_ex2_8",
             "type": "fill",
             "x": 41.5,
-            "y": 86.7,
+            "y": 65.2,
             "w": 9.5,
-            "h": 2,
-            "top": 86.7,
+            "h": 1.9,
+            "top": 65.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "ordinary",
                   "Ordinary"
@@ -88769,13 +88892,13 @@
             "id": "p4032_ex3_1",
             "type": "fill",
             "x": 81.5,
-            "y": 30.6,
+            "y": 56.6,
             "w": 9.5,
-            "h": 2,
-            "top": 30.6,
+            "h": 1.9,
+            "top": 56.6,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "amazing",
                   "Amazing"
@@ -88785,13 +88908,13 @@
             "id": "p4032_ex3_2",
             "type": "fill",
             "x": 81.5,
-            "y": 36.1,
+            "y": 59.7,
             "w": 9.5,
-            "h": 2,
-            "top": 36.1,
+            "h": 1.9,
+            "top": 59.7,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "heavy",
                   "Heavy"
@@ -88801,13 +88924,13 @@
             "id": "p4032_ex3_3",
             "type": "fill",
             "x": 81.5,
-            "y": 41.6,
+            "y": 62.8,
             "w": 9.5,
-            "h": 2,
-            "top": 41.6,
+            "h": 1.9,
+            "top": 62.8,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "antique",
                   "Antique"
@@ -88817,13 +88940,13 @@
             "id": "p4032_ex3_4",
             "type": "fill",
             "x": 81.5,
-            "y": 47.1,
+            "y": 81.4,
             "w": 9.5,
-            "h": 2,
-            "top": 47.1,
+            "h": 1.9,
+            "top": 81.4,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "tiny",
                   "Tiny"
@@ -88833,13 +88956,13 @@
             "id": "p4032_ex3_5",
             "type": "fill",
             "x": 81.5,
-            "y": 52.6,
+            "y": 83.1,
             "w": 9.5,
-            "h": 2,
-            "top": 52.6,
+            "h": 1.9,
+            "top": 83.1,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "brand new",
                   "brand-new"
@@ -88849,13 +88972,13 @@
             "id": "p4032_ex3_6",
             "type": "fill",
             "x": 81.5,
-            "y": 58.1,
+            "y": 83.2,
             "w": 9.5,
-            "h": 2,
-            "top": 58.1,
+            "h": 1.9,
+            "top": 83.2,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "thin",
                   "Thin"
@@ -88865,13 +88988,13 @@
             "id": "p4032_ex3_7",
             "type": "fill",
             "x": 81.5,
-            "y": 63.6,
+            "y": 84.9,
             "w": 9.5,
-            "h": 2,
-            "top": 63.6,
+            "h": 1.9,
+            "top": 84.9,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "large",
                   "Large"
@@ -88880,14 +89003,14 @@
       {
             "id": "p4032_ex3_8",
             "type": "fill",
-            "x": 81.5,
-            "y": 69.1,
-            "w": 9.5,
-            "h": 2,
-            "top": 69.1,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 84.9,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 84.9,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "comfortable",
                   "Comfortable"
@@ -88898,14 +89021,14 @@
       {
             "id": "p4033_ex5_1",
             "type": "select",
-            "x": 25,
-            "y": 15.2,
+            "x": 26,
+            "y": 15.7,
             "w": 12,
-            "h": 2,
-            "top": 15.2,
-            "left": 25,
+            "h": 1.9,
+            "top": 15.7,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "an"
             ],
@@ -88918,14 +89041,14 @@
       {
             "id": "p4033_ex5_2",
             "type": "select",
-            "x": 25,
-            "y": 15.1,
+            "x": 26,
+            "y": 19,
             "w": 12,
-            "h": 2,
-            "top": 15.1,
-            "left": 25,
+            "h": 1.9,
+            "top": 19,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "the"
             ],
@@ -88938,14 +89061,14 @@
       {
             "id": "p4033_ex5_3",
             "type": "select",
-            "x": 25,
-            "y": 14.9,
+            "x": 26,
+            "y": 20.2,
             "w": 12,
-            "h": 2,
-            "top": 14.9,
-            "left": 25,
+            "h": 1.9,
+            "top": 20.2,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "the"
             ],
@@ -88958,14 +89081,14 @@
       {
             "id": "p4033_ex5_4",
             "type": "select",
-            "x": 25,
-            "y": 14.7,
+            "x": 26,
+            "y": 22.7,
             "w": 12,
-            "h": 2,
-            "top": 14.7,
-            "left": 25,
+            "h": 1.9,
+            "top": 22.7,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "a"
             ],
@@ -88978,14 +89101,14 @@
       {
             "id": "p4033_ex5_5",
             "type": "select",
-            "x": 25,
-            "y": 14.5,
+            "x": 26,
+            "y": 25.2,
             "w": 12,
-            "h": 2,
-            "top": 14.5,
-            "left": 25,
+            "h": 1.9,
+            "top": 25.2,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "an"
             ],
@@ -88998,14 +89121,14 @@
       {
             "id": "p4033_ex5_6",
             "type": "select",
-            "x": 25,
-            "y": 14.4,
+            "x": 26,
+            "y": 27.7,
             "w": 12,
-            "h": 2,
-            "top": 14.4,
-            "left": 25,
+            "h": 1.9,
+            "top": 27.7,
+            "left": 26,
             "width": 12,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "the"
             ],
@@ -89018,14 +89141,14 @@
       {
             "id": "p4033_ex7_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 35.2,
+            "x": 81.5,
+            "y": 12,
             "w": 9.5,
-            "h": 2,
-            "top": 35.2,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 12,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "the",
                   "The"
@@ -89034,14 +89157,14 @@
       {
             "id": "p4033_ex7_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 34.9,
+            "x": 81.5,
+            "y": 15.4,
             "w": 9.5,
-            "h": 2,
-            "top": 34.9,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 15.4,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "the",
                   "The"
@@ -89050,14 +89173,14 @@
       {
             "id": "p4033_ex7_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 34.6,
+            "x": 81.5,
+            "y": 19,
             "w": 9.5,
-            "h": 2,
-            "top": 34.6,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 19,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "the",
                   "The"
@@ -89066,14 +89189,14 @@
       {
             "id": "p4033_ex7_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 34.2,
+            "x": 81.5,
+            "y": 22.8,
             "w": 9.5,
-            "h": 2,
-            "top": 34.2,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 22.8,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "the",
                   "The"
@@ -89085,13 +89208,13 @@
             "id": "p4034_ex2_1",
             "type": "fill",
             "x": 81.5,
-            "y": 24.1,
+            "y": 23.1,
             "w": 9.5,
-            "h": 2,
-            "top": 24.1,
+            "h": 1.9,
+            "top": 23.1,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "cash",
                   "Cash"
@@ -89101,13 +89224,13 @@
             "id": "p4034_ex2_2",
             "type": "fill",
             "x": 81.5,
-            "y": 27.2,
+            "y": 26.3,
             "w": 9.5,
-            "h": 2,
-            "top": 27.2,
+            "h": 1.9,
+            "top": 26.3,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "change",
                   "Change"
@@ -89116,14 +89239,14 @@
       {
             "id": "p4034_ex2_3",
             "type": "fill",
-            "x": 81.5,
-            "y": 30.2,
-            "w": 9.5,
-            "h": 2,
-            "top": 30.2,
-            "left": 81.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 74,
+            "y": 29.6,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 29.6,
+            "left": 74,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "bank account",
                   "account"
@@ -89133,13 +89256,13 @@
             "id": "p4034_ex2_4",
             "type": "fill",
             "x": 81.5,
-            "y": 33.2,
+            "y": 32.9,
             "w": 9.5,
-            "h": 2,
-            "top": 33.2,
+            "h": 1.9,
+            "top": 32.9,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "in debt",
                   "debt"
@@ -89149,13 +89272,13 @@
             "id": "p4034_ex2_5",
             "type": "fill",
             "x": 81.5,
-            "y": 36.3,
+            "y": 36.1,
             "w": 9.5,
-            "h": 2,
-            "top": 36.3,
+            "h": 1.9,
+            "top": 36.1,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "amount",
                   "Amount"
@@ -89165,13 +89288,13 @@
             "id": "p4034_ex2_6",
             "type": "fill",
             "x": 81.5,
-            "y": 39.3,
+            "y": 39.4,
             "w": 9.5,
-            "h": 2,
-            "top": 39.3,
+            "h": 1.9,
+            "top": 39.4,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "balance",
                   "Balance"
@@ -89181,13 +89304,13 @@
             "id": "p4034_ex2_7",
             "type": "fill",
             "x": 81.5,
-            "y": 42.4,
+            "y": 42.6,
             "w": 9.5,
-            "h": 2,
-            "top": 42.4,
+            "h": 1.9,
+            "top": 42.6,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "rent",
                   "Rent"
@@ -89197,13 +89320,13 @@
             "id": "p4034_ex3_1",
             "type": "fill",
             "x": 81.5,
-            "y": 49.9,
+            "y": 69.9,
             "w": 9.5,
-            "h": 2,
-            "top": 49.9,
+            "h": 1.9,
+            "top": 69.9,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "owe",
                   "Owe"
@@ -89213,13 +89336,13 @@
             "id": "p4034_ex3_2",
             "type": "fill",
             "x": 81.5,
-            "y": 55.4,
+            "y": 76.6,
             "w": 9.5,
-            "h": 2,
-            "top": 55.4,
+            "h": 1.9,
+            "top": 76.6,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "afford",
                   "Afford"
@@ -89229,13 +89352,13 @@
             "id": "p4034_ex3_3",
             "type": "fill",
             "x": 81.5,
-            "y": 60.9,
+            "y": 60.3,
             "w": 9.5,
-            "h": 2,
-            "top": 60.9,
+            "h": 1.9,
+            "top": 60.3,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "lends",
                   "Lends"
@@ -89245,13 +89368,13 @@
             "id": "p4034_ex3_4",
             "type": "fill",
             "x": 81.5,
-            "y": 66.4,
+            "y": 65.5,
             "w": 9.5,
-            "h": 2,
-            "top": 66.4,
+            "h": 1.9,
+            "top": 65.5,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "spend",
                   "Spend"
@@ -89261,13 +89384,13 @@
             "id": "p4034_ex3_5",
             "type": "fill",
             "x": 81.5,
-            "y": 71.9,
+            "y": 70.7,
             "w": 9.5,
-            "h": 2,
-            "top": 71.9,
+            "h": 1.9,
+            "top": 70.7,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "borrows",
                   "Borrows"
@@ -89277,13 +89400,13 @@
             "id": "p4034_ex3_6",
             "type": "fill",
             "x": 81.5,
-            "y": 77.4,
+            "y": 75.9,
             "w": 9.5,
-            "h": 2,
-            "top": 77.4,
+            "h": 1.9,
+            "top": 75.9,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "pay for",
                   "pay"
@@ -89293,13 +89416,13 @@
             "id": "p4034_ex3_7",
             "type": "fill",
             "x": 81.5,
-            "y": 82.9,
+            "y": 81.1,
             "w": 9.5,
-            "h": 2,
-            "top": 82.9,
+            "h": 1.9,
+            "top": 81.1,
             "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "save up",
                   "save"
@@ -89311,13 +89434,13 @@
             "id": "p4035_ex4_1",
             "type": "fill",
             "x": 41.5,
-            "y": 15.2,
+            "y": 14.2,
             "w": 9.5,
-            "h": 2,
-            "top": 15.2,
+            "h": 1.9,
+            "top": 14.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "some",
                   "Some"
@@ -89327,13 +89450,13 @@
             "id": "p4035_ex4_2",
             "type": "fill",
             "x": 41.5,
-            "y": 14.9,
+            "y": 17.4,
             "w": 9.5,
-            "h": 2,
-            "top": 14.9,
+            "h": 1.9,
+            "top": 17.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "a lot of",
                   "lots of"
@@ -89343,13 +89466,13 @@
             "id": "p4035_ex4_3",
             "type": "fill",
             "x": 41.5,
-            "y": 14.6,
+            "y": 19,
             "w": 9.5,
-            "h": 2,
-            "top": 14.6,
+            "h": 1.9,
+            "top": 19,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "much",
                   "Much"
@@ -89359,13 +89482,13 @@
             "id": "p4035_ex4_4",
             "type": "fill",
             "x": 41.5,
-            "y": 14.3,
+            "y": 20.9,
             "w": 9.5,
-            "h": 2,
-            "top": 14.3,
+            "h": 1.9,
+            "top": 20.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "few",
                   "Few",
@@ -89376,13 +89499,13 @@
             "id": "p4035_ex4_5",
             "type": "fill",
             "x": 41.5,
-            "y": 14,
+            "y": 22.7,
             "w": 9.5,
-            "h": 2,
-            "top": 14,
+            "h": 1.9,
+            "top": 22.7,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "many",
                   "Many"
@@ -89392,13 +89515,13 @@
             "id": "p4035_ex4_6",
             "type": "fill",
             "x": 41.5,
-            "y": 13.7,
+            "y": 24.6,
             "w": 9.5,
-            "h": 2,
-            "top": 13.7,
+            "h": 1.9,
+            "top": 24.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "any",
                   "Any"
@@ -89408,13 +89531,13 @@
             "id": "p4035_ex4_7",
             "type": "fill",
             "x": 41.5,
-            "y": 13.3,
+            "y": 26.5,
             "w": 9.5,
-            "h": 2,
-            "top": 13.3,
+            "h": 1.9,
+            "top": 26.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "much",
                   "Much"
@@ -89424,13 +89547,13 @@
             "id": "p4035_ex4_8",
             "type": "fill",
             "x": 41.5,
-            "y": 13,
+            "y": 28.4,
             "w": 9.5,
-            "h": 2,
-            "top": 13,
+            "h": 1.9,
+            "top": 28.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "enough",
                   "Enough"
@@ -89440,13 +89563,13 @@
             "id": "p4035_ex5_1",
             "type": "fill",
             "x": 41.5,
-            "y": 30.2,
+            "y": 28.9,
             "w": 9.5,
-            "h": 2,
-            "top": 30.2,
+            "h": 1.9,
+            "top": 28.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "enough",
                   "Enough"
@@ -89456,13 +89579,13 @@
             "id": "p4035_ex5_2",
             "type": "fill",
             "x": 41.5,
-            "y": 29.9,
+            "y": 30.6,
             "w": 9.5,
-            "h": 2,
-            "top": 29.9,
+            "h": 1.9,
+            "top": 30.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "any",
                   "Any"
@@ -89472,13 +89595,13 @@
             "id": "p4035_ex5_3",
             "type": "fill",
             "x": 41.5,
-            "y": 29.5,
+            "y": 32.3,
             "w": 9.5,
-            "h": 2,
-            "top": 29.5,
+            "h": 1.9,
+            "top": 32.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "a few",
                   "few"
@@ -89488,13 +89611,13 @@
             "id": "p4035_ex5_4",
             "type": "fill",
             "x": 41.5,
-            "y": 29.2,
+            "y": 35.8,
             "w": 9.5,
-            "h": 2,
-            "top": 29.2,
+            "h": 1.9,
+            "top": 35.8,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "much",
                   "Much"
@@ -89504,13 +89627,13 @@
             "id": "p4035_ex5_5",
             "type": "fill",
             "x": 41.5,
-            "y": 28.8,
+            "y": 37.7,
             "w": 9.5,
-            "h": 2,
-            "top": 28.8,
+            "h": 1.9,
+            "top": 37.7,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "some",
                   "Some"
@@ -89520,13 +89643,13 @@
             "id": "p4035_ex5_6",
             "type": "fill",
             "x": 41.5,
-            "y": 28.5,
+            "y": 39.6,
             "w": 9.5,
-            "h": 2,
-            "top": 28.5,
+            "h": 1.9,
+            "top": 39.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "lots of",
                   "a lot of"
@@ -89536,13 +89659,13 @@
             "id": "p4035_ex5_7",
             "type": "fill",
             "x": 41.5,
-            "y": 28.1,
+            "y": 41.5,
             "w": 9.5,
-            "h": 2,
-            "top": 28.1,
+            "h": 1.9,
+            "top": 41.5,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "too much",
                   "Too much"
@@ -89552,13 +89675,13 @@
             "id": "p4035_ex5_8",
             "type": "fill",
             "x": 41.5,
-            "y": 27.8,
+            "y": 43.3,
             "w": 9.5,
-            "h": 2,
-            "top": 27.8,
+            "h": 1.9,
+            "top": 43.3,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "many",
                   "Many"
@@ -89569,14 +89692,14 @@
       {
             "id": "p4036_ex1_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 24,
-            "w": 9.5,
-            "h": 2,
-            "top": 24,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 24.4,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 24.4,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "information",
                   "Information"
@@ -89586,13 +89709,13 @@
             "id": "p4036_ex1_2",
             "type": "fill",
             "x": 41.5,
-            "y": 29.1,
+            "y": 27.7,
             "w": 9.5,
-            "h": 2,
-            "top": 29.1,
+            "h": 1.9,
+            "top": 27.7,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "valuable",
                   "Valuable"
@@ -89602,13 +89725,13 @@
             "id": "p4036_ex1_3",
             "type": "fill",
             "x": 41.5,
-            "y": 34.3,
+            "y": 30.9,
             "w": 9.5,
-            "h": 2,
-            "top": 34.3,
+            "h": 1.9,
+            "top": 30.9,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "useful",
                   "Useful"
@@ -89618,13 +89741,13 @@
             "id": "p4036_ex1_4",
             "type": "fill",
             "x": 41.5,
-            "y": 39.5,
+            "y": 34.2,
             "w": 9.5,
-            "h": 2,
-            "top": 39.5,
+            "h": 1.9,
+            "top": 34.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "useless",
                   "Useless"
@@ -89633,14 +89756,14 @@
       {
             "id": "p4036_ex1_5",
             "type": "fill",
-            "x": 41.5,
-            "y": 44.7,
-            "w": 9.5,
-            "h": 2,
-            "top": 44.7,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 36,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 36,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "comfortable",
                   "Comfortable"
@@ -89649,14 +89772,14 @@
       {
             "id": "p4036_ex1_6",
             "type": "fill",
-            "x": 41.5,
-            "y": 49.8,
-            "w": 9.5,
-            "h": 2,
-            "top": 49.8,
-            "left": 41.5,
-            "width": 9.5,
-            "height": 2,
+            "x": 34,
+            "y": 39.2,
+            "w": 14.5,
+            "h": 1.9,
+            "top": 39.2,
+            "left": 34,
+            "width": 14.5,
+            "height": 1.9,
             "correct": [
                   "fashionable",
                   "Fashionable"
@@ -89668,13 +89791,13 @@
             "id": "p4037_ex1_1",
             "type": "fill",
             "x": 41.5,
-            "y": 30,
+            "y": 28,
             "w": 9.5,
-            "h": 2,
-            "top": 30,
+            "h": 1.9,
+            "top": 28,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "the",
                   "The"
@@ -89684,13 +89807,13 @@
             "id": "p4037_ex1_2",
             "type": "fill",
             "x": 41.5,
-            "y": 35.5,
+            "y": 33.2,
             "w": 9.5,
-            "h": 2,
-            "top": 35.5,
+            "h": 1.9,
+            "top": 33.2,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "a",
                   "A"
@@ -89700,13 +89823,13 @@
             "id": "p4037_ex1_3",
             "type": "fill",
             "x": 41.5,
-            "y": 41,
+            "y": 38.4,
             "w": 9.5,
-            "h": 2,
-            "top": 41,
+            "h": 1.9,
+            "top": 38.4,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "some",
                   "Some"
@@ -89716,13 +89839,13 @@
             "id": "p4037_ex1_4",
             "type": "fill",
             "x": 41.5,
-            "y": 46.5,
+            "y": 43.6,
             "w": 9.5,
-            "h": 2,
-            "top": 46.5,
+            "h": 1.9,
+            "top": 43.6,
             "left": 41.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "any",
                   "Any"
@@ -89731,14 +89854,14 @@
       {
             "id": "p4037_ex2_1",
             "type": "fill",
-            "x": 41.5,
-            "y": 58,
+            "x": 81.5,
+            "y": 56.7,
             "w": 9.5,
-            "h": 2,
-            "top": 58,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 56.7,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "leather",
                   "Leather"
@@ -89747,14 +89870,14 @@
       {
             "id": "p4037_ex2_2",
             "type": "fill",
-            "x": 41.5,
-            "y": 63.5,
+            "x": 81.5,
+            "y": 65.2,
             "w": 9.5,
-            "h": 2,
-            "top": 63.5,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 65.2,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "valuable",
                   "Valuable"
@@ -89763,14 +89886,14 @@
       {
             "id": "p4037_ex2_3",
             "type": "fill",
-            "x": 41.5,
-            "y": 69,
+            "x": 81.5,
+            "y": 70.1,
             "w": 9.5,
-            "h": 2,
-            "top": 69,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 70.1,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "rent",
                   "Rent"
@@ -89779,14 +89902,14 @@
       {
             "id": "p4037_ex2_4",
             "type": "fill",
-            "x": 41.5,
-            "y": 74.5,
+            "x": 81.5,
+            "y": 75.1,
             "w": 9.5,
-            "h": 2,
-            "top": 74.5,
-            "left": 41.5,
+            "h": 1.9,
+            "top": 75.1,
+            "left": 81.5,
             "width": 9.5,
-            "height": 2,
+            "height": 1.9,
             "correct": [
                   "in debt",
                   "debt"
@@ -89808,7 +89931,8 @@
             "correct": [
                   "sociable",
                   "Sociable"
-            ]
+            ],
+            "answer": "sociable"
       },
       {
             "id": "p4038_ex1_2",
@@ -89824,7 +89948,8 @@
             "correct": [
                   "smart",
                   "Smart"
-            ]
+            ],
+            "answer": "smart"
       },
       {
             "id": "p4038_ex1_3",
@@ -89840,7 +89965,8 @@
             "correct": [
                   "clever",
                   "Clever"
-            ]
+            ],
+            "answer": "clever"
       },
       {
             "id": "p4038_ex1_4",
@@ -89856,7 +89982,8 @@
             "correct": [
                   "lazy",
                   "Lazy"
-            ]
+            ],
+            "answer": "lazy"
       },
       {
             "id": "p4038_ex1_5",
@@ -89872,7 +89999,8 @@
             "correct": [
                   "untidy",
                   "Untidy"
-            ]
+            ],
+            "answer": "untidy"
       },
       {
             "id": "p4038_ex1_6",
@@ -89888,7 +90016,8 @@
             "correct": [
                   "confident",
                   "Confident"
-            ]
+            ],
+            "answer": "confident"
       },
       {
             "id": "p4038_ex1_7",
@@ -89904,7 +90033,8 @@
             "correct": [
                   "quiet",
                   "Quiet"
-            ]
+            ],
+            "answer": "quiet"
       },
       {
             "id": "p4038_ex1_8",
@@ -89920,7 +90050,8 @@
             "correct": [
                   "honest",
                   "Honest"
-            ]
+            ],
+            "answer": "honest"
       },
       {
             "id": "p4038_ex2_1",
@@ -89936,7 +90067,8 @@
             "correct": [
                   "clever",
                   "Clever"
-            ]
+            ],
+            "answer": "clever"
       },
       {
             "id": "p4038_ex2_2",
@@ -89952,7 +90084,8 @@
             "correct": [
                   "shy",
                   "Shy"
-            ]
+            ],
+            "answer": "shy"
       },
       {
             "id": "p4038_ex2_3",
@@ -89968,7 +90101,8 @@
             "correct": [
                   "patient",
                   "Patient"
-            ]
+            ],
+            "answer": "patient"
       },
       {
             "id": "p4038_ex2_4",
@@ -89984,7 +90118,8 @@
             "correct": [
                   "unsociable",
                   "Unsociable"
-            ]
+            ],
+            "answer": "unsociable"
       },
       {
             "id": "p4038_ex2_5",
@@ -90000,7 +90135,8 @@
             "correct": [
                   "stupid",
                   "Stupid"
-            ]
+            ],
+            "answer": "stupid"
       },
       {
             "id": "p4038_ex2_6",
@@ -90016,7 +90152,8 @@
             "correct": [
                   "hard-working",
                   "hard working"
-            ]
+            ],
+            "answer": "hard-working"
       },
       {
             "id": "p4038_ex2_7",
@@ -90032,7 +90169,8 @@
             "correct": [
                   "tidy",
                   "Tidy"
-            ]
+            ],
+            "answer": "tidy"
       },
       {
             "id": "p4038_ex2_8",
@@ -90048,7 +90186,8 @@
             "correct": [
                   "creative",
                   "Creative"
-            ]
+            ],
+            "answer": "creative"
       },
       {
             "id": "p4038_ex4_1",
@@ -90065,7 +90204,8 @@
                   "worse, worst",
                   "worse",
                   "worst"
-            ]
+            ],
+            "answer": "worse, worst"
       },
       {
             "id": "p4038_ex4_2",
@@ -90082,7 +90222,8 @@
                   "better, best",
                   "better",
                   "best"
-            ]
+            ],
+            "answer": "better, best"
       },
       {
             "id": "p4038_ex4_3",
@@ -90098,7 +90239,8 @@
             "correct": [
                   "more honest, most honest",
                   "more honest"
-            ]
+            ],
+            "answer": "more honest, most honest"
       },
       {
             "id": "p4038_ex4_4",
@@ -90114,7 +90256,8 @@
             "correct": [
                   "lazier, laziest",
                   "lazier"
-            ]
+            ],
+            "answer": "lazier, laziest"
       },
       {
             "id": "p4038_ex4_5",
@@ -90130,7 +90273,8 @@
             "correct": [
                   "older, oldest",
                   "older"
-            ]
+            ],
+            "answer": "older, oldest"
       },
       {
             "id": "p4038_ex4_6",
@@ -90146,7 +90290,8 @@
             "correct": [
                   "smarter, smartest",
                   "smarter"
-            ]
+            ],
+            "answer": "smarter, smartest"
       },
       {
             "id": "p4038_ex4_7",
@@ -90162,7 +90307,8 @@
             "correct": [
                   "more sociable, most sociable",
                   "more sociable"
-            ]
+            ],
+            "answer": "more sociable, most sociable"
       },
       {
             "id": "p4038_ex4_8",
@@ -90178,7 +90324,8 @@
             "correct": [
                   "tidier, tidiest",
                   "tidier"
-            ]
+            ],
+            "answer": "tidier, tidiest"
       }
 ],
     "4039": [
@@ -90196,7 +90343,8 @@
             "correct": [
                   "Fruit is healthier than chocolate.",
                   "healthier than chocolate"
-            ]
+            ],
+            "answer": "Fruit is healthier than chocolate."
       },
       {
             "id": "p4039_ex5_2",
@@ -90212,7 +90360,8 @@
             "correct": [
                   "Rugs are smaller than carpets.",
                   "smaller than carpets"
-            ]
+            ],
+            "answer": "Rugs are smaller than carpets."
       },
       {
             "id": "p4039_ex5_3",
@@ -90228,7 +90377,8 @@
             "correct": [
                   "Monday is the worst day of the week.",
                   "worst day of the week"
-            ]
+            ],
+            "answer": "Monday is the worst day of the week."
       },
       {
             "id": "p4039_ex5_4",
@@ -90244,7 +90394,8 @@
             "correct": [
                   "Gold is more expensive than plastic.",
                   "more expensive than plastic"
-            ]
+            ],
+            "answer": "Gold is more expensive than plastic."
       },
       {
             "id": "p4039_ex5_5",
@@ -90260,7 +90411,8 @@
             "correct": [
                   "I think skiing is the most exciting sport.",
                   "most exciting sport"
-            ]
+            ],
+            "answer": "I think skiing is the most exciting sport."
       },
       {
             "id": "p4039_ex5_6",
@@ -90276,7 +90428,8 @@
             "correct": [
                   "They say flying is the safest way to travel.",
                   "safest way to travel"
-            ]
+            ],
+            "answer": "They say flying is the safest way to travel."
       },
       {
             "id": "p4039_ex5_7",
@@ -90292,7 +90445,8 @@
             "correct": [
                   "Your English is better than mine.",
                   "better than mine"
-            ]
+            ],
+            "answer": "Your English is better than mine."
       },
       {
             "id": "p4039_ex5_8",
@@ -90308,7 +90462,8 @@
             "correct": [
                   "My hometown is the liveliest place I know.",
                   "liveliest place I know"
-            ]
+            ],
+            "answer": "My hometown is the liveliest place I know."
       },
       {
             "id": "p4039_ex6_1",
@@ -90324,7 +90479,8 @@
             "correct": [
                   "isn't as difficult as Chinese.",
                   "is not as difficult as Chinese."
-            ]
+            ],
+            "answer": "isn't as difficult as Chinese."
       },
       {
             "id": "p4039_ex6_2",
@@ -90340,7 +90496,8 @@
             "correct": [
                   "isn't as wet as yesterday.",
                   "is not as wet as yesterday."
-            ]
+            ],
+            "answer": "isn't as wet as yesterday."
       },
       {
             "id": "p4039_ex6_3",
@@ -90356,7 +90513,8 @@
             "correct": [
                   "isn't as thin as a sheet.",
                   "is not as thin as a sheet."
-            ]
+            ],
+            "answer": "isn't as thin as a sheet."
       },
       {
             "id": "p4039_ex6_4",
@@ -90372,7 +90530,8 @@
             "correct": [
                   "isn't as hard-working as me.",
                   "is not as hard-working as me."
-            ]
+            ],
+            "answer": "isn't as hard-working as me."
       },
       {
             "id": "p4039_ex6_5",
@@ -90388,7 +90547,8 @@
             "correct": [
                   "isn't as dark as mine.",
                   "is not as dark as mine."
-            ]
+            ],
+            "answer": "isn't as dark as mine."
       },
       {
             "id": "p4039_ex6_6",
@@ -90404,7 +90564,8 @@
             "correct": [
                   "not as old as my wife.",
                   "isn't as old as my wife."
-            ]
+            ],
+            "answer": "not as old as my wife."
       },
       {
             "id": "p4039_ex6_7",
@@ -90420,7 +90581,8 @@
             "correct": [
                   "isn't as big as yours.",
                   "is not as big as yours."
-            ]
+            ],
+            "answer": "isn't as big as yours."
       },
       {
             "id": "p4039_ex6_8",
@@ -90436,7 +90598,8 @@
             "correct": [
                   "aren't as dangerous as motorbikes.",
                   "are not as dangerous as motorbikes."
-            ]
+            ],
+            "answer": "aren't as dangerous as motorbikes."
       }
 ],
     "4040": [
@@ -90454,7 +90617,8 @@
             "correct": [
                   "uncle",
                   "Uncle"
-            ]
+            ],
+            "answer": "uncle"
       },
       {
             "id": "p4040_ex1_2",
@@ -90470,7 +90634,8 @@
             "correct": [
                   "cousin",
                   "Cousin"
-            ]
+            ],
+            "answer": "cousin"
       },
       {
             "id": "p4040_ex1_3",
@@ -90486,7 +90651,8 @@
             "correct": [
                   "brother-in-law",
                   "brother in law"
-            ]
+            ],
+            "answer": "brother-in-law"
       },
       {
             "id": "p4040_ex1_4",
@@ -90502,7 +90668,8 @@
             "correct": [
                   "niece",
                   "Niece"
-            ]
+            ],
+            "answer": "niece"
       },
       {
             "id": "p4040_ex1_5",
@@ -90518,7 +90685,8 @@
             "correct": [
                   "nephew",
                   "Nephew"
-            ]
+            ],
+            "answer": "nephew"
       },
       {
             "id": "p4040_ex1_6",
@@ -90534,7 +90702,8 @@
             "correct": [
                   "stepmother",
                   "step-mother"
-            ]
+            ],
+            "answer": "stepmother"
       },
       {
             "id": "p4040_ex1_7",
@@ -90550,7 +90719,8 @@
             "correct": [
                   "grandparents",
                   "grand parents"
-            ]
+            ],
+            "answer": "grandparents"
       },
       {
             "id": "p4040_ex1_8",
@@ -90566,7 +90736,8 @@
             "correct": [
                   "only child",
                   "an only child"
-            ]
+            ],
+            "answer": "only child"
       }
 ],
     "4041": [
@@ -90584,7 +90755,8 @@
             "correct": [
                   "have been",
                   "'ve been"
-            ]
+            ],
+            "answer": "have been"
       },
       {
             "id": "p4041_ex3_2",
@@ -90600,7 +90772,8 @@
             "correct": [
                   "went",
                   "Went"
-            ]
+            ],
+            "answer": "went"
       },
       {
             "id": "p4041_ex3_3",
@@ -90616,7 +90789,8 @@
             "correct": [
                   "have met",
                   "'ve met"
-            ]
+            ],
+            "answer": "have met"
       },
       {
             "id": "p4041_ex3_4",
@@ -90632,7 +90806,8 @@
             "correct": [
                   "met",
                   "Met"
-            ]
+            ],
+            "answer": "met"
       },
       {
             "id": "p4041_ex3_5",
@@ -90648,7 +90823,8 @@
             "correct": [
                   "has lived",
                   "'s lived"
-            ]
+            ],
+            "answer": "has lived"
       },
       {
             "id": "p4041_ex3_6",
@@ -90664,7 +90840,8 @@
             "correct": [
                   "lived",
                   "Lived"
-            ]
+            ],
+            "answer": "lived"
       }
 ],
     "4042": [
@@ -90682,7 +90859,8 @@
             "correct": [
                   "impatient",
                   "Impatient"
-            ]
+            ],
+            "answer": "impatient"
       },
       {
             "id": "p4042_ex1_2",
@@ -90698,7 +90876,8 @@
             "correct": [
                   "dishonest",
                   "Dishonest"
-            ]
+            ],
+            "answer": "dishonest"
       },
       {
             "id": "p4042_ex1_3",
@@ -90714,7 +90893,8 @@
             "correct": [
                   "untidy",
                   "Untidy"
-            ]
+            ],
+            "answer": "untidy"
       },
       {
             "id": "p4042_ex1_4",
@@ -90730,7 +90910,8 @@
             "correct": [
                   "unsociable",
                   "Unsociable"
-            ]
+            ],
+            "answer": "unsociable"
       }
 ],
     "4043": [
@@ -90748,7 +90929,8 @@
             "correct": [
                   "pleased to meet you",
                   "pleased to meet"
-            ]
+            ],
+            "answer": "pleased to meet you"
       },
       {
             "id": "p4043_ex1_2",
@@ -90764,7 +90946,8 @@
             "correct": [
                   "good to see you",
                   "good to see"
-            ]
+            ],
+            "answer": "good to see you"
       },
       {
             "id": "p4043_ex1_3",
@@ -90780,7 +90963,8 @@
             "correct": [
                   "how are things",
                   "how are you"
-            ]
+            ],
+            "answer": "how are things"
       },
       {
             "id": "p4043_ex1_4",
@@ -90796,7 +90980,8 @@
             "correct": [
                   "not bad thanks",
                   "fine thanks"
-            ]
+            ],
+            "answer": "not bad thanks"
       }
 ],
     "4044": [
@@ -90814,7 +90999,8 @@
             "correct": [
                   "India",
                   "india"
-            ]
+            ],
+            "answer": "India"
       },
       {
             "id": "p4044_ex1_2",
@@ -90830,7 +91016,8 @@
             "correct": [
                   "train",
                   "Train"
-            ]
+            ],
+            "answer": "train"
       },
       {
             "id": "p4044_ex1_3",
@@ -90846,7 +91033,8 @@
             "correct": [
                   "Australia",
                   "australia"
-            ]
+            ],
+            "answer": "Australia"
       },
       {
             "id": "p4044_ex1_4",
@@ -90862,7 +91050,8 @@
             "correct": [
                   "Google Earth",
                   "google earth"
-            ]
+            ],
+            "answer": "Google Earth"
       }
 ],
     "4045": [
@@ -90880,7 +91069,8 @@
             "correct": [
                   "better than",
                   "better"
-            ]
+            ],
+            "answer": "better than"
       },
       {
             "id": "p4045_ex1_2",
@@ -90896,7 +91086,8 @@
             "correct": [
                   "most expensive",
                   "the most expensive"
-            ]
+            ],
+            "answer": "most expensive"
       },
       {
             "id": "p4045_ex1_3",
@@ -90912,7 +91103,8 @@
             "correct": [
                   "as easy as",
                   "not as easy as"
-            ]
+            ],
+            "answer": "as easy as"
       },
       {
             "id": "p4045_ex2_1",
@@ -90928,7 +91120,8 @@
             "correct": [
                   "hard-working",
                   "hard working"
-            ]
+            ],
+            "answer": "hard-working"
       },
       {
             "id": "p4045_ex2_2",
@@ -90944,7 +91137,8 @@
             "correct": [
                   "brother-in-law",
                   "brother in law"
-            ]
+            ],
+            "answer": "brother-in-law"
       },
       {
             "id": "p4045_ex2_3",
@@ -90960,7 +91154,8 @@
             "correct": [
                   "valuable",
                   "Valuable"
-            ]
+            ],
+            "answer": "valuable"
       }
 ],
     "4046": [
@@ -90978,7 +91173,8 @@
             "correct": [
                   "greener",
                   "Greener"
-            ]
+            ],
+            "answer": "greener"
       },
       {
             "id": "p4046_ex1_2",
@@ -90994,7 +91190,8 @@
             "correct": [
                   "pollution",
                   "Pollution"
-            ]
+            ],
+            "answer": "pollution"
       },
       {
             "id": "p4046_ex1_3",
@@ -91010,7 +91207,8 @@
             "correct": [
                   "crowded",
                   "Crowded"
-            ]
+            ],
+            "answer": "crowded"
       },
       {
             "id": "p4046_ex1_4",
@@ -91026,7 +91224,8 @@
             "correct": [
                   "fuel",
                   "Fuel"
-            ]
+            ],
+            "answer": "fuel"
       },
       {
             "id": "p4046_ex1_5",
@@ -91042,7 +91241,8 @@
             "correct": [
                   "reliable",
                   "Reliable"
-            ]
+            ],
+            "answer": "reliable"
       },
       {
             "id": "p4046_ex1_6",
@@ -91058,7 +91258,8 @@
             "correct": [
                   "convenient",
                   "Convenient"
-            ]
+            ],
+            "answer": "convenient"
       },
       {
             "id": "p4046_ex1_7",
@@ -91074,7 +91275,8 @@
             "correct": [
                   "fare",
                   "Fare"
-            ]
+            ],
+            "answer": "fare"
       },
       {
             "id": "p4046_ex2_1",
@@ -91090,7 +91292,8 @@
             "correct": [
                   "traffic jams",
                   "jams"
-            ]
+            ],
+            "answer": "traffic jams"
       },
       {
             "id": "p4046_ex2_2",
@@ -91106,7 +91309,8 @@
             "correct": [
                   "main roads",
                   "roads"
-            ]
+            ],
+            "answer": "main roads"
       },
       {
             "id": "p4046_ex2_3",
@@ -91122,7 +91326,8 @@
             "correct": [
                   "public transport",
                   "transport"
-            ]
+            ],
+            "answer": "public transport"
       },
       {
             "id": "p4046_ex2_4",
@@ -91138,7 +91343,8 @@
             "correct": [
                   "convenient",
                   "Convenient"
-            ]
+            ],
+            "answer": "convenient"
       },
       {
             "id": "p4046_ex2_5",
@@ -91154,7 +91360,8 @@
             "correct": [
                   "fare",
                   "Fare"
-            ]
+            ],
+            "answer": "fare"
       },
       {
             "id": "p4046_ex2_6",
@@ -91170,7 +91377,8 @@
             "correct": [
                   "reliable",
                   "Reliable"
-            ]
+            ],
+            "answer": "reliable"
       },
       {
             "id": "p4046_ex2_7",
@@ -91186,7 +91394,8 @@
             "correct": [
                   "crowded",
                   "Crowded"
-            ]
+            ],
+            "answer": "crowded"
       },
       {
             "id": "p4046_ex2_8",
@@ -91202,7 +91411,8 @@
             "correct": [
                   "greener",
                   "Greener"
-            ]
+            ],
+            "answer": "greener"
       }
 ],
     "4047": [
@@ -91220,7 +91430,8 @@
             "correct": [
                   "'ll be",
                   "will be"
-            ]
+            ],
+            "answer": "'ll be"
       },
       {
             "id": "p4047_ex4_2",
@@ -91236,7 +91447,8 @@
             "correct": [
                   "'ll pass",
                   "will pass"
-            ]
+            ],
+            "answer": "'ll pass"
       },
       {
             "id": "p4047_ex4_3",
@@ -91252,7 +91464,8 @@
             "correct": [
                   "'ll have",
                   "will have"
-            ]
+            ],
+            "answer": "'ll have"
       },
       {
             "id": "p4047_ex4_4",
@@ -91268,7 +91481,8 @@
             "correct": [
                   "'ll park",
                   "will park"
-            ]
+            ],
+            "answer": "'ll park"
       },
       {
             "id": "p4047_ex4_5",
@@ -91284,7 +91498,8 @@
             "correct": [
                   "'ll rain",
                   "will rain"
-            ]
+            ],
+            "answer": "'ll rain"
       },
       {
             "id": "p4047_ex4_6",
@@ -91300,7 +91515,8 @@
             "correct": [
                   "'ll win",
                   "will win"
-            ]
+            ],
+            "answer": "'ll win"
       },
       {
             "id": "p4047_ex6_1",
@@ -91321,7 +91537,8 @@
                   "will",
                   "might",
                   "won't"
-            ]
+            ],
+            "answer": "'ll"
       },
       {
             "id": "p4047_ex6_2",
@@ -91342,7 +91559,8 @@
                   "will",
                   "might",
                   "won't"
-            ]
+            ],
+            "answer": "won't"
       },
       {
             "id": "p4047_ex6_3",
@@ -91363,7 +91581,8 @@
                   "will",
                   "might",
                   "won't"
-            ]
+            ],
+            "answer": "might"
       },
       {
             "id": "p4047_ex6_4",
@@ -91384,7 +91603,8 @@
                   "will",
                   "might",
                   "won't"
-            ]
+            ],
+            "answer": "will"
       },
       {
             "id": "p4047_ex6_5",
@@ -91405,7 +91625,8 @@
                   "will",
                   "might",
                   "won't"
-            ]
+            ],
+            "answer": "might"
       }
 ],
     "4048": [
@@ -91423,7 +91644,8 @@
             "correct": [
                   "terminal",
                   "Terminal"
-            ]
+            ],
+            "answer": "terminal"
       },
       {
             "id": "p4048_ex1_2",
@@ -91439,7 +91661,8 @@
             "correct": [
                   "gate",
                   "Gate"
-            ]
+            ],
+            "answer": "gate"
       },
       {
             "id": "p4048_ex1_3",
@@ -91455,7 +91678,8 @@
             "correct": [
                   "check-in",
                   "check in"
-            ]
+            ],
+            "answer": "check-in"
       },
       {
             "id": "p4048_ex1_4",
@@ -91471,7 +91695,8 @@
             "correct": [
                   "boarding pass",
                   "pass"
-            ]
+            ],
+            "answer": "boarding pass"
       },
       {
             "id": "p4048_ex1_5",
@@ -91487,7 +91712,8 @@
             "correct": [
                   "luggage",
                   "Luggage"
-            ]
+            ],
+            "answer": "luggage"
       },
       {
             "id": "p4048_ex1_6",
@@ -91503,7 +91729,8 @@
             "correct": [
                   "passport control",
                   "control"
-            ]
+            ],
+            "answer": "passport control"
       }
 ],
     "4049": [
@@ -91527,7 +91754,8 @@
                   "have to",
                   "don't have to",
                   "should"
-            ]
+            ],
+            "answer": "must"
       },
       {
             "id": "p4049_ex3_2",
@@ -91549,7 +91777,8 @@
                   "have to",
                   "don't have to",
                   "should"
-            ]
+            ],
+            "answer": "have to"
       },
       {
             "id": "p4049_ex3_3",
@@ -91571,7 +91800,8 @@
                   "have to",
                   "don't have to",
                   "should"
-            ]
+            ],
+            "answer": "don't have to"
       },
       {
             "id": "p4049_ex3_4",
@@ -91593,7 +91823,8 @@
                   "have to",
                   "don't have to",
                   "should"
-            ]
+            ],
+            "answer": "should"
       }
 ],
     "4050": [
@@ -91611,7 +91842,8 @@
             "correct": [
                   "miss a flight",
                   "miss flight"
-            ]
+            ],
+            "answer": "miss a flight"
       },
       {
             "id": "p4050_ex1_2",
@@ -91627,7 +91859,8 @@
             "correct": [
                   "book a hotel",
                   "book hotel"
-            ]
+            ],
+            "answer": "book a hotel"
       },
       {
             "id": "p4050_ex1_3",
@@ -91643,7 +91876,8 @@
             "correct": [
                   "catch a train",
                   "catch train"
-            ]
+            ],
+            "answer": "catch a train"
       },
       {
             "id": "p4050_ex1_4",
@@ -91659,7 +91893,8 @@
             "correct": [
                   "hire a car",
                   "hire car"
-            ]
+            ],
+            "answer": "hire a car"
       }
 ],
     "4051": [
@@ -91677,7 +91912,8 @@
             "correct": [
                   "'ll",
                   "will"
-            ]
+            ],
+            "answer": "'ll"
       },
       {
             "id": "p4051_ex1_2",
@@ -91693,7 +91929,8 @@
             "correct": [
                   "might",
                   "Might"
-            ]
+            ],
+            "answer": "might"
       },
       {
             "id": "p4051_ex1_3",
@@ -91709,7 +91946,8 @@
             "correct": [
                   "must",
                   "Must"
-            ]
+            ],
+            "answer": "must"
       },
       {
             "id": "p4051_ex1_4",
@@ -91725,7 +91963,8 @@
             "correct": [
                   "should",
                   "Should"
-            ]
+            ],
+            "answer": "should"
       }
 ],
     "4052": [
@@ -91744,7 +91983,8 @@
                   "amazed",
                   "amazing",
                   "Amazed"
-            ]
+            ],
+            "answer": "amazed"
       },
       {
             "id": "p4052_ex1_2",
@@ -91761,7 +92001,8 @@
                   "bored",
                   "boring",
                   "Bored"
-            ]
+            ],
+            "answer": "bored"
       },
       {
             "id": "p4052_ex1_3",
@@ -91777,7 +92018,8 @@
             "correct": [
                   "disappointed",
                   "disappointing"
-            ]
+            ],
+            "answer": "disappointed"
       },
       {
             "id": "p4052_ex1_4",
@@ -91793,7 +92035,8 @@
             "correct": [
                   "excited",
                   "exciting"
-            ]
+            ],
+            "answer": "excited"
       },
       {
             "id": "p4052_ex1_5",
@@ -91809,7 +92052,8 @@
             "correct": [
                   "frightened",
                   "frightening"
-            ]
+            ],
+            "answer": "frightened"
       },
       {
             "id": "p4052_ex1_6",
@@ -91825,7 +92069,8 @@
             "correct": [
                   "surprised",
                   "surprising"
-            ]
+            ],
+            "answer": "surprised"
       },
       {
             "id": "p4052_ex1_7",
@@ -91841,7 +92086,8 @@
             "correct": [
                   "worried",
                   "worrying"
-            ]
+            ],
+            "answer": "worried"
       },
       {
             "id": "p4052_ex1_8",
@@ -91857,7 +92103,8 @@
             "correct": [
                   "annoyed",
                   "annoying"
-            ]
+            ],
+            "answer": "annoyed"
       },
       {
             "id": "p4052_ex1_9",
@@ -91873,7 +92120,8 @@
             "correct": [
                   "confused",
                   "confusing"
-            ]
+            ],
+            "answer": "confused"
       },
       {
             "id": "p4052_ex1_10",
@@ -91889,7 +92137,8 @@
             "correct": [
                   "embarrassed",
                   "embarrassing"
-            ]
+            ],
+            "answer": "embarrassed"
       },
       {
             "id": "p4052_ex1_11",
@@ -91905,7 +92154,8 @@
             "correct": [
                   "fascinated",
                   "fascinating"
-            ]
+            ],
+            "answer": "fascinated"
       },
       {
             "id": "p4052_ex1_12",
@@ -91921,7 +92171,8 @@
             "correct": [
                   "relaxed",
                   "relaxing"
-            ]
+            ],
+            "answer": "relaxed"
       }
 ],
     "4053": [
@@ -91940,7 +92191,8 @@
                   "My sister isn't able to walk",
                   "is not able to walk",
                   "can't walk"
-            ]
+            ],
+            "answer": "My sister isn't able to walk"
       },
       {
             "id": "p4053_ex1a_2",
@@ -91956,7 +92208,8 @@
             "correct": [
                   "I can play the piano",
                   "am able to play the piano"
-            ]
+            ],
+            "answer": "I can play the piano"
       },
       {
             "id": "p4053_ex1a_3",
@@ -91972,7 +92225,8 @@
             "correct": [
                   "Could you swim when you were five?",
                   "were you able to swim"
-            ]
+            ],
+            "answer": "Could you swim when you were five?"
       },
       {
             "id": "p4053_ex1a_4",
@@ -91988,7 +92242,8 @@
             "correct": [
                   "We won't be able to come to the party",
                   "will not be able to come"
-            ]
+            ],
+            "answer": "We won't be able to come to the party"
       }
 ],
     "4054": [
@@ -92006,7 +92261,8 @@
             "correct": [
                   "Could we check in, please?",
                   "Could we check in please"
-            ]
+            ],
+            "answer": "Could we check in, please?"
       },
       {
             "id": "p4054_ex1_2",
@@ -92022,7 +92278,8 @@
             "correct": [
                   "What was the name again, please?",
                   "What was the name again please"
-            ]
+            ],
+            "answer": "What was the name again, please?"
       },
       {
             "id": "p4054_ex1_3",
@@ -92038,7 +92295,8 @@
             "correct": [
                   "Is Wi-Fi available in the room?",
                   "Is Wi-Fi available"
-            ]
+            ],
+            "answer": "Is Wi-Fi available in the room?"
       },
       {
             "id": "p4054_ex1_4",
@@ -92054,7 +92312,8 @@
             "correct": [
                   "Is there a charge for it?",
                   "Is there a charge"
-            ]
+            ],
+            "answer": "Is there a charge for it?"
       },
       {
             "id": "p4054_ex1_5",
@@ -92070,7 +92329,8 @@
             "correct": [
                   "I'll get someone to help you with your luggage.",
                   "help with your luggage"
-            ]
+            ],
+            "answer": "I'll get someone to help you with your luggage."
       }
 ],
     "4055": [
@@ -92088,7 +92348,8 @@
             "correct": [
                   "reservation",
                   "Reservation"
-            ]
+            ],
+            "answer": "reservation"
       },
       {
             "id": "p4055_ex1_2",
@@ -92104,7 +92365,8 @@
             "correct": [
                   "check-out",
                   "check out"
-            ]
+            ],
+            "answer": "check-out"
       },
       {
             "id": "p4055_ex1_3",
@@ -92120,7 +92382,8 @@
             "correct": [
                   "reception",
                   "Reception"
-            ]
+            ],
+            "answer": "reception"
       },
       {
             "id": "p4055_ex1_4",
@@ -92136,7 +92399,8 @@
             "correct": [
                   "key card",
                   "keycard"
-            ]
+            ],
+            "answer": "key card"
       }
 ],
     "4056": [
@@ -92154,7 +92418,8 @@
             "correct": [
                   "degree",
                   "Degree"
-            ]
+            ],
+            "answer": "degree"
       },
       {
             "id": "p4056_ex1_2",
@@ -92170,7 +92435,8 @@
             "correct": [
                   "course",
                   "Course"
-            ]
+            ],
+            "answer": "course"
       },
       {
             "id": "p4056_ex1_3",
@@ -92186,7 +92452,8 @@
             "correct": [
                   "qualification",
                   "Qualification"
-            ]
+            ],
+            "answer": "qualification"
       },
       {
             "id": "p4056_ex1_4",
@@ -92202,7 +92469,8 @@
             "correct": [
                   "skills",
                   "Skills"
-            ]
+            ],
+            "answer": "skills"
       }
 ],
     "4057": [
@@ -92220,7 +92488,8 @@
             "correct": [
                   "I was wondering if",
                   "wondering if"
-            ]
+            ],
+            "answer": "I was wondering if"
       },
       {
             "id": "p4057_ex1_2",
@@ -92236,7 +92505,8 @@
             "correct": [
                   "Would you mind",
                   "would you mind"
-            ]
+            ],
+            "answer": "Would you mind"
       },
       {
             "id": "p4057_ex1_3",
@@ -92252,7 +92522,8 @@
             "correct": [
                   "Could you possibly",
                   "could you possibly"
-            ]
+            ],
+            "answer": "Could you possibly"
       },
       {
             "id": "p4057_ex1_4",
@@ -92268,7 +92539,8 @@
             "correct": [
                   "Not at all",
                   "not at all"
-            ]
+            ],
+            "answer": "Not at all"
       }
 ],
     "4058": [
@@ -92286,7 +92558,8 @@
             "correct": [
                   "brain",
                   "Brain"
-            ]
+            ],
+            "answer": "brain"
       },
       {
             "id": "p4058_ex1_2",
@@ -92302,7 +92575,8 @@
             "correct": [
                   "memory",
                   "Memory"
-            ]
+            ],
+            "answer": "memory"
       },
       {
             "id": "p4058_ex1_3",
@@ -92318,7 +92592,8 @@
             "correct": [
                   "learning",
                   "Learning"
-            ]
+            ],
+            "answer": "learning"
       },
       {
             "id": "p4058_ex1_4",
@@ -92334,7 +92609,8 @@
             "correct": [
                   "language",
                   "Language"
-            ]
+            ],
+            "answer": "language"
       }
 ],
     "4059": [
@@ -92352,7 +92628,8 @@
             "correct": [
                   "able to",
                   "be able to"
-            ]
+            ],
+            "answer": "able to"
       },
       {
             "id": "p4059_ex1_2",
@@ -92368,7 +92645,8 @@
             "correct": [
                   "could",
                   "Could"
-            ]
+            ],
+            "answer": "could"
       },
       {
             "id": "p4059_ex1_3",
@@ -92384,7 +92662,8 @@
             "correct": [
                   "can",
                   "Can"
-            ]
+            ],
+            "answer": "can"
       },
       {
             "id": "p4059_ex1_4",
@@ -92400,7 +92679,8 @@
             "correct": [
                   "might",
                   "Might"
-            ]
+            ],
+            "answer": "might"
       }
 ],
     "4060": [
@@ -92418,7 +92698,8 @@
             "correct": [
                   "forehead",
                   "Forehead"
-            ]
+            ],
+            "answer": "forehead"
       },
       {
             "id": "p4060_ex1_2",
@@ -92434,7 +92715,8 @@
             "correct": [
                   "cheek",
                   "Cheek"
-            ]
+            ],
+            "answer": "cheek"
       },
       {
             "id": "p4060_ex1_3",
@@ -92450,7 +92732,8 @@
             "correct": [
                   "chin",
                   "Chin"
-            ]
+            ],
+            "answer": "chin"
       },
       {
             "id": "p4060_ex1_4",
@@ -92466,7 +92749,8 @@
             "correct": [
                   "chest",
                   "Chest"
-            ]
+            ],
+            "answer": "chest"
       },
       {
             "id": "p4060_ex1_5",
@@ -92483,7 +92767,8 @@
                   "lip",
                   "Lip",
                   "lips"
-            ]
+            ],
+            "answer": "lip"
       },
       {
             "id": "p4060_ex1_6",
@@ -92499,7 +92784,8 @@
             "correct": [
                   "shoulder",
                   "Shoulder"
-            ]
+            ],
+            "answer": "shoulder"
       },
       {
             "id": "p4060_ex1_7",
@@ -92515,7 +92801,8 @@
             "correct": [
                   "elbow",
                   "Elbow"
-            ]
+            ],
+            "answer": "elbow"
       },
       {
             "id": "p4060_ex1_8",
@@ -92531,7 +92818,8 @@
             "correct": [
                   "thumb",
                   "Thumb"
-            ]
+            ],
+            "answer": "thumb"
       },
       {
             "id": "p4060_ex2_1",
@@ -92547,7 +92835,8 @@
             "correct": [
                   "fist",
                   "Fist"
-            ]
+            ],
+            "answer": "fist"
       },
       {
             "id": "p4060_ex2_2",
@@ -92563,7 +92852,8 @@
             "correct": [
                   "touch",
                   "Touch"
-            ]
+            ],
+            "answer": "touch"
       },
       {
             "id": "p4060_ex2_3",
@@ -92579,7 +92869,8 @@
             "correct": [
                   "shake",
                   "Shake"
-            ]
+            ],
+            "answer": "shake"
       },
       {
             "id": "p4060_ex2_4",
@@ -92595,7 +92886,8 @@
             "correct": [
                   "cheek",
                   "Cheek"
-            ]
+            ],
+            "answer": "cheek"
       },
       {
             "id": "p4060_ex2_5",
@@ -92611,7 +92903,8 @@
             "correct": [
                   "hug",
                   "Hug"
-            ]
+            ],
+            "answer": "hug"
       },
       {
             "id": "p4060_ex2_6",
@@ -92627,7 +92920,8 @@
             "correct": [
                   "elbows",
                   "Elbows"
-            ]
+            ],
+            "answer": "elbows"
       },
       {
             "id": "p4060_ex2_7",
@@ -92643,7 +92937,8 @@
             "correct": [
                   "nod",
                   "Nod"
-            ]
+            ],
+            "answer": "nod"
       },
       {
             "id": "p4060_ex2_8",
@@ -92659,7 +92954,8 @@
             "correct": [
                   "smile",
                   "Smile"
-            ]
+            ],
+            "answer": "smile"
       }
 ],
     "4061": [
@@ -92677,7 +92973,8 @@
             "correct": [
                   "tell",
                   "Tell"
-            ]
+            ],
+            "answer": "tell"
       },
       {
             "id": "p4061_ex4_1b",
@@ -92693,7 +92990,8 @@
             "correct": [
                   "won't say",
                   "will not say"
-            ]
+            ],
+            "answer": "won't say"
       },
       {
             "id": "p4061_ex4_2a",
@@ -92709,7 +93007,8 @@
             "correct": [
                   "'ll call",
                   "will call"
-            ]
+            ],
+            "answer": "'ll call"
       },
       {
             "id": "p4061_ex4_2b",
@@ -92725,7 +93024,8 @@
             "correct": [
                   "get",
                   "Get"
-            ]
+            ],
+            "answer": "get"
       },
       {
             "id": "p4061_ex4_3a",
@@ -92741,7 +93041,8 @@
             "correct": [
                   "Will you come",
                   "will you come"
-            ]
+            ],
+            "answer": "Will you come"
       },
       {
             "id": "p4061_ex4_3b",
@@ -92757,7 +93058,8 @@
             "correct": [
                   "invite",
                   "Invite"
-            ]
+            ],
+            "answer": "invite"
       },
       {
             "id": "p4061_ex4_4a",
@@ -92773,7 +93075,8 @@
             "correct": [
                   "don't get up",
                   "do not get up"
-            ]
+            ],
+            "answer": "don't get up"
       },
       {
             "id": "p4061_ex4_4b",
@@ -92789,7 +93092,8 @@
             "correct": [
                   "won't have",
                   "will not have"
-            ]
+            ],
+            "answer": "won't have"
       }
 ],
     "4062": [
@@ -92807,7 +93111,8 @@
             "correct": [
                   "relax",
                   "Relax"
-            ]
+            ],
+            "answer": "relax"
       },
       {
             "id": "p4062_ex1_2",
@@ -92823,7 +93128,8 @@
             "correct": [
                   "cancer",
                   "Cancer"
-            ]
+            ],
+            "answer": "cancer"
       },
       {
             "id": "p4062_ex1_3",
@@ -92839,7 +93145,8 @@
             "correct": [
                   "illnesses",
                   "illness"
-            ]
+            ],
+            "answer": "illnesses"
       },
       {
             "id": "p4062_ex1_4",
@@ -92855,7 +93162,8 @@
             "correct": [
                   "diet",
                   "Diet"
-            ]
+            ],
+            "answer": "diet"
       },
       {
             "id": "p4062_ex1_5",
@@ -92871,7 +93179,8 @@
             "correct": [
                   "natural food",
                   "food"
-            ]
+            ],
+            "answer": "natural food"
       },
       {
             "id": "p4062_ex1_6",
@@ -92887,7 +93196,8 @@
             "correct": [
                   "active",
                   "Active"
-            ]
+            ],
+            "answer": "active"
       }
 ],
     "4063": [
@@ -92905,7 +93215,8 @@
             "correct": [
                   "exercising",
                   "Exercising"
-            ]
+            ],
+            "answer": "exercising"
       },
       {
             "id": "p4063_ex1_2",
@@ -92921,7 +93232,8 @@
             "correct": [
                   "smoking",
                   "Smoking"
-            ]
+            ],
+            "answer": "smoking"
       },
       {
             "id": "p4063_ex1_3",
@@ -92937,7 +93249,8 @@
             "correct": [
                   "eating",
                   "Eating"
-            ]
+            ],
+            "answer": "eating"
       },
       {
             "id": "p4063_ex1_4",
@@ -92953,7 +93266,8 @@
             "correct": [
                   "living",
                   "Living"
-            ]
+            ],
+            "answer": "living"
       }
 ],
     "4064": [
@@ -92971,7 +93285,8 @@
             "correct": [
                   "to",
                   "To"
-            ]
+            ],
+            "answer": "to"
       },
       {
             "id": "p4064_ex1_2",
@@ -92987,7 +93302,8 @@
             "correct": [
                   "in",
                   "In"
-            ]
+            ],
+            "answer": "in"
       },
       {
             "id": "p4064_ex1_3",
@@ -93003,7 +93319,8 @@
             "correct": [
                   "of",
                   "Of"
-            ]
+            ],
+            "answer": "of"
       },
       {
             "id": "p4064_ex1_4",
@@ -93019,7 +93336,8 @@
             "correct": [
                   "for",
                   "For"
-            ]
+            ],
+            "answer": "for"
       }
 ],
     "4065": [
@@ -93037,7 +93355,8 @@
             "correct": [
                   "Have you got anything",
                   "got anything"
-            ]
+            ],
+            "answer": "Have you got anything"
       },
       {
             "id": "p4065_ex1_2",
@@ -93053,7 +93372,8 @@
             "correct": [
                   "I think you should",
                   "think you should"
-            ]
+            ],
+            "answer": "I think you should"
       },
       {
             "id": "p4065_ex1_3",
@@ -93069,7 +93389,8 @@
             "correct": [
                   "you could try",
                   "could try"
-            ]
+            ],
+            "answer": "you could try"
       },
       {
             "id": "p4065_ex1_4",
@@ -93085,7 +93406,8 @@
             "correct": [
                   "It's a good idea",
                   "good idea"
-            ]
+            ],
+            "answer": "It's a good idea"
       },
       {
             "id": "p4065_ex1_5",
@@ -93101,7 +93423,8 @@
             "correct": [
                   "You mustn't",
                   "must not"
-            ]
+            ],
+            "answer": "You mustn't"
       }
 ],
     "4066": [
@@ -93119,7 +93442,8 @@
             "correct": [
                   "plain",
                   "Plain"
-            ]
+            ],
+            "answer": "plain"
       },
       {
             "id": "p4066_ex1_2",
@@ -93135,7 +93459,8 @@
             "correct": [
                   "boiled",
                   "Boiled"
-            ]
+            ],
+            "answer": "boiled"
       },
       {
             "id": "p4066_ex1_3",
@@ -93151,7 +93476,8 @@
             "correct": [
                   "baked",
                   "Baked"
-            ]
+            ],
+            "answer": "baked"
       },
       {
             "id": "p4066_ex1_4",
@@ -93167,7 +93493,8 @@
             "correct": [
                   "snack",
                   "Snack"
-            ]
+            ],
+            "answer": "snack"
       },
       {
             "id": "p4066_ex1_5",
@@ -93183,7 +93510,8 @@
             "correct": [
                   "hot",
                   "Hot"
-            ]
+            ],
+            "answer": "hot"
       },
       {
             "id": "p4066_ex1_6",
@@ -93199,7 +93527,8 @@
             "correct": [
                   "mild",
                   "Mild"
-            ]
+            ],
+            "answer": "mild"
       },
       {
             "id": "p4066_ex1_7",
@@ -93215,7 +93544,8 @@
             "correct": [
                   "sweet",
                   "Sweet"
-            ]
+            ],
+            "answer": "sweet"
       },
       {
             "id": "p4066_ex1_8",
@@ -93231,7 +93561,8 @@
             "correct": [
                   "sour",
                   "Sour"
-            ]
+            ],
+            "answer": "sour"
       }
 ],
     "4067": [
@@ -93249,7 +93580,8 @@
             "correct": [
                   "is made",
                   "made"
-            ]
+            ],
+            "answer": "is made"
       },
       {
             "id": "p4067_ex1_2",
@@ -93265,7 +93597,8 @@
             "correct": [
                   "are grown",
                   "grown"
-            ]
+            ],
+            "answer": "are grown"
       },
       {
             "id": "p4067_ex1_3",
@@ -93281,7 +93614,8 @@
             "correct": [
                   "is served",
                   "served"
-            ]
+            ],
+            "answer": "is served"
       },
       {
             "id": "p4067_ex1_4",
@@ -93297,7 +93631,8 @@
             "correct": [
                   "are picked",
                   "picked"
-            ]
+            ],
+            "answer": "are picked"
       }
 ],
     "4068": [
@@ -93315,7 +93650,8 @@
             "correct": [
                   "bottle",
                   "Bottle"
-            ]
+            ],
+            "answer": "bottle"
       },
       {
             "id": "p4068_ex1_2",
@@ -93331,7 +93667,8 @@
             "correct": [
                   "can",
                   "Can"
-            ]
+            ],
+            "answer": "can"
       },
       {
             "id": "p4068_ex1_3",
@@ -93347,7 +93684,8 @@
             "correct": [
                   "tube",
                   "Tube"
-            ]
+            ],
+            "answer": "tube"
       },
       {
             "id": "p4068_ex1_4",
@@ -93363,7 +93701,8 @@
             "correct": [
                   "tin",
                   "Tin"
-            ]
+            ],
+            "answer": "tin"
       },
       {
             "id": "p4068_ex1_5",
@@ -93379,7 +93718,8 @@
             "correct": [
                   "box",
                   "Box"
-            ]
+            ],
+            "answer": "box"
       },
       {
             "id": "p4068_ex1_6",
@@ -93395,7 +93735,8 @@
             "correct": [
                   "carton",
                   "Carton"
-            ]
+            ],
+            "answer": "carton"
       },
       {
             "id": "p4068_ex1_7",
@@ -93411,7 +93752,8 @@
             "correct": [
                   "jar",
                   "Jar"
-            ]
+            ],
+            "answer": "jar"
       },
       {
             "id": "p4068_ex1_8",
@@ -93427,7 +93769,8 @@
             "correct": [
                   "packet",
                   "Packet"
-            ]
+            ],
+            "answer": "packet"
       }
 ],
     "4069": [
@@ -93445,7 +93788,8 @@
             "correct": [
                   "was invented",
                   "invented"
-            ]
+            ],
+            "answer": "was invented"
       },
       {
             "id": "p4069_ex1_2",
@@ -93461,7 +93805,8 @@
             "correct": [
                   "were produced",
                   "produced"
-            ]
+            ],
+            "answer": "were produced"
       },
       {
             "id": "p4069_ex1_3",
@@ -93477,7 +93822,8 @@
             "correct": [
                   "was opened",
                   "opened"
-            ]
+            ],
+            "answer": "was opened"
       },
       {
             "id": "p4069_ex1_4",
@@ -93493,7 +93839,8 @@
             "correct": [
                   "were sold",
                   "sold"
-            ]
+            ],
+            "answer": "were sold"
       }
 ],
     "4070": [
@@ -93511,7 +93858,8 @@
             "correct": [
                   "fast food",
                   "fast-food"
-            ]
+            ],
+            "answer": "fast food"
       },
       {
             "id": "p4070_ex1_2",
@@ -93527,7 +93875,8 @@
             "correct": [
                   "junk food",
                   "junk"
-            ]
+            ],
+            "answer": "junk food"
       },
       {
             "id": "p4070_ex1_3",
@@ -93543,7 +93892,8 @@
             "correct": [
                   "dinner party",
                   "party"
-            ]
+            ],
+            "answer": "dinner party"
       },
       {
             "id": "p4070_ex1_4",
@@ -93559,7 +93909,8 @@
             "correct": [
                   "cookery book",
                   "cookbook"
-            ]
+            ],
+            "answer": "cookery book"
       }
 ],
     "4071": [
@@ -93577,7 +93928,8 @@
             "correct": [
                   "location",
                   "Location"
-            ]
+            ],
+            "answer": "location"
       },
       {
             "id": "p4071_ex1_2",
@@ -93593,7 +93945,8 @@
             "correct": [
                   "atmosphere",
                   "Atmosphere"
-            ]
+            ],
+            "answer": "atmosphere"
       },
       {
             "id": "p4071_ex1_3",
@@ -93609,7 +93962,8 @@
             "correct": [
                   "service",
                   "Service"
-            ]
+            ],
+            "answer": "service"
       },
       {
             "id": "p4071_ex1_4",
@@ -93625,7 +93979,8 @@
             "correct": [
                   "food",
                   "Food"
-            ]
+            ],
+            "answer": "food"
       },
       {
             "id": "p4071_ex1_5",
@@ -93641,7 +93996,8 @@
             "correct": [
                   "value for money",
                   "value"
-            ]
+            ],
+            "answer": "value for money"
       }
 ],
     "4072": [
@@ -93659,7 +94015,8 @@
             "correct": [
                   "banana",
                   "Banana"
-            ]
+            ],
+            "answer": "banana"
       },
       {
             "id": "p4072_ex1_2",
@@ -93675,7 +94032,8 @@
             "correct": [
                   "colour",
                   "color"
-            ]
+            ],
+            "answer": "colour"
       },
       {
             "id": "p4072_ex1_3",
@@ -93691,7 +94049,8 @@
             "correct": [
                   "boxes",
                   "Boxes"
-            ]
+            ],
+            "answer": "boxes"
       },
       {
             "id": "p4072_ex1_4",
@@ -93707,7 +94066,8 @@
             "correct": [
                   "factories",
                   "factory"
-            ]
+            ],
+            "answer": "factories"
       }
 ],
     "4073": [
@@ -93725,7 +94085,8 @@
             "correct": [
                   "forehead",
                   "Forehead"
-            ]
+            ],
+            "answer": "forehead"
       },
       {
             "id": "p4073_ex1_2",
@@ -93741,7 +94102,8 @@
             "correct": [
                   "throat",
                   "Throat"
-            ]
+            ],
+            "answer": "throat"
       },
       {
             "id": "p4073_ex1_3",
@@ -93757,7 +94119,8 @@
             "correct": [
                   "is served",
                   "served"
-            ]
+            ],
+            "answer": "is served"
       },
       {
             "id": "p4073_ex1_4",
@@ -93773,7 +94136,8 @@
             "correct": [
                   "was made",
                   "made"
-            ]
+            ],
+            "answer": "was made"
       }
 ],
     "4074": [
@@ -93791,7 +94155,8 @@
             "correct": [
                   "factory",
                   "Factory"
-            ]
+            ],
+            "answer": "factory"
       },
       {
             "id": "p4074_ex1_2",
@@ -93807,7 +94172,8 @@
             "correct": [
                   "create",
                   "Create"
-            ]
+            ],
+            "answer": "create"
       },
       {
             "id": "p4074_ex1_3",
@@ -93823,7 +94189,8 @@
             "correct": [
                   "global",
                   "Global"
-            ]
+            ],
+            "answer": "global"
       },
       {
             "id": "p4074_ex1_4",
@@ -93839,7 +94206,8 @@
             "correct": [
                   "figures",
                   "Figures"
-            ]
+            ],
+            "answer": "figures"
       },
       {
             "id": "p4074_ex1_5",
@@ -93855,7 +94223,8 @@
             "correct": [
                   "happiness",
                   "Happiness"
-            ]
+            ],
+            "answer": "happiness"
       },
       {
             "id": "p4074_ex1_6",
@@ -93871,7 +94240,8 @@
             "correct": [
                   "cure",
                   "Cure"
-            ]
+            ],
+            "answer": "cure"
       },
       {
             "id": "p4074_ex1_7",
@@ -93887,7 +94257,8 @@
             "correct": [
                   "crisis",
                   "Crisis"
-            ]
+            ],
+            "answer": "crisis"
       },
       {
             "id": "p4074_ex1_8",
@@ -93903,7 +94274,8 @@
             "correct": [
                   "spread",
                   "Spread"
-            ]
+            ],
+            "answer": "spread"
       },
       {
             "id": "p4074_ex1_9",
@@ -93919,7 +94291,8 @@
             "correct": [
                   "hunger",
                   "Hunger"
-            ]
+            ],
+            "answer": "hunger"
       }
 ],
     "4075": [
@@ -93937,7 +94310,8 @@
             "correct": [
                   "If I had a car, I would drive to work.",
                   "would drive to work"
-            ]
+            ],
+            "answer": "If I had a car, I would drive to work."
       },
       {
             "id": "p4075_ex1_2",
@@ -93953,7 +94327,8 @@
             "correct": [
                   "I wouldn't be happy if I lost my job.",
                   "wouldn't be happy"
-            ]
+            ],
+            "answer": "I wouldn't be happy if I lost my job."
       },
       {
             "id": "p4075_ex1_3",
@@ -93969,7 +94344,8 @@
             "correct": [
                   "What would you do if you could go back in time?",
                   "could go back in time"
-            ]
+            ],
+            "answer": "What would you do if you could go back in time?"
       },
       {
             "id": "p4075_ex1_4",
@@ -93985,7 +94361,8 @@
             "correct": [
                   "If she knew his phone number, she'd call him.",
                   "she would call him"
-            ]
+            ],
+            "answer": "If she knew his phone number, she'd call him."
       },
       {
             "id": "p4075_ex1_5",
@@ -94001,7 +94378,8 @@
             "correct": [
                   "Where would you live if you had the choice?",
                   "had the choice"
-            ]
+            ],
+            "answer": "Where would you live if you had the choice?"
       },
       {
             "id": "p4075_ex1_6",
@@ -94017,7 +94395,8 @@
             "correct": [
                   "You'd feel better if you did some exercise.",
                   "You would feel better"
-            ]
+            ],
+            "answer": "You'd feel better if you did some exercise."
       }
 ],
     "4076": [
@@ -94035,7 +94414,8 @@
             "correct": [
                   "hurricane",
                   "Hurricane"
-            ]
+            ],
+            "answer": "hurricane"
       },
       {
             "id": "p4076_ex1_2",
@@ -94051,7 +94431,8 @@
             "correct": [
                   "forest fire",
                   "fire"
-            ]
+            ],
+            "answer": "forest fire"
       },
       {
             "id": "p4076_ex1_3",
@@ -94067,7 +94448,8 @@
             "correct": [
                   "earthquake",
                   "quake"
-            ]
+            ],
+            "answer": "earthquake"
       },
       {
             "id": "p4076_ex1_4",
@@ -94083,7 +94465,8 @@
             "correct": [
                   "flood",
                   "Flood"
-            ]
+            ],
+            "answer": "flood"
       },
       {
             "id": "p4076_ex2_1",
@@ -94099,7 +94482,8 @@
             "correct": [
                   "used to work in a bank",
                   "used to work"
-            ]
+            ],
+            "answer": "used to work in a bank"
       },
       {
             "id": "p4076_ex2_2",
@@ -94115,7 +94499,8 @@
             "correct": [
                   "used to live in London",
                   "used to live"
-            ]
+            ],
+            "answer": "used to live in London"
       }
 ],
     "4077": [
@@ -94133,7 +94518,8 @@
             "correct": [
                   "did you use to",
                   "used to"
-            ]
+            ],
+            "answer": "did you use to"
       },
       {
             "id": "p4077_ex1_2",
@@ -94149,7 +94535,8 @@
             "correct": [
                   "didn't use to",
                   "did not use to"
-            ]
+            ],
+            "answer": "didn't use to"
       },
       {
             "id": "p4077_ex1_3",
@@ -94165,7 +94552,8 @@
             "correct": [
                   "used to play",
                   "played"
-            ]
+            ],
+            "answer": "used to play"
       },
       {
             "id": "p4077_ex1_4",
@@ -94181,7 +94569,8 @@
             "correct": [
                   "used to have",
                   "had"
-            ]
+            ],
+            "answer": "used to have"
       }
 ],
     "4078": [
@@ -94199,7 +94588,8 @@
             "correct": [
                   "technology",
                   "Technology"
-            ]
+            ],
+            "answer": "technology"
       },
       {
             "id": "p4078_ex1_2",
@@ -94215,7 +94605,8 @@
             "correct": [
                   "economic",
                   "Economic"
-            ]
+            ],
+            "answer": "economic"
       },
       {
             "id": "p4078_ex1_3",
@@ -94231,7 +94622,8 @@
             "correct": [
                   "facts",
                   "Facts"
-            ]
+            ],
+            "answer": "facts"
       },
       {
             "id": "p4078_ex1_4",
@@ -94247,7 +94639,8 @@
             "correct": [
                   "farming",
                   "Farming"
-            ]
+            ],
+            "answer": "farming"
       }
 ],
     "4079": [
@@ -94265,7 +94658,8 @@
             "correct": [
                   "In my opinion",
                   "in my opinion"
-            ]
+            ],
+            "answer": "In my opinion"
       },
       {
             "id": "p4079_ex1_2",
@@ -94281,7 +94675,8 @@
             "correct": [
                   "Personally",
                   "personally"
-            ]
+            ],
+            "answer": "Personally"
       },
       {
             "id": "p4079_ex1_3",
@@ -94297,7 +94692,8 @@
             "correct": [
                   "I agree",
                   "agree"
-            ]
+            ],
+            "answer": "I agree"
       },
       {
             "id": "p4079_ex1_4",
@@ -94313,7 +94709,8 @@
             "correct": [
                   "I disagree",
                   "disagree"
-            ]
+            ],
+            "answer": "I disagree"
       }
 ],
     "4080": [
@@ -94331,7 +94728,8 @@
             "correct": [
                   "construction",
                   "Construction"
-            ]
+            ],
+            "answer": "construction"
       },
       {
             "id": "p4080_ex1_2",
@@ -94347,7 +94745,8 @@
             "correct": [
                   "building site",
                   "site"
-            ]
+            ],
+            "answer": "building site"
       },
       {
             "id": "p4080_ex1_3",
@@ -94363,7 +94762,8 @@
             "correct": [
                   "judge",
                   "Judge"
-            ]
+            ],
+            "answer": "judge"
       },
       {
             "id": "p4080_ex1_4",
@@ -94379,7 +94779,8 @@
             "correct": [
                   "law",
                   "Law"
-            ]
+            ],
+            "answer": "law"
       },
       {
             "id": "p4080_ex1_5",
@@ -94395,7 +94796,8 @@
             "correct": [
                   "nurse",
                   "Nurse"
-            ]
+            ],
+            "answer": "nurse"
       },
       {
             "id": "p4080_ex1_6",
@@ -94411,7 +94813,8 @@
             "correct": [
                   "hospital",
                   "Hospital"
-            ]
+            ],
+            "answer": "hospital"
       },
       {
             "id": "p4080_ex1_7",
@@ -94427,7 +94830,8 @@
             "correct": [
                   "personal assistant",
                   "PA"
-            ]
+            ],
+            "answer": "personal assistant"
       },
       {
             "id": "p4080_ex1_8",
@@ -94443,7 +94847,8 @@
             "correct": [
                   "office",
                   "Office"
-            ]
+            ],
+            "answer": "office"
       },
       {
             "id": "p4080_ex1_9",
@@ -94459,7 +94864,8 @@
             "correct": [
                   "medical research",
                   "research"
-            ]
+            ],
+            "answer": "medical research"
       },
       {
             "id": "p4080_ex1_10",
@@ -94475,7 +94881,8 @@
             "correct": [
                   "laboratory",
                   "lab"
-            ]
+            ],
+            "answer": "laboratory"
       }
 ],
     "4081": [
@@ -94496,7 +94903,8 @@
             "options": [
                   "for",
                   "since"
-            ]
+            ],
+            "answer": "for"
       },
       {
             "id": "p4081_ex1_2",
@@ -94515,7 +94923,8 @@
             "options": [
                   "for",
                   "since"
-            ]
+            ],
+            "answer": "since"
       },
       {
             "id": "p4081_ex1_3",
@@ -94534,7 +94943,8 @@
             "options": [
                   "for",
                   "since"
-            ]
+            ],
+            "answer": "since"
       },
       {
             "id": "p4081_ex1_4",
@@ -94553,7 +94963,8 @@
             "options": [
                   "for",
                   "since"
-            ]
+            ],
+            "answer": "for"
       },
       {
             "id": "p4081_ex1_5",
@@ -94572,7 +94983,8 @@
             "options": [
                   "for",
                   "since"
-            ]
+            ],
+            "answer": "since"
       },
       {
             "id": "p4081_ex1_6",
@@ -94591,7 +95003,8 @@
             "options": [
                   "for",
                   "since"
-            ]
+            ],
+            "answer": "for"
       },
       {
             "id": "p4081_ex2_1",
@@ -94607,7 +95020,8 @@
             "correct": [
                   "I've had my current job for seven years.",
                   "for seven years"
-            ]
+            ],
+            "answer": "I've had my current job for seven years."
       },
       {
             "id": "p4081_ex2_2",
@@ -94623,7 +95037,8 @@
             "correct": [
                   "She's lived abroad for three months.",
                   "for three months"
-            ]
+            ],
+            "answer": "She's lived abroad for three months."
       },
       {
             "id": "p4081_ex2_3",
@@ -94639,7 +95054,8 @@
             "correct": [
                   "They've worked in engineering since they were young.",
                   "since they were young"
-            ]
+            ],
+            "answer": "They've worked in engineering since they were young."
       }
 ],
     "4082": [
@@ -94657,7 +95073,8 @@
             "correct": [
                   "deal with clients",
                   "clients"
-            ]
+            ],
+            "answer": "deal with clients"
       },
       {
             "id": "p4082_ex1_2",
@@ -94673,7 +95090,8 @@
             "correct": [
                   "answer enquiries",
                   "enquiries"
-            ]
+            ],
+            "answer": "answer enquiries"
       },
       {
             "id": "p4082_ex1_3",
@@ -94689,7 +95107,8 @@
             "correct": [
                   "attend meetings",
                   "meetings"
-            ]
+            ],
+            "answer": "attend meetings"
       },
       {
             "id": "p4082_ex1_4",
@@ -94705,7 +95124,8 @@
             "correct": [
                   "manage staff",
                   "staff"
-            ]
+            ],
+            "answer": "manage staff"
       }
 ],
     "4083": [
@@ -94723,7 +95143,8 @@
             "correct": [
                   "have been working",
                   "'ve been working"
-            ]
+            ],
+            "answer": "have been working"
       },
       {
             "id": "p4083_ex1_2",
@@ -94739,7 +95160,8 @@
             "correct": [
                   "has been studying",
                   "'s been studying"
-            ]
+            ],
+            "answer": "has been studying"
       },
       {
             "id": "p4083_ex1_3",
@@ -94755,7 +95177,8 @@
             "correct": [
                   "have been living",
                   "'ve been living"
-            ]
+            ],
+            "answer": "have been living"
       },
       {
             "id": "p4083_ex1_4",
@@ -94771,7 +95194,8 @@
             "correct": [
                   "has been waiting",
                   "'s been waiting"
-            ]
+            ],
+            "answer": "has been waiting"
       }
 ],
     "4084": [
@@ -94789,7 +95213,8 @@
             "correct": [
                   "in detail",
                   "detail"
-            ]
+            ],
+            "answer": "in detail"
       },
       {
             "id": "p4084_ex1_2",
@@ -94805,7 +95230,8 @@
             "correct": [
                   "in common",
                   "common"
-            ]
+            ],
+            "answer": "in common"
       },
       {
             "id": "p4084_ex1_3",
@@ -94821,7 +95247,8 @@
             "correct": [
                   "in ten minutes",
                   "ten minutes"
-            ]
+            ],
+            "answer": "in ten minutes"
       },
       {
             "id": "p4084_ex1_4",
@@ -94837,7 +95264,8 @@
             "correct": [
                   "in a suit",
                   "a suit"
-            ]
+            ],
+            "answer": "in a suit"
       }
 ],
     "4085": [
@@ -94855,7 +95283,8 @@
             "correct": [
                   "training",
                   "Training"
-            ]
+            ],
+            "answer": "training"
       },
       {
             "id": "p4085_ex1_2",
@@ -94871,7 +95300,8 @@
             "correct": [
                   "developed",
                   "Developed"
-            ]
+            ],
+            "answer": "developed"
       },
       {
             "id": "p4085_ex1_3",
@@ -94887,7 +95317,8 @@
             "correct": [
                   "attended",
                   "Attended"
-            ]
+            ],
+            "answer": "attended"
       },
       {
             "id": "p4085_ex1_4",
@@ -94903,7 +95334,8 @@
             "correct": [
                   "assisted",
                   "Assisted"
-            ]
+            ],
+            "answer": "assisted"
       }
 ],
     "4086": [
@@ -94921,7 +95353,8 @@
             "correct": [
                   "career",
                   "Career"
-            ]
+            ],
+            "answer": "career"
       },
       {
             "id": "p4086_ex1_2",
@@ -94937,7 +95370,8 @@
             "correct": [
                   "success",
                   "Success"
-            ]
+            ],
+            "answer": "success"
       },
       {
             "id": "p4086_ex1_3",
@@ -94953,7 +95387,8 @@
             "correct": [
                   "goals",
                   "Goals"
-            ]
+            ],
+            "answer": "goals"
       },
       {
             "id": "p4086_ex1_4",
@@ -94969,7 +95404,8 @@
             "correct": [
                   "motivation",
                   "Motivation"
-            ]
+            ],
+            "answer": "motivation"
       }
 ],
     "4087": [
@@ -94987,7 +95423,8 @@
             "correct": [
                   "used to",
                   "used"
-            ]
+            ],
+            "answer": "used to"
       },
       {
             "id": "p4087_ex1_2",
@@ -95003,7 +95440,8 @@
             "correct": [
                   "would go",
                   "would"
-            ]
+            ],
+            "answer": "would go"
       },
       {
             "id": "p4087_ex1_3",
@@ -95019,7 +95457,8 @@
             "correct": [
                   "since 2015",
                   "since"
-            ]
+            ],
+            "answer": "since 2015"
       },
       {
             "id": "p4087_ex1_4",
@@ -95035,7 +95474,8 @@
             "correct": [
                   "for five years",
                   "for"
-            ]
+            ],
+            "answer": "for five years"
       },
       {
             "id": "p4087_ex2_1",
@@ -95051,7 +95491,8 @@
             "correct": [
                   "factory",
                   "Factory"
-            ]
+            ],
+            "answer": "factory"
       },
       {
             "id": "p4087_ex2_2",
@@ -95067,7 +95508,8 @@
             "correct": [
                   "laboratory",
                   "lab"
-            ]
+            ],
+            "answer": "laboratory"
       },
       {
             "id": "p4087_ex2_3",
@@ -95083,7 +95525,8 @@
             "correct": [
                   "building site",
                   "site"
-            ]
+            ],
+            "answer": "building site"
       }
 ],
 "2004": [
