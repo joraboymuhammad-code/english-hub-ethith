@@ -119597,6 +119597,282 @@
         "height": 2
       }
     ],
+    "3081": [
+      {
+        "id": "p3081_ex3_1",
+        "type": "fill",
+        "x": 11,
+        "y": 14.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "We've visited Moscow and St Petersburg.",
+          "We've visited Moscow and St Petersburg"
+        ],
+        "top": 14.5,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3081_ex3_2",
+        "type": "fill",
+        "x": 11,
+        "y": 18,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Have you read this book?",
+          "Have you read this book"
+        ],
+        "top": 18,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3081_ex3_3",
+        "type": "fill",
+        "x": 11,
+        "y": 21.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "We haven't had a holiday.",
+          "We haven't had a holiday"
+        ],
+        "top": 21.5,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3081_ex3_4",
+        "type": "fill",
+        "x": 11,
+        "y": 25,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "All of the workers have gone home.",
+          "All of the workers have gone home"
+        ],
+        "top": 25,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3081_ex3_5",
+        "type": "fill",
+        "x": 11,
+        "y": 28.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Mandy hasn't found a job.",
+          "Mandy hasn't found a job"
+        ],
+        "top": 28.5,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3081_ex3_6",
+        "type": "fill",
+        "x": 11,
+        "y": 32,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "Who has taken my bike?",
+          "Who has taken my bike"
+        ],
+        "top": 32,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3081_ex3_7",
+        "type": "fill",
+        "x": 11,
+        "y": 35.5,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "I haven't heard the weather forecast.",
+          "I haven't heard the weather forecast"
+        ],
+        "top": 35.5,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3081_ex3_8",
+        "type": "fill",
+        "x": 11,
+        "y": 39,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "He has washed the car.",
+          "He has washed the car"
+        ],
+        "top": 39,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3081_ex6_1",
+        "type": "fill",
+        "x": 11,
+        "y": 55,
+        "w": 14,
+        "h": 2,
+        "correct": [
+          "cinema",
+          "a cinema"
+        ],
+        "top": 55,
+        "left": 11,
+        "width": 14,
+        "height": 2
+      },
+      {
+        "id": "p3081_ex6_2",
+        "type": "fill",
+        "x": 11,
+        "y": 58.5,
+        "w": 14,
+        "h": 2,
+        "correct": [
+          "play",
+          "a play"
+        ],
+        "top": 58.5,
+        "left": 11,
+        "width": 14,
+        "height": 2
+      },
+      {
+        "id": "p3081_ex6_3",
+        "type": "fill",
+        "x": 11,
+        "y": 62,
+        "w": 18,
+        "h": 2,
+        "correct": [
+          "dance lesson",
+          "a dance lesson"
+        ],
+        "top": 62,
+        "left": 11,
+        "width": 18,
+        "height": 2
+      },
+      {
+        "id": "p3081_ex6_4",
+        "type": "fill",
+        "x": 11,
+        "y": 65.5,
+        "w": 18,
+        "h": 2,
+        "correct": [
+          "instrument",
+          "an instrument"
+        ],
+        "top": 65.5,
+        "left": 11,
+        "width": 18,
+        "height": 2
+      },
+      {
+        "id": "p3081_ex6_5",
+        "type": "fill",
+        "x": 11,
+        "y": 69,
+        "w": 18,
+        "h": 2,
+        "correct": [
+          "painting lesson",
+          "a painting lesson"
+        ],
+        "top": 73.8,
+        "left": 21.7,
+        "width": 18,
+        "height": 2
+      },
+      {
+        "id": "p3081_ex6_6",
+        "type": "fill",
+        "x": 11,
+        "y": 72.5,
+        "w": 25,
+        "h": 2,
+        "correct": [
+          "classical music concert",
+          "a classical music concert"
+        ],
+        "top": 74.1,
+        "left": 37.7,
+        "width": 25,
+        "height": 2
+      },
+      {
+        "id": "p3081_ex6_7",
+        "type": "fill",
+        "x": 11,
+        "y": 76,
+        "w": 16,
+        "h": 2,
+        "correct": [
+          "film",
+          "a film",
+          "movie",
+          "a movie"
+        ],
+        "top": 84.6,
+        "left": 4.2,
+        "width": 16,
+        "height": 2
+      },
+      {
+        "id": "p3081_ex6_8",
+        "type": "fill",
+        "x": 11,
+        "y": 79.5,
+        "w": 16,
+        "h": 2,
+        "correct": [
+          "salsa class",
+          "a salsa class"
+        ],
+        "top": 84.5,
+        "left": 21.1,
+        "width": 16,
+        "height": 2
+      },
+      {
+        "id": "p3081_ex6_9",
+        "type": "fill",
+        "x": 11,
+        "y": 83,
+        "w": 16,
+        "h": 2,
+        "correct": [
+          "art gallery",
+          "an art gallery"
+        ],
+        "top": 84.2,
+        "left": 37.9,
+        "width": 16,
+        "height": 2
+      }
+    ],
     "4004": [
       {
         "id": "p4004_ex1_2",
@@ -121611,6 +121887,7 @@
     "3078": 1793517191008,
     "3079": 1793517219541,
     "3080": 1793517290137,
+    "3081": 1793517318465,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -122320,5 +122597,5 @@
       }
     }
   },
-  "updatedAt": 1793517296196
+  "updatedAt": 1793517319548
 }
