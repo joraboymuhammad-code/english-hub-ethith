@@ -546,6 +546,44 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       .ea-journal-row:hover td.ea-sticky-cell {
         background: rgba(14, 25, 48, 0.99) !important;
       }
+      .ea-table-scroll-wrap {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-x pan-y !important;
+        overscroll-behavior-x: contain !important;
+      }
+      @media (max-width: 860px) {
+        .ea-table-scroll-wrap {
+          border-radius: 14px !important;
+          padding: 0 !important;
+        }
+        th.ea-sticky-num-col, td.ea-sticky-num-col {
+          position: sticky !important;
+          left: 0 !important;
+          z-index: 35 !important;
+          width: 36px !important;
+          min-width: 36px !important;
+          max-width: 36px !important;
+          padding: 6px 2px !important;
+        }
+        th.ea-names-col-cell, td.ea-names-col-cell {
+          position: static !important;
+          left: auto !important;
+          z-index: 1 !important;
+          width: 148px !important;
+          min-width: 148px !important;
+          max-width: 165px !important;
+          padding: 6px 6px !important;
+        }
+        .ea-collapse-names-btn {
+          display: none !important;
+        }
+      }
+      @media (min-width: 861px) {
+        .ea-mobile-scroll-pills {
+          display: none !important;
+        }
+      }
       .ea-names-col-cell {
         transition: width 0.24s cubic-bezier(0.16, 1, 0.3, 1), min-width 0.24s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.24s cubic-bezier(0.16, 1, 0.3, 1), padding 0.2s ease;
       }
@@ -3249,6 +3287,18 @@ EA.render = function(container, preserveScrollLeft) {
       return { initials: initials, shortStart: shortStart };
     }
 
+    h += '<div class="ea-mobile-scroll-pills" style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">' +
+      '<button type="button" id="eaScrollLeftBtn" style="flex:1;background:rgba(56,189,248,0.15);border:1.5px solid rgba(56,189,248,0.4);color:#38bdf8;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">' +
+        '<span>&larr; Oldingi sanalar</span>' +
+      '</button>' +
+      '<button type="button" id="eaScrollTodayBtn" style="background:rgba(16,185,129,0.18);border:1.5px solid rgba(16,185,129,0.5);color:#34d399;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:900;cursor:pointer;">' +
+        '<span>Bugun</span>' +
+      '</button>' +
+      '<button type="button" id="eaScrollRightBtn" style="flex:1;background:rgba(56,189,248,0.15);border:1.5px solid rgba(56,189,248,0.4);color:#38bdf8;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">' +
+        '<span>Keyingi sanalar &rarr;</span>' +
+      '</button>' +
+    '</div>';
+
     h += '<div class="ea-table-scroll-wrap qe-glass-panel" style="position:relative;width:100%;overflow-x:auto;border-radius:22px;padding:2px;">';
     h += '<table class="my-table" style="border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;">';
 
@@ -3256,7 +3306,7 @@ EA.render = function(container, preserveScrollLeft) {
     h += '<thead><tr style="background:rgba(8,13,26,0.65);">';
 
     // Sticky Col 1: №
-    h += '<th class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:0;z-index:30;background:rgba(8,13,26,0.98);backdrop-filter:blur(20px);width:' + numColW + 'px;min-width:' + numColW + 'px;max-width:' + numColW + 'px;padding:' + (isCollapsed ? '6px 4px' : '8px') + ';border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.08);">' +
+    h += '<th class="ea-sticky-cell ea-sticky-num-col" style="position:sticky;left:0;z-index:30;background:rgba(8,13,26,0.98);backdrop-filter:blur(20px);width:' + numColW + 'px;min-width:' + numColW + 'px;max-width:' + numColW + 'px;padding:' + (isCollapsed ? '6px 4px' : '8px') + ';border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.08);">' +
       '<div style="height:115px;display:flex;align-items:center;justify-content:center;font-size:' + (isCollapsed ? '12.5px' : '14px') + ';font-weight:900;color:#94a3b8;border:1px solid rgba(255,255,255,0.12);border-radius:12px;background:rgba(15,23,42,0.65);box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);">' +
         '№' +
       '</div>' +
@@ -3389,7 +3439,7 @@ EA.render = function(container, preserveScrollLeft) {
         h += '<tr class="ea-journal-row" style="background:' + rowBg + ';transition:background 0.15s;">';
 
         // Sticky Col 1: №
-        h += '<td class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:0;z-index:20;background:' + stickyBg + ';backdrop-filter:blur(18px);width:' + numColW + 'px;min-width:' + numColW + 'px;max-width:' + numColW + 'px;text-align:center;font-size:' + (isCollapsed ? '12px' : '13px') + ';font-weight:900;color:#94a3b8;padding:' + (isCollapsed ? '6px 2px' : '8px 4px') + ';border-bottom:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.08);">' +
+        h += '<td class="ea-sticky-cell ea-sticky-num-col" style="position:sticky;left:0;z-index:20;background:' + stickyBg + ';backdrop-filter:blur(18px);width:' + numColW + 'px;min-width:' + numColW + 'px;max-width:' + numColW + 'px;text-align:center;font-size:' + (isCollapsed ? '12px' : '13px') + ';font-weight:900;color:#94a3b8;padding:' + (isCollapsed ? '6px 2px' : '8px 4px') + ';border-bottom:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.08);">' +
           (sIdx + 1) +
         '</td>';
 
@@ -3824,6 +3874,63 @@ EA.render = function(container, preserveScrollLeft) {
         EA.render(container, sLeft);
       };
     });
+
+    // Mobile Horizontal Quick Scroll Buttons
+    var btnScrollLeft = container.querySelector('#eaScrollLeftBtn');
+    var btnScrollToday = container.querySelector('#eaScrollTodayBtn');
+    var btnScrollRight = container.querySelector('#eaScrollRightBtn');
+
+    if (btnScrollLeft && scrollWrap) {
+      btnScrollLeft.onclick = function(e) {
+        e.stopPropagation();
+        scrollWrap.scrollBy({ left: -220, behavior: 'smooth' });
+      };
+    }
+    if (btnScrollRight && scrollWrap) {
+      btnScrollRight.onclick = function(e) {
+        e.stopPropagation();
+        scrollWrap.scrollBy({ left: 220, behavior: 'smooth' });
+      };
+    }
+    if (btnScrollToday && scrollWrap) {
+      btnScrollToday.onclick = function(e) {
+        e.stopPropagation();
+        var todayCard = scrollWrap.querySelector('.ea-date-header-card[data-date="' + todayKey + '"]');
+        if (todayCard) {
+          todayCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        } else {
+          scrollWrap.scrollTo({ left: 0, behavior: 'smooth' });
+        }
+      };
+    }
+
+    // High-responsiveness Touch Swiping for Mobile
+    if (scrollWrap && !scrollWrap._touchBound) {
+      scrollWrap._touchBound = true;
+      var isSwiping = false;
+      var touchStartX = 0;
+      var touchStartScrollLeft = 0;
+
+      scrollWrap.addEventListener('touchstart', function(e) {
+        if (e.touches && e.touches.length === 1) {
+          isSwiping = true;
+          touchStartX = e.touches[0].pageX;
+          touchStartScrollLeft = scrollWrap.scrollLeft;
+        }
+      }, { passive: true });
+
+      scrollWrap.addEventListener('touchmove', function(e) {
+        if (!isSwiping || !e.touches || e.touches.length !== 1) return;
+        var diffX = e.touches[0].pageX - touchStartX;
+        if (Math.abs(diffX) > 3) {
+          scrollWrap.scrollLeft = touchStartScrollLeft - diffX;
+        }
+      }, { passive: true });
+
+      var endSwipe = function() { isSwiping = false; };
+      scrollWrap.addEventListener('touchend', endSwipe, { passive: true });
+      scrollWrap.addEventListener('touchcancel', endSwipe, { passive: true });
+    }
 
     // Toggle Student Names Column Collapse / Expand (Left shrink/expand)
     var toggleNamesHeaderBox = container.querySelector('#eaToggleNamesHeaderBox');
