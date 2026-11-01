@@ -6,6 +6,15 @@ android {
     namespace 'uz.ethith.app'
     compileSdk 34
 
+    signingConfigs {
+        release {
+            storeFile file('../release.keystore')
+            storePassword 'ethith2026'
+            keyAlias 'ethith'
+            keyPassword 'ethith2026'
+        }
+    }
+
     defaultConfig {
         applicationId 'uz.ethith.app'
         minSdk 21
@@ -18,11 +27,12 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            applicationIdSuffix ''
+            signingConfig signingConfigs.release
             debuggable true
         }
     }

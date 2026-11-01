@@ -1,4 +1,4 @@
-name: Build and Release Android APK
+name: Build and Release Android APK & AAB
 
 on:
   push:
@@ -13,8 +13,8 @@ permissions:
   contents: write
 
 jobs:
-  build-apk:
-    name: Build Android WebView APK
+  build:
+    name: Build Signed APK and AAB
     runs-on: ubuntu-latest
 
     steps:
@@ -27,37 +27,48 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.4'
 
-      - name: Install Gradle & Build APK
+      - name: Generate Release Keystore
         working-directory: ./android
         run: |
-          gradle assembleDebug --stacktrace
-          mkdir -p output
-          cp app/build/outputs/apk/debug/app-debug.apk output/ETHITH-Education.apk
-          ls -lh output/ETHITH-Education.apk
+          keytool -genkeypair -v -keystore release.keystore -alias ethith -keyalg RSA -keysize 2048 -validity 10000 -storepass ethith2026 -keypass ethith2026 -dname "CN=ETHITH Education, OU=Education, O=ETHITH, L=Tashkent, C=UZ"
 
-      - name: Upload APK Artifact
+      - name: Build APK and AAB
+        working-directory: ./android
+        run: |
+          gradle assembleRelease bundleRelease --stacktrace
+          mkdir -p output
+          cp app/build/outputs/apk/release/app-release.apk output/ETHITH-Education.apk
+          cp app/build/outputs/bundle/release/app-release.aab output/ETHITH-Education.aab
+          ls -lh output/
+
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ETHITH-Education-APK
-          path: android/output/ETHITH-Education.apk
+          name: ethith-app-release
+          path: android/output/*
 
-      - name: Publish GitHub Release with APK
+      - name: Publish GitHub Release with APK & AAB
         uses: softprops/action-gh-release@v2
         if: success()
         with:
           tag_name: apk-latest
-          name: "ETHITH Education Android App (Rasmiy APK)"
+          name: "ETHITH Education Android App (APK & AAB Bundle)"
           body: |
-            ### 📱 ETHITH Education — Android Rasmiy Ilovasi
+            ### 📱 ETHITH Education — Android Rasmiy Ilovasi (APK & Google Play AAB)
             
-            Ushbu APK ilova to‘liq real-vaqtda eng so‘nggi sayt bilan doimiy yangilanib turadi.
-            
-            - **Yuklab olish**: [ETHITH-Education.apk](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/ETHITH-Education.apk)
-            - **Avtomatik sinxronizatsiya**: Saytdagi barcha o‘zgarishlar ilovada bir zumda aks etadi.
+            Ushbu ilova real-vaqtda rasmiy sayt bilan ishlaydi va har qanday o'zgarishlar ilovaning o'zida bir zumda aks etadi.
+
+            - **To‘g‘ridan-to‘g‘ri o‘rnatish uchun APK**: [ETHITH-Education.apk](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/ETHITH-Education.apk)
+            - **Google Play Console uchun AAB**: [ETHITH-Education.aab](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/ETHITH-Education.aab)
+            - **Versiya**: 2.0.0 (Kod: 2026)
             - **Platforma**: Android 5.0+ (Lollipop va undan yuqori)
-          files: android/output/ETHITH-Education.apk
+          files: |
+            android/output/ETHITH-Education.apk
+            android/output/ETHITH-Education.aab
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
