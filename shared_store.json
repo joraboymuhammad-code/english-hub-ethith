@@ -116879,8 +116879,8 @@
           "The Congo River is the deepest river in the world.",
           "The Congo River is the deepest river in the world"
         ],
-        "top": 62.8,
-        "left": 11,
+        "top": 64.8,
+        "left": 13,
         "width": 35,
         "height": 2.2
       },
@@ -116895,8 +116895,8 @@
           "Summer is usually the hottest time of the year.",
           "Summer is usually the hottest time of the year"
         ],
-        "top": 66.2,
-        "left": 11,
+        "top": 68.2,
+        "left": 13.2,
         "width": 35,
         "height": 2.2
       },
@@ -116911,8 +116911,8 @@
           "What is the oldest city in the world?",
           "What is the oldest city in the world"
         ],
-        "top": 69.6,
-        "left": 11,
+        "top": 71.8,
+        "left": 13.4,
         "width": 35,
         "height": 2.2
       },
@@ -119058,7 +119058,7 @@
     "3066": 1793515895423,
     "3067": 1793515895423,
     "3068": 1793516087498,
-    "3069": 1793516118783,
+    "3069": 1793516127221,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -119768,5 +119768,5 @@
       }
     }
   },
-  "updatedAt": 1793516119881
+  "updatedAt": 1793516135752
 }
