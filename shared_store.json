@@ -117181,9 +117181,226 @@
         "correct": [
           "coffee"
         ],
-        "top": 86.5,
-        "left": 11,
+        "top": 62.3,
+        "left": 42.5,
         "width": 12,
+        "height": 2.2
+      }
+    ],
+    "3071": [
+      {
+        "id": "p3071_ex1a_2",
+        "type": "fill",
+        "x": 20,
+        "y": 28,
+        "w": 18,
+        "h": 2.2,
+        "correct": [
+          "cooking equipment"
+        ],
+        "top": 39.4,
+        "left": 9.9,
+        "width": 18,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex1a_3",
+        "type": "fill",
+        "x": 20,
+        "y": 31.5,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "first aid kit"
+        ],
+        "top": 48.1,
+        "left": 10.4,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex1a_4",
+        "type": "fill",
+        "x": 20,
+        "y": 35,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "GPS"
+        ],
+        "top": 40,
+        "left": 35.3,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex1a_5",
+        "type": "fill",
+        "x": 20,
+        "y": 38.5,
+        "w": 12,
+        "h": 2.2,
+        "correct": [
+          "lighter"
+        ],
+        "top": 26.9,
+        "left": 24.2,
+        "width": 12,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex1a_6",
+        "type": "fill",
+        "x": 20,
+        "y": 42,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "map"
+        ],
+        "top": 42,
+        "left": 20,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex1a_7",
+        "type": "fill",
+        "x": 20,
+        "y": 45.5,
+        "w": 14,
+        "h": 2.2,
+        "correct": [
+          "sleeping bag"
+        ],
+        "top": 45.5,
+        "left": 20,
+        "width": 14,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex1a_8",
+        "type": "fill",
+        "x": 20,
+        "y": 49,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "stove"
+        ],
+        "top": 49,
+        "left": 20,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex1a_9",
+        "type": "fill",
+        "x": 20,
+        "y": 52.5,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "tent"
+        ],
+        "top": 52.5,
+        "left": 20,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex1a_10",
+        "type": "fill",
+        "x": 20,
+        "y": 56,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "torch"
+        ],
+        "top": 56,
+        "left": 20,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex2_1",
+        "type": "fill",
+        "x": 11,
+        "y": 72,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "I think we should take a torch.",
+          "I think we should take a torch"
+        ],
+        "top": 72,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex2_2",
+        "type": "fill",
+        "x": 11,
+        "y": 75.4,
+        "w": 38,
+        "h": 2.2,
+        "correct": [
+          "I'd prefer to take a first aid kit instead of a stove.",
+          "I'd prefer to take a first aid kit instead of a stove"
+        ],
+        "top": 75.4,
+        "left": 11,
+        "width": 38,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex2_3",
+        "type": "fill",
+        "x": 11,
+        "y": 78.8,
+        "w": 38,
+        "h": 2.2,
+        "correct": [
+          "The most useful things to take are the sleeping bags.",
+          "The most useful things to take are the sleeping bags"
+        ],
+        "top": 78.8,
+        "left": 11,
+        "width": 38,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex2_4",
+        "type": "fill",
+        "x": 11,
+        "y": 82.2,
+        "w": 35,
+        "h": 2.2,
+        "correct": [
+          "A map is more important than a lighter.",
+          "A map is more important than a lighter"
+        ],
+        "top": 82.2,
+        "left": 11,
+        "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3071_ex2_5",
+        "type": "fill",
+        "x": 11,
+        "y": 85.6,
+        "w": 38,
+        "h": 2.2,
+        "correct": [
+          "Using a stove is a better idea than making a fire.",
+          "Using a stove is a better idea than making a fire"
+        ],
+        "top": 85.6,
+        "left": 11,
+        "width": 38,
         "height": 2.2
       }
     ],
@@ -119190,7 +119407,8 @@
     "3067": 1793515895423,
     "3068": 1793516155559,
     "3069": 1793516155560,
-    "3070": 1793516195381,
+    "3070": 1793516201989,
+    "3071": 1793516226702,
     "4004": 1793194833944,
     "4005": 1793193357159,
     "4086": 1793193077149,
@@ -119900,5 +120118,5 @@
       }
     }
   },
-  "updatedAt": 1793516195510
+  "updatedAt": 1793516227074
 }
