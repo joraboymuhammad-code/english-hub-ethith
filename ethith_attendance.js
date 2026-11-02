@@ -892,11 +892,65 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       cls.maxCapacity = 18;
       if (!Array.isArray(cls.students)) cls.students = [];
 
-      // Strictly retain ONLY manually enrolled students
-      cls.students = cls.students.filter(function(st) {
-        return st && st.manuallyEnrolled === true && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
+      // Retain all real students and purge tester slots if real students exist
+      var realSt = (cls.students || []).filter(function(st) {
+        return st && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
       });
+      if (realSt.length > 0) {
+        cls.students = realSt;
+      } else {
+        var curIdx = 1;
+        while (cls.students.length < 18) {
+          var sName = 'tester_' + curIdx;
+          while (cls.students.some(function(s) { return s.name === sName; })) {
+            curIdx++;
+            sName = 'tester_' + curIdx;
+          }
+          cls.students.push({
+            id: cls.id + '_std_' + curIdx,
+            name: sName,
+            email: cls.id + '_std_' + curIdx + '@ethith.uz',
+            role: 'student',
+            phone: '',
+            parentPhone: '',
+            login: '',
+            password: '',
+            joinedAt: '2026-10-28',
+            dailyMinutes: 0,
+            coins: 0,
+            isTester: true,
+            isOnline: false,
+            lastLogin: null
+          });
+          curIdx++;
+        }
+      }
+    });
 
+    if (window.S) window.S.classes = sClasses;
+    if (window.EthithApp && window.EthithApp.state) window.EthithApp.state.classes = sClasses;
+    return sClasses;
+  }
+
+  function ensureClassAttendance(cls) {
+    if (!cls) return;
+    if (!cls.attendance) cls.attendance = {};
+    if (!cls.attendance.records) cls.attendance.records = {};
+    if (!cls.attendance.lessonTypes) cls.attendance.lessonTypes = {};
+    if (!cls.attendance.holidays) cls.attendance.holidays = {};
+    if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
+    if (!cls.customStudentNames) cls.customStudentNames = {};
+    if (!cls.customStudentPhones) cls.customStudentPhones = {};
+    if (!cls.schedule) cls.schedule = 'har_kuni';
+    if (!cls.students) cls.students = [];
+
+    // Retain all real students and purge tester slots if real students exist
+    var realStEnsure = (cls.students || []).filter(function(st) {
+      return st && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
+    });
+    if (realStEnsure.length > 0) {
+      cls.students = realStEnsure;
+    } else {
       var curIdx = 1;
       while (cls.students.length < 18) {
         var sName = 'tester_' + curIdx;
@@ -922,54 +976,6 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         });
         curIdx++;
       }
-    });
-
-    if (window.S) window.S.classes = sClasses;
-    if (window.EthithApp && window.EthithApp.state) window.EthithApp.state.classes = sClasses;
-    return sClasses;
-  }
-
-  function ensureClassAttendance(cls) {
-    if (!cls) return;
-    if (!cls.attendance) cls.attendance = {};
-    if (!cls.attendance.records) cls.attendance.records = {};
-    if (!cls.attendance.lessonTypes) cls.attendance.lessonTypes = {};
-    if (!cls.attendance.holidays) cls.attendance.holidays = {};
-    if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
-    if (!cls.customStudentNames) cls.customStudentNames = {};
-    if (!cls.customStudentPhones) cls.customStudentPhones = {};
-    if (!cls.schedule) cls.schedule = 'har_kuni';
-    if (!cls.students) cls.students = [];
-
-    // Strictly retain ONLY manually enrolled students
-    cls.students = cls.students.filter(function(st) {
-      return st && st.manuallyEnrolled === true && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
-    });
-
-    var curIdx = 1;
-    while (cls.students.length < 18) {
-      var sName = 'tester_' + curIdx;
-      while (cls.students.some(function(s) { return s.name === sName; })) {
-        curIdx++;
-        sName = 'tester_' + curIdx;
-      }
-      cls.students.push({
-        id: cls.id + '_std_' + curIdx,
-        name: sName,
-        email: cls.id + '_std_' + curIdx + '@ethith.uz',
-        role: 'student',
-        phone: '',
-        parentPhone: '',
-        login: '',
-        password: '',
-        joinedAt: '2026-10-28',
-        dailyMinutes: 0,
-        coins: 0,
-        isTester: true,
-        isOnline: false,
-        lastLogin: null
-      });
-      curIdx++;
     }
 
     // Ensure default activeHomework exists
@@ -3452,7 +3458,12 @@ EA.render = function(container, preserveScrollLeft) {
     } else {
       students.forEach(function(st, sIdx) {
         var stId = st.id || st.email || ('std_' + sIdx);
-        var stName = cleanStName(cls.customStudentNames[stId] || st.name || ("O'quvchi " + (sIdx + 1)));
+        var stName = cleanStName(
+          (cls.customStudentNames && (cls.customStudentNames[stId] || (st.login && cls.customStudentNames[st.login]) || (st.login && cls.customStudentNames['std_' + st.login]) || (st.id && cls.customStudentNames[st.id]))) ||
+          st.name ||
+          ("O'quvchi " + (sIdx + 1))
+        );
+        if (st.name !== stName && !st.name.startsWith('tester_')) st.name = stName;
         var joinedDisp = formatIsoToDisplay(st.joinedAt || '2026-09-02');
         var rowBg = sIdx % 2 === 0 ? 'rgba(15, 23, 42, 0.35)' : 'rgba(15, 23, 42, 0.52)';
         var stickyBg = sIdx % 2 === 0 ? 'rgba(8, 13, 26, 0.97)' : 'rgba(11, 18, 34, 0.98)';

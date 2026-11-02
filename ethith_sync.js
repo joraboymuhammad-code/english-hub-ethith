@@ -625,7 +625,7 @@
       }
     }
 
-    // E0. STUDENT EDITED (Instant Name / Phone / Credential update across all connected devices)
+    // E0. STUDENT EDITED (Instant Name / Phone / Credential update across all connected devices: Admin & Teacher)
     else if (event.type === 'STUDENT_EDIT' && event.studentId) {
       var stId = event.studentId;
       var newName = event.name;
@@ -637,31 +637,70 @@
       classes.forEach(function(c) {
         if (!event.classId || c.id === event.classId || c.code === event.classId) {
           if (!c.customStudentNames) c.customStudentNames = {};
-          if (newName) c.customStudentNames[stId] = newName;
+          if (newName) {
+            c.customStudentNames[stId] = newName;
+            if (newLogin) c.customStudentNames[newLogin] = newName;
+            if (newLogin) c.customStudentNames['std_' + newLogin] = newName;
+          }
           if (!c.customStudentPhones) c.customStudentPhones = {};
           if (newPhone) c.customStudentPhones[stId] = newPhone;
           if (!c.customStudentNamesTs) c.customStudentNamesTs = {};
           c.customStudentNamesTs[stId] = upTs;
-          if (Array.isArray(c.students)) {
-            var sFound = c.students.find(function(s) {
-              return s && (s.id === stId || (newLogin && s.login && s.login.toLowerCase() === newLogin.toLowerCase()) || (s.email && event.email && s.email.toLowerCase() === event.email.toLowerCase()));
+
+          if (!Array.isArray(c.students)) c.students = [];
+          var sFound = c.students.find(function(s) {
+            return s && (s.id === stId || (newLogin && s.login && s.login.toLowerCase() === newLogin.toLowerCase()) || (s.email && event.email && s.email.toLowerCase() === event.email.toLowerCase()) || (s.name && newName && s.name.toLowerCase().trim() === newName.toLowerCase().trim()));
+          });
+
+          if (sFound) {
+            if (newName) {
+              sFound.name = newName;
+              var nParts = newName.trim().split(/\s+/);
+              sFound.firstName = nParts[0];
+              sFound.lastName = nParts.slice(1).join(' ');
+            }
+            if (newPhone) {
+              sFound.phone = newPhone;
+              sFound.parentPhone = newPhone;
+            }
+            if (newLogin) sFound.login = newLogin;
+            if (newPass) sFound.password = newPass;
+            sFound.isTester = false;
+            sFound.manuallyEnrolled = true;
+            sFound.updatedAt = upTs;
+          } else {
+            // If student was not found in array, add them directly and replace tester slot if available
+            var tIdx = c.students.findIndex(function(s) {
+              return s && (s.isTester || (s.name && s.name.toLowerCase().startsWith('tester_')));
             });
-            if (sFound) {
-              if (newName) {
-                sFound.name = newName;
-                var nParts = newName.trim().split(/\s+/);
-                sFound.firstName = nParts[0];
-                sFound.lastName = nParts.slice(1).join(' ');
-              }
-              if (newPhone) {
-                sFound.phone = newPhone;
-                sFound.parentPhone = newPhone;
-              }
-              if (newLogin) sFound.login = newLogin;
-              if (newPass) sFound.password = newPass;
-              sFound.updatedAt = upTs;
+            var newStudentEntry = {
+              id: stId,
+              name: newName,
+              firstName: event.firstName || (newName ? newName.split(' ')[0] : ''),
+              lastName: event.lastName || (newName ? newName.split(' ').slice(1).join(' ') : ''),
+              login: newLogin,
+              password: newPass,
+              phone: newPhone,
+              parentPhone: newPhone,
+              email: (newLogin || stId) + '@student.ethith',
+              role: 'student',
+              isTester: false,
+              manuallyEnrolled: true,
+              updatedAt: upTs
+            };
+            if (tIdx !== -1) {
+              c.students[tIdx] = newStudentEntry;
+            } else {
+              c.students.push(newStudentEntry);
             }
           }
+
+          // Filter out dummy tester slots if real students are now in the class
+          var hasReals = c.students.some(function(s) { return s && !s.isTester && s.name && !s.name.toLowerCase().startsWith('tester_'); });
+          if (hasReals) {
+            c.students = c.students.filter(function(s) { return s && !s.isTester && s.name && !s.name.toLowerCase().startsWith('tester_'); });
+          }
+
           if (c.attendance) c.attendance.updatedAt = upTs;
         }
       });
@@ -813,7 +852,7 @@
       }
     }
 
-    // E3. STATE MUTATION (Instant Real-time Sync Across Connected Clients)
+    // E3. STATE MUTATION (Instant Real-time Sync Across Connected Clients: Admin & Teacher)
     else if (event.type === 'STATE_MUTATION' || event.type === 'UNDO_MUTATION') {
       if (Array.isArray(event.classes) && event.classes.length > 0) {
         mergeClasses(S.classes, event.classes);
@@ -822,13 +861,16 @@
         mergeAccounts(S.accounts, event.accounts);
       }
       uiNeedsRefresh = true;
+      var apView = document.getElementById('apView');
+      if (apView && window.EA && typeof window.EA.render === 'function' && window._ethithCurrentView === 'attendance') {
+        window.EA.render(apView);
+      }
       if (typeof fetchRemoteStore === 'function') {
-        fetchRemoteStore().then(function() {
-          var apView = document.getElementById('apView');
-          if (apView && window.EA && typeof window.EA.render === 'function') {
-            var prevScrollY = window.scrollY || window.pageYOffset || 0;
-            window.EA.render(apView);
-            window.scrollTo(0, prevScrollY);
+        fetchRemoteStore().then(function(remote) {
+          if (remote && remote.classes) mergeClasses(S.classes, remote.classes);
+          var apView2 = document.getElementById('apView');
+          if (apView2 && window.EA && typeof window.EA.render === 'function' && window._ethithCurrentView === 'attendance') {
+            window.EA.render(apView2);
           }
           if (window._ethithRefreshCurrentView) {
             try { window._ethithRefreshCurrentView(); } catch(e) {}
@@ -1648,11 +1690,27 @@
         if (localCls.students.length !== lenBeforeSt) changed = true;
       }
 
-      // Sync Students
+      // Sync Students (Universal Instant Sync for Admin & Teachers)
       if (!localCls.students) localCls.students = [];
       if (rc.students && Array.isArray(rc.students)) {
+        var remoteHasReal = rc.students.some(function(s) {
+          return s && s.name && !s.name.toLowerCase().startsWith('tester_') && !s.isTester;
+        });
+
+        // If remote has real students, purge dummy tester slots from local
+        if (remoteHasReal) {
+          var lenBeforeTesterPurge = localCls.students.length;
+          localCls.students = localCls.students.filter(function(s) {
+            return s && s.name && !s.name.toLowerCase().startsWith('tester_') && !s.isTester;
+          });
+          if (localCls.students.length !== lenBeforeTesterPurge) changed = true;
+        }
+
         rc.students.forEach(function(rStudent) {
           if (!rStudent) return;
+          var isTester = rStudent.isTester || (rStudent.name && rStudent.name.toLowerCase().startsWith('tester_'));
+          if (remoteHasReal && isTester) return; // Never add tester slots if real students exist!
+
           var isDel = (rStudent.id && allDels.indexOf(rStudent.id) !== -1) ||
                       (rStudent.email && allDels.indexOf(rStudent.email) !== -1) ||
                       (rStudent.login && allDels.indexOf(rStudent.login) !== -1) ||
@@ -1662,39 +1720,27 @@
           var exists = localCls.students.find(function(s) {
             return (s.email && s.email === rStudent.email) ||
                    (s.id && s.id === rStudent.id) ||
-                   (s.login && rStudent.login && s.login.toLowerCase() === rStudent.login.toLowerCase());
+                   (s.login && rStudent.login && s.login.toLowerCase() === rStudent.login.toLowerCase()) ||
+                   (s.name && rStudent.name && s.name.toLowerCase().trim() === rStudent.name.toLowerCase().trim());
           });
-          var isTester = rStudent.isTester || (rStudent.name && rStudent.name.toLowerCase().startsWith('tester_'));
+
           if (!exists) {
-            if (isTester && localCls.students.length >= 18) {
-              return; // Do NOT add extra tester slots if class is already full
-            }
             localCls.students.push(rStudent);
             changed = true;
           } else {
-            if ((rStudent.lastActive || 0) > (exists.lastActive || 0) || (rStudent.dailyMinutes || 0) > (exists.dailyMinutes || 0)) {
-              exists.lastActive = rStudent.lastActive || exists.lastActive;
-              exists.dailyMinutes = Math.max(exists.dailyMinutes || 0, rStudent.dailyMinutes || 0);
-              exists.mistakes = rStudent.mistakes !== undefined ? rStudent.mistakes : exists.mistakes;
-              changed = true;
+            if (rStudent.name) exists.name = rStudent.name;
+            if (rStudent.firstName) exists.firstName = rStudent.firstName;
+            if (rStudent.lastName) exists.lastName = rStudent.lastName;
+            if (rStudent.login) exists.login = rStudent.login;
+            if (rStudent.password) exists.password = rStudent.password;
+            if (rStudent.phone || rStudent.parentPhone) {
+              exists.phone = rStudent.phone || rStudent.parentPhone;
+              exists.parentPhone = rStudent.parentPhone || rStudent.phone;
             }
-            var rUp = Number(rStudent.updatedAt) || 0;
-            var lUp = Number(exists.updatedAt) || 0;
-            if (rUp >= lUp || (rStudent.name && !rStudent.name.toLowerCase().startsWith('tester_') && (exists.name || '').toLowerCase().startsWith('tester_'))) {
-              if (rStudent.name) exists.name = rStudent.name;
-              if (rStudent.firstName) exists.firstName = rStudent.firstName;
-              if (rStudent.lastName) exists.lastName = rStudent.lastName;
-              if (rStudent.login) exists.login = rStudent.login;
-              if (rStudent.password) exists.password = rStudent.password;
-              if (rStudent.phone || rStudent.parentPhone) {
-                exists.phone = rStudent.phone || rStudent.parentPhone;
-                exists.parentPhone = rStudent.parentPhone || rStudent.phone;
-              }
-              if (rStudent.isTester !== undefined) exists.isTester = rStudent.isTester;
-              if (rStudent.manuallyEnrolled !== undefined) exists.manuallyEnrolled = rStudent.manuallyEnrolled;
-              exists.updatedAt = Math.max(lUp, rUp || Date.now());
-              changed = true;
-            }
+            if (rStudent.isTester !== undefined) exists.isTester = rStudent.isTester;
+            if (rStudent.manuallyEnrolled !== undefined) exists.manuallyEnrolled = rStudent.manuallyEnrolled;
+            exists.updatedAt = Math.max(Number(exists.updatedAt) || 0, Number(rStudent.updatedAt) || Date.now());
+            changed = true;
           }
         });
       }
