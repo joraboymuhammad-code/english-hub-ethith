@@ -16771,13 +16771,15 @@
         "std_ruxshona_493_amalikova": "Ruxshona Amalikova",
         "std_abdulaziz_454_shodiyorov": "Abdulaziz Shodiyorov",
         "std_iroda_252_isroilova": "Iroda Isroilova",
-        "std_parizoda_786_xalikova": "Parizoda Xalikova"
+        "std_parizoda_786_xalikova": "Parizoda Xalikova",
+        "std_sevinch_279_nosurname": "Sevinch No Surname"
       },
       "customStudentPhones": {
         "std_ruxshona_493_amalikova": "941973993",
         "std_abdulaziz_454_shodiyorov": "941973993",
         "std_iroda_252_isroilova": "941973993",
-        "std_parizoda_786_xalikova": "941973993"
+        "std_parizoda_786_xalikova": "941973993",
+        "std_sevinch_279_nosurname": "941973993"
       },
       "students": [
         {
@@ -16842,6 +16844,23 @@
           "parentPhone": "941973993",
           "login": "parizoda_786_xalikova",
           "password": "parizoda786xal",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_sevinch_279_nosurname",
+          "name": "Sevinch No Surname",
+          "firstName": "Sevinch",
+          "lastName": "No Surname",
+          "email": "sevinch_279_nosurname@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "sevinch_279_nosurname",
+          "password": "sevinch279nos",
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
@@ -17055,22 +17074,6 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_14",
-          "name": "tester_14",
-          "email": "cls_urolov_azizbek_standard_std_14@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
         }
       ],
       "studentPayments": {
@@ -17222,6 +17225,13 @@
           "date": "To‘lanmagan"
         },
         "std_parizoda_786_xalikova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_sevinch_279_nosurname": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -21151,6 +21161,19 @@
       "role": "student",
       "login": "parizoda_786_xalikova",
       "password": "parizoda786xal",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_standard",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793601264525
+    },
+    {
+      "id": "std_sevinch_279_nosurname",
+      "name": "Sevinch No Surname",
+      "role": "student",
+      "login": "sevinch_279_nosurname",
+      "password": "sevinch279nos",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_standard",
@@ -140060,5 +140083,5 @@
       }
     }
   },
-  "updatedAt": 1793601258075
+  "updatedAt": 1793601278606
 }
