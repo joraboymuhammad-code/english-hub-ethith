@@ -19308,8 +19308,8 @@
       "updatedAt": 1793185854362
     },
     {
-      "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "id": "t_urolov_azizbek",
+      "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "password": "azizbek2026",
@@ -19322,7 +19322,7 @@
         "cls_urolov_azizbek_intermediate_practice",
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "createdAt": 1793596771644,
+      "createdAt": 1793598048461,
       "level": "C2",
       "updatedAt": 1793473052536,
       "gifts": []
@@ -19821,7 +19821,8 @@
       "parentPhone": "253123123",
       "classId": "cls_urolov_azizbek_upper",
       "isOnline": false,
-      "lastLogin": null
+      "lastLogin": null,
+      "updatedAt": 1793598050688
     }
   ],
   "p2pListings": [],
@@ -138719,5 +138720,5 @@
       }
     }
   },
-  "updatedAt": 1793598034913
+  "updatedAt": 1793598050704
 }
