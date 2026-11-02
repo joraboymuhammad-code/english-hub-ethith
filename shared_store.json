@@ -16787,7 +16787,8 @@
         "std_atham_184_xudoyberdiyev": "Atham Xudoyberdiyev",
         "std_fayozbek_997_abdukarimov": "Fayozbek Abdukarimov",
         "std_diyorbek_862_raimqulov": "Diyorbek Raimqulov",
-        "std_hadicha_393_nosurname": "Hadicha No Surname"
+        "std_hadicha_393_nosurname": "Hadicha No Surname",
+        "std_bahora_901_nosurname": "Bahora No Surname"
       },
       "customStudentPhones": {
         "std_ruxshona_493_amalikova": "941973993",
@@ -16809,9 +16810,27 @@
         "std_atham_184_xudoyberdiyev": "941973993",
         "std_fayozbek_997_abdukarimov": "941973993",
         "std_diyorbek_862_raimqulov": "941973993",
-        "std_hadicha_393_nosurname": "941973993"
+        "std_hadicha_393_nosurname": "941973993",
+        "std_bahora_901_nosurname": "941973993"
       },
       "students": [
+        {
+          "id": "std_bahora_901_nosurname",
+          "name": "Bahora No Surname",
+          "firstName": "Bahora",
+          "lastName": "No Surname",
+          "email": "bahora_901_nosurname@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "bahora_901_nosurname",
+          "password": "bahora901nos",
+          "joinedAt": "2026-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
         {
           "id": "std_hadicha_393_nosurname",
           "name": "Hadicha No Surname",
@@ -17414,6 +17433,13 @@
           "date": "To‘lanmagan"
         },
         "std_hadicha_393_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_bahora_901_nosurname": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -21551,6 +21577,19 @@
       "role": "student",
       "login": "hadicha_393_nosurname",
       "password": "hadicha393nos",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_standard",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793601649392
+    },
+    {
+      "id": "std_bahora_901_nosurname",
+      "name": "Bahora No Surname",
+      "role": "student",
+      "login": "bahora_901_nosurname",
+      "password": "bahora901nos",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_standard",
@@ -140460,5 +140499,5 @@
       }
     }
   },
-  "updatedAt": 1793601642328
+  "updatedAt": 1793601660905
 }
