@@ -17102,7 +17102,8 @@
         "std_marjona_346_qodirqulova": "Marjona Qodirqulova",
         "std_gulsevar_485_anorqulova": "Gulsevar Anorqulova",
         "std_asadbek_247_xolboyev": "Asadbek Xolboyev",
-        "std_kazakov_769_husniddin": "Kazakov Husniddin"
+        "std_kazakov_769_husniddin": "Kazakov Husniddin",
+        "std_zebo_198_abduganiyeva": "Zebo Abdug'aniyeva"
       },
       "customStudentPhones": {
         "std_orazaliyev_261_amirshox": "564654654",
@@ -17122,9 +17123,27 @@
         "std_marjona_346_qodirqulova": "941973993",
         "std_gulsevar_485_anorqulova": "941973993",
         "std_asadbek_247_xolboyev": "941973993",
-        "std_kazakov_769_husniddin": "941973993"
+        "std_kazakov_769_husniddin": "941973993",
+        "std_zebo_198_abduganiyeva": "941973993"
       },
       "students": [
+        {
+          "id": "std_zebo_198_abduganiyeva",
+          "name": "Zebo Abdug'aniyeva",
+          "firstName": "Zebo",
+          "lastName": "Abdug'aniyeva",
+          "email": "zebo_198_abduganiyeva@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "zebo_198_abduganiyeva",
+          "password": "zebo198abd",
+          "joinedAt": "2026-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
         {
           "id": "std_orazaliyev_261_amirshox",
           "name": "Sayyora Urolova",
@@ -17672,6 +17691,13 @@
           "date": "To‘lanmagan"
         },
         "std_kazakov_769_husniddin": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_zebo_198_abduganiyeva": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20862,6 +20888,19 @@
       "role": "student",
       "login": "kazakov_769_husniddin",
       "password": "kazakov769hus",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_intermediate",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793601056357
+    },
+    {
+      "id": "std_zebo_198_abduganiyeva",
+      "name": "Zebo Abdug'aniyeva",
+      "role": "student",
+      "login": "zebo_198_abduganiyeva",
+      "password": "zebo198abd",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_intermediate",
@@ -139771,5 +139810,5 @@
       }
     }
   },
-  "updatedAt": 1793601050066
+  "updatedAt": 1793601123089
 }
