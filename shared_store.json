@@ -64088,8 +64088,8 @@
         "page": 2007,
         "exercise": "6",
         "label": "2a",
-        "top": 49.2,
-        "left": 72.3,
+        "top": 48.7,
+        "left": 50.5,
         "width": 7.8,
         "height": 2,
         "correct": "has"
@@ -64100,7 +64100,7 @@
         "page": 2007,
         "exercise": "6",
         "label": "2b",
-        "top": 50.7,
+        "top": 50.5,
         "left": 40.4,
         "width": 7.8,
         "height": 1.7,
@@ -64112,8 +64112,8 @@
         "page": 2007,
         "exercise": "6",
         "label": "3",
-        "top": 51.7,
-        "left": 33.3,
+        "top": 52.1,
+        "left": 43.6,
         "width": 7,
         "height": 2,
         "correct": "hasn't suffered or has not suffered"
@@ -64124,8 +64124,8 @@
         "page": 2007,
         "exercise": "6",
         "label": "4",
-        "top": 60,
-        "left": 30,
+        "top": 58.9,
+        "left": 41.9,
         "width": 10.2,
         "height": 2,
         "correct": "has become"
@@ -64136,8 +64136,8 @@
         "page": 2007,
         "exercise": "6",
         "label": "5",
-        "top": 62.7,
-        "left": 71.7,
+        "top": 62.2,
+        "left": 49.8,
         "width": 15.2,
         "height": 2,
         "correct": "have been trying"
@@ -64148,8 +64148,8 @@
         "page": 2007,
         "exercise": "6",
         "label": "6",
-        "top": 67.5,
-        "left": 31.4,
+        "top": 66.7,
+        "left": 41.9,
         "width": 8.8,
         "height": 2,
         "correct": "haven't succeeded or have not succeeded"
@@ -64160,8 +64160,8 @@
         "page": 2007,
         "exercise": "6",
         "label": "7",
-        "top": 75,
-        "left": 35.8,
+        "top": 74.1,
+        "left": 43.8,
         "width": 4.4,
         "height": 2,
         "correct": "have identified"
@@ -64184,8 +64184,8 @@
         "page": 2007,
         "exercise": "6",
         "label": "9a",
-        "top": 83.6,
-        "left": 70.7,
+        "top": 83.1,
+        "left": 49.7,
         "width": 7.7,
         "height": 2,
         "correct": "have"
@@ -64209,7 +64209,7 @@
         "exercise": "6",
         "label": "10",
         "top": 50.7,
-        "left": 70.1,
+        "left": 70.7,
         "width": 15.4,
         "height": 1.7,
         "correct": "has been looking"
@@ -64224,8 +64224,8 @@
         "group": "b2_p8_1_2",
         "text": "in",
         "label": "2a",
-        "top": 27.9,
-        "left": 35.7,
+        "top": 28,
+        "left": 34.9,
         "width": 3.5,
         "height": 1.8,
         "correct": false
@@ -64238,8 +64238,8 @@
         "group": "b2_p8_1_2",
         "text": "of",
         "label": "2b",
-        "top": 27.9,
-        "left": 39,
+        "top": 27.8,
+        "left": 38.5,
         "width": 3.5,
         "height": 1.8,
         "correct": true
@@ -64266,8 +64266,8 @@
         "group": "b2_p8_1_3",
         "text": "for",
         "label": "3a",
-        "top": 31.2,
-        "left": 38.8,
+        "top": 30.9,
+        "left": 38.3,
         "width": 3.5,
         "height": 1.8,
         "correct": false
@@ -64281,7 +64281,7 @@
         "text": "to",
         "label": "3b",
         "top": 31.2,
-        "left": 42.5,
+        "left": 42.1,
         "width": 3.5,
         "height": 1.8,
         "correct": false
@@ -64516,7 +64516,7 @@
         "page": 2008,
         "exercise": "3a",
         "label": "2",
-        "top": 24.4,
+        "top": 24.1,
         "left": 80.6,
         "width": 12,
         "height": 2,
@@ -64540,8 +64540,8 @@
         "page": 2008,
         "exercise": "3a",
         "label": "4",
-        "top": 27.9,
-        "left": 68.6,
+        "top": 27.3,
+        "left": 68.5,
         "width": 12,
         "height": 2,
         "correct": "f"
@@ -138673,9 +138673,9 @@
     "1083": 1793379466776,
     "2004": 1793606457211,
     "2005": 1793606457212,
-    "2006": 1793606501590,
-    "2007": 1793563274072,
-    "2008": 1793563274072,
+    "2006": 1793606568111,
+    "2007": 1793606568111,
+    "2008": 1793606641567,
     "2009": 1793563274072,
     "2010": 1793563274072,
     "2011": 1793563274072,
@@ -140019,5 +140019,5 @@
       }
     }
   },
-  "updatedAt": 1793606503319
+  "updatedAt": 1793606645013
 }
