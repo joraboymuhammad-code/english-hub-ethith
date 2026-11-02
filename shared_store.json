@@ -65965,8 +65965,8 @@
         "page": 2012,
         "exercise": "1",
         "label": "4",
-        "top": 30.2,
-        "left": 43.4,
+        "top": 30.8,
+        "left": 44.6,
         "width": 5.6,
         "height": 2,
         "correct": "'d been hoping or had been hoping"
@@ -66049,8 +66049,8 @@
         "page": 2012,
         "exercise": "2",
         "label": "3",
-        "top": 28.5,
-        "left": 44.6,
+        "top": 28.6,
+        "left": 55.4,
         "width": 4.4,
         "height": 2,
         "correct": "hadn't realized or had not realized or hadn't realised or had not realised"
@@ -66073,8 +66073,8 @@
         "page": 2012,
         "exercise": "2",
         "label": "5",
-        "top": 31.9,
-        "left": 43.9,
+        "top": 32.4,
+        "left": 54.5,
         "width": 5.1,
         "height": 2,
         "correct": "had created"
@@ -66178,8 +66178,8 @@
       {
         "page": 2012,
         "type": "fill",
-        "top": 74.1,
-        "left": 24.2,
+        "top": 73.5,
+        "left": 23.9,
         "width": 15.5,
         "height": 1.9,
         "label": "3",
@@ -138534,7 +138534,7 @@
     "2009": 1793606799816,
     "2010": 1793606946260,
     "2011": 1793563274072,
-    "2012": 1793607633332,
+    "2012": 1793607641908,
     "2013": 1793563274072,
     "2014": 1793563274072,
     "2015": 1793563274072,
@@ -139874,5 +139874,5 @@
       }
     }
   },
-  "updatedAt": 1793607635544
+  "updatedAt": 1793607642903
 }
