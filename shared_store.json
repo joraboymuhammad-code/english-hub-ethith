@@ -17098,7 +17098,8 @@
         "std_xonzoda_538_amirova": "Xonzoda Amirova",
         "std_nozima_834_norqulova": "Nozima Norqulova",
         "std_nozima_471_yaxshilikova": "Nozima Yaxshilikova",
-        "std_bahora_639_nosurname": "Bahora No Surname"
+        "std_bahora_639_nosurname": "Bahora No Surname",
+        "std_marjona_346_qodirqulova": "Marjona Qodirqulova"
       },
       "customStudentPhones": {
         "std_orazaliyev_261_amirshox": "564654654",
@@ -17114,7 +17115,8 @@
         "std_xonzoda_538_amirova": "941973993",
         "std_nozima_834_norqulova": "941973993",
         "std_nozima_471_yaxshilikova": "941973993",
-        "std_bahora_639_nosurname": "941973993"
+        "std_bahora_639_nosurname": "941973993",
+        "std_marjona_346_qodirqulova": "941973993"
       },
       "students": [
         {
@@ -17356,6 +17358,23 @@
           "coins": 150
         },
         {
+          "id": "std_marjona_346_qodirqulova",
+          "name": "Marjona Qodirqulova",
+          "firstName": "Marjona",
+          "lastName": "Qodirqulova",
+          "email": "marjona_346_qodirqulova@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "marjona_346_qodirqulova",
+          "password": "marjona346qod",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_urolov_azizbek_intermediate_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_intermediate_std_1@ethith.uz",
@@ -17391,22 +17410,6 @@
           "id": "cls_urolov_azizbek_intermediate_std_3",
           "name": "tester_3",
           "email": "cls_urolov_azizbek_intermediate_std_3@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_4",
-          "name": "tester_4",
-          "email": "cls_urolov_azizbek_intermediate_std_4@ethith.uz",
           "role": "student",
           "phone": "",
           "parentPhone": "",
@@ -17632,6 +17635,13 @@
           "date": "To‘lanmagan"
         },
         "std_bahora_639_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_marjona_346_qodirqulova": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20770,6 +20780,19 @@
       "role": "student",
       "login": "bahora_639_nosurname",
       "password": "bahora639nos",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_intermediate",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793600961943
+    },
+    {
+      "id": "std_marjona_346_qodirqulova",
+      "name": "Marjona Qodirqulova",
+      "role": "student",
+      "login": "marjona_346_qodirqulova",
+      "password": "marjona346qod",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_intermediate",
@@ -139679,5 +139702,5 @@
       }
     }
   },
-  "updatedAt": 1793600956800
+  "updatedAt": 1793600978610
 }
