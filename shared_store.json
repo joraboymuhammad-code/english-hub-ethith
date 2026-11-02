@@ -17088,13 +17088,15 @@
         "std_orazaliyev_261_amirshox": "O'razaliyev Amirshox",
         "std_mahfuza_179_bosimova": "Mahfuza Bosimova",
         "std_oydinoy_472_ibragimova": "Oydinoy Ibragimova",
-        "std_muxlisa_356_obloqulova": "Muxlisa Obloqulova"
+        "std_muxlisa_356_obloqulova": "Muxlisa Obloqulova",
+        "std_nurmuhammad_852_nosurname": "Nurmuhammad No Surname"
       },
       "customStudentPhones": {
         "std_orazaliyev_261_amirshox": "564654654",
         "std_mahfuza_179_bosimova": "941973993",
         "std_oydinoy_472_ibragimova": "941973993",
-        "std_muxlisa_356_obloqulova": "941973993"
+        "std_muxlisa_356_obloqulova": "941973993",
+        "std_nurmuhammad_852_nosurname": "941973993"
       },
       "students": [
         {
@@ -17159,6 +17161,23 @@
           "parentPhone": "941973993",
           "login": "muxlisa_356_obloqulova",
           "password": "muxlisa356obl",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_nurmuhammad_852_nosurname",
+          "name": "Nurmuhammad No Surname",
+          "firstName": "Nurmuhammad",
+          "lastName": "No Surname",
+          "email": "nurmuhammad_852_nosurname@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "nurmuhammad_852_nosurname",
+          "password": "nurmuhammad852nos",
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
@@ -17372,22 +17391,6 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_14",
-          "name": "tester_14",
-          "email": "cls_urolov_azizbek_intermediate_std_14@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
         }
       ],
       "studentPayments": {
@@ -17532,6 +17535,13 @@
           "date": "To‘lanmagan"
         },
         "std_muxlisa_356_obloqulova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_nurmuhammad_852_nosurname": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20540,6 +20550,19 @@
       "role": "student",
       "login": "muxlisa_356_obloqulova",
       "password": "muxlisa356obl",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_intermediate",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793600758968
+    },
+    {
+      "id": "std_nurmuhammad_852_nosurname",
+      "name": "Nurmuhammad No Surname",
+      "role": "student",
+      "login": "nurmuhammad_852_nosurname",
+      "password": "nurmuhammad852nos",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_intermediate",
@@ -139449,5 +139472,5 @@
       }
     }
   },
-  "updatedAt": 1793600750338
+  "updatedAt": 1793600772885
 }
