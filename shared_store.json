@@ -19705,8 +19705,8 @@
       "updatedAt": 1793185854362
     },
     {
-      "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "id": "t_urolov_azizbek",
+      "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "password": "azizbek2026",
@@ -80243,8 +80243,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "3",
-        "top": 60,
-        "left": 15.9,
+        "top": 59.1,
+        "left": 16.6,
         "width": 7.7,
         "height": 2,
         "correct": [
@@ -138202,7 +138202,7 @@
     "2052": 1793612584094,
     "2053": 1793612584095,
     "2054": 1793612657560,
-    "2055": 1793612689335,
+    "2055": 1793612689809,
     "2056": 1793563274073,
     "2057": 1793563274073,
     "2058": 1793563274073,
@@ -139499,5 +139499,5 @@
       }
     }
   },
-  "updatedAt": 1793612691402
+  "updatedAt": 1793612690767
 }
