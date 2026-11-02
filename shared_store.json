@@ -15994,7 +15994,8 @@
         "std_oktamova_798_zarina": "O'ktamova Zarina",
         "std_shohista_786_nosurname": "Shohista No Surname",
         "std_diyor_772_suyundikov": "Diyor Suyundikov",
-        "std_behruz_942_oktamov": "Behruz O'ktamov"
+        "std_behruz_942_oktamov": "Behruz O'ktamov",
+        "std_sabina_672_ibodullayeva": "Sabina Ibodullayeva"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
@@ -16014,9 +16015,27 @@
         "std_oktamova_798_zarina": "941973993",
         "std_shohista_786_nosurname": "941973993",
         "std_diyor_772_suyundikov": "941973993",
-        "std_behruz_942_oktamov": "941973993"
+        "std_behruz_942_oktamov": "941973993",
+        "std_sabina_672_ibodullayeva": "941973993"
       },
       "students": [
+        {
+          "id": "std_sabina_672_ibodullayeva",
+          "name": "Sabina Ibodullayeva",
+          "firstName": "Sabina",
+          "lastName": "Ibodullayeva",
+          "email": "sabina_672_ibodullayeva@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "sabina_672_ibodullayeva",
+          "password": "sabina672ibo",
+          "joinedAt": "2025-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
         {
           "id": "std_behruz_942_oktamov",
           "name": "Behruz O'ktamov",
@@ -16588,6 +16607,13 @@
           "date": "To‘lanmagan"
         },
         "std_behruz_942_oktamov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_sabina_672_ibodullayeva": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20156,6 +20182,19 @@
       "role": "student",
       "login": "behruz_942_oktamov",
       "password": "behruz942okt",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1762063129941
+    },
+    {
+      "id": "std_sabina_672_ibodullayeva",
+      "name": "Sabina Ibodullayeva",
+      "role": "student",
+      "login": "sabina_672_ibodullayeva",
+      "password": "sabina672ibo",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_upper",
@@ -139058,5 +139097,5 @@
       }
     }
   },
-  "updatedAt": 1762063121837
+  "updatedAt": 1762063179760
 }
