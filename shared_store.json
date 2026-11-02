@@ -88114,8 +88114,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "1",
-        "top": 34.2,
-        "left": 12.9,
+        "top": 78.9,
+        "left": 50.6,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -88131,8 +88131,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "2",
-        "top": 25.1,
-        "left": 7.5,
+        "top": 69.8,
+        "left": 45.2,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -88148,8 +88148,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "3",
-        "top": 37.2,
-        "left": 30,
+        "top": 81.9,
+        "left": 67.7,
         "width": 9.3,
         "height": 2,
         "correct": [
@@ -88165,8 +88165,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "4",
-        "top": 23.4,
-        "left": 50.8,
+        "top": 68.1,
+        "left": 88.5,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -88182,8 +88182,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "5",
-        "top": 36.2,
-        "left": 52.3,
+        "top": 80.9,
+        "left": 90,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -88250,8 +88250,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "9",
-        "top": 7,
-        "left": 40,
+        "top": 51.7,
+        "left": 77.7,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -88267,8 +88267,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "10",
-        "top": 14.3,
-        "left": 43.2,
+        "top": 59,
+        "left": 80.9,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -138196,7 +138196,7 @@
     "2070": 1793614568744,
     "2071": 1793614759844,
     "2072": 1793614759845,
-    "2073": 1793614852953,
+    "2073": 1793614862229,
     "2074": 1793563274073,
     "2075": 1793563274073,
     "2076": 1793563274073,
@@ -139475,5 +139475,5 @@
       }
     }
   },
-  "updatedAt": 1793614859843
+  "updatedAt": 1793614865804
 }
