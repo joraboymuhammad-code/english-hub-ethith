@@ -67276,8 +67276,8 @@
         "page": 2017,
         "exercise": "2",
         "label": "2",
-        "top": 26,
-        "left": 75.3,
+        "top": 26.4,
+        "left": 76.3,
         "width": 12,
         "height": 2,
         "correct": "Who are you writing to"
@@ -67288,8 +67288,8 @@
         "page": 2017,
         "exercise": "2",
         "label": "3",
-        "top": 29.5,
-        "left": 87.4,
+        "top": 30.1,
+        "left": 77.7,
         "width": 5.6,
         "height": 2,
         "correct": "Do you think it is going to rain later"
@@ -67300,8 +67300,8 @@
         "page": 2017,
         "exercise": "2",
         "label": "4",
-        "top": 32.9,
-        "left": 89.7,
+        "top": 33.4,
+        "left": 77.3,
         "width": 3.3,
         "height": 2,
         "correct": "Could you tell me what this word means"
@@ -138527,7 +138527,7 @@
     "2014": 1793563274072,
     "2015": 1793607771057,
     "2016": 1793607782135,
-    "2017": 1793563274072,
+    "2017": 1793607792064,
     "2018": 1793563274072,
     "2019": 1793563274072,
     "2020": 1793563274072,
@@ -139862,5 +139862,5 @@
       }
     }
   },
-  "updatedAt": 1793607785895
+  "updatedAt": 1793607792253
 }
