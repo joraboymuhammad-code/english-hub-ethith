@@ -344,7 +344,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_2",
@@ -676,7 +677,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 15
+      "learningDays": 15,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_3",
@@ -1037,7 +1039,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_4",
@@ -1369,7 +1372,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 15
+      "learningDays": 15,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_qarshiboyev_humoyun_practice",
@@ -1701,7 +1705,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 20
+      "learningDays": 20,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_tovboyeva_marjona_beginner",
@@ -2033,7 +2038,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 25
+      "learningDays": 25,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_olimjonova_durdona_beginner",
@@ -2394,7 +2400,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedStudentIds": []
     },
     {
       "id": "cls_olimjonova_durdona_pre_intermediate",
@@ -2726,7 +2733,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 7
+      "learningDays": 7,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_1",
@@ -3090,7 +3098,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedStudentIds": []
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_2",
@@ -3422,7 +3431,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 17
+      "learningDays": 17,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_tagaev_eldor_beginner",
@@ -3754,7 +3764,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 22
+      "learningDays": 22,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_tagaev_eldor_elementary",
@@ -4086,7 +4097,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 27
+      "learningDays": 27,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_1",
@@ -4418,7 +4430,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 4
+      "learningDays": 4,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_2",
@@ -4750,7 +4763,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 9
+      "learningDays": 9,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_yaxshilikova_kamola_beginner",
@@ -5082,7 +5096,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 14
+      "learningDays": 14,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_yaxshilikova_kamola_elementary",
@@ -5414,7 +5429,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 19
+      "learningDays": 19,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_1",
@@ -5746,7 +5762,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 24
+      "learningDays": 24,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_2",
@@ -6078,7 +6095,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 1
+      "learningDays": 1,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_1",
@@ -6410,7 +6428,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 6
+      "learningDays": 6,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_2",
@@ -6742,7 +6761,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 11
+      "learningDays": 11,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_1",
@@ -7074,7 +7094,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 16
+      "learningDays": 16,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_2",
@@ -7406,7 +7427,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 21
+      "learningDays": 21,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aborbekov_elyor_upper_intermediate",
@@ -7738,7 +7760,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 26
+      "learningDays": 26,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_orinboyev_jaloliddin_pre_intermediate",
@@ -8070,7 +8093,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 3
+      "learningDays": 3,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_orinboyev_jaloliddin_intermediate",
@@ -8402,7 +8426,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 8
+      "learningDays": 8,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_1",
@@ -8734,7 +8759,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 13
+      "learningDays": 13,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_2",
@@ -9066,7 +9092,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 18
+      "learningDays": 18,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_jumanova_pokiza_beginner",
@@ -9398,7 +9425,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 23
+      "learningDays": 23,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_1",
@@ -9730,7 +9758,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 0
+      "learningDays": 0,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_2",
@@ -10062,7 +10091,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 5
+      "learningDays": 5,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xudoyorova_sarvinoz_intermediate",
@@ -10423,7 +10453,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xudoyorova_sarvinoz_standard",
@@ -10755,7 +10786,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 15
+      "learningDays": 15,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_1",
@@ -11087,7 +11119,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 20
+      "learningDays": 20,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_2",
@@ -11419,7 +11452,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 25
+      "learningDays": 25,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xojamqulova_diyora_beginner",
@@ -11751,7 +11785,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 2
+      "learningDays": 2,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_1",
@@ -12083,7 +12118,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 7
+      "learningDays": 7,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_2",
@@ -12415,7 +12451,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 12
+      "learningDays": 12,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_3",
@@ -12747,7 +12784,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 17
+      "learningDays": 17,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_1",
@@ -13108,7 +13146,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedStudentIds": []
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_2",
@@ -13440,7 +13479,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 27
+      "learningDays": 27,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_1",
@@ -13772,7 +13812,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 4
+      "learningDays": 4,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_2",
@@ -14104,7 +14145,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 9
+      "learningDays": 9,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ahmadova_barno_elementary_1",
@@ -14436,7 +14478,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 14
+      "learningDays": 14,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ahmadova_barno_elementary_2",
@@ -14768,7 +14811,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 19
+      "learningDays": 19,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ahmadova_barno_elementary_3",
@@ -15100,7 +15144,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 2,
-      "learningDays": 24
+      "learningDays": 24,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_ahmadova_barno_pre_intermediate",
@@ -15432,7 +15477,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 0,
-      "learningDays": 1
+      "learningDays": 1,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_shodiyor_matematika_matematika",
@@ -15764,7 +15810,8 @@
       "extraHomework": [],
       "studentPayments": {},
       "learningMonths": 1,
-      "learningDays": 6
+      "learningDays": 6,
+      "deletedStudentIds": []
     },
     {
       "id": "cls_urolov_azizbek_upper",
@@ -16236,7 +16283,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedStudentIds": []
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -16552,7 +16600,8 @@
       "learningMonths": 0,
       "learningDays": 16,
       "deletedMsgIds": [],
-      "messages": []
+      "messages": [],
+      "deletedStudentIds": []
     },
     {
       "id": "cls_urolov_azizbek_intermediate",
@@ -16897,7 +16946,8 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedStudentIds": []
     },
     {
       "id": "cls_urolov_azizbek_practice",
@@ -17213,7 +17263,8 @@
       "learningMonths": 2,
       "learningDays": 26,
       "deletedMsgIds": [],
-      "messages": []
+      "messages": [],
+      "deletedStudentIds": []
     },
     {
       "id": "cls_1792041880052",
@@ -17600,7 +17651,8 @@
       },
       "customStudentPhones": {},
       "maxCapacity": 18,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": []
     },
     {
       "id": "cls_1793380468126",
@@ -18111,7 +18163,8 @@
         }
       },
       "deletedMsgIds": [],
-      "messages": []
+      "messages": [],
+      "deletedStudentIds": []
     }
   ],
   "exams": [
@@ -18625,6 +18678,9 @@
   "deletedTeacherIds": [
     "teacher_1793380078590",
     "teacher_1793431051291"
+  ],
+  "deletedStudentIds": [
+    "std_rayxona_271_qoshqarova"
   ],
   "deletedListingIds": [
     "p2p_1792322748592_nls2",
@@ -137616,5 +137672,5 @@
       }
     }
   },
-  "updatedAt": 1793622430917
+  "updatedAt": 1793622446794
 }
