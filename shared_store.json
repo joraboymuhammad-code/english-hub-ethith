@@ -16785,7 +16785,8 @@
         "std_dildora_362_norsurname": "Dildora Nor Surname",
         "std_fariza_430_faxriddinova": "Fariza Faxriddinova",
         "std_atham_184_xudoyberdiyev": "Atham Xudoyberdiyev",
-        "std_fayozbek_997_abdukarimov": "Fayozbek Abdukarimov"
+        "std_fayozbek_997_abdukarimov": "Fayozbek Abdukarimov",
+        "std_diyorbek_862_raimqulov": "Diyorbek Raimqulov"
       },
       "customStudentPhones": {
         "std_ruxshona_493_amalikova": "941973993",
@@ -16805,9 +16806,27 @@
         "std_dildora_362_norsurname": "941973993",
         "std_fariza_430_faxriddinova": "941973993",
         "std_atham_184_xudoyberdiyev": "941973993",
-        "std_fayozbek_997_abdukarimov": "941973993"
+        "std_fayozbek_997_abdukarimov": "941973993",
+        "std_diyorbek_862_raimqulov": "941973993"
       },
       "students": [
+        {
+          "id": "std_diyorbek_862_raimqulov",
+          "name": "Diyorbek Raimqulov",
+          "firstName": "Diyorbek",
+          "lastName": "Raimqulov",
+          "email": "diyorbek_862_raimqulov@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "diyorbek_862_raimqulov",
+          "password": "diyorbek862rai",
+          "joinedAt": "2026-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
         {
           "id": "std_ruxshona_493_amalikova",
           "name": "Ruxshona Amalikova",
@@ -17362,6 +17381,13 @@
           "date": "To‘lanmagan"
         },
         "std_fayozbek_997_abdukarimov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_diyorbek_862_raimqulov": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -21473,6 +21499,19 @@
       "role": "student",
       "login": "fayozbek_997_abdukarimov",
       "password": "fayozbek997abd",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_standard",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793601614183
+    },
+    {
+      "id": "std_diyorbek_862_raimqulov",
+      "name": "Diyorbek Raimqulov",
+      "role": "student",
+      "login": "diyorbek_862_raimqulov",
+      "password": "diyorbek862rai",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_standard",
@@ -140382,5 +140421,5 @@
       }
     }
   },
-  "updatedAt": 1793601605716
+  "updatedAt": 1793601623444
 }
