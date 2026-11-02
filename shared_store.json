@@ -16782,7 +16782,8 @@
         "std_ulugbek_746_gulomov": "Ulug'bek G'ulomov",
         "std_marvarid_151_anvarova": "Marvarid Anvarova",
         "std_malohat_489_abdulhamidova": "Malohat Abdulhamidova",
-        "std_dildora_362_norsurname": "Dildora Nor Surname"
+        "std_dildora_362_norsurname": "Dildora Nor Surname",
+        "std_fariza_430_faxriddinova": "Fariza Faxriddinova"
       },
       "customStudentPhones": {
         "std_ruxshona_493_amalikova": "941973993",
@@ -16799,7 +16800,8 @@
         "std_ulugbek_746_gulomov": "941973993",
         "std_marvarid_151_anvarova": "941973993",
         "std_malohat_489_abdulhamidova": "941973993",
-        "std_dildora_362_norsurname": "941973993"
+        "std_dildora_362_norsurname": "941973993",
+        "std_fariza_430_faxriddinova": "941973993"
       },
       "students": [
         {
@@ -17058,6 +17060,23 @@
           "coins": 150
         },
         {
+          "id": "std_fariza_430_faxriddinova",
+          "name": "Fariza Faxriddinova",
+          "firstName": "Fariza",
+          "lastName": "Faxriddinova",
+          "email": "fariza_430_faxriddinova@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "fariza_430_faxriddinova",
+          "password": "fariza430fax",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_urolov_azizbek_standard_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_standard_std_1@ethith.uz",
@@ -17077,22 +17096,6 @@
           "id": "cls_urolov_azizbek_standard_std_2",
           "name": "tester_2",
           "email": "cls_urolov_azizbek_standard_std_2@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_3",
-          "name": "tester_3",
-          "email": "cls_urolov_azizbek_standard_std_3@ethith.uz",
           "role": "student",
           "phone": "",
           "parentPhone": "",
@@ -17332,6 +17335,13 @@
           "date": "To‘lanmagan"
         },
         "std_dildora_362_norsurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_fariza_430_faxriddinova": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -21404,6 +21414,19 @@
       "role": "student",
       "login": "dildora_362_norsurname",
       "password": "dildora362nor",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_standard",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793601530206
+    },
+    {
+      "id": "std_fariza_430_faxriddinova",
+      "name": "Fariza Faxriddinova",
+      "role": "student",
+      "login": "fariza_430_faxriddinova",
+      "password": "fariza430fax",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_standard",
@@ -140313,5 +140336,5 @@
       }
     }
   },
-  "updatedAt": 1793601523067
+  "updatedAt": 1793601549762
 }
