@@ -329,7 +329,134 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "studentPayments": {},
+      "studentPayments": {
+        "cls_ravshanov_doniyor_cefr_1_std_1": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_2": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_3": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_4": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_5": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_6": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_7": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_8": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_9": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_10": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_11": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_12": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_13": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_14": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_15": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_16": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_17": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_1_std_18": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        }
+      },
       "learningMonths": 2,
       "learningDays": 24,
       "activeHomework": {
@@ -137268,7 +137395,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "RAVSHANOV24",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -137291,7 +137420,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "QARSHIBOYEV15",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -137314,7 +137445,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "MARJONA88",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_olimjonova_durdona",
@@ -137343,7 +137476,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "DURDONA12",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_tagaev_eldor",
@@ -137372,7 +137507,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "ELDOR33",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -137397,7 +137534,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "KAMOLA45",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -137422,7 +137561,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "IRODA19",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_aborbekov_elyor",
@@ -137453,7 +137594,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "ELYOR70",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -137482,7 +137625,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "JALOLIDDIN99",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_jumanova_pokiza",
@@ -137505,7 +137650,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "POKIZA07",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -137530,7 +137677,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "ARSLON64",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -137555,7 +137704,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "SARVINOZ82",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -137580,7 +137731,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "SEVINCH55",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -137609,7 +137762,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "DIYORA21",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -137638,7 +137793,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "FARRUX93",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_ahmadova_barno",
@@ -137667,7 +137824,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "BARNO36",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_shodiyor_matematika",
@@ -137690,7 +137849,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "SHODIYOR50",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "teacher_1793475825095",
@@ -137710,7 +137871,9 @@
       "classOrder": [],
       "paidThisMonth": false,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_urolov_azizbek",
@@ -137739,7 +137902,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "admin_official_teacher",
@@ -138231,5 +138396,5 @@
       }
     }
   },
-  "updatedAt": 1793596324202
+  "updatedAt": 1793596622679
 }
