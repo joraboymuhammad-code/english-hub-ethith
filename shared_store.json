@@ -17101,7 +17101,8 @@
         "std_bahora_639_nosurname": "Bahora No Surname",
         "std_marjona_346_qodirqulova": "Marjona Qodirqulova",
         "std_gulsevar_485_anorqulova": "Gulsevar Anorqulova",
-        "std_asadbek_247_xolboyev": "Asadbek Xolboyev"
+        "std_asadbek_247_xolboyev": "Asadbek Xolboyev",
+        "std_kazakov_769_husniddin": "Kazakov Husniddin"
       },
       "customStudentPhones": {
         "std_orazaliyev_261_amirshox": "564654654",
@@ -17120,7 +17121,8 @@
         "std_bahora_639_nosurname": "941973993",
         "std_marjona_346_qodirqulova": "941973993",
         "std_gulsevar_485_anorqulova": "941973993",
-        "std_asadbek_247_xolboyev": "941973993"
+        "std_asadbek_247_xolboyev": "941973993",
+        "std_kazakov_769_husniddin": "941973993"
       },
       "students": [
         {
@@ -17413,20 +17415,21 @@
           "coins": 150
         },
         {
-          "id": "cls_urolov_azizbek_intermediate_std_1",
-          "name": "tester_1",
-          "email": "cls_urolov_azizbek_intermediate_std_1@ethith.uz",
+          "id": "std_kazakov_769_husniddin",
+          "name": "Kazakov Husniddin",
+          "firstName": "Kazakov",
+          "lastName": "Husniddin",
+          "email": "kazakov_769_husniddin@student.ethith",
           "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "kazakov_769_husniddin",
+          "password": "kazakov769hus",
           "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
+          "isTester": false,
+          "manuallyEnrolled": true,
           "isOnline": false,
-          "lastLogin": null
+          "coins": 150
         }
       ],
       "studentPayments": {
@@ -17662,6 +17665,13 @@
           "date": "To‘lanmagan"
         },
         "std_asadbek_247_xolboyev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_kazakov_769_husniddin": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20839,6 +20849,19 @@
       "role": "student",
       "login": "asadbek_247_xolboyev",
       "password": "asadbek247xol",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_intermediate",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793601038819
+    },
+    {
+      "id": "std_kazakov_769_husniddin",
+      "name": "Kazakov Husniddin",
+      "role": "student",
+      "login": "kazakov_769_husniddin",
+      "password": "kazakov769hus",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_intermediate",
@@ -139748,5 +139771,5 @@
       }
     }
   },
-  "updatedAt": 1793601031270
+  "updatedAt": 1793601050066
 }
