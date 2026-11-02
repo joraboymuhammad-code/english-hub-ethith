@@ -15998,7 +15998,8 @@
         "std_sabina_672_ibodullayeva": "Sabina Ibodullayeva",
         "std_charos_386_baxtiyorova": "Charos Baxtiyorova",
         "std_niyatullo_582_asatullayev": "Niyatullo Asatullayev",
-        "std_navroz_651_shavkatov": "Navro'z Shavkatov"
+        "std_navroz_651_shavkatov": "Navro'z Shavkatov",
+        "std_otkir_903_tursunmatov": "O'tkir Tursunmatov"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
@@ -16022,9 +16023,27 @@
         "std_sabina_672_ibodullayeva": "941973993",
         "std_charos_386_baxtiyorova": "941973993",
         "std_niyatullo_582_asatullayev": "941973993",
-        "std_navroz_651_shavkatov": "941973993"
+        "std_navroz_651_shavkatov": "941973993",
+        "std_otkir_903_tursunmatov": "941973993"
       },
       "students": [
+        {
+          "id": "std_otkir_903_tursunmatov",
+          "name": "O'tkir Tursunmatov",
+          "firstName": "O'tkir",
+          "lastName": "Tursunmatov",
+          "email": "otkir_903_tursunmatov@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "otkir_903_tursunmatov",
+          "password": "otkir903tur",
+          "joinedAt": "2025-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
         {
           "id": "std_navroz_651_shavkatov",
           "name": "Navro'z Shavkatov",
@@ -16675,6 +16694,13 @@
           "date": "To‘lanmagan"
         },
         "std_navroz_651_shavkatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_otkir_903_tursunmatov": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20302,6 +20328,19 @@
       "role": "student",
       "login": "navroz_651_shavkatov",
       "password": "navroz651sha",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1762063266807
+    },
+    {
+      "id": "std_otkir_903_tursunmatov",
+      "name": "O'tkir Tursunmatov",
+      "role": "student",
+      "login": "otkir_903_tursunmatov",
+      "password": "otkir903tur",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_upper",
@@ -139204,5 +139243,5 @@
       }
     }
   },
-  "updatedAt": 1762063258156
+  "updatedAt": 1762063277786
 }
