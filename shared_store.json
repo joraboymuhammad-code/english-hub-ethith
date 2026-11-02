@@ -16768,10 +16768,12 @@
         }
       },
       "customStudentNames": {
-        "std_ruxshona_493_amalikova": "Ruxshona Amalikova"
+        "std_ruxshona_493_amalikova": "Ruxshona Amalikova",
+        "std_abdulaziz_454_shodiyorov": "Abdulaziz Shodiyorov"
       },
       "customStudentPhones": {
-        "std_ruxshona_493_amalikova": "941973993"
+        "std_ruxshona_493_amalikova": "941973993",
+        "std_abdulaziz_454_shodiyorov": "941973993"
       },
       "students": [
         {
@@ -16785,6 +16787,23 @@
           "parentPhone": "941973993",
           "login": "ruxshona_493_amalikova",
           "password": "ruxshona493ama",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_abdulaziz_454_shodiyorov",
+          "name": "Abdulaziz Shodiyorov",
+          "firstName": "Abdulaziz",
+          "lastName": "Shodiyorov",
+          "email": "abdulaziz_454_shodiyorov@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "abdulaziz_454_shodiyorov",
+          "password": "abdulaziz454sho",
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
@@ -17046,22 +17065,6 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_17",
-          "name": "tester_17",
-          "email": "cls_urolov_azizbek_standard_std_17@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
         }
       ],
       "studentPayments": {
@@ -17192,6 +17195,13 @@
           "date": "To‘lanmagan"
         },
         "std_ruxshona_493_amalikova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_abdulaziz_454_shodiyorov": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -21082,6 +21092,19 @@
       "role": "student",
       "login": "ruxshona_493_amalikova",
       "password": "ruxshona493ama",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_standard",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793601194414
+    },
+    {
+      "id": "std_abdulaziz_454_shodiyorov",
+      "name": "Abdulaziz Shodiyorov",
+      "role": "student",
+      "login": "abdulaziz_454_shodiyorov",
+      "password": "abdulaziz454sho",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_standard",
@@ -139991,5 +140014,5 @@
       }
     }
   },
-  "updatedAt": 1793601187321
+  "updatedAt": 1793601216101
 }
